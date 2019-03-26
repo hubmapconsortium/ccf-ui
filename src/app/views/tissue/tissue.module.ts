@@ -1,11 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+import { TissueRoutingModule } from './tissue-routing.module';
 import { TissueComponent } from './tissue.component';
 
 @NgModule({
-  declarations: [TissueComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    TissueRoutingModule
+  ],
+  declarations: [
+    TissueComponent
   ]
 })
 export class TissueModule { }
