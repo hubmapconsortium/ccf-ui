@@ -2,9 +2,12 @@
   "name": "ccf-ui",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "ng": "node --max_old_space_size=3000 ./node_modules/.bin/ng",
+    "start": "npm run ng serve",
+    "serve:build": "http-server -p 4200 -c-1 dist/ccf-ui-demo",
+    "build": "npm run ng -- build --prod",
+    "build:demo": "npm run ng -- build --prod --output-hashing=none --base-href=./",
+    "compodoc": "npx compodoc -p tsconfig.json --output dist/ccf-ui-demo/docs",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -31,9 +34,10 @@
     "@angular/cli": "~7.3.6",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
-    "@types/node": "~8.9.4",
+    "@compodoc/compodoc": "^1.1.9",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
@@ -42,9 +46,11 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "lodash": "^4.17.11",
+    "ng-mocks": "^7.7.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "typescript": "^3.2.4"
   }
 }
