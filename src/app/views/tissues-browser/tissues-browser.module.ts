@@ -1,11 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+import { TissuesBrowserRoutingModule } from './tissues-browser-routing.module';
 import { TissuesBrowserComponent } from './tissues-browser.component';
 
 @NgModule({
-  declarations: [TissuesBrowserComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    TissuesBrowserRoutingModule
+  ],
+  declarations: [
+    TissuesBrowserComponent
   ]
 })
 export class TissuesBrowserModule { }
