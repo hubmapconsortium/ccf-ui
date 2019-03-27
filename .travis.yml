@@ -1,0 +1,88 @@
+language: node_js
+node_js:
+- '10'
+sudo: required
+dist: trusty
+addons:
+  chrome: stable
+  sonarcloud:
+    organization: "$SONAR_KEY"
+    token:
+      secure: "$SONAR_TOKEN"
+
+cache: npm
+branches:
+  only:
+  - master
+  - develop
+  - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+install:
+  - npm ci
+script: skip
+jobs:
+  include:
+  - stage: test
+    name: Run Tests
+    if: NOT (tag IS present) 
+    script:
+    - npm run test
+  - stage: deploy
+    name: Deploy staging to Netlify
+    if: branch = develop AND type = push
+    script:
+    - npm run build -- --base-href=/
+    - npm run compodoc
+    deploy:
+      provider: pages
+      target-branch: staging
+      skip-cleanup: true
+      github-token: "$GITHUB_TOKEN"
+      keep-history: false
+      local-dir: dist/ccf-ui-demo
+      on:
+        branch: develop
+  - stage: deploy
+    name: Deploy demo to GitHub Pages
+    if: branch = master
+    script:
+    - npm run build -- --base-href=/ccf-ui/
+    - npm run compodoc
+    deploy:
+      provider: pages
+      skip-cleanup: true
+      github-token: "$GITHUB_TOKEN"
+      keep-history: false
+      local-dir: dist/ccf-ui-demo
+      on:
+        branch: master
+  - stage: deploy
+    name: Build and publish ccf-ui
+    if: tag IS present
+    script:
+    - npm run build -- --base-href=/ccf-ui/
+    - npm run compodoc
+    before_deploy:
+    - cd dist/ccf-ui
+    after_deploy: &1
+    - cd ../../
+    deploy: &2
+      provider: npm
+      skip-cleanup: true
+      email: "$NPM_EMAIL"
+      api_key: "$NPM_TOKEN"
+      on:
+        tags: true
+        repo: hubmapconsortium/ccf-ui
+  - stage: test
+    name: Run sonar checks
+    if: NOT (tag IS present)
+    script:
+    - sonar-scanner -X
+  - stage: test
+    name: Run linter
+    if: NOT (tag IS present) 
+    script:
+    - npm run lint
+notifications:
+  slack:
+    secure: kmHjR6duu+E+c+JEBLjECE5mSboVOrz599dOubVU7eqwVNUGvbe3YDGIKAc0S6akqsW0q9bVUWM2Zi+J4ROHrlMi1A+VQRJAW+2DG+6wu8fmdZiA0u/fK2w9IMRPFDDk80mMZN7TzSPMu5nRv6UGbVqpNeqRWotd2XtyLOu3+KRYKggUjKKz5D3oiYYGaHZWj6foDG7u42q33RQ55LlWff0GmAUuYVSfOUlxAYevOTuV9QF8NfFRnlQAfIYucM9177dd9cfWUdRgWPL7VGDUrANF2NtrfTUcWMM/zl6Vk7KMTxcCr1Oy0osxPE4DlpD8Mdz+i54tqKtcopJirBUnogZx+6MoMqMpTu7mU9pmB1H5rhAqlddYUMxiiyUvAvsScm3G5tY7azvqB0i6qalveTXuZWTa3CZUKHHTkDaDd0tnCvnLqWUaxZ2TeS//67q4EvreTfIdD4hD4phXjqfS+x0Ha8w7MpjwNln651svxsnpv+Ak6ET8N/NVRY61LhzAocMHitqMZMycTgyf8l5rciUtWE2cIuDiH86SBF+KeDYnoCCBwN8qXUTktVie37PeBX2drO84wNc8tmzjpIguXyCQUCBN/t0BodC4BIH+/oasfsYtKpXj6LQaV4/brf+t+hZX2FYssS44UZAKn3CQ92Mp7YurngUMHBqaMC6wPu4=
