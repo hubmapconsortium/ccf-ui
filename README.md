@@ -6,7 +6,6 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 [![View Staging Site](https://img.shields.io/badge/staging-online-brightgreen.svg)](https://ccf-ui.netlify.com/)
 [![View Demo](https://img.shields.io/badge/demo-offline-red.svg)]()
-
 [![Documentation Status](https://ccf-ui.netlify.com/docs/images/coverage-badge-documentation.svg)]()
 
 [WIP] CCF-UI: Common Coordinate Framework User Interface (Proof of Concept)
