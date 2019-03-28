@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "node --max_old_space_size=3000 ./node_modules/.bin/ng",
     "start": "npm run ng serve",
-    "serve:build": "http-server -p 4200 -c-1 dist/ccf-ui-demo",
+    "serve:build": "http-server -p 4200 -c-1 dist/ccf-ui",
     "build": "npm run ng -- build --prod",
     "build:demo": "npm run ng -- build --prod --output-hashing=none --base-href=./",
-    "compodoc": "npx compodoc -p tsconfig.json --output dist/ccf-ui-demo/docs",
+    "compodoc": "npx compodoc -p tsconfig.json --output dist/ccf-ui/docs",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
