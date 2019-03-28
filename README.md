@@ -1,4 +1,4 @@
-# Make-A-Vis
+# CCF-UI
 
 [![Shipping faster with ZenHub](https://img.shields.io/badge/Shipping_faster_with-ZenHub-5e60ba.svg?style=flat-square)](https://app.zenhub.com/workspaces/ccf-ui-5c99227a534e090001490e16/boards?repos=177587654&showPipelineDescriptions=false)
 [![Build Status](https://travis-ci.com/cns-iu/make-a-vis.svg?branch=master)](https://travis-ci.com/hubmapconsortium/ccf-ui)
