@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule } from '@ngxs/store';
 
@@ -18,7 +19,8 @@ const rootStates = [
     BrowserModule,
     AppRoutingModule,
     NgxsModule.forRoot(rootStates, { developmentMode: !environment.production }),
-    NgxsRouterPluginModule.forRoot()
+    NgxsRouterPluginModule.forRoot(),
+    NgxsDispatchPluginModule.forRoot()
   ],
   declarations: [
     AppComponent

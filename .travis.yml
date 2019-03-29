@@ -28,7 +28,7 @@ jobs:
     - npm run test
   - stage: deploy
     name: Deploy staging to Netlify
-    if: branch = develop AND type = push
+    if: branch = develop AND type != pull_request
     script:
     - npm run build -- --base-href=/
     - npm run compodoc
@@ -38,7 +38,7 @@ jobs:
       skip-cleanup: true
       github-token: "$GITHUB_TOKEN"
       keep-history: false
-      local-dir: dist/ccf-ui-demo
+      local-dir: dist/ccf-ui
       on:
         branch: develop
   - stage: deploy
@@ -52,7 +52,7 @@ jobs:
       skip-cleanup: true
       github-token: "$GITHUB_TOKEN"
       keep-history: false
-      local-dir: dist/ccf-ui-demo
+      local-dir: dist/ccf-ui
       on:
         branch: master
   - stage: deploy

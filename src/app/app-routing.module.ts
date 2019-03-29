@@ -3,25 +3,29 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'home',
+    loadChildren: './views/home/home.module#HomeModule'
+  },
+  {
     path: 'body',
     loadChildren: './views/body/body.module#BodyModule'
   },
   {
-    path: ':organ',
+    path: 'organ/:organId',
     loadChildren: './views/organ/organ.module#OrganModule',
   },
   {
-    path: ':organ/tissues',
+    path: 'tissues',
     loadChildren: './views/tissues-browser/tissues-browser.module#TissuesBrowserModule'
   },
   {
-    path: ':organ/:tissueId',
+    path: 'tissue/:tissueId',
     loadChildren: './views/tissue/tissue.module#TissueModule'
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/body'
+    redirectTo: '/home'
   },
 ];
 
