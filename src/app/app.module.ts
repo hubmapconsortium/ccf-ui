@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainModule } from './views/main/main.module';
+import { AboutComponent } from './components/about/about.component';
 import { OntologyState } from './shared/state/ontology/ontology.state';
+import { MainModule } from './views/main/main.module';
 
 const rootStates = [
   OntologyState
@@ -16,6 +19,8 @@ const rootStates = [
 
 @NgModule({
   imports: [
+    MatDialogModule,
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     MainModule,
@@ -23,9 +28,11 @@ const rootStates = [
     NgxsRouterPluginModule.forRoot()
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ AboutComponent ]
 })
 export class AppModule { }
