@@ -1,0 +1,17 @@
+.ccf-main-wrapper {
+    .container {
+        width: 100%;
+        display: flex;
+        .ccf-sidenav {
+            width: 30%;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            .ccf-toolbar {
+                width: 100%;
+            }
+        }
+    }
+}

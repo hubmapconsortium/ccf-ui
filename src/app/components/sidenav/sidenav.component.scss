@@ -1,0 +1,14 @@
+.ccf-sidenav-wrapper {
+    height: 100vh;
+    width: 100%;
+    background: red;
+    .container {
+        width: 100%;
+        .nav-buttons-container {
+            position: fixed;
+            height: 100vh;
+            width: 3vw;
+            background: purple;
+        }
+    }
+}
