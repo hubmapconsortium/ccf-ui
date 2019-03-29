@@ -50,7 +50,6 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "lodash": "^4.17.11",
     "ng-mocks": "^7.7.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
