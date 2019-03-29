@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  sidenavExpanded = true;
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleExpand($event: boolean) {
+    this.sidenavExpanded = $event;
+  }
 }

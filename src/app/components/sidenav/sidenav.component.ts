@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'ccf-sidenav',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
+  @Output() toggleExpandOutput = new EventEmitter<boolean>();
+  expanded = true;
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleExpand() {
+    this.expanded = !this.expanded;
+    this.toggleExpandOutput.emit(this.expanded);
+  }
 }

@@ -1,9 +1,9 @@
 <div class="ccf-main-wrapper">
   <div class="container">
-    <ccf-sidenav class="ccf-sidenav"></ccf-sidenav>
+    <ccf-toolbar class="ccf-toolbar"></ccf-toolbar>
     <div class="main-content">
-      <ccf-toolbar class="ccf-toolbar"></ccf-toolbar>
-      <ccf-dataview></ccf-dataview>
+      <ccf-sidenav [ngClass]="{'ccf-sidenav': true, 'ccf-sidenav-expanded': !sidenavExpanded}" (toggleExpandOutput)="toggleExpand($event)"></ccf-sidenav>
+      <ccf-dataview class="ccf-dataview"></ccf-dataview>
     </div>
   </div>
 </div>
