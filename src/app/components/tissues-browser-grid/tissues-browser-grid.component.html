@@ -1,3 +1,6 @@
-<p>
-  tissues-browser-grid works!
-</p>
+<div class="tissues-browser-grid wrapper">
+  <div class="container">
+    <ccf-tissues-browser-grid-item *ngFor="let item of items" class="item" [style.width]="itemWidthPercentage" [item]="item">
+    </ccf-tissues-browser-grid-item>
+  </div>
+</div>
