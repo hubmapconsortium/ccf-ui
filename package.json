@@ -29,6 +29,7 @@
     "@ngxs/store": "^3.4.3",
     "core-js": "^2.5.4",
     "lodash": "^4.17.11",
+    "ngx-smart-popover": "^1.0.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
