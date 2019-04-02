@@ -30,6 +30,11 @@ export class TissuesBrowserGridComponent implements OnInit, OnChanges {
   itemWidthPercentage: string;
 
   /**
+   * Item currently being hovered.
+   */
+  activePopoverItem: any; // FIXME: Correct typings
+
+  /**
    * Angular's OnInit hook.
    */
   ngOnInit() {
@@ -43,6 +48,22 @@ export class TissuesBrowserGridComponent implements OnInit, OnChanges {
    */
   ngOnChanges(changes: SimpleChanges) {
     if ('numColumns' in changes) { this.updateItemWidth(); }
+  }
+
+  /**
+   * Sets the active popover item.
+   *
+   * @param item The item object.
+   */
+  setActivePopoverItem(item: any): void { // FIXME: Correct typings
+    this.activePopoverItem = item;
+  }
+
+  /**
+   * Clears the active popover item.
+   */
+  clearActivePopoverItem(): void {
+    this.activePopoverItem = undefined;
   }
 
   /**
