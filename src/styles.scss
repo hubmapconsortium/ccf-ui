@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+// The following values can be easily overridden for the popover (current values are the defaults)
+// $popover-bg: #757575;
+// $popover-inner-padding: 1.2rem;
+// $zindex-popover: 1060;
+// $popover-arrow-width: 2.2rem;
+// $popover-arrow-height: 1.1rem;
+// $popover-arrow-outer-width: ($popover-arrow-width + 0.1rem);
+// $popover-arrow-outer-color: fade-in($popover-bg, .05);
+// $popover-arrow-color: $popover-bg;
+// $popover-header-bg: darken($popover-bg, 3%);
+// $popover-border-width: 0rem;
+// $popover-border-radius: 0rem;
+// $popover-box-shadow: 0 .25rem .5rem rgba(black, .2);
+// $popover-body-color: white;
+// $popover-header-color: white;
+// $font-family: 'Helvetica';
+@import '~ngx-smart-popover/scss/popover-content.component';
+
+.popover-content {
+  // Required for the popover to work correctly.
+  // For some reason this is missing from the popover-content.component scss!?
+  position: absolute;
+}
