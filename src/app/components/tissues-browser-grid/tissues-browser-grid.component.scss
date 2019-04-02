@@ -1,11 +1,18 @@
 .tissues-browser-grid.wrapper {
   .container {
-    display: flex;
-    flex-flow: row wrap;
-    align-content: flex-start;
+    .popover-container ::ng-deep .popover {
+      margin: 0 0 0 0;
+    }
 
-    .item {
-      // TODO: min-width, max-width
+    .grid {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: flex-start;
+
+      .item {
+        min-width: 220px; // Might need tweaking.
+        max-width: 10000px; // FIXME: Set appropriate maximum width
+      }
     }
   }
 }

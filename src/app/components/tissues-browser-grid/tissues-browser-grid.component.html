@@ -1,6 +1,13 @@
 <div class="tissues-browser-grid wrapper">
   <div class="container">
-    <ccf-tissues-browser-grid-item *ngFor="let item of items" class="item" [style.width]="itemWidthPercentage" [item]="item">
-    </ccf-tissues-browser-grid-item>
+    <popover-content class="popover-container" title="test" placement="right" [closeOnMouseOutside]="true" #popover>
+      My magic
+    </popover-content>
+
+    <div class="grid">
+      <ccf-tissues-browser-grid-item *ngFor="let item of items" class="item" [style.width]="itemWidthPercentage"
+                                     [popover]="popover" popoverSize="auto" [popoverCloseOnMouseOutside]="true" [item]="item">
+      </ccf-tissues-browser-grid-item>
+    </div>
   </div>
 </div>
