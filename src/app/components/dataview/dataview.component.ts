@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ccf-dataview',
   templateUrl: './dataview.component.html',
   styleUrls: ['./dataview.component.scss']
 })
-export class DataviewComponent implements OnInit {
-
+export class DataviewComponent {
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

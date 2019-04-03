@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { DataviewComponent } from './dataview.component';
 
+
 @NgModule({
   declarations: [DataviewComponent],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [DataviewComponent]
 })

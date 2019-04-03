@@ -1,24 +1,27 @@
 .ccf-main-wrapper {
     .container {
-        .ccf-toolbar {
-            width: 100%;
-            height: calc(100vh - 50px);
+        .ccf-leftbar {
+            position: fixed;
+            z-index: 2;
         }
-        width: 100%;
-        .ccf-sidenav {
-            width: 20%;
-            transition: 0.5s;
-        }
-        .ccf-sidenav-expanded {
-            width: 0;
-        }
-        .main-content {
+        .drawer-wrapper {
             display: flex;
-            width: 100%;
-        }
-        .ccf-dataview {
-            width: 100%;
-            height: calc(100vh - 50px);
+            height: calc(100vh - 3.1875rem);
+            margin-left: 3.1875rem;
+            .drawer-container {
+                width: 100%;
+                background: none;
+                .drawer {
+                    width: 40vh;
+                    .sidemav {
+                        height: 100%;
+                    }
+                }
+                .ccf-dataview {
+                    height: calc(100vh - 3.1875rem);
+                    width: 100vw;
+                }
+            }
         }
     }
 }

@@ -1,12 +1,21 @@
 <div class="ccf-main-wrapper">
   <div class="container">
     <ccf-toolbar class="ccf-toolbar"></ccf-toolbar>
-    <div class="main-content">
-      <ccf-sidenav [ngClass]="{'ccf-sidenav': true, 'ccf-sidenav-expanded': !sidenavExpanded}" (toggleExpandOutput)="toggleExpand($event)"></ccf-sidenav>
-      <ccf-dataview class="ccf-dataview"></ccf-dataview>
+    <ccf-leftbar class="ccf-leftbar" (drawerToggle)="drawer.toggle()"></ccf-leftbar>
+    <div class="drawer-wrapper">
+      <mat-drawer-container class="drawer-container" autosize>
+        <mat-drawer #drawer class="drawer" mode="side" [opened]="true">
+          <ccf-sidenav class="sidenav"></ccf-sidenav>
+        </mat-drawer>
+        <ccf-dataview class="ccf-dataview"></ccf-dataview>
+      </mat-drawer-container>
     </div>
   </div>
 </div>
+
+
+
+
 
 
 <!--<router-outlet></router-outlet>-->
