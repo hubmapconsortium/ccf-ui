@@ -1,3 +1,5 @@
-<p>
-  tissues-browser-grid-item works!
-</p>
+<div class="tissues-browser-grid-item wrapper">
+  <div class="container">
+    <img class="tile" [attr.src]="tileUrl" [attr.alt]="description" (click)="navigateToTissue()">
+  </div>
+</div>
