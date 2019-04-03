@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AboutModalService } from 'src/app/shared/services/about-modal.service';
 
 @Component({
   selector: 'ccf-about',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
 
-  constructor() { }
+  constructor(private readonly aboutModalService: AboutModalService) { }
+
+  close() {
+    this.aboutModalService.closeAbout();
+  }
 }
