@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AboutModalService } from 'src/app/shared/services/about-modal.service';
 
 @Component({
@@ -6,11 +6,8 @@ import { AboutModalService } from 'src/app/shared/services/about-modal.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
-
+export class MainComponent {
   constructor(private readonly aboutModalService: AboutModalService) { }
-
-  ngOnInit() {
   }
 
   openAbout(): void {
@@ -19,6 +16,4 @@ export class MainComponent implements OnInit {
 
   closeAbout(): void {
     this.aboutModalService.closeAbout();
-  }
-
 }

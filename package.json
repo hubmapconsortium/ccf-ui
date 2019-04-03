@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "node --max_old_space_size=3000 ./node_modules/.bin/ng",
     "start": "npm run ng serve",
-    "serve:build": "http-server -p 4200 -c-1 dist/ccf-ui-demo",
+    "serve:build": "http-server -p 4200 -c-1 dist/ccf-ui",
     "build": "npm run ng -- build --prod",
     "build:demo": "npm run ng -- build --prod --output-hashing=none --base-href=./",
-    "compodoc": "npx compodoc -p tsconfig.json --output dist/ccf-ui-demo/docs",
+    "compodoc": "npx compodoc -p tsconfig.json --output dist/ccf-ui/docs",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -28,6 +28,7 @@
     "@ngxs/store": "^3.4.3",
     "core-js": "^2.5.4",
     "lodash": "^4.17.11",
+    "material-design-icons": "^3.0.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
