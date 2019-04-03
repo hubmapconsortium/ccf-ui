@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { OntologyNode } from '../../state/ontology/ontology.model';
 import { Navigate } from '@ngxs/router-plugin';
+
+import { OntologyNode } from '../../state/ontology/ontology.model';
 
 /**
  * Contains functions for navigating to different parts of the app.

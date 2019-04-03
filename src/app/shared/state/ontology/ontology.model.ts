@@ -16,6 +16,18 @@ export interface OntologyNode {
    * An array of child identifiers.
    */
   children: string[];
+
+  // Data
+
+  /**
+   * Description of this item.
+   */
+  description: string;
+
+  /**
+   * Url of the tile displayed in the tissues browser.
+   */
+  tileUrl: string;
 }
 
 /**
