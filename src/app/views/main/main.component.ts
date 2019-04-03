@@ -8,7 +8,6 @@ import { AboutModalService } from 'src/app/shared/services/about-modal.service';
 })
 export class MainComponent {
   constructor(private readonly aboutModalService: AboutModalService) { }
-  }
 
   openAbout(): void {
     this.aboutModalService.openAbout();
@@ -16,4 +15,5 @@ export class MainComponent {
 
   closeAbout(): void {
     this.aboutModalService.closeAbout();
+  }
 }
