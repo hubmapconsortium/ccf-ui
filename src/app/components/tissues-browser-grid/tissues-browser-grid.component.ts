@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
+import { OntologyNode } from '../../shared/state/ontology/ontology.model';
+
 /**
  * A grid where each item can be hovered to display a popover.
  */
@@ -17,7 +19,7 @@ export class TissuesBrowserGridComponent implements OnInit, OnChanges {
   /**
    * Grid items.
    */
-  @Input() items: any[]; // FIXME: Correct typings
+  @Input() items: OntologyNode[];
 
   /**
    * Desired number of columns in the grid.
@@ -32,7 +34,7 @@ export class TissuesBrowserGridComponent implements OnInit, OnChanges {
   /**
    * Item currently being hovered.
    */
-  activePopoverItem: any; // FIXME: Correct typings
+  activePopoverItem: OntologyNode;
 
   /**
    * Angular's OnInit hook.
@@ -55,7 +57,7 @@ export class TissuesBrowserGridComponent implements OnInit, OnChanges {
    *
    * @param item The item object.
    */
-  setActivePopoverItem(item: any): void { // FIXME: Correct typings
+  setActivePopoverItem(item: OntologyNode): void {
     this.activePopoverItem = item;
   }
 
