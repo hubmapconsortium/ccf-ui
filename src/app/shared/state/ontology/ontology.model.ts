@@ -28,6 +28,21 @@ export interface OntologyNode {
    * Url of the tile displayed in the tissues browser.
    */
   tileUrl: string;
+
+  /**
+   * Age of the person from which the sample was taken.
+   */
+  age: number;
+
+  /**
+   * Gender of the person from which the sample was taken.
+   */
+  gender: 'male' | 'female' | 'unknown';
+
+  /**
+   * Additional data to display in popovers, etc.
+   */
+  metadata: [string, any][];
 }
 
 /**
