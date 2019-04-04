@@ -11,15 +11,15 @@ const routes: Routes = [
     loadChildren: './views/body/body.module#BodyModule'
   },
   {
-    path: ':organ',
+    path: 'organ/:organId',
     loadChildren: './views/organ/organ.module#OrganModule',
   },
   {
-    path: ':organ/tissues',
+    path: 'tissues',
     loadChildren: './views/tissues-browser/tissues-browser.module#TissuesBrowserModule'
   },
   {
-    path: ':organ/:tissueId',
+    path: 'tissue/:tissueId',
     loadChildren: './views/tissue/tissue.module#TissueModule'
   },
   {
