@@ -48,7 +48,7 @@ export class TissueDataService {
    */
   constructor() {
     this.tissueSourcePath = this.routeState.pipe(rxMap(state => {
-      return state && state.root.firstChild.params.tissueId;
+      return state && this.pathToImages + this.imageSources[+state.root.firstChild.params.tissueId - 1];
     }));
   }
 }
