@@ -22,7 +22,7 @@ export class TissuesBrowserGridItemComponent {
    * Gets the tile's url.
    */
   get tileUrl(): string {
-    return this.item.tileUrl || '../../../assets/grid-tissue.png'; // FIXME: Second part is temporary (used for testing)
+    return this.item.tileUrl;
   }
 
   /**
