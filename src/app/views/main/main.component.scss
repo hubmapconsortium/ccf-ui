@@ -1,10 +1,10 @@
-.ccf-main-wrapper {
+.ccf-main.wrapper {
     .container {
         .ccf-leftbar {
             position: fixed;
             z-index: 2;
         }
-        .drawer-wrapper {
+        .drawer.wrapper {
             display: flex;
             height: calc(100vh - 3.1875rem);
             margin-left: 4.25rem;
