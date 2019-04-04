@@ -1,18 +1,18 @@
 <div class="ccf-leftbar-wrapper">
   <div class="container">
     <div class="leftbar">
-      <div class="search">
-        <ccf-search-icon (click)="emitToggleEvent()"></ccf-search-icon>
+      <div [ngClass]="{'search': true, 'search-expanded': sidenavExpanded}">
+        <ccf-search-icon (click)="emitToggleEvent()" ></ccf-search-icon>
       </div>
       <mat-list class="breadcrumb">
-        <mat-list-item>
-          <ccf-body-icon></ccf-body-icon>
+        <mat-list-item class="breadcrumb-item">
+          <ccf-home-icon class="breadcrumb-item-icon"></ccf-home-icon>
         </mat-list-item>
-        <mat-list-item>
-          <ccf-tissue-icon></ccf-tissue-icon>
+        <mat-list-item class="breadcrumb-item">
+          <ccf-body-icon class="breadcrumb-item-icon"></ccf-body-icon>
         </mat-list-item>
-        <mat-list-item>
-          <ccf-tissue-icon></ccf-tissue-icon>
+        <mat-list-item class="breadcrumb-item">
+          <ccf-tissue-icon class="breadcrumb-item-icon"></ccf-tissue-icon>
         </mat-list-item>
       </mat-list>
       <div class="feedback-icon">

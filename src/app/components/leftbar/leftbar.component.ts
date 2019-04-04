@@ -8,10 +8,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class LeftbarComponent {
 
   @Output() drawerToggle = new EventEmitter<boolean>();
+  sidenavExpanded = true;
   constructor() { }
 
   emitToggleEvent() {
-    this.drawerToggle.emit(true);
+    this.sidenavExpanded = !this.sidenavExpanded;
+    this.drawerToggle.emit(this.sidenavExpanded);
   }
 
 }
