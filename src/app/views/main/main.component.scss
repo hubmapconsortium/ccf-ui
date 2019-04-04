@@ -4,7 +4,7 @@
             position: fixed;
             z-index: 2;
         }
-        .drawer.wrapper {
+        .drawer-wrapper {
             display: flex;
             height: calc(100vh - 3.1875rem);
             margin-left: 4.25rem;
@@ -17,7 +17,7 @@
                         height: 100%;
                     }
                 }
-                .ccf-dataview {
+                .dataview {
                     height: calc(100vh - 3.1875rem);
                     width: 100vw;
                 }

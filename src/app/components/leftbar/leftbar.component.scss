@@ -12,8 +12,16 @@
             .breadcrumb {
                  margin-top: 1rem;
                 .item {
+                    margin-bottom: 1rem;
+                    ::ng-deep .mat-list-item-content {
+                        display: block;
+                    }
                     .icon {
                         margin: auto;
+                    }
+                    .label {
+                        font-size: 0.625rem;
+                        text-align: center;
                     }
                 }
             }
@@ -25,7 +33,11 @@
                 background: #20558a;
             }
             .feedback-icon {
-                margin-top: 65vh;
+                margin-top: 62vh;
+                .label {
+                    font-size: 0.625rem;
+                    text-align: center;
+                }
             }
         }
     }
