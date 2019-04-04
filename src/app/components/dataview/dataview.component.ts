@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './dataview.component.html',
   styleUrls: ['./dataview.component.scss']
 })
-export class DataviewComponent {
-  constructor() { }
-}
+export class DataviewComponent { }
