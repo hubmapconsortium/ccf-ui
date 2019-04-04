@@ -5,15 +5,15 @@
         <ccf-search-icon (click)="emitToggleEvent()" ></ccf-search-icon>
       </div>
       <mat-list class="breadcrumb">
-        <mat-list-item class="item">
+        <mat-list-item class="item" routerLink="/" routerLinkActive="active">
           <ccf-home-icon class="icon"></ccf-home-icon>
           <div class="label"> HOME </div>
         </mat-list-item>
-        <mat-list-item class="item">
+        <mat-list-item class="item" routerLink="/body" routerLinkActive="active">
           <ccf-body-icon class="icon"></ccf-body-icon>
           <div class="label"> BODY </div>
         </mat-list-item>
-        <mat-list-item class="item">
+        <mat-list-item class="item" routerLink="/1/2" routerLinkActive="active">
           <ccf-tissue-icon class="icon"></ccf-tissue-icon>
           <div class="label"> TISSUE </div>
         </mat-list-item>

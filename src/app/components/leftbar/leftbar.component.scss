@@ -13,6 +13,7 @@
                  margin-top: 1rem;
                 .item {
                     margin-bottom: 1rem;
+                    cursor: pointer;
                     ::ng-deep .mat-list-item-content {
                         display: block;
                     }

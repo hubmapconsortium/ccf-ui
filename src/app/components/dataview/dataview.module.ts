@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { DataviewComponent } from './dataview.component';
 
@@ -8,6 +9,7 @@ import { DataviewComponent } from './dataview.component';
   declarations: [DataviewComponent],
   imports: [
     CommonModule,
+    RouterModule
   ],
   exports: [DataviewComponent]
 })
