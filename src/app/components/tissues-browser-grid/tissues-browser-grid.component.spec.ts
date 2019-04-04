@@ -60,7 +60,7 @@ describe('TissuesBrowserGridComponent', () => {
 
     describe('setActivePopoverItem', () => {
       beforeEach(() => {
-        component.setActivePopoverItem({ });
+        component.setActivePopoverItem({ } as any);
       });
 
       it('sets the active popover item', () => {
@@ -70,7 +70,7 @@ describe('TissuesBrowserGridComponent', () => {
 
     describe('clearActivePopoverItem', () => {
       beforeEach(() => {
-        component.setActivePopoverItem({ });
+        component.setActivePopoverItem({ } as any);
         component.clearActivePopoverItem();
       });
 
