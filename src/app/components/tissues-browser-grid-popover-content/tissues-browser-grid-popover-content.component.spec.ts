@@ -6,6 +6,7 @@ import { MockModule, MockRender } from 'ng-mocks';
 
 import { OntologyNode } from '../../shared/state/ontology/ontology.model';
 import { TissuesBrowserGridPopoverContentComponent } from './tissues-browser-grid-popover-content.component';
+import { DownloadService } from 'src/app/shared/services/download/download.service';
 
 describe('TissuesBrowserGridPopoverContentComponent', () => {
   let component: TissuesBrowserGridPopoverContentComponent;
@@ -20,7 +21,10 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [MockModule(MatIconModule)],
-      declarations: [TissuesBrowserGridPopoverContentComponent]
+      declarations: [TissuesBrowserGridPopoverContentComponent],
+      providers: [
+        { provide: DownloadService, useValue: { download: () => undefined } }
+      ]
     });
 
     await TestBed.compileComponents();
@@ -88,6 +92,27 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
     describe('trackByLabel(data)', () => {
       it('returns the label of the metadata item', () => {
         expect(component.trackByLabel(['abc', 'def'])).toEqual('abc');
+      });
+    });
+
+    describe('download', () => {
+      let spy: jasmine.Spy;
+
+      beforeEach(() => {
+        const service: DownloadService = TestBed.get(DownloadService);
+        spy = spyOn(service, 'download');
+      });
+
+      beforeEach(() => {
+        component.download();
+      });
+
+      it('calls the download service to download the data', () => {
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('passes its item to the download service', () => {
+        expect(spy).toHaveBeenCalledWith(item);
       });
     });
   });

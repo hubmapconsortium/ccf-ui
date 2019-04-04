@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { get as loGet } from 'lodash';
 
+import { DownloadService } from '../../shared/services/download/download.service';
 import { OntologyNode } from '../../shared/state/ontology/ontology.model';
 
 /**
@@ -40,6 +41,13 @@ export class TissuesBrowserGridPopoverContentComponent {
   }
 
   /**
+   * Creates an instance of tissues browser grid popover content component.
+   *
+   * @param downloadService Service used to download data for a tissue sample.
+   */
+  constructor(private downloadService: DownloadService) { }
+
+  /**
    * Tracks a meta data tuple by its label.
    *
    * @param data Meta data tuple.
@@ -47,5 +55,12 @@ export class TissuesBrowserGridPopoverContentComponent {
    */
   trackByLabel(data: [string, any]): string {
     return data[0];
+  }
+
+  /**
+   * Downloads the tissue sample referenced by this component.
+   */
+  download(): void {
+    this.downloadService.download(this.item);
   }
 }
