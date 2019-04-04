@@ -1,7 +1,7 @@
 <div class="ccf-leftbar wrapper">
   <div class="container">
     <div class="leftbar">
-      <div [ngClass]="{'search': true, 'search-expanded': sidenavExpanded}">
+      <div [class.search-expanded]="sidenavExpanded" class="search">
         <ccf-search-icon (click)="emitToggleEvent()" ></ccf-search-icon>
       </div>
       <mat-list class="breadcrumb">
