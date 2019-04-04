@@ -3,6 +3,7 @@ import { MatDialogModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule } from '@ngxs/store';
 
@@ -27,7 +28,8 @@ const rootStates = [
     AppRoutingModule,
     MainModule,
     NgxsModule.forRoot(rootStates, { developmentMode: !environment.production }),
-    NgxsRouterPluginModule.forRoot()
+    NgxsRouterPluginModule.forRoot(),
+    NgxsDispatchPluginModule.forRoot()
   ],
   declarations: [
     AppComponent,
