@@ -7,9 +7,7 @@ import { AboutComponent } from '../../components/about/about.component';
 /**
  * Injectable to provide in root.
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 /**
  * The service that is responsible for operations on the modal, like opening the modal and closing it.
