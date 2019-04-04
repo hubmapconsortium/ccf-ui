@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OntologyState } from './shared/state/ontology/ontology.state';
+import { MainModule } from './views/main/main.module';
 
 const rootStates = [
   OntologyState
@@ -18,6 +19,7 @@ const rootStates = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MainModule,
     NgxsModule.forRoot(rootStates, { developmentMode: !environment.production }),
     NgxsRouterPluginModule.forRoot(),
     NgxsDispatchPluginModule.forRoot()

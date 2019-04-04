@@ -1,0 +1,27 @@
+<div class="ccf-leftbar wrapper">
+  <div class="container">
+    <div class="leftbar">
+      <div [class.search-expanded]="sidenavExpanded" class="search">
+        <ccf-search-icon (click)="emitToggleEvent()" ></ccf-search-icon>
+      </div>
+      <mat-list class="breadcrumb">
+        <mat-list-item class="item" routerLink="/" routerLinkActive="active">
+          <ccf-home-icon class="icon"></ccf-home-icon>
+          <div class="label"> HOME </div>
+        </mat-list-item>
+        <mat-list-item class="item" routerLink="/body" routerLinkActive="active">
+          <ccf-body-icon class="icon"></ccf-body-icon>
+          <div class="label"> BODY </div>
+        </mat-list-item>
+        <mat-list-item class="item" routerLink="/tissues" routerLinkActive="active">
+          <ccf-tissue-icon class="icon"></ccf-tissue-icon>
+          <div class="label"> TISSUE </div>
+        </mat-list-item>
+      </mat-list>
+      <div class="feedback-icon" routerLink="/tissue/1" routerLinkActive="active">
+        <ccf-feedback-icon></ccf-feedback-icon>
+        <div class="label"> Comment </div>
+      </div>
+    </div>
+  </div>
+</div>

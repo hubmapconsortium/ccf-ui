@@ -1,0 +1,45 @@
+.ccf-leftbar.wrapper {
+    .container {
+        .leftbar {
+            height: calc(100vh - 3.1875rem);
+            width: 4.25rem;
+            background: #fafafa;
+            border: 0.0625rem solid #e0e0e0;
+            border-top: none;
+            border-left: none;
+            display: flex;
+            flex-direction: column;
+            .breadcrumb {
+                 margin-top: 1rem;
+                .item {
+                    margin-bottom: 1rem;
+                    cursor: pointer;
+                    ::ng-deep .mat-list-item-content {
+                        display: block;
+                    }
+                    .icon {
+                        margin: auto;
+                    }
+                    .label {
+                        font-size: 0.625rem;
+                        text-align: center;
+                    }
+                }
+            }
+            .search {
+                padding: 0.5rem 0 0.5rem 0;
+                cursor: pointer;
+            }
+            .search-expanded {
+                background: #20558a;
+            }
+            .feedback-icon {
+                margin-top: 62vh;
+                .label {
+                    font-size: 0.625rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
