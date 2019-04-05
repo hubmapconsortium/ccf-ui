@@ -8,6 +8,9 @@
                 height: 100%;
                 width: 99%;
                 margin: auto;
+                .details{
+                    border: 1px solid red;
+                }
                 .body {
                     width: 28rem;
                     height: 94%;
@@ -31,11 +34,11 @@
                         width: 6rem;
                         position: relative;
                         top: 12rem;
-                        left: 11rem;
+                        left: 12rem;
 
                         .kidney-icon {
-                            width: 2rem;
-                            height: 3rem;
+                            width: 4rem;
+                            height: 4rem;
                         }
                     }
                 }
