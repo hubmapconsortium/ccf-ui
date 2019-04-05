@@ -26,6 +26,11 @@ export class OntologyState implements NgxsOnInit {
     return loValues(state.nodes);
   }
 
+  /**
+   * Ngxs' OnInit hook.
+   *
+   * @param ctx The state context.
+   */
   ngxsOnInit(ctx: StateContext<OntologyStateModel>) {
     // TODO load ontology
   }
