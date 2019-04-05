@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { AboutModalService } from '../../shared/services/about-modal.service';
 import { AboutComponent } from './about.component';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { AboutComponent } from './about.component';
   declarations: [
     AboutComponent
   ],
-  exports: [ AboutComponent ],
-  providers: [ AboutModalService ]
+  exports: [ AboutComponent ]
 })
 export class AboutModule { }

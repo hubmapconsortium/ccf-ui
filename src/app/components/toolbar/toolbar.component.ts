@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AboutModalService } from '../../shared/services/about-modal.service';
+import { MatDialog } from '@angular/material';
+
+import { AboutComponent } from '../../components/about/about.component';
 
 @Component({
   selector: 'ccf-toolbar',
@@ -8,9 +10,14 @@ import { AboutModalService } from '../../shared/services/about-modal.service';
 })
 export class ToolbarComponent {
 
-  constructor(private readonly aboutModalService: AboutModalService) { }
+  constructor(private readonly aboutModal: MatDialog) { }
 
-  openAboutModal() {
-    this.aboutModalService.openAbout();
+   /**
+   * Opens About modal.
+   */
+  openAboutModal(): void {
+    this.aboutModal.open(AboutComponent, {
+      width: '50rem'
+    });
   }
 }

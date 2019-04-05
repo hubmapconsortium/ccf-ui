@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AboutModalService } from 'src/app/shared/services/about-modal.service';
+import { MatDialog } from '@angular/material';
 
 /**
  * Component for about modal, that gives brief description of the application.
@@ -15,12 +15,12 @@ export class AboutComponent {
    * Creates an instance of about component.
    * @param aboutModalService Modal service responsible for opening and closing of the modal.
    */
-  constructor(private readonly aboutModalService: AboutModalService) { }
+  constructor(private readonly aboutModal: MatDialog) { }
 
   /**
-   * Closes about modal
+   * Closes About modal.
    */
-  close() {
-    this.aboutModalService.closeAbout();
+  close(): void {
+    this.aboutModal.closeAll();
   }
 }

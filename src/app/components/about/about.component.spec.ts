@@ -1,21 +1,20 @@
 import { Provider } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogModule, MatIconModule } from '@angular/material';
-import { AboutModalService } from 'src/app/shared/services/about-modal.service';
+import { MatDialog, MatDialogModule, MatIconModule } from '@angular/material';
 
 import { AboutComponent } from './about.component';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
-  let aboutModalService: AboutModalService;
-  const mockedAboutModalService = {
-    closeAbout: (): void => undefined
+  let matDialog: MatDialog;
+  const mockMatDialog = {
+    closeAll: (): void => undefined
   };
 
   beforeEach(async(() => {
     const mockProviders: Provider[] = [
-      { provide: AboutModalService, useValue: mockedAboutModalService }
+      { provide: MatDialog, useValue: mockMatDialog }
     ];
     TestBed.configureTestingModule({
       declarations: [ AboutComponent ],
@@ -27,8 +26,8 @@ describe('AboutComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AboutComponent);
-    aboutModalService  = TestBed.get(AboutModalService);
     component = fixture.componentInstance;
+    matDialog = TestBed.get(MatDialog);
     fixture.detectChanges();
   });
 
@@ -37,8 +36,8 @@ describe('AboutComponent', () => {
   });
 
   it('should close the modal', () => {
-    spyOn(aboutModalService, 'closeAbout');
+    const closeAllSpy = spyOn(matDialog, 'closeAll');
     component.close();
-    expect(aboutModalService.closeAbout).toHaveBeenCalled();
+    expect(closeAllSpy).toHaveBeenCalled();
   });
 });

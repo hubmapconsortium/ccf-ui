@@ -1,5 +1,7 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
 import { MainModule } from './views/main/main.module';
 
@@ -8,7 +10,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        MainModule
+        MainModule,
+        MatDialogModule
       ],
       declarations: [
         AppComponent
