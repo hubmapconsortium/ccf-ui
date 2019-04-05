@@ -1,6 +1,12 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~material-design-icons/iconfont/material-icons.css';
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
 // The following values can be easily overridden for the popover (current values are the defaults)
 // $popover-bg: #757575;
 // $popover-inner-padding: 1.2rem;

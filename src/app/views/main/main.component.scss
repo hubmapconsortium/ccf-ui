@@ -1,0 +1,27 @@
+.ccf-main.wrapper {
+    .container {
+        .ccf-leftbar {
+            position: fixed;
+            z-index: 2;
+        }
+        .drawer-wrapper {
+            display: flex;
+            height: calc(100vh - 3.1875rem);
+            margin-left: 4.25rem;
+            .drawer-container {
+                width: 100%;
+                background: none;
+                .drawer {
+                    width: 20vw;
+                    .sidemav {
+                        height: 100%;
+                    }
+                }
+                .dataview {
+                    height: calc(100vh - 3.1875rem);
+                    width: 100vw;
+                }
+            }
+        }
+    }
+}
