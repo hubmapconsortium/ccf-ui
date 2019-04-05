@@ -7,7 +7,7 @@ import { AboutIconComponent } from './icons/about-icon/about-icon.component';
 import { LogoComponent } from './icons/logo/logo.component';
 import { ToolbarComponent } from './toolbar.component';
 
-fdescribe('ToolbarComponent', () => {
+describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
   let fixture: ComponentFixture<ToolbarComponent>;
 
