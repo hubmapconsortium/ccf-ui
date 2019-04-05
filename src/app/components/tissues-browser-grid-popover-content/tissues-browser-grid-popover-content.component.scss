@@ -1,0 +1,14 @@
+.tissues-browser-grid-popover-content.wrapper {
+  .container {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

@@ -6,7 +6,7 @@ import { AboutModalService } from 'src/app/shared/services/about-modal.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent { }
   constructor(private readonly aboutModalService: AboutModalService) { }
 
   openAbout(): void {
@@ -16,4 +16,3 @@ export class MainComponent {
   closeAbout(): void {
     this.aboutModalService.closeAbout();
   }
-}
