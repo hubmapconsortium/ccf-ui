@@ -11,8 +11,6 @@ import { OntologyNode } from '../../state/ontology/ontology.model';
   providedIn: 'root'
 })
 export class NavigationService {
-  constructor() { }
-
   /**
    * Navigates the tissue page with the specified tissue displayed.
    *

@@ -13,6 +13,9 @@ export class TissuesBrowserDataService {
    */
   readonly data: Observable<OntologyNode[]>;
 
+  /**
+   * Creates an instance of tissues browser data service.
+   */
   constructor() {
     // FIXME: Get real data
     const subject = new ReplaySubject<OntologyNode[]>(1);
