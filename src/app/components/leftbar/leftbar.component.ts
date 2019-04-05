@@ -15,6 +15,7 @@ export class LeftbarComponent {
   constructor() {
     this.drawerToggle = this._drawerToggleEventEmitter.asObservable();
   }
+
   emitToggleEvent() {
     this.sidenavExpanded = !this.sidenavExpanded;
     this._drawerToggleEventEmitter.next(this.sidenavExpanded);

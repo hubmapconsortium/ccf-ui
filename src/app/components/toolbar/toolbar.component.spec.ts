@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockComponents } from 'ng-mocks';
 
+import { AboutIconComponent } from './icons/about-icon/about-icon.component';
+import { LogoComponent } from './icons/logo/logo.component';
 import { ToolbarComponent } from './toolbar.component';
 
 describe('ToolbarComponent', () => {
@@ -8,9 +11,9 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarComponent ]
+      declarations: [ToolbarComponent, MockComponents(LogoComponent, AboutIconComponent)]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +22,7 @@ describe('ToolbarComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
