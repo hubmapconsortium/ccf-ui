@@ -1,14 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NgxsModule, Store, Actions, ofActionDispatched } from '@ngxs/store';
-import { map as loMap } from 'lodash';
+import { Actions, NgxsModule, ofActionDispatched, Store } from '@ngxs/store';
 import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
 
-import { RegisterIcon, RegistrationSuccess, RegistrationError } from './icon-registry.action';
-import { IconDefinition } from './icon-registry.model';
+import { RegisterIcon, RegistrationError, RegistrationSuccess } from './icon-registry.action';
 import { IconRegistryState } from './icon-registry.state';
-import { Observable } from 'rxjs';
 
 describe('State', () => {
 describe('IconRegistry', () => {
@@ -24,10 +21,40 @@ describe('IconRegistry', () => {
     addSvgIconSetInNamespace: noop,
     addSvgIconSetLiteralInNamespace: noop
   };
-  const mockedSanitizer = {};
+  const mockedSanitizer = {
+    bypassSecurityTrustResourceUrl: noop,
+    bypassSecurityTrustHtml: noop
+  };
 
   let store: Store;
   let actions: Actions;
+
+  function describeDispatch(description: string, type: any, action: (() => void) | any): void {
+    describe(type.name, () => {
+      let event: Promise<any>;
+
+      beforeEach(() => {
+        event = actions.pipe(
+          ofActionDispatched(type),
+          rxTake(1),
+          rxTimeout(1000)
+        ).toPromise();
+      });
+
+      beforeEach(() => {
+        if (typeof action === 'function') {
+          action();
+        } else {
+          store.dispatch(action);
+        }
+      });
+
+      it(description, async () => {
+        await event;
+        expect(true).toBeTruthy();
+      });
+    });
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -77,47 +104,14 @@ describe('IconRegistry', () => {
       describeMethod('addSvgIconSetLiteralInNamespace', 'namespace', 'html');
     });
 
-    describe('RegistrationSuccess', () => {
-      let event: Promise<any>;
-
-      beforeEach(() => {
-        event = actions.pipe(
-          ofActionDispatched(RegistrationSuccess),
-          rxTake(1),
-          rxTimeout(1000)
-        ).toPromise();
-      });
-
-      beforeEach(() => {
-        store.dispatch(new RegisterIcon({ url: 'abc' }));
-      });
-
-      it('is dispatched on successful icon registration', async () => {
-        await event;
-        expect(true).toBeTruthy();
-      });
-    });
-
-    describe('RegistrationError', () => {
-      let event: Promise<any>;
-
-      beforeEach(() => {
-        event = actions.pipe(
-          ofActionDispatched(RegistrationError),
-          rxTake(1),
-          rxTimeout(1000)
-        ).toPromise();
-      });
-
-      beforeEach(() => {
-        store.dispatch(new RegisterIcon({ }));
-      });
-
-      it('is dispatched on failed icon registration', async () => {
-        await event;
-        expect(true).toBeTruthy();
-      });
-    });
+    describeDispatch(
+      'is dispatched on successful icon registration',
+      RegistrationSuccess, new RegisterIcon({ url: 'abc'})
+    );
+    describeDispatch(
+      'is dispatched on failed icon registration',
+      RegistrationError, new RegisterIcon({ })
+    );
   });
 });
 });
