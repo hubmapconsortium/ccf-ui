@@ -1,7 +1,7 @@
 .tissues-browser-grid.wrapper {
   .container {
-    .popover-container ::ng-deep .popover {
-      margin: 0 0 0 0;
+    .popover-container ::ng-deep .bs-popover-right {
+      margin-left: 0;
     }
 
     .grid {
