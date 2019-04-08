@@ -1,25 +1,76 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { MockModule, MockRender } from 'ng-mocks';
+import { Subject, Observable } from 'rxjs';
+import { TestScheduler } from 'rxjs/testing';
 
+import { TissuesBrowserGridModule } from '../../components/tissues-browser-grid/tissues-browser-grid.module';
+import { TissuesBrowserDataService } from '../../shared/services/tissues-browser-data/tissues-browser-data.service';
 import { TissuesBrowserComponent } from './tissues-browser.component';
 
 describe('TissuesBrowserComponent', () => {
   let component: TissuesBrowserComponent;
-  let fixture: ComponentFixture<TissuesBrowserComponent>;
+  let element: DebugElement;
+  let fixture: ComponentFixture<any>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ TissuesBrowserComponent ]
-    })
-    .compileComponents();
-  }));
+      imports: [MockModule(TissuesBrowserGridModule)],
+      declarations: [TissuesBrowserComponent],
+      providers: [
+        { provide: TissuesBrowserDataService, useValue: { data: new Subject() } }
+      ]
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TissuesBrowserComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await TestBed.compileComponents();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => {
+    fixture = MockRender(`
+      <ccf-tissues-browser>
+      </ccf-tissues-browser>
+    `);
+
+    element = fixture.debugElement.query(By.directive(TissuesBrowserComponent));
+    component = element.componentInstance;
+  });
+
+  describe('component', () => {
+    it('exists', () => {
+      expect(component).toBeTruthy();
+    });
+
+    describe('data', () => {
+      let collectedData: any[];
+      let subject: Subject<any>;
+
+      beforeEach(() => {
+        const service = TestBed.get(TissuesBrowserDataService) as TissuesBrowserDataService;
+        subject = service.data as Subject<any>;
+
+        collectedData = [];
+        component.data.subscribe(data => collectedData.push(data));
+      });
+
+      it('is fetched from the data service', () => {
+        subject.next('abc');
+        expect(collectedData[0]).toEqual('abc');
+      });
+    });
+  });
+
+  describe('dom', () => {
+    describe('grid', () => {
+      let grid: DebugElement;
+
+      beforeEach(() => {
+        grid = element.query(By.css('.grid'));
+      });
+
+      it('exists', () => {
+        expect(grid).toBeTruthy();
+      });
+    });
   });
 });

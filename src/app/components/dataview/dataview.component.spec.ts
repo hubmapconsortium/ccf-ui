@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { MockComponent } from 'ng-mocks';
 
 import { DataviewComponent } from './dataview.component';
 
@@ -9,10 +10,9 @@ describe('DataviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DataviewComponent ],
-      imports: [RouterModule]
+      declarations: [DataviewComponent, MockComponent(RouterOutlet)]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('DataviewComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
