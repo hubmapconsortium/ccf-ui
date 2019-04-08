@@ -17,7 +17,5 @@ export const defaultIcons: DefaultIconDefinition[] = [
   { name: 'male-female', namespace: 'gender', url: '/assets/icons/gender/male-female.svg' },
   { name: 'unknown', namespace: 'gender', url: '/assets/icons/gender/male-female.svg' },
 
-  { name: 'search', namespace: 'toolbar', url: '/assets/icons/toolbar/search.svg' }
-
   // Add additional icons that should be loaded on startup here!
 ];
