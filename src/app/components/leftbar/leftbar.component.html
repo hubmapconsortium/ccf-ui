@@ -1,10 +1,10 @@
 <div class="ccf-leftbar wrapper">
   <div class="container">
-    <div class="item search" [class.expanded]="sidenavExpanded" (click)="emitToggleEvent()">
+    <div class="item search" [class.active]="sidenavExpanded" (click)="emitToggleEvent()">
       <mat-icon class="icon font-icon">search</mat-icon>
     </div>
 
-    <div class="item home" routerLink="/" routerLinkActive="active">
+    <div class="item home" routerLink="/home" routerLinkActive="active">
       <mat-icon class="icon font-icon">home</mat-icon>
       <div class="label"> HOME </div>
     </div>
@@ -22,8 +22,13 @@
     <!-- Element used to push all elements after itself to the end of the container -->
     <div class="filler"></div>
 
-    <div class="item feedback-icon" routerLink="/tissue/1" routerLinkActive="active">
-      <mat-icon class="icon svg-icon">comment</mat-icon>
+    <div class="item feedback-icon" (mouseover)="isCommentItemHovered = true" (mouseout)="isCommentItemHovered = false">
+      <mat-icon *ngIf="!isCommentItemHovered; else hoveredIcon" class="icon svg-icon" svgIcon="toolbar:comment-outline">
+        comment
+      </mat-icon>
+      <ng-template #hoveredIcon>
+        <mat-icon class="icon font-icon">comment</mat-icon>
+      </ng-template>
       <div class="label"> Comment </div>
     </div>
   </div>

@@ -32,6 +32,10 @@ $icon-size: $width - $icon-padding-left - $icon-padding-right;
         font-size: 0.625rem;
         text-align: center;
       }
+
+      &.active {
+        color: #000000;
+      }
     }
 
     .search {
@@ -39,7 +43,7 @@ $icon-size: $width - $icon-padding-left - $icon-padding-right;
       padding-bottom: 1rem;
       margin-bottom: 0;
 
-      &.expanded {
+      &.active {
         background: #20558a;
 
         .icon {
