@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 
+import { AboutComponent } from '../about/about.component';
+import { AboutModule } from '../about/about.module';
 import { ToolbarComponent } from './toolbar.component';
 
 @NgModule({
@@ -10,10 +13,15 @@ import { ToolbarComponent } from './toolbar.component';
   ],
   imports: [
     CommonModule,
-    MatIconModule
+    MatDialogModule,
+    MatIconModule,
+    AboutModule
   ],
   exports: [
     ToolbarComponent
+  ],
+  entryComponents: [
+    AboutComponent
   ]
 })
 export class ToolbarModule { }
