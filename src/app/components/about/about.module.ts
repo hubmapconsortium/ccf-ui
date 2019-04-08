@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 import { AboutComponent } from './about.component';
+import { MatDialogModule } from '@angular/material';
 
 
 /**
@@ -11,7 +12,8 @@ import { AboutComponent } from './about.component';
 @NgModule({
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   declarations: [
     AboutComponent
