@@ -2,6 +2,7 @@ import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MockModule } from 'ng-mocks';
 
@@ -9,7 +10,7 @@ import { ToolbarModule } from '../../components/toolbar/toolbar.module';
 import { LeftbarModule } from '../../components/leftbar/leftbar.module';
 import { SidenavModule } from '../../components/sidenav/sidenav.module';
 import { MainComponent } from './main.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 describe('MainComponent', () => {
   let component: MainComponent;
