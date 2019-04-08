@@ -30,3 +30,6 @@ body {
   // For some reason this is missing from the popover-content.component scss!?
   position: absolute;
 }
+* {
+    box-sizing: border-box
+}
