@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import * as openSeaDragon from 'openseadragon';
+import openSeaDragon from 'openseadragon';
 import { Subscription } from 'rxjs';
 
-import { TissueDataService } from '../../shared/tissue-data/tissue-data.service';
+import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 
 /**
  * Component for viewing an individual tissue image
@@ -35,7 +35,7 @@ export class TissueComponent implements OnInit, OnDestroy {
    */
   ngOnInit() {
     this.tissueSourcePathSubscription = this.tissueDataService.getTissueSourcePath()
-      .subscribe(this.launchTissueViewer);
+      .subscribe(path => this.launchTissueViewer(path));
     this.tissueMetadataSubscription = this.tissueDataService.getMetadata()
       .subscribe(metadata => this.tissueMetadata = metadata);
   }

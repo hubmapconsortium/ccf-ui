@@ -39,15 +39,6 @@ export class TissueDataService {
   ];
 
   /**
-   * Observable for tissue source path constructed in this service
-   */
-  tissueSourcePath: Observable<string>;
-  /**
-   * Observable for tissue metadata
-   */
-  tissueMetaData: Observable<string>;
-
-  /**
    * Gets tissue source path
    * @returns Observable of tissue source path
    */
