@@ -1,9 +1,10 @@
 <div class="ccf-leftbar wrapper">
   <div class="container">
     <div class="leftbar">
-      <div [class.search-expanded]="sidenavExpanded" class="search">
-        <ccf-search-icon (click)="emitToggleEvent()" ></ccf-search-icon>
-      </div>
+      <!-- <div [class.search-expanded]="sidenavExpanded" class="search"> -->
+        <!-- <ccf-search-icon (click)="emitToggleEvent()" ></ccf-search-icon> -->
+        <mat-icon class="search" [class.expanded]="sidenavExpanded" svgIcon="toolbar:search" (click)="emitToggleEvent()"></mat-icon>
+      <!-- </div> -->
       <mat-list class="breadcrumb">
         <mat-list-item class="item" routerLink="/" routerLinkActive="active">
           <ccf-home-icon class="icon"></ccf-home-icon>
