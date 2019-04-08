@@ -21,6 +21,9 @@ export class TissueComponent implements OnInit, OnDestroy {
    * Tissue metadata subscription for the observable returned from the data-service with tissue-metadata
    */
   tissueMetadataSubscription: Subscription;
+  /**
+   * Tissue metadata
+   */
   tissueMetadata: string;
 
   /**
