@@ -2,10 +2,10 @@ import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MockRender } from 'ng-mocks';
+import { Subject } from 'rxjs';
 
 import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 import { TissueComponent } from './tissue.component';
-import { Subject } from 'rxjs';
 
 describe('TissueComponent', () => {
   const mockedDataService = {
