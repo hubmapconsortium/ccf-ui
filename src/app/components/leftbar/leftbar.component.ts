@@ -15,7 +15,7 @@ export class LeftbarComponent {
   sidenavExpanded = true;
 
   /**
-   * Indicates whether the item for commenting is currenlty being hovered over.
+   * Indicates whether the comment item is currenlty being hovered over.
    */
   isCommentItemHovered = false;
 

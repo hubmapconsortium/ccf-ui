@@ -23,10 +23,10 @@
     <div class="filler"></div>
 
     <div class="item feedback-icon" (mouseover)="isCommentItemHovered = true" (mouseout)="isCommentItemHovered = false">
-      <mat-icon *ngIf="!isCommentItemHovered; else hoveredIcon" class="icon svg-icon" svgIcon="toolbar:comment-outline">
+      <mat-icon *ngIf="!isCommentItemHovered; else hoveredCommentIcon" class="icon svg-icon" svgIcon="toolbar:comment-outline">
         comment
       </mat-icon>
-      <ng-template #hoveredIcon>
+      <ng-template #hoveredCommentIcon>
         <mat-icon class="icon font-icon">comment</mat-icon>
       </ng-template>
       <div class="label"> Comment </div>
