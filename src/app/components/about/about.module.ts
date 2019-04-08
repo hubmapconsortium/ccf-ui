@@ -4,6 +4,10 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AboutComponent } from './about.component';
 
+
+/**
+ * Module for the about modal.
+ */
 @NgModule({
   imports: [
     CommonModule,

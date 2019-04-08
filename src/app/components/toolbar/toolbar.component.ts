@@ -9,7 +9,10 @@ import { AboutComponent } from '../../components/about/about.component';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
-
+  /**
+   * Creates an instance of toolbar component.
+   * @param aboutModal Angular MatDialog reference.
+   */
   constructor(private readonly aboutModal: MatDialog) { }
 
    /**
