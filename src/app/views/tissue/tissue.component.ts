@@ -17,6 +17,11 @@ export class TissueComponent implements OnInit, OnDestroy {
    * Tissue source path subscription for the observable returned from the data-service with tissue-source-path
    */
   tissueSourcePathSubscription: Subscription;
+  /**
+   * Tissue metadata subscription for the observable returned from the data-service with tissue-metadata
+   */
+  tissueMetadataSubscription: Subscription;
+  tissueMetadata: string;
 
   /**
    * Creates an instance of tissue component.
@@ -29,7 +34,10 @@ export class TissueComponent implements OnInit, OnDestroy {
    * observable with tissue source path from the data service
    */
   ngOnInit() {
-    this.tissueSourcePathSubscription = this.tissueDataService.tissueSourcePath.subscribe(this.launchTissueViewer);
+    this.tissueSourcePathSubscription = this.tissueDataService.getTissueSourcePath()
+      .subscribe(this.launchTissueViewer);
+    this.tissueMetadataSubscription = this.tissueDataService.getMetadata()
+      .subscribe(metadata => this.tissueMetadata = metadata);
   }
 
   /**
@@ -38,15 +46,18 @@ export class TissueComponent implements OnInit, OnDestroy {
    */
   launchTissueViewer(tissueSourcePath: string) {
     const viewer = openSeaDragon({
-      id: 'tissue-viewer',
+      id: 'tissue-view',
       prefixUrl: 'https://cdn.jsdelivr.net/npm/openseadragon@2.4/build/openseadragon/images/',
       tileSources: tissueSourcePath,
       showNavigator: true,
       navigatorPosition: 'ABSOLUTE',
-      navigatorTop: '40px',
-      navigatorLeft: '4px',
-      navigatorHeight: '60px',
-      navigatorWidth: '70px',
+      navigatorTop: '2.5rem',
+      navigatorLeft: '0.25rem',
+      navigatorHeight: '3.5rem',
+      navigatorWidth: '4.5rem',
+      defaultZoomLevel: 3,
+      minZoomLevel: 1,
+      visibilityRatio: 1,
     });
   }
 
@@ -55,5 +66,6 @@ export class TissueComponent implements OnInit, OnDestroy {
    */
   ngOnDestroy() {
     this.tissueSourcePathSubscription.unsubscribe();
+    this.tissueMetadataSubscription.unsubscribe();
   }
 }

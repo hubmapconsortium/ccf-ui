@@ -42,13 +42,29 @@ export class TissueDataService {
    * Observable for tissue source path constructed in this service
    */
   tissueSourcePath: Observable<string>;
+  /**
+   * Observable for tissue metadata
+   */
+  tissueMetaData: Observable<string>;
 
   /**
-   * Creates an instance of tissue data service.
+   * Gets tissue source path
+   * @returns Observable of tissue source path
    */
-  constructor() {
-    this.tissueSourcePath = this.routeState.pipe(rxMap(state => {
+  getTissueSourcePath(): Observable<string> {
+    return this.routeState.pipe(rxMap(state => {
       return state && this.pathToImages + this.imageSources[+state.root.firstChild.params.tissueId - 1];
+    }));
+  }
+
+  /**
+   * TODO - based on the data format, the logic needs to be updated
+   * Gets the metadata for the queried tissue-id
+   * @returns Observable for metadata for the tissue
+   */
+  getMetadata(): Observable<string> {
+    return this.routeState.pipe(rxMap(state => {
+      return state && 'tissue' + state.root.firstChild.params.tissueId + 'sample data!';
     }));
   }
 }
