@@ -22,7 +22,7 @@
     <!-- Element used to push all elements after itself to the end of the container -->
     <div class="filler"></div>
 
-    <div class="item feedback-icon" (mouseover)="isCommentItemHovered = true" (mouseout)="isCommentItemHovered = false">
+    <div class="item feedback" (mouseover)="isCommentItemHovered = true" (mouseout)="isCommentItemHovered = false">
       <mat-icon *ngIf="!isCommentItemHovered; else hoveredCommentIcon" class="icon svg-icon" svgIcon="toolbar:comment-outline">
         comment
       </mat-icon>

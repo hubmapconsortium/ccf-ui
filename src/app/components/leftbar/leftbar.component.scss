@@ -22,6 +22,10 @@ $icon-size: $width - $icon-padding-left - $icon-padding-right;
       padding-right: $icon-padding-right;
     }
 
+    .svg-icon {
+      box-sizing: content-box;
+    }
+
     .item {
       margin-bottom: 1rem;
       color: #757575;
@@ -56,7 +60,7 @@ $icon-size: $width - $icon-padding-left - $icon-padding-right;
       margin-top: 1rem;
     }
 
-    .feedback-icon {
+    .feedback {
       margin-bottom: 1rem;
     }
 

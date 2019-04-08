@@ -1,29 +1,23 @@
 import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { By } from '@angular/platform-browser';
-import { MockComponents } from 'ng-mocks';
+import { MockModule } from 'ng-mocks';
 
-import { BodyIconComponent } from './icons/body-icon/body-icon.component';
-import { FeedbackIconComponent } from './icons/feedback-icon/feedback-icon.component';
-import { HomeIconComponent } from './icons/home-icon/home-icon.component';
-import { SearchIconComponent } from './icons/search-icon/search-icon.component';
-import { TissueIconComponent } from './icons/tissue-icon/tissue-icon.component';
 import { LeftbarComponent } from './leftbar.component';
 
 describe('LeftbarComponent', () => {
   let component: LeftbarComponent;
   let fixture: ComponentFixture<LeftbarComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ LeftbarComponent,
-        MockComponents(SearchIconComponent, HomeIconComponent, BodyIconComponent, TissueIconComponent, FeedbackIconComponent) ],
-        imports: [MatIconModule, MatListModule]
-    })
-    .compileComponents();
-  }));
+      imports: [MockModule(MatIconModule)],
+      declarations: [LeftbarComponent]
+    });
+
+    await TestBed.compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LeftbarComponent);
@@ -35,40 +29,34 @@ describe('LeftbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create breadcrumb', () => {
-    const breadcrumb: DebugElement = fixture.debugElement.query(By.css('.breadcrumb'));
-    expect(breadcrumb).not.toBeNull();
-  });
-
   it('should create search icon', () => {
-    const searchIcon: DebugElement = fixture.debugElement.query(By.css('ccf-search-icon'));
+    const searchIcon: DebugElement = fixture.debugElement.query(By.css('.search'));
     expect(searchIcon).not.toBeNull();
   });
 
   it('should create home icon', () => {
-    const homeIcon: DebugElement = fixture.debugElement.query(By.css('ccf-home-icon'));
+    const homeIcon: DebugElement = fixture.debugElement.query(By.css('.home'));
     expect(homeIcon).not.toBeNull();
   });
 
   it('should create body icon', () => {
-    const bodyIcon: DebugElement = fixture.debugElement.query(By.css('ccf-body-icon'));
+    const bodyIcon: DebugElement = fixture.debugElement.query(By.css('.body'));
     expect(bodyIcon).not.toBeNull();
   });
 
-  it('should create tissue icon', () => {
-    const tissueIcon: DebugElement = fixture.debugElement.query(By.css('ccf-tissue-icon'));
+  it('should create tissues browser icon', () => {
+    const tissueIcon: DebugElement = fixture.debugElement.query(By.css('.tissues-browser'));
     expect(tissueIcon).not.toBeNull();
   });
 
   it('should create feedback icon', () => {
-    const feedbackIcon: DebugElement = fixture.debugElement.query(By.css('ccf-feedback-icon'));
+    const feedbackIcon: DebugElement = fixture.debugElement.query(By.css('.feedback'));
     expect(feedbackIcon).not.toBeNull();
   });
 
   it('should toggle sidenavExpanded variable on clicking search icon', () => {
-    const search: DebugElement = fixture.debugElement.query(By.css('ccf-search-icon'));
-    search.nativeElement.dispatchEvent(new Event('click'));
+    const search: DebugElement = fixture.debugElement.query(By.css('.search'));
+    search.triggerEventHandler('click', { });
     expect(component.sidenavExpanded).toBeFalsy();
   });
-
 });
