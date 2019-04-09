@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Output, Input } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 import { NavigationService } from '../../shared/services/navigation/navigation.service';
 
@@ -10,30 +10,40 @@ import { NavigationService } from '../../shared/services/navigation/navigation.s
 })
 export class LeftbarComponent {
   /**
-   * Output sends an drawer toggle event as an observable to main.component.ts
+   * Indicates whether the search icon is considered active or not.
    */
-  @Output() drawerToggle: Observable<boolean>;
+  @Input() searchActive = false;
 
-  sidenavExpanded = true;
+  /**
+   * Emits whenever the search icon is activated/deactivated.
+   */
+  @Output() searchActiveChange: Observable<boolean>;
 
   /**
    * Indicates whether the comment item is currenlty being hovered over.
    */
   isCommentItemHovered = false;
 
-  private readonly _drawerToggleEventEmitter = new EventEmitter<boolean>();
-
-  constructor(readonly navigator: NavigationService) {
-    this.drawerToggle = this._drawerToggleEventEmitter.asObservable();
-  }
-
+  /**
+   * Internal subject for `searchActive`.
+   */
+  private readonly searchActiveSubject = new Subject<boolean>();
 
   /**
-   * Emits toggle event
-   * clicking on this will change the event emitter of the observable and also sidenavExpanded state
+   * Creates an instance of leftbar component.
+   *
+   * @param navigator The service used to get correct url paths.
    */
-  emitToggleEvent(): void {
-    this.sidenavExpanded = !this.sidenavExpanded;
-    this._drawerToggleEventEmitter.next(this.sidenavExpanded);
+  constructor(readonly navigator: NavigationService) {
+    this.searchActiveChange = this.searchActiveSubject.asObservable();
+  }
+
+  /**
+   * Toggles the state of the search.
+   * Also emits the new state to `searchActive`.
+   */
+  toggleSearchActive(): void {
+    this.searchActive = !this.searchActive;
+    this.searchActiveSubject.next(this.searchActive);
   }
 }

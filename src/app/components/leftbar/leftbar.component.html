@@ -1,6 +1,6 @@
 <div class="ccf-leftbar wrapper">
   <div class="container">
-    <div class="item search" [class.active]="sidenavExpanded" (click)="emitToggleEvent()">
+    <div class="item search" [class.active]="searchActive" (click)="toggleSearchActive()">
       <mat-icon class="icon font-icon">search</mat-icon>
     </div>
 
@@ -26,7 +26,7 @@
       <div class="label"> TISSUE </div>
     </div>
 
-    <div *ngIf="navigator.tissuePath | async as tissuePath" class="item organ" [routerLink]="tissuePath"
+    <div *ngIf="navigator.tissuePath | async as tissuePath" class="item tissue" [routerLink]="tissuePath"
          routerLinkActive="active">
       <!-- FIXME: Correct the icon -->
       <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
