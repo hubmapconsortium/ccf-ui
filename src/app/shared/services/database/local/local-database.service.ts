@@ -28,6 +28,9 @@ export class LocalDatabaseService {
   /** cached local database observable */
   private _database$: Observable<LocalDatabase>;
 
+  /**
+   * Creates an instance of the local database service.
+   */
   constructor(private http: HttpClient) {}
 
   /**
