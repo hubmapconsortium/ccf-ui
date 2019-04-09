@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import openSeaDragon from 'openseadragon';
 import { Subscription } from 'rxjs';
 
@@ -16,15 +16,23 @@ export class TissueComponent implements OnInit, OnDestroy {
   /**
    * Tissue source path subscription for the observable returned from the data-service with tissue-source-path
    */
-  tissueSourcePathSubscription: Subscription;
+  private tissueSourcePathSubscription: Subscription;
   /**
    * Tissue metadata subscription for the observable returned from the data-service with tissue-metadata
    */
-  tissueMetadataSubscription: Subscription;
+  private tissueMetadataSubscription: Subscription;
+  /**
+   * openseadragon viewer reference
+   */
+  private viewer: any;
   /**
    * Tissue metadata
    */
   tissueMetadata: string;
+  /**
+   * Reference to 'tissueView' element view-child
+   */
+  @ViewChild('tissueView') tissueView: ElementRef;
 
   /**
    * Creates an instance of tissue component.
@@ -44,12 +52,16 @@ export class TissueComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Launchs tissue viewer
+   * Launches tissue viewer
    * @param tissueSourcePath tissue-source-path string returned from the data service
    */
   launchTissueViewer(tissueSourcePath: string) {
-    const viewer = openSeaDragon({
-      id: 'tissue-view',
+    if (this.viewer) {
+      this.viewer.destroy();
+    }
+
+    this.viewer = openSeaDragon({
+      element: this.tissueView.nativeElement,
       prefixUrl: 'https://cdn.jsdelivr.net/npm/openseadragon@2.4/build/openseadragon/images/',
       tileSources: tissueSourcePath,
       showNavigator: true,
