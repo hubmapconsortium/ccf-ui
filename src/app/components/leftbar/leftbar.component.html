@@ -4,26 +4,41 @@
       <mat-icon class="icon font-icon">search</mat-icon>
     </div>
 
-    <div class="item home" routerLink="/home" routerLinkActive="active">
+    <div class="item home" [routerLink]="navigator.homePath | async" routerLinkActive="active">
       <mat-icon class="icon font-icon">home</mat-icon>
       <div class="label"> HOME </div>
     </div>
 
-    <div class="item body" routerLink="/body" routerLinkActive="active">
+    <div class="item body" [routerLink]="navigator.bodyPath | async" routerLinkActive="active">
       <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
       <div class="label"> BODY </div>
     </div>
 
-    <div class="item tissues-browser" routerLink="/tissues" routerLinkActive="active">
+    <div *ngIf="navigator.organPath | async as organPath" class="item organ" [routerLink]="organPath"
+         routerLinkActive="active">
+      <!-- FIXME: Correct the icon -->
+      <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
+      <div class="label"> ORGAN </div>
+    </div>
+
+    <div class="item tissues-browser" [routerLink]="navigator.tissuesBrowserPath | async" routerLinkActive="active">
       <mat-icon class="icon font-icon">view_comfy</mat-icon>
       <div class="label"> TISSUE </div>
+    </div>
+
+    <div *ngIf="navigator.tissuePath | async as tissuePath" class="item organ" [routerLink]="tissuePath"
+         routerLinkActive="active">
+      <!-- FIXME: Correct the icon -->
+      <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
+      <div class="label"> CELL </div>
     </div>
 
     <!-- Element used to push all elements after itself to the end of the container -->
     <div class="filler"></div>
 
     <div class="item feedback" (mouseover)="isCommentItemHovered = true" (mouseout)="isCommentItemHovered = false">
-      <mat-icon *ngIf="!isCommentItemHovered; else hoveredCommentIcon" class="icon svg-icon" svgIcon="toolbar:comment-outline">
+      <mat-icon *ngIf="!isCommentItemHovered; else hoveredCommentIcon" class="icon svg-icon"
+                svgIcon="toolbar:comment-outline">
         comment
       </mat-icon>
       <ng-template #hoveredCommentIcon>

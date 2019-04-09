@@ -2,18 +2,26 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MockModule } from 'ng-mocks';
 
 import { LeftbarComponent } from './leftbar.component';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 
 describe('LeftbarComponent', () => {
+  const mockedNavigationService = {
+  };
+
   let component: LeftbarComponent;
   let fixture: ComponentFixture<LeftbarComponent>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [MockModule(MatIconModule)],
-      declarations: [LeftbarComponent]
+      imports: [RouterTestingModule, MockModule(MatIconModule)],
+      declarations: [LeftbarComponent],
+      providers: [
+        { provide: NavigationService, useValue: mockedNavigationService }
+      ]
     });
 
     await TestBed.compileComponents();

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { NavigationService } from '../../shared/services/navigation/navigation.service';
+
 @Component({
   selector: 'ccf-leftbar',
   templateUrl: './leftbar.component.html',
@@ -21,7 +23,7 @@ export class LeftbarComponent {
 
   private readonly _drawerToggleEventEmitter = new EventEmitter<boolean>();
 
-  constructor() {
+  constructor(readonly navigator: NavigationService) {
     this.drawerToggle = this._drawerToggleEventEmitter.asObservable();
   }
 
