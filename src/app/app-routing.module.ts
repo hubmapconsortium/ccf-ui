@@ -27,6 +27,11 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: '/home'
   },
+  {
+    // This should probably go to a 404 page in the future.
+    path: '**',
+    redirectTo: '/home'
+  }
 ];
 
 @NgModule({
