@@ -11,7 +11,6 @@ import { ToolbarModule } from '../../components/toolbar/toolbar.module';
 import { MainComponent } from './main.component';
 
 @NgModule({
-  declarations: [MainComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -22,6 +21,7 @@ import { MainComponent } from './main.component';
     SidenavModule,
     LeftbarModule
   ],
+  declarations: [MainComponent],
   exports: [MainComponent]
 })
 export class MainModule { }

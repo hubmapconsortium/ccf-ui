@@ -9,8 +9,6 @@ import { BodyComponent } from './body.component';
     CommonModule,
     BodyRoutingModule
   ],
-  declarations: [
-    BodyComponent
-  ]
+  declarations: [BodyComponent]
 })
 export class BodyModule { }
