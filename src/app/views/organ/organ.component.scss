@@ -1,0 +1,15 @@
+.ccf-organ.wrapper {
+    width: 100%;
+    height: 100%;
+    .container {
+        width: 100%;
+        height: 100%;
+        .organ-bg {
+            background-image: url(../../../assets/images/organ-kidney-left.jpg);
+            background-repeat: no-repeat;
+            height: 59rem;
+            width: 47rem;
+            margin: auto;
+        }
+    }
+}
