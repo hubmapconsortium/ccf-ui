@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { safeLoad } from 'js-yaml';
 import { Observable } from 'rxjs';
 import { delay as RxDelay, map as RxMap, pluck as RxPluck, shareReplay as RxShareReplay } from 'rxjs/operators';
+
 import { LocalDatabase, Patient, TissueImage, TissueSlice, TissueSample } from '../../../state/database/database.models';
 import { environment } from '../../../../../environments/environment';
 
@@ -35,9 +36,7 @@ export class LocalDatabaseService {
   private get database$(): Observable<LocalDatabase> {
     if (!this._database$) {
       this._database$ = this.http.get(this.localDatabaseUrl, {responseType: 'text'}).pipe(
-        RxMap<string, LocalDatabase>((results) => {
-          return safeLoad(results);
-        }),
+        RxMap<string, LocalDatabase>(results => safeLoad(results)),
         RxShareReplay(1)
       );
     }
