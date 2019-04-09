@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { OrganGuard } from './shared/guards/organ/organ.guard';
+import { TissueGuard } from './shared/guards/tissue/tissue.guard';
+
 const routes: Routes = [
   {
     path: 'home',
@@ -13,6 +16,7 @@ const routes: Routes = [
   {
     path: 'organ/:organId',
     loadChildren: './views/organ/organ.module#OrganModule',
+    canActivate: [OrganGuard]
   },
   {
     path: 'tissues',
@@ -20,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'tissue/:tissueId',
-    loadChildren: './views/tissue/tissue.module#TissueModule'
+    loadChildren: './views/tissue/tissue.module#TissueModule',
+    canActivate: [TissueGuard]
   },
   {
     path: '',
