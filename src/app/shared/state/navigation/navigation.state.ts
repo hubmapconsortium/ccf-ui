@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 
 import { NavigationStateModel } from './navigation.model';
 
+/**
+ * State storing the active navigations.
+ */
 @State<NavigationStateModel>({
   name: 'navigation',
   defaults: {
@@ -28,6 +31,4 @@ export class NavigationState {
       // Lookup organ id for this tissue
     }
   }
-
-  // TODO
 }
