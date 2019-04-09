@@ -3,11 +3,13 @@
     <ccf-toolbar class="ccf-toolbar"></ccf-toolbar>
     <ccf-leftbar class="ccf-leftbar" (drawerToggle)="drawer.toggle()"></ccf-leftbar>
     <div class="drawer-wrapper">
-      <mat-drawer-container class="drawer-container" autosize>
+      <mat-drawer-container class="container" autosize>
         <mat-drawer #drawer class="drawer" mode="side" [opened]="true">
           <ccf-sidenav class="sidenav"></ccf-sidenav>
         </mat-drawer>
-        <ccf-dataview class="dataview"></ccf-dataview>
+        <div class="view-container" [ngClass]="{'drawer-closed': !drawer.opened}">
+          <router-outlet></router-outlet>
+        </div>
       </mat-drawer-container>
     </div>
   </div>

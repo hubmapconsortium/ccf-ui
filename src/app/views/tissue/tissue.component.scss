@@ -1,0 +1,17 @@
+.tissue {
+  &.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    .item {
+      padding: 0.5rem;
+    }
+
+    .view {
+      width: 76%;
+      height: 75%;
+      margin: 0;
+    }
+  }
+}
