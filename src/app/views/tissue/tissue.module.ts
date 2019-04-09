@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 import { TissueRoutingModule } from './tissue-routing.module';
 import { TissueComponent } from './tissue.component';
 
@@ -11,6 +12,7 @@ import { TissueComponent } from './tissue.component';
   ],
   declarations: [
     TissueComponent
-  ]
+  ],
+  providers: [ TissueDataService ]
 })
 export class TissueModule { }
