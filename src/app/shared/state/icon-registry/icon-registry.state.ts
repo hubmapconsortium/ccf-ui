@@ -2,6 +2,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Action, NgxsOnInit, State, StateContext } from '@ngxs/store';
 import { filter as loFilter, map as loMap } from 'lodash';
+import { Observable } from 'rxjs';
 
 import { defaultIcons } from './default-icons';
 import { RegisterIcon, RegistrationError, RegistrationSuccess } from './icon-registry.action';
@@ -46,14 +47,14 @@ export class IconRegistryState implements NgxsOnInit {
    * @param action The `RegisterIcon` action.
    */
   @Action(RegisterIcon)
-  registerIcon({ dispatch }: StateContext<{}>, { definition }: RegisterIcon): void {
+  registerIcon({ dispatch }: StateContext<{}>, { definition }: RegisterIcon): Observable<void> {
     try {
       const { methodName, args } = getRegistrationMethod(definition);
 
       this.registry[methodName](...args);
-      dispatch(new RegistrationSuccess());
+      return dispatch(new RegistrationSuccess());
     } catch (error) {
-      dispatch(new RegistrationError(error));
+      return dispatch(new RegistrationError(error));
     }
   }
 
