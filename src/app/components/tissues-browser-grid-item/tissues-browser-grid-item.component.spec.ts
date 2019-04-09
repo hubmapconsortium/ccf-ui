@@ -58,7 +58,7 @@ describe('TissuesBrowserGridItemComponent', () => {
       });
 
       it('has a default', () => {
-        fixture.componentInstance.item = { id: 'foo' } as any;
+        component.item = { id: 'foo' } as any;
         expect(component.description).toBeTruthy();
       });
     });
