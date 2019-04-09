@@ -1,10 +1,12 @@
 <div class="ccf-toolbar wrapper">
   <div class="container">
-    <div class="app-logo">
-      <ccf-logo></ccf-logo>
-    </div>
-    <div class="about-icon">
-      <ccf-about-icon (click)=openAboutModal()></ccf-about-icon>
+    <mat-icon class="icon svg-icon logo" svgIcon="app:hubmap-logo"></mat-icon>
+
+    <div class="item about" (mouseover)="isAboutItemHovered = true" (mouseout)="isAboutItemHovered = false" (click)=openAboutModal()>
+      <mat-icon *ngIf="!isAboutItemHovered; else hoveredAboutIcon" class="icon font-icon">info_outline</mat-icon>
+      <ng-template #hoveredAboutIcon>
+        <mat-icon class="icon font-icon">info</mat-icon>
+      </ng-template>
     </div>
   </div>
 </div>

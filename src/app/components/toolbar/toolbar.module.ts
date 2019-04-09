@@ -1,21 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 
-import { AboutIconComponent } from './icons/about-icon/about-icon.component';
-import { LogoComponent } from './icons/logo/logo.component';
-import { ToolbarComponent } from './toolbar.component';
-import { AboutModule } from '../about/about.module';
 import { AboutComponent } from '../about/about.component';
+import { AboutModule } from '../about/about.module';
+import { ToolbarComponent } from './toolbar.component';
 
 @NgModule({
-  declarations: [ToolbarComponent, LogoComponent, AboutIconComponent],
-  imports: [
-    AboutModule,
-    CommonModule,
-    MatDialogModule
+  declarations: [
+    ToolbarComponent
   ],
-  exports: [ToolbarComponent],
-  entryComponents: [ AboutComponent ]
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatIconModule,
+    AboutModule
+  ],
+  exports: [
+    ToolbarComponent
+  ],
+  entryComponents: [
+    AboutComponent
+  ]
 })
 export class ToolbarModule { }

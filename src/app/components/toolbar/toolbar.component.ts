@@ -10,6 +10,11 @@ import { AboutComponent } from '../../components/about/about.component';
 })
 export class ToolbarComponent {
   /**
+   * Indicates whether the about item is currenlty being hovered over.
+   */
+  isAboutItemHovered = false;
+
+  /**
    * Creates an instance of toolbar component.
    * @param aboutModal Angular MatDialog reference.
    */

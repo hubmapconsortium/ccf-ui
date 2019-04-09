@@ -1,27 +1,35 @@
 <div class="ccf-leftbar wrapper">
   <div class="container">
-    <div class="leftbar">
-      <div [class.search-expanded]="sidenavExpanded" class="search">
-        <ccf-search-icon (click)="emitToggleEvent()" ></ccf-search-icon>
-      </div>
-      <mat-list class="breadcrumb">
-        <mat-list-item class="item" routerLink="/" routerLinkActive="active">
-          <ccf-home-icon class="icon"></ccf-home-icon>
-          <div class="label"> HOME </div>
-        </mat-list-item>
-        <mat-list-item class="item" routerLink="/body" routerLinkActive="active">
-          <ccf-body-icon class="icon"></ccf-body-icon>
-          <div class="label"> BODY </div>
-        </mat-list-item>
-        <mat-list-item class="item" routerLink="/tissues" routerLinkActive="active">
-          <ccf-tissue-icon class="icon"></ccf-tissue-icon>
-          <div class="label"> TISSUE </div>
-        </mat-list-item>
-      </mat-list>
-      <div class="feedback-icon" routerLink="/tissue/1" routerLinkActive="active">
-        <ccf-feedback-icon></ccf-feedback-icon>
-        <div class="label"> Comment </div>
-      </div>
+    <div class="item search" [class.active]="sidenavExpanded" (click)="emitToggleEvent()">
+      <mat-icon class="icon font-icon">search</mat-icon>
+    </div>
+
+    <div class="item home" routerLink="/home" routerLinkActive="active">
+      <mat-icon class="icon font-icon">home</mat-icon>
+      <div class="label"> HOME </div>
+    </div>
+
+    <div class="item body" routerLink="/body" routerLinkActive="active">
+      <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
+      <div class="label"> BODY </div>
+    </div>
+
+    <div class="item tissues-browser" routerLink="/tissues" routerLinkActive="active">
+      <mat-icon class="icon font-icon">view_comfy</mat-icon>
+      <div class="label"> TISSUE </div>
+    </div>
+
+    <!-- Element used to push all elements after itself to the end of the container -->
+    <div class="filler"></div>
+
+    <div class="item feedback" (mouseover)="isCommentItemHovered = true" (mouseout)="isCommentItemHovered = false">
+      <mat-icon *ngIf="!isCommentItemHovered; else hoveredCommentIcon" class="icon svg-icon" svgIcon="toolbar:comment-outline">
+        comment
+      </mat-icon>
+      <ng-template #hoveredCommentIcon>
+        <mat-icon class="icon font-icon">comment</mat-icon>
+      </ng-template>
+      <div class="label"> Comment </div>
     </div>
   </div>
 </div>
