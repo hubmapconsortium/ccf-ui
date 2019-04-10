@@ -18,6 +18,8 @@ export const defaultIcons: DefaultIconDefinition[] = [
   { name: 'undefined', namespace: 'gender', url: 'assets/icons/gender/male-female.svg' },
 
   { name: 'body', namespace: 'toolbar', url: 'assets/icons/toolbar/body.svg' },
+  { name: 'organ', namespace: 'toolbar', url: 'assets/icons/toolbar/organ.svg' },
+  { name: 'cell', namespace: 'toolbar', url: 'assets/icons/toolbar/cell.svg' },
   { name: 'comment-outline', namespace: 'toolbar', url: 'assets/icons/toolbar/comment-outline.svg' },
 
   { name: 'hubmap-logo', namespace: 'app', url: 'assets/icons/app/hubmap-logo.svg' }

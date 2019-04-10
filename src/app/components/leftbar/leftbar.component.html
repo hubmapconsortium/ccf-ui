@@ -16,8 +16,7 @@
 
     <div *ngIf="navigator.organPath | async as organPath" class="item organ" [routerLink]="organPath"
          routerLinkActive="active">
-      <!-- FIXME: Correct the icon -->
-      <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
+      <mat-icon class="icon svg-icon" svgIcon="toolbar:organ"></mat-icon>
       <div class="label"> ORGAN </div>
     </div>
 
@@ -28,8 +27,7 @@
 
     <div *ngIf="navigator.tissuePath | async as tissuePath" class="item tissue" [routerLink]="tissuePath"
          routerLinkActive="active">
-      <!-- FIXME: Correct the icon -->
-      <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
+      <mat-icon class="icon svg-icon" svgIcon="toolbar:cell"></mat-icon>
       <div class="label"> CELL </div>
     </div>
 
