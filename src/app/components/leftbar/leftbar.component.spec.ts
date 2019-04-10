@@ -2,61 +2,176 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { By } from '@angular/platform-browser';
-import { MockModule } from 'ng-mocks';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MockModule, MockRender } from 'ng-mocks';
+import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
 
+import { NavigationService } from '../../shared/services/navigation/navigation.service';
 import { LeftbarComponent } from './leftbar.component';
+import { Subject } from 'rxjs';
 
 describe('LeftbarComponent', () => {
+  const mockedNavigationService = {
+    organPath: new Subject(),
+    tissuePath: new Subject()
+  };
+
   let component: LeftbarComponent;
-  let fixture: ComponentFixture<LeftbarComponent>;
+  let element: DebugElement;
+  let fixture: ComponentFixture<{ searchActive: boolean }>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [MockModule(MatIconModule)],
-      declarations: [LeftbarComponent]
+      imports: [RouterTestingModule, MockModule(MatIconModule)],
+      declarations: [LeftbarComponent],
+      providers: [
+        { provide: NavigationService, useValue: mockedNavigationService }
+      ]
     });
 
     await TestBed.compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeftbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture = MockRender(`
+      <ccf-leftbar [(searchActive)]="searchActive">
+      </ccf-leftbar>
+    `, {
+      searchActive: false
+    });
+
+    element = fixture.debugElement.query(By.directive(LeftbarComponent));
+    component = element.componentInstance;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('component', () => {
+    it('creates', () => {
+      expect(component).toBeTruthy();
+    });
+
+    describe('toggleSearchActive()', () => {
+      let event: Promise<boolean>;
+
+      beforeEach(() => {
+        event = component.searchActiveChange.pipe(
+          rxTake(1),
+          rxTimeout(1000)
+        ).toPromise();
+      });
+
+      beforeEach(() => {
+        component.toggleSearchActive();
+      });
+
+      it('toggles the activeSearch value', () => {
+        expect(component.searchActive).toBeTruthy();
+      });
+
+      it('emits values to activeSearchChange', async () => {
+        expect(await event).toBeTruthy();
+      });
+    });
   });
 
-  it('should create search icon', () => {
-    const searchIcon: DebugElement = fixture.debugElement.query(By.css('.search'));
-    expect(searchIcon).not.toBeNull();
-  });
+  describe('dom', () => {
+    function describeItem(cls: string, content?: string): void {
+      if (content === undefined) { content = cls.toUpperCase(); }
+      describe(cls, () => {
+        let item: DebugElement;
 
-  it('should create home icon', () => {
-    const homeIcon: DebugElement = fixture.debugElement.query(By.css('.home'));
-    expect(homeIcon).not.toBeNull();
-  });
+        beforeEach(() => {
+          item = element.query(By.css('.' + cls));
+        });
 
-  it('should create body icon', () => {
-    const bodyIcon: DebugElement = fixture.debugElement.query(By.css('.body'));
-    expect(bodyIcon).not.toBeNull();
-  });
+        it('exists', () => {
+          expect(item).toBeTruthy();
+        });
 
-  it('should create tissues browser icon', () => {
-    const tissueIcon: DebugElement = fixture.debugElement.query(By.css('.tissues-browser'));
-    expect(tissueIcon).not.toBeNull();
-  });
+        describe('icon', () => {
+          let icon: DebugElement;
 
-  it('should create feedback icon', () => {
-    const feedbackIcon: DebugElement = fixture.debugElement.query(By.css('.feedback'));
-    expect(feedbackIcon).not.toBeNull();
-  });
+          beforeEach(() => {
+            icon = item.query(By.css('.icon'));
+          });
 
-  it('should toggle sidenavExpanded variable on clicking search icon', () => {
-    const search: DebugElement = fixture.debugElement.query(By.css('.search'));
-    search.triggerEventHandler('click', { });
-    expect(component.sidenavExpanded).toBeFalsy();
+          it('exists', () => {
+            expect(icon).toBeTruthy();
+          });
+        });
+
+        describe('label', () => {
+          let label: DebugElement;
+
+          beforeEach(() => {
+            label = item.query(By.css('.label'));
+          });
+
+          it('exists', () => {
+            expect(label).toBeTruthy();
+          });
+
+          it('has the expected contents', () => {
+            const actualContent: string = label.nativeElement.textContent;
+            expect(actualContent.trim()).toEqual(content);
+          });
+        });
+      });
+    }
+
+    describe('search', () => {
+      let search: DebugElement;
+
+      beforeEach(() => {
+        search = element.query(By.css('.search'));
+      });
+
+      it('exists', () => {
+        expect(search).toBeTruthy();
+      });
+
+      describe('.active', () => {
+        it('does not have the class when searchActive === false', () => {
+          expect(search.classes['active']).toBeFalsy();
+        });
+
+        it('has the class when searchActive === true', async () => {
+          component.searchActive = true;
+          fixture.detectChanges();
+          expect(search.classes['active']).toBeTruthy();
+        });
+      });
+
+      describe('onclick', () => {
+        let spy: jasmine.Spy;
+
+        beforeEach(() => {
+          spy = spyOn(component, 'toggleSearchActive');
+        });
+
+        beforeEach(() => {
+          search.triggerEventHandler('click', { });
+        });
+
+        it('calls toggleSearchActive', () => {
+          expect(spy).toHaveBeenCalled();
+        });
+      });
+    });
+
+    describeItem('home');
+    describeItem('body');
+    describeItem('tissues-browser', 'TISSUE');
+    describeItem('feedback', 'Comment');
+
+    describe('disabled by default items', () => {
+      beforeEach(() => {
+        mockedNavigationService.organPath.next('a');
+        mockedNavigationService.tissuePath.next('b');
+        fixture.detectChanges();
+      });
+
+      describeItem('organ');
+      describeItem('tissue', 'CELL');
+    });
   });
 });

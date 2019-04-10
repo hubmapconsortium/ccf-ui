@@ -56,6 +56,12 @@ describe('TissuesBrowserGridComponent', () => {
       it('sets the width based on the number of columns', () => {
         expect(component.itemWidthPercentage).toEqual('25.00%');
       });
+
+      it('uses a default number of columns if not provided', () => {
+        component.numColumns = undefined;
+        component.ngOnChanges({ numColumns: { } } as any);
+        expect(component.itemWidthPercentage).toEqual('16.66%');
+      });
     });
 
     describe('setActivePopoverItem', () => {
