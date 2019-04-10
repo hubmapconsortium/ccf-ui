@@ -28,6 +28,10 @@ export class NavigationState {
         activeTissueId: undefined
       });
     } else if (tissueId !== undefined) {
+      patchState({
+        activeOrganId: undefined,
+        activeTissueId: tissueId
+      });
       // Lookup organ id for this tissue
     }
   }
