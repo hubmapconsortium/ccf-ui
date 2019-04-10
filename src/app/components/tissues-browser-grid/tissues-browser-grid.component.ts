@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
+import { TissueImage } from '../../shared/state/database/database.models';
 import { OntologyNode } from '../../shared/state/ontology/ontology.model';
 
 /**
@@ -19,7 +20,7 @@ export class TissuesBrowserGridComponent implements OnInit, OnChanges {
   /**
    * Grid items.
    */
-  @Input() items: OntologyNode[];
+  @Input() items: TissueImage[];
 
   /**
    * Desired number of columns in the grid.

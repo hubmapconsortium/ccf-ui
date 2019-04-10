@@ -2,17 +2,22 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { By } from '@angular/platform-browser';
+import { fromPairs as loFromPairs } from 'lodash';
 import { MockModule, MockRender } from 'ng-mocks';
 
-import { OntologyNode } from '../../shared/state/ontology/ontology.model';
+import { TissueImage } from '../../shared/state/database/database.models';
 import { TissuesBrowserGridPopoverContentComponent } from './tissues-browser-grid-popover-content.component';
-import { DownloadService } from 'src/app/shared/services/download/download.service';
 
 describe('TissuesBrowserGridPopoverContentComponent', () => {
+  const thumbnailMetadataEntries: [string, any][] = [
+    ['a', 'b'],
+    ['c', 'd']
+  ];
+
   let component: TissuesBrowserGridPopoverContentComponent;
   let element: DebugElement;
-  let fixture: ComponentFixture<{ item: OntologyNode }>;
-  let item: OntologyNode;
+  let fixture: ComponentFixture<{ item: TissueImage }>;
+  let item: TissueImage;
 
   function clearItem(): void {
     fixture.componentInstance.item = undefined;
@@ -22,9 +27,7 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
     TestBed.configureTestingModule({
       imports: [MockModule(MatIconModule)],
       declarations: [TissuesBrowserGridPopoverContentComponent],
-      providers: [
-        { provide: DownloadService, useValue: { download: () => undefined } }
-      ]
+      providers: []
     });
 
     await TestBed.compileComponents();
@@ -37,10 +40,16 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
     `, {
       item: {
         id: 'foo',
-        age: 77,
-        gender: 'unknown',
-        metadata: [['a value', 1.23], ['another value', 'qwerty']]
-      } as OntologyNode
+        slice: {
+          sample: {
+            patient: {
+              age: 12,
+              gender: 'female'
+            }
+          }
+        },
+        thumbnailMetadata: loFromPairs(thumbnailMetadataEntries)
+      } as TissueImage
     });
 
     element = fixture.debugElement.query(By.directive(TissuesBrowserGridPopoverContentComponent));
@@ -55,7 +64,7 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
 
     describe('age', () => {
       it('is the same as the item\'s age value as a string', () => {
-        expect(component.age).toEqual(String(item.age));
+        expect(component.age).toEqual(String(item.slice.sample.patient.age));
       });
 
       it('provides a default', () => {
@@ -70,7 +79,7 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
       });
 
       it('is based on the item\'s gender value', () => {
-        expect(component.genderIcon).toContain(item.gender);
+        expect(component.genderIcon).toContain(item.slice.sample.patient.gender);
       });
 
       it('provides a default', () => {
@@ -79,13 +88,13 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
       });
     });
 
-    describe('data', () => {
-      it('is the same as the item\'s metadata value', () => {
-        expect(component.data).toEqual(item.metadata);
+    describe('metadata', () => {
+      it('is the same as the item\'s thumbnailMetadata value', () => {
+        expect(component.metadata).toEqual(jasmine.arrayContaining(thumbnailMetadataEntries));
       });
 
       it('provides a default', () => {
-        expect(component.data).toBeTruthy();
+        expect(component.metadata).toBeTruthy();
       });
     });
 
@@ -96,24 +105,7 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
     });
 
     describe('download', () => {
-      let spy: jasmine.Spy;
-
-      beforeEach(() => {
-        const service: DownloadService = TestBed.get(DownloadService);
-        spy = spyOn(service, 'download');
-      });
-
-      beforeEach(() => {
-        component.download();
-      });
-
-      it('calls the download service to download the data', () => {
-        expect(spy).toHaveBeenCalled();
-      });
-
-      it('passes its item to the download service', () => {
-        expect(spy).toHaveBeenCalledWith(item);
-      });
+      // TODO: Write tests when implemented.
     });
   });
 
@@ -145,7 +137,7 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
         });
 
         it('has content with the age', () => {
-          expect(age.nativeElement.textContent).toContain(String(item.age));
+          expect(age.nativeElement.textContent).toContain(String(item.slice.sample.patient.age));
         });
       });
 
@@ -183,15 +175,15 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
         });
 
         it('has one entry for each metadata value in the item', () => {
-          expect(metadatas.length).toEqual(item.metadata.length);
+          expect(metadatas.length).toEqual(thumbnailMetadataEntries.length);
         });
 
         it('contains the label of the metadata', () => {
-          expect(metadata1.nativeElement.textContent).toContain(item.metadata[0][0]);
+          expect(metadata1.nativeElement.textContent).toContain(thumbnailMetadataEntries[0][0]);
         });
 
         it('contains the data of the metadata', () => {
-          expect(metadata1.nativeElement.textContent).toContain(String(item.metadata[0][1]));
+          expect(metadata1.nativeElement.textContent).toContain(String(thumbnailMetadataEntries[0][1]));
         });
       });
     });

@@ -2,12 +2,20 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule, Store } from '@ngxs/store';
+import { of as rxOf } from 'rxjs';
 import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
 
 import { NavigationState } from '../../state/navigation/navigation.state';
+import { LocalDatabaseService } from '../database/local/local-database.service';
 import { NavigationService } from './navigation.service';
 
 describe('NavigationService', () => {
+  const mockedDatabaseService = {
+    getTissueImages() {
+      return rxOf([]);
+    }
+  };
+
   let service: NavigationService;
   let store: Store;
 
@@ -17,6 +25,9 @@ describe('NavigationService', () => {
         NgxsModule.forRoot([NavigationState]),
         NgxsRouterPluginModule.forRoot(),
         RouterTestingModule
+      ],
+      providers: [
+        { provide: LocalDatabaseService, useValue: mockedDatabaseService }
       ]
     });
   });
