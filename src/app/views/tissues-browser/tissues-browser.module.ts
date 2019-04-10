@@ -12,11 +12,7 @@ import { TissuesBrowserComponent } from './tissues-browser.component';
     TissuesBrowserRoutingModule,
     TissuesBrowserGridModule
   ],
-  declarations: [
-    TissuesBrowserComponent
-  ],
-  providers: [
-    TissuesBrowserDataService
-  ]
+  declarations: [TissuesBrowserComponent],
+  providers: [TissuesBrowserDataService]
 })
 export class TissuesBrowserModule { }

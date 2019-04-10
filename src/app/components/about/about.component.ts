@@ -10,7 +10,6 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
-
   /**
    * Creates an instance of about component.
    * @param aboutModalService Modal service responsible for opening and closing of the modal.

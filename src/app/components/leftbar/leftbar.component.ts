@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Output, Input } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+
+import { NavigationService } from '../../shared/services/navigation/navigation.service';
 
 @Component({
   selector: 'ccf-leftbar',
@@ -7,26 +9,41 @@ import { Observable } from 'rxjs';
   styleUrls: ['./leftbar.component.scss']
 })
 export class LeftbarComponent {
+  /**
+   * Indicates whether the search icon is considered active or not.
+   */
+  @Input() searchActive = false;
 
   /**
-   * Output sends an drawer toggle event as an observable to main.component.ts
+   * Emits whenever the search icon is activated/deactivated.
    */
-  @Output() drawerToggle: Observable<boolean>;
+  @Output() searchActiveChange: Observable<boolean>;
 
-  private readonly _drawerToggleEventEmitter = new EventEmitter<boolean>();
-  sidenavExpanded = true;
+  /**
+   * Indicates whether the comment item is currenlty being hovered over.
+   */
+  isCommentItemHovered = false;
 
-  constructor() {
-    this.drawerToggle = this._drawerToggleEventEmitter.asObservable();
+  /**
+   * Internal subject for `searchActive`.
+   */
+  private readonly searchActiveSubject = new Subject<boolean>();
+
+  /**
+   * Creates an instance of leftbar component.
+   *
+   * @param navigator The service used to get correct url paths.
+   */
+  constructor(readonly navigator: NavigationService) {
+    this.searchActiveChange = this.searchActiveSubject.asObservable();
   }
 
-
   /**
-   * Emits toggle event
-   * clicking on this will change the event emitter of the observable and also sidenavExpanded state
+   * Toggles the state of the search.
+   * Also emits the new state to `searchActive`.
    */
-  emitToggleEvent() {
-    this.sidenavExpanded = !this.sidenavExpanded;
-    this._drawerToggleEventEmitter.next(this.sidenavExpanded);
+  toggleSearchActive(): void {
+    this.searchActive = !this.searchActive;
+    this.searchActiveSubject.next(this.searchActive);
   }
 }

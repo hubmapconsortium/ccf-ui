@@ -6,7 +6,12 @@ import { TissuesBrowserComponent } from './tissues-browser.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: TissuesBrowserComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 
 import { AboutComponent } from './about.component';
@@ -11,11 +12,14 @@ import { AboutComponent } from './about.component';
 @NgModule({
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   declarations: [
     AboutComponent
   ],
-  exports: [ AboutComponent ]
+  exports: [
+    AboutComponent
+  ]
 })
 export class AboutModule { }

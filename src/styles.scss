@@ -1,6 +1,10 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~material-design-icons/iconfont/material-icons.css';
 
+* {
+  box-sizing: border-box
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -29,7 +33,4 @@ body {
   // Required for the popover to work correctly.
   // For some reason this is missing from the popover-content.component scss!?
   position: absolute;
-}
-* {
-    box-sizing: border-box
 }

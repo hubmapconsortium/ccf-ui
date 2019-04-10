@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MockRender } from 'ng-mocks';
 
 import { NavigationService } from '../../shared/services/navigation/navigation.service';
@@ -8,6 +9,10 @@ import { OntologyNode } from '../../shared/state/ontology/ontology.model';
 import { TissuesBrowserGridItemComponent } from './tissues-browser-grid-item.component';
 
 describe('TissuesBrowserGridItemComponent', () => {
+  const mockedNavigationService = {
+    createTissuePath: () => undefined
+  };
+
   let component: TissuesBrowserGridItemComponent;
   let element: DebugElement;
   let fixture: ComponentFixture<{ item: OntologyNode }>;
@@ -15,9 +20,10 @@ describe('TissuesBrowserGridItemComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [TissuesBrowserGridItemComponent],
       providers: [
-        { provide: NavigationService, useValue: { navigateToTissue: () => undefined } }
+        { provide: NavigationService, useValue: mockedNavigationService }
       ]
     });
 
@@ -58,25 +64,8 @@ describe('TissuesBrowserGridItemComponent', () => {
       });
 
       it('has a default', () => {
-        fixture.componentInstance.item = { id: 'foo' } as any;
+        component.item = { id: 'foo' } as any;
         expect(component.description).toBeTruthy();
-      });
-    });
-
-    describe('navigateToTissue()', () => {
-      let spy: jasmine.Spy;
-
-      beforeEach(() => {
-        const service = TestBed.get(NavigationService);
-        spy = spyOn(service, 'navigateToTissue');
-      });
-
-      beforeEach(() => {
-        component.navigateToTissue();
-      });
-
-      it('calls the service to navigate', () => {
-        expect(spy).toHaveBeenCalled();
       });
     });
   });

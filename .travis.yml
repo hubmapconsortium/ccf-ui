@@ -74,6 +74,16 @@ jobs:
         tags: true
         repo: hubmapconsortium/ccf-ui
   - stage: test
+    name: Test building production version on PRs
+    if: type = pull_request
+    script:
+    - npm run build -- --base-href=/
+  - stage: test
+    name: Test compodoc success on PRs
+    if: type = pull_request
+    script:
+    - npm run compodoc
+  - stage: test
     name: Run sonar checks
     if: NOT (tag IS present)
     script:
