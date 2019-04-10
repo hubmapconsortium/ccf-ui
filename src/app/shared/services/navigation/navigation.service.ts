@@ -21,4 +21,9 @@ export class NavigationService {
     const id = typeof idOrNode === 'string' ? idOrNode : idOrNode.id;
     return new Navigate(['/tissue', id]);
   }
+
+  @Dispatch()
+  navigateToOrgan(id: string | OntologyNode): Navigate {
+    return new Navigate(['/organ', id]);
+  }
 }

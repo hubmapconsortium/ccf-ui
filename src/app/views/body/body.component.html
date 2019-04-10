@@ -1,16 +1,23 @@
 <div class="ccf-ui-body wrapper">
   <div class="container">
     <div class="body-container">
-     <div class="details">
-      
+      <div *ngIf="metaData" class="organ-details">
+        <div>{{metaData.patientNumber}}</div>
+        <div>{{metaData.procedureId}}</div>
       </div>
+     <div class="details">
+      <div class="heart" >
+      </div>
+      <div class="kidney">
+      </div>
+     </div>
       <div class="body">
-        <div class="heart">
-          <img class="heart-icon" src="assets/images/organ-heart.jpg"/>
+        <div class="heart" (click)="navigateToOrgan('heart')">
+          <img class="heart-icon" (mouseenter)="showMetaData(heart)" (mouseleave)="hideMetaData()" src="assets/images/organ-heart.jpg"/>
         </div>
         <div class="kidney-container">
-          <div class="kidney">
-            <img class="kidney-icon" src="assets/images/kidney2.png"/>
+          <div class="kidney" (click)="navigateToOrgan('kidney')">
+            <img class="kidney-icon" (mouseenter)="showMetaData(kidney)"  (mouseleave)="hideMetaData()" src="assets/images/kidney2.png"/>
           </div>
         </div>
       </div>
