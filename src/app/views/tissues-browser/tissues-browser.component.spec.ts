@@ -40,24 +40,6 @@ describe('TissuesBrowserComponent', () => {
     it('exists', () => {
       expect(component).toBeTruthy();
     });
-
-    describe('data', () => {
-      let collectedData: any[];
-      let subject: Subject<any>;
-
-      beforeEach(() => {
-        const service = TestBed.get(TissuesBrowserDataService) as TissuesBrowserDataService;
-        subject = service.data as Subject<any>;
-
-        collectedData = [];
-        component.data.subscribe(data => collectedData.push(data));
-      });
-
-      it('is fetched from the data service', () => {
-        subject.next('abc');
-        expect(collectedData[0]).toEqual('abc');
-      });
-    });
   });
 
   describe('dom', () => {

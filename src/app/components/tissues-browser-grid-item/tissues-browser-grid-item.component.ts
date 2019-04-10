@@ -37,12 +37,5 @@ export class TissuesBrowserGridItemComponent {
    *
    * @param navigator The navigation service.
    */
-  constructor(private navigator: NavigationService) { }
-
-  /**
-   * Navigates to the tissue associated with this item.
-   */
-  navigateToTissue(): void {
-    this.navigator.navigateToTissue(this.item);
-  }
+  constructor(readonly navigator: NavigationService) { }
 }

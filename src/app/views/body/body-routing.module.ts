@@ -6,7 +6,12 @@ import { BodyComponent } from './body.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: BodyComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

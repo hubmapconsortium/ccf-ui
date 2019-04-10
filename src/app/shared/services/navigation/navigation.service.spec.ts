@@ -1,29 +1,28 @@
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule, Store } from '@ngxs/store';
+import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
 
+import { NavigationState } from '../../state/navigation/navigation.state';
 import { NavigationService } from './navigation.service';
 
 describe('NavigationService', () => {
-  let router: Router;
   let service: NavigationService;
+  let store: Store;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        NgxsModule.forRoot(),
+        NgxsModule.forRoot([NavigationState]),
         NgxsRouterPluginModule.forRoot(),
-        NgxsDispatchPluginModule.forRoot(),
         RouterTestingModule
       ]
     });
   });
 
   beforeEach(() => {
-    router = TestBed.get(Router);
+    store = TestBed.get(Store);
     service = TestBed.get(NavigationService);
   });
 
@@ -31,19 +30,68 @@ describe('NavigationService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('navigateToTissue(idOrNode)', () => {
-    let navigateSpy: jasmine.Spy;
+  function describePath(
+    name: 'homePath' | 'bodyPath' | 'tissuesBrowserPath' | 'organPath' | 'tissuePath',
+    validState?: object, invalidState?: object
+  ): void {
+    describe(name, () => {
+      function getValue(): Promise<string | any[]> {
+        return service[name].pipe(
+          rxTake(1),
+          rxTimeout(1000)
+        ).toPromise();
+      }
 
-    beforeEach(() => {
-      navigateSpy = spyOn(router, 'navigate');
-    });
+      describe('when state is valid', () => {
+        if (validState !== undefined) {
+          beforeEach(() => {
+            store.reset(validState);
+          });
+        }
 
-    beforeEach(() => {
-      service.navigateToTissue('tissue-identifier');
-    });
+        it('emits valid paths', async () => {
+          expect(await getValue()).toBeTruthy();
+        });
+      });
 
-    it('navigates to the specified tissue using the angular router', () => {
-      expect(navigateSpy).toHaveBeenCalled();
+      describe('when state is invalid', () => {
+        if (invalidState !== undefined) {
+          beforeEach(() => {
+            store.reset(invalidState);
+          });
+
+          it('emits undefined', async () => {
+            expect(await getValue()).toBeFalsy();
+          });
+        }
+      });
     });
-  });
+  }
+
+  describePath('homePath');
+  describePath('bodyPath');
+  describePath('tissuesBrowserPath');
+  describePath('organPath', { navigation: { activeOrganId: 'foo' } }, { navigation: { } });
+  describePath('tissuePath', { navigation: { activeTissueId: 'foo' } }, { navigation: { } });
+
+  function describePathCreation(methodName: 'createOrganPath' | 'createTissuePath'): void {
+    describe(`${methodName}(identifier)`, () => {
+      let path: any[];
+
+      beforeEach(() => {
+        path = service[methodName]('testid');
+      });
+
+      it('returns an array of path segments', () => {
+        expect(path).toEqual(jasmine.any(Array));
+      });
+
+      it('contains the identifier', () => {
+        expect(path).toContain('testid');
+      });
+    });
+  }
+
+  describePathCreation('createOrganPath');
+  describePathCreation('createTissuePath');
 });
