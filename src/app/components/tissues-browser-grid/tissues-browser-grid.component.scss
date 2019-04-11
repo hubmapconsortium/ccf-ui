@@ -1,27 +1,58 @@
+$default-num-columns: 6;
+$num-column-classes: 12;
+$item-min-width: 220px;
+$item-max-width: 768px;
+$item-min-height: 160px;
+$item-max-height: 559px;
+$height-width-ratio: $item-min-height / $item-min-width;
+
+@function item-width($n) { @return (100% / $n); }
+@function item-padding($n) { @return $height-width-ratio * item-width($n); }
+
 .tissues-browser-grid.wrapper {
   .container {
-    .popover-container ::ng-deep .bs-popover-right {
-      margin-left: 0;
+    .popover-container {
+      ::ng-deep .popover-content {
+        width: item-width($default-num-columns);
+        min-width: $item-min-width;
+        max-width: $item-max-width;
+        min-height: $item-min-height;
+        max-height: $item-max-height;
+
+        &.bs-popover-right {
+          margin-left: 0;
+        }
+      }
+
+      @for $n from 1 through $num-column-classes {
+        &[data-num-columns="#{$n}"] ::ng-deep .popover-content {
+          width: item-width($n);
+        }
+      }
     }
 
     .grid {
       display: flex;
       flex-flow: row wrap;
       align-content: flex-start;
-    }
+      margin: 52px 20px;
 
-    .popover-container ::ng-deep .popover-content,
-    .grid .item {
-      width: (100% / 6); // Default width - 6 columns
-      height: 10rem; // FIXME: Set better
-      min-width: 220px;
-      max-width: 10000px;
-    }
+      .item {
+        position: relative;
+        width: item-width($default-num-columns);
+        padding-top: item-padding($default-num-columns);
+        min-width: $item-min-width;
+        max-width: $item-max-width;
+        min-height: $item-min-height;
+        max-height: $item-max-height;
+        margin: 4px;
 
-    @for $count from 1 through 12 {
-      .popover-container[data-num-columns="#{$count}"] ::ng-deep .popover-content,
-      .grid .item[data-num-columns="#{$count}"] {
-        width: (100% / $count);
+        @for $n from 1 through $num-column-classes {
+          &[data-num-columns="#{$n}"] {
+            width: item-width($n);
+            padding-top: item-padding($n);
+          }
+        }
       }
     }
   }
