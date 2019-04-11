@@ -93,10 +93,4 @@ export class NavigationService {
   createTissuePath(tissueId: string): any[] {
     return ['/tissue', tissueId];
   }
-
-  @Dispatch()
-  navigateToOrgan(idOrNode: string | OntologyNode): Navigate {
-    const id = typeof idOrNode === 'string' ? idOrNode : idOrNode.id;
-    return new Navigate(['/organ', id]);
-  }
 }
