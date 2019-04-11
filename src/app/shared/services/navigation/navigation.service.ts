@@ -94,8 +94,8 @@ export class NavigationService {
     return ['/tissue', tissueId];
   }
 
-  @Dispatch()
-  navigateToOrgan(id: string | OntologyNode): Navigate {
-    return new Navigate(['/organ', id]);
-  }
+  // @Dispatch()
+  // navigateToOrgan(id: string): Navigate {
+  //   return new Navigate(['/organ', id]);
+  // }
 }

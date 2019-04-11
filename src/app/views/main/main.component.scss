@@ -26,6 +26,10 @@
         //     width: calc(100vw - 2rem); // total width - padding (since search sidenav was closed)
         //   }
         // }
+
+        .view-container {
+          height: 100%;
+        }
       }
     }
   }

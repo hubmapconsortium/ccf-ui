@@ -22,7 +22,7 @@ export class BodyComponent {
    }
 
   navigateToOrgan(id: string): void {
-   this.navigationService.navigateToOrgan(id);
+  //  this.navigationService.navigateToOrgan(id);
   }
 
   showMetaData(organ: string): void {
