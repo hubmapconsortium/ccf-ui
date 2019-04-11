@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 import { NavigationService } from '../../shared/services/navigation/navigation.service';
 import { TissueImage } from '../../shared/state/database/database.models';
@@ -19,24 +20,17 @@ export class TissuesBrowserGridItemComponent {
   @Input() item: TissueImage;
 
   /**
-   * Gets the tile's url.
+   * Gets the tile's background url.
    */
-  get thumbnailUrl(): string {
-    return this.item.thumbnailUrl;
-  }
-
-  /**
-   * Alternate textual description of the tile.
-   */
-  get description(): string {
-    // Improve this!
-    return `Tissue sample id: ${this.item.id}`;
+  get thumbnailUrl(): SafeStyle {
+    return this.sanitizer.bypassSecurityTrustStyle(`url(${this.item.thumbnailUrl})`);
   }
 
   /**
    * Creates an instance of tissues browser grid item component.
    *
    * @param navigator The navigation service.
+   * @param sanitizer The sanitaion service used to sanitize background image urls.
    */
-  constructor(readonly navigator: NavigationService) { }
+  constructor(readonly navigator: NavigationService, private sanitizer: DomSanitizer) { }
 }

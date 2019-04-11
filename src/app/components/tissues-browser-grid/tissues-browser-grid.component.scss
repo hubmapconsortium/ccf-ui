@@ -8,10 +8,20 @@
       display: flex;
       flex-flow: row wrap;
       align-content: flex-start;
+    }
 
-      .item {
-        min-width: 220px; // Might need tweaking.
-        max-width: 10000px; // FIXME: Set appropriate maximum width
+    .popover-container ::ng-deep .popover-content,
+    .grid .item {
+      width: (100% / 6); // Default width - 6 columns
+      height: 10rem; // FIXME: Set better
+      min-width: 220px;
+      max-width: 10000px;
+    }
+
+    @for $count from 1 through 12 {
+      .popover-container[data-num-columns="#{$count}"] ::ng-deep .popover-content,
+      .grid .item[data-num-columns="#{$count}"] {
+        width: (100% / $count);
       }
     }
   }

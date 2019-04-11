@@ -1,7 +1,12 @@
 .tissues-browser-grid-item.wrapper {
+  &, * {
+    width: 100%;
+    height: 100%;
+  }
+
   .container {
     .tile {
-      width: 100%;
+      background-size: cover;
     }
   }
 }

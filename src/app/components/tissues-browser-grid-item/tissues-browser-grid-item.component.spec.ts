@@ -1,6 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { By, DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockRender } from 'ng-mocks';
 
@@ -12,7 +12,6 @@ describe('TissuesBrowserGridItemComponent', () => {
   const mockedNavigationService = {
     createTissuePath: () => undefined
   };
-
   let component: TissuesBrowserGridItemComponent;
   let element: DebugElement;
   let fixture: ComponentFixture<{ item: TissueImage }>;
@@ -52,20 +51,24 @@ describe('TissuesBrowserGridItemComponent', () => {
     });
 
     describe('thumbnailUrl', () => {
-      it('is the same as the item\'s thumbnailUrl', () => {
-        expect(component.thumbnailUrl).toEqual(item.thumbnailUrl);
+      let spy: jasmine.Spy;
+      let value: SafeStyle;
+
+      beforeEach(() => {
+        const sanitizer: DomSanitizer = TestBed.get(DomSanitizer);
+        spy = spyOn(sanitizer, 'bypassSecurityTrustStyle').and.callThrough();
       });
-    });
 
-    describe('description', () => {
-      // Fix when description has a meaningful value
-      // xit('is the same as the item\'s description', () => {
-      //   expect(component.description).toEqual(item.description);
-      // });
+      beforeEach(() => {
+        value = component.thumbnailUrl;
+      });
 
-      it('has a default', () => {
-        component.item = { id: 'foo' } as any;
-        expect(component.description).toBeTruthy();
+      it('has a value', () => {
+        expect(value).toBeTruthy();
+      });
+
+      it('calls the sanitizer to produce a safe background url', () => {
+        expect(spy).toHaveBeenCalled();
       });
     });
   });
@@ -80,14 +83,6 @@ describe('TissuesBrowserGridItemComponent', () => {
 
       it('exists', () => {
         expect(tile).toBeTruthy();
-      });
-
-      it('has the src attribute set', () => {
-        expect(tile.attributes['src']).toBeTruthy();
-      });
-
-      it('has an alt attribute set', () => {
-        expect(tile.attributes['alt']).toBeTruthy();
       });
     });
   });
