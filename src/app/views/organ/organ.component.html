@@ -1,3 +1,17 @@
-<p>
-  organ works!
-</p>
+<div class="ccf-organ wrapper">
+  <div class="container">
+
+    <div class="organ">
+      <svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <use [attr.xlink:href]="organImagePath+'organ.svg#organ'" x="0" y="0"></use>
+        <g (click)="onOverlayClick($event)">
+          <use [attr.xlink:href]="organImagePath+'overlays/sample-1.svg#overlay'" x="0" y="0"></use>
+        </g>
+        <!-- <use *ngFor="let sample of sample$ | async" [attr.xlink:href]="{{ sample.overlayUrl }}#overlay"></use> -->
+      </svg>
+    </div>
+    <div class="metadata">
+
+    </div>
+  </div>
+</div>
