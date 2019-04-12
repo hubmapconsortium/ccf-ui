@@ -12,8 +12,8 @@ body {
 }
 
 // The following values can be easily overridden for the popover (current values are the defaults)
-// $popover-bg: #757575;
-// $popover-inner-padding: 1.2rem;
+$popover-bg: rgba(0, 0, 0, .75);
+$popover-inner-padding: 16px;
 // $zindex-popover: 1060;
 // $popover-arrow-width: 2.2rem;
 // $popover-arrow-height: 1.1rem;
@@ -22,7 +22,7 @@ body {
 // $popover-arrow-color: $popover-bg;
 // $popover-header-bg: darken($popover-bg, 3%);
 // $popover-border-width: 0rem;
-// $popover-border-radius: 0rem;
+$popover-border-radius: 4px;
 // $popover-box-shadow: 0 .25rem .5rem rgba(black, .2);
 // $popover-body-color: white;
 // $popover-header-color: white;

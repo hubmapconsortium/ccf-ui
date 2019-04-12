@@ -3,7 +3,15 @@ import { RouterStateSnapshot } from '@angular/router';
 import { RouterState } from '@ngxs/router-plugin';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { map as rxMap } from 'rxjs/operators';
+import {
+  filter as rxFilter, map as rxMap,
+  pluck as rxPluck,
+  shareReplay as rxShareReplay,
+  switchMap as rxSwitchMap,
+} from 'rxjs/operators';
+
+import { LocalDatabaseService } from '../database/local/local-database.service';
+import { TissueImage } from '../../state/database/database.models';
 
 /**
  * Injectable data service for individual tissue view's data
@@ -16,36 +24,29 @@ export class TissueDataService {
   @Select(RouterState.state)
   private routeState: Observable<RouterStateSnapshot>;
   /**
-   * Path to images of tissues - TODO - this will come from a json file eventually
+   * Tissue image observable to fetch tissueImages based on the tissueId in the route url
    */
-  private readonly pathToImages = 'assets/tissues/';
+  private tissueImageObservable: Observable<TissueImage[]>;
+
   /**
-   * Image file names - TODO - these will come from a json file eventually
+   * Creates an instance of tissue data service.
+   * @param database instance of LocalDatabaseService
    */
-  private readonly imageSources = [
-    'patient-64354_neg_IHC_3ch_registeredToIMS_RGB_unenhanced.dzi',
-    'patient-64354_pos_PAS_RGB_registeredToIMS.dzi',
-    'patient-64354_neg_IHC_3ch_registeredToIMS_RGB.dzi',
-    'patient-64354_neg_IHC_3ch_registeredToIMS_RGB_unenhanced.dzi',
-    'patient20_neg_TexasRed_IHC_registeredToIMS.dzi',
-    'patient20_neg_GFP_IHC_registeredToIMS.dzi',
-    'patient20_neg_DAPI_IHC_registeredToIMS.dzi',
-    'patient20_neg_TRITC_AF_registeredToIMS.dzi',
-    'patient20_neg_FITC_AF_registeredToIMS.dzi',
-    'patient20_neg_DAPI_AF_registeredToIMS.dzi',
-    'patient20_pos_preAF_registeredToIMS_r.dzi',
-    'patient20_pos_preAF_registeredToIMS_g.dzi',
-    'patient20_pos_preAF_registeredToIMS_b.dzi'
-  ];
+  constructor(private database: LocalDatabaseService) {
+    this.tissueImageObservable = this.routeState.pipe(
+      rxPluck('root', 'firstChild', 'params', 'tissueId'),
+      rxFilter(tissueId => tissueId !== undefined),
+      rxSwitchMap(tissueId => this.database.getTissueImages((image) => image.id === tissueId)),
+      rxShareReplay(1)
+    );
+  }
 
   /**
    * Gets tissue source path
    * @returns Observable of tissue source path
    */
   getTissueSourcePath(): Observable<string> {
-    return this.routeState.pipe(rxMap(state => {
-      return state && this.pathToImages + this.imageSources[+state.root.firstChild.params.tissueId - 1];
-    }));
+    return this.tissueImageObservable.pipe(rxPluck(0, 'tileUrl'));
   }
 
   /**
@@ -53,9 +54,11 @@ export class TissueDataService {
    * Gets the metadata for the queried tissue-id
    * @returns Observable for metadata for the tissue
    */
-  getMetadata(): Observable<string> {
-    return this.routeState.pipe(rxMap(state => {
-      return state && 'tissue' + state.root.firstChild.params.tissueId + 'sample data!';
-    }));
+  getMetadata(): Observable<{[label: string]: string}> {
+    return this.tissueImageObservable.pipe(rxPluck(0, 'metadata'));
+  }
+
+  getOrganName(): Observable<string> {
+    return this.tissueImageObservable.pipe(rxPluck(0, 'slice', 'sample', 'patient', 'anatomicalLocations', 0));
   }
 }

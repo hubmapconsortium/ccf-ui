@@ -48,22 +48,6 @@ describe('TissuesBrowserGridComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    describe('itemWidthPercentage', () => {
-      it('is a percentage', () => {
-        expect(component.itemWidthPercentage).toMatch(/.*%/);
-      });
-
-      it('sets the width based on the number of columns', () => {
-        expect(component.itemWidthPercentage).toEqual('25.00%');
-      });
-
-      it('uses a default number of columns if not provided', () => {
-        component.numColumns = undefined;
-        component.ngOnChanges({ numColumns: { } } as any);
-        expect(component.itemWidthPercentage).toEqual('16.66%');
-      });
-    });
-
     describe('setActivePopoverItem', () => {
       beforeEach(() => {
         component.setActivePopoverItem({ } as any);
@@ -107,10 +91,6 @@ describe('TissuesBrowserGridComponent', () => {
 
       it('has one item for each input value', () => {
         expect(items.length).toEqual(4);
-      });
-
-      it('sets the width on each item', () => {
-        expect(items[0].styles).toEqual(jasmine.objectContaining({ width: '25.00%' }));
       });
     });
 

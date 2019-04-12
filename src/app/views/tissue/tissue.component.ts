@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { capitalize as loCapitalize } from 'lodash';
 import openSeaDragon from 'openseadragon';
 import { Subscription } from 'rxjs';
 
@@ -28,7 +29,11 @@ export class TissueComponent implements OnInit, OnDestroy {
   /**
    * Tissue metadata
    */
-  tissueMetadata: string;
+  tissueMetadata: [string, string][];
+  /**
+   * Organ name
+   */
+  organName: string;
   /**
    * Reference to 'tissueView' element view-child
    */
@@ -48,7 +53,8 @@ export class TissueComponent implements OnInit, OnDestroy {
     this.tissueSourcePathSubscription = this.tissueDataService.getTissueSourcePath()
       .subscribe(path => this.launchTissueViewer(path));
     this.tissueMetadataSubscription = this.tissueDataService.getMetadata()
-      .subscribe(metadata => this.tissueMetadata = metadata);
+      .subscribe(metadata => this.tissueMetadata = Object.entries(metadata));
+    this.tissueDataService.getOrganName().subscribe((name) => this.organName = loCapitalize(name));
   }
 
   /**
@@ -70,8 +76,7 @@ export class TissueComponent implements OnInit, OnDestroy {
       navigatorLeft: '0.25rem',
       navigatorHeight: '3.5rem',
       navigatorWidth: '4.5rem',
-      defaultZoomLevel: 3,
-      minZoomLevel: 1,
+      defaultZoomLevel: 1,
       visibilityRatio: 1,
     });
   }
@@ -80,7 +85,16 @@ export class TissueComponent implements OnInit, OnDestroy {
    * on destroy lifecycle hook of this component - unsubscribes to subscriptions
    */
   ngOnDestroy() {
-    this.tissueSourcePathSubscription.unsubscribe();
-    this.tissueMetadataSubscription.unsubscribe();
+    if (this.tissueSourcePathSubscription) {
+      this.tissueSourcePathSubscription.unsubscribe();
+    }
+
+    if (this.tissueMetadataSubscription) {
+      this.tissueMetadataSubscription.unsubscribe();
+    }
+
+    if (this.viewer) {
+      this.viewer.destroy();
+    }
   }
 }

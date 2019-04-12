@@ -3,11 +3,23 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule, Store } from '@ngxs/store';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
+import { Observable, Subject } from 'rxjs';
 import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
 
 import { TissueDataService } from './tissue-data.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LocalDatabaseService } from '../database/local/local-database.service';
+import { TissueImage } from '../../state/database/database.models';
 
 describe('TissueDataService', () => {
+  const mockedLocalDatabase = {
+    getTissueImages() {
+      return mockedLocalDatabase.getTissueImageSubject = new Subject();
+    },
+
+    getTissueImageSubject: undefined as Subject<any>
+  };
+
   const state = {
     router: {
       state: {
@@ -22,6 +34,12 @@ describe('TissueDataService', () => {
     }
   };
 
+  const tissueImage = {
+    tileUrl: 'fob',
+    metadata: { label: 'metadata'} as any,
+    slice: { sample: { patient: { anatomicalLocations: ['heart'] } } }
+  } as TissueImage;
+
   let service: TissueDataService;
   let store: Store;
 
@@ -33,7 +51,10 @@ describe('TissueDataService', () => {
         NgxsDispatchPluginModule.forRoot(),
         RouterTestingModule
       ],
-      providers: [TissueDataService]
+      providers: [
+        { provide: LocalDatabaseService, useValue: mockedLocalDatabase },
+        TissueDataService
+      ]
     });
   });
 
@@ -60,6 +81,7 @@ describe('TissueDataService', () => {
         rxTimeout(1000)
       ).toPromise();
 
+      mockedLocalDatabase.getTissueImageSubject.next([tissueImage]);
       value = await promise;
     });
 
@@ -73,7 +95,7 @@ describe('TissueDataService', () => {
   });
 
   describe('getMetadata()', () => {
-    let value: string;
+    let value: {[label: string]: string};
 
     beforeEach(async () => {
       const observable = service.getMetadata();
@@ -82,15 +104,12 @@ describe('TissueDataService', () => {
         rxTimeout(1000)
       ).toPromise();
 
+      mockedLocalDatabase.getTissueImageSubject.next([tissueImage]);
       value = await promise;
     });
 
     it('non-empty', () => {
       expect(value).toBeTruthy();
-    });
-
-    it('to be string', () => {
-      expect(value).toEqual(jasmine.any(String));
     });
   });
 });
