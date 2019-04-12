@@ -10,7 +10,7 @@ const routes: Routes = [
     loadChildren: './views/home/home.module#HomeModule'
   },
   {
-    path: 'body',
+    path: 'body/:bodyId',
     loadChildren: './views/body/body.module#BodyModule'
   },
   {

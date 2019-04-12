@@ -12,7 +12,8 @@ import { NavigationStateModel } from './navigation.model';
   name: 'navigation',
   defaults: {
     activeOrganId: undefined,
-    activeTissueId: undefined
+    activeTissueId: undefined,
+    activeBodyId: undefined
   }
 })
 export class NavigationState {
@@ -21,10 +22,11 @@ export class NavigationState {
    */
   @Action(RouterNavigation)
   updateActiveFromRoute({ patchState }: StateContext<NavigationStateModel>, action: RouterNavigation): Observable<void> | void {
-    const { organId, tissueId } = loGet(action, ['routerState', 'root', 'firstChild', 'params'], { });
+    const { organId, tissueId, bodyId } = loGet(action, ['routerState', 'root', 'firstChild', 'params'], { });
     if (organId !== undefined) {
       patchState({
         activeOrganId: organId,
+        activeBodyId: bodyId,
         activeTissueId: undefined
       });
     } else if (tissueId !== undefined) {

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OrganMetaDataService } from './organ-meta-data.service';
+import { BodyDataService } from './body-data.service';
 
-describe('OrganMetaDataService', () => {
+describe('BodyDataService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: OrganMetaDataService = TestBed.get(OrganMetaDataService);
+    const service: BodyDataService = TestBed.get(BodyDataService);
     expect(service).toBeTruthy();
   });
 });

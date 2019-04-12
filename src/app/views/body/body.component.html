@@ -1,9 +1,8 @@
 <div class="ccf-ui-body wrapper">
   <div class="container">
     <div class="inner-container">
-      <div *ngIf="metaData" class="organ-metadata">
-        <div>{{metaData.patientNumber}}</div>
-        <div>{{metaData.procedureId}}</div>
+      <div class="organ-metadata">
+         {{metaData}}
       </div>
 
       <div class="body-details-container">
@@ -15,8 +14,12 @@
         </div>
 
         <div class="body">
-          <img class="heart-icon" (mouseenter)="showMetaData(heart)" (mouseleave)="hideMetaData()" src="assets/images/organ-heart.jpg" (click)="navigateToOrgan('heart')"/>
-          <img class="kidney-icon" (mouseenter)="showMetaData(kidney)"  (mouseleave)="hideMetaData()" src="assets/images/kidney2.png" (click)="navigateToOrgan('kidney')"/>
+            <svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <use [attr.xlink:href]="bodyImagePath+'body.svg#body'" x="0" y="0"></use>
+              <g (click)="onOverlayClick($event)">
+                <image class="kidney-icon" [attr.xlink:href]="'assets/ccf/body/overlays/kidney.png'" x="233" y="400"></image>
+              </g>
+            </svg>
         </div> 
       </div>
     </div>
