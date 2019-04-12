@@ -24,9 +24,9 @@ export class NavigationState {
    */
   @Action(RouterNavigation)
   updateActiveFromRoute(ctx: StateContext<NavigationStateModel>, action: RouterNavigation): Observable<any> | void {
-    const { organId, tissueId, bodyId } = loGet(action, ['routerState', 'root', 'firstChild', 'params'], { });
+    const { organId, tissueId } = loGet(action, ['routerState', 'root', 'firstChild', 'params'], { });
     if (organId !== undefined) {
-      this.setActiveOrganId(ctx, organId, bodyId);
+      this.setActiveOrganId(ctx, organId);
     } else if (tissueId !== undefined) {
       return this.setActiveTissueId(ctx, tissueId);
     }
@@ -42,12 +42,11 @@ export class NavigationState {
   /**
    * Sets the active organ id.
    */
-  private setActiveOrganId(ctx: StateContext<NavigationStateModel>, organId: string, bodyId: string): void {
+  private setActiveOrganId(ctx: StateContext<NavigationStateModel>, organId: string): void {
     const { activeOrganId } = ctx.getState();
     if (organId !== activeOrganId) {
       ctx.patchState({
         activeOrganId: organId,
-        activeBodyId: bodyId,
         activeTissueId: undefined
       });
     }
