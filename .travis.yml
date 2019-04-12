@@ -31,6 +31,7 @@ jobs:
     if: branch = develop AND type != pull_request
     script:
     - npm run build -- --base-href=/
+    - echo "/* /index.html 200" > dist/ccf-ui/_redirects
     - npm run compodoc
     deploy:
       provider: pages
