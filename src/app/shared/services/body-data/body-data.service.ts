@@ -37,7 +37,7 @@ export class BodyDataService {
    */
   getMetadata(): Observable<string> {
     return this.routeState.pipe(rxMap(state => {
-      return state && 'body' + state.root.firstChild.params.bodyId + 'sample data!';
+      return state && '';
     }));
   }
 }

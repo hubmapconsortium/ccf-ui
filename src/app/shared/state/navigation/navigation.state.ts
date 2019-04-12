@@ -13,7 +13,7 @@ import { NavigationStateModel } from './navigation.model';
   defaults: {
     activeOrganId: undefined,
     activeTissueId: undefined,
-    activeBodyId: 'male'
+    activeBodyId: 'female'
   }
 })
 export class NavigationState {
