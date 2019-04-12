@@ -73,7 +73,7 @@ describe('TissueDataService', () => {
   });
 
   describe('getMetadata()', () => {
-    let value: string;
+    let value: {[label: string]: string};
 
     beforeEach(async () => {
       const observable = service.getMetadata();
