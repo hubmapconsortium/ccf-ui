@@ -13,8 +13,8 @@ $height-width-ratio: $item-min-height / $item-min-width;
   .container {
     .popover-container {
       ::ng-deep .popover-content {
-        width: item-width($default-num-columns);
-        height: item-height($default-num-columns);
+        // width: item-width($default-num-columns);
+        // height: item-height($default-num-columns);
         min-width: $item-min-width;
         max-width: $item-max-width;
         min-height: $item-min-height;
@@ -31,8 +31,8 @@ $height-width-ratio: $item-min-height / $item-min-width;
 
       @for $n from 1 through $num-column-classes {
         &[data-num-columns="#{$n}"] ::ng-deep .popover-content {
-          width: item-width($n);
-          height: item-height($n);
+          // width: item-width($n);
+          // height: item-height($n);
         }
       }
     }
@@ -41,7 +41,7 @@ $height-width-ratio: $item-min-height / $item-min-width;
       display: flex;
       flex-flow: row wrap;
       align-content: flex-start;
-      margin: 52px 20px;
+      padding: 52px 20px;
 
       .item {
         position: relative;
