@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { get as loGet } from 'lodash';
+import { get as loGet, toPairs as loToPairs } from 'lodash';
 
-import { DownloadService } from '../../shared/services/download/download.service';
-import { OntologyNode } from '../../shared/state/ontology/ontology.model';
+import { TissueImage } from '../../shared/state/database/database.models';
 
 /**
  * Contains the content of the tissues browser grid's popover.
@@ -17,35 +16,28 @@ export class TissuesBrowserGridPopoverContentComponent {
   /**
    * The ontology node for which to display meta data.
    */
-  @Input() item: OntologyNode;
+  @Input() item: TissueImage;
 
   /**
    * Age in whole years.
    */
   get age(): string {
-    return String(loGet(this.item, 'age', '??'));
+    return String(loGet(this.item, ['slice', 'sample', 'patient', 'age'], '??'));
   }
 
   /**
-   * Gender - male/female/unknown.
+   * Gender - male/female/undefined.
    */
   get genderIcon(): string {
-    return 'gender:' + loGet(this.item, 'gender', 'unknown');
+    return 'gender:' + loGet(this.item, ['slice', 'sample', 'patient', 'gender'], 'undefined');
   }
 
   /**
    * Meta data to display.
    */
-  get data(): [string, any][] {
-    return loGet(this.item, 'metadata', []);
+  get metadata(): [string, any][] {
+    return loToPairs(loGet(this.item, 'thumbnailMetadata', { }));
   }
-
-  /**
-   * Creates an instance of tissues browser grid popover content component.
-   *
-   * @param downloadService Service used to download data for a tissue sample.
-   */
-  constructor(private downloadService: DownloadService) { }
 
   /**
    * Tracks a meta data tuple by its label.
@@ -53,14 +45,14 @@ export class TissuesBrowserGridPopoverContentComponent {
    * @param data Meta data tuple.
    * @returns The label of the meta data.
    */
-  trackByLabel(data: [string, any]): string {
-    return data[0];
+  trackByLabel(metadata: [string, any]): string {
+    return metadata[0];
   }
 
   /**
    * Downloads the tissue sample referenced by this component.
    */
   download(): void {
-    this.downloadService.download(this.item);
+    // FIXME: Implement me!
   }
 }

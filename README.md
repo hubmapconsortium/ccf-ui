@@ -5,20 +5,16 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/hubmapconsortium/ccf-ui/develop.svg)](https://github.com/hubmapconsortium/ccf-ui/commits/develop)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 [![View Staging Site](https://img.shields.io/badge/staging-online-brightgreen.svg)](https://ccf-ui.netlify.com/)
-[![View Demo](https://img.shields.io/badge/demo-offline-red.svg)]()
+[![View Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://hubmapconsortium.github.io/ccf-ui/)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=develop&project=hubmapconsortium_ccf-ui&metric=alert_status)](https://sonarcloud.io/dashboard?branch=develop&id=hubmapconsortium_ccf-ui)
-[![Documentation Status](https://ccf-ui.netlify.com/docs/images/coverage-badge-documentation.svg)]()
+[![Documentation Status](https://ccf-ui.netlify.com/docs/images/coverage-badge-documentation.svg)](https://ccf-ui.netlify.com/docs/index.html)
 
-[WIP] CCF-UI: Common Coordinate Framework User Interface (Proof of Concept)
+CCF-UI: Common Coordinate Framework User Interface (Proof of Concept)
 
 ## Change Log
 
 See the [ChangeLog](CHANGELOG.md) for the latest developments.
 
-## Usage
-
-TODO
-
 ## Credits
 
-CCF-UI is developed at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/)
+CCF-UI is developed at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). It is funded by NIH Award [OT2OD026671](https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220").

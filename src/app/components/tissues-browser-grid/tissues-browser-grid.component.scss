@@ -1,17 +1,64 @@
+$default-num-columns: 6;
+$num-column-classes: 12;
+$item-min-width: 220px;
+$item-max-width: 768px;
+$item-min-height: 160px;
+$item-max-height: 559px;
+$height-width-ratio: $item-min-height / $item-min-width;
+
+@function item-width($n) { @return (100% / $n); }
+@function item-height($n) { @return $height-width-ratio * item-width($n); }
+
 .tissues-browser-grid.wrapper {
   .container {
-    .popover-container ::ng-deep .bs-popover-right {
-      margin-left: 0;
+    .popover-container {
+      ::ng-deep .popover-content {
+        width: item-width($default-num-columns);
+        height: item-height($default-num-columns);
+        min-width: $item-min-width;
+        max-width: $item-max-width;
+        min-height: $item-min-height;
+        max-height: $item-max-height;
+
+        &.bs-popover-right {
+          margin-left: 0;
+        }
+
+        .popover-body {
+          line-height: normal;
+        }
+      }
+
+      @for $n from 1 through $num-column-classes {
+        &[data-num-columns="#{$n}"] ::ng-deep .popover-content {
+          width: item-width($n);
+          height: item-height($n);
+        }
+      }
     }
 
     .grid {
       display: flex;
       flex-flow: row wrap;
       align-content: flex-start;
+      margin: 52px 20px;
 
       .item {
-        min-width: 220px; // Might need tweaking.
-        max-width: 10000px; // FIXME: Set appropriate maximum width
+        position: relative;
+        width: item-width($default-num-columns);
+        padding-top: item-height($default-num-columns);
+        min-width: $item-min-width;
+        max-width: $item-max-width;
+        min-height: $item-min-height;
+        max-height: $item-max-height;
+        margin: 4px;
+
+        @for $n from 1 through $num-column-classes {
+          &[data-num-columns="#{$n}"] {
+            width: item-width($n);
+            padding-top: item-height($n);
+          }
+        }
       }
     }
   }

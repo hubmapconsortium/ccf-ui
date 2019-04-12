@@ -1,18 +1,33 @@
-import { Store, NgxsModule, StateContext } from '@ngxs/store';
 import { TestBed } from '@angular/core/testing';
-import { NavigationState } from './navigation.state';
 import { RouterNavigation } from '@ngxs/router-plugin';
-import { NavigationStateModel } from './navigation.model';
+import { NgxsModule, StateContext, Store } from '@ngxs/store';
+import { of as rxOf } from 'rxjs';
+import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
+
+import { LocalDatabaseService } from '../../services/database/local/local-database.service';
+import { NavigationState } from './navigation.state';
 
 
 describe('State', () => {
 describe('Navigation', () => {
+  const mockedDatabaseService = {
+    getTissueImages(filter: (obj: any) => boolean) {
+      filter({ id: 11 });
+      return rxOf([
+        { slice: { sample: { patient: { anatomicalLocations: ['bar'] } } } }
+      ]);
+    }
+  };
+
   let store: Store;
   let state: NavigationState;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([NavigationState])]
+      imports: [NgxsModule.forRoot([NavigationState])],
+      providers: [
+        { provide: LocalDatabaseService, useValue: mockedDatabaseService }
+      ]
     });
   });
 
@@ -30,6 +45,7 @@ describe('Navigation', () => {
 
     beforeEach(() => {
       ctx = jasmine.createSpyObj('context', ['dispatch', 'patchState', 'setState', 'getState']);
+      ctx.getState.and.returnValue({ });
     });
 
     describe('updateActiveFromRoute(ctx, action)', () => {
@@ -54,7 +70,25 @@ describe('Navigation', () => {
       });
 
       describe('when routing to tissue', () => {
-        // TODO: Create tests when implemented.
+        const action = createRouterNavigationAction(undefined, 'foo');
+
+        beforeEach(async () => {
+          const result = state.updateActiveFromRoute(ctx, action);
+          if (result) {
+            await result.pipe(
+              rxTake(1),
+              rxTimeout(1000)
+            ).toPromise();
+          }
+        });
+
+        it('sets the active tissue id', () => {
+          expectPatchStateToHaveBeenCalledWith({ activeTissueId: 'foo' });
+        });
+
+        it('sets the active organ id', () => {
+          expectPatchStateToHaveBeenCalledWith({ activeOrganId: 'bar' });
+        });
       });
 
       describe('when routing to anything else', () => {
