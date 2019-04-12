@@ -10,7 +10,9 @@ import { OrganComponent } from './organ.component';
 describe('OrganComponent', () => {
   let component: OrganComponent;
   let fixture: ComponentFixture<OrganComponent>;
-  const mockNavigationService = {};
+  const mockNavigationService = {
+    createTissuePath: (a: string): [string, string] => ['/test', 'test']
+  };
   const mockOrganService = {
     getOrganSourcePath: (): Observable<string> => of('1', '2', '3', '4', '5')
   };

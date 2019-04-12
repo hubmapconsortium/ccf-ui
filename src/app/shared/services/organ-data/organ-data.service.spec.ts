@@ -5,7 +5,14 @@ import { OrganDataService } from './organ-data.service';
 describe('OrganDataService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [],
+      providers: [OrganDataService]
+    });
+  });
+
+  it('should be createdsadasdas', () => {
     const service: OrganDataService = TestBed.get(OrganDataService);
     expect(service).toBeTruthy();
   });
