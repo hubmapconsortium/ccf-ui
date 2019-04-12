@@ -1,23 +1,32 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatExpansionModule } from '@angular/material';
 import { By } from '@angular/platform-browser';
+import { capitalize as loCapitalize } from 'lodash';
 import { MockRender } from 'ng-mocks';
 import { Subject } from 'rxjs';
 
 import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 import { TissueComponent } from './tissue.component';
 
+
 describe('TissueComponent', () => {
   const mockedDataService = {
     getTissueSourcePath() {
       return mockedDataService.getTissueSourcePathSubject = new Subject();
     },
+
     getMetadata() {
       return mockedDataService.getMetadataSubject = new Subject();
     },
 
+    getOrganName() {
+      return mockedDataService.getOrganNameSubject = new Subject();
+    },
+
     getTissueSourcePathSubject: undefined as Subject<any>,
-    getMetadataSubject: undefined as Subject<any>
+    getMetadataSubject: undefined as Subject<any>,
+    getOrganNameSubject: undefined as Subject<any>
   };
 
   let component: TissueComponent;
@@ -26,6 +35,7 @@ describe('TissueComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
+      imports: [MatExpansionModule],
       declarations: [TissueComponent],
       providers: [
         { provide: TissueDataService, useValue: mockedDataService }
@@ -50,14 +60,14 @@ describe('TissueComponent', () => {
     });
 
     describe('tissueMetadata', () => {
-      const data = 'abcdef jklmno';
+      const data: {[label: string]: string} = {'label1': 'abcdef jklmno', 'label2': 'xyz'};
 
       beforeEach(() => {
         mockedDataService.getMetadataSubject.next(data);
       });
 
       it('sets data from the service', () => {
-        expect(component.tissueMetadata).toEqual(data);
+        expect(component.tissueMetadata).toEqual(jasmine.arrayContaining(Object.entries(data)));
       });
     });
 
@@ -80,6 +90,18 @@ describe('TissueComponent', () => {
       it('is called with the source path', () => {
         expect(spy).toHaveBeenCalledWith(data);
       });
+    });
+  });
+
+  describe('organName', () => {
+    const data = 'organX';
+
+    beforeEach(() => {
+      mockedDataService.getOrganNameSubject.next(data);
+    });
+
+    it('sets data from the service', () => {
+      expect(component.organName).toEqual(loCapitalize(data));
     });
   });
 

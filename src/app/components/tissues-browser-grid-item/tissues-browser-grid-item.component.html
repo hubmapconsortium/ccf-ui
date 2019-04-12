@@ -1,5 +1,5 @@
 <div class="tissues-browser-grid-item wrapper">
   <div class="container">
-    <img class="tile" [attr.src]="tileUrl" [attr.alt]="description" [routerLink]="navigator.createTissuePath(item.id)">
+    <div class="tile" [style.background-image]="thumbnailUrl" [routerLink]="navigator.createTissuePath(item.id)"></div>
   </div>
 </div>
