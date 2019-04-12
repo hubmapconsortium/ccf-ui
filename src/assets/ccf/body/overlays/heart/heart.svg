@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="overlay" viewBox="0 0 800 1000" width="800" height="1000">
-    <image xlink:href="/assets/ccf/body/overlays/heart/heart.png" width="80" height="80" x="245" y="225"></image>
+    <image xlink:href="/ccf-ui/assets/ccf/body/overlays/heart/heart.png" width="80" height="80" x="245" y="225"></image>
   </g>
 </svg>

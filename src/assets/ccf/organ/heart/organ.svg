@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="organ" viewBox="0 0 800 1000" width="800" height="1000">
-    <image xlink:href="/assets/ccf/organ/heart/organ.jpg" width="720" height="960" transform="translate(40 20)"/>
+    <image xlink:href="/ccf-ui/assets/ccf/organ/heart/organ.jpg" width="720" height="960" transform="translate(40 20)"/>
   </g>
 </svg>

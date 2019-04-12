@@ -19,7 +19,7 @@ export class BodyDataService {
   /**
    * Path to images of tissues - TODO - this will come from a json file eventually
    */
-  private readonly pathToImages = '/assets/ccf/body/';
+  private readonly pathToImages = 'assets/ccf/body/';
 
   /**
    * Gets body source path
