@@ -9,7 +9,7 @@
       <div class="label"> HOME </div>
     </div>
 
-    <div class="item body" [routerLink]="'/body/1'" routerLinkActive="active">
+    <div class="item body" [routerLink]="navigator.bodyPath | async" routerLinkActive="active">
       <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
       <div class="label"> BODY </div>
     </div>

@@ -19,21 +19,15 @@ export class BodyDataService {
    * Path to images of tissues - TODO - this will come from a json file eventually
    */
   private readonly pathToImages = 'assets/ccf/body/';
-  /**
-   * Image file names - TODO - these will come from a json file eventually
-   */
-  private readonly imageSources = [
-    '/male/',
-    '/female/',
-    '/both/'
-  ];
+
   /**
    * Gets body source path
    * @returns Observable of body source path
    */
   getBodySourcePath(): Observable<string> {
     return this.routeState.pipe(rxMap(state => {
-      return state && this.pathToImages + this.imageSources[+state.root.firstChild.params.bodyId - 1];
+      console.log(state.root.firstChild.params);
+      return state && this.pathToImages + state.root.firstChild.params.bodyId + '/';
     }));
   }
   /**

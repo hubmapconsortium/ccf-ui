@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalDatabaseService } from '../../shared/services/database/local/local-database.service';
 import { OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
 
 @Component({

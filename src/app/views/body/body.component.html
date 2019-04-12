@@ -16,9 +16,9 @@
         <div class="body">
             <svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use [attr.xlink:href]="bodyImagePath+'body.svg#body'" x="0" y="0"></use>
-              <g (click)="onOverlayClick($event)">
-                <image class="kidney-icon" [attr.xlink:href]="'assets/ccf/body/overlays/kidney.png'" x="233" y="400"></image>
-              </g>
+                <g *ngFor="let overlay of bodyOverlays.overlays">
+                    <image [attr.class]="overlay.class" [routerLink]="navigator.createOrganPath(overlay.id)" [attr.xlink:href]="overlay.path" [attr.x]="overlay.x" [attr.y]="overlay.y"></image>
+                </g>
             </svg>
         </div> 
       </div>

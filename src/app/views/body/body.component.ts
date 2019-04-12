@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BodyDataService } from '../../shared/services/body-data/body-data.service';
+import { NavigationService } from '../../shared/services/navigation/navigation.service';
+import { BodyOverlays } from './body-overlays';
 
 @Component({
   selector: 'ccf-body',
@@ -9,19 +11,21 @@ import { BodyDataService } from '../../shared/services/body-data/body-data.servi
 })
 export class BodyComponent implements OnInit {
 
-  readonly kidney = 'kidney';
-  readonly heart = 'heart';
   bodyImagePath: string;
   metaData: any;
 
-  constructor(private readonly bodyService: BodyDataService) {}
+  constructor(private readonly bodyService: BodyDataService, readonly navigator: NavigationService, readonly bodyOverlays: BodyOverlays) {
+    const overlays = this.bodyOverlays;
+    console.log(this.bodyOverlays);
+  }
 
   ngOnInit(): void {
     this.bodyService.getBodySourcePath().subscribe((image: string) => {
+      console.log(image);
       this.bodyImagePath = image;
     });
-    this.bodyService.getMetadata().subscribe((d) => {
-      this.metaData = d;
+    this.bodyService.getMetadata().subscribe((data) => {
+      this.metaData = data;
     });
   }
 }

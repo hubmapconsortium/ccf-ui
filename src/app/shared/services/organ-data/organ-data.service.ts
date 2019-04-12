@@ -22,17 +22,17 @@ export class OrganDataService {
   /**
    * Image file names - TODO - these will come from a json file eventually
    */
-  private readonly imageSources = [
-    '/heart/',
-    '/kidney/'
-  ];
+  private readonly imageSources = {
+    heart: '/heart/',
+    kidney: '/kidney/'
+  };
   /**
    * Gets organ source path
    * @returns Observable of organ source path
    */
   getOrganSourcePath(): Observable<string> {
     return this.routeState.pipe(rxMap(state => {
-      return state && this.pathToImages + this.imageSources[+state.root.firstChild.params.organId - 1];
+      return state && this.pathToImages + this.imageSources[+state.root.firstChild.params.organId];
     }));
   }
   /**
@@ -44,6 +44,5 @@ export class OrganDataService {
     return this.routeState.pipe(rxMap(state => {
       return state && 'organ' + state.root.firstChild.params.organId + 'sample data!';
     }));
-    //this.localDatabase.getPatients().subscribe
   }
 }
