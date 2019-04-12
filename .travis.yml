@@ -47,6 +47,8 @@ jobs:
     if: branch = master
     script:
     - npm run build -- --base-href=/ccf-ui/
+    - cp dist/ccf-ui/index.html dist/ccf-ui/404.html
+    - touch dist/ccf-ui/.nojekyll
     - npm run compodoc
     deploy:
       provider: pages
