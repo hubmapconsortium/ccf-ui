@@ -1,14 +1,32 @@
 .tissues-browser-grid-popover-content.wrapper {
   .container {
+    .icon {
+      color: #757575;
+      outline: none;
+    }
+
     .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+
+      .gender {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+      }
+    }
+
+    .body {
+      font-size: 12px;
     }
 
     .footer {
-      display: flex;
-      justify-content: flex-end;
+      .download {
+        position: absolute;
+        bottom: 4px;
+        right: 8px;
+        cursor: pointer;
+      }
     }
   }
 }
