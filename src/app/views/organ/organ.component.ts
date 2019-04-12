@@ -30,11 +30,4 @@ export class OrganComponent implements OnInit {
       this.organImagePath = image;
     });
   }
-  /**
-   * overlay click navigates to tissue view.
-   * @param event object from template.
-   */
-  onOverlayClick(event: Event) {
-    // TODO: Add metadata and tooltip
-  }
 }
