@@ -23,6 +23,10 @@ $height-width-ratio: $item-min-height / $item-min-width;
         &.bs-popover-right {
           margin-left: 0;
         }
+
+        .popover-body {
+          line-height: normal;
+        }
       }
 
       @for $n from 1 through $num-column-classes {
