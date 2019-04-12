@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BodyDataService } from '../../shared/services/body-data/body-data.service';
 import { NavigationService } from '../../shared/services/navigation/navigation.service';
-import { BodyOverlays } from './body-overlays';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ccf-body',
@@ -11,17 +11,15 @@ import { BodyOverlays } from './body-overlays';
 })
 export class BodyComponent implements OnInit {
 
-  bodyImagePath: string;
-  metaData: any;
+  bodyImagePath$: Observable<string>;
+  metaData$: Observable<any>;
+  bodyOverlays$: Observable<{id: string, path: string}[]>;
 
-  constructor(private readonly bodyService: BodyDataService, readonly navigator: NavigationService, readonly bodyOverlays: BodyOverlays) { }
+  constructor(private readonly bodyService: BodyDataService, readonly navigator: NavigationService) { }
 
   ngOnInit(): void {
-    this.bodyService.getBodySourcePath().subscribe((image: string) => {
-      this.bodyImagePath = image;
-    });
-    this.bodyService.getMetadata().subscribe((data) => {
-      this.metaData = data;
-    });
+    this.bodyImagePath$ = this.bodyService.getBodySourcePath();
+    this.metaData$ = this.bodyService.getMetadata();
+    this.bodyOverlays$ = this.bodyService.getBodyOverlays();
   }
 }

@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { BodyRoutingModule } from './body-routing.module';
 import { BodyComponent } from './body.component';
 import { BodyDataService } from '../../shared/services/body-data/body-data.service';
-import { BodyOverlays } from './body-overlays';
 
 @NgModule({
   imports: [
@@ -12,6 +11,6 @@ import { BodyOverlays } from './body-overlays';
     BodyRoutingModule
   ],
   declarations: [ BodyComponent ],
-  providers: [ BodyDataService, BodyOverlays ]
+  providers: [ BodyDataService ]
 })
 export class BodyModule { }

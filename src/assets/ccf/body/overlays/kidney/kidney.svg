@@ -1,3 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <use [attr.xlink:href]="bodyImagePath+'kidney.png'" x="0" y="0"></use>
+  <g id="overlay" viewBox="0 0 800 1000" width="800" height="1000">
+    <image xlink:href="/assets/ccf/body/overlays/kidney/kidney.png" width="110" height="110" x="213" y="383"></image>
+  </g>
 </svg>

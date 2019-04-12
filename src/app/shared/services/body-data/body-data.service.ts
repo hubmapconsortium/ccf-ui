@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { RouterStateSnapshot } from '@angular/router';
 import { RouterState } from '@ngxs/router-plugin';
 import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Observable, of as rxOf } from 'rxjs';
 import { map as rxMap } from 'rxjs/operators';
 
 import { LocalDatabaseService } from '../database/local/local-database.service';
+
 
 @Injectable()
 export class BodyDataService {
@@ -37,6 +38,15 @@ export class BodyDataService {
   getMetadata(): Observable<string> {
     return this.routeState.pipe(rxMap(state => {
       return state && '';
+    }));
+  }
+
+  /**
+   * TODO - this should come from a service
+   */
+  getBodyOverlays(): Observable<{id: string, path: string}[]> {
+    return rxOf(['kidney', 'heart'].map(s => {
+      return {id: s, path: `${this.pathToImages}/overlays/${s}/${s}.svg`};
     }));
   }
 }
