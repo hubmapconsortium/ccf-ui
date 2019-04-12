@@ -1,27 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 
+/**
+ * Component organ view component.
+ */
 @Component({
   selector: 'ccf-organ',
   templateUrl: './organ.component.html',
   styleUrls: ['./organ.component.scss']
 })
+
 export class OrganComponent implements OnInit {
-
+  /**
+   * Organ image path of organ component displays corresponding image deictated by naviagation path.
+   */
   organImagePath: string;
-  constructor(private readonly organService: OrganDataService) { }
+  /**
+   * Creates an instance of organ component.
+   * @param organService gets metadata and organ path from the service.
+   */
+  constructor(private readonly organService: OrganDataService, readonly navService: NavigationService) { }
 
+  /**
+   * on init listen to changes in browser navigation path.
+   */
   ngOnInit() {
     this.organService.getOrganSourcePath().subscribe((image: string) => {
       this.organImagePath = image;
-      console.log(image);
-    });
-    this.organService.getMetadata().subscribe((d) => {
-      console.log(d);
     });
   }
-
-  onOverlayClick(event) {
-    alert(event);
+  /**
+   * overlay click navigates to tissue view.
+   * @param event object from template.
+   */
+  onOverlayClick(event: Event) {
+    // TODO: Add metadata and tooltip
   }
 }

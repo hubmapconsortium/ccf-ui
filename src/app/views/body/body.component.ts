@@ -14,14 +14,10 @@ export class BodyComponent implements OnInit {
   bodyImagePath: string;
   metaData: any;
 
-  constructor(private readonly bodyService: BodyDataService, readonly navigator: NavigationService, readonly bodyOverlays: BodyOverlays) {
-    const overlays = this.bodyOverlays;
-    console.log(this.bodyOverlays);
-  }
+  constructor(private readonly bodyService: BodyDataService, readonly navigator: NavigationService, readonly bodyOverlays: BodyOverlays) { }
 
   ngOnInit(): void {
     this.bodyService.getBodySourcePath().subscribe((image: string) => {
-      console.log(image);
       this.bodyImagePath = image;
     });
     this.bodyService.getMetadata().subscribe((data) => {

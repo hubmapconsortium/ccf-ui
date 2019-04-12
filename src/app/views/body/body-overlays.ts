@@ -34,7 +34,7 @@ export class BodyOverlays {
         id : this.heart,
         class: this.heart + '-icon',
         path: this.overlaysPath + this.heart + '/' + this.heart + '.png',
-        x: 233,
+        x: 253,
         y: 250
     }];
 }

@@ -14,8 +14,7 @@
       <div class="label"> BODY </div>
     </div>
 
-    <!--<div *ngIf="navigator.organPath | async as organPath" class="item organ" [routerLink]="organPath"-->
-    <div class="item organ" [routerLink]="'/organ/1'"
+    <div *ngIf="navigator.organPath | async as organPath" class="item organ" [routerLink]="organPath"
          routerLinkActive="active">
       <mat-icon class="icon svg-icon" svgIcon="toolbar:organ"></mat-icon>
       <div class="label"> ORGAN </div>
