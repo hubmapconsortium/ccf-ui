@@ -85,8 +85,16 @@ export class TissueComponent implements OnInit, OnDestroy {
    * on destroy lifecycle hook of this component - unsubscribes to subscriptions
    */
   ngOnDestroy() {
-    this.tissueSourcePathSubscription.unsubscribe();
-    this.tissueMetadataSubscription.unsubscribe();
-    this.viewer.destroy();
+    if (this.tissueSourcePathSubscription) {
+      this.tissueSourcePathSubscription.unsubscribe();
+    }
+
+    if (this.tissueMetadataSubscription) {
+      this.tissueMetadataSubscription.unsubscribe();
+    }
+
+    if (this.viewer) {
+      this.viewer.destroy();
+    }
   }
 }
