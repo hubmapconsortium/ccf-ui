@@ -88,11 +88,6 @@ jobs:
     script:
     - npm run compodoc
   - stage: test
-    name: Run sonar checks
-    if: NOT (tag IS present)
-    script:
-    - sonar-scanner -X
-  - stage: test
     name: Run linter
     if: NOT (tag IS present) 
     script:
