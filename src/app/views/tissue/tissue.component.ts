@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { capitalize as loCapitalize } from 'lodash';
 import openSeaDragon from 'openseadragon';
 import { Subscription } from 'rxjs';
