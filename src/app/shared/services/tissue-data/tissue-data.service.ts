@@ -3,15 +3,10 @@ import { RouterStateSnapshot } from '@angular/router';
 import { RouterState } from '@ngxs/router-plugin';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import {
-  filter as rxFilter, map as rxMap,
-  pluck as rxPluck,
-  shareReplay as rxShareReplay,
-  switchMap as rxSwitchMap,
-} from 'rxjs/operators';
+import { filter as rxFilter, pluck as rxPluck, switchMap as rxSwitchMap } from 'rxjs/operators';
 
-import { LocalDatabaseService } from '../database/local/local-database.service';
 import { TissueImage } from '../../state/database/database.models';
+import { LocalDatabaseService } from '../database/local/local-database.service';
 
 /**
  * Injectable data service for individual tissue view's data
@@ -36,8 +31,7 @@ export class TissueDataService {
     this.tissueImageObservable = this.routeState.pipe(
       rxPluck('root', 'firstChild', 'params', 'tissueId'),
       rxFilter(tissueId => tissueId !== undefined),
-      rxSwitchMap(tissueId => this.database.getTissueImages((image) => image.id === tissueId)),
-      rxShareReplay(1)
+      rxSwitchMap(tissueId => this.database.getTissueImages((image) => image.id === tissueId))
     );
   }
 
