@@ -5,8 +5,8 @@ import { Select } from '@ngxs/store';
 import { Observable, of as rxOf } from 'rxjs';
 import { map as rxMap } from 'rxjs/operators';
 
+import { environment } from '../../../../environments/environment';
 import { LocalDatabaseService } from '../database/local/local-database.service';
-
 
 @Injectable()
 export class BodyDataService {
@@ -17,9 +17,9 @@ export class BodyDataService {
   @Select(RouterState.state)
   private routeState: Observable<RouterStateSnapshot>;
   /**
-   * Path to images of tissues - TODO - this will come from a json file eventually
+   * Path to images of bodies
    */
-  private readonly pathToImages = 'assets/ccf/body/';
+  private readonly pathToImages = environment.ccfAssetUrl + '/body/';
 
   /**
    * Gets body source path
@@ -46,7 +46,7 @@ export class BodyDataService {
    */
   getBodyOverlays(): Observable<{id: string, path: string}[]> {
     return rxOf(['kidney', 'heart'].map(s => {
-      return {id: s, path: `${this.pathToImages}/overlays/${s}/${s}.svg`};
+      return {id: s, path: `${this.pathToImages}overlays/${s}/${s}.svg`};
     }));
   }
 }

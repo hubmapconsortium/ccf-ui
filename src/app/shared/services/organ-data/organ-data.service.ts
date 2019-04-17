@@ -5,6 +5,8 @@ import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { map as rxMap } from 'rxjs/operators';
 
+import { environment } from '../../../../environments/environment';
+
 @Injectable()
 export class OrganDataService {
   constructor() { }
@@ -14,9 +16,9 @@ export class OrganDataService {
   @Select(RouterState.state)
   private routeState: Observable<RouterStateSnapshot>;
   /**
-   * Path to images of tissues - TODO - this will come from a json file eventually
+   * Path to images of organs
    */
-  private readonly pathToImages = 'assets/ccf/organ/';
+  private readonly pathToImages = environment.ccfAssetUrl + '/organ/';
   /**
    * Gets organ source path
    * @returns Observable of organ source path
