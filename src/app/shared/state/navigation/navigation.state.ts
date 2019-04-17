@@ -30,6 +30,22 @@ export class NavigationState implements NgxsOnInit {
   }
 
   /**
+   * Selector for the currently active tissue.
+   */
+  @Selector()
+  static activeTissue(state: NavigationStateModel): TissueImage | undefined {
+    return state.activeTissue;
+  }
+
+  /**
+   * Selector for the currently active organ.
+   */
+  @Selector()
+  static activeOrgan(state: NavigationStateModel): { id: string } | undefined { // FIXME: Update with proper organ object
+    return state.activeOrgan;
+  }
+
+  /**
    * Updates the state on navigation to an organ or tissue.
    */
   @Action(RouterNavigation)

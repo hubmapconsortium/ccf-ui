@@ -5,6 +5,7 @@ import { set } from 'lodash';
 import { Shallow } from 'shallow-render';
 
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
+import { TissueImage } from '../database/database.models';
 import { NavigationStateModel } from './navigation.model';
 import { NavigationState } from './navigation.state';
 
@@ -100,6 +101,26 @@ describe('NavigationState', () => {
       it('returns the tissues array', () => {
         const result = NavigationState.tissues(navigationState);
         expect(result).toEqual(navigationState.tissues);
+      });
+    });
+
+    describe('activeTissue', () => {
+      const tissue = { id: 'tid' } as TissueImage;
+      const navigationState = { activeTissue: tissue } as NavigationStateModel;
+
+      it('returns the active tissue object', () => {
+        const result = NavigationState.activeTissue(navigationState);
+        expect(result).toEqual(tissue);
+      });
+    });
+
+    describe('activeOrgan', () => {
+      const organ = { id: 'oid' };
+      const navigationState = { activeOrgan: organ } as NavigationStateModel;
+
+      it('returns the active tissue object', () => {
+        const result = NavigationState.activeOrgan(navigationState);
+        expect(result).toEqual(organ);
       });
     });
 

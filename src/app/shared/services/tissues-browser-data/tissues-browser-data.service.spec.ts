@@ -1,10 +1,10 @@
 import { Component, NgModule, Type } from '@angular/core';
 import { Store } from '@ngxs/store';
+import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
-import { TissuesBrowserDataService } from './tissues-browser-data.service';
 import { NavigationStateModel } from '../../state/navigation/navigation.model';
-import { take } from 'rxjs/operators';
+import { TissuesBrowserDataService } from './tissues-browser-data.service';
 
 @Component({ selector: 'ccf-test', template: '' })
 class TestComponent { }
