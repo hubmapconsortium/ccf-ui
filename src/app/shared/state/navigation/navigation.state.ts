@@ -1,11 +1,11 @@
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { RouterNavigation } from '@ngxs/router-plugin';
-import { Action, State, StateContext, NgxsOnInit } from '@ngxs/store';
+import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
+import { take } from 'rxjs/operators';
 
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
 import { TissueImage } from '../database/database.models';
 import { NavigationStateModel } from './navigation.model';
-import { take } from 'rxjs/operators';
 
 /**
  * State storing the active navigations.
@@ -21,6 +21,14 @@ import { take } from 'rxjs/operators';
   }
 })
 export class NavigationState implements NgxsOnInit {
+  /**
+   * Selector for the `TissueImage` array.
+   */
+  @Selector()
+  static tissues(state: NavigationStateModel): TissueImage[] {
+    return state.tissues;
+  }
+
   /**
    * Updates the state on navigation to an organ or tissue.
    */

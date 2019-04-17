@@ -5,6 +5,7 @@ import { set } from 'lodash';
 import { Shallow } from 'shallow-render';
 
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
+import { NavigationStateModel } from './navigation.model';
 import { NavigationState } from './navigation.state';
 
 @Component({ selector: 'ccf-test', template: '' })
@@ -93,6 +94,15 @@ describe('NavigationState', () => {
   });
 
   describe('selectors', () => {
+    describe('tissues', () => {
+      const navigationState = { tissues: [{ id: '1' }, { id: '2' }, { id: '3' }] } as NavigationStateModel;
+
+      it('returns the tissues array', () => {
+        const result = NavigationState.tissues(navigationState);
+        expect(result).toEqual(navigationState.tissues);
+      });
+    });
+
     // Additional tests
   });
 });
