@@ -1,116 +1,98 @@
-import { TestBed } from '@angular/core/testing';
+import { Component, NgModule, Type } from '@angular/core';
 import { RouterNavigation } from '@ngxs/router-plugin';
-import { NgxsModule, StateContext, Store } from '@ngxs/store';
-import { of as rxOf } from 'rxjs';
-import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
+import { StateContext } from '@ngxs/store';
+import { set } from 'lodash';
+import { Shallow } from 'shallow-render';
 
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
 import { NavigationState } from './navigation.state';
 
+@Component({ selector: 'ccf-test', template: '' })
+class TestComponent { }
 
-describe('State', () => {
-describe('Navigation', () => {
-  const mockedDatabaseService = {
-    getTissueImages(filter: (obj: any) => boolean) {
-      filter({ id: 11 });
-      return rxOf([
-        { slice: { sample: { patient: { anatomicalLocations: ['bar'] } } } }
-      ]);
-    }
-  };
+@NgModule({ declarations: [TestComponent], exports: [TestComponent] })
+class TestModule { }
 
-  let store: Store;
+describe('NavigationState', () => {
+  let ctx: { [K in (keyof StateContext<any>)]: jasmine.Spy };
+  let get: <T>(type: Type<T>) => T;
+  let shallow: Shallow<TestComponent>;
   let state: NavigationState;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([NavigationState])],
-      providers: [
-        { provide: LocalDatabaseService, useValue: mockedDatabaseService }
-      ]
-    });
+  function createRoute(organId?: string, tissueId?: string, tissueOrganId?: string): RouterNavigation {
+    const params = { tissueId, organId };
+    const data = { id: tissueId };
+    const route = { };
+    set(data, 'slice.sample.patient.anatomicalLocations', [tissueOrganId]);
+    set(route, 'routerState.root.firstChild.params', params);
+    set(route, 'routerState.root.firstChild.data.tissue', tissueId && data);
+    return route as RouterNavigation;
+  }
+
+  function expectStateToBePatched(partial: object): void {
+    expect(ctx.patchState).toHaveBeenCalledWith(jasmine.objectContaining(partial));
+  }
+
+  beforeEach(async () => {
+    const initialState = { };
+    set(initialState, 'activeOrgan.id', 'initial-oid');
+
+    shallow = new Shallow(TestComponent, TestModule)
+      .dontMock(NavigationState)
+      .mock(LocalDatabaseService, { });
+
+    ({ get } = await shallow.render());
+    state = get(NavigationState);
+
+    ctx = jasmine.createSpyObj('context', ['dispatch', 'patchState', 'setState', 'getState']);
+    ctx.getState.and.returnValue(initialState);
   });
 
-  beforeEach(() => {
-    store = TestBed.get(Store);
-    state = TestBed.get(NavigationState);
-  });
-
-  describe('Actions', () => {
-    let ctx: { [K in (keyof StateContext<any>)]: jasmine.Spy };
-
-    function expectPatchStateToHaveBeenCalledWith(partial: object): void {
-      expect(ctx.patchState).toHaveBeenCalledWith(jasmine.objectContaining(partial));
-    }
-
-    beforeEach(() => {
-      ctx = jasmine.createSpyObj('context', ['dispatch', 'patchState', 'setState', 'getState']);
-      ctx.getState.and.returnValue({ });
-    });
-
+  describe('actions', () => {
     describe('updateActiveFromRoute(ctx, action)', () => {
-      function createRouterNavigationAction(organId?: string, tissueId?: string): RouterNavigation {
-        return { routerState: { root: { firstChild: { params: { organId, tissueId } } } } } as any;
-      }
+      const tissueId = 'tid';
+      const organId = 'oid';
 
-      describe('when routing to organ', () => {
-        const action = createRouterNavigationAction('abc');
+      describe('when route is /tissue/:tissueId', () => {
+        const route = createRoute(undefined, tissueId, organId);
+        beforeEach(() => state.updateActiveFromRoute(ctx, route));
 
-        beforeEach(() => {
-          state.updateActiveFromRoute(ctx, action);
+        it('sets the active tissue object', () => {
+          expectStateToBePatched({ activeTissue: { id: tissueId, slice: jasmine.anything() } });
         });
 
-        it('sets the active organ id', () => {
-          expectPatchStateToHaveBeenCalledWith({ activeOrganId: 'abc' });
-        });
-
-        it('unsets the active tissue id', () => {
-          expectPatchStateToHaveBeenCalledWith({ activeTissueId: undefined });
+        it('sets the associated organ object', () => {
+          expectStateToBePatched({ activeOrgan: { id: organId } });
         });
       });
 
-      describe('when routing to tissue', () => {
-        const action = createRouterNavigationAction(undefined, 'foo');
+      describe('when route is /organ/:organId', () => {
+        const route = createRoute(organId);
+        beforeEach(() => state.updateActiveFromRoute(ctx, route));
 
-        beforeEach(async () => {
-          const result = state.updateActiveFromRoute(ctx, action);
-          if (result) {
-            await result.pipe(
-              rxTake(1),
-              rxTimeout(1000)
-            ).toPromise();
-          }
+        it('sets the active organ object', () => {
+          expectStateToBePatched({ activeOrgan: { id: organId } });
         });
 
-        it('sets the active tissue id', () => {
-          expectPatchStateToHaveBeenCalledWith({ activeTissueId: 'foo' });
-        });
-
-        it('sets the active organ id', () => {
-          expectPatchStateToHaveBeenCalledWith({ activeOrganId: 'bar' });
+        it('unsets the active tissue object', () => {
+          expectStateToBePatched({ activeTissue: undefined });
         });
       });
 
-      describe('when routing to anything else', () => {
-        const action = createRouterNavigationAction();
+      describe('when route is <unknown>', () => {
+        const route = set({ }, 'routerState.root.firstChild', null) as RouterNavigation;
+        beforeEach(() => state.updateActiveFromRoute(ctx, route));
 
-        beforeEach(() => {
-          state.updateActiveFromRoute(ctx, action);
-        });
-
-        it('has no effect', () => {
-          expect(ctx.dispatch).not.toHaveBeenCalled();
-          expect(ctx.patchState).not.toHaveBeenCalled();
+        it('does nothing', () => {
           expect(ctx.setState).not.toHaveBeenCalled();
+          expect(ctx.patchState).not.toHaveBeenCalled();
+          expect(ctx.dispatch).not.toHaveBeenCalled();
         });
       });
     });
-
-    // Additional tests
   });
 
-  describe('Selectors', () => {
+  describe('selectors', () => {
     // Additional tests
   });
-});
 });
