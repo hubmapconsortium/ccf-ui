@@ -92,6 +92,9 @@
             ],
             "codeCoverage": true,
             "codeCoverageExclude": [
+              "src/test.ts",
+              "src/polyfills.ts",
+              "src/environments/**/*.ts",
               "src/app/**/*.module.ts"
             ]
           }
