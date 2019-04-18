@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { RouterStateSnapshot } from '@angular/router';
-import { RouterState } from '@ngxs/router-plugin';
 import { Select } from '@ngxs/store';
-import { Observable, of as rxOf, of } from 'rxjs';
-import { map as rxMap, pluck, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 
-import { LocalDatabaseService } from '../database/local/local-database.service';
-import { NavigationState } from '../../state/navigation/navigation.state';
 import { NavigationStateModel } from '../../state/navigation/navigation.model';
+import { NavigationState } from '../../state/navigation/navigation.state';
 
 
 @Injectable()
