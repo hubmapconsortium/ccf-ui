@@ -53,11 +53,15 @@ export class NavigationState implements NgxsOnInit {
     const route = action.routerState.root.firstChild;
     if (!route) { return; }
 
-    const { tissueId, organId } = route.params;
+    const { tissueId, organId, bodyId } = route.params;
     if (tissueId) {
       this.setActiveTissue(ctx, route);
     } else if (organId) {
       this.setActiveOrgan(ctx, route);
+    } else if (bodyId) {
+      ctx.patchState({
+        activeBodyId: bodyId
+      });
     }
   }
 

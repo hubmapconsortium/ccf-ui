@@ -3,16 +3,16 @@ import { Select } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
+import { environment } from '../../../../environments/environment';
 import { NavigationStateModel } from '../../state/navigation/navigation.model';
 import { NavigationState } from '../../state/navigation/navigation.state';
-
 
 @Injectable()
 export class BodyDataService {
   /**
    * Path to images of tissues - TODO - this will come from a json file eventually
    */
-  private readonly pathToImages = 'assets/ccf/body';
+  private readonly pathToImages = environment.ccfAssetUrl + '/body/';
 
   /**
    * Emits the current navigation state.
@@ -45,7 +45,7 @@ export class BodyDataService {
    */
   getBodyOverlays(): Observable<{id: string, path: string}[]> {
     return of(['kidney', 'heart'].map(s => {
-      return {id: s, path: `${this.pathToImages}/overlays/${s}/${s}.svg`};
+      return {id: s, path: `${this.pathToImages}overlays/${s}/${s}.svg`};
     }));
   }
 }

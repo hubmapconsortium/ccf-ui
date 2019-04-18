@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  localDatabaseUrl: 'https://hubmapconsortium.github.io/ccf-ui-sampledata/v1/data.yml'
+  localDatabaseUrl: 'https://hubmapconsortium.github.io/ccf-ui-sampledata/v1/data.yml',
+  ccfAssetUrl: '/ccf-ui-sampledata/ccf'
 };
 
 /*
