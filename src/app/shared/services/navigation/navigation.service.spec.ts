@@ -1,97 +1,77 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-import { NgxsModule, Store } from '@ngxs/store';
-import { of as rxOf } from 'rxjs';
-import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
+import { Component, NgModule, Type } from '@angular/core';
+import { RouterNavigation } from '@ngxs/router-plugin';
+import { Actions, ofAction, Store } from '@ngxs/store';
+import { PartialDeep } from 'lodash';
+import { take } from 'rxjs/operators';
+import { Shallow } from 'shallow-render';
 
-import { NavigationState } from '../../state/navigation/navigation.state';
-import { LocalDatabaseService } from '../database/local/local-database.service';
+import { NavigationStateModel } from '../../state/navigation/navigation.model';
 import { NavigationService } from './navigation.service';
 
-describe('NavigationService', () => {
-  const mockedDatabaseService = {
-    getTissueImages() {
-      return rxOf([]);
-    }
-  };
+@Component({ selector: 'ccf-test', template: '' })
+class TestComponent { }
 
+@NgModule({ declarations: [TestComponent], exports: [TestComponent] })
+class TestModule { }
+
+describe('NavigationService', () => {
+  let actions: Actions;
+  let get: <T>(type: Type<T>) => T;
   let service: NavigationService;
+  let shallow: Shallow<TestComponent>;
   let store: Store;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        NgxsModule.forRoot([NavigationState]),
-        NgxsRouterPluginModule.forRoot(),
-        RouterTestingModule
-      ],
-      providers: [
-        { provide: LocalDatabaseService, useValue: mockedDatabaseService }
-      ]
-    });
-  });
+  beforeEach(async () => {
+    shallow = new Shallow(TestComponent, TestModule)
+      .dontMock(NavigationService);
 
-  beforeEach(() => {
-    store = TestBed.get(Store);
-    service = TestBed.get(NavigationService);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+    ({ get } = await shallow.render());
+    actions = get(Actions);
+    store = get(Store);
+    service = get(NavigationService);
   });
 
   function describePath(
-    name: 'homePath' | 'bodyPath' | 'tissuesBrowserPath' | 'organPath' | 'tissuePath',
-    validState?: object, invalidState?: object
+    path: 'homePath' | 'bodyPath' | 'tissuesBrowserPath' | 'organPath' | 'tissuePath',
+    defaultState?: PartialDeep<NavigationStateModel>, nullState?: PartialDeep<NavigationStateModel>
   ): void {
-    describe(name, () => {
-      function getValue(): Promise<string | any[]> {
-        return service[name].pipe(
-          rxTake(1),
-          rxTimeout(1000)
-        ).toPromise();
-      }
+    function beforeEachResetState(state?: PartialDeep<NavigationStateModel>): void {
+      if (state) { beforeEach(() => store.reset({ navigation: state })); }
+    }
 
-      describe('when state is valid', () => {
-        if (validState !== undefined) {
-          beforeEach(() => {
-            store.reset(validState);
-          });
-        }
+    function getValue(): Promise<string | any[]> {
+      return service[path].pipe(take(1)).toPromise();
+    }
 
-        it('emits valid paths', async () => {
+    describe(path, () => {
+      describe('with default state', () => {
+        beforeEachResetState(defaultState);
+        it('produces full valid paths', async () => {
           expect(await getValue()).toBeTruthy();
         });
       });
 
-      describe('when state is invalid', () => {
-        if (invalidState !== undefined) {
-          beforeEach(() => {
-            store.reset(invalidState);
+      if (nullState) {
+        describe('with null state', () => {
+          beforeEachResetState(nullState);
+          it('produces undefined', async () => {
+            expect(await getValue()).toBeUndefined();
           });
-
-          it('emits undefined', async () => {
-            expect(await getValue()).toBeFalsy();
-          });
-        }
-      });
+        });
+      }
     });
   }
 
   describePath('homePath');
-  describePath('bodyPath');
   describePath('tissuesBrowserPath');
-  describePath('organPath', { navigation: { activeOrganId: 'foo' } }, { navigation: { } });
-  describePath('tissuePath', { navigation: { activeTissueId: 'foo' } }, { navigation: { } });
+  describePath('bodyPath', undefined, { });
+  describePath('organPath', { activeOrgan: { id: 'oid' } }, { });
+  describePath('tissuePath', { activeTissue: { id: 'tid' } }, { });
 
   function describePathCreation(methodName: 'createOrganPath' | 'createTissuePath'): void {
     describe(`${methodName}(identifier)`, () => {
       let path: any[];
-
-      beforeEach(() => {
-        path = service[methodName]('testid');
-      });
+      beforeEach(() => path = service[methodName]('testid'));
 
       it('returns an array of path segments', () => {
         expect(path).toEqual(jasmine.any(Array));
@@ -105,4 +85,20 @@ describe('NavigationService', () => {
 
   describePathCreation('createOrganPath');
   describePathCreation('createTissuePath');
+
+  function describeNavigation(methodName: 'navigateToHome', ...args: any[]): void {
+    describe(`${methodName}(${args.join(', ')})`, () => {
+      let reaction: Promise<any>;
+      beforeEach(() => {
+        reaction = actions.pipe(ofAction(RouterNavigation), take(1)).toPromise();
+        (service[methodName] as Function)(...args);
+      });
+
+      it('causes a route change', async () => {
+        expect(await reaction).toBeTruthy();
+      });
+    });
+  }
+
+  describeNavigation('navigateToHome');
 });
