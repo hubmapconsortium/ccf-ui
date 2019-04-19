@@ -1,6 +1,6 @@
 export class SetGenderFilter {
   static readonly type = '[Search API] Set Gender Filter';
-  constructor(readonly gender: 'male' | 'female' | 'male-female') { }
+  constructor(readonly gender?: 'male' | 'female') { }
 }
 
 export class SetAgeRangeFilter {

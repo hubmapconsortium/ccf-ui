@@ -1,5 +1,5 @@
 export interface SearchStateModel {
-  gender: 'male'| 'female' | 'male-female';
+  gender: 'male'| 'female' | undefined;
   ageRange: [number | undefined, number | undefined];
   tmc: string[];
   technologies: string[];

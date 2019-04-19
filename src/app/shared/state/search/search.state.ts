@@ -7,7 +7,7 @@ import { SearchStateModel } from './search.model';
 @State<SearchStateModel>({
   name: 'search',
   defaults: {
-    gender: 'male-female',
+    gender: undefined,
     ageRange: [undefined, undefined],
     tmc: [],
     technologies: []
