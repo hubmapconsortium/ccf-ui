@@ -1,4 +1,21 @@
 <div class="ccf-sidenav wrapper">
   <div class="container">
+    <form class="form">
+      <mat-form-field class="field" appearance="outline">
+        <input type="text" placeholder="Search for ..." aria-label="Number" matInput [formControl]="myControl"
+          [matAutocomplete]="auto" class="input">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-icon matSuffix class="help-icon" popover="content to be shown in the popover" popoverPlacement="right"
+          [popoverOnHover]="true" [popoverCloseOnMouseOutside]="false" [popoverAnimation]="true">help</mat-icon>
+      </mat-form-field>
+    </form>
+
+    <mat-icon class="icon svg-icon gender" svgIcon="gender:male"></mat-icon>
+    <mat-icon class="icon svg-icon gender" svgIcon="gender:female"></mat-icon>
+    <mat-icon class="icon svg-icon gender" svgIcon="gender:male-female"></mat-icon>
   </div>
 </div>
