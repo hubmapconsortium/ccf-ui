@@ -12,7 +12,7 @@ export class BodyDataService {
   /**
    * Path to images of tissues - TODO - this will come from a json file eventually
    */
-  private readonly pathToImages = environment.ccfAssetUrl + '/body/';
+  private readonly pathToImages = environment.ccfAssetUrl + '/body';
 
   /**
    * Emits the current navigation state.
@@ -45,7 +45,7 @@ export class BodyDataService {
    */
   getBodyOverlays(): Observable<{id: string, path: string}[]> {
     return of(['kidney', 'heart'].map(s => {
-      return {id: s, path: `${this.pathToImages}overlays/${s}/${s}.svg`};
+      return {id: s, path: `${this.pathToImages}/overlays/${s}/${s}.svg`};
     }));
   }
 }

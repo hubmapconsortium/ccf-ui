@@ -11,7 +11,7 @@ export class OrganDataService {
   /**
    * Path to images of tissues - TODO - this will come from a json file eventually
    */
-  private readonly pathToImages = environment.ccfAssetUrl + '/body/';
+  private readonly pathToImages = environment.ccfAssetUrl + '/organ';
 
   /**
    * Emits the currently active organ.
