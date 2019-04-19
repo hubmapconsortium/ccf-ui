@@ -31,8 +31,8 @@ jobs:
     if: branch = develop AND type != pull_request
     script:
     - npm run build -- --base-href=/
-    - echo "/* /index.html 200" > dist/ccf-ui/_redirects
-    - echo "/ccf-ui-sampledata/* https://hubmapconsortium.github.io/ccf-ui-sampledata/:splat" >> dist/ccf-ui/_redirects
+    - echo "/ccf-ui-sampledata/* https://hubmapconsortium.github.io/ccf-ui-sampledata/:splat 200" > dist/ccf-ui/_redirects
+    - echo "/* /index.html 200" >> dist/ccf-ui/_redirects
     - npm run compodoc
     deploy:
       provider: pages
