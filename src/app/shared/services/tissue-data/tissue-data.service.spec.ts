@@ -1,115 +1,64 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-import { NgxsModule, Store } from '@ngxs/store';
-import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
-import { Observable, Subject } from 'rxjs';
-import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
+import { Component, NgModule, Type } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { set } from 'lodash';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { Shallow } from 'shallow-render';
 
-import { TissueDataService } from './tissue-data.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { LocalDatabaseService } from '../database/local/local-database.service';
 import { TissueImage } from '../../state/database/database.models';
+import { TissueDataService } from './tissue-data.service';
+
+@Component({ selector: 'ccf-test', template: '' })
+class TestComponent { }
+
+@NgModule({ declarations: [TestComponent], exports: [TestComponent] })
+class TestModule { }
 
 describe('TissueDataService', () => {
-  const mockedLocalDatabase = {
-    getTissueImages() {
-      return mockedLocalDatabase.getTissueImageSubject = new Subject();
-    },
+  const tissue = { tileUrl: 'fake' } as TissueImage;
+  set(tissue, 'metadata.label', 'info');
+  set(tissue, 'slice.sample.patient.anatomicalLocations[0]', 'heart');
 
-    getTissueImageSubject: undefined as Subject<any>
-  };
-
-  const state = {
-    router: {
-      state: {
-        root: {
-          firstChild: {
-            params: {
-              tissueId: 1
-            }
-          }
-        }
-      }
-    }
-  };
-
-  const tissueImage = {
-    tileUrl: 'fob',
-    metadata: { label: 'metadata'} as any,
-    slice: { sample: { patient: { anatomicalLocations: ['heart'] } } }
-  } as TissueImage;
-
+  let get: <T>(type: Type<T>) => T;
   let service: TissueDataService;
+  let shallow: Shallow<TestComponent>;
   let store: Store;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        NgxsModule.forRoot(),
-        NgxsRouterPluginModule.forRoot(),
-        NgxsDispatchPluginModule.forRoot(),
-        RouterTestingModule
-      ],
-      providers: [
-        { provide: LocalDatabaseService, useValue: mockedLocalDatabase },
-        TissueDataService
-      ]
-    });
+  beforeEach(async () => {
+    shallow = new Shallow(TestComponent, TestModule)
+      .provide(TissueDataService)
+      .dontMock(TissueDataService);
+
+    ({ get } = await shallow.render());
+    store = get(Store);
+    service = get(TissueDataService);
   });
 
-  beforeEach(() => {
-    service = TestBed.get(TissueDataService);
-    store = TestBed.get(Store);
-  });
+  beforeEach(() => store.reset({ navigation: { activeTissue: tissue } }));
 
-  beforeEach(() => {
-    store.reset(state);
-  });
+  function describeStateSlice(
+    methodName: 'getTissueSourcePath' | 'getMetadata' | 'getOrganName',
+    dataDescription: string, expected: any
+  ): void {
+    describe(`${methodName}()`, () => {
+      let obs: Observable<any>;
+      beforeEach(() => obs = service[methodName]());
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+      it('returns an observable', () => {
+        expect(obs).toEqual(jasmine.any(Observable));
+      });
 
-  describe('getTissueSourcePath()', () => {
-    let value: string;
-
-    beforeEach(async () => {
-      const observable = service.getTissueSourcePath();
-      const promise = observable.pipe(
-        rxTake(1),
-        rxTimeout(1000)
-      ).toPromise();
-
-      mockedLocalDatabase.getTissueImageSubject.next([tissueImage]);
-      value = await promise;
+      it(dataDescription, async () => {
+        const result = await obs.pipe(take(1)).toPromise();
+        expect(result).toEqual(expected);
+      });
     });
+  }
 
-    it('non-empty', () => {
-      expect(value).toBeTruthy();
-    });
-
-    it('to be string', () => {
-      expect(value).toEqual(jasmine.any(String));
-    });
-  });
-
-  describe('getMetadata()', () => {
-    let value: {[label: string]: string};
-
-    beforeEach(async () => {
-      const observable = service.getMetadata();
-      const promise = observable.pipe(
-        rxTake(1),
-        rxTimeout(1000)
-      ).toPromise();
-
-      mockedLocalDatabase.getTissueImageSubject.next([tissueImage]);
-      value = await promise;
-    });
-
-    it('non-empty', () => {
-      expect(value).toBeTruthy();
-    });
-  });
+  describeStateSlice('getTissueSourcePath', 'emits the tile url of the currently active tissue', tissue.tileUrl);
+  describeStateSlice('getMetadata', 'emits the metadata of the currently active tissue', tissue.metadata);
+  describeStateSlice(
+    'getOrganName', 'emits the name of the currently active organ',
+    tissue.slice.sample.patient.anatomicalLocations[0]
+  );
 });

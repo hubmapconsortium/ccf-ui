@@ -72,7 +72,7 @@ describe('TissueComponent', () => {
     });
 
     describe('launchTissueViewer(path)', () => {
-      const data = '/assets/path';
+      const data = 'assets/path';
       let spy: jasmine.Spy;
 
       beforeEach(() => {

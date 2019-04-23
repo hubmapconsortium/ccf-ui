@@ -1,8 +1,13 @@
+import { TissueImage } from '../database/database.models';
 
 /**
  * Navigation state model.
  */
 export interface NavigationStateModel {
-  activeOrganId: string;
-  activeTissueId: string;
+  tissues: TissueImage[];
+  activeTissue: TissueImage;
+  activeOrgan: { id: string }; // FIXME: Correct typing
+
+
+  activeBodyId: string;
 }
