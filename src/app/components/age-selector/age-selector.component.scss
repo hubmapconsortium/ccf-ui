@@ -1,0 +1,19 @@
+.ccf-age-selector.wrapper {
+  .container {
+  }
+}
+
+// Styles for the popover slider
+.ccf-age-selector.detached {
+  width: 20vw;
+  // Use padding instead of margin!
+
+  &.hidden {
+    visibility: hidden;
+
+    ::ng-deep * {
+      // Force all slider elements to become hidden
+      visibility: hidden !important;
+    }
+  }
+}

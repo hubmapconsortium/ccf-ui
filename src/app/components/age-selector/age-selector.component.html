@@ -1,0 +1,13 @@
+<div class="ccf-age-selector wrapper">
+  <div class="container">
+    <div *cdk-portal class="ccf-age-selector detached" [class.hidden]="!isSliderOpen">
+      <ng5-slider class="slider" [options]="options" [(value)]="lowValue" [(highValue)]="highValue" #slider>
+      </ng5-slider>
+    </div>
+
+    <button class="button" mat-stroked-button (click)="toggleSliderPopover()">
+      Age: {{ lowValue }} - {{ highValue }}
+      <mat-icon class="icon font-icon">arrow_drop_down</mat-icon>
+    </button>
+  </div>
+</div>
