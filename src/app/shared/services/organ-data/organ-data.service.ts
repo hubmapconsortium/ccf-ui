@@ -4,9 +4,13 @@ import { Observable } from 'rxjs';
 import { map, mergeAll, pluck, toArray } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { TissueSample } from '../../state/database/database.models';
 import { NavigationState } from '../../state/navigation/navigation.state';
 import { LocalDatabaseService } from '../database/local/local-database.service';
 
+/**
+ * Injectable organ data service talks to localdatabase.
+ */
 @Injectable()
 export class OrganDataService {
 
@@ -29,15 +33,27 @@ export class OrganDataService {
    * @returns Observable of organ source path
    */
   getOrganSourcePath(): Observable<string> {
-    this.getMetadata();
     return this.activeOrgan.pipe(
       pluck('id'),
       map(id => id && `${this.pathToImages}/${id}/`)
     );
   }
 
-  getMetadata(): Observable<{ [label: string]: string }[]> {
-    return this.localDatabase.getTissueSamples().pipe(mergeAll(), pluck('metadata'), toArray());
+  /**
+   * Gets metadata of tissue samples.
+   * @param tissueSampleId filters by sample id.
+   * @returns metadata observable of metadata.
+   */
+  getMetadata(tissueSampleId: string): Observable<{ [label: string]: string }[]> {
+    return this.localDatabase.getTissueSamples((tissueSample: TissueSample) => tissueSample.id === tissueSampleId)
+    .pipe(mergeAll(), pluck('metadata'), toArray());
   }
 
+  /**
+   * Gets all tissue samples
+   * @returns all tissue samples' observable.
+   */
+  getAllTissueSamples(): Observable<TissueSample[]> {
+    return this.localDatabase.getTissueSamples();
+  }
 }

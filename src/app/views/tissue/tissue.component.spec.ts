@@ -67,7 +67,7 @@ describe('TissueComponent', () => {
       });
 
       it('sets data from the service', () => {
-        expect(component.tissueMetadata).toEqual(jasmine.arrayContaining(Object.entries(data)));
+        expect(component.tissueMetadata).toEqual(jasmine.arrayContaining([data]));
       });
     });
 

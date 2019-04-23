@@ -1,22 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { TissueSample } from 'src/app/shared/state/database/database.models';
+import { Component, Input } from '@angular/core';
 
+/**
+ * metadata common component to dsiplay metadata of bidy, organ tisues and cells.
+ */
 @Component({
   selector: 'ccf-metadata',
   templateUrl: './metadata.component.html',
   styleUrls: ['./metadata.component.scss']
 })
-export class MetadataComponent implements OnInit {
-
-  @Input() metadata$: Observable<{ [label: string]: string }[]>;
-  metadata: { [label: string]: string }[];
-  constructor() { }
-
-  ngOnInit() {
-    this.metadata$.subscribe(d => {
-      this.metadata = d;
-    });
-  }
-
+export class MetadataComponent {
+  /**
+   * Input  of metadata component is list of metadata objects.
+   */
+  @Input() metadata: { [label: string]: string }[];
 }

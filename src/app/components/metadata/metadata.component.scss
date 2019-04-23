@@ -8,8 +8,14 @@
 
         .value {
           text-align: left;
-          padding-left: 1rem;
+          padding-left: 3rem;
           font-weight: bold;
         }
       }
+    .container {
+        .metadata-table {
+            float: right;
+            padding-right: 1rem;
+        }
+    }
 }
