@@ -20,7 +20,7 @@ export class OrganComponent implements OnInit {
    * Creates an instance of organ component.
    * @param organService gets metadata and organ path from the service.
    */
-  constructor(private readonly organService: OrganDataService, readonly navService: NavigationService) { }
+  constructor(public readonly organService: OrganDataService, readonly navService: NavigationService) { }
 
   /**
    * on init listen to changes in browser navigation path.

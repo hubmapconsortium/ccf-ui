@@ -1,0 +1,12 @@
+<div class="metadata wrapper">
+  <div class="container">
+    <div *ngFor="let metadataItem of metadata">
+      <table>
+        <tr *ngFor="let item of metadataItem | keyvalue" class="row">
+          <td class="label">{{ item.key }}:</td>
+          <td class="value">{{ item.value }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
