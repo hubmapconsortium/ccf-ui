@@ -3,8 +3,14 @@
   }
 }
 
+$pointer-size: 12px;
+
 // Styles for the popover slider
+// NOTE: This must NOT be nested inside the wrapper/container!
 .ccf-age-selector.detached {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 20vw;
   // Use padding instead of margin!
 
@@ -14,6 +20,34 @@
     ::ng-deep * {
       // Force all slider elements to become hidden
       visibility: hidden !important;
+    }
+  }
+
+  .slider ::ng-deep {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    .ng5-slider-bar {
+      background: #e0e0e0;
+    }
+
+    .ng5-slider-selection {
+      background: #20558a;
+    }
+
+    .ng5-slider-pointer {
+      width: $pointer-size;
+      height: $pointer-size;
+      top: 2px - ($pointer-size / 2);
+      background-color: #20558a;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #fafafa;
+      outline: none;
+
+      &:after {
+        display: none;
+      }
     }
   }
 }
