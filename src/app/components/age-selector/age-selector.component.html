@@ -9,7 +9,7 @@
       <div class="label max">{{ options.ceil }}</div>
     </div>
 
-    <button class="button" mat-stroked-button (click)="toggleSliderPopover()">
+    <button class="button" [class.highlight]="isSliderOpen" mat-stroked-button (click)="toggleSliderPopover()">
       Age: {{ ageRangeLabel }}
       <mat-icon class="icon font-icon">arrow_drop_down</mat-icon>
     </button>

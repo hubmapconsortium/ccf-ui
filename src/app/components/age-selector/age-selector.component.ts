@@ -1,4 +1,4 @@
-import { ConnectedPosition, FlexibleConnectedPositionStrategy, Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
 import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { Options } from 'ng5-slider';
@@ -77,12 +77,9 @@ export class AgeSelectorComponent implements OnDestroy {
 
   private initializeSliderPopover(): void {
     const { overlayRef, popoverPortal } = this;
-    const config = overlayRef.getConfig();
-    const positionStrategy = config.positionStrategy as FlexibleConnectedPositionStrategy;
 
     overlayRef.attach(popoverPortal);
     overlayRef.updatePosition();
-    // positionStrategy.withLockedPosition();
 
     this.sliderInitialized = true;
   }
