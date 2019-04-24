@@ -4,19 +4,24 @@
       position: fixed;
       z-index: 2;
     }
+    
     .drawer-wrapper {
       display: flex;
       height: calc(100vh - 3.1875rem);
       margin-left: 4.25rem;
+      
       .container {
         width: 100%;
         background: none;
+        
         .drawer {
-          width: 20vw;
+          width: 25vw;
+          
           .sidenav {
             height: 100%;
           }
         }
+
         // .view-container {
         //   padding: 2rem 1rem 1rem 1rem; // when modifying this update calculations for height and width
         //   height: calc(100vh - 3.1875rem - 3rem); //total height - toolbar - padding
@@ -26,6 +31,7 @@
         //     width: calc(100vw - 2rem); // total width - padding (since search sidenav was closed)
         //   }
         // }
+        
         .view-container {
           height: 100%;
         }
