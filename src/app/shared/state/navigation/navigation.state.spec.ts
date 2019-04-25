@@ -21,8 +21,8 @@ describe('NavigationState', () => {
   let shallow: Shallow<TestComponent>;
   let state: NavigationState;
 
-  function createRoute(organId?: string, tissueId?: string, tissueOrganId?: string): RouterNavigation {
-    const params = { tissueId, organId };
+  function createRoute(organId?: string, tissueId?: string, tissueOrganId?: string, bodyId?: string): RouterNavigation {
+    const params = { tissueId, organId, bodyId };
     const data = { id: tissueId };
     const route = { };
     set(data, 'slice.sample.patient.anatomicalLocations', [tissueOrganId]);
@@ -54,6 +54,7 @@ describe('NavigationState', () => {
     describe('updateActiveFromRoute(ctx, action)', () => {
       const tissueId = 'tid';
       const organId = 'oid';
+      const bodyId = 'bid';
 
       describe('when route is /tissue/:tissueId', () => {
         const route = createRoute(undefined, tissueId, organId);
@@ -78,6 +79,15 @@ describe('NavigationState', () => {
 
         it('unsets the active tissue object', () => {
           expectStateToBePatched({ activeTissue: undefined });
+        });
+      });
+
+      describe('when route is /body/:bodyId', () => {
+        const route = createRoute(undefined, undefined, undefined, bodyId);
+        beforeEach(() => state.updateActiveFromRoute(ctx, route));
+
+        it('sets the active body identifier', () => {
+          expectStateToBePatched({ activeBodyId: bodyId });
         });
       });
 
