@@ -208,7 +208,7 @@ export class SearchState {
   /**
    * Removes a technology to the active search.
    */
-  @Action(UnselectTMC)
+  @Action(UnselectTechnology)
   removeTechnology(ctx: StateContext<SearchStateModel>, action: UnselectTechnology): void {
     const state = ctx.getState();
     ctx.patchState({ technologies: without(state.technologies, action.technology) });
