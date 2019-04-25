@@ -1,0 +1,17 @@
+<div class="ccf-age-selector wrapper">
+  <div class="container">
+    <!-- NOTE: Do NOT remove the ccf-age-selector class! -->
+    <div *cdk-portal class="ccf-age-selector detached" [class.hidden]="!isSliderOpen" #popover>
+      <div class="label min">{{ options.floor }}</div>
+      <ng5-slider class="slider" [options]="options" [(value)]="lowValue" [(highValue)]="highValue"
+                  (userChangeEnd)="sliderValueChanged()">
+      </ng5-slider>
+      <div class="label max">{{ options.ceil }}</div>
+    </div>
+
+    <button class="button" [class.highlight]="isSliderOpen" mat-stroked-button (click)="toggleSliderPopover()">
+      Age: {{ ageRangeLabel }}
+      <mat-icon class="icon font-icon">arrow_drop_down</mat-icon>
+    </button>
+  </div>
+</div>
