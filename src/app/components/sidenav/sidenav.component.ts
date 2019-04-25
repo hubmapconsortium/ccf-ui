@@ -6,10 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  searchFilterMap = {
-    'Technologies': ['IMS', 'MxIF', 'AF'] ,
-    'TMCs': ['TMC-Vanderbilt', 'TMC-UCSD', 'TMC-Stanford', 'TMC-Florida', 'TMC-CalTech']
-  };
-
-  searchFilterCategories = Object.keys(this.searchFilterMap);
+  searchFilters = new Map([
+    ['Technologies', ['IMS', 'MxIF', 'AF']] ,
+    ['TMCs', ['TMC-Vanderbilt', 'TMC-UCSD', 'TMC-Stanford', 'TMC-Florida', 'TMC-CalTech']]
+  ]);
 }

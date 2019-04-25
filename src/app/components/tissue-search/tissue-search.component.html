@@ -1,15 +1,19 @@
 <div class="lower-search">
-  <mat-tab-group [disableRipple]="true" class="search-group">
+  <mat-tab-group [disableRipple]="true" class="search-category-group">
     <mat-tab *ngFor="let criteria of searchFilterCategories">
       <ng-template mat-tab-label>
         <div class="tab">
           <span>{{criteria}}</span>
         </div>
       </ng-template>
+
       <ng-template matTabContent>
-        <mat-chip-list class="search-criteria-content" [multiple]="true" [selectable]="true">
-          <mat-chip *ngFor="let filter of searchFilterMap[criteria]"  [disableRipple]="true"  class="filter">{{filter}}</mat-chip>
-        </mat-chip-list>
+        <div class="search-criteria-content">
+          <div *ngFor="let filter of searchFilters.get(criteria)" class="filter" (click)="selected(criteria, filter)"
+            [ngClass]="{'selected': isSelected(criteria, filter)}">
+            {{filter}}
+          </div>
+        </div>
       </ng-template>
     </mat-tab>
   </mat-tab-group>

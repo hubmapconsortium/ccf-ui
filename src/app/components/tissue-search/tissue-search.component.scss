@@ -35,6 +35,10 @@
       border-radius: 2px;
       border: 1px solid #DCDCDC;
       cursor: pointer;
+
+      &.selected {
+        background: darkgray;
+      }
     }
   }
 
