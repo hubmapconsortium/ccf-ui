@@ -36,9 +36,6 @@ describe('NavigationState', () => {
   }
 
   beforeEach(async () => {
-    const initialState = { };
-    set(initialState, 'activeOrgan.id', 'initial-oid');
-
     shallow = new Shallow(TestComponent, TestModule)
       .dontMock(NavigationState)
       .mock(LocalDatabaseService, { });
@@ -46,6 +43,8 @@ describe('NavigationState', () => {
     ({ get } = await shallow.render());
     state = get(NavigationState);
 
+    const initialState = { };
+    set(initialState, 'activeOrgan.id', 'initial-oid');
     ctx = jasmine.createSpyObj('context', ['dispatch', 'patchState', 'setState', 'getState']);
     ctx.getState.and.returnValue(initialState);
   });
