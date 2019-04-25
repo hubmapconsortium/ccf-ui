@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { map, mergeAll, pluck, toArray } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { TissueSample } from '../../state/database/database.models';
@@ -38,17 +38,6 @@ export class OrganDataService {
       map(id => id && `${this.pathToImages}/${id}/`)
     );
   }
-
-  /**
-   * Gets metadata of tissue samples.
-   * @param tissueSampleId filters by sample id.
-   * @returns metadata observable of metadata.
-   */
-  getMetadata(tissueSampleId: string): Observable<{ [label: string]: string }[]> {
-    return this.localDatabase.getTissueSamples((tissueSample: TissueSample) => tissueSample.id === tissueSampleId)
-    .pipe(mergeAll(), pluck('metadata'), toArray());
-  }
-
   /**
    * Gets all tissue samples
    * @returns all tissue samples' observable.

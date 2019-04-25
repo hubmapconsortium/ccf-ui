@@ -52,20 +52,16 @@ export class OrganComponent implements OnInit {
   /**
    * Gets tissue samples gets list of tissues samples.
    */
-  getTissueSamples(): void {
+  getTissueSamples() {
     this.organService.getAllTissueSamples().subscribe(d => {
       this.tissueSamples = d;
     });
   }
-
   /**
    * on overlay, display metadata.
    * @param tissueSampleId id of tissue sample on which hovered.
    */
-  onTissueSampleMouseenter(tissueSampleId: string) {
-    const metadataSubscription = this.organService.getMetadata(tissueSampleId).subscribe(d => {
-      this.tissueSampleMetadata = d;
-      metadataSubscription.unsubscribe();
-    });
+  onTissueSampleMouseenter(tissueSampleMetadata: { [label: string]: string }) {
+      this.tissueSampleMetadata = [tissueSampleMetadata];
   }
 }
