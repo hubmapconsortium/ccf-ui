@@ -102,12 +102,12 @@ export class SearchState {
   @Action(SelectTechnology)
   addTechnology(ctx: StateContext<SearchStateModel>, action: SelectTechnology): void {
     const state = ctx.getState();
-    ctx.patchState({ tmc: [...state.technologies, action.technology] });
+    ctx.patchState({ technologies: [...state.technologies, action.technology] });
   }
 
   @Action(UnselectTMC)
   removeTechnology(ctx: StateContext<SearchStateModel>, action: UnselectTechnology): void {
     const state = ctx.getState();
-    ctx.patchState({ tmc: without(state.technologies, action.technology) });
+    ctx.patchState({ technologies: without(state.technologies, action.technology) });
   }
 }
