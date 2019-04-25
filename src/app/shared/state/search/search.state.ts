@@ -10,7 +10,7 @@ import {
   without,
 } from 'lodash';
 
-import { TissueImage } from '../database/database.models';
+import { Patient, TissueImage } from '../database/database.models';
 import {
   SelectTechnology,
   SelectTMC,
@@ -28,7 +28,28 @@ export class FilterBuilder<T> {
   /**
    * The filters to 'and' together into a single filter.
    */
-  private filters: ((obj: T) => boolean)[] = [];
+  private filters: ((obj: T) => boolean)[];
+
+  /**
+   * Creates an instance of filter builder.
+   * @param [other] Takes the filter builder for the filters.
+   */
+  constructor(other?: FilterBuilder<T>) {
+    this.filters = other ? other.filters.slice() : [];
+  }
+
+  /**
+   * Adds filter
+   * @param filter Filter builder that we want to add.
+   */
+  addFilter(filter: (obj: T) => boolean): FilterBuilder<T> {
+    if (filter !== undefined) {
+      const copy = new FilterBuilder(this);
+      copy.filters.push(filter);
+      return copy;
+    }
+    return this;
+  }
 
   /**
    * Add a filter which matches the value at a propery path.
@@ -36,9 +57,9 @@ export class FilterBuilder<T> {
    * @param path Path to the property to match.
    * @param value The value to match against.
    */
-  addMatches(path: PropertyPath, value: any): this {
+  addMatches(path: PropertyPath, value: any): FilterBuilder<T> {
     if (value !== undefined) {
-      this.filters.push(matchesProperty(path, value));
+      return this.addFilter(matchesProperty(path, value));
     }
     return this;
   }
@@ -49,9 +70,22 @@ export class FilterBuilder<T> {
    * @param path Path to the property.
    * @param values The set of values to match against.
    */
-  addIncludes(path: PropertyPath, values: any[]): this {
+  addIncludes(path: PropertyPath, values: any[]): FilterBuilder<T> {
     if (values !== undefined && values.length > 0) {
-      this.filters.push(obj => includes(values, get(obj, path)));
+      return this.addFilter(obj => includes(values, get(obj, path)));
+    }
+    return this;
+  }
+
+  /**
+   * Add a filter that checks that the path has value in a set.
+   *
+   * @param path Path to the property.
+   * @param values The set of values to match against.
+   */
+  addIsIncluded(path: PropertyPath, value: any): FilterBuilder<T> {
+    if (value !== undefined) {
+      return this.addFilter(obj => includes(get(obj, path), value));
     }
     return this;
   }
@@ -63,9 +97,9 @@ export class FilterBuilder<T> {
    * @param op Comparison operation to apply.
    * @param value Second value to send to the comparison.
    */
-  addCompare<U>(path: PropertyPath, op: (value: U, other: U) => boolean, value: U): this {
+  addCompare<U>(path: PropertyPath, op: (value: U, other: U) => boolean, value: U): FilterBuilder<T> {
     if (op !== undefined && value !== undefined) {
-      this.filters.push(obj => op(get(obj, path), value));
+      return this.addFilter(obj => op(get(obj, path), value));
     }
     return this;
   }
@@ -93,6 +127,21 @@ export class FilterBuilder<T> {
   }
 })
 export class SearchState {
+  /**
+   * Creates a filter function for patient image objects based on the current search state.
+   * @param state A sanpshot of the current state.
+   * @returns A filter function that returns true for all objects matching the current search.
+   */
+  @Selector()
+  static patientFilterBuilder(state: SearchStateModel): FilterBuilder<Patient> {
+    const { gender, ageRange: [min, max], tmc } = state;
+    return new FilterBuilder<Patient>()
+      .addMatches('gender', gender)
+      .addCompare('age', greaterThanEqual, min)
+      .addCompare('age', lessThanEqual, max)
+      .addIncludes('provider', tmc);
+  }
+
   /**
    * Creates a filter function for tissue image objects based on the current search state.
    *
