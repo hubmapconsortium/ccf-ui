@@ -7,23 +7,23 @@ import { MockModule, MockRender } from 'ng-mocks';
 import { take as rxTake, timeout as rxTimeout } from 'rxjs/operators';
 
 import { NavigationService } from '../../shared/services/navigation/navigation.service';
-import { LeftbarComponent } from './leftbar.component';
+import { NavigationComponent } from './navigation.component';
 import { Subject } from 'rxjs';
 
-describe('LeftbarComponent', () => {
+describe('NavigationComponent', () => {
   const mockedNavigationService = {
     organPath: new Subject(),
     tissuePath: new Subject()
   };
 
-  let component: LeftbarComponent;
+  let component: NavigationComponent;
   let element: DebugElement;
   let fixture: ComponentFixture<{ searchActive: boolean }>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, MockModule(MatIconModule)],
-      declarations: [LeftbarComponent],
+      declarations: [NavigationComponent],
       providers: [
         { provide: NavigationService, useValue: mockedNavigationService }
       ]
@@ -40,7 +40,7 @@ describe('LeftbarComponent', () => {
       searchActive: false
     });
 
-    element = fixture.debugElement.query(By.directive(LeftbarComponent));
+    element = fixture.debugElement.query(By.directive(NavigationComponent));
     component = element.componentInstance;
   });
 

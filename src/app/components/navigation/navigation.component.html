@@ -1,4 +1,4 @@
-<div class="ccf-leftbar wrapper">
+<div class="ccf-navigation wrapper">
   <div class="container">
     <div class="item search" [class.active]="searchActive" (click)="toggleSearchActive()">
       <mat-icon class="icon font-icon">search</mat-icon>
@@ -38,7 +38,6 @@
        (mouseover)="isCommentItemHovered = true" (mouseout)="isCommentItemHovered = false">
       <mat-icon *ngIf="!isCommentItemHovered; else hoveredCommentIcon" class="icon svg-icon"
                 svgIcon="toolbar:comment-outline">
-        comment
       </mat-icon>
       <ng-template #hoveredCommentIcon>
         <mat-icon class="icon font-icon">comment</mat-icon>

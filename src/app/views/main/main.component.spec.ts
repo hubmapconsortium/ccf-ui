@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MockModule } from 'ng-mocks';
 
 import { HeaderModule } from '../../components/header/header.module';
-import { LeftbarModule } from '../../components/leftbar/leftbar.module';
+import { NavigationModule } from '../../components/navigation/navigation.module';
 import { SidenavModule } from '../../components/sidenav/sidenav.module';
 import { MainComponent } from './main.component';
 
@@ -20,7 +20,7 @@ describe('MainComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         MatSidenavModule, NoopAnimationsModule, MockModule(RouterModule),
-        MockModule(HeaderModule), MockModule(LeftbarModule),
+        MockModule(HeaderModule), MockModule(NavigationModule),
         MockModule(SidenavModule)
       ],
       declarations: [MainComponent]
