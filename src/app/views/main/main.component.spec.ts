@@ -8,7 +8,7 @@ import { MockModule } from 'ng-mocks';
 
 import { HeaderModule } from '../../components/header/header.module';
 import { NavigationModule } from '../../components/navigation/navigation.module';
-import { SidenavModule } from '../../components/sidenav/sidenav.module';
+import { SearchModule } from '../../components/search/search.module';
 import { MainComponent } from './main.component';
 
 
@@ -21,7 +21,7 @@ describe('MainComponent', () => {
       imports: [
         MatSidenavModule, NoopAnimationsModule, MockModule(RouterModule),
         MockModule(HeaderModule), MockModule(NavigationModule),
-        MockModule(SidenavModule)
+        MockModule(SearchModule)
       ],
       declarations: [MainComponent]
     })

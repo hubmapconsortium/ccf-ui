@@ -34,8 +34,8 @@ describe('NavigationComponent', () => {
 
   beforeEach(() => {
     fixture = MockRender(`
-      <ccf-leftbar [(searchActive)]="searchActive">
-      </ccf-leftbar>
+      <ccf-navigation [(searchActive)]="searchActive">
+      </ccf-navigation>
     `, {
       searchActive: false
     });

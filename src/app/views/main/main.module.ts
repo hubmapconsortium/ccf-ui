@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderModule } from '../../components/header/header.module';
 import { NavigationModule } from '../../components/navigation/navigation.module';
-import { SidenavModule } from '../../components/sidenav/sidenav.module';
+import { SearchModule } from '../../components/search/search.module';
 import { MainComponent } from './main.component';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { MainComponent } from './main.component';
     HeaderModule,
     MatSidenavModule,
     BrowserAnimationsModule,
-    SidenavModule,
+    SearchModule,
     NavigationModule
   ],
   declarations: [MainComponent],
