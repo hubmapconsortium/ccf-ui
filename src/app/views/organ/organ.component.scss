@@ -1,16 +1,19 @@
 .ccf-organ.wrapper {
+  width: 100%;
+  height: 100%;
+
+  .container {
     width: 100%;
     height: 100%;
-    .container {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        .organ {
-            margin-left: 25%;
-        }
-        .metadata {
-            width: 25%;
-        }
+    display: flex;
+    justify-content: space-between;
+
+    .organ {
+      margin-left: 25%;
     }
+
+    .metadata {
+      width: 25%;
+    }
+  }
 }

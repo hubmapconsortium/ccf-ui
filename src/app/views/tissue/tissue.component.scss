@@ -1,57 +1,60 @@
-.tissue {
-  &.wrapper {
-    display: flex;
-    width: 100%;
-    height: 100%;
+@import 'global/colors';
 
-    .item {
-      padding: 0.5rem;
+.tissue.wrapper {
+  $view-width: 76%;
+  $metadata-width: 100% - $view-width;
+
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  .item {
+    padding: 0.5rem;
+  }
+
+  .view {
+    width: $view-width;
+    height: 75%;
+    margin: 0;
+  }
+
+  .metadata {
+    width: $metadata-width;
+
+    .organ-name {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      font-weight: normal;
     }
 
-    .view {
-      width: 76%;
-      height: 75%;
-      margin: 0;
-    }
+    .details {
+      border-bottom: 1px solid $border-color;
 
-    .metadata {
-      width: 24%; // because .view, which is a sibling has 76% width
+      .panel {
+        box-shadow: none;
+        width: 100%;
 
-      .organ-name {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        font-weight: normal;
-      }
+        .header {
+          padding-left: 0;
+        }
 
-      .details {
-        border-bottom: 1px solid #d3d3d3;
+        .title {
+          font-weight: bold;
+          font-size: 0.85rem;
+          padding: 0;
+        }
 
-        .panel {
-          box-shadow: none;
-          width: 100%;
+        .row {
+          font-size: 0.75rem;
 
-          .header {
-            padding-left: 0;
+          .label {
+            text-align: right;
           }
 
-          .title {
+          .value {
+            text-align: left;
+            padding-left: 1rem;
             font-weight: bold;
-            font-size: 0.85rem;
-            padding: 0;
-          }
-
-          .row {
-            font-size: 0.75rem;
-
-            .label {
-              text-align: right;
-            }
-
-            .value {
-              text-align: left;
-              padding-left: 1rem;
-              font-weight: bold;
-            }
           }
         }
       }
