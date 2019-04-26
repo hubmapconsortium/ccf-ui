@@ -7,7 +7,8 @@
     <!-- Element used to push all elements after itself to the end of the container -->
     <div class="filler"></div>
 
-    <div class="item about" (mouseover)="isAboutItemHovered = true" (mouseout)="isAboutItemHovered = false" (click)=openAboutModal()>
+    <div class="item about" (mouseover)="isAboutItemHovered = true" (mouseout)="isAboutItemHovered = false"
+         (click)=openAboutDialog()>
       <mat-icon *ngIf="!isAboutItemHovered; else hoveredAboutIcon" class="icon font-icon">info_outline</mat-icon>
       <ng-template #hoveredAboutIcon>
         <mat-icon class="icon font-icon">info</mat-icon>
