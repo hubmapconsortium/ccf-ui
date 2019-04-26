@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { TissueSearchComponent } from './tissue-search.component';
+import { SearchCategoriesComponent } from './search-categories.component';
 
 @NgModule({
-  declarations: [TissueSearchComponent],
+  declarations: [SearchCategoriesComponent],
   imports: [
     CommonModule,
     MatChipsModule,
     MatTabsModule
   ],
-  exports: [TissueSearchComponent]
+  exports: [SearchCategoriesComponent]
 })
-export class TissueSearchModule { }
+export class SearchCategoriesModule { }

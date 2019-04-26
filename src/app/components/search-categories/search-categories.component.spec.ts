@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TissueSearchComponent } from './tissue-search.component';
+import { SearchCategoriesComponent } from './search-categories.component';
 
-describe('TissueSearchComponent', () => {
-  let component: TissueSearchComponent;
-  let fixture: ComponentFixture<TissueSearchComponent>;
+describe('SearchCategoriesComponent', () => {
+  let component: SearchCategoriesComponent;
+  let fixture: ComponentFixture<SearchCategoriesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TissueSearchComponent ]
+      declarations: [ SearchCategoriesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TissueSearchComponent);
+    fixture = TestBed.createComponent(SearchCategoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
