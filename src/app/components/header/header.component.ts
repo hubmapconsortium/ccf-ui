@@ -4,11 +4,11 @@ import { MatDialog } from '@angular/material';
 import { AboutComponent } from '../../components/about/about.component';
 
 @Component({
-  selector: 'ccf-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  selector: 'ccf-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class ToolbarComponent {
+export class HeaderComponent {
   /**
    * Indicates whether the about item is currenlty being hovered over.
    */

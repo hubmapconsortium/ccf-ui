@@ -4,20 +4,20 @@ import { MatDialog, MatIconModule } from '@angular/material';
 import { By } from '@angular/platform-browser';
 import { MockModule } from 'ng-mocks';
 
-import { ToolbarComponent } from './toolbar.component';
+import { HeaderComponent } from './header.component';
 
-describe('ToolbarComponent', () => {
+describe('HeaderComponent', () => {
   const mockMatDialog = {
     closeAll: (): void => undefined
   };
 
-  let component: ToolbarComponent;
-  let fixture: ComponentFixture<ToolbarComponent>;
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [MockModule(MatIconModule)],
-      declarations: [ToolbarComponent],
+      declarations: [HeaderComponent],
       providers: [
         { provide: MatDialog, useValue: mockMatDialog }
       ]
@@ -27,7 +27,7 @@ describe('ToolbarComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToolbarComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

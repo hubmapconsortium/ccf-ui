@@ -6,14 +6,14 @@ import { RouterModule } from '@angular/router';
 
 import { LeftbarModule } from '../../components/leftbar/leftbar.module';
 import { SidenavModule } from '../../components/sidenav/sidenav.module';
-import { ToolbarModule } from '../../components/toolbar/toolbar.module';
+import { HeaderModule } from '../../components/header/header.module';
 import { MainComponent } from './main.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    ToolbarModule,
+    HeaderModule,
     MatSidenavModule,
     BrowserAnimationsModule,
     SidenavModule,

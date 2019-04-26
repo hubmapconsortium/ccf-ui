@@ -1,15 +1,18 @@
 <div class="ccf-main wrapper">
   <div class="container">
-    <ccf-toolbar class="ccf-toolbar"></ccf-toolbar>
-    <ccf-leftbar class="ccf-leftbar" [(searchActive)]="searchActive"></ccf-leftbar>
-    <div class="drawer-wrapper">
-      <mat-drawer-container class="container" autosize>
-        <mat-drawer class="drawer" mode="side" [opened]="searchActive">
-          <ccf-sidenav class="sidenav"></ccf-sidenav>
+    <ccf-header class="header"></ccf-header>
+
+    <div class="contents-area">
+      <ccf-leftbar class="navigation" [(searchActive)]="searchActive"></ccf-leftbar>
+
+      <mat-drawer-container class="drawer">
+        <mat-drawer class="search" mode="side" [opened]="searchActive">
+          <ccf-sidenav></ccf-sidenav>
         </mat-drawer>
-        <div class="view-container" [ngClass]="{'drawer-closed': !searchActive}">
-          <router-outlet></router-outlet>
-        </div>
+
+        <mat-drawer-content class="contents">
+          <router-outlet class="outlet"></router-outlet>
+        </mat-drawer-content>
       </mat-drawer-container>
     </div>
   </div>
