@@ -1,4 +1,4 @@
-@import 'global/sizes.scss';
+@import 'global/sizes', 'global/colors';
 
 .ccf-main.wrapper {
   .container {
@@ -21,6 +21,7 @@
 
         .search {
           width: $search-width;
+          background: $background-search-drawer-color;
         }
 
         .contents {
