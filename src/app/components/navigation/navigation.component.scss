@@ -1,20 +1,21 @@
-$width: 4.25rem;
-$icon-padding-left: 1rem;
-$icon-padding-right: 1rem;
-$icon-size: $width - $icon-padding-left - $icon-padding-right;
+@import 'global/sizes', 'global/colors', 'global/mixins';
 
-.ccf-leftbar.wrapper {
+.ccf-navigation.wrapper {
+  height: 100%;
+
   .container {
-    height: calc(100vh - 3.1875rem);
-    width: $width;
-    background: #fafafa;
-    border: 0.0625rem solid #e0e0e0;
-    border-top: none;
-    border-left: none;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    padding-bottom: 1rem;
+    background: $background-color;
+    @include default-border(right);
 
     .icon {
+      $icon-padding-left: 1rem;
+      $icon-padding-right: 1rem;
+      $icon-size: $navigation-width - $icon-padding-left - $icon-padding-right;
+
       width: $icon-size;
       height: $icon-size;
       font-size: $icon-size;
@@ -28,7 +29,7 @@ $icon-size: $width - $icon-padding-left - $icon-padding-right;
 
     .item {
       margin-bottom: 1rem;
-      color: #757575;
+      color: $icon-color;
       outline: none;
       cursor: pointer;
 
@@ -38,7 +39,7 @@ $icon-size: $width - $icon-padding-left - $icon-padding-right;
       }
 
       &.active {
-        color: #000000;
+        color: $active-icon-color;
       }
     }
 
@@ -48,10 +49,10 @@ $icon-size: $width - $icon-padding-left - $icon-padding-right;
       margin-bottom: 0;
 
       &.active {
-        background: #20558a;
+        background: $active-button-color;
 
         .icon {
-          color: #ffffff;
+          color: $active-button-contrast-color;
         }
       }
     }
@@ -61,7 +62,7 @@ $icon-size: $width - $icon-padding-left - $icon-padding-right;
     }
 
     .feedback {
-      margin-bottom: 1rem;
+      margin-bottom: 0;
       text-decoration: none;
     }
 

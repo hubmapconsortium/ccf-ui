@@ -1,32 +1,30 @@
+@import 'global/sizes', 'global/colors';
+
 .ccf-main.wrapper {
   .container {
-    .ccf-leftbar {
-      position: fixed;
-      z-index: 2;
+    .header {
+      height: $header-height;
     }
-    .drawer-wrapper {
+
+    .contents-area {
       display: flex;
-      height: calc(100vh - 3.1875rem);
-      margin-left: 4.25rem;
-      .container {
+      height: calc(100vh - #{$header-height});
+
+      .navigation {
+        width: $navigation-width;
+        height: 100%;
+      }
+
+      .drawer {
         width: 100%;
         background: none;
-        .drawer {
-          width: 20vw;
-          .sidenav {
-            height: 100%;
-          }
-        }
-        // .view-container {
-        //   padding: 2rem 1rem 1rem 1rem; // when modifying this update calculations for height and width
-        //   height: calc(100vh - 3.1875rem - 3rem); //total height - toolbar - padding
-        //   width: calc(100vw - 20vw - 2rem); // total width - width of search sidenav - padding
 
-        //   &.drawer-closed {
-        //     width: calc(100vw - 2rem); // total width - padding (since search sidenav was closed)
-        //   }
-        // }
-        .view-container {
+        .search {
+          width: $search-width;
+          background: $search-drawer-background-color;
+        }
+
+        .contents {
           height: 100%;
         }
       }
