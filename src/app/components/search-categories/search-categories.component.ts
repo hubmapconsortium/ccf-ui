@@ -49,12 +49,14 @@ export class SearchCategoriesComponent implements OnChanges {
    * @param filter filter value selected
    */
   selected(category: string, filter: string) {
-    const filterValues = this.selectedFilterCategories.get(category);
+    let filterValues = this.selectedFilterCategories.get(category);
 
     if (!filterValues) {
-      this.selectedFilterCategories.set(category, new Set([filter]));
-      this.updateSearchState('select', category, filter);
-    } else if (!filterValues.has(filter)) {
+      filterValues = new Set();
+      this.selectedFilterCategories.set(category, filterValues);
+    }
+
+    if (!filterValues.has(filter)) {
       filterValues.add(filter);
       this.updateSearchState('select', category, filter);
     } else {
@@ -80,7 +82,7 @@ export class SearchCategoriesComponent implements OnChanges {
    * @param category filter category to which the filter value belongs
    * @param filter filter value being selected/unselected
    */
-  updateSearchState(operation: string, category: string, filter: string) {
+  private updateSearchState(operation: string, category: string, filter: string) {
     if (operation === 'select') {
       switch (category) {
         case 'Technologies': this.searchService.selectTechnology(filter); break;
