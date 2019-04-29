@@ -4,11 +4,11 @@ import { Observable, Subject } from 'rxjs';
 import { NavigationService } from '../../shared/services/navigation/navigation.service';
 
 @Component({
-  selector: 'ccf-leftbar',
-  templateUrl: './leftbar.component.html',
-  styleUrls: ['./leftbar.component.scss']
+  selector: 'ccf-navigation',
+  templateUrl: './navigation.component.html',
+  styleUrls: ['./navigation.component.scss']
 })
-export class LeftbarComponent {
+export class NavigationComponent {
   /**
    * Indicates whether the search icon is considered active or not.
    */

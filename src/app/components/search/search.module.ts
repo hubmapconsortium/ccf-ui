@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AgeSelectorModule } from '../age-selector/age-selector.module';
 import { SearchCategoriesModule } from '../search-categories/search-categories.module';
-import { SidenavComponent } from './sidenav.component';
+import { SearchComponent } from './search.component';
 
 @NgModule({
   imports: [
@@ -11,7 +11,7 @@ import { SidenavComponent } from './sidenav.component';
     AgeSelectorModule,
     SearchCategoriesModule
   ],
-  declarations: [SidenavComponent],
-  exports: [SidenavComponent]
+  declarations: [SearchComponent],
+  exports: [SearchComponent]
 })
-export class SidenavModule { }
+export class SearchModule { }

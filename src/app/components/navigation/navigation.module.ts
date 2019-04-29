@@ -3,20 +3,20 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
-import { LeftbarComponent } from './leftbar.component';
+import { NavigationComponent } from './navigation.component';
 
 
 @NgModule({
-  declarations: [
-    LeftbarComponent
-  ],
   imports: [
     CommonModule,
     MatIconModule,
     RouterModule
   ],
+  declarations: [
+    NavigationComponent
+  ],
   exports: [
-    LeftbarComponent
+    NavigationComponent
   ]
 })
-export class LeftbarModule { }
+export class NavigationModule { }
