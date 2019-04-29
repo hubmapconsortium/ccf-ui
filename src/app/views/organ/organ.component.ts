@@ -30,14 +30,21 @@ export class OrganComponent implements OnInit {
    * Creates an instance of organ component.
    * @param organService gets metadata and organ path from the service.
    */
-  constructor(public readonly organService: OrganDataService, readonly navService: NavigationService) { }
 
   /**
-   * on init listen to changes in browser navigation path.
+   * Creates an instance of organ component.
+   * @param organService to get data of organ.
+   */
+  constructor(public readonly organService: OrganDataService) { }
+
+  /**
+   * on init listen to changes in browser navigation path and render organ stuff accordingly.
    */
   ngOnInit() {
     this.getOrganImageSourcePath();
-    this.getTissueSamples();
+    this.organService.getActiveOrgan().subscribe(d => {
+      this.getTissueSamples(d.id);
+    });
   }
 
   /**
@@ -52,11 +59,13 @@ export class OrganComponent implements OnInit {
   /**
    * Gets tissue samples gets list of tissues samples.
    */
-  getTissueSamples() {
-    this.organService.getAllTissueSamples().subscribe(d => {
+  getTissueSamples(organId: string) {
+    this.organService.getAllTissueSamples(organId).subscribe(d => {
       this.tissueSamples = d;
+      console.log(d);
     });
   }
+
   /**
    * on overlay, display metadata.
    * @param tissueSampleId id of tissue sample on which hovered.

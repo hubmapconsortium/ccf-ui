@@ -3,11 +3,10 @@ import { RouterLink } from '@angular/router';
 import { MockComponents } from 'ng-mocks';
 import { Observable, of } from 'rxjs';
 import { MetadataComponent } from 'src/app/components/metadata/metadata.component';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 import { OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
+import { TissueSample } from 'src/app/shared/state/database/database.models';
 
 import { OrganComponent } from './organ.component';
-import { TissueSample } from 'src/app/shared/state/database/database.models';
 
 describe('OrganComponent', () => {
   let component: OrganComponent;
@@ -17,15 +16,15 @@ describe('OrganComponent', () => {
   };
   const mockOrganService = {
     getOrganSourcePath: (): Observable<string> => of('5'),
-    getAllTissueSamples: (): Observable<TissueSample[]> => of([{id: 'kidney'}] as TissueSample[])
+    getAllTissueSamples: (): Observable<TissueSample[]> => of([{id: 'kidney'}] as TissueSample[]),
+    getActiveOrgan: (): Observable<{id: string}> => of({id: 'kidney'})
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [OrganComponent, MockComponents(RouterLink, MetadataComponent)],
       providers: [
-        { provide: OrganDataService, useValue: mockOrganService },
-        { provide: NavigationService, useValue: mockNavigationService }
+        { provide: OrganDataService, useValue: mockOrganService }
       ]
     }).compileComponents();
   }));
@@ -46,7 +45,7 @@ describe('OrganComponent', () => {
   });
 
   it('should getTissueSamples', () => {
-    component.getTissueSamples();
+    component.getTissueSamples('kidney');
     expect(component.tissueSamples).not.toBeUndefined();
   });
 

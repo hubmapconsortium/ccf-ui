@@ -14,9 +14,14 @@ import { LocalDatabaseService } from '../database/local/local-database.service';
 @Injectable()
 export class OrganDataService {
 
+  /**
+   * Creates an instance of organ data service.
+   * @param localDatabase to get irgan data.
+   */
   constructor(
     private readonly localDatabase: LocalDatabaseService
   ) { }
+
   /**
    * Path to images of tissues - TODO - this will come from a json file eventually
    */
@@ -29,6 +34,14 @@ export class OrganDataService {
   private activeOrgan: Observable<{ id: string }>; // FIXME: Update with proper organ object
 
   /**
+   * Gets active organ.
+   * @returns active organ Observable.
+   */
+  getActiveOrgan(): Observable<{ id: string }> {
+    return this.activeOrgan;
+  }
+
+  /**
    * Gets organ source path
    * @returns Observable of organ source path
    */
@@ -38,11 +51,12 @@ export class OrganDataService {
       map(id => id && `${this.pathToImages}/${id}/`)
     );
   }
+
   /**
    * Gets all tissue samples
    * @returns all tissue samples' observable.
    */
-  getAllTissueSamples(): Observable<TissueSample[]> {
-    return this.localDatabase.getTissueSamples();
+  getAllTissueSamples(organId: string): Observable<TissueSample[]> {
+    return this.localDatabase.getTissueSamples((item: TissueSample) =>  item.patient.anatomicalLocations[0] === organId);
   }
 }

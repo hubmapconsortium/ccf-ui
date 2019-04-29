@@ -6,7 +6,6 @@ import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
 import { TissueSample } from '../../state/database/database.models';
-import { LocalDatabaseService } from '../database/local/local-database.service';
 import { OrganDataService } from './organ-data.service';
 
 
@@ -41,11 +40,13 @@ describe('OrganDataService', () => {
 
   function describeStateSlice(
     methodName: 'getOrganSourcePath' | 'getAllTissueSamples',
-    dataDescription: string, expected: any
+    dataDescription: string,
+    expected: any,
+    arg?: string
   ): void {
     describe(`${methodName}()`, () => {
       let obs: Observable<any>;
-      beforeEach(() => obs = service[methodName]());
+      beforeEach(() => obs = service[methodName](arg));
 
       it('returns an observable', () => {
         expect(obs).toEqual(jasmine.any(Observable));
@@ -61,5 +62,5 @@ describe('OrganDataService', () => {
   }
 
   describeStateSlice('getOrganSourcePath', 'emits the source path of the currently active organ', 'organ/kidney');
-  describeStateSlice('getAllTissueSamples', 'emits all tissue samples of the organ', null);
+  describeStateSlice('getAllTissueSamples', 'emits all tissue samples of the organ', null, 'kidney');
 });
