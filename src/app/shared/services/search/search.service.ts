@@ -5,8 +5,9 @@ import {
   SelectTechnology,
   SelectTMC,
   SetAgeRangeFilter,
+  SetGenderFilter,
   UnselectTechnology,
-  UnselectTMC
+  UnselectTMC,
 } from '../../state/search/search.action';
 
 /**
@@ -25,6 +26,16 @@ export class SearchService {
   @Dispatch()
   setAgeRange(min?: number, max?: number): SetAgeRangeFilter {
     return new SetAgeRangeFilter(min, max);
+  }
+
+  /**
+   * Dispatchs an action to update the search gender.
+   *
+   * @param [gender] The gender to limit searches to.
+   */
+  @Dispatch()
+  setGender(gender?: 'male' | 'female'): SetGenderFilter {
+    return new SetGenderFilter(gender);
   }
 
   @Dispatch()

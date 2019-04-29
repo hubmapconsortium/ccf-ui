@@ -3,6 +3,9 @@ import { Observable, Subject } from 'rxjs';
 
 import { NavigationService } from '../../shared/services/navigation/navigation.service';
 
+/**
+ * A sidebar component with buttons for navigating between different views.
+ */
 @Component({
   selector: 'ccf-navigation',
   templateUrl: './navigation.component.html',
