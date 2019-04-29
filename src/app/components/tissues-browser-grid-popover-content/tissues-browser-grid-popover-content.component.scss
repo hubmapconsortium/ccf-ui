@@ -1,7 +1,9 @@
+@import 'global/colors';
+
 .tissues-browser-grid-popover-content.wrapper {
   .container {
     .icon {
-      color: #757575;
+      color: $icon-color;
       outline: none;
     }
 

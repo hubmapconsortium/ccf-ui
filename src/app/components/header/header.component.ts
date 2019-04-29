@@ -4,11 +4,11 @@ import { MatDialog } from '@angular/material';
 import { AboutComponent } from '../../components/about/about.component';
 
 @Component({
-  selector: 'ccf-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  selector: 'ccf-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class ToolbarComponent {
+export class HeaderComponent {
   /**
    * Indicates whether the about item is currenlty being hovered over.
    */
@@ -16,15 +16,16 @@ export class ToolbarComponent {
 
   /**
    * Creates an instance of toolbar component.
-   * @param aboutModal Angular MatDialog reference.
+   *
+   * @param dialog Service used to open modal dialogs.
    */
-  constructor(private readonly aboutModal: MatDialog) { }
+  constructor(private readonly dialog: MatDialog) { }
 
    /**
-   * Opens About modal.
+   * Opens the about modal dialog.
    */
-  openAboutModal(): void {
-    this.aboutModal.open(AboutComponent, {
+  openAboutDialog(): void {
+    this.dialog.open(AboutComponent, {
       width: '50rem'
     });
   }

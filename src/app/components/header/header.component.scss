@@ -1,0 +1,35 @@
+@import 'global/sizes', 'global/colors', 'global/mixins';
+
+.ccf-header.wrapper {
+  .container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: $header-height;
+    padding: 0 1rem;
+    background: $background-color;
+    @include default-border(bottom);
+
+    .filler {
+      flex-grow: 100000;
+    }
+
+    .logo {
+      width: 9rem;
+      color: #223352; // Default color for HuBMAP logo icon
+    }
+
+    .about {
+      cursor: pointer;
+
+      .icon {
+        $icon-size: 2.25rem;
+
+        width: $icon-size;
+        height: $icon-size;
+        font-size: $icon-size;
+        color: $icon-color;
+      }
+    }
+  }
+}

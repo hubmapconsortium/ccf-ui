@@ -64,7 +64,7 @@ describe('TissueResolverService', () => {
     });
 
     describe('when :tissueId matches an entry in the tissues array' , () => {
-      const state = { tissues: [tissue2, tissue1] as TissueImage[] };
+      const state = { tissues: [tissue2, tissue1] };
       beforeEachResetState(state);
 
       it('returns the matching tissue', () => {
