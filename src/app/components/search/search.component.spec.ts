@@ -22,16 +22,15 @@ describe('SearchComponent', () => {
   });
 
   describe('dom', () => {
-    describe('search-categories', () => {
-      it('exists', () => {
-        expect(find('.ccf-search-categories')).toBeTruthy();
-      });
-    });
-
-    describe('age-selector', () => {
-      it('age-selector exists', () => {
-        expect(find('.age-selector')).toBeTruthy();
-      });
-    });
+    exists('age-selector');
+    exists('search-categories');
   });
+
+    function exists(className: string) {
+      describe(className, () => {
+        it('exists', () => {
+          expect(find('.' + className)).toBeTruthy();
+        });
+      });
+    }
 });
