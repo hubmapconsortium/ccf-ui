@@ -1,28 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterLink } from '@angular/router';
-import { MockComponent } from 'ng-mocks';
+import { MockComponents } from 'ng-mocks';
 import { Observable, of } from 'rxjs';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
-import { OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
+import { MetadataComponent } from 'src/app/components/metadata/metadata.component';
+import { OrganDataService, CountMetadata } from 'src/app/shared/services/organ-data/organ-data.service';
+import { TissueSample } from 'src/app/shared/state/database/database.models';
 
 import { OrganComponent } from './organ.component';
 
 describe('OrganComponent', () => {
   let component: OrganComponent;
   let fixture: ComponentFixture<OrganComponent>;
-  const mockNavigationService = {
-    createTissuePath: (a: string): [string, string] => ['/test', 'test']
-  };
   const mockOrganService = {
-    getOrganSourcePath: (): Observable<string> => of('1', '2', '3', '4', '5')
+    getOrganSourcePath: (): Observable<string> => of('5'),
+    getAllTissueSamples: (): Observable<TissueSample[]> => of([{id: 'kidney'}] as TissueSample[]),
+    getActiveOrgan: (): Observable<{id: string}> => of({id: 'kidney'}),
+    getCounts: (): CountMetadata => ({cells: 0, patients: 0, tissueImages: 0, tissueSlices: 0, tissueSamples: 0})
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OrganComponent, MockComponent(RouterLink)],
+      declarations: [OrganComponent, MockComponents(RouterLink, MetadataComponent)],
       providers: [
-        { provide: OrganDataService, useValue: mockOrganService },
-        { provide: NavigationService, useValue: mockNavigationService }
+        { provide: OrganDataService, useValue: mockOrganService }
       ]
     }).compileComponents();
   }));
@@ -35,5 +35,20 @@ describe('OrganComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should getOrganImageSourcePath', () => {
+    component.getOrganImageSourcePath();
+    expect(component.organImagePath).toEqual('5');
+  });
+
+  it('should getTissueSamples', () => {
+    component.getTissueSamples('kidney');
+    expect(component.tissueSamples).not.toBeUndefined();
+  });
+
+  it('should onTissueSampleMouseenter', () => {
+    component.onTissueSampleMouseenter({'Age': '38'});
+    expect(component.tissueSamples).not.toBeUndefined();
   });
 });
