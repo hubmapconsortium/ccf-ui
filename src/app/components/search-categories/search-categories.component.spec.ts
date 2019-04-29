@@ -1,12 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatTabsModule } from '@angular/material/tabs';
+import { DebugElement, Type } from '@angular/core';
+import { Shallow } from 'shallow-render';
 
 import { SearchService } from '../../shared/services/search/search.service';
 import { SearchCategoriesComponent } from './search-categories.component';
-import { Shallow } from 'shallow-render';
 import { SearchCategoriesModule } from './search-categories.module';
-import { DebugElement, Type } from '@angular/core';
 
 
 describe('SearchCategoriesComponent', () => {
@@ -17,7 +14,6 @@ describe('SearchCategoriesComponent', () => {
 
   beforeEach(async () => {
     shallow = new Shallow(SearchCategoriesComponent, SearchCategoriesModule);
-
     ({ instance: component, get, find } = await shallow.render());
   });
 
@@ -83,6 +79,19 @@ describe('SearchCategoriesComponent', () => {
   });
 
   describe('dom', () => {
-    // TODO
+    describe('Search Categories', () => {
+
+      it('group exists', () => {
+        expect(find('.search-category-group')).toBeTruthy();
+      });
+
+      it('tab exists', () => {
+        expect(find('.tab')).toBeTruthy();
+      });
+
+      it('content exists', () => {
+        expect(find('.search-criteria-content')).toBeTruthy();
+      });
+    });
   });
 });
