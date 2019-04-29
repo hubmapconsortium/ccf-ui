@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 
-import { SetAgeRangeFilter, SetGenderFilter } from '../../state/search/search.action';
+import {
+  SelectTechnology,
+  SelectTMC,
+  SetAgeRangeFilter,
+  SetGenderFilter,
+  UnselectTechnology,
+  UnselectTMC,
+} from '../../state/search/search.action';
 
 /**
  * Provides search functionality.
@@ -29,5 +36,25 @@ export class SearchService {
   @Dispatch()
   setGender(gender?: 'male' | 'female'): SetGenderFilter {
     return new SetGenderFilter(gender);
+  }
+
+  @Dispatch()
+  selectTechnology(technology: string) {
+    return new SelectTechnology(technology);
+  }
+
+  @Dispatch()
+  selectTMC(tmc: string) {
+    return new SelectTMC(tmc);
+  }
+
+  @Dispatch()
+  unselectTechnology(technology: string) {
+    return new UnselectTechnology(technology);
+  }
+
+  @Dispatch()
+  unselectTMC(tmc: string) {
+    return new UnselectTMC(tmc);
   }
 }
