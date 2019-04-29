@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material';
 
 import { AboutComponent } from '../../components/about/about.component';
 
+/**
+ * Component displayed at the top of the page. Contains the HuBMAP logo and an info button.
+ */
 @Component({
   selector: 'ccf-header',
   templateUrl: './header.component.html',
