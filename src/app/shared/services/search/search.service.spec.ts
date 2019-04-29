@@ -37,7 +37,21 @@ describe('SearchService', () => {
     });
 
     it('sets the age range in the search state', () => {
-      expect(searchState).toEqual(jasmine.objectContaining({ ageRange: [min, max] }));
+      expect(searchState.ageRange).toEqual([min, max]);
+    });
+  });
+
+  describe('setGender(gender)', () => {
+    const gender = 'female';
+    let searchState: any;
+
+    beforeEach(async () => {
+      service.setGender(gender);
+      searchState = await store.selectOnce(SearchState).toPromise();
+    });
+
+    it('sets the gender in the search state', () => {
+      expect(searchState.gender).toEqual(gender);
     });
   });
 });

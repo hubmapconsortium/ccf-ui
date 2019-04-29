@@ -1,0 +1,49 @@
+@import 'global/colors';
+
+.ccf-gender-selector.wrapper {
+  .container {
+    .icon {
+      $icon-size: 2rem;
+
+      width: $icon-size;
+      height: $icon-size;
+      font-size: $icon-size;
+    }
+
+    .svg-icon {
+      box-sizing: content-box;
+    }
+
+    .group {
+      border: none;
+      border-radius: 0;
+
+      .toggle {
+        margin: 0 0.25rem;
+        border-radius: 4px;
+        color: $active-button-contrast-color;
+        background-color: $icon-color;
+        opacity: 0.3;
+
+        &.mat-button-toggle-checked {
+          background-color: $active-button-color;
+          opacity: 1;
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        ::ng-deep {
+          .mat-button-toggle-label-content {
+            padding: 0 8px;
+          }
+        }
+      }
+    }
+  }
+}
