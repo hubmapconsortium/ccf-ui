@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { CountMetadata, OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
 import { TissueSample } from 'src/app/shared/state/database/database.models';
-import { Observable } from 'rxjs';
 
 /**
  * Component organ view component.
@@ -14,6 +12,14 @@ import { Observable } from 'rxjs';
 })
 
 export class OrganComponent implements OnInit {
+  /**
+   * Organ id of organ component
+   */
+  organId: string;
+  /**
+   * Count metadata of organ component
+   */
+  countMetadata: CountMetadata;
   /**
    * Tissue samples of organ component used to display overlays on organ.
    */
@@ -30,11 +36,6 @@ export class OrganComponent implements OnInit {
    * Creates an instance of organ component.
    * @param organService gets metadata and organ path from the service.
    */
-
-  /**
-   * Creates an instance of organ component.
-   * @param organService to get data of organ.
-   */
   constructor(public readonly organService: OrganDataService) { }
 
   /**
@@ -43,6 +44,7 @@ export class OrganComponent implements OnInit {
   ngOnInit() {
     this.getOrganImageSourcePath();
     this.organService.getActiveOrgan().subscribe(d => {
+      this.organId = d.id;
       this.getTissueSamples(d.id);
     });
   }
@@ -62,7 +64,6 @@ export class OrganComponent implements OnInit {
   getTissueSamples(organId: string) {
     this.organService.getAllTissueSamples(organId).subscribe(d => {
       this.tissueSamples = d;
-      console.log(d);
     });
   }
 
@@ -71,6 +72,8 @@ export class OrganComponent implements OnInit {
    * @param tissueSampleId id of tissue sample on which hovered.
    */
   onTissueSampleMouseenter(tissueSampleMetadata: { [label: string]: string }) {
-      this.tissueSampleMetadata = [tissueSampleMetadata];
+    this.tissueSampleMetadata = [tissueSampleMetadata];
+    this.countMetadata = this.organService.getCounts(this.organId);
+    this.countMetadata.tissueSamples = this.tissueSamples ? this.tissueSamples.length : 0;
   }
 }

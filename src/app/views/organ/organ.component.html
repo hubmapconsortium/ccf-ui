@@ -4,7 +4,7 @@
       <svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <use [attr.xlink:href]="organImagePath+'organ.svg#organ'" x="0" y="0"></use>
         <g routerLink="/tissues">
-          <use (mouseenter)="onTissueSampleMouseenter(sample.metadata)" (mouseleave)="tissueSampleMetadata = []"
+          <use (mouseenter)="onTissueSampleMouseenter(sample.metadata)" (mouseleave)="tissueSampleMetadata = []; countMetadata={}"
             *ngFor="let sample of tissueSamples" [attr.xlink:href]="sample.overlayUrl + '#overlay'" x="0" y="0"></use>
         </g>
       </svg>
@@ -12,6 +12,14 @@
 
     <div class="metadata">
       <ccf-metadata [metadata]="tissueSampleMetadata"></ccf-metadata>
+    </div>
+    <div class="count-metadata">
+      <table class="count-metadata-table">
+        <tr *ngFor="let item of countMetadata | keyvalue" class="row">
+          <td class="value">{{ item.value }}</td>
+          <td class="label">{{ item.key }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

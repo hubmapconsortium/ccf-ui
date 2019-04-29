@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { MockComponents } from 'ng-mocks';
 import { Observable, of } from 'rxjs';
 import { MetadataComponent } from 'src/app/components/metadata/metadata.component';
-import { OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
+import { OrganDataService, CountMetadata } from 'src/app/shared/services/organ-data/organ-data.service';
 import { TissueSample } from 'src/app/shared/state/database/database.models';
 
 import { OrganComponent } from './organ.component';
@@ -11,13 +11,11 @@ import { OrganComponent } from './organ.component';
 describe('OrganComponent', () => {
   let component: OrganComponent;
   let fixture: ComponentFixture<OrganComponent>;
-  const mockNavigationService = {
-    createTissuePath: (a: string): [string, string] => ['/test', 'test']
-  };
   const mockOrganService = {
     getOrganSourcePath: (): Observable<string> => of('5'),
     getAllTissueSamples: (): Observable<TissueSample[]> => of([{id: 'kidney'}] as TissueSample[]),
-    getActiveOrgan: (): Observable<{id: string}> => of({id: 'kidney'})
+    getActiveOrgan: (): Observable<{id: string}> => of({id: 'kidney'}),
+    getCounts: (): CountMetadata => ({cells: 0, patients: 0, tissueImages: 0, tissueSlices: 0, tissueSamples: 0})
   };
 
   beforeEach(async(() => {
