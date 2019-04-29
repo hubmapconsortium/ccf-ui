@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { SetAgeRangeFilter } from '../../state/search/search.action';
+
+import {
+  SelectTechnology,
+  SelectTMC,
+  SetAgeRangeFilter,
+  UnselectTechnology,
+  UnselectTMC
+} from '../../state/search/search.action';
 
 /**
  * Provides search functionality.
@@ -18,5 +25,25 @@ export class SearchService {
   @Dispatch()
   setAgeRange(min?: number, max?: number): SetAgeRangeFilter {
     return new SetAgeRangeFilter(min, max);
+  }
+
+  @Dispatch()
+  selectTechnology(technology: string) {
+    return new SelectTechnology(technology);
+  }
+
+  @Dispatch()
+  selectTMC(tmc: string) {
+    return new SelectTMC(tmc);
+  }
+
+  @Dispatch()
+  unselectTechnology(technology: string) {
+    return new UnselectTechnology(technology);
+  }
+
+  @Dispatch()
+  unselectTMC(tmc: string) {
+    return new UnselectTMC(tmc);
   }
 }

@@ -33,6 +33,10 @@ export class TissueDataService {
     return this.activeTissue.pipe(pluck('metadata'));
   }
 
+  /**
+   * Gets organ name
+   * @returns organ name
+   */
   getOrganName(): Observable<string> {
     return this.activeTissue.pipe(pluck('slice', 'sample', 'patient', 'anatomicalLocations', 0));
   }
