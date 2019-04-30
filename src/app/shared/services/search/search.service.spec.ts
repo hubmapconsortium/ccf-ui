@@ -40,4 +40,60 @@ describe('SearchService', () => {
       expect(searchState).toEqual(jasmine.objectContaining({ ageRange: [min, max] }));
     });
   });
+
+  describe('selectTechnology(technology)', () => {
+    const selectedTechnology = 'abc-tech';
+    let searchState: any;
+
+    beforeEach(async () => {
+      service.selectTechnology(selectedTechnology);
+      searchState = await store.selectOnce(SearchState).toPromise();
+    });
+
+    it('sets the selected technology in the search state', () => {
+      expect(searchState.technologies).toEqual(jasmine.arrayContaining([selectedTechnology]));
+    });
+  });
+
+  describe('selectTMC(tmc)', () => {
+    const selectedTMC = 'abc-tmc';
+    let searchState: any;
+
+    beforeEach(async () => {
+      service.selectTMC(selectedTMC);
+      searchState = await store.selectOnce(SearchState).toPromise();
+    });
+
+    it('sets the selected technology in the search state', () => {
+      expect(searchState.tmc).toEqual(jasmine.arrayContaining([selectedTMC]));
+    });
+  });
+
+  describe('unselectTechnology(technology)', () => {
+    const unselectedTechnology = 'abc-technology';
+    let searchState: any;
+
+    beforeEach(async () => {
+      service.unselectTechnology(unselectedTechnology);
+      searchState = await store.selectOnce(SearchState).toPromise();
+    });
+
+    it('unselects the selected technology in the search state', () => {
+      expect(searchState.technologies).not.toEqual(jasmine.arrayContaining([unselectedTechnology]));
+    });
+  });
+
+  describe('unselectTMC(tmc)', () => {
+    const unselectedTMC = 'abc-tmc';
+    let searchState: any;
+
+    beforeEach(async () => {
+      service.unselectTMC(unselectedTMC);
+      searchState = await store.selectOnce(SearchState).toPromise();
+    });
+
+    it('unselects the selected tmc in the search state', () => {
+      expect(searchState.technologies).not.toEqual(jasmine.arrayContaining([unselectedTMC]));
+    });
+  });
 });
