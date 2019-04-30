@@ -26,6 +26,21 @@
 
         .contents {
           height: 100%;
+
+          .top-bar {
+            position: absolute;
+            right: 0;
+            margin: 1rem;
+
+            .search-criteria {
+              font-weight: 500;
+            }
+          }
+
+          .outlet {
+            height: 100%;
+            padding: 52px 20px;
+          }
         }
       }
     }
