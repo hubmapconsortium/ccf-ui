@@ -1,5 +1,6 @@
 import { Component, NgModule, Type } from '@angular/core';
 import { Store } from '@ngxs/store';
+import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
 import { SearchState } from '../../state/search/search.state';
@@ -24,6 +25,27 @@ describe('SearchService', () => {
     ({ get } = await shallow.render());
     store = get(Store);
     service = get(SearchService);
+  });
+
+  describe('searchCriteria', () => {
+    function describeGender(gender: 'male' | 'female' | undefined, substr: string): void {
+      describe(`when gender is ${ gender }`, () => {
+        let description: string;
+        beforeEach(async () => {
+          store.reset({ search: { gender, ageRange: [] } });
+          description = await service.searchCriteria.pipe(take(1)).toPromise();
+        });
+
+        it(`contains ${ substr }`, () => {
+          expect(description).toContain(substr);
+        });
+      });
+    }
+
+    describeGender('male', 'Male');
+    describeGender('female', 'Female');
+    describeGender(undefined, 'Male');
+    describeGender(undefined, 'Female');
   });
 
   describe('setAgeRange(min, max)', () => {

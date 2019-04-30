@@ -68,6 +68,30 @@ describe('NavigationService', () => {
   describePath('organPath', { activeOrgan: { id: 'oid' } }, { });
   describePath('tissuePath', { activeTissue: { id: 'tid' } }, { });
 
+  describe('isHomeActive', () => {
+    let result: boolean;
+    function beforeEachSetUrl(url: string): void {
+      beforeEach(async () => {
+        store.reset({ router: { state: { url } } });
+        result = await service.isHomeActive.pipe(take(1)).toPromise();
+      });
+    }
+
+    describe('when url === /home', () => {
+      beforeEachSetUrl('/home');
+      it('emits true', () => {
+        expect(result).toBeTruthy();
+      });
+    });
+
+    describe('when url is anything else', () => {
+      beforeEachSetUrl('abcdef');
+      it('emits false', () => {
+        expect(result).toBeFalsy();
+      });
+    });
+  });
+
   function describePathCreation(methodName: 'createOrganPath' | 'createTissuePath'): void {
     describe(`${methodName}(identifier)`, () => {
       let path: any[];

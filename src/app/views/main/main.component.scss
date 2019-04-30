@@ -26,6 +26,16 @@
 
         .contents {
           height: 100%;
+
+          .top-bar {
+            position: absolute;
+            right: 0;
+            margin: 1rem;
+
+            .search-criteria {
+              font-weight: 500;
+            }
+          }
         }
       }
     }
