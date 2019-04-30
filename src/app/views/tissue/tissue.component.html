@@ -11,13 +11,7 @@
             Details
           </mat-panel-title>
         </mat-expansion-panel-header>
-
-        <table>
-          <tr *ngFor="let item of tissueMetadata" class="row">
-            <td class="label">{{item[0]}}:</td>
-            <td class="value">{{item[1]}}</td>
-          </tr>
-        </table>
+        <ccf-metadata [metadata]="tissueMetadata"></ccf-metadata>
       </mat-expansion-panel>
     </div>
   </div>

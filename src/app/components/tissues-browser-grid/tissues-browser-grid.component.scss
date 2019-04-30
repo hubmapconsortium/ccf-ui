@@ -37,7 +37,6 @@ $height-width-ratio: $item-min-height / $item-min-width;
       display: flex;
       flex-flow: row wrap;
       align-content: flex-start;
-      padding: 52px 20px;
 
       .item {
         position: relative;

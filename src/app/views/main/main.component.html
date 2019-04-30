@@ -11,7 +11,13 @@
         </mat-drawer>
 
         <mat-drawer-content class="contents">
-          <router-outlet class="outlet"></router-outlet>
+          <div *ngIf="!(navigation.isHomeActive | async)" class="top-bar">
+            <div class="search-criteria">{{ search.searchCriteria | async }}</div>
+          </div>
+
+          <div class="outlet">
+              <router-outlet></router-outlet>
+          </div>
         </mat-drawer-content>
       </mat-drawer-container>
     </div>

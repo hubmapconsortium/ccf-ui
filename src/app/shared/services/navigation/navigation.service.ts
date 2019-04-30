@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { Navigate } from '@ngxs/router-plugin';
+import { Navigate, RouterState } from '@ngxs/router-plugin';
 import { Select } from '@ngxs/store';
 import { concat } from 'lodash';
 import { Observable, ReplaySubject } from 'rxjs';
@@ -46,6 +46,12 @@ function createPathWithIdentifier(prefix: string | any[], identifier: Observable
 })
 export class NavigationService {
   /**
+   * Currently active url.
+   */
+  @Select(RouterState.url)
+  private url: Observable<string>;
+
+  /**
    * Listener on the nagivation state.
    */
   @Select(NavigationState)
@@ -75,6 +81,11 @@ export class NavigationService {
    * The path to the currently active tissue view.
    */
   readonly tissuePath = createPathWithIdentifier('/tissue', this.navigation.pipe(pluck('activeTissue', 'id')));
+
+  /**
+   * Determines whether the home route is active.
+   */
+  readonly isHomeActive = this.url.pipe(map(url => url === '/home'));
 
   /**
    * Creates an url to the organ view for a specific organ.

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * Container component for search filters.
+ */
 @Component({
   selector: 'ccf-search',
   templateUrl: './search.component.html',
