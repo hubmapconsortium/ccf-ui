@@ -64,7 +64,7 @@ describe('NavigationService', () => {
 
   describePath('homePath');
   describePath('tissuesBrowserPath');
-  describePath('bodyPath', undefined, { });
+  describePath('bodyPath');
   describePath('organPath', { activeOrgan: { id: 'oid' } }, { });
   describePath('tissuePath', { activeTissue: { id: 'tid' } }, { });
 

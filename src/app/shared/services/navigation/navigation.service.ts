@@ -65,7 +65,7 @@ export class NavigationService {
   /**
    * The path to the body view.
    */
-  readonly bodyPath = createPathWithIdentifier('/body',  this.navigation.pipe(pluck('activeBodyId')));
+  readonly bodyPath = createSinglePathObservable('/body');
 
   /**
    * The path to the tissues browser view.
