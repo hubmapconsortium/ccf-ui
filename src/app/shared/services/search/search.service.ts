@@ -23,7 +23,7 @@ import { SearchState } from '../../state/search/search.state';
  * @returns The description of the search criteria.
  */
 function createSearchCriteriaDescription({ ageRange: [minAge, maxAge], gender }: SearchStateModel): string {
-  const ageDescription = `Age ${ defaultTo(minAge, 0) } - ${ defaultTo(maxAge, 125) }`;
+  const ageDescription = `Age ${defaultTo(minAge, 0)} - ${defaultTo(maxAge, 125)}`;
   const genderDescription = gender === 'male' ? 'Male' : gender === 'female' ? 'Female' : 'Female & Male';
   const descriptions = [genderDescription, ageDescription];
   return join(descriptions, ' | ');
@@ -60,7 +60,6 @@ export class SearchService {
 
   /**
    * Dispatchs an action to update the search gender.
-   *
    * @param [gender] The gender to limit searches to.
    */
   @Dispatch()
@@ -68,21 +67,41 @@ export class SearchService {
     return new SetGenderFilter(gender);
   }
 
+  /**
+   * Dispatches an action to select the searched technologies category value
+   * @param technology selected
+   * @returns an action class instance of SelectTechnology
+   */
   @Dispatch()
   selectTechnology(technology: string) {
     return new SelectTechnology(technology);
   }
 
+  /**
+   * Dispatches an action to select the searched TMCs category value
+   * @param tmc selected
+   * @returns an action class instance of SelectTMC
+   */
   @Dispatch()
   selectTMC(tmc: string) {
     return new SelectTMC(tmc);
   }
 
+  /**
+   * Dispatches an action to unselect the Technology category value removed from search
+   * @param technology unselected
+   * @returns an action class instance of UnselectTechnology
+   */
   @Dispatch()
   unselectTechnology(technology: string) {
     return new UnselectTechnology(technology);
   }
 
+  /**
+   * Dispatches an action to unselect the TMC category value removed from search
+   * @param tmc unselected
+   * @returns an action class instance of UnselectTMC
+   */
   @Dispatch()
   unselectTMC(tmc: string) {
     return new UnselectTMC(tmc);
