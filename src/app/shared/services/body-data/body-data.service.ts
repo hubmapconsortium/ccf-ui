@@ -4,8 +4,8 @@ import { Observable, of } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
-import { NavigationStateModel } from '../../state/navigation/navigation.model';
-import { NavigationState } from '../../state/navigation/navigation.state';
+import { SearchStateModel } from '../../state/search/search.model';
+import { SearchState } from '../../state/search/search.state';
 
 @Injectable()
 export class BodyDataService {
@@ -15,18 +15,19 @@ export class BodyDataService {
   private readonly pathToImages = environment.ccfAssetUrl + '/body';
 
   /**
-   * Emits the current navigation state.
+   * Emits the current search state.
    */
-  @Select(NavigationState)
-  private navigationState: Observable<NavigationStateModel>;
+  @Select(SearchState)
+  private searchState: Observable<SearchStateModel>;
 
   /**
    * Gets body source path
    * @returns Observable of body source path
    */
   getBodySourcePath(): Observable<string> {
-    return this.navigationState.pipe(
-      pluck('activeBodyId'),
+    return this.searchState.pipe(
+      pluck('gender'),
+      map(gender => gender !== undefined ? gender : 'both'),
       map(id => id && `${this.pathToImages}/${id}/`)
     );
   }

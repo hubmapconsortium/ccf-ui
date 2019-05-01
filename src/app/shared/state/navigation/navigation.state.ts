@@ -18,9 +18,7 @@ import { NavigationStateModel } from './navigation.model';
   defaults: {
     tissues: [],
     activeTissue: undefined,
-    activeOrgan: undefined,
-
-    activeBodyId: 'female'
+    activeOrgan: undefined
   }
 })
 export class NavigationState implements NgxsOnInit, OnDestroy {
@@ -61,13 +59,11 @@ export class NavigationState implements NgxsOnInit, OnDestroy {
     const route = action.routerState.root.firstChild;
     if (!route) { return; }
 
-    const { tissueId, organId, bodyId } = route.params;
+    const { tissueId, organId } = route.params;
     if (tissueId) {
       this.setActiveTissue(ctx, route);
     } else if (organId) {
       this.setActiveOrgan(ctx, route);
-    } else if (bodyId) {
-      ctx.patchState({ activeBodyId: bodyId });
     }
   }
 
