@@ -53,7 +53,6 @@ describe('NavigationState', () => {
     describe('updateActiveFromRoute(ctx, action)', () => {
       const tissueId = 'tid';
       const organId = 'oid';
-      const bodyId = 'bid';
 
       describe('when route is /tissue/:tissueId', () => {
         const route = createRoute(undefined, tissueId, organId);
