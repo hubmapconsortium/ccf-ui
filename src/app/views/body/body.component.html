@@ -14,9 +14,8 @@
 
       <svg class="body" viewBox="0 0 500 1000">
         <use attr.href="{{ bodyImagePath$ | async }}body.svg#body"></use>
-        <g *ngFor="let overlay of bodyOverlays$ | async" [routerLink]="navigator.createOrganPath(overlay.id)">
-          <use attr.href="{{ overlay.path }}#overlay"></use>
-        </g>
+        <use *ngFor="let overlay of bodyOverlays$ | async" class="overlay" attr.href="{{ overlay.path }}#overlay"
+             [routerLink]="navigator.createOrganPath(overlay.id)"></use>
       </svg>
     </div>
   </div>
