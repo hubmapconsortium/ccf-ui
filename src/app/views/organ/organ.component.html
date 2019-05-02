@@ -5,7 +5,15 @@
       <ng-container *ngFor="let sample of dataService.organOverlays | async">
         <use class="centroid" attr.href="{{ sample.overlayUrl }}#centroid" #centroid></use>
         <use class="overlay" attr.href="{{ sample.overlayUrl }}#overlay" routerLink="/tissues"
-             (mouseenter)="activeMetadata = [sample.metadata]" (mouseleave)="activeMetadata = []"></use>
+             (mouseenter)="activeMetadata = [sample.metadata]" (mouseleave)="activeMetadata = []" #overlay></use>
+        <!-- TODO: The callout should use centroid when that is in the overlay image -->
+        <g ccf-callout class="callout" [boundary]="image" [centroid]="overlay">
+          <xhtml:div>
+            TODO:<br />
+            Give me some<br />
+            yummy data!
+          </xhtml:div>
+        </g>
       </ng-container>
     </svg>
 

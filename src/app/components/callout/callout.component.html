@@ -1,0 +1,7 @@
+<!-- Note no wrapper and container since we don't want to create extra svg layers -->
+<svg:path class="callout callout-line" [attr.d]="linePath">
+</svg:path>
+
+<div *cdk-portal class="callout detached">
+  <ng-content></ng-content>
+</div>
