@@ -16,7 +16,7 @@ import { NavigationStateModel } from './navigation.model';
     tissues: [],
     activeTissue: undefined,
     activeOrgan: undefined,
-
+    hoverOrgan: undefined,
     activeBodyId: 'female'
   }
 })
@@ -35,6 +35,17 @@ export class NavigationState implements NgxsOnInit {
   @Selector()
   static activeTissue(state: NavigationStateModel): TissueImage | undefined {
     return state.activeTissue;
+  }
+
+
+  /**
+   * Selectors navigation state
+   * @param state Takes the state
+   * @returns The organ name that is currently hovered by user on the body.
+   */
+  @Selector()
+  static hoverOrgan(state: NavigationStateModel): string {
+    return state.hoverOrgan;
   }
 
   /**
@@ -63,6 +74,12 @@ export class NavigationState implements NgxsOnInit {
         activeBodyId: bodyId
       });
     }
+  }
+
+  updateHoverOrgan(ctx: StateContext<NavigationStateModel>, organ: string): void {
+    ctx.patchState({
+      hoverOrgan: organ,
+    });
   }
 
   /**

@@ -1,22 +1,26 @@
 <div class="ccf-ui-body wrapper">
   <div class="container">
     <div class="inner-container">
-      <div class="organ-metadata">
-         {{ metaData$ | async }}
+      <div class="organ-metadata" *ngIf="metadata">
+        <div class="header">
+          <div class="heading">ORGAN:</div>
+          <div class="organ">{{ capitalize(hoverOrganName) }}</div>
+        </div>
+        <div class="body">
+          <ccf-metadata [metadata]="metadata"></ccf-metadata>
+        </div>
       </div>
 
       <div class="body-details-container">
         <div class="details">
-          <div class="heart" >
-          </div>
-          <div class="kidney">
+          <div class="organ" *ngFor="let overlay of bodyOverlays$ | async">
           </div>
         </div>
 
         <div class="body">
             <svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <use attr.xlink:href="{{ bodyImagePath$ | async }}body.svg#body" x="0" y="0"></use>
-              <g *ngFor="let overlay of bodyOverlays$ | async" [routerLink]="navigator.createOrganPath(overlay.id)">
+              <g class="organ-icon" (mouseenter)='organHover(overlay.id)' (mouseleave)='clearOrganHover()' *ngFor="let overlay of bodyOverlays$ | async" [routerLink]="navigator.createOrganPath(overlay.id)">
                 <use attr.xlink:href="{{ overlay.path }}#overlay" x="0" y="0"></use>
               </g>
             </svg>
