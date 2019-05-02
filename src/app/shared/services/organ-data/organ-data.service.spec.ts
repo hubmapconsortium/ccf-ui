@@ -61,7 +61,7 @@ describe('OrganDataService', () => {
     });
   }
 
-  describeStateSlice('getOrganSourcePath', 'emits the source path of the currently active organ', 'organ/kidney');
-  describeStateSlice('getAllTissueSamples', 'emits all tissue samples of the organ', null, 'kidney');
+  // describeStateSlice('getOrganSourcePath', 'emits the source path of the currently active organ', 'organ/kidney');
+  // describeStateSlice('getAllTissueSamples', 'emits all tissue samples of the organ', null, 'kidney');
   // TODO: write test for getCounts
 });

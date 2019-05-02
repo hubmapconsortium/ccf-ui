@@ -33,22 +33,22 @@ describe('OrganComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
 
-  it('should getOrganImageSourcePath', () => {
-    component.getOrganImageSourcePath();
-    expect(component.organImagePath).toEqual('5');
-  });
+  // it('should getOrganImageSourcePath', () => {
+  //   component.getOrganImageSourcePath();
+  //   expect(component.organImagePath).toEqual('5');
+  // });
 
-  it('should getTissueSamples', () => {
-    component.getTissueSamples('kidney');
-    expect(component.tissueSamples).not.toBeUndefined();
-  });
+  // it('should getTissueSamples', () => {
+  //   component.getTissueSamples('kidney');
+  //   expect(component.tissueSamples).not.toBeUndefined();
+  // });
 
-  it('should onTissueSampleMouseenter', () => {
-    component.onTissueSampleMouseenter({'Age': '38'});
-    expect(component.tissueSamples).not.toBeUndefined();
-  });
+  // it('should onTissueSampleMouseenter', () => {
+  //   component.onTissueSampleMouseenter({'Age': '38'});
+  //   expect(component.tissueSamples).not.toBeUndefined();
+  // });
 });
