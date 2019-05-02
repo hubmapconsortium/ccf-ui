@@ -81,7 +81,7 @@ export class AgeSelectorComponent implements OnDestroy {
     private element: ElementRef,
     private search: SearchService
   ) {
-    const position: ConnectedPosition = { originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top' };
+    const position: ConnectedPosition = { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' };
     const positionStrategy = overlay.position().flexibleConnectedTo(element).withPositions([position]);
     this.overlayRef = overlay.create({ positionStrategy });
   }

@@ -8,10 +8,15 @@
     background: #f5f5f5;
 
     .age-gender-container {
+      padding-top: 1rem; // temporary until search
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
+      align-items: flex-end;
+      justify-content: flex-start;
+      
+      .selector {
+        padding: 0.75rem;
+      }
     }
   }
 }
