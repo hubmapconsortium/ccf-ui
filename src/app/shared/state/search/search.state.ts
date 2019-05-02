@@ -32,15 +32,17 @@ export class FilterBuilder<T> {
 
   /**
    * Creates an instance of filter builder.
-   * @param [other] Takes the filter builder for the filters.
+   *
+   * @param [other] Optional `FilterBuilder` to make a copy of.
    */
   constructor(other?: FilterBuilder<T>) {
     this.filters = other ? other.filters.slice() : [];
   }
 
   /**
-   * Adds filter
-   * @param filter Filter builder that we want to add.
+   * Adds a filter function.
+   *
+   * @param filter Function to add to the list of filters.
    */
   addFilter(filter: (obj: T) => boolean): FilterBuilder<T> {
     if (filter !== undefined) {
@@ -78,10 +80,10 @@ export class FilterBuilder<T> {
   }
 
   /**
-   * Add a filter that checks that the path has value in a set.
+   * Add a filter that checks if the set at a property path includes a value.
    *
    * @param path Path to the property.
-   * @param values The set of values to match against.
+   * @param value The value that should be included in the set.
    */
   addIsIncluded(path: PropertyPath, value: any): FilterBuilder<T> {
     if (value !== undefined) {
@@ -130,6 +132,22 @@ export class SearchState {
   /**
    * Creates a filter function for patient image objects based on the current search state.
    * @param state A sanpshot of the current state.
+   * @returns A filter function that returns true for all objects matching the current search.
+   */
+  @Selector()
+  static patientFilterBuilder(state: SearchStateModel): FilterBuilder<Patient> {
+    const { gender, ageRange: [min, max], tmc } = state;
+    return new FilterBuilder<Patient>()
+      .addMatches('gender', gender)
+      .addCompare('age', greaterThanEqual, min)
+      .addCompare('age', lessThanEqual, max)
+      .addIncludes('provider', tmc);
+  }
+
+  /**
+   * Creates a filter function for patient objects based on the current search state.
+   *
+   * @param state A snapshot of the current state.
    * @returns A filter function that returns true for all objects matching the current search.
    */
   @Selector()
@@ -205,7 +223,7 @@ export class SearchState {
   /**
    * Removes a technology to the active search.
    */
-  @Action(UnselectTMC)
+  @Action(UnselectTechnology)
   removeTechnology(ctx: StateContext<SearchStateModel>, action: UnselectTechnology): void {
     const state = ctx.getState();
     ctx.patchState({ technologies: without(state.technologies, action.technology) });

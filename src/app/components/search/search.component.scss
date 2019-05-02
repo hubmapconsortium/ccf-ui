@@ -1,0 +1,17 @@
+.ccf-search.wrapper {
+  height: 100%;
+  width: 100%;
+
+  .container {
+    height: 100%;
+    width: 100%;
+    background: #f5f5f5;
+
+    .age-gender-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+}

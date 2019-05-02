@@ -6,8 +6,8 @@ import { map, mergeAll, pluck, switchMap, toArray, count, shareReplay } from 'rx
 import { environment } from '../../../../environments/environment';
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
 import { Patient } from '../../state/database/database.models';
-import { NavigationStateModel } from '../../state/navigation/navigation.model';
-import { NavigationState } from '../../state/navigation/navigation.state';
+import { SearchStateModel } from '../../state/search/search.model';
+import { SearchState } from '../../state/search/search.state';
 import { FilterBuilder, SearchState } from '../../state/search/search.state';
 
 // import { toPairs } from 'lodash';
@@ -21,10 +21,10 @@ export class BodyDataService {
 
   constructor(private readonly localDatabaseService: LocalDatabaseService) {}
   /**
-   * Emits the current navigation state.
+   * Emits the current search state.
    */
-  @Select(NavigationState)
-  private navigationState: Observable<NavigationStateModel>;
+  @Select(SearchState)
+  private searchState: Observable<SearchStateModel>;
 
   /**
    * Emits the filter builder for patient.
@@ -37,8 +37,9 @@ export class BodyDataService {
    * @returns Observable of body source path
    */
   getBodySourcePath(): Observable<string> {
-    return this.navigationState.pipe(
-      pluck('activeBodyId'),
+    return this.searchState.pipe(
+      pluck('gender'),
+      map(gender => gender !== undefined ? gender : 'both'),
       map(id => id && `${this.pathToImages}/${id}/`)
     );
   }

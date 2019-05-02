@@ -6,9 +6,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MockModule } from 'ng-mocks';
 
-import { ToolbarModule } from '../../components/toolbar/toolbar.module';
-import { LeftbarModule } from '../../components/leftbar/leftbar.module';
-import { SidenavModule } from '../../components/sidenav/sidenav.module';
+import { HeaderModule } from '../../components/header/header.module';
+import { NavigationModule } from '../../components/navigation/navigation.module';
+import { SearchModule } from '../../components/search/search.module';
 import { MainComponent } from './main.component';
 
 
@@ -20,8 +20,8 @@ describe('MainComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         MatSidenavModule, NoopAnimationsModule, MockModule(RouterModule),
-        MockModule(ToolbarModule), MockModule(LeftbarModule),
-        MockModule(SidenavModule)
+        MockModule(HeaderModule), MockModule(NavigationModule),
+        MockModule(SearchModule)
       ],
       declarations: [MainComponent]
     })
@@ -39,12 +39,12 @@ describe('MainComponent', () => {
   });
 
   it('should render the toolbar', () => {
-    const toolbar: DebugElement = fixture.debugElement.query(By.css('ccf-toolbar'));
+    const toolbar: DebugElement = fixture.debugElement.query(By.css('.header'));
     expect(toolbar).not.toBeNull();
   });
 
   it('should render the leftbar', () => {
-    const leftbar: DebugElement = fixture.debugElement.query(By.css('ccf-leftbar'));
+    const leftbar: DebugElement = fixture.debugElement.query(By.css('.navigation'));
     expect(leftbar).not.toBeNull();
   });
 
@@ -53,8 +53,8 @@ describe('MainComponent', () => {
     expect(drawer).not.toBeNull();
   });
 
-  it('should render sidenav', () => {
-    const sidenav: DebugElement = fixture.debugElement.query(By.css('.sidenav'));
+  it('should render contents', () => {
+    const sidenav: DebugElement = fixture.debugElement.query(By.css('.contents'));
     expect(sidenav).not.toBeNull();
   });
 });

@@ -5,23 +5,23 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AboutComponent } from '../about/about.component';
 import { AboutModule } from '../about/about.module';
-import { ToolbarComponent } from './toolbar.component';
+import { HeaderComponent } from './header.component';
 
 @NgModule({
-  declarations: [
-    ToolbarComponent
-  ],
   imports: [
     CommonModule,
     MatDialogModule,
     MatIconModule,
     AboutModule
   ],
+  declarations: [
+    HeaderComponent
+  ],
   exports: [
-    ToolbarComponent
+    HeaderComponent
   ],
   entryComponents: [
     AboutComponent
   ]
 })
-export class ToolbarModule { }
+export class HeaderModule { }

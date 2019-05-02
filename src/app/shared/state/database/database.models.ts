@@ -49,6 +49,11 @@ export interface TissueSample extends Annotated {
    * The patient from whom the tissue was excised
    */
   patient: Patient;
+
+  /**
+   * An URL to the svg overlay
+   */
+  overlayUrl: string;
 }
 
 /**

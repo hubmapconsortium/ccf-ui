@@ -1,0 +1,67 @@
+.ccf-search-categories {
+  &.wrapper {
+    position: absolute;
+    bottom: 3%;
+    width: 100%;
+
+    .tab {
+      width: auto;
+      line-height: 1.5rem;
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+
+    .search-criteria-content {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: flex-start;
+      background-color: white;
+      margin: 0 1rem 0 1rem;
+      padding: 0.5rem;
+      height: 7rem;
+      border: 1px solid lightgray;
+      overflow-y: auto;
+
+      .filter {
+        width: fit-content;
+        height: fit-content;
+        margin: 0.25rem;
+        padding: 0.75rem;
+        text-align: center;
+        background: lightgray;
+        font-size: 0.75rem;
+        border-radius: 2px;
+        border: 1px solid #dcdcdc;
+        cursor: pointer;
+
+        &.selected {
+          background: darkgray;
+        }
+      }
+    }
+
+    ::ng-deep .mat-tab-header {
+      padding: 0 6rem 0 1rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      height: 3.125rem;
+
+      .mat-ink-bar {
+        height: 4px;
+      }
+
+      .mat-tab-header-pagination {
+        box-shadow: none;
+      }
+
+      .mat-tab-label {
+        padding: 0;
+        min-width: auto;
+        opacity: 1;
+      }
+    }
+  }
+}

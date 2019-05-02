@@ -9,7 +9,7 @@ export const routes: Routes = [
     loadChildren: './views/home/home.module#HomeModule'
   },
   {
-    path: 'body/:bodyId',
+    path: 'body',
     loadChildren: './views/body/body.module#BodyModule'
   },
   {

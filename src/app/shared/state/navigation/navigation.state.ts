@@ -1,10 +1,13 @@
+import { OnDestroy } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { RouterNavigation } from '@ngxs/router-plugin';
-import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
-import { take } from 'rxjs/operators';
+import { Action, NgxsOnInit, Selector, State, StateContext, Store } from '@ngxs/store';
+import { Subscription } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs/operators';
 
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
 import { TissueImage } from '../database/database.models';
+import { SearchState } from '../search/search.state';
 import { NavigationStateModel } from './navigation.model';
 
 /**
@@ -15,12 +18,16 @@ import { NavigationStateModel } from './navigation.model';
   defaults: {
     tissues: [],
     activeTissue: undefined,
-    activeOrgan: undefined,
-    hoverOrgan: undefined,
-    activeBodyId: 'female'
+    activeOrgan: undefined
+    hoverOrgan: undefined
   }
 })
-export class NavigationState implements NgxsOnInit {
+export class NavigationState implements NgxsOnInit, OnDestroy {
+  /**
+   * Subscription for getting the active tissues.
+   */
+  private tissuesSubscription: Subscription;
+
   /**
    * Selector for the `TissueImage` array.
    */
@@ -64,15 +71,11 @@ export class NavigationState implements NgxsOnInit {
     const route = action.routerState.root.firstChild;
     if (!route) { return; }
 
-    const { tissueId, organId, bodyId } = route.params;
+    const { tissueId, organId } = route.params;
     if (tissueId) {
       this.setActiveTissue(ctx, route);
     } else if (organId) {
       this.setActiveOrgan(ctx, route);
-    } else if (bodyId) {
-      ctx.patchState({
-        activeBodyId: bodyId
-      });
     }
   }
 
@@ -85,9 +88,10 @@ export class NavigationState implements NgxsOnInit {
   /**
    * Creates an instance of navigation state.
    *
-   * @param database The local database (WIP)
+   * @param database The local database.
+   * @param store The global ngxs store.
    */
-  constructor(private database: LocalDatabaseService) { }
+  constructor(private database: LocalDatabaseService, private store: Store) { }
 
   /**
    * Initializes the state from the database.
@@ -95,10 +99,22 @@ export class NavigationState implements NgxsOnInit {
    * @param ctx The state context.
    */
   ngxsOnInit(ctx: StateContext<NavigationStateModel>): void {
-    // FIXME: WIP
-    this.database.getTissueImages().pipe(take(1)).subscribe(tissues => ctx.patchState({
-      tissues
-    }));
+    const { database, store } = this;
+    const tissuesSource = store.select(SearchState.tissueFilterBuilder).pipe(
+      filter(builder => !!builder),
+      map(builder => builder.toFilter()),
+      switchMap(tissueFilter => database.getTissueImages(tissueFilter))
+    );
+
+    this.tissuesSubscription = tissuesSource.subscribe(tissues => ctx.patchState({ tissues }));
+  }
+
+  /**
+   * Angular's OnDestroy lifecycle hook.
+   * Cleans up subscriptions.
+   */
+  ngOnDestroy() {
+    this.tissuesSubscription.unsubscribe();
   }
 
   /**
