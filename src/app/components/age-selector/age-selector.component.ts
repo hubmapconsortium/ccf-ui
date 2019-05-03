@@ -56,7 +56,7 @@ export class AgeSelectorComponent implements OnDestroy {
    */
   get ageRangeLabel(): string {
     const { lowValue, highValue } = this;
-    return lowValue === highValue ? String(lowValue) : `${lowValue} - ${highValue}`;
+    return lowValue === highValue ? String(lowValue) : `Age: ${lowValue} - ${highValue}`;
   }
 
   /**

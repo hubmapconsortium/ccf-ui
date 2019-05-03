@@ -2,10 +2,11 @@
 
 .ccf-age-selector.wrapper {
   .container {
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #757575;
+    .form-field {
+      width: 8rem;
+      height: 3rem;
+      padding: 0 0.25rem 0 0.25rem;
 
-    .button {
       &.highlight {
         background: $age-slider-background-color;
       }
