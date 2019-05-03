@@ -1,14 +1,14 @@
 import { Component, NgModule, Type } from '@angular/core';
-import { Store, NgxsModule } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { set } from 'lodash';
+import { of } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
 import { TissueSample } from '../../state/database/database.models';
+import { FilterBuilder } from '../../state/search/search.state';
 import { LocalDatabaseService } from '../database/local/local-database.service';
 import { CountMetadata, OrganDataService } from './organ-data.service';
-import { SearchState, FilterBuilder } from '../../state/search/search.state';
-import { of } from 'rxjs';
 
 
 @Component({ selector: 'ccf-test', template: '' })
@@ -27,6 +27,13 @@ describe('OrganDataService', () => {
   let service: OrganDataService;
   let shallow: Shallow<TestComponent>;
   let store: Store;
+
+  function invokeWithThenReturn<T, R>(value: T, result: R): (fun: (value: T) => any) => R {
+    return fun => {
+      fun(value);
+      return result;
+    };
+  }
 
   beforeEach(async () => {
     shallow = new Shallow(TestComponent, TestModule)
@@ -52,8 +59,9 @@ describe('OrganDataService', () => {
     let value: any[];
 
     beforeEach(async () => {
+      spyOn(store, 'select').and.callFake(() => of(new FilterBuilder()));
       spy = spyOn(get(LocalDatabaseService), 'getTissueSamples');
-      spy.and.callFake((f: any) => (f(organ), [[]]));
+      spy.and.callFake(invokeWithThenReturn(organ, [[]]));
       value = await service.organOverlays.pipe(take(1)).toPromise();
     });
 
@@ -70,9 +78,9 @@ describe('OrganDataService', () => {
     beforeEach(async () => {
       spyOn(store, 'select').and.callFake(() => of(new FilterBuilder()));
       sliceSpy = spyOn(get(LocalDatabaseService), 'getTissueSlices');
-      sliceSpy.and.callFake((f: any) => (f({ sample: organ }), [[]]));
+      sliceSpy.and.callFake(invokeWithThenReturn({ sample: organ }, [[]]));
       imageSpy = spyOn(get(LocalDatabaseService), 'getTissueImages');
-      imageSpy.and.callFake((f: any) => (f(set({}, 'slice.sample', organ)), [[]]));
+      imageSpy.and.callFake(invokeWithThenReturn(set({}, 'slice.sample', organ), [[]]));
 
       value = await service.getCounts(organ).pipe(take(1)).toPromise();
     });
