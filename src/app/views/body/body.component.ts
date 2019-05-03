@@ -57,7 +57,9 @@ export class BodyComponent implements OnInit, OnDestroy {
    * Angular's lifecycle hook, Unsubscribing all observable subscriptiotns.
    */
   ngOnDestroy(): void {
-    this.metadataSubscription.unsubscribe();
+    if (this.metadataSubscription) {
+      this.metadataSubscription.unsubscribe();
+    }
   }
 
   /**
