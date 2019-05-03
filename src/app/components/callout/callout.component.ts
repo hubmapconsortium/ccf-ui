@@ -16,6 +16,7 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
   linePath: string;
 
   private overlayRef: OverlayRef;
+  private updater: any;
 
   constructor(private element: ElementRef, private overlay: Overlay) {
     const position: ConnectedPosition = { originX: 'end', originY: 'center', overlayX: 'start', overlayY: 'center' };
@@ -34,6 +35,7 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy() {
+    clearInterval(this.updater);
     this.overlayRef.dispose();
   }
 
@@ -55,6 +57,9 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.linePath = this.createLinePath(x, y, position);
     overlayRef.updatePositionStrategy(positionStrategy);
     setTimeout(() => overlayRef.updatePosition(), 10);
+    // FIXME: Adhoc solution for updating when the search drawer is expanded/collapsed
+    // This is really inefficient and better solutions needs to be researched.
+    this.updater = setInterval(() => overlayRef.updatePosition(), 100);
   }
 
   private isValidSvgElement(element: SVGGraphicsElement): boolean {

@@ -7,11 +7,14 @@
         <use class="overlay" attr.href="{{ sample.overlayUrl }}#overlay" routerLink="/tissues"
              (mouseenter)="activeMetadata = [sample.metadata]" (mouseleave)="activeMetadata = []" #overlay></use>
         <!-- TODO: The callout should use centroid when that is in the overlay image -->
-        <g ccf-callout class="callout" [boundary]="image" [centroid]="overlay">
+        <g *ngIf="dataService.getCounts(sample) | async as counts" ccf-callout class="callout" [boundary]="image" [centroid]="overlay">
           <xhtml:div>
-            TODO:<br />
-            Give me some<br />
-            yummy data!
+            <!-- FIXME: Proper nesting to allow styling -->
+            {{ counts.patients }} Patient<br />
+            {{ counts.tissueSamples }} Tissue samples<br />
+            {{ counts.tissueSlices }} Tissue slices<br />
+            {{ counts.tissueImages }} Tissue images<br />
+            {{ counts.cells }} Cells
           </xhtml:div>
         </g>
       </ng-container>

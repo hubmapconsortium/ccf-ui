@@ -10,7 +10,6 @@ import { OrganDataService } from '../../shared/services/organ-data/organ-data.se
   templateUrl: './organ.component.html',
   styleUrls: ['./organ.component.scss']
 })
-
 export class OrganComponent {
   /**
    * Metadata that is shown on the right hand side table.
