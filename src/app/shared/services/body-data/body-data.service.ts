@@ -6,7 +6,7 @@ import { map, mergeAll, pluck, share, switchMap, toArray } from 'rxjs/operators'
 
 import { environment } from '../../../../environments/environment';
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
-import { Patient, TissueImage, TissueSample, TissueSlice } from '../../state/database/database.models';
+import { Patient } from '../../state/database/database.models';
 import { CountMetaData } from '../../state/organ-meta-data/organ-meta-data.model';
 import { SearchStateModel } from '../../state/search/search.model';
 import { FilterBuilder, SearchState } from '../../state/search/search.state';
@@ -32,24 +32,6 @@ export class BodyDataService {
    */
   @Select(SearchState.patientFilterBuilder)
   private patientFilterBuilder: Observable<FilterBuilder<Patient>>;
-
-  /**
-   * Emits the filter builder for Tissue Sample.
-   */
-  @Select(SearchState.tissueSampleFilterBuilder)
-  private tissueSampleBuilder: Observable<FilterBuilder<TissueSample>>;
-
-  /**
-   * Emits the filter builder for Tissue Image.
-   */
-  @Select(SearchState.tissueImageFilterBuilder)
-  private tissueImageBuilder: Observable<FilterBuilder<TissueImage>>;
-
-  /**
-   * Emits the filter builder for Tissue Slice.
-   */
-  @Select(SearchState.tissueSliceFilterBuilder)
-  private tissueSliceBuilder: Observable<FilterBuilder<TissueSlice>>;
 
   /**
    * Gets body source path

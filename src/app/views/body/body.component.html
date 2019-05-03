@@ -7,10 +7,10 @@
           <use class="overlay" attr.href="{{ overlay.path }}#overlay"
             [routerLink]="navigator.createOrganPath(overlay.id)" (mouseenter)="organHover(overlay.id)"
             (mouseleave)="clearOrganHover()" #overlayElem></use>
-          <g *ngIf="bodyService.getCounts(overlay) | async as counts" ccf-callout class="callout"
-            [boundary]="image" [centroid]="overlayElem" forcePosition="left">
+          <g *ngIf="bodyService.getCounts(overlay) | async as counts" ccf-callout class="callout" [boundary]="image"
+            [centroid]="overlayElem" forcePosition="left">
             <xhtml:div>
-              {{ counts.patientsCount }} Patient<br />
+              {{ counts.patientsCount }} <strong>Patient</strong><br />
               {{ counts.tissueSamplesCount }} Tissue samples<br />
               {{ counts.tissueSlicesCount }} Tissue slices<br />
               {{ counts.tissueImagesCount }} Tissue images<br />

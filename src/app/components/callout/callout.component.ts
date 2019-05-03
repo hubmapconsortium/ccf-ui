@@ -21,6 +21,10 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
    */
   @Input() centroid: SVGGraphicsElement;
 
+
+  /**
+   * Forces the callout position to either left or right.
+   */
   @Input() forcePosition: 'left' | 'right';
 
   /**
