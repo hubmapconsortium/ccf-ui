@@ -3,7 +3,7 @@
 .ccf-age-selector.wrapper {
   .container {
     .form-field {
-      width: 8rem;
+      width: 8.5rem;
       height: 3rem;
       padding: 0 0.25rem 0 0.25rem;
 
@@ -16,6 +16,10 @@
 
 // Styles for the popover slider
 // NOTE: This must NOT be nested inside the wrapper/container!
+::ng-deep .age-selector-pane {
+  padding-left: 0.75rem; // Keep this padding in sync with the padding on the .selector class in ccf-search
+}
+
 .ccf-age-selector.detached {
   display: flex;
   justify-content: center;

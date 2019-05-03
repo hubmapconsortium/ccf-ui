@@ -8,14 +8,14 @@
     background: #f5f5f5;
 
     .age-gender-container {
-      padding-top: 1rem; // temporary until search
+      padding-top: 1rem;
       display: flex;
       flex-wrap: wrap;
       align-items: flex-end;
       justify-content: flex-start;
       
       .selector {
-        padding-left: 0.75rem;
+        padding-left: 0.75rem; // When updating this, also update padding for .age-selector-pane in ccf-age-selector
       }
     }
   }

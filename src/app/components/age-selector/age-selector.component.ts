@@ -56,7 +56,8 @@ export class AgeSelectorComponent implements OnDestroy {
    */
   get ageRangeLabel(): string {
     const { lowValue, highValue } = this;
-    return lowValue === highValue ? String(lowValue) : `Age: ${lowValue} - ${highValue}`;
+    const prefix = 'Age: ';
+    return lowValue === highValue ? prefix + String(lowValue) : prefix + `${lowValue} - ${highValue}`;
   }
 
   /**
@@ -83,7 +84,10 @@ export class AgeSelectorComponent implements OnDestroy {
   ) {
     const position: ConnectedPosition = { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' };
     const positionStrategy = overlay.position().flexibleConnectedTo(element).withPositions([position]);
-    this.overlayRef = overlay.create({ positionStrategy });
+    this.overlayRef = overlay.create({
+      panelClass: 'age-selector-pane',
+      positionStrategy
+    });
   }
 
   /**
