@@ -1,15 +1,26 @@
 <div class="ccf-organ wrapper">
   <div class="container">
-    <svg class="organ" viewBox="0 0 800 1000">
-      <use [attr.href]="organImagePath+'organ.svg#organ'"></use>
-      <use *ngFor="let sample of tissueSamples" class="overlay" routerLink="/tissues"
-           (mouseenter)="onTissueSampleMouseenter(sample.metadata)"
-           (mouseleave)="tissueSampleMetadata = []; countMetadata = { }" [attr.href]="sample.overlayUrl + '#overlay'">
-      </use>
+    <svg class="organ-group" viewBox="0 0 800 1000">
+      <use class="organ" [attr.href]="dataService.organImagePath | async" #image></use>
+      <ng-container *ngFor="let sample of dataService.organOverlays | async">
+        <use class="centroid" attr.href="{{ sample.overlayUrl }}#centroid" #centroid></use>
+        <use class="overlay" attr.href="{{ sample.overlayUrl }}#overlay" routerLink="/tissues"
+             (mouseenter)="activeMetadata = [sample.metadata]" (mouseleave)="activeMetadata = []" #overlay></use>
+        <!-- TODO: The callout should use centroid when that is in the overlay image -->
+        <g *ngIf="dataService.getCounts(sample) | async as counts" ccf-callout class="callout" [boundary]="image"
+           [centroid]="overlay">
+          <xhtml:div>
+            <!-- FIXME: Proper nesting to allow styling -->
+            {{ counts.patients }} Patient<br />
+            {{ counts.tissueSamples }} Tissue samples<br />
+            {{ counts.tissueSlices }} Tissue slices<br />
+            {{ counts.tissueImages }} Tissue images<br />
+            {{ counts.cells }} Cells
+          </xhtml:div>
+        </g>
+      </ng-container>
     </svg>
 
-    <ccf-metadata class="metadata" [metadata]="tissueSampleMetadata"></ccf-metadata>
-
-    <!-- TODO: Add callout here. Could benefit from ccf-metadata? -->
+    <ccf-metadata class="metadata" [metadata]="activeMetadata"></ccf-metadata>
   </div>
 </div>
