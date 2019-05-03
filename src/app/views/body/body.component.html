@@ -1,17 +1,33 @@
 <div class="ccf-ui-body wrapper">
   <div class="container">
-    <div class="organ-metadata">
-      {{ metaData$ | async }}
-    </div>
-
     <div class="body-details-container">
-      <!-- TODO: Add callout here. Could benefit from ccf-metadata? -->
-
       <svg class="body" viewBox="0 0 500 1000">
-        <use attr.href="{{ bodyImagePath$ | async }}body.svg#body"></use>
-        <use *ngFor="let overlay of bodyOverlays$ | async" class="overlay" attr.href="{{ overlay.path }}#overlay"
-             [routerLink]="navigator.createOrganPath(overlay.id)"></use>
+        <use attr.href="{{ bodyImagePath$ | async }}body.svg#body" #image></use>
+        <ng-container *ngFor="let overlay of bodyOverlays$ | async">
+          <use class="overlay" attr.href="{{ overlay.path }}#overlay"
+            [routerLink]="navigator.createOrganPath(overlay.id)" (mouseenter)="organHover(overlay.id)"
+            (mouseleave)="clearOrganHover()" #overlayElem></use>
+          <g *ngIf="bodyService.getCounts(overlay) | async as counts" ccf-callout class="callout" [boundary]="image"
+            [centroid]="overlayElem" forcePosition="left">
+            <xhtml:div>
+              {{ counts.patientsCount }} <strong>Patient</strong><br />
+              {{ counts.tissueSamplesCount }} Tissue samples<br />
+              {{ counts.tissueSlicesCount }} Tissue slices<br />
+              {{ counts.tissueImagesCount }} Tissue images<br />
+              {{ counts.cells }} Cells
+            </xhtml:div>
+          </g>
+        </ng-container>
       </svg>
+      <div class="organ-metadata" *ngIf="metadata && metadata.length">
+        <div class="body">
+          <div class="header">
+            <div class="heading">ORGAN:</div>
+            <div class="organ">{{ capitalize(hoverOrganName) }}</div>
+          </div>
+          <ccf-metadata [metadata]="metadata"></ccf-metadata>
+        </div>
+      </div>
     </div>
   </div>
 </div>

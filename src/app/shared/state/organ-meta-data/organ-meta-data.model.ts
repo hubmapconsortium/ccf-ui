@@ -1,5 +1,7 @@
-
-export interface OrganMetaData {
-    patientNumber: number;
-    procedureId: number;
+export interface CountMetaData {
+    patientsCount: number;
+    tissueSamplesCount: number;
+    tissueSlicesCount: number;
+    tissueImagesCount: number;
+    cells: number;
 }

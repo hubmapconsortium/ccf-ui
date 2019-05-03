@@ -68,7 +68,7 @@ describe('SearchState', () => {
       }
 
       const searchState: SearchStateModel = { gender: 'female', ageRange: [10, 20], tmc: ['abc'], technologies: ['123'] };
-      const filter = SearchState.tissueFilterBuilder(searchState).toFilter();
+      const filter = SearchState.tissueImageFilterBuilder(searchState).toFilter();
       const validItem = createTissueImage('female', 12, 'abc', '123');
       const invalidGenderItem = createTissueImage('male', 12, 'abc', '123');
       const invalidAgeItem = createTissueImage('female', 1000, 'abc', '123');

@@ -82,7 +82,7 @@ export class NavigationState implements NgxsOnInit, OnDestroy {
    */
   ngxsOnInit(ctx: StateContext<NavigationStateModel>): void {
     const { database, store } = this;
-    const tissuesSource = store.select(SearchState.tissueFilterBuilder).pipe(
+    const tissuesSource = store.select(SearchState.tissueImageFilterBuilder).pipe(
       filter(builder => !!builder),
       map(builder => builder.toFilter()),
       switchMap(tissueFilter => database.getTissueImages(tissueFilter))
