@@ -10,6 +10,10 @@
       width: 76%;
       height: 100%;
 
+      .overlay {
+        cursor: pointer;
+      }
+
       .centroid {
         visibility: hidden;
       }

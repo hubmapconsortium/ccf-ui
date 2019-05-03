@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { OrganDataService } from '../../shared/services/organ-data/organ-data.service';
 
 /**
- * Component organ view component.
+ * Displays an organ with overlays.
  */
 @Component({
   selector: 'ccf-organ',
@@ -19,7 +19,7 @@ export class OrganComponent {
   /**
    * Creates an instance of organ component.
    *
-   * @param organService Service used to fetch organ related data for display.
+   * @param dataService Service used to fetch organ related data for display.
    */
   constructor(public readonly dataService: OrganDataService) { }
 }

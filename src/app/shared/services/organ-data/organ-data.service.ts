@@ -1,20 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { Observable, combineLatest } from 'rxjs';
-import { map, pluck, switchMap, share } from 'rxjs/operators';
+import { PropertyPath } from 'lodash';
+import { combineLatest, Observable } from 'rxjs';
+import { map, pluck, share, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { TissueSample } from '../../state/database/database.models';
 import { NavigationState } from '../../state/navigation/navigation.state';
-import { LocalDatabaseService } from '../database/local/local-database.service';
-import { TissueSample, TissueSlice, TissueImage } from '../../state/database/database.models';
-import { PropertyPath } from 'lodash';
 import { FilterBuilder, SearchState } from '../../state/search/search.state';
+import { LocalDatabaseService } from '../database/local/local-database.service';
 
+/**
+ * A collection of counts for different objects.
+ */
 export interface CountMetadata {
+  /**
+   * The number of patients.
+   */
   patients: number;
+
+  /**
+   * The number of tissue samples.
+   */
   tissueSamples: number;
+
+  /**
+   * The number of tissue slices.
+   */
   tissueSlices: number;
+
+  /**
+   * The number of tissue images.
+   */
   tissueImages: number;
+
+  /**
+   * The number of cells.
+   */
   cells: number;
 }
 
@@ -83,6 +105,12 @@ export class OrganDataService {
     return result;
   }
 
+  /**
+   * Creates an observable returning counts for the specified tissue sample id.
+   *
+   * @param sampleId The indetifier.
+   * @returns An observable emitting the counts.
+   */
   private createCountsObservable(sampleId: string): Observable<CountMetadata> {
     const sliceCountObservable = this.getCountsFor('getTissueSlices', SearchState.tissueSliceFilterBuilder, 'sample.id', sampleId);
     const imageCountObservable = this.getCountsFor('getTissueImages', SearchState.tissueFilterBuilder, 'slice.sample.id', sampleId);
@@ -100,6 +128,15 @@ export class OrganDataService {
     return counts;
   }
 
+  /**
+   * Queries the number of items exists of a specific object type.
+   *
+   * @param method The database method used to query items.
+   * @param selector The filter builder selector for the associated object type.
+   * @param path Path which's value must match the provided value.
+   * @param value A value to match against (usually an identifier)
+   * @returns An observable emitting a count of the objects.
+   */
   private getCountsFor<T>(
     method: keyof LocalDatabaseService,
     selector: (state: any) => FilterBuilder<T>,
