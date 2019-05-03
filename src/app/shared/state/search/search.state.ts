@@ -173,7 +173,6 @@ export class SearchState {
       .addIncludes('patient.provider', tmc);
   }
 
-
   /**
    * Creates a filter function for tissue slice objects based on the current search state.
    *
@@ -205,22 +204,6 @@ export class SearchState {
       .addCompare('slice.sample.patient.age', lessThanEqual, max)
       .addIncludes('slice.sample.patient.provider', tmc)
       .addIncludes('technology', technologies);
-  }
-
-  /**
-   * Creates a filter function for tissue sample objects based on the current search state.
-   *
-   * @param state A snapshot of the current state.
-   * @returns A filter function that returns true for all objects matching the current search.
-   */
-  @Selector()
-  static tissueSampleFilterBuilder(state: SearchStateModel): FilterBuilder<TissueSample> {
-    const { gender, ageRange: [min, max], tmc } = state;
-    return new FilterBuilder<TissueSample>()
-      .addMatches('patient.gender', gender)
-      .addCompare('patient.age', greaterThanEqual, min)
-      .addCompare('patient.age', lessThanEqual, max)
-      .addIncludes('patient.provider', tmc);
   }
 
   /**
