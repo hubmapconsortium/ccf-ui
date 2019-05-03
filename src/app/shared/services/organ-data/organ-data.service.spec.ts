@@ -1,12 +1,14 @@
 import { Component, NgModule, Type } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Store, NgxsModule } from '@ngxs/store';
 import { set } from 'lodash';
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
 import { TissueSample } from '../../state/database/database.models';
-import { OrganDataService } from './organ-data.service';
+import { LocalDatabaseService } from '../database/local/local-database.service';
+import { CountMetadata, OrganDataService } from './organ-data.service';
+import { SearchState, FilterBuilder } from '../../state/search/search.state';
+import { of } from 'rxjs';
 
 
 @Component({ selector: 'ccf-test', template: '' })
@@ -19,7 +21,7 @@ class TestModule { }
 describe('OrganDataService', () => {
   const organ = { id: 'kidney' } as TissueSample;
   set(organ, 'metadata.label', 'info');
-  set(organ, 'slice.sample.patient.anatomicalLocations[0]', 'kidney');
+  set(organ, 'patient.anatomicalLocations[0]', 'kidney');
 
   let get: <T>(type: Type<T>) => T;
   let service: OrganDataService;
@@ -34,34 +36,63 @@ describe('OrganDataService', () => {
     ({ get } = await shallow.render());
     store = get(Store);
     service = get(OrganDataService);
+
+    store.reset({ navigation: { activeOrgan: organ } });
   });
 
-  beforeEach(() => store.reset({ navigation: { activeOrgan: organ } }));
-
-  function describeStateSlice(
-    methodName: 'getOrganSourcePath' | 'getAllTissueSamples',
-    dataDescription: string,
-    expected: any,
-    arg?: string
-  ): void {
-    describe(`${methodName}()`, () => {
-      let obs: Observable<any>;
-      beforeEach(() => obs = service[methodName](arg));
-
-      it('returns an observable', () => {
-        expect(obs).toEqual(jasmine.any(Observable));
-      });
-
-      if (expected != null) {
-        it(dataDescription, async () => {
-          const result = await obs.pipe(take(1)).toPromise();
-          expect(result.indexOf(expected)).not.toEqual(-1);
-        });
-      }
+  describe('organImagePath', () => {
+    it('emits values based on the active path', async () => {
+      const value = await service.organImagePath.pipe(take(1)).toPromise();
+      expect(value).toContain(organ.id);
     });
-  }
+  });
 
-  describeStateSlice('getOrganSourcePath', 'emits the source path of the currently active organ', 'organ/kidney');
-  describeStateSlice('getAllTissueSamples', 'emits all tissue samples of the organ', null, 'kidney');
-  // TODO: write test for getCounts
+  describe('organOverlays', () => {
+    let spy: jasmine.Spy;
+    let value: any[];
+
+    beforeEach(async () => {
+      spy = spyOn(get(LocalDatabaseService), 'getTissueSamples');
+      spy.and.callFake((f: any) => (f(organ), [[]]));
+      value = await service.organOverlays.pipe(take(1)).toPromise();
+    });
+
+    it('queries the database for overlays', async () => {
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('getCounts', () => {
+    let sliceSpy: jasmine.Spy;
+    let imageSpy: jasmine.Spy;
+    let value: CountMetadata;
+
+    beforeEach(async () => {
+      spyOn(store, 'select').and.callFake(() => of(new FilterBuilder()));
+      sliceSpy = spyOn(get(LocalDatabaseService), 'getTissueSlices');
+      sliceSpy.and.callFake((f: any) => (f({ sample: organ }), [[]]));
+      imageSpy = spyOn(get(LocalDatabaseService), 'getTissueImages');
+      imageSpy.and.callFake((f: any) => (f(set({}, 'slice.sample', organ)), [[]]));
+
+      value = await service.getCounts(organ).pipe(take(1)).toPromise();
+    });
+
+    it('emits object with the counts', () => {
+      const countLike: any = {
+        patients: jasmine.any(Number),
+        tissueSamples: jasmine.any(Number),
+        tissueSlices: jasmine.any(Number),
+        tissueImages: jasmine.any(Number),
+        cells: jasmine.any(Number)
+      };
+      expect(value).toEqual(jasmine.objectContaining(countLike));
+    });
+
+    it('subsequent calls with the same arguments returns the same observable', () => {
+      const obs1 = service.getCounts(organ);
+      const obs2 = service.getCounts(organ);
+
+      expect(obs1).toBe(obs2);
+    });
+  });
 });

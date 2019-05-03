@@ -158,6 +158,22 @@ export class SearchState {
   }
 
   /**
+   * Creates a filter function for tissue slice objects based on the current search state.
+   *
+   * @param state A snapshot of the current state.
+   * @returns A filter function that returns true for all objects matching the current search.
+   */
+  @Selector()
+  static tissueSliceFilterBuilder(state: SearchStateModel): FilterBuilder<Patient> {
+    const { gender, ageRange: [min, max], tmc } = state;
+    return new FilterBuilder<Patient>()
+      .addMatches('sample.patient.gender', gender)
+      .addCompare('sample.patient.age', greaterThanEqual, min)
+      .addCompare('sample.patient.age', lessThanEqual, max)
+      .addIncludes('sample.patient.provider', tmc);
+  }
+
+  /**
    * Creates a filter function for tissue image objects based on the current search state.
    *
    * @param state A snapshot of the current state.

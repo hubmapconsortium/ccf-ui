@@ -1,54 +1,41 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterLink } from '@angular/router';
-import { MockComponents } from 'ng-mocks';
-import { Observable, of } from 'rxjs';
-import { MetadataComponent } from 'src/app/components/metadata/metadata.component';
-import { OrganDataService, CountMetadata } from 'src/app/shared/services/organ-data/organ-data.service';
-import { TissueSample } from 'src/app/shared/state/database/database.models';
+import { DebugElement, Type } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BehaviorSubject } from 'rxjs';
+import { Shallow } from 'shallow-render';
+import { OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
 
 import { OrganComponent } from './organ.component';
+import { OrganModule } from './organ.module';
 
 describe('OrganComponent', () => {
   let component: OrganComponent;
-  let fixture: ComponentFixture<OrganComponent>;
-  const mockOrganService = {
-    getOrganSourcePath: (): Observable<string> => of('5'),
-    getAllTissueSamples: (): Observable<TissueSample[]> => of([{id: 'kidney'}] as TissueSample[]),
-    getActiveOrgan: (): Observable<{id: string}> => of({id: 'kidney'}),
-    getCounts: (): CountMetadata => ({cells: 0, patients: 0, tissueImages: 0, tissueSlices: 0, tissueSamples: 0})
-  };
+  let find: (cssOrDirective: string | Type<any>) => DebugElement & DebugElement[];
+  let get: <T>(type: Type<T>) => T;
+  let shallow: Shallow<OrganComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [OrganComponent, MockComponents(RouterLink, MetadataComponent)],
-      providers: [
-        { provide: OrganDataService, useValue: mockOrganService }
-      ]
-    }).compileComponents();
-  }));
+  function createMockOrganDataService(): OrganDataService {
+    const mock = jasmine.createSpyObj<OrganDataService>(['getCounts']);
+    (mock as any).organImagePath = new BehaviorSubject('i1');
+    (mock as any).organOverlays = new BehaviorSubject([{ id: 'o1', overlayUrl: 'oi1' }]);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(OrganComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    return mock;
+  }
+
+  beforeEach(async () => {
+    // FIXME: Setup correctly
+    shallow = new Shallow(OrganComponent, OrganModule)
+      .import(RouterTestingModule.withRoutes([{ path: '', component: OrganComponent }]))
+      .provide(OrganDataService)
+      .mock(OrganDataService, createMockOrganDataService());
+
+    ({ instance: component, get, find } = await shallow.render());
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('component', () => {
+    // No tests currently
   });
 
-  it('should getOrganImageSourcePath', () => {
-    component.getOrganImageSourcePath();
-    expect(component.organImagePath).toEqual('5');
-  });
-
-  it('should getTissueSamples', () => {
-    component.getTissueSamples('kidney');
-    expect(component.tissueSamples).not.toBeUndefined();
-  });
-
-  it('should onTissueSampleMouseenter', () => {
-    component.onTissueSampleMouseenter({'Age': '38'});
-    expect(component.tissueSamples).not.toBeUndefined();
+  describe('dom', () => {
+    // TODO
   });
 });
