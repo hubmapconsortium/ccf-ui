@@ -19,7 +19,6 @@ import { NavigationStateModel } from './navigation.model';
     tissues: [],
     activeTissue: undefined,
     activeOrgan: undefined
-    hoverOrgan: undefined
   }
 })
 export class NavigationState implements NgxsOnInit, OnDestroy {
@@ -42,17 +41,6 @@ export class NavigationState implements NgxsOnInit, OnDestroy {
   @Selector()
   static activeTissue(state: NavigationStateModel): TissueImage | undefined {
     return state.activeTissue;
-  }
-
-
-  /**
-   * Selectors navigation state
-   * @param state Takes the state
-   * @returns The organ name that is currently hovered by user on the body.
-   */
-  @Selector()
-  static hoverOrgan(state: NavigationStateModel): string {
-    return state.hoverOrgan;
   }
 
   /**
@@ -79,12 +67,6 @@ export class NavigationState implements NgxsOnInit, OnDestroy {
     }
   }
 
-  updateHoverOrgan(ctx: StateContext<NavigationStateModel>, organ: string): void {
-    ctx.patchState({
-      hoverOrgan: organ,
-    });
-  }
-
   /**
    * Creates an instance of navigation state.
    *
@@ -100,7 +82,7 @@ export class NavigationState implements NgxsOnInit, OnDestroy {
    */
   ngxsOnInit(ctx: StateContext<NavigationStateModel>): void {
     const { database, store } = this;
-    const tissuesSource = store.select(SearchState.tissueFilterBuilder).pipe(
+    const tissuesSource = store.select(SearchState.tissueImageFilterBuilder).pipe(
       filter(builder => !!builder),
       map(builder => builder.toFilter()),
       switchMap(tissueFilter => database.getTissueImages(tissueFilter))

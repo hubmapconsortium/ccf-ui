@@ -21,6 +21,8 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
    */
   @Input() centroid: SVGGraphicsElement;
 
+  @Input() forcePosition: 'left' | 'right';
+
   /**
    * Template of the callout contents.
    */
@@ -87,7 +89,7 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
    * Updates the position of the callout. Creating it if needed.
    */
   private update(): void {
-    const { boundary, centroid, overlayRef, portal } = this;
+    const { boundary, centroid, forcePosition, overlayRef, portal } = this;
     if (!this.isValidSvgElement(boundary) || !this.isValidSvgElement(centroid)) {
       this.cancelUpdates();
       overlayRef.detach();
@@ -99,7 +101,7 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     const [x, y] = this.getCenter(this.centroid);
     const [mid] = this.getCenter(this.boundary);
-    const position = x <= mid ? 'left' : 'right';
+    const position = forcePosition || (x <= mid ? 'left' : 'right');
     const positionStrategy = this.createPositionStrategy(position);
 
     this.linePath = this.createLinePath(x, y, position);
@@ -117,7 +119,7 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
   private isValidSvgElement(element: SVGGraphicsElement): boolean {
     if (!element) { return false; }
     const { x, y, width, height } = element.getBBox();
-    return x !== 0 && y !== 0 && width !== 0 && height !== 0;
+    return x !== 0 || y !== 0 || width !== 0 || height !== 0;
   }
 
   /**
