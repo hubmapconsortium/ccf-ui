@@ -75,7 +75,11 @@ export class OrganDataService {
    */
   readonly organOverlays = this.activeOrgan.pipe(
     pluck('id'),
-    switchMap(id => this.localDatabase.getTissueSamples(sample => sample.patient.anatomicalLocations[0] === id))
+    switchMap(id => this.store.select(SearchState.tissueSampleFilterBuilder).pipe(
+      map(builder => builder.addMatches('patient.anatomicalLocations[0]', id)),
+      map(builder => builder.toFilter())
+    )),
+    switchMap(filter => this.localDatabase.getTissueSamples(filter))
   );
 
   /**
