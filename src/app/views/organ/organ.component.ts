@@ -1,33 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { OrganDataService } from 'src/app/shared/services/organ-data/organ-data.service';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { Component } from '@angular/core';
+
+import { OrganDataService } from '../../shared/services/organ-data/organ-data.service';
 
 /**
- * Component organ view component.
+ * Displays an organ with overlays.
  */
 @Component({
   selector: 'ccf-organ',
   templateUrl: './organ.component.html',
   styleUrls: ['./organ.component.scss']
 })
-
-export class OrganComponent implements OnInit {
+export class OrganComponent {
   /**
-   * Organ image path of organ component displays corresponding image deictated by naviagation path.
+   * Metadata that is shown on the right hand side table.
    */
-  organImagePath: string;
+  activeMetadata: [{ [label: string]: string }] | [] = [];
+
   /**
    * Creates an instance of organ component.
-   * @param organService gets metadata and organ path from the service.
+   *
+   * @param dataService Service used to fetch organ related data for display.
    */
-  constructor(private readonly organService: OrganDataService, readonly navService: NavigationService) { }
-
-  /**
-   * on init listen to changes in browser navigation path.
-   */
-  ngOnInit() {
-    this.organService.getOrganSourcePath().subscribe((image: string) => {
-      this.organImagePath = image;
-    });
-  }
+  constructor(public readonly dataService: OrganDataService) { }
 }

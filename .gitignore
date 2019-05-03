@@ -63,3 +63,6 @@ dist/
 
 # System Files
 .DS_Store
+
+# VS Code settings
+.vscode/

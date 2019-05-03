@@ -1,0 +1,48 @@
+<div class="ccf-navigation wrapper">
+  <div class="container">
+    <div class="item search" [class.active]="searchActive" (click)="toggleSearchActive()">
+      <mat-icon class="icon font-icon">search</mat-icon>
+    </div>
+
+    <div class="item home" [routerLink]="navigator.homePath | async" routerLinkActive="active">
+      <mat-icon class="icon font-icon">home</mat-icon>
+      <div class="label"> HOME </div>
+    </div>
+
+    <div class="item body" [routerLink]="navigator.bodyPath | async" routerLinkActive="active">
+      <mat-icon class="icon svg-icon" svgIcon="toolbar:body"></mat-icon>
+      <div class="label"> BODY </div>
+    </div>
+
+    <div *ngIf="navigator.organPath | async as organPath" class="item organ" [routerLink]="organPath"
+         routerLinkActive="active">
+      <mat-icon class="icon svg-icon" svgIcon="toolbar:organ"></mat-icon>
+      <div class="label"> ORGAN </div>
+    </div>
+
+    <div class="item tissues-browser" [routerLink]="navigator.tissuesBrowserPath | async" routerLinkActive="active">
+      <mat-icon class="icon font-icon">view_comfy</mat-icon>
+      <div class="label"> TISSUE </div>
+    </div>
+
+    <div *ngIf="navigator.tissuePath | async as tissuePath" class="item tissue" [routerLink]="tissuePath"
+         routerLinkActive="active">
+      <mat-icon class="icon svg-icon" svgIcon="toolbar:cell"></mat-icon>
+      <div class="label"> CELL </div>
+    </div>
+
+    <!-- Element used to push all elements after itself to the end of the container -->
+    <div class="filler"></div>
+
+    <a class="item feedback" href="https://forms.gle/9U1HVpQANyuHn97M8" target="_blank" rel="noreferrer noopener"
+       (mouseover)="isCommentItemHovered = true" (mouseout)="isCommentItemHovered = false">
+      <mat-icon *ngIf="!isCommentItemHovered; else hoveredCommentIcon" class="icon svg-icon"
+                svgIcon="toolbar:comment-outline">
+      </mat-icon>
+      <ng-template #hoveredCommentIcon>
+        <mat-icon class="icon font-icon">comment</mat-icon>
+      </ng-template>
+      <div class="label"> Comment </div>
+    </a>
+  </div>
+</div>

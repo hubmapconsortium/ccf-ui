@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { Navigate, RouterState } from '@ngxs/router-plugin';
 import { Select } from '@ngxs/store';
-import { concat as loConcat } from 'lodash';
+import { concat } from 'lodash';
 import { Observable, ReplaySubject } from 'rxjs';
-import { distinctUntilChanged as rxDistinctUntilChanged, map as rxMap, pluck as rxPluck } from 'rxjs/operators';
+import { distinctUntilChanged, map, pluck } from 'rxjs/operators';
 
 import { NavigationStateModel } from '../../state/navigation/navigation.model';
 import { NavigationState } from '../../state/navigation/navigation.state';
@@ -31,8 +33,8 @@ function createSinglePathObservable(path: string | any[]): Observable<string | a
  */
 function createPathWithIdentifier(prefix: string | any[], identifier: Observable<any>): Observable<string | any[]> {
   return identifier.pipe(
-    rxDistinctUntilChanged(),
-    rxMap(id => id && loConcat(prefix, id))
+    distinctUntilChanged(),
+    map(id => id && concat(prefix, id))
   );
 }
 
@@ -43,6 +45,12 @@ function createPathWithIdentifier(prefix: string | any[], identifier: Observable
   providedIn: 'root'
 })
 export class NavigationService {
+  /**
+   * Currently active url.
+   */
+  @Select(RouterState.url)
+  private url: Observable<string>;
+
   /**
    * Listener on the nagivation state.
    */
@@ -57,7 +65,7 @@ export class NavigationService {
   /**
    * The path to the body view.
    */
-  readonly bodyPath = createPathWithIdentifier('/body',  this.navigation.pipe(rxPluck('activeBodyId')));
+  readonly bodyPath = createSinglePathObservable('/body');
 
   /**
    * The path to the tissues browser view.
@@ -67,12 +75,17 @@ export class NavigationService {
   /**
    * The path to the currently active organ view.
    */
-  readonly organPath = createPathWithIdentifier('/organ', this.navigation.pipe(rxPluck('activeOrganId')));
+  readonly organPath = createPathWithIdentifier('/organ', this.navigation.pipe(pluck('activeOrgan', 'id')));
 
   /**
    * The path to the currently active tissue view.
    */
-  readonly tissuePath = createPathWithIdentifier('/tissue', this.navigation.pipe(rxPluck('activeTissueId')));
+  readonly tissuePath = createPathWithIdentifier('/tissue', this.navigation.pipe(pluck('activeTissue', 'id')));
+
+  /**
+   * Determines whether the home route is active.
+   */
+  readonly isHomeActive = this.url.pipe(map(url => url === '/home'));
 
   /**
    * Creates an url to the organ view for a specific organ.
@@ -94,8 +107,11 @@ export class NavigationService {
     return ['/tissue', tissueId];
   }
 
-  // @Dispatch()
-  // navigateToOrgan(id: string): Navigate {
-  //   return new Navigate(['/organ', id]);
-  // }
+  /**
+   * Causes a router change to the home view.
+   */
+  @Dispatch()
+  navigateToHome(): Navigate {
+    return new Navigate(['/home']);
+  }
 }

@@ -1,9 +1,9 @@
 <div class="tissue wrapper">
   <div id="tissue-view" class="view item" #tissueView></div>
-  
+
   <div class="metadata item" *ngIf="tissueMetadata && tissueMetadata.length">
     <span *ngIf="organName" class="organ-name">{{organName}}</span>
-    
+
     <div class="details">
       <mat-expansion-panel class="panel">
         <mat-expansion-panel-header class="header">
@@ -11,13 +11,7 @@
             Details
           </mat-panel-title>
         </mat-expansion-panel-header>
-
-        <table>
-          <tr *ngFor="let item of tissueMetadata" class="row">
-            <td class="label">{{item[0]}}:</td>
-            <td class="value">{{item[1]}}</td>
-          </tr>
-        </table>
+        <ccf-metadata [metadata]="tissueMetadata"></ccf-metadata>
       </mat-expansion-panel>
     </div>
   </div>

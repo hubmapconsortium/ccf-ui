@@ -1,0 +1,22 @@
+.metadata.wrapper {
+  .row {
+    font-size: 0.75rem;
+
+    .label {
+      text-align: right;
+    }
+
+    .value {
+      text-align: left;
+      padding-left: 3rem;
+      font-weight: bold;
+    }
+  }
+
+  .container {
+    .metadata-table {
+      float: right;
+      padding-right: 1rem;
+    }
+  }
+}

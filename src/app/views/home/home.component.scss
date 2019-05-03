@@ -1,27 +1,32 @@
 .ccf-home.wrapper {
-    .container {
-        margin: auto;
-        display: block;
-        width: 55%;
-        padding-top: 13%;
-    }
+  .container {
+    margin: auto;
+    display: block;
+    width: 55%;
+    padding-top: 10rem;
+
     .subtitle {
-        margin: 1rem 1rem 1rem 0;
+      margin: 1rem 1rem 1rem 0;
     }
+
     .list-header {
-        font-size: 0.9em;
+      font-size: 0.9em;
     }
+
     .list-container {
-        .list {
-            font-size: 0.9em;
-        }
+      .list {
+        font-size: 0.9em;
+      }
     }
+
     .revision-text {
-        margin: 1rem 1rem 1rem 0;
-        font-size: 0.8em;
+      margin: 1rem 1rem 1rem 0;
+      font-size: 0.8em;
     }
+
     .logo {
-        width: 20rem;
-        margin: auto;
+      width: 20rem;
+      margin: auto;
     }
+  }
 }

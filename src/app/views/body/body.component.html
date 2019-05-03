@@ -1,27 +1,17 @@
 <div class="ccf-ui-body wrapper">
   <div class="container">
-    <div class="inner-container">
-      <div class="organ-metadata">
-         {{ metaData$ | async }}
-      </div>
+    <div class="organ-metadata">
+      {{ metaData$ | async }}
+    </div>
 
-      <div class="body-details-container">
-        <div class="details">
-          <div class="heart" >
-          </div>
-          <div class="kidney">
-          </div>
-        </div>
+    <div class="body-details-container">
+      <!-- TODO: Add callout here. Could benefit from ccf-metadata? -->
 
-        <div class="body">
-            <svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <use attr.xlink:href="{{ bodyImagePath$ | async }}body.svg#body" x="0" y="0"></use>
-              <g *ngFor="let overlay of bodyOverlays$ | async" [routerLink]="navigator.createOrganPath(overlay.id)">
-                <use attr.xlink:href="{{ overlay.path }}#overlay" x="0" y="0"></use>
-              </g>
-            </svg>
-        </div> 
-      </div>
+      <svg class="body" viewBox="0 0 500 1000">
+        <use attr.href="{{ bodyImagePath$ | async }}body.svg#body"></use>
+        <use *ngFor="let overlay of bodyOverlays$ | async" class="overlay" attr.href="{{ overlay.path }}#overlay"
+             [routerLink]="navigator.createOrganPath(overlay.id)"></use>
+      </svg>
     </div>
   </div>
 </div>

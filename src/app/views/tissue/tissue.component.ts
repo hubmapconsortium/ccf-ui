@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { capitalize as loCapitalize } from 'lodash';
 import openSeaDragon from 'openseadragon';
 import { Subscription } from 'rxjs';
@@ -29,7 +29,7 @@ export class TissueComponent implements OnInit, OnDestroy {
   /**
    * Tissue metadata
    */
-  tissueMetadata: [string, string][];
+  tissueMetadata: { [label: string]: string }[];
   /**
    * Organ name
    */
@@ -53,7 +53,8 @@ export class TissueComponent implements OnInit, OnDestroy {
     this.tissueSourcePathSubscription = this.tissueDataService.getTissueSourcePath()
       .subscribe(path => this.launchTissueViewer(path));
     this.tissueMetadataSubscription = this.tissueDataService.getMetadata()
-      .subscribe(metadata => this.tissueMetadata = Object.entries(metadata));
+    // enclosed metadata inside array becasue @Input of metadata component expects array.
+      .subscribe(metadata => { this.tissueMetadata = [metadata]; });
     this.tissueDataService.getOrganName().subscribe((name) => this.organName = loCapitalize(name));
   }
 

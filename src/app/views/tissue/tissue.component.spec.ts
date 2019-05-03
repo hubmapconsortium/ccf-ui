@@ -3,11 +3,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatExpansionModule } from '@angular/material';
 import { By } from '@angular/platform-browser';
 import { capitalize as loCapitalize } from 'lodash';
-import { MockRender } from 'ng-mocks';
+import { MockRender, MockComponent } from 'ng-mocks';
 import { Subject } from 'rxjs';
 
 import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 import { TissueComponent } from './tissue.component';
+import { MetadataComponent } from 'src/app/components/metadata/metadata.component';
 
 
 describe('TissueComponent', () => {
@@ -36,7 +37,7 @@ describe('TissueComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [MatExpansionModule],
-      declarations: [TissueComponent],
+      declarations: [TissueComponent, MockComponent(MetadataComponent)],
       providers: [
         { provide: TissueDataService, useValue: mockedDataService }
       ]
@@ -67,7 +68,7 @@ describe('TissueComponent', () => {
       });
 
       it('sets data from the service', () => {
-        expect(component.tissueMetadata).toEqual(jasmine.arrayContaining(Object.entries(data)));
+        expect(component.tissueMetadata).toEqual(jasmine.arrayContaining([data]));
       });
     });
 

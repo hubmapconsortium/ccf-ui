@@ -29,6 +29,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -61,7 +66,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ccf-ui:build"
+            "browserTarget": "ccf-ui:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -85,6 +91,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "scripts": [],
             "assets": [
               "src/favicon.ico",
@@ -92,6 +103,9 @@
             ],
             "codeCoverage": true,
             "codeCoverageExclude": [
+              "src/test.ts",
+              "src/polyfills.ts",
+              "src/environments/**/*.ts",
               "src/app/**/*.module.ts"
             ]
           }
