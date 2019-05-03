@@ -3,6 +3,7 @@ import {
   get,
   gte as greaterThanEqual,
   includes,
+  intersection,
   lte as lessThanEqual,
   matchesProperty,
   overEvery,
@@ -10,7 +11,7 @@ import {
   without,
 } from 'lodash';
 
-import { Patient, TissueImage } from '../database/database.models';
+import { Patient, TissueImage, TissueSlice, TissueSample } from '../database/database.models';
 import {
   SelectTechnology,
   SelectTMC,
@@ -107,6 +108,18 @@ export class FilterBuilder<T> {
   }
 
   /**
+   * Adds intersects
+   * @param path Path to the property.
+   * @param values The values to find the intersection
+   */
+  addIntersects(path: PropertyPath, values: any[]): FilterBuilder<T> {
+    if (values !== undefined && values.length > 0) {
+      return this.addFilter(obj => intersection(get(obj, path), values).length > 0);
+    }
+    return this;
+  }
+
+  /**
    * Converts this builder into a single filter function.
    *
    * @returns The constructed filter function.
@@ -145,29 +158,13 @@ export class SearchState {
   }
 
   /**
-   * Creates a filter function for patient objects based on the current search state.
-   *
-   * @param state A snapshot of the current state.
-   * @returns A filter function that returns true for all objects matching the current search.
-   */
-  @Selector()
-  static patientFilterBuilder(state: SearchStateModel): FilterBuilder<Patient> {
-    const { gender, ageRange: [min, max], tmc } = state;
-    return new FilterBuilder<Patient>()
-      .addMatches('gender', gender)
-      .addCompare('age', greaterThanEqual, min)
-      .addCompare('age', lessThanEqual, max)
-      .addIncludes('provider', tmc);
-  }
-
-  /**
    * Creates a filter function for tissue image objects based on the current search state.
    *
    * @param state A snapshot of the current state.
    * @returns A filter function that returns true for all objects matching the current search.
    */
   @Selector()
-  static tissueFilterBuilder(state: SearchStateModel): FilterBuilder<TissueImage> {
+  static tissueImageFilterBuilder(state: SearchStateModel): FilterBuilder<TissueImage> {
     const { gender, ageRange: [min, max], tmc, technologies } = state;
     return new FilterBuilder<TissueImage>()
       .addMatches('slice.sample.patient.gender', gender)
@@ -175,6 +172,36 @@ export class SearchState {
       .addCompare('slice.sample.patient.age', lessThanEqual, max)
       .addIncludes('slice.sample.patient.provider', tmc)
       .addIncludes('technology', technologies);
+  }
+  /**
+   * Creates a filter function for tissue slice based on the current search state.
+   *
+   * @param state A snapshot of the current state.
+   * @returns A filter function that returns true for all objects matching the current search.
+   */
+  @Selector()
+  static tissueSliceFilterBuilder(state: SearchStateModel): FilterBuilder<TissueSlice> {
+    const { gender, ageRange: [min, max], tmc } = state;
+    return new FilterBuilder<TissueSlice>()
+      .addMatches('sample.patient.gender', gender)
+      .addCompare('sample.patient.age', greaterThanEqual, min)
+      .addCompare('sample.patient.age', lessThanEqual, max)
+      .addIncludes('sample.patient.provider', tmc);
+  }
+  /**
+   * Creates a filter function for tissue sample objects based on the current search state.
+   *
+   * @param state A snapshot of the current state.
+   * @returns A filter function that returns true for all objects matching the current search.
+   */
+  @Selector()
+  static tissueSampleFilterBuilder(state: SearchStateModel): FilterBuilder<TissueSample> {
+    const { gender, ageRange: [min, max], tmc } = state;
+    return new FilterBuilder<TissueSample>()
+      .addMatches('patient.gender', gender)
+      .addCompare('patient.age', greaterThanEqual, min)
+      .addCompare('patient.age', lessThanEqual, max)
+      .addIncludes('patient.provider', tmc);
   }
 
   /**
