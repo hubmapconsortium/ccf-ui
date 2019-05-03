@@ -52,7 +52,7 @@ describe('OrganDataService', () => {
     let value: any[];
 
     beforeEach(async () => {
-      spy = spyOn(get(LocalDatabaseService), 'getTissueSamples')
+      spy = spyOn(get(LocalDatabaseService), 'getTissueSamples');
       spy.and.callFake((f: any) => (f(organ), [[]]));
       value = await service.organOverlays.pipe(take(1)).toPromise();
     });
