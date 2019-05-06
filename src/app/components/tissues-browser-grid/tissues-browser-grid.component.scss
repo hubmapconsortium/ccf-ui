@@ -6,15 +6,18 @@ $item-min-height: 160px;
 $item-max-height: 559px;
 $height-width-ratio: $item-min-height / $item-min-width;
 
-@function item-width($n) { @return (100% / $n); }
-@function item-height($n) { @return $height-width-ratio * item-width($n); }
+@function item-width($n) {
+  @return (100% / $n);
+}
+
+@function item-height($n) {
+  @return $height-width-ratio * item-width($n);
+}
 
 .tissues-browser-grid.wrapper {
   .container {
     .popover-container {
       ::ng-deep .popover-content {
-        // width: item-width($default-num-columns);
-        // height: item-height($default-num-columns);
         min-width: $item-min-width;
         max-width: $item-max-width;
         min-height: $item-min-height;
@@ -28,20 +31,12 @@ $height-width-ratio: $item-min-height / $item-min-width;
           line-height: normal;
         }
       }
-
-      @for $n from 1 through $num-column-classes {
-        &[data-num-columns="#{$n}"] ::ng-deep .popover-content {
-          // width: item-width($n);
-          // height: item-height($n);
-        }
-      }
     }
 
     .grid {
       display: flex;
       flex-flow: row wrap;
       align-content: flex-start;
-      padding: 52px 20px;
 
       .item {
         position: relative;

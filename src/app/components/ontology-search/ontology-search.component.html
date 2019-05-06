@@ -1,0 +1,12 @@
+<form class="ccf-ontology-search wrapper">
+  <mat-form-field class="field" appearance="outline">
+    <input type="text" placeholder="Search for ..."  matInput [formControl]="myControl" [matAutocomplete]="auto" class="input">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-icon matSuffix class="help-icon" popover="content to be shown in the popover" popoverPlacement="right"
+      [popoverOnHover]="true" [popoverCloseOnMouseOutside]="false" [popoverAnimation]="true">help</mat-icon>
+  </mat-form-field>
+</form>

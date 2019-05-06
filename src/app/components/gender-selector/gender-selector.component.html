@@ -1,0 +1,17 @@
+<div class="ccf-gender-selector wrapper">
+  <div class="container">
+    <mat-button-toggle-group class="group" name="gender" value="male-female" aria-label="Searched Gender"
+      (change)="selectionChanged($event.value)">
+      <mat-button-toggle class="toggle" value="female" aria-label="Female">
+        <mat-icon class="icon svg-icon" svgIcon="gender:female"></mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle class="toggle" value="male" aria-label="Male">
+        <mat-icon class="icon svg-icon" svgIcon="gender:male"></mat-icon>
+      </mat-button-toggle>
+
+      <mat-button-toggle class="toggle" value="male-female" aria-label="Any gender">
+        <mat-icon class="icon svg-icon" svgIcon="gender:male-female"></mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>

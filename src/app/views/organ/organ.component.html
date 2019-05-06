@@ -1,14 +1,24 @@
 <div class="ccf-organ wrapper">
   <div class="container">
-    <div class="organ">
-      <svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <use [attr.xlink:href]="organImagePath+'organ.svg#organ'" x="0" y="0"></use>
-        <g routerLink="/tissues">
-          <use [attr.xlink:href]="organImagePath+'overlays/sample-1.svg#overlay'" x="0" y="0"></use>
+    <svg class="organ-group" viewBox="0 0 800 1000">
+      <use class="organ" [attr.href]="dataService.organImagePath | async" #image></use>
+      <ng-container *ngFor="let sample of dataService.organOverlays | async">
+        <use class="centroid" attr.href="{{ sample.overlayUrl }}#centroid" #centroid></use>
+        <use class="overlay" attr.href="{{ sample.overlayUrl }}#overlay" routerLink="/tissues"
+             (mouseenter)="activeMetadata = [sample.metadata]" (mouseleave)="activeMetadata = []" #overlay></use>
+        <g *ngIf="dataService.getCounts(sample) | async as counts" ccf-callout class="callout" [boundary]="image"
+           [centroid]="overlay">
+          <xhtml:div>
+            {{ counts.patients }} <strong>Patient</strong><br />
+            {{ counts.tissueSamples }} Tissue samples<br />
+            {{ counts.tissueSlices }} Tissue slices<br />
+            {{ counts.tissueImages }} Tissue images<br />
+            {{ counts.cells }} Cells
+          </xhtml:div>
         </g>
-      </svg>
-    </div>
-    <div class="metadata">
-    </div>
+      </ng-container>
+    </svg>
+
+    <ccf-metadata class="metadata" [metadata]="activeMetadata"></ccf-metadata>
   </div>
 </div>

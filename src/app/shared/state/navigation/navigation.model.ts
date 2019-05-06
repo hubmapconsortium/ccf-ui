@@ -7,7 +7,4 @@ export interface NavigationStateModel {
   tissues: TissueImage[];
   activeTissue: TissueImage;
   activeOrgan: { id: string }; // FIXME: Correct typing
-
-
-  activeBodyId: string;
 }

@@ -1,0 +1,21 @@
+.ccf-ontology-search.wrapper {
+  width: 100%;
+  
+  .field {
+    width: 100%;
+  }
+
+  .help-icon {
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+ 
+}
+
+

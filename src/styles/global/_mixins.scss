@@ -1,0 +1,8 @@
+@import './sizes', './colors';
+
+// Adds a border with default size and color
+@mixin default-border($sides: (left right top bottom)) {
+  @each $side in $sides {
+    border-#{$side}: $border-size solid $border-color;
+  }
+}
