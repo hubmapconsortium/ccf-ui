@@ -12,7 +12,7 @@ describe('BodyDataService', () => {
       providers: [
         { provide: LocalDatabaseService, useValue: {} },
         BodyDataService,
-        {provide: Store, useValue: {}}
+        { provide: Store, useValue: {} }
       ]
     });
   });
