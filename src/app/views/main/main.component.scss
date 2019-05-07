@@ -39,6 +39,14 @@
               font-weight: 500;
               line-height: 1.6rem;
             }
+
+            .download-button {
+              cursor: pointer;
+
+              .download-icon {
+                color: #757575;
+              }
+            }
           }
 
           .outlet {

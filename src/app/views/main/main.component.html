@@ -13,11 +13,13 @@
         <mat-drawer-content class="contents">
           <div *ngIf="!(navigation.isHomeActive | async)" class="top-bar">
             <div class="search-criteria">{{ search.searchCriteria | async }}</div>
-            <div class="download-button"><mat-icon>cloud_download</mat-icon></div>
+            <div class="download-button">
+              <mat-icon class="download-icon">cloud_download</mat-icon>
+            </div>
           </div>
 
           <div class="outlet">
-              <router-outlet></router-outlet>
+            <router-outlet></router-outlet>
           </div>
         </mat-drawer-content>
       </mat-drawer-container>
