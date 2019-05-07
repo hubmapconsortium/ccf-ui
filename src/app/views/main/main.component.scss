@@ -31,9 +31,13 @@
             position: absolute;
             right: 0;
             margin: 1rem;
+            display: flex;
+            width: 15rem;
+            justify-content: space-between;
 
             .search-criteria {
               font-weight: 500;
+              line-height: 1.6rem;
             }
           }
 
