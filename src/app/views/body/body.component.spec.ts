@@ -21,7 +21,7 @@ describe('BodyComponent', () => {
         { provide: BodyDataService,
           useValue: {
             getBodySourcePath: () => rxOf(''),
-            getMetadata: () => rxOf({}),
+            getMetadata: () => rxOf({dummyData : 'dummyData'}),
             getBodyOverlays: () => rxOf([])
           }
         },
@@ -59,5 +59,23 @@ describe('BodyComponent', () => {
     expect(component.metadata).toBeUndefined();
     expect(component.hoverOrganName).toBeUndefined();
     expect(unsubscriptionSpy).toHaveBeenCalled();
+  });
+
+  it('should get metadata on organ hover', () => {
+    component.organHover('kidney');
+    expect(component.hoverOrganName).toBe('kidney');
+  });
+
+  it('should unsubscribe matadatasubscription on destroy', () => {
+    component.metadataSubscription = new Subscription();
+    const metadataSubscriptionSpy = spyOn(component.metadataSubscription, 'unsubscribe');
+    component.ngOnDestroy();
+    expect(metadataSubscriptionSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should initialize the required observables', () => {
+    component.ngOnInit();
+    expect(component.bodyImagePath$.subscribe).toBeDefined();
+    expect(component.bodyOverlays$.subscribe).toBeDefined();
   });
 });
