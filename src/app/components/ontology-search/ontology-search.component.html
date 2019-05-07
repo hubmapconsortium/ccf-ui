@@ -1,8 +1,9 @@
 <form class="ccf-ontology-search wrapper">
   <mat-form-field class="field" appearance="outline">
-    <input type="text" placeholder="Search for ..."  matInput [formControl]="myControl" [matAutocomplete]="auto" class="input">
+    <input type="text" placeholder="Search for ..." matInput [formControl]="formControl" [matAutocomplete]="auto"
+      class="input">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
+      <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option">
         {{option}}
       </mat-option>
     </mat-autocomplete>

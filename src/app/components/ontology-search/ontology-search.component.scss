@@ -1,6 +1,6 @@
 .ccf-ontology-search.wrapper {
   width: 100%;
-  
+
   .field {
     width: 100%;
   }
@@ -15,7 +15,14 @@
     }
   }
 
- 
+  ::ng-deep .mat-form-field-appearance-outline {
+    .mat-form-field-outline-end {
+      border-radius: 0 500px 500px 0;
+    }
+
+    .mat-form-field-outline-start {
+      border-radius: 500px 0 0 500px;
+      min-width: 40px;
+    }
+  }
 }
-
-
