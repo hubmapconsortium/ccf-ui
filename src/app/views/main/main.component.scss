@@ -32,20 +32,15 @@
             right: 0;
             margin: 1rem;
             display: flex;
-            width: 15rem;
-            justify-content: space-between;
 
             .search-criteria {
               font-weight: 500;
               line-height: 1.6rem;
+              padding-right: 1rem;
             }
 
-            .download-button {
-              cursor: pointer;
-
-              .download-icon {
-                color: #757575;
-              }
+            .download {
+              color: $icon-color;
             }
           }
 
