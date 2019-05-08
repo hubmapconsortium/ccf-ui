@@ -1,0 +1,25 @@
+@import 'global/colors';
+
+.ccf-ontology-tree.container {
+  background: none;
+
+  .node {
+    min-height: 0;
+    font-size: 1rem;
+
+    .toggle {
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: normal;
+    }
+
+    .text {
+      cursor: pointer;
+      // font-weight: bold;
+    }
+
+    .selected {
+      color: $active-button-color;
+    }
+  }
+}
