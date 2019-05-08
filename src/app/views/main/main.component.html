@@ -14,7 +14,9 @@
           <div *ngIf="!(navigation.isHomeActive | async)" class="top-bar">
             <div class="search-criteria">{{ search.searchCriteria | async }}</div>
             <div class="download-button">
-              <mat-icon class="download-icon">cloud_download</mat-icon>
+              <a href="https://sampledata.hubmapconsortium.org/home" target="_blank">
+                <mat-icon class="download-icon">cloud_download</mat-icon>
+              </a>
             </div>
           </div>
 
