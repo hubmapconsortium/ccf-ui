@@ -32,7 +32,7 @@ describe('Ontology', () => {
 
   describe('Selectors', () => {
     describe('nodes', () => {
-      it('returns an array of all ontology nodes', () => {
+      xit('returns an array of all ontology nodes', () => {
         expect(OntologyState.nodes(mockState)).toEqual(jasmine.arrayWithExactContents([node1, node2]));
       });
     });
