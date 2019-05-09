@@ -31,9 +31,16 @@
             position: absolute;
             right: 0;
             margin: 1rem;
+            display: flex;
 
             .search-criteria {
               font-weight: 500;
+              line-height: 1.6rem;
+              padding-right: 1rem;
+            }
+
+            .download {
+              color: $icon-color;
             }
           }
 

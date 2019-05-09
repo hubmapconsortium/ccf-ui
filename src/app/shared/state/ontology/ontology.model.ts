@@ -8,6 +8,11 @@ export interface OntologyNode {
   id: string;
 
   /**
+   * Label for this ontology node.
+   */
+  label: string;
+
+  /**
    * The identifier of the parent node. `undefined` if this is the root node.
    */
   parent: string | undefined;
@@ -17,32 +22,10 @@ export interface OntologyNode {
    */
   children: string[];
 
-  // Data
-
   /**
-   * Description of this item.
+   * Labels for the synonyms of the label of this node.
    */
-  description: string;
-
-  /**
-   * Url of the tile displayed in the tissues browser.
-   */
-  tileUrl: string;
-
-  /**
-   * Age of the person from which the sample was taken.
-   */
-  age: number;
-
-  /**
-   * Gender of the person from which the sample was taken.
-   */
-  gender: 'male' | 'female' | 'unknown';
-
-  /**
-   * Additional data to display in popovers, etc.
-   */
-  metadata: [string, any][];
+  synonymLabels: string[];
 }
 
 /**

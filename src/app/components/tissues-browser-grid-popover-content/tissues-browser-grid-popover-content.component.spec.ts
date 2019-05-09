@@ -103,10 +103,6 @@ describe('TissuesBrowserGridPopoverContentComponent', () => {
         expect(component.trackByLabel(['abc', 'def'])).toEqual('abc');
       });
     });
-
-    describe('download', () => {
-      // TODO: Write tests when implemented.
-    });
   });
 
   describe('dom', () => {

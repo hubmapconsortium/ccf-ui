@@ -48,11 +48,4 @@ export class TissuesBrowserGridPopoverContentComponent {
   trackByLabel(metadata: [string, any]): string {
     return metadata[0];
   }
-
-  /**
-   * Downloads the tissue sample referenced by this component.
-   */
-  download(): void {
-    // FIXME: Implement me!
-  }
 }
