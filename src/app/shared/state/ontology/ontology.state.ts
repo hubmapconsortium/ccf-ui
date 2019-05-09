@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
-import { safeLoad } from 'js-yaml';
 import { forEach, map as loMap, mapValues, property, stubArray, values } from 'lodash';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -74,7 +73,7 @@ export class OntologyState implements NgxsOnInit {
    */
   private getOntology(): Observable<OntologyStateModel> {
     return this.http.get(this.ontologyUrl, { responseType: 'text' }).pipe(
-      map(results => safeLoad(results)),
+      map(results => JSON.parse(results)),
       map<any[], OntologyNode[]>(results => {
         return results.map((result) => this.createNode(result));
       }),
