@@ -61,7 +61,7 @@ export class AgeSelectorComponent implements OnDestroy {
     const { lowValue, highValue } = this;
     const prefix = 'Age: ';
     return lowValue === highValue ? prefix +
-      String(lowValue) : prefix + `${lowValue}-${highValue > 89 ? highValue - 1 + '+' : highValue}`;
+      String(lowValue) : prefix + `${lowValue}-${highValue === this.options.ceil ? highValue - 1 + '+' : highValue}`;
   }
 
   /**

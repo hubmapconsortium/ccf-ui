@@ -24,7 +24,7 @@ import { SearchState } from '../../state/search/search.state';
  */
 function createSearchCriteriaDescription({ ageRange: [minAge, maxAge], gender }: SearchStateModel): string {
   let ageDescription = `Age ${defaultTo(minAge, 18)}-${defaultTo(maxAge, '89+')}`;
-  if (minAge === maxAge || minAge === 89 || maxAge === 18) {
+  if (minAge === maxAge || minAge === 90 || maxAge === 18) {
     if (minAge) {
       ageDescription = `Age ${minAge}`;
     } else if (maxAge !== undefined) {
