@@ -72,8 +72,7 @@ export class OntologyState implements NgxsOnInit {
    * @returns ontology state model
    */
   private getOntology(): Observable<OntologyStateModel> {
-    return this.http.get(this.ontologyUrl, { responseType: 'text' }).pipe(
-      map(results => JSON.parse(results)),
+    return this.http.get(this.ontologyUrl, { responseType: 'json' }).pipe(
       map<any[], OntologyNode[]>(results => {
         return results.map((result) => this.createNode(result));
       }),
