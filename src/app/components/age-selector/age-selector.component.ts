@@ -32,6 +32,9 @@ export class AgeSelectorComponent implements OnDestroy {
 
   /**
    * Slider options.
+   * Since the highest value allowed to be shown is 89 and beyond 89, 89+ should be shown, so to allow users to slide to 89+,
+   * an extra tick '90' is added.
+   * Minimum value of age to be shown is 18.
    */
   options: Options = {
     floor: 18,
@@ -57,7 +60,8 @@ export class AgeSelectorComponent implements OnDestroy {
   get ageRangeLabel(): string {
     const { lowValue, highValue } = this;
     const prefix = 'Age: ';
-    return lowValue === highValue ? prefix + String(lowValue) : prefix + `${lowValue} - ${highValue > 89 ? '89+' : highValue}`;
+    return lowValue === highValue ? prefix +
+      String(lowValue) : prefix + `${lowValue}-${highValue > 89 ? highValue - 1 + '+' : highValue}`;
   }
 
   /**

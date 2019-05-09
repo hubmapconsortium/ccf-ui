@@ -6,7 +6,7 @@
       <ng5-slider class="slider" [options]="options" [(value)]="lowValue" [(highValue)]="highValue"
         (userChangeEnd)="sliderValueChanged()">
       </ng5-slider>
-      <div class="label max">89+</div>
+      <div class="label max">{{ options.ceil - 1 }}+</div>
     </div>
 
     <mat-form-field class="form-field" [class.highlight]="isSliderOpen">
