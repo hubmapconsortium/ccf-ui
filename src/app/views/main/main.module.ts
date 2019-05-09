@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -17,7 +18,8 @@ import { MainComponent } from './main.component';
     MatSidenavModule,
     BrowserAnimationsModule,
     SearchModule,
-    NavigationModule
+    NavigationModule,
+    MatIconModule
   ],
   declarations: [MainComponent],
   exports: [MainComponent]
