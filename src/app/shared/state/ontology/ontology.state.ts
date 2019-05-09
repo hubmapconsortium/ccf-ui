@@ -65,7 +65,11 @@ export class OntologyState implements NgxsOnInit {
    *
    * @param ctx The state context.
    */
-  ngxsOnInit(ctx: StateContext<OntologyStateModel>) { }
+  ngxsOnInit(ctx: StateContext<OntologyStateModel>) {
+    this.getOntology().subscribe((model) => {
+      ctx.setState(model);
+    });
+  }
 
   /**
    * Fetches ontology as a json object and maps it to an ontology state model
