@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { PopoverModule } from 'ngx-smart-popover';
 
+import { OntologySearchService } from '../../shared/services/ontology-search/ontology-search.service';
 import { OntologySearchComponent } from './ontology-search.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { OntologySearchComponent } from './ontology-search.component';
     MatInputModule,
     PopoverModule
   ],
+  providers: [OntologySearchService],
   exports: [OntologySearchComponent]
 })
 export class OntologySearchModule { }

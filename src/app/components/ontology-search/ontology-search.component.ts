@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
+
+import { OntologySearchService } from '../../shared/services/ontology-search/ontology-search.service';
 
 @Component({
   selector: 'ccf-ontology-search',
@@ -13,7 +15,7 @@ export class OntologySearchComponent implements OnInit {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions$: Observable<string[]>;
 
-  constructor() { }
+  constructor(private ontologyService: OntologySearchService) { }
 
   ngOnInit() {
     this.filteredOptions$ = this.formControl.valueChanges
