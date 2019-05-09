@@ -34,8 +34,8 @@ export class AgeSelectorComponent implements OnDestroy {
    * Slider options.
    */
   options: Options = {
-    floor: 0,
-    ceil: 125,
+    floor: 18,
+    ceil: 90,
     step: 1,
     hideLimitLabels: true,
     hidePointerLabels: true
@@ -57,7 +57,7 @@ export class AgeSelectorComponent implements OnDestroy {
   get ageRangeLabel(): string {
     const { lowValue, highValue } = this;
     const prefix = 'Age: ';
-    return lowValue === highValue ? prefix + String(lowValue) : prefix + `${lowValue} - ${highValue}`;
+    return lowValue === highValue ? prefix + String(lowValue) : prefix + `${lowValue} - ${highValue > 89 ? '89+' : highValue}`;
   }
 
   /**
