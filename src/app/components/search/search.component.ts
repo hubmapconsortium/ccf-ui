@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OntologyService } from 'src/app/shared/services/ontology/ontology.service';
 
 /**
  * Container component for search filters.
@@ -17,4 +18,6 @@ export class SearchComponent {
     ['Technologies', ['IMS', 'MxIF', 'AF', 'PAS', 'IHC']],
     ['TMCs', ['TMC-Vanderbilt', 'TMC-UCSD', 'TMC-Stanford', 'TMC-Florida', 'TMC-CalTech']]
   ]);
+
+  constructor(readonly ontology: OntologyService) { }
 }

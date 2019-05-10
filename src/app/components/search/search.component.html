@@ -5,7 +5,9 @@
       <ccf-age-selector class="age selector"></ccf-age-selector>
     </div>
 
-    <ccf-ontology-tree></ccf-ontology-tree>
+    <ccf-ontology-tree *ngIf="ontology.rootNode | async as rootNode" [nodes]="[rootNode]"
+                       [getChildren]="ontology.getChildren">
+    </ccf-ontology-tree>
 
     <ccf-search-categories [filterCategories]="filterCategories" class="search-categories">
     </ccf-search-categories>
