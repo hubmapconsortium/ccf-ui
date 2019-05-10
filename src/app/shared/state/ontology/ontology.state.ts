@@ -45,13 +45,18 @@ export class OntologyState implements NgxsOnInit {
 
   /**
    * Selects all nodes in the ontology tree.
-   *
-   * @param state the ontology tree state.
-   * @returns all ontology nodes.
    */
   @Selector()
   static nodes(state: OntologyStateModel): OntologyNode[] {
     return values(state.nodes);
+  }
+
+  /**
+   * Selects the ontology tree's root node.
+   */
+  @Selector()
+  static rootNode(state: OntologyStateModel): OntologyNode {
+    return state.nodes[state.root];
   }
 
   /**
