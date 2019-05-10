@@ -1,11 +1,11 @@
 import { Component, NgModule, Type } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { Shallow } from 'shallow-render';
 import { keyBy } from 'lodash';
-
-import { OntologyService } from './ontology.service';
-import { OntologyNode } from '../../state/ontology/ontology.model';
 import { take } from 'rxjs/operators';
+import { Shallow } from 'shallow-render';
+
+import { OntologyNode } from '../../state/ontology/ontology.model';
+import { OntologyService } from './ontology.service';
 
 @Component({ selector: 'ccf-test', template: '' })
 class TestComponent { }

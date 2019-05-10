@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { OntologyService } from 'src/app/shared/services/ontology/ontology.service';
+
+import { OntologyService } from '../../shared/services/ontology/ontology.service';
 
 /**
  * Container component for search filters.
@@ -19,5 +20,10 @@ export class SearchComponent {
     ['TMCs', ['TMC-Vanderbilt', 'TMC-UCSD', 'TMC-Stanford', 'TMC-Florida', 'TMC-CalTech']]
   ]);
 
+  /**
+   * Creates an instance of search component.
+   *
+   * @param ontology The service used to interact with the ontology.
+   */
   constructor(readonly ontology: OntologyService) { }
 }

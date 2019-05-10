@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
 import { at } from 'lodash';
+import { Observable } from 'rxjs';
 
 import { OntologyNode, OntologyStateModel } from '../../state/ontology/ontology.model';
 import { OntologyState } from '../../state/ontology/ontology.state';

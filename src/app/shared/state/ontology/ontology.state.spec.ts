@@ -31,18 +31,22 @@ describe('State', () => {
       store = TestBed.get(Store);
     });
 
-    describe('Actions', () => {
+    describe('actions', () => {
       // Additional tests
     });
 
-    describe('Selectors', () => {
+    describe('selectors', () => {
       describe('nodes', () => {
         it('returns an array of all ontology nodes', () => {
           expect(OntologyState.nodes(mockState)).toEqual(jasmine.arrayWithExactContents([node1, node2]));
         });
       });
 
-      // Additional tests
+      describe('rootNode', () => {
+        it('returns the root node', () => {
+          expect(OntologyState.rootNode(mockState)).toEqual(node1);
+        });
+      });
     });
   });
 });
