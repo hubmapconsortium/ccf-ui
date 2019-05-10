@@ -9,11 +9,11 @@
         <g *ngIf="dataService.getCounts(sample) | async as counts" ccf-callout class="callout" [boundary]="image"
            [centroid]="overlay">
           <xhtml:div>
-            {{ counts.patients }} <strong>Patient</strong><br />
-            {{ counts.tissueSamples }} Tissue samples<br />
-            {{ counts.tissueSlices }} Tissue slices<br />
-            {{ counts.tissueImages }} Tissue images<br />
-            {{ counts.cells }} Cells
+            {{ counts.patients }} <strong>{{ counts.patients === 1 ? 'Patient' : 'Patients' }}</strong><br />
+            {{ counts.tissueSamples + (counts.tissueSamples === 1 ? ' Tissue sample': ' Tissue samples') }} <br />
+            {{ counts.tissueSlices + (counts.tissueSlices === 1 ? ' Tissue slice': ' Tissue slices') }}<br />
+            {{ counts.tissueImages + (counts.tissueImages === 1 ? ' Tissue image': ' Tissue images') }}<br />
+            {{ counts.cells + (counts.cells === 1 ? ' Cell': ' Cells') }}
           </xhtml:div>
         </g>
       </ng-container>

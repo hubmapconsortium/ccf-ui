@@ -10,11 +10,11 @@
           <g *ngIf="bodyService.getCounts(overlay) | async as counts" ccf-callout class="callout" [boundary]="image"
             [centroid]="overlayElem" forcePosition="left">
             <xhtml:div>
-              {{ counts.patientsCount }} <strong>Patient</strong><br />
-              {{ counts.tissueSamplesCount }} Tissue samples<br />
-              {{ counts.tissueSlicesCount }} Tissue slices<br />
-              {{ counts.tissueImagesCount }} Tissue images<br />
-              {{ counts.cells }} Cells
+              {{ counts.patientsCount }} <strong>{{ counts.patientsCount === 1 ? 'Patient' : 'Patients' }}</strong><br />
+              {{ counts.tissueSamplesCount + (counts.tissueSamplesCount === 1 ? ' Tissue sample': ' Tissue samples') }} <br />
+              {{ counts.tissueSlicesCount + (counts.tissueSlicesCount === 1 ? ' Tissue slice': ' Tissue slices') }}<br />
+              {{ counts.tissueImagesCount + (counts.tissueImagesCount === 1 ? ' Tissue image': ' Tissue images') }}<br />
+              {{ counts.cells + (counts.cells === 1 ? ' Cell': ' Cells') }}
             </xhtml:div>
           </g>
         </ng-container>
