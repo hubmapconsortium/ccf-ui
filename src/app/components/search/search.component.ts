@@ -15,6 +15,6 @@ export class SearchComponent {
   */
   filterCategories = new Map([
     ['Technologies', ['IMS', 'MxIF', 'AF', 'PAS', 'IHC']],
-    ['TMCs', ['TMC-Vanderbilt', 'TMC-UCSD', 'TMC-Stanford', 'TMC-Florida', 'TMC-CalTech']]
+    ['TMCs', ['Vanderbilt', 'UCSD', 'Stanford', 'Florida', 'CalTech']]
   ]);
 }
