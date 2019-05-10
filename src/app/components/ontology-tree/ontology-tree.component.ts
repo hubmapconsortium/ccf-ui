@@ -1,50 +1,57 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material';
-import { filter, isArray, property } from 'lodash';
-import { Observable } from 'rxjs';
+import { filter, invoke, property } from 'lodash';
 
-import { FlatNode, NodeLike } from './shared/flat-node';
+import { OntologyNode } from '../../shared/state/ontology/ontology.model';
+import { FlatNode } from './shared/flat-node';
 
 /**
  * Getter function for 'level' on a flat node.
  */
-const getLevel = property<FlatNode<any>, number>('level');
+const getLevel = property<FlatNode, number>('level');
 
 /**
  * Getter function for 'expandable' on a flat node.
  */
-const isExpandable = property<FlatNode<any>, boolean>('expandable');
+const isExpandable = property<FlatNode, boolean>('expandable');
 
 /**
- * Getter function for 'children' on a node like object.
+ * Represents a expandable tree of an ontology.
  */
-const getChildren = property<NodeLike<any>, Observable<any[]> | any[]>('children');
-
 @Component({
   selector: 'ccf-ontology-tree',
   templateUrl: './ontology-tree.component.html',
   styleUrls: ['./ontology-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OntologyTreeComponent<T extends NodeLike<T>> {
+export class OntologyTreeComponent{
   /**
    * The node like objects to display in the tree.
    */
   @Input()
-  set nodes(nodes: T | T[]) {
-    this.dataSource.data = isArray(nodes) ? nodes : [nodes];
+  set nodes(nodes: OntologyNode[]) {
+    this._nodes = nodes;
+    if (this.control) { this.dataSource.data = this._nodes; }
   }
+
+  get nodes(): OntologyNode[] { return this._nodes; }
+
+  /**
+   * Method for fetching the children of a node.
+   */
+  @Input()
+  set getChildren(fun: (node: OntologyNode) => OntologyNode[]) {
+    this._getChildren = fun;
+    this.dataSource.data = this._nodes;
+  }
+
+  get getChildren(): (node: OntologyNode) => OntologyNode[] { return this._getChildren; }
 
   /**
    * Emits an event whenever a node has been selected.
    */
-  @Output() nodeSelected = new EventEmitter<T>();
-
-  /**
-   * Emits an event whenever a node is deselected.
-   */
-  @Output() nodeDeselected = new EventEmitter<T>();
+  @Output() nodeSelected = new EventEmitter<OntologyNode | undefined>();
 
   /**
    * Indentation of each level in the tree.
@@ -54,12 +61,15 @@ export class OntologyTreeComponent<T extends NodeLike<T>> {
   /**
    * Tree controller.
    */
-  readonly control = new FlatTreeControl<FlatNode<T>>(getLevel, isExpandable);
+  readonly control = new FlatTreeControl<FlatNode>(getLevel, isExpandable);
 
   /**
    * Node flattener.
    */
-  readonly flattener = new MatTreeFlattener<T, FlatNode<T>>(FlatNode.create, getLevel, isExpandable, getChildren);
+  readonly flattener = new MatTreeFlattener(
+    FlatNode.create, getLevel, isExpandable,
+    invoke.bind(undefined, this, 'getChildren')
+  );
 
   /**
    * Data source of flat nodes.
@@ -69,7 +79,17 @@ export class OntologyTreeComponent<T extends NodeLike<T>> {
   /**
    * Currently selected node.
    */
-  private selectedNode?: FlatNode<T> = undefined;
+  private selectedNode?: FlatNode = undefined;
+
+  /**
+   * Storage for getter/setter 'nodes'.
+   */
+  private _nodes?: OntologyNode[] = undefined;
+
+  /**
+   * Storage for getter/setter 'getChildren'.
+   */
+  private _getChildren?: (node: OntologyNode) => OntologyNode[];
 
   /**
    * Creates an instance of ontology tree component.
@@ -83,15 +103,15 @@ export class OntologyTreeComponent<T extends NodeLike<T>> {
    *
    * @param node The node to expand to and select.
    */
-  expandAndSelect(node: T): void {
+  expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) => OntologyNode): void {
     const { cdr, control } = this;
 
     // Add all parents to a set
-    const parents = new Set<T>();
-    let current = node.parent;
+    const parents = new Set<OntologyNode>();
+    let current = getParent(node);
     while (current) {
       parents.add(current);
-      current = current.parent;
+      current = getParent(current);
     }
 
     // Find corresponding flat nodes
@@ -109,14 +129,13 @@ export class OntologyTreeComponent<T extends NodeLike<T>> {
     cdr.detectChanges();
   }
 
-  // Internal
   /**
    * Determines whether a node can be expanded.
    *
    * @param node The node to test.
    * @returns True if the node has children.
    */
-  isInnerNode(_index: number, node: FlatNode<T>): boolean {
+  isInnerNode(this: void, _index: number, node: FlatNode): boolean {
     return node.expandable;
   }
 
@@ -127,7 +146,7 @@ export class OntologyTreeComponent<T extends NodeLike<T>> {
    * @param node  The node to test.
    * @returns True if the node is the currently selected node.
    */
-  isSelected(node: FlatNode<T>): boolean {
+  isSelected(node: FlatNode): boolean {
     return node === this.selectedNode;
   }
 
@@ -137,17 +156,9 @@ export class OntologyTreeComponent<T extends NodeLike<T>> {
    *
    * @param node The node to select.
    */
-  select(node: FlatNode<T>): void {
-    const { nodeDeselected, nodeSelected, selectedNode } = this;
-    if (node === selectedNode) {
-      nodeDeselected.emit(node.original);
-      this.selectedNode = undefined;
-    } else {
-      if (selectedNode) {
-        nodeDeselected.emit(selectedNode.original);
-      }
-      this.selectedNode = node;
-      nodeSelected.emit(node.original);
-    }
+  select(node: FlatNode): void {
+    let { selectedNode } = this;
+    this.selectedNode = selectedNode = node !== selectedNode ? node : undefined;
+    this.nodeSelected.emit(selectedNode && selectedNode.original);
   }
 }
