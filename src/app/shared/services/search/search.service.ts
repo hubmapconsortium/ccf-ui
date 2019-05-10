@@ -17,16 +17,25 @@ import { SearchStateModel } from '../../state/search/search.model';
 import { SearchState } from '../../state/search/search.state';
 
 /**
+ * defines the constraint on age range.
+ * min and max are used in age slider.
+ */
+export const ageConstraints = {
+  min: 18,
+  max: 89
+};
+
+/**
  * Creates a description of a search.
  *
  * @param state The search state.
  * @returns The description of the search criteria.
  */
 function createSearchCriteriaDescription({ ageRange: [minAge, maxAge], gender }: SearchStateModel): string {
-  let ageDescription = `Age ${defaultTo(minAge, 0)} - ${defaultTo(maxAge, 125)}`;
-  if (minAge === maxAge || minAge === 125 || maxAge === 0) {
+  let ageDescription = `Age ${defaultTo(minAge, ageConstraints.min)}-${defaultTo(maxAge, ageConstraints.max + '+')}`;
+  if (minAge === maxAge || minAge >= ageConstraints.max || maxAge === ageConstraints.min) {
     if (minAge) {
-      ageDescription = `Age ${minAge}`;
+      ageDescription = `Age ${minAge > ageConstraints.max ? ageConstraints.max + '+' : minAge }`;
     } else if (maxAge !== undefined) {
       ageDescription = `Age ${maxAge}`;
     }
