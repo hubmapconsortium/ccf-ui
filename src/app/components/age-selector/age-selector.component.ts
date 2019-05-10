@@ -3,7 +3,7 @@ import { CdkPortal } from '@angular/cdk/portal';
 import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { Options } from 'ng5-slider';
 
-import { SearchService } from '../../shared/services/search/search.service';
+import { SearchService, ageConstraints } from '../../shared/services/search/search.service';
 
 /**
  * Component containing a button that when clicked will show a slider popover.
@@ -32,13 +32,12 @@ export class AgeSelectorComponent implements OnDestroy {
 
   /**
    * Slider options.
-   * Since the highest value allowed to be shown is 89 and beyond 89, 89+ should be shown, so to allow users to slide to 89+,
-   * an extra tick '90' is added.
-   * Minimum value of age to be shown is 18.
+   * Since there is a constraint on highest value, if highest value is x then beyond x, maxAge Label should be x+,
+   * so to allow users to slide to x+, an extra tick 'x + 1' is added.
    */
   options: Options = {
-    floor: 18,
-    ceil: 90,
+    floor: ageConstraints.min,
+    ceil: ageConstraints.max + 1,
     step: 1,
     hideLimitLabels: true,
     hidePointerLabels: true
@@ -60,8 +59,9 @@ export class AgeSelectorComponent implements OnDestroy {
   get ageRangeLabel(): string {
     const { lowValue, highValue } = this;
     const prefix = 'Age: ';
-    return lowValue === highValue ? prefix +
-      String(lowValue) : prefix + `${lowValue}-${highValue === this.options.ceil ? highValue - 1 + '+' : highValue}`;
+    return lowValue === highValue ? (highValue === ageConstraints.max + 1 ? prefix +
+      ageConstraints.max + '+' : prefix + String(lowValue)) :
+        prefix + `${lowValue}-${highValue === this.options.ceil ? ageConstraints.max + '+' : highValue}`;
   }
 
   /**
