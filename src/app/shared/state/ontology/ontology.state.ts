@@ -41,8 +41,6 @@ const jsonNodeExtractor = {
   }
 })
 export class OntologyState implements NgxsOnInit {
-  private ontologyUrl = environment.ontologyUrl;
-
   /**
    * Selects all nodes in the ontology tree.
    */
@@ -60,8 +58,9 @@ export class OntologyState implements NgxsOnInit {
   }
 
   /**
+   * Creates an instance of ontology state.
    *
-   * @param http instance of HttpClient
+   * @param http The http service.
    */
   constructor(private http: HttpClient) { }
 
@@ -81,7 +80,7 @@ export class OntologyState implements NgxsOnInit {
    * @returns ontology state model
    */
   private getOntology(): Observable<OntologyStateModel> {
-    return this.http.get(this.ontologyUrl, { responseType: 'json' }).pipe(
+    return this.http.get(environment.ontologyUrl, { responseType: 'json' }).pipe(
       map<any[], OntologyNode[]>(results => {
         return results.map((result) => this.createNode(result));
       }),

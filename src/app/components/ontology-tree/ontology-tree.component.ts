@@ -43,7 +43,7 @@ export class OntologyTreeComponent{
   @Input()
   set getChildren(fun: (node: OntologyNode) => OntologyNode[]) {
     this._getChildren = fun;
-    this.dataSource.data = this._nodes;
+    this.dataSource.data = this.nodes;
   }
 
   get getChildren(): (node: OntologyNode) => OntologyNode[] { return this._getChildren; }
