@@ -1,22 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement, Type } from '@angular/core';
+import { Shallow } from 'shallow-render';
 
 import { OntologySearchComponent } from './ontology-search.component';
+import { OntologySearchModule } from './ontology-search.module';
 
 describe('OntologySearchComponent', () => {
   let component: OntologySearchComponent;
-  let fixture: ComponentFixture<OntologySearchComponent>;
+  let find: (cssOrDirective: string | Type<any>) => DebugElement & DebugElement[];
+  let get: <T>(type: Type<T>) => T;
+  let shallow: Shallow<OntologySearchComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ OntologySearchComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(OntologySearchComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(async () => {
+    shallow = new Shallow(OntologySearchComponent, OntologySearchModule);
+    ({ instance: component, get, find } = await shallow.render());
   });
 
   it('should create', () => {

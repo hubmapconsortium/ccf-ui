@@ -5,6 +5,8 @@ import { defaultTo, join } from 'lodash';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { OntologyNode } from '../../state/ontology/ontology.model';
+import { OntologyState } from '../../state/ontology/ontology.state';
 import {
   SelectTechnology,
   SelectTMC,
@@ -48,6 +50,12 @@ export class SearchService {
    */
   @Select(SearchState)
   private searchState: Observable<SearchStateModel>;
+
+  /**
+   * ontology state
+   */
+  @Select(OntologyState.nodes)
+  stateObservable: Observable<OntologyNode[]>;
 
   /**
    * Emits strings with information about the current search.

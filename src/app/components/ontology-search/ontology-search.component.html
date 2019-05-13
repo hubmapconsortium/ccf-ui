@@ -2,9 +2,9 @@
   <mat-form-field class="field" appearance="outline">
     <input type="text" placeholder="Search for ..." matInput [formControl]="formControl" [matAutocomplete]="auto"
       class="input">
-    <mat-autocomplete #auto="matAutocomplete">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelect($event)" [displayWith]="displayFormatter">
       <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option">
-        {{option}}
+        {{option.displayLabel}}
       </mat-option>
     </mat-autocomplete>
     <mat-icon matSuffix class="help-icon" popover="content to be shown in the popover" popoverPlacement="right"
