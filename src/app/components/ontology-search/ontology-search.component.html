@@ -1,10 +1,12 @@
 <form class="ccf-ontology-search wrapper">
-  <mat-form-field class="field" appearance="outline">
+  <mat-form-field appearance="outline" class="field">
     <input type="text" placeholder="Search for ..." matInput [formControl]="formControl" [matAutocomplete]="auto"
       class="input">
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelect($event)" [displayWith]="displayFormatter">
       <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option">
-        {{option.displayLabel}}
+        <span class="prefix">{{option.displayLabel[0]}}</span>
+        <span class="search-term">{{option.displayLabel[1]}}</span>
+        <span class="suffix">{{option.displayLabel[2]}}</span>
       </mat-option>
     </mat-autocomplete>
     <mat-icon matSuffix class="help-icon" popover="content to be shown in the popover" popoverPlacement="right"

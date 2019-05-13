@@ -61,12 +61,6 @@ export class SearchService {
   private searchState: Observable<SearchStateModel>;
 
   /**
-   * ontology state
-   */
-  @Select(OntologyState.nodes)
-  stateObservable: Observable<OntologyNode[]>;
-
-  /**
    * Emits strings with information about the current search.
    */
   readonly searchCriteria = this.searchState.pipe(map(createSearchCriteriaDescription));
