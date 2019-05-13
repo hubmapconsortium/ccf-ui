@@ -5,8 +5,8 @@ import { of } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
+import { FilterBuilder } from '../../common/filter/filter-builder';
 import { TissueSample } from '../../state/database/database.models';
-import { FilterBuilder } from '../../state/search/search.state';
 import { LocalDatabaseService } from '../database/local/local-database.service';
 import { CountMetadata, OrganDataService } from './organ-data.service';
 

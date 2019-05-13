@@ -6,7 +6,7 @@
     </div>
 
     <ccf-ontology-tree *ngIf="ontology.rootNode | async as rootNode" [nodes]="[rootNode]"
-                       [getChildren]="ontology.getChildren">
+                       [getChildren]="ontology.getChildren" (nodeSelected)="search.setLocation($event)">
     </ccf-ontology-tree>
 
     <ccf-search-categories [filterCategories]="filterCategories" class="search-categories">
