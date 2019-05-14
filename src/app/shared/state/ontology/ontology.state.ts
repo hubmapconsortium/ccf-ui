@@ -30,7 +30,7 @@ function createModel(nodeMap: { [id: string]: OntologyNode }): OntologyStateMode
   const root = find(nodeMap[undefined as any].children);
 
   // Remove fake node inserted in linkChildren
-  nodeMap[undefined as any] = undefined;
+  delete nodeMap[undefined as any];
 
   return { root, nodes: nodeMap };
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { Store } from '@ngxs/store';
 import { of } from 'rxjs';
 
 import { LocalDatabaseService } from './local-database.service';
@@ -10,7 +11,8 @@ describe('LocalDatabaseService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: HttpClient, useValue: {get: () => of('{}')} },
+        { provide: HttpClient, useValue: { get: () => of('{}') } },
+        { provide: Store, useValue: { select: () => of({ nodes: { } }) } },
         LocalDatabaseService
       ]
     });

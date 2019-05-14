@@ -35,12 +35,13 @@ export class SearchState {
    */
   @Selector()
   static patientFilterBuilder(state: SearchStateModel): FilterBuilder<Patient> {
-    const { gender, ageRange: [min, max], tmc } = state;
+    const { gender, ageRange: [min, max], tmc, location = { id: undefined } } = state;
     return new FilterBuilder<Patient>()
       .addMatches('gender', gender)
       .addCompare('age', Compare.greater_than_equal, min)
       .addCompare('age', Compare.less_than_equal, max)
-      .addIncludedIn('provider', tmc);
+      .addIncludedIn('provider', tmc)
+      .addIncludes('ontologyNodeIds', location.id);
   }
 
   /**
@@ -51,12 +52,13 @@ export class SearchState {
    */
   @Selector()
   static tissueSampleFilterBuilder(state: SearchStateModel): FilterBuilder<TissueSample> {
-    const { gender, ageRange: [min, max], tmc } = state;
+    const { gender, ageRange: [min, max], tmc, location = { id: undefined } } = state;
     return new FilterBuilder<TissueSample>()
       .addMatches('patient.gender', gender)
       .addCompare('patient.age', Compare.greater_than_equal, min)
       .addCompare('patient.age', Compare.less_than_equal, max)
-      .addIncludedIn('patient.provider', tmc);
+      .addIncludedIn('patient.provider', tmc)
+      .addIncludes('patient.ontologyNodeIds', location.id);
   }
 
   /**
@@ -67,12 +69,13 @@ export class SearchState {
    */
   @Selector()
   static tissueSliceFilterBuilder(state: SearchStateModel): FilterBuilder<TissueSlice> {
-    const { gender, ageRange: [min, max], tmc } = state;
+    const { gender, ageRange: [min, max], tmc, location = { id: undefined } } = state;
     return new FilterBuilder<TissueSlice>()
       .addMatches('sample.patient.gender', gender)
       .addCompare('sample.patient.age', Compare.greater_than_equal, min)
       .addCompare('sample.patient.age', Compare.less_than_equal, max)
-      .addIncludedIn('sample.patient.provider', tmc);
+      .addIncludedIn('sample.patient.provider', tmc)
+      .addIncludes('sample.patient.ontologyNodeIds', location.id);
   }
 
   /**
@@ -83,12 +86,13 @@ export class SearchState {
    */
   @Selector()
   static tissueImageFilterBuilder(state: SearchStateModel): FilterBuilder<TissueImage> {
-    const { gender, ageRange: [min, max], tmc, technologies } = state;
+    const { gender, ageRange: [min, max], tmc, technologies, location = { id: undefined } } = state;
     return new FilterBuilder<TissueImage>()
       .addMatches('slice.sample.patient.gender', gender)
       .addCompare('slice.sample.patient.age', Compare.greater_than_equal, min)
       .addCompare('slice.sample.patient.age', Compare.less_than_equal, max)
       .addIncludedIn('slice.sample.patient.provider', tmc)
+      .addIncludes('slice.sample.patient.ontologyNodeIds', location.id)
       .addIncludedIn('technology', technologies);
   }
 
