@@ -68,7 +68,7 @@ export class OntologySearchComponent implements OnInit {
    */
   displayFormatter(option: SearchResult): string {
     if (option) {
-      return option.displayLabel.join();
+      return option.displayLabel.join('');
     }
   }
 }
