@@ -12,7 +12,6 @@ describe('State', () => {
     const node2 = { id: 'node2', parent: 'node1', children: [] } as OntologyNode;
     const mockState: OntologyStateModel = {
       root: node1.id,
-      ids: [node1.id, node2.id],
       nodes: { [node1.id]: node1, [node2.id]: node2 }
     };
 

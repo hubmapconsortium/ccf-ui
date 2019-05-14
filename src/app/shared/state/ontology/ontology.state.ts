@@ -1,33 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
-import { forEach, map as loMap, mapValues, property, stubArray, values } from 'lodash';
-import { Observable } from 'rxjs';
+import { find, forEach, keyBy, map as loMap, values } from 'lodash';
 import { map, tap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { JsonOntologyNode, jsonToOntologyNode } from './internal/json-ontology';
 import { OntologyNode, OntologyStateModel } from './ontology.model';
 
+/**
+ * Links all nodes to their parents.
+ *
+ * @param nodeMap The hash table of nodes.
+ */
+function linkChildren(nodeMap: { [id: string]: OntologyNode }): void {
+  // Add temporary fake node to simplify logic as root won't need a special case
+  // This is also used later to find the root node
+  nodeMap[undefined as any] = { children: [] } as any;
+
+  forEach(nodeMap, ({ id, parent }) => nodeMap[parent].children.push(id));
+}
 
 /**
- * property names for the fetched json object
+ * Creates an ontology state.
+ *
+ * @param nodeMap The node hash table.
+ * @returns The ontology state model.
  */
-const jsonPropertyNames = {
-  id: '@id',
-  parent: 'parent',
-  label: 'http://www.w3.org/2000/01/rdf-schema#label',
-  synonymLabels: 'http://www.geneontology.org/formats/oboInOwl#hasExactSynonym'
-};
+function createModel(nodeMap: { [id: string]: OntologyNode }): OntologyStateModel {
+  const root = find(nodeMap[undefined as any].children);
 
-/**
- * json property accessor
- */
-const jsonNodeExtractor = {
-  id: property<any, string>(jsonPropertyNames.id),
-  parent: property<any, string>([jsonPropertyNames.parent, 0, '@id']),
-  children: stubArray,
-  label: property<any, string>([jsonPropertyNames.label, 0, '@value']),
-  synonymLabels: (obj: any): string[] => loMap(obj[jsonPropertyNames.synonymLabels], '@value'),
-};
+  // Remove fake node inserted in linkChildren
+  nodeMap[undefined as any] = undefined;
+
+  return { root, nodes: nodeMap };
+}
 
 /**
  * Ontology tree state.
@@ -36,7 +42,6 @@ const jsonNodeExtractor = {
   name: 'ontology',
   defaults: {
     root: undefined,
-    ids: [],
     nodes: {}
   }
 })
@@ -70,62 +75,14 @@ export class OntologyState implements NgxsOnInit {
    * @param ctx The state context.
    */
   ngxsOnInit(ctx: StateContext<OntologyStateModel>) {
-    this.getOntology().subscribe((model) => {
-      ctx.setState(model);
-    });
-  }
-
-  /**
-   * Fetches ontology as a json object and maps it to an ontology state model
-   * @returns ontology state model
-   */
-  private getOntology(): Observable<OntologyStateModel> {
-    return this.http.get(environment.ontologyUrl, { responseType: 'json' }).pipe(
-      map<any[], OntologyNode[]>(results => {
-        return results.map((result) => this.createNode(result));
-      }),
-      map(ontologyNodes => this.createOntologyModel(ontologyNodes)),
-      tap(ontologyModel => this.setChildren(ontologyModel))
+    const jsonOntology = this.http.get<JsonOntologyNode[]>(environment.ontologyUrl, { responseType: 'json' });
+    const model = jsonOntology.pipe(
+      map(ontology => loMap(ontology, jsonToOntologyNode)),
+      map(nodes => keyBy(nodes, 'id')),
+      tap(linkChildren),
+      map(createModel)
     );
-  }
 
-  /**
-   * Creates node
-   * @param jsonObject the fetched ontology json object
-   * @returns node an ontology node object
-   */
-  private createNode(jsonObject: any): OntologyNode {
-    return mapValues(jsonNodeExtractor, extractor => extractor(jsonObject)) as any;
-  }
-
-  /**
-   * Creates an ontology model
-   * @param ontologyNodes an array of ontology nodes
-   * @returns an ontology model object
-   */
-  private createOntologyModel(ontologyNodes: OntologyNode[]): OntologyStateModel {
-    const root = ontologyNodes.find((node) => node.parent === undefined);
-    const nodes = ontologyNodes.reduce((acc, node) => {
-      return { ...acc, [node.id]: node };
-    }, { });
-
-    return {
-      root: root.id,
-      ids: [],
-      nodes: nodes
-    };
-  }
-
-  /**
-   * Sets children of each ontology node in the ontology model
-   * @param model the ontology state model
-   */
-  setChildren(model: OntologyStateModel): void {
-    const { nodes } = model;
-    forEach(nodes, node => {
-      if (node.parent) {
-        nodes[node.parent].children.push(node.id);
-      }
-    });
+    model.subscribe(ontology => ctx.setState(ontology));
   }
 }
