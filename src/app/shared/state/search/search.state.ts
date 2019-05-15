@@ -19,6 +19,7 @@ import {
   SetGenderFilter,
   UnselectTechnology,
   UnselectTMC,
+  SetOntologyNodeId,
 } from './search.action';
 import { SearchStateModel } from './search.model';
 
@@ -135,6 +136,7 @@ export class FilterBuilder<T> {
 @State<SearchStateModel>({
   name: 'search',
   defaults: {
+    ontologyNodeId: undefined,
     gender: undefined,
     ageRange: [undefined, undefined],
     tmc: [],
@@ -204,6 +206,14 @@ export class SearchState {
       .addCompare('slice.sample.patient.age', lessThanEqual, max)
       .addIncludes('slice.sample.patient.provider', tmc)
       .addIncludes('technology', technologies);
+  }
+
+  /**
+   * Updates the ontology node id
+   */
+  @Action(SetOntologyNodeId)
+  setOntologyNodeId(ctx: StateContext<SearchStateModel>, action: SetOntologyNodeId): void {
+    ctx.patchState({ ontologyNodeId: action.id });
   }
 
   /**

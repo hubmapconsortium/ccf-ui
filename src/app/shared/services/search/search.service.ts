@@ -5,13 +5,12 @@ import { defaultTo, join } from 'lodash';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { OntologyNode } from '../../state/ontology/ontology.model';
-import { OntologyState } from '../../state/ontology/ontology.state';
 import {
   SelectTechnology,
   SelectTMC,
   SetAgeRangeFilter,
   SetGenderFilter,
+  SetOntologyNodeId,
   UnselectTechnology,
   UnselectTMC,
 } from '../../state/search/search.action';
@@ -66,6 +65,15 @@ export class SearchService {
   readonly searchCriteria = this.searchState.pipe(map(createSearchCriteriaDescription));
 
   /**
+   * Dispatches an action to update the searched ontology node id in the state
+   * @param id id of the ontology node searched by text
+   */
+  @Dispatch()
+  setOntologyNodeId(id: string): SetOntologyNodeId {
+    return new SetOntologyNodeId(id);
+  }
+
+  /**
    * Dispatchs an action to update the search age range.
    *
    * @param [min] The lower bound of the range (inclusive).
@@ -91,7 +99,7 @@ export class SearchService {
    * @returns an action class instance of SelectTechnology
    */
   @Dispatch()
-  selectTechnology(technology: string) {
+  selectTechnology(technology: string): SelectTechnology {
     return new SelectTechnology(technology);
   }
 
@@ -101,7 +109,7 @@ export class SearchService {
    * @returns an action class instance of SelectTMC
    */
   @Dispatch()
-  selectTMC(tmc: string) {
+  selectTMC(tmc: string): SelectTMC {
     return new SelectTMC(tmc);
   }
 
@@ -111,7 +119,7 @@ export class SearchService {
    * @returns an action class instance of UnselectTechnology
    */
   @Dispatch()
-  unselectTechnology(technology: string) {
+  unselectTechnology(technology: string): UnselectTechnology {
     return new UnselectTechnology(technology);
   }
 
@@ -121,7 +129,7 @@ export class SearchService {
    * @returns an action class instance of UnselectTMC
    */
   @Dispatch()
-  unselectTMC(tmc: string) {
+  unselectTMC(tmc: string): UnselectTMC {
     return new UnselectTMC(tmc);
   }
 }

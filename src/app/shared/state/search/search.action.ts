@@ -88,3 +88,18 @@ export class UnselectTechnology {
    */
   constructor(readonly technology: string) { }
 }
+
+/**
+ * Sets ontology node id
+ */
+export class SetOntologyNodeId {
+  /** Action type */
+  static readonly type = '[Search API] Set Ontology Node Id';
+
+  /**
+   * Creates an instance of unselect technology.
+   *
+   * @param id id of the ontology node searched by text
+   */
+  constructor(readonly id: string) { }
+}

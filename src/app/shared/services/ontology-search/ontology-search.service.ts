@@ -29,7 +29,7 @@ export class OntologySearchService {
   /**
    * An array of all Ontology nodes fetched from the state
    */
-  private ontologyNodes: OntologyNode[] = [];
+  ontologyNodes: OntologyNode[] = [];
 
   /**
    * Creates an instance of ontology search service,

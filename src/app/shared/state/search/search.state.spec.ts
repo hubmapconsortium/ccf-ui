@@ -11,6 +11,7 @@ import {
   SetGenderFilter,
   UnselectTechnology,
   UnselectTMC,
+  SetOntologyNodeId,
 } from './search.action';
 import { SearchStateModel } from './search.model';
 import { SearchState } from './search.state';
@@ -49,6 +50,11 @@ describe('SearchState', () => {
       });
     }
 
+    describeSimpleAction(
+      'setOntologyNodeId', 'sets the ontology node id',
+      new SetOntologyNodeId('http://purl.obolibrary.org/obo/UBERON_0001515'),
+      { ontologyNodeId: 'http://purl.obolibrary.org/obo/UBERON_0001515' }
+    );
     describeSimpleAction('setGender', 'sets the gender', new SetGenderFilter('female'), { gender: 'female' });
     describeSimpleAction('setAgeRange', 'sets the age range', new SetAgeRangeFilter(1, 2), { ageRange: [1, 2] });
     describeSimpleAction('addTMC', 'adds to the tmc array', new SelectTMC('abc'), { tmc: ['abc'] });
@@ -67,7 +73,13 @@ describe('SearchState', () => {
         return tissue as TissueImage;
       }
 
-      const searchState: SearchStateModel = { gender: 'female', ageRange: [10, 20], tmc: ['abc'], technologies: ['123'] };
+      const searchState: SearchStateModel = {
+        ontologyNodeId: 'http://purl.obolibrary.org/obo/UBERON_0001515',
+        gender: 'female',
+        ageRange: [10, 20],
+        tmc: ['abc'],
+        technologies: ['123']
+      };
       const filter = SearchState.tissueImageFilterBuilder(searchState).toFilter();
       const validItem = createTissueImage('female', 12, 'abc', '123');
       const invalidGenderItem = createTissueImage('male', 12, 'abc', '123');

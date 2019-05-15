@@ -4,6 +4,11 @@
  */
 export interface SearchStateModel {
   /**
+   * The id of the ontology node
+   */
+  ontologyNodeId: string | undefined;
+
+  /**
    * The gender (or undefined for any gender).
    */
   gender: 'male'| 'female' | undefined;
