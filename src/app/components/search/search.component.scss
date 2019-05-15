@@ -25,6 +25,13 @@
           }
         }
 
+        .ontology-tree {
+          height: 25rem; // TODO - temporary - need to figure it out
+          width: 100%;
+          padding-top: 1.35rem;
+          overflow: auto; 
+        }
+
         .search-categories {
           align-self: flex-end;
           order: 3;
