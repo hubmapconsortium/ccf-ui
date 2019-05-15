@@ -25,7 +25,7 @@ const isExpandable = property<FlatNode, boolean>('expandable');
   styleUrls: ['./ontology-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OntologyTreeComponent{
+export class OntologyTreeComponent {
   /**
    * The node like objects to display in the tree.
    */

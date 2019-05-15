@@ -15,11 +15,12 @@
 
     .text {
       cursor: pointer;
-      // font-weight: bold;
+      color: $text-color;
     }
 
     .selected {
-      color: $active-button-color;
+      color: $active-text-color;
+      font-weight: 700;
     }
   }
 }
