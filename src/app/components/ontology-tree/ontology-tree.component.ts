@@ -123,6 +123,7 @@ export class OntologyTreeComponent {
     for (const flat of parentFlatNodes) { control.expand(flat); }
 
     // Select the node
+    this.selectedNode = undefined;
     this.select(flatNode);
 
     // Detect changes

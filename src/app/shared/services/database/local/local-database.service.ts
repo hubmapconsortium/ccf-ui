@@ -4,7 +4,7 @@ import { Store } from '@ngxs/store';
 import { safeLoad } from 'js-yaml';
 import { at, filter as loFilter, flatMap, forEach, last, split, uniq } from 'lodash';
 import { combineLatest, Observable } from 'rxjs';
-import { delay, map, pluck, shareReplay } from 'rxjs/operators';
+import { delay, map, pluck, shareReplay, skip } from 'rxjs/operators';
 
 import { environment } from '../../../../../environments/environment';
 import { OntologyStateModel } from '../../../../shared/state/ontology/ontology.model';
@@ -48,6 +48,8 @@ export class LocalDatabaseService {
         ),
         this.store.select(OntologyState),
       ).pipe(
+        // Skip first emission as it contains the empty ontology state.
+        skip(1),
         map(([db, ontology]) => this.setPatientOntologyPositions(db, ontology)),
         shareReplay(1)
       );
