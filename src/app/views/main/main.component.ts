@@ -15,7 +15,7 @@ export class MainComponent {
   /**
    * Indicates whether the search drawer is active(open)/inactive(closed).
    */
-  searchActive = false;
+  searchActive = true;
 
   /**
    * Creates an instance of main component.

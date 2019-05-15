@@ -12,8 +12,8 @@
     @include default-border(right);
 
     .icon {
-      $icon-padding-left: 1rem;
-      $icon-padding-right: 1rem;
+      $icon-padding-left: 0.75rem;
+      $icon-padding-right: 0.75rem;
       $icon-size: $navigation-width - $icon-padding-left - $icon-padding-right;
 
       width: $icon-size;
@@ -28,7 +28,7 @@
     }
 
     .item {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       color: $icon-color;
       outline: none;
       cursor: pointer;
@@ -44,8 +44,8 @@
     }
 
     .search {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
       margin-bottom: 0;
 
       &.active {
@@ -58,7 +58,7 @@
     }
 
     .home {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
 
     .feedback {
