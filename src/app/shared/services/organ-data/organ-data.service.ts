@@ -5,9 +5,10 @@ import { combineLatest, Observable } from 'rxjs';
 import { map, pluck, share, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { FilterBuilder } from '../../common/filter/filter-builder';
 import { TissueSample } from '../../state/database/database.models';
 import { NavigationState } from '../../state/navigation/navigation.state';
-import { FilterBuilder, SearchState } from '../../state/search/search.state';
+import { SearchState } from '../../state/search/search.state';
 import { LocalDatabaseService } from '../database/local/local-database.service';
 
 /**

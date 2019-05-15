@@ -1,13 +1,9 @@
+import { OntologyNode } from '../ontology/ontology.model';
 
 /**
  * Search state model.
  */
 export interface SearchStateModel {
-  /**
-   * The id of the ontology node
-   */
-  ontologyNodeId: string | undefined;
-
   /**
    * The gender (or undefined for any gender).
    */
@@ -28,4 +24,9 @@ export interface SearchStateModel {
    * A list of active technologies.
    */
   technologies: string[];
+
+  /**
+   * The currently selected anatomical location.
+   */
+  location: OntologyNode | undefined;
 }

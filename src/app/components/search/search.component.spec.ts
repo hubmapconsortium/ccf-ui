@@ -15,6 +15,14 @@ describe('SearchComponent', () => {
     ({ instance: component, get, find } = await shallow.render());
   });
 
+  function exists(className: string) {
+    describe(className, () => {
+      it('exists', () => {
+        expect(find('.' + className)).toBeTruthy();
+      });
+    });
+  }
+
   describe('component', () => {
     it('exists', () => {
       expect(component).toBeTruthy();
@@ -25,12 +33,4 @@ describe('SearchComponent', () => {
     exists('age-selector');
     exists('search-categories');
   });
-
-    function exists(className: string) {
-      describe(className, () => {
-        it('exists', () => {
-          expect(find('.' + className)).toBeTruthy();
-        });
-      });
-    }
 });

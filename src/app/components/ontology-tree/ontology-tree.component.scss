@@ -1,0 +1,33 @@
+@import 'global/colors';
+
+.ccf-ontology-tree.container {
+  background: none;
+
+  .node {
+    min-height: 0;
+    font-size: 1rem;
+
+    .toggle {
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: normal;
+    }
+
+    .text {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      cursor: pointer;
+      color: $text-color;
+    }
+
+    .selected {
+      color: $active-text-color;
+      font-weight: 700;
+    }
+  }
+}
+
+::ng-deep .ccf-ontology-tree.tooltip {
+  font-size: 1rem;
+}

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { SearchService } from 'src/app/shared/services/search/search.service';
 
 import { OntologySearchService, SearchResult } from '../../shared/services/ontology-search/ontology-search.service';
 
@@ -16,6 +15,11 @@ import { OntologySearchService, SearchResult } from '../../shared/services/ontol
 })
 export class OntologySearchComponent implements OnInit {
   /**
+   * Output event-emitter which emits the id of the OntologyNode whose label was
+   * selected by the user in the search-results
+   */
+  @Output() selected = new EventEmitter<string>();
+  /**
    * Instance of FormControl - tracks the value and validation status of an individual form control
    */
   formControl = new FormControl();
@@ -26,12 +30,9 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Creates an instance of ontology search component.
-   * @param searchService instance of OntologySearchService which provides all the search functionality
+   * @param searchService instance of searchService which provides all the search functionality
    */
-  constructor(
-    private searchService: SearchService,
-    private ontologySearchService: OntologySearchService
-  ) { }
+  constructor(private searchService: OntologySearchService) { }
 
   /**
    * on-init lifecycle hook for this component -
@@ -41,7 +42,7 @@ export class OntologySearchComponent implements OnInit {
   ngOnInit() {
     this.filteredResults$ = this.formControl.valueChanges.pipe(
       startWith(''),
-      map(value => this.ontologySearchService.filter(value)
+      map(value => this.searchService.filter(value)
         .sort((entry1, entry2) => entry1.index - entry2.index) // first sort by substring match index
         .sort((entry1, entry2) => entry2.displayLabel.join().localeCompare(entry1.displayLabel.join())) // then sort lexically
         .sort(entry1 => entry1.displayLabel.join().includes('(') ? 1 : -1) // then sort by if it was found in the label or synonym-labels
@@ -55,7 +56,7 @@ export class OntologySearchComponent implements OnInit {
    */
   onSelect(id: string): void {
     if (id && id.length) {
-      this.searchService.setOntologyNodeId(id);
+      this.selected.emit(id);
     }
   }
 

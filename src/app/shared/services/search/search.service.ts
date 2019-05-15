@@ -5,12 +5,13 @@ import { defaultTo, join } from 'lodash';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { OntologyNode } from '../../state/ontology/ontology.model';
 import {
   SelectTechnology,
   SelectTMC,
   SetAgeRangeFilter,
   SetGenderFilter,
-  SetOntologyNodeId,
+  SetLocation,
   UnselectTechnology,
   UnselectTMC,
 } from '../../state/search/search.action';
@@ -65,15 +66,6 @@ export class SearchService {
   readonly searchCriteria = this.searchState.pipe(map(createSearchCriteriaDescription));
 
   /**
-   * Dispatches an action to update the searched ontology node id in the state
-   * @param id id of the ontology node searched by text
-   */
-  @Dispatch()
-  setOntologyNodeId(id: string): SetOntologyNodeId {
-    return new SetOntologyNodeId(id);
-  }
-
-  /**
    * Dispatchs an action to update the search age range.
    *
    * @param [min] The lower bound of the range (inclusive).
@@ -96,7 +88,6 @@ export class SearchService {
   /**
    * Dispatches an action to select the searched technologies category value
    * @param technology selected
-   * @returns an action class instance of SelectTechnology
    */
   @Dispatch()
   selectTechnology(technology: string): SelectTechnology {
@@ -106,7 +97,6 @@ export class SearchService {
   /**
    * Dispatches an action to select the searched TMCs category value
    * @param tmc selected
-   * @returns an action class instance of SelectTMC
    */
   @Dispatch()
   selectTMC(tmc: string): SelectTMC {
@@ -116,7 +106,6 @@ export class SearchService {
   /**
    * Dispatches an action to unselect the Technology category value removed from search
    * @param technology unselected
-   * @returns an action class instance of UnselectTechnology
    */
   @Dispatch()
   unselectTechnology(technology: string): UnselectTechnology {
@@ -126,10 +115,19 @@ export class SearchService {
   /**
    * Dispatches an action to unselect the TMC category value removed from search
    * @param tmc unselected
-   * @returns an action class instance of UnselectTMC
    */
   @Dispatch()
   unselectTMC(tmc: string): UnselectTMC {
     return new UnselectTMC(tmc);
+  }
+
+  /**
+   * Dispatchs an action to update the searched anatomical locations.
+   *
+   * @param locations The names of the anatomical locations.
+   */
+  @Dispatch()
+  setLocation(location: OntologyNode): SetLocation {
+    return new SetLocation(location);
   }
 }

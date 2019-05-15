@@ -5,11 +5,12 @@ import { combineLatest, Observable, of } from 'rxjs';
 import { map, mergeAll, pluck, share, switchMap, toArray } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { FilterBuilder } from '../../common/filter/filter-builder';
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
 import { Patient } from '../../state/database/database.models';
 import { CountMetaData } from '../../state/organ-meta-data/organ-meta-data.model';
 import { SearchStateModel } from '../../state/search/search.model';
-import { FilterBuilder, SearchState } from '../../state/search/search.state';
+import { SearchState } from '../../state/search/search.state';
 
 @Injectable()
 export class BodyDataService {
@@ -52,7 +53,7 @@ export class BodyDataService {
    */
   getMetadata(organ: string): Observable<any> {
     return this.patientFilterBuilder.pipe(
-      map(builder => builder.addIsIncluded('anatomicalLocations', organ)),
+      map(builder => builder.addIncludes('anatomicalLocations', organ)),
       map(builder => builder.toFilter()),
       switchMap(filter => this.localDatabase.getPatients(filter).pipe(
         mergeAll(),
