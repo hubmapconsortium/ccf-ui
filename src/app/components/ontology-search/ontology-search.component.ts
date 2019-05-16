@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
-import { get } from 'lodash';
+import { get, sortBy } from 'lodash';
 import { Observable } from 'rxjs';
 import { filter, map, startWith, switchMap } from 'rxjs/operators';
 
@@ -47,17 +47,33 @@ export class OntologySearchComponent implements OnInit {
       filter(value => typeof value === 'string'),
       startWith(''),
       switchMap(value => this.searchService.filter(value)),
-      map(searchResults => searchResults
-        .sort((entry1, entry2) => entry1.index - entry2.index) // first sort by substring match index
-        .sort((entry1, entry2) => entry2.displayLabel.join().localeCompare(entry1.displayLabel.join())) // then sort lexically
-        .sort(entry1 => entry1.displayLabel.join().includes('(') ? 1 : -1) // then sort by if it was found in the label or synonym-labels
-      )
+      map(searchResults => sortBy(searchResults, [
+        this.sortBySynonymResult, 'index', this.sortLexically
+      ]))
     );
   }
 
   /**
+   * Sorts lexically
+   * @param entry search result entry
+   * @returns lower case value of node label
+   */
+  private sortLexically(this: void, entry: SearchResult): string {
+    return entry.node.label.toLowerCase();
+  }
+
+  /**
+   * Sorts by results which have synonyms
+   * @param entry search result entry
+   * @returns 1 or -1
+   */
+  private sortBySynonymResult(this: void, entry: SearchResult): number {
+    return entry.displayLabel.join().includes('(') ? 1 : -1;
+  }
+
+  /**
    * Callback function triggered when the user selects a value from search results
-   * @param id ontology node id of the selected search result
+   * @param event instance of MatAutocompleteSelectedEvent
    */
   onSelect(event: MatAutocompleteSelectedEvent): void {
     const node = get(event, 'option.value.node');
