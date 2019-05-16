@@ -1,43 +1,31 @@
-.ccf-search {
-  &.wrapper {
+.ccf-search.wrapper {
+  height: 100%;
+
+  .container {
     height: 100%;
-    width: 100%;
+    background: #f5f5f5;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
 
-    .container {
-      height: 100%;
-      width: 100%;
-      background: #f5f5f5;
-      padding: 0.75rem;
+    .age-gender-container {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: flex-start;
 
-      .upper-items-container {
-        flex: 1;
-
-        .age-gender-container {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: flex-end;
-          justify-content: flex-start;
-
-          .age {
-            padding-left: 0.75rem;
-          }
-        }
-
-        .ontology-tree {
-          height: 25rem; // TODO - temporary - need to figure it out
-          width: 100%;
-          padding-top: 1.35rem;
-          overflow: auto; 
-        }
-
-        .search-categories {
-          align-self: flex-end;
-          order: 3;
-          width: 100%;
-        }
+      .age {
+        padding-left: 0.75rem;
       }
+    }
+
+    .tree {
+      margin-top: 1rem;
+      overflow: auto;
+    }
+
+    .filler {
+      flex-grow: 1;
     }
   }
 }
