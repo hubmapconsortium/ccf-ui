@@ -4,7 +4,7 @@ import { safeLoad } from 'js-yaml';
 import { Observable } from 'rxjs';
 import { delay as RxDelay, map as RxMap, pluck as RxPluck, shareReplay as RxShareReplay } from 'rxjs/operators';
 
-import { LocalDatabase, Patient, TissueImage, TissueSlice, TissueSample } from '../../../state/database/database.models';
+import { LocalDatabase, Patient, TissueImage, TissueSlice, TissueSample, TissueOverlay } from '../../../state/database/database.models';
 import { environment } from '../../../../../environments/environment';
 
 
@@ -81,6 +81,15 @@ export class LocalDatabaseService {
    */
   getTissueImages(filter?: (item: TissueImage) => boolean): Observable<TissueImage[]> {
     return this.query<TissueImage>('images', filter);
+  }
+
+  /**
+   * Gets tissue overlays
+   * @param [filter] a function used to optionally filter the associated data array.
+   * @returns An observable for the tissue overlays.
+   */
+  getTissueOverlays(filter?: (item: TissueOverlay) => boolean): Observable<TissueOverlay[]> {
+    return this.query<TissueOverlay>('overlays', filter);
   }
 
   /**

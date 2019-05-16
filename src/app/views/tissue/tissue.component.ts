@@ -1,7 +1,11 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { capitalize as loCapitalize } from 'lodash';
 import openSeaDragon from 'openseadragon';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { mergeAll, mergeMap } from 'rxjs/operators';
+import { TissueOverlay } from 'src/app/shared/state/database/database.models';
+import { svgOverlay } from 'svg-overlay';
 
 import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 
@@ -26,6 +30,8 @@ export class TissueComponent implements OnInit, OnDestroy {
    * openseadragon viewer reference
    */
   private viewer: any;
+
+  private tissueOverlays$: Observable<TissueOverlay[]>;
   /**
    * Tissue metadata
    */
@@ -43,26 +49,54 @@ export class TissueComponent implements OnInit, OnDestroy {
    * Creates an instance of tissue component.
    * @param tissueDataService instance of TissueDataService
    */
-  constructor(private tissueDataService: TissueDataService) { }
+  constructor(private readonly tissueDataService: TissueDataService,
+    private readonly renderer: Renderer2,
+    private readonly http: HttpClient) {
+      console.log(svgOverlay);
+  }
 
   /**
    * on init lifecycle hook for this component - instantiates a subscription object for the
    * observable with tissue source path from the data service
    */
   ngOnInit() {
+    const headers = this.getHeaders();
     this.tissueSourcePathSubscription = this.tissueDataService.getTissueSourcePath()
       .subscribe(path => this.launchTissueViewer(path));
     this.tissueMetadataSubscription = this.tissueDataService.getMetadata()
     // enclosed metadata inside array becasue @Input of metadata component expects array.
       .subscribe(metadata => { this.tissueMetadata = [metadata]; });
     this.tissueDataService.getOrganName().subscribe((name) => this.organName = loCapitalize(name));
+
+    // FIXME: Implementation to be in some function and should only be called after this.launchTissueViewer()    
+    this.tissueOverlays$ = this.tissueDataService.getTissueOverlays();
+    const result = this.tissueOverlays$.pipe(mergeAll(), mergeMap(overlay => this.http.get(
+      overlay.overlayUrl, { headers, responseType : 'text' })));
+    const svgOverlays  = this.viewer.svgOverlay();
+    const el = this.renderer.selectRootElement(svgOverlays.node());
+    const parser = new DOMParser();
+    result.subscribe((overlaySvg) => {
+      const doc = parser.parseFromString(overlaySvg, 'image/svg+xml');
+      // Trying different values to see if overlay is displayed on the screen.
+      doc.documentElement.setAttribute('x', '0');
+      doc.documentElement.setAttribute('y', '10');
+      doc.documentElement.setAttribute('height', '100');
+      doc.documentElement.setAttribute('width', '100');
+      el.append(doc.documentElement);
+    });
+  }
+
+  private getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders();
+    headers.set('Accept', 'image/svg+xml');
+    return headers;
   }
 
   /**
    * Launches tissue viewer
    * @param tissueSourcePath tissue-source-path string returned from the data service
    */
-  launchTissueViewer(tissueSourcePath: string) {
+  launchTissueViewer(tissueSourcePath: string): void {
     if (this.viewer) {
       this.viewer.destroy();
     }
@@ -78,7 +112,7 @@ export class TissueComponent implements OnInit, OnDestroy {
       navigatorHeight: '3.5rem',
       navigatorWidth: '4.5rem',
       defaultZoomLevel: 1,
-      visibilityRatio: 1,
+      visibilityRatio: 1
     });
   }
 
@@ -97,5 +131,9 @@ export class TissueComponent implements OnInit, OnDestroy {
     if (this.viewer) {
       this.viewer.destroy();
     }
+  }
+
+  showTissueOverlay(overlay: TissueOverlay) {
+    // Called when you hover over the buttons that display labels of different tissue overlays.
   }
 }

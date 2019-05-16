@@ -114,6 +114,23 @@ export interface TissueOverlay extends Annotated {
    * The tissue image this overlay can be placed atop
    */
   image: TissueImage;
+
+  /**
+   * The label for the overlay.
+   */
+  label: string;
+
+  /**
+   * Anatomical location for the overlay.
+   */
+  anatomicalLocations: string[];
+
+
+  /**
+   * An URL for the SVG overlay.
+   */
+  overlayUrl: string;
+
 }
 
 /**
