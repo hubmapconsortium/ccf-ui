@@ -3,6 +3,7 @@ import { Shallow } from 'shallow-render';
 
 import { SearchComponent } from './search.component';
 import { SearchModule } from './search.module';
+import { MatTooltipModule } from '@angular/material';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -11,7 +12,8 @@ describe('SearchComponent', () => {
   let shallow: Shallow<SearchComponent>;
 
   beforeEach(async () => {
-    shallow = new Shallow(SearchComponent, SearchModule);
+    shallow = new Shallow(SearchComponent, SearchModule)
+      .dontMock(MatTooltipModule);
     ({ instance: component, get, find } = await shallow.render());
   });
 

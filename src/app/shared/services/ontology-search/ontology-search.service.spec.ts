@@ -1,53 +1,69 @@
-import { TestBed } from '@angular/core/testing';
+import { Component, NgModule, Type } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { take } from 'rxjs/operators';
+import { Shallow } from 'shallow-render';
 
 import { OntologySearchService } from './ontology-search.service';
-import { sample } from 'rxjs/operators';
 
+@Component({ selector: 'ccf-test', template: '' })
+class TestComponent { }
+
+@NgModule({ declarations: [TestComponent], exports: [TestComponent] })
+class TestModule { }
 describe('OntologySearchService', () => {
+  let get: <T>(type: Type<T>) => T;
   let service: OntologySearchService;
+  let shallow: Shallow<TestComponent>;
+  let store: Store;
+
+  beforeEach(async () => {
+    shallow = new Shallow(TestComponent, TestModule)
+      .dontMock(OntologySearchService);
+
+    ({ get } = await shallow.render());
+    store = get(Store);
+    service = get(OntologySearchService);
+  });
+
   const label = 'thoracic cavity';
   const searchedValue = 'thor';
 
-  const sampleOntologyNodes = [
-    {
+  const sampleOntologyNodes = {
+    ['http://someurl/someResource']: {
       id: 'http://someurl/someResource',
       label: 'thoracic cavity',
       parent: 'http://someParentUrl/someParentResource',
       children: ['child1', 'child2'],
       synonymLabels: ['']
     },
-    {
+    ['http://someOtherurl/someOtherResource']: {
       id: 'http://someOtherurl/someOtherResource',
       label: 'ascending aorta',
       parent: 'http://someParentUrl/someParentResource',
       children: ['child3'],
       synonymLabels: ['ascending thoracic aorta']
     }
-  ];
+  };
 
-  beforeEach(() => TestBed.configureTestingModule({}));
-  it('should be created', () => {
-    service = TestBed.get(OntologySearchService);
-    expect(service).toBeTruthy();
-  });
 
-  it('filters search results', () => {
+  it('filters search results', async () => {
     const expectedResults = [
       {
         index: 0,
         displayLabel: ['', 'thor', 'acic cavity'],
-        node: sampleOntologyNodes[0]
+        node: sampleOntologyNodes['http://someurl/someResource']
       },
       {
         index: 27,
         displayLabel: ['ascending aorta (ascending ', 'thor', 'acic aorta)'],
-        node: sampleOntologyNodes[1]
+        node: sampleOntologyNodes['http://someOtherurl/someOtherResource']
       }
     ];
 
-    service.ontologyNodes = sampleOntologyNodes;
+    store.reset({ ontology: { nodes: sampleOntologyNodes }});
     const results = service.filter(searchedValue);
-    expect(results).toEqual(expectedResults);
+    const value = await results.pipe(take(1)).toPromise();
+    expect(value).toEqual(jasmine.arrayContaining(expectedResults));
   });
 
   it('formats label of search-result', () => {

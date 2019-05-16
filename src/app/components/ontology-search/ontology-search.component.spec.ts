@@ -1,9 +1,12 @@
 import { DebugElement, Type } from '@angular/core';
+import { of } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
-import { SearchResult } from '../../shared/services/ontology-search/ontology-search.service';
+import { OntologySearchService, SearchResult } from '../../shared/services/ontology-search/ontology-search.service';
 import { OntologySearchComponent } from './ontology-search.component';
 import { OntologySearchModule } from './ontology-search.module';
+import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 describe('OntologySearchComponent', () => {
   let component: OntologySearchComponent;
@@ -11,7 +14,7 @@ describe('OntologySearchComponent', () => {
   let get: <T>(type: Type<T>) => T;
   let shallow: Shallow<OntologySearchComponent>;
 
-  const sampleSearchResult: SearchResult = {
+  const sampleSearchResult: SearchResult[] = [{
     index: 0,
     displayLabel: ['', 'thor', 'acic cavity'],
     node: {
@@ -21,10 +24,11 @@ describe('OntologySearchComponent', () => {
       children: ['child1', 'child2'],
       synonymLabels: ['aorta something']
     }
-  };
+  }];
 
   beforeEach(async () => {
-    shallow = new Shallow(OntologySearchComponent, OntologySearchModule);
+    shallow = new Shallow(OntologySearchComponent, OntologySearchModule)
+      .mock(OntologySearchComponent, { formControl: { valueChanges: of('thor') } });
     ({ instance: component, get, find } = await shallow.render());
   });
 
@@ -33,8 +37,26 @@ describe('OntologySearchComponent', () => {
   });
 
   it('should format search result value', () => {
-    const result = component.displayFormatter(sampleSearchResult);
-    expect(result).toEqual(sampleSearchResult.node.label);
+    const result = component.displayFormatter(sampleSearchResult[0]);
+    expect(result).toEqual(sampleSearchResult[0].node.label);
+  });
+
+  it('should get filtered results', async () => {
+    spyOn(get(OntologySearchService), 'filter').and.returnValue(of(sampleSearchResult));
+    const value = await component.filteredResults$.pipe(take(1)).toPromise();
+    expect(value).toEqual(jasmine.arrayContaining(sampleSearchResult));
+  });
+
+  it('should emit selected value', () => {
+    const node = sampleSearchResult[0].node;
+    const event = { option : {
+      value: {
+        node: sampleSearchResult[0].node
+      }
+    }
+  };
+    component.onSelect(event as MatAutocompleteSelectedEvent);
+    expect(component.selected.emit).toHaveBeenCalledWith(node);
   });
 
   describe('dom', () => {
