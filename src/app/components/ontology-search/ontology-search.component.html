@@ -4,7 +4,7 @@
       class="input">
 
     <mat-autocomplete #auto="matAutocomplete"
-      (optionSelected)="$event && $event.option && $event.option.value && onSelect($event.option.value.node.id)"
+      (optionSelected)="onSelect($event)"
       [displayWith]="displayFormatter" class="autocomplete">
       <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">
         <span class="prefix">{{option.displayLabel[0]}}</span>

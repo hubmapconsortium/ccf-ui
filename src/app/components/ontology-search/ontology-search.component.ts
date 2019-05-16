@@ -1,9 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { get } from 'lodash';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { filter, map, startWith, switchMap } from 'rxjs/operators';
 
 import { OntologySearchService, SearchResult } from '../../shared/services/ontology-search/ontology-search.service';
+import { OntologyNode } from '../../shared/state/ontology/ontology.model';
 
 /**
  * Ontology Search Component responsible for searching the ontology
@@ -18,7 +21,7 @@ export class OntologySearchComponent implements OnInit {
    * Output event-emitter which emits the id of the OntologyNode whose label was
    * selected by the user in the search-results
    */
-  @Output() selected = new EventEmitter<string>();
+  @Output() selected = new EventEmitter<OntologyNode>();
   /**
    * Instance of FormControl - tracks the value and validation status of an individual form control
    */
@@ -41,8 +44,10 @@ export class OntologySearchComponent implements OnInit {
    */
   ngOnInit() {
     this.filteredResults$ = this.formControl.valueChanges.pipe(
+      filter(value => typeof value === 'string'),
       startWith(''),
-      map(value => this.searchService.filter(value)
+      switchMap(value => this.searchService.filter(value)),
+      map(searchResults => searchResults
         .sort((entry1, entry2) => entry1.index - entry2.index) // first sort by substring match index
         .sort((entry1, entry2) => entry2.displayLabel.join().localeCompare(entry1.displayLabel.join())) // then sort lexically
         .sort(entry1 => entry1.displayLabel.join().includes('(') ? 1 : -1) // then sort by if it was found in the label or synonym-labels
@@ -54,9 +59,10 @@ export class OntologySearchComponent implements OnInit {
    * Callback function triggered when the user selects a value from search results
    * @param id ontology node id of the selected search result
    */
-  onSelect(id: string): void {
-    if (id && id.length) {
-      this.selected.emit(id);
+  onSelect(event: MatAutocompleteSelectedEvent): void {
+    const node = get(event, 'option.value.node');
+    if (node) {
+      this.selected.emit(node);
     }
   }
 

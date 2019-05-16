@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { OntologyNode } from '../../state/ontology/ontology.model';
 import { OntologyState } from '../../state/ontology/ontology.state';
@@ -9,9 +10,12 @@ import { OntologyState } from '../../state/ontology/ontology.state';
  * Search result interface type for the search results
  */
 export interface SearchResult {
-  index: number; // ensures order of search-results
-  displayLabel: string[]; // label to be displayed in the view
-  node: OntologyNode; // instance of OntologyNode, provides data associated with a search result
+  /** ensures order of search-results */
+  index: number;
+  /** label to be displayed in the view */
+  displayLabel: string[];
+  /**  instance of OntologyNode, provides data associated with a search result */
+  node: OntologyNode;
 }
 
 /**
@@ -25,60 +29,61 @@ export class OntologySearchService {
    * ontology state
    */
   @Select(OntologyState.nodes)
-  stateObservable: Observable<OntologyNode[]>;
-  /**
-   * An array of all Ontology nodes fetched from the state
-   */
-  ontologyNodes: OntologyNode[] = [];
-
-  /**
-   * Creates an instance of ontology search service,
-   * subscribes to the changes in the ontology state
-   */
-  constructor() {
-    this.stateObservable.subscribe((ontologyNodes) => {
-      this.ontologyNodes = ontologyNodes;
-    });
-  }
+  nodes$: Observable<OntologyNode[]>;
 
   /**
    * Searches the ontology with the search-term
    * @param value the search term
    * @returns an array of search-results
    */
-  filter(value: string): SearchResult[] {
-    const searchValue = typeof value === 'string' && value.length && value.toLowerCase();
+  filter(value: string): Observable<SearchResult[]> {
+    return this.nodes$.pipe(
+      map(nodes => this.lookup(nodes, value.toLowerCase()))
+    );
+  }
+
+  /**
+   * looks up ontology nodes and composes search results
+   * @param nodes Ontology nodes
+   * @param searchValue search text in lower case
+   * @returns search results
+   */
+  private lookup(nodes: OntologyNode[], searchValue: string): SearchResult[] {
     const searchResults = new Map<string, SearchResult>();
 
-    if (this.ontologyNodes) {
-      this.ontologyNodes.forEach((node) => {
-        const condition = node.label.toLowerCase().includes(searchValue);
+    nodes.forEach((node) => {
+      const condition = node.label.toLowerCase().includes(searchValue);
 
-        if (condition && !searchResults.get(node.id)) {
+      if (condition && !searchResults.get(node.id)) {
+        searchResults.set(node.id, {
+          index: this.getIndexOfMatch(node.label, searchValue),
+          displayLabel: this.formatLabel(node.label, searchValue),
+          node: node
+        });
+      } else {
+        const match = node.synonymLabels.find((label) => label.toLowerCase().includes(searchValue));
+
+        if (match && !searchResults.get(node.id)) {
           searchResults.set(node.id, {
-            index: this.getIndexOfMatch(node.label, searchValue),
-            displayLabel: this.formatLabel(node.label, searchValue),
+            index: this.getIndexOfMatch(node.label + ' (' + match + ')', searchValue),
+            displayLabel: this.formatLabel(node.label + ' (' + match + ')', searchValue),
             node: node
           });
-        } else {
-          const match = node.synonymLabels.find((label) => label.toLowerCase().includes(searchValue));
-
-          if (match && !searchResults.get(node.id)) {
-            searchResults.set(node.id, {
-              index: this.getIndexOfMatch(node.label + ' (' + match + ')', searchValue),
-              displayLabel: this.formatLabel(node.label + ' (' + match + ')', searchValue),
-              node: node
-            });
-          }
         }
-      });
-    }
+      }
+    });
 
     return Array.from(searchResults.values());
   }
 
 
-  getIndexOfMatch(label: string, searchValue: string) {
+  /**
+   * Gets index of match in the ontology label
+   * @param label the provided ontology node label or synonym label
+   * @param searchValue the searched text in lower case
+   * @returns the index of the match in the label
+   */
+  getIndexOfMatch(label: string, searchValue: string): number {
     return label.toLowerCase().indexOf(searchValue);
   }
 
@@ -89,7 +94,7 @@ export class OntologySearchService {
    * @returns an array in the form of [prefix, search-term, suffix]
    */
   formatLabel(label: string, searchValue: string): string[] {
-    const index  = this.getIndexOfMatch(label, searchValue);
+    const index = this.getIndexOfMatch(label, searchValue);
     return [
       label.substr(0, index),
       label.substr(index, searchValue.length),

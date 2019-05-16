@@ -1,6 +1,6 @@
 <div class="ccf-search wrapper">
   <div class="container">
-    <ccf-ontology-search class="search"></ccf-ontology-search>
+    <ccf-ontology-search class="search" (selected)="selected($event)"></ccf-ontology-search>
 
     <div class="age-gender-container">
       <ccf-gender-selector class="gender"></ccf-gender-selector>
@@ -8,7 +8,7 @@
     </div>
 
     <ccf-ontology-tree *ngIf="ontology.rootNode | async as rootNode" class="tree" [nodes]="[rootNode]"
-                       [getChildren]="ontology.getChildren" (nodeSelected)="search.setLocation($event)">
+                       [getChildren]="ontology.getChildren" (nodeSelected)="search.setLocation($event)" #tree>
     </ccf-ontology-tree>
 
     <div class="filler"></div>
