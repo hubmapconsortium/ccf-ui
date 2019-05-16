@@ -90,7 +90,7 @@ export class SearchService {
    * @param technology selected
    */
   @Dispatch()
-  selectTechnology(technology: string) {
+  selectTechnology(technology: string): SelectTechnology {
     return new SelectTechnology(technology);
   }
 
@@ -99,7 +99,7 @@ export class SearchService {
    * @param tmc selected
    */
   @Dispatch()
-  selectTMC(tmc: string) {
+  selectTMC(tmc: string): SelectTMC {
     return new SelectTMC(tmc);
   }
 
@@ -108,7 +108,7 @@ export class SearchService {
    * @param technology unselected
    */
   @Dispatch()
-  unselectTechnology(technology: string) {
+  unselectTechnology(technology: string): UnselectTechnology {
     return new UnselectTechnology(technology);
   }
 
@@ -117,7 +117,7 @@ export class SearchService {
    * @param tmc unselected
    */
   @Dispatch()
-  unselectTMC(tmc: string) {
+  unselectTMC(tmc: string): UnselectTMC {
     return new UnselectTMC(tmc);
   }
 
