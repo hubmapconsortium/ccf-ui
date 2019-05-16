@@ -38,7 +38,6 @@ export class OntologySearchService {
   constructor() {
     this.stateObservable.subscribe((ontologyNodes) => {
       this.ontologyNodes = ontologyNodes;
-      console.log(this.ontologyNodes);
     });
   }
 
@@ -74,7 +73,7 @@ export class OntologySearchService {
         }
       });
     }
-    console.log(searchResults.values());
+
     return Array.from(searchResults.values());
   }
 
