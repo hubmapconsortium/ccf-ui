@@ -8,7 +8,7 @@
     </div>
 
     <ccf-ontology-tree *ngIf="ontology.rootNode | async as rootNode" class="tree" [nodes]="[rootNode]"
-                       [getChildren]="ontology.getChildren" (nodeSelected)="search.setLocation($event)" #tree>
+                       [getChildren]="ontology.getChildren" (nodeSelected)="search.setLocation($event)">
     </ccf-ontology-tree>
 
     <div class="filler"></div>

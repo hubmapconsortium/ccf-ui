@@ -1,6 +1,4 @@
 .ccf-ontology-search.wrapper {
-  width: 100%;
-
   .field {
     width: 100%;
   }
@@ -31,6 +29,8 @@
   }
 }
 
-.search-term {
-  text-decoration: underline;
+::ng-deep .ccf-ontology-search.detached {
+  .search-term {
+    text-decoration: underline;
+  }
 }

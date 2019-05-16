@@ -1,5 +1,5 @@
 <div class="ccf-search-categories wrapper">
-  <mat-tab-group [disableRipple]="true" class="search-category-group container">
+  <mat-tab-group class="search-category-group container" [disableRipple]="true">
     <mat-tab *ngFor="let category of categories">
       <ng-template mat-tab-label>
         <div class="tab">
@@ -8,8 +8,8 @@
       </ng-template>
 
       <div class="search-criteria-content">
-        <div *ngFor="let filter of filterCategories.get(category)" class="filter" (click)="selected(category, filter)"
-          [ngClass]="{'selected': isSelected(category, filter)}">
+        <div *ngFor="let filter of filterCategories.get(category)" class="filter"
+             [class.selected]="isSelected(category, filter)" (click)="selected(category, filter)">
           {{filter}}
         </div>
       </div>
