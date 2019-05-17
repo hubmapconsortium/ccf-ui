@@ -32,12 +32,10 @@ export class AgeSelectorComponent implements OnDestroy {
 
   /**
    * Slider options.
-   * Since there is a constraint on highest value, if highest value is x then beyond x, maxAge Label should be x+,
-   * so to allow users to slide to x+, an extra tick 'x + 1' is added.
    */
   options: Options = {
     floor: ageConstraints.min,
-    ceil: ageConstraints.max + 1,
+    ceil: ageConstraints.max,
     step: 1,
     hideLimitLabels: true,
     hidePointerLabels: true
@@ -57,11 +55,12 @@ export class AgeSelectorComponent implements OnDestroy {
    * Computes the current age range for display in the button.
    */
   get ageRangeLabel(): string {
-    const { lowValue, highValue } = this;
-    const prefix = 'Age: ';
-    return lowValue === highValue ? (highValue === ageConstraints.max + 1 ? prefix +
-      ageConstraints.max + '+' : prefix + String(lowValue)) :
-        prefix + `${lowValue}-${highValue === this.options.ceil ? ageConstraints.max + '+' : highValue}`;
+    const { lowValue, highValue, options: { ceil } } = this;
+    const suffix = highValue === ceil ? '+' : '';
+    if (lowValue === highValue) {
+      return `Age: ${lowValue}${suffix}`;
+    }
+    return `Age: ${lowValue}-${highValue}${suffix}`;
   }
 
   /**

@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 
 import { TissueImage } from '../../shared/state/database/database.models';
-import { OntologyNode } from '../../shared/state/ontology/ontology.model';
 
 /**
  * A grid where each item can be hovered to display a popover.
@@ -30,14 +29,14 @@ export class TissuesBrowserGridComponent {
   /**
    * Item currently being hovered.
    */
-  activePopoverItem: OntologyNode;
+  activePopoverItem: TissueImage;
 
   /**
    * Sets the active popover item.
    *
    * @param item The item object.
    */
-  setActivePopoverItem(item: OntologyNode): void {
+  setActivePopoverItem(item: TissueImage): void {
     this.activePopoverItem = item;
   }
 

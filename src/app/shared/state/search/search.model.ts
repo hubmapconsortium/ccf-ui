@@ -1,3 +1,4 @@
+import { OntologyNode } from '../ontology/ontology.model';
 
 /**
  * Search state model.
@@ -23,4 +24,9 @@ export interface SearchStateModel {
    * A list of active technologies.
    */
   technologies: string[];
+
+  /**
+   * The currently selected anatomical location.
+   */
+  location: OntologyNode | undefined;
 }

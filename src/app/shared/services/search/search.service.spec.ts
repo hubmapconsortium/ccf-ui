@@ -132,4 +132,18 @@ describe('SearchService', () => {
       expect(searchState.technologies).not.toEqual(jasmine.arrayContaining([unselectedTMC]));
     });
   });
+
+  describe('setLocation(node)', () => {
+    const node: any = { foo: 'bar' };
+    let searchState: any;
+
+    beforeEach(async () => {
+      service.setLocation(node);
+      searchState = await store.selectOnce(SearchState).toPromise();
+    });
+
+    it('sets the current ontology location in the search state', () => {
+      expect(searchState.location).toEqual(node);
+    });
+  });
 });
