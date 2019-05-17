@@ -79,6 +79,7 @@ export class OntologySearchComponent implements OnInit {
     const node = get(event, 'option.value.node');
     if (node) {
       this.selected.emit(node);
+      this.formControl.reset();
     }
   }
 
