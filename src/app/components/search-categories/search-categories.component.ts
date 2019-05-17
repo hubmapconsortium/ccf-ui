@@ -77,6 +77,20 @@ export class SearchCategoriesComponent implements OnChanges {
   }
 
   /**
+   * Removes the prefix of a filter string if it is a common one that should not be displayed.
+   *
+   * @param category The category of the filter.
+   * @param filter The filter to trim.
+   * @returns The trimmed filter.
+   */
+  removePrefix(category: string, filter: string): string {
+    if (category === 'TMCs' && filter.startsWith('TMC-')) {
+      return filter.slice(4);
+    }
+    return filter;
+  }
+
+  /**
    * Uses the search-service to update the search state
    * @param operation string to indicate if the filterValue is being selected or unselected
    * @param category filter category to which the filter value belongs

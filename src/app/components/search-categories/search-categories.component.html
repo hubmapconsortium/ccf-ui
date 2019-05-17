@@ -3,14 +3,14 @@
     <mat-tab *ngFor="let category of categories">
       <ng-template mat-tab-label>
         <div class="tab">
-          <span>{{category}}</span>
+          <span>{{ category }}</span>
         </div>
       </ng-template>
 
       <div class="search-criteria-content">
         <div *ngFor="let filter of filterCategories.get(category)" class="filter"
              [class.selected]="isSelected(category, filter)" (click)="selected(category, filter)">
-          {{filter}}
+          {{ removePrefix(category, filter) }}
         </div>
       </div>
     </mat-tab>

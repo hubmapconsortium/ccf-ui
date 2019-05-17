@@ -76,6 +76,18 @@ describe('SearchCategoriesComponent', () => {
         expect(result).toBeFalsy();
       });
     });
+
+    describe('removePrefix(category, filter)', () => {
+      it('removes TMC prefixes', () => {
+        const result = component.removePrefix('TMCs', 'TMC-foo');
+        expect(result).toEqual('foo');
+      });
+
+      it('does nothing for filters without prefixes', () => {
+        const result = component.removePrefix('ABC', 'bar');
+        expect(result).toEqual('bar');
+      });
+    });
   });
 
   describe('dom', () => {
