@@ -35,11 +35,11 @@ export const ageConstraints = {
  */
 function createSearchCriteriaDescription({ ageRange: [minAge, maxAge], gender }: SearchStateModel): string {
   let ageDescription = `Age ${defaultTo(minAge, ageConstraints.min)}-${defaultTo(maxAge, ageConstraints.max + '+')}`;
-  if (minAge === maxAge || minAge >= ageConstraints.max || maxAge === ageConstraints.min) {
-    if (minAge) {
-      ageDescription = `Age ${minAge > ageConstraints.max ? ageConstraints.max + '+' : minAge }`;
-    } else if (maxAge !== undefined) {
+  if (minAge === maxAge || minAge === ageConstraints.max || maxAge === ageConstraints.min) {
+    if (maxAge !== undefined) {
       ageDescription = `Age ${maxAge}`;
+    } else if (minAge !== undefined) {
+      ageDescription = `Age ${minAge}+`;
     }
   }
   const genderDescription = gender === 'male' ? 'Male' : gender === 'female' ? 'Female' : 'Female & Male';
