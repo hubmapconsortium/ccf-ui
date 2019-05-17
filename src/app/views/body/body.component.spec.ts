@@ -50,7 +50,7 @@ describe('BodyComponent', () => {
   });
 
   it('should clear subscription and metadata.', () => {
-    component.metadata = { string : 'kidney'};
+    component.metadata = [{ string : 'kidney'}];
     component.hoverOrganName = 'kidney';
     component.metadataSubscription = new Subscription();
     const unsubscriptionSpy = spyOn(component.metadataSubscription, 'unsubscribe');
@@ -75,7 +75,21 @@ describe('BodyComponent', () => {
 
   it('should initialize the required observables', () => {
     component.ngOnInit();
-    expect(component.bodyImagePath$.subscribe).toBeDefined();
-    expect(component.bodyOverlays$.subscribe).toBeDefined();
+    expect(component.bodyImagePath$).toBeDefined();
+    expect(component.bodyOverlays$).toBeDefined();
+  });
+
+  describe('pluralize(count, suffix)', () => {
+    describe('when count === 1', () => {
+      it('does not add a trailing \'s\'', () => {
+        expect(component.pluralize(1, '')).not.toContain('s');
+      });
+    });
+
+    describe('when count !== 1', () => {
+      it('adds a trailing\'s\'', () => {
+        expect(component.pluralize(2, '')).toContain('s');
+      });
+    });
   });
 });

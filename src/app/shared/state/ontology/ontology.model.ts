@@ -38,11 +38,6 @@ export interface OntologyStateModel {
   root: string;
 
   /**
-   * Identifiers of all nodes in the hash table.
-   */
-  ids: string[];
-
-  /**
    * Hash table of nodes.
    */
   nodes: { [id: string]: OntologyNode };

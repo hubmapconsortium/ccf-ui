@@ -1,5 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatTooltipModule } from '@angular/material';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,7 +22,7 @@ describe('MainComponent', () => {
       imports: [
         MatSidenavModule, NoopAnimationsModule, MockModule(RouterModule),
         MockModule(HeaderModule), MockModule(NavigationModule),
-        MockModule(SearchModule)
+        MockModule(SearchModule), MatTooltipModule
       ],
       declarations: [MainComponent]
     })
