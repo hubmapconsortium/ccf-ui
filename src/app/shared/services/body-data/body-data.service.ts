@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { PropertyPath } from 'lodash';
+import { PropertyPath, map as loMap } from 'lodash';
 import { combineLatest, Observable, of } from 'rxjs';
 import { map, mergeAll, pluck, share, switchMap, toArray } from 'rxjs/operators';
 
@@ -50,15 +50,12 @@ export class BodyDataService {
    * Gets the metadata for the organ on body
    * @returns Observable for metadata for the organ on body
    */
-  getMetadata(organ: string): Observable<any> {
+  getMetadata(organ: string): Observable<{ [label: string]: string }[]> {
     return this.patientFilterBuilder.pipe(
       map(builder => builder.addIsIncluded('anatomicalLocations', organ)),
       map(builder => builder.toFilter()),
-      switchMap(filter => this.localDatabase.getPatients(filter).pipe(
-        mergeAll(),
-        pluck('metadata'),
-        toArray()
-      )),
+      switchMap(filter => this.localDatabase.getPatients(filter)),
+      map(patients => loMap(patients, 'metadata'))
     );
   }
 

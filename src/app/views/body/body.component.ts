@@ -25,7 +25,7 @@ export class BodyComponent implements OnInit, OnDestroy {
   /**
    * Metadata for the organ overlay on the body.
    */
-  metadata: { [label: string]: string };
+  metadata: { [label: string]: string }[];
 
   /**
    * Obervable for the overlays of body.
@@ -42,7 +42,7 @@ export class BodyComponent implements OnInit, OnDestroy {
    * @param bodyService Service to interact with the localdatabase for body component
    * @param navigator Navigation service
    */
-  constructor(private readonly bodyService: BodyDataService, readonly navigator: NavigationService) {
+  constructor(readonly bodyService: BodyDataService, readonly navigator: NavigationService) {
   }
 
   /**
@@ -68,7 +68,7 @@ export class BodyComponent implements OnInit, OnDestroy {
    */
   organHover(organ: string): void {
     this.hoverOrganName = organ;
-    this.metadataSubscription =  this.bodyService.getMetadata(organ).subscribe((metadata: { [label: string]: string }) => {
+    this.metadataSubscription =  this.bodyService.getMetadata(organ).subscribe(metadata => {
       this.metadata = metadata;
     });
   }
@@ -89,5 +89,27 @@ export class BodyComponent implements OnInit, OnDestroy {
    */
   capitalize(value: string): string {
     return capitalize(value);
+  }
+
+  /**
+   * Appends an 's' to the end of a suffix if the count is not one.
+   *
+   * @param count The item count.
+   * @param suffix The singular suffix.
+   * @returns The pluralized suffix.
+   */
+  pluralizeSuffix(count: number, suffix: string): string {
+    return `${suffix}${count !== 1 ? 's' : ''}`;
+  }
+
+  /**
+   * Creates a string of the count with a suffix that has been pluralized.
+   *
+   * @param count The item count.
+   * @param suffix The singular suffix.
+   * @returns The count string.
+   */
+  pluralize(count: number, suffix: string): string {
+    return `${count} ${this.pluralizeSuffix(count, suffix)}`;
   }
 }
