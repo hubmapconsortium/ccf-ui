@@ -5,6 +5,9 @@ import { Observable, Subscription } from 'rxjs';
 import { BodyDataService } from '../../shared/services/body-data/body-data.service';
 import { NavigationService } from '../../shared/services/navigation/navigation.service';
 
+/**
+ * Component displaying a body (male/female/both) image, overlays and information.
+ */
 @Component({
   selector: 'ccf-body',
   templateUrl: './body.component.html',
