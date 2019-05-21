@@ -16,5 +16,5 @@
   </div>
 </div>
 <div>
-  <button (mouseenter)="showTissueOverlay(overlay)" *ngFor="let overlay of tissueOverlays$ | async">{{overlay.label}}</button>
+  <button class="overlay-button" (mouseenter)="showTissueOverlay(overlay)" *ngFor="let overlay of tissueOverlays$ | async">{{overlay.label}}</button>
 </div>

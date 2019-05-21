@@ -3,7 +3,7 @@ import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '
 import { capitalize as loCapitalize } from 'lodash';
 import openSeaDragon from 'openseadragon';
 import { Observable, Subscription } from 'rxjs';
-import { mergeAll, mergeMap } from 'rxjs/operators';
+import { mergeAll, mergeMap, take } from 'rxjs/operators';
 import { TissueOverlay } from 'src/app/shared/state/database/database.models';
 import { svgOverlay } from 'svg-overlay';
 
@@ -30,6 +30,8 @@ export class TissueComponent implements OnInit, OnDestroy {
    * openseadragon viewer reference
    */
   private viewer: any;
+
+  private overlaysSubsription: Subscription;
 
   private tissueOverlays$: Observable<TissueOverlay[]>;
   /**
@@ -60,36 +62,40 @@ export class TissueComponent implements OnInit, OnDestroy {
    * observable with tissue source path from the data service
    */
   ngOnInit() {
-    const headers = this.getHeaders();
+    this.tissueOverlays$ = this.tissueDataService.getTissueOverlays();
     this.tissueSourcePathSubscription = this.tissueDataService.getTissueSourcePath()
       .subscribe(path => this.launchTissueViewer(path));
     this.tissueMetadataSubscription = this.tissueDataService.getMetadata()
     // enclosed metadata inside array becasue @Input of metadata component expects array.
       .subscribe(metadata => { this.tissueMetadata = [metadata]; });
     this.tissueDataService.getOrganName().subscribe((name) => this.organName = loCapitalize(name));
-
-    // FIXME: Implementation to be in some function and should only be called after this.launchTissueViewer()    
-    this.tissueOverlays$ = this.tissueDataService.getTissueOverlays();
-    const result = this.tissueOverlays$.pipe(mergeAll(), mergeMap(overlay => this.http.get(
-      overlay.overlayUrl, { headers, responseType : 'text' })));
-    const svgOverlays  = this.viewer.svgOverlay();
-    const el = this.renderer.selectRootElement(svgOverlays.node());
-    const parser = new DOMParser();
-    result.subscribe((overlaySvg) => {
-      const doc = parser.parseFromString(overlaySvg, 'image/svg+xml');
-      // Trying different values to see if overlay is displayed on the screen.
-      doc.documentElement.setAttribute('x', '0');
-      doc.documentElement.setAttribute('y', '10');
-      doc.documentElement.setAttribute('height', '100');
-      doc.documentElement.setAttribute('width', '100');
-      el.append(doc.documentElement);
-    });
   }
 
   private getHeaders(): HttpHeaders {
     const headers = new HttpHeaders();
     headers.set('Accept', 'image/svg+xml');
     return headers;
+  }
+
+  private setOverlays(): void {
+    const headers = this.getHeaders();
+    const result = this.tissueOverlays$.pipe(mergeAll(), mergeMap(overlay => this.http.get(
+      overlay.overlayUrl, { headers, responseType : 'text' })));
+    const svgOverlays  = this.viewer.svgOverlay();
+    const el = this.renderer.selectRootElement(svgOverlays.node());
+    const parser = new DOMParser();
+    this.overlaysSubsription = result.pipe(take(1)).subscribe((overlaySvg) => {
+      const doc = parser.parseFromString(overlaySvg, 'image/svg+xml');
+      // const doc = parser.parseFromString('<rect></rect>', 'image/svg+xml');
+      // doc.documentElement.setAttribute('style', 'color:red; border: 1px solid blue;');
+      // Trying different values to see if overlay is displayed on the screen.
+      doc.documentElement.setAttribute('x', '0.5');
+      doc.documentElement.setAttribute('y', '0.5');
+      doc.documentElement.setAttribute('height', '100');
+      doc.documentElement.setAttribute('width', '100');
+      el.append(doc.documentElement);
+    });
+
   }
 
   /**
@@ -114,6 +120,8 @@ export class TissueComponent implements OnInit, OnDestroy {
       defaultZoomLevel: 1,
       visibilityRatio: 1
     });
+
+    this.setOverlays();
   }
 
   /**
@@ -126,6 +134,10 @@ export class TissueComponent implements OnInit, OnDestroy {
 
     if (this.tissueMetadataSubscription) {
       this.tissueMetadataSubscription.unsubscribe();
+    }
+
+    if (this.overlaysSubsription) {
+      this.overlaysSubsription.unsubscribe();
     }
 
     if (this.viewer) {

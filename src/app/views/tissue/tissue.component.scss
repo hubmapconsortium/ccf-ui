@@ -1,5 +1,10 @@
 @import 'global/colors';
 
+.overlay-button {
+  padding:7px;
+  margin:5px;
+  border-radius: 7px;
+}
 .tissue.wrapper {
   $view-width: 76%;
   $metadata-width: 100% - $view-width;
