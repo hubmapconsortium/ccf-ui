@@ -5,26 +5,34 @@
   margin:5px;
   border-radius: 7px;
 }
+
 .tissue.wrapper {
   $view-width: 76%;
   $metadata-width: 100% - $view-width;
 
   display: flex;
-  width: 100%;
   height: 100%;
+
+
 
   .item {
     padding: 0.5rem;
   }
 
   .view {
-    width: $view-width;
-    height: 75%;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-right: 0.5rem;
+
+    .mount-point {
+      flex-grow: 1;
+    }
   }
 
   .metadata {
     width: $metadata-width;
+    padding-left: 0.5rem;
 
     .organ-name {
       font-size: 1.2rem;

@@ -1,7 +1,12 @@
 <div class="tissue wrapper">
-  <div id="tissue-view" class="view item" #tissueView></div>
-  <div class="metadata item" *ngIf="tissueMetadata && tissueMetadata.length">
-    <span *ngIf="organName" class="organ-name">{{organName}}</span>
+  <div class="view">
+    <div class="mount-point" style="width: 100%" #viewerEl></div>
+    <!-- TODO -->
+  </div>
+  <!-- <div id="tissue-view" class="view item" #viewerEl></div> -->
+
+  <div class="metadata item">
+    <span class="organ-name">{{ organName$ | async }}</span>
 
     <div class="details">
       <mat-expansion-panel class="panel">
@@ -10,11 +15,21 @@
             Details
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <ccf-metadata [metadata]="tissueMetadata"></ccf-metadata>
+
+        <ccf-metadata [metadata]="metadata$ | async"></ccf-metadata>
       </mat-expansion-panel>
     </div>
   </div>
+
+  <!-- Note: This element will be moved into OpenSeadragon's view -->
+  <svg class="overlays" preserveAspectRatio="none" x="0" y="0" [attr.width]="overlayWidth" [attr.height]="overlayHeight"
+       [attr.viewBox]="overlayViewBox" [style.display]="displayState(viewer)" #overlayEl>
+    <use *ngFor="let overlay of tissueOverlay$ | async" class="overlay"
+         [attr.display]="displayState(isVisible(overlay))" [attr.href]="overlay.overlayUrl + '#overlay'"></use>
+  </svg>
 </div>
-<div>
-  <button class="overlay-button" (mouseenter)="showTissueOverlay(overlay)" *ngFor="let overlay of tissueOverlays$ | async">{{overlay.label}}</button>
-</div>
+
+<!-- FIXME: Put in the correct place -->
+<!-- <div>
+  <button class="overlay-button" *ngFor="let overlay of tissueOverlay$ | async">{{overlay.label}}</button>
+</div> -->
