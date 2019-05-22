@@ -1,11 +1,17 @@
 <div class="tissue wrapper">
   <div class="view">
-    <div class="mount-point" style="width: 100%" #viewerEl></div>
-    <!-- TODO -->
-  </div>
-  <!-- <div id="tissue-view" class="view item" #viewerEl></div> -->
+    <div class="mount-point" #viewerEl></div>
 
-  <div class="metadata item">
+    <div class="overlay-toggles">
+      <mat-button-toggle *ngFor="let overlay of tissueOverlay$ | async" class="button"
+                         [class.toggled]="isVisible(overlay)" (click)="setVisibility(overlay, 'toggle', 'always')"
+                         (mouseenter)="setVisibility(overlay, 'on')" (mouseleave)="setVisibility(overlay, 'off')">
+        {{ overlay.label }}
+      </mat-button-toggle>
+    </div>
+  </div>
+
+  <div class="metadata">
     <span class="organ-name">{{ organName$ | async }}</span>
 
     <div class="details">
@@ -28,8 +34,3 @@
          [attr.display]="displayState(isVisible(overlay))" [attr.href]="overlay.overlayUrl + '#overlay'"></use>
   </svg>
 </div>
-
-<!-- FIXME: Put in the correct place -->
-<!-- <div>
-  <button class="overlay-button" *ngFor="let overlay of tissueOverlay$ | async">{{overlay.label}}</button>
-</div> -->
