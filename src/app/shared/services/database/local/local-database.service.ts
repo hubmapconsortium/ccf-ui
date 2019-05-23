@@ -9,7 +9,14 @@ import { delay, map, pluck, shareReplay, skip } from 'rxjs/operators';
 import { environment } from '../../../../../environments/environment';
 import { OntologyStateModel } from '../../../../shared/state/ontology/ontology.model';
 import { OntologyState } from '../../../../shared/state/ontology/ontology.state';
-import { LocalDatabase, Patient, TissueImage, TissueSample, TissueSlice } from '../../../state/database/database.models';
+import {
+  LocalDatabase,
+  Patient,
+  TissueImage,
+  TissueOverlay,
+  TissueSample,
+  TissueSlice,
+} from '../../../state/database/database.models';
 
 
 /**
@@ -92,6 +99,15 @@ export class LocalDatabaseService {
    */
   getTissueImages(filter?: (item: TissueImage) => boolean): Observable<TissueImage[]> {
     return this.query<TissueImage>('images', filter);
+  }
+
+  /**
+   * Gets tissue overlays
+   * @param [filter] a function used to optionally filter the associated data array.
+   * @returns An observable for the tissue overlays.
+   */
+  getTissueOverlays(filter?: (item: TissueOverlay) => boolean): Observable<TissueOverlay[]> {
+    return this.query<TissueOverlay>('overlays', filter);
   }
 
   /**

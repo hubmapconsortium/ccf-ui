@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
+import { pluck, switchMap } from 'rxjs/operators';
 
-import { TissueImage } from '../../state/database/database.models';
+import { TissueImage, TissueOverlay } from '../../state/database/database.models';
 import { NavigationState } from '../../state/navigation/navigation.state';
+import { LocalDatabaseService } from '../database/local/local-database.service';
 
 /**
  * Injectable data service for individual tissue view's data
@@ -18,11 +19,28 @@ export class TissueDataService {
   private activeTissue: Observable<TissueImage>;
 
   /**
+   * Creates an instance of tissue data service.
+   *
+   * @param database The database
+   */
+  constructor(private database: LocalDatabaseService) { }
+
+  /**
    * Gets tissue source path
    * @returns Observable of tissue source path
    */
   getTissueSourcePath(): Observable<string> {
     return this.activeTissue.pipe(pluck('tileUrl'));
+  }
+
+  /**
+   * Gets tissue overlays
+   * @returns Observable of overlays
+   */
+  getTissueOverlays(): Observable<TissueOverlay[]> {
+    return this.activeTissue.pipe(
+      switchMap(active => this.database.getTissueOverlays(overlay => overlay.image === active))
+    );
   }
 
   /**

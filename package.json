@@ -35,6 +35,7 @@
     "ngx-smart-popover": "^1.0.5",
     "openseadragon": "^2.4.0",
     "rxjs": "~6.4.0",
+    "svg-overlay": "git+https://github.com/openseadragon/svg-overlay.git",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
