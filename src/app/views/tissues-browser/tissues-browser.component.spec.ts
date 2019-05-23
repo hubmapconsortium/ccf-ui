@@ -2,8 +2,7 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MockModule, MockRender } from 'ng-mocks';
-import { Subject, Observable } from 'rxjs';
-import { TestScheduler } from 'rxjs/testing';
+import { Subject } from 'rxjs';
 
 import { TissuesBrowserGridModule } from '../../components/tissues-browser-grid/tissues-browser-grid.module';
 import { TissuesBrowserDataService } from '../../shared/services/tissues-browser-data/tissues-browser-data.service';

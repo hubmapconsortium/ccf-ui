@@ -3,7 +3,7 @@ import { CdkPortal } from '@angular/cdk/portal';
 import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { Options } from 'ng5-slider';
 
-import { SearchService } from '../../shared/services/search/search.service';
+import { SearchService, ageConstraints } from '../../shared/services/search/search.service';
 
 /**
  * Component containing a button that when clicked will show a slider popover.
@@ -34,8 +34,8 @@ export class AgeSelectorComponent implements OnDestroy {
    * Slider options.
    */
   options: Options = {
-    floor: 0,
-    ceil: 125,
+    floor: ageConstraints.min,
+    ceil: ageConstraints.max,
     step: 1,
     hideLimitLabels: true,
     hidePointerLabels: true
@@ -55,9 +55,12 @@ export class AgeSelectorComponent implements OnDestroy {
    * Computes the current age range for display in the button.
    */
   get ageRangeLabel(): string {
-    const { lowValue, highValue } = this;
-    const prefix = 'Age: ';
-    return lowValue === highValue ? prefix + String(lowValue) : prefix + `${lowValue} - ${highValue}`;
+    const { lowValue, highValue, options: { ceil } } = this;
+    const suffix = highValue === ceil ? '+' : '';
+    if (lowValue === highValue) {
+      return `Age: ${lowValue}${suffix}`;
+    }
+    return `Age: ${lowValue}-${highValue}${suffix}`;
   }
 
   /**

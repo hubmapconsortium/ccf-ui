@@ -9,6 +9,7 @@ import {
   SelectTMC,
   SetAgeRangeFilter,
   SetGenderFilter,
+  SetLocation,
   UnselectTechnology,
   UnselectTMC,
 } from './search.action';
@@ -55,6 +56,7 @@ describe('SearchState', () => {
     describeSimpleAction('removeTMC', 'removes from the tmc array', new UnselectTMC('abc'), { tmc: [] });
     describeSimpleAction('addTechnology', 'adds to the technology array', new SelectTechnology('123'), { technologies: ['123'] });
     describeSimpleAction('removeTechnology', 'removes from the technology array', new UnselectTechnology('123'), { technologies: [] });
+    describeSimpleAction('setLocation', 'sets the anatomical locations', new SetLocation(), { location: undefined });
   });
 
   describe('selectors', () => {
@@ -67,7 +69,13 @@ describe('SearchState', () => {
         return tissue as TissueImage;
       }
 
-      const searchState: SearchStateModel = { gender: 'female', ageRange: [10, 20], tmc: ['abc'], technologies: ['123'] };
+      const searchState: SearchStateModel = {
+        gender: 'female',
+        ageRange: [10, 20],
+        tmc: ['abc'],
+        technologies: ['123'],
+        location: undefined
+      };
       const filter = SearchState.tissueImageFilterBuilder(searchState).toFilter();
       const validItem = createTissueImage('female', 12, 'abc', '123');
       const invalidGenderItem = createTissueImage('male', 12, 'abc', '123');

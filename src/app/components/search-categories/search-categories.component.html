@@ -1,20 +1,18 @@
 <div class="ccf-search-categories wrapper">
-  <mat-tab-group [disableRipple]="true" class="search-category-group container">
+  <mat-tab-group class="search-category-group container" [disableRipple]="true">
     <mat-tab *ngFor="let category of categories">
       <ng-template mat-tab-label>
         <div class="tab">
-          <span>{{category}}</span>
+          <span>{{ category }}</span>
         </div>
       </ng-template>
 
-      <ng-template matTabContent>
-        <div class="search-criteria-content">
-          <div *ngFor="let filter of filterCategories.get(category)" class="filter" (click)="selected(category, filter)"
-            [ngClass]="{'selected': isSelected(category, filter)}">
-            {{filter}}
-          </div>
+      <div class="search-criteria-content">
+        <div *ngFor="let filter of filterCategories.get(category)" class="filter"
+             [class.selected]="isSelected(category, filter)" (click)="selected(category, filter)">
+          {{ removePrefix(category, filter) }}
         </div>
-      </ng-template>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>

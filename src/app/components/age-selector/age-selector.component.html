@@ -4,9 +4,9 @@
     <div *cdk-portal class="ccf-age-selector detached" [class.hidden]="!isSliderOpen" #popover>
       <div class="label min">{{ options.floor }}</div>
       <ng5-slider class="slider" [options]="options" [(value)]="lowValue" [(highValue)]="highValue"
-        (userChangeEnd)="sliderValueChanged()">
+                  (userChangeEnd)="sliderValueChanged()">
       </ng5-slider>
-      <div class="label max">{{ options.ceil }}</div>
+      <div class="label max">{{ options.ceil }}+</div>
     </div>
 
     <mat-form-field class="form-field" [class.highlight]="isSliderOpen">

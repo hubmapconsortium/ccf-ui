@@ -39,6 +39,13 @@ export interface Patient extends Annotated {
    * the corresponding UBERON or HuBMAP id (UBERON_XXXX or HUBMAP_YYYY).
    */
   anatomicalLocations: string[];
+
+  // Internal fields
+  /**
+   * Identifiers of containing ontology nodes and their parent chains.
+   * Used to speed up inclusion checks.
+   */
+  ontologyNodeIds: string[];
 }
 
 /**

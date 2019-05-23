@@ -1,22 +1,31 @@
 .ccf-search.wrapper {
   height: 100%;
-  width: 100%;
 
   .container {
     height: 100%;
-    width: 100%;
     background: #f5f5f5;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
 
     .age-gender-container {
-      padding-top: 1rem;
       display: flex;
       flex-wrap: wrap;
       align-items: flex-end;
       justify-content: flex-start;
-      
-      .selector {
-        padding-left: 0.75rem; // When updating this, also update padding for .age-selector-pane in ccf-age-selector
+
+      .age {
+        padding-left: 0.75rem;
       }
+    }
+
+    .tree {
+      margin-top: 1rem;
+      overflow: auto;
+    }
+
+    .filler {
+      flex-grow: 1;
     }
   }
 }

@@ -1,3 +1,5 @@
+import { OntologyNode } from '../ontology/ontology.model';
+
 /**
  * Set/Unset the searched gender.
  */
@@ -87,4 +89,19 @@ export class UnselectTechnology {
    * @param technology The technology to remove.
    */
   constructor(readonly technology: string) { }
+}
+
+/**
+ * Set the searched onotological location.
+ */
+export class SetLocation {
+  /** Action type */
+  static readonly type = '[Search API] Set Locations';
+
+  /**
+   * Creates an instance of set location.
+   *
+   * @param location The new location.
+   */
+  constructor(readonly location?: OntologyNode) { }
 }

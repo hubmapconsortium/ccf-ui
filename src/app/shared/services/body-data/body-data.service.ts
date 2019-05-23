@@ -1,26 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { PropertyPath } from 'lodash';
+import { map as loMap, PropertyPath } from 'lodash';
 import { combineLatest, Observable, of } from 'rxjs';
-import { map, mergeAll, pluck, share, switchMap, toArray } from 'rxjs/operators';
+import { map, pluck, share, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { FilterBuilder } from '../../common/filter/filter-builder';
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
 import { Patient } from '../../state/database/database.models';
 import { CountMetaData } from '../../state/organ-meta-data/organ-meta-data.model';
 import { SearchStateModel } from '../../state/search/search.model';
-import { FilterBuilder, SearchState } from '../../state/search/search.state';
+import { SearchState } from '../../state/search/search.state';
 
+/**
+ * Provides data for the body component.
+ */
 @Injectable()
 export class BodyDataService {
-
+  /**
+   * Mapping used to prevent the recreation of expensive count operations.
+   */
   private readonly countObservableMap = new WeakMap<any, Observable<CountMetaData>>();
+
   /**
    * Path to images of tissues - TODO - this will come from a json file eventually
    */
   private readonly pathToImages = environment.ccfAssetUrl + '/body';
 
+  /**
+   * Creates an instance of body data service.
+   *
+   * @param localDatabase The database.
+   * @param store The global store.
+   */
   constructor(private readonly localDatabase: LocalDatabaseService, private readonly store: Store) {}
+
   /**
    * Emits the current search state.
    */
@@ -50,15 +64,12 @@ export class BodyDataService {
    * Gets the metadata for the organ on body
    * @returns Observable for metadata for the organ on body
    */
-  getMetadata(organ: string): Observable<any> {
+  getMetadata(organ: string): Observable<{ [label: string]: string }[]> {
     return this.patientFilterBuilder.pipe(
-      map(builder => builder.addIsIncluded('anatomicalLocations', organ)),
+      map(builder => builder.addIncludes('anatomicalLocations', organ)),
       map(builder => builder.toFilter()),
-      switchMap(filter => this.localDatabase.getPatients(filter).pipe(
-        mergeAll(),
-        pluck('metadata'),
-        toArray()
-      )),
+      switchMap(filter => this.localDatabase.getPatients(filter)),
+      map(patients => loMap(patients, 'metadata'))
     );
   }
 

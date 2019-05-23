@@ -1,11 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { safeLoad } from 'js-yaml';
-import { Observable } from 'rxjs';
-import { delay as RxDelay, map as RxMap, pluck as RxPluck, shareReplay as RxShareReplay } from 'rxjs/operators';
+import { at, filter as loFilter, flatMap, forEach, last, split, uniq } from 'lodash';
+import { combineLatest, Observable } from 'rxjs';
+import { delay, map, pluck, shareReplay, skip } from 'rxjs/operators';
 
-import { LocalDatabase, Patient, TissueImage, TissueSlice, TissueSample, TissueOverlay } from '../../../state/database/database.models';
 import { environment } from '../../../../../environments/environment';
+import { OntologyStateModel } from '../../../../shared/state/ontology/ontology.model';
+import { OntologyState } from '../../../../shared/state/ontology/ontology.state';
+import {
+  LocalDatabase,
+  Patient,
+  TissueImage,
+  TissueOverlay,
+  TissueSample,
+  TissueSlice,
+} from '../../../state/database/database.models';
 
 
 /**
@@ -31,16 +42,23 @@ export class LocalDatabaseService {
   /**
    * Creates an instance of the local database service.
    */
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private store: Store) {}
 
   /**
    * The tissue database, parsed from a remote yml file
    */
   private get database$(): Observable<LocalDatabase> {
     if (!this._database$) {
-      this._database$ = this.http.get(this.localDatabaseUrl, {responseType: 'text'}).pipe(
-        RxMap<string, LocalDatabase>(results => safeLoad(results)),
-        RxShareReplay(1)
+      this._database$ = combineLatest(
+        this.http.get(this.localDatabaseUrl, {responseType: 'text'}).pipe(
+          map<string, LocalDatabase>(results => safeLoad(results))
+        ),
+        this.store.select(OntologyState),
+      ).pipe(
+        // Skip first emission as it contains the empty ontology state.
+        skip(1),
+        map(([db, ontology]) => this.setPatientOntologyPositions(db, ontology)),
+        shareReplay(1)
       );
     }
 
@@ -99,17 +117,50 @@ export class LocalDatabaseService {
    * @param filter a function used to optionally filter the associated data array
    */
   private query<T>(field: string, filter?: (item: T) => boolean): Observable<T[]> {
-    let data$: Observable<T[]> = this.database$.pipe(RxPluck(field));
+    let data$: Observable<T[]> = this.database$.pipe(pluck(field));
 
     // Filter data items if a filter function is provided
     if (filter) {
-      data$ = data$.pipe(RxMap((items: T[]) => items.filter(filter)));
+      data$ = data$.pipe(map((items: T[]) => items.filter(filter)));
     }
 
     // Add an emulated delay
     const emulatedHttpDelay = Math.round(Math.random() * this.emulatedHttpDelay);
-    data$ = data$.pipe(RxDelay(emulatedHttpDelay));
+    data$ = data$.pipe(delay(emulatedHttpDelay));
 
     return data$;
+  }
+
+  /**
+   * Sets patient ontology positions
+   *
+   * @param db The database on which to set ontology positions.
+   * @param ontology The current state of the ontology.
+   * @returns The database.
+   */
+  private setPatientOntologyPositions(db: LocalDatabase, ontology: OntologyStateModel): LocalDatabase {
+    const { nodes } = ontology;
+    const namesToNode: { [name: string]: string } = {};
+
+    forEach(nodes, node => {
+      namesToNode[last(split(node.id))] = node.id;
+      namesToNode[node.label] = node.id;
+      forEach(node.synonymLabels, syn => namesToNode[syn] = node.id);
+    });
+
+    forEach(db.patients, patient => {
+      const baseIds = loFilter(at(namesToNode, patient.anatomicalLocations));
+      patient.ontologyNodeIds = uniq(flatMap(baseIds, id => {
+        const result = [];
+        let current = nodes[id];
+        while (current !== undefined) {
+          result.push(current.id);
+          current = nodes[current.parent];
+        }
+        return result;
+      }));
+    });
+
+    return db;
   }
 }

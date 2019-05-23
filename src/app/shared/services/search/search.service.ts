@@ -5,16 +5,27 @@ import { defaultTo, join } from 'lodash';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { OntologyNode } from '../../state/ontology/ontology.model';
 import {
   SelectTechnology,
   SelectTMC,
   SetAgeRangeFilter,
   SetGenderFilter,
+  SetLocation,
   UnselectTechnology,
   UnselectTMC,
 } from '../../state/search/search.action';
 import { SearchStateModel } from '../../state/search/search.model';
 import { SearchState } from '../../state/search/search.state';
+
+/**
+ * defines the constraint on age range.
+ * min and max are used in age slider.
+ */
+export const ageConstraints = {
+  min: 18,
+  max: 89
+};
 
 /**
  * Creates a description of a search.
@@ -23,12 +34,12 @@ import { SearchState } from '../../state/search/search.state';
  * @returns The description of the search criteria.
  */
 function createSearchCriteriaDescription({ ageRange: [minAge, maxAge], gender }: SearchStateModel): string {
-  let ageDescription = `Age ${defaultTo(minAge, 0)} - ${defaultTo(maxAge, 125)}`;
-  if (minAge === maxAge || minAge === 125 || maxAge === 0) {
-    if (minAge) {
-      ageDescription = `Age ${minAge}`;
-    } else if (maxAge !== undefined) {
+  let ageDescription = `Age ${defaultTo(minAge, ageConstraints.min)}-${defaultTo(maxAge, ageConstraints.max + '+')}`;
+  if (minAge === maxAge || minAge === ageConstraints.max || maxAge === ageConstraints.min) {
+    if (maxAge !== undefined) {
       ageDescription = `Age ${maxAge}`;
+    } else if (minAge !== undefined) {
+      ageDescription = `Age ${minAge}+`;
     }
   }
   const genderDescription = gender === 'male' ? 'Male' : gender === 'female' ? 'Female' : 'Female & Male';
@@ -77,40 +88,46 @@ export class SearchService {
   /**
    * Dispatches an action to select the searched technologies category value
    * @param technology selected
-   * @returns an action class instance of SelectTechnology
    */
   @Dispatch()
-  selectTechnology(technology: string) {
+  selectTechnology(technology: string): SelectTechnology {
     return new SelectTechnology(technology);
   }
 
   /**
    * Dispatches an action to select the searched TMCs category value
    * @param tmc selected
-   * @returns an action class instance of SelectTMC
    */
   @Dispatch()
-  selectTMC(tmc: string) {
+  selectTMC(tmc: string): SelectTMC {
     return new SelectTMC(tmc);
   }
 
   /**
    * Dispatches an action to unselect the Technology category value removed from search
    * @param technology unselected
-   * @returns an action class instance of UnselectTechnology
    */
   @Dispatch()
-  unselectTechnology(technology: string) {
+  unselectTechnology(technology: string): UnselectTechnology {
     return new UnselectTechnology(technology);
   }
 
   /**
    * Dispatches an action to unselect the TMC category value removed from search
    * @param tmc unselected
-   * @returns an action class instance of UnselectTMC
    */
   @Dispatch()
-  unselectTMC(tmc: string) {
+  unselectTMC(tmc: string): UnselectTMC {
     return new UnselectTMC(tmc);
+  }
+
+  /**
+   * Dispatchs an action to update the searched anatomical locations.
+   *
+   * @param locations The names of the anatomical locations.
+   */
+  @Dispatch()
+  setLocation(location: OntologyNode): SetLocation {
+    return new SetLocation(location);
   }
 }
