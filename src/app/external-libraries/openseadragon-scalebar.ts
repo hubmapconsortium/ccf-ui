@@ -22,8 +22,6 @@ import OpenSeadragon from 'openseadragon';
                 'OpenSeadragon version 2.0.0+');
     }
 
-    console.log('poop');
-
     $.Viewer.prototype.scalebar = function(options) {
         if (!this.scalebarInstance) {
             options = options || {};
