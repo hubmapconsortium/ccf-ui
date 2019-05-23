@@ -3,6 +3,7 @@ import { capitalize as loCapitalize } from 'lodash';
 import openSeaDragon from 'openseadragon';
 import { Subscription } from 'rxjs';
 
+import { Scalebar } from '../../external-libraries/openseadragon-scalebar';
 import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 
 /**
@@ -26,6 +27,10 @@ export class TissueComponent implements OnInit, OnDestroy {
    * openseadragon viewer reference
    */
   private viewer: any;
+  /**
+   * Scalebar of tissue viewer
+   */
+  private scalebar: any;
   /**
    * Tissue metadata
    */
@@ -79,6 +84,15 @@ export class TissueComponent implements OnInit, OnDestroy {
       navigatorWidth: '4.5rem',
       defaultZoomLevel: 1,
       visibilityRatio: 1,
+    });
+
+    this.scalebar = new Scalebar({
+      viewer: this.viewer,
+      minWidth: '100px',
+      stayInsideImage: true,
+      pixelsPerMeter: 2000000,
+      color: 'yellow',
+      fontColor: 'white'
     });
   }
 
