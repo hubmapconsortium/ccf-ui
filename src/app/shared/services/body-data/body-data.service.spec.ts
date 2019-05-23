@@ -1,18 +1,17 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngxs/store';
 import { of } from 'rxjs';
 
 import { CountMetaData } from '../../state/organ-meta-data/organ-meta-data.model';
 import { LocalDatabaseService } from '../database/local/local-database.service';
 import { BodyDataService } from './body-data.service';
-import { SearchStateModel } from '../../state/search/search.model';
 
 
-fdescribe('BodyDataService', () => {
+describe('BodyDataService', () => {
   let service: BodyDataService;
   let countMetaData: CountMetaData;
   let sample: any;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
