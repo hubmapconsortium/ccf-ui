@@ -1,7 +1,7 @@
 import 'svg-overlay';
 
 import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
-import { capitalize } from 'lodash';
+import { capitalize, get } from 'lodash';
 import { Viewer } from 'openseadragon';
 import { Observable, Subscription } from 'rxjs';
 import { map, share } from 'rxjs/operators';
@@ -90,6 +90,16 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   private tileSourceSubscription: Subscription;
 
   /**
+   * Metadata subscription of tissue component
+   */
+  private metaDataSubscription: Subscription;
+
+  /**
+   * Pixel per meter of tissue component
+   */
+  private pixelPerMeter: number;
+
+  /**
    * Creates an instance of tissue component.
    *
    * @param dataService The service used to fetch the tissue information.
@@ -108,6 +118,7 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
     // This hook doesn't like changes! Do the work at a later cycle.
     setTimeout(() => {
       this.initializeViewer();
+      this.metaDataSubscription = this.metadata$.subscribe((data) => this.setScaleBar(data));
       this.tileSourceSubscription = this.dataService
         .getTissueSourcePath()
         .subscribe(path => this.viewer.open(path));
@@ -120,6 +131,7 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
    */
   ngOnDestroy() {
     this.tileSourceSubscription.unsubscribe();
+    this.metaDataSubscription.unsubscribe();
     this.viewer.destroy();
   }
 
@@ -189,15 +201,6 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
       visibilityRatio: 1
     });
 
-    this.scalebar = new Scalebar({
-      viewer: this.viewer,
-      minWidth: '100px',
-      stayInsideImage: true,
-      pixelsPerMeter: 2000000,
-      color: 'yellow',
-      fontColor: 'white'
-    });
-
     // Add tissue overlay element
     const overlay = viewer.svgOverlay();
     renderer.appendChild(overlay.node(), overlayEl.nativeElement);
@@ -219,5 +222,23 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
     this.overlayWidth = 2 * x + width;
     this.overlayHeight = 2 * y + height;
     this.overlayViewBox = `0 0 ${imageWidth} ${imageHeight}`;
+  }
+
+  /**
+   * Sets instance of scalebar pluging of OpenSeaDragon
+   * @param data metadata
+   */
+  setScaleBar(data: { [label: string]: string }[]): void {
+    const pixelPerMeter = get(data, [0, 'PixelPerMeter']);
+    if (this.viewer && !isNaN(pixelPerMeter)) {
+      this.scalebar = new Scalebar({
+        viewer: this.viewer,
+        minWidth: '100px',
+        stayInsideImage: true,
+        pixelsPerMeter: pixelPerMeter,
+        color: 'yellow',
+        fontColor: 'white'
+      });
+    }
   }
 }
