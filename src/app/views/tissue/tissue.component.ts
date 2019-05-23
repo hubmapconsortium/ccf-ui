@@ -177,8 +177,8 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
       navigatorPosition: 'ABSOLUTE',
       navigatorTop: '2.5rem',
       navigatorLeft: '0.25rem',
-      navigatorHeight: '3.5rem',
-      navigatorWidth: '4.5rem',
+      navigatorHeight: '6rem',
+      navigatorWidth: '8rem',
       defaultZoomLevel: 1,
       visibilityRatio: 1
     });
