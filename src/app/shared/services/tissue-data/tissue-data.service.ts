@@ -12,17 +12,18 @@ import { LocalDatabaseService } from '../database/local/local-database.service';
  */
 @Injectable()
 export class TissueDataService {
-
-  tissueOverlays: Observable<TissueOverlay[]>;
-
-  constructor(private readonly localDatabaseService: LocalDatabaseService) {
-    this.tissueOverlays = this.activeTissue.pipe(switchMap((active) => localDatabaseService.getTissueOverlays(o => o.image === active)));
-  }
   /**
    * Emits the currently active tissue image.
    */
   @Select(NavigationState.activeTissue)
   private activeTissue: Observable<TissueImage>;
+
+  /**
+   * Creates an instance of tissue data service.
+   *
+   * @param database The database
+   */
+  constructor(private database: LocalDatabaseService) { }
 
   /**
    * Gets tissue source path
@@ -32,8 +33,14 @@ export class TissueDataService {
     return this.activeTissue.pipe(pluck('tileUrl'));
   }
 
+  /**
+   * Gets tissue overlays
+   * @returns Observable of overlays
+   */
   getTissueOverlays(): Observable<TissueOverlay[]> {
-    return this.tissueOverlays;
+    return this.activeTissue.pipe(
+      switchMap(active => this.database.getTissueOverlays(overlay => overlay.image === active))
+    );
   }
 
   /**
