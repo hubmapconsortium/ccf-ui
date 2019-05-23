@@ -1,12 +1,13 @@
 import { Component, NgModule, Type } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { set } from 'lodash';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
 import { TissueImage } from '../../state/database/database.models';
 import { TissueDataService } from './tissue-data.service';
+import { LocalDatabaseService } from '../database/local/local-database.service';
 
 @Component({ selector: 'ccf-test', template: '' })
 class TestComponent { }
@@ -61,4 +62,30 @@ describe('TissueDataService', () => {
     'getOrganName', 'emits the name of the currently active organ',
     tissue.slice.sample.patient.anatomicalLocations[0]
   );
+
+  describe('getTissueOverlays', () => {
+    const overlay = { image: tissue };
+    let overlaySpy: jasmine.Spy;
+    let obs: Observable<any[]>;
+
+    beforeEach(() => {
+      overlaySpy = spyOn(get(LocalDatabaseService), 'getTissueOverlays');
+      overlaySpy.and.callFake((filter: Function) => filter(overlay) ? of([overlay]) : of([]));
+      obs = service.getTissueOverlays();
+    });
+
+    it('returns an observable', () => {
+      expect(obs).toEqual(jasmine.any(Observable));
+    });
+
+    it('emits the overlays for the currently active tissue', async () => {
+      const result = await obs.pipe(take(1)).toPromise();
+      expect(result).toEqual([overlay]);
+    });
+
+    it('uses the database to lookup overlays', async () => {
+      await obs.pipe(take(1)).toPromise();
+      expect(overlaySpy).toHaveBeenCalled();
+    });
+  });
 });
