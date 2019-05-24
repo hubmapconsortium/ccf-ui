@@ -2,6 +2,16 @@
 
 Changelog for the Common Coordinate Framework User Interface (CCF-UI).
 
+## 0.5.0 - 2019-05-24
+
+## Added in 0.5.0
+
+* Display of the CCF ontology, integrated with search
+* Semantic search by ontology, results are presented at all levels
+* Tissue overlays showing regions of interest
+* Data download links to direct users to <https://sampledata.hubmapconsortium.org>
+* Data documentation (95% coverage) and testing (85% coverage)
+
 ## 0.2.0 - 2019-05-03
 
 ### Added in 0.2.0

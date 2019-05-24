@@ -1,6 +1,6 @@
 {
   "name": "ccf-ui",
-  "version": "0.2.0",
+  "version": "0.5.0",
   "scripts": {
     "ng": "node --max_old_space_size=3000 ./node_modules/.bin/ng",
     "start": "npm run ng serve",
