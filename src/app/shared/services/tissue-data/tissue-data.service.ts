@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { pluck, switchMap } from 'rxjs/operators';
+import { find, includes, map as loMap, some, toLower } from 'lodash';
+import { combineLatest, Observable } from 'rxjs';
+import { filter, map, pluck, share, switchMap } from 'rxjs/operators';
 
 import { TissueImage, TissueOverlay } from '../../state/database/database.models';
 import { NavigationState } from '../../state/navigation/navigation.state';
+import { OntologyNode } from '../../state/ontology/ontology.model';
+import { SearchState } from '../../state/search/search.state';
 import { LocalDatabaseService } from '../database/local/local-database.service';
 
 /**
@@ -17,6 +20,33 @@ export class TissueDataService {
    */
   @Select(NavigationState.activeTissue)
   private activeTissue: Observable<TissueImage>;
+
+  /**
+   * Emits the current ontology node location.
+   */
+  @Select(SearchState.location)
+  private location: Observable<OntologyNode>;
+
+  /**
+   * Emits overlays for the currently active tissue image.
+   */
+  private tissueOverlay$ = this.activeTissue.pipe(
+    switchMap(active => this.database.getTissueOverlays(overlay => overlay.image === active)),
+    share()
+  );
+
+  /**
+   * Emits whenever an overlay should be activated from the current search.
+   */
+  activatedOverlay$ = combineLatest(
+    this.location,
+    this.tissueOverlay$
+  ).pipe(
+    filter(([location]) => !!location),
+    map(([location, overlays]) => this.findMatchingOverlay(location, overlays)),
+    filter(overlay => !!overlay),
+    share()
+  );
 
   /**
    * Creates an instance of tissue data service.
@@ -38,9 +68,7 @@ export class TissueDataService {
    * @returns Observable of overlays
    */
   getTissueOverlays(): Observable<TissueOverlay[]> {
-    return this.activeTissue.pipe(
-      switchMap(active => this.database.getTissueOverlays(overlay => overlay.image === active))
-    );
+    return this.tissueOverlay$;
   }
 
   /**
@@ -57,5 +85,20 @@ export class TissueDataService {
    */
   getOrganName(): Observable<string> {
     return this.activeTissue.pipe(pluck('slice', 'sample', 'patient', 'anatomicalLocations', 0));
+  }
+
+  /**
+   * Finds the overlay that matches an ontology node.
+   *
+   * @param location The ontology node.
+   * @param overlays The overlays.
+   * @returns The matching overlay object or undefined if no match.
+   */
+  private findMatchingOverlay(location: OntologyNode, overlays: TissueOverlay[]): TissueOverlay {
+    return find(overlays, overlay => {
+      const locations = loMap(overlay.anatomicalLocations, toLower);
+      if (includes(locations, toLower(location.label))) { return true; }
+      return some(location.synonymLabels, synonym => includes(locations, toLower(synonym)));
+    });
   }
 }
