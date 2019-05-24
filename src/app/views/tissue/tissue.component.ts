@@ -1,11 +1,12 @@
 import 'svg-overlay';
 
 import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
-import { capitalize } from 'lodash';
+import { capitalize, get } from 'lodash';
 import { Viewer } from 'openseadragon';
 import { Observable, Subscription } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
+import { Scalebar } from '../../external-libraries/openseadragon-scalebar';
 import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 import { TissueOverlay } from '../../shared/state/database/database.models';
 
@@ -59,6 +60,11 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   viewer: any;
 
   /**
+   * Scalebar of tissue viewer
+   */
+  scalebar: any;
+  /**
+   * Tissue metadata
    * Overlay width in viewport coordinates (0 <= width <= 1).
    */
   overlayWidth = 0;
@@ -84,6 +90,11 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   private tileSourceSubscription: Subscription;
 
   /**
+   * Metadata subscription of tissue component
+   */
+  private tissuePixelsPerMeterSubscription: Subscription;
+
+  /*
    * Subscription for listening to overlay activations.
    */
   private overlayActivationSubscription: Subscription;
@@ -111,6 +122,8 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
     // This hook doesn't like changes! Do the work at a later cycle.
     setTimeout(() => {
       this.initializeViewer();
+      this.tissuePixelsPerMeterSubscription = this.dataService.getTissuePixelsPerMeter()
+        .subscribe(pixelsPerMeter => this.setScaleBar(pixelsPerMeter));
       this.tileSourceSubscription = this.dataService
         .getTissueSourcePath()
         .subscribe(path => this.viewer.open(path));
@@ -123,6 +136,7 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
    */
   ngOnDestroy() {
     this.tileSourceSubscription.unsubscribe();
+    this.tissuePixelsPerMeterSubscription.unsubscribe();
     this.overlayActivationSubscription.unsubscribe();
     this.viewer.destroy();
   }
@@ -214,5 +228,22 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
     this.overlayWidth = 2 * x + width;
     this.overlayHeight = 2 * y + height;
     this.overlayViewBox = `0 0 ${imageWidth} ${imageHeight}`;
+  }
+
+  /**
+   * Sets instance of scalebar pluging of OpenSeaDragon
+   * @param data metadata
+   */
+  private setScaleBar(pixelsPerMeter: number): void {
+    if (!isNaN(pixelsPerMeter)) {
+      this.scalebar = new Scalebar({
+        viewer: this.viewer,
+        minWidth: '100px',
+        stayInsideImage: true,
+        pixelsPerMeter: pixelsPerMeter,
+        color: 'yellow',
+        fontColor: 'white'
+      });
+    }
   }
 }

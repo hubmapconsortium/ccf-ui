@@ -38,7 +38,7 @@ describe('TissueDataService', () => {
   beforeEach(() => store.reset({ navigation: { activeTissue: tissue } }));
 
   function describeStateSlice(
-    methodName: 'getTissueSourcePath' | 'getMetadata' | 'getOrganName',
+    methodName: 'getTissueSourcePath' | 'getMetadata' | 'getOrganName' | 'getTissuePixelsPerMeter',
     dataDescription: string, expected: any
   ): void {
     describe(`${methodName}()`, () => {
@@ -57,6 +57,7 @@ describe('TissueDataService', () => {
   }
 
   describeStateSlice('getTissueSourcePath', 'emits the tile url of the currently active tissue', tissue.tileUrl);
+  describeStateSlice('getTissuePixelsPerMeter', 'emits the pixels-per-meter of the currently active tissue', tissue.pixelsPerMeter);
   describeStateSlice('getMetadata', 'emits the metadata of the currently active tissue', tissue.metadata);
   describeStateSlice(
     'getOrganName', 'emits the name of the currently active organ',

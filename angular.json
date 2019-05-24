@@ -106,7 +106,8 @@
               "src/test.ts",
               "src/polyfills.ts",
               "src/environments/**/*.ts",
-              "src/app/**/*.module.ts"
+              "src/app/**/*.module.ts",
+              "src/app/external-libraries/**"
             ]
           }
         },
@@ -118,7 +119,8 @@
               "src/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "src/app/external-libraries/**"
             ]
           }
         }

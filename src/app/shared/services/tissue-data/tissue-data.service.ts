@@ -64,6 +64,14 @@ export class TissueDataService {
   }
 
   /**
+   * Gets tissue pixels per meter
+   * @returns Observable of tissue pixels per meter
+   */
+  getTissuePixelsPerMeter(): Observable<number> {
+    return this.activeTissue.pipe(pluck('pixelsPerMeter'));
+  }
+
+  /**
    * Gets tissue overlays
    * @returns Observable of overlays
    */
