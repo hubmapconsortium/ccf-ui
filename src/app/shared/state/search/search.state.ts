@@ -3,6 +3,7 @@ import { without } from 'lodash';
 
 import { Compare, FilterBuilder } from '../../common/filter/filter-builder';
 import { Patient, TissueImage, TissueSample, TissueSlice } from '../database/database.models';
+import { OntologyNode } from '../ontology/ontology.model';
 import {
   SelectTechnology,
   SelectTMC,
@@ -28,6 +29,14 @@ import { SearchStateModel } from './search.model';
   }
 })
 export class SearchState {
+  /**
+   * Selects the current ontology node location.
+   */
+  @Selector()
+  static location(state: SearchStateModel): OntologyNode {
+    return state.location;
+  }
+
   /**
    * Creates a filter function for patient image objects based on the current search state.
    * @param state A sanpshot of the current state.

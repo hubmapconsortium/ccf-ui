@@ -24,6 +24,7 @@ describe('TissueComponent', () => {
     mock.getTissueOverlays.and.returnValue(new BehaviorSubject([{ label: 'o1', overlayUrl: 'an_url' }]));
     mock.getTissueSourcePath.and.returnValue(new BehaviorSubject('an_image_url'));
     mock.getTissuePixelsPerMeter.and.returnValue(new BehaviorSubject(100000));
+    mock.activatedOverlay$ = new BehaviorSubject<any>({ });
 
     return mock;
   }

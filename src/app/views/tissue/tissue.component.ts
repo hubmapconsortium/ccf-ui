@@ -94,10 +94,10 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
    */
   private tissuePixelsPerMeterSubscription: Subscription;
 
-  /**
-   * Pixel per meter of tissue component
+  /*
+   * Subscription for listening to overlay activations.
    */
-  private pixelPerMeter: number;
+  private overlayActivationSubscription: Subscription;
 
   /**
    * Creates an instance of tissue component.
@@ -108,7 +108,11 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   constructor(
     private dataService: TissueDataService,
     private renderer: Renderer2
-  ) { }
+  ) {
+    this.overlayActivationSubscription = this.dataService.activatedOverlay$.subscribe(overlay => {
+      this.setVisibility(overlay, 'on', 'always');
+    });
+  }
 
   /**
    * Angular's AfterViewInit hook.
@@ -133,6 +137,7 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy() {
     this.tileSourceSubscription.unsubscribe();
     this.tissuePixelsPerMeterSubscription.unsubscribe();
+    this.overlayActivationSubscription.unsubscribe();
     this.viewer.destroy();
   }
 
