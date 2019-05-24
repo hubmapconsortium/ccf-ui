@@ -106,7 +106,8 @@
               "src/test.ts",
               "src/polyfills.ts",
               "src/environments/**/*.ts",
-              "src/app/**/*.module.ts"
+              "src/app/**/*.module.ts",
+              "src/app/external-libraries/**"
             ]
           }
         },

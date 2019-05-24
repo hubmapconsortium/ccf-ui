@@ -1,7 +1,8 @@
 import { DebugElement, Type } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Shallow } from 'shallow-render';
-import * as openseadragon from 'openseadragon';
+import Openseadragon, * as openseadragon from 'openseadragon';
+import '../../external-libraries/openseadragon-scalebar';
 
 import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 import { TissueRoutingModule } from './tissue-routing.module';
@@ -18,7 +19,7 @@ describe('TissueComponent', () => {
     const mock = jasmine.createSpyObj<TissueDataService>([
       'getTissueSourcePath', 'getTissueOverlays', 'getMetadata', 'getOrganName'
     ]);
-    mock.getMetadata.and.returnValue(new BehaviorSubject({ foo: 'bar' }));
+    mock.getMetadata.and.returnValue(new BehaviorSubject({ foo: 'bar', PixelPerMeter: 100000 }));
     mock.getOrganName.and.returnValue(new BehaviorSubject('an_organ'));
     mock.getTissueOverlays.and.returnValue(new BehaviorSubject([{ label: 'o1', overlayUrl: 'an_url' }]));
     mock.getTissueSourcePath.and.returnValue(new BehaviorSubject('an_image_url'));
@@ -29,9 +30,9 @@ describe('TissueComponent', () => {
   beforeEach(() => {
     // Override Open Seadragon
     const overlay = jasmine.createSpyObj(['node']);
-    const viewer = jasmine.createSpyObj(['addHandler', 'destroy', 'open', 'svgOverlay']);
     const viewport = jasmine.createSpyObj(['getBounds']);
     const world = jasmine.createSpyObj(['getItemAt']);
+    const viewer = jasmine.createSpyObj(['addHandler', 'destroy', 'open', 'svgOverlay']);
 
     overlay.node.and.returnValue({ appendChild() { } });
     viewer.svgOverlay.and.returnValue(overlay);
@@ -42,6 +43,11 @@ describe('TissueComponent', () => {
     world.getItemAt.and.returnValue({ source: { dimensions: { x: 5, y: 6 } } });
 
     spyOn(openseadragon, 'Viewer').and.returnValue(viewer);
+  });
+
+  beforeEach(() => {
+    // Override Open Seadragon Scalebar plugin
+    spyOn(Openseadragon, 'Scalebar');
   });
 
   beforeEach(async () => {
@@ -57,6 +63,18 @@ describe('TissueComponent', () => {
     describe('viewer', () => {
       it('initializes the Open Seadragon Viewer', () => {
         expect(openseadragon.Viewer).toHaveBeenCalled();
+      });
+    });
+
+    describe('scaleBar', () => {
+      it('initializes the Open Seadragon Scalebar plugin', () => {
+        expect(Openseadragon.Scalebar).toHaveBeenCalledWith(jasmine.objectContaining({
+          minWidth: '100px',
+          stayInsideImage: true,
+          pixelsPerMeter: 100000,
+          color: 'yellow',
+          fontColor: 'white'
+        }));
       });
     });
 
@@ -89,8 +107,8 @@ describe('TissueComponent', () => {
     });
 
     describe('isVisible(overlay)', () => {
-      const o1: any = { };
-      const o2: any = { };
+      const o1: any = {};
+      const o2: any = {};
 
       beforeEach(() => {
         (component as any).overlayVisibility.set(o1, 1);
@@ -106,7 +124,7 @@ describe('TissueComponent', () => {
     });
 
     describe('setVisibility(overlay, state, always?)', () => {
-      const o1: any = { };
+      const o1: any = {};
       let visibility: WeakMap<any, number>;
 
       beforeEach(() => visibility = (component as any).overlayVisibility);

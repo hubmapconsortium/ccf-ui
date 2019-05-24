@@ -62,7 +62,7 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   /**
    * Scalebar of tissue viewer
    */
-  private scalebar: any;
+  scalebar: any;
   /**
    * Tissue metadata
    * Overlay width in viewport coordinates (0 <= width <= 1).
@@ -228,9 +228,9 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
    * Sets instance of scalebar pluging of OpenSeaDragon
    * @param data metadata
    */
-  setScaleBar(data: { [label: string]: string }[]): void {
+  private setScaleBar(data: { [label: string]: string | number }[]): void {
     const pixelPerMeter = get(data, [0, 'PixelPerMeter']);
-    if (this.viewer && !isNaN(pixelPerMeter)) {
+    if (!isNaN(pixelPerMeter)) {
       this.scalebar = new Scalebar({
         viewer: this.viewer,
         minWidth: '100px',

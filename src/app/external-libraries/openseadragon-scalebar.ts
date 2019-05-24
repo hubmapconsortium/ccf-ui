@@ -562,4 +562,6 @@ import OpenSeadragon from 'openseadragon';
     }
 }(OpenSeadragon));
 
-export const Scalebar = OpenSeadragon.Scalebar;
+export function Scalebar(options: any): void {
+    return OpenSeadragon.Scalebar(options);
+}
