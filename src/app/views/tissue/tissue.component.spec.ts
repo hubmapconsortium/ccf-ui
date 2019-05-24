@@ -22,6 +22,7 @@ describe('TissueComponent', () => {
     mock.getOrganName.and.returnValue(new BehaviorSubject('an_organ'));
     mock.getTissueOverlays.and.returnValue(new BehaviorSubject([{ label: 'o1', overlayUrl: 'an_url' }]));
     mock.getTissueSourcePath.and.returnValue(new BehaviorSubject('an_image_url'));
+    mock.activatedOverlay$ = new BehaviorSubject<any>({ });
 
     return mock;
   }

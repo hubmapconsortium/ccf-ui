@@ -84,6 +84,11 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   private tileSourceSubscription: Subscription;
 
   /**
+   * Subscription for listening to overlay activations.
+   */
+  private overlayActivationSubscription: Subscription;
+
+  /**
    * Creates an instance of tissue component.
    *
    * @param dataService The service used to fetch the tissue information.
@@ -92,7 +97,11 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   constructor(
     private dataService: TissueDataService,
     private renderer: Renderer2
-  ) { }
+  ) {
+    this.overlayActivationSubscription = this.dataService.activatedOverlay$.subscribe(overlay => {
+      this.setVisibility(overlay, 'on', 'always');
+    });
+  }
 
   /**
    * Angular's AfterViewInit hook.
@@ -114,6 +123,7 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
    */
   ngOnDestroy() {
     this.tileSourceSubscription.unsubscribe();
+    this.overlayActivationSubscription.unsubscribe();
     this.viewer.destroy();
   }
 
