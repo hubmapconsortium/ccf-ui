@@ -111,6 +111,11 @@ export interface TissueImage extends Annotated {
    * The type of tiles at the URL
    */
   tileType: 'deep-zoom' | 'google-maps' | string;
+
+  /**
+   * The number of pixels per meter for the image
+   */
+  pixelsPerMeter: number;
 }
 
 /**

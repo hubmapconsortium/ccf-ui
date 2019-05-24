@@ -92,7 +92,7 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   /**
    * Metadata subscription of tissue component
    */
-  private metaDataSubscription: Subscription;
+  private tissuePixelsPerMeterSubscription: Subscription;
 
   /**
    * Pixel per meter of tissue component
@@ -118,7 +118,8 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
     // This hook doesn't like changes! Do the work at a later cycle.
     setTimeout(() => {
       this.initializeViewer();
-      this.metaDataSubscription = this.metadata$.subscribe((data) => this.setScaleBar(data));
+      this.tissuePixelsPerMeterSubscription = this.dataService.getTissuePixelsPerMeter()
+        .subscribe(pixelsPerMeter => this.setScaleBar(pixelsPerMeter));
       this.tileSourceSubscription = this.dataService
         .getTissueSourcePath()
         .subscribe(path => this.viewer.open(path));
@@ -131,7 +132,7 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
    */
   ngOnDestroy() {
     this.tileSourceSubscription.unsubscribe();
-    this.metaDataSubscription.unsubscribe();
+    this.tissuePixelsPerMeterSubscription.unsubscribe();
     this.viewer.destroy();
   }
 
@@ -228,14 +229,13 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
    * Sets instance of scalebar pluging of OpenSeaDragon
    * @param data metadata
    */
-  private setScaleBar(data: { [label: string]: string | number }[]): void {
-    const pixelPerMeter = get(data, [0, 'PixelPerMeter']);
-    if (!isNaN(pixelPerMeter)) {
+  private setScaleBar(pixelsPerMeter: number): void {
+    if (!isNaN(pixelsPerMeter)) {
       this.scalebar = new Scalebar({
         viewer: this.viewer,
         minWidth: '100px',
         stayInsideImage: true,
-        pixelsPerMeter: pixelPerMeter,
+        pixelsPerMeter: pixelsPerMeter,
         color: 'yellow',
         fontColor: 'white'
       });

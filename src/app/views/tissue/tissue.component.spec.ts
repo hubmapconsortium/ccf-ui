@@ -17,12 +17,13 @@ describe('TissueComponent', () => {
 
   function createMockTissueDataService(): TissueDataService {
     const mock = jasmine.createSpyObj<TissueDataService>([
-      'getTissueSourcePath', 'getTissueOverlays', 'getMetadata', 'getOrganName'
+      'getTissueSourcePath', 'getTissueOverlays', 'getMetadata', 'getOrganName', 'getTissuePixelsPerMeter'
     ]);
-    mock.getMetadata.and.returnValue(new BehaviorSubject({ foo: 'bar', PixelPerMeter: 100000 }));
+    mock.getMetadata.and.returnValue(new BehaviorSubject({ foo: 'bar' }));
     mock.getOrganName.and.returnValue(new BehaviorSubject('an_organ'));
     mock.getTissueOverlays.and.returnValue(new BehaviorSubject([{ label: 'o1', overlayUrl: 'an_url' }]));
     mock.getTissueSourcePath.and.returnValue(new BehaviorSubject('an_image_url'));
+    mock.getTissuePixelsPerMeter.and.returnValue(new BehaviorSubject(100000));
 
     return mock;
   }
@@ -69,11 +70,7 @@ describe('TissueComponent', () => {
     describe('scaleBar', () => {
       it('initializes the Open Seadragon Scalebar plugin', () => {
         expect(Openseadragon.Scalebar).toHaveBeenCalledWith(jasmine.objectContaining({
-          minWidth: '100px',
-          stayInsideImage: true,
-          pixelsPerMeter: 100000,
-          color: 'yellow',
-          fontColor: 'white'
+          pixelsPerMeter: 100000
         }));
       });
     });
