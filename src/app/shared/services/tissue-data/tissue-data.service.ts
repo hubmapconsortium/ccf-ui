@@ -97,6 +97,7 @@ export class TissueDataService {
   private findMatchingOverlay(location: OntologyNode, overlays: TissueOverlay[]): TissueOverlay {
     return find(overlays, overlay => {
       const locations = loMap(overlay.anatomicalLocations, toLower);
+      if (includes(locations, toLower(location.id))) { return true; }
       if (includes(locations, toLower(location.label))) { return true; }
       return some(location.synonymLabels, synonym => includes(locations, toLower(synonym)));
     });
