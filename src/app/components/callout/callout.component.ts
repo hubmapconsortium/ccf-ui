@@ -30,7 +30,7 @@ export class CalloutComponent implements AfterViewInit, OnChanges, OnDestroy {
   /**
    * Template of the callout contents.
    */
-  @ViewChild(CdkPortal) portal: CdkPortal;
+  @ViewChild(CdkPortal, { static: true }) portal: CdkPortal;
 
   /**
    * Svg path for drawing the line.

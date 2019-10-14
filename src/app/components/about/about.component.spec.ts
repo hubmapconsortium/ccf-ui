@@ -1,6 +1,7 @@
 import { Provider } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogModule, MatIconModule } from '@angular/material';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AboutComponent } from './about.component';
 
