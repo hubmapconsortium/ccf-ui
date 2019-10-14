@@ -3,7 +3,7 @@ import { Shallow } from 'shallow-render';
 
 import { SearchComponent } from './search.component';
 import { SearchModule } from './search.module';
-import { MatTooltipModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;

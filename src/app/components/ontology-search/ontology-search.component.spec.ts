@@ -6,7 +6,7 @@ import { Shallow } from 'shallow-render';
 import { OntologySearchService, SearchResult } from '../../shared/services/ontology-search/ontology-search.service';
 import { OntologySearchComponent } from './ontology-search.component';
 import { OntologySearchModule } from './ontology-search.module';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 describe('OntologySearchComponent', () => {
   let component: OntologySearchComponent;
