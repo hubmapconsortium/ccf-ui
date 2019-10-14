@@ -19,7 +19,7 @@ export class SearchComponent {
   /**
    * View child of search component
    */
-  @ViewChild(OntologyTreeComponent) tree: OntologyTreeComponent;
+  @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
   /**
   * Available search filter categories and their values, TODO - needs to be fetched from the data
   * based on the implementation

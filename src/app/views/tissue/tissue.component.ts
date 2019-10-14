@@ -31,12 +31,12 @@ export class TissueComponent implements AfterViewInit, OnDestroy {
   /**
    * Element on to which Open Seadragon is mounted.
    */
-  @ViewChild('viewerEl') viewerEl: ElementRef;
+  @ViewChild('viewerEl', { static: true }) viewerEl: ElementRef;
 
   /**
    * Top svg element of the overlays. Will be moved into Open Seadragon's view.
    */
-  @ViewChild('overlayEl') overlayEl: ElementRef;
+  @ViewChild('overlayEl', { static: true }) overlayEl: ElementRef;
 
   /**
    * Observable emitting the name of the organ for the current tissue.

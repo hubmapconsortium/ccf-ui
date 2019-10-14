@@ -6,23 +6,23 @@ import { TissueResolverService } from './shared/resolvers/tissue-resolver/tissue
 export const routes: Routes = [
   {
     path: 'home',
-    loadChildren: './views/home/home.module#HomeModule'
+    loadChildren: () => import('./views/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'body',
-    loadChildren: './views/body/body.module#BodyModule'
+    loadChildren: () => import('./views/body/body.module').then(m => m.BodyModule)
   },
   {
     path: 'organ/:organId',
-    loadChildren: './views/organ/organ.module#OrganModule'
+    loadChildren: () => import('./views/organ/organ.module').then(m => m.OrganModule)
   },
   {
     path: 'tissues',
-    loadChildren: './views/tissues-browser/tissues-browser.module#TissuesBrowserModule'
+    loadChildren: () => import('./views/tissues-browser/tissues-browser.module').then(m => m.TissuesBrowserModule)
   },
   {
     path: 'tissue/:tissueId',
-    loadChildren: './views/tissue/tissue.module#TissueModule',
+    loadChildren: () => import('./views/tissue/tissue.module').then(m => m.TissueModule),
     resolve: {
       tissue: TissueResolverService
     }

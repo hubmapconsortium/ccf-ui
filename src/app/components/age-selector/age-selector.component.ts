@@ -17,13 +17,13 @@ export class AgeSelectorComponent implements OnDestroy {
   /**
    * Reference to the template for the slider popover.
    */
-  @ViewChild(CdkPortal) popoverPortal: CdkPortal;
+  @ViewChild(CdkPortal, { static: true }) popoverPortal: CdkPortal;
 
   /**
    * Reference to the popover element.
    * This is undefined until the slider popover is initialized.
    */
-  @ViewChild('popover', { read: ElementRef }) popoverElement: ElementRef;
+  @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
 
   /**
    * Determines whether slider popover is shown.
