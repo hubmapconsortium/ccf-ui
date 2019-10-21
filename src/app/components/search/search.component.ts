@@ -27,8 +27,8 @@ export class SearchComponent {
   filterCategories = new Map([
     ['Technologies', [
       {displayName: 'IMS', tooltip: 'Imaging Mass Spectrometry'},
-      {displayName: 'MxIF', tooltip: 'Multiplex immunofluorescence'},
-      {displayName: 'AF', tooltip: 'AF'},
+      {displayName: 'MxIF', tooltip: 'Multiplex Immunofluorescence'},
+      {displayName: 'AF', tooltip: 'Autofluorescence'},
       {displayName: 'PAS', tooltip: 'Periodic Acid Schiff'},
       {displayName: 'IHC', tooltip: 'Immunohistochemistry'}]],
 
