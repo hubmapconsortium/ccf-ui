@@ -123,8 +123,8 @@ export class BodyDataService {
       'slice.sample.patient.anatomicalLocations[0]', sampleId
     );
     const counts = combineLatest(
-      patientCountObservable, sampleCountObservable,
-      sliceCountObservable, imageCountObservable
+      [patientCountObservable, sampleCountObservable,
+      sliceCountObservable, imageCountObservable]
     ).pipe(
       map(([patientCount, sampleCount, sliceCount, imageCount]) => ({
         patientsCount: patientCount,

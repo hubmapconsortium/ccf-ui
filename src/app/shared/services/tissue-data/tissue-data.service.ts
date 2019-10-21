@@ -39,8 +39,7 @@ export class TissueDataService {
    * Emits whenever an overlay should be activated from the current search.
    */
   activatedOverlay$ = combineLatest(
-    this.location,
-    this.tissueOverlay$
+    [this.location, this.tissueOverlay$]
   ).pipe(
     filter(([location]) => !!location),
     map(([location, overlays]) => this.findMatchingOverlay(location, overlays)),

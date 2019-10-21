@@ -2,6 +2,7 @@ import { Component, NgModule, Type } from '@angular/core';
 import { RouterNavigation } from '@ngxs/router-plugin';
 import { StateContext } from '@ngxs/store';
 import { set } from 'lodash';
+import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
 import { LocalDatabaseService } from '../../services/database/local/local-database.service';
@@ -36,9 +37,10 @@ describe('NavigationState', () => {
   }
 
   beforeEach(async () => {
+    const emptyQuery = (_unused?: any) => of([]);
     shallow = new Shallow(TestComponent, TestModule)
       .dontMock(NavigationState)
-      .mock(LocalDatabaseService, { });
+      .mock(LocalDatabaseService, { getTissueImages: emptyQuery });
 
     ({ get } = await shallow.render());
     state = get(NavigationState);

@@ -50,10 +50,10 @@ export class LocalDatabaseService {
   private get database$(): Observable<LocalDatabase> {
     if (!this._database$) {
       this._database$ = combineLatest(
-        this.http.get(this.localDatabaseUrl, {responseType: 'text'}).pipe(
+        [this.http.get(this.localDatabaseUrl, {responseType: 'text'}).pipe(
           map<string, LocalDatabase>(results => safeLoad(results))
         ),
-        this.store.select(OntologyState),
+        this.store.select(OntologyState)]
       ).pipe(
         // Skip first emission as it contains the empty ontology state.
         skip(1),

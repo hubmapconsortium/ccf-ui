@@ -119,7 +119,7 @@ export class OrganDataService {
   private createCountsObservable(sampleId: string): Observable<CountMetadata> {
     const sliceCountObservable = this.getCountsFor('getTissueSlices', SearchState.tissueSliceFilterBuilder, 'sample.id', sampleId);
     const imageCountObservable = this.getCountsFor('getTissueImages', SearchState.tissueImageFilterBuilder, 'slice.sample.id', sampleId);
-    const counts = combineLatest(sliceCountObservable, imageCountObservable).pipe(
+    const counts = combineLatest([sliceCountObservable, imageCountObservable]).pipe(
       map(([sliceCount, imageCount]) => ({
         patients: 1,
         tissueSamples: 1,

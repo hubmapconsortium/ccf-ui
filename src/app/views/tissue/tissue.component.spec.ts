@@ -1,8 +1,10 @@
+import '../../external-libraries/openseadragon-scalebar';
+
 import { DebugElement, Type } from '@angular/core';
+import Openseadragon, * as openseadragon from 'openseadragon';
 import { BehaviorSubject } from 'rxjs';
 import { Shallow } from 'shallow-render';
-import Openseadragon, * as openseadragon from 'openseadragon';
-import '../../external-libraries/openseadragon-scalebar';
+import { TissueOverlay } from 'src/app/shared/state/database/database.models';
 
 import { TissueDataService } from '../../shared/services/tissue-data/tissue-data.service';
 import { TissueRoutingModule } from './tissue-routing.module';
@@ -21,7 +23,7 @@ describe('TissueComponent', () => {
     ]);
     mock.getMetadata.and.returnValue(new BehaviorSubject({ foo: 'bar' }));
     mock.getOrganName.and.returnValue(new BehaviorSubject('an_organ'));
-    mock.getTissueOverlays.and.returnValue(new BehaviorSubject([{ label: 'o1', overlayUrl: 'an_url' }]));
+    mock.getTissueOverlays.and.returnValue(new BehaviorSubject([{ label: 'o1', overlayUrl: 'an_url' } as TissueOverlay]));
     mock.getTissueSourcePath.and.returnValue(new BehaviorSubject('an_image_url'));
     mock.getTissuePixelsPerMeter.and.returnValue(new BehaviorSubject(100000));
     mock.activatedOverlay$ = new BehaviorSubject<any>({ });

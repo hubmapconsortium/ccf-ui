@@ -1,7 +1,6 @@
 import { Component, NgModule, Type } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { PartialDeep } from 'lodash';
 import { Observable, of, throwError } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
@@ -28,7 +27,7 @@ describe('TissueResolverService', () => {
     return route as ActivatedRouteSnapshot;
   }
 
-  function beforeEachResetState(state: PartialDeep<NavigationStateModel>): void {
+  function beforeEachResetState(state: Partial<NavigationStateModel>): void {
     if (state) { beforeEach(() => store.reset({ navigation: state })); }
   }
 

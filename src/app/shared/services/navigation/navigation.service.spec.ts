@@ -1,10 +1,10 @@
 import { Component, NgModule, Type } from '@angular/core';
 import { RouterNavigation } from '@ngxs/router-plugin';
 import { Actions, ofAction, Store } from '@ngxs/store';
-import { PartialDeep } from 'lodash';
 import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
+import { TissueImage } from '../../state/database/database.models';
 import { NavigationStateModel } from '../../state/navigation/navigation.model';
 import { NavigationService } from './navigation.service';
 
@@ -33,9 +33,9 @@ describe('NavigationService', () => {
 
   function describePath(
     path: 'homePath' | 'bodyPath' | 'tissuesBrowserPath' | 'organPath' | 'tissuePath',
-    defaultState?: PartialDeep<NavigationStateModel>, nullState?: PartialDeep<NavigationStateModel>
+    defaultState?: Partial<NavigationStateModel>, nullState?: Partial<NavigationStateModel>
   ): void {
-    function beforeEachResetState(state?: PartialDeep<NavigationStateModel>): void {
+    function beforeEachResetState(state?: Partial<NavigationStateModel>): void {
       if (state) { beforeEach(() => store.reset({ navigation: state })); }
     }
 
@@ -66,7 +66,7 @@ describe('NavigationService', () => {
   describePath('tissuesBrowserPath');
   describePath('bodyPath');
   describePath('organPath', { activeOrgan: { id: 'oid' } }, { });
-  describePath('tissuePath', { activeTissue: { id: 'tid' } }, { });
+  describePath('tissuePath', { activeTissue: { id: 'tid' } as TissueImage }, { });
 
   describe('isHomeActive', () => {
     let result: boolean;
