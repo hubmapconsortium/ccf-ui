@@ -4,13 +4,15 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { SearchCategoriesComponent } from './search-categories.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [SearchCategoriesComponent],
   imports: [
     CommonModule,
     MatChipsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTooltipModule
   ],
   exports: [SearchCategoriesComponent]
 })

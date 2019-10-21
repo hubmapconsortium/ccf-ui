@@ -50,7 +50,6 @@ export class SearchCategoriesComponent implements OnChanges {
    */
   selected(category: string, filter: string) {
     let filterValues = this.selectedFilterCategories.get(category);
-
     if (!filterValues) {
       filterValues = new Set();
       this.selectedFilterCategories.set(category, filterValues);
@@ -83,11 +82,11 @@ export class SearchCategoriesComponent implements OnChanges {
    * @param filter The filter to trim.
    * @returns The trimmed filter.
    */
-  removePrefix(category: string, filter: string): string {
-    if (category === 'TMCs' && filter.startsWith('TMC-')) {
-      return filter.slice(4);
+  removePrefix(category: string, displayName: string): string {
+    if (category === 'TMCs' && displayName.startsWith('TMC-')) {
+      return displayName.slice(4);
     }
-    return filter;
+    return displayName;
   }
 
   /**
