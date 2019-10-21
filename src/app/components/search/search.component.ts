@@ -25,8 +25,20 @@ export class SearchComponent {
   * based on the implementation
   */
   filterCategories = new Map([
-    ['Technologies', ['IMS', 'MxIF', 'AF', 'PAS', 'IHC']],
-    ['TMCs', ['TMC-Vanderbilt', 'TMC-UCSD', 'TMC-Stanford', 'TMC-Florida', 'TMC-CalTech']]
+    ['Technologies', [
+      {displayName: 'IMS', tooltip: 'Imaging Mass Spectrometry'},
+      {displayName: 'MxIF', tooltip: 'Multiplex immunofluorescence'},
+      {displayName: 'AF', tooltip: 'AF'},
+      {displayName: 'PAS', tooltip: 'Periodic Acid Schiff'},
+      {displayName: 'IHC', tooltip: 'Immunohistochemistry'}]],
+
+    ['TMCs', [
+      {displayName: 'TMC-Vanderbilt', tooltip: 'Vanderbilt University'},
+      {displayName: 'TMC-UCSD', tooltip: 'University of California San Diego'},
+      {displayName: 'TMC-Stanford', tooltip: 'Stanford University'},
+      {displayName: 'TMC-Florida', tooltip: 'University of Florida'},
+      {displayName: 'TMC-CalTech', tooltip: 'California Institute of Technology'}
+    ]]
   ]);
 
   /**
