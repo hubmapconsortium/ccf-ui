@@ -110,7 +110,7 @@ describe('NavigationService', () => {
   describePathCreation('createOrganPath');
   describePathCreation('createTissuePath');
 
-  function describeNavigation(methodName: 'navigateToHome', ...args: any[]): void {
+  function describeNavigation(methodName: 'navigateToHome' | 'navigateToTissueBrowser', ...args: any[]): void {
     describe(`${methodName}(${args.join(', ')})`, () => {
       let reaction: Promise<any>;
       beforeEach(() => {
@@ -125,4 +125,5 @@ describe('NavigationService', () => {
   }
 
   describeNavigation('navigateToHome');
+  describeNavigation('navigateToTissueBrowser');
 });
