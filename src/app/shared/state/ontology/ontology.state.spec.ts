@@ -43,7 +43,6 @@ describe('State', () => {
         children: [],
         synonymLabels: ['X', 'Y']
       };
-
       const child1: OntologyNode = {
         id: 'child1',
         label: 'label',
@@ -51,7 +50,6 @@ describe('State', () => {
         children: [],
         synonymLabels: ['X', 'Y']
       };
-
       const child2: OntologyNode = {
         id: 'child2',
         label: 'label',
@@ -59,7 +57,6 @@ describe('State', () => {
         children: [],
         synonymLabels: ['X', 'Y']
       };
-
 
       it('should create model', () => {
 
@@ -69,14 +66,13 @@ describe('State', () => {
           'child1': child1,
           'child2': child2
         };
-
         const expectedNodeMap = {
           'parent': parent,
           'child1': child1,
           'child2': child2
         };
-
         const model = createModel(nodeMap);
+
         expect(model.root).toEqual('parent');
         expect(model.nodes).toEqual(expectedNodeMap);
       });
@@ -97,13 +93,11 @@ describe('State', () => {
 
       it('should add subtree node to accumulated', () => {
 
-
         const nodeMap = {
           'parent': parent,
           'child1': child1,
           'child2': child2
         };
-
         const acc = {
           'child1': child1
         };
@@ -111,8 +105,6 @@ describe('State', () => {
         addSubtree(nodeMap, acc, child2);
         expect(acc['child2'].id).toBe('child2');
       });
-
-
     });
 
     describe('selectors', () => {
