@@ -4,7 +4,7 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { of } from 'rxjs';
 
 import { OntologyNode, OntologyStateModel } from './ontology.model';
-import { OntologyState } from './ontology.state';
+import { createModel, OntologyState, linkChildren, addSubtree } from './ontology.state';
 
 describe('State', () => {
   describe('Ontology', () => {
@@ -32,6 +32,87 @@ describe('State', () => {
 
     describe('actions', () => {
       // Additional tests
+    });
+
+    describe('helpers', () => {
+
+      const parent: OntologyNode = {
+        id: 'parent',
+        label: 'label',
+        parent: undefined,
+        children: [],
+        synonymLabels: ['X', 'Y']
+      };
+
+      const child1: OntologyNode = {
+        id: 'child1',
+        label: 'label',
+        parent: 'parent',
+        children: [],
+        synonymLabels: ['X', 'Y']
+      };
+
+      const child2: OntologyNode = {
+        id: 'child2',
+        label: 'label',
+        parent: 'child1',
+        children: [],
+        synonymLabels: ['X', 'Y']
+      };
+
+
+      it('should create model', () => {
+
+        const nodeMap = {
+          [undefined as string]: { children: ['parent'] } as OntologyNode,
+          'parent': parent,
+          'child1': child1,
+          'child2': child2
+        };
+
+        const expectedNodeMap = {
+          'parent': parent,
+          'child1': child1,
+          'child2': child2
+        };
+
+        const model = createModel(nodeMap);
+        expect(model.root).toEqual('parent');
+        expect(model.nodes).toEqual(expectedNodeMap);
+      });
+
+      it('should link nodes to the parents', () => {
+
+        const nodeMap = {
+          'parent': parent,
+          'child1': child1,
+          'child2': child2
+        };
+
+        linkChildren(nodeMap);
+        expect(nodeMap.parent.children).toEqual(['child1']);
+        expect(nodeMap.child1.children).toEqual(['child2']);
+        expect(nodeMap.child2.children).toEqual([]);
+      });
+
+      it('should add subtree node to accumulated', () => {
+
+
+        const nodeMap = {
+          'parent': parent,
+          'child1': child1,
+          'child2': child2
+        };
+
+        const acc = {
+          'child1': child1
+        };
+
+        addSubtree(nodeMap, acc, child2);
+        expect(acc['child2'].id).toBe('child2');
+      });
+
+
     });
 
     describe('selectors', () => {
