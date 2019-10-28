@@ -35,7 +35,6 @@ describe('State', () => {
     });
 
     describe('helpers', () => {
-
       const parent: OntologyNode = {
         id: 'parent',
         label: 'label',
@@ -59,7 +58,6 @@ describe('State', () => {
       };
 
       it('should create model', () => {
-
         const nodeMap = {
           [undefined as string]: { children: ['parent'] } as OntologyNode,
           'parent': parent,
@@ -78,7 +76,6 @@ describe('State', () => {
       });
 
       it('should link nodes to the parents', () => {
-
         const nodeMap = {
           'parent': parent,
           'child1': child1,
@@ -92,7 +89,6 @@ describe('State', () => {
       });
 
       it('should add subtree node to accumulated', () => {
-
         const nodeMap = {
           'parent': parent,
           'child1': child1,
