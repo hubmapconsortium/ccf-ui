@@ -114,4 +114,12 @@ export class NavigationService {
   navigateToHome(): Navigate {
     return new Navigate(['/home']);
   }
+
+  /**
+   * Causes a router change to the tissue browser view.
+   */
+  @Dispatch()
+  navigateToTissueBrowser(): Navigate {
+    return new Navigate(['/tissues']);
+  }
 }

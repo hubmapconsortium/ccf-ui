@@ -6,6 +6,7 @@ import { OntologyState } from 'src/app/shared/state/ontology/ontology.state';
 import { OntologyService } from '../../shared/services/ontology/ontology.service';
 import { SearchService } from '../../shared/services/search/search.service';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 
 /**
  * Container component for search filters.
@@ -51,7 +52,8 @@ export class SearchComponent {
   constructor(
     readonly ontology: OntologyService,
     readonly search: SearchService,
-    private store: Store
+    private store: Store,
+    private readonly navigationService: NavigationService
   ) { }
 
   /**
@@ -61,5 +63,6 @@ export class SearchComponent {
   selected(ontologyNode: OntologyNode) {
     const { nodes } = this.store.selectSnapshot(OntologyState);
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
+    this.navigationService.navigateToTissueBrowser();
   }
 }
