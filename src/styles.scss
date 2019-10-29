@@ -1,5 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '~material-design-icons/iconfont/material-icons.css';
+
+$material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
+@import '~material-design-icons-iconfont/src/material-design-icons';
 
 @import "~mapbox-gl/dist/mapbox-gl.css";
 
