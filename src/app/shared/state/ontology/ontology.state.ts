@@ -12,7 +12,7 @@ import { OntologyNode, OntologyStateModel } from './ontology.model';
  *
  * @param nodeMap The hash table of nodes.
  */
-function linkChildren(nodeMap: { [id: string]: OntologyNode }): void {
+export function linkChildren(nodeMap: { [id: string]: OntologyNode }): void {
   // Add temporary fake node to simplify logic as root won't need a special case
   // This is also used later to find the root node
   nodeMap[undefined as any] = { children: [] } as any;
@@ -26,7 +26,7 @@ function linkChildren(nodeMap: { [id: string]: OntologyNode }): void {
  * @param nodeMap The node hash table.
  * @returns The ontology state model.
  */
-function createModel(nodeMap: { [id: string]: OntologyNode }): OntologyStateModel {
+export function createModel(nodeMap: { [id: string]: OntologyNode }): OntologyStateModel {
   const root = find(nodeMap[undefined as any].children);
 
   // Remove fake node inserted in linkChildren
@@ -60,7 +60,7 @@ function pruneModel(model: OntologyStateModel, organIds: string[]): OntologyStat
  * @param acc The accumulated tree of nodes.
  * @param current The node whose subtree should be added.
  */
-function addSubtree(
+export function addSubtree(
   nodes: { [id: string]: OntologyNode },
   acc: { [id: string]: OntologyNode },
   current: OntologyNode

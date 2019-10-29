@@ -1,6 +1,6 @@
 import { OnDestroy } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
-import { RouterNavigation } from '@ngxs/router-plugin';
+import { RouterDataResolved } from '@ngxs/router-plugin';
 import { Action, NgxsOnInit, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
@@ -54,8 +54,8 @@ export class NavigationState implements NgxsOnInit, OnDestroy {
   /**
    * Updates the state on navigation to an organ or tissue.
    */
-  @Action(RouterNavigation)
-  updateActiveFromRoute(ctx: StateContext<NavigationStateModel>, action: RouterNavigation): void {
+  @Action(RouterDataResolved)
+  updateActiveFromRoute(ctx: StateContext<NavigationStateModel>, action: RouterDataResolved): void {
     const route = action.routerState.root.firstChild;
     if (!route) { return; }
 
