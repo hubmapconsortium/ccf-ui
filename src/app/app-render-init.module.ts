@@ -1,6 +1,4 @@
 import { InjectionToken, NgModule } from '@angular/core';
-import { registerLoaders } from '@loaders.gl/core';
-import { GLTFScenegraphLoader } from '@luma.gl/addons';
 import { Style } from 'mapbox-gl';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
@@ -31,8 +29,4 @@ export const BLANK_MAPBOX_STYLE = new InjectionToken<Style>('Blank Mapbox style'
   imports: [NgxMapboxGLModule],
   exports: [NgxMapboxGLModule]
 })
-export class AppRenderInitModule {
-  constructor() {
-    registerLoaders([GLTFScenegraphLoader]);
-  }
-}
+export class AppRenderInitModule {}

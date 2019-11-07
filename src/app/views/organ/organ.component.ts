@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import cheet from 'cheet.js';
 
 import { OrganDataService } from '../../shared/services/organ-data/organ-data.service';
+
+let is3D = false;
+cheet('3 d', () => is3D = !is3D);
 
 /**
  * Displays an organ with overlays.
@@ -15,6 +19,8 @@ export class OrganComponent {
    * Metadata that is shown on the right hand side table.
    */
   activeMetadata: [{ [label: string]: string }] | [] = [];
+
+  get is3D(): boolean { return is3D; }
 
   /**
    * Creates an instance of organ component.
