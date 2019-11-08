@@ -1,6 +1,21 @@
 # Changelog
 
-Changelog for the Common Coordinate Framework User Interface (CCF-UI).
+Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface (EUI).
+
+## 0.6.0 - 2019-11-08
+
+## Added in 0.6.0
+
+* The [CCF API](https://github.com/hubmapconsortium/ccf-api) project was started with an initial OpenAPI Schema, [documentation](http://smart-api.info/ui/d1f33c1a75e9dcda984194e4d8cea7d8), and code for spinning up a mock data server. This codifies the [CCF data and metadata standards](https://docs.google.com/document/d/1Qgx4mNutE1V3CfQ7y8Lg3rxQy5nhiOSKCSv5MJkPRMc/edit) defined by MC-IU and will be used by the CCF EUI and RUI.
+* In preparation for future developments, we added a hidden, alpha-level 3d organ viewer. You can toggle this on and off in the organ view, by typing 3d with your keyboard.
+* Updated navigation to directly jump to the tissue browser when a user selects an item from the search box
+* Upgraded dependencies, including upgrades to Angular 8
+* Testing and bug fixes
+* Minor UI updates
+  * Changed download icon color
+  * Changed the background color for the search
+  * Moved the Technologes filter above ontology
+  * Additional styles for details button
 
 ## 0.5.0 - 2019-05-24
 
