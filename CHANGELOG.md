@@ -14,7 +14,7 @@ Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface
 * Minor UI updates
   * Changed download icon color
   * Changed the background color for the search
-  * Moved the Technologes filter above ontology
+  * Moved the Technologies filter above ontology
   * Additional styles for details button
 
 ## 0.5.0 - 2019-05-24
