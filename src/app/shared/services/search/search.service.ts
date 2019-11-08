@@ -3,17 +3,11 @@ import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
 import { defaultTo, join } from 'lodash';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { OntologyNode } from '../../state/ontology/ontology.model';
 import {
-  SelectTechnology,
-  SelectTMC,
-  SetAgeRangeFilter,
-  SetGenderFilter,
-  SetLocation,
-  UnselectTechnology,
-  UnselectTMC,
+  SelectTechnology, SelectTMC, SetAgeRangeFilter, SetGenderFilter, SetLocation, UnselectTechnology, UnselectTMC,
 } from '../../state/search/search.action';
 import { SearchStateModel } from '../../state/search/search.model';
 import { SearchState } from '../../state/search/search.state';
@@ -63,7 +57,10 @@ export class SearchService {
   /**
    * Emits strings with information about the current search.
    */
-  readonly searchCriteria = this.searchState.pipe(map(createSearchCriteriaDescription));
+  readonly searchCriteria = this.searchState.pipe(
+    filter(state => !!state),
+    map(createSearchCriteriaDescription)
+  );
 
   /**
    * Dispatchs an action to update the search age range.
