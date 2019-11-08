@@ -1,5 +1,5 @@
 <div class="ccf-organ wrapper">
-  <div class="container">
+  <div *ngIf="!is3D" class="container">
     <svg class="organ-group" viewBox="0 0 800 1000">
       <use class="organ" [attr.href]="dataService.organImagePath | async" #image></use>
       <ng-container *ngFor="let sample of dataService.organOverlays | async">
@@ -21,4 +21,6 @@
 
     <ccf-metadata class="metadata" [metadata]="activeMetadata"></ccf-metadata>
   </div>
+
+  <ccf-organ3d *ngIf="is3D" base="assets/3d/kidney/base.gltf" [baseRotation]="{ x: -0.78539816339 }"></ccf-organ3d>
 </div>

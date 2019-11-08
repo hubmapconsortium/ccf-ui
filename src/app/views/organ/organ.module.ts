@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { CalloutModule } from '../../components/callout/callout.module';
 import { MetadataModule } from '../../components/metadata/metadata.module';
+import { Organ3dModule } from '../../components/organ3d/organ3d.module';
 import { OrganDataService } from '../../shared/services/organ-data/organ-data.service';
 import { OrganRoutingModule } from './organ-routing.module';
 import { OrganComponent } from './organ.component';
@@ -10,9 +11,11 @@ import { OrganComponent } from './organ.component';
 @NgModule({
   imports: [
     CommonModule,
+
     CalloutModule,
     MetadataModule,
-    OrganRoutingModule
+    Organ3dModule,
+    OrganRoutingModule,
   ],
   declarations: [
     OrganComponent

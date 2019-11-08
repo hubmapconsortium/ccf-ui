@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppRenderInitModule } from './app-render-init.module';
 import { AppRoutingModule } from './app-routing.module';
+import { AppStateModule } from './app-state.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './views/main/main.module';
-import { AppStateModule } from './app-state.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { AppStateModule } from './app-state.module';
     BrowserAnimationsModule,
     HttpClientModule,
 
+    AppRenderInitModule,
     AppRoutingModule,
     AppStateModule,
     MainModule,
