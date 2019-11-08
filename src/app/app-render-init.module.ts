@@ -2,6 +2,7 @@ import { InjectionToken, NgModule } from '@angular/core';
 import { Style } from 'mapbox-gl';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
+/** Token for injecting the blank mapbox style. */
 export const BLANK_MAPBOX_STYLE = new InjectionToken<Style>('Blank Mapbox style', {
   providedIn: 'root',
   factory: () => ({

@@ -3,6 +3,7 @@ import cheet from 'cheet.js';
 
 import { OrganDataService } from '../../shared/services/organ-data/organ-data.service';
 
+/** Whether to show the 3D demo. Toggled by the key sequence "3d" */
 let is3D = false;
 cheet('3 d', () => is3D = !is3D);
 
@@ -20,6 +21,7 @@ export class OrganComponent {
    */
   activeMetadata: [{ [label: string]: string }] | [] = [];
 
+  /** Whether to show the 3D demo. */
   get is3D(): boolean { return is3D; }
 
   /**
