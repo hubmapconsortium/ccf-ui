@@ -39,7 +39,7 @@
     "openseadragon": "^2.4.1",
     "rxjs": "~6.5.3",
     "svg-overlay": "git+https://github.com/openseadragon/svg-overlay.git",
-    "three": "^0.110.0",
+    "three": "^0.105.0",
     "tslib": "^1.10.0",
     "zone.js": "^0.9.1"
   },
