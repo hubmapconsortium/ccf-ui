@@ -19,9 +19,9 @@ export class ThemingService {
   private defaultTheme: string;
   private theme: string;
 
-  constructor(@Optional() @Inject(DEFAULT_THEME) defaultTheme: string) {
-    this.defaultTheme = defaultTheme !== '' ? defaultTheme : DEFAULT_THEME_CLASS;
-    this.theme = defaultTheme;
+  constructor(@Optional() @Inject(DEFAULT_THEME) defaultTheme?: string) {
+    this.defaultTheme = defaultTheme ? defaultTheme : DEFAULT_THEME_CLASS;
+    this.theme = this.defaultTheme;
   }
 
   getTheme(): string {
