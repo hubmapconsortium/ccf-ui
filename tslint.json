@@ -3,11 +3,20 @@
   "rules": {
     "array-type": false,
     "arrow-parens": false,
+    "ban-comma-operator": true,
     "deprecation": {
       "severity": "warning"
     },
+    "class-name": true,
     "component-class-suffix": true,
+    "component-selector": [
+      true,
+      "element",
+      "ccf",
+      "kebab-case"
+    ],
     "contextual-lifecycle": true,
+    "curly": true,
     "directive-class-suffix": true,
     "directive-selector": [
       true,
@@ -15,16 +24,13 @@
       "ccf",
       "camelCase"
     ],
-    "component-selector": [
-      true,
-      "element",
-      "ccf",
-      "kebab-case"
-    ],
+    "eofline": true,
+    "file-name-casing": [true, "kebab-case"],
     "import-blacklist": [
       true,
       "rxjs/Rx"
     ],
+    "indent": [true, "spaces", 2],
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [
@@ -72,6 +78,10 @@
       "single"
     ],
     "trailing-comma": false,
+    "no-any": [
+      true,
+      { "ignore-rest-args": true }
+    ],
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
@@ -80,10 +90,23 @@
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-outputs-metadata-property": true,
+    "no-require-imports": true,
+    "no-sparse-arrays": true,
+    "no-unsafe-any": true,
+    "semicolon": [true, "always"],
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "variable-name": {
+      "options": [
+        "allow-leading-underscore",
+        "ban-keywords",
+        "check-format",
+        "require-const-for-all-caps"
+      ]
+    },
+    "whitespace": true
   },
   "rulesDirectory": [
     "codelyzer"
