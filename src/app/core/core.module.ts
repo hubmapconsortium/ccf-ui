@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
+import { ThemingModule } from './services/theming/theming.module';
 import { StoreModule } from './store/store.module';
 
 @NgModule({
-  imports: [CommonModule, StoreModule],
+  imports: [CommonModule, StoreModule, ThemingModule],
   declarations: [],
 })
 export class CoreModule {
