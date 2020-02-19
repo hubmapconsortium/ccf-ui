@@ -6,3 +6,7 @@ $warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-dark-theme($primary, $accent, $warn);
+
+@mixin theme {
+  @include angular-material-theme($theme)
+}

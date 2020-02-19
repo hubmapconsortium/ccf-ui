@@ -1,12 +1,7 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Renderer2 } from '@angular/core';
 
-const DEFAULT_THEME_CLASS = 'default-theme';
-
-export const DEFAULT_THEME = new InjectionToken<string>('Default theme class', {
-  providedIn: 'root',
-  factory: () => DEFAULT_THEME_CLASS
-});
+export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
 
 export function bootstrap(component: ComponentRef<unknown>): void {
   const service = component.injector.get(ThemingService);
@@ -19,9 +14,8 @@ export class ThemingService {
   private defaultTheme: string;
   private theme: string;
 
-  constructor(@Optional() @Inject(DEFAULT_THEME) defaultTheme?: string) {
-    this.defaultTheme = defaultTheme ? defaultTheme : DEFAULT_THEME_CLASS;
-    this.theme = this.defaultTheme;
+  constructor(@Optional() @Inject(DEFAULT_THEME) defaultTheme: string | null) {
+    this.defaultTheme = this.theme = defaultTheme || '';
   }
 
   getTheme(): string {
@@ -29,8 +23,9 @@ export class ThemingService {
   }
 
   setTheme(theme: string): void {
-    this.clearThemeClass(this.theme);
-    this.setThemeClass(theme);
+    if (theme === this.theme) { return; }
+    this.applyThemeClass(this.theme, 'remove');
+    this.applyThemeClass(theme);
     this.theme = theme;
   }
 
@@ -45,44 +40,21 @@ export class ThemingService {
     }
 
     this.component = component;
-    this.setThemeClass(this.theme);
+    this.applyThemeClass(this.theme);
   }
 
-  private getRenderer(): Renderer2 | undefined {
-    return this.component?.injector.get(Renderer2, null) ?? undefined;
-  }
+  private applyThemeClass(cls: string, method: 'add' | 'remove' = 'add'): void {
+    const component = this.component;
+    if (!cls || !component) { return; }
 
-  private getRoot(): HTMLElement | undefined {
-    return this.component?.location.nativeElement as HTMLElement;
-  }
+    const renderer = component.injector.get(Renderer2, null);
+    if (!renderer) { return; }
 
-  private getOverlay(): HTMLElement | undefined {
-    return this.component?.injector.get(OverlayContainer, null)?.getContainerElement();
-  }
+    const root = component.location.nativeElement as HTMLElement;
+    const overlay = component.injector.get(OverlayContainer, null)?.getContainerElement();
+    const methodName = method === 'add' ? 'addClass' : 'removeClass';
 
-  private setThemeClass(cls: string): void {
-    const renderer = this.getRenderer();
-    const root = this.getRoot();
-    const overlay = this.getOverlay();
-
-    if (renderer && root) {
-      renderer.addClass(root, cls);
-    }
-    if (renderer && overlay) {
-      renderer.addClass(overlay, cls);
-    }
-  }
-
-  private clearThemeClass(cls: string): void {
-    const renderer = this.getRenderer();
-    const root = this.getRoot();
-    const overlay = this.getOverlay();
-
-    if (renderer && root) {
-      renderer.removeClass(root, cls);
-    }
-    if (renderer && overlay) {
-      renderer.removeClass(overlay, cls);
-    }
+    renderer[methodName](root, cls);
+    if (overlay) { renderer[methodName](overlay, cls); }
   }
 }

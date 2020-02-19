@@ -1,11 +1,9 @@
 @use '~@angular/material/theming' as ng;
 @use 'themes/default';
 
-@include ng.mat-core();
+@include ng.mat-core(); // Include only once!
 
-.default-theme {
-  @include ng.angular-material-theme(default.$theme);
-}
+@include default.theme;
 
 /* You can add global styles to this file, and also import other style files */
 
