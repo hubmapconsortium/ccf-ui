@@ -1,1 +1,9 @@
-<p>header works!</p>
+<mat-toolbar class="header">
+  <div>Logo Here!</div>
+
+  <div class="filler"></div>
+
+  <div>Other stuff</div>
+  <mat-icon class="download" (click)="downloadClicked.emit()">cloud_download</mat-icon>
+  <mat-icon class="info" (click)="infoClicked.emit()">info_outline</mat-icon>
+</mat-toolbar>
