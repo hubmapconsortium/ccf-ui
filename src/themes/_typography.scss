@@ -1,0 +1,5 @@
+@use '~@angular/material/theming' as *;
+
+$config: mat-typography-config(
+  $title: mat-typography-level(16px, 24px, 500)
+);

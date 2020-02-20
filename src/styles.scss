@@ -1,11 +1,19 @@
 @use '~@angular/material/theming' as ng;
+@use 'themes/typography';
 @use 'themes/default';
 
-@include ng.mat-core(); // Include only once!
+@include ng.mat-core(typography.$config);
 
 @include default.theme;
 
-/* You can add global styles to this file, and also import other style files */
+/**
+ * Additional themes can be placed here. Example:
+ *
+ * .my-other-theme {
+ *   @include other.theme;
+ * }
+ *
+ */
 
 html {
   box-sizing: border-box;
