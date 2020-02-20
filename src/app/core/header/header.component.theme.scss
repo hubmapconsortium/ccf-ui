@@ -1,0 +1,11 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  @include mat-toolbar-theme($theme);
+
+  .ccf-header {
+    border-bottom-color: mat-color($foreground, divider);
+  }
+}

@@ -1,11 +1,46 @@
 @use '~@angular/material/theming' as *;
+@use '../app/core/header/header.component.theme' as header;
 
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
-$warn: mat-palette($mat-red);
+$base-colors: $mat-gray;
+$primary-colors: map-merge($base-colors, (
+  "white": white,
+  "black": black,
 
-$theme: mat-dark-theme($primary, $accent, $warn);
+  850: #323232,
+
+  contrast: map-merge(map-get($base-colors, contrast), (
+    "white": black,
+    "black": white,
+
+    850: $light-primary-text
+  ))
+));
+
+$primary: mat-palette($primary-colors);
+$accent: mat-palette($mat-blue, 600);
+
+$foreground: map-merge($mat-dark-theme-foreground, (
+  divider: map-get($mat-gray, 800),
+  dividers: map-get($mat-gray, 800)
+));
+
+$background: map-merge($mat-dark-theme-background, (
+  app-bar: map-get($primary-colors, 850)
+));
+
+$theme: (
+  primary: $primary,
+  accent: $accent,
+  warn: mat-palette($mat-red),
+  is-dark: true,
+  foreground: $foreground,
+  background: $background
+);
+
+
 
 @mixin theme {
-  @include angular-material-theme($theme)
+  @include angular-material-theme($theme);
+
+  @include header.theme($theme);
 }
