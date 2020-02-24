@@ -4,6 +4,8 @@
   <div class="filler"></div>
 
   <div>Other stuff</div>
-  <mat-icon class="download" (click)="downloadClicked.emit()">cloud_download</mat-icon>
-  <mat-icon class="info" (click)="infoClicked.emit()">info_outline</mat-icon>
+  <mat-icon class="download" aria-hidden="false" aria-label="Download content" (click)="downloadClicked.emit()">
+    cloud_download</mat-icon>
+  <mat-icon class="info" aria-hidden="false" aria-label="Page information" (click)="infoClicked.emit()">
+    info_outline</mat-icon>
 </mat-toolbar>

@@ -1,0 +1,13 @@
+@use '~@angular/material/theming' as *;
+@use '../../app/core/header/header.component.theme' as header;
+
+
+@mixin ccf-theme($theme) {
+  @include mat-core-theme($theme);
+  @include mat-toolbar-theme($theme);
+  @include mat-icon-theme($theme);
+
+  @include header.theme($theme);
+
+  // Overrides goes here!
+}

@@ -1,16 +1,17 @@
 @use '~@angular/material/theming' as ng;
-@use 'themes/typography';
+@use 'themes/common/typography';
+@use 'themes/common/theming';
 @use 'themes/default';
 
 @include ng.mat-core(typography.$config);
 
-@include default.theme;
+@include theming.ccf-theme(default.$theme);
 
 /**
  * Additional themes can be placed here. Example:
  *
  * .my-other-theme {
- *   @include other.theme;
+ *   @include theming.ccf-theme(other.$theme);
  * }
  *
  */

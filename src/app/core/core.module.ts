@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { HeaderModule } from './header/header.module';
@@ -7,7 +6,7 @@ import { StoreModule } from './store/store.module';
 
 
 @NgModule({
-  imports: [CommonModule, HeaderModule, StoreModule, ThemingModule],
+  imports: [HeaderModule, StoreModule, ThemingModule],
   exports: [HeaderModule]
 })
 export class CoreModule {
