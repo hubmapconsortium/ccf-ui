@@ -1,0 +1,29 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+
+  .ccf-ontology-search {
+    @include mat-form-field-outline-theme($theme);
+    @include mat-input-theme($theme);
+
+    .input::placeholder {
+      color: mat-color($foreground, secondary-text);
+    }
+
+    .input {
+      color: mat-color($foreground, secondary-text);
+    }
+
+    .mat-form-field-appearance-outline {
+      .mat-form-field-outline {
+        color: mat-color($foreground, divider);
+      }
+  
+      .mat-form-field-outline-thick {
+        color: mat-color($foreground, divider);
+      }
+    }
+  }
+}

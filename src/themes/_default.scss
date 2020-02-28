@@ -1,5 +1,6 @@
 @use '~@angular/material/theming' as *;
 @use '../app/core/header/header.component.theme' as header;
+@use '../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
 $base-colors: $mat-gray;
 $primary-colors: map-merge($base-colors, (
@@ -20,8 +21,12 @@ $primary: mat-palette($primary-colors);
 $accent: mat-palette($mat-blue, 600);
 
 $foreground: map-merge($mat-dark-theme-foreground, (
-  divider: map-get($mat-gray, 800),
-  dividers: map-get($mat-gray, 800)
+  divider: map-get($primary-colors, 800),
+  dividers: map-get($primary-colors, 800),
+  text: white,
+  secondary-text: white,
+  icon: map-get($primary-colors, 500),
+  icons: map-get($primary-colors, 500)
 ));
 
 $background: map-merge($mat-dark-theme-background, (
@@ -43,4 +48,5 @@ $theme: (
   @include angular-material-theme($theme);
 
   @include header.theme($theme);
+  @include search.theme($theme);
 }
