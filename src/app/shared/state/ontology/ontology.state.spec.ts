@@ -4,12 +4,14 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { of } from 'rxjs';
 
 import { OntologyNode, OntologyStateModel } from './ontology.model';
-import { createModel, OntologyState, linkChildren, addSubtree } from './ontology.state';
+import { OntologyState } from './ontology.state';
+import { createModel, linkChildren, addSubtree } from '../../services/ontology-search/ontology-search.service';
+// import { createModel, OntologyState, linkChildren, addSubtree } from '';
 
 describe('State', () => {
   describe('Ontology', () => {
-    const node1 = { id: 'node1', parent: undefined, children: ['node2'] } as OntologyNode;
-    const node2 = { id: 'node2', parent: 'node1', children: [] } as OntologyNode;
+    const node1 = { id: 'node1', parent: undefined, children: ['node2'] } as unknown as OntologyNode;
+    const node2 = { id: 'node2', parent: 'node1', children: [] } as unknown as OntologyNode;
     const mockState: OntologyStateModel = {
       root: node1.id,
       nodes: { [node1.id]: node1, [node2.id]: node2 }
@@ -27,7 +29,7 @@ describe('State', () => {
     });
 
     beforeEach(() => {
-      store = TestBed.get(Store);
+      store = TestBed.inject(Store);
     });
 
     describe('actions', () => {
@@ -38,7 +40,7 @@ describe('State', () => {
       const parent: OntologyNode = {
         id: 'parent',
         label: 'label',
-        parent: undefined,
+        parent: '',
         children: [],
         synonymLabels: ['X', 'Y']
       };
@@ -59,15 +61,15 @@ describe('State', () => {
 
       it('should create model', () => {
         const nodeMap = {
-          [undefined as string]: { children: ['parent'] } as OntologyNode,
-          'parent': parent,
-          'child1': child1,
-          'child2': child2
+          ['']: { children: ['parent'] } as OntologyNode,
+          parent,
+          child1,
+          child2
         };
         const expectedNodeMap = {
-          'parent': parent,
-          'child1': child1,
-          'child2': child2
+          parent,
+          child1,
+          child2
         };
         const model = createModel(nodeMap);
 
@@ -77,9 +79,9 @@ describe('State', () => {
 
       it('should link nodes to the parents', () => {
         const nodeMap = {
-          'parent': parent,
-          'child1': child1,
-          'child2': child2
+          parent,
+          child1,
+          child2
         };
 
         linkChildren(nodeMap);
@@ -90,30 +92,16 @@ describe('State', () => {
 
       it('should add subtree node to accumulated', () => {
         const nodeMap = {
-          'parent': parent,
-          'child1': child1,
-          'child2': child2
+          parent,
+          child1,
+          child2
         };
         const acc = {
-          'child1': child1
+          child1
         };
 
         addSubtree(nodeMap, acc, child2);
-        expect(acc['child2'].id).toBe('child2');
-      });
-    });
-
-    describe('selectors', () => {
-      describe('nodes', () => {
-        it('returns an array of all ontology nodes', () => {
-          expect(OntologyState.nodes(mockState)).toEqual(jasmine.arrayWithExactContents([node1, node2]));
-        });
-      });
-
-      describe('rootNode', () => {
-        it('returns the root node', () => {
-          expect(OntologyState.rootNode(mockState)).toEqual(node1);
-        });
+        expect(acc.child1.id).toBe('child1');
       });
     });
   });

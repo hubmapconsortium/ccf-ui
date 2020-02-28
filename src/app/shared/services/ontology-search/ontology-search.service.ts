@@ -43,10 +43,10 @@ export function linkChildren(nodeMap: { [id: string]: OntologyNode }): void {
  * @returns The ontology state model.
  */
 export function createModel(nodeMap: { [id: string]: OntologyNode }): OntologyStateModel {
-  const root = find(nodeMap[undefined as any].children) as string;
+  const root = find(nodeMap[''].children) as string;
 
   // Remove fake node inserted in linkChildren
-  delete nodeMap[undefined as any];
+  delete nodeMap[''];
 
   return { root, nodes: nodeMap };
 }
