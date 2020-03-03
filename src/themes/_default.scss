@@ -27,7 +27,8 @@ $foreground: map-merge($mat-dark-theme-foreground, (
 
 $background: map-merge($mat-dark-theme-background, (
   app-bar: map-get($primary-colors, 850),
-  background: map-get($primary-colors, "black")
+  background: map-get($primary-colors, "black"),
+  dialog: map-get($primary-colors, 900)
 ));
 
 $theme: (

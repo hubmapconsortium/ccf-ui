@@ -76,9 +76,11 @@ export class ContentComponent implements OnDestroy {
   }
 
   private updateFaded(): void {
-    const [start, end] = this.drawers;
-    const startExpanded = start?.opened && start?.expanded;
-    const endExpanded = end?.opened && end?.expanded;
-    this.faded = startExpanded || endExpanded;
+    setTimeout(() => {
+      const [start, end] = this.drawers;
+      const startExpanded = start?.opened && start?.expanded;
+      const endExpanded = end?.opened && end?.expanded;
+      this.faded = startExpanded || endExpanded;
+    });
   }
 }

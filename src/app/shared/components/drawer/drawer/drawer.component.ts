@@ -93,7 +93,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   private expandedState2: ExpandedState2 = 'collapsed';
 
   private get measuredWidth(): number {
-    if (this.expanded) { return this._measuredWidth; }
+    if (this._measuredWidth > 0) { return this._measuredWidth; }
     return this._measuredWidth = this.element.nativeElement?.offsetWidth ?? 0;
   }
   private _measuredWidth = 0;
@@ -130,6 +130,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
       this.openedState = 'closed';
       this.expandedState = 'closed';
       this.expandedState2 = 'collapsed';
+      this._expanded = false;
     } else if (this.initialized) {
       this.openedState = 'open';
     } else {
@@ -147,6 +148,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
 
     if (!expanded) {
       this.expandedState = 'closed';
+      this.expandedState2 = 'collapsed';
     } else if (this.initialized) {
       this.expandedState = 'open';
     } else {

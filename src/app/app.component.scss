@@ -5,5 +5,9 @@
 
   ccf-drawer-container {
     flex-grow: 1;
+
+    ccf-drawer {
+      width: 25.5rem;
+    }
   }
 }

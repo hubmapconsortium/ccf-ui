@@ -75,7 +75,6 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
   }
 
   private handleMessage(_msg: Message): boolean {
-    console.log(_msg);
     return true;
   }
 

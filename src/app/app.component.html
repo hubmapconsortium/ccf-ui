@@ -2,13 +2,20 @@
   <ccf-header></ccf-header>
 
   <ccf-drawer-container>
-    <ccf-drawer opened>
+    <ccf-drawer opened #left>
       Search
+      <button (click)="left.close()">Close</button>
+      <button (click)="left.toggleExpanded()">Toggle Expand</button>
     </ccf-drawer>
-    <ccf-drawer position="end" opened>
+    <ccf-drawer position="end" opened #right>
       Tissue Browser
+      <button (click)="right.close()">Close</button>
+      <button (click)="right.toggleExpanded()">Toggle Expand</button>
     </ccf-drawer>
 
     Test
+    <button (click)="left.open()">Open Left</button>
+    <button (click)="right.open()">Open Right</button>
+    <button (click)="left.open(); right.open()">Open Both</button>
   </ccf-drawer-container>
 </div>
