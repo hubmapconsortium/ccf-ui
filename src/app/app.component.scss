@@ -1,3 +1,9 @@
 .ccf-app {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+
+  ccf-drawer-container {
+    flex-grow: 1;
+  }
 }

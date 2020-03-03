@@ -4,10 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { DrawerModule } from './shared/components/drawer/drawer.module';
 
 
 @NgModule({
-  imports: [BrowserModule, BrowserAnimationsModule, CoreModule],
+  imports: [BrowserModule, BrowserAnimationsModule, CoreModule, DrawerModule],
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]
