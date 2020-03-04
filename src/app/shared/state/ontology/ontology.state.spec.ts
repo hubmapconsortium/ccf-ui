@@ -3,9 +3,11 @@ import { TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { of } from 'rxjs';
 
-import { OntologyNode, OntologyStateModel } from './ontology.model';
+// import { OntologyNode, OntologyStateModel } from './ontology.model';
 import { OntologyState } from './ontology.state';
 import { createModel, linkChildren, addSubtree } from '../../services/ontology-search/ontology-search.service';
+import { OntologyNode } from '../../models/ontology-node.model';
+import { OntologyStateModel } from '../../models/ontology-state.model';
 // import { createModel, OntologyState, linkChildren, addSubtree } from '';
 
 describe('State', () => {

@@ -4,7 +4,7 @@ import { State } from '@ngxs/store';
 import { map } from 'rxjs/operators';
 
 import { OntologyNode } from '../../models/ontology-node.model';
-import { OntologyStateModel } from './ontology.model';
+import { OntologyStateModel } from '../../models/ontology-state.model';
 
 
 /**

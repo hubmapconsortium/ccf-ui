@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 
 import { OntologyNode } from '../../../shared/models/ontology-node.model';
 import { JsonOntologyNode, jsonToOntologyNode } from '../../state/ontology/json-ontology';
-import { OntologyStateModel } from '../../state/ontology/ontology.model';
 import { OntologyState } from '../../state/ontology/ontology.state';
+import { OntologyStateModel } from '../../models/ontology-state.model';
 
 /**
  * Search result interface type for the search results
@@ -32,7 +32,6 @@ export function linkChildren(nodeMap: { [id: string]: OntologyNode }): void {
   // Add temporary fake node to simplify logic as root won't need a special case
   // This is also used later to find the root node
   nodeMap[''] = { children: [] } as unknown as OntologyNode;
-
   forEach(nodeMap, ({ id, parent }) => nodeMap[parent].children.push(id));
 }
 
