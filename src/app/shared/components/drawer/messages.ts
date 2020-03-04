@@ -27,6 +27,7 @@ export interface DrawerToggled {
   opened: boolean;
   expanded: boolean;
   width: number;
+  margin: number;
 }
 
 export type DrawerPayload = DrawerToggled | DrawerInitialized;

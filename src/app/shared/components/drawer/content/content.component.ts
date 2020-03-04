@@ -55,9 +55,9 @@ export class ContentComponent implements OnDestroy {
 
       case 'drawer-toggled':
         const position = (msg.source as DrawerComponent).position;
-        const { opened, width } = msg.payload;
+        const { opened, width, margin } = msg.payload;
 
-        this.updateMargin(position, opened, width);
+        this.updateMargin(position, opened, width, margin);
         this.updateFaded();
         return true;
 
@@ -66,21 +66,20 @@ export class ContentComponent implements OnDestroy {
     }
   }
 
-  private updateMargin(position: 'start' | 'end', opened: boolean, width: number): void {
-    const margin = opened ? width : 0;
+  private updateMargin(position: 'start' | 'end', opened: boolean,
+                       width: number, margin: number): void {
+    const offset = opened ? width + margin : margin;
     if (position === 'start') {
-      this.leftMargin = margin;
+      this.leftMargin = offset;
     } else {
-      this.rightMargin = margin;
+      this.rightMargin = offset;
     }
   }
 
   private updateFaded(): void {
-    setTimeout(() => {
-      const [start, end] = this.drawers;
-      const startExpanded = start?.opened && start?.expanded;
-      const endExpanded = end?.opened && end?.expanded;
-      this.faded = startExpanded || endExpanded;
-    });
+    const [start, end] = this.drawers;
+    const startExpanded = start?.opened && start?.expanded;
+    const endExpanded = end?.opened && end?.expanded;
+    this.faded = startExpanded || endExpanded;
   }
 }

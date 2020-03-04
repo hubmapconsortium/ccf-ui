@@ -16,6 +16,11 @@
     border-left-style: solid;
     border-left-width: 1px;
     border-right-width: 0;
+    margin-right: 0 !important;
+  }
+
+  &:not(.ccf-drawer-end) {
+    margin-left: 0 !important;
   }
 
   .cff-drawer-inner-container {
