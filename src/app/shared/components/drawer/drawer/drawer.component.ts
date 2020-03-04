@@ -16,7 +16,8 @@ type ExpandedState2 = 'collapsed' | 'half' | 'extended' | 'full';
 const EXPAND_COLLAPSE_PARAMS_DEFAULT = {
   params: {
     width: 0,
-    margin: 0
+    margin: 0,
+    margin2: 0
   }
 };
 
@@ -59,7 +60,7 @@ class InitializationState {
         width: 'calc(100% - {{ width }}px - {{ margin }}px)'
       }), EXPAND_COLLAPSE_PARAMS_DEFAULT),
       state('full', style({
-        width: 'calc(100% - {{ margin }}px)'
+        width: 'calc(100% - {{ margin }}px - {{ margin2 }}px)'
       }), EXPAND_COLLAPSE_PARAMS_DEFAULT),
 
       transition('* <=> *', animate('1.5s ease-in-out'))
@@ -98,7 +99,8 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   @HostBinding('@expandCollapse')  // tslint:disable-line: no-unsafe-any
   get expandedStateObj(): unknown {
     return { value: this.expandedState2, params: {
-      width: this.width, margin: this.measuredMargin
+      width: this.width, margin: this.measuredMargin,
+      margin2: this.margin2
     }};
   }
   expandedState: ExpandedState = 'closed';
@@ -133,6 +135,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
     return this._measuredMargin = margin;
   }
   private _measuredMargin = 0;
+  private margin2 = 0;
 
   private initialized = new InitializationState();
   private channel: MessageChannel;
@@ -237,6 +240,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
           this.width = other.measuredWidth + other.measuredMargin;
         } else {
           this.expandedState2 = 'full';
+          this.margin2 = other.measuredMargin;
         }
       } else {
         if (this.opened) {
@@ -244,6 +248,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
           other.width = this.measuredWidth + this.measuredMargin;
         } else {
           other.expandedState2 = 'full';
+          other.margin2 = this.measuredMargin;
         }
       }
     }
