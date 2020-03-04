@@ -31,7 +31,7 @@ export interface SearchResult {
 export function linkChildren(nodeMap: { [id: string]: OntologyNode }): void {
   // Add temporary fake node to simplify logic as root won't need a special case
   // This is also used later to find the root node
-  nodeMap[''] = { children: [] } as unknown as OntologyNode;
+  nodeMap[''] = { parent: '', children: [] } as unknown as OntologyNode;
   forEach(nodeMap, ({ id, parent }) => nodeMap[parent].children.push(id));
 }
 

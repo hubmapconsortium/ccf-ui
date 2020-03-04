@@ -20,7 +20,7 @@ export interface ValueObject {
  */
 export interface JsonOntologyNode extends IdObject {
   /** Json parent property */
-  'parent': [IdObject] | undefined;
+  'parent': [IdObject];
 
   /** Json label property */
   'http://www.w3.org/2000/01/rdf-schema#label': [ValueObject];
@@ -74,7 +74,7 @@ const synonymsExtractor = flow(
 export function jsonToOntologyNode(json: JsonOntologyNode): OntologyNode {
   return {
     id: idExtractor(json),
-    parent: parentExtractor(json),
+    parent: parentExtractor(json) ?? '',
     children: [],
     label: labelExtractor(json),
     synonymLabels: synonymsExtractor(json)
