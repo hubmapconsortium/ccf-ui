@@ -9,4 +9,10 @@
     border-right-color: mat-color($foreground, divider);
     border-left-color: mat-color($foreground, divider);
   }
+
+  .ccf-drawer-toggle-button {
+    color: mat-color($foreground, icon);
+    background-color: mat-color($background, dialog);
+    border-color: mat-color($foreground, divider);
+  }
 }
