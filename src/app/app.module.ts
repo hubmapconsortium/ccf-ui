@@ -9,9 +9,9 @@ import { MatIconModule } from "@angular/material/icon";
 import { AppComponent } from "./app.component";
 import { CoreModule } from "./core/core.module";
 import { DrawerModule } from "./shared/components/drawer/drawer.module";
-import { FiltersPopoverComponent } from "./shared/components/filters-popover/filters-popover.component";
-import { FiltersContentComponent } from "./shared/components/filters-content/filters-content.component";
-import { FiltersCheckboxComponent } from "./shared/components/filters-checkbox/filters-checkbox.component";
+import { FiltersPopoverComponent } from "./modules/filters/filters-popover/filters-popover.component";
+import { FiltersContentComponent } from "./modules/filters/filters-content/filters-content.component";
+import { CheckboxComponent } from "./shared/components/checkbox/checkbox.component";
 
 @NgModule({
   imports: [
@@ -27,7 +27,7 @@ import { FiltersCheckboxComponent } from "./shared/components/filters-checkbox/f
     AppComponent,
     FiltersPopoverComponent,
     FiltersContentComponent,
-    FiltersCheckboxComponent
+    CheckboxComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

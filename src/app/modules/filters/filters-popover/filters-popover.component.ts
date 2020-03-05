@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Filter } from '../../models/filters';
 
 @Component({
   selector: 'ccf-filters-popover',
@@ -33,7 +32,7 @@ export class FiltersPopoverComponent implements OnInit {
     };
   }
 
-  applyFilters(filters: Filter[]){
+  applyFilters(filters: Record<string, unknown>){
     console.log('Filter box. Filters: ', filters);
   }
 
