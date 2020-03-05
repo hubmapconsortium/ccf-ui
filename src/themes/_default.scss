@@ -1,52 +1,46 @@
 @use '~@angular/material/theming' as *;
+@use 'common/utility';
 @use '../app/core/header/header.component.theme' as header;
 @use '../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
-$base-colors: $mat-gray;
-$primary-colors: map-merge($base-colors, (
+$primary-colors: utility.add-colors($mat-gray, (
   "white": white,
   "black": black,
-
   850: #323232,
 
-  contrast: map-merge(map-get($base-colors, contrast), (
+  contrast: (
     "white": black,
     "black": white,
-
     850: $light-primary-text
-  ))
+  )
 ));
 
-$primary: mat-palette($primary-colors);
+$primary: mat-palette($primary-colors, $text: 500);
 $accent: mat-palette($mat-blue, 600);
+$warn: mat-palette($mat-red);
 
 $foreground: map-merge($mat-dark-theme-foreground, (
   divider: map-get($primary-colors, 800),
   dividers: map-get($primary-colors, 800),
-  text: white,
-  secondary-text: white,
+  icon: map-get($primary-colors, 500),
+  icons: map-get($primary-colors, 500)
   icon: map-get($primary-colors, 500),
   icons: map-get($primary-colors, 500)
 ));
 
 $background: map-merge($mat-dark-theme-background, (
-  app-bar: map-get($primary-colors, 850)
+  app-bar: map-get($primary-colors, 850),
+  background: map-get($primary-colors, "black"),
+  dialog: map-get($primary-colors, 900)
 ));
 
 $theme: (
+  is-dark: true,
   primary: $primary,
   accent: $accent,
-  warn: mat-palette($mat-red),
-  is-dark: true,
+  warn: $warn,
   foreground: $foreground,
   background: $background
 );
 
-
-
-@mixin theme {
-  @include angular-material-theme($theme);
-
-  @include header.theme($theme);
   @include search.theme($theme);
-}

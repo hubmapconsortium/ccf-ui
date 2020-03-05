@@ -1,5 +1,14 @@
-* {
-	box-sizing: border-box;
-	background: #212121;
-}
+.ccf-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
+  ccf-drawer-container {
+    flex-grow: 1;
+
+    ccf-drawer {
+      width: 27rem;
+      margin: 0 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  outline: 0;
+  overflow-y: auto;
+  transform: translate3d(-100%, 0, 0);
+  border-right-style: solid;
+  border-right-width: 1px;
+
+  &.ccf-drawer-end {
+    right: 0;
+    transform: translate3d(100%, 0, 0);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-width: 0;
+    margin-right: 0 !important;
+  }
+
+  &:not(.ccf-drawer-end) {
+    margin-left: 0 !important;
+  }
+
+  .cff-drawer-inner-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

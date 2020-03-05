@@ -1,0 +1,15 @@
+@use '~@angular/material/theming' as *;
+@use '../../app/core/header/header.component.theme' as header;
+@use '../../app/shared/components/drawer/drawer.theme' as drawer;
+
+
+@mixin ccf-theme($theme) {
+  @include mat-core-theme($theme);
+  @include mat-toolbar-theme($theme);
+  @include mat-icon-theme($theme);
+
+  @include header.theme($theme);
+  @include drawer.theme($theme);
+
+  // Overrides goes here!
+}
