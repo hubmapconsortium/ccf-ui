@@ -9,6 +9,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { AppComponent } from "./app.component";
 import { CoreModule } from "./core/core.module";
 import { DrawerModule } from "./shared/components/drawer/drawer.module";
+import { DropdownModule } from "./shared/components/dropdown/dropdown.module";
+
 import { FiltersPopoverComponent } from "./shared/components/filters-popover/filters-popover.component";
 import { FiltersContentComponent } from "./shared/components/filters-content/filters-content.component";
 import { FiltersCheckboxComponent } from "./shared/components/filters-checkbox/filters-checkbox.component";
@@ -21,13 +23,14 @@ import { FiltersCheckboxComponent } from "./shared/components/filters-checkbox/f
     DrawerModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    DropdownModule
   ],
   declarations: [
     AppComponent,
     FiltersPopoverComponent,
     FiltersContentComponent,
-    FiltersCheckboxComponent
+    FiltersCheckboxComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

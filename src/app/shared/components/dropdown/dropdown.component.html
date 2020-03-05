@@ -1,8 +1,8 @@
 <mat-form-field>
   {{ label }}
   <mat-select class="selected-value" value={{selected}} (selectionChange)="selectionChanged($event.value)" disableOptionCentering=true>
-    <mat-option *ngFor="let gender of genders" [value]="gender">
-      {{ gender }}
+    <mat-option *ngFor="let option of convertOptions(options)" [value]="option">
+      {{ option }}
     </mat-option>
   </mat-select>
 </mat-form-field>

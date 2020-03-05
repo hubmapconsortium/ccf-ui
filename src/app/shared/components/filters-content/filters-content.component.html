@@ -1,4 +1,6 @@
 <div>
+    <ccf-dropdown label="Sex" options="[Both, Male, Female]" selected="Both"></ccf-dropdown>
+
     <div *ngFor="let filter of filters" class="filter">
         <ccf-filters-checkbox [filter]="filter" (updateFilter)="updateFilter($event)"></ccf-filters-checkbox>
     </div>
@@ -6,3 +8,4 @@
         <button class="outline-button" (click)="applyButtonClick()">Apply Filters</button>
     </div>
 </div>
+
