@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-
-// import { SearchService } from '../../shared/services/search/search.service';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 export type Genders = 'Both' | 'Male' | 'Female';
 
@@ -10,17 +8,14 @@ export type Genders = 'Both' | 'Male' | 'Female';
   styleUrls: ['./gender-selector.component.scss']
 })
 export class GenderSelectorComponent {
-  @Output() readonly genderChange = new EventEmitter<Genders>();
+  @Input() label: string = 'Sex';
+  @Input() selected: Genders = 'Both';
+  @Output() readonly selectedChange = new EventEmitter<Genders>();
 
-  genders: Genders[] = ['Both', 'Male', 'Female'];
-  selected: Genders = 'Both';
-
-  // constructor(private search: SearchService) { }
+  readonly genders: Genders[] = ['Both', 'Male', 'Female'];
 
   selectionChanged(value: Genders) {
     this.selected = value;
-    this.genderChange.emit(value);
-    // console.log(this.selected);
-    // this.search.setGender(gender);
+    this.selectedChange.emit(value);
   }
 }
