@@ -1,0 +1,9 @@
+<div class="filter-container">
+    <div class="filter-label">{{ filter.label }}</div>
+
+    <div class="options-container">
+        <div *ngFor="let option of filter.options; let i = index" class="option">
+            <mat-checkbox (change)="filterOnChange($event, i)">{{ option }}</mat-checkbox>
+        </div>
+    </div>
+</div>

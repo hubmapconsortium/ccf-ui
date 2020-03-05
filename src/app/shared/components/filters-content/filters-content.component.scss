@@ -1,0 +1,27 @@
+.filter {
+    margin-top: 2em;
+    padding-right: 4.3em;
+}
+
+.button-container {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.outline-button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: .4em;
+    cursor: pointer;
+}
+
+.outline-button:active {
+    background: #69f0ae;
+    color: black;
+}
+
+.outline-button:focus {
+    outline: white;
+}
