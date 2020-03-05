@@ -7,9 +7,10 @@ import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 import { OntologyNode } from '../../../shared/models/ontology-node.model';
+import { OntologyStateModel } from '../../models/ontology-state.model';
 import { JsonOntologyNode, jsonToOntologyNode } from '../../state/ontology/json-ontology';
 import { OntologyState } from '../../state/ontology/ontology.state';
-import { OntologyStateModel } from '../../models/ontology-state.model';
+import { Immutable } from '@ngxs-labs/data';
 
 /**
  * Search result interface type for the search results
@@ -92,7 +93,13 @@ export function addSubtree(
 })
 export class OntologySearchService {
 
-  constructor(private http: HttpClient, private store: Store, private ontologyState: OntologyState) {}
+  rootNode: Observable<Immutable<OntologyNode>>;
+
+  constructor(private http: HttpClient, private store: Store, private ontologyState: OntologyState) {
+    this.rootNode = this.ontologyState.rootNode$;
+    this.getChildren = this.getChildren.bind(this);
+  }
+
 
   loadOntology() {
     const jsonOntology = this.http.get<JsonOntologyNode[]>(environment.ontologyUrl, { responseType: 'json' });
@@ -178,5 +185,17 @@ export class OntologySearchService {
       label.substr(index, searchValue.length),
       label.substr(index + searchValue.length, label.length)
     ];
+  }
+
+  /**
+   * Fetches the children of an ontology node.
+   * Note: This can be called without a reference to `this`.
+   *
+   * @param node The node for which to get children.
+   * @returns An array of children, empty if the node has no children.
+   */
+  getChildren(node: OntologyNode): OntologyNode[] {
+    const { nodes } = this.store.selectSnapshot<OntologyStateModel>(OntologyState);
+    return at(nodes, node.children);
   }
 }

@@ -1,4 +1,4 @@
-@import 'global/colors';
+// @import 'global/colors';
 
 .ccf-ontology-tree.container {
   background: none;
@@ -18,11 +18,15 @@
       white-space: nowrap;
       overflow: hidden;
       cursor: pointer;
-      color: $text-color;
+      // color: $text-color;
+      // FIXME
+      color: red;
+
     }
 
     .selected {
-      color: $active-text-color;
+      // color: $active-text-color;
+      color: green;
       font-weight: 700;
     }
   }

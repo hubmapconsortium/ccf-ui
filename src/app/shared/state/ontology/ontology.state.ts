@@ -22,6 +22,7 @@ import { OntologyStateModel } from '../../models/ontology-state.model';
 export class OntologyState extends NgxsDataRepository<OntologyStateModel> {
 
   public readonly nodes$ = this.state$.pipe(map((state) => Object.values(state.nodes) as unknown as readonly OntologyNode[]));
+  public readonly rootNode$ = this.state$.pipe(map((state) => state.nodes[state.root]));
 
   @action()
   setOntology(ontology: OntologyStateModel): void {

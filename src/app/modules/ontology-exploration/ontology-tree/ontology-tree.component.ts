@@ -3,17 +3,17 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, In
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { filter, invoke, property } from 'lodash';
 import { OntologyNode } from 'src/app/shared/models/ontology-node.model';
-import { FlatNodeService } from 'src/app/shared/services/flat-node/flat-node.service';
+import { FlatNode } from 'src/app/shared/services/flat-node/flat-node.service';
 
 /**
  * Getter function for 'level' on a flat node.
  */
-const getLevel = property<FlatNodeService, number>('level');
+const getLevel = property<FlatNode, number>('level');
 
 /**
  * Getter function for 'expandable' on a flat node.
  */
-const isExpandable = property<FlatNodeService, boolean>('expandable');
+const isExpandable = property<FlatNode, boolean>('expandable');
 
 /**
  * Represents a expandable tree of an ontology.
@@ -29,12 +29,14 @@ export class OntologyTreeComponent {
    * The node like objects to display in the tree.
    */
   @Input()
-  set nodes(nodes: OntologyNode[]) {
+  set nodes(nodes: OntologyNode[] | undefined) {
     this._nodes = nodes;
-    if (this.control) { this.dataSource.data = this._nodes; }
+    if (this.control) {
+      this.dataSource.data = this._nodes ?? [];
+    }
   }
 
-  get nodes(): OntologyNode[] { return this._nodes; }
+  get nodes(): OntologyNode[] | undefined { return this._nodes; }
 
   /**
    * Method for fetching the children of a node.
@@ -42,10 +44,13 @@ export class OntologyTreeComponent {
   @Input()
   set getChildren(fun: (node: OntologyNode) => OntologyNode[]) {
     this._getChildren = fun;
-    this.dataSource.data = this.nodes;
+    this.dataSource.data = this.nodes ?? [];
   }
 
-  get getChildren(): (node: OntologyNode) => OntologyNode[] { return this._getChildren; }
+  get getChildren(): (node: OntologyNode) => OntologyNode[] {
+    // FIXME
+    return this._getChildren as unknown as (node: OntologyNode) => OntologyNode[];
+  }
 
   /**
    * Emits an event whenever a node has been selected.
@@ -60,13 +65,15 @@ export class OntologyTreeComponent {
   /**
    * Tree controller.
    */
-  readonly control = new FlatTreeControl<FlatNodeService>(getLevel, isExpandable);
+  readonly control = new FlatTreeControl<FlatNode>(getLevel, isExpandable);
 
   /**
    * Node flattener.
    */
   readonly flattener = new MatTreeFlattener(
-    FlatNodeService.create, getLevel, isExpandable,
+    FlatNode.create, getLevel, isExpandable,
+    // FIXME
+    // tslint:disable-next-line: no-unsafe-any
     invoke.bind(undefined, this, 'getChildren')
   );
 
@@ -78,7 +85,7 @@ export class OntologyTreeComponent {
   /**
    * Currently selected node.
    */
-  private selectedNode?: FlatNodeService = undefined;
+  private selectedNode?: FlatNode = undefined;
 
   /**
    * Storage for getter/setter 'nodes'.
@@ -95,7 +102,7 @@ export class OntologyTreeComponent {
    *
    * @param cdr The change detector.
    */
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   /**
    * Expands the tree to show a node and sets the currect selection to that node.
@@ -103,11 +110,13 @@ export class OntologyTreeComponent {
    * @param node The node to expand to and select.
    */
   expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) => OntologyNode): void {
+
     const { cdr, control } = this;
 
     // Add all parents to a set
     const parents = new Set<OntologyNode>();
     let current = getParent(node);
+
     while (current) {
       parents.add(current);
       current = getParent(current);
@@ -135,7 +144,7 @@ export class OntologyTreeComponent {
    * @param node The node to test.
    * @returns True if the node has children.
    */
-  isInnerNode(this: void, _index: number, node: FlatNodeService): boolean {
+  isInnerNode(this: void, _index: number, node: FlatNode): boolean {
     return node.expandable;
   }
 
@@ -146,7 +155,7 @@ export class OntologyTreeComponent {
    * @param node  The node to test.
    * @returns True if the node is the currently selected node.
    */
-  isSelected(node: FlatNodeService): boolean {
+  isSelected(node: FlatNode): boolean {
     return node === this.selectedNode;
   }
 
@@ -156,7 +165,7 @@ export class OntologyTreeComponent {
    *
    * @param node The node to select.
    */
-  select(node: FlatNodeService): void {
+  select(node: FlatNode | undefined): void {
     let { selectedNode } = this;
     this.selectedNode = selectedNode = node !== selectedNode ? node : undefined;
     this.nodeSelected.emit(selectedNode && selectedNode.original);

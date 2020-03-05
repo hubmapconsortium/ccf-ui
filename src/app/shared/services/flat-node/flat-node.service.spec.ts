@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FlatNodeService } from './flat-node.service';
+import { FlatNode } from './flat-node.service';
 
 describe('FlatNodeService', () => {
-  let service: FlatNodeService;
+  let service: FlatNode;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FlatNodeService);
+    service = TestBed.inject(FlatNode);
   });
 
   it('should be created', () => {

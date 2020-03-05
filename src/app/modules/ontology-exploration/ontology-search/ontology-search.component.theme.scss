@@ -5,9 +5,6 @@
   $primary: map-get($theme, primary);
 
   .ccf-ontology-search {
-    @include mat-form-field-outline-theme($theme);
-    @include mat-input-theme($theme);
-
     .input::placeholder {
       color: mat-color($foreground, secondary-text);
     }

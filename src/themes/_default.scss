@@ -24,8 +24,6 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   dividers: map-get($primary-colors, 800),
   icon: map-get($primary-colors, 500),
   icons: map-get($primary-colors, 500)
-  icon: map-get($primary-colors, 500),
-  icons: map-get($primary-colors, 500)
 ));
 
 $background: map-merge($mat-dark-theme-background, (
@@ -42,5 +40,3 @@ $theme: (
   foreground: $foreground,
   background: $background
 );
-
-  @include search.theme($theme);

@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { OntologyExplorationModule } from './modules/ontology-exploration/ontology-exploration.module';
 import { OntologyState } from './shared/state/ontology/ontology.state';
+import { DrawerModule } from './shared/components/drawer/drawer.module';
+import { SearchState } from './shared/state/search/search.state';
 
 
 @NgModule({
@@ -19,9 +21,10 @@ import { OntologyState } from './shared/state/ontology/ontology.state';
     BrowserAnimationsModule,
     BrowserModule,
     CoreModule,
+    DrawerModule,
     HttpClientModule,
     NgxsDataPluginModule.forRoot(),
-    NgxsModule.forRoot([OntologyState], { developmentMode: !environment.production }),
+    NgxsModule.forRoot([OntologyState, SearchState], { developmentMode: !environment.production }),
     OntologyExplorationModule
   ],
   declarations: [AppComponent],

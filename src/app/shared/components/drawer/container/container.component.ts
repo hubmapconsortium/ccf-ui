@@ -48,7 +48,6 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
     this.subscriptions.add(this.channel.getMessages().subscribe(msg => {
       if (this.handleMessage(msg)) { cdr.markForCheck(); }
     }));
-    console.log(this);
   }
 
   ngAfterViewInit(): void {
