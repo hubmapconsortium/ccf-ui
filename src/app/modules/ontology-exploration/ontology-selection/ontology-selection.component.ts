@@ -6,6 +6,7 @@ import { OntologyNode } from 'src/app/shared/models/ontology-node.model';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
+import { OntologyStateModel } from 'src/app/shared/models/ontology-state.model';
 
 @Component({
   selector: 'ccf-ontology-selection',
@@ -27,7 +28,7 @@ export class OntologySelectionComponent {
     ) {}
 
   selected(ontologyNode: OntologyNode) {
-    const { nodes } = this.store.selectSnapshot(OntologyState);
+    const { nodes } = this.store.selectSnapshot<OntologyStateModel>(OntologyState);
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
   }
 
