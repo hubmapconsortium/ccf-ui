@@ -4,6 +4,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { filter, invoke, property } from 'lodash';
 import { OntologyNode } from 'src/app/shared/models/ontology-node.model';
 import { FlatNode } from 'src/app/shared/services/flat-node/flat-node.service';
+import { GetChildrenFunc } from 'src/app/shared/services/ontology-search/ontology-search.service';
 
 /**
  * Getter function for 'level' on a flat node.
@@ -28,6 +29,7 @@ export class OntologyTreeComponent {
   /**
    * The node like objects to display in the tree.
    */
+  // tslint:disable-next-line: no-unsafe-any
   @Input()
   set nodes(nodes: OntologyNode[] | undefined) {
     this._nodes = nodes;
@@ -41,6 +43,7 @@ export class OntologyTreeComponent {
   /**
    * Method for fetching the children of a node.
    */
+  // tslint:disable-next-line: no-unsafe-any
   @Input()
   set getChildren(fun: (node: OntologyNode) => OntologyNode[]) {
     this._getChildren = fun;
@@ -48,7 +51,6 @@ export class OntologyTreeComponent {
   }
 
   get getChildren(): (node: OntologyNode) => OntologyNode[] {
-    // FIXME
     return this._getChildren as unknown as (node: OntologyNode) => OntologyNode[];
   }
 
@@ -73,8 +75,7 @@ export class OntologyTreeComponent {
   readonly flattener = new MatTreeFlattener(
     FlatNode.create, getLevel, isExpandable,
     // FIXME
-    // tslint:disable-next-line: no-unsafe-any
-    invoke.bind(undefined, this, 'getChildren')
+    invoke.bind(undefined, this, 'getChildren') as GetChildrenFunc
   );
 
   /**

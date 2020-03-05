@@ -85,6 +85,7 @@ export function addSubtree(
   forEach(current.children, id => addSubtree(nodes, acc, nodes[id]));
 }
 
+type GetChildrenFunc = (o: OntologyNode) => OntologyNode[];
 /**
  * Injectable OntologySearchService responsible for search result computations
  */
@@ -97,7 +98,7 @@ export class OntologySearchService {
 
   constructor(private http: HttpClient, private store: Store, private ontologyState: OntologyState) {
     this.rootNode = this.ontologyState.rootNode$;
-    this.getChildren = this.getChildren.bind(this);
+    this.getChildren = this.getChildren.bind(this) as GetChildrenFunc;
   }
 
 
