@@ -14,11 +14,19 @@
     .mat-form-field-outline-start {
       border-radius: 500px 0 0 500px;
       min-width: 40px;
-    }
+	  }
 
-    .mat-form-field-outline {
-      top: 0.7em;
-    }
+	  .mat-form-field-outline {
+		  top: 0.7em;
+	  }
+  }
+}
+
+::ng-deep .ccf-ontology-search.detached {
+  background: #212121;
+
+  .search-term {
+    text-decoration: underline;
   }
 }
 
@@ -41,14 +49,5 @@
       border-radius: 0 1rem 0 0;
       border-bottom: none;
     }
-  }
-}
-
-::ng-deep .cdk-overlay-pane {
-  .mat-autocomplete {
-    border-color: #424242;
-    border-width: 1px;
-    border-style: none solid solid solid;
-    border-radius: 0 0 10% 10%;
   }
 }
