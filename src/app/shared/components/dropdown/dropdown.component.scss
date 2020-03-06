@@ -26,7 +26,7 @@
 
 
 ::ng-deep .mat-select-panel-wrap {
-  transform: translatey(1.75em) translatex(4px);
+  transform: translatey(1.85em) translatex(4px);
 
   div {
     border-radius: 0px;
@@ -41,7 +41,7 @@
   background: #616161;
   border-bottom: 1px solid black;
   padding: 0;
-  width: 100%;
+  width: 95% !important;
 }
 
 .mat-option:hover {
