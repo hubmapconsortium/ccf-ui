@@ -6,8 +6,6 @@
     min-height: 0;
     font-size: 1rem;
 
-
-
     .toggle {
       width: 1.5rem;
       height: 1.5rem;
@@ -31,7 +29,6 @@
       cursor: pointer;
       color: #fafafa;
       margin-left: 0.5rem;
-
     }
 
     .text:hover {
@@ -42,10 +39,8 @@
       color: #1e88e5;
     }
   }
-
 }
 
 ::ng-deep .ccf-ontology-tree.tooltip {
   font-size: 1rem;
 }
-

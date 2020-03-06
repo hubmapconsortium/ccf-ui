@@ -5,8 +5,8 @@ import { OntologySearchModule } from './ontology-search/ontology-search.module';
 import { OntologySelectionModule } from './ontology-selection/ontology-selection.module';
 import { OntologyTreeModule } from './ontology-tree/ontology-tree.module';
 
+
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     OntologySearchModule,

@@ -4,16 +4,26 @@ import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
+import { OntologyState } from './ontology/ontology.state';
+import { SearchState } from './search/search.state';
 
+
+export const ROOT_STATES = [
+  IconRegistryState,
+  OntologyState,
+  SearchState
+];
 
 @NgModule({
   imports: [
-    NgxsModule.forRoot([IconRegistryState], {
+    // For some strange reason the data plugin is not happy being placed after the store module!?
+    NgxsDataPluginModule.forRoot(),
+
+    NgxsModule.forRoot(ROOT_STATES, {
       developmentMode: !environment.production
       // Consider setting compatibility and executionStrategy
       // https://www.ngxs.io/advanced/options
     }),
-    NgxsDataPluginModule.forRoot()
   ]
 })
 export class StoreModule { }

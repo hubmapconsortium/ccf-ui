@@ -25,7 +25,6 @@
     "@angular/platform-browser": "~9.0.1",
     "@angular/platform-browser-dynamic": "~9.0.1",
     "@angular/router": "~9.0.1",
-    "@ngxs/router-plugin": "^3.5.1",
     "@ngxs-labs/data": "^2.4.1",
     "@ngxs/store": "^3.6.2",
     "lodash": "^4.17.15",

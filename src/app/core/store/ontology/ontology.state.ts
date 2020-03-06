@@ -3,9 +3,20 @@ import { action, NgxsDataRepository, StateRepository } from '@ngxs-labs/data';
 import { State } from '@ngxs/store';
 import { map } from 'rxjs/operators';
 
-import { OntologyNode } from '../../models/ontology-node.model';
-import { OntologyStateModel } from '../../models/ontology-state.model';
+import { OntologyNode } from '../../models/ontology-node';
 
+
+export interface OntologyStateModel {
+  /**
+   * Identifier of the root node.
+   */
+  root: string;
+
+  /**
+   * Hash table of nodes.
+   */
+  nodes: { [id: string]: OntologyNode };
+}
 
 /**
  * Ontology tree state.
@@ -20,12 +31,11 @@ import { OntologyStateModel } from '../../models/ontology-state.model';
 })
 @Injectable()
 export class OntologyState extends NgxsDataRepository<OntologyStateModel> {
-
-  public readonly nodes$ = this.state$.pipe(map((state) => Object.values(state.nodes) as unknown as readonly OntologyNode[]));
-  public readonly rootNode$ = this.state$.pipe(map((state) => state.nodes[state.root]));
+  public readonly nodes$ = this.state$.pipe(map(state => Object.values(state.nodes)));
+  public readonly rootNode$ = this.state$.pipe(map(state => state.nodes[state.root]));
 
   @action()
   setOntology(ontology: OntologyStateModel): void {
-    this.ctx.setState((state) => ontology);
+    this.ctx.setState(ontology);
   }
 }

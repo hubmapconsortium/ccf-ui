@@ -2,9 +2,10 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { filter, invoke, property } from 'lodash';
-import { OntologyNode } from 'src/app/shared/models/ontology-node.model';
-import { FlatNode } from 'src/app/shared/services/flat-node/flat-node.service';
-import { GetChildrenFunc } from 'src/app/shared/services/ontology-search/ontology-search.service';
+
+import { FlatNode } from '../../../core/models/flat-node';
+import { OntologyNode } from '../../../core/models/ontology-node';
+import { GetChildrenFunc } from '../../../core/services/ontology-search/ontology-search.service';
 
 /**
  * Getter function for 'level' on a flat node.
@@ -45,13 +46,13 @@ export class OntologyTreeComponent {
    */
   // tslint:disable-next-line: no-unsafe-any
   @Input()
-  set getChildren(fun: GetChildrenFunc) {
+  set getChildren(fun: GetChildrenFunc | undefined) {
     this._getChildren = fun;
     this.dataSource.data = this.nodes ?? [];
   }
 
-  get getChildren(): GetChildrenFunc {
-    return this._getChildren as unknown as (node: OntologyNode) => OntologyNode[];
+  get getChildren(): GetChildrenFunc | undefined {
+    return this._getChildren;
   }
 
   /**
@@ -96,14 +97,14 @@ export class OntologyTreeComponent {
   /**
    * Storage for getter/setter 'getChildren'.
    */
-  private _getChildren?: (node: OntologyNode) => OntologyNode[];
+  private _getChildren?: GetChildrenFunc;
 
   /**
    * Creates an instance of ontology tree component.
    *
    * @param cdr The change detector.
    */
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   /**
    * Expands the tree to show a node and sets the currect selection to that node.
@@ -111,7 +112,6 @@ export class OntologyTreeComponent {
    * @param node The node to expand to and select.
    */
   expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) => OntologyNode): void {
-
     const { cdr, control } = this;
 
     // Add all parents to a set

@@ -4,22 +4,17 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { get, sortBy } from 'lodash';
 import { Observable } from 'rxjs';
 import { filter, map, startWith, switchMap } from 'rxjs/operators';
-import { OntologyNode } from 'src/app/shared/models/ontology-node.model';
-import { SearchResult } from 'src/app/shared/models/search.model';
-import { OntologySearchService } from 'src/app/shared/services/ontology-search/ontology-search.service';
 
-interface Option {
-  index: number;
-  displayLabel: string[];
-  node: OntologyNode;
-}
+import { OntologyNode } from '../../../core/models/ontology-node';
+import { OntologySearchService, SearchResult } from '../../../core/services/ontology-search/ontology-search.service';
+
+
 @Component({
   selector: 'ccf-ontology-search',
   templateUrl: './ontology-search.component.html',
   styleUrls: ['./ontology-search.component.scss']
 })
 export class OntologySearchComponent implements OnInit {
-
   /**
    * Creates an instance of ontology search component.
    * @param searchService instance of searchService which provides all the search functionality
@@ -67,11 +62,8 @@ export class OntologySearchComponent implements OnInit {
    * @param option a search result entry
    * @returns a part of the search result entry to be displayed as a display value
    */
-  displayFormatter(option: Option): string {
-    if (option) {
-      return option.displayLabel.join('');
-    }
-    return '';
+  displayFormatter(option?: SearchResult): string {
+    return (option?.displayLabel ?? []).join('');
   }
 
   /**
