@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ccf-ui"
+    }
+  },
+  "defaultProject": "ccf-ui",
+  "cli": {
+    "analytics": "40bb8025-0693-4352-b08d-efd2a1f935cd"
+  }
 }
