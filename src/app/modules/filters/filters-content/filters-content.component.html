@@ -1,4 +1,5 @@
-<ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" selected="Both"></ccf-dropdown>
+<ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="filters.sex"
+    (selectionChange)="updateFilter($event, 'sex')"></ccf-dropdown>
 
 <div class="filter">
     <ccf-checkbox label="Technologies" [options]="[ 'IMS', 'MxIF', 'PAS' ]" [selection]="filters.technologies"

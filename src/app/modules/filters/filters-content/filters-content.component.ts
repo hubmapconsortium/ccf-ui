@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./filters-content.component.scss']
 })
 export class FiltersContentComponent {
-  @Input() filters: Record<string, unknown> = { tmc: [], technologies: []};
+  @Input() filters: Record<string, unknown> = { tmc: [], technologies: [], sex: 'Both'};
   @Output() filtersChange = new EventEmitter<Record<string, unknown>>();
   @Output() applyFilters = new EventEmitter<Record<string, unknown>>();
 

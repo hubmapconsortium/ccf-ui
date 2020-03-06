@@ -9,11 +9,11 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 export class DropdownComponent {
   @Input() label: string;
   @Input() options: string[];
-  @Input() selected: string;
-  @Output() readonly selectedChange = new EventEmitter<string>();
+  @Input() selection: string;
+  @Output() readonly selectionChange = new EventEmitter<string>();
 
   selectionChanged(value: string) {
-    this.selected = value;
-    this.selectedChange.emit(value);
+    this.selection = value;
+    this.selectionChange.emit(value);
   }
 }
