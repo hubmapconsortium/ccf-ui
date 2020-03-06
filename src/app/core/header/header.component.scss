@@ -4,6 +4,16 @@
   border-bottom-width: 1px;
   border-bottom-style: solid;
 
+  .logo {
+    width: 5rem;
+  }
+
+  .logo, .download, .info {
+    cursor: pointer;
+
+    transition: color 1s;
+  }
+
   :not(:last-child) {
     margin-right: 1.5rem;
   }
@@ -11,9 +21,5 @@
   .filler {
     flex-grow: 1;
     margin: 0;
-  }
-
-  .download, .info {
-    cursor: pointer;
   }
 }
