@@ -7,6 +7,10 @@
   .ccf-header {
     border-bottom-color: mat-color($foreground, divider);
 
+    .logo:hover {
+      color: mat-color($accent);
+    }
+
     .download {
       color: map-get($mat-amber, A400);
 
