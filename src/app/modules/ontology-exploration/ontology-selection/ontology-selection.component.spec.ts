@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownComponent } from './dropdown.component';
+import { OntologySelectionComponent } from './ontology-selection.component';
 
-describe('DropdownComponent', () => {
-  // let component: DropdownComponent;
-  // let fixture: ComponentFixture<DropdownComponent>;
+describe('OntologySelectionComponent', () => {
+  // let component: OntologySelectionComponent;
+  // let fixture: ComponentFixture<OntologySelectionComponent>;
 
   // beforeEach(async(() => {
   //   TestBed.configureTestingModule({
-  //     declarations: [ DropdownComponent ]
+  //     declarations: [ OntologySelectionComponent ]
   //   })
   //   .compileComponents();
   // }));
 
   // beforeEach(() => {
-  //   fixture = TestBed.createComponent(DropdownComponent);
+  //   fixture = TestBed.createComponent(OntologySelectionComponent);
   //   component = fixture.componentInstance;
   //   fixture.detectChanges();
   // });

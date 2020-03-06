@@ -1,15 +1,19 @@
 @use '~@angular/material/theming' as *;
 @use '../../app/core/header/header.component.theme' as header;
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
+// @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
   @include mat-toolbar-theme($theme);
   @include mat-icon-theme($theme);
+  @include mat-form-field-outline-theme($theme);
+  @include mat-input-theme($theme);
 
   @include header.theme($theme);
   @include drawer.theme($theme);
+  // @include search.theme($theme);
 
   // Overrides goes here!
 }
