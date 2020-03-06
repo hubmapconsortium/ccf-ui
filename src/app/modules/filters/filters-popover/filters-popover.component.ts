@@ -32,5 +32,7 @@ export class FiltersPopoverComponent {
   applyFilters(filters: Record<string, unknown>) {
     // To be hooked up later to the real filter call.
     console.log('Filter box. Filters: ', filters);
+    this.filtersBoxVisible = false;
+    this.filtersVisible = false;
   }
 }
