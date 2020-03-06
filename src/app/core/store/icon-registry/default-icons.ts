@@ -23,6 +23,8 @@ export interface DefaultIconDefinition {
 
 
 export const DEFAULT_ICONS: DefaultIconDefinition[] = [
+  { name: 'logo', namespace: 'app', url: 'assets/icons/app/hubmap-logo.svg' },
+
   { name: 'filter', url: 'assets/icons/filter.svg' }
 
   // Add default icons here!
