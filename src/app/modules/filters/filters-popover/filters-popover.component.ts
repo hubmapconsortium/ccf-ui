@@ -1,18 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ccf-filters-popover',
   templateUrl: './filters-popover.component.html',
   styleUrls: ['./filters-popover.component.scss']
 })
-export class FiltersPopoverComponent implements OnInit {
+export class FiltersPopoverComponent {
   filtersVisible = false;
   filtersBoxVisible = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   toggleFilterVisible(): void {
     this.filtersBoxVisible = !this.filtersBoxVisible;
