@@ -1,6 +1,7 @@
 @use '~@angular/material/theming'as *;
 
 @mixin theme($theme) {
+  $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
 
   .ccf-header {
@@ -8,6 +9,10 @@
 
     .download {
       color: map-get($mat-amber, A400);
+
+      &:hover {
+        color: mat-color($accent);
+      }
     }
 
     .info {
