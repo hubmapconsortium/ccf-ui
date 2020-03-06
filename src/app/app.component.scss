@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
 
   ccf-drawer-container {
     flex-grow: 1;
@@ -9,6 +10,14 @@
     ccf-drawer {
       width: 27rem;
       margin: 0 1.5rem;
+    }
+
+    ccf-drawer-content {
+      overflow: hidden;
+      .body {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
