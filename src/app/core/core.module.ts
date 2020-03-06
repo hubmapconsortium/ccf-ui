@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { HeaderModule } from './header/header.module';
@@ -6,7 +7,7 @@ import { StoreModule } from './store/store.module';
 
 
 @NgModule({
-  imports: [HeaderModule, StoreModule, ThemingModule],
+  imports: [HttpClientModule, HeaderModule, StoreModule, ThemingModule],
   exports: [HeaderModule]
 })
 export class CoreModule {

@@ -90,7 +90,6 @@
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-outputs-metadata-property": true,
-    "no-output-named-after-standard-event": true,
     "no-require-imports": true,
     "no-sparse-arrays": true,
     "no-unsafe-any": true,
