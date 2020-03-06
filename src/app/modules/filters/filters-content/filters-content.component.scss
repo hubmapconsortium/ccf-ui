@@ -17,6 +17,10 @@
     cursor: pointer;
 }
 
+.outline-button:hover {
+    background-color: #1e88e5;
+}
+
 .outline-button:active {
     background: #69f0ae;
     color: black;
