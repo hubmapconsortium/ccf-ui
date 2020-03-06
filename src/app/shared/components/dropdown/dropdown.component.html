@@ -1,0 +1,8 @@
+<mat-form-field>
+  {{ label }}
+  <mat-select class="selected-value" [value]="selection" (selectionChange)="selectionChanged($event.value)" disableOptionCentering=true>
+    <mat-option *ngFor="let option of options" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

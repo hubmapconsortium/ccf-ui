@@ -10,15 +10,15 @@
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer position="end" opened #right>
+      <ccf-filters-popover></ccf-filters-popover>
       Tissue Browser
       <button (click)="right.close()">Close</button>
       <button (click)="right.toggleExpanded()">Toggle Expand</button>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
 
-    Test
-    <button (click)="left.open()">Open Left</button>
-    <button (click)="right.open()">Open Right</button>
-    <button (click)="left.open(); right.open()">Open Both</button>
+    <ccf-drawer-content>
+      <img class="body" src="assets/img-both-sexes-torso.jpg" />
+    </ccf-drawer-content>
   </ccf-drawer-container>
 </div>

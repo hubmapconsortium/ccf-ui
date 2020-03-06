@@ -8,8 +8,10 @@
     width: 5rem;
   }
 
-  .download, .info {
+  .logo, .download, .info {
     cursor: pointer;
+
+    transition: color 1s;
   }
 
   :not(:last-child) {
