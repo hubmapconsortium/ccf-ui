@@ -21,17 +21,15 @@
 		  top: 0.7em;
 	  }
   }
+}
   
+::ng-deep .ccf-ontology-search.detached {
+  background: #212121;
 
+  .search-term {
+    text-decoration: underline;
   }
-  
-  ::ng-deep .ccf-ontology-search.detached {
-    background: #212121;
-
-    .search-term {
-      text-decoration: underline;
-    }
-  }
+}
 
   .autocomplete-open {
     ::ng-deep .mat-form-field-appearance-outline {
@@ -57,4 +55,3 @@
       border-radius: 0 0 10% 10%;
     }
   }
-  
