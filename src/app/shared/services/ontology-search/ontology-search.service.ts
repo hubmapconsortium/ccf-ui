@@ -85,7 +85,7 @@ export function addSubtree(
   forEach(current.children, id => addSubtree(nodes, acc, nodes[id]));
 }
 
-type GetChildrenFunc = (o: OntologyNode) => OntologyNode[];
+export type GetChildrenFunc = (o: OntologyNode) => OntologyNode[];
 /**
  * Injectable OntologySearchService responsible for search result computations
  */

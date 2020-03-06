@@ -1,39 +1,60 @@
 .ccf-ontology-search {
-	width: 25rem;
+  width: 25rem;
+
 	.field {
+		margin-left: 1.5rem;
 	  width: 100%;
-	}
-  
-	.help-icon {
-	  cursor: pointer;
-	  z-index: 100;
-	  opacity: 0.5;
-  
-	  &:hover {
-		opacity: 1;
-	  }
-	}
+  }
   
 	::ng-deep .mat-form-field-appearance-outline {
+
 	  .mat-form-field-outline-end {
-		border-radius: 0 500px 500px 0;
-	  }
-  
+		  border-radius: 0 500px 500px 0;
+    }
+
 	  .mat-form-field-outline-start {
-		border-radius: 500px 0 0 500px;
-		min-width: 40px;
+      border-radius: 500px 0 0 500px;
+      min-width: 40px;
 	  }
   
 	  .mat-form-field-outline {
-		top: 0.7em;
-		border-radius: 31.25rem;
+		  top: 0.7em;
 	  }
-	}
+  }
+  
+
   }
   
   ::ng-deep .ccf-ontology-search.detached {
-	.search-term {
-	  text-decoration: underline;
-	}
+    background: #212121;
+
+    .search-term {
+      text-decoration: underline;
+    }
+  }
+
+  .autocomplete-open {
+    ::ng-deep .mat-form-field-appearance-outline {
+
+      .mat-form-field-outline-start {
+        border-radius: 50% 0 0 0;
+        border-bottom: none;
+      }
+  
+      .mat-form-field-outline-end {
+        border-radius: 0 1rem 0 0;
+        border-bottom: none;
+      }
+    }
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+
+    .mat-autocomplete {
+      border-color: #424242;
+      border-width: 1px;
+      border-style: none solid solid solid;
+      border-radius: 0 0 10% 10%;
+    }
   }
   

@@ -45,12 +45,12 @@ export class OntologyTreeComponent {
    */
   // tslint:disable-next-line: no-unsafe-any
   @Input()
-  set getChildren(fun: (node: OntologyNode) => OntologyNode[]) {
+  set getChildren(fun: GetChildrenFunc) {
     this._getChildren = fun;
     this.dataSource.data = this.nodes ?? [];
   }
 
-  get getChildren(): (node: OntologyNode) => OntologyNode[] {
+  get getChildren(): GetChildrenFunc {
     return this._getChildren as unknown as (node: OntologyNode) => OntologyNode[];
   }
 

@@ -22,5 +22,9 @@
         color: mat-color($foreground, divider);
       }
     }
+
+    .mat-autocomplete {
+      background: #424242;
+    }
   }
 }

@@ -1,16 +1,27 @@
-// @import 'global/colors';
-
-.ccf-ontology-tree.container {
+.ccf-ontology-tree {
   background: none;
+  margin-left: 1.5rem;
 
   .node {
     min-height: 0;
     font-size: 1rem;
 
+
+
     .toggle {
       width: 1.5rem;
       height: 1.5rem;
       line-height: normal;
+      background: #212121;
+      border: 1px solid #424242;
+    }
+
+    .autocomplete-open .toggle {
+      border-bottom: none;
+    }
+
+    .non-expandable {
+      margin-left: 1.5rem;
     }
 
     .text {
@@ -18,16 +29,17 @@
       white-space: nowrap;
       overflow: hidden;
       cursor: pointer;
-      // color: $text-color;
-      // FIXME
-      color: red;
+      color: #fafafa;
+      margin-left: 0.5rem;
 
     }
 
+    .text:hover {
+      color: #1e88e5;
+    }
+
     .selected {
-      // color: $active-text-color;
-      color: green;
-      font-weight: 700;
+      color: #1e88e5;
     }
   }
 
@@ -36,3 +48,4 @@
 ::ng-deep .ccf-ontology-tree.tooltip {
   font-size: 1rem;
 }
+

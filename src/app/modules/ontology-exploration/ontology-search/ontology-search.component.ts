@@ -31,6 +31,8 @@ export class OntologySearchComponent implements OnInit {
    */
   formControl = new FormControl('');
 
+  autoCompleteOpen = false;
+
   /**
    * Observable which provides the filtered search results
    */

@@ -1,16 +1,14 @@
-<mat-tree class="ccf-ontology-tree container" [dataSource]="dataSource" [treeControl]="control">
+<mat-tree class="ccf-ontology-tree" [dataSource]="dataSource" [treeControl]="control">
 	<!-- Templates with common structures for inner and leaf nodes -->
 	<ng-template #selectableRegion let-node="node">
-	  <div class="text" [class.selected]="isSelected(node)" [matTooltip]="node.label"
-		   matTooltipClass="ccf-ontology-tree tooltip" matTooltipPosition="after" [matTooltipShowDelay]="1000"
-		   (click)="select(node)">{{ node.label }}</div>
+	  <div class="text" [class.selected]="isSelected(node)" (click)="select(node)">{{ node.label }}</div>
 	</ng-template>
   
 	<!-- Leaf node template -->
 	<mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding
 				   [matTreeNodePaddingIndent]="indent">
 	  <!-- Disabled button used to add equal amount of space as an inner node's button -->
-	  <button class="toggle" mat-icon-button disabled></button>
+	  <div class="non-expandable"></div>
 	  <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
 	</mat-tree-node>
   
