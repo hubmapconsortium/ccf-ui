@@ -1,7 +1,7 @@
 @use '~@angular/material/theming' as *;
 @use '../../app/core/header/header.component.theme' as header;
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
-@use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
+// @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
 
 @mixin ccf-theme($theme) {
@@ -13,7 +13,7 @@
 
   @include header.theme($theme);
   @include drawer.theme($theme);
-  @include search.theme($theme);
+  // @include search.theme($theme);
 
   // Overrides goes here!
 }

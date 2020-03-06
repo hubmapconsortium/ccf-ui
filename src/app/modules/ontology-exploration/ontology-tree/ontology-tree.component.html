@@ -1,26 +1,25 @@
 <mat-tree class="ccf-ontology-tree" [dataSource]="dataSource" [treeControl]="control">
-	<!-- Templates with common structures for inner and leaf nodes -->
-	<ng-template #selectableRegion let-node="node">
-	  <div class="text" [class.selected]="isSelected(node)" (click)="select(node)">{{ node.label }}</div>
-	</ng-template>
-  
-	<!-- Leaf node template -->
-	<mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding
-				   [matTreeNodePaddingIndent]="indent">
-	  <!-- Disabled button used to add equal amount of space as an inner node's button -->
-	  <div class="non-expandable"></div>
-	  <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-	</mat-tree-node>
-  
-	<!-- Inner node template -->
-	<mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding
-				   [matTreeNodePaddingIndent]="indent">
-	  <button class="toggle" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">
-		<mat-icon class="icon font-icon">
-		  {{ control.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
-		</mat-icon>
-	  </button>
-	  <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-	</mat-tree-node>
-  </mat-tree>
-  
+  <!-- Templates with common structures for inner and leaf nodes -->
+  <ng-template #selectableRegion let-node="node">
+    <div class="text" [class.selected]="isSelected(node)" (click)="select(node)">{{ node.label }}</div>
+  </ng-template>
+
+  <!-- Leaf node template -->
+  <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding
+                 [matTreeNodePaddingIndent]="indent">
+    <!-- Disabled button used to add equal amount of space as an inner node's button -->
+    <div class="non-expandable"></div>
+    <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
+  </mat-tree-node>
+
+  <!-- Inner node template -->
+  <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding
+                 [matTreeNodePaddingIndent]="indent">
+    <button class="toggle" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">
+      <mat-icon class="icon font-icon">
+        {{ control.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+      </mat-icon>
+    </button>
+    <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
+  </mat-tree-node>
+</mat-tree>

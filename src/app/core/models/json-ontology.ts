@@ -1,7 +1,7 @@
 import { flow, map, partial, property } from 'lodash';
-import { OntologyNode } from '../../models/ontology-node.model';
 
-// import { OntologyNode } from './ontology.model';
+import { OntologyNode } from './ontology-node';
+
 
 /** Interface containing the single json property '@id' */
 export interface IdObject {

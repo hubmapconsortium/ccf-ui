@@ -1,60 +1,54 @@
 .ccf-ontology-search {
   width: 25rem;
 
-	.field {
-		margin-left: 1.5rem;
-	  width: 100%;
+  .field {
+    margin-left: 1.5rem;
+    width: 100%;
   }
-  
-	::ng-deep .mat-form-field-appearance-outline {
 
-	  .mat-form-field-outline-end {
-		  border-radius: 0 500px 500px 0;
+  ::ng-deep .mat-form-field-appearance-outline {
+    .mat-form-field-outline-end {
+      border-radius: 0 500px 500px 0;
     }
 
-	  .mat-form-field-outline-start {
+    .mat-form-field-outline-start {
       border-radius: 500px 0 0 500px;
       min-width: 40px;
-	  }
-  
-	  .mat-form-field-outline {
-		  top: 0.7em;
-	  }
-  }
-  
+    }
 
-  }
-  
-  ::ng-deep .ccf-ontology-search.detached {
-    background: #212121;
-
-    .search-term {
-      text-decoration: underline;
+    .mat-form-field-outline {
+      top: 0.7em;
     }
   }
+}
 
-  .autocomplete-open {
-    ::ng-deep .mat-form-field-appearance-outline {
+::ng-deep .ccf-ontology-search.detached {
+  background: #212121;
 
-      .mat-form-field-outline-start {
-        border-radius: 50% 0 0 0;
-        border-bottom: none;
-      }
-  
-      .mat-form-field-outline-end {
-        border-radius: 0 1rem 0 0;
-        border-bottom: none;
-      }
+  .search-term {
+    text-decoration: underline;
+  }
+}
+
+.autocomplete-open {
+  ::ng-deep .mat-form-field-appearance-outline {
+    .mat-form-field-outline-start {
+      border-radius: 50% 0 0 0;
+      border-bottom: none;
+    }
+
+    .mat-form-field-outline-end {
+      border-radius: 0 1rem 0 0;
+      border-bottom: none;
     }
   }
+}
 
-  ::ng-deep .cdk-overlay-pane {
-
-    .mat-autocomplete {
-      border-color: #424242;
-      border-width: 1px;
-      border-style: none solid solid solid;
-      border-radius: 0 0 10% 10%;
-    }
+::ng-deep .cdk-overlay-pane {
+  .mat-autocomplete {
+    border-color: #424242;
+    border-width: 1px;
+    border-style: none solid solid solid;
+    border-radius: 0 0 10% 10%;
   }
-  
+}

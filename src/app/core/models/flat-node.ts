@@ -1,5 +1,6 @@
-import { OntologyNode } from '../../models/ontology-node.model';
-import { get } from 'lodash';
+import { OntologyNode } from './ontology-node';
+
+
 export class FlatNode {
 
   get label(): string { return this.original.label; }

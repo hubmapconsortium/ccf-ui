@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { SearchState } from 'src/app/shared/state/search/search.state';
-import { OntologySearchService } from 'src/app/shared/services/ontology-search/ontology-search.service';
-import { OntologyState } from 'src/app/shared/state/ontology/ontology.state';
-import { OntologyNode } from 'src/app/shared/models/ontology-node.model';
-import { Subscription } from 'rxjs';
+import { Component, ViewChild } from '@angular/core';
 import { Store } from '@ngxs/store';
+
+import { OntologyNode } from '../../../core/models/ontology-node';
+import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
+import { OntologyState, OntologyStateModel } from '../../../core/store/ontology/ontology.state';
+import { SearchState } from '../../../core/store/search/search.state';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
-import { OntologyStateModel } from 'src/app/shared/models/ontology-state.model';
+
 
 @Component({
   selector: 'ccf-ontology-selection',
@@ -14,7 +14,6 @@ import { OntologyStateModel } from 'src/app/shared/models/ontology-state.model';
   styleUrls: ['./ontology-selection.component.scss']
 })
 export class OntologySelectionComponent {
-
   /**
    * View child of search component
    */
@@ -25,11 +24,10 @@ export class OntologySelectionComponent {
     public ontologySearchService: OntologySearchService,
     public ontologyState: OntologyState,
     public store: Store
-    ) {}
+  ) {}
 
   selected(ontologyNode: OntologyNode) {
     const { nodes } = this.store.selectSnapshot<OntologyStateModel>(OntologyState);
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
   }
-
 }

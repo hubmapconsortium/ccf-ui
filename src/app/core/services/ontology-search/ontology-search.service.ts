@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Immutable } from '@ngxs-labs/data';
 import { Store } from '@ngxs/store';
 import { at, find, forEach, keyBy, map as loMap, partial } from 'lodash';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-import { OntologyNode } from '../../../shared/models/ontology-node.model';
-import { OntologyStateModel } from '../../models/ontology-state.model';
-import { JsonOntologyNode, jsonToOntologyNode } from '../../state/ontology/json-ontology';
-import { OntologyState } from '../../state/ontology/ontology.state';
-import { Immutable } from '@ngxs-labs/data';
+import { JsonOntologyNode, jsonToOntologyNode } from '../../models/json-ontology';
+import { OntologyNode } from '../../models/ontology-node';
+import { OntologyState, OntologyStateModel } from '../../store/ontology/ontology.state';
+
 
 /**
  * Search result interface type for the search results
@@ -18,11 +18,15 @@ import { Immutable } from '@ngxs-labs/data';
 export interface SearchResult {
   /** ensures order of search-results */
   index: number;
+
   /** label to be displayed in the view */
   displayLabel: string[];
+
   /**  instance of OntologyNode, provides data associated with a search result */
   node: OntologyNode;
 }
+
+export type GetChildrenFunc = (o: OntologyNode) => OntologyNode[];
 
 /**
  * Links all nodes to their parents.
@@ -85,7 +89,6 @@ export function addSubtree(
   forEach(current.children, id => addSubtree(nodes, acc, nodes[id]));
 }
 
-export type GetChildrenFunc = (o: OntologyNode) => OntologyNode[];
 /**
  * Injectable OntologySearchService responsible for search result computations
  */
@@ -93,7 +96,6 @@ export type GetChildrenFunc = (o: OntologyNode) => OntologyNode[];
   providedIn: 'root'
 })
 export class OntologySearchService {
-
   rootNode: Observable<Immutable<OntologyNode>>;
 
   constructor(private http: HttpClient, private store: Store, private ontologyState: OntologyState) {
@@ -132,11 +134,11 @@ export class OntologySearchService {
    * @param searchValue search text in lower case
    * @returns search results
    */
-  private lookup(nodes: readonly OntologyNode[], searchValue: string): SearchResult[] {
+  private lookup(nodes: Immutable<OntologyNode>[], searchValue: string): SearchResult[] {
     const searchResults = new Map<string, SearchResult>();
 
     if(nodes) {
-      nodes.forEach((node) => {
+      nodes.forEach((node: OntologyNode) => {
         const condition = node.label.toLowerCase().includes(searchValue);
 
         if (condition && !searchResults.get(node.id)) {
@@ -161,7 +163,6 @@ export class OntologySearchService {
 
     return Array.from(searchResults.values());
   }
-
 
   /**
    * Gets index of match in the ontology label
