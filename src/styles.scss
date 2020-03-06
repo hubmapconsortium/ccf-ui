@@ -35,8 +35,34 @@ body {
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #212121;
 }
 
 mat-icon {
   user-select: none;
 }
+
+// Reference: https://css-tricks.com/custom-scrollbars-in-webkit/
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-button  {
+  color:#212121;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #212121;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+

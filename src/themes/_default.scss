@@ -2,6 +2,7 @@
 @use 'common/utility';
 @use '../app/core/header/header.component.theme' as header;
 
+
 $primary-colors: utility.add-colors($mat-gray, (
   "white": white,
   "black": black,
