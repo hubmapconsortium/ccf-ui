@@ -3,7 +3,11 @@
 
     <div class="options-container">
         <div *ngFor="let option of options" class="option">
-            <mat-checkbox (change)="filterOnChange($event, option)">{{ option }}</mat-checkbox>
+            <mat-checkbox
+                [checked]="selection.includes(option)"
+                (change)="filterOnChange($event, option)">
+                    {{ option }}
+            </mat-checkbox>
         </div>
     </div>
 </div>
