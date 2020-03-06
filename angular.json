@@ -125,8 +125,5 @@
       }
     }
   },
-  "defaultProject": "ccf-ui",
-  "cli": {
-    "analytics": "1b8bd974-2429-4cfa-b575-54dafd0f58ed"
-  }
+  "defaultProject": "ccf-ui"
 }
