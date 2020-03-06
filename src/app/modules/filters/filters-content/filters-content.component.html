@@ -1,0 +1,16 @@
+<div>
+    <div class="filter">
+        <ccf-checkbox label="Technologies" [options]="[ 'IMS', 'MxIF', 'PAS' ]" [selection]="filters.technologies"
+            (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
+    </div>
+
+    <div class="filter">
+        <ccf-checkbox label="Tissue Mapping Center (TMC)"
+            [options]="[ 'TMC-CalTech', 'TMC-Florida', 'TMC-Stanford', 'TMC-UCSD', 'TMC-Vanderbilt' ]"
+            [selection]="filters.tmc" (selectionChange)="updateFilter($event, 'tmc')"></ccf-checkbox>
+    </div>
+
+    <div class="button-container">
+        <button class="outline-button" (click)="applyButtonClick()">Apply Filters</button>
+    </div>
+</div>

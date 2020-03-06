@@ -8,6 +8,7 @@
     "build:demo": "ng build --prod --output-hashing=none --base-href=./",
     "build:doc": "npx compodoc -p src/tsconfig.app.json --output dist/ccf-ui/docs",
     "test": "ng test",
+    "test:wsl": "ng test --browsers=ChromeHeadlessWSL",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -49,7 +50,7 @@
     "protractor": "~5.4.3",
     "shallow-render": "^9.0.0",
     "ts-node": "~8.3.0",
-    "tslint": "~5.18.0",
+    "tslint": "^6.0.0",
     "typescript": "~3.7.5"
   }
 }
