@@ -1,0 +1,15 @@
+<div [ngClass]="setFilterBoxClasses()">
+    <button (click)="toggleFilterVisible()" class="show-hide">
+        <div *ngIf="filtersBoxVisible; else notShow">
+            <i class="material-icons icon">close</i>
+        </div>
+        <ng-template #notShow>
+            <mat-icon svgIcon="filter" class="icon" ></mat-icon>
+        </ng-template>
+    </button>
+    <div class="popup-box slide-in" *ngIf="filtersBoxVisible">
+        <div class="popup-body fade-in" *ngIf="filtersVisible">
+            <ccf-filters-content (applyFilters)="applyFilters($event)"></ccf-filters-content>
+        </div>
+    </div>
+</div>
