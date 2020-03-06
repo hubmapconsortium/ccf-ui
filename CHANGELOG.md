@@ -2,9 +2,24 @@
 
 Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface (EUI).
 
+## 1.0.0-alpha.1 - 2019-03-06
+
+<aside class="warning">
+<b>WARNING:</b> This version is not yet ready for use. There are two more sprint scheduled to bring the User Interface up to Spec and usable.
+</aside>
+
+### Added in 1.0.0-alpha.1
+
+* Started the process of implementing the 1.0.0 UI spec
+  * [Spec Doc](https://iu.box.com/s/ip91f6x6t3ni1m6xntg7r72dfzc8c08c)
+  * [User Stories](https://iu.box.com/s/i0n9rales8c5556xs05vxa43u633b3n3)
+* Setup the base project scaffolding for the new version
+* Added CCF Partonomy (CCF-P) search and tree display
+* Added a filter for filter tissues
+
 ## 0.6.0 - 2019-11-08
 
-## Added in 0.6.0
+### Added in 0.6.0
 
 * The [CCF API](https://github.com/hubmapconsortium/ccf-api) project was started with an initial OpenAPI Schema, [documentation](http://smart-api.info/ui/d1f33c1a75e9dcda984194e4d8cea7d8), and code for spinning up a mock data server. This codifies the [CCF data and metadata standards](https://docs.google.com/document/d/1Qgx4mNutE1V3CfQ7y8Lg3rxQy5nhiOSKCSv5MJkPRMc/edit) defined by MC-IU and will be used by the CCF EUI and RUI.
 * In preparation for future developments, we added a hidden, alpha-level 3d organ viewer. You can toggle this on and off in the organ view, by typing 3d with your keyboard.
@@ -19,7 +34,7 @@ Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface
 
 ## 0.5.0 - 2019-05-24
 
-## Added in 0.5.0
+### Added in 0.5.0
 
 * Display of the CCF ontology, integrated with search
 * Semantic search by ontology, results are presented at all levels

@@ -1,12 +1,13 @@
 {
   "name": "ccf-ui",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
     "build:demo": "ng build --prod --output-hashing=none --base-href=./",
-    "build:doc": "npx compodoc -p src/tsconfig.app.json --output dist/ccf-ui/docs",
+    "build:doc": "npm run compodoc",
+    "compodoc": "npx compodoc -p src/tsconfig.app.json --output dist/ccf-ui/docs",
     "test": "ng test",
     "test:wsl": "ng test --browsers=ChromeHeadlessWSL",
     "lint": "ng lint",
