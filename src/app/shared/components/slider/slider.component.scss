@@ -1,4 +1,4 @@
-.ccf-age-selector.wrapper {
+.ccf-slider.wrapper {
   .container {
     .form-field {
       width: 8.5rem;
@@ -12,11 +12,11 @@
 // Styles for the popover slider
 // NOTE: This must NOT be nested inside the wrapper/container!
 
-::ng-deep .age-selector-pane {
+::ng-deep .slider-pane {
   padding-left: 0.75rem; // Keep this padding in sync with the padding on the .selector class in ccf-search
 }
 
-.ccf-age-selector.detached {
+.ccf-slider.detached {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,11 +37,11 @@
     margin-top: 15px;
     margin-bottom: 15px;
     .ng5-slider-bar {
-      background: #e0e0e0;
+      background: #01579b;
     }
 
     .ng5-slider-selection {
-      background: #20558a;
+      background: #1e88e5;
     }
 
     .ng5-slider-pointer {
@@ -50,8 +50,7 @@
       width: $pointer-size;
       height: $pointer-size;
       top: 0.125rem - ($pointer-size / 2);
-      background-color: #20558a;
-      border: 0.0625rem solid #fafafa;
+      background-color: #1e88e5;
 
       &:after {
         display: none;
@@ -60,6 +59,7 @@
   }
 
   .label {
+    width: 1.5rem;
     &.min {
       margin-right: 1rem;
     }

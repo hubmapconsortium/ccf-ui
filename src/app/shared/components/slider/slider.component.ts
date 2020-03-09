@@ -1,6 +1,6 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
-import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, ViewChild, Input } from '@angular/core';
 import { Options } from 'ng5-slider';
 
 @Component({
@@ -10,29 +10,34 @@ import { Options } from 'ng5-slider';
 })
 export class SliderComponent implements OnDestroy {
   @ViewChild(CdkPortal, { static: true }) popoverPortal: CdkPortal;
-
   @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
+  @Input() label: string;
+  @Input() values: number[];
+
+  ageConstraints = {
+    min: 1,
+    max: 110
+  };
 
   isSliderOpen = false;
 
   options: Options = {
-    floor: 1,
-    ceil: 110,
+    floor: this.ageConstraints.min,
+    ceil: this.ageConstraints.max,
     step: 1,
     hideLimitLabels: true,
     hidePointerLabels: true
   };
 
-  lowValue: number = 1;
-  highValue: number = 110;
+  lowValue = this.options.floor;
+  highValue = this.options.ceil;
 
-  get ageRangeLabel(): string {
+  get RangeLabel(): string {
     const { lowValue, highValue, options: { ceil } } = this;
-    const suffix = highValue === ceil ? '+' : '';
     if (lowValue === highValue) {
-      return `Age: ${lowValue}${suffix}`;
+      return `${this.label}: ${lowValue}`;
     }
-    return `Age: ${lowValue}-${highValue}${suffix}`;
+    return `${this.label}: ${lowValue}-${highValue}`;
   }
 
   private overlayRef: OverlayRef;
@@ -46,7 +51,7 @@ export class SliderComponent implements OnDestroy {
     const position: ConnectedPosition = { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' };
     const positionStrategy = overlay.position().flexibleConnectedTo(element).withPositions([position]);
     this.overlayRef = overlay.create({
-      panelClass: 'age-selector-pane',
+      panelClass: 'slider-pane',
       positionStrategy
     });
   }
@@ -54,6 +59,9 @@ export class SliderComponent implements OnDestroy {
   ngOnDestroy() {
     this.overlayRef.dispose();
   }
+
+  @HostListener('document:click', ['$event.target'])
+  @HostListener('document:touchstart', ['$event.target'])
 
   closeSliderPopover(target: HTMLElement): void {
     const { element, isSliderOpen, popoverElement } = this;
