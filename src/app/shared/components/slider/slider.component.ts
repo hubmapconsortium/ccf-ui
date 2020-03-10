@@ -22,8 +22,8 @@ export class SliderComponent implements OnDestroy {
   isSliderOpen = false;
 
   options: Options = {
-    floor: this.ageConstraints.min,
-    ceil: this.ageConstraints.max,
+    floor: 1,
+    ceil: 110,
     step: 1,
     hideLimitLabels: true,
     hidePointerLabels: true
