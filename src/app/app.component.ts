@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { InfoDialogComponent } from './modules/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'ccf-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ccf-ui';
+  constructor(public dialog: MatDialog) {}
+
+  launchInfoDialog():void {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
+      width: '250px',
+      data: {}
+    });
+  }
 }
