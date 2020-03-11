@@ -1,5 +1,12 @@
-<ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="filters.sex"
-              (selectionChange)="updateFilter($event, 'sex')"></ccf-dropdown>
+<div class="patient-filters">
+  <ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="filters.sex"
+  (selectionChange)="updateFilter($event, 'sex')"></ccf-dropdown>
+
+  <ccf-slider label="Age" [valueRange]="[1, 110]"></ccf-slider>
+  <ccf-slider label="BMI" [valueRange]="[13, 83]"></ccf-slider>
+</div>
+
+
 
 <div class="filter">
   <ccf-checkbox label="Technologies" [options]="[ 'IMS', 'MxIF', 'PAS' ]" [selection]="filters.technologies"
