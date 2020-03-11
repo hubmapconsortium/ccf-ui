@@ -74,6 +74,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   }
 
   @HostListener('document:click', ['$event.target'])
+  @HostListener('document:mousemove', ['$event.target'])
   @HostListener('document:touchstart', ['$event.target'])
 
   closeSliderPopover(target: HTMLElement): void {
