@@ -97,8 +97,8 @@ export class SliderComponent implements OnDestroy, OnChanges {
     if (isSliderInitialized) {
       this.overlayRef.detach();
       this.isSliderInitialized = false;
-    } else if (!isSliderInitialized && !isSliderOpen) { 
-      this.initializeSliderPopover(); 
+    } else if (!isSliderInitialized && !isSliderOpen) {
+      this.initializeSliderPopover();
     }
     this.isSliderOpen = !isSliderOpen;
   }
