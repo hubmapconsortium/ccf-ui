@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { Ng5SliderModule } from 'ng5-slider';
 
-import { SliderComponent } from './slider.component';
+import { DualSliderComponent } from './dual-slider.component';
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import { SliderComponent } from './slider.component';
     MatSelectModule,
     Ng5SliderModule
   ],
-  declarations: [SliderComponent],
-  exports: [SliderComponent]
+  declarations: [DualSliderComponent],
+  exports: [DualSliderComponent]
 })
-export class SliderModule { }
+export class DualSliderModule { }

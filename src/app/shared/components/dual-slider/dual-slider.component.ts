@@ -5,11 +5,11 @@ import { Options } from 'ng5-slider';
 
 
 @Component({
-  selector: 'ccf-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss']
+  selector: 'ccf-dual-slider',
+  templateUrl: './dual-slider.component.html',
+  styleUrls: ['./dual-slider.component.scss']
 })
-export class SliderComponent implements OnDestroy, OnChanges {
+export class DualSliderComponent implements OnDestroy, OnChanges {
   @ViewChild(CdkPortal, { static: true }) popoverPortal: CdkPortal;
   @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
   @Input() label: string;
