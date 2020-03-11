@@ -1,22 +1,25 @@
 <div class="ccf-slider wrapper">
     <div class="container">
-      <!-- NOTE: Do NOT remove the ccf-age-selector class! -->
-      <div *cdk-portal class="ccf-slider detached" [class.hidden]="!isSliderOpen" #popover>
+      <div *cdk-portal class="ccf-slider detached" #popover>
         <div class="label min">
-            <div> {{ options.floor }}> </div>
+            <div class="label floor"> {{ options.floor }}> </div>
             <div> {{ lowValue }} </div>
         </div>
         
         <ng5-slider class="slider" [options]="options" [(value)]="lowValue" [(highValue)]="highValue" (userChangeEnd)="sliderValueChanged()">
         </ng5-slider>
         <div class="label max">
-            <div> <{{ options.ceil }} </div>
+            <div class="label ceil"> <{{ options.ceil }} </div>
             <div> {{ highValue }} </div>
         </div>
       </div>
   
       <mat-form-field class="form-field" [class.highlight]="isSliderOpen">
-        <mat-select [placeholder]="RangeLabel" (click)="toggleSliderPopover()">
+        <div class="slider-labels">
+          <span class="name-label">{{ label }}</span>
+          <span class="range-label">{{ RangeLabel }}</span>
+        </div>
+        <mat-select (click)="toggleSliderPopover()">
         </mat-select>
       </mat-form-field>
     </div>

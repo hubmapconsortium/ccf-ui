@@ -1,43 +1,33 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
-import { Component, ElementRef, HostListener, OnDestroy, ViewChild, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnDestroy, ViewChild, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { Options } from 'ng5-slider';
+
 
 @Component({
   selector: 'ccf-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnDestroy {
+export class SliderComponent implements OnDestroy, OnChanges {
   @ViewChild(CdkPortal, { static: true }) popoverPortal: CdkPortal;
   @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
   @Input() label: string;
-  @Input() values: number[];
-
-  ageConstraints = {
-    min: 1,
-    max: 110
-  };
+  @Input() valueRange: number[];
+  @Input() selection: number[];
+  @Output() selectionChange = new EventEmitter<number[]>();
 
   isSliderOpen = false;
-
-  options: Options = {
-    floor: 1,
-    ceil: 110,
-    step: 1,
-    hideLimitLabels: true,
-    hidePointerLabels: true
-  };
-
-  lowValue = this.options.floor;
-  highValue = this.options.ceil;
+  options: Options;
+  lowValue: number;
+  highValue: number;
 
   get RangeLabel(): string {
-    const { lowValue, highValue, options: { ceil } } = this;
+    const { lowValue, highValue } = this;
     if (lowValue === highValue) {
-      return `${this.label}: ${lowValue}`;
+      return `${lowValue}`;
     }
-    return `${this.label}: ${lowValue}-${highValue}`;
+    return `${lowValue}-${highValue}`;
   }
 
   private overlayRef: OverlayRef;
@@ -54,6 +44,29 @@ export class SliderComponent implements OnDestroy {
       panelClass: 'slider-pane',
       positionStrategy
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.valueRange) {
+      this.optionsChanged();
+    }
+    if (changes.selection) {
+      // detect when selection is changed and update low/high value
+      this.lowValue = Math.min(...this.selection);
+      this.highValue = Math.max(...this.selection);
+    }
+  }
+
+  optionsChanged() {
+    this.options = {
+      floor: this.valueRange ? this.valueRange[0] : 0,
+      ceil: this.valueRange ? this.valueRange[1] : 0,
+      step: 1,
+      hideLimitLabels: true,
+      hidePointerLabels: true
+    };
+    this.lowValue = this.options?.floor ?? 0;
+    this.highValue = this.options?.ceil ?? 0;
   }
 
   ngOnDestroy() {
@@ -73,6 +86,8 @@ export class SliderComponent implements OnDestroy {
       return;
     }
 
+    this.overlayRef.detach();
+    this.isSliderInitialized = false;
     this.isSliderOpen = false;
   }
 
@@ -86,10 +101,15 @@ export class SliderComponent implements OnDestroy {
     const { lowValue, highValue, options: { floor, ceil } } = this;
     const min = lowValue !== floor ? lowValue : undefined;
     const max = highValue !== ceil ? highValue : undefined;
+
+    this.selection = [lowValue, highValue];
+    this.selectionChange.emit(this.selection);
   }
 
   private initializeSliderPopover(): void {
     const { overlayRef, popoverPortal } = this;
+
+
 
     overlayRef.attach(popoverPortal);
     overlayRef.updatePosition();

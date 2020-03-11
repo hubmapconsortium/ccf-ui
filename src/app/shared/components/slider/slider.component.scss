@@ -1,19 +1,41 @@
-.ccf-slider.wrapper {
+.mat-form-field {
+  background-color: #424242;
+  font-size: 12px;
+  width: 100%;
+}
+
+::ng-deep .ccf-slider.wrapper {
   .container {
     .form-field {
-      width: 8.5rem;
       height: 3rem;
-      padding: 0 0.25rem 0 0.25rem;
       background: #424242;
+      .mat-form-field-wrapper {
+        .mat-form-field-flex {
+          .mat-form-field-infix {
+            .mat-select {
+              .mat-select-trigger {
+                .mat-select-arrow-wrapper {
+                  transform: translatey(-1.5em);
+                  color: #616161;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
 
+.range-label {
+  color: #1e88e5;
+}
 // Styles for the popover slider
 // NOTE: This must NOT be nested inside the wrapper/container!
 
-::ng-deep .slider-pane {
-  padding-left: 0.75rem; // Keep this padding in sync with the padding on the .selector class in ccf-search
+.slider-labels {
+  display: flex;
+  flex-direction: column;
 }
 
 .ccf-slider.detached {
@@ -23,15 +45,6 @@
   width: 15.625rem;
   padding: 1rem; // NOTE: Use padding instead of margin!
   background: #616161;
-
-  &.hidden {
-    visibility: hidden;
-
-    ::ng-deep * {
-      // Force all slider elements to become hidden
-      visibility: hidden !important;
-    }
-  }
 
   .slider ::ng-deep {
     margin-top: 15px;
@@ -59,13 +72,25 @@
   }
 
   .label {
-    width: 1.5rem;
+    color: #1e88e5;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+
     &.min {
+      font-size: 14px;
       margin-right: 1rem;
     }
 
     &.max {
+      font-size: 14px;
       margin-left: 1rem;
+      align-items: flex-end;
+    }
+
+    &.ceil, &.floor {
+      color: white;
     }
   }
 }
