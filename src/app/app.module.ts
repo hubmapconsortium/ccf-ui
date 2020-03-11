@@ -7,7 +7,7 @@ import { CoreModule } from './core/core.module';
 import { FiltersPopoverModule } from './modules/filters/filters-popover/filters-popover.module';
 import { OntologyExplorationModule } from './modules/ontology-exploration/ontology-exploration.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
-import { SliderModule } from './shared/components/slider/slider.module';
+import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { SliderModule } from './shared/components/slider/slider.module';
     DrawerModule,
     FiltersPopoverModule,
     OntologyExplorationModule,
-    SliderModule
+    DualSliderModule
   ],
   declarations: [AppComponent],
   providers: [],
