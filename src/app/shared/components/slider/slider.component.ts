@@ -88,12 +88,18 @@ export class SliderComponent implements OnDestroy, OnChanges {
 
     this.overlayRef.detach();
     this.isSliderInitialized = false;
+
     this.isSliderOpen = false;
   }
 
   toggleSliderPopover(): void {
     const { isSliderOpen, isSliderInitialized } = this;
-    if (!isSliderInitialized && !isSliderOpen) { this.initializeSliderPopover(); }
+    if (isSliderInitialized) {
+      this.overlayRef.detach();
+      this.isSliderInitialized = false;
+    } else if (!isSliderInitialized && !isSliderOpen) { 
+      this.initializeSliderPopover(); 
+    }
     this.isSliderOpen = !isSliderOpen;
   }
 
@@ -108,8 +114,6 @@ export class SliderComponent implements OnDestroy, OnChanges {
 
   private initializeSliderPopover(): void {
     const { overlayRef, popoverPortal } = this;
-
-
 
     overlayRef.attach(popoverPortal);
     overlayRef.updatePosition();
