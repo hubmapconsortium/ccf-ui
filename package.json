@@ -7,7 +7,7 @@
     "build": "ng build --prod",
     "build:demo": "ng build --prod --output-hashing=none --base-href=./",
     "build:doc": "npm run compodoc",
-    "compodoc": "npx compodoc -p src/tsconfig.app.json --output dist/ccf-ui/docs",
+    "compodoc": "npx compodoc -p tsconfig.json --output dist/ccf-ui/docs",
     "test": "ng test",
     "test:wsl": "ng test --browsers=ChromeHeadlessWSL",
     "lint": "ng lint",
