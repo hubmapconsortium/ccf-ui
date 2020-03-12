@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'ccf-info-dialog',
@@ -13,6 +13,10 @@ export class InfoDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: unknown) {}
 
   onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  close(): void {
     this.dialogRef.close();
   }
 
