@@ -76,7 +76,7 @@
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    width: 24px;
+    width: 28px;
 
     &.min {
       font-size: 14px;
@@ -86,11 +86,15 @@
     &.max {
       font-size: 14px;
       margin-left: 1rem;
-      align-items: flex-end;
     }
 
     &.ceil, &.floor {
       color: white;
+    }
+
+    input {
+      background: inherit;
+      border: none;
     }
   }
 }

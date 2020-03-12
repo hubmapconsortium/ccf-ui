@@ -132,4 +132,14 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
     this.isSliderInitialized = true;
   }
+
+  onKeyLow(event: any) {
+    if(event.keyCode === 13) {this.lowValue = event.target.value;}
+    this.sliderValueChanged();
+  }
+
+  onKeyHigh(event: any) {
+    if(event.keyCode === 13) {this.highValue = event.target.value;}
+    this.sliderValueChanged();
+  }
 }
