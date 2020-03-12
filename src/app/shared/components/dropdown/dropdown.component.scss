@@ -1,10 +1,11 @@
 .mat-form-field {
-  width: 33%;
-  background-color: #424242;
   font-size: 12px;
+  height: 3rem;
+  background: #424242;
+  width: 100%;
 }
 
-::ng-deep .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+::ng-deep .mat-form-field-wrapper {
   padding-top: .5em;
   padding-bottom: .5em;
   padding-left: 1em;
@@ -26,7 +27,7 @@
 
 
 ::ng-deep .mat-select-panel-wrap {
-  transform: translatey(1.85em) translatex(4px);
+  transform: translatey(2em) translatex(4px);
 
   div {
     border-radius: 0px;
@@ -40,8 +41,8 @@
 ::ng-deep .mat-option {
   background: #616161;
   border-bottom: 1px solid black;
-  padding: 0;
-  width: 95% !important;
+  padding-left: 1em;
+  width: 96% !important;
 }
 
 .mat-option:hover {
