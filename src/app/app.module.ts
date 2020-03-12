@@ -24,4 +24,4 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
