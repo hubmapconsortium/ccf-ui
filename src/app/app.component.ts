@@ -12,7 +12,7 @@ export class AppComponent {
 
   launchInfoDialog():void {
     const dialogRef = this.dialog.open(InfoDialogComponent, {
-      width: '250px',
+      width: '60em',
       data: {}
     });
   }

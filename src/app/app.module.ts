@@ -8,7 +8,7 @@ import { FiltersPopoverModule } from './modules/filters/filters-popover/filters-
 import { InfoDialogModule } from './modules/info-dialog/info-dialog.module';
 import { OntologyExplorationModule } from './modules/ontology-exploration/ontology-exploration.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -18,7 +18,8 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
     DrawerModule,
     FiltersPopoverModule,
     OntologyExplorationModule,
-    InfoDialogModule
+    InfoDialogModule,
+    MatIconModule
   ],
   declarations: [AppComponent],
   providers: [],
