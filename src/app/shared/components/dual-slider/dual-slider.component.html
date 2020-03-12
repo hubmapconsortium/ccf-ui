@@ -3,16 +3,17 @@
     <div *cdk-portal class="ccf-slider detached" [class.active]="isSliderOpen" [class.hidden]="!isSliderOpen" #popover>
       <div class="label min">
         <div class="label floor"> {{ options.floor }}> </div>
-        <div> {{ lowValue }} </div>
+        <input type="text" value="{{lowValue}}" (keyup)="onKeyLow($event)">
       </div>
 
       <ng5-slider class="slider" [options]="options" [(value)]="lowValue" [(highValue)]="highValue"
         (userChangeEnd)="sliderValueChanged()">
       </ng5-slider>
+      
       <div class="label max">
         <div class="label ceil">
           <{{ options.ceil }} </div>
-            <div> {{ highValue }} </div>
+          <input type="text" value="{{highValue}}" (keyup)="onKeyHigh($event)">
         </div>
       </div>
 
