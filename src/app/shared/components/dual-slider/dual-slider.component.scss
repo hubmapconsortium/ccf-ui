@@ -50,20 +50,24 @@
     margin-top: 15px;
     margin-bottom: 15px;
     .ng5-slider-bar {
-      background: #01579b;
+      background: #1e88e5;
+      opacity: 25%;
+      height: .1rem;
     }
 
     .ng5-slider-selection {
       background: #1e88e5;
+      opacity: 100%;
     }
 
     .ng5-slider-pointer {
-      $pointer-size: 0.75rem;
+      $pointer-size: 1rem;
 
       width: $pointer-size;
       height: $pointer-size;
-      top: 0.125rem - ($pointer-size / 2);
+      top: 0.095rem - ($pointer-size / 2);
       background-color: #1e88e5;
+      border: .1rem solid #616161;
 
       &:after {
         display: none;
@@ -95,6 +99,7 @@
     input {
       background: inherit;
       border: none;
+      color: #1e88e5;
     }
   }
 }

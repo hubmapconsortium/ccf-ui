@@ -68,6 +68,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     }
   }
 
+  /**
+   * Options changed
+   */
   optionsChanged() {
     this.options = {
       floor: this.valueRange ? this.valueRange[0] : 0,
@@ -84,8 +87,14 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     this.overlayRef.dispose();
   }
 
+  /**
+   * Listens to document click, mouse movement, and touch event.
+   * Closes the slider popover when such an event occurs outside the button or popover.
+   *
+   * @param target The element on which the event was fired.
+   */
   @HostListener('document:click', ['$event.target'])
-  @HostListener('document:mousemove', ['$event.target'])
+  // @HostListener('document:mousemove', ['$event.target'])
   @HostListener('document:touchstart', ['$event.target'])
 
   closeSliderPopover(target: HTMLElement): void {
@@ -100,10 +109,12 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
     this.overlayRef.detach();
     this.isSliderInitialized = false;
-
     this.isSliderOpen = false;
   }
 
+  /**
+   * Toggles the visibility of the slider popover
+   */
   toggleSliderPopover(): void {
     const { isSliderOpen, isSliderInitialized } = this;
     if (isSliderInitialized) {
@@ -134,12 +145,22 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   }
 
   onKeyLow(event: any) {
-    if(event.keyCode === 13) {this.lowValue = event.target.value;}
-    this.sliderValueChanged();
+    const newValue = event.target.value;
+    if (event.keyCode === 13) {
+      if (newValue >= Number(this.options.floor)) { this.lowValue = newValue; }
+      event.target.value = this.lowValue;
+      event.target.blur();
+      this.sliderValueChanged();
+    }
   }
 
   onKeyHigh(event: any) {
-    if(event.keyCode === 13) {this.highValue = event.target.value;}
-    this.sliderValueChanged();
+    const newValue = event.target.value;
+    if (event.keyCode === 13) {
+      if (newValue <= Number(this.options.ceil)) { this.highValue = newValue; }
+      event.target.value = this.highValue;
+      event.target.blur();
+      this.sliderValueChanged();
+    }
   }
 }
