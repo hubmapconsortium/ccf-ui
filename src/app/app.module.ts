@@ -9,6 +9,8 @@ import { InfoDialogModule } from './modules/info/info-dialog/info-dialog.module'
 import { OntologyExplorationModule } from './modules/ontology-exploration/ontology-exploration.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MatIconModule } from '@angular/material/icon';
+import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
+
 
 @NgModule({
   imports: [
@@ -19,10 +21,11 @@ import { MatIconModule } from '@angular/material/icon';
     FiltersPopoverModule,
     OntologyExplorationModule,
     InfoDialogModule,
-    MatIconModule
+    MatIconModule,
+    DualSliderModule
   ],
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

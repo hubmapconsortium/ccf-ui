@@ -1,0 +1,96 @@
+.mat-form-field {
+  background-color: #424242;
+  font-size: 12px;
+  width: 100%;
+}
+
+::ng-deep .ccf-slider.wrapper {
+  .container {
+    .form-field {
+      height: 3rem;
+      background: #424242;
+      .mat-form-field-wrapper {
+        .mat-form-field-flex {
+          .mat-form-field-infix {
+            .mat-select {
+              .mat-select-trigger {
+                .mat-select-arrow-wrapper {
+                  transform: translatey(-1.5em);
+                  color: #616161;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.range-label {
+  color: #1e88e5;
+}
+// Styles for the popover slider
+// NOTE: This must NOT be nested inside the wrapper/container!
+
+.slider-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.ccf-slider.detached {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15.625rem;
+  padding: 1rem; // NOTE: Use padding instead of margin!
+  background: #616161;
+
+  .slider ::ng-deep {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    .ng5-slider-bar {
+      background: #01579b;
+    }
+
+    .ng5-slider-selection {
+      background: #1e88e5;
+    }
+
+    .ng5-slider-pointer {
+      $pointer-size: 0.75rem;
+
+      width: $pointer-size;
+      height: $pointer-size;
+      top: 0.125rem - ($pointer-size / 2);
+      background-color: #1e88e5;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .label {
+    color: #1e88e5;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+
+    &.min {
+      font-size: 14px;
+      margin-right: 1rem;
+    }
+
+    &.max {
+      font-size: 14px;
+      margin-left: 1rem;
+      align-items: flex-end;
+    }
+
+    &.ceil, &.floor {
+      color: white;
+    }
+  }
+}
