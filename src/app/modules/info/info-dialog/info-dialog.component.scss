@@ -1,0 +1,53 @@
+::ng-deep .mat-dialog-container {
+  padding: 0;
+}
+
+.ccf-about.wrapper {
+  .container {
+    .content {
+      padding: 3rem;
+      background-color: white;
+    }
+
+    .description {
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .heading {
+      margin-bottom: 0;
+      font-size: 0.875rem;
+      font-weight: bold;
+    }
+
+    .close {
+      .close-icon {
+        float: right;
+        margin-top: 1rem;
+        margin-right: 1rem;
+        cursor: pointer;
+      }
+    }
+
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer {
+      padding-top: 1.5rem;
+      .nih-logo {
+        height: 2.25rem;
+        display: block;
+        margin: auto;
+      }
+    }
+  }
+}

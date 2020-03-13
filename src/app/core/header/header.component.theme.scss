@@ -21,6 +21,10 @@
 
     .info {
       color: mat-color($foreground, icon);
+
+      &:hover {
+        color: mat-color($accent);
+      }
     }
   }
 }
