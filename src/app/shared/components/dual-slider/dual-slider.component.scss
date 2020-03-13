@@ -90,6 +90,11 @@
     &.max {
       font-size: 14px;
       margin-left: 1rem;
+      text-align: right;
+
+      input {
+        text-align: right;
+      }
     }
 
     &.ceil, &.floor {
@@ -100,6 +105,7 @@
       background: inherit;
       border: none;
       color: #1e88e5;
+      width: 28px;
     }
   }
 }
