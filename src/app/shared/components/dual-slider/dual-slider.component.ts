@@ -198,9 +198,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
   /**
    * Updates the slider's low pointer value when Enter key is pressed.
-   * @param event KeyboardEvent passed into the component
+   * @param event Event passed into the component
    */
-  onKeyLow(event: KeyboardEvent) {
+  onKeyLow(event: any) {
     const newValue = event.target.value;
     if (event.keyCode === 13) {
       if (newValue >= Number(this.options.floor)) { this.lowValue = newValue; }
@@ -212,9 +212,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
   /**
    * Updates the slider's high pointer value when Enter key is pressed.
-   * @param event KeyboardEvent passed into the component
+   * @param event Event passed into the component
    */
-  onKeyHigh(event: KeyboardEvent) {
+  onKeyHigh(event: any) {
     const newValue = event.target.value;
     if (event.keyCode === 13) {
       if (newValue <= Number(this.options.ceil)) { this.highValue = newValue; }
