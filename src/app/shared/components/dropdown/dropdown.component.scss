@@ -1,3 +1,34 @@
+::ng-deep .option-panel {
+  animation: slideInHorizontalDropdown .3s;
+  animation-fill-mode: forwards;
+
+  @keyframes slideInHorizontalDropdown {
+    from {
+      width: 0;
+    }
+    to {
+      width: 8.8em;
+    }
+  }
+
+  .mat-option {
+    background: #616161;
+    border-bottom: 1px solid black;
+    padding-left: 1em;
+  }
+  .mat-option:hover {
+    background: #9e9e9e;
+  }
+  .mat-option.mat-selected.mat-active {
+    background: #1e88e5;
+    color: white;
+  }
+}
+
+::ng-deep .cdk-overlay-pane {
+  min-width: 0px !important;
+}
+
 .mat-form-field {
   font-size: 12px;
   height: 3rem;
@@ -25,7 +56,6 @@
   border: 0;
 }
 
-
 ::ng-deep .mat-select-panel-wrap {
   transform: translatey(2em) translatex(4px);
 
@@ -38,18 +68,19 @@
   }
 }
 
-::ng-deep .mat-option {
-  background: #616161;
-  border-bottom: 1px solid black;
-  padding-left: 1em;
-  width: 94.5% !important;
+.options.visible {
+  animation: fadeIn .3s;
 }
 
-.mat-option:hover {
-  background: #9e9e9e;
+.options.invisible {
+  visibility: hidden;
 }
 
-.mat-option.mat-selected.mat-active {
-  background: #1e88e5;
-  color: white;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
