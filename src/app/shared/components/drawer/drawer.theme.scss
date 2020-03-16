@@ -3,6 +3,7 @@
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
 
   .ccf-drawer {
     background-color: mat-color($background, dialog);
@@ -14,5 +15,10 @@
     color: mat-color($foreground, icon);
     background-color: mat-color($background, dialog);
     border-color: mat-color($foreground, divider);
+
+    &:hover {
+      background-color: mat-color($accent);
+      color: white;
+    }
   }
 }
