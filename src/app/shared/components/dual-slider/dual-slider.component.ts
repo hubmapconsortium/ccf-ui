@@ -57,6 +57,8 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   lowValue: number;
   highValue: number;
 
+  contentsVisible = false;
+
   /**
    * Computes the current age range for display in the button.
    */
@@ -155,6 +157,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     this.overlayRef.detach();
     this.isSliderInitialized = false;
     this.isSliderOpen = false;
+    this.contentsVisible = false;
   }
 
   /**
@@ -168,6 +171,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     } else if (!isSliderInitialized && !isSliderOpen) {
       this.initializeSliderPopover();
     }
+    setTimeout(() => {
+      this.contentsVisible = !this.contentsVisible;
+    }, 275);
     this.isSliderOpen = !isSliderOpen;
   }
 
@@ -203,7 +209,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   onKeyLow(event: any) {
     const newValue = event.target.value;
     if (event.keyCode === 13) {
-      if (newValue >= Number(this.options.floor)) { this.lowValue = newValue; }
+      if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) { this.lowValue = newValue; }
       event.target.value = this.lowValue;
       event.target.blur();
       this.sliderValueChanged();
@@ -217,7 +223,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   onKeyHigh(event: any) {
     const newValue = event.target.value;
     if (event.keyCode === 13) {
-      if (newValue <= Number(this.options.ceil)) { this.highValue = newValue; }
+      if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) { this.highValue = newValue; }
       event.target.value = this.highValue;
       event.target.blur();
       this.sliderValueChanged();
