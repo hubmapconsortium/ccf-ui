@@ -33,13 +33,6 @@
 // Styles for the popover slider
 // NOTE: This must NOT be nested inside the wrapper/container!
 
-::ng-deep .cdk-overlay-pane.slider-pane {
-  animation: slideInHorizontalSlider 0.3s;
-  animation-fill-mode: forwards;
-  height: 70px;
-  transition: visibility 0s 2s, opacity 2s linear
-}
-
 @keyframes slideInHorizontalSlider {
   from {
     width: 0;
@@ -47,10 +40,6 @@
   to {
     width: 20em;
   }
-}
-
-.fade-in {
-  animation: fadeIn 0.3s;
 }
 
 @keyframes fadeIn {
@@ -62,20 +51,48 @@
   }
 }
 
+// @keyframes fadeOut {
+//   0% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// }
+
+.visible {
+  animation: fadeIn 0.3s;
+  transition-delay: .275s;
+  animation-delay: .275s;
+}
+
+.invisible {
+  opacity: 0;
+}
+
 .slider-labels {
   display: flex;
   flex-direction: column;
 }
 
+// ::ng-deep .sliderinvisible {
+//   animation: fadeOut .3s;
+// }
+
 .ccf-slider.detached {
+  animation: slideInHorizontalSlider 0.3s;
+  animation-fill-mode: forwards;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15.625rem;
+  width: 0rem;
+  height: 70px;
   padding: 1rem; // NOTE: Use padding instead of margin!
   background: #616161;
 
   .slider ::ng-deep {
+    visibility: hidden;
     margin-top: 15px;
     margin-bottom: 15px;
     .ng5-slider-bar {

@@ -69,11 +69,9 @@
 }
 
 .options.visible {
-  animation: fadeIn .3s;
-}
-
-.options.invisible {
-  visibility: hidden;
+  animation: fadeIn 0.3s;
+  transition-delay: .275s;
+  animation-delay: .275s;
 }
 
 @keyframes fadeIn {
@@ -83,4 +81,8 @@
   100% {
     opacity: 1;
   }
+}
+
+.options.invisible {
+  opacity: 0;
 }

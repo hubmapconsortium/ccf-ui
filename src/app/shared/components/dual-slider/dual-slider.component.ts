@@ -35,11 +35,25 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    */
   @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
 
+  /**
+   * Input  of dual slider component
+   */
   @Input() label: string;
-  @Input() valueRange: number[];
-  @Input() selection: number[];
-  @Output() selectionChange = new EventEmitter<number[]>();
 
+  /**
+   * Input  of dual slider component
+   */
+  @Input() valueRange: number[];
+
+  /**
+   * Input  of dual slider component
+   */
+  @Input() selection: number[];
+
+  /**
+   * Output  of dual slider component
+   */
+  @Output() selectionChange = new EventEmitter<number[]>();
 
   /**
    * Determines whether slider popover is shown
@@ -52,12 +66,20 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   options: Options;
 
   /**
-   * Values bound to the slider's low and high pointer values.
+   * Value bound to the slider's low pointer value.
    */
   lowValue: number;
+
+  /**
+   * Value bound to the slider's high pointer value.
+   */
   highValue: number;
 
-  contentsVisible = false;
+  /**
+   * Determines if slider contents are visible (used for fade-in effect)
+   */
+  contentsVisible = 'invisible';
+  // sliderVisible = 'sliderinvisible';
 
   /**
    * Computes the current age range for display in the button.
@@ -95,6 +117,8 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       panelClass: 'slider-pane',
       positionStrategy
     });
+    // const olay = document.getElementsByClassName('cdk-overlay-container')[0];
+    // olay.className = 'cdk-overlay-container '+this.sliderVisible;
   }
 
   /**
@@ -142,7 +166,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * @param target The element on which the event was fired.
    */
   @HostListener('document:click', ['$event.target'])
-  @HostListener('document:mousemove', ['$event.target'])
+  // @HostListener('document:mousemove', ['$event.target'])
   @HostListener('document:touchstart', ['$event.target'])
   closeSliderPopover(target: HTMLElement): void {
     const { element, isSliderOpen, popoverElement } = this;
@@ -154,10 +178,13 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       return;
     }
 
+    // this.sliderVisible = 'sliderinvisible';
+    // const olay = document.getElementsByClassName('cdk-overlay-container')[0];
+    // olay.className = 'cdk-overlay-container '+this.sliderVisible;
     this.overlayRef.detach();
     this.isSliderInitialized = false;
     this.isSliderOpen = false;
-    this.contentsVisible = false;
+    this.contentsVisible = 'invisible';
   }
 
   /**
@@ -166,15 +193,17 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   toggleSliderPopover(): void {
     const { isSliderOpen, isSliderInitialized } = this;
     if (isSliderInitialized) {
+      // this.sliderVisible = this.sliderVisible === 'slidervisible' ? 'sliderinvisible' : 'slidervisible';
       this.overlayRef.detach();
       this.isSliderInitialized = false;
     } else if (!isSliderInitialized && !isSliderOpen) {
       this.initializeSliderPopover();
     }
-    setTimeout(() => {
-      this.contentsVisible = !this.contentsVisible;
-    }, 275);
+
+    this.contentsVisible = this.contentsVisible === 'visible' ? 'invisible' : 'visible';
     this.isSliderOpen = !isSliderOpen;
+    // const olay = document.getElementsByClassName('cdk-overlay-container')[0];
+    // olay.className = 'cdk-overlay-container '+this.sliderVisible;
   }
 
   /**
@@ -199,6 +228,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     overlayRef.attach(popoverPortal);
     overlayRef.updatePosition();
 
+    // this.sliderVisible = 'slidervisible';
     this.isSliderInitialized = true;
   }
 
@@ -206,12 +236,14 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Updates the slider's low pointer value when Enter key is pressed.
    * @param event Event passed into the component
    */
-  onKeyLow(event: any) {
-    const newValue = event.target.value;
-    if (event.keyCode === 13) {
-      if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) { this.lowValue = newValue; }
-      event.target.value = this.lowValue;
-      event.target.blur();
+  onKeyLow(event: KeyboardEvent) {
+    const newValue = Number((event.target as HTMLInputElement).value);
+    if (event.key === 'Enter') {
+      if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
+        this.lowValue = newValue;
+      }
+      (event.target as HTMLInputElement).value = String(this.lowValue);
+      (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();
     }
   }
@@ -220,12 +252,14 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Updates the slider's high pointer value when Enter key is pressed.
    * @param event Event passed into the component
    */
-  onKeyHigh(event: any) {
-    const newValue = event.target.value;
-    if (event.keyCode === 13) {
-      if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) { this.highValue = newValue; }
-      event.target.value = this.highValue;
-      event.target.blur();
+  onKeyHigh(event: KeyboardEvent) {
+    const newValue = Number((event.target as HTMLInputElement).value);
+    if (event.key === 'Enter') {
+      if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
+        this.highValue = newValue;
+      }
+      (event.target as HTMLInputElement).value = String(this.lowValue);
+      (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();
     }
   }
