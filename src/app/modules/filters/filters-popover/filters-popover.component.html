@@ -7,8 +7,8 @@
       <mat-icon svgIcon="filter" class="icon"></mat-icon>
     </ng-template>
   </button>
-  <div class="popup-box slide-in" *ngIf="filtersBoxVisible">
-    <div class="popup-body fade-in" *ngIf="filtersVisible">
+  <div id="filterContainer" class="popup-box slide-in">
+    <div id="popupBody" class="popup-body fade-in">
       <ccf-filters-content (applyFilters)="applyFilters($event)"></ccf-filters-content>
     </div>
   </div>
