@@ -36,27 +36,27 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
 
   /**
-   * Input  of dual slider component
+   * Which criteria the slider is selecting for.
    */
   @Input() label: string;
 
   /**
-   * Input  of dual slider component
+   * The lower and upper range of the slider.
    */
   @Input() valueRange: number[];
 
   /**
-   * Input  of dual slider component
+   * The current range selected.
    */
   @Input() selection: number[];
 
   /**
-   * Output  of dual slider component
+   * Emits the new selection range when a change is made to it.
    */
   @Output() selectionChange = new EventEmitter<number[]>();
 
   /**
-   * Determines whether slider popover is shown
+   * Determines whether slider popover is shown.
    */
   isSliderOpen = false;
 
@@ -76,10 +76,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   highValue: number;
 
   /**
-   * Determines if slider contents are visible (used for fade-in effect)
+   * Determines if slider contents are visible (used for fade-in effect).
    */
   contentsVisible = 'invisible';
-  // sliderVisible = 'sliderinvisible';
 
   /**
    * Computes the current age range for display in the button.
@@ -117,12 +116,10 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       panelClass: 'slider-pane',
       positionStrategy
     });
-    // const olay = document.getElementsByClassName('cdk-overlay-container')[0];
-    // olay.className = 'cdk-overlay-container '+this.sliderVisible;
   }
 
   /**
-   * Updates slider options (with optionsChanged) and selection when changes detected
+   * Updates slider options (with optionsChanged) and selection when changes detected.
    * @param changes Changes that have been made to the slider properties.
    */
   ngOnChanges(changes: SimpleChanges): void {
@@ -130,7 +127,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       this.optionsChanged();
     }
     if (changes.selection) {
-      // detect when selection is changed and update low/high value
+      // Detect when selection is changed and update low/high value.
       this.lowValue = Math.min(...this.selection);
       this.highValue = Math.max(...this.selection);
     }
@@ -166,7 +163,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * @param target The element on which the event was fired.
    */
   @HostListener('document:click', ['$event.target'])
-  // @HostListener('document:mousemove', ['$event.target'])
+  @HostListener('document:mousemove', ['$event.target'])
   @HostListener('document:touchstart', ['$event.target'])
   closeSliderPopover(target: HTMLElement): void {
     const { element, isSliderOpen, popoverElement } = this;
@@ -178,9 +175,6 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       return;
     }
 
-    // this.sliderVisible = 'sliderinvisible';
-    // const olay = document.getElementsByClassName('cdk-overlay-container')[0];
-    // olay.className = 'cdk-overlay-container '+this.sliderVisible;
     this.overlayRef.detach();
     this.isSliderInitialized = false;
     this.isSliderOpen = false;
@@ -202,8 +196,6 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
     this.contentsVisible = this.contentsVisible === 'visible' ? 'invisible' : 'visible';
     this.isSliderOpen = !isSliderOpen;
-    // const olay = document.getElementsByClassName('cdk-overlay-container')[0];
-    // olay.className = 'cdk-overlay-container '+this.sliderVisible;
   }
 
   /**
@@ -212,8 +204,8 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    */
   sliderValueChanged(): void {
     const { lowValue, highValue, options: { floor, ceil } } = this;
-    const min = lowValue !== floor ? lowValue : undefined;
-    const max = highValue !== ceil ? highValue : undefined;
+    // const min = lowValue !== floor ? lowValue : undefined;
+    // const max = highValue !== ceil ? highValue : undefined;
 
     this.selection = [lowValue, highValue];
     this.selectionChange.emit(this.selection);
@@ -228,7 +220,6 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     overlayRef.attach(popoverPortal);
     overlayRef.updatePosition();
 
-    // this.sliderVisible = 'slidervisible';
     this.isSliderInitialized = true;
   }
 
@@ -242,6 +233,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
         this.lowValue = newValue;
       }
+
       (event.target as HTMLInputElement).value = String(this.lowValue);
       (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();
@@ -258,6 +250,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
         this.highValue = newValue;
       }
+
       (event.target as HTMLInputElement).value = String(this.lowValue);
       (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();
