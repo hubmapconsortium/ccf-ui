@@ -20,13 +20,10 @@ export class DropdownComponent {
    * Controls fade-in effect after dropdown menu opens
    */
   toggleOptions() {
-    if (this.optionsVisible === 'options visible') {
-      this.optionsVisible = 'options invisible';
-    } else {
-      setTimeout(() => {
-        this.optionsVisible = 'options visible';
-      }, 275);
-    }
+    const visible = 'options visible';
+    const invisible = 'options invisible';
+
+    this.optionsVisible = this.optionsVisible === visible ? invisible : visible;
   }
 
   /**
