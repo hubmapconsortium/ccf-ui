@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 /**
  * Component for a dropdown menu.
@@ -9,21 +9,37 @@ import { Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent {
+
+  /**
+   * What the component is selecting for.
+   */
   @Input() label: string;
+
+  /**
+   * Choices displayed in the dropdown menu.
+   */
   @Input() options: string[];
+
+  /**
+   * Current option selected.
+   */
   @Input() selection: string;
+
+  /**
+   * Emits the new selected option when selection is changed.
+   */
   @Output() readonly selectionChange = new EventEmitter<string>();
 
-  optionsVisible = 'options invisible';
+  /**
+   * Determines if menu contents are visible (used for fade-in effect).
+   */
+  optionsVisible = 'invisible';
 
   /**
    * Controls fade-in effect after dropdown menu opens
    */
   toggleOptions() {
-    const visible = 'options visible';
-    const invisible = 'options invisible';
-
-    this.optionsVisible = this.optionsVisible === visible ? invisible : visible;
+    this.optionsVisible = this.optionsVisible === 'visible' ? 'invisible' : 'visible';
   }
 
   /**

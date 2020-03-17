@@ -1,3 +1,22 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.visible {
+  animation: fadeIn 0.3s;
+  transition-delay: .275s;
+  animation-delay: .275s;
+}
+
+.invisible {
+  opacity: 0;
+}
+
 ::ng-deep .option-panel {
   animation: slideInHorizontalDropdown .3s;
   animation-fill-mode: forwards;
@@ -47,9 +66,11 @@
   color: #1e88e5;
 }
 
-::ng-deep .mat-select-arrow-wrapper {
-  transform: translatey(-.5em);
-  color: #616161;
+::ng-deep .ccf-dropdown {
+  .mat-select-arrow-wrapper {
+    transform: translatey(-.5em);
+    color: #616161;
+  }
 }
 
 ::ng-deep .mat-form-field-infix {
@@ -66,23 +87,4 @@
   .mat-option-text {
     font-size: 14px !important;
   }
-}
-
-.options.visible {
-  animation: fadeIn 0.3s;
-  transition-delay: .275s;
-  animation-delay: .275s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.options.invisible {
-  opacity: 0;
 }
