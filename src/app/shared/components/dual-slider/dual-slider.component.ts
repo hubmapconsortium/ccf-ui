@@ -232,7 +232,6 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
         this.lowValue = newValue;
       }
-
       (event.target as HTMLInputElement).value = String(this.lowValue);
       (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();
@@ -250,7 +249,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
         this.highValue = newValue;
       }
 
-      (event.target as HTMLInputElement).value = String(this.lowValue);
+      (event.target as HTMLInputElement).value = String(this.highValue);
       (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();
     }

@@ -197,11 +197,6 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
     this.sendToggle();
   }
 
-  resetDrawer() {
-    this.opened = true;
-    this.sendToggle();
-  }
-
   @HostListener('@openClose.done') // tslint:disable-line: no-unsafe-any
   closeOpenDone(): void {
     this.openedChange.emit(this.opened);
