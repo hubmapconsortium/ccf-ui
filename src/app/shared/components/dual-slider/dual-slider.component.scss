@@ -2,68 +2,91 @@
   background-color: #424242;
   font-size: 12px;
   width: 100%;
+  height: 3rem;
 }
-
-::ng-deep .ccf-slider.wrapper {
-  .container {
-    .form-field {
-      height: 3rem;
-      background: #424242;
-      .mat-form-field-wrapper {
-        .mat-form-field-flex {
-          .mat-form-field-infix {
-            .mat-select {
-              .mat-select-trigger {
-                .mat-select-arrow-wrapper {
-                  transform: translatey(-1.5em);
-                  color: #616161;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.range-label {
-  color: #1e88e5;
-}
-// Styles for the popover slider
-// NOTE: This must NOT be nested inside the wrapper/container!
 
 .slider-labels {
   display: flex;
   flex-direction: column;
+  
+  .range-label {
+    color: #1e88e5;
+  }
+}
+
+::ng-deep .ccf-slider.wrapper {
+  .mat-select-arrow-wrapper {
+    transform: translatey(-1.5em);
+    color: #616161;
+  }
+}
+
+// Styles for the popover slider
+// NOTE: This must NOT be nested inside the wrapper/container!
+
+@keyframes slideInHorizontalSlider {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20em;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.visible {
+  animation: fadeIn 0.3s;
+  transition-delay: .275s;
+  animation-delay: .275s;
+}
+
+.invisible {
+  opacity: 0;
 }
 
 .ccf-slider.detached {
+  animation: slideInHorizontalSlider 0.3s;
+  animation-fill-mode: forwards;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15.625rem;
+  width: 0rem;
+  height: 70px;
   padding: 1rem; // NOTE: Use padding instead of margin!
   background: #616161;
 
   .slider ::ng-deep {
+    visibility: hidden;
     margin-top: 15px;
     margin-bottom: 15px;
     .ng5-slider-bar {
-      background: #01579b;
+      background: #1e88e5;
+      opacity: 20%;
+      height: .15rem;
     }
 
     .ng5-slider-selection {
       background: #1e88e5;
+      opacity: 100%;
     }
 
     .ng5-slider-pointer {
-      $pointer-size: 0.75rem;
+      $pointer-size: 1rem;
 
       width: $pointer-size;
       height: $pointer-size;
-      top: 0.125rem - ($pointer-size / 2);
+      top: 0.095rem - ($pointer-size / 2);
       background-color: #1e88e5;
+      border: .1rem solid #616161;
 
       &:after {
         display: none;
@@ -76,17 +99,34 @@
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    width: 24px;
+    width: 28px;
 
     &.min {
       font-size: 14px;
       margin-right: 1rem;
+
+      input {
+        background: inherit;
+        border: none;
+        color: #1e88e5;
+        width: 28px;
+        font-size: 14px;
+      }
     }
 
     &.max {
       font-size: 14px;
       margin-left: 1rem;
-      align-items: flex-end;
+      text-align: right;
+
+      input {
+        text-align: right;
+        background: inherit;
+        border: none;
+        color: #1e88e5;
+        width: 28px;
+        font-size: 14px;
+      }
     }
 
     &.ceil, &.floor {

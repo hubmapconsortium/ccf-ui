@@ -15,24 +15,74 @@ import {
 import { Options } from 'ng5-slider';
 
 
+/**
+ * Component containing a button that when clicked will show a slider popover.
+ */
 @Component({
   selector: 'ccf-dual-slider',
   templateUrl: './dual-slider.component.html',
   styleUrls: ['./dual-slider.component.scss']
 })
 export class DualSliderComponent implements OnDestroy, OnChanges {
+  /**
+   * Reference to the template for the slider popover.
+   */
   @ViewChild(CdkPortal, { static: true }) popoverPortal: CdkPortal;
+
+  /**
+   * Reference to the popover element.
+   * This is undefined until the slider popover is initialized.
+   */
   @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
+
+  /**
+   * Which criteria the slider is selecting for.
+   */
   @Input() label: string;
+
+  /**
+   * The lower and upper range of the slider.
+   */
   @Input() valueRange: number[];
+
+  /**
+   * The current range selected.
+   */
   @Input() selection: number[];
+
+  /**
+   * Emits the new selection range when a change is made to it.
+   */
   @Output() selectionChange = new EventEmitter<number[]>();
 
+  /**
+   * Determines whether slider popover is shown.
+   */
   isSliderOpen = false;
+
+  /**
+   * Slider options.
+   */
   options: Options;
+
+  /**
+   * Value bound to the slider's low pointer value.
+   */
   lowValue: number;
+
+  /**
+   * Value bound to the slider's high pointer value.
+   */
   highValue: number;
 
+  /**
+   * Determines if slider contents are visible (used for fade-in effect).
+   */
+  contentsVisible = 'invisible';
+
+  /**
+   * Computes the current age range for display in the button.
+   */
   get RangeLabel(): string {
     const { lowValue, highValue } = this;
     if (lowValue === highValue) {
@@ -41,10 +91,21 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     return `${lowValue}-${highValue}`;
   }
 
+  /**
+   * Reference to the slider popover overlay.
+   */
   private overlayRef: OverlayRef;
 
+  /**
+   * Determines whether slider popover has been created and initialized.
+   */
   private isSliderInitialized = false;
 
+  /**
+   * Creates an instance of dual slider component.
+   * @param overlay The overlay service used to create the slider popover.
+   * @param element A reference to the component's element. Used during event handling.
+   */
   constructor(
     overlay: Overlay,
     private element: ElementRef,
@@ -57,17 +118,24 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     });
   }
 
+  /**
+   * Updates slider options (with optionsChanged) and selection when changes detected.
+   * @param changes Changes that have been made to the slider properties.
+   */
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.valueRange) {
       this.optionsChanged();
     }
     if (changes.selection) {
-      // detect when selection is changed and update low/high value
+      // Detect when selection is changed and update low/high value.
       this.lowValue = Math.min(...this.selection);
       this.highValue = Math.max(...this.selection);
     }
   }
 
+  /**
+   * Updates the slider options, and the slider values if necessary.
+   */
   optionsChanged() {
     this.options = {
       floor: this.valueRange ? this.valueRange[0] : 0,
@@ -80,14 +148,23 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     this.highValue = this.options?.ceil ?? 0;
   }
 
+  /**
+   * Angular's OnDestroy hook.
+   * Cleans up the overlay.
+   */
   ngOnDestroy() {
     this.overlayRef.dispose();
   }
 
+  /**
+   * Listens to document click, mouse movement, and touch event.
+   * Closes the slider popover when such an event occurs outside the button or popover.
+   *
+   * @param target The element on which the event was fired.
+   */
   @HostListener('document:click', ['$event.target'])
   @HostListener('document:mousemove', ['$event.target'])
   @HostListener('document:touchstart', ['$event.target'])
-
   closeSliderPopover(target: HTMLElement): void {
     const { element, isSliderOpen, popoverElement } = this;
     if (!isSliderOpen) {
@@ -100,10 +177,13 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
     this.overlayRef.detach();
     this.isSliderInitialized = false;
-
     this.isSliderOpen = false;
+    this.contentsVisible = 'invisible';
   }
 
+  /**
+   * Toggles the visibility of the slider popover.
+   */
   toggleSliderPopover(): void {
     const { isSliderOpen, isSliderInitialized } = this;
     if (isSliderInitialized) {
@@ -112,18 +192,27 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     } else if (!isSliderInitialized && !isSliderOpen) {
       this.initializeSliderPopover();
     }
+
+    this.contentsVisible = this.contentsVisible === 'visible' ? 'invisible' : 'visible';
     this.isSliderOpen = !isSliderOpen;
   }
 
+  /**
+   * Handler for updates to the slider values.
+   * Emits the updated selection value array.
+   */
   sliderValueChanged(): void {
     const { lowValue, highValue, options: { floor, ceil } } = this;
-    const min = lowValue !== floor ? lowValue : undefined;
-    const max = highValue !== ceil ? highValue : undefined;
+    // const min = lowValue !== floor ? lowValue : undefined;
+    // const max = highValue !== ceil ? highValue : undefined;
 
     this.selection = [lowValue, highValue];
     this.selectionChange.emit(this.selection);
   }
 
+  /**
+   * Creates and initializes the slider popover.
+   */
   private initializeSliderPopover(): void {
     const { overlayRef, popoverPortal } = this;
 
@@ -131,5 +220,39 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     overlayRef.updatePosition();
 
     this.isSliderInitialized = true;
+  }
+
+  /**
+   * Updates the slider's low pointer value when Enter key is pressed.
+   * @param event Event passed into the component
+   */
+  onKeyLow(event: KeyboardEvent) {
+    const newValue = Number((event.target as HTMLInputElement).value);
+    if (event.key === 'Enter') {
+      if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
+        this.lowValue = newValue;
+      }
+
+      (event.target as HTMLInputElement).value = String(this.lowValue);
+      (event.target as HTMLInputElement).blur();
+      this.sliderValueChanged();
+    }
+  }
+
+  /**
+   * Updates the slider's high pointer value when Enter key is pressed.
+   * @param event Event passed into the component
+   */
+  onKeyHigh(event: KeyboardEvent) {
+    const newValue = Number((event.target as HTMLInputElement).value);
+    if (event.key === 'Enter') {
+      if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
+        this.highValue = newValue;
+      }
+
+      (event.target as HTMLInputElement).value = String(this.lowValue);
+      (event.target as HTMLInputElement).blur();
+      this.sliderValueChanged();
+    }
   }
 }
