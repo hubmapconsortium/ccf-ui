@@ -1,5 +1,5 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header (logoClicked)="left.resetDrawer(); right.resetDrawer(); filterbox.removeBox()"></ccf-header>
+  <ccf-header (logoClicked)="reset(left, right, filterbox)"></ccf-header>
 
   <ccf-drawer-container>
     <ccf-drawer opened #left>
