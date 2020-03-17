@@ -11,14 +11,26 @@ export class FiltersPopoverComponent {
 
   toggleFilterVisible(): void {
     this.filtersBoxVisible = !this.filtersBoxVisible;
-    if (this.filtersVisible) {
-      this.filtersVisible = false;
+    this.filtersVisible = !this.filtersVisible;
+
+    const filterContainer = document.getElementById('filterContainer');
+    const popupBody = document.getElementById('popupBody');
+    if (!filterContainer || !popupBody) {
+      return;
+    }
+
+    if (this.filtersBoxVisible) {
+      filterContainer.style.width = '35em';
+
+      popupBody.style.transitionDelay = '.3s';
+      popupBody.style.transitionDuration = '.3s';
+      popupBody.style.opacity = '100%';
     } else {
-      // Need to give the slide animation time to finish before displaying the content to keep from having
-      // the container resizing abrubtly.
-      setTimeout(() => {
-        this.filtersVisible = !this.filtersVisible;
-      }, 275);
+      filterContainer.style.width = '0em';
+
+      popupBody.style.transitionDelay = '0s';
+      popupBody.style.transitionDuration = '0s';
+      popupBody.style.opacity = '0%';
     }
   }
 
