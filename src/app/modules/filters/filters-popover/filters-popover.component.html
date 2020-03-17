@@ -1,4 +1,4 @@
-<div [ngClass]="setFilterBoxClasses()">
+<div>
   <button (click)="toggleFilterVisible()" class="show-hide">
     <div *ngIf="filtersBoxVisible; else notShow">
       <mat-icon class="icon">close</mat-icon>
@@ -7,8 +7,8 @@
       <mat-icon svgIcon="filter" class="icon"></mat-icon>
     </ng-template>
   </button>
-  <div id="filterContainer" class="popup-box slide-in">
-    <div id="popupBody" class="popup-body fade-in">
+  <div id="popupContainer">
+    <div id="popupBody">
       <ccf-filters-content (applyFilters)="applyFilters($event)"></ccf-filters-content>
     </div>
   </div>
