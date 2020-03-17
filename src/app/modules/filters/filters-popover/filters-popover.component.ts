@@ -22,6 +22,11 @@ export class FiltersPopoverComponent {
     }
   }
 
+  removeBox() {
+    this.filtersBoxVisible = false;
+    this.filtersVisible = false;
+  }
+
   setFilterBoxClasses() {
     return {
       'filter-box': !this.filtersVisible,
