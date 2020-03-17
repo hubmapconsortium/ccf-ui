@@ -187,7 +187,6 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   toggleSliderPopover(): void {
     const { isSliderOpen, isSliderInitialized } = this;
     if (isSliderInitialized) {
-      // this.sliderVisible = this.sliderVisible === 'slidervisible' ? 'sliderinvisible' : 'slidervisible';
       this.overlayRef.detach();
       this.isSliderInitialized = false;
     } else if (!isSliderInitialized && !isSliderOpen) {
