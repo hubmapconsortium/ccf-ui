@@ -1,4 +1,4 @@
-.popup-box {
+#popupContainer {
   width: 0em;
   position: absolute;
   height: 23em;
@@ -7,11 +7,16 @@
   right: 27.5em;
   background-color: #323232;
   box-shadow: 0.4em 0.4em 0.8em 0em #000000;
+  transition-property: width;
+  transition-duration: .3s;
 
-  .popup-body {
+  #popupBody {
     position: relative;
     padding: 1em;
     opacity: 0%;
+    transition-property: opacity;
+    transition-duration: .3s;
+    transition-delay: .3s;
   }
 }
 
@@ -28,34 +33,4 @@
 }
 .show-hide:hover {
   color: #1e88e5;
-}
-
-.slide-in {
-  transition-property: width;
-  transition-duration: .3s;
-}
-
-@keyframes slideInHorizontal {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 35em;
-  }
-}
-
-.fade-in {
-  transition-property: opacity;
-  transition-duration: .3s;
-  transition-delay: .3s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
