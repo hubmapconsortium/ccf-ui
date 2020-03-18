@@ -55,6 +55,7 @@
 .ccf-slider.detached {
   animation: slideInHorizontalSlider 0.3s;
   animation-fill-mode: forwards;
+  box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
 
   display: flex;
   justify-content: center;
