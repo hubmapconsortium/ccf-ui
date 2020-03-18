@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FiltersPopoverComponent implements OnInit {
   filtersBoxVisible = false;
-  filterContainer:HTMLElement|null;
+  @ViewChild('filterContainer', { read: ElementRef }) filterContainer: ElementRef<HtmlElement>;
   popupBody:HTMLElement|null;
 
   ngOnInit() {
