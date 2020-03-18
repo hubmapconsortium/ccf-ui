@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, Input } from '@angular/core';
 
 
 @Component({
@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
+  @Input() currentFilters: Record<string, unknown>;
   @Output() logoClicked = new EventEmitter<void>();
   @Output() downloadClicked = new EventEmitter<void>();
   @Output() infoClicked = new EventEmitter<void>();
