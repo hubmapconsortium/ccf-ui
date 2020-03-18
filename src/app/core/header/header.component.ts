@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output, Input } from 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  @Input() currentFilters: Record<string, unknown>;
+  @Input() currentFilters: Record<string, unknown[]>;
   @Output() logoClicked = new EventEmitter<void>();
   @Output() downloadClicked = new EventEmitter<void>();
   @Output() infoClicked = new EventEmitter<void>();
