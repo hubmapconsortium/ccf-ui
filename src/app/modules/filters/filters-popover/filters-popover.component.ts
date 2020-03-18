@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./filters-popover.component.scss']
 })
 export class FiltersPopoverComponent {
-  currentFilters: Record<string, unknown> = { tmc: [], technologies: [], sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] };
+  filters: Record<string, unknown[]> = { tmc: [], technologies: [], sex: ['Both'], ageRange: [1, 110], BMIRange: [13, 83] };
   filtersVisible = false;
   filtersBoxVisible = false;
 
@@ -30,10 +30,10 @@ export class FiltersPopoverComponent {
     };
   }
 
-  applyFilters(filters: Record<string, unknown>) {
+  applyFilters(filters: Record<string, unknown[]>) {
     // To be hooked up later to the real filter call.
     console.log('Filter box. Filters: ', filters);
-    this.currentFilters = filters;
+    this.filters = filters;
     this.filtersBoxVisible = false;
     this.filtersVisible = false;
   }

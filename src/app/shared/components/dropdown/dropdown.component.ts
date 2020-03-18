@@ -23,12 +23,12 @@ export class DropdownComponent {
   /**
    * Current option selected.
    */
-  @Input() selection: string;
+  @Input() selection: string[];
 
   /**
    * Emits the new selected option when selection is changed.
    */
-  @Output() readonly selectionChange = new EventEmitter<string>();
+  @Output() readonly selectionChange = new EventEmitter<string[]>();
 
   /**
    * Determines if menu contents are visible (used for fade-in effect).
@@ -47,7 +47,7 @@ export class DropdownComponent {
    * @param value The value that has been selected
    */
   selectionChanged(value: string) {
-    this.selection = value;
-    this.selectionChange.emit(value);
+    this.selection = [value];
+    this.selectionChange.emit([value]);
   }
 }

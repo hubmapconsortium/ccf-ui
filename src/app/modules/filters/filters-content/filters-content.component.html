@@ -1,5 +1,5 @@
 <div class="patient-filters">
-  <ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="filters.sex"
+  <ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="filters.sex[0]"
     (selectionChange)="updateFilter($event, 'sex')"></ccf-dropdown>
 
   <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="filters.ageRange"
