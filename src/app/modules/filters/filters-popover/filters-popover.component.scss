@@ -15,8 +15,18 @@
     padding: 1em;
     opacity: 0%;
     transition-property: opacity;
-    transition-duration: .3s;
-    transition-delay: .3s;
+    transition-duration: 0s;
+    transition-delay: 0s;
+  }
+
+  &.visible {
+    width: 35rem;
+
+    .popup-body {
+        opacity: 100%;
+        transition-delay: .3s;
+        transition-duration: .3s;
+    }
   }
 }
 
