@@ -5,6 +5,10 @@ sudo: required
 dist: trusty
 addons:
   chrome: stable
+  sonarcloud:
+    organization: "$SONAR_KEY"
+    token:
+      secure: "vIncL26bhY9qrrS9d83Bbwh26LGNHkdH3dC/cxvvYGHnXRjoNW+1/7FOK+sL59roMA0h/UMx4NXBJhMuB5xY1hTljyFF4NXxp/BbB/sG9Jng5U+cA0UE2ilRLwN+yXxEHoOxT1nhFEquX3lk4TKm7APA43HWZ30+BMG3MUXBot5pKsBRueZMHu+yLNNsBnFG7e6kWlVDMrniWfodTIHjTgq6tDm/Xoo3PNDM1b8Fzw/Oow+9GKCx8ofsS+Jnr/H00UnJ8AgLYuP2AnpwVp9/z1CmI1eiPbHSY6YN5G4fgBGRmk6G6+2QZqOX7ZAe27Zk3B3O2zzOBwDKsd7Mz9xNO3MbR05/KE53bXIDCMxavqHP7iBD5WLmdUE5FAqDthJaHcWvIqJHnsVGEWkyywM2jVEjW/4ejKELntjABOdlMmp63uxMVOfkDA3w+NOxuYUrrAz4OpM0I6bkEoUyHnjQ0JbTCJGUy9RtyY2jTge+oo/rt6M2x23749ffWkCCR0v0hw1NIWkdd98A6iKY3EwP/XjCnyc3p3nhwikcvUGYVful9grBNu5GOZQRpUCpDUPWGHlHxBhNzbb94jJNDKyZ/eX+snI0GoVaWYE+sLR2iDs4ffwOy2Xp2izhazahho+/dSWfTiksWzBmD5CjZj+oBP8ds2TJdly8VNaLTGdeCU4="
 
 cache: npm
 branches:
@@ -23,6 +27,7 @@ jobs:
     if: NOT (tag IS present)
     script:
     - npm run test
+    - sonar-scanner -X
   - stage: deploy
     name: Deploy staging to Netlify
     if: branch = develop AND type != pull_request
