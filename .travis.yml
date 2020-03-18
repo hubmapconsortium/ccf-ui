@@ -15,6 +15,7 @@ branches:
   only:
   - master
   - develop
+  - develop-v2
   - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
 install:
   - npm ci
