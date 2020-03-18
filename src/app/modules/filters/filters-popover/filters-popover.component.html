@@ -1,13 +1,13 @@
 <div>
   <button (click)="toggleFilterVisible()" class="show-hide">
-    <div *ngIf="filtersBoxVisible; else notShow">
+    <div *ngIf="filtersVisible; else notShow">
       <mat-icon class="icon">close</mat-icon>
     </div>
     <ng-template #notShow>
       <mat-icon svgIcon="filter" class="icon"></mat-icon>
     </ng-template>
   </button>
-  <div class="popup-container" [class.visible]="filtersBoxVisible">
+  <div class="popup-container" [class.visible]="filtersVisible">
     <div class="popup-body">
       <ccf-filters-content (applyFilters)="applyFilters($event)"></ccf-filters-content>
     </div>

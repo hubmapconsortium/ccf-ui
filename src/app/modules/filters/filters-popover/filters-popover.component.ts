@@ -6,19 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./filters-popover.component.scss']
 })
 export class FiltersPopoverComponent {
-  filtersBoxVisible = false;
-  popupContainerWidth = '0em';
-  popupBodyTransitionDelay = '.3s';
-  popupBodyTransitionDuration = '.3s';
-  popupBodyOpacity = '0%';
+  filtersVisible = false;
 
   toggleFilterVisible(): void {
-    this.filtersBoxVisible = !this.filtersBoxVisible;
+    this.filtersVisible = !this.filtersVisible;
+  }
+
+  removeBox() {
+    this.filtersVisible = false;
   }
 
   applyFilters(filters: Record<string, unknown>) {
     // To be hooked up later to the real filter call.
     console.log('Filter box. Filters: ', filters);
-    this.filtersBoxVisible = false;
+    this.filtersVisible = false;
   }
 }
