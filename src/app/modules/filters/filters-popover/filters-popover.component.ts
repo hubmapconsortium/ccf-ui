@@ -1,19 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ccf-filters-popover',
   templateUrl: './filters-popover.component.html',
   styleUrls: ['./filters-popover.component.scss']
 })
-export class FiltersPopoverComponent implements OnInit {
+export class FiltersPopoverComponent {
   filtersBoxVisible = false;
-  @ViewChild('filterContainer', { read: ElementRef }) filterContainer: ElementRef<HtmlElement>;
-  popupBody:HTMLElement|null;
-
-  ngOnInit() {
-    this.filterContainer = document.getElementById('popupContainer');
-    this.popupBody = document.getElementById('popupBody');
-  }
+  popupContainerWidth = '0em';
+  popupBodyTransitionDelay = '.3s';
+  popupBodyTransitionDuration = '.3s';
+  popupBodyOpacity = '0%';
 
   toggleFilterVisible(): void {
     this.filtersBoxVisible = !this.filtersBoxVisible;
@@ -26,25 +23,17 @@ export class FiltersPopoverComponent implements OnInit {
   }
 
   displayFilters(): void {
-    if (!this.filterContainer || !this.popupBody) {
-      return;
-    }
-
-    this.filterContainer.style.width = '35em';
-    this.popupBody.style.transitionDelay = '.3s';
-    this.popupBody.style.transitionDuration = '.3s';
-    this.popupBody.style.opacity = '100%';
+    this.popupContainerWidth = '35em';
+    this.popupBodyOpacity = '100%';
+    this.popupBodyTransitionDelay = '.3s';
+    this.popupBodyTransitionDuration = '.3s';
   }
 
   hideFilters(): void {
-    if (!this.filterContainer || !this.popupBody) {
-      return;
-    }
-
-    this.filterContainer.style.width = '0em';
-    this.popupBody.style.transitionDelay = '0s';
-    this.popupBody.style.transitionDuration = '0s';
-    this.popupBody.style.opacity = '0%';
+    this.popupContainerWidth = '0em';
+    this.popupBodyOpacity = '0%';
+    this.popupBodyTransitionDelay = '0s';
+    this.popupBodyTransitionDuration = '0s';
   }
 
   applyFilters(filters: Record<string, unknown>) {

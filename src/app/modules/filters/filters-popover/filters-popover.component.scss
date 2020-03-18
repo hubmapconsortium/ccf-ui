@@ -1,4 +1,4 @@
-#popupContainer {
+.popup-container {
   width: 0em;
   position: absolute;
   height: 23em;
@@ -10,7 +10,7 @@
   transition-property: width;
   transition-duration: .3s;
 
-  #popupBody {
+  .popup-body {
     position: relative;
     padding: 1em;
     opacity: 0%;
