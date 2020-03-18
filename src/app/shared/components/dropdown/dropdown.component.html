@@ -1,8 +1,15 @@
-<mat-form-field>
-  {{ label }}
-  <mat-select class="selected-value" [value]="selection" (selectionChange)="selectionChanged($event.value)" disableOptionCentering=true>
-    <mat-option *ngFor="let option of options" [value]="option">
-      {{ option }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="ccf-dropdown wrapper">
+  <div class="container">
+    <mat-form-field>
+      {{ label }}
+      <mat-select class="selected-value" [value]="selection" (selectionChange)="selectionChanged($event.value)"
+        disableOptionCentering=true panelClass="option-panel" (openedChange)="toggleOptions()" disableRipple=true>
+        <mat-option *ngFor="let option of options" [value]="option">
+          <div class="{{optionsVisible}}">
+            {{ option }}
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
