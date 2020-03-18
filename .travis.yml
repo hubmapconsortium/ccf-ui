@@ -5,10 +5,6 @@ sudo: required
 dist: trusty
 addons:
   chrome: stable
-  sonarcloud:
-    organization: "$SONAR_KEY"
-    token:
-      secure: "$SONAR_TOKEN"
 
 cache: npm
 branches:
@@ -27,7 +23,6 @@ jobs:
     if: NOT (tag IS present)
     script:
     - npm run test
-    - sonar-scanner -X
   - stage: deploy
     name: Deploy staging to Netlify
     if: branch = develop AND type != pull_request
