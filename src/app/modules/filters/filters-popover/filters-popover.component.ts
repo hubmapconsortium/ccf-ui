@@ -11,15 +11,20 @@ export class FiltersPopoverComponent {
 
   toggleFilterVisible(): void {
     this.filtersBoxVisible = !this.filtersBoxVisible;
-    if(this.filtersVisible) {
+    if (this.filtersVisible) {
       this.filtersVisible = false;
     } else {
       // Need to give the slide animation time to finish before displaying the content to keep from having
       // the container resizing abrubtly.
       setTimeout(() => {
-          this.filtersVisible =!this.filtersVisible;
+        this.filtersVisible = !this.filtersVisible;
       }, 275);
     }
+  }
+
+  removeBox() {
+    this.filtersBoxVisible = false;
+    this.filtersVisible = false;
   }
 
   setFilterBoxClasses() {

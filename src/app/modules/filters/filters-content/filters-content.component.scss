@@ -29,3 +29,17 @@
 .outline-button:focus {
   outline: white;
 }
+
+.patient-filters {
+  display: flex;
+  width: 90%;
+
+  ccf-dual-slider {
+    margin-left: .5em;
+    width: 33%;
+  }
+
+  ccf-dropdown {
+    width: 33%;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="ccf-slider wrapper">
+  <div class="container">
+    <div *cdk-portal class="ccf-slider detached" #popover>
+      <div class="label min fade-in {{contentsVisible}}">
+        <div class="label floor"> {{ options.floor }}> </div>
+        <input type="text" value="{{lowValue}}" (keyup)="onKeyLow($event)">
+      </div>
+
+      <ng5-slider class="slider fade-in {{contentsVisible}}" [options]="options" [(value)]="lowValue"
+        [(highValue)]="highValue" (userChangeEnd)="sliderValueChanged()">
+      </ng5-slider>
+
+      <div class="label max fade-in {{contentsVisible}}">
+        <div class="label ceil">
+          <{{ options.ceil }} </div>
+            <input type="text" value="{{highValue}}" (keyup)="onKeyHigh($event)">
+        </div>
+      </div>
+
+      <mat-form-field class="form-field" [class.highlight]="isSliderOpen" (click)="toggleSliderPopover()">
+        <div class="slider-labels">
+          <span class="name-label">{{ label }}</span>
+          <span class="range-label">{{ RangeLabel }}</span>
+        </div>
+        <mat-select>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>

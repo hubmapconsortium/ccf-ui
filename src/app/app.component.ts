@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 
 @Component({
   selector: 'ccf-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ccf-ui';
+  constructor() {}
+
+  reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent) {
+    left.open();
+    left.closeExpanded();
+    right.open();
+    right.closeExpanded();
+    filterbox.removeBox();
+  }
 }
