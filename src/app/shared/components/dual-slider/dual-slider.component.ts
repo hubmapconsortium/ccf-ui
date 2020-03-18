@@ -33,7 +33,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Reference to the popover element.
    * This is undefined until the slider popover is initialized.
    */
-  @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
+  @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef<HTMLElement>;
 
   /**
    * Which criteria the slider is selecting for.
@@ -108,7 +108,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    */
   constructor(
     overlay: Overlay,
-    private element: ElementRef,
+    private element: ElementRef<HTMLElement>,
   ) {
     const position: ConnectedPosition = { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' };
     const positionStrategy = overlay.position().flexibleConnectedTo(element).withPositions([position]);
@@ -169,9 +169,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     const { element, isSliderOpen, popoverElement } = this;
     if (!isSliderOpen) {
       return;
-    } else if (element.nativeElement.contains(target)) { // tslint:disable-line:no-unsafe-any
+    } else if (element.nativeElement.contains(target)) {
       return;
-    } else if (popoverElement && popoverElement.nativeElement.contains(target)) { // tslint:disable-line:no-unsafe-any
+    } else if (popoverElement && popoverElement.nativeElement.contains(target)) {
       return;
     }
 
