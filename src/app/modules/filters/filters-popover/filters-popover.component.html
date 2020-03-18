@@ -7,7 +7,7 @@
       <mat-icon svgIcon="filter" class="icon"></mat-icon>
     </ng-template>
   </button>
-  <div id="popupContainer">
+  <div class="popupContainer" #filterContainer>
     <div id="popupBody">
       <ccf-filters-content (applyFilters)="applyFilters($event)"></ccf-filters-content>
     </div>
