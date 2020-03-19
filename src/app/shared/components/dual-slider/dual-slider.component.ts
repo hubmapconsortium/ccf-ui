@@ -33,7 +33,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Reference to the popover element.
    * This is undefined until the slider popover is initialized.
    */
-  @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef;
+  @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef<HTMLElement>;
 
   /**
    * Which criteria the slider is selecting for.
@@ -108,7 +108,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    */
   constructor(
     overlay: Overlay,
-    private element: ElementRef,
+    private element: ElementRef<HTMLElement>,
   ) {
     const position: ConnectedPosition = { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' };
     const positionStrategy = overlay.position().flexibleConnectedTo(element).withPositions([position]);
@@ -162,9 +162,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    *
    * @param target The element on which the event was fired.
    */
-  @HostListener('document:click', ['$event.target'])
-  @HostListener('document:mousemove', ['$event.target'])
-  @HostListener('document:touchstart', ['$event.target'])
+  @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  @HostListener('document:mousemove', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  @HostListener('document:touchstart', ['$event.target']) // tslint:disable-line:no-unsafe-any
   closeSliderPopover(target: HTMLElement): void {
     const { element, isSliderOpen, popoverElement } = this;
     if (!isSliderOpen) {
@@ -232,7 +232,6 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
         this.lowValue = newValue;
       }
-
       (event.target as HTMLInputElement).value = String(this.lowValue);
       (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();
@@ -250,7 +249,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
         this.highValue = newValue;
       }
 
-      (event.target as HTMLInputElement).value = String(this.lowValue);
+      (event.target as HTMLInputElement).value = String(this.highValue);
       (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();
     }
