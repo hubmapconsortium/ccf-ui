@@ -8,15 +8,12 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
   templateUrl: './info-button.component.html',
   styleUrls: ['./info-button.component.scss']
 })
-export class InfoButtonComponent implements OnInit {
+export class InfoButtonComponent {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {}
 
-  ngOnInit(): void {
-  }
-
-  launchInfoDialog():void {
-    const dialogRef = this.dialog.open(InfoDialogComponent, {
+  launchInfoDialog(): void {
+    this.dialog.open(InfoDialogComponent, {
       width: '60em',
       data: {}
     });
