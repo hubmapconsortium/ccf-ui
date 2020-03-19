@@ -10,6 +10,9 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 export class AppComponent {
   constructor() {}
 
+  // Todo: add to ngxs global state
+  filters: Record<string, unknown | unknown[]> = { tmc: [], technologies: [], sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] };
+
   reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent) {
     left.open();
     left.closeExpanded();

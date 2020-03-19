@@ -1,23 +1,23 @@
 <div class="patient-filters">
-  <ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="filters.sex"
+  <ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="filters?.sex"
     (selectionChange)="updateFilter($event, 'sex')"></ccf-dropdown>
 
-  <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="filters.ageRange"
+  <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="filters?.ageRange"
     (selectionChange)="updateFilter($event, 'ageRange')"></ccf-dual-slider>
-  <ccf-dual-slider label="BMI" [valueRange]="[13, 83]" [selection]="filters.BMIRange"
+  <ccf-dual-slider label="BMI" [valueRange]="[13, 83]" [selection]="filters?.BMIRange"
     (selectionChange)="updateFilter($event, 'BMIRange')"></ccf-dual-slider>
 </div>
 
 
 
 <div class="filter">
-  <ccf-checkbox label="Technologies" [options]="[ 'IMS', 'MxIF', 'PAS' ]" [selection]="filters.technologies"
+  <ccf-checkbox label="Technologies" [options]="[ 'IMS', 'MxIF', 'PAS' ]" [selection]="filters?.technologies"
     (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
 </div>
 
 <div class="filter">
   <ccf-checkbox label="Tissue Mapping Center (TMC)"
-    [options]="[ 'TMC-CalTech', 'TMC-Florida', 'TMC-Stanford', 'TMC-UCSD', 'TMC-Vanderbilt' ]" [selection]="filters.tmc"
+    [options]="[ 'TMC-CalTech', 'TMC-Florida', 'TMC-Stanford', 'TMC-UCSD', 'TMC-Vanderbilt' ]" [selection]="filters?.tmc"
     (selectionChange)="updateFilter($event, 'tmc')"></ccf-checkbox>
 </div>
 
