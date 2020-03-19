@@ -4,9 +4,15 @@
 
   <div class="filler"></div>
 
-  <!-- Place info about current filters here! -->
+  <div class="filter-labels">
+    <div>Sex: {{filters?.sex}}</div>
+    <div>Age: {{filters?.ageRange[0]}}-{{filters?.ageRange[1]}}</div>
+    <div>Age: {{filters?.BMIRange[0]}}-{{filters?.BMIRange[1]}}</div>
+  </div>
 
-  <mat-icon class="download" aria-hidden="false" aria-label="Download content" (click)="downloadClicked.emit()">
-    cloud_download</mat-icon>
-  <ccf-info-button></ccf-info-button>
+  <a href="https://sampledata.hubmapconsortium.org/home" rel="noreferrer noopener" target="_blank">
+    <mat-icon class="download" aria-hidden="false" aria-label="Download content" (click)="downloadClicked.emit()">
+      cloud_download</mat-icon>
+      <ccf-info-button></ccf-info-button>
+  </a>
 </mat-toolbar>
