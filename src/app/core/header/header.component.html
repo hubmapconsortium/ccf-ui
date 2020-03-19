@@ -5,12 +5,12 @@
   <div class="filler"></div>
 
   <div class="filter-labels">
-    <div>Sex: {{currentFilters.sex[0]}}</div>
-    <div>Age: {{currentFilters.ageRange[0]}}-{{currentFilters.ageRange[1]}}</div>
-    <div>BMI: {{currentFilters.BMIRange[0]}}-{{currentFilters.BMIRange[1]}}</div>
+    <div>Sex: {{currentSex}}</div>
+    <div>Age: {{currentAgeRange[0]}}-{{currentAgeRange[1]}}</div>
+    <div>Age: {{currentBMIRange[0]}}-{{currentBMIRange[1]}}</div>
   </div>
 
-  <a href="https://sampledata.hubmapconsortium.org/home">
+  <a href="https://sampledata.hubmapconsortium.org/home" rel="noreferrer noopener" target="_blank">
     <mat-icon class="download" aria-hidden="false" aria-label="Download content" (click)="downloadClicked.emit()">
       cloud_download</mat-icon>
       <ccf-info-button></ccf-info-button>
