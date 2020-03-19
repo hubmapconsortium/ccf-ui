@@ -28,23 +28,6 @@ jobs:
     - npm run test
     - sonar-scanner -X
   - stage: deploy
-    name: Deploy staging to Netlify
-    if: branch = develop AND type != pull_request
-    script:
-    - npm run build -- --base-href=/
-    - echo "/ccf-ui-sampledata/* https://hubmapconsortium.github.io/ccf-ui-sampledata/:splat 200" > dist/ccf-ui/_redirects
-    - echo "/* /index.html 200" >> dist/ccf-ui/_redirects
-    - npm run compodoc
-    deploy:
-      provider: pages
-      target-branch: staging
-      skip-cleanup: true
-      github-token: "$GITHUB_TOKEN"
-      keep-history: false
-      local-dir: dist/ccf-ui
-      on:
-        branch: develop
-  - stage: deploy
     name: Deploy demo to GitHub Pages
     if: branch = master
     script:
@@ -82,7 +65,7 @@ jobs:
     name: Test building production version on PRs
     if: type = pull_request
     script:
-    - npm run build -- --base-href=/
+    - npm run build
   - stage: test
     name: Test compodoc success on PRs
     if: type = pull_request
