@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ccf-filters-popover',
@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./filters-popover.component.scss']
 })
 export class FiltersPopoverComponent {
-  filters: Record<string, unknown> = { tmc: [], technologies: [], sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] };
+  @Input() filters: Record<string, unknown | unknown[]>;
+  @Output() filtersChange = new EventEmitter<Record<string, unknown>>();
   filtersVisible = false;
 
   toggleFilterVisible(): void {
@@ -21,6 +22,7 @@ export class FiltersPopoverComponent {
     // To be hooked up later to the real filter call.
     console.log('Filter box. Filters: ', filters);
     this.filters = filters;
+    this.filtersChange.emit(filters);
     this.filtersVisible = false;
   }
 }

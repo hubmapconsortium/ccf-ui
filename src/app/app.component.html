@@ -1,5 +1,5 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [filters]="filterbox.filters" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
+  <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
 
 
   <ccf-drawer-container>
@@ -9,7 +9,7 @@
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer position="end" opened #right>
-      <ccf-filters-popover #filterbox></ccf-filters-popover>
+      <ccf-filters-popover [(filters)]="filters" #filterbox></ccf-filters-popover>
       <button (click)="right.toggleExpanded()" style="position: absolute; bottom: 0;">Toggle Expand</button>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
