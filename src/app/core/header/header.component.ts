@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output, Input } from 
   selector: 'ccf-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
   @Input() filters: Record<string, unknown[] | unknown>;
