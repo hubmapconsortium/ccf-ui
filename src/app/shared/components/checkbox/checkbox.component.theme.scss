@@ -1,4 +1,4 @@
-@use '~@angular/material/theming'as *;
+@use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
     $accent: map-get($theme, accent);
