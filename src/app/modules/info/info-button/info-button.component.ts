@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 
 
@@ -13,7 +14,7 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 })
 export class InfoButtonComponent {
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private readonly dialog: MatDialog) {}
 
 
   /**
