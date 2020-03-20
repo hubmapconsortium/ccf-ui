@@ -14,9 +14,6 @@ export class CheckboxComponent {
 
   filterOnChange(event: MatCheckboxChange, option: string): void {
     const checked = event.checked;
-    if (!this.selection) {
-      this.selection = [];
-    }
 
     if(checked) {
       this.selection.push(option);
