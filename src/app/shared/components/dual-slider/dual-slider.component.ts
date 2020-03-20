@@ -127,6 +127,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       this.optionsChanged();
     }
     if (changes.selection) {
+      if (!this.selection) {
+        this.selection = [];
+      }
       // Detect when selection is changed and update low/high value.
       this.lowValue = Math.min(...this.selection);
       this.highValue = Math.max(...this.selection);
