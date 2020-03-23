@@ -15,14 +15,14 @@ describe('FiltersContentComponent', () => {
     instance.filters = {};
 
     instance.updateFilter('value', 'test');
-    expect(instance.filters['test']).toBe('value');
+    expect(instance.filters.test).toBe('value');
   });
 
   it('should emit the filter change when updateFilter is called', async () => {
     const { instance, outputs } = await shallow.render({ bind: {} });
     instance.updateFilter('value', 'test');
 
-    expect(outputs.filtersChange).toHaveBeenCalled();
+    expect(outputs.filtersChange.emit).toHaveBeenCalled();
   });
 
   it('should call applyButtonClick when the apply button is clicked', async () => {

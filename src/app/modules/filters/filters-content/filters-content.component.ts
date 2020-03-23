@@ -22,9 +22,9 @@ export class FiltersContentComponent {
   @Output() applyFilters = new EventEmitter<Record<string, unknown>>();
 
   /**
-   * Updates the filter object with a new key/value 
-   * @param value 
-   * @param key 
+   * Updates the filter object with a new key/value
+   * @param value The value to be saved for the filter
+   * @param key The key for the filter to be saved at
    */
   updateFilter(value: unknown, key: string): void {
     this.filters = { ...this.filters, [key]: value };
