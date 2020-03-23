@@ -2,7 +2,6 @@ import { Shallow } from 'shallow-render';
 
 import { FiltersPopoverComponent } from './filters-popover.component';
 import { FiltersPopoverModule } from './filters-popover.module';
-import { async } from '@angular/core/testing';
 
 describe('FiltersPopoverComponent', () => {
   let shallow: Shallow<FiltersPopoverComponent>;

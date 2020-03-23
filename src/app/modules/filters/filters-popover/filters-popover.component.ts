@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'ccf-filters-popover',
@@ -21,25 +21,25 @@ export class FiltersPopoverComponent {
    */
   filtersVisible = false;
 
-/**
- * Toggles filter visible
- */
-toggleFilterVisible(): void {
+  /**
+   * Toggles filter visible
+   */
+  toggleFilterVisible(): void {
     this.filtersVisible = !this.filtersVisible;
   }
 
-/**
- * Hides the filters popover box
- */
-removeBox() {
+  /**
+   * Hides the filters popover box
+   */
+  removeBox() {
     this.filtersVisible = false;
   }
 
-/**
- * Emits the current filters, and hides the popover box
- * @param filters 
- */
-applyFilters(filters: Record<string, unknown>) {
+  /**
+   * Emits the current filters, and hides the popover box
+   * @param filters The object containing all the currently set filters
+   */
+  applyFilters(filters: Record<string, unknown>) {
     this.filters = filters;
     this.filtersChange.emit(filters);
     this.removeBox();
