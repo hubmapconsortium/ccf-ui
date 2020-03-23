@@ -22,12 +22,24 @@ describe('HeaderComponent', () => {
     expect(outputs.logoClicked.emit).toHaveBeenCalled();
   });
 
-  it('should display the current filter settings', async () => {
+  it('should display the current sex', async () => {
     const { find } = await shallow
       .render({bind: {filters: { sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] }}});
     const label = find('.filter-labels').nativeElement as HTMLElement;
     expect(label.textContent).toContain('Sex: Both');
+  });
+
+  it('should display the current age range', async () => {
+    const { find } = await shallow
+      .render({bind: {filters: { sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] }}});
+    const label = find('.filter-labels').nativeElement as HTMLElement;
     expect(label.textContent).toContain('Age: 1-110');
+  });
+
+  it('should display the current filter range', async () => {
+    const { find } = await shallow
+      .render({bind: {filters: { sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] }}});
+    const label = find('.filter-labels').nativeElement as HTMLElement;
     expect(label.textContent).toContain('BMI: 13-83');
   });
 });
