@@ -1,5 +1,5 @@
-import {Component, Inject} from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'ccf-info-dialog',
@@ -7,17 +7,19 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./info-dialog.component.scss']
 })
 export class InfoDialogComponent {
-
-  constructor(
+/**
+ * Creates an instance of info dialog component.
+ * @param dialogRef Dialog reference
+ * @param data Dialog data
+ */
+constructor(
     public dialogRef: MatDialogRef<InfoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: unknown) {}
+    @Inject(MAT_DIALOG_DATA) public data: unknown) { }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
+  /**
+   * Closes info dialog component
+   */
   close(): void {
     this.dialogRef.close();
   }
-
 }
