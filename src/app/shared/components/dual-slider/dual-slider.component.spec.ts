@@ -1,12 +1,28 @@
 import { DualSliderComponent } from './dual-slider.component';
 import { DualSliderModule } from './dual-slider.module';
 import { Shallow } from 'shallow-render';
+import { ElementRef } from '@angular/core';
+import { ConnectedPosition, Overlay, OverlayRef, OverlayPositionBuilder } from '@angular/cdk/overlay';
+
 
 describe('DualSliderComponent', () => {
+    const mockBuilder = {
+        flexibleConnectedTo(...args: unknown[]) { return this; },
+        withPositions(...args: unknown[]) { return this; }
+    };
+    const mockOverlayRef: Partial<OverlayRef> = {
+        dispose() {}
+    };
+    const mockOverlay: Partial<Overlay> = {
+        position() { return mockBuilder as unknown as OverlayPositionBuilder; },
+        create(config?: unknown) { return mockOverlayRef as OverlayRef; }
+    };
+
     let shallow: Shallow<DualSliderComponent>;
 
     beforeEach(() => {
-      shallow = new Shallow(DualSliderComponent, DualSliderModule);
+        shallow = new Shallow(DualSliderComponent, DualSliderModule)
+            .mock(Overlay, mockOverlay);
     });
 
     it('displays the current range to ng5-slider', async () => {
