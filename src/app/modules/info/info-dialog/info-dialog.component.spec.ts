@@ -1,9 +1,8 @@
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Shallow } from 'shallow-render';
 
 import { InfoDialogComponent } from './info-dialog.component';
 import { InfoDialogModule } from './info-dialog.module';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatIcon } from '@angular/material/icon';
 
 describe('InfoDialogComponent', () => {
     let shallow: Shallow<InfoDialogComponent>;
