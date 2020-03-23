@@ -32,7 +32,6 @@ describe('InfoButtonComponent', () => {
   it('launchInfoDialog opens dialog box', async () => {
     const { find, instance } = await shallow.mock(MatDialog, mockMatDialog).render();
     instance.launchInfoDialog();
-    const nativeElement = find('.mat dialog container');
-    expect(nativeElement).toBeDefined();
+    expect(find('.mat dialog container')).toHaveFoundOne();
   });
 });
