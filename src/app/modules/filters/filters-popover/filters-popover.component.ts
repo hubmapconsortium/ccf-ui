@@ -6,23 +6,42 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./filters-popover.component.scss']
 })
 export class FiltersPopoverComponent {
+  /**
+   * Allows the filters to be set from outside the component, and still render / function normally
+   */
   @Input() filters: Record<string, unknown | unknown[]>;
+
+  /**
+   * Emits the current filters
+   */
   @Output() filtersChange = new EventEmitter<Record<string, unknown>>();
+
+  /**
+   * Keeps track of whether or not the filters popover box is visible or not
+   */
   filtersVisible = false;
 
-  toggleFilterVisible(): void {
+/**
+ * Toggles filter visible
+ */
+toggleFilterVisible(): void {
     this.filtersVisible = !this.filtersVisible;
   }
 
-  removeBox() {
+/**
+ * Hides the filters popover box
+ */
+removeBox() {
     this.filtersVisible = false;
   }
 
-  applyFilters(filters: Record<string, unknown>) {
-    // To be hooked up later to the real filter call.
-    console.log('Filter box. Filters: ', filters);
+/**
+ * Emits the current filters, and hides the popover box
+ * @param filters 
+ */
+applyFilters(filters: Record<string, unknown>) {
     this.filters = filters;
     this.filtersChange.emit(filters);
-    this.filtersVisible = false;
+    this.removeBox();
   }
 }

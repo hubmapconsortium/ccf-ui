@@ -1,25 +1,47 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Shallow } from 'shallow-render';
 
 import { FiltersPopoverComponent } from './filters-popover.component';
+import { FiltersPopoverModule } from './filters-popover.module';
+import { async } from '@angular/core/testing';
 
 describe('FiltersPopoverComponent', () => {
-  // let component: FiltersPopoverComponent;
-  // let fixture: ComponentFixture<FiltersPopoverComponent>;
+  let shallow: Shallow<FiltersPopoverComponent>;
 
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     declarations: [ FiltersPopoverComponent ]
-  //   })
-  //   .compileComponents();
-  // }));
+  beforeEach(() => {
+    shallow = new Shallow(FiltersPopoverComponent, FiltersPopoverModule);
+  });
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(FiltersPopoverComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
+  it('should toggle visibility', async () => {
+    const { instance } = await shallow.render({ bind: {} });
+    instance.filtersVisible = false;
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+    instance.toggleFilterVisible();
+    expect(instance.filtersVisible).toBe(true);
+
+    instance.toggleFilterVisible();
+    expect(instance.filtersVisible).toBe(false);
+  });
+
+  it('should be able to set visibility to false', async () => {
+    const { instance } = await shallow.render({ bind: {} });
+    instance.filtersVisible = true;
+
+    instance.removeBox();
+    expect(instance.filtersVisible).toBe(false);
+  });
+
+  it('should set visibility to false when filters are applied', async () => {
+    const { instance } = await shallow.render({ bind: {} });
+    instance.filtersVisible = false;
+
+    instance.applyFilters({});
+    expect(instance.filtersVisible).toBe(false);
+  });
+
+  it('should emit filters when filters are applied', async () => {
+    const { instance, outputs } = await shallow.render({ bind: {} });
+
+    instance.applyFilters({});
+    expect(outputs.filtersChange.emit).toHaveBeenCalled();
+  });
 });
