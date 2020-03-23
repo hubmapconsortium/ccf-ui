@@ -7,12 +7,12 @@
   <div class="filter-labels">
     <div>Sex: {{filters?.sex}}</div>
     <div>Age: {{filters?.ageRange[0]}}-{{filters?.ageRange[1]}}</div>
-    <div>Age: {{filters?.BMIRange[0]}}-{{filters?.BMIRange[1]}}</div>
+    <div>BMI: {{filters?.BMIRange[0]}}-{{filters?.BMIRange[1]}}</div>
   </div>
 
   <a href="https://sampledata.hubmapconsortium.org/home" rel="noreferrer noopener" target="_blank">
     <mat-icon class="download" aria-hidden="false" aria-label="Download content" (click)="downloadClicked.emit()">
       cloud_download</mat-icon>    
   </a>
-  <ccf-info-button></ccf-info-button>
+  <ccf-info-button id="info-button"></ccf-info-button>
 </mat-toolbar>

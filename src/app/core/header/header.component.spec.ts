@@ -9,4 +9,25 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     shallow = new Shallow(HeaderComponent, HeaderModule);
   });
+
+  it('should emit downloadClicked when download button is clicked', async () => {
+    const { find, instance, outputs } = await shallow.render();
+    find('.download').triggerEventHandler('click', {});
+    expect(outputs.downloadClicked.emit).toHaveBeenCalled();
+  });
+
+  it('should emit logoClicked when logo is clicked', async () => {
+    const { find, instance, outputs } = await shallow.render();
+    find('.logo').triggerEventHandler('click', {});
+    expect(outputs.logoClicked.emit).toHaveBeenCalled();
+  });
+
+  it('should display the current filter settings', async () => {
+    const { find } = await shallow
+      .render({bind: {filters: { sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] }}});
+    const label = find('.filter-labels').nativeElement as HTMLElement;
+    expect(label.textContent).toContain('Sex: Both');
+    expect(label.textContent).toContain('Age: 1-110');
+    expect(label.textContent).toContain('BMI: 13-83');
+  });
 });
