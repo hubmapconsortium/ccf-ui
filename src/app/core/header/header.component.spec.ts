@@ -36,7 +36,7 @@ describe('HeaderComponent', () => {
     expect(label.textContent).toContain('Age: 1-110');
   });
 
-  it('should display the current filter range', async () => {
+  it('should display the current BMI range', async () => {
     const { find } = await shallow
       .render({bind: {filters: { sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] }}});
     const label = find('.filter-labels').nativeElement as HTMLElement;
