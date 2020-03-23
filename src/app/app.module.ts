@@ -10,6 +10,7 @@ import { OntologyExplorationModule } from './modules/ontology-exploration/ontolo
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MatIconModule } from '@angular/material/icon';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
+import { FullScreenButtonComponent } from './full-screen-button/full-screen-button.component';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
     MatIconModule,
     DualSliderModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, FullScreenButtonComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
