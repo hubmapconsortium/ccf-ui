@@ -5,7 +5,7 @@ import { HeaderModule } from './header.module';
 
 describe('HeaderComponent', () => {
   let shallow: Shallow<HeaderComponent>;
-  const filterClass = '.filter-labels';
+  const testFilter = { sex: 'Both', ageRange: [5, 99], BMIRange: [30, 80] };
 
   beforeEach(() => {
     shallow = new Shallow(HeaderComponent, HeaderModule);
@@ -23,24 +23,21 @@ describe('HeaderComponent', () => {
     expect(outputs.logoClicked.emit).toHaveBeenCalled();
   });
 
+  async function testFilterLabel(index: number, data: Record<string, unknown[] | unknown>, result: string) {
+    const { find } = await shallow.render({ bind: { filters: data } });
+    const label = find(`.filter-labels div:nth-child(${index})`).nativeElement as HTMLElement;
+    expect(label.textContent).toBe(result);
+  }
+
   it('should display the current sex', async () => {
-    const { find } = await shallow
-      .render({bind: {filters: { sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] }}});
-    const label = find(filterClass).nativeElement as HTMLElement;
-    expect(label.textContent).toContain('Sex: Both');
+    testFilterLabel(1, testFilter, 'Sex: Both');
   });
 
   it('should display the current age range', async () => {
-    const { find } = await shallow
-      .render({bind: {filters: { sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] }}});
-    const label = find(filterClass).nativeElement as HTMLElement;
-    expect(label.textContent).toContain('Age: 1-110');
+    testFilterLabel(2, testFilter, 'Age: 5-99');
   });
 
   it('should display the current BMI range', async () => {
-    const { find } = await shallow
-      .render({bind: {filters: { sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] }}});
-    const label = find(filterClass).nativeElement as HTMLElement;
-    expect(label.textContent).toContain('BMI: 13-83');
+    testFilterLabel(3, testFilter, 'BMI: 30-80');
   });
 });
