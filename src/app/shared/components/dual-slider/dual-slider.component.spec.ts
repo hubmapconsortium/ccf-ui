@@ -1,47 +1,41 @@
 import { DualSliderComponent } from './dual-slider.component';
 import { DualSliderModule } from './dual-slider.module';
 import { Shallow } from 'shallow-render';
-import { Options } from 'ng5-slider';
-import { ElementRef } from '@angular/core';
-import { ConnectedPosition, Overlay, OverlayRef, OverlayPositionBuilder } from '@angular/cdk/overlay';
+import { Overlay, OverlayRef, OverlayPositionBuilder } from '@angular/cdk/overlay';
+// import { CdkPortal } from '@angular/cdk/portal';
 
 
 describe('DualSliderComponent', () => {
+
     const mockBuilder = {
         flexibleConnectedTo(...args: unknown[]) { return this; },
         withPositions(...args: unknown[]) { return this; }
     };
     const mockOverlayRef: Partial<OverlayRef> = {
-        dispose() {}
+        dispose() {},
+        // attach() {},
+        detach() {},
+        updatePosition() {}
     };
     const mockOverlay: Partial<Overlay> = {
         position() { return mockBuilder as unknown as OverlayPositionBuilder; },
-        create(config?: unknown) { return mockOverlayRef as OverlayRef; }
-    };
-
-    const mockOptions: Partial<Options> = {
-        floor: 1,
-        ceil: 99,
-        step: 1,
-        hideLimitLabels: true,
-        hidePointerLabels: true
+        create() { return mockOverlayRef as OverlayRef; },
     };
 
     let shallow: Shallow<DualSliderComponent>;
 
     beforeEach(() => {
         shallow = new Shallow(DualSliderComponent, DualSliderModule)
-            .mock(Overlay, mockOverlay);
+            .mock(Overlay, mockOverlay)
+            .mock(OverlayRef, mockOverlayRef);
     });
 
-    // Works
     it('displays the current range on closed slider', async () => {
         const { find } = await shallow.render({ bind: {selection: [20, 80]}});
         const label = find('.range-label').nativeElement as HTMLElement;
         expect(label.textContent).toBe('20-80');
     });
 
-    // Works
     it('should call toggleSliderPopover if clicked', async () => {
         const { find, instance } = await shallow.render();
         const formField = find('.form-field');
@@ -74,14 +68,50 @@ describe('DualSliderComponent', () => {
         expect(instance.options.ceil).toEqual(50);
     });
 
-    // it('should display the current selected values on the slider', async () => {
-    //     const { find, instance } = await shallow.render({ bind: {selection: [10, 90]}});
-    //     const formField = find('.form-field');
-    //     formField.triggerEventHandler('click', '');
+    it('changes lowValue to the floor value if floor > lowValue', async () => {
+        const { instance } = await shallow.render({ bind: {selection: [10, 66], valueRange: [1, 99]}});
+        instance.lowValue = 10;
+        instance.highValue = 66;
+        instance.valueRange = [30, 50];
+        instance.optionsChanged();
+        expect(instance.lowValue).toEqual(30);
+    });
 
-    //     const input = find('.input-low').nativeElement;
-    //     expect(input.value).toBe('10');
+    it('changes highValue to the ceil value if ceil < highValue', async () => {
+        const { instance } = await shallow.render({ bind: {selection: [10, 66], valueRange: [1, 99]}});
+        instance.lowValue = 10;
+        instance.highValue = 66;
+        instance.valueRange = [30, 50];
+        instance.optionsChanged();
+        expect(instance.highValue).toEqual(50);
+    });
+
+    it('changes floor and ceil to 0 if valueRange is undefined', async () => {
+        const { instance } = await shallow.render({ bind: {valueRange: undefined}});
+        instance.optionsChanged();
+        expect(instance.options.floor).toEqual(0);
+        expect(instance.options.ceil).toEqual(0);
+    });
+
+    // it('detaches the overlay if slider is initialized and toggleSliderPopover is triggered', async () => {
+    //     const { instance } = await shallow.render();
+    //     instance.toggleSliderPopover();
+    //     instance.toggleSliderPopover();
+    //     expect(mockOverlayRef.detach).toHaveBeenCalled();
     // });
 
+    // it('toggles visibility of contents when toggleSliderPopover is called', async () => {
+    //     const { instance } = await shallow.render();
+    //     instance.toggleSliderPopover();
+    //     expect(instance.contentsVisible).toBe('visible');
+    //     instance.toggleSliderPopover();
+    //     expect(instance.contentsVisible).toBe('invisible');
+    // });
 
+    // it('should display the current selected values on the slider', async () => {
+    //     const { find, instance } = await shallow.render({ bind: {selection: [10, 90]}});
+    //     instance.toggleSliderPopover();
+    //     const input = find('.input-low').nativeElement as HTMLInputElement;
+    //     expect(input.value).toBe('10');
+    // });
 });
