@@ -166,7 +166,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * @param target The element on which the event was fired.
    */
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
-  @HostListener('document:mousemove', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  // @HostListener('document:mousemove', ['$event.target']) // tslint:disable-line:no-unsafe-any
   @HostListener('document:touchstart', ['$event.target']) // tslint:disable-line:no-unsafe-any
   closeSliderPopover(target: HTMLElement): void {
     const { element, isSliderOpen, popoverElement } = this;
@@ -205,7 +205,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Emits the updated selection value array.
    */
   sliderValueChanged(): void {
-    const { lowValue, highValue, options: { floor, ceil } } = this;
+    const { lowValue, highValue} = this;
     // const min = lowValue !== floor ? lowValue : undefined;
     // const max = highValue !== ceil ? highValue : undefined;
 
