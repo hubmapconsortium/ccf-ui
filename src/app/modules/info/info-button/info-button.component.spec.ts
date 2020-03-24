@@ -1,8 +1,8 @@
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Shallow } from 'shallow-render';
 import { InfoButtonComponent } from './info-button.component';
 import { InfoButtonModule } from './info-button.module';
 
-import { Shallow } from 'shallow-render';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
@@ -27,5 +27,11 @@ describe('InfoButtonComponent', () => {
     const spy = spyOn(instance, 'launchInfoDialog');
     find('mat-icon').triggerEventHandler('click', '');
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('launchInfoDialog opens dialog box', async () => {
+    const { instance, get } = await shallow.mock(MatDialog, mockMatDialog).render();
+    instance.launchInfoDialog();
+    expect(get(MatDialog).open).toHaveBeenCalled();
   });
 });
