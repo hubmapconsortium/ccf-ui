@@ -4,8 +4,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { HeaderComponent } from './header.component';
 import { InfoButtonModule } from '../../modules/info/info-button/info-button.module';
+import { HeaderComponent } from './header.component';
 
 
 @NgModule({
