@@ -71,7 +71,7 @@ export class OntologySearchComponent implements OnInit {
    * @param entry search result entry
    * @returns 1 or -1
    */
-  private sortBySynonymResult(this: void, entry: SearchResult): number {
+  sortBySynonymResult(this: void, entry: SearchResult): number {
     return entry.displayLabel.join().includes('(') ? 1 : -1;
   }
 
@@ -80,7 +80,7 @@ export class OntologySearchComponent implements OnInit {
    * @param entry search result entry
    * @returns lower case value of node label
    */
-  private sortLexically(this: void, entry: SearchResult): string {
+  sortLexically(this: void, entry: SearchResult): string {
     return entry.node.label.toLowerCase();
   }
 
