@@ -10,12 +10,12 @@
     </ccf-drawer>
     <ccf-drawer class="drawer right" position="end" opened #right>
       <ccf-filters-popover [(filters)]="filters" #filterbox></ccf-filters-popover>
-      <div *ngIf="fullscreenActive; else full" #exit>
+      <div *ngIf="fullscreenActive">
         <button class="fullscreen exit" (click)="toggleFullScreen(right)">
           <mat-icon class="icon">fullscreen_exit</mat-icon>
         </button>
       </div>
-      <div *ngIf="!fullscreenActive; else exit" #full>
+      <div *ngIf="!fullscreenActive">
         <button class="fullscreen" (click)="toggleFullScreen(right)">
           <mat-icon class="icon">fullscreen</mat-icon>
         </button>
