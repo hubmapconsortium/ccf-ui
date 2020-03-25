@@ -83,7 +83,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   /**
    * Computes the current age range for display in the button.
    */
-  get RangeLabel(): string {
+  get rangeLabel(): string {
     const { lowValue, highValue } = this;
     if (lowValue === highValue) {
       return `${lowValue}`;
