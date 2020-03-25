@@ -1,25 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 
 
+/**
+ * Info button component: Information icon displays project details when clicked.
+ */
 @Component({
   selector: 'ccf-info-button',
   templateUrl: './info-button.component.html',
   styleUrls: ['./info-button.component.scss']
 })
-export class InfoButtonComponent implements OnInit {
+export class InfoButtonComponent {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private readonly dialog: MatDialog) {}
 
-  ngOnInit(): void {
-  }
 
-  launchInfoDialog():void {
-    const dialogRef = this.dialog.open(InfoDialogComponent, {
+  /**
+   * Opens the info dialogue with the project details
+   */
+  launchInfoDialog(): void {
+    this.dialog.open(InfoDialogComponent, {
       width: '60em',
       data: {}
     });
   }
-
 }
