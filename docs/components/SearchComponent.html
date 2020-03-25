@@ -1,0 +1,680 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>SearchComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/search/search.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Container component for search filters.</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-search</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./search.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./search.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filterCategories">filterCategories</a>
+                            </li>
+                            <li>
+                                <a href="#tree">tree</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selected">selected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ontology: <a href="../injectables/OntologyService.html">OntologyService</a>, search: <a href="../injectables/SearchService.html">SearchService</a>, store: Store, navigationService: <a href="../injectables/NavigationService.html">NavigationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/search/search.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of search component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ontology</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OntologyService.html" target="_self" >OntologyService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The service used to interact with the ontology.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>search</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SearchService.html" target="_self" >SearchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Service used to update the search state.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The global state.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>navigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected"></a>
+                    <span class="name">
+                        <b>
+                            selected
+                        </b>
+                        <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selected(ontologyNode: <a href="../interfaces/OntologyNode.html">OntologyNode</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/components/search/search.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Expands and selects the ontology node in the tree</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ontologyNode</td>
+                                    <td>
+                                                <code><a href="../interfaces/OntologyNode.html" target="_self" >OntologyNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the selected ontology node</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filterCategories"></a>
+                        <span class="name">
+                            <b>
+                            filterCategories</b>
+                            <a href="#filterCategories"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Map([
+    [&#x27;Technologies&#x27;, [
+      {displayName: &#x27;IMS&#x27;, tooltip: &#x27;Imaging Mass Spectrometry&#x27;},
+      {displayName: &#x27;MxIF&#x27;, tooltip: &#x27;Multiplex Immunofluorescence&#x27;},
+      {displayName: &#x27;AF&#x27;, tooltip: &#x27;Autofluorescence&#x27;},
+      {displayName: &#x27;PAS&#x27;, tooltip: &#x27;Periodic Acid Schiff&#x27;},
+      {displayName: &#x27;IHC&#x27;, tooltip: &#x27;Immunohistochemistry&#x27;}]],
+
+    [&#x27;TMCs&#x27;, [
+      {displayName: &#x27;TMC-Vanderbilt&#x27;, tooltip: &#x27;Vanderbilt University&#x27;},
+      {displayName: &#x27;TMC-UCSD&#x27;, tooltip: &#x27;University of California San Diego&#x27;},
+      {displayName: &#x27;TMC-Stanford&#x27;, tooltip: &#x27;Stanford University&#x27;},
+      {displayName: &#x27;TMC-Florida&#x27;, tooltip: &#x27;University of Florida&#x27;},
+      {displayName: &#x27;TMC-CalTech&#x27;, tooltip: &#x27;California Institute of Technology&#x27;}
+    ]]
+  ])</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/search/search.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Available search filter categories and their values, TODO - needs to be fetched from the data
+based on the implementation</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tree"></a>
+                        <span class="name">
+                            <b>
+                            tree</b>
+                            <a href="#tree"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../components/OntologyTreeComponent.html" target="_self" >OntologyTreeComponent</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(OntologyTreeComponent, {static: false})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/search/search.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>View child of search component</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { Store } from &#x27;@ngxs/store&#x27;;
+import { OntologyNode } from &#x27;src/app/shared/state/ontology/ontology.model&#x27;;
+import { OntologyState } from &#x27;src/app/shared/state/ontology/ontology.state&#x27;;
+
+import { OntologyService } from &#x27;../../shared/services/ontology/ontology.service&#x27;;
+import { SearchService } from &#x27;../../shared/services/search/search.service&#x27;;
+import { OntologyTreeComponent } from &#x27;../ontology-tree/ontology-tree.component&#x27;;
+import { NavigationService } from &#x27;src/app/shared/services/navigation/navigation.service&#x27;;
+
+/**
+ * Container component for search filters.
+ */
+@Component({
+  selector: &#x27;ccf-search&#x27;,
+  templateUrl: &#x27;./search.component.html&#x27;,
+  styleUrls: [&#x27;./search.component.scss&#x27;]
+})
+export class SearchComponent {
+  /**
+   * View child of search component
+   */
+  @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
+  /**
+  * Available search filter categories and their values, TODO - needs to be fetched from the data
+  * based on the implementation
+  */
+  filterCategories &#x3D; new Map([
+    [&#x27;Technologies&#x27;, [
+      {displayName: &#x27;IMS&#x27;, tooltip: &#x27;Imaging Mass Spectrometry&#x27;},
+      {displayName: &#x27;MxIF&#x27;, tooltip: &#x27;Multiplex Immunofluorescence&#x27;},
+      {displayName: &#x27;AF&#x27;, tooltip: &#x27;Autofluorescence&#x27;},
+      {displayName: &#x27;PAS&#x27;, tooltip: &#x27;Periodic Acid Schiff&#x27;},
+      {displayName: &#x27;IHC&#x27;, tooltip: &#x27;Immunohistochemistry&#x27;}]],
+
+    [&#x27;TMCs&#x27;, [
+      {displayName: &#x27;TMC-Vanderbilt&#x27;, tooltip: &#x27;Vanderbilt University&#x27;},
+      {displayName: &#x27;TMC-UCSD&#x27;, tooltip: &#x27;University of California San Diego&#x27;},
+      {displayName: &#x27;TMC-Stanford&#x27;, tooltip: &#x27;Stanford University&#x27;},
+      {displayName: &#x27;TMC-Florida&#x27;, tooltip: &#x27;University of Florida&#x27;},
+      {displayName: &#x27;TMC-CalTech&#x27;, tooltip: &#x27;California Institute of Technology&#x27;}
+    ]]
+  ]);
+
+  /**
+   * Creates an instance of search component.
+   *
+   * @param ontology The service used to interact with the ontology.
+   * @param search Service used to update the search state.
+   * @param store The global state.
+   */
+  constructor(
+    readonly ontology: OntologyService,
+    readonly search: SearchService,
+    private store: Store,
+    private readonly navigationService: NavigationService
+  ) { }
+
+  /**
+   * Expands and selects the ontology node in the tree
+   * @param ontologyNode the selected ontology node
+   */
+  selected(ontologyNode: OntologyNode) {
+    const { nodes } &#x3D; this.store.selectSnapshot(OntologyState);
+    this.tree.expandAndSelect(ontologyNode, node &#x3D;&gt; nodes[node.parent]);
+    this.navigationService.navigateToTissueBrowser();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ccf-search wrapper&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;ccf-ontology-search class&#x3D;&quot;search&quot; (selected)&#x3D;&quot;selected($event)&quot;&gt;&lt;/ccf-ontology-search&gt;
+
+    &lt;div class&#x3D;&quot;age-gender-container&quot;&gt;
+      &lt;ccf-gender-selector class&#x3D;&quot;gender&quot;&gt;&lt;/ccf-gender-selector&gt;
+      &lt;ccf-age-selector class&#x3D;&quot;age&quot;&gt;&lt;/ccf-age-selector&gt;
+    &lt;/div&gt;
+    &lt;ccf-search-categories [filterCategories]&#x3D;&quot;filterCategories&quot; class&#x3D;&quot;search-categories&quot;&gt;&lt;/ccf-search-categories&gt;
+    &lt;ccf-ontology-tree *ngIf&#x3D;&quot;ontology.rootNode | async as rootNode&quot; class&#x3D;&quot;tree&quot; [nodes]&#x3D;&quot;[rootNode]&quot;
+                       [getChildren]&#x3D;&quot;ontology.getChildren&quot; (nodeSelected)&#x3D;&quot;search.setLocation($event)&quot;&gt;
+    &lt;/ccf-ontology-tree&gt;
+
+    &lt;div class&#x3D;&quot;filler&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./search.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.ccf-search.wrapper {
+  height: 100%;
+
+  .container {
+    height: 100%;
+    background: #f5f5f5;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+
+    .age-gender-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: flex-start;
+
+      .age {
+        padding-left: 0.75rem;
+      }
+    }
+
+    .tree {
+      margin-top: 1rem;
+      overflow: auto;
+    }
+
+    .filler {
+      flex-grow: 1;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="ccf-search wrapper">  <div class="container">    <ccf-ontology-search class="search" (selected)="selected($event)"></ccf-ontology-search>    <div class="age-gender-container">      <ccf-gender-selector class="gender"></ccf-gender-selector>      <ccf-age-selector class="age"></ccf-age-selector>    </div>    <ccf-search-categories [filterCategories]="filterCategories" class="search-categories"></ccf-search-categories>    <ccf-ontology-tree *ngIf="ontology.rootNode | async as rootNode" class="tree" [nodes]="[rootNode]"                       [getChildren]="ontology.getChildren" (nodeSelected)="search.setLocation($event)">    </ccf-ontology-tree>    <div class="filler"></div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ccf-about'},{'name': 'AgeSelectorComponent', 'selector': 'ccf-age-selector'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BodyComponent', 'selector': 'ccf-body'},{'name': 'CalloutComponent', 'selector': 'ccf-callout, [ccf-callout]'},{'name': 'GenderSelectorComponent', 'selector': 'ccf-gender-selector'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HomeComponent', 'selector': 'ccf-home'},{'name': 'MainComponent', 'selector': 'ccf-main'},{'name': 'MetadataComponent', 'selector': 'ccf-metadata'},{'name': 'NavigationComponent', 'selector': 'ccf-navigation'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'Organ3dComponent', 'selector': 'ccf-organ3d'},{'name': 'OrganComponent', 'selector': 'ccf-organ'},{'name': 'SearchCategoriesComponent', 'selector': 'ccf-search-categories'},{'name': 'SearchComponent', 'selector': 'ccf-search'},{'name': 'TissueComponent', 'selector': 'ccf-tissue'},{'name': 'TissuesBrowserComponent', 'selector': 'ccf-tissues-browser'},{'name': 'TissuesBrowserGridComponent', 'selector': 'ccf-tissues-browser-grid'},{'name': 'TissuesBrowserGridItemComponent', 'selector': 'ccf-tissues-browser-grid-item'},{'name': 'TissuesBrowserGridPopoverContentComponent', 'selector': 'ccf-tissues-browser-grid-popover-content'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SearchComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SearchComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

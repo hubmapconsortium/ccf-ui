@@ -1,0 +1,692 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>TissuesBrowserGridComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/tissues-browser-grid/tissues-browser-grid.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>A grid where each item can be hovered to display a popover.</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-tissues-browser-grid</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./tissues-browser-grid.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./tissues-browser-grid.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activePopoverItem">activePopoverItem</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#defaultNumColumns">defaultNumColumns</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clearActivePopoverItem">clearActivePopoverItem</a>
+                            </li>
+                            <li>
+                                <a href="#setActivePopoverItem">setActivePopoverItem</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#items">items</a>
+                            </li>
+                            <li>
+                                <a href="#numColumns">numColumns</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="items"></a>
+                        <b>items</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TissueImage.html" target="_self" >TissueImage[]</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/tissues-browser-grid/tissues-browser-grid.component.ts:22</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Grid items.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="numColumns"></a>
+                        <b>numColumns</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/tissues-browser-grid/tissues-browser-grid.component.ts:27</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Desired number of columns in the grid.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearActivePopoverItem"></a>
+                    <span class="name">
+                        <b>
+                            clearActivePopoverItem
+                        </b>
+                        <a href="#clearActivePopoverItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearActivePopoverItem()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/components/tissues-browser-grid/tissues-browser-grid.component.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Clears the active popover item.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setActivePopoverItem"></a>
+                    <span class="name">
+                        <b>
+                            setActivePopoverItem
+                        </b>
+                        <a href="#setActivePopoverItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setActivePopoverItem(item: <a href="../interfaces/TissueImage.html">TissueImage</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/components/tissues-browser-grid/tissues-browser-grid.component.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets the active popover item.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../interfaces/TissueImage.html" target="_self" >TissueImage</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The item object.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="activePopoverItem"></a>
+                        <span class="name">
+                            <b>
+                            activePopoverItem</b>
+                            <a href="#activePopoverItem"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/TissueImage.html" target="_self" >TissueImage</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/tissues-browser-grid/tissues-browser-grid.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Item currently being hovered.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultNumColumns"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                                <span class="modifier">Readonly</span>
+                            defaultNumColumns</b>
+                            <a href="#defaultNumColumns"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>6</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/tissues-browser-grid/tissues-browser-grid.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Default number of columns in the tissues browser grid.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+
+import { TissueImage } from &#x27;../../shared/state/database/database.models&#x27;;
+
+/**
+ * A grid where each item can be hovered to display a popover.
+ */
+@Component({
+  selector: &#x27;ccf-tissues-browser-grid&#x27;,
+  templateUrl: &#x27;./tissues-browser-grid.component.html&#x27;,
+  styleUrls: [&#x27;./tissues-browser-grid.component.scss&#x27;]
+})
+export class TissuesBrowserGridComponent {
+  /**
+   * Default number of columns in the tissues browser grid.
+   */
+  static readonly defaultNumColumns &#x3D; 6;
+
+  /**
+   * Grid items.
+   */
+  @Input() items: TissueImage[];
+
+  /**
+   * Desired number of columns in the grid.
+   */
+  @Input() numColumns: number;
+
+  /**
+   * Item currently being hovered.
+   */
+  activePopoverItem: TissueImage;
+
+  /**
+   * Sets the active popover item.
+   *
+   * @param item The item object.
+   */
+  setActivePopoverItem(item: TissueImage): void {
+    this.activePopoverItem &#x3D; item;
+  }
+
+  /**
+   * Clears the active popover item.
+   */
+  clearActivePopoverItem(): void {
+    this.activePopoverItem &#x3D; undefined;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;tissues-browser-grid wrapper&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;popover-content class&#x3D;&quot;popover-container&quot; [attr.data-num-columns]&#x3D;&quot;numColumns&quot; placement&#x3D;&quot;right&quot;
+                     [closeOnMouseOutside]&#x3D;&quot;true&quot; #popover&gt;
+      &lt;ccf-tissues-browser-grid-popover-content [item]&#x3D;&quot;activePopoverItem&quot;&gt;
+      &lt;/ccf-tissues-browser-grid-popover-content&gt;
+    &lt;/popover-content&gt;
+
+    &lt;div class&#x3D;&quot;grid&quot;&gt;
+      &lt;ccf-tissues-browser-grid-item *ngFor&#x3D;&quot;let item of items&quot; class&#x3D;&quot;item&quot; [attr.data-num-columns]&#x3D;&quot;numColumns&quot;
+                                     [popover]&#x3D;&quot;popover&quot; popoverSize&#x3D;&quot;auto&quot; [popoverCloseOnMouseOutside]&#x3D;&quot;true&quot;
+                                     [item]&#x3D;&quot;item&quot; (onShown)&#x3D;&quot;setActivePopoverItem(item)&quot;
+                                     (onHidden)&#x3D;&quot;clearActivePopoverItem()&quot;&gt;
+      &lt;/ccf-tissues-browser-grid-item&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./tissues-browser-grid.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">$default-num-columns: 6;
+$num-column-classes: 12;
+$item-min-width: 220px;
+$item-max-width: 768px;
+$item-min-height: 160px;
+$item-max-height: 559px;
+$height-width-ratio: $item-min-height / $item-min-width;
+
+@function item-width($n) {
+  @return (100% / $n);
+}
+
+@function item-height($n) {
+  @return $height-width-ratio * item-width($n);
+}
+
+.tissues-browser-grid.wrapper {
+  .container {
+    .popover-container {
+      ::ng-deep .popover-content {
+        min-width: $item-min-width;
+        max-width: $item-max-width;
+        min-height: $item-min-height;
+        max-height: $item-max-height;
+
+        &amp;.bs-popover-right {
+          margin-left: 0;
+        }
+
+        .popover-body {
+          line-height: normal;
+        }
+      }
+    }
+
+    .grid {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: flex-start;
+
+      .item {
+        position: relative;
+        width: item-width($default-num-columns);
+        padding-top: item-height($default-num-columns);
+        min-width: $item-min-width;
+        max-width: $item-max-width;
+        min-height: $item-min-height;
+        max-height: $item-max-height;
+        margin: 4px;
+
+        @for $n from 1 through $num-column-classes {
+          &amp;[data-num-columns&#x3D;&quot;#{$n}&quot;] {
+            width: item-width($n);
+            padding-top: item-height($n);
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="tissues-browser-grid wrapper">  <div class="container">    <popover-content class="popover-container" [attr.data-num-columns]="numColumns" placement="right"                     [closeOnMouseOutside]="true" #popover>      <ccf-tissues-browser-grid-popover-content [item]="activePopoverItem">      </ccf-tissues-browser-grid-popover-content>    </popover-content>    <div class="grid">      <ccf-tissues-browser-grid-item *ngFor="let item of items" class="item" [attr.data-num-columns]="numColumns"                                     [popover]="popover" popoverSize="auto" [popoverCloseOnMouseOutside]="true"                                     [item]="item" (onShown)="setActivePopoverItem(item)"                                     (onHidden)="clearActivePopoverItem()">      </ccf-tissues-browser-grid-item>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ccf-about'},{'name': 'AgeSelectorComponent', 'selector': 'ccf-age-selector'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BodyComponent', 'selector': 'ccf-body'},{'name': 'CalloutComponent', 'selector': 'ccf-callout, [ccf-callout]'},{'name': 'GenderSelectorComponent', 'selector': 'ccf-gender-selector'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HomeComponent', 'selector': 'ccf-home'},{'name': 'MainComponent', 'selector': 'ccf-main'},{'name': 'MetadataComponent', 'selector': 'ccf-metadata'},{'name': 'NavigationComponent', 'selector': 'ccf-navigation'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'Organ3dComponent', 'selector': 'ccf-organ3d'},{'name': 'OrganComponent', 'selector': 'ccf-organ'},{'name': 'SearchCategoriesComponent', 'selector': 'ccf-search-categories'},{'name': 'SearchComponent', 'selector': 'ccf-search'},{'name': 'TissueComponent', 'selector': 'ccf-tissue'},{'name': 'TissuesBrowserComponent', 'selector': 'ccf-tissues-browser'},{'name': 'TissuesBrowserGridComponent', 'selector': 'ccf-tissues-browser-grid'},{'name': 'TissuesBrowserGridItemComponent', 'selector': 'ccf-tissues-browser-grid-item'},{'name': 'TissuesBrowserGridPopoverContentComponent', 'selector': 'ccf-tissues-browser-grid-popover-content'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TissuesBrowserGridComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TissuesBrowserGridComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

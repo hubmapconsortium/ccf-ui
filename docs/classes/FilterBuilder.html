@@ -1,0 +1,1157 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>FilterBuilder</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/shared/common/filter/filter-builder.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Utility class for creating database filters.</p>
+
+            </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addCompare">addCompare</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#addFilter">addFilter</a>
+                            </li>
+                            <li>
+                                <a href="#addIncludedIn">addIncludedIn</a>
+                            </li>
+                            <li>
+                                <a href="#addIncludes">addIncludes</a>
+                            </li>
+                            <li>
+                                <a href="#addMatches">addMatches</a>
+                            </li>
+                            <li>
+                                <a href="#addOverlapsBy">addOverlapsBy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getAllFilters">getAllFilters</a>
+                            </li>
+                            <li>
+                                <a href="#toFilter">toFilter</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(filter?: <a href="../undefineds/FilterPred.html">FilterPred<T></a>, next?: <a href="../classes/FilterBuilder.html">FilterBuilder<T></a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of filter builder.
+Note: Arguments are for internal use only!</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>filter</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../miscellaneous/typealiases.html#FilterPred" target="_self" >FilterPred&lt;T&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>A filter function.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>next</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/FilterBuilder.html" target="_self" >FilterBuilder&lt;T&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Reference to the next builder in the filter chain.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addCompare"></a>
+                    <span class="name">
+                        <b>
+                            addCompare
+                        </b>
+                        <a href="#addCompare"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addCompare(path: PropertyPath, compare: <a href="../undefineds/Compare.html">Compare</a>, value: U)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:81</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>U</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a filter that compares to a value.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                            <code>PropertyPath</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The path of the property to compare.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>compare</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/enumerations.html#Compare" target="_self" >Compare</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The comparison operation to perform.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                            <code>U</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The value to compare against.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/FilterBuilder.html" target="_self" >FilterBuilder&lt;T&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A new <code>FilterBuilder</code></p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addFilter"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            addFilter
+                        </b>
+                        <a href="#addFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addFilter(filter: <a href="../undefineds/FilterPred.html">FilterPred<T></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:143</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a new <code>FilterBuilder</code> with a new filter and <code>this</code> as the next builder.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#FilterPred" target="_self" >FilterPred&lt;T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter for the new builder.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/FilterBuilder.html" target="_self" >FilterBuilder&lt;T&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The new <code>FilterBuilder</code></p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addIncludedIn"></a>
+                    <span class="name">
+                        <b>
+                            addIncludedIn
+                        </b>
+                        <a href="#addIncludedIn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addIncludedIn(path: PropertyPath, values: U[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:108</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>U</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a filter that checks if it matches one of many values.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                            <code>PropertyPath</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The path of the property to check for inclusion.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>values</td>
+                                    <td>
+                                            <code>U[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The values that should be matched.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/FilterBuilder.html" target="_self" >FilterBuilder&lt;T&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A new <code>FilterBuilder</code></p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addIncludes"></a>
+                    <span class="name">
+                        <b>
+                            addIncludes
+                        </b>
+                        <a href="#addIncludes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addIncludes(path: PropertyPath, value: U)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:95</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>U</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a filter that checks if it contains a value.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                            <code>PropertyPath</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The path of the property to check inclusion in.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                            <code>U</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The value that should be included.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/FilterBuilder.html" target="_self" >FilterBuilder&lt;T&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A new <code>FilterBuilder</code></p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addMatches"></a>
+                    <span class="name">
+                        <b>
+                            addMatches
+                        </b>
+                        <a href="#addMatches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addMatches(path: PropertyPath, value: U)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:68</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>U</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a filter that matches a value.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                            <code>PropertyPath</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The path of the property to match.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                            <code>U</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The value to match against.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/FilterBuilder.html" target="_self" >FilterBuilder&lt;T&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A new <code>FilterBuilder</code></p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addOverlapsBy"></a>
+                    <span class="name">
+                        <b>
+                            addOverlapsBy
+                        </b>
+                        <a href="#addOverlapsBy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addOverlapsBy(path: PropertyPath, values: U[], iteratee?: ValueIteratee<U>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:122</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>U</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a filter that checks if at least one values matches.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                            <code>PropertyPath</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The path of the property to check for overlay.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>values</td>
+                                    <td>
+                                            <code>U[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The values that should be matched.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iteratee</td>
+                                    <td>
+                                            <code>ValueIteratee&lt;U&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>An optional function that will be applied to each value to create the matching.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/FilterBuilder.html" target="_self" >FilterBuilder&lt;T&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A new <code>FilterBuilder</code></p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllFilters"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            getAllFilters
+                        </b>
+                        <a href="#getAllFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAllFilters()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:152</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Produces an array of all filters in the chain of builders.</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#FilterPred" target="_self" >FilterPred[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An array of all filters.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toFilter"></a>
+                    <span class="name">
+                        <b>
+                            toFilter
+                        </b>
+                        <a href="#toFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toFilter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="133"
+                            class="link-to-prism">src/app/shared/common/filter/filter-builder.ts:133</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a predicate function combining all filters in this builder.</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#FilterPred" target="_self" >FilterPred&lt;T&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The predicate.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  eq,
+  gt,
+  gte,
+  includes,
+  intersectionBy,
+  lt,
+  lte,
+  matchesProperty,
+  negate,
+  overEvery,
+  property,
+  PropertyPath,
+  ValueIteratee,
+} from &#x27;lodash&#x27;;
+
+/**
+ * Predicate type.
+ */
+export type FilterPred&lt;T&gt; &#x3D; (obj: T) &#x3D;&gt; boolean;
+
+/**
+ * Enumeration for selecting a comparison operation.
+ */
+export const enum Compare {
+  equal,
+  not_equal,
+  less_than,
+  less_than_equal,
+  greater_than,
+  greater_than_equal
+}
+
+/**
+ * Mapping from &#x60;enum Compare&#x60; values to actual comparison functions.
+ */
+const compareMethods &#x3D; {
+  [Compare.equal]: eq,
+  [Compare.not_equal]: negate(eq),
+  [Compare.less_than]: lt,
+  [Compare.less_than_equal]: lte,
+  [Compare.greater_than]: gt,
+  [Compare.greater_than_equal]: gte
+};
+
+/**
+ * Utility class for creating database filters.
+ */
+export class FilterBuilder&lt;T&gt; {
+  /**
+   * Creates an instance of filter builder.
+   * Note: Arguments are for internal use only!
+   *
+   * @param [filter] A filter function.
+   * @param [next] Reference to the next builder in the filter chain.
+   */
+  constructor(private filter?: FilterPred&lt;T&gt;, private next?: FilterBuilder&lt;T&gt;) {
+    if (filter &#x3D;&#x3D;&#x3D; undefined &amp;&amp; next !&#x3D;&#x3D; undefined) { return next; }
+  }
+
+  /**
+   * Adds a filter that matches a value.
+   *
+   * @param path The path of the property to match.
+   * @param value The value to match against.
+   * @returns A new &#x60;FilterBuilder&#x60;
+   */
+  addMatches&lt;U&gt;(path: PropertyPath, value: U): FilterBuilder&lt;T&gt; {
+    if (value &#x3D;&#x3D;&#x3D; undefined) { return this; }
+    return this.addFilter(matchesProperty(path, value));
+  }
+
+  /**
+   * Adds a filter that compares to a value.
+   *
+   * @param path The path of the property to compare.
+   * @param compare The comparison operation to perform.
+   * @param value The value to compare against.
+   * @returns A new &#x60;FilterBuilder&#x60;
+   */
+  addCompare&lt;U&gt;(path: PropertyPath, compare: Compare, value: U): FilterBuilder&lt;T&gt; {
+    if (value &#x3D;&#x3D;&#x3D; undefined) { return this; }
+    const method &#x3D; compareMethods[compare] as (v1: U, v2: U) &#x3D;&gt; boolean;
+    const getter &#x3D; property&lt;T, U&gt;(path);
+    return this.addFilter(obj &#x3D;&gt; method(getter(obj), value));
+  }
+
+  /**
+   * Adds a filter that checks if it contains a value.
+   *
+   * @param path The path of the property to check inclusion in.
+   * @param value The value that should be included.
+   * @returns A new &#x60;FilterBuilder&#x60;
+   */
+  addIncludes&lt;U&gt;(path: PropertyPath, value: U): FilterBuilder&lt;T&gt; {
+    if (value &#x3D;&#x3D;&#x3D; undefined) { return this; }
+    const getter &#x3D; property&lt;T, U[]&gt;(path);
+    return this.addFilter(obj &#x3D;&gt; includes(getter(obj), value));
+  }
+
+  /**
+   * Adds a filter that checks if it matches one of many values.
+   *
+   * @param path The path of the property to check for inclusion.
+   * @param values The values that should be matched.
+   * @returns A new &#x60;FilterBuilder&#x60;
+   */
+  addIncludedIn&lt;U&gt;(path: PropertyPath, values: U[]): FilterBuilder&lt;T&gt; {
+    if (values &#x3D;&#x3D;&#x3D; undefined || values.length &#x3D;&#x3D;&#x3D; 0) { return this; }
+    const getter &#x3D; property&lt;T, U&gt;(path);
+    return this.addFilter(obj &#x3D;&gt; includes(values, getter(obj)));
+  }
+
+  /**
+   * Adds a filter that checks if at least one values matches.
+   *
+   * @param path The path of the property to check for overlay.
+   * @param values The values that should be matched.
+   * @param [iteratee] An optional function that will be applied to each value to create the matching.
+   * @returns A new &#x60;FilterBuilder&#x60;
+   */
+  addOverlapsBy&lt;U&gt;(path: PropertyPath, values: U[], iteratee?: ValueIteratee&lt;U&gt;): FilterBuilder&lt;T&gt; {
+    if (values &#x3D;&#x3D;&#x3D; undefined || values.length &#x3D;&#x3D;&#x3D; 0) { return this; }
+    const getter &#x3D; property&lt;T, U[]&gt;(path);
+    return this.addFilter(obj &#x3D;&gt; intersectionBy(getter(obj), values, iteratee).length !&#x3D;&#x3D; 0);
+  }
+
+  /**
+   * Creates a predicate function combining all filters in this builder.
+   *
+   * @returns The predicate.
+   */
+  toFilter(): FilterPred&lt;T&gt; {
+    return overEvery(this.getAllFilters());
+  }
+
+  /**
+   * Creates a new &#x60;FilterBuilder&#x60; with a new filter and &#x60;this&#x60; as the next builder.
+   *
+   * @param filter The filter for the new builder.
+   * @returns The new &#x60;FilterBuilder&#x60;
+   */
+  private addFilter(filter: FilterPred&lt;T&gt;): FilterBuilder&lt;T&gt; {
+    return new FilterBuilder(filter, this);
+  }
+
+  /**
+   * Produces an array of all filters in the chain of builders.
+   *
+   * @returns An array of all filters.
+   */
+  private getAllFilters(): FilterPred&lt;T&gt;[] {
+    const result: FilterPred&lt;T&gt;[] &#x3D; [];
+    let head: FilterBuilder&lt;T&gt; &#x3D; this;
+    while (head !&#x3D;&#x3D; undefined &amp;&amp; head.filter !&#x3D;&#x3D; undefined) {
+      result.push(head.filter);
+      head &#x3D; head.next;
+    }
+
+    return result;
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'FilterBuilder.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

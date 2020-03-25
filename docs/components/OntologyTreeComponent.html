@@ -1,0 +1,1506 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>OntologyTreeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/ontology-tree/ontology-tree.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Represents a expandable tree of an ontology.</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-ontology-tree</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./ontology-tree.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ontology-tree.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#_getChildren">_getChildren</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#_nodes">_nodes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#control">control</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#dataSource">dataSource</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#flattener">flattener</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#indent">indent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#selectedNode">selectedNode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#expandAndSelect">expandAndSelect</a>
+                            </li>
+                            <li>
+                                <a href="#isInnerNode">isInnerNode</a>
+                            </li>
+                            <li>
+                                <a href="#isSelected">isSelected</a>
+                            </li>
+                            <li>
+                                <a href="#select">select</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getChildren">getChildren</a>
+                            </li>
+                            <li>
+                                <a href="#nodes">nodes</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#nodeSelected">nodeSelected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#nodes">nodes</a>
+                                </li>
+                                <li>
+                                    <a href="#getChildren">getChildren</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:92</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ontology tree component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The change detector.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getChildren"></a>
+                        <b>getChildren</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:44</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Method for fetching the children of a node.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodes"></a>
+                        <b>nodes</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:33</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The node like objects to display in the tree.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeSelected"></a>
+                        <b>nodeSelected</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:54</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits an event whenever a node has been selected.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="expandAndSelect"></a>
+                    <span class="name">
+                        <b>
+                            expandAndSelect
+                        </b>
+                        <a href="#expandAndSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>expandAndSelect(node: <a href="../interfaces/OntologyNode.html">OntologyNode</a>, getParent: (node: <a href="../interfaces/OntologyNode.html">OntologyNode</a>) => void)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Expands the tree to show a node and sets the currect selection to that node.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+                                    <td>
+                                                <code><a href="../interfaces/OntologyNode.html" target="_self" >OntologyNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The node to expand to and select.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>getParent</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isInnerNode"></a>
+                    <span class="name">
+                        <b>
+                            isInnerNode
+                        </b>
+                        <a href="#isInnerNode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isInnerNode(this: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">void</a>, _index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, node: <a href="../classes/FlatNode.html">FlatNode</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:139</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines whether a node can be expanded.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>this</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>_index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>node</td>
+                                    <td>
+                                                <code><a href="../classes/FlatNode.html" target="_self" >FlatNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The node to test.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>True if the node has children.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSelected"></a>
+                    <span class="name">
+                        <b>
+                            isSelected
+                        </b>
+                        <a href="#isSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isSelected(node: <a href="../classes/FlatNode.html">FlatNode</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:150</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines whether a node is currently selected.
+Only a single node can be selected at any time.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+                                    <td>
+                                                <code><a href="../classes/FlatNode.html" target="_self" >FlatNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The node to test.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>True if the node is the currently selected node.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="select"></a>
+                    <span class="name">
+                        <b>
+                            select
+                        </b>
+                        <a href="#select"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>select(node: <a href="../classes/FlatNode.html">FlatNode</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="160"
+                            class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:160</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets a node to be the currently selected node.
+Deselects the previously selected node.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+                                    <td>
+                                                <code><a href="../classes/FlatNode.html" target="_self" >FlatNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The node to select.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_getChildren"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Optional</span>
+                            _getChildren</b>
+                            <a href="#_getChildren"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:92</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Storage for getter/setter &#39;getChildren&#39;.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_nodes"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Optional</span>
+                            _nodes</b>
+                            <a href="#_nodes"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/OntologyNode.html" target="_self" >OntologyNode[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>undefined</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:87</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Storage for getter/setter &#39;nodes&#39;.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="control"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            control</b>
+                            <a href="#control"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new FlatTreeControl&lt;FlatNode&gt;(getLevel, isExpandable)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:64</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Tree controller.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataSource"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            dataSource</b>
+                            <a href="#dataSource"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new MatTreeFlatDataSource(this.control, this.flattener)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:77</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Data source of flat nodes.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="flattener"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            flattener</b>
+                            <a href="#flattener"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new MatTreeFlattener(
+    FlatNode.create, getLevel, isExpandable,
+    invoke.bind(undefined, this, &#x27;getChildren&#x27;)
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Node flattener.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="indent"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            indent</b>
+                            <a href="#indent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>number | string</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;1.5rem&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Indentation of each level in the tree.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedNode"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Optional</span>
+                            selectedNode</b>
+                            <a href="#selectedNode"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/FlatNode.html" target="_self" >FlatNode</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>undefined</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:82</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Currently selected node.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodes"></a>
+                        <span class="name"><b>nodes</b><a href="#nodes"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>nodes()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:38</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>nodes(nodes: [])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:33</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>The node like objects to display in the tree.</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>nodes</td>
+                                                    
+                                                            <td>
+                                                                        <code>[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getChildren"></a>
+                        <span class="name"><b>getChildren</b><a href="#getChildren"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>getChildren()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:49</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>getChildren(fun: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank">function</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/ontology-tree/ontology-tree.component.ts:44</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Method for fetching the children of a node.</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>fun</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { FlatTreeControl } from &#x27;@angular/cdk/tree&#x27;;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+import { MatTreeFlatDataSource, MatTreeFlattener } from &#x27;@angular/material/tree&#x27;;
+import { filter, invoke, property } from &#x27;lodash&#x27;;
+
+import { OntologyNode } from &#x27;../../shared/state/ontology/ontology.model&#x27;;
+import { FlatNode } from &#x27;./shared/flat-node&#x27;;
+
+/**
+ * Getter function for &#x27;level&#x27; on a flat node.
+ */
+const getLevel &#x3D; property&lt;FlatNode, number&gt;(&#x27;level&#x27;);
+
+/**
+ * Getter function for &#x27;expandable&#x27; on a flat node.
+ */
+const isExpandable &#x3D; property&lt;FlatNode, boolean&gt;(&#x27;expandable&#x27;);
+
+/**
+ * Represents a expandable tree of an ontology.
+ */
+@Component({
+  selector: &#x27;ccf-ontology-tree&#x27;,
+  templateUrl: &#x27;./ontology-tree.component.html&#x27;,
+  styleUrls: [&#x27;./ontology-tree.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class OntologyTreeComponent {
+  /**
+   * The node like objects to display in the tree.
+   */
+  @Input()
+  set nodes(nodes: OntologyNode[]) {
+    this._nodes &#x3D; nodes;
+    if (this.control) { this.dataSource.data &#x3D; this._nodes; }
+  }
+
+  get nodes(): OntologyNode[] { return this._nodes; }
+
+  /**
+   * Method for fetching the children of a node.
+   */
+  @Input()
+  set getChildren(fun: (node: OntologyNode) &#x3D;&gt; OntologyNode[]) {
+    this._getChildren &#x3D; fun;
+    this.dataSource.data &#x3D; this.nodes;
+  }
+
+  get getChildren(): (node: OntologyNode) &#x3D;&gt; OntologyNode[] { return this._getChildren; }
+
+  /**
+   * Emits an event whenever a node has been selected.
+   */
+  @Output() nodeSelected &#x3D; new EventEmitter&lt;OntologyNode | undefined&gt;();
+
+  /**
+   * Indentation of each level in the tree.
+   */
+  readonly indent: number | string &#x3D; &#x27;1.5rem&#x27;;
+
+  /**
+   * Tree controller.
+   */
+  readonly control &#x3D; new FlatTreeControl&lt;FlatNode&gt;(getLevel, isExpandable);
+
+  /**
+   * Node flattener.
+   */
+  readonly flattener &#x3D; new MatTreeFlattener(
+    FlatNode.create, getLevel, isExpandable,
+    invoke.bind(undefined, this, &#x27;getChildren&#x27;)
+  );
+
+  /**
+   * Data source of flat nodes.
+   */
+  readonly dataSource &#x3D; new MatTreeFlatDataSource(this.control, this.flattener);
+
+  /**
+   * Currently selected node.
+   */
+  private selectedNode?: FlatNode &#x3D; undefined;
+
+  /**
+   * Storage for getter/setter &#x27;nodes&#x27;.
+   */
+  private _nodes?: OntologyNode[] &#x3D; undefined;
+
+  /**
+   * Storage for getter/setter &#x27;getChildren&#x27;.
+   */
+  private _getChildren?: (node: OntologyNode) &#x3D;&gt; OntologyNode[];
+
+  /**
+   * Creates an instance of ontology tree component.
+   *
+   * @param cdr The change detector.
+   */
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  /**
+   * Expands the tree to show a node and sets the currect selection to that node.
+   *
+   * @param node The node to expand to and select.
+   */
+  expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) &#x3D;&gt; OntologyNode): void {
+    const { cdr, control } &#x3D; this;
+
+    // Add all parents to a set
+    const parents &#x3D; new Set&lt;OntologyNode&gt;();
+    let current &#x3D; getParent(node);
+    while (current) {
+      parents.add(current);
+      current &#x3D; getParent(current);
+    }
+
+    // Find corresponding flat nodes
+    const parentFlatNodes &#x3D; filter(control.dataNodes, flat &#x3D;&gt; parents.has(flat.original));
+    const flatNode &#x3D; control.dataNodes.find(flat &#x3D;&gt; flat.original &#x3D;&#x3D;&#x3D; node);
+
+    // Expand nodes
+    control.collapseAll();
+    for (const flat of parentFlatNodes) { control.expand(flat); }
+
+    // Select the node
+    this.selectedNode &#x3D; undefined;
+    this.select(flatNode);
+
+    // Detect changes
+    cdr.detectChanges();
+  }
+
+  /**
+   * Determines whether a node can be expanded.
+   *
+   * @param node The node to test.
+   * @returns True if the node has children.
+   */
+  isInnerNode(this: void, _index: number, node: FlatNode): boolean {
+    return node.expandable;
+  }
+
+  /**
+   * Determines whether a node is currently selected.
+   * Only a single node can be selected at any time.
+   *
+   * @param node  The node to test.
+   * @returns True if the node is the currently selected node.
+   */
+  isSelected(node: FlatNode): boolean {
+    return node &#x3D;&#x3D;&#x3D; this.selectedNode;
+  }
+
+  /**
+   * Sets a node to be the currently selected node.
+   * Deselects the previously selected node.
+   *
+   * @param node The node to select.
+   */
+  select(node: FlatNode): void {
+    let { selectedNode } &#x3D; this;
+    this.selectedNode &#x3D; selectedNode &#x3D; node !&#x3D;&#x3D; selectedNode ? node : undefined;
+    this.nodeSelected.emit(selectedNode &amp;&amp; selectedNode.original);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-tree class&#x3D;&quot;ccf-ontology-tree container&quot; [dataSource]&#x3D;&quot;dataSource&quot; [treeControl]&#x3D;&quot;control&quot;&gt;
+  &lt;!-- Templates with common structures for inner and leaf nodes --&gt;
+  &lt;ng-template #selectableRegion let-node&#x3D;&quot;node&quot;&gt;
+    &lt;div class&#x3D;&quot;text&quot; [class.selected]&#x3D;&quot;isSelected(node)&quot; [matTooltip]&#x3D;&quot;node.label&quot;
+         matTooltipClass&#x3D;&quot;ccf-ontology-tree tooltip&quot; matTooltipPosition&#x3D;&quot;after&quot; [matTooltipShowDelay]&#x3D;&quot;1000&quot;
+         (click)&#x3D;&quot;select(node)&quot;&gt;{{ node.label }}&lt;/div&gt;
+  &lt;/ng-template&gt;
+
+  &lt;!-- Leaf node template --&gt;
+  &lt;mat-tree-node *matTreeNodeDef&#x3D;&quot;let node&quot; class&#x3D;&quot;node leaf-node&quot; matTreeNodePadding
+                 [matTreeNodePaddingIndent]&#x3D;&quot;indent&quot;&gt;
+    &lt;!-- Disabled button used to add equal amount of space as an inner node&#x27;s button --&gt;
+    &lt;button class&#x3D;&quot;toggle&quot; mat-icon-button disabled&gt;&lt;/button&gt;
+    &lt;ng-container *ngTemplateOutlet&#x3D;&quot;selectableRegion; context: { node: node }&quot;&gt;&lt;/ng-container&gt;
+  &lt;/mat-tree-node&gt;
+
+  &lt;!-- Inner node template --&gt;
+  &lt;mat-tree-node *matTreeNodeDef&#x3D;&quot;let node; when: isInnerNode&quot; class&#x3D;&quot;node inner-node&quot; matTreeNodePadding
+                 [matTreeNodePaddingIndent]&#x3D;&quot;indent&quot;&gt;
+    &lt;button class&#x3D;&quot;toggle&quot; mat-icon-button matTreeNodeToggle attr.aria-label&#x3D;&quot;Toggle {{ node.label }}&quot;&gt;
+      &lt;mat-icon class&#x3D;&quot;icon font-icon&quot;&gt;
+        {{ control.isExpanded(node) ? &#x27;expand_more&#x27; : &#x27;chevron_right&#x27; }}
+      &lt;/mat-icon&gt;
+    &lt;/button&gt;
+    &lt;ng-container *ngTemplateOutlet&#x3D;&quot;selectableRegion; context: { node: node }&quot;&gt;&lt;/ng-container&gt;
+  &lt;/mat-tree-node&gt;
+&lt;/mat-tree&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./ontology-tree.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &#x27;global/colors&#x27;;
+
+.ccf-ontology-tree.container {
+  background: none;
+
+  .node {
+    min-height: 0;
+    font-size: 1rem;
+
+    .toggle {
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: normal;
+    }
+
+    .text {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      cursor: pointer;
+      color: $text-color;
+    }
+
+    .selected {
+      color: $active-text-color;
+      font-weight: 700;
+    }
+  }
+
+}
+
+::ng-deep .ccf-ontology-tree.tooltip {
+  font-size: 1rem;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-tree class="ccf-ontology-tree container" [dataSource]="dataSource" [treeControl]="control">  <!-- Templates with common structures for inner and leaf nodes -->  <ng-template #selectableRegion let-node="node">    <div class="text" [class.selected]="isSelected(node)" [matTooltip]="node.label"         matTooltipClass="ccf-ontology-tree tooltip" matTooltipPosition="after" [matTooltipShowDelay]="1000"         (click)="select(node)">{{ node.label }}</div>  </ng-template>  <!-- Leaf node template -->  <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding                 [matTreeNodePaddingIndent]="indent">    <!-- Disabled button used to add equal amount of space as an inner node\'s button -->    <button class="toggle" mat-icon-button disabled></button>    <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>  </mat-tree-node>  <!-- Inner node template -->  <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding                 [matTreeNodePaddingIndent]="indent">    <button class="toggle" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">      <mat-icon class="icon font-icon">        {{ control.isExpanded(node) ? \'expand_more\' : \'chevron_right\' }}      </mat-icon>    </button>    <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>  </mat-tree-node></mat-tree></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ccf-about'},{'name': 'AgeSelectorComponent', 'selector': 'ccf-age-selector'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BodyComponent', 'selector': 'ccf-body'},{'name': 'CalloutComponent', 'selector': 'ccf-callout, [ccf-callout]'},{'name': 'GenderSelectorComponent', 'selector': 'ccf-gender-selector'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HomeComponent', 'selector': 'ccf-home'},{'name': 'MainComponent', 'selector': 'ccf-main'},{'name': 'MetadataComponent', 'selector': 'ccf-metadata'},{'name': 'NavigationComponent', 'selector': 'ccf-navigation'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'Organ3dComponent', 'selector': 'ccf-organ3d'},{'name': 'OrganComponent', 'selector': 'ccf-organ'},{'name': 'SearchCategoriesComponent', 'selector': 'ccf-search-categories'},{'name': 'SearchComponent', 'selector': 'ccf-search'},{'name': 'TissueComponent', 'selector': 'ccf-tissue'},{'name': 'TissuesBrowserComponent', 'selector': 'ccf-tissues-browser'},{'name': 'TissuesBrowserGridComponent', 'selector': 'ccf-tissues-browser-grid'},{'name': 'TissuesBrowserGridItemComponent', 'selector': 'ccf-tissues-browser-grid-item'},{'name': 'TissuesBrowserGridPopoverContentComponent', 'selector': 'ccf-tissues-browser-grid-popover-content'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'OntologyTreeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'OntologyTreeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

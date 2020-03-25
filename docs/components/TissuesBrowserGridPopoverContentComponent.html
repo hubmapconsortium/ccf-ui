@@ -1,0 +1,624 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>TissuesBrowserGridPopoverContentComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/tissues-browser-grid-popover-content/tissues-browser-grid-popover-content.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Contains the content of the tissues browser grid&#39;s popover.</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-tissues-browser-grid-popover-content</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./tissues-browser-grid-popover-content.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./tissues-browser-grid-popover-content.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#trackByLabel">trackByLabel</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#item">item</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#age">age</a>
+                                </li>
+                                <li>
+                                    <a href="#genderIcon">genderIcon</a>
+                                </li>
+                                <li>
+                                    <a href="#metadata">metadata</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="item"></a>
+                        <b>item</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TissueImage.html" target="_self" >TissueImage</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/tissues-browser-grid-popover-content/tissues-browser-grid-popover-content.component.ts:19</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The ontology node for which to display meta data.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackByLabel"></a>
+                    <span class="name">
+                        <b>
+                            trackByLabel
+                        </b>
+                        <a href="#trackByLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackByLabel(metadata: [string, any])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/components/tissues-browser-grid-popover-content/tissues-browser-grid-popover-content.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Tracks a meta data tuple by its label.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>metadata</td>
+                                    <td>
+                                            <code>[string, any]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The label of the meta data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="age"></a>
+                        <span class="name"><b>age</b><a href="#age"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>age()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/tissues-browser-grid-popover-content/tissues-browser-grid-popover-content.component.ts:24</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Age in whole years.</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="genderIcon"></a>
+                        <span class="name"><b>genderIcon</b><a href="#genderIcon"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>genderIcon()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/tissues-browser-grid-popover-content/tissues-browser-grid-popover-content.component.ts:31</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gender - male/female/undefined.</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="metadata"></a>
+                        <span class="name"><b>metadata</b><a href="#metadata"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>metadata()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/tissues-browser-grid-popover-content/tissues-browser-grid-popover-content.component.ts:38</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Meta data to display.</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>[]</code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, Input } from &#x27;@angular/core&#x27;;
+import { get as loGet, toPairs as loToPairs } from &#x27;lodash&#x27;;
+
+import { TissueImage } from &#x27;../../shared/state/database/database.models&#x27;;
+
+/**
+ * Contains the content of the tissues browser grid&#x27;s popover.
+ */
+@Component({
+  selector: &#x27;ccf-tissues-browser-grid-popover-content&#x27;,
+  templateUrl: &#x27;./tissues-browser-grid-popover-content.component.html&#x27;,
+  styleUrls: [&#x27;./tissues-browser-grid-popover-content.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class TissuesBrowserGridPopoverContentComponent {
+  /**
+   * The ontology node for which to display meta data.
+   */
+  @Input() item: TissueImage;
+
+  /**
+   * Age in whole years.
+   */
+  get age(): string {
+    return String(loGet(this.item, [&#x27;slice&#x27;, &#x27;sample&#x27;, &#x27;patient&#x27;, &#x27;age&#x27;], &#x27;??&#x27;));
+  }
+
+  /**
+   * Gender - male/female/undefined.
+   */
+  get genderIcon(): string {
+    return &#x27;gender:&#x27; + loGet(this.item, [&#x27;slice&#x27;, &#x27;sample&#x27;, &#x27;patient&#x27;, &#x27;gender&#x27;], &#x27;undefined&#x27;);
+  }
+
+  /**
+   * Meta data to display.
+   */
+  get metadata(): [string, any][] {
+    return loToPairs(loGet(this.item, &#x27;thumbnailMetadata&#x27;, { }));
+  }
+
+  /**
+   * Tracks a meta data tuple by its label.
+   *
+   * @param data Meta data tuple.
+   * @returns The label of the meta data.
+   */
+  trackByLabel(metadata: [string, any]): string {
+    return metadata[0];
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;tissues-browser-grid-popover-content wrapper&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;header&quot;&gt;
+      &lt;div class&#x3D;&quot;age&quot;&gt;Age {{ age }}&lt;/div&gt;
+      &lt;mat-icon class&#x3D;&quot;icon svg-icon gender&quot; [svgIcon]&#x3D;&quot;genderIcon&quot;&gt;&lt;/mat-icon&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;body&quot;&gt;
+      &lt;div *ngFor&#x3D;&quot;let item of metadata; trackBy: trackByLabel&quot; class&#x3D;&quot;metadata&quot;&gt;
+        {{ item[0] }}: {{ item[1] }}
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;footer&quot;&gt;
+      &lt;a rel&#x3D;&quot;noreferrer noopener&quot; href&#x3D;&quot;https://sampledata.hubmapconsortium.org/home&quot; target&#x3D;&quot;_blank&quot;&gt;
+        &lt;mat-icon class&#x3D;&quot;font-icon download&quot;&gt;cloud_download&lt;/mat-icon&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./tissues-browser-grid-popover-content.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &#x27;global/colors&#x27;;
+
+.tissues-browser-grid-popover-content.wrapper {
+  .container {
+    .icon {
+      color: $icon-color;
+      outline: none;
+    }
+
+    .header {
+      font-size: 16px;
+      font-weight: bold;
+
+      .gender {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+      }
+    }
+
+    .body {
+      font-size: 12px;
+    }
+
+    .footer {
+      .download {
+        position: absolute;
+        bottom: 4px;
+        right: 8px;
+        cursor: pointer;
+        color: $download-icon-color;
+        outline: none;
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="tissues-browser-grid-popover-content wrapper">  <div class="container">    <div class="header">      <div class="age">Age {{ age }}</div>      <mat-icon class="icon svg-icon gender" [svgIcon]="genderIcon"></mat-icon>    </div>    <div class="body">      <div *ngFor="let item of metadata; trackBy: trackByLabel" class="metadata">        {{ item[0] }}: {{ item[1] }}      </div>    </div>    <div class="footer">      <a rel="noreferrer noopener" href="https://sampledata.hubmapconsortium.org/home" target="_blank">        <mat-icon class="font-icon download">cloud_download</mat-icon>      </a>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ccf-about'},{'name': 'AgeSelectorComponent', 'selector': 'ccf-age-selector'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BodyComponent', 'selector': 'ccf-body'},{'name': 'CalloutComponent', 'selector': 'ccf-callout, [ccf-callout]'},{'name': 'GenderSelectorComponent', 'selector': 'ccf-gender-selector'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HomeComponent', 'selector': 'ccf-home'},{'name': 'MainComponent', 'selector': 'ccf-main'},{'name': 'MetadataComponent', 'selector': 'ccf-metadata'},{'name': 'NavigationComponent', 'selector': 'ccf-navigation'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'Organ3dComponent', 'selector': 'ccf-organ3d'},{'name': 'OrganComponent', 'selector': 'ccf-organ'},{'name': 'SearchCategoriesComponent', 'selector': 'ccf-search-categories'},{'name': 'SearchComponent', 'selector': 'ccf-search'},{'name': 'TissueComponent', 'selector': 'ccf-tissue'},{'name': 'TissuesBrowserComponent', 'selector': 'ccf-tissues-browser'},{'name': 'TissuesBrowserGridComponent', 'selector': 'ccf-tissues-browser-grid'},{'name': 'TissuesBrowserGridItemComponent', 'selector': 'ccf-tissues-browser-grid-item'},{'name': 'TissuesBrowserGridPopoverContentComponent', 'selector': 'ccf-tissues-browser-grid-popover-content'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TissuesBrowserGridPopoverContentComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TissuesBrowserGridPopoverContentComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

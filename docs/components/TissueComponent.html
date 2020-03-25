@@ -1,0 +1,1791 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>TissueComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/views/tissue/tissue.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for viewing an individual tissue image</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-tissue</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./tissue.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./tissue.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#metadata$">metadata$</a>
+                            </li>
+                            <li>
+                                <a href="#organName$">organName$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#overlayActivationSubscription">overlayActivationSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#overlayEl">overlayEl</a>
+                            </li>
+                            <li>
+                                <a href="#overlayHeight">overlayHeight</a>
+                            </li>
+                            <li>
+                                <a href="#overlayViewBox">overlayViewBox</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#overlayVisibility">overlayVisibility</a>
+                            </li>
+                            <li>
+                                <a href="#overlayWidth">overlayWidth</a>
+                            </li>
+                            <li>
+                                <a href="#scalebar">scalebar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#tileSourceSubscription">tileSourceSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#tissueOverlay$">tissueOverlay$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#tissuePixelsPerMeterSubscription">tissuePixelsPerMeterSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#viewer">viewer</a>
+                            </li>
+                            <li>
+                                <a href="#viewerEl">viewerEl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#displayState">displayState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#initializeViewer">initializeViewer</a>
+                            </li>
+                            <li>
+                                <a href="#isVisible">isVisible</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setOverlaySize">setOverlaySize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setScaleBar">setScaleBar</a>
+                            </li>
+                            <li>
+                                <a href="#setVisibility">setVisibility</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dataService: <a href="../injectables/TissueDataService.html">TissueDataService</a>, renderer: <a href="https://angular.io/api/core/Renderer2" target="_blank">Renderer2</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/views/tissue/tissue.component.ts:100</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of tissue component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dataService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TissueDataService.html" target="_self" >TissueDataService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The service used to fetch the tissue information.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>renderer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/Renderer2" target="_blank" >Renderer2</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Used to interact with Open Seadragon&#39;s html elements.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayState"></a>
+                    <span class="name">
+                        <b>
+                            displayState
+                        </b>
+                        <a href="#displayState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>displayState(cond: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">src/app/views/tissue/tissue.component.ts:151</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Utility function for setting the <code>display</code> attribute on an element.
+Returns <code>none</code> when the provided condition is falsy.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cond</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The condition on which to display/hide an element.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>&quot;none&quot; | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p><code>none</code> if <code>cond</code> is falsy else <code>undefined</code></p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializeViewer"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            initializeViewer
+                        </b>
+                        <a href="#initializeViewer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initializeViewer()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">src/app/views/tissue/tissue.component.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Initializes the Open Seadragon Viewer.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isVisible"></a>
+                    <span class="name">
+                        <b>
+                            isVisible
+                        </b>
+                        <a href="#isVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isVisible(overlay: <a href="../interfaces/TissueOverlay.html">TissueOverlay</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="161"
+                            class="link-to-prism">src/app/views/tissue/tissue.component.ts:161</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines whether an overlay is visible.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>overlay</td>
+                                    <td>
+                                                <code><a href="../interfaces/TissueOverlay.html" target="_self" >TissueOverlay</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The overlay to test.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p><code>true</code> if the visibility is <code>Visible</code> or <code>AlwaysVisible</code>, else <code>false</code>.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <b>
+                            ngAfterViewInit
+                        </b>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/app/views/tissue/tissue.component.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Angular&#39;s AfterViewInit hook.
+Initializes the Open Seadragon viewer.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">src/app/views/tissue/tissue.component.ts:137</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Angular&#39;s OnDestroy hook.
+Destroys the Open Seadragon viewer and cleans up subscriptions.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setOverlaySize"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            setOverlaySize
+                        </b>
+                        <a href="#setOverlaySize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setOverlaySize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">src/app/views/tissue/tissue.component.ts:221</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets the size and view box on the top svg overlay element.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setScaleBar"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            setScaleBar
+                        </b>
+                        <a href="#setScaleBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setScaleBar(pixelsPerMeter: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="237"
+                            class="link-to-prism">src/app/views/tissue/tissue.component.ts:237</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets instance of scalebar pluging of OpenSeaDragon</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pixelsPerMeter</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setVisibility"></a>
+                    <span class="name">
+                        <b>
+                            setVisibility
+                        </b>
+                        <a href="#setVisibility"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setVisibility(overlay: <a href="../interfaces/TissueOverlay.html">TissueOverlay</a>, visibility: "on" | "off" | "toggle", always?)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="173"
+                            class="link-to-prism">src/app/views/tissue/tissue.component.ts:173</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets, unsets, or toggles the visibility for an overlay.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>overlay</td>
+                                    <td>
+                                                <code><a href="../interfaces/TissueOverlay.html" target="_self" >TissueOverlay</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The overlay on which to set the visibility.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>visibility</td>
+                                    <td>
+                                            <code>&quot;on&quot; | &quot;off&quot; | &quot;toggle&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Whether to set, unset, or toggle the visibility.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>always</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>If present the always visible flag will be updated instead of the regular visibility flag.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="metadata$"></a>
+                        <span class="name">
+                            <b>
+                            metadata$</b>
+                            <a href="#metadata$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.dataService.getMetadata().pipe(map(data &#x3D;&gt; [data]))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/views/tissue/tissue.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Observable emitting the metadata for the current tissue.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="organName$"></a>
+                        <span class="name">
+                            <b>
+                            organName$</b>
+                            <a href="#organName$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.dataService.getOrganName().pipe(map(capitalize))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/views/tissue/tissue.component.ts:44</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Observable emitting the name of the organ for the current tissue.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="overlayActivationSubscription"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            overlayActivationSubscription</b>
+                            <a href="#overlayActivationSubscription"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subscription</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/views/tissue/tissue.component.ts:100</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="overlayEl"></a>
+                        <span class="name">
+                            <b>
+                            overlayEl</b>
+                            <a href="#overlayEl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;overlayEl&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/views/tissue/tissue.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Top svg element of the overlays. Will be moved into Open Seadragon&#39;s view.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="overlayHeight"></a>
+                        <span class="name">
+                            <b>
+                            overlayHeight</b>
+                            <a href="#overlayHeight"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/views/tissue/tissue.component.ts:75</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Overlay height in viewport coordinates (0 &lt;= height &lt;= 1).</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="overlayViewBox"></a>
+                        <span class="name">
+                            <b>
+                            overlayViewBox</b>
+                            <a href="#overlayViewBox"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;0 0 0 0&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/views/tissue/tissue.component.ts:80</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Overlay view box in original image coordinates.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="overlayVisibility"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            overlayVisibility</b>
+                            <a href="#overlayVisibility"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new WeakMap&lt;TissueOverlay, OverlayVisibility&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/views/tissue/tissue.component.ts:85</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Mapping containing the current visibility state for each overlay.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="overlayWidth"></a>
+                        <span class="name">
+                            <b>
+                            overlayWidth</b>
+                            <a href="#overlayWidth"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/views/tissue/tissue.component.ts:70</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Tissue metadata
+Overlay width in viewport coordinates (0 &lt;= width &lt;= 1).</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="scalebar"></a>
+                        <span class="name">
+                            <b>
+                            scalebar</b>
+                            <a href="#scalebar"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/views/tissue/tissue.component.ts:65</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Scalebar of tissue viewer</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tileSourceSubscription"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            tileSourceSubscription</b>
+                            <a href="#tileSourceSubscription"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subscription</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/views/tissue/tissue.component.ts:90</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Subscription for the tile source url.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tissueOverlay$"></a>
+                        <span class="name">
+                            <b>
+                            tissueOverlay$</b>
+                            <a href="#tissueOverlay$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/TissueOverlay.html" target="_self" >Observable&lt;TissueOverlay[]&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.dataService.getTissueOverlays().pipe(share())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/views/tissue/tissue.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Observable emitting the overlays for the current tissue.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tissuePixelsPerMeterSubscription"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            tissuePixelsPerMeterSubscription</b>
+                            <a href="#tissuePixelsPerMeterSubscription"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subscription</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/views/tissue/tissue.component.ts:95</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Metadata subscription of tissue component</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="viewer"></a>
+                        <span class="name">
+                            <b>
+                            viewer</b>
+                            <a href="#viewer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/views/tissue/tissue.component.ts:60</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The Open Seadragon Viewer instance.
+Refer to <a href="https://openseadragon.github.io/">https://openseadragon.github.io/</a> for documentation.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="viewerEl"></a>
+                        <span class="name">
+                            <b>
+                            viewerEl</b>
+                            <a href="#viewerEl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;viewerEl&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/views/tissue/tissue.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Element on to which Open Seadragon is mounted.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import &#x27;svg-overlay&#x27;;
+
+import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from &#x27;@angular/core&#x27;;
+import { capitalize, get } from &#x27;lodash&#x27;;
+import { Viewer } from &#x27;openseadragon&#x27;;
+import { Observable, Subscription } from &#x27;rxjs&#x27;;
+import { map, share } from &#x27;rxjs/operators&#x27;;
+
+import { Scalebar } from &#x27;../../external-libraries/openseadragon-scalebar&#x27;;
+import { TissueDataService } from &#x27;../../shared/services/tissue-data/tissue-data.service&#x27;;
+import { TissueOverlay } from &#x27;../../shared/state/database/database.models&#x27;;
+
+/**
+ * Bit flags indicating the current visibility status of an overlay.
+ */
+const enum OverlayVisibility {
+  Hidden &#x3D; 0,
+  Visible &#x3D; 1,
+  AlwaysVisible &#x3D; 2
+}
+
+/**
+ * Component for viewing an individual tissue image
+ */
+@Component({
+  selector: &#x27;ccf-tissue&#x27;,
+  templateUrl: &#x27;./tissue.component.html&#x27;,
+  styleUrls: [&#x27;./tissue.component.scss&#x27;]
+})
+export class TissueComponent implements AfterViewInit, OnDestroy {
+  /**
+   * Element on to which Open Seadragon is mounted.
+   */
+  @ViewChild(&#x27;viewerEl&#x27;, { static: true }) viewerEl: ElementRef;
+
+  /**
+   * Top svg element of the overlays. Will be moved into Open Seadragon&#x27;s view.
+   */
+  @ViewChild(&#x27;overlayEl&#x27;, { static: true }) overlayEl: ElementRef;
+
+  /**
+   * Observable emitting the name of the organ for the current tissue.
+   */
+  organName$ &#x3D; this.dataService.getOrganName().pipe(map(capitalize));
+
+  /**
+   * Observable emitting the metadata for the current tissue.
+   */
+  metadata$ &#x3D; this.dataService.getMetadata().pipe(map(data &#x3D;&gt; [data]));
+
+  /**
+   * Observable emitting the overlays for the current tissue.
+   */
+  tissueOverlay$: Observable&lt;TissueOverlay[]&gt; &#x3D; this.dataService.getTissueOverlays().pipe(share());
+
+  /**
+   * The Open Seadragon Viewer instance.
+   * Refer to https://openseadragon.github.io/ for documentation.
+   */
+  viewer: any;
+
+  /**
+   * Scalebar of tissue viewer
+   */
+  scalebar: any;
+  /**
+   * Tissue metadata
+   * Overlay width in viewport coordinates (0 &lt;&#x3D; width &lt;&#x3D; 1).
+   */
+  overlayWidth &#x3D; 0;
+
+  /**
+   * Overlay height in viewport coordinates (0 &lt;&#x3D; height &lt;&#x3D; 1).
+   */
+  overlayHeight &#x3D; 0;
+
+  /**
+   * Overlay view box in original image coordinates.
+   */
+  overlayViewBox &#x3D; &#x27;0 0 0 0&#x27;;
+
+  /**
+   * Mapping containing the current visibility state for each overlay.
+   */
+  private overlayVisibility &#x3D; new WeakMap&lt;TissueOverlay, OverlayVisibility&gt;();
+
+  /**
+   * Subscription for the tile source url.
+   */
+  private tileSourceSubscription: Subscription;
+
+  /**
+   * Metadata subscription of tissue component
+   */
+  private tissuePixelsPerMeterSubscription: Subscription;
+
+  /*
+   * Subscription for listening to overlay activations.
+   */
+  private overlayActivationSubscription: Subscription;
+
+  /**
+   * Creates an instance of tissue component.
+   *
+   * @param dataService The service used to fetch the tissue information.
+   * @param renderer Used to interact with Open Seadragon&#x27;s html elements.
+   */
+  constructor(
+    private dataService: TissueDataService,
+    private renderer: Renderer2
+  ) {
+    this.overlayActivationSubscription &#x3D; this.dataService.activatedOverlay$.subscribe(overlay &#x3D;&gt; {
+      this.setVisibility(overlay, &#x27;on&#x27;, &#x27;always&#x27;);
+    });
+  }
+
+  /**
+   * Angular&#x27;s AfterViewInit hook.
+   * Initializes the Open Seadragon viewer.
+   */
+  ngAfterViewInit() {
+    // This hook doesn&#x27;t like changes! Do the work at a later cycle.
+    setTimeout(() &#x3D;&gt; {
+      this.initializeViewer();
+      this.tissuePixelsPerMeterSubscription &#x3D; this.dataService.getTissuePixelsPerMeter()
+        .subscribe(pixelsPerMeter &#x3D;&gt; this.setScaleBar(pixelsPerMeter));
+      this.tileSourceSubscription &#x3D; this.dataService
+        .getTissueSourcePath()
+        .subscribe(path &#x3D;&gt; this.viewer.open(path));
+    });
+  }
+
+  /**
+   * Angular&#x27;s OnDestroy hook.
+   * Destroys the Open Seadragon viewer and cleans up subscriptions.
+   */
+  ngOnDestroy() {
+    this.tileSourceSubscription.unsubscribe();
+    this.tissuePixelsPerMeterSubscription.unsubscribe();
+    this.overlayActivationSubscription.unsubscribe();
+    this.viewer.destroy();
+  }
+
+  /**
+   * Utility function for setting the &#x60;display&#x60; attribute on an element.
+   * Returns &#x60;none&#x60; when the provided condition is falsy.
+   *
+   * @param cond The condition on which to display/hide an element.
+   * @returns &#x60;none&#x60; if &#x60;cond&#x60; is falsy else &#x60;undefined&#x60;
+   */
+  displayState(cond: any): &#x27;none&#x27; | undefined {
+    return !!cond ? undefined : &#x27;none&#x27;;
+  }
+
+  /**
+   * Determines whether an overlay is visible.
+   *
+   * @param overlay The overlay to test.
+   * @returns &#x60;true&#x60; if the visibility is &#x60;Visible&#x60; or &#x60;AlwaysVisible&#x60;, else &#x60;false&#x60;.
+   */
+  isVisible(overlay: TissueOverlay): boolean {
+    const visibility &#x3D; this.overlayVisibility.get(overlay) || OverlayVisibility.Hidden;
+    return visibility !&#x3D;&#x3D; OverlayVisibility.Hidden;
+  }
+
+  /**
+   * Sets, unsets, or toggles the visibility for an overlay.
+   *
+   * @param overlay The overlay on which to set the visibility.
+   * @param visibility Whether to set, unset, or toggle the visibility.
+   * @param [always] If present the always visible flag will be updated instead of the regular visibility flag.
+   */
+  setVisibility(overlay: TissueOverlay, visibility: &#x27;on&#x27; | &#x27;off&#x27; | &#x27;toggle&#x27;, always?: &#x27;always&#x27;): void {
+    const current &#x3D; this.overlayVisibility.get(overlay) || OverlayVisibility.Hidden;
+    const bits &#x3D; always ? OverlayVisibility.AlwaysVisible : OverlayVisibility.Visible;
+    let updated &#x3D; current;
+
+    // tslint:disable:no-bitwise
+    if (visibility &#x3D;&#x3D;&#x3D; &#x27;on&#x27;) {
+      updated |&#x3D; bits;
+    } else if (visibility &#x3D;&#x3D;&#x3D; &#x27;off&#x27;) {
+      updated &amp;&#x3D; ~bits;
+    } else {
+      updated ^&#x3D; bits;
+    }
+    // tslint:enable:no-bitwise
+
+    this.overlayVisibility.set(overlay, updated);
+  }
+
+  /**
+   * Initializes the Open Seadragon Viewer.
+   */
+  private initializeViewer(): void {
+    const { renderer, overlayEl, viewerEl } &#x3D; this;
+    // Initialize OpenSeadragon Viewer
+    const viewer &#x3D; this.viewer &#x3D; new Viewer({
+      element: viewerEl.nativeElement,
+      prefixUrl: &#x27;https://cdn.jsdelivr.net/npm/openseadragon@2.4/build/openseadragon/images/&#x27;,
+      showNavigator: true,
+      navigatorPosition: &#x27;ABSOLUTE&#x27;,
+      navigatorTop: &#x27;2.5rem&#x27;,
+      navigatorLeft: &#x27;0.25rem&#x27;,
+      navigatorHeight: &#x27;6rem&#x27;,
+      navigatorWidth: &#x27;8rem&#x27;,
+      defaultZoomLevel: 1,
+      visibilityRatio: 1
+    });
+
+    // Add tissue overlay element
+    const overlay &#x3D; viewer.svgOverlay();
+    renderer.appendChild(overlay.node(), overlayEl.nativeElement);
+
+    // Setup event handling
+    viewer.addHandler(&#x27;open&#x27;, () &#x3D;&gt; this.setOverlaySize());
+  }
+
+  /**
+   * Sets the size and view box on the top svg overlay element.
+   */
+  private setOverlaySize(): void {
+    const { viewer: { viewport, world } } &#x3D; this;
+    const { x, y, width, height } &#x3D; viewport.getBounds();
+    // There should only be a single image loaded
+    // There might be a better way to get this!
+    const { source: { dimensions: { x: imageWidth, y: imageHeight } } } &#x3D; world.getItemAt(0);
+
+    this.overlayWidth &#x3D; 2 * x + width;
+    this.overlayHeight &#x3D; 2 * y + height;
+    this.overlayViewBox &#x3D; &#x60;0 0 ${imageWidth} ${imageHeight}&#x60;;
+  }
+
+  /**
+   * Sets instance of scalebar pluging of OpenSeaDragon
+   * @param data metadata
+   */
+  private setScaleBar(pixelsPerMeter: number): void {
+    if (!isNaN(pixelsPerMeter)) {
+      this.scalebar &#x3D; new Scalebar({
+        viewer: this.viewer,
+        minWidth: &#x27;100px&#x27;,
+        stayInsideImage: true,
+        pixelsPerMeter: pixelsPerMeter,
+        color: &#x27;yellow&#x27;,
+        fontColor: &#x27;white&#x27;
+      });
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;tissue wrapper&quot;&gt;
+  &lt;div class&#x3D;&quot;view&quot;&gt;
+    &lt;div class&#x3D;&quot;mount-point&quot; #viewerEl&gt;&lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;overlay-toggles&quot;&gt;
+      &lt;mat-button-toggle *ngFor&#x3D;&quot;let overlay of tissueOverlay$ | async&quot; class&#x3D;&quot;button&quot;
+                         [class.toggled]&#x3D;&quot;isVisible(overlay)&quot; (click)&#x3D;&quot;setVisibility(overlay, &#x27;toggle&#x27;, &#x27;always&#x27;)&quot;
+                         (mouseenter)&#x3D;&quot;setVisibility(overlay, &#x27;on&#x27;)&quot; (mouseleave)&#x3D;&quot;setVisibility(overlay, &#x27;off&#x27;)&quot;&gt;
+        {{ overlay.label }}
+      &lt;/mat-button-toggle&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;metadata&quot;&gt;
+    &lt;span class&#x3D;&quot;organ-name&quot;&gt;{{ organName$ | async }}&lt;/span&gt;
+
+    &lt;div class&#x3D;&quot;details&quot;&gt;
+      &lt;mat-expansion-panel class&#x3D;&quot;panel&quot;&gt;
+        &lt;mat-expansion-panel-header class&#x3D;&quot;header&quot;&gt;
+          &lt;mat-panel-title class&#x3D;&quot;title&quot;&gt;
+            Details
+          &lt;/mat-panel-title&gt;
+        &lt;/mat-expansion-panel-header&gt;
+
+        &lt;ccf-metadata [metadata]&#x3D;&quot;metadata$ | async&quot;&gt;&lt;/ccf-metadata&gt;
+      &lt;/mat-expansion-panel&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Note: This element will be moved into OpenSeadragon&#x27;s view --&gt;
+  &lt;svg class&#x3D;&quot;overlays&quot; preserveAspectRatio&#x3D;&quot;none&quot; x&#x3D;&quot;0&quot; y&#x3D;&quot;0&quot; [attr.width]&#x3D;&quot;overlayWidth&quot; [attr.height]&#x3D;&quot;overlayHeight&quot;
+       [attr.viewBox]&#x3D;&quot;overlayViewBox&quot; [style.display]&#x3D;&quot;displayState(viewer)&quot; #overlayEl&gt;
+    &lt;use *ngFor&#x3D;&quot;let overlay of tissueOverlay$ | async&quot; class&#x3D;&quot;overlay&quot;
+         [attr.display]&#x3D;&quot;displayState(isVisible(overlay))&quot; [attr.href]&#x3D;&quot;overlay.overlayUrl + &#x27;#overlay&#x27;&quot;&gt;&lt;/use&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./tissue.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &#x27;global/colors&#x27;, &#x27;global/mixins&#x27;;
+
+.tissue.wrapper {
+  display: flex;
+  height: 100%;
+
+  .view {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-right: 0.5rem;
+
+    .mount-point {
+      flex-grow: 1;
+      padding-bottom: 1rem;
+    }
+
+    .overlay-toggles .button {
+      margin: 0.25rem;
+      background: $alternative-button-background-color;
+
+      &amp;.toggled {
+        color: $active-button-contrast-color;
+        background: $active-button-color;
+      }
+
+      ::ng-deep .mat-button-toggle-label-content {
+        line-height: 2.25rem;
+      }
+    }
+  }
+
+  .metadata {
+    width: 24%;
+    padding-left: 0.5rem;
+
+    .organ-name {
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+
+    .details {
+      @include default-border(bottom);
+
+      .panel {
+        box-shadow: none;
+
+        .header {
+          border: 1px solid #e0e0e0;
+          padding: 0.5rem;
+        }
+
+        .title {
+          font-size: 0.85rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="tissue wrapper">  <div class="view">    <div class="mount-point" #viewerEl></div>    <div class="overlay-toggles">      <mat-button-toggle *ngFor="let overlay of tissueOverlay$ | async" class="button"                         [class.toggled]="isVisible(overlay)" (click)="setVisibility(overlay, \'toggle\', \'always\')"                         (mouseenter)="setVisibility(overlay, \'on\')" (mouseleave)="setVisibility(overlay, \'off\')">        {{ overlay.label }}      </mat-button-toggle>    </div>  </div>  <div class="metadata">    <span class="organ-name">{{ organName$ | async }}</span>    <div class="details">      <mat-expansion-panel class="panel">        <mat-expansion-panel-header class="header">          <mat-panel-title class="title">            Details          </mat-panel-title>        </mat-expansion-panel-header>        <ccf-metadata [metadata]="metadata$ | async"></ccf-metadata>      </mat-expansion-panel>    </div>  </div>  <!-- Note: This element will be moved into OpenSeadragon\'s view -->  <svg class="overlays" preserveAspectRatio="none" x="0" y="0" [attr.width]="overlayWidth" [attr.height]="overlayHeight"       [attr.viewBox]="overlayViewBox" [style.display]="displayState(viewer)" #overlayEl>    <use *ngFor="let overlay of tissueOverlay$ | async" class="overlay"         [attr.display]="displayState(isVisible(overlay))" [attr.href]="overlay.overlayUrl + \'#overlay\'"></use>  </svg></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ccf-about'},{'name': 'AgeSelectorComponent', 'selector': 'ccf-age-selector'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BodyComponent', 'selector': 'ccf-body'},{'name': 'CalloutComponent', 'selector': 'ccf-callout, [ccf-callout]'},{'name': 'GenderSelectorComponent', 'selector': 'ccf-gender-selector'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HomeComponent', 'selector': 'ccf-home'},{'name': 'MainComponent', 'selector': 'ccf-main'},{'name': 'MetadataComponent', 'selector': 'ccf-metadata'},{'name': 'NavigationComponent', 'selector': 'ccf-navigation'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'Organ3dComponent', 'selector': 'ccf-organ3d'},{'name': 'OrganComponent', 'selector': 'ccf-organ'},{'name': 'SearchCategoriesComponent', 'selector': 'ccf-search-categories'},{'name': 'SearchComponent', 'selector': 'ccf-search'},{'name': 'TissueComponent', 'selector': 'ccf-tissue'},{'name': 'TissuesBrowserComponent', 'selector': 'ccf-tissues-browser'},{'name': 'TissuesBrowserGridComponent', 'selector': 'ccf-tissues-browser-grid'},{'name': 'TissuesBrowserGridItemComponent', 'selector': 'ccf-tissues-browser-grid-item'},{'name': 'TissuesBrowserGridPopoverContentComponent', 'selector': 'ccf-tissues-browser-grid-popover-content'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TissueComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TissueComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

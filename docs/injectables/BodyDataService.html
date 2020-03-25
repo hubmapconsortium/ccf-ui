@@ -1,0 +1,1081 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>BodyDataService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/shared/services/body-data/body-data.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Provides data for the body component.</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#countObservableMap">countObservableMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#pathToImages">pathToImages</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#patientFilterBuilder">patientFilterBuilder</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#searchState">searchState</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createCountsObservable">createCountsObservable</a>
+                            </li>
+                            <li>
+                                <a href="#getBodyOverlays">getBodyOverlays</a>
+                            </li>
+                            <li>
+                                <a href="#getBodySourcePath">getBodySourcePath</a>
+                            </li>
+                            <li>
+                                <a href="#getCounts">getCounts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getCountsFor">getCountsFor</a>
+                            </li>
+                            <li>
+                                <a href="#getMetadata">getMetadata</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(localDatabase: <a href="../injectables/LocalDatabaseService.html">LocalDatabaseService</a>, store: Store)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of body data service.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>localDatabase</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LocalDatabaseService.html" target="_self" >LocalDatabaseService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The database.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The global store.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createCountsObservable"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            createCountsObservable
+                        </b>
+                        <a href="#createCountsObservable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createCountsObservable(sampleId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates an observable returning counts for the specified tissue sample id.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sampleId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The indetifier.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/CountMetaData.html" target="_self" >Observable&lt;CountMetaData&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An observable emitting the counts.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBodyOverlays"></a>
+                    <span class="name">
+                        <b>
+                            getBodyOverlays
+                        </b>
+                        <a href="#getBodyOverlays"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBodyOverlays()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets body overlays.</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;literal type[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Body overlays Ids with corresponding path.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBodySourcePath"></a>
+                    <span class="name">
+                        <b>
+                            getBodySourcePath
+                        </b>
+                        <a href="#getBodySourcePath"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBodySourcePath()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets body source path</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Observable of body source path</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCounts"></a>
+                    <span class="name">
+                        <b>
+                            getCounts
+                        </b>
+                        <a href="#getCounts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCounts(sample: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries the number of slices, images, etc. that exists for a sample.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sample</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The tissue sample for which to count objects.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/CountMetaData.html" target="_self" >Observable&lt;CountMetaData&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The counts of the different objects.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCountsFor"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            getCountsFor
+                        </b>
+                        <a href="#getCountsFor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCountsFor(method, selector: (state: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>) => void, path: PropertyPath, value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:151</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries the number of items exists of a specific object type.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>method</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The database method used to query items.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>selector</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter builder selector for the associated object type.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                            <code>PropertyPath</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Path which&#39;s value must match the provided value.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>A value to match against (usually an identifier)</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;number&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An observable emitting a count of the objects.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMetadata"></a>
+                    <span class="name">
+                        <b>
+                            getMetadata
+                        </b>
+                        <a href="#getMetadata"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMetadata(organ: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>TODO - based on the data format, the logic needs to be updated
+Gets the metadata for the organ on body</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organ</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;literal type[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Observable for metadata for the organ on body</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="countObservableMap"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            countObservableMap</b>
+                            <a href="#countObservableMap"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new WeakMap&lt;any, Observable&lt;CountMetaData&gt;&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Mapping used to prevent the recreation of expensive count operations.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pathToImages"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            pathToImages</b>
+                            <a href="#pathToImages"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>environment.ccfAssetUrl + &#x27;/body&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Path to images of tissues - TODO - this will come from a json file eventually</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="patientFilterBuilder"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            patientFilterBuilder</b>
+                            <a href="#patientFilterBuilder"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Patient.html" target="_self" >Observable&lt;FilterBuilder&lt;Patient&gt;&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Select(SearchState.patientFilterBuilder)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits the filter builder for patient.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchState"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            searchState</b>
+                            <a href="#searchState"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/SearchStateModel.html" target="_self" >Observable&lt;SearchStateModel&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Select(SearchState)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/shared/services/body-data/body-data.service.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits the current search state.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Select, Store } from &#x27;@ngxs/store&#x27;;
+import { map as loMap, PropertyPath } from &#x27;lodash&#x27;;
+import { combineLatest, Observable, of } from &#x27;rxjs&#x27;;
+import { map, pluck, share, switchMap } from &#x27;rxjs/operators&#x27;;
+
+import { environment } from &#x27;../../../../environments/environment&#x27;;
+import { FilterBuilder } from &#x27;../../common/filter/filter-builder&#x27;;
+import { LocalDatabaseService } from &#x27;../../services/database/local/local-database.service&#x27;;
+import { Patient } from &#x27;../../state/database/database.models&#x27;;
+import { CountMetaData } from &#x27;../../state/organ-meta-data/organ-meta-data.model&#x27;;
+import { SearchStateModel } from &#x27;../../state/search/search.model&#x27;;
+import { SearchState } from &#x27;../../state/search/search.state&#x27;;
+
+/**
+ * Provides data for the body component.
+ */
+@Injectable()
+export class BodyDataService {
+  /**
+   * Mapping used to prevent the recreation of expensive count operations.
+   */
+  private readonly countObservableMap &#x3D; new WeakMap&lt;any, Observable&lt;CountMetaData&gt;&gt;();
+
+  /**
+   * Path to images of tissues - TODO - this will come from a json file eventually
+   */
+  private readonly pathToImages &#x3D; environment.ccfAssetUrl + &#x27;/body&#x27;;
+
+  /**
+   * Creates an instance of body data service.
+   *
+   * @param localDatabase The database.
+   * @param store The global store.
+   */
+  constructor(private readonly localDatabase: LocalDatabaseService, private readonly store: Store) {}
+
+  /**
+   * Emits the current search state.
+   */
+  @Select(SearchState)
+  private searchState: Observable&lt;SearchStateModel&gt;;
+
+  /**
+   * Emits the filter builder for patient.
+   */
+  @Select(SearchState.patientFilterBuilder)
+  private patientFilterBuilder: Observable&lt;FilterBuilder&lt;Patient&gt;&gt;;
+
+  /**
+   * Gets body source path
+   * @returns Observable of body source path
+   */
+  getBodySourcePath(): Observable&lt;string&gt; {
+    return this.searchState.pipe(
+      pluck(&#x27;gender&#x27;),
+      map(gender &#x3D;&gt; gender !&#x3D;&#x3D; undefined ? gender : &#x27;both&#x27;),
+      map(id &#x3D;&gt; id &amp;&amp; &#x60;${this.pathToImages}/${id}/&#x60;)
+    );
+  }
+
+  /**
+   * TODO - based on the data format, the logic needs to be updated
+   * Gets the metadata for the organ on body
+   * @returns Observable for metadata for the organ on body
+   */
+  getMetadata(organ: string): Observable&lt;{ [label: string]: string }[]&gt; {
+    return this.patientFilterBuilder.pipe(
+      map(builder &#x3D;&gt; builder.addIncludes(&#x27;anatomicalLocations&#x27;, organ)),
+      map(builder &#x3D;&gt; builder.toFilter()),
+      switchMap(filter &#x3D;&gt; this.localDatabase.getPatients(filter)),
+      map(patients &#x3D;&gt; loMap(patients, &#x27;metadata&#x27;))
+    );
+  }
+
+  /**
+   * Gets body overlays.
+   * @returns Body overlays Ids with corresponding path.
+   */
+  getBodyOverlays(): Observable&lt;{id: string, path: string}[]&gt; {
+    return of([&#x27;kidney&#x27;, &#x27;heart&#x27;].map(s &#x3D;&gt; {
+      return {id: s, path: &#x60;${this.pathToImages}/overlays/${s}/${s}.svg&#x60;};
+    }));
+  }
+
+  /**
+   * Queries the number of slices, images, etc. that exists for a sample.
+   *
+   * @param sample The tissue sample for which to count objects.
+   * @returns The counts of the different objects.
+   */
+  getCounts(sample: any): Observable&lt;CountMetaData&gt; {
+    if (this.countObservableMap.has(sample)) {
+      return this.countObservableMap.get(sample);
+    }
+
+    const result &#x3D; this.createCountsObservable(sample.id);
+    this.countObservableMap.set(sample, result);
+    return result;
+  }
+
+  /**
+   * Creates an observable returning counts for the specified tissue sample id.
+   *
+   * @param sampleId The indetifier.
+   * @returns An observable emitting the counts.
+   */
+  private createCountsObservable(sampleId: string): Observable&lt;CountMetaData&gt; {
+    const patientCountObservable &#x3D; this.getCountsFor(
+      &#x27;getPatients&#x27;, SearchState.patientFilterBuilder,
+      &#x27;anatomicalLocations[0]&#x27;, sampleId
+    );
+    const sampleCountObservable &#x3D; this.getCountsFor(
+      &#x27;getTissueSamples&#x27;, SearchState.tissueSampleFilterBuilder,
+      &#x27;patient.anatomicalLocations[0]&#x27;, sampleId
+    );
+    const sliceCountObservable &#x3D; this.getCountsFor(
+      &#x27;getTissueSlices&#x27;, SearchState.tissueSliceFilterBuilder,
+      &#x27;sample.patient.anatomicalLocations[0]&#x27;, sampleId
+    );
+    const imageCountObservable &#x3D; this.getCountsFor(
+      &#x27;getTissueImages&#x27;, SearchState.tissueImageFilterBuilder,
+      &#x27;slice.sample.patient.anatomicalLocations[0]&#x27;, sampleId
+    );
+    const counts &#x3D; combineLatest(
+      [patientCountObservable, sampleCountObservable,
+      sliceCountObservable, imageCountObservable]
+    ).pipe(
+      map(([patientCount, sampleCount, sliceCount, imageCount]) &#x3D;&gt; ({
+        patientsCount: patientCount,
+        tissueSamplesCount: sampleCount,
+        tissueSlicesCount: sliceCount,
+        tissueImagesCount: imageCount,
+        cells: 0
+      })),
+      share()
+    );
+
+    return counts;
+  }
+
+  /**
+   * Queries the number of items exists of a specific object type.
+   *
+   * @param method The database method used to query items.
+   * @param selector The filter builder selector for the associated object type.
+   * @param path Path which&#x27;s value must match the provided value.
+   * @param value A value to match against (usually an identifier)
+   * @returns An observable emitting a count of the objects.
+   */
+  private getCountsFor&lt;T&gt;(
+    method: keyof LocalDatabaseService,
+    selector: (state: any) &#x3D;&gt; FilterBuilder&lt;T&gt;,
+    path: PropertyPath,
+    value: string
+  ): Observable&lt;number&gt; {
+    const { localDatabase: db, store } &#x3D; this;
+    const queryFun &#x3D; db[method].bind(db) as (filter: (obj: T) &#x3D;&gt; boolean) &#x3D;&gt; Observable&lt;T[]&gt;;
+    return store.select(selector).pipe(
+      map(builder &#x3D;&gt; builder.addMatches(path, value)),
+      map(builder &#x3D;&gt; builder.toFilter()),
+      switchMap(queryFun),
+      map(items &#x3D;&gt; items.length)
+    );
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'BodyDataService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
