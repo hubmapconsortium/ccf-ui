@@ -2,7 +2,7 @@
   width: 0em;
   position: absolute;
   height: 23em;
-  z-index: 1;
+  z-index: -1;
   top: 0;
   right: 27.5em;
   background-color: #323232;
@@ -21,6 +21,7 @@
 
   &.visible {
     width: 35rem;
+    z-index: 5;
 
     .popup-body {
         opacity: 1;
