@@ -22,6 +22,20 @@
   }
 }
 
+.fullscreen {
+  width: 3em;
+  height: 3em;
+  color: #9e9e9e;
+  background: none;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+.fullscreen:hover {
+  color: #1e88e5;
+}
+
 ::-webkit-scrollbar {
   width: 120px;
 }

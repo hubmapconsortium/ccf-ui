@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'ccf-root',
@@ -8,6 +9,7 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  fullscreenActive = false;
   constructor() {}
 
   // Todo: add to ngxs global state
@@ -19,5 +21,15 @@ export class AppComponent {
     right.open();
     right.closeExpanded();
     filterbox.removeBox();
+  }
+
+  toggleFullScreen(drawer: DrawerComponent) {
+    if (this.fullscreenActive) {
+      drawer.closeExpanded();
+      this.fullscreenActive = false;
+    } else {
+      drawer.openExpanded();
+      this.fullscreenActive = true;
+    }
   }
 }
