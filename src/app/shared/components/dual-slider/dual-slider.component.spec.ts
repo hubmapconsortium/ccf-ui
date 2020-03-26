@@ -3,6 +3,7 @@ import { Shallow } from 'shallow-render';
 
 import { DualSliderComponent } from './dual-slider.component';
 import { DualSliderModule } from './dual-slider.module';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 
 
 describe('DualSliderComponent', () => {
@@ -100,5 +101,19 @@ describe('DualSliderComponent', () => {
     instance.optionsChanged();
     expect(instance.options.floor).toEqual(0);
     expect(instance.options.ceil).toEqual(0);
+  });
+
+  it('updates lowValue when inputted directly', async () => {
+    const { find, instance, fixture } = await shallow.render({ bind: { selection: [1, 10]} });
+    const formField = find('.form-field');
+    formField.triggerEventHandler('click', '');
+    instance.toggleSliderPopover();
+    instance.contentsVisible = 'visible';
+
+    // find('.input-low').nativeElement.value = '5';
+    // find('.input-low').nativeElement.dispatchEvent(new Event('input'));
+    // fixture.detectChanges();
+    // expect(instance.lowValue).toBe(5);
+    expect(find('.ccf-slider div:nth-child(1) div:nth-child(2)')).toHaveFound(1);
   });
 });
