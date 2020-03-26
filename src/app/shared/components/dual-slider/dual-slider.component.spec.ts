@@ -3,7 +3,6 @@ import { Shallow } from 'shallow-render';
 
 import { DualSliderComponent } from './dual-slider.component';
 import { DualSliderModule } from './dual-slider.module';
-import { toBase64String } from '@angular/compiler/src/output/source_map';
 
 
 describe('DualSliderComponent', () => {
@@ -104,16 +103,32 @@ describe('DualSliderComponent', () => {
   });
 
   it('updates lowValue when inputted directly', async () => {
-    const { find, instance, fixture } = await shallow.render({ bind: { selection: [1, 10]} });
-    const formField = find('.form-field');
-    formField.triggerEventHandler('click', '');
-    instance.toggleSliderPopover();
-    instance.contentsVisible = 'visible';
+    const mockEvent = {
+      target: {
+        value: '5',
+        blur: () => {}
+       } as unknown as HTMLElement,
+      key:'Enter'
+    } as unknown as KeyboardEvent;
 
-    // find('.input-low').nativeElement.value = '5';
-    // find('.input-low').nativeElement.dispatchEvent(new Event('input'));
-    // fixture.detectChanges();
-    // expect(instance.lowValue).toBe(5);
-    expect(find('.ccf-slider div:nth-child(1) div:nth-child(2)')).toHaveFound(1);
+    const { instance } = await shallow.render({ bind: {selection: [2, 9]}});
+    instance.options = {floor: 1, ceil: 10};
+    instance.onKeyLow(mockEvent);
+    expect(instance.lowValue).toBe(5);
+  });
+
+  it('updates highValue when inputted directly', async () => {
+    const mockEvent = {
+      target: {
+        value: '8',
+        blur: () => {}
+       } as unknown as HTMLElement,
+      key:'Enter'
+    } as unknown as KeyboardEvent;
+
+    const { instance } = await shallow.render({ bind: {selection: [2, 9]}});
+    instance.options = {floor: 1, ceil: 10};
+    instance.onKeyHigh(mockEvent);
+    expect(instance.highValue).toBe(8);
   });
 });
