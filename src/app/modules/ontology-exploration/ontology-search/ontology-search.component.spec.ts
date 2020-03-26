@@ -59,17 +59,6 @@ describe('OntologySearchComponent', () => {
     expect(value).toBe(-1);
   });
 
-  it('should call on select when node is selected', async () => {
-    const event = fromPartial<MatAutocompleteSelectedEvent>({
-      option: { value: { node: { label: 'label' } } }
-    });
-    const { instance } = await shallow.render({ bind: {} });
-    const spy = spyOn(instance, 'onSelect');
-
-    instance.onSelect(event);
-    expect(spy).toHaveBeenCalledWith(event);
-  });
-
   it('should emit the node when selected', async () => {
     const node = fromPartial<OntologyNode>({ label: 'label' });
     const event = fromPartial<MatAutocompleteSelectedEvent>({
