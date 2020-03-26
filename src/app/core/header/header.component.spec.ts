@@ -30,14 +30,14 @@ describe('HeaderComponent', () => {
   }
 
   it('should display the current sex', async () => {
-    testFilterLabel(1, testFilter, 'Sex: Both');
+    await testFilterLabel(1, testFilter, 'Sex: Both');
   });
 
   it('should display the current age range', async () => {
-    testFilterLabel(2, testFilter, 'Age: 5-99');
+    await testFilterLabel(2, testFilter, 'Age: 5-99');
   });
 
   it('should display the current BMI range', async () => {
-    testFilterLabel(3, testFilter, 'BMI: 30-80');
+    await testFilterLabel(3, testFilter, 'BMI: 30-80');
   });
 });
