@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'ccf-root',
@@ -23,6 +22,10 @@ export class AppComponent {
     filterbox.removeBox();
   }
 
+  /**
+   * Toggles expanded mode of the drawer
+   * @param drawer The drawer being toggled
+   */
   toggleFullScreen(drawer: DrawerComponent) {
     if (this.fullscreenActive) {
       drawer.closeExpanded();
