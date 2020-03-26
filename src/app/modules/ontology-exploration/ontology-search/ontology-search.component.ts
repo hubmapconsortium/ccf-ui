@@ -16,10 +16,10 @@ import { OntologySearchService, SearchResult } from '../../../core/services/onto
 })
 export class OntologySearchComponent implements OnInit {
   /**
-   * Creates an instance of ontology search component.
-   * @param searchService instance of searchService which provides all the search functionality
+   * Output event-emitter which emits the id of the OntologyNode whose label was
+   * selected by the user in the search-results
    */
-  constructor(public ontologyService: OntologySearchService) { }
+  @Output() selected = new EventEmitter<OntologyNode>();
 
   /**
    * Instance of FormControl - tracks the value and validation status of an individual form control
@@ -34,10 +34,10 @@ export class OntologySearchComponent implements OnInit {
   filteredResults$: Observable<SearchResult[]>;
 
   /**
-   * Output event-emitter which emits the id of the OntologyNode whose label was
-   * selected by the user in the search-results
+   * Creates an instance of ontology search component.
+   * @param searchService instance of searchService which provides all the search functionality
    */
-  @Output() selected = new EventEmitter<OntologyNode>();
+  constructor(public ontologyService: OntologySearchService) { }
 
   /**
    * on-init lifecycle hook for this component -
@@ -89,7 +89,7 @@ export class OntologySearchComponent implements OnInit {
    * @param event instance of MatAutocompleteSelectedEvent
    */
   onSelect(event: MatAutocompleteSelectedEvent): void {
-    const node = get(event, 'option.value.node') as OntologyNode;
+    const node = get(event, ['option', 'value', 'node']) as OntologyNode;
     if (node) {
       this.selected.emit(node);
       this.formControl.reset();
