@@ -8,6 +8,9 @@ import { SearchState } from '../../../core/store/search/search.state';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
 
 
+/**
+ * Ontology selection component that encapsulates ontology search and tree components.
+ */
 @Component({
   selector: 'ccf-ontology-selection',
   templateUrl: './ontology-selection.component.html',
@@ -26,6 +29,10 @@ export class OntologySelectionComponent {
     public store: Store
   ) {}
 
+  /**
+   * Ontology selection event when node is selected from the search results.
+   * @param ontologyNode selected ontology node.
+   */
   selected(ontologyNode: OntologyNode) {
     const { nodes } = this.store.selectSnapshot<OntologyStateModel>(OntologyState);
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
