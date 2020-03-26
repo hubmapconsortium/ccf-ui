@@ -12,6 +12,12 @@ export class FiltersPopoverComponent {
   @Input() filters: Record<string, unknown | unknown[]>;
 
   /**
+   * Keeps track of whether or not the containing drawer is expanded
+   * Because the styles need to change accordingly
+   */
+  @Input() drawerExpanded: boolean;
+
+  /**
    * Emits the current filters
    */
   @Output() filtersChange = new EventEmitter<Record<string, unknown>>();

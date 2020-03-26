@@ -1,3 +1,19 @@
+.filters-popover {
+  position: inherit;
+
+  &.expanded {
+    position: relative;
+
+    .popup-container {
+      right: inherit;
+    }
+
+    .popup-body {
+      padding-left: 4em;
+    }
+  }
+}
+
 .popup-container {
   width: 0em;
   position: absolute;
