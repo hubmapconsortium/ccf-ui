@@ -6,7 +6,7 @@ import { OntologySearchService, SearchResult } from 'src/app/core/services/ontol
 import { OntologySearchComponent } from './ontology-search.component';
 import { OntologySearchModule } from './ontology-search.module';
 
-fdescribe('OntologySearchComponent', () => {
+describe('OntologySearchComponent', () => {
   let shallow: Shallow<OntologySearchComponent>;
   let mockSearchService: jasmine.SpyObj<OntologySearchService>;
 
@@ -70,7 +70,7 @@ fdescribe('OntologySearchComponent', () => {
     const { instance } = await shallow.render({ bind: {} });
     const spy = spyOn(instance, 'onSelect');
     instance.onSelect(event);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith(event);
   });
 
   it('should emit the node when selected', async () => {
@@ -78,14 +78,13 @@ fdescribe('OntologySearchComponent', () => {
     const event = {
       option: {
         value: {
-          node: {
-            label: 'label'
-          }
+          node: { label: 'label'}
         }
       }
     } as MatAutocompleteSelectedEvent;
     instance.onSelect(event);
 
-    expect(outputs.selected.emit).toHaveBeenCalled();
+    // tslint:disable-next-line: no-unsafe-any
+    expect(outputs.selected.emit).toHaveBeenCalledWith(event.option.value.node);
   });
 });
