@@ -38,18 +38,4 @@ export class AppComponent {
     right.closeExpanded();
     filterbox.removeBox();
   }
-
-  /**
-   * Toggles expanded mode of the drawer
-   * @param drawer The drawer being toggled
-   */
-  toggleFullScreen(drawer: DrawerComponent) {
-    if (this.fullscreenActive) {
-      drawer.closeExpanded();
-      this.fullscreenActive = false;
-    } else {
-      drawer.openExpanded();
-      this.fullscreenActive = true;
-    }
-  }
 }

@@ -53,17 +53,4 @@ describe('AppComponent', () => {
     header.logoClicked.emit();
     expect(spy).toHaveBeenCalled();
   });
-
-  it('should expand the drawer if toggleFullScreen() is called', async () => {
-    const { instance } = await shallow.render();
-    instance.toggleFullScreen(right);
-    expect(right.openExpanded).toHaveBeenCalled();
-  });
-
-  it('should return the drawer to normal state if toggleFullScreen() is called', async () => {
-    const { instance } = await shallow.render();
-    instance.fullscreenActive = true;
-    instance.toggleFullScreen(right);
-    expect(right.closeExpanded).toHaveBeenCalled();
-  });
 });
