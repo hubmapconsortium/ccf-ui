@@ -17,8 +17,8 @@ describe('AppComponent', () => {
   beforeEach(() => {
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule);
-    left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
-    right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
+    left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded', 'openExpanded']);
+    right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded', 'openExpanded']);
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
   });
 
@@ -52,5 +52,18 @@ describe('AppComponent', () => {
 
     header.logoClicked.emit();
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should expand the drawer if toggleFullScreen() is called', async () => {
+    const { instance } = await shallow.render();
+    instance.toggleFullScreen(right);
+    expect(right.openExpanded).toHaveBeenCalled();
+  });
+
+  it('should return the drawer to normal state if toggleFullScreen() is called', async () => {
+    const { instance } = await shallow.render();
+    instance.fullscreenActive = true;
+    instance.toggleFullScreen(right);
+    expect(right.closeExpanded).toHaveBeenCalled();
   });
 });
