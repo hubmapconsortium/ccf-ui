@@ -87,7 +87,7 @@ export class OntologyTreeComponent {
   /**
    * Currently selected node.
    */
-  private selectedNode?: FlatNode = undefined;
+  selectedNode?: FlatNode = undefined;
 
   /**
    * Storage for getter/setter 'nodes'.
