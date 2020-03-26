@@ -9,6 +9,9 @@ import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologySearchService, SearchResult } from '../../../core/services/ontology-search/ontology-search.service';
 
 
+/**
+ * Componenet for searching the Ontology nodes.
+ */
 @Component({
   selector: 'ccf-ontology-search',
   templateUrl: './ontology-search.component.html',
@@ -26,6 +29,10 @@ export class OntologySearchComponent implements OnInit {
    */
   formControl = new FormControl('');
 
+
+  /**
+   * Determines if autocomplete is open or close.
+   */
   autoCompleteOpen = false;
 
   /**
