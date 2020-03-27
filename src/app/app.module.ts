@@ -11,7 +11,6 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MatIconModule } from '@angular/material/icon';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
