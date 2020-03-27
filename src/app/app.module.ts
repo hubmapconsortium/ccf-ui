@@ -21,7 +21,7 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
     OntologyExplorationModule,
     InfoDialogModule,
     MatIconModule,
-    DualSliderModule,
+    DualSliderModule
   ],
   declarations: [AppComponent],
   providers: [],
