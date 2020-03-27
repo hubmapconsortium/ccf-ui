@@ -9,7 +9,7 @@ import { OntologyTreeModule } from './ontology-tree.module';
 function fromPartial<T>(partial: RecursivePartial<T>): T {
   return partial as T;
 }
-fdescribe('OntologyTreeComponent', () => {
+describe('OntologyTreeComponent', () => {
   let shallow: Shallow<OntologyTreeComponent>;
   const node1 = new FlatNode(fromPartial<OntologyNode>({label: 'label', children:['child1', 'child2']}), 1);
   const node2 = new FlatNode(fromPartial<OntologyNode>({label: 'label2', children:[]  }), 1);
