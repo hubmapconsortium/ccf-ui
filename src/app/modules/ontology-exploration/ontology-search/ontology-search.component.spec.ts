@@ -1,4 +1,4 @@
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { of } from 'rxjs';
 import { RecursivePartial, Shallow } from 'shallow-render';
 
@@ -68,5 +68,18 @@ describe('OntologySearchComponent', () => {
 
     instance.onSelect(event);
     expect(outputs.selected.emit).toHaveBeenCalledWith(node);
+  });
+
+  it('should handle the node selection', async () => {
+    const node = fromPartial<OntologyNode>({ label: 'label' });
+    const event = fromPartial<MatAutocompleteSelectedEvent>({
+      option: { value: { node } }
+    });
+    const { instance, findComponent } = await shallow.render({ bind: {} });
+    const matComplete = findComponent(MatAutocomplete);
+    const spy = spyOn(instance, 'onSelect');
+
+    matComplete.optionSelected.emit(event);
+    expect(spy).toHaveBeenCalledWith(event);
   });
 });
