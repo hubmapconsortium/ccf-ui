@@ -28,7 +28,7 @@ describe('OntologySelectionComponent', () => {
     .mock(Store, mockStore)
     .mock(OntologyTreeComponent, mockTreeComponent)
     .provide([
-      { provide: SearchState, useValue: {setLocation: () => {}} },
+      { provide: SearchState, useValue: {} },
       { provide: HttpClient, useValue: {} },
       { provide: OntologyState, useValue: {} }
     ]);
