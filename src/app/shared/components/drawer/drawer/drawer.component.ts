@@ -92,6 +92,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
 
   @Output() readonly openedChange = new EventEmitter<boolean>(true);
   @Output() readonly expandedChange = new EventEmitter<boolean>(true);
+  @Output() readonly stateChange = new EventEmitter<void>(true);
 
   @HostBinding('@openClose')
   openedState: OpenedState = 'closed';
@@ -216,6 +217,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
       width: this.measuredWidth,
       margin: this.measuredMargin
     });
+    this.stateChange.emit();
   }
 
   private handleMessage(msg: Message): boolean {

@@ -1,4 +1,4 @@
-<div>
+<div class="filters-popover" [class.expanded]="drawerExpanded">
   <button (click)="toggleFilterVisible()" class="show-hide">
     <div *ngIf="filtersVisible; else notShow">
       <mat-icon class="icon">close</mat-icon>

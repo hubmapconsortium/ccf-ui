@@ -83,7 +83,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   /**
    * Computes the current age range for display in the button.
    */
-  get RangeLabel(): string {
+  get rangeLabel(): string {
     const { lowValue, highValue } = this;
     if (lowValue === highValue) {
       return `${lowValue}`;
@@ -127,9 +127,6 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       this.optionsChanged();
     }
     if (changes.selection) {
-      if (!this.selection) {
-        this.selection = [];
-      }
       // Detect when selection is changed and update low/high value.
       this.lowValue = Math.min(...this.selection);
       this.highValue = Math.max(...this.selection);
@@ -147,8 +144,8 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       hideLimitLabels: true,
       hidePointerLabels: true
     };
-    this.lowValue = this.options?.floor ?? 0;
-    this.highValue = this.options?.ceil ?? 0;
+    this.lowValue = this.options.floor ?? 0;
+    this.highValue = this.options.ceil ?? 0;
   }
 
   /**
@@ -166,7 +163,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * @param target The element on which the event was fired.
    */
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
-  @HostListener('document:mousemove', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  // @HostListener('document:mousemove', ['$event.target']) // tslint:disable-line:no-unsafe-any
   @HostListener('document:touchstart', ['$event.target']) // tslint:disable-line:no-unsafe-any
   closeSliderPopover(target: HTMLElement): void {
     const { element, isSliderOpen, popoverElement } = this;
@@ -205,9 +202,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Emits the updated selection value array.
    */
   sliderValueChanged(): void {
-    const { lowValue, highValue, options: { floor, ceil } } = this;
-    // const min = lowValue !== floor ? lowValue : undefined;
-    // const max = highValue !== ceil ? highValue : undefined;
+    const { lowValue, highValue } = this;
 
     this.selection = [lowValue, highValue];
     this.selectionChange.emit(this.selection);
@@ -251,7 +246,6 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
         this.highValue = newValue;
       }
-
       (event.target as HTMLInputElement).value = String(this.highValue);
       (event.target as HTMLInputElement).blur();
       this.sliderValueChanged();

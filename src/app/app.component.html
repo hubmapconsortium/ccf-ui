@@ -2,16 +2,16 @@
   <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
 
   <ccf-drawer-container>
-    <ccf-drawer opened #left>
+    <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
       <ccf-ontology-selection></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
-    <ccf-drawer position="end" opened #right>
+    <ccf-drawer position="end" opened #right (stateChange)="filterbox.removeBox()">
       <div class="drawer-icons">
-        <ccf-filters-popover [(filters)]="filters" #filterbox></ccf-filters-popover>
+        <ccf-filters-popover [(filters)]="filters" [drawerExpanded]="right.expanded" #filterbox></ccf-filters-popover>
         <button class="button" (click)="right.toggleExpanded(); filterbox.removeBox()">
-          <mat-icon *ngIf="right.expanded" class="icon">fullscreen_exit</mat-icon>
-          <mat-icon *ngIf="!right.expanded" class="icon">fullscreen</mat-icon>
+          <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+          <!-- <mat-icon *ngIf="!right.expanded" class="icon">fullscreen</mat-icon> -->
         </button>
       </div>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
