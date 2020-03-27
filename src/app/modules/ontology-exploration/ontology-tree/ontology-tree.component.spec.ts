@@ -1,7 +1,7 @@
 import { RecursivePartial, Shallow } from 'shallow-render';
-import { FlatNode } from 'src/app/core/models/flat-node';
-import { OntologyNode } from 'src/app/core/models/ontology-node';
 
+import { FlatNode } from '../../../core/models/flat-node';
+import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologyTreeComponent } from './ontology-tree.component';
 import { OntologyTreeModule } from './ontology-tree.module';
 
@@ -9,10 +9,12 @@ import { OntologyTreeModule } from './ontology-tree.module';
 function fromPartial<T>(partial: RecursivePartial<T>): T {
   return partial as T;
 }
+
+
 describe('OntologyTreeComponent', () => {
   let shallow: Shallow<OntologyTreeComponent>;
-  const node1 = new FlatNode(fromPartial<OntologyNode>({label: 'label', children:['child1', 'child2']}), 1);
-  const node2 = new FlatNode(fromPartial<OntologyNode>({label: 'label2', children:[]  }), 1);
+  const node1 = new FlatNode(fromPartial<OntologyNode>({ label: 'label', children:['child1', 'child2'] }), 1);
+  const node2 = new FlatNode(fromPartial<OntologyNode>({ label: 'label2', children:[]  }), 1);
 
   beforeEach(() => {
     shallow = new Shallow(OntologyTreeComponent, OntologyTreeModule);
@@ -40,5 +42,3 @@ describe('OntologyTreeComponent', () => {
     expect(instance.isInnerNode(1, node2)).toBeFalse();
   });
 });
-
-

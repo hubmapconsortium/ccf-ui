@@ -22,11 +22,16 @@ export class OntologySelectionComponent {
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
 
+  /**
+   * Creates an instance of ontology selection component.
+   * @param searchState State containing the currently active filters, etc.
+   * @param ontologySearchService Service for searching the ontology.
+   * @param store The global state store.
+   */
   constructor(
     public searchState: SearchState,
     public ontologySearchService: OntologySearchService,
-    public ontologyState: OntologyState,
-    public store: Store
+    private store: Store
   ) {}
 
   /**
