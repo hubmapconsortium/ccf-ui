@@ -35,6 +35,24 @@ describe('OntologySearchComponent', () => {
     expect(value).toBe('firstsecond');
   });
 
+  it('should display the label in correct format given that displayLabel is not defined', async () => {
+    const option = {
+      displayLabel: undefined
+    } as  unknown as SearchResult;
+    const { instance } = await shallow.render();
+
+    const value = instance.displayFormatter(option);
+    expect(value).toBe('');
+  });
+
+  it('should display the label in correct format given that option is undefined', async () => {
+    const option = undefined;
+    const { instance } = await shallow.render();
+
+    const value = instance.displayFormatter(option);
+    expect(value).toBe('');
+  });
+
   it('should get lower case string to sort in lexical order', async () => {
     const entry = fromPartial<SearchResult>({ node: { label: 'My Label' } });
     const { instance } = await shallow.render();
@@ -68,6 +86,16 @@ describe('OntologySearchComponent', () => {
 
     instance.onSelect(event);
     expect(outputs.selected.emit).toHaveBeenCalledWith(node);
+  });
+
+  it('should emit the node when selected given that node is undefined', async () => {
+    const event = fromPartial<MatAutocompleteSelectedEvent>({
+      option: { value: undefined }
+    });
+    const { instance, outputs } = await shallow.render({ bind: {} });
+
+    instance.onSelect(event);
+    expect(outputs.selected.emit).not.toHaveBeenCalled();
   });
 
   it('should handle the node selection', async () => {
