@@ -31,7 +31,7 @@ export class OntologySelectionComponent {
   constructor(
     public searchState: SearchState,
     public ontologySearchService: OntologySearchService,
-    private store: Store
+    private readonly store: Store
   ) {}
 
   /**
