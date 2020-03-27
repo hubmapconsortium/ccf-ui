@@ -21,12 +21,10 @@ describe('OntologySelectionComponent', () => {
 
   let shallow: Shallow<OntologySelectionComponent>;
   let mockStore: jasmine.SpyObj<Store>;
-  let mockTreeComponent: jasmine.SpyObj<OntologyTreeComponent>;
 
   beforeEach(() => {
     mockStore = jasmine.createSpyObj<Store>(['selectSnapshot']);
     mockStore.selectSnapshot.and.returnValue({ node: ontologyNode });
-    mockTreeComponent = jasmine.createSpyObj<OntologyTreeComponent>(['expandAndSelect']);
 
     shallow = new Shallow(OntologySelectionComponent, OntologySelectionModule)
       .provide(OntologySearchService, SearchState)
