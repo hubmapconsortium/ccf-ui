@@ -8,11 +8,13 @@ import { SearchState } from 'src/app/core/store/search/search.state';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
 import { OntologySelectionComponent } from './ontology-selection.component';
 import { OntologySelectionModule } from './ontology-selection.module';
+import { OntologySearchComponent } from '../ontology-search/ontology-search.component';
 
 describe('OntologySelectionComponent', () => {
   let shallow: Shallow<OntologySelectionComponent>;
   let mockStore: jasmine.SpyObj<Store>;
   let mockTreeComponent: jasmine.SpyObj<OntologyTreeComponent>;
+
   const ontologyNode = {
     label: 'label'
   } as OntologyNode;
@@ -26,7 +28,7 @@ describe('OntologySelectionComponent', () => {
     .mock(Store, mockStore)
     .mock(OntologyTreeComponent, mockTreeComponent)
     .provide([
-      { provide: SearchState, useValue: {} },
+      { provide: SearchState, useValue: {setLocation: () => {}} },
       { provide: HttpClient, useValue: {} },
       { provide: OntologyState, useValue: {} }
     ]);
@@ -37,5 +39,14 @@ describe('OntologySelectionComponent', () => {
     instance.tree = mockTreeComponent;
     instance.selected(ontologyNode);
     expect(mockTreeComponent.expandAndSelect).toHaveBeenCalled();
+  });
+
+  it('should handle the search selection event', async () => {
+    const { instance, findComponent } = await shallow.render();
+    const searchComponent = findComponent(OntologySearchComponent);
+    const spy = spyOn(instance, 'selected');
+
+    searchComponent.selected.emit(ontologyNode);
+    expect(spy).toHaveBeenCalledWith(ontologyNode);
   });
 });
