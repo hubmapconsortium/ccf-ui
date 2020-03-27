@@ -42,7 +42,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Creates an instance of ontology search component.
-   * @param searchService instance of searchService which provides all the search functionality
+   * @param ontologyService instance of searchService which provides all the search functionality
    */
   constructor(public ontologyService: OntologySearchService) { }
 
