@@ -2,11 +2,17 @@
 
 Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface (EUI).
 
-## 1.0.0-alpha.1 - 2019-03-06
+## 1.0.0-alpha.2 - 2019-03-27
 
-<aside class="warning">
-<b>WARNING:</b> This version is not yet ready for use. There are two more sprint scheduled to bring the User Interface up to Spec and usable.
-</aside>
+> :warning: **WARNING:** This version is not yet ready for use. There are two more sprint scheduled to bring the User Interface up to Spec and usable.
+
+### Added in 1.0.0-alpha.2
+
+* Increased documentation and testing coverage across the board
+* Added fullscreen button
+* Bug fixes and optimizations
+
+## 1.0.0-alpha.1 - 2019-03-06
 
 ### Added in 1.0.0-alpha.1
 

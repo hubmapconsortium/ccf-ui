@@ -8,7 +8,7 @@
 [![View Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://hubmapconsortium.github.io/ccf-ui/)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hubmapconsortium_ccf-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=hubmapconsortium_ccf-ui)
 [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=hubmapconsortium_ccf-ui&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=hubmapconsortium_ccf-ui)
-[![Documentation Status](https://ccf-ui.netlify.com/docs/images/coverage-badge-documentation.svg)](https://ccf-ui.netlify.com/docs/index.html)
+[![Documentation Status](https://hubmap-ccf-ui.netlify.com/docs/images/coverage-badge-documentation.svg)](https://hubmap-ccf-ui.netlify.com/docs/index.html)
 
 CCF-EUI: Common Coordinate Framework (CCF) - Exploration User Interface (EUI)
 
