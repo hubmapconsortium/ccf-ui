@@ -13,12 +13,6 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  /**
-   * Tracks if the drawer is expanded or not.
-   */
-  fullscreenActive = false;
-
   // Todo: add to ngxs global state
   /**
    * The list of filters for the tissue browser, with default values set.

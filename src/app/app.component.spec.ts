@@ -17,8 +17,8 @@ describe('AppComponent', () => {
   beforeEach(() => {
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule);
-    left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded', 'openExpanded']);
-    right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded', 'openExpanded']);
+    left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
+    right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
   });
 

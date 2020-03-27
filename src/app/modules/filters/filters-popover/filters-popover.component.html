@@ -9,7 +9,7 @@
   </button>
   <div class="popup-container" [class.visible]="filtersVisible">
     <div class="popup-body">
-      <ccf-filters-content *ngIf="filtersVisible" [filters]="filters" (applyFilters)="applyFilters($event)"></ccf-filters-content>
+      <ccf-filters-content [filters]="filters" (applyFilters)="applyFilters($event)"></ccf-filters-content>
     </div>
   </div>
 </div>

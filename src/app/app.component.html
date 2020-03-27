@@ -9,9 +9,8 @@
     <ccf-drawer position="end" opened #right (stateChange)="filterbox.removeBox()">
       <div class="drawer-icons">
         <ccf-filters-popover [(filters)]="filters" [drawerExpanded]="right.expanded" #filterbox></ccf-filters-popover>
-        <button class="button" (click)="right.toggleExpanded(); filterbox.removeBox()">
+        <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();">
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
-          <!-- <mat-icon *ngIf="!right.expanded" class="icon">fullscreen</mat-icon> -->
         </button>
       </div>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
