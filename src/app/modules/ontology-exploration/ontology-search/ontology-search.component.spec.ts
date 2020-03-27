@@ -26,9 +26,7 @@ describe('OntologySearchComponent', () => {
   });
 
   it('should display the label in correct format', async () => {
-    const option = {
-      displayLabel: ['first', 'second']
-    } as SearchResult;
+    const option = fromPartial<SearchResult>({ displayLabel: ['first', 'second'] });
     const { instance } = await shallow.render();
 
     const value = instance.displayFormatter(option);
@@ -36,9 +34,7 @@ describe('OntologySearchComponent', () => {
   });
 
   it('should display the label in correct format given that displayLabel is not defined', async () => {
-    const option = {
-      displayLabel: undefined
-    } as  unknown as SearchResult;
+    const option = fromPartial<SearchResult>({});
     const { instance } = await shallow.render();
 
     const value = instance.displayFormatter(option);
