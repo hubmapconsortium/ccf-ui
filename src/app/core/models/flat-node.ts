@@ -1,8 +1,13 @@
 import { OntologyNode } from './ontology-node';
 
 
+/**
+ * Node type used by ontology tree component.
+ */
 export class FlatNode {
-
+  /**
+   * Gets this node's label.
+   */
   get label(): string { return this.original.label; }
 
   /**
