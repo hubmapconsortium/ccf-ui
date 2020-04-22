@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageViewerComponent } from './image-viewer.component';
+import { ImageViewerContentComponent } from './image-viewer-content.component';
 
-describe('ImageViewerComponent', () => {
-  let component: ImageViewerComponent;
-  let fixture: ComponentFixture<ImageViewerComponent>;
+describe('ImageViewerContentComponent', () => {
+  let component: ImageViewerContentComponent;
+  let fixture: ComponentFixture<ImageViewerContentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageViewerComponent ]
+      declarations: [ ImageViewerContentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageViewerComponent);
+    fixture = TestBed.createComponent(ImageViewerContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
