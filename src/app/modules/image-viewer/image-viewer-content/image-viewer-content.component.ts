@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ccf-image-viewer-content',
   templateUrl: './image-viewer-content.component.html',
   styleUrls: ['./image-viewer-content.component.scss']
 })
-export class ImageViewerContentComponent implements OnInit {
+export class ImageViewerContentComponent {
 
-  constructor() { }
+  @Output() closeViewer = new EventEmitter();
 
-  ngOnInit(): void {
+  close() {
+    this.closeViewer.emit();
   }
-
 }

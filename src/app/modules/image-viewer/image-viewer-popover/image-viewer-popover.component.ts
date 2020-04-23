@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ccf-image-viewer',
@@ -13,7 +13,7 @@ export class ImageViewerPopoverComponent {
     this.contentsVisible = !this.contentsVisible;
   }
 
-  removeBox() {
+  closeViewer(): void {
     this.contentsVisible = false;
   }
 

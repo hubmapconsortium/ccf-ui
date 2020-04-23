@@ -1,7 +1,19 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
-
-  <ccf-drawer-container>
+  <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
+  
+  <!-- Tissue viewer -->
+  <ccf-image-viewer #viewer></ccf-image-viewer>
+  <ccf-drawer-container class="image-viewer" [class.expanded]="viewer.contentsVisible" [class.hidden]="!viewer.contentsVisible">
+    <ccf-drawer-content class="image-viewer-content">
+      <img class="body" src="assets/histology3.jpg" />
+    </ccf-drawer-content>
+    <ccf-drawer position="end" opened>
+      <ccf-image-viewer-content (closeViewer)="viewer.toggleContentVisible()"></ccf-image-viewer-content>
+      <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
+    </ccf-drawer>
+  </ccf-drawer-container>
+  
+  <ccf-drawer-container class="main-drawers" [class.expanded]="!viewer.contentsVisible" [class.hidden]="viewer.contentsVisible">
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
       <ccf-ontology-selection></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
@@ -12,11 +24,12 @@
         <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();">
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
+        <button (click)="viewer.toggleContentVisible()">
+          Open tissue viewer
+        </button>
       </div>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
-      <ccf-image-viewer #tissuebox></ccf-image-viewer>
     </ccf-drawer>
-
     <ccf-drawer-content>
       <img class="body" src="assets/img-both-sexes-torso.jpg" />
     </ccf-drawer-content>

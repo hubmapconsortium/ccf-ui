@@ -51,6 +51,7 @@ export class ContentComponent implements OnDestroy {
 
       case 'drawer-initialized':
         this.animationsEnabled = true;
+        this.rightMargin = 456;
         return true;
 
       case 'drawer-toggled':
@@ -66,7 +67,7 @@ export class ContentComponent implements OnDestroy {
     }
   }
 
-  private updateMargin(position: 'start' | 'end', opened: boolean,
+  private updateMargin(position: 'start' | 'end', opened = true,
                        width: number, margin: number): void {
     const offset = opened ? width + margin : margin;
     if (position === 'start') {
