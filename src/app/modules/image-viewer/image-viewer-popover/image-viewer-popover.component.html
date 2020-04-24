@@ -1,1 +1,10 @@
 
+  <ccf-drawer-container class="image-viewer-container" [class.expanded]="contentsVisible" [class.hidden]="!contentsVisible">
+    <ccf-drawer-content class="image-viewer-content">
+      <img class="body" src="assets/histology3.jpg" />
+    </ccf-drawer-content>
+    <ccf-drawer class="image-viewer-drawer" position="end" opened>
+      <ccf-image-viewer-content (closeViewer)="toggleContentVisible()"></ccf-image-viewer-content>
+      <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
+    </ccf-drawer>
+  </ccf-drawer-container>

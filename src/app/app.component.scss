@@ -4,6 +4,17 @@
   height: 100%;
   overflow: hidden;
 
+  ccf-image-viewer-popover {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    
+    &.hidden {
+      display: none
+    }
+  }
+
   ccf-drawer-container {
     flex-grow: 1;
     position: absolute;

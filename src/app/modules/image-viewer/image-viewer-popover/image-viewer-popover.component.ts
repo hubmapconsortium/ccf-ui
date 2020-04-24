@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ccf-image-viewer',
+  selector: 'ccf-image-viewer-popover',
   templateUrl: './image-viewer-popover.component.html',
   styleUrls: ['./image-viewer-popover.component.scss']
 })
