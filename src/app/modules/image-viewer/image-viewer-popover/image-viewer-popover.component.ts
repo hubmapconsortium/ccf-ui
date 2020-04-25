@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
 })
 export class ImageViewerPopoverComponent {
 
-  contentsVisible = false;
+  viewerVisible = false;
 
-  toggleContentVisible(): void {
-    this.contentsVisible = !this.contentsVisible;
+  toggleViewerVisible(): void {
+    this.viewerVisible = !this.viewerVisible;
   }
 
   closeViewer(): void {
-    this.contentsVisible = false;
+    this.viewerVisible = false;
   }
 
 }

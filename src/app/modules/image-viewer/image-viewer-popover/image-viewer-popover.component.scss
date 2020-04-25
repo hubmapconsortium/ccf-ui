@@ -16,11 +16,31 @@
     display: none;
   }
 
-  .image-viewer-content {
-    overflow: hidden;
-    .body {
-      height: 100%;
+  .image-viewer-window {
+    display: flex;
+    flex-direction: column;
+
+    .viewer-image {
+      margin-top: 1.5rem;
+      height: calc(100% - 7.5rem);
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: scale-down;
+      }
+    }
+
+    .scale-bar {
+      height: 1.5rem;
       width: 100%;
+    }
+
+    .legend {
+      height: 3rem;
+      width: 100%;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
     }
   }
 

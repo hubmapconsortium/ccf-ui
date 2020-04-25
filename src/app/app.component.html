@@ -2,9 +2,9 @@
   <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
   
   <!-- Tissue viewer -->
-  <ccf-image-viewer-popover [class.hidden]="!viewer.contentsVisible" #viewer></ccf-image-viewer-popover>
+  <ccf-image-viewer-popover [class.hidden]="!viewer.viewerVisible" #viewer></ccf-image-viewer-popover>
   
-  <ccf-drawer-container class="main-drawers" [class.expanded]="!viewer.contentsVisible" [class.hidden]="viewer.contentsVisible">
+  <ccf-drawer-container class="main-drawers" [class.expanded]="!viewer.viewerVisible" [class.hidden]="viewer.viewerVisible">
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
       <ccf-ontology-selection></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
@@ -15,7 +15,7 @@
         <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();">
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
-        <button (click)="viewer.toggleContentVisible()">
+        <button (click)="viewer.toggleViewerVisible()">
           Open tissue viewer
         </button>
       </div>
