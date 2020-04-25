@@ -15,10 +15,10 @@
         <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();">
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
-        <button (click)="viewer.toggleViewerVisible()">
-          Open tissue viewer
-        </button>
       </div>
+      <button (click)="viewer.toggleViewerVisible()">
+        Open tissue viewer
+      </button>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer-content>
