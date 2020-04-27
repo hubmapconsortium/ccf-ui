@@ -5,33 +5,18 @@
   overflow: hidden;
 
   ccf-image-viewer-popover {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    position: fixed;
     overflow: hidden;
-    
-    &.hidden {
-      display: none
-    }
+    left: 100%;
+    z-index: 10;
   }
 
   ccf-drawer-container {
     flex-grow: 1;
-    position: absolute;
-    opacity: 0;
-    
-    &.expanded {
-      position: relative;
-      animation: fadeIn .3s;
-      opacity: 1;
-    }
-  
-    &.hidden {
-      position: relative;
-      animation: fadeOut .3s;
-      opacity: 0;
-      display: none;
-    }
+    position: fixed;
+    top: 48px;
+    height: 100%;
+    opacity: 1;
 
     ccf-drawer-content {
       overflow: hidden;

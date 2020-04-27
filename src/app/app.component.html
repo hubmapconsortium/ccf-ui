@@ -2,9 +2,9 @@
   <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
   
   <!-- Tissue viewer -->
-  <ccf-image-viewer-popover [class.hidden]="!viewer.viewerVisible" #viewer></ccf-image-viewer-popover>
+  <ccf-image-viewer-popover #viewer></ccf-image-viewer-popover>
   
-  <ccf-drawer-container class="main-drawers" [class.expanded]="!viewer.viewerVisible" [class.hidden]="viewer.viewerVisible">
+  <ccf-drawer-container class="main-drawers">
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
       <ccf-ontology-selection></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
