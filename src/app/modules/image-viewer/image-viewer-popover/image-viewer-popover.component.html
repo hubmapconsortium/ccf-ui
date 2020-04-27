@@ -1,0 +1,13 @@
+<ccf-drawer-container class="image-viewer-container" [class.firstload]="firstLoad" [class.expanded]="viewerVisible" [class.hidden]="!viewerVisible">
+  <ccf-drawer-content class="image-viewer-window">
+    <div class="viewer-image">
+      <img src="assets/histology3.jpg" />
+    </div>
+    <div class="scale-bar">Scale bar goes here</div>
+    <div class="legend">Legend goes here</div>
+  </ccf-drawer-content>
+  <ccf-drawer class="image-viewer-drawer" position="end" opened>
+    <ccf-image-viewer-content (closeViewer)="toggleViewerVisible()"></ccf-image-viewer-content>
+    <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
+  </ccf-drawer>
+</ccf-drawer-container>

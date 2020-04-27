@@ -10,20 +10,11 @@ import { DrawerComponent } from '../drawer/drawer.component';
 import { Message, MessageChannel, MessageService } from '../messages';
 
 
-/**
- * Helper function for creating drawer errors.
- *
- * @param position The position of the drawer.
- * @throws {Error} Error with useful message is always thrown.
- */
 function throwDuplicateDrawersError(position: 'start' | 'end'): never {
   throw new Error(`Multiple drawers in position ${position}`);
 }
 
 
-/**
- * Main container for drawer components.
- */
 @Component({
   selector: 'ccf-drawer-container',
   exportAs: 'ccfDrawerContainer',
@@ -33,38 +24,24 @@ function throwDuplicateDrawersError(position: 'start' | 'end'): never {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContainerComponent implements AfterViewInit, OnDestroy {
-  /** HTML class */
   @HostBinding('class') readonly className = 'ccf-drawer-container';
 
-  /** Drawer components in this container. */
   @ContentChildren(DrawerComponent, { descendants: true })
   private drawers: QueryList<DrawerComponent>;
 
-  /** Content component if provided already wrapped. */
   @ContentChildren(ContentComponent, { descendants: true })
   private content1: QueryList<ContentComponent>;
-  /** Content component if provided without wrapping. */
   @ViewChildren(ContentComponent)
   private content2: QueryList<ContentComponent>;
-  /** Resolves the content component. */
   private get content(): ContentComponent {
     return this.content1.first ?? this.content2.first;
   }
 
-  /** Whether the content was wrapped. */
   get hasWrappedContent(): boolean { return this.content1.length !== 0; }
 
-  /** The connected message channel. */
   private channel: MessageChannel;
-  /** All subscriptions managed by the container. */
   private subscriptions = new Subscription();
 
-  /**
-   * Creates an instance of container component.
-   *
-   * @param messageService The service used to send event messages.
-   * @param cdr The change detector reference.
-   */
   constructor(messageService: MessageService,
               private cdr: ChangeDetectorRef) {
     this.channel = messageService.connect(this);
@@ -73,9 +50,6 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
     }));
   }
 
-  /**
-   * Sets up all listeners after all content has been projected.
-   */
   ngAfterViewInit(): void {
     this.drawers.changes.pipe(startWith(null)).subscribe(() => {
       const drawers = this.validateDrawers();
@@ -95,28 +69,14 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  /**
-   * Cleans up all subscriptions.
-   */
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
-  /**
-   * Processes event messages.
-   *
-   * @param _msg The event.
-   * @returns true if change detection needs to be run.
-   */
   private handleMessage(_msg: Message): boolean {
     return true;
   }
 
-  /**
-   * Validates the number of drawers and their positions.
-   *
-   * @returns A tuple containing the start and end drawers.
-   */
   private validateDrawers(): [DrawerComponent | undefined, DrawerComponent | undefined] {
     const drawers = this.drawers.toArray();
     const startDrawers = drawers.filter(drawer => drawer.position === 'start');

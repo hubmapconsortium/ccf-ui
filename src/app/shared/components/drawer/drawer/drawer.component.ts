@@ -9,14 +9,10 @@ import { Subscription } from 'rxjs';
 import { Message, MessageChannel, MessageService } from '../messages';
 
 
-/** Opened/closed state. */
 type OpenedState = 'open' | 'open-instant' | 'closed';
-/** Expanded/collapsed state. */
 type ExpandedState = 'open' | 'open-instant' | 'closed';
-/** Expanded state relative to an opposite drawer. */
 type ExpandedState2 = 'collapsed' | 'half' | 'extended' | 'full';
 
-/** Default animation parameters. */
 const EXPAND_COLLAPSE_PARAMS_DEFAULT = {
   params: {
     width: 0,
@@ -25,45 +21,21 @@ const EXPAND_COLLAPSE_PARAMS_DEFAULT = {
   }
 };
 
-/**
- * Boolean state that can also be awaited.
- */
 class InitializationState {
-  /** Whether this state is true or false. */
   private initialized = false;
-  /** Promise used to await on. */
   private deferred = new Promise<void>(resolve => this.resolve = resolve);
-  /** Resolve function for the promise. */
   private resolve: () => void;
 
-  /**
-   * Sets the state to true and
-   */
   set(): void {
     this.initialized = true;
     this.resolve();
   }
 
-  /**
-   * Gets a promise that resolves when this state is set to true.
-   *
-   * @returns A promise.
-   */
   async wait(): Promise<void> { return this.deferred; }
-
-  /**
-   * Gets the boolean state of this object.
-   *
-   * @returns true if set has been called.
-   */
   valueOf(): boolean { return this.initialized; }
 }
 
 
-/**
- * Side drawer component.
- * Contains all the logic for opening/closing/expanding.
- */
 @Component({
   selector: 'ccf-drawer',
   exportAs: 'ccfDrawer',
@@ -97,47 +69,34 @@ class InitializationState {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DrawerComponent implements AfterViewInit, OnDestroy {
-  /** HTML class */
   @HostBinding('class') readonly className = 'ccf-drawer';
-  /** Whether this is located at the end position. */
   @HostBinding('class.ccf-drawer-end') // tslint:disable-line: no-unsafe-any
   get classEnd(): boolean { return this.position === 'end'; }
 
-  /** Position of the drawer - start (left) or end (right). */
   @Input()// tslint:disable-line: no-unsafe-any
   get position(): 'start' | 'end' { return this._position; }
   set position(value: 'start' | 'end') { this._position = value || 'start'; }
-  /** Property for position getter/setter. */
   private _position: 'start' | 'end' = 'start';
 
-  /** Whether the drawer is opened. */
   @Input() // tslint:disable-line: no-unsafe-any
   @HostBinding('class.ccf-drawer-opened') // tslint:disable-line: no-unsafe-any
   get opened(): boolean { return this._opened; }
   set opened(value: boolean) { this.toggle(coerceBooleanProperty(value)); }
-  /** Property for opened getter/setter. */
   private _opened = false;
 
-  /** Whether the drawer is expanded. */
   @Input() // tslint:disable-line: no-unsafe-any
   @HostBinding('class.ccf-drawer-expanded') // tslint:disable-line: no-unsafe-any
   get expanded(): boolean { return this._expanded; }
   set expanded(value: boolean) { this.toggleExpanded(coerceBooleanProperty(value)); }
-  /** Property for expanded getter/setter */
   private _expanded = false;
 
-  /** Output emitting when the drawer has opened. */
   @Output() readonly openedChange = new EventEmitter<boolean>(true);
-  /** Output emitting when the drawer has expanded. */
   @Output() readonly expandedChange = new EventEmitter<boolean>(true);
-  /** Output emitting whenever the drawer state changes. */
   @Output() readonly stateChange = new EventEmitter<void>(true);
 
-  /** Current open/close animation state. */
   @HostBinding('@openClose')
   openedState: OpenedState = 'closed';
 
-  /** Expanded/collapsed state parameters. */
   @HostBinding('@expandCollapse')  // tslint:disable-line: no-unsafe-any
   get expandedStateObj(): unknown {
     return { value: this.expandedState2, params: {
@@ -145,12 +104,9 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
       margin2: this.margin2
     }};
   }
-  /** Current expanded/collapsed animation state. */
   expandedState: ExpandedState = 'closed';
-  /** Current expanded state relative to the opposite drawer. */
   private expandedState2: ExpandedState2 = 'collapsed';
 
-  /** Gets the calculated width of the drawer. */
   private get measuredWidth(): number {
     if (this._measuredWidth > 0) { return this._measuredWidth; }
 
@@ -163,12 +119,9 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
 
     return this._measuredWidth = width;
   }
-  /** Cached measured width. */
   private _measuredWidth = 0;
-  /** Width of opposite drawer. */
   private width = 0;
 
-  /** Gets the calculated margin of the drawer. */
   private get measuredMargin(): number {
     if (this._measuredMargin > 0) { return this._measuredMargin; }
 
@@ -182,25 +135,13 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
 
     return this._measuredMargin = margin;
   }
-  /** Cached measured margin. */
   private _measuredMargin = 0;
-  /** Margin of the opposite drawer. */
   private margin2 = 0;
 
-  /** Initialization state. */
   private initialized = new InitializationState();
-  /** Connected message channel. */
   private channel: MessageChannel;
-  /** Subscriptions managed by this component. */
   private subscriptions = new Subscription();
 
-  /**
-   * Creates an instance of drawer component.
-   *
-   * @param messageService Service for sending/receiving event messages.
-   * @param cdr The change detector reference.
-   * @param element Reference to components HTML element.
-   */
   constructor(messageService: MessageService,
               cdr: ChangeDetectorRef,
               private element: ElementRef<HTMLElement>) {
@@ -210,36 +151,17 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
     }));
   }
 
-  /**
-   * Initializes this component.
-   */
   ngAfterViewInit(): void {
     this.initialized.set();
     setTimeout(() => this.channel.sendMessage({ type: 'drawer-initialized' }));
   }
 
-  /**
-   * Cleans up all subscriptions.
-   */
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
-  /**
-   * Opens the drawer.
-   */
   open(): void { this.toggle(true); }
-
-  /**
-   * Closes the drawer.
-   */
   close(): void { this.toggle(false); }
-
-  /**
-   * Toggles the drawer between opened and closed.
-   *
-   * @param [opened] Whether to open or close the drawer.
-   */
   toggle(opened = !this.opened): void {
     if (this.opened === opened) { return; }
 
@@ -248,7 +170,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
       this.expandedState = 'closed';
       this.expandedState2 = 'collapsed';
       this._expanded = false;
-    } else if (this.initialized.valueOf()) {
+    } else if (this.initialized) {
       this.openedState = 'open';
     } else {
       this.openedState = 'open-instant';
@@ -258,28 +180,15 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
     this.sendToggle();
   }
 
-  /**
-   * Expands the drawer.
-   */
   openExpanded(): void { this.toggleExpanded(true); }
-
-  /**
-   * Collapses the drawer.
-   */
   closeExpanded(): void { this.toggleExpanded(false); }
-
-  /**
-   * Toggles the drawer between expanded and collapsed.
-   *
-   * @param [expanded] Whether to expand or collapse the drawer.
-   */
   toggleExpanded(expanded = !this.expanded): void {
     if (this.expanded === expanded) { return; }
 
     if (!expanded) {
       this.expandedState = 'closed';
       this.expandedState2 = 'collapsed';
-    } else if (this.initialized.valueOf()) {
+    } else if (this.initialized) {
       this.expandedState = 'open';
     } else {
       this.expandedState = 'open-instant';
@@ -289,26 +198,16 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
     this.sendToggle();
   }
 
-  /**
-   * Listener to open/close animation completion.
-   */
   @HostListener('@openClose.done') // tslint:disable-line: no-unsafe-any
   closeOpenDone(): void {
     this.openedChange.emit(this.opened);
   }
 
-  /**
-   * Listener to expand/collapse animation completion.
-   */
   @HostListener('@expandCollapse.done') // tslint:disable-line: no-unsafe-any
   expandCollapseDone(): void {
     this.expandedChange.emit(this.expanded);
   }
 
-  /**
-   * Sends a toggle event to the channel.
-   * Waits until initialization is completed before sending.
-   */
   private async sendToggle(): Promise<void> {
     await this.initialized.wait();
     this.channel.sendMessage({
@@ -321,12 +220,6 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
     this.stateChange.emit();
   }
 
-  /**
-   * Processes an event.
-   *
-   * @param msg The event.
-   * @returns true if change detection should run.
-   */
   private handleMessage(msg: Message): boolean {
     switch (msg.payload.type) {
       case 'drawer-toggled':
@@ -339,11 +232,6 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  /**
-   * Syncs the drawer widths and margin against the opposite drawer.
-   *
-   * @param other The opposite drawer.
-   */
   private syncExpanded(other: DrawerComponent): void {
     if (this.expanded || other.expanded) {
       if (this.expanded && other.expanded) {
@@ -368,10 +256,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  /** Workaround for getter/setter pair not accepting different types. */
   static ngAcceptInputType_position: '' | 'start' | 'end'; // tslint:disable-line: variable-name member-ordering
-  /** Workaround for getter/setter pair not accepting different types. */
   static ngAcceptInputType_opened: BooleanInput; // tslint:disable-line: variable-name member-ordering
-  /** Workaround for getter/setter pair not accepting different types. */
   static ngAcceptInputType_expanded: BooleanInput; // tslint:disable-line: variable-name member-ordering
 }

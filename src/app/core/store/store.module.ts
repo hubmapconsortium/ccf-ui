@@ -8,9 +8,6 @@ import { OntologyState } from './ontology/ontology.state';
 import { SearchState } from './search/search.state';
 
 
-/**
- * States shared across the entire app.
- */
 export const ROOT_STATES = [
   IconRegistryState,
   OntologyState,

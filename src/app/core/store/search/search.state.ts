@@ -27,10 +27,6 @@ export interface SearchStateModel {
 })
 @Injectable()
 export class SearchState extends NgxsDataRepository<SearchStateModel>  {
-  /**
-   * Sets the new search location.
-   * @param ontology New state.
-   */
   @action()
   setLocation(ontology: SearchStateModel): void {
     this.ctx.setState(ontology);
