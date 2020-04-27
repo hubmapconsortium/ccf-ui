@@ -12,7 +12,7 @@
   flex-grow: 1;
   background-color: black;
   position: fixed;
-  height: 100%;
+  height: calc(100% - 1.5rem);
   width: 100%;
 
   &.firstload {
