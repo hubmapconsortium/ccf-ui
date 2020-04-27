@@ -10,8 +10,7 @@ import { OntologyExplorationModule } from './modules/ontology-exploration/ontolo
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MatIconModule } from '@angular/material/icon';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
-import { ImageViewerPopoverModule } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.module';
-import { ImageViewerContentModule } from './modules/image-viewer/image-viewer-content/image-viewer-content.module';
+import { ImageViewerModule } from './modules/image-viewer/image-viewer.module';
 
 @NgModule({
   imports: [
@@ -24,8 +23,7 @@ import { ImageViewerContentModule } from './modules/image-viewer/image-viewer-co
     InfoDialogModule,
     MatIconModule,
     DualSliderModule,
-    ImageViewerPopoverModule,
-    ImageViewerContentModule
+    ImageViewerModule
   ],
   declarations: [AppComponent],
   providers: [],

@@ -9,6 +9,10 @@
 }
 
 .image-viewer-container {
+  overflow: hidden;
+  left: 100%;
+  top: 3rem;
+  z-index: 10;
   flex-grow: 1;
   background-color: black;
   position: fixed;
@@ -36,8 +40,8 @@
     flex-direction: column;
 
     .viewer-image {
-      margin-top: 1.5rem;
-      height: calc(100% - 7.5rem);
+      padding-top: 1.5rem;
+      height: calc(100% - 9rem);
 
       img {
         height: 100%;
