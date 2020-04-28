@@ -130,6 +130,86 @@
           }
         }
       }
+    },
+    "ccf-database": {
+      "projectType": "library",
+      "root": "projects/ccf-database",
+      "sourceRoot": "projects/ccf-database/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ccf-database/tsconfig.lib.json",
+            "project": "projects/ccf-database/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ccf-database/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ccf-database/src/test.ts",
+            "tsConfig": "projects/ccf-database/tsconfig.spec.json",
+            "karmaConfig": "projects/ccf-database/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ccf-database/tsconfig.lib.json",
+              "projects/ccf-database/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "triple-store-utils": {
+      "projectType": "library",
+      "root": "projects/triple-store-utils",
+      "sourceRoot": "projects/triple-store-utils/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/triple-store-utils/tsconfig.lib.json",
+            "project": "projects/triple-store-utils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/triple-store-utils/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/triple-store-utils/src/test.ts",
+            "tsConfig": "projects/triple-store-utils/tsconfig.spec.json",
+            "karmaConfig": "projects/triple-store-utils/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/triple-store-utils/tsconfig.lib.json",
+              "projects/triple-store-utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ccf-ui",
