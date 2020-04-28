@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
@@ -13,11 +14,12 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // Todo: add to ngxs global state
   /**
-   * The list of filters for the tissue browser, with default values set.
+   * Creates an instance of app component.
+   *
+   * @param data The data state.
    */
-  filters: Record<string, unknown | unknown[]> = { tmc: [], technologies: [], sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] };
+  constructor(readonly data: DataState) {}
 
   /**
    * Resets the drawers and filter components to their default state.

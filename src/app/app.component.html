@@ -1,5 +1,5 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
+  <ccf-header [filters]="data.filter$ | async" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
 
   <ccf-drawer-container>
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
@@ -8,7 +8,8 @@
     </ccf-drawer>
     <ccf-drawer position="end" opened #right (stateChange)="filterbox.removeBox()">
       <div class="drawer-icons">
-        <ccf-filters-popover [(filters)]="filters" [drawerExpanded]="right.expanded" #filterbox></ccf-filters-popover>
+        <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
+                             (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>
         <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();">
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
