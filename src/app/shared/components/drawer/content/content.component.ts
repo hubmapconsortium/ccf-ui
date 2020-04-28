@@ -74,7 +74,6 @@ export class ContentComponent implements OnDestroy {
 
       case 'drawer-initialized':
         this.animationsEnabled = true;
-        this.rightMargin = 456;
         return true;
 
       case 'drawer-toggled':
