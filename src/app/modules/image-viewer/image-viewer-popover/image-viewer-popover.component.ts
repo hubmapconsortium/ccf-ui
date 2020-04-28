@@ -8,11 +8,9 @@ import { Component } from '@angular/core';
 export class ImageViewerPopoverComponent {
 
   viewerVisible = false;
-  firstLoad = true;
 
   toggleViewerVisible(): void {
     this.viewerVisible = !this.viewerVisible;
-    this.firstLoad = false;
   }
 
   closeViewer(): void {
