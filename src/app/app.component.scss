@@ -6,6 +6,11 @@
 
   ccf-drawer-container {
     flex-grow: 1;
+    position: fixed;
+    top: 3rem;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
 
     ccf-drawer-content {
       overflow: hidden;
@@ -45,6 +50,5 @@
 }
 
 ::-webkit-scrollbar {
-  width: 120px;
+  width: 7.5rem;
 }
-

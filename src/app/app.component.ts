@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -25,7 +26,8 @@ export class AppComponent {
    * @param right The right drawer component gets passed in so we can call it's methods to control it's state
    * @param filterbox The filter's popover component gets passed in so we can control it's popover's state
    */
-  reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent) {
+  reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent, viewer: ImageViewerPopoverComponent) {
+    viewer.closeViewer();
     left.open();
     left.closeExpanded();
     right.open();

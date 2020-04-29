@@ -1,7 +1,10 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
-
-  <ccf-drawer-container>
+  <ccf-header [filters]="filters" (logoClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
+  
+  <!-- Tissue viewer -->
+  <ccf-image-viewer-popover #viewer></ccf-image-viewer-popover>
+  
+  <ccf-drawer-container class="main-drawers">
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
       <ccf-ontology-selection></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
@@ -13,9 +16,11 @@
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
       </div>
+      <button (click)="viewer.toggleViewerVisible()">
+        Open tissue viewer
+      </button>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
-
     <ccf-drawer-content>
       <img class="body" src="assets/img-both-sexes-torso.jpg" />
     </ccf-drawer-content>
