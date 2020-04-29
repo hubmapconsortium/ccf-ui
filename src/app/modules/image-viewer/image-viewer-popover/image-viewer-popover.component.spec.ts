@@ -1,25 +1,32 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Shallow } from 'shallow-render';
 
 import { ImageViewerPopoverComponent } from './image-viewer-popover.component';
+import { ImageViewerPopoverModule } from './image-viewer-popover.module';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('ImageViewerComponent', () => {
-  let component: ImageViewerPopoverComponent;
-  let fixture: ComponentFixture<ImageViewerPopoverComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ImageViewerPopoverComponent ]
-    })
-    .compileComponents();
-  }));
+describe('ImageViewerPopoverComponent', () => {
+  let shallow: Shallow<ImageViewerPopoverComponent>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageViewerPopoverComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    shallow = new Shallow(ImageViewerPopoverComponent, ImageViewerPopoverModule)
+      .replaceModule(BrowserAnimationsModule, NoopAnimationsModule);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should toggle viewer visibility when toggleViewerVisible is called', async () => {
+    const { instance } = await shallow.render();
+    instance.viewerVisible = false;
+
+    instance.toggleViewerVisible();
+    expect(instance.viewerVisible).toBe(true);
+
+    instance.toggleViewerVisible();
+    expect(instance.viewerVisible).toBe(false);
+  });
+
+  it('should set visibility to false when the viewer is closed', async () => {
+    const { instance } = await shallow.render({ bind: {} });
+    instance.viewerVisible = true;
+    instance.closeViewer();
+    expect(instance.viewerVisible).toBe(false);
   });
 });
