@@ -26,6 +26,7 @@
   padding-right: 1.5rem;
   padding-left: 1.5rem;
   padding-top: 1.5rem;
+  padding-bottom: 1rem;
   .sample-region {
     font-weight: 500;
   }
@@ -34,17 +35,17 @@
   }
 }
 
-.viewer-select {
-  display: flex;
-  flex-direction: column;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  padding-top: 1rem;
+// .viewer-select {
+//   display: flex;
+//   flex-direction: column;
+//   padding-right: 1.5rem;
+//   padding-left: 1.5rem;
+//   padding-top: 1rem;
 
-  div {
-    height: 3rem;
-    color: #9e9e9e;
-    display: flex;
-    align-items: center;
-  }
-}
+//   div {
+//     height: 3rem;
+//     color: #9e9e9e;
+//     display: flex;
+//     align-items: center;
+//   }
+// }
