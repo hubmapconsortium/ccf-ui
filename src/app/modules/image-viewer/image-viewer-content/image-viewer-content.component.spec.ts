@@ -1,25 +1,20 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Shallow } from 'shallow-render';
 
-// import { ImageViewerContentComponent } from './image-viewer-content.component';
+import { ImageViewerContentComponent } from './image-viewer-content.component';
+import { ImageViewerContentModule } from './image-viewer-content.module';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-// describe('ImageViewerContentComponent', () => {
-//   let component: ImageViewerContentComponent;
-//   let fixture: ComponentFixture<ImageViewerContentComponent>;
+describe('ImageViewerPopoverComponent', () => {
+  let shallow: Shallow<ImageViewerContentComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ImageViewerContentComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(() => {
+    shallow = new Shallow(ImageViewerContentComponent, ImageViewerContentModule);
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ImageViewerContentComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  it('should emit closeViewer when close() is called', async () => {
+    const { instance, outputs } = await shallow.render({ bind: {} });
+    instance.close();
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    expect(outputs.closeViewer.emit).toHaveBeenCalled();
+  });
+});
