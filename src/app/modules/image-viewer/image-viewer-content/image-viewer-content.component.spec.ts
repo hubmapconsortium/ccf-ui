@@ -1,25 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Shallow } from 'shallow-render';
 
 import { ImageViewerContentComponent } from './image-viewer-content.component';
+import { ImageViewerContentModule } from './image-viewer-content.module';
 
-describe('ImageViewerContentComponent', () => {
-  let component: ImageViewerContentComponent;
-  let fixture: ComponentFixture<ImageViewerContentComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ImageViewerContentComponent ]
-    })
-    .compileComponents();
-  }));
+describe('ImageViewerPopoverComponent', () => {
+  let shallow: Shallow<ImageViewerContentComponent>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageViewerContentComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    shallow = new Shallow(ImageViewerContentComponent, ImageViewerContentModule);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit closeViewer when close() is called', async () => {
+    const { instance, outputs } = await shallow.render({ bind: {} });
+    instance.close();
+
+    expect(outputs.closeViewer.emit).toHaveBeenCalled();
   });
 });

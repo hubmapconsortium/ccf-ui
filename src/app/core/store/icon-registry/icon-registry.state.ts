@@ -7,6 +7,9 @@ import { State } from '@ngxs/store';
 import { DEFAULT_ICONS } from './default-icons';
 
 
+/**
+ * Object definition for registering new svg icons.
+ */
 export interface IconDefinition {
   /**
    * Name to register the icon under.
@@ -44,14 +47,14 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @param sanitizer Service used to sanitize default imported urls and html.
    */
   constructor(@Optional() private registry: MatIconRegistry | null,
-              private sanitizer: DomSanitizer) {
+              sanitizer: DomSanitizer) {
     super();
 
     for (const { name, namespace, url, html } of DEFAULT_ICONS) {
       const safeDef: IconDefinition = {
         name, namespace,
-        url: url && this.sanitizer.bypassSecurityTrustResourceUrl(url),
-        html: html && this.sanitizer.bypassSecurityTrustHtml(html)
+        url: url && sanitizer.bypassSecurityTrustResourceUrl(url),
+        html: html && sanitizer.bypassSecurityTrustHtml(html)
       };
 
       this.registerIconImpl(safeDef);

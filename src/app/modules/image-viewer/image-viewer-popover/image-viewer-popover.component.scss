@@ -1,38 +1,19 @@
-@keyframes slideInViewer {
-  from { left: 100%; }
-  to   { left: 0%; }
-}
-
-@keyframes slideOutViewer {
-  from { left: 0%; }
-  to   { left: 100%; }
-}
-
 .image-viewer-container {
-  overflow: hidden;
-  left: 100%;
+  position: fixed;
   top: 3rem;
+  overflow: hidden;
   z-index: 10;
   flex-grow: 1;
   background-color: black;
-  position: fixed;
   height: calc(100% - 1.5rem);
   width: 100%;
-
-  &.firstload {
-    display: none;
-  }
+  left: 100%;
+  transition-property: left;
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
 
   &.expanded {
     left: 0%;
-    animation: slideInViewer .5s;
-    animation-timing-function: ease-in-out;
-  }
-
-  &.hidden {
-    left: 100%;
-    animation: slideOutViewer .5s;
-    animation-timing-function: ease-in-out;
   }
 
   .image-viewer-window {
