@@ -1,0 +1,12 @@
+<div class="results-browser-container">
+    <div class="stat-box">
+        <div id="title">Kidney</div>
+        <div class="stat-row" *ngFor="let stat of metaData">
+            <div class="stat-value">{{stat.value}}</div>
+            <div>{{stat.key}}</div>
+        </div>
+    </div>
+    <!-- <cdk-virtual-scroll-viewport class="results-browser-list">
+        <ccf-results-browser-item *cdkVirtualFor="let result of results"></ccf-results-browser-item>
+    </cdk-virtual-scroll-viewport> -->
+</div>

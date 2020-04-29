@@ -1,0 +1,24 @@
+.results-browser-container {
+    height: 100%;
+    padding: 1rem;
+
+    .stat-box {
+        margin-bottom: 1.5rem;
+
+        #title {
+            color: #9e9e9e;
+            margin-bottom: 1rem;
+        }
+
+        .stat-row {
+            display: flex;
+            flex-direction: row;
+
+            .stat-value {
+                margin-right: 1.5rem;
+                width: 5rem;
+                text-align: right;
+            }
+        }
+    }
+}

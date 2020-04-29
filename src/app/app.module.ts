@@ -10,6 +10,7 @@ import { OntologyExplorationModule } from './modules/ontology-exploration/ontolo
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MatIconModule } from '@angular/material/icon';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
+import { ResultsBrowserModule } from './modules/results-browser/results-browser/results-browser.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
     OntologyExplorationModule,
     InfoDialogModule,
     MatIconModule,
-    DualSliderModule
+    DualSliderModule,
+    ResultsBrowserModule
   ],
   declarations: [AppComponent],
   providers: [],
