@@ -1,8 +1,11 @@
 import { CCFDatabase } from 'ccf-database';
 import { Component } from '@angular/core';
+import { map } from 'rxjs/operators';
 
+import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -14,17 +17,21 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  /** Emits true whenever the overlay spinner should activate. */
+  readonly spinnerActive$ = this.data.queryStatus$.pipe(
+    map(state => state === DataQueryState.Running)
+  );
 
-  constructor() {
+  /**
+   * Creates an instance of app component.
+   *
+   * @param data The data state.
+   */
+  constructor(readonly data: DataState) {
     const db = new CCFDatabase();
     db.connect().then(() => (globalThis as any).db = db);
     console.log(db);
-  }
-  // Todo: add to ngxs global state
-  /**
-   * The list of filters for the tissue browser, with default values set.
-   */
-  filters: Record<string, unknown | unknown[]> = { tmc: [], technologies: [], sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] };
+   }
 
   /**
    * Resets the drawers and filter components to their default state.
@@ -32,7 +39,8 @@ export class AppComponent {
    * @param right The right drawer component gets passed in so we can call it's methods to control it's state
    * @param filterbox The filter's popover component gets passed in so we can control it's popover's state
    */
-  reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent) {
+  reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent, viewer: ImageViewerPopoverComponent) {
+    viewer.closeViewer();
     left.open();
     left.closeExpanded();
     right.open();
