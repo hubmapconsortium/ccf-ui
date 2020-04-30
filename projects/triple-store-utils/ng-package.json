@@ -5,12 +5,8 @@
     "entryFile": "src/public-api.ts",
     "umdId": "tripleStoreUtils",
     "umdModuleIds": {
-      "@rdfjs/data-model": "dataFactory",
       "jsonld": "jsonld",
-      "level-js": "Level",
-      "memdown": "MemDown",
-      "quadstore": "quadstore",
-      "quadstore-sparql": "SparqlEngine",
+      "n3": "n3",
       "rdfxml-streaming-parser": "rdfxmlStreamingParser",
       "readable-stream": "readablestream"
     }
