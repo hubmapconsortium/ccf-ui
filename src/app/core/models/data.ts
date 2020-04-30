@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { ObservableInput } from 'rxjs';
 
 /** Aggregate query result. */
 export interface AggregateResult {
@@ -45,9 +45,9 @@ export interface Filter {
 /** Backend query interface. */
 export interface DataSource {
   /** Query list items. */
-  getListResults(filter?: Filter): Observable<ListResult[]>;
+  getListResults(filter?: Filter): ObservableInput<ListResult[]>;
   /** Query aggregate items. */
-  getAggregateResults(filter?: Filter): Observable<AggregateResult[]>;
+  getAggregateResults(filter?: Filter): ObservableInput<AggregateResult[]>;
   /** Query a specific image. */
-  getImageViewerData(id: string): Observable<ImageViewerData>;
+  getImageViewerData(id: string): ObservableInput<ImageViewerData>;
 }
