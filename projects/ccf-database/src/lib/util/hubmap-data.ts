@@ -66,10 +66,15 @@ export function hubmapEntityAsJsonLd(entity: {[key: string]: unknown} ): JsonLd 
   if (ageMatch) {
     age = toNumber(ageMatch[1]);
   }
+  let label = entity.hubmap_display_id as string;
+  if (sex && age) {
+    label += `: ${sex}, Age ${age}`;
+  }
 
   const groupUUID = (entity.group_uuid || get(entity, 'donor.group_uuid', undefined)) as string;
   const groupName = GROUP_UUID_MAPPING[groupUUID] || entity.group_name || get(entity, 'donor.group_name', undefined) as string;
   const ontologyTerms = HBM_ORGANS[(entity.organ || get(entity, 'origin_sample.organ', undefined)) as string] || [RUI_ORGANS.body];
+  const protocolUrl = get(entity, 'portal_uploaded_protocol_files[0].protocol_url', undefined) as string;
 
   return {
     '@id': 'https://entity-api.hubmapconsortium.org/entities/' + entity.uuid,
@@ -83,13 +88,17 @@ export function hubmapEntityAsJsonLd(entity: {[key: string]: unknown} ): JsonLd 
     // technologies,
     ontologyTerms,
 
-    label: entity.hubmap_display_id,
-    // shortInfo,
+    label,
+    shortInfo: [
+      groupName,
+      entity.description || get(entity, 'donor.description', ''),
+      entity.entity_type
+    ],
     // thumbnailUrl,
     // downloadUrl,
     // downloadTooltip,
-    // resultUrl,
-    // resultType,
+    resultUrl: protocolUrl,
+    resultType: protocolUrl ? 'external_link' : undefined,
     // metadata, // image viewer metadata
 
     entity_type: entity.entity_type,
