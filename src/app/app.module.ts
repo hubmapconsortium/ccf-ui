@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -8,8 +9,8 @@ import { FiltersPopoverModule } from './modules/filters/filters-popover/filters-
 import { InfoDialogModule } from './modules/info/info-dialog/info-dialog.module';
 import { OntologyExplorationModule } from './modules/ontology-exploration/ontology-exploration.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
-import { MatIconModule } from '@angular/material/icon';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
+import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
     OntologyExplorationModule,
     InfoDialogModule,
     MatIconModule,
-    DualSliderModule
+    DualSliderModule,
+    SpinnerOverlayModule
   ],
   declarations: [AppComponent],
   providers: [],
