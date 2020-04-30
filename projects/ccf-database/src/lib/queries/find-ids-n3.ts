@@ -3,7 +3,7 @@ import { fromRdf } from 'rdf-literal';
 import { DataFactory, Literal, N3Store, Term } from 'triple-store-utils';
 
 import { Filter } from '../interfaces';
-import { entity } from './prefixes';
+import { entity } from '../util/prefixes';
 
 
 export function findIds(store: N3Store, filter: Filter): Set<string> {

@@ -1,3 +1,4 @@
+import { N3Store, addJsonLdToStore } from 'triple-store-utils';
 import { JsonLd } from 'jsonld/jsonld-spec';
 import { get, toNumber } from 'lodash';
 import { rui } from './prefixes';
@@ -34,7 +35,7 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
 };
 
 
-export function hubmapResponseAsJsonLd(data: unknown): JsonLd {
+export function hubmapResponseAsJsonLd(data: object): JsonLd {
   const entries = get(data, 'hits.hits', []) as object[];
   const graph = entries.map(e =>
     hubmapEntityAsJsonLd(get(e,'_source', {}) as {[key: string]: unknown})
@@ -95,4 +96,16 @@ export function hubmapEntityAsJsonLd(entity: {[key: string]: unknown} ): JsonLd 
     description: entity.description,
     display_doi: entity.display_doi
   };
+}
+
+export async function addHubmapDataToStore(store: N3Store, dataUrl: string, serviceType: 'static' | 'elasticsearch') {
+  let hubmapData: object | undefined;
+  if (serviceType === 'static') {
+    hubmapData = await fetch(dataUrl).then(r => r.json()) as object;
+  } else if (serviceType === 'elasticsearch') {
+    hubmapData = await fetch(dataUrl).then(r => r.json()) as object;
+  }
+  if (hubmapData) {
+    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), store);
+  }
 }

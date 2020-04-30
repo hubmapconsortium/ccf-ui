@@ -1,8 +1,8 @@
 import { set } from 'lodash';
 import { N3Store, DataFactory } from 'triple-store-utils';
 
-import { ListResult } from './../interfaces';
-import { entity } from './prefixes';
+import { ListResult } from '../interfaces';
+import { entity } from '../util/prefixes';
 import { fromRdf } from 'rdf-literal';
 
 

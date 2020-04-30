@@ -1,25 +1,23 @@
-import { addJsonLdToStore, addRdfXmlToStore, N3Store, Store, Quad, DataFactory } from 'triple-store-utils';
+import { addRdfXmlToStore, N3Store, Store, Quad, DataFactory } from 'triple-store-utils';
 
 import { Filter, DataSource, ListResult, AggregateResult, ImageViewerData } from './interfaces';
-import { findIds } from './util/find-ids-n3';
-import { hubmapResponseAsJsonLd } from './util/hubmap-data';
-import { getListResult } from './util/list-result-n3';
+import { findIds } from './queries/find-ids-n3';
+import { addHubmapDataToStore } from './util/hubmap-data';
+import { getListResult } from './queries/list-result-n3';
 
 
 export interface CCFDatabaseOptions {
   ccfOwlUrl: string;
   ccfContextUrl: string;
-  hubmapDataService: 'static' | 'live';
+  hubmapDataService: 'static' | 'elasticsearch';
   hubmapDataUrl: string;
 }
 
 export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
-  // ccfOwlUrl: 'http://purl.org/ccf/latest/ccf.owl',
-  // ccfContextUrl: 'http://purl.org/ccf/latest/ccf-context.jsonld',
-  ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf.owl',
-  ccfContextUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf-context.jsonld',
+  ccfOwlUrl: 'http://purl.org/ccf/latest/ccf.owl',
+  ccfContextUrl: 'http://purl.org/ccf/latest/ccf-context.jsonld',
   hubmapDataService: 'static',
-  hubmapDataUrl: '/assets/dev-data/entities.json'
+  hubmapDataUrl: ''
 };
 
 export class CCFDatabase implements DataSource {
@@ -34,18 +32,14 @@ export class CCFDatabase implements DataSource {
       this.options = options;
     }
     if (this.store.size === 0) {
-      await addRdfXmlToStore(this.options.ccfOwlUrl, this.store);
-      await this.addHubmapData();
-      return true;
+      const ops: Promise<unknown>[] = [];
+      ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
+      if (this.options.hubmapDataUrl) {
+        ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService));
+      }
+      await Promise.all(ops);
     }
-    return false;
-  }
-
-  async addHubmapData() {
-    if (this.options.hubmapDataUrl) {
-      const hubmapData = await fetch(this.options.hubmapDataUrl).then(r => r.json());
-      await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), this.store);
-    }
+    return this.store.size > 0;
   }
 
   getIds(filter: Filter = {} as Filter): Set<string> {
