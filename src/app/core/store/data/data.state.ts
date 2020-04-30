@@ -88,9 +88,9 @@ export interface DataStateModel {
 @Injectable()
 export class DataState extends NgxsDataRepository<DataStateModel> {
   /** Implementation subject for listDataQueryStatus$. */
-  private _listDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  private readonly _listDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
-  private _aggregateDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  private readonly _aggregateDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
 
   /** Current filter. */
   readonly filter$ = this.state$.pipe(pluck('filter'));
@@ -122,7 +122,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
    *
    * @param source Data query service.
    */
-  constructor(private source: DataSourceService) {
+  constructor(private readonly source: DataSourceService) {
     super();
     // Start everything in the completed state
     this._listDataQueryStatus$.next(DataQueryState.Completed);
@@ -137,7 +137,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
   @action()
   updateFilter(filter: Partial<Filter>): void {
     this.patchState({
-      // FIXME: Might need to do a deep compare of current and new filter
+      // Might need to do a deep compare of current and new filter
       filter: Object.assign({}, this.getState().filter, filter)
     });
   }

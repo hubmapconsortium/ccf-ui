@@ -5,7 +5,6 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { DataState, DEFAULT_FILTER } from './data.state';
 
 describe('DataState', () => {
-  let store: Store;
   let dataState: DataState;
 
   beforeEach(() => {
@@ -16,7 +15,6 @@ describe('DataState', () => {
       ]
     });
 
-    store = TestBed.inject(Store);
     dataState = TestBed.inject(DataState);
   });
 
