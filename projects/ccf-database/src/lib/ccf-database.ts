@@ -1,9 +1,9 @@
-import { namedNode } from '@rdfjs/data-model';
-import { addJsonLdToStore, addRdfXmlToStore, N3Store, Store, Quad } from 'triple-store-utils';
+import { addJsonLdToStore, addRdfXmlToStore, N3Store, Store, Quad, DataFactory } from 'triple-store-utils';
 
 import { Filter, DataSource, ListResult, AggregateResult, ImageViewerData } from './interfaces';
 import { findIds } from './util/find-ids-n3';
 import { hubmapResponseAsJsonLd } from './util/hubmap-data';
+import { getListResult } from './util/list-result-n3';
 
 
 export interface CCFDatabaseOptions {
@@ -25,21 +25,27 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
 export class CCFDatabase implements DataSource {
   store: N3Store;
 
-  constructor(readonly options: CCFDatabaseOptions = DEFAULT_CCF_DB_OPTIONS) {
+  constructor(public options: CCFDatabaseOptions = DEFAULT_CCF_DB_OPTIONS) {
     this.store = new Store();
   }
 
-  async connect(): Promise<this> {
+  async connect(options?: CCFDatabaseOptions): Promise<boolean> {
+    if (options) {
+      this.options = options;
+    }
     if (this.store.size === 0) {
       await addRdfXmlToStore(this.options.ccfOwlUrl, this.store);
       await this.addHubmapData();
+      return true;
     }
-    return this;
+    return false;
   }
 
   async addHubmapData() {
-    const hubmapData = await fetch(this.options.hubmapDataUrl).then(r => r.json());
-    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), this.store);
+    if (this.options.hubmapDataUrl) {
+      const hubmapData = await fetch(this.options.hubmapDataUrl).then(r => r.json());
+      await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), this.store);
+    }
   }
 
   getIds(filter: Filter = {} as Filter): Set<string> {
@@ -47,20 +53,20 @@ export class CCFDatabase implements DataSource {
   }
 
   get(id: string): Quad[] {
-    return this.store.getQuads(namedNode(id), null, null, null);
+    return this.store.getQuads(DataFactory.namedNode(id), null, null, null);
   }
 
   search(filter: Filter = {} as Filter): unknown[] {
-    return [...this.getIds(filter)].map((s: string) => this.get(s));
+    return [...this.getIds(filter)].map((s) => this.get(s));
   }
 
-  getListResults(filter?: Filter | undefined): Promise<ListResult[]> {
-    throw new Error("Method not implemented.");
+  async getListResults(filter?: Filter): Promise<ListResult[]> {
+    return [...this.getIds(filter)].map((s) => getListResult(this.store, s));
   }
-  getAggregateResults(filter?: Filter | undefined): Promise<AggregateResult[]> {
-    throw new Error("Method not implemented.");
+  async getAggregateResults(filter?: Filter): Promise<AggregateResult[]> {
+    return [];
   }
-  getImageViewerData(id: string): Promise<ImageViewerData> {
-    throw new Error("Method not implemented.");
+  async getImageViewerData(id: string): Promise<ImageViewerData> {
+    return { id, metadata: {} };
   }
 }

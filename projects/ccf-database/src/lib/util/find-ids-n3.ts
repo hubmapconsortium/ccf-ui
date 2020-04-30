@@ -1,4 +1,4 @@
-import { isNumber } from 'lodash';
+import { isFinite } from 'lodash';
 import { fromRdf } from 'rdf-literal';
 import { DataFactory, Literal, N3Store, Term } from 'triple-store-utils';
 
@@ -32,15 +32,18 @@ export function findIds(store: N3Store, filter: Filter): Set<string> {
     seen = newSeen;
   }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
-      isNumber(filter.ageRange[0]) && isNumber(filter.ageRange[1])) {
+      isFinite(filter.ageRange[0]) && isFinite(filter.ageRange[1])) {
     newSeen = new Set<string>();
     const maxAge = Math.max(...filter.ageRange);
     const minAge = Math.min(...filter.ageRange);
-    store.forEach((quad) => {
-      const value = fromRdf(quad.object as Literal) as number;
-      if (value >= minAge && value <= maxAge) {
-        diffCallback(quad.subject);
+    store.some((quad) => {
+      if (seen.has(quad.subject.id)) {
+        const value = fromRdf(quad.object as Literal) as number;
+        if (value >= minAge && value <= maxAge) {
+          newSeen.add(quad.subject.id);
+        }
       }
+      return false;
     }, null, entity.age, null, null);
     seen = newSeen;
   }

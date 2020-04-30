@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  // ontologyUrl: ''http://purl.org/ccf/latest/ccf-partonomy.jsonld',
   ontologyUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf-partonomy.jsonld',
   organNodes: [
     'http://purl.obolibrary.org/obo/UBERON_0000948', // Heart
@@ -14,7 +13,13 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0001155', // Colon
     'http://purl.obolibrary.org/obo/UBERON_0002108', // Small Intestine
     'http://purl.obolibrary.org/obo/UBERON_0001052' // Rectum
-  ]
+  ],
+  dbOptions: {
+    ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf.owl',
+    ccfContextUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf-context.jsonld',
+    hubmapDataService: 'static',
+    hubmapDataUrl: ''
+  }
 };
 
 /*

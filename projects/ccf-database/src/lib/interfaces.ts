@@ -1,11 +1,14 @@
-import { ObservableInput } from 'rxjs';
-
+/** Aggregate query result. */
 export interface AggregateResult {
+  /** Queried field. */
   label: string;
+  /** Aggregate value. */
   count: string | number;
 }
 
 export interface ListResult {
+  '@id': string;
+  '@type': 'ListResult';
   id: string;
   label: string;
   shortInfo?: string[];
@@ -29,6 +32,7 @@ export interface SearchableItem {
   ontologyTerms?: Set<string>;
 }
 
+/** Options applied during queries. */
 export interface Filter {
   sex: 'Both' | 'Male' | 'Female';
   ageRange: [number, number];
@@ -38,8 +42,12 @@ export interface Filter {
   ontologyTerms: string[];
 }
 
+/** Backend query interface. */
 export interface DataSource {
-  getListResults(filter?: Filter): ObservableInput<ListResult[]>;
-  getAggregateResults(filter?: Filter): ObservableInput<AggregateResult[]>;
-  getImageViewerData(id: string): ObservableInput<ImageViewerData>;
+  /** Query list items. */
+  getListResults(filter?: Filter): Promise<ListResult[]>;
+  /** Query aggregate items. */
+  getAggregateResults(filter?: Filter): Promise<AggregateResult[]>;
+  /** Query a specific image. */
+  getImageViewerData(id: string): Promise<ImageViewerData>;
 }

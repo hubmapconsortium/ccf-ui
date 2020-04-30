@@ -27,11 +27,7 @@ export class AppComponent {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState) {
-    const db = new CCFDatabase();
-    db.connect().then(() => (globalThis as any).db = db);
-    console.log(db);
-   }
+  constructor(readonly data: DataState) { }
 
   /**
    * Resets the drawers and filter components to their default state.

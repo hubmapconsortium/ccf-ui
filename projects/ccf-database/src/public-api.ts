@@ -3,3 +3,4 @@
  */
 export * from './lib/ccf-database';
 export * from './lib/util/old-rui-utils';
+export * from './lib/interfaces';
