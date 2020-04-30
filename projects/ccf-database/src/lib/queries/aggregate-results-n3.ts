@@ -12,8 +12,10 @@ export function getAggregateResults(ids: Set<string>, store: N3Store): Aggregate
   };
 
   store.some((quad) => {
-    const type = quad.object.value + 's';
-    results[type] = (results[type] || 0) + 1;
+    if (ids.has(quad.subject.id)) {
+      const type = quad.object.value + 's';
+      results[type] = (results[type] || 0) + 1;
+    }
     return false;
   }, null, entity.x('entityType'), null, null);
 
