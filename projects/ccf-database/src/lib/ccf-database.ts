@@ -4,6 +4,8 @@ import { Filter, DataSource, ListResult, AggregateResult, ImageViewerData } from
 import { findIds } from './queries/find-ids-n3';
 import { addHubmapDataToStore } from './util/hubmap-data';
 import { getListResult } from './queries/list-result-n3';
+import { getAggregateResults } from './queries/aggregate-results-n3';
+import { getImageViewerData } from './queries/image-viewer-data-n3';
 
 
 export interface CCFDatabaseOptions {
@@ -58,9 +60,9 @@ export class CCFDatabase implements DataSource {
     return [...this.getIds(filter)].map((s) => getListResult(this.store, s));
   }
   async getAggregateResults(filter?: Filter): Promise<AggregateResult[]> {
-    return [];
+    return getAggregateResults(this.getIds(filter), this.store);
   }
   async getImageViewerData(id: string): Promise<ImageViewerData> {
-    return { id, metadata: {} };
+    return getImageViewerData(id, this.store);
   }
 }

@@ -101,9 +101,9 @@ export function hubmapEntityAsJsonLd(entity: {[key: string]: unknown} ): JsonLd 
     resultType: protocolUrl ? 'external_link' : undefined,
     // metadata, // image viewer metadata
 
-    entity_type: entity.entity_type,
+    entityType: entity.entity_type,
     description: entity.description,
-    display_doi: entity.display_doi
+    displayDOI: entity.display_doi
   };
 }
 
