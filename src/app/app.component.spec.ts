@@ -4,6 +4,7 @@ import { Shallow } from 'shallow-render';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { HeaderComponent } from './core/header/header.component';
+import { DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
@@ -18,7 +19,9 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(AppComponent, AppModule)
-      .replaceModule(BrowserAnimationsModule, NoopAnimationsModule);
+      .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
+      .provideMock(DataState);
+
     left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
