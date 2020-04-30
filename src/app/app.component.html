@@ -1,5 +1,5 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [filters]="data.filter$ | async" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
+  <ccf-header [filters]="data.filter$ | async" (logoClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
   <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
   <ccf-image-viewer-popover #viewer></ccf-image-viewer-popover>
 
