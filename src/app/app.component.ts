@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { map } from 'rxjs/operators';
 
-import { DataState } from './core/store/data/data.state';
+import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
@@ -14,12 +15,17 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  /** Emits true whenever the overlay spinner should activate. */
+  readonly spinnerActive$ = this.data.queryStatus$.pipe(
+    map(state => state === DataQueryState.Running)
+  );
+
   /**
    * Creates an instance of app component.
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState) {}
+  constructor(readonly data: DataState) { }
 
   /**
    * Resets the drawers and filter components to their default state.

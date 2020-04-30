@@ -1,6 +1,8 @@
 <div class="ccf-app mat-app-background">
   <ccf-header [filters]="data.filter$ | async" (logoClicked)="reset(left, right, filterbox)"></ccf-header>
 
+  <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
+
   <ccf-drawer-container>
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
       <ccf-ontology-selection></ccf-ontology-selection>
