@@ -1,7 +1,10 @@
 import { Observable } from 'rxjs';
 
+/** Aggregate query result. */
 export interface AggregateResult {
+  /** Queried field. */
   label: string;
+  /** Aggregate value. */
   count: string | number;
 }
 
@@ -29,6 +32,7 @@ export interface SearchableItem {
   ontologyTerms?: Set<string>;
 }
 
+/** Options applied during queries. */
 export interface Filter {
   sex: 'Both' | 'Male' | 'Female';
   ageRange: [number, number];
@@ -38,8 +42,12 @@ export interface Filter {
   ontologyTerms: string[];
 }
 
+/** Backend query interface. */
 export interface DataSource {
+  /** Query list items. */
   getListResults(filter?: Filter): Observable<ListResult[]>;
+  /** Query aggregate items. */
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]>;
+  /** Query a specific image. */
   getImageViewerData(id: string): Observable<ImageViewerData>;
 }
