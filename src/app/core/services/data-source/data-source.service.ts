@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { ObservableInput, of } from 'rxjs';
 
 import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from '../../models/data';
 
@@ -17,7 +17,7 @@ export class DataSourceService implements DataSource {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-  getListResults(filter?: Filter): Observable<ListResult[]> {
+  getListResults(filter?: Filter): ObservableInput<ListResult[]> {
     return of([]);
   }
 
@@ -27,7 +27,7 @@ export class DataSourceService implements DataSource {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-  getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
+  getAggregateResults(filter?: Filter): ObservableInput<AggregateResult[]> {
     return of([]);
   }
 
@@ -37,7 +37,7 @@ export class DataSourceService implements DataSource {
    * @param id The image identifier.
    * @returns An observable emitting the result.
    */
-  getImageViewerData(id: string): Observable<ImageViewerData> {
+  getImageViewerData(id: string): ObservableInput<ImageViewerData> {
     return of({ id, metadata: { } });
   }
 }
