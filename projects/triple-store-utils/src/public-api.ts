@@ -1,4 +1,3 @@
-/// <reference types="./deps" />
 /*
  * Public API Surface of triple-store-utils
  */

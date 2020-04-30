@@ -1,57 +1,66 @@
-import { createTripleStore, createSparqlEngine, FullRDFStore, addRdfXmlToStore, addJsonLdToStore, FullSparqlEngine } from 'triple-store-utils';
+import { namedNode } from '@rdfjs/data-model';
+import { addJsonLdToStore, addRdfXmlToStore, N3Store, Store, Quad } from 'triple-store-utils';
+
+import { Filter, DataSource, ListResult, AggregateResult, ImageViewerData } from './interfaces';
+import { findIds } from './util/find-ids-n3';
+import { hubmapResponseAsJsonLd } from './util/hubmap-data';
+
 
 export interface CCFDatabaseOptions {
   ccfOwlUrl: string;
   ccfContextUrl: string;
-  dbType?: 'memdown' | 'level';
-  dbOptions?: {
-    dbname: string;
-    dbversion: number;
-  };
+  hubmapDataService: 'static' | 'live';
+  hubmapDataUrl: string;
 }
 
-export class CCFDatabase {
-  store: FullRDFStore;
-  sparql: FullSparqlEngine;
+export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
+  // ccfOwlUrl: 'http://purl.org/ccf/latest/ccf.owl',
+  // ccfContextUrl: 'http://purl.org/ccf/latest/ccf-context.jsonld',
+  ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf.owl',
+  ccfContextUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf-context.jsonld',
+  hubmapDataService: 'static',
+  hubmapDataUrl: '/assets/dev-data/entities.json'
+};
 
-  constructor(readonly options: CCFDatabaseOptions = {
-    // ccfOwlUrl: 'http://purl.org/ccf/latest/ccf.owl',
-    // ccfContextUrl: 'http://purl.org/ccf/latest/ccf-context.jsonld',
-    ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf.owl',
-    ccfContextUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf-context.jsonld',
-    dbType: 'memdown',
-    dbOptions: {
-      dbname: 'ccf-db',
-      dbversion: 0
-    }
-  }) {}
+export class CCFDatabase implements DataSource {
+  store: N3Store;
+
+  constructor(readonly options: CCFDatabaseOptions = DEFAULT_CCF_DB_OPTIONS) {
+    this.store = new Store();
+  }
 
   async connect(): Promise<this> {
-    this.store = createTripleStore(this.options.dbType || 'memdown', this.options.dbOptions);
-    this.sparql = createSparqlEngine(this.store);
-    await this.initialize();
+    if (this.store.size === 0) {
+      await addRdfXmlToStore(this.options.ccfOwlUrl, this.store);
+      await this.addHubmapData();
+    }
     return this;
   }
 
-  async initialize(): Promise<this> {
-    await addRdfXmlToStore(this.options.ccfOwlUrl, this.store);
-    // await addJsonLdToStore('/assets/rui-data.jsonld', this.store);
-    return this;
+  async addHubmapData() {
+    const hubmapData = await fetch(this.options.hubmapDataUrl).then(r => r.json());
+    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), this.store);
   }
 
-  async testQuery1(): Promise<unknown[]> {
-    return await this.sparql.query(`
-      PREFIX ccf: <http://purl.org/ccf/latest/ccf.owl#>
-      SELECT * WHERE {?s ?p ?o . ?s ccf:has_y_dimension ?ydim . FILTER(?ydim > 2.0) .}
-    `);
+  getIds(filter: Filter = {} as Filter): Set<string> {
+    return findIds(this.store, filter);
   }
 
-  async testQuery2(): Promise<unknown[]> {
-    return await this.sparql.query(`
-      PREFIX ccf: <http://purl.org/ccf/latest/ccf.owl#>
-      PREFIX obo: <http://purl.obolibrary.org/obo/>
-      SELECT DISTINCT ?s
-      WHERE {?s ccf:ccf_annotation obo:UBERON_123 . ?s ccf:ccf_annotation obo:UBERON_456 . ?s rdfs:label ?label}
-    `);
+  get(id: string): Quad[] {
+    return this.store.getQuads(namedNode(id), null, null, null);
+  }
+
+  search(filter: Filter = {} as Filter): unknown[] {
+    return [...this.getIds(filter)].map((s: string) => this.get(s));
+  }
+
+  getListResults(filter?: Filter | undefined): Promise<ListResult[]> {
+    throw new Error("Method not implemented.");
+  }
+  getAggregateResults(filter?: Filter | undefined): Promise<AggregateResult[]> {
+    throw new Error("Method not implemented.");
+  }
+  getImageViewerData(id: string): Promise<ImageViewerData> {
+    throw new Error("Method not implemented.");
   }
 }

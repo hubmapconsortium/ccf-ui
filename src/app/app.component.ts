@@ -1,3 +1,4 @@
+import { CCFDatabase } from 'ccf-database';
 import { Component } from '@angular/core';
 
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
@@ -13,6 +14,12 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  constructor() {
+    const db = new CCFDatabase();
+    db.connect().then(() => (globalThis as any).db = db);
+    console.log(db);
+  }
   // Todo: add to ngxs global state
   /**
    * The list of filters for the tissue browser, with default values set.
