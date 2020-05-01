@@ -39,7 +39,7 @@ export class CheckboxComponent {
     const checked = event.checked;
 
     if (checked) {
-      this.selection = [...this.selection, option];
+      this.selection.push(option);
     } else {
       this.selection = this.selection.filter(selection => selection !== option);
     }
