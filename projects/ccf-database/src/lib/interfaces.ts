@@ -23,6 +23,8 @@ export interface ImageViewerData {
   '@id': string;
   '@type': 'ImageViewerData';
   id: string;
+  label: string;
+  organName: string;
   metadata: { label: string, value: string }[];
 }
 
