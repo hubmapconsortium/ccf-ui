@@ -1,13 +1,20 @@
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { HeaderComponent } from './core/header/header.component';
 import { DataState } from './core/store/data/data.state';
+import { StoreModule } from './core/store/store.module';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
-import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
+import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+
+
+@NgModule({})
+class EmptyModule {}
 
 
 describe('AppComponent', () => {
@@ -20,7 +27,12 @@ describe('AppComponent', () => {
   beforeEach(() => {
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
-      .provideMock(DataState);
+      .replaceModule(StoreModule, EmptyModule)
+      .mock(DataState, {
+        filter$: of(),
+        queryStatus$: of(),
+        updateFilter: () => undefined
+      });
 
     left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
