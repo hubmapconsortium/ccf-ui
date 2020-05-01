@@ -79,6 +79,7 @@ jobs:
     name: Run linter
     if: NOT (tag IS present)
     script:
+    - npm run build:libs
     - npm run lint
 notifications:
   slack:
