@@ -20,8 +20,12 @@ export interface ListResult {
 }
 
 export interface ImageViewerData {
+  '@id': string;
+  '@type': 'ImageViewerData';
   id: string;
-  metadata: { [label: string]: string };
+  label: string;
+  organName: string;
+  metadata: { label: string, value: string }[];
 }
 
 export interface SearchableItem {
@@ -49,5 +53,5 @@ export interface DataSource {
   /** Query aggregate items. */
   getAggregateResults(filter?: Filter): Promise<AggregateResult[]>;
   /** Query a specific image. */
-  getImageViewerData(id: string): Promise<ImageViewerData>;
+  getImageViewerData(iri: string): Promise<ImageViewerData>;
 }

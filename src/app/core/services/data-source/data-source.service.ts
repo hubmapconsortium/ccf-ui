@@ -55,10 +55,10 @@ export class DataSourceService {
   /**
    * Queries data for a specific image.
    *
-   * @param id The image identifier.
+   * @param iri The image identifier ('@id').
    * @returns An observable emitting the result.
    */
-  getImageViewerData(id: string): Observable<ImageViewerData> {
-    return from(this.dataSource.getImageViewerData(id));
+  getImageViewerData(iri: string): Observable<ImageViewerData> {
+    return from(this.dataSource.getImageViewerData(iri));
   }
 }
