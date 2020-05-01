@@ -1,4 +1,9 @@
 
+/**
+ * Object definition for icon that should be loaded on startup.
+ * Unlike runtime registration object this does not need url ot html
+ * to be sanitized before hand.
+ */
 export interface DefaultIconDefinition {
   /**
    * Name to register the icon under.
@@ -22,6 +27,9 @@ export interface DefaultIconDefinition {
 }
 
 
+/**
+ * Icons registered at startup.
+ */
 export const DEFAULT_ICONS: DefaultIconDefinition[] = [
   { name: 'logo', namespace: 'app', url: 'assets/icons/app/hubmap-logo.svg' },
 

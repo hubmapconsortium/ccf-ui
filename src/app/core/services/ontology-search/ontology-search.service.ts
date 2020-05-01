@@ -26,6 +26,7 @@ export interface SearchResult {
   node: OntologyNode;
 }
 
+/** Type of function for getting child nodes from a parent node. */
 export type GetChildrenFunc = (o: OntologyNode) => OntologyNode[];
 
 /**
@@ -96,14 +97,24 @@ export function addSubtree(
   providedIn: 'root'
 })
 export class OntologySearchService {
+  /** Root node in ontology. */
   rootNode: Observable<Immutable<OntologyNode>>;
 
+  /**
+   * Creates an instance of ontology search service.
+   *
+   * @param http The http requests service.
+   * @param store The global data store.
+   * @param ontologyState The global ontology state.
+   */
   constructor(private http: HttpClient, private store: Store, private ontologyState: OntologyState) {
     this.rootNode = this.ontologyState.rootNode$;
     this.getChildren = this.getChildren.bind(this) as GetChildrenFunc;
   }
 
-
+  /**
+   * Loads ontology.
+   */
   loadOntology() {
     const jsonOntology = this.http.get<JsonOntologyNode[]>(environment.ontologyUrl, { responseType: 'json' });
     const model = jsonOntology.pipe(

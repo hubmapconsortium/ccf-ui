@@ -3,6 +3,7 @@
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
 @use '../../app/modules/results-browser/results-browser-item/results-browser-item.component.theme' as resultsBrowser;
 @use '../../app/shared/components/checkbox/checkbox.component.theme' as checkbox;
+@use '../../app/shared/components/spinner-overlay/spinner-overlay.theme.scss' as spinner;
 // @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
 
@@ -13,11 +14,13 @@
   @include mat-form-field-outline-theme($theme);
   @include mat-input-theme($theme);
   @include mat-checkbox-theme($theme);
+  @include mat-progress-spinner-theme($theme);
 
   @include header.theme($theme);
   @include drawer.theme($theme);
   @include resultsBrowser.theme($theme);
   @include checkbox.theme($theme);
+  @include spinner.theme($theme);
   // @include search.theme($theme);
 
   // Overrides goes here!
