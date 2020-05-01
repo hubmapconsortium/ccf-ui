@@ -5,11 +5,14 @@ import { DataFactory, N3Store } from 'triple-store-utils';
 import { entity } from './../util/prefixes';
 import { ImageViewerData } from './../interfaces';
 
+
 const nonMetadataSet: { [iri: string]: string | string[] } = {
   [entity.id.id]: 'id',
 };
 
 const metadataSet: { [iri: string]: string } = {
+  [entity.id.id]: 'UUID',
+  [entity.x('groupName').id]: 'Group (TMC) Name',
   [entity.x('entityType').id]: 'Entity Type',
   [entity.x('displayDOI').id]: 'Display DOI',
   [entity.x('label').id]: 'Label',
@@ -24,23 +27,22 @@ export function getImageViewerData(iri: string, store: N3Store): ImageViewerData
 
   const propResults: { [predId:string]: string } = {};
   store.some((quad) => {
-    const prop = metadataSet[quad.predicate.id];
-    if (prop) {
+    const prop = nonMetadataSet[quad.predicate.id];
+    const mdProp = metadataSet[quad.predicate.id];
+    if (mdProp) {
       const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
       propResults[quad.predicate.id] = '' + value;
-    } else {
-      const prop2 = nonMetadataSet[quad.predicate.id];
-      if (prop2) {
-        const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
-        set(result, prop2, value);
-      }
+    }
+    if (prop) {
+      const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
+      set(result, prop, value);
     }
     return false;
   }, DataFactory.namedNode(iri), null, null, null);
 
   result.metadata = Object.entries(metadataSet).map(([predId, label]) =>
     ({ label, value: propResults[predId]})
-  );
+  ).filter((item) => item.value);
 
   return result;
 }

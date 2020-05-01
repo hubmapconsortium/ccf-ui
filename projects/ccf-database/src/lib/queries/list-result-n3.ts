@@ -5,6 +5,7 @@ import { DataFactory, N3Store } from 'triple-store-utils';
 import { ListResult } from './../interfaces';
 import { entity } from './../util/prefixes';
 
+
 const listResultSet: { [iri: string]: string | string[] } = {
   [entity.id.id]: 'id',
   [entity.x('label').id]: 'label',

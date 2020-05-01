@@ -51,5 +51,5 @@ export interface DataSource {
   /** Query aggregate items. */
   getAggregateResults(filter?: Filter): Promise<AggregateResult[]>;
   /** Query a specific image. */
-  getImageViewerData(id: string): Promise<ImageViewerData>;
+  getImageViewerData(iri: string): Promise<ImageViewerData>;
 }
