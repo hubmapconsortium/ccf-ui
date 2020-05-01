@@ -32,9 +32,4 @@ export class AccordionComponent {
 
   labels = Object.keys(this.metadata);
   values = Object.values(this.metadata);
-
-
-
-  // labels = Object.keys(this.data);
-  // values = Object.values(this.data);
 }
