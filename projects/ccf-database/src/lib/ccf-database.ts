@@ -16,8 +16,8 @@ export interface CCFDatabaseOptions {
 }
 
 export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
-  ccfOwlUrl: 'http://purl.org/ccf/latest/ccf.owl',
-  ccfContextUrl: 'http://purl.org/ccf/latest/ccf-context.jsonld',
+  ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl',
+  ccfContextUrl: 'https://purl.org/ccf/latest/ccf-context.jsonld',
   hubmapDataService: 'static',
   hubmapDataUrl: ''
 };

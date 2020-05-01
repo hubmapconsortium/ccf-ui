@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  ontologyUrl: 'http://purl.org/ccf/latest/ccf-partonomy.jsonld',
+  ontologyUrl: 'https://purl.org/ccf/latest/ccf-partonomy.jsonld',
   organNodes: [
     'http://purl.obolibrary.org/obo/UBERON_0000948', // Heart
     'http://purl.obolibrary.org/obo/LMHA_00211', // Lung
@@ -11,8 +11,8 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0001052' // Rectum
   ],
   dbOptions: {
-    ccfOwlUrl: 'http://purl.org/ccf/latest/ccf.owl',
-    ccfContextUrl: 'http://purl.org/ccf/latest/ccf-context.jsonld',
+    ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl',
+    ccfContextUrl: 'https://purl.org/ccf/latest/ccf-context.jsonld',
     hubmapDataService: 'static',
     hubmapDataUrl: ''
   }

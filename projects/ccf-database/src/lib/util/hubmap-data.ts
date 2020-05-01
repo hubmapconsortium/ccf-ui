@@ -41,9 +41,6 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
     hubmapEntityAsJsonLd(get(e,'_source', {}) as {[key: string]: unknown})
   );
 
-  console.log(entries);
-  console.log(graph);
-
   return {
     '@context': {
       '@vocab': 'http://purl.org/ccf/latest/ccf-entity.owl#',
