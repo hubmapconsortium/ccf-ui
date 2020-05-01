@@ -1,1 +1,17 @@
-<p>results-browser-item works!</p>
+<div class="result-item">
+    <div class="result-image-placeholder">
+
+    </div>
+    <div class="result-description">
+        <div>{{ lineOne }}</div>
+        <div>{{ lineTwo }}</div>
+        <div>{{ lineThree }}</div>
+        <div>{{ lineFour }}</div>
+    </div>
+    <div class="result-download">
+        <a [href]="downloadURL" rel="noreferrer noopener" target="_blank">
+        <mat-icon class="download" aria-hidden="false" aria-label="Download content" (click)="downloadClicked()">
+            cloud_download</mat-icon>
+        </a>
+    </div>
+</div>

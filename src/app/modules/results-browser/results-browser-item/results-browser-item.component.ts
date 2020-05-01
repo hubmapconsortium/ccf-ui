@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ccf-results-browser-item',
   templateUrl: './results-browser-item.component.html',
   styleUrls: ['./results-browser-item.component.scss']
 })
-export class ResultsBrowserItemComponent implements OnInit {
+export class ResultsBrowserItemComponent {
 
-  constructor() { }
+  @Input() lineOne: string;
+  @Input() lineTwo: string;
+  @Input() lineThree: string;
+  @Input() lineFour: string;
+  @Input() thumbnailURL: string;
+  @Input() downloadURL: string;
 
-  ngOnInit(): void {
+  downloadClicked(): void {
+    console.log('clicked download');
   }
-
 }

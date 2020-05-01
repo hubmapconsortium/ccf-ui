@@ -1,0 +1,24 @@
+@use '~@angular/material/theming' as *;
+
+.result-item {
+    border-top: 1px solid;
+    padding: .5rem;
+    display: flex;
+    flex-direction: row;
+
+    .result-image-placeholder {
+        width: 5rem;
+    }
+
+    .result-description {
+        width: 15rem;
+        font-size: .6rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        line-height: 1.4;
+    }
+
+    .result-download {
+        width: 1.5rem;
+    }
+}

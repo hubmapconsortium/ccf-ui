@@ -1,0 +1,22 @@
+@use '~@angular/material/theming'as *;
+
+@mixin theme($theme) {
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+
+  .result-item {
+    border-top-color: mat-color($foreground, divider) !important;
+
+    .result-image-placeholder {
+        background-color: mat-color($foreground, divider);
+    }
+
+    .download {
+      color: map-get($mat-amber, A400);
+
+      &:hover {
+        color: mat-color($accent);
+      }
+    }
+  }
+}

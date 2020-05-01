@@ -6,7 +6,15 @@
             <div>{{stat.key}}</div>
         </div>
     </div>
-    <!-- <cdk-virtual-scroll-viewport class="results-browser-list">
-        <ccf-results-browser-item *cdkVirtualFor="let result of results"></ccf-results-browser-item>
-    </cdk-virtual-scroll-viewport> -->
+    <cdk-virtual-scroll-viewport itemSize="50" class="results-browser-list">
+        <div *cdkVirtualFor="let result of results">
+            <ccf-results-browser-item
+                [lineOne]="result.a"
+                [lineTwo]="result.b"
+                [lineThree]="result.c"
+                [lineFour]="result.d"
+                [downloadURL]="result.downloadURL"
+            ></ccf-results-browser-item>
+        </div>
+    </cdk-virtual-scroll-viewport>
 </div>
