@@ -86,6 +86,7 @@ export function hubmapEntityAsJsonLd(entity: {[key: string]: unknown} ): JsonLd 
     ontologyTerms,
 
     label,
+    organName: entity.organ || get(entity, 'origin_sample.organ', undefined),
     shortInfo0: groupName,
     shortInfo1: entity.description || get(entity, 'donor.description', ''),
     shortInfo2: entity.entity_type,
