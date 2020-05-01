@@ -30,6 +30,8 @@ describe('AppComponent', () => {
       .replaceModule(StoreModule, EmptyModule)
       .mock(DataState, {
         filter$: of(),
+        listData$: of(),
+        aggregateData$: of(),
         queryStatus$: of(),
         updateFilter: () => undefined
       });
