@@ -22,7 +22,20 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ccf-database": [
+        "dist/ccf-database/ccf-database",
+        "dist/ccf-database",
+      ],
+      "triple-store-utils-not-fixed": [
+        "dist/triple-store-utils/triple-store-utils",
+        "dist/triple-store-utils",
+      ],
+      "triple-store-utils": [
+        "dist/triple-store-fixed/index"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

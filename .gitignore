@@ -50,3 +50,7 @@ testem.log
 Thumbs.db
 .vscode/
 .scannerwork/
+
+# Development data
+src/assets/dev-data
+
