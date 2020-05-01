@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ObservableInput, of } from 'rxjs';
+import { AggregateResult, CCFDatabase, Filter, ImageViewerData, ListResult, CCFDatabaseOptions } from 'ccf-database';
+import { Remote, wrap } from 'comlink';
+import { from, Observable } from 'rxjs';
 
-import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from '../../models/data';
+import { environment } from './../../../../environments/environment';
 
 
 /**
@@ -10,15 +12,34 @@ import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from
 @Injectable({
   providedIn: 'root'
 })
-export class DataSourceService implements DataSource {
+export class DataSourceService {
+  dataSource: Remote<CCFDatabase> | CCFDatabase;
+
+  constructor() {
+    if (typeof Worker !== 'undefined') {
+      const worker = new Worker('./data-source.worker', { type: 'module' });
+      this.dataSource = wrap(worker);
+    } else {
+      this.dataSource = new CCFDatabase();
+    }
+
+    const db = this.dataSource;
+    const options = environment.dbOptions as CCFDatabaseOptions;
+    db.connect(options);
+
+    if (!environment.production) {
+      ((globalThis as unknown) as {db: Remote<CCFDatabase> | CCFDatabase}).db = db;
+    }
+  }
+
   /**
    * Queries for list values.
    *
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-  getListResults(filter?: Filter): ObservableInput<ListResult[]> {
-    return of([]);
+  getListResults(filter?: Filter): Observable<ListResult[]> {
+    return from(this.dataSource.getListResults(filter));
   }
 
   /**
@@ -27,8 +48,8 @@ export class DataSourceService implements DataSource {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-  getAggregateResults(filter?: Filter): ObservableInput<AggregateResult[]> {
-    return of([]);
+  getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
+    return from(this.dataSource.getAggregateResults(filter));
   }
 
   /**
@@ -37,7 +58,7 @@ export class DataSourceService implements DataSource {
    * @param id The image identifier.
    * @returns An observable emitting the result.
    */
-  getImageViewerData(id: string): ObservableInput<ImageViewerData> {
-    return of({ id, metadata: { } });
+  getImageViewerData(id: string): Observable<ImageViewerData> {
+    return from(this.dataSource.getImageViewerData(id));
   }
 }

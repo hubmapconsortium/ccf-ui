@@ -1,5 +1,3 @@
-import { ObservableInput } from 'rxjs';
-
 /** Aggregate query result. */
 export interface AggregateResult {
   /** Queried field. */
@@ -9,6 +7,8 @@ export interface AggregateResult {
 }
 
 export interface ListResult {
+  '@id': string;
+  '@type': 'ListResult';
   id: string;
   label: string;
   shortInfo?: string[];
@@ -45,9 +45,9 @@ export interface Filter {
 /** Backend query interface. */
 export interface DataSource {
   /** Query list items. */
-  getListResults(filter?: Filter): ObservableInput<ListResult[]>;
+  getListResults(filter?: Filter): Promise<ListResult[]>;
   /** Query aggregate items. */
-  getAggregateResults(filter?: Filter): ObservableInput<AggregateResult[]>;
+  getAggregateResults(filter?: Filter): Promise<AggregateResult[]>;
   /** Query a specific image. */
-  getImageViewerData(id: string): ObservableInput<ImageViewerData>;
+  getImageViewerData(id: string): Promise<ImageViewerData>;
 }

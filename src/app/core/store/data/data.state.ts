@@ -5,7 +5,7 @@ import { bind } from 'bind-decorator';
 import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
 import { distinct, map, pluck, publishReplay, refCount, switchMap, tap } from 'rxjs/operators';
 
-import { AggregateResult, Filter, ListResult } from '../../models/data';
+import { AggregateResult, Filter, ListResult } from 'ccf-database';
 import { DataSourceService } from '../../services/data-source/data-source.service';
 
 
