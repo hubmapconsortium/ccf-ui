@@ -11,7 +11,7 @@
       <mat-panel-title>About</mat-panel-title>
     </mat-expansion-panel-header>
     <div class="data-container">
-      <div class="data-labels">
+      <!-- <div class="data-labels">
         <div class="label" *ngFor="let label of labels">
           <div>{{ label }}:</div>
         </div>
@@ -19,6 +19,16 @@
       <div class="data-values">
         <div class="value" *ngFor="let value of values">
           <div>{{ value }}</div>
+        </div>
+      </div> -->
+      <div class="data-labels">
+        <div class="label" *ngFor="let entry of metadata">
+          <div>{{ entry.label }}:</div>
+        </div>
+      </div>
+      <div class="data-values">
+        <div class="value" *ngFor="let entry of metadata">
+          <div>{{ entry.value }}</div>
         </div>
       </div>
     </div>
