@@ -8,6 +8,8 @@ import { ImageViewerData } from './../interfaces';
 
 const nonMetadataSet: { [iri: string]: string | string[] } = {
   [entity.id.id]: 'id',
+  [entity.x('label').id]: 'label',
+  [entity.x('organName').id]: 'organName',
 };
 
 const metadataSet: { [iri: string]: string } = {
