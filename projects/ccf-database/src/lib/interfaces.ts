@@ -20,8 +20,10 @@ export interface ListResult {
 }
 
 export interface ImageViewerData {
+  '@id': string;
+  '@type': 'ImageViewerData';
   id: string;
-  metadata: { [label: string]: string };
+  metadata: { label: string, value: string }[];
 }
 
 export interface SearchableItem {

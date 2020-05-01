@@ -1,10 +1,9 @@
 import { set } from 'lodash';
-import { N3Store, DataFactory } from 'triple-store-utils';
-
-import { ListResult } from '../interfaces';
-import { entity } from '../util/prefixes';
 import { fromRdf } from 'rdf-literal';
+import { DataFactory, N3Store } from 'triple-store-utils';
 
+import { ListResult } from './../interfaces';
+import { entity } from './../util/prefixes';
 
 const listResultSet: { [iri: string]: string | string[] } = {
   [entity.id.id]: 'id',
@@ -18,11 +17,10 @@ const listResultSet: { [iri: string]: string | string[] } = {
   [entity.x('resultUrl').id]: 'resultUrl',
   [entity.x('resultType').id]: 'resultType'
 };
-const shortInfoKey = entity.x('shortInfo').id;
 
 export function getListResult(store: N3Store, iri: string): ListResult {
   const result = {'@id': iri, '@type': 'ListResult' } as ListResult;
-    store.some((quad) => {
+  store.some((quad) => {
     const prop = listResultSet[quad.predicate.id];
     if (prop) {
       const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
