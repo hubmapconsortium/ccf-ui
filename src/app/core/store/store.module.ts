@@ -3,16 +3,15 @@ import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
+import { DataState } from './data/data.state';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { OntologyState } from './ontology/ontology.state';
 import { SearchState } from './search/search.state';
 
 
-/**
- * States shared across the entire app.
- */
 export const ROOT_STATES = [
   IconRegistryState,
+  DataState,
   OntologyState,
   SearchState
 ];

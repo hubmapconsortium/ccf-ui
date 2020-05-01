@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { map } from 'rxjs/operators';
 
+import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
@@ -14,11 +16,17 @@ import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // Todo: add to ngxs global state
+  /** Emits true whenever the overlay spinner should activate. */
+  readonly spinnerActive$ = this.data.queryStatus$.pipe(
+    map(state => state === DataQueryState.Running)
+  );
+
   /**
-   * The list of filters for the tissue browser, with default values set.
+   * Creates an instance of app component.
+   *
+   * @param data The data state.
    */
-  filters: Record<string, unknown | unknown[]> = { tmc: [], technologies: [], sex: 'Both', ageRange: [1, 110], BMIRange: [13, 83] };
+  constructor(readonly data: DataState) { data.listData$.subscribe(console.log); data.aggregateData$.subscribe(console.log); }
 
   /**
    * Resets the drawers and filter components to their default state.
