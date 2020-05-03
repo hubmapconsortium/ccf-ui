@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 /**
  * Content for the image viewer sidebar
@@ -9,6 +9,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./image-viewer-content.component.scss']
 })
 export class ImageViewerContentComponent {
+
+  @Input() metadata: { label: string; value: string; }[];
+  @Input() label: string;
+  @Input() organName: string;
 
   /**
    * Emits closeViewer on close button click

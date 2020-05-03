@@ -1,0 +1,36 @@
+<mat-accordion displayMode="flat">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header expandedHeight="3rem">
+      <mat-panel-title>Layers</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Layer options here</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header expandedHeight="3rem">
+      <mat-panel-title>About</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="data-container">
+      <!-- <div class="data-labels">
+        <div class="label" *ngFor="let label of labels">
+          <div>{{ label }}:</div>
+        </div>
+      </div>
+      <div class="data-values">
+        <div class="value" *ngFor="let value of values">
+          <div>{{ value }}</div>
+        </div>
+      </div> -->
+      <div class="data-labels">
+        <div class="label" *ngFor="let entry of metadata">
+          <div>{{ entry.label }}:</div>
+        </div>
+      </div>
+      <div class="data-values">
+        <div class="value" *ngFor="let entry of metadata">
+          <div>{{ entry.value }}</div>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
