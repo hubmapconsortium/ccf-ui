@@ -39,7 +39,7 @@ describe('AppComponent', () => {
     left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
-    viewer = jasmine.createSpyObj<ImageViewerPopoverComponent>('ImageViewerPopover', ['closeViewer']);
+    viewer = jasmine.createSpyObj<ImageViewerPopoverComponent>('ImageViewerPopover', ['close']);
   });
 
   it('should close the left drawer when reset() is called', async () => {
@@ -69,7 +69,7 @@ describe('AppComponent', () => {
     const { instance } = await shallow.render();
     instance.reset(left, right, filterbox, viewer);
 
-    expect(viewer.closeViewer).toHaveBeenCalled();
+    expect(viewer.close).toHaveBeenCalled();
   });
 
   it('should trigger the reset() method when the ccf-header is clicked', async () => {
