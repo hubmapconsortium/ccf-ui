@@ -52,7 +52,7 @@ export class CCFDatabase implements DataSource {
     return this.store.getQuads(DataFactory.namedNode(id), null, null, null);
   }
 
-  search(filter: Filter = {} as Filter): unknown[] {
+  search(filter: Filter = {} as Filter): Quad[][] {
     return [...this.getIds(filter)].map((s) => this.get(s));
   }
 

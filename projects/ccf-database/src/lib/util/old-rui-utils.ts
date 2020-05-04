@@ -1,3 +1,4 @@
+import { set } from 'lodash';
 
 export interface OldRuiData {
   alignment_id: string;
@@ -23,17 +24,39 @@ export interface OldRuiData {
   };
 }
 
-export function convertOldRuiToJsonLd(data: OldRuiData, externalId?: string, refOrganId?: string): unknown {
-  const D = data.tissue_object_size;
-  const R = data.tissue_object_rotation;
-  const T = data.tissue_position_mass_point;
+function fixString(value: string): string {
+  return value.replace(/^_|mm_$|_$/g, '');
+}
+
+function fixNumber(value: string | number): number {
+  if (typeof value === 'string') {
+    return parseFloat(value.replace(/[^\d\-\.]/g, ''));
+  }
+  return value;
+}
+
+function fixXYZ(value: {x: string | number, y: string | number, z: string | number}): {x: number, y: number, z: number} {
+  const {x, y, z} = value;
+  return {x: fixNumber(x), y: fixNumber(y), z: fixNumber(z)};
+}
+
+export function convertOldRuiToJsonLd(data: OldRuiData, label?: string, refOrganId?: string): object {
+  const D = fixXYZ(data.tissue_object_size);
+  const R = fixXYZ(data.tissue_object_rotation);
+  const T = fixXYZ(data.tissue_position_mass_point);
   const placementTarget = refOrganId || (data.reference_organ_id !== 'uuid-1234-5678' ? data.reference_organ_id : 'http://purl.org/ccf/latest/ccf.owl#VHKidney');
+
+  Object.entries(data).forEach(([k, v]) => {
+    if (typeof v === 'string') {
+      set(data, k, fixString(v));
+    }
+  });
 
   return {
     '@context': 'http://purl.org/ccf/latest/ccf-context.jsonld',
     '@id': 'http://purl.org/ccf/0.5/' + data.alignment_id,
     '@type': 'SpatialEntity',
-    label: externalId || undefined,
+    label: label || undefined,
     creator: `${data.alignment_operator_first_name} ${data.alignment_operator_last_name}`,
     creator_first_name: data.alignment_operator_first_name,
     creator_last_name: data.alignment_operator_last_name,

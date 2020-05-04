@@ -44,6 +44,7 @@ export interface Filter {
   tmc: string[];
   technologies: string[];
   ontologyTerms: string[];
+  hasSpatialEntity?: boolean;
 }
 
 /** Backend query interface. */

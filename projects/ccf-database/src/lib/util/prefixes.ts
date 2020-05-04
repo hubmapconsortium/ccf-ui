@@ -19,7 +19,8 @@ export const entity = {
   Female: DataFactory.literal('Female'),
   groupName: prefixer('entity')('groupName'),
   groupUUID: prefixer('entity')('groupUUID'),
-  ontologyTerms: prefixer('entity')('ontologyTerms')
+  ontologyTerms: prefixer('entity')('ontologyTerms'),
+  spatialEntity: prefixer('entity')('spatialEntity')
 };
 
 export const ccf = {
