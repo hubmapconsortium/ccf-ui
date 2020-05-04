@@ -49,6 +49,11 @@ export class AppComponent {
     filterbox.removeBox();
   }
 
+  /**
+   * Fetches relevant data from the database and calls the open function on the image viewer with the data
+   * @param viewer The image viewer component
+   * @param iri URL containing the image data
+   */
   openViewer(viewer: ImageViewerPopoverComponent, iri: string) {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }

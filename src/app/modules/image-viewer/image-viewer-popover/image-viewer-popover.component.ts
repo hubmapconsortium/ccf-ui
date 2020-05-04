@@ -12,6 +12,9 @@ import { ImageViewerData } from 'ccf-database';
 })
 export class ImageViewerPopoverComponent {
 
+  /**
+   * Data of the image to be passed into the viewer
+   */
   data: ImageViewerData = {
     '@id': '',
     '@type': 'ImageViewerData',
@@ -33,6 +36,10 @@ export class ImageViewerPopoverComponent {
     this.viewerVisible = false;
   }
 
+  /**
+   * Changes viewer to opened state
+   * @param data Data of the image to be passed into the viewer
+   */
   open(data: ImageViewerData): void {
     this.viewerVisible = true;
     this.data = data;

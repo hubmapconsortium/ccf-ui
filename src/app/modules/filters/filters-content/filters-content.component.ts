@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+/**
+ * Contains components of the filters popup and handles changes in filter settings
+ */
 @Component({
   selector: 'ccf-filters-content',
   templateUrl: './filters-content.component.html',

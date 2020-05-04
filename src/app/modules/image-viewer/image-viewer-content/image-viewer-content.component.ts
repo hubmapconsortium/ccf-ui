@@ -13,6 +13,9 @@ import { ImageViewerData } from 'ccf-database';
 })
 export class ImageViewerContentComponent {
 
+  /**
+   * Image data to be displayed in the sidebar
+   */
   @Input() data: ImageViewerData;
 
   /**
