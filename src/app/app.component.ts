@@ -30,7 +30,8 @@ export class AppComponent {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) {
-    data.listData$.subscribe(console.log); data.aggregateData$.subscribe(console.log);
+    data.listData$.subscribe(console.log); 
+    data.aggregateData$.subscribe(console.log);
   }
 
   /**

@@ -4,8 +4,6 @@ import { ImageViewerPopoverComponent } from './image-viewer-popover.component';
 import { ImageViewerPopoverModule } from './image-viewer-popover.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ImageViewerData } from 'ccf-database';
-
 describe('ImageViewerPopoverComponent', () => {
   let shallow: Shallow<ImageViewerPopoverComponent>;
 
