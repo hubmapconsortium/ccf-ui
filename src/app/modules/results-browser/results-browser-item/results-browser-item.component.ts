@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ListResult } from 'ccf-database';
 
 @Component({
   selector: 'ccf-results-browser-item',
@@ -7,12 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ResultsBrowserItemComponent {
 
-  @Input() lineOne: string;
-  @Input() lineTwo: string;
-  @Input() lineThree: string;
-  @Input() lineFour: string;
-  @Input() thumbnailURL: string;
-  @Input() downloadURL: string;
+  @Input() data: ListResult;
 
   downloadClicked(): void {
     console.log('clicked download');
