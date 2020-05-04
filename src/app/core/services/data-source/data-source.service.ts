@@ -14,6 +14,8 @@ import { environment } from './../../../../environments/environment';
 })
 export class DataSourceService {
   dataSource: Remote<CCFDatabase> | CCFDatabase;
+  dbOptions: CCFDatabaseOptions;
+  private _afterConnected: Promise<unknown>;
 
   constructor() {
     if (typeof Worker !== 'undefined') {
@@ -22,14 +24,19 @@ export class DataSourceService {
     } else {
       this.dataSource = new CCFDatabase();
     }
-
-    const db = this.dataSource;
-    const options = environment.dbOptions as CCFDatabaseOptions;
-    db.connect(options);
+    this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
 
     if (!environment.production) {
-      ((globalThis as unknown) as {db: Remote<CCFDatabase> | CCFDatabase}).db = db;
+      ((globalThis as unknown) as {db: Remote<CCFDatabase> | CCFDatabase}).db = this.dataSource;
     }
+  }
+
+  private async getDB(): Promise<Remote<CCFDatabase> | CCFDatabase> {
+    if (!this._afterConnected) {
+      this._afterConnected = this.dataSource.connect(this.dbOptions);
+    }
+    await this._afterConnected;
+    return this.dataSource;
   }
 
   /**
@@ -39,7 +46,7 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getListResults(filter?: Filter): Observable<ListResult[]> {
-    return from(this.dataSource.getListResults(filter));
+    return from(this.getDB().then((db) => db.getListResults(filter)));
   }
 
   /**
@@ -49,7 +56,7 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
-    return from(this.dataSource.getAggregateResults(filter));
+    return from(this.getDB().then((db) => db.getAggregateResults(filter)));
   }
 
   /**
@@ -59,6 +66,6 @@ export class DataSourceService {
    * @returns An observable emitting the result.
    */
   getImageViewerData(iri: string): Observable<ImageViewerData> {
-    return from(this.dataSource.getImageViewerData(iri));
+    return from(this.getDB().then((db) => db.getImageViewerData(iri)));
   }
 }
