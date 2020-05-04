@@ -6,8 +6,8 @@
     </button>
   </div>
   <div class="sample-info">
-    <div class="sample-region">{{ organName }}</div>
-    <div class="patient-details">{{ label }}</div>
+    <div class="sample-region">{{ data.organName }}</div>
+    <div class="patient-details">{{ data.label }}</div>
   </div>
-  <ccf-accordion class="accordion-options" [metadata]="metadata"></ccf-accordion>
+  <ccf-accordion class="accordion-options" [metadata]="data.metadata"></ccf-accordion>
 </div>

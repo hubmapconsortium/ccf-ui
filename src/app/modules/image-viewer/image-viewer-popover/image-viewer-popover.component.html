@@ -7,7 +7,7 @@
     <div class="legend">Legend goes here</div>
   </ccf-drawer-content>
   <ccf-drawer class="image-viewer-drawer" position="end" opened>
-    <ccf-image-viewer-content (closeViewer)="close()" [label]="label" [organName]="organName" [metadata]="metadata"></ccf-image-viewer-content>
+    <ccf-image-viewer-content (closeViewer)="close()" [data]="data"></ccf-image-viewer-content>
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
 </ccf-drawer-container>

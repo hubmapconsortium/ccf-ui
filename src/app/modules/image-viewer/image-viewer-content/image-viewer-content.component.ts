@@ -1,5 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
+import { ImageViewerData } from 'ccf-database';
+
+
 /**
  * Content for the image viewer sidebar
  */
@@ -10,9 +13,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ImageViewerContentComponent {
 
-  @Input() metadata: { label: string; value: string; }[];
-  @Input() label: string;
-  @Input() organName: string;
+  @Input() data: ImageViewerData;
 
   /**
    * Emits closeViewer on close button click

@@ -12,9 +12,14 @@ import { ImageViewerData } from 'ccf-database';
 })
 export class ImageViewerPopoverComponent {
 
-  label = '';
-  organName = '';
-  metadata: { label: string; value: string; }[];
+  data: ImageViewerData = {
+    '@id': '',
+    '@type': 'ImageViewerData',
+    id: '',
+    label: '',
+    organName: '',
+    metadata: [{label: '', value: ''}]
+  };
 
   /**
    * Whether or not the image viewer is visible
@@ -30,10 +35,7 @@ export class ImageViewerPopoverComponent {
 
   open(data: ImageViewerData): void {
     this.viewerVisible = true;
-    this.metadata = data.metadata;
-    this.label = data.label;
-    this.organName = data.organName;
-    console.log(data);
+    this.data = data;
   }
 
 }
