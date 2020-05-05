@@ -11,7 +11,7 @@ describe('ImageViewerPopoverComponent', () => {
   });
 
   it('should emit closeViewer when close() is called', async () => {
-    const { instance, outputs } = await shallow.render({ bind: {} });
+    const { instance, outputs } = await shallow.render({ bind: {data: {}} });
     instance.close();
 
     expect(outputs.closeViewer.emit).toHaveBeenCalled();
