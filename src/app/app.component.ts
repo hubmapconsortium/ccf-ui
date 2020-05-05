@@ -7,6 +7,8 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 import { ListResult } from 'ccf-database';
 
+import { DataSourceService } from './core/services/data-source/data-source.service';
+
 /**
  * This is the main angular component that all the other components branch off from.
  * It is in charge of the header and drawer components who have many sub-components.
@@ -17,6 +19,7 @@ import { ListResult } from 'ccf-database';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
     map(state => state === DataQueryState.Running)
@@ -27,7 +30,10 @@ export class AppComponent {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState) { data.listData$.subscribe(console.log); data.aggregateData$.subscribe(console.log); }
+  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) {
+    data.listData$.subscribe(console.log);
+    data.aggregateData$.subscribe(console.log);
+  }
 
   /**
    * Resets the drawers and filter components to their default state.
@@ -36,12 +42,21 @@ export class AppComponent {
    * @param filterbox The filter's popover component gets passed in so we can control it's popover's state
    */
   reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent, viewer: ImageViewerPopoverComponent) {
-    viewer.closeViewer();
+    viewer.close();
     left.open();
     left.closeExpanded();
     right.open();
     right.closeExpanded();
     filterbox.removeBox();
+  }
+
+  /**
+   * Fetches relevant data from the database and calls the open function on the image viewer with the data
+   * @param viewer The image viewer component
+   * @param iri URL containing the image data
+   */
+  openViewer(viewer: ImageViewerPopoverComponent, iri: string) {
+    this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }
 
   resultClickHandler(result: ListResult): void {

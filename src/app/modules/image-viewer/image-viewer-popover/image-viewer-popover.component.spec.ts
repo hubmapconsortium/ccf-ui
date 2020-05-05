@@ -7,26 +7,38 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 describe('ImageViewerPopoverComponent', () => {
   let shallow: Shallow<ImageViewerPopoverComponent>;
 
+  const mockData: {
+    '@id': string,
+    '@type': 'ImageViewerData',
+    id: string,
+    label: string,
+    organName: string,
+    metadata: {label: string; value: string;}[]
+  } = {
+    '@id': '',
+    '@type': 'ImageViewerData',
+    id: '',
+    label: '',
+    organName: '',
+    metadata: [{label: '', value: ''}]
+  };
+
   beforeEach(() => {
     shallow = new Shallow(ImageViewerPopoverComponent, ImageViewerPopoverModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule);
   });
 
-  it('should toggle viewer visibility when toggleViewerVisible is called', async () => {
+  it('should open the viewer when open() is called', async () => {
     const { instance } = await shallow.render();
     instance.viewerVisible = false;
-
-    instance.toggleViewerVisible();
+    instance.open(mockData);
     expect(instance.viewerVisible).toBe(true);
-
-    instance.toggleViewerVisible();
-    expect(instance.viewerVisible).toBe(false);
   });
 
   it('should set visibility to false when the viewer is closed', async () => {
     const { instance } = await shallow.render({ bind: {} });
     instance.viewerVisible = true;
-    instance.closeViewer();
+    instance.close();
     expect(instance.viewerVisible).toBe(false);
   });
 });
