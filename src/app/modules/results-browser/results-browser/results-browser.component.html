@@ -1,14 +1,17 @@
 <div class="results-browser-container">
     <div class="stat-box">
-        <div id="title" (click)="clicked()">{{ resultLabel }}</div>
+        <div id="title">{{ resultLabel }}</div>
         <div class="stat-row" *ngFor="let stat of aggregateData">
             <div class="stat-value">{{stat.count}}</div>
             <div>{{stat.label}}</div>
         </div>
     </div>
-    <cdk-virtual-scroll-viewport itemSize="50" class="results-browser-list">
-        <div *cdkVirtualFor="let result of data">
-            <ccf-results-browser-item [data]="result"></ccf-results-browser-item>
+
+    <cdk-virtual-scroll-viewport itemSize="10" class="results-virtual-scroll">
+        <div class="results-browser-list">
+            <div *cdkVirtualFor="let result of data">
+                <ccf-results-browser-item [data]="result" (click)="resultClicked.emit(result)"></ccf-results-browser-item>
+            </div>
         </div>
     </cdk-virtual-scroll-viewport>
 </div>

@@ -1,17 +1,23 @@
-<!-- add onclick dependant on resultType -->
 <div class="result-item">
-    <div class="result-image-placeholder"></div>
-    <!-- div img if image url is present -->
-    <div class="result-description">
-        <!-- Bold label -->
-        <div class="description-label">{{ data.label }}</div>
-        <div *ngFor="let info of data.shortInfo">{{ info }}</div>
+    <div *ngIf="!!data.thumbnailUrl; else placeholderImage">
+        <img [src]="data.thumbnailUrl" class="result-image">
     </div>
-    <!-- gray out if no downloadURL -->
-    <div class="result-download">
+    <ng-template #placeholderImage><div class="result-image-placeholder"></div></ng-template>
+
+    <div class="result-description">
+        <div class="description-label description-data">{{ data.label }}</div>
+        <div class="description-data" *ngFor="let info of data.shortInfo">{{ info }}</div>
+    </div>
+
+    <div *ngIf="!!data.downloadUrl; else grayIcon" class="result-download">
         <a [href]="data.downloadUrl" rel="noreferrer noopener" target="_blank">
         <mat-icon class="download" aria-hidden="false" aria-label="Download content" (click)="downloadClicked()">
             cloud_download</mat-icon>
         </a>
     </div>
+    <ng-template #grayIcon>
+        <div class="result-download">
+            <mat-icon class="no-download" aria-hidden="false" aria-label="Download content">cloud_download</mat-icon>
+        </div>
+    </ng-template>
 </div>

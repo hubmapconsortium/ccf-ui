@@ -18,5 +18,9 @@
         color: mat-color($accent);
       }
     }
+
+    .no-download {
+      color: mat-color($foreground, divider);
+    }
   }
 }
