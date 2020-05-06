@@ -156,7 +156,12 @@
           "options": {
             "main": "projects/ccf-database/src/test.ts",
             "tsConfig": "projects/ccf-database/tsconfig.spec.json",
-            "karmaConfig": "projects/ccf-database/karma.conf.js"
+            "karmaConfig": "projects/ccf-database/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/src/test.ts",
+              "**/*.module.ts"
+            ]
           }
         },
         "lint": {
@@ -196,7 +201,12 @@
           "options": {
             "main": "projects/triple-store-utils/src/test.ts",
             "tsConfig": "projects/triple-store-utils/tsconfig.spec.json",
-            "karmaConfig": "projects/triple-store-utils/karma.conf.js"
+            "karmaConfig": "projects/triple-store-utils/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/src/test.ts",
+              "**/*.module.ts"
+            ]
           }
         },
         "lint": {
