@@ -1,7 +1,6 @@
 // tslint:disable: no-any
 // tslint:disable: no-unsafe-any
 import { CompositeLayer, COORDINATE_SYSTEM } from '@deck.gl/core';
-import { CompositeLayerProps } from '@deck.gl/core/lib/composite-layer';
 import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
 import { load, registerLoaders } from '@loaders.gl/core';
 import { GLTFLoader } from '@loaders.gl/gltf';
@@ -24,7 +23,7 @@ const TEST_DATA = [
     tooltip: 'Left Kidney BBOX'
   },
   {
-    scenegraph: load('/assets/test-data/VHF_Heart_Kidney_Spleen.glb', {postProcess: true}),
+    scenegraph: '/assets/test-data/VHF_Heart_Kidney_Spleen.glb',
     color: [255, 0, 0, 1*255],
     position: [0, 0, 0],
     scale: [1, 1, 1],
@@ -34,7 +33,7 @@ const TEST_DATA = [
     _lighting: 'pbr'
   },
   {
-    scenegraph: load('/assets/test-data/both-sexes-torso.glb', {postProcess: true}),
+    scenegraph: '/assets/test-data/both-sexes-torso.glb',
     color: [255, 255, 255, 1*255],
     position: [0, 0, 0],
     scale: [1, 1, 1],
@@ -45,7 +44,7 @@ const TEST_DATA = [
   },
 ];
 
-function getTransformMatrix(model: any): Matrix4 {
+function getTransformMatrix(model: any): number[][] /*Matrix4*/ {
   const tx = new Matrix4([]).identity();
   const P: number[] = model.position;
   const T: number[] = model.translation.map(toRadians);
@@ -65,7 +64,7 @@ export class BodyUIData {
 
 }
 
-export class BodyUILayerProps implements CompositeLayerProps<BodyUIData> {
+export class BodyUILayerProps {
 
 }
 
@@ -96,7 +95,7 @@ export class BodyUILayer<D = any> extends CompositeLayer<D> {
           pickable: true,
           coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
           data: [model],
-          scenegraph: model.scenegraph,
+          scenegraph: load(model.scenegraph, GLTFLoader, {postProcess: true}),
           getTransformMatrix: (d: any) => getTransformMatrix(d),
           getColor: (d: any) => d.color || [0, 255, 0, 0.5*255],
           onHover: (info: any) => console.log(info),

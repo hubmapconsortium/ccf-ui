@@ -1,8 +1,7 @@
 import { BodyUILayer } from './body-ui-layer';
 import { Deck, OrbitView } from '@deck.gl/core';
-import { DeckProps } from '@deck.gl/core/lib/deck';
 
-export interface BodyUIProps extends DeckProps {
+export interface BodyUIProps {
   id: string;
   canvas: string | HTMLCanvasElement;
   parent: HTMLElement;
@@ -15,7 +14,7 @@ export class BodyUI {
   deck: Deck;
 
   constructor(deckProps: Partial<BodyUIProps>) {
-    deckProps = {
+    const props = {
       ...deckProps,
       initialViewState: {
         target: [0, 5, 0],
@@ -32,6 +31,7 @@ export class BodyUI {
         new BodyUILayer({})
       ]
     };
-    this.deck = new Deck(deckProps as DeckProps);
+    // tslint:disable-next-line: no-any
+    this.deck = new Deck(props as any);
   }
 }
