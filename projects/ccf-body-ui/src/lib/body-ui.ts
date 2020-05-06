@@ -4,7 +4,7 @@ import { DeckProps } from '@deck.gl/core/lib/deck';
 
 export interface BodyUIProps extends DeckProps {
   id: string;
-  canvas: string;
+  canvas: string | HTMLCanvasElement;
   parent: HTMLElement;
 }
 
@@ -18,9 +18,11 @@ export class BodyUI {
     deckProps = {
       ...deckProps,
       initialViewState: {
-        target: [0, 0, 0],
-        orbitAxis: 'Z',
-        rotationX: 90,
+        target: [0, 5, 0],
+        orbitAxis: 'Y',
+        rotationX: 0,
+        minRotationX: -15,
+        maxRotationX: 15,
         rotationOrbit: 0,
         zoom: 5
       },

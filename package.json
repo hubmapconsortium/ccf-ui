@@ -65,7 +65,7 @@
     "@angular/compiler-cli": "~9.1.2",
     "@angular/language-service": "~9.1.2",
     "@compodoc/compodoc": "^1.1.11",
-    "@danmarshall/deckgl-typings": "^4.1.5",
+    "@danmarshall/deckgl-typings": "^4.1.6",
     "@types/jasmine": "^3.5.10",
     "@types/jasminewd2": "~2.0.3",
     "@types/js-yaml": "^3.12.3",
