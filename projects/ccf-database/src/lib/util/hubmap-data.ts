@@ -124,9 +124,9 @@ export function hubmapEntityAsJsonLd(entity: {[key: string]: unknown} ): JsonLd 
 export async function addHubmapDataToStore(store: N3Store, dataUrl: string, serviceType: 'static' | 'elasticsearch') {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
-    hubmapData = await fetch(dataUrl).then(r => r.json()) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : {}) as object;
   } else if (serviceType === 'elasticsearch') {
-    hubmapData = await fetch(dataUrl).then(r => r.json()) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : {}) as object;
   }
   if (hubmapData) {
     await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), store);
