@@ -1,4 +1,7 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+import { ImageViewerData } from 'ccf-database';
+
 
 /**
  * Content for the image viewer sidebar
@@ -9,6 +12,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./image-viewer-content.component.scss']
 })
 export class ImageViewerContentComponent {
+
+  /**
+   * Image data to be displayed in the sidebar
+   */
+  @Input() data: ImageViewerData;
 
   /**
    * Emits closeViewer on close button click

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { ImageViewerData } from 'ccf-database';
+
 /**
  * Popup that displays detailed information on a selected image along with viewing options
  */
@@ -11,22 +13,36 @@ import { Component } from '@angular/core';
 export class ImageViewerPopoverComponent {
 
   /**
+   * Data of the image to be passed into the viewer
+   */
+  data: ImageViewerData = {
+    '@id': '',
+    '@type': 'ImageViewerData',
+    id: '',
+    label: '',
+    organName: '',
+    metadata: [{label: '', value: ''}]
+  };
+
+  /**
    * Whether or not the image viewer is visible
    */
   viewerVisible = false;
 
   /**
-   * Controls visibility of the viewer
+   * Returns viewer to closed state
    */
-  toggleViewerVisible(): void {
-    this.viewerVisible = !this.viewerVisible;
+  close(): void {
+    this.viewerVisible = false;
   }
 
   /**
-   * Returns viewer to closed state
+   * Changes viewer to opened state
+   * @param data Data of the image to be passed into the viewer
    */
-  closeViewer(): void {
-    this.viewerVisible = false;
+  open(data: ImageViewerData): void {
+    this.viewerVisible = true;
+    this.data = data;
   }
 
 }

@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+/**
+ * Popover box for filter settings
+ */
 @Component({
   selector: 'ccf-filters-popover',
   templateUrl: './filters-popover.component.html',
