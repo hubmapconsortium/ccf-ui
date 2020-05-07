@@ -10,8 +10,8 @@ import { ImageViewerModule } from './modules/image-viewer/image-viewer.module';
 import { InfoDialogModule } from './modules/info/info-dialog/info-dialog.module';
 import { OntologyExplorationModule } from './modules/ontology-exploration/ontology-exploration.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
-import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
+import { ColorSchemeContentsModule } from './modules/color-scheme/color-scheme-contents/color-scheme-contents.module';
 
 @NgModule({
   imports: [
@@ -23,9 +23,9 @@ import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinne
     OntologyExplorationModule,
     InfoDialogModule,
     MatIconModule,
-    DualSliderModule,
     SpinnerOverlayModule,
-    ImageViewerModule
+    ImageViewerModule,
+    ColorSchemeContentsModule
   ],
   declarations: [AppComponent],
   providers: [],

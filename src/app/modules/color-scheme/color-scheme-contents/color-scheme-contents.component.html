@@ -1,0 +1,23 @@
+<div>
+  <ul>
+    <li (click)="schemeChanged(0)">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+    </li>
+    <li (click)="schemeChanged(1)">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+    </li>
+  </ul>
+  <!-- <ccf-dual-slider label="Brightness" [valueRange]="[0, 100]" [selection]="brightness"
+  (selectionChange)="brightnessChanged($event)"></ccf-dual-slider> -->
+  <ng5-slider class="dualslider" [options]="options" [(value)]="brightness[0]"
+    [(highValue)]="brightness[1]" (userChangeEnd)="brightnessChanged()">
+  </ng5-slider>
+</div>
