@@ -14,6 +14,7 @@ export class BodyUI {
   deck: Deck;
 
   constructor(deckProps: Partial<BodyUIProps>) {
+    let cursor: string | undefined;
     const props = {
       ...deckProps,
       initialViewState: {
@@ -29,7 +30,11 @@ export class BodyUI {
       controller: true,
       layers: [
         new BodyUILayer({})
-      ]
+      ],
+      onHover: (e: {picked: boolean}) => {
+        cursor = e.picked ? 'pointer' : undefined;
+      },
+      getCursor: (e: {isDragging: boolean}) => cursor || (e.isDragging ? 'grabbing' : 'grab')
     };
     // tslint:disable-next-line: no-any
     this.deck = new Deck(props as any);
