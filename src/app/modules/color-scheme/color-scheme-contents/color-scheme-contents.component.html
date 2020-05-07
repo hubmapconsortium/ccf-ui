@@ -17,7 +17,8 @@
   </ul>
   <!-- <ccf-dual-slider label="Brightness" [valueRange]="[0, 100]" [selection]="brightness"
   (selectionChange)="brightnessChanged($event)"></ccf-dual-slider> -->
-  <ng5-slider class="dualslider" [options]="options" [(value)]="brightness[0]"
-    [(highValue)]="brightness[1]" (userChangeEnd)="brightnessChanged()">
+  <ng5-slider class="dualslider" [options]="options" [(value)]="brightness[0]" [(highValue)]="brightness[1]" (userChangeEnd)="brightnessChanged()">
+  </ng5-slider>
+  <ng5-slider class="singleslider" [options]="options" [(value)]="transparency" (userChangeEnd)="transparencyChanged()">
   </ng5-slider>
 </div>

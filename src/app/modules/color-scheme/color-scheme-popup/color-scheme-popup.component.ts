@@ -41,11 +41,11 @@ export class ColorSchemePopupComponent {
 
   updateBrightness(brightness: number[]) {
     this.brightness = brightness;
-    // console.log(this.brightness);
+    console.log(this.brightness);
   }
 
   updateTransparency(transparency: number) {
     this.transparency = transparency;
-    console.log(this.brightness);
+    console.log(this.transparency);
   }
 }

@@ -22,8 +22,9 @@ export class ColorSchemeContentsComponent implements OnChanges {
   @Output() brightnessChange = new EventEmitter<number[]>();
   @Output() transparencyChange = new EventEmitter<number>();
 
-  lowValue: number;
-  highValue: number;
+  brightnesslowValue: number;
+  brightnesshighValue: number;
+  transparencyValue: number;
 
   constructor() {
     this.options = {
@@ -33,15 +34,19 @@ export class ColorSchemeContentsComponent implements OnChanges {
       hideLimitLabels: true,
       hidePointerLabels: true
     };
-    this.lowValue = this.options.floor ?? 0;
-    this.highValue = this.options.ceil ?? 0;
+    this.brightnesslowValue = this.options.floor ?? 0;
+    this.brightnesshighValue = this.options.ceil ?? 0;
+    this.transparencyValue = this.options.floor ?? 0;
   }
 
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.brightness) {
-      this.lowValue = Math.min(...this.brightness);
-      this.highValue = Math.max(...this.brightness);
+      this.brightnesslowValue = Math.min(...this.brightness);
+      this.brightnesshighValue = Math.max(...this.brightness);
+    }
+    if (changes.transparency) {
+      this.transparencyValue = this.transparency;
     }
   }
 
@@ -51,9 +56,12 @@ export class ColorSchemeContentsComponent implements OnChanges {
   }
 
   brightnessChanged() {
-    this.lowValue = this.brightness[0];
-    this.highValue = this.brightness[1];
-    console.log(this.brightness);
+    [this.brightnesslowValue, this.brightnesshighValue] = this.brightness;
     this.brightnessChange.emit(this.brightness);
+  }
+
+  transparencyChanged() {
+    this.transparencyValue = this.transparency;
+    this.transparencyChange.emit(this.transparency);
   }
 }
