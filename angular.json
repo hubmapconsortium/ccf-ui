@@ -212,6 +212,46 @@
           }
         }
       }
+    },
+    "ccf-body-ui": {
+      "projectType": "library",
+      "root": "projects/ccf-body-ui",
+      "sourceRoot": "projects/ccf-body-ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ccf-body-ui/tsconfig.lib.json",
+            "project": "projects/ccf-body-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ccf-body-ui/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ccf-body-ui/src/test.ts",
+            "tsConfig": "projects/ccf-body-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/ccf-body-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ccf-body-ui/tsconfig.lib.json",
+              "projects/ccf-body-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ccf-ui",

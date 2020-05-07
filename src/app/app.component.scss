@@ -14,10 +14,6 @@
 
     ccf-drawer-content {
       overflow: hidden;
-      .body {
-        width: 100%;
-        height: 100%;
-      }
     }
 
     ccf-drawer {
@@ -26,7 +22,7 @@
 
       .drawer-icons {
         display: flex;
-        
+
         .button {
           width: 3rem;
           height: 3rem;

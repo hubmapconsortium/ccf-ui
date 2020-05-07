@@ -1,11 +1,13 @@
-import { addRdfXmlToStore, N3Store, Store, Quad, DataFactory } from 'triple-store-utils';
+import { addRdfXmlToStore, DataFactory, N3Store, Quad, Store } from 'triple-store-utils';
 
-import { Filter, DataSource, ListResult, AggregateResult, ImageViewerData } from './interfaces';
-import { findIds } from './queries/find-ids-n3';
-import { addHubmapDataToStore } from './util/hubmap-data';
-import { getListResult } from './queries/list-result-n3';
+import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
+import { findIds } from './queries/find-ids-n3';
 import { getImageViewerData } from './queries/image-viewer-data-n3';
+import { getListResult } from './queries/list-result-n3';
+import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
+import { SpatialEntity } from './spatial-types';
+import { addHubmapDataToStore } from './util/hubmap-data';
 
 
 export interface CCFDatabaseOptions {
@@ -52,7 +54,7 @@ export class CCFDatabase implements DataSource {
     return this.store.getQuads(DataFactory.namedNode(id), null, null, null);
   }
 
-  search(filter: Filter = {} as Filter): unknown[] {
+  search(filter: Filter = {} as Filter): Quad[][] {
     return [...this.getIds(filter)].map((s) => this.get(s));
   }
 
@@ -64,5 +66,10 @@ export class CCFDatabase implements DataSource {
   }
   async getImageViewerData(id: string): Promise<ImageViewerData> {
     return getImageViewerData(id, this.store);
+  }
+
+  async getSpatialEntities(filter?: Filter): Promise<SpatialEntity[]> {
+    return [...this.getIds({...filter, hasSpatialEntity: true} as Filter)]
+      .map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
   }
 }
