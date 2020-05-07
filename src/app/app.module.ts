@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { BodyModule } from './modules/body/body.module';
 import { FiltersPopoverModule } from './modules/filters/filters-popover/filters-popover.module';
 import { ImageViewerModule } from './modules/image-viewer/image-viewer.module';
 import { InfoDialogModule } from './modules/info/info-dialog/info-dialog.module';
@@ -28,7 +29,8 @@ import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinne
     DualSliderModule,
     ResultsBrowserModule,
     SpinnerOverlayModule,
-    ImageViewerModule
+    ImageViewerModule,
+    BodyModule
   ],
   declarations: [AppComponent],
   providers: [],
