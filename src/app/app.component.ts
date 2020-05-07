@@ -58,8 +58,4 @@ export class AppComponent {
   openViewer(viewer: ImageViewerPopoverComponent, iri: string) {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }
-
-  resultClickHandler(result: ListResult): void {
-    console.log('testing: ', result);
-  }
 }

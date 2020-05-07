@@ -1,25 +1,41 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Shallow } from 'shallow-render';
 
 import { ResultsBrowserItemComponent } from './results-browser-item.component';
+import { ResultsBrowserItemModule } from './results-browser-item.module';
+import { ListResult } from 'ccf-database';
 
 describe('ResultsBrowserItemComponent', () => {
-  let component: ResultsBrowserItemComponent;
-  let fixture: ComponentFixture<ResultsBrowserItemComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ResultsBrowserItemComponent ]
-    })
-    .compileComponents();
-  }));
+  let shallow: Shallow<ResultsBrowserItemComponent>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResultsBrowserItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    shallow = new Shallow(ResultsBrowserItemComponent, ResultsBrowserItemModule);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should show a placeholder div when no thumbnail image url is present', async () => {
+    const testListResult: ListResult = { '@id': '123', '@type': 'ListResult', id: '123', label: 'test'};
+    const { find } = await shallow.render({ bind: { data: testListResult }});
+
+    expect(find('.result-image-placeholder')).toHaveFoundOne();
+  });
+
+  it('should not show a placeholder div when a thumbnail image url is present', async () => {
+    const testListResult: ListResult = { '@id': '123', '@type': 'ListResult', id: '123', label: 'test', thumbnailUrl: 'test.com'};
+    const { find } = await shallow.render({ bind: { data: testListResult }});
+
+    expect(find('.result-image-placeholder')).not.toHaveFoundOne();
+  });
+
+  it('should show a grayed out icon when no download url is present', async () => {
+    const testListResult: ListResult = { '@id': '123', '@type': 'ListResult', id: '123', label: 'test' };
+    const { find } = await shallow.render({ bind: { data: testListResult }});
+
+    expect(find('.no-download')).toHaveFoundOne();
+  });
+
+  it('should show a non-grayed out icon when download url is present', async () => {
+    const testListResult: ListResult = { '@id': '123', '@type': 'ListResult', id: '123', label: 'test', downloadUrl: 'test.com' };
+    const { find } = await shallow.render({ bind: { data: testListResult }});
+
+    expect(find('.download')).toHaveFoundOne();
   });
 });

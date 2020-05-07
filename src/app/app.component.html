@@ -16,10 +16,7 @@
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
       </div>
-      <ccf-results-browser (resultClicked)="resultClickHandler($event)" [data]="data.listData$ | async" [aggregateData]="data.aggregateData$ | async" [resultLabel]="'Kidney'"></ccf-results-browser>
-      <!-- <button (click)="viewer.toggleViewerVisible()">
-        Open tissue viewer
-      </button> -->
+      <ccf-results-browser (resultClicked)="openViewer(viewer, $event['@id'])" [data]="data.listData$ | async" [aggregateData]="data.aggregateData$ | async" [resultLabel]="'Kidney'"></ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer-content>
