@@ -6,6 +6,7 @@ import { ListResult } from './../interfaces';
 import { entity } from './../util/prefixes';
 
 
+/** Entity iri to property path. */
 const listResultSet: { [iri: string]: string | string[] } = {
   [entity.id.id]: 'id',
   [entity.x('label').id]: 'label',
@@ -19,8 +20,15 @@ const listResultSet: { [iri: string]: string | string[] } = {
   [entity.x('resultType').id]: 'resultType'
 };
 
+/**
+ * Extracts a single list result from the object store.
+ *
+ * @param store The object store.
+ * @param iri The entity id.
+ * @returns The list data.
+ */
 export function getListResult(store: N3Store, iri: string): ListResult {
-  const result = {'@id': iri, '@type': 'ListResult' } as ListResult;
+  const result = { '@id': iri, '@type': 'ListResult' } as ListResult;
   store.some((quad) => {
     const prop = listResultSet[quad.predicate.id];
     if (prop) {

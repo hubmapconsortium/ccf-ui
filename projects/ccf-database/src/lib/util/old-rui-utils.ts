@@ -1,21 +1,31 @@
 
+/** RUI v0.5.0 format */
 export interface OldRuiData {
+  /** Identifier. */
   alignment_id: string;
+  /** Creator first name. */
   alignment_operator_first_name: string;
+  /** Creator last name. */
   alignment_operator_last_name: string;
+  /** Creation time. */
   alignment_datetime: string;
+  /** Organ reference identifier. */
   reference_organ_id: string;
+  /** Position vertices. */
   tissue_position_vertices: unknown[];
+  /** Tissue point of mass. */
   tissue_position_mass_point: {
     x: number,
     y: number,
     z: number
   };
+  /** Tissue object rotation. */
   tissue_object_rotation: {
     x: number,
     y: number,
     z: number
   };
+  /** Tissue object size. */
   tissue_object_size: {
     x: number,
     y: number,
@@ -23,6 +33,13 @@ export interface OldRuiData {
   };
 }
 
+/**
+ * Converts version 0.5.0 RUI data to new JSONLD format.
+ * @param data The old data.
+ * @param [externalId] An optional label.
+ * @param [refOrganId] The organ id.
+ * @returns The translated JSONLD data.
+ */
 export function convertOldRuiToJsonLd(data: OldRuiData, externalId?: string, refOrganId?: string): unknown {
   const D = data.tissue_object_size;
   const R = data.tissue_object_rotation;

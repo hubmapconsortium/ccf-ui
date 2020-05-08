@@ -1,9 +1,11 @@
-import { N3Store, addJsonLdToStore } from 'triple-store-utils';
 import { JsonLd } from 'jsonld/jsonld-spec';
 import { get, toNumber } from 'lodash';
+import { addJsonLdToStore, N3Store } from 'triple-store-utils';
+
 import { rui } from './prefixes';
 
 
+/** UUID to TMC mapping. */
 const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
   '03b3d854-ed44-11e8-8bce-0e368f3075e8': 'TMC-UCSD',
   '07a29e4c-ed43-11e8-b56a-0e8017bdda58': 'TMC-Florida',
@@ -13,10 +15,12 @@ const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
   'def5fd76-ed43-11e8-b56a-0e8017bdda58': 'TMC-Stanford'
 };
 
+/** RUI organ name to entity identifier. */
 const RUI_ORGANS: { [organName: string]: string } = {};
 Object.entries(rui).forEach(([k, v]) => RUI_ORGANS[k] = v.id);
 
 // Taken from: https://github.com/hubmapconsortium/commons/blob/master/hubmap_commons/hubmap_const.py#L101
+/** HBM organ names to set of RUI organs. */
 const HBM_ORGANS: { [organName: string]: string[] } = {
   BL: [RUI_ORGANS.body, RUI_ORGANS.bladder],
   RK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.right_kidney],
@@ -35,10 +39,16 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
 };
 
 
+/**
+ * Converts a hubmap response object into JsonLd.
+ *
+ * @param data The hubmap data.
+ * @returns The converted data.
+ */
 export function hubmapResponseAsJsonLd(data: object): JsonLd {
   const entries = get(data, 'hits.hits', []) as object[];
   const graph = entries.map(e =>
-    hubmapEntityAsJsonLd(get(e,'_source', {}) as {[key: string]: unknown})
+    hubmapEntityAsJsonLd(get(e, '_source', {}) as { [key: string]: unknown })
   );
 
   return {
@@ -50,7 +60,13 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
   };
 }
 
-export function hubmapEntityAsJsonLd(entity: {[key: string]: unknown} ): JsonLd {
+/**
+ * Converts a hubmap entity to JsonLd.
+ *
+ * @param entity The hubmap entity data.
+ * @returns The converted data.
+ */
+export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd {
   const donorDescription = (get(entity, 'donor.description', '') as string).toLowerCase();
   let sex: string | undefined;
   if (donorDescription.includes('female')) {
@@ -103,7 +119,16 @@ export function hubmapEntityAsJsonLd(entity: {[key: string]: unknown} ): JsonLd 
   };
 }
 
-export async function addHubmapDataToStore(store: N3Store, dataUrl: string, serviceType: 'static' | 'elasticsearch') {
+/**
+ * Adds hubmap data from a url to the object store.
+ *
+ * @param store The object store.
+ * @param dataUrl The data url.
+ * @param serviceType The service type.
+ */
+export async function addHubmapDataToStore(
+  store: N3Store, dataUrl: string, serviceType: 'static' | 'elasticsearch'
+): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
     hubmapData = await fetch(dataUrl).then(r => r.json()) as object;
