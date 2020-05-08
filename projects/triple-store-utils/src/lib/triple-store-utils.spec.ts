@@ -7,6 +7,17 @@ import { addJsonLdToStore, addRdfXmlToStore, arrayToStream, streamToArray } from
 
 type Store = Sink<EventEmitter, EventEmitter>;
 
+function getGlobalThis(): typeof globalThis {
+  if (typeof globalThis === 'object') {
+    return globalThis;
+  } else if (typeof window === 'object') {
+    return window;
+  } else if (typeof global === 'object') {
+    return global as unknown as typeof globalThis;
+  } else {
+    return Function('return this;')() as typeof globalThis;
+  }
+}
 
 describe('triple-store-utils', () => {
   describe('streamToArray(stream)', () => {
@@ -112,7 +123,7 @@ describe('triple-store-utils', () => {
     let storeSpy: jasmine.SpyObj<Store>;
 
     beforeEach(async () => {
-      fetchSpy = spyOn(globalThis, 'fetch');
+      fetchSpy = spyOn(getGlobalThis(), 'fetch');
       responseSpy = jasmine.createSpyObj<Response>('Response', ['json']);
       storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
 
@@ -153,7 +164,7 @@ describe('triple-store-utils', () => {
     let storeSpy: jasmine.SpyObj<Store>;
 
     beforeEach(async () => {
-      fetchSpy = spyOn(globalThis, 'fetch');
+      fetchSpy = spyOn(getGlobalThis(), 'fetch');
       responseSpy = jasmine.createSpyObj<Response>('Response', ['text']);
       storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
 
