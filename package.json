@@ -1,12 +1,12 @@
 {
   "name": "ccf-ui",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
     "build:demo": "ng build --prod --output-hashing=none --base-href=./",
-    "build:doc": "npx compodoc -p tsconfig.compodoc.json --output dist/combined/docs",
+    "build:doc": "npx compodoc -p tsconfig.compodoc.json --output dist/ccf-ui/docs",
     "build:doc:ccf-ui": "npx compodoc -p src/tsconfig.app.json --output dist/ccf-ui/docs",
     "build:doc:ccf-body-ui": "npx compodoc -p projects/ccf-body-ui/tsconfig.lib.json --output dist/ccf-body-ui/docs",
     "build:doc:ccf-database": "npx compodoc -p projects/ccf-database/tsconfig.lib.json --output dist/ccf-database/docs",
