@@ -1,3 +1,4 @@
+import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { addRdfXmlToStore, DataFactory, N3Store, Quad, Store } from 'triple-store-utils';
 
 import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from './interfaces';
@@ -26,9 +27,11 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
 
 export class CCFDatabase implements DataSource {
   store: N3Store;
+  graph: CCFSpatialGraph;
 
   constructor(public options: CCFDatabaseOptions = DEFAULT_CCF_DB_OPTIONS) {
     this.store = new Store();
+    this.graph = new CCFSpatialGraph(this);
   }
 
   async connect(options?: CCFDatabaseOptions): Promise<boolean> {
@@ -42,6 +45,7 @@ export class CCFDatabase implements DataSource {
         ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService));
       }
       await Promise.all(ops);
+      this.graph.createGraph();
     }
     return this.store.size > 0;
   }

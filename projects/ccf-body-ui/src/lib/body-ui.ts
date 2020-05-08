@@ -1,4 +1,5 @@
-import { BodyUILayer } from './body-ui-layer';
+import { DEFAULT_DATA } from './default-data';
+import { BodyUILayer, BodyUIData } from './body-ui-layer';
 import { Deck, OrbitView } from '@deck.gl/core';
 
 export interface BodyUIProps {
@@ -12,8 +13,10 @@ export interface BodyUIProps {
  */
 export class BodyUI {
   deck: Deck;
+  bodyUILayer: BodyUILayer;
 
   constructor(deckProps: Partial<BodyUIProps>) {
+    this.bodyUILayer = new BodyUILayer({data: DEFAULT_DATA});
     let cursor: string | undefined;
     const props = {
       ...deckProps,
@@ -29,7 +32,7 @@ export class BodyUI {
       views: [new OrbitView({})],
       controller: true,
       layers: [
-        new BodyUILayer({})
+        this.bodyUILayer
       ],
       onHover: (e: {picked: boolean}) => {
         cursor = e.picked ? 'pointer' : undefined;
@@ -38,5 +41,9 @@ export class BodyUI {
     };
     // tslint:disable-next-line: no-any
     this.deck = new Deck(props as any);
+  }
+
+  setBoundingBoxes(data: BodyUIData[]) {
+    this.bodyUILayer.setState({data: [...data, ...DEFAULT_DATA]});
   }
 }

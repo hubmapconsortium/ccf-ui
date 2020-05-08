@@ -1,65 +1,18 @@
-// tslint:disable: no-any
-// tslint:disable: no-unsafe-any
 import { CompositeLayer, COORDINATE_SYSTEM } from '@deck.gl/core';
 import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
 import { load } from '@loaders.gl/core';
 import { GLTFLoader } from '@loaders.gl/gltf';
 import { CubeGeometry } from '@luma.gl/core';
-import { Matrix4, toRadians } from '@math.gl/core';
-import { fromEuler } from 'quaternion';
-import toEuler from 'quaternion-to-euler';
 
-
-const TEST_DATA = [
-  {
-    color: [255, 255, 255, 0.9*255],
-    position: [0, 2.4, 0],
-    scale: [0.2, 0.2, 0.2],
-    rotation: [0, 0, 0],
-    translation: [0, 0, 0],
-    tooltip: 'Test BBOX'
-  },
-  {
-    scenegraph: '/assets/test-data/VHF_Heart_Kidney_Spleen.glb',
-    color: [255, 0, 0, 1*255],
-    position: [0, 0, 0],
-    scale: [1, 1, 1],
-    rotation: [0, 0, 0],
-    translation: [0, 0, 0],
-    tooltip: 'VHF Organs',
-    _lighting: 'pbr'
-  },
-  {
-    scenegraph: '/assets/test-data/both-sexes-torso.glb',
-    unpickable: true,
-    color: [255, 255, 255, 1*255],
-    position: [0, 0, 0],
-    scale: [1, 1, 1],
-    rotation: [0, 0, 0],
-    translation: [0, 0, 0],
-    tooltip: 'Torso Backdrop',
-    _lighting: undefined
-  },
-];
-
-function getTransformMatrix(model: any): number[][] /*Matrix4*/ {
-  const tx = new Matrix4([]).identity();
-  const P: number[] = model.position;
-  const T: number[] = model.translation.map(toRadians);
-  const R: any = toEuler(fromEuler(model.rotation[0], model.rotation[1], model.rotation[2], 'XYZ').toVector());
-  const S: number[] = model.scale;
-
-  tx
-    .translate(P)
-    .translate(T)
-    .rotateXYZ(R)
-    .scale(S);
-
-  return tx;
-}
+// Programmers Note: had to disable tslint in a few places due to deficient typings.
 
 export class BodyUIData {
-
+  unpickable?: boolean;
+  _lighting?: string;
+  scenegraph?: string;
+  color?: [number, number, number, number];
+  transformMatrix: number[][];
+  tooltip: string;
 }
 
 export class BodyUILayerProps {
@@ -70,8 +23,27 @@ export const bodyUIDefaultProps: BodyUILayerProps = {
 
 };
 
-export class BodyUILayer<D = any> extends CompositeLayer<D> {
+// tslint:disable-next-line: no-any
+class CachedGLTFLoader<T = any> {
+  private urlToLoader: {[url: string]: {url: string}} = {};
+  private loaderToScenegraph: WeakMap<{url: string}, Promise<T>> = new WeakMap();
+
+  load(url: string): Promise<T> {
+    const urlObj = this.urlToLoader[url] = this.urlToLoader[url] || {url};
+    if (!this.loaderToScenegraph.has(urlObj)) {
+      // tslint:disable-next-line: no-unsafe-any
+      this.loaderToScenegraph.set(urlObj, load(url, GLTFLoader, {postProcess: true}));
+    }
+    return this.loaderToScenegraph.get(urlObj) as Promise<T>;
+  }
+}
+const gltfLoader = new CachedGLTFLoader();
+
+export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
   renderLayers() {
+    // tslint:disable-next-line: no-unsafe-any
+    const data = (this.state.data || this.props.data) as BodyUIData[];
+    console.log(data);
     return [
       new SimpleMeshLayer({
         id: 'test-cubes1',
@@ -79,23 +51,29 @@ export class BodyUILayer<D = any> extends CompositeLayer<D> {
         autoHighlight: true,
         highlightColor: [30, 136, 229, 0.5*255],
         coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-        data: TEST_DATA.filter(d => !d.scenegraph),
-        getTransformMatrix: (d: any) => getTransformMatrix(d),
+        data: data.filter((d) => !d.scenegraph),
+        getTransformMatrix: (d) => d.transformMatrix,
+        // tslint:disable-next-line: no-unsafe-any
         mesh: new CubeGeometry(),
-        getColor: (d: any) => d.color || [255, 255, 255, 0.9*255],
+        getColor: (d) => d.color || [255, 255, 255, 0.9*255],
         wireframe: false
       }),
-      ...TEST_DATA.filter(d => !!d.scenegraph).map((model, i) =>
+      data.filter(d => !!d.scenegraph).map((model, i) =>
         new ScenegraphLayer({
-          id: 'test-models-' + i,
-          pickable: !model.unpickable,
-          coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-          data: [model],
-          scenegraph: load(model.scenegraph, GLTFLoader, {postProcess: true}),
-          getTransformMatrix: (d: any) => getTransformMatrix(d),
-          getColor: (d: any) => d.color || [0, 255, 0, 0.5*255],
-          _lighting: model._lighting,  // 'pbr' | undefined
-        } as any)
+          ...{
+            id: 'test-models-' + i,
+            pickable: !model.unpickable,
+            coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
+            data: [model],
+            scenegraph: gltfLoader.load(model.scenegraph as string),
+            _lighting: model._lighting,  // 'pbr' | undefined
+          },
+          // Had to merge in separately to keep TS happy. BAD typings :-(
+          ...{
+            getTransformMatrix: model.transformMatrix,
+            getColor: model.color || [0, 255, 0, 0.5*255],
+          }
+        })
       )
     ];
   }

@@ -12,6 +12,11 @@ export const PREFIXES = {
 
 export const prefixer = Util.prefixes(PREFIXES, DataFactory);
 
+export const rdf = {
+  x: prefixer('rdf'),
+  type: DataFactory.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
+};
+
 export const entity = {
   x: prefixer('entity'),
   id: prefixer('entity')('id'),
@@ -28,6 +33,9 @@ export const entity = {
 const ccfx = prefixer('ccf');
 export const ccf = {
   x: ccfx,
+  SpatialObjectReference: ccfx('SpatialObjectReference'),
+  SpatialEntity: ccfx('SpatialEntity'),
+  SpatialPlacement: ccfx('SpatialPlacement'),
   spatialObjectReference: {
     file: ccfx('has_object_file'),
     file_format: ccfx('has_object_file_format'),
