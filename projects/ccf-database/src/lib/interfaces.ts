@@ -74,6 +74,7 @@ export interface Filter {
   technologies: string[];
   /** Ontology terms. */
   ontologyTerms: string[];
+  /** Whether it has a spatial entity. */
   hasSpatialEntity?: boolean;
 }
 

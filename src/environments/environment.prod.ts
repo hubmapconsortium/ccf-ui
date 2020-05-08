@@ -1,3 +1,4 @@
+/** Production environment configuration. */
 export const environment = {
   production: true,
   ontologyUrl: 'https://purl.org/ccf/latest/ccf-partonomy.jsonld',
