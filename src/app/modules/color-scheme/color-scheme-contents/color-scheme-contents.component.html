@@ -45,13 +45,13 @@
       <div class="square"></div>
       <div class="square"></div>
     </div>
-    <div class="swatch six" (click)="schemeChanged(5)">
+    <div class="swatch six" [class.selected]="selected[5]" (click)="schemeChanged(5)">
       <div class="gradient"></div>
     </div>
-    <div class="swatch seven" (click)="schemeChanged(6)">
+    <div class="swatch seven" [class.selected]="selected[6]" (click)="schemeChanged(6)">
       <div class="gradient"></div>
     </div>
-    <div class="swatch eight" (click)="schemeChanged(7)">
+    <div class="swatch eight" [class.selected]="selected[7]" (click)="schemeChanged(7)">
       <div class="gradient"></div>
     </div>
     <div>Brightness</div>

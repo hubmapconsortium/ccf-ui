@@ -14,7 +14,6 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
 import { ResultsBrowserModule } from './modules/results-browser/results-browser/results-browser.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
-import { ColorSchemeContentsModule } from './modules/color-scheme/color-scheme-contents/color-scheme-contents.module';
 
 @NgModule({
   imports: [

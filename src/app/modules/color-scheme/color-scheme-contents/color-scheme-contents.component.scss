@@ -20,13 +20,17 @@
       :hover {
         cursor:pointer;
       }
-  
+
       .square {
         width: 1rem;
       }
-  
+      
       .gradient {
         width: 7rem;
+      }
+
+      &.selected {
+        outline: 1px solid white;
       }
   
       &.one {

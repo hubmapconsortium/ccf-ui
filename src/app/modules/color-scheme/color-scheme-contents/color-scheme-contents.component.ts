@@ -25,6 +25,7 @@ export class ColorSchemeContentsComponent implements OnChanges {
   brightnesslowValue: number;
   brightnesshighValue: number;
   transparencyValue: number;
+  selected: boolean[] = [true, false, false, false, false, false, false, false];
 
   constructor() {
     this.options = {
@@ -52,6 +53,8 @@ export class ColorSchemeContentsComponent implements OnChanges {
 
   schemeChanged(n: number) {
     this.colorScheme = this.schemeOptions[n];
+    this.selected = [false, false, false, false, false, false, false, false];
+    this.selected[n] = true;
     this.colorSchemeChange.emit(this.colorScheme);
   }
 
