@@ -1,22 +1,33 @@
 import { set } from 'lodash';
 
+
+/** RUI v0.5.0 format */
 export interface OldRuiData {
+  /** Identifier. */
   alignment_id: string;
+  /** Creator first name. */
   alignment_operator_first_name: string;
+  /** Creator last name. */
   alignment_operator_last_name: string;
+  /** Creation time. */
   alignment_datetime: string;
+  /** Organ reference identifier. */
   reference_organ_id: string;
+  /** Position vertices. */
   tissue_position_vertices: unknown[];
+  /** Tissue point of mass. */
   tissue_position_mass_point: {
     x: number,
     y: number,
     z: number
   };
+  /** Tissue object rotation. */
   tissue_object_rotation: {
     x: number,
     y: number,
     z: number
   };
+  /** Tissue object size. */
   tissue_object_size: {
     x: number,
     y: number,
@@ -24,10 +35,22 @@ export interface OldRuiData {
   };
 }
 
+/**
+ * Fixes strings from old RUI data.
+ *
+ * @param value The original string.
+ * @returns The fixed string.
+ */
 function fixString(value: string): string {
   return value.replace(/^_|mm_$|_$/g, '');
 }
 
+/**
+ * Fixes and parses numbers from old RUI data.
+ *
+ * @param value The original number.
+ * @returns The fixed number.
+ */
 function fixNumber(value: string | number): number {
   if (typeof value === 'string') {
     return parseFloat(value.replace(/[^\d\-\.]/g, ''));
@@ -35,11 +58,24 @@ function fixNumber(value: string | number): number {
   return value;
 }
 
-function fixXYZ(value: {x: string | number, y: string | number, z: string | number}): {x: number, y: number, z: number} {
-  const {x, y, z} = value;
-  return {x: fixNumber(x), y: fixNumber(y), z: fixNumber(z)};
+/**
+ * Fixes a xyz triplet from old RUI data.
+ *
+ * @param value THe original triplet.
+ * @returns The fixed triplet.
+ */
+function fixXYZ(value: { x: string | number, y: string | number, z: string | number }): { x: number, y: number, z: number } {
+  const { x, y, z } = value;
+  return { x: fixNumber(x), y: fixNumber(y), z: fixNumber(z) };
 }
 
+/**
+ * Converts version 0.5.0 RUI data to new JSONLD format.
+ * @param data The old data.
+ * @param [externalId] An optional label.
+ * @param [refOrganId] The organ id.
+ * @returns The translated JSONLD data.
+ */
 export function convertOldRuiToJsonLd(data: OldRuiData, label?: string, refOrganId?: string): object {
   const D = fixXYZ(data.tissue_object_size);
   const R = fixXYZ(data.tissue_object_rotation);

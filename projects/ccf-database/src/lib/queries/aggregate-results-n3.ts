@@ -4,8 +4,15 @@ import { AggregateResult } from '../interfaces';
 import { entity } from '../util/prefixes';
 
 
+/**
+ * Computes aggregate results.
+ *
+ * @param ids Ids of objects to calculate aggregate over.
+ * @param store The triple store.
+ * @returns The list of aggregate results.
+ */
 export function getAggregateResults(ids: Set<string>, store: N3Store): AggregateResult[] {
-  const results: { [key: string]: number} = {
+  const results: { [key: string]: number } = {
     Donors: 0,
     Samples: 0,
     Datasets: 0
@@ -19,5 +26,5 @@ export function getAggregateResults(ids: Set<string>, store: N3Store): Aggregate
     return false;
   }, null, entity.x('entityType'), null, null);
 
-  return Object.entries(results).map(([label,count]) => ({ label, count }));
+  return Object.entries(results).map(([label, count]) => ({ label, count }));
 }

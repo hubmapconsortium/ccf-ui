@@ -1,5 +1,6 @@
 import { DataFactory, Util } from 'triple-store-utils';
 
+/** Constants used to create entity accessors. */
 export const PREFIXES = {
   ccf: 'http://purl.org/ccf/latest/ccf.owl#',
   entity: 'http://purl.org/ccf/latest/ccf-entity.owl#',
@@ -10,6 +11,7 @@ export const PREFIXES = {
   dc: 'http://purl.org/dc/elements/1.1/'
 };
 
+/** Prefix factory. */
 export const prefixer = Util.prefixes(PREFIXES, DataFactory);
 
 export const rdf = {
@@ -17,6 +19,7 @@ export const rdf = {
   type: DataFactory.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
 };
 
+/** Common entity ids. */
 export const entity = {
   x: prefixer('entity'),
   id: prefixer('entity')('id'),
@@ -30,7 +33,10 @@ export const entity = {
   spatialEntity: prefixer('entity')('spatialEntity')
 };
 
+/** CCF id helper. */
 const ccfx = prefixer('ccf');
+
+/** CCF specific ids. */
 export const ccf = {
   x: ccfx,
   SpatialObjectReference: ccfx('SpatialObjectReference'),
@@ -78,14 +84,17 @@ export const ccf = {
   }
 };
 
+/** Uberon specific ids. */
 export const uberon = {
   x: prefixer('uberon')
 };
 
+/** LMHA specific ids. */
 export const lmha = {
   x: prefixer('lmha')
 };
 
+/** RUI accessors. */
 export const rui = {
   body: uberon.x('0013702'),
   heart: uberon.x('0000948'),
