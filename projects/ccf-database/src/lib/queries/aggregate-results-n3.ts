@@ -8,7 +8,7 @@ import { entity } from '../util/prefixes';
  * Computes aggregate results.
  *
  * @param ids Ids of objects to calculate aggregate over.
- * @param store The object store.
+ * @param store The triple store.
  * @returns The list of aggregate results.
  */
 export function getAggregateResults(ids: Set<string>, store: N3Store): AggregateResult[] {

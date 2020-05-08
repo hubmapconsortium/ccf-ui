@@ -40,7 +40,7 @@ export function findIds(store: N3Store, filter: Filter): Set<string> {
 /**
  * Gets all object ids in a store.
  *
- * @param store The object store.
+ * @param store The triple store.
  * @returns A set of all ids.
  */
 function getAllEntities(store: N3Store): Set<string> {
@@ -63,7 +63,7 @@ function differenceCallback(seen: Set<string>, newSeen: Set<string>): (s: Term) 
 /**
  * Filters ids by gender.
  *
- * @param store The object store.
+ * @param store The triple store.
  * @param seen All ids to choose from.
  * @param sex Gender to filter on.
  * @returns The subset of ids with the specified gender.
@@ -77,7 +77,7 @@ function filterBySex(store: N3Store, seen: Set<string>, sex: 'Male' | 'Female'):
 /**
  * Filters ids by group names.
  *
- * @param store The object store.
+ * @param store The triple store.
  * @param seen All ids to choose from.
  * @param groupNames Group names to filter on.
  * @returns The subset of ids with the specified group names.
@@ -94,7 +94,7 @@ function filterByGroupName(store: N3Store, seen: Set<string>, groupNames: string
 /**
  * Filters ids by ontology terms.
  *
- * @param store The object store.
+ * @param store The triple store.
  * @param seen All ids to choose from.
  * @param terms Ontology terms to filter on.
  * @returns The subset of ids with the specified ontology terms.
@@ -111,7 +111,7 @@ function filterByOntologyTerms(store: N3Store, seen: Set<string>, terms: string[
 /**
  * Filters ids by age.
  *
- * @param store The object store.
+ * @param store The triple store.
  * @param seen All ids to choose from.
  * @param minAge Minimum age.
  * @param maxAge Maximum age.

@@ -30,7 +30,7 @@ const metadataSet: { [iri: string]: string } = {
  * Extracts image viewer data from the store.
  *
  * @param iri Entity id.
- * @param store The object store.
+ * @param store The triple store.
  * @returns The extracted data.
  */
 export function getImageViewerData(iri: string, store: N3Store): ImageViewerData {

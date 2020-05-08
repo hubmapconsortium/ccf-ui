@@ -120,9 +120,9 @@ export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd
 }
 
 /**
- * Adds hubmap data from a url to the object store.
+ * Adds hubmap data from a url to the triple store.
  *
- * @param store The object store.
+ * @param store The triple store.
  * @param dataUrl The data url.
  * @param serviceType The service type.
  */

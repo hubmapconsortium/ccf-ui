@@ -21,9 +21,9 @@ const listResultSet: { [iri: string]: string | string[] } = {
 };
 
 /**
- * Extracts a single list result from the object store.
+ * Extracts a single list result from the triple store.
  *
- * @param store The object store.
+ * @param store The triple store.
  * @param iri The entity id.
  * @returns The list data.
  */

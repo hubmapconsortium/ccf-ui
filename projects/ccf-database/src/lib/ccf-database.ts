@@ -31,7 +31,7 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
 
 /** Database provider. */
 export class CCFDatabase implements DataSource {
-  /** The object store. */
+  /** The triple store. */
   store = new Store();
 
   /**
