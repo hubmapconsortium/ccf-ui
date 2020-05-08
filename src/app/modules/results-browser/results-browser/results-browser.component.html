@@ -9,7 +9,7 @@
 
     <cdk-virtual-scroll-viewport itemSize="10" class="results-virtual-scroll">
         <div class="results-browser-list">
-            <div *cdkVirtualFor="let result of data" class="cdk-for">
+            <div *cdkVirtualFor="let result of data">
                 <ccf-results-browser-item [data]="result" (click)="resultClicked.emit(result)" class="result-browser-item"></ccf-results-browser-item>
             </div>
         </div>
