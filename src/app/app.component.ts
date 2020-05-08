@@ -5,9 +5,9 @@ import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
-import { ListResult } from 'ccf-database';
 
 import { DataSourceService } from './core/services/data-source/data-source.service';
+
 
 /**
  * This is the main angular component that all the other components branch off from.

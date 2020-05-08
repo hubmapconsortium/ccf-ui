@@ -6,6 +6,7 @@ import { ResultsBrowserComponent } from './results-browser.component';
 
 import {ScrollingModule} from '@angular/cdk/scrolling';
 
+
 @NgModule({
   declarations: [ResultsBrowserComponent],
   imports: [

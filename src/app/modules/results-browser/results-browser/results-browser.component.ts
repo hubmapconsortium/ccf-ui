@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ListResult, AggregateResult } from 'ccf-database';
 
+
 /**
  * ResultsBrowser is the container component in charge of rendering the label and stats of
  * the results as well as handling the virtual scrolling and click emitters of

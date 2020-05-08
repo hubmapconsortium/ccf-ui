@@ -4,7 +4,6 @@ import { ResultsBrowserItemComponent } from './results-browser-item.component';
 import { MatIconModule } from '@angular/material/icon';
 
 
-
 @NgModule({
   declarations: [ResultsBrowserItemComponent],
   imports: [

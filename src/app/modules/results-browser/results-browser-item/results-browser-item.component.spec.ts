@@ -4,6 +4,7 @@ import { ResultsBrowserItemComponent } from './results-browser-item.component';
 import { ResultsBrowserItemModule } from './results-browser-item.module';
 import { ListResult } from 'ccf-database';
 
+
 describe('ResultsBrowserItemComponent', () => {
   let shallow: Shallow<ResultsBrowserItemComponent>;
 
