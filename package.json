@@ -16,7 +16,7 @@
     "build:triple-store-utils": "npm run build triple-store-utils && npm run fix-triple-store-utils",
     "fix-triple-store-utils": "rimraf dist/triple-store-fixed && mkdirp dist/triple-store-fixed && browserify -s tripleStoreUtils dist/triple-store-utils/bundles/triple-store-utils.umd.js -o dist/triple-store-fixed/index.js && cp dist/triple-store-utils/lib/triple-store-utils.d.ts dist/triple-store-fixed/index.d.ts",
     "build:ccf-body-ui": "npm run build ccf-body-ui",
-    "build:netlify": "npm-run-all build:libs build cp-netlify-redirects compodoc",
+    "build:netlify": "npm ci && npm-run-all build:libs build cp-netlify-redirects compodoc",
     "cp-netlify-redirects": "cp src/_redirects dist/ccf-ui/_redirects",
     "compodoc": "npm run build:doc",
     "test": "ng test",
