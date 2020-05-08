@@ -9,7 +9,7 @@ import { entity } from '../util/prefixes';
 /**
  * Finds all ids of object matching a filter.
  *
- * @param store The store of objects.
+ * @param store The triple store.
  * @param filter The filter to limit objects.
  * @returns A set of all ids matching the filter.
  */
@@ -134,6 +134,14 @@ function filterByAge(store: N3Store, seen: Set<string>, minAge: number, maxAge: 
   return newSeen;
 }
 
+/**
+ * Filters ids by spatial entities.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param hasSpatialEntity Whether the filtered objects should have a spatial entity.
+ * @returns The subset of ids with/without spatial entities.
+ */
 function filterByHasSpatialEntity(store: N3Store, seen: Set<string>, hasSpatialEntity: boolean): Set<string> {
   const newSeen = new Set<string>();
   store.forSubjects(differenceCallback(seen, newSeen), entity.spatialEntity, null, null);

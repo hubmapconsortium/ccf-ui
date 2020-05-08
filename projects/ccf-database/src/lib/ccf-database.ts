@@ -123,6 +123,12 @@ export class CCFDatabase implements DataSource {
     return getImageViewerData(id, this.store);
   }
 
+  /**
+   * Gets all spatial entities for a filter.
+   *
+   * @param [filter] The filter.
+   * @returns A list of spatial entities.
+   */
   async getSpatialEntities(filter?: Filter): Promise<SpatialEntity[]> {
     return [...this.getIds({...filter, hasSpatialEntity: true} as Filter)]
       .map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);

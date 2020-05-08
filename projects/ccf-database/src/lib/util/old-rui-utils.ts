@@ -1,5 +1,6 @@
 import { set } from 'lodash';
 
+
 /** RUI v0.5.0 format */
 export interface OldRuiData {
   /** Identifier. */
@@ -34,10 +35,22 @@ export interface OldRuiData {
   };
 }
 
+/**
+ * Fixes strings from old RUI data.
+ *
+ * @param value The original string.
+ * @returns The fixed string.
+ */
 function fixString(value: string): string {
   return value.replace(/^_|mm_$|_$/g, '');
 }
 
+/**
+ * Fixes and parses numbers from old RUI data.
+ *
+ * @param value The original number.
+ * @returns The fixed number.
+ */
 function fixNumber(value: string | number): number {
   if (typeof value === 'string') {
     return parseFloat(value.replace(/[^\d\-\.]/g, ''));
@@ -45,6 +58,12 @@ function fixNumber(value: string | number): number {
   return value;
 }
 
+/**
+ * Fixes a xyz triplet from old RUI data.
+ *
+ * @param value THe original triplet.
+ * @returns The fixed triplet.
+ */
 function fixXYZ(value: { x: string | number, y: string | number, z: string | number }): { x: number, y: number, z: number } {
   const { x, y, z } = value;
   return { x: fixNumber(x), y: fixNumber(y), z: fixNumber(z) };

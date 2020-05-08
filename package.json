@@ -8,6 +8,7 @@
     "build:demo": "ng build --prod --output-hashing=none --base-href=./",
     "build:doc": "npx compodoc -p tsconfig.compodoc.json --output dist/combined/docs",
     "build:doc:ccf-ui": "npx compodoc -p src/tsconfig.app.json --output dist/ccf-ui/docs",
+    "build:doc:ccf-body-ui": "npx compodoc -p projects/ccf-body-ui/tsconfig.lib.json --output dist/ccf-body-ui/docs",
     "build:doc:ccf-database": "npx compodoc -p projects/ccf-database/tsconfig.lib.json --output dist/ccf-database/docs",
     "build:doc:triple-store-utils": "npx compodoc -p projects/triple-store-utils/tsconfig.lib.json --output dist/triple-store-utils/docs",
     "build:libs": "npm-run-all build:triple-store-utils build:ccf-database build:ccf-body-ui",
