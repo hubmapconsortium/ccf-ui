@@ -8,6 +8,7 @@ import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer
 
 import { DataSourceService } from './core/services/data-source/data-source.service';
 
+
 /**
  * This is the main angular component that all the other components branch off from.
  * It is in charge of the header and drawer components who have many sub-components.

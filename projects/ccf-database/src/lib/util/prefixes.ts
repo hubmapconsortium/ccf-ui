@@ -1,15 +1,20 @@
 import { DataFactory, Util } from 'triple-store-utils';
 
+/** Constants used to create entity accessors. */
 export const PREFIXES = {
   ccf: 'http://purl.org/ccf/latest/ccf.owl#',
   entity: 'http://purl.org/ccf/latest/ccf-entity.owl#',
   obo: 'http://purl.obolibrary.org/obo/',
   uberon: 'http://purl.obolibrary.org/obo/UBERON_',
-  lmha: 'http://purl.obolibrary.org/obo/LMHA_'
+  lmha: 'http://purl.obolibrary.org/obo/LMHA_',
+  rdf: 'http://www.w3.org/2000/01/rdf-schema#',
+  dc: 'http://purl.org/dc/elements/1.1/'
 };
 
+/** Prefix factory. */
 export const prefixer = Util.prefixes(PREFIXES, DataFactory);
 
+/** Common entity ids. */
 export const entity = {
   x: prefixer('entity'),
   id: prefixer('entity')('id'),
@@ -19,21 +24,69 @@ export const entity = {
   Female: DataFactory.literal('Female'),
   groupName: prefixer('entity')('groupName'),
   groupUUID: prefixer('entity')('groupUUID'),
-  ontologyTerms: prefixer('entity')('ontologyTerms')
+  ontologyTerms: prefixer('entity')('ontologyTerms'),
+  spatialEntity: prefixer('entity')('spatialEntity')
 };
 
+/** CCF id helper. */
+const ccfx = prefixer('ccf');
+
+/** CCF specific ids. */
 export const ccf = {
-  x: prefixer('ccf')
+  x: ccfx,
+  spatialObjectReference: {
+    file: ccfx('has_object_file'),
+    file_format: ccfx('has_object_file_format'),
+    file_subpath: ccfx('has_object_file_subpath')
+  },
+  spatialEntity: {
+    label: prefixer('rdf')('label'),
+    creator: prefixer('dc')('creator'),
+    creator_first_name: ccfx('creator_first_name'),
+    creator_last_name: ccfx('creator_last_name'),
+    creator_orcid: ccfx('creator_orcid'),
+    creation_date: ccfx('creation_date'),
+    x_dimension: ccfx('has_x_dimension'),
+    y_dimension: ccfx('has_y_dimension'),
+    z_dimension: ccfx('has_z_dimension'),
+    dimension_Units: ccfx('has_dimension_units'),
+    object: ccfx('has_object_reference')
+  },
+  spatialPlacement: {
+    source: ccfx('has_placement_source'),
+    target: ccfx('has_placement_target'),
+
+    placement_date: ccfx('has_placement_date'),
+    x_scaling: ccfx('has_x_scaling'),
+    y_scaling: ccfx('has_y_scaling'),
+    z_scaling: ccfx('has_z_scaling'),
+    scaling_units: ccfx('has_scaling_units'),
+
+    x_rotation: ccfx('has_x_rotation'),
+    y_rotation: ccfx('has_y_rotation'),
+    z_rotation: ccfx('has_z_rotation'),
+    w_rotation: ccfx('has_theta_rotation'),
+    rotation_order: ccfx('has_rotation_order'),
+    rotation_units: ccfx('has_rotation_units'),
+
+    x_translation: ccfx('has_x_translation'),
+    y_translation: ccfx('has_y_translation'),
+    z_translation: ccfx('has_z_translation'),
+    translation_units: ccfx('has_translation_units')
+  }
 };
 
+/** Uberon specific ids. */
 export const uberon = {
   x: prefixer('uberon')
 };
 
+/** LMHA specific ids. */
 export const lmha = {
   x: prefixer('lmha')
 };
 
+/** RUI accessors. */
 export const rui = {
   body: uberon.x('0013702'),
   heart: uberon.x('0000948'),

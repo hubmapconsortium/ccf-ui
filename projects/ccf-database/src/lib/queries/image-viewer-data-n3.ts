@@ -2,16 +2,18 @@ import { set } from 'lodash';
 import { fromRdf } from 'rdf-literal';
 import { DataFactory, N3Store } from 'triple-store-utils';
 
-import { entity } from './../util/prefixes';
 import { ImageViewerData } from './../interfaces';
+import { entity } from './../util/prefixes';
 
 
+/** Entity iri to data property paths. */
 const nonMetadataSet: { [iri: string]: string | string[] } = {
   [entity.id.id]: 'id',
   [entity.x('label').id]: 'label',
   [entity.x('organName').id]: 'organName',
 };
 
+/** Entity iri to metadata property paths. */
 const metadataSet: { [iri: string]: string } = {
   [entity.id.id]: 'UUID',
   [entity.x('groupName').id]: 'Group (TMC) Name',
@@ -24,10 +26,17 @@ const metadataSet: { [iri: string]: string } = {
   [entity.x('shortInfo2').id]: 'Short Info 2'
 };
 
+/**
+ * Extracts image viewer data from the store.
+ *
+ * @param iri Entity id.
+ * @param store The triple store.
+ * @returns The extracted data.
+ */
 export function getImageViewerData(iri: string, store: N3Store): ImageViewerData {
-  const result = {'@id': iri, '@type': 'ImageViewerData' } as ImageViewerData;
+  const result = { '@id': iri, '@type': 'ImageViewerData' } as ImageViewerData;
 
-  const propResults: { [predId:string]: string } = {};
+  const propResults: { [predId: string]: string } = {};
   store.some((quad) => {
     const prop = nonMetadataSet[quad.predicate.id];
     const mdProp = metadataSet[quad.predicate.id];
@@ -43,7 +52,7 @@ export function getImageViewerData(iri: string, store: N3Store): ImageViewerData
   }, DataFactory.namedNode(iri), null, null, null);
 
   result.metadata = Object.entries(metadataSet).map(([predId, label]) =>
-    ({ label, value: propResults[predId]})
+    ({ label, value: propResults[predId] })
   ).filter((item) => item.value);
 
   return result;

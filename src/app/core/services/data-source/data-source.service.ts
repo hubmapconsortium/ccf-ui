@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AggregateResult, CCFDatabase, Filter, ImageViewerData, ListResult, CCFDatabaseOptions } from 'ccf-database';
+import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ImageViewerData, ListResult } from 'ccf-database';
 import { Remote, wrap } from 'comlink';
 import { from, Observable } from 'rxjs';
 
@@ -13,10 +13,16 @@ import { environment } from './../../../../environments/environment';
   providedIn: 'root'
 })
 export class DataSourceService {
+  /** The underlying database. */
   dataSource: Remote<CCFDatabase> | CCFDatabase;
+  /** Database initialization options. */
   dbOptions: CCFDatabaseOptions;
+  /** Indicator of when the database is ready. */
   private _afterConnected: Promise<unknown>;
 
+  /**
+   * Creates an instance of data source service.
+   */
   constructor() {
     if (typeof Worker !== 'undefined') {
       const worker = new Worker('./data-source.worker', { type: 'module' });
@@ -26,11 +32,16 @@ export class DataSourceService {
     }
     this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
 
-    if (!environment.production) {
-      ((globalThis as unknown) as {db: Remote<CCFDatabase> | CCFDatabase}).db = this.dataSource;
+    if (!environment.production && typeof globalThis === 'object') {
+      ((globalThis as unknown) as { db: Remote<CCFDatabase> | CCFDatabase }).db = this.dataSource;
     }
   }
 
+  /**
+   * Gets a reference to the database.
+   *
+   * @returns A promise that resolves to the database when ready.
+   */
   private async getDB(): Promise<Remote<CCFDatabase> | CCFDatabase> {
     if (!this._afterConnected) {
       this._afterConnected = this.dataSource.connect(this.dbOptions);
