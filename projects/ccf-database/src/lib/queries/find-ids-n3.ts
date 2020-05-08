@@ -15,6 +15,9 @@ import { entity } from '../util/prefixes';
  */
 export function findIds(store: N3Store, filter: Filter): Set<string> {
   let seen = getAllEntities(store);
+  if (seen.size > 0 && (filter.hasSpatialEntity === true || filter.hasSpatialEntity === false)) {
+    seen = filterByHasSpatialEntity(store, seen, filter.hasSpatialEntity);
+  }
   if (seen.size > 0 && (filter.sex === 'Male' || filter.sex === 'Female')) {
     seen = filterBySex(store, seen, filter.sex);
   }
@@ -128,5 +131,16 @@ function filterByAge(store: N3Store, seen: Set<string>, minAge: number, maxAge: 
     }
     return false;
   }, null, entity.age, null, null);
+  return newSeen;
+}
+
+function filterByHasSpatialEntity(store: N3Store, seen: Set<string>, hasSpatialEntity: boolean): Set<string> {
+  const newSeen = new Set<string>();
+  store.forSubjects(differenceCallback(seen, newSeen), entity.spatialEntity, null, null);
+  if (!hasSpatialEntity) {
+    const notNewSeen = new Set<string>();
+    seen.forEach((s) => !newSeen.has(s) ? notNewSeen.add(s) : undefined);
+    return notNewSeen;
+  }
   return newSeen;
 }

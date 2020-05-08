@@ -2,6 +2,7 @@ import { JsonLd } from 'jsonld/jsonld-spec';
 import { get, toNumber } from 'lodash';
 import { addJsonLdToStore, N3Store } from 'triple-store-utils';
 
+import { convertOldRuiToJsonLd, OldRuiData } from './old-rui-utils';
 import { rui } from './prefixes';
 
 
@@ -54,7 +55,9 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
   return {
     '@context': {
       '@vocab': 'http://purl.org/ccf/latest/ccf-entity.owl#',
-      ontologyTerms: { '@type': '@id' }
+      ontologyTerms: { '@type': '@id' },
+      ancestors: { '@type': '@id' },
+      descendants: { '@type': '@id' }
     },
     '@graph': graph
   };
@@ -88,11 +91,20 @@ export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd
   const groupName = GROUP_UUID_MAPPING[groupUUID] || entity.group_name || get(entity, 'donor.group_name', undefined) as string;
   const ontologyTerms = HBM_ORGANS[(entity.organ || get(entity, 'origin_sample.organ', undefined)) as string] || [RUI_ORGANS.body];
   const protocolUrl = get(entity, 'portal_uploaded_protocol_files[0].protocol_url', undefined) as string;
+  let spatialEntity = entity.rui_location || get(entity, 'origin_sample.rui_location', undefined);
+  if (spatialEntity) {
+    let organRef = ontologyTerms.slice(-1)[0];
+    if (organRef === RUI_ORGANS.spleen) {
+      organRef = 'http://purl.org/ccf/latest/ccf.owl#VHSpleen';
+    }
+    spatialEntity = convertOldRuiToJsonLd(spatialEntity as OldRuiData, 'SpatialEntity for ' + label, organRef);
+  }
 
   return {
     '@id': 'https://entity-api.hubmapconsortium.org/entities/' + entity.uuid,
     '@type': entity.entity_type,
     id: entity.uuid,
+    spatialEntity,
     sex,
     age,
     // bmi,
@@ -100,6 +112,11 @@ export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd
     groupUUID, // tmc
     // technologies,
     ontologyTerms,
+
+    // NOTE: Leaving out ancestors and descendants for now as they add quite a few Quads,
+    //       but we'll likely need them in the near future.
+    // ancestors: (entity.ancestor_ids as string[] || []).map(s => 'https://entity-api.hubmapconsortium.org/entities/' + s),
+    // descendants: (entity.descendant_ids as string[] || []).map(s => 'https://entity-api.hubmapconsortium.org/entities/' + s),
 
     label,
     organName: entity.organ || get(entity, 'origin_sample.organ', undefined),
@@ -131,9 +148,9 @@ export async function addHubmapDataToStore(
 ): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
-    hubmapData = await fetch(dataUrl).then(r => r.json()) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : {}) as object;
   } else if (serviceType === 'elasticsearch') {
-    hubmapData = await fetch(dataUrl).then(r => r.json()) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : {}) as object;
   }
   if (hubmapData) {
     await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), store);

@@ -26,7 +26,7 @@ export class DataSourceService {
     }
     this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
 
-    if (!environment.production) {
+    if (!environment.production && typeof globalThis === 'object') {
       ((globalThis as unknown) as {db: Remote<CCFDatabase> | CCFDatabase}).db = this.dataSource;
     }
   }

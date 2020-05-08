@@ -16,13 +16,11 @@
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
       </div>
-      <button (click)="openViewer(viewer, 'https://entity-api.hubmapconsortium.org/entities/003d63df59a4975bbd680a1f6b706d67')">
-        Open Tissue Viewer
-      </button>
+      <ccf-results-browser (resultClicked)="openViewer(viewer, $event['@id'])" [data]="data.listData$ | async" [aggregateData]="data.aggregateData$ | async" [resultLabel]="'Kidney'"></ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer-content>
-      <img class="body" src="assets/img-both-sexes-torso.jpg" />
+      <ccf-body-ui></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
 </div>

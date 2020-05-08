@@ -26,14 +26,18 @@
     "paths": {
       "ccf-database": [
         "dist/ccf-database/ccf-database",
-        "dist/ccf-database",
+        "dist/ccf-database"
       ],
       "triple-store-utils-not-fixed": [
         "dist/triple-store-utils/triple-store-utils",
-        "dist/triple-store-utils",
+        "dist/triple-store-utils"
       ],
       "triple-store-utils": [
         "dist/triple-store-fixed/index"
+      ],
+      "ccf-body-ui": [
+        "dist/ccf-body-ui/ccf-body-ui",
+        "dist/ccf-body-ui"
       ]
     }
   },

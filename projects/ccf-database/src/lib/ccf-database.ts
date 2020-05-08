@@ -5,8 +5,9 @@ import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getImageViewerData } from './queries/image-viewer-data-n3';
 import { getListResult } from './queries/list-result-n3';
+import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
+import { SpatialEntity } from './spatial-types';
 import { addHubmapDataToStore } from './util/hubmap-data';
-
 
 
 /** Database initialization options. */
@@ -88,7 +89,7 @@ export class CCFDatabase implements DataSource {
    * @param [filter] The filter.
    * @returns An array of data.
    */
-  search(filter: Filter = {} as Filter): unknown[] {
+  search(filter: Filter = {} as Filter): Quad[][] {
     return [...this.getIds(filter)].map((s) => this.get(s));
   }
 
@@ -120,5 +121,10 @@ export class CCFDatabase implements DataSource {
    */
   async getImageViewerData(id: string): Promise<ImageViewerData> {
     return getImageViewerData(id, this.store);
+  }
+
+  async getSpatialEntities(filter?: Filter): Promise<SpatialEntity[]> {
+    return [...this.getIds({...filter, hasSpatialEntity: true} as Filter)]
+      .map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
   }
 }
