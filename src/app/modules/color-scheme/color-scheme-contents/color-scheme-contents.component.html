@@ -1,24 +1,64 @@
-<div>
-  <ul>
-    <li (click)="schemeChanged(0)">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-    </li>
-    <li (click)="schemeChanged(1)">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-    </li>
-  </ul>
-  <!-- <ccf-dual-slider label="Brightness" [valueRange]="[0, 100]" [selection]="brightness"
-  (selectionChange)="brightnessChanged($event)"></ccf-dual-slider> -->
-  <ng5-slider class="dualslider" [options]="options" [(value)]="brightness[0]" [(highValue)]="brightness[1]" (userChangeEnd)="brightnessChanged()">
-  </ng5-slider>
-  <ng5-slider class="singleslider" [options]="options" [(value)]="transparency" (userChangeEnd)="transparencyChanged()">
-  </ng5-slider>
+<div class="color-scheme-contents-container">
+  <div class="scheme-contents">
+    <div class="swatch one" (click)="schemeChanged(0)">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+    <div class="swatch two" (click)="schemeChanged(1)">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+    <div class="swatch three" (click)="schemeChanged(2)">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+    <div class="swatch four" (click)="schemeChanged(3)">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+    <div class="swatch five" (click)="schemeChanged(4)">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+    <div class="swatch six" (click)="schemeChanged(5)">
+      <div class="gradient"></div>
+    </div>
+    <div class="swatch seven" (click)="schemeChanged(6)">
+      <div class="gradient"></div>
+    </div>
+    <div class="swatch eight" (click)="schemeChanged(7)">
+      <div class="gradient"></div>
+    </div>
+    <div>Brightness</div>
+    <ng5-slider class="dualslider" [options]="options" [(value)]="brightness[0]" [(highValue)]="brightness[1]" (userChangeEnd)="brightnessChanged()">
+    </ng5-slider>
+    <div>Transparency</div>
+    <ng5-slider class="singleslider" [options]="options" [(value)]="transparency" (userChangeEnd)="transparencyChanged()">
+    </ng5-slider>
+  </div>
 </div>
