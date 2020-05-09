@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ElementRef } from '@angular/core';
 
 export class ColorScheme {
   type: 'discrete' | 'gradient';
@@ -81,8 +81,22 @@ export class ColorSchemePopupComponent {
   brightness: number[] = [0, 100];
   transparency = 0;
 
-  open() {
-    this.popupVisible = !this.popupVisible;
+  @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  onGlobalClick(target: HTMLElement): void {
+    const popupElement = document.getElementById('scheme-contents');
+    const buttonElement = document.getElementById('open-popup');
+    if (!this.popupVisible) {
+      return;
+    } else if (buttonElement && buttonElement.contains(target)) {
+      return;
+    } else if (popupElement && popupElement.contains(target)) {
+      return;
+    }
+    this.popupVisible = false;
+  }
+
+  open(): void {
+    this.popupVisible = true;
   }
 
   updateScheme(scheme: ColorScheme) {
