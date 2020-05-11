@@ -1,7 +1,8 @@
 .color-scheme-contents-container{
   background-color: #323232;
+  box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
   width: 10rem;
-  height: 20rem;
+  height: 21rem;
   display: flex;
   flex-direction: column;
   
@@ -154,28 +155,32 @@
       }
   
       &.six {
-        :nth-child(1) {
+        .gradient {
           background-image: linear-gradient(to right, #FFE31C , #21908A, #450B57);
         }
       }
   
       &.seven {
-        :nth-child(1) {
+        .gradient {
           background-image: linear-gradient(to right, #F8FC9D , #B4335A, #020202);
         }
       }
   
       &.eight {
-        :nth-child(1) {
+        .gradient {
           background-image: linear-gradient(to right, #F2F424 , #C6427E, #0C1687);
         }
       }
     }
+
+    .brightness-slider-label {
+      margin-top: 1rem;
+    }
   }
 
-  ::ng-deep .dualslider, ::ng-deep .singleslider {
-    margin-top: 15px;
-    margin-bottom: 15px;
+  ::ng-deep .slider {
+    margin-top: .75rem;
+    margin-bottom: 1rem;
     .ng5-slider-bar {
       background: #1e88e5;
       opacity: 20%;

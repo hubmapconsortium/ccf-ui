@@ -1,9 +1,9 @@
-import { Component, HostListener, ElementRef } from '@angular/core';
+import { Component, HostListener, Output, EventEmitter } from '@angular/core';
 
 export class ColorScheme {
   type: 'discrete' | 'gradient';
-  name: string; // viridis
-  colors: string[]; // array of RGB colors
+  name: string;
+  colors: string[];
   positions: number[];
 }
 
@@ -81,8 +81,12 @@ export class ColorSchemePopupComponent {
   brightness: number[] = [0, 100];
   transparency = 0;
 
+  @Output() colorSchemeChange = new EventEmitter<ColorScheme>();
+  @Output() brightnessChange = new EventEmitter<number[]>();
+  @Output() transparencyChange = new EventEmitter<number>();
+
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
-  onGlobalClick(target: HTMLElement): void {
+  close(target: HTMLElement): void {
     const popupElement = document.getElementById('scheme-contents');
     const buttonElement = document.getElementById('open-popup');
     if (!this.popupVisible) {
@@ -101,16 +105,19 @@ export class ColorSchemePopupComponent {
 
   updateScheme(scheme: ColorScheme) {
     this.colorScheme = scheme;
+    this.colorSchemeChange.emit(scheme);
     console.log('colorScheme', this.colorScheme);
   }
 
   updateBrightness(brightness: number[]) {
     this.brightness = brightness;
+    this.brightnessChange.emit(brightness);
     console.log('brightness', this.brightness);
   }
 
   updateTransparency(transparency: number) {
     this.transparency = transparency;
+    this.transparencyChange.emit(transparency);
     console.log('transparency', this.transparency);
   }
 }

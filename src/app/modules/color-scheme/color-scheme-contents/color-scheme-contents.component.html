@@ -54,11 +54,11 @@
     <div class="swatch eight" [class.selected]="selected[7]" (click)="schemeChanged(7)">
       <div class="gradient"></div>
     </div>
-    <div>Brightness</div>
-    <ng5-slider class="dualslider" [options]="options" [(value)]="brightness[0]" [(highValue)]="brightness[1]" (userChangeEnd)="brightnessChanged()">
+    <div class="brightness-slider-label">Brightness</div>
+    <ng5-slider class="slider" [options]="options" [(value)]="brightness[0]" [(highValue)]="brightness[1]" (userChangeEnd)="brightnessChanged()">
     </ng5-slider>
-    <div>Transparency</div>
-    <ng5-slider class="singleslider" [options]="options" [(value)]="transparency" (userChangeEnd)="transparencyChanged()">
+    <div class="transparency-slider-label">Transparency</div>
+    <ng5-slider class="slider" [options]="options" [(value)]="transparency" (userChangeEnd)="transparencyChanged()">
     </ng5-slider>
   </div>
 </div>
