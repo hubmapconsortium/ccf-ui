@@ -1,10 +1,14 @@
 import { CompositeLayer, COORDINATE_SYSTEM } from '@deck.gl/core';
 import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
-import { load } from '@loaders.gl/core';
+import { load, registerLoaders } from '@loaders.gl/core';
 import { GLTFLoader } from '@loaders.gl/gltf';
+import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
 import { CubeGeometry } from '@luma.gl/core';
 
+
 // Programmers Note: had to disable tslint in a few places due to deficient typings.
+
+registerLoaders([DracoWorkerLoader, GLTFLoader]);
 
 export class BodyUIData {
   unpickable?: boolean;
@@ -32,7 +36,7 @@ class CachedGLTFLoader<T = any> {
     const urlObj = this.urlToLoader[url] = this.urlToLoader[url] || {url};
     if (!this.loaderToScenegraph.has(urlObj)) {
       // tslint:disable-next-line: no-unsafe-any
-      this.loaderToScenegraph.set(urlObj, load(url, GLTFLoader, {postProcess: true}));
+      this.loaderToScenegraph.set(urlObj, load(url, GLTFLoader, {DracoLoader, decompress: true, postProcess: true}));
     }
     return this.loaderToScenegraph.get(urlObj) as Promise<T>;
   }
