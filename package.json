@@ -10,6 +10,7 @@
     "build:doc:ccf-ui": "npx compodoc -p src/tsconfig.app.json --output dist/ccf-ui/docs",
     "build:doc:ccf-body-ui": "npx compodoc -p projects/ccf-body-ui/tsconfig.lib.json --output dist/ccf-body-ui/docs",
     "build:doc:ccf-database": "npx compodoc -p projects/ccf-database/tsconfig.lib.json --output dist/ccf-database/docs",
+    "build:doc:ccf-image-viewer": "npx compodoc -p projects/ccf-image-viewer/tsconfig.lib.json --output dist/ccf-image-viewer/docs",
     "build:doc:triple-store-utils": "npx compodoc -p projects/triple-store-utils/tsconfig.lib.json --output dist/triple-store-utils/docs",
     "build:libs": "npm-run-all build:triple-store-utils build:ccf-database build:ccf-body-ui",
     "build:ccf-database": "npm run build ccf-database",
