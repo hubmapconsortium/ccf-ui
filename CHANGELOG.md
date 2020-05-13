@@ -2,9 +2,19 @@
 
 Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface (EUI).
 
-## 1.0.0-alpha.2 - 2019-03-27
+## 1.0.0-alpha.3 - 2019-05-08
 
-> :warning: **WARNING:** This version is not yet ready for use. There are two more sprint scheduled to bring the User Interface up to Spec and usable.
+> :warning: **WARNING:** This version is not yet ready for use. There is one more sprint scheduled to bring the User Interface up to Spec and usable.
+
+### Added in 1.0.0-alpha.3
+
+* Hooked up the interface to real data (not shown online as the data is not public yet)
+* Added the Tissue Browser on the right
+* Added the initial (Tissue) Image Viewer popup. Currently shows metadata, but no images yet.
+* Added an initial 3D Body. Tissues cuboids currently not displayed, but a test cuboid is shown.
+* Documentation (>90%) and testing coverage improved further
+
+## 1.0.0-alpha.2 - 2019-03-27
 
 ### Added in 1.0.0-alpha.2
 
