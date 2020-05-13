@@ -39,6 +39,13 @@ const ccfx = prefixer('ccf');
 /** CCF specific ids. */
 export const ccf = {
   x: ccfx,
+  spatial: {
+    Body: ccfx('VHBody'),
+    Female: ccfx('VHFemale'),
+    Male: ccfx('VHMale'),
+    BothSexes: ccfx('VHBothSexes'),
+    FemaleOrgans: ccfx('VHFemaleOrgans')
+  },
   SpatialObjectReference: ccfx('SpatialObjectReference'),
   SpatialEntity: ccfx('SpatialEntity'),
   SpatialPlacement: ccfx('SpatialPlacement'),

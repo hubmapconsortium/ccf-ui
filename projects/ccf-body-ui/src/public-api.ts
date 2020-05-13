@@ -1,6 +1,6 @@
 // Hack to support deck.gl and other typings
 // tslint:disable-next-line: no-reference
-/// <reference path="./typing-fixes.d.ts" />
+/// <reference types="node" />
 
 /*
  * Public API Surface of ccf-body-ui

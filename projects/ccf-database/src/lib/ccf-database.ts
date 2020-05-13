@@ -8,6 +8,7 @@ import { getListResult } from './queries/list-result-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { SpatialEntity } from './spatial-types';
 import { addHubmapDataToStore } from './util/hubmap-data';
+import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
 
 
 /** Database initialization options. */
@@ -36,6 +37,8 @@ export class CCFDatabase implements DataSource {
   store: N3Store;
   /** The spatial graph */
   graph: CCFSpatialGraph;
+  /** Creates SpatialEntity Scenes */
+  scene: CCFSpatialScene;
 
   /**
    * Creates an instance of ccfdatabase.
@@ -45,6 +48,7 @@ export class CCFDatabase implements DataSource {
   constructor(public options: CCFDatabaseOptions = DEFAULT_CCF_DB_OPTIONS) {
     this.store = new Store();
     this.graph = new CCFSpatialGraph(this);
+    this.scene = new CCFSpatialScene(this);
   }
 
   /**
@@ -100,6 +104,17 @@ export class CCFDatabase implements DataSource {
   }
 
   /**
+   * Gets all spatial entities for a filter.
+   *
+   * @param [filter] The filter.
+   * @returns A list of spatial entities.
+   */
+  getSpatialEntities(filter?: Filter): SpatialEntity[] {
+    return [...this.getIds({...filter, hasSpatialEntity: true} as Filter)]
+      .map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+  }
+
+  /**
    * Gets all list results for a filter.
    *
    * @param [filter] The filter.
@@ -130,13 +145,11 @@ export class CCFDatabase implements DataSource {
   }
 
   /**
-   * Gets all spatial entities for a filter.
-   *
+   * Get all nodes to form the 3D scene of reference body, organs, and tissues
    * @param [filter] The filter.
-   * @returns A list of spatial entities.
+   * @returns A list of Spatial Scene Nodes for the 3D Scene
    */
-  async getSpatialEntities(filter?: Filter): Promise<SpatialEntity[]> {
-    return [...this.getIds({...filter, hasSpatialEntity: true} as Filter)]
-      .map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+  async getScene(filter?: Filter): Promise<SpatialSceneNode[]> {
+    return this.scene.getScene(filter);
   }
 }

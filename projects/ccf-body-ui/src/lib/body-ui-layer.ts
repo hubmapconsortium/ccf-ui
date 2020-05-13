@@ -50,8 +50,7 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
   renderLayers() {
     // tslint:disable-next-line: no-unsafe-any
     const data = (this.state.data || this.props.data) as BodyUIData[];
-    console.log(data);
-    return [
+    return data.length === 0 ? [] : [
       new SimpleMeshLayer({
         ...{
           id: 'test-cubes1',

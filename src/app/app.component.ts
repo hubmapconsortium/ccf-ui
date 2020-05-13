@@ -30,10 +30,7 @@ export class AppComponent {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) {
-    data.listData$.subscribe(console.log);
-    data.aggregateData$.subscribe(console.log);
-  }
+  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) { }
 
   /**
    * Resets the drawers and filter components to their default state.

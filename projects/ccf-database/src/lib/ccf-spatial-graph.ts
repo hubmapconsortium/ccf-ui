@@ -61,6 +61,9 @@ export class CCFSpatialGraph {
     if (sourceIRI === targetIRI) {
       return new Matrix4(); // identity
     }
+    if (!this.graph.hasNode(sourceIRI) || !this.graph.hasNode(targetIRI)) {
+      return undefined;
+    }
 
     const tx = new Matrix4();
     const path = shortestPath(this.graph, sourceIRI, targetIRI);
@@ -78,7 +81,7 @@ export class CCFSpatialGraph {
       const nodeType = this.graph.getNodeAttribute(sourceIRI, 'type') as string;
       if (nodeType === 'SpatialEntity') {
         const e = this.graph.getNodeAttribute(sourceIRI, 'object') as SpatialEntity;
-        if (!e.object) {
+        if (!e.object || true) {
           // Scale visible bounding boxes to the desired dimensions
           const scale = [e.x_dimension, e.y_dimension, e.z_dimension];
           tx.scale(scale);
