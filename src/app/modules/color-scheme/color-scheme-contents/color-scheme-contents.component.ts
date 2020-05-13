@@ -7,14 +7,14 @@ import { Options } from 'ng5-slider';
   templateUrl: './color-scheme-contents.component.html',
   styleUrls: ['./color-scheme-contents.component.scss']
 })
-export class ColorSchemeContentsComponent implements OnChanges {
+export class ColorSchemeContentsComponent {
 
   options: Options;
 
   @Input() schemeOptions: ColorScheme[];
   @Input() colorScheme: ColorScheme;
   @Input() color: string | undefined;
-  @Input() brightness: number[];
+  @Input() brightness: number[] = [0, 100];
   @Input() transparency: number;
 
   @Output() colorSchemeChange = new EventEmitter<ColorScheme>();
@@ -25,7 +25,7 @@ export class ColorSchemeContentsComponent implements OnChanges {
   brightnesslowValue: number;
   brightnesshighValue: number;
   transparencyValue: number;
-  selected: boolean[] = [true, false, false, false, false, false, false, false];
+  selected: boolean[] = Array(8).fill(false);
 
   constructor() {
     this.options = {
@@ -40,20 +40,9 @@ export class ColorSchemeContentsComponent implements OnChanges {
     this.transparencyValue = this.options.floor ?? 0;
   }
 
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.brightness) {
-      this.brightnesslowValue = Math.min(...this.brightness);
-      this.brightnesshighValue = Math.max(...this.brightness);
-    }
-    if (changes.transparency) {
-      this.transparencyValue = this.transparency;
-    }
-  }
-
   schemeChanged(n: number) {
     this.colorScheme = this.schemeOptions[n];
-    this.selected = [false, false, false, false, false, false, false, false];
+    this.selected = Array(8).fill(false);
     this.selected[n] = true;
     this.colorSchemeChange.emit(this.colorScheme);
   }
