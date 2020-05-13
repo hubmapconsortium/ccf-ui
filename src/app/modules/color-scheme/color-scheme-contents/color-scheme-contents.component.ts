@@ -26,8 +26,7 @@ export class ColorSchemeContentsComponent {
   brightnesshighValue: number;
   transparencyValue: number;
   schemeSelectedStatus: boolean[] = Array(8).fill(false);
-  colorSelectedStatus: boolean[][] = [
-  ];
+  colorSelectedStatus: boolean[][] = [];
 
   constructor() {
     this.options = {

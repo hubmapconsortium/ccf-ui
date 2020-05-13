@@ -24,6 +24,12 @@ describe('FiltersContentComponent', () => {
     expect(outputs.colorSchemeChange.emit).toHaveBeenCalled();
   });
 
+  it('should emit colorChange when updateColor is called', async () => {
+    const { instance, outputs } = await shallow.render();
+    instance.updateColor('color');
+    expect(outputs.colorChange.emit).toHaveBeenCalled();
+  });
+
   it('should emit brightnessChange when updateBrightness is called', async () => {
     const { instance, outputs } = await shallow.render();
     instance.updateBrightness([0, 1]);
