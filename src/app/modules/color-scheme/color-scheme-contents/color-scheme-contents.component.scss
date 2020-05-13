@@ -24,6 +24,11 @@
 
       .square {
         width: 1rem;
+
+        &.currentcolor {
+          border-radius: 10px;
+          border: 0px solid black;
+        }
       }
       
       .gradient {

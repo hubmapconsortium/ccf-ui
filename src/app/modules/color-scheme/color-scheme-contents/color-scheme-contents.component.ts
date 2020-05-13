@@ -25,7 +25,9 @@ export class ColorSchemeContentsComponent {
   brightnesslowValue: number;
   brightnesshighValue: number;
   transparencyValue: number;
-  selected: boolean[] = Array(8).fill(false);
+  schemeSelectedStatus: boolean[] = Array(8).fill(false);
+  colorSelectedStatus: boolean[][] = [
+  ];
 
   constructor() {
     this.options = {
@@ -38,13 +40,34 @@ export class ColorSchemeContentsComponent {
     this.brightnesslowValue = this.options.floor ?? 0;
     this.brightnesshighValue = this.options.ceil ?? 0;
     this.transparencyValue = this.options.floor ?? 0;
+
+    for (let i=0; i<7; i++) {
+      this.colorSelectedStatus.push(new Array(7).fill(false));
+    }
   }
 
   schemeChanged(n: number) {
     this.colorScheme = this.schemeOptions[n];
-    this.selected = Array(8).fill(false);
-    this.selected[n] = true;
+    this.schemeSelectedStatus = Array(8).fill(false);
+    this.schemeSelectedStatus[n] = true;
     this.colorSchemeChange.emit(this.colorScheme);
+  }
+
+  colorChanged(array: number[]) {
+    const newSchemeIndex = array[0];
+    const newColorIndex = array[1];
+    this.schemeChanged(newSchemeIndex);
+    this.color = this.colorScheme.colors[newColorIndex];
+    this.resetColorStatus();
+    this.colorSelectedStatus[newSchemeIndex][newColorIndex] = true;
+    this.colorChange.emit(this.color);
+  }
+
+  resetColorStatus() {
+    this.colorSelectedStatus = [];
+    for (let i=0; i<8; i++) {
+      this.colorSelectedStatus.push(new Array(7).fill(false));
+    }
   }
 
   brightnessChanged() {

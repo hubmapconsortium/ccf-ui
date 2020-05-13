@@ -1,5 +1,5 @@
 <ccf-color-scheme-contents  
   [schemeOptions]="schemeOptions" [colorScheme]="colorScheme" [color]="color" [brightness]="brightness" [transparency]="transparency"
   (colorSchemeChange)="updateScheme($event)" (brightnessChange)="updateBrightness($event)" (transparencyChange)="updateTransparency($event)"
-  class="color-scheme-contents" [class.visible]="popupVisible" [class.hidden]="!popupVisible">
+  (colorChange)="updateColor($event)" class="color-scheme-contents" [class.visible]="popupVisible" [class.hidden]="!popupVisible">
 </ccf-color-scheme-contents>

@@ -45,21 +45,21 @@ const scheme5: ColorScheme = {
 const scheme6: ColorScheme = {
   type: 'gradient',
   name: 'viridis',
-  colors: [],
+  colors: ['viridis'],
   positions: [0, .5, 1]
 };
 
 const scheme7: ColorScheme = {
   type: 'gradient',
   name: 'magma',
-  colors: [],
+  colors: ['magma'],
   positions: [0, .5, 1]
 };
 
 const scheme8: ColorScheme = {
   type: 'gradient',
   name: 'plasma',
-  colors: [],
+  colors: ['plasma'],
   positions: [0, .5, 1]
 };
 
@@ -82,6 +82,7 @@ export class ColorSchemePopupComponent {
   transparency = 0;
 
   @Output() colorSchemeChange = new EventEmitter<ColorScheme>();
+  @Output() colorChange = new EventEmitter<string | undefined>();
   @Output() brightnessChange = new EventEmitter<number[]>();
   @Output() transparencyChange = new EventEmitter<number>();
 
@@ -107,6 +108,12 @@ export class ColorSchemePopupComponent {
     this.colorScheme = scheme;
     this.colorSchemeChange.emit(scheme);
     console.log('colorScheme', this.colorScheme);
+  }
+
+  updateColor(color: string) {
+    this.color = color;
+    this.colorChange.emit(color);
+    console.log('color', this.color);
   }
 
   updateBrightness(brightness: number[]) {
