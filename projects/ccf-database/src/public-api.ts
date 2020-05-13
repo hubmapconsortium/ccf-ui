@@ -1,7 +1,3 @@
-// Hack to support missing typings
-// tslint:disable-next-line: no-reference
-/// <reference path="./typing-fixes.d.ts" />
-
 /*
  * Public API Surface of ccf
  */

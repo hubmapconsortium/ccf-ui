@@ -1,13 +1,16 @@
 import { CompositeLayer, COORDINATE_SYSTEM } from '@deck.gl/core';
 import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
 import { load, registerLoaders } from '@loaders.gl/core';
-import { GLTFLoader } from '@loaders.gl/gltf';
 import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
+import { GLTFLoader } from '@loaders.gl/gltf';
 import { CubeGeometry } from '@luma.gl/core';
+import { Matrix4 } from '@math.gl/core';
+import { SimpleMesh } from '@deck.gl/mesh-layers/simple-mesh-layer/simple-mesh-layer';
 
 
 // Programmers Note: had to disable tslint in a few places due to deficient typings.
 
+// tslint:disable-next-line: no-unsafe-any
 registerLoaders([DracoWorkerLoader, GLTFLoader]);
 
 export class BodyUIData {
@@ -15,7 +18,7 @@ export class BodyUIData {
   _lighting?: string;
   scenegraph?: string;
   color?: [number, number, number, number];
-  transformMatrix: number[][];
+  transformMatrix: Matrix4;
   tooltip: string;
 }
 
@@ -50,17 +53,18 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
     console.log(data);
     return [
       new SimpleMeshLayer({
-        id: 'test-cubes1',
-        pickable: true,
-        autoHighlight: true,
-        highlightColor: [30, 136, 229, 0.5*255],
-        coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-        data: data.filter((d) => !d.scenegraph),
-        getTransformMatrix: (d) => d.transformMatrix,
-        // tslint:disable-next-line: no-unsafe-any
-        mesh: new CubeGeometry(),
-        getColor: (d) => d.color || [255, 255, 255, 0.9*255],
-        wireframe: false
+        ...{
+          id: 'test-cubes1',
+          pickable: true,
+          autoHighlight: true,
+          highlightColor: [30, 136, 229, 0.5*255],
+          coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
+          data: data.filter((d) => !d.scenegraph),
+          mesh: new (CubeGeometry as new () => SimpleMesh)(),
+          wireframe: false,
+          getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
+          getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
+        }
       }),
       data.filter(d => !!d.scenegraph).map((model, i) =>
         new ScenegraphLayer({
@@ -71,9 +75,6 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
             data: [model],
             scenegraph: gltfLoader.load(model.scenegraph as string),
             _lighting: model._lighting,  // 'pbr' | undefined
-          },
-          // Had to merge in separately to keep TS happy. BAD typings :-(
-          ...{
             getTransformMatrix: model.transformMatrix,
             getColor: model.color || [0, 255, 0, 0.5*255],
           }

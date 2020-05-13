@@ -10,6 +10,17 @@ import { rdf, ccf } from './util/prefixes';
 import { getSpatialEntity, getSpatialObjectReference, getSpatialPlacement } from './queries/spatial-result-n3';
 
 
+export function applySpatialPlacement(tx: Matrix4, placement: SpatialPlacement): Matrix4 {
+  const p = placement;
+  const T = [p.x_translation, p.y_translation, p.z_translation];
+  const R_RAD = [p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians);
+  // tslint:disable-next-line: no-unsafe-any
+  const R = toEuler(fromEuler(R_RAD[1], R_RAD[0], R_RAD[2], 'XYZ').toVector()) as number[];
+  const S = [p.x_scaling, p.y_scaling, p.z_scaling];
+
+  return tx.translate(T).rotateXYZ(R).scale(S);
+}
+
 export class CCFSpatialGraph {
   graph: DirectedGraph;
 
@@ -46,8 +57,7 @@ export class CCFSpatialGraph {
     this.graph.mergeDirectedEdge(placement.source['@id'], placement.target['@id'], {type: 'SpatialPlacement', placement});
   }
 
-  // tslint:disable: no-unsafe-any
-  getTransformationMatrix(sourceIRI: string, targetIRI: string): number[][] /*Matrix4*/ | undefined {
+  getTransformationMatrix(sourceIRI: string, targetIRI: string): Matrix4 | undefined {
     if (sourceIRI === targetIRI) {
       return new Matrix4(); // identity
     }
@@ -60,14 +70,7 @@ export class CCFSpatialGraph {
       for (const source of path) {
         if (target) {
           const p = this.graph.getEdgeAttribute(source, target, 'placement') as SpatialPlacement;
-          const T = [p.x_translation, p.y_translation, p.z_translation];
-          const R_RAD = [p.x_rotation, p.y_rotation, p.z_rotation].map(toRadians);
-          const R = toEuler(fromEuler(R_RAD[0], R_RAD[1], R_RAD[2], 'XYZ').toVector());
-          const S = [p.x_scaling, p.y_scaling, p.z_scaling];
-
-          tx.translate(T)
-            .rotateXYZ(R)
-            .scale(S);
+          applySpatialPlacement(tx, p);
         }
         target = source;
       }
@@ -87,5 +90,4 @@ export class CCFSpatialGraph {
       return undefined;
     }
   }
-  // tslint:enable: no-unsafe-any
 }

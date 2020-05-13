@@ -1,11 +1,9 @@
-// tslint:disable: no-any
-// tslint:disable: no-unsafe-any
 import { Matrix4, toRadians } from '@math.gl/core';
 import { fromEuler } from 'quaternion';
 import toEuler from 'quaternion-to-euler';
 import { BodyUIData } from './body-ui-layer';
 
-export const DEFAULT_DATA = [
+const DEFAULT_DATA_INPUT = [
   {
     color: [255, 255, 255, 0.9*255],
     position: [0, 2.4, 0],
@@ -35,22 +33,26 @@ export const DEFAULT_DATA = [
     tooltip: 'Torso Backdrop',
     _lighting: undefined
   } as unknown,
-] as BodyUIData[];
+];
 
-function getTransformMatrix(model: any): number[][] /*Matrix4*/ {
+// tslint:disable: no-unsafe-any
+// tslint:disable-next-line: no-any
+function getTransformMatrix(model: any): Matrix4 {
   const tx = new Matrix4([]).identity();
   const P: number[] = model.position;
-  const T: number[] = model.translation.map(toRadians);
-  const R: any = toEuler(fromEuler(model.rotation[0], model.rotation[1], model.rotation[2], 'XYZ').toVector());
+  const T: number[] = model.translation;
+  const R_RAD = model.rotation.map(toRadians);
+  const R = toEuler(fromEuler(R_RAD[1], R_RAD[0], R_RAD[2], 'XYZ').toVector());
   const S: number[] = model.scale;
 
-  tx
+  return tx
     .translate(P)
     .translate(T)
     .rotateXYZ(R)
     .scale(S);
-
-  return tx;
 }
+// tslint:disable: no-unsafe-any
 
-DEFAULT_DATA.forEach((t: any) => t.transformMatrix = getTransformMatrix(t));
+DEFAULT_DATA_INPUT.forEach((t: BodyUIData) => t.transformMatrix = getTransformMatrix(t));
+
+export const DEFAULT_DATA: BodyUIData[] = DEFAULT_DATA_INPUT as BodyUIData[];

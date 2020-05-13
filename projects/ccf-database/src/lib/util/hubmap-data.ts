@@ -148,11 +148,13 @@ export async function addHubmapDataToStore(
 ): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
-    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : {}) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined) as object;
   } else if (serviceType === 'elasticsearch') {
-    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : {}) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined) as object;
   }
   if (hubmapData) {
     await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), store);
+  } else {
+    console.warn(`Unable to load ${dataUrl} as HuBMAP Data`);
   }
 }
