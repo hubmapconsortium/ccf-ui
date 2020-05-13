@@ -81,7 +81,7 @@ export class CCFSpatialGraph {
       const nodeType = this.graph.getNodeAttribute(sourceIRI, 'type') as string;
       if (nodeType === 'SpatialEntity') {
         const e = this.graph.getNodeAttribute(sourceIRI, 'object') as SpatialEntity;
-        if (!e.object || true) {
+        if (!e.object) {
           // Scale visible bounding boxes to the desired dimensions
           const scale = [e.x_dimension, e.y_dimension, e.z_dimension];
           tx.scale(scale);
