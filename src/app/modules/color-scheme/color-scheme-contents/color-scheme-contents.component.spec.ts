@@ -1,13 +1,13 @@
 import { Shallow } from 'shallow-render';
 
+import { ColorScheme } from '.././color-scheme-popup/color-scheme-popup.component';
 import { ColorSchemeContentsComponent } from './color-scheme-contents.component';
 import { ColorSchemeContentsModule } from './color-scheme-contents.module';
-import { ColorScheme } from '.././color-scheme-popup/color-scheme-popup.component';
 
 describe('ColorSchemeContentsComponent', () => {
   let shallow: Shallow<ColorSchemeContentsComponent>;
 
-  let mockScheme: jasmine.SpyObj<ColorScheme>;
+  let mockScheme: jasmine.SpyObj<ColorScheme>; // tslint:disable-line:prefer-const
 
   beforeEach(() => {
     shallow = new Shallow(ColorSchemeContentsComponent, ColorSchemeContentsModule);
@@ -29,7 +29,7 @@ describe('ColorSchemeContentsComponent', () => {
 
   it('should emit schemeChange when scheme is selected', async () => {
     const { instance, outputs } = await shallow
-      .render({ bind: { schemeOptions: Array(8).fill(mockScheme)} });
+      .render({ bind: { schemeOptions: Array(8).fill(mockScheme) } });
 
     instance.schemeChanged(3);
     expect(outputs.colorSchemeChange.emit).toHaveBeenCalledWith(mockScheme);
@@ -52,7 +52,7 @@ describe('ColorSchemeContentsComponent', () => {
     };
 
     const options = [testScheme, testScheme2];
-    const { instance, outputs } = await shallow.render({bind: { colorScheme: testScheme, schemeOptions: options} });
+    const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme, schemeOptions: options } });
     instance.resetColorStatus();
     instance.colorChanged([0, 0]);
     expect(outputs.colorChange.emit).toHaveBeenCalledWith('red');

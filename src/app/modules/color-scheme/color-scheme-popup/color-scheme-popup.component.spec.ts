@@ -1,6 +1,6 @@
 import { Shallow } from 'shallow-render';
 
-import { ColorSchemePopupComponent, ColorScheme } from './color-scheme-popup.component';
+import { ColorScheme, ColorSchemePopupComponent } from './color-scheme-popup.component';
 import { ColorSchemePopupModule } from './color-scheme-popup.module';
 
 describe('FiltersContentComponent', () => {
@@ -8,11 +8,11 @@ describe('FiltersContentComponent', () => {
   const testScheme: ColorScheme = {
     type: 'discrete',
     name: 'test',
-    colors: ['test', 'test'],
+    colors: ['color1', 'color2'],
     positions: [0, 1]
   };
 
-  let mockHTMLElement: jasmine.SpyObj<HTMLElement>;
+  let mockHTMLElement: jasmine.SpyObj<HTMLElement>; // tslint:disable-line:prefer-const
 
   beforeEach(() => {
     shallow = new Shallow(ColorSchemePopupComponent, ColorSchemePopupModule);

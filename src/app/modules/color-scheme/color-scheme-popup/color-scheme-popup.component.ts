@@ -1,12 +1,34 @@
-import { Component, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 
+/**
+ * Color scheme to be used in visualizing layers of the image
+ */
 export class ColorScheme {
+
+  /**
+   * Whether the scheme is discrete or gradient
+   */
   type: 'discrete' | 'gradient';
+
+  /**
+   * Name of scheme
+   */
   name: string;
-  colors: string[];
+
+  /**
+   * Colors used in the scheme (undefined for gradients)
+   */
+  colors: string[] | undefined[];
+
+  /**
+   * Positions for mapping the data to colors
+   */
   positions: number[];
 }
 
+/**
+ * Default Scheme1 (discrete)
+ */
 const scheme1: ColorScheme = {
   type: 'discrete',
   name: 'bluered',
@@ -14,6 +36,9 @@ const scheme1: ColorScheme = {
   positions: [0, .166, .333, .5, .666, .833, 1]
 };
 
+/**
+ * Default Scheme2 (discrete)
+ */
 const scheme2: ColorScheme = {
   type: 'discrete',
   name: 'greenred',
@@ -21,6 +46,9 @@ const scheme2: ColorScheme = {
   positions: [0, .166, .333, .5, .666, .833, 1]
 };
 
+/**
+ * Default Scheme3 (discrete)
+ */
 const scheme3: ColorScheme = {
   type: 'discrete',
   name: 'purplebrown',
@@ -28,6 +56,9 @@ const scheme3: ColorScheme = {
   positions: [0, .166, .333, .5, .666, .833, 1]
 };
 
+/**
+ * Default Scheme4 (discrete)
+ */
 const scheme4: ColorScheme = {
   type: 'discrete',
   name: 'redtan',
@@ -35,6 +66,9 @@ const scheme4: ColorScheme = {
   positions: [0, .166, .333, .5, .666, .833, 1]
 };
 
+/**
+ * Default Scheme5 (discrete)
+ */
 const scheme5: ColorScheme = {
   type: 'discrete',
   name: 'purplelightblue',
@@ -42,30 +76,45 @@ const scheme5: ColorScheme = {
   positions: [0, .166, .333, .5, .666, .833, 1]
 };
 
+/**
+ * Default Scheme6 (gradient)
+ */
 const scheme6: ColorScheme = {
   type: 'gradient',
   name: 'viridis',
-  colors: ['viridis'],
+  colors: [undefined],
   positions: [0, .5, 1]
 };
 
+/**
+ * Default Scheme7 (gradient)
+ */
 const scheme7: ColorScheme = {
   type: 'gradient',
   name: 'magma',
-  colors: ['magma'],
+  colors: [undefined],
   positions: [0, .5, 1]
 };
 
+/**
+ * Default Scheme8 (gradient)
+ */
 const scheme8: ColorScheme = {
   type: 'gradient',
   name: 'plasma',
-  colors: ['plasma'],
+  colors: [undefined],
   positions: [0, .5, 1]
 };
 
+/**
+ * Default scheme options
+ */
 const DEFAULT_COLOR_SCHEMES =
-[scheme1, scheme2, scheme3, scheme4, scheme5, scheme6, scheme7, scheme8];
+  [scheme1, scheme2, scheme3, scheme4, scheme5, scheme6, scheme7, scheme8];
 
+/**
+ * Component for the scheme selector popup
+ */
 @Component({
   selector: 'ccf-color-scheme-popup',
   templateUrl: './color-scheme-popup.component.html',
@@ -73,19 +122,61 @@ const DEFAULT_COLOR_SCHEMES =
 })
 export class ColorSchemePopupComponent {
 
+  /**
+   * Controls visibility of the popup
+   */
   popupVisible = false;
 
+  /**
+   * Current color scheme selected (default is scheme1)
+   */
   colorScheme: ColorScheme = scheme1;
+
+  /**
+   * Schemes available to choose from
+   */
   schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
+
+  /**
+   * Current color selected (undefined for gradients)
+   */
   color: string | undefined;
+
+  /**
+   * Brightness of selected scheme
+   */
   brightness: number[] = [0, 100];
+
+  /**
+   * Transparency of selected scheme
+   */
   transparency = 0;
 
+  /**
+   * Emitted when there is a color scheme change
+   */
   @Output() colorSchemeChange = new EventEmitter<ColorScheme>();
+
+  /**
+   * Emitted when the selected color changes
+   */
   @Output() colorChange = new EventEmitter<string | undefined>();
+
+  /**
+   * Emitted when the brightness selection changes
+   */
   @Output() brightnessChange = new EventEmitter<number[]>();
+
+  /**
+   * Emitted when the transparency value changes
+   */
   @Output() transparencyChange = new EventEmitter<number>();
 
+  /**
+   * Listens to document click event
+   * Closes the popup only if user clicks outside the popup
+   * @param target The element on which the event was fired
+   */
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
   close(target: HTMLElement): void {
     const popupElement = document.getElementById('scheme-contents');
@@ -100,28 +191,47 @@ export class ColorSchemePopupComponent {
     this.popupVisible = false;
   }
 
+  /**
+   * Opens popup
+   */
   open(): void {
     this.popupVisible = true;
   }
 
+  /**
+   * Updates current color scheme and emits the new color scheme
+   * @param scheme = the new selected scheme
+   */
   updateScheme(scheme: ColorScheme) {
     this.colorScheme = scheme;
     this.colorSchemeChange.emit(scheme);
     console.log('colorScheme', this.colorScheme);
   }
 
-  updateColor(color: string) {
+  /**
+   * Updates current selected color and emits the new color
+   * @param color = the new selected color
+   */
+  updateColor(color: string | undefined) {
     this.color = color;
     this.colorChange.emit(color);
     console.log('color', this.color);
   }
 
+  /**
+   * Updates brightness selection and emits the new brightness selection
+   * @param brightness = the new brightness selection
+   */
   updateBrightness(brightness: number[]) {
     this.brightness = brightness;
     this.brightnessChange.emit(brightness);
     console.log('brightness', this.brightness);
   }
 
+  /**
+   * Updates transparency and emits the new transparency value
+   * @param transparency = the new transparency value
+   */
   updateTransparency(transparency: number) {
     this.transparency = transparency;
     this.transparencyChange.emit(transparency);
