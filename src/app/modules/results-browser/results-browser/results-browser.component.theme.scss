@@ -1,0 +1,19 @@
+@use '~@angular/material/theming'as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $background: map-get($theme, background);
+
+  #title {
+    color: mat-color($primary, text);
+  }
+
+  .scroll-gradient {
+    background: linear-gradient(
+      0deg,
+      mat-color($background, dialog) 0%,
+      mat-color($background, dialog) 15%,
+      mat-color($background, dialog, 0) 100%
+    );
+  }
+}
