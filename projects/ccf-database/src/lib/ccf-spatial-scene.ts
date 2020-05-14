@@ -11,6 +11,7 @@ export interface SpatialSceneNode {
   '@id': string;
   type: 'SpatialSceneNode';
   unpickable?: boolean;
+  wireframe?: boolean;
   _lighting?: string;
   scenegraph?: string;
   color?: [number, number, number, number];
@@ -43,14 +44,15 @@ export class CCFSpatialScene {
     const wholeBody = getSpatialEntity(this.db.store, ccf.spatial.Body.id);
     const body = this.getReferenceBody(filter);
     const organs = getSpatialEntity(this.db.store, ccf.spatial.FemaleOrgans.id);
+    const store = this.db.store;
     return [
       this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
       this.getSceneNode(organs, wholeBody, {_lighting: 'pbr', color: [255, 0, 0, 0.8*255]}),
-      this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHRightKidney').id), wholeBody, {color: [255, 0, 0, 0.5*255]}),
-      this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHLeftKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255]}),
-      this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHSpleenCC1').id), wholeBody, {color: [0, 255, 0, 0.5*255]}),
-      this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHSpleenCC2').id), wholeBody, {color: [0, 255, 0, 0.5*255]}),
-      this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHSpleenCC3').id), wholeBody, {color: [0, 255, 0, 0.5*255]})
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), wholeBody, {color: [255, 0, 0, 0.5*255], wireframe: true}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC1').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC2').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC3').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true})
     ].filter(s => s !== undefined) as SpatialSceneNode[];
   }
 

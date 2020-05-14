@@ -14,6 +14,7 @@ registerLoaders([DracoWorkerLoader, GLTFLoader]);
 
 export class BodyUIData {
   unpickable?: boolean;
+  wireframe?: boolean;
   _lighting?: string;
   scenegraph?: string;
   color?: [number, number, number, number];
@@ -26,27 +27,37 @@ function loadGLTF(model: BodyUIData): Promise<unknown> {
   return load(model.scenegraph, GLTFLoader, {DracoLoader, decompress: true, postProcess: true}) as Promise<unknown>;
 }
 
+function meshLayer(data: BodyUIData[], options: {[key: string]: unknown}): unknown {
+  return new SimpleMeshLayer({
+    ...{
+      id: 'test-cubes1',
+      pickable: true,
+      autoHighlight: true,
+      highlightColor: [30, 136, 229, 0.5*255],
+      coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
+      data,
+      // tslint:disable-next-line: no-unsafe-any
+      mesh: new CubeGeometry(),
+      wireframe: false,
+      getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
+      getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
+    },
+    ...options
+  });
+}
+
 export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
   renderLayers() {
     // tslint:disable-next-line: no-unsafe-any
     const data = (this.state.data || this.props.data) as BodyUIData[];
-    return data.length === 0 ? [] : [
-      new SimpleMeshLayer({
-        ...{
-          id: 'test-cubes1',
-          pickable: true,
-          autoHighlight: true,
-          highlightColor: [30, 136, 229, 0.5*255],
-          coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-          data: data.filter((d) => !d.scenegraph),
-          // tslint:disable-next-line: no-unsafe-any
-          mesh: new CubeGeometry(),
-          wireframe: false,
-          getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
-          getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
-        }
-      }),
-      data.filter(d => !!d.scenegraph).map((model, i) =>
+    const cubes = data.filter(d => !d.scenegraph && !d.wireframe);
+    const wireframes = data.filter(d => !d.scenegraph && d.wireframe);
+    const models = data.filter(d => !!d.scenegraph);
+
+    return [
+      cubes.length ? meshLayer(cubes, {wireframe: false}) : undefined,
+      wireframes.length ? meshLayer(wireframes, {wireframe: true}) : undefined,
+      ...models.map((model, i) =>
         new ScenegraphLayer({
           ...{
             id: 'test-models-' + i,
@@ -60,7 +71,7 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
           }
         })
       )
-    ];
+    ].filter(l => !!l);
   }
 
   onClick(info: {object: {tooltip: string}}) {
