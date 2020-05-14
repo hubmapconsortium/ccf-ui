@@ -1,4 +1,4 @@
-import { BodyUILayer } from './body-ui-layer';
+import { BodyUILayer, BodyUIData } from './body-ui-layer';
 import { Deck, OrbitView } from '@deck.gl/core';
 
 export interface BodyUIProps {
@@ -12,24 +12,26 @@ export interface BodyUIProps {
  */
 export class BodyUI {
   deck: Deck;
+  bodyUILayer: BodyUILayer;
 
   constructor(deckProps: Partial<BodyUIProps>) {
+    this.bodyUILayer = new BodyUILayer({data: []});
     let cursor: string | undefined;
     const props = {
       ...deckProps,
       initialViewState: {
-        target: [0, 5, 0],
+        target: [0.5, 0.5, 0],
         orbitAxis: 'Y',
         rotationX: 0,
         minRotationX: -15,
         maxRotationX: 15,
         rotationOrbit: 0,
-        zoom: 5
+        zoom: 8
       },
       views: [new OrbitView({})],
       controller: true,
       layers: [
-        new BodyUILayer({})
+        this.bodyUILayer
       ],
       onHover: (e: {picked: boolean}) => {
         cursor = e.picked ? 'pointer' : undefined;
@@ -38,5 +40,9 @@ export class BodyUI {
     };
     // tslint:disable-next-line: no-any
     this.deck = new Deck(props as any);
+  }
+
+  setScene(data: BodyUIData[]) {
+    this.bodyUILayer.setState({data});
   }
 }
