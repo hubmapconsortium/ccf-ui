@@ -15,29 +15,30 @@
   }
 
   .data-container {
-    color: #FAFAFA;
+    color: #fafafa;
     display: flex;
     justify-content: center;
-    font-size: .75rem;
+    font-size: 0.75rem;
     .data-values {
       width: 12rem;
     }
 
-    .data-labels, .data-values {
+    .data-labels,
+    .data-values {
       display: flex;
       flex-direction: column;
 
-      
-      .label, .value {
+      .label,
+      .value {
         height: 1rem;
       }
-      
+
       .label {
         display: flex;
         justify-content: flex-end;
         margin-right: 1rem;
       }
-      
+
       .value div {
         white-space: nowrap;
         overflow: hidden;

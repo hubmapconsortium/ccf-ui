@@ -4,11 +4,11 @@ import { Component, Input } from '@angular/core';
  * Expandable accordion panel for the image viewer
  */
 @Component({
-  selector: 'ccf-accordion',
-  templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss']
+  selector: 'ccf-image-viewer-accordion',
+  templateUrl: './image-viewer-accordion.component.html',
+  styleUrls: ['./image-viewer-accordion.component.scss']
 })
-export class AccordionComponent {
+export class ImageViewerAccordionComponent {
 
   /**
    * Metadata of image to be displayed in the About panel
