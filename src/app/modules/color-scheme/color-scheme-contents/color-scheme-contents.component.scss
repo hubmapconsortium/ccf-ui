@@ -12,6 +12,144 @@
     flex-direction: column;
     align-items: center;
 
+    :nth-child(1) {
+      :nth-child(1) {
+        background-color: #2166AC;
+      }
+      :nth-child(2) {
+        background-color: #67A9CF;
+      }
+      :nth-child(3) {
+        background-color: #D1E5F0;
+      }
+      :nth-child(4) {
+        background-color: #F7F7F7;
+      }
+      :nth-child(5) {
+        background-color: #FDDBC7;
+      }
+      :nth-child(6) {
+        background-color: #EF8A62;
+      }
+      :nth-child(7) {
+        background-color: #B2182B;
+      }
+    }
+
+    :nth-child(2) {
+      :nth-child(1) {
+        background-color: #1A9850;
+      }
+      :nth-child(2) {
+        background-color: #91CF60;
+      }
+      :nth-child(3) {
+        background-color: #D9EF8B;
+      }
+      :nth-child(4) {
+        background-color: #FFFFBF;
+      }
+      :nth-child(5) {
+        background-color: #FEE08B;
+      }
+      :nth-child(6) {
+        background-color: #FC8D59;
+      }
+      :nth-child(7) {
+        background-color: #D73027;
+      }
+    }
+
+    :nth-child(3) {
+      :nth-child(1) {
+        background-color: #542788;
+      }
+      :nth-child(2) {
+        background-color: #998EC3;
+      }
+      :nth-child(3) {
+        background-color: #D8DAEB;
+      }
+      :nth-child(4) {
+        background-color: #F7F7F7;
+      }
+      :nth-child(5) {
+        background-color: #FEE0B6;
+      }
+      :nth-child(6) {
+        background-color: #F1A340;
+      }
+      :nth-child(7) {
+        background-color: #B35806;
+      }
+    }
+
+    :nth-child(4) {
+      :nth-child(1) {
+        background-color: #990000;
+      }
+      :nth-child(2) {
+        background-color: #D7301F;
+      }
+      :nth-child(3) {
+        background-color: #EF6548;
+      }
+      :nth-child(4) {
+        background-color: #FC8D59;
+      }
+      :nth-child(5) {
+        background-color: #FDBB84;
+      }
+      :nth-child(6) {
+        background-color: #FDD49E;
+      }
+      :nth-child(7) {
+        background-color: #FEF0D9;
+      }
+    }
+
+    :nth-child(5) {
+      :nth-child(1) {
+        background-color: #6E016B;
+      }
+      :nth-child(2) {
+        background-color: #88419D;
+      }
+      :nth-child(3) {
+        background-color: #8C6BB1;
+      }
+      :nth-child(4) {
+        background-color: #8C96C6;
+      }
+      :nth-child(5) {
+        background-color: #9EBCDA;
+      }
+      :nth-child(6) {
+        background-color: #BFD3E6;
+      }
+      :nth-child(7) {
+        background-color: #EDF8FB;
+      }
+    }
+
+    :nth-child(6) {
+      .gradient {
+        background-image: linear-gradient(to right, #FFE31C , #21908A, #450B57);
+      }
+    }
+
+    :nth-child(7) {
+      .gradient {
+        background-image: linear-gradient(to right, #F8FC9D , #B4335A, #020202);
+      }
+    }
+
+    :nth-child(8) {
+      .gradient {
+        background-image: linear-gradient(to right, #F2F424 , #C6427E, #0C1687);
+      }
+    }
+
     .swatch {
       background-color: black;
       display: flex;
@@ -38,144 +176,6 @@
 
       &.selected {
         outline: 1px solid white;
-      }
-  
-      &.one {
-        :nth-child(1) {
-          background-color: #2166AC;
-        }
-        :nth-child(2) {
-          background-color: #67A9CF;
-        }
-        :nth-child(3) {
-          background-color: #D1E5F0;
-        }
-        :nth-child(4) {
-          background-color: #F7F7F7;
-        }
-        :nth-child(5) {
-          background-color: #FDDBC7;
-        }
-        :nth-child(6) {
-          background-color: #EF8A62;
-        }
-        :nth-child(7) {
-          background-color: #B2182B;
-        }
-      }
-  
-      &.two {
-        :nth-child(1) {
-          background-color: #1A9850;
-        }
-        :nth-child(2) {
-          background-color: #91CF60;
-        }
-        :nth-child(3) {
-          background-color: #D9EF8B;
-        }
-        :nth-child(4) {
-          background-color: #FFFFBF;
-        }
-        :nth-child(5) {
-          background-color: #FEE08B;
-        }
-        :nth-child(6) {
-          background-color: #FC8D59;
-        }
-        :nth-child(7) {
-          background-color: #D73027;
-        }
-      }
-  
-      &.three {
-        :nth-child(1) {
-          background-color: #542788;
-        }
-        :nth-child(2) {
-          background-color: #998EC3;
-        }
-        :nth-child(3) {
-          background-color: #D8DAEB;
-        }
-        :nth-child(4) {
-          background-color: #F7F7F7;
-        }
-        :nth-child(5) {
-          background-color: #FEE0B6;
-        }
-        :nth-child(6) {
-          background-color: #F1A340;
-        }
-        :nth-child(7) {
-          background-color: #B35806;
-        }
-      }
-  
-      &.four {
-        :nth-child(1) {
-          background-color: #990000;
-        }
-        :nth-child(2) {
-          background-color: #D7301F;
-        }
-        :nth-child(3) {
-          background-color: #EF6548;
-        }
-        :nth-child(4) {
-          background-color: #FC8D59;
-        }
-        :nth-child(5) {
-          background-color: #FDBB84;
-        }
-        :nth-child(6) {
-          background-color: #FDD49E;
-        }
-        :nth-child(7) {
-          background-color: #FEF0D9;
-        }
-      }
-  
-      &.five {
-        :nth-child(1) {
-          background-color: #6E016B;
-        }
-        :nth-child(2) {
-          background-color: #88419D;
-        }
-        :nth-child(3) {
-          background-color: #8C6BB1;
-        }
-        :nth-child(4) {
-          background-color: #8C96C6;
-        }
-        :nth-child(5) {
-          background-color: #9EBCDA;
-        }
-        :nth-child(6) {
-          background-color: #BFD3E6;
-        }
-        :nth-child(7) {
-          background-color: #EDF8FB;
-        }
-      }
-  
-      &.six {
-        .gradient {
-          background-image: linear-gradient(to right, #FFE31C , #21908A, #450B57);
-        }
-      }
-  
-      &.seven {
-        .gradient {
-          background-image: linear-gradient(to right, #F8FC9D , #B4335A, #020202);
-        }
-      }
-  
-      &.eight {
-        .gradient {
-          background-image: linear-gradient(to right, #F2F424 , #C6427E, #0C1687);
-        }
       }
     }
 

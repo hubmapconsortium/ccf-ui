@@ -82,7 +82,7 @@ const scheme5: ColorScheme = {
 const scheme6: ColorScheme = {
   type: 'gradient',
   name: 'viridis',
-  colors: [undefined],
+  colors: ['#FFE31C', '#21908A', '#450B57'],
   positions: [0, .5, 1]
 };
 
@@ -92,7 +92,7 @@ const scheme6: ColorScheme = {
 const scheme7: ColorScheme = {
   type: 'gradient',
   name: 'magma',
-  colors: [undefined],
+  colors: ['#F8FC9D', '#B4335A', '#020202'],
   positions: [0, .5, 1]
 };
 
@@ -102,7 +102,7 @@ const scheme7: ColorScheme = {
 const scheme8: ColorScheme = {
   type: 'gradient',
   name: 'plasma',
-  colors: [undefined],
+  colors: ['#F2F424', '#C6427E', '#0C1687'],
   positions: [0, .5, 1]
 };
 

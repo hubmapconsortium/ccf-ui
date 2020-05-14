@@ -1,58 +1,10 @@
 <div class="color-scheme-contents-container">
   <div id="scheme-contents" class="scheme-contents">
-    <div class="swatch one" (click)="schemeChanged(0)">
-      <div class="square" (click)="colorChanged([0, 0])" [class.currentcolor]="colorSelectedStatus[0][0]"></div>
-      <div class="square" (click)="colorChanged([0, 1])" [class.currentcolor]="colorSelectedStatus[0][1]"></div>
-      <div class="square" (click)="colorChanged([0, 2])" [class.currentcolor]="colorSelectedStatus[0][2]"></div>
-      <div class="square" (click)="colorChanged([0, 3])" [class.currentcolor]="colorSelectedStatus[0][3]"></div>
-      <div class="square" (click)="colorChanged([0, 4])" [class.currentcolor]="colorSelectedStatus[0][4]"></div>
-      <div class="square" (click)="colorChanged([0, 5])" [class.currentcolor]="colorSelectedStatus[0][5]"></div>
-      <div class="square" (click)="colorChanged([0, 6])" [class.currentcolor]="colorSelectedStatus[0][6]"></div>
+    <div *ngFor="let i of [0,1,2,3,4]" class="swatch" (click)="schemeChanged(i)">
+      <div *ngFor="let j of [0,1,2,3,4,5,6]" class="square" (click)="colorChanged([i, j])" [class.currentcolor]="colorSelectedStatus[i][j]"></div>
     </div>
-    <div class="swatch two" (click)="schemeChanged(1)">
-      <div class="square" (click)="colorChanged([1, 0])" [class.currentcolor]="colorSelectedStatus[1][0]"></div>
-      <div class="square" (click)="colorChanged([1, 1])" [class.currentcolor]="colorSelectedStatus[1][1]"></div>
-      <div class="square" (click)="colorChanged([1, 2])" [class.currentcolor]="colorSelectedStatus[1][2]"></div>
-      <div class="square" (click)="colorChanged([1, 3])" [class.currentcolor]="colorSelectedStatus[1][3]"></div>
-      <div class="square" (click)="colorChanged([1, 4])" [class.currentcolor]="colorSelectedStatus[1][4]"></div>
-      <div class="square" (click)="colorChanged([1, 5])" [class.currentcolor]="colorSelectedStatus[1][5]"></div>
-      <div class="square" (click)="colorChanged([1, 6])" [class.currentcolor]="colorSelectedStatus[1][6]"></div>
-    </div>
-    <div class="swatch three" (click)="schemeChanged(2)">
-      <div class="square" (click)="colorChanged([2, 0])" [class.currentcolor]="colorSelectedStatus[2][0]"></div>
-      <div class="square" (click)="colorChanged([2, 1])" [class.currentcolor]="colorSelectedStatus[2][1]"></div>
-      <div class="square" (click)="colorChanged([2, 2])" [class.currentcolor]="colorSelectedStatus[2][2]"></div>
-      <div class="square" (click)="colorChanged([2, 3])" [class.currentcolor]="colorSelectedStatus[2][3]"></div>
-      <div class="square" (click)="colorChanged([2, 4])" [class.currentcolor]="colorSelectedStatus[2][4]"></div>
-      <div class="square" (click)="colorChanged([2, 5])" [class.currentcolor]="colorSelectedStatus[2][5]"></div>
-      <div class="square" (click)="colorChanged([2, 6])" [class.currentcolor]="colorSelectedStatus[2][6]"></div>
-    </div>
-    <div class="swatch four" (click)="schemeChanged(3)">
-      <div class="square" (click)="colorChanged([3, 0])" [class.currentcolor]="colorSelectedStatus[3][0]"></div>
-      <div class="square" (click)="colorChanged([3, 1])" [class.currentcolor]="colorSelectedStatus[3][1]"></div>
-      <div class="square" (click)="colorChanged([3, 2])" [class.currentcolor]="colorSelectedStatus[3][2]"></div>
-      <div class="square" (click)="colorChanged([3, 3])" [class.currentcolor]="colorSelectedStatus[3][3]"></div>
-      <div class="square" (click)="colorChanged([3, 4])" [class.currentcolor]="colorSelectedStatus[3][4]"></div>
-      <div class="square" (click)="colorChanged([3, 5])" [class.currentcolor]="colorSelectedStatus[3][5]"></div>
-      <div class="square" (click)="colorChanged([3, 6])" [class.currentcolor]="colorSelectedStatus[3][6]"></div>
-    </div>
-    <div class="swatch five" (click)="schemeChanged(4)">
-      <div class="square" (click)="colorChanged([4, 0])" [class.currentcolor]="colorSelectedStatus[4][0]"></div>
-      <div class="square" (click)="colorChanged([4, 1])" [class.currentcolor]="colorSelectedStatus[4][1]"></div>
-      <div class="square" (click)="colorChanged([4, 2])" [class.currentcolor]="colorSelectedStatus[4][2]"></div>
-      <div class="square" (click)="colorChanged([4, 3])" [class.currentcolor]="colorSelectedStatus[4][3]"></div>
-      <div class="square" (click)="colorChanged([4, 4])" [class.currentcolor]="colorSelectedStatus[4][4]"></div>
-      <div class="square" (click)="colorChanged([4, 5])" [class.currentcolor]="colorSelectedStatus[4][5]"></div>
-      <div class="square" (click)="colorChanged([4, 6])" [class.currentcolor]="colorSelectedStatus[4][6]"></div>
-    </div>
-    <div class="swatch six" [class.selected]="schemeSelectedStatus[5]" (click)="schemeChanged(5)">
-      <div class="gradient" (click)="colorChanged([5, 0])"></div>
-    </div>
-    <div class="swatch seven" [class.selected]="schemeSelectedStatus[6]" (click)="schemeChanged(6)">
-      <div class="gradient" (click)="colorChanged([6, 0])"></div>
-    </div>
-    <div class="swatch eight" [class.selected]="schemeSelectedStatus[7]" (click)="schemeChanged(7)">
-      <div class="gradient" (click)="colorChanged([7, 0])"></div>
+    <div *ngFor="let i of [5,6,7]" class="swatch" [class.selected]="schemeSelectedStatus[i]" (click)="schemeChanged(i)">
+      <div class="gradient" (click)="colorChanged([i, 0])"></div>
     </div>
     <div class="brightness-slider-label">Brightness</div>
     <ng5-slider class="slider" [options]="options" [(value)]="brightness[0]" [(highValue)]="brightness[1]"
