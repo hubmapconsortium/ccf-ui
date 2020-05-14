@@ -5,7 +5,6 @@ import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
 import { GLTFLoader } from '@loaders.gl/gltf';
 import { CubeGeometry } from '@luma.gl/core';
 import { Matrix4 } from '@math.gl/core';
-import { SimpleMesh } from '@deck.gl/mesh-layers/simple-mesh-layer/simple-mesh-layer';
 
 
 // Programmers Note: had to disable tslint in a few places due to deficient typings.
@@ -22,29 +21,10 @@ export class BodyUIData {
   tooltip: string;
 }
 
-export class BodyUILayerProps {
-
+function loadGLTF(model: BodyUIData): Promise<unknown> {
+  // tslint:disable-next-line: no-unsafe-any
+  return load(model.scenegraph, GLTFLoader, {DracoLoader, decompress: true, postProcess: true}) as Promise<unknown>;
 }
-
-export const bodyUIDefaultProps: BodyUILayerProps = {
-
-};
-
-// tslint:disable-next-line: no-any
-class CachedGLTFLoader<T = any> {
-  private urlToLoader: {[url: string]: {url: string}} = {};
-  private loaderToScenegraph: WeakMap<{url: string}, Promise<T>> = new WeakMap();
-
-  load(url: string): Promise<T> {
-    const urlObj = this.urlToLoader[url] = this.urlToLoader[url] || {url};
-    if (!this.loaderToScenegraph.has(urlObj)) {
-      // tslint:disable-next-line: no-unsafe-any
-      this.loaderToScenegraph.set(urlObj, load(url, GLTFLoader, {DracoLoader, decompress: true, postProcess: true}));
-    }
-    return this.loaderToScenegraph.get(urlObj) as Promise<T>;
-  }
-}
-const gltfLoader = new CachedGLTFLoader();
 
 export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
   renderLayers() {
@@ -59,7 +39,8 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
           highlightColor: [30, 136, 229, 0.5*255],
           coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
           data: data.filter((d) => !d.scenegraph),
-          mesh: new (CubeGeometry as new () => SimpleMesh)(),
+          // tslint:disable-next-line: no-unsafe-any
+          mesh: new CubeGeometry(),
           wireframe: false,
           getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
           getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
@@ -72,7 +53,7 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
             pickable: !model.unpickable,
             coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
             data: [model],
-            scenegraph: gltfLoader.load(model.scenegraph as string),
+            scenegraph: loadGLTF(model),
             _lighting: model._lighting,  // 'pbr' | undefined
             getTransformMatrix: model.transformMatrix,
             getColor: model.color || [0, 255, 0, 0.5*255],
@@ -93,4 +74,3 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
 
 // Some Deck.gl things to set (which look ugly, but is required)
 ((BodyUILayer as unknown) as {layerName: string}).layerName = 'BodyUILayer';
-((BodyUILayer as unknown) as {defaultProps: BodyUILayerProps}).defaultProps = bodyUIDefaultProps;

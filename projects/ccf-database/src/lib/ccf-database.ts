@@ -150,6 +150,7 @@ export class CCFDatabase implements DataSource {
    * @returns A list of Spatial Scene Nodes for the 3D Scene
    */
   async getScene(filter?: Filter): Promise<SpatialSceneNode[]> {
+    this.graph.createGraph();
     return this.scene.getScene(filter);
   }
 }

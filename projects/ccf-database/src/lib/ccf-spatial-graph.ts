@@ -12,7 +12,20 @@ import { getSpatialEntity, getSpatialObjectReference, getSpatialPlacement } from
 
 export function applySpatialPlacement(tx: Matrix4, placement: SpatialPlacement): Matrix4 {
   const p = placement;
-  const T = [p.x_translation, p.y_translation, p.z_translation];
+  let factor: number;
+  switch (p.translation_units) {
+    case 'centimeter':
+      factor = 1 / 100;
+      break;
+    case 'millimeter':
+      factor = 1 / 1000;
+      break;
+    case 'meter':
+    default:
+      factor = 1;
+      break;
+  }
+  const T = [p.x_translation, p.y_translation, p.z_translation].map(t => t * factor);
   const R_RAD = [p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians);
   // tslint:disable-next-line: no-unsafe-any
   const R = toEuler(fromEuler(R_RAD[1], R_RAD[0], R_RAD[2], 'XYZ').toVector()) as number[];
@@ -77,17 +90,6 @@ export class CCFSpatialGraph {
         }
         target = source;
       }
-
-      const nodeType = this.graph.getNodeAttribute(sourceIRI, 'type') as string;
-      if (nodeType === 'SpatialEntity') {
-        const e = this.graph.getNodeAttribute(sourceIRI, 'object') as SpatialEntity;
-        if (!e.object) {
-          // Scale visible bounding boxes to the desired dimensions
-          const scale = [e.x_dimension, e.y_dimension, e.z_dimension];
-          tx.scale(scale);
-        }
-      }
-
       return tx;
     } else {
       return undefined;

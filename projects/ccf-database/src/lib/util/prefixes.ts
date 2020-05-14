@@ -64,7 +64,7 @@ export const ccf = {
     x_dimension: ccfx('has_x_dimension'),
     y_dimension: ccfx('has_y_dimension'),
     z_dimension: ccfx('has_z_dimension'),
-    dimension_Units: ccfx('has_dimension_units'),
+    dimension_units: ccfx('has_dimension_units'),
     object: ccfx('has_object_reference')
   },
   spatialPlacement: {

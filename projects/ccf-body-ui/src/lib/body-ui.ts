@@ -20,13 +20,13 @@ export class BodyUI {
     const props = {
       ...deckProps,
       initialViewState: {
-        target: [0, 5, 0],
+        target: [0.5, 0.5, 0],
         orbitAxis: 'Y',
         rotationX: 0,
         minRotationX: -15,
         maxRotationX: 15,
         rotationOrbit: 0,
-        zoom: 5
+        zoom: 8
       },
       views: [new OrbitView({})],
       controller: true,
