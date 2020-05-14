@@ -56,7 +56,7 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
 
     return [
       cubes.length ? meshLayer(cubes, {wireframe: false}) : undefined,
-      wireframes.length ? meshLayer(wireframes, {wireframe: true}) : undefined,
+      wireframes.length ? meshLayer(wireframes, {wireframe: true, pickable: false}) : undefined,
       ...models.map((model, i) =>
         new ScenegraphLayer({
           ...{
