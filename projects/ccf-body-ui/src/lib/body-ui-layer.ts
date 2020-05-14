@@ -27,10 +27,10 @@ function loadGLTF(model: BodyUIData): Promise<unknown> {
   return load(model.scenegraph, GLTFLoader, {DracoLoader, decompress: true, postProcess: true}) as Promise<unknown>;
 }
 
-function meshLayer(data: BodyUIData[], options: {[key: string]: unknown}): unknown {
+function meshLayer(id: string, data: BodyUIData[], options: {[key: string]: unknown}): unknown {
   return new SimpleMeshLayer({
     ...{
-      id: 'test-cubes1',
+      id,
       pickable: true,
       autoHighlight: true,
       highlightColor: [30, 136, 229, 0.5*255],
@@ -55,12 +55,12 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
     const models = data.filter(d => !!d.scenegraph);
 
     return [
-      cubes.length ? meshLayer(cubes, {wireframe: false}) : undefined,
-      wireframes.length ? meshLayer(wireframes, {wireframe: true, pickable: false}) : undefined,
+      cubes.length ? meshLayer('cubes', cubes, {wireframe: false}) : undefined,
+      wireframes.length ? meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}) : undefined,
       ...models.map((model, i) =>
         new ScenegraphLayer({
           ...{
-            id: 'test-models-' + i,
+            id: 'models-' + i,
             pickable: !model.unpickable,
             coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
             data: [model],
