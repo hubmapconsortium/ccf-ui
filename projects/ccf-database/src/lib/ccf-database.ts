@@ -1,5 +1,5 @@
 import { CCFSpatialGraph } from './ccf-spatial-graph';
-import { addRdfXmlToStore, DataFactory, N3Store, Quad, Store } from 'triple-store-utils';
+import { addRdfXmlToStore, DataFactory, N3Store, Quad, Store, addN3ToStore } from 'triple-store-utils';
 import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
@@ -63,7 +63,12 @@ export class CCFDatabase implements DataSource {
     }
     if (this.store.size === 0) {
       const ops: Promise<unknown>[] = [];
-      ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
+      const ccfOwlUrl = this.options.ccfOwlUrl;
+      if (ccfOwlUrl.endsWith('.n3')) {
+        ops.push(addN3ToStore(this.options.ccfOwlUrl, this.store));
+      } else {
+        ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
+      }
       if (this.options.hubmapDataUrl) {
         ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService));
       }

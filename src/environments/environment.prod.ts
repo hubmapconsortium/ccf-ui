@@ -12,7 +12,7 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0001052' // Rectum
   ],
   dbOptions: {
-    ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl',
+    ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl.n3',
     ccfContextUrl: 'https://purl.org/ccf/latest/ccf-context.jsonld',
     hubmapDataService: 'static',
     hubmapDataUrl: ''
