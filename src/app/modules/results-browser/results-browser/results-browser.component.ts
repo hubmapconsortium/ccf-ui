@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter, ViewChild, AfterViewInit, SimpleChange, SimpleChanges, OnChanges } from '@angular/core';
-import { ListResult, AggregateResult } from 'ccf-database';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { AggregateResult, ListResult } from 'ccf-database';
 
 
 /**

@@ -7,13 +7,12 @@ import { ResultsBrowserModule } from './results-browser.module';
 import { SimpleChanges, SimpleChange } from '@angular/core';
 
 function createChangeObject(previousValue: unknown, currentValue: unknown): SimpleChange {
-  const testChange: SimpleChange ={
+  return {
     currentValue,
     firstChange: true,
     previousValue,
     isFirstChange: () => { return true; }
   };
-  return testChange;
 }
 
 function timeout(duration = 0): Promise<void> {
