@@ -2,7 +2,8 @@ import { JsonLd } from 'jsonld/jsonld-spec';
 import { get, toNumber } from 'lodash';
 import { addJsonLdToStore, N3Store } from 'triple-store-utils';
 
-import { convertOldRuiToJsonLd, OldRuiData, fixOldRuiData } from './old-rui-utils';
+import { convertOldRuiToJsonLd, OldRuiData } from './old-rui-utils';
+import { applyPatches } from './patches';
 import { rui } from './prefixes';
 
 
@@ -47,13 +48,13 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
  * @returns The converted data.
  */
 export function hubmapResponseAsJsonLd(data: object): JsonLd {
-  const entries = get(data, 'hits.hits', []) as object[];
-  const graph = entries
-    // .filter((e: {_source: {rui_location: unknown}}) => !!e._source?.rui_location)
-    // .map((e: {_source: unknown}) => { console.log(e._source); return e; })
-    .map(e =>
-      hubmapEntityAsJsonLd(get(e, '_source', {}) as { [key: string]: unknown })
-    );
+  const entries = (get(data, 'hits.hits', []) as {[key: string]: unknown}[])
+    .map(e => get(e, '_source', {}) as { [key: string]: unknown });
+
+  const graph = applyPatches(entries)
+    .filter((e: {rui_location: unknown}) => !!e.rui_location)
+    // .map(e => { console.log(e); return e; })
+    .map(e => hubmapEntityAsJsonLd(e));
 
   return {
     '@context': {
@@ -95,41 +96,9 @@ export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd
   const ontologyTerms = HBM_ORGANS[(entity.organ || get(entity, 'origin_sample.organ', undefined)) as string] || [RUI_ORGANS.body];
   const protocolUrl = get(entity, 'portal_uploaded_protocol_files[0].protocol_url', undefined) as string;
   let spatialEntity: JsonLd | undefined;
-  let ruiLocation = (entity.rui_location || get(entity, 'origin_sample.rui_location', undefined)) as OldRuiData;
+  const ruiLocation = (entity.rui_location || get(entity, 'origin_sample.rui_location', undefined)) as OldRuiData;
   if (ruiLocation) {
-    let organRef = ontologyTerms.slice(-1)[0];
-    ruiLocation = fixOldRuiData(ruiLocation);
-    if (organRef === RUI_ORGANS.spleen || groupName === 'TMC-Florida') {
-      const sample = entity.lab_tissue_sample_id as string || '';
-      if (sample.match(/CC1|CC\-1/)) {
-        organRef = 'http://purl.org/ccf/latest/ccf.owl#VHSpleenCC1';
-        ruiLocation.tissue_position_mass_point = {
-          x: 59.9 / 2 + ruiLocation.tissue_position_mass_point.x,
-          y: 40.7 - 60,
-          z: 9.04 / 2 * 0
-        };
-        ruiLocation.tissue_object_size.x = 10;
-      } else if (sample.match(/CC2|CC\-2/)) {
-        organRef = 'http://purl.org/ccf/latest/ccf.owl#VHSpleenCC2';
-        ruiLocation.tissue_position_mass_point = {
-          x: 63 / 2 + ruiLocation.tissue_position_mass_point.x,
-          y: 40.1 - 60,
-          z: 8.89 / 2 * 0
-        };
-        ruiLocation.tissue_object_size.x = 10;
-      } else if (sample.match(/CC3|CC\-3/)) {
-        organRef = 'http://purl.org/ccf/latest/ccf.owl#VHSpleenCC3';
-        ruiLocation.tissue_position_mass_point = {
-          x: 58.7 / 2 + ruiLocation.tissue_position_mass_point.x,
-          y: 43.4 - 60,
-          z: 9.54 / 2 * 0
-        };
-        ruiLocation.tissue_object_size.x = 10;
-      } else {
-        organRef = 'http://purl.org/ccf/latest/ccf.owl#VHSpleen';
-      }
-    }
-    spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + label, organRef);
+    spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + label);
   } else {
     spatialEntity = undefined;
   }

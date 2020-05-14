@@ -1,4 +1,5 @@
 import { Matrix4, toRadians } from '@math.gl/core';
+
 import { CCFDatabase } from './ccf-database';
 import { Filter } from './interfaces';
 import { getSpatialEntity } from './queries/spatial-result-n3';
@@ -45,6 +46,8 @@ export class CCFSpatialScene {
     return [
       this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
       this.getSceneNode(organs, wholeBody, {_lighting: 'pbr', color: [255, 0, 0, 0.8*255]}),
+      this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHRightKidney').id), wholeBody, {color: [255, 0, 0, 0.5*255]}),
+      this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHLeftKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255]}),
       this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHSpleenCC1').id), wholeBody, {color: [0, 255, 0, 0.5*255]}),
       this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHSpleenCC2').id), wholeBody, {color: [0, 255, 0, 0.5*255]}),
       this.getSceneNode(getSpatialEntity(this.db.store, ccf.x('VHSpleenCC3').id), wholeBody, {color: [0, 255, 0, 0.5*255]})
