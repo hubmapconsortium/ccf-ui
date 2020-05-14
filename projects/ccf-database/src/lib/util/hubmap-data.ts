@@ -52,7 +52,7 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
     .map(e => get(e, '_source', {}) as { [key: string]: unknown });
 
   const graph = applyPatches(entries)
-    .filter((e: {rui_location: unknown}) => !!e.rui_location)
+    // .filter((e: {rui_location: unknown}) => !!e.rui_location)
     // .map(e => { console.log(e); return e; })
     .map(e => hubmapEntityAsJsonLd(e));
 
