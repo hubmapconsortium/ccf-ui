@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import { toRDF } from 'jsonld';
 import { JsonLd, Url } from 'jsonld/jsonld-spec';
-import { DataFactory } from 'n3';
+import { DataFactory, Parser } from 'n3';
 import * as RDF from 'rdf-js';
 import { RdfXmlParser } from 'rdfxml-streaming-parser';
 import { Readable } from 'readable-stream';
@@ -88,4 +88,28 @@ export async function addRdfXmlToStore(
   xmlParser.write(xmlData);
   xmlParser.end();
   return result;
+}
+
+/**
+ * Adds data from an n3 file to the store.
+ * Accepts either a n3-formatted string or an uri to load data from.
+ *
+ * @param uri A data uri or an n3-formatted string.
+ * @param store The store to add data to.
+ * @returns A promise that resolves when the data has been added.
+ */
+export async function addN3ToStore(
+  uri: string | Url, store: RDF.Sink<EventEmitter, EventEmitter>
+): Promise<RDF.Sink<EventEmitter, EventEmitter>> {
+  let data: string;
+  if (typeof uri === 'string' && uri?.startsWith('http')) {
+    const response = await fetch(uri, { redirect: 'follow' });
+    data = await response.text();
+  } else {
+    data = uri;
+  }
+
+  const quads = new Parser({format: 'n3'}).parse(data);
+  store.import(arrayToStream(quads));
+  return store;
 }

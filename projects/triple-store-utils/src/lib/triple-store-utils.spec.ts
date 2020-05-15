@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 import { Sink } from 'rdf-js';
 import { Readable } from 'readable-stream';
 
-import { addJsonLdToStore, addRdfXmlToStore, arrayToStream, streamToArray } from './triple-store-utils';
+import { addJsonLdToStore, addRdfXmlToStore, arrayToStream, streamToArray, addN3ToStore } from './triple-store-utils';
 
 
 type Store = Sink<EventEmitter, EventEmitter>;
@@ -178,6 +178,52 @@ describe('triple-store-utils', () => {
     it('fetches data from the uri', () => {
       expect(fetchSpy).toHaveBeenCalledWith(uri, jasmine.anything());
       expect(responseSpy.text).toHaveBeenCalled();
+    });
+
+    it('adds data to the store', () => {
+      expect(storeSpy.import).toHaveBeenCalled();
+    });
+  });
+
+  describe('addN3ToStore(uri, store)', () => {
+    const uri = 'http://test-uri';
+    let fetchSpy: jasmine.Spy<typeof fetch>;
+    let responseSpy: jasmine.SpyObj<Response>;
+    let storeSpy: jasmine.SpyObj<Store>;
+
+    beforeEach(async () => {
+      fetchSpy = spyOn(getGlobalThis(), 'fetch');
+      responseSpy = jasmine.createSpyObj<Response>('Response', ['text']);
+      storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
+
+      fetchSpy.and.resolveTo(responseSpy);
+      responseSpy.text.and.resolveTo('');
+
+      await addN3ToStore(uri, storeSpy);
+    });
+
+    it('fetches data from the uri', () => {
+      expect(fetchSpy).toHaveBeenCalledWith(uri, jasmine.anything());
+      expect(responseSpy.text).toHaveBeenCalled();
+    });
+
+    it('adds data to the store', () => {
+      expect(storeSpy.import).toHaveBeenCalled();
+    });
+  });
+
+  describe('addN3ToStore(text, store)', () => {
+    let storeSpy: jasmine.SpyObj<Store>;
+
+    beforeEach(async () => {
+      storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
+
+      await addN3ToStore(`
+        PREFIX c: <http://example.org/cartoons#>
+        c:Tom a c:Cat.
+        c:Jerry a c:Mouse;
+                c:smarterThan c:Tom.
+      `, storeSpy);
     });
 
     it('adds data to the store', () => {
