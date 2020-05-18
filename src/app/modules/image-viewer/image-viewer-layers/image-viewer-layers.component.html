@@ -1,1 +1,10 @@
-<p>image-viewer-layers works!</p>
+<p>Pallete Selector Here</p>
+
+<div class="layers-container">
+    <div class="layer" *ngFor="let layer of layers">
+        <mat-checkbox [checked]="layer.selected" (change)="checkboxOnChange($event, layer)">
+            {{ layer.label }}
+        </mat-checkbox>
+        <div class="color-selector-placeholder" [style.background-color]="layer.color" [class.hidden]="!layer.selected"></div>
+    </div>
+</div>
