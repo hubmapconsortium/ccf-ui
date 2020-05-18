@@ -1,2 +1,5 @@
-<div *ngFor="let j of colorIndex" class="{{colorScheme.type}}" (click)="colorChanged([schemeIndex, j])" [class.currentcolor]="colorSelectedStatus[schemeIndex][j]">
+<div *ngFor="let j of colorIndex" class="{{colorScheme.type}}" (click)="colorChanged([schemeIndex, j])" 
+  [class.currentcolor]="colorSelectedStatus[schemeIndex][j]" 
+  [style.background-color]="colorScheme.type === 'discrete' ? getColor(j) : 'none'"
+  [style.background-image]="gradientstyle">
 </div>

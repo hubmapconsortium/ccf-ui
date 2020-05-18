@@ -205,7 +205,6 @@ export class ColorSchemePopupComponent {
   updateScheme(scheme: ColorScheme) {
     this.colorScheme = scheme;
     this.colorSchemeChange.emit(scheme);
-    console.log('colorScheme', this.colorScheme);
   }
 
   /**
@@ -215,7 +214,6 @@ export class ColorSchemePopupComponent {
   updateColor(color: string | undefined) {
     this.color = color;
     this.colorChange.emit(color);
-    console.log('color', this.color);
   }
 
   /**
@@ -225,7 +223,6 @@ export class ColorSchemePopupComponent {
   updateBrightness(brightness: number[]) {
     this.brightness = brightness;
     this.brightnessChange.emit(brightness);
-    console.log('brightness', this.brightness);
   }
 
   /**
@@ -235,6 +232,5 @@ export class ColorSchemePopupComponent {
   updateTransparency(transparency: number) {
     this.transparency = transparency;
     this.transparencyChange.emit(transparency);
-    console.log('transparency', this.transparency);
   }
 }

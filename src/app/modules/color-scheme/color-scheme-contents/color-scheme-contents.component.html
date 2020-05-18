@@ -1,12 +1,5 @@
 <div class="color-scheme-contents-container">
   <div id="scheme-contents" class="scheme-contents">
-    <!-- <div *ngFor="let i of [0,1,2,3,4]" class="swatch" (click)="schemeChanged(i)">
-      <div *ngFor="let j of [0,1,2,3,4,5,6]" class="discrete" (click)="colorChanged([i, j])" [class.currentcolor]="colorSelectedStatus[i][j]"></div>
-    </div>
-    <div *ngFor="let i of [5,6,7]" class="swatch" [class.selected]="schemeSelectedStatus[i]" (click)="schemeChanged(i)">
-      <div class="gradient" (click)="colorChanged([i, 0])"></div>
-    </div> -->
-
     <ccf-color-bar #colorbar *ngFor="let i of [0,1,2,3,4,5,6,7]" class="swatch" 
       [class.selected]="schemeSelectedStatus[i]" [class.highlighted]="gradientHighlight(i)"
       [colorScheme]="schemeOptions[i]" [schemeOptions]="schemeOptions" [schemeIndex]="i"
