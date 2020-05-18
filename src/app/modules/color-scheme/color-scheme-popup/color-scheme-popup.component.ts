@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output, Input } from '@angular/core';
 
 /**
  * Color scheme to be used in visualizing layers of the image
@@ -145,12 +145,12 @@ export class ColorSchemePopupComponent {
   /**
    * Brightness of selected scheme
    */
-  brightness: number[] = [0, 100];
+  @Input() brightness: number[] = [0, 100];
 
   /**
    * Transparency of selected scheme
    */
-  transparency = 0;
+  @Input() transparency = 0;
 
   /**
    * Emitted when there is a color scheme change
@@ -181,11 +181,9 @@ export class ColorSchemePopupComponent {
   close(target: HTMLElement): void {
     const popupElement = document.getElementById('scheme-contents');
     const buttonElement = document.getElementById('open-popup');
-    if (!this.popupVisible) {
-      return;
-    } else if (buttonElement && buttonElement.contains(target)) {
-      return;
-    } else if (popupElement && popupElement.contains(target)) {
+    if (!this.popupVisible ||
+        buttonElement && buttonElement.contains(target) ||
+        popupElement && popupElement.contains(target)) {
       return;
     }
     this.popupVisible = false;
