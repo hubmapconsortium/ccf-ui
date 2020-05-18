@@ -71,13 +71,14 @@ export class ColorSchemeContentsComponent {
   /**
    * Options for the sliders
    */
-  options: Options;
+  options1: Options;
+  options2: Options;
 
   /**
    * Initiates slider options and resets color status array
    */
   constructor() {
-    this.options = {
+    this.options1 = {
       floor: 0,
       ceil: 100,
       step: 1,
@@ -85,7 +86,14 @@ export class ColorSchemeContentsComponent {
       hidePointerLabels: true
     };
 
-    this.resetColorStatus();
+    this.options2 = {
+      floor: 0,
+      ceil: 100,
+      step: 1,
+      hideLimitLabels: true,
+      hidePointerLabels: true,
+      showSelectionBar: true,
+    };
   }
 
   /**
@@ -99,28 +107,14 @@ export class ColorSchemeContentsComponent {
     this.colorSchemeChange.emit(this.colorScheme);
   }
 
-  /**
-   * Updates the color as well as the scheme when a color is selected
-   * @param array contains two values corresponding to the scheme and color to be highlighted
-   */
-  colorChanged(array: number[]) {
-    const newSchemeIndex = array[0];
-    const newColorIndex = array[1];
-    this.schemeChanged(newSchemeIndex);
-    this.color = this.colorScheme.colors[newColorIndex];
-    this.resetColorStatus();
-    this.colorSelectedStatus[newSchemeIndex][newColorIndex] = true;
+  colorChanged(colorpos: number[]) {
+    this.schemeChanged(colorpos[0]);
+    this.color = this.colorScheme.colors[colorpos[1]];
     this.colorChange.emit(this.color);
   }
 
-  /**
-   * Resets color status array
-   */
-  resetColorStatus() {
-    this.colorSelectedStatus = [];
-    for (let i = 0; i < 8; i++) {
-      this.colorSelectedStatus.push(new Array(7).fill(false));
-    }
+  gradientHighlight(i: number) {
+    return i > 4 && this.schemeSelectedStatus[i] === true ? true : false;
   }
 
   /**

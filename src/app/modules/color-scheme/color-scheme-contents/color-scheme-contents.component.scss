@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   
-  .scheme-contents {
+  ::ng-deep #scheme-contents {
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -161,20 +161,24 @@
         cursor:pointer;
       }
 
-      .square {
+      .discrete {
         width: 1rem;
+      }
 
-        &.currentcolor {
-          border-radius: 10px;
-          border: 0px solid black;
+      &.selected {
+        .discrete {
+          &.currentcolor {
+            border-radius: 10px;
+            border: 0px solid black;
+          }
         }
       }
-      
+
       .gradient {
         width: 7rem;
       }
 
-      &.selected {
+      &.highlighted {
         outline: 1px solid white;
       }
     }
@@ -188,14 +192,14 @@
     margin-top: .75rem;
     margin-bottom: 1rem;
     .ng5-slider-bar {
-      background: #1e88e5;
-      opacity: 20%;
-      height: .15rem;
+      background: #1e88e5 !important;
+      opacity: 20% !important;
+      height: .15rem !important;
     }
 
     .ng5-slider-selection {
-      background: #1e88e5;
-      opacity: 100%;
+      background: #1e88e5 !important;
+      opacity: 100% !important;
     }
 
     .ng5-slider-pointer {

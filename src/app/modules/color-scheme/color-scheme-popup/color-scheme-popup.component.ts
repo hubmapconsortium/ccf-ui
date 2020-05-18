@@ -109,7 +109,7 @@ const scheme8: ColorScheme = {
 /**
  * Default scheme options
  */
-const DEFAULT_COLOR_SCHEMES =
+export const DEFAULT_COLOR_SCHEMES =
   [scheme1, scheme2, scheme3, scheme4, scheme5, scheme6, scheme7, scheme8];
 
 /**

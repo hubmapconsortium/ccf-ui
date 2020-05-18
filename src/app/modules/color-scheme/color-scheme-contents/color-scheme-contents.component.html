@@ -1,17 +1,24 @@
 <div class="color-scheme-contents-container">
   <div id="scheme-contents" class="scheme-contents">
-    <div *ngFor="let i of [0,1,2,3,4]" class="swatch" (click)="schemeChanged(i)">
-      <div *ngFor="let j of [0,1,2,3,4,5,6]" class="square" (click)="colorChanged([i, j])" [class.currentcolor]="colorSelectedStatus[i][j]"></div>
+    <!-- <div *ngFor="let i of [0,1,2,3,4]" class="swatch" (click)="schemeChanged(i)">
+      <div *ngFor="let j of [0,1,2,3,4,5,6]" class="discrete" (click)="colorChanged([i, j])" [class.currentcolor]="colorSelectedStatus[i][j]"></div>
     </div>
     <div *ngFor="let i of [5,6,7]" class="swatch" [class.selected]="schemeSelectedStatus[i]" (click)="schemeChanged(i)">
       <div class="gradient" (click)="colorChanged([i, 0])"></div>
-    </div>
+    </div> -->
+
+    <ccf-color-bar #colorbar *ngFor="let i of [0,1,2,3,4,5,6,7]" class="swatch" 
+      [class.selected]="schemeSelectedStatus[i]" [class.highlighted]="gradientHighlight(i)"
+      [colorScheme]="schemeOptions[i]" [schemeOptions]="schemeOptions" [schemeIndex]="i"
+      (click)="schemeChanged(i)" (colorChange)="colorChanged($event)">
+    </ccf-color-bar>
+
     <div class="brightness-slider-label">Brightness</div>
-    <ng5-slider class="slider" [options]="options" [(value)]="brightness[0]" [(highValue)]="brightness[1]"
+    <ng5-slider class="slider" [options]="options1" [(value)]="brightness[0]" [(highValue)]="brightness[1]"
       (userChangeEnd)="brightnessChanged()">
     </ng5-slider>
     <div class="transparency-slider-label">Transparency</div>
-    <ng5-slider class="slider" [options]="options" [(value)]="transparency" (userChangeEnd)="transparencyChanged()">
+    <ng5-slider class="slider" [options]="options2" [(value)]="transparency" (userChangeEnd)="transparencyChanged()">
     </ng5-slider>
   </div>
 </div>
