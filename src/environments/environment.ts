@@ -16,8 +16,8 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0001052' // Rectum
   ],
   dbOptions: {
-    ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf.owl',
-    ccfContextUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf-context.jsonld',
+    ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
+    ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'static',
     hubmapDataUrl: '/assets/dev-data/entities.json'
   }
