@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Options } from 'ng5-slider';
 
-import { ColorScheme } from '../color-scheme-popup/color-scheme-popup.component';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-scheme-popup/color-scheme-popup.component';
 
 /**
  * Contains the color menu and brightness/transparency sliders
@@ -16,7 +16,7 @@ export class ColorSchemeContentsComponent {
   /**
    * List of available schemes
    */
-  @Input() schemeOptions: ColorScheme[];
+  @Input() schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
 
   /**
    * Current scheme selected
@@ -126,7 +126,7 @@ export class ColorSchemeContentsComponent {
    * @param i scheme index
    */
   gradientHighlight(i: number) {
-    return i > 4 && this.schemeSelectedStatus[i] === true ? true : false;
+    return this.schemeOptions[i].type === 'gradient' && this.schemeSelectedStatus[i] === true ? true : false;
   }
 
   /**
