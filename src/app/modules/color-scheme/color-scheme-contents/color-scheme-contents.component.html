@@ -2,7 +2,7 @@
   <div id="scheme-contents" class="scheme-contents">
     <ccf-color-bar #colorbar *ngFor="let i of [0,1,2,3,4,5,6,7]" class="swatch" 
       [class.selected]="schemeSelectedStatus[i]" [class.highlighted]="gradientHighlight(i)"
-      [colorScheme]="schemeOptions[i]" [schemeOptions]="schemeOptions" [schemeIndex]="i"
+      [colorScheme]="schemeOptions[i]" [schemeIndex]="i" ([colorSelectedStatus])="colorSelectedStatus"
       (click)="schemeChanged(i)" (colorChange)="colorChanged($event)">
     </ccf-color-bar>
 

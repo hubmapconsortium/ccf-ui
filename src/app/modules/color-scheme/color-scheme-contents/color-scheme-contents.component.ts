@@ -69,13 +69,17 @@ export class ColorSchemeContentsComponent {
   colorSelectedStatus: boolean[][] = [];
 
   /**
-   * Options for the sliders
+   * Options for the brightness slider
    */
   options1: Options;
+
+  /**
+   * Options for the transparency slider
+   */
   options2: Options;
 
   /**
-   * Initiates slider options and resets color status array
+   * Initiates slider options
    */
   constructor() {
     this.options1 = {
@@ -107,12 +111,20 @@ export class ColorSchemeContentsComponent {
     this.colorSchemeChange.emit(this.colorScheme);
   }
 
+  /**
+   * Emits the currently selected color and switches to the appropriate scheme
+   * @param colorpos [scheme index, color index]
+   */
   colorChanged(colorpos: number[]) {
     this.schemeChanged(colorpos[0]);
     this.color = this.colorScheme.colors[colorpos[1]];
     this.colorChange.emit(this.color);
   }
 
+  /**
+   * Returns whether or not a scheme is a selected gradient (for highlighting purposes)
+   * @param i scheme index
+   */
   gradientHighlight(i: number) {
     return i > 4 && this.schemeSelectedStatus[i] === true ? true : false;
   }
