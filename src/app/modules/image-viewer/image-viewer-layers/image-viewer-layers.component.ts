@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
-import { ImageViewerLayer } from '../../../core/models/ImageViewerLayer';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 @Component({
   selector: 'ccf-image-viewer-layers',
@@ -26,7 +26,6 @@ export class ImageViewerLayersComponent {
     }
 
     this.selectedLayers.emit(this.activeLayers());
-    // console.log('event: ', event, '\nlayer: ', layer);
   }
 
   activeLayers(): ImageViewerLayer[] {
@@ -39,5 +38,9 @@ export class ImageViewerLayersComponent {
     });
     console.log('layers: ', layers);
     return layers;
+  }
+
+  launchPicker(layer: ImageViewerLayer): void {
+    console.log('launch layer: ', layer);
   }
 }

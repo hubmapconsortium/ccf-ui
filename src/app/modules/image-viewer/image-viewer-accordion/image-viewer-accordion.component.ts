@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ImageViewerLayer } from 'src/app/core/models/ImageViewerLayer';
+import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
 
 /**
  * Expandable accordion panel for the image viewer
@@ -21,8 +21,13 @@ export class ImageViewerAccordionComponent {
       selected: false,
       label: 'Actin',
       id: 123,
-      colorScheme: 'red-blue',
-      color: 'red',
+      colorScheme: {
+        type: 'discrete',
+        name: 'bluered',
+        colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
+        positions: [0, .166, .333, .5, .666, .833, 1]
+      },
+      color: '#B2182B',
       brightness: [20, 60],
       customizedColor: false,
       selectionOrder: undefined
@@ -31,8 +36,13 @@ export class ImageViewerAccordionComponent {
       selected: false,
       label: 'CD107a',
       id: 122,
-      colorScheme: 'red-blue',
-      color: 'blue',
+      colorScheme: {
+        type: 'discrete',
+        name: 'bluered',
+        colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
+        positions: [0, .166, .333, .5, .666, .833, 1]
+      },
+      color: '#2166AC',
       brightness: [20, 60],
       customizedColor: false,
       selectionOrder: undefined
@@ -41,7 +51,12 @@ export class ImageViewerAccordionComponent {
       selected: false,
       label: 'CD11c',
       id: 323,
-      colorScheme: 'red-blue',
+      colorScheme: {
+        type: 'gradient',
+        name: 'viridis',
+        colors: ['#FFE31C', '#21908A', '#450B57'],
+        positions: [0, .5, 1]
+      },
       color: 'orange',
       brightness: [20, 60],
       customizedColor: false,
@@ -51,148 +66,13 @@ export class ImageViewerAccordionComponent {
       selected: false,
       label: 'CD20',
       id: 32,
-      colorScheme: 'red-blue',
+      colorScheme: {
+        type: 'gradient',
+        name: 'viridis',
+        colors: ['#FFE31C', '#21908A', '#450B57'],
+        positions: [0, .5, 1]
+      },
       color: 'purple',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'CD21',
-      id: 65,
-      colorScheme: 'red-blue',
-      color: 'pink',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'CD31',
-      id: 89,
-      colorScheme: 'red-blue',
-      color: 'gray',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'CD3e',
-      id: 1223,
-      colorScheme: 'red-blue',
-      color: 'brown',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'CD4',
-      id: 1323,
-      colorScheme: 'red-blue',
-      color: 'blue',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'CD45',
-      id: 654,
-      colorScheme: 'red-blue',
-      color: 'yellow',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'CD45RO',
-      id: 665,
-      colorScheme: 'red-blue',
-      color: 'red',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'CD68',
-      id: 14423,
-      colorScheme: 'red-blue',
-      color: 'orange',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'CD8',
-      id: 1444223,
-      colorScheme: 'red-blue',
-      color: 'green',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'DAPI_2',
-      id: 12113,
-      colorScheme: 'red-blue',
-      color: 'orange',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'E_CAD',
-      id: 1111423,
-      colorScheme: 'red-blue',
-      color: 'pink',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'Histone_H3',
-      id: 123778,
-      colorScheme: 'red-blue',
-      color: 'yellow',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'Ki67',
-      id: 12313,
-      colorScheme: 'red-blue',
-      color: 'green',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'Pan_CK',
-      id: 11623,
-      colorScheme: 'red-blue',
-      color: 'purple',
-      brightness: [20, 60],
-      customizedColor: false,
-      selectionOrder: undefined
-    },
-    {
-      selected: false,
-      label: 'Podoplanin',
-      id: 3,
-      colorScheme: 'red-blue',
-      color: 'gray',
       brightness: [20, 60],
       customizedColor: false,
       selectionOrder: undefined

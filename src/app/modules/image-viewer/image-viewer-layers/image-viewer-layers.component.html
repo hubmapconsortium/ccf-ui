@@ -5,6 +5,6 @@
         <mat-checkbox [checked]="layer.selected" (change)="checkboxOnChange($event, layer)">
             {{ layer.label }}
         </mat-checkbox>
-        <div class="color-selector-placeholder" [style.background-color]="layer.color" [class.hidden]="!layer.selected"></div>
+        <ccf-color-picker-launcher [class.hidden]="!layer.selected" [layer]="layer" (click)="launchPicker(layer)"></ccf-color-picker-launcher>
     </div>
 </div>
