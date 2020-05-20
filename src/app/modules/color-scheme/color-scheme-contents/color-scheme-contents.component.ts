@@ -31,7 +31,7 @@ export class ColorSchemeContentsComponent {
   /**
    * Current brightness setting
    */
-  @Input() brightness: number[] = [0, 100];
+  @Input() brightness: [number, number] = [0, 100];
 
   /**
    * Current transparency setting
@@ -51,7 +51,7 @@ export class ColorSchemeContentsComponent {
   /**
    * Emitted when the brightness selection changes
    */
-  @Output() brightnessChange = new EventEmitter<number[]>();
+  @Output() brightnessChange = new EventEmitter<[number, number]>();
 
   /**
    * Emitted when the transparency value changes
@@ -61,28 +61,24 @@ export class ColorSchemeContentsComponent {
   /**
    * Array to keep track of which scheme is currently selected (for highlighting purposes)
    */
-  schemeSelectedStatus: boolean[] = Array(8).fill(false);
-
-  /**
-   * Nested array to keep track of which color is currently selected (for highlighting purposes)
-   */
-  colorSelectedStatus: boolean[][] = [];
+  selectedSchemeIndex = 0;
 
   /**
    * Options for the brightness slider
    */
-  options1: Options;
+  brightnessSliderOptions: Options;
 
   /**
    * Options for the transparency slider
    */
-  options2: Options;
+  transparencySliderOptions: Options;
 
   /**
    * Initiates slider options
    */
   constructor() {
-    this.options1 = {
+
+    const COMMON_OPTIONS = {
       floor: 0,
       ceil: 100,
       step: 1,
@@ -90,14 +86,8 @@ export class ColorSchemeContentsComponent {
       hidePointerLabels: true
     };
 
-    this.options2 = {
-      floor: 0,
-      ceil: 100,
-      step: 1,
-      hideLimitLabels: true,
-      hidePointerLabels: true,
-      showSelectionBar: true,
-    };
+    this.brightnessSliderOptions = {...COMMON_OPTIONS};
+    this.transparencySliderOptions = {...COMMON_OPTIONS, showSelectionBar: true};
   }
 
   /**
@@ -106,8 +96,7 @@ export class ColorSchemeContentsComponent {
    */
   schemeChanged(n: number) {
     this.colorScheme = this.schemeOptions[n];
-    this.schemeSelectedStatus = Array(8).fill(false);
-    this.schemeSelectedStatus[n] = true;
+    this.selectedSchemeIndex = n;
     this.colorSchemeChange.emit(this.colorScheme);
   }
 
@@ -115,10 +104,9 @@ export class ColorSchemeContentsComponent {
    * Emits the currently selected color and switches to the appropriate scheme
    * @param colorpos [scheme index, color index]
    */
-  colorChanged(colorpos: number[]) {
-    this.schemeChanged(colorpos[0]);
-    this.color = this.colorScheme.colors[colorpos[1]];
-    this.colorChange.emit(this.color);
+  colorChanged(color: string | undefined) {
+    this.color = color;
+    this.colorChange.emit(color);
   }
 
   /**
@@ -126,7 +114,11 @@ export class ColorSchemeContentsComponent {
    * @param i scheme index
    */
   gradientHighlight(i: number) {
-    return this.schemeOptions[i].type === 'gradient' && this.schemeSelectedStatus[i] === true ? true : false;
+    return this.schemeOptions[i].type === 'gradient' && this.isSelected(i) ? true : false;
+  }
+
+  isSelected(i: number) {
+    return this.selectedSchemeIndex === i;
   }
 
   /**

@@ -17,19 +17,9 @@ export class ColorBarComponent implements OnInit {
   @Input() colorScheme: ColorScheme;
 
   /**
-   * Position of the scheme in list of schemes
+   * Emits the newly selected color
    */
-  @Input() schemeIndex = 0;
-
-  /**
-   * Keeps track of which color is currently selected (from color scheme contents)
-   */
-  @Input() colorSelectedStatus: boolean[][] = [];
-
-  /**
-   * Output  Emits the position of a newly selected color ([scheme index, color index])
-   */
-  @Output() colorChange = new EventEmitter<number[]>();
+  @Output() colorChange = new EventEmitter<string | undefined>();
 
   /**
    * Array for iterating through colors to be displayed
@@ -41,11 +31,14 @@ export class ColorBarComponent implements OnInit {
    */
   gradientstyle: string;
 
+  @Input() selected = false;
+
+  selectedColorIndex = 0;
+
   /**
    * Sets the color status array, color index array, and gradient style (when applicable) on load
    */
   ngOnInit() {
-    this.resetColorStatus();
     this.colorIndex = this.colorScheme.type === 'discrete' ? [0,1,2,3,4,5,6] : [0];
     this.gradientstyle = this.colorScheme.type === 'gradient' ? `linear-gradient(to right, ${this.getColor(0)} , ${this.getColor(1)}, ${this.getColor(2)})` : 'none';
   }
@@ -59,22 +52,17 @@ export class ColorBarComponent implements OnInit {
   }
 
   /**
-   * Resets the color selected status array and emits the position of the newly selected color
+   * Emits the newly selected color
    * @param colorpos [scheme index, color index]
    */
-  colorChanged(colorpos: number[]) {
-    this.resetColorStatus();
-    this.colorSelectedStatus[colorpos[0]][colorpos[1]] = true;
-    this.colorChange.emit(colorpos);
+  colorChanged(index: number) {
+    this.selected = true;
+    this.selectedColorIndex = index;
+    const selectedColor = this.colorScheme.type === 'discrete' ? this.colorScheme.colors[index] : undefined;
+    this.colorChange.emit(selectedColor);
   }
 
-  /**
-   * Resets color status array
-   */
-  resetColorStatus() {
-    this.colorSelectedStatus = [];
-    for (let i = 0; i < 8; i++) {
-      this.colorSelectedStatus.push(new Array(7).fill(false));
-    }
+  isColorSelected(n: number) {
+    return this.selectedColorIndex === n;
   }
 }

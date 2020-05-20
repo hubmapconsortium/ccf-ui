@@ -130,22 +130,22 @@ export class ColorSchemePopupComponent {
   /**
    * Current color scheme selected (default is scheme1)
    */
-  colorScheme: ColorScheme = scheme1;
+  @Input() colorScheme: ColorScheme = scheme1;
 
   /**
    * Schemes available to choose from
    */
-  schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
+  @Input() schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
 
   /**
    * Current color selected (undefined for gradients)
    */
-  color: string | undefined;
+  @Input() color: string | undefined = scheme1.colors[0];
 
   /**
    * Brightness of selected scheme
    */
-  @Input() brightness: number[] = [0, 100];
+  @Input() brightness: [number, number] = [0, 100];
 
   /**
    * Transparency of selected scheme
@@ -182,8 +182,8 @@ export class ColorSchemePopupComponent {
     const popupElement = document.getElementById('scheme-contents');
     const buttonElement = document.getElementById('open-popup');
     if (!this.popupVisible ||
-        buttonElement && buttonElement.contains(target) ||
-        popupElement && popupElement.contains(target)) {
+        (buttonElement && buttonElement.contains(target)) ||
+        (popupElement && popupElement.contains(target))) {
       return;
     }
     this.popupVisible = false;
@@ -218,7 +218,7 @@ export class ColorSchemePopupComponent {
    * Updates brightness selection and emits the new brightness selection
    * @param brightness = the new brightness selection
    */
-  updateBrightness(brightness: number[]) {
+  updateBrightness(brightness: [number, number]) {
     this.brightness = brightness;
     this.brightnessChange.emit(brightness);
   }

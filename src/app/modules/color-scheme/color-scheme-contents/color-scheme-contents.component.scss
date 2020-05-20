@@ -23,23 +23,28 @@
         cursor:pointer;
       }
 
-      .discrete {
-        width: 1rem;
-      }
-
-      &.selected {
+      div {
+        display: flex;
         .discrete {
-          &.currentcolor {
-            border-radius: 10px;
-            border: 0px solid black;
+          width: 1rem;
+        }
+      }
+      
+      &.selected {
+        div {
+          .discrete {
+            &.currentcolor {
+              border-radius: 10px;
+              border: 0px solid black;
+            }
           }
         }
       }
-
+      
       .gradient {
         width: 7rem;
       }
-
+      
       &.highlighted {
         outline: 1px solid white;
       }
@@ -68,7 +73,7 @@
 
       width: $pointer-size;
       height: $pointer-size;
-      top: 0.095rem - ($pointer-size / 2);
+      top: -0.5rem;
       background-color: #1e88e5;
       border: .1rem solid #323232;
 
