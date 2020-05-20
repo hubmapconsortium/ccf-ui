@@ -39,7 +39,7 @@ export class ColorBarComponent implements OnInit {
   }
 
   gradientColorString() {
-    const result = [];
+    const result : string[] = [];
     for (let i = 0; i < this.colorScheme.colors.length; i++) {
       result.push(this.colorScheme.colors[i] + ' ' + this.colorScheme.positions[i] * 100 + '%');
     }
