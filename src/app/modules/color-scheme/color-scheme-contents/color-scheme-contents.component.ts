@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Options } from 'ng5-slider';
 
 import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
@@ -11,7 +11,7 @@ import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
   templateUrl: './color-scheme-contents.component.html',
   styleUrls: ['./color-scheme-contents.component.scss']
 })
-export class ColorSchemeContentsComponent implements OnInit {
+export class ColorSchemeContentsComponent {
 
   /**
    * List of available schemes
@@ -76,7 +76,7 @@ export class ColorSchemeContentsComponent implements OnInit {
   /**
    * Initiates slider options
    */
-  ngOnInit() {
+  constructor() {
     const COMMON_OPTIONS = {
       floor: 0,
       ceil: 100,
@@ -106,14 +106,6 @@ export class ColorSchemeContentsComponent implements OnInit {
   colorChanged(color: string | undefined) {
     this.color = color;
     this.colorChange.emit(color);
-  }
-
-  /**
-   * Returns whether or not a scheme is a selected gradient (for highlighting purposes)
-   * @param i scheme index
-   */
-  gradientHighlight(i: number) {
-    return this.schemeOptions[i].type === 'gradient' && this.isSelected(i) ? true : false;
   }
 
   isSelected(i: number) {

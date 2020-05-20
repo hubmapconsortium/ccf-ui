@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   
-  ::ng-deep #scheme-contents {
+  .scheme-contents {
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -21,32 +21,6 @@
   
       :hover {
         cursor:pointer;
-      }
-
-      div {
-        display: flex;
-        .discrete {
-          width: 1rem;
-        }
-      }
-      
-      &.selected {
-        div {
-          .discrete {
-            &.currentcolor {
-              border-radius: 10px;
-              border: 0px solid black;
-            }
-          }
-        }
-      }
-      
-      .gradient {
-        width: 7rem;
-      }
-      
-      &.highlighted {
-        outline: 1px solid white;
       }
     }
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ColorScheme } from '../color-schemes';
 
@@ -10,13 +10,16 @@ import { ColorScheme } from '../color-schemes';
   templateUrl: './color-bar.component.html',
   styleUrls: ['./color-bar.component.scss']
 })
-export class ColorBarComponent implements OnInit {
+export class ColorBarComponent {
 
   /**
    * Color scheme to be displayed in the color bar
    */
   @Input() colorScheme: ColorScheme;
 
+  /**
+   * Whether or not the scheme is currently selected
+   */
   @Input() selected = false;
 
   /**
@@ -25,37 +28,32 @@ export class ColorBarComponent implements OnInit {
   @Output() colorChange = new EventEmitter<string | undefined>();
 
   /**
-   * Enables dynamic styling for gradient bars
+   * Index of the currently selected color in colorScheme.colors
    */
-  gradientstyle: string;
-
   selectedColorIndex = 0;
 
   /**
-   * Sets the gradient style (when applicable) on load
+   * Enables dynamic styling for gradient bars
    */
-  ngOnInit() {
-    this.gradientstyle = this.colorScheme.type === 'gradient' ? `linear-gradient(to right, ${this.gradientColorString()})` : 'none';
-  }
-
-  gradientColorString() {
-    const result : string[] = [];
-    for (let i = 0; i < this.colorScheme.colors.length; i++) {
-      result.push(this.colorScheme.colors[i] + ' ' + this.colorScheme.positions[i] * 100 + '%');
+  get gradientStyle(): string {
+    const { colors, positions } = this.colorScheme;
+    const result: string[] = [];
+    for (let i = 0; i < colors.length; i++) {
+      result.push(`${colors[i]} ${positions[i] * 100}%`);
     }
-    return result.join(', ');
+    return `linear-gradient(to right, ${result.join(', ')})`;
   }
 
   /**
-   * Returns the color at a specific index in the colors array of color scheme (used for gradientstyle)
-   * @param coloridx index of desired color
+   * Returns whether or not the scheme is a selected gradient (for highlighting purposes)
+   * @param i scheme index
    */
-  getColor(coloridx: number) {
-    return this.colorScheme.colors[coloridx];
+  gradientHighlight() {
+    return this.colorScheme.type === 'gradient' && this.selected ? true : false;
   }
 
   /**
-   * Emits the newly selected color
+   * After a color selected, changes selectedColorIndex to the index of the selected color and emits the selected color
    * @param colorpos [scheme index, color index]
    */
   colorChanged(index: number) {
@@ -65,6 +63,10 @@ export class ColorBarComponent implements OnInit {
     this.colorChange.emit(selectedColor);
   }
 
+  /**
+   * Used to determine if a color is currently selected
+   * @param n color index to be compared
+   */
   isColorSelected(n: number) {
     return this.selectedColorIndex === n;
   }

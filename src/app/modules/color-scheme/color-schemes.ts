@@ -14,9 +14,9 @@ export interface ColorScheme {
   name: string;
 
   /**
-   * Colors used in the scheme (undefined for gradients)
+   * Colors used in the scheme
    */
-  colors: string[] | undefined[];
+  colors: string[];
 
   /**
    * Positions for mapping the data to colors
