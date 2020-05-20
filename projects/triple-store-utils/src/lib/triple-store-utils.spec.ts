@@ -117,7 +117,7 @@ describe('triple-store-utils', () => {
   });
 
   describe('addJsonLdToStore(uri, store)', () => {
-    const uri = 'test-uri';
+    const uri = 'http://test-uri';
     let fetchSpy: jasmine.Spy<typeof fetch>;
     let responseSpy: jasmine.SpyObj<Response>;
     let storeSpy: jasmine.SpyObj<Store>;
@@ -158,7 +158,7 @@ describe('triple-store-utils', () => {
   });
 
   describe('addRdfXmlToStore(uri, store)', () => {
-    const uri = 'test-uri';
+    const uri = 'http://test-uri';
     let fetchSpy: jasmine.Spy<typeof fetch>;
     let responseSpy: jasmine.SpyObj<Response>;
     let storeSpy: jasmine.SpyObj<Store>;

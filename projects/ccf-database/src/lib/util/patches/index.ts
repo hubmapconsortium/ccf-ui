@@ -1,3 +1,5 @@
+import { applyRuiLocationsOnlyPatch } from './hubmap-rui-locations-only-patch';
+import { applyShareDonorInstancesPatch } from './hubmap-share-donor-instances-patch';
 import { applyUFLPatch } from './hubmap-ufl-patch';
 import { applyVUPatch } from './hubmap-vu-patch';
 
@@ -9,5 +11,5 @@ import { applyVUPatch } from './hubmap-vu-patch';
  * @returns patched entity data
  */
 export function applyPatches(entities: {[key: string]: unknown}[]): {[key: string]: unknown}[] {
-  return applyUFLPatch(applyVUPatch(entities));
+  return applyRuiLocationsOnlyPatch(applyShareDonorInstancesPatch(applyUFLPatch(applyVUPatch(entities))));
 }

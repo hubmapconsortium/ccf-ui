@@ -11,6 +11,7 @@
     "build:doc:ccf-body-ui": "npx compodoc -p projects/ccf-body-ui/tsconfig.lib.json --output dist/ccf-body-ui/docs",
     "build:doc:ccf-database": "npx compodoc -p projects/ccf-database/tsconfig.lib.json --output dist/ccf-database/docs",
     "build:doc:triple-store-utils": "npx compodoc -p projects/triple-store-utils/tsconfig.lib.json --output dist/triple-store-utils/docs",
+    "build:hubmap-jsonld": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/process-hubmap-data.ts ./src/assets/dev-data/entities.json ./src/assets/dev-data/entities.jsonld",
     "build:libs": "npm-run-all fix-types build:triple-store-utils build:ccf-database build:ccf-body-ui",
     "build:ccf-database": "npm run build ccf-database",
     "build:triple-store-utils": "npm run build triple-store-utils && npm run fix-triple-store-utils",

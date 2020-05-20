@@ -1,5 +1,5 @@
 import { CCFSpatialGraph } from './ccf-spatial-graph';
-import { addRdfXmlToStore, DataFactory, N3Store, Quad, Store, addN3ToStore } from 'triple-store-utils';
+import { addRdfXmlToStore, DataFactory, N3Store, Quad, Store, addN3ToStore, addJsonLdToStore } from 'triple-store-utils';
 import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
@@ -70,7 +70,11 @@ export class CCFDatabase implements DataSource {
         ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
       }
       if (this.options.hubmapDataUrl) {
-        ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService));
+        if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
+          ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
+        } else {
+          ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService));
+        }
       }
       await Promise.all(ops);
       this.graph.createGraph();
@@ -115,8 +119,8 @@ export class CCFDatabase implements DataSource {
    * @returns A list of spatial entities.
    */
   getSpatialEntities(filter?: Filter): SpatialEntity[] {
-    return [...this.getIds({...filter, hasSpatialEntity: true} as Filter)]
-      .map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+    filter = {...filter, hasSpatialEntity: true} as Filter;
+    return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
   }
 
   /**
@@ -126,6 +130,7 @@ export class CCFDatabase implements DataSource {
    * @returns A list of results.
    */
   async getListResults(filter?: Filter): Promise<ListResult[]> {
+    filter = {...filter, hasSpatialEntity: true} as Filter;
     return [...this.getIds(filter)].map((s) => getListResult(this.store, s));
   }
 

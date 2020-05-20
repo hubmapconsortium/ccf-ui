@@ -51,11 +51,6 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
   const entries = (get(data, 'hits.hits', []) as {[key: string]: unknown}[])
     .map(e => get(e, '_source', {}) as { [key: string]: unknown });
 
-  const graph = applyPatches(entries)
-    // .filter((e: {rui_location: unknown}) => !!e.rui_location)
-    // .map(e => { console.log(e); return e; })
-    .map(e => hubmapEntityAsJsonLd(e));
-
   return {
     '@context': {
       '@vocab': 'http://purl.org/ccf/latest/ccf-entity.owl#',
@@ -63,7 +58,7 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
       ancestors: { '@type': '@id' },
       descendants: { '@type': '@id' }
     },
-    '@graph': graph
+    '@graph': applyPatches(entries).map(e => hubmapEntityAsJsonLd(e))
   };
 }
 
@@ -74,7 +69,7 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
  * @returns The converted data.
  */
 export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd {
-  const donorDescription = (get(entity, 'donor.description', '') as string).toLowerCase();
+  const donorDescription = (get(entity, 'donor.description', get(entity, 'description', '')) as string).toLowerCase();
   let sex: string | undefined;
   if (donorDescription.includes('female')) {
     sex = 'Female';
@@ -86,9 +81,25 @@ export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd
   if (ageMatch) {
     age = toNumber(ageMatch[1]);
   }
+  let bmi: number | undefined;
+  for (const md of get(entity, 'donor.metadata.organ_donor_data',
+      get(entity, 'metadata.organ_donor_data', [])) as {[key: string]: unknown}[]) {
+    if (md.preferred_term === 'Feminine gender') {
+      sex = 'Female';
+    } else if (md.preferred_term === 'Masculine gender') {
+      sex = 'Male';
+    } else if (md.preferred_term === 'Current chronological age') {
+      age = toNumber(md.data_value);
+    } else if (md.preferred_term === 'Body mass index') {
+      bmi = toNumber(md.data_value);
+    }
+  }
   let label = entity.hubmap_display_id as string;
   if (sex && age) {
     label += `: ${sex}, Age ${age}`;
+    if (bmi) {
+      label += `, BMI ${bmi}`;
+    }
   }
 
   const groupUUID = (entity.group_uuid || get(entity, 'donor.group_uuid', undefined)) as string;
@@ -110,7 +121,7 @@ export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd
     spatialEntity,
     sex,
     age,
-    // bmi,
+    bmi,
     groupName, // tmc
     groupUUID, // tmc
     // technologies,
