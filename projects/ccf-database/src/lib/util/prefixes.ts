@@ -31,7 +31,9 @@ export const entity = {
   groupName: prefixer('entity')('groupName'),
   groupUUID: prefixer('entity')('groupUUID'),
   ontologyTerms: prefixer('entity')('ontologyTerms'),
-  spatialEntity: prefixer('entity')('spatialEntity')
+  spatialEntity: prefixer('entity')('spatialEntity'),
+  images: prefixer('entity')('images'),
+  hasImageProvider: prefixer('entity')('hasImageProvider')
 };
 
 /** CCF id helper. */

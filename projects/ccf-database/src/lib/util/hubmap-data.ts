@@ -56,7 +56,12 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
       '@vocab': 'http://purl.org/ccf/latest/ccf-entity.owl#',
       ontologyTerms: { '@type': '@id' },
       ancestors: { '@type': '@id' },
-      descendants: { '@type': '@id' }
+      descendants: { '@type': '@id' },
+      images: {'@type': '@id'},
+      providesImagesFor: {
+        '@type': '@id',
+        '@reverse': 'hasImageProvider'
+      }
     },
     '@graph': applyPatches(entries).map(e => hubmapEntityAsJsonLd(e))
   };
@@ -114,6 +119,15 @@ export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd
     spatialEntity = undefined;
   }
 
+  // Find TIFF Images for use in the HuBMAP Tissue Viewer
+  const images = (get(entity, 'files', []) as {rel_path: string}[])
+    .filter(f => /\.(ome\.tiff)$/.test(f.rel_path))
+    .map(f => `https://assets.test.hubmapconsortium.org/${entity.uuid}/${f.rel_path}`);
+  const providesImagesFor = [
+    ...entity.ancestor_ids as string[],
+    ...entity.descendant_ids as string[]
+  ].filter(e => !!e).map(id => `https://entity-api.hubmapconsortium.org/entities/${id}`);
+
   return {
     '@id': 'https://entity-api.hubmapconsortium.org/entities/' + entity.uuid,
     '@type': entity.entity_type,
@@ -146,7 +160,10 @@ export function hubmapEntityAsJsonLd(entity: { [key: string]: unknown }): JsonLd
 
     entityType: entity.entity_type,
     description: entity.description,
-    displayDOI: entity.display_doi
+    displayDOI: entity.display_doi,
+
+    images: images.length ? images : undefined,
+    providesImagesFor: images.length && providesImagesFor.length ? providesImagesFor : undefined
   };
 }
 
