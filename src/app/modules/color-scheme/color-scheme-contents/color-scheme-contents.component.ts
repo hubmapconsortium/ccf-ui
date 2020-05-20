@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Options } from 'ng5-slider';
 
-import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-scheme-popup/color-scheme-popup.component';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 
 /**
  * Contains the color menu and brightness/transparency sliders
@@ -11,7 +11,7 @@ import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-scheme-popup/color-
   templateUrl: './color-scheme-contents.component.html',
   styleUrls: ['./color-scheme-contents.component.scss']
 })
-export class ColorSchemeContentsComponent {
+export class ColorSchemeContentsComponent implements OnInit {
 
   /**
    * List of available schemes
@@ -76,8 +76,7 @@ export class ColorSchemeContentsComponent {
   /**
    * Initiates slider options
    */
-  constructor() {
-
+  ngOnInit() {
     const COMMON_OPTIONS = {
       floor: 0,
       ceil: 100,
@@ -86,8 +85,8 @@ export class ColorSchemeContentsComponent {
       hidePointerLabels: true
     };
 
-    this.brightnessSliderOptions = {...COMMON_OPTIONS};
-    this.transparencySliderOptions = {...COMMON_OPTIONS, showSelectionBar: true};
+    this.brightnessSliderOptions = { ...COMMON_OPTIONS };
+    this.transparencySliderOptions = { ...COMMON_OPTIONS, showSelectionBar: true };
   }
 
   /**
