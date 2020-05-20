@@ -25,6 +25,7 @@ export const entity = {
   id: prefixer('entity')('id'),
   sex: prefixer('entity')('sex'),
   age: prefixer('entity')('age'),
+  bmi: prefixer('entity')('bmi'),
   Male: DataFactory.literal('Male'),
   Female: DataFactory.literal('Female'),
   groupName: prefixer('entity')('groupName'),

@@ -1,4 +1,3 @@
-import { get, set } from 'lodash';
 import { OldRuiData } from '../old-rui-utils';
 import { vuPatchData } from './hubmap-vu-patch-data';
 
@@ -31,11 +30,11 @@ export function applyVUPatch(entities: {[key: string]: unknown}[]): {[key: strin
   for (const entity of entities) {
     const displayId = entity.hubmap_display_id as string || '';
     if (vuPatchData.hasOwnProperty(displayId)) {
-      entity.rui_location = fixOldRuiData(vuPatchData[displayId]);
-      if (displayId.match(/\-RK\-/)) {
-        vuPatchData[displayId].reference_organ_id = 'http://purl.org/ccf/latest/ccf.owl#VHRightKidney';
-      } else if (displayId.match(/\-LK\-/)) {
-        vuPatchData[displayId].reference_organ_id = 'http://purl.org/ccf/latest/ccf.owl#VHLeftKidney';
+      const ruiLocation = entity.rui_location = fixOldRuiData(vuPatchData[displayId]);
+      if (/\-RK\-/.test(displayId)) {
+        ruiLocation.reference_organ_id = 'http://purl.org/ccf/latest/ccf.owl#VHRightKidney';
+      } else if (/\-LK\-/.test(displayId)) {
+        ruiLocation.reference_organ_id = 'http://purl.org/ccf/latest/ccf.owl#VHLeftKidney';
       }
     }
   }
