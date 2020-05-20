@@ -37,6 +37,16 @@ export function findIds(store: N3Store, filter: Filter): Set<string> {
       seen = filterByAge(store, seen, minAge, maxAge);
     }
   }
+  if (seen.size > 0 && filter.bmiRange?.length === 2 &&
+    isFinite(filter.bmiRange[0]) && isFinite(filter.bmiRange[1])) {
+    const maxBMI = Math.max(...filter.bmiRange);
+    const minBMI = Math.min(...filter.bmiRange);
+
+    // BMI filter given by their default range will be ignored
+    if (!(minBMI === 13 && maxBMI === 83)) {
+      seen = filterByBMI(store, seen, minBMI, maxBMI);
+    }
+  }
   return seen;
 }
 
@@ -131,6 +141,29 @@ function filterByAge(store: N3Store, seen: Set<string>, minAge: number, maxAge: 
     }
     return false;
   }, null, entity.age, null, null);
+  return newSeen;
+}
+
+/**
+ * Filters ids by BMI.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param minBMI Minimum BMI.
+ * @param maxBMI Maximum BMI.
+ * @returns The subset of ids with the specified BMI.
+ */
+function filterByBMI(store: N3Store, seen: Set<string>, minBMI: number, maxBMI: number): Set<string> {
+  const newSeen = new Set<string>();
+  store.some((quad) => {
+    if (seen.has(quad.subject.id)) {
+      const value = fromRdf(quad.object as Literal) as number;
+      if (value >= minBMI && value <= maxBMI) {
+        newSeen.add(quad.subject.id);
+      }
+    }
+    return false;
+  }, null, entity.bmi, null, null);
   return newSeen;
 }
 
