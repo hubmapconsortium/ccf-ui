@@ -1,6 +1,6 @@
 import { Shallow } from 'shallow-render';
 
-import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '.././color-scheme-popup/color-scheme-popup.component';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 import { ColorSchemeContentsComponent } from './color-scheme-contents.component';
 import { ColorSchemeContentsModule } from './color-scheme-contents.module';
 
@@ -18,6 +18,12 @@ describe('ColorSchemeContentsComponent', () => {
     shallow = new Shallow(ColorSchemeContentsComponent, ColorSchemeContentsModule);
   });
 
+  it('should emit the new scheme when scheme is changed', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { schemeOptions: DEFAULT_COLOR_SCHEMES } });
+    instance.schemeChanged(1);
+    expect(outputs.colorSchemeChange.emit).toHaveBeenCalledWith(DEFAULT_COLOR_SCHEMES[1]);
+  });
+
   it('should emit brightnessChange when brightness is changed', async () => {
     const { instance, outputs } = await shallow.render({ bind: { schemeOptions: DEFAULT_COLOR_SCHEMES } });
     instance.brightnessChanged();
@@ -32,14 +38,8 @@ describe('ColorSchemeContentsComponent', () => {
 
   it('should emit colorChange when colorChanged is called', async () => {
     const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme, schemeOptions: DEFAULT_COLOR_SCHEMES } });
-    instance.colorChanged([0, 0]);
-    expect(outputs.colorChange.emit).toHaveBeenCalledWith('#2166AC');
-  });
-
-  it('should return true when gradientHighlight is called on the index of a selected gradient', async () => {
-    const { instance } = await shallow.render({ bind: { colorScheme: testScheme, schemeOptions: DEFAULT_COLOR_SCHEMES } });
-    instance.schemeSelectedStatus[7] = true;
-    expect(instance.gradientHighlight(7)).toBe(true);
+    instance.colorChanged(instance.colorScheme.colors[0]);
+    expect(outputs.colorChange.emit).toHaveBeenCalledWith('red');
   });
 
 });

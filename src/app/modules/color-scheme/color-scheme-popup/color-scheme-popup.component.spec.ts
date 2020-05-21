@@ -1,9 +1,10 @@
 import { Shallow } from 'shallow-render';
 
-import { ColorScheme, ColorSchemePopupComponent } from './color-scheme-popup.component';
+import { ColorScheme } from '../color-schemes';
+import { ColorSchemePopupComponent } from './color-scheme-popup.component';
 import { ColorSchemePopupModule } from './color-scheme-popup.module';
 
-describe('FiltersContentComponent', () => {
+describe('ColorSchemePopupComponent', () => {
   let shallow: Shallow<ColorSchemePopupComponent>;
   const testScheme: ColorScheme = {
     type: 'discrete',
@@ -16,16 +17,16 @@ describe('FiltersContentComponent', () => {
     shallow = new Shallow(ColorSchemePopupComponent, ColorSchemePopupModule);
   });
 
-  it('should emit colorSchemeChange when updateScheme is called', async () => {
+  it('should emit schemeChange when updateScheme is called', async () => {
     const { instance, outputs } = await shallow.render();
     instance.updateScheme(testScheme);
-    expect(outputs.colorSchemeChange.emit).toHaveBeenCalled();
+    expect(outputs.schemeChange.emit).toHaveBeenCalled();
   });
 
-  it('should emit colorChange when updateColor is called', async () => {
+  it('should emit schemeChange when updateColor is called', async () => {
     const { instance, outputs } = await shallow.render();
     instance.updateColor('color');
-    expect(outputs.colorChange.emit).toHaveBeenCalled();
+    expect(outputs.schemeChange.emit).toHaveBeenCalled();
   });
 
   it('should emit brightnessChange when updateBrightness is called', async () => {

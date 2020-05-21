@@ -1,57 +1,50 @@
-// import { Shallow } from 'shallow-render';
+import { Shallow } from 'shallow-render';
 
-// import { ColorScheme } from '.././color-scheme-popup/color-scheme-popup.component';
-// import { ColorBarComponent } from './color-bar.component';
-// import { ColorBarModule } from './color-bar.module';
+import { ColorScheme } from '../color-schemes';
+import { ColorBarComponent } from './color-bar.component';
+import { ColorBarModule } from './color-bar.module';
 
-// describe('ColorSchemeContentsComponent', () => {
-//   let shallow: Shallow<ColorBarComponent>;
+describe('ColorBarComponent', () => {
+  let shallow: Shallow<ColorBarComponent>;
 
-//   beforeEach(() => {
-//     shallow = new Shallow(ColorBarComponent, ColorBarModule);
-//   });
+  const testScheme: ColorScheme = {
+    type: 'discrete',
+    name: 'test',
+    colors: ['red', 'blue', 'yellow'],
+    positions: [0, 0.5, 1]
+  };
 
-//   it('should emit brightnessChange when brightness is changed', async () => {
-//     const { instance, outputs } = await shallow.render();
-//     instance.brightness = [0, 100];
-//     instance.brightnessChanged();
-//     expect(outputs.brightnessChange.emit).toHaveBeenCalled();
-//   });
+  const testScheme2: ColorScheme = {
+    type: 'gradient',
+    name: 'testgradient',
+    colors: ['red', 'blue', 'yellow'],
+    positions: [0, 0.5, 1]
+  };
 
-//   it('should emit transparencyChange when transparency is changed', async () => {
-//     const { instance, outputs } = await shallow.render();
-//     instance.transparencyChanged();
-//     expect(outputs.transparencyChange.emit).toHaveBeenCalled();
-//   });
+  beforeEach(() => {
+    shallow = new Shallow(ColorBarComponent, ColorBarModule);
+  });
 
-//   // it('should emit schemeChange when scheme is selected', async () => {
-//   //   const { instance, outputs } = await shallow
-//   //     .render({ bind: { schemeOptions: Array(8).fill(mockScheme) } });
+  it('should emit the selected color when colorChanged is called', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme } });
+    instance.colorChanged(1);
+    expect(outputs.colorChange.emit).toHaveBeenCalledWith('blue');
+  });
 
-//   //   instance.schemeChanged(3);
-//   //   expect(outputs.colorSchemeChange.emit).toHaveBeenCalledWith(mockScheme);
-//   //   expect(instance.schemeSelectedStatus[3]).toBe(true);
-//   // });
+  it('should emit undefined when colorChanged is called on a gradient', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme2 } });
+    instance.colorChanged(1);
+    expect(outputs.colorChange.emit).toHaveBeenCalledWith(undefined);
+  });
 
-//   it('should emit colorChange when colorChanged is called', async () => {
-//     const testScheme: ColorScheme = {
-//       type: 'discrete',
-//       name: 'test',
-//       colors: ['red', 'blue', 'yellow'],
-//       positions: [0, 1]
-//     };
+  it('should generate the linear gradient css dynamically from gradient colors', async () => {
+    const { instance } = await shallow.render({ bind: { colorScheme: testScheme2 } });
+    expect(instance.gradientStyle).toBe('linear-gradient(to right, red 0%, blue 50%, yellow 100%)');
+  });
 
-//     const testScheme2: ColorScheme = {
-//       type: 'discrete',
-//       name: 'test2',
-//       colors: ['orange', 'green', 'purple'],
-//       positions: [0, 1]
-//     };
+  it('flags a gradient as selected when it is selected', async () => {
+    const { instance } = await shallow.render({ bind: { colorScheme: testScheme2, selected: true } });
+    expect(instance.gradientHighlight()).toBe(true);
+  });
 
-//     const options = [testScheme, testScheme2];
-//     const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme, schemeOptions: options } });
-//     instance.colorChanged([0, 0]);
-//     expect(outputs.colorChange.emit).toHaveBeenCalledWith('red');
-//   });
-
-// });
+});

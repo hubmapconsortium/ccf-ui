@@ -61,12 +61,4 @@ export class ColorBarComponent {
     const selectedColor = this.colorScheme.type === 'discrete' ? this.colorScheme.colors[idx] : undefined;
     this.colorChange.emit(selectedColor);
   }
-
-  /**
-   * Used to determine if a color is currently selected
-   * @param idx  color index to be compared
-   */
-  isColorSelected(idx: number) {
-    return this.selectedColorIndex === idx;
-  }
 }
