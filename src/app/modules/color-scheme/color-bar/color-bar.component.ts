@@ -46,7 +46,6 @@ export class ColorBarComponent {
 
   /**
    * Returns whether or not the scheme is a selected gradient (for highlighting purposes)
-   * @param i scheme index
    */
   gradientHighlight() {
     return this.colorScheme.type === 'gradient' && this.selected ? true : false;
@@ -54,20 +53,20 @@ export class ColorBarComponent {
 
   /**
    * After a color selected, changes selectedColorIndex to the index of the selected color and emits the selected color
-   * @param colorpos [scheme index, color index]
+   * @param idx  index of the selected color
    */
-  colorChanged(index: number) {
+  colorChanged(idx: number) {
     this.selected = true;
-    this.selectedColorIndex = index;
-    const selectedColor = this.colorScheme.type === 'discrete' ? this.colorScheme.colors[index] : undefined;
+    this.selectedColorIndex = idx;
+    const selectedColor = this.colorScheme.type === 'discrete' ? this.colorScheme.colors[idx] : undefined;
     this.colorChange.emit(selectedColor);
   }
 
   /**
    * Used to determine if a color is currently selected
-   * @param n color index to be compared
+   * @param idx  color index to be compared
    */
-  isColorSelected(n: number) {
-    return this.selectedColorIndex === n;
+  isColorSelected(idx: number) {
+    return this.selectedColorIndex === idx;
   }
 }

@@ -59,7 +59,7 @@ export class ColorSchemeContentsComponent {
   @Output() transparencyChange = new EventEmitter<number>();
 
   /**
-   * Array to keep track of which scheme is currently selected (for highlighting purposes)
+   * Index of the currently selected scheme in schemeOptions
    */
   selectedSchemeIndex = 0;
 
@@ -91,25 +91,21 @@ export class ColorSchemeContentsComponent {
 
   /**
    * Handles change in scheme selection
-   * @param n position of the selected scheme
+   * @param idx  index of the selected scheme
    */
-  schemeChanged(n: number) {
-    this.colorScheme = this.schemeOptions[n];
-    this.selectedSchemeIndex = n;
+  schemeChanged(idx: number) {
+    this.colorScheme = this.schemeOptions[idx];
+    this.selectedSchemeIndex = idx;
     this.colorSchemeChange.emit(this.colorScheme);
   }
 
   /**
-   * Emits the currently selected color and switches to the appropriate scheme
-   * @param colorpos [scheme index, color index]
+   * Emits the selected color and switches the color property to the current color
+   * @param color  the newly selected color
    */
   colorChanged(color: string | undefined) {
     this.color = color;
     this.colorChange.emit(color);
-  }
-
-  isSelected(i: number) {
-    return this.selectedSchemeIndex === i;
   }
 
   /**

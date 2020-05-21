@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
-import { ColorScheme, DEFAULT_COLOR_SCHEMES, ColorSchemeSelection } from '../color-schemes';
+import { ColorScheme, ColorSchemeSelection, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 
 /**
  * Component for the scheme selector popup
@@ -42,6 +42,9 @@ export class ColorSchemePopupComponent {
    */
   @Input() transparency = 0;
 
+  /**
+   * Emitter containing information on selected scheme and color
+   */
   @Output() schemeChange = new EventEmitter<ColorSchemeSelection>();
 
   /**
@@ -79,21 +82,21 @@ export class ColorSchemePopupComponent {
   }
 
   /**
-   * Updates current color scheme and emits the new color scheme
+   * Updates current color scheme and emits schemeChange
    * @param scheme = the new selected scheme
    */
   updateScheme(scheme: ColorScheme) {
     this.colorScheme = scheme;
-    this.schemeChange.emit({scheme: this.colorScheme, color: this.color});
+    this.schemeChange.emit({ scheme: this.colorScheme, color: this.color });
   }
 
   /**
-   * Updates current selected color and emits the new color
+   * Updates current selected color and emits schemeChange
    * @param color = the new selected color
    */
   updateColor(color: string | undefined) {
     this.color = color;
-    this.schemeChange.emit({scheme: this.colorScheme, color: this.color});
+    this.schemeChange.emit({ scheme: this.colorScheme, color: this.color });
   }
 
   /**
