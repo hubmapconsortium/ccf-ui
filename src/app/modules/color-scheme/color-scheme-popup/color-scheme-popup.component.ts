@@ -91,8 +91,8 @@ export class ColorSchemePopupComponent {
   }
 
   /**
-   * Updates current selected color and emits schemeChange
-   * @param color = the new selected color
+   * Updates current selected color index and emits schemeChange
+   * @param coloridx = the new selected color index
    */
   updateColor(coloridx: number) {
     this.coloridx = coloridx;

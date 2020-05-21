@@ -111,7 +111,7 @@ export const DEFAULT_COLOR_SCHEMES =
   [scheme1, scheme2, scheme3, scheme4, scheme5, scheme6, scheme7, scheme8];
 
 /**
- * Object containing scheme and color info to be emitted when a change is made
+ * Object containing scheme and color index info to be emitted when a change is made
  */
 export interface ColorSchemeSelection {
 

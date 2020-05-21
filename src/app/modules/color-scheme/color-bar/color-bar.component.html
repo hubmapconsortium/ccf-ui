@@ -1,7 +1,6 @@
 <div class="scheme-container" [class.selected-scheme]="selected" *ngIf="colorScheme.type === 'discrete'">
-  <div class="discrete" *ngFor="color of colorScheme.colors; index as i"
-    [class.selected-color]="coloridx === i" [style.background-color]="colorScheme.colors[i]"
-    (click)="colorChanged(i)">
+  <div class="discrete" *ngFor="color of colorScheme.colors; index as i" [class.selected-color]="coloridx === i"
+    [style.background-color]="colorScheme.colors[i]" (click)="colorChanged(i)">
   </div>
 </div>
 

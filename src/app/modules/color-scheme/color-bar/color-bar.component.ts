@@ -28,7 +28,7 @@ export class ColorBarComponent {
   @Input() coloridx = 0;
 
   /**
-   * Emits the newly selected color
+   * Emits the newly selected color index
    */
   @Output() colorChange = new EventEmitter<number>();
 
@@ -52,7 +52,7 @@ export class ColorBarComponent {
   }
 
   /**
-   * After a color selected, changes selectedColorIndex to the index of the selected color and emits the selected color
+   * After a color selected, changes coloridx to the index of the selected color and emits the selected color index
    * @param idx  index of the selected color
    */
   colorChanged(idx: number) {
