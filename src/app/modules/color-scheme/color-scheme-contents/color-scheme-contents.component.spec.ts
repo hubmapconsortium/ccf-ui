@@ -35,11 +35,4 @@ describe('ColorSchemeContentsComponent', () => {
     instance.transparencyChanged();
     expect(outputs.transparencyChange.emit).toHaveBeenCalled();
   });
-
-  it('should emit colorChange when colorChanged is called', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme, schemeOptions: DEFAULT_COLOR_SCHEMES } });
-    instance.colorChanged(instance.colorScheme.colors[0]);
-    expect(outputs.colorChange.emit).toHaveBeenCalledWith('red');
-  });
-
 });

@@ -80,8 +80,8 @@ const scheme5: ColorScheme = {
 const scheme6: ColorScheme = {
   type: 'gradient',
   name: 'viridis',
-  colors: ['#FFE31C', '#21908A', '#450B57'],
-  positions: [0, .5, 1]
+  colors: ['#FFE31C', '#B5C740', '#6BAB65', '#21908A', '#2D6379', '#393768', '#450B57'],
+  positions: [0, .166, .333, .5, .666, .833, 1]
 };
 
 /**
@@ -90,8 +90,8 @@ const scheme6: ColorScheme = {
 const scheme7: ColorScheme = {
   type: 'gradient',
   name: 'magma',
-  colors: ['#F8FC9D', '#B4335A', '#020202'],
-  positions: [0, .5, 1]
+  colors: ['#F8FC9D', '#E1B986', '#CA7670', '#B4335A', '#78223C', '#3D121F', '#020202'],
+  positions: [0, .166, .333, .5, .666, .833, 1]
 };
 
 /**
@@ -100,8 +100,8 @@ const scheme7: ColorScheme = {
 const scheme8: ColorScheme = {
   type: 'gradient',
   name: 'plasma',
-  colors: ['#F2F424', '#C6427E', '#0C1687'],
-  positions: [0, .5, 1]
+  colors: ['#F2F424', '#E3B842', '#D47D60', '#C6427E', '#883381', '#4A2484', '#0C1687'],
+  positions: [0, .166, .333, .5, .666, .833, 1]
 };
 
 /**
@@ -121,7 +121,7 @@ export interface ColorSchemeSelection {
   scheme: ColorScheme;
 
   /**
-   * Current color selected
+   * Index of the selected color in scheme
    */
-  color: string | undefined;
+  coloridx: number;
 }

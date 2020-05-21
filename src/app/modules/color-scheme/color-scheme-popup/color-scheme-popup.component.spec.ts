@@ -20,19 +20,20 @@ describe('ColorSchemePopupComponent', () => {
   it('should emit schemeChange when updateScheme is called', async () => {
     const { instance, outputs } = await shallow.render();
     instance.updateScheme(testScheme);
-    expect(outputs.schemeChange.emit).toHaveBeenCalled();
+    expect(outputs.schemeChange.emit).toHaveBeenCalledWith({ scheme: testScheme, coloridx: 0 });
   });
 
   it('should emit schemeChange when updateColor is called', async () => {
     const { instance, outputs } = await shallow.render();
-    instance.updateColor('color');
-    expect(outputs.schemeChange.emit).toHaveBeenCalled();
+    instance.updateScheme(testScheme);
+    instance.updateColor(1);
+    expect(outputs.schemeChange.emit).toHaveBeenCalledWith({ scheme: testScheme, coloridx: 1 });
   });
 
   it('should emit brightnessChange when updateBrightness is called', async () => {
     const { instance, outputs } = await shallow.render();
     instance.updateBrightness([0, 1]);
-    expect(outputs.brightnessChange.emit).toHaveBeenCalled();
+    expect(outputs.brightnessChange.emit).toHaveBeenCalledWith([0, 1]);
   });
 
   it('should emit transparencyChange when updateTransparency is called', async () => {

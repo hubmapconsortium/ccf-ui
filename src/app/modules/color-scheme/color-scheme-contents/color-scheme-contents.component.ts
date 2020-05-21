@@ -24,9 +24,9 @@ export class ColorSchemeContentsComponent {
   @Input() colorScheme: ColorScheme;
 
   /**
-   * Current color selected (undefined for gradients)
+   * Index of current selected color
    */
-  @Input() color: string | undefined;
+  @Input() coloridx = 0;
 
   /**
    * Current brightness setting
@@ -42,11 +42,6 @@ export class ColorSchemeContentsComponent {
    * Emitted when there is a color scheme change
    */
   @Output() colorSchemeChange = new EventEmitter<ColorScheme>();
-
-  /**
-   * Emitted when the selected color changes
-   */
-  @Output() colorChange = new EventEmitter<string | undefined>();
 
   /**
    * Emitted when the brightness selection changes
@@ -97,15 +92,6 @@ export class ColorSchemeContentsComponent {
     this.colorScheme = this.schemeOptions[idx];
     this.selectedSchemeIndex = idx;
     this.colorSchemeChange.emit(this.colorScheme);
-  }
-
-  /**
-   * Emits the selected color and switches the color property to the current color
-   * @param color  the newly selected color
-   */
-  colorChanged(color: string | undefined) {
-    this.color = color;
-    this.colorChange.emit(color);
   }
 
   /**

@@ -23,14 +23,14 @@ export class ColorBarComponent {
   @Input() selected = false;
 
   /**
-   * Emits the newly selected color
-   */
-  @Output() colorChange = new EventEmitter<string | undefined>();
-
-  /**
    * Index of the currently selected color in colorScheme.colors
    */
-  selectedColorIndex = 0;
+  @Input() coloridx = 0;
+
+  /**
+   * Emits the newly selected color
+   */
+  @Output() colorChange = new EventEmitter<number>();
 
   /**
    * Enables dynamic styling for gradient bars
@@ -57,8 +57,7 @@ export class ColorBarComponent {
    */
   colorChanged(idx: number) {
     this.selected = true;
-    this.selectedColorIndex = idx;
-    const selectedColor = this.colorScheme.type === 'discrete' ? this.colorScheme.colors[idx] : undefined;
-    this.colorChange.emit(selectedColor);
+    this.coloridx = idx;
+    this.colorChange.emit(idx);
   }
 }

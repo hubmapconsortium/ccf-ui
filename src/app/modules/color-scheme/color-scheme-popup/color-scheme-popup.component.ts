@@ -28,9 +28,9 @@ export class ColorSchemePopupComponent {
   @Input() schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
 
   /**
-   * Current color selected (undefined for gradients)
+   * Current color index
    */
-  @Input() color: string | undefined = DEFAULT_COLOR_SCHEMES[0].colors[0];
+  @Input() coloridx = 0;
 
   /**
    * Brightness of selected scheme
@@ -87,16 +87,16 @@ export class ColorSchemePopupComponent {
    */
   updateScheme(scheme: ColorScheme) {
     this.colorScheme = scheme;
-    this.schemeChange.emit({ scheme: this.colorScheme, color: this.color });
+    this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
   }
 
   /**
    * Updates current selected color and emits schemeChange
    * @param color = the new selected color
    */
-  updateColor(color: string | undefined) {
-    this.color = color;
-    this.schemeChange.emit({ scheme: this.colorScheme, color: this.color });
+  updateColor(coloridx: number) {
+    this.coloridx = coloridx;
+    this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
   }
 
   /**
