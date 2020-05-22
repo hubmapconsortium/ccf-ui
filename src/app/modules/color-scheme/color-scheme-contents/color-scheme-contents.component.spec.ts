@@ -7,13 +7,6 @@ import { ColorSchemeContentsModule } from './color-scheme-contents.module';
 describe('ColorSchemeContentsComponent', () => {
   let shallow: Shallow<ColorSchemeContentsComponent>;
 
-  const testScheme: ColorScheme = {
-    type: 'discrete',
-    name: 'test',
-    colors: ['red', 'blue', 'yellow'],
-    positions: [0, 1]
-  };
-
   beforeEach(() => {
     shallow = new Shallow(ColorSchemeContentsComponent, ColorSchemeContentsModule);
   });
