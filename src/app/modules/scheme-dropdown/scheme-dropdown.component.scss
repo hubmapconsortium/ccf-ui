@@ -1,12 +1,19 @@
-::ng-deep .mat-option-text {
-  display: flex;
-}
-
-.scheme-swatch {
-  display: flex;
-}
-
 .scheme-options {
-  display: flex;
-  flex-direction: column;
+  ::ng-deep .mat-option-text {
+    display: flex !important;
+    justify-content: center;
+
+    .scheme-radio-button {
+      .swatch {
+        background-color: black;
+        display: flex;
+        width: 7rem;
+        height: 1rem;
+    
+        :hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }

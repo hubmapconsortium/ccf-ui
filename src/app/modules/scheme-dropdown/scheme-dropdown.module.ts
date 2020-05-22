@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
+import { ColorBarModule } from '../../modules/color-scheme/color-bar/color-bar.module';
 import { SchemeDropdownComponent } from './scheme-dropdown.component';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { SchemeDropdownComponent } from './scheme-dropdown.component';
     CommonModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    ColorBarModule
   ],
   exports: [SchemeDropdownComponent]
 })
