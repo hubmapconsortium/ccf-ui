@@ -15,7 +15,6 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
 import { ResultsBrowserModule } from './modules/results-browser/results-browser/results-browser.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,

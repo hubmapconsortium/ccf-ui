@@ -5,7 +5,7 @@
 /** Testing environment configuration. */
 export const environment = {
   production: false,
-  ontologyUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf-partonomy.jsonld',
+  ontologyUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-partonomy.jsonld',
   organNodes: [
     'http://purl.obolibrary.org/obo/UBERON_0000948', // Heart
     'http://purl.obolibrary.org/obo/LMHA_00211', // Lung
@@ -16,10 +16,10 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0001052' // Rectum
   ],
   dbOptions: {
-    ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf.owl',
-    ccfContextUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/hubmap-ontology@gh-pages/ccf-context.jsonld',
+    ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
+    ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'static',
-    hubmapDataUrl: '/assets/dev-data/entities.json'
+    hubmapDataUrl: '/assets/dev-data/entities.jsonld'
   }
 };
 

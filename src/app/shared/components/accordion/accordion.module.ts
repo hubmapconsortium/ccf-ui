@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AccordionComponent } from './accordion.component';
-import { SchemeDropdownModule } from '../../../modules/scheme-dropdown/scheme-dropdown.module';
+import { ColorSchemePopupModule } from '../../../modules/color-scheme/color-scheme-popup/color-scheme-popup.module';
 
 
 @NgModule({
-  imports: [CommonModule, MatExpansionModule, SchemeDropdownModule],
+  imports: [CommonModule, MatExpansionModule, ColorSchemePopupModule],
   declarations: [AccordionComponent],
   exports: [AccordionComponent]
 })

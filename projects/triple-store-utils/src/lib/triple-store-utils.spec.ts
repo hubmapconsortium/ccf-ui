@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 import { Sink } from 'rdf-js';
 import { Readable } from 'readable-stream';
 
-import { addJsonLdToStore, addRdfXmlToStore, arrayToStream, streamToArray } from './triple-store-utils';
+import { addJsonLdToStore, addRdfXmlToStore, arrayToStream, streamToArray, addN3ToStore } from './triple-store-utils';
 
 
 type Store = Sink<EventEmitter, EventEmitter>;
@@ -117,14 +117,14 @@ describe('triple-store-utils', () => {
   });
 
   describe('addJsonLdToStore(uri, store)', () => {
-    const uri = 'test-uri';
+    const uri = 'http://test-uri';
     let fetchSpy: jasmine.Spy<typeof fetch>;
     let responseSpy: jasmine.SpyObj<Response>;
     let storeSpy: jasmine.SpyObj<Store>;
 
     beforeEach(async () => {
       fetchSpy = spyOn(getGlobalThis(), 'fetch');
-      responseSpy = jasmine.createSpyObj<Response>('Response', ['json']);
+      responseSpy = jasmine.createSpyObj<Response>('Response', ['json'], ['ok']);
       storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
 
       fetchSpy.and.resolveTo(responseSpy);
@@ -133,13 +133,13 @@ describe('triple-store-utils', () => {
       await addJsonLdToStore(uri, storeSpy);
     });
 
-    it('fetches data from the uri', () => {
+    it('fetches data from the bad uri', () => {
       expect(fetchSpy).toHaveBeenCalledWith(uri, jasmine.anything());
-      expect(responseSpy.json).toHaveBeenCalled();
+      expect(responseSpy.json).toHaveBeenCalledTimes(0);
     });
 
-    it('adds data to the store', () => {
-      expect(storeSpy.import).toHaveBeenCalled();
+    it('does not add bad data to the store', () => {
+      expect(storeSpy.import).toHaveBeenCalledTimes(0);
     });
   });
 
@@ -158,14 +158,14 @@ describe('triple-store-utils', () => {
   });
 
   describe('addRdfXmlToStore(uri, store)', () => {
-    const uri = 'test-uri';
+    const uri = 'http://test-uri';
     let fetchSpy: jasmine.Spy<typeof fetch>;
     let responseSpy: jasmine.SpyObj<Response>;
     let storeSpy: jasmine.SpyObj<Store>;
 
     beforeEach(async () => {
       fetchSpy = spyOn(getGlobalThis(), 'fetch');
-      responseSpy = jasmine.createSpyObj<Response>('Response', ['text']);
+      responseSpy = jasmine.createSpyObj<Response>('Response', ['text'], ['ok']);
       storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
 
       fetchSpy.and.resolveTo(responseSpy);
@@ -175,9 +175,55 @@ describe('triple-store-utils', () => {
       await addRdfXmlToStore(uri, storeSpy);
     });
 
-    it('fetches data from the uri', () => {
+    it('fetches data from the bad uri', () => {
       expect(fetchSpy).toHaveBeenCalledWith(uri, jasmine.anything());
-      expect(responseSpy.text).toHaveBeenCalled();
+      expect(responseSpy.text).toHaveBeenCalledTimes(0);
+    });
+
+    it('does not add bad data to the store', () => {
+      expect(storeSpy.import).toHaveBeenCalledTimes(0);
+    });
+  });
+
+  describe('addN3ToStore(uri, store)', () => {
+    const uri = 'http://test-uri';
+    let fetchSpy: jasmine.Spy<typeof fetch>;
+    let responseSpy: jasmine.SpyObj<Response>;
+    let storeSpy: jasmine.SpyObj<Store>;
+
+    beforeEach(async () => {
+      fetchSpy = spyOn(getGlobalThis(), 'fetch');
+      responseSpy = jasmine.createSpyObj<Response>('Response', ['text'], ['ok']);
+      storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
+
+      fetchSpy.and.resolveTo(responseSpy);
+      responseSpy.text.and.resolveTo('');
+
+      await addN3ToStore(uri, storeSpy);
+    });
+
+    it('fetches data from the bad uri', () => {
+      expect(fetchSpy).toHaveBeenCalledWith(uri, jasmine.anything());
+      expect(responseSpy.text).toHaveBeenCalledTimes(0);
+    });
+
+    it('does not add bad data to the store', () => {
+      expect(storeSpy.import).toHaveBeenCalledTimes(0);
+    });
+  });
+
+  describe('addN3ToStore(text, store)', () => {
+    let storeSpy: jasmine.SpyObj<Store>;
+
+    beforeEach(async () => {
+      storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
+
+      await addN3ToStore(`
+        PREFIX c: <http://example.org/cartoons#>
+        c:Tom a c:Cat.
+        c:Jerry a c:Mouse;
+                c:smarterThan c:Tom.
+      `, storeSpy);
     });
 
     it('adds data to the store', () => {

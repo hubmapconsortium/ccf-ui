@@ -14,12 +14,18 @@ export const PREFIXES = {
 /** Prefix factory. */
 export const prefixer = Util.prefixes(PREFIXES, DataFactory);
 
+export const rdf = {
+  x: prefixer('rdf'),
+  type: DataFactory.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
+};
+
 /** Common entity ids. */
 export const entity = {
   x: prefixer('entity'),
   id: prefixer('entity')('id'),
   sex: prefixer('entity')('sex'),
   age: prefixer('entity')('age'),
+  bmi: prefixer('entity')('bmi'),
   Male: DataFactory.literal('Male'),
   Female: DataFactory.literal('Female'),
   groupName: prefixer('entity')('groupName'),
@@ -34,6 +40,16 @@ const ccfx = prefixer('ccf');
 /** CCF specific ids. */
 export const ccf = {
   x: ccfx,
+  spatial: {
+    Body: ccfx('VHBody'),
+    Female: ccfx('VHFemale'),
+    Male: ccfx('VHMale'),
+    BothSexes: ccfx('VHBothSexes'),
+    FemaleOrgans: ccfx('VHFemaleOrgans')
+  },
+  SpatialObjectReference: ccfx('SpatialObjectReference'),
+  SpatialEntity: ccfx('SpatialEntity'),
+  SpatialPlacement: ccfx('SpatialPlacement'),
   spatialObjectReference: {
     file: ccfx('has_object_file'),
     file_format: ccfx('has_object_file_format'),
@@ -49,7 +65,7 @@ export const ccf = {
     x_dimension: ccfx('has_x_dimension'),
     y_dimension: ccfx('has_y_dimension'),
     z_dimension: ccfx('has_z_dimension'),
-    dimension_Units: ccfx('has_dimension_units'),
+    dimension_units: ccfx('has_dimension_units'),
     object: ccfx('has_object_reference')
   },
   spatialPlacement: {

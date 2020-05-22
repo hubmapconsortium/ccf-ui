@@ -1,103 +1,77 @@
-// tslint:disable: no-any
-// tslint:disable: no-unsafe-any
 import { CompositeLayer, COORDINATE_SYSTEM } from '@deck.gl/core';
 import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
-import { load } from '@loaders.gl/core';
+import { load, registerLoaders } from '@loaders.gl/core';
+import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
 import { GLTFLoader } from '@loaders.gl/gltf';
 import { CubeGeometry } from '@luma.gl/core';
-import { Matrix4, toRadians } from '@math.gl/core';
-import { fromEuler } from 'quaternion';
-import toEuler from 'quaternion-to-euler';
+import { Matrix4 } from '@math.gl/core';
 
 
-const TEST_DATA = [
-  {
-    color: [255, 255, 255, 0.9*255],
-    position: [0, 2.4, 0],
-    scale: [0.2, 0.2, 0.2],
-    rotation: [0, 0, 0],
-    translation: [0, 0, 0],
-    tooltip: 'Test BBOX'
-  },
-  {
-    scenegraph: '/assets/test-data/VHF_Heart_Kidney_Spleen.glb',
-    color: [255, 0, 0, 1*255],
-    position: [0, 0, 0],
-    scale: [1, 1, 1],
-    rotation: [0, 0, 0],
-    translation: [0, 0, 0],
-    tooltip: 'VHF Organs',
-    _lighting: 'pbr'
-  },
-  {
-    scenegraph: '/assets/test-data/both-sexes-torso.glb',
-    unpickable: true,
-    color: [255, 255, 255, 1*255],
-    position: [0, 0, 0],
-    scale: [1, 1, 1],
-    rotation: [0, 0, 0],
-    translation: [0, 0, 0],
-    tooltip: 'Torso Backdrop',
-    _lighting: undefined
-  },
-];
-
-function getTransformMatrix(model: any): number[][] /*Matrix4*/ {
-  const tx = new Matrix4([]).identity();
-  const P: number[] = model.position;
-  const T: number[] = model.translation.map(toRadians);
-  const R: any = toEuler(fromEuler(model.rotation[0], model.rotation[1], model.rotation[2], 'XYZ').toVector());
-  const S: number[] = model.scale;
-
-  tx
-    .translate(P)
-    .translate(T)
-    .rotateXYZ(R)
-    .scale(S);
-
-  return tx;
-}
+// Programmers Note: had to disable tslint in a few places due to deficient typings.
 
 export class BodyUIData {
-
+  unpickable?: boolean;
+  wireframe?: boolean;
+  _lighting?: string;
+  scenegraph?: string;
+  color?: [number, number, number, number];
+  transformMatrix: Matrix4;
+  tooltip: string;
 }
 
-export class BodyUILayerProps {
-
+function loadGLTF(model: BodyUIData): Promise<unknown> {
+  // tslint:disable-next-line: no-unsafe-any
+  return load(model.scenegraph, GLTFLoader, {DracoLoader, decompress: true, postProcess: true}) as Promise<unknown>;
 }
 
-export const bodyUIDefaultProps: BodyUILayerProps = {
+function meshLayer(id: string, data: BodyUIData[], options: {[key: string]: unknown}): unknown {
+  return new SimpleMeshLayer({
+    ...{
+      id,
+      pickable: true,
+      autoHighlight: true,
+      highlightColor: [30, 136, 229, 0.5*255],
+      coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
+      data,
+      // tslint:disable-next-line: no-unsafe-any
+      mesh: new CubeGeometry(),
+      wireframe: false,
+      getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
+      getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
+    },
+    ...options
+  });
+}
 
-};
-
-export class BodyUILayer<D = any> extends CompositeLayer<D> {
+export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
   renderLayers() {
+    // tslint:disable-next-line: no-unsafe-any
+    const data = (this.state.data || this.props.data) as BodyUIData[];
+    const cubes = data.filter(d => !d.scenegraph && !d.wireframe);
+    const wireframes = data.filter(d => !d.scenegraph && d.wireframe);
+    const models = data.filter(d => !!d.scenegraph);
+
+    // tslint:disable-next-line: no-unsafe-any
+    registerLoaders([DracoWorkerLoader, GLTFLoader]);
+
     return [
-      new SimpleMeshLayer({
-        id: 'test-cubes1',
-        pickable: true,
-        autoHighlight: true,
-        highlightColor: [30, 136, 229, 0.5*255],
-        coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-        data: TEST_DATA.filter(d => !d.scenegraph),
-        getTransformMatrix: (d: any) => getTransformMatrix(d),
-        mesh: new CubeGeometry(),
-        getColor: (d: any) => d.color || [255, 255, 255, 0.9*255],
-        wireframe: false
-      }),
-      ...TEST_DATA.filter(d => !!d.scenegraph).map((model, i) =>
+      cubes.length ? meshLayer('cubes', cubes, {wireframe: false}) : undefined,
+      wireframes.length ? meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}) : undefined,
+      ...models.map((model, i) =>
         new ScenegraphLayer({
-          id: 'test-models-' + i,
-          pickable: !model.unpickable,
-          coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-          data: [model],
-          scenegraph: load(model.scenegraph, GLTFLoader, {postProcess: true}),
-          getTransformMatrix: (d: any) => getTransformMatrix(d),
-          getColor: (d: any) => d.color || [0, 255, 0, 0.5*255],
-          _lighting: model._lighting,  // 'pbr' | undefined
-        } as any)
+          ...{
+            id: 'models-' + i,
+            pickable: !model.unpickable,
+            coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
+            data: [model],
+            scenegraph: loadGLTF(model),
+            _lighting: model._lighting,  // 'pbr' | undefined
+            getTransformMatrix: model.transformMatrix,
+            getColor: model.color || [0, 255, 0, 0.5*255],
+          }
+        })
       )
-    ];
+    ].filter(l => !!l);
   }
 
   onClick(info: {object: {tooltip: string}}) {
@@ -111,4 +85,3 @@ export class BodyUILayer<D = any> extends CompositeLayer<D> {
 
 // Some Deck.gl things to set (which look ugly, but is required)
 ((BodyUILayer as unknown) as {layerName: string}).layerName = 'BodyUILayer';
-((BodyUILayer as unknown) as {defaultProps: BodyUILayerProps}).defaultProps = bodyUIDefaultProps;
