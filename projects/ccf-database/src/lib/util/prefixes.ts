@@ -28,12 +28,14 @@ export const entity = {
   bmi: prefixer('entity')('bmi'),
   Male: DataFactory.literal('Male'),
   Female: DataFactory.literal('Female'),
+  donor: prefixer('entity')('donor'),
+  entityType: prefixer('entity')('entityType'),
   groupName: prefixer('entity')('groupName'),
   groupUUID: prefixer('entity')('groupUUID'),
   ontologyTerms: prefixer('entity')('ontologyTerms'),
   spatialEntity: prefixer('entity')('spatialEntity'),
-  images: prefixer('entity')('images'),
-  hasImageProvider: prefixer('entity')('hasImageProvider')
+  images: prefixer('entity')('hasImage'),
+  imageProviders: prefixer('entity')('hasImageProvider')
 };
 
 /** CCF id helper. */
