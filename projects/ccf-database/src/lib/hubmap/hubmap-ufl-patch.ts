@@ -59,6 +59,13 @@ function fixOldRuiData(data: OldRuiData): OldRuiData {
   return data;
 }
 
+/**
+ * Fixes RUI Locations registred by UFL manually
+ *
+ * @param ruiLocation the original RUI location
+ * @param data the search-api raw data
+ * @returns The fixed RUI location
+ */
 export function fixUflRuiLocation(ruiLocation: OldRuiData, data: {[key: string]: unknown}): OldRuiData {
   ruiLocation = fixOldRuiData(ruiLocation);
   const sample = data.lab_tissue_sample_id as string || '';

@@ -2,8 +2,9 @@ import { Iri, JsonLd, Url } from 'jsonld/jsonld-spec';
 import { get, omit, toNumber } from 'lodash';
 import { addJsonLdToStore, N3Store } from 'triple-store-utils';
 
-import { convertOldRuiToJsonLd, OldRuiData } from './old-rui-utils';
 import { ccf, rui } from '../util/prefixes';
+import { fixUflRuiLocation } from './hubmap-ufl-patch';
+import { convertOldRuiToJsonLd, OldRuiData } from './old-rui-utils';
 
 
 type JsonDict = { [key: string]: unknown };
@@ -67,6 +68,9 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
   };
 }
 
+/**
+ * A HuBMAP Entity derived from raw data coming from the search-api.
+ */
 export class HuBMAPEntity {
   donor: JsonDict;
   ancestors: JsonDict[];
@@ -156,8 +160,11 @@ export class HuBMAPEntity {
     this.organ = this.ontologyTerms[this.ontologyTerms.length - 1];
     this.protocolUrl = this.donor.protocol_url as string;
 
-    const ruiLocation = (data.rui_location || this.ancestors[0].rui_location) as OldRuiData;
+    let ruiLocation = (data.rui_location || this.ancestors[0].rui_location) as OldRuiData;
     if (ruiLocation) {
+      if (groupUUID === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // UFL
+        ruiLocation = fixUflRuiLocation(ruiLocation, data);
+      }
       let refOrganId: string | undefined;
       if (this.organ === RUI_ORGANS.left_kidney) {
         refOrganId = ccf.x('VHRightKidney').id;
@@ -185,6 +192,9 @@ export class HuBMAPEntity {
     }
   }
 
+  /**
+   * @returns the hubmap data in JSON-LD format
+   */
   toJsonLd(): JsonLd {
     const data = this.data;
     return {
