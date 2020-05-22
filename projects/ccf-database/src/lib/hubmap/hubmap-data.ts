@@ -233,7 +233,6 @@ export async function addHubmapDataToStore(
   } else if (serviceType === 'search-api') {
     hubmapData = await fetch(dataUrl, {
       method: 'POST',
-      credentials: 'include',
       headers: {
         Authorization: `Bearer ${serviceToken}`,
         'Content-type': 'application/json'
