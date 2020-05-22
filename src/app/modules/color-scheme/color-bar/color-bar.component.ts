@@ -27,6 +27,8 @@ export class ColorBarComponent {
    */
   @Input() coloridx = 0;
 
+  @Input() enableSelection = false;
+
   /**
    * Emits the newly selected color index
    */
@@ -56,8 +58,13 @@ export class ColorBarComponent {
    * @param idx  index of the selected color
    */
   colorChanged(idx: number) {
-    this.selected = true;
-    this.coloridx = idx;
-    this.colorChange.emit(idx);
+    if (!this.enableSelection) { 
+      return; 
+    } else {
+      this.selected = true;
+      this.coloridx = idx;
+      this.colorChange.emit(idx);
+
+    }
   }
 }
