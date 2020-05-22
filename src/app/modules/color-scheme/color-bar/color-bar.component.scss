@@ -1,0 +1,22 @@
+.scheme-container {
+  display: flex;
+  .discrete {
+    width: 1rem;
+  }
+  .gradient {
+    width: 7rem;
+  }
+
+  &.selected-scheme {
+    .discrete {
+      &.selected-color {
+        border-radius: 10px;
+        border: 0px solid black;
+      }
+    }
+  }
+
+  &.highlighted {
+    outline: 1px solid white;
+  }
+}
