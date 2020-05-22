@@ -3,10 +3,10 @@
     <mat-expansion-panel-header expandedHeight="3rem">
       <mat-panel-title>Layers</mat-panel-title>
     </mat-expansion-panel-header>
-    <ccf-scheme-dropdown [schemeOptions]="schemepopup.schemeOptions"></ccf-scheme-dropdown>
-    <!-- <button id= "open-popup" (click)="schemepopup.open()">
+    <ccf-scheme-dropdown [colorScheme]="schemepopup.colorScheme" [schemeOptions]="schemepopup.schemeOptions"></ccf-scheme-dropdown>
+    <button id= "open-popup" (click)="schemepopup.open()">
       Open color scheme popup
-    </button> -->
+    </button>
     <ccf-color-scheme-popup #schemepopup></ccf-color-scheme-popup>
   </mat-expansion-panel>
 

@@ -1,9 +1,12 @@
 <div class="container">
   <mat-form-field>
-    <mat-select >
+    <mat-label>
+      <ccf-color-bar class="swatch" [colorScheme]="colorScheme"></ccf-color-bar>
+    </mat-label>
+    <mat-select>
       <mat-option *ngFor="scheme of schemeOptions; index as i" class="scheme-options">
         <mat-radio-button class="scheme-radio-button">
-          <ccf-color-bar class="swatch" [colorScheme]="schemeOptions[i]"></ccf-color-bar>
+          <ccf-color-bar class="swatch" [colorScheme]="schemeOptions[i]" (click)="schemeChanged(i)"></ccf-color-bar>
         </mat-radio-button>
       </mat-option>
     </mat-select>
