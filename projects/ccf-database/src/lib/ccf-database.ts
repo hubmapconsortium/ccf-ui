@@ -19,9 +19,11 @@ export interface CCFDatabaseOptions {
   /** Context. */
   ccfContextUrl: string;
   /** Data service type. */
-  hubmapDataService: 'static' | 'elasticsearch';
+  hubmapDataService: 'static' | 'search-api';
   /** Hubmap data url. */
   hubmapDataUrl: string;
+  /** HuBMAP Service Token. */
+  hubmapToken?: string;
 }
 
 /** Default initialization options. */
@@ -74,7 +76,7 @@ export class CCFDatabase implements DataSource {
         if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
           ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
         } else {
-          ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService));
+          ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken));
         }
       }
       await Promise.all(ops);

@@ -225,13 +225,30 @@ export class HuBMAPEntity {
  * @param serviceType The service type.
  */
 export async function addHubmapDataToStore(
-  store: N3Store, dataUrl: string, serviceType: 'static' | 'elasticsearch'
+  store: N3Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string
 ): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
     hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined) as object;
-  } else if (serviceType === 'elasticsearch') {
-    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined) as object;
+  } else if (serviceType === 'search-api') {
+    hubmapData = await fetch(dataUrl, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${serviceToken}`,
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        version: true,
+        size: 10000,
+        _source: {
+          excludes: ['donor', 'immediate_ancestors', 'immediate_descendants', 'origin_sample', 'ancestor_ids', 'descendant_ids']
+        },
+        stored_fields: ['*'],
+        script_fields: {},
+        docvalue_fields: [],
+        query: { exists: { field: 'rui_location' } }
+      })
+    }).then(r => r.ok ? r.json() : undefined) as object;
   }
   if (hubmapData) {
     await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), store);
