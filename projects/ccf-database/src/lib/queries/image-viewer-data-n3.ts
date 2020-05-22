@@ -16,9 +16,9 @@ const nonMetadataSet: { [iri: string]: string | string[] } = {
 /** Entity iri to metadata property paths. */
 const metadataSet: { [iri: string]: string } = {
   [entity.id.id]: 'UUID',
-  [entity.x('groupName').id]: 'Group (TMC) Name',
-  [entity.x('entityType').id]: 'Entity Type',
-  [entity.x('displayDOI').id]: 'Display DOI',
+  [entity.groupName.id]: 'Group (TMC) Name',
+  [entity.entityType.id]: 'Entity Type',
+  [entity.x('doi').id]: 'Display DOI',
   [entity.x('label').id]: 'Label',
   [entity.x('description').id]: 'Description',
   [entity.x('shortInfo0').id]: 'Short Info 0',
