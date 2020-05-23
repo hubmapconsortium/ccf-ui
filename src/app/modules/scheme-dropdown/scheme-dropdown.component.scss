@@ -1,13 +1,43 @@
 .container {
-  right: 0px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.scheme-options {
-  ::ng-deep .mat-option-text {
-    display: flex !important;
+::ng-deep .mat-form-field-label {
+  transform: none !important;
+}
+
+.mat-form-field-wrapper {
+  padding-right: 0rem;
+}
+
+::ng-deep .scheme-option-panel {
+  background-color: #323232;
+  box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
+  right: 0px;
+  width: 10rem;
+  height: 10rem;
+
+  .mat-option {
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+  }
+
+  .mat-option-text {
+    display: flex;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    mat-radio-group {
+      display: flex;
+      flex-direction: column;
+    }
 
     .scheme-radio-button {
+      height: 1.5rem;
+
       .swatch {
         background-color: black;
         display: flex;
@@ -17,6 +47,16 @@
         :hover {
           cursor: pointer;
         }
+      }
+    }
+  }
+}
+
+::ng-deep .mat-radio-checked {
+  .mat-radio-label {
+    .mat-radio-container {
+      .mat-radio-inner-circle {
+        background-color: blue;
       }
     }
   }

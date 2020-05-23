@@ -21,13 +21,18 @@
   animation: slideInHorizontalDropdown .3s;
   animation-fill-mode: forwards;
   box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
+  position: absolute;
+  top: 1.3rem;
+  left: .25rem;
+  border-radius: 0px;
+  font-size: 14px !important;
 
   @keyframes slideInHorizontalDropdown {
     from {
       width: 0;
     }
     to {
-      width: 8.8em;
+      width: 9.85rem;
     }
   }
 
@@ -49,18 +54,15 @@
   min-width: 0px !important;
 }
 
-.mat-form-field {
+.dropdown-form-field {
   font-size: 12px;
   height: 3rem;
   background: #424242;
   width: 100%;
-}
-
-::ng-deep .mat-form-field-wrapper {
-  padding-top: .5em;
-  padding-bottom: .5em;
-  padding-left: 1em;
-  padding-right: 1em;
+  ::ng-deep .mat-form-field-wrapper {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 }
 
 ::ng-deep .mat-select-value {
@@ -71,21 +73,5 @@
   .mat-select-arrow-wrapper {
     transform: translatey(-.5em);
     color: #616161;
-  }
-}
-
-::ng-deep .mat-form-field-infix {
-  border: 0;
-}
-
-::ng-deep .mat-select-panel-wrap {
-  transform: translatey(2em) translatex(4px);
-
-  div {
-    border-radius: 0px;
-  }
-
-  .mat-option-text {
-    font-size: 14px !important;
   }
 }
