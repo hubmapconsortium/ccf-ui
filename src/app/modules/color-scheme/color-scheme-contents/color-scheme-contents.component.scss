@@ -5,6 +5,8 @@
   height: 21rem;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  z-index: 1;
 
   .scheme-contents {
     margin: 1rem;
