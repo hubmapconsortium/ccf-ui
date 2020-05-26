@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { argv } from 'process';
-import { hubmapResponseAsJsonLd } from './lib/util/hubmap-data';
+import { hubmapResponseAsJsonLd } from './lib/hubmap/hubmap-data';
 
 
 if (argv.length === 4) {

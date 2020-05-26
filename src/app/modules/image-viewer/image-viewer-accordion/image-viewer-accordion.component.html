@@ -4,6 +4,10 @@
       <mat-panel-title>Layers</mat-panel-title>
     </mat-expansion-panel-header>
     <ccf-image-viewer-layers [layers]="testLayers"></ccf-image-viewer-layers>
+    <button id= "open-popup" (click)="schemepopup.open()">
+      Open color scheme popup
+    </button>
+    <ccf-color-scheme-popup #schemepopup></ccf-color-scheme-popup>
   </mat-expansion-panel>
 
   <mat-expansion-panel>
