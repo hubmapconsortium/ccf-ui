@@ -2,7 +2,7 @@
 
 <div class="layers-container">
     <div class="layer" *ngFor="let layer of layers">
-        <mat-checkbox [checked]="layer.selected" (change)="checkboxOnChange($event, layer)">
+        <mat-checkbox [checked]="layer.selected" (change)="checkboxOnChange(layer)">
             {{ layer.label }}
         </mat-checkbox>
         <ccf-color-picker-launcher [class.hidden]="!layer.selected" [layer]="layer" (click)="launchPicker(layer)"></ccf-color-picker-launcher>

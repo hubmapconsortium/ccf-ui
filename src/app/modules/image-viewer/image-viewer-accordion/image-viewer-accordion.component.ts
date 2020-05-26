@@ -30,7 +30,7 @@ export class ImageViewerAccordionComponent {
       color: '#B2182B',
       brightness: [20, 60],
       customizedColor: false,
-      selectionOrder: undefined
+      selectionOrder: 0
     },
     {
       selected: false,
@@ -45,7 +45,7 @@ export class ImageViewerAccordionComponent {
       color: '#2166AC',
       brightness: [20, 60],
       customizedColor: false,
-      selectionOrder: undefined
+      selectionOrder: 0
     },
     {
       selected: false,
@@ -60,7 +60,7 @@ export class ImageViewerAccordionComponent {
       color: 'orange',
       brightness: [20, 60],
       customizedColor: false,
-      selectionOrder: undefined
+      selectionOrder: 0
     },
     {
       selected: false,
@@ -75,7 +75,7 @@ export class ImageViewerAccordionComponent {
       color: 'purple',
       brightness: [20, 60],
       customizedColor: false,
-      selectionOrder: undefined
+      selectionOrder: 0
     }
   ];
 

@@ -8,5 +8,5 @@ export interface ImageViewerLayer {
   color: string;
   brightness: [number, number];
   customizedColor: boolean;
-  selectionOrder?: number;
+  selectionOrder: number;
 }
