@@ -1,1 +1,4 @@
-<div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" [style.background]="getBackground()"></div>
+<div>
+    <div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" [style.background]="getBackground()" (click)="schemepopup.open()"></div>
+    <ccf-color-scheme-popup #schemepopup></ccf-color-scheme-popup>
+</div>
