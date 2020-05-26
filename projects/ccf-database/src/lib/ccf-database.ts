@@ -80,6 +80,8 @@ export class CCFDatabase implements DataSource {
         }
       }
       await Promise.all(ops);
+      // Add a small delay to allow the triple store to settle
+      await new Promise(r => setTimeout(r, 500));
       this.graph.createGraph();
     }
     return this.store.size > 0;
