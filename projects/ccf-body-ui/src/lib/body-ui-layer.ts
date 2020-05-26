@@ -55,8 +55,8 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
     registerLoaders([DracoWorkerLoader, GLTFLoader]);
 
     return [
-      cubes.length ? meshLayer('cubes', cubes, {wireframe: false}) : undefined,
-      wireframes.length ? meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}) : undefined,
+      cubes.length > 0 ? meshLayer('cubes', cubes, {wireframe: false}) : undefined,
+      wireframes.length > 0 ? meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}) : undefined,
       ...models.map((model, i) =>
         new ScenegraphLayer({
           ...{
