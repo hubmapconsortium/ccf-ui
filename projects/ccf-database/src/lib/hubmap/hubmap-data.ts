@@ -21,9 +21,14 @@ const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
   'def5fd76-ed43-11e8-b56a-0e8017bdda58': 'TMC-Stanford'
 };
 
+function createRuiOrganLookup(): { [organName: string]: string } {
+  const lookup: { [organName: string]: string } = {};
+  Object.entries(rui).forEach(([k, v]) => lookup[k] = v.id);
+  return lookup;
+}
+
 /** RUI organ name to entity identifier. */
-const RUI_ORGANS: { [organName: string]: string } = {};
-Object.entries(rui).forEach(([k, v]) => RUI_ORGANS[k] = v.id);
+const RUI_ORGANS: { [organName: string]: string } = createRuiOrganLookup();
 
 // Taken from: https://github.com/hubmapconsortium/commons/blob/master/hubmap_commons/hubmap_const.py#L101
 /** HBM organ names to set of RUI organs. */
