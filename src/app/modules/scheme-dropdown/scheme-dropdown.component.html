@@ -3,6 +3,21 @@
     <mat-label>
       <ccf-color-bar class="swatch" [colorScheme]="colorScheme"></ccf-color-bar>
     </mat-label>
+    <mat-select disableRipple panelClass="scheme-option-panel" (selectionChange)="schemeChanged($event.value)" [class.invisible]="closed">
+      <mat-option *ngFor="scheme of schemeOptions" class="scheme-options">
+        <mat-radio-button class="scheme-radio-button">
+          <ccf-color-bar class="swatch" [colorScheme]="schemeOptions[0]"></ccf-color-bar>
+        </mat-radio-button>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<!-- <div class="container">
+  <mat-form-field class="scheme">
+    <mat-label>
+      <ccf-color-bar class="swatch" [(colorScheme)]="colorScheme"></ccf-color-bar>
+    </mat-label>
     <mat-select disableRipple panelClass="scheme-option-panel">
       <mat-option>
         <mat-radio-group  [value]="colorScheme.name">
@@ -12,11 +27,13 @@
         </mat-radio-group>
       </mat-option>
     </mat-select>
-    <!-- <ccf-color-bar class="swatch" [colorScheme]="colorScheme"></ccf-color-bar>
+  </mat-form-field>
+
+      <ccf-color-bar class="swatch" [colorScheme]="colorScheme"></ccf-color-bar>
     <mat-radio-group [value]="colorScheme.name">
       <mat-radio-button *ngFor="scheme of schemeOptions; index as i" class="scheme-radio-button" (MatRadioChange)="schemeChanged(i)" [value]="schemeOptions[i].name">
         <ccf-color-bar class="swatch" [colorScheme]="schemeOptions[i]"></ccf-color-bar>
       </mat-radio-button>
-    </mat-radio-group> -->
-  </mat-form-field>
-</div>
+    </mat-radio-group>
+
+</div> -->
