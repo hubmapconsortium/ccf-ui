@@ -62,18 +62,22 @@ export class ColorSchemePopupComponent {
    * Closes the popup only if user clicks outside the popup
    * @param target The element on which the event was fired
    */
-  // @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
-  // close(target: HTMLElement): void {
-  //   const popupElement = document.getElementById('scheme-contents');
-  //   const buttonElement = document.getElementById('open-popup');
-  //   if (!this.popupVisible ||
-  //     (buttonElement && buttonElement.contains(target)) ||
-  //     (popupElement && popupElement.contains(target))) {
-  //     return;
-  //   }
-  //   this.popupVisible = false;
-  //   console.log('off: ', this.popupVisible);
-  // }
+  @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  close(target: HTMLElement): void {
+    const popupElement = document.getElementById('scheme-contents');
+    const launchButtons = Array.from(document.getElementsByClassName('launch-button'));
+    if (!this.popupVisible ||
+      (popupElement && popupElement.contains(target))) {
+      return;
+    }
+    for (const button of launchButtons) {
+      if (button.contains(target)) {
+        return;
+      }
+    }
+    this.popupVisible = false;
+    console.log('off: ', this.popupVisible);
+  }
 
   /**
    * Opens popup
