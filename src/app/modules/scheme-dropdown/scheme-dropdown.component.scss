@@ -20,8 +20,8 @@
   width: 10rem;
   height: 10rem;
 
-  &.invisible {
-    display: none !important;
+  .mat-active {
+    background-color: #323232;
   }
 
   .mat-option-text {

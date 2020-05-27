@@ -3,10 +3,10 @@
     <mat-label>
       <ccf-color-bar class="swatch" [colorScheme]="colorScheme"></ccf-color-bar>
     </mat-label>
-    <mat-select disableRipple panelClass="scheme-option-panel" (selectionChange)="schemeChanged($event.value)" [class.invisible]="closed">
-      <mat-option *ngFor="scheme of schemeOptions" class="scheme-options">
-        <mat-radio-button class="scheme-radio-button">
-          <ccf-color-bar class="swatch" [colorScheme]="schemeOptions[0]"></ccf-color-bar>
+    <mat-select disableRipple panelClass="scheme-option-panel">
+      <mat-option *ngFor="scheme of schemeOptions; index as i" class="scheme-options" [value]="i" (click)="schemeChanged(i)">
+        <mat-radio-button class="scheme-radio-button" [checked]="i === schemeIdx">
+          <ccf-color-bar class="swatch" [colorScheme]="schemeOptions[i]"></ccf-color-bar>
         </mat-radio-button>
       </mat-option>
     </mat-select>

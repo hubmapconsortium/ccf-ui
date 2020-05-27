@@ -10,23 +10,18 @@ export class SchemeDropdownComponent implements OnInit {
 
   @Input() schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
   @Input() colorScheme: ColorScheme = DEFAULT_COLOR_SCHEMES[0];
-  closed: boolean = true;
+
+  schemeIdx = 0;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.colorScheme);
     this.schemeOptions = this.schemeOptions.filter(scheme => scheme.type === 'discrete');
   }
 
-  schemeChanged(scheme: ColorScheme) {
-    if (this.colorScheme === scheme) {
-      this.closed = true;
-    } else {
-      this.colorScheme = scheme;
-      this.closed = false;
-
-    }
+  schemeChanged(n: number) {
+    this.colorScheme = this.schemeOptions[n];
+    this.schemeIdx = n;
   }
 
 }
