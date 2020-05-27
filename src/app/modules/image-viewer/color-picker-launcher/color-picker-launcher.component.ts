@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
 import { ColorScheme } from 'src/app/core/models/color-scheme';
 
@@ -9,7 +9,8 @@ import { ColorScheme } from 'src/app/core/models/color-scheme';
 @Component({
   selector: 'ccf-color-picker-launcher',
   templateUrl: './color-picker-launcher.component.html',
-  styleUrls: ['./color-picker-launcher.component.scss']
+  styleUrls: ['./color-picker-launcher.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColorPickerLauncherComponent {
   /**
