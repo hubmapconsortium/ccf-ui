@@ -58,10 +58,9 @@ export class ImageViewerLayersComponent {
     return layers;
   }
 
-  /**
-   * Launches the color picker component, passing along the corresponding layer.
-   */
-  launchPicker(layer: ImageViewerLayer): void {
-    console.log('launch layer: ', layer);
+  layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
+    this.layers[this.layers.indexOf(referenceLayer)] = layer;
+    console.log('ref layer: ', referenceLayer);
+    console.log('layer in image-viewer-layers: ', layer);
   }
 }

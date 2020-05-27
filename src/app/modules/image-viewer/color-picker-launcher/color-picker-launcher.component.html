@@ -1,4 +1,13 @@
 <div>
-    <div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" [style.background]="getBackground()" (click)="schemepopup.open()"></div>
-    <ccf-color-scheme-popup #schemepopup></ccf-color-scheme-popup>
+    <div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" [style.background]="background" (click)="schemepopup.open()"></div>
+    <ccf-color-scheme-popup
+        #schemepopup
+        [colorScheme]="layer.colorScheme"
+        [coloridx]="layer.colorScheme.colors.indexOf(layer.color)"
+        [brightness]="layer.brightness"
+        [transparency]="layer.transparency"
+        (schemeChange)="updateLayer($event.scheme, 'colorScheme')"
+        (brightnessChange)="updateLayer($event, 'brightness')"
+        (transparencyChange)="updateLayer($event, 'transparency')"
+    ></ccf-color-scheme-popup>
 </div>

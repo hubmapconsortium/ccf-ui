@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+import { ColorScheme } from 'src/app/core/models/color-scheme';
 
 /**
  * Component dynamically displays a div with a shape and background that corresponds to the color scheme
@@ -16,11 +17,14 @@ export class ColorPickerLauncherComponent {
    */
   @Input() layer:ImageViewerLayer;
 
+  @Output() layerChange = new EventEmitter<ImageViewerLayer>();
+
   /**
    * Dynamically creates a background style for the component based on the Input layer's color or
    * color scheme
    */
-  getBackground(): string {
+  get background(): string {
+    console.log('getBackground() called');
     if (this.layer.colorScheme.type === 'discrete') { return this.layer.color; }
 
     const colors = this.layer.colorScheme.colors;
@@ -33,5 +37,11 @@ export class ColorPickerLauncherComponent {
     });
     gradient += ')';
     return gradient;
+  }
+
+  updateLayer(value, key): void {
+    this.layer = {...this.layer, [key]: value}
+    console.log('value: ', value, '\nkey: ', key);
+    this.layerChange.emit(this.layer);
   }
 }

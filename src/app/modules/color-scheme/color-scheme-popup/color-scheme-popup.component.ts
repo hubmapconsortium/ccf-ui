@@ -76,7 +76,6 @@ export class ColorSchemePopupComponent {
       }
     }
     this.popupVisible = false;
-    console.log('off: ', this.popupVisible);
   }
 
   /**
@@ -84,7 +83,6 @@ export class ColorSchemePopupComponent {
    */
   open(): void {
     this.popupVisible = !this.popupVisible;
-    console.log('here: ', this.popupVisible);
   }
 
   /**

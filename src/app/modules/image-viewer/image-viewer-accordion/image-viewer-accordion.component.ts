@@ -29,6 +29,7 @@ export class ImageViewerAccordionComponent {
       },
       color: '#B2182B',
       brightness: [20, 60],
+      transparency: 100,
       customizedColor: false,
       selectionOrder: 0
     },
@@ -44,6 +45,7 @@ export class ImageViewerAccordionComponent {
       },
       color: '#2166AC',
       brightness: [20, 60],
+      transparency: 100,
       customizedColor: false,
       selectionOrder: 0
     },
@@ -59,6 +61,7 @@ export class ImageViewerAccordionComponent {
       },
       color: 'orange',
       brightness: [20, 60],
+      transparency: 100,
       customizedColor: false,
       selectionOrder: 0
     },
@@ -74,6 +77,7 @@ export class ImageViewerAccordionComponent {
       },
       color: 'purple',
       brightness: [20, 60],
+      transparency: 100,
       customizedColor: false,
       selectionOrder: 0
     }

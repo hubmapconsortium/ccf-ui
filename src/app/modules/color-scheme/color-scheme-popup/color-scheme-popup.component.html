@@ -1,6 +1,12 @@
-<ccf-color-scheme-contents [(schemeOptions)]="schemeOptions" [(colorScheme)]="colorScheme" [(coloridx)]="coloridx"
-  [(brightness)]="brightness" [(transparency)]="transparency" (colorSchemeChange)="updateScheme($event)"
-  (brightnessChange)="updateBrightness($event)" (transparencyChange)="updateTransparency($event)"
+<ccf-color-scheme-contents
+  [(schemeOptions)]="schemeOptions"
+  [(colorScheme)]="colorScheme"
+  [(coloridx)]="coloridx"
+  [(brightness)]="brightness"
+  [(transparency)]="transparency"
+  (colorSchemeChange)="updateScheme($event)"
+  (brightnessChange)="updateBrightness($event)"
+  (transparencyChange)="updateTransparency($event)"
   (colorChange)="updateColor($event)"
   [ngClass]="popupVisible ? 'show' : 'hidden'">
 </ccf-color-scheme-contents>

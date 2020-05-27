@@ -7,6 +7,7 @@ export interface ImageViewerLayer {
   colorScheme: ColorScheme;
   color: string;
   brightness: [number, number];
+  transparency: number;
   customizedColor: boolean;
   selectionOrder: number;
 }
