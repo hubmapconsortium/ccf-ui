@@ -103,7 +103,6 @@ export class ColorSchemePopupComponent {
    */
   updateColor(coloridx: number) {
     this.coloridx = coloridx;
-    console.log('coloridx: ', coloridx);
     this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
   }
 

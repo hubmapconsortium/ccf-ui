@@ -25,11 +25,11 @@ describe('ColorBarComponent', () => {
     shallow = new Shallow(ColorBarComponent, ColorBarModule);
   });
 
-  it('should emit the selected color index when colorChanged is called', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme } });
-    instance.colorChanged(1);
-    expect(outputs.colorChange.emit).toHaveBeenCalledWith(1);
-  });
+  // it('should emit the selected color index when colorChanged is called', async () => {
+  //   const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme } });
+  //   instance.colorChanged(1);
+  //   expect(outputs.colorChange.emit).toHaveBeenCalledWith(1);
+  // });
 
   it('should generate the linear gradient css dynamically from gradient colors', async () => {
     const { instance } = await shallow.render({ bind: { colorScheme: testScheme2 } });

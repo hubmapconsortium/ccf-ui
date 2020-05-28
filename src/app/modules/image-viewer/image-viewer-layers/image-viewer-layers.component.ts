@@ -58,9 +58,15 @@ export class ImageViewerLayersComponent {
     return layers;
   }
 
+  /**
+   * This method captures changes to a layer's color options and updates the layers list accordingly
+   * before emitting the new set of active layers.
+   * @param layer the updated layer object.
+   * @param referenceLayer the layer object before the changes, used for referencing which layer in the list to update.
+   */
   layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
     this.layers[this.layers.indexOf(referenceLayer)] = layer;
     console.log('image-viewer-layers, layer: ', layer, '\nthis.layers: ', this.layers);
-    this.selectedLayers.emit(this.layers);
+    this.selectedLayers.emit(this.activeLayers());
   }
 }

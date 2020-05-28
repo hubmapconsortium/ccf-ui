@@ -18,6 +18,9 @@ export class ColorPickerLauncherComponent {
    */
   @Input() layer:ImageViewerLayer;
 
+  /**
+   * Output that passes along changes made to the layer's properties from the color picker
+   */
   @Output() layerChange = new EventEmitter<ImageViewerLayer>();
 
   /**
@@ -39,6 +42,9 @@ export class ColorPickerLauncherComponent {
     return gradient;
   }
 
+  /**
+   * Captures the layer's color and colorscheme changes and emits them up the chain
+   */
   updateScheme(colorObject): void {
     // tslint:disable-next-line: no-unsafe-any
     this.layer = {...this.layer, colorScheme: colorObject.scheme};
@@ -47,9 +53,11 @@ export class ColorPickerLauncherComponent {
     this.layerChange.emit(this.layer);
   }
 
+  /**
+   * Captures and passes along the layer's changes to brightness, transparency etc.
+   */
   updateLayer(value, key): void {
     this.layer = {...this.layer, [key]: value};
-    console.log('color-picker-launcher, layer: ', this.layer);
     this.layerChange.emit(this.layer);
   }
 }
