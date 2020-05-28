@@ -1,8 +1,8 @@
 <div class="color-scheme-contents-container">
   <div id="scheme-contents" class="scheme-contents">
-    <ccf-color-bar *ngFor="scheme of schemeOptions; index as i" class="swatch"
+    <ccf-color-bar *ngFor="let scheme of schemeOptions; index as i" class="swatch"
       [colorScheme]="schemeOptions[i]" [(coloridx)]="coloridx" [selected]="selectedSchemeIndex === i"
-      [enableSelection]="true" (click)="schemeChanged(i)">
+      (colorChange)="schemeChanged($event, i)">
     </ccf-color-bar>
 
     <div class="brightness-slider-label">Brightness</div>

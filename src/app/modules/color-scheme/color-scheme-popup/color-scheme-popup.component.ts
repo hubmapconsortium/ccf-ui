@@ -65,11 +65,15 @@ export class ColorSchemePopupComponent {
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
   close(target: HTMLElement): void {
     const popupElement = document.getElementById('scheme-contents');
-    const buttonElement = document.getElementById('open-popup');
+    const launchButtons = Array.from(document.getElementsByClassName('launch-button'));
     if (!this.popupVisible ||
-      (buttonElement && buttonElement.contains(target)) ||
       (popupElement && popupElement.contains(target))) {
       return;
+    }
+    for (const button of launchButtons) {
+      if (button.contains(target)) {
+        return;
+      }
     }
     this.popupVisible = false;
   }
@@ -78,15 +82,18 @@ export class ColorSchemePopupComponent {
    * Opens popup
    */
   open(): void {
-    this.popupVisible = true;
+    this.popupVisible = !this.popupVisible;
   }
 
   /**
    * Updates current color scheme and emits schemeChange
    * @param scheme = the new selected scheme
    */
-  updateScheme(scheme: ColorScheme) {
-    this.colorScheme = scheme;
+  updateScheme(scheme) {
+    // tslint:disable-next-line: no-unsafe-any
+    this.colorScheme = scheme.colorScheme;
+    // tslint:disable-next-line: no-unsafe-any
+    this.coloridx = scheme.coloridx;
     this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
   }
 
