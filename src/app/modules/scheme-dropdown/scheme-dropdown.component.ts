@@ -46,7 +46,7 @@ export class SchemeDropdownComponent implements OnInit {
   schemeChanged(idx: number) {
     this.colorScheme = this.schemeOptions[idx];
     this.schemeIdx = idx;
-    this.schemeChange.emit({scheme: this.colorScheme, coloridx: idx});
+    this.schemeChange.emit({ scheme: this.colorScheme, coloridx: idx });
   }
 
 }

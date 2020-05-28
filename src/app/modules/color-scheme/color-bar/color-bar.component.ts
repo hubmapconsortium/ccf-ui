@@ -57,9 +57,8 @@ export class ColorBarComponent {
   }
 
   /**
-   * After a color selected, changes coloridx to the index of the selected color and emits the 
+   * After a color selected, changes coloridx to the index of the selected color and emits the
    * selected color index (if color selection enabled)
-   * 
    * @param idx  index of the selected color
    */
   colorChanged(idx: number) {

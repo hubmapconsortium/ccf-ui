@@ -31,6 +31,13 @@ describe('ColorBarComponent', () => {
     expect(outputs.colorChange.emit).toHaveBeenCalledWith(1);
   });
 
+  it('should not emit the selected color index if enableSelection is false', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme, enableSelection: false } });
+    instance.colorChanged(1);
+    expect(outputs.colorChange.emit).not.toHaveBeenCalled();
+  });
+
+
   it('should generate the linear gradient css dynamically from gradient colors', async () => {
     const { instance } = await shallow.render({ bind: { colorScheme: testScheme2 } });
     expect(instance.gradientStyle).toBe('linear-gradient(to right, red 0%, blue 50%, yellow 100%)');
