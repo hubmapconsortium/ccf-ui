@@ -28,6 +28,11 @@ export class ColorBarComponent {
   @Input() coloridx = 0;
 
   /**
+   * Determines if colors are able to be selected on the color bar
+   */
+  @Input() enableSelection = false;
+
+  /**
    * Emits the newly selected color index
    */
   @Output() colorChange = new EventEmitter<number>();
@@ -52,12 +57,17 @@ export class ColorBarComponent {
   }
 
   /**
-   * After a color selected, changes coloridx to the index of the selected color and emits the selected color index
+   * After a color selected, changes coloridx to the index of the selected color and emits the
+   * selected color index (if color selection enabled)
    * @param idx  index of the selected color
    */
   colorChanged(idx: number) {
-    this.selected = true;
-    this.coloridx = idx;
-    this.colorChange.emit(idx);
+    if (!this.enableSelection) {
+      return;
+    } else {
+      this.selected = true;
+      this.coloridx = idx;
+      this.colorChange.emit(idx);
+    }
   }
 }
