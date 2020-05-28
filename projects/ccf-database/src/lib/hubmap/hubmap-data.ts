@@ -234,7 +234,7 @@ export async function addHubmapDataToStore(
 ): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
-    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   } else if (serviceType === 'search-api') {
     hubmapData = await fetch(dataUrl, {
       method: 'POST',
@@ -253,7 +253,7 @@ export async function addHubmapDataToStore(
         docvalue_fields: [],
         query: { exists: { field: 'rui_location' } }
       })
-    }).then(r => r.ok ? r.json() : undefined) as object;
+    }).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   }
   if (hubmapData) {
     await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), store);
