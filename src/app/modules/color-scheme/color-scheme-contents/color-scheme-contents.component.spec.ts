@@ -12,14 +12,6 @@ describe('ColorSchemeContentsComponent', () => {
     shallow = new Shallow(ColorSchemeContentsComponent, ColorSchemeContentsModule);
   });
 
-  // it('should emit the new scheme when scheme is changed', async () => {
-  //   const { instance, outputs } = await shallow.render({ bind: { schemeOptions: DEFAULT_COLOR_SCHEMES } });
-  //   const colorScheme: ColorScheme = DEFAULT_COLOR_SCHEMES[0];
-  //   const scheme: unknown = { colorScheme, coloridx: 1 };
-  //   instance.schemeChanged(scheme, 1);
-  //   expect(outputs.colorSchemeChange.emit).toHaveBeenCalledWith(scheme);
-  // });
-
   it('should emit brightnessChange when brightness is changed', async () => {
     const { instance, outputs } = await shallow.render({ bind: { schemeOptions: DEFAULT_COLOR_SCHEMES } });
     instance.brightnessChanged();

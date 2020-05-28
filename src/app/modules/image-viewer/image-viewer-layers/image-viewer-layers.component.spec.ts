@@ -83,20 +83,6 @@ describe('ImageViewerLayersComponent', () => {
     expect(activeLayers).not.toContain(layers[0]);
   });
 
-  // it('should update the layer list with any changes made a layer', async () => {
-  //   const layers = getTestLayers();
-  //   const { instance } = await shallow.render({ bind: { layers } });
-
-  //   const testLayer = layers[0];
-  //   testLayer.color = 'white';
-  //   testLayer.selected = true;
-  //   instance.layerChange(getTestLayers()[0], testLayer);
-  //   const layerIndex = instance.layers.indexOf(testLayer);
-
-  //   expect(layerIndex).toBeGreaterThanOrEqual(0);
-  //   expect(instance.layers[layerIndex].color).toEqual('white');
-  // });
-
   it('should emit the layer list whenever a layer is updated', async () => {
     const layers = getTestLayers();
     const { instance, outputs } = await shallow.render({ bind: { layers }});
