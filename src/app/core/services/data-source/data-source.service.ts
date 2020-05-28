@@ -24,7 +24,7 @@ export class DataSourceService {
    * Creates an instance of data source service.
    */
   constructor() {
-    if (typeof Worker !== 'undefined') {
+    if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
       const worker = new Worker('./data-source.worker', { type: 'module' });
       this.dataSource = wrap(worker);
     } else {
