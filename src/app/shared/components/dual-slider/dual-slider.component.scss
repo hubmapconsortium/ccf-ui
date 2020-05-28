@@ -3,6 +3,10 @@
   font-size: 12px;
   width: 100%;
   height: 3rem;
+  ::ng-deep .mat-form-field-wrapper {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 }
 
 .slider-labels {
