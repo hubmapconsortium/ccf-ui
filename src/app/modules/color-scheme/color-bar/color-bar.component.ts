@@ -58,8 +58,8 @@ export class ColorBarComponent {
    * @param idx  index of the selected color
    */
   colorChanged(idx: number) {
-    if (!this.enableSelection) { 
-      return; 
+    if (!this.enableSelection) {
+      return;
     } else {
       this.selected = true;
       this.coloridx = idx;
