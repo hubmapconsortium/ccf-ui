@@ -21,9 +21,14 @@ const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
   'def5fd76-ed43-11e8-b56a-0e8017bdda58': 'TMC-Stanford'
 };
 
+function createRuiOrganLookup(): { [organName: string]: string } {
+  const lookup: { [organName: string]: string } = {};
+  Object.entries(rui).forEach(([k, v]) => lookup[k] = v.id);
+  return lookup;
+}
+
 /** RUI organ name to entity identifier. */
-const RUI_ORGANS: { [organName: string]: string } = {};
-Object.entries(rui).forEach(([k, v]) => RUI_ORGANS[k] = v.id);
+const RUI_ORGANS: { [organName: string]: string } = createRuiOrganLookup();
 
 // Taken from: https://github.com/hubmapconsortium/commons/blob/master/hubmap_commons/hubmap_const.py#L101
 /** HBM organ names to set of RUI organs. */
@@ -229,7 +234,7 @@ export async function addHubmapDataToStore(
 ): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
-    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   } else if (serviceType === 'search-api') {
     hubmapData = await fetch(dataUrl, {
       method: 'POST',
@@ -248,7 +253,7 @@ export async function addHubmapDataToStore(
         docvalue_fields: [],
         query: { exists: { field: 'rui_location' } }
       })
-    }).then(r => r.ok ? r.json() : undefined) as object;
+    }).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   }
   if (hubmapData) {
     await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), store);

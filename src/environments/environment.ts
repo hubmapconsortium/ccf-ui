@@ -27,7 +27,7 @@ export const environment = {
     ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'static',
-    hubmapDataUrl: '/assets/dev-data/entities.json'
+    hubmapDataUrl: 'assets/dev-data/entities.json'
     // hubmapDataService: 'search-api',
     // hubmapToken: getHuBMAPToken(),
     // hubmapDataUrl: 'https://search-api.test.hubmapconsortium.org:4443/search'

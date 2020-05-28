@@ -43,6 +43,8 @@ export class BodyUI {
   }
 
   setScene(data: BodyUIData[]) {
-    this.bodyUILayer.setState({data});
+    if (data?.length > 0) {
+      this.bodyUILayer.setState({data});
+    }
   }
 }

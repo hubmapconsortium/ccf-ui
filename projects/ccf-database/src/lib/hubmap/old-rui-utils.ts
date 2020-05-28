@@ -77,7 +77,7 @@ export function convertOldRuiToJsonLd(data: OldRuiData, label?: string, refOrgan
   const T = data.tissue_position_mass_point;
 
   return {
-    '@context': 'http://purl.org/ccf/latest/ccf-context.jsonld',
+    '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     '@id': 'http://purl.org/ccf/0.5/' + data.alignment_id,
     '@type': 'SpatialEntity',
     label: label || undefined,
@@ -90,7 +90,7 @@ export function convertOldRuiToJsonLd(data: OldRuiData, label?: string, refOrgan
     x_dimension: D.x, y_dimension: D.y, z_dimension: D.z, dimension_units: 'millimeter',
 
     placement: {
-      '@context': 'http://purl.org/ccf/latest/ccf-context.jsonld',
+      '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
       '@id': 'http://purl.org/ccf/0.5/' + data.alignment_id + '_placement',
       '@type': 'SpatialPlacement',
       target: placementTarget,
