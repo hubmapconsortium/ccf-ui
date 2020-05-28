@@ -30,10 +30,10 @@
   height: 9rem;
 
   mat-option:first-child {
-    margin-top: .75rem;
+    margin-top: 0.75rem;
   }
   mat-option:last-of-type {
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
   }
 
   .mat-active {
@@ -44,7 +44,7 @@
     .mat-option-text {
       display: flex;
       justify-content: center;
-  
+
       .mat-radio-checked {
         .mat-radio-label {
           .mat-radio-container {
@@ -58,7 +58,7 @@
           }
         }
       }
-  
+
       .scheme-radio-button {
         .mat-radio-label {
           .mat-radio-container {
@@ -78,14 +78,13 @@
             padding-left: 1rem;
           }
         }
-  
-  
+
         .swatch {
           background-color: black;
           display: flex;
           width: 7rem;
           height: 1rem;
-      
+
           :hover {
             cursor: pointer;
           }
@@ -93,5 +92,4 @@
       }
     }
   }
-
 }

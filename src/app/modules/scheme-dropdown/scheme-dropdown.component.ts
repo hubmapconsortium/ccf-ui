@@ -1,6 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../../modules/color-scheme/color-schemes';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+import { ColorScheme, ColorSchemeSelection, DEFAULT_COLOR_SCHEMES } from '../../modules/color-scheme/color-schemes';
+
+/**
+ * Scheme dropdown menu (for the Layers section)
+ */
 @Component({
   selector: 'ccf-scheme-dropdown',
   templateUrl: './scheme-dropdown.component.html',
@@ -8,20 +12,41 @@ import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../../modules/color-scheme/c
 })
 export class SchemeDropdownComponent implements OnInit {
 
+  /**
+   * All scheme options available
+   */
   @Input() schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
-  @Input() colorScheme: ColorScheme = DEFAULT_COLOR_SCHEMES[0];
-  @Output() schemeChange = new EventEmitter<ColorScheme>();
 
+  /**
+   * Current color scheme
+   */
+  @Input() colorScheme: ColorScheme = DEFAULT_COLOR_SCHEMES[0];
+
+  /**
+   * Emits ColorSchemeSelection of a selected scheme
+   */
+  @Output() schemeChange = new EventEmitter<ColorSchemeSelection>();
+
+  /**
+   * Index of the currently selected scheme
+   */
   schemeIdx = 0;
 
+  /**
+   * Filters out scheme options to include only discrete schemes
+   */
   ngOnInit(): void {
     this.schemeOptions = this.schemeOptions.filter(scheme => scheme.type === 'discrete');
   }
 
-  schemeChanged(n: number) {
-    this.colorScheme = this.schemeOptions[n];
-    this.schemeIdx = n;
-    this.schemeChange.emit(this.colorScheme);
+  /**
+   * Updates the current scheme index and emits the currently selected scheme
+   * @param idx Index of the selected scheme
+   */
+  schemeChanged(idx: number) {
+    this.colorScheme = this.schemeOptions[idx];
+    this.schemeIdx = idx;
+    this.schemeChange.emit({scheme: this.colorScheme, coloridx: idx});
   }
 
 }
