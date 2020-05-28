@@ -32,8 +32,16 @@ export class DataSourceService {
     }
     this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
 
-    if (!environment.production && typeof globalThis === 'object') {
-      ((globalThis as unknown) as { db: Remote<CCFDatabase> | CCFDatabase }).db = this.dataSource;
+    if (typeof globalThis === 'object') {
+      // If a global dbOptions object is set, use this for connecting to the db
+      if (globalThis.dbOptions) {
+        this.dbOptions = {...this.dbOptions, ...globalThis.dbOptions} as CCFDatabaseOptions;
+      }
+
+      // In development, make the db globally accessible
+      if (!environment.production) {
+        ((globalThis as unknown) as { db: Remote<CCFDatabase> | CCFDatabase }).db = this.dataSource;
+      }
     }
   }
 

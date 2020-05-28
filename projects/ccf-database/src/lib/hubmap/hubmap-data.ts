@@ -9,7 +9,6 @@ import { convertOldRuiToJsonLd, OldRuiData } from './old-rui-utils';
 
 type JsonDict = { [key: string]: unknown };
 const HBM_PREFIX = 'https://entity-api.hubmapconsortium.org/entities/';
-const HBM_ASSETS = 'https://assets.test.hubmapconsortium.org/';
 
 /** UUID to TMC mapping. */
 const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
@@ -55,7 +54,7 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
  * @param data The hubmap data.
  * @returns The converted data.
  */
-export function hubmapResponseAsJsonLd(data: object): JsonLd {
+export function hubmapResponseAsJsonLd(data: object, assetsApi = ''): JsonLd {
   const entries = (get(data, 'hits.hits', []) as JsonDict[])
     .map(e => get(e, '_source', {}) as { [key: string]: unknown });
 
@@ -69,7 +68,7 @@ export function hubmapResponseAsJsonLd(data: object): JsonLd {
       images: { '@id': 'hasImage', '@type': '@id' },
       imageProviders: { '@id': 'hasImageProvider', '@type': '@id'}
     },
-    '@graph': entries.map(e => new HuBMAPEntity(e).toJsonLd())
+    '@graph': entries.map(e => new HuBMAPEntity(e, assetsApi).toJsonLd())
   };
 }
 
@@ -103,7 +102,7 @@ export class HuBMAPEntity {
   organName: string;
   spatialEntity?: JsonLd;
 
-  constructor(public data: JsonDict) {
+  constructor(public data: JsonDict, public assetsApi = '') {
     this.id = this.data.uuid as string;
     this.entityType = this.data.entity_type as 'Donor' | 'Sample' | 'Dataset';
 
@@ -185,7 +184,7 @@ export class HuBMAPEntity {
     for (const d of [ data, ...this.ancestors, ...this.descendants ]) {
       const tiffs = (get(d, 'metadata.files', []) as {rel_path: string}[])
         .filter(f => /\.(ome\.tiff)$/.test(f.rel_path))
-        .map(f => `${HBM_ASSETS}/${data.uuid}/${f.rel_path}`);
+        .map(f => `${this.assetsApi}/${data.uuid}/${f.rel_path}`);
       if (tiffs.length > 0) {
         images = images.concat(tiffs);
         imageProviders.push(HBM_PREFIX + d.uuid);
@@ -206,7 +205,7 @@ export class HuBMAPEntity {
       '@id': HBM_PREFIX + this.id,
       '@type': 'Entity',
       ...omit(this, [
-        'data', 'donor', 'ancestors', 'descendants'
+        'data', 'donor', 'ancestors', 'descendants', 'assetsApi'
       ]),
       donor: HBM_PREFIX + this.donor.uuid,
       shortInfo0: this.doi,
@@ -230,7 +229,7 @@ export class HuBMAPEntity {
  * @param serviceType The service type.
  */
 export async function addHubmapDataToStore(
-  store: N3Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string
+  store: N3Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string, assetsApi = ''
 ): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
@@ -256,7 +255,7 @@ export async function addHubmapDataToStore(
     }).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   }
   if (hubmapData) {
-    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData), store);
+    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi), store);
   } else {
     console.warn(`Unable to load ${dataUrl} as HuBMAP Data`);
   }

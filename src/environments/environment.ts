@@ -2,13 +2,6 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-function getHuBMAPToken(): string | undefined {
-  if (localStorage.getItem('info')) {
-    return (JSON.parse(localStorage.getItem('info') as string) as {nexus_token: string}).nexus_token;
-  } else {
-    return undefined;
-  }
-}
 
 /** Testing environment configuration. */
 export const environment = {
@@ -28,9 +21,6 @@ export const environment = {
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'static',
     hubmapDataUrl: 'assets/dev-data/entities.json'
-    // hubmapDataService: 'search-api',
-    // hubmapToken: getHuBMAPToken(),
-    // hubmapDataUrl: 'https://search-api.test.hubmapconsortium.org:4443/search'
   }
 };
 
