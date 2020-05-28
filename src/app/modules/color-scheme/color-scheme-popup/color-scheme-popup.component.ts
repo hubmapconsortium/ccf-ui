@@ -89,8 +89,11 @@ export class ColorSchemePopupComponent {
    * Updates current color scheme and emits schemeChange
    * @param scheme = the new selected scheme
    */
-  updateScheme(scheme: ColorScheme) {
-    this.colorScheme = scheme;
+  updateScheme(scheme) {
+    // tslint:disable-next-line: no-unsafe-any
+    this.colorScheme = scheme.colorScheme;
+    // tslint:disable-next-line: no-unsafe-any
+    this.coloridx = scheme.coloridx;
     this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
   }
 
@@ -100,6 +103,7 @@ export class ColorSchemePopupComponent {
    */
   updateColor(coloridx: number) {
     this.coloridx = coloridx;
+    console.log('coloridx: ', coloridx);
     this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
   }
 

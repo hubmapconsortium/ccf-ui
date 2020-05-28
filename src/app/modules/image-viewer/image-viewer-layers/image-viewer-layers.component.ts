@@ -60,7 +60,7 @@ export class ImageViewerLayersComponent {
 
   layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
     this.layers[this.layers.indexOf(referenceLayer)] = layer;
-    console.log('ref layer: ', referenceLayer);
-    console.log('layer in image-viewer-layers: ', layer);
+    console.log('image-viewer-layers, layer: ', layer, '\nthis.layers: ', this.layers);
+    this.selectedLayers.emit(this.layers);
   }
 }

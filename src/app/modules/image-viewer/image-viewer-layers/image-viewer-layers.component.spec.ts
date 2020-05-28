@@ -19,6 +19,7 @@ function getTestLayers(): ImageViewerLayer[] {
             },
             color: '#2166AC',
             brightness: [20, 60],
+            transparency: 100,
             customizedColor: false,
             selectionOrder: 0
           },
@@ -34,6 +35,7 @@ function getTestLayers(): ImageViewerLayer[] {
             },
             color: 'orange',
             brightness: [20, 60],
+            transparency: 100,
             customizedColor: false,
             selectionOrder: 0
           }

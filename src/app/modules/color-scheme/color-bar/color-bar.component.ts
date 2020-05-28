@@ -30,7 +30,7 @@ export class ColorBarComponent {
   /**
    * Emits the newly selected color index
    */
-  @Output() colorChange = new EventEmitter<number>();
+  @Output() colorChange = new EventEmitter<unknown>();
 
   /**
    * Enables dynamic styling for gradient bars
@@ -58,6 +58,6 @@ export class ColorBarComponent {
   colorChanged(idx: number) {
     this.selected = true;
     this.coloridx = idx;
-    this.colorChange.emit(idx);
+    this.colorChange.emit({ colorScheme: this.colorScheme, coloridx: idx});
   }
 }

@@ -25,7 +25,6 @@ export class ColorPickerLauncherComponent {
    * color scheme
    */
   get background(): string {
-    console.log('getBackground() called');
     if (this.layer.colorScheme.type === 'discrete') { return this.layer.color; }
 
     const colors = this.layer.colorScheme.colors;
@@ -40,9 +39,17 @@ export class ColorPickerLauncherComponent {
     return gradient;
   }
 
+  updateScheme(colorObject): void {
+    // tslint:disable-next-line: no-unsafe-any
+    this.layer = {...this.layer, colorScheme: colorObject.scheme};
+    // tslint:disable-next-line: no-unsafe-any
+    this.layer = {...this.layer, color: colorObject.scheme.colors[colorObject.coloridx]};
+    this.layerChange.emit(this.layer);
+  }
+
   updateLayer(value, key): void {
-    this.layer = {...this.layer, [key]: value}
-    console.log('value: ', value, '\nkey: ', key);
+    this.layer = {...this.layer, [key]: value};
+    console.log('color-picker-launcher, layer: ', this.layer);
     this.layerChange.emit(this.layer);
   }
 }

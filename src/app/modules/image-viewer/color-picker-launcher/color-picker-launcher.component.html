@@ -6,7 +6,7 @@
         [coloridx]="layer.colorScheme.colors.indexOf(layer.color)"
         [brightness]="layer.brightness"
         [transparency]="layer.transparency"
-        (schemeChange)="updateLayer($event.scheme, 'colorScheme')"
+        (schemeChange)="updateScheme($event)"
         (brightnessChange)="updateLayer($event, 'brightness')"
         (transparencyChange)="updateLayer($event, 'transparency')"
     ></ccf-color-scheme-popup>
