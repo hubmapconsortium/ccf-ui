@@ -31,7 +31,8 @@ export class ImageViewerAccordionComponent {
       brightness: [20, 60],
       transparency: 100,
       customizedColor: false,
-      selectionOrder: 0
+      selectionOrder: 0,
+      defaultOrder: 99
     },
     {
       selected: false,
@@ -47,7 +48,8 @@ export class ImageViewerAccordionComponent {
       brightness: [20, 60],
       transparency: 100,
       customizedColor: false,
-      selectionOrder: 0
+      selectionOrder: 0,
+      defaultOrder: 99,
     },
     {
       selected: false,
@@ -63,7 +65,8 @@ export class ImageViewerAccordionComponent {
       brightness: [20, 60],
       transparency: 100,
       customizedColor: false,
-      selectionOrder: 0
+      selectionOrder: 0,
+      defaultOrder: 99,
     },
     {
       selected: false,
@@ -79,7 +82,8 @@ export class ImageViewerAccordionComponent {
       brightness: [20, 60],
       transparency: 100,
       customizedColor: false,
-      selectionOrder: 0
+      selectionOrder: 0,
+      defaultOrder: 99,
     }
   ];
 

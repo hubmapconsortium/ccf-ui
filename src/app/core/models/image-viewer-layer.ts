@@ -10,4 +10,5 @@ export interface ImageViewerLayer {
   transparency: number;
   customizedColor: boolean;
   selectionOrder: number;
+  defaultOrder: number;
 }

@@ -31,6 +31,10 @@ export class ImageViewerLayersComponent {
    */
   currentLayerIndex = 0;
 
+  assignmentOrder = [4,2,5,1,3,6,0];
+
+  defaultScheme: ColorScheme;
+
   /**
    * Function in charge of handling the layers' checkbox change events.  It keeps track of layers' selected
    * and selectionOrder properties as well as emitting the updated layer list.
@@ -38,15 +42,36 @@ export class ImageViewerLayersComponent {
    * @param layer is the layer that needs updating based on the event passed with it.
    */
   checkboxOnChange(layer: ImageViewerLayer): void {
+    const colors = layer.colorScheme.colors;
+
     const layerIndex = this.layers.indexOf(layer);
     this.layers[layerIndex].selected = !this.layers[layerIndex].selected;
 
     if (layer.selected) {
-      this.currentLayerIndex++;
-      this.layers[layerIndex].selectionOrder = this.currentLayerIndex;
+      if (!layer.customizedColor) {
+        layer.color = colors[this.assignmentOrder[this.assignmentOrder.length-1]];
+        layer.defaultOrder = this.assignmentOrder[this.assignmentOrder.length-1];
+        this.assignmentOrder.pop();
+      }
+    } else {
+      if(!layer.customizedColor) {
+        this.reorderAssignment(layer);
+      } else {
+        layer.customizedColor = false;
+        layer.colorScheme = this.defaultScheme;
+      }
+      layer.defaultOrder = 99;
     }
 
+    this.currentLayerIndex++;
+    this.layers[layerIndex].selectionOrder = this.currentLayerIndex;
     this.selectedLayers.emit(this.activeLayers());
+  }
+
+  reorderAssignment(layer: ImageViewerLayer) {
+    this.assignmentOrder.push(layer.defaultOrder);
+    const newAssignmentOrder = [4,2,5,1,3,6,0].filter(idx => this.assignmentOrder.includes(idx));
+    this.assignmentOrder = newAssignmentOrder;
   }
 
   /**
@@ -69,13 +94,16 @@ export class ImageViewerLayersComponent {
    * @param referenceLayer the layer object before the changes, used for referencing which layer in the list to update.
    */
   layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
+    if (layer.customizedColor) {
+      this.reorderAssignment(layer);
+    }
     this.layers[this.layers.indexOf(referenceLayer)] = layer;
     this.selectedLayers.emit(this.activeLayers());
   }
 
   updateLayerScheme(schemeChange: ColorScheme) {
+    this.defaultScheme = schemeChange;
     for (const layer of this.layers) {
-      if (layer.colorScheme.type === 'gradient') { return; }
       if (layer.customizedColor === true) { return; }
       const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
       layer.colorScheme = schemeChange;
