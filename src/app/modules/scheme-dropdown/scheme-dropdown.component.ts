@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { ColorScheme, ColorSchemeSelection, DEFAULT_COLOR_SCHEMES } from '../../modules/color-scheme/color-schemes';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../../modules/color-scheme/color-schemes';
 
 /**
  * Scheme dropdown menu (for the Layers section)

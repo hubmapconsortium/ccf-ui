@@ -58,7 +58,6 @@ export class ImageViewerLayersComponent {
 
     this.currentLayerIndex++;
     this.layers[layerIndex].selectionOrder = this.currentLayerIndex;
-    // this.selectedLayers.emit(this.activeLayers());
     this.selectedLayers.emit(this.layers);
   }
 
@@ -106,7 +105,9 @@ export class ImageViewerLayersComponent {
   activeLayers(): ImageViewerLayer[] {
     let layers = this.layers.filter(layer => layer.selected);
     layers = layers.sort((a, b) => {
-      if (a.selectionOrder > b.selectionOrder) { return 1; }
+      if (a.selectionOrder > b.selectionOrder) {
+        return 1;
+      }
       return -1;
     });
     return layers;
@@ -133,7 +134,9 @@ export class ImageViewerLayersComponent {
   updateLayerScheme(schemeChange: ColorScheme) {
     this.defaultScheme = schemeChange;
     for (const layer of this.layers) {
-      if (layer.customizedColor === true) { return; }
+      if (layer.customizedColor) {
+        return;
+      }
       const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
       layer.colorScheme = schemeChange;
       layer.color = schemeChange.colors[colorIndex];

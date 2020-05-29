@@ -75,34 +75,6 @@ describe('ImageViewerLayersComponent', () => {
     expect(outputs.selectedLayers.emit).toHaveBeenCalled();
   });
 
-  it('should properly sort layers with selectionOrder properties', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render({ bind: { layers } });
-
-    layers[0].selected = true;
-    layers[0].selectionOrder = 2;
-    layers[1].selected = true;
-    layers[1].selectionOrder = 1;
-    layers[2].selected = true;
-    layers[2].selectionOrder = 3;
-    const activeLayers = instance.activeLayers();
-
-    expect(activeLayers[0].label).toBe('Option 2');
-    expect(activeLayers[1].label).toBe('Option 1');
-  });
-
-  it('should filter out unselected layers from the active layers list', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render({ bind: { layers } });
-
-    layers[1].selected = true;
-    layers[1].selectionOrder = 1;
-    const activeLayers = instance.activeLayers();
-
-    expect(activeLayers).toContain(layers[1]);
-    expect(activeLayers).not.toContain(layers[0]);
-  });
-
   it('should emit the layer list whenever a layer is updated', async () => {
     const layers = getTestLayers();
     const { instance, outputs } = await shallow.render({ bind: { layers }});

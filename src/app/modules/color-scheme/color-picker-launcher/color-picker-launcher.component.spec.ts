@@ -5,9 +5,18 @@ import { ColorPickerLauncherModule } from './color-picker-launcher.module';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 function getTestLayers(): ImageViewerLayer[] {
+    const testLayerCommon = {
+        selected: false,
+        brightness: [20, 60],
+        transparency: 100,
+        customizedColor: false,
+        selectionOrder: 0,
+        defaultOrder: -1,
+    };
+
     const layers: ImageViewerLayer[] = [
         {
-            selected: false,
+            ...testLayerCommon,
             label: 'Option 1',
             id: 1,
             colorScheme: {
@@ -17,14 +26,9 @@ function getTestLayers(): ImageViewerLayer[] {
                 positions: [0, .166, .333, .5, .666, .833, 1]
             },
             color: '#2166AC',
-            brightness: [20, 60],
-            transparency: 100,
-            customizedColor: false,
-            selectionOrder: 0,
-            defaultOrder: -1
-        },
+        } as ImageViewerLayer,
         {
-            selected: false,
+            ...testLayerCommon,
             label: 'Option 2',
             id: 2,
             colorScheme: {
@@ -34,12 +38,7 @@ function getTestLayers(): ImageViewerLayer[] {
                 positions: [0, .5, 1]
             },
             color: 'orange',
-            brightness: [20, 60],
-            transparency: 100,
-            customizedColor: false,
-            selectionOrder: 0,
-            defaultOrder: -1
-        }
+        } as ImageViewerLayer
     ];
     return layers;
 }
