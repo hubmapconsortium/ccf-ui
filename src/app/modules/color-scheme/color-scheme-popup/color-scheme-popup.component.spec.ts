@@ -17,18 +17,6 @@ describe('ColorSchemePopupComponent', () => {
     shallow = new Shallow(ColorSchemePopupComponent, ColorSchemePopupModule);
   });
 
-  it('should emit brightnessChange when updateBrightness is called', async () => {
-    const { instance, outputs } = await shallow.render();
-    instance.updateBrightness([0, 1]);
-    expect(outputs.brightnessChange.emit).toHaveBeenCalledWith([0, 1]);
-  });
-
-  it('should emit transparencyChange when updateTransparency is called', async () => {
-    const { instance, outputs } = await shallow.render();
-    instance.updateTransparency(50);
-    expect(outputs.transparencyChange.emit).toHaveBeenCalled();
-  });
-
   it('should set popup visibility to true when open() is called', async () => {
     const { instance } = await shallow.render();
     instance.popupVisible = false;

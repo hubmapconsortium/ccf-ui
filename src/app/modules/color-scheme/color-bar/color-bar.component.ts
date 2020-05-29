@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 import { ColorScheme } from '../color-schemes';
 
@@ -11,7 +11,6 @@ import { ColorScheme } from '../color-schemes';
   styleUrls: ['./color-bar.component.scss']
 })
 export class ColorBarComponent {
-
   /**
    * Color scheme to be displayed in the color bar
    */
@@ -23,9 +22,9 @@ export class ColorBarComponent {
   @Input() selected = false;
 
   /**
-   * Index of the currently selected color in colorScheme.colors
+   * Currently selected color in colorScheme.colors
    */
-  @Input() coloridx = 0;
+  @Input() selectedColor = '';
 
   /**
    * Determines if colors are able to be selected on the color bar
@@ -35,7 +34,7 @@ export class ColorBarComponent {
   /**
    * Emits the newly selected color index
    */
-  @Output() colorChange = new EventEmitter<unknown>();
+  @Output() colorChange = new EventEmitter<string>();
 
   /**
    * Enables dynamic styling for gradient bars
@@ -57,14 +56,14 @@ export class ColorBarComponent {
   }
 
   /**
-   * After a color selected, changes coloridx to the index of the selected color and emits the
-   * selected color index (if color selection enabled)
-   * @param idx  index of the selected color
+   * When a color is selected, this updates relavant variables and emits the
+   * selected color
+   * @param color  the color the user selected
    */
-  colorChanged(idx: number) {
+  colorChanged(color: string) {
     if (!this.enableSelection) { return; }
     this.selected = true;
-    this.coloridx = idx;
-    this.colorChange.emit({ colorScheme: this.colorScheme, coloridx: idx});
+    this.selectedColor = color;
+    this.colorChange.emit(color);
   }
 }

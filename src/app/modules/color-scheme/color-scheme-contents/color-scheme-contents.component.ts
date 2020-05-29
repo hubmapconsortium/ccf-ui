@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Options } from 'ng5-slider';
 
 import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
+import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
 
 /**
  * Contains the color menu and brightness/transparency sliders
@@ -19,44 +20,14 @@ export class ColorSchemeContentsComponent {
   @Input() schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
 
   /**
-   * Current scheme selected
+   * Layer that the component is currently rendering, used to pull relevant properties from.
    */
-  @Input() colorScheme: ColorScheme;
+  @Input() layer: ImageViewerLayer;
 
   /**
-   * Index of current selected color
+   * Used to emit any changes made to the layer or its properties
    */
-  @Input() coloridx = 0;
-
-  /**
-   * Current brightness setting
-   */
-  @Input() brightness: [number, number] = [0, 100];
-
-  /**
-   * Current transparency setting
-   */
-  @Input() transparency: number;
-
-  /**
-   * Emitted when there is a color scheme change
-   */
-  @Output() colorSchemeChange = new EventEmitter<ColorScheme>();
-
-  /**
-   * Emitted when the brightness selection changes
-   */
-  @Output() brightnessChange = new EventEmitter<[number, number]>();
-
-  /**
-   * Emitted when the transparency value changes
-   */
-  @Output() transparencyChange = new EventEmitter<number>();
-
-  /**
-   * Index of the currently selected scheme in schemeOptions
-   */
-  selectedSchemeIndex = 0;
+  @Output() layerChange = new EventEmitter<ImageViewerLayer>();
 
   /**
    * Options for the brightness slider
@@ -85,28 +56,26 @@ export class ColorSchemeContentsComponent {
   }
 
   /**
-   * Handles change in scheme selection
-   * @param idx  index of the selected scheme
-   */
-  schemeChanged(scheme, i: number) {
-    // tslint:disable-next-line: no-unsafe-any
-    this.colorScheme = scheme.colorScheme;
-    this.selectedSchemeIndex = i;
-    // tslint:disable-next-line: no-unsafe-any
-    this.colorSchemeChange.emit(scheme);
-  }
-
-  /**
    * Emits new brightness selection
    */
   brightnessChanged() {
-    this.brightnessChange.emit(this.brightness);
+    this.layerChange.emit(this.layer);
   }
 
   /**
    * Emits new transparency value
    */
   transparencyChanged() {
-    this.transparencyChange.emit(this.transparency);
+    this.layerChange.emit(this.layer);
+  }
+
+  /**
+   * Takes in the selected color and scheme and adds them to the Layer
+   * before emitting the changed layer
+   */
+  colorChanged(color: string, scheme: ColorScheme): void {
+    this.layer.color = color;
+    this.layer.colorScheme = scheme;
+    this.layerChange.emit(this.layer);
   }
 }

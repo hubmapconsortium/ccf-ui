@@ -2,12 +2,7 @@
     <div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" [style.background]="background" (click)="schemepopup.open()"></div>
     <ccf-color-scheme-popup
         #schemepopup
-        [colorScheme]="layer.colorScheme"
-        [coloridx]="layer.colorScheme.colors.indexOf(layer.color)"
-        [brightness]="layer.brightness"
-        [transparency]="layer.transparency"
-        (schemeChange)="updateScheme($event)"
-        (brightnessChange)="updateLayer($event, 'brightness')"
-        (transparencyChange)="updateLayer($event, 'transparency')"
+        [layer]="layer"
+        (layerChange)="layerChange.emit($event)"
     ></ccf-color-scheme-popup>
 </div>
