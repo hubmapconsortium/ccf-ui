@@ -1,9 +1,6 @@
 <ccf-drawer-container class="image-viewer-container" [class.expanded]="viewerVisible">
   <ccf-drawer-content class="image-viewer-window">
-    <div class="viewer-image">
-      <img alt="Histology sample" src="assets/histology3.jpg" />
-    </div>
-    <div class="scale-bar">Scale bar goes here</div>
+    <ccf-viewer></ccf-viewer>
     <div class="legend">Legend goes here</div>
   </ccf-drawer-content>
   <ccf-drawer class="image-viewer-drawer" position="end" opened>
