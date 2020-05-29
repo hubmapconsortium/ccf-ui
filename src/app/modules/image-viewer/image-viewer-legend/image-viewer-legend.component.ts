@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 @Component({
   selector: 'ccf-image-viewer-legend',

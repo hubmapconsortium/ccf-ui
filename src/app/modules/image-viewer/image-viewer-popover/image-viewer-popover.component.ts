@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ImageViewerData } from 'ccf-database';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 /**
  * Popup that displays detailed information on a selected image along with viewing options
