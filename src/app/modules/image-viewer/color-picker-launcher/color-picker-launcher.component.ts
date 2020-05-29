@@ -41,23 +41,4 @@ export class ColorPickerLauncherComponent {
     gradient += ')';
     return gradient;
   }
-
-  /**
-   * Captures the layer's color and colorscheme changes and emits them up the chain
-   */
-  updateScheme(colorObject): void {
-    // tslint:disable-next-line: no-unsafe-any
-    this.layer = {...this.layer, colorScheme: colorObject.scheme};
-    // tslint:disable-next-line: no-unsafe-any
-    this.layer = {...this.layer, color: colorObject.scheme.colors[colorObject.coloridx]};
-    this.layerChange.emit(this.layer);
-  }
-
-  /**
-   * Captures and passes along the layer's changes to brightness, transparency etc.
-   */
-  updateLayer(value, key): void {
-    this.layer = {...this.layer, [key]: value};
-    this.layerChange.emit(this.layer);
-  }
 }

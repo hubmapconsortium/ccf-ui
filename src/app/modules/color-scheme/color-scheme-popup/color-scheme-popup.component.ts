@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 import { ColorScheme, ColorSchemeSelection, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
+import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
 
 /**
  * Component for the scheme selector popup
@@ -13,49 +14,24 @@ import { ColorScheme, ColorSchemeSelection, DEFAULT_COLOR_SCHEMES } from '../col
 export class ColorSchemePopupComponent {
 
   /**
-   * Controls visibility of the popup
-   */
-  popupVisible = false;
-
-  /**
-   * Current color scheme selected (default is scheme1)
-   */
-  @Input() colorScheme: ColorScheme = DEFAULT_COLOR_SCHEMES[0];
-
-  /**
    * Schemes available to choose from
    */
   @Input() schemeOptions: ColorScheme[] = DEFAULT_COLOR_SCHEMES;
 
   /**
-   * Current color index
+   * The Layer which we use to pull the properties we need from
    */
-  @Input() coloridx = 0;
+  @Input() layer: ImageViewerLayer;
 
   /**
-   * Brightness of selected scheme
+   * Output we use to emit any changes to the layer or its properties
    */
-  @Input() brightness: [number, number] = [0, 100];
+  @Output() layerChange = new EventEmitter<ImageViewerLayer>();
 
   /**
-   * Transparency of selected scheme
+   * Controls visibility of the popup
    */
-  @Input() transparency = 0;
-
-  /**
-   * Emitter containing information on selected scheme and color
-   */
-  @Output() schemeChange = new EventEmitter<ColorSchemeSelection>();
-
-  /**
-   * Emitted when the brightness selection changes
-   */
-  @Output() brightnessChange = new EventEmitter<number[]>();
-
-  /**
-   * Emitted when the transparency value changes
-   */
-  @Output() transparencyChange = new EventEmitter<number>();
+  popupVisible = false;
 
   /**
    * Listens to document click event
@@ -83,44 +59,5 @@ export class ColorSchemePopupComponent {
    */
   open(): void {
     this.popupVisible = !this.popupVisible;
-  }
-
-  /**
-   * Updates current color scheme and emits schemeChange
-   * @param scheme = the new selected scheme
-   */
-  updateScheme(scheme) {
-    // tslint:disable-next-line: no-unsafe-any
-    this.colorScheme = scheme.colorScheme;
-    // tslint:disable-next-line: no-unsafe-any
-    this.coloridx = scheme.coloridx;
-    this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
-  }
-
-  /**
-   * Updates current selected color index and emits schemeChange
-   * @param coloridx = the new selected color index
-   */
-  updateColor(coloridx: number) {
-    this.coloridx = coloridx;
-    this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
-  }
-
-  /**
-   * Updates brightness selection and emits the new brightness selection
-   * @param brightness = the new brightness selection
-   */
-  updateBrightness(brightness: [number, number]) {
-    this.brightness = brightness;
-    this.brightnessChange.emit(brightness);
-  }
-
-  /**
-   * Updates transparency and emits the new transparency value
-   * @param transparency = the new transparency value
-   */
-  updateTransparency(transparency: number) {
-    this.transparency = transparency;
-    this.transparencyChange.emit(transparency);
   }
 }
