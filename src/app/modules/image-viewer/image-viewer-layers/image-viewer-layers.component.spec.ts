@@ -1,9 +1,9 @@
 import { Shallow } from 'shallow-render';
 
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { ColorScheme } from '../../../modules/color-scheme/color-schemes';
 import { ImageViewerLayersComponent } from './image-viewer-layers.component';
 import { ImageViewerLayersModule } from './image-viewer-layers.module';
-import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
-import { ColorScheme } from 'src/app/core/models/color-scheme';
 
 function getTestLayers(): ImageViewerLayer[] {
   const layers: ImageViewerLayer[] = [
@@ -67,13 +67,6 @@ describe('ImageViewerLayersComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(ImageViewerLayersComponent, ImageViewerLayersModule);
-  });
-
-  it('should emit the active layer list when checkboxOnChange() is called', async () => {
-    const layers = getTestLayers();
-    const { instance, outputs } = await shallow.render({ bind: { layers } });
-    instance.checkboxOnChange(layers[1]);
-    expect(outputs.selectedLayers.emit).toHaveBeenCalled();
   });
 
   it('should emit the active layer list when checkboxOnChange() is called', async () => {

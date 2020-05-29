@@ -1,8 +1,8 @@
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Shallow } from 'shallow-render';
 
 import { ImageViewerPopoverComponent } from './image-viewer-popover.component';
 import { ImageViewerPopoverModule } from './image-viewer-popover.module';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ImageViewerPopoverComponent', () => {
   let shallow: Shallow<ImageViewerPopoverComponent>;
@@ -13,14 +13,14 @@ describe('ImageViewerPopoverComponent', () => {
     id: string,
     label: string,
     organName: string,
-    metadata: {label: string; value: string;}[]
+    metadata: { label: string; value: string; }[]
   } = {
     '@id': '',
     '@type': 'ImageViewerData',
     id: '',
     label: '',
     organName: '',
-    metadata: [{label: '', value: ''}]
+    metadata: [{ label: '', value: '' }]
   };
 
   beforeEach(() => {

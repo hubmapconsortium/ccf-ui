@@ -10,7 +10,7 @@ describe('ImageViewerAccordionComponent', () => {
   let shallow: Shallow<ImageViewerAccordionComponent>;
 
   function getTestLayers(): ImageViewerLayer[] {
-    const layers: ImageViewerLayer[] = [
+    return [
       {
         selected: true,
         label: 'Option 1',
@@ -63,7 +63,6 @@ describe('ImageViewerAccordionComponent', () => {
         defaultOrder: -1
       }
     ];
-    return layers;
   }
 
   beforeEach(() => {
@@ -74,7 +73,7 @@ describe('ImageViewerAccordionComponent', () => {
     const layers = getTestLayers();
     const { findComponent, instance } = await shallow.render();
     const imageViewerLayers = findComponent(ImageViewerLayersComponent);
-    imageViewerLayers.selectedLayers.emit(layers as ImageViewerLayer[]);
+    imageViewerLayers.selectedLayers.emit();
     expect(instance.layersChanged.emit).toHaveBeenCalled();
   });
 });
