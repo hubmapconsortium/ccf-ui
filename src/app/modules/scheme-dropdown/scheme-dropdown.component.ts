@@ -25,7 +25,7 @@ export class SchemeDropdownComponent implements OnInit {
   /**
    * Emits ColorSchemeSelection of a selected scheme
    */
-  @Output() schemeChange = new EventEmitter<ColorSchemeSelection>();
+  @Output() schemeChange = new EventEmitter<ColorScheme>();
 
   /**
    * Index of the currently selected scheme
@@ -41,12 +41,11 @@ export class SchemeDropdownComponent implements OnInit {
 
   /**
    * Updates the current scheme index and emits the currently selected scheme
-   * @param idx Index of the selected scheme
    */
   schemeChanged(idx: number) {
     this.colorScheme = this.schemeOptions[idx];
     this.schemeIdx = idx;
-    this.schemeChange.emit({ scheme: this.colorScheme, coloridx: idx });
+    this.schemeChange.emit(this.colorScheme);
   }
 
 }

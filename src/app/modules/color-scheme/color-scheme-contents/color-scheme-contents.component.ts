@@ -88,10 +88,10 @@ export class ColorSchemeContentsComponent {
    * Handles change in scheme selection
    * @param idx  index of the selected scheme
    */
-  schemeChanged(scheme, i: number) {
+  schemeChanged(scheme, idx: number) {
     // tslint:disable-next-line: no-unsafe-any
     this.colorScheme = scheme.colorScheme;
-    this.selectedSchemeIndex = i;
+    this.selectedSchemeIndex = idx;
     // tslint:disable-next-line: no-unsafe-any
     this.colorSchemeChange.emit(scheme);
   }

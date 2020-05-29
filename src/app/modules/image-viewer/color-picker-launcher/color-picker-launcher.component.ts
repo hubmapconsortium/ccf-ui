@@ -60,4 +60,10 @@ export class ColorPickerLauncherComponent {
     this.layer = {...this.layer, [key]: value};
     this.layerChange.emit(this.layer);
   }
+
+  setCustomized(): void {
+    this.layer = {...this.layer, customizedColor: true}
+    this.layerChange.emit(this.layer);
+
+  }
 }

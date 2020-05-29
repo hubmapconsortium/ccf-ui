@@ -4,10 +4,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { ImageViewerLayersComponent } from './image-viewer-layers.component';
 import { ColorPickerLauncherModule } from '../color-picker-launcher/color-picker-launcher.module';
+import { SchemeDropdownModule } from '../../scheme-dropdown/scheme-dropdown.module';
 
 
 @NgModule({
-  imports: [CommonModule, MatCheckboxModule, ColorPickerLauncherModule],
+  imports: [CommonModule, MatCheckboxModule, ColorPickerLauncherModule, SchemeDropdownModule],
   declarations: [ImageViewerLayersComponent],
   exports: [ImageViewerLayersComponent]
 })

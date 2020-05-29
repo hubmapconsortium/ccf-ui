@@ -57,6 +57,9 @@ export class ColorSchemePopupComponent {
    */
   @Output() transparencyChange = new EventEmitter<number>();
 
+  @Output() colorChange = new EventEmitter<number>();
+
+
   /**
    * Listens to document click event
    * Closes the popup only if user clicks outside the popup
@@ -66,6 +69,9 @@ export class ColorSchemePopupComponent {
   close(target: HTMLElement): void {
     const popupElement = document.getElementById('scheme-contents');
     const launchButtons = Array.from(document.getElementsByClassName('launch-button'));
+    console.log(popupElement);
+    console.log(target);
+    if (popupElement) { console.log(popupElement.contains(target)); }
     if (!this.popupVisible ||
       (popupElement && popupElement.contains(target))) {
       return;
@@ -103,6 +109,7 @@ export class ColorSchemePopupComponent {
    */
   updateColor(coloridx: number) {
     this.coloridx = coloridx;
+    this.colorChange.emit();
     this.schemeChange.emit({ scheme: this.colorScheme, coloridx: this.coloridx });
   }
 

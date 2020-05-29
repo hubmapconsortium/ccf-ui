@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
+import { ColorSchemeSelection, ColorScheme } from '../../color-scheme/color-schemes';
+
 /**
  * Component in charge of rendering list of the image layers along with the ability
  * to choose which ones are to be showm and what display properties they have.
@@ -68,5 +70,15 @@ export class ImageViewerLayersComponent {
     this.layers[this.layers.indexOf(referenceLayer)] = layer;
     console.log('image-viewer-layers, layer: ', layer, '\nthis.layers: ', this.layers);
     this.selectedLayers.emit(this.activeLayers());
+  }
+
+  updateLayerScheme(schemeChange: ColorScheme) {
+    for (const layer of this.layers) {
+      if (layer.colorScheme.type === 'gradient') { return; }
+      if (layer.customizedColor === true) { return; }
+      const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
+      layer.colorScheme = schemeChange;
+      layer.color = schemeChange.colors[colorIndex];
+    }
   }
 }
