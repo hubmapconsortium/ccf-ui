@@ -12,9 +12,9 @@ describe('SchemeDropdownComponent', () => {
     shallow = new Shallow(SchemeDropdownComponent, SchemeDropdownModule);
   });
 
-  it('should emit the appropriate scheme information when schemeChanged is called', async () => {
+  it('should emit the appropriate scheme when schemeChanged is called', async () => {
     const { instance, outputs } = await shallow.render();
     instance.schemeChanged(2);
-    expect(outputs.schemeChange.emit).toHaveBeenCalledWith({ scheme: schemes[2], coloridx: 2 });
+    expect(outputs.schemeChange.emit).toHaveBeenCalledWith(schemes[2]);
   });
 });

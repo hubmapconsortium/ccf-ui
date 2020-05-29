@@ -21,7 +21,8 @@ function getTestLayers(): ImageViewerLayer {
       brightness: [20, 60],
       transparency: 100,
       customizedColor: false,
-      selectionOrder: 0
+      selectionOrder: 0,
+      defaultOrder: -1
     };
   return layer;
 }
@@ -68,7 +69,7 @@ describe('ColorSchemeContentsComponent', () => {
       positions: [0, 1]
     };
     const testColor = 'red';
-    const testLayer: ImageViewerLayer = {...instance.layer, colorScheme: testColorScheme, color: testColor };
+    const testLayer: ImageViewerLayer = {...instance.layer, colorScheme: testColorScheme, color: testColor, customizedColor: true };
 
     instance.colorChanged(testColor, testColorScheme);
     expect(outputs.layerChange.emit).toHaveBeenCalledWith(testLayer);

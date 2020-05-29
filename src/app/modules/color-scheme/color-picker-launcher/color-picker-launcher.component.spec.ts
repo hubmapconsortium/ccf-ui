@@ -20,7 +20,8 @@ function getTestLayers(): ImageViewerLayer[] {
             brightness: [20, 60],
             transparency: 100,
             customizedColor: false,
-            selectionOrder: 0
+            selectionOrder: 0,
+            defaultOrder: -1
         },
         {
             selected: false,
@@ -36,7 +37,8 @@ function getTestLayers(): ImageViewerLayer[] {
             brightness: [20, 60],
             transparency: 100,
             customizedColor: false,
-            selectionOrder: 0
+            selectionOrder: 0,
+            defaultOrder: -1
         }
     ];
     return layers;
