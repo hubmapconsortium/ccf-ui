@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-
-import { ColorScheme, ColorSchemeSelection, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 
 /**
  * Component for the scheme selector popup
@@ -32,9 +32,6 @@ export class ColorSchemePopupComponent {
    * Controls visibility of the popup
    */
   popupVisible = false;
-
-  @Output() colorChange = new EventEmitter<number>();
-
 
   /**
    * Listens to document click event

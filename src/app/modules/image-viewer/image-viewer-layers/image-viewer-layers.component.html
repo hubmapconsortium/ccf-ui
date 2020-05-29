@@ -6,7 +6,8 @@
             {{ layer.label }}
         </mat-checkbox>
         <div>
-            <ccf-color-picker-launcher [class.hidden]="!layer.selected" [layer]="layer" (layerChange)="layerChange($event, layer)" *ngIf="layer.selected"></ccf-color-picker-launcher>
+            <ccf-color-picker-launcher [class.hidden]="!layer.selected" [layer]="layer"
+                (layerChange)="layerChange($event, layer)" *ngIf="layer.selected"></ccf-color-picker-launcher>
         </div>
     </div>
 </div>

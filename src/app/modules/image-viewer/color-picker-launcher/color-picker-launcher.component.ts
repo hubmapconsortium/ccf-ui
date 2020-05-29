@@ -1,6 +1,5 @@
-import { Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
-import { ColorScheme } from 'src/app/core/models/color-scheme';
 
 /**
  * Component dynamically displays a div with a shape and background that corresponds to the color scheme
@@ -16,7 +15,7 @@ export class ColorPickerLauncherComponent {
   /**
    * An image-viewer layer which contains the styling information required to render this component.
    */
-  @Input() layer:ImageViewerLayer;
+  @Input() layer: ImageViewerLayer;
 
   /**
    * Output that passes along changes made to the layer's properties from the color picker
@@ -36,7 +35,7 @@ export class ColorPickerLauncherComponent {
     let gradient = 'linear-gradient(to right, ';
     colors.forEach((color, index) => {
       gradient += color + ' ' + positions[index] * 100 + '%';
-      if(index < colors.length - 1){ gradient += ', '; }
+      if (index < colors.length - 1) { gradient += ', '; }
     });
     gradient += ')';
     return gradient;

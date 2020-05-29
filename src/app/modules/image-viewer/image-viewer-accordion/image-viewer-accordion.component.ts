@@ -16,6 +16,9 @@ export class ImageViewerAccordionComponent {
    */
   @Input() metadata: { label: string; value: string; }[];
 
+  /**
+   * Temporary layers for testing
+   */
   testLayers: ImageViewerLayer[] = [
     {
       selected: false,
@@ -32,7 +35,7 @@ export class ImageViewerAccordionComponent {
       transparency: 100,
       customizedColor: false,
       selectionOrder: 0,
-      defaultOrder: 99
+      defaultOrder: -1
     },
     {
       selected: false,
@@ -49,7 +52,7 @@ export class ImageViewerAccordionComponent {
       transparency: 100,
       customizedColor: false,
       selectionOrder: 0,
-      defaultOrder: 99,
+      defaultOrder: -1,
     },
     {
       selected: false,
@@ -66,7 +69,7 @@ export class ImageViewerAccordionComponent {
       transparency: 100,
       customizedColor: false,
       selectionOrder: 0,
-      defaultOrder: 99,
+      defaultOrder: -1,
     },
     {
       selected: false,
@@ -83,7 +86,7 @@ export class ImageViewerAccordionComponent {
       transparency: 100,
       customizedColor: false,
       selectionOrder: 0,
-      defaultOrder: 99,
+      defaultOrder: -1,
     }
   ];
 

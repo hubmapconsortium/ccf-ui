@@ -1,8 +1,7 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
-
-import { ColorSchemeSelection, ColorScheme } from '../../color-scheme/color-schemes';
+import { ColorScheme } from '../../color-scheme/color-schemes';
 
 /**
  * Component in charge of rendering list of the image layers along with the ability
@@ -31,8 +30,14 @@ export class ImageViewerLayersComponent {
    */
   currentLayerIndex = 0;
 
+  /**
+   * Array of indexes referring to the order that colors should be assigned in the scheme
+   */
   assignmentOrder = [4,2,5,1,3,6,0];
 
+  /**
+   * The current scheme applied to all non-customized layers (from the scheme dropdown)
+   */
   defaultScheme: ColorScheme;
 
   /**
@@ -42,25 +47,13 @@ export class ImageViewerLayersComponent {
    * @param layer is the layer that needs updating based on the event passed with it.
    */
   checkboxOnChange(layer: ImageViewerLayer): void {
-    const colors = layer.colorScheme.colors;
-
     const layerIndex = this.layers.indexOf(layer);
     this.layers[layerIndex].selected = !this.layers[layerIndex].selected;
 
     if (layer.selected) {
-      if (!layer.customizedColor) {
-        layer.color = colors[this.assignmentOrder[this.assignmentOrder.length-1]];
-        layer.defaultOrder = this.assignmentOrder[this.assignmentOrder.length-1];
-        this.assignmentOrder.pop();
-      }
+      this.handleSelect(layer);
     } else {
-      if(!layer.customizedColor) {
-        this.reorderAssignment(layer);
-      } else {
-        layer.customizedColor = false;
-        layer.colorScheme = this.defaultScheme;
-      }
-      layer.defaultOrder = 99;
+      this.handleUnselect(layer);
     }
 
     this.currentLayerIndex++;
@@ -68,6 +61,37 @@ export class ImageViewerLayersComponent {
     this.selectedLayers.emit(this.activeLayers());
   }
 
+  /**
+   * Updates assignment order array and handles color assignment when a layer is selected
+   * @param layer The layer selected
+   */
+  handleSelect(layer: ImageViewerLayer) {
+    const colors = layer.colorScheme.colors;
+    if (!layer.customizedColor) {
+      layer.color = colors[this.assignmentOrder[this.assignmentOrder.length-1]];
+      layer.defaultOrder = this.assignmentOrder[this.assignmentOrder.length-1];
+      this.assignmentOrder.pop();
+    }
+  }
+
+  /**
+   * Updates assignment order array and handles color unassignment when a layer is unselected
+   * @param layer The layer unselected
+   */
+  handleUnselect(layer: ImageViewerLayer) {
+    if(!layer.customizedColor) {
+      this.reorderAssignment(layer);
+    } else {
+      layer.customizedColor = false;
+      layer.colorScheme = this.defaultScheme;
+    }
+    layer.defaultOrder = -1;
+  }
+
+  /**
+   * Helper method to reorder the assignment order array when a layer is deselected / customized
+   * @param layer The layer being deselected / customized
+   */
   reorderAssignment(layer: ImageViewerLayer) {
     this.assignmentOrder.push(layer.defaultOrder);
     const newAssignmentOrder = [4,2,5,1,3,6,0].filter(idx => this.assignmentOrder.includes(idx));
@@ -101,6 +125,10 @@ export class ImageViewerLayersComponent {
     this.selectedLayers.emit(this.activeLayers());
   }
 
+  /**
+   * Updates scheme for all non-customized layers when selected from the scheme dropdown menu
+   * @param schemeChange The scheme selected from the dropdown
+   */
   updateLayerScheme(schemeChange: ColorScheme) {
     this.defaultScheme = schemeChange;
     for (const layer of this.layers) {
