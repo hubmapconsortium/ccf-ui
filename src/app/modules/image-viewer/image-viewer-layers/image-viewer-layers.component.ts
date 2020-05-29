@@ -44,20 +44,7 @@ export class ImageViewerLayersComponent {
       this.layers[layerIndex].selectionOrder = this.currentLayerIndex;
     }
 
-    this.selectedLayers.emit(this.activeLayers());
-  }
-
-  /**
-   * A helper method which filters out unselected layers, then sorts the remaining layers
-   * based on their selectionOrder property.
-   */
-  activeLayers(): ImageViewerLayer[] {
-    let layers = this.layers.filter(layer => layer.selected);
-    layers = layers.sort((a, b) => {
-      if (a.selectionOrder > b.selectionOrder) { return 1; }
-      return -1;
-    });
-    return layers;
+    this.selectedLayers.emit(this.layers);
   }
 
   /**
@@ -68,6 +55,6 @@ export class ImageViewerLayersComponent {
    */
   layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
     this.layers[this.layers.indexOf(referenceLayer)] = layer;
-    this.selectedLayers.emit(this.activeLayers());
+    this.selectedLayers.emit(this.layers);
   }
 }
