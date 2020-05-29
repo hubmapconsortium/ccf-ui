@@ -15,7 +15,7 @@ export class ColorPickerLauncherComponent {
   /**
    * An image-viewer layer which contains the styling information required to render this component.
    */
-  @Input() layer:ImageViewerLayer;
+  @Input() layer: ImageViewerLayer;
 
   /**
    * Output that passes along changes made to the layer's properties from the color picker
@@ -35,7 +35,7 @@ export class ColorPickerLauncherComponent {
     let gradient = 'linear-gradient(to right, ';
     colors.forEach((color, index) => {
       gradient += color + ' ' + positions[index] * 100 + '%';
-      if(index < colors.length - 1){ gradient += ', '; }
+      if (index < colors.length - 1) { gradient += ', '; }
     });
     gradient += ')';
     return gradient;

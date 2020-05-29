@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { ColorScheme } from '../../color-scheme/color-schemes';
 
 /**
  * Component in charge of rendering list of the image layers along with the ability
@@ -30,6 +31,16 @@ export class ImageViewerLayersComponent {
   currentLayerIndex = 0;
 
   /**
+   * Array of indexes referring to the order that colors should be assigned in the scheme
+   */
+  assignmentOrder = [4,2,5,1,3,6,0];
+
+  /**
+   * The current scheme applied to all non-customized layers (from the scheme dropdown)
+   */
+  defaultScheme: ColorScheme;
+
+  /**
    * Function in charge of handling the layers' checkbox change events.  It keeps track of layers' selected
    * and selectionOrder properties as well as emitting the updated layer list.
    * @param event contains whether or not the layer was selected or unselected.
@@ -40,11 +51,66 @@ export class ImageViewerLayersComponent {
     this.layers[layerIndex].selected = !this.layers[layerIndex].selected;
 
     if (layer.selected) {
-      this.currentLayerIndex++;
-      this.layers[layerIndex].selectionOrder = this.currentLayerIndex;
+      this.handleSelect(layer);
+    } else {
+      this.handleUnselect(layer);
     }
 
+    this.currentLayerIndex++;
+    this.layers[layerIndex].selectionOrder = this.currentLayerIndex;
     this.selectedLayers.emit(this.layers);
+  }
+
+  /**
+   * Updates assignment order array and handles color assignment when a layer is selected
+   * @param layer The layer selected
+   */
+  handleSelect(layer: ImageViewerLayer) {
+    const colors = layer.colorScheme.colors;
+    if (!layer.customizedColor) {
+      layer.color = colors[this.assignmentOrder[this.assignmentOrder.length-1]];
+      layer.defaultOrder = this.assignmentOrder[this.assignmentOrder.length-1];
+      this.assignmentOrder.pop();
+    }
+  }
+
+  /**
+   * Updates assignment order array and handles color unassignment when a layer is unselected
+   * @param layer The layer unselected
+   */
+  handleUnselect(layer: ImageViewerLayer) {
+    if(!layer.customizedColor) {
+      this.reorderAssignment(layer);
+    } else {
+      layer.customizedColor = false;
+      layer.colorScheme = this.defaultScheme;
+    }
+    layer.defaultOrder = -1;
+  }
+
+  /**
+   * Helper method to reorder the assignment order array when a layer is deselected / customized
+   * @param layer The layer being deselected / customized
+   */
+  reorderAssignment(layer: ImageViewerLayer) {
+    this.assignmentOrder.push(layer.defaultOrder);
+    const newAssignmentOrder = [4,2,5,1,3,6,0].filter(idx => this.assignmentOrder.includes(idx));
+    this.assignmentOrder = newAssignmentOrder;
+  }
+
+  /**
+   * A helper method which filters out unselected layers, then sorts the remaining layers
+   * based on their selectionOrder property.
+   */
+  activeLayers(): ImageViewerLayer[] {
+    let layers = this.layers.filter(layer => layer.selected);
+    layers = layers.sort((a, b) => {
+      if (a.selectionOrder > b.selectionOrder) {
+        return 1;
+      }
+      return -1;
+    });
+    return layers;
   }
 
   /**
@@ -54,7 +120,26 @@ export class ImageViewerLayersComponent {
    * @param referenceLayer the layer object before the changes, used for referencing which layer in the list to update.
    */
   layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
+    if (layer.customizedColor) {
+      this.reorderAssignment(layer);
+    }
     this.layers[this.layers.indexOf(referenceLayer)] = layer;
     this.selectedLayers.emit(this.layers);
+  }
+
+  /**
+   * Updates scheme for all non-customized layers when selected from the scheme dropdown menu
+   * @param schemeChange The scheme selected from the dropdown
+   */
+  updateLayerScheme(schemeChange: ColorScheme) {
+    this.defaultScheme = schemeChange;
+    for (const layer of this.layers) {
+      if (layer.customizedColor) {
+        return;
+      }
+      const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
+      layer.colorScheme = schemeChange;
+      layer.color = schemeChange.colors[colorIndex];
+    }
   }
 }

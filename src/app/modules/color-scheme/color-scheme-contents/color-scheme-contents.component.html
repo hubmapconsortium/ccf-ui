@@ -1,5 +1,5 @@
 <div class="color-scheme-contents-container">
-  <div id="scheme-contents" class="scheme-contents">
+  <div class="scheme-contents">
     <ccf-color-bar
       *ngFor="let scheme of schemeOptions"
       class="swatch"
@@ -7,6 +7,7 @@
       [selected]="scheme.name === layer.colorScheme.name"
       [selectedColor]="layer.color"
       (colorChange)="colorChanged($event, scheme)"
+      [enableSelection]="true"
     ></ccf-color-bar>
 
     <div class="brightness-slider-label">Brightness</div>

@@ -40,7 +40,7 @@ export class ColorSchemePopupComponent {
    */
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
   close(target: HTMLElement): void {
-    const popupElement = document.getElementById('scheme-contents');
+    const popupElement = document.getElementsByClassName('scheme-popup show')[0];
     const launchButtons = Array.from(document.getElementsByClassName('launch-button'));
     if (!this.popupVisible ||
       (popupElement && popupElement.contains(target))) {

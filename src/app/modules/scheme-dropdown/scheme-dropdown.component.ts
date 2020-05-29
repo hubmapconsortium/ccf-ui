@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { ColorScheme, ColorSchemeSelection, DEFAULT_COLOR_SCHEMES } from '../../modules/color-scheme/color-schemes';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../../modules/color-scheme/color-schemes';
 
 /**
  * Scheme dropdown menu (for the Layers section)
@@ -25,7 +25,7 @@ export class SchemeDropdownComponent implements OnInit {
   /**
    * Emits ColorSchemeSelection of a selected scheme
    */
-  @Output() schemeChange = new EventEmitter<ColorSchemeSelection>();
+  @Output() schemeChange = new EventEmitter<ColorScheme>();
 
   /**
    * Index of the currently selected scheme
@@ -37,16 +37,16 @@ export class SchemeDropdownComponent implements OnInit {
    */
   ngOnInit(): void {
     this.schemeOptions = this.schemeOptions.filter(scheme => scheme.type === 'discrete');
+    this.schemeChanged(0);
   }
 
   /**
    * Updates the current scheme index and emits the currently selected scheme
-   * @param idx Index of the selected scheme
    */
   schemeChanged(idx: number) {
     this.colorScheme = this.schemeOptions[idx];
     this.schemeIdx = idx;
-    this.schemeChange.emit({ scheme: this.colorScheme, coloridx: idx });
+    this.schemeChange.emit(this.colorScheme);
   }
 
 }

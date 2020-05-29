@@ -1,4 +1,4 @@
-<p>Pallete Selector Here</p>
+<ccf-scheme-dropdown (schemeChange)="updateLayerScheme($event)"></ccf-scheme-dropdown>
 
 <div class="layers-container">
     <div class="layer" *ngFor="let layer of layers">
@@ -6,7 +6,8 @@
             {{ layer.label }}
         </mat-checkbox>
         <div>
-            <ccf-color-picker-launcher [class.hidden]="!layer.selected" [layer]="layer" (layerChange)="layerChange($event, layer)" *ngIf="layer.selected"></ccf-color-picker-launcher>
+            <ccf-color-picker-launcher [class.hidden]="!layer.selected" [layer]="layer"
+                (layerChange)="layerChange($event, layer)" *ngIf="layer.selected"></ccf-color-picker-launcher>
         </div>
     </div>
 </div>
