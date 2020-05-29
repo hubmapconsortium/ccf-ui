@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { ImageViewerData } from 'ccf-database';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 
 /**

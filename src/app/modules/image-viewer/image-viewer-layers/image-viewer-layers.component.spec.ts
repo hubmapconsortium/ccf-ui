@@ -2,7 +2,7 @@ import { Shallow } from 'shallow-render';
 
 import { ImageViewerLayersComponent } from './image-viewer-layers.component';
 import { ImageViewerLayersModule } from './image-viewer-layers.module';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 function getTestLayers(): ImageViewerLayer[] {
   const layers: ImageViewerLayer[] = [

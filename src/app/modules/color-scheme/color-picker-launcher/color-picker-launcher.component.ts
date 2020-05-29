@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 /**
  * Component dynamically displays a div with a shape and background that corresponds to the color scheme

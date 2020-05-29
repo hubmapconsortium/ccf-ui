@@ -3,8 +3,8 @@ import { Shallow } from 'shallow-render';
 import { DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 import { ColorSchemeContentsComponent } from './color-scheme-contents.component';
 import { ColorSchemeContentsModule } from './color-scheme-contents.module';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
-import { ColorScheme } from 'src/app/core/models/color-scheme';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { ColorScheme } from '../../../core/models/color-scheme';
 
 function getTestLayers(): ImageViewerLayer {
   const layer: ImageViewerLayer = {
