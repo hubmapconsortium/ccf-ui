@@ -6,6 +6,11 @@ export interface LayerSpec {
   offsets?: number[];
 }
 
+export interface Channel {
+  name: string;
+  color: [number, number, number];
+}
+
 export interface ImageViewerProps {
   id: string;
   canvas: string | HTMLCanvasElement;
@@ -76,8 +81,8 @@ export class ImageViewer {
         id: 'overview'
       },
       loader: loaders[0], // FIXME
-      detailWidth: 200,
-      detailHeight: 200,
+      detailWidth: initialViewState.width,
+      detailHeight: initialViewState.height,
       margin: 25,
       scale: 0.15,
       position: 'bottom-left'
@@ -107,11 +112,10 @@ export class ImageViewer {
     const channelCount = loader.channelNames.length;
     const layerConfig = {
       loader,
-      sliderValues: [],
-      colorValues: [],
+      sliderValues: Array(channelCount).fill([1500, 20000]),
+      colorValues: Array(channelCount).fill([255, 255, 255]),
       channelIsOn: Array(channelCount).fill(true),
       loaderSelection: loader.channelNames.map(name => ({ channel: name })),
-      colormap: undefined
     };
 
     return new Deck({

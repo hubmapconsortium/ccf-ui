@@ -14,6 +14,7 @@ export { LayerSpec };
 })
 export class ViewerComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() layers: LayerSpec[] = [
+    // {url: 'https://vitessce-demo-data.storage.googleapis.com/test-data/antigen_exprs.ome.tiff'}
     {url: 'https://vitessce-demo-data.storage.googleapis.com/test-data/hubmap/pyramid_0.0.2/spraggins.ome.tif'}
   ];
 
