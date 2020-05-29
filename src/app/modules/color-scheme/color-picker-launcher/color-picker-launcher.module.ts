@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ColorPickerLauncherComponent } from './color-picker-launcher.component';
-import { ColorSchemePopupModule } from '../../color-scheme/color-scheme-popup/color-scheme-popup.module';
+import { ColorSchemePopupModule } from '../color-scheme-popup/color-scheme-popup.module';
 
 
 @NgModule({
