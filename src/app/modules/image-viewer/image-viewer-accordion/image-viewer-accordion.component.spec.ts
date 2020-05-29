@@ -70,7 +70,6 @@ describe('ImageViewerAccordionComponent', () => {
   });
 
   it('should emit layersChanged if image viewer layers emits selectedLayers', async () => {
-    const layers = getTestLayers();
     const { findComponent, instance } = await shallow.render();
     const imageViewerLayers = findComponent(ImageViewerLayersComponent);
     imageViewerLayers.selectedLayers.emit();
