@@ -18,11 +18,14 @@ export class ImageViewerLayersComponent {
    * The list of layers to be displayed which contain the styilng properties needed
    * to make rendering decisions.
    */
+
   @Input() layers: ImageViewerLayer[];
   /**
    * A sorted list of selected layers containing information such as selectionOrder and colorScheme.
    */
+
   @Output() selectedLayers = new EventEmitter<ImageViewerLayer[]>();
+
   /**
    * Used for keeping track of the order that layers get selected, for sorting purposes later.
    */
@@ -56,7 +59,6 @@ export class ImageViewerLayersComponent {
       if (a.selectionOrder > b.selectionOrder) { return 1; }
       return -1;
     });
-    console.log('layers: ', layers);
     return layers;
   }
 
@@ -68,7 +70,6 @@ export class ImageViewerLayersComponent {
    */
   layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
     this.layers[this.layers.indexOf(referenceLayer)] = layer;
-    console.log('image-viewer-layers, layer: ', layer, '\nthis.layers: ', this.layers);
     this.selectedLayers.emit(this.activeLayers());
   }
 
