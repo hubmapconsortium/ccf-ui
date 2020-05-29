@@ -35,4 +35,23 @@ describe('ColorBarComponent', () => {
     expect(instance.gradientHighlight()).toBe(true);
   });
 
+  it('should not emit a change even if a color changes when the selection is not enabled', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme2, selected: true } });
+    instance.enableSelection = false;
+    instance.colorChanged('red');
+
+    expect(outputs.colorChange.emit).not.toHaveBeenCalled();
+  });
+
+  it('should properly set and emit values when a color changes while selection is enabled', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { colorScheme: testScheme2, selected: true } });
+    instance.selected = false;
+    instance.selectedColor = 'green';
+    instance.enableSelection = true;
+    instance.colorChanged('red');
+
+    expect(instance.selected).toBeTrue();
+    expect(instance.selectedColor).toBe('red');
+    expect(outputs.colorChange.emit).toHaveBeenCalledWith('red');
+  });
 });
