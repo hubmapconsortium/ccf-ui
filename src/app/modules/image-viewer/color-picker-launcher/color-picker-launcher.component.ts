@@ -41,10 +41,4 @@ export class ColorPickerLauncherComponent {
     gradient += ')';
     return gradient;
   }
-
-  setCustomized(): void {
-    this.layer = {...this.layer, customizedColor: true}
-    this.layerChange.emit(this.layer);
-
-  }
 }

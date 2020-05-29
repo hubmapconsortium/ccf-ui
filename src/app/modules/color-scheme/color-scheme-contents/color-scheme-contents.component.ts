@@ -76,6 +76,7 @@ export class ColorSchemeContentsComponent {
   colorChanged(color: string, scheme: ColorScheme): void {
     this.layer.color = color;
     this.layer.colorScheme = scheme;
+    this.layer.customizedColor = true;
     this.layerChange.emit(this.layer);
   }
 }
