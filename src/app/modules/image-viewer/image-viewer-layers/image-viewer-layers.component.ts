@@ -58,7 +58,8 @@ export class ImageViewerLayersComponent {
 
     this.currentLayerIndex++;
     this.layers[layerIndex].selectionOrder = this.currentLayerIndex;
-    this.selectedLayers.emit(this.activeLayers());
+    // this.selectedLayers.emit(this.activeLayers());
+    this.selectedLayers.emit(this.layers);
   }
 
   /**
@@ -122,7 +123,7 @@ export class ImageViewerLayersComponent {
       this.reorderAssignment(layer);
     }
     this.layers[this.layers.indexOf(referenceLayer)] = layer;
-    this.selectedLayers.emit(this.activeLayers());
+    this.selectedLayers.emit(this.layers);
   }
 
   /**

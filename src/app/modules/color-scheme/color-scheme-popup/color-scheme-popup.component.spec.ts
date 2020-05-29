@@ -1,17 +1,10 @@
 import { Shallow } from 'shallow-render';
 
-import { ColorScheme } from '../color-schemes';
 import { ColorSchemePopupComponent } from './color-scheme-popup.component';
 import { ColorSchemePopupModule } from './color-scheme-popup.module';
 
 describe('ColorSchemePopupComponent', () => {
   let shallow: Shallow<ColorSchemePopupComponent>;
-  const testScheme: ColorScheme = {
-    type: 'discrete',
-    name: 'test',
-    colors: ['color1', 'color2'],
-    positions: [0, 1]
-  };
 
   beforeEach(() => {
     shallow = new Shallow(ColorSchemePopupComponent, ColorSchemePopupModule);
@@ -24,4 +17,23 @@ describe('ColorSchemePopupComponent', () => {
     expect(instance.popupVisible).toBe(true);
   });
 
+  it('should not try to hide the popup if the popup is already not visible', async () => {
+    const { instance } = await shallow.render();
+    instance.popupVisible = false;
+
+    const testHtmlElement: HTMLElement = document.createElement('div');
+    instance.close(testHtmlElement);
+
+    expect(instance.popupVisible).toBeFalse();
+  });
+
+  it('should hide the popup if the popup is visible', async () => {
+    const { instance } = await shallow.render();
+    instance.popupVisible = true;
+
+    const testHtmlElement: HTMLElement = document.createElement('div');
+    instance.close(testHtmlElement);
+
+    expect(instance.popupVisible).toBeFalse();
+  });
 });

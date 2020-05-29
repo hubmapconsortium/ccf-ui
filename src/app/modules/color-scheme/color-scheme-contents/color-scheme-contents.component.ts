@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Options } from 'ng5-slider';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
 
 import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 /**
  * Contains the color menu and brightness/transparency sliders

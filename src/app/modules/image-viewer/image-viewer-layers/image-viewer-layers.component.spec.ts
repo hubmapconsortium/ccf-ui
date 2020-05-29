@@ -1,9 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Shallow } from 'shallow-render';
 
 import { ImageViewerLayersComponent } from './image-viewer-layers.component';
 import { ImageViewerLayersModule } from './image-viewer-layers.module';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 function getTestLayers(): ImageViewerLayer[] {
   const layers: ImageViewerLayer[] = [
@@ -38,6 +37,22 @@ function getTestLayers(): ImageViewerLayer[] {
       transparency: 100,
       customizedColor: false,
       selectionOrder: 0
+    },
+    {
+      selected: false,
+      label: 'Option 3',
+      id: 3,
+      colorScheme: {
+        type: 'gradient',
+        name: 'viridis',
+        colors: ['#FFE31C', '#21908A', '#450B57'],
+        positions: [0, .5, 1]
+      },
+      color: 'red',
+      brightness: [20, 60],
+      transparency: 100,
+      customizedColor: false,
+      selectionOrder: 0
     }
   ];
   return layers;
@@ -65,6 +80,8 @@ describe('ImageViewerLayersComponent', () => {
     layers[0].selectionOrder = 2;
     layers[1].selected = true;
     layers[1].selectionOrder = 1;
+    layers[2].selected = true;
+    layers[2].selectionOrder = 3;
     const activeLayers = instance.activeLayers();
 
     expect(activeLayers[0].label).toBe('Option 2');
