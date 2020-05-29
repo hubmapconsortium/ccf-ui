@@ -22,6 +22,8 @@ export interface CCFDatabaseOptions {
   hubmapDataService: 'static' | 'search-api';
   /** Hubmap data url. */
   hubmapDataUrl: string;
+  /** Hubmap assets api url. */
+  hubmapAssetsUrl: string;
   /** HuBMAP Service Token. */
   hubmapToken?: string;
 }
@@ -31,7 +33,8 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
   ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl',
   ccfContextUrl: 'https://purl.org/ccf/latest/ccf-context.jsonld',
   hubmapDataService: 'static',
-  hubmapDataUrl: ''
+  hubmapDataUrl: '',
+  hubmapAssetsUrl: 'https://assets.hubmapconsortium.org'
 };
 
 /** Database provider. */
