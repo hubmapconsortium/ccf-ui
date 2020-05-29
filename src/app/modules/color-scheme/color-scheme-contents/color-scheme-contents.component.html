@@ -1,5 +1,5 @@
 <div class="color-scheme-contents-container">
-  <div id="scheme-contents" class="scheme-contents">
+  <div class="scheme-contents" id="scheme-contents">
     <ccf-color-bar *ngFor="let scheme of schemeOptions; index as i" class="swatch"
       [colorScheme]="schemeOptions[i]" [(coloridx)]="coloridx" [selected]="selectedSchemeIndex === i"
       (colorChange)="schemeChanged($event, i)" [enableSelection]="true">

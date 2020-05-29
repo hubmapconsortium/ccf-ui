@@ -20,4 +20,8 @@
   &.highlighted {
     outline: 1px solid white;
   }
+
+  :hover {
+    cursor: pointer;
+  }
 }

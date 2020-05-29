@@ -25,7 +25,7 @@ export class ColorBarComponent {
   /**
    * Index of the currently selected color in colorScheme.colors
    */
-  @Input() coloridx = 0;
+  @Input() coloridx: number;
 
   /**
    * Determines if colors are able to be selected on the color bar

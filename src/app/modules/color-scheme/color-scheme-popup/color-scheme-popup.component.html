@@ -8,5 +8,6 @@
   (brightnessChange)="updateBrightness($event)"
   (transparencyChange)="updateTransparency($event)"
   (colorChange)="updateColor($event)"
-  [ngClass]="popupVisible ? 'show' : 'hidden'">
+  [ngClass]="popupVisible ? 'show' : 'hidden'"
+  [selectedSchemeIndex]="schemeOptions.indexOf(colorScheme)">
 </ccf-color-scheme-contents>

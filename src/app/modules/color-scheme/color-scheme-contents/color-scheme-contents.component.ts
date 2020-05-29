@@ -56,7 +56,7 @@ export class ColorSchemeContentsComponent {
   /**
    * Index of the currently selected scheme in schemeOptions
    */
-  selectedSchemeIndex = 0;
+  @Input() selectedSchemeIndex: number;
 
   /**
    * Options for the brightness slider

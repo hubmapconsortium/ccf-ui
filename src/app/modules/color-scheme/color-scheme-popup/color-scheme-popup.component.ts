@@ -69,9 +69,6 @@ export class ColorSchemePopupComponent {
   close(target: HTMLElement): void {
     const popupElement = document.getElementById('scheme-contents');
     const launchButtons = Array.from(document.getElementsByClassName('launch-button'));
-    console.log(popupElement);
-    console.log(target);
-    if (popupElement) { console.log(popupElement.contains(target)); }
     if (!this.popupVisible ||
       (popupElement && popupElement.contains(target))) {
       return;

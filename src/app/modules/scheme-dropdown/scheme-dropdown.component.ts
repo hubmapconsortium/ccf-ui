@@ -37,6 +37,7 @@ export class SchemeDropdownComponent implements OnInit {
    */
   ngOnInit(): void {
     this.schemeOptions = this.schemeOptions.filter(scheme => scheme.type === 'discrete');
+    this.schemeChanged(0);
   }
 
   /**
