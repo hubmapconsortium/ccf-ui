@@ -1,0 +1,22 @@
+.legend {
+    display: flex;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .legend-item {
+        margin-right: 1rem;
+        display: flex;
+        width: 10rem;
+
+        .item-color {
+            margin-right: 1rem;
+            height: 1rem;
+            width: 1rem;
+            background-color: red;
+        }
+    }
+}
+
+.circle {
+    border-radius: 100%;
+}
