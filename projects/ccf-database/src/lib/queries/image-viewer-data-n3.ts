@@ -27,10 +27,10 @@ const metadataSet: { [iri: string]: string } = {
   [entity.x('organ_id').id]: 'HuBMAP Organ ID',
   [entity.x('tissue_id').id]: 'HUBMAP Tissue ID',
   [entity.x('specimen_type').id]: 'Specimen Type',
-  [entity.x('data_types').id]: 'Data Types',
-  [entity.x('assay_types').id]: 'Assays',
+  [entity.x('data_types').id]: 'Data Type(s)',
+  [entity.x('assay_types').id]: 'Assay(s)',
   [entity.x('spatial_bulk').id]: 'Spatial/Bulk',
-  [entity.x('contains_sequence').id]: 'Contains Sequence?',
+  [entity.x('contains_sequence').id]: 'Contains Sequence',
   [entity.x('description').id]: 'Description'
 };
 
