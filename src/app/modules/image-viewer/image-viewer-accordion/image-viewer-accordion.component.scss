@@ -26,12 +26,13 @@
       display: flex;
       text-overflow: ellipsis;
       justify-content: center;
+      margin-bottom: .25rem;
 
       .label,
       .value {
         display: flex;
         height: 1rem;
-        line-height: .75rem;
+        line-height: 1rem;
 
         div {
           white-space: normal;
