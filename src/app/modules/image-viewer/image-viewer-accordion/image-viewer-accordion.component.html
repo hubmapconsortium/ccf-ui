@@ -11,7 +11,7 @@
       <mat-panel-title>About</mat-panel-title>
     </mat-expansion-panel-header>
     <div class="data-container">
-      <div class="data-labels">
+      <!-- <div class="data-labels">
         <div class="label" *ngFor="let entry of metadata">
           <div>{{ entry.label }}:</div>
         </div>
@@ -20,7 +20,20 @@
         <div class="value" *ngFor="let entry of metadata">
           <div>{{ entry.value }}</div>
         </div>
+      </div> -->
+
+      <div class="data-entry" *ngFor="let entry of metadata">
+        <div class="label">{{ entry.label }}:</div>
+        <div class="value">{{ entry.value }}</div>
       </div>
+
+      <!-- <div class="data-entry">
+        <div class="entry" *ngFor="let entry of metadata, index as i">
+          <div>{{ getInfoEntry(i) }}</div>
+        </div>
+      </div> -->
+
+
     </div>
   </mat-expansion-panel>
 </mat-accordion>

@@ -25,4 +25,8 @@ export class ImageViewerAccordionComponent {
    * Output to pass up the changes made to the layers to parent components
    */
   @Output() layersChanged = new EventEmitter<ImageViewerLayer[]>();
+
+  getInfoEntry(idx: number): string {
+    return `${this.metadata[idx].label}: ${this.metadata[idx].value}`;
+  }
 }
