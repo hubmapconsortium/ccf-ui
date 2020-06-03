@@ -78,7 +78,7 @@ export class ImageViewerLayersComponent {
   }
 
   /**
-   * Updates assignment order array and handles color unassignment when a layer is unselected
+   * When a layer is unselected, ppdates assignment order array and resets layer scheme to the current default scheme
    * @param layer The layer unselected
    */
   handleUnselect(layer: ImageViewerLayer) {

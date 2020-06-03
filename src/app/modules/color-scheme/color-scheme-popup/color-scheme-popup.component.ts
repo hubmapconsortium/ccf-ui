@@ -41,17 +41,13 @@ export class ColorSchemePopupComponent {
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
   close(target: HTMLElement): void {
     const popupElement = document.getElementsByClassName('scheme-popup show')[0];
-    const launchButtons = Array.from(document.getElementsByClassName('launch-button'));
+    const colorIcon = document.getElementsByClassName(`color-icon ${this.layer.label}`)[0];
     if (!this.popupVisible ||
-      (popupElement && popupElement.contains(target))) {
+      (popupElement && popupElement.contains(target)) ||
+      (colorIcon.contains(target))) {
       return;
     }
-    for (const button of launchButtons) {
-      if (button.contains(target)) {
-        return;
-      }
-    }
-    this.popupVisible = false;
+    this.popupVisible = !this.popupVisible;
   }
 
   /**
