@@ -4,6 +4,7 @@ import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 import { ColorScheme } from '../../../modules/color-scheme/color-schemes';
 import { ImageViewerLayersComponent } from './image-viewer-layers.component';
 import { ImageViewerLayersModule } from './image-viewer-layers.module';
+import { async } from '@angular/core/testing';
 
 function getTestLayers(): ImageViewerLayer[] {
   const layers: ImageViewerLayer[] = [
@@ -95,8 +96,9 @@ describe('ImageViewerLayersComponent', () => {
     secondlayer.selectionOrder = 1;
     thirdlayer.selected = true;
     thirdlayer.selectionOrder = 3;
+    firstlayer.selected = true;
     firstlayer.selectionOrder = 2;
-    expect(instance.activeLayers()).toEqual([secondlayer, thirdlayer]);
+    expect(instance.activeLayers()).toEqual([secondlayer, firstlayer, thirdlayer]);
   });
 
   it('should reorder the color assignment array if a layer becomes customized', async () => {
@@ -106,6 +108,15 @@ describe('ImageViewerLayersComponent', () => {
     const spy = spyOn(instance, 'reorderAssignment');
     instance.layerChange(layers[0], layers[0]);
     expect(spy).toHaveBeenCalledWith(layers[0]);
+  });
+
+  it('should not reorder the color assignment array if a layer was not customized', async () => {
+    const layers = getTestLayers();
+    const { instance } = await shallow.render({ bind: { layers }});
+    layers[0].customizedColor = false;
+    const spy = spyOn(instance, 'reorderAssignment');
+    instance.layerChange(layers[0], layers[0]);
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should make customizedColor false if a customized layer is unselected', async () => {
