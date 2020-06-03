@@ -106,6 +106,8 @@ export class HuBMAPEntity {
   dataTypes: string[];
   assayTypes: string[];
   containsHumanGeneticSequences: boolean;
+  spatialOrBulk: 'Spatial' | 'Bulk';
+  thumbnailUrl: string;
 
   constructor(public data: JsonDict, public assetsApi = '') {
     this.id = this.data.uuid as string;
@@ -156,7 +158,7 @@ export class HuBMAPEntity {
     if (sex && age) {
       label += `${sex}, Age ${age}`;
       if (bmi) {
-        label += `, BMI ${bmi}`;
+        label += `, BMI ${bmi.toFixed(1)}`;
       }
     }
 
@@ -225,6 +227,13 @@ export class HuBMAPEntity {
     this.containsHumanGeneticSequences = containsSequence;
     this.dataTypes = [...dataTypes].sort();
     this.assayTypes = [...assayTypes].sort();
+    this.spatialOrBulk = this.images?.length > 0
+      || dataTypes.has('CODEX') || dataTypes.has('codex') || dataTypes.has('cytokit')
+      || dataTypes.has('PAS') || assayTypes.has('imaging')
+      ? 'Spatial' : 'Bulk';
+    if (this.spatialOrBulk === 'Bulk') {
+      this.thumbnailUrl = 'assets/icons/ico-bulk.svg';
+    }
   }
 
   /**
@@ -242,7 +251,6 @@ export class HuBMAPEntity {
       shortInfo0: this.doi,
       shortInfo1: this.groupName,
       shortInfo2: data.description || this.donor.description,
-      // thumbnailUrl,
       // downloadUrl,
       // downloadTooltip,
       resultUrl: this.protocolUrl,
@@ -251,7 +259,7 @@ export class HuBMAPEntity {
       // image viewer metadata
       sex: this.sex,
       age: this.age,
-      bmi: this.bmi,
+      bmi: this.bmi?.toFixed(1),
       ethnicity: this.ethnicity,
       authorGroup: this.groupName,
       creator: data.created_by_user_displayname,
@@ -261,9 +269,9 @@ export class HuBMAPEntity {
       organ_id: this.organSample.display_doi,
       tissue_id: this.doi,
       specimen_type: this.data.specimen_type,
-      data_types: this.dataTypes,
-      assay_types: this.assayTypes,
-      spatial_bulk: '?',
+      data_types: this.dataTypes.join(', '),
+      assay_types: this.assayTypes.join(', '),
+      spatial_bulk: this.spatialOrBulk,
       contains_sequence: this.containsHumanGeneticSequences ? 'Yes' : 'No',
       description: data.description || this.donor.description,
     };
