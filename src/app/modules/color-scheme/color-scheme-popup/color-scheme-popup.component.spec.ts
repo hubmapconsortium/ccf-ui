@@ -1,10 +1,28 @@
 import { Shallow } from 'shallow-render';
 
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 import { ColorSchemePopupComponent } from './color-scheme-popup.component';
 import { ColorSchemePopupModule } from './color-scheme-popup.module';
 
 describe('ColorSchemePopupComponent', () => {
   let shallow: Shallow<ColorSchemePopupComponent>;
+  const testLayer: ImageViewerLayer = {
+    selected: false,
+    label: 'Option 1',
+    id: 1,
+    colorScheme: {
+      type: 'discrete',
+      name: 'bluered',
+      colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
+      positions: [0, .166, .333, .5, .666, .833, 1]
+    },
+    color: '#2166AC',
+    brightness: [20, 60],
+    transparency: 100,
+    customizedColor: false,
+    selectionOrder: 0,
+    defaultOrder: -1
+  };
 
   beforeEach(() => {
     shallow = new Shallow(ColorSchemePopupComponent, ColorSchemePopupModule);
@@ -18,7 +36,7 @@ describe('ColorSchemePopupComponent', () => {
   });
 
   it('should not try to hide the popup if the popup is already not visible', async () => {
-    const { instance } = await shallow.render();
+    const { instance } = await shallow.render({ bind: { layer: testLayer } });
     instance.popupVisible = false;
 
     const testHtmlElement: HTMLElement = document.createElement('div');
@@ -28,10 +46,16 @@ describe('ColorSchemePopupComponent', () => {
   });
 
   it('should hide the popup if the popup is visible', async () => {
-    const { instance } = await shallow.render();
+    const { instance } = await shallow.render({ bind: { layer: testLayer } });
     instance.popupVisible = true;
 
     const testHtmlElement: HTMLElement = document.createElement('div');
+    const testPopup: HTMLElement = document.createElement('ccf-color-scheme-contents');
+    testPopup.setAttribute('class', ('scheme-popup show'));
+    const testIcon: HTMLElement = document.createElement('div');
+    testIcon.setAttribute('class', ('color-icon Option 1'));
+    document.body.append(testPopup);
+    document.body.append(testIcon);
     instance.close(testHtmlElement);
 
     expect(instance.popupVisible).toBeFalse();
