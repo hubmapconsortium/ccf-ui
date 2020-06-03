@@ -40,4 +40,8 @@ export class ColorPickerLauncherComponent {
     gradient += ')';
     return gradient;
   }
+
+  get className(): string {
+    return `color-icon ${this.layer.label} ${this.layer.colorScheme.type === 'discrete' ? 'circle' : 'square'}`;
+  }
 }

@@ -33,7 +33,7 @@ export class ImageViewerLayersComponent {
   /**
    * Array of indexes referring to the order that colors should be assigned in the scheme
    */
-  assignmentOrder = [4,2,5,1,3,6,0];
+  assignmentOrder: number[] = [4, 2, 5, 1, 3, 6, 0];
 
   /**
    * The current scheme applied to all non-customized layers (from the scheme dropdown)
@@ -67,6 +67,9 @@ export class ImageViewerLayersComponent {
    */
   handleSelect(layer: ImageViewerLayer) {
     const colors = layer.colorScheme.colors;
+    if (this.assignmentOrder.length === 0) {
+      this.assignmentOrder = [4, 2, 5, 1, 3, 6, 0];
+    }
     if (!layer.customizedColor) {
       layer.color = colors[this.assignmentOrder[this.assignmentOrder.length-1]];
       layer.defaultOrder = this.assignmentOrder[this.assignmentOrder.length-1];
@@ -75,7 +78,7 @@ export class ImageViewerLayersComponent {
   }
 
   /**
-   * Updates assignment order array and handles color unassignment when a layer is unselected
+   * When a layer is unselected, ppdates assignment order array and resets layer scheme to the current default scheme
    * @param layer The layer unselected
    */
   handleUnselect(layer: ImageViewerLayer) {
@@ -134,12 +137,12 @@ export class ImageViewerLayersComponent {
   updateLayerScheme(schemeChange: ColorScheme) {
     this.defaultScheme = schemeChange;
     for (const layer of this.layers) {
-      if (layer.customizedColor) {
-        return;
+      if (!layer.customizedColor) {
+        const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
+        layer.colorScheme = schemeChange;
+        layer.color = schemeChange.colors[colorIndex];
       }
-      const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
-      layer.colorScheme = schemeChange;
-      layer.color = schemeChange.colors[colorIndex];
     }
+    this.selectedLayers.emit(this.layers);
   }
 }

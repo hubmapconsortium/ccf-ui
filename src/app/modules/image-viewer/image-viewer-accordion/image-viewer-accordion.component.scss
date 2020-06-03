@@ -18,32 +18,34 @@
   .data-container {
     color: #fafafa;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     font-size: 0.75rem;
-    .data-values {
-      width: 12rem;
-    }
 
-    .data-labels,
-    .data-values {
+    .data-entry {
       display: flex;
-      flex-direction: column;
+      text-overflow: ellipsis;
+      justify-content: center;
+      margin-bottom: .25rem;
 
       .label,
       .value {
+        display: flex;
         height: 1rem;
+        line-height: 1rem;
       }
 
       .label {
-        display: flex;
         justify-content: flex-end;
-        margin-right: 1rem;
+        width: 50%;
       }
 
-      .value div {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+      .value {
+        justify-content: flex-start;
+        margin-left: 1rem;
+        width: 50%;
+        flex-wrap: wrap;
+        height: 100%;
       }
     }
   }
