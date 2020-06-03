@@ -77,6 +77,7 @@ export function hubmapResponseAsJsonLd(data: object, assetsApi = ''): JsonLd {
  */
 export class HuBMAPEntity {
   donor: JsonDict;
+  organSample: JsonDict;
   ancestors: JsonDict[];
   descendants: JsonDict[];
 
@@ -86,6 +87,7 @@ export class HuBMAPEntity {
   sex?: 'Male' | 'Female';
   age?: number;
   bmi?: number;
+  ethnicity?: string;
   label: string;
   description: string;
   doi: string;
@@ -101,6 +103,9 @@ export class HuBMAPEntity {
   organ: Iri;
   organName: string;
   spatialEntity?: JsonLd;
+  dataTypes: string[];
+  assayTypes: string[];
+  containsHumanGeneticSequences: boolean;
 
   constructor(public data: JsonDict, public assetsApi = '') {
     this.id = this.data.uuid as string;
@@ -113,6 +118,11 @@ export class HuBMAPEntity {
       this.donor = data;
     } else {
       this.donor = this.ancestors.find(e => e.entity_type === 'Donor') as JsonDict;
+    }
+    if (this.entityType === 'Sample' && data.specimen_type === 'organ') {
+      this.organSample = data;
+    } else {
+      this.organSample = this.ancestors.find(e => e.entity_type === 'Sample' && e.specimen_type === 'organ') as JsonDict;
     }
 
     const donorDescription = (this.donor.description as string || '').toLowerCase();
@@ -128,6 +138,7 @@ export class HuBMAPEntity {
       age = toNumber(ageMatch[1]);
     }
     let bmi: number | undefined;
+    let ethnicity: string | undefined;
     for (const md of get(this.donor, 'metadata.organ_donor_data', []) as JsonDict[]) {
       if (md.preferred_term === 'Feminine gender') {
         sex = 'Female';
@@ -137,6 +148,8 @@ export class HuBMAPEntity {
         age = toNumber(md.data_value);
       } else if (md.preferred_term === 'Body mass index') {
         bmi = toNumber(md.data_value);
+      } else if (md.grouping_concept_preferred_term === 'Racial group') {
+        ethnicity = md.preferred_term as string;
       }
     }
     let label = '';
@@ -150,6 +163,7 @@ export class HuBMAPEntity {
     this.age = age;
     this.sex = sex;
     this.bmi = bmi;
+    this.ethnicity = ethnicity;
     this.label = label;
 
     this.doi = data.display_doi as string;
@@ -194,6 +208,23 @@ export class HuBMAPEntity {
       this.images = images;
       this.imageProviders = imageProviders;
     }
+
+    const dataTypes = new Set<string>();
+    const assayTypes = new Set<string>();
+    let containsSequence = false;
+    for (const e of [...this.ancestors, data, ...this.descendants] as JsonDict[]) {
+      (e.data_types as string[] || []).forEach(t => dataTypes.add(t));
+      const assayType = (e as {metadata: { metadata: JsonDict }}).metadata?.metadata?.assay_type as string;
+      if (assayType) {
+        assayTypes.add(assayType);
+      }
+      if (e.contains_human_genetic_sequences === 'yes') {
+        containsSequence = true;
+      }
+    }
+    this.containsHumanGeneticSequences = containsSequence;
+    this.dataTypes = [...dataTypes].sort();
+    this.assayTypes = [...assayTypes].sort();
   }
 
   /**
@@ -205,7 +236,7 @@ export class HuBMAPEntity {
       '@id': HBM_PREFIX + this.id,
       '@type': 'Entity',
       ...omit(this, [
-        'data', 'donor', 'ancestors', 'descendants', 'assetsApi'
+        'data', 'donor', 'organ_sample', 'ancestors', 'descendants', 'assetsApi'
       ]),
       donor: HBM_PREFIX + this.donor.uuid,
       shortInfo0: this.doi,
@@ -216,7 +247,25 @@ export class HuBMAPEntity {
       // downloadTooltip,
       resultUrl: this.protocolUrl,
       resultType: this.protocolUrl ? 'external_link' : undefined,
-      // metadata, // image viewer metadata
+
+      // image viewer metadata
+      sex: this.sex,
+      age: this.age,
+      bmi: this.bmi,
+      ethnicity: this.ethnicity,
+      authorGroup: this.groupName,
+      creator: data.created_by_user_displayname,
+      creation_date: new Date(data.create_timestamp as number || 0).toLocaleDateString(),
+      modified_date: new Date(data.last_modified_timestamp as number || 0).toLocaleDateString(),
+      donor_id: this.donor.display_doi,
+      organ_id: this.organSample.display_doi,
+      tissue_id: this.doi,
+      specimen_type: this.data.specimen_type,
+      data_types: this.dataTypes,
+      assay_types: this.assayTypes,
+      spatial_bulk: '?',
+      contains_sequence: this.containsHumanGeneticSequences ? 'Yes' : 'No',
+      description: data.description || this.donor.description,
     };
   }
 }

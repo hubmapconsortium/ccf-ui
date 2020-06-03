@@ -15,15 +15,23 @@ const nonMetadataSet: { [iri: string]: string | string[] } = {
 
 /** Entity iri to metadata property paths. */
 const metadataSet: { [iri: string]: string } = {
-  [entity.id.id]: 'UUID',
-  [entity.groupName.id]: 'Group (TMC) Name',
-  [entity.entityType.id]: 'Entity Type',
-  [entity.x('doi').id]: 'Display DOI',
-  [entity.x('label').id]: 'Label',
-  [entity.x('description').id]: 'Description',
-  [entity.x('shortInfo0').id]: 'Short Info 0',
-  [entity.x('shortInfo1').id]: 'Short Info 1',
-  [entity.x('shortInfo2').id]: 'Short Info 2'
+  [entity.sex.id]: 'Sex',
+  [entity.age.id]: 'Age',
+  [entity.x('bmi').id]: 'BMI',
+  [entity.x('ethnicity').id]: 'Ethnicity',
+  [entity.groupName.id]: 'Author Group',
+  [entity.x('creator').id]: 'Creator',
+  [entity.x('creation_date').id]: 'Date Created',
+  [entity.x('modified_date').id]: 'Date Modified',
+  [entity.x('donor_id').id]: 'HuBMAP Donor ID',
+  [entity.x('organ_id').id]: 'HuBMAP Organ ID',
+  [entity.x('tissue_id').id]: 'HUBMAP Tissue ID',
+  [entity.x('specimen_type').id]: 'Specimen Type',
+  [entity.x('data_types').id]: 'Data Types',
+  [entity.x('assay_types').id]: 'Assays',
+  [entity.x('spatial_bulk').id]: 'Spatial/Bulk',
+  [entity.x('contains_sequence').id]: 'Contains Sequence?',
+  [entity.x('description').id]: 'Description'
 };
 
 /**
