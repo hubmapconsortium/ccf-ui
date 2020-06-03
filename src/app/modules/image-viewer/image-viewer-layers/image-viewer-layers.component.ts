@@ -137,12 +137,11 @@ export class ImageViewerLayersComponent {
   updateLayerScheme(schemeChange: ColorScheme) {
     this.defaultScheme = schemeChange;
     for (const layer of this.layers) {
-      if (layer.customizedColor) {
-        continue;
+      if (!layer.customizedColor) {
+        const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
+        layer.colorScheme = schemeChange;
+        layer.color = schemeChange.colors[colorIndex];
       }
-      const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
-      layer.colorScheme = schemeChange;
-      layer.color = schemeChange.colors[colorIndex];
     }
     this.selectedLayers.emit(this.layers);
   }
