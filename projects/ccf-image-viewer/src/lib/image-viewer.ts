@@ -24,6 +24,7 @@ export class ImageViewer {
   private views: any[] = [];
   private states: {[id: string]: unknown} = {};
   private deck?: Deck;
+  private update?: ReturnType<typeof setTimeout>;
 
   constructor(private props: ImageViewerProps) {
     this.loaders = this.createLoaders(props.layers);
@@ -137,5 +138,17 @@ export class ImageViewer {
       oldViewState,
       currentViewState: this.states[view.id]
     }));
+    this.scheduleUpdate();
+  }
+
+  private scheduleUpdate(): void {
+    if (!this.update) {
+      this.update = setTimeout(() => {
+        this.update = undefined;
+        this.deck?.setProps({
+          viewState: this.states
+        });
+      }, 0);
+    }
   }
 }
