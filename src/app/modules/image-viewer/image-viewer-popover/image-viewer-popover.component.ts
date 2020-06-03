@@ -30,8 +30,15 @@ export class ImageViewerPopoverComponent {
    */
   viewerVisible = false;
 
+  /**
+   * Array of currently selected layers
+   */
   activeLayers: ImageViewerLayer[];
 
+
+  /**
+   * Placeholder layer data for testing
+   */
   testLayers: ImageViewerLayer[] = [
     {
       selected: false,
@@ -100,7 +107,75 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    }
+    },
+    {
+      selected: false,
+      label: 'PAS',
+      id: 42,
+      colorScheme: {
+        type: 'discrete',
+        name: 'bluered',
+        colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
+        positions: [0, .166, .333, .5, .666, .833, 1]
+      },
+      color: '#B2182B',
+      brightness: [20, 60],
+      transparency: 100,
+      customizedColor: false,
+      selectionOrder: 0,
+      defaultOrder: -1,
+    },
+    {
+      selected: false,
+      label: 'IMS',
+      id: 400,
+      colorScheme: {
+        type: 'discrete',
+        name: 'bluered',
+        colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
+        positions: [0, .166, .333, .5, .666, .833, 1]
+      },
+      color: '#B2182B',
+      brightness: [20, 60],
+      transparency: 100,
+      customizedColor: false,
+      selectionOrder: 0,
+      defaultOrder: -1,
+    },
+    {
+      selected: false,
+      label: 'Kidney Capsule',
+      id: 123,
+      colorScheme: {
+        type: 'discrete',
+        name: 'bluered',
+        colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
+        positions: [0, .166, .333, .5, .666, .833, 1]
+      },
+      color: '#B2182B',
+      brightness: [20, 60],
+      transparency: 100,
+      customizedColor: false,
+      selectionOrder: 0,
+      defaultOrder: -1,
+    },
+    {
+      selected: false,
+      label: 'Kidney Cortex',
+      id: 321,
+      colorScheme: {
+        type: 'discrete',
+        name: 'bluered',
+        colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
+        positions: [0, .166, .333, .5, .666, .833, 1]
+      },
+      color: '#B2182B',
+      brightness: [20, 60],
+      transparency: 100,
+      customizedColor: false,
+      selectionOrder: 0,
+      defaultOrder: -1,
+    },
   ];
 
   /**
