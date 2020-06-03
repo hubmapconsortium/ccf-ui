@@ -48,6 +48,24 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
   OT: [RUI_ORGANS.body], // other_organ
 };
 
+/** HBM organ names to display name. */
+const HBM_ORGAN_LABELS: { [organName: string]: string } = {
+  BL: 'Bladder',
+  RK: 'Right Kidney',
+  LK: 'Left Kidney',
+  HT: 'Heart',
+  LI: 'Large Intestine',
+  SI: 'Small Intestine',
+  LL: 'Left Lung',
+  RL: 'Right Lung',
+  LY: 'Lymph Node',
+  SP: 'Spleen',
+  TH: 'Thymus',
+  UR: 'Ureter',
+  LV: 'Liver',
+  OT: 'Other Organ',
+};
+
 /**
  * Converts a hubmap response object into JsonLd.
  *
@@ -257,6 +275,7 @@ export class HuBMAPEntity {
       resultType: this.protocolUrl ? 'external_link' : undefined,
 
       // image viewer metadata
+      organName: HBM_ORGAN_LABELS[this.organName] || this.organName,
       sex: this.sex,
       age: this.age,
       bmi: this.bmi?.toFixed(1),
