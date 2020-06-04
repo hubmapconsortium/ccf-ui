@@ -50,30 +50,30 @@ describe('ImageViewerLegendComponent', () => {
       shallow = new Shallow(ImageViewerLegendComponent, ImageViewerLegendModule);
   });
 
-  it('should generate the background text of a discrete colorScheme properly', async () => {
-      const layers = getTestLayers();
-      const { instance } = await shallow.render({ bind: { layers } });
-      const layer = layers[0];
-      layer.colorScheme.type = 'discrete';
-      layer.color = 'red';
-      const backgroundTestString = instance.getBackground(layer);
+//   it('should generate the background text of a discrete colorScheme properly', async () => {
+//       const layers = getTestLayers();
+//       const { instance } = await shallow.render({ bind: { layers } });
+//       const layer = layers[0];
+//       layer.colorScheme.type = 'discrete';
+//       layer.color = 'red';
+//       const backgroundTestString = instance.getBackground(layer);
 
-      expect(backgroundTestString).toBe('red');
-  });
+//       expect(backgroundTestString).toBe('red');
+//   });
 
-  it('should generate the background text of a gradient colorScheme properly', async () => {
-      const layers = getTestLayers();
-      const { instance } = await shallow.render({ bind: { layers } });
-      const layer = layers[0];
-      layer.colorScheme = {
-          type: 'gradient',
-          name: 'viridis',
-          colors: ['#FFE31C', '#21908A', '#450B57'],
-          positions: [0, .5, 1]
-      };
-      const backgroundTestString = instance.getBackground(layer);
-      const correctBackgroundString = 'linear-gradient(to right, #FFE31C 0%, #21908A 50%, #450B57 100%)';
+//   it('should generate the background text of a gradient colorScheme properly', async () => {
+//       const layers = getTestLayers();
+//       const { instance } = await shallow.render({ bind: { layers } });
+//       const layer = layers[0];
+//       layer.colorScheme = {
+//           type: 'gradient',
+//           name: 'viridis',
+//           colors: ['#FFE31C', '#21908A', '#450B57'],
+//           positions: [0, .5, 1]
+//       };
+//       const backgroundTestString = instance.getBackground(layer);
+//       const correctBackgroundString = 'linear-gradient(to right, #FFE31C 0%, #21908A 50%, #450B57 100%)';
 
-      expect(backgroundTestString).toBe(correctBackgroundString);
-  });
+//       expect(backgroundTestString).toBe(correctBackgroundString);
+//   });
 });

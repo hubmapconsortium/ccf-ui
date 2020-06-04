@@ -33,7 +33,7 @@ export class ImageViewerPopoverComponent {
   activeLayers: ImageViewerLayer[];
 
   testLayers: ImageViewerLayer[] = [
-    {
+    new ImageViewerLayer({
       selected: false,
       label: 'Actin',
       id: 123,
@@ -49,8 +49,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'CD107a',
       id: 122,
@@ -66,8 +66,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'CD11c',
       id: 323,
@@ -83,8 +83,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'CD20',
       id: 32,
@@ -100,7 +100,7 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    }
+    })
   ];
 
   /**

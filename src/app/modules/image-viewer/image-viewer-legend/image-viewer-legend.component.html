@@ -3,7 +3,7 @@
         <div
             class="item-color"
             [class.circle]="layer.colorScheme.type === 'discrete'"
-            [style.background]="getBackground(layer)"
+            [style.background]="layer.background"
         ></div>
         <div class="item-title">{{ layer.label }}</div>
     </div>
