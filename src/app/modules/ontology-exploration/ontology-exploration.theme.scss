@@ -1,0 +1,13 @@
+@use '~@angular/material/theming'as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  .ccf-ontology-tree {
+    .node {
+      .toggle {
+        background-color: mat-color($foreground, divider);
+      }
+    }
+  }
+}
