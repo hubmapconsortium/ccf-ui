@@ -4,6 +4,7 @@
 @use '../../app/modules/results-browser/results-browser/results-browser.component.theme' as resultsBrowser;
 @use '../../app/modules/results-browser/results-browser-item/results-browser-item.component.theme' as resultsBrowserItem;
 @use '../../app/shared/components/checkbox/checkbox.component.theme' as checkbox;
+@use '../../app/shared/components/dropdown/dropdown.component.theme' as dropdown;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme.scss' as spinner;
 // @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
@@ -22,6 +23,7 @@
   @include resultsBrowser.theme($theme);
   @include resultsBrowserItem.theme($theme);
   @include checkbox.theme($theme);
+  @include dropdown.theme($theme);
   @include spinner.theme($theme);
   // @include search.theme($theme);
 

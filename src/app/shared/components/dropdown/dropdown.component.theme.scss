@@ -1,0 +1,36 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .option-panel {
+    .mat-option {
+      background: mat-color($background, dropdown);
+      border-color: mat-color($foreground, borders);
+
+      &:hover {
+        background: mat-color($background, dropdown-hover);
+      }
+
+      &.mat-selected.mat-active {
+        background: mat-color($accent);
+        color: mat-color($foreground, dropdown-text);
+      }
+    }
+  }
+
+  .dropdown-form-field {
+    background: mat-color($background, dropdown-menu);
+  }
+
+  .mat-select-value {
+    color: mat-color($accent);
+  }
+
+  .mat-select-arrow {
+    color: mat-color($foreground, icons);
+  }
+}

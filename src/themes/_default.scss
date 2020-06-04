@@ -20,16 +20,21 @@ $accent: mat-palette($mat-blue, 600);
 $warn: mat-palette($mat-red);
 
 $foreground: map-merge($mat-dark-theme-foreground, (
-  divider: map-get($primary-colors, 800),
+  divider: map-get($primary-colors, 800), //#424242
   dividers: map-get($primary-colors, 800),
-  icon: map-get($primary-colors, 500),
-  icons: map-get($primary-colors, 500)
+  borders: map-get($primary-colors, 800),
+  icon: map-get($primary-colors, 500), //#9E9E9E
+  icons: map-get($primary-colors, 500),
+  dropdown-text: map-get($primary-colors, 50) //#FAFAFA
 ));
 
 $background: map-merge($mat-dark-theme-background, (
-  app-bar: map-get($primary-colors, 850),
+  app-bar: map-get($primary-colors, 850), //#323232
   background: map-get($primary-colors, "black"),
-  dialog: map-get($primary-colors, 900)
+  dialog: map-get($primary-colors, 900), //#212121
+  dropdown: map-get($primary-colors, 700), //#616161
+  dropdown-hover: map-get($primary-colors, 500),
+  dropdown-menu: map-get($primary-colors, 800),
 ));
 
 $theme: (
