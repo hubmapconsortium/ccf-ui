@@ -1,7 +1,7 @@
 import { ImageViewerLayer } from './image-viewer-layer';
 
 function getTestLayer(): ImageViewerLayer {
-    const layer = new ImageViewerLayer({
+    return new ImageViewerLayer({
         selected: false,
         brightness: [20, 60],
         transparency: 100,
@@ -18,7 +18,6 @@ function getTestLayer(): ImageViewerLayer {
         },
         color: '#2166AC',
     });
-    return layer;
 }
 
 describe('ImageViewerLayer', () => {

@@ -21,17 +21,24 @@ export class ImageViewerLayer {
    * Dynamically creates a background style based on the layer's color or color scheme
    */
   get background(): string {
-    if (this.colorScheme.type === 'discrete') { return this.color; }
+    if (this.colorScheme.type === 'discrete') {
+      return this.color;
+    }
 
     const colors = this.colorScheme.colors;
     const positions = this.colorScheme.positions;
+    let colorString = '';
 
     let gradient = 'linear-gradient(to right, ';
     colors.forEach((color, index) => {
-      gradient += color + ' ' + positions[index] * 100 + '%';
-      if (index < colors.length - 1) { gradient += ', '; }
+      colorString = color + ' ' + positions[index] * 100 + '%';
+      gradient += colorString;
+      if (index < colors.length - 1) {
+        gradient += ', ';
+      }
     });
     gradient += ')';
+
     return gradient;
   }
 }
