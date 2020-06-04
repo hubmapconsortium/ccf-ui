@@ -1,5 +1,6 @@
 <div>
     <div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" [style.background]="layer.background" (click)="schemepopup.open()"></div>
+
     <ccf-color-scheme-popup
         #schemepopup
         [layer]="layer"
