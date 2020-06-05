@@ -1,5 +1,4 @@
-.mat-form-field {
-  background-color: #424242;
+.slider-form-field {
   font-size: 12px;
   width: 100%;
   height: 3rem;
@@ -12,16 +11,11 @@
 .slider-labels {
   display: flex;
   flex-direction: column;
-  
-  .range-label {
-    color: #1e88e5;
-  }
 }
 
 ::ng-deep .ccf-slider.wrapper {
   .mat-select-arrow-wrapper {
     transform: translatey(-1.5em);
-    color: #616161;
   }
 }
 
@@ -67,20 +61,17 @@
   width: 0rem;
   height: 70px;
   padding: 1rem; // NOTE: Use padding instead of margin!
-  background: #616161;
 
   .slider ::ng-deep {
     visibility: hidden;
     margin-top: 15px;
     margin-bottom: 15px;
     .ng5-slider-bar {
-      background: #1e88e5;
       opacity: .2;
       height: .15rem;
     }
 
     .ng5-slider-selection {
-      background: #1e88e5;
       opacity: 1;
     }
 
@@ -90,8 +81,8 @@
       width: $pointer-size;
       height: $pointer-size;
       top: 0.095rem - ($pointer-size / 2);
-      background-color: #1e88e5;
-      border: .1rem solid #616161;
+      border-width: .1rem;
+      border-style: solid;
 
       &:after {
         display: none;
@@ -100,7 +91,6 @@
   }
 
   .label {
-    color: #1e88e5;
     font-size: 12px;
     display: flex;
     flex-direction: column;
@@ -113,7 +103,6 @@
       input {
         background: inherit;
         border: none;
-        color: #1e88e5;
         width: 28px;
         font-size: 14px;
       }
@@ -128,14 +117,9 @@
         text-align: right;
         background: inherit;
         border: none;
-        color: #1e88e5;
         width: 28px;
         font-size: 14px;
       }
-    }
-
-    &.ceil, &.floor {
-      color: white;
     }
   }
 }
