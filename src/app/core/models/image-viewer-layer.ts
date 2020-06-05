@@ -30,7 +30,7 @@ export class ImageViewerLayer {
 
     let gradient = 'linear-gradient(to right, ';
     colors.forEach((color, index) => {
-      gradient += ` ${positions[index] * 100}%`;
+      gradient += `${color} ${positions[index] * 100}%`;
       if (index < colors.length - 1) {
         gradient += ', ';
       }
