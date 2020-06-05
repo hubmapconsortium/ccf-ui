@@ -8,17 +8,6 @@
   justify-content: space-between;
 }
 
-::ng-deep .mat-checkbox.mat-accent {
-  .mat-checkbox-checkmark-path {
-    stroke: white !important;
-  }
-}
-
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-  background-color: #1e88e5;
-}
-
 .hidden {
     visibility: hidden !important;
 }

@@ -1,9 +1,6 @@
 .viewer-sidebar {
-  color: #FAFAFA;
-  
   .viewer-close-header {
     display: flex;
-    background-color: #424242;
     justify-content: space-between;
     align-items: center;
     height: 3rem;
@@ -16,12 +13,8 @@
       border: none;
       padding: 0;
       background: inherit;
-      color: white;
       cursor: pointer;
       align-items: center;
-      :hover {
-        color: #1e88e5;
-      }
     }
   }
 }

@@ -16,7 +16,7 @@
 
       &.mat-selected.mat-active {
         background: mat-color($accent);
-        color: mat-color($foreground, dropdown-text);
+        color: mat-color($foreground, text);
       }
     }
   }
@@ -30,6 +30,6 @@
   }
 
   .mat-select-arrow {
-    color: mat-color($foreground, icons);
+    color: mat-color($foreground, icon);
   }
 }

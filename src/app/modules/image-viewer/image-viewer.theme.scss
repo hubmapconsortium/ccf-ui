@@ -1,0 +1,40 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .viewer-sidebar {
+    color: mat-color($foreground, text);
+
+    .viewer-close-header {
+      background-color: mat-color($background, dropdown-menu);
+
+      .viewer-close-button {
+        color: mat-color($foreground, text);
+
+        &:hover {
+          color: mat-color($accent);
+        }
+      }
+    }
+  }
+
+  .layers-panel,
+  .about-panel {
+    border-bottom-color: mat-color($foreground, divider);
+
+    .mat-expansion-panel-header {
+      color: mat-color($foreground, headers);
+    }
+
+    .data-container {
+      color: mat-color($foreground, text);
+    }
+  }
+
+  .image-viewer-container {
+    background-color: mat-color($background, background);
+  }
+}

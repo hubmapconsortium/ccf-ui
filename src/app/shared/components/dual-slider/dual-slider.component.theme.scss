@@ -11,7 +11,7 @@
   }
 
   .mat-select-arrow-wrapper {
-    color: mat-color($foreground, icons);
+    color: mat-color($foreground, icon);
   }
 
   .range-label {
@@ -20,8 +20,11 @@
 
   .ccf-slider {
     background: mat-color($background, dropdown);
+
     .slider {
-      .ng5-slider-bar, .ng5-slider-selection, .ng5-slider-pointer {
+      .ng5-slider-bar,
+      .ng5-slider-selection,
+      .ng5-slider-pointer {
         background: mat-color($accent);
       }
 
@@ -31,12 +34,15 @@
     }
 
     .label {
-      &.min, &.max {
+      &.min,
+      &.max {
         input {
           color: mat-color($accent);
         }
       }
-      &.ceil, &.floor {
+
+      &.ceil,
+      &.floor {
         color: white;
       }
     }
