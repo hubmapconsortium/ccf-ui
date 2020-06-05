@@ -7,7 +7,7 @@ import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 import { ColorScheme } from '../../../core/models/color-scheme';
 
 function getTestLayers(): ImageViewerLayer {
-  const layer: ImageViewerLayer = {
+  const layer = new ImageViewerLayer({
       selected: false,
       label: 'Option 1',
       id: 1,
@@ -23,7 +23,7 @@ function getTestLayers(): ImageViewerLayer {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1
-    };
+    });
   return layer;
 }
 
@@ -69,7 +69,7 @@ describe('ColorSchemeContentsComponent', () => {
       positions: [0, 1]
     };
     const testColor = 'red';
-    const testLayer: ImageViewerLayer = {...instance.layer, colorScheme: testColorScheme, color: testColor, customizedColor: true };
+    const testLayer = new ImageViewerLayer({...instance.layer, colorScheme: testColorScheme, color: testColor, customizedColor: true });
 
     instance.colorChanged(testColor, testColorScheme);
     expect(outputs.layerChange.emit).toHaveBeenCalledWith(testLayer);
