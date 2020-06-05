@@ -250,7 +250,7 @@ export class HuBMAPEntity {
       || dataTypes.has('PAS') || assayTypes.has('imaging')
       ? 'Spatial' : 'Bulk';
     if (this.spatialOrBulk === 'Bulk') {
-      this.thumbnailUrl = 'assets/icons/ico-bulk.svg';
+      this.thumbnailUrl = 'assets/icons/ico-bulk-thumb.png';
     }
   }
 

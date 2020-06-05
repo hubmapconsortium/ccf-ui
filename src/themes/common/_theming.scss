@@ -1,14 +1,14 @@
 @use '~@angular/material/theming' as *;
 @use '../../app/core/header/header.component.theme' as header;
-@use '../../app/shared/components/drawer/drawer.theme' as drawer;
-@use '../../app/modules/results-browser/results-browser/results-browser.component.theme' as resultsBrowser;
+@use '../../app/modules/filters/filters.theme.scss' as filters;
+@use '../../app/modules/image-viewer/image-viewer.theme.scss' as imageViewer;
 @use '../../app/modules/results-browser/results-browser-item/results-browser-item.component.theme' as resultsBrowserItem;
+@use '../../app/modules/results-browser/results-browser/results-browser.component.theme' as resultsBrowser;
 @use '../../app/shared/components/checkbox/checkbox.component.theme' as checkbox;
+@use '../../app/shared/components/drawer/drawer.theme' as drawer;
 @use '../../app/shared/components/dropdown/dropdown.component.theme' as dropdown;
 @use '../../app/shared/components/dual-slider/dual-slider.component.theme' as dualSlider;
-@use '../../app/modules/image-viewer/image-viewer.theme.scss' as imageViewer;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme.scss' as spinner;
-
 // @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
 
@@ -30,6 +30,8 @@
   @include dualSlider.theme($theme);
   @include imageViewer.theme($theme);
   @include spinner.theme($theme);
+  @include filters.theme($theme);
+
   // @include search.theme($theme);
 
   // Overrides goes here!

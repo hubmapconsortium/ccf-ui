@@ -11,23 +11,15 @@
 
 .outline-button {
   background: none;
-  border: 1px solid white;
-  color: white;
+  border-width: 1px;
+  border-style: solid;
   padding: 0.4em;
   cursor: pointer;
-}
-
-.outline-button:hover {
-  background-color: #1e88e5;
 }
 
 .outline-button:active {
   background: #69f0ae;
   color: black;
-}
-
-.outline-button:focus {
-  outline: white;
 }
 
 .patient-filters {
