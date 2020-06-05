@@ -4,11 +4,10 @@ import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 import { ColorScheme } from '../../../modules/color-scheme/color-schemes';
 import { ImageViewerLayersComponent } from './image-viewer-layers.component';
 import { ImageViewerLayersModule } from './image-viewer-layers.module';
-import { async } from '@angular/core/testing';
 
 function getTestLayers(): ImageViewerLayer[] {
   const layers: ImageViewerLayer[] = [
-    {
+    new ImageViewerLayer({
       selected: false,
       label: 'Option 1',
       id: 1,
@@ -24,8 +23,8 @@ function getTestLayers(): ImageViewerLayer[] {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'Option 2',
       id: 2,
@@ -41,8 +40,8 @@ function getTestLayers(): ImageViewerLayer[] {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'Option 3',
       id: 3,
@@ -58,7 +57,7 @@ function getTestLayers(): ImageViewerLayer[] {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1
-    }
+    })
   ];
   return layers;
 }

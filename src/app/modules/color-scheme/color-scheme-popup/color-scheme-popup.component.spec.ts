@@ -4,9 +4,8 @@ import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 import { ColorSchemePopupComponent } from './color-scheme-popup.component';
 import { ColorSchemePopupModule } from './color-scheme-popup.module';
 
-describe('ColorSchemePopupComponent', () => {
-  let shallow: Shallow<ColorSchemePopupComponent>;
-  const testLayer: ImageViewerLayer = {
+function testLayer(): ImageViewerLayer {
+  return new ImageViewerLayer({
     selected: false,
     label: 'Option 1',
     id: 1,
@@ -22,7 +21,11 @@ describe('ColorSchemePopupComponent', () => {
     customizedColor: false,
     selectionOrder: 0,
     defaultOrder: -1
-  };
+  });
+}
+
+describe('ColorSchemePopupComponent', () => {
+  let shallow: Shallow<ColorSchemePopupComponent>;
 
   beforeEach(() => {
     shallow = new Shallow(ColorSchemePopupComponent, ColorSchemePopupModule);
@@ -36,7 +39,8 @@ describe('ColorSchemePopupComponent', () => {
   });
 
   it('should not try to hide the popup if the popup is already not visible', async () => {
-    const { instance } = await shallow.render({ bind: { layer: testLayer } });
+    const layer = testLayer();
+    const { instance } = await shallow.render({ bind: { layer } });
     instance.popupVisible = false;
 
     const testHtmlElement: HTMLElement = document.createElement('div');
@@ -46,7 +50,8 @@ describe('ColorSchemePopupComponent', () => {
   });
 
   it('should hide the popup if the popup is visible', async () => {
-    const { instance } = await shallow.render({ bind: { layer: testLayer } });
+    const layer = testLayer();
+    const { instance } = await shallow.render({ bind: { layer } });
     instance.popupVisible = true;
 
     const testHtmlElement: HTMLElement = document.createElement('div');
