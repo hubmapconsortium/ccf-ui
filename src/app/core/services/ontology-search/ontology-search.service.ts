@@ -64,7 +64,13 @@ export function createModel(nodeMap: { [id: string]: OntologyNode }): OntologySt
  * @returns A new ontology tree.
  */
 function pruneModel(model: OntologyStateModel, organIds: string[]): OntologyStateModel {
-  const body: OntologyNode = { id: 'body', label: 'body', parent: '', children: organIds, synonymLabels: [] };
+  const body: OntologyNode = {
+    id: 'http://purl.obolibrary.org/obo/UBERON_0013702',
+    label: 'body',
+    parent: '',
+    children: organIds,
+    synonymLabels: []
+  };
   const organNodes = at(model.nodes, organIds);
   const prunedNodes = { [body.id]: body };
 

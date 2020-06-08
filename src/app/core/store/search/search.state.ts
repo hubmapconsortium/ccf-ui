@@ -13,6 +13,7 @@ export interface SearchStateModel {
    * The currently selected anatomical location.
    */
   location: OntologyNode | undefined;
+  id: string;
 }
 
 /**
@@ -22,7 +23,8 @@ export interface SearchStateModel {
 @State<SearchStateModel>({
   name: 'search',
   defaults: {
-    location: undefined
+    location: undefined,
+    id: ''
   }
 })
 @Injectable()

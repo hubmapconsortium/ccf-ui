@@ -15,7 +15,7 @@ $primary-colors: utility.add-colors($mat-gray, (
   )
 ));
 
-$primary: mat-palette($primary-colors, $text: 500);
+$primary: mat-palette($primary-colors, $text: 50);
 $accent: mat-palette($mat-blue, 600);
 $warn: mat-palette($mat-red);
 
@@ -23,7 +23,8 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   divider: map-get($primary-colors, 800),
   dividers: map-get($primary-colors, 800),
   icon: map-get($primary-colors, 500),
-  icons: map-get($primary-colors, 500)
+  icons: map-get($primary-colors, 500),
+  disabled-text: map-get($primary-colors, 800)
 ));
 
 $background: map-merge($mat-dark-theme-background, (

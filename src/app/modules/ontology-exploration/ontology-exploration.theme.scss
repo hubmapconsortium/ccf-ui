@@ -2,11 +2,29 @@
 
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
+  $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
 
   .ccf-ontology-tree {
     .node {
       .toggle {
         background-color: mat-color($foreground, divider);
+      }
+
+      .text {
+        color: mat-color($primary, text);
+
+        &:hover {
+          color: mat-color($accent);
+        }
+      }
+
+      .selected {
+        color: mat-color($accent);
+      }
+
+      .disabled {
+        color: mat-color($foreground, disabled-text);
       }
     }
   }

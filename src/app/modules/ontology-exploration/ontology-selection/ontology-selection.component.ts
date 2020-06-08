@@ -1,10 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngxs/store';
 
 import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologyState, OntologyStateModel } from '../../../core/store/ontology/ontology.state';
-import { SearchState } from '../../../core/store/search/search.state';
+import { SearchState, SearchStateModel } from '../../../core/store/search/search.state';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
 
 
@@ -21,6 +21,8 @@ export class OntologySelectionComponent {
    * View child of search component
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
+
+  @Output() ontologySelection = new EventEmitter<string>();
 
   /**
    * Creates an instance of ontology selection component.
@@ -41,5 +43,10 @@ export class OntologySelectionComponent {
   selected(ontologyNode: OntologyNode) {
     const { nodes } = this.store.selectSnapshot<OntologyStateModel>(OntologyState);
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
+  }
+
+  nodeSelected(event: SearchStateModel): void {
+    this.searchState.setLocation(event);
+    this.ontologySelection.emit(event.id);
   }
 }

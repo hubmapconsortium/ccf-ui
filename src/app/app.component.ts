@@ -7,6 +7,7 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 
 import { DataSourceService } from './core/services/data-source/data-source.service';
+import { SearchStateModel } from './core/store/search/search.state';
 
 
 /**
@@ -57,5 +58,10 @@ export class AppComponent {
    */
   openViewer(viewer: ImageViewerPopoverComponent, iri: string) {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
+  }
+
+  ontologySelected(id: string): void {
+    console.log('event: ', id, '\this: ', this);
+    this.data.updateFilter({ ontologyTerms: [id]});
   }
 }
