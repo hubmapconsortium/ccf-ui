@@ -1,0 +1,31 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .scheme-container {
+    &.highlighted {
+      outline-color: mat-color($primary, 'white');
+    }
+  }
+
+  .color-scheme-contents-container {
+    background-color: mat-color($background, popup);
+
+    .slider {
+      .ng5-slider-bar,
+      .ng5-slider-pointer {
+        background-color: mat-color($accent);
+      }
+
+      .ng5-slider-pointer {
+        border-color: mat-color($background, popup);
+      }
+    }
+  }
+
+
+}
