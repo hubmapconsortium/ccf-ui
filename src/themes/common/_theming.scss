@@ -4,11 +4,13 @@
 @use '../../app/modules/image-viewer/image-viewer.theme.scss' as imageViewer;
 @use '../../app/modules/results-browser/results-browser-item/results-browser-item.component.theme' as resultsBrowserItem;
 @use '../../app/modules/results-browser/results-browser/results-browser.component.theme' as resultsBrowser;
+@use '../../app/modules/scheme-dropdown/scheme-dropdown.component.theme' as schemeDropdown;
 @use '../../app/shared/components/checkbox/checkbox.component.theme' as checkbox;
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
 @use '../../app/shared/components/dropdown/dropdown.component.theme' as dropdown;
 @use '../../app/shared/components/dual-slider/dual-slider.component.theme' as dualSlider;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme.scss' as spinner;
+
 // @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
 
@@ -25,6 +27,7 @@
   @include drawer.theme($theme);
   @include resultsBrowser.theme($theme);
   @include resultsBrowserItem.theme($theme);
+  @include schemeDropdown.theme($theme);
   @include checkbox.theme($theme);
   @include dropdown.theme($theme);
   @include dualSlider.theme($theme);

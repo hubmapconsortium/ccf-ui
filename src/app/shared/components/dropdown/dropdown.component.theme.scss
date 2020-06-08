@@ -7,22 +7,22 @@
 
   .option-panel {
     .mat-option {
-      background: mat-color($background, dropdown);
+      background-color: mat-color($background, dropdown);
       border-color: mat-color($foreground, borders);
 
       &:hover {
-        background: mat-color($background, dropdown-hover);
+        background-color: mat-color($background, dropdown-hover);
       }
 
       &.mat-selected.mat-active {
-        background: mat-color($accent);
+        background-color: mat-color($accent);
         color: mat-color($foreground, text);
       }
     }
   }
 
   .dropdown-form-field {
-    background: mat-color($background, dropdown-menu);
+    background-color: mat-color($background, dropdown-menu);
   }
 
   .mat-select-value {

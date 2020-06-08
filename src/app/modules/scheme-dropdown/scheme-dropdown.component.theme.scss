@@ -1,0 +1,41 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .scheme-option-panel {
+    background-color: mat-color($background, popup);
+
+    .mat-active {
+      background-color: mat-color($background, popup) !important;
+    }
+  }
+  
+  .mat-radio-checked {
+    .mat-radio-label {
+      .mat-radio-container {
+        .mat-radio-outer-circle {
+          background-color: mat-color($accent) !important;
+          border-color: mat-color($foreground, icon);
+        }
+
+        .mat-radio-inner-circle {
+          background-color: mat-color($primary, 'white');
+        }
+      }
+    }
+  }
+
+  .mat-radio-outer-circle {
+    border-color: mat-color($foreground, icon);
+  }
+
+  .scheme-radio-button {
+    .swatch {
+      background-color: mat-color($background, background);
+    }
+  }
+}

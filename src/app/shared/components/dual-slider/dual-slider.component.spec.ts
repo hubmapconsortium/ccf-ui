@@ -47,7 +47,7 @@ describe('DualSliderComponent', () => {
 
   it('should call toggleSliderPopover if clicked', async () => {
     const { find, instance } = await shallow.render();
-    const formField = find('.form-field');
+    const formField = find('.slider-form-field');
     const spy = spyOn(instance, 'toggleSliderPopover');
     formField.triggerEventHandler('click', '');
     expect(spy).toHaveBeenCalled();
@@ -55,7 +55,7 @@ describe('DualSliderComponent', () => {
 
   it('should close the slider if user clicks slider again', async () => {
     const { find, instance } = await shallow.render();
-    const formField = find('.form-field');
+    const formField = find('.slider-form-field');
     formField.triggerEventHandler('click', '');
     formField.triggerEventHandler('click', '');
     expect(instance.isSliderOpen).toBe(false);

@@ -19,13 +19,13 @@
   }
 
   .ccf-slider {
-    background: mat-color($background, dropdown);
+    background-color: mat-color($background, dropdown);
 
     .slider {
       .ng5-slider-bar,
       .ng5-slider-selection,
       .ng5-slider-pointer {
-        background: mat-color($accent);
+        background-color: mat-color($accent);
       }
 
       .ng5-slider-pointer {
@@ -43,7 +43,7 @@
 
       &.ceil,
       &.floor {
-        color: white;
+        color: mat-color($primary, "white");
       }
     }
   }
