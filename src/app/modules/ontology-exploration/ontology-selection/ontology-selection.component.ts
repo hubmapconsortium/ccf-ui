@@ -47,6 +47,7 @@ export class OntologySelectionComponent {
 
   nodeSelected(event: SearchStateModel): void {
     this.searchState.setLocation(event);
-    this.ontologySelection.emit(event.id);
+    const id = event ? event.id : '';
+    this.ontologySelection.emit(id);
   }
 }

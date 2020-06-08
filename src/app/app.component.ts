@@ -61,7 +61,7 @@ export class AppComponent {
   }
 
   ontologySelected(id: string): void {
-    console.log('event: ', id, '\this: ', this);
-    this.data.updateFilter({ ontologyTerms: [id]});
+    const ontologyTerms = id === '' ? [] : [id];
+    this.data.updateFilter({ ontologyTerms });
   }
 }
