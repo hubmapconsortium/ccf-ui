@@ -22,7 +22,7 @@ export class OntologySelectionComponent {
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
 
-  @Output() ontologySelection = new EventEmitter<string>();
+  @Output() ontologySelection = new EventEmitter<SearchStateModel>();
 
   /**
    * Creates an instance of ontology selection component.
@@ -47,7 +47,6 @@ export class OntologySelectionComponent {
 
   nodeSelected(event: SearchStateModel): void {
     this.searchState.setLocation(event);
-    const id = event ? event.id : '';
-    this.ontologySelection.emit(id);
+    this.ontologySelection.emit(event);
   }
 }

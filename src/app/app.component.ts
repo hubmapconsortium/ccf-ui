@@ -20,6 +20,7 @@ import { SearchStateModel } from './core/store/search/search.state';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  ontologySelectionLabel = 'body';
 
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
@@ -60,8 +61,14 @@ export class AppComponent {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }
 
-  ontologySelected(id: string): void {
-    const ontologyTerms = id === '' ? [] : [id];
-    this.data.updateFilter({ ontologyTerms });
+  ontologySelected(ontologySelection: SearchStateModel): void {
+    if (!!ontologySelection) {
+      this.data.updateFilter({ ontologyTerms: [ontologySelection.id]});
+      this.ontologySelectionLabel = ontologySelection.label;
+      return;
+    }
+
+    this.data.updateFilter({ ontologyTerms: [] });
+    this.ontologySelectionLabel = '';
   }
 }

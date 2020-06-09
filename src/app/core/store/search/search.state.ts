@@ -14,6 +14,7 @@ export interface SearchStateModel {
    */
   location: OntologyNode | undefined;
   id: string;
+  label: string;
 }
 
 /**
@@ -24,7 +25,8 @@ export interface SearchStateModel {
   name: 'search',
   defaults: {
     location: undefined,
-    id: ''
+    id: '',
+    label: ''
   }
 })
 @Injectable()
