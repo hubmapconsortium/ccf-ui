@@ -16,31 +16,72 @@ $primary-colors: utility.add-colors($mat-gray, (
 ));
 
 $primary: mat-palette($primary-colors, $text: 500);
-$accent: mat-palette($mat-blue, 600);
+// $accent: mat-palette($mat-blue, 600);
+$accent: mat-palette($mat-blue, 700);
 $warn: mat-palette($mat-red);
 
-$foreground: map-merge($mat-dark-theme-foreground, (
-  divider: map-get($primary-colors, 800), //#424242
-  borders: map-get($primary-colors, 800), //#424242
-  icon: map-get($primary-colors, 500), //#9E9E9E
-  headers: map-get($primary-colors, 500), //#9E9E9E
-  text: map-get($primary-colors, 50) //#FAFAFA
-));
+$foreground: map-merge($mat-light-theme-foreground, (
+  // divider: map-get($primary-colors, 800), //#424242
+  divider: map-get($primary-colors, 300), //#E0E0E0
 
-$background: map-merge($mat-dark-theme-background, (
-  background: map-get($primary-colors, "black"),
-  dialog: map-get($primary-colors, 900), //#212121
-  app-bar: map-get($primary-colors, 850), //#323232
-  popup: map-get($primary-colors, 850), //#323232
-  dropdown-menu: map-get($primary-colors, 800), //#424242
-  viewer-header: map-get($primary-colors, 800), //#424242
-  dropdown: map-get($primary-colors, 700), //#616161
-  dropdown-hover: map-get($primary-colors, 500) //#9E9E9E
+  // borders: map-get($primary-colors, 800), //#424242
+  borders: map-get($primary-colors, 300), //#E0E0E0
+
+  // icon: map-get($primary-colors, 500), //#9E9E9E
+  icon: map-get($primary-colors, 500), //#E0E0E0
+
+  // headers: map-get($primary-colors, 500), //#9E9E9E
+  headers: map-get($primary-colors, 300), //#E0E0E0
+
+  // text: map-get($primary-colors, 50) //#FAFAFA
+  text: map-get($primary-colors, 900) //#212121
 
 ));
+
+$background: map-merge($mat-light-theme-background, (
+  // background: map-get($primary-colors, "black"),
+  background: map-get($primary-colors, 50), //#FAFAFA
+
+  header: #444A65,
+
+  // dialog: map-get($primary-colors, 900), //#212121
+
+  // app-bar: map-get($primary-colors, 850), //#323232
+
+  // popup: map-get($primary-colors, 850), //#323232
+  popup: map-get($primary-colors, 'white'), //#FFFFFF
+
+  // dropdown-menu: map-get($primary-colors, 800), //#424242
+
+  // viewer-header: map-get($primary-colors, 800), //#424242
+
+  // dropdown: map-get($primary-colors, 700), //#616161
+
+  // dropdown-hover: map-get($primary-colors, 500) //#9E9E9E
+
+));
+
+// $foreground: map-merge($mat-dark-theme-foreground, (
+//   divider: map-get($primary-colors, 800), //#424242
+//   borders: map-get($primary-colors, 800), //#424242
+//   icon: map-get($primary-colors, 500), //#9E9E9E
+//   headers: map-get($primary-colors, 500), //#9E9E9E
+//   text: map-get($primary-colors, 50) //#FAFAFA
+// ));
+
+// $background: map-merge($mat-dark-theme-background, (
+//   background: map-get($primary-colors, "black"),
+//   dialog: map-get($primary-colors, 900), //#212121
+//   app-bar: map-get($primary-colors, 850), //#323232
+//   popup: map-get($primary-colors, 850), //#323232
+//   dropdown-menu: map-get($primary-colors, 800), //#424242
+//   viewer-header: map-get($primary-colors, 800), //#424242
+//   dropdown: map-get($primary-colors, 700), //#616161
+//   dropdown-hover: map-get($primary-colors, 500) //#9E9E9E
+// ));
 
 $theme: (
-  is-dark: true,
+  is-dark: false,
   primary: $primary,
   accent: $accent,
   warn: $warn,
