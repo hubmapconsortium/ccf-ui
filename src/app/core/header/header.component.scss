@@ -12,9 +12,9 @@
   .logo, .download {
     display: flex;
     align-items: center;
-    height: 100%;
-    cursor: pointer;
+    height: 1.5rem;;
     transition: color 1s;
+    cursor: pointer;
   }
 
   :not(:last-child) {
@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    font: 400 14px/20px Inter, sans-serif;
+    font: 400 16px/20px Inter, sans-serif;
   }
 
   .ccf-info-button {

@@ -22,6 +22,10 @@
     color: mat-color($background, text);
   }
 
+  .slider-pane {
+    border-color: mat-color($foreground, borders);
+  }
+
   .ccf-slider {
     background-color: mat-color($background, dropdown);
 

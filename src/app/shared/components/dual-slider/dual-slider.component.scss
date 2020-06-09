@@ -1,16 +1,30 @@
 .slider-form-field {
-  font-size: 12px;
   width: 100%;
   height: 3rem;
+
   ::ng-deep .mat-form-field-wrapper {
     padding-left: 1em;
     padding-right: 1em;
+
+    .mat-form-field-flex {
+      .mat-form-field-infix {
+        border: none;
+      }
+    }
   }
 }
+
 
 .slider-labels {
   display: flex;
   flex-direction: column;
+  .name-label {
+    font-size: 14px;
+  }
+
+  .range-label {
+    font-weight: bold;
+  }
 }
 
 ::ng-deep .ccf-slider.wrapper {
@@ -48,6 +62,11 @@
 
 .invisible {
   opacity: 0;
+}
+
+::ng-deep .slider-pane {
+  border-width: 1px;
+  border-style: solid;
 }
 
 .ccf-slider.detached {
@@ -91,35 +110,34 @@
   }
 
   .label {
-    font-size: 12px;
     display: flex;
     flex-direction: column;
-    width: 28px;
-
+    width: 32px;
+    
     &.min {
-      font-size: 14px;
       margin-right: 1rem;
-
-      input {
-        background: inherit;
-        border: none;
-        width: 28px;
-        font-size: 14px;
-      }
     }
-
+    
     &.max {
-      font-size: 14px;
       margin-left: 1rem;
-      text-align: right;
+      align-items: flex-end;
 
-      input {
+      .ceil, input {
         text-align: right;
-        background: inherit;
-        border: none;
-        width: 28px;
-        font-size: 14px;
       }
     }
+
+    .floor, .ceil {
+      font-size: 14px;
+    }
+
+    input {
+      border: none;
+      width: 28px;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 0;
+    }
+
   }
 }

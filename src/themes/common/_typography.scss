@@ -1,6 +1,6 @@
 @use '~@angular/material/theming' as *;
 
 $config: mat-typography-config(
-  $title: mat-typography-level(16px, 24px, 500),
+  $body-1: mat-typography-level(16px, 24px, 500),
   $font-family: 'Inter, sans-serif'
 );
