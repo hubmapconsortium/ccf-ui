@@ -1,5 +1,5 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { filter, invoke, property } from 'lodash';
 
@@ -26,7 +26,7 @@ const isExpandable = property<FlatNode, boolean>('expandable');
   styleUrls: ['./ontology-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OntologyTreeComponent {
+export class OntologyTreeComponent implements OnInit {
   /**
    * The node like objects to display in the tree.
    */
@@ -54,6 +54,13 @@ export class OntologyTreeComponent {
   get getChildren(): GetChildrenFunc | undefined {
     return this._getChildren;
   }
+
+  /**
+   * Creates an instance of ontology tree component.
+   *
+   * @param cdr The change detector.
+   */
+  constructor(private cdr: ChangeDetectorRef) { }
 
   /**
    * Emits an event whenever a node has been selected.
@@ -85,11 +92,6 @@ export class OntologyTreeComponent {
   readonly dataSource = new MatTreeFlatDataSource(this.control, this.flattener);
 
   /**
-   * Currently selected node.
-   */
-  selectedNode?: FlatNode = undefined;
-
-  /**
    * Storage for getter/setter 'nodes'.
    */
   private _nodes?: OntologyNode[] = undefined;
@@ -100,11 +102,48 @@ export class OntologyTreeComponent {
   private _getChildren?: GetChildrenFunc;
 
   /**
-   * Creates an instance of ontology tree component.
-   *
-   * @param cdr The change detector.
+   * A copy of the body node in order to manually select it when the component loads.
    */
-  constructor(private cdr: ChangeDetectorRef) { }
+  bodyNode = new FlatNode(
+    {
+      id: 'http://purl.obolibrary.org/obo/UBERON_0013702',
+      label: 'body',
+      parent: '',
+      children: [
+        'http://purl.obolibrary.org/obo/UBERON_0000948',
+        'http://purl.obolibrary.org/obo/LMHA_00211',
+        'http://purl.obolibrary.org/obo/UBERON_0002113',
+        'http://purl.obolibrary.org/obo/UBERON_0002106',
+        'http://purl.obolibrary.org/obo/UBERON_0001155',
+        'http://purl.obolibrary.org/obo/UBERON_0002108',
+        'http://purl.obolibrary.org/obo/UBERON_0001052'
+      ],
+      synonymLabels: []
+    },
+    0
+  );
+
+  /**
+   * Currently selected node, defaulted to the body node for when the page initially loads.
+   */
+  selectedNode?: FlatNode = this.bodyNode;
+
+  /**
+   * Expand the body node when the component is initialized.
+   */
+  ngOnInit() {
+    this.control.expand(this.control.dataNodes[0]);
+  }
+
+  /**
+   * Selecting the body is slightly different because it has no parents, so here we are
+   * selecting the body, collapsing all the nodes, then expanding the body node manually.
+   */
+  selectBody(): void {
+    this.select(this.bodyNode);
+    this.control.collapseAll();
+    this.control.expand(this.control.dataNodes[0]);
+  }
 
   /**
    * Expands the tree to show a node and sets the currect selection to that node.
@@ -113,6 +152,11 @@ export class OntologyTreeComponent {
    */
   expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) => OntologyNode): void {
     const { cdr, control } = this;
+
+    if (node.label === 'body') {
+      this.selectBody();
+      return;
+    }
 
     // Add all parents to a set
     const parents = new Set<OntologyNode>();
@@ -157,7 +201,7 @@ export class OntologyTreeComponent {
    * @returns True if the node is the currently selected node.
    */
   isSelected(node: FlatNode): boolean {
-    return node === this.selectedNode;
+    return node.original.label === this.selectedNode?.original.label;
   }
 
   /**
@@ -167,8 +211,7 @@ export class OntologyTreeComponent {
    * @param node The node to select.
    */
   select(node: FlatNode | undefined): void {
-    let { selectedNode } = this;
-    this.selectedNode = selectedNode = node !== selectedNode ? node : undefined;
-    this.nodeSelected.emit(selectedNode && selectedNode.original);
+    this.selectedNode = this.selectedNode = node?.original.label !== this.selectedNode?.original.label ? node : undefined;
+    this.nodeSelected.emit(this.selectedNode && this.selectedNode.original);
   }
 }
