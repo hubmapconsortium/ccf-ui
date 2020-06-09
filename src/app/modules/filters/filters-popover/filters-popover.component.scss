@@ -9,36 +9,41 @@
     }
 
     .popup-body {
-      padding-left: 4em;
+      padding-left: 4em !important;
     }
   }
 }
 
 .popup-container {
-  width: 0em;
   position: absolute;
+  width: 0em;
   height: 23em;
-  z-index: -1;
+  z-index: 5;
   top: 0;
-  right: 27.5em;
+  right: 24rem;
   box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
   transition-property: width;
   transition-duration: 0.3s;
 
   .popup-body {
     position: relative;
-    padding: 1em;
     opacity: 0;
     transition-property: opacity;
     transition-duration: 0s;
     transition-delay: 0s;
+
+    ccf-filters-content {
+      &.hidden {
+        display: none !important;
+      }
+    }
   }
 
   &.visible {
     width: 35rem;
-    z-index: 5;
 
     .popup-body {
+      padding: 1em;
       opacity: 1;
       transition-delay: 0.3s;
       transition-duration: 0.3s;
