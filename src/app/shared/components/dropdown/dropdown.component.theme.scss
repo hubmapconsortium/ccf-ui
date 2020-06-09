@@ -16,17 +16,18 @@
 
       &.mat-selected.mat-active {
         background-color: mat-color($accent);
-        color: mat-color($foreground, text);
+        color: mat-color($foreground, contrast-text);
       }
     }
   }
 
   .dropdown-form-field {
     background-color: mat-color($background, dropdown-menu);
+    color: mat-color($accent);
   }
 
   .mat-select-value {
-    color: mat-color($accent);
+    color: mat-color($foreground, text);
   }
 
   .mat-select-arrow {

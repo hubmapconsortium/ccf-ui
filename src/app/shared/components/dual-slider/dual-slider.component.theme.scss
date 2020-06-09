@@ -14,8 +14,12 @@
     color: mat-color($foreground, icon);
   }
 
-  .range-label {
+  .name-label {
     color: mat-color($accent);
+  }
+  
+  .range-label {
+    color: mat-color($background, text);
   }
 
   .ccf-slider {
@@ -37,13 +41,13 @@
       &.min,
       &.max {
         input {
-          color: mat-color($accent);
+          color: mat-color($primary, text);
         }
       }
 
       &.ceil,
       &.floor {
-        color: mat-color($primary, "white");
+        color: mat-color($accent);
       }
     }
   }

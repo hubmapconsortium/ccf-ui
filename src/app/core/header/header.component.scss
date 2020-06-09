@@ -1,16 +1,19 @@
 .ccf-header {
-  height: 3rem;
+  height: 4rem;
   padding: 0 1.5rem;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: flex;
 
   .logo {
     width: 5rem;
   }
 
   .logo, .download {
+    display: flex;
+    align-items: center;
+    height: 100%;
     cursor: pointer;
-
     transition: color 1s;
   }
 
@@ -25,6 +28,12 @@
 
   .filter-labels {
     display: flex;
-    // font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    align-items: center;
+    height: 100%;
+    font: 400 14px/20px Inter, sans-serif;
+  }
+
+  .ccf-info-button {
+    height: 100%;
   }
 }

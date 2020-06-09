@@ -6,19 +6,29 @@
   $accent: map-get($theme, accent);
 
   .ccf-drawer {
-    background-color: mat-color($background, dialog);
+    background-color: mat-color($background, content-background);
     border-right-color: mat-color($foreground, divider);
     border-left-color: mat-color($foreground, divider);
   }
 
   .ccf-drawer-toggle-button {
-    color: mat-color($foreground, icon);
-    background-color: mat-color($background, dialog);
+    color: mat-color($foreground, contrast-icon);
+    background-color: mat-color($background, content-background);
     border-color: mat-color($foreground, divider);
 
     &:hover {
       background-color: mat-color($accent);
-      color: mat-color($foreground, text);
+      color: mat-color($foreground, icon);
+    }
+  }
+
+  .drawer-icons {
+    .button {
+      color: mat-color($foreground, contrast-icon);
+
+      :hover {
+        color: mat-color($accent);
+      }
     }
   }
 }

@@ -2,4 +2,10 @@
 
 @mixin theme($theme) {
   $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+
+  .mat-checkbox-label, .filter-label {
+    color: mat-color($primary, text)
+  }
 }

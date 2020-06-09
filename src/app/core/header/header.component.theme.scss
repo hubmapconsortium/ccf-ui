@@ -7,7 +7,7 @@
 
   .ccf-header {
     border-bottom-color: mat-color($foreground, divider);
-    background-color: mat-color($background, header);
+    background-color: mat-color($background, app-bar);
     color: mat-color($foreground, headers);
 
     .logo:hover {
@@ -15,7 +15,9 @@
     }
 
     .download {
-      color: map-get($mat-amber, A400);
+      // color: map-get($mat-amber, A400);
+      color: mat-color($foreground, icon);
+      text-decoration: none;
 
       &:hover {
         color: mat-color($accent);

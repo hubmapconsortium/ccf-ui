@@ -7,7 +7,7 @@
   $accent: map-get($theme, accent);
 
   .outline-button {
-    color: mat-color($foreground, text);
+    color: mat-color($accent);
     border-color: mat-color($foreground, icon);
 
     &:hover {
@@ -24,7 +24,7 @@
   }
 
   .show-hide {
-    color: mat-color($foreground, icon);
+    color: mat-color($foreground, contrast-icon);
 
     &:hover {
       color: mat-color($accent);

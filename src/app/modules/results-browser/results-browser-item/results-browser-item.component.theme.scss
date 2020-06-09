@@ -12,7 +12,8 @@
     }
 
     .download {
-      color: map-get($mat-amber, A400);
+      // color: map-get($mat-amber, A400);
+      color: mat-color($foreground, contrast-icon);
 
       &:hover {
         color: mat-color($accent);
@@ -20,7 +21,7 @@
     }
 
     .no-download {
-      color: mat-color($foreground, divider);
+      color: mat-color($foreground, disabled);
     }
   }
 }
