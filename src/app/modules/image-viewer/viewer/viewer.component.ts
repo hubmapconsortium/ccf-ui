@@ -1,10 +1,9 @@
 import {
-  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output,
-  SimpleChanges, ViewChild,
+  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild,
 } from '@angular/core';
-import { ImageViewer, LayerSpec } from 'ccf-image-viewer';
+import { DataSource, ImageViewer, LoaderType, PictureInPictureViewer } from 'ccf-image-viewer';
+import { ResizeSensor } from 'css-element-queries';
 
-export { LayerSpec };
 
 @Component({
   selector: 'ccf-viewer',
@@ -12,10 +11,19 @@ export { LayerSpec };
   styleUrls: ['./viewer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ViewerComponent implements AfterViewInit, OnChanges, OnDestroy {
-  @Input() layers: LayerSpec[] = [
-    // {url: 'https://vitessce-demo-data.storage.googleapis.com/test-data/antigen_exprs.ome.tiff'}
-    {url: 'https://vitessce-demo-data.storage.googleapis.com/test-data/hubmap/pyramid_0.0.2/spraggins.ome.tif'}
+export class ViewerComponent implements AfterViewInit, OnDestroy {
+  // tslint:disable-next-line: no-unsafe-any
+  @Input() set sources(sources: DataSource[]) {
+    this._sources = sources;
+    this.viewer?.setSources(sources);
+  }
+  private _sources: DataSource[] = [
+    {
+      type: LoaderType.Tiff,
+      info: {
+        url: 'https://vitessce-demo-data.storage.googleapis.com/test-data/hubmap/pyramid_0.0.2/spraggins.ome.tif'
+      }
+    }
   ];
 
   @Output() metadataChange = new EventEmitter<{ channels: string[] }>();
@@ -23,35 +31,41 @@ export class ViewerComponent implements AfterViewInit, OnChanges, OnDestroy {
   @ViewChild('canvas', { read: ElementRef }) canvas: ElementRef<HTMLCanvasElement>;
 
   private viewer: ImageViewer;
+  private sensor: ResizeSensor;
 
-  constructor() { }
+  constructor(private container: ElementRef<HTMLElement>) {}
 
   ngAfterViewInit(): void {
-    this.create();
-  }
+    const {
+      container: { nativeElement: container },
+      canvas: { nativeElement: element },
+      _sources: sources,
+    } = this;
+    const { clientWidth, clientHeight } = element;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('layers' in changes && this.canvas) {
-      this.viewer?.destroy();
-      this.create();
-    }
+    this.viewer = new PictureInPictureViewer({
+      id: 'image-viewer',
+      sources,
+      initialViewState: {
+        zoom: -6,
+        target: [25000, 10000, 0]
+      },
+      canvas: element,
+      width: clientWidth,
+      height: clientHeight,
+      overview: {
+        detailWidth: clientWidth,
+        detailHeight: clientHeight
+      }
+    });
+
+    this.sensor = new ResizeSensor(container, ({ width, height }) => {
+      this.viewer.setSize(width, height);
+    });
   }
 
   ngOnDestroy(): void {
-    this?.viewer.destroy();
-  }
-
-  private create(): void {
-    const { clientWidth, clientHeight } = this.canvas.nativeElement;
-
-    this.viewer = new ImageViewer({
-      id: 'image-viewer',
-      canvas: this.canvas.nativeElement,
-      width: clientWidth,
-      height: clientHeight,
-      layers: this.layers
-    });
-
-    this.viewer.getMetadata().then(meta => this.metadataChange.emit(meta as any));
+    this.viewer.finalize();
+    this.sensor.detach();
   }
 }

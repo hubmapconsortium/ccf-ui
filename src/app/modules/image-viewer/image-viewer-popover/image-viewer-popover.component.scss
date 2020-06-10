@@ -19,28 +19,18 @@
   .image-viewer-window {
     display: flex;
     flex-direction: column;
+    margin-left: 1.5rem !important;
 
-    .viewer-image {
-      padding-top: 1.5rem;
-      height: calc(100% - 9rem);
-
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: scale-down;
-      }
-    }
-
-    .scale-bar {
-      height: 1.5rem;
+    .viewer {
       width: 100%;
+      height: calc(100% - 4.5rem);
     }
 
     .legend {
       height: 3rem;
       width: 100%;
       margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
+      // margin-bottom: 1.5rem;
     }
   }
 
@@ -50,7 +40,7 @@
 
     .drawer-icons {
       display: flex;
-      
+
       .button {
         width: 3rem;
         height: 3rem;
