@@ -1,154 +1,174 @@
-import { Deck } from '@deck.gl/core';
-import { createOMETiffLoader, DetailView, OverviewView } from '@hubmap/vitessce-image-viewer';
+import { Deck, Layer, View, Viewport } from '@deck.gl/core';
+import { Loader, VivView } from '@hubmap/vitessce-image-viewer';
+import { bind } from 'bind-decorator';
 
-export interface LayerSpec {
-  url: string;
-  offsets?: number[];
+import { LoaderType, OMEZarrInfo, TiffInfo, ZarrInfo, createLoader } from './loader';
+import { getVivId } from './utils';
+
+
+type ValueOrGenerator<T, U extends unknown[] = []> = T | ((...args: U) => T);
+
+type DeckProps = ConstructorParameters<typeof Deck>[0];
+interface ExtDeckProps extends DeckProps {
+  canvas?: string | HTMLElement;
 }
 
-export interface Channel {
-  name: string;
-  color: [number, number, number];
+type DeckCallbackArgs<K extends keyof DeckProps> = Parameters<NonNullable<DeckProps[K]>>[0];
+type LayerFilterArgs = DeckCallbackArgs<'layerFilter'>;
+type OnViewStateChangeArgs = DeckCallbackArgs<'onViewStateChange'> & { viewId: string };
+
+export interface DataSource {
+  type: LoaderType;
+  info: ZarrInfo | OMEZarrInfo | TiffInfo;
 }
 
 export interface ImageViewerProps {
   id: string;
-  canvas: string | HTMLCanvasElement;
-  width: number;
-  height: number;
-  layers: LayerSpec[];
+  initialViewState: State;
+  canvas?: HTMLCanvasElement;
+  width?: number;
+  height?: number;
+  sources?: DataSource[];
 }
 
-export class ImageViewer {
-  private loaders: Promise<unknown[]>;
-  private views: any[] = [];
-  private states: {[id: string]: unknown} = {};
-  private deck?: Deck;
-  private update?: ReturnType<typeof setTimeout>;
+export type LayerConfig = Record<string, unknown>;
+export type State = Record<string, unknown>;
+export type StateCollection = Record<string, State>;
 
-  constructor(private props: ImageViewerProps) {
-    this.loaders = this.createLoaders(props.layers);
-    this.loaders.then(loaders => {
-      this.views = this.createViews(loaders);
-      this.states = this.createState(view => ({ viewState: view.initialViewState }));
-      this.deck = this.createDeck(loaders);
-    });
+export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerProps> {
+  props: Props;
+  protected sources: DataSource[] = [];
+  protected loaders: Loader[] = [];
+  protected vivViews: VivView[] = [];
+  protected views: View[] = [];
+  protected layerConfigs: LayerConfig[] = [];
+  protected layers: Layer<unknown>[] = [];
+  protected states: StateCollection = {};
+  protected deck: Deck;
+
+  constructor(props: Props) {
+    this.props = { ...props };
+    this.deck = new Deck({
+      id: props.id,
+      canvas: props.canvas,
+      width: props.width ?? 0,
+      height: props.height ?? 0,
+      views: [],
+      layers: [],
+      effects: [],
+      viewState: {},
+      layerFilter: this.layerFilter,
+      onViewStateChange: this.onViewStateChange,
+      glOptions: {
+        webgl2: true
+      }
+    } as ExtDeckProps);
+
+    if (props.sources) {
+      this.setSources(props.sources);
+    }
 
     console.log(this);
   }
 
-  async getMetadata(): Promise<unknown> {
-    const loaders = await this.loaders;
-    const channels = loaders.reduce((names: string[], loader) => {
-      return names.concat((loader as any).channelNames);
-    }, []);
-
-    return {
-      channels
-    };
+  finalize(): void {
+    this.deck.finalize();
   }
 
-  destroy(): void {
-    this.deck?.finalize();
-    this.loaders = Promise.resolve([]);
-    this.views = [];
-    this.states = {};
-    this.deck = undefined;
-  }
+  async setSize(width: number, height: number): Promise<this> {
+    this.props = { ...this.props, width, height };
+    this.vivViews = await this.createVivViews();
 
-  private createLoaders(layers: LayerSpec[]): Promise<unknown[]> {
-    const loaders = layers.map(createOMETiffLoader);
-    return Promise.all(loaders);
-  }
-
-  private createViews(loaders: unknown[]): unknown[] {
-    const initialViewState = {
-      target: [25000, 10000, 0],
-      zoom: -6,
-      width: this.props.width,
-      height: this.props.height
-    };
-
-    const detailView = new DetailView({
-      initialViewState: {
-        ...initialViewState,
-        id: 'detail'
-      }
-    });
-
-    const overviewView = new OverviewView({
-      initialViewState: {
-        ...initialViewState,
-        id: 'overview'
-      },
-      loader: loaders[0], // FIXME
-      detailWidth: initialViewState.width,
-      detailHeight: initialViewState.height,
-      margin: 25,
-      scale: 0.15,
-      position: 'bottom-left'
-    });
-
-    return [detailView, overviewView];
-  }
-
-  private createState(argGen: (view: any) => any): {[id: string]: unknown} {
-    return this.views.reduce((state, view) => {
-      state[view.id] = view.filterViewState(argGen(view));
-      return state;
-    }, {});
-  }
-
-  private createLayers(layerProps: any[]): unknown[] {
-    return this.views.map((view, i) => view.getLayers({
-      viewStates: this.states,
-      props: {
-        ...layerProps[i]
+    this.updateState((view, current) => ({
+      viewState: {
+        ...current,
+        width,
+        height,
+        id: view.id
       }
     }));
+    this.update();
+    this.deck.redraw(true);
+
+    return this;
   }
 
-  private createDeck(loaders: unknown[]): Deck {
-    const loader: any = loaders[0]; // FIX
-    const channelCount = loader.channelNames.length;
-    const layerConfig = {
-      loader,
-      sliderValues: Array(channelCount).fill([1500, 20000]),
-      colorValues: Array(channelCount).fill([255, 255, 255]),
-      channelIsOn: Array(channelCount).fill(true),
-      loaderSelection: loader.channelNames.map(name => ({ channel: name })),
-    };
+  async setSources(sources: DataSource[]): Promise<this> {
+    const loaderPromises = sources.map(source => createLoader(source.type, source.info));
+    const loaders = await Promise.all(loaderPromises);
 
-    return new Deck({
-      id: this.props.id,
-      canvas: this.props.canvas,
-      layers: this.createLayers(Array(this.views.length).fill(layerConfig)),
-      views: this.views.map(view => view.getDeckGlView()),
-      viewState: this.states,
-      onViewStateChange: this.onViewStateChange.bind(this),
-      glOptions: {
-        webgl2: true
-      }
-    } as any);
+    this.sources = sources;
+    this.loaders = loaders;
+    this.vivViews = await this.createVivViews();
+    this.layerConfigs = await this.createLayerConfigs();
+    this.updateState(view => ({ viewState: view.initialViewState }));
+    this.update();
+
+    return this;
   }
 
-  private onViewStateChange({ viewId, viewState, oldViewState }): void {
-    this.states = this.createState(view => ({
+  protected abstract async createVivViews(): Promise<VivView[]>;
+  protected abstract async createLayerConfigs(): Promise<LayerConfig[]>;
+
+  protected update(): void {
+    this.updateViews();
+    this.updateLayers();
+    this.updateDeckProps({
+      views: this.views,
+      layers: this.layers,
+      viewState: this.states
+    });
+  }
+
+  protected updateViews(): void {
+    this.views = this.vivViews.map(viv => viv.getDeckGlView());
+  }
+
+  protected updateLayers(): void {
+    const { vivViews, states, layerConfigs } = this;
+    const length = layerConfigs.length;
+    const layers = vivViews.map((view, index) => view.getLayers({
+      viewStates: states,
+      props: layerConfigs[index % length]
+    }));
+
+    this.layers = ([] as Layer<unknown>[]).concat(...layers);
+  }
+
+  protected updateState(
+    args: ValueOrGenerator<Record<string, unknown>, [VivView, State]>
+  ): void {
+    const argsGenerator = typeof args === 'function' ? args : () => args;
+    const currentStates = this.states;
+
+    this.states = this.vivViews.reduce((states, view) => {
+      const current = currentStates[view.id] ?? {};
+      states[view.id] = view.filterViewState(argsGenerator(view, current));
+      return states;
+    }, {} as StateCollection);
+  }
+
+  protected updateDeckProps(props: Partial<DeckProps>): void {
+    this.deck.setProps(props);
+  }
+
+  @bind
+  private layerFilter({ layer, viewport }: LayerFilterArgs): boolean {
+    const { id: viewportId } = viewport as Viewport & { id: string };
+    return layer.id.includes(getVivId(viewportId));
+  }
+
+  @bind
+  private onViewStateChange({ viewId, viewState, oldViewState }: OnViewStateChangeArgs): void {
+    this.updateState((_view, current) => ({
       viewState: { ...viewState, id: viewId },
       oldViewState,
-      currentViewState: this.states[view.id]
+      currentViewState: current
     }));
-    this.scheduleUpdate();
-  }
+    this.update();
 
-  private scheduleUpdate(): void {
-    if (!this.update) {
-      this.update = setTimeout(() => {
-        this.update = undefined;
-        this.deck?.setProps({
-          viewState: this.states
-        });
-      }, 0);
-    }
+    // this.deck.setProps({
+    //   viewState: this.states
+    // });
   }
 }
