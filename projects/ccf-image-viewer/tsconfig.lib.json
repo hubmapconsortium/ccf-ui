@@ -5,6 +5,7 @@
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,
+    "typeRoots": ["./types", "../../node_modules/@types"],
     "types": [],
     "lib": [
       "dom",
@@ -17,6 +18,7 @@
     "enableResourceInlining": true
   },
   "exclude": [
+    "types",
     "src/test.ts",
     "**/*.spec.ts"
   ]

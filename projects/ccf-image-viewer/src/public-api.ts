@@ -6,4 +6,6 @@
  * Public API Surface of ccf-image-viewer
  */
 
-export { ImageViewer, ImageViewerProps, LayerSpec } from './lib/image-viewer';
+export * from './lib/loader';
+export * from './lib/image-viewer';
+export * from './lib/picture-in-picture-viewer';
