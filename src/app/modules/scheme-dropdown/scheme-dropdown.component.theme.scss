@@ -8,6 +8,13 @@
 
   .scheme-option-panel {
     background-color: mat-color($background, popup);
+    border-color: mat-color($foreground, modal-borders);
+
+    .mat-option {
+      &:hover {
+        background-color: mat-color($background, dropdown-hover);
+      }
+    }
 
     .mat-active {
       background-color: mat-color($background, popup) !important;
@@ -19,7 +26,7 @@
       .mat-radio-container {
         .mat-radio-outer-circle {
           background-color: mat-color($accent) !important;
-          border-color: mat-color($foreground, icon);
+          border-color: mat-color($accent);
         }
 
         .mat-radio-inner-circle {
@@ -30,7 +37,7 @@
   }
 
   .mat-radio-outer-circle {
-    border-color: mat-color($foreground, icon);
+    border-color: mat-color($foreground, contrast-icon);
   }
 
   .scheme-radio-button {

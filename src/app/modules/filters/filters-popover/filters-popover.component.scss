@@ -16,6 +16,8 @@
 
 .popup-container {
   position: absolute;
+  border-width: 0px;
+  border-style: solid;
   width: 0em;
   height: 23em;
   z-index: 5;
@@ -41,6 +43,7 @@
 
   &.visible {
     width: 35rem;
+    border-width: 1px;
 
     .popup-body {
       padding: 1em;

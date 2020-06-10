@@ -21,6 +21,7 @@
 
   .popup-container {
     background-color: mat-color($background, popup);
+    border-color: mat-color($foreground, modal-borders);
   }
 
   .show-hide {

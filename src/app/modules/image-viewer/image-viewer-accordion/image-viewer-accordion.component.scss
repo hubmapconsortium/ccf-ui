@@ -9,6 +9,10 @@
   .mat-expansion-panel-header {
     padding: 0;
 
+    mat-panel-title {
+      font-weight: bold;
+    }
+
     ::ng-deep .mat-expansion-indicator {
       position: relative;
       right: 1em;

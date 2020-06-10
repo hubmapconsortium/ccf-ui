@@ -8,12 +8,13 @@
 
   .scheme-container {
     &.highlighted {
-      outline-color: mat-color($primary, 'white');
+      outline-color: mat-color($foreground, highlight);
     }
   }
 
   .color-scheme-contents-container {
     background-color: mat-color($background, popup);
+    border-color: mat-color($foreground, modal-borders);
 
     .slider {
       .ng5-slider-bar,

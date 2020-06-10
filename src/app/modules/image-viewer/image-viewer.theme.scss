@@ -9,10 +9,8 @@
     color: mat-color($foreground, text);
 
     .viewer-close-header {
-      background-color: mat-color($background, dropdown-menu);
-
       .viewer-close-button {
-        color: mat-color($foreground, text);
+        color: mat-color($foreground, contrast-icon);
 
         &:hover {
           color: mat-color($accent);
@@ -27,6 +25,10 @@
 
     .mat-expansion-panel-header {
       color: mat-color($foreground, headers);
+
+      .mat-expansion-indicator {
+        color: mat-color($foreground, contrast-icon);
+      }
     }
 
     .data-container {
@@ -36,5 +38,13 @@
 
   .image-viewer-container {
     background-color: mat-color($background, content-background);
+  }
+
+  mat-panel-title {
+    color: mat-color($foreground, text);
+  }
+
+  .viewer-image {
+    background-color: mat-color($background, background);
   }
 }

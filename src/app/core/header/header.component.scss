@@ -9,10 +9,13 @@
     width: 5rem;
   }
 
+  .download {
+    height: 1.5rem;
+  }
+
   .logo, .download {
     display: flex;
     align-items: center;
-    height: 1.5rem;;
     transition: color 1s;
     cursor: pointer;
   }

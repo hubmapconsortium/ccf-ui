@@ -16,12 +16,14 @@
 
 ::ng-deep .scheme-option-panel {
   box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
+  border-width: 1px;
+  border-style: solid;
   position: absolute;
   right: -10rem;
   top: -1rem;
   display: flex;
   flex-direction: column;
-  width: 11rem;
+  width: 12rem;
   height: 9rem;
 
   mat-option:first-child {

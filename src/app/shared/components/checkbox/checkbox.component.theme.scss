@@ -8,4 +8,8 @@
   .mat-checkbox-label, .filter-label {
     color: mat-color($primary, text)
   }
+
+  .mat-checkbox-frame {
+    border-color: mat-color($foreground, contrast-icon);
+  }
 }
