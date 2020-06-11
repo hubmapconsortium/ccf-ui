@@ -2,8 +2,8 @@ import { Deck, Layer, View, Viewport } from '@deck.gl/core';
 import { Loader, VivView } from '@hubmap/vitessce-image-viewer';
 import { bind } from 'bind-decorator';
 
-import { LoaderType, OMEZarrInfo, TiffInfo, ZarrInfo, createLoader } from './loader';
-import { getVivId } from './utils';
+import { createLoader, LoaderType, OMEZarrInfo, TiffInfo, ZarrInfo } from './loader';
+import { flatMap, getVivId } from './utils';
 
 
 type ValueOrGenerator<T, U extends unknown[] = []> = T | ((...args: U) => T);
@@ -16,6 +16,17 @@ interface ExtDeckProps extends DeckProps {
 type DeckCallbackArgs<K extends keyof DeckProps> = Parameters<NonNullable<DeckProps[K]>>[0];
 type LayerFilterArgs = DeckCallbackArgs<'layerFilter'>;
 type OnViewStateChangeArgs = DeckCallbackArgs<'onViewStateChange'> & { viewId: string };
+
+export type State = Record<string, unknown>;
+export type StateCollection = Record<string, State>;
+export type LayerConfig = Record<string, unknown>;
+
+export interface ChannelConfig {
+  name: string;
+  active: boolean;
+  color: [number, number, number];
+  slider: [number, number];
+}
 
 export interface DataSource {
   type: LoaderType;
@@ -31,9 +42,9 @@ export interface ImageViewerProps {
   sources?: DataSource[];
 }
 
-export type LayerConfig = Record<string, unknown>;
-export type State = Record<string, unknown>;
-export type StateCollection = Record<string, State>;
+export interface Metadata {
+  channels: string[];
+}
 
 export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerProps> {
   props: Props;
@@ -43,6 +54,7 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
   protected views: View[] = [];
   protected layerConfigs: LayerConfig[] = [];
   protected layers: Layer<unknown>[] = [];
+  protected channels: ChannelConfig[] = [];
   protected states: StateCollection = {};
   protected deck: Deck;
 
@@ -67,8 +79,6 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
     if (props.sources) {
       this.setSources(props.sources);
     }
-
-    console.log(this);
   }
 
   finalize(): void {
@@ -99,12 +109,30 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
 
     this.sources = sources;
     this.loaders = loaders;
+    this.resetChannels();
     this.vivViews = await this.createVivViews();
     this.layerConfigs = await this.createLayerConfigs();
     this.updateState(view => ({ viewState: view.initialViewState }));
     this.update();
 
     return this;
+  }
+
+  async setChannel(name: string, config: Partial<Omit<ChannelConfig, 'name'>>): Promise<this> {
+    const index = this.channels.findIndex(state => state.name === name);
+    const clone = [...this.channels];
+
+    clone[index] = { ...clone[index], ...config };
+    this.channels = clone;
+    this.layerConfigs = await this.createLayerConfigs();
+    this.update();
+
+    return this;
+  }
+
+  async getMetadata(): Promise<Metadata> {
+    const channels: string[] = flatMap(this.loaders, loader => loader.channelNames ?? []);
+    return { channels };
   }
 
   protected abstract async createVivViews(): Promise<VivView[]>;
@@ -127,12 +155,11 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
   protected updateLayers(): void {
     const { vivViews, states, layerConfigs } = this;
     const length = layerConfigs.length;
-    const layers = vivViews.map((view, index) => view.getLayers({
+
+    this.layers = flatMap(vivViews, (view, index) => view.getLayers({
       viewStates: states,
       props: layerConfigs[index % length]
     }));
-
-    this.layers = ([] as Layer<unknown>[]).concat(...layers);
   }
 
   protected updateState(
@@ -166,9 +193,15 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
       currentViewState: current
     }));
     this.update();
+  }
 
-    // this.deck.setProps({
-    //   viewState: this.states
-    // });
+  private resetChannels(): void {
+    const names: string[] = flatMap(this.loaders, loader => loader.channelNames ?? []);
+    this.channels = names.map(name => ({
+      name,
+      active: true,
+      color: [255, 255, 255],
+      slider: [1500, 20000]
+    }));
   }
 }

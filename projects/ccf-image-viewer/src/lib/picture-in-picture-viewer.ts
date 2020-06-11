@@ -1,4 +1,4 @@
-import { VivView, DetailView, OverviewViewNewArgs, OverviewView } from '@hubmap/vitessce-image-viewer';
+import { DetailView, OverviewView, OverviewViewNewArgs, VivView } from '@hubmap/vitessce-image-viewer';
 
 import { ImageViewer, ImageViewerProps, LayerConfig } from './image-viewer';
 
@@ -50,23 +50,21 @@ export class PictureInPictureViewer extends ImageViewer<PictureInPictureViewerPr
   }
 
   protected async createLayerConfigs(): Promise<LayerConfig[]> {
-    if (this.loaders.length === 0) { return []; }
+    const { loaders, channels } = this;
+    if (loaders.length === 0) { return []; }
 
-    const count = this.vivViews.length;
-    const channelNames = [
-      'DAPI - Hoechst (nuclei)',
-      'FITC - Laminin (basement membrane)',
-      'Cy3 - Synaptopodin (glomerular)',
-      'Cy5 - THP (thick limb)'
-    ];
+    const channelIsOn = channels.map(channel => channel.active);
+    const colorValues = channels.map(channel => channel.color);
+    const sliderValues = channels.map(channel => channel.slider);
+    const loaderSelection = channels.map(channel => ({ channel: channel.name }));
 
     return [
       {
         loader: this.loaders[0],
-        sliderValues: Array(count).fill([1500, 20000]),
-        colorValues: Array(count).fill([255, 255, 255]),
-        channelIsOn: Array(count).fill(true),
-        loaderSelection: channelNames.map(name => ({ channel: name }))
+        channelIsOn,
+        colorValues,
+        sliderValues,
+        loaderSelection
       }
     ];
   }
