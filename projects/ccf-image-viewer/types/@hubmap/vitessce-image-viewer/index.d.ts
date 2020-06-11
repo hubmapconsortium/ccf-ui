@@ -12,6 +12,7 @@ declare module "@hubmap/vitessce-image-viewer" {
     readonly isPyramid: boolean;
     readonly numLevels: number;
     readonly tileSize: number;
+    readonly channelNames?: string[];
 
     getTile(tile: unknown): Promise<unknown>;
     getRaster(tile: unknown): Promise<unknown>;
