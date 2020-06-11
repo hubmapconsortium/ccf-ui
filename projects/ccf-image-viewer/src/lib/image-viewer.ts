@@ -18,11 +18,9 @@ type LayerFilterArgs = DeckCallbackArgs<'layerFilter'>;
 type OnViewStateChangeArgs = DeckCallbackArgs<'onViewStateChange'> & { viewId: string };
 
 export type State = Record<string, unknown>;
-export type StateCollection = Record<string, State>;
 export type LayerConfig = Record<string, unknown>;
 
 export interface ChannelConfig {
-  name: string;
   active: boolean;
   color: [number, number, number];
   slider: [number, number];
@@ -40,44 +38,61 @@ export interface ImageViewerProps {
   width?: number;
   height?: number;
   sources?: DataSource[];
+  channelNames?: string[];
+  defaultChannelConfig?: Partial<ChannelConfig>;
 }
 
-export interface Metadata {
-  channels: string[];
+function applyPropDefaults<Props extends ImageViewerProps>(props: Props): Props & Required<ImageViewerProps> {
+  return {
+    canvas: null,
+    width: 0,
+    height: 0,
+    sources: [],
+    channelNames: [],
+    ...props,
+    defaultChannelConfig: {
+      active: true,
+      color: [255, 255, 255],
+      slider: [1500, 20000],
+      ...(props.defaultChannelConfig ?? {})
+    }
+  };
 }
+
 
 export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerProps> {
-  props: Props;
-  protected sources: DataSource[] = [];
-  protected loaders: Loader[] = [];
+  readonly props: Props & Required<ImageViewerProps>;
+
+  get width(): number { return this._width; }
+  get height(): number { return this._height; }
+  private _width: number;
+  private _height: number;
+
+  get sources(): DataSource[] { return this._sources; }
+  get loaders(): Loader[] { return this._loaders; }
+  private _sources: DataSource[] = [];
+  private _loaders: Loader[] = [];
+
+  get channelNames(): string[] { return Object.keys(this.channelConfigs); }
+  get channelConfigs(): Record<string, ChannelConfig> { return this._channelConfigs; }
+  private _channelConfigs: Record<string, ChannelConfig> = {};
+
   protected vivViews: VivView[] = [];
   protected views: View[] = [];
-  protected layerConfigs: LayerConfig[] = [];
   protected layers: Layer<unknown>[] = [];
-  protected channels: ChannelConfig[] = [];
-  protected states: StateCollection = {};
-  protected deck: Deck;
+  protected layerConfigs: LayerConfig[] = [];
+  protected states: Record<string, State> = {};
+
+  private deck: Deck;
 
   constructor(props: Props) {
-    this.props = { ...props };
-    this.deck = new Deck({
-      id: props.id,
-      canvas: props.canvas,
-      width: props.width ?? 0,
-      height: props.height ?? 0,
-      views: [],
-      layers: [],
-      effects: [],
-      viewState: {},
-      layerFilter: this.layerFilter,
-      onViewStateChange: this.onViewStateChange,
-      glOptions: {
-        webgl2: true
-      }
-    } as ExtDeckProps);
+    const reqProps = this.props = applyPropDefaults(props);
+    this.deck = this.initializeDeck(reqProps);
+    this._width = reqProps.width;
+    this._height = reqProps.height;
 
-    if (props.sources) {
-      this.setSources(props.sources);
+    if (reqProps.sources.length > 0) {
+      this.setSources(reqProps.sources);
     }
   }
 
@@ -86,7 +101,8 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
   }
 
   async setSize(width: number, height: number): Promise<this> {
-    this.props = { ...this.props, width, height };
+    this._width = width;
+    this._height = height;
     this.vivViews = await this.createVivViews();
 
     this.updateState((view, current) => ({
@@ -107,9 +123,9 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
     const loaderPromises = sources.map(source => createLoader(source.type, source.info));
     const loaders = await Promise.all(loaderPromises);
 
-    this.sources = sources;
-    this.loaders = loaders;
-    this.resetChannels();
+    this._sources = sources;
+    this._loaders = loaders;
+    this.resetChannelConfigs();
     this.vivViews = await this.createVivViews();
     this.layerConfigs = await this.createLayerConfigs();
     this.updateState(view => ({ viewState: view.initialViewState }));
@@ -118,21 +134,20 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
     return this;
   }
 
-  async setChannel(name: string, config: Partial<Omit<ChannelConfig, 'name'>>): Promise<this> {
-    const index = this.channels.findIndex(state => state.name === name);
-    const clone = [...this.channels];
+  async updateChannelConfigs(configs: Record<string, Partial<ChannelConfig>>): Promise<this> {
+    const newConfigs = { ...this.channelConfigs };
+    for (const [key, config] of Object.entries(configs)) {
+      newConfigs[key] = {
+        ...newConfigs[key],
+        ...config
+      };
+    }
 
-    clone[index] = { ...clone[index], ...config };
-    this.channels = clone;
+    this._channelConfigs = newConfigs;
     this.layerConfigs = await this.createLayerConfigs();
     this.update();
 
     return this;
-  }
-
-  async getMetadata(): Promise<Metadata> {
-    const channels: string[] = flatMap(this.loaders, loader => loader.channelNames ?? []);
-    return { channels };
   }
 
   protected abstract async createVivViews(): Promise<VivView[]>;
@@ -172,11 +187,38 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
       const current = currentStates[view.id] ?? {};
       states[view.id] = view.filterViewState(argsGenerator(view, current));
       return states;
-    }, {} as StateCollection);
+    }, {} as Record<string, State>);
   }
 
   protected updateDeckProps(props: Partial<DeckProps>): void {
     this.deck.setProps(props);
+  }
+
+  private initializeDeck(props: Props & Required<ImageViewerProps>): Deck {
+    const { id, canvas, width, height } = props;
+    return new Deck({
+      id,
+      canvas,
+      width,
+      height,
+      views: [],
+      layers: [],
+      effects: [],
+      viewState: {},
+      layerFilter: this.layerFilter,
+      onViewStateChange: this.onViewStateChange,
+      glOptions: {
+        webgl2: true
+      }
+    } as ExtDeckProps);
+  }
+
+  private resetChannelConfigs(): void {
+    const keys = flatMap<Loader, string>(this.loaders, loader => loader.channelNames ?? []);
+    this._channelConfigs = keys.reduce((configs, key) => ({
+      ...configs,
+      [key]: this.props.defaultChannelConfig as ChannelConfig
+    }), {} as Record<string, ChannelConfig>);
   }
 
   @bind
@@ -193,15 +235,5 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
       currentViewState: current
     }));
     this.update();
-  }
-
-  private resetChannels(): void {
-    const names: string[] = flatMap(this.loaders, loader => loader.channelNames ?? []);
-    this.channels = names.map(name => ({
-      name,
-      active: true,
-      color: [255, 255, 255],
-      slider: [1500, 20000]
-    }));
   }
 }

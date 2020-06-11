@@ -1,8 +1,9 @@
 import {
   AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild,
 } from '@angular/core';
-import { DataSource, ImageViewer, LoaderType, Metadata, PictureInPictureViewer } from 'ccf-image-viewer';
+import { DataSource, ImageViewer, LoaderType, PictureInPictureViewer } from 'ccf-image-viewer';
 import { ResizeSensor } from 'css-element-queries';
+import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
 
 
 @Component({
@@ -26,7 +27,14 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
     }
   ];
 
-  @Output() metadataChange = new EventEmitter<Metadata>();
+  // tslint:disable-next-line: no-unsafe-any
+  @Input() set layers(layers: ImageViewerLayer[]) {
+    this._layers = layers;
+    this.updateLayers();
+  }
+  private _layers: ImageViewerLayer[] = [];
+
+  @Output() channelsChange = new EventEmitter<string[]>();
 
   @ViewChild('canvas', { read: ElementRef }) canvas: ElementRef<HTMLCanvasElement>;
 
@@ -54,14 +62,19 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
       overview: {
         detailWidth: clientWidth,
         detailHeight: clientHeight
-      }
+      },
+      // defaultChannelConfig: {
+      //   active: false
+      // }
     });
 
     this.sensor = new ResizeSensor(container, ({ width, height }) => {
       this.viewer.setSize(width, height);
     });
 
-    this.updateSources();
+    this.updateSources().then(() => this.updateLayers());
+
+    console.log(this.viewer);
   }
 
   ngOnDestroy(): void {
@@ -70,10 +83,16 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   }
 
   private async updateSources(): Promise<void> {
-    const { _sources: sources, viewer, metadataChange } = this;
-    if (viewer) {
-      await viewer.setSources(sources);
-      metadataChange.emit(await viewer.getMetadata());
-    }
+    const { _sources: sources, viewer, channelsChange } = this;
+    if (!viewer) { return; }
+
+    await viewer.setSources(sources);
+    channelsChange.emit(viewer.channelNames);
+  }
+
+  private async updateLayers(): Promise<void> {
+    const { _layers: layers, viewer } = this;
+    if (!viewer) { return; }
+    //
   }
 }

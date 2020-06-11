@@ -1,6 +1,6 @@
 <ccf-drawer-container class="image-viewer-container" [class.expanded]="viewerVisible">
   <ccf-drawer-content class="image-viewer-window">
-    <ccf-viewer class="viewer"></ccf-viewer>
+    <ccf-viewer class="viewer" [layers]="activeLayers"></ccf-viewer>
     <div class="legend">
       <ccf-image-viewer-legend [layers]="activeLayers"></ccf-image-viewer-legend>
     </div>

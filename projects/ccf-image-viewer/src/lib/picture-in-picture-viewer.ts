@@ -2,9 +2,10 @@ import { DetailView, OverviewView, OverviewViewNewArgs, VivView } from '@hubmap/
 
 import { ImageViewer, ImageViewerProps, LayerConfig } from './image-viewer';
 
-export type OverviewArgs = Omit<OverviewViewNewArgs, 'initialViewState' | 'loader'>
+export type OverviewArgs = Omit<OverviewViewNewArgs, 'initialViewState' | 'loader'>;
 export interface PictureInPictureViewerProps extends ImageViewerProps {
   overview: OverviewArgs;
+  channelNames?: never; // Disable explicit channel names
 }
 
 const OVERVIEW_DEFAULTS: Partial<OverviewArgs> = {
@@ -22,13 +23,12 @@ export class PictureInPictureViewer extends ImageViewer<PictureInPictureViewerPr
   }
 
   protected async createVivViews(): Promise<VivView[]> {
-    if (this.loaders.length === 0) { return []; }
-
-    const { width = 0, height = 0 } = this.props;
+    const { loaders, width, height, props: { initialViewState, overview } } = this;
+    if (loaders.length === 0) { return []; }
 
     const detailView = new DetailView({
       initialViewState: {
-        ...this.props.initialViewState,
+        ...initialViewState,
         id: 'detail',
         width,
         height
@@ -37,34 +37,40 @@ export class PictureInPictureViewer extends ImageViewer<PictureInPictureViewerPr
 
     const overviewView = new OverviewView({
       initialViewState: {
-        ...this.props.initialViewState,
+        ...initialViewState,
         id: 'overview',
         width,
         height
       },
-      loader: this.loaders[0],
-      ...this.props.overview
+      loader: loaders[0],
+      ...overview
     });
 
     return [detailView, overviewView];
   }
 
   protected async createLayerConfigs(): Promise<LayerConfig[]> {
-    const { loaders, channels } = this;
+    const { loaders, channelConfigs } = this;
     if (loaders.length === 0) { return []; }
 
-    const channelIsOn = channels.map(channel => channel.active);
-    const colorValues = channels.map(channel => channel.color);
-    const sliderValues = channels.map(channel => channel.slider);
-    const loaderSelection = channels.map(channel => ({ channel: channel.name }));
+    const loaderSelection: { channel: string }[] = [];
+    const channelIsOn: boolean[] = [];
+    const colorValues: [number, number, number][] = [];
+    const sliderValues: [number, number][] = [];
+    for (const [key, { active, color, slider }] of Object.entries(channelConfigs)) {
+      loaderSelection.push({ channel: key });
+      channelIsOn.push(active);
+      colorValues.push(color);
+      sliderValues.push(slider);
+    }
 
     return [
       {
         loader: this.loaders[0],
+        loaderSelection,
         channelIsOn,
         colorValues,
-        sliderValues,
-        loaderSelection
+        sliderValues
       }
     ];
   }
