@@ -76,6 +76,8 @@ export interface Filter {
   ontologyTerms: string[];
   /** Whether it has a spatial entity. */
   hasSpatialEntity?: boolean;
+  /** Include optional debugging information */
+  debug?: boolean;
 }
 
 /** Backend query interface. */

@@ -9,7 +9,7 @@ import { SpatialEntity } from './spatial-types';
 
 export interface SpatialSceneNode {
   '@id': string;
-  type: 'SpatialSceneNode';
+  '@type': 'SpatialSceneNode';
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -47,12 +47,15 @@ export class CCFSpatialScene {
     const store = this.db.store;
     return [
       this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
-      this.getSceneNode(organs, wholeBody, {_lighting: 'pbr', color: [255, 0, 0, 0.8*255]}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), wholeBody, {color: [255, 0, 0, 0.5*255], wireframe: true}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC1').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC2').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC3').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true})
+      this.getSceneNode(organs, wholeBody, {unpickable: true, _lighting: 'pbr', color: [255, 0, 0, 0.8*255]}),
+      // Debug bounding boxes
+      ...(filter?.debug ? [
+        this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
+        this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), wholeBody, {color: [255, 0, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC1').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC2').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC3').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true})
+      ] : [])
     ].filter(s => s !== undefined) as SpatialSceneNode[];
   }
 
@@ -82,7 +85,7 @@ export class CCFSpatialScene {
         transform.scale(scale);
       }
       return {
-        '@id': source['@id'], type: 'SpatialSceneNode',
+        '@id': source['@id'], '@type': 'SpatialSceneNode',
         scenegraph: has3dObject ? source.object?.file : undefined,
         transformMatrix: transform,
         tooltip: source.label,

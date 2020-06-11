@@ -1,3 +1,5 @@
+import { ccf } from '../util/prefixes';
+
 /** RUI v0.5.0 format */
 export interface OldRuiData {
   /** Identifier. */
@@ -33,6 +35,23 @@ export interface OldRuiData {
 }
 
 /**
+ * Fixes old RUI data from VU.
+ *
+ * @param data The original RUI data
+ * @returns The fixed RUI data
+ */
+function fixOldRuiKidneyData(data: OldRuiData): OldRuiData {
+  return {
+    ...data,
+    tissue_position_mass_point: {
+      x: data.tissue_position_mass_point.x - 60 / 2,
+      y: data.tissue_position_mass_point.y - 100 / 2,
+      z: data.tissue_position_mass_point.z - 60 / 2
+    }
+  };
+}
+
+/**
  * Converts version 0.5.0 RUI data to new JSONLD format.
  * @param data The old data.
  * @param [externalId] An optional label.
@@ -40,13 +59,25 @@ export interface OldRuiData {
  * @returns The translated JSONLD data.
  */
 export function convertOldRuiToJsonLd(data: OldRuiData, label?: string, refOrganId?: string): object {
+  let placementTarget: string | undefined;
+  if (refOrganId) {
+    placementTarget = refOrganId;
+  } else if (data.reference_organ_id === 'uuid-1234-5678') {
+    placementTarget = ccf.x('VHKidney').id;
+  } else if(data.reference_organ_id) {
+    placementTarget = data.reference_organ_id;
+  }
+
+  if (placementTarget?.endsWith('Kidney')) {
+    data = fixOldRuiKidneyData(data);
+  }
+
   const D = data.tissue_object_size;
   const R = data.tissue_object_rotation;
   const T = data.tissue_position_mass_point;
-  const placementTarget = refOrganId || (data.reference_organ_id !== 'uuid-1234-5678' ? data.reference_organ_id : 'http://purl.org/ccf/latest/ccf.owl#VHKidney');
 
   return {
-    '@context': 'http://purl.org/ccf/latest/ccf-context.jsonld',
+    '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     '@id': 'http://purl.org/ccf/0.5/' + data.alignment_id,
     '@type': 'SpatialEntity',
     label: label || undefined,
@@ -59,7 +90,7 @@ export function convertOldRuiToJsonLd(data: OldRuiData, label?: string, refOrgan
     x_dimension: D.x, y_dimension: D.y, z_dimension: D.z, dimension_units: 'millimeter',
 
     placement: {
-      '@context': 'http://purl.org/ccf/latest/ccf-context.jsonld',
+      '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
       '@id': 'http://purl.org/ccf/0.5/' + data.alignment_id + '_placement',
       '@type': 'SpatialPlacement',
       target: placementTarget,

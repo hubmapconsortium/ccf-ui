@@ -11,10 +11,11 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0002108', // Small Intestine
     'http://purl.obolibrary.org/obo/UBERON_0001052' // Rectum
   ],
+  disableDbWorker: true,
   dbOptions: {
     ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'static',
-    hubmapDataUrl: ''
+    hubmapDataUrl: 'assets/dev-data/entities.json'
   }
 };

@@ -1,0 +1,10 @@
+<div class="legend">
+    <div class="legend-item" *ngFor="let layer of layers">
+        <div
+            class="item-color"
+            [class.circle]="layer.colorScheme.type === 'discrete'"
+            [style.background]="layer.background"
+        ></div>
+        <div class="item-title">{{ layer.label }}</div>
+    </div>
+</div>

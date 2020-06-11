@@ -1,0 +1,30 @@
+.layers-container {
+  padding-top: 1rem;
+}
+
+.layer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+::ng-deep .mat-checkbox.mat-accent {
+  .mat-checkbox-checkmark-path {
+    stroke: white !important;
+  }
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #1e88e5;
+}
+
+.hidden {
+    visibility: hidden !important;
+}
+
+.color-selector-placeholder {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+}

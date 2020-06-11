@@ -26,7 +26,7 @@ export class BodyUI {
         minRotationX: -15,
         maxRotationX: 15,
         rotationOrbit: 0,
-        zoom: 8
+        zoom: 9.5
       },
       views: [new OrbitView({})],
       controller: true,
@@ -43,6 +43,8 @@ export class BodyUI {
   }
 
   setScene(data: BodyUIData[]) {
-    this.bodyUILayer.setState({data});
+    if (data?.length > 0) {
+      this.bodyUILayer.setState({data});
+    }
   }
 }

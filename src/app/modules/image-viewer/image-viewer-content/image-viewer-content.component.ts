@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { ImageViewerData } from 'ccf-database';
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 
 /**
@@ -19,9 +20,19 @@ export class ImageViewerContentComponent {
   @Input() data: ImageViewerData;
 
   /**
+   * The list of layers used to render this and child components
+   */
+  @Input() layers: ImageViewerLayer[];
+
+  /**
    * Emits closeViewer on close button click
    */
   @Output() closeViewer = new EventEmitter();
+
+  /**
+   * Output to pass up the changes made to the layers to parent components
+   */
+  @Output() layersChanged = new EventEmitter<ImageViewerLayer>();
 
   /**
    * Hides the viewer

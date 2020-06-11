@@ -1,5 +1,8 @@
+import { addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, N3Store, Quad, Store } from 'triple-store-utils';
+
 import { CCFSpatialGraph } from './ccf-spatial-graph';
-import { addRdfXmlToStore, DataFactory, N3Store, Quad, Store, addN3ToStore } from 'triple-store-utils';
+import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
+import { addHubmapDataToStore } from './hubmap/hubmap-data';
 import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
@@ -7,8 +10,6 @@ import { getImageViewerData } from './queries/image-viewer-data-n3';
 import { getListResult } from './queries/list-result-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { SpatialEntity } from './spatial-types';
-import { addHubmapDataToStore } from './util/hubmap-data';
-import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
 
 
 /** Database initialization options. */
@@ -18,9 +19,13 @@ export interface CCFDatabaseOptions {
   /** Context. */
   ccfContextUrl: string;
   /** Data service type. */
-  hubmapDataService: 'static' | 'elasticsearch';
+  hubmapDataService: 'static' | 'search-api';
   /** Hubmap data url. */
   hubmapDataUrl: string;
+  /** Hubmap assets api url. */
+  hubmapAssetsUrl: string;
+  /** HuBMAP Service Token. */
+  hubmapToken?: string;
 }
 
 /** Default initialization options. */
@@ -28,7 +33,8 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
   ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl',
   ccfContextUrl: 'https://purl.org/ccf/latest/ccf-context.jsonld',
   hubmapDataService: 'static',
-  hubmapDataUrl: ''
+  hubmapDataUrl: '',
+  hubmapAssetsUrl: 'https://assets.hubmapconsortium.org'
 };
 
 /** Database provider. */
@@ -70,9 +76,15 @@ export class CCFDatabase implements DataSource {
         ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
       }
       if (this.options.hubmapDataUrl) {
-        ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService));
+        if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
+          ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
+        } else {
+          ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken));
+        }
       }
       await Promise.all(ops);
+      // Add a small delay to allow the triple store to settle
+      await new Promise(r => setTimeout(r, 500));
       this.graph.createGraph();
     }
     return this.store.size > 0;
@@ -115,8 +127,8 @@ export class CCFDatabase implements DataSource {
    * @returns A list of spatial entities.
    */
   getSpatialEntities(filter?: Filter): SpatialEntity[] {
-    return [...this.getIds({...filter, hasSpatialEntity: true} as Filter)]
-      .map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+    filter = {...filter, hasSpatialEntity: true} as Filter;
+    return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
   }
 
   /**
@@ -126,6 +138,7 @@ export class CCFDatabase implements DataSource {
    * @returns A list of results.
    */
   async getListResults(filter?: Filter): Promise<ListResult[]> {
+    filter = {...filter, hasSpatialEntity: true} as Filter;
     return [...this.getIds(filter)].map((s) => getListResult(this.store, s));
   }
 

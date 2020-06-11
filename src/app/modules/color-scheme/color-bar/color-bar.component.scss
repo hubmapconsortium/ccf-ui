@@ -1,0 +1,27 @@
+.scheme-container {
+  width: 7rem;
+  height: 1rem;
+  display: flex;
+  .discrete {
+    width: 1rem;
+  }
+  .gradient {
+    width: 7rem;
+  }
+
+  &.selected-scheme {
+    .discrete {
+      &.selected-color {
+        border-radius: 10px;
+      }
+    }
+  }
+
+  &.highlighted {
+    outline: 1px solid white;
+  }
+
+  :hover {
+    cursor: pointer;
+  }
+}

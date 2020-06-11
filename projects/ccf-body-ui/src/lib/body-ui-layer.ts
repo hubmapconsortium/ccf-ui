@@ -9,9 +9,6 @@ import { Matrix4 } from '@math.gl/core';
 
 // Programmers Note: had to disable tslint in a few places due to deficient typings.
 
-// tslint:disable-next-line: no-unsafe-any
-registerLoaders([DracoWorkerLoader, GLTFLoader]);
-
 export class BodyUIData {
   unpickable?: boolean;
   wireframe?: boolean;
@@ -54,9 +51,12 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
     const wireframes = data.filter(d => !d.scenegraph && d.wireframe);
     const models = data.filter(d => !!d.scenegraph);
 
+    // tslint:disable-next-line: no-unsafe-any
+    registerLoaders([DracoWorkerLoader, GLTFLoader]);
+
     return [
-      cubes.length ? meshLayer('cubes', cubes, {wireframe: false}) : undefined,
-      wireframes.length ? meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}) : undefined,
+      cubes.length > 0 ? meshLayer('cubes', cubes, {wireframe: false}) : undefined,
+      wireframes.length > 0 ? meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}) : undefined,
       ...models.map((model, i) =>
         new ScenegraphLayer({
           ...{

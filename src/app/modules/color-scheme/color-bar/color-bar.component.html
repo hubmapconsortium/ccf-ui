@@ -1,0 +1,18 @@
+<div class="scheme-container" [class.selected-scheme]="selected" *ngIf="colorScheme.type === 'discrete'">
+  <div
+    class="discrete"
+    *ngFor="let color of colorScheme.colors"
+    [class.selected-color]="color === selectedColor"
+    [style.background-color]="color"
+    (click)="colorChanged(color)">
+  </div>
+</div>
+
+<div
+  class="scheme-container"
+  [class.selected-scheme]="selected"
+  [class.highlighted]="gradientHighlight()"
+  *ngIf="colorScheme.type === 'gradient'"
+>
+  <div class="gradient" [style.background-image]="gradientStyle" (click)="colorChanged('')"></div>
+</div>

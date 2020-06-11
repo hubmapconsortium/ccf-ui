@@ -3,7 +3,7 @@
     <mat-expansion-panel-header expandedHeight="3rem">
       <mat-panel-title>Layers</mat-panel-title>
     </mat-expansion-panel-header>
-    <p>Layer options here</p>
+    <ccf-image-viewer-layers [layers]="layers" (selectedLayers)="layersChanged.emit($event)"></ccf-image-viewer-layers>
   </mat-expansion-panel>
 
   <mat-expansion-panel>
@@ -11,15 +11,9 @@
       <mat-panel-title>About</mat-panel-title>
     </mat-expansion-panel-header>
     <div class="data-container">
-      <div class="data-labels">
-        <div class="label" *ngFor="let entry of metadata">
-          <div>{{ entry.label }}:</div>
-        </div>
-      </div>
-      <div class="data-values">
-        <div class="value" *ngFor="let entry of metadata">
-          <div>{{ entry.value }}</div>
-        </div>
+      <div class="data-entry" *ngFor="let entry of metadata">
+        <div class="label">{{ entry.label }}:</div>
+        <div class="value">{{ entry.value }}</div>
       </div>
     </div>
   </mat-expansion-panel>

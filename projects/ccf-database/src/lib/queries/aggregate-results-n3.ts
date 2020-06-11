@@ -12,19 +12,28 @@ import { entity } from '../util/prefixes';
  * @returns The list of aggregate results.
  */
 export function getAggregateResults(ids: Set<string>, store: N3Store): AggregateResult[] {
-  const results: { [key: string]: number } = {
-    Donors: 0,
-    Samples: 0,
-    Datasets: 0
-  };
-
+  const centers = new Set<string>();
   store.some((quad) => {
-    if (ids.has(quad.subject.id)) {
-      const type = quad.object.value + 's';
-      results[type] = (results[type] || 0) + 1;
-    }
+    if (ids.has(quad.subject.id)) { centers.add(quad.object.id); }
     return false;
-  }, null, entity.x('entityType'), null, null);
+  }, null, entity.groupUUID, null, null);
+
+  const donors = new Set<string>();
+  store.some((quad) => {
+    if (ids.has(quad.subject.id)) { donors.add(quad.object.id); }
+    return false;
+  }, null, entity.donor, null, null);
+
+  const spatialEntities = new Set<string>();
+  store.forSubjects((subject) => {
+    if (ids.has(subject.id)) { spatialEntities.add(subject.id); }
+  }, entity.spatialEntity, null, null);
+
+  const results: { [key: string]: number } = {
+    Centers: centers.size,
+    Donors: donors.size,
+    Samples: spatialEntities.size
+  };
 
   return Object.entries(results).map(([label, count]) => ({ label, count }));
 }

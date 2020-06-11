@@ -46,6 +46,24 @@ jobs:
       on:
         branch: master
   - stage: deploy
+    name: Deploy Portal Version
+    if: branch = develop-v2
+    script:
+    - npm run build:libs
+    - npm run build -- --output-hashing=none --base-href=/ccf-ui/
+    - cp dist/ccf-ui/index.html dist/ccf-ui/404.html
+    - touch dist/ccf-ui/.nojekyll
+    - npm run compodoc
+    deploy:
+      provider: pages
+      target-branch: portal-version
+      skip-cleanup: true
+      github-token: "$GITHUB_TOKEN"
+      keep-history: false
+      local-dir: dist/ccf-ui
+      on:
+        branch: develop-v2
+  - stage: deploy
     name: Build and publish ccf-ui
     if: tag IS present
     script:
