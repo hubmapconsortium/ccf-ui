@@ -7,8 +7,7 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 
 import { DataSourceService } from './core/services/data-source/data-source.service';
-import { SearchStateModel } from './core/store/search/search.state';
-
+import { OntologySelection } from './core/models/ontology-selection';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -61,7 +60,7 @@ export class AppComponent {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }
 
-  ontologySelected(ontologySelection: SearchStateModel[]): void {
+  ontologySelected(ontologySelection: OntologySelection[]): void {
     console.log('ontologyselected: ', ontologySelection);
     if (!!ontologySelection) {
       this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id)});
@@ -73,7 +72,7 @@ export class AppComponent {
     this.ontologySelectionLabel = '';
   }
 
-  createSelectionLabel(ontolgySelection: SearchStateModel[]): string{
+  createSelectionLabel(ontolgySelection: OntologySelection[]): string{
     if (ontolgySelection.length === 0){
       return '';
     }

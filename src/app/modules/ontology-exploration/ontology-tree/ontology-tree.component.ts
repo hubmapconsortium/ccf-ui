@@ -214,18 +214,6 @@ export class OntologyTreeComponent implements OnInit {
   select(ctrlKey: boolean, node: FlatNode | undefined): void {
     const nodeWasSelected = this.isSelected(node);
 
-    // if (!ctrlKey) {
-    //   this.selectedNodes = [];
-    // }
-
-    // if (nodeWasSelected || node === undefined) {
-    //   return;
-    // }
-
-    // this.selectedNodes.push(node);
-    // this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
-
-
     if (node === undefined) {
       this.selectedNodes = [];
       return;

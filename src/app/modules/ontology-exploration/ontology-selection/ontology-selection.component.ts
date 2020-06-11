@@ -4,8 +4,8 @@ import { Store } from '@ngxs/store';
 import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologyState, OntologyStateModel } from '../../../core/store/ontology/ontology.state';
-import { SearchStateModel } from '../../../core/store/search/search.state';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
+import { OntologySelection } from '../../../core/models/ontology-selection';
 
 
 /**
@@ -22,7 +22,7 @@ export class OntologySelectionComponent {
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
 
-  @Output() ontologySelection = new EventEmitter<SearchStateModel>();
+  @Output() ontologySelection = new EventEmitter<OntologySelection>();
 
   /**
    * Creates an instance of ontology selection component.
