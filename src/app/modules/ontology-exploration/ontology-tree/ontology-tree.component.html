@@ -1,7 +1,7 @@
 <mat-tree class="ccf-ontology-tree" [dataSource]="dataSource" [treeControl]="control">
   <!-- Templates with common structures for inner and leaf nodes -->
   <ng-template #selectableRegion let-node="node">
-    <div class="text" [class.selected]="isSelected(node)" (click)="select(node)">{{ node.label }}</div>
+    <div class="text" [class.selected]="isSelected(node)" (click)="select($event.ctrlKey, node)">{{ node.label }}</div>
   </ng-template>
 
   <!-- Leaf node template -->

@@ -4,7 +4,7 @@ import { State } from '@ngxs/store';
 
 import { OntologyNode } from '../../models/ontology-node';
 
-
+// Move to models.  OntologySelection.ts
 /**
  * Search state model.
  */
@@ -17,26 +17,26 @@ export interface SearchStateModel {
   label: string;
 }
 
-/**
- * Contains the currently active search parameters.
- */
-@StateRepository()
-@State<SearchStateModel>({
-  name: 'search',
-  defaults: {
-    location: undefined,
-    id: '',
-    label: ''
-  }
-})
-@Injectable()
-export class SearchState extends NgxsDataRepository<SearchStateModel>  {
-  /**
-   * Sets the new search location.
-   * @param ontology New state.
-   */
-  @action()
-  setLocation(ontology: SearchStateModel): void {
-    this.ctx.setState(ontology);
-  }
-}
+// /**
+//  * Contains the currently active search parameters.
+//  */
+// @StateRepository()
+// @State<SearchStateModel>({
+//   name: 'search',
+//   defaults: {
+//     location: undefined,
+//     id: '',
+//     label: ''
+//   }
+// })
+// @Injectable()
+// export class SearchState extends NgxsDataRepository<SearchStateModel>  {
+//   /**
+//    * Sets the new search location.
+//    * @param ontology New state.
+//    */
+//   @action()
+//   setLocation(ontology: SearchStateModel): void {
+//     this.ctx.setState(ontology);
+//   }
+// }

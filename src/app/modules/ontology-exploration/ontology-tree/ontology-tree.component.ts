@@ -65,7 +65,7 @@ export class OntologyTreeComponent implements OnInit {
   /**
    * Emits an event whenever a node has been selected.
    */
-  @Output() nodeSelected = new EventEmitter<OntologyNode | undefined>();
+  @Output() nodeSelected = new EventEmitter<OntologyNode[]>();
 
   /**
    * Indentation of each level in the tree.
@@ -126,7 +126,7 @@ export class OntologyTreeComponent implements OnInit {
   /**
    * Currently selected node, defaulted to the body node for when the page initially loads.
    */
-  selectedNode?: FlatNode = this.bodyNode;
+  selectedNodes: Array<FlatNode> = [this.bodyNode];
 
   /**
    * Expand the body node when the component is initialized.
@@ -140,7 +140,7 @@ export class OntologyTreeComponent implements OnInit {
    * selecting the body, collapsing all the nodes, then expanding the body node manually.
    */
   selectBody(): void {
-    this.select(this.bodyNode);
+    this.select(false, this.bodyNode);
     this.control.collapseAll();
     this.control.expand(this.control.dataNodes[0]);
   }
@@ -176,8 +176,8 @@ export class OntologyTreeComponent implements OnInit {
     for (const flat of parentFlatNodes) { control.expand(flat); }
 
     // Select the node
-    this.selectedNode = undefined;
-    this.select(flatNode);
+    this.selectedNodes = [];
+    this.select(false, flatNode);
 
     // Detect changes
     cdr.detectChanges();
@@ -200,8 +200,9 @@ export class OntologyTreeComponent implements OnInit {
    * @param node  The node to test.
    * @returns True if the node is the currently selected node.
    */
-  isSelected(node: FlatNode): boolean {
-    return node.original.label === this.selectedNode?.original.label;
+  isSelected(node: FlatNode | undefined): boolean {
+    return this.selectedNodes.filter(selectedNode => node?.original.label === selectedNode?.original.label).length > 0;
+    // return node.original.label === this.selectedNodes.indexOf?.original.label;
   }
 
   /**
@@ -210,8 +211,39 @@ export class OntologyTreeComponent implements OnInit {
    *
    * @param node The node to select.
    */
-  select(node: FlatNode | undefined): void {
-    this.selectedNode = this.selectedNode = node?.original.label !== this.selectedNode?.original.label ? node : undefined;
-    this.nodeSelected.emit(this.selectedNode && this.selectedNode.original);
+  select(ctrlKey: boolean, node: FlatNode | undefined): void {
+    const nodeWasSelected = this.isSelected(node);
+
+    // if (!ctrlKey) {
+    //   this.selectedNodes = [];
+    // }
+
+    // if (nodeWasSelected || node === undefined) {
+    //   return;
+    // }
+
+    // this.selectedNodes.push(node);
+    // this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
+
+
+    if (node === undefined) {
+      this.selectedNodes = [];
+      return;
+    }
+
+    if (ctrlKey) {
+      if (nodeWasSelected) {
+        this.selectedNodes.splice(this.selectedNodes.indexOf(node), 1);
+      } else {
+        this.selectedNodes.push(node);
+      }
+    } else {
+      this.selectedNodes = [];
+      if (!nodeWasSelected){
+        this.selectedNodes.push(node);
+      }
+    }
+
+    this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
   }
 }

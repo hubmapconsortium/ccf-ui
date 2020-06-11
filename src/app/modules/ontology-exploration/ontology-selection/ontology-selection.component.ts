@@ -4,7 +4,7 @@ import { Store } from '@ngxs/store';
 import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologyState, OntologyStateModel } from '../../../core/store/ontology/ontology.state';
-import { SearchState, SearchStateModel } from '../../../core/store/search/search.state';
+import { SearchStateModel } from '../../../core/store/search/search.state';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
 
 
@@ -26,12 +26,10 @@ export class OntologySelectionComponent {
 
   /**
    * Creates an instance of ontology selection component.
-   * @param searchState State containing the currently active filters, etc.
    * @param ontologySearchService Service for searching the ontology.
    * @param store The global state store.
    */
   constructor(
-    public searchState: SearchState,
     public ontologySearchService: OntologySearchService,
     private readonly store: Store
   ) {}
@@ -43,10 +41,5 @@ export class OntologySelectionComponent {
   selected(ontologyNode: OntologyNode) {
     const { nodes } = this.store.selectSnapshot<OntologyStateModel>(OntologyState);
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
-  }
-
-  nodeSelected(event: SearchStateModel): void {
-    this.searchState.setLocation(event);
-    this.ontologySelection.emit(event);
   }
 }

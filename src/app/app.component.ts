@@ -61,14 +61,35 @@ export class AppComponent {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }
 
-  ontologySelected(ontologySelection: SearchStateModel): void {
+  ontologySelected(ontologySelection: SearchStateModel[]): void {
+    console.log('ontologyselected: ', ontologySelection);
     if (!!ontologySelection) {
-      this.data.updateFilter({ ontologyTerms: [ontologySelection.id]});
-      this.ontologySelectionLabel = ontologySelection.label;
+      this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id)});
+      this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
       return;
     }
 
     this.data.updateFilter({ ontologyTerms: [] });
     this.ontologySelectionLabel = '';
+  }
+
+  createSelectionLabel(ontolgySelection: SearchStateModel[]): string{
+    if (ontolgySelection.length === 0){
+      return '';
+    }
+
+    if (ontolgySelection.length === 1){
+      return ontolgySelection[0].label;
+    }
+
+    let selectionString = '';
+    ontolgySelection.forEach((selection, index) => {
+      selectionString += selection.label;
+
+      if (index < ontolgySelection.length - 1){
+        selectionString += ', ';
+      }
+    });
+    return selectionString;
   }
 }
