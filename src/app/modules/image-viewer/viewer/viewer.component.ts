@@ -1,7 +1,7 @@
 import {
   AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild,
 } from '@angular/core';
-import { DataSource, ImageViewer, LoaderType, PictureInPictureViewer } from 'ccf-image-viewer';
+import { DataSource, ImageViewer, LoaderType, Metadata, PictureInPictureViewer } from 'ccf-image-viewer';
 import { ResizeSensor } from 'css-element-queries';
 
 
@@ -15,7 +15,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   // tslint:disable-next-line: no-unsafe-any
   @Input() set sources(sources: DataSource[]) {
     this._sources = sources;
-    this.viewer?.setSources(sources);
+    this.updateSources();
   }
   private _sources: DataSource[] = [
     {
@@ -26,7 +26,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
     }
   ];
 
-  @Output() metadataChange = new EventEmitter<{ channels: string[] }>();
+  @Output() metadataChange = new EventEmitter<Metadata>();
 
   @ViewChild('canvas', { read: ElementRef }) canvas: ElementRef<HTMLCanvasElement>;
 
@@ -38,14 +38,12 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const {
       container: { nativeElement: container },
-      canvas: { nativeElement: element },
-      _sources: sources,
+      canvas: { nativeElement: element }
     } = this;
     const { clientWidth, clientHeight } = element;
 
     this.viewer = new PictureInPictureViewer({
       id: 'image-viewer',
-      sources,
       initialViewState: {
         zoom: -6,
         target: [25000, 10000, 0]
@@ -62,10 +60,20 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
     this.sensor = new ResizeSensor(container, ({ width, height }) => {
       this.viewer.setSize(width, height);
     });
+
+    this.updateSources();
   }
 
   ngOnDestroy(): void {
     this.viewer.finalize();
     this.sensor.detach();
+  }
+
+  private async updateSources(): Promise<void> {
+    const { _sources: sources, viewer, metadataChange } = this;
+    if (viewer) {
+      await viewer.setSources(sources);
+      metadataChange.emit(await viewer.getMetadata());
+    }
   }
 }
