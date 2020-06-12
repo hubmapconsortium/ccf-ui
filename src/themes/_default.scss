@@ -35,7 +35,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   search-result-text: map-get($primary-colors, 600), //#757575
   text: map-get($primary-colors, 900), //#212121
   contrast-text: map-get($primary-colors, 50), //#FAFAFA (text on dark background)
-  download-icon: map-get($primary-colors, 600), //#757575 (icons on light background)
+  download-icon: map-get($primary-colors, 300), //#E0E0E0
   disabled: map-get($primary-colors, light-disabled), //#BDBDBD
   highlight: map-get($primary-colors, 'black')
 ));
