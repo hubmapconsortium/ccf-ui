@@ -135,13 +135,17 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
   }
 
   async updateChannelConfigs(configs: Record<string, Partial<ChannelConfig>>): Promise<this> {
-    const newConfigs = { ...this.channelConfigs };
-    for (const [key, config] of Object.entries(configs)) {
-      newConfigs[key] = {
-        ...newConfigs[key],
-        ...config
+    const newConfigs = Object.entries(configs).reduce((result, [key, config]) => {
+      return !(key in result) ? result : {
+        ...result,
+        [key]: {
+          ...result[key],
+          ...config
+        }
       };
-    }
+    }, this.channelConfigs);
+
+    if (newConfigs === this.channelConfigs) { return this; }
 
     this._channelConfigs = newConfigs;
     this.layerConfigs = await this.createLayerConfigs();

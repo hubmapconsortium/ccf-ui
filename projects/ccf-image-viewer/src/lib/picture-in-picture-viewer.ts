@@ -5,7 +5,6 @@ import { ImageViewer, ImageViewerProps, LayerConfig } from './image-viewer';
 export type OverviewArgs = Omit<OverviewViewNewArgs, 'initialViewState' | 'loader'>;
 export interface PictureInPictureViewerProps extends ImageViewerProps {
   overview: OverviewArgs;
-  channelNames?: never; // Disable explicit channel names
 }
 
 const OVERVIEW_DEFAULTS: Partial<OverviewArgs> = {
