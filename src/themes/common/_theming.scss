@@ -12,8 +12,8 @@
 @use '../../app/shared/components/dual-slider/dual-slider.component.theme' as dualSlider;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme' as spinner;
 
-// @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
-
+@use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
+@use '../../app/modules/ontology-exploration/ontology-tree/ontology-tree.component.theme' as tree;
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
@@ -36,8 +36,8 @@
   @include imageViewer.theme($theme);
   @include spinner.theme($theme);
   @include filters.theme($theme);
-
-  // @include search.theme($theme);
+  @include search.theme($theme);
+  @include tree.theme($theme);
 
   // Overrides goes here!
 }

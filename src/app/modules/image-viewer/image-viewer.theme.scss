@@ -45,6 +45,11 @@
   }
 
   .viewer-image {
-    background-color: mat-color($background, background);
+    background-color: mat-color($background, stage-background);
+  }
+
+  .legend {
+    background-color: mat-color($background, content-background);
+    color: mat-color($foreground, text);
   }
 }

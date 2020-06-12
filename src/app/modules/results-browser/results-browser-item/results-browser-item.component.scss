@@ -5,12 +5,13 @@
     padding: .5rem;
     display: flex;
     flex-direction: row;
-    height: 4.5rem;
+    height: 4rem;
     cursor: pointer;
 
     .result-image {
         width: 5rem;
         height: 100%;
+        object-fit: cover;
     }
 
     .result-image-placeholder {
@@ -18,11 +19,15 @@
     }
 
     .result-description {
-        width: 14rem;
+        width: 15rem;
         font-size: .625rem;
         margin-left: 1rem;
         margin-right: 1rem;
-        line-height: 1.4;
+        line-height: 1.25;
+
+        div {
+            width: 10rem;
+        }
 
         .description-label {
             font-weight: bold !important;

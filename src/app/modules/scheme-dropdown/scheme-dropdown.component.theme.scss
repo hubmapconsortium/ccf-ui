@@ -7,7 +7,7 @@
   $accent: map-get($theme, accent);
 
   .scheme-option-panel {
-    background-color: mat-color($background, popup);
+    background-color: mat-color($background, modal);
     border-color: mat-color($foreground, modal-borders);
 
     .mat-option {
@@ -17,7 +17,7 @@
     }
 
     .mat-active {
-      background-color: mat-color($background, popup) !important;
+      background-color: mat-color($background, modal) !important;
     }
   }
   

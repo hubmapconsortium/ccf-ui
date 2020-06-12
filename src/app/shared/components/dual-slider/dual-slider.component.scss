@@ -5,11 +5,20 @@
   ::ng-deep .mat-form-field-wrapper {
     padding-left: 1em;
     padding-right: 1em;
+    height: 3rem;
 
     .mat-form-field-flex {
       .mat-form-field-infix {
         border: none;
       }
+    }
+
+    .mat-form-field-underline {
+      left: 0rem;
+      bottom: 0rem;
+      background-color: black;
+      transform: none;
+      height: 2px;
     }
   }
 }
@@ -67,6 +76,8 @@
 ::ng-deep .slider-pane {
   border-width: 1px;
   border-style: solid;
+  position: absolute !important;
+  top: -1px;
 }
 
 .ccf-slider.detached {
@@ -79,7 +90,7 @@
   align-items: center;
   width: 0rem;
   height: 70px;
-  padding: 1rem; // NOTE: Use padding instead of margin!
+  padding: .75rem; // NOTE: Use padding instead of margin!
 
   .slider ::ng-deep {
     visibility: hidden;

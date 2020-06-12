@@ -8,7 +8,7 @@
 
   .outline-button {
     color: mat-color($accent);
-    border-color: mat-color($foreground, icon);
+    border-color: mat-color($foreground, modal-borders);
 
     &:hover {
       background-color: mat-color($accent);
@@ -20,7 +20,7 @@
   }
 
   .popup-container {
-    background-color: mat-color($background, popup);
+    background-color: mat-color($background, modal);
     border-color: mat-color($foreground, modal-borders);
   }
 

@@ -23,6 +23,7 @@
   ::ng-deep .mat-form-field-wrapper {
     padding-left: 1em;
     padding-right: 1em;
+    height: 3rem;
 
     .mat-form-field-flex {
       .mat-form-field-infix {
@@ -34,6 +35,14 @@
           font-weight: bold;
         }
       }
+    }
+
+    .mat-form-field-underline {
+      left: 0rem;
+      bottom: 0rem;
+      background-color: black;
+      transform: none;
+      height: 2px;
     }
   }
 }
@@ -52,15 +61,22 @@
   animation: slideInHorizontalDropdown .3s;
   animation-fill-mode: forwards;
   box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
-  position: absolute;
-  top: 1.5rem;
+  position: absolute !important;
+  top: 1.55rem;
+  left: -.15rem;
   border-radius: 0px;
+  border-width: 1px;
+  border-style: solid;
 
 
   .mat-option {
-    border-width: 1px;
-    border-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
     padding-left: 1em;
+  }
+
+  :last-child {
+    border-bottom: none;
   }
 }
 

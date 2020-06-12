@@ -14,14 +14,16 @@
 
     ccf-drawer-content {
       overflow: hidden;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
     ccf-drawer {
-      width: 27rem;
-      margin: 0 1.5rem;
+      width: 28.5rem;
 
       .drawer-icons {
         display: flex;
+        padding-left: 1.5rem;
 
         .button {
           width: 3rem;

@@ -1,11 +1,9 @@
-.layers-container {
-  padding-top: 1rem;
-}
-
 .layer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  height: 1.5rem;
 }
 
 .hidden {

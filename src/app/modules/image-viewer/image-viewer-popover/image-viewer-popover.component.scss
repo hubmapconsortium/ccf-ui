@@ -16,12 +16,18 @@
   }
 
   .image-viewer-window {
+    margin-top: 1.5rem;
+    height: calc(100% - 2rem);
     display: flex;
     flex-direction: column;
 
     .viewer-image {
-      padding-top: 1.5rem;
-      height: calc(100% - 9rem);
+      position: relative;
+      padding-top: 1rem;
+      right: 1rem;
+      height: calc(100% - 11rem);
+      display: flex;
+      flex-direction: column;
 
       img {
         height: 100%;
@@ -31,20 +37,12 @@
     }
 
     .scale-bar {
-      height: 1.5rem;
-      width: 100%;
-    }
-
-    .legend {
       height: 3rem;
       width: 100%;
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
     }
   }
 
   .image-viewer-drawer {
-    width: 27rem;
-    margin: 0 1.5rem;
+    width: 25.5rem;
   }
 }

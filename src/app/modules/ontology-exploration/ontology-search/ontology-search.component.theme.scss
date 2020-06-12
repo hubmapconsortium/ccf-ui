@@ -2,25 +2,47 @@
 
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
   $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  #cdk-overlay-2 {
+    border-color: mat-color($foreground, divider) !important;
+    background-color: mat-color($background, modal);
+  }
 
   .ccf-ontology-search {
+    &.detached {
+      mat-option {
+        color: mat-color($foreground, search-result-text);
+      }
+    }
     .input::placeholder {
-      color: mat-color($foreground, secondary-text);
+      color: mat-color($foreground, search-result-text);
     }
 
     .input {
-      color: mat-color($foreground, secondary-text);
+      color: mat-color($foreground, text);
     }
 
     .mat-form-field-appearance-outline {
       .mat-form-field-outline {
         color: mat-color($foreground, divider);
+
+        .mat-form-field-outline-start,
+        .mat-form-field-outline-end,
+        .mat-form-field-outline-gap {
+          background-color: mat-color($background, modal);
+        }
       }
 
       .mat-form-field-outline-thick {
         color: mat-color($foreground, divider);
       }
+    }
+
+    .search {
+      color: mat-color($accent);
     }
   }
 }

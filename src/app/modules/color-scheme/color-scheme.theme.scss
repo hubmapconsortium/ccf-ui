@@ -13,7 +13,7 @@
   }
 
   .color-scheme-contents-container {
-    background-color: mat-color($background, popup);
+    background-color: mat-color($background, modal);
     border-color: mat-color($foreground, modal-borders);
 
     .slider {
@@ -23,7 +23,7 @@
       }
 
       .ng5-slider-pointer {
-        border-color: mat-color($background, popup);
+        border-color: mat-color($background, modal);
       }
     }
   }

@@ -36,7 +36,16 @@
     font: 400 16px/20px Inter, sans-serif;
   }
 
-  .ccf-info-button {
-    height: 100%;
+  ::ng-deep ccf-info-button {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    .mat-icon {
+      height: 32px;
+      width: 32px;
+      font-size: 32px;
+
+    }
   }
 }

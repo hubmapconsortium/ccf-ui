@@ -6,6 +6,14 @@
 
   mat-form-field {
     width: 9rem;
+
+    ::ng-deep .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        .mat-form-field-infix {
+          border: none;
+        }
+      }
+    }
   }
 }
 
