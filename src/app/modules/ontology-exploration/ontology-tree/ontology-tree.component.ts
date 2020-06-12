@@ -124,6 +124,12 @@ export class OntologyTreeComponent implements OnInit {
   );
 
   /**
+   * Keeping track of the first selection made allows us to ensure the 'body' node
+   * is unselected as expected.
+   */
+  anySelectionsMade = false;
+
+  /**
    * Currently selected node, defaulted to the body node for when the page initially loads.
    */
   selectedNodes: Array<FlatNode> = [this.bodyNode];
@@ -206,19 +212,27 @@ export class OntologyTreeComponent implements OnInit {
   }
 
   /**
-   * Sets a node to be the currently selected node.
-   * Deselects the previously selected node.
+   * Handles selecting / deselecting nodes via updating the selectedNodes variable
    *
    * @param node The node to select.
+   * @param ctrlKey Whether or not the selection was made with a ctrl + click event.
    */
   select(ctrlKey: boolean, node: FlatNode | undefined): void {
     const nodeWasSelected = this.isSelected(node);
+
+    // This is to ensure the 'body' node is unselected regardless of what the first
+    // selection is
+    if (!this.anySelectionsMade) {
+      this.selectedNodes = [];
+      this.anySelectionsMade = true;
+    }
 
     if (node === undefined) {
       this.selectedNodes = [];
       return;
     }
 
+    // ctrl + click allows users to select multiple organs
     if (ctrlKey) {
       if (nodeWasSelected) {
         this.selectedNodes.splice(this.selectedNodes.indexOf(node), 1);
@@ -227,7 +241,7 @@ export class OntologyTreeComponent implements OnInit {
       }
     } else {
       this.selectedNodes = [];
-      if (!nodeWasSelected){
+      if (!nodeWasSelected) {
         this.selectedNodes.push(node);
       }
     }

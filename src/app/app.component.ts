@@ -19,6 +19,10 @@ import { OntologySelection } from './core/models/ontology-selection';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  /**
+   * Used to keep track of the ontology label to be passed down to the
+   * results-browser component.
+   */
   ontologySelectionLabel = 'body';
 
   /** Emits true whenever the overlay spinner should activate. */
@@ -60,8 +64,12 @@ export class AppComponent {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }
 
+  /**
+   * Captures changes in the ontologySelection and uses them to update the results-browser label
+   * and the filter object in the data store.
+   * @param ontologySelection the list of currently selected organ nodes
+   */
   ontologySelected(ontologySelection: OntologySelection[]): void {
-    console.log('ontologyselected: ', ontologySelection);
     if (!!ontologySelection) {
       this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id)});
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
@@ -72,6 +80,10 @@ export class AppComponent {
     this.ontologySelectionLabel = '';
   }
 
+  /**
+   * Creates selection label for the results-browser to display based on an
+   * array of selected ontology nodes.
+   */
   createSelectionLabel(ontolgySelection: OntologySelection[]): string{
     if (ontolgySelection.length === 0){
       return '';
@@ -85,6 +97,7 @@ export class AppComponent {
     ontolgySelection.forEach((selection, index) => {
       selectionString += selection.label;
 
+      // Don't add a comma if it's the last item in the array.
       if (index < ontolgySelection.length - 1){
         selectionString += ', ';
       }

@@ -22,6 +22,10 @@ export class OntologySelectionComponent {
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
 
+
+  /**
+   * Captures and passes along the change in ontologySelections.
+   */
   @Output() ontologySelection = new EventEmitter<OntologySelection>();
 
   /**
