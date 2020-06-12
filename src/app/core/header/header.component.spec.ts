@@ -13,7 +13,7 @@ describe('HeaderComponent', () => {
 
   it('should emit downloadClicked when download button is clicked', async () => {
     const { find, outputs } = await shallow.render();
-    find('.download').triggerEventHandler('click', {});
+    find('.download-icon').triggerEventHandler('click', {});
     expect(outputs.downloadClicked.emit).toHaveBeenCalled();
   });
 

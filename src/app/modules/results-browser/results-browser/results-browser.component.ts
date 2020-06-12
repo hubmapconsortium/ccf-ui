@@ -52,6 +52,9 @@ export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
    */
   atScrollBottom = false;
 
+  /**
+   * Keeps track of the selected result for highlighting
+   */
   selectedResult: ListResult;
 
   /**

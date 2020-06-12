@@ -62,6 +62,9 @@ export class AppComponent {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }
 
+  /**
+   * Toggles scheme between light and dark mode
+   */
   toggleScheme() {
     this.defaultScheme = !this.defaultScheme;
     document.body.className = this.defaultScheme ? 'light-theme' : 'dark-theme';
