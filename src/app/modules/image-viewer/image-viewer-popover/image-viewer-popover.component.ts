@@ -40,7 +40,7 @@ export class ImageViewerPopoverComponent {
    * Placeholder layer data for testing
    */
   testLayers: ImageViewerLayer[] = [
-    {
+    new ImageViewerLayer({
       selected: false,
       label: 'Actin',
       id: 123,
@@ -56,8 +56,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'CD107a',
       id: 122,
@@ -73,8 +73,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'CD11c',
       id: 323,
@@ -90,8 +90,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'CD20',
       id: 32,
@@ -107,8 +107,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'PAS',
       id: 42,
@@ -124,8 +124,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'IMS',
       id: 400,
@@ -141,8 +141,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'Kidney Capsule',
       id: 123,
@@ -158,8 +158,8 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
-    {
+    }),
+    new ImageViewerLayer({
       selected: false,
       label: 'Kidney Cortex',
       id: 321,
@@ -175,7 +175,7 @@ export class ImageViewerPopoverComponent {
       customizedColor: false,
       selectionOrder: 0,
       defaultOrder: -1,
-    },
+    }),
   ];
 
   /**
