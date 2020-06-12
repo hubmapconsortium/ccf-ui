@@ -15,6 +15,9 @@
         <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();">
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
+        <button class="scheme-toggle button" (click)="toggleScheme()">
+          <mat-icon class="icon">{{ defaultScheme ? 'brightness_5' : 'brightness_2' }}</mat-icon>
+        </button>
       </div>
       <ccf-results-browser [dataLoading]="spinnerActive$ | async" (resultClicked)="openViewer(viewer, $event['@id'])" [data]="data.listData$ | async" [aggregateData]="data.aggregateData$ | async" [resultLabel]="'Kidney'"></ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>

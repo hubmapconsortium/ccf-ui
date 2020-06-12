@@ -20,7 +20,6 @@
     color: mat-color($foreground, contrast-icon);
   }
 
-
   .name-label {
     color: mat-color($accent);
   }
@@ -61,5 +60,10 @@
         color: mat-color($accent);
       }
     }
+  }
+
+  .input-high,
+  .input-low {
+    background-color: mat-color($background, modal);
   }
 }

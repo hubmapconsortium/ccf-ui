@@ -19,8 +19,7 @@
     }
 
     .download {
-      // color: map-get($mat-amber, A400);
-      color: mat-color($foreground, icon);
+      color: mat-color($foreground, download-icon);
       text-decoration: none;
       
       &:hover {

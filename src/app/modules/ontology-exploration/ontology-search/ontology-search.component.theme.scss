@@ -6,11 +6,6 @@
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
 
-  #cdk-overlay-2 {
-    border-color: mat-color($foreground, divider) !important;
-    background-color: mat-color($background, modal);
-  }
-
   .ccf-ontology-search {
     &.detached {
       mat-option {

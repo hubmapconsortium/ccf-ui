@@ -2,19 +2,40 @@
 @use 'themes/common/typography';
 @use 'themes/common/theming';
 @use 'themes/default';
+@use 'themes/dark';
+@use 'app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
 @include ng.mat-core(typography.$config);
 
-@include theming.ccf-theme(default.$theme);
+// .cdk-overlay-container {
+//   &.dark-theme {
+//     @include theming.ccf-theme(dark.$theme);
+//   }
+// }
 
-/**
- * Additional themes can be placed here. Example:
- *
- * .my-other-theme {
- *   @include theming.ccf-theme(other.$theme);
- * }
- *
- */
+@include theming.ccf-theme(dark.$theme);
+
+.light-theme {
+  @include theming.ccf-theme(default.$theme);
+
+  #cdk-overlay-2 {
+    border-color: #E0E0E0 !important;
+    background-color: white;
+  }
+}
+
+.dark-theme {
+  @include theming.ccf-theme(dark.$theme);
+
+  #cdk-overlay-2 {
+    border-color: #9E9E9E !important;
+    background-color: #212121;
+  }
+  
+  ::-webkit-scrollbar {
+    background: #757575;
+  }
+}
 
 html {
   box-sizing: border-box;
@@ -36,6 +57,7 @@ body {
   padding: 0;
   font-family: Inter, sans-serif;
   background-color: #212121;
+  @include theming.ccf-theme(default.$theme);
 }
 
 mat-icon {

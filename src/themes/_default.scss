@@ -18,7 +18,6 @@ $primary-colors: utility.add-colors($mat-gray, (
 ));
 
 $primary: mat-palette($primary-colors, $text: 900);
-// $accent: mat-palette($mat-blue, 600);
 $accent: mat-palette($mat-blue, 700);
 $warn: mat-palette($mat-red);
 
@@ -30,10 +29,13 @@ $foreground: map-merge($mat-light-theme-foreground, (
   borders: map-get($primary-colors, 300), //#E0E0E0
   icon: map-get($primary-colors, 300), //#E0E0E0
   contrast-icon: map-get($primary-colors, 600), //#757575 (icons on light background)
+  button-text: map-get($accent, 700),
+  button-border: map-get($primary-colors, 'black'),
   headers: map-get($primary-colors, 300), //#E0E0E0
   search-result-text: map-get($primary-colors, 600), //#757575
   text: map-get($primary-colors, 900), //#212121
   contrast-text: map-get($primary-colors, 50), //#FAFAFA (text on dark background)
+  download-icon: map-get($primary-colors, 600), //#757575 (icons on light background)
   disabled: map-get($primary-colors, light-disabled), //#BDBDBD
   highlight: map-get($primary-colors, 'black')
 ));
@@ -48,25 +50,6 @@ $background: map-merge($mat-light-theme-background, (
   dropdown-menu: map-get($primary-colors, 300), //#E0E0E0
   dropdown-hover: map-get($primary-colors, 300), //#E0E0E0
 ));
-
-// $foreground: map-merge($mat-dark-theme-foreground, (
-//   divider: map-get($primary-colors, 800), //#424242
-//   borders: map-get($primary-colors, 800), //#424242
-//   icon: map-get($primary-colors, 500), //#9E9E9E
-//   headers: map-get($primary-colors, 500), //#9E9E9E
-//   text: map-get($primary-colors, 50) //#FAFAFA
-// ));
-
-// $background: map-merge($mat-dark-theme-background, (
-//   background: map-get($primary-colors, "black"),
-//   dialog: map-get($primary-colors, 900), //#212121
-//   app-bar: map-get($primary-colors, 850), //#323232
-//   popup: map-get($primary-colors, 850), //#323232
-//   dropdown-menu: map-get($primary-colors, 800), //#424242
-//   viewer-header: map-get($primary-colors, 800), //#424242
-//   dropdown: map-get($primary-colors, 700), //#616161
-//   dropdown-hover: map-get($primary-colors, 500) //#9E9E9E
-// ));
 
 $theme: (
   is-dark: false,

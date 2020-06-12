@@ -20,6 +20,8 @@ import { DataSourceService } from './core/services/data-source/data-source.servi
 })
 export class AppComponent {
 
+  defaultScheme = true;
+
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
     map(state => state === DataQueryState.Running)
@@ -33,6 +35,7 @@ export class AppComponent {
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) {
     data.listData$.subscribe(console.log);
     data.aggregateData$.subscribe(console.log);
+    document.body.className = 'light-theme';
   }
 
   /**
@@ -57,5 +60,10 @@ export class AppComponent {
    */
   openViewer(viewer: ImageViewerPopoverComponent, iri: string) {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
+  }
+
+  toggleScheme() {
+    this.defaultScheme = !this.defaultScheme;
+    document.body.className = this.defaultScheme ? 'light-theme' : 'dark-theme';
   }
 }
