@@ -218,10 +218,14 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
   }
 
   private resetChannelConfigs(): void {
-    const keys = flatMap<Loader, string>(this.loaders, loader => loader.channelNames ?? []);
+    const { loaders, props: { channelNames, defaultChannelConfig } } = this;
+    const keys = channelNames.length > 0 ?
+      channelNames :
+      flatMap<Loader, string>(loaders, loader => loader.channelNames ?? []);
+
     this._channelConfigs = keys.reduce((configs, key) => ({
       ...configs,
-      [key]: this.props.defaultChannelConfig as ChannelConfig
+      [key]: defaultChannelConfig as ChannelConfig
     }), {} as Record<string, ChannelConfig>);
   }
 
