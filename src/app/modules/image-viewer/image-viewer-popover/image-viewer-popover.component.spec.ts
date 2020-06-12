@@ -19,7 +19,7 @@ function getTestLayers(): ImageViewerLayer[] {
       {
           ...testLayerCommon,
           label: 'Option 1',
-          id: 1,
+          id: '1',
           colorScheme: {
               type: 'discrete',
               name: 'bluered',
@@ -31,7 +31,7 @@ function getTestLayers(): ImageViewerLayer[] {
       {
           ...testLayerCommon,
           label: 'Option 2',
-          id: 2,
+          id: '2',
           colorScheme: {
               type: 'gradient',
               name: 'viridis',
@@ -43,7 +43,7 @@ function getTestLayers(): ImageViewerLayer[] {
       {
           ...testLayerCommon,
           label: 'Option 3',
-          id: 3,
+          id: '3',
           colorScheme: {
               type: 'gradient',
               name: 'viridis',

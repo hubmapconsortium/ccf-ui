@@ -9,7 +9,7 @@ function getTestLayer(): ImageViewerLayer {
         selectionOrder: 0,
         defaultOrder: -1,
         label: 'Option 1',
-        id: 1,
+        id: '1',
         colorScheme: {
             type: 'discrete',
             name: 'bluered',

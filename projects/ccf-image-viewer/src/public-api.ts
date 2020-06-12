@@ -1,6 +1,7 @@
 // Hack to support deck.gl and other typings
 // tslint:disable-next-line: no-reference
 /// <reference types="node" />
+/// <reference types="../types/@hubmap/vitessce-image-viewer" />
 
 /*
  * Public API Surface of ccf-image-viewer

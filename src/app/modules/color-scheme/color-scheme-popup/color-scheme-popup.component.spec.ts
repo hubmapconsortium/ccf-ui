@@ -8,7 +8,7 @@ function testLayer(): ImageViewerLayer {
   return new ImageViewerLayer({
     selected: false,
     label: 'Option 1',
-    id: 1,
+    id: '1',
     colorScheme: {
       type: 'discrete',
       name: 'bluered',
