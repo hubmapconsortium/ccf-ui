@@ -52,6 +52,8 @@ export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
    */
   atScrollBottom = false;
 
+  selectedResult: ListResult;
+
   /**
    * Re-Checks whether or not we need the gradient to be displayed everytime the data reloads.
    */
