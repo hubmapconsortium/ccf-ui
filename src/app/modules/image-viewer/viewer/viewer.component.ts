@@ -1,9 +1,26 @@
 import {
   AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild,
 } from '@angular/core';
-import { DataSource, ImageViewer, LoaderType, PictureInPictureViewer } from 'ccf-image-viewer';
+import { ChannelConfig, DataSource, ImageViewer, LoaderType, PictureInPictureViewer } from 'ccf-image-viewer';
 import { ResizeSensor } from 'css-element-queries';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+
+import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+
+
+function hexToRgbTriple(hex: string): [number, number, number] {
+  // tslint:disable: no-bitwise
+  if (hex === undefined || hex.length !== 7) { return [255, 255, 255]; }
+
+  const value = Number.parseInt(hex.slice(1), 16) | 0;
+  if (Number.isNaN(value)) { return [255, 255, 255]; }
+
+  const red = (value >> 16) & 0xff;
+  const green = (value >> 8) & 0xff;
+  const blue = value & 0xff;
+
+  return [red, green, blue];
+  // tslint:enable: no-bitwise
+}
 
 
 @Component({
@@ -41,7 +58,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   private viewer: ImageViewer;
   private sensor: ResizeSensor;
 
-  constructor(private container: ElementRef<HTMLElement>) {}
+  constructor(private readonly container: ElementRef<HTMLElement>) {}
 
   ngAfterViewInit(): void {
     const {
@@ -74,12 +91,15 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
 
     this.updateSources().then(() => this.updateLayers());
 
+    /*************************************************************
+     * REMOVE ME!
+     */
     console.log(this.viewer);
   }
 
   ngOnDestroy(): void {
-    this.viewer.finalize();
     this.sensor.detach();
+    this.viewer.finalize();
   }
 
   private async updateSources(): Promise<void> {
@@ -93,6 +113,15 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   private async updateLayers(): Promise<void> {
     const { _layers: layers, viewer } = this;
     if (!viewer) { return; }
-    //
+
+    const configs: Record<string, Partial<ChannelConfig>> = layers.reduce((result, layer) => ({
+      ...result,
+      [layer.id]: {
+        active: layer.selected,
+        color: hexToRgbTriple(layer.color)
+      }
+    }), {});
+
+    await viewer.updateChannelConfigs(configs);
   }
 }

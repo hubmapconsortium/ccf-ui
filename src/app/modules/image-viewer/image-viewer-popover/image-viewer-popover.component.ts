@@ -42,8 +42,8 @@ export class ImageViewerPopoverComponent {
   testLayers: ImageViewerLayer[] = [
     new ImageViewerLayer({
       selected: false,
-      label: 'Actin',
-      id: 123,
+      label: 'DAPI - Hoechst (nuclei)',
+      id: 'DAPI - Hoechst (nuclei)',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -60,7 +60,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'CD107a',
-      id: 122,
+      id: '122',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -77,7 +77,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'CD11c',
-      id: 323,
+      id: '323',
       colorScheme: {
         type: 'gradient',
         name: 'viridis',
@@ -94,7 +94,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'CD20',
-      id: 32,
+      id: '32',
       colorScheme: {
         type: 'gradient',
         name: 'viridis',
@@ -111,7 +111,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'PAS',
-      id: 42,
+      id: '42',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -128,7 +128,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'IMS',
-      id: 400,
+      id: '400',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -145,7 +145,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'Kidney Capsule',
-      id: 123,
+      id: '123',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -162,7 +162,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'Kidney Cortex',
-      id: 321,
+      id: '321',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -200,7 +200,7 @@ export class ImageViewerPopoverComponent {
    * @param layers the updated list of layers
    */
   layersChanged(layers: ImageViewerLayer[]): void {
-    this.testLayers = layers;
+    this.testLayers = [...layers];
     this.activeLayers = this.getActiveLayers();
   }
 
