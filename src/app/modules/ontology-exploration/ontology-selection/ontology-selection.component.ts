@@ -1,11 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngxs/store';
 
 import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologyState, OntologyStateModel } from '../../../core/store/ontology/ontology.state';
-import { SearchState } from '../../../core/store/search/search.state';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
+import { OntologySelection } from '../../../core/models/ontology-selection';
 
 
 /**
@@ -22,14 +22,18 @@ export class OntologySelectionComponent {
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
 
+
+  /**
+   * Captures and passes along the change in ontologySelections.
+   */
+  @Output() ontologySelection = new EventEmitter<OntologySelection>();
+
   /**
    * Creates an instance of ontology selection component.
-   * @param searchState State containing the currently active filters, etc.
    * @param ontologySearchService Service for searching the ontology.
    * @param store The global state store.
    */
   constructor(
-    public searchState: SearchState,
     public ontologySearchService: OntologySearchService,
     private readonly store: Store
   ) {}

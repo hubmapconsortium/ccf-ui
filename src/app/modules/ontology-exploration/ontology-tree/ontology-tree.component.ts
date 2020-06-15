@@ -1,5 +1,5 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { filter, invoke, property } from 'lodash';
 
@@ -26,7 +26,7 @@ const isExpandable = property<FlatNode, boolean>('expandable');
   styleUrls: ['./ontology-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OntologyTreeComponent {
+export class OntologyTreeComponent implements OnInit {
   /**
    * The node like objects to display in the tree.
    */
@@ -56,9 +56,16 @@ export class OntologyTreeComponent {
   }
 
   /**
+   * Creates an instance of ontology tree component.
+   *
+   * @param cdr The change detector.
+   */
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  /**
    * Emits an event whenever a node has been selected.
    */
-  @Output() nodeSelected = new EventEmitter<OntologyNode | undefined>();
+  @Output() nodeSelected = new EventEmitter<OntologyNode[]>();
 
   /**
    * Indentation of each level in the tree.
@@ -85,11 +92,6 @@ export class OntologyTreeComponent {
   readonly dataSource = new MatTreeFlatDataSource(this.control, this.flattener);
 
   /**
-   * Currently selected node.
-   */
-  selectedNode?: FlatNode = undefined;
-
-  /**
    * Storage for getter/setter 'nodes'.
    */
   private _nodes?: OntologyNode[] = undefined;
@@ -100,11 +102,58 @@ export class OntologyTreeComponent {
   private _getChildren?: GetChildrenFunc;
 
   /**
-   * Creates an instance of ontology tree component.
-   *
-   * @param cdr The change detector.
+   * A copy of the body node in order to manually select it when the component loads.
    */
-  constructor(private cdr: ChangeDetectorRef) { }
+  bodyNode = new FlatNode(
+    {
+      id: 'http://purl.obolibrary.org/obo/UBERON_0013702',
+      label: 'body',
+      parent: '',
+      children: [
+        'http://purl.obolibrary.org/obo/UBERON_0000948',
+        'http://purl.obolibrary.org/obo/LMHA_00211',
+        'http://purl.obolibrary.org/obo/UBERON_0002113',
+        'http://purl.obolibrary.org/obo/UBERON_0002106',
+        'http://purl.obolibrary.org/obo/UBERON_0001155',
+        'http://purl.obolibrary.org/obo/UBERON_0002108',
+        'http://purl.obolibrary.org/obo/UBERON_0001052'
+      ],
+      synonymLabels: []
+    },
+    0
+  );
+
+  /**
+   * Keeping track of the first selection made allows us to ensure the 'body' node
+   * is unselected as expected.
+   */
+  anySelectionsMade = false;
+
+  /**
+   * Currently selected node, defaulted to the body node for when the page initially loads.
+   */
+  selectedNodes: FlatNode[] = [this.bodyNode];
+
+  /**
+   * Expand the body node when the component is initialized.
+   */
+  ngOnInit() {
+    if (this.control.dataNodes) {
+      this.control.expand(this.control.dataNodes[0]);
+    }
+  }
+
+  /**
+   * Selecting the body is slightly different because it has no parents, so here we are
+   * selecting the body, collapsing all the nodes, then expanding the body node manually.
+   */
+  selectBody(): void {
+    this.select(false, this.bodyNode);
+    this.control.collapseAll();
+    if (this.control.dataNodes) {
+      this.control.expand(this.control.dataNodes[0]);
+    }
+  }
 
   /**
    * Expands the tree to show a node and sets the currect selection to that node.
@@ -113,6 +162,11 @@ export class OntologyTreeComponent {
    */
   expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) => OntologyNode): void {
     const { cdr, control } = this;
+
+    if (node.label === 'body') {
+      this.selectBody();
+      return;
+    }
 
     // Add all parents to a set
     const parents = new Set<OntologyNode>();
@@ -132,8 +186,8 @@ export class OntologyTreeComponent {
     for (const flat of parentFlatNodes) { control.expand(flat); }
 
     // Select the node
-    this.selectedNode = undefined;
-    this.select(flatNode);
+    this.selectedNodes = [];
+    this.select(false, flatNode);
 
     // Detect changes
     cdr.detectChanges();
@@ -156,19 +210,45 @@ export class OntologyTreeComponent {
    * @param node  The node to test.
    * @returns True if the node is the currently selected node.
    */
-  isSelected(node: FlatNode): boolean {
-    return node === this.selectedNode;
+  isSelected(node: FlatNode | undefined): boolean {
+    return this.selectedNodes.filter(selectedNode => node?.original.label === selectedNode?.original.label).length > 0;
   }
 
   /**
-   * Sets a node to be the currently selected node.
-   * Deselects the previously selected node.
+   * Handles selecting / deselecting nodes via updating the selectedNodes variable
    *
    * @param node The node to select.
+   * @param ctrlKey Whether or not the selection was made with a ctrl + click event.
    */
-  select(node: FlatNode | undefined): void {
-    let { selectedNode } = this;
-    this.selectedNode = selectedNode = node !== selectedNode ? node : undefined;
-    this.nodeSelected.emit(selectedNode && selectedNode.original);
+  select(ctrlKey: boolean, node: FlatNode | undefined): void {
+    const nodeWasSelected = this.isSelected(node);
+
+    // This is to ensure the 'body' node is unselected regardless of what the first
+    // selection is
+    if (!this.anySelectionsMade) {
+      this.selectedNodes = [];
+      this.anySelectionsMade = true;
+    }
+
+    if (node === undefined) {
+      this.selectedNodes = [];
+      return;
+    }
+
+    // ctrl + click allows users to select multiple organs
+    if (ctrlKey) {
+      if (nodeWasSelected) {
+        this.selectedNodes.splice(this.selectedNodes.indexOf(node), 1);
+      } else {
+        this.selectedNodes.push(node);
+      }
+    } else {
+      this.selectedNodes = [];
+      if (!nodeWasSelected) {
+        this.selectedNodes.push(node);
+      }
+    }
+
+    this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
   }
 }
