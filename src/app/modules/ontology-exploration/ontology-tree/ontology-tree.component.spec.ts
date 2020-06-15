@@ -12,6 +12,7 @@ function fromPartial<T>(partial: RecursivePartial<T>): T {
 
 
 describe('OntologyTreeComponent', () => {
+  const bodyNode = fromPartial<OntologyNode>({ label: 'body', children: ['child1', 'child2'] });
   const node1 = fromPartial<OntologyNode>({ label: 'label', children: ['child1', 'child2'] });
   const node2 = fromPartial<OntologyNode>({ label: 'label2', children: [] });
   const flatNode1 = new FlatNode(node1, 1);
@@ -94,7 +95,6 @@ describe('OntologyTreeComponent', () => {
   });
 
   it('should call selectBody() if expandAndSelect() is called with the body node', async () => {
-    const bodyNode = fromPartial<OntologyNode>({ label: 'body', children: ['child1', 'child2'] });
     const nodes = [bodyNode, node1, node2];
     const { instance } = await shallow.render({bind: {nodes}});
     const spy = spyOn(instance, 'selectBody');
@@ -106,5 +106,35 @@ describe('OntologyTreeComponent', () => {
     instance.expandAndSelect(bodyNode, getParent);
 
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should select the body node when selectBody() is called', async () => {
+    const { instance } = await shallow.render();
+
+    instance.selectedNodes = [];
+    instance.selectBody();
+
+    expect(instance.selectedNodes).toEqual([instance.bodyNode]);
+  });
+
+  it('selectBody() should call control.collapseAll()', async () => {
+    const { instance } = await shallow.render();
+    const collapseSpy = spyOn(instance.control, 'collapseAll');
+
+    instance.selectedNodes = [];
+    instance.selectBody();
+
+    expect(collapseSpy).toHaveBeenCalled();
+  });
+
+  it('selectBody() should call control.expand() when there are dataNodes', async () => {
+    const nodes = [bodyNode, node1, node2];
+    const { instance } = await shallow.render({bind: {nodes}});
+    const expandSpy = spyOn(instance.control, 'expand');
+
+    instance.selectedNodes = [];
+    instance.selectBody();
+
+    expect(expandSpy).toHaveBeenCalled();
   });
 });
