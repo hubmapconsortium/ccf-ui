@@ -99,10 +99,12 @@ export class ColorSchemeContentsComponent {
     updates: Partial<ConstructorParameters<typeof ImageViewerLayer>[0]>
   ): void {
     const { layer: current, layerChange } = this;
-    const layer = this.layer = new ImageViewerLayer({
+    const layer = new ImageViewerLayer({
       ...current,
       ...updates
     });
+
+    this.layer = layer;
     layerChange.emit(layer);
   }
 }
