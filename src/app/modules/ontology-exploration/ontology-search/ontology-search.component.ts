@@ -51,7 +51,7 @@ export class OntologySearchComponent implements OnInit {
    * gets the searched value from the view, sends it to the filter function in the OntologyService,
    * and gets the search results from the service
    */
-  ngOnInit() {
+  ngOnInit(): void {
     this.ontologyService.loadOntology();
     const valueChanges = this.formControl.valueChanges as Observable<string>;
     this.filteredResults$ = valueChanges.pipe(

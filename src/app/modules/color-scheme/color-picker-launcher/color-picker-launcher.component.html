@@ -1,9 +1,5 @@
-<div>
-  <div [class]="['color-icon', layer.colorScheme.type === 'discrete' ? 'circle' : '']" [style.background]="layer.background" (click)="schemepopup.open()"></div>
+<div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" [style.background]="layer.background"
+     (click)="schemepopup.open(button)" #button></div>
 
-  <ccf-color-scheme-popup
-    #schemepopup
-    [layer]="layer"
-    (layerChange)="layerChange.emit($event)"
-  ></ccf-color-scheme-popup>
-</div>
+<ccf-color-scheme-popup #schemepopup [layer]="layer" (layerChange)="layerChange.emit($event)">
+</ccf-color-scheme-popup>

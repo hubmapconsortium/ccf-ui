@@ -1,4 +1,4 @@
-import { CompositeLayer, COORDINATE_SYSTEM } from '@deck.gl/core';
+import { CompositeLayer, COORDINATE_SYSTEM, Layer } from '@deck.gl/core';
 import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
 import { load, registerLoaders } from '@loaders.gl/core';
 import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
@@ -44,7 +44,7 @@ function meshLayer(id: string, data: BodyUIData[], options: {[key: string]: unkn
 }
 
 export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
-  renderLayers() {
+  renderLayers(): unknown[] {
     // tslint:disable-next-line: no-unsafe-any
     const data = (this.state.data || this.props.data) as BodyUIData[];
     const cubes = data.filter(d => !d.scenegraph && !d.wireframe);
@@ -74,11 +74,11 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
     ].filter(l => !!l);
   }
 
-  onClick(info: {object: {tooltip: string}}) {
+  onClick(info: {object: {tooltip: string}}): void {
     alert('You clicked ' + info.object?.tooltip || JSON.stringify(info.object, null, 2));
   }
 
-  getPickingInfo(e: {info: object}) {
+  getPickingInfo(e: {info: object}): object {
     return e.info;
   }
 }

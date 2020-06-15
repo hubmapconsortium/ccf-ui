@@ -136,7 +136,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   /**
    * Updates the slider options, and the slider values if necessary.
    */
-  optionsChanged() {
+  optionsChanged(): void {
     this.options = {
       floor: this.valueRange ? this.valueRange[0] : 0,
       ceil: this.valueRange ? this.valueRange[1] : 0,
@@ -152,7 +152,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Angular's OnDestroy hook.
    * Cleans up the overlay.
    */
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.overlayRef.dispose();
   }
 
@@ -224,7 +224,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Updates the slider's low pointer value when Enter key is pressed.
    * @param event Event passed into the component
    */
-  onKeyLow(event: KeyboardEvent) {
+  onKeyLow(event: KeyboardEvent): void {
     const newValue = Number((event.target as HTMLInputElement).value);
     if (event.key === 'Enter') {
       if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {
@@ -240,7 +240,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * Updates the slider's high pointer value when Enter key is pressed.
    * @param event Event passed into the component
    */
-  onKeyHigh(event: KeyboardEvent) {
+  onKeyHigh(event: KeyboardEvent): void {
     const newValue = Number((event.target as HTMLInputElement).value);
     if (event.key === 'Enter') {
       if (newValue >= Number(this.options.floor) && newValue <= Number(this.options.ceil)) {

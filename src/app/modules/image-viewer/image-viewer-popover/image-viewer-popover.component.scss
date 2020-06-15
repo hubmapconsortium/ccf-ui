@@ -20,24 +20,46 @@
     height: calc(100% - 2rem);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
-    .viewer-image {
-      position: relative;
-      padding: 1rem 0rem;
-      right: 1rem;
+    .viewer {
+      width: 100%;
       height: calc(100% - 8rem);
-      display: flex;
-      flex-direction: column;
+      margin-left: 1.5rem;
+    }
 
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: scale-down;
-      }
+    .legend {
+      width: 100%;
+      height: 3.5rem;
+      margin-top: 1.5rem;
+      margin-left: 1.5rem;
     }
   }
 
   .image-viewer-drawer {
     width: 25.5rem;
+    margin: 0 1.5rem;
+
+    .drawer-icons {
+      display: flex;
+
+      .button {
+        width: 3rem;
+        height: 3rem;
+        color: #9e9e9e;
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: none;
+
+        :hover {
+          color: #1e88e5;
+        }
+
+        mat-icon {
+          font-size: 2.2rem;
+        }
+      }
+    }
   }
 }

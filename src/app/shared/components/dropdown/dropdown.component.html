@@ -3,7 +3,8 @@
     <mat-form-field class="dropdown-form-field">
       {{ label }}
       <mat-select class="selected-value" [value]="selection" (selectionChange)="selectionChanged($event.value)"
-        disableOptionCentering=true panelClass="option-panel" (openedChange)="toggleOptions()" disableRipple=true>
+                  disableOptionCentering=true panelClass="option-panel" (openedChange)="toggleOptions()"
+                  disableRipple=true>
         <mat-option *ngFor="let option of options" [value]="option">
           <div class="{{optionsVisible}}">
             {{ option }}

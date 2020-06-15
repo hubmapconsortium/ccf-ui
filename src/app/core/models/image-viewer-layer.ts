@@ -10,7 +10,7 @@ export class ImageViewerLayer {
   defaultOrder: number;
 
   label: string;
-  id: number;
+  id: string;
   colorScheme: ColorScheme;
 
   constructor(data: Omit<ImageViewerLayer, 'background'>) {

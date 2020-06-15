@@ -64,7 +64,13 @@ export function createModel(nodeMap: { [id: string]: OntologyNode }): OntologySt
  * @returns A new ontology tree.
  */
 function pruneModel(model: OntologyStateModel, organIds: string[]): OntologyStateModel {
-  const body: OntologyNode = { id: 'body', label: 'body', parent: '', children: organIds, synonymLabels: [] };
+  const body: OntologyNode = {
+    id: 'http://purl.obolibrary.org/obo/UBERON_0013702',
+    label: 'body',
+    parent: '',
+    children: organIds,
+    synonymLabels: []
+  };
   const organNodes = at(model.nodes, organIds);
   const prunedNodes = { [body.id]: body };
 
@@ -115,7 +121,7 @@ export class OntologySearchService {
   /**
    * Loads ontology.
    */
-  loadOntology() {
+  loadOntology(): void {
     const jsonOntology = this.http.get<JsonOntologyNode[]>(environment.ontologyUrl, { responseType: 'json' });
     const model = jsonOntology.pipe(
       map(ontology => loMap(ontology, jsonToOntologyNode)),
@@ -148,7 +154,7 @@ export class OntologySearchService {
   private lookup(nodes: Immutable<OntologyNode>[], searchValue: string): SearchResult[] {
     const searchResults = new Map<string, SearchResult>();
 
-    if(nodes) {
+    if (nodes) {
       nodes.forEach((node: OntologyNode) => {
         const condition = node.label.toLowerCase().includes(searchValue);
 

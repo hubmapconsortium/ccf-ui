@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ColorScheme } from '../color-schemes';
+
 
 /**
  * Color bar component for the color scheme popup and color scheme selector
@@ -51,7 +52,7 @@ export class ColorBarComponent {
   /**
    * Returns whether or not the scheme is a selected gradient (for highlighting purposes)
    */
-  gradientHighlight() {
+  gradientHighlight(): boolean {
     return this.colorScheme.type === 'gradient' && this.selected ? true : false;
   }
 
@@ -60,7 +61,7 @@ export class ColorBarComponent {
    * selected color
    * @param color  the color the user selected
    */
-  colorChanged(color: string) {
+  colorChanged(color: string): void {
     if (!this.enableSelection) { return; }
     this.selected = true;
     this.selectedColor = color;
