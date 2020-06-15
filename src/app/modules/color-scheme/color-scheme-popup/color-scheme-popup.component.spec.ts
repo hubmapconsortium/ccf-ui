@@ -34,7 +34,7 @@ describe('ColorSchemePopupComponent', () => {
   it('should set popup visibility to true when open() is called', async () => {
     const { instance } = await shallow.render();
     instance.popupVisible = false;
-    instance.open(undefined);
+    instance.open();
     expect(instance.popupVisible).toBe(true);
   });
 
