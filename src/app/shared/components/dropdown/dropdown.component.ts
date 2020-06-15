@@ -38,7 +38,7 @@ export class DropdownComponent {
   /**
    * Controls fade-in effect after dropdown menu opens
    */
-  toggleOptions() {
+  toggleOptions(): void {
     this.optionsVisible = this.optionsVisible === 'visible' ? 'invisible' : 'visible';
   }
 
@@ -46,7 +46,7 @@ export class DropdownComponent {
    * Updates the selected value.
    * @param value The value that has been selected
    */
-  selectionChanged(value: string) {
+  selectionChanged(value: string): void {
     this.selection = value;
     this.selectionChange.emit(value);
   }

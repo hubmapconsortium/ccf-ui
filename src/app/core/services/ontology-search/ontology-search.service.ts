@@ -115,7 +115,7 @@ export class OntologySearchService {
   /**
    * Loads ontology.
    */
-  loadOntology() {
+  loadOntology(): void {
     const jsonOntology = this.http.get<JsonOntologyNode[]>(environment.ontologyUrl, { responseType: 'json' });
     const model = jsonOntology.pipe(
       map(ontology => loMap(ontology, jsonToOntologyNode)),
@@ -148,7 +148,7 @@ export class OntologySearchService {
   private lookup(nodes: Immutable<OntologyNode>[], searchValue: string): SearchResult[] {
     const searchResults = new Map<string, SearchResult>();
 
-    if(nodes) {
+    if (nodes) {
       nodes.forEach((node: OntologyNode) => {
         const condition = node.label.toLowerCase().includes(searchValue);
 

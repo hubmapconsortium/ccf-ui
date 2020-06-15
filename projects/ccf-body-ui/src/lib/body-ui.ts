@@ -42,7 +42,7 @@ export class BodyUI {
     this.deck = new Deck(props as any);
   }
 
-  setScene(data: BodyUIData[]) {
+  setScene(data: BodyUIData[]): void {
     if (data?.length > 0) {
       this.bodyUILayer.setState({data});
     }

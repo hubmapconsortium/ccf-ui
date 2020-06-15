@@ -7,7 +7,7 @@ import { InfoButtonModule } from './info-button.module';
 describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
   const mockMatDialog = {
-    open(...args: unknown[]) {
+    open(...args: unknown[]): MatDialogRef<unknown, unknown> {
       return undefined as unknown as MatDialogRef<unknown, unknown>;
     }
   };

@@ -9,10 +9,14 @@ import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 function hexToRgbTriple(hex: string): [number, number, number] {
   // tslint:disable: no-bitwise
-  if (hex === undefined || hex.length !== 7) { return [255, 255, 255]; }
+  if (hex === undefined || hex.length !== 7) {
+    return [255, 255, 255];
+  }
 
   const value = Number.parseInt(hex.slice(1), 16) | 0;
-  if (Number.isNaN(value)) { return [255, 255, 255]; }
+  if (Number.isNaN(value)) {
+    return [255, 255, 255];
+  }
 
   const red = (value >> 16) & 0xff;
   const green = (value >> 8) & 0xff;
@@ -58,7 +62,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   private viewer: ImageViewer;
   private sensor: ResizeSensor;
 
-  constructor(private readonly container: ElementRef<HTMLElement>) {}
+  constructor(private readonly container: ElementRef<HTMLElement>) { }
 
   ngAfterViewInit(): void {
     const {
@@ -104,7 +108,9 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
 
   private async updateSources(): Promise<void> {
     const { _sources: sources, viewer, channelsChange } = this;
-    if (!viewer) { return; }
+    if (!viewer) {
+      return;
+    }
 
     await viewer.setSources(sources);
     channelsChange.emit(viewer.channelNames);
@@ -112,7 +118,9 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
 
   private async updateLayers(): Promise<void> {
     const { _layers: layers, viewer } = this;
-    if (!viewer) { return; }
+    if (!viewer || layers.length === 0) {
+      return;
+    }
 
     const configs: Record<string, Partial<ChannelConfig>> = layers.reduce((result, layer) => ({
       ...result,

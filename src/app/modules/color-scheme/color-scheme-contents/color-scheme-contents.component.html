@@ -1,30 +1,16 @@
 <div class="color-scheme-contents-container">
   <div class="scheme-contents">
-    <ccf-color-bar
-      *ngFor="let scheme of schemeOptions"
-      class="swatch"
-      [colorScheme]="scheme"
-      [selected]="scheme.name === layer.colorScheme.name"
-      [selectedColor]="layer.color"
-      (colorChange)="colorChanged($event, scheme)"
-      [enableSelection]="true"
-    ></ccf-color-bar>
+    <ccf-color-bar *ngFor="let scheme of schemeOptions" class="swatch" [colorScheme]="scheme"
+                   [selected]="scheme.name === layer.colorScheme.name" [selectedColor]="layer.color"
+                   (colorChange)="colorChanged($event, scheme)" [enableSelection]="true"></ccf-color-bar>
 
     <div class="brightness-slider-label">Brightness</div>
-    <ng5-slider
-      class="slider"
-      [options]="brightnessSliderOptions"
-      [(value)]="layer.brightness[0]"
-      [(highValue)]="layer.brightness[1]"
-      (userChangeEnd)="brightnessChanged()">
+    <ng5-slider class="slider" [options]="brightnessSliderOptions" [(value)]="layer.brightness[0]"
+                [(highValue)]="layer.brightness[1]" (userChangeEnd)="brightnessChanged()">
     </ng5-slider>
 
     <div class="transparency-slider-label">Transparency</div>
-    <ng5-slider
-      class="slider"
-      [options]="transparencySliderOptions"
-      [(value)]="layer.transparency"
-      (userChangeEnd)="transparencyChanged()"
-    ></ng5-slider>
+    <ng5-slider class="slider" [options]="transparencySliderOptions" [(value)]="layer.transparency"
+                (userChangeEnd)="transparencyChanged()"></ng5-slider>
   </div>
 </div>

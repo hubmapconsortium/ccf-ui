@@ -17,6 +17,7 @@ export class SpinnerOverlayComponent {
 
   /** Whether the overlay is active/showing. */
   @Input() @HostBinding('class.active') active = false;
+
   /** Optional text description displayed alongside the spinner. */
   @Input() text: string;
 }

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Options } from 'ng5-slider';
 
-import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
+
 
 /**
  * Contains the color menu and brightness/transparency sliders
@@ -13,7 +14,6 @@ import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
   styleUrls: ['./color-scheme-contents.component.scss']
 })
 export class ColorSchemeContentsComponent {
-
   /**
    * List of available schemes
    */
@@ -58,14 +58,14 @@ export class ColorSchemeContentsComponent {
   /**
    * Emits new brightness selection
    */
-  brightnessChanged() {
+  brightnessChanged(): void {
     this.layerChange.emit(this.layer);
   }
 
   /**
    * Emits new transparency value
    */
-  transparencyChanged() {
+  transparencyChanged(): void {
     this.layerChange.emit(this.layer);
   }
 

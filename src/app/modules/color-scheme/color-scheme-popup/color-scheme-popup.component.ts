@@ -1,7 +1,8 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
-import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
+
 
 /**
  * Component for the scheme selector popup

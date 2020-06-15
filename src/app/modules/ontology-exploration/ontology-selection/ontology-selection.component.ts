@@ -38,7 +38,7 @@ export class OntologySelectionComponent {
    * Ontology selection event when node is selected from the search results.
    * @param ontologyNode selected ontology node.
    */
-  selected(ontologyNode: OntologyNode) {
+  selected(ontologyNode: OntologyNode): void {
     const { nodes } = this.store.selectSnapshot<OntologyStateModel>(OntologyState);
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
   }

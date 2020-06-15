@@ -37,7 +37,7 @@ export function arrayToStream<T>(arr: T[]): Readable {
 
   return new Readable({
     objectMode: true,
-    read() {
+    read(): void {
       this.push(i < length ? arr[i++] : null);
     }
   });

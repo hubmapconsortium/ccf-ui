@@ -1,0 +1,4 @@
+
+describe('image-viewer:Viewer', () => {
+  //
+});
