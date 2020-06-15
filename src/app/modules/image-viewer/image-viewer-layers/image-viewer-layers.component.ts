@@ -49,8 +49,9 @@ export class ImageViewerLayersComponent {
   checkboxOnChange(layer: ImageViewerLayer): void {
     const layerIndex = this.layers.indexOf(layer);
     // Ugly workaround for deep mutations bug
+    layer = new ImageViewerLayer(this.layers[layerIndex]);
     this.layers = [...this.layers];
-    this.layers[layerIndex] = new ImageViewerLayer(this.layers[layerIndex]);
+    this.layers[layerIndex] = layer;
     // End of workaround
 
     this.layers[layerIndex].selected = !this.layers[layerIndex].selected;
@@ -142,13 +143,14 @@ export class ImageViewerLayersComponent {
    */
   updateLayerScheme(schemeChange: ColorScheme): void {
     this.defaultScheme = schemeChange;
-    for (const layer of this.layers) {
-      if (!layer.customizedColor) {
-        const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
-        layer.colorScheme = schemeChange;
-        layer.color = schemeChange.colors[colorIndex];
-      }
-    }
+    this.layers = this.layers.map(layer => {
+      const index = layer.colorScheme.colors.indexOf(layer.color);
+      return layer.customizedColor ? layer : new ImageViewerLayer({
+        ...layer,
+        colorScheme: schemeChange,
+        color: schemeChange.colors[index]
+      });
+    });
     this.selectedLayers.emit(this.layers);
   }
 }

@@ -54,7 +54,7 @@ describe('ImageViewerLayersComponent', () => {
     layers[1].selected = true;
     const spy = spyOn(instance, 'handleUnselect');
     instance.checkboxOnChange(layers[1]);
-    expect(spy).toHaveBeenCalledWith(layers[1]);
+    expect(spy).toHaveBeenCalled();
   });
 
   it('filters out unselected layers, then sorts the remaining layers when activeLayers() is called', async () => {
@@ -126,8 +126,8 @@ describe('ImageViewerLayersComponent', () => {
 
     const { instance } = await shallow.render({ bind: { layers } });
     instance.updateLayerScheme(testScheme);
-    expect(layers[1].colorScheme).toBe(testScheme);
-    expect(layers[1].color).toBe(testScheme.colors[1]);
+    expect(instance.layers[1].colorScheme).toBe(testScheme);
+    expect(instance.layers[1].color).toBe(testScheme.colors[1]);
   });
 
   it('should not update the layer scheme if the layer has been customized', async () => {
@@ -139,18 +139,14 @@ describe('ImageViewerLayersComponent', () => {
       positions: [0, .166, .333, .5, .666, .833, 1]
     } as ColorScheme;
 
-    const customScheme = {
-      type: 'gradient',
-      name: 'viridis',
-      colors: ['#FFE31C', '#21908A', '#450B57'],
-      positions: [0, .5, 1]
-    } as ColorScheme;
+    const customScheme = layers[1].colorScheme;
+    const color = layers[1].color;
 
     const { instance } = await shallow.render({ bind: { layers } });
     layers[1].customizedColor = true;
     instance.updateLayerScheme(testScheme);
-    expect(layers[1].colorScheme).toEqual(customScheme);
-    expect(layers[1].color).toBe('#21908A');
+    expect(instance.layers[1].colorScheme).toEqual(customScheme);
+    expect(instance.layers[1].color).toBe(color);
   });
 
 

@@ -54,7 +54,7 @@ export class ColorSchemePopupComponent {
   /**
    * Opens popup
    */
-  open(owner: Element): void {
+  open(owner?: Element): void {
     this.owner = owner;
     this.popupVisible = !this.popupVisible;
   }
