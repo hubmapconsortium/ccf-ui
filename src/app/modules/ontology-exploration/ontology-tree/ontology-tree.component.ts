@@ -137,7 +137,7 @@ export class OntologyTreeComponent implements OnInit {
   /**
    * Expand the body node when the component is initialized.
    */
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.control.dataNodes) {
       this.control.expand(this.control.dataNodes[0]);
     }
