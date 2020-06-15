@@ -4,7 +4,6 @@ import { FlatNode } from '../../../core/models/flat-node';
 import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologyTreeComponent } from './ontology-tree.component';
 import { OntologyTreeModule } from './ontology-tree.module';
-import { async } from '@angular/core/testing';
 
 
 function fromPartial<T>(partial: RecursivePartial<T>): T {
@@ -100,7 +99,11 @@ describe('OntologyTreeComponent', () => {
     const { instance } = await shallow.render({bind: {nodes}});
     const spy = spyOn(instance, 'selectBody');
 
-    instance.expandAndSelect(bodyNode, (node: OntologyNode)=>{return node;});
+    const getParent = (node: OntologyNode) => {
+      return node;
+    };
+
+    instance.expandAndSelect(bodyNode, getParent);
 
     expect(spy).toHaveBeenCalled();
   });
