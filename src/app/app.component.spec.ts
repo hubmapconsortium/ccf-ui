@@ -13,7 +13,6 @@ import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
 import { ThemingService } from './core/services/theming/theming.service';
-import { stringify } from 'querystring';
 
 @NgModule({})
 class EmptyModule {}
