@@ -12,6 +12,8 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
+import { ThemingService } from './core/services/theming/theming.service';
+import { stringify } from 'querystring';
 
 @NgModule({})
 class EmptyModule {}
@@ -34,6 +36,9 @@ describe('AppComponent', () => {
         aggregateData$: of(),
         queryStatus$: of(),
         updateFilter: () => undefined
+      })
+      .mock(ThemingService, {
+        getTheme: () => 'theme'
       });
 
     left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);

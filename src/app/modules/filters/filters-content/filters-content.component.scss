@@ -1,8 +1,16 @@
 .filter {
+  &.hidden {
+    display: none !important;
+  }
+
   margin-top: 2em;
 }
 
 .button-container {
+  &.hidden {
+    display: none !important;
+  }
+  
   margin-top: 2em;
   display: flex;
   flex-direction: row-reverse;
