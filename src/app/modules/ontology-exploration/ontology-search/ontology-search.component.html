@@ -6,11 +6,14 @@
     <mat-autocomplete class="ccf-ontology-search detached autocomplete" [displayWith]="displayFormatter"
                       (optionSelected)="onSelect($event)" (opened)="autoCompleteOpen = true"
                       (closed)="autoCompleteOpen = false" #autocomplete>
-      <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">
-        <span class="prefix">{{option.displayLabel[0]}}</span>
-        <span class="search-term">{{option.displayLabel[1]}}</span>
-        <span class="suffix">{{option.displayLabel[2]}}</span>
-      </mat-option>
+                      <div class="results-container">
+
+                        <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">
+                          <span class="prefix">{{option.displayLabel[0]}}</span>
+                          <span class="search-term">{{option.displayLabel[1]}}</span>
+                          <span class="suffix">{{option.displayLabel[2]}}</span>
+                        </mat-option>
+                      </div>
     </mat-autocomplete>
 
     <mat-icon matSuffix color="primary" class="search">search</mat-icon>

@@ -40,24 +40,27 @@
 }
 
 ::ng-deep .ccf-ontology-search.detached {
-  max-width: 380px;
-  margin-bottom: 1.5rem;
-  margin-top: 1rem;
+  border: 2px solid;
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  max-height: 18rem;
 
-  mat-option {
-    height: 1.5rem;
+  .results-container {
+    width: 380px;
+    margin-bottom: 1rem;
+    overflow: overlay;
+    max-height: 15rem;
+
+    mat-option {
+      height: 1.5rem;
+      width: 380px;
+      
+      .search-term {
+        text-decoration: underline;
+      }
+    }
   }
 
-  .search-term {
-    text-decoration: underline;
-  }
-}
-
-::ng-deep .ccf-ontology-search.detached {
-
-  .search-term {
-    text-decoration: underline;
-  }
 }
 
 .autocomplete-open {
@@ -72,12 +75,4 @@
       border-bottom: none;
     }
   }
-}
-
-::ng-deep #cdk-overlay-2 {
-  z-index: 3;
-  border: 2px solid;
-  border-top: none;
-  border-radius: 0 0 1rem 1rem;
-  max-height: 17.5rem;
 }

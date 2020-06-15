@@ -12,6 +12,7 @@
 
     &:hover {
       background-color: mat-color($accent);
+      color: mat-color($foreground, contrast-text);
     }
 
     &:focus {

@@ -3,35 +3,11 @@
 @use 'themes/common/theming';
 @use 'themes/default';
 @use 'themes/dark';
-@use 'app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 
 @include ng.mat-core(typography.$config);
 
-// .cdk-overlay-container {
-//   &.dark-theme {
-//     @include theming.ccf-theme(dark.$theme);
-//   }
-// }
-
-@include theming.ccf-theme(dark.$theme);
-
-.light-theme {
-  @include theming.ccf-theme(default.$theme);
-
-  #cdk-overlay-2 {
-    border-color: #E0E0E0 !important;
-    background-color: white;
-  }
-}
-
 .dark-theme {
   @include theming.ccf-theme(dark.$theme);
-
-  #cdk-overlay-2 {
-    border-color: #9E9E9E !important;
-    background-color: #212121;
-  }
-  
   ::-webkit-scrollbar {
     background: #757575;
   }
@@ -80,6 +56,6 @@ mat-icon {
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 

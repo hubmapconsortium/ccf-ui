@@ -5,9 +5,12 @@
   $background: map-get($theme, background);
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
-
+  
   .ccf-ontology-search {
     &.detached {
+      border-color: mat-color($foreground, divider) !important;
+      background-color: mat-color($background, modal);
+
       mat-option {
         color: mat-color($foreground, search-result-text);
       }
