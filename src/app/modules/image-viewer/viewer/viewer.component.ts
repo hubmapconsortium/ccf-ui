@@ -39,6 +39,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
     this._sources = sources;
     this.updateSources();
   }
+  get sources(): DataSource[] { return this._sources; }
   private _sources: DataSource[] = [
     {
       type: LoaderType.Tiff,
@@ -53,6 +54,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
     this._layers = layers;
     this.updateLayers();
   }
+  get layers(): ImageViewerLayer[] { return this._layers; }
   private _layers: ImageViewerLayer[] = [];
 
   @Output() channelsChange = new EventEmitter<string[]>();
@@ -84,21 +86,19 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
         detailWidth: clientWidth,
         detailHeight: clientHeight
       },
-      // defaultChannelConfig: {
-      //   active: false
-      // }
+      defaultChannelConfig: {
+        active: false
+      }
     });
 
     this.sensor = new ResizeSensor(container, ({ width, height }) => {
       this.viewer.setSize(width, height);
     });
 
-    this.updateSources().then(() => this.updateLayers());
-
-    /*************************************************************
-     * REMOVE ME!
-     */
-    console.log(this.viewer);
+    (async () => {
+      await this.updateSources();
+      await this.updateLayers();
+    })();
   }
 
   ngOnDestroy(): void {
@@ -107,7 +107,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   }
 
   private async updateSources(): Promise<void> {
-    const { _sources: sources, viewer, channelsChange } = this;
+    const { sources, viewer, channelsChange } = this;
     if (!viewer) {
       return;
     }
@@ -117,7 +117,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   }
 
   private async updateLayers(): Promise<void> {
-    const { _layers: layers, viewer } = this;
+    const { layers, viewer } = this;
     if (!viewer || layers.length === 0) {
       return;
     }

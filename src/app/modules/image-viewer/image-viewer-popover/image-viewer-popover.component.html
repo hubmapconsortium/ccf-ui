@@ -1,12 +1,13 @@
 <ccf-drawer-container class="image-viewer-container" [class.expanded]="viewerVisible">
   <ccf-drawer-content class="image-viewer-window">
-    <ccf-viewer class="viewer" [layers]="testLayers"></ccf-viewer>
+    <ccf-viewer class="viewer" [layers]="layers" (channelsChange)="createLayers($event)">
+    </ccf-viewer>
     <div class="legend">
       <ccf-image-viewer-legend [layers]="activeLayers"></ccf-image-viewer-legend>
     </div>
   </ccf-drawer-content>
   <ccf-drawer class="image-viewer-drawer" position="end" opened>
-    <ccf-image-viewer-content (layersChanged)="layersChanged($event)" [layers]="testLayers" (closeViewer)="close()"
+    <ccf-image-viewer-content (layersChanged)="layersChanged($event)" [layers]="layers" (closeViewer)="close()"
                               [data]="data"></ccf-image-viewer-content>
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>

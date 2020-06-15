@@ -48,6 +48,11 @@ export class ImageViewerLayersComponent {
    */
   checkboxOnChange(layer: ImageViewerLayer): void {
     const layerIndex = this.layers.indexOf(layer);
+    // Ugly workaround for deep mutations bug
+    this.layers = [...this.layers];
+    this.layers[layerIndex] = new ImageViewerLayer(this.layers[layerIndex]);
+    // End of workaround
+
     this.layers[layerIndex].selected = !this.layers[layerIndex].selected;
 
     if (layer.selected) {
@@ -122,11 +127,12 @@ export class ImageViewerLayersComponent {
    * @param layer the updated layer object.
    * @param referenceLayer the layer object before the changes, used for referencing which layer in the list to update.
    */
-  layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
+  layerChange(layer: ImageViewerLayer, index: number): void {
     if (layer.customizedColor) {
       this.reorderAssignment(layer);
     }
-    this.layers[this.layers.indexOf(referenceLayer)] = layer;
+    this.layers = [...this.layers]; // Again ugly workaround
+    this.layers[index] = layer;
     this.selectedLayers.emit(this.layers);
   }
 

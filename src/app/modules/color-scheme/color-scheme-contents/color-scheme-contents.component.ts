@@ -39,6 +39,21 @@ export class ColorSchemeContentsComponent {
    */
   transparencySliderOptions: Options;
 
+  get brightnessLow(): number { return this.layer.brightness[0]; }
+  set brightnessLow(value: number) {
+    this.updateLayer({ brightness: [value, this.brightnessHigh] });
+  }
+
+  get brightnessHigh(): number { return this.layer.brightness[1]; }
+  set brightnessHigh(value: number) {
+    this.updateLayer({ brightness: [this.brightnessLow, value] });
+  }
+
+  get transparency(): number { return this.layer.transparency; }
+  set transparency(value: number) {
+    this.updateLayer({ transparency: value });
+  }
+
   /**
    * Initiates slider options
    */
@@ -78,5 +93,16 @@ export class ColorSchemeContentsComponent {
     this.layer.colorScheme = scheme;
     this.layer.customizedColor = true;
     this.layerChange.emit(this.layer);
+  }
+
+  private updateLayer(
+    updates: Partial<ConstructorParameters<typeof ImageViewerLayer>[0]>
+  ): void {
+    const { layer: current, layerChange } = this;
+    const layer = this.layer = new ImageViewerLayer({
+      ...current,
+      ...updates
+    });
+    layerChange.emit(layer);
   }
 }

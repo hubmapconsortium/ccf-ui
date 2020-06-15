@@ -27,7 +27,7 @@ export interface ColorScheme {
 /**
  * Default Scheme1 (discrete)
  */
-const BLUERED: ColorScheme = {
+export const BLUERED: ColorScheme = {
   type: 'discrete',
   name: 'bluered',
   colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
@@ -37,7 +37,7 @@ const BLUERED: ColorScheme = {
 /**
  * Default Scheme2 (discrete)
  */
-const GREENRED: ColorScheme = {
+export const GREENRED: ColorScheme = {
   type: 'discrete',
   name: 'greenred',
   colors: ['#1A9850', '#91CF60', '#D9EF8B', '#FFFFBF', '#FEE08B', '#FC8D59', '#D73027'],
@@ -47,7 +47,7 @@ const GREENRED: ColorScheme = {
 /**
  * Default Scheme3 (discrete)
  */
-const PURPLEBROWN: ColorScheme = {
+export const PURPLEBROWN: ColorScheme = {
   type: 'discrete',
   name: 'purplebrown',
   colors: ['#542788', '#998EC3', '#D8DAEB', '#F7F7F7', '#FEE0B6', '#F1A340', '#B35806'],
@@ -57,7 +57,7 @@ const PURPLEBROWN: ColorScheme = {
 /**
  * Default Scheme4 (discrete)
  */
-const REDTAN: ColorScheme = {
+export const REDTAN: ColorScheme = {
   type: 'discrete',
   name: 'redtan',
   colors: ['#990000', '#D7301F', '#EF6548', '#FC8D59', '#FDBB84', '#FDD49E', '#FEF0D9'],
@@ -67,7 +67,7 @@ const REDTAN: ColorScheme = {
 /**
  * Default Scheme5 (discrete)
  */
-const PURPLELIGHTBLUE: ColorScheme = {
+export const PURPLELIGHTBLUE: ColorScheme = {
   type: 'discrete',
   name: 'purplelightblue',
   colors: ['#6E016B', '#88419D', '#8C6BB1', '#8C96C6', '#9EBCDA', '#BFD3E6', '#EDF8FB'],
@@ -77,7 +77,7 @@ const PURPLELIGHTBLUE: ColorScheme = {
 /**
  * Default Scheme6 (gradient)
  */
-const VIRIDIS: ColorScheme = {
+export const VIRIDIS: ColorScheme = {
   type: 'gradient',
   name: 'viridis',
   colors: ['#FFE31C', '#B5C740', '#6BAB65', '#21908A', '#2D6379', '#393768', '#450B57'],
@@ -87,7 +87,7 @@ const VIRIDIS: ColorScheme = {
 /**
  * Default Scheme7 (gradient)
  */
-const MAGMA: ColorScheme = {
+export const MAGMA: ColorScheme = {
   type: 'gradient',
   name: 'magma',
   colors: ['#F8FC9D', '#E1B986', '#CA7670', '#B4335A', '#78223C', '#3D121F', '#020202'],
@@ -97,7 +97,7 @@ const MAGMA: ColorScheme = {
 /**
  * Default Scheme8 (gradient)
  */
-const PLASMA: ColorScheme = {
+export const PLASMA: ColorScheme = {
   type: 'gradient',
   name: 'plasma',
   colors: ['#F2F424', '#E3B842', '#D47D60', '#C6427E', '#883381', '#4A2484', '#0C1687'],

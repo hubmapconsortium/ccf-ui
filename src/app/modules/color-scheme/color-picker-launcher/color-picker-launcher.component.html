@@ -1,5 +1,5 @@
 <div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" [style.background]="layer.background"
-     (click)="schemepopup.open()"></div>
+     (click)="schemepopup.open(button)" #button></div>
 
 <ccf-color-scheme-popup #schemepopup [layer]="layer" (layerChange)="layerChange.emit($event)">
 </ccf-color-scheme-popup>
