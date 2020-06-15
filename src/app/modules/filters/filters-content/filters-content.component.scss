@@ -27,6 +27,10 @@
   display: flex;
   width: 90%;
 
+  &.hidden {
+    display: none !important;
+  }
+
   ccf-dual-slider {
     margin-left: .5em;
     width: 33%;

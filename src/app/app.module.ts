@@ -15,6 +15,8 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
 import { ResultsBrowserModule } from './modules/results-browser/results-browser/results-browser.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 
+import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -32,7 +34,7 @@ import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinne
     BodyModule
   ],
   declarations: [AppComponent],
-  providers: [],
+  providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,6 +23,6 @@ export class ColorPickerLauncherComponent {
   @Output() layerChange = new EventEmitter<ImageViewerLayer>();
 
   get className(): string {
-    return `color-icon ${this.layer.label} ${this.layer.colorScheme.type === 'discrete' ? 'circle' : ''}`;
+    return `color-icon ${this.layer.colorScheme.type === 'discrete' ? 'circle' : ''}`;
   }
 }

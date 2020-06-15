@@ -7,7 +7,6 @@
                       (optionSelected)="onSelect($event)" (opened)="autoCompleteOpen = true"
                       (closed)="autoCompleteOpen = false" #autocomplete>
                       <div class="results-container">
-
                         <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">
                           <span class="prefix">{{option.displayLabel[0]}}</span>
                           <span class="search-term">{{option.displayLabel[1]}}</span>

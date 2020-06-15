@@ -7,6 +7,7 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 
 import { DataSourceService } from './core/services/data-source/data-source.service';
+import { ThemingService } from './core/services/theming/theming.service';
 
 
 /**
@@ -20,8 +21,6 @@ import { DataSourceService } from './core/services/data-source/data-source.servi
 })
 export class AppComponent {
 
-  defaultScheme = true;
-
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
     map(state => state === DataQueryState.Running)
@@ -32,10 +31,9 @@ export class AppComponent {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) {
+  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
     data.listData$.subscribe(console.log);
     data.aggregateData$.subscribe(console.log);
-    document.body.className = 'light-theme';
   }
 
   /**
@@ -66,7 +64,6 @@ export class AppComponent {
    * Toggles scheme between light and dark mode
    */
   toggleScheme() {
-    this.defaultScheme = !this.defaultScheme;
-    document.body.className = this.defaultScheme ? 'light-theme' : 'dark-theme';
+    this.theming.setTheme(this.theming.getTheme() === 'light-theme' ? 'dark-theme' : 'light-theme');
   }
 }

@@ -33,12 +33,6 @@
     transition-property: opacity;
     transition-duration: 0s;
     transition-delay: 0s;
-
-    ccf-filters-content {
-      &.hidden {
-        display: none !important;
-      }
-    }
   }
 
   &.visible {

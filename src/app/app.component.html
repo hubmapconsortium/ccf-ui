@@ -16,7 +16,7 @@
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
         <button class="scheme-toggle button" (click)="toggleScheme()">
-          <mat-icon class="icon">{{ defaultScheme ? 'brightness_2' : 'brightness_5' }}</mat-icon>
+          <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
         </button>
       </div>
       <ccf-results-browser [dataLoading]="spinnerActive$ | async" (resultClicked)="openViewer(viewer, $event['@id'])" [data]="data.listData$ | async" [aggregateData]="data.aggregateData$ | async" [resultLabel]="'Kidney'"></ccf-results-browser>
