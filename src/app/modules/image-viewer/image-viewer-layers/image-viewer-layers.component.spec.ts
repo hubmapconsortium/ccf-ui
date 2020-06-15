@@ -77,7 +77,7 @@ describe('ImageViewerLayersComponent', () => {
     const { instance } = await shallow.render({ bind: { layers } });
     layers[0].customizedColor = true;
     const spy = spyOn(instance, 'reorderAssignment');
-    instance.layerChange(layers[0], layers[0]);
+    instance.layerChange(layers[0], 0);
     expect(spy).toHaveBeenCalledWith(layers[0]);
   });
 
@@ -86,7 +86,7 @@ describe('ImageViewerLayersComponent', () => {
     const { instance } = await shallow.render({ bind: { layers } });
     layers[0].customizedColor = false;
     const spy = spyOn(instance, 'reorderAssignment');
-    instance.layerChange(layers[0], layers[0]);
+    instance.layerChange(layers[0], 0);
     expect(spy).not.toHaveBeenCalled();
   });
 
