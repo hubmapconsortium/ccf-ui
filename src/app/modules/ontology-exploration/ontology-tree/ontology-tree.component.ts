@@ -132,13 +132,15 @@ export class OntologyTreeComponent implements OnInit {
   /**
    * Currently selected node, defaulted to the body node for when the page initially loads.
    */
-  selectedNodes: Array<FlatNode> = [this.bodyNode];
+  selectedNodes: FlatNode[] = [this.bodyNode];
 
   /**
    * Expand the body node when the component is initialized.
    */
   ngOnInit() {
-    this.control.expand(this.control.dataNodes[0]);
+    if (this.control.dataNodes) {
+      this.control.expand(this.control.dataNodes[0]);
+    }
   }
 
   /**
@@ -148,7 +150,9 @@ export class OntologyTreeComponent implements OnInit {
   selectBody(): void {
     this.select(false, this.bodyNode);
     this.control.collapseAll();
-    this.control.expand(this.control.dataNodes[0]);
+    if (this.control.dataNodes) {
+      this.control.expand(this.control.dataNodes[0]);
+    }
   }
 
   /**
@@ -208,7 +212,6 @@ export class OntologyTreeComponent implements OnInit {
    */
   isSelected(node: FlatNode | undefined): boolean {
     return this.selectedNodes.filter(selectedNode => node?.original.label === selectedNode?.original.label).length > 0;
-    // return node.original.label === this.selectedNodes.indexOf?.original.label;
   }
 
   /**
