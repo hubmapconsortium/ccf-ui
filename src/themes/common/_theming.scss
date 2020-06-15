@@ -11,8 +11,7 @@
 @use '../../app/shared/components/dropdown/dropdown.component.theme' as dropdown;
 @use '../../app/shared/components/dual-slider/dual-slider.component.theme' as dualSlider;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme' as spinner;
-@use '../../app/shared/components/spinner-overlay/spinner-overlay.theme.scss' as spinner;
-@use '../../app/modules/ontology-exploration/ontology-exploration.theme.scss' as ontologyExploration;
+@use '../../app/modules/ontology-exploration/ontology-exploration.theme' as ontologyExploration;
 @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 @use '../../app/modules/ontology-exploration/ontology-tree/ontology-tree.component.theme' as tree;
 
