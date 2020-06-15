@@ -5,7 +5,7 @@
 
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
-      <ccf-ontology-selection></ccf-ontology-selection>
+      <ccf-ontology-selection (ontologySelection)="ontologySelected($event)"></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer position="end" opened #right (stateChange)="filterbox.removeBox()">
@@ -19,7 +19,13 @@
           <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
         </button>
       </div>
-      <ccf-results-browser [dataLoading]="spinnerActive$ | async" (resultClicked)="openViewer(viewer, $event['@id'])" [data]="data.listData$ | async" [aggregateData]="data.aggregateData$ | async" [resultLabel]="'Kidney'"></ccf-results-browser>
+      <ccf-results-browser
+        [dataLoading]="spinnerActive$ | async"
+        (resultClicked)="openViewer(viewer, $event['@id'])"
+        [data]="data.listData$ | async"
+        [aggregateData]="data.aggregateData$ | async"
+        [resultLabel]="ontologySelectionLabel"
+      ></ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer-content>

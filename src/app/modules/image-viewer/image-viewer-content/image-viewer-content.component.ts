@@ -37,7 +37,7 @@ export class ImageViewerContentComponent {
   /**
    * Hides the viewer
    */
-  close() {
+  close(): void {
     this.closeViewer.emit();
   }
 }

@@ -78,6 +78,7 @@
       "single"
     ],
     "trailing-comma": false,
+    "typedef": [true, "call-signature", "property-declaration"],
     "no-any": [
       true,
       { "ignore-rest-args": true }
