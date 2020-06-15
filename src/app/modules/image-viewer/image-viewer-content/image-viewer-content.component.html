@@ -9,5 +9,7 @@
     <div class="sample-region">{{ data.organName }}</div>
     <div class="patient-details">{{ data.label }}</div>
   </div>
-  <ccf-image-viewer-accordion [layers]="layers" (layersChanged)="layersChanged.emit($event)" class="accordion-options" [metadata]="data.metadata"></ccf-image-viewer-accordion>
+  <ccf-image-viewer-accordion [layers]="layers" (layersChanged)="layersChanged.emit($event)" class="accordion-options"
+                              [metadata]="data.metadata">
+  </ccf-image-viewer-accordion>
 </div>

@@ -55,7 +55,7 @@ export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
   /**
    * Re-Checks whether or not we need the gradient to be displayed everytime the data reloads.
    */
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes.dataLoading && !this.dataLoading) {
       this.atScrollBottom = this.virtualScroll.measureScrollOffset('bottom') === 0;
     }
@@ -66,7 +66,7 @@ export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
    * user has reached the bottom of the virtual scroll viewport to properly display / hide the
    * gradient at the bottom.
    */
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.virtualScroll.elementScrolled()
       .subscribe(event => {
         if (this.virtualScroll.measureScrollOffset('bottom') === 0) {

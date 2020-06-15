@@ -41,7 +41,12 @@ export class AppComponent {
    * @param right The right drawer component gets passed in so we can call it's methods to control it's state
    * @param filterbox The filter's popover component gets passed in so we can control it's popover's state
    */
-  reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent, viewer: ImageViewerPopoverComponent) {
+  reset(
+    left: DrawerComponent,
+    right: DrawerComponent,
+    filterbox: FiltersPopoverComponent,
+    viewer: ImageViewerPopoverComponent
+  ): void {
     viewer.close();
     left.open();
     left.closeExpanded();
@@ -55,7 +60,7 @@ export class AppComponent {
    * @param viewer The image viewer component
    * @param iri URL containing the image data
    */
-  openViewer(viewer: ImageViewerPopoverComponent, iri: string) {
+  openViewer(viewer: ImageViewerPopoverComponent, iri: string): void {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
   }
 }

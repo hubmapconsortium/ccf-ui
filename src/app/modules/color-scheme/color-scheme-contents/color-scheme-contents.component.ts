@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Options } from 'ng5-slider';
 
-import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
+
 
 /**
  * Contains the color menu and brightness/transparency sliders
@@ -13,7 +14,6 @@ import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
   styleUrls: ['./color-scheme-contents.component.scss']
 })
 export class ColorSchemeContentsComponent {
-
   /**
    * List of available schemes
    */
@@ -39,6 +39,21 @@ export class ColorSchemeContentsComponent {
    */
   transparencySliderOptions: Options;
 
+  get brightnessLow(): number { return this.layer.brightness[0]; }
+  set brightnessLow(value: number) {
+    this.updateLayer({ brightness: [value, this.brightnessHigh] });
+  }
+
+  get brightnessHigh(): number { return this.layer.brightness[1]; }
+  set brightnessHigh(value: number) {
+    this.updateLayer({ brightness: [this.brightnessLow, value] });
+  }
+
+  get transparency(): number { return this.layer.transparency; }
+  set transparency(value: number) {
+    this.updateLayer({ transparency: value });
+  }
+
   /**
    * Initiates slider options
    */
@@ -58,14 +73,14 @@ export class ColorSchemeContentsComponent {
   /**
    * Emits new brightness selection
    */
-  brightnessChanged() {
+  brightnessChanged(): void {
     this.layerChange.emit(this.layer);
   }
 
   /**
    * Emits new transparency value
    */
-  transparencyChanged() {
+  transparencyChanged(): void {
     this.layerChange.emit(this.layer);
   }
 
@@ -78,5 +93,18 @@ export class ColorSchemeContentsComponent {
     this.layer.colorScheme = scheme;
     this.layer.customizedColor = true;
     this.layerChange.emit(this.layer);
+  }
+
+  private updateLayer(
+    updates: Partial<ConstructorParameters<typeof ImageViewerLayer>[0]>
+  ): void {
+    const { layer: current, layerChange } = this;
+    const layer = new ImageViewerLayer({
+      ...current,
+      ...updates
+    });
+
+    this.layer = layer;
+    layerChange.emit(layer);
   }
 }

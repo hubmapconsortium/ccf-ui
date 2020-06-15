@@ -1,7 +1,8 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
-import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
+
 
 /**
  * Component for the scheme selector popup
@@ -33,6 +34,9 @@ export class ColorSchemePopupComponent {
    */
   popupVisible = false;
 
+  /** Owner button element which when clicked will not close on. */
+  private owner?: Element;
+
   /**
    * Listens to document click event
    * Closes the popup only if user clicks outside the popup
@@ -41,10 +45,7 @@ export class ColorSchemePopupComponent {
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
   close(target: HTMLElement): void {
     const popupElement = document.getElementsByClassName('scheme-popup show')[0];
-    const colorIcon = document.getElementsByClassName(`color-icon ${this.layer.label}`)[0];
-    if (!this.popupVisible ||
-      (popupElement && popupElement.contains(target)) ||
-      (colorIcon.contains(target))) {
+    if (!this.popupVisible || popupElement?.contains(target) || this.owner?.contains(target)) {
       return;
     }
     this.popupVisible = !this.popupVisible;
@@ -53,7 +54,8 @@ export class ColorSchemePopupComponent {
   /**
    * Opens popup
    */
-  open(): void {
+  open(owner?: Element): void {
+    this.owner = owner;
     this.popupVisible = !this.popupVisible;
   }
 }

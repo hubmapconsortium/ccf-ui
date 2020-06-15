@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { ImageViewerData } from 'ccf-database';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { DEFAULT_COLOR_SCHEMES } from '../../color-scheme/color-schemes';
 
 /**
  * Popup that displays detailed information on a selected image along with viewing options
@@ -33,17 +34,23 @@ export class ImageViewerPopoverComponent {
   /**
    * Array of currently selected layers
    */
-  activeLayers: ImageViewerLayer[];
+  get activeLayers(): ImageViewerLayer[] {
+    const layers = this.layers.filter(layer => layer.selected);
+    return layers.sort((a, b) => {
+      if (a.selectionOrder > b.selectionOrder) { return 1; }
+      return -1;
+    });
+  }
 
 
   /**
    * Placeholder layer data for testing
    */
-  testLayers: ImageViewerLayer[] = [
+  layers: ImageViewerLayer[] = [
     new ImageViewerLayer({
-      selected: false,
-      label: 'Actin',
-      id: 123,
+      selected: true,
+      label: 'DAPI - Hoechst (nuclei)',
+      id: 'DAPI - Hoechst (nuclei)',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -60,7 +67,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'CD107a',
-      id: 122,
+      id: '122',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -77,7 +84,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'CD11c',
-      id: 323,
+      id: '323',
       colorScheme: {
         type: 'gradient',
         name: 'viridis',
@@ -94,7 +101,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'CD20',
-      id: 32,
+      id: '32',
       colorScheme: {
         type: 'gradient',
         name: 'viridis',
@@ -111,7 +118,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'PAS',
-      id: 42,
+      id: '42',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -128,7 +135,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'IMS',
-      id: 400,
+      id: '400',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -145,7 +152,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'Kidney Capsule',
-      id: 123,
+      id: '123',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -162,7 +169,7 @@ export class ImageViewerPopoverComponent {
     new ImageViewerLayer({
       selected: false,
       label: 'Kidney Cortex',
-      id: 321,
+      id: '321',
       colorScheme: {
         type: 'discrete',
         name: 'bluered',
@@ -200,20 +207,21 @@ export class ImageViewerPopoverComponent {
    * @param layers the updated list of layers
    */
   layersChanged(layers: ImageViewerLayer[]): void {
-    this.testLayers = layers;
-    this.activeLayers = this.getActiveLayers();
+    this.layers = layers;
   }
 
-  /**
-   * A helper method which filters out unselected layers, then sorts the remaining layers
-   * based on their selectionOrder property.
-   */
-  getActiveLayers(): ImageViewerLayer[] {
-    let layers = this.testLayers.filter(layer => layer.selected);
-    layers = layers.sort((a, b) => {
-      if (a.selectionOrder > b.selectionOrder) { return 1; }
-      return -1;
-    });
-    return layers;
+  createLayers(names: string[]): void {
+    this.layers = names.map((name, index) => new ImageViewerLayer({
+      id: name,
+      label: name,
+      colorScheme: DEFAULT_COLOR_SCHEMES[0],
+      color: DEFAULT_COLOR_SCHEMES[0].colors[0],
+      brightness: [20, 60],
+      transparency: 100,
+      selected: index < 3,
+      customizedColor: false,
+      selectionOrder: 0,
+      defaultOrder: -1
+    }));
   }
 }

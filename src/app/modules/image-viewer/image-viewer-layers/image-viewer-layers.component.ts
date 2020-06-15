@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 import { ColorScheme } from '../../color-scheme/color-schemes';
 
+
 /**
  * Component in charge of rendering list of the image layers along with the ability
  * to choose which ones are to be showm and what display properties they have.
@@ -17,12 +18,11 @@ export class ImageViewerLayersComponent {
    * The list of layers to be displayed which contain the styilng properties needed
    * to make rendering decisions.
    */
-
   @Input() layers: ImageViewerLayer[];
+
   /**
    * A sorted list of selected layers containing information such as selectionOrder and colorScheme.
    */
-
   @Output() selectedLayers = new EventEmitter<ImageViewerLayer[]>();
 
   /**
@@ -48,6 +48,12 @@ export class ImageViewerLayersComponent {
    */
   checkboxOnChange(layer: ImageViewerLayer): void {
     const layerIndex = this.layers.indexOf(layer);
+    // Ugly workaround for deep mutations bug
+    layer = new ImageViewerLayer(this.layers[layerIndex]);
+    this.layers = [...this.layers];
+    this.layers[layerIndex] = layer;
+    // End of workaround
+
     this.layers[layerIndex].selected = !this.layers[layerIndex].selected;
 
     if (layer.selected) {
@@ -65,7 +71,7 @@ export class ImageViewerLayersComponent {
    * Updates assignment order array and handles color assignment when a layer is selected
    * @param layer The layer selected
    */
-  handleSelect(layer: ImageViewerLayer) {
+  handleSelect(layer: ImageViewerLayer): void {
     const colors = layer.colorScheme.colors;
     if (this.assignmentOrder.length === 0) {
       this.assignmentOrder = [4, 2, 5, 1, 3, 6, 0];
@@ -81,7 +87,7 @@ export class ImageViewerLayersComponent {
    * When a layer is unselected, ppdates assignment order array and resets layer scheme to the current default scheme
    * @param layer The layer unselected
    */
-  handleUnselect(layer: ImageViewerLayer) {
+  handleUnselect(layer: ImageViewerLayer): void {
     if(!layer.customizedColor) {
       this.reorderAssignment(layer);
     } else {
@@ -95,7 +101,7 @@ export class ImageViewerLayersComponent {
    * Helper method to reorder the assignment order array when a layer is deselected / customized
    * @param layer The layer being deselected / customized
    */
-  reorderAssignment(layer: ImageViewerLayer) {
+  reorderAssignment(layer: ImageViewerLayer): void {
     this.assignmentOrder.push(layer.defaultOrder);
     const newAssignmentOrder = [4,2,5,1,3,6,0].filter(idx => this.assignmentOrder.includes(idx));
     this.assignmentOrder = newAssignmentOrder;
@@ -122,11 +128,12 @@ export class ImageViewerLayersComponent {
    * @param layer the updated layer object.
    * @param referenceLayer the layer object before the changes, used for referencing which layer in the list to update.
    */
-  layerChange(layer: ImageViewerLayer, referenceLayer: ImageViewerLayer): void {
+  layerChange(layer: ImageViewerLayer, index: number): void {
     if (layer.customizedColor) {
       this.reorderAssignment(layer);
     }
-    this.layers[this.layers.indexOf(referenceLayer)] = layer;
+    this.layers = [...this.layers]; // Again ugly workaround
+    this.layers[index] = layer;
     this.selectedLayers.emit(this.layers);
   }
 
@@ -134,15 +141,16 @@ export class ImageViewerLayersComponent {
    * Updates scheme for all non-customized layers when selected from the scheme dropdown menu
    * @param schemeChange The scheme selected from the dropdown
    */
-  updateLayerScheme(schemeChange: ColorScheme) {
+  updateLayerScheme(schemeChange: ColorScheme): void {
     this.defaultScheme = schemeChange;
-    for (const layer of this.layers) {
-      if (!layer.customizedColor) {
-        const colorIndex = layer.colorScheme.colors.indexOf(layer.color);
-        layer.colorScheme = schemeChange;
-        layer.color = schemeChange.colors[colorIndex];
-      }
-    }
+    this.layers = this.layers.map(layer => {
+      const index = layer.colorScheme.colors.indexOf(layer.color);
+      return layer.customizedColor ? layer : new ImageViewerLayer({
+        ...layer,
+        colorScheme: schemeChange,
+        color: schemeChange.colors[index]
+      });
+    });
     this.selectedLayers.emit(this.layers);
   }
 }
