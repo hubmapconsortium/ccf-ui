@@ -68,7 +68,7 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
 
 export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
 
-  initializeState():void {
+  initializeState(): void {
     const { data } = this.props;
     this.setState({data: data || [], zoomOpacity: 0.8});
 
