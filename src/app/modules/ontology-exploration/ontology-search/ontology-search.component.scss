@@ -48,8 +48,9 @@
   .results-container {
     width: 380px;
     margin-bottom: 1rem;
-    overflow: overlay;
+    overflow: auto;
     max-height: 15rem;
+    scrollbar-width: thin;
 
     mat-option {
       height: 1.5rem;
