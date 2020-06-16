@@ -9,62 +9,91 @@ import { Matrix4 } from '@math.gl/core';
 
 // Programmers Note: had to disable tslint in a few places due to deficient typings.
 
-export class BodyUIData {
+export interface SpatialSceneNode {
+  '@id': string;
+  '@type': string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
   scenegraph?: string;
+  scenegraphNode?: string;
+  zoomBasedOpacity?: boolean;
   color?: [number, number, number, number];
   transformMatrix: Matrix4;
   tooltip: string;
 }
 
-function loadGLTF(model: BodyUIData): Promise<unknown> {
-  // tslint:disable-next-line: no-unsafe-any
-  return load(model.scenegraph, GLTFLoader, {DracoLoader, decompress: true, postProcess: true}) as Promise<unknown>;
+// tslint:disable: no-unsafe-any
+async function loadGLTF(model: SpatialSceneNode): Promise<unknown> {
+  const gltf = await load(model.scenegraph, GLTFLoader, {DracoLoader, decompress: true, postProcess: true});
+
+  const scenegraphNode = model.scenegraphNode ? gltf.nodes?.find((n) => n.name === model.scenegraphNode) : undefined;
+  if (scenegraphNode) {
+    if (!scenegraphNode.rotation && gltf.scene?.nodes?.length > 0) {
+      scenegraphNode.rotation = gltf.scene.nodes[gltf.scene.nodes.length-1].rotation;
+    }
+    gltf.scene = {
+      id: 'scene-1',
+      name: 'Scene',
+      nodes: [scenegraphNode]
+    };
+    gltf.scenes = [gltf.scene, ...gltf.scenes];
+  }
+  return gltf;
+}
+// tslint:enable: no-unsafe-any
+
+function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]: unknown}): SimpleMeshLayer<unknown> | undefined {
+  if (!data || data.length === 0) {
+    return undefined;
+  } else {
+    return new SimpleMeshLayer({
+      ...{
+        id,
+        pickable: true,
+        autoHighlight: true,
+        highlightColor: [30, 136, 229, 0.5*255],
+        coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
+        data,
+        // tslint:disable-next-line: no-unsafe-any
+        mesh: new CubeGeometry(),
+        wireframe: false,
+        getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
+        getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
+      },
+      ...options
+    });
+  }
 }
 
-function meshLayer(id: string, data: BodyUIData[], options: {[key: string]: unknown}): unknown {
-  return new SimpleMeshLayer({
-    ...{
-      id,
-      pickable: true,
-      autoHighlight: true,
-      highlightColor: [30, 136, 229, 0.5*255],
-      coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-      data,
-      // tslint:disable-next-line: no-unsafe-any
-      mesh: new CubeGeometry(),
-      wireframe: false,
-      getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
-      getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
-    },
-    ...options
-  });
-}
+export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
 
-export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
-  renderLayers() {
-    // tslint:disable-next-line: no-unsafe-any
-    const data = (this.state.data || this.props.data) as BodyUIData[];
-    const cubes = data.filter(d => !d.scenegraph && !d.wireframe);
-    const wireframes = data.filter(d => !d.scenegraph && d.wireframe);
-    const models = data.filter(d => !!d.scenegraph);
+  initializeState() {
+    const { data } = this.props;
+    this.setState({data: data || [], zoomOpacity: 0.8});
 
     // tslint:disable-next-line: no-unsafe-any
     registerLoaders([DracoWorkerLoader, GLTFLoader]);
+  }
+
+  renderLayers() {
+    const state = this.state as {data: SpatialSceneNode[], zoomOpacity: number};
+    const cubes = state.data.filter(d => !d.scenegraph && !d.wireframe);
+    const wireframes = state.data.filter(d => !d.scenegraph && d.wireframe);
+    const models = state.data.filter(d => !!d.scenegraph);
 
     return [
-      cubes.length > 0 ? meshLayer('cubes', cubes, {wireframe: false}) : undefined,
-      wireframes.length > 0 ? meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}) : undefined,
-      ...models.map((model, i) =>
+      meshLayer('cubes', cubes, {wireframe: false}),
+      meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}),
+      ...models.map((model) =>
         new ScenegraphLayer({
           ...{
-            id: 'models-' + i,
+            id: 'models-' + model['@id'],
+            opacity: model.zoomBasedOpacity ? state.zoomOpacity : 1.0,
             pickable: !model.unpickable,
             coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
             data: [model],
-            scenegraph: loadGLTF(model),
+            scenegraph: model.scenegraphNode ? loadGLTF(model) : model.scenegraph,
             _lighting: model._lighting,  // 'pbr' | undefined
             getTransformMatrix: model.transformMatrix,
             getColor: model.color || [0, 255, 0, 0.5*255],
@@ -72,10 +101,6 @@ export class BodyUILayer<D = BodyUIData> extends CompositeLayer<D> {
         })
       )
     ].filter(l => !!l);
-  }
-
-  onClick(info: {object: {tooltip: string}}) {
-    alert('You clicked ' + info.object?.tooltip || JSON.stringify(info.object, null, 2));
   }
 
   getPickingInfo(e: {info: object}) {
