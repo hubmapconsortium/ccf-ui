@@ -5,6 +5,14 @@ import { DualSliderComponent } from './dual-slider.component';
 import { DualSliderModule } from './dual-slider.module';
 
 
+function overlayFind(
+  instance: DualSliderComponent,
+  selector: string
+): HTMLElement | null {
+  const overlay = instance.popoverElement.nativeElement;
+  return overlay.querySelector(selector);
+}
+
 describe('DualSliderComponent', () => {
   let shallow: Shallow<DualSliderComponent>;
   let mockOverlay: jasmine.SpyObj<Overlay>;
@@ -37,28 +45,6 @@ describe('DualSliderComponent', () => {
     const { instance } = await shallow.render();
     instance.ngOnDestroy();
     expect(mockOverlayRef.dispose).toHaveBeenCalledTimes(1);
-  });
-
-  it('displays the current range on closed slider', async () => {
-    const { find } = await shallow.render({ bind: { selection: [20, 80] } });
-    const label = find('.range-label').nativeElement as HTMLElement;
-    expect(label.textContent).toBe('20-80');
-  });
-
-  it('should call toggleSliderPopover if clicked', async () => {
-    const { find, instance } = await shallow.render();
-    const formField = find('.form-field');
-    const spy = spyOn(instance, 'toggleSliderPopover');
-    formField.triggerEventHandler('click', '');
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it('should close the slider if user clicks slider again', async () => {
-    const { find, instance } = await shallow.render();
-    const formField = find('.form-field');
-    formField.triggerEventHandler('click', '');
-    formField.triggerEventHandler('click', '');
-    expect(instance.isSliderOpen).toBe(false);
   });
 
   it('emits the selected range if selected values changed', async () => {

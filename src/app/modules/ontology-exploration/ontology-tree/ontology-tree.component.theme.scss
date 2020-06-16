@@ -1,0 +1,29 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .ccf-ontology-tree {
+    .node {
+      .toggle {
+        background: mat-color($foreground, contrast-icon);
+        color: mat-color($background, content-background);
+      }
+  
+      .text {
+        color: mat-color($foreground, text);
+      }
+  
+      .text:hover {
+        color: mat-color($accent);
+      }
+  
+      .selected {
+        color: mat-color($accent);
+      }
+    }
+  }
+}

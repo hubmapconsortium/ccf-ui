@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 
+import { OntologySelection } from './core/models/ontology-selection';
+import { DataSourceService } from './core/services/data-source/data-source.service';
+import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
-import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
-
-import { DataSourceService } from './core/services/data-source/data-source.service';
-import { OntologySelection } from './core/models/ontology-selection';
+import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -35,7 +35,7 @@ export class AppComponent {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) {
+  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
     data.listData$.subscribe(console.log);
     data.aggregateData$.subscribe(console.log);
   }
@@ -67,6 +67,13 @@ export class AppComponent {
    */
   openViewer(viewer: ImageViewerPopoverComponent, iri: string): void {
     this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
+  }
+
+  /**
+   * Toggles scheme between light and dark mode
+   */
+  toggleScheme(): void {
+    this.theming.setTheme(this.theming.getTheme() === 'light-theme' ? 'dark-theme' : 'light-theme');
   }
 
   /**

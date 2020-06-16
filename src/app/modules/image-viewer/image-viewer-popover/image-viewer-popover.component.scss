@@ -1,10 +1,9 @@
 .image-viewer-container {
   position: fixed;
-  top: 3rem;
+  top: 4rem;
   overflow: hidden;
   z-index: 10;
   flex-grow: 1;
-  background-color: black;
   height: calc(100% - 1.5rem);
   width: 100%;
   left: 100%;
@@ -17,13 +16,15 @@
   }
 
   .image-viewer-window {
+    margin-top: 1.5rem;
+    height: calc(100% - 2rem);
     display: flex;
     flex-direction: column;
     overflow: hidden;
 
     .viewer {
       width: 100%;
-      height: calc(100% - 5rem);
+      height: calc(100% - 8rem);
       margin-left: 1.5rem;
     }
 
@@ -36,7 +37,7 @@
   }
 
   .image-viewer-drawer {
-    width: 27rem;
+    width: 25.5rem;
     margin: 0 1.5rem;
 
     .drawer-icons {

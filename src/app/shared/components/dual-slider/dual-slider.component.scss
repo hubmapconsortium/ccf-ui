@@ -1,27 +1,44 @@
-.mat-form-field {
-  background-color: #424242;
-  font-size: 12px;
+.slider-form-field {
   width: 100%;
   height: 3rem;
+
   ::ng-deep .mat-form-field-wrapper {
     padding-left: 1em;
     padding-right: 1em;
+    height: 3rem;
+
+    .mat-form-field-flex {
+      .mat-form-field-infix {
+        border: none;
+      }
+    }
+
+    .mat-form-field-underline {
+      left: 0rem;
+      bottom: 0rem;
+      background-color: black;
+      transform: none;
+      height: 2px;
+    }
   }
 }
+
 
 .slider-labels {
   display: flex;
   flex-direction: column;
-  
+  .name-label {
+    font-size: 14px;
+  }
+
   .range-label {
-    color: #1e88e5;
+    font-weight: bold;
   }
 }
 
 ::ng-deep .ccf-slider.wrapper {
   .mat-select-arrow-wrapper {
     transform: translatey(-1.5em);
-    color: #616161;
   }
 }
 
@@ -56,6 +73,13 @@
   opacity: 0;
 }
 
+::ng-deep .slider-pane {
+  border-width: 1px;
+  border-style: solid;
+  position: absolute !important;
+  top: -1px;
+}
+
 .ccf-slider.detached {
   animation: slideInHorizontalSlider 0.3s;
   animation-fill-mode: forwards;
@@ -66,21 +90,18 @@
   align-items: center;
   width: 0rem;
   height: 70px;
-  padding: 1rem; // NOTE: Use padding instead of margin!
-  background: #616161;
+  padding: .75rem; // NOTE: Use padding instead of margin!
 
   .slider ::ng-deep {
     visibility: hidden;
     margin-top: 15px;
     margin-bottom: 15px;
     .ng5-slider-bar {
-      background: #1e88e5;
       opacity: .2;
       height: .15rem;
     }
 
     .ng5-slider-selection {
-      background: #1e88e5;
       opacity: 1;
     }
 
@@ -90,8 +111,8 @@
       width: $pointer-size;
       height: $pointer-size;
       top: 0.095rem - ($pointer-size / 2);
-      background-color: #1e88e5;
-      border: .1rem solid #616161;
+      border-width: .1rem;
+      border-style: solid;
 
       &:after {
         display: none;
@@ -100,42 +121,34 @@
   }
 
   .label {
-    color: #1e88e5;
-    font-size: 12px;
     display: flex;
     flex-direction: column;
-    width: 28px;
-
+    width: 32px;
+    
     &.min {
-      font-size: 14px;
       margin-right: 1rem;
-
-      input {
-        background: inherit;
-        border: none;
-        color: #1e88e5;
-        width: 28px;
-        font-size: 14px;
-      }
     }
-
+    
     &.max {
-      font-size: 14px;
       margin-left: 1rem;
-      text-align: right;
+      align-items: flex-end;
 
-      input {
+      .ceil, input {
         text-align: right;
-        background: inherit;
-        border: none;
-        color: #1e88e5;
-        width: 28px;
-        font-size: 14px;
       }
     }
 
-    &.ceil, &.floor {
-      color: white;
+    .floor, .ceil {
+      font-size: 14px;
     }
+
+    input {
+      border: none;
+      width: 28px;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 0;
+    }
+
   }
 }

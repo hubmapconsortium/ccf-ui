@@ -15,6 +15,9 @@
         <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();">
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
+        <button class="scheme-toggle button" (click)="toggleScheme()">
+          <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
+        </button>
       </div>
       <ccf-results-browser
         [dataLoading]="spinnerActive$ | async"

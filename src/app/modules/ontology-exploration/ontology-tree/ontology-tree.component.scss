@@ -11,7 +11,6 @@
       width: 1.5rem;
       height: 1.5rem;
       line-height: normal;
-      border: 1px solid #424242;
     }
 
     .autocomplete-open .toggle {
@@ -30,8 +29,4 @@
       margin-left: 0.5rem;
     }
   }
-}
-
-::ng-deep .ccf-ontology-tree.tooltip {
-  font-size: 1rem;
 }

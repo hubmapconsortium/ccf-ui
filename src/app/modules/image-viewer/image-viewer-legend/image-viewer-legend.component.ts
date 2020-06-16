@@ -1,6 +1,9 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
+/**
+ * Legend in the image viewer displaying the selected layers and their colors
+ */
 @Component({
   selector: 'ccf-image-viewer-legend',
   templateUrl: './image-viewer-legend.component.html',

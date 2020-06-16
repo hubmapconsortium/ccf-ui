@@ -1,0 +1,55 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .viewer-sidebar {
+    color: mat-color($foreground, text);
+
+    .viewer-close-header {
+      .viewer-close-button {
+        color: mat-color($foreground, contrast-icon);
+
+        &:hover {
+          color: mat-color($accent);
+        }
+      }
+    }
+  }
+
+  .layers-panel,
+  .about-panel {
+    border-bottom-color: mat-color($foreground, divider);
+
+    .mat-expansion-panel-header {
+      color: mat-color($foreground, headers);
+
+      .mat-expansion-indicator {
+        color: mat-color($foreground, contrast-icon);
+      }
+    }
+
+    .data-container {
+      color: mat-color($foreground, text);
+    }
+  }
+
+  .image-viewer-container {
+    background-color: mat-color($background, content-background);
+  }
+
+  mat-panel-title {
+    color: mat-color($foreground, text);
+  }
+
+  .viewer-image {
+    background-color: mat-color($background, stage-background);
+  }
+
+  .legend {
+    background-color: mat-color($background, content-background);
+    color: mat-color($foreground, text);
+  }
+}

@@ -1,15 +1,16 @@
 :host {
   position: absolute;
-  top: calc(50% - 0.75rem - 1px);
+  top: calc(50% - 2rem - 1px);
   right: calc(-1rem - 1px);
   width: calc(1rem + 1px);
-  height: 1.5rem;
+  height: 3rem;
   border-top-style: solid;
   border-bottom-style: solid;
   border-right-style: solid;
   border-top-width: 1px;
   border-bottom-width: 1px;
   border-right-width: 1px;
+  border-radius: 0px 4px 4px 0px;
   cursor: pointer;
 
   &.ccf-drawer-toggle-button-end {
@@ -19,6 +20,7 @@
     border-left-style: solid;
     border-right-width: 0;
     border-left-width: 1px;
+    border-radius: 4px 0px 0px 4px;
   }
 
   .expand-collapse-icon {
@@ -30,4 +32,9 @@
     right: unset;
     left: -0.25rem;
   }
+}
+
+.mat-icon {
+  transform: scale(1,2);
+  top: .6rem;
 }

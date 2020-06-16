@@ -16,4 +16,10 @@
       mat-color($background, dialog, 0) 100%
     );
   }
+
+  .browser-item-container {
+    &.selected {
+      background-color: mat-color($background, dropdown-menu);
+    }
+  }
 }

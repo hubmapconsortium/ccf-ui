@@ -53,6 +53,11 @@ export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
   atScrollBottom = false;
 
   /**
+   * Keeps track of the selected result for highlighting
+   */
+  selectedResult: ListResult;
+
+  /**
    * Re-Checks whether or not we need the gradient to be displayed everytime the data reloads.
    */
   ngOnChanges(changes: SimpleChanges): void {

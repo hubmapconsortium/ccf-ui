@@ -249,7 +249,9 @@ export class HuBMAPEntity {
       || dataTypes.has('CODEX') || dataTypes.has('codex') || dataTypes.has('cytokit')
       || dataTypes.has('PAS') || assayTypes.has('imaging')
       ? 'Spatial' : 'Bulk';
-    if (this.spatialOrBulk === 'Bulk') {
+    if (dataTypes.has('CODEX') || dataTypes.has('codex')) {
+      this.thumbnailUrl = 'assets/icons/ico-codex.svg';
+    } else if (this.spatialOrBulk === 'Bulk') {
       this.thumbnailUrl = 'assets/icons/ico-bulk.svg';
     }
   }
