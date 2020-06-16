@@ -1,1 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><style>.cls-1{opacity:0.2;}.cls-2{fill:#001c2c;}.cls-3{fill:#ff5722;}.cls-4{fill:#82b1ff;}.cls-5{fill:#c51162;}.cls-6{fill:#2e7d32;}.cls-7{opacity:0.49;}.cls-8{font-size:210px;fill:#fff;font-family:Inter-Bold, Inter;font-weight:700;}</style></defs><g id="body_white_copy_2" data-name="body white copy 2"><rect class="cls-2" x="-0.18" y="-0.48" width="800" height="600"/><g id="regions_copy_4" data-name="regions copy 4"><g id="orange_copy_4" data-name="orange copy 4"><path class="cls-3" d="M327.6,0c-5.82,46.74,8.57,58.76,13.12,92.44,4.78,35.39-27,116.69-5.74,155s50.69,103.29,155.9,103.29,153-110,153-110S733.81,125,754.85,52.28c4-13.77,5.71-31.76,5.95-52.28C760.8,0,327.9-2.36,327.6,0Z"/><path class="cls-3" d="M800,81.85C756.22,114,651.6,204.41,641,340.16c-8.79,113,89.69,164.19,159,186Z"/><path class="cls-3" d="M30.83-1C97,144.67,217.42,364.27,263.25,301c64.33-88.9,32.05-116.69,41.37-175,5.91-37,4.62-87.39-8.32-125.69Z"/><path class="cls-3" d="M0,403c52.79-4.27,119.77-36.06,134.14-81C152.37,264.9,39.47,119.72.33,71.75Z"/></g><g id="blue_copy_6" data-name="blue copy 6"><path class="cls-4" d="M599.26,600.06C575,594,549.45,585.75,522.12,571.61,449.44,534,420.07,454.21,298.29,424.24,198.85,399.78,70.1,443-.18,474.54L0,457.91c40.12-28.39,106.36-64.7,170.16-73.76,127.49-18.1,329-10.2,420.83,46.55,38.29,23.67,100.22,92.38,160,169.39Z"/><path class="cls-4" d="M158.63,600H.19l-.37-81.79c65.64-14.94,171.67-32,234.74-5.26,40.91,17.34,75.11,51.72,105.15,87.13Z"/></g></g><g id="dots_copy_4" data-name="dots copy 4"><g id="magenta_copy_4" data-name="magenta copy 4"><circle class="cls-5" cx="357.76" cy="474.47" r="15.97"/><circle class="cls-5" cx="435.62" cy="437.17" r="15.97"/><circle class="cls-5" cx="487.27" cy="421.2" r="15.97"/><circle class="cls-5" cx="467.55" cy="484.5" r="15.97"/><circle class="cls-5" cx="357.76" cy="548.08" r="15.97"/><path class="cls-5" d="M457.67,600a16,16,0,0,1,27.27,0Z"/><circle class="cls-5" cx="108.35" cy="540.66" r="15.97"/><circle class="cls-5" cx="258.03" cy="477.54" r="15.97"/><circle class="cls-5" cx="341.8" cy="329.58" r="15.97"/><circle class="cls-5" cx="432.08" cy="356.74" r="15.97"/><circle class="cls-5" cx="319.22" cy="253.57" r="15.97"/><circle class="cls-5" cx="205.72" cy="362.6" r="15.97"/><circle class="cls-5" cx="47.34" cy="405.24" r="15.97"/><circle class="cls-5" cx="40.7" cy="548.08" r="15.97"/><path class="cls-5" d="M18.54,600a16,16,0,0,1,15.94-15.15,15.73,15.73,0,0,1,16,15.15Z"/><path class="cls-5" d="M126.05,600c-3.31-13.19-2-25.64,4.85-35.29C148,540.54,193,543,231.47,570.24A126,126,0,0,1,261.63,600Z"/><ellipse class="cls-5" cx="573.06" cy="498.17" rx="53.56" ry="85.31" transform="translate(-164.61 678.21) rotate(-54.72)"/><path class="cls-5" d="M800,391.15a48.76,48.76,0,0,1,0-97.25Z"/><circle class="cls-5" cx="513.52" cy="87.98" r="39.21"/><circle class="cls-5" cx="214.72" cy="107.36" r="27.34"/></g><g id="green_copy_6-2" data-name="green copy 6"><circle class="cls-6" cx="29.73" cy="39.06" r="19.85"/><circle class="cls-6" cx="56.66" cy="110.14" r="19.85"/><circle class="cls-6" cx="143.46" cy="39.06" r="19.85"/><circle class="cls-6" cx="149.46" cy="129.98" r="19.85"/><circle class="cls-6" cx="266.14" cy="149.83" r="19.85"/><circle class="cls-6" cx="324.61" cy="92.47" r="19.85"/><circle class="cls-6" cx="424.07" cy="60.17" r="19.85"/><circle class="cls-6" cx="506.33" cy="162.5" r="19.85"/><circle class="cls-6" cx="416.07" cy="240.37" r="19.85"/><circle class="cls-6" cx="533.08" cy="266.55" r="19.85"/><circle class="cls-6" cx="667.25" cy="39.06" r="19.85"/><circle class="cls-6" cx="773.74" cy="228.26" r="19.85"/><circle class="cls-6" cx="703.14" cy="351.08" r="19.85"/><path class="cls-6" d="M790.63,484.28A19.85,19.85,0,1,1,800,447.74v33.47A19.77,19.77,0,0,1,790.63,484.28Z"/><circle class="cls-6" cx="594.21" cy="386.96" r="19.85"/><circle class="cls-6" cx="660.53" cy="573.74" r="19.85"/><circle class="cls-6" cx="712.36" cy="524.69" r="19.85"/><path class="cls-6" d="M800,600.09H779a20.31,20.31,0,0,1-.91-4.79,19.85,19.85,0,0,1,18.5-21.11,20.6,20.6,0,0,1,3.43.07Z"/><circle class="cls-6" cx="692.51" cy="190" r="19.85"/><path class="cls-6" d="M800,174.65A19.85,19.85,0,0,1,800,135Z"/><circle class="cls-6" cx="64.01" cy="196" r="19.85"/><circle class="cls-6" cx="47.34" cy="244.8" r="19.85"/><path class="cls-6" d="M15.19,360.37A19.77,19.77,0,0,1,.05,354.8l0-28.41a19.84,19.84,0,1,1,15.19,34Z"/><circle class="cls-6" cx="246.29" cy="237.28" r="19.85"/><circle class="cls-6" cx="173.6" cy="303.27" r="19.85"/></g></g></g><g id="Layer_87" data-name="Layer 87"><text id="CODEX" class="cls-8" transform="translate(23.22 378.58)">CODEX</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .cls-1{opacity:0.2;}.cls-2{fill:#001c2c;}.cls-3{fill:#ff5722;}.cls-4{fill:#82b1ff;}.cls-5{fill:#c51162;}.cls-6{fill:#2e7d32;}.cls-7{opacity:0.49;}
+      .cls-8{
+        font-size:180px;
+        fill:#fff;
+        font-family:Inter-Bold, Inter;
+        font-weight:700;
+        text-anchor: middle;
+        dominant-baseline: middle;
+      }
+    </style>
+  </defs>
+  <g id="body_white_copy_2" data-name="body white copy 2">
+    <rect class="cls-2" x="-0.18" y="-0.48" width="800" height="600"/>
+    <g id="regions_copy_4" data-name="regions copy 4">
+      <g id="orange_copy_4" data-name="orange copy 4">
+        <path class="cls-3" d="M327.6,0c-5.82,46.74,8.57,58.76,13.12,92.44,4.78,35.39-27,116.69-5.74,155s50.69,103.29,155.9,103.29,153-110,153-110S733.81,125,754.85,52.28c4-13.77,5.71-31.76,5.95-52.28C760.8,0,327.9-2.36,327.6,0Z"/>
+        <path class="cls-3" d="M800,81.85C756.22,114,651.6,204.41,641,340.16c-8.79,113,89.69,164.19,159,186Z"/>
+        <path class="cls-3" d="M30.83-1C97,144.67,217.42,364.27,263.25,301c64.33-88.9,32.05-116.69,41.37-175,5.91-37,4.62-87.39-8.32-125.69Z"/>
+        <path class="cls-3" d="M0,403c52.79-4.27,119.77-36.06,134.14-81C152.37,264.9,39.47,119.72.33,71.75Z"/>
+      </g>
+      <g id="blue_copy_6" data-name="blue copy 6">
+        <path class="cls-4" d="M599.26,600.06C575,594,549.45,585.75,522.12,571.61,449.44,534,420.07,454.21,298.29,424.24,198.85,399.78,70.1,443-.18,474.54L0,457.91c40.12-28.39,106.36-64.7,170.16-73.76,127.49-18.1,329-10.2,420.83,46.55,38.29,23.67,100.22,92.38,160,169.39Z"/>
+        <path class="cls-4" d="M158.63,600H.19l-.37-81.79c65.64-14.94,171.67-32,234.74-5.26,40.91,17.34,75.11,51.72,105.15,87.13Z"/>
+      </g>
+    </g>
+    <g id="dots_copy_4" data-name="dots copy 4">
+      <g id="magenta_copy_4" data-name="magenta copy 4">
+        <circle class="cls-5" cx="357.76" cy="474.47" r="15.97"/>
+        <circle class="cls-5" cx="435.62" cy="437.17" r="15.97"/>
+        <circle class="cls-5" cx="487.27" cy="421.2" r="15.97"/>
+        <circle class="cls-5" cx="467.55" cy="484.5" r="15.97"/>
+        <circle class="cls-5" cx="357.76" cy="548.08" r="15.97"/>
+        <path class="cls-5" d="M457.67,600a16,16,0,0,1,27.27,0Z"/>
+        <circle class="cls-5" cx="108.35" cy="540.66" r="15.97"/>
+        <circle class="cls-5" cx="258.03" cy="477.54" r="15.97"/>
+        <circle class="cls-5" cx="341.8" cy="329.58" r="15.97"/>
+        <circle class="cls-5" cx="432.08" cy="356.74" r="15.97"/>
+        <circle class="cls-5" cx="319.22" cy="253.57" r="15.97"/>
+        <circle class="cls-5" cx="205.72" cy="362.6" r="15.97"/>
+        <circle class="cls-5" cx="47.34" cy="405.24" r="15.97"/>
+        <circle class="cls-5" cx="40.7" cy="548.08" r="15.97"/>
+        <path class="cls-5" d="M18.54,600a16,16,0,0,1,15.94-15.15,15.73,15.73,0,0,1,16,15.15Z"/>
+        <path class="cls-5" d="M126.05,600c-3.31-13.19-2-25.64,4.85-35.29C148,540.54,193,543,231.47,570.24A126,126,0,0,1,261.63,600Z"/>
+        <ellipse class="cls-5" cx="573.06" cy="498.17" rx="53.56" ry="85.31" transform="translate(-164.61 678.21) rotate(-54.72)"/>
+        <path class="cls-5" d="M800,391.15a48.76,48.76,0,0,1,0-97.25Z"/>
+        <circle class="cls-5" cx="513.52" cy="87.98" r="39.21"/>
+        <circle class="cls-5" cx="214.72" cy="107.36" r="27.34"/>
+      </g>
+      <g id="green_copy_6-2" data-name="green copy 6">
+        <circle class="cls-6" cx="29.73" cy="39.06" r="19.85"/>
+        <circle class="cls-6" cx="56.66" cy="110.14" r="19.85"/>
+        <circle class="cls-6" cx="143.46" cy="39.06" r="19.85"/>
+        <circle class="cls-6" cx="149.46" cy="129.98" r="19.85"/>
+        <circle class="cls-6" cx="266.14" cy="149.83" r="19.85"/>
+        <circle class="cls-6" cx="324.61" cy="92.47" r="19.85"/>
+        <circle class="cls-6" cx="424.07" cy="60.17" r="19.85"/>
+        <circle class="cls-6" cx="506.33" cy="162.5" r="19.85"/>
+        <circle class="cls-6" cx="416.07" cy="240.37" r="19.85"/>
+        <circle class="cls-6" cx="533.08" cy="266.55" r="19.85"/>
+        <circle class="cls-6" cx="667.25" cy="39.06" r="19.85"/>
+        <circle class="cls-6" cx="773.74" cy="228.26" r="19.85"/>
+        <circle class="cls-6" cx="703.14" cy="351.08" r="19.85"/>
+        <path class="cls-6" d="M790.63,484.28A19.85,19.85,0,1,1,800,447.74v33.47A19.77,19.77,0,0,1,790.63,484.28Z"/>
+        <circle class="cls-6" cx="594.21" cy="386.96" r="19.85"/>
+        <circle class="cls-6" cx="660.53" cy="573.74" r="19.85"/>
+        <circle class="cls-6" cx="712.36" cy="524.69" r="19.85"/>
+        <path class="cls-6" d="M800,600.09H779a20.31,20.31,0,0,1-.91-4.79,19.85,19.85,0,0,1,18.5-21.11,20.6,20.6,0,0,1,3.43.07Z"/>
+        <circle class="cls-6" cx="692.51" cy="190" r="19.85"/>
+        <path class="cls-6" d="M800,174.65A19.85,19.85,0,0,1,800,135Z"/>
+        <circle class="cls-6" cx="64.01" cy="196" r="19.85"/>
+        <circle class="cls-6" cx="47.34" cy="244.8" r="19.85"/>
+        <path class="cls-6" d="M15.19,360.37A19.77,19.77,0,0,1,.05,354.8l0-28.41a19.84,19.84,0,1,1,15.19,34Z"/>
+        <circle class="cls-6" cx="246.29" cy="237.28" r="19.85"/>
+        <circle class="cls-6" cx="173.6" cy="303.27" r="19.85"/>
+      </g>
+    </g>
+  </g>
+  <g id="Layer_87" data-name="Layer 87">
+    <text id="CODEX" class="cls-8" x="50%" y="50%">CODEX</text>
+  </g>
+</svg>
