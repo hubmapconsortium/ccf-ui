@@ -49,7 +49,8 @@ export const ccf = {
     Female: ccfx('VHFemale'),
     Male: ccfx('VHMale'),
     BothSexes: ccfx('VHBothSexes'),
-    FemaleOrgans: ccfx('VHFemaleOrgans')
+    FemaleOrgans: ccfx('VHFemaleOrgans'),
+    MaleOrgans: ccfx('VHMaleOrgans')
   },
   SpatialObjectReference: ccfx('SpatialObjectReference'),
   SpatialEntity: ccfx('SpatialEntity'),

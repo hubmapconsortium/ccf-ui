@@ -3,8 +3,8 @@ import { Matrix4, toRadians } from '@math.gl/core';
 import { CCFDatabase } from './ccf-database';
 import { Filter } from './interfaces';
 import { getSpatialEntity } from './queries/spatial-result-n3';
-import { ccf } from './util/prefixes';
 import { SpatialEntity } from './spatial-types';
+import { ccf } from './util/prefixes';
 
 
 export interface SpatialSceneNode {
@@ -14,6 +14,8 @@ export interface SpatialSceneNode {
   wireframe?: boolean;
   _lighting?: string;
   scenegraph?: string;
+  scenegraphNode?: string;
+  zoomBasedOpacity?: boolean;
   color?: [number, number, number, number];
   transformMatrix: Matrix4;
   tooltip: string;
@@ -40,14 +42,36 @@ export class CCFSpatialScene {
     return getSpatialEntity(this.db.store, bodyId);
   }
 
+  getReferenceOrgans(filter?: Filter): SpatialEntity[] {
+    let organsId: string;
+    switch (filter?.sex) {
+      case 'Male':
+        organsId = ccf.spatial.MaleOrgans.id;
+        break;
+      case 'Female':
+        organsId = ccf.spatial.FemaleOrgans.id;
+        break;
+      case 'Both':
+      default:
+        organsId = ccf.spatial.FemaleOrgans.id;
+        break;
+    }
+    return [getSpatialEntity(this.db.store, organsId)];
+  }
+
   getReferenceSceneNodes(filter?: Filter): SpatialSceneNode[] {
     const wholeBody = getSpatialEntity(this.db.store, ccf.spatial.Body.id);
     const body = this.getReferenceBody(filter);
-    const organs = getSpatialEntity(this.db.store, ccf.spatial.FemaleOrgans.id);
+    const organs = getSpatialEntity(this.db.store, ccf.spatial.MaleOrgans.id);
     const store = this.db.store;
     return [
       this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
-      this.getSceneNode(organs, wholeBody, {unpickable: true, _lighting: 'pbr', color: [255, 0, 0, 0.8*255]}),
+      ...this.getReferenceOrgans(filter).map((organ) =>
+        this.getSceneNode(organ, body, {unpickable: true, _lighting: 'pbr', zoomBasedOpacity: true,  color: [255, 0, 0, 1*255]})
+      ),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Right Kidney!'}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Left Kidney!'}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleen').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Spleen!'}),
       // Debug bounding boxes
       ...(filter?.debug ? [
         this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
@@ -87,6 +111,7 @@ export class CCFSpatialScene {
       return {
         '@id': source['@id'], '@type': 'SpatialSceneNode',
         scenegraph: has3dObject ? source.object?.file : undefined,
+        scenegraphNode: has3dObject ? source.object?.file_subpath : undefined,
         transformMatrix: transform,
         tooltip: source.label,
         ...nodeAttrs
@@ -97,11 +122,11 @@ export class CCFSpatialScene {
   }
 
   getScene(filter?: Filter): SpatialSceneNode[] {
-    const wholeBody = getSpatialEntity(this.db.store, ccf.spatial.Body.id);
+    const body = this.getReferenceBody(filter);
     return [
       ...this.getReferenceSceneNodes(filter),
       ...this.db.getSpatialEntities(filter).map((entity) =>
-        this.getSceneNode(entity, wholeBody, {color: [255, 255, 255, 0.9*255]})
+        this.getSceneNode(entity, body, {color: [255, 255, 255, 0.9*255]})
       )
     ].filter(s => s !== undefined) as SpatialSceneNode[];
   }
