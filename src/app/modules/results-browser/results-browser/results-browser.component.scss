@@ -1,14 +1,16 @@
 .results-browser-container {
     display: flex;
     flex-direction: column;
-    height: 90%;
-    padding: 1rem;
+    height: calc(100% - 7rem);
+    padding: .75rem 1.5rem 1.5rem 1.5rem;
 
     .stat-box {
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.25;
 
         #title {
-            margin-bottom: 1rem;
+            margin-bottom: .75rem;
+            font-weight: bold;
         }
 
         .stat-row {
@@ -16,8 +18,8 @@
             flex-direction: row;
 
             .stat-value {
-                margin-right: 1.5rem;
-                width: 5rem;
+                margin-right: 1rem;
+                width: 5.5rem;
                 text-align: right;
             }
         }

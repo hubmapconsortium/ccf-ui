@@ -1,24 +1,29 @@
 .filter {
+  &.hidden {
+    display: none !important;
+  }
+
   margin-top: 2em;
-  padding-right: 4.3em;
 }
 
 .button-container {
+  &.hidden {
+    display: none !important;
+  }
+  
   margin-top: 2em;
   display: flex;
   flex-direction: row-reverse;
 }
 
 .outline-button {
+  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000000;
+  border-radius: 4px;
   background: none;
-  border: 1px solid white;
-  color: white;
+  border-width: 1px;
+  border-style: solid;
   padding: 0.4em;
   cursor: pointer;
-}
-
-.outline-button:hover {
-  background-color: #1e88e5;
 }
 
 .outline-button:active {
@@ -26,13 +31,13 @@
   color: black;
 }
 
-.outline-button:focus {
-  outline: white;
-}
-
 .patient-filters {
   display: flex;
   width: 90%;
+
+  &.hidden {
+    display: none !important;
+  }
 
   ccf-dual-slider {
     margin-left: .5em;

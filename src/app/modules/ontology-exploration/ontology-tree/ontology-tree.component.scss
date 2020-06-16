@@ -5,13 +5,12 @@
   .node {
     min-height: 0;
     font-size: 1rem;
+    margin-bottom: .25rem;
 
     .toggle {
       width: 1.5rem;
       height: 1.5rem;
       line-height: normal;
-      background: #212121;
-      border: 1px solid #424242;
     }
 
     .autocomplete-open .toggle {
@@ -27,20 +26,7 @@
       white-space: nowrap;
       overflow: hidden;
       cursor: pointer;
-      color: #fafafa;
       margin-left: 0.5rem;
     }
-
-    .text:hover {
-      color: #1e88e5;
-    }
-
-    .selected {
-      color: #1e88e5;
-    }
   }
-}
-
-::ng-deep .ccf-ontology-tree.tooltip {
-  font-size: 1rem;
 }

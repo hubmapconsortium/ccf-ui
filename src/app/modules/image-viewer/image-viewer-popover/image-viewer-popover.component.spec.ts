@@ -19,7 +19,7 @@ function getTestLayers(): ImageViewerLayer[] {
       {
           ...testLayerCommon,
           label: 'Option 1',
-          id: 1,
+          id: '1',
           colorScheme: {
               type: 'discrete',
               name: 'bluered',
@@ -31,7 +31,7 @@ function getTestLayers(): ImageViewerLayer[] {
       {
           ...testLayerCommon,
           label: 'Option 2',
-          id: 2,
+          id: '2',
           colorScheme: {
               type: 'gradient',
               name: 'viridis',
@@ -43,7 +43,7 @@ function getTestLayers(): ImageViewerLayer[] {
       {
           ...testLayerCommon,
           label: 'Option 3',
-          id: 3,
+          id: '3',
           colorScheme: {
               type: 'gradient',
               name: 'viridis',
@@ -96,46 +96,46 @@ describe('ImageViewerPopoverComponent', () => {
 
   it('should set layers to the layers object passed into layersChanged() whenever called', async () => {
     const { instance } = await shallow.render({ bind: {} });
-    instance.testLayers = [];
+    instance.layers = [];
     const testLayers = getTestLayers();
     instance.layersChanged(testLayers);
 
-    expect(instance.testLayers).toEqual(testLayers);
+    expect(instance.layers).toEqual(testLayers);
   });
 
   it('should set activeLayers to the return of getActiveLayers() everytime layersChanged is called', async () => {
     const { instance } = await shallow.render({ bind: {} });
-    instance.testLayers = [];
+    instance.layers = [];
     instance.layersChanged(getTestLayers());
-    const testActiveLayers = instance.getActiveLayers();
+    const testActiveLayers = instance.activeLayers;
 
     expect(instance.activeLayers).toEqual(testActiveLayers);
   });
 
   it('should sort layers by selectionOrder before returning from getActiveLayers()', async () => {
     const { instance } = await shallow.render({ bind: {} });
-    instance.testLayers = getTestLayers();
-    instance.testLayers[0].selected = true;
-    instance.testLayers[0].selectionOrder = 2;
-    instance.testLayers[1].selected = true;
-    instance.testLayers[1].selectionOrder = 1;
-    instance.testLayers[2].selected = true;
-    instance.testLayers[2].selectionOrder = 3;
+    instance.layers = getTestLayers();
+    instance.layers[0].selected = true;
+    instance.layers[0].selectionOrder = 2;
+    instance.layers[1].selected = true;
+    instance.layers[1].selectionOrder = 1;
+    instance.layers[2].selected = true;
+    instance.layers[2].selectionOrder = 3;
 
-    expect(instance.getActiveLayers()[0]).toEqual(instance.testLayers[1]);
-    expect(instance.getActiveLayers()[1]).toEqual(instance.testLayers[0]);
-    expect(instance.getActiveLayers()[2]).toEqual(instance.testLayers[2]);
+    expect(instance.activeLayers[0]).toEqual(instance.layers[1]);
+    expect(instance.activeLayers[1]).toEqual(instance.layers[0]);
+    expect(instance.activeLayers[2]).toEqual(instance.layers[2]);
   });
 
   it('should filter out unselected layers before returning from getActiveLayers()', async () => {
     const { instance } = await shallow.render({ bind: {} });
-    instance.testLayers = getTestLayers();
-    instance.testLayers[0].selected = false;
-    instance.testLayers[0].selectionOrder = 2;
-    instance.testLayers[1].selected = true;
-    instance.testLayers[1].selectionOrder = 1;
+    instance.layers = getTestLayers();
+    instance.layers[0].selected = false;
+    instance.layers[0].selectionOrder = 2;
+    instance.layers[1].selected = true;
+    instance.layers[1].selectionOrder = 1;
 
-    expect(instance.getActiveLayers().indexOf(instance.testLayers[0])).toBe(-1);
-    expect(instance.getActiveLayers().indexOf(instance.testLayers[1])).toBeGreaterThan(-1);
+    expect(instance.activeLayers.indexOf(instance.layers[0])).toBe(-1);
+    expect(instance.activeLayers.indexOf(instance.layers[1])).toBeGreaterThan(-1);
   });
 });

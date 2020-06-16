@@ -12,8 +12,11 @@ function fromPartial<T>(partial: RecursivePartial<T>): T {
 
 
 describe('OntologyTreeComponent', () => {
-  const node1 = new FlatNode(fromPartial<OntologyNode>({ label: 'label', children:['child1', 'child2'] }), 1);
-  const node2 = new FlatNode(fromPartial<OntologyNode>({ label: 'label2', children:[]  }), 1);
+  const bodyNode = fromPartial<OntologyNode>({ label: 'body', children: ['child1', 'child2'] });
+  const node1 = fromPartial<OntologyNode>({ label: 'label', children: ['child1', 'child2'] });
+  const node2 = fromPartial<OntologyNode>({ label: 'label2', children: [] });
+  const flatNode1 = new FlatNode(node1, 1);
+  const flatNode2 = new FlatNode(node2, 1);
 
   let shallow: Shallow<OntologyTreeComponent>;
 
@@ -23,40 +26,115 @@ describe('OntologyTreeComponent', () => {
 
   it('should check if the node is selected node or not', async () => {
     const { instance } = await shallow.render();
-    instance.selectedNode = node1;
-    expect(instance.isSelected(node1)).toBeTrue();
+    instance.selectedNodes = [flatNode1];
+    expect(instance.isSelected(flatNode1)).toBeTrue();
   });
 
   it('should check if the node is selected node or not', async () => {
     const { instance } = await shallow.render();
-    instance.selectedNode = node2;
-    expect(instance.isSelected(node1)).toBeFalse();
-  });
-
-  it('should check if the node can be expanded', async () => {
-    const { instance } = await shallow.render();
-    expect(instance.isInnerNode(1, node1)).toBeTrue();
-  });
-
-  it('should check if the node can be expanded 2', async () => {
-    const { instance } = await shallow.render();
-    expect(instance.isInnerNode(1, node2)).toBeFalse();
+    instance.selectedNodes = [flatNode2];
+    expect(instance.isSelected(flatNode1)).toBeFalse();
   });
 
   it('should set the current selection when a different node is selected', async () => {
-    const { instance, outputs } = await shallow.render();
+    const { instance } = await shallow.render();
 
-    instance.select(node1);
-    expect(instance.selectedNode).toBe(node1);
-    expect(outputs.nodeSelected.emit).toHaveBeenCalledWith(node1.original);
+    instance.select(false, flatNode1);
+    expect(instance.selectedNodes).toEqual([flatNode1]);
   });
 
   it('should clear the current selection when the same node is selected', async () => {
-    const { instance, outputs } = await shallow.render();
+    const { instance } = await shallow.render();
 
-    instance.selectedNode = node1;
-    instance.select(node1);
-    expect(instance.selectedNode).toBeUndefined();
-    expect(outputs.nodeSelected.emit).toHaveBeenCalledWith(undefined);
+    instance.selectedNodes = [flatNode1];
+    instance.select(false, flatNode1);
+    expect(instance.selectedNodes).toEqual([]);
+  });
+
+  it('should set selectedNodes to [] if called with an undefined node', async () => {
+    const { instance } = await shallow.render();
+
+    instance.select(false, undefined);
+    expect(instance.selectedNodes).toEqual([]);
+  });
+
+  it('should push the selected node into selectedNodes if the ctrl is passed in as true', async () => {
+    const { instance } = await shallow.render();
+
+    instance.anySelectionsMade = true;
+    instance.selectedNodes = [flatNode1];
+    instance.select(true, flatNode2);
+
+    expect(instance.selectedNodes).toEqual([flatNode1, flatNode2]);
+  });
+
+  it('should splice out the selected node from selectedNodes if the ctrl is passed in as true', async () => {
+    const { instance } = await shallow.render();
+
+    instance.anySelectionsMade = true;
+    instance.selectedNodes = [flatNode1, flatNode2];
+    instance.select(true, flatNode2);
+
+    expect(instance.selectedNodes).toEqual([flatNode1]);
+  });
+
+  it('should emit when the selection changes', async () => {
+    const { instance, outputs } = await shallow.render();
+    instance.select(false, flatNode1);
+    expect(outputs.nodeSelected.emit).toHaveBeenCalled();
+  });
+
+  it('isInnerNode should return true when a node can be expanded', async () => {
+    const { instance } = await shallow.render();
+    expect(instance.isInnerNode(1, flatNode1)).toBeTrue();
+  });
+
+  it('isInnerNode should return false when a node cannot be expanded', async () => {
+    const { instance } = await shallow.render();
+    expect(instance.isInnerNode(1, flatNode2)).toBeFalse();
+  });
+
+  it('should call selectBody() if expandAndSelect() is called with the body node', async () => {
+    const nodes = [bodyNode, node1, node2];
+    const { instance } = await shallow.render({bind: {nodes}});
+    const spy = spyOn(instance, 'selectBody');
+
+    const getParent = (node: OntologyNode) => {
+      return node;
+    };
+
+    instance.expandAndSelect(bodyNode, getParent);
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should select the body node when selectBody() is called', async () => {
+    const { instance } = await shallow.render();
+
+    instance.selectedNodes = [];
+    instance.selectBody();
+
+    expect(instance.selectedNodes).toEqual([instance.bodyNode]);
+  });
+
+  it('selectBody() should call control.collapseAll()', async () => {
+    const { instance } = await shallow.render();
+    const collapseSpy = spyOn(instance.control, 'collapseAll');
+
+    instance.selectedNodes = [];
+    instance.selectBody();
+
+    expect(collapseSpy).toHaveBeenCalled();
+  });
+
+  it('selectBody() should call control.expand() when there are dataNodes', async () => {
+    const nodes = [bodyNode, node1, node2];
+    const { instance } = await shallow.render({bind: {nodes}});
+    const expandSpy = spyOn(instance.control, 'expand');
+
+    instance.selectedNodes = [];
+    instance.selectBody();
+
+    expect(expandSpy).toHaveBeenCalled();
   });
 });

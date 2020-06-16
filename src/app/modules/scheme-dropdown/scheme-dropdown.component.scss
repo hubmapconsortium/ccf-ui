@@ -6,11 +6,15 @@
 
   mat-form-field {
     width: 9rem;
-  }
-}
 
-::ng-deep .mat-select-arrow {
-  color: #9e9e9e;
+    ::ng-deep .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        .mat-form-field-infix {
+          border: none;
+        }
+      }
+    }
+  }
 }
 
 // Disable label resizing effect
@@ -19,14 +23,15 @@
 }
 
 ::ng-deep .scheme-option-panel {
-  background-color: #323232;
   box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
+  border-width: 1px;
+  border-style: solid;
   position: absolute;
   right: -10rem;
   top: -1rem;
   display: flex;
   flex-direction: column;
-  width: 11rem;
+  width: 12rem;
   height: 9rem;
 
   mat-option:first-child {
@@ -34,10 +39,6 @@
   }
   mat-option:last-of-type {
     margin-bottom: 0.75rem;
-  }
-
-  .mat-active {
-    background-color: #323232 !important;
   }
 
   mat-option {
@@ -49,11 +50,7 @@
         .mat-radio-label {
           .mat-radio-container {
             .mat-radio-outer-circle {
-              background-color: #1e88e5 !important;
               border-width: 0 !important;
-            }
-            .mat-radio-inner-circle {
-              background-color: white;
             }
           }
         }
@@ -67,7 +64,8 @@
             .mat-radio-outer-circle {
               width: 1rem;
               height: 1rem;
-              border: 1px solid #9e9e9e;
+              border-width: 1px; 
+              border-style: solid;
             }
             .mat-radio-inner-circle {
               width: 1rem;
@@ -80,7 +78,6 @@
         }
 
         .swatch {
-          background-color: black;
           display: flex;
           width: 7rem;
           height: 1rem;

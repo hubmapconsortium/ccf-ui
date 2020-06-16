@@ -1,13 +1,17 @@
 .mat-expansion-panel {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  border-bottom: 1px solid #424242;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
   border-radius: 0 !important;
   position: unset;
 
   .mat-expansion-panel-header {
-    color: #9e9e9e;
     padding: 0;
+
+    mat-panel-title {
+      font-weight: bold;
+    }
 
     ::ng-deep .mat-expansion-indicator {
       position: relative;
@@ -16,7 +20,6 @@
   }
 
   .data-container {
-    color: #fafafa;
     display: flex;
     flex-direction: column;
     justify-content: center;

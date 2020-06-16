@@ -1,0 +1,35 @@
+@use '~@angular/material/theming'as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .outline-button {
+    color: mat-color($foreground, button-text);
+    border-color: mat-color($foreground, button-border);
+
+    &:hover {
+      background-color: mat-color($accent);
+      color: mat-color($foreground, contrast-text);
+    }
+
+    &:focus {
+      outline: mat-color($primary, "white");
+    }
+  }
+
+  .popup-container {
+    background-color: mat-color($background, modal);
+    border-color: mat-color($foreground, modal-borders);
+  }
+
+  .show-hide {
+    color: mat-color($foreground, contrast-icon);
+
+    &:hover {
+      color: mat-color($accent);
+    }
+  }
+}

@@ -11,5 +11,4 @@ import { ImageViewerLayersModule } from '../image-viewer-layers/image-viewer-lay
   declarations: [ImageViewerAccordionComponent],
   exports: [ImageViewerAccordionComponent]
 })
-
 export class ImageViewerAccordionModule { }

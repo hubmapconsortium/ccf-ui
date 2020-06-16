@@ -7,23 +7,21 @@
       </div>
 
       <ng5-slider class="slider fade-in {{contentsVisible}}" [options]="options" [(value)]="lowValue"
-        [(highValue)]="highValue" (userChangeEnd)="sliderValueChanged()">
+                  [(highValue)]="highValue" (userChangeEnd)="sliderValueChanged()">
       </ng5-slider>
 
       <div class="label max fade-in {{contentsVisible}}">
-        <div class="label ceil">
-          <{{ options.ceil }} </div>
-            <input class="input-high" type="text" value="{{highValue}}" (keyup)="onKeyHigh($event)">
-        </div>
+        <div class="label ceil"> {{ options.ceil }} </div>
+        <input class="input-high" type="text" value="{{highValue}}" (keyup)="onKeyHigh($event)">
       </div>
 
-      <mat-form-field class="form-field" [class.highlight]="isSliderOpen" (click)="toggleSliderPopover()">
+      <mat-form-field class="slider-form-field" [class.highlight]="isSliderOpen" (click)="toggleSliderPopover()">
         <div class="slider-labels">
           <span class="name-label">{{ label }}</span>
           <span class="range-label">{{ rangeLabel }}</span>
         </div>
-        <mat-select>
-        </mat-select>
+        <mat-select></mat-select>
       </mat-form-field>
     </div>
   </div>
+</div>

@@ -8,11 +8,11 @@
     border-top-color: mat-color($foreground, divider) !important;
 
     .result-image-placeholder {
-        background-color: mat-color($foreground, divider);
+      background-color: mat-color($foreground, disabled);
     }
 
     .download {
-      color: map-get($mat-amber, A400);
+      color: mat-color($foreground, download-icon);
 
       &:hover {
         color: mat-color($accent);
@@ -20,7 +20,7 @@
     }
 
     .no-download {
-      color: mat-color($foreground, divider);
+      color: mat-color($foreground, disabled);
     }
   }
 }

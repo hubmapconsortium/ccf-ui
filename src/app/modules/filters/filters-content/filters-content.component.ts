@@ -9,6 +9,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./filters-content.component.scss']
 })
 export class FiltersContentComponent {
+
+  /**
+   * Determines if the filters are visible
+   */
+  @Input() hidden: boolean;
+
   /**
    * Allows the filters to be set from outside the component
    */

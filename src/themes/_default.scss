@@ -6,34 +6,53 @@
 $primary-colors: utility.add-colors($mat-gray, (
   "white": white,
   "black": black,
-  850: #323232,
+  light-header: #444A65,
+  light-disabled: #BDBDBD,
 
   contrast: (
     "white": black,
     "black": white,
-    850: $light-primary-text
+    light-header: $dark-primary-text,
+    light-disabled: $dark-primary-text,
   )
 ));
 
-$primary: mat-palette($primary-colors, $text: 500);
-$accent: mat-palette($mat-blue, 600);
+$primary: mat-palette($primary-colors, $text: 900);
+$accent: mat-palette($mat-blue, 700);
 $warn: mat-palette($mat-red);
 
-$foreground: map-merge($mat-dark-theme-foreground, (
-  divider: map-get($primary-colors, 800),
-  dividers: map-get($primary-colors, 800),
-  icon: map-get($primary-colors, 500),
-  icons: map-get($primary-colors, 500)
+$foreground: map-merge($mat-light-theme-foreground, (
+  logo: map-get($primary-colors, 'white'),
+  header-border: map-get($primary-colors, 800), //#424242
+  modal-borders: map-get($primary-colors, 'black'),
+  divider: map-get($primary-colors, 300), //#E0E0E0
+  borders: map-get($primary-colors, 300), //#E0E0E0
+  icon: map-get($primary-colors, 300), //#E0E0E0
+  contrast-icon: map-get($primary-colors, 600), //#757575 (icons on light background)
+  button-text: map-get($accent, 700),
+  button-border: map-get($primary-colors, 'black'),
+  headers: map-get($primary-colors, 300), //#E0E0E0
+  search-result-text: map-get($primary-colors, 600), //#757575
+  text: map-get($primary-colors, 900), //#212121
+  contrast-text: map-get($primary-colors, 50), //#FAFAFA (text on dark background)
+  download-icon: map-get($primary-colors, 300), //#E0E0E0
+  disabled: map-get($primary-colors, light-disabled), //#BDBDBD
+  highlight: map-get($primary-colors, 'black')
 ));
 
-$background: map-merge($mat-dark-theme-background, (
-  app-bar: map-get($primary-colors, 850),
-  background: map-get($primary-colors, "black"),
-  dialog: map-get($primary-colors, 900)
+$background: map-merge($mat-light-theme-background, (
+  background: map-get($primary-colors, 50),
+  stage-background: map-get($primary-colors, 'black'),
+  content-background: map-get($primary-colors, 50), //#FAFAFA
+  dialog: map-get($primary-colors, 50), //#FAFAFA
+  app-bar: map-get($primary-colors, light-header), //#444A65
+  modal: map-get($primary-colors, 'white'),
+  dropdown-menu: map-get($primary-colors, 300), //#E0E0E0
+  dropdown-hover: map-get($primary-colors, 300), //#E0E0E0
 ));
 
 $theme: (
-  is-dark: true,
+  is-dark: false,
   primary: $primary,
   accent: $accent,
   warn: $warn,

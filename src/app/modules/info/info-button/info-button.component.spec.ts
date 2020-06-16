@@ -7,7 +7,7 @@ import { InfoButtonModule } from './info-button.module';
 describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
   const mockMatDialog = {
-    open(...args: unknown[]) {
+    open(...args: unknown[]): MatDialogRef<unknown, unknown> {
       return undefined as unknown as MatDialogRef<unknown, unknown>;
     }
   };
@@ -19,7 +19,7 @@ describe('InfoButtonComponent', () => {
   it('should display the info icon', async () => {
     const { find } = await shallow.render();
     const nativeElement = find('mat-icon').nativeElement as HTMLElement;
-    expect(nativeElement.textContent).toBe('info_outline');
+    expect(nativeElement.textContent?.trim()).toBe('info_outline');
   });
 
   it('should launch the info dialog', async () => {

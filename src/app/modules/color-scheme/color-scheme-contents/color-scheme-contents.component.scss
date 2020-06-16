@@ -1,6 +1,8 @@
 .color-scheme-contents-container {
-  background-color: #323232;
   box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
   width: 10rem;
   height: 21rem;
   display: flex;
@@ -28,7 +30,7 @@
     }
 
     .brightness-slider-label {
-      margin-top: 1rem;
+      margin-top: .5rem;
     }
   }
 
@@ -36,13 +38,12 @@
     margin-top: 0.75rem;
     margin-bottom: 1rem;
     .ng5-slider-bar {
-      background: #1e88e5 !important;
-      opacity: .2 !important;
-      height: 0.15rem !important;
+      opacity: .2;
+      height: 0.15rem;
     }
 
     .ng5-slider-selection {
-      opacity: 1 !important;
+      opacity: 1;
     }
 
     .ng5-slider-pointer {
@@ -51,8 +52,8 @@
       width: $pointer-size;
       height: $pointer-size;
       top: -0.5rem;
-      background-color: #1e88e5;
-      border: 0.1rem solid #323232;
+      border-width: 0.1rem;
+      border-style: solid;
 
       &:after {
         display: none;

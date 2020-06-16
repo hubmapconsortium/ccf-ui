@@ -13,7 +13,7 @@ describe('HeaderComponent', () => {
 
   it('should emit downloadClicked when download button is clicked', async () => {
     const { find, outputs } = await shallow.render();
-    find('.download').triggerEventHandler('click', {});
+    find('.download-icon').triggerEventHandler('click', {});
     expect(outputs.downloadClicked.emit).toHaveBeenCalled();
   });
 
@@ -23,7 +23,11 @@ describe('HeaderComponent', () => {
     expect(outputs.logoClicked.emit).toHaveBeenCalled();
   });
 
-  async function testFilterLabel(index: number, data: Record<string, unknown[] | unknown>, result: string) {
+  async function testFilterLabel(
+    index: number,
+    data: Record<string, unknown[] | unknown>,
+    result: string
+  ): Promise<void> {
     const { find } = await shallow.render({ bind: { filters: data } });
     const label = find(`.filter-labels div:nth-child(${index})`).nativeElement as HTMLElement;
     expect(label.textContent).toBe(result);

@@ -3,17 +3,25 @@
 @mixin theme($theme) {
   $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
 
   .ccf-header {
-    border-bottom-color: mat-color($foreground, divider);
+    border-bottom-color: mat-color($foreground, header-border);
+    background-color: mat-color($background, app-bar);
+    color: mat-color($foreground, headers);
+
+    .logo {
+      color: mat-color($foreground, logo);
+    }
 
     .logo:hover {
       color: mat-color($accent);
     }
 
     .download {
-      color: map-get($mat-amber, A400);
-
+      color: mat-color($foreground, download-icon);
+      text-decoration: none;
+      
       &:hover {
         color: mat-color($accent);
       }

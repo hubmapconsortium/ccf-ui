@@ -18,7 +18,8 @@
   }
 
   &.highlighted {
-    outline: 1px solid white;
+    outline-width: 1px;
+    outline-style: solid;
   }
 
   :hover {

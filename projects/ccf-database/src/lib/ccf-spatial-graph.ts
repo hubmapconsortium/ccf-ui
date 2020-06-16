@@ -41,7 +41,7 @@ export class CCFSpatialGraph {
     this.createGraph();
   }
 
-  createGraph() {
+  createGraph(): void {
     this.graph = new DirectedGraph();
     const store = this.db.store;
     // Add all Spatial Object References
@@ -60,13 +60,13 @@ export class CCFSpatialGraph {
     }, rdf.type, ccf.SpatialPlacement, null);
   }
 
-  addSpatialEntity(entity: SpatialEntity) {
+  addSpatialEntity(entity: SpatialEntity): void {
     this.graph.mergeNode(entity['@id'], {type: 'SpatialEntity', object: entity});
   }
-  addSpatialObjectReference(ref: SpatialObjectReference) {
+  addSpatialObjectReference(ref: SpatialObjectReference): void {
     this.graph.mergeNode(ref['@id'], {type: 'SpatialObjectReference', object: ref});
   }
-  addSpatialPlacement(placement: SpatialPlacement) {
+  addSpatialPlacement(placement: SpatialPlacement): void {
     this.graph.mergeDirectedEdge(placement.source['@id'], placement.target['@id'], {type: 'SpatialPlacement', placement});
   }
 

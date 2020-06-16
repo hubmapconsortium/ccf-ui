@@ -35,7 +35,7 @@ export class DataSourceService {
     if (typeof globalThis === 'object') {
       // If a global dbOptions object is set, use this for connecting to the db
       if (globalThis.dbOptions) {
-        this.dbOptions = {...this.dbOptions, ...globalThis.dbOptions} as CCFDatabaseOptions;
+        this.dbOptions = { ...this.dbOptions, ...globalThis.dbOptions } as CCFDatabaseOptions;
       }
 
       // In development, make the db globally accessible

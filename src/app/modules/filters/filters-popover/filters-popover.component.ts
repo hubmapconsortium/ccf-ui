@@ -40,7 +40,7 @@ export class FiltersPopoverComponent {
   /**
    * Hides the filters popover box
    */
-  removeBox() {
+  removeBox(): void {
     this.filtersVisible = false;
   }
 
@@ -48,7 +48,7 @@ export class FiltersPopoverComponent {
    * Emits the current filters, and hides the popover box
    * @param filters The object containing all the currently set filters
    */
-  applyFilters(filters: Record<string, unknown>) {
+  applyFilters(filters: Record<string, unknown>): void {
     this.filters = filters;
     this.filtersChange.emit(filters);
     this.removeBox();

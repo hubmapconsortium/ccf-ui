@@ -65,14 +65,14 @@ export class BodyUI {
     }});
   }
 
-  setScene(data: SpatialSceneNode[]) {
+  setScene(data: SpatialSceneNode[]): void {
     if (data?.length > 0) {
       const zoomOpacity = (this.bodyUILayer.state as {zoomOpacity: boolean}).zoomOpacity;
       this.bodyUILayer.setState({data, zoomOpacity});
     }
   }
 
-  zoomTo(node: SpatialSceneNode) {
+  zoomTo(node: SpatialSceneNode): void {
     const matrix = new Matrix4(node.transformMatrix);
     this.deck.setProps({
       viewState: {
@@ -87,7 +87,7 @@ export class BodyUI {
   }
 
   @bind
-  private _onHover(e: {picked: boolean, object: SpatialSceneNode}) {
+  private _onHover(e: {picked: boolean, object: SpatialSceneNode}): void {
     const { lastHovered } = this;
     this.cursor = e.picked ? 'pointer' : undefined;
     if (e.picked && e.object && e.object['@id']) {
@@ -105,7 +105,7 @@ export class BodyUI {
   }
 
   @bind
-  private _onClick(e: {picked: boolean, object: SpatialSceneNode}) {
+  private _onClick(e: {picked: boolean, object: SpatialSceneNode}): void {
     if (e.picked && e.object && e.object['@id']) {
       // alert('You clicked ' + e.object?.tooltip || JSON.stringify(e.object, null, 2));
       this.nodeClickSubject.next(e.object);
@@ -113,7 +113,7 @@ export class BodyUI {
   }
 
   @bind
-  private _onViewStateChange(event: { interactionState: { isZooming: boolean; }; viewState: { zoom: number; } }) {
+  private _onViewStateChange(event: { interactionState: { isZooming: boolean; }; viewState: { zoom: number; } }): void {
     if (event.interactionState?.isZooming) {
       const currentState = this.bodyUILayer.state as {zoomOpacity: number, data: unknown};
       const zoomOpacity = Math.min(Math.max(1 - (event.viewState.zoom - 8.9) / 3, 0.2), 1.0);

@@ -68,7 +68,7 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
 
 export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
 
-  initializeState() {
+  initializeState():void {
     const { data } = this.props;
     this.setState({data: data || [], zoomOpacity: 0.8});
 
@@ -76,7 +76,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
     registerLoaders([DracoWorkerLoader, GLTFLoader]);
   }
 
-  renderLayers() {
+  renderLayers(): unknown[] {
     const state = this.state as {data: SpatialSceneNode[], zoomOpacity: number};
     const cubes = state.data.filter(d => !d.scenegraph && !d.wireframe);
     const wireframes = state.data.filter(d => !d.scenegraph && d.wireframe);
@@ -103,7 +103,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
     ].filter(l => !!l);
   }
 
-  getPickingInfo(e: {info: object}) {
+  getPickingInfo(e: {info: object}): unknown {
     return e.info;
   }
 }

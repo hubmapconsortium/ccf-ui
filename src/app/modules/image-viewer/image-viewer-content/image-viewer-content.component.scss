@@ -1,27 +1,16 @@
 .viewer-sidebar {
-  color: #FAFAFA;
-  
   .viewer-close-header {
     display: flex;
-    background-color: #424242;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-end;
     height: 3rem;
     padding-right: 1.5rem;
     padding-left: 1.5rem;
-    font-size: 13px;
     
     .viewer-close-button {
-      display: flex;
       border: none;
       padding: 0;
       background: inherit;
-      color: white;
       cursor: pointer;
-      align-items: center;
-      :hover {
-        color: #1e88e5;
-      }
     }
   }
 }
@@ -31,10 +20,8 @@
   padding-left: 1.5rem;
   padding-top: 1.5rem;
   padding-bottom: 1rem;
+  
   .sample-region {
-    font-weight: 500;
-  }
-  .patient-details {
-    font-size: 13px;
+    font-weight: bold;
   }
 }

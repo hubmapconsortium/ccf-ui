@@ -1,5 +1,7 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+
 
 /**
  * Component dynamically displays a div with a shape and background that corresponds to the color scheme
@@ -21,4 +23,8 @@ export class ColorPickerLauncherComponent {
    * Output that passes along changes made to the layer's properties from the color picker
    */
   @Output() layerChange = new EventEmitter<ImageViewerLayer>();
+
+  get className(): string {
+    return `color-icon ${this.layer.colorScheme.type === 'discrete' ? 'circle' : ''}`;
+  }
 }

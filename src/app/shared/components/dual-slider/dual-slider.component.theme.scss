@@ -1,0 +1,69 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .slider-form-field {
+    background-color: mat-color($background, dropdown-menu);
+
+    .mat-form-field-wrapper {
+      .mat-form-field-underline {
+        background-color: mat-color($foreground, contrast-icon);
+      }
+    }
+  }
+
+  .mat-select-arrow-wrapper {
+    color: mat-color($foreground, contrast-icon);
+  }
+
+  .name-label {
+    color: mat-color($accent);
+  }
+  
+  .range-label {
+    color: mat-color($background, text);
+  }
+
+  .slider-pane {
+    border-color: mat-color($foreground, modal-borders);
+  }
+
+  .ccf-slider {
+    background-color: mat-color($background, modal);
+
+    .slider {
+      .ng5-slider-bar,
+      .ng5-slider-selection,
+      .ng5-slider-pointer {
+        background-color: mat-color($accent);
+      }
+
+      .ng5-slider-pointer {
+        border-color: mat-color($background, modal);
+      }
+    }
+
+    .label {
+      &.min,
+      &.max {
+        input {
+          color: mat-color($primary, text);
+        }
+      }
+
+      &.ceil,
+      &.floor {
+        color: mat-color($accent);
+      }
+    }
+  }
+
+  .input-high,
+  .input-low {
+    background-color: mat-color($background, modal);
+  }
+}
