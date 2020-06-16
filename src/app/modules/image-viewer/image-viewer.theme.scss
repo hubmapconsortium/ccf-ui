@@ -52,4 +52,10 @@
     background-color: mat-color($background, content-background);
     color: mat-color($foreground, text);
   }
+
+  .circle {
+    &.light {
+      border: 1px solid mat-color($foreground, contrast-icon);
+    }
+  }
 }
