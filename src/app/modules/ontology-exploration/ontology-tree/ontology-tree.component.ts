@@ -55,6 +55,22 @@ export class OntologyTreeComponent implements OnInit {
     return this._getChildren;
   }
 
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  set occurenceData(value: Record<string, number>) {
+    if (value){
+      this._occurenceData = value;
+    } else {
+      this._occurenceData = {};
+    }
+  }
+
+  get occurenceData(): Record<string, number>{
+    return this._occurenceData;
+  }
+
+  private _occurenceData: Record<string, number>;
+
   /**
    * Creates an instance of ontology tree component.
    *
@@ -138,6 +154,7 @@ export class OntologyTreeComponent implements OnInit {
    * Expand the body node when the component is initialized.
    */
   ngOnInit(): void {
+    console.log('hello mate: ', this.occurenceData);
     if (this.control.dataNodes) {
       this.control.expand(this.control.dataNodes[0]);
     }

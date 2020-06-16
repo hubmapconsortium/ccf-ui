@@ -23,7 +23,7 @@
         color: mat-color($accent);
       }
 
-      .disabled {
+      .unavailable {
         color: mat-color($foreground, disabled-text);
       }
     }

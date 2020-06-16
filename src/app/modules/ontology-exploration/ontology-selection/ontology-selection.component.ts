@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 
 import { OntologyNode } from '../../../core/models/ontology-node';
@@ -21,6 +21,8 @@ export class OntologySelectionComponent {
    * View child of search component
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
+
+  @Input() occurenceData: Record<string, number>;
 
 
   /**
