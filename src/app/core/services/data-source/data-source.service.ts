@@ -79,6 +79,16 @@ export class DataSourceService {
   }
 
   /**
+   * Queries for ontology term counts.
+   *
+   * @param [filter] Currently applied filter.
+   * @returns An observable emitting the results.
+   */
+  getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return from(this.getDB().then((db) => db.getOntologyTermOccurences(filter)));
+  }
+
+  /**
    * Queries data for a specific image.
    *
    * @param iri The image identifier ('@id').
