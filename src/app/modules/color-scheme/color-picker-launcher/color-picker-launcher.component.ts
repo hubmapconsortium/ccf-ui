@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { ImageViewerLayer, isLight } from '../../../core/models/image-viewer-layer';
+import { ImageViewerLayer, isLight, isDark } from '../../../core/models/image-viewer-layer';
 
 
 /**
@@ -32,11 +32,20 @@ export class ColorPickerLauncherComponent {
   }
 
   /**
-   * Determines whether the color icon is light enough to require a border
+   * Determines whether the color icon is light enough to require a border (light mode only)
    * @param color The color hex code
    * @returns true if brightness is above a certain threshold
    */
   iconLight(color: string): boolean {
     return isLight(color);
+  }
+
+  /**
+   * Determines whether the color icon is dark enough to require a border (dark mode only)
+   * @param color The color hex code
+   * @returns true if brightness is below a certain threshold
+   */
+  iconDark(color: string): boolean {
+    return isDark(color);
   }
 }

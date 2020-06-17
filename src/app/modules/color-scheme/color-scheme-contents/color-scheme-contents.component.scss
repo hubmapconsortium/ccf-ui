@@ -9,8 +9,8 @@
   flex-direction: column;
   position: absolute;
   z-index: 1;
-  right: -1rem;
-  top: -1rem;
+  right: calc(-1rem - 2px);
+  top: calc(-1rem - 2px);
 
   .scheme-contents {
     margin: 1rem;

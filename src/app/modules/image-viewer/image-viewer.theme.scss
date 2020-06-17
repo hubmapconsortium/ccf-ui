@@ -4,6 +4,7 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
   $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
 
   .viewer-sidebar {
     color: mat-color($foreground, text);
@@ -54,8 +55,22 @@
   }
 
   .circle {
-    &.light {
-      border: 1px solid mat-color($foreground, contrast-icon);
+    border: 1px solid transparent;
+  }
+
+  .light-theme {
+    .circle {
+      &.light {
+        border: 1px solid mat-color($primary, 'black');
+      }
+    }
+  }
+
+  .dark-theme {
+    .circle {
+      &.dark {
+        border: 1px solid mat-color($primary, 'white');
+      }
     }
   }
 }

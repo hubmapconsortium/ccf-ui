@@ -43,11 +43,11 @@ export class ImageViewerLayer {
 }
 
 /**
- * Determines whether the color icon is light enough to require a border
- * @param color The color hex code
- * @returns true if brightness is above a certain threshold
+ * Converts a hex color code to RGB and calculates a value for the color brightness
+ * @param color Hex color code
+ * @returns brightness value
  */
-export function isLight(color: string): boolean {
+function getBrightness(color: string): number {
   let r = 0;
   let g = 0;
   let b = 0;
@@ -66,5 +66,23 @@ export function isLight(color: string): boolean {
   }
 
   const hsp = Math.sqrt(0.299*(r**2) + 0.587*(g**2) + 0.114*(b**2));
-  return hsp > 225 ? true : false;
+  return hsp;
+}
+
+/**
+ * Determines whether the color icon is light enough to require a border (light mode only)
+ * @param color The color hex code
+ * @returns true if brightness is above a certain threshold
+ */
+export function isLight(color: string): boolean {
+  return getBrightness(color) > 225 ? true : false;
+}
+
+/**
+ * Determines whether the color icon is dark enough to require a border (dark mode only)
+ * @param color The color hex code
+ * @returns true if brightness is below a certain threshold
+ */
+export function isDark(color: string): boolean {
+  return getBrightness(color) < 75 ? true : false;
 }
