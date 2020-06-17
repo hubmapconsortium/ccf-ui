@@ -65,8 +65,7 @@ function getBrightness(color: string): number {
     b = Number(`0x${color[5]}${color[6]}`);
   }
 
-  const hsp = Math.sqrt(0.299*(r**2) + 0.587*(g**2) + 0.114*(b**2));
-  return hsp;
+  return Math.sqrt(0.299*(r**2) + 0.587*(g**2) + 0.114*(b**2));
 }
 
 /**
