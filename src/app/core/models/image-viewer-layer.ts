@@ -39,4 +39,32 @@ export class ImageViewerLayer {
 
     return gradient;
   }
+
+}
+
+/**
+ * Determines whether the color icon is light enough to require a border
+ * @param color The color hex code
+ * @returns true if brightness is above a certain threshold
+ */
+export function isLight(color: string): boolean {
+  let r = 0;
+  let g = 0;
+  let b = 0;
+
+  // 3 digits
+  if (color.length === 4) {
+    r = Number(`0x${color[1]}${color[1]}`);
+    g = Number(`0x${color[2]}${color[2]}`);
+    b = Number(`0x${color[3]}${color[3]}`);
+
+  // 6 digits
+  } else if (color.length === 7) {
+    r = Number(`0x${color[1]}${color[2]}`);
+    g = Number(`0x${color[3]}${color[4]}`);
+    b = Number(`0x${color[5]}${color[6]}`);
+  }
+
+  const hsp = Math.sqrt(0.299*(r**2) + 0.587*(g**2) + 0.114*(b**2));
+  return hsp > 225 ? true : false;
 }
