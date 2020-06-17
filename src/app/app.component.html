@@ -1,5 +1,5 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [filters]="data.filter$ | async" (logoClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
+  <ccf-header [filters]="data.filter$ | async" (refreshClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
   <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
   <ccf-image-viewer-popover #viewer></ccf-image-viewer-popover>
 
@@ -17,9 +17,6 @@
         </button>
         <button class="scheme-toggle button" (click)="toggleScheme()">
           <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
-        </button>
-        <button class="reset button" (click)="reset(left, right, filterbox, viewer)">
-          <mat-icon class="icon">refresh</mat-icon>
         </button>
       </div>
       <ccf-results-browser

@@ -1,14 +1,17 @@
 <mat-toolbar class="ccf-header">
-  <mat-icon class="logo" aria-hidden="false" aria-label="Reset tool" matTooltip="Human BioMolecular Atlas Project"
-            matTooltipPosition="right" svgIcon="app:logo" (click)="logoClicked.emit()"></mat-icon>
-
+  <a href="dataSourceService.dbOptions.hubmapDataUrl">
+    <mat-icon class="logo"  aria-hidden="false" aria-label="Reset tool" matTooltip="Human BioMolecular Atlas Project"
+              matTooltipPosition="right" svgIcon="app:logo"></mat-icon>
+  </a>
+            
   <div class="filler"></div>
-
   <div class="filter-labels">
     <div>Sex: {{filters?.sex}}</div>
     <div>Age: {{filters?.ageRange[0]}}-{{filters?.ageRange[1]}}</div>
     <div>BMI: {{filters?.bmiRange[0]}}-{{filters?.bmiRange[1]}}</div>
   </div>
+  
+  <mat-icon class="refresh button" (click)="refreshClicked.emit()">refresh</mat-icon>
 
   <a class="download" href="https://sampledata.hubmapconsortium.org/home" rel="noreferrer noopener" target="_blank">
     <mat-icon class="download-icon" aria-hidden="false" aria-label="Download content" (click)="downloadClicked.emit()">

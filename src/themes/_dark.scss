@@ -35,7 +35,8 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   contrast-text: map-get($primary-colors, 50), //#FAFAFA
   download-icon: map-get($mat-amber, A400),
   disabled: map-get($primary-colors, 800), //#424242
-  highlight: map-get($primary-colors, 'white')
+  highlight: map-get($primary-colors, 'white'),
+  header-download-icon: map-get($mat-amber, A400)
 ));
 
 $background: map-merge($mat-dark-theme-background, (

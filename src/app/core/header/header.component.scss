@@ -6,18 +6,19 @@
   display: flex;
 
   .logo {
-    width: 5rem;
+    width: 6rem;
   }
 
   .download {
     height: 1.5rem;
   }
 
-  .logo, .download {
+  .logo, .download, .refresh {
     display: flex;
     align-items: center;
     transition: color 1s;
     cursor: pointer;
+    text-decoration: none;
   }
 
   :not(:last-child) {

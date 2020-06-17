@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
+import { DataSourceService } from '../../core/services/data-source/data-source.service';
 
 /**
  * Header which is always displayed on the site; contains current filter info,
@@ -13,15 +13,18 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class HeaderComponent {
 
+  constructor(readonly dataSourceService: DataSourceService) {
+  }
+
   /**
    * Current filter settings
    */
   @Input() filters: Record<string, unknown[] | unknown>;
 
   /**
-   * Emitted when logo is clicked
+   * Emitted when refresh button is clicked
    */
-  @Output() logoClicked = new EventEmitter<void>();
+  @Output() refreshClicked = new EventEmitter<void>();
 
   /**
    * Emitted when download button is clicked
