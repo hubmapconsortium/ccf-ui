@@ -17,12 +17,6 @@ describe('HeaderComponent', () => {
     expect(outputs.downloadClicked.emit).toHaveBeenCalled();
   });
 
-  it('should emit logoClicked when logo is clicked', async () => {
-    const { find, outputs } = await shallow.render();
-    find('.logo').triggerEventHandler('click', {});
-    expect(outputs.logoClicked.emit).toHaveBeenCalled();
-  });
-
   async function testFilterLabel(
     index: number,
     data: Record<string, unknown[] | unknown>,
