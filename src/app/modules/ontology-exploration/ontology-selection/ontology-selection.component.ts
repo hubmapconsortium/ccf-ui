@@ -22,7 +22,15 @@ export class OntologySelectionComponent {
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
 
+  /**
+   * A record of terms within the current filter.  To be passed on to ontology-tree
+   */
   @Input() occurenceData: Record<string, number>;
+
+  /**
+   * A record of terms the app currently has data for.  To be passed on to ontology-tree
+   */
+  @Input() termData: Record<string, number>;
 
 
   /**
@@ -38,7 +46,7 @@ export class OntologySelectionComponent {
   constructor(
     public ontologySearchService: OntologySearchService,
     private readonly store: Store
-  ) {}
+  ) { }
 
   /**
    * Ontology selection event when node is selected from the search results.

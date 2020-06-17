@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { action, NgxsDataRepository, StateRepository } from '@ngxs-labs/data';
 import { State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
-import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
+import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject, Observable } from 'rxjs';
 import { distinct, map, pluck, publishReplay, refCount, switchMap, tap, finalize } from 'rxjs/operators';
 
 import { AggregateResult, Filter, ListResult } from 'ccf-database';
@@ -91,8 +91,10 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
   private readonly _listDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
   private readonly _aggregateDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
-  /** Implementation subject for aggregateDataQueryStatus$. */
+  /** Implementation subject for termOccurencesDataQueryStatus$. */
   private readonly _termOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  /** Implementation subject for ontologyTermsDataQueryStatus$. */
+  readonly _ontologyTermsFullData$: Observable<Record<string, number>>;
 
   /** Current filter. */
   readonly filter$ = this.state$.pipe(pluck('filter'));
@@ -137,6 +139,10 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
     this._listDataQueryStatus$.next(DataQueryState.Completed);
     this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
     this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
+
+    const ontologyTermsData = new ReplaySubject<Record<string, number>>(1);
+    source.getOntologyTermOccurences().subscribe(ontologyTermsData);
+    this._ontologyTermsFullData$ = ontologyTermsData;
   }
 
   /**
