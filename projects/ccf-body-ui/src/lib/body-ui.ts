@@ -69,6 +69,11 @@ export class BodyUI {
     if (data?.length > 0) {
       const zoomOpacity = (this.bodyUILayer.state as {zoomOpacity: boolean}).zoomOpacity;
       this.bodyUILayer.setState({data, zoomOpacity});
+      for (const node of data) {
+        if (node.zoomToOnLoad) {
+          this.zoomTo(node);
+        }
+      }
     }
   }
 

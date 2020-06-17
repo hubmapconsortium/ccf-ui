@@ -83,7 +83,10 @@ export class CCFDatabase implements DataSource {
         if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
           ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
         } else {
-          ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken));
+          ops.push(addHubmapDataToStore(
+            this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken,
+            this.options.hubmapAssetsUrl, this.options.hubmapPortalUrl
+          ));
         }
       }
       await Promise.all(ops);

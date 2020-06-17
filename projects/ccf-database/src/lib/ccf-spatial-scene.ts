@@ -4,7 +4,7 @@ import { CCFDatabase } from './ccf-database';
 import { Filter } from './interfaces';
 import { getSpatialEntity } from './queries/spatial-result-n3';
 import { SpatialEntity } from './spatial-types';
-import { ccf } from './util/prefixes';
+import { ccf, rui } from './util/prefixes';
 
 
 export interface SpatialSceneNode {
@@ -16,6 +16,7 @@ export interface SpatialSceneNode {
   scenegraph?: string;
   scenegraphNode?: string;
   zoomBasedOpacity?: boolean;
+  zoomToOnLoad?: boolean;
   color?: [number, number, number, number];
   transformMatrix: Matrix4;
   tooltip: string;
@@ -64,23 +65,39 @@ export class CCFSpatialScene {
     const body = this.getReferenceBody(filter);
     const organs = getSpatialEntity(this.db.store, ccf.spatial.MaleOrgans.id);
     const store = this.db.store;
-    return [
+    const terms = filter?.ontologyTerms || [];
+    const hasTerm = {
+      kidney: terms.indexOf(rui.kidney.id) === 0,
+      right_kidney: terms.indexOf(rui.right_kidney.id) === 0,
+      left_kidney: terms.indexOf(rui.left_kidney.id) === 0,
+      spleen: terms.indexOf(rui.spleen.id) === 0,
+    };
+
+    let nodes: (SpatialSceneNode | undefined)[] = [
       this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
       ...this.getReferenceOrgans(filter).map((organ) =>
         this.getSceneNode(organ, body, {unpickable: true, _lighting: 'pbr', zoomBasedOpacity: true,  color: [255, 0, 0, 1*255]})
       ),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Right Kidney!'}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Left Kidney!'}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleen').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Spleen!'}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Right Kidney',
+        unpickable: hasTerm.kidney || hasTerm.right_kidney, zoomToOnLoad: hasTerm.right_kidney}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Left Kidney',
+        unpickable: hasTerm.kidney || hasTerm.left_kidney, zoomToOnLoad: hasTerm.left_kidney}),
+      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleen').id), body, {color: [255, 255, 255, 25], tooltip: 'Query by Spleen!',
+        unpickable: hasTerm.spleen, zoomToOnLoad: hasTerm.spleen})
+    ];
+
+    if (filter?.debug) {
       // Debug bounding boxes
-      ...(filter?.debug ? [
+      nodes = nodes.concat([
         this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
         this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), wholeBody, {color: [255, 0, 0, 0.5*255], wireframe: true}),
         this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC1').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
         this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC2').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
         this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC3').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true})
-      ] : [])
-    ].filter(s => s !== undefined) as SpatialSceneNode[];
+      ]);
+    }
+
+    return nodes.filter(s => s !== undefined) as SpatialSceneNode[];
   }
 
   getSceneNode(source: SpatialEntity, target: SpatialEntity, nodeAttrs: Partial<SpatialSceneNode> = {}): SpatialSceneNode | undefined {
