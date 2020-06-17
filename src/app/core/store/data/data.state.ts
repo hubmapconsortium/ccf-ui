@@ -3,7 +3,7 @@ import { action, NgxsDataRepository, StateRepository } from '@ngxs-labs/data';
 import { State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
 import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject, Observable } from 'rxjs';
-import { distinct, map, pluck, publishReplay, refCount, switchMap, tap, finalize } from 'rxjs/operators';
+import { distinct, map, pluck, publishReplay, refCount, switchMap, tap } from 'rxjs/operators';
 
 import { AggregateResult, Filter, ListResult } from 'ccf-database';
 import { DataSourceService } from '../../services/data-source/data-source.service';
