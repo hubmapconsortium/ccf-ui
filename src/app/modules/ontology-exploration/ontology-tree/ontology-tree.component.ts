@@ -56,6 +56,50 @@ export class OntologyTreeComponent implements OnInit {
   }
 
   /**
+   * Occurence Data is a record of terms that are in the current filter.
+   */
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  set occurenceData(value: Record<string, number>) {
+    if (value) {
+      this._occurenceData = value;
+    } else {
+      this._occurenceData = {};
+    }
+  }
+
+  get occurenceData(): Record<string, number> {
+    return this._occurenceData;
+  }
+
+  /**
+   * Storage for the getter / setter
+   */
+  private _occurenceData: Record<string, number>;
+
+  /**
+   * Term Data is a record of terms that the app currently has data for.
+   */
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  set termData(value: Record<string, number>) {
+    if (value) {
+      this._termData = value;
+    } else {
+      this._termData = {};
+    }
+  }
+
+  get termData(): Record<string, number> {
+    return this._termData;
+  }
+
+  /**
+   * Storage for the getter / setter
+   */
+  private _termData: Record<string, number>;
+
+  /**
    * Creates an instance of ontology tree component.
    *
    * @param cdr The change detector.

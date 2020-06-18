@@ -23,7 +23,11 @@
         color: mat-color($accent);
       }
 
-      .disabled {
+      .filtered-out {
+        color: mat-color($primary, text);
+      }
+
+      .unavailable {
         color: mat-color($foreground, disabled-text);
       }
     }
