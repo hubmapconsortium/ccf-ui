@@ -113,6 +113,7 @@ export class HuBMAPEntity {
   groupUUID: string;
   groupName: string;
   protocolUrl: Url;
+  portalUrl: Url;
 
   images: Url[];
   imageProviders: Iri[];
@@ -127,7 +128,7 @@ export class HuBMAPEntity {
   spatialOrBulk: 'Spatial' | 'Bulk';
   thumbnailUrl: string;
 
-  constructor(public data: JsonDict, public assetsApi = '') {
+  constructor(public data: JsonDict, public assetsApi = '', portalUrl = 'https://portal.hubmapconsortium.org/') {
     this.id = this.data.uuid as string;
     this.entityType = this.data.entity_type as 'Donor' | 'Sample' | 'Dataset';
 
@@ -200,6 +201,10 @@ export class HuBMAPEntity {
 
     let ruiLocation = (data.rui_location || this.ancestors[0].rui_location) as OldRuiData;
     if (ruiLocation) {
+      // RUI Location may come in as an unparsed string
+      if (typeof ruiLocation === 'string') {
+        ruiLocation = JSON.parse(ruiLocation as string) as OldRuiData;
+      }
       if (groupUUID === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // UFL
         ruiLocation = fixUflRuiLocation(ruiLocation, data);
       }
@@ -254,6 +259,8 @@ export class HuBMAPEntity {
     } else if (this.spatialOrBulk === 'Bulk') {
       this.thumbnailUrl = 'assets/icons/ico-bulk.svg';
     }
+
+    this.portalUrl = `${portalUrl}browse/sample/${this.id}`;
   }
 
   /**
@@ -271,10 +278,10 @@ export class HuBMAPEntity {
       shortInfo0: this.doi,
       shortInfo1: this.groupName,
       shortInfo2: data.description || this.donor.description,
-      // downloadUrl,
-      // downloadTooltip,
-      resultUrl: this.protocolUrl,
-      resultType: this.protocolUrl ? 'external_link' : undefined,
+      downloadUrl: this.portalUrl,
+      downloadTooltip: 'View in the HuBMAP Data Portal',
+      resultUrl: this.spatialOrBulk === 'Bulk' ? this.portalUrl : undefined,
+      resultType: this.spatialOrBulk === 'Bulk' ? 'external_link' : undefined,
 
       // image viewer metadata
       organName: HBM_ORGAN_LABELS[this.organName] || this.organName,
@@ -307,18 +314,19 @@ export class HuBMAPEntity {
  * @param serviceType The service type.
  */
 export async function addHubmapDataToStore(
-  store: N3Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string, assetsApi = ''
+  store: N3Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string, assetsApi = '', portalUrl = ''
 ): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
     hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   } else if (serviceType === 'search-api') {
+    const headers: Record<string, string> = { 'Content-type': 'application/json' };
+    if (serviceToken && serviceToken.length > 0) {
+      headers.Authorization = `Bearer ${serviceToken}`;
+    }
     hubmapData = await fetch(dataUrl, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${serviceToken}`,
-        'Content-type': 'application/json'
-      },
+      headers,
       body: JSON.stringify({
         version: true,
         size: 10000,

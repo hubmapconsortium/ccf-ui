@@ -10,6 +10,7 @@ import { getImageViewerData } from './queries/image-viewer-data-n3';
 import { getListResult } from './queries/list-result-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { SpatialEntity } from './spatial-types';
+import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 
 
 /** Database initialization options. */
@@ -20,6 +21,8 @@ export interface CCFDatabaseOptions {
   ccfContextUrl: string;
   /** Data service type. */
   hubmapDataService: 'static' | 'search-api';
+  /** Hubmap Portal url. */
+  hubmapPortalUrl: string;
   /** Hubmap data url. */
   hubmapDataUrl: string;
   /** Hubmap assets api url. */
@@ -33,6 +36,7 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
   ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl',
   ccfContextUrl: 'https://purl.org/ccf/latest/ccf-context.jsonld',
   hubmapDataService: 'static',
+  hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
   hubmapDataUrl: '',
   hubmapAssetsUrl: 'https://assets.hubmapconsortium.org'
 };
@@ -79,7 +83,10 @@ export class CCFDatabase implements DataSource {
         if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
           ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
         } else {
-          ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken));
+          ops.push(addHubmapDataToStore(
+            this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken,
+            this.options.hubmapAssetsUrl, this.options.hubmapPortalUrl
+          ));
         }
       }
       await Promise.all(ops);
@@ -150,6 +157,16 @@ export class CCFDatabase implements DataSource {
    */
   async getAggregateResults(filter?: Filter): Promise<AggregateResult[]> {
     return getAggregateResults(this.getIds(filter), this.store);
+  }
+
+  /**
+   * Get number of occurrences of ontology terms for a set of ids.
+   *
+   * @param [filter] The filter.
+   * @returns Ontology term counts.
+   */
+  async getOntologyTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+    return getOntologyTermOccurences(this.getIds(filter), this.store);
   }
 
   /**
