@@ -93,8 +93,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
   private readonly _aggregateDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for termOccurencesDataQueryStatus$. */
   private readonly _termOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
-  /** Implementation subject for ontologyTermsDataQueryStatus$. */
-  readonly _ontologyTermsFullData$: Observable<Record<string, number>>;
+  /** Keeping track of all ontology terms there is data for. */
+  readonly ontologyTermsFullData$: Observable<Record<string, number>>;
 
   /** Current filter. */
   readonly filter$ = this.state$.pipe(pluck('filter'));
@@ -142,7 +142,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
 
     const ontologyTermsData = new ReplaySubject<Record<string, number>>(1);
     source.getOntologyTermOccurences().subscribe(ontologyTermsData);
-    this._ontologyTermsFullData$ = ontologyTermsData;
+    this.ontologyTermsFullData$ = ontologyTermsData;
   }
 
   /**
