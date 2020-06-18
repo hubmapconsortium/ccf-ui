@@ -1,18 +1,20 @@
 <div class="result-item">
-  <div *ngIf="!!data.thumbnailUrl; else placeholderImage">
-    <img [src]="data.thumbnailUrl" class="result-image" alt="thumbnail-image.png">
-  </div>
-  <ng-template #placeholderImage>
-    <div class="result-image-placeholder"></div>
-  </ng-template>
+  <div class="result-item-click-area" (click)="openResult()">
+    <div *ngIf="!!data.thumbnailUrl; else placeholderImage">
+      <img [src]="data.thumbnailUrl" class="result-image" alt="thumbnail-image.png">
+    </div>
+    <ng-template #placeholderImage>
+      <div class="result-image-placeholder"></div>
+    </ng-template>
 
-  <div class="result-description">
-    <div class="description-label description-data">{{ data.label }}</div>
-    <div class="description-data" *ngFor="let info of data.shortInfo">{{ info }}</div>
+    <div class="result-description">
+      <div class="description-label description-data">{{ data.label }}</div>
+      <div class="description-data" *ngFor="let info of data.shortInfo">{{ info }}</div>
+    </div>
   </div>
 
   <div *ngIf="!!data.downloadUrl; else grayIcon" class="result-download">
-    <a [href]="data.downloadUrl" rel="noreferrer noopener" target="_blank">
+    <a [href]="data.downloadUrl" rel="noreferrer noopener" target="_blank" [title]="data.downloadTooltip">
       <mat-icon class="download" aria-hidden="false" aria-label="Download content">cloud_download</mat-icon>
     </a>
   </div>
