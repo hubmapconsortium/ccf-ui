@@ -38,6 +38,11 @@ export class ColorSchemePopupComponent {
   private owner?: Element;
 
   /**
+   * Controls direction the popup opens
+   */
+  bottom = false;
+
+  /**
    * Listens to document click event
    * Closes the popup only if user clicks outside the popup
    * @param target The element on which the event was fired
@@ -52,9 +57,11 @@ export class ColorSchemePopupComponent {
   }
 
   /**
-   * Opens popup
+   * Opens popup and calculates which direction the popup opens based on click position
    */
-  open(owner?: Element): void {
+  open(event: MouseEvent, owner?: Element): void {
+    const clickPos = event.pageY;
+    this.bottom = window.innerHeight - clickPos < 336;
     this.owner = owner;
     this.popupVisible = !this.popupVisible;
   }

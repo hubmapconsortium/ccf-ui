@@ -14,6 +14,12 @@ import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
   styleUrls: ['./color-scheme-contents.component.scss']
 })
 export class ColorSchemeContentsComponent {
+
+  /**
+   * Determines if the popup opens up or down from the icon position
+   */
+  @Input() bottom = false;
+
   /**
    * List of available schemes
    */
