@@ -59,7 +59,7 @@ describe('ResultsBrowserItemComponent', () => {
 
   it('should call window.open for a new tab when a result with external_link resultType is clicked', async () => {
     const data: ListResult = { '@id': '123', '@type': 'ListResult', id: '123', label: 'test', downloadUrl: 'test.com' };
-    const { instance, outputs } = await shallow.render({ bind: { data }});
+    const { instance } = await shallow.render({ bind: { data }});
     data.resultUrl = 'testresult.com';
     data.resultType = 'external_link';
     const spy = spyOn(window, 'open');
@@ -70,7 +70,7 @@ describe('ResultsBrowserItemComponent', () => {
 
   it('should call window.open in the same tab when a result with local_link resultType is clicked', async () => {
     const data: ListResult = { '@id': '123', '@type': 'ListResult', id: '123', label: 'test', downloadUrl: 'test.com' };
-    const { instance, outputs } = await shallow.render({ bind: { data }});
+    const { instance } = await shallow.render({ bind: { data }});
     data.resultUrl = 'testresult.com';
     data.resultType = 'local_link';
     const spy = spyOn(window, 'open');

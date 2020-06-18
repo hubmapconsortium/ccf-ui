@@ -1,5 +1,4 @@
 import { ScrollingModule, CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { AggregateResult, ListResult } from 'ccf-database';
 import { Shallow } from 'shallow-render';
 
 import { ResultsBrowserComponent } from './results-browser.component';
