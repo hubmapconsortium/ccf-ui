@@ -201,6 +201,10 @@ export class HuBMAPEntity {
 
     let ruiLocation = (data.rui_location || this.ancestors[0].rui_location) as OldRuiData;
     if (ruiLocation) {
+      // RUI Location may come in as an unparsed string
+      if (typeof ruiLocation === 'string') {
+        ruiLocation = JSON.parse(ruiLocation as string) as OldRuiData;
+      }
       if (groupUUID === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // UFL
         ruiLocation = fixUflRuiLocation(ruiLocation, data);
       }
