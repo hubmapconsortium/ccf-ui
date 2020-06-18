@@ -320,12 +320,13 @@ export async function addHubmapDataToStore(
   if (serviceType === 'static') {
     hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   } else if (serviceType === 'search-api') {
+    const headers: Record<string, string> = { 'Content-type': 'application/json' };
+    if (serviceToken && serviceToken.length > 0) {
+      headers.Authorization = `Bearer ${serviceToken}`;
+    }
     hubmapData = await fetch(dataUrl, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${serviceToken}`,
-        'Content-type': 'application/json'
-      },
+      headers,
       body: JSON.stringify({
         version: true,
         size: 10000,
