@@ -13,7 +13,7 @@ export class ImageViewerLayer {
   id: string;
   colorScheme: ColorScheme;
 
-  constructor(data: Omit<ImageViewerLayer, 'background'>) {
+  constructor(data: Omit<ImageViewerLayer, 'background' | 'getBrightness' | 'isLight' | 'isDark'>) {
     Object.assign(this, data);
   }
 
@@ -40,48 +40,42 @@ export class ImageViewerLayer {
     return gradient;
   }
 
-}
+  /**
+   * Converts the layer's hex color code to RGB and calculates a value for the color brightness
+   */
+  getBrightness(): number {
+    const color = this.color;
+    let r = 0;
+    let g = 0;
+    let b = 0;
 
-/**
- * Converts a hex color code to RGB and calculates a value for the color brightness
- * @param color Hex color code
- * @returns brightness value
- */
-function getBrightness(color: string): number {
-  let r = 0;
-  let g = 0;
-  let b = 0;
+    // 3 digits
+    if (color.length === 4) {
+      r = Number(`0x${color[1]}${color[1]}`);
+      g = Number(`0x${color[2]}${color[2]}`);
+      b = Number(`0x${color[3]}${color[3]}`);
 
-  // 3 digits
-  if (color.length === 4) {
-    r = Number(`0x${color[1]}${color[1]}`);
-    g = Number(`0x${color[2]}${color[2]}`);
-    b = Number(`0x${color[3]}${color[3]}`);
+    // 6 digits
+    } else if (color.length === 7) {
+      r = Number(`0x${color[1]}${color[2]}`);
+      g = Number(`0x${color[3]}${color[4]}`);
+      b = Number(`0x${color[5]}${color[6]}`);
+    }
 
-  // 6 digits
-  } else if (color.length === 7) {
-    r = Number(`0x${color[1]}${color[2]}`);
-    g = Number(`0x${color[3]}${color[4]}`);
-    b = Number(`0x${color[5]}${color[6]}`);
+    return Math.sqrt(0.299*(r**2) + 0.587*(g**2) + 0.114*(b**2));
   }
 
-  return Math.sqrt(0.299*(r**2) + 0.587*(g**2) + 0.114*(b**2));
-}
+  /**
+   * Determines whether the color icon is light enough to require a border (light mode only)
+   */
+  isLight(): boolean {
+    return this.getBrightness() > 225 ? true : false;
+  }
 
-/**
- * Determines whether the color icon is light enough to require a border (light mode only)
- * @param color The color hex code
- * @returns true if brightness is above a certain threshold
- */
-export function isLight(color: string): boolean {
-  return getBrightness(color) > 225 ? true : false;
-}
-
-/**
- * Determines whether the color icon is dark enough to require a border (dark mode only)
- * @param color The color hex code
- * @returns true if brightness is below a certain threshold
- */
-export function isDark(color: string): boolean {
-  return getBrightness(color) < 75 ? true : false;
+  /**
+   * Determines whether the color icon is dark enough to require a border (dark mode only)
+   */
+  isDark(): boolean {
+    return this.getBrightness() < 75 ? true : false;
+  }
 }

@@ -1,5 +1,5 @@
 <div class="launch-button" [class.circle]="layer.colorScheme.type == 'discrete'" 
-     [class.dark]="iconDark(layer.color)" [class.light]="iconLight(layer.color)" 
+     [class.dark]="layer.isDark()" [class.light]="layer.isLight()" 
      [style.background]="layer.background"
      (click)="schemepopup.open(button)" #button></div>
 

@@ -119,7 +119,6 @@ export class AppComponent {
   }
 
   get hubmapPortalUrl(): string {
-    // console.log(this.dataSourceService.dbOptions.hubmapPortalUrl)
     return this.dataSourceService.dbOptions.hubmapPortalUrl;
   }
 }
