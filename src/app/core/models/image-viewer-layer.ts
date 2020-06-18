@@ -1,5 +1,7 @@
 import { ColorScheme } from './color-scheme';
 
+type omitProperties = 'background' | 'getBrightness' | 'isLight' | 'isDark';
+
 export class ImageViewerLayer {
   selected: boolean;
   color: string;
@@ -13,7 +15,7 @@ export class ImageViewerLayer {
   id: string;
   colorScheme: ColorScheme;
 
-  constructor(data: Omit<ImageViewerLayer, 'background' | 'getBrightness' | 'isLight' | 'isDark'>) {
+  constructor(data: Omit<ImageViewerLayer, omitProperties>) {
     Object.assign(this, data);
   }
 

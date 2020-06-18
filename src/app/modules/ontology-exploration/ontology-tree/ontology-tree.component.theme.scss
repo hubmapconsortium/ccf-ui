@@ -10,7 +10,7 @@
     .node {
       .toggle {
         background: mat-color($foreground, contrast-icon);
-        color: mat-color($background, content-background);
+        color: mat-color($background, background);
       }
   
       .text {

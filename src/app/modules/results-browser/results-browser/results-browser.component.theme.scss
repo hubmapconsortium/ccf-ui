@@ -3,6 +3,7 @@
 @mixin theme($theme) {
   $primary: map-get($theme, primary);
   $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
 
   #title {
     color: mat-color($primary, text);
@@ -19,7 +20,7 @@
 
   .browser-item-container {
     &.selected {
-      background-color: mat-color($background, dropdown-menu);
+      background-color: mat-color($foreground, dividers);
     }
   }
 }

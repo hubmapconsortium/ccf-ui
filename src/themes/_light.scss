@@ -44,12 +44,12 @@ $foreground: map-merge($mat-light-theme-foreground, (
 $background: map-merge($mat-light-theme-background, (
   background: map-get($primary-colors, 50),
   stage-background: map-get($primary-colors, 'black'),
-  content-background: map-get($primary-colors, 50), //#FAFAFA
   dialog: map-get($primary-colors, 50), //#FAFAFA
   app-bar: map-get($primary-colors, light-header), //#444A65
   modal: map-get($primary-colors, 'white'),
   dropdown-menu: map-get($primary-colors, 300), //#E0E0E0
   dropdown-hover: map-get($primary-colors, 300), //#E0E0E0
+  image-placeholder: map-get($primary-colors, light-disabled), //#BDBDBD
 ));
 
 $theme: (
