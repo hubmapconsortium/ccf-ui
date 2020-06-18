@@ -116,4 +116,9 @@ export class AppComponent {
     });
     return selectionString;
   }
+
+  get hubmapPortalUrl(): string {
+    // console.log(this.dataSourceService.dbOptions.hubmapPortalUrl)
+    return this.dataSourceService.dbOptions.hubmapPortalUrl;
+  }
 }

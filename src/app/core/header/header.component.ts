@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { DataSourceService } from '../../core/services/data-source/data-source.service';
 
 /**
  * Header which is always displayed on the site; contains current filter info,
@@ -13,8 +12,7 @@ import { DataSourceService } from '../../core/services/data-source/data-source.s
 })
 export class HeaderComponent {
 
-  constructor(readonly dataSourceService: DataSourceService) {
-  }
+  @Input() hubmapPortalUrl: string;
 
   /**
    * Current filter settings

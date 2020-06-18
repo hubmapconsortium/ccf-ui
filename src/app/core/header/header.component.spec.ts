@@ -17,6 +17,12 @@ describe('HeaderComponent', () => {
     expect(outputs.downloadClicked.emit).toHaveBeenCalled();
   });
 
+  it('should emit refreshClicked when refresh button is clicked', async () => {
+    const { find, outputs } = await shallow.render();
+    find('.refresh').triggerEventHandler('click', {});
+    expect(outputs.refreshClicked.emit).toHaveBeenCalled();
+  });
+
   async function testFilterLabel(
     index: number,
     data: Record<string, unknown[] | unknown>,
