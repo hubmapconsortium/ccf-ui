@@ -39,16 +39,25 @@ export class ColorSchemeContentsComponent {
    */
   transparencySliderOptions: Options;
 
+  /**
+   * Updates current low brightness value with new low brightness value
+   */
   get brightnessLow(): number { return this.layer.brightness[0]; }
   set brightnessLow(value: number) {
     this.updateLayer({ brightness: [value, this.brightnessHigh] });
   }
 
+  /**
+   * Updates current high brightness value with new high brightness value
+   */
   get brightnessHigh(): number { return this.layer.brightness[1]; }
   set brightnessHigh(value: number) {
     this.updateLayer({ brightness: [this.brightnessLow, value] });
   }
 
+  /**
+   * Updates current transparency value with new transparency value
+   */
   get transparency(): number { return this.layer.transparency; }
   set transparency(value: number) {
     this.updateLayer({ transparency: value });
@@ -95,6 +104,10 @@ export class ColorSchemeContentsComponent {
     this.layerChange.emit(this.layer);
   }
 
+  /**
+   * Updates layer with new layer settings
+   * @param updates Contains updated layer settings
+   */
   private updateLayer(
     updates: Partial<ConstructorParameters<typeof ImageViewerLayer>[0]>
   ): void {

@@ -210,6 +210,10 @@ export class ImageViewerPopoverComponent {
     this.layers = layers;
   }
 
+  /**
+   * Creates layers array
+   * @param names array of layer names
+   */
   createLayers(names: string[]): void {
     this.layers = names.map((name, index) => new ImageViewerLayer({
       id: name,
