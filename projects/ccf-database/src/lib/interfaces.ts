@@ -28,6 +28,8 @@ export interface ListResult {
   resultUrl?: string;
   /** Type of result url. */
   resultType?: 'external_link' | 'local_link' | 'image_viewer';
+  /** If the result should be highlighted */
+  highlighted?: boolean;
 }
 
 /** Data for image viewer display. */
@@ -74,6 +76,8 @@ export interface Filter {
   technologies: string[];
   /** Ontology terms. */
   ontologyTerms: string[];
+  /** Entities to be highlighted */
+  highlightedEntities?: string[];
   /** Whether it has a spatial entity. */
   hasSpatialEntity?: boolean;
   /** Include optional debugging information */

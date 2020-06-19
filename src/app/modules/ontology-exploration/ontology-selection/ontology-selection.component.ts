@@ -32,6 +32,12 @@ export class OntologySelectionComponent {
    */
   @Input() termData: Record<string, number>;
 
+  /**
+   * Input list of selected ontology terms passed down to ontology-tree.
+   * Used to change display of ontology tree when selection is made from
+   * outside the component.
+   */
+  @Input() ontologyFilter: string[];
 
   /**
    * Captures and passes along the change in ontologySelections.

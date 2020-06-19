@@ -1,5 +1,5 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { filter, invoke, property } from 'lodash';
 
@@ -26,7 +26,13 @@ const isExpandable = property<FlatNode, boolean>('expandable');
   styleUrls: ['./ontology-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OntologyTreeComponent implements OnInit {
+export class OntologyTreeComponent implements OnInit, OnChanges {
+  /**
+   * Input of ontology filter, used for changing the ontology selections
+   * from outside this component.
+   */
+  @Input() ontologyFilter: string[];
+
   /**
    * The node like objects to display in the tree.
    */
@@ -174,9 +180,9 @@ export class OntologyTreeComponent implements OnInit {
   anySelectionsMade = false;
 
   /**
-   * Currently selected node, defaulted to the body node for when the page initially loads.
+   * Currently selected nodes, defaulted to the body node for when the page initially loads.
    */
-  selectedNodes: FlatNode[] = [this.bodyNode];
+  selectedNodes: FlatNode[] = [];
 
   /**
    * Expand the body node when the component is initialized.
@@ -187,15 +193,30 @@ export class OntologyTreeComponent implements OnInit {
     }
   }
 
-  /**
-   * Selecting the body is slightly different because it has no parents, so here we are
-   * selecting the body, collapsing all the nodes, then expanding the body node manually.
-   */
-  selectBody(): void {
-    this.select(false, this.bodyNode);
-    this.control.collapseAll();
-    if (this.control.dataNodes) {
-      this.control.expand(this.control.dataNodes[0]);
+  ngOnChanges(changes: SimpleChanges): void{
+    if (changes.ontologyFilter) {
+      const ontologyFilter: string[] = changes.ontologyFilter.currentValue as string[];
+      if (ontologyFilter?.length >= 0) {
+        this.selectByIDs(ontologyFilter);
+      } else {
+        console.log('im here again: ', ontologyFilter);
+        this.selectByIDs([this.bodyNode.original.id]);
+      }
+    }
+  }
+
+  selectByIDs(ids: string[]): void {
+    const dataNodes = this.control.dataNodes;
+    const selectedNodes: FlatNode[] = dataNodes.filter(node => ids.indexOf(node.original.id) > -1);
+
+    if (selectedNodes?.length > 0) {
+      this.selectedNodes = selectedNodes;
+      this.control.collapseAll();
+      this.selectedNodes.forEach(selectedNode => {
+        this.expandAndSelect(selectedNode.original, (node) =>
+          dataNodes.find(findNode => findNode.original.id === node.parent)?.original as OntologyNode, true
+        );
+      });
     }
   }
 
@@ -204,13 +225,8 @@ export class OntologyTreeComponent implements OnInit {
    *
    * @param node The node to expand to and select.
    */
-  expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) => OntologyNode): void {
+  expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) => OntologyNode, additive = false): void {
     const { cdr, control } = this;
-
-    if (node.label === 'body') {
-      this.selectBody();
-      return;
-    }
 
     // Add all parents to a set
     const parents = new Set<OntologyNode>();
@@ -226,12 +242,18 @@ export class OntologyTreeComponent implements OnInit {
     const flatNode = control.dataNodes.find(flat => flat.original === node);
 
     // Expand nodes
-    control.collapseAll();
+    if (!additive) {
+      this.selectedNodes = [];
+      control.collapseAll();
+    }
+
     for (const flat of parentFlatNodes) { control.expand(flat); }
+    if (node.label === 'body' && control.dataNodes?.length > 0) {
+      control.expand(control.dataNodes[0]);
+    }
 
     // Select the node
-    this.selectedNodes = [];
-    this.select(false, flatNode);
+    this.select(additive, flatNode, false, true);
 
     // Detect changes
     cdr.detectChanges();
@@ -264,9 +286,7 @@ export class OntologyTreeComponent implements OnInit {
    * @param node The node to select.
    * @param ctrlKey Whether or not the selection was made with a ctrl + click event.
    */
-  select(ctrlKey: boolean, node: FlatNode | undefined): void {
-    const nodeWasSelected = this.isSelected(node);
-
+  select(ctrlKey: boolean, node: FlatNode | undefined, emit: boolean, select: boolean): void {
     // This is to ensure the 'body' node is unselected regardless of what the first
     // selection is
     if (!this.anySelectionsMade) {
@@ -281,18 +301,20 @@ export class OntologyTreeComponent implements OnInit {
 
     // ctrl + click allows users to select multiple organs
     if (ctrlKey) {
-      if (nodeWasSelected) {
+      if (!select) {
         this.selectedNodes.splice(this.selectedNodes.indexOf(node), 1);
-      } else {
+      } else if (this.selectedNodes.indexOf(node) < 0) {
         this.selectedNodes.push(node);
       }
     } else {
       this.selectedNodes = [];
-      if (!nodeWasSelected) {
+      if (select) {
         this.selectedNodes.push(node);
       }
     }
 
-    this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
+    if (emit) {
+      this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
+    }
   }
 }

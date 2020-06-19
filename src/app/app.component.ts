@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ListResult } from 'ccf-database';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 
 import { OntologySelection } from './core/models/ontology-selection';
 import { DataSourceService } from './core/services/data-source/data-source.service';
@@ -31,15 +32,18 @@ export class AppComponent {
     map(state => state === DataQueryState.Running)
   );
 
+  readonly ontologyTerms$: Observable<readonly string[]>;
+
   /**
    * Creates an instance of app component.
    *
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
-    data.listData$.subscribe(console.log);
-    data.aggregateData$.subscribe(console.log);
-    data.termOccurencesData$.subscribe(console.log);
+    data.listData$.subscribe();
+    data.aggregateData$.subscribe();
+    data.termOccurencesData$.subscribe();
+    this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
   }
 
   /**

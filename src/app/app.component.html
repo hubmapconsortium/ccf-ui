@@ -5,7 +5,12 @@
 
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
-      <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async" [occurenceData]="data.termOccurencesData$ | async" (ontologySelection)="ontologySelected($event)"></ccf-ontology-selection>
+      <ccf-ontology-selection
+        [termData]="data.ontologyTermsFullData$ | async"
+        [occurenceData]="data.termOccurencesData$ | async"
+        [ontologyFilter]="ontologyTerms$ | async"
+        (ontologySelection)="ontologySelected($event)"
+      ></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer position="end" opened #right (stateChange)="filterbox.removeBox()">
@@ -29,7 +34,7 @@
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer-content>
-      <ccf-body-ui></ccf-body-ui>
+      <ccf-body-ui [filter]="data.filter$ | async" (filterChange)="data.updateFilter($event)"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
 </div>
