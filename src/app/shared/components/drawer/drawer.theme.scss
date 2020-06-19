@@ -6,7 +6,7 @@
   $accent: map-get($theme, accent);
 
   .ccf-drawer {
-    background-color: mat-color($background, content-background);
+    background-color: mat-color($background, background);
     border-right-color: mat-color($foreground, divider);
     border-left-color: mat-color($foreground, divider);
   }

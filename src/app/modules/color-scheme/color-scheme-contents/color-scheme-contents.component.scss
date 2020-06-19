@@ -11,6 +11,11 @@
   right: -1.125rem;
   top: -1.125rem;
 
+  &.bottom {
+    top: auto;
+    bottom: 0rem;
+  }
+
   .scheme-contents {
     margin: 1rem;
     display: flex;

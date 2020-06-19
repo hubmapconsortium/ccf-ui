@@ -1,4 +1,4 @@
-<div class="color-scheme-contents-container">
+<div class="color-scheme-contents-container" [class.bottom]="bottom">
   <div class="scheme-contents">
     <ccf-color-bar *ngFor="let scheme of schemeOptions" class="swatch" [colorScheme]="scheme"
                    [selected]="scheme.name === layer.colorScheme.name" [selectedColor]="layer.color"

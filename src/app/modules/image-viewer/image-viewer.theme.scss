@@ -38,7 +38,7 @@
   }
 
   .image-viewer-container {
-    background-color: mat-color($background, content-background);
+    background-color: mat-color($background, background);
   }
 
   mat-panel-title {
@@ -54,27 +54,18 @@
   }
 
   .legend {
-    background-color: mat-color($background, content-background);
+    background-color: mat-color($background, background);
     color: mat-color($foreground, text);
   }
 
   .circle {
-    border: 1px solid transparent;
-  }
-
-  .light-theme {
-    .circle {
-      &.light {
-        border: 1px solid mat-color($primary, 'black');
-      }
+    box-shadow: 0 0 0 1px mat-color($background, background);
+    &.light {
+      box-shadow: 0 0 0 1px black;
     }
-  }
 
-  .dark-theme {
-    .circle {
-      &.dark {
-        border: 1px solid mat-color($primary, 'white');
-      }
+    &.dark {
+      box-shadow: 0 0 0 1px white;
     }
   }
 }
