@@ -72,7 +72,7 @@ const HBM_ORGAN_LABELS: { [organName: string]: string } = {
  * @param data The hubmap data.
  * @returns The converted data.
  */
-export function hubmapResponseAsJsonLd(data: object, assetsApi = ''): JsonLd {
+export function hubmapResponseAsJsonLd(data: object, assetsApi = '', portalUrl = ''): JsonLd {
   const entries = (get(data, 'hits.hits', []) as JsonDict[])
     .map(e => get(e, '_source', {}) as { [key: string]: unknown });
 
@@ -86,7 +86,7 @@ export function hubmapResponseAsJsonLd(data: object, assetsApi = ''): JsonLd {
       images: { '@id': 'hasImage', '@type': '@id' },
       imageProviders: { '@id': 'hasImageProvider', '@type': '@id'}
     },
-    '@graph': entries.map(e => new HuBMAPEntity(e, assetsApi).toJsonLd())
+    '@graph': entries.map(e => new HuBMAPEntity(e, assetsApi, portalUrl).toJsonLd())
   };
 }
 
@@ -128,7 +128,7 @@ export class HuBMAPEntity {
   spatialOrBulk: 'Spatial' | 'Bulk';
   thumbnailUrl: string;
 
-  constructor(public data: JsonDict, public assetsApi = '', portalUrl = 'https://portal.hubmapconsortium.org/') {
+  constructor(public data: JsonDict, public assetsApi = '', portalUrl = '') {
     this.id = this.data.uuid as string;
     this.entityType = this.data.entity_type as 'Donor' | 'Sample' | 'Dataset';
 
@@ -350,7 +350,7 @@ export async function addHubmapDataToStore(
     }).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   }
   if (hubmapData) {
-    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi), store);
+    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl), store);
   } else {
     console.warn(`Unable to load ${dataUrl} as HuBMAP Data`);
   }
