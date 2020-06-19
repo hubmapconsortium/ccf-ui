@@ -32,9 +32,10 @@ describe('ColorSchemePopupComponent', () => {
   });
 
   it('should set popup visibility to true when open() is called', async () => {
+    const mouseclick = new MouseEvent('mouseclick');
     const { instance } = await shallow.render();
     instance.popupVisible = false;
-    instance.open();
+    instance.open(mouseclick);
     expect(instance.popupVisible).toBe(true);
   });
 
