@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ImageViewerData } from 'ccf-database';
+import { ColorScheme } from 'src/app/core/models/color-scheme';
+
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 
@@ -32,7 +33,10 @@ export class ImageViewerContentComponent {
   /**
    * Output to pass up the changes made to the layers to parent components
    */
-  @Output() layersChanged = new EventEmitter<ImageViewerLayer>();
+  @Output() layerChange = new EventEmitter<ImageViewerLayer>();
+
+  /** Emits when the default scheme has changed.  */
+  @Output() schemeChange = new EventEmitter<ColorScheme>();
 
   /**
    * Hides the viewer

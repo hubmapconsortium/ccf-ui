@@ -45,7 +45,7 @@ describe('ImageViewerLayersComponent', () => {
     const layers = getTestLayers();
     const { instance, outputs } = await shallow.render({ bind: { layers } });
     instance.checkboxOnChange(layers[1]);
-    expect(outputs.selectedLayers.emit).toHaveBeenCalled();
+    expect(outputs.layerChanged.emit).toHaveBeenCalled();
   });
 
   it('should call handleUnselect when checkboxOnChange() is called on a selected layer', async () => {
@@ -55,21 +55,6 @@ describe('ImageViewerLayersComponent', () => {
     const spy = spyOn(instance, 'handleUnselect');
     instance.checkboxOnChange(layers[1]);
     expect(spy).toHaveBeenCalled();
-  });
-
-  it('filters out unselected layers, then sorts the remaining layers when activeLayers() is called', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render({ bind: { layers } });
-    const firstlayer = layers[0];
-    const secondlayer = layers[1];
-    const thirdlayer = layers[2];
-    secondlayer.selected = true;
-    secondlayer.selectionOrder = 1;
-    thirdlayer.selected = true;
-    thirdlayer.selectionOrder = 3;
-    firstlayer.selected = true;
-    firstlayer.selectionOrder = 2;
-    expect(instance.activeLayers()).toEqual([secondlayer, firstlayer, thirdlayer]);
   });
 
   it('should reorder the color assignment array if a layer becomes customized', async () => {
@@ -114,40 +99,4 @@ describe('ImageViewerLayersComponent', () => {
     instance.reorderAssignment(layers[0]);
     expect(instance.assignmentOrder).toEqual([4, 2, 5, 1, 3, 6, 0]);
   });
-
-  it('should update the default scheme if selected from the scheme dropdown', async () => {
-    const layers = getTestLayers();
-    const testScheme = {
-      type: 'discrete',
-      name: 'bluered',
-      colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
-      positions: [0, .166, .333, .5, .666, .833, 1]
-    } as ColorScheme;
-
-    const { instance } = await shallow.render({ bind: { layers } });
-    instance.updateLayerScheme(testScheme);
-    expect(instance.layers[1].colorScheme).toBe(testScheme);
-    expect(instance.layers[1].color).toBe(testScheme.colors[1]);
-  });
-
-  it('should not update the layer scheme if the layer has been customized', async () => {
-    const layers = getTestLayers();
-    const testScheme = {
-      type: 'discrete',
-      name: 'bluered',
-      colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
-      positions: [0, .166, .333, .5, .666, .833, 1]
-    } as ColorScheme;
-
-    const customScheme = layers[1].colorScheme;
-    const color = layers[1].color;
-
-    const { instance } = await shallow.render({ bind: { layers } });
-    layers[1].customizedColor = true;
-    instance.updateLayerScheme(testScheme);
-    expect(instance.layers[1].colorScheme).toEqual(customScheme);
-    expect(instance.layers[1].color).toBe(color);
-  });
-
-
 });

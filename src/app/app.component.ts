@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ListResult } from 'ccf-database';
 import { map } from 'rxjs/operators';
 
 import { OntologySelection } from './core/models/ontology-selection';
@@ -66,8 +67,9 @@ export class AppComponent {
    * @param viewer The image viewer component
    * @param iri URL containing the image data
    */
-  openViewer(viewer: ImageViewerPopoverComponent, iri: string): void {
-    this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
+  openViewer(viewer: ImageViewerPopoverComponent, result: ListResult): void {
+    const source = this.dataSourceService.getImageViewerData(result['@id']);
+    source.subscribe(data => viewer.open(data, result));
   }
 
   /**
