@@ -10,12 +10,6 @@ addons:
     token: "$SONAR_TOKEN"
 
 cache: npm
-branches:
-  only:
-  - master
-  - develop
-  - develop-v2
-  - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
 install:
   - npm ci
 script: skip
@@ -29,8 +23,8 @@ jobs:
     - npm run test
     - sonar-scanner -X
   - stage: deploy
-    name: Deploy demo to GitHub Pages
-    if: branch = master
+    name: Deploy v0.6.0 to GitHub Pages
+    if: branch = main-v0.6.0
     script:
     - npm run build:libs
     - npm run build -- --base-href=/ccf-ui/
@@ -44,10 +38,10 @@ jobs:
       keep-history: false
       local-dir: dist/ccf-ui
       on:
-        branch: master
+        branch: main-v0.6.0
   - stage: deploy
     name: Deploy Portal Version
-    if: branch = develop-v2
+    if: branch = main
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/ccf-ui/
@@ -62,26 +56,7 @@ jobs:
       keep-history: false
       local-dir: dist/ccf-ui
       on:
-        branch: develop-v2
-  - stage: deploy
-    name: Build and publish ccf-ui
-    if: tag IS present
-    script:
-    - npm run build:libs
-    - npm run build -- --base-href=/ccf-ui/
-    - npm run compodoc
-    before_deploy:
-    - cd dist/ccf-ui
-    after_deploy: &1
-    - cd ../../
-    deploy: &2
-      provider: npm
-      skip-cleanup: true
-      email: "$NPM_EMAIL"
-      api_key: "$NPM_TOKEN"
-      on:
-        tags: true
-        repo: hubmapconsortium/ccf-ui
+        branch: main
   - stage: test
     name: Test building production version on PRs
     if: type = pull_request
