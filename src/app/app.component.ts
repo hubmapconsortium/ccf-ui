@@ -36,6 +36,7 @@ export class AppComponent {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
+    data.filter$.subscribe(console.log);
     data.listData$.subscribe(console.log);
     data.aggregateData$.subscribe(console.log);
     data.termOccurencesData$.subscribe(console.log);

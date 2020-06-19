@@ -27,6 +27,8 @@ const isExpandable = property<FlatNode, boolean>('expandable');
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OntologyTreeComponent implements OnInit {
+  @Input() ontologyFilter: string[];
+
   /**
    * The node like objects to display in the tree.
    */
