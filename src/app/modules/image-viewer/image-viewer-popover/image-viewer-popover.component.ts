@@ -51,6 +51,12 @@ export class ImageViewerPopoverComponent {
    */
   viewerVisible = false;
 
+  /**
+   * Initializes the component.
+   *
+   * @param state The image viewer state.
+   * @param cdr Reference to this components change detector.
+   */
   constructor(readonly state: ViewerState, private readonly cdr: ChangeDetectorRef) { }
 
   /**
