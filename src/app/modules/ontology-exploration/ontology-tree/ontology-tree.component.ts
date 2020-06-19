@@ -1,5 +1,5 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { filter, invoke, property } from 'lodash';
 
@@ -26,7 +26,11 @@ const isExpandable = property<FlatNode, boolean>('expandable');
   styleUrls: ['./ontology-tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OntologyTreeComponent implements OnInit {
+export class OntologyTreeComponent implements OnInit, OnChanges {
+  /**
+   * Input of ontology filter, used for changing the ontology selections
+   * from outside this component.
+   */
   @Input() ontologyFilter: string[];
 
   /**
@@ -187,6 +191,10 @@ export class OntologyTreeComponent implements OnInit {
     if (this.control.dataNodes) {
       this.control.expand(this.control.dataNodes[0]);
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void{
+    console.log('changes: ', changes);
   }
 
   /**
