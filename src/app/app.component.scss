@@ -53,7 +53,9 @@
     }
 
     .left-drawer {
-      height: calc(100% - 5.5rem);
+      ::ng-deep .cff-drawer-inner-container {
+        height: calc(100% - 5.5rem);
+      }
     }
   }
 }
