@@ -73,10 +73,6 @@ export class ViewerState extends NgxsDataEntityCollectionsRepository<PureImageVi
 
   @DataAction()
   setDefaultScheme(scheme: ColorScheme): void {
-    if (scheme === this.snapshot.defaultScheme) {
-      return;
-    }
-
     const { entities } = this;
     const changes: EntityUpdate<PureImageViewerLayer, string>[] = [];
     for (const [id, layer] of Object.entries(entities)) {
