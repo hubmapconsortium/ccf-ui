@@ -16,7 +16,7 @@ export const DEFAULT_FILTER: Filter = {
   bmiRange: [13, 83],
   tmc: [],
   technologies: [],
-  ontologyTerms: []
+  ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702']
 };
 
 /** Current state of data queries. */
