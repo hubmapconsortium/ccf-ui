@@ -121,4 +121,8 @@ export class AppComponent {
     });
     return selectionString;
   }
+
+  get hubmapPortalUrl(): string {
+    return this.dataSourceService.dbOptions.hubmapPortalUrl;
+  }
 }

@@ -1,25 +1,15 @@
 :host {
   position: absolute;
-  top: calc(50% - 2rem - 1px);
-  right: calc(-1rem - 1px);
-  width: calc(1rem + 1px);
+  top: calc(50% - 2.0625rem);
+  right: -1.0625rem;
+  width: 1.0625rem;
   height: 3rem;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-right-style: solid;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-right-width: 1px;
   border-radius: 0px 4px 4px 0px;
   cursor: pointer;
 
   &.ccf-drawer-toggle-button-end {
     right: unset;
     left: calc(-1rem - 1px);
-
-    border-left-style: solid;
-    border-right-width: 0;
-    border-left-width: 1px;
     border-radius: 4px 0px 0px 4px;
   }
 

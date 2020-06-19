@@ -83,7 +83,10 @@ export class CCFDatabase implements DataSource {
         if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
           ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
         } else {
-          ops.push(addHubmapDataToStore(this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken));
+          ops.push(addHubmapDataToStore(
+            this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken,
+            this.options.hubmapAssetsUrl, this.options.hubmapPortalUrl
+          ));
         }
       }
       await Promise.all(ops);
@@ -143,7 +146,10 @@ export class CCFDatabase implements DataSource {
    */
   async getListResults(filter?: Filter): Promise<ListResult[]> {
     filter = {...filter, hasSpatialEntity: true} as Filter;
-    return [...this.getIds(filter)].map((s) => getListResult(this.store, s));
+    const highlighted = new Set<string>(filter.highlightedEntities);
+    return [...this.getIds(filter)].map((s) => getListResult(this.store, s))
+      .map((s) => Object.assign(s, {highlighted: highlighted.has(s['@id'])}))
+      .sort((a, b) => (a.highlighted ? 0 : 1) - (b.highlighted ? 0 : 1));
   }
 
   /**
