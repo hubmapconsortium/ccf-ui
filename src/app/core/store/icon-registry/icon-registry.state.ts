@@ -1,7 +1,8 @@
 import { Injectable, Optional } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
-import { action, NgxsDataRepository, StateRepository } from '@ngxs-labs/data';
+import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 
 import { DEFAULT_ICONS } from './default-icons';
@@ -67,7 +68,7 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @param definition Icon to register.
    * @returns true if registration was successful, otherwise false.
    */
-  @action()
+  @DataAction()
   registerIcon(definition: IconDefinition): boolean {
     return this.registerIconImpl(definition);
   }

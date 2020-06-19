@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { action, NgxsDataRepository, StateRepository } from '@ngxs-labs/data';
+import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
-import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject, Observable } from 'rxjs';
+import { AggregateResult, Filter, ListResult } from 'ccf-database';
+import { combineLatest, Observable, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
 import { distinct, map, pluck, publishReplay, refCount, switchMap, tap } from 'rxjs/operators';
 
-import { AggregateResult, Filter, ListResult } from 'ccf-database';
 import { DataSourceService } from '../../services/data-source/data-source.service';
 
 
@@ -150,7 +151,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
    *
    * @param filter Changes to be made to the current filter.
    */
-  @action()
+  @DataAction()
   updateFilter(filter: Partial<Filter>): void {
     this.patchState({
       // Might need to do a deep compare of current and new filter

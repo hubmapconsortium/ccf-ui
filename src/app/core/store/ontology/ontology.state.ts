@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { action, NgxsDataRepository, StateRepository } from '@ngxs-labs/data';
+import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { map } from 'rxjs/operators';
 
@@ -45,7 +46,7 @@ export class OntologyState extends NgxsDataRepository<OntologyStateModel> {
    *
    * @param ontology The new state.
    */
-  @action()
+  @DataAction()
   setOntology(ontology: OntologyStateModel): void {
     this.ctx.setState(ontology);
   }
