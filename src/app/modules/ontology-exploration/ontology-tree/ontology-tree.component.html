@@ -6,7 +6,7 @@
       [class.filtered-out]="!occurenceData[node.original.id] && !!termData[node.original.id]"
       [class.unavailable]="!termData[node.original.id]"
       [class.selected]="isSelected(node)"
-      (click)="select($event.ctrlKey, node)"
+      (click)="select($event.ctrlKey, node, true, !isSelected(node))"
     >{{ node.label }}</div>
   </ng-template>
 

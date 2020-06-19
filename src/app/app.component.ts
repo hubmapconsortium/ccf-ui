@@ -39,9 +39,9 @@ export class AppComponent {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
-    data.listData$.subscribe(console.log);
-    data.aggregateData$.subscribe(console.log);
-    data.termOccurencesData$.subscribe(console.log);
+    data.listData$.subscribe();
+    data.aggregateData$.subscribe();
+    data.termOccurencesData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
   }
 
