@@ -9,7 +9,12 @@
 
   <cdk-virtual-scroll-viewport itemSize="10" class="results-virtual-scroll" #virtualScroll>
     <div class="results-browser-list">
-      <div *cdkVirtualFor="let result of data" class="browser-item-container" [class.selected]="result === selectedResult">
+      <div
+        *cdkVirtualFor="let result of data"
+        class="browser-item-container"
+        [class.selected]="result === selectedResult"
+        [class.highlighted]="!!result.highlighted"
+      >
         <ccf-results-browser-item
           [data]="result"
           (openImageViewer)="selectedResult = result; resultClicked.emit(result);"

@@ -48,7 +48,7 @@ describe('ResultsBrowserItemComponent', () => {
   });
 
   it('should show a non-grayed out icon when download url is present', async () => {
-    const { find, instance } = await shallow.render({ bind: { data: getListResult() }});
+    const { find } = await shallow.render({ bind: { data: getListResult() }});
     expect(find('.download')).toHaveFoundOne();
   });
 
