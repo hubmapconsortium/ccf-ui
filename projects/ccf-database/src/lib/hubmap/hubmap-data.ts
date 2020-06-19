@@ -260,6 +260,23 @@ export class HuBMAPEntity {
       this.thumbnailUrl = 'assets/icons/ico-bulk.svg';
     }
 
+    // const typesSearch = [ ...dataTypes, ...assayTypes].map(l => l.toLowerCase()).join('|');
+    // if (typesSearch.indexOf('10x') !== -1) {
+    //   this.thumbnailUrl = 'assets/icons/ico-bulk-10x-otl.svg';
+    // }
+    // if (typesSearch.indexOf('AF') !== -1) {
+    //   this.thumbnailUrl = 'assets/icons/ico-bulk-af-otl.svg';
+    // }
+    // if (typesSearch.indexOf('CODEX') !== -1) {
+    //   this.thumbnailUrl = 'assets/icons/ico-bulk-codex-otl.svg';
+    // }
+    // if (typesSearch.indexOf('IMC') !== -1) {
+    //   this.thumbnailUrl = 'assets/icons/ico-bulk-imc-otl.svg';
+    // }
+    // if (typesSearch.indexOf('LC') !== -1) {
+    //   this.thumbnailUrl = 'assets/icons/ico-bulk-lc-otl.svg';
+    // }
+
     this.portalUrl = `${portalUrl}browse/sample/${this.id}`;
   }
 
