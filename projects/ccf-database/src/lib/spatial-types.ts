@@ -18,6 +18,8 @@ export interface SpatialEntity {
   '@id': string;
   /** Type name. */
   '@type': 'SpatialEntity';
+  /** IRI of the Entity this Spatial Entity represents */
+  entityId?: string;
   /** Entity label. */
   label?: string;
   /** Creator. */

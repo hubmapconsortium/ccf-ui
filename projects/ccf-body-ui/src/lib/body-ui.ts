@@ -20,7 +20,7 @@ export class BodyUI {
   deck: Deck;
   private readonly bodyUILayer = new BodyUILayer({});
 
-  private readonly nodeClickSubject = new Subject<SpatialSceneNode>();
+  private readonly nodeClickSubject = new Subject<{node: SpatialSceneNode, ctrlClick: boolean}>();
   private readonly nodeHoverStartSubject = new Subject<SpatialSceneNode>();
   private readonly nodeHoverStopSubject = new Subject<SpatialSceneNode>();
 
@@ -32,8 +32,6 @@ export class BodyUI {
   private lastHovered?: SpatialSceneNode;
 
   constructor(deckProps: Partial<BodyUIProps>) {
-    this.nodeClick$.subscribe(e => this.zoomTo(e));
-
     const props = {
       ...deckProps,
       effects: [
@@ -68,12 +66,14 @@ export class BodyUI {
   setScene(data: SpatialSceneNode[]): void {
     if (data?.length > 0) {
       const zoomOpacity = (this.bodyUILayer.state as {zoomOpacity: boolean}).zoomOpacity;
-      this.bodyUILayer.setState({data, zoomOpacity});
+      let didZoom = false;
       for (const node of data) {
         if (node.zoomToOnLoad) {
           this.zoomTo(node);
+          didZoom = true;
         }
       }
+      this.bodyUILayer.setState({data, zoomOpacity: didZoom ? 0.5 : zoomOpacity});
     }
   }
 
@@ -85,10 +85,9 @@ export class BodyUI {
         target: matrix.getTranslation(),
         rotationX: 0,
         rotationOrbit: 0,
-        zoom: 10.5,
+        zoom: 11.5,
       }
     });
-    console.log(matrix.getTranslation(), matrix.getScale(), node);
   }
 
   @bind
@@ -110,10 +109,9 @@ export class BodyUI {
   }
 
   @bind
-  private _onClick(e: {picked: boolean, object: SpatialSceneNode}): void {
+  private _onClick(e: {picked: boolean, object: SpatialSceneNode}, mouseEvent: { srcEvent: { ctrlKey: boolean; }; }): void {
     if (e.picked && e.object && e.object['@id']) {
-      // alert('You clicked ' + e.object?.tooltip || JSON.stringify(e.object, null, 2));
-      this.nodeClickSubject.next(e.object);
+      this.nodeClickSubject.next({node: e.object, ctrlClick: mouseEvent?.srcEvent?.ctrlKey ?? undefined});
     }
   }
 

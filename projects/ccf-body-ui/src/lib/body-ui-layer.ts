@@ -12,6 +12,7 @@ import { Matrix4 } from '@math.gl/core';
 export interface SpatialSceneNode {
   '@id': string;
   '@type': string;
+  entityId?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -53,7 +54,7 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
         id,
         pickable: true,
         autoHighlight: true,
-        highlightColor: [30, 136, 229, 0.5*255],
+        highlightColor: [30, 136, 229, 255],
         coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
         data,
         // tslint:disable-next-line: no-unsafe-any

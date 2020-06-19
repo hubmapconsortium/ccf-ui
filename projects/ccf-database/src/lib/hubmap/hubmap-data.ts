@@ -210,9 +210,9 @@ export class HuBMAPEntity {
       }
       let refOrganId: string | undefined;
       if (this.organ === RUI_ORGANS.left_kidney) {
-        refOrganId = ccf.x('VHRightKidney').id;
-      } else if (this.organ === RUI_ORGANS.right_kidney) {
         refOrganId = ccf.x('VHLeftKidney').id;
+      } else if (this.organ === RUI_ORGANS.right_kidney) {
+        refOrganId = ccf.x('VHRightKidney').id;
       }
       this.spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + this.label, refOrganId);
     }
