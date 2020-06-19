@@ -174,7 +174,7 @@ export class OntologyTreeComponent implements OnInit {
   anySelectionsMade = false;
 
   /**
-   * Currently selected node, defaulted to the body node for when the page initially loads.
+   * Currently selected nodes, defaulted to the body node for when the page initially loads.
    */
   selectedNodes: FlatNode[] = [this.bodyNode];
 
