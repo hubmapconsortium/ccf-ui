@@ -19,15 +19,14 @@
     }
 
     .download {
-      color: mat-color($foreground, download-icon);
-      text-decoration: none;
+      color: mat-color($foreground, header-download-icon);
       
       &:hover {
         color: mat-color($accent);
       }
     }
 
-    .info {
+    .info, .refresh {
       color: mat-color($foreground, icon);
 
       &:hover {

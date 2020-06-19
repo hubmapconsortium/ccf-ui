@@ -10,12 +10,6 @@
     background-color: mat-color($background, modal);
     border-color: mat-color($foreground, modal-borders);
 
-    .mat-option {
-      &:hover {
-        background-color: mat-color($background, dropdown-hover);
-      }
-    }
-
     .mat-active {
       background-color: mat-color($background, modal) !important;
     }

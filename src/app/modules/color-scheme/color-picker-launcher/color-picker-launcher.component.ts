@@ -23,8 +23,4 @@ export class ColorPickerLauncherComponent {
    * Output that passes along changes made to the layer's properties from the color picker
    */
   @Output() layerChange = new EventEmitter<ImageViewerLayer>();
-
-  get className(): string {
-    return `color-icon ${this.layer.colorScheme.type === 'discrete' ? 'circle' : ''}`;
-  }
 }

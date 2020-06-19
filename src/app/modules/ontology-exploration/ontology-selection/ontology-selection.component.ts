@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 
 import { OntologyNode } from '../../../core/models/ontology-node';
@@ -22,6 +22,16 @@ export class OntologySelectionComponent {
    */
   @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
 
+  /**
+   * A record of terms within the current filter.  To be passed on to ontology-tree
+   */
+  @Input() occurenceData: Record<string, number>;
+
+  /**
+   * A record of terms the app currently has data for.  To be passed on to ontology-tree
+   */
+  @Input() termData: Record<string, number>;
+
 
   /**
    * Captures and passes along the change in ontologySelections.
@@ -36,7 +46,7 @@ export class OntologySelectionComponent {
   constructor(
     public ontologySearchService: OntologySearchService,
     private readonly store: Store
-  ) {}
+  ) { }
 
   /**
    * Ontology selection event when node is selected from the search results.

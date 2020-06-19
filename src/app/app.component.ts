@@ -38,6 +38,7 @@ export class AppComponent {
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
     data.listData$.subscribe(console.log);
     data.aggregateData$.subscribe(console.log);
+    data.termOccurencesData$.subscribe(console.log);
   }
 
   /**
@@ -115,5 +116,9 @@ export class AppComponent {
       }
     });
     return selectionString;
+  }
+
+  get hubmapPortalUrl(): string {
+    return this.dataSourceService.dbOptions.hubmapPortalUrl;
   }
 }

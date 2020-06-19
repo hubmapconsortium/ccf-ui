@@ -34,6 +34,7 @@ describe('AppComponent', () => {
         listData$: of(),
         aggregateData$: of(),
         queryStatus$: of(),
+        termOccurencesData$: of(),
         updateFilter: () => undefined
       })
       .mock(ThemingService, {
@@ -76,12 +77,12 @@ describe('AppComponent', () => {
     expect(viewer.close).toHaveBeenCalled();
   });
 
-  it('should trigger the reset() method when the ccf-header is clicked', async () => {
+  it('should trigger the reset() method when the refresh button is clicked', async () => {
     const { instance, findComponent } = await shallow.render();
     const header = findComponent(HeaderComponent);
     const spy = spyOn(instance, 'reset');
 
-    header.logoClicked.emit();
+    header.refreshClicked.emit();
     expect(spy).toHaveBeenCalled();
   });
 });

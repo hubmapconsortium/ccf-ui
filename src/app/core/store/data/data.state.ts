@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { action, NgxsDataRepository, StateRepository } from '@ngxs-labs/data';
 import { State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
-import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
+import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject, Observable } from 'rxjs';
 import { distinct, map, pluck, publishReplay, refCount, switchMap, tap } from 'rxjs/operators';
 
 import { AggregateResult, Filter, ListResult } from 'ccf-database';
@@ -91,6 +91,10 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
   private readonly _listDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
   private readonly _aggregateDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  /** Implementation subject for termOccurencesDataQueryStatus$. */
+  private readonly _termOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  /** Keeping track of all ontology terms there is data for. */
+  readonly ontologyTermsFullData$: Observable<Record<string, number>>;
 
   /** Current filter. */
   readonly filter$ = this.state$.pipe(pluck('filter'));
@@ -102,16 +106,23 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
   readonly aggregateData$ = this.filter$.pipe(queryData(
     this.aggregateData, sendCompletedTo(this._aggregateDataQueryStatus$)
   ));
+  /** Latest term occurences query data. */
+  readonly termOccurencesData$ = this.filter$.pipe(queryData(
+    this.termOccurencesData, sendCompletedTo(this._termOccurencesDataQueryStatus$)
+  ));
 
   /** Current status of queries in the listData$ observable. */
   readonly listDataQueryStatus$ = this._listDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the aggregateData$ observable. */
   readonly aggregateDataQueryStatus$ = this._aggregateDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the aggregateData$ observable. */
+  readonly termOccurencesDataQueryStatus$ = this._termOccurencesDataQueryStatus$.pipe(distinct());
 
   /** Current status of all queries. */
   readonly queryStatus$ = combineLatest([
     this.listDataQueryStatus$,
-    this.aggregateDataQueryStatus$
+    this.aggregateDataQueryStatus$,
+    this.termOccurencesDataQueryStatus$
   ]).pipe(
     map(states => allCompleted(states) ? DataQueryState.Completed : DataQueryState.Running),
     distinct()
@@ -127,6 +138,11 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
     // Start everything in the completed state
     this._listDataQueryStatus$.next(DataQueryState.Completed);
     this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
+    this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
+
+    const ontologyTermsData = new ReplaySubject<Record<string, number>>(1);
+    source.getOntologyTermOccurences().subscribe(ontologyTermsData);
+    this.ontologyTermsFullData$ = ontologyTermsData;
   }
 
   /**
@@ -164,5 +180,17 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
   private aggregateData(filter: Filter): ObservableInput<AggregateResult[]> {
     this._aggregateDataQueryStatus$.next(DataQueryState.Running);
     return this.source.getAggregateResults(filter);
+  }
+
+  /**
+   * Queries for term occurences data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+  @bind
+  private termOccurencesData(filter: Filter): ObservableInput<Record<string, number>> {
+    this._termOccurencesDataQueryStatus$.next(DataQueryState.Running);
+    return this.source.getOntologyTermOccurences(filter);
   }
 }

@@ -27,6 +27,7 @@
 
     .results-virtual-scroll {
         flex-grow: 1;
+        scrollbar-width: thin;
 
         .results-browser-list {
             display: flex;

@@ -14,7 +14,6 @@
   .ccf-drawer-toggle-button {
     color: mat-color($foreground, contrast-icon);
     background-color: mat-color($background, modal);
-    border-color: mat-color($foreground, divider);
 
     &:hover {
       background-color: mat-color($accent);

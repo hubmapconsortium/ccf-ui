@@ -1,11 +1,11 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [filters]="data.filter$ | async" (logoClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
+  <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [filters]="data.filter$ | async" (refreshClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
   <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
   <ccf-image-viewer-popover #viewer></ccf-image-viewer-popover>
 
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
-      <ccf-ontology-selection (ontologySelection)="ontologySelected($event)"></ccf-ontology-selection>
+      <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async" [occurenceData]="data.termOccurencesData$ | async" (ontologySelection)="ontologySelected($event)"></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer position="end" opened #right (stateChange)="filterbox.removeBox()">
@@ -29,7 +29,7 @@
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer-content>
-      <ccf-body-ui></ccf-body-ui>
+      <ccf-body-ui [filter]="data.filter$ | async" (filterChange)="data.updateFilter($event)"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
 </div>

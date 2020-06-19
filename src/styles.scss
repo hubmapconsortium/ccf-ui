@@ -1,10 +1,14 @@
 @use '~@angular/material/theming' as ng;
 @use 'themes/common/typography';
 @use 'themes/common/theming';
-@use 'themes/default';
+@use 'themes/light';
 @use 'themes/dark';
 
 @include ng.mat-core(typography.$config);
+
+.light-theme {
+  @include theming.ccf-theme(light.$theme);
+}
 
 .dark-theme {
   @include theming.ccf-theme(dark.$theme);
@@ -33,7 +37,6 @@ body {
   padding: 0;
   font-family: Inter, sans-serif;
   background-color: white;
-  @include theming.ccf-theme(default.$theme);
 }
 
 mat-icon {

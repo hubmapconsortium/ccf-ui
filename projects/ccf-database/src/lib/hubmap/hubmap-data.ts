@@ -201,14 +201,18 @@ export class HuBMAPEntity {
 
     let ruiLocation = (data.rui_location || this.ancestors[0].rui_location) as OldRuiData;
     if (ruiLocation) {
+      // RUI Location may come in as an unparsed string
+      if (typeof ruiLocation === 'string') {
+        ruiLocation = JSON.parse(ruiLocation as string) as OldRuiData;
+      }
       if (groupUUID === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // UFL
         ruiLocation = fixUflRuiLocation(ruiLocation, data);
       }
       let refOrganId: string | undefined;
       if (this.organ === RUI_ORGANS.left_kidney) {
-        refOrganId = ccf.x('VHRightKidney').id;
-      } else if (this.organ === RUI_ORGANS.right_kidney) {
         refOrganId = ccf.x('VHLeftKidney').id;
+      } else if (this.organ === RUI_ORGANS.right_kidney) {
+        refOrganId = ccf.x('VHRightKidney').id;
       }
       this.spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + this.label, refOrganId);
     }
@@ -316,12 +320,13 @@ export async function addHubmapDataToStore(
   if (serviceType === 'static') {
     hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   } else if (serviceType === 'search-api') {
+    const headers: Record<string, string> = { 'Content-type': 'application/json' };
+    if (serviceToken && serviceToken.length > 0) {
+      headers.Authorization = `Bearer ${serviceToken}`;
+    }
     hubmapData = await fetch(dataUrl, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${serviceToken}`,
-        'Content-type': 'application/json'
-      },
+      headers,
       body: JSON.stringify({
         version: true,
         size: 10000,

@@ -73,6 +73,7 @@ export function getSpatialEntity(store: N3Store, iri: string): SpatialEntity {
   if (result.object) {
     result.object = getSpatialObjectReference(store, (result.object as unknown) as string);
   }
+  store.forSubjects((subject) => result.entityId = subject.id, entity.spatialEntity, iri, null);
   return result;
 }
 

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-
 /**
  * Header which is always displayed on the site; contains current filter info,
  * a link to download data, and a logo which resets the page when clicked.
@@ -13,15 +12,17 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class HeaderComponent {
 
+  @Input() hubmapPortalUrl: string;
+
   /**
    * Current filter settings
    */
   @Input() filters: Record<string, unknown[] | unknown>;
 
   /**
-   * Emitted when logo is clicked
+   * Emitted when refresh button is clicked
    */
-  @Output() logoClicked = new EventEmitter<void>();
+  @Output() refreshClicked = new EventEmitter<void>();
 
   /**
    * Emitted when download button is clicked
