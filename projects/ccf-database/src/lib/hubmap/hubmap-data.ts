@@ -250,22 +250,23 @@ export class HuBMAPEntity {
     this.containsHumanGeneticSequences = containsSequence;
     this.dataTypes = [...dataTypes].sort();
     this.assayTypes = [...assayTypes].sort();
-    this.spatialOrBulk = this.images?.length > 0
-      || dataTypes.has('CODEX') || dataTypes.has('codex') || dataTypes.has('cytokit')
-      || dataTypes.has('PAS') || assayTypes.has('imaging')
-      ? 'Spatial' : 'Bulk';
 
     const typesSearch = [ ...dataTypes, ...assayTypes].map(l => l.toLowerCase()).join('|');
     if (typesSearch.indexOf('10x') !== -1) {
-      this.thumbnailUrl = 'assets/icons/ico-bulk-10x-otl.svg';
+      this.thumbnailUrl = 'assets/icons/ico-bulk-10x.svg';
+      this.spatialOrBulk = 'Bulk';
     } else if (typesSearch.indexOf('af') !== -1) {
-      this.thumbnailUrl = 'assets/icons/ico-bulk-af-otl.svg';
+      this.thumbnailUrl = 'assets/icons/ico-spatial-af.svg';
+      this.spatialOrBulk = 'Spatial';
     } else if ((typesSearch.indexOf('codex') !== -1)) {
-      this.thumbnailUrl = 'assets/icons/ico-bulk-codex-otl.svg';
+      this.thumbnailUrl = 'assets/icons/ico-spatial-codex.svg';
+      this.spatialOrBulk = 'Spatial';
     } else if (typesSearch.indexOf('imc') !== -1) {
-      this.thumbnailUrl = 'assets/icons/ico-bulk-imc-otl.svg';
-    } else if ((typesSearch.indexOf('lc') !== -1) && (typesSearch.indexOf('AF') === -1)) {
-      this.thumbnailUrl = 'assets/icons/ico-bulk-lc-otl.svg';
+      this.thumbnailUrl = 'assets/icons/ico-spatial-imc.svg';
+      this.spatialOrBulk = 'Spatial';
+    } else if ((typesSearch.indexOf('lc') !== -1) && (typesSearch.indexOf('af') === -1)) {
+      this.thumbnailUrl = 'assets/icons/ico-bulk-lc.svg';
+      this.spatialOrBulk = 'Bulk';
     }
 
     this.portalUrl = `${portalUrl}browse/sample/${this.id}`;
