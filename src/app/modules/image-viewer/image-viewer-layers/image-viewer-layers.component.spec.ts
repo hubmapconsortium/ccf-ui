@@ -1,10 +1,9 @@
 import { Shallow } from 'shallow-render';
 
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
-import { ColorScheme } from '../../../modules/color-scheme/color-schemes';
+import { BLUERED, VIRIDIS } from '../../color-scheme/color-schemes';
 import { ImageViewerLayersComponent } from './image-viewer-layers.component';
 import { ImageViewerLayersModule } from './image-viewer-layers.module';
-import { BLUERED, VIRIDIS } from '../../color-scheme/color-schemes';
 
 
 type LayerArgs =

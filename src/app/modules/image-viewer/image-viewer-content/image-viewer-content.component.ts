@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ImageViewerData } from 'ccf-database';
-import { ColorScheme } from 'src/app/core/models/color-scheme';
 
+import { ColorScheme } from '../../../core/models/color-scheme';
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
 
