@@ -6,42 +6,50 @@
     display: flex;
     flex-direction: row;
     height: 4rem;
-    cursor: pointer;
 
-    .result-image {
-        width: 5rem;
-        height: 100%;
-        object-fit: cover;
-    }
+    .result-item-click-area {
+        display: flex;
+        cursor: pointer;
 
-    .result-image-placeholder {
-        width: 5rem;
-    }
-
-    .result-description {
-        width: 15rem;
-        font-size: .625rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        line-height: 1.25;
-
-        div {
-            width: 10rem;
+        .result-image {
+            width: 5rem;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .description-label {
-            font-weight: bold !important;
+        .result-image-placeholder {
+            width: 5rem;
         }
 
-        .description-data {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            font-weight: lighter;
+        .result-description {
+            width: 15rem;
+            font-size: .625rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            line-height: 1.25;
+
+            div {
+                width: 10rem;
+            }
+
+            .description-label {
+                font-weight: bold !important;
+            }
+
+            .description-data {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                font-weight: lighter;
+            }
         }
     }
 
     .result-download {
         width: 1.5rem;
+
+        .download {
+            cursor: pointer;
+        }
     }
 }

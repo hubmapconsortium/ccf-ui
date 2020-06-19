@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ListResult } from 'ccf-database';
 
 
@@ -17,4 +17,38 @@ export class ResultsBrowserItemComponent {
    * and image information for the component.
    */
   @Input() data: ListResult;
+
+  /**
+   * Output used to pass up the intent to open the ImageViewer
+   */
+  @Output() openImageViewer = new EventEmitter();
+
+  /**
+   * Decided which action to take based on the result's resultType property
+   * @param result the result which was clicked on
+   */
+  openResult(): void {
+    switch (this.data.resultType) {
+      case ('image_viewer'): {
+        // Open the image-viewer
+        this.openImageViewer.emit();
+        break;
+      }
+      case ('external_link'): {
+        // Open link in new tab
+        window.open(this.data.resultUrl, '_blank');
+        break;
+      }
+      case ('local_link'): {
+        // Open link in current tab
+        window.open(this.data.resultUrl, '_self');
+        break;
+      }
+      default: {
+        // When no resultType is set, image viewer is the default
+        this.openImageViewer.emit();
+        break;
+      }
+    }
+  }
 }

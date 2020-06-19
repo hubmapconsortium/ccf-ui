@@ -23,4 +23,10 @@
       color: mat-color($foreground, disabled);
     }
   }
+
+  .description-label {
+    &.highlighted {
+      color: mat-color($accent);
+    }
+  }
 }
