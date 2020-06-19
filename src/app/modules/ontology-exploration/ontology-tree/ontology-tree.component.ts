@@ -1,7 +1,7 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { filter, invoke, property, add } from 'lodash';
+import { filter, invoke, property } from 'lodash';
 
 import { FlatNode } from '../../../core/models/flat-node';
 import { OntologyNode } from '../../../core/models/ontology-node';

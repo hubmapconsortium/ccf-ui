@@ -12,7 +12,6 @@ function fromPartial<T>(partial: RecursivePartial<T>): T {
 
 
 describe('OntologyTreeComponent', () => {
-  const bodyNode = fromPartial<OntologyNode>({ label: 'body', children: ['child1', 'child2'] });
   const node1 = fromPartial<OntologyNode>({ label: 'label', children: ['child1', 'child2'] });
   const node2 = fromPartial<OntologyNode>({ label: 'label2', children: [] });
   const flatNode1 = new FlatNode(node1, 1);
