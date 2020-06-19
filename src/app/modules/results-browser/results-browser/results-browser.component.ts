@@ -74,7 +74,7 @@ export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
   ngAfterViewInit(): void {
     this.virtualScroll.elementScrolled()
       .subscribe(event => {
-        if (this.virtualScroll.measureScrollOffset('bottom') === 0) {
+        if (this.virtualScroll.measureScrollOffset('bottom') < 1) {
           this.atScrollBottom = true;
         } else {
           this.atScrollBottom = false;
