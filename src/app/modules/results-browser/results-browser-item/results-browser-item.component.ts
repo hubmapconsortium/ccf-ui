@@ -11,7 +11,7 @@ import { ListResult } from 'ccf-database';
   templateUrl: './results-browser-item.component.html',
   styleUrls: ['./results-browser-item.component.scss']
 })
-export class ResultsBrowserItemComponent{
+export class ResultsBrowserItemComponent {
   /**
    * Input object containing the label, download, click action,
    * and image information for the component.

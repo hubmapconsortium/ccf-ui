@@ -13,7 +13,6 @@
         *cdkVirtualFor="let result of data"
         class="browser-item-container"
         [class.selected]="result === selectedResult"
-        [class.highlighted]="!!result.highlighted"
       >
         <ccf-results-browser-item
           [data]="result"
