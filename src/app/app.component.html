@@ -4,16 +4,11 @@
   <ccf-image-viewer-popover #viewer></ccf-image-viewer-popover>
 
   <ccf-drawer-container class="main-drawers">
-    <ccf-drawer opened #left (stateChange)="filterbox.removeBox()">
-      <ccf-ontology-selection
-        [termData]="data.ontologyTermsFullData$ | async"
-        [occurenceData]="data.termOccurencesData$ | async"
-        [ontologyFilter]="ontologyTerms$ | async"
-        (ontologySelection)="ontologySelected($event)"
-      ></ccf-ontology-selection>
+    <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
+      <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async" [occurenceData]="data.termOccurencesData$ | async" (ontologySelection)="ontologySelected($event)"></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
-    <ccf-drawer position="end" opened #right (stateChange)="filterbox.removeBox()">
+    <ccf-drawer class="right-drawer" position="end" opened #right (stateChange)="filterbox.removeBox()">
       <div class="drawer-icons">
         <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
                              (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>

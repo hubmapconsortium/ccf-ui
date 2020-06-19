@@ -2,6 +2,9 @@
   background: none;
   margin-left: 1.5rem;
   scrollbar-width: thin;
+  height: calc(100% - 5.625rem);
+  width: 25.5rem;
+  overflow: auto;
 
   .node {
     min-height: 0;
@@ -23,9 +26,7 @@
     }
 
     .text {
-      text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden;
       cursor: pointer;
       margin-left: 0.5rem;
     }
