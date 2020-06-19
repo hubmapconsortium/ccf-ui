@@ -45,58 +45,6 @@ describe('ImageViewerLayersComponent', () => {
     const layers = getTestLayers();
     const { instance, outputs } = await shallow.render({ bind: { layers } });
     instance.checkboxOnChange(layers[1]);
-    expect(outputs.layerChanged.emit).toHaveBeenCalled();
-  });
-
-  it('should call handleUnselect when checkboxOnChange() is called on a selected layer', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render({ bind: { layers } });
-    layers[1].selected = true;
-    const spy = spyOn(instance, 'handleUnselect');
-    instance.checkboxOnChange(layers[1]);
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it('should reorder the color assignment array if a layer becomes customized', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render({ bind: { layers } });
-    layers[0].customizedColor = true;
-    const spy = spyOn(instance, 'reorderAssignment');
-    instance.layerChange(layers[0], 0);
-    expect(spy).toHaveBeenCalledWith(layers[0]);
-  });
-
-  it('should not reorder the color assignment array if a layer was not customized', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render({ bind: { layers } });
-    layers[0].customizedColor = false;
-    const spy = spyOn(instance, 'reorderAssignment');
-    instance.layerChange(layers[0], 0);
-    expect(spy).not.toHaveBeenCalled();
-  });
-
-  it('should make customizedColor false if a customized layer is unselected', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render();
-    layers[0].customizedColor = true;
-    instance.handleUnselect(layers[0]);
-    expect(layers[0].customizedColor).toBe(false);
-  });
-
-  it('should reorder the color assignment array if a non-customized layer is unselected', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render();
-    const spy = spyOn(instance, 'reorderAssignment');
-    instance.handleUnselect(layers[0]);
-    expect(spy).toHaveBeenCalledWith(layers[0]);
-  });
-
-  it('should update assignmentOrder when reorderAssignment is called', async () => {
-    const layers = getTestLayers();
-    const { instance } = await shallow.render();
-    layers[0].defaultOrder = 5;
-    instance.assignmentOrder = [4, 0, 1, 2, 3, 6];
-    instance.reorderAssignment(layers[0]);
-    expect(instance.assignmentOrder).toEqual([4, 2, 5, 1, 3, 6, 0]);
+    expect(outputs.layerChange.emit).toHaveBeenCalled();
   });
 });

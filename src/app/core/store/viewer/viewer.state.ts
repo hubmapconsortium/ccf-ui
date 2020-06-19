@@ -21,19 +21,6 @@ const IMAGE_VIEWER_LAYER_DEFAULTS = {
 
 let monotoneIncCounter = 0;
 
-function arrayUnorderedEquals<T>(array1: T[], array2: T[]): boolean {
-  if (array1.length !== array2.length) {
-    return false;
-  }
-
-  const array1Set = new Set(array1);
-  if (array2.every(value => array1Set.has(value))) {
-    return true;
-  }
-
-  return false;
-}
-
 export interface ViewerStateModel extends NgxsEntityCollections<PureImageViewerLayer> {
   defaultScheme: ColorScheme;
 }
@@ -58,10 +45,6 @@ export class ViewerState extends NgxsDataEntityCollectionsRepository<PureImageVi
 
   @DataAction()
   createLayers(ids: string[]): void {
-    if (arrayUnorderedEquals(ids, this.ids)) {
-      return;
-    }
-
     const { defaultScheme } = this.ctx.getState();
     this.removeEntitiesMany(this.ids);
     this.addEntitiesMany(ids.map((id, index) => ({

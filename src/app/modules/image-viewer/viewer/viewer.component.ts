@@ -41,7 +41,6 @@ function brightnessToSlider(brightness: [number, number]): [number, number] {
   ];
 }
 
-
 @Component({
   selector: 'ccf-viewer',
   templateUrl: './viewer.component.html',

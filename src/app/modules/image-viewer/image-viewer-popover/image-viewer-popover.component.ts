@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageViewerData, ListResult } from 'ccf-database';
 
 import { ViewerState } from '../../../core/store/viewer/viewer.state';
@@ -27,7 +27,8 @@ const EMPTY_RESULT: ListResult = {
 @Component({
   selector: 'ccf-image-viewer-popover',
   templateUrl: './image-viewer-popover.component.html',
-  styleUrls: ['./image-viewer-popover.component.scss']
+  styleUrls: ['./image-viewer-popover.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageViewerPopoverComponent {
   /**
@@ -40,27 +41,24 @@ export class ImageViewerPopoverComponent {
    */
   result = EMPTY_RESULT;
 
-  get sourceUrls(): string[] {
-    const { result } = this;
-    if (result.resultType !== 'image_viewer' || result.resultUrl === undefined) {
-      return [];
-    }
-
-    return [result.resultUrl];
-  }
+  /**
+   * Urls to load image data from.
+   */
+  sourceUrls: string[] = [];
 
   /**
    * Whether or not the image viewer is visible
    */
   viewerVisible = false;
 
-  constructor(readonly state: ViewerState) { }
+  constructor(readonly state: ViewerState, private readonly cdr: ChangeDetectorRef) { }
 
   /**
    * Returns viewer to closed state
    */
   close(): void {
     this.viewerVisible = false;
+    this.cdr.markForCheck();
   }
 
   /**
@@ -71,5 +69,16 @@ export class ImageViewerPopoverComponent {
     this.viewerVisible = true;
     this.data = data;
     this.result = result;
+    this.setSourceUrls(result);
+    this.cdr.markForCheck();
+  }
+
+  private setSourceUrls(result: ListResult): void {
+    const { resultType, resultUrl } = result;
+    if (resultType !== 'image_viewer' || resultUrl === undefined) {
+      this.sourceUrls = [];
+    } else {
+      this.sourceUrls = [resultUrl];
+    }
   }
 }
