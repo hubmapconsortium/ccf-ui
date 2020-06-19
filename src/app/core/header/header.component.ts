@@ -12,6 +12,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class HeaderComponent {
 
+  /**
+   * URL to Hubmap Portal site
+   */
   @Input() hubmapPortalUrl: string;
 
   /**
