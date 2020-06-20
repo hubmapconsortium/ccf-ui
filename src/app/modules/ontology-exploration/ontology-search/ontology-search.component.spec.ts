@@ -1,4 +1,7 @@
-import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 import { of } from 'rxjs';
 import { RecursivePartial, Shallow } from 'shallow-render';
 
@@ -8,10 +11,12 @@ import { OntologySearchComponent } from './ontology-search.component';
 import { OntologySearchModule } from './ontology-search.module';
 
 
+@NgModule({})
+class EmptyModule {}
+
 function fromPartial<T>(partial: RecursivePartial<T>): T {
   return partial as T;
 }
-
 
 describe('OntologySearchComponent', () => {
   let shallow: Shallow<OntologySearchComponent>;
@@ -22,6 +27,9 @@ describe('OntologySearchComponent', () => {
     mockSearchService.filter.and.returnValue(of([]));
 
     shallow = new Shallow(OntologySearchComponent, OntologySearchModule)
+      .replaceModule(FormsModule, EmptyModule)
+      .replaceModule(ReactiveFormsModule, EmptyModule)
+      .replaceModule(MatInputModule, EmptyModule)
       .mock(OntologySearchService, mockSearchService);
   });
 

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ListResult } from 'ccf-database';
+import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
 import { OntologySelection } from './core/models/ontology-selection';
@@ -8,7 +10,6 @@ import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { Observable } from 'rxjs';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -70,8 +71,9 @@ export class AppComponent {
    * @param viewer The image viewer component
    * @param iri URL containing the image data
    */
-  openViewer(viewer: ImageViewerPopoverComponent, iri: string): void {
-    this.dataSourceService.getImageViewerData(iri).subscribe((data) => viewer.open(data));
+  openViewer(viewer: ImageViewerPopoverComponent, result: ListResult): void {
+    const source = this.dataSourceService.getImageViewerData(result['@id']);
+    source.subscribe(data => viewer.open(data, result));
   }
 
   /**

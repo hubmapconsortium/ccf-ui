@@ -27,7 +27,7 @@ export interface SpatialSceneNode {
 
 // tslint:disable: no-unsafe-any
 async function loadGLTF(model: SpatialSceneNode): Promise<unknown> {
-  const gltf = await load(model.scenegraph, GLTFLoader, {DracoLoader, decompress: true, postProcess: true});
+  const gltf = await load(model.scenegraph as string, GLTFLoader, {DracoLoader, decompress: true, postProcess: true});
 
   const scenegraphNode = model.scenegraphNode ? gltf.nodes?.find((n) => n.name === model.scenegraphNode) : undefined;
   if (scenegraphNode) {
@@ -69,6 +69,7 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
 }
 
 export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
+  static readonly layerName = 'BodyUILayer';
 
   initializeState(): void {
     const { data } = this.props;
@@ -109,6 +110,3 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
     return e.info;
   }
 }
-
-// Some Deck.gl things to set (which look ugly, but is required)
-((BodyUILayer as unknown) as {layerName: string}).layerName = 'BodyUILayer';

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output, ViewChild, ElementRef } from '@angular/core';
 
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 import { ColorScheme, DEFAULT_COLOR_SCHEMES } from '../color-schemes';
@@ -29,6 +29,8 @@ export class ColorSchemePopupComponent {
    */
   @Output() layerChange = new EventEmitter<ImageViewerLayer>();
 
+  @ViewChild('content', { static: true, read: ElementRef }) contentElement: ElementRef<HTMLElement>;
+
   /**
    * Controls visibility of the popup
    */
@@ -49,11 +51,11 @@ export class ColorSchemePopupComponent {
    */
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
   close(target: HTMLElement): void {
-    const popupElement = document.getElementsByClassName('scheme-popup show')[0];
-    if (!this.popupVisible || popupElement?.contains(target) || this.owner?.contains(target)) {
+    const { popupVisible, contentElement: { nativeElement: content } = { nativeElement: undefined }, owner } = this;
+    if (!popupVisible || content?.contains(target) || owner?.contains(target)) {
       return;
     }
-    this.popupVisible = !this.popupVisible;
+    this.popupVisible = !popupVisible;
   }
 
   /**
@@ -63,6 +65,6 @@ export class ColorSchemePopupComponent {
     const clickPos = event.pageY;
     this.bottom = window.innerHeight - clickPos < 336;
     this.owner = owner;
-    this.popupVisible = !this.popupVisible;
+    this.popupVisible = true;
   }
 }

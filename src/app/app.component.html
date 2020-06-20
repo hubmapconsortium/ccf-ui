@@ -21,7 +21,7 @@
       </div>
       <ccf-results-browser
         [dataLoading]="spinnerActive$ | async"
-        (resultClicked)="openViewer(viewer, $event['@id'])"
+        (resultClicked)="openViewer(viewer, $event)"
         [data]="data.listData$ | async"
         [aggregateData]="data.aggregateData$ | async"
         [resultLabel]="ontologySelectionLabel"

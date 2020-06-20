@@ -104,10 +104,11 @@ export class ColorSchemeContentsComponent {
    * before emitting the changed layer
    */
   colorChanged(color: string, scheme: ColorScheme): void {
-    this.layer.color = color;
-    this.layer.colorScheme = scheme;
-    this.layer.customizedColor = true;
-    this.layerChange.emit(this.layer);
+    this.updateLayer({
+      colorScheme: scheme,
+      color,
+      customizedColor: true
+    });
   }
 
   /**

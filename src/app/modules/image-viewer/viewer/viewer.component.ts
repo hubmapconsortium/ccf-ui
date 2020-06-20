@@ -1,11 +1,18 @@
 import {
   AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild,
 } from '@angular/core';
-import { ChannelConfig, DataSource, ImageViewer, LoaderType, PictureInPictureViewer } from 'ccf-image-viewer';
+import { ChannelConfig, DataSource, ImageViewer, LoaderType, PictureInPictureViewer, TiffInfo } from 'ccf-image-viewer';
 import { ResizeSensor } from 'css-element-queries';
 
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
 
+
+const DEMO_SOURCE: DataSource = {
+  type: LoaderType.Tiff,
+  info: {
+    url: 'https://vitessce-demo-data.storage.googleapis.com/test-data/hubmap/pyramid_0.0.2/spraggins.ome.tif'
+  }
+};
 
 function hexToRgbTriple(hex: string): [number, number, number] {
   // tslint:disable: no-bitwise
@@ -26,6 +33,13 @@ function hexToRgbTriple(hex: string): [number, number, number] {
   // tslint:enable: no-bitwise
 }
 
+function brightnessToSlider(brightness: [number, number]): [number, number] {
+  const SLIDER_MAX = 2 ** 16 - 1;
+  return [
+    Math.trunc(SLIDER_MAX * brightness[0] / 100),
+    Math.trunc(SLIDER_MAX * brightness[1] / 100)
+  ];
+}
 
 @Component({
   selector: 'ccf-viewer',
@@ -35,19 +49,20 @@ function hexToRgbTriple(hex: string): [number, number, number] {
 })
 export class ViewerComponent implements AfterViewInit, OnDestroy {
   // tslint:disable-next-line: no-unsafe-any
-  @Input() set sources(sources: DataSource[]) {
-    this._sources = sources;
+  @Input() set sources(urls: string[]) {
+    this._sources = this.sourcesFromUrls(urls);
+    this.isDemo = false;
+    if (this._sources.length === 0) {
+      this._sources = [DEMO_SOURCE];
+      this.isDemo = true;
+    }
+
     this.updateSources();
   }
-  get sources(): DataSource[] { return this._sources; }
-  private _sources: DataSource[] = [
-    {
-      type: LoaderType.Tiff,
-      info: {
-        url: 'https://vitessce-demo-data.storage.googleapis.com/test-data/hubmap/pyramid_0.0.2/spraggins.ome.tif'
-      }
-    }
-  ];
+  get sources(): string[] {
+    return this._sources.map(source => (source.info as TiffInfo).url);
+  }
+  private _sources: DataSource[] = [DEMO_SOURCE];
 
   // tslint:disable-next-line: no-unsafe-any
   @Input() set layers(layers: ImageViewerLayer[]) {
@@ -61,6 +76,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('canvas', { read: ElementRef }) canvas: ElementRef<HTMLCanvasElement>;
 
+  isDemo = true;
   private viewer: ImageViewer;
   private sensor: ResizeSensor;
 
@@ -107,7 +123,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   }
 
   private async updateSources(): Promise<void> {
-    const { sources, viewer, channelsChange } = this;
+    const { _sources: sources, viewer, channelsChange } = this;
     if (!viewer) {
       return;
     }
@@ -126,10 +142,18 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
       ...result,
       [layer.id]: {
         active: layer.selected,
-        color: hexToRgbTriple(layer.color)
+        color: hexToRgbTriple(layer.color),
+        slider: brightnessToSlider(layer.brightness)
       }
     }), {});
 
     await viewer.updateChannelConfigs(configs);
+  }
+
+  private sourcesFromUrls(urls: string[]): DataSource[] {
+    return urls.filter(url => !!url).map(url => ({
+      type: LoaderType.Tiff,
+      info: { url }
+    }));
   }
 }

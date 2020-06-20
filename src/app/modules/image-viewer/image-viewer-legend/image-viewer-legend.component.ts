@@ -14,5 +14,10 @@ export class ImageViewerLegendComponent {
   /**
    * The list of layers used to render this components
    */
-  @Input() layers: ImageViewerLayer[];
+  // tslint:disable-next-line: no-unsafe-any
+  @Input() set layers(layers: ImageViewerLayer[]) {
+    this._layers = [...layers].sort((v1, v2) => v1.selectionOrder - v2.selectionOrder);
+  }
+  get layers(): ImageViewerLayer[] { return this._layers; }
+  private _layers: ImageViewerLayer[];
 }

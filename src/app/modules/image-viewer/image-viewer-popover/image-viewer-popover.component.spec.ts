@@ -1,72 +1,20 @@
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ImageViewerData, ListResult } from 'ccf-database';
 import { Shallow } from 'shallow-render';
 
+import { StoreModule } from '../../../core/store/store.module';
 import { ImageViewerPopoverComponent } from './image-viewer-popover.component';
 import { ImageViewerPopoverModule } from './image-viewer-popover.module';
-import { ImageViewerLayer } from 'src/app/core/models/image-viewer-layer';
+import { ViewerState } from '../../../core/store/viewer/viewer.state';
+import { of } from 'rxjs';
 
-function getTestLayers(): ImageViewerLayer[] {
-  const testLayerCommon = {
-      selected: false,
-      brightness: [20, 60],
-      transparency: 100,
-      customizedColor: false,
-      selectionOrder: 0,
-      defaultOrder: -1,
-  };
 
-  const layers: ImageViewerLayer[] = [
-      {
-          ...testLayerCommon,
-          label: 'Option 1',
-          id: '1',
-          colorScheme: {
-              type: 'discrete',
-              name: 'bluered',
-              colors: ['#2166AC', '#67A9CF', '#D1E5F0', '#F7F7F7', '#FDDBC7', '#EF8A62', '#B2182B'],
-              positions: [0, .166, .333, .5, .666, .833, 1]
-          },
-          color: '#2166AC',
-      } as ImageViewerLayer,
-      {
-          ...testLayerCommon,
-          label: 'Option 2',
-          id: '2',
-          colorScheme: {
-              type: 'gradient',
-              name: 'viridis',
-              colors: ['#FFE31C', '#21908A', '#450B57'],
-              positions: [0, .5, 1]
-          },
-          color: 'orange',
-      } as ImageViewerLayer,
-      {
-          ...testLayerCommon,
-          label: 'Option 3',
-          id: '3',
-          colorScheme: {
-              type: 'gradient',
-              name: 'viridis',
-              colors: ['#FFE31C', '#21908A', '#450B57'],
-              positions: [0, .5, 1]
-          },
-          color: 'orange',
-      } as ImageViewerLayer
-  ];
-  return layers;
-}
+@NgModule({})
+class EmptyModule {}
 
 describe('ImageViewerPopoverComponent', () => {
-  let shallow: Shallow<ImageViewerPopoverComponent>;
-
-  const mockData: {
-    '@id': string,
-    '@type': 'ImageViewerData',
-    id: string,
-    label: string,
-    organName: string,
-    metadata: { label: string; value: string; }[]
-  } = {
+  const mockData: ImageViewerData = {
     '@id': '',
     '@type': 'ImageViewerData',
     id: '',
@@ -75,15 +23,32 @@ describe('ImageViewerPopoverComponent', () => {
     metadata: [{ label: '', value: '' }]
   };
 
+  const mockResults: ListResult = {
+    '@id': '',
+    '@type': 'ListResult',
+    id: '',
+    label: ''
+  };
+
+  let shallow: Shallow<ImageViewerPopoverComponent>;
+
   beforeEach(() => {
     shallow = new Shallow(ImageViewerPopoverComponent, ImageViewerPopoverModule)
-      .replaceModule(BrowserAnimationsModule, NoopAnimationsModule);
+      .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
+      .replaceModule(StoreModule, EmptyModule)
+      .mock(ViewerState, {
+        layers$: of(),
+        activeLayers$: of(),
+        createLayers: () => undefined,
+        updateLayer: () => undefined,
+        setDefaultScheme: () => undefined
+      });
   });
 
   it('should open the viewer when open() is called', async () => {
     const { instance } = await shallow.render();
     instance.viewerVisible = false;
-    instance.open(mockData);
+    instance.open(mockData, mockResults);
     expect(instance.viewerVisible).toBe(true);
   });
 
@@ -92,50 +57,5 @@ describe('ImageViewerPopoverComponent', () => {
     instance.viewerVisible = true;
     instance.close();
     expect(instance.viewerVisible).toBe(false);
-  });
-
-  it('should set layers to the layers object passed into layersChanged() whenever called', async () => {
-    const { instance } = await shallow.render({ bind: {} });
-    instance.layers = [];
-    const testLayers = getTestLayers();
-    instance.layersChanged(testLayers);
-
-    expect(instance.layers).toEqual(testLayers);
-  });
-
-  it('should set activeLayers to the return of getActiveLayers() everytime layersChanged is called', async () => {
-    const { instance } = await shallow.render({ bind: {} });
-    instance.layers = [];
-    instance.layersChanged(getTestLayers());
-    const testActiveLayers = instance.activeLayers;
-
-    expect(instance.activeLayers).toEqual(testActiveLayers);
-  });
-
-  it('should sort layers by selectionOrder before returning from getActiveLayers()', async () => {
-    const { instance } = await shallow.render({ bind: {} });
-    instance.layers = getTestLayers();
-    instance.layers[0].selected = true;
-    instance.layers[0].selectionOrder = 2;
-    instance.layers[1].selected = true;
-    instance.layers[1].selectionOrder = 1;
-    instance.layers[2].selected = true;
-    instance.layers[2].selectionOrder = 3;
-
-    expect(instance.activeLayers[0]).toEqual(instance.layers[1]);
-    expect(instance.activeLayers[1]).toEqual(instance.layers[0]);
-    expect(instance.activeLayers[2]).toEqual(instance.layers[2]);
-  });
-
-  it('should filter out unselected layers before returning from getActiveLayers()', async () => {
-    const { instance } = await shallow.render({ bind: {} });
-    instance.layers = getTestLayers();
-    instance.layers[0].selected = false;
-    instance.layers[0].selectionOrder = 2;
-    instance.layers[1].selected = true;
-    instance.layers[1].selectionOrder = 1;
-
-    expect(instance.activeLayers.indexOf(instance.layers[0])).toBe(-1);
-    expect(instance.activeLayers.indexOf(instance.layers[1])).toBeGreaterThan(-1);
   });
 });

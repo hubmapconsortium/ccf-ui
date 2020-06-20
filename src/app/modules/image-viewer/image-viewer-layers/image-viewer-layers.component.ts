@@ -23,22 +23,22 @@ export class ImageViewerLayersComponent {
   /**
    * A sorted list of selected layers containing information such as selectionOrder and colorScheme.
    */
-  @Output() selectedLayers = new EventEmitter<ImageViewerLayer[]>();
+  @Output() layerChange = new EventEmitter<ImageViewerLayer>();
 
   /**
-   * Used for keeping track of the order that layers get selected, for sorting purposes later.
+   * Emits when the default scheme has changed.
    */
-  currentLayerIndex = 0;
+  @Output() schemeChange = new EventEmitter<ColorScheme>();
 
   /**
-   * Array of indexes referring to the order that colors should be assigned in the scheme
+   * Used by ngFor to track changes across ImageViewerLayer instances.
+   *
+   * @param layer The layer.
+   * @returns The layer's unique id.
    */
-  assignmentOrder: number[] = [4, 2, 5, 1, 3, 6, 0];
-
-  /**
-   * The current scheme applied to all non-customized layers (from the scheme dropdown)
-   */
-  defaultScheme: ColorScheme;
+  trackById(layer: ImageViewerLayer): string {
+    return layer.id;
+  }
 
   /**
    * Function in charge of handling the layers' checkbox change events.  It keeps track of layers' selected
@@ -47,79 +47,10 @@ export class ImageViewerLayersComponent {
    * @param layer is the layer that needs updating based on the event passed with it.
    */
   checkboxOnChange(layer: ImageViewerLayer): void {
-    const layerIndex = this.layers.indexOf(layer);
-    // Ugly workaround for deep mutations bug
-    layer = new ImageViewerLayer(this.layers[layerIndex]);
-    this.layers = [...this.layers];
-    this.layers[layerIndex] = layer;
-    // End of workaround
-
-    this.layers[layerIndex].selected = !this.layers[layerIndex].selected;
-
-    if (layer.selected) {
-      this.handleSelect(layer);
-    } else {
-      this.handleUnselect(layer);
-    }
-
-    this.currentLayerIndex++;
-    this.layers[layerIndex].selectionOrder = this.currentLayerIndex;
-    this.selectedLayers.emit(this.layers);
-  }
-
-  /**
-   * Updates assignment order array and handles color assignment when a layer is selected
-   * @param layer The layer selected
-   */
-  handleSelect(layer: ImageViewerLayer): void {
-    const colors = layer.colorScheme.colors;
-    if (this.assignmentOrder.length === 0) {
-      this.assignmentOrder = [4, 2, 5, 1, 3, 6, 0];
-    }
-    if (!layer.customizedColor) {
-      layer.color = colors[this.assignmentOrder[this.assignmentOrder.length-1]];
-      layer.defaultOrder = this.assignmentOrder[this.assignmentOrder.length-1];
-      this.assignmentOrder.pop();
-    }
-  }
-
-  /**
-   * When a layer is unselected, ppdates assignment order array and resets layer scheme to the current default scheme
-   * @param layer The layer unselected
-   */
-  handleUnselect(layer: ImageViewerLayer): void {
-    if(!layer.customizedColor) {
-      this.reorderAssignment(layer);
-    } else {
-      layer.customizedColor = false;
-      layer.colorScheme = this.defaultScheme;
-    }
-    layer.defaultOrder = -1;
-  }
-
-  /**
-   * Helper method to reorder the assignment order array when a layer is deselected / customized
-   * @param layer The layer being deselected / customized
-   */
-  reorderAssignment(layer: ImageViewerLayer): void {
-    this.assignmentOrder.push(layer.defaultOrder);
-    const newAssignmentOrder = [4,2,5,1,3,6,0].filter(idx => this.assignmentOrder.includes(idx));
-    this.assignmentOrder = newAssignmentOrder;
-  }
-
-  /**
-   * A helper method which filters out unselected layers, then sorts the remaining layers
-   * based on their selectionOrder property.
-   */
-  activeLayers(): ImageViewerLayer[] {
-    let layers = this.layers.filter(layer => layer.selected);
-    layers = layers.sort((a, b) => {
-      if (a.selectionOrder > b.selectionOrder) {
-        return 1;
-      }
-      return -1;
-    });
-    return layers;
+    this.layerChange.emit(new ImageViewerLayer({
+      ...layer,
+      selected: !layer.selected
+    }));
   }
 
   /**
@@ -128,29 +59,7 @@ export class ImageViewerLayersComponent {
    * @param layer the updated layer object.
    * @param referenceLayer the layer object before the changes, used for referencing which layer in the list to update.
    */
-  layerChange(layer: ImageViewerLayer, index: number): void {
-    if (layer.customizedColor) {
-      this.reorderAssignment(layer);
-    }
-    this.layers = [...this.layers]; // Again ugly workaround
-    this.layers[index] = layer;
-    this.selectedLayers.emit(this.layers);
-  }
-
-  /**
-   * Updates scheme for all non-customized layers when selected from the scheme dropdown menu
-   * @param schemeChange The scheme selected from the dropdown
-   */
-  updateLayerScheme(schemeChange: ColorScheme): void {
-    this.defaultScheme = schemeChange;
-    this.layers = this.layers.map(layer => {
-      const index = layer.colorScheme.colors.indexOf(layer.color);
-      return layer.customizedColor ? layer : new ImageViewerLayer({
-        ...layer,
-        colorScheme: schemeChange,
-        color: schemeChange.colors[index]
-      });
-    });
-    this.selectedLayers.emit(this.layers);
+  layerChanged(layer: ImageViewerLayer): void {
+    this.layerChange.emit(layer);
   }
 }

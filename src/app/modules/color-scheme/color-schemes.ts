@@ -107,8 +107,16 @@ export const PLASMA: ColorScheme = {
 /**
  * Default scheme options
  */
-export const DEFAULT_COLOR_SCHEMES =
-  [BLUERED, GREENRED, PURPLEBROWN, REDTAN, PURPLELIGHTBLUE, VIRIDIS, MAGMA, PLASMA];
+export const DEFAULT_COLOR_SCHEMES = [
+  BLUERED,
+  GREENRED,
+  PURPLEBROWN,
+  REDTAN,
+  PURPLELIGHTBLUE,
+  // VIRIDIS,
+  // MAGMA,
+  // PLASMA
+];
 
 /**
  * Object containing scheme and color index info to be emitted when a change is made

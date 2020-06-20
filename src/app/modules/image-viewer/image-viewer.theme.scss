@@ -45,8 +45,12 @@
     color: mat-color($foreground, text);
   }
 
-  .viewer-image {
+  .viewer {
     background-color: mat-color($background, stage-background);
+
+    .demo-warning {
+      color: mat-color($primary, 'white');
+    }
   }
 
   .legend {

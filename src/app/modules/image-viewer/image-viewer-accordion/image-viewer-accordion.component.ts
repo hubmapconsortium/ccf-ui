@@ -1,5 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { ImageViewerLayer } from '../../../core/models/image-viewer-layer';
+import { ColorScheme } from '../../color-scheme/color-schemes';
+
 
 /**
  * Expandable accordion panel for the image viewer
@@ -24,5 +27,8 @@ export class ImageViewerAccordionComponent {
   /**
    * Output to pass up the changes made to the layers to parent components
    */
-  @Output() layersChanged = new EventEmitter<ImageViewerLayer[]>();
+  @Output() layerChange = new EventEmitter<ImageViewerLayer>();
+
+  /** Emits when the default scheme has changed.  */
+  @Output() schemeChange = new EventEmitter<ColorScheme>();
 }

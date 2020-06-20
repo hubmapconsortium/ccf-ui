@@ -1,22 +1,44 @@
 import { ColorScheme } from './color-scheme';
 
-type omitProperties = 'background' | 'getBrightness' | 'isLight' | 'isDark';
+export interface PureImageViewerLayer {
+  id: string;
+  label: string;
 
-export class ImageViewerLayer {
-  selected: boolean;
+  colorScheme: ColorScheme;
   color: string;
   brightness: [number, number];
   transparency: number;
+
+  selected: boolean;
   customizedColor: boolean;
   selectionOrder: number;
   defaultOrder: number;
+}
 
-  label: string;
+export type ImageViewerLayerRequiredArgNames = 'id' | 'colorScheme';
+export type ImageViewerLayerArgs =
+  Pick<PureImageViewerLayer, ImageViewerLayerRequiredArgNames> &
+  Partial<Omit<PureImageViewerLayer, ImageViewerLayerRequiredArgNames>>;
+
+export class ImageViewerLayer implements PureImageViewerLayer {
   id: string;
-  colorScheme: ColorScheme;
+  label: string;
 
-  constructor(data: Omit<ImageViewerLayer, omitProperties>) {
-    Object.assign(this, data);
+  colorScheme: ColorScheme;
+  color: string;
+  brightness: [number, number] = [20, 60];
+  transparency = 100;
+
+  selected = false;
+  customizedColor = false;
+  selectionOrder = 0;
+  defaultOrder = -1;
+
+  constructor(data: ImageViewerLayerArgs) {
+    Object.assign(this, {
+      label: data.id,
+      color: data.colorScheme.colors[0]
+    }, data);
   }
 
   /**

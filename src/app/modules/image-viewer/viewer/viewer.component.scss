@@ -1,4 +1,16 @@
 :host {
+  .demo-warning {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+
+    .text {
+      vertical-align: top;
+    }
+  }
+
   canvas {
     position: relative !important;
     width: 100%;

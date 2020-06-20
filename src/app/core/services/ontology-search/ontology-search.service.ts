@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Immutable } from '@ngxs-labs/data';
+import { Immutable } from '@ngxs-labs/data/typings';
 import { Store } from '@ngxs/store';
 import { at, find, forEach, keyBy, map as loMap, partial } from 'lodash';
 import { Observable } from 'rxjs';
