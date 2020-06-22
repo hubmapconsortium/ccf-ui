@@ -1,6 +1,6 @@
 {
   "name": "ccf-ui",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-rc.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

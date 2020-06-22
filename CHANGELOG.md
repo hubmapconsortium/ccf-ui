@@ -2,9 +2,22 @@
 
 Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface (EUI).
 
-## 1.0.0-alpha.3 - 2019-05-08
+## 1.0.0-rc.1 - 2020-06-22
 
-> :warning: **WARNING:** This version is not yet ready for use. There is one more sprint scheduled to bring the User Interface up to Spec and usable.
+> :warning: **WARNING:** This version is a release candidate. Some minor updates will likely happen between now and the official HuBMAP Data Release 1 in July.
+
+### Added in 1.0.0-rc.1
+
+* Body UI interactions
+* Image Viewer Integration
+* Partonomy linkage to search / Body UI
+* Now fully integrated into the HuBMAP Portal
+
+### Known Issues in 1.0.0-rc.1
+
+* Image Viewer is using a placeholder .tiff until more .tiff images can be loaded from the IEC
+
+## 1.0.0-alpha.3 - 2019-05-08
 
 ### Added in 1.0.0-alpha.3
 
