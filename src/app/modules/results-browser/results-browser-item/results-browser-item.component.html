@@ -7,11 +7,8 @@
       <div class="result-image-placeholder"></div>
     </ng-template>
 
-    <div class="result-description">
-      <div
-        class="description-label description-data"
-        [class.highlighted]="!!data.highlighted"
-      >{{ data.label }}</div>
+    <div class="result-description" [class.highlighted]="!!data.highlighted">
+      <div class="description-label description-data">{{ data.label }}</div>
       <div class="description-data" *ngFor="let info of data.shortInfo">{{ info }}</div>
     </div>
   </div>
