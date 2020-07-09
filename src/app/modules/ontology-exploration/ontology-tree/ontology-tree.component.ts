@@ -199,7 +199,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
       if (ontologyFilter?.length >= 0) {
         this.selectByIDs(ontologyFilter);
       } else {
-        console.log('im here again: ', ontologyFilter);
         this.selectByIDs([this.bodyNode.original.id]);
       }
     }

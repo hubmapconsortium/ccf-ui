@@ -8,7 +8,7 @@
                    (selectionChange)="updateFilter($event, 'bmiRange')"></ccf-dual-slider>
 </div>
 
-<div class="filter" [class.hidden]="hidden">
+<div class="filter" [class.hidden]="true">
   <ccf-checkbox label="Technologies" [options]="[ 'IMS', 'MxIF', 'PAS' ]" [selection]="filters?.technologies"
                 (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
 </div>

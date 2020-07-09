@@ -18,6 +18,11 @@ export class HeaderComponent {
   @Input() hubmapPortalUrl: string;
 
   /**
+   * Is the user logged in?
+   */
+  @Input() loggedIn: boolean;
+
+  /**
    * Current filter settings
    */
   @Input() filters: Record<string, unknown[] | unknown>;

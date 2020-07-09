@@ -20,7 +20,7 @@
 
     .download {
       color: mat-color($foreground, header-download-icon);
-      
+
       &:hover {
         color: mat-color($accent);
       }
@@ -32,6 +32,10 @@
       &:hover {
         color: mat-color($accent);
       }
+    }
+
+    .authentication {
+      background-color: mat-color($background, authentication);
     }
   }
 }

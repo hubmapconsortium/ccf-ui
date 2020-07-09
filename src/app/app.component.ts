@@ -127,4 +127,9 @@ export class AppComponent {
   get hubmapPortalUrl(): string {
     return this.dataSourceService.dbOptions.hubmapPortalUrl;
   }
+
+  get loggedIn(): boolean {
+    const token = this.dataSourceService.dbOptions.hubmapToken || '';
+    return token.length > 0;
+  }
 }

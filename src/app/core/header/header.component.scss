@@ -13,6 +13,12 @@
     height: 1.5rem;
   }
 
+  // Styled to match the HuBMAP Portal
+  .authentication {
+    width: 8.25rem;
+    border-radius: 2px;
+  }
+
   .logo, .download, .refresh {
     display: flex;
     align-items: center;
@@ -38,15 +44,14 @@
   }
 
   ::ng-deep ccf-info-button {
-    height: 32px;
-    width: 32px;
+    height: 2rem;
+    width: 2rem;
     display: flex;
     justify-content: center;
     .mat-icon {
-      height: 32px;
-      width: 32px;
-      font-size: 32px;
-
+      height: 2rem;
+      width: 2rem;
+      font-size: 2rem;
     }
   }
 }

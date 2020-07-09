@@ -43,6 +43,7 @@ $background: map-merge($mat-dark-theme-background, (
   background: map-get($primary-colors, 900), //#212121
   stage-background: map-get($primary-colors, 'black'),
   dialog: map-get($primary-colors, 900), //#212121
+  authentication: map-get($primary-colors, 50), //#FAFAFA
   app-bar: map-get($primary-colors, 850), //#323232
   modal: map-get($primary-colors, 850), //#323232
   dropdown-menu: map-get($primary-colors, 800), //#424242

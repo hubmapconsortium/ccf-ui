@@ -3,20 +3,23 @@
     <mat-icon class="logo"  aria-hidden="false" aria-label="Reset tool" matTooltip="Human BioMolecular Atlas Project"
     matTooltipPosition="right" svgIcon="app:logo"></mat-icon>
   </a>
-            
+
   <div class="filler"></div>
   <div class="filter-labels">
     <div>Sex: {{filters?.sex}}</div>
     <div>Age: {{filters?.ageRange[0]}}-{{filters?.ageRange[1]}}</div>
     <div>BMI: {{filters?.bmiRange[0]}}-{{filters?.bmiRange[1]}}</div>
   </div>
-  
+
   <mat-icon class="refresh button" (click)="refreshClicked.emit()">refresh</mat-icon>
 
-  <a class="download" href="https://sampledata.hubmapconsortium.org/home" rel="noreferrer noopener" target="_blank">
+  <a class="download" [href]="hubmapPortalUrl" rel="noreferrer noopener" target="_blank">
     <mat-icon class="download-icon" aria-hidden="false" aria-label="Download content" (click)="downloadClicked.emit()">
       cloud_download
     </mat-icon>
   </a>
   <ccf-info-button></ccf-info-button>
+
+  <a mat-button class="authentication" *ngIf="!loggedIn" [href]="hubmapPortalUrl + 'login'" rel="noreferrer noopener" target="_blank">Login</a>
+  <a mat-button class="authentication" *ngIf="loggedIn" [href]="hubmapPortalUrl + 'logout'" rel="noreferrer noopener" target="_blank">Logout</a>
 </mat-toolbar>
