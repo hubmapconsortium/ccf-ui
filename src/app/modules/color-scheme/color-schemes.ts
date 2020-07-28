@@ -25,6 +25,26 @@ export interface ColorScheme {
 }
 
 /**
+ * Default Qualitative Scheme1 (discrete)
+ */
+export const GREEENORANGE: ColorScheme = {
+  type: 'discrete',
+  name: 'qualitative1',
+  colors: ['#66BB6A', '#B39DDB', '#FFCC80', '#FFFF8D', '#1565C0', '#E91E63', '#E65100'],
+  positions: [0, .166, .333, .5, .666, .833, 1]
+};
+
+/**
+ * Default Qualitative Scheme2 (discrete)
+ */
+export const TEALGREEN: ColorScheme = {
+  type: 'discrete',
+  name: 'qualitative2',
+  colors: ['#80CBC4', '#FFFF8D', '#B39DDB', '#EF9A9A', '#64B5F6', '#FFB74D', '#AED581'],
+  positions: [0, .166, .333, .5, .666, .833, 1]
+};
+
+/**
  * Default Scheme1 (discrete)
  */
 export const BLUERED: ColorScheme = {
@@ -108,11 +128,13 @@ export const PLASMA: ColorScheme = {
  * Default scheme options
  */
 export const DEFAULT_COLOR_SCHEMES = [
+  GREEENORANGE,
+  TEALGREEN,
   BLUERED,
   GREENRED,
   PURPLEBROWN,
-  REDTAN,
-  PURPLELIGHTBLUE,
+  // REDTAN,
+  // PURPLELIGHTBLUE,
   // VIRIDIS,
   // MAGMA,
   // PLASMA
