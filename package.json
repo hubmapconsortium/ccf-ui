@@ -23,7 +23,7 @@
     "fix-types:quaternion": "dts-gen -o -m quaternion -f node_modules/quaternion/quaternion.d.ts",
     "fix-types:quaternion-to-euler": "dts-gen -o -m quaternion-to-euler -f node_modules/quaternion-to-euler/index.d.ts",
     "fix-types:vitessce-image-viewer": "mkdir -p node_modules/@types/@hubmap/vitessce-image-viewer && cp projects/ccf-image-viewer/types/@hubmap/vitessce-image-viewer/index.d.ts node_modules/@types/@hubmap/vitessce-image-viewer/index.d.ts",
-    "fix-types-final:deck-gl": "npm install --save-dev @danmarshall/deckgl-typings",
+    "fix-types-final:deck-gl": "npm install --save-dev @danmarshall/deckgl-typings@4.1.9",
     "build:netlify": "npm-run-all fix-types build:libs build cp-netlify-redirects compodoc",
     "cp-netlify-redirects": "cp src/_redirects dist/ccf-ui/_redirects",
     "compodoc": "npm run build:doc",
