@@ -53,7 +53,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
     this._sources = this.sourcesFromUrls(urls);
     this.isDemo = false;
     if (this._sources.length === 0) {
-      this._sources = [DEMO_SOURCE];
+      this._sources = []; // Disabled showing demo image via [DEMO_SOURCE]
       this.isDemo = true;
     }
 
@@ -62,7 +62,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
   get sources(): string[] {
     return this._sources.map(source => (source.info as TiffInfo).url);
   }
-  private _sources: DataSource[] = [DEMO_SOURCE];
+  private _sources: DataSource[] = []; // Disabled showing demo image via [DEMO_SOURCE]
 
   // tslint:disable-next-line: no-unsafe-any
   @Input() set layers(layers: ImageViewerLayer[]) {

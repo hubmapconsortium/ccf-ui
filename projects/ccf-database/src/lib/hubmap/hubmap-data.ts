@@ -72,7 +72,7 @@ const HBM_ORGAN_LABELS: { [organName: string]: string } = {
  * @param data The hubmap data.
  * @returns The converted data.
  */
-export function hubmapResponseAsJsonLd(data: object, assetsApi = '', portalUrl = ''): JsonLd {
+export function hubmapResponseAsJsonLd(data: object, assetsApi = '', portalUrl = '', serviceToken?: string): JsonLd {
   const entries = (get(data, 'hits.hits', []) as JsonDict[])
     .map(e => get(e, '_source', {}) as { [key: string]: unknown });
 
@@ -86,7 +86,7 @@ export function hubmapResponseAsJsonLd(data: object, assetsApi = '', portalUrl =
       images: { '@id': 'hasImage', '@type': '@id' },
       imageProviders: { '@id': 'hasImageProvider', '@type': '@id'}
     },
-    '@graph': entries.map(e => new HuBMAPEntity(e, assetsApi, portalUrl).toJsonLd())
+    '@graph': entries.map(e => new HuBMAPEntity(e, assetsApi, portalUrl, serviceToken).toJsonLd())
   };
 }
 
@@ -127,8 +127,10 @@ export class HuBMAPEntity {
   containsHumanGeneticSequences: boolean;
   spatialOrBulk: 'Spatial' | 'Bulk';
   thumbnailUrl: string;
+  resultUrl: string;
+  resultType: string;
 
-  constructor(public data: JsonDict, public assetsApi = '', portalUrl = '') {
+  constructor(public data: JsonDict, public assetsApi = '', portalUrl = '', serviceToken?: string) {
     this.id = this.data.uuid as string;
     this.entityType = this.data.entity_type as 'Donor' | 'Sample' | 'Dataset';
 
@@ -222,8 +224,8 @@ export class HuBMAPEntity {
     const imageProviders: Iri[] = [];
     for (const d of [ data, ...this.ancestors, ...this.descendants ]) {
       const tiffs = (get(d, 'metadata.files', []) as {rel_path: string}[])
-        .filter(f => /\.(ome\.tiff)$/.test(f.rel_path))
-        .map(f => `${this.assetsApi}/${data.uuid}/${f.rel_path}`);
+        .filter(f => /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
+        .map(f => `${this.assetsApi}/${d.uuid}/${f.rel_path}` + (serviceToken ? `?token=${serviceToken}` : ''));
       if (tiffs.length > 0) {
         images = images.concat(tiffs);
         imageProviders.push(HBM_PREFIX + d.uuid);
@@ -258,7 +260,7 @@ export class HuBMAPEntity {
     } else if (typesSearch.indexOf('af') !== -1) {
       this.thumbnailUrl = 'assets/icons/ico-spatial-af.svg';
       this.spatialOrBulk = 'Spatial';
-    } else if ((typesSearch.indexOf('codex') !== -1)) {
+    } else if (typesSearch.indexOf('codex') !== -1) {
       this.thumbnailUrl = 'assets/icons/ico-spatial-codex.svg';
       this.spatialOrBulk = 'Spatial';
     } else if (typesSearch.indexOf('imc') !== -1) {
@@ -267,9 +269,22 @@ export class HuBMAPEntity {
     } else if ((typesSearch.indexOf('lc') !== -1) && (typesSearch.indexOf('af') === -1)) {
       this.thumbnailUrl = 'assets/icons/ico-bulk-lc.svg';
       this.spatialOrBulk = 'Bulk';
+    } else {
+      this.thumbnailUrl = 'assets/icons/ico-unknown.svg';
+      this.spatialOrBulk = 'Bulk';
     }
 
     this.portalUrl = `${portalUrl}browse/sample/${this.id}`;
+
+    if (images.length > 0) {
+      console.log(this.doi, this);
+      this.resultUrl = images[0];
+      this.resultType = 'image_viewer';
+      this.thumbnailUrl = 'assets/histology3.jpg';
+    } else {
+      this.resultUrl = this.portalUrl;
+      this.resultType = 'external_link';
+    }
   }
 
   /**
@@ -289,8 +304,6 @@ export class HuBMAPEntity {
       shortInfo2: data.description || this.donor.description,
       downloadUrl: this.portalUrl,
       downloadTooltip: 'View in the HuBMAP Data Portal',
-      resultUrl: this.spatialOrBulk === 'Bulk' ? this.portalUrl : undefined,
-      resultType: this.spatialOrBulk === 'Bulk' ? 'external_link' : undefined,
 
       // image viewer metadata
       organName: HBM_ORGAN_LABELS[this.organName] || this.organName,
@@ -350,7 +363,7 @@ export async function addHubmapDataToStore(
     }).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
   }
   if (hubmapData) {
-    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl), store);
+    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken), store);
   } else {
     console.warn(`Unable to load ${dataUrl} as HuBMAP Data`);
   }
