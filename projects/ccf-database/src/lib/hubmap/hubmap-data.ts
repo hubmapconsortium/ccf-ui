@@ -277,7 +277,6 @@ export class HuBMAPEntity {
     this.portalUrl = `${portalUrl}browse/sample/${this.id}`;
 
     if (images.length > 0 && typesSearch.indexOf('codex') === -1) {
-      console.log(this.doi, this);
       this.resultUrl = images[0];
       this.resultType = 'image_viewer';
       this.thumbnailUrl = 'assets/histology3.jpg';
