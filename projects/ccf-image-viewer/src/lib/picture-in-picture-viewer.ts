@@ -63,13 +63,14 @@ export class PictureInPictureViewer extends ImageViewer<PictureInPictureViewerPr
       sliderValues.push(slider);
     }
 
+    const isRgb = loaders[0].isRgb;
     return [
       {
         loader: this.loaders[0],
         loaderSelection,
-        channelIsOn,
-        colorValues,
-        sliderValues
+        channelIsOn: isRgb ? [true, true, true] : channelIsOn,
+        colorValues: isRgb ? [[255, 0, 0], [0, 255, 0], [0, 0, 255]] : colorValues,
+        sliderValues: isRgb ? [[0, 255], [0, 255], [0, 255]] : sliderValues
       }
     ];
   }

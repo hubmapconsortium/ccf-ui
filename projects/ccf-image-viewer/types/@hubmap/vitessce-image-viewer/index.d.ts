@@ -10,6 +10,7 @@ declare module "@hubmap/vitessce-image-viewer" {
     readonly type: string;
     readonly dtype: string;
     readonly isPyramid: boolean;
+    readonly isRgb: boolean;
     readonly numLevels: number;
     readonly tileSize: number;
     readonly channelNames?: string[];

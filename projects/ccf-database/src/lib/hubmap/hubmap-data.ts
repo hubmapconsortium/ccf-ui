@@ -10,6 +10,8 @@ import { convertOldRuiToJsonLd, OldRuiData } from './old-rui-utils';
 type JsonDict = { [key: string]: unknown };
 const HBM_PREFIX = 'https://entity-api.hubmapconsortium.org/entities/';
 
+const DR1_VU_THUMBS = new Set(['VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.png', 'VAN0003-LK-32-21-IMS_NegMode_multilayer_thumbnail.png', 'VAN0003-LK-32-21-IMS_PosMode_multilayer_thumbnail.png', 'VAN0003-LK-32-21-PAS_registered_thumbnail.png', 'VAN0003-LK-32-22-AF_preMxIF_registered_thumbnail.png', 'VAN0003-LK-32-22-MxIF_cyc1_registered_thumbnail.png', 'VAN0003-LK-32-22-MxIF_cyc2_registered_thumbnail.png', 'VAN0003-LK-32-22-MxIF_cyc3_registered_thumbnail.png', 'VAN0005-RK-1-1-AF_preIMS_registered_thumbnail.png', 'VAN0005-RK-1-1-IMS_NegMode_multilayer_thumbnail.png', 'VAN0005-RK-1-1-IMS_PosMode_multilayer_thumbnail.png', 'VAN0005-RK-1-1-PAS_registered_thumbnail.png', 'VAN0005-RK-4-172-AF_preIMS_registered_thumbnail.png', 'VAN0005-RK-4-172-IMS_NegMode_multilayer_thumbnail.png', 'VAN0005-RK-4-172-IMS_PosMode_multilayer_thumbnail.png', 'VAN0005-RK-4-172-PAS_registered_thumbnail.png', 'VAN0006-LK-2-85-AF_preIMS_registered_thumbnail.png', 'VAN0006-LK-2-85-IMS_NegMode_multilayer_thumbnail.png', 'VAN0006-LK-2-85-IMS_PosMode_multilayer_thumbnail.png', 'VAN0006-LK-2-85-PAS_registered_thumbnail.png', 'VAN0006-LK-2-86-AF_preMxIF_registered_thumbnail.png', 'VAN0006-LK-2-86-MxIF_cyc1_registered_thumbnail.png', 'VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.png', 'VAN0006-LK-2-86-MxIF_cyc3_registered_thumbnail.png', 'VAN0007-LK-203-103-AF_preIMS_registered_thumbnail.png', 'VAN0007-LK-203-103-IMS_NegMode_multilayer_thumbnail.png', 'VAN0007-LK-203-103-IMS_PosMode_multilayer_thumbnail.png', 'VAN0007-LK-203-103-PAS_registered_thumbnail.png', 'VAN0008-RK-403-100-AF_preIMS_registered_thumbnail.png', 'VAN0008-RK-403-100-IMS_NegMode_multilayer_thumbnail.png', 'VAN0008-RK-403-100-IMS_PosMode_multilayer_thumbnail.png', 'VAN0008-RK-403-100-PAS_registered_thumbnail.png', 'VAN0008-RK-403-101-AF_preMxIF_registered_thumbnail.png', 'VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.png', 'VAN0008-RK-403-101-MxIF_cyc2_registered_thumbnail.png', 'VAN0008-RK-403-101-MxIF_cyc3_registered_thumbnail.png', 'VAN0011-RK-3-10-AF_preIMS_registered_thumbnail.png', 'VAN0011-RK-3-10-IMS_NegMode_multilayer_thumbnail.png', 'VAN0011-RK-3-10-IMS_PosMode_multilayer_thumbnail.png', 'VAN0011-RK-3-10-PAS_registered_thumbnail.png', 'VAN0011-RK-3-11-AF_preMxIF_registered_thumbnail.png', 'VAN0011-RK-3-11-MxIF_cyc1_registered_thumbnail.png', 'VAN0011-RK-3-11-MxIF_cyc2_registered_thumbnail.png', 'VAN0011-RK-3-11-MxIF_cyc3_registered_thumbnail.png', 'VAN0012-RK-103-75-AF_preIMS_registered_thumbnail.png', 'VAN0012-RK-103-75-IMS_NegMode_multilayer_thumbnail.png', 'VAN0012-RK-103-75-IMS_PosMode_multilayer_thumbnail.png', 'VAN0012-RK-103-75-PAS_registered_thumbnail.png', 'VAN0012-RK-103-76-AF_preMxIF_registered_thumbnail.png', 'VAN0012-RK-103-76-MxIF_cyc1_registered_thumbnail.png', 'VAN0012-RK-103-76-MxIF_cyc2_registered_thumbnail.png', 'VAN0012-RK-103-76-MxIF_cyc3_registered_thumbnail.png']);
+
 /** UUID to TMC mapping. */
 const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
   '03b3d854-ed44-11e8-8bce-0e368f3075e8': 'TMC-UCSD',
@@ -280,6 +282,12 @@ export class HuBMAPEntity {
       this.resultUrl = images[0];
       this.resultType = 'image_viewer';
       this.thumbnailUrl = 'assets/histology3.jpg';
+      if (groupUUID === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a') { // VU
+        const thumb = this.resultUrl.split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.png');
+        if (DR1_VU_THUMBS.has(thumb)) {
+          this.thumbnailUrl = `assets/thumbnails/DR1-VU/${thumb}`;
+        }
+      }
     } else {
       this.resultUrl = this.portalUrl;
       this.resultType = 'external_link';
