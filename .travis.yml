@@ -23,7 +23,7 @@ jobs:
     - npm run test
     - sonar-scanner -X
   - stage: deploy
-    name: Deploy Portal Version
+    name: Deploy Portal Version (as branch)
     if: branch = main
     script:
     - npm run build:libs
@@ -40,6 +40,21 @@ jobs:
       local-dir: dist/ccf-ui
       on:
         branch: main
+  - stage: deploy
+    name: Deploy Portal Version
+    if: tag IS present
+    script:
+    - npm run build:libs
+    - npm run build -- --output-hashing=none --base-href=/
+    - npm run compodoc
+    deploy:
+      provider: releases
+      api_key: "$GITHUB_TOKEN"
+      file_glob: true
+      file: dist/ccf-ui/**/*
+      skip_cleanup: true
+      on:
+        tags: true
   - stage: deploy
     name: Deploy Staging Version
     if: branch = develop
