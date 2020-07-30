@@ -96,6 +96,17 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
     }
   }
 
+  clear(): void {
+    this._sources = [];
+    this._loaders = [];
+    this._channelConfigs = {};
+    this.vivViews = [];
+    this.layers = [];
+    this.layerConfigs = [];
+    this.states = {};
+    this.update();
+  }
+
   finalize(): void {
     this.deck.finalize();
   }

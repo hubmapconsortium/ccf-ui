@@ -57,6 +57,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
       this.isDemo = true;
     }
 
+    this.clear();
     this.updateSources();
   }
   get sources(): string[] {
@@ -129,7 +130,9 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
     }
 
     await viewer.setSources(sources);
-    channelsChange.emit(viewer.channelNames);
+
+    const isRgb = viewer.loaders.some(loader => loader.isRgb);
+    channelsChange.emit(!isRgb ? viewer.channelNames : []);
   }
 
   private async updateLayers(): Promise<void> {
@@ -148,6 +151,10 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
     }), {});
 
     await viewer.updateChannelConfigs(configs);
+  }
+
+  private clear(): void {
+    this.viewer?.clear();
   }
 
   private sourcesFromUrls(urls: string[]): DataSource[] {
