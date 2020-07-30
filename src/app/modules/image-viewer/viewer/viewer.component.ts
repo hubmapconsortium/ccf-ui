@@ -131,7 +131,7 @@ export class ViewerComponent implements AfterViewInit, OnDestroy {
 
     await viewer.setSources(sources);
 
-    const isRgb = viewer.loaders.some(loader => loader.isRgb);
+    const isRgb = viewer.loaders.some((loader: { isRgb: boolean }) => loader.isRgb);
     channelsChange.emit(!isRgb ? viewer.channelNames : []);
   }
 
