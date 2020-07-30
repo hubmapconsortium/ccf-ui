@@ -1,0 +1,16 @@
+name: Purge Production Cache
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Purge Production Cache (1/2)
+        run: "curl -H 'cache-control: no-cache' https://purge.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/"
+
+      - name: Purge Production Cache (2/2)
+        run: "curl -H 'cache-control: no-cache' https://purge.jsdelivr.net/gh/hubmapconsortium/ccf-ui@latest/"

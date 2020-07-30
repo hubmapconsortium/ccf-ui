@@ -75,12 +75,6 @@ jobs:
       local-dir: dist/ccf-ui
       on:
         branch: main-v0.6.0
-  - stage: deploy
-    name: Clear Production Cache
-    if: tag IS present
-    script:
-      - "curl -H 'cache-control: no-cache' https://purge.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/"
-      - "curl -H 'cache-control: no-cache' https://purge.jsdelivr.net/gh/hubmapconsortium/ccf-ui@latest/"
   - stage: test
     name: Test building production version on PRs
     if: type = pull_request
