@@ -1,5 +1,4 @@
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AggregateResult, ListResult } from 'ccf-database';
 
 
@@ -13,7 +12,7 @@ import { AggregateResult, ListResult } from 'ccf-database';
   templateUrl: './results-browser.component.html',
   styleUrls: ['./results-browser.component.scss']
 })
-export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
+export class ResultsBrowserComponent {
 
   /**
    * Input array of items used to generate the list of results in the results browser.
@@ -42,11 +41,6 @@ export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
   @Output() resultClicked = new EventEmitter<ListResult>();
 
   /**
-   * Linking the virtual scroll viewport in the html page to the ts page.
-   */
-  @ViewChild(CdkVirtualScrollViewport) virtualScroll: CdkVirtualScrollViewport;
-
-  /**
    * Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
    * Used to determine whether or not to render the gradient at the bottom.
    */
@@ -58,27 +52,17 @@ export class ResultsBrowserComponent implements AfterViewInit, OnChanges {
   selectedResult: ListResult;
 
   /**
-   * Re-Checks whether or not we need the gradient to be displayed everytime the data reloads.
+   * Handles the scroll event to detect when scroll is at the bottom.
+   *
+   * @param event The scroll event.
    */
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.dataLoading && !this.dataLoading) {
-      this.atScrollBottom = this.virtualScroll.measureScrollOffset('bottom') === 0;
+  onScroll(event: UIEvent): void {
+    if (!event.target) {
+      return;
     }
-  }
 
-  /**
-   * After the view is initialized this is listening for scroll events to check whether or not the
-   * user has reached the bottom of the virtual scroll viewport to properly display / hide the
-   * gradient at the bottom.
-   */
-  ngAfterViewInit(): void {
-    this.virtualScroll.elementScrolled()
-      .subscribe(event => {
-        if (this.virtualScroll.measureScrollOffset('bottom') < 1) {
-          this.atScrollBottom = true;
-        } else {
-          this.atScrollBottom = false;
-        }
-      });
+    const { clientHeight, scrollHeight, scrollTop } = event.target as Element;
+    const diff = scrollHeight - scrollTop - clientHeight;
+    this.atScrollBottom = diff < 64;
   }
 }
