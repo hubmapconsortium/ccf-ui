@@ -1,21 +1,19 @@
-import { ScrollingModule, CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { Shallow } from 'shallow-render';
 
 import { ResultsBrowserComponent } from './results-browser.component';
 import { ResultsBrowserModule } from './results-browser.module';
-import { SimpleChanges, SimpleChange } from '@angular/core';
 
-function createChangeObject(previousValue: unknown, currentValue: unknown): SimpleChange {
+
+function makeScrollEventObject(
+  clientHeight: number, scrollHeight: number, scrollTop: number
+): UIEvent {
   return {
-    currentValue,
-    firstChange: true,
-    previousValue,
-    isFirstChange: () => { return true; }
-  };
-}
-
-function timeout(duration = 0): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, duration));
+    target: {
+      clientHeight,
+      scrollHeight,
+      scrollTop
+    } as Element as EventTarget
+  } as UIEvent;
 }
 
 
@@ -23,52 +21,33 @@ describe('ResultsBrowserComponent', () => {
   let shallow: Shallow<ResultsBrowserComponent>;
 
   beforeEach(() => {
-    shallow = new Shallow(ResultsBrowserComponent, ResultsBrowserModule)
-      .dontMock(ScrollingModule);
+    shallow = new Shallow(ResultsBrowserComponent, ResultsBrowserModule);
   });
 
-  it('should re-run the gradient display logic when the dataLoading Input variable changes to false', async () => {
-    const { instance } = await shallow.render();
-    const spy = spyOn(instance.virtualScroll, 'measureScrollOffset');
-    const changes: SimpleChanges = { dataLoading: createChangeObject(true, false) };
+  it('should re-run the gradient display logic on a scroll event', async () => {
+    const { instance, find } = await shallow.render();
+    const list = find('.results-browser-list');
+    const spy = spyOn(instance, 'onScroll');
 
-    instance.ngOnChanges(changes);
+    list.triggerEventHandler('scroll', {});
     expect(spy).toHaveBeenCalled();
   });
 
-  it('should not re-run the gradient display logic when the dataLoading Input variable changes to true', async () => {
-    const { instance } = await shallow.render();
-    instance.dataLoading = true;
-    const spy = spyOn(instance.virtualScroll, 'measureScrollOffset');
-    const changes: SimpleChanges = { dataLoading: createChangeObject(false, true) };
-
-    instance.ngOnChanges(changes);
-    expect(spy).not.toHaveBeenCalled();
-  });
-
-  it('should change atScrollBottom to true when the viewport scrolls to the bottom', async () => {
+  it('should disable gradient if close to the bottom', async () => {
     const { instance, find } = await shallow.render();
-    const scrollViewport = find(CdkVirtualScrollViewport);
-    const element = scrollViewport.nativeElement as EventTarget;
+    const list = find('.results-browser-list');
 
     instance.atScrollBottom = false;
-    spyOn(instance.virtualScroll, 'measureScrollOffset').and.returnValue(0);
-    element.dispatchEvent(new Event('scroll'));
-    await timeout();
-
-    expect(instance.atScrollBottom).toBeTrue();
+    list.triggerEventHandler('scroll', makeScrollEventObject(100, 200, 100));
+    expect(instance.atScrollBottom).toBeTruthy();
   });
 
-  it('should change atScrollBottom to false when the viewport scrolls not to the bottom', async () => {
+  it('should enable gradient if not close to the bottom', async () => {
     const { instance, find } = await shallow.render();
-    const scrollViewport = find(CdkVirtualScrollViewport);
-    const element = scrollViewport.nativeElement as EventTarget;
+    const list = find('.results-browser-list');
 
-    instance.atScrollBottom = false;
-    spyOn(instance.virtualScroll, 'measureScrollOffset').and.returnValue(1);
-    element.dispatchEvent(new Event('scroll'));
-    await timeout();
-
-    expect(instance.atScrollBottom).not.toBeTrue();
+    instance.atScrollBottom = true;
+    list.triggerEventHandler('scroll', makeScrollEventObject(100, 300, 100));
+    expect(instance.atScrollBottom).toBeFalsy();
   });
 });
