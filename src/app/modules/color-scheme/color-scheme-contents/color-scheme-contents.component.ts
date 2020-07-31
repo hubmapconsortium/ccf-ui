@@ -81,7 +81,7 @@ export class ColorSchemeContentsComponent {
       hidePointerLabels: true
     };
 
-    this.brightnessSliderOptions = { ...COMMON_OPTIONS };
+    this.brightnessSliderOptions = { ...COMMON_OPTIONS, inputEventsInterval: 1000 };
     this.transparencySliderOptions = { ...COMMON_OPTIONS, showSelectionBar: true };
   }
 
