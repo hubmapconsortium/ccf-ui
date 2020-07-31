@@ -238,24 +238,24 @@ export class HuBMAPEntity {
       this.imageProviders = imageProviders;
     }
 
-    const dataTypes = new Set<string>();
-    const assayTypes = new Set<string>();
+    const dataTypes = new Map<string, JsonDict>();
+    const assayTypes = new Map<string, JsonDict>();
     let containsSequence = false;
     for (const e of [...this.ancestors, data, ...this.descendants] as JsonDict[]) {
-      (e.data_types as string[] || []).forEach(t => dataTypes.add(t));
+      (e.data_types as string[] || []).forEach(t => dataTypes.set(t, e));
       const assayType = (e as {metadata: { metadata: JsonDict }}).metadata?.metadata?.assay_type as string;
       if (assayType) {
-        assayTypes.add(assayType);
+        assayTypes.set(assayType, e);
       }
       if (e.contains_human_genetic_sequences === 'yes') {
         containsSequence = true;
       }
     }
     this.containsHumanGeneticSequences = containsSequence;
-    this.dataTypes = [...dataTypes].sort();
-    this.assayTypes = [...assayTypes].sort();
+    this.dataTypes = [...dataTypes.keys()].sort();
+    this.assayTypes = [...assayTypes.keys()].sort();
 
-    const typesSearch = [ ...dataTypes, ...assayTypes].map(l => l.toLowerCase()).join('|');
+    const typesSearch = [ ...this.dataTypes, ...this.assayTypes].map(l => l.toLowerCase()).join('|');
     if (typesSearch.indexOf('10x') !== -1) {
       this.thumbnailUrl = 'assets/icons/ico-bulk-10x.svg';
       this.spatialOrBulk = 'Bulk';
@@ -277,6 +277,7 @@ export class HuBMAPEntity {
     }
 
     this.portalUrl = `${portalUrl}browse/sample/${this.id}`;
+    // this.portalUrl = `${portalUrl}search?ancestor_ids[0]=${this.id}&entity_type[0]=Dataset`;
 
     if (images.length > 0 && typesSearch.indexOf('codex') === -1) {
       this.resultUrl = images[0];
@@ -289,7 +290,15 @@ export class HuBMAPEntity {
         }
       }
     } else {
-      this.resultUrl = this.portalUrl;
+      if (dataTypes.has('codex_cytokit')) {
+        const uuid = dataTypes.get('codex_cytokit')?.uuid;
+        this.resultUrl = `${portalUrl}browse/dataset/${uuid}#visualization`;
+      } else if (dataTypes.has('salmon_rnaseq_10x')) {
+        const uuid = dataTypes.get('salmon_rnaseq_10x')?.uuid;
+        this.resultUrl = `${portalUrl}browse/dataset/${uuid}#visualization`;
+      } else {
+        this.resultUrl = this.portalUrl;
+      }
       this.resultType = 'external_link';
     }
   }
