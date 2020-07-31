@@ -2,6 +2,16 @@
 
 Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface (EUI).
 
+## 1.1.0 - 2020-07-31
+
+### Added in 1.1.0
+
+* Upgraded to latest Vitessce Image Viewer and started showing processed TIFF images coming directly from the HuBMAP infrastructure
+* Processed CODEX and 10x datasets are shown in the HuBMAP Portal's visualization tool
+* Added a limited set of TIFF image thumbnails, with more to come
+* Added two qualitative color schemes for colorizing images in the image viewer
+* Bug fixes/performance optimizations
+
 ## 1.0.0-rc.1 - 2020-06-22
 
 > :warning: **WARNING:** This version is a release candidate. Some minor updates will likely happen between now and the official HuBMAP Data Release 1 in July.
