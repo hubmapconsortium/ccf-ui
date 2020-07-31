@@ -26,6 +26,11 @@ export class ImageViewerContentComponent {
   @Input() layers: ImageViewerLayer[];
 
   /**
+   * Whether content is waiting to be loaded.
+   */
+  @Input() isLoading: boolean;
+
+  /**
    * Emits closeViewer on close button click
    */
   @Output() closeViewer = new EventEmitter();

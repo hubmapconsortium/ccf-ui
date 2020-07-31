@@ -25,6 +25,11 @@ export class ImageViewerAccordionComponent {
   @Input() layers: ImageViewerLayer[];
 
   /**
+   * Whether content is waiting to be loaded.
+   */
+  @Input() isLoading: boolean;
+
+  /**
    * Output to pass up the changes made to the layers to parent components
    */
   @Output() layerChange = new EventEmitter<ImageViewerLayer>();

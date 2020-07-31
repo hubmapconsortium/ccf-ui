@@ -47,6 +47,11 @@ export class ImageViewerPopoverComponent {
   sourceUrls: string[] = [];
 
   /**
+   * Whether data is currently loading.
+   */
+  isLoading = true;
+
+  /**
    * Whether or not the image viewer is visible
    */
   viewerVisible = false;
@@ -75,10 +80,22 @@ export class ImageViewerPopoverComponent {
     this.viewerVisible = true;
     this.data = data;
     this.result = result;
+    this.isLoading = true;
     this.setSourceUrls(result);
     this.cdr.markForCheck();
   }
 
+  onChannelsChange(channels: string[]): void {
+    this.isLoading = false;
+    this.state.createLayers(channels);
+    this.cdr.markForCheck();
+  }
+
+  /**
+   * Sets the source urls from the currently active data.
+   *
+   * @param result The active data.
+   */
   private setSourceUrls(result: ListResult): void {
     const { resultType, resultUrl } = result;
     if (resultType !== 'image_viewer' || resultUrl === undefined) {

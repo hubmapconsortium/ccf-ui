@@ -3,7 +3,7 @@
     <mat-expansion-panel-header expandedHeight="3rem">
       <mat-panel-title>Layers</mat-panel-title>
     </mat-expansion-panel-header>
-    <ccf-image-viewer-layers [layers]="layers" (layerChange)="layerChange.emit($event)"
+    <ccf-image-viewer-layers [layers]="layers" [isLoading]="isLoading" (layerChange)="layerChange.emit($event)"
                              (schemeChange)="schemeChange.emit($event)"></ccf-image-viewer-layers>
   </mat-expansion-panel>
 
