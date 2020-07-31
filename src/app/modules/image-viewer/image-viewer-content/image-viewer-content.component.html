@@ -9,6 +9,7 @@
     <div class="patient-details">{{ data.label }}</div>
   </div>
   <ccf-image-viewer-accordion class="accordion-options" [layers]="layers" [metadata]="data.metadata"
-                              (layerChange)="layerChange.emit($event)" (schemeChange)="schemeChange.emit($event)">
+                              [isLoading]="isLoading" (layerChange)="layerChange.emit($event)"
+                              (schemeChange)="schemeChange.emit($event)">
   </ccf-image-viewer-accordion>
 </div>

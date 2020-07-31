@@ -21,6 +21,11 @@ export class ImageViewerLayersComponent {
   @Input() layers: ImageViewerLayer[];
 
   /**
+   * Whether content is waiting to be loaded.
+   */
+  @Input() isLoading: boolean;
+
+  /**
    * A sorted list of selected layers containing information such as selectionOrder and colorScheme.
    */
   @Output() layerChange = new EventEmitter<ImageViewerLayer>();
