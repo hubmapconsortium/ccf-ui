@@ -1,48 +1,44 @@
 .results-browser-container {
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 7rem);
-    padding: .75rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 7rem);
+  padding: 0.75rem 1.5rem 1.5rem 1.5rem;
 
-    .stat-box {
-        margin-bottom: 1.5rem;
-        line-height: 1.25;
+  .stat-box {
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
 
-        #title {
-            margin-bottom: .75rem;
-            font-weight: bold;
-        }
-
-        .stat-row {
-            display: flex;
-            flex-direction: row;
-
-            .stat-value {
-                margin-right: 1rem;
-                width: 5.5rem;
-                text-align: right;
-            }
-        }
+    #title {
+      margin-bottom: 0.75rem;
+      font-weight: bold;
     }
 
-    .results-virtual-scroll {
-        flex-grow: 1;
-        scrollbar-width: thin;
+    .stat-row {
+      display: flex;
+      flex-direction: row;
 
-        .results-browser-list {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
+      .stat-value {
+        margin-right: 1rem;
+        width: 5.5rem;
+        text-align: right;
+      }
     }
+  }
 
-    .scroll-gradient {
-        position: absolute;
-        height: 9rem;
-        width: 95%;
-        bottom: 0;
+  .results-virtual-scroll {
+    flex-grow: 1;
+    scrollbar-width: thin;
+  }
+
+  .scroll-gradient {
+    position: absolute;
+    height: 9rem;
+    width: 95%;
+    bottom: 0;
+    pointer-events: none;
+
+    &.hidden {
+      display: none;
     }
-    .scroll-gradient.hidden {
-        display: none;
-    }
+  }
 }

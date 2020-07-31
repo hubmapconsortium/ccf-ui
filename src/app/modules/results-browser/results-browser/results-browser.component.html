@@ -7,19 +7,12 @@
     </div>
   </div>
 
-  <cdk-virtual-scroll-viewport itemSize="10" class="results-virtual-scroll" #virtualScroll>
-    <div class="results-browser-list">
-      <div
-        *cdkVirtualFor="let result of data"
-        class="browser-item-container"
-        [class.selected]="result === selectedResult"
-      >
-        <ccf-results-browser-item
-          [data]="result"
-          (openImageViewer)="selectedResult = result; resultClicked.emit(result);"
-          class="result-browser-item"
-        ></ccf-results-browser-item>
-      </div>
+  <cdk-virtual-scroll-viewport itemSize="64" class="results-virtual-scroll" #virtualScroll>
+    <div *cdkVirtualFor="let result of data" class="browser-item-container"
+         [class.selected]="result === selectedResult">
+      <ccf-results-browser-item [data]="result" (openImageViewer)="selectedResult = result; resultClicked.emit(result);"
+                                class="result-browser-item">
+      </ccf-results-browser-item>
     </div>
   </cdk-virtual-scroll-viewport>
   <div class="scroll-gradient" [class.hidden]="!!atScrollBottom"></div>
