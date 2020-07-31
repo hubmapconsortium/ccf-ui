@@ -1,17 +1,23 @@
-.layer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 1.5rem;
-}
+:host {
+  .layer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.5rem;
+  }
 
-.hidden {
+  .hidden {
     visibility: hidden !important;
-}
+  }
 
-.color-selector-placeholder {
-  height: 1rem;
-  width: 1rem;
-  border-radius: 100%;
+  .color-selector-placeholder {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 100%;
+  }
+
+  .no-layers-text {
+    text-align: center;
+  }
 }
