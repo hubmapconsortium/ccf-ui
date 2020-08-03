@@ -1,4 +1,4 @@
-import { N3Store } from 'triple-store-utils';
+import { Store } from 'triple-store-utils';
 
 import { AggregateResult } from '../interfaces';
 import { entity } from '../util/prefixes';
@@ -11,7 +11,7 @@ import { entity } from '../util/prefixes';
  * @param store The triple store.
  * @returns The list of aggregate results.
  */
-export function getAggregateResults(ids: Set<string>, store: N3Store): AggregateResult[] {
+export function getAggregateResults(ids: Set<string>, store: Store): AggregateResult[] {
   const centers = new Set<string>();
   store.some((quad) => {
     if (ids.has(quad.subject.id)) { centers.add(quad.object.id); }

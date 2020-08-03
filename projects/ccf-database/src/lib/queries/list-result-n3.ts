@@ -1,6 +1,6 @@
 import { set } from 'lodash';
 import { fromRdf } from 'rdf-literal';
-import { DataFactory, N3Store } from 'triple-store-utils';
+import { DataFactory, Store } from 'triple-store-utils';
 
 import { ListResult } from './../interfaces';
 import { entity } from './../util/prefixes';
@@ -27,7 +27,7 @@ const listResultSet: { [iri: string]: string | string[] } = {
  * @param iri The entity id.
  * @returns The list data.
  */
-export function getListResult(store: N3Store, iri: string): ListResult {
+export function getListResult(store: Store, iri: string): ListResult {
   const result = { '@id': iri, '@type': 'ListResult' } as ListResult;
   store.some((quad) => {
     const prop = listResultSet[quad.predicate.id];
