@@ -19,6 +19,7 @@
           <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
         </button>
       </div>
+      <ccf-block-size-input></ccf-block-size-input>
       <ccf-results-browser
         [dataLoading]="spinnerActive$ | async"
         (resultClicked)="openViewer(viewer, $event)"
