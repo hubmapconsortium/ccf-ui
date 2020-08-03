@@ -28,13 +28,14 @@ describe('OntologySelectionComponent', () => {
     shallow = new Shallow(OntologySelectionComponent, OntologySelectionModule)
       .provide(OntologySearchService)
       .mock(Store, mockStore)
-      .mock(OntologySearchService, { rootNode: of(fromPartial<OntologyNode>({})) });
+      .mock(OntologySearchService, { rootNode: of(fromPartial<OntologyNode>({})) })
+      .mock(OntologyTreeComponent, { expandAndSelect: () => undefined });
   });
 
   it('should expand the selected node', async () => {
     const { findComponent, instance } = await shallow.render();
     const tree = findComponent(OntologyTreeComponent);
-    const spy = spyOn(tree, 'expandAndSelect');
+    const spy = tree.expandAndSelect;
 
     instance.selected(ontologyNode);
     expect(spy).toHaveBeenCalled();
