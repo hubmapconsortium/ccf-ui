@@ -1,4 +1,4 @@
-import { addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, N3Store, Quad, Store } from 'triple-store-utils';
+import { addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, Quad, Store } from 'triple-store-utils';
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
@@ -8,9 +8,9 @@ import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getImageViewerData } from './queries/image-viewer-data-n3';
 import { getListResult } from './queries/list-result-n3';
+import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { SpatialEntity } from './spatial-types';
-import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 
 
 /** Database initialization options. */
@@ -44,7 +44,7 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
 /** Database provider. */
 export class CCFDatabase implements DataSource {
   /** The triple store. */
-  store: N3Store;
+  store: Store;
   /** The spatial graph */
   graph: CCFSpatialGraph;
   /** Creates SpatialEntity Scenes */

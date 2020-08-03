@@ -1,6 +1,6 @@
 import { isFinite } from 'lodash';
 import { fromRdf } from 'rdf-literal';
-import { DataFactory, Literal, N3Store, Term } from 'triple-store-utils';
+import { DataFactory, Literal, Store, Term } from 'triple-store-utils';
 
 import { Filter } from '../interfaces';
 import { entity } from '../util/prefixes';
@@ -13,7 +13,7 @@ import { entity } from '../util/prefixes';
  * @param filter The filter to limit objects.
  * @returns A set of all ids matching the filter.
  */
-export function findIds(store: N3Store, filter: Filter): Set<string> {
+export function findIds(store: Store, filter: Filter): Set<string> {
   let seen = getAllEntities(store);
   if (seen.size > 0 && (filter.hasSpatialEntity === true || filter.hasSpatialEntity === false)) {
     seen = filterByHasSpatialEntity(store, seen, filter.hasSpatialEntity);
@@ -56,7 +56,7 @@ export function findIds(store: N3Store, filter: Filter): Set<string> {
  * @param store The triple store.
  * @returns A set of all ids.
  */
-function getAllEntities(store: N3Store): Set<string> {
+function getAllEntities(store: Store): Set<string> {
   const seen = new Set<string>();
   store.forSubjects((s) => seen.add(s.id), entity.id, null, null);
   return seen;
@@ -81,7 +81,7 @@ function differenceCallback(seen: Set<string>, newSeen: Set<string>): (s: Term) 
  * @param sex Gender to filter on.
  * @returns The subset of ids with the specified gender.
  */
-function filterBySex(store: N3Store, seen: Set<string>, sex: 'Male' | 'Female'): Set<string> {
+function filterBySex(store: Store, seen: Set<string>, sex: 'Male' | 'Female'): Set<string> {
   const newSeen = new Set<string>();
   store.forSubjects(differenceCallback(seen, newSeen), entity.sex, entity[sex], null);
   return newSeen;
@@ -95,7 +95,7 @@ function filterBySex(store: N3Store, seen: Set<string>, sex: 'Male' | 'Female'):
  * @param groupNames Group names to filter on.
  * @returns The subset of ids with the specified group names.
  */
-function filterByGroupName(store: N3Store, seen: Set<string>, groupNames: string[]): Set<string> {
+function filterByGroupName(store: Store, seen: Set<string>, groupNames: string[]): Set<string> {
   const newSeen = new Set<string>();
   for (const groupName of groupNames) {
     const literal = DataFactory.literal(groupName);
@@ -112,7 +112,7 @@ function filterByGroupName(store: N3Store, seen: Set<string>, groupNames: string
  * @param terms Ontology terms to filter on.
  * @returns The subset of ids with the specified ontology terms.
  */
-function filterByOntologyTerms(store: N3Store, seen: Set<string>, terms: string[]): Set<string> {
+function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
   const newSeen = new Set<string>();
   for (const term of terms) {
     const namedNode = DataFactory.namedNode(term);
@@ -130,7 +130,7 @@ function filterByOntologyTerms(store: N3Store, seen: Set<string>, terms: string[
  * @param maxAge Maximum age.
  * @returns The subset of ids with the specified age.
  */
-function filterByAge(store: N3Store, seen: Set<string>, minAge: number, maxAge: number): Set<string> {
+function filterByAge(store: Store, seen: Set<string>, minAge: number, maxAge: number): Set<string> {
   const newSeen = new Set<string>();
   store.some((quad) => {
     if (seen.has(quad.subject.id)) {
@@ -153,7 +153,7 @@ function filterByAge(store: N3Store, seen: Set<string>, minAge: number, maxAge: 
  * @param maxBMI Maximum BMI.
  * @returns The subset of ids with the specified BMI.
  */
-function filterByBMI(store: N3Store, seen: Set<string>, minBMI: number, maxBMI: number): Set<string> {
+function filterByBMI(store: Store, seen: Set<string>, minBMI: number, maxBMI: number): Set<string> {
   const newSeen = new Set<string>();
   store.some((quad) => {
     if (seen.has(quad.subject.id)) {
@@ -175,7 +175,7 @@ function filterByBMI(store: N3Store, seen: Set<string>, minBMI: number, maxBMI: 
  * @param hasSpatialEntity Whether the filtered objects should have a spatial entity.
  * @returns The subset of ids with/without spatial entities.
  */
-function filterByHasSpatialEntity(store: N3Store, seen: Set<string>, hasSpatialEntity: boolean): Set<string> {
+function filterByHasSpatialEntity(store: Store, seen: Set<string>, hasSpatialEntity: boolean): Set<string> {
   const newSeen = new Set<string>();
   store.forSubjects(differenceCallback(seen, newSeen), entity.spatialEntity, null, null);
   if (!hasSpatialEntity) {

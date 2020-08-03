@@ -1,10 +1,17 @@
 import { AmbientLight, Deck, LightingEffect, OrbitView } from '@deck.gl/core';
+import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
 import bind from 'bind-decorator';
 import { Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
 
 import { BodyUILayer, SpatialSceneNode } from './body-ui-layer';
+
+
+interface BodyUIViewStateProps extends ViewStateProps {
+  orbitAxis?: string;
+  target?: Matrix4 | number[];
+}
 
 
 export interface BodyUIProps {
@@ -52,15 +59,17 @@ export class BodyUI {
     };
     // tslint:disable-next-line: no-any
     this.deck = new Deck(props as any);
-    this.deck.setProps({viewState: {
-      orbitAxis: 'Y',
-      minRotationX: -15,
-      maxRotationX: 15,
-      target: [0.5, 0.5, 0],
-      rotationX: 0,
-      rotationOrbit: 0,
-      zoom: 9.5
-    }});
+    this.deck.setProps({
+      viewState: {
+        orbitAxis: 'Y',
+        minRotationX: -15,
+        maxRotationX: 15,
+        target: [0.5, 0.5, 0],
+        rotationX: 0,
+        rotationOrbit: 0,
+        zoom: 9.5
+      } as BodyUIViewStateProps
+    });
   }
 
   setScene(data: SpatialSceneNode[]): void {
@@ -86,7 +95,7 @@ export class BodyUI {
         rotationX: 0,
         rotationOrbit: 0,
         zoom: 11.5,
-      }
+      } as BodyUIViewStateProps
     });
   }
 

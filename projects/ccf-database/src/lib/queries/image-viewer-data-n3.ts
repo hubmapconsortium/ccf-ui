@@ -1,6 +1,6 @@
 import { set } from 'lodash';
 import { fromRdf } from 'rdf-literal';
-import { DataFactory, N3Store } from 'triple-store-utils';
+import { DataFactory, Store } from 'triple-store-utils';
 
 import { ImageViewerData } from './../interfaces';
 import { entity } from './../util/prefixes';
@@ -41,7 +41,7 @@ const metadataSet: { [iri: string]: string } = {
  * @param store The triple store.
  * @returns The extracted data.
  */
-export function getImageViewerData(iri: string, store: N3Store): ImageViewerData {
+export function getImageViewerData(iri: string, store: Store): ImageViewerData {
   const result = { '@id': iri, '@type': 'ImageViewerData' } as ImageViewerData;
 
   const propResults: { [predId: string]: string } = {};

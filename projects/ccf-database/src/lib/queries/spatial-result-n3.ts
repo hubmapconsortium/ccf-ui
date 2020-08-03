@@ -1,6 +1,6 @@
 import { set } from 'lodash';
 import { fromRdf } from 'rdf-literal';
-import { DataFactory, N3Store, NamedNode } from 'triple-store-utils';
+import { DataFactory, NamedNode, Store } from 'triple-store-utils';
 
 import { SpatialEntity, SpatialObjectReference, SpatialPlacement } from './../spatial-types';
 import { ccf, entity } from './../util/prefixes';
@@ -36,7 +36,7 @@ const mappings = {
  * @param mapping Property mappings.
  * @returns A new data object.
  */
-function create<T = unknown>(store: N3Store, iri: string, type: string, mapping: { [iri: string]: string }): T {
+function create<T = unknown>(store: Store, iri: string, type: string, mapping: { [iri: string]: string }): T {
   const result = { '@id': iri, '@type': type };
   store.some((quad) => {
     const prop = mapping[quad.predicate.id];
@@ -56,7 +56,7 @@ function create<T = unknown>(store: N3Store, iri: string, type: string, mapping:
  * @param iri The data identifier.
  * @returns The new reference.
  */
-export function getSpatialObjectReference(store: N3Store, iri: string): SpatialObjectReference {
+export function getSpatialObjectReference(store: Store, iri: string): SpatialObjectReference {
   return create<SpatialObjectReference>(store, iri, 'SpatialObjectReference', mappings.spatialObjectReference);
 }
 
@@ -67,7 +67,7 @@ export function getSpatialObjectReference(store: N3Store, iri: string): SpatialO
  * @param iri The data identifier.
  * @returns The new entity.
  */
-export function getSpatialEntity(store: N3Store, iri: string): SpatialEntity {
+export function getSpatialEntity(store: Store, iri: string): SpatialEntity {
   const result = create<SpatialEntity>(store, iri, 'SpatialEntity', mappings.spatialEntity);
   // Default mapping will come back as an IRI which we can look up for the full object
   if (result.object) {
@@ -84,7 +84,7 @@ export function getSpatialEntity(store: N3Store, iri: string): SpatialEntity {
  * @param iri The data identifier.
  * @returns THe new placement object.
  */
-export function getSpatialPlacement(store: N3Store, iri: string): SpatialPlacement {
+export function getSpatialPlacement(store: Store, iri: string): SpatialPlacement {
   const result = create<SpatialPlacement>(store, iri, 'SpatialPlacement', mappings.spatialPlacement);
   // Default mapping will come back as an IRI for source/target which we can look up for the full object
   if (result.source) {
@@ -103,7 +103,7 @@ export function getSpatialPlacement(store: N3Store, iri: string): SpatialPlaceme
  * @param entityIRI The indentifier of the store entity.
  * @returns A new entity.
  */
-export function getSpatialEntityForEntity(store: N3Store, entityIRI: string): SpatialEntity | undefined {
+export function getSpatialEntityForEntity(store: Store, entityIRI: string): SpatialEntity | undefined {
   const spatialEntityNodes = store.getObjects(DataFactory.namedNode(entityIRI), entity.spatialEntity, null);
   if (spatialEntityNodes.length > 0) {
     return getSpatialEntity(store, spatialEntityNodes[0].id);

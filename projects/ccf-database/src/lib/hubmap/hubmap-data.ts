@@ -1,6 +1,6 @@
 import { Iri, JsonLd, Url } from 'jsonld/jsonld-spec';
 import { get, omit, toNumber } from 'lodash';
-import { addJsonLdToStore, N3Store } from 'triple-store-utils';
+import { addJsonLdToStore, Store } from 'triple-store-utils';
 
 import { ccf, rui } from '../util/prefixes';
 import { fixUflRuiLocation } from './hubmap-ufl-patch';
@@ -352,7 +352,7 @@ export class HuBMAPEntity {
  * @param serviceType The service type.
  */
 export async function addHubmapDataToStore(
-  store: N3Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string, assetsApi = '', portalUrl = ''
+  store: Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string, assetsApi = '', portalUrl = ''
 ): Promise<void> {
   let hubmapData: object | undefined;
   if (serviceType === 'static') {
