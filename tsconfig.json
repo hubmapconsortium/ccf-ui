@@ -45,6 +45,12 @@
     },
     {
       "path": "./projects/ccf-rui/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ccf-components/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ccf-components/tsconfig.spec.json"
     }
   ]
 }

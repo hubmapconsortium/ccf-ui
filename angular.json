@@ -440,6 +440,51 @@
           }
         }
       }
+    },
+    "ccf-components": {
+      "projectType": "library",
+      "root": "projects/ccf-components",
+      "sourceRoot": "projects/ccf-components/src",
+      "prefix": "ccf",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ccf-components/tsconfig.lib.json",
+            "project": "projects/ccf-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ccf-components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ccf-components/src/test.ts",
+            "tsConfig": "projects/ccf-components/tsconfig.spec.json",
+            "karmaConfig": "projects/ccf-components/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/src/test.ts",
+              "**/*.module.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ccf-components/tsconfig.lib.json",
+              "projects/ccf-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ccf-ui",
