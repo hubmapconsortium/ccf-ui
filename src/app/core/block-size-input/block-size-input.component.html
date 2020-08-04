@@ -1,20 +1,24 @@
 <div class="block-size-header">
   Tissue Block Size (mm)
-  <mat-icon class="block-size-refresh">refresh</mat-icon>
+  <mat-icon class="block-size-refresh" (click)="refreshBlockSize()">refresh</mat-icon>
 </div>
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label class="form-label">Width (X)</mat-label>
-    <input class="form-input" matInput placeholder="Enter width" value="10" (input)="updateBlockSize($event, 'width')">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label class="form-label">Height (Y)</mat-label>
-    <input class="form-input" matInput placeholder="Enter height" value="10" (input)="updateBlockSize($event, 'height')">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label class="form-label">Depth (Z)</mat-label>
-    <input class="form-input" matInput placeholder="Enter depth" value="10" (input)="updateBlockSize($event, 'depth')">
-  </mat-form-field>
+<form class="size-input-form">
+  <div class="form-dimension">
+    <mat-form-field>
+      <mat-label class="form-label">Width (X)</mat-label>
+      <input class="form-input" [(value)]="values.width" matInput placeholder="" (input)="updateBlockSize($event, 'width')">
+    </mat-form-field>
+  </div>
+  <div class="form-dimension">
+    <mat-form-field>
+      <mat-label class="form-label">Height (Y)</mat-label>
+      <input class="form-input" [(value)]="values.height" matInput placeholder="" (input)="updateBlockSize($event, 'height')">
+    </mat-form-field>
+  </div>
+  <div class="form-dimension">
+    <mat-form-field>
+      <mat-label class="form-label">Depth (Z)</mat-label>
+      <input class="form-input" [(value)]="values.depth" matInput placeholder="" (input)="updateBlockSize($event, 'depth')">
+    </mat-form-field>
+  </div>
 </form>
