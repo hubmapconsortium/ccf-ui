@@ -312,6 +312,179 @@
           }
         }
       }
+    },
+    "ccf-rui": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ccf-rui",
+      "sourceRoot": "projects/ccf-rui/src",
+      "prefix": "ccf",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ccf-rui",
+            "index": "projects/ccf-rui/src/index.html",
+            "main": "projects/ccf-rui/src/main.ts",
+            "polyfills": "projects/ccf-rui/src/polyfills.ts",
+            "tsConfig": "projects/ccf-rui/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ccf-rui/src/favicon.ico",
+              "projects/ccf-rui/src/assets"
+            ],
+            "styles": [
+              "projects/ccf-rui/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ccf-rui/src/environments/environment.ts",
+                  "with": "projects/ccf-rui/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ccf-rui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ccf-rui:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ccf-rui:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ccf-rui/src/test.ts",
+            "polyfills": "projects/ccf-rui/src/polyfills.ts",
+            "tsConfig": "projects/ccf-rui/tsconfig.spec.json",
+            "karmaConfig": "projects/ccf-rui/karma.conf.js",
+            "assets": [
+              "projects/ccf-rui/src/favicon.ico",
+              "projects/ccf-rui/src/assets"
+            ],
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "src/test.ts",
+              "src/polyfills.ts",
+              "src/environments/**/*.ts",
+              "src/app/**/*.module.ts"
+            ],
+            "styles": [
+              "projects/ccf-rui/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ccf-rui/tsconfig.app.json",
+              "projects/ccf-rui/tsconfig.spec.json",
+              "projects/ccf-rui/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ccf-rui/e2e/protractor.conf.js",
+            "devServerTarget": "ccf-rui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ccf-rui:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "ccf-components": {
+      "projectType": "library",
+      "root": "projects/ccf-components",
+      "sourceRoot": "projects/ccf-components/src",
+      "prefix": "ccf",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ccf-components/tsconfig.lib.json",
+            "project": "projects/ccf-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ccf-components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ccf-components/src/test.ts",
+            "tsConfig": "projects/ccf-components/tsconfig.spec.json",
+            "karmaConfig": "projects/ccf-components/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/src/test.ts",
+              "**/*.module.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ccf-components/tsconfig.lib.json",
+              "projects/ccf-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ccf-ui",

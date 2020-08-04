@@ -39,6 +39,18 @@
     },
     {
       "path": "./projects/ccf-image-viewer/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ccf-rui/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/ccf-rui/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ccf-components/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ccf-components/tsconfig.spec.json"
     }
   ]
 }
