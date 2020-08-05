@@ -23,7 +23,7 @@ describe('BlockSizeInputComponent', () => {
     const { instance, outputs } = await shallow.render({ bind: {} });
     instance.values = {};
     instance.refreshBlockSize();
-    expect(instance.values).toBe({width: '10', height: '10', depth: '10'});
+    expect(instance.values).toEqual({width: '10', height: '10', depth: '10'});
     expect(outputs.valuesChange.emit).toHaveBeenCalled();
   });
 });
