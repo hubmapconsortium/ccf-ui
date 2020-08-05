@@ -5,8 +5,8 @@ import { Store } from '@ngxs/store';
 import { at, find, forEach, keyBy, map as loMap, partial } from 'lodash';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
+import { environment } from '../../../../environments/environment';
 import { JsonOntologyNode, jsonToOntologyNode } from '../../models/json-ontology';
 import { OntologyNode } from '../../models/ontology-node';
 import { OntologyState, OntologyStateModel } from '../../store/ontology/ontology.state';
