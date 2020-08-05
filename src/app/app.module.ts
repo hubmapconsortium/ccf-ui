@@ -16,7 +16,7 @@ import { ResultsBrowserModule } from './modules/results-browser/results-browser/
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 
 import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
-import { BlockSizeInputModule } from './core/block-size-input/block-size-input.module';
+
 
 @NgModule({
   imports: [
@@ -32,8 +32,7 @@ import { BlockSizeInputModule } from './core/block-size-input/block-size-input.m
     ResultsBrowserModule,
     SpinnerOverlayModule,
     ImageViewerModule,
-    BodyModule,
-    BlockSizeInputModule
+    BodyModule
   ],
   declarations: [AppComponent],
   providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],

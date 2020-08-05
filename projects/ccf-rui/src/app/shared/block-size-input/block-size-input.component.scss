@@ -1,8 +1,15 @@
+.block-size-input {
+  display: flex;
+  width: 20em;
+  flex-direction: column;
+}
+
 .block-size-header {
   font-weight: bold;
   margin: 1em;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 1em;
 
   .block-size-refresh {
     color: gray;
@@ -24,15 +31,12 @@
 }
 
 .form-input {
-  text-align: center
+  text-align: center;
 }
 
 ::ng-deep .mat-form-field-label-wrapper {
   top: -2.5em;
   color: gray;
-  .mat-form-field-label {
-    transform: none !important;
-  }
 }
 
 ::ng-deep .mat-form-field-underline {
