@@ -8,7 +8,7 @@
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.worker.json"
+      "path": "./projects/ccf-eui/tsconfig.worker.json"
     },
     {
       "path": "./projects/ccf-eui/tsconfig.app.json"
