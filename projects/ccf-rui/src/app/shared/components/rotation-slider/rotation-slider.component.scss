@@ -1,0 +1,119 @@
+.container {
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .title {
+            font-weight: bold;
+        }
+
+        .reset {
+            color: #9e9e9e;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .sliders {
+        padding: 0.75rem;
+
+        .slider-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+
+            .slider-container {
+                width: 100%;
+                padding-left: 3rem;
+                padding-right: 3rem;
+                padding-bottom: .5rem;
+
+                .slider {
+                    -webkit-appearance: none;
+                    width: 100%;
+                    height: 2px;
+                    border-radius: 5px;
+                    background: #d3d3d3;
+                    outline: none;
+                    opacity: 0.7;
+                    -webkit-transition: .2s;
+                    transition: opacity .2s;
+                }
+
+                .slider:hover {
+                    opacity: 1;
+                }
+
+                .slider::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background: #4CAF50;
+                    cursor: pointer;
+                }
+
+                .slider::-moz-range-thumb {
+                    width: 15x;
+                    height: 15px;
+                    border-radius: 50%;
+                    background: #4CAF50;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.red {
+    color: #d50000;
+
+    .slider {
+        background: #d50000 !important;
+    }
+
+    .slider::-webkit-slider-thumb {
+        background: #d50000 !important;
+    }
+
+    .slider::-moz-range-thumb {
+        background: #d50000 !important;
+    }
+}
+
+.green {
+    color: #00c853;
+
+    .slider {
+        background: #00c853 !important;
+    }
+
+    .slider::-webkit-slider-thumb {
+        background: #00c853 !important;
+    }
+
+    .slider::-moz-range-thumb {
+        background: #00c853 !important;
+    }
+}
+
+.blue {
+    color: #007bff;
+
+    .slider {
+        background: #007bff !important;
+    }
+
+    .slider::-webkit-slider-thumb {
+        background: #007bff !important;
+    }
+
+    .slider::-moz-range-thumb {
+        background: #007bff !important;
+    }
+}
