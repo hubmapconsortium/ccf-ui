@@ -1,25 +1,54 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Shallow } from 'shallow-render';
 
 import { RotationSliderComponent } from './rotation-slider.component';
+import { RotationSliderModule } from './rotation-slider.module';
+import { Rotation } from '../../../core/models/rotation';
 
 describe('RotationSliderComponent', () => {
-  let component: RotationSliderComponent;
-  let fixture: ComponentFixture<RotationSliderComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RotationSliderComponent ]
-    })
-    .compileComponents();
-  }));
+  let shallow: Shallow<RotationSliderComponent>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RotationSliderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    shallow = new Shallow(RotationSliderComponent, RotationSliderModule);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit the new value whenever changeRotation is called.', async () => {
+    const rotation: Rotation = { x: 10, y: 10, z: 10 };
+    const { instance, outputs } = await shallow.render({ bind: { rotation }});
+
+    instance.changeRotation(0, 'x');
+    expect(outputs.rotationChanged.emit).toHaveBeenCalled();
+  });
+
+  it('shoud successfully update rotation using changeRotation given a string as input.', async () => {
+    const rotation: Rotation = { x: 0, y: 0, z: 0 };
+    const { instance } = await shallow.render({ bind: { rotation }});
+    instance.changeRotation('10', 'x');
+
+    expect(instance.rotation.x).toEqual(10);
+  });
+
+  it('should successfully update rotation using changeRotation given an integer as input.', async () => {
+    const rotation: Rotation = { x: 1, y: 1, z: 1 };
+    const { instance } = await shallow.render({ bind: { rotation }});
+    instance.changeRotation('2', 'y');
+
+    expect(instance.rotation.y).toEqual(2);
+  });
+
+  it('should emit the rotation change whenever resetRotation is called.', async () => {
+    const { instance, outputs } = await shallow.render();
+    instance.resetRotation();
+
+    expect(outputs.rotationChanged.emit).toHaveBeenCalled();
+  });
+
+  it('should set the rotation to 0, 0, 0 when the resetRotation method is called.', async () => {
+    const rotation: Rotation = { x: 100, y: 100, z: 100 };
+    const { instance } = await shallow.render({ bind: { rotation }});
+    instance.resetRotation();
+
+    expect(instance.rotation.x).toEqual(0);
+    expect(instance.rotation.y).toEqual(0);
+    expect(instance.rotation.z).toEqual(0);
   });
 });
