@@ -1,5 +1,13 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
+export interface TissueData {
+  width: number;
+  height: number;
+  depth: number;
+  thickness: any;
+  numSlices: any;
+}
+
 /**
  * Component for entering dimensions of the tissue block
  */
@@ -13,32 +21,44 @@ export class BlockSizeInputComponent {
   /**
    * Values of block dimensions to be emitted
    */
-  values: Record<string, unknown> = {width: '10', height: '10', depth: '10'};
+  tissueData: TissueData = {
+    width: 10,
+    height: 10,
+    depth: 10,
+    thickness: '',
+    numSlices: ''
+  };
 
   /**
    * Emitter for values
    */
-  @Output() valuesChange = new EventEmitter<Record<string, unknown>>();
+  @Output() valuesChange = new EventEmitter<TissueData>();
 
   /**
-   * Updates values when a dimension input changes
+   * Updates values when an input changes
    * @param input InputEvent from the input element which contains the new value
    * @param key Name of the dimension to be updated
    */
-  updateBlockSize(input: InputEvent, key: string): void {
+  updateTissueData(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
     const inputValue = inputTarget.value;
-    this.values = { ...this.values, [key]: inputValue };
-    console.log(this.values);
-    this.valuesChange.emit(this.values);
+    this.tissueData = { ...this.tissueData, [key]: inputValue };
+    console.log(this.tissueData);
+    this.valuesChange.emit(this.tissueData);
   }
 
   /**
    * Refreshes all block size values to 10
    */
   refreshBlockSize(): void {
-    this.values = {width: '10', height: '10', depth: '10'};
-    console.log(this.values);
-    this.valuesChange.emit(this.values);
+    this.tissueData = { ...this.tissueData, width: 10, height: 10, depth: 10};
+    console.log(this.tissueData);
+    this.valuesChange.emit(this.tissueData);
+  }
+
+  refreshSlices(): void {
+    this.tissueData = { ...this.tissueData, thickness: '', numSlices: ''};
+    console.log(this.tissueData);
+    this.valuesChange.emit(this.tissueData);
   }
 }

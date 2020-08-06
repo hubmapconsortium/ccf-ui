@@ -1,31 +1,32 @@
 
-.block-size-input {
+.block-size-input, .slices-input {
+  width: 300px;
   margin: 0 1.5rem;
   color: #212121;
   display: flex;
   flex-direction: column;
 
-  .block-size-header {
+  .block-size-header, .slices-header {
     font-weight: bold;
     display: flex;
     justify-content: space-between;
     height: 3rem;
     align-items: center;
   
-    .block-size-refresh {
+    .block-size-refresh, .slices-refresh {
       color: #9E9E9E;
       transform: scaleX(-1);
       cursor: pointer;
     }
   }
 
-  .size-input-form {
+  .size-input-form, .slices-input-form {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
   
-    .form-dimension {
+    .form-entry {
       display: flex;
       flex-direction: column;
       width: 30%;
