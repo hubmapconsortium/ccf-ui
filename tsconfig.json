@@ -8,13 +8,13 @@
   "files": [],
   "references": [
     {
-      "path": "./src/tsconfig.app.json"
+      "path": "./projects/ccf-eui/tsconfig.worker.json"
     },
     {
-      "path": "./tsconfig.worker.json"
+      "path": "./projects/ccf-eui/tsconfig.app.json"
     },
     {
-      "path": "./src/tsconfig.spec.json"
+      "path": "./projects/ccf-eui/tsconfig.spec.json"
     },
     {
       "path": "./projects/ccf-database/tsconfig.lib.json"
