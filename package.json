@@ -64,6 +64,7 @@
     "@ngxs/store": "^3.6.2",
     "@rdfjs/data-model": "^1.1.2",
     "bind-decorator": "^1.0.11",
+    "cannon-es": "^0.15.1",
     "comlink": "^4.3.0",
     "css-element-queries": "^1.2.3",
     "graphology": "^0.17.1",
