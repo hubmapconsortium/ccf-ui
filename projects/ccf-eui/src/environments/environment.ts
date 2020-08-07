@@ -20,9 +20,11 @@ export const environment = {
   dbOptions: {
     ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+    hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
-    hubmapDataService: 'static',
-    hubmapDataUrl: 'assets/dev-data/entities.json'
+    hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
+    hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
+    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
   }
 };
 
