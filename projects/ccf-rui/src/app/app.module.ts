@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { BlockSizeInputModule } from './shared/block-size-input/block-size-input.module';
+import { BlockSizeInputModule } from './shared/components/block-size-input/block-size-input.module';
 import { DEFAULT_THEME } from './core/services/theming/theming.service';
 import { RotationSliderModule } from './shared/components/rotation-slider/rotation-slider.module';
 
