@@ -1,0 +1,20 @@
+<div class="slices-input">
+  <div class="slices-header">
+    Tissue Slices
+    <mat-icon class="slices-refresh" (click)="refreshSlices()">refresh</mat-icon>
+  </div>
+  <form class="slices-input-form">
+    <div class="form-entry">
+      <mat-form-field>
+        <mat-label class="form-label">Thickness</mat-label>
+        <input class="form-input" [(value)]="slicesData.thickness" matInput (input)="updateSlicesData($event, 'thickness')">
+      </mat-form-field>
+    </div>
+    <div class="form-entry">
+      <mat-form-field>
+        <mat-label class="form-label"># Slices</mat-label>
+        <input class="form-input" [(value)]="slicesData.numSlices" matInput (input)="updateSlicesData($event, 'numSlices')">
+      </mat-form-field>
+    </div>
+  </form>
+</div>
