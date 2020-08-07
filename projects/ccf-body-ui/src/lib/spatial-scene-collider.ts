@@ -2,7 +2,7 @@ import { load } from '@loaders.gl/core';
 import { DracoLoader } from '@loaders.gl/draco';
 import { GLTFLoader } from '@loaders.gl/gltf';
 import { Matrix4 } from '@math.gl/core';
-import { AABB, Vec3 } from 'cannon';
+import { AABB, Vec3 } from 'cannon-es';
 
 import { SpatialSceneNode } from './body-ui-layer';
 
