@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 export interface SlicesData {
-  thickness: number | string;
-  numSlices: number | string;
+  thickness?: number | '';
+  numSlices?: number | '';
 }
 
 /**
@@ -37,6 +37,7 @@ export class SlicesInputComponent {
     const inputTarget = input.target as HTMLInputElement;
     const inputValue = inputTarget.value;
     this.slicesData = { ...this.slicesData, [key]: inputValue };
+    console.log(this.slicesData);
     this.valuesChange.emit(this.slicesData);
   }
 
@@ -44,9 +45,9 @@ export class SlicesInputComponent {
    * Refreshes all slice data values to empty strings
    */
   refreshSlices(): void {
-    this.slicesData = { ...this.slicesData, thickness: '', numSlices: ''};
+    delete this.slicesData?.thickness;
+    delete this.slicesData?.numSlices;
     console.log(this.slicesData);
     this.valuesChange.emit(this.slicesData);
   }
-
 }
