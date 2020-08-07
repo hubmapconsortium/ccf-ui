@@ -1,26 +1,26 @@
 
-.block-size-input, .slices-input {
+.block-size-input {
   width: 300px;
   margin: 0 1.5rem;
   color: #212121;
   display: flex;
   flex-direction: column;
 
-  .block-size-header, .slices-header {
+  .block-size-header {
     font-weight: bold;
     display: flex;
     justify-content: space-between;
     height: 3rem;
     align-items: center;
   
-    .block-size-refresh, .slices-refresh {
+    .block-size-refresh {
       color: #9E9E9E;
       transform: scaleX(-1);
       cursor: pointer;
     }
   }
 
-  .size-input-form, .slices-input-form {
+  .size-input-form {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;

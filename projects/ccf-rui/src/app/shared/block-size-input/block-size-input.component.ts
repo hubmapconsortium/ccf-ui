@@ -4,8 +4,6 @@ export interface TissueData {
   width: number;
   height: number;
   depth: number;
-  thickness: any;
-  numSlices: any;
 }
 
 /**
@@ -25,8 +23,6 @@ export class BlockSizeInputComponent {
     width: 10,
     height: 10,
     depth: 10,
-    thickness: '',
-    numSlices: ''
   };
 
   /**
@@ -52,12 +48,6 @@ export class BlockSizeInputComponent {
    */
   refreshBlockSize(): void {
     this.tissueData = { ...this.tissueData, width: 10, height: 10, depth: 10};
-    console.log(this.tissueData);
-    this.valuesChange.emit(this.tissueData);
-  }
-
-  refreshSlices(): void {
-    this.tissueData = { ...this.tissueData, thickness: '', numSlices: ''};
     console.log(this.tissueData);
     this.valuesChange.emit(this.tissueData);
   }
