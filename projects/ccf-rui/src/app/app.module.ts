@@ -10,7 +10,7 @@ import { RotationSliderModule } from './shared/components/rotation-slider/rotati
 
 
 @NgModule({
-  imports: [BrowserModule, CoreModule, BrowserAnimationsModule, BlockSizeInputModule],
+  imports: [BrowserModule, CoreModule, RotationSliderModule, BrowserAnimationsModule, BlockSizeInputModule],
   declarations: [AppComponent],
   providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],
   bootstrap: [AppComponent]
