@@ -21,6 +21,9 @@
           color: mat-color($foreground, input-label);
         }
       }
+      .mat-form-field-underline {
+        color: mat-color($foreground, text);
+      }
     }
   }
 }

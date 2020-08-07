@@ -4,8 +4,20 @@ import { Component, Output, EventEmitter } from '@angular/core';
  * Interface for objects containing tissue block dimensions
  */
 export interface TissueData {
+
+  /**
+   * Width of block
+   */
   x: number;
+
+  /**
+   * Height of block
+   */
   y: number;
+
+  /**
+   * Depth of block
+   */
   z: number;
 }
 
