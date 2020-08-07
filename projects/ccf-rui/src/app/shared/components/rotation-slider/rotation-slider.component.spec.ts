@@ -2,7 +2,7 @@ import { Shallow } from 'shallow-render';
 
 import { RotationSliderComponent } from './rotation-slider.component';
 import { RotationSliderModule } from './rotation-slider.module';
-import { Rotation } from '../../../core/models/rotation';
+import { Rotation } from './rotation-slider.component';
 
 describe('RotationSliderComponent', () => {
   let shallow: Shallow<RotationSliderComponent>;

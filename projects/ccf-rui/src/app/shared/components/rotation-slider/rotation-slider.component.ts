@@ -1,5 +1,10 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { Rotation } from '../../../core/models/rotation';
+
+export interface Rotation {
+  x: number;
+  y: number;
+  z: number;
+}
 
 /**
  * Component that enables the setting of a Rotation object via either 3 draggable sliders
@@ -27,11 +32,9 @@ export class RotationSliderComponent {
    * @param axis which axis to update
    */
   changeRotation(newRotation: number | string, axis: string): void {
-    if (typeof (newRotation) === 'string') {
-      newRotation = parseInt(newRotation, 10);
-    }
-
-    this.rotation[axis] = newRotation;
+    const rotationClone = {...this.rotation};
+    rotationClone[axis] = +newRotation;
+    this.rotation = rotationClone;
     this.rotationChanged.emit(this.rotation);
   }
 
@@ -39,10 +42,8 @@ export class RotationSliderComponent {
    * Function to easily reset the rotations to 0 and emit this change.
    */
   resetRotation(): void {
-    this.rotation.x = 0;
-    this.rotation.y = 0;
-    this.rotation.z = 0;
-
+    const clearedRotation: Rotation = { x: 0, y: 0, z: 0 };
+    this.rotation = clearedRotation;
     this.rotationChanged.emit(this.rotation);
   }
 }
