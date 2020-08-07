@@ -1,9 +1,12 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
+/**
+ * Interface for objects containing tissue block dimensions
+ */
 export interface TissueData {
-  width: number;
-  height: number;
-  depth: number;
+  x: number;
+  y: number;
+  z: number;
 }
 
 /**
@@ -20,9 +23,9 @@ export class BlockSizeInputComponent {
    * Values of block dimensions to be emitted
    */
   tissueData: TissueData = {
-    width: 10,
-    height: 10,
-    depth: 10,
+    x: 10,
+    y: 10,
+    z: 10,
   };
 
   /**
@@ -46,7 +49,7 @@ export class BlockSizeInputComponent {
    * Refreshes all block size values to 10
    */
   refreshBlockSize(): void {
-    this.tissueData = { ...this.tissueData, width: 10, height: 10, depth: 10};
+    this.tissueData = { x: 10, y: 10, z: 10};
     this.valuesChange.emit(this.tissueData);
   }
 }
