@@ -1,0 +1,11 @@
+
+@function add-colors($base, $additions) {
+  $base-contrast: map-get($base, contrast);
+  $additions-contrast: map-get($additions, contrast);
+
+  $colors: map-merge($base, $additions);
+  $contrast: map-merge($base-contrast, $additions-contrast);
+  $new: map-merge($colors, (contrast: $contrast));
+
+  @return $new;
+}

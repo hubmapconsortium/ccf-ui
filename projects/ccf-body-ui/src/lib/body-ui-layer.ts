@@ -7,6 +7,8 @@ import { CubeGeometry } from '@luma.gl/core';
 import { ScenegraphNode } from '@luma.gl/experimental';
 import { Matrix4 } from '@math.gl/core';
 
+import { doCollisions } from './spatial-scene-collider';
+
 
 // Programmers Note: had to disable tslint in a few places due to deficient typings.
 
@@ -74,17 +76,21 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
 
   initializeState(): void {
     const { data } = this.props;
-    this.setState({data: data || [], zoomOpacity: 0.8});
+    this.setState({data: data || [], zoomOpacity: 0.8, doCollisions: false});
 
     // tslint:disable-next-line: no-unsafe-any
     registerLoaders([DracoWorkerLoader, GLTFLoader]);
   }
 
   renderLayers(): unknown[] {
-    const state = this.state as {data: SpatialSceneNode[], zoomOpacity: number};
+    const state = this.state as {data: SpatialSceneNode[], zoomOpacity: number, doCollisions: boolean};
     const cubes = state.data.filter(d => !d.scenegraph && !d.wireframe);
     const wireframes = state.data.filter(d => !d.scenegraph && d.wireframe);
     const models = state.data.filter(d => !!d.scenegraph);
+
+    if (state.doCollisions) {
+      doCollisions(state.data);
+    }
 
     return [
       meshLayer('cubes', cubes, {wireframe: false}),
