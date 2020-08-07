@@ -1,7 +1,9 @@
 .nav-container {
     height: 4.5rem;
     margin-right: 1.5rem;
+    padding-left: 1.5rem;
     display: flex;
+    align-items: center;
 
     .input-group {
         height: 1.5rem;
@@ -10,4 +12,17 @@
             margin-right: 1.5rem;
         }
     }
+
+    .slider-container {
+        padding-bottom: 1.8rem;
+
+        .view-slider {
+            margin-left: .75rem;
+            margin-right: .75rem;
+        }
+    }
+}
+
+.highlighted {
+    color: #3542B8;
 }
