@@ -15,6 +15,21 @@ declare const require: {
   };
 };
 
+// Hack to force set globlThis to fix cannon-es error
+function getGlobalThis(): typeof globalThis {
+  if (typeof globalThis === 'object') {
+    return globalThis;
+  } else if (typeof window === 'object') {
+    return window;
+  } else if (typeof global === 'object') {
+    return global as unknown as typeof globalThis;
+  } else {
+    return Function('return this;')() as typeof globalThis;
+  }
+}
+const gbl = getGlobalThis();
+(gbl as {globalThis: unknown}).globalThis = gbl;
+
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
