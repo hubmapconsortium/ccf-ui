@@ -22,7 +22,7 @@
         }
       }
       .mat-form-field-underline {
-        color: mat-color($foreground, text);
+        background-color: mat-color($foreground, text);
       }
     }
   }

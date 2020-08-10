@@ -7,19 +7,19 @@
     <div class="form-entry">
       <mat-form-field>
         <mat-label class="form-label">Width (X)</mat-label>
-        <input class="form-input" [(value)]="tissueData.x" matInput placeholder="" (input)="updateTissueData($event, 'x')">
+        <input class="form-input" value="{{tissueData.x}}" matInput placeholder="" (keyup)="handleKey($event, 'x')">
       </mat-form-field>
     </div>
     <div class="form-entry">
       <mat-form-field>
         <mat-label class="form-label">Height (Y)</mat-label>
-        <input class="form-input" [(value)]="tissueData.y" matInput placeholder="" (input)="updateTissueData($event, 'y')">
+        <input class="form-input" [(value)]="tissueData.y" matInput placeholder="">
       </mat-form-field>
     </div>
     <div class="form-entry">
       <mat-form-field>
         <mat-label class="form-label">Depth (Z)</mat-label>
-        <input class="form-input" [(value)]="tissueData.z" matInput placeholder="" (input)="updateTissueData($event, 'z')">
+        <input class="form-input" [(value)]="tissueData.z" matInput placeholder="">
       </mat-form-field>
     </div>
   </div>
