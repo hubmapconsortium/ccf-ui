@@ -12,7 +12,7 @@ describe('SlicesInputComponent', () => {
 
   it('should update the values object with the passed in value', async () => {
     const { instance, outputs } = await shallow.render({ bind: {} });
-    instance.slicesData = {thickness: '', numSlices: ''};
+    instance.slicesData = {thickness: NaN, numSlices: NaN};
     const mockEvent = { target: {value: 20} } as unknown as InputEvent;
     instance.updateSlicesData(mockEvent, 'thickness');
     expect(instance.slicesData.thickness).toBe(20);
@@ -23,7 +23,7 @@ describe('SlicesInputComponent', () => {
     const { instance, outputs } = await shallow.render({ bind: {} });
     instance.slicesData = {thickness: 100, numSlices: 50};
     instance.refreshSlices();
-    expect(instance.slicesData).toEqual({thickness: '', numSlices: ''});
+    expect(instance.slicesData).toEqual({thickness: NaN, numSlices: NaN});
     expect(outputs.valuesChange.emit).toHaveBeenCalled();
   });
 });
