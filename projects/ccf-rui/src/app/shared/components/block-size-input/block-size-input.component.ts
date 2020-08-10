@@ -8,17 +8,17 @@ export interface TissueData {
   /**
    * Width of block
    */
-  x: number | string;
+  x: number;
 
   /**
    * Height of block
    */
-  y: number | string;
+  y: number;
 
   /**
    * Depth of block
    */
-  z: number | string;
+  z: number;
 }
 
 /**
@@ -53,15 +53,8 @@ export class BlockSizeInputComponent {
   updateTissueData(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
     const inputValue = inputTarget.value;
-    if (inputValue === '') {
-      return;
-    }
-    if ( !isNaN(parseInt(inputValue, 10)) ) {
-      this.tissueData = { ...this.tissueData, [key]: parseInt(inputValue, 10) };
-      this.valuesChange.emit(this.tissueData);
-    } else {
-      this.tissueData = { ...this.tissueData, [key]: '' };
-    }
+    this.tissueData = { ...this.tissueData, [key]: parseInt(inputValue, 10) };
+    this.valuesChange.emit(this.tissueData);
     console.log(this.tissueData);
   }
 
