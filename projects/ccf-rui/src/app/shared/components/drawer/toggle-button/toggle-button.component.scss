@@ -1,0 +1,30 @@
+:host {
+  position: absolute;
+  top: calc(50% - 2.0625rem);
+  right: -1.0625rem;
+  width: 1.0625rem;
+  height: 3rem;
+  border-radius: 0px 4px 4px 0px;
+  cursor: pointer;
+
+  &.ccf-drawer-toggle-button-end {
+    right: unset;
+    left: calc(-1rem - 1px);
+    border-radius: 4px 0px 0px 4px;
+  }
+
+  .expand-collapse-icon {
+    position: relative;
+    right: 0.25rem;
+  }
+
+  &.ccf-drawer-toggle-button-end .expand-collapse-icon {
+    right: unset;
+    left: -0.25rem;
+  }
+}
+
+.mat-icon {
+  transform: scale(1,2);
+  top: .6rem;
+}

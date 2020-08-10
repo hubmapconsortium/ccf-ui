@@ -4,11 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DEFAULT_THEME } from './core/services/theming/theming.service';
-import { RotationSliderModule } from './shared/components/rotation-slider/rotation-slider.module';
+import { HeaderModule } from './modules/header/header.module';
+import { LeftSidebarModule } from './modules/left-sidebar/left-sidebar.module';
+import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module';
+import { DrawerModule } from './shared/components/drawer/drawer.module';
 
 
 @NgModule({
-  imports: [BrowserModule, CoreModule, RotationSliderModule],
+  imports: [BrowserModule, CoreModule, DrawerModule, LeftSidebarModule, RightSidebarModule, HeaderModule],
   declarations: [AppComponent],
   providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],
   bootstrap: [AppComponent]
