@@ -62,15 +62,7 @@ export class BlockSizeInputComponent {
     } else {
       this.tissueData = { ...this.tissueData, [key]: '' };
     }
-  }
-
-  handleKey(event: KeyboardEvent, key: string): void {
-    const inputValue = Number((event.target as HTMLInputElement).value);
-    console.log(inputValue);
-    console.log(!isNaN(parseInt(event.key, 10)));
-    if (!isNaN(parseInt(event.key, 10))) {
-      return;
-    }
+    console.log(this.tissueData);
   }
 
   /**
