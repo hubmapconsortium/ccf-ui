@@ -1,5 +1,5 @@
 @use '~@angular/material/theming' as *;
-@use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
+@use '../../app/shared/components/slices-input/slices-input.component.theme.scss' as slicesInput;
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
@@ -10,7 +10,7 @@
   @include mat-checkbox-theme($theme);
   @include mat-progress-spinner-theme($theme);
 
-  @include blockSizeInput.theme($theme);
+  @include slicesInput.theme($theme);
 
   // Overrides goes here!
 }
