@@ -1,5 +1,6 @@
 @use '~@angular/material/theming' as *;
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
+@use '../../app/modules/header/header.component.theme' as header;
 
 
 @mixin ccf-theme($theme) {
@@ -11,6 +12,7 @@
   @include mat-checkbox-theme($theme);
   @include mat-progress-spinner-theme($theme);
 
+  @include header.theme($theme);
   @include drawer.theme($theme);
 
   // Overrides goes here!
