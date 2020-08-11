@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, HostListener, ViewChild, ElementRef } from '@angular/core';
 
 export interface SlicesData {
   thickness: number;
@@ -15,6 +15,8 @@ export interface SlicesData {
 })
 export class SlicesInputComponent {
 
+  unitsVisible = false;
+
   /**
    * Values of block dimensions to be emitted
    */
@@ -28,6 +30,8 @@ export class SlicesInputComponent {
    */
   @Output() valuesChange = new EventEmitter<SlicesData>();
 
+  @ViewChild('input', { static: true, read: ElementRef }) inputElement: ElementRef<HTMLElement>;
+
   /**
    * Updates values when an input changes
    * @param input InputEvent from the input element which contains the new value
@@ -36,17 +40,31 @@ export class SlicesInputComponent {
   updateSlicesData(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
     const inputValue = inputTarget.value;
-    this.slicesData = { ...this.slicesData, [key]: parseInt(inputValue, 10) };
+    const max = 999;
+    const maxLength = max.toString().length-1;
+    const newVal = parseInt(inputValue, 10) < max ? parseInt(inputValue, 10) : parseInt(inputValue.substring(0, maxLength), 10);
+    this.slicesData = { ...this.slicesData, [key]: newVal };
     console.log(this.slicesData);
     this.valuesChange.emit(this.slicesData);
   }
 
   /**
-   * Refreshes all slice data values to empty strings
+   * Refreshes all slice data values to empty values
    */
   refreshSlices(): void {
     this.slicesData = {thickness: NaN, numSlices: NaN};
     console.log(this.slicesData);
     this.valuesChange.emit(this.slicesData);
+  }
+
+  @HostListener('document:click', ['$event.target'])
+
+  toggleUnits(target: HTMLElement): void {
+    const { inputElement: { nativeElement: content } = { nativeElement: undefined } } = this;
+    if (content?.contains(target) || !isNaN(this.slicesData.thickness)) {
+      this.unitsVisible = true;
+    } else {
+      this.unitsVisible = false;
+    }
   }
 }

@@ -5,16 +5,20 @@
   </div>
   <form class="slices-input-form">
     <div class="form-entry">
-      <mat-form-field>
+      <mat-form-field >
         <mat-label class="form-label">Thickness</mat-label>
-        <input class="form-input" [(value)]="slicesData.thickness" matInput (input)="updateSlicesData($event, 'thickness')" type="number">
-        <div ></div>
+        <div #input class="input-container thickness">
+          <input class="form-input" [(value)]="slicesData.thickness" matInput (input)="updateSlicesData($event, 'thickness')" type="number">
+          <div class="input-units" [class.hidden]="!unitsVisible" matSuffix>μm</div>
+        </div>
       </mat-form-field>
     </div>
     <div class="form-entry">
       <mat-form-field>
         <mat-label class="form-label"># Slices</mat-label>
-        <input class="form-input" [(value)]="slicesData.numSlices" matInput (input)="updateSlicesData($event, 'numSlices')" type="number">
+        <div class="input-container slices">
+          <input class="form-input" [(value)]="slicesData.numSlices" matInput (input)="updateSlicesData($event, 'numSlices')" type="number">
+        </div>
       </mat-form-field>
     </div>
   </form>

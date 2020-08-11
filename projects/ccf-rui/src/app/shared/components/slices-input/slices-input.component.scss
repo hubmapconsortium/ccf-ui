@@ -1,5 +1,6 @@
 
 .slices-input {
+  width: 25rem;
   margin: 0 1.5rem;
   display: flex;
   flex-direction: column;
@@ -19,20 +20,49 @@
 
   .slices-input-form {
     display: flex;
-    justify-content: space-between;
     margin-bottom: 1.5rem;
-    margin-top: 1rem;
-  
+    
     .form-entry {
       display: flex;
+      margin-right: 1rem;
       flex-direction: column;
       width: 30%;
-      .form-input {
-        text-align: center;
+
+      .input-container {
+        display: flex;
+        height: 1rem;
+        justify-content: center;
+        
+        &.slices {
+          .form-input {
+            text-align: center;
+            margin-top: 0;
+          }
+        }
+
+        &.thickness {
+          .form-input {
+            text-align: right;
+            width: 2rem;
+            margin-right: .3rem;
+            margin-top: 0;
+          }
+          .input-units {
+            &.hidden {
+              display: none
+            }
+          }
+        }
       }
+
       
       ::ng-deep .mat-form-field-label-wrapper {
-        top: -1.5em;
+        .mat-form-field-label {
+          display: flex;
+          .form-label {
+            margin: 0 auto;
+          }
+        }
       }
     }
   }
