@@ -1,5 +1,5 @@
 {
-  "name": "ccf-components",
+  "name": "ccf-shared",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^10.0.6",

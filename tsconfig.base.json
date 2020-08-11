@@ -45,9 +45,9 @@
         "dist/ccf-image-viewer/ccf-image-viewer",
         "dist/ccf-image-viewer"
       ],
-      "ccf-components": [
-        "dist/ccf-components/ccf-components",
-        "dist/ccf-components"
+      "ccf-shared": [
+        "dist/ccf-shared/ccf-shared",
+        "dist/ccf-shared"
       ]
     }
   },
