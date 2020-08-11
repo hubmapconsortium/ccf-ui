@@ -442,30 +442,30 @@
         }
       }
     },
-    "ccf-components": {
+    "ccf-shared": {
       "projectType": "library",
-      "root": "projects/ccf-components",
-      "sourceRoot": "projects/ccf-components/src",
+      "root": "projects/ccf-shared",
+      "sourceRoot": "projects/ccf-shared/src",
       "prefix": "ccf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ccf-components/tsconfig.lib.json",
-            "project": "projects/ccf-components/ng-package.json"
+            "tsConfig": "projects/ccf-shared/tsconfig.lib.json",
+            "project": "projects/ccf-shared/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ccf-components/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ccf-shared/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ccf-components/src/test.ts",
-            "tsConfig": "projects/ccf-components/tsconfig.spec.json",
-            "karmaConfig": "projects/ccf-components/karma.conf.js",
+            "main": "projects/ccf-shared/src/test.ts",
+            "tsConfig": "projects/ccf-shared/tsconfig.spec.json",
+            "karmaConfig": "projects/ccf-shared/karma.conf.js",
             "codeCoverage": true,
             "codeCoverageExclude": [
               "**/src/test.ts",
@@ -477,8 +477,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ccf-components/tsconfig.lib.json",
-              "projects/ccf-components/tsconfig.spec.json"
+              "projects/ccf-shared/tsconfig.lib.json",
+              "projects/ccf-shared/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
