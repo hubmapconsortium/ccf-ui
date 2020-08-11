@@ -11,6 +11,8 @@
   @include mat-input-theme($theme);
   @include mat-checkbox-theme($theme);
   @include mat-progress-spinner-theme($theme);
+  @include mat-radio-theme($theme);
+  @include mat-slide-toggle-theme($theme);
 
   @include header.theme($theme);
   @include drawer.theme($theme);
