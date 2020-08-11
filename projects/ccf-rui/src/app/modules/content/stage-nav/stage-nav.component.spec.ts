@@ -10,31 +10,31 @@ describe('StageNavComponent', () => {
     shallow = new Shallow(StageNavComponent, StageNavModule);
   });
 
-  it('should properly update the currentSide variable when updateSide is called.', async () => {
-    const { instance } = await shallow.render({ bind: { currentSide: 'left' }});
+  it('should properly update the side variable when updateSide is called.', async () => {
+    const { instance } = await shallow.render({ bind: { side: 'left' }});
     instance.updateSide('right');
 
-    expect(instance.currentSide).toEqual('right');
+    expect(instance.side).toEqual('right');
   });
 
   it('should emit the new side selection whenever updateSide is called.', async () => {
     const { instance, outputs } = await shallow.render();
 
     instance.updateSide('left');
-    expect(outputs.currentSideChanged.emit).toHaveBeenCalled();
+    expect(outputs.sideChanged.emit).toHaveBeenCalled();
   });
 
-  it('should properly update the currentView3D variable when updateView is called.', async () => {
-    const { instance } = await shallow.render({ bind: { currentView3D: true }});
+  it('should properly update the view3D variable when updateView is called.', async () => {
+    const { instance } = await shallow.render({ bind: { view3D: true }});
     instance.updateView(false);
 
-    expect(instance.currentView3D).toBeFalse();
+    expect(instance.view3D).toBeFalse();
   });
 
   it('should emit the new view selection when updateView is called', async () => {
     const { instance, outputs } = await shallow.render();
     instance.updateView(true);
 
-    expect(outputs.currentView3DChanged.emit).toHaveBeenCalled();
+    expect(outputs.view3DChanged.emit).toHaveBeenCalled();
   });
 });
