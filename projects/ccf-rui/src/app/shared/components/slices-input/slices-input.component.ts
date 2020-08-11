@@ -1,7 +1,18 @@
 import { Component, Output, EventEmitter, HostListener, ViewChild, ElementRef } from '@angular/core';
 
+/**
+ * Interface containing slices data of the tissue block
+ */
 export interface SlicesData {
+
+  /**
+   * Thickness of each tissue slice
+   */
   thickness: number;
+
+  /**
+   * Number of slices in the block
+   */
   numSlices: number;
 }
 
@@ -15,6 +26,9 @@ export interface SlicesData {
 })
 export class SlicesInputComponent {
 
+  /**
+   * Determine if the units are visible on the thickness input
+   */
   unitsVisible = false;
 
   /**
@@ -30,10 +44,13 @@ export class SlicesInputComponent {
    */
   @Output() valuesChange = new EventEmitter<SlicesData>();
 
+  /**
+   * The input element
+   */
   @ViewChild('input', { static: true, read: ElementRef }) inputElement: ElementRef<HTMLElement>;
 
   /**
-   * Updates values when an input changes
+   * Limits the length of the input if needed and updates values when an input changes
    * @param input InputEvent from the input element which contains the new value
    * @param key Name of the dimension to be updated
    */
@@ -57,8 +74,12 @@ export class SlicesInputComponent {
     this.valuesChange.emit(this.slicesData);
   }
 
+  /**
+   * Listens to document click event
+   * Shows the thickness units when data is entered into the form or when input element is clicked
+   * @param target The element on which the event was fired
+   */
   @HostListener('document:click', ['$event.target'])
-
   toggleUnits(target: HTMLElement): void {
     const { inputElement: { nativeElement: content } = { nativeElement: undefined } } = this;
     if (content?.contains(target) || !isNaN(this.slicesData.thickness)) {
