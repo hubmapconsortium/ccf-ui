@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 
+import { PageState } from '../../core/store/page/page.state';
+
+
 @Component({
   selector: 'ccf-header',
   templateUrl: './header.component.html',
@@ -9,5 +12,5 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 export class HeaderComponent {
   @HostBinding('class') readonly clsName = 'ccf-header';
 
-  constructor() { }
+  constructor(readonly page: PageState) { }
 }
