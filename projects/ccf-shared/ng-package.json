@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ccf-components",
+  "dest": "../../dist/ccf-shared",
   "lib": {
     "entryFile": "src/public-api.ts"
   }
