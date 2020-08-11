@@ -1,4 +1,12 @@
-<ccf-stage-nav></ccf-stage-nav>
-<div style="width: 450px; padding: 1rem;">
-    <ccf-rotation-slider></ccf-rotation-slider>
-</div>
+<ccf-header></ccf-header>
+
+<ccf-drawer-container>
+  <ccf-drawer opened>
+    <ccf-left-sidebar></ccf-left-sidebar>
+    <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
+  </ccf-drawer>
+  <ccf-drawer position="end" opened>
+    <ccf-right-sidebar></ccf-right-sidebar>
+    <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
+  </ccf-drawer>
+</ccf-drawer-container>
