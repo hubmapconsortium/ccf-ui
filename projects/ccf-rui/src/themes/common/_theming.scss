@@ -1,6 +1,7 @@
 @use '~@angular/material/theming' as *;
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
 @use '../../app/modules/header/header.component.theme' as header;
+@use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
 
 
 @mixin ccf-theme($theme) {
@@ -16,6 +17,7 @@
 
   @include header.theme($theme);
   @include drawer.theme($theme);
+  @include blockSizeInput.theme($theme);
 
   // Overrides goes here!
 }
