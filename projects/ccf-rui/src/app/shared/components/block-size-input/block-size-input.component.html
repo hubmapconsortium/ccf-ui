@@ -7,19 +7,22 @@
     <div class="form-entry">
       <mat-form-field>
         <mat-label class="form-label">Width (X)</mat-label>
-        <input class="form-input" [(value)]="tissueData.x" matInput placeholder="" (input)="updateTissueData($event, 'x')" type="number">
+        <input matInput class="form-input" type="number" placeholder="" [value]="tissueData.x"
+               (input)="updateTissueData($event, 'x')">
       </mat-form-field>
     </div>
     <div class="form-entry">
       <mat-form-field>
         <mat-label class="form-label">Height (Y)</mat-label>
-        <input class="form-input" [(value)]="tissueData.y" matInput placeholder="" (input)="updateTissueData($event, 'y')" type="number">
+        <input matInput class="form-input" type="number" placeholder="" [value]="tissueData.y"
+               (input)="updateTissueData($event, 'y')">
       </mat-form-field>
     </div>
     <div class="form-entry">
       <mat-form-field>
         <mat-label class="form-label">Depth (Z)</mat-label>
-        <input class="form-input" [(value)]="tissueData.z" matInput placeholder="" (input)="updateTissueData($event, 'z')" type="number">
+        <input matInput class="form-input" type="number" placeholder="" [value]="tissueData.z"
+               (input)="updateTissueData($event, 'z')">
       </mat-form-field>
     </div>
   </div>

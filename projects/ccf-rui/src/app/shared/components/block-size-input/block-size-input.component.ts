@@ -1,23 +1,15 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+
 
 /**
  * Interface for objects containing tissue block dimensions
  */
 export interface TissueData {
-
-  /**
-   * Width of block
-   */
+  /** Width of block */
   x: number;
-
-  /**
-   * Height of block
-   */
+  /** Height of block */
   y: number;
-
-  /**
-   * Depth of block
-   */
+  /** Depth of block */
   z: number;
 }
 
@@ -30,7 +22,6 @@ export interface TissueData {
   styleUrls: ['./block-size-input.component.scss']
 })
 export class BlockSizeInputComponent {
-
   /**
    * Values of block dimensions to be emitted
    */
@@ -53,16 +44,15 @@ export class BlockSizeInputComponent {
   updateTissueData(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
     const inputValue = inputTarget.value;
-    this.tissueData = { ...this.tissueData, [key]: parseInt(inputValue, 10) };
+    this.tissueData = { ...this.tissueData, [key]: +inputValue };
     this.valuesChange.emit(this.tissueData);
-    console.log(this.tissueData);
   }
 
   /**
    * Refreshes all block size values to 10
    */
   refreshBlockSize(): void {
-    this.tissueData = { x: 10, y: 10, z: 10};
+    this.tissueData = { x: 10, y: 10, z: 10 };
     this.valuesChange.emit(this.tissueData);
   }
 }
