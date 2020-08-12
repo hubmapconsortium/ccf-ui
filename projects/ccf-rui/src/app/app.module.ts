@@ -5,14 +5,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DEFAULT_THEME } from './core/services/theming/theming.service';
-import { RotationSliderModule } from './shared/components/rotation-slider/rotation-slider.module';
-import { SlicesInputModule } from './shared/components/slices-input/slices-input.module';
+import { ContentModule } from './modules/content/content.module';
+import { HeaderModule } from './modules/header/header.module';
+import { LeftSidebarModule } from './modules/left-sidebar/left-sidebar.module';
+import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module';
+import { DrawerModule } from './shared/components/drawer/drawer.module';
 
 
 @NgModule({
-  imports: [BrowserModule, CoreModule, BrowserAnimationsModule, RotationSliderModule, SlicesInputModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CoreModule,
+    DrawerModule,
+    HeaderModule,
+    ContentModule,
+    LeftSidebarModule,
+    RightSidebarModule
+  ],
   declarations: [AppComponent],
-  providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],
+  providers: [{ provide: DEFAULT_THEME, useValue: 'light-theme' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

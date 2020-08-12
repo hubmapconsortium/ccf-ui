@@ -1,0 +1,25 @@
+:host {
+  height: 4rem;
+  padding: 0 1.5rem;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: flex;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    width: 6rem;
+    transition: color 1s;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  :not(:last-child) {
+    margin-right: 1.5rem;
+  }
+
+  .filler {
+    flex-grow: 1;
+    margin: 0;
+  }
+}

@@ -1,0 +1,37 @@
+@use '~@angular/material/theming'as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .ccf-drawer {
+    background-color: mat-color($background, background);
+    border-right-color: mat-color($foreground, divider);
+    border-left-color: mat-color($foreground, divider);
+  }
+
+  .ccf-drawer-toggle-button {
+    color: mat-color($foreground, contrast-icon);
+    background-color: mat-color($background, modal);
+
+    &:hover {
+      background-color: mat-color($accent);
+      color: mat-color($foreground, icon);
+    }
+  }
+
+  .drawer-icons {
+    .button {
+      color: mat-color($foreground, contrast-icon);
+
+      :hover {
+        color: mat-color($accent);
+      }
+    }
+  }
+
+  .ccf-drawer-content {
+    background-color: mat-color($background, content-background);
+  }
+}
