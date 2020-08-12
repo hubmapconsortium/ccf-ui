@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { BlockSizeInputComponent } from './block-size-input.component';
+import { SlicesInputComponent } from './slices-input.component';
 
 
 @NgModule({
   imports: [CommonModule, MatInputModule, MatIconModule],
-  declarations: [BlockSizeInputComponent],
-  exports: [BlockSizeInputComponent]
+  declarations: [SlicesInputComponent],
+  exports: [SlicesInputComponent]
 })
-export class BlockSizeInputModule { }
+export class SlicesInputModule { }

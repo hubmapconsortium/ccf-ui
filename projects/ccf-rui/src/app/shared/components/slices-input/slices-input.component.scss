@@ -1,0 +1,69 @@
+
+.slices-input {
+  width: 25rem;
+  margin: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  .slices-header {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    align-items: center;
+  
+    .slices-refresh {
+      transform: scaleX(-1);
+      cursor: pointer;
+    }
+  }
+
+  .slices-input-form {
+    display: flex;
+    margin-bottom: 1.5rem;
+    
+    .form-entry {
+      display: flex;
+      margin-right: 1rem;
+      flex-direction: column;
+      width: 30%;
+
+      .input-container {
+        display: flex;
+        height: 1rem;
+        justify-content: center;
+        
+        &.slices {
+          .form-input {
+            text-align: center;
+            margin-top: 0;
+          }
+        }
+
+        &.thickness {
+          .form-input {
+            text-align: right;
+            width: 2rem;
+            margin-right: .3rem;
+            margin-top: 0;
+          }
+          .input-units {
+            &.hidden {
+              display: none
+            }
+          }
+        }
+      }
+
+      
+      ::ng-deep .mat-form-field-label-wrapper {
+        .mat-form-field-label {
+          display: flex;
+          .form-label {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
