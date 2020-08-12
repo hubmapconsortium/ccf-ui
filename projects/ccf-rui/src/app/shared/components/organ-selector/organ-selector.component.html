@@ -1,1 +1,44 @@
-<p>organ-selector works!</p>
+<div class="carousel">
+  <mat-icon class="carousel-left" (click)="shiftLeft()">chevron_left</mat-icon>
+  <div class="carousel-item-container">
+    <div id="carouselList" class="carousel-item-list" [class.move-left] = "moveLeft" [class.move-right] = "moveRight">
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+      <div class="carousel-item">
+        <mat-icon class="carousel-left">sentiment_satisfied</mat-icon>
+        <span class="carousel-text">cat</span>
+      </div>
+    </div>
+  </div>
+  <mat-icon class="carousel-right" (click)="shiftRight()">chevron_right</mat-icon>
+</div>

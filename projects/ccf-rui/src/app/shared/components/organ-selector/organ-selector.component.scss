@@ -1,0 +1,30 @@
+.carousel {
+  display: flex;
+  background-color: gray;
+  align-items: center;
+
+  .carousel-item-container {
+    overflow: hidden;
+    width: 200px;
+    
+    .carousel-item-list {
+      position: relative;
+      left: 0px;
+      display: flex;
+
+      &.move-left {
+        transition: all .5s ease-in-out;
+      }
+
+      &.move-right {
+        transition: all .5s ease-in-out;
+      }
+  
+      .carousel-item {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem;
+      }
+    }
+  }
+}
