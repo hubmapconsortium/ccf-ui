@@ -1,5 +1,5 @@
 <div class="carousel">
-  <mat-icon class="carousel-left-icon" (click)="shift('left', 48)" [class.disabled]="onLeft">chevron_left</mat-icon>
+  <mat-icon class="carousel-left-icon" (click)="shift('left', 64)" [class.disabled]="onLeft">chevron_left</mat-icon>
   <div class="carousel-item-container">
     <div class="carousel-item-list">
       <div *ngFor="let icon of organList" class="carousel-item" (click)="selectOrgan(icon)" [class.selected]="isSelected(icon)">
@@ -8,5 +8,5 @@
       </div>
     </div>
   </div>
-  <mat-icon class="carousel-right-icon" (click)="shift('right', 48)" [class.disabled]="onRight">chevron_right</mat-icon>
+  <mat-icon class="carousel-right-icon" (click)="shift('right', 64)" [class.disabled]="onRight">chevron_right</mat-icon>
 </div>

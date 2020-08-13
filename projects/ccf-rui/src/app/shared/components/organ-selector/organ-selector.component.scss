@@ -1,16 +1,18 @@
 .carousel {
   display: flex;
   align-items: center;
+  height: 3rem;
+  margin: 1.5rem;
+  background-color: white;
   
   mat-icon {
     &.disabled {
-      color: gray;
+      color: #E0E0E0;
     }
   }
 
   .carousel-item-container {
     overflow: hidden;
-    width: 15rem;
     
     .carousel-item-list {
       position: relative;
@@ -21,14 +23,17 @@
       .carousel-item {
         display: flex;
         flex-direction: column;
+        &:hover {
+          color: #00C853
+        }
 
         &.selected {
-          color: blue;
+          color: #1976D2 !important;
         }
         
         .carousel-icon {
           text-align: center;
-          width: 3rem;
+          width: 4rem;
         }
 
         .carousel-text {
