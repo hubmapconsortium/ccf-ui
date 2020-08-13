@@ -1,14 +1,25 @@
 .carousel {
   display: flex;
   align-items: center;
-  height: 3rem;
+  height: 4.5rem;
   margin: 1.5rem;
   background-color: white;
+  color: #757575;
+  justify-content: space-between;
   
   mat-icon {
+    width: 2rem;
     &.disabled {
       color: #E0E0E0;
     }
+  }
+
+  .carousel-left-icon {
+    text-align: right;
+  }
+
+  .carousel-right-icon {
+    text-align: left;
   }
 
   .carousel-item-container {
@@ -19,9 +30,11 @@
       left: 0px;
       display: flex;
       transition: all .5s ease-in-out;
+      width: 17.5rem;
   
       .carousel-item {
         display: flex;
+        height: 3.5rem;
         flex-direction: column;
         &:hover {
           color: #00C853
@@ -33,11 +46,13 @@
         
         .carousel-icon {
           text-align: center;
-          width: 4rem;
+          width: 3.5rem;
+          height: 2.75rem;
         }
 
         .carousel-text {
           text-align: center;
+          font-size: 10px;
         }
       }
     }
