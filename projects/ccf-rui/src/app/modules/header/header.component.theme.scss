@@ -10,11 +10,15 @@
     background-color: mat-color($background, app-bar);
     color: mat-color($foreground, headers);
 
-    .logo {
+    .icon {
+      color: mat-color($foreground, icon);
+    }
+
+    .text {
       color: mat-color($foreground, logo);
     }
 
-    .logo:hover {
+    .home:hover * {
       color: mat-color($accent);
     }
   }

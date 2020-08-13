@@ -15,6 +15,7 @@
   @include mat-progress-spinner-theme($theme);
   @include mat-radio-theme($theme);
   @include mat-slide-toggle-theme($theme);
+  @include mat-tooltip-theme($theme);
 
   @include header.theme($theme);
   @include drawer.theme($theme);
