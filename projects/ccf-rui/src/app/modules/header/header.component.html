@@ -1,2 +1,21 @@
+<ng-container *ngIf="page.embedded$ | async; then backButton else logo">
+</ng-container>
+
+<ng-template #backButton>
+  <a class="link home" [href]="page.homeUrl$ | async" rel="noreferrer noopener">
+    <mat-icon class="icon backbutton">chevron_left</mat-icon>
+    <span class="text">BACK</span>
+  </a>
+</ng-template>
+
+<ng-template #logo>
+  <a class="link hubmap" [href]="page.homeUrl$ | async" rel="noreferrer noopener"
+     matTooltip="Human BioMolecular Atlas Project" matTooltipPosition="right">
+    <mat-icon class="icon logo" svgIcon="app:logo"></mat-icon>
+  </a>
+  <span class="text">CCF REGISTRATION USER INTERFACE</span>
+</ng-template>
 
 <div class="filler"></div>
+
+<mat-icon class="icon info">info_outline</mat-icon>

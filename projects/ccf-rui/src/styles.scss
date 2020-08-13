@@ -12,6 +12,7 @@
 
 .dark-theme {
   @include theming.ccf-theme(dark.$theme);
+
   ::-webkit-scrollbar {
     background: #757575;
   }
@@ -39,19 +40,23 @@ body {
   background-color: white;
 }
 
+a:any-link {
+  color: white;
+}
+
 mat-icon {
   user-select: none;
 }
 
 // Reference: https://css-tricks.com/custom-scrollbars-in-webkit/
 ::-webkit-scrollbar {
-  width: .25rem;
-  height: .25rem;
+  width: 0.25rem;
+  height: 0.25rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
@@ -60,6 +65,5 @@ mat-icon {
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
-

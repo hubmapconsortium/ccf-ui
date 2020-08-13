@@ -7,7 +7,7 @@ import { pluck } from 'rxjs/operators';
 
 
 export interface PageStateModel {
-  embeded: boolean;
+  embedded: boolean;
   homeUrl: string;
 }
 
@@ -16,12 +16,12 @@ export interface PageStateModel {
 @State<PageStateModel>({
   name: 'page',
   defaults: {
-    embeded: false,
+    embedded: false,
     homeUrl: ''
   }
 })
 @Injectable()
 export class PageState extends NgxsDataRepository<PageStateModel> {
-  readonly embeded$ = this.state$.pipe(pluck('embeded'));
+  readonly embedded$ = this.state$.pipe(pluck('embedded'));
   readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
 }

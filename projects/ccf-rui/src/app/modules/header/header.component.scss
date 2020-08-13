@@ -1,21 +1,41 @@
 :host {
+  display: flex;
+  align-items: center;
   height: 4rem;
   padding: 0 1.5rem;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  display: flex;
 
-  .logo {
+  .text {
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+
+  .link {
     display: flex;
     align-items: center;
-    width: 6rem;
-    transition: color 1s;
     cursor: pointer;
     text-decoration: none;
   }
 
-  :not(:last-child) {
-    margin-right: 1.5rem;
+  .home {
+    * {
+      transition: color 1s;
+    }
+
+    .backbutton {
+      // Material icons do not always fill the space given
+      // Scale up size for icon to look correct
+      font-size: 2.25rem;
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+  }
+
+  .hubmap .logo {
+    width: 4.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
   }
 
   .filler {
