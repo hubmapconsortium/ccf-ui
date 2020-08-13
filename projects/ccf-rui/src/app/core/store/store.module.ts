@@ -3,12 +3,16 @@ import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
+import { IconRegistryState } from './icon-registry/icon-registry.state';
+import { PageState } from './page/page.state';
 
 
 /**
  * States shared across the entire app.
  */
 export const ROOT_STATES = [
+  IconRegistryState,
+  PageState,
 ];
 
 @NgModule({

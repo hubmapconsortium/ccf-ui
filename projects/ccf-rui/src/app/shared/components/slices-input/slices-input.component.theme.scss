@@ -1,0 +1,29 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .slices-input {
+    color: mat-color($foreground, text);
+  }
+
+  .slices-refresh {
+    color: mat-color($foreground, icon);
+  }
+
+  .slices-input-form {
+    .form-entry {
+      .mat-form-field-label-wrapper {
+        color: mat-color($foreground, input-label);
+        .form-label {
+          color: mat-color($foreground, input-label);
+        }
+      }
+      .mat-form-field-underline {
+        background-color: mat-color($foreground, text);
+      }
+    }
+  }
+}
