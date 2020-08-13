@@ -6,7 +6,7 @@ $primary-colors: utility.add-colors($mat-gray, (
   "white": white,
   "black": black,
   light-header: #444A65,
-  light-disabled: #BDBDBD,
+  light-disabled: #E0E0E0,
 
   contrast: (
     "white": black,
@@ -25,6 +25,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   icon: map-get($primary-colors, 500), //#9E9E9E
   placeholder-text: map-get($primary-colors, 600), //#757575
   input-label: map-get($primary-colors, 600), //#757575
+  disabled: map-get($primary-colors, light-disabled), //#E0E0E0
+  
 
   logo: map-get($primary-colors, 'white'),
   header-border: map-get($primary-colors, 800), //#424242
@@ -38,7 +40,6 @@ $foreground: map-merge($mat-light-theme-foreground, (
   search-result-text: map-get($primary-colors, 600), //#757575
   contrast-text: map-get($primary-colors, 50), //#FAFAFA (text on dark background)
   download-icon: map-get($primary-colors, 600), //#757575
-  disabled: map-get($primary-colors, light-disabled), //#BDBDBD
   highlight: map-get($primary-colors, 'black'),
   header-download-icon: map-get($primary-colors, 300), //#E0E0E0
 ));

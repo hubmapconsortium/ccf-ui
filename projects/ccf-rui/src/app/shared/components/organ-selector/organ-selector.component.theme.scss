@@ -1,15 +1,30 @@
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
   $primary: map-get($theme, primary);
 
-  .mat-checkbox-label, .filter-label {
-    color: mat-color($primary, text)
+  .carousel {
+    color: mat-color($foreground, text);
+    border: 1px solid #e0e0e0;
+    background-color: mat-color($background, dialog);
+
+    mat-icon {
+      color: mat-color($foreground, icon);
+      &.disabled {
+        color: mat-color($foreground, disabled)
+      }
+    }
   }
 
-  .mat-checkbox-frame {
-    border-color: mat-color($foreground, contrast-icon);
+  .carousel-item {
+    &:hover {
+      color: #00C853
+    }
+
+    &.selected {
+      color: #1976D2 !important;
+    }
   }
 }
