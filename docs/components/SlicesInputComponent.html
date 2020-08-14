@@ -1,0 +1,833 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>SlicesInputComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for entering data on block slices</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-slices-input</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./slices-input.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./slices-input.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#inputElement">inputElement</a>
+                            </li>
+                            <li>
+                                <a href="#slicesData">slicesData</a>
+                            </li>
+                            <li>
+                                <a href="#unitsVisible">unitsVisible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#refreshSlices">refreshSlices</a>
+                            </li>
+                            <li>
+                                <a href="#updateSlicesData">updateSlicesData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#valuesChange">valuesChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#document:click">document:click</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="valuesChange"></a>
+                        <b>valuesChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts:38</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emitter for slice data values</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="document:click"></a>
+                    <span class="name">
+                        <b>
+                            document:click
+                        </b>
+                        <a href="#document:click"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event.target' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>document:click(target: HTMLElement)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Listens to document click event
+Shows the thickness units when data is entered into the form or when input element is clicked</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshSlices"></a>
+                    <span class="name">
+                        <b>
+                            refreshSlices
+                        </b>
+                        <a href="#refreshSlices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshSlices()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Refreshes all slice data values to empty values</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSlicesData"></a>
+                    <span class="name">
+                        <b>
+                            updateSlicesData
+                        </b>
+                        <a href="#updateSlicesData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSlicesData(input: InputEvent, key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Limits the length of the input if needed and updates values when an input changes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>input</td>
+                                    <td>
+                                            <code>InputEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>InputEvent from the input element which contains the new value</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Name of the dimension to be updated</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inputElement"></a>
+                        <span class="name">
+                            <b>
+                            inputElement</b>
+                            <a href="#inputElement"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;thicknessInput&#x27;, {static: true, read: ElementRef})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The input element</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="slicesData"></a>
+                        <span class="name">
+                            <b>
+                            slicesData</b>
+                            <a href="#slicesData"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/SlicesData.html" target="_self" >SlicesData</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    thickness: NaN,
+    numSlices: NaN
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Values of block dimensions to be emitted</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="unitsVisible"></a>
+                        <span class="name">
+                            <b>
+                            unitsVisible</b>
+                            <a href="#unitsVisible"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Determine if the units are visible on the thickness input</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from &#x27;@angular/core&#x27;;
+
+/**
+ * Interface containing slices data of the tissue block
+ */
+export interface SlicesData {
+  /** Thickness of each tissue slice */
+  thickness: number;
+  /** Number of slices in the block */
+  numSlices: number;
+}
+
+/**
+ * Component for entering data on block slices
+ */
+@Component({
+  selector: &#x27;ccf-slices-input&#x27;,
+  templateUrl: &#x27;./slices-input.component.html&#x27;,
+  styleUrls: [&#x27;./slices-input.component.scss&#x27;]
+})
+export class SlicesInputComponent {
+  /**
+   * Determine if the units are visible on the thickness input
+   */
+  unitsVisible &#x3D; false;
+
+  /**
+   * Values of block dimensions to be emitted
+   */
+  slicesData: SlicesData &#x3D; {
+    thickness: NaN,
+    numSlices: NaN
+  };
+
+  /**
+   * Emitter for slice data values
+   */
+  @Output() valuesChange &#x3D; new EventEmitter&lt;SlicesData&gt;();
+
+  /**
+   * The input element
+   */
+  @ViewChild(&#x27;thicknessInput&#x27;, { static: true, read: ElementRef }) inputElement: ElementRef&lt;HTMLElement&gt;;
+
+  /**
+   * Limits the length of the input if needed and updates values when an input changes
+   * @param input InputEvent from the input element which contains the new value
+   * @param key Name of the dimension to be updated
+   */
+  updateSlicesData(input: InputEvent, key: string): void {
+    const inputTarget &#x3D; input.target as HTMLInputElement;
+    const inputValue &#x3D; inputTarget.value;
+    const max &#x3D; 999;
+    const maxLength &#x3D; max.toString().length - 1;
+    const newVal &#x3D; parseInt(inputValue, 10) &lt; max ? parseInt(inputValue, 10) : parseInt(inputValue.substring(0, maxLength), 10);
+    this.slicesData &#x3D; { ...this.slicesData, [key]: newVal };
+    console.log(this.slicesData);
+    this.valuesChange.emit(this.slicesData);
+  }
+
+  /**
+   * Refreshes all slice data values to empty values
+   */
+  refreshSlices(): void {
+    this.slicesData &#x3D; { thickness: NaN, numSlices: NaN };
+    console.log(this.slicesData);
+    this.valuesChange.emit(this.slicesData);
+  }
+
+  /**
+   * Listens to document click event
+   * Shows the thickness units when data is entered into the form or when input element is clicked
+   * @param target The element on which the event was fired
+   */
+  // tslint:disable-next-line: no-unsafe-any
+  @HostListener(&#x27;document:click&#x27;, [&#x27;$event.target&#x27;])
+  toggleUnits(target: HTMLElement): void {
+    const { inputElement: { nativeElement: content } &#x3D; { nativeElement: undefined } } &#x3D; this;
+    if (content?.contains(target) || !isNaN(this.slicesData.thickness)) {
+      this.unitsVisible &#x3D; true;
+    } else {
+      this.unitsVisible &#x3D; false;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;slices-input&quot;&gt;
+  &lt;div class&#x3D;&quot;slices-header&quot;&gt;
+    Tissue Slices
+    &lt;mat-icon class&#x3D;&quot;slices-refresh&quot; (click)&#x3D;&quot;refreshSlices()&quot;&gt;refresh&lt;/mat-icon&gt;
+  &lt;/div&gt;
+  &lt;form class&#x3D;&quot;slices-input-form&quot;&gt;
+    &lt;div class&#x3D;&quot;form-entry&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label class&#x3D;&quot;form-label&quot;&gt;Thickness&lt;/mat-label&gt;
+        &lt;div class&#x3D;&quot;input-container thickness&quot; #thicknessInput&gt;
+          &lt;input matInput class&#x3D;&quot;form-input&quot; type&#x3D;&quot;number&quot; [value]&#x3D;&quot;slicesData.thickness&quot;
+                 (input)&#x3D;&quot;updateSlicesData($event, &#x27;thickness&#x27;)&quot;&gt;
+          &lt;div class&#x3D;&quot;input-units&quot; [class.hidden]&#x3D;&quot;!unitsVisible&quot; matSuffix&gt;μm&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;form-entry&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label class&#x3D;&quot;form-label&quot;&gt;# Slices&lt;/mat-label&gt;
+        &lt;div class&#x3D;&quot;input-container slices&quot;&gt;
+          &lt;input matInput class&#x3D;&quot;form-input&quot; type&#x3D;&quot;number&quot; [value]&#x3D;&quot;slicesData.numSlices&quot;
+                 (input)&#x3D;&quot;updateSlicesData($event, &#x27;numSlices&#x27;)&quot;&gt;
+        &lt;/div&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./slices-input.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">
+.slices-input {
+  width: 25rem;
+  margin: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  .slices-header {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    align-items: center;
+  
+    .slices-refresh {
+      transform: scaleX(-1);
+      cursor: pointer;
+    }
+  }
+
+  .slices-input-form {
+    display: flex;
+    margin-bottom: 1.5rem;
+    
+    .form-entry {
+      display: flex;
+      margin-right: 1rem;
+      flex-direction: column;
+      width: 30%;
+
+      .input-container {
+        display: flex;
+        height: 1rem;
+        justify-content: center;
+        
+        &amp;.slices {
+          .form-input {
+            text-align: center;
+            margin-top: 0;
+          }
+        }
+
+        &amp;.thickness {
+          .form-input {
+            text-align: right;
+            width: 2rem;
+            margin-right: .3rem;
+            margin-top: 0;
+          }
+          .input-units {
+            &amp;.hidden {
+              display: none
+            }
+          }
+        }
+      }
+
+      
+      ::ng-deep .mat-form-field-label-wrapper {
+        .mat-form-field-label {
+          display: flex;
+          .form-label {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="slices-input">  <div class="slices-header">    Tissue Slices    <mat-icon class="slices-refresh" (click)="refreshSlices()">refresh</mat-icon>  </div>  <form class="slices-input-form">    <div class="form-entry">      <mat-form-field>        <mat-label class="form-label">Thickness</mat-label>        <div class="input-container thickness" #thicknessInput>          <input matInput class="form-input" type="number" [value]="slicesData.thickness"                 (input)="updateSlicesData($event, \'thickness\')">          <div class="input-units" [class.hidden]="!unitsVisible" matSuffix>μm</div>        </div>      </mat-form-field>    </div>    <div class="form-entry">      <mat-form-field>        <mat-label class="form-label"># Slices</mat-label>        <div class="input-container slices">          <input matInput class="form-input" type="number" [value]="slicesData.numSlices"                 (input)="updateSlicesData($event, \'numSlices\')">        </div>      </mat-form-field>    </div>  </form></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ColorBarComponent', 'selector': 'ccf-color-bar'},{'name': 'ColorPickerLauncherComponent', 'selector': 'ccf-color-picker-launcher'},{'name': 'ColorSchemeContentsComponent', 'selector': 'ccf-color-scheme-contents'},{'name': 'ColorSchemePopupComponent', 'selector': 'ccf-color-scheme-popup'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'ImageViewerAccordionComponent', 'selector': 'ccf-image-viewer-accordion'},{'name': 'ImageViewerContentComponent', 'selector': 'ccf-image-viewer-content'},{'name': 'ImageViewerLayersComponent', 'selector': 'ccf-image-viewer-layers'},{'name': 'ImageViewerLegendComponent', 'selector': 'ccf-image-viewer-legend'},{'name': 'ImageViewerPopoverComponent', 'selector': 'ccf-image-viewer-popover'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SchemeDropdownComponent', 'selector': 'ccf-scheme-dropdown'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SlicesInputComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SlicesInputComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
