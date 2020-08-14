@@ -16,7 +16,7 @@ describe('RotationSliderComponent', () => {
     const { instance, outputs } = await shallow.render({ bind: { rotation }});
 
     instance.changeRotation(0, 'x');
-    expect(outputs.rotationChanged.emit).toHaveBeenCalled();
+    expect(outputs.rotationChange.emit).toHaveBeenCalled();
   });
 
   it('shoud successfully update rotation using changeRotation given a string as input.', async () => {
@@ -39,7 +39,7 @@ describe('RotationSliderComponent', () => {
     const { instance, outputs } = await shallow.render();
     instance.resetRotation();
 
-    expect(outputs.rotationChanged.emit).toHaveBeenCalled();
+    expect(outputs.rotationChange.emit).toHaveBeenCalled();
   });
 
   it('should set the rotation to 0, 0, 0 when the resetRotation method is called.', async () => {
