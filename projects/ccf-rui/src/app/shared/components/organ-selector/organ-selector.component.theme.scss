@@ -1,0 +1,33 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+
+  .carousel {
+    color: mat-color($foreground, text);
+    border: 1px solid mat-color($foreground, borders);
+    background-color: mat-color($background, dialog);
+
+    .carousel-left-icon, .carousel-right-icon {
+      color: mat-color($foreground, icon);
+      &:hover {
+        color: mat-color($foreground, active-icon);
+      }
+      &.disabled {
+        color: mat-color($foreground, disabled) 
+      }
+    }
+  }
+
+  .carousel-item {
+    &:hover {
+      background-color: mat-color($background, hover-background);
+    }
+
+    &.selected {
+      color: mat-color($foreground, active-icon) !important;
+    }
+  }
+}
