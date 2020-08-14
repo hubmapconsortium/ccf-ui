@@ -1,7 +1,4 @@
 :host {
-  display: flex;
-  flex-direction: column;
-
   .header {
     display: flex;
     height: 1.5rem;
@@ -19,15 +16,12 @@
 
   .size-inputs {
     display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
 
     .field {
-      width: 30%;
+      width: 33.33%;
 
-      .label {
-        display: block;
-        text-align: center;
+      &:not(:last-child) {
+        padding-right: 0.75rem;
       }
 
       .input {

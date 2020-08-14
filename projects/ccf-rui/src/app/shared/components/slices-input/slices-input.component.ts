@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
 
 /**
  * Interface containing slices data of the tissue block
@@ -19,10 +19,13 @@ export interface SlicesData {
   styleUrls: ['./slices-input.component.scss']
 })
 export class SlicesInputComponent {
+  /** HTML class name */
+  @HostBinding('class') readonly clsName = 'ccf-slices-input';
+
   /**
-   * Determine if the units are visible on the thickness input
+   * Emitter for slice data values
    */
-  unitsVisible = false;
+  @Output() readonly valuesChange = new EventEmitter<SlicesData>();
 
   /**
    * Values of block dimensions to be emitted
@@ -33,14 +36,11 @@ export class SlicesInputComponent {
   };
 
   /**
-   * Emitter for slice data values
+   * Returns whether a valid thickness value has been entered.
    */
-  @Output() valuesChange = new EventEmitter<SlicesData>();
-
-  /**
-   * The input element
-   */
-  @ViewChild('thicknessInput', { static: true, read: ElementRef }) inputElement: ElementRef<HTMLElement>;
+  get hasThicknessValue(): boolean {
+    return !isNaN(this.slicesData.thickness);
+  }
 
   /**
    * Limits the length of the input if needed and updates values when an input changes
@@ -49,12 +49,7 @@ export class SlicesInputComponent {
    */
   updateSlicesData(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
-    const inputValue = inputTarget.value;
-    const max = 999;
-    const maxLength = max.toString().length - 1;
-    const newVal = parseInt(inputValue, 10) < max ? parseInt(inputValue, 10) : parseInt(inputValue.substring(0, maxLength), 10);
-    this.slicesData = { ...this.slicesData, [key]: newVal };
-    console.log(this.slicesData);
+    this.slicesData = { ...this.slicesData, [key]: +inputTarget.value };
     this.valuesChange.emit(this.slicesData);
   }
 
@@ -63,23 +58,6 @@ export class SlicesInputComponent {
    */
   refreshSlices(): void {
     this.slicesData = { thickness: NaN, numSlices: NaN };
-    console.log(this.slicesData);
     this.valuesChange.emit(this.slicesData);
-  }
-
-  /**
-   * Listens to document click event
-   * Shows the thickness units when data is entered into the form or when input element is clicked
-   * @param target The element on which the event was fired
-   */
-  // tslint:disable-next-line: no-unsafe-any
-  @HostListener('document:click', ['$event.target'])
-  toggleUnits(target: HTMLElement): void {
-    const { inputElement: { nativeElement: content } = { nativeElement: undefined } } = this;
-    if (content?.contains(target) || !isNaN(this.slicesData.thickness)) {
-      this.unitsVisible = true;
-    } else {
-      this.unitsVisible = false;
-    }
   }
 }

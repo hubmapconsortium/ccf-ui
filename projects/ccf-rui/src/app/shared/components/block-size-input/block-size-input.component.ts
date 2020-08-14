@@ -39,7 +39,7 @@ export class BlockSizeInputComponent {
   /**
    * Emitter for values
    */
-  @Output() valuesChange = new EventEmitter<BlockSizes>();
+  @Output() readonly valuesChange = new EventEmitter<BlockSizes>();
 
   /**
    * Updates values when an input changes
