@@ -10,7 +10,7 @@ import { HeaderModule } from './modules/header/header.module';
 import { LeftSidebarModule } from './modules/left-sidebar/left-sidebar.module';
 import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
-import { OrganSelectorModule } from './shared/components/organ-selector/organ-selector.module';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -22,11 +22,23 @@ import { OrganSelectorModule } from './shared/components/organ-selector/organ-se
     HeaderModule,
     ContentModule,
     LeftSidebarModule,
-    RightSidebarModule,
-    OrganSelectorModule
+    RightSidebarModule
   ],
   declarations: [AppComponent],
-  providers: [{ provide: DEFAULT_THEME, useValue: 'light-theme' }],
+  providers: [
+    {
+      provide: DEFAULT_THEME,
+      useValue: 'light-theme'
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        appearance: 'standard',
+        floatLabel: false,
+        hideRequiredMarker: true
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,29 +1,25 @@
-<div class="block-size-input">
-  <div class="block-size-header">
-    Tissue Block Size (mm)
-    <mat-icon class="block-size-refresh" (click)="refreshBlockSize()">refresh</mat-icon>
-  </div>
-  <div class="size-input-form">
-    <div class="form-entry">
-      <mat-form-field>
-        <mat-label class="form-label">Width (X)</mat-label>
-        <input matInput class="form-input" type="number" placeholder="" [value]="tissueData.x"
-               (input)="updateTissueData($event, 'x')">
-      </mat-form-field>
-    </div>
-    <div class="form-entry">
-      <mat-form-field>
-        <mat-label class="form-label">Height (Y)</mat-label>
-        <input matInput class="form-input" type="number" placeholder="" [value]="tissueData.y"
-               (input)="updateTissueData($event, 'y')">
-      </mat-form-field>
-    </div>
-    <div class="form-entry">
-      <mat-form-field>
-        <mat-label class="form-label">Depth (Z)</mat-label>
-        <input matInput class="form-input" type="number" placeholder="" [value]="tissueData.z"
-               (input)="updateTissueData($event, 'z')">
-      </mat-form-field>
-    </div>
-  </div>
+<div class="header">
+  <span class="text title">Tissue Block Size (mm)</span>
+  <div class="filler"></div>
+  <mat-icon class="icon refresh" (click)="refreshBlockSize()">refresh</mat-icon>
+</div>
+
+<div class="size-inputs">
+  <mat-form-field class="field" floatLabel="always">
+    <mat-label class="text label">Width (X)</mat-label>
+    <input matInput class="input" type="number" placeholder="" [value]="blockSizes.x"
+           (input)="updateBlockSizes($event, 'x')">
+  </mat-form-field>
+
+  <mat-form-field class="field" floatLabel="always">
+    <mat-label class="text label">Height (Y)</mat-label>
+    <input matInput class="input" type="number" placeholder="" [value]="blockSizes.y"
+           (input)="updateBlockSizes($event, 'y')">
+  </mat-form-field>
+
+  <mat-form-field class="field" floatLabel="always">
+    <mat-label class="text label">Depth (Z)</mat-label>
+    <input matInput class="input" type="number" placeholder="" [value]="blockSizes.z"
+           (input)="updateBlockSizes($event, 'z')">
+  </mat-form-field>
 </div>

@@ -10,13 +10,16 @@
     border: 1px solid mat-color($foreground, borders);
     background-color: mat-color($background, dialog);
 
-    .carousel-left-icon, .carousel-right-icon {
+    .carousel-left-icon,
+    .carousel-right-icon {
       color: mat-color($foreground, icon);
+
       &:hover {
         color: mat-color($foreground, active-icon);
       }
+
       &.disabled {
-        color: mat-color($foreground, disabled) 
+        color: mat-color($foreground, disabled);
       }
     }
   }

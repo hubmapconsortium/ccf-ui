@@ -6,8 +6,8 @@ import { OrganSelectorModule } from '../../shared/components/organ-selector/orga
 
 
 @NgModule({
-  declarations: [LeftSidebarComponent],
   imports: [CommonModule, OrganSelectorModule],
+  declarations: [LeftSidebarComponent],
   exports: [LeftSidebarComponent]
 })
 export class LeftSidebarModule { }

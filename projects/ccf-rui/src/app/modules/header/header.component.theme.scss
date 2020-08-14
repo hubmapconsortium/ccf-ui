@@ -21,5 +21,9 @@
     .home:hover * {
       color: mat-color($accent);
     }
+
+    .info {
+      color: mat-color($foreground, info-icon);
+    }
   }
 }

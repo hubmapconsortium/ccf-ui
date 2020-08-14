@@ -1,0 +1,15 @@
+@use '~@angular/material/theming'as *;
+
+@mixin theme($theme) {
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .ccf-right-sidebar {
+    background-color: mat-color($background, sidebar-background);
+
+    hr {
+      border-color: mat-color($foreground, sidebar-dividers);
+    }
+  }
+}
