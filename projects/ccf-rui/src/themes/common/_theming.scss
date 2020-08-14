@@ -1,6 +1,7 @@
 @use '~@angular/material/theming' as *;
-@use '../../app/shared/components/drawer/drawer.theme' as drawer;
 @use '../../app/modules/header/header.component.theme' as header;
+@use '../../app/shared/components/drawer/drawer.theme' as drawer;
+@use '../../app/modules/right-sidebar/right-sidebar.component.theme.scss' as rightSidebar;
 @use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
 @use '../../app/shared/components/slices-input/slices-input.component.theme.scss' as slicesInput;
 @use '../../app/shared/components/rotation-slider/rotation-slider.component.theme.scss' as rotationSlider;
@@ -8,18 +9,22 @@
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
-  @include mat-toolbar-theme($theme);
-  @include mat-icon-theme($theme);
-  @include mat-form-field-outline-theme($theme);
-  @include mat-input-theme($theme);
+
   @include mat-checkbox-theme($theme);
+  @include mat-form-field-fill-theme($theme);
+  @include mat-form-field-outline-theme($theme);
+  @include mat-icon-theme($theme);
+  @include mat-input-theme($theme);
   @include mat-progress-spinner-theme($theme);
   @include mat-radio-theme($theme);
   @include mat-slide-toggle-theme($theme);
+  @include mat-toolbar-theme($theme);
   @include mat-tooltip-theme($theme);
 
   @include header.theme($theme);
   @include drawer.theme($theme);
+
+  @include rightSidebar.theme($theme);
   @include blockSizeInput.theme($theme);
   @include slicesInput.theme($theme);
   @include rotationSlider.theme($theme);

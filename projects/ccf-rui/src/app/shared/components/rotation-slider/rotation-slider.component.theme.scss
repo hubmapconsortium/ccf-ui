@@ -10,8 +10,9 @@
       background: $color;
     }
 
-    // For some reason putting this together with the regular
-    // .slider selector causes them to fail to apply!?
+    // If a browser encounters an unknown pseudo class it discards
+    // entire ruleset therefore these cannot be combined with
+    // the regular rule.
     .slider::-webkit-slider-thumb {
       background-color: $color;
     }
