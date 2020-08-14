@@ -26,7 +26,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   placeholder-text: map-get($primary-colors, 600), //#757575
   input-label: map-get($primary-colors, 600), //#757575
   disabled: map-get($primary-colors, light-disabled), //#E0E0E0
-  
+  active-icon: #1976D2,
 
   logo: map-get($primary-colors, 'white'),
   header-border: map-get($primary-colors, 800), //#424242

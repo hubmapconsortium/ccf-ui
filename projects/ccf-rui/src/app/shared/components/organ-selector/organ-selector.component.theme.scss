@@ -7,13 +7,13 @@
 
   .carousel {
     color: mat-color($foreground, text);
-    border: 1px solid #e0e0e0;
+    border: 1px solid mat-color($foreground, borders);
     background-color: mat-color($background, dialog);
 
-    mat-icon {
+    .carousel-left-icon, .carousel-right-icon {
       color: mat-color($foreground, icon);
       &:hover {
-        color: #1976D2;
+        color: mat-color($foreground, active-icon);
       }
       &.disabled {
         color: mat-color($foreground, disabled) 
@@ -22,16 +22,12 @@
   }
 
   .carousel-item {
-    .carousel-icon {
-      fill: currentColor;
-    }
-
     &:hover {
       background-color: mat-color($background, hover-background);
     }
 
     &.selected {
-      color: #1976D2 !important;
+      color: mat-color($foreground, active-icon) !important;
     }
   }
 }
