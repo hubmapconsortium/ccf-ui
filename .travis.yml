@@ -28,6 +28,8 @@ jobs:
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/ccf-ui/
+    - npm run build -- --project ccf-rui --output-hashing=none --base-href=/ccf-ui/rui/
+    - cp -r dist/ccf-rui dist/ccf-ui/rui
     - cp dist/ccf-ui/index.html dist/ccf-ui/404.html
     - touch dist/ccf-ui/.nojekyll
     - npm run compodoc
@@ -46,6 +48,8 @@ jobs:
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/
+    - npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
+    - cp -r dist/ccf-rui dist/ccf-ui/rui
     - cp dist/ccf-ui/index.html dist/ccf-ui/404.html
     - touch dist/ccf-ui/.nojekyll
     - npm run compodoc
