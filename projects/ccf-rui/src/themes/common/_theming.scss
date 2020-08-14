@@ -4,6 +4,8 @@
 @use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organ-selector;
 @use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
 @use '../../app/shared/components/slices-input/slices-input.component.theme.scss' as slicesInput;
+@use '../../app/shared/components/side-selector/side-selector.component.theme.scss' as sideSelector;
+@use '../../app/shared/components/gender-selector/gender-selector.component.theme.scss' as genderSelector;
 
 
 @mixin ccf-theme($theme) {
@@ -23,6 +25,8 @@
   @include organ-selector.theme($theme);
   @include blockSizeInput.theme($theme);
   @include slicesInput.theme($theme);
+  @include sideSelector.theme($theme);
+  @include genderSelector.theme($theme);
 
   // Overrides goes here!
 }

@@ -1,1 +1,4 @@
-<p>gender-selector works!</p>
+<span class="slide-label" [class.highlighted]="isMale">Male</span>
+<mat-slide-toggle (change)="updateGender($event.checked)" class="gender-slider">
+</mat-slide-toggle>
+<span class="slide-label" [class.highlighted]="!isMale">Female</span>
