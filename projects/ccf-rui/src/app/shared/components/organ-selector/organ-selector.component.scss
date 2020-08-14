@@ -11,6 +11,11 @@
     transform: scale(1, 1.2);
     height: 2rem;
     width: 2rem;
+    cursor: pointer;
+    
+    &.disabled {
+      cursor: default;
+    }
   }
 
   .carousel-left-icon {
@@ -28,13 +33,13 @@
       position: relative;
       left: 0px;
       display: flex;
-      transition: all .5s ease-in-out;
+      transition: all .25s ease-in-out;
       width: 17.5rem;
   
       .carousel-item {
         display: flex;
-        height: 3.5rem;
         flex-direction: column;
+        cursor: pointer;
         
         .carousel-icon {
           text-align: center;

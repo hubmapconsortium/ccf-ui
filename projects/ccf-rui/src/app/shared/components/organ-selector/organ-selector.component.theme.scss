@@ -12,8 +12,11 @@
 
     mat-icon {
       color: mat-color($foreground, icon);
+      &:hover {
+        color: #1976D2;
+      }
       &.disabled {
-        color: mat-color($foreground, disabled)
+        color: mat-color($foreground, disabled) 
       }
     }
   }
