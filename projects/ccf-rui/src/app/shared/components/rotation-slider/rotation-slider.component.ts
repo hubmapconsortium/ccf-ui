@@ -1,8 +1,13 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, HostBinding } from '@angular/core';
 
+
+/** Type in which the values of the sliders are stored. */
 export interface Rotation {
+  /** X slider value */
   x: number;
+  /** Y slider value */
   y: number;
+  /** Z slider value */
   z: number;
 }
 
@@ -16,6 +21,9 @@ export interface Rotation {
   styleUrls: ['./rotation-slider.component.scss']
 })
 export class RotationSliderComponent {
+  /** HTML class name */
+  @HostBinding('class') readonly clsName = 'ccf-rotation-slider';
+
   /**
    * Input that allows the rotation to be changed from outside of the component
    */
@@ -24,7 +32,7 @@ export class RotationSliderComponent {
   /**
    * Output that emits the new rotation whenever it is changed from within the component
    */
-  @Output() rotationChanged = new EventEmitter<Rotation>();
+  @Output() readonly rotationChanged = new EventEmitter<Rotation>();
 
   /**
    * Function that handles updating the rotation and emitting the new value
@@ -32,9 +40,7 @@ export class RotationSliderComponent {
    * @param axis which axis to update
    */
   changeRotation(newRotation: number | string, axis: string): void {
-    const rotationClone = {...this.rotation};
-    rotationClone[axis] = +newRotation;
-    this.rotation = rotationClone;
+    this.rotation = { ... this.rotation, [axis]: +newRotation };
     this.rotationChanged.emit(this.rotation);
   }
 
@@ -42,8 +48,7 @@ export class RotationSliderComponent {
    * Function to easily reset the rotations to 0 and emit this change.
    */
   resetRotation(): void {
-    const clearedRotation: Rotation = { x: 0, y: 0, z: 0 };
-    this.rotation = clearedRotation;
+    this.rotation = { x: 0, y: 0, z: 0 };
     this.rotationChanged.emit(this.rotation);
   }
 }

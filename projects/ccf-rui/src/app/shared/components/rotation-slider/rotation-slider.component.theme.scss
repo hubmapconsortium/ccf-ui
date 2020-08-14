@@ -1,0 +1,39 @@
+@use '~@angular/material/theming' as *;
+
+@mixin slider-theme($cls, $color) {
+  .slider-box#{$cls} {
+    .label {
+      color: $color;
+    }
+
+    .slider {
+      background: $color;
+    }
+
+    // For some reason putting this together with the regular
+    // .slider selector causes them to fail to apply!?
+    .slider::-webkit-slider-thumb {
+      background-color: $color;
+    }
+
+    .slider::-moz-range-thumb {
+      background-color: $color;
+    }
+  }
+}
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .ccf-rotation-slider {
+    .header .reset {
+      color: mat-color($foreground, icon);
+    }
+
+    @include slider-theme('.red', mat-color($foreground, slider-red));
+    @include slider-theme('.green', mat-color($foreground, slider-green));
+    @include slider-theme('.blue', mat-color($foreground, slider-blue));
+  }
+}

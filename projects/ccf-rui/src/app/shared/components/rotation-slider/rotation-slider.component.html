@@ -1,32 +1,32 @@
-<div class="container">
-    <div class="header">
-        <div class="title">Tissue Block Rotation</div>
-        <mat-icon class="reset" (click)="resetRotation()">refresh</mat-icon>
-    </div>
+<div class="header">
+  <span class="text title">Tissue Block Rotation</span>
+  <div class="filler"></div>
+  <mat-icon class="icon reset" (click)="resetRotation()">refresh</mat-icon>
+</div>
 
-    <div class="sliders">
-        <div class="slider-row">
-            <div class="slider-label red">X</div>
-            <div class="slider-container red">
-                <input type="range" step="1" min="-180" max="180" [value]="rotation.x" (input)="changeRotation($event.target.value, 'x')" class="slider red">
-            </div>
-            <div class="slider-display">{{ rotation.x }}</div>
-        </div>
+<div class="slider-box red">
+  <span class="text label">X</span>
+  <div class="slider-container">
+    <input type="range" step="1" min="-180" max="180" [value]="rotation.x"
+           (input)="changeRotation($event.target.value, 'x')" class="slider">
+  </div>
+  <span class="text value">{{ rotation.x }}</span>
+</div>
 
-        <div class="slider-row">
-            <div class="slider-label green">Y</div>
-            <div class="slider-container green">
-                <input type="range" step="1" min="-180" max="180" [value]="rotation.y" (input)="changeRotation($event.target.value, 'y')" class="slider green">
-            </div>
-            <div class="slider-display">{{ rotation.y }}</div>
-        </div>
+<div class="slider-box green">
+  <span class="text label">Y</span>
+  <div class="slider-container">
+    <input type="range" step="1" min="-180" max="180" [value]="rotation.y"
+           (input)="changeRotation($event.target.value, 'y')" class="slider">
+  </div>
+  <span class="text value">{{ rotation.y }}</span>
+</div>
 
-        <div class="slider-row">
-            <div class="slider-label blue">Z</div>
-            <div class="slider-container blue">
-                <input type="range" step="1" min="-180" max="180" [value]="rotation.z" (input)="changeRotation($event.target.value, 'z')" class="slider blue">
-            </div>
-            <div class="slider-display">{{ rotation.z }}</div>
-        </div>
-    </div>
+<div class="slider-box blue">
+  <span class="text label">Z</span>
+  <div class="slider-container">
+    <input type="range" step="1" min="-180" max="180" [value]="rotation.z"
+           (input)="changeRotation($event.target.value, 'z')" class="slider">
+  </div>
+  <span class="text value">{{ rotation.z }}</span>
 </div>

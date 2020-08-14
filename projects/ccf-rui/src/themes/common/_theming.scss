@@ -3,6 +3,7 @@
 @use '../../app/modules/header/header.component.theme' as header;
 @use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
 @use '../../app/shared/components/slices-input/slices-input.component.theme.scss' as slicesInput;
+@use '../../app/shared/components/rotation-slider/rotation-slider.component.theme.scss' as rotationSlider;
 
 
 @mixin ccf-theme($theme) {
@@ -21,6 +22,7 @@
   @include drawer.theme($theme);
   @include blockSizeInput.theme($theme);
   @include slicesInput.theme($theme);
+  @include rotationSlider.theme($theme);
 
   // Overrides goes here!
 }
