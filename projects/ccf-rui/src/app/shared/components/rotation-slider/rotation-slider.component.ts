@@ -32,7 +32,7 @@ export class RotationSliderComponent {
   /**
    * Output that emits the new rotation whenever it is changed from within the component
    */
-  @Output() readonly rotationChanged = new EventEmitter<Rotation>();
+  @Output() readonly rotationChange = new EventEmitter<Rotation>();
 
   /**
    * Function that handles updating the rotation and emitting the new value
@@ -41,7 +41,7 @@ export class RotationSliderComponent {
    */
   changeRotation(newRotation: number | string, axis: string): void {
     this.rotation = { ... this.rotation, [axis]: +newRotation };
-    this.rotationChanged.emit(this.rotation);
+    this.rotationChange.emit(this.rotation);
   }
 
   /**
@@ -49,6 +49,6 @@ export class RotationSliderComponent {
    */
   resetRotation(): void {
     this.rotation = { x: 0, y: 0, z: 0 };
-    this.rotationChanged.emit(this.rotation);
+    this.rotationChange.emit(this.rotation);
   }
 }
