@@ -71,7 +71,7 @@ export class OrganSelectorComponent {
 
   /**
    * Sets currently selected organ and emits the organ name
-   * @param icon The icon selected
+   * @param name The name of the organ selected
    */
   selectOrgan(name: string): void {
     this.selectedOrgan = name;
@@ -81,7 +81,7 @@ export class OrganSelectorComponent {
 
   /**
    * Determines whether an icon represents the currently selected organ
-   * @param icon The icon of interest
+   * @param name The name of the organ of interest
    * @returns true if selected
    */
   isSelected(name: string): boolean {
