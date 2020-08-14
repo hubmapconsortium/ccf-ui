@@ -11,8 +11,7 @@
   @include mat-core-theme($theme);
 
   @include mat-checkbox-theme($theme);
-  @include mat-form-field-fill-theme($theme);
-  @include mat-form-field-outline-theme($theme);
+  @include mat-form-field-theme($theme);
   @include mat-icon-theme($theme);
   @include mat-input-theme($theme);
   @include mat-progress-spinner-theme($theme);

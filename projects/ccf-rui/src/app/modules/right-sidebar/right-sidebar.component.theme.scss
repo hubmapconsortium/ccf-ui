@@ -9,7 +9,7 @@
     background-color: mat-color($background, sidebar-background);
 
     hr {
-      border-color: mat-color($foreground, divider);
+      border-color: mat-color($foreground, sidebar-dividers);
     }
   }
 }

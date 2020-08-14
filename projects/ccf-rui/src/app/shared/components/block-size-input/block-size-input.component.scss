@@ -1,39 +1,42 @@
-
-.block-size-input {
-  margin: 0 1.5rem;
+:host {
   display: flex;
   flex-direction: column;
 
-  .block-size-header {
-    font-weight: bold;
+  .header {
     display: flex;
-    justify-content: space-between;
-    height: 3rem;
+    height: 1.5rem;
     align-items: center;
-  
-    .block-size-refresh {
+
+    .title {
+      font-weight: bold;
+    }
+
+    .refresh {
       transform: scaleX(-1);
       cursor: pointer;
     }
   }
 
-  .size-input-form {
+  .size-inputs {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
     margin-top: 1rem;
-  
-    .form-entry {
-      display: flex;
-      flex-direction: column;
+
+    .field {
       width: 30%;
-      .form-input {
+
+      .label {
+        display: block;
         text-align: center;
       }
-      
-      ::ng-deep .mat-form-field-label-wrapper {
-        top: -1.5em;
+
+      .input {
+        text-align: center;
       }
     }
+  }
+
+  .filler {
+    flex-grow: 1;
   }
 }

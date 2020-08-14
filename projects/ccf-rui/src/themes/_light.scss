@@ -21,13 +21,14 @@ $accent: mat-palette($mat-blue, 700);
 $warn: mat-palette($mat-red);
 
 $foreground: map-merge($mat-light-theme-foreground, (
-  divider: map-get($primary-colors, 'white'),
+  divider: map-get($primary-colors, 600), // #757575
   header-border: map-get($primary-colors, 800), // #424242
   icon: map-get($primary-colors, 500), // #9E9E9E
   info-icon: map-get($primary-colors, 'white'),
   input-label: map-get($primary-colors, 600), // #757575
   logo: map-get($primary-colors, 'white'),
   placeholder-text: map-get($primary-colors, 600), // #757575
+  sidebar-dividers: map-get($primary-colors, 'white'),
   slider-blue: map-get($mat-blue, A400), // #2979FF
   slider-green: map-get($mat-green, A700), // #00C853
   slider-red: map-get($mat-red, A700), // #D50000
