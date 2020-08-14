@@ -46,6 +46,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
 
 $background: map-merge($mat-light-theme-background, (
   background: map-get($primary-colors, 50),
+  hover-background: map-get($primary-colors, 300), //#E0E0E0
   stage-background: map-get($primary-colors, 'black'),
   dialog: map-get($primary-colors, 50), //#FAFAFA
   authentication: map-get($primary-colors, 50), //#FAFAFA

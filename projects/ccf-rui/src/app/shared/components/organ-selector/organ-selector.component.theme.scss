@@ -22,8 +22,12 @@
   }
 
   .carousel-item {
+    .carousel-icon {
+      fill: currentColor;
+    }
+
     &:hover {
-      color: #00C853
+      background-color: mat-color($background, hover-background);
     }
 
     &.selected {

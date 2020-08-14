@@ -1,22 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 /**
- * Contains the organ name and url of the icon svg
- */
-export interface OrganInfo {
-
-  /**
-   * Name of the organ
-   */
-  name: string;
-
-  /**
-   * Url of the icon svg
-   */
-  url: string;
-}
-
-/**
  * Organ carousel for selecting the organ to be viewed
  */
 @Component({
@@ -44,20 +28,20 @@ export class OrganSelectorComponent {
   /**
    * List of organs in the carousel
    */
-  organList: OrganInfo[] = [
-    {name: 'Bladder', url: '../../../assets/icons/icons-organs_bladder.svg'},
-    {name: 'Brain', url: '../../../assets/icons/icons-organs_brain.svg'},
-    {name: 'Colon', url: '../../../assets/icons/icons-organs_colon.svg'},
-    {name: 'Heart', url: '../../../assets/icons/icons-organs_heart.svg'},
-    {name: 'Kidney', url: '../../../assets/icons/icons-organs_kidney.svg'},
-    {name: 'Liver', url: '../../../assets/icons/icons-organs_liver.svg'},
-    {name: 'Lung', url: '../../../assets/icons/icons-organs_lung.svg'},
-    {name: 'Lymph Nodes', url: '../../../assets/icons/icons-organs_lymph-nodes.svg'},
-    {name: 'Ovaries', url: '../../../assets/icons/icons-organs_ovaries.svg'},
-    {name: 'Small Intestine', url: '../../../assets/icons/icons-organs_small intestine.svg'},
-    {name: 'Spleen', url: '../../../assets/icons/icons-organs_spleen.svg'},
-    {name: 'Stomach', url: '../../../assets/icons/icons-organs_stomach.svg'},
-    {name: 'Thymus', url: '../../../assets/icons/icons-organs_thymus.svg'}
+  organList = [
+    'Bladder',
+    'Brain',
+    'Colon',
+    'Heart',
+    'Kidney',
+    'Liver',
+    'Lung',
+    'Lymph Nodes',
+    'Ovaries',
+    'Small Intestine',
+    'Spleen',
+    'Stomach',
+    'Thymus'
   ];
 
   /**
@@ -89,10 +73,10 @@ export class OrganSelectorComponent {
    * Sets currently selected organ and emits the organ name
    * @param icon The icon selected
    */
-  selectOrgan(icon: OrganInfo): void {
-    this.selectedOrgan = icon.name;
+  selectOrgan(name: string): void {
+    this.selectedOrgan = name;
     console.log(this.selectedOrgan);
-    this.organChanged.emit(icon.name);
+    this.organChanged.emit(name);
   }
 
   /**
@@ -100,7 +84,7 @@ export class OrganSelectorComponent {
    * @param icon The icon of interest
    * @returns true if selected
    */
-  isSelected(icon: OrganInfo): boolean {
-    return this.selectedOrgan === icon.name;
+  isSelected(name: string): boolean {
+    return this.selectedOrgan === name;
   }
 }
