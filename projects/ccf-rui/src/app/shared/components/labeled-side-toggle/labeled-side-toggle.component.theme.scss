@@ -2,15 +2,13 @@
 
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $primary: map-get($theme, primary);
 
   .gender-slider, .side-slider {
     .mat-slide-toggle-bar {
-      background-color: mat-color($foreground, toggle-bar-checked);
+      background-color: mat-color($foreground, toggle-bar);
     }
     .mat-slide-toggle-thumb {
-      background-color: mat-color($foreground, toggle-thumb-checked);
+      background-color: mat-color($foreground, toggle-thumb);
     }
   }
 

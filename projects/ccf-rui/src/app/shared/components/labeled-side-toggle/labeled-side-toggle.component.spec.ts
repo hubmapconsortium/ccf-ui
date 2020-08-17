@@ -1,25 +1,29 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Shallow } from 'shallow-render';
 
 import { LabeledSideToggleComponent } from './labeled-side-toggle.component';
+import { LabeledSideToggleModule } from './labeled-side-toggle.module';
 
 describe('LabeledSideToggleComponent', () => {
-  let component: LabeledSideToggleComponent;
-  let fixture: ComponentFixture<LabeledSideToggleComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LabeledSideToggleComponent ]
-    })
-    .compileComponents();
-  }));
+  let shallow: Shallow<LabeledSideToggleComponent>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LabeledSideToggleComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    shallow = new Shallow(LabeledSideToggleComponent, LabeledSideToggleModule);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit the correct gender whenever updateGender is called.', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { isMale: true } });
+    instance.updateGender(true);
+    expect(outputs.genderChanged.emit).toHaveBeenCalledWith('female');
+    instance.updateGender(false);
+    expect(outputs.genderChanged.emit).toHaveBeenCalledWith('male');
   });
+
+  it('should emit the correct side whenever updateSide is called.', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { left: true } });
+    instance.updateSide(true);
+    expect(outputs.sideChanged.emit).toHaveBeenCalledWith('right');
+    instance.updateSide(false);
+    expect(outputs.sideChanged.emit).toHaveBeenCalledWith('left');
+  });
+
 });

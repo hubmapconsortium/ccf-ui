@@ -29,7 +29,7 @@ export class LabeledSideToggleComponent {
   /**
    * Input to determine if 'L' is selected
    */
-  @Input() left = false;
+  @Input() left = true;
 
   /**
    * Emits the currently selected gender
@@ -55,7 +55,7 @@ export class LabeledSideToggleComponent {
    * @param selection The current toggle state
    */
   updateSide(selection: boolean): void {
-    this.left = selection;
+    this.left = !selection;
     this.sideChanged.emit(this.left ? 'left' : 'right');
   }
 

@@ -35,10 +35,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   slider-green: map-get($mat-green, A700), // #00C853
   slider-red: map-get($mat-red, A700), // #D50000
   text: map-get($primary-colors, 900), // #212121
-  toggle-bar-checked: rgba(25, 118, 210, 0.54),
-  toggle-bar-unchecked: map-get($primary-colors, 300), //E0E0E0
-  toggle-thumb-checked: #1976d2,
-  toggle-thumb-unchecked: map-get($primary-colors, 50), //#FAFAFA
+  toggle-bar: rgba(25, 118, 210, 0.54),
+  toggle-thumb: #1976d2,
 
   modal-borders: map-get($primary-colors, 'black'),
   borders: map-get($primary-colors, 300), // #E0E0E0
