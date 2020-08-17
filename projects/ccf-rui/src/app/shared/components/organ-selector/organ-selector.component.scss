@@ -2,17 +2,17 @@
   display: flex;
   align-items: center;
   height: 4.5rem;
-  margin: 1.5rem 1.5rem 0;
   justify-content: space-between;
   border-radius: 3px;
-  
-  .carousel-left-icon, .carousel-right-icon {
+
+  .carousel-left-icon,
+  .carousel-right-icon {
     font-size: 32px;
     transform: scale(1, 1.2);
     height: 2rem;
     width: 2rem;
     cursor: pointer;
-    
+
     &.disabled {
       cursor: default;
     }
@@ -28,20 +28,20 @@
 
   .carousel-item-container {
     overflow: hidden;
-    
+
     .carousel-item-list {
       position: relative;
       left: 0px;
       display: flex;
-      transition: all .25s ease-in-out;
+      transition: all 0.25s ease-in-out;
       width: 17.5rem;
-  
+
       .carousel-item {
         display: flex;
         flex-direction: column;
         cursor: pointer;
         justify-content: center;
-        
+
         .carousel-icon {
           text-align: center;
           width: 3.5rem;
