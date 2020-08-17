@@ -14,6 +14,8 @@ describe('SideSelectorComponent', () => {
     const { instance, outputs } = await shallow.render({ bind: { left: true } });
     instance.updateSide(false);
     expect(outputs.sideChanged.emit).toHaveBeenCalledWith('right');
+    instance.updateSide(true);
+    expect(outputs.sideChanged.emit).toHaveBeenCalledWith('left');
   });
 
 });

@@ -5,7 +5,7 @@
   $background: map-get($theme, background);
   $primary: map-get($theme, primary);
 
-  .gender-slider {
+  .gender-slider, .side-slider {
     .mat-slide-toggle-bar {
       background-color: mat-color($foreground, toggle-bar-checked);
     }

@@ -7,19 +7,10 @@
 
   .side-slider {
     .mat-slide-toggle-bar {
-      background-color: rgba(25, 118, 210, 0.54) !important;
+      background-color: mat-color($foreground, toggle-bar-checked);
     }
     .mat-slide-toggle-thumb {
-      background-color: #1976d2 !important;
-    }
-  
-    &.mat-checked {
-      .mat-slide-toggle-bar {
-        background-color: #e0e0e0 !important;
-      }
-      .mat-slide-toggle-thumb {
-        background-color: #fafafa !important;
-      }
+      background-color: mat-color($foreground, toggle-thumb-checked);
     }
   }
 

@@ -14,6 +14,8 @@ describe('GenderSelectorComponent', () => {
     const { instance, outputs } = await shallow.render({ bind: { isMale: false } });
     instance.updateGender(true);
     expect(outputs.genderChanged.emit).toHaveBeenCalledWith('female');
+    instance.updateGender(false);
+    expect(outputs.genderChanged.emit).toHaveBeenCalledWith('male');
   });
 
 });
