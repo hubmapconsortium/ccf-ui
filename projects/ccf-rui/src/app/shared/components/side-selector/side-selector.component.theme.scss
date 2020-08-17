@@ -1,0 +1,29 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+
+  .side-slider {
+    .mat-slide-toggle-bar {
+      background-color: rgba(25, 118, 210, 0.54) !important;
+    }
+    .mat-slide-toggle-thumb {
+      background-color: #1976d2 !important;
+    }
+  
+    &.mat-checked {
+      .mat-slide-toggle-bar {
+        background-color: #e0e0e0 !important;
+      }
+      .mat-slide-toggle-thumb {
+        background-color: #fafafa !important;
+      }
+    }
+  }
+
+  .highlighted {
+    color: mat-color($foreground, active-icon);
+  }
+}
