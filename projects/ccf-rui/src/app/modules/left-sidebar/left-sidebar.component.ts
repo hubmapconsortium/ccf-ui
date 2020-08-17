@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+
 
 @Component({
   selector: 'ccf-left-sidebar',
@@ -6,11 +7,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./left-sidebar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LeftSidebarComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class LeftSidebarComponent {
+  /** HTML class name */
+  @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
 }

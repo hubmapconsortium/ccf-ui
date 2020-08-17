@@ -5,7 +5,9 @@
 @use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
 @use '../../app/shared/components/slices-input/slices-input.component.theme.scss' as slicesInput;
 @use '../../app/shared/components/rotation-slider/rotation-slider.component.theme.scss' as rotationSlider;
-@use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organ-selector;
+@use '../../app/modules/left-sidebar/left-sidebar.component.theme.scss' as leftSidebar;
+@use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organSelector;
+@use '../../app/modules/content/content.component.theme.scss' as content;
 
 
 @mixin ccf-theme($theme) {
@@ -29,6 +31,9 @@
   @include slicesInput.theme($theme);
   @include rotationSlider.theme($theme);
 
-  @include organ-selector.theme($theme);
+  @include leftSidebar.theme($theme);
+  @include organSelector.theme($theme);
+
+  @include content.theme($theme);
   // Overrides goes here!
 }
