@@ -8,7 +8,7 @@
   .carousel {
     color: mat-color($foreground, text);
     border: 1px solid mat-color($foreground, borders);
-    background-color: mat-color($background, dialog);
+    background-color: white;
 
     .carousel-left-icon,
     .carousel-right-icon {
