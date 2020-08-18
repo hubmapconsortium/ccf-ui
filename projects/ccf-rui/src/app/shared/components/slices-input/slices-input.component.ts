@@ -1,14 +1,20 @@
-import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 /**
  * Interface containing slices data of the tissue block
  */
-export interface SlicesData {
+export interface SlicesConfig {
   /** Thickness of each tissue slice */
   thickness: number;
   /** Number of slices in the block */
   numSlices: number;
 }
+
+/** Default values for slices config. */
+const DEFAULT_SLICES_CONFIG: SlicesConfig = {
+  thickness: NaN,
+  numSlices: NaN
+};
 
 /**
  * Component for entering data on block slices
@@ -23,23 +29,20 @@ export class SlicesInputComponent {
   @HostBinding('class') readonly clsName = 'ccf-slices-input';
 
   /**
-   * Emitter for slice data values
-   */
-  @Output() readonly valuesChange = new EventEmitter<SlicesData>();
-
-  /**
    * Values of block dimensions to be emitted
    */
-  slicesData: SlicesData = {
-    thickness: NaN,
-    numSlices: NaN
-  };
+  @Input() slicesConfig = DEFAULT_SLICES_CONFIG;
+
+  /**
+   * Emitter for slice data values
+   */
+  @Output() readonly slicesConfigChange = new EventEmitter<SlicesConfig>();
 
   /**
    * Returns whether a valid thickness value has been entered.
    */
   get hasThicknessValue(): boolean {
-    return !isNaN(this.slicesData.thickness);
+    return !isNaN(this.slicesConfig.thickness);
   }
 
   /**
@@ -49,15 +52,15 @@ export class SlicesInputComponent {
    */
   updateSlicesData(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
-    this.slicesData = { ...this.slicesData, [key]: +inputTarget.value };
-    this.valuesChange.emit(this.slicesData);
+    this.slicesConfig = { ...this.slicesConfig, [key]: +inputTarget.value };
+    this.slicesConfigChange.emit(this.slicesConfig);
   }
 
   /**
    * Refreshes all slice data values to empty values
    */
   refreshSlices(): void {
-    this.slicesData = { thickness: NaN, numSlices: NaN };
-    this.valuesChange.emit(this.slicesData);
+    this.slicesConfig = DEFAULT_SLICES_CONFIG;
+    this.slicesConfigChange.emit(this.slicesConfig);
   }
 }
