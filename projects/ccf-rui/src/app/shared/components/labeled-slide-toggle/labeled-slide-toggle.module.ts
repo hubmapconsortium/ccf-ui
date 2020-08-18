@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
-import { LabeledSideToggleComponent } from './labeled-side-toggle.component';
+import { LabeledSlideToggleComponent } from './labeled-slide-toggle.component';
 
 
 @NgModule({
   imports: [CommonModule, MatSlideToggleModule],
-  declarations: [LabeledSideToggleComponent],
-  exports: [LabeledSideToggleComponent]
+  declarations: [LabeledSlideToggleComponent],
+  exports: [LabeledSlideToggleComponent]
 })
-export class LabeledSideToggleModule { }
+export class LabeledSlideToggleModule { }

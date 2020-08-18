@@ -1,15 +1,17 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/core';
 
 /**
  * Generic toggle slider component
  */
 @Component({
-  selector: 'ccf-labeled-side-toggle',
-  templateUrl: './labeled-side-toggle.component.html',
-  styleUrls: ['./labeled-side-toggle.component.scss']
+  selector: 'ccf-labeled-slide-toggle',
+  templateUrl: './labeled-slide-toggle.component.html',
+  styleUrls: ['./labeled-slide-toggle.component.scss']
 })
 
-export class LabeledSideToggleComponent {
+export class LabeledSlideToggleComponent {
+
+  @HostBinding('class') readonly clsName = 'ccf-labeled-slide-toggle';
 
   /**
    * Whether or not the slider is disabled

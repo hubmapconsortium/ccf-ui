@@ -1,13 +1,13 @@
 import { Shallow } from 'shallow-render';
 
-import { LabeledSideToggleComponent } from './labeled-side-toggle.component';
-import { LabeledSideToggleModule } from './labeled-side-toggle.module';
+import { LabeledSlideToggleComponent } from './labeled-slide-toggle.component';
+import { LabeledSlideToggleModule } from './labeled-slide-toggle.module';
 
-describe('LabeledSideToggleComponent', () => {
-  let shallow: Shallow<LabeledSideToggleComponent>;
+describe('LabeledSlideToggleComponent', () => {
+  let shallow: Shallow<LabeledSlideToggleComponent>;
 
   beforeEach(() => {
-    shallow = new Shallow(LabeledSideToggleComponent, LabeledSideToggleModule);
+    shallow = new Shallow(LabeledSlideToggleComponent, LabeledSlideToggleModule);
   });
 
   it('should emit the first label option whenever updateToggle is called with true.', async () => {
