@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 /**
  * Reusable component that takes an array of strings and renders
@@ -10,6 +10,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./details-label.component.scss']
 })
 export class DetailsLabelComponent {
+  /** HTML Class Name */
+  @HostBinding('class') readonly clsName = 'ccf-details-label';
+
   /**
    * The array of details to be displayed.
    */

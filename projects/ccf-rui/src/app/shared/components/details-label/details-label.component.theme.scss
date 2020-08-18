@@ -3,7 +3,7 @@
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
 
-  .label-container {
+  .ccf-details-label {
     color: mat-color($foreground, icon);
   }
 }

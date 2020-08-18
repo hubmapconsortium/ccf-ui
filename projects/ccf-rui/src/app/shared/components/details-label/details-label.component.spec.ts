@@ -24,12 +24,7 @@ describe('DetailsLabelComponent', () => {
 
     const result = instance.arrayToString(details);
     const commaSearch = result.match(/,/g);
-    let commaCount  = 0;
-
-    expect(commaSearch).not.toBeNull();
-    if (commaSearch !== null) {
-      commaCount = commaSearch.length;
-    }
+    const commaCount = commaSearch?.length;
 
     expect(commaCount).toEqual(2);
   });
