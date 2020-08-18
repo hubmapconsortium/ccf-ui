@@ -1,7 +1,6 @@
 @use '~@angular/material/theming' as *;
 @use '../../app/modules/header/header.component.theme' as header;
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
-@use '../../app/modules/content/stage-nav/stage-nav.component.theme' as stageNav;
 @use '../../app/modules/right-sidebar/right-sidebar.component.theme.scss' as rightSidebar;
 @use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
 @use '../../app/shared/components/slices-input/slices-input.component.theme.scss' as slicesInput;
@@ -24,8 +23,6 @@
 
   @include header.theme($theme);
   @include drawer.theme($theme);
-
-  @include stageNav.theme($theme);
 
   @include rightSidebar.theme($theme);
   @include blockSizeInput.theme($theme);

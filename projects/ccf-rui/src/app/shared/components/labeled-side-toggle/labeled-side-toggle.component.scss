@@ -1,13 +1,5 @@
 :host{
-  .organ-sliders {
-    display: flex;
-    height: 3rem;
-    align-items: center;
-
-    .side-toggle {
-      margin-right: 1rem;
-    }
-    
+  .ccf-labeled-slide-toggle {
     .slide-label {
       margin: 0 1rem;
     }

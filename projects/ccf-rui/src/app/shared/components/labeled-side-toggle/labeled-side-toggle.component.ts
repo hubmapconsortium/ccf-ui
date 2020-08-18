@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 /**
- * Component containing the gender and slide sliders
+ * Generic toggle slider component
  */
 @Component({
   selector: 'ccf-labeled-side-toggle',
@@ -12,51 +12,39 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class LabeledSideToggleComponent {
 
   /**
-   * Disables the gender silder if not applicable to currently selected organ
+   * Whether or not the slider is disabled
    */
-  @Input() genderDisabled = false;
+  @Input() slideDisabled = false;
 
   /**
-   * Disables the side silder if not applicable to currently selected organ
+   * The category of data selected
    */
-  @Input() sideDisabled = false;
+  @Input() dataType: string;
 
   /**
-   * Input to determine if 'Male' is selected
+   * The two selection options to be toggled
    */
-  @Input() isMale = true;
+  @Input() labels: string[];
 
   /**
-   * Input to determine if 'L' is selected
+   * Determines if left toggle option is selected
    */
-  @Input() left = true;
+  left = true;
 
   /**
-   * Emits the currently selected gender
+   * Emits the datatype with the currently selected option
    */
-  @Output() genderChanged = new EventEmitter<string>();
+  @Output() toggleChanged = new EventEmitter<{}>();
 
   /**
-   * Emits the currently selected side
+   * Updates and emits the currently selected option
+   * @param selection The current toggle state (true=left, false=right)
    */
-  @Output() sideChanged = new EventEmitter<string>();
-
-  /**
-   * Updates and emits the currently selected gender
-   * @param selection The current toggle state
-   */
-  updateGender(selection: boolean): void {
-    this.isMale = !selection;
-    this.genderChanged.emit(this.isMale ? 'male' : 'female');
+  updateToggle(selection: boolean): void {
+    this.left = selection;
+    this.toggleChanged.emit({
+      dataType: this.dataType,
+      value: selection ? this.labels[0] : this.labels[1]
+    });
   }
-
-  /**
-   * Updates and emits the currently selected side
-   * @param selection The current toggle state
-   */
-  updateSide(selection: boolean): void {
-    this.left = !selection;
-    this.sideChanged.emit(this.left ? 'left' : 'right');
-  }
-
 }
