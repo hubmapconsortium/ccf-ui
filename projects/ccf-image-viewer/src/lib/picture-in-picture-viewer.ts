@@ -1,4 +1,4 @@
-import { DetailView, OverviewView, OverviewViewNewArgs, VivView } from '@hubmap/vitessce-image-viewer';
+import { DetailView, OverviewView, OverviewViewNewArgs, VivView } from '@hms-dbmi/viv';
 
 import { ImageViewer, ImageViewerProps, LayerConfig } from './image-viewer';
 
