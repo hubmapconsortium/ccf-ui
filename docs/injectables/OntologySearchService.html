@@ -1,0 +1,1035 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>OntologySearchService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Injectable OntologySearchService responsible for search result computations</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#rootNode">rootNode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filter">filter</a>
+                            </li>
+                            <li>
+                                <a href="#formatLabel">formatLabel</a>
+                            </li>
+                            <li>
+                                <a href="#getChildren">getChildren</a>
+                            </li>
+                            <li>
+                                <a href="#getIndexOfMatch">getIndexOfMatch</a>
+                            </li>
+                            <li>
+                                <a href="#loadOntology">loadOntology</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#lookup">lookup</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, store: Store, ontologyState: <a href="../injectables/OntologyState.html">OntologyState</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:107</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ontology search service.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The http requests service.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The global data store.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>ontologyState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OntologyState.html" target="_self" >OntologyState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The global ontology state.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filter"></a>
+                    <span class="name">
+                        <b>
+                            filter
+                        </b>
+                        <a href="#filter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filter(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:142</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Searches the ontology with the search-term</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the search term</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SearchResult.html" target="_self" >Observable&lt;SearchResult[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>an array of search-results</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatLabel"></a>
+                    <span class="name">
+                        <b>
+                            formatLabel
+                        </b>
+                        <a href="#formatLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatLabel(label: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, searchValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="200"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:200</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formats label based on where the search-term was found in the OntologyNode</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>label</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>label or first synonym-label of OntologyNode which has the search-term</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>searchValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>search-term</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>string[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>an array in the form of [prefix, search-term, suffix]</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getChildren"></a>
+                    <span class="name">
+                        <b>
+                            getChildren
+                        </b>
+                        <a href="#getChildren"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getChildren(node: <a href="../interfaces/OntologyNode.html">OntologyNode</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="216"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:216</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fetches the children of an ontology node.
+Note: This can be called without a reference to <code>this</code>.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+                                    <td>
+                                                <code><a href="../interfaces/OntologyNode.html" target="_self" >OntologyNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The node for which to get children.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/OntologyNode.html" target="_self" >OntologyNode[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An array of children, empty if the node has no children.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getIndexOfMatch"></a>
+                    <span class="name">
+                        <b>
+                            getIndexOfMatch
+                        </b>
+                        <a href="#getIndexOfMatch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getIndexOfMatch(label: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, searchValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="190"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:190</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets index of match in the ontology label</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>label</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the provided ontology node label or synonym label</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>searchValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the searched text in lower case</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>the index of the match in the label</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadOntology"></a>
+                    <span class="name">
+                        <b>
+                            loadOntology
+                        </b>
+                        <a href="#loadOntology"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadOntology()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:124</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Loads ontology.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lookup"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            lookup
+                        </b>
+                        <a href="#lookup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>lookup(nodes: <a href="../interfaces/OntologyNode.html">Immutable<OntologyNode>[]</a>, searchValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="154"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:154</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>looks up ontology nodes and composes search results</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>nodes</td>
+                                    <td>
+                                                <code><a href="../interfaces/OntologyNode.html" target="_self" >Immutable&lt;OntologyNode&gt;[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Ontology nodes</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>searchValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>search text in lower case</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SearchResult.html" target="_self" >SearchResult[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>search results</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rootNode"></a>
+                        <span class="name">
+                            <b>
+                            rootNode</b>
+                            <a href="#rootNode"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/OntologyNode.html" target="_self" >Observable&lt;Immutable&lt;OntologyNode&gt;&gt;</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:107</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Root node in ontology. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { Immutable } from &#x27;@ngxs-labs/data/typings&#x27;;
+import { Store } from &#x27;@ngxs/store&#x27;;
+import { at, find, forEach, keyBy, map as loMap, partial } from &#x27;lodash&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { map, tap } from &#x27;rxjs/operators&#x27;;
+
+import { environment } from &#x27;../../../../environments/environment&#x27;;
+import { JsonOntologyNode, jsonToOntologyNode } from &#x27;../../models/json-ontology&#x27;;
+import { OntologyNode } from &#x27;../../models/ontology-node&#x27;;
+import { OntologyState, OntologyStateModel } from &#x27;../../store/ontology/ontology.state&#x27;;
+
+
+/**
+ * Search result interface type for the search results
+ */
+export interface SearchResult {
+  /** ensures order of search-results */
+  index: number;
+
+  /** label to be displayed in the view */
+  displayLabel: string[];
+
+  /**  instance of OntologyNode, provides data associated with a search result */
+  node: OntologyNode;
+}
+
+/** Type of function for getting child nodes from a parent node. */
+export type GetChildrenFunc &#x3D; (o: OntologyNode) &#x3D;&gt; OntologyNode[];
+
+/**
+ * Links all nodes to their parents.
+ *
+ * @param nodeMap The hash table of nodes.
+ */
+export function linkChildren(nodeMap: { [id: string]: OntologyNode }): void {
+  // Add temporary fake node to simplify logic as root won&#x27;t need a special case
+  // This is also used later to find the root node
+  nodeMap[&#x27;&#x27;] &#x3D; { parent: &#x27;&#x27;, children: [] } as unknown as OntologyNode;
+  forEach(nodeMap, ({ id, parent }) &#x3D;&gt; nodeMap[parent].children.push(id));
+}
+
+/**
+ * Creates an ontology state.
+ *
+ * @param nodeMap The node hash table.
+ * @returns The ontology state model.
+ */
+export function createModel(nodeMap: { [id: string]: OntologyNode }): OntologyStateModel {
+  const root &#x3D; find(nodeMap[&#x27;&#x27;].children) as string;
+
+  // Remove fake node inserted in linkChildren
+  delete nodeMap[&#x27;&#x27;];
+
+  return { root, nodes: nodeMap };
+}
+
+/**
+ * Creates a new tree with only the specified organs and their subtrees.
+ *
+ * @param model The full ontology tree.
+ * @param organIds The identifiers of the organs to keep.
+ * @returns A new ontology tree.
+ */
+function pruneModel(model: OntologyStateModel, organIds: string[]): OntologyStateModel {
+  const body: OntologyNode &#x3D; {
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0013702&#x27;,
+    label: &#x27;body&#x27;,
+    parent: &#x27;&#x27;,
+    children: organIds,
+    synonymLabels: []
+  };
+  const organNodes &#x3D; at(model.nodes, organIds);
+  const prunedNodes &#x3D; { [body.id]: body };
+
+  forEach(organNodes, node &#x3D;&gt; node.parent &#x3D; body.id);
+  forEach(organNodes, node &#x3D;&gt; addSubtree(model.nodes, prunedNodes, node));
+
+  return { root: body.id, nodes: prunedNodes };
+}
+
+/**
+ * Adds all subtree nodes to an accumulator object.
+ *
+ * @param nodes The original tree of nodes.
+ * @param acc The accumulated tree of nodes.
+ * @param current The node whose subtree should be added.
+ */
+export function addSubtree(
+  nodes: { [id: string]: OntologyNode },
+  acc: { [id: string]: OntologyNode },
+  current: OntologyNode
+): void {
+  acc[current.id] &#x3D; current;
+  forEach(current.children, id &#x3D;&gt; addSubtree(nodes, acc, nodes[id]));
+}
+
+/**
+ * Injectable OntologySearchService responsible for search result computations
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class OntologySearchService {
+  /** Root node in ontology. */
+  rootNode: Observable&lt;Immutable&lt;OntologyNode&gt;&gt;;
+
+  /**
+   * Creates an instance of ontology search service.
+   *
+   * @param http The http requests service.
+   * @param store The global data store.
+   * @param ontologyState The global ontology state.
+   */
+  constructor(private http: HttpClient, private store: Store, private ontologyState: OntologyState) {
+    this.rootNode &#x3D; this.ontologyState.rootNode$;
+    this.getChildren &#x3D; this.getChildren.bind(this) as GetChildrenFunc;
+  }
+
+  /**
+   * Loads ontology.
+   */
+  loadOntology(): void {
+    const jsonOntology &#x3D; this.http.get&lt;JsonOntologyNode[]&gt;(environment.ontologyUrl, { responseType: &#x27;json&#x27; });
+    const model &#x3D; jsonOntology.pipe(
+      map(ontology &#x3D;&gt; loMap(ontology, jsonToOntologyNode)),
+      map(nodes &#x3D;&gt; keyBy(nodes, &#x27;id&#x27;)),
+      tap(linkChildren),
+      map(createModel),
+      map(partial(pruneModel, partial.placeholder, environment.organNodes))
+    );
+
+    model.subscribe(ontology &#x3D;&gt; this.ontologyState.setOntology(ontology));
+  }
+
+  /**
+   * Searches the ontology with the search-term
+   * @param value the search term
+   * @returns an array of search-results
+   */
+  filter(value: string): Observable&lt;SearchResult[]&gt; {
+    return this.ontologyState.nodes$.pipe(
+      map(nodes &#x3D;&gt; this.lookup(nodes, value.toLowerCase()))
+    );
+  }
+
+  /**
+   * looks up ontology nodes and composes search results
+   * @param nodes Ontology nodes
+   * @param searchValue search text in lower case
+   * @returns search results
+   */
+  private lookup(nodes: Immutable&lt;OntologyNode&gt;[], searchValue: string): SearchResult[] {
+    const searchResults &#x3D; new Map&lt;string, SearchResult&gt;();
+
+    if (nodes) {
+      nodes.forEach((node: OntologyNode) &#x3D;&gt; {
+        const condition &#x3D; node.label.toLowerCase().includes(searchValue);
+
+        if (condition &amp;&amp; !searchResults.get(node.id)) {
+          searchResults.set(node.id, {
+            index: this.getIndexOfMatch(node.label, searchValue),
+            displayLabel: this.formatLabel(node.label, searchValue),
+            node
+          });
+        } else {
+          const match &#x3D; node.synonymLabels.find((label) &#x3D;&gt; label.toLowerCase().includes(searchValue));
+
+          if (match &amp;&amp; !searchResults.get(node.id)) {
+            searchResults.set(node.id, {
+              index: this.getIndexOfMatch(node.label + &#x27; (&#x27; + match + &#x27;)&#x27;, searchValue),
+              displayLabel: this.formatLabel(node.label + &#x27; (&#x27; + match + &#x27;)&#x27;, searchValue),
+              node
+            });
+          }
+        }
+      });
+    }
+
+    return Array.from(searchResults.values());
+  }
+
+  /**
+   * Gets index of match in the ontology label
+   * @param label the provided ontology node label or synonym label
+   * @param searchValue the searched text in lower case
+   * @returns the index of the match in the label
+   */
+  getIndexOfMatch(label: string, searchValue: string): number {
+    return label.toLowerCase().indexOf(searchValue);
+  }
+
+  /**
+   * Formats label based on where the search-term was found in the OntologyNode
+   * @param label label or first synonym-label of OntologyNode which has the search-term
+   * @param searchValue search-term
+   * @returns an array in the form of [prefix, search-term, suffix]
+   */
+  formatLabel(label: string, searchValue: string): string[] {
+    const index &#x3D; this.getIndexOfMatch(label, searchValue);
+    return [
+      label.substr(0, index),
+      label.substr(index, searchValue.length),
+      label.substr(index + searchValue.length, label.length)
+    ];
+  }
+
+  /**
+   * Fetches the children of an ontology node.
+   * Note: This can be called without a reference to &#x60;this&#x60;.
+   *
+   * @param node The node for which to get children.
+   * @returns An array of children, empty if the node has no children.
+   */
+  getChildren(node: OntologyNode): OntologyNode[] {
+    const { nodes } &#x3D; this.store.selectSnapshot&lt;OntologyStateModel&gt;(OntologyState);
+    return at(nodes, node.children);
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'OntologySearchService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
