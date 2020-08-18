@@ -51,8 +51,8 @@ export class SlicesInputComponent {
    * @param key Name of the dimension to be updated
    */
   updateSlicesData(input: InputEvent, key: string): void {
-    const inputTarget = input.target as HTMLInputElement;
-    this.slicesConfig = { ...this.slicesConfig, [key]: +inputTarget.value };
+    const { value: strValue } = input.target as HTMLInputElement;
+    this.slicesConfig = { ...this.slicesConfig, [key]: strValue !== '' ? +strValue : NaN };
     this.slicesConfigChange.emit(this.slicesConfig);
   }
 
