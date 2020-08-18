@@ -7,6 +7,7 @@
 @use '../../app/shared/components/rotation-slider/rotation-slider.component.theme.scss' as rotationSlider;
 @use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organSelector;
 @use '../../app/shared/components/labeled-slide-toggle/labeled-slide-toggle.component.theme' as slideToggle;
+@use '../../app/shared/components/details-label/details-label.component.theme' as detailsLabel;
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
@@ -31,6 +32,7 @@
 
   @include organSelector.theme($theme);
   @include slideToggle.theme($theme);
+  @include detailsLabel.theme($theme);
 
   // Overrides goes here!
 }
