@@ -1,0 +1,8 @@
+<div *ngFor="let state of data" class="state">
+  <div>{{ state[0] }}</div>
+  <ul class="kvlist">
+    <li *ngFor="let kv of state[1]" class="kvpair">
+      {{ kv[0] }}: {{ kv[1] | json }}
+    </li>
+  </ul>
+</div>
