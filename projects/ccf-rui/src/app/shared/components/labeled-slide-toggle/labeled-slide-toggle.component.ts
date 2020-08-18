@@ -19,12 +19,15 @@ export class LabeledSlideToggleComponent {
   /**
    * Input value for toggle slider
    */
-  // tslint:disable: no-unsafe-any
-  @Input() set value(label: string) {
-    this.left = !this.labels || label !== this.labels[1];
+  @Input() value: string;
+
+  /**
+   * Determines if left toggle option is selected
+   */
+  get left(): boolean {
+    const { value, labels } = this;
+    return labels ? value !== labels[1] : true;
   }
-  get value(): string { return this._value; }
-  private _value: string;
 
   /**
    * Whether or not the slider is disabled
@@ -34,12 +37,7 @@ export class LabeledSlideToggleComponent {
   /**
    * The two selection options to be toggled
    */
-  @Input() labels: [string, string];
-
-  /**
-   * Determines if left toggle option is selected
-   */
-  left = true;
+  @Input() labels: [string, string] = ['', ''];
 
   /**
    * Emits the datatype with the currently selected option
@@ -51,7 +49,7 @@ export class LabeledSlideToggleComponent {
    * @param selection The current toggle state (true=left, false=right)
    */
   updateToggle(selection: boolean): void {
-    this.left = selection;
+    this.value = selection ? this.labels[0] : this.labels[1]
     this.valueChange.emit(selection ? this.labels[0] : this.labels[1]);
   }
 }
