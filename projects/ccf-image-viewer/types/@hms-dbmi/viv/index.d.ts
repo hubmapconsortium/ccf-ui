@@ -2,7 +2,7 @@
  * This file contains minimal (incomplete) typings for vitessce-image-viewer.
  */
 
-declare module "@hubmap/vitessce-image-viewer" {
+declare module "@hms-dbmi/viv" {
   import { Layer, View } from '@deck.gl/core';
 
   // Loaders
