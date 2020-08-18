@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, HostBinding } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 
 /** Type in which the values of the sliders are stored. */
@@ -10,6 +10,13 @@ export interface Rotation {
   /** Z slider value */
   z: number;
 }
+
+/** Default values for rotation. */
+const DEFAULT_ROTATION: Rotation = {
+  x: 0,
+  y: 0,
+  z: 0
+};
 
 /**
  * Component that enables the setting of a Rotation object via either 3 draggable sliders
@@ -27,7 +34,7 @@ export class RotationSliderComponent {
   /**
    * Input that allows the rotation to be changed from outside of the component
    */
-  @Input() rotation: Rotation = { x: 0, y: 0, z: 0 };
+  @Input() rotation = DEFAULT_ROTATION;
 
   /**
    * Output that emits the new rotation whenever it is changed from within the component
@@ -48,7 +55,7 @@ export class RotationSliderComponent {
    * Function to easily reset the rotations to 0 and emit this change.
    */
   resetRotation(): void {
-    this.rotation = { x: 0, y: 0, z: 0 };
+    this.rotation = DEFAULT_ROTATION;
     this.rotationChange.emit(this.rotation);
   }
 }
