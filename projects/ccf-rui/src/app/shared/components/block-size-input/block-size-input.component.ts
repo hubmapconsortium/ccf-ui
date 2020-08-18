@@ -1,10 +1,10 @@
-import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 
 /**
  * Interface for objects containing tissue block dimensions
  */
-export interface BlockSizes {
+export interface BlockSize {
   /** Width of block */
   x: number;
   /** Height of block */
@@ -13,7 +13,8 @@ export interface BlockSizes {
   z: number;
 }
 
-const DEFAULT_BLOCK_SIZES: BlockSizes = {
+/** Defaults for block sizes. */
+const DEFAULT_BLOCK_SIZE: BlockSize = {
   x: 10,
   y: 10,
   z: 10
@@ -34,12 +35,12 @@ export class BlockSizeInputComponent {
   /**
    * Values of block dimensions to be emitted
    */
-  blockSizes: BlockSizes = DEFAULT_BLOCK_SIZES;
+  @Input() blockSize = DEFAULT_BLOCK_SIZE;
 
   /**
    * Emitter for values
    */
-  @Output() readonly valuesChange = new EventEmitter<BlockSizes>();
+  @Output() readonly blockSizeChange = new EventEmitter<BlockSize>();
 
   /**
    * Updates values when an input changes
@@ -48,15 +49,15 @@ export class BlockSizeInputComponent {
    */
   updateBlockSizes(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
-    this.blockSizes = { ...this.blockSizes, [key]: +inputTarget.value };
-    this.valuesChange.emit(this.blockSizes);
+    this.blockSize = { ...this.blockSize, [key]: +inputTarget.value };
+    this.blockSizeChange.emit(this.blockSize);
   }
 
   /**
    * Refreshes all block size values to 10
    */
   refreshBlockSize(): void {
-    this.blockSizes = DEFAULT_BLOCK_SIZES;
-    this.valuesChange.emit(this.blockSizes);
+    this.blockSize = DEFAULT_BLOCK_SIZE;
+    this.blockSizeChange.emit(this.blockSize);
   }
 }
