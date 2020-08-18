@@ -11,22 +11,30 @@ import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/co
 
 export class LabeledSlideToggleComponent {
 
+  /**
+   * HTML class name
+   */
   @HostBinding('class') readonly clsName = 'ccf-labeled-slide-toggle';
+
+  /**
+   * Input value for toggle slider
+   */
+  // tslint:disable: no-unsafe-any
+  @Input() set value(label: string) {
+    this.left = !this.labels || label !== this.labels[1];
+  }
+  get value(): string { return this._value; }
+  private _value: string;
 
   /**
    * Whether or not the slider is disabled
    */
-  @Input() slideDisabled = false;
-
-  /**
-   * The category of data selected
-   */
-  @Input() dataType: string;
+  @Input() disabled = false;
 
   /**
    * The two selection options to be toggled
    */
-  @Input() labels: string[];
+  @Input() labels: [string, string];
 
   /**
    * Determines if left toggle option is selected
@@ -36,7 +44,7 @@ export class LabeledSlideToggleComponent {
   /**
    * Emits the datatype with the currently selected option
    */
-  @Output() toggleChanged = new EventEmitter<{}>();
+  @Output() valueChange = new EventEmitter<string>();
 
   /**
    * Updates and emits the currently selected option
@@ -44,9 +52,6 @@ export class LabeledSlideToggleComponent {
    */
   updateToggle(selection: boolean): void {
     this.left = selection;
-    this.toggleChanged.emit({
-      dataType: this.dataType,
-      value: selection ? this.labels[0] : this.labels[1]
-    });
+    this.valueChange.emit(selection ? this.labels[0] : this.labels[1]);
   }
 }
