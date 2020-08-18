@@ -8,6 +8,7 @@
 @use '../../app/shared/components/gender-selector/gender-selector.component.theme.scss' as genderSelector;
 @use '../../app/shared/components/rotation-slider/rotation-slider.component.theme.scss' as rotationSlider;
 @use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organ-selector;
+@use '../../app/modules/content/stage-nav/stage-nav.component.theme' as stageNav;
 
 
 @mixin ccf-theme($theme) {
@@ -25,6 +26,8 @@
 
   @include header.theme($theme);
   @include drawer.theme($theme);
+
+  @include stageNav.theme($theme);
 
   @include rightSidebar.theme($theme);
   @include blockSizeInput.theme($theme);

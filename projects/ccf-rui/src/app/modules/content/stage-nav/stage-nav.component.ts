@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, HostBinding } from '@angular/core';
 
 
 /** Valid values for side. */
@@ -13,6 +13,9 @@ export type Side = 'left' | 'right' | 'anterior' | 'posterior';
   styleUrls: ['./stage-nav.component.scss']
 })
 export class StageNavComponent {
+
+  @HostBinding('class') readonly clsName = 'ccf-stage-nav';
+
   /**
    * Input that allows changing the current side from outside the component
    */

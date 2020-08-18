@@ -1,4 +1,4 @@
-.nav-container {
+:host {
   height: 4.5rem;
   margin-right: 1.5rem;
   padding-left: 1.5rem;
@@ -21,8 +21,4 @@
       margin-right: 0.75rem;
     }
   }
-}
-
-.highlighted {
-  color: #3542b8;
 }
