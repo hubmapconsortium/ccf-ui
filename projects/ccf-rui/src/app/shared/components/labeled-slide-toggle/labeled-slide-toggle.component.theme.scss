@@ -1,0 +1,18 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $accent: map-get($theme, accent);
+
+  .ccf-labeled-slide-toggle {
+    .mat-slide-toggle-bar {
+      background-color: mat-color($accent, 0.54);
+    }
+    .mat-slide-toggle-thumb {
+      background-color: mat-color($accent);
+    }
+    .highlighted {
+      color: mat-color($accent);
+    }
+  }
+}
