@@ -8,6 +8,8 @@
 @use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organSelector;
 @use '../../app/shared/components/labeled-slide-toggle/labeled-slide-toggle.component.theme' as slideToggle;
 @use '../../app/shared/components/details-label/details-label.component.theme' as detailsLabel;
+@use '../../app/modules/info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
+@use '../../app/modules/info/info-button/info-button.component.theme.scss' as infoButton;
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
@@ -33,6 +35,8 @@
   @include organSelector.theme($theme);
   @include slideToggle.theme($theme);
   @include detailsLabel.theme($theme);
+  @include infoDialog.theme($theme);
+  @include infoButton.theme($theme);
 
   // Overrides goes here!
 }
