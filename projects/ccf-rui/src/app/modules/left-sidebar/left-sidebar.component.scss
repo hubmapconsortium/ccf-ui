@@ -19,4 +19,17 @@
   *:first-child {
     margin-top: 1.5rem;
   }
+
+  .organ-sliders {
+    display: flex;
+    height: 3rem;
+    align-items: center;
+
+    .toggle {
+      margin-top: 0;
+      margin-left: 0;
+    }
+  }
 }
+
+

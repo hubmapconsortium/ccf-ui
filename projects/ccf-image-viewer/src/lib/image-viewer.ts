@@ -1,5 +1,5 @@
 import { Deck, Layer, View, Viewport } from '@deck.gl/core';
-import { Loader, VivView } from '@hubmap/vitessce-image-viewer';
+import { Loader, VivView } from '@hms-dbmi/viv';
 import { bind } from 'bind-decorator';
 
 import { createLoader, LoaderType, OMEZarrInfo, TiffInfo, ZarrInfo } from './loader';

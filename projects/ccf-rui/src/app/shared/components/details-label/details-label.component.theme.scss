@@ -1,0 +1,9 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  .ccf-details-label {
+    color: mat-color($foreground, icon);
+  }
+}

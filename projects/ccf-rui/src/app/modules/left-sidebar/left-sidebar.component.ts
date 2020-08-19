@@ -10,4 +10,6 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 export class LeftSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
+
+  detailsLabels: string[] = ['heart', 'front', 'female'];
 }

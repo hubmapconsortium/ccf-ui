@@ -1,4 +1,4 @@
-import { Loader, createZarrLoader, OMEZarrReader, createOMETiffLoader } from '@hubmap/vitessce-image-viewer';
+import { Loader, createZarrLoader, OMEZarrReader, createOMETiffLoader } from '@hms-dbmi/viv';
 
 export enum LoaderType {
   Zarr = 'zarr',
