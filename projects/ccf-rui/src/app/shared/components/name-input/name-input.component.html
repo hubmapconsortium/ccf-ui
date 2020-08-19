@@ -1,1 +1,11 @@
-<p>name-input works!</p>
+<mat-form-field class="field">
+  <mat-label class="text label">First Name</mat-label>
+  <input matInput class="input" [value]="userName.firstName"
+         (input)="updateName($event, 'firstName')">
+</mat-form-field>
+
+<mat-form-field class="field">
+  <mat-label class="text label">Second Name</mat-label>
+  <input matInput class="input" [value]="userName.lastName"
+         (input)="updateName($event, 'lastName')">
+</mat-form-field>
