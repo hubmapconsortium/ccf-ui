@@ -13,7 +13,8 @@ $primary-colors: utility.add-colors($mat-gray, (
     "black": white,
     light-header: $dark-primary-text,
     light-disabled: $dark-primary-text,
-  )
+  ),
+
 ));
 
 $primary: mat-palette($primary-colors, $text: 900);

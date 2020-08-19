@@ -1,0 +1,4 @@
+<span class="slide-label" [class.highlighted]="left">{{labels[0]}}</span>
+<mat-slide-toggle [disabled]="disabled" (change)="updateToggle($event.checked)" class="slider"></mat-slide-toggle>
+<span class="slide-label" [class.highlighted]="!left">{{labels[1]}}</span>
+

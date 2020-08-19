@@ -4,12 +4,11 @@
 @use '../../app/modules/right-sidebar/right-sidebar.component.theme.scss' as rightSidebar;
 @use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
 @use '../../app/shared/components/slices-input/slices-input.component.theme.scss' as slicesInput;
-@use '../../app/shared/components/side-selector/side-selector.component.theme.scss' as sideSelector;
-@use '../../app/shared/components/gender-selector/gender-selector.component.theme.scss' as genderSelector;
 @use '../../app/shared/components/rotation-slider/rotation-slider.component.theme.scss' as rotationSlider;
-@use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organ-selector;
 @use '../../app/modules/content/stage-nav/stage-nav.component.theme' as stageNav;
-
+@use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organSelector;
+@use '../../app/shared/components/labeled-slide-toggle/labeled-slide-toggle.component.theme' as slideToggle;
+@use '../../app/shared/components/details-label/details-label.component.theme' as detailsLabel;
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
@@ -32,10 +31,11 @@
   @include rightSidebar.theme($theme);
   @include blockSizeInput.theme($theme);
   @include slicesInput.theme($theme);
-  @include sideSelector.theme($theme);
-  @include genderSelector.theme($theme);
   @include rotationSlider.theme($theme);
 
-  @include organ-selector.theme($theme);
+  @include organSelector.theme($theme);
+  @include slideToggle.theme($theme);
+  @include detailsLabel.theme($theme);
+
   // Overrides goes here!
 }
