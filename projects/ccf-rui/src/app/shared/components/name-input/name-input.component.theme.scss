@@ -1,0 +1,10 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $accent: map-get($theme, accent);
+
+  .ccf-name-input {
+    
+  }
+}
