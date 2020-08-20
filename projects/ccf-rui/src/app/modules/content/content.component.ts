@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 
 
 @Component({
@@ -8,5 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentComponent {
-  constructor() { }
+  /** HTML class name */
+  @HostBinding('class') readonly clsName = 'ccf-content';
 }

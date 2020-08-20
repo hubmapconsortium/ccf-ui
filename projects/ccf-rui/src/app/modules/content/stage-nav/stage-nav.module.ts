@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { LabeledSlideToggleModule } from '../../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
 
 import { StageNavComponent } from './stage-nav.component';
 
 
 @NgModule({
-  imports: [CommonModule, MatRadioModule, MatSlideToggleModule],
+  imports: [CommonModule, MatRadioModule, LabeledSlideToggleModule],
   declarations: [StageNavComponent],
   exports: [StageNavComponent]
 })

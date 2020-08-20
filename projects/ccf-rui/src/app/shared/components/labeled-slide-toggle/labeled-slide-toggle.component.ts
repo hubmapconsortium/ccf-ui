@@ -49,7 +49,7 @@ export class LabeledSlideToggleComponent {
    * @param selection The current toggle state (true=left, false=right)
    */
   updateToggle(selection: boolean): void {
-    this.value = selection ? this.labels[0] : this.labels[1];
+    this.value = selection ? this.labels[1] : this.labels[0];
     this.valueChange.emit(selection ? this.labels[0] : this.labels[1]);
   }
 }

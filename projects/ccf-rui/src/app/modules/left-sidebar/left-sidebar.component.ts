@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+
 
 @Component({
   selector: 'ccf-left-sidebar',
@@ -7,5 +8,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LeftSidebarComponent {
+  /** HTML class name */
+  @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
+
   detailsLabels: string[] = ['heart', 'front', 'female'];
 }

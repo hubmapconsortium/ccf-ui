@@ -7,14 +7,14 @@
 <div class="slices-inputs">
   <mat-form-field class="field">
     <mat-label class="text label">Thickness</mat-label>
-    <input matInput class="input" type="number" [value]="slicesData.thickness"
+    <input matInput class="input" type="number" [value]="slicesConfig.thickness"
            (input)="updateSlicesData($event, 'thickness')">
     <div matSuffix class="suffix" [class.show]="hasThicknessValue">μm</div>
   </mat-form-field>
 
   <mat-form-field class="field">
     <mat-label class="text label"># Slices</mat-label>
-    <input matInput class="input" type="number" [value]="slicesData.numSlices"
+    <input matInput class="input" type="number" [value]="slicesConfig.numSlices"
            (input)="updateSlicesData($event, 'numSlices')">
   </mat-form-field>
 </div>

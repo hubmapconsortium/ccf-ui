@@ -1,28 +1,15 @@
-.nav-container {
+:host {
   height: 4.5rem;
   margin-right: 1.5rem;
   padding-left: 1.5rem;
   display: flex;
   align-items: center;
 
-  .input-group {
-    height: 1.5rem;
-
-    .nav-input {
-      margin-right: 1.5rem;
-    }
+  .input-group .nav-input {
+    margin-right: 1.5rem;
   }
 
-  .slider-container {
+  .view-slider {
     padding-bottom: 1.8rem;
-
-    .view-slider {
-      margin-left: 0.75rem;
-      margin-right: 0.75rem;
-    }
   }
-}
-
-.highlighted {
-  color: #3542b8;
 }
