@@ -8,5 +8,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentComponent {
-  constructor() { }
+  resetStage(): void {
+    // Registration block return to starting position
+    // The crosshairs return to start position
+    // the x, y, z info abouve the gizo goes back to zero
+  }
 }
