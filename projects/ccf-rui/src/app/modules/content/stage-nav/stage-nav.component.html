@@ -1,15 +1,13 @@
-<div class="nav-container">
-  <mat-radio-group class="input-group" (change)="updateSide($event.value)">
-    <mat-radio-button value="left" class="nav-input">Left</mat-radio-button>
-    <mat-radio-button value="right" class="nav-input">Right</mat-radio-button>
-    <mat-radio-button value="anterior" class="nav-input" checked>Anterior</mat-radio-button>
-    <mat-radio-button value="posterior" class="nav-input">Posterior</mat-radio-button>
-  </mat-radio-group>
+<mat-radio-group class="input-group" (change)="updateSide($event.value)">
+  <mat-radio-button value="left" class="nav-input">Left</mat-radio-button>
+  <mat-radio-button value="right" class="nav-input">Right</mat-radio-button>
+  <mat-radio-button value="anterior" class="nav-input" checked>Anterior</mat-radio-button>
+  <mat-radio-button value="posterior" class="nav-input">Posterior</mat-radio-button>
+</mat-radio-group>
 
-  <div class="input-group slider-container">
-    <span class="slide-label" [class.highlighted]="!view3D">Register</span>
-    <mat-slide-toggle (change)="updateView($event.checked)" class="view-slider">
-    </mat-slide-toggle>
-    <span class="slide-label" [class.highlighted]="!!view3D">3D Preview</span>
-  </div>
+<div class="input-group slider-container">
+  <span class="slide-label" [class.highlighted]="!view3D">Register</span>
+  <mat-slide-toggle (change)="updateView($event.checked)" class="view-slider">
+  </mat-slide-toggle>
+  <span class="slide-label" [class.highlighted]="!!view3D">3D Preview</span>
 </div>
