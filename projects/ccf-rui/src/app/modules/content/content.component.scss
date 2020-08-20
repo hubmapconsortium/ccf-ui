@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+
+  // Temporary for displaying dev information
+  .ccf-store-debug {
+    margin-top: 2rem;
+    color: white;
+  }
+}

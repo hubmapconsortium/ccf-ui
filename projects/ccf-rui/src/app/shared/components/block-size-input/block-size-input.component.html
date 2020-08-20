@@ -7,19 +7,19 @@
 <div class="size-inputs">
   <mat-form-field class="field" floatLabel="always">
     <mat-label class="text label">Width (X)</mat-label>
-    <input matInput class="input" type="number" placeholder="" [value]="blockSizes.x"
+    <input matInput class="input" type="number" placeholder="" [value]="blockSize.x"
            (input)="updateBlockSizes($event, 'x')">
   </mat-form-field>
 
   <mat-form-field class="field" floatLabel="always">
     <mat-label class="text label">Height (Y)</mat-label>
-    <input matInput class="input" type="number" placeholder="" [value]="blockSizes.y"
+    <input matInput class="input" type="number" placeholder="" [value]="blockSize.y"
            (input)="updateBlockSizes($event, 'y')">
   </mat-form-field>
 
   <mat-form-field class="field" floatLabel="always">
     <mat-label class="text label">Depth (Z)</mat-label>
-    <input matInput class="input" type="number" placeholder="" [value]="blockSizes.z"
+    <input matInput class="input" type="number" placeholder="" [value]="blockSize.z"
            (input)="updateBlockSizes($event, 'z')">
   </mat-form-field>
 </div>

@@ -23,7 +23,9 @@ $warn: mat-palette($mat-red);
 
 $foreground: map-merge($mat-light-theme-foreground, (
   active-icon: map-get($mat-blue, 700),
-  disabled: map-get($primary-colors, light-disabled), //#E0E0E0
+  contrast-icon: map-get($primary-colors, 500), // #9E9E9E (icons on light background)
+  contrast-text: map-get($primary-colors, 500), // #9E9E9E (text on dark background)
+  disabled: map-get($primary-colors, light-disabled), // #E0E0E0
   divider: map-get($primary-colors, 600), // #757575
   header-border: map-get($primary-colors, 800), // #424242
   icon: map-get($primary-colors, 500), // #9E9E9E
@@ -31,6 +33,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   input-label: map-get($primary-colors, 600), // #757575
   logo: map-get($primary-colors, 'white'),
   placeholder-text: map-get($primary-colors, 600), // #757575
+  secondary-text: map-get($primary, 500), // #9E9E9E
   sidebar-dividers: map-get($primary-colors, 'white'),
   slider-blue: map-get($mat-blue, A400), // #2979FF
   slider-green: map-get($mat-green, A700), // #00C853
@@ -39,26 +42,24 @@ $foreground: map-merge($mat-light-theme-foreground, (
 
   modal-borders: map-get($primary-colors, 'black'),
   borders: map-get($primary-colors, 300), // #E0E0E0
-  contrast-icon: map-get($primary-colors, 600), // #757575 (icons on light background)
   button-text: map-get($accent, 700),
   button-border: map-get($primary-colors, 'black'),
-  headers: map-get($primary-colors, 300), //#E0E0E0
-  search-result-text: map-get($primary-colors, 600), //#757575
-  contrast-text: map-get($primary-colors, 50), //#FAFAFA (text on dark background)
-  download-icon: map-get($primary-colors, 600), //#757575
+  headers: map-get($primary-colors, 300), // #E0E0E0
+  search-result-text: map-get($primary-colors, 600), // #757575
+  download-icon: map-get($primary-colors, 600), // #757575
   highlight: map-get($primary-colors, 'black'),
 ));
 
 $background: map-merge($mat-light-theme-background, (
   app-bar: map-get($primary-colors, light-header), // #444A65
+  modal: map-get($primary-colors, 100), // #F5F5F5
   sidebar-background: map-get($primary-colors, 100), // #F5F5F5
+  stage-background: map-get($primary-colors, 'black'),
 
   background: map-get($primary-colors, 50),
-  hover-background: map-get($primary-colors, 300), //#E0E0E0
-  stage-background: map-get($primary-colors, 'black'),
+  hover-background: map-get($primary-colors, 300), // #E0E0E0
   dialog: map-get($primary-colors, 50), // #FAFAFA
   authentication: map-get($primary-colors, 50), // #FAFAFA
-  modal: map-get($primary-colors, 'white'),
   dropdown-menu: map-get($primary-colors, 300), // #E0E0E0
   dropdown-hover: map-get($primary-colors, 300), // #E0E0E0
   image-placeholder: map-get($primary-colors, light-disabled), // #BDBDBD
