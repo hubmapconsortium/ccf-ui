@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, HostBinding } from '@angular/core';
 
 
 /** Valid values for side. */
@@ -13,6 +13,9 @@ export type Side = 'left' | 'right' | 'anterior' | 'posterior';
   styleUrls: ['./stage-nav.component.scss']
 })
 export class StageNavComponent {
+  /** HTML class name */
+  @HostBinding('class') readonly clsName = 'ccf-stage-nav';
+
   /**
    * Input that allows changing the current side from outside the component
    */
@@ -26,12 +29,12 @@ export class StageNavComponent {
   /**
    * Output that emits whenever the current side selection changes
    */
-  @Output() sideChanged = new EventEmitter<Side>();
+  @Output() sideChange = new EventEmitter<Side>();
 
   /**
    * Output that emits whenever the 3D view is toggled on / off
    */
-  @Output() view3DChanged = new EventEmitter<boolean>();
+  @Output() view3DChange = new EventEmitter<boolean>();
 
   /**
    * Handles the updating of the side selection and calling the event emitter
@@ -39,7 +42,7 @@ export class StageNavComponent {
    */
   updateSide(selection: Side): void {
     this.side = selection;
-    this.sideChanged.emit(this.side);
+    this.sideChange.emit(this.side);
   }
 
 
@@ -50,6 +53,6 @@ export class StageNavComponent {
    */
   updateView(selection: boolean): void {
     this.view3D = selection;
-    this.view3DChanged.emit(this.view3D);
+    this.view3DChange.emit(this.view3D);
   }
 }

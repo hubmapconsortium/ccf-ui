@@ -5,25 +5,10 @@
   overflow: hidden;
 
   ccf-drawer-container {
-    flex-grow: 1;
-    position: fixed;
-    top: 4rem;
     height: 100%;
-    width: 100%;
-    opacity: 1;
-
-    ccf-drawer-content {
-      overflow: hidden;
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
 
     ccf-drawer {
       width: 25.5rem;
     }
   }
-}
-
-::-webkit-scrollbar {
-  width: 7.5rem;
 }

@@ -1,0 +1,25 @@
+@use '~@angular/material/theming'as *;
+
+@mixin theme($theme) {
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .ccf-stage-nav {
+    mat-radio-button {
+      color: mat-color($foreground, contrast-text);
+
+      &.mat-radio-checked {
+        color: mat-color($accent);
+      }
+    }
+
+    .slide-label {
+      color: mat-color($foreground, contrast-text);
+
+      &.highlighted {
+        color: mat-color($accent);
+      }
+    }
+  }
+}
