@@ -1,3 +1,15 @@
 :host {
-  
+  display: flex;
+
+  .field {
+    width: 50%;
+
+    &:not(:last-child) {
+      padding-right: 0.75rem;
+    }
+
+    .input {
+      text-align: center;
+    }
+  }
 }

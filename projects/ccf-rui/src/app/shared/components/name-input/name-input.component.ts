@@ -19,11 +19,11 @@ export class NameInputComponent {
   userName: UserName = {
     firstName: '',
     lastName: ''
-  }
+  };
 
   updateName(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
-    this.userName = { ...this.userName, [key]: +inputTarget.value };
+    this.userName = { ...this.userName, [key]: inputTarget.value };
     this.valuesChange.emit(this.userName);
   }
 }
