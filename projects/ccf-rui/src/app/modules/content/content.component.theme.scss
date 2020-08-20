@@ -7,5 +7,11 @@
 
   .ccf-content {
     background-color: mat-color($background, stage-background);
+
+    .top-bar {
+      .icon {
+        color: mat-color($foreground, icon);
+      }
+    }
   }
 }
