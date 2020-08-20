@@ -1,8 +1,8 @@
 import { Shallow } from 'shallow-render';
 
-import { RotationSliderComponent } from './rotation-slider.component';
+import { Rotation, RotationSliderComponent } from './rotation-slider.component';
 import { RotationSliderModule } from './rotation-slider.module';
-import { Rotation } from './rotation-slider.component';
+
 
 describe('RotationSliderComponent', () => {
   let shallow: Shallow<RotationSliderComponent>;
@@ -13,7 +13,7 @@ describe('RotationSliderComponent', () => {
 
   it('should emit the new value whenever changeRotation is called.', async () => {
     const rotation: Rotation = { x: 10, y: 10, z: 10 };
-    const { instance, outputs } = await shallow.render({ bind: { rotation }});
+    const { instance, outputs } = await shallow.render({ bind: { rotation } });
 
     instance.changeRotation(0, 'x');
     expect(outputs.rotationChange.emit).toHaveBeenCalled();
@@ -21,7 +21,7 @@ describe('RotationSliderComponent', () => {
 
   it('shoud successfully update rotation using changeRotation given a string as input.', async () => {
     const rotation: Rotation = { x: 0, y: 0, z: 0 };
-    const { instance } = await shallow.render({ bind: { rotation }});
+    const { instance } = await shallow.render({ bind: { rotation } });
     instance.changeRotation('10', 'x');
 
     expect(instance.rotation.x).toEqual(10);
@@ -29,7 +29,7 @@ describe('RotationSliderComponent', () => {
 
   it('should successfully update rotation using changeRotation given an integer as input.', async () => {
     const rotation: Rotation = { x: 1, y: 1, z: 1 };
-    const { instance } = await shallow.render({ bind: { rotation }});
+    const { instance } = await shallow.render({ bind: { rotation } });
     instance.changeRotation('2', 'y');
 
     expect(instance.rotation.y).toEqual(2);
@@ -44,7 +44,7 @@ describe('RotationSliderComponent', () => {
 
   it('should set the rotation to 0, 0, 0 when the resetRotation method is called.', async () => {
     const rotation: Rotation = { x: 100, y: 100, z: 100 };
-    const { instance } = await shallow.render({ bind: { rotation }});
+    const { instance } = await shallow.render({ bind: { rotation } });
     instance.resetRotation();
 
     expect(instance.rotation.x).toEqual(0);

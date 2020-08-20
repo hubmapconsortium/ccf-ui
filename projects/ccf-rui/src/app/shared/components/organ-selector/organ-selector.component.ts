@@ -88,7 +88,6 @@ export class OrganSelectorComponent {
    */
   selectOrgan(icon: OrganInfo): void {
     this.selectedOrgan = icon.name;
-    console.log(this.selectedOrgan);
     this.organChanged.emit(icon.name);
   }
 

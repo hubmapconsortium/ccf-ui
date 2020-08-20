@@ -21,7 +21,7 @@ describe('StageNavComponent', () => {
     const { instance, outputs } = await shallow.render();
 
     instance.updateSide('left');
-    expect(outputs.sideChanged.emit).toHaveBeenCalled();
+    expect(outputs.sideChange.emit).toHaveBeenCalled();
   });
 
   it('should properly update the view3D variable when updateView is called.', async () => {
@@ -35,6 +35,6 @@ describe('StageNavComponent', () => {
     const { instance, outputs } = await shallow.render();
     instance.updateView(true);
 
-    expect(outputs.view3DChanged.emit).toHaveBeenCalled();
+    expect(outputs.view3DChange.emit).toHaveBeenCalled();
   });
 });

@@ -1,6 +1,9 @@
-<ccf-block-size-input></ccf-block-size-input>
+<ccf-block-size-input [blockSize]="stage.blockSize$ | async" (blockSizeChange)="stage.updateBlockSize($event)">
+</ccf-block-size-input>
 <hr>
-<ccf-slices-input></ccf-slices-input>
+<ccf-slices-input [slicesConfig]="stage.slicesConfig$ | async" (slicesConfigChange)="stage.updateSlicesConfig($event)">
+</ccf-slices-input>
 <hr>
-<ccf-rotation-slider></ccf-rotation-slider>
+<ccf-rotation-slider [rotation]="stage.rotation$ | async" (rotationChange)="stage.updateRotation($event)">
+</ccf-rotation-slider>
 <hr>
