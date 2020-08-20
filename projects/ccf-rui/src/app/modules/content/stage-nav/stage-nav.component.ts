@@ -13,7 +13,10 @@ export type Side = 'left' | 'right' | 'anterior' | 'posterior';
   styleUrls: ['./stage-nav.component.scss']
 })
 export class StageNavComponent {
-  /** HTML class name */
+
+  /**
+   * HTML class name
+   */
   @HostBinding('class') readonly clsName = 'ccf-stage-nav';
 
   /**
@@ -44,7 +47,6 @@ export class StageNavComponent {
     this.side = selection;
     this.sideChange.emit(this.side);
   }
-
 
   /**
    * Handles updating of the boolean that keeps track of current view

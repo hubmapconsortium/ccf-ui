@@ -1,4 +1,7 @@
 :host {
+  height: 4.5rem;
+  margin-right: 1.5rem;
+  padding-left: 1.5rem;
   display: flex;
   align-items: center;
 
@@ -6,8 +9,7 @@
     margin-right: 1.5rem;
   }
 
-  .slider-container .view-slider {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+  .view-slider {
+    padding-bottom: 1.8rem;
   }
 }
