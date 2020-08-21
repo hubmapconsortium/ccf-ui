@@ -7,11 +7,20 @@ import { OrganSelectorModule } from '../../shared/components/organ-selector/orga
 import { ExtractionSitesMenuModule } from '../../shared/components/extraction-sites-menu/extraction-sites-menu.module';
 import { DetailsLabelModule } from '../../shared/components/details-label/details-label.module';
 import { LabeledSlideToggleModule } from '../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
   declarations: [LeftSidebarComponent],
-  imports: [CommonModule, NameInputModule, OrganSelectorModule, LabeledSlideToggleModule, DetailsLabelModule, ExtractionSitesMenuModule],
+  imports: [
+    CommonModule,
+    NameInputModule,
+    OrganSelectorModule,
+    LabeledSlideToggleModule,
+    DetailsLabelModule,
+    ExtractionSitesMenuModule,
+    MatExpansionModule
+  ],
   exports: [LeftSidebarComponent]
 })
 export class LeftSidebarModule { }

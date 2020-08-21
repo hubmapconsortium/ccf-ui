@@ -1,11 +1,4 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>Common Extraction Sites</mat-panel-title>
-  </mat-expansion-panel-header>
-  <div class="data-container">
-    <div class="data-entry" *ngFor="let site of extractionSites" (click)="toggleSite(site)">
-      <mat-icon class="visibility-icon" [class.selected]="site.selected" svgIcon="app:visibility_on"></mat-icon>
-      <div>{{ site.name }}</div>
-    </div>
-  </div>
-</mat-expansion-panel>
+<div class="data-entry" *ngFor="let site of extractionSites" (mouseover)="toggleSite(site)" (mouseout)="toggleSite(site)" (click)="toggleSite(site)">
+  <mat-icon class="visibility-icon" [class.selected]="site.selected" svgIcon="app:visibility_on"></mat-icon>
+  <div>{{ site.name }}</div>
+</div>

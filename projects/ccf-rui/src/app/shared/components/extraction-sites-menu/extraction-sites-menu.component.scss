@@ -1,14 +1,13 @@
 :host {
-  .data-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: .5rem !important;
+
+  .data-entry {
     display: flex;
-    flex-direction: column;
 
-    .data-entry {
-      display: flex;
-
-      .selected {
-        color: blue;
-      }
+    .selected {
+      color: blue;
     }
   }
 }

@@ -5,4 +5,9 @@
   <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']"></ccf-labeled-slide-toggle>
   <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
 </div>
-<ccf-extraction-sites-menu></ccf-extraction-sites-menu>
+<mat-expansion-panel class="extraction-menu">
+  <mat-expansion-panel-header class="expansion-header">
+    <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
+  </mat-expansion-panel-header>
+  <ccf-extraction-sites-menu></ccf-extraction-sites-menu>
+</mat-expansion-panel>
