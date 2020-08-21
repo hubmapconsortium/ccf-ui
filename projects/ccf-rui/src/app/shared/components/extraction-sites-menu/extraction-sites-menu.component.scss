@@ -1,0 +1,14 @@
+:host {
+  .data-container {
+    display: flex;
+    flex-direction: column;
+
+    .data-entry {
+      display: flex;
+
+      .selected {
+        color: blue;
+      }
+    }
+  }
+}
