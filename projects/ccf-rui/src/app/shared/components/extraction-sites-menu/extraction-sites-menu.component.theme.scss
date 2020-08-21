@@ -1,0 +1,11 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $accent: map-get($theme, accent);
+
+  .ccf-extraction-sites-menu {
+    .highlighted {
+      color: mat-color($accent);
+    }
+  }
+}
