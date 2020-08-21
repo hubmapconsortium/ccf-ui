@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ReviewModalComponent } from '../review-modal/review-modal.component';
@@ -12,6 +12,9 @@ import { ReviewModalComponent } from '../review-modal/review-modal.component';
   styleUrls: ['./review-button.component.scss']
 })
 export class ReviewButtonComponent {
+  /** HTML class name */
+  @HostBinding('class') readonly clsName = 'ccf-review-button';
+
   /**
    * Creates an instance of review button component.
    *

@@ -1,0 +1,20 @@
+@use '~@angular/material/theming'as *;
+
+@mixin theme($theme) {
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .ccf-review-button {
+    .review-button {
+      background-color: mat-color($foreground, active-icon);
+      color: mat-color($foreground, sidebar-dividers);
+
+      &:hover {
+          background-color: mat-color($foreground, sidebar-dividers);
+          color: mat-color($foreground, active-icon);
+          border: 1px solid mat-color($foreground, active-icon);
+      }
+    }
+  }
+}
