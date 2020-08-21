@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 /**
  * User name data
@@ -25,24 +25,23 @@ export interface UserName {
   styleUrls: ['./name-input.component.scss']
 })
 export class NameInputComponent {
-
   /**
    * HTML class name
    */
   @HostBinding('class') readonly clsName = 'ccf-name-input';
 
   /**
-   * Emits a UserName object
-   */
-  @Output() readonly valuesChange = new EventEmitter<UserName>();
-
-  /**
    * Current user name
    */
-  userName: UserName = {
+  @Input() name: UserName = {
     firstName: '',
     lastName: ''
   };
+
+  /**
+   * Emits a UserName object
+   */
+  @Output() readonly nameChange = new EventEmitter<UserName>();
 
   /**
    * Updates username with a new entry and emits the UserName object
@@ -51,7 +50,7 @@ export class NameInputComponent {
    */
   updateName(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
-    this.userName = { ...this.userName, [key]: inputTarget.value };
-    this.valuesChange.emit(this.userName);
+    this.name = { ...this.name, [key]: inputTarget.value };
+    this.nameChange.emit(this.name);
   }
 }
