@@ -3,10 +3,11 @@
   flex-direction: column;
   margin-left: .5rem !important;
 
-  .data-entry {
+  .site-entry {
     display: flex;
+    cursor: pointer;
 
-    .selected {
+    .highlighted {
       color: blue;
     }
   }
