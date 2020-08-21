@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/core';
 
+
 /**
  * Generic toggle slider component
  */
@@ -10,24 +11,20 @@ import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/co
 })
 
 export class LabeledSlideToggleComponent {
-
   /**
    * HTML class name
    */
   @HostBinding('class') readonly clsName = 'ccf-labeled-slide-toggle';
 
   /**
-   * Input value for toggle slider
+   * The two selection options to be toggled
    */
-  @Input() value: string;
+  @Input() labels: [string, string] = ['Left', 'Right'];
 
   /**
-   * Determines if left toggle option is selected
+   * Input value for toggle slider
    */
-  get left(): boolean {
-    const { value, labels } = this;
-    return labels ? value !== labels[1] : true;
-  }
+  @Input() value = 'Left';
 
   /**
    * Whether or not the slider is disabled
@@ -35,14 +32,17 @@ export class LabeledSlideToggleComponent {
   @Input() disabled = false;
 
   /**
-   * The two selection options to be toggled
-   */
-  @Input() labels: [string, string] = ['', ''];
-
-  /**
    * Emits the datatype with the currently selected option
    */
   @Output() valueChange = new EventEmitter<string>();
+
+  /**
+   * Determines if left toggle option is selected
+   */
+  get left(): boolean {
+    const { value, labels } = this;
+    return value !== labels[1];
+  }
 
   /**
    * Updates and emits the currently selected option
@@ -50,6 +50,6 @@ export class LabeledSlideToggleComponent {
    */
   updateToggle(selection: boolean): void {
     this.value = selection ? this.labels[1] : this.labels[0];
-    this.valueChange.emit(selection ? this.labels[0] : this.labels[1]);
+    this.valueChange.emit(this.value);
   }
 }
