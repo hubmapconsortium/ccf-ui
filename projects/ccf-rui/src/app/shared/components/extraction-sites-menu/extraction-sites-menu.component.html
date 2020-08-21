@@ -1,4 +1,4 @@
-<div class="site-entry" *ngFor="let site of extractionSites" (mouseover)="hover(site)" (mouseout)="setHighlight(site)" (click)="toggleSelected(site)">
+<div class="site-entry" *ngFor="let site of extractionSites" (mouseover)="hover(site)" (mouseout)="setHighlight(site)">
   <mat-icon class="visibility-icon" [class.highlighted]="site.highlighted" svgIcon="{{site.iconSrc}}"></mat-icon>
-  <div class="site-name">{{ site.name }}</div>
+  <div class="site-name" (click)="toggleSelected(site)">{{ site.name }}</div>
 </div>

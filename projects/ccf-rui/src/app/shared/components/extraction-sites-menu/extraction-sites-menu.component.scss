@@ -6,12 +6,12 @@
 
   .site-entry {
     display: flex;
-    cursor: pointer;
 
     .site-name {
       margin-left: 1rem;
       font-size: 14px;
       user-select: none;
+      cursor: pointer;
     }
   }
 }

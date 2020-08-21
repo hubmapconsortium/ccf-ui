@@ -2,10 +2,14 @@
 
 @mixin theme($theme) {
   $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
 
   .ccf-extraction-sites-menu {
-    .highlighted {
-      color: mat-color($accent);
+    .visibility-icon {
+      color: mat-color($foreground, icon);
+      &.highlighted {
+        color: mat-color($accent);
+      }
     }
   }
 }
