@@ -17,9 +17,19 @@ export class ExtractionSitesMenuComponent {
   @HostBinding('class') readonly clsName = 'ccf-extraction-sites-menu';
 
   @Input() extractionSites: ExtractionSite[] = [
-    {name: 'A', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
-    {name: 'B', selected: true, highlighted: true, iconSrc: 'app:visibility_on'}
+    {name: 'Left atrium, appendage', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Left atrium, PV inflow', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Left ventricle, apex', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Left ventricle, free wall 3cm from apex', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Septum, 3cm from apex including LAD', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Posterior, adjacent to coronary sinus', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Right atrium appendage', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Right atrium, AV(atrioventricular) node', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Right atrium, SA(sinoatrial) node', selected: false, highlighted: false, iconSrc: 'app:visibility_off'},
+    {name: 'Right ventricle, free wall 3cm from apex', selected: false, highlighted: false, iconSrc: 'app:visibility_off'}
   ];
+
+  @Output() highlightChange = new EventEmitter<string[]>();
 
   toggleSite(site: ExtractionSite): void {
     site.selected = !site.selected;
@@ -33,11 +43,13 @@ export class ExtractionSitesMenuComponent {
   highlight(site: ExtractionSite): void {
     site.highlighted = true;
     site.iconSrc = site.highlighted ? 'app:visibility_on' : 'app:visibility_off';
+    this.highlightChange.emit(this.extractionSites.filter(x => x.highlighted).map(entry => entry.name));
   }
 
   hoverOut(site: ExtractionSite): void {
     site.highlighted = site.selected ? true : false;
     site.iconSrc = site.highlighted ? 'app:visibility_on' : 'app:visibility_off';
+    this.highlightChange.emit(this.extractionSites.filter(x => x.highlighted).map(entry => entry.name));
   }
 
 }
