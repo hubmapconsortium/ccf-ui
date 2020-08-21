@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 
+import { PageState } from '../../core/store/page/page.state';
+
 
 @Component({
   selector: 'ccf-left-sidebar',
@@ -12,4 +14,6 @@ export class LeftSidebarComponent {
   @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
 
   detailsLabels: string[] = ['heart', 'front', 'female'];
+
+  constructor(readonly page: PageState) {}
 }
