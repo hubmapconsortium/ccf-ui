@@ -9,6 +9,7 @@
     .review-button {
       background-color: mat-color($foreground, active-icon);
       color: mat-color($foreground, sidebar-dividers);
+      border: 1px solid mat-color($foreground, active-icon);
 
       &:hover {
           background-color: mat-color($foreground, sidebar-dividers);

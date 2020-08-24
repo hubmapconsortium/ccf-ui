@@ -1,17 +1,13 @@
 import { Component, Inject, HostBinding, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ReviewObject } from '../../../core/models/review-object';
 
-interface ReviewObject {
-  firstName: string;
-  lastName: string;
-  referenceOrgan: string;
-  tissueBlockSize: string;
-  tissueBlockPosition: string;
-  tissueBlockRotation: string;
-  extractionSites: string;
-  anatomicalStructureTags: string;
-  currentDate: string;
-  alignmentID: string;
+/**
+ * The expected format of the review modal's data input.
+ */
+interface ReviewModalData {
+  embeddedMode: boolean;
+  reviewObject: ReviewObject;
 }
 
 @Component({
@@ -22,6 +18,15 @@ interface ReviewObject {
 export class ReviewModalComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-review-modal';
+  /**
+   * Whether or not the application is in embedded mode or not
+   */
+  embeddedMode: boolean;
+
+  /**
+   * The object containing all of the review information for displaying inside the modal
+   */
+  reviewObject: ReviewObject;
 
   /**
    * Creates an instance of the review modal component.
@@ -30,26 +35,16 @@ export class ReviewModalComponent {
    */
   constructor(
     public dialogRef: MatDialogRef<ReviewModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: unknown
-  ) { }
-
-  @Input() reviewObject: ReviewObject = {
-    firstName: 'Homer',
-    lastName: 'Simpson',
-    referenceOrgan: 'kidney, left, make, vh',
-    tissueBlockSize: '20, 10, 10',
-    tissueBlockPosition: '10, 74, 16',
-    tissueBlockRotation: '0, 358.75, 20.07',
-    extractionSites: 'Bisection line',
-    anatomicalStructureTags: 'Tag 1, Tag 2, Tag 3',
-    currentDate: '7/10/2020 9:53:04 AM',
-    alignmentID: '5dae2c44-aad-5-4f7a-aa12-c0551de97b'
-  };
+    @Inject(MAT_DIALOG_DATA) public data: ReviewModalData
+  ) {
+    this.embeddedMode = data.embeddedMode;
+    this.reviewObject = data.reviewObject;
+  }
 
   /**
    * Closes info dialog component
    */
   close(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 }

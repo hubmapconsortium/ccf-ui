@@ -8,12 +8,12 @@
 
       <mat-dialog-content class="mat-typography">
         <div class="display-fields">
-          <div class="field">
+          <div class="field" *ngIf="!embeddedMode">
             <div class="label">First Name</div>
             <div class="data">{{ reviewObject.firstName }}</div>
           </div>
 
-          <div class="field">
+          <div class="field" *ngIf="!embeddedMode">
             <div class="label">Last Name</div>
             <div class="data">{{ reviewObject.lastName }}</div>
           </div>
@@ -44,8 +44,8 @@
           </div>
 
           <div class="field">
-            <div class="label">Current Date</div>
-            <div class="data">{{ reviewObject.currentDate }}</div>
+            <div class="label">Time Stamp</div>
+            <div class="data">{{ reviewObject.timestamp }}</div>
           </div>
 
           <div class="field">
@@ -56,7 +56,7 @@
       </mat-dialog-content>
 
       <div class="footer">
-        <button mat-button class="download-button">REVIEW AND DOWNLOAD</button>
+        <button mat-button class="download-button" (click)="dialogRef.close(true)">{{ embeddedMode ? 'REGISTER' : 'DOWNLOAD REGISTRATION DATA' }}</button>
       </div>
     </div>
   </div>
