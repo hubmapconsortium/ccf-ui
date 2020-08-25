@@ -99,13 +99,16 @@ jobs:
     - npm run build -- --output-hashing=none --base-href=/
     - npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
     - npm run compodoc
+    before_deploy:
+    - cd dist/ccf-ui
+    after_deploy:
+    - cd ../../
     deploy:
       provider: netlify
       skip-cleanup: true
       site: "$NETLIFY_SITE_ID"
       auth: "$NETLIFY_TOKEN"
       edge: true
-      local-dir: dist/ccf-ui
       on:
         all_branches: true
 
