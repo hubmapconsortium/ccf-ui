@@ -9,6 +9,12 @@ addons:
     organization: "$SONAR_KEY"
     token: "$SONAR_TOKEN"
 
+branches:
+  only:
+  - main
+  - main-v0.6.0
+  - develop
+  - /^pbi-.*$/
 cache: npm
 install:
   - npm ci
@@ -17,14 +23,14 @@ jobs:
   include:
   - stage: test
     name: Run Tests
-    if: NOT (tag IS present) AND NOT(type = pull_request)
+    if: NOT (tag IS present)
     script:
     - npm run build:libs
     - npm run test
     - sonar-scanner -X
   - stage: test
     name: Run linter
-    if: NOT (tag IS present) AND NOT(type = pull_request)
+    if: NOT (tag IS present)
     script:
     - npm run build:libs
     - npm run lint
@@ -85,22 +91,10 @@ jobs:
       local-dir: dist/ccf-ui
       on:
         branch: main-v0.6.0
-  - stage: test
-    name: Run Tests
-    if: type = pull_request
-    script:
-    - npm run build:libs
-    - npm run test
-    - sonar-scanner -X
-  - stage: test
-    name: Run linter
-    if: type = pull_request
-    script:
-    - npm run build:libs
-    - npm run lint
+
   - stage: test
     name: Deploy Preview for PRs
-    if: type = pull_request
+    if: type = /^pbi-.*$/ AND NOT(type = pull_request)
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/
