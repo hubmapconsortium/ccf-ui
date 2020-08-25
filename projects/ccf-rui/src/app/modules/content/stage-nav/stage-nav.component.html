@@ -5,4 +5,6 @@
   <mat-radio-button value="posterior" class="nav-input">Posterior</mat-radio-button>
 </mat-radio-group>
 
-<ccf-labeled-slide-toggle class="view-slider" [labels]="['Register', '3D Preview']"></ccf-labeled-slide-toggle>
+<ccf-labeled-slide-toggle class="view-slider" [labels]="['Register', '3D\u00A0Preview']"
+                          (valueChange)="updateView($event !== 'Register')">
+</ccf-labeled-slide-toggle>
