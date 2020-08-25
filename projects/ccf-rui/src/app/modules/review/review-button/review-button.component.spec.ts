@@ -15,7 +15,7 @@ describe('ReviewButtonComponent', () => {
     shallow = new Shallow(ReviewButtonComponent, ReviewButtonModule);
   });
 
-  it('should launch the info dialog', async () => {
+  it('should launch the review dialog', async () => {
     const { find, instance } = await shallow.mock(MatDialog, mockMatDialog).render();
     const spy = spyOn(instance, 'launchReviewModal');
     find('.review-button').triggerEventHandler('click', '');

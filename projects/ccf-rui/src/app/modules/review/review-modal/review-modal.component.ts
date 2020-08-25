@@ -1,6 +1,7 @@
 import { Component, Inject, HostBinding, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReviewObject } from '../../../core/models/review-object';
+import { BaseOverlayDispatcher } from '@angular/cdk/overlay/dispatchers/base-overlay-dispatcher';
 
 /**
  * The expected format of the review modal's data input.
