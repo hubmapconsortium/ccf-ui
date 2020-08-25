@@ -1,7 +1,13 @@
-<ccf-details-label [details]="detailsLabels"></ccf-details-label>
-<ccf-name-input></ccf-name-input>
-<ccf-organ-selector></ccf-organ-selector>
-<div class="organ-sliders">
-  <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']"></ccf-labeled-slide-toggle>
-  <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
-</div>
+<ng-container *ngIf="page.embedded$ | async; else selectors">
+  <ccf-details-label [details]="detailsLabels"></ccf-details-label>
+</ng-container>
+<ng-template #selectors>
+  <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
+  </ccf-name-input>
+  <hr>
+  <ccf-organ-selector></ccf-organ-selector>
+  <div class="organ-sliders">
+    <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']"></ccf-labeled-slide-toggle>
+    <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
+  </div>
+</ng-template>
