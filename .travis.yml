@@ -17,14 +17,20 @@ jobs:
   include:
   - stage: test
     name: Run Tests
-    if: NOT (tag IS present)
+    if: NOT (tag IS present) AND NOT(type = pull_request)
     script:
     - npm run build:libs
     - npm run test
     - sonar-scanner -X
+  - stage: test
+    name: Run linter
+    if: NOT (tag IS present) AND NOT(type = pull_request)
+    script:
+    - npm run build:libs
+    - npm run lint
   - stage: deploy
     name: Deploy Portal Version
-    if: branch = main
+    if: branch = main AND NOT(type = pull_request)
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/ccf-ui/
@@ -64,7 +70,7 @@ jobs:
         branch: develop
   - stage: deploy
     name: Deploy v0.6.0 to GitHub Pages
-    if: branch = main-v0.6.0
+    if: branch = main-v0.6.0 AND NOT(type = pull_request)
     script:
     - npm run build:libs
     - npm run build -- --base-href=/ccf-ui/
@@ -79,13 +85,27 @@ jobs:
       local-dir: dist/ccf-ui
       on:
         branch: main-v0.6.0
-  - stage: deploy
+  - stage: test
+    name: Run Tests
+    if: type = pull_request
+    script:
+    - npm run build:libs
+    - npm run test
+    - sonar-scanner -X
+  - stage: test
+    name: Run linter
+    if: type = pull_request
+    script:
+    - npm run build:libs
+    - npm run lint
+  - stage: test
     name: Deploy Preview for PRs
     if: type = pull_request
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/
     - npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
+    - npm run compodoc
     deploy:
       provider: netlify
       skip-cleanup: true
@@ -93,17 +113,9 @@ jobs:
       auth: "$NETLIFY_TOKEN"
       edge: true
       local-dir: dist/ccf-ui
-  - stage: test
-    name: Test compodoc success on PRs
-    if: type = pull_request
-    script:
-    - npm run compodoc
-  - stage: test
-    name: Run linter
-    if: NOT (tag IS present)
-    script:
-    - npm run build:libs
-    - npm run lint
+      on:
+        type: pull_request
+
 notifications:
   slack:
     secure: kmHjR6duu+E+c+JEBLjECE5mSboVOrz599dOubVU7eqwVNUGvbe3YDGIKAc0S6akqsW0q9bVUWM2Zi+J4ROHrlMi1A+VQRJAW+2DG+6wu8fmdZiA0u/fK2w9IMRPFDDk80mMZN7TzSPMu5nRv6UGbVqpNeqRWotd2XtyLOu3+KRYKggUjKKz5D3oiYYGaHZWj6foDG7u42q33RQ55LlWff0GmAUuYVSfOUlxAYevOTuV9QF8NfFRnlQAfIYucM9177dd9cfWUdRgWPL7VGDUrANF2NtrfTUcWMM/zl6Vk7KMTxcCr1Oy0osxPE4DlpD8Mdz+i54tqKtcopJirBUnogZx+6MoMqMpTu7mU9pmB1H5rhAqlddYUMxiiyUvAvsScm3G5tY7azvqB0i6qalveTXuZWTa3CZUKHHTkDaDd0tnCvnLqWUaxZ2TeS//67q4EvreTfIdD4hD4phXjqfS+x0Ha8w7MpjwNln651svxsnpv+Ak6ET8N/NVRY61LhzAocMHitqMZMycTgyf8l5rciUtWE2cIuDiH86SBF+KeDYnoCCBwN8qXUTktVie37PeBX2drO84wNc8tmzjpIguXyCQUCBN/t0BodC4BIH+/oasfsYtKpXj6LQaV4/brf+t+hZX2FYssS44UZAKn3CQ92Mp7YurngUMHBqaMC6wPu4=
