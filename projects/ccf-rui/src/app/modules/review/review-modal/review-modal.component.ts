@@ -1,14 +1,13 @@
 import { Component, Inject, HostBinding, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ReviewObject } from '../../../core/models/review-object';
-import { BaseOverlayDispatcher } from '@angular/cdk/overlay/dispatchers/base-overlay-dispatcher';
+import { RegistrationData } from '../../../core/models/registration-data';
 
 /**
  * The expected format of the review modal's data input.
  */
 interface ReviewModalData {
   embeddedMode: boolean;
-  reviewObject: ReviewObject;
+  registrationData: RegistrationData;
 }
 
 @Component({
@@ -27,7 +26,9 @@ export class ReviewModalComponent {
   /**
    * The object containing all of the review information for displaying inside the modal
    */
-  reviewObject: ReviewObject;
+  registrationData: RegistrationData;
+
+  blockSize: unknown;
 
   /**
    * Creates an instance of the review modal component.
@@ -39,7 +40,7 @@ export class ReviewModalComponent {
     @Inject(MAT_DIALOG_DATA) public data: ReviewModalData
   ) {
     this.embeddedMode = data.embeddedMode;
-    this.reviewObject = data.reviewObject;
+    this.registrationData = data.registrationData;
   }
 
   /**

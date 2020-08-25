@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/co
 import { MatDialog } from '@angular/material/dialog';
 
 import { ReviewModalComponent } from '../review-modal/review-modal.component';
-import { ReviewObject } from '../../../core/models/review-object';
+import { RegistrationData } from '../../../core/models/registration-data';
 
 
 /**
@@ -32,7 +32,7 @@ export class ReviewButtonComponent {
   /**
    * Input object of information to display in the modal
    */
-  @Input() reviewObject: ReviewObject = {
+  @Input() registrationData: RegistrationData = {
     firstName: 'Homer',
     lastName: 'Simpson',
     referenceOrgan: 'kidney, left, make, vh',
@@ -58,11 +58,11 @@ export class ReviewButtonComponent {
       width: '60em',
       data: {
         embeddedMode: this.embeddedMode,
-        reviewObject: this.reviewObject
+        registrationData: this.registrationData
       }
     });
 
-    dialogRef.afterClosed().subscribe(
+    dialogRef?.afterClosed().subscribe(
       data => {
         if (data) {
           this.registerData.emit();

@@ -2,7 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Shallow } from 'shallow-render';
 import { ReviewModalComponent } from './review-modal.component';
 import { ReviewModalModule } from './review-modal.module';
-import { ReviewObject } from '../../../core/models/review-object';
+import { ReviewObject } from '../../../core/models/registration-data';
 
 const reviewObject: ReviewObject = {
   firstName: 'Homer',

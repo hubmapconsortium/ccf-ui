@@ -1,4 +1,4 @@
-export interface ReviewObject {
+export interface RegistrationData {
     firstName: string;
     lastName: string;
     referenceOrgan: string;
