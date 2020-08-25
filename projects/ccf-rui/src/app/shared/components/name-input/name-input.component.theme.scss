@@ -1,0 +1,11 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  .ccf-name-input {
+    .label {
+      color: mat-color($foreground, placeholder-text);
+    }
+  }
+}

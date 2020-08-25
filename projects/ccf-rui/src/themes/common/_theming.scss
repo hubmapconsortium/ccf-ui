@@ -1,11 +1,14 @@
 @use '~@angular/material/theming' as *;
 @use '../../app/modules/header/header.component.theme' as header;
+@use '../../app/modules/info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
+@use '../../app/modules/info/info-button/info-button.component.theme.scss' as infoButton;
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
 @use '../../app/modules/right-sidebar/right-sidebar.component.theme.scss' as rightSidebar;
 @use '../../app/shared/components/block-size-input/block-size-input.component.theme.scss' as blockSizeInput;
 @use '../../app/shared/components/slices-input/slices-input.component.theme.scss' as slicesInput;
 @use '../../app/shared/components/rotation-slider/rotation-slider.component.theme.scss' as rotationSlider;
 @use '../../app/modules/left-sidebar/left-sidebar.component.theme.scss' as leftSidebar;
+@use '../../app/shared/components/name-input/name-input.component.theme' as nameInput;
 @use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organSelector;
 @use '../../app/shared/components/labeled-slide-toggle/labeled-slide-toggle.component.theme' as slideToggle;
 @use '../../app/shared/components/details-label/details-label.component.theme' as detailsLabel;
@@ -30,6 +33,8 @@
   @include mat-button-theme($theme);
 
   @include header.theme($theme);
+  @include infoDialog.theme($theme);
+  @include infoButton.theme($theme);
   @include drawer.theme($theme);
 
   @include rightSidebar.theme($theme);
@@ -38,6 +43,7 @@
   @include rotationSlider.theme($theme);
 
   @include leftSidebar.theme($theme);
+  @include nameInput.theme($theme);
   @include organSelector.theme($theme);
   @include slideToggle.theme($theme);
   @include detailsLabel.theme($theme);
