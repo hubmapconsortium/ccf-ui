@@ -6,11 +6,16 @@
 
   .item-entry {
     display: flex;
-
+    height: 2.25rem;
+    align-items: center;
+    
     .item-name {
       margin-left: 1rem;
       user-select: none;
       cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

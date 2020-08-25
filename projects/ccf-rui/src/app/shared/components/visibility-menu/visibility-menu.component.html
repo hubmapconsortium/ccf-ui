@@ -1,4 +1,4 @@
 <div class="item-entry" *ngFor="let item of visibilityItems" (mouseover)="hover(item)" (mouseout)="setHighlight(item)">
   <mat-icon class="visibility-icon" [class.highlighted]="item.highlighted" svgIcon="{{item.iconSrc}}"></mat-icon>
-  <div class="item-name" (click)="toggleSelected(item)">{{ item.name }}</div>
+  <div class="item-name" title="{{item.name}}" (click)="toggleSelected(item)">{{ item.name }}</div>
 </div>
