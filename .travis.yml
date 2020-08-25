@@ -14,7 +14,6 @@ branches:
   - main
   - main-v0.6.0
   - develop
-  - /^pbi-.*$/
 cache: npm
 install:
   - npm ci
@@ -94,7 +93,7 @@ jobs:
 
   - stage: test
     name: Deploy Preview for PRs
-    if: branch = /^pbi-.*$/ AND NOT(type = pull_request)
+    if: branch = /pbi-.*/ AND NOT(type = pull_request)
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/
