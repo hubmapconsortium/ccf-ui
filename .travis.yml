@@ -98,6 +98,7 @@ jobs:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/
     - npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
+    - cp -r dist/ccf-rui dist/ccf-ui/rui
     - npm run compodoc
     deploy:
       provider: netlify
