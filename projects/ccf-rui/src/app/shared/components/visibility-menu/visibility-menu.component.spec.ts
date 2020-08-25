@@ -1,10 +1,10 @@
 import { Shallow } from 'shallow-render';
 
-import { ExtractionSitesMenuComponent } from './extraction-sites-menu.component';
-import { ExtractionSitesMenuModule } from './extraction-sites-menu.module';
+import { VisibilityMenuComponent } from './visibility-menu.component';
+import { VisibilityMenuModule } from './visibility-menu.module';
 
-describe('ExtractionSitesMenuComponent', () => {
-  let shallow: Shallow<ExtractionSitesMenuComponent>;
+describe('VisibilityMenuComponent', () => {
+  let shallow: Shallow<VisibilityMenuComponent>;
   const testSite = {
     name: 'test',
     selected: false,
@@ -13,7 +13,7 @@ describe('ExtractionSitesMenuComponent', () => {
   };
 
   beforeEach(() => {
-    shallow = new Shallow(ExtractionSitesMenuComponent, ExtractionSitesMenuModule);
+    shallow = new Shallow(VisibilityMenuComponent, VisibilityMenuModule);
   });
 
   it('should change the icon to visible type when toggleHighlight is called on a highlighted site', async () => {

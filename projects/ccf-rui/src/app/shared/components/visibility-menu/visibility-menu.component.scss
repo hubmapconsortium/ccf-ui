@@ -4,12 +4,11 @@
   margin-left: .5rem !important;
   margin-top: .5rem !important;
 
-  .site-entry {
+  .item-entry {
     display: flex;
 
-    .site-name {
+    .item-name {
       margin-left: 1rem;
-      font-size: 14px;
       user-select: none;
       cursor: pointer;
     }

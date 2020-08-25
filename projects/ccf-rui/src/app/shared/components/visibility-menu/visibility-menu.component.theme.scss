@@ -4,7 +4,7 @@
   $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
 
-  .ccf-extraction-sites-menu {
+  .ccf-visibility-menu {
     .visibility-icon {
       color: mat-color($foreground, icon);
       &.highlighted {
