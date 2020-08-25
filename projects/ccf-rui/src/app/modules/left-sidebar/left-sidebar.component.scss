@@ -31,11 +31,14 @@
     }
   }
 
-  .extraction-menu {
+  .extraction-menu, .anatomical-structures-menu {
     margin: 0;
 
     .expansion-header {
       padding: 0;
+      font-weight: bold;
+      height: 3rem;
+      margin-top: 0 !important;
       
       .expansion-title {
         margin-top: 0;

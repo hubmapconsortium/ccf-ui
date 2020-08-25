@@ -24,6 +24,11 @@ export interface VisibilityItem {
    * Src of the icon (visible or non-visible)
    */
   iconSrc: string;
+
+  /**
+   * Opacity value
+   */
+  opacity?: number;
 }
 
 /**
@@ -50,6 +55,11 @@ export class VisibilityMenuComponent {
    * Emits the currently highlighted items
    */
   @Output() valueChange = new EventEmitter<string[]>();
+
+  /**
+   * Whether opacity value should be displayed
+   */
+  @Input() opacityOn = false;
 
   /**
    * Sets the icon type and emits an array containing the currently highlighted items
