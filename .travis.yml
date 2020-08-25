@@ -14,6 +14,7 @@ branches:
   - main
   - main-v0.6.0
   - develop
+  - /^pbi-.*$/
 cache: npm
 install:
   - npm ci
@@ -22,14 +23,14 @@ jobs:
   include:
   - stage: test
     name: Run Tests
-    if: NOT (tag IS present)
+    if: NOT(tag IS present) AND NOT(branch =~ /^pbi-.*$/)
     script:
     - npm run build:libs
     - npm run test
     - sonar-scanner -X
   - stage: test
     name: Run linter
-    if: NOT (tag IS present)
+    if: NOT(tag IS present) AND NOT(branch =~ /^pbi-.*$/)
     script:
     - npm run build:libs
     - npm run lint
@@ -90,10 +91,9 @@ jobs:
       local-dir: dist/ccf-ui
       on:
         branch: main-v0.6.0
-
-  - stage: test
+  - stage: deploy
     name: Deploy Preview for PRs
-    if: branch = /pbi-.*/ AND NOT(type = pull_request)
+    if: branch =~ /^pbi-.*$/ AND NOT(type = pull_request)
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/
