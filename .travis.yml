@@ -44,7 +44,7 @@ jobs:
         branch: main
   - stage: deploy
     name: Deploy Staging Version
-    if: branch = develop
+    if: branch = develop AND NOT(type = pull_request)
     script:
     - npm run build:libs
     - npm run build -- --output-hashing=none --base-href=/
@@ -79,12 +79,20 @@ jobs:
       local-dir: dist/ccf-ui
       on:
         branch: main-v0.6.0
-  - stage: test
-    name: Test building production version on PRs
+  - stage: deploy
+    name: Deploy Preview for PRs
     if: type = pull_request
     script:
     - npm run build:libs
-    - npm run build
+    - npm run build -- --output-hashing=none --base-href=/
+    - npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
+    deploy:
+      provider: netlify
+      skip-cleanup: true
+      site: "$NETLIFY_SITE_ID"
+      auth: "$NETLIFY_TOKEN"
+      edge: true
+      local-dir: dist/ccf-ui
   - stage: test
     name: Test compodoc success on PRs
     if: type = pull_request
