@@ -107,8 +107,6 @@ jobs:
       auth: "$NETLIFY_TOKEN"
       edge: true
       local-dir: dist/ccf-ui
-      on:
-        type: pull_request
 
 notifications:
   slack:
