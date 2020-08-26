@@ -6,7 +6,7 @@
 
   &.cff-drawer-content-animations {
     transition: {
-      duration: 1.5s;
+      duration: .5s;
       timing-function: ease-in-out;
       property: margin-left, margin-right;
     }

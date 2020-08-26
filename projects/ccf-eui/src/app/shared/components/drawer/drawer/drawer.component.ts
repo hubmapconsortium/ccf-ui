@@ -77,7 +77,7 @@ class InitializationState {
       state('closed', style({ })),
 
       transition('closed => open-instant', animate(0)),
-      transition('closed <=> open, open-instant => closed', animate('1.5s ease-in-out'))
+      transition('closed <=> open, open-instant => closed', animate('.5s ease-in-out'))
     ]),
     trigger('expandCollapse', [
       state('collapsed', style({})),
@@ -91,7 +91,7 @@ class InitializationState {
         width: 'calc(100% - {{ margin }}px - {{ margin2 }}px)'
       }), EXPAND_COLLAPSE_PARAMS_DEFAULT),
 
-      transition('* <=> *', animate('1.5s ease-in-out'))
+      transition('* <=> *', animate('.5s ease-in-out'))
     ])
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
