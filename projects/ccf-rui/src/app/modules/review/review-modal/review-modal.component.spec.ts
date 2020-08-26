@@ -2,15 +2,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Shallow } from 'shallow-render';
 import { ReviewModalComponent } from './review-modal.component';
 import { ReviewModalModule } from './review-modal.module';
-import { ReviewObject } from '../../../core/models/registration-data';
+import { RegistrationData } from '../../../core/models/registration-data';
+import { XYZTriplet } from '../../../core/store/stage/stage.state';
 
-const reviewObject: ReviewObject = {
+const registrationData: RegistrationData = {
   firstName: 'Homer',
   lastName: 'Simpson',
   referenceOrgan: 'kidney, left, make, vh',
-  tissueBlockSize: '20, 10, 10',
-  tissueBlockPosition: '10, 74, 16',
-  tissueBlockRotation: '0, 358.75, 20.07',
+  tissueBlockSize: { x: 20, y: 10, z: 10 },
+  tissueBlockPosition: { x: 10, y: 74, z: 16 },
+  tissueBlockRotation: { x: 0, y: 358.75, z: 20.07 },
   extractionSites: 'Bisection line',
   anatomicalStructureTags: 'Tag 1, Tag 2, Tag 3',
   timestamp: '7/10/2020 9:53:04 AM',
@@ -26,14 +27,13 @@ describe('ReviewModalComponent', () => {
       .provide({
         provide: MAT_DIALOG_DATA, useValue: {
           embeddedMode: true,
-          reviewObject
+          registrationData
         }
       });
   });
 
   it('should call the close() method when the close button is pressed', async () => {
     const { find, instance } = await shallow.render();
-    instance.reviewObject = reviewObject;
 
     const spy = spyOn(instance, 'close');
     const closeButton = find('.material-icons.close-icon');
@@ -51,5 +51,13 @@ describe('ReviewModalComponent', () => {
     instance.close();
 
     expect(ref.close).toHaveBeenCalled();
+  });
+
+  it('should properly format XYZTriplets into strings', async () => {
+    const { instance } = await shallow.render();
+    const inputTest: XYZTriplet = { x: 1, y: 2, z: 3 };
+    const result = instance.xyzTripletToString(inputTest);
+
+    expect(result).toEqual('1, 2, 3');
   });
 });

@@ -1,6 +1,7 @@
 import { Component, Inject, HostBinding, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RegistrationData } from '../../../core/models/registration-data';
+import { XYZTriplet } from '../../../core/store/stage/stage.state';
 
 /**
  * The expected format of the review modal's data input.
@@ -28,8 +29,6 @@ export class ReviewModalComponent {
    */
   registrationData: RegistrationData;
 
-  blockSize: unknown;
-
   /**
    * Creates an instance of the review modal component.
    * @param dialogRef A reference to the dialog that this component creates, used to call the dialog's methods
@@ -48,5 +47,10 @@ export class ReviewModalComponent {
    */
   close(): void {
     this.dialogRef.close(false);
+  }
+
+  xyzTripletToString(triplet: XYZTriplet): string {
+    if (!triplet) { return ''; }
+    return `${triplet.x}, ${triplet.y}, ${triplet.z}`;
   }
 }

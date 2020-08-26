@@ -10,47 +10,52 @@
         <div class="display-fields">
           <div class="field" *ngIf="!embeddedMode">
             <div class="label">First Name</div>
-            <div class="data">{{ registrationData.firstName }}</div>
+            <div class="data">{{ registrationData?.firstName }}</div>
           </div>
 
           <div class="field">
             <div class="label">Last Name</div>
-            <div class="data">{{ registrationData.lastName }}</div>
+            <div class="data">{{ registrationData?.lastName }}</div>
           </div>
 
           <div class="field">
             <div class="label">Reference Organ Name</div>
-            <div class="data">{{ registrationData.referenceOrgan }}</div>
+            <div class="data">{{ registrationData?.referenceOrgan }}</div>
           </div>
 
           <div class="field">
             <div class="label">Tissue Block Size (mm)</div>
-            <div class="data">{{ registrationData.tissueBlockSize }}</div>
+            <div class="data">{{ xyzTripletToString(registrationData?.tissueBlockSize) }}</div>
           </div>
 
           <div class="field">
-            <div class="label">Tissue Block Rotation (mm)</div>
-            <div class="data">{{ registrationData.tissueBlockRotation }}</div>
+            <div class="label">Tissue Block Position (mm)</div>
+            <div class="data">{{ xyzTripletToString(registrationData?.tissueBlockPosition) }}</div>
+          </div>
+
+          <div class="field">
+            <div class="label">Tissue Block Rotation</div>
+            <div class="data">{{ xyzTripletToString(registrationData?.tissueBlockRotation) }}</div>
           </div>
 
           <div class="field">
             <div class="label">Extraction Sites</div>
-            <div class="data">{{ registrationData.extractionSites }}</div>
+            <div class="data">{{ registrationData?.extractionSites }}</div>
           </div>
 
           <div class="field">
             <div class="label">Anatomical Structure Tags</div>
-            <div class="data">{{ registrationData.anatomicalStructureTags }}</div>
+            <div class="data">{{ registrationData?.anatomicalStructureTags }}</div>
           </div>
 
           <div class="field">
             <div class="label">Time Stamp</div>
-            <div class="data">{{ registrationData.timestamp }}</div>
+            <div class="data">{{ registrationData?.timestamp }}</div>
           </div>
 
           <div class="field">
             <div class="label">Alignment ID</div>
-            <div class="data">{{ registrationData.alignmentID }}</div>
+            <div class="data">{{ registrationData?.alignmentID }}</div>
           </div>
         </div>
       </mat-dialog-content>
