@@ -1,0 +1,10 @@
+:host {
+  height: 3rem;
+  display: flex;
+
+  .opacity-value {
+    &.hidden {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+<span class="text label">Opacity</span>
+<div class="slider-container">
+  <input type="range" step="1" min="0" max="100" [value]="value" (input)="changeOpacity($event.target.value)" class="slider">
+</div>
+<span class="opacity-value" [class.hidden]="hidden">{{value}}</span>
