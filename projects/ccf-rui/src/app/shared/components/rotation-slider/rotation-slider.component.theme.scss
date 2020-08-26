@@ -31,6 +31,10 @@
   .ccf-rotation-slider {
     .header .reset {
       color: mat-color($foreground, icon);
+
+      &:hover {
+        color: mat-color($foreground, active-icon);
+      }
     }
 
     @include slider-theme('.red', mat-color($foreground, slider-red));
