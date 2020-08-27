@@ -8,7 +8,7 @@
   .ccf-visibility-menu {
     .visibility-icon {
       color: mat-color($foreground, icon);
-      &.highlighted {
+      &.visible {
         color: mat-color($accent);
       }
     }
