@@ -11,9 +11,9 @@ export class OpacitySliderComponent {
 
   @HostBinding('class') readonly clsName = 'ccf-opacity-slider';
 
-  @Input() selectedItem: VisibilityItem = undefined;
+  @Input() selectedItem: VisibilityItem | undefined = undefined;
 
-  @Input() value = 100;
+  @Input() opacity = 100;
 
   @Output() readonly opacityChange = new EventEmitter<number>();
 
@@ -21,9 +21,15 @@ export class OpacitySliderComponent {
 
   constructor() { }
 
-  changeOpacity(newOpacity: string): void {
-    this.value = parseInt(newOpacity, 10);
-    this.hidden = this.value === 100 ? true : false;
-    this.opacityChange.emit(this.value);
+  changeOpacity(newOpacity: number | string | undefined): void {
+    if (typeof newOpacity === 'string') {
+      this.opacity = parseInt(newOpacity, 10);
+    } else if (newOpacity === undefined) {
+      this.opacity = 100;
+    } else {
+      this.opacity = newOpacity;
+    }
+    this.hidden = this.opacity === 100 ? true : false;
+    this.opacityChange.emit(this.opacity);
   }
 }
