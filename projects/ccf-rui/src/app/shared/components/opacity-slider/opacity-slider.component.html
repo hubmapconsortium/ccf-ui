@@ -1,4 +1,6 @@
-<span class="text label">Opacity</span>
-<input type="range" step="1" min="0" max="100" [value]="opacity" (input)="changeOpacity($event.target.value)" class="slider">
-<span class="opacity-value" [class.hidden]="hidden">{{opacity}}</span>
-<mat-icon class="icon reset">refresh</mat-icon>
+<div class="slider-wrapper">
+  <span class="text label">Opacity</span>
+  <input type="range" step="1" min="0" max="100" [value]="opacity" (input)="changeOpacity($event.target.value)" class="slider">
+  <span class="opacity-value" [class.hidden]="hidden">{{opacity}}</span>
+  <mat-icon class="icon reset">refresh</mat-icon>
+</div>

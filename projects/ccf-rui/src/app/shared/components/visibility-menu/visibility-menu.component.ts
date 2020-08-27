@@ -81,6 +81,8 @@ export class VisibilityMenuComponent {
    */
   @Output() selectionChange = new EventEmitter<VisibilityItem | undefined>();
 
+  @Output() opacityChange = new EventEmitter<number>();
+
   /**
    * Emits the currently hovered item
    */
@@ -131,5 +133,6 @@ export class VisibilityMenuComponent {
     } else {
       this.selection.opacity = value;
     }
+    this.opacityChange.emit(value);
   }
 }
