@@ -6,6 +6,11 @@ import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/co
 export interface VisibilityItem {
 
   /**
+   * Id of the item
+   */
+  id: number;
+
+  /**
    * Name of the item
    */
   name: string;
@@ -13,7 +18,7 @@ export interface VisibilityItem {
   /**
    * Whether the item is currently highlighted
    */
-  highlighted: boolean;
+  visible: boolean;
 
   /**
    * Src of the icon (visible or non-visible)
@@ -24,6 +29,11 @@ export interface VisibilityItem {
    * Opacity value
    */
   opacity?: number;
+
+  /**
+   * Tooltip text to be displayed in the stage
+   */
+  tooltip?: string;
 }
 
 /**
@@ -44,41 +54,63 @@ export class VisibilityMenuComponent {
   /**
    * Items to be displayed in the visibility menu
    */
-  @Input() visibilityItems: VisibilityItem[];
+  @Input() items: VisibilityItem[];
 
   /**
-   * Emits the currently highlighted items
+   * Items that are currently set to visible
    */
-  @Output() highlightChange = new EventEmitter<VisibilityItem[]>();
-
-  /**
-   * Emits the currently selected item
-   */
-  @Output() selectionChange = new EventEmitter<VisibilityItem>();
+  @Input() visibleItems: VisibilityItem[];
 
   /**
    * Whether opacity value should be displayed
    */
   @Input() opacityOn = false;
 
-  selectedItem: VisibilityItem;
+  /**
+   * Emits the currently visible items
+   */
+  @Output() visibleItemsChange = new EventEmitter<VisibilityItem[]>();
 
   /**
-   * Toggles highlight state, sets the icon type, and emits an array containing the currently highlighted items
-   * @param item Visibility item
+   * Emits the currently selected item
    */
-  toggleHighlight(item: VisibilityItem): void {
-    item.highlighted = !item.highlighted;
-    item.iconSrc = item.highlighted ? 'app:visibility_on' : 'app:visibility_off';
-    this.highlightChange.emit(this.visibilityItems.filter(x => x.highlighted));
+  @Output() selectionChange = new EventEmitter<VisibilityItem | undefined>();
+
+  /**
+   * Emits the currently hovered item
+   */
+  @Output() hover = new EventEmitter<VisibilityItem | undefined>();
+
+  /**
+   * The currently selected item
+   */
+  selectedItem: VisibilityItem | undefined;
+
+  /**
+   * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
+   * @param item Menu item
+   */
+  toggleVisibility(item: VisibilityItem): void {
+    item.visible = !item.visible;
+    this.visibleItems = this.items.filter(x => x.visible)
+    item.iconSrc = item.visible ? 'app:visibility_on' : 'app:visibility_off';
+    this.visibleItemsChange.emit(this.visibleItems);
   }
 
   /**
-   * Toggles selected status of an item on click and sets highlight status of the item
-   * @param item Visibility item
+   * Toggles selected status of an item on click and sets visibility status of the item
+   * @param item Menu item
    */
   toggleSelected(item: VisibilityItem): void {
-    this.selectedItem = item;
+    this.selectedItem = item === this.selectedItem ? undefined : item;
     this.selectionChange.emit(item);
+  }
+
+  /**
+   * Emits an item in response to hover action
+   * @param item Menu item
+   */
+  mouseOver(item: VisibilityItem): void {
+    this.hover.emit(item);
   }
 }

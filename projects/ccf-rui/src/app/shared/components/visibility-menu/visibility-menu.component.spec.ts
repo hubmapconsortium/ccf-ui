@@ -6,8 +6,9 @@ import { VisibilityMenuModule } from './visibility-menu.module';
 describe('VisibilityMenuComponent', () => {
   let shallow: Shallow<VisibilityMenuComponent>;
   const testItem = {
+    id: 1,
     name: 'test',
-    highlighted: false,
+    visible: false,
     iconSrc: ''
   };
   const testItems = [testItem];
@@ -16,37 +17,50 @@ describe('VisibilityMenuComponent', () => {
     shallow = new Shallow(VisibilityMenuComponent, VisibilityMenuModule);
   });
 
-  it('should change the icon to visible type when toggleHighlight is called on a non-highlighted item', async () => {
-    const { instance } = await shallow.render({ bind: { visibilityItems: testItems } });
-    testItem.highlighted = false;
-    instance.toggleHighlight(testItem);
+  it('should change the icon to visible type when toggleVisibility is called on a non-visible item', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    testItem.visible = false;
+    instance.toggleVisibility(testItem);
     expect(testItem.iconSrc).toEqual('app:visibility_on');
   });
 
-  it('should change the icon to nonvisible type when toggleHighlight is called on a highlighted item', async () => {
-    const { instance } = await shallow.render({ bind: { visibilityItems: testItems } });
-    testItem.highlighted = true;
-    instance.toggleHighlight(testItem);
+  it('should change the icon to nonvisible type when toggleVisibility is called on a visible item', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    testItem.visible = true;
+    instance.toggleVisibility(testItem);
     expect(testItem.iconSrc).toEqual('app:visibility_off');
   });
 
-  it('should emit the highlighted items when toggleHighlight is called', async () => {
-    const { instance, outputs} = await shallow.render({ bind: { visibilityItems: testItems } });
-    testItem.highlighted = false;
-    instance.toggleHighlight(testItem);
-    expect(outputs.highlightChange.emit).toHaveBeenCalledWith([testItem]);
+  it('should emit the visible items when toggleVisibility is called', async () => {
+    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
+    testItem.visible = false;
+    instance.toggleVisibility(testItem);
+    expect(outputs.visibleItemsChange.emit).toHaveBeenCalledWith([testItem]);
   });
 
   it('should change selectedItem when toggleSelected is called', async () => {
-    const { instance } = await shallow.render({ bind: { visibilityItems: testItems } });
+    const { instance } = await shallow.render({ bind: { items: testItems } });
     instance.toggleSelected(testItem);
     expect(instance.selectedItem).toEqual(testItem);
   });
 
+  it('should set selectedItem to undefined when toggleSelected is called on the selected item', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.selectedItem = testItem;
+    instance.toggleSelected(testItem);
+    expect(instance.selectedItem).toBeUndefined();
+  });
+
   it('should emit the selected item when toggleSelected is called', async () => {
-    const { instance, outputs} = await shallow.render({ bind: { visibilityItems: testItems } });
+    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
     instance.toggleSelected(testItem);
     expect(outputs.selectionChange.emit).toHaveBeenCalledWith(testItem);
+  });
+
+  it('should emit the item when user hovers over an item', async () => {
+    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
+    instance.mouseOver(testItem);
+    expect(outputs.hover.emit).toHaveBeenCalledWith(testItem);
   });
 
 
