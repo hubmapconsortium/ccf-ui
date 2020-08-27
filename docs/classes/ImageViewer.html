@@ -1,0 +1,2069 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>ImageViewer</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-image-viewer/src/lib/image-viewer.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_channelConfigs">_channelConfigs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_height">_height</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_loaders">_loaders</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_sources">_sources</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_width">_width</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#deck">deck</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#layerConfigs">layerConfigs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#layers">layers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#props">props</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#states">states</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#views">views</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#vivViews">vivViews</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clear">clear</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Abstract</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#createLayerConfigs">createLayerConfigs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Abstract</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#createVivViews">createVivViews</a>
+                            </li>
+                            <li>
+                                <a href="#finalize">finalize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#initializeDeck">initializeDeck</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#layerFilter">layerFilter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#onViewStateChange">onViewStateChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetChannelConfigs">resetChannelConfigs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#setSize">setSize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#setSources">setSources</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#update">update</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateChannelConfigs">updateChannelConfigs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#updateDeckProps">updateDeckProps</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#updateLayers">updateLayers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#updateState">updateState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#updateViews">updateViews</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#width">width</a>
+                                </li>
+                                <li>
+                                    <a href="#height">height</a>
+                                </li>
+                                <li>
+                                    <a href="#sources">sources</a>
+                                </li>
+                                <li>
+                                    <a href="#loaders">loaders</a>
+                                </li>
+                                <li>
+                                    <a href="#channelNames">channelNames</a>
+                                </li>
+                                <li>
+                                    <a href="#channelConfigs">channelConfigs</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(props: Props)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:86</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>props</td>
+                                                  
+                                                        <td>
+                                                                    <code>Props</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_channelConfigs"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _channelConfigs</b>
+                            <a href="#_channelConfigs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/ChannelConfig.html" target="_self" >Record&lt;string | ChannelConfig&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:78</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_height"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _height</b>
+                            <a href="#_height"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:69</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_loaders"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _loaders</b>
+                            <a href="#_loaders"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Loader[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:74</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_sources"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _sources</b>
+                            <a href="#_sources"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>DataSource[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:73</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_width"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _width</b>
+                            <a href="#_width"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:68</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="deck"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            deck</b>
+                            <a href="#deck"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Deck</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:86</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="layerConfigs"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            layerConfigs</b>
+                            <a href="#layerConfigs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#LayerConfig" target="_self" >LayerConfig[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:83</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="layers"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            layers</b>
+                            <a href="#layers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Layer&lt;unknown&gt;[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:82</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="props"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            props</b>
+                            <a href="#props"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:64</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="states"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            states</b>
+                            <a href="#states"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#State" target="_self" >Record&lt;string | State&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:84</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="views"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            views</b>
+                            <a href="#views"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>View[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:81</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="vivViews"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            vivViews</b>
+                            <a href="#vivViews"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>VivView[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:80</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clear"></a>
+                    <span class="name">
+                        <b>
+                            clear
+                        </b>
+                        <a href="#clear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clear()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:99</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createLayerConfigs"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Abstract</span>
+                            <span class="modifier">Async</span>
+                            createLayerConfigs
+                        </b>
+                        <a href="#createLayerConfigs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createLayerConfigs()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:169</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#LayerConfig" target="_self" >Promise&lt;LayerConfig[]&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createVivViews"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Abstract</span>
+                            <span class="modifier">Async</span>
+                            createVivViews
+                        </b>
+                        <a href="#createVivViews"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createVivViews()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="168"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:168</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;VivView[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finalize"></a>
+                    <span class="name">
+                        <b>
+                            finalize
+                        </b>
+                        <a href="#finalize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>finalize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializeDeck"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            initializeDeck
+                        </b>
+                        <a href="#initializeDeck"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initializeDeck(props)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="212"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:212</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>props</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Deck</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="layerFilter"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            layerFilter
+                        </b>
+                        <a href="#layerFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>layerFilter(undefined: <a href="../interfaces/Filter.html">LayerFilterArgs</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="244"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:244</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >LayerFilterArgs</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onViewStateChange"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            onViewStateChange
+                        </b>
+                        <a href="#onViewStateChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onViewStateChange(undefined: <a href="../undefineds/OnViewStateChangeArgs.html">OnViewStateChangeArgs</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="250"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:250</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#OnViewStateChangeArgs" target="_self" >OnViewStateChangeArgs</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetChannelConfigs"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            resetChannelConfigs
+                        </b>
+                        <a href="#resetChannelConfigs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetChannelConfigs()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="231"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:231</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSize"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            setSize
+                        </b>
+                        <a href="#setSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setSize(width: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, height: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>width</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>height</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSources"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            setSources
+                        </b>
+                        <a href="#setSources"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setSources(sources: DataSource[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="133"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:133</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sources</td>
+                                    <td>
+                                            <code>DataSource[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            update
+                        </b>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateChannelConfigs"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            updateChannelConfigs
+                        </b>
+                        <a href="#updateChannelConfigs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateChannelConfigs(configs: <a href="../interfaces/ChannelConfig.html">Record<string | Partial<ChannelConfig>></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="148"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:148</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>configs</td>
+                                    <td>
+                                                <code><a href="../interfaces/ChannelConfig.html" target="_self" >Record&lt;string | Partial&lt;ChannelConfig&gt;&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateDeckProps"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            updateDeckProps
+                        </b>
+                        <a href="#updateDeckProps"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateDeckProps(props: <a href="../undefineds/DeckProps.html">Partial<DeckProps></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="208"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:208</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>props</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#DeckProps" target="_self" >Partial&lt;DeckProps&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateLayers"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            updateLayers
+                        </b>
+                        <a href="#updateLayers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateLayers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:185</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateState"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            updateState
+                        </b>
+                        <a href="#updateState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateState(args: <a href="../undefineds/ValueOrGenerator.html">ValueOrGenerator<Record<string, unknown> | ></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:195</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>args</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#ValueOrGenerator" target="_self" >ValueOrGenerator&lt;Record&lt;string, unknown&gt; | &gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateViews"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            updateViews
+                        </b>
+                        <a href="#updateViews"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateViews()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="width"></a>
+                        <span class="name"><b>width</b><a href="#width"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>width()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:66</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="height"></a>
+                        <span class="name"><b>height</b><a href="#height"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>height()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:67</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sources"></a>
+                        <span class="name"><b>sources</b><a href="#sources"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sources()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:71</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loaders"></a>
+                        <span class="name"><b>loaders</b><a href="#loaders"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>loaders()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:72</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="channelNames"></a>
+                        <span class="name"><b>channelNames</b><a href="#channelNames"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>channelNames()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:76</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="channelConfigs"></a>
+                        <span class="name"><b>channelConfigs</b><a href="#channelConfigs"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>channelConfigs()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ccf-image-viewer/src/lib/image-viewer.ts:77</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Deck, Layer, View, Viewport } from &#x27;@deck.gl/core&#x27;;
+import { Loader, VivView } from &#x27;@hms-dbmi/viv&#x27;;
+import { bind } from &#x27;bind-decorator&#x27;;
+
+import { createLoader, LoaderType, OMEZarrInfo, TiffInfo, ZarrInfo } from &#x27;./loader&#x27;;
+import { flatMap, getVivId } from &#x27;./utils&#x27;;
+
+
+type ValueOrGenerator&lt;T, U extends unknown[] &#x3D; []&gt; &#x3D; T | ((...args: U) &#x3D;&gt; T);
+
+type DeckProps &#x3D; ConstructorParameters&lt;typeof Deck&gt;[0];
+interface ExtDeckProps extends DeckProps {
+  canvas?: string | HTMLElement;
+}
+
+type DeckCallbackArgs&lt;K extends keyof DeckProps&gt; &#x3D; Parameters&lt;NonNullable&lt;DeckProps[K]&gt;&gt;[0];
+type LayerFilterArgs &#x3D; DeckCallbackArgs&lt;&#x27;layerFilter&#x27;&gt;;
+type OnViewStateChangeArgs &#x3D; DeckCallbackArgs&lt;&#x27;onViewStateChange&#x27;&gt; &amp; { viewId: string };
+
+export type State &#x3D; Record&lt;string, unknown&gt;;
+export type LayerConfig &#x3D; Record&lt;string, unknown&gt;;
+
+export interface ChannelConfig {
+  active: boolean;
+  color: [number, number, number];
+  slider: [number, number];
+}
+
+export interface DataSource {
+  type: LoaderType;
+  info: ZarrInfo | OMEZarrInfo | TiffInfo;
+}
+
+export interface ImageViewerProps {
+  id: string;
+  initialViewState: State;
+  canvas?: HTMLCanvasElement;
+  width?: number;
+  height?: number;
+  sources?: DataSource[];
+  channelNames?: string[];
+  defaultChannelConfig?: Partial&lt;ChannelConfig&gt;;
+}
+
+function applyPropDefaults&lt;Props extends ImageViewerProps&gt;(props: Props): Props &amp; Required&lt;ImageViewerProps&gt; {
+  return {
+    canvas: null,
+    width: 0,
+    height: 0,
+    sources: [],
+    channelNames: [],
+    ...props,
+    defaultChannelConfig: {
+      active: true,
+      color: [255, 255, 255],
+      slider: [1500, 20000],
+      ...(props.defaultChannelConfig ?? {})
+    }
+  };
+}
+
+
+export abstract class ImageViewer&lt;Props extends ImageViewerProps &#x3D; ImageViewerProps&gt; {
+  readonly props: Props &amp; Required&lt;ImageViewerProps&gt;;
+
+  get width(): number { return this._width; }
+  get height(): number { return this._height; }
+  private _width: number;
+  private _height: number;
+
+  get sources(): DataSource[] { return this._sources; }
+  get loaders(): Loader[] { return this._loaders; }
+  private _sources: DataSource[] &#x3D; [];
+  private _loaders: Loader[] &#x3D; [];
+
+  get channelNames(): string[] { return Object.keys(this.channelConfigs); }
+  get channelConfigs(): Record&lt;string, ChannelConfig&gt; { return this._channelConfigs; }
+  private _channelConfigs: Record&lt;string, ChannelConfig&gt; &#x3D; {};
+
+  protected vivViews: VivView[] &#x3D; [];
+  protected views: View[] &#x3D; [];
+  protected layers: Layer&lt;unknown&gt;[] &#x3D; [];
+  protected layerConfigs: LayerConfig[] &#x3D; [];
+  protected states: Record&lt;string, State&gt; &#x3D; {};
+
+  private deck: Deck;
+
+  constructor(props: Props) {
+    const reqProps &#x3D; this.props &#x3D; applyPropDefaults(props);
+    this.deck &#x3D; this.initializeDeck(reqProps);
+    this._width &#x3D; reqProps.width;
+    this._height &#x3D; reqProps.height;
+
+    if (reqProps.sources.length &gt; 0) {
+      this.setSources(reqProps.sources);
+    }
+  }
+
+  clear(): void {
+    this._sources &#x3D; [];
+    this._loaders &#x3D; [];
+    this._channelConfigs &#x3D; {};
+    this.vivViews &#x3D; [];
+    this.layers &#x3D; [];
+    this.layerConfigs &#x3D; [];
+    this.states &#x3D; {};
+    this.update();
+  }
+
+  finalize(): void {
+    this.deck.finalize();
+  }
+
+  async setSize(width: number, height: number): Promise&lt;this&gt; {
+    this._width &#x3D; width;
+    this._height &#x3D; height;
+    this.vivViews &#x3D; await this.createVivViews();
+
+    this.updateState((view, current) &#x3D;&gt; ({
+      viewState: {
+        ...current,
+        width,
+        height,
+        id: view.id
+      }
+    }));
+    this.update();
+    this.deck.redraw(true);
+
+    return this;
+  }
+
+  async setSources(sources: DataSource[]): Promise&lt;this&gt; {
+    const loaderPromises &#x3D; sources.map(source &#x3D;&gt; createLoader(source.type, source.info));
+    const loaders &#x3D; await Promise.all(loaderPromises);
+
+    this._sources &#x3D; sources;
+    this._loaders &#x3D; loaders;
+    this.resetChannelConfigs();
+    this.vivViews &#x3D; await this.createVivViews();
+    this.layerConfigs &#x3D; await this.createLayerConfigs();
+    this.updateState(view &#x3D;&gt; ({ viewState: view.initialViewState }));
+    this.update();
+
+    return this;
+  }
+
+  async updateChannelConfigs(configs: Record&lt;string, Partial&lt;ChannelConfig&gt;&gt;): Promise&lt;this&gt; {
+    const newConfigs &#x3D; Object.entries(configs).reduce((result, [key, config]) &#x3D;&gt; {
+      return !(key in result) ? result : {
+        ...result,
+        [key]: {
+          ...result[key],
+          ...config
+        }
+      };
+    }, this.channelConfigs);
+
+    if (newConfigs &#x3D;&#x3D;&#x3D; this.channelConfigs) { return this; }
+
+    this._channelConfigs &#x3D; newConfigs;
+    this.layerConfigs &#x3D; await this.createLayerConfigs();
+    this.update();
+
+    return this;
+  }
+
+  protected abstract async createVivViews(): Promise&lt;VivView[]&gt;;
+  protected abstract async createLayerConfigs(): Promise&lt;LayerConfig[]&gt;;
+
+  protected update(): void {
+    this.updateViews();
+    this.updateLayers();
+    this.updateDeckProps({
+      views: this.views,
+      layers: this.layers,
+      viewState: this.states
+    });
+  }
+
+  protected updateViews(): void {
+    this.views &#x3D; this.vivViews.map(viv &#x3D;&gt; viv.getDeckGlView());
+  }
+
+  protected updateLayers(): void {
+    const { vivViews, states, layerConfigs } &#x3D; this;
+    const length &#x3D; layerConfigs.length;
+
+    this.layers &#x3D; flatMap(vivViews, (view, index) &#x3D;&gt; view.getLayers({
+      viewStates: states,
+      props: layerConfigs[index % length]
+    }));
+  }
+
+  protected updateState(
+    args: ValueOrGenerator&lt;Record&lt;string, unknown&gt;, [VivView, State]&gt;
+  ): void {
+    const argsGenerator &#x3D; typeof args &#x3D;&#x3D;&#x3D; &#x27;function&#x27; ? args : () &#x3D;&gt; args;
+    const currentStates &#x3D; this.states;
+
+    this.states &#x3D; this.vivViews.reduce((states, view) &#x3D;&gt; {
+      const current &#x3D; currentStates[view.id] ?? {};
+      states[view.id] &#x3D; view.filterViewState(argsGenerator(view, current));
+      return states;
+    }, {} as Record&lt;string, State&gt;);
+  }
+
+  protected updateDeckProps(props: Partial&lt;DeckProps&gt;): void {
+    this.deck.setProps(props);
+  }
+
+  private initializeDeck(props: Props &amp; Required&lt;ImageViewerProps&gt;): Deck {
+    const { id, canvas, width, height } &#x3D; props;
+    return new Deck({
+      id,
+      canvas,
+      width,
+      height,
+      views: [],
+      layers: [],
+      effects: [],
+      viewState: {},
+      layerFilter: this.layerFilter,
+      onViewStateChange: this.onViewStateChange,
+      glOptions: {
+        webgl2: true
+      }
+    } as ExtDeckProps);
+  }
+
+  private resetChannelConfigs(): void {
+    const { loaders, props: { channelNames, defaultChannelConfig } } &#x3D; this;
+    const keys &#x3D; channelNames.length &gt; 0 ?
+      channelNames :
+      flatMap&lt;Loader, string&gt;(loaders, loader &#x3D;&gt; loader.channelNames ?? []);
+
+    this._channelConfigs &#x3D; keys.reduce((configs, key) &#x3D;&gt; ({
+      ...configs,
+      [key]: defaultChannelConfig as ChannelConfig
+    }), {} as Record&lt;string, ChannelConfig&gt;);
+  }
+
+  @bind
+  private layerFilter({ layer, viewport }: LayerFilterArgs): boolean {
+    const { id: viewportId } &#x3D; viewport as Viewport &amp; { id: string };
+    return layer.id.includes(getVivId(viewportId));
+  }
+
+  @bind
+  private onViewStateChange({ viewId, viewState, oldViewState }: OnViewStateChangeArgs): void {
+    this.updateState((_view, current) &#x3D;&gt; ({
+      viewState: { ...viewState, id: viewId },
+      oldViewState,
+      currentViewState: current
+    }));
+    this.update();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'ImageViewer.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

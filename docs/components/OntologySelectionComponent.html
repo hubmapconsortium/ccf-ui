@@ -1,0 +1,745 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>OntologySelectionComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Ontology selection component that encapsulates ontology search and tree components.</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-ontology-selection</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./ontology-selection.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ontology-selection.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ontologySearchService">ontologySearchService</a>
+                            </li>
+                            <li>
+                                <a href="#tree">tree</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selected">selected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#occurenceData">occurenceData</a>
+                            </li>
+                            <li>
+                                <a href="#ontologyFilter">ontologyFilter</a>
+                            </li>
+                            <li>
+                                <a href="#termData">termData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ontologySelection">ontologySelection</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ontologySearchService: <a href="../injectables/OntologySearchService.html">OntologySearchService</a>, store: Store)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ontology selection component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ontologySearchService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OntologySearchService.html" target="_self" >OntologySearchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Service for searching the ontology.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The global state store.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="occurenceData"></a>
+                        <b>occurenceData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Record&lt;string | number&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts:28</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A record of terms within the current filter.  To be passed on to ontology-tree</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ontologyFilter"></a>
+                        <b>ontologyFilter</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts:40</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Input list of selected ontology terms passed down to ontology-tree.
+Used to change display of ontology tree when selection is made from
+outside the component.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="termData"></a>
+                        <b>termData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Record&lt;string | number&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts:33</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>A record of terms the app currently has data for.  To be passed on to ontology-tree</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ontologySelection"></a>
+                        <b>ontologySelection</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts:45</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Captures and passes along the change in ontologySelections.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected"></a>
+                    <span class="name">
+                        <b>
+                            selected
+                        </b>
+                        <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selected(ontologyNode: <a href="../interfaces/OntologyNode.html">OntologyNode</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ontology selection event when node is selected from the search results.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ontologyNode</td>
+                                    <td>
+                                                <code><a href="../interfaces/OntologyNode.html" target="_self" >OntologyNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>selected ontology node.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ontologySearchService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            ontologySearchService</b>
+                            <a href="#ontologySearchService"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/OntologySearchService.html" target="_self" >OntologySearchService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Service for searching the ontology.</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tree"></a>
+                        <span class="name">
+                            <b>
+                            tree</b>
+                            <a href="#tree"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../components/OntologyTreeComponent.html" target="_self" >OntologyTreeComponent</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(OntologyTreeComponent, {static: false})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>View child of search component</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild, Output, EventEmitter, Input } from &#x27;@angular/core&#x27;;
+import { Store } from &#x27;@ngxs/store&#x27;;
+
+import { OntologyNode } from &#x27;../../../core/models/ontology-node&#x27;;
+import { OntologySearchService } from &#x27;../../../core/services/ontology-search/ontology-search.service&#x27;;
+import { OntologyState, OntologyStateModel } from &#x27;../../../core/store/ontology/ontology.state&#x27;;
+import { OntologyTreeComponent } from &#x27;../ontology-tree/ontology-tree.component&#x27;;
+import { OntologySelection } from &#x27;../../../core/models/ontology-selection&#x27;;
+
+
+/**
+ * Ontology selection component that encapsulates ontology search and tree components.
+ */
+@Component({
+  selector: &#x27;ccf-ontology-selection&#x27;,
+  templateUrl: &#x27;./ontology-selection.component.html&#x27;,
+  styleUrls: [&#x27;./ontology-selection.component.scss&#x27;]
+})
+export class OntologySelectionComponent {
+  /**
+   * View child of search component
+   */
+  @ViewChild(OntologyTreeComponent, { static: false }) tree: OntologyTreeComponent;
+
+  /**
+   * A record of terms within the current filter.  To be passed on to ontology-tree
+   */
+  @Input() occurenceData: Record&lt;string, number&gt;;
+
+  /**
+   * A record of terms the app currently has data for.  To be passed on to ontology-tree
+   */
+  @Input() termData: Record&lt;string, number&gt;;
+
+  /**
+   * Input list of selected ontology terms passed down to ontology-tree.
+   * Used to change display of ontology tree when selection is made from
+   * outside the component.
+   */
+  @Input() ontologyFilter: string[];
+
+  /**
+   * Captures and passes along the change in ontologySelections.
+   */
+  @Output() ontologySelection &#x3D; new EventEmitter&lt;OntologySelection&gt;();
+
+  /**
+   * Creates an instance of ontology selection component.
+   * @param ontologySearchService Service for searching the ontology.
+   * @param store The global state store.
+   */
+  constructor(
+    public ontologySearchService: OntologySearchService,
+    private readonly store: Store
+  ) { }
+
+  /**
+   * Ontology selection event when node is selected from the search results.
+   * @param ontologyNode selected ontology node.
+   */
+  selected(ontologyNode: OntologyNode): void {
+    const { nodes } &#x3D; this.store.selectSnapshot&lt;OntologyStateModel&gt;(OntologyState);
+    this.tree.expandAndSelect(ontologyNode, node &#x3D;&gt; nodes[node.parent]);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ccf-ontology-search (selected)&#x3D;&quot;selected($event)&quot;&gt;&lt;/ccf-ontology-search&gt;
+&lt;ccf-ontology-tree
+    *ngIf&#x3D;&quot;ontologySearchService.rootNode | async as rootNode&quot;
+    class&#x3D;&quot;tree&quot;
+    [nodes]&#x3D;&quot;[rootNode]&quot;
+    [getChildren]&#x3D;&quot;ontologySearchService.getChildren&quot;
+    (nodeSelected)&#x3D;&quot;ontologySelection.emit($event)&quot;
+    [occurenceData]&#x3D;&quot;occurenceData&quot;
+    [termData]&#x3D;&quot;termData&quot;
+    [ontologyFilter]&#x3D;&quot;ontologyFilter&quot;
+&gt;&lt;/ccf-ontology-tree&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./ontology-selection.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ccf-ontology-search (selected)="selected($event)"></ccf-ontology-search><ccf-ontology-tree    *ngIf="ontologySearchService.rootNode | async as rootNode"    class="tree"    [nodes]="[rootNode]"    [getChildren]="ontologySearchService.getChildren"    (nodeSelected)="ontologySelection.emit($event)"    [occurenceData]="occurenceData"    [termData]="termData"    [ontologyFilter]="ontologyFilter"></ccf-ontology-tree></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ColorBarComponent', 'selector': 'ccf-color-bar'},{'name': 'ColorPickerLauncherComponent', 'selector': 'ccf-color-picker-launcher'},{'name': 'ColorSchemeContentsComponent', 'selector': 'ccf-color-scheme-contents'},{'name': 'ColorSchemePopupComponent', 'selector': 'ccf-color-scheme-popup'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'ImageViewerAccordionComponent', 'selector': 'ccf-image-viewer-accordion'},{'name': 'ImageViewerContentComponent', 'selector': 'ccf-image-viewer-content'},{'name': 'ImageViewerLayersComponent', 'selector': 'ccf-image-viewer-layers'},{'name': 'ImageViewerLegendComponent', 'selector': 'ccf-image-viewer-legend'},{'name': 'ImageViewerPopoverComponent', 'selector': 'ccf-image-viewer-popover'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SchemeDropdownComponent', 'selector': 'ccf-scheme-dropdown'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'OntologySelectionComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'OntologySelectionComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
