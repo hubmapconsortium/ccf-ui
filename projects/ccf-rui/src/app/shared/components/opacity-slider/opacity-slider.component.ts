@@ -21,14 +21,8 @@ export class OpacitySliderComponent {
 
   constructor() { }
 
-  changeOpacity(newOpacity: number | string | undefined): void {
-    if (typeof newOpacity === 'string') {
-      this.opacity = parseInt(newOpacity, 10);
-    } else if (newOpacity === undefined) {
-      this.opacity = 100;
-    } else {
-      this.opacity = newOpacity;
-    }
+  changeOpacity(newOpacity: string): void {
+    this.opacity = parseInt(newOpacity, 10);
     this.hidden = this.opacity === 100 ? true : false;
     this.opacityChange.emit(this.opacity);
   }

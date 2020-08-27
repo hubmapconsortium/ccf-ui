@@ -14,7 +14,7 @@
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
     </mat-expansion-panel-header>
-    <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)" [opacityOn]="true" [items]="anatomicalStructures" [opacity]="slider.opacity"></ccf-visibility-menu>
-    <ccf-opacity-slider #slider (opacityChange)="menu.updateOpacity(slider.opacity)" [opacity]="menu.opacity"></ccf-opacity-slider>
+    <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)" [opacityOn]="true" [items]="anatomicalStructures"></ccf-visibility-menu>
+    <ccf-opacity-slider #slider (opacityChange)="menu.updateOpacity($event)" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
   </mat-expansion-panel>
 </ng-template>

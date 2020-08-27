@@ -86,9 +86,6 @@ export class VisibilityMenuComponent {
    */
   @Output() hover = new EventEmitter<VisibilityItem | undefined>();
 
-  @Input() opacity: number | undefined = this.selection?.opacity || 100;
-
-
   /**
    * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
    * @param item Menu item
@@ -106,7 +103,7 @@ export class VisibilityMenuComponent {
    */
   toggleSelected(item: VisibilityItem): void {
     this.selection = item === this.selection ? undefined : item;
-    this.opacity = this.selection ? this.selection.opacity : undefined;
+    // this.opacity = this.selection ? this.selection.opacity : undefined;
     this.selectionChange.emit(item);
   }
 
@@ -127,11 +124,10 @@ export class VisibilityMenuComponent {
   }
 
   updateOpacity(value: number): void {
-    console.log(this.opacity)
-    if (this.selection) {
-      this.selection.opacity = value || 100;
-    } else {
+    if (!this.selection) {
       return;
+    } else {
+      this.selection.opacity = value;
     }
   }
 }
