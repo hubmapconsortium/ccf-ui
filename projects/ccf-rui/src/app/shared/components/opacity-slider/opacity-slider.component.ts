@@ -1,5 +1,7 @@
 import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 
+import { VisibilityItem } from '../visibility-menu/visibility-menu.component';
+
 @Component({
   selector: 'ccf-opacity-slider',
   templateUrl: './opacity-slider.component.html',
@@ -8,6 +10,8 @@ import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/co
 export class OpacitySliderComponent {
 
   @HostBinding('class') readonly clsName = 'ccf-opacity-slider';
+
+  @Input() selectedItem: VisibilityItem = undefined;
 
   @Input() value = 100;
 

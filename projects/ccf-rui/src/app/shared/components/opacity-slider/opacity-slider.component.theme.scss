@@ -1,0 +1,12 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+
+  .ccf-opacity-slider {
+    border: 1px solid mat-color($foreground, borders);
+    background-color: white;
+  }
+}

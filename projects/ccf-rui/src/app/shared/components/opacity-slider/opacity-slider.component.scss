@@ -1,10 +1,18 @@
 :host {
-  height: 3rem;
+  height: 2.25rem;
   display: flex;
+  align-items: center;
+  margin: 0 !important;
+  border-radius: 3px;
 
   .opacity-value {
     &.hidden {
       display: none;
     }
+  }
+
+  .reset {
+    transform: scaleX(-1);
+    cursor: pointer;
   }
 }
