@@ -55,11 +55,16 @@ export class VisibilityMenuComponent {
    * Items to be displayed in the visibility menu
    */
   @Input() items: VisibilityItem[];
-
+  
   /**
    * Items that are currently set to visible
    */
   @Input() visibleItems: VisibilityItem[];
+
+  /**
+   * The currently selected item
+   */
+  @Input() selection: VisibilityItem | undefined;
 
   /**
    * Whether opacity value should be displayed
@@ -81,10 +86,6 @@ export class VisibilityMenuComponent {
    */
   @Output() hover = new EventEmitter<VisibilityItem | undefined>();
 
-  /**
-   * The currently selected item
-   */
-  selectedItem: VisibilityItem | undefined;
 
   /**
    * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
@@ -102,7 +103,7 @@ export class VisibilityMenuComponent {
    * @param item Menu item
    */
   toggleSelected(item: VisibilityItem): void {
-    this.selectedItem = item === this.selectedItem ? undefined : item;
+    this.selection = item === this.selection ? undefined : item;
     this.selectionChange.emit(item);
   }
 
@@ -112,5 +113,13 @@ export class VisibilityMenuComponent {
    */
   mouseOver(item: VisibilityItem): void {
     this.hover.emit(item);
+  }
+
+  /**
+   * Emits undefined in response to mouse out
+   * @param item Menu item
+   */
+  mouseOut(item: VisibilityItem): void {
+    this.hover.emit(undefined);
   }
 }

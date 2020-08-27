@@ -38,17 +38,17 @@ describe('VisibilityMenuComponent', () => {
     expect(outputs.visibleItemsChange.emit).toHaveBeenCalledWith([testItem]);
   });
 
-  it('should change selectedItem when toggleSelected is called', async () => {
+  it('should change selection when toggleSelected is called', async () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
     instance.toggleSelected(testItem);
-    expect(instance.selectedItem).toEqual(testItem);
+    expect(instance.selection).toEqual(testItem);
   });
 
-  it('should set selectedItem to undefined when toggleSelected is called on the selected item', async () => {
+  it('should set selection to undefined when toggleSelected is called on the selected item', async () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
-    instance.selectedItem = testItem;
+    instance.selection = testItem;
     instance.toggleSelected(testItem);
-    expect(instance.selectedItem).toBeUndefined();
+    expect(instance.selection).toBeUndefined();
   });
 
   it('should emit the selected item when toggleSelected is called', async () => {
@@ -61,6 +61,12 @@ describe('VisibilityMenuComponent', () => {
     const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
     instance.mouseOver(testItem);
     expect(outputs.hover.emit).toHaveBeenCalledWith(testItem);
+  });
+
+  it('should emit undefined when the user moves cursor off the item', async () => {
+    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
+    instance.mouseOut(testItem);
+    expect(outputs.hover.emit).toHaveBeenCalledWith(undefined);
   });
 
 
