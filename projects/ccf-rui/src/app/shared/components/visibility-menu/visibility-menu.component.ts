@@ -86,6 +86,8 @@ export class VisibilityMenuComponent {
    */
   @Output() hover = new EventEmitter<VisibilityItem | undefined>();
 
+  disableSlider = true;
+
   /**
    * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
    * @param item Menu item
@@ -103,7 +105,7 @@ export class VisibilityMenuComponent {
    */
   toggleSelected(item: VisibilityItem): void {
     this.selection = item === this.selection ? undefined : item;
-    // this.opacity = this.selection ? this.selection.opacity : undefined;
+    this.disableSlider = this.selection ? false : true;
     this.selectionChange.emit(item);
   }
 

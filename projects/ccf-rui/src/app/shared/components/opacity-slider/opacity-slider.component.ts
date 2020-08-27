@@ -15,11 +15,11 @@ export class OpacitySliderComponent {
 
   @Input() opacity = 100;
 
+  @Input() disabled = true;
+
   @Output() readonly opacityChange = new EventEmitter<number>();
 
   hidden = true;
-
-  constructor() { }
 
   changeOpacity(newOpacity: string): void {
     this.opacity = parseInt(newOpacity, 10);

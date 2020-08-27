@@ -5,6 +5,12 @@
   margin: 0 !important;
   border-radius: 3px;
 
+  &.disabled {
+    opacity: 30%;
+
+    pointer-events: none;
+  }
+
   .opacity-value {
     &.hidden {
       display: none;
