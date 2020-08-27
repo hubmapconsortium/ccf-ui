@@ -1,23 +1,25 @@
 @use '~@angular/material/theming' as *;
 
-@mixin slider-theme($cls, $color) {
+@mixin slider-theme($cls, $color, $lightColor) {
   .slider-box#{$cls} {
     .label {
       color: $color;
     }
 
-    .slider {
-      background: $color;
+    .mat-slider.mat-slider-horizontal .mat-slider-wrapper {
+      background-color: $lightColor;
     }
-
-    // If a browser encounters an unknown pseudo class it discards
-    // entire ruleset therefore these cannot be combined with
-    // the regular rule.
-    .slider::-webkit-slider-thumb {
+    .mat-slider.mat-slider-horizontal .mat-slider-track-background,
+    .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+      background-color: $lightColor;
+    }
+    .mat-accent .mat-slider-thumb {
       background-color: $color;
     }
-
-    .slider::-moz-range-thumb {
+    .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
+      background-color: $color;
+    }
+    .mat-slider.mat-slider-horizontal .mat-slider-thumb-label {
       background-color: $color;
     }
   }
@@ -37,8 +39,8 @@
       }
     }
 
-    @include slider-theme('.red', mat-color($foreground, slider-red));
-    @include slider-theme('.green', mat-color($foreground, slider-green));
-    @include slider-theme('.blue', mat-color($foreground, slider-blue));
+    @include slider-theme('.red', mat-color($foreground, slider-red), mat-color($foreground, slider-red-light));
+    @include slider-theme('.green', mat-color($foreground, slider-green), mat-color($foreground, slider-green-light));
+    @include slider-theme('.blue', mat-color($foreground, slider-blue), mat-color($foreground, slider-blue-light));
   }
 }
