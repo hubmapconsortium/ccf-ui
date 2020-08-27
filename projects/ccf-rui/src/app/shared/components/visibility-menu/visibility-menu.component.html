@@ -1,5 +1,5 @@
-<div class="item-entry" *ngFor="let item of visibilityItems" (mouseover)="hover(item)" (mouseout)="setHighlight(item)">
-  <mat-icon class="visibility-icon" [class.highlighted]="item.highlighted" svgIcon="{{item.iconSrc}}"></mat-icon>
+<div class="item-entry" [class.selected]="selectedItem === item" *ngFor="let item of items" (mouseover)="mouseOver(item)">
+  <mat-icon class="visibility-icon" (click)="toggleVisibility(item)" [class.visible]="item.visible" svgIcon="{{item.iconSrc}}"></mat-icon>
   <div class="item-name" title="{{item.name}}" (click)="toggleSelected(item)">{{ item.name }}</div>
   <div class="opacity-setting" [class.hidden]="!opacityOn">{{ item.opacity }}</div>
 </div>

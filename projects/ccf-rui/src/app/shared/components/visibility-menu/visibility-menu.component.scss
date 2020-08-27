@@ -1,20 +1,28 @@
 :host {
   display: flex;
   flex-direction: column;
-  margin-left: .5rem !important;
   margin-top: .5rem !important;
   margin-right: 0 !important;
+  margin-left: 0 !important;
   max-height: 18rem;
   overflow-y: auto;
 
   .item-entry {
     display: flex;
     height: 2.25rem;
+    align-items: center;
+
+    .visibility-icon {
+      margin-left: .5rem;
+    }
+
+    .visibility-icon, .item-name {
+      cursor: pointer;
+    }
     
     .item-name {
       margin-left: 1rem;
       user-select: none;
-      cursor: pointer;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
