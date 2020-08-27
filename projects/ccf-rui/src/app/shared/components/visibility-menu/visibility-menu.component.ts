@@ -92,7 +92,7 @@ export class VisibilityMenuComponent {
    */
   toggleVisibility(item: VisibilityItem): void {
     item.visible = !item.visible;
-    this.visibleItems = this.items.filter(x => x.visible)
+    this.visibleItems = this.items.filter(x => x.visible);
     item.iconSrc = item.visible ? 'app:visibility_on' : 'app:visibility_off';
     this.visibleItemsChange.emit(this.visibleItems);
   }
