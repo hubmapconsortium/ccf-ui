@@ -11,7 +11,7 @@ import { ColorScheme } from '../../models/color-scheme';
 import { ImageViewerLayer, PureImageViewerLayer } from '../../models/image-viewer-layer';
 
 
-const NUM_LAYERS_SELECTED_ON_CREATION = 3;
+const NUM_LAYERS_SELECTED_ON_CREATION = 4;
 const IMAGE_VIEWER_LAYER_DEFAULTS = {
   brightness: [2, 31] as [number, number],
   transparency: 100,

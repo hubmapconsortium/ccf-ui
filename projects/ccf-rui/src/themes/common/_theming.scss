@@ -29,6 +29,7 @@
   @include mat-slide-toggle-theme($theme);
   @include mat-toolbar-theme($theme);
   @include mat-tooltip-theme($theme);
+  @include mat-slider-theme($theme);
 
   @include header.theme($theme);
   @include infoDialog.theme($theme);
