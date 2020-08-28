@@ -10,7 +10,7 @@
   &.disabled {
     opacity: 30%;
     cursor: not-allowed !important;
-    .slider-wrapper {
+    .slider-box {
       pointer-events: none;
     }
   }
