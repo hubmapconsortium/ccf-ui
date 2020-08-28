@@ -22,7 +22,7 @@
     padding-left: 0.5rem;
 
     .value {
-      width: 1.5rem;
+      width: 2.75rem;
       text-align: center;
     }
 
@@ -30,7 +30,7 @@
       width: 100%;
       padding-left: 2rem;
       padding-right: 2rem;
-      padding-bottom: .5rem;
+      padding-bottom: 1rem;
       padding-top: 1rem;
 
       .slider {
@@ -45,6 +45,12 @@
 }
 
 ::ng-deep {
+  .mat-slider-horizontal .mat-slider-wrapper {
+    height: 3px;
+  }
+  .mat-slider-horizontal .mat-slider-track-background {
+    height: 3px;
+  }
   .mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
     height: 3px;
     border-radius: 4px;
