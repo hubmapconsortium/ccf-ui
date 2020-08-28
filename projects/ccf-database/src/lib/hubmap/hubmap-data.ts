@@ -232,6 +232,12 @@ export class HuBMAPEntity {
     for (const d of [ data, ...this.ancestors, ...this.descendants ]) {
       const tiffs = (get(d, 'metadata.files', []) as {rel_path: string}[])
         .filter(f => /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
+        .filter(f => !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path)) // FIXME: Temporarily ignore IMS and MxIF data
+        // FIXME: Temporarily only use VU tifs that we have thumbnails for
+        .filter(f => groupUUID === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a' ? DR1_VU_THUMBS.has(
+            f.rel_path.split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg')
+          ) : true
+        )
         .map(f => `${this.assetsApi}/${d.uuid}/${f.rel_path}` + (serviceToken ? `?token=${serviceToken}` : ''));
       if (tiffs.length > 0) {
         images = images.concat(tiffs);
@@ -300,6 +306,9 @@ export class HuBMAPEntity {
         this.resultUrl = `${portalUrl}browse/dataset/${uuid}#visualization`;
       } else if (dataTypes.has('salmon_rnaseq_10x')) {
         const uuid = dataTypes.get('salmon_rnaseq_10x')?.uuid;
+        this.resultUrl = `${portalUrl}browse/dataset/${uuid}#visualization`;
+      } else if (dataTypes.has('image_pyramid')) {
+        const uuid = dataTypes.get('image_pyramid')?.uuid;
         this.resultUrl = `${portalUrl}browse/dataset/${uuid}#visualization`;
       } else {
         this.resultUrl = this.portalUrl;
