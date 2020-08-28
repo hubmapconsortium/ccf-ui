@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 /**
  * Interface for visibility item data
@@ -81,6 +81,9 @@ export class VisibilityMenuComponent {
    */
   @Output() selectionChange = new EventEmitter<VisibilityItem | undefined>();
 
+  /**
+   * Emits the current opacity value
+   */
   @Output() opacityChange = new EventEmitter<number>();
 
   /**
@@ -88,6 +91,9 @@ export class VisibilityMenuComponent {
    */
   @Output() hover = new EventEmitter<VisibilityItem | undefined>();
 
+  /**
+   * Disables slider interactions
+   */
   disableSlider = true;
 
   /**
@@ -102,7 +108,7 @@ export class VisibilityMenuComponent {
   }
 
   /**
-   * Toggles selected status of an item on click and sets visibility status of the item
+   * Toggles selected status of an item on click and disables the slider if no item is selected
    * @param item Menu item
    */
   toggleSelected(item: VisibilityItem): void {
@@ -127,6 +133,10 @@ export class VisibilityMenuComponent {
     this.hover.emit(undefined);
   }
 
+  /**
+   * Updates opacity of the currently selected item (if selected) and emits the new opacity value
+   * @param value Updated opacity value
+   */
   updateOpacity(value: number): void {
     if (!this.selection) {
       return;
@@ -136,6 +146,9 @@ export class VisibilityMenuComponent {
     this.opacityChange.emit(value);
   }
 
+  /**
+   * Resets all opacity values to 100;
+   */
   resetOpacity(): void {
     for(const item of this.items) {
       item.opacity = 100;
