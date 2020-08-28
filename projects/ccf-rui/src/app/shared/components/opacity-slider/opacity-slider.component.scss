@@ -26,25 +26,19 @@
     margin-right: 2rem;
   }
 
-  .slider {
+  ::ng-deep .slider {
     width: 40%;
-    height: 3px;
-    border-radius: 5px;
-    outline: none;
-    -webkit-transition: 0.2s;
-    transition: opacity 0.2s;
-    cursor: pointer;
-  }
 
-  .slider::-moz-range-thumb {
-    width: 15x;
-    height: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+    .mat-slider-track-wrapper, .mat-slider-track-fill {
+      height: .2rem;
+    }
+    .mat-slider-track-fill {
+      opacity: 0.5;
+    }
 
-  .slider::-moz-range-track {
-    opacity: 0.5;
+    .mat-slider-thumb {
+      transform: none;
+    }
   }
 
   .opacity-value {
