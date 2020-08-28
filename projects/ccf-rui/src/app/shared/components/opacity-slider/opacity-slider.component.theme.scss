@@ -8,5 +8,9 @@
   .ccf-opacity-slider {
     border: 1px solid mat-color($foreground, borders);
     background-color: white;
+
+    .reset {
+      color: mat-color($foreground, icon);
+    }
   }
 }

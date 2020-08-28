@@ -2,11 +2,24 @@
   height: 2.25rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin: 0 !important;
   border-radius: 3px;
 
+  .label {
+    margin-left: 0.5rem;
+    margin-right: 2rem;
+  }
+
+  .opacity-value {
+    width: 1.5rem;
+    margin-left: 0.5rem;
+  }
+
   .slider-wrapper {
     display: flex;
+    width: 100%;
+    align-items: center;
   }
 
   &.disabled {
@@ -17,6 +30,15 @@
     }
   }
 
+  .slider {
+    width: 40%;
+    height: 2px;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
   .opacity-value {
     &.hidden {
       display: none;
@@ -24,6 +46,8 @@
   }
 
   .reset {
+    margin-left: auto;
+    margin-right: 1rem;
     transform: scaleX(-1);
     cursor: pointer;
   }
