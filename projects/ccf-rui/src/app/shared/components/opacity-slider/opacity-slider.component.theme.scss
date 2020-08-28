@@ -1,16 +1,46 @@
 @use '~@angular/material/theming' as *;
 
+@mixin slider-theme($cls, $color) {
+  .slider-box#{$cls} {
+    .slider {
+      background: $color;
+    }
+
+    // If a browser encounters an unknown pseudo class it discards
+    // entire ruleset therefore these cannot be combined with
+    // the regular rule.
+    .slider::-webkit-slider-thumb {
+      background-color: $color;
+    }
+
+    .slider::-moz-range-thumb {
+      background-color: $color;
+    }
+
+    .slider::-moz-range-track {
+      background-color: $color;
+    }
+  }
+}
+
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $primary: map-get($theme, primary);
 
   .ccf-opacity-slider {
     border: 1px solid mat-color($foreground, borders);
     background-color: white;
 
-    .reset {
+    .opacity-value {
       color: mat-color($foreground, icon);
     }
+
+    .reset {
+      color: mat-color($foreground, icon);
+      &:hover {
+        color: mat-color($foreground, active-icon);
+      }
+    }
+
+    @include slider-theme('.opacity', mat-color($foreground, slider-blue));
   }
 }

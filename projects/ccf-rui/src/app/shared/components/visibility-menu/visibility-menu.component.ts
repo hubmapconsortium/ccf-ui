@@ -135,4 +135,10 @@ export class VisibilityMenuComponent {
     }
     this.opacityChange.emit(value);
   }
+
+  resetOpacity(): void {
+    for(const item of this.items) {
+      item.opacity = 100;
+    }
+  }
 }
