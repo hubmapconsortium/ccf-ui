@@ -97,16 +97,21 @@ jobs:
     if: branch =~ /^pbi-.*$/ AND NOT(type = pull_request)
     script:
     - npm run build:libs
-    - npm run build -- --output-hashing=none --base-href=/
-    - npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
-    - cp -r dist/ccf-rui dist/ccf-ui/rui
-    - npm run compodoc
+    - npm run build -- --project ccf-rui --output-hashing=none --base-href=/
+
+    ### Temporarily disabling building of EUI and compodoc for build previews
+    ### to speed up build preview generation
+    #- npm run build -- --output-hashing=none --base-href=/
+    #- npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
+    #- cp -r dist/ccf-rui dist/ccf-ui/rui
+    #- npm run compodoc
     deploy:
       provider: netlify
       skip-cleanup: true
       site: "$NETLIFY_SITE_ID"
       auth: "$NETLIFY_TOKEN"
-      dir: dist/ccf-ui
+      dir: dist/ccf-rui
+      #dir: dist/ccf-ui
       edge: true
       on:
         all_branches: true
