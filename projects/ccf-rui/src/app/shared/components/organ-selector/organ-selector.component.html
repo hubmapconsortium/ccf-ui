@@ -2,7 +2,7 @@
   <mat-icon class="carousel-left-icon" (click)="shift('left', 56)" [class.disabled]="onLeft">chevron_left</mat-icon>
   <div class="carousel-item-container">
     <div class="carousel-item-list">
-      <div *ngFor="let icon of organList" class="carousel-item" (click)="selectOrgan(icon)"
+      <div *ngFor="let icon of organList" class="carousel-item" [class.disabled]="!icon.hasData" (click)="selectOrgan(icon)"
            [class.selected]="isSelected(icon)">
         <mat-icon class="carousel-icon" svgIcon="{{icon.src}}"></mat-icon>
         <span class="carousel-text">{{icon.name}}</span>

@@ -32,5 +32,9 @@
     &.selected {
       color: mat-color($foreground, active-icon) !important;
     }
+
+    &.disabled {
+      color: mat-color($foreground, disabled)
+    }
   }
 }
