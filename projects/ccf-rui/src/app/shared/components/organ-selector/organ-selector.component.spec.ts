@@ -6,6 +6,15 @@ import { OrganInfo } from './organ-selector.component';
 
 describe('OrganSelectorComponent', () => {
   let shallow: Shallow<OrganSelectorComponent>;
+  const testOrganList = [
+    {name: 'A', src: 'A', hasData: true},
+    {name: 'B', src: 'B', hasData: true},
+    {name: 'C', src: 'C', hasData: true},
+    {name: 'D', src: 'D', hasData: true},
+    {name: 'E', src: 'E', hasData: true},
+    {name: 'F', src: 'F', hasData: true},
+    {name: 'G', src: 'G', hasData: true},
+  ] as OrganInfo[];
 
   beforeEach(() => {
     shallow = new Shallow(OrganSelectorComponent, OrganSelectorModule);
@@ -32,15 +41,6 @@ describe('OrganSelectorComponent', () => {
   it('should not shift the carousel right if carousel is already at right end.', async () => {
     const { find, instance } = await shallow.render();
     const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
-    const testOrganList = [
-      {name: 'A', src: 'A'},
-      {name: 'B', src: 'B'},
-      {name: 'C', src: 'C'},
-      {name: 'D', src: 'D'},
-      {name: 'E', src: 'E'},
-      {name: 'F', src: 'F'},
-      {name: 'G', src: 'G'},
-    ] as OrganInfo[];
     instance.organList = testOrganList;
     carousel.style.left = '-80px';
     instance.onRight = true;
@@ -51,15 +51,6 @@ describe('OrganSelectorComponent', () => {
   it('should not shift the carousel left if carousel is already at left end.', async () => {
     const { find, instance } = await shallow.render();
     const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
-    const testOrganList = [
-      {name: 'A', src: 'A'},
-      {name: 'B', src: 'B'},
-      {name: 'C', src: 'C'},
-      {name: 'D', src: 'D'},
-      {name: 'E', src: 'E'},
-      {name: 'F', src: 'F'},
-      {name: 'G', src: 'G'},
-    ] as OrganInfo[];
     instance.organList = testOrganList;
     carousel.style.left = '0px';
     instance.onLeft = true;
@@ -69,15 +60,15 @@ describe('OrganSelectorComponent', () => {
 
   it('should emit the organ name whenever selectOrgan is called.', async () => {
     const { instance, outputs } = await shallow.render();
-    const testOrgan: OrganInfo = {name: 'test', src: 'test'};
+    const testOrgan: OrganInfo = {name: 'test', src: 'test', hasData: true};
     instance.selectOrgan(testOrgan);
     expect(outputs.organChanged.emit).toHaveBeenCalled();
   });
 
   it('should tell if an icon is selected.', async () => {
     const { instance } = await shallow.render();
-    const testOrgan: OrganInfo = {name: 'test', src: 'test'};
-    const testOrgan2: OrganInfo = {name: 'test2', src: 'test2'};
+    const testOrgan: OrganInfo = {name: 'test', src: 'test', hasData: true};
+    const testOrgan2: OrganInfo = {name: 'test2', src: 'test2', hasData: true};
     instance.selectOrgan(testOrgan);
     expect(instance.isSelected(testOrgan)).toBeTrue();
     expect(instance.isSelected(testOrgan2)).toBeFalse();
