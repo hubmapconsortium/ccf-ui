@@ -150,10 +150,13 @@ export class VisibilityMenuComponent {
    * Resets all opacity values to 100;
    */
   resetOpacity(): void {
-    const newItems = this.items;
-    for(const item of newItems) {
-      item.opacity = 100;
+    this.items = this.items.map(i => ({ ...i, opacity: 100}));
+    if (this.selection) {
+      this.selection.opacity = 100;
     }
-    this.items = newItems;
+  }
+
+  getId(index, item: VisibilityItem): number {
+    return item.id;
   }
 }
