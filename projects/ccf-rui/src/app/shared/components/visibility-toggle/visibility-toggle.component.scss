@@ -1,0 +1,14 @@
+:host {
+    margin-bottom: .75rem;
+
+    .toggle-wrapper {
+        display: flex;
+        flex-direction: row;
+        padding-left: .5rem;
+
+        .toggle-label {
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+    }
+}

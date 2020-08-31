@@ -1,1 +1,10 @@
-<p>visibility-toggle works!</p>
+<div (click)="toggleVisibility()" class="toggle-wrapper">
+    <div *ngIf="!visible; else visibleIcon">
+        <mat-icon class="visibility-icon" svgIcon="app:visibility_off"></mat-icon>
+    </div>
+    <ng-template #visibleIcon>
+        <mat-icon class="visibility-icon visible" svgIcon="app:visibility_on"></mat-icon>
+    </ng-template>
+
+    <div class="toggle-label">{{ toggleLabel }}</div>
+</div>

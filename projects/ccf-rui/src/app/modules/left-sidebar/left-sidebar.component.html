@@ -11,14 +11,15 @@
     <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
   </div>
   <hr>
-  <ccf-visibility-toggle></ccf-visibility-toggle>
+  <ccf-visibility-toggle [toggleLabel]="'Show Previous Registration Blocks'"></ccf-visibility-toggle>
+  <hr>
   <mat-expansion-panel class="anatomical-structures-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
     </mat-expansion-panel-header>
-    <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)" [opacityOn]="true" 
+    <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)" [opacityOn]="true"
       [items]="anatomicalStructures"></ccf-visibility-menu>
-    <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)" 
+    <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"
       (opacityReset)="menu.resetOpacity()" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
   </mat-expansion-panel>
 </ng-template>

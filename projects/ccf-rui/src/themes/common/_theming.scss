@@ -16,6 +16,7 @@
 @use '../../app/shared/components/details-label/details-label.component.theme' as detailsLabel;
 @use '../../app/modules/content/content.component.theme.scss' as content;
 @use '../../app/modules/content/stage-nav/stage-nav.component.theme.scss' as stageNav;
+@use '../../app/shared/components/visibility-toggle/visibility-toggle.component.theme.scss' as visibilityToggle;
 
 
 @mixin ccf-theme($theme) {
@@ -49,6 +50,7 @@
   @include visibilityMenu.theme($theme);
   @include opacitySlider.theme($theme);
   @include detailsLabel.theme($theme);
+  @include visibilityToggle.theme($theme);
 
   @include content.theme($theme);
   @include stageNav.theme($theme);
