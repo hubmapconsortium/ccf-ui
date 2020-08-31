@@ -1,10 +1,11 @@
 :host {
-    margin-bottom: .75rem;
+    height: 2rem;
 
     .toggle-wrapper {
         display: flex;
         flex-direction: row;
         padding-left: .5rem;
+        cursor: pointer;
 
         .toggle-label {
             font-weight: bold;
