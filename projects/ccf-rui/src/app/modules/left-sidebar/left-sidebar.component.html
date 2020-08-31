@@ -12,4 +12,13 @@
   </div>
   <hr>
   <ccf-visibility-toggle></ccf-visibility-toggle>
+  <mat-expansion-panel class="anatomical-structures-menu">
+    <mat-expansion-panel-header class="expansion-header">
+      <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
+    </mat-expansion-panel-header>
+    <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)" [opacityOn]="true" 
+      [items]="anatomicalStructures"></ccf-visibility-menu>
+    <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)" 
+      (opacityReset)="menu.resetOpacity()" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
+  </mat-expansion-panel>
 </ng-template>
