@@ -17,5 +17,9 @@
     .label {
       color: mat-color($foreground, placeholder-text);
     }
+
+    .mat-form-field-ripple {
+      background-color: mat-color($accent) !important;
+    }
   }
 }
