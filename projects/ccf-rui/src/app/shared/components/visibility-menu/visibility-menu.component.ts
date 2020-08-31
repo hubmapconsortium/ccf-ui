@@ -156,6 +156,12 @@ export class VisibilityMenuComponent {
     }
   }
 
+  /**
+   * Returns the id of an item
+   * @param index Index of item in items array
+   * @param item The item to get an id for
+   * @returns id Id of the item
+   */
   getId(index, item: VisibilityItem): number {
     return item.id;
   }

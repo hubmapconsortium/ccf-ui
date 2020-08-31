@@ -91,4 +91,9 @@ describe('VisibilityMenuComponent', () => {
     instance.resetOpacity();
     expect(instance.items[0].opacity).toEqual(100);
   });
+
+  it('should return the id with getId', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    expect(instance.getId(0, testItem)).toEqual(1);
+  });
 });
