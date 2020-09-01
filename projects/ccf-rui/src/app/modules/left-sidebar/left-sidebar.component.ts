@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 import { PageState } from '../../core/store/page/page.state';
 import { VisibilityItem } from '../../shared/components/visibility-menu/visibility-menu.component';

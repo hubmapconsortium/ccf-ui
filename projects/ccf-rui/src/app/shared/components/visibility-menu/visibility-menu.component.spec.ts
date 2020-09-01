@@ -9,7 +9,8 @@ describe('VisibilityMenuComponent', () => {
     id: 1,
     name: 'test',
     visible: false,
-    iconSrc: ''
+    iconSrc: '',
+    opacity: 100
   };
   const testItems = [testItem];
 
@@ -69,5 +70,30 @@ describe('VisibilityMenuComponent', () => {
     expect(outputs.hover.emit).toHaveBeenCalledWith(undefined);
   });
 
+  it('should emit the opacity value when the opacity is updated', async () => {
+    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
+    instance.selection = testItem;
+    instance.updateOpacity(50);
+    expect(instance.selection.opacity).toEqual(50);
+    expect(outputs.opacityChange.emit).toHaveBeenCalledWith(50);
+  });
 
+  it('should return when updateOpacity is called when no item is selected', async () => {
+    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
+    instance.selection = undefined;
+    instance.updateOpacity(50);
+    expect(outputs.opacityChange.emit).toHaveBeenCalledTimes(0);
+  });
+
+  it('should reset opacity values to 100 when resetOpacity is called', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.items[0].opacity = 50;
+    instance.resetOpacity();
+    expect(instance.items[0].opacity).toEqual(100);
+  });
+
+  it('should return the id with getId', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    expect(instance.getId(0, testItem)).toEqual(1);
+  });
 });

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 /**
  * Interface for visibility item data
@@ -82,10 +82,19 @@ export class VisibilityMenuComponent {
   @Output() selectionChange = new EventEmitter<VisibilityItem | undefined>();
 
   /**
+   * Emits the current opacity value
+   */
+  @Output() opacityChange = new EventEmitter<number>();
+
+  /**
    * Emits the currently hovered item
    */
   @Output() hover = new EventEmitter<VisibilityItem | undefined>();
 
+  /**
+   * Disables slider interactions
+   */
+  disableSlider = true;
 
   /**
    * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
@@ -99,11 +108,12 @@ export class VisibilityMenuComponent {
   }
 
   /**
-   * Toggles selected status of an item on click and sets visibility status of the item
+   * Toggles selected status of an item on click and disables the slider if no item is selected
    * @param item Menu item
    */
   toggleSelected(item: VisibilityItem): void {
     this.selection = item === this.selection ? undefined : item;
+    this.disableSlider = this.selection ? false : true;
     this.selectionChange.emit(item);
   }
 
@@ -121,5 +131,38 @@ export class VisibilityMenuComponent {
    */
   mouseOut(item: VisibilityItem): void {
     this.hover.emit(undefined);
+  }
+
+  /**
+   * Updates opacity of the currently selected item (if selected) and emits the new opacity value
+   * @param value Updated opacity value
+   */
+  updateOpacity(value: number): void {
+    if (!this.selection) {
+      return;
+    } else {
+      this.selection.opacity = value;
+    }
+    this.opacityChange.emit(value);
+  }
+
+  /**
+   * Resets all opacity values to 100;
+   */
+  resetOpacity(): void {
+    this.items = this.items.map(i => ({ ...i, opacity: 100}));
+    if (this.selection) {
+      this.selection.opacity = 100;
+    }
+  }
+
+  /**
+   * Returns the id of an item
+   * @param index Index of item in items array
+   * @param item The item to get an id for
+   * @returns id Id of the item
+   */
+  getId(index, item: VisibilityItem): number {
+    return item.id;
   }
 }
