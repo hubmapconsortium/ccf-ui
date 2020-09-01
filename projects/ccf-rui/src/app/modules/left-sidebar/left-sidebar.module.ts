@@ -8,6 +8,7 @@ import { VisibilityMenuModule } from '../../shared/components/visibility-menu/vi
 import { OpacitySliderModule } from '../../shared/components/opacity-slider/opacity-slider.module';
 import { DetailsLabelModule } from '../../shared/components/details-label/details-label.module';
 import { LabeledSlideToggleModule } from '../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
+import { VisibilityToggleModule } from '../../shared/components/visibility-toggle/visibility-toggle.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 
@@ -18,6 +19,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     NameInputModule,
     OrganSelectorModule,
     LabeledSlideToggleModule,
+    DetailsLabelModule,
+    VisibilityToggleModule,
     OpacitySliderModule,
     DetailsLabelModule,
     VisibilityMenuModule,
