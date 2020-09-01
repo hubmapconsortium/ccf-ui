@@ -31,6 +31,7 @@
   @include mat-toolbar-theme($theme);
   @include mat-tooltip-theme($theme);
   @include mat-button-theme($theme);
+  @include mat-slider-theme($theme);
 
   @include header.theme($theme);
   @include infoDialog.theme($theme);

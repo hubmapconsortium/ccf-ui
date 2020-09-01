@@ -6,6 +6,12 @@
   $background: map-get($theme, background);
 
   .ccf-stage-nav {
+    .input-group {
+      .nav-input:hover {
+        color: mat-color($accent);
+      }
+    }
+
     mat-radio-button {
       color: mat-color($foreground, contrast-text);
 

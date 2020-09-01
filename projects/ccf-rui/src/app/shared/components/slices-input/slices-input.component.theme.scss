@@ -8,10 +8,18 @@
   .ccf-slices-input {
     .icon {
       color: mat-color($foreground, icon);
+
+      &:hover {
+        color: mat-color($foreground, active-icon);
+      }
     }
 
     .label {
       color: mat-color($foreground, placeholder-text);
+    }
+
+    .mat-form-field-ripple {
+      background-color: mat-color($accent) !important;
     }
   }
 }

@@ -38,6 +38,9 @@ $foreground: map-merge($mat-light-theme-foreground, (
   slider-blue: map-get($mat-blue, A400), // #2979FF
   slider-green: map-get($mat-green, A700), // #00C853
   slider-red: map-get($mat-red, A700), // #D50000
+  slider-blue-light: map-get($mat-blue, A100),
+  slider-green-light: map-get($mat-green, A200),
+  slider-red-light: map-get($mat-red, A100),
   text: map-get($primary-colors, 900), // #212121
 
   modal-borders: map-get($primary-colors, 'black'),
