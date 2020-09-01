@@ -1,14 +1,13 @@
 import { Component, Inject, HostBinding, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { RegistrationData } from '../../../core/models/registration-data';
-import { XYZTriplet } from '../../../core/store/stage/stage.state';
+import { MetaData } from '../../../core/models/meta-data';
 
 /**
  * The expected format of the review modal's data input.
  */
 interface ReviewModalData {
+  metaData: MetaData;
   embeddedMode: boolean;
-  registrationData: RegistrationData;
 }
 
 @Component({
@@ -27,7 +26,7 @@ export class ReviewModalComponent {
   /**
    * The object containing all of the review information for displaying inside the modal
    */
-  registrationData: RegistrationData;
+  metaData: MetaData;
 
   /**
    * Creates an instance of the review modal component.
@@ -38,8 +37,8 @@ export class ReviewModalComponent {
     public dialogRef: MatDialogRef<ReviewModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ReviewModalData
   ) {
+    this.metaData = data.metaData;
     this.embeddedMode = data.embeddedMode;
-    this.registrationData = data.registrationData;
   }
 
   /**
@@ -47,10 +46,5 @@ export class ReviewModalComponent {
    */
   close(): void {
     this.dialogRef.close(false);
-  }
-
-  xyzTripletToString(triplet: XYZTriplet): string {
-    if (!triplet) { return ''; }
-    return `${triplet.x}, ${triplet.y}, ${triplet.z}`;
   }
 }

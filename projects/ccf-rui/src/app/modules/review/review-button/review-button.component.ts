@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/co
 import { MatDialog } from '@angular/material/dialog';
 
 import { ReviewModalComponent } from '../review-modal/review-modal.component';
-import { RegistrationData } from '../../../core/models/registration-data';
+import { MetaData } from '../../../core/models/meta-data';
 
 
 /**
@@ -32,18 +32,18 @@ export class ReviewButtonComponent {
   /**
    * Input object of information to display in the modal
    */
-  @Input() registrationData: RegistrationData = {
-    firstName: 'Homer',
-    lastName: 'Simpson',
-    referenceOrgan: 'kidney, left, make, vh',
-    tissueBlockSize: { x: 20, y: 10, z: 10 },
-    tissueBlockPosition: { x: 10, y: 74, z: 16 },
-    tissueBlockRotation: { x: 0, y: 358.75, z: 20.07 },
-    extractionSites: 'Bisection line',
-    anatomicalStructureTags: 'Tag 1, Tag 2, Tag 3',
-    timestamp: '7/10/2020 9:53:04 AM',
-    alignmentID: '5dae2c44-aad-5-4f7a-aa12-c0551de97b'
-  };
+  @Input() metaData: MetaData = [
+    { label: 'First Name', value: 'Homer' },
+    { label: 'Last Name', value: 'Simpson' },
+    { label: 'Reference Organ Name', value: 'kidney, left, make, vh' },
+    { label: 'Tissue Block Size (mm)', value: '20, 10, 10' },
+    { label: 'Tissue Block Position (mm)', value: '10, 74 16' },
+    { label: 'Tissue Block Rotation', value: '0, 358.75, 20.07' },
+    { label: 'Extraction Site(s)', value: 'Bisection line' },
+    { label: 'Anatomical Structure Tags', value: 'Tag 1, Tag 2, Tag 3' },
+    { label: 'Time Stamp', value: '7/10/2020 9:53:04 AM' },
+    { label: 'Alignment ID', value: '5dae2c44-aad-5-4f7a-aa12-c0551de97b' }
+  ];
 
   /**
    * Output that emits when the modal's register button was clicked
@@ -58,11 +58,11 @@ export class ReviewButtonComponent {
       width: '60em',
       data: {
         embeddedMode: this.embeddedMode,
-        registrationData: this.registrationData
+        metaData: this.metaData
       }
     });
 
-    dialogRef?.afterClosed().subscribe(
+    dialogRef.afterClosed().subscribe(
       data => {
         if (data) {
           this.registerData.emit();

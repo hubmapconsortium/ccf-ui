@@ -2,21 +2,21 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Shallow } from 'shallow-render';
 import { ReviewModalComponent } from './review-modal.component';
 import { ReviewModalModule } from './review-modal.module';
-import { RegistrationData } from '../../../core/models/registration-data';
+import { MetaData } from '../../../core/models/meta-data';
 import { XYZTriplet } from '../../../core/store/stage/stage.state';
 
-const registrationData: RegistrationData = {
-  firstName: 'Homer',
-  lastName: 'Simpson',
-  referenceOrgan: 'kidney, left, make, vh',
-  tissueBlockSize: { x: 20, y: 10, z: 10 },
-  tissueBlockPosition: { x: 10, y: 74, z: 16 },
-  tissueBlockRotation: { x: 0, y: 358.75, z: 20.07 },
-  extractionSites: 'Bisection line',
-  anatomicalStructureTags: 'Tag 1, Tag 2, Tag 3',
-  timestamp: '7/10/2020 9:53:04 AM',
-  alignmentID: '5dae2c44-aad-5-4f7a-aa12-c0551de97b'
-};
+const metaData: MetaData = [
+  { label: 'First Name', value: 'Homer' },
+  { label: 'Last Name', value: 'Simpson' },
+  { label: 'Reference Organ Name', value: 'kidney, left, make, vh' },
+  { label: 'Tissue Block Size (mm)', value: '20, 10, 10' },
+  { label: 'Tissue Block Position (mm)', value: '10, 74 16' },
+  { label: 'Tissue Block Rotation', value: '0, 358.75, 20.07' },
+  { label: 'Extraction Site(s)', value: 'Bisection line' },
+  { label: 'Anatomical Structure Tags', value: 'Tag 1, Tag 2, Tag 3' },
+  { label: 'Time Stamp', value: '7/10/2020 9:53:04 AM' },
+  { label: 'Alignment ID', value: '5dae2c44-aad-5-4f7a-aa12-c0551de97b' }
+];
 
 describe('ReviewModalComponent', () => {
   let shallow: Shallow<ReviewModalComponent>;
@@ -27,7 +27,7 @@ describe('ReviewModalComponent', () => {
       .provide({
         provide: MAT_DIALOG_DATA, useValue: {
           embeddedMode: true,
-          registrationData
+          metaData
         }
       });
   });
@@ -51,13 +51,5 @@ describe('ReviewModalComponent', () => {
     instance.close();
 
     expect(ref.close).toHaveBeenCalled();
-  });
-
-  it('should properly format XYZTriplets into strings', async () => {
-    const { instance } = await shallow.render();
-    const inputTest: XYZTriplet = { x: 1, y: 2, z: 3 };
-    const result = instance.xyzTripletToString(inputTest);
-
-    expect(result).toEqual('1, 2, 3');
   });
 });
