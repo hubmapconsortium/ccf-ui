@@ -1,4 +1,8 @@
 :host {
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
   .header {
     display: flex;
     align-items: center;
