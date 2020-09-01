@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-top: .5rem !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  max-height: 18rem;
+  overflow-y: auto;
+
+  .item-entry {
+    display: flex;
+    height: 2.25rem;
+    align-items: center;
+    flex-shrink: 0;
+
+    .visibility-icon {
+      margin-left: .5rem;
+    }
+
+    .visibility-icon, .item-name {
+      cursor: pointer;
+    }
+    
+    .item-name {
+      margin-left: 1rem;
+      user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .opacity-setting {
+      margin-left: auto;
+      margin-right: 1rem;
+
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+
+}
