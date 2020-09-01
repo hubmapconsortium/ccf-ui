@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 /**
  * Contains the organ name and url of the icon svg
@@ -46,7 +46,7 @@ export class OrganSelectorComponent {
   /**
    * List of organs in the carousel
    */
-  organList: OrganInfo[] = [
+  @Input() organList: OrganInfo[] = [
     {src: 'app:colon', name: 'Colon'},
     {src: 'app:heart', name: 'Heart'},
     {src: 'app:kidney', name: 'Kidney'},

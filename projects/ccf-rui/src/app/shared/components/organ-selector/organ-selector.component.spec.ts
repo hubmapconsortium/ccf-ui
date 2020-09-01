@@ -64,8 +64,18 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should set the icon class to disabled if disabled is true', async () => {
-    const { find } = await shallow.render();
-    const disabled = find('.carousel-item')[6].nativeElement as HTMLElement;
+    const testOrganList = [
+      {name: 'A', src: 'A', disabled: true},
+      {name: 'B', src: 'B'},
+      {name: 'C', src: 'C'},
+      {name: 'D', src: 'D'},
+      {name: 'E', src: 'E'},
+      {name: 'F', src: 'F'},
+      {name: 'G', src: 'G'}
+    ] as OrganInfo[];
+
+    const { find } = await shallow.render({bind: {organList: testOrganList}});
+    const disabled = find('.carousel-item')[0].nativeElement as HTMLElement;
     expect(disabled.className).toContain('disabled');
   });
 
