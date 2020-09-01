@@ -1,11 +1,18 @@
 :host {
-    height: 2rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
 
     .toggle-wrapper {
         display: flex;
-        flex-direction: row;
         padding-left: .5rem;
         cursor: pointer;
+        align-items: center;
+
+        .visibility-icon {
+            height: 24px;
+            width: 24px;
+        }
 
         .toggle-label {
             font-weight: bold;

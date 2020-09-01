@@ -10,6 +10,7 @@
     <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']"></ccf-labeled-slide-toggle>
     <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
   </div>
+  <hr>
   <mat-expansion-panel class="extraction-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
@@ -28,4 +29,5 @@
     <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"
       (opacityReset)="menu.resetOpacity()" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
   </mat-expansion-panel>
+  <hr>
 </ng-template>

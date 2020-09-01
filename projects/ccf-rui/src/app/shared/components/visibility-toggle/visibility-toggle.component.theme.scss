@@ -10,11 +10,19 @@
       background-color: mat-color($background, hover-background);
     }
 
-    .visibility-icon {
-      color: mat-color($foreground, icon);
+    .toggle-wrapper {
+      .icon {
+        &.visible {
+          color: mat-color($accent);
+        }
+      }
 
-      &.visible {
-        color: mat-color($accent);
+      .visibility-icon {
+        &.hidden {
+          .icon {
+            color: mat-color($foreground, icon);
+          }
+        }
       }
     }
   }
