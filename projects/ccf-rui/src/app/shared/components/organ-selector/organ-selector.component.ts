@@ -13,9 +13,9 @@ export interface OrganInfo {
   name: string;
 
   /**
-   * True if data is present for this organ
+   * True if the icon is disabled
    */
-  hasData: boolean;
+  disabled?: boolean;
 }
 
 /**
@@ -47,19 +47,19 @@ export class OrganSelectorComponent {
    * List of organs in the carousel
    */
   organList: OrganInfo[] = [
-    {src: 'app:bladder', name: 'Bladder', hasData: false},
-    {src: 'app:brain', name: 'Brain', hasData: false},
-    {src: 'app:colon', name: 'Colon', hasData: false},
-    {src: 'app:heart', name: 'Heart', hasData: true},
-    {src: 'app:kidney', name: 'Kidney', hasData: true},
-    {src: 'app:liver', name: 'Liver', hasData: false},
-    {src: 'app:lung', name: 'Lung', hasData: true},
-    {src: 'app:lymph_nodes', name: 'Lymph Nodes', hasData: false},
-    {src: 'app:ovaries', name: 'Ovaries', hasData: false},
-    {src: 'app:small_intestine', name: 'Small Intestine', hasData: false},
-    {src: 'app:spleen', name: 'Spleen', hasData: true},
-    {src: 'app:stomach', name: 'Stomach', hasData: false},
-    {src: 'app:thymus', name: 'Thymus', hasData: false}
+    {src: 'app:colon', name: 'Colon'},
+    {src: 'app:heart', name: 'Heart'},
+    {src: 'app:kidney', name: 'Kidney'},
+    {src: 'app:spleen', name: 'Spleen'},
+    {src: 'app:bladder', name: 'Bladder', disabled: true},
+    {src: 'app:brain', name: 'Brain', disabled: true},
+    {src: 'app:liver', name: 'Liver', disabled: true},
+    {src: 'app:lung', name: 'Lung', disabled: true},
+    {src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true},
+    {src: 'app:ovaries', name: 'Ovaries', disabled: true},
+    {src: 'app:small_intestine', name: 'Small Intestine', disabled: true},
+    {src: 'app:stomach', name: 'Stomach', disabled: true},
+    {src: 'app:thymus', name: 'Thymus', disabled: true}
   ];
 
   /**
