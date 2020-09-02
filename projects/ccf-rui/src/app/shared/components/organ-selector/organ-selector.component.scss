@@ -60,6 +60,10 @@
             font-weight: bold;
           }
         }
+
+        &.disabled {
+          pointer-events: none;
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 /**
  * Contains the organ name and url of the icon svg
@@ -11,6 +11,11 @@ export interface OrganInfo {
    * Name of the organ
    */
   name: string;
+
+  /**
+   * True if the icon is disabled
+   */
+  disabled?: boolean;
 }
 
 /**
@@ -41,20 +46,20 @@ export class OrganSelectorComponent {
   /**
    * List of organs in the carousel
    */
-  organList: OrganInfo[] = [
-    {src: 'app:bladder', name: 'Bladder'},
-    {src: 'app:brain', name: 'Brain'},
+  @Input() organList: OrganInfo[] = [
     {src: 'app:colon', name: 'Colon'},
     {src: 'app:heart', name: 'Heart'},
     {src: 'app:kidney', name: 'Kidney'},
-    {src: 'app:liver', name: 'Liver'},
-    {src: 'app:lung', name: 'Lung'},
-    {src: 'app:lymph_nodes', name: 'Lymph Nodes'},
-    {src: 'app:ovaries', name: 'Ovaries'},
-    {src: 'app:small_intestine', name: 'Small Intestine'},
     {src: 'app:spleen', name: 'Spleen'},
-    {src: 'app:stomach', name: 'Stomach'},
-    {src: 'app:thymus', name: 'Thymus'}
+    {src: 'app:bladder', name: 'Bladder', disabled: true},
+    {src: 'app:brain', name: 'Brain', disabled: true},
+    {src: 'app:liver', name: 'Liver', disabled: true},
+    {src: 'app:lung', name: 'Lung', disabled: true},
+    {src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true},
+    {src: 'app:ovaries', name: 'Ovaries', disabled: true},
+    {src: 'app:small_intestine', name: 'Small Intestine', disabled: true},
+    {src: 'app:stomach', name: 'Stomach', disabled: true},
+    {src: 'app:thymus', name: 'Thymus', disabled: true}
   ];
 
   /**

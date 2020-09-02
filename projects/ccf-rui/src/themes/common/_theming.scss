@@ -17,6 +17,8 @@
 @use '../../app/modules/content/content.component.theme.scss' as content;
 @use '../../app/modules/content/stage-nav/stage-nav.component.theme.scss' as stageNav;
 @use '../../app/shared/components/visibility-toggle/visibility-toggle.component.theme.scss' as visibilityToggle;
+@use '../../app/modules/review/review-button/review-button.component.theme.scss' as reviewButton;
+@use '../../app/modules/review/review-modal/review-modal.component.theme.scss' as reviewModal;
 
 
 @mixin ccf-theme($theme) {
@@ -31,6 +33,7 @@
   @include mat-slide-toggle-theme($theme);
   @include mat-toolbar-theme($theme);
   @include mat-tooltip-theme($theme);
+  @include mat-button-theme($theme);
   @include mat-slider-theme($theme);
 
   @include header.theme($theme);
@@ -54,5 +57,8 @@
 
   @include content.theme($theme);
   @include stageNav.theme($theme);
+
+  @include reviewButton.theme($theme);
+  @include reviewModal.theme($theme);
   // Overrides goes here!
 }
