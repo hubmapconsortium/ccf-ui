@@ -6,9 +6,6 @@
   $background: map-get($theme, background);
 
   .ccf-visibility-toggle {
-    .toggle-wrapper:hover {
-      background-color: mat-color($background, hover-background);
-    }
 
     .toggle-wrapper {
       .icon {

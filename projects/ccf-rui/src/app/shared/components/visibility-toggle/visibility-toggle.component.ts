@@ -18,7 +18,7 @@ export class VisibilityToggleComponent {
   /**
    * Keeps track of the current visibility state of the toggle.
    */
-  @Input() visible = true;
+  @Input() visible = false;
 
   /**
    * Input that allows the label to be set from outside the component,

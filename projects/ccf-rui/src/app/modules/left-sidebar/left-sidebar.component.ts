@@ -13,6 +13,8 @@ export class LeftSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
 
+  load = false;
+
   detailsLabels: string[] = ['heart', 'front', 'female'];
 
   extractionSites: VisibilityItem[] = [

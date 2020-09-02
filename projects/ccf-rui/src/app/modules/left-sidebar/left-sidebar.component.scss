@@ -32,8 +32,30 @@
     }
   }
 
+  ::ng-deep .mat-expansion-panel {
+    .mat-expansion-panel-content {
+      height: 0;
+    }
+
+    &.load {
+      .mat-expansion-panel-content {
+        height: 100%;
+      }
+    }
+  }
+
   .extraction-menu, .anatomical-structures-menu {
     margin: 0;
+
+    .mat-expansion-panel-content {
+      height: 0;
+    }
+
+    &.load {
+      .mat-expansion-panel-content {
+        height: 100%;
+      }
+    }
 
     .expansion-header {
       padding: 0;
@@ -47,6 +69,8 @@
       }
     }
   }
+
+
 }
 
 
