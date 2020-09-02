@@ -32,16 +32,6 @@ describe('OrganSelectorComponent', () => {
   it('should not shift the carousel right if carousel is already at right end.', async () => {
     const { find, instance } = await shallow.render();
     const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
-    const testOrganList = [
-      {name: 'A', src: 'A'},
-      {name: 'B', src: 'B'},
-      {name: 'C', src: 'C'},
-      {name: 'D', src: 'D'},
-      {name: 'E', src: 'E'},
-      {name: 'F', src: 'F'},
-      {name: 'G', src: 'G'},
-    ] as OrganInfo[];
-    instance.organList = testOrganList;
     carousel.style.left = '-80px';
     instance.onRight = true;
     instance.shift('right', 40);
@@ -51,16 +41,6 @@ describe('OrganSelectorComponent', () => {
   it('should not shift the carousel left if carousel is already at left end.', async () => {
     const { find, instance } = await shallow.render();
     const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
-    const testOrganList = [
-      {name: 'A', src: 'A'},
-      {name: 'B', src: 'B'},
-      {name: 'C', src: 'C'},
-      {name: 'D', src: 'D'},
-      {name: 'E', src: 'E'},
-      {name: 'F', src: 'F'},
-      {name: 'G', src: 'G'},
-    ] as OrganInfo[];
-    instance.organList = testOrganList;
     carousel.style.left = '0px';
     instance.onLeft = true;
     instance.shift('left', 40);
@@ -81,6 +61,22 @@ describe('OrganSelectorComponent', () => {
     instance.selectOrgan(testOrgan);
     expect(instance.isSelected(testOrgan)).toBeTrue();
     expect(instance.isSelected(testOrgan2)).toBeFalse();
+  });
+
+  it('should set the icon class to disabled if disabled is true', async () => {
+    const testOrganList = [
+      {name: 'A', src: 'A', disabled: true},
+      {name: 'B', src: 'B'},
+      {name: 'C', src: 'C'},
+      {name: 'D', src: 'D'},
+      {name: 'E', src: 'E'},
+      {name: 'F', src: 'F'},
+      {name: 'G', src: 'G'}
+    ] as OrganInfo[];
+
+    const { find } = await shallow.render({bind: {organList: testOrganList}});
+    const disabled = find('.carousel-item')[0].nativeElement as HTMLElement;
+    expect(disabled.className).toContain('disabled');
   });
 
 });
