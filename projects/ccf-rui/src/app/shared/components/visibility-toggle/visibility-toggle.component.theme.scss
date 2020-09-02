@@ -9,16 +9,9 @@
 
     .toggle-wrapper {
       .icon {
+        color: mat-color($foreground, icon);
         &.visible {
           color: mat-color($accent);
-        }
-      }
-
-      .visibility-icon {
-        &.hidden {
-          .icon {
-            color: mat-color($foreground, icon);
-          }
         }
       }
     }

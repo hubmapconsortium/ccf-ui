@@ -67,11 +67,6 @@ export class VisibilityMenuComponent {
   @Input() selection: VisibilityItem | undefined;
 
   /**
-   * Whether opacity value should be displayed
-   */
-  @Input() opacityOn = false;
-
-  /**
    * Emits the currently visible items
    */
   @Output() visibleItemsChange = new EventEmitter<VisibilityItem[]>();
@@ -138,22 +133,22 @@ export class VisibilityMenuComponent {
    * @param value Updated opacity value
    */
   updateOpacity(value: number): void {
-    if (!this.selection) {
+    const newSelection = this.selection;
+    if (!newSelection) {
       return;
     } else {
-      this.selection.opacity = value;
+      newSelection.opacity = value;
+      this.selection = newSelection;
     }
     this.opacityChange.emit(value);
   }
 
   /**
-   * Resets all opacity values to 100;
+   * Resets all item opacity values and current selected item opacity to 100;
    */
   resetOpacity(): void {
     this.items = this.items.map(i => ({ ...i, opacity: 100}));
-    if (this.selection) {
-      this.selection.opacity = 100;
-    }
+    this.updateOpacity(100);
   }
 
   /**
@@ -164,5 +159,14 @@ export class VisibilityMenuComponent {
    */
   getId(index, item: VisibilityItem): number {
     return item.id;
+  }
+
+  /**
+   * Determines if opacity value of the item is hidden (when opacity = 100)
+   * @param item Item of interest
+   * @returns true if hidden
+   */
+  isHidden(item: VisibilityItem): boolean {
+    return item.opacity === 100 ? true : false;
   }
 }

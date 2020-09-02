@@ -5,10 +5,10 @@
   $background: map-get($theme, background);
   $primary: map-get($theme, primary);
 
-  .carousel {
+  .ccf-organ-selector {
     color: mat-color($foreground, text);
     border: 1px solid mat-color($foreground, borders);
-    background-color: white;
+    background-color: mat-color($primary, 'white');
 
     .carousel-left-icon,
     .carousel-right-icon {
@@ -30,7 +30,7 @@
     }
 
     &.selected {
-      color: mat-color($foreground, active-icon) !important;
+      color: mat-color($foreground, active-icon);
     }
 
     &.disabled {

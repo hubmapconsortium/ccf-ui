@@ -31,17 +31,11 @@ export class OpacitySliderComponent {
   @Output() readonly opacityReset = new EventEmitter();
 
   /**
-   * Setting for hiding the opacity value (when opacity = 100)
-   */
-  hidden = true;
-
-  /**
-   * Emits opacityChange with the new opacity value and hides the opacity value if opacity = 100
+   * Emits opacityChange with the new opacity value
    * @param newOpacity The updated opacity value
    */
   changeOpacity(newOpacity: string): void {
     this.opacity = parseInt(newOpacity, 10);
-    this.hidden = this.opacity === 100 ? true : false;
     this.opacityChange.emit(this.opacity);
   }
 

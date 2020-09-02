@@ -85,15 +85,35 @@ describe('VisibilityMenuComponent', () => {
     expect(outputs.opacityChange.emit).toHaveBeenCalledTimes(0);
   });
 
-  it('should reset opacity values to 100 when resetOpacity is called', async () => {
+  it('should reset all opacity values to 100 when resetOpacity is called', async () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
     instance.items[0].opacity = 50;
     instance.resetOpacity();
     expect(instance.items[0].opacity).toEqual(100);
   });
 
+  it('should set the current selection opacity value to 100 when resetOpacity is called', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.items[0].opacity = 50;
+    const spy = spyOn(instance, 'updateOpacity');
+    instance.resetOpacity();
+    expect(spy).toHaveBeenCalledWith(100);
+  });
+
   it('should return the id with getId', async () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
     expect(instance.getId(0, testItem)).toEqual(1);
+  });
+
+  it('should hide an items opacity value when opacity is changed to 100', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.items[0].opacity = 100;
+    expect(instance.isHidden(instance.items[0])).toBeTrue();
+  });
+
+  it('should show an items opacity value when opacity is changed to a value less than 100', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.items[0].opacity = 50;
+    expect(instance.isHidden(instance.items[0])).toBeFalse();
   });
 });

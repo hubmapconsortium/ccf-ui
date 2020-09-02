@@ -5,8 +5,6 @@
 
   hr {
     width: 100%;
-    // margin-top: 0.75rem;
-    // margin-bottom: 1.5rem;
     margin: 0;
     border-style: solid;
     border-width: 1.5px;
@@ -21,6 +19,10 @@
     margin-top: 1.5rem;
   }
 
+  .ccf-organ-selector {
+    margin-top: 1.5rem;
+  }
+
   .organ-sliders {
     display: flex;
     height: 3rem;
@@ -31,19 +33,25 @@
       margin-left: 0;
     }
   }
-
+  
   .extraction-menu, .anatomical-structures-menu {
     margin: 0;
+    
+    .ccf-visibility-menu {
+      margin: 0;
+    }
 
     .mat-expansion-panel-content {
       height: 0;
     }
 
     .expansion-header {
+      -webkit-user-select: none;    
+      -moz-user-select: none;
       padding: 0;
       font-weight: bold;
       height: 3rem;
-      margin-top: 0 !important;
+      margin-top: 0;
       
       .expansion-title {
         margin-top: 0;
@@ -51,7 +59,6 @@
       }
     }
   }
-
 
 }
 
