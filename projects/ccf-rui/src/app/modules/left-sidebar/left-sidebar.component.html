@@ -11,23 +11,27 @@
     <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
   </div>
   <hr>
-  <mat-expansion-panel (opened)="load = true" [class.load]="load" class="extraction-menu">
+  <mat-expansion-panel  class="extraction-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
-    <ccf-visibility-menu  [items]="extractionSites"></ccf-visibility-menu>
+    <ng-template matExpansionPanelContent>
+      <ccf-visibility-menu  [items]="extractionSites"></ccf-visibility-menu>
+    </ng-template>
   </mat-expansion-panel>
   <hr>
   <ccf-visibility-toggle [toggleLabel]="'Show Previous Registration Blocks'"></ccf-visibility-toggle>
   <hr>
-  <mat-expansion-panel (opened)="load = true" [class.load]="load" class="anatomical-structures-menu">
+  <mat-expansion-panel  class="anatomical-structures-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
     </mat-expansion-panel-header>
-    <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)" [opacityOn]="true"
-      [items]="anatomicalStructures"></ccf-visibility-menu>
-    <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"
-      (opacityReset)="menu.resetOpacity()" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
+    <ng-template matExpansionPanelContent>
+      <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)" [opacityOn]="true"
+        [items]="anatomicalStructures"></ccf-visibility-menu>
+      <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"
+        (opacityReset)="menu.resetOpacity()" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
+    </ng-template>
   </mat-expansion-panel>
   <hr>
 </ng-template>
