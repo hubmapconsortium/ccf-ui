@@ -7,18 +7,26 @@ import { GlobalsService } from 'ccf-shared';
 import { pluck } from 'rxjs/operators';
 
 
+/** A record with information about a single person */
 export interface Person {
   firstName: string;
   lastName: string;
 }
 
+/** Page state model */
 export interface PageStateModel {
+  /** Whether the page is embedded through hubmap */
   embedded: boolean;
+  /** Url to go to when the user clicks the hubmap logo or back button */
   homeUrl: string;
+  /** Active user */
   user: Person;
 }
 
 
+/**
+ * General page global state
+ */
 @StateRepository()
 @State<PageStateModel>({
   name: 'page',
@@ -33,14 +41,25 @@ export interface PageStateModel {
 })
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
+  /** Embedded observable */
   readonly embedded$ = this.state$.pipe(pluck('embedded'));
+  /** Home url observable */
   readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
+  /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
 
+  /**
+   * Creates an instance of page state.
+   *
+   * @param globals The service used to query properties from the global object
+   */
   constructor(private globals: GlobalsService) {
     super();
   }
 
+  /**
+   * Initializes this service.
+   */
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
@@ -50,6 +69,12 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     });
   }
 
+  /**
+   * Sets whether this is an embedded page.
+   *
+   * @param embedded Whether the page is embedded
+   * @param [url] The new home url. If not provided the previous one is used
+   */
   @DataAction()
   setEmbedded(embedded: boolean, url?: string): void {
     this.ctx.patchState({
@@ -58,6 +83,11 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     });
   }
 
+  /**
+   * Sets the name of the active user.
+   *
+   * @param name The first and last name
+   */
   @DataAction()
   setUserName(name: Pick<Person, 'firstName' | 'lastName'>): void {
     this.ctx.setState(patch({

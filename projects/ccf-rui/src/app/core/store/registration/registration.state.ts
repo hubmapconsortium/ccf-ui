@@ -58,7 +58,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
   /** Observable of registration data in jsonld format */
   @Computed()
-  get jsonld(): Observable<object> {
+  get jsonld$(): Observable<object> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
       map(data => this.buildJsonLd(...data))
     );
@@ -69,7 +69,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    *
    * @param injector Injector service used to lazy load page and model state
    */
-  constructor(private readonly injector: Injector) { super(); }
+  constructor(private readonly injector: Injector) {
+    super();
+  }
 
   /**
    * Initializes this state service
