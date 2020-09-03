@@ -1,4 +1,4 @@
-<div class="item-entry" [class.selected]="selection === item" *ngFor="let item of items; trackBy: getId" (mouseover)="mouseOver(item)" (mouseout)="mouseOut(item)">
+<div class="item-entry" [class.selected]="selection ? selection.id === item.id : false" *ngFor="let item of items; trackBy: getId" (mouseover)="mouseOver(item)" (mouseout)="mouseOut(item)">
   <mat-icon class="visibility-icon" (click)="toggleVisibility(item)" [class.visible]="item.visible" svgIcon="{{item.iconSrc}}"></mat-icon>
   <div class="item-name" title="{{item.name}}" (click)="toggleSelected(item)">{{ item.name }}</div>
   <div class="opacity-setting" [class.hidden]="isHidden(item)">{{ item.opacity }}</div>
