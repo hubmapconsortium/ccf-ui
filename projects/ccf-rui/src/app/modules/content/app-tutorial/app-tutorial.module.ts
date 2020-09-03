@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppTutorialComponent } from './app-tutorial.component';
 
 @NgModule({
-  declarations: [AppTutorialComponent],
+  declarations: [ AppTutorialComponent] ,
   imports: [
     CommonModule
   ],
