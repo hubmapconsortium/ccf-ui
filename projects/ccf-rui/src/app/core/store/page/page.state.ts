@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
-import { State } from '@ngxs/store';
+import { NgxsOnInit, State } from '@ngxs/store';
 import { patch } from '@ngxs/store/operators';
+import { GlobalsService } from 'ccf-shared';
 import { pluck } from 'rxjs/operators';
-
-import { environment } from '../../../../environments/environment';
 
 
 export interface Person {
@@ -25,7 +24,7 @@ export interface PageStateModel {
   name: 'page',
   defaults: {
     embedded: false,
-    homeUrl: '',
+    homeUrl: 'https://hubmapconsortium.org/',
     user: {
       firstName: '',
       lastName: ''
@@ -33,19 +32,20 @@ export interface PageStateModel {
   }
 })
 @Injectable()
-export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
+export class PageState extends NgxsImmutableDataRepository<PageStateModel> implements NgxsOnInit {
   readonly embedded$ = this.state$.pipe(pluck('embedded'));
   readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
   readonly user$ = this.state$.pipe(pluck('user'));
 
-  constructor() {
+  constructor(private globals: GlobalsService) {
     super();
+  }
 
-    // TODO load embedded from global variable
-
-    if (!environment.production && typeof globalThis === 'object') {
-      globalThis.setEmbedded = this.setEmbedded.bind(this);
-    }
+  ngxsOnInit(): void {
+    this.ctx.patchState({
+      // TODO: Check correct property + load homeUrl + load user if embedded
+      embedded: this.globals.get('hideSignupScreen', false)
+    });
   }
 
   @DataAction()
