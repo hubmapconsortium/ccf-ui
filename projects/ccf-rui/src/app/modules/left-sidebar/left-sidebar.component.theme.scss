@@ -11,5 +11,9 @@
     hr {
       border-color: mat-color($foreground, sidebar-dividers);
     }
+
+    .mat-expansion-indicator {
+      color: mat-color($foreground, icon);
+    }
   }
 }

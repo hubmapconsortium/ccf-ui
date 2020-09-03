@@ -3,13 +3,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 !important;
-  margin-top: 1rem !important;
+  margin-top: 1rem;
   border-radius: 0.1875rem;
 
   &.disabled {
     opacity: 30%;
-    cursor: not-allowed !important;
+    cursor: not-allowed;
     .slider-box {
       pointer-events: none;
     }
@@ -37,7 +36,7 @@
     }
 
     .mat-slider-thumb {
-      transform: none !important;
+      transform: none;
     }
   }
 

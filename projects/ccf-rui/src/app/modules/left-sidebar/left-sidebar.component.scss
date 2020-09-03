@@ -10,12 +10,12 @@
     border-width: 1.5px;
   }
 
-  :not(hr) {
+  & > :not(hr) {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
 
-  *:first-child {
+  & > :first-child {
     margin-top: 1.5rem;
   }
 
@@ -27,39 +27,21 @@
     display: flex;
     height: 3rem;
     align-items: center;
+  }
 
-    .toggle {
-      margin-top: 0;
-      margin-left: 0;
-    }
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0 0 0.75rem 0;
   }
   
   .extraction-menu, .anatomical-structures-menu {
-    margin: 0;
-    
-    .ccf-visibility-menu {
-      margin: 0;
-    }
-
-    .mat-expansion-panel-content {
-      height: 0;
-    }
-
     .expansion-header {
       -webkit-user-select: none;    
       -moz-user-select: none;
-      padding: 0;
+      padding: 0 .5rem 0 0;
       font-weight: bold;
       height: 3rem;
-      margin-top: 0;
-      
-      .expansion-title {
-        margin-top: 0;
-        margin-left: 0;
-      }
     }
   }
 
 }
-
 
