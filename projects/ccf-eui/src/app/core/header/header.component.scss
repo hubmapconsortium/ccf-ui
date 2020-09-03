@@ -16,7 +16,7 @@
   // Styled to match the HuBMAP Portal
   .authentication {
     width: 8.25rem;
-    border-radius: 2px;
+    border-radius: 0.125rem;
   }
 
   .logo, .download, .refresh {
@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    font: 400 16px/20px Inter, sans-serif;
+    font: 400 1rem/1.25rem Inter, sans-serif;
   }
 
   ::ng-deep ccf-info-button {
