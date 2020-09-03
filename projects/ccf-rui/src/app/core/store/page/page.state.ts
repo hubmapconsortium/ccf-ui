@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
-import { NgxsOnInit, State } from '@ngxs/store';
+import { State } from '@ngxs/store';
 import { patch } from '@ngxs/store/operators';
 import { GlobalsService } from 'ccf-shared';
 import { pluck } from 'rxjs/operators';
@@ -32,7 +32,7 @@ export interface PageStateModel {
   }
 })
 @Injectable()
-export class PageState extends NgxsImmutableDataRepository<PageStateModel> implements NgxsOnInit {
+export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly embedded$ = this.state$.pipe(pluck('embedded'));
   readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
   readonly user$ = this.state$.pipe(pluck('user'));
@@ -42,6 +42,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> imple
   }
 
   ngxsOnInit(): void {
+    super.ngxsOnInit();
+
     this.ctx.patchState({
       // TODO: Check correct property + load homeUrl + load user if embedded
       embedded: this.globals.get('hideSignupScreen', false)

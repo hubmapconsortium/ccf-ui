@@ -31,14 +31,18 @@ export type ViewSide = 'left' | 'right' | 'anterior' | 'posterior';
 
 /** Data contained in the stage state. */
 export interface ModelStateModel {
+  /** Model identifier */
+  id: string;
+  /** Model label */
+  label: string;
   /** Block size */
   blockSize: XYZTriplet;
   /** Model rotation */
   rotation: XYZTriplet;
   /** Slice configuration */
   slicesConfig: SlicesConfig;
-  viewType: ViewType;
   /** View type */
+  viewType: ViewType;
   /** View side */
   viewSide: ViewSide;
 }
@@ -51,6 +55,8 @@ export interface ModelStateModel {
 @State<ModelStateModel>({
   name: 'model',
   defaults: {
+    id: '',
+    label: '',
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
     slicesConfig: { thickness: NaN, numSlices: NaN },

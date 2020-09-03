@@ -8,6 +8,7 @@
 </ccf-rotation-slider>
 <hr>
 
-<div class="button-container">
-    <ccf-review-button></ccf-review-button>
-</div>
+<div class="filler"></div>
+
+<ccf-review-button [metaData]="registration.metadata$ | async">
+</ccf-review-button>

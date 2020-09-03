@@ -37,4 +37,4 @@ export const ROOT_STATES = [
     })
   ]
 })
-export class StoreModule { }
+export class StoreModule {}
