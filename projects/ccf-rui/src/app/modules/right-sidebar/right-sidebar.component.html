@@ -1,10 +1,10 @@
-<ccf-block-size-input [blockSize]="stage.blockSize$ | async" (blockSizeChange)="stage.updateBlockSize($event)">
+<ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.updateBlockSize($event)">
 </ccf-block-size-input>
 <hr>
-<ccf-slices-input [slicesConfig]="stage.slicesConfig$ | async" (slicesConfigChange)="stage.updateSlicesConfig($event)">
+<ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.updateSlicesConfig($event)">
 </ccf-slices-input>
 <hr>
-<ccf-rotation-slider [rotation]="stage.rotation$ | async" (rotationChange)="stage.updateRotation($event)">
+<ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.updateRotation($event)">
 </ccf-rotation-slider>
 <hr>
 

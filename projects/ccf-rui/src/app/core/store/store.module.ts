@@ -6,7 +6,8 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from '../../../environments/environment';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { PageState } from './page/page.state';
-import { StageState } from './stage/stage.state';
+import { RegistrationState } from './registration/registration.state';
+import { ModelState } from './model/model.state';
 
 
 /**
@@ -15,7 +16,8 @@ import { StageState } from './stage/stage.state';
 export const ROOT_STATES = [
   IconRegistryState,
   PageState,
-  StageState,
+  ModelState,
+  RegistrationState
 ];
 
 @NgModule({

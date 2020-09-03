@@ -4,7 +4,7 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { SlicesConfig, StageState, XYZTriplet } from './stage.state';
+import { SlicesConfig, ModelState, XYZTriplet } from './model.state';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
@@ -12,10 +12,10 @@ function nextValue<T>(obs: Observable<T>): Promise<T> {
 }
 
 
-describe('StageState', () => {
+describe('ModelState', () => {
   const initialXYZTriplet: XYZTriplet = { x: 0, y: 0, z: 0 };
   const initialSlicesConfig: SlicesConfig = { thickness: 0, numSlices: 1 };
-  let state: StageState;
+  let state: ModelState;
 
   beforeEach(() => {
     // NOTE: No need for shallow-render since
@@ -24,7 +24,7 @@ describe('StageState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([StageState])
+        NgxsModule.forRoot([ModelState])
       ]
     });
 
@@ -36,7 +36,7 @@ describe('StageState', () => {
       }
     });
 
-    state = TestBed.inject(StageState);
+    state = TestBed.inject(ModelState);
   });
 
   it('has the latest block size', async () => {

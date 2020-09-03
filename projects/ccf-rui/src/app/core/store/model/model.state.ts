@@ -24,7 +24,7 @@ export interface SlicesConfig {
 }
 
 /** Data contained in the stage state. */
-export interface StageStateModel {
+export interface ModelStateModel {
   /** Block size */
   blockSize: XYZTriplet;
   /** Model rotation */
@@ -35,11 +35,11 @@ export interface StageStateModel {
 
 
 /**
- * Data for the main stage/3d display
+ * Data for the main 3d model display
  */
 @StateRepository()
-@State<StageStateModel>({
-  name: 'stage',
+@State<ModelStateModel>({
+  name: 'model',
   defaults: {
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
@@ -47,7 +47,7 @@ export interface StageStateModel {
   }
 })
 @Injectable()
-export class StageState extends NgxsImmutableDataRepository<StageStateModel> {
+export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   /** Block size observable */
   readonly blockSize$ = this.state$.pipe(pluck('blockSize'));
   /** Rotation observable */
