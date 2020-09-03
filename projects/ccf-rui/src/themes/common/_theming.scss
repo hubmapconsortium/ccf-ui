@@ -16,6 +16,7 @@
 @use '../../app/modules/content/stage-nav/stage-nav.component.theme.scss' as stageNav;
 @use '../../app/modules/review/review-button/review-button.component.theme.scss' as reviewButton;
 @use '../../app/modules/review/review-modal/review-modal.component.theme.scss' as reviewModal;
+@use '../../app/modules//content/app-tutorial/video-modal/video-modal.component.theme.scss' as videoModal;
 
 
 @mixin ccf-theme($theme) {
@@ -54,5 +55,6 @@
 
   @include reviewButton.theme($theme);
   @include reviewModal.theme($theme);
+  @include videoModal.theme($theme);
   // Overrides goes here!
 }

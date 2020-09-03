@@ -1,4 +1,5 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'ccf-video-modal',
@@ -8,6 +9,11 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 export class VideoModalComponent implements OnInit {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-video-modal';
+
+  constructor(
+    public dialogRef: MatDialogRef<VideoModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: unknown
+  ) { }
 
   // https://www.youtube.com/watch?v=-ABy5IeCEk4
   ngOnInit(): void {
@@ -19,5 +25,9 @@ export class VideoModalComponent implements OnInit {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 }
