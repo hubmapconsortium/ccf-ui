@@ -23,6 +23,12 @@ export interface SlicesConfig {
   numSlices: number;
 }
 
+/** Model view type */
+export type ViewType = 'register' | '3d';
+
+/** Side which the model is viewed from */
+export type ViewSide = 'left' | 'right' | 'anterior' | 'posterior';
+
 /** Data contained in the stage state. */
 export interface ModelStateModel {
   /** Block size */
@@ -31,6 +37,10 @@ export interface ModelStateModel {
   rotation: XYZTriplet;
   /** Slice configuration */
   slicesConfig: SlicesConfig;
+  viewType: ViewType;
+  /** View type */
+  /** View side */
+  viewSide: ViewSide;
 }
 
 
@@ -43,7 +53,9 @@ export interface ModelStateModel {
   defaults: {
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
-    slicesConfig: { thickness: NaN, numSlices: NaN }
+    slicesConfig: { thickness: NaN, numSlices: NaN },
+    viewType: 'register',
+    viewSide: 'anterior'
   }
 })
 @Injectable()
@@ -54,6 +66,10 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly rotation$ = this.state$.pipe(pluck('rotation'));
   /** Slice configuration observable */
   readonly slicesConfig$ = this.state$.pipe(pluck('slicesConfig'));
+  /** View type observable */
+  readonly viewType$ = this.state$.pipe(pluck('viewType'));
+  /** View side observable */
+  readonly viewSide$ = this.state$.pipe(pluck('viewSide'));
 
   /**
    * Updates the block size
@@ -61,7 +77,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    * @param blockSize The new block size values
    */
   @DataAction()
-  updateBlockSize(blockSize: XYZTriplet): void {
+  setBlockSize(blockSize: XYZTriplet): void {
     this.ctx.patchState({ blockSize });
   }
 
@@ -71,7 +87,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    * @param rotation The new rotation values
    */
   @DataAction()
-  updateRotation(rotation: XYZTriplet): void {
+  setRotation(rotation: XYZTriplet): void {
     this.ctx.patchState({ rotation });
   }
 
@@ -81,7 +97,27 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    * @param slicesConfig The new slice configuration
    */
   @DataAction()
-  updateSlicesConfig(slicesConfig: SlicesConfig): void {
+  setSlicesConfig(slicesConfig: SlicesConfig): void {
     this.ctx.patchState({ slicesConfig });
+  }
+
+  /**
+   * Updates the view type
+   *
+   * @param viewType the new view type
+   */
+  @DataAction()
+  setViewType(viewType: ViewType): void {
+    this.ctx.patchState({ viewType });
+  }
+
+  /**
+   * Updates the view side
+   *
+   * @param viewSide The side to view
+   */
+  @DataAction()
+  setViewSide(viewSide: ViewSide): void {
+    this.ctx.patchState({ viewSide });
   }
 }
