@@ -133,12 +133,12 @@ export class VisibilityMenuComponent {
    * @param value Updated opacity value
    */
   updateOpacity(value: number): void {
-    const newSelection = this.selection;
-    if (!newSelection) {
+    if (!this.selection) {
       return;
     } else {
-      newSelection.opacity = value;
-      this.selection = newSelection;
+      const idx = this.items.indexOf(this.selection);
+      this.selection = {...this.selection, opacity: value};
+      this.items = Object.assign([], this.items, {[idx]: this.selection});
     }
     this.opacityChange.emit(value);
   }
