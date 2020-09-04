@@ -22,21 +22,28 @@
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <ccf-visibility-menu  [items]="extractionSites"></ccf-visibility-menu>
+      <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)">
+      </ccf-visibility-menu>
     </ng-template>
   </mat-expansion-panel>
   <hr>
-  <ccf-visibility-toggle [toggleLabel]="'Show Previous Registration Blocks'"></ccf-visibility-toggle>
+  <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
+                         (visibilityChanged)="model.setShowPrevious($event)">
+  </ccf-visibility-toggle>
   <hr>
   <mat-expansion-panel class="anatomical-structures-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)"
-        [items]="anatomicalStructures"></ccf-visibility-menu>
+      <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event?.opacity)"
+                           [items]="model.anatomicalStructures$ | async"
+                           (itemsChange)="model.setAnatomicalStructures($event)">
+      </ccf-visibility-menu>
       <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"
-        (opacityReset)="menu.resetOpacity()" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
+                          (opacityReset)="menu.resetOpacity()"
+                          [opacity]="menu.selection ? menu.selection?.opacity : 100">
+      </ccf-opacity-slider>
     </ng-template>
   </mat-expansion-panel>
   <hr>

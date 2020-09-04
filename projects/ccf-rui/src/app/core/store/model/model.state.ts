@@ -3,6 +3,7 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { pluck } from 'rxjs/operators';
+import { VisibilityItem } from '../../../shared/components/visibility-menu/visibility-menu.component';
 
 
 /** A object with x, y, and z channels of the same type. */
@@ -51,6 +52,12 @@ export interface ModelStateModel {
   viewType: ViewType;
   /** View side */
   viewSide: ViewSide;
+  /** Whether previous registration blocks are visible */
+  showPrevious: boolean;
+  /** Possible extraction sites */
+  extractionSites: VisibilityItem[];
+  /** Anatomical structures for the organ */
+  anatomicalStructures: VisibilityItem[];
 }
 
 
@@ -70,7 +77,25 @@ export interface ModelStateModel {
     rotation: { x: 0, y: 0, z: 0 },
     slicesConfig: { thickness: NaN, numSlices: NaN },
     viewType: 'register',
-    viewSide: 'anterior'
+    viewSide: 'anterior',
+    showPrevious: false,
+    extractionSites: [
+      {id: 1, name: 'Left atrium, appendage', visible: false},
+      {id: 2, name: 'Left atrium, PV inflow', visible: false},
+      {id: 3, name: 'Left ventricle, apex', visible: false},
+      {id: 4, name: 'Left ventricle, free wall 3cm from apex', visible: false},
+      {id: 5, name: 'Septum, 3cm from apex including LAD', visible: false},
+      {id: 6, name: 'Posterior, adjacent to coronary sinus', visible: false},
+      {id: 7, name: 'Right atrium appendage', visible: false},
+      {id: 8, name: 'Right atrium, AV(atrioventricular) node', visible: false},
+      {id: 9, name: 'Right atrium, SA(sinoatrial) node', visible: false},
+      {id: 10, name: 'Right ventricle, free wall 3cm from apex', visible: false}
+    ],
+    anatomicalStructures: [
+      {id: 1, name: 'Structure A', visible: false, opacity: 100},
+      {id: 2, name: 'Structure B', visible: false, opacity: 100},
+      {id: 3, name: 'Structure C', visible: false, opacity: 100}
+    ]
   }
 })
 @Injectable()
@@ -91,6 +116,12 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly gender$ = this.state$.pipe(pluck('gender'));
   /** Side observable */
   readonly side$ = this.state$.pipe(pluck('side'));
+  /** Show previous observable */
+  readonly showPrevious$ = this.state$.pipe(pluck('showPrevious'));
+  /** Extraction sites observable */
+  readonly extractionSites$ = this.state$.pipe(pluck('extractionSites'));
+  /** Anatomical structures observable */
+  readonly anatomicalStructures$ = this.state$.pipe(pluck('anatomicalStructures'));
 
   /**
    * Updates the block size
@@ -170,5 +201,35 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setSide(side?: 'left' | 'right'): void {
     this.ctx.patchState({ side });
+  }
+
+  /**
+   * Updates show previous
+   *
+   * @param showPrevious Whether to show
+   */
+  @DataAction()
+  setShowPrevious(showPrevious: boolean): void {
+    this.ctx.patchState({ showPrevious });
+  }
+
+  /**
+   * Updates extraction sites
+   *
+   * @param extractionSites New array of items
+   */
+  @DataAction()
+  setExtractionSites(extractionSites: VisibilityItem[]): void {
+    this.patchState({ extractionSites });
+  }
+
+  /**
+   * Updates anatomical structures
+   *
+   * @param anatomicalStructures New array of items
+   */
+  @DataAction()
+  setAnatomicalStructures(anatomicalStructures: VisibilityItem[]): void {
+    this.ctx.patchState({ anatomicalStructures });
   }
 }

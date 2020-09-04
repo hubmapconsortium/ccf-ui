@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
+import { VisibilityItem } from '../../../shared/components/visibility-menu/visibility-menu.component';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
@@ -41,7 +42,10 @@ describe('ModelState', () => {
         label: '',
         organ: 'kidney',
         gender: undefined,
-        side: 'left'
+        side: 'left',
+        showPrevious: false,
+        extractionSites: [],
+        anatomicalStructures: []
       }
     });
 
@@ -86,6 +90,21 @@ describe('ModelState', () => {
   it('has the latest side', async () => {
     const value = await nextValue(state.side$);
     expect(value).toEqual('left');
+  });
+
+  it('has the latest show previous', async () => {
+    const value = await nextValue(state.showPrevious$);
+    expect(value).toEqual(false);
+  });
+
+  it('has the latest extraction sites', async () => {
+    const value = await nextValue(state.extractionSites$);
+    expect(value).toEqual([]);
+  });
+
+  it('has the latest anatomical structures', async () => {
+    const value = await nextValue(state.anatomicalStructures$);
+    expect(value).toEqual([]);
   });
 
   it('updates the block size', async () => {
@@ -150,5 +169,28 @@ describe('ModelState', () => {
 
     const value = await nextValue(state.side$);
     expect(value).toEqual(newSide);
+  });
+
+  it('updates show previous', async () => {
+    state.setShowPrevious(true);
+
+    const value = await nextValue(state.showPrevious$);
+    expect(value).toEqual(true);
+  });
+
+  it('updates extraction sites', async () => {
+    const newSites = [{id: 2}] as VisibilityItem[];
+    state.setExtractionSites(newSites);
+
+    const value = await nextValue(state.extractionSites$);
+    expect(value).toEqual(newSites);
+  });
+
+  it('updates anatomical structures', async () => {
+    const newStructures = [{id: 3}] as VisibilityItem[];
+    state.setAnatomicalStructures(newStructures);
+
+    const value = await nextValue(state.anatomicalStructures$);
+    expect(value).toEqual(newStructures);
   });
 });
