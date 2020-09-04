@@ -36,7 +36,12 @@ describe('ModelState', () => {
         rotation: initialXYZTriplet,
         slicesConfig: initialSlicesConfig,
         viewType: initialViewType,
-        viewSide: initialViewSide
+        viewSide: initialViewSide,
+        id: '',
+        label: '',
+        organ: 'kidney',
+        gender: undefined,
+        side: 'left'
       }
     });
 
@@ -66,6 +71,21 @@ describe('ModelState', () => {
   it('has the latest view side', async () => {
     const value = await nextValue(state.viewSide$);
     expect(value).toEqual(initialViewSide);
+  });
+
+  it('has the latest organ', async () => {
+    const value = await nextValue(state.organ$);
+    expect(value).toEqual('kidney');
+  });
+
+  it('has the latest gender', async () => {
+    const value = await nextValue(state.gender$);
+    expect(value).toEqual(undefined);
+  });
+
+  it('has the latest side', async () => {
+    const value = await nextValue(state.side$);
+    expect(value).toEqual('left');
   });
 
   it('updates the block size', async () => {
@@ -106,5 +126,29 @@ describe('ModelState', () => {
 
     const value = await nextValue(state.viewSide$);
     expect(value).toEqual(newViewSide);
+  });
+
+  it('updates the organ', async () => {
+    const newOrgan = 'heart';
+    state.setOrgan(newOrgan);
+
+    const value = await nextValue(state.organ$);
+    expect(value).toEqual(newOrgan);
+  });
+
+  it('updates the view side', async () => {
+    const newGender = 'female';
+    state.setGender(newGender);
+
+    const value = await nextValue(state.gender$);
+    expect(value).toEqual(newGender);
+  });
+
+  it('updates the side', async () => {
+    const newSide = 'right';
+    state.setSide(newSide);
+
+    const value = await nextValue(state.side$);
+    expect(value).toEqual(newSide);
   });
 });

@@ -35,6 +35,12 @@ export interface ModelStateModel {
   id: string;
   /** Model label */
   label: string;
+  /** Organ name */
+  organ: string;
+  /** Gender if applicable */
+  gender?: 'male' | 'female';
+  /** Side if applicable */
+  side?: 'left' | 'right';
   /** Block size */
   blockSize: XYZTriplet;
   /** Model rotation */
@@ -57,6 +63,9 @@ export interface ModelStateModel {
   defaults: {
     id: '',
     label: '',
+    organ: '',
+    gender: undefined,
+    side: undefined,
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
     slicesConfig: { thickness: NaN, numSlices: NaN },
@@ -76,6 +85,12 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly viewType$ = this.state$.pipe(pluck('viewType'));
   /** View side observable */
   readonly viewSide$ = this.state$.pipe(pluck('viewSide'));
+  /** Organ observable */
+  readonly organ$ = this.state$.pipe(pluck('organ'));
+  /** Gender observable */
+  readonly gender$ = this.state$.pipe(pluck('gender'));
+  /** Side observable */
+  readonly side$ = this.state$.pipe(pluck('side'));
 
   /**
    * Updates the block size
@@ -125,5 +140,35 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setViewSide(viewSide: ViewSide): void {
     this.ctx.patchState({ viewSide });
+  }
+
+  /**
+   * Updates the organ
+   *
+   * @param organ Name of the organ
+   */
+  @DataAction()
+  setOrgan(organ: string): void {
+    this.ctx.patchState({ organ });
+  }
+
+  /**
+   * Updates the gender
+   *
+   * @param [gender] The new gender
+   */
+  @DataAction()
+  setGender(gender?: 'male' | 'female'): void {
+    this.ctx.patchState({ gender });
+  }
+
+  /**
+   * Updates the side
+   *
+   * @param [side] The new side
+   */
+  @DataAction()
+  setSide(side?: 'left' | 'right'): void {
+    this.ctx.patchState({ side });
   }
 }

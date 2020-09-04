@@ -74,6 +74,6 @@ describe('RegistrationState', () => {
     it('creates jsonld objects', async () => {
       const value = await nextValue(state.jsonld$);
       expect(value).toBeInstanceOf(Object);
-    })
+    });
   });
 });

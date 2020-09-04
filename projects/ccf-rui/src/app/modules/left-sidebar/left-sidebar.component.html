@@ -5,9 +5,15 @@
   <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
   </ccf-name-input>
   <hr>
-  <ccf-organ-selector></ccf-organ-selector>
+  <ccf-organ-selector [organList]="organList" [selectedOrgan]="model.organ$ | async"
+                      (organChanged)="model.setOrgan($event)">
+  </ccf-organ-selector>
   <div class="organ-sliders">
-    <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']"></ccf-labeled-slide-toggle>
-    <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
+    <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
+                              (valueChange)="setSideFromLabel($event)">
+    </ccf-labeled-slide-toggle>
+    <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
+                              (valueChange)="setGenderFromLabel($event)">
+    </ccf-labeled-slide-toggle>
   </div>
 </ng-template>
