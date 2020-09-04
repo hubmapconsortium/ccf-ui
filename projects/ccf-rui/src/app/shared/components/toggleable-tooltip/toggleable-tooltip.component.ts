@@ -11,6 +11,6 @@ export class ToggleableTooltipComponent {
 
   @Input() tooltip: string;
   @Input() visible: boolean;
-  @Input() marginTop: number;
+  @Input() offset: number;
   @Input() direction: 'left' | 'right' | 'up' | 'down';
 }

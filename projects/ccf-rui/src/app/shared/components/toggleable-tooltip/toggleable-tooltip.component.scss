@@ -2,7 +2,15 @@
     .display-right {
         position: absolute;
         left: 25.5rem;
+    }
 
+    .display-left {
+        position: absolute;
+        right: 25.5rem;
+    }
+
+    .display-down {
+        position: absolute;
     }
 
     .description {
@@ -14,7 +22,6 @@
         flex-direction: row;
         width: 25rem;
         justify-content: space-between;
-
     }
 
     .h-bar {
@@ -27,6 +34,8 @@
     .v-flex {
         display: flex;
         flex-direction: column;
+        width: 25rem;
+        align-items: center;
     }
 
     .v-bar {

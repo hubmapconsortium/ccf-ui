@@ -11,6 +11,8 @@ export class ContentComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-content';
 
+  tutorialMode = true;
+
   /**
    * Method to reset registration block, crosshairs, and x,y,z information.
    */

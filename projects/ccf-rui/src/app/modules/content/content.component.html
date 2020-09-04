@@ -2,5 +2,11 @@
     <ccf-stage-nav></ccf-stage-nav>
     <mat-icon class="icon reset" (click)="resetStage()">refresh</mat-icon>
 </div>
+<ccf-toggleable-tooltip
+    [visible]="tutorialMode"
+    [direction]="'down'"
+    [offset]="21"
+    [tooltip]="'Change view.'"
+></ccf-toggleable-tooltip>
 <ccf-video-modal-launcher></ccf-video-modal-launcher>
 <!-- <ccf-store-debug></ccf-store-debug> -->

@@ -4,12 +4,24 @@
 <ng-template #selectors>
   <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
   </ccf-name-input>
+  <ccf-toggleable-tooltip
+    [visible]="tutorialMode"
+    [direction]="'right'"
+    [offset]="-3"
+    [tooltip]="'Add your first and last name.'"
+  ></ccf-toggleable-tooltip>
   <hr>
   <ccf-organ-selector></ccf-organ-selector>
   <div class="organ-sliders">
     <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']"></ccf-labeled-slide-toggle>
     <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
   </div>
+  <ccf-toggleable-tooltip
+    [visible]="tutorialMode"
+    [direction]="'right'"
+    [offset]="-6"
+    [tooltip]="'Next, select the organ your tissue block is from.'"
+  ></ccf-toggleable-tooltip>
   <hr>
   <mat-expansion-panel class="extraction-menu">
     <mat-expansion-panel-header class="expansion-header">
@@ -19,8 +31,20 @@
       <ccf-visibility-menu  [items]="extractionSites"></ccf-visibility-menu>
     </ng-template>
   </mat-expansion-panel>
+  <ccf-toggleable-tooltip
+    [visible]="tutorialMode"
+    [direction]="'right'"
+    [offset]="-3"
+    [tooltip]="'Some organs have predefined extraction sites--you can turn these on/off.'"
+  ></ccf-toggleable-tooltip>
   <hr>
   <ccf-visibility-toggle [toggleLabel]="'Show Previous Registration Blocks'"></ccf-visibility-toggle>
+  <ccf-toggleable-tooltip
+    [visible]="tutorialMode"
+    [direction]="'right'"
+    [offset]="-3"
+    [tooltip]="'If you previously registered tissue blocks, you can turn their positions on/off.'"
+  ></ccf-toggleable-tooltip>
   <hr>
   <mat-expansion-panel class="anatomical-structures-menu">
     <mat-expansion-panel-header class="expansion-header">
@@ -33,5 +57,11 @@
         (opacityReset)="menu.resetOpacity()" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
     </ng-template>
   </mat-expansion-panel>
+  <ccf-toggleable-tooltip
+    [visible]="tutorialMode"
+    [direction]="'right'"
+    [offset]="-3"
+    [tooltip]="'Toggle visibility and opacity of anatomical structures to ease registration.'"
+  ></ccf-toggleable-tooltip>
   <hr>
 </ng-template>

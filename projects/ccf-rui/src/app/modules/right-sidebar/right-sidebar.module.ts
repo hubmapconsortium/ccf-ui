@@ -6,10 +6,18 @@ import { RotationSliderModule } from '../../shared/components/rotation-slider/ro
 import { SlicesInputModule } from '../../shared/components/slices-input/slices-input.module';
 import { RightSidebarComponent } from './right-sidebar.component';
 import { ReviewButtonModule } from '../review/review-button/review-button.module';
+import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
 
 
 @NgModule({
-  imports: [CommonModule, BlockSizeInputModule, RotationSliderModule, SlicesInputModule, ReviewButtonModule],
+  imports: [
+    CommonModule,
+    BlockSizeInputModule,
+    RotationSliderModule,
+    SlicesInputModule,
+    ReviewButtonModule,
+    ToggleableTooltipModule
+  ],
   declarations: [RightSidebarComponent],
   exports: [RightSidebarComponent]
 })

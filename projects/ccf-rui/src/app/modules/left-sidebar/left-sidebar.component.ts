@@ -34,5 +34,7 @@ export class LeftSidebarComponent {
     {id: 3, name: 'Structure C', visible: false, opacity: 100}
   ];
 
+  tutorialMode = true;
+
   constructor(readonly page: PageState) {}
 }

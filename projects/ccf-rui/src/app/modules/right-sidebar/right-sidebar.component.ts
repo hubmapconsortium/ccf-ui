@@ -13,6 +13,8 @@ export class RightSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-right-sidebar';
 
+  tutorialMode = true;
+
   /**
    * Creates an instance of right sidebar component.
    *
