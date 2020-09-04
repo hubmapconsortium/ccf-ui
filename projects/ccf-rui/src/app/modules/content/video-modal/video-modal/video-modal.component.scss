@@ -1,0 +1,22 @@
+::ng-deep .mat-dialog-container {
+  padding: 0;
+}
+
+:host {
+  .video-modal.wrapper {
+    .container {
+      .content {
+        padding: 3rem;
+      }
+
+      .close {
+        .close-icon {
+          float: right;
+          margin-top: 1rem;
+          margin-right: 1rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

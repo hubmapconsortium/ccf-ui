@@ -5,7 +5,7 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .ccf-app-tutorial {
+  .ccf-toggleable-tooltip {
       .description {
         color: mat-color($foreground, contrast-text);
       }

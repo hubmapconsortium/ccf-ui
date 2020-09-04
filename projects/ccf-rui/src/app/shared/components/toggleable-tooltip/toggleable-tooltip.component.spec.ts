@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppTutorialComponent } from './app-tutorial.component';
+import { ToggleableTooltipComponent } from './toggleable-tooltip.component';
 
-describe('AppTutorialComponent', () => {
-  let component: AppTutorialComponent;
-  let fixture: ComponentFixture<AppTutorialComponent>;
+describe('ToggleableTooltipComponent', () => {
+  let component: ToggleableTooltipComponent;
+  let fixture: ComponentFixture<ToggleableTooltipComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppTutorialComponent ]
+      declarations: [ ToggleableTooltipComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppTutorialComponent);
+    fixture = TestBed.createComponent(ToggleableTooltipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

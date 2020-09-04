@@ -6,6 +6,10 @@
   $background: map-get($theme, background);
 
   .ccf-video-modal-launcher {
+    .description {
+      color: mat-color($foreground, contrast-text);
+    }
+
     .play-icon-button {
         color: mat-color($foreground, contrast-text);
 
