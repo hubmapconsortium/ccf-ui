@@ -96,9 +96,10 @@ export class VisibilityMenuComponent {
    * @param item Menu item
    */
   toggleVisibility(item: VisibilityItem): void {
-    item.visible = !item.visible;
+    const idx = this.items.indexOf(item);
+    item = {...item, visible: !item.visible, iconSrc: !item.visible ? 'app:visibility_on' : 'app:visibility_off'};
+    this.items = Object.assign([], this.items, {[idx]: item});
     this.visibleItems = this.items.filter(x => x.visible);
-    item.iconSrc = item.visible ? 'app:visibility_on' : 'app:visibility_off';
     this.visibleItemsChange.emit(this.visibleItems);
   }
 
