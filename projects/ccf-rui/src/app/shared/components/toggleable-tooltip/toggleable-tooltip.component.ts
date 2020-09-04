@@ -1,17 +1,16 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'ccf-toggleable-tooltip',
   templateUrl: './toggleable-tooltip.component.html',
   styleUrls: ['./toggleable-tooltip.component.scss']
 })
-export class ToggleableTooltipComponent implements OnInit {
+export class ToggleableTooltipComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-toggleable-tooltip';
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() tooltip: string;
+  @Input() visible: boolean;
+  @Input() marginTop: number;
+  @Input() direction: 'left' | 'right' | 'up' | 'down';
 }

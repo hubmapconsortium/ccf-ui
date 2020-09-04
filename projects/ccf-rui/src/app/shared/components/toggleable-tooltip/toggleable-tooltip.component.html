@@ -1,8 +1,8 @@
-<div class="left-bar">
+<div class="display-right" *ngIf="visible && direction === 'right'" [style.margin-top.rem]="marginTop">
     <div class="h-flex">
         <div class="h-bar"></div>
         <div class="description align-left">
-            Add your first and last name.
+            {{ tooltip }}
         </div>
     </div>
 </div>

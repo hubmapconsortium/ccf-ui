@@ -11,3 +11,9 @@
   </div>
   <mat-icon class="carousel-right-icon" (click)="shift('right', 56)" [class.disabled]="onRight">chevron_right</mat-icon>
 </div>
+<ccf-toggleable-tooltip
+  [visible]="true"
+  [direction]="'right'"
+  [marginTop]="-3"
+  [tooltip]="'Next, select the organ your tissue block is from.'"
+></ccf-toggleable-tooltip>

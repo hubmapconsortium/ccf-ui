@@ -1,8 +1,8 @@
 :host {
-    .left-bar {
+    .display-right {
         position: absolute;
-        left: 25rem;
-        top: 4rem;
+        left: 25.5rem;
+
     }
 
     .description {
@@ -14,6 +14,7 @@
         flex-direction: row;
         width: 25rem;
         justify-content: space-between;
+
     }
 
     .h-bar {

@@ -7,5 +7,9 @@
   <mat-label class="text label">Last Name</mat-label>
   <input matInput class="input" [value]="name.lastName" (input)="updateName($event, 'lastName')">
 </mat-form-field>
-
-<ccf-toggleable-tooltip></ccf-toggleable-tooltip>
+<ccf-toggleable-tooltip
+  [visible]="true"
+  [direction]="'right'"
+  [marginTop]="2"
+  [tooltip]="'Add your first and last name.'"
+></ccf-toggleable-tooltip>
