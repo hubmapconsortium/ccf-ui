@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, HostBinding } from '@angular/core';
 
 /**
  * Contains the organ name and url of the icon svg
@@ -27,6 +27,11 @@ export interface OrganInfo {
   styleUrls: ['./organ-selector.component.scss']
 })
 export class OrganSelectorComponent {
+
+  /**
+   * HTML class name
+   */
+  @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
   /**
    * Emits the name of the organ when selected

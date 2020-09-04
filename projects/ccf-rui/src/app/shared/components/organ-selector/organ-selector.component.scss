@@ -1,13 +1,13 @@
-.carousel {
+:host {
   display: flex;
   align-items: center;
   height: 4.5rem;
   justify-content: space-between;
-  border-radius: 3px;
+  border-radius: 0.1875rem;
 
   .carousel-left-icon,
   .carousel-right-icon {
-    font-size: 32px;
+    font-size: 2rem;
     transform: scale(1, 1.2);
     height: 2rem;
     width: 2rem;
@@ -31,7 +31,7 @@
 
     .carousel-item-list {
       position: relative;
-      left: 0px;
+      left: 0rem;
       display: flex;
       transition: all 0.25s ease-in-out;
       width: 17.5rem;
@@ -50,12 +50,12 @@
 
         .carousel-text {
           text-align: center;
-          font-size: 10px;
+          font-size: 0.625rem;
         }
 
         &.selected {
           .carousel-text {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: bold;
           }
         }
