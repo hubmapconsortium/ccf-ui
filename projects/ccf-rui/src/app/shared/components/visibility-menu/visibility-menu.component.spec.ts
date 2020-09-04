@@ -9,7 +9,6 @@ describe('VisibilityMenuComponent', () => {
     id: 1,
     name: 'test',
     visible: false,
-    iconSrc: '',
     opacity: 100
   };
   const testItems = [testItem];
@@ -18,25 +17,11 @@ describe('VisibilityMenuComponent', () => {
     shallow = new Shallow(VisibilityMenuComponent, VisibilityMenuModule);
   });
 
-  it('should change the icon to visible type when toggleVisibility is called on a non-visible item', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    testItem.visible = false;
-    instance.toggleVisibility(testItem);
-    expect(testItem.iconSrc).toEqual('app:visibility_on');
-  });
-
-  it('should change the icon to nonvisible type when toggleVisibility is called on a visible item', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    testItem.visible = true;
-    instance.toggleVisibility(testItem);
-    expect(testItem.iconSrc).toEqual('app:visibility_off');
-  });
-
   it('should emit the visible items when toggleVisibility is called', async () => {
     const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
     testItem.visible = false;
     instance.toggleVisibility(testItem);
-    expect(outputs.visibleItemsChange.emit).toHaveBeenCalledWith([testItem]);
+    expect(outputs.visibleItemsChange.emit).toHaveBeenCalledWith(instance.visibleItems);
   });
 
   it('should change selection when toggleSelected is called', async () => {

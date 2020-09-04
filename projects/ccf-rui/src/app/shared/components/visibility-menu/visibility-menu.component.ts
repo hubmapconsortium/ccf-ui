@@ -21,11 +21,6 @@ export interface VisibilityItem {
   visible: boolean;
 
   /**
-   * Src of the icon (visible or non-visible)
-   */
-  iconSrc: string;
-
-  /**
    * Opacity value
    */
   opacity?: number;
@@ -97,7 +92,7 @@ export class VisibilityMenuComponent {
    */
   toggleVisibility(item: VisibilityItem): void {
     const idx = this.items.indexOf(item);
-    item = {...item, visible: !item.visible, iconSrc: !item.visible ? 'app:visibility_on' : 'app:visibility_off'};
+    item = {...item, visible: !item.visible};
     this.items = Object.assign([], this.items, {[idx]: item});
     this.visibleItems = this.items.filter(x => x.visible);
     this.visibleItemsChange.emit(this.visibleItems);

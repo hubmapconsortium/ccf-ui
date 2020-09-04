@@ -8,8 +8,7 @@ describe('OpacitySliderComponent', () => {
   const testItem = {
     id: 1,
     name: 'test',
-    visible: false,
-    iconSrc: ''
+    visible: false
   };
   const testItems = [testItem];
 
