@@ -12,7 +12,7 @@
       background: whitesmoke;
 
       ::ng-deep .cff-drawer-inner-container {
-        width: calc(100% - .5rem);
+        width: calc(100% - .375rem);
         overflow-y: scroll;
       }
     }
