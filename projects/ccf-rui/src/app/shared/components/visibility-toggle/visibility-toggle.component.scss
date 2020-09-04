@@ -1,0 +1,24 @@
+:host {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+
+  .toggle-wrapper {
+    -webkit-user-select: none;    
+    -moz-user-select: none;
+    display: flex;
+    padding-left: .5rem;
+    cursor: pointer;
+    align-items: center;
+
+    .visibility-icon {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    .toggle-label {
+      font-weight: bold;
+      margin-left: 1rem;
+    }
+  }
+}

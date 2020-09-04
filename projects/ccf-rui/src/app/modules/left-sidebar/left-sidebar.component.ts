@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { OrganInfo } from '../../shared/components/organ-selector/organ-selector.component';
-
+import { VisibilityItem } from '../../shared/components/visibility-menu/visibility-menu.component';
 
 @Component({
   selector: 'ccf-left-sidebar',
@@ -25,6 +25,25 @@ export class LeftSidebarComponent {
   );
 
   detailsLabels: string[] = ['heart', 'front', 'female'];
+
+  extractionSites: VisibilityItem[] = [
+    {id: 1, name: 'Left atrium, appendage', visible: false},
+    {id: 2, name: 'Left atrium, PV inflow', visible: false},
+    {id: 3, name: 'Left ventricle, apex', visible: false},
+    {id: 4, name: 'Left ventricle, free wall 3cm from apex', visible: false},
+    {id: 5, name: 'Septum, 3cm from apex including LAD', visible: false},
+    {id: 6, name: 'Posterior, adjacent to coronary sinus', visible: false},
+    {id: 7, name: 'Right atrium appendage', visible: false},
+    {id: 8, name: 'Right atrium, AV(atrioventricular) node', visible: false},
+    {id: 9, name: 'Right atrium, SA(sinoatrial) node', visible: false},
+    {id: 10, name: 'Right ventricle, free wall 3cm from apex', visible: false}
+  ];
+
+  anatomicalStructures: VisibilityItem[] = [
+    {id: 1, name: 'Structure A', visible: false, opacity: 100},
+    {id: 2, name: 'Structure B', visible: false, opacity: 100},
+    {id: 3, name: 'Structure C', visible: false, opacity: 100}
+  ];
 
   organList: OrganInfo[] = [
     {src: 'app:colon', name: 'Colon'},
