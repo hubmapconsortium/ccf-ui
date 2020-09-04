@@ -5,10 +5,16 @@
   <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
   </ccf-name-input>
   <hr>
-  <ccf-organ-selector></ccf-organ-selector>
+  <ccf-organ-selector [organList]="organList" [selectedOrgan]="model.organ$ | async"
+                      (organChanged)="model.setOrgan($event)">
+  </ccf-organ-selector>
   <div class="organ-sliders">
-    <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']"></ccf-labeled-slide-toggle>
-    <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"></ccf-labeled-slide-toggle>
+    <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
+                              (valueChange)="setSideFromLabel($event)">
+    </ccf-labeled-slide-toggle>
+    <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
+                              (valueChange)="setGenderFromLabel($event)">
+    </ccf-labeled-slide-toggle>
   </div>
   <hr>
   <mat-expansion-panel class="extraction-menu">
@@ -16,21 +22,28 @@
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <ccf-visibility-menu  [items]="extractionSites"></ccf-visibility-menu>
+      <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)">
+      </ccf-visibility-menu>
     </ng-template>
   </mat-expansion-panel>
   <hr>
-  <ccf-visibility-toggle [toggleLabel]="'Show Previous Registration Blocks'"></ccf-visibility-toggle>
+  <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
+                         (visibilityChanged)="model.setShowPrevious($event)">
+  </ccf-visibility-toggle>
   <hr>
   <mat-expansion-panel class="anatomical-structures-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event.opacity)"
-        [items]="anatomicalStructures"></ccf-visibility-menu>
+      <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event?.opacity)"
+                           [items]="model.anatomicalStructures$ | async"
+                           (itemsChange)="model.setAnatomicalStructures($event)">
+      </ccf-visibility-menu>
       <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"
-        (opacityReset)="menu.resetOpacity()" [opacity]="menu.selection ? menu.selection.opacity : 100"></ccf-opacity-slider>
+                          (opacityReset)="menu.resetOpacity()"
+                          [opacity]="menu.selection ? menu.selection?.opacity : 100">
+      </ccf-opacity-slider>
     </ng-template>
   </mat-expansion-panel>
   <hr>

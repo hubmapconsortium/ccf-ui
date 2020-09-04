@@ -60,7 +60,7 @@ describe('VisibilityMenuComponent', () => {
     instance.selection = testItem;
     instance.updateOpacity(50);
     expect(instance.selection.opacity).toEqual(50);
-    expect(outputs.opacityChange.emit).toHaveBeenCalledWith(50);
+    expect(outputs.opacityChange.emit).toHaveBeenCalledWith({ ...testItem, opacity: 50 });
   });
 
   it('should return when updateOpacity is called when no item is selected', async () => {

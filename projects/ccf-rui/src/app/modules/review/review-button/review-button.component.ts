@@ -32,18 +32,7 @@ export class ReviewButtonComponent {
   /**
    * Input object of information to display in the modal
    */
-  @Input() metaData: MetaData = [
-    { label: 'First Name', value: 'Homer' },
-    { label: 'Last Name', value: 'Simpson' },
-    { label: 'Reference Organ Name', value: 'kidney, left, make, vh' },
-    { label: 'Tissue Block Size (mm)', value: '20, 10, 10' },
-    { label: 'Tissue Block Position (mm)', value: '10, 74 16' },
-    { label: 'Tissue Block Rotation', value: '0, 358.75, 20.07' },
-    { label: 'Extraction Site(s)', value: 'Bisection line' },
-    { label: 'Anatomical Structure Tags', value: 'Tag 1, Tag 2, Tag 3' },
-    { label: 'Time Stamp', value: '7/10/2020 9:53:04 AM' },
-    { label: 'Alignment ID', value: '5dae2c44-aad-5-4f7a-aa12-c0551de97b' }
-  ];
+  @Input() metaData: MetaData = [];
 
   /**
    * Output that emits when the modal's register button was clicked
