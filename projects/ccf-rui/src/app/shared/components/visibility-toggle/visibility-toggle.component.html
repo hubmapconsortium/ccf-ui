@@ -1,0 +1,4 @@
+<div (click)="toggleVisibility()" class="toggle-wrapper">
+    <mat-icon class="icon" [class.visible]="visible" [svgIcon]="visible ? 'app:visibility_on' : 'app:visibility_off'"></mat-icon>
+    <div class="toggle-label">{{ toggleLabel }}</div>
+</div>
