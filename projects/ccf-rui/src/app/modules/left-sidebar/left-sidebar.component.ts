@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { OrganInfo } from '../../shared/components/organ-selector/organ-selector.component';
-import { VisibilityItem } from '../../shared/components/visibility-menu/visibility-menu.component';
 
 @Component({
   selector: 'ccf-left-sidebar',
