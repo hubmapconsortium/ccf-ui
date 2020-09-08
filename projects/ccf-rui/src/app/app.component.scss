@@ -9,12 +9,6 @@
 
     ccf-drawer {
       width: 25.5rem;
-      background: whitesmoke;
-
-      ::ng-deep .cff-drawer-inner-container {
-        width: calc(100% - .375rem);
-        overflow-y: scroll;
-      }
     }
   }
 }

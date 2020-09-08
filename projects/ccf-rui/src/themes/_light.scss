@@ -55,11 +55,11 @@ $foreground: map-merge($mat-light-theme-foreground, (
 
 $background: map-merge($mat-light-theme-background, (
   app-bar: map-get($primary-colors, light-header), // #444A65
+  background: map-get($primary-colors, 100), // #F5F5F5
   modal: map-get($primary-colors, 100), // #F5F5F5
   sidebar-background: map-get($primary-colors, 100), // #F5F5F5
   stage-background: map-get($primary-colors, 'black'),
 
-  background: map-get($primary-colors, 50),
   hover-background: map-get($primary-colors, 300), // #E0E0E0
   dialog: map-get($primary-colors, 50), // #FAFAFA
   authentication: map-get($primary-colors, 50), // #FAFAFA
