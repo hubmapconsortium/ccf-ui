@@ -3,6 +3,7 @@
   width: 100%;
   height: 100%;
   padding: 1.5rem;
+  overflow: hidden;
 
   .top-bar {
     display: flex;
@@ -18,6 +19,8 @@
 
   // Temporary for displaying dev information
   .ccf-store-debug {
+    height: calc(100% - 2 * 1.5rem - 8rem);
+    overflow: auto;
     margin-top: 2rem;
     color: white;
   }
