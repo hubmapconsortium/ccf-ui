@@ -7,6 +7,11 @@
 
   .ccf-left-sidebar {
     background-color: mat-color($background, sidebar-background);
+    scrollbar-color: mat-color($foreground, scrollbar-thumb) mat-color($background, sidebar-background);
+
+    &::-webkit-scrollbar-track {
+      background-color: mat-color($background, sidebar-background);
+    }
 
     hr {
       border-color: mat-color($foreground, sidebar-dividers);

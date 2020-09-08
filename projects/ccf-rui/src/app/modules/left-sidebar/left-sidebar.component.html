@@ -1,22 +1,27 @@
-<ng-container *ngIf="page.embedded$ | async; else selectors">
-  <ccf-details-label [details]="detailsLabels"></ccf-details-label>
-</ng-container>
-<ng-template #selectors>
-  <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
-  </ccf-name-input>
+<div class="container">
+  <ng-container *ngIf="page.embedded$ | async; else selectors">
+    <ccf-details-label [details]="detailsLabels"></ccf-details-label>
+  </ng-container>
+  <ng-template #selectors>
+    <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
+    </ccf-name-input>
+
+    <hr>
+
+    <ccf-organ-selector [organList]="organList" (organChanged)="model.setOrgan($event)">
+    </ccf-organ-selector>
+    <div class="organ-sliders">
+      <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
+                                (valueChange)="setSideFromLabel($event)">
+      </ccf-labeled-slide-toggle>
+      <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
+                                (valueChange)="setGenderFromLabel($event)">
+      </ccf-labeled-slide-toggle>
+    </div>
+  </ng-template>
+
   <hr>
-  <ccf-organ-selector [organList]="organList" [selectedOrgan]="model.organ$ | async"
-                      (organChanged)="model.setOrgan($event)">
-  </ccf-organ-selector>
-  <div class="organ-sliders">
-    <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
-                              (valueChange)="setSideFromLabel($event)">
-    </ccf-labeled-slide-toggle>
-    <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
-                              (valueChange)="setGenderFromLabel($event)">
-    </ccf-labeled-slide-toggle>
-  </div>
-  <hr>
+
   <mat-expansion-panel class="extraction-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
@@ -26,11 +31,15 @@
       </ccf-visibility-menu>
     </ng-template>
   </mat-expansion-panel>
+
   <hr>
+
   <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
                          (visibilityChanged)="model.setShowPrevious($event)">
   </ccf-visibility-toggle>
+
   <hr>
+
   <mat-expansion-panel class="anatomical-structures-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
@@ -46,5 +55,6 @@
       </ccf-opacity-slider>
     </ng-template>
   </mat-expansion-panel>
+
   <hr>
-</ng-template>
+</div>
