@@ -8,7 +8,8 @@
 
     <hr>
 
-    <ccf-organ-selector></ccf-organ-selector>
+    <ccf-organ-selector [organList]="organList" (organChanged)="model.setOrgan($event)">
+    </ccf-organ-selector>
     <div class="organ-sliders">
       <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
                                 (valueChange)="setSideFromLabel($event)">
