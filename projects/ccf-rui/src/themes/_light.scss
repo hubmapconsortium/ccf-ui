@@ -57,6 +57,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
 $background: map-merge($mat-light-theme-background, (
   app-bar: map-get($primary-colors, light-header), // #444A65
   background: map-get($primary-colors, 100), // #F5F5F5
+  content-background: map-get($primary-colors, 'black'),
   modal: map-get($primary-colors, 100), // #F5F5F5
   sidebar-background: map-get($primary-colors, 100), // #F5F5F5
   stage-background: map-get($primary-colors, 'black'),
