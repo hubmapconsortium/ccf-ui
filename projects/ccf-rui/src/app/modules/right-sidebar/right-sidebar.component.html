@@ -1,4 +1,4 @@
-<ccf-block-size-input [blockSize]="stage.blockSize$ | async" (blockSizeChange)="stage.updateBlockSize($event)">
+<ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
 </ccf-block-size-input>
 <ccf-toggleable-tooltip
     [visible]="tutorialMode"
@@ -7,7 +7,7 @@
     [tooltip]="'Enter tissue block dimensions.'"
 ></ccf-toggleable-tooltip>
 <hr>
-<ccf-slices-input [slicesConfig]="stage.slicesConfig$ | async" (slicesConfigChange)="stage.updateSlicesConfig($event)">
+<ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
 </ccf-slices-input>
 <ccf-toggleable-tooltip
     [visible]="tutorialMode"
@@ -16,7 +16,7 @@
     [tooltip]="'Enter the thickness and number of planned tissue slices.'"
 ></ccf-toggleable-tooltip>
 <hr>
-<ccf-rotation-slider [rotation]="stage.rotation$ | async" (rotationChange)="stage.updateRotation($event)">
+<ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
 </ccf-rotation-slider>
 <ccf-toggleable-tooltip
     [visible]="tutorialMode"
@@ -26,9 +26,11 @@
 ></ccf-toggleable-tooltip>
 <hr>
 
-<div class="button-container">
-    <ccf-review-button></ccf-review-button>
-</div>
+<div class="filler"></div>
+
+<ccf-review-button [metaData]="registration.metadata$ | async">
+</ccf-review-button>
+
 <ccf-toggleable-tooltip
     [visible]="tutorialMode"
     [direction]="'left'"
