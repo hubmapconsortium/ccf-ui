@@ -81,6 +81,7 @@
     "react": "^16.13.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
+    "uuid": "^8.3.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
@@ -101,6 +102,7 @@
     "@types/rdf-js": "^3.0.3",
     "@types/readable-stream": "^2.3.9",
     "@types/sax": "^1.2.1",
+    "@types/uuid": "^8.3.0",
     "browserify": "^16.5.1",
     "codelyzer": "^6.0.0",
     "dts-gen": "^0.6.0",

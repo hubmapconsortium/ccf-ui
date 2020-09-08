@@ -27,11 +27,18 @@ export interface OrganInfo {
   styleUrls: ['./organ-selector.component.scss']
 })
 export class OrganSelectorComponent {
+  /** HTML class */
+  @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
   /**
-   * HTML class name
+   * List of organs in the carousel
    */
-  @HostBinding('class') readonly clsName = 'ccf-organ-selector';
+  @Input() organList: OrganInfo[] = [];
+
+  /**
+   * Currently selected organ
+   */
+  @Input() selectedOrgan: string;
 
   /**
    * Emits the name of the organ when selected
@@ -47,30 +54,6 @@ export class OrganSelectorComponent {
    * Determines whether the carousel is at the end
    */
   onRight = false;
-
-  /**
-   * List of organs in the carousel
-   */
-  @Input() organList: OrganInfo[] = [
-    {src: 'app:colon', name: 'Colon'},
-    {src: 'app:heart', name: 'Heart'},
-    {src: 'app:kidney', name: 'Kidney'},
-    {src: 'app:spleen', name: 'Spleen'},
-    {src: 'app:bladder', name: 'Bladder', disabled: true},
-    {src: 'app:brain', name: 'Brain', disabled: true},
-    {src: 'app:liver', name: 'Liver', disabled: true},
-    {src: 'app:lung', name: 'Lung', disabled: true},
-    {src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true},
-    {src: 'app:ovaries', name: 'Ovaries', disabled: true},
-    {src: 'app:small_intestine', name: 'Small Intestine', disabled: true},
-    {src: 'app:stomach', name: 'Stomach', disabled: true},
-    {src: 'app:thymus', name: 'Thymus', disabled: true}
-  ];
-
-  /**
-   * Currently selected organ
-   */
-  selectedOrgan: string;
 
   /**
    * Scrolls the carousel left or right by one step.

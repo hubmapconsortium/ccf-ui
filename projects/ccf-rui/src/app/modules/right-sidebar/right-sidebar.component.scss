@@ -12,15 +12,20 @@
     border-width: 1.5px;
   }
 
-  *:first-child {
+  & > :not(hr) {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  & > :first-child {
     margin-top: 1.5rem;
   }
 
-  .button-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 1.5rem;
+  & > :last-child {
+    margin-bottom: 1.5rem;
+  }
+
+  .filler {
+    flex-grow: 1;
   }
 }

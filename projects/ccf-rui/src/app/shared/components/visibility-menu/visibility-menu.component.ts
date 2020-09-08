@@ -74,12 +74,17 @@ export class VisibilityMenuComponent {
   /**
    * Emits the current opacity value
    */
-  @Output() opacityChange = new EventEmitter<number>();
+  @Output() opacityChange = new EventEmitter<VisibilityItem>();
 
   /**
    * Emits the currently hovered item
    */
   @Output() hover = new EventEmitter<VisibilityItem | undefined>();
+
+  /**
+   * Emits whenever there is a change to one or more items.
+   */
+  @Output() readonly itemsChange = new EventEmitter<VisibilityItem[]>();
 
   /**
    * Disables slider interactions
@@ -96,6 +101,7 @@ export class VisibilityMenuComponent {
     this.items = Object.assign([], this.items, {[idx]: item});
     this.visibleItems = this.items.filter(x => x.visible);
     this.visibleItemsChange.emit(this.visibleItems);
+    this.itemsChange.emit(this.items);
   }
 
   /**
@@ -131,12 +137,13 @@ export class VisibilityMenuComponent {
   updateOpacity(value: number): void {
     if (!this.selection) {
       return;
-    } else {
-      const idx = this.items.indexOf(this.selection);
-      this.selection = {...this.selection, opacity: value};
-      this.items = Object.assign([], this.items, {[idx]: this.selection});
     }
-    this.opacityChange.emit(value);
+
+    const idx = this.items.indexOf(this.selection);
+    this.selection = {...this.selection, opacity: value};
+    this.items = Object.assign([], this.items, {[idx]: this.selection});
+    this.opacityChange.emit(this.selection);
+    this.itemsChange.emit(this.items);
   }
 
   /**
@@ -153,7 +160,7 @@ export class VisibilityMenuComponent {
    * @param item The item to get an id for
    * @returns id Id of the item
    */
-  getId(index, item: VisibilityItem): number {
+  getId(_index: number, item: VisibilityItem): number {
     return item.id;
   }
 

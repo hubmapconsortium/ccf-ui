@@ -1,9 +1,10 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Shallow } from 'shallow-render';
+
+import { MetaData } from '../../../core/models/meta-data';
 import { ReviewModalComponent } from './review-modal.component';
 import { ReviewModalModule } from './review-modal.module';
-import { MetaData } from '../../../core/models/meta-data';
-import { XYZTriplet } from '../../../core/store/stage/stage.state';
+
 
 const metaData: MetaData = [
   { label: 'First Name', value: 'Homer' },

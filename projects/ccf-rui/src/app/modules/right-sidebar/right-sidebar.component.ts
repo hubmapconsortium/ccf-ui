@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 
-import { StageState } from '../../core/store/stage/stage.state';
+import { ModelState } from '../../core/store/model/model.state';
+import { RegistrationState } from '../../core/store/registration/registration.state';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class RightSidebarComponent {
   /**
    * Creates an instance of right sidebar component.
    *
-   * @param stage Stage state service.
+   * @param model Model state service
+   * @param registration Registration state service
    */
-  constructor(readonly stage: StageState) {}
+  constructor(readonly model: ModelState, readonly registration: RegistrationState) {}
 }
