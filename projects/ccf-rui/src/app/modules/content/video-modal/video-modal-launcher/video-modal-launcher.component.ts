@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { VideoModalComponent } from '../video-modal/video-modal.component';
 
+/**
+ * Component for launching an angular material modal.
+ */
 @Component({
   selector: 'ccf-video-modal-launcher',
   templateUrl: './video-modal-launcher.component.html',
@@ -12,12 +15,18 @@ export class VideoModalLauncherComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-video-modal-launcher';
 
+  /**
+   * Creates an instance of video modal launcher component.
+   */
   constructor(private readonly dialog: MatDialog) { }
 
+  /**
+   * Launches the video modal component.
+   */
   launchVideoModal(): void {
     this.dialog.open(VideoModalComponent, {
       width: '46em',
-      data: { }
+      data: {}
     });
   }
 }
