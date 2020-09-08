@@ -16,11 +16,20 @@
     </div>
 </div>
 
-<div class="display-down" *ngIf="visible && direction === 'down'" [style.margin-left.rem]="offset">
+<div class="display-vertical d-down" *ngIf="visible && direction === 'down'" [style.margin-left.rem]="offset">
     <div class="v-flex">
         <div class="v-bar"></div>
         <div class="description align-center">
             {{ tooltip }}
         </div>
+    </div>
+</div>
+
+<div class="display-vertical d-up" *ngIf="visible && direction === 'up'" [style.margin-left.rem]="offset">
+    <div class="v-flex">
+        <div class="description align-center">
+            {{ tooltip }}
+        </div>
+        <div class="v-bar"></div>
     </div>
 </div>

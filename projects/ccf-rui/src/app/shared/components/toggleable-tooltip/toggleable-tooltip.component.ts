@@ -9,8 +9,8 @@ export class ToggleableTooltipComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-toggleable-tooltip';
 
-  @Input() tooltip: string;
-  @Input() visible: boolean;
-  @Input() offset: number;
-  @Input() direction: 'left' | 'right' | 'up' | 'down';
+  @Input() tooltip = '';
+  @Input() visible = true;
+  @Input() offset = 0;
+  @Input() direction: 'left' | 'right' | 'up' | 'down' = 'right';
 }
