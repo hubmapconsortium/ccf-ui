@@ -33,6 +33,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   input-label: map-get($primary-colors, 600), // #757575
   logo: map-get($primary-colors, 'white'),
   placeholder-text: map-get($primary-colors, 600), // #757575
+  scrollbar-thumb: #cdcdcd, // Can't find this color in any builtin palettes!?
   secondary-text: map-get($primary, 500), // #9E9E9E
   sidebar-dividers: map-get($primary-colors, 'white'),
   slider-blue: map-get($mat-blue, A400), // #2979FF
