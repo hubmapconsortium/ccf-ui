@@ -100,6 +100,10 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     }));
   }
 
+  /**
+   * Turns tutorialMode on or off
+   * @param tutorialMode the state to set the mode to.
+   */
   @DataAction()
   setTutorialMode(tutorialMode: boolean): void {
     this.ctx.setState(patch({ tutorialMode }));
