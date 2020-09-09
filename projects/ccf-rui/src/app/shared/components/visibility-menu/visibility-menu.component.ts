@@ -96,9 +96,11 @@ export class VisibilityMenuComponent {
    * @param item Menu item
    */
   toggleVisibility(item: VisibilityItem): void {
-    const idx = this.items.indexOf(item);
     item = {...item, visible: !item.visible};
-    this.items = Object.assign([], this.items, {[idx]: item});
+    if (this.selection && item.id === this.selection.id) {
+      this.selection = {...this.selection, visible: item.visible};
+    }
+    this.items = this.items.map(x => x.id === item.id ? item : x);
     this.visibleItems = this.items.filter(x => x.visible);
     this.visibleItemsChange.emit(this.visibleItems);
     this.itemsChange.emit(this.items);
@@ -138,11 +140,10 @@ export class VisibilityMenuComponent {
     if (!this.selection) {
       return;
     }
-
-    const idx = this.items.indexOf(this.selection);
-    this.selection = {...this.selection, opacity: value};
-    this.items = Object.assign([], this.items, {[idx]: this.selection});
-    this.opacityChange.emit(this.selection);
+    const updatedSelection = {...this.selection, opacity: value};
+    this.selection = updatedSelection;
+    this.items = this.items.map(x => x.id === updatedSelection.id ? updatedSelection : x);
+    this.opacityChange.emit(updatedSelection);
     this.itemsChange.emit(this.items);
   }
 

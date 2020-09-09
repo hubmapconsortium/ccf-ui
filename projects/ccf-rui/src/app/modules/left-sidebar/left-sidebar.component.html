@@ -1,34 +1,39 @@
-<ng-container *ngIf="page.embedded$ | async; else selectors">
-  <ccf-details-label [details]="detailsLabels"></ccf-details-label>
-</ng-container>
-<ng-template #selectors>
-  <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
-  </ccf-name-input>
-  <ccf-toggleable-tooltip
-    [visible]="page.tutorialMode$ | async"
-    direction="right"
-    [offset]="-3"
-    tooltip="Add your first and last name."
-  ></ccf-toggleable-tooltip>
+<div class="container">
+  <ng-container *ngIf="page.embedded$ | async; else selectors">
+    <ccf-details-label [details]="detailsLabels"></ccf-details-label>
+  </ng-container>
+  <ng-template #selectors>
+    <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
+    </ccf-name-input>
+    <ccf-toggleable-tooltip
+      [visible]="page.tutorialMode$ | async"
+      direction="right"
+      [offset]="-3"
+      tooltip="Add your first and last name."
+    ></ccf-toggleable-tooltip>
+
+    <hr>
+
+    <ccf-organ-selector [organList]="organList" (organChanged)="model.setOrgan($event)">
+    </ccf-organ-selector>
+    <div class="organ-sliders">
+      <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
+                                (valueChange)="setSideFromLabel($event)">
+      </ccf-labeled-slide-toggle>
+      <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
+                                (valueChange)="setGenderFromLabel($event)">
+      </ccf-labeled-slide-toggle>
+    </div>
+    <ccf-toggleable-tooltip
+      [visible]="page.tutorialMode$ | async"
+      direction="right"
+      [offset]="-6"
+      tooltip="Next, select the organ your tissue block is from."
+    ></ccf-toggleable-tooltip>
+  </ng-template>
+
   <hr>
-  <ccf-organ-selector [organList]="organList" [selectedOrgan]="model.organ$ | async"
-                      (organChanged)="model.setOrgan($event)">
-  </ccf-organ-selector>
-  <div class="organ-sliders">
-    <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
-                              (valueChange)="setSideFromLabel($event)">
-    </ccf-labeled-slide-toggle>
-    <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
-                              (valueChange)="setGenderFromLabel($event)">
-    </ccf-labeled-slide-toggle>
-  </div>
-  <ccf-toggleable-tooltip
-    [visible]="page.tutorialMode$ | async"
-    direction="right"
-    [offset]="-6"
-    tooltip="Next, select the organ your tissue block is from."
-  ></ccf-toggleable-tooltip>
-  <hr>
+
   <mat-expansion-panel class="extraction-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
@@ -44,7 +49,9 @@
     [offset]="-3"
     tooltip="Some organs have predefined extraction sites--you can turn these on/off."
   ></ccf-toggleable-tooltip>
+
   <hr>
+
   <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
                          (visibilityChanged)="model.setShowPrevious($event)">
   </ccf-visibility-toggle>
@@ -55,6 +62,7 @@
     tooltip="If you previously registered tissue blocks, you can turn their positions on/off."
   ></ccf-toggleable-tooltip>
   <hr>
+
   <mat-expansion-panel class="anatomical-structures-menu">
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
@@ -76,5 +84,6 @@
     [offset]="-3"
     tooltip="Toggle visibility and opacity of anatomical structures to ease registration."
   ></ccf-toggleable-tooltip>
+
   <hr>
-</ng-template>
+</div>
