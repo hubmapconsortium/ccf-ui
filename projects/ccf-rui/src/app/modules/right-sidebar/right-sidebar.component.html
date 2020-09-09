@@ -2,27 +2,27 @@
 </ccf-block-size-input>
 <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'left'"
+    direction="left"
     [offset]="-4"
-    [tooltip]="'Enter tissue block dimensions.'"
+    tooltip="Enter tissue block dimensions."
 ></ccf-toggleable-tooltip>
 <hr>
 <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
 </ccf-slices-input>
 <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'left'"
+    direction="left"
     [offset]="-4"
-    [tooltip]="'Enter the thickness and number of planned tissue slices.'"
+    tooltip="Enter the thickness and number of planned tissue slices."
 ></ccf-toggleable-tooltip>
 <hr>
 <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
 </ccf-rotation-slider>
 <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'left'"
+    direction="left"
     [offset]="-9"
-    [tooltip]="'Rotation tissue block in 3D as needed to register.'"
+    tooltip="Rotation tissue block in 3D as needed to register."
 ></ccf-toggleable-tooltip>
 <hr>
 
@@ -33,7 +33,7 @@
 
 <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'left'"
+    direction="left"
     [offset]="-2"
-    [tooltip]="'Review registration and submit/download.'"
+    tooltip="Review registration and submit/download."
 ></ccf-toggleable-tooltip>

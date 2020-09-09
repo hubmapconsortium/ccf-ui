@@ -1,5 +1,6 @@
-import { Component, OnInit, HostBinding, Inject } from '@angular/core';
+import { Component, OnInit, HostBinding, Inject, Renderer2 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DOCUMENT } from '@angular/common';
 
 /**
  * Component for displaying a youtube video inside of an angular material modal.
@@ -17,8 +18,10 @@ export class VideoModalComponent implements OnInit {
    * Creates an instance of video modal component.
    */
   constructor(
+    private _renderer2: Renderer2,
     public dialogRef: MatDialogRef<VideoModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: unknown
+    @Inject(MAT_DIALOG_DATA) public data: unknown,
+    @Inject(DOCUMENT) private _document: Document
   ) { }
 
   /**
@@ -29,13 +32,12 @@ export class VideoModalComponent implements OnInit {
   }
 
   /**
-   * Loads in youtube player api
+   * loads the IFrame Player API code asynchronously from YouTube.
    */
   loadYoutubePlayerAPI(): void {
-    // This code loads the IFrame Player API code asynchronously.
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(tag);
+    const script = this._renderer2.createElement('script') as HTMLScriptElement;
+    script.src = 'https://www.youtube.com/iframe_api';
+    this._renderer2.appendChild(this._document.body, script);
   }
 
   /**

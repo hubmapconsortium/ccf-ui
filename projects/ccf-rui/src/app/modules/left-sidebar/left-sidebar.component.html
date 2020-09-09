@@ -6,9 +6,9 @@
   </ccf-name-input>
   <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'right'"
+    direction="right"
     [offset]="-3"
-    [tooltip]="'Add your first and last name.'"
+    tooltip="Add your first and last name."
   ></ccf-toggleable-tooltip>
   <hr>
   <ccf-organ-selector [organList]="organList" [selectedOrgan]="model.organ$ | async"
@@ -24,9 +24,9 @@
   </div>
   <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'right'"
+    direction="right"
     [offset]="-6"
-    [tooltip]="'Next, select the organ your tissue block is from.'"
+    tooltip="Next, select the organ your tissue block is from."
   ></ccf-toggleable-tooltip>
   <hr>
   <mat-expansion-panel class="extraction-menu">
@@ -40,9 +40,9 @@
   </mat-expansion-panel>
   <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'right'"
+    direction="right"
     [offset]="-3"
-    [tooltip]="'Some organs have predefined extraction sites--you can turn these on/off.'"
+    tooltip="Some organs have predefined extraction sites--you can turn these on/off."
   ></ccf-toggleable-tooltip>
   <hr>
   <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
@@ -50,9 +50,9 @@
   </ccf-visibility-toggle>
   <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'right'"
+    direction="right"
     [offset]="-3"
-    [tooltip]="'If you previously registered tissue blocks, you can turn their positions on/off.'"
+    tooltip="If you previously registered tissue blocks, you can turn their positions on/off."
   ></ccf-toggleable-tooltip>
   <hr>
   <mat-expansion-panel class="anatomical-structures-menu">
@@ -72,9 +72,9 @@
   </mat-expansion-panel>
   <ccf-toggleable-tooltip
     [visible]="tutorialMode"
-    [direction]="'right'"
+    direction="right"
     [offset]="-3"
-    [tooltip]="'Toggle visibility and opacity of anatomical structures to ease registration.'"
+    tooltip="Toggle visibility and opacity of anatomical structures to ease registration."
   ></ccf-toggleable-tooltip>
   <hr>
 </ng-template>
