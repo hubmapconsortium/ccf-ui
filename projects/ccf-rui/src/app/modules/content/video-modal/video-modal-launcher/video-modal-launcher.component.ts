@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { VideoModalComponent } from '../video-modal/video-modal.component';
@@ -14,6 +14,11 @@ import { VideoModalComponent } from '../video-modal/video-modal.component';
 export class VideoModalLauncherComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-video-modal-launcher';
+
+  /**
+   * Input used to toggle the launcher on and off.
+   */
+  @Input() visible = true;
 
   /**
    * Creates an instance of video modal launcher component.

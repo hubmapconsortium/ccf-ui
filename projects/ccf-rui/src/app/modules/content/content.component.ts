@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { ModelState } from '../../core/store/model/model.state';
+import { PageState } from '../../core/store/page/page.state';
 
 
 @Component({
@@ -14,7 +15,6 @@ export class ContentComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-content';
 
-  tutorialMode = true;
   /** Whether the view type is 3d or register */
   readonly is3DView$ = this.model.viewType$.pipe(
     map(type => type === '3d')
@@ -25,7 +25,9 @@ export class ContentComponent {
    *
    * @param model The model state
    */
-  constructor(readonly model: ModelState) {}
+  constructor(readonly model: ModelState, readonly page: PageState) {
+    page.tutorialMode$.subscribe();
+  }
 
   /**
    * Sets view type

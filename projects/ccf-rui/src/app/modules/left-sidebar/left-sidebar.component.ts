@@ -25,8 +25,6 @@ export class LeftSidebarComponent {
 
   detailsLabels: string[] = ['heart', 'front', 'female'];
 
-  tutorialMode = true;
-
   organList: OrganInfo[] = [
     {src: 'app:colon', name: 'Colon'},
     {src: 'app:heart', name: 'Heart'},
@@ -43,7 +41,9 @@ export class LeftSidebarComponent {
     {src: 'app:thymus', name: 'Thymus', disabled: true}
   ];
 
-  constructor(readonly page: PageState, readonly model: ModelState) {}
+  constructor(readonly page: PageState, readonly model: ModelState) {
+    page.tutorialMode$.subscribe();
+  }
 
   setGenderFromLabel(label: 'Female' | 'Male'): void {
     this.model.setGender(label === 'Female' ? 'female' : 'male');
