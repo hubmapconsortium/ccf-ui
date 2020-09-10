@@ -9,9 +9,6 @@ import { flatMap, getVivId } from './utils';
 type ValueOrGenerator<T, U extends unknown[] = []> = T | ((...args: U) => T);
 
 type DeckProps = ConstructorParameters<typeof Deck>[0];
-interface ExtDeckProps extends DeckProps {
-  canvas?: string | HTMLElement;
-}
 
 type DeckCallbackArgs<K extends keyof DeckProps> = Parameters<NonNullable<DeckProps[K]>>[0];
 type LayerFilterArgs = DeckCallbackArgs<'layerFilter'>;
@@ -225,7 +222,7 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
       glOptions: {
         webgl2: true
       }
-    } as ExtDeckProps);
+    } as DeckProps);
   }
 
   private resetChannelConfigs(): void {
