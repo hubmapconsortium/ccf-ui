@@ -93,6 +93,7 @@ export class VisibilityMenuComponent {
 
   /**
    * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
+   * Disables the slider if no item is visible
    * @param item Menu item
    */
   toggleVisibility(item: VisibilityItem): void {
@@ -102,17 +103,17 @@ export class VisibilityMenuComponent {
     }
     this.items = this.items.map(x => x.id === item.id ? item : x);
     this.visibleItems = this.items.filter(x => x.visible);
+    this.disableSlider = this.visibleItems.length > 0 ? false : true;
     this.visibleItemsChange.emit(this.visibleItems);
     this.itemsChange.emit(this.items);
   }
 
   /**
-   * Toggles selected status of an item on click and disables the slider if no item is selected
+   * Toggles selected status of an item on click
    * @param item Menu item
    */
   toggleSelected(item: VisibilityItem): void {
     this.selection = item === this.selection ? undefined : item;
-    this.disableSlider = this.selection ? false : true;
     this.selectionChange.emit(item);
   }
 

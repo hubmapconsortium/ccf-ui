@@ -53,13 +53,6 @@
           font-size: 0.625rem;
         }
 
-        &.selected {
-          .carousel-text {
-            font-size: 1rem;
-            font-weight: bold;
-          }
-        }
-
         &.disabled {
           pointer-events: none;
         }
