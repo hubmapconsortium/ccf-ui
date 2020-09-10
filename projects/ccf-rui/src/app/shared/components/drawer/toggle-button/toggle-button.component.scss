@@ -15,8 +15,14 @@
   }
 
   .expand-collapse-icon {
-    position: relative;
-    right: 0.25rem;
+    position: absolute;
+    right: 0rem;
+    transition: 1s;
+    padding-left: .15rem;
+
+    &.hidden {
+      opacity: 0;
+    }
   }
 
   &.ccf-drawer-toggle-button-end .expand-collapse-icon {
