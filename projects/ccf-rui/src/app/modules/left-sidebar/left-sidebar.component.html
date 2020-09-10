@@ -26,6 +26,7 @@
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
+    <ccf-extraction-set-dropdown></ccf-extraction-set-dropdown>
     <ng-template matExpansionPanelContent>
       <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)">
       </ccf-visibility-menu>
