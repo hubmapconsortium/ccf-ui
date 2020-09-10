@@ -21,7 +21,5 @@ export class RightSidebarComponent {
    * @param model Model state service
    * @param registration Registration state service
    */
-  constructor(readonly model: ModelState, readonly registration: RegistrationState, readonly page: PageState) {
-    page.tutorialMode$.subscribe();
-  }
+  constructor(readonly model: ModelState, readonly registration: RegistrationState, readonly page: PageState) { }
 }

@@ -30,7 +30,7 @@ export class VideoModalLauncherComponent {
    */
   launchVideoModal(): void {
     this.dialog.open(VideoModalComponent, {
-      width: '46em',
+      width: '46rem',
       data: {}
     });
   }

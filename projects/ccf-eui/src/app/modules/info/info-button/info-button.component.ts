@@ -25,7 +25,7 @@ export class InfoButtonComponent {
    */
   launchInfoDialog(): void {
     this.dialog.open(InfoDialogComponent, {
-      width: '60em',
+      width: '60rem',
       data: {}
     });
   }

@@ -31,12 +31,13 @@
     .mat-slider-track-wrapper, .mat-slider-track-fill {
       height: .2rem;
     }
+    
     .mat-slider-track-fill {
       opacity: 0.5;
     }
 
     .mat-slider-thumb {
-      transform: none;
+      transform: none !important;
     }
   }
 

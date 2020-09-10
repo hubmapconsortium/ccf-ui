@@ -25,9 +25,7 @@ export class ContentComponent {
    *
    * @param model The model state
    */
-  constructor(readonly model: ModelState, readonly page: PageState) {
-    page.tutorialMode$.subscribe();
-  }
+  constructor(readonly model: ModelState, readonly page: PageState) { }
 
   /**
    * Sets view type
