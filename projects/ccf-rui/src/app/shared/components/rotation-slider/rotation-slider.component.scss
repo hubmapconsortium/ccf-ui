@@ -11,6 +11,7 @@
     .reset {
       transform: scaleX(-1);
       cursor: pointer;
+      transition: 1s;
     }
   }
 

@@ -6,6 +6,7 @@
   height: 3rem;
   border-radius: 0rem 0.25rem 0.25rem 0rem;
   cursor: pointer;
+  transition: 1s;
 
   &.ccf-drawer-toggle-button-end {
     right: unset;
@@ -26,5 +27,7 @@
 
 .mat-icon {
   transform: scale(1,2);
-  top: .6rem;
+  right: 0.3rem;
+  top: .675rem;
+  padding-top: .05rem;
 }
