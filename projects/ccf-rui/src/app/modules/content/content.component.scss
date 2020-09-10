@@ -7,7 +7,6 @@
   .top-bar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding-right: 2rem;
 
     .reset {
@@ -18,7 +17,6 @@
 
   // Temporary for displaying dev information
   .ccf-store-debug {
-    margin-top: 2rem;
     color: white;
   }
 }
