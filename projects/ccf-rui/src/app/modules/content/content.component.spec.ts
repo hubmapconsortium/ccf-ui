@@ -4,6 +4,7 @@ import { Shallow } from 'shallow-render';
 import { ModelState } from '../../core/store/model/model.state';
 import { ContentComponent } from './content.component';
 import { ContentModule } from './content.module';
+import { PageState } from '../../core/store/page/page.state';
 
 
 describe('ContentComponent', () => {
@@ -14,11 +15,19 @@ describe('ContentComponent', () => {
       'ModelState', ['setViewType', 'setViewSide']
     );
 
+    const mockPageState = jasmine.createSpyObj<PageState>(
+      'PageStage', ['setEmbedded', 'setUserName', 'setTutorialMode']
+    );
+
     shallow = new Shallow(ContentComponent, ContentModule)
       .mock(ModelState, {
         ...mockModelState,
         viewType$: of('register'),
         viewSide$: of('anterior')
+      })
+      .mock(PageState, {
+        ...mockPageState,
+        tutorialMode$: of(false)
       });
   });
 
