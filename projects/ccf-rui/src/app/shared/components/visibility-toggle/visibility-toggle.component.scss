@@ -4,21 +4,27 @@
   align-items: center;
 
   .toggle-wrapper {
-    -webkit-user-select: none;    
+    -webkit-user-select: none;
     -moz-user-select: none;
     display: flex;
     padding-left: .5rem;
     cursor: pointer;
     align-items: center;
 
-    .visibility-icon {
+    .icon {
       height: 1.5rem;
       width: 1.5rem;
+      transition: 1s;
+      position: absolute;
+
+      &.hidden {
+        opacity: 0;
+      }
     }
 
     .toggle-label {
       font-weight: bold;
-      margin-left: 1rem;
+      margin-left: 2.5rem;
     }
   }
 }

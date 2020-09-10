@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 /**
  * Component for easily adding a visibility toggle with customizable label and
@@ -7,7 +8,7 @@ import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/co
 @Component({
   selector: 'ccf-visibility-toggle',
   templateUrl: './visibility-toggle.component.html',
-  styleUrls: ['./visibility-toggle.component.scss']
+  styleUrls: ['./visibility-toggle.component.scss'],
 })
 export class VisibilityToggleComponent {
   /**
