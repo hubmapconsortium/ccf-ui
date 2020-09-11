@@ -5,6 +5,7 @@ import { BlockSizeInputModule } from '../../shared/components/block-size-input/b
 import { RotationSliderModule } from '../../shared/components/rotation-slider/rotation-slider.module';
 import { SlicesInputModule } from '../../shared/components/slices-input/slices-input.module';
 import { TagListModule } from '../../shared/components/tag-list/tag-list.module';
+import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
 import { ReviewButtonModule } from '../review/review-button/review-button.module';
 import { RightSidebarComponent } from './right-sidebar.component';
 
@@ -16,7 +17,8 @@ import { RightSidebarComponent } from './right-sidebar.component';
     ReviewButtonModule,
     RotationSliderModule,
     SlicesInputModule,
-    TagListModule
+    TagListModule,
+    ToggleableTooltipModule
   ],
   declarations: [RightSidebarComponent],
   exports: [RightSidebarComponent]

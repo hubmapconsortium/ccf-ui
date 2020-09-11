@@ -19,6 +19,9 @@
 @use '../../app/shared/components/visibility-toggle/visibility-toggle.component.theme.scss' as visibilityToggle;
 @use '../../app/modules/review/review-button/review-button.component.theme.scss' as reviewButton;
 @use '../../app/modules/review/review-modal/review-modal.component.theme.scss' as reviewModal;
+@use '../../app/modules/content/video-modal/video-modal/video-modal.component.theme.scss' as videoModal;
+@use '../../app/modules/content/video-modal/video-modal-launcher/video-modal-launcher.component.theme.scss' as videoModalLauncher;
+@use '../../app/shared/components/toggleable-tooltip/toggleable-tooltip.component.theme.scss' as toggleableTooltip;
 
 
 @mixin ccf-theme($theme) {
@@ -60,5 +63,8 @@
 
   @include reviewButton.theme($theme);
   @include reviewModal.theme($theme);
+  @include videoModal.theme($theme);
+  @include videoModalLauncher.theme($theme);
+  @include toggleableTooltip.theme($theme);
   // Overrides goes here!
 }

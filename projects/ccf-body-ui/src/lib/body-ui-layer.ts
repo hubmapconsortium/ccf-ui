@@ -60,8 +60,8 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
         highlightColor: [30, 136, 229, 255],
         coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
         data,
-        // tslint:disable-next-line: no-unsafe-any
-        mesh: new CubeGeometry(),
+        // tslint:disable-next-line: no-any
+        mesh: new CubeGeometry() as any,
         wireframe: false,
         getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
         getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
