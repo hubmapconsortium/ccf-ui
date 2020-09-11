@@ -36,8 +36,8 @@
       align-items: center;
     }
 
-    ::ng-deep .mat-expansion-panel-body {
-      padding: 0 0 0.75rem 0;
+    mat-expansion-panel {
+      box-shadow: none;
     }
 
     .extraction-menu,
@@ -48,6 +48,10 @@
         padding: 0 0.5rem 0 0;
         font-weight: bold;
         height: 3rem;
+      }
+
+      .expansion-content {
+        margin-bottom: 0.75rem;
       }
     }
   }

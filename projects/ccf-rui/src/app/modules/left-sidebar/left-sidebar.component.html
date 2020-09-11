@@ -38,10 +38,10 @@
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
+    <div class="expansion-content">
       <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)">
       </ccf-visibility-menu>
-    </ng-template>
+    </div>
   </mat-expansion-panel>
   <ccf-toggleable-tooltip
     [visible]="page.tutorialMode$ | async"
@@ -67,7 +67,7 @@
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
     </mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
+    <div class="expansion-content">
       <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event?.opacity)"
                            [items]="model.anatomicalStructures$ | async"
                            (itemsChange)="model.setAnatomicalStructures($event)">
@@ -76,7 +76,7 @@
                           (opacityReset)="menu.resetOpacity()"
                           [opacity]="menu.selection ? menu.selection?.opacity : 100">
       </ccf-opacity-slider>
-    </ng-template>
+    </div>
   </mat-expansion-panel>
   <ccf-toggleable-tooltip
     [visible]="page.tutorialMode$ | async"
