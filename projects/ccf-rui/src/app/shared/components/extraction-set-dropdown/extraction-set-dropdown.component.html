@@ -1,1 +1,8 @@
-<p>extraction-set-dropdown works!</p>
+<mat-form-field *ngIf="sets.length > 1" appearance="fill">
+  <mat-label>Extraction Set</mat-label>
+  <mat-select (selectionChange)="extractionSetChanged($event.value)">
+    <mat-option *ngFor="let set of sets" [value]='set'>
+      {{set.name}} ({{set.sites.length}})
+    </mat-option>
+  </mat-select>
+</mat-form-field>
