@@ -4,13 +4,15 @@ import { OpacitySliderComponent } from './opacity-slider.component';
 import { MatSliderModule } from '@angular/material/slider';
 
 import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [OpacitySliderComponent],
   imports: [
     CommonModule,
     MatIconModule,
-    MatSliderModule
+    MatSliderModule,
+    MatRippleModule
   ],
   exports: [OpacitySliderComponent]
 })
