@@ -14,6 +14,16 @@ export class RightSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-right-sidebar';
 
+  readonly placeholderTags = [
+    { tag: 'calyces' },
+    { tag: 'capsule' },
+    { tag: 'medulla' },
+    { tag: 'outer cortex' },
+    { tag: 'papilla' },
+    { tag: 'pyramids' },
+    { tag: 'renal', color: 'pink' }
+  ];
+
   /**
    * Creates an instance of right sidebar component.
    *

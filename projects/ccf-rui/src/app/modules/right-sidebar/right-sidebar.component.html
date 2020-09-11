@@ -1,12 +1,22 @@
 <div class="container">
   <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
   </ccf-block-size-input>
+
   <hr>
+
   <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
   </ccf-slices-input>
+
   <hr>
+
   <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
   </ccf-rotation-slider>
+
+  <hr>
+
+  <ccf-tag-list [items]="placeholderTags">
+  </ccf-tag-list>
+
   <hr>
 
   <div class="filler"></div>
