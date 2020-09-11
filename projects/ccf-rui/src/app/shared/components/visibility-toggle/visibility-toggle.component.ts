@@ -7,7 +7,7 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 @Component({
   selector: 'ccf-visibility-toggle',
   templateUrl: './visibility-toggle.component.html',
-  styleUrls: ['./visibility-toggle.component.scss'],
+  styleUrls: ['./visibility-toggle.component.scss']
 })
 export class VisibilityToggleComponent {
   /**
