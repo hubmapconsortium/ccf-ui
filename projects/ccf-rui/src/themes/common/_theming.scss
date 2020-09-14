@@ -12,6 +12,7 @@
 @use '../../app/shared/components/organ-selector/organ-selector.component.theme' as organSelector;
 @use '../../app/shared/components/labeled-slide-toggle/labeled-slide-toggle.component.theme' as slideToggle;
 @use '../../app/shared/components/visibility-menu/visibility-menu.component.theme' as visibilityMenu;
+@use '../../app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.theme' as extractionSets;
 @use '../../app/shared/components/opacity-slider/opacity-slider.component.theme' as opacitySlider;
 @use '../../app/shared/components/details-label/details-label.component.theme' as detailsLabel;
 @use '../../app/modules/content/content.component.theme.scss' as content;
@@ -19,6 +20,7 @@
 @use '../../app/shared/components/visibility-toggle/visibility-toggle.component.theme.scss' as visibilityToggle;
 @use '../../app/modules/review/review-button/review-button.component.theme.scss' as reviewButton;
 @use '../../app/modules/review/review-modal/review-modal.component.theme.scss' as reviewModal;
+
 
 
 @mixin ccf-theme($theme) {
@@ -51,6 +53,7 @@
   @include organSelector.theme($theme);
   @include slideToggle.theme($theme);
   @include visibilityMenu.theme($theme);
+  @include extractionSets.theme($theme);
   @include opacitySlider.theme($theme);
   @include detailsLabel.theme($theme);
   @include visibilityToggle.theme($theme);
