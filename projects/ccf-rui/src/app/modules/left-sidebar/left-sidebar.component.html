@@ -39,8 +39,11 @@
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)">
-      </ccf-visibility-menu>
+      <ccf-visibility-menu
+        [items]="model.extractionSites$ | async"
+        (itemsChange)="model.setExtractionSites($event)"
+        (hover)="updateExtractionSiteTooltip($event)"
+      ></ccf-visibility-menu>
     </ng-template>
   </mat-expansion-panel>
   <ccf-toggleable-tooltip
@@ -68,10 +71,12 @@
       <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event?.opacity)"
-                           [items]="model.anatomicalStructures$ | async"
-                           (itemsChange)="model.setAnatomicalStructures($event)">
-      </ccf-visibility-menu>
+      <ccf-visibility-menu
+        #menu
+        (selectionChange)="slider.changeOpacity($event?.opacity)"
+        [items]="model.anatomicalStructures$ | async"
+        (itemsChange)="model.setAnatomicalStructures($event)"
+      ></ccf-visibility-menu>
       <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"
                           (opacityReset)="menu.resetOpacity()"
                           [opacity]="menu.selection ? menu.selection?.opacity : 100">
@@ -86,4 +91,8 @@
   ></ccf-toggleable-tooltip>
 
   <hr>
+
+  <div class="extraction-site-tooltip" *ngIf="extractionSiteTooltip.length > 0">
+    {{ extractionSiteTooltip }}
+  </div>
 </div>

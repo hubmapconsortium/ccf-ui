@@ -1,35 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-
-/**
- * Interface for visibility item data
- */
-export interface VisibilityItem {
-
-  /**
-   * Id of the item
-   */
-  id: number;
-
-  /**
-   * Name of the item
-   */
-  name: string;
-
-  /**
-   * Whether the item is currently highlighted
-   */
-  visible: boolean;
-
-  /**
-   * Opacity value
-   */
-  opacity?: number;
-
-  /**
-   * Tooltip text to be displayed in the stage
-   */
-  tooltip?: string;
-}
+import { VisibilityItem } from '../../../core/models/visibility-item';
 
 /**
  * Menu for displaying visibility options
@@ -122,6 +92,7 @@ export class VisibilityMenuComponent {
    * @param item Menu item
    */
   mouseOver(item: VisibilityItem): void {
+    console.log(1);
     this.hover.emit(item);
   }
 

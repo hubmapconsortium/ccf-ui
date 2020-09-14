@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { VisibilityItem } from '../../core/models/visibility-item';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
@@ -23,6 +24,8 @@ export class LeftSidebarComponent {
     map(side => side === 'left' ? 'L' : 'R')
   );
 
+  extractionSiteTooltip = '';
+
   detailsLabels: string[] = ['heart', 'front', 'female'];
 
   organList: OrganInfo[] = [
@@ -42,6 +45,14 @@ export class LeftSidebarComponent {
   ];
 
   constructor(readonly page: PageState, readonly model: ModelState) { }
+
+  updateExtractionSiteTooltip(item: VisibilityItem): void {
+    if(item?.tooltip) {
+      this.extractionSiteTooltip = item.tooltip;
+    } else {
+      this.extractionSiteTooltip = '';
+    }
+  }
 
   setGenderFromLabel(label: 'Female' | 'Male'): void {
     this.model.setGender(label === 'Female' ? 'female' : 'male');

@@ -50,5 +50,17 @@
         height: 3rem;
       }
     }
+
+    .extraction-site-tooltip {
+      position: absolute;
+      top: 4rem;
+      left: 27rem;
+      background-color: #1d1d1d;
+      width: 21rem;
+      padding: 1rem;
+      border-radius: .5rem;
+      border: 1px solid white;
+      color: white;
+    }
   }
 }

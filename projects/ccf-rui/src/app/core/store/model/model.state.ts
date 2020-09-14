@@ -3,7 +3,7 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { pluck } from 'rxjs/operators';
-import { VisibilityItem } from '../../../shared/components/visibility-menu/visibility-menu.component';
+import { VisibilityItem } from '../../models/visibility-item';
 
 
 /** A object with x, y, and z channels of the same type. */
