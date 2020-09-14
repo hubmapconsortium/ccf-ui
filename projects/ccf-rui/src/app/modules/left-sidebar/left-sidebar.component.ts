@@ -24,6 +24,10 @@ export class LeftSidebarComponent {
     map(side => side === 'left' ? 'L' : 'R')
   );
 
+  /**
+   * Variable that keeps track of the extraction site tooltip to display on
+   * the stage when hovered.
+   */
   extractionSiteTooltip = '';
 
   detailsLabels: string[] = ['heart', 'front', 'female'];
@@ -46,7 +50,14 @@ export class LeftSidebarComponent {
 
   constructor(readonly page: PageState, readonly model: ModelState) { }
 
-  updateExtractionSiteTooltip(item: VisibilityItem): void {
+
+  /**
+   * Updates extraction site tooltip to either the VisibilityItem passed in's
+   * tooltip property, or an empty string if undefined.
+   * @param item The VisibilityItem which we want to show the tooltip of, or
+   * undefined.
+   */
+  updateExtractionSiteTooltip(item: VisibilityItem | undefined): void {
     if(item?.tooltip) {
       this.extractionSiteTooltip = item.tooltip;
     } else {

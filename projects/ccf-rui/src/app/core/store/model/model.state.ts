@@ -80,7 +80,7 @@ export interface ModelStateModel {
     viewSide: 'anterior',
     showPrevious: false,
     extractionSites: [
-      {id: 1, name: 'Left atrium, appendage', visible: false},
+      {id: 1, name: 'Left atrium, appendage', visible: false },
       {id: 2, name: 'Left atrium, PV inflow', visible: false},
       {id: 3, name: 'Left ventricle, apex', visible: false},
       {id: 4, name: 'Left ventricle, free wall 3cm from apex', visible: false},
