@@ -1,0 +1,21 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .ccf-video-modal-launcher {
+    .description {
+      color: mat-color($foreground, contrast-text);
+    }
+
+    .play-icon-button {
+        color: mat-color($foreground, contrast-text);
+
+        &:hover {
+            color: mat-color($foreground, active-icon);
+        }
+    }
+  }
+}

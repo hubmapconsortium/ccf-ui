@@ -5,6 +5,12 @@
   <ng-template #selectors>
     <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
     </ccf-name-input>
+    <ccf-toggleable-tooltip
+      [visible]="page.tutorialMode$ | async"
+      direction="right"
+      [offset]="-3"
+      tooltip="Add your first and last name."
+    ></ccf-toggleable-tooltip>
 
     <hr>
 
@@ -18,6 +24,12 @@
                                 (valueChange)="setGenderFromLabel($event)">
       </ccf-labeled-slide-toggle>
     </div>
+    <ccf-toggleable-tooltip
+      [visible]="page.tutorialMode$ | async"
+      direction="right"
+      [offset]="-6"
+      tooltip="Next, select the organ your tissue block is from."
+    ></ccf-toggleable-tooltip>
   </ng-template>
 
   <hr>
@@ -32,13 +44,24 @@
       </ccf-visibility-menu>
     </ng-template>
   </mat-expansion-panel>
+  <ccf-toggleable-tooltip
+    [visible]="page.tutorialMode$ | async"
+    direction="right"
+    [offset]="-3"
+    tooltip="Some organs have predefined extraction sites--you can turn these on/off."
+  ></ccf-toggleable-tooltip>
 
   <hr>
 
   <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
                          (visibilityChanged)="model.setShowPrevious($event)">
   </ccf-visibility-toggle>
-
+  <ccf-toggleable-tooltip
+    [visible]="page.tutorialMode$ | async"
+    direction="right"
+    [offset]="-3"
+    tooltip="If you previously registered tissue blocks, you can turn their positions on/off."
+  ></ccf-toggleable-tooltip>
   <hr>
 
   <mat-expansion-panel class="anatomical-structures-menu">
@@ -56,6 +79,12 @@
       </ccf-opacity-slider>
     </ng-template>
   </mat-expansion-panel>
+  <ccf-toggleable-tooltip
+    [visible]="page.tutorialMode$ | async"
+    direction="right"
+    [offset]="-3"
+    tooltip="Toggle visibility and opacity of anatomical structures to ease registration."
+  ></ccf-toggleable-tooltip>
 
   <hr>
 </div>

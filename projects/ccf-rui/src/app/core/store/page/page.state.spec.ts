@@ -89,4 +89,14 @@ describe('PageState', () => {
     const value = await nextValue(state.embedded$);
     expect(value).toEqual(true);
   });
+
+  it('updates tutorialMode', async () => {
+    state.setTutorialMode(true);
+    const value = await nextValue(state.tutorialMode$);
+    expect(value).toEqual(true);
+
+    state.setTutorialMode(false);
+    const value2 = await nextValue(state.tutorialMode$);
+    expect(value2).toEqual(false);
+  });
 });

@@ -21,6 +21,8 @@ export interface PageStateModel {
   homeUrl: string;
   /** Active user */
   user: Person;
+  /** Whether or not to show the page tutorial */
+  tutorialMode: boolean;
 }
 
 
@@ -36,7 +38,8 @@ export interface PageStateModel {
     user: {
       firstName: '',
       lastName: ''
-    }
+    },
+    tutorialMode: false
   }
 })
 @Injectable()
@@ -47,6 +50,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
   /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
+  /** Tutorial mode observable */
+  readonly tutorialMode$ = this.state$.pipe(pluck('tutorialMode'));
 
   /**
    * Creates an instance of page state.
@@ -93,5 +98,14 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     this.ctx.setState(patch({
       user: patch(name)
     }));
+  }
+
+  /**
+   * Turns tutorialMode on or off
+   * @param tutorialMode the state to set the mode to.
+   */
+  @DataAction()
+  setTutorialMode(tutorialMode: boolean): void {
+    this.ctx.setState(patch({ tutorialMode }));
   }
 }

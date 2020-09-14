@@ -11,6 +11,7 @@ import { DetailsLabelModule } from '../../shared/components/details-label/detail
 import { LabeledSlideToggleModule } from '../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
 import { VisibilityToggleModule } from '../../shared/components/visibility-toggle/visibility-toggle.module';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     OpacitySliderModule,
     DetailsLabelModule,
     VisibilityMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ToggleableTooltipModule
   ],
   exports: [LeftSidebarComponent]
 })
