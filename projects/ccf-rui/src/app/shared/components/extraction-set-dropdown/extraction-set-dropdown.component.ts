@@ -1,12 +1,18 @@
 import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 import { VisibilityItem } from '../visibility-menu/visibility-menu.component';
 
+/**
+ * Contains information for an extraction set
+ */
 export interface ExtractionSet {
   name: string;
   organ: string;
   sites: VisibilityItem[];
 }
 
+/**
+ * Dropdown for selecting the extraction set
+ */
 @Component({
   selector: 'ccf-extraction-set-dropdown',
   templateUrl: './extraction-set-dropdown.component.html',
@@ -17,9 +23,15 @@ export class ExtractionSetDropdownComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-extraction-set-dropdown';
 
+  /**
+   * Emits the current extraction set when selected
+   */
   @Output() setChange = new EventEmitter<ExtractionSet>();
 
-  sets: ExtractionSet[] = [
+  /**
+   * Extraction sets to be displayed as options
+   */
+  @Input() sets: ExtractionSet[] = [
     {
       name: 'HuBMAP',
       organ: 'Heart',
@@ -71,8 +83,15 @@ export class ExtractionSetDropdownComponent {
     }
   ];
 
+  /**
+   * The currently selected extraction set
+   */
   selected: ExtractionSet = this.sets[0];
 
+  /**
+   * Sets the selected extraction set and emits the extraction set
+   * @param value The extraction set selected
+   */
   extractionSetChanged(value: ExtractionSet): void {
     this.selected = value;
     this.setChange.emit(value);
