@@ -16,14 +16,20 @@
 
     .visibility-icon {
       margin-left: .5rem;
+      position: absolute;
+      transition: .6s;
+
+      &.hidden {
+        opacity: 0;
+      }
     }
 
     .visibility-icon, .item-name {
       cursor: pointer;
     }
-    
+
     .item-name {
-      margin-left: 1rem;
+      margin-left: 2.5rem;
       user-select: none;
       white-space: nowrap;
       overflow: hidden;
