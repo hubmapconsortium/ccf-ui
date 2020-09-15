@@ -23,13 +23,13 @@ describe('ExtractionSetComponent', () => {
   });
 
   it('should change the current selection when selected', async () => {
-    const { instance, outputs } = await shallow.render({ bind: {} });
+    const { instance, outputs } = await shallow.render({ bind: {sets: [testSet]} });
     instance.extractionSetChanged(testSet);
     expect(instance.selected).toEqual(testSet);
   });
 
   it('should emit the selected set when selected', async () => {
-    const { instance, outputs } = await shallow.render({ bind: {} });
+    const { instance, outputs } = await shallow.render({ bind: {sets: [testSet]} });
     instance.extractionSetChanged(testSet);
     expect(outputs.setChange.emit).toHaveBeenCalledWith(testSet);
   });
