@@ -1,0 +1,8 @@
+<mat-form-field class="dropdown-form-field" *ngIf="isMultiple()" appearance="fill">
+  <mat-label class="extraction-dropdown-label">Extraction Set</mat-label>
+  <mat-select disableOptionCentering=true (selectionChange)="extractionSetChanged($event.value)" [(value)]="selected" panelClass="extraction-set-panel">
+    <mat-option class="extraction-set-options" *ngFor="let set of sets" [value]='set'>
+      {{set.name}} ({{set.sites.length}})
+    </mat-option>
+  </mat-select>
+</mat-form-field>

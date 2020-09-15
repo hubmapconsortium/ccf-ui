@@ -5,6 +5,7 @@ import { LeftSidebarComponent } from './left-sidebar.component';
 import { NameInputModule } from '../../shared/components/name-input/name-input.module';
 import { OrganSelectorModule } from '../../shared/components/organ-selector/organ-selector.module';
 import { VisibilityMenuModule } from '../../shared/components/visibility-menu/visibility-menu.module';
+import { ExtractionSetDropdownModule } from '../../shared/components/extraction-set-dropdown/extraction-set-dropdown.module';
 import { OpacitySliderModule } from '../../shared/components/opacity-slider/opacity-slider.module';
 import { DetailsLabelModule } from '../../shared/components/details-label/details-label.module';
 import { LabeledSlideToggleModule } from '../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
@@ -22,6 +23,7 @@ import { ToggleableTooltipModule } from '../../shared/components/toggleable-tool
     LabeledSlideToggleModule,
     DetailsLabelModule,
     VisibilityToggleModule,
+    ExtractionSetDropdownModule,
     OpacitySliderModule,
     DetailsLabelModule,
     VisibilityMenuModule,
