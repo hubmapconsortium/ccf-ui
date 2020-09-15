@@ -10,7 +10,7 @@ import { ColoredTag } from '../tag-list.types';
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListComponent {
+export class TagListComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-tag-list';
 

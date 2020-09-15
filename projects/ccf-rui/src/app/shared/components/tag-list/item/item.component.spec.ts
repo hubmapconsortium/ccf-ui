@@ -1,13 +1,13 @@
 import { Shallow } from 'shallow-render';
 
 import { TagListModule } from '../tag-list.module';
-import { ItemComponent } from './item.component';
+import { TagListItemComponent } from './item.component';
 
 
-describe('ItemComponent', () => {
-  let shallow: Shallow<ItemComponent>;
+describe('TagListItemComponent', () => {
+  let shallow: Shallow<TagListItemComponent>;
 
   beforeEach(() => {
-    shallow = new Shallow(ItemComponent, TagListModule);
+    shallow = new Shallow(TagListItemComponent, TagListModule);
   });
 });

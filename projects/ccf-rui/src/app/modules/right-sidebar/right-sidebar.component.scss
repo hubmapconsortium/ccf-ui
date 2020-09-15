@@ -32,6 +32,22 @@
       margin-bottom: 1.5rem;
     }
 
+    mat-expansion-panel {
+      box-shadow: none;
+
+      mat-expansion-panel-header {
+        padding: 0 0.5rem 0 0;
+        font-weight: bold;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+      }
+    }
+
+    .tags-container ::ng-deep .mat-expansion-panel-body {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
     .filler {
       flex-grow: 1;
     }

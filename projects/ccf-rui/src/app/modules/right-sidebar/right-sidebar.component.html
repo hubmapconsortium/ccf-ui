@@ -20,8 +20,13 @@
 
   <hr>
 
-  <ccf-tag-list [items]="placeholderTags">
-  </ccf-tag-list>
+  <mat-expansion-panel class="tags-container" expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Anatomical Structure Tags</mat-panel-title>
+    </mat-expansion-panel-header>
+    <ccf-tag-list class="tag-list" [items]="placeholderTags">
+    </ccf-tag-list>
+  </mat-expansion-panel>
 
   <hr>
 
