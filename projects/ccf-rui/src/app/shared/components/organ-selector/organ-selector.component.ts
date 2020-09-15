@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, HostBinding } from '@angular/core';
+import { Component, Output, EventEmitter, Input, HostBinding, HostListener } from '@angular/core';
 
 /**
  * Contains the organ name and url of the icon svg
@@ -55,6 +55,10 @@ export class OrganSelectorComponent {
    */
   onRight = false;
 
+  scrolling = false;
+
+  timeoutHandler;
+
   /**
    * Scrolls the carousel left or right by one step.
    * Prevents scrolling past the beginning or end of the carousel.
@@ -62,6 +66,9 @@ export class OrganSelectorComponent {
    * @param step Size of step (px)
    */
   shift(dir: string, step: number): void {
+    if (!this.scrolling) {
+      return;
+    }
     if (this.onLeft && dir === 'left') {
       return;
     } else if (this.onRight && dir === 'right') {
@@ -74,6 +81,22 @@ export class OrganSelectorComponent {
     this.onLeft = val === 0 ? true : false;
     this.onRight = val === step*(5 - this.organList.length) ? true : false;
   }
+
+  scroll(dir: string, step: number): void {
+    this.scrolling = true;
+    this.timeoutHandler = setInterval(() => {
+      this.shift(dir, step)
+    }, 100);
+  }
+
+  stopScroll(): void {
+    if (this.timeoutHandler) {
+      clearInterval(this.timeoutHandler);
+      this.scrolling = false;
+      this.timeoutHandler = null;
+    }
+  }
+
 
   /**
    * Sets currently selected organ and emits the organ name
