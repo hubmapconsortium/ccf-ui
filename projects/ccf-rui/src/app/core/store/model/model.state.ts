@@ -3,7 +3,7 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { pluck } from 'rxjs/operators';
-import { VisibilityItem } from '../../../shared/components/visibility-menu/visibility-menu.component';
+import { VisibilityItem } from '../../models/visibility-item';
 
 
 /** A object with x, y, and z channels of the same type. */
@@ -80,16 +80,18 @@ export interface ModelStateModel {
     viewSide: 'anterior',
     showPrevious: false,
     extractionSites: [
-      {id: 1, name: 'Left atrium, appendage', visible: false},
-      {id: 2, name: 'Left atrium, PV inflow', visible: false},
-      {id: 3, name: 'Left ventricle, apex', visible: false},
-      {id: 4, name: 'Left ventricle, free wall 3cm from apex', visible: false},
-      {id: 5, name: 'Septum, 3cm from apex including LAD', visible: false},
-      {id: 6, name: 'Posterior, adjacent to coronary sinus', visible: false},
-      {id: 7, name: 'Right atrium appendage', visible: false},
-      {id: 8, name: 'Right atrium, AV(atrioventricular) node', visible: false},
-      {id: 9, name: 'Right atrium, SA(sinoatrial) node', visible: false},
-      {id: 10, name: 'Right ventricle, free wall 3cm from apex', visible: false}
+      {id: 1, name: 'Left atrium, appendage', visible: false, tooltip: 'Tooltip:  Left atrium, appendage'},
+      {id: 2, name: 'Left atrium, PV inflow', visible: false, tooltip: 'Tooltip:  Left atrium, PV inflow'},
+      {id: 3, name: 'Left ventricle, apex', visible: false, tooltip: 'Tooltip:  Left ventricle, apex'},
+      {id: 4, name: 'Left ventricle, free wall 3cm from apex', visible: false,
+        tooltip: 'Tooltip:  Left ventricle, free wall 3cm from apex'},
+      {id: 5, name: 'Septum, 3cm from apex including LAD', visible: false, tooltip: 'Tooltip:  Septum, 3cm from apex including LAD'},
+      {id: 6, name: 'Posterior, adjacent to coronary sinus', visible: false, tooltip: 'Tooltip:  Posterior, adjacent to coronary sinus'},
+      {id: 7, name: 'Right atrium appendage', visible: false, tooltip: 'Tooltip:  Right atrium appendage'},
+      {id: 8, name: 'Right atrium, AV(atrioventricular) node', visible: false,
+        tooltip: 'Tooltip:  Right atrium, AV(atrioventricular) node'},
+      {id: 9, name: 'Right atrium, SA(sinoatrial) node', visible: false, tooltip: 'Tooltip:  Right atrium, SA(sinoatrial) node'},
+      {id: 10, name: 'Right ventricle, free wall 3cm from apex', visible: false, tooltip: 'Tooltip:  Right ventricle, free wall 3cm from apex'}
     ],
     anatomicalStructures: [
       {id: 1, name: 'Structure A', visible: false, opacity: 100},

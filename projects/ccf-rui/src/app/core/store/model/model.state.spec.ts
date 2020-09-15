@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
-import { VisibilityItem } from '../../../shared/components/visibility-menu/visibility-menu.component';
+import { VisibilityItem } from '../../models/visibility-item';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {

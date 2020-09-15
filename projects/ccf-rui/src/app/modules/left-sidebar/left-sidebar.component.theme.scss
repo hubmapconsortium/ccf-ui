@@ -20,5 +20,11 @@
     .mat-expansion-indicator {
       color: mat-color($foreground, icon);
     }
+
+    .extraction-site-tooltip {
+      border-color: mat-color($foreground, contrast-icon);
+      background-color: mat-color($foreground, text);
+      color: mat-color($foreground, logo);
+    }
   }
 }
