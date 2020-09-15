@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
-import { VisibilityItem } from '../visibility-menu/visibility-menu.component';
+import { VisibilityItem } from '../../../core/models/visibility-item';
 
 /**
  * Contains information for an extraction set
@@ -95,5 +95,13 @@ export class ExtractionSetDropdownComponent {
   extractionSetChanged(value: ExtractionSet): void {
     this.selected = value;
     this.setChange.emit(value);
+  }
+
+  /**
+   * Determines whether there is more than one extraction set
+   * @returns true if there is more than one extraction set
+   */
+  isMultiple(): boolean {
+    return this.sets.length > 1;
   }
 }

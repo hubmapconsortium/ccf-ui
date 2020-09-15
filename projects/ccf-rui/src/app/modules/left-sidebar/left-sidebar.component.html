@@ -38,8 +38,8 @@
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
-    <ccf-extraction-set-dropdown (setChange)="model.setExtractionSites($event.sites)" #dropdown></ccf-extraction-set-dropdown>
     <ng-template matExpansionPanelContent>
+      <ccf-extraction-set-dropdown (setChange)="model.setExtractionSites($event.sites)" #dropdown></ccf-extraction-set-dropdown>
       <ccf-visibility-menu
         [items]="dropdown.selected.sites"
         (itemsChange)="model.setExtractionSites($event)"
