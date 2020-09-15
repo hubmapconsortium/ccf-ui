@@ -92,7 +92,6 @@ export class VisibilityMenuComponent {
    * @param item Menu item
    */
   mouseOver(item: VisibilityItem): void {
-    console.log(1);
     this.hover.emit(item);
   }
 
