@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 /**
  * Component for easily adding a visibility toggle with customizable label and

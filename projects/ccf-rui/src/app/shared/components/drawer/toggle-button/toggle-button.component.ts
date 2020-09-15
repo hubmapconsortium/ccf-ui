@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, HostBinding, AfterViewInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { DrawerComponent } from '../drawer/drawer.component';
 import { Message, MessageService } from '../messages';
-import { Subscription } from 'rxjs';
 
 
 /**

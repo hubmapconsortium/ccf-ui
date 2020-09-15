@@ -50,5 +50,15 @@
         height: 3rem;
       }
     }
+
+    .extraction-site-tooltip {
+      position: absolute;
+      top: 4rem;
+      left: 27rem;
+      width: 21rem;
+      padding: 1rem;
+      border-radius: .5rem;
+      border: 1px solid;
+    }
   }
 }
