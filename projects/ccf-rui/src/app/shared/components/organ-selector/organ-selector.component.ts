@@ -55,20 +55,22 @@ export class OrganSelectorComponent {
    */
   onRight = false;
 
-  scrolling = false;
+  /**
+   * Handles scrolling behavior
+   */
+  timeoutHandler: number | undefined;
 
-  timeoutHandler;
+  /**
+   * Distance the carousel moves in each shift (px)
+   */
+  step = 56;
 
   /**
    * Scrolls the carousel left or right by one step.
    * Prevents scrolling past the beginning or end of the carousel.
    * @param dir Direction to be scrolled
-   * @param step Size of step (px)
    */
-  shift(dir: string, step: number): void {
-    if (!this.scrolling) {
-      return;
-    }
+  shift(dir: string): void {
     if (this.onLeft && dir === 'left') {
       return;
     } else if (this.onRight && dir === 'right') {
@@ -76,27 +78,31 @@ export class OrganSelectorComponent {
     }
     const element = document.getElementsByClassName('carousel-item-list')[0] as HTMLElement;
     let val = parseInt(element.style.left, 10) || 0;
-    val = dir === 'right' ? val -= step : val += step;
+    val = dir === 'right' ? val -= this.step : val += this.step;
     element.style.left = val+'px';
     this.onLeft = val === 0 ? true : false;
-    this.onRight = val === step*(5 - this.organList.length) ? true : false;
+    this.onRight = val === this.step*(5 - this.organList.length) ? true : false;
   }
 
-  scroll(dir: string, step: number): void {
-    this.scrolling = true;
+  /**
+   * Scrolls carousel continuously
+   * @param dir Direction to be scrolled
+   */
+  scroll(dir: string): void {
     this.timeoutHandler = setInterval(() => {
-      this.shift(dir, step)
-    }, 100);
+      this.shift(dir);
+    }, 200);
   }
 
+  /**
+   * Stops carousel scrolling
+   */
   stopScroll(): void {
     if (this.timeoutHandler) {
       clearInterval(this.timeoutHandler);
-      this.scrolling = false;
-      this.timeoutHandler = null;
+      this.timeoutHandler = undefined;
     }
   }
-
 
   /**
    * Sets currently selected organ and emits the organ name

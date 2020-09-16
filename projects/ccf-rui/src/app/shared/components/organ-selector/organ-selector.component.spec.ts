@@ -16,8 +16,8 @@ describe('OrganSelectorComponent', () => {
     const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
     carousel.style.left = '80px';
     instance.onLeft = false;
-    instance.shift('left', 40);
-    expect(carousel.style.left).toBe('120px');
+    instance.shift('left');
+    expect(carousel.style.left).toBe('136px');
   });
 
   it('should shift the carousel right if dir === right.', async () => {
@@ -25,8 +25,8 @@ describe('OrganSelectorComponent', () => {
     const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
     carousel.style.left = '80px';
     instance.onRight = false;
-    instance.shift('right', 40);
-    expect(carousel.style.left).toBe('40px');
+    instance.shift('right');
+    expect(carousel.style.left).toBe('24px');
   });
 
   it('should not shift the carousel right if carousel is already at right end.', async () => {
@@ -34,7 +34,7 @@ describe('OrganSelectorComponent', () => {
     const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
     carousel.style.left = '-80px';
     instance.onRight = true;
-    instance.shift('right', 40);
+    instance.shift('right');
     expect(carousel.style.left).toBe('-80px');
   });
 
@@ -43,7 +43,7 @@ describe('OrganSelectorComponent', () => {
     const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
     carousel.style.left = '0px';
     instance.onLeft = true;
-    instance.shift('left', 40);
+    instance.shift('left');
     expect(carousel.style.left).toBe('0px');
   });
 
@@ -77,6 +77,19 @@ describe('OrganSelectorComponent', () => {
     const { find } = await shallow.render({bind: {organList: testOrganList}});
     const disabled = find('.carousel-item')[0].nativeElement as HTMLElement;
     expect(disabled.className).toContain('disabled');
+  });
+
+  it('should scroll the carousel', async () => {
+    const { instance } = await shallow.render();
+    instance.scroll('left');
+    expect(instance.timeoutHandler).toBeDefined();
+  });
+
+  it('should stop scrolling', async () => {
+    const { instance } = await shallow.render();
+    instance.scroll('left');
+    instance.stopScroll();
+    expect(instance.timeoutHandler).toBeUndefined();
   });
 
 });
