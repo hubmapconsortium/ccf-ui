@@ -1,0 +1,30 @@
+::ng-deep .extraction-set-panel {
+  box-shadow: 0rem 0rem 0.3rem 0.1rem #9e9e9e;
+  position: absolute;
+  top: -1.8rem;
+  left: .25rem;
+  width: 10.5rem;
+
+  .extraction-set-options {
+    height: 2.5rem !important;
+  }
+  
+  .extraction-set-options:first-child {
+    margin-top: 0.5rem;
+  }
+
+  .extraction-set-options:last-child {
+    margin-bottom: 0.5rem;
+  }
+
+}
+
+:host {
+  .mat-form-field {
+    width: 10.5rem;
+  }
+}
+
+::ng-deep .cdk-overlay-pane {
+  min-width: 0rem !important;
+}
