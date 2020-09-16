@@ -56,7 +56,7 @@
   <hr>
 
   <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
-                         (visibilityChanged)="model.setShowPrevious($event)">
+                         (visibilityChanged)="togglePreviousRegistrationBlocks($event)">
   </ccf-visibility-toggle>
   <ccf-toggleable-tooltip
     [visible]="page.tutorialMode$ | async"
