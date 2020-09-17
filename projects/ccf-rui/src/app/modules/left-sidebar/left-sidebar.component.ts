@@ -93,7 +93,7 @@ export class LeftSidebarComponent {
     } else {
       this.previousVisibilityItems = [...this.model.snapshot.anatomicalStructures] as VisibilityItem[];
       const newAnotomicalStructures = this.previousVisibilityItems.map(structure => {
-        return { ...structure, opacity: 20 };
+        return { ...structure, opacity: Math.min(20, structure?.opacity || 20) };
       });
       this.model.setAnatomicalStructures(newAnotomicalStructures);
     }
