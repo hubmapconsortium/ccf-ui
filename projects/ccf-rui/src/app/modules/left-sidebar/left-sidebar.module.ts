@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { DetailsLabelModule } from '../../shared/components/details-label/details-label.module';
+import { ExtractionSetDropdownModule } from '../../shared/components/extraction-set-dropdown/extraction-set-dropdown.module';
 import { LabeledSlideToggleModule } from '../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
 import { NameInputModule } from '../../shared/components/name-input/name-input.module';
 import { OpacitySliderModule } from '../../shared/components/opacity-slider/opacity-slider.module';
@@ -14,7 +15,6 @@ import { LeftSidebarComponent } from './left-sidebar.component';
 
 
 @NgModule({
-  declarations: [LeftSidebarComponent],
   imports: [
     CommonModule,
 
@@ -23,12 +23,15 @@ import { LeftSidebarComponent } from './left-sidebar.component';
     DetailsLabelModule,
     LabeledSlideToggleModule,
     NameInputModule,
+    VisibilityToggleModule,
+    ExtractionSetDropdownModule,
     OpacitySliderModule,
     OrganSelectorModule,
     ToggleableTooltipModule,
     VisibilityMenuModule,
     VisibilityToggleModule,
   ],
+  declarations: [LeftSidebarComponent],
   exports: [LeftSidebarComponent]
 })
 export class LeftSidebarModule { }

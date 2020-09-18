@@ -7,6 +7,7 @@ import { StageNavModule } from './stage-nav/stage-nav.module';
 import { MatIconModule } from '@angular/material/icon';
 import { VideoModalLauncherModule } from './video-modal/video-modal-launcher/video-modal-launcher.module';
 import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ToggleableTooltipModule } from '../../shared/components/toggleable-tool
     MatIconModule,
     StoreDebugModule,
     VideoModalLauncherModule,
-    ToggleableTooltipModule
+    ToggleableTooltipModule,
+    MatRippleModule
   ],
   declarations: [ContentComponent],
   exports: [ContentComponent]

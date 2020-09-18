@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { VisibilityItem } from '../../core/models/visibility-item';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
@@ -23,6 +24,12 @@ export class LeftSidebarComponent {
     map(side => side === 'left' ? 'L' : 'R')
   );
 
+  /**
+   * Variable that keeps track of the extraction site tooltip to display on
+   * the stage when hovered.
+   */
+  extractionSiteTooltip = '';
+
   detailsLabels: string[] = ['heart', 'front', 'female'];
 
   organList: OrganInfo[] = [
@@ -42,6 +49,21 @@ export class LeftSidebarComponent {
   ];
 
   constructor(readonly page: PageState, readonly model: ModelState) { }
+
+
+  /**
+   * Updates extraction site tooltip to either the VisibilityItem passed in's
+   * tooltip property, or an empty string if undefined.
+   * @param item The VisibilityItem which we want to show the tooltip of, or
+   * undefined.
+   */
+  updateExtractionSiteTooltip(item: VisibilityItem | undefined): void {
+    if(item?.tooltip) {
+      this.extractionSiteTooltip = item.tooltip;
+    } else {
+      this.extractionSiteTooltip = '';
+    }
+  }
 
   setGenderFromLabel(label: 'Female' | 'Male'): void {
     this.model.setGender(label === 'Female' ? 'female' : 'male');

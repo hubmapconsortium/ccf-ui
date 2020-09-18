@@ -2,7 +2,7 @@
   input[type=number] {
     -moz-appearance: textfield;
   }
-  
+
   .header {
     display: flex;
     align-items: center;
@@ -15,6 +15,7 @@
     .refresh {
       transform: scaleX(-1);
       cursor: pointer;
+      transition: .6s;
     }
   }
 

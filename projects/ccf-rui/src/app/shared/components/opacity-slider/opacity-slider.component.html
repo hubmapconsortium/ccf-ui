@@ -2,5 +2,5 @@
   <span class="text label">Opacity</span>
   <mat-slider class="slider" [step]="1" [min]="0" [max]="100" [value]="opacity" (input)="changeOpacity($event.value)"></mat-slider>
   <span class="opacity-value">{{opacity}}</span>
-  <mat-icon class="icon reset" (click)="resetOpacity()">refresh</mat-icon>
+  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetOpacity()">refresh</mat-icon>
 </div>

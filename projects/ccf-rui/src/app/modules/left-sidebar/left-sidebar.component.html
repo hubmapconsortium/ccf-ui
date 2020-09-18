@@ -5,12 +5,8 @@
   <ng-template #selectors>
     <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
     </ccf-name-input>
-    <ccf-toggleable-tooltip
-      [visible]="page.tutorialMode$ | async"
-      direction="right"
-      [offset]="-3"
-      tooltip="Add your first and last name."
-    ></ccf-toggleable-tooltip>
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
+                            tooltip="Add your first and last name."></ccf-toggleable-tooltip>
 
     <hr>
 
@@ -24,12 +20,8 @@
                                 (valueChange)="setGenderFromLabel($event)">
       </ccf-labeled-slide-toggle>
     </div>
-    <ccf-toggleable-tooltip
-      [visible]="page.tutorialMode$ | async"
-      direction="right"
-      [offset]="-6"
-      tooltip="Next, select the organ your tissue block is from."
-    ></ccf-toggleable-tooltip>
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-6"
+                            tooltip="Next, select the organ your tissue block is from."></ccf-toggleable-tooltip>
   </ng-template>
 
   <hr>
@@ -39,28 +31,25 @@
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
     <div class="expansion-content">
-      <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)">
-      </ccf-visibility-menu>
+      <ccf-extraction-set-dropdown [sets]="model.extractionSets$ | async"
+                                   (setChange)="model.setExtractionSites($event.sites)" #dropdown>
+      </ccf-extraction-set-dropdown>
+      <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)"
+                           (hover)="updateExtractionSiteTooltip($event)"></ccf-visibility-menu>
     </div>
   </mat-expansion-panel>
-  <ccf-toggleable-tooltip
-    [visible]="page.tutorialMode$ | async"
-    direction="right"
-    [offset]="-3"
-    tooltip="Some organs have predefined extraction sites--you can turn these on/off."
-  ></ccf-toggleable-tooltip>
+  <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
+                          tooltip="Some organs have predefined extraction sites--you can turn these on/off.">
+  </ccf-toggleable-tooltip>
 
   <hr>
 
   <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
                          (visibilityChanged)="model.setShowPrevious($event)">
   </ccf-visibility-toggle>
-  <ccf-toggleable-tooltip
-    [visible]="page.tutorialMode$ | async"
-    direction="right"
-    [offset]="-3"
-    tooltip="If you previously registered tissue blocks, you can turn their positions on/off."
-  ></ccf-toggleable-tooltip>
+  <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
+                          tooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
+  </ccf-toggleable-tooltip>
   <hr>
 
   <mat-expansion-panel class="anatomical-structures-menu">
@@ -70,20 +59,20 @@
     <div class="expansion-content">
       <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event?.opacity)"
                            [items]="model.anatomicalStructures$ | async"
-                           (itemsChange)="model.setAnatomicalStructures($event)">
-      </ccf-visibility-menu>
+                           (itemsChange)="model.setAnatomicalStructures($event)"></ccf-visibility-menu>
       <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"
                           (opacityReset)="menu.resetOpacity()"
                           [opacity]="menu.selection ? menu.selection?.opacity : 100">
       </ccf-opacity-slider>
     </div>
   </mat-expansion-panel>
-  <ccf-toggleable-tooltip
-    [visible]="page.tutorialMode$ | async"
-    direction="right"
-    [offset]="-3"
-    tooltip="Toggle visibility and opacity of anatomical structures to ease registration."
-  ></ccf-toggleable-tooltip>
+  <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
+                          tooltip="Toggle visibility and opacity of anatomical structures to ease registration.">
+  </ccf-toggleable-tooltip>
 
   <hr>
+
+  <div class="extraction-site-tooltip mat-elevation-z5" *ngIf="extractionSiteTooltip.length > 0">
+    {{ extractionSiteTooltip }}
+  </div>
 </div>
