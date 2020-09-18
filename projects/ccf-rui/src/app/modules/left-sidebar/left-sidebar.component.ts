@@ -87,15 +87,9 @@ export class LeftSidebarComponent {
    * @param visible the state to set the visibility to.
    */
   togglePreviousRegistrationBlocks(visible: boolean): void {
-    this.model.setShowPrevious(visible);
-    if (!visible) {
-      this.model.setAnatomicalStructures(this.previousVisibilityItems);
-    } else {
-      this.previousVisibilityItems = [...this.model.snapshot.anatomicalStructures] as VisibilityItem[];
-      const newAnotomicalStructures = this.previousVisibilityItems.map(structure => {
-        return { ...structure, opacity: Math.min(20, structure?.opacity || 20) };
-      });
-      this.model.setAnatomicalStructures(newAnotomicalStructures);
+    if (visible) {
+      this.previousVisibilityItems = [...this.model.snapshot.anatomicalStructures];
     }
+    this.model.toggleRegistrationBlocksVisibility(visible, this.previousVisibilityItems);
   }
 }

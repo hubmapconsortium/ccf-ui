@@ -317,4 +317,18 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   setExtractionSets(extractionSets: ExtractionSet[]): void {
     this.ctx.patchState({ extractionSets });
   }
+
+
+  toggleRegistrationBlocksVisibility(visible: boolean, previousItems: VisibilityItem[]): void {
+    this.setShowPrevious(visible);
+
+    if (!visible) {
+      this.setAnatomicalStructures(previousItems);
+    } else {
+      const newStructures = previousItems.map(structure => {
+        return { ...structure, opacity: Math.min(20, structure?.opacity || 20) };
+      });
+      this.setAnatomicalStructures(newStructures);
+    }
+  }
 }
