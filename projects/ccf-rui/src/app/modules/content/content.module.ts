@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { VideoModalLauncherModule } from './video-modal/video-modal-launcher/video-modal-launcher.module';
 import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
 import { MatRippleModule } from '@angular/material/core';
+import { BodyUiModule } from '../body-ui/body-ui.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MatRippleModule } from '@angular/material/core';
     StoreDebugModule,
     VideoModalLauncherModule,
     ToggleableTooltipModule,
-    MatRippleModule
+    MatRippleModule,
+    BodyUiModule
   ],
   declarations: [ContentComponent],
   exports: [ContentComponent]
