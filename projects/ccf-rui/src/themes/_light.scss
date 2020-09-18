@@ -31,6 +31,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   icon: map-get($primary-colors, 500), // #9E9E9E
   info-icon: map-get($primary-colors, 'white'),
   input-label: map-get($primary-colors, 600), // #757575
+  legend-contrast: #992661, // Not in any builtin palettes
   logo: map-get($primary-colors, 'white'),
   placeholder-text: map-get($primary-colors, 600), // #757575
   scrollbar-thumb: #cdcdcd, // Can't find this color in any builtin palettes!?
@@ -59,6 +60,7 @@ $background: map-merge($mat-light-theme-background, (
   background: map-get($primary-colors, 100), // #F5F5F5
   card: map-get($primary-colors, 100), // #F5F5F5,
   content-background: map-get($primary-colors, 'black'),
+  legend-background: map-get($primary-colors, 'white'),
   modal: map-get($primary-colors, 100), // #F5F5F5
   sidebar-background: map-get($primary-colors, 100), // #F5F5F5
   stage-background: map-get($primary-colors, 'black'),
