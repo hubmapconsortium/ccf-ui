@@ -14,7 +14,7 @@ describe('LeftSidebarComponent', () => {
 
     beforeEach(() => {
         const mockModelState = jasmine.createSpyObj<ModelState>(
-            'ModelState', ['setViewType', 'setViewSide', 'setShowPrevious', 'setAnatomicalStructures', 'setGender', 'setSide']
+            'ModelState', ['setViewType', 'setViewSide', 'toggleRegistrationBlocksVisibility', 'setGender', 'setSide']
         );
 
         const mockPageState = jasmine.createSpyObj<PageState>(
@@ -56,27 +56,16 @@ describe('LeftSidebarComponent', () => {
         expect(instance.extractionSiteTooltip).toEqual('');
     });
 
-    it('should call model.setAnatomicalStructures when previous registration blocks visibility is changed', async () => {
+    it('should call model.toggleRegistrationBlocksVisibility whenever togglePreviousRegistrationBlocks is called', async () => {
         const { instance } = await shallow.render();
         instance.togglePreviousRegistrationBlocks(true);
         instance.togglePreviousRegistrationBlocks(false);
-
-        expect(instance.model.setAnatomicalStructures).toHaveBeenCalledTimes(2);
+        expect(instance.model.toggleRegistrationBlocksVisibility).toHaveBeenCalledTimes(2);
     });
 
-    it('should update previousVisibilityItems when previous registration blocks visibility is set to true', async () => {
+    it('should update the previousVisibilityItems variable if registrationBlocks are toggled to visible', async () => {
         const { instance } = await shallow.render();
         instance.togglePreviousRegistrationBlocks(true);
-
         expect(instance.previousVisibilityItems).toEqual(testVisibilityItems);
-    });
-
-    it('should call setShowPrevious with the value passed into togglePreviousRegistrationBlocks whenever called', async () => {
-        const { instance } = await shallow.render();
-        instance.togglePreviousRegistrationBlocks(true);
-        expect(instance.model.setShowPrevious).toHaveBeenCalledWith(true);
-
-        instance.togglePreviousRegistrationBlocks(false);
-        expect(instance.model.setShowPrevious).toHaveBeenCalledWith(true);
     });
 });
