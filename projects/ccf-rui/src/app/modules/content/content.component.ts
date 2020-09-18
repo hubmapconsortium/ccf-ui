@@ -15,6 +15,11 @@ export class ContentComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-content';
 
+  /**
+   * Shows / hides the state debug component for testing purposes.
+   */
+  debugMode = false;
+
   /** Whether the view type is 3d or register */
   readonly is3DView$ = this.model.viewType$.pipe(
     map(type => type === '3d')
