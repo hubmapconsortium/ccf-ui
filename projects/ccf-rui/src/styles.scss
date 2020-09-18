@@ -74,3 +74,13 @@ input[type=number]::-webkit-outer-spin-button {
 .modal-backdrop-dark {
   background: rgba(0, 0, 0, 0.9);
 }
+
+// Workaround for https://github.com/angular/components/issues/16503 and related bugs
+.ng-animating mat-expansion-panel mat-expansion-panel-header {
+  height: 3rem;
+}
+
+.ng-animating mat-expansion-panel div.mat-expansion-panel-content {
+  height: 0rem;
+  visibility: hidden;
+}

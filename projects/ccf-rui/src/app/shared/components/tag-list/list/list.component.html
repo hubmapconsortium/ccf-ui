@@ -1,0 +1,5 @@
+<div class="container">
+  <ccf-tag-list-item *ngFor="let item of items; trackBy: itemId" class="item" [item]="item"
+                     (removed)="removeItem(item)">
+  </ccf-tag-list-item>
+</div>
