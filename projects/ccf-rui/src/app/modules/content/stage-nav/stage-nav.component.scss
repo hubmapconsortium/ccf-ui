@@ -4,9 +4,14 @@
   flex-direction: row;
   flex-wrap: wrap;
 
+  .hamburger {
+    display: none;
+  }
+
   .view-slider {
     margin-left: -1rem;
     margin-bottom: 1.5rem;
+    white-space: nowrap;
   }
 
   .input-group {
@@ -15,6 +20,19 @@
     .nav-input {
       margin-right: 1.5rem;
       margin-bottom: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  :host {
+    .hamburger {
+      color: white;
+      display: unset;
+    }
+
+    .hidden {
+      display: none;
     }
   }
 }

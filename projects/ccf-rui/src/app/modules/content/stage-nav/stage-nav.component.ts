@@ -39,6 +39,12 @@ export class StageNavComponent {
    */
   @Output() view3DChange = new EventEmitter<boolean>();
 
+  stageNavHidden = true;
+
+  toggleNav(): void {
+    this.stageNavHidden = !this.stageNavHidden;
+  }
+
   /**
    * Handles the updating of the side selection and calling the event emitter
    * @param selection the new selected side
