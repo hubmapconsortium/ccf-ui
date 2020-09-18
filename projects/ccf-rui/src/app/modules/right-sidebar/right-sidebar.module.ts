@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { TextSearchModule } from 'ccf-shared';
 
 import { BlockSizeInputModule } from '../../shared/components/block-size-input/block-size-input.module';
 import { RotationSliderModule } from '../../shared/components/rotation-slider/rotation-slider.module';
@@ -10,12 +12,14 @@ import { ToggleableTooltipModule } from '../../shared/components/toggleable-tool
 import { ReviewButtonModule } from '../review/review-button/review-button.module';
 import { RightSidebarComponent } from './right-sidebar.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
 
     MatExpansionModule,
+    MatIconModule,
+
+    TextSearchModule,
 
     BlockSizeInputModule,
     ReviewButtonModule,

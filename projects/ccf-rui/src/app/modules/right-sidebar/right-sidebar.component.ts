@@ -22,7 +22,7 @@ export class RightSidebarComponent {
     { tag: 'outer cortex' },
     { tag: 'papilla' },
     { tag: 'pyramids' },
-    { tag: 'renal', color: 'pink' }
+    { tag: 'renal', color: '#992661' }
   ];
 
   /**
@@ -32,4 +32,22 @@ export class RightSidebarComponent {
    * @param registration Registration state service
    */
   constructor(readonly model: ModelState, readonly registration: RegistrationState, readonly page: PageState) { }
+
+  fakeAutocomplete(): unknown {
+    return [[
+      {
+        id: 1,
+        label: 'foo',
+        decorations: [{
+          styles: {
+            'text-decoration': 'underline'
+          }
+        }]
+      },
+      {
+        id: 2,
+        label: 'bar'
+      }
+    ]];
+  }
 }

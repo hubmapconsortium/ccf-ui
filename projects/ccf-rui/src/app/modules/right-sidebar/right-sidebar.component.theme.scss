@@ -1,6 +1,7 @@
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
+  $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
@@ -15,6 +16,24 @@
 
     hr {
       border-color: mat-color($foreground, sidebar-dividers);
+    }
+
+    .tags-container {
+      .search .icon.add {
+        color: mat-color($foreground, contrast-icon);
+      }
+
+      .legend {
+        background-color: mat-color($background, legend-background);
+
+        .dot.assigned {
+          background-color: mat-color($primary, text);
+        }
+
+        .dot.added {
+          background-color: mat-color($foreground, legend-contrast);
+        }
+      }
     }
   }
 }
