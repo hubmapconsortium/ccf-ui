@@ -15,6 +15,16 @@ export class RightSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-right-sidebar';
 
+  readonly placeholderTags = [
+    { tag: 'calyces' },
+    { tag: 'capsule' },
+    { tag: 'medulla' },
+    { tag: 'outer cortex' },
+    { tag: 'papilla' },
+    { tag: 'pyramids' },
+    { tag: 'renal', color: '#992661' }
+  ];
+
   /**
    * Creates an instance of right sidebar component.
    *
@@ -22,4 +32,22 @@ export class RightSidebarComponent {
    * @param registration Registration state service
    */
   constructor(readonly model: ModelState, readonly registration: RegistrationState, readonly page: PageState) { }
+
+  fakeAutocomplete(): unknown {
+    return [[
+      {
+        id: 1,
+        label: 'foo',
+        decorations: [{
+          styles: {
+            'text-decoration': 'underline'
+          }
+        }]
+      },
+      {
+        id: 2,
+        label: 'bar'
+      }
+    ]];
+  }
 }

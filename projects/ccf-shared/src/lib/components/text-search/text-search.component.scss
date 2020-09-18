@@ -1,0 +1,31 @@
+:host {
+  display: block;
+
+  .form .form-field {
+    width: 100%;
+
+    .input {
+      margin-left: 0.5rem;
+    }
+  }
+
+  ::ng-deep .mat-form-field-appearance-outline {
+    .mat-form-field-wrapper {
+      margin: 0;
+
+      .mat-form-field-flex {
+        align-items: center;
+
+        .mat-form-field-infix {
+          height: 3rem;
+          border: none;
+        }
+
+        .mat-form-field-suffix {
+          top: 0;
+          border: none;
+        }
+      }
+    }
+  }
+}
