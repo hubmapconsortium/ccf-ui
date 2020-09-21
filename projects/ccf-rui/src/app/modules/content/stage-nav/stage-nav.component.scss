@@ -1,10 +1,13 @@
 :host {
   display: flex;
-  align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
 
-  .hamburger {
+  .dropdown-label {
+    display: none;
+  }
+
+  hr {
     display: none;
   }
 
@@ -26,13 +29,36 @@
 
 @media (max-width: 500px) {
   :host {
-    .hamburger {
-      color: white;
+    .dropdown-label {
       display: unset;
+      color: white;
+    }
+    
+    .stage-nav {
+      display: flex;
+      flex-direction: column;
+
+      &.hidden {
+        display: none;
+      }
+      
+      .input-group {
+        margin-right: 0;
+      }
     }
 
-    .hidden {
-      display: none;
+
+    hr {
+      display: unset;
+      width: 100%;
+      margin: 0;
+      border-style: solid;
+      border-width: 1.5px;
+    }
+
+    .stage-nav {
+      background-color: white;
+      width: 240px;
     }
   }
 }
