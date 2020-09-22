@@ -1,8 +1,10 @@
 import { Injectable, Injector } from '@angular/core';
-import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
+import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { Immutable } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
+import { GlobalsService } from 'ccf-shared';
+import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
@@ -15,8 +17,9 @@ import { PageState, PageStateModel } from '../page/page.state';
 /**
  * Registration state model
  */
-// tslint:disable-next-line: no-empty-interface
 export interface RegistrationStateModel {
+  /** Whether to use the registration callback function */
+  useRegistrationCallback: boolean;
 }
 
 
@@ -26,7 +29,9 @@ export interface RegistrationStateModel {
 @StateRepository()
 @State<RegistrationStateModel>({
   name: 'registration',
-  defaults: {}
+  defaults: {
+    useRegistrationCallback: false
+  }
 })
 @Injectable()
 export class RegistrationState extends NgxsImmutableDataRepository<RegistrationStateModel> {
@@ -68,13 +73,17 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    * Creates an instance of registration state.
    *
    * @param injector Injector service used to lazy load page and model state
+   * @param globals Global object access
    */
-  constructor(private readonly injector: Injector) {
+  constructor(
+    private readonly injector: Injector,
+    private readonly globals: GlobalsService
+  ) {
     super();
   }
 
   /**
-   * Initializes this state service
+   * Initializes this state service.
    */
   ngxsOnInit(): void {
     super.ngxsOnInit();
@@ -83,6 +92,39 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     // Lazy load here
     this.page = this.injector.get(PageState);
     this.model = this.injector.get(ModelState);
+  }
+
+  /**
+   * Sets whether to use the registration callback function or download.
+   *
+   * @param use True to use the callback, false to download
+   */
+  @DataAction()
+  setUseRegistrationCallback(use: boolean): void {
+    this.ctx.patchState({ useRegistrationCallback: use });
+  }
+
+  /**
+   * Registers or downloads json data.
+   *
+   * @param [useCallback] Explicit override selecting the register/download action
+   */
+  register(useCallback?: boolean): void {
+    const { page, model, globals, snapshot } = this;
+    const registrationCallback = globals.get<(json: string) => void>('ruiRegistrationCallback');
+    const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot);
+    const json = JSON.stringify(jsonObj, undefined, 4);
+
+    if (useCallback || (useCallback === undefined && snapshot.useRegistrationCallback)) {
+      registrationCallback?.(json);
+    } else {
+      const data = new Blob([json], {
+        type: 'application/json',
+        endings: 'native'
+      });
+
+      saveAs(data, 'registration-data.json');
+    }
   }
 
   /**
