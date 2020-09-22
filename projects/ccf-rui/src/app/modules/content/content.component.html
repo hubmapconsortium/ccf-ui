@@ -2,22 +2,19 @@
   <ccf-stage-nav [view3D]="is3DView$ | async" [side]="model.viewSide$ | async" (view3DChange)="setViewType($event)"
                  (sideChange)="model.setViewSide($event)">
   </ccf-stage-nav>
-  <mat-icon
-    matRipple
-    [matRippleCentered]="true"
-    [matRippleUnbounded]="true"
-    matRippleColor="rgba(204, 204, 204, 0.25)"
-    class="icon reset"
-    (click)="resetStage()"
-  >refresh</mat-icon>
+  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" matRippleColor="rgba(204, 204, 204, 0.25)"
+            class="icon reset" (click)="resetStage()">refresh</mat-icon>
 </div>
-<ccf-toggleable-tooltip
-    [visible]="page.tutorialMode$ | async"
-    direction="down"
-    [offset]="21"
-    tooltip="Change view."
-></ccf-toggleable-tooltip>
+
+<ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="21" tooltip="Change view.">
+</ccf-toggleable-tooltip>
+
 <ccf-video-modal-launcher [visible]="page.tutorialMode$ | async"></ccf-video-modal-launcher>
-<ccf-store-debug [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100" ></ccf-store-debug>
+<ccf-store-debug [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100"></ccf-store-debug>
+
+<button style="position: absolute; bottom: 7rem;" (click)="registration.setUseRegistrationCallback(true);">Use
+  callback</button>
+<button style="position: absolute; bottom: 5rem;" (click)="registration.setUseRegistrationCallback(false);">Use
+  download</button>
 <button style="position: absolute; bottom: 3rem;" (click)="page.setTutorialMode(true);">Tutorial On</button>
 <button style="position: absolute; bottom: 1rem;" (click)="page.setTutorialMode(false);">Tutorial Off</button>
