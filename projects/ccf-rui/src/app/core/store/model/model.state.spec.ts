@@ -193,4 +193,38 @@ describe('ModelState', () => {
     const value = await nextValue(state.anatomicalStructures$);
     expect(value).toEqual(newStructures);
   });
+
+  it('should call setShowPrevious with visible boolean when toggleRegistrationBlocks is called', async () => {
+    const spy = spyOn(state, 'setShowPrevious');
+    state.toggleRegistrationBlocksVisibility(true, []);
+    expect(spy).toHaveBeenCalledWith(true);
+  });
+
+  it('should call setAnatomicalStructures() with the passed in visibilityItems if visible is set to false', async () => {
+    const spy = spyOn(state, 'setAnatomicalStructures');
+    const testVisibilityItems: VisibilityItem[] = [{ id: 1, name: 'test', visible: true }];
+    state.toggleRegistrationBlocksVisibility(false, testVisibilityItems);
+    expect(spy).toHaveBeenCalledWith(testVisibilityItems);
+  });
+
+  it('should set anatomical structures opacity to 20 when visible is set to true', async () => {
+    const testVisibilityItems: VisibilityItem[] = [{ id: 1, name: 'test', visible: true, opacity: 100 }];
+    state.toggleRegistrationBlocksVisibility(true, testVisibilityItems);
+    const value = await nextValue(state.anatomicalStructures$);
+    expect(value).toEqual([{ id: 1, name: 'test', visible: true, opacity: 20 }]);
+  });
+
+  it('should keep the current opacity if the current opacity is less than 20', async () => {
+    const testVisibilityItems: VisibilityItem[] = [{ id: 1, name: 'test', visible: true, opacity: 19 }];
+    state.toggleRegistrationBlocksVisibility(true, testVisibilityItems);
+    const value = await nextValue(state.anatomicalStructures$);
+    expect(value[0].opacity).toEqual(19);
+  });
+
+  it('should successfully set opacity to 20 even if the visibilityObject does not have opacity property', async () => {
+    const testVisibilityItems: VisibilityItem[] = [{ id: 1, name: 'test', visible: true }];
+    state.toggleRegistrationBlocksVisibility(true, testVisibilityItems);
+    const value = await nextValue(state.anatomicalStructures$);
+    expect(value[0].opacity).toEqual(20);
+  });
 });
