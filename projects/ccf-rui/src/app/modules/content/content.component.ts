@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
+import { ResizedEvent } from 'angular-resize-event';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class ContentComponent {
   readonly is3DView$ = this.model.viewType$.pipe(
     map(type => type === '3d')
   );
+
+  activateDropdown = false;
 
   /**
    * Creates an instance of content component.
@@ -43,5 +46,9 @@ export class ContentComponent {
     // Registration block return to starting position
     // The crosshairs return to start position
     // the x, y, z info above the gizmo goes back to zero
+  }
+
+  onResized(event: ResizedEvent): void {
+    this.activateDropdown = event.newWidth < 440 ? true : false;
   }
 }

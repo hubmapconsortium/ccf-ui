@@ -25,10 +25,8 @@
       margin-bottom: 1.5rem;
     }
   }
-}
-
-@media (max-width: 500px) {
-  :host {
+  
+  &.dropdown {
     .dropdown-label {
       display: flex;
       align-items: center;
@@ -41,11 +39,11 @@
       display: flex;
       flex-direction: column;
       border-radius: 0.25rem;
-
+  
       :first-child {
         margin-top: 0.5rem;
       }
-
+  
       :last-child {
         margin-bottom: 0.5rem;
       }
@@ -68,24 +66,25 @@
         }
       }
     }
-
+  
     hr {
       display: inherit;
       width: 100%;
       margin: 0;
       border-top: 3px solid #bbb;
     }
-
+  
     .view-slider {
       display: flex;
       align-items: center;
       height: 3rem;
       margin: 0 0.5rem;
     }
-
+  
     .stage-nav {
       background-color: white;
       width: 16.5rem;
     }
   }
 }
+
