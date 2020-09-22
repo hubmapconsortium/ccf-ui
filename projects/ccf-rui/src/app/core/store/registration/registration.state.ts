@@ -113,7 +113,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     const { page, model, globals, snapshot } = this;
     const registrationCallback = globals.get<(json: string) => void>('ruiRegistrationCallback');
     const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot);
-    const json = JSON.stringify(jsonObj, undefined, 4);
+    const json = JSON.stringify(jsonObj, undefined, 2);
 
     if (useCallback || (useCallback === undefined && snapshot.useRegistrationCallback)) {
       registrationCallback?.(json);
