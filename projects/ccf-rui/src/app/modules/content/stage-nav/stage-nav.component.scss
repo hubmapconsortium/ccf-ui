@@ -19,7 +19,7 @@
 
   .input-group {
     margin-right: 1.5rem;
-
+    
     .nav-input {
       margin-right: 1.5rem;
       margin-bottom: 1.5rem;
@@ -30,35 +30,62 @@
 @media (max-width: 500px) {
   :host {
     .dropdown-label {
-      display: unset;
+      display: flex;
+      align-items: center;
       color: white;
+      height: 3rem;
+      cursor: pointer;
     }
     
     .stage-nav {
       display: flex;
       flex-direction: column;
+      border-radius: 0.25rem;
 
+      :first-child {
+        margin-top: 0.5rem;
+      }
+
+      :last-child {
+        margin-bottom: 0.5rem;
+      }
+      
       &.hidden {
         display: none;
       }
       
       .input-group {
+        margin-left: 1.5rem;
         margin-right: 0;
+        display: flex;
+        flex-wrap: wrap;
+        
+        .nav-input {
+          display: flex;
+          margin: 0;
+          margin-right: 1.5rem;
+          height: 3rem;
+        }
       }
     }
 
-
     hr {
-      display: unset;
+      display: inherit;
       width: 100%;
       margin: 0;
-      border-style: solid;
-      border-width: 1.5px;
+      border-top: 3px solid #bbb;
+    }
+
+    .view-slider {
+      display: flex;
+      align-items: center;
+      height: 3rem;
+      margin: 0 0.5rem;
     }
 
     .stage-nav {
       background-color: white;
-      width: 240px;
+      width: 16.5rem;
     }
   }
 }
