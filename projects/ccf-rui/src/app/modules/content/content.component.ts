@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
+import { RegistrationState } from '../../core/store/registration/registration.state';
 
 
 @Component({
@@ -29,8 +30,14 @@ export class ContentComponent {
    * Creates an instance of content component.
    *
    * @param model The model state
+   * @param page The page state
+   * @param registration The registration state
    */
-  constructor(readonly model: ModelState, readonly page: PageState) { }
+  constructor(
+    readonly model: ModelState,
+    readonly page: PageState,
+    readonly registration: RegistrationState
+  ) { }
 
   /**
    * Sets view type
