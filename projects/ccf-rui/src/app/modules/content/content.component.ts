@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, ElementRef, ViewChild } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
-import { ResizedEvent } from 'angular-resize-event';
+import { ResizeSensor } from 'css-element-queries';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { ResizedEvent } from 'angular-resize-event';
   styleUrls: ['./content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContentComponent {
+export class ContentComponent implements AfterViewInit {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-content';
 
@@ -23,12 +23,28 @@ export class ContentComponent {
 
   activateDropdown = false;
 
+  @ViewChild('topbar', { read: ElementRef }) topBar: ElementRef<HTMLElement>;
+
+  private sensor: ResizeSensor;
+
   /**
    * Creates an instance of content component.
    *
    * @param model The model state
    */
-  constructor(readonly model: ModelState, readonly page: PageState) { }
+  constructor(readonly model: ModelState, readonly page: PageState, private cdr: ChangeDetectorRef) { }
+
+  ngAfterViewInit(): void {
+    const {
+      topBar: { nativeElement: topBar }
+    } = this;
+
+    this.sensor = new ResizeSensor(topBar, () => {
+      const width = parseInt(getComputedStyle(topBar).width, 10);
+      this.activateDropdown = width < 440 ? true : false;
+      this.cdr.detectChanges();
+    });
+  }
 
   /**
    * Sets view type
@@ -46,9 +62,5 @@ export class ContentComponent {
     // Registration block return to starting position
     // The crosshairs return to start position
     // the x, y, z info above the gizmo goes back to zero
-  }
-
-  onResized(event: ResizedEvent): void {
-    this.activateDropdown = event.newWidth < 440 ? true : false;
   }
 }

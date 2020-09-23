@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { VideoModalLauncherModule } from './video-modal/video-modal-launcher/video-modal-launcher.module';
 import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
 import { MatRippleModule } from '@angular/material/core';
-import { AngularResizedEventModule } from 'angular-resize-event';
 
 
 @NgModule({
@@ -19,8 +18,7 @@ import { AngularResizedEventModule } from 'angular-resize-event';
     StoreDebugModule,
     VideoModalLauncherModule,
     ToggleableTooltipModule,
-    MatRippleModule,
-    AngularResizedEventModule
+    MatRippleModule
   ],
   declarations: [ContentComponent],
   exports: [ContentComponent]
