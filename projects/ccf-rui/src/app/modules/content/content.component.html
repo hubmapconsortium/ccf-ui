@@ -17,11 +17,6 @@
 <div style="position: absolute; bottom: 1rem; display: flex; flex-direction: row; justify-content: space-between; width: 7rem;">
   <button style="width: 3.5rem; font-size: .7rem;" (click)="page.setTutorialMode(!page.snapshot.tutorialMode);">Tutorial</button>
   <button style="width: 3rem; font-size: .7rem;" (click)="debugMode = !debugMode">State</button>
-  <button style="position: absolute; bottom: 7rem;" (click)="registration.setUseRegistrationCallback(true);">Use
-    callback</button>
-  <button style="position: absolute; bottom: 5rem;" (click)="registration.setUseRegistrationCallback(false);">Use
-    download</button>
+  <button (click)="registration.setUseRegistrationCallback(true);">Use callback</button>
+  <button (click)="registration.setUseRegistrationCallback(false);">Use download</button>
 </div>
-<ccf-store-debug [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100"></ccf-store-debug>
-
-
