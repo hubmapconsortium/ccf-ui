@@ -11,7 +11,7 @@ export class BodyUiComponent implements AfterViewInit {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-body-ui';
 
-  @Input() scenes: SpatialSceneNode[];
+  @Input() scene: SpatialSceneNode[];
 
   bodyUI: BodyUI;
 
@@ -28,15 +28,8 @@ export class BodyUiComponent implements AfterViewInit {
     this.bodyUI = new BodyUI({ id: 'body-ui', canvas });
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
 
-    this.bodyUI.setScene(this.scenes);
-
-    this.bodyUI.nodeClick$.subscribe(async ({node, ctrlClick}) => {
-      switch(node['@id']) {
-        case '': {
-          break;
-        }
-        default: break;
-      }
-    });
+    setTimeout(() => {
+      this.bodyUI.setScene(this.scene);
+    }, 100);
   }
 }
