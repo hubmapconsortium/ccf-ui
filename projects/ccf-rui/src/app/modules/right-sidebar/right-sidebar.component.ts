@@ -30,8 +30,13 @@ export class RightSidebarComponent {
    *
    * @param model Model state service
    * @param registration Registration state service
+   * @param page The page state
    */
-  constructor(readonly model: ModelState, readonly registration: RegistrationState, readonly page: PageState) { }
+  constructor(
+    readonly model: ModelState,
+    readonly registration: RegistrationState,
+    readonly page: PageState
+  ) { }
 
   fakeAutocomplete(): unknown {
     return [[

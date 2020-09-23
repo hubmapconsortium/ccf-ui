@@ -2,9 +2,10 @@ import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
 import { ModelState } from '../../core/store/model/model.state';
+import { PageState } from '../../core/store/page/page.state';
+import { RegistrationState } from '../../core/store/registration/registration.state';
 import { ContentComponent } from './content.component';
 import { ContentModule } from './content.module';
-import { PageState } from '../../core/store/page/page.state';
 
 
 describe('ContentComponent', () => {
@@ -19,6 +20,10 @@ describe('ContentComponent', () => {
       'PageStage', ['setEmbedded', 'setUserName', 'setTutorialMode']
     );
 
+    const mockRegistrationState = jasmine.createSpyObj<RegistrationState>(
+      'RegistrationState', ['register']
+    );
+
     shallow = new Shallow(ContentComponent, ContentModule)
       .mock(ModelState, {
         ...mockModelState,
@@ -28,6 +33,9 @@ describe('ContentComponent', () => {
       .mock(PageState, {
         ...mockPageState,
         tutorialMode$: of(false)
+      })
+      .mock(RegistrationState, {
+        ...mockRegistrationState
       });
   });
 
