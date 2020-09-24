@@ -40,6 +40,10 @@
       box-shadow: none;
     }
 
+    ::ng-deep .mat-expansion-panel-body {
+      padding: 0 0 16px;
+    }
+
     .extraction-menu,
     .anatomical-structures-menu {
       .expansion-header {
