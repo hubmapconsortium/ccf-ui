@@ -44,8 +44,9 @@
 
   <div class="filler"></div>
 
-  <ccf-review-button [metaData]="registration.metadata$ | async">
+  <ccf-review-button [metaData]="registration.metadata$ | async" (registerData)="registration.register()">
   </ccf-review-button>
   <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-2"
-                          tooltip="Review registration and submit/download."></ccf-toggleable-tooltip>
+                          tooltip="Review registration and submit/download.">
+  </ccf-toggleable-tooltip>
 </div>

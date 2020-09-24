@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { ResizeSensor } from 'css-element-queries';
+import { RegistrationState } from '../../core/store/registration/registration.state';
 
 /**
  * Main content component
@@ -36,8 +37,16 @@ export class ContentComponent implements AfterViewInit {
    * Creates an instance of content component.
    *
    * @param model The model state
+   * @param page The page state
+   * @param registration The registration state
+   * @param cdr Change detector
    */
-  constructor(readonly model: ModelState, readonly page: PageState, private cdr: ChangeDetectorRef) { }
+  constructor(
+    readonly model: ModelState,
+    readonly page: PageState,
+    readonly registration: RegistrationState,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   /**
    * Sets up ResizeSensor to listen to changes in top bar width and enables dropdown if below a certain width
