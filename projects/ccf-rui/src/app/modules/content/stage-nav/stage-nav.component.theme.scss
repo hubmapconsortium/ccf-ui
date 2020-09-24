@@ -28,4 +28,18 @@
       }
     }
   }
+
+  .dropdown {
+    .dropdown-label {
+      color: mat-color($foreground, contrast-text);
+    }
+
+    .stage-nav {
+      background-color: white;
+
+      hr {
+        color: mat-color($foreground, icon);
+      }
+    }
+  }
 }
