@@ -24,6 +24,10 @@ export class LeftSidebarComponent {
     map(side => side === 'left' ? 'L' : 'R')
   );
 
+  readonly organSelected$ = this.model.organ$.pipe(
+    map(organ => organ === '' ? false : true)
+  )
+
   /**
    * Variable that keeps track of the extraction site tooltip to display on
    * the stage when hovered.
