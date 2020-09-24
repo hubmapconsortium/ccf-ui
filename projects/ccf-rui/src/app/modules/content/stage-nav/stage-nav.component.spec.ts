@@ -41,6 +41,6 @@ describe('StageNavComponent', () => {
   it('should toggle stageNavHidden when toggleNav is called', async () => {
     const { instance } = await shallow.render();
     instance.toggleNav();
-    expect(instance.stageNavHidden).toBeTrue();
+    expect(instance.stageNavHidden).toBeFalse();
   });
 });
