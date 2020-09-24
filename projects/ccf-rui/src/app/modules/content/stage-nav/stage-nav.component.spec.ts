@@ -37,4 +37,10 @@ describe('StageNavComponent', () => {
 
     expect(outputs.view3DChange.emit).toHaveBeenCalled();
   });
+
+  it('should toggle stageNavHidden when toggleNav is called', async () => {
+    const { instance } = await shallow.render();
+    instance.toggleNav();
+    expect(instance.stageNavHidden).toBeTrue();
+  });
 });

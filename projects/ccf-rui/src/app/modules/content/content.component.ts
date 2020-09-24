@@ -5,7 +5,9 @@ import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { ResizeSensor } from 'css-element-queries';
 
-
+/**
+ * Main content component
+ */
 @Component({
   selector: 'ccf-content',
   templateUrl: './content.component.html',
@@ -21,10 +23,13 @@ export class ContentComponent implements AfterViewInit {
     map(type => type === '3d')
   );
 
+  /** Determines if the stage nav should be displayed as a dropdown menu */
   activateDropdown = false;
 
+  /** Reference to the top bar element */
   @ViewChild('topbar', { read: ElementRef }) topBar: ElementRef<HTMLElement>;
 
+  /** Sensor for detecting changes in size of an element */
   private sensor: ResizeSensor;
 
   /**
@@ -34,6 +39,9 @@ export class ContentComponent implements AfterViewInit {
    */
   constructor(readonly model: ModelState, readonly page: PageState, private cdr: ChangeDetectorRef) { }
 
+  /**
+   * Sets up ResizeSensor to listen to changes in top bar width and enables dropdown if below a certain width
+   */
   ngAfterViewInit(): void {
     const {
       topBar: { nativeElement: topBar }

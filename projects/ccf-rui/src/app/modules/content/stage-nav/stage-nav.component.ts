@@ -39,8 +39,14 @@ export class StageNavComponent {
    */
   @Output() view3DChange = new EventEmitter<boolean>();
 
+  /**
+   * Determines if stage nav settings are visible
+   */
   stageNavHidden = true;
 
+  /**
+   * Toggles appearance of stage nav settings
+   */
   toggleNav(): void {
     this.stageNavHidden = !this.stageNavHidden;
   }
