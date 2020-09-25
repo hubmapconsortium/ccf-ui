@@ -30,7 +30,7 @@
     <mat-expansion-panel-header class="expansion-header">
       <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
     </mat-expansion-panel-header>
-    <div class="expansion-content">
+    <div *ngIf="organSelected$ | async" class="expansion-content">
       <ccf-extraction-set-dropdown [sets]="model.extractionSets$ | async"
                                    (setChange)="model.setExtractionSites($event.sites)" #dropdown>
       </ccf-extraction-set-dropdown>

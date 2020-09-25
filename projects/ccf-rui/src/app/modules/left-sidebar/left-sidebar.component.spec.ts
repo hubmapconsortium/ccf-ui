@@ -28,6 +28,7 @@ describe('LeftSidebarComponent', () => {
                 viewSide$: of('anterior'),
                 gender$: of('male' as 'male' | 'female'),
                 side$: of('left' as 'left' | 'right'),
+                organ$: of('Heart'),
                 anatomicalStructures$: of(testVisibilityItems),
                 snapshot: { anatomicalStructures: testVisibilityItems }
             })
