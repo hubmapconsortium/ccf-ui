@@ -1,25 +1,30 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BodyUI } from 'ccf-body-ui';
+import { of } from 'rxjs';
+import { Shallow } from 'shallow-render';
 
+import { ModelState } from '../../core/store/model/model.state';
 import { BodyUiComponent } from './body-ui.component';
+import { BodyUiModule } from './body-ui.module';
 
 describe('BodyUiComponent', () => {
-  let component: BodyUiComponent;
-  let fixture: ComponentFixture<BodyUiComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BodyUiComponent ]
-    })
-    .compileComponents();
-  }));
+  let shallow: Shallow<BodyUiComponent>;
+  const mockBodyUI = {
+    setScene(...args: unknown[]): BodyUI {
+      return undefined as unknown as BodyUI;
+    }
+  };
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BodyUiComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    const mockModelState = jasmine.createSpyObj<ModelState>(
+      'ModelState', ['setViewType', 'setViewSide']
+    );
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    shallow = new Shallow(BodyUiComponent, BodyUiModule)
+      .mock(ModelState, {
+        ...mockModelState,
+        viewType$: of('register'),
+        viewSide$: of('anterior')
+      })
+      .mock(BodyUI, mockBodyUI);
   });
 });
