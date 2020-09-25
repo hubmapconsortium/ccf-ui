@@ -11,4 +11,7 @@ export * from './lib/components/store-debug/store-debug.component';
 export * from './lib/components/text-search/text-search.module';
 export * from './lib/components/text-search/text-search.component';
 
+export * from './lib/directives/numbers-only/numbers-only.module';
+export * from './lib/directives/numbers-only/numbers-only.directive';
+
 export * from './lib/services/globals/globals.service';
