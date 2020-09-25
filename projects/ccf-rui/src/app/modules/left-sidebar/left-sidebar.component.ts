@@ -26,7 +26,7 @@ export class LeftSidebarComponent {
 
   readonly organSelected$ = this.model.organ$.pipe(
     map(organ => organ === '' ? false : true)
-  )
+  );
 
   /**
    * Variable that keeps track of the extraction site tooltip to display on
