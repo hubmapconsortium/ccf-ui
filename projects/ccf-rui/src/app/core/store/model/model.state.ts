@@ -196,6 +196,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly extractionSites$ = this.state$.pipe(pluck('extractionSites'));
   /** Anatomical structures observable */
   readonly anatomicalStructures$ = this.state$.pipe(pluck('anatomicalStructures'));
+  /** Extraction sets observable */
   readonly extractionSets$ = this.state$.pipe(pluck('extractionSets'));
 
   /**
