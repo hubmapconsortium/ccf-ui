@@ -62,6 +62,7 @@ export const ccf = {
   },
   spatialEntity: {
     label: prefixer('rdf')('label'),
+    comment: prefixer('rdf')('comment'),
     creator: prefixer('dc')('creator'),
     creator_first_name: ccfx('creator_first_name'),
     creator_last_name: ccfx('creator_last_name'),

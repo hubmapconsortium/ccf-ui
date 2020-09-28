@@ -4,37 +4,9 @@ import { GLTFLoader } from '@loaders.gl/gltf';
 import { Matrix4 } from '@math.gl/core';
 import { AABB, Vec3 } from 'cannon-es';
 
-import { SpatialSceneNode } from './body-ui-layer';
+import { SpatialSceneNode } from '../shared/spatial-scene-node';
+import { traverseScene } from './scene-traversal';
 
-
-// tslint:disable: no-unsafe-any
-function traverseScene(scene, worldMatrix = new Matrix4(), visitor: (child, modelMatrix: Matrix4) => void): void {
-  const matrix = new Matrix4().identity();
-  if (scene.matrix) {
-    matrix.copy(scene.matrix);
-  } else {
-    matrix.identity();
-
-    if (scene.translation) {
-      matrix.translate(scene.translation);
-    }
-
-    if (scene.rotation) {
-      const rotationMatrix = new Matrix4().fromQuaternion(scene.rotation);
-      matrix.multiplyRight(rotationMatrix);
-    }
-
-    if (scene.scale) {
-      matrix.scale(scene.scale);
-    }
-  }
-  const modelMatrix = new Matrix4(worldMatrix).multiplyRight(matrix);
-  visitor(scene, modelMatrix);
-
-  for (const child of (scene.nodes || scene.children || [])) {
-    traverseScene(child, modelMatrix, visitor);
-  }
-}
 
 interface Collision {
   '@id': string;
@@ -42,6 +14,7 @@ interface Collision {
   hits: {'@id': string, name: string}[];
 }
 
+// tslint:disable: no-unsafe-any
 export async function doCollisions(scene: SpatialSceneNode[]): Promise<Collision[]> {
   console.log('Starting Collisioning');
   const sourceBoxes = scene
@@ -84,6 +57,7 @@ export async function doCollisions(scene: SpatialSceneNode[]): Promise<Collision
             }
           }
         }
+        return true;
       });
     }
   }
@@ -100,7 +74,7 @@ export async function doCollisions(scene: SpatialSceneNode[]): Promise<Collision
     if (hits.length > 0) {
       report.push({
         '@id': src.entityId as string,
-        name: src.name,
+        name: src.name as string,
         hits
       });
     } else {

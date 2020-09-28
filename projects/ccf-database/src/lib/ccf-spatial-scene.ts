@@ -20,12 +20,18 @@ export interface SpatialSceneNode {
   zoomToOnLoad?: boolean;
   color?: [number, number, number, number];
   transformMatrix: Matrix4;
+  name?: string;
   tooltip: string;
+  priority?: number;
 }
 
 export class CCFSpatialScene {
 
   constructor(private db: CCFDatabase) {}
+
+  getSpatialEntity(iri: string): SpatialEntity {
+    return getSpatialEntity(this.db.store, iri);
+  }
 
   getReferenceBody(filter?: Filter): SpatialEntity {
     let bodyId: string;
@@ -41,7 +47,7 @@ export class CCFSpatialScene {
         bodyId = ccf.spatial.BothSexes.id;
         break;
     }
-    return getSpatialEntity(this.db.store, bodyId);
+    return this.getSpatialEntity(bodyId);
   }
 
   getReferenceOrgans(filter?: Filter): SpatialEntity[] {
@@ -58,14 +64,12 @@ export class CCFSpatialScene {
         organsId = ccf.spatial.FemaleOrgans.id;
         break;
     }
-    return [getSpatialEntity(this.db.store, organsId)];
+    return [this.getSpatialEntity(organsId)];
   }
 
   getReferenceSceneNodes(filter?: Filter): SpatialSceneNode[] {
-    const wholeBody = getSpatialEntity(this.db.store, ccf.spatial.Body.id);
+    const wholeBody = this.getSpatialEntity(ccf.spatial.Body.id);
     const body = this.getReferenceBody(filter);
-    const organs = getSpatialEntity(this.db.store, ccf.spatial.MaleOrgans.id);
-    const store = this.db.store;
     const terms = filter?.ontologyTerms || [];
     const hasTerm = {
       body: terms.indexOf(rui.body.id) === 0,
@@ -80,22 +84,22 @@ export class CCFSpatialScene {
       ...this.getReferenceOrgans(filter).map((organ) =>
         this.getSceneNode(organ, body, {unpickable: true, _lighting: 'pbr', zoomBasedOpacity: true,  color: [255, 0, 0, 1*255]})
       ),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), body, {color: [255, 255, 255, 1],
+      this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), body, {color: [255, 255, 255, 1],
         unpickable: hasTerm.kidney || hasTerm.right_kidney, zoomToOnLoad: hasTerm.right_kidney}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), body, {color: [255, 255, 255, 1],
+      this.getSceneNode(this.getSpatialEntity(ccf.x('VHLeftKidney').id), body, {color: [255, 255, 255, 1],
         unpickable: hasTerm.kidney || hasTerm.left_kidney, zoomToOnLoad: hasTerm.left_kidney}),
-      this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleen').id), body, {color: [255, 255, 255, 1],
+      this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleen').id), body, {color: [255, 255, 255, 1],
         unpickable: hasTerm.spleen, zoomToOnLoad: hasTerm.spleen})
     ];
 
     if (filter?.debug) {
       // Debug bounding boxes
       nodes = nodes.concat([
-        this.getSceneNode(getSpatialEntity(store, ccf.x('VHRightKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
-        this.getSceneNode(getSpatialEntity(store, ccf.x('VHLeftKidney').id), wholeBody, {color: [255, 0, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC1').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC2').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(getSpatialEntity(store, ccf.x('VHSpleenCC3').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true})
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHLeftKidney').id), wholeBody, {color: [255, 0, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC1').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC2').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC3').id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true})
       ]);
     }
 

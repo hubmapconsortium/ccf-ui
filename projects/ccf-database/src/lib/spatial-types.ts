@@ -22,6 +22,8 @@ export interface SpatialEntity {
   entityId?: string;
   /** Entity label. */
   label?: string;
+  /** Entity comment. */
+  comment?: string;
   /** Creator. */
   creator?: string;
   /** Creator first name. */
