@@ -3,4 +3,9 @@
     margin: 0 1rem;
     transition: color .6s;
   }
+  
+  .disabled {
+    opacity: 30%;
+    cursor: not-allowed;
+  }
 }

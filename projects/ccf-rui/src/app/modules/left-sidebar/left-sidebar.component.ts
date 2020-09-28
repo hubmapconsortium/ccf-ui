@@ -43,19 +43,19 @@ export class LeftSidebarComponent {
   detailsLabels: string[] = ['heart', 'front', 'female'];
 
   organList: OrganInfo[] = [
-    { src: 'app:colon', name: 'Colon' },
-    { src: 'app:heart', name: 'Heart' },
-    { src: 'app:kidney', name: 'Kidney' },
-    { src: 'app:spleen', name: 'Spleen' },
-    { src: 'app:bladder', name: 'Bladder', disabled: true },
-    { src: 'app:brain', name: 'Brain', disabled: true },
-    { src: 'app:liver', name: 'Liver', disabled: true },
-    { src: 'app:lung', name: 'Lung', disabled: true },
-    { src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true },
-    { src: 'app:ovaries', name: 'Ovaries', disabled: true },
-    { src: 'app:small_intestine', name: 'Small Intestine', disabled: true },
-    { src: 'app:stomach', name: 'Stomach', disabled: true },
-    { src: 'app:thymus', name: 'Thymus', disabled: true }
+    { src: 'app:colon', name: 'Colon', hasSides: false },
+    { src: 'app:heart', name: 'Heart', hasSides: false },
+    { src: 'app:kidney', name: 'Kidney', hasSides: true },
+    { src: 'app:spleen', name: 'Spleen', hasSides: false },
+    { src: 'app:bladder', name: 'Bladder', disabled: true, hasSides: false },
+    { src: 'app:brain', name: 'Brain', disabled: true, hasSides: false },
+    { src: 'app:liver', name: 'Liver', disabled: true, hasSides: false },
+    { src: 'app:lung', name: 'Lung', disabled: true, hasSides: true },
+    { src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true, hasSides: false },
+    { src: 'app:ovaries', name: 'Ovaries', disabled: true, hasSides: true },
+    { src: 'app:small_intestine', name: 'Small Intestine', disabled: true, hasSides: false },
+    { src: 'app:stomach', name: 'Stomach', disabled: true, hasSides: false },
+    { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false }
   ];
 
   constructor(readonly page: PageState, readonly model: ModelState) { }
