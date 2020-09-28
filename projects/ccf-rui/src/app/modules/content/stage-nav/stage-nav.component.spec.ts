@@ -8,6 +8,9 @@ describe('StageNavComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(StageNavComponent, StageNavModule);
+    const testTopBar = document.createElement('div');
+    testTopBar.setAttribute('class', ('top-bar'));
+    document.body.append(testTopBar);
   });
 
   it('should properly update the side variable when updateSide is called.', async () => {
@@ -38,9 +41,4 @@ describe('StageNavComponent', () => {
     expect(outputs.view3DChange.emit).toHaveBeenCalled();
   });
 
-  it('should toggle stageNavHidden when toggleNav is called', async () => {
-    const { instance } = await shallow.render();
-    instance.toggleNav();
-    expect(instance.stageNavHidden).toBeFalse();
-  });
 });
