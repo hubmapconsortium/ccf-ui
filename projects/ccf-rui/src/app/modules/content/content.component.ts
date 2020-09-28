@@ -7,7 +7,9 @@ import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 import { SceneState } from '../../core/store/scene/scene.state';
 
-
+/**
+ * Main content component
+ */
 @Component({
   selector: 'ccf-content',
   templateUrl: './content.component.html',
