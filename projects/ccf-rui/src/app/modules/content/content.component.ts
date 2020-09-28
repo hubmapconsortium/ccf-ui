@@ -5,7 +5,9 @@ import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 
-
+/**
+ * Main content component
+ */
 @Component({
   selector: 'ccf-content',
   templateUrl: './content.component.html',
@@ -31,7 +33,7 @@ export class ContentComponent {
   constructor(
     readonly model: ModelState,
     readonly page: PageState,
-    readonly registration: RegistrationState
+    readonly registration: RegistrationState,
   ) { }
 
   /**
