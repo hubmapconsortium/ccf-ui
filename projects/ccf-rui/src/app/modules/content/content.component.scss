@@ -16,8 +16,20 @@
     }
   }
 
+  .body-ui {
+    transition: opacity 1s;
+
+    .hidden {
+      opacity: 0;
+      z-index: 0;
+    }
+  }
+
   // Temporary for displaying dev information
   .ccf-store-debug {
     color: white;
+    position: absolute;
+    top: .5rem;
+    max-width: 55rem;
   }
 }
