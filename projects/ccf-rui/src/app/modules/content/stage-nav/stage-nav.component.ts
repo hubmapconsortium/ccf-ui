@@ -7,12 +7,12 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  ElementRef,
-  ViewChild
+  HostListener,
+  ViewChild,
+  ElementRef
  } from '@angular/core';
 
 import { ResizeSensor } from 'css-element-queries';
-import { MatMenuTrigger } from '@angular/material/menu';
 
 /** Valid values for side. */
 export type Side = 'left' | 'right' | 'anterior' | 'posterior';
@@ -53,6 +53,10 @@ export class StageNavComponent implements AfterViewInit {
    */
   @Output() view3DChange = new EventEmitter<boolean>();
 
+  @ViewChild('label', { static: true, read: ElementRef }) label: ElementRef<HTMLElement>;
+
+  @ViewChild('options', { static: true, read: ElementRef }) options: ElementRef<HTMLElement>;
+
   /**
    * Determines if stage nav settings are visible
    */
@@ -63,9 +67,6 @@ export class StageNavComponent implements AfterViewInit {
 
   /** Sensor for detecting changes in size of an element */
   private sensor: ResizeSensor;
-
-  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
-
 
   /**
    * Creates an instance of stage nav component.
@@ -79,13 +80,29 @@ export class StageNavComponent implements AfterViewInit {
    */
   ngAfterViewInit(): void {
     const topbar = document.getElementsByClassName('top-bar')[0] as HTMLElement;
-
     this.sensor = new ResizeSensor(topbar, () => {
       const width = parseInt(getComputedStyle(topbar).width, 10);
-      console.log(width)
       this.activateDropdown = width < 440 ? true : false;
+      this.stageNavHidden = width < 440 ? true : false;
       this.cdr.detectChanges();
     });
+  }
+
+  /**
+   * Listens to document click event
+   * Closes the popup only if user clicks outside the popup
+   * @param target The element on which the event was fired
+   */
+  @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  handleClick(target: HTMLElement): void {
+    const { stageNavHidden, label, options } = this;
+
+    if (label.nativeElement.contains(target) || (!stageNavHidden && !options.nativeElement.contains(target))) {
+      this.stageNavHidden = !this.stageNavHidden;
+      return;
+    } else {
+      return;
+    }
   }
 
   toggleNav(): void {

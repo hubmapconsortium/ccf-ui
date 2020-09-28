@@ -27,15 +27,15 @@
         color: mat-color($accent);
       }
     }
-    
+
     .dropdown-label {
       &.dropdown {
         color: mat-color($foreground, contrast-text);
       }
     }
   
-    .stage-nav {
-      &.dropdown {
+    .stage-options {
+      &.dropdowncontainer {
         background-color: white;
   
         hr {
