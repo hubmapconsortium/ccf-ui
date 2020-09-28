@@ -53,24 +53,9 @@
         height: 3rem;
       }
 
-      .search {
-        margin-top: 1rem;
-
-        .icon.add {
-          position: absolute;
-          // Sizes and offsets found by experimentation
-          width: 3.625rem;
-          height: 3.625rem;
-          font-size: 3.625rem;
-          top: -1.9375rem;
-          right: -1.1875rem;
-        }
-      }
-
       .tag-list {
-        max-height: 5rem;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+        max-height: 7.5rem;
+        margin-left: -1rem;
       }
 
       .legend {
