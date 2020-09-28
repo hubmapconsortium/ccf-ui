@@ -82,7 +82,7 @@ export class CCFSpatialScene {
     let nodes: (SpatialSceneNode | undefined)[] = [
       this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
       ...this.getReferenceOrgans(filter).map((organ) =>
-        this.getSceneNode(organ, body, {unpickable: true, _lighting: 'pbr', zoomBasedOpacity: true,  color: [255, 0, 0, 1*255]})
+        this.getSceneNode(organ, body, {unpickable: true, _lighting: 'pbr', zoomBasedOpacity: true,  color: [255, 255, 255, 1*255]})
       ),
       this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), body, {color: [255, 255, 255, 1],
         unpickable: hasTerm.kidney || hasTerm.right_kidney, zoomToOnLoad: hasTerm.right_kidney}),
