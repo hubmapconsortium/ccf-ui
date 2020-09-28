@@ -43,18 +43,15 @@ export class RightSidebarComponent {
   }
 
   fakeAutocomplete(): unknown {
-    return [{
-      totalCount: 5,
-      results: [
-        {
-          id: 1,
-          label: 'foo'
-        },
-        {
-          id: 2,
-          label: 'bar'
-        }
-      ]
-    }];
+    return [[
+      {
+        id: 1,
+        label: 'foo'
+      },
+      {
+        id: 2,
+        label: 'bar'
+      }
+    ]];
   }
 }
