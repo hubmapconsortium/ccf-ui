@@ -22,6 +22,10 @@ export interface OrganInfo {
    */
   hasSides?: boolean;
 
+  /**
+   * True if applies to both sexes
+   */
+  hasSex?: boolean;
 }
 
 /**
