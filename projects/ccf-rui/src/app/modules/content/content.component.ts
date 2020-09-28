@@ -1,9 +1,8 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
-import { ResizeSensor } from 'css-element-queries';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 
 /**
@@ -15,7 +14,7 @@ import { RegistrationState } from '../../core/store/registration/registration.st
   styleUrls: ['./content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContentComponent implements AfterViewInit {
+export class ContentComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-content';
 
@@ -24,44 +23,18 @@ export class ContentComponent implements AfterViewInit {
     map(type => type === '3d')
   );
 
-  /** Determines if the stage nav should be displayed as a dropdown menu */
-  activateDropdown = false;
-
-  /** Reference to the top bar element */
-  @ViewChild('topbar', { read: ElementRef }) topBar: ElementRef<HTMLElement>;
-
-  /** Sensor for detecting changes in size of an element */
-  private sensor: ResizeSensor;
-
   /**
    * Creates an instance of content component.
    *
    * @param model The model state
    * @param page The page state
    * @param registration The registration state
-   * @param cdr Change detector
    */
   constructor(
     readonly model: ModelState,
     readonly page: PageState,
     readonly registration: RegistrationState,
-    private cdr: ChangeDetectorRef
   ) { }
-
-  /**
-   * Sets up ResizeSensor to listen to changes in top bar width and enables dropdown if below a certain width
-   */
-  ngAfterViewInit(): void {
-    const {
-      topBar: { nativeElement: topBar }
-    } = this;
-
-    this.sensor = new ResizeSensor(topBar, () => {
-      const width = parseInt(getComputedStyle(topBar).width, 10);
-      this.activateDropdown = width < 440 ? true : false;
-      this.cdr.detectChanges();
-    });
-  }
 
   /**
    * Sets view type

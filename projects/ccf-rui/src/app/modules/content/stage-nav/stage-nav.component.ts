@@ -1,5 +1,18 @@
-import { Component, EventEmitter, Input, Output, HostBinding } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  HostBinding,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  ElementRef,
+  ViewChild
+ } from '@angular/core';
 
+import { ResizeSensor } from 'css-element-queries';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 /** Valid values for side. */
 export type Side = 'left' | 'right' | 'anterior' | 'posterior';
@@ -10,9 +23,10 @@ export type Side = 'left' | 'right' | 'anterior' | 'posterior';
 @Component({
   selector: 'ccf-stage-nav',
   templateUrl: './stage-nav.component.html',
-  styleUrls: ['./stage-nav.component.scss']
+  styleUrls: ['./stage-nav.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StageNavComponent {
+export class StageNavComponent implements AfterViewInit {
 
   /**
    * HTML class name
@@ -44,9 +58,36 @@ export class StageNavComponent {
    */
   stageNavHidden = true;
 
+  /** Determines if the stage nav should be displayed as a dropdown menu */
+  activateDropdown = false;
+
+  /** Sensor for detecting changes in size of an element */
+  private sensor: ResizeSensor;
+
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+
+
   /**
-   * Toggles appearance of stage nav settings
+   * Creates an instance of stage nav component.
+   *
+   * @param cdr Change detector
    */
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  /**
+   * Sets up ResizeSensor to listen to changes in top bar width and enables dropdown if below a certain width
+   */
+  ngAfterViewInit(): void {
+    const topbar = document.getElementsByClassName('top-bar')[0] as HTMLElement;
+
+    this.sensor = new ResizeSensor(topbar, () => {
+      const width = parseInt(getComputedStyle(topbar).width, 10);
+      console.log(width)
+      this.activateDropdown = width < 440 ? true : false;
+      this.cdr.detectChanges();
+    });
+  }
+
   toggleNav(): void {
     this.stageNavHidden = !this.stageNavHidden;
   }

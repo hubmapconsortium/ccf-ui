@@ -27,18 +27,20 @@
         color: mat-color($accent);
       }
     }
-  }
-
-  .dropdown {
+    
     .dropdown-label {
-      color: mat-color($foreground, contrast-text);
+      &.dropdown {
+        color: mat-color($foreground, contrast-text);
+      }
     }
-
+  
     .stage-nav {
-      background-color: white;
-
-      hr {
-        color: mat-color($foreground, icon);
+      &.dropdown {
+        background-color: white;
+  
+        hr {
+          color: mat-color($foreground, icon);
+        }
       }
     }
   }
