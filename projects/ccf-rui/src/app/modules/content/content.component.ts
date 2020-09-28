@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { Matrix4 } from '@math.gl/core';
 import { map } from 'rxjs/operators';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
+import { SceneState } from '../../core/store/scene/scene.state';
 
 
 @Component({
@@ -36,8 +38,24 @@ export class ContentComponent {
   constructor(
     readonly model: ModelState,
     readonly page: PageState,
-    readonly registration: RegistrationState
-  ) { }
+    readonly registration: RegistrationState,
+    readonly scene: SceneState
+  ) {
+    // FIXME: Temporary for testing
+    scene.addMany([
+      {
+        '@id': 'http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans',
+        '@type': 'SpatialSceneNode',
+        scenegraph: 'https://hubmapconsortium.github.io/hubmap-ontology/objects/VHF_United_v01_060420.glb',
+        transformMatrix: new Matrix4([0.076,0,0,0,0,0.076,1.6875389974302382e-17,0,0,-1.6875389974302382e-17,0.076,0,0.49,0.034,0.11,1]),
+        tooltip: 'Visual Human Female Organs',
+        unpickable: true,
+        _lighting: 'pbr',
+        zoomBasedOpacity: true,
+        color: [255,0,0,255]
+      }
+    ]);
+  }
 
   /**
    * Sets view type

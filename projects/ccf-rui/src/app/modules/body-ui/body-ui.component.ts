@@ -19,19 +19,18 @@ export class BodyUiComponent implements AfterViewInit {
    * Spacial Scene nodes that make up the deckgl scene
    * To be replaced by a call to the store when set up
    */
-  scene: SpatialSceneNode[] = [
-    {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans',
-      '@type': 'SpatialSceneNode',
-      scenegraph: 'https://hubmapconsortium.github.io/hubmap-ontology/objects/VHF_United_v01_060420.glb',
-      transformMatrix: new Matrix4([0.076,0,0,0,0,0.076,1.6875389974302382e-17,0,0,-1.6875389974302382e-17,0.076,0,0.49,0.034,0.11,1]),
-      tooltip: 'Visual Human Female Organs',
-      unpickable: true,
-      _lighting: 'pbr',
-      zoomBasedOpacity: true,
-      color: [255,0,0,255]
-    }
-  ];
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  get scene(): SpatialSceneNode[] {
+    return this._scene;
+  }
+
+  set scene(nodes: SpatialSceneNode[]) {
+    this._scene = nodes;
+    this.bodyUI?.setScene(nodes);
+  }
+
+  private _scene: SpatialSceneNode[] = [];
 
   /**
    * Instance of the body UI class for rendering the deckGL scene

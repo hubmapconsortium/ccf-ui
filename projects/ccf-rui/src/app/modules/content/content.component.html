@@ -11,7 +11,7 @@
 
 <ccf-video-modal-launcher [visible]="page.tutorialMode$ | async"></ccf-video-modal-launcher>
 
-<ccf-body-ui class="body-ui" [class.hidden]="page.tutorialMode$ | async"></ccf-body-ui>
+<ccf-body-ui class="body-ui" [class.hidden]="page.tutorialMode$ | async" [scene]="scene.nodes$ | async"></ccf-body-ui>
 
 <ccf-store-debug *ngIf="debugMode" class="debug" [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100" ></ccf-store-debug>
 <div style="position: absolute; bottom: 1rem; display: flex; flex-direction: row; justify-content: space-between; width: 7rem;">
