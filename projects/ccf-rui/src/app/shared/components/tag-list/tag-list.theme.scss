@@ -5,7 +5,15 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .ccf-tag-list-item {
+  .ccf-tag-list {
+    .assigned {
+      color: mat-color($foreground, text);
+    }
+
+    .added {
+      color: mat-color($foreground, legend-contrast);
+    }
+
     .icon.remove {
       color: mat-color($foreground, contrast-icon);
     }

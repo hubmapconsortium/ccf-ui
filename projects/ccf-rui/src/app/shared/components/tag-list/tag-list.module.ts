@@ -1,14 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 
-import { TagListItemComponent } from './item/item.component';
-import { TagListComponent } from './list/list.component';
+import { TagListComponent } from './tag-list.component';
 
 
 @NgModule({
-  imports: [CommonModule, MatIconModule],
-  declarations: [TagListComponent, TagListItemComponent],
+  imports: [
+    CommonModule,
+
+    MatChipsModule,
+    MatIconModule
+  ],
+  declarations: [TagListComponent],
   exports: [TagListComponent],
 })
 export class TagListModule { }
