@@ -35,9 +35,8 @@ export class BodyUiComponent implements AfterViewInit {
 
     // TODO: Replace with a single @Input with scene provided by ngxs
     this.data.filter$.subscribe(async (f: Filter) => {
-      await this.dataSourceService.dataSource.connect();
-      const scene = await this.dataSourceService.dataSource.getScene(f);
-      this.bodyUI.setScene(scene);
+      const db = await this.dataSourceService.getDB();
+      this.bodyUI.setScene(await db.getScene(f));
     });
 
     this.bodyUI.nodeClick$.subscribe(async ({node, ctrlClick}) => {
