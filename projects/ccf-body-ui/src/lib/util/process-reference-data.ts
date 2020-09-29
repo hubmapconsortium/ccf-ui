@@ -12,6 +12,44 @@ export const referenceDataConfig = {
   anatomicalStructuresUrl: 'https://asctb-data-miner.herokuapp.com/14V1HfF9egFbht8rp_oicMZEesbHzXGvJ/1313531900',
   referenceOrgans: [
     {
+      source: '#VHMaleOrgans_VHM_Colon%20(1)',
+      entityOverrides: {
+        '@id': '#VHMColon',
+        label: 'Visual Human Male Colon',
+        sex: 'Male',
+        rui_rank: 10
+      },
+      ruiPlacement: {
+        '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+        '@id': '#VHMColonRUIPlacement',
+        '@type': 'SpatialPlacement',
+        target: '#RUISpace',
+        placement_date: '2020-09-25',
+        x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
+        x_rotation: 0, y_rotation: 0, z_rotation: 0, rotation_units: 'degree',
+        x_translation: 0, y_translation: 0, z_translation: 0, translation_units: 'millimeter'
+      }
+    },
+    {
+      source: '#VHMaleOrgans_Heart',
+      entityOverrides: {
+        '@id': '#VHMHeart',
+        label: 'Visual Human Male Heart',
+        sex: 'Male',
+        rui_rank: 20
+      },
+      ruiPlacement: {
+        '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+        '@id': '#VHMHeartRUIPlacement',
+        '@type': 'SpatialPlacement',
+        target: '#RUISpace',
+        placement_date: '2020-09-25',
+        x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
+        x_rotation: 0, y_rotation: 0, z_rotation: 0, rotation_units: 'degree',
+        x_translation: 0, y_translation: 0, z_translation: 0, translation_units: 'millimeter'
+      }
+    },
+    {
       source: '#VHMaleOrgans_VHM_Kidney_L_Low',
       entityOverrides: {
         '@id': '#VHMLeftKidney',
@@ -52,7 +90,7 @@ export const referenceDataConfig = {
       }
     },
     {
-      source: '#VHMaleOrgans_VHM_Spleen',
+      source: '#VHMaleOrgans_VHM_Spleen%20(1)',
       entityOverrides: {
         '@id': '#VHMSpleen',
         label: 'Visual Human Male Spleen',
@@ -71,6 +109,44 @@ export const referenceDataConfig = {
       }
     },
 
+    {
+      source: '#VHFemaleOrgans_VHF_Colon_Low',
+      entityOverrides: {
+        '@id': '#VHFColon',
+        label: 'Visual Human Female Colon',
+        sex: 'Female',
+        rui_rank: 10
+      },
+      ruiPlacement: {
+        '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+        '@id': '#VHFColonRUIPlacement',
+        '@type': 'SpatialPlacement',
+        target: '#RUISpace',
+        placement_date: '2020-09-25',
+        x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
+        x_rotation: 0, y_rotation: 0, z_rotation: 0, rotation_units: 'degree',
+        x_translation: 0, y_translation: 0, z_translation: 0, translation_units: 'millimeter'
+      }
+    },
+    {
+      source: '#VHFemaleOrgans_Heart',
+      entityOverrides: {
+        '@id': '#VHFHeart',
+        label: 'Visual Human Female Heart',
+        sex: 'Female',
+        rui_rank: 20
+      },
+      ruiPlacement: {
+        '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+        '@id': '#VHFHeartRUIPlacement',
+        '@type': 'SpatialPlacement',
+        target: '#RUISpace',
+        placement_date: '2020-09-25',
+        x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
+        x_rotation: 0, y_rotation: 0, z_rotation: 0, rotation_units: 'degree',
+        x_translation: 0, y_translation: 0, z_translation: 0, translation_units: 'millimeter'
+      }
+    },
     {
       source: '#VHFemaleOrgans_VHF_Kidney_L_Low1',
       entityOverrides: {
@@ -112,7 +188,7 @@ export const referenceDataConfig = {
       }
     },
     {
-      source: '#VHFemaleOrgans_VHF_Spleen',
+      source: '#VHFemaleOrgans_VHF_Spleen_Low',
       entityOverrides: {
         '@id': '#VHFSpleen',
         label: 'Visual Human Female Spleen',

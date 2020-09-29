@@ -2,8 +2,8 @@ import { Matrix4, toRadians } from '@math.gl/core';
 
 import { CCFDatabase } from './ccf-database';
 import { Filter } from './interfaces';
-import { getSpatialEntity } from './queries/spatial-result-n3';
-import { SpatialEntity } from './spatial-types';
+import { getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity } from './queries/spatial-result-n3';
+import { ExtractionSet, SpatialEntity } from './spatial-types';
 import { ccf, rui } from './util/prefixes';
 
 
@@ -32,6 +32,18 @@ export class CCFSpatialScene {
   getSpatialEntity(iri: string): SpatialEntity {
     return getSpatialEntity(this.db.store, iri);
   }
+  getExtractionSets(iri: string): ExtractionSet[] {
+    return getExtractionSets(this.db.store, iri);
+  }
+  getExtractionSet(iri: string): ExtractionSet {
+    return getExtractionSet(this.db.store, iri);
+  }
+  getAnatomicalStructures(iri: string): SpatialEntity[] {
+    return getAnatomicalStructures(this.db.store, iri);
+  }
+  getReferenceOrgans(): SpatialEntity[] {
+    return getReferenceOrgans(this.db.store);
+  }
 
   getReferenceBody(filter?: Filter): SpatialEntity {
     let bodyId: string;
@@ -50,7 +62,7 @@ export class CCFSpatialScene {
     return this.getSpatialEntity(bodyId);
   }
 
-  getReferenceOrgans(filter?: Filter): SpatialEntity[] {
+  getReferenceOrganSets(filter?: Filter): SpatialEntity[] {
     let organsId: string;
     switch (filter?.sex) {
       case 'Male':
@@ -81,7 +93,7 @@ export class CCFSpatialScene {
 
     let nodes: (SpatialSceneNode | undefined)[] = [
       this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
-      ...this.getReferenceOrgans(filter).map((organ) =>
+      ...this.getReferenceOrganSets(filter).map((organ) =>
         this.getSceneNode(organ, body, {unpickable: true, _lighting: 'pbr', zoomBasedOpacity: true,  color: [255, 255, 255, 1*255]})
       ),
       this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), body, {color: [255, 255, 255, 1],

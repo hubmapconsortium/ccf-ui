@@ -23,6 +23,7 @@ export async function processExtractionSites(sourceUrl: string, entities: Spatia
           '@id': row.extraction_set_id,
           '@type': 'ExtractionSet',
           label: row.extraction_set_label,
+          extraction_set_for: row.extraction_set_for,
           rui_rank: rank * 10 + 1
         };
       }
