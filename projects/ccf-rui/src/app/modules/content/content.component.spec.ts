@@ -1,9 +1,10 @@
-import { of } from 'rxjs';
+import { from, of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
+import { SceneState } from '../../core/store/scene/scene.state';
 import { ContentComponent } from './content.component';
 import { ContentModule } from './content.module';
 
@@ -24,6 +25,10 @@ describe('ContentComponent', () => {
       'RegistrationState', ['register']
     );
 
+    const mockSceneState = jasmine.createSpyObj<SceneState>(
+      'SceneState', ['addMany']
+    );
+
     shallow = new Shallow(ContentComponent, ContentModule)
       .mock(ModelState, {
         ...mockModelState,
@@ -36,6 +41,10 @@ describe('ContentComponent', () => {
       })
       .mock(RegistrationState, {
         ...mockRegistrationState
+      })
+      .mock(SceneState, {
+        ...mockSceneState,
+        nodes$: from([])
       });
   });
 

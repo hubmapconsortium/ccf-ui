@@ -5,9 +5,10 @@ import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
+import { ModelState } from './model/model.state';
 import { PageState } from './page/page.state';
 import { RegistrationState } from './registration/registration.state';
-import { ModelState } from './model/model.state';
+import { SceneState } from './scene/scene.state';
 
 
 /**
@@ -17,7 +18,8 @@ export const ROOT_STATES = [
   IconRegistryState,
   PageState,
   ModelState,
-  RegistrationState
+  RegistrationState,
+  SceneState
 ];
 
 @NgModule({
