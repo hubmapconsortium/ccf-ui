@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
 import { VisibilityItem } from '../../models/visibility-item';
+import { DataSourceService } from '../../services/data-source/data-source.service';
+import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
@@ -18,9 +19,13 @@ describe('ModelState', () => {
   const initialSlicesConfig: SlicesConfig = { thickness: 0, numSlices: 1 };
   const initialViewType: ViewType = 'register';
   const initialViewSide: ViewSide = 'anterior';
+  let mockDataSource: jasmine.SpyObj<DataSourceService>;
   let state: ModelState;
 
   beforeEach(() => {
+    mockDataSource = jasmine.createSpyObj<DataSourceService>('DataSourceService', ['getReferenceOrgans']);
+    mockDataSource.getReferenceOrgans.and.returnValue(of([]));
+
     // NOTE: No need for shallow-render since
     // the setup is so simple. It would also require
     // us to create both a fake component and module.
@@ -28,6 +33,9 @@ describe('ModelState', () => {
       imports: [
         NgxsDataPluginModule.forRoot(),
         NgxsModule.forRoot([ModelState])
+      ],
+      providers: [
+        { provide: DataSourceService, useValue: mockDataSource }
       ]
     });
 
