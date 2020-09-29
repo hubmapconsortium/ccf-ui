@@ -4,7 +4,6 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
  * User name data
  */
 export interface UserName {
-
   /**
    * User's first name
    */
@@ -30,6 +29,12 @@ export class NameInputComponent {
    */
   @HostBinding('class') readonly clsName = 'ccf-name-input';
 
+  // @TODO: Remove and add call to state to check this.
+  errors = {
+    firstName: true,
+    lastName: true
+  };
+
   /**
    * Current user name
    */
@@ -52,5 +57,7 @@ export class NameInputComponent {
     const inputTarget = input.target as HTMLInputElement;
     this.name = { ...this.name, [key]: inputTarget.value };
     this.nameChange.emit(this.name);
+    // @TODO: Change to state method call.
+    this.errors[key] = false;
   }
 }

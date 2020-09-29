@@ -65,6 +65,9 @@ export class OrganSelectorComponent {
    */
   step = 56;
 
+  // @TODO:  Remove and replace with state check.
+  error = true;
+
   /**
    * Scrolls the carousel left or right by one step.
    * Prevents scrolling past the beginning or end of the carousel.
@@ -111,6 +114,8 @@ export class OrganSelectorComponent {
   selectOrgan(icon: OrganInfo): void {
     this.selectedOrgan = icon.name;
     this.organChanged.emit(icon.name);
+    // @TODO:  Change to state method call.
+    this.error = false;
   }
 
   /**

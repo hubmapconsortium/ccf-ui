@@ -12,6 +12,7 @@ import { ToggleableTooltipModule } from '../../shared/components/toggleable-tool
 import { VisibilityMenuModule } from '../../shared/components/visibility-menu/visibility-menu.module';
 import { VisibilityToggleModule } from '../../shared/components/visibility-toggle/visibility-toggle.module';
 import { LeftSidebarComponent } from './left-sidebar.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { LeftSidebarComponent } from './left-sidebar.component';
     CommonModule,
 
     MatExpansionModule,
+    MatIconModule,
 
     DetailsLabelModule,
     LabeledSlideToggleModule,

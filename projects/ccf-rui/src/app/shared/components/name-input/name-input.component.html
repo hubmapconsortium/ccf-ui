@@ -1,9 +1,9 @@
-<mat-form-field class="field">
+<mat-form-field class="field" [class.error]="errors.firstName">
   <mat-label class="text label">First Name</mat-label>
   <input matInput class="input" [value]="name.firstName" (input)="updateName($event, 'firstName')">
 </mat-form-field>
 
-<mat-form-field class="field">
+<mat-form-field class="field error" [class.error]="errors.lastName">
   <mat-label class="text label">Last Name</mat-label>
   <input matInput class="input" [value]="name.lastName" (input)="updateName($event, 'lastName')">
 </mat-form-field>

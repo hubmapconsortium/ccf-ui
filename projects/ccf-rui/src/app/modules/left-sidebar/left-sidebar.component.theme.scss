@@ -26,5 +26,19 @@
       background-color: mat-color($foreground, text);
       color: mat-color($foreground, logo);
     }
+
+    .validation-error-notification {
+      background-color: mat-color($foreground, text);
+      border: 1px solid mat-color($foreground, slider-red);
+      border-left: 6px solid mat-color($foreground, slider-red);
+
+      .validation-error-icon {
+        color: mat-color($foreground, contrast-icon);
+      }
+
+      .validation-error-message {
+        color: mat-color($foreground, logo);
+      }
+    }
   }
 }
