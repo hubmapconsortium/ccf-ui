@@ -13,6 +13,14 @@ describe('LeftSidebarComponent', () => {
     let shallow: Shallow<LeftSidebarComponent>;
 
     beforeEach(() => {
+        const testContainer = document.createElement('div');
+        testContainer.setAttribute('class', ('container'));
+        document.body.append(testContainer);
+
+        const testDrawer = document.createElement('div');
+        testDrawer.setAttribute('class', ('ccf-drawer'));
+        document.body.append(testDrawer);
+
         const mockModelState = jasmine.createSpyObj<ModelState>(
             'ModelState', ['setViewType', 'setViewSide', 'toggleRegistrationBlocksVisibility', 'setGender', 'setSide']
         );

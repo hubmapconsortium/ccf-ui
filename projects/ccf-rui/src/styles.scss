@@ -61,6 +61,8 @@ mat-icon {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #cdcdcd;
+  -webkit-border-radius: 0.625rem;
+  border-radius: 0.625rem;
 }
 
 input[type=number]::-webkit-inner-spin-button,

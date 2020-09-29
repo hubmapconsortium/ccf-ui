@@ -26,8 +26,14 @@ export class RightSidebarComponent implements AfterViewInit {
     { tag: 'renal', color: '#992661' }
   ];
 
+  /**
+   * Sensor for detecting changes in size of an element
+   */
   private sensor: ResizeSensor;
 
+  /**
+   * Determines if scrollbar is active;
+   */
   scrollbarOn = false;
 
   /**
@@ -36,6 +42,7 @@ export class RightSidebarComponent implements AfterViewInit {
    * @param model Model state service
    * @param registration Registration state service
    * @param page The page state
+   * @param cdr Change detector
    */
   constructor(
     readonly model: ModelState,
@@ -44,6 +51,9 @@ export class RightSidebarComponent implements AfterViewInit {
     private cdr: ChangeDetectorRef
   ) { }
 
+  /**
+   * ResizeSensor senses changes in sidebar container height and sets scrollbarOn to true if greater than drawer height
+   */
   ngAfterViewInit(): void {
     const container = document.getElementsByClassName('container')[1] as HTMLElement;
     const drawer = document.getElementsByClassName('ccf-drawer')[1] as HTMLElement;

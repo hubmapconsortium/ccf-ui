@@ -60,12 +60,27 @@ export class LeftSidebarComponent implements AfterViewInit {
     { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false, hasSex: true }
   ];
 
+  /**
+   * Sensor for detecting changes in size of an element
+   */
   private sensor: ResizeSensor;
 
+  /**
+   * Determines if scrollbar is active;
+   */
   scrollbarOn = false;
 
+  /**
+   * Creates an instance of left sidebar component.
+   * @param page The page state
+   * @param model Model state service
+   * @param cdr Change detector
+   */
   constructor(readonly page: PageState, readonly model: ModelState, private cdr: ChangeDetectorRef) { }
 
+  /**
+   * ResizeSensor senses changes in sidebar container height and sets scrollbarOn to true if greater than drawer height
+   */
   ngAfterViewInit(): void {
     const container = document.getElementsByClassName('container')[0] as HTMLElement;
     const drawer = document.getElementsByClassName('ccf-drawer')[0] as HTMLElement;
