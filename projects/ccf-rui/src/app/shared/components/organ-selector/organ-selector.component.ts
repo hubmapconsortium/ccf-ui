@@ -16,6 +16,16 @@ export interface OrganInfo {
    * True if the icon is disabled
    */
   disabled?: boolean;
+
+  /**
+   * True for paired organs
+   */
+  hasSides?: boolean;
+
+  /**
+   * True if applies to both sexes
+   */
+  hasSex?: boolean;
 }
 
 /**
@@ -38,12 +48,12 @@ export class OrganSelectorComponent {
   /**
    * Currently selected organ
    */
-  @Input() selectedOrgan: string;
+  @Input() selectedOrgan: OrganInfo | undefined;
 
   /**
    * Emits the name of the organ when selected
    */
-  @Output() organChanged = new EventEmitter<string>();
+  @Output() organChanged = new EventEmitter<OrganInfo>();
 
   /**
    * Determines whether the carousel is at the beginning
@@ -109,9 +119,9 @@ export class OrganSelectorComponent {
    * Sets currently selected organ and emits the organ name
    * @param icon The icon selected
    */
-  selectOrgan(icon: OrganInfo): void {
-    this.selectedOrgan = icon.name;
-    this.organChanged.emit(icon.name);
+  selectOrgan(icon: OrganInfo | undefined): void {
+    this.selectedOrgan = icon;
+    this.organChanged.emit(icon);
   }
 
   /**
@@ -120,6 +130,6 @@ export class OrganSelectorComponent {
    * @returns true if selected
    */
   isSelected(icon: OrganInfo): boolean {
-    return this.selectedOrgan === icon.name;
+    return this.selectedOrgan === icon;
   }
 }
