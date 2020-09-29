@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { VisibilityItem } from '../../core/models/visibility-item';
 
@@ -6,15 +6,17 @@ import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { OrganInfo } from '../../shared/components/organ-selector/organ-selector.component';
 
+import { ResizeSensor } from 'css-element-queries';
+
 @Component({
   selector: 'ccf-left-sidebar',
   templateUrl: './left-sidebar.component.html',
   styleUrls: ['./left-sidebar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LeftSidebarComponent {
+export class LeftSidebarComponent implements AfterViewInit {
   /** HTML class name */
-  @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
+  @HostBinding('class') clsName = 'ccf-left-sidebar';
 
   readonly genderByLabel$ = this.model.gender$.pipe(
     map(gender => gender === 'female' ? 'Female' : 'Male')
@@ -58,7 +60,23 @@ export class LeftSidebarComponent {
     { src: 'app:thymus', name: 'Thymus', disabled: true }
   ];
 
-  constructor(readonly page: PageState, readonly model: ModelState) { }
+  private sensor: ResizeSensor;
+
+  scrollbarOn = false;
+
+  constructor(readonly page: PageState, readonly model: ModelState, private cdr: ChangeDetectorRef) { }
+
+  ngAfterViewInit(): void {
+    const container = document.getElementsByClassName('container')[0] as HTMLElement;
+    const drawer = document.getElementsByClassName('ccf-drawer')[0] as HTMLElement;
+    const drawerHeight = parseInt(getComputedStyle(drawer).height, 10);
+    this.sensor = new ResizeSensor(container, () => {
+      const containerHeight = parseInt(getComputedStyle(container).height, 10);
+      this.scrollbarOn = containerHeight > drawerHeight ? true : false;
+      this.clsName = this.scrollbarOn ? 'ccf-left-sidebar scroll' : 'ccf-left-sidebar';
+      this.cdr.detectChanges();
+    });
+  }
 
 
   /**

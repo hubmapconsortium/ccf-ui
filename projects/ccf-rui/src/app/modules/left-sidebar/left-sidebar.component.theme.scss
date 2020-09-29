@@ -8,9 +8,15 @@
   .ccf-left-sidebar {
     background-color: mat-color($background, sidebar-background);
     scrollbar-color: mat-color($foreground, scrollbar-thumb) mat-color($background, sidebar-background);
-
     &::-webkit-scrollbar-track {
-      background-color: mat-color($background, sidebar-background);
+      background-color:mat-color($background, sidebar-background);
+    }
+
+    &.scroll {
+      scrollbar-color: mat-color($foreground, scrollbar-thumb) mat-color($foreground, scrollbar-track);
+      &::-webkit-scrollbar-track {
+        background-color: mat-color($foreground, scrollbar-track);
+      }
     }
 
     hr {
