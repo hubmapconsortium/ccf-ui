@@ -10,13 +10,13 @@
 
     <hr>
 
-    <ccf-organ-selector [organList]="organList" (organChanged)="model.setOrgan($event)">
+    <ccf-organ-selector #organSelector [organList]="organList" (organChanged)="model.setOrgan($event.name)">
     </ccf-organ-selector>
     <div class="organ-sliders">
-      <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
+      <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSides : false" class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
                                 (valueChange)="setSideFromLabel($event)">
       </ccf-labeled-slide-toggle>
-      <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
+      <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSex : false" class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
                                 (valueChange)="setGenderFromLabel($event)">
       </ccf-labeled-slide-toggle>
     </div>
