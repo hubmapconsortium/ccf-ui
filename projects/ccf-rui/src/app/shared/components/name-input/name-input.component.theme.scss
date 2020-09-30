@@ -3,28 +3,4 @@
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
   $accent: map-get($theme, accent);
-
-  .ccf-name-input {
-    .label {
-      color: mat-color($foreground, placeholder-text);
-    }
-
-    .mat-form-field.error {
-      .label {
-        color: mat-color($foreground, slider-red);
-      }
-
-      .mat-form-field-underline {
-        background-color: mat-color($foreground, slider-red);
-      }
-
-      .mat-form-field-ripple {
-        background-color: mat-color($foreground, slider-red) !important;
-      }
-    }
-
-    .mat-form-field-ripple {
-      background-color: mat-color($accent) !important;
-    }
-  }
 }

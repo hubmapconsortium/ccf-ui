@@ -61,4 +61,13 @@
       }
     }
   }
+
+  .error-message {
+    color: red;
+    height: 1rem;
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
 }

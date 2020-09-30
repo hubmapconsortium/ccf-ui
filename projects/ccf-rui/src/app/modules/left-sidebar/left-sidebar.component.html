@@ -10,7 +10,7 @@
 
     <hr>
 
-    <ccf-organ-selector [organList]="organList" (organChanged)="model.setOrgan($event)">
+    <ccf-organ-selector [displayErrors]="registration.displayErrors$ | async" [organList]="organList" (organChanged)="model.setOrgan($event)">
     </ccf-organ-selector>
     <div class="organ-sliders">
       <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
@@ -74,16 +74,5 @@
 
   <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">
     {{ extractionSiteTooltip }}
-  </div>
-
-  <div class="validation-error-notification mat-elevation-z7">
-    <mat-icon class="validation-error-icon">error_outline</mat-icon>
-    <div class="validation-error-message">
-      Please review your work for completeness before re-registering.
-      <br />
-      <br />
-      <div>- First Name</div>
-      <div>- Last Name</div>
-    </div>
   </div>
 </div>

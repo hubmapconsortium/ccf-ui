@@ -1,6 +1,11 @@
 :host {
   display: flex;
 
+  .label::after {
+    content: "*";
+    color: red;
+  }
+
   .field {
     width: 50%;
 

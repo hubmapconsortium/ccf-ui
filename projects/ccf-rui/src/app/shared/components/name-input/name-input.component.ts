@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 /**
  * User name data
@@ -29,11 +30,14 @@ export class NameInputComponent {
    */
   @HostBinding('class') readonly clsName = 'ccf-name-input';
 
-  // @TODO: Remove and add call to state to check this.
-  errors = {
-    firstName: true,
-    lastName: true
-  };
+  /**
+   * Used to validate the first name input field.
+   */
+  firstNameValidator = new FormControl('', [Validators.required]);
+  /**
+   * Used to validate the last name input field.
+   */
+  lastNameValidator  = new FormControl('', [Validators.required]);
 
   /**
    * Current user name
@@ -57,7 +61,5 @@ export class NameInputComponent {
     const inputTarget = input.target as HTMLInputElement;
     this.name = { ...this.name, [key]: inputTarget.value };
     this.nameChange.emit(this.name);
-    // @TODO: Change to state method call.
-    this.errors[key] = false;
   }
 }

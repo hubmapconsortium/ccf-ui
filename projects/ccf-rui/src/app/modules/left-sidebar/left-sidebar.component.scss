@@ -68,27 +68,5 @@
       border: 1px solid;
       z-index: 2;
     }
-
-    .validation-error-notification {
-      border-radius: 5px;
-      display: flex;
-      justify-content: space-around;
-      width: 19rem;
-      padding: .5rem;
-      position: absolute;
-      top: 5rem;
-      left: 27rem;
-      z-index: 1;
-
-      .validation-error-icon {
-        font-size: 4rem;
-        height: 4rem;
-        width: 4rem;
-      }
-
-      .validation-error-message {
-        padding-left: 1rem;
-      }
-    }
   }
 }

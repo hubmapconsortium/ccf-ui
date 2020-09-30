@@ -11,3 +11,4 @@
   </div>
   <mat-icon class="carousel-right-icon" (touchstart)="scroll('right')" (touchend)="stopScroll()" (click)="shift('right')" (mousedown)="scroll('right')" (mouseup)="stopScroll()" [class.disabled]="onRight">chevron_right</mat-icon>
 </div>
+<div class="error-message" [class.hidden]="!error">You must select an organ</div>
