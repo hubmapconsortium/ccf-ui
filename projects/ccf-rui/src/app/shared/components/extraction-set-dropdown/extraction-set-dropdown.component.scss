@@ -30,7 +30,11 @@
       }
   
       .mat-form-field-underline {
-        bottom: 0.5rem;
+        bottom: 0.75rem;
+      }
+
+      .mat-select-arrow-wrapper {
+        transform: none;
       }
     }
   }
