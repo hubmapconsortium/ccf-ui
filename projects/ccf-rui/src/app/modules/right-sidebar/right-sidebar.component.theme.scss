@@ -14,7 +14,7 @@
       background-color: mat-color($background, sidebar-background)
     }
 
-    hr {
+    mat-divider {
       border-color: mat-color($foreground, sidebar-dividers);
     }
 
