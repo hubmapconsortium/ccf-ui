@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { TextSearchModule } from 'ccf-shared';
 
@@ -17,6 +18,7 @@ import { RightSidebarComponent } from './right-sidebar.component';
     CommonModule,
 
     MatExpansionModule,
+    MatDividerModule,
     MatIconModule,
 
     TextSearchModule,
