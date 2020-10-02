@@ -1,52 +1,11 @@
 import { CompositeLayer, COORDINATE_SYSTEM } from '@deck.gl/core';
 import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
-import { load, registerLoaders } from '@loaders.gl/core';
-import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
-import { GLTFLoader } from '@loaders.gl/gltf';
 import { CubeGeometry } from '@luma.gl/core';
-import { ScenegraphNode } from '@luma.gl/experimental';
-import { Matrix4 } from '@math.gl/core';
 
-import { doCollisions } from './spatial-scene-collider';
+import { SpatialSceneNode } from './shared/spatial-scene-node';
+import { loadGLTF, registerGLTFLoaders } from './util/load-gltf';
+import { doCollisions } from './util/spatial-scene-collider';
 
-
-// Programmers Note: had to disable tslint in a few places due to deficient typings.
-
-export interface SpatialSceneNode {
-  '@id': string;
-  '@type': string;
-  entityId?: string;
-  unpickable?: boolean;
-  wireframe?: boolean;
-  _lighting?: string;
-  scenegraph?: string;
-  scenegraphNode?: string;
-  zoomBasedOpacity?: boolean;
-  zoomToOnLoad?: boolean;
-  color?: [number, number, number, number];
-  transformMatrix: Matrix4;
-  tooltip: string;
-}
-
-// tslint:disable: no-unsafe-any
-async function loadGLTF(model: SpatialSceneNode): Promise<unknown> {
-  const gltf = await load(model.scenegraph as string, GLTFLoader, {DracoLoader, decompress: true, postProcess: true});
-
-  const scenegraphNode = model.scenegraphNode ? gltf.nodes?.find((n) => n.name === model.scenegraphNode) : undefined;
-  if (scenegraphNode) {
-    if (!scenegraphNode.rotation && gltf.scene?.nodes?.length > 0) {
-      scenegraphNode.rotation = gltf.scene.nodes[gltf.scene.nodes.length-1].rotation;
-    }
-    gltf.scene = {
-      id: 'scene-1',
-      name: 'Scene',
-      nodes: [scenegraphNode]
-    };
-    gltf.scenes = [gltf.scene, ...gltf.scenes];
-  }
-  return gltf;
-}
-// tslint:enable: no-unsafe-any
 
 function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]: unknown}): SimpleMeshLayer<unknown> | undefined {
   if (!data || data.length === 0) {
@@ -73,13 +32,12 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
 
 export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
   static readonly layerName = 'BodyUILayer';
+  static readonly gltfCache: {[url: string]: Promise<Blob>} = {};
 
   initializeState(): void {
     const { data } = this.props;
     this.setState({data: data || [], zoomOpacity: 0.8, doCollisions: false});
-
-    // tslint:disable-next-line: no-unsafe-any
-    registerLoaders([DracoWorkerLoader, GLTFLoader]);
+    registerGLTFLoaders();
   }
 
   renderLayers(): unknown[] {
@@ -103,8 +61,8 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
           coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
           data: [model],
           scenegraph: model.scenegraphNode ?
-            loadGLTF(model) as Promise<ScenegraphNode> :
-            model.scenegraph as unknown as ScenegraphNode,
+            loadGLTF(model, BodyUILayer.gltfCache) :
+            model.scenegraph as unknown as URL,
           _lighting: model._lighting,  // 'pbr' | undefined
           getTransformMatrix: model.transformMatrix as unknown as number[][],
           getColor: model.color || [0, 255, 0, 0.5*255],

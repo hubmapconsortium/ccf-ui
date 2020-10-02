@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  ::ng-deep .mat-chip-list-wrapper {
+    margin: 0;
+  }
+}

@@ -1,0 +1,26 @@
+<mat-form-field appearance="outline" [formGroup]="formGroup">
+  <mat-select panelClass="tag-search-panel" multiple disableRipple formControlName="select"
+              [placeholder]="placeholder" (openedChange)="$event ? search.focus() : null">
+    <mat-select-trigger>
+      <span>{{ searchController.value || placeholder }}</span>
+      <mat-icon class="icon add" fontSet="material-icons-sharp">
+        add_box
+      </mat-icon>
+    </mat-select-trigger>
+
+    <mat-option class="search-container" value="search" disabled>
+      <input matInput type="search" formControlName="search" #search>
+      <mat-icon class="icon add" fontSet="material-icons-sharp" (click)="emitTagsAndClear(search)">
+        add_box
+      </mat-icon>
+    </mat-option>
+
+    <mat-option *ngFor="let tag of results$ | async; trackBy: tagId" [value]="tag">
+      {{ tag.label }}
+    </mat-option>
+
+    <mat-option class="count-container" value="count" disabled>
+      {{ ((totalCount$ | async) || 0) | i18nPlural: countMapping }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

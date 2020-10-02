@@ -1,11 +1,13 @@
-import { AmbientLight, Deck, LightingEffect, OrbitView } from '@deck.gl/core';
+import { Deck, OrbitView } from '@deck.gl/core';
 import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
 import bind from 'bind-decorator';
 import { Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
 
-import { BodyUILayer, SpatialSceneNode } from './body-ui-layer';
+import { BodyUILayer } from './body-ui-layer';
+import { SpatialSceneNode } from './shared/spatial-scene-node';
+import { processSceneNodes } from './util/process-scene-nodes';
 
 
 interface BodyUIViewStateProps extends ViewStateProps {
@@ -18,6 +20,7 @@ export interface BodyUIProps {
   id: string;
   canvas: string | HTMLCanvasElement;
   parent: HTMLElement;
+  debugSceneNodeProcessing?: boolean;
 }
 
 /**
@@ -38,17 +41,9 @@ export class BodyUI {
   private cursor?: string;
   private lastHovered?: SpatialSceneNode;
 
-  constructor(deckProps: Partial<BodyUIProps>) {
+  constructor(private deckProps: Partial<BodyUIProps>) {
     const props = {
       ...deckProps,
-      effects: [
-        new LightingEffect({
-          ambientLight: new AmbientLight({
-            color: [255, 255, 255],
-            intensity: 10.0
-          })
-        })
-      ],
       views: [ new OrbitView({}) ],
       controller: true,
       layers: [ this.bodyUILayer ],
@@ -72,9 +67,15 @@ export class BodyUI {
     });
   }
 
+  async initialize(): Promise<void> {
+    while (!this.bodyUILayer.state) {
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+
   setScene(data: SpatialSceneNode[]): void {
     if (data?.length > 0) {
-      const zoomOpacity = (this.bodyUILayer.state as {zoomOpacity: boolean}).zoomOpacity;
+      let zoomOpacity = (this.bodyUILayer.state as {zoomOpacity: number}).zoomOpacity;
       let didZoom = false;
       for (const node of data) {
         if (node.zoomToOnLoad) {
@@ -82,8 +83,37 @@ export class BodyUI {
           didZoom = true;
         }
       }
-      this.bodyUILayer.setState({data, zoomOpacity: didZoom ? 0.5 : zoomOpacity});
+      zoomOpacity = didZoom ? 0.5 : zoomOpacity;
+      if (!this.deckProps.debugSceneNodeProcessing) {
+        this.bodyUILayer.setState({data, zoomOpacity});
+      } else {
+        this.debugSceneNodeProcessing(data, zoomOpacity);
+      }
     }
+  }
+
+  debugSceneNodeProcessing(data: SpatialSceneNode[], zoomOpacity: number): void {
+    // const gltfUrl = 'https://hubmapconsortium.github.io/ccf-3d-reference-object-library/VH_Male/United/VHM_United_Color.glb';
+    const gltfUrl = 'https://hubmapconsortium.github.io/ccf-3d-reference-object-library/VH_Female/United/VHF_United_Color.glb';
+    // const gltfUrl = 'https://hubmapconsortium.github.io/hubmap-ontology/objects/VHF_United_v01_060420.glb';
+    const gltfTransform = new Matrix4([0.076,0,0,0,0,0.076,1.6875389974302382e-17,0,0,-1.6875389974302382e-17,0.076,0,0.49,0.034,0.11,1]);
+    processSceneNodes(gltfUrl, gltfTransform, 'VHF_Kidney_L_Low1').then((results) => {
+        console.log('results', results);
+        console.log('data', data);
+        // data = Object.values(results);
+        data = data.concat(Object.values(results));
+        data.push({
+          '@id': 'TEST',
+          '@type': 'TEST',
+          scenegraph: gltfUrl,
+          scenegraphNode: 'VHF_Kidney_R_Low',
+          transformMatrix: gltfTransform,
+          color: [255, 255, 255, 200],
+          _lighting: 'pbr',
+          zoomBasedOpacity: false
+        });
+        this.bodyUILayer.setState({data, zoomOpacity});
+    });
   }
 
   zoomTo(node: SpatialSceneNode): void {

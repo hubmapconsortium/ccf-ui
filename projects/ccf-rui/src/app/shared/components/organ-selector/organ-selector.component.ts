@@ -68,7 +68,7 @@ export class OrganSelectorComponent {
   /**
    * Handles scrolling behavior
    */
-  timeoutHandler: number | undefined;
+  timeoutHandler?: unknown;
 
   /**
    * Distance the carousel moves in each shift (px)
@@ -109,7 +109,8 @@ export class OrganSelectorComponent {
    */
   stopScroll(): void {
     if (this.timeoutHandler) {
-      clearInterval(this.timeoutHandler);
+      // Minor hack to make typescript happy when there are mixed NodeJS and regular typings
+      clearInterval(this.timeoutHandler as undefined);
       this.timeoutHandler = undefined;
     }
   }

@@ -28,16 +28,16 @@ export class BodyUiComponent implements AfterViewInit {
 
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) { }
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
     this.bodyUI = new BodyUI({ id: 'body-ui', canvas });
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
+    await this.bodyUI.initialize();
 
     // TODO: Replace with a single @Input with scene provided by ngxs
     this.data.filter$.subscribe(async (f: Filter) => {
-      await this.dataSourceService.dataSource.connect();
-      const scene = await this.dataSourceService.dataSource.getScene(f);
-      this.bodyUI.setScene(scene);
+      const db = await this.dataSourceService.getDB();
+      this.bodyUI.setScene(await db.getScene(f));
     });
 
     this.bodyUI.nodeClick$.subscribe(async ({node, ctrlClick}) => {
