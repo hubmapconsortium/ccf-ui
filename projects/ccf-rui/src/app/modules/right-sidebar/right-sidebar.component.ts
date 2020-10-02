@@ -41,17 +41,4 @@ export class RightSidebarComponent {
       { id: 6, label: 'renal', type: 'added' }
     ]);
   }
-
-  fakeAutocomplete(): unknown {
-    return [[
-      {
-        id: 1,
-        label: 'foo'
-      },
-      {
-        id: 2,
-        label: 'bar'
-      }
-    ]];
-  }
 }

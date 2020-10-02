@@ -25,9 +25,8 @@
       <mat-panel-title>Anatomical Structure Tags</mat-panel-title>
     </mat-expansion-panel-header>
 
-    <ccf-text-search class="search" [autoCompleter]="fakeAutocomplete">
-      <mat-icon matSuffix class="icon add">add_box</mat-icon>
-    </ccf-text-search>
+    <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addMany($event)">
+    </ccf-tag-search>
 
     <ccf-tag-list class="tag-list" [tags]="astags.tags$ | async" (tagRemoved)="astags.removeByEntity($event)">
     </ccf-tag-list>
