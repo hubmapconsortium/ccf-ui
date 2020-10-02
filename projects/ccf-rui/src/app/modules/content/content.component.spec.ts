@@ -26,7 +26,7 @@ describe('ContentComponent', () => {
     );
 
     const mockSceneState = jasmine.createSpyObj<SceneState>(
-      'SceneState', ['addMany']
+      'SceneState', ['nodes$']
     );
 
     shallow = new Shallow(ContentComponent, ContentModule)
