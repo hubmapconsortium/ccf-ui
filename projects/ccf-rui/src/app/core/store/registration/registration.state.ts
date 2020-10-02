@@ -83,11 +83,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    * registration block ?
    */
   isValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
-    if (!page.user.firstName) {
-      return false;
-    }
-
-    if (!page.user.lastName || page.user) {
+    if (!page.user || !page.user.firstName || !page.user.lastName) {
       return false;
     }
 

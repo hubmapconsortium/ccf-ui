@@ -18,11 +18,18 @@ describe('ReviewButtonComponent', () => {
       .mock(MatDialog, { open(): MatDialogRef<unknown, boolean> { return mockDialog; } });
   });
 
-  it('should launch the review dialog', async () => {
-    const { find, instance } = await shallow.render();
+  it('should launch the review dialog if the registration is valid', async () => {
+    const { find, instance } = await shallow.render({ bind: { registrationIsValid: true }});
     const spy = spyOn(instance, 'launchReviewModal');
     find('.review-button').triggerEventHandler('click', '');
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should not launch the review dialog if the registration is not valid', async () => {
+    const { find, instance } = await shallow.render({ bind: { registrationIsValid: false }});
+    const spy = spyOn(instance, 'launchReviewModal');
+    find('.review-button').triggerEventHandler('click', '');
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('launchReviewModal opens the modal', async () => {

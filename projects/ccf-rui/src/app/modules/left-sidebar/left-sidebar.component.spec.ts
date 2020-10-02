@@ -4,6 +4,7 @@ import { Shallow } from 'shallow-render';
 import { VisibilityItem } from '../../core/models/visibility-item';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
+import { RegistrationState } from '../../core/store/registration/registration.state';
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { LeftSidebarModule } from './left-sidebar.module';
 
@@ -18,7 +19,11 @@ describe('LeftSidebarComponent', () => {
         );
 
         const mockPageState = jasmine.createSpyObj<PageState>(
-            'PageStage', ['setEmbedded', 'setUserName', 'setTutorialMode']
+            'PageState', ['setEmbedded', 'setUserName', 'setTutorialMode']
+        );
+
+        const mockRegistrationState = jasmine.createSpyObj<RegistrationState>(
+            'RegistrationState', ['isValid']
         );
 
         shallow = new Shallow(LeftSidebarComponent, LeftSidebarModule)
@@ -35,6 +40,10 @@ describe('LeftSidebarComponent', () => {
             .mock(PageState, {
                 ...mockPageState,
                 tutorialMode$: of(false)
+            })
+            .mock(RegistrationState, {
+                ...mockRegistrationState,
+                displayErrors$: of(false)
             });
     });
 

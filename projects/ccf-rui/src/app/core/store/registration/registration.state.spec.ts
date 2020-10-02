@@ -1,13 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
+import { Immutable } from '@ngxs-labs/data/typings';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalsService } from 'ccf-shared';
+import * as FileSaver from 'file-saver';
 import { Observable, ReplaySubject } from 'rxjs';
 import { take } from 'rxjs/operators';
-import * as FileSaver from 'file-saver';
 
+import { ExtractionSet } from '../../../shared/components/extraction-set-dropdown/extraction-set-dropdown.component';
+import { VisibilityItem } from '../../models/visibility-item';
 import { ModelState, ModelStateModel } from '../model/model.state';
-import { PageState, PageStateModel } from '../page/page.state';
+import { PageState, PageStateModel, Person } from '../page/page.state';
 import { RegistrationState } from './registration.state';
 
 
@@ -88,6 +91,103 @@ describe('RegistrationState', () => {
     });
   });
 
+  describe('.valid$', () => {
+    it('creates valid$ boolean', async () => {
+      const value = await nextValue(state.valid$);
+      expect(value).toBeInstanceOf(Boolean);
+    });
+
+    it('should consider isValid true if the user and organ are set', async () => {
+      const page: Immutable<PageStateModel> = {
+        user: {
+          firstName: 'John',
+          lastName: 'Doe'
+        } as Person,
+        embedded: true,
+        homeUrl: 'www.test.com',
+        tutorialMode: false
+      };
+      const visibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
+      const extractionSets: ExtractionSet[] = [{ name: 'test', organ: 'test', sites: [] }];
+      const model: Immutable<ModelStateModel> = {
+        id: '0',
+        label: 'test',
+        organ: 'test',
+        blockSize: { x: 0, y: 0, z: 0 },
+        rotation: { x: 0, y: 0, z: 0 },
+        slicesConfig: { thickness: 0, numSlices: 0 },
+        viewType: '3d',
+        viewSide: 'anterior',
+        showPrevious: false,
+        extractionSites: visibilityItems,
+        anatomicalStructures: visibilityItems,
+        extractionSets
+      };
+
+      const result = state.isValid(page, model);
+      expect(result).toBeTrue();
+    });
+
+    it('should consider isValid false if the organ is not set', async () => {
+      const page: Immutable<PageStateModel> = {
+        user: {
+          firstName: 'John',
+          lastName: 'Doe'
+        } as Person,
+        embedded: true,
+        homeUrl: 'www.test.com',
+        tutorialMode: false
+      };
+      const visibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
+      const extractionSets: ExtractionSet[] = [{ name: 'test', organ: 'test', sites: [] }];
+      const model: Immutable<ModelStateModel> = {
+        id: '0',
+        label: 'test',
+        organ: '',
+        blockSize: { x: 0, y: 0, z: 0 },
+        rotation: { x: 0, y: 0, z: 0 },
+        slicesConfig: { thickness: 0, numSlices: 0 },
+        viewType: '3d',
+        viewSide: 'anterior',
+        showPrevious: false,
+        extractionSites: visibilityItems,
+        anatomicalStructures: visibilityItems,
+        extractionSets
+      };
+
+      const result = state.isValid(page, model);
+      expect(result).toBeFalse();
+    });
+
+    it('should consider isValid false if the user is not set', async () => {
+      const page: Immutable<PageStateModel> = {
+        user: { } as Person,
+        embedded: true,
+        homeUrl: 'www.test.com',
+        tutorialMode: false
+      };
+      const visibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
+      const extractionSets: ExtractionSet[] = [{ name: 'test', organ: 'test', sites: [] }];
+      const model: Immutable<ModelStateModel> = {
+        id: '0',
+        label: 'test',
+        organ: '',
+        blockSize: { x: 0, y: 0, z: 0 },
+        rotation: { x: 0, y: 0, z: 0 },
+        slicesConfig: { thickness: 0, numSlices: 0 },
+        viewType: '3d',
+        viewSide: 'anterior',
+        showPrevious: false,
+        extractionSites: visibilityItems,
+        anatomicalStructures: visibilityItems,
+        extractionSets
+      };
+
+      const result = state.isValid(page, model);
+      expect(result).toBeFalse();
+    });
+  });
+
   describe('.jsonld$', () => {
     it('creates jsonld objects', async () => {
       const value = await nextValue(state.jsonld$);
@@ -100,6 +200,14 @@ describe('RegistrationState', () => {
       state.setUseRegistrationCallback(true);
       const value = await nextValue(state.state$);
       expect(value.useRegistrationCallback).toBeTrue();
+    });
+  });
+
+  describe('setDisplayErrors', () => {
+    it('updates displayErrors variable', async () => {
+      state.setDisplayErrors(true);
+      const value = await nextValue(state.state$);
+      expect(value.displayErrors).toBeTrue();
     });
   });
 
