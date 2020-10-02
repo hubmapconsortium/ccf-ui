@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AggregateResult, CCFDatabase, CCFDatabaseOptions, ExtractionSet, SpatialEntity } from 'ccf-database';
-import { Remote, wrap } from 'comlink';
-import { from, Observable } from 'rxjs';
+import { SpatialSceneNode } from 'ccf-body-ui';
+import { ExtractionSet, SpatialEntity } from 'ccf-database';
+import { from, Observable, of } from 'rxjs';
 
-import { environment } from './../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
+
+
+export interface ReferenceOrganDatabase {
+  organIRILookup: {[lookup: string]: string};
+  anatomicalStructures: {[iri: string]: SpatialEntity[]};
+  extractionSets: {[iri: string]: ExtractionSet[]};
+  sceneNodeLookup: {[iri: string]: SpatialSceneNode};
+}
 
 
 /**
@@ -13,32 +21,19 @@ import { environment } from './../../../../environments/environment';
   providedIn: 'root'
 })
 export class DataSourceService {
-  /** The underlying database. */
-  dataSource: Remote<CCFDatabase> | CCFDatabase;
-  /** Database initialization options. */
-  dbOptions: CCFDatabaseOptions;
+  /** The underlying 'database'. */
+  private dbPromise: Promise<ReferenceOrganDatabase>;
 
   /**
    * Creates an instance of data source service.
    */
   constructor() {
-    if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
-      const worker = new Worker('./data-source.worker', { type: 'module' });
-      this.dataSource = wrap(worker);
-    } else {
-      this.dataSource = new CCFDatabase();
-    }
-    this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
-
     if (typeof globalThis === 'object') {
-      // If a global dbOptions object is set, use this for connecting to the db
-      if (globalThis.dbOptions) {
-        this.dbOptions = { ...this.dbOptions, ...globalThis.dbOptions } as CCFDatabaseOptions;
-      }
-
       // In development, make the db globally accessible
       if (!environment.production) {
-        ((globalThis as unknown) as { db: Remote<CCFDatabase> | CCFDatabase }).db = this.dataSource;
+        this.getDB().then((db) => {
+          ((globalThis as unknown) as { db: ReferenceOrganDatabase }).db = db;
+        });
       }
     }
   }
@@ -48,18 +43,35 @@ export class DataSourceService {
    *
    * @returns A promise that resolves to the database when ready.
    */
-  async getDB(): Promise<Remote<CCFDatabase> | CCFDatabase> {
-    await this.dataSource.connect(this.dbOptions);
-    return this.dataSource;
+  getDB(): Promise<ReferenceOrganDatabase> {
+    if (!this.dbPromise) {
+      this.dbPromise = fetch('assets/reference-organ-data.json').then(r => r.json());
+    }
+    return this.dbPromise;
   }
 
   /**
-   * Queries for all available Reference Organs.
+   * Looks up an IRI for a potential reference organ.
    *
-   * @returns An observable emitting the results.
+   * @param organ the organ
+   * @param sex the sex: male, female, or undefined
+   * @param side the side: left, right, or undefined
+   * @returns An IRI if there is a reference organ for this state, otherwise undefined
    */
-  getReferenceOrgans(): Observable<SpatialEntity[]> {
-    return from(this.getDB().then((db: CCFDatabase) => db.scene.getReferenceOrgans()));
+  getReferenceOrganIri(organ: string, sex?: 'Male' | 'Female' | string, side?: 'Left' | 'Right' | string): Observable<string|undefined> {
+    if (!organ || organ.length === 0) {
+      return of(undefined);
+    } else {
+      return from(this.getDB().then((db: ReferenceOrganDatabase) => {
+        if (organ.toUpperCase() !== 'KIDNEY') {
+          side = '';
+        }
+        const lookup = [organ, sex, side].join('|').toUpperCase();
+        const key = Object.keys(db.organIRILookup).find((code) => code.toUpperCase().endsWith(lookup));
+        const iri = key ? db.organIRILookup[key] : undefined;
+        return iri;
+      }));
+    }
   }
 
   /**
@@ -69,7 +81,7 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getExtractionSets(iri: string): Observable<ExtractionSet[]> {
-    return from(this.getDB().then((db: CCFDatabase) => db.scene.getExtractionSets(iri)));
+    return from(this.getDB().then((db: ReferenceOrganDatabase) => db.extractionSets[iri]));
   }
 
   /**
@@ -79,6 +91,6 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getAnatomicalStructures(iri: string): Observable<SpatialEntity[]> {
-    return from(this.getDB().then((db: CCFDatabase) => db.scene.getAnatomicalStructures(iri)));
+    return from(this.getDB().then((db: ReferenceOrganDatabase) => db.anatomicalStructures[iri]));
   }
 }

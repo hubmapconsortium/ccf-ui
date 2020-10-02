@@ -67,6 +67,12 @@ export class BodyUI {
     });
   }
 
+  async initialize(): Promise<void> {
+    while (!this.bodyUILayer.state) {
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+
   setScene(data: SpatialSceneNode[]): void {
     if (data?.length > 0) {
       let zoomOpacity = (this.bodyUILayer.state as {zoomOpacity: number}).zoomOpacity;

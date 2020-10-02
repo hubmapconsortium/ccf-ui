@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
-import { StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsDataEntityCollectionsRepository } from '@ngxs-labs/data/repositories';
-import { NgxsEntityCollections } from '@ngxs-labs/data/typings';
-import { createEntityCollections } from '@ngxs-labs/data/utils';
-import { State } from '@ngxs/store';
+import { Injectable, Injector } from '@angular/core';
+import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
+import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
+import { NgxsOnInit, State } from '@ngxs/store';
 import { SpatialSceneNode } from 'ccf-body-ui';
-import { map } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+import { DataSourceService } from '../../services/data-source/data-source.service';
+import { ModelState } from '../model/model.state';
 
 
 /**
@@ -17,20 +19,62 @@ export interface SceneStateModel {
 
 
 /**
- * General page global state
+ * 3d Scene state
  */
 @StateRepository()
-@State<NgxsEntityCollections<SpatialSceneNode, string, SceneStateModel>>({
+@State<SceneStateModel>({
   name: 'scene',
-  defaults: {
-    ...createEntityCollections()
-  }
+  defaults: {}
 })
 @Injectable()
-export class SceneState extends NgxsDataEntityCollectionsRepository<SpatialSceneNode, string, SceneStateModel> {
-  /** Key for nodes */
-  public readonly primaryKey: string = '@id';
-
+export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> implements NgxsOnInit {
   /** Observable of spatial nodes */
-  readonly nodes$ = this.entities$.pipe(map(obj => Object.values(obj)));
+  @Computed()
+  get nodes$(): Observable<SpatialSceneNode[]> {
+    return this.model.organIri$.pipe(switchMap((iri) => this.lookupSceneNodes(iri)));
+  }
+
+  /** Reference to the model state */
+  private model: ModelState;
+
+  /**
+   * Creates an instance of scene state.
+   *
+   * @param injector Injector service used to lazy load page and model state
+   * @param dataSourceService data access service
+   */
+  constructor(
+    private readonly injector: Injector,
+    private readonly dataSourceService: DataSourceService
+  ) {
+    super();
+  }
+
+  /**
+   * Initializes this state service.
+   */
+  ngxsOnInit(): void {
+    super.ngxsOnInit();
+
+    // Injecting page and model states in the constructor breaks things!?
+    // Lazy load here
+    this.model = this.injector.get(ModelState);
+  }
+
+  /**
+   * Looks up scene nodes associated with the reference organ
+   *
+   * @param iri reference organ iri
+   */
+  private lookupSceneNodes(iri: string): Observable<SpatialSceneNode[]> {
+    return from(this.dataSourceService.getDB().then((db) => {
+      const {anatomicalStructures, extractionSets, sceneNodeLookup} = db;
+      const nodes = [
+        anatomicalStructures[iri],
+        ...extractionSets[iri].map(set => set.extractionSites)
+      ].reduce((acc, n) => acc.concat(n), []);
+      const scene = nodes.map(n => sceneNodeLookup[n['@id']]).filter(n => !!n);
+      return scene;
+    }));
+  }
 }

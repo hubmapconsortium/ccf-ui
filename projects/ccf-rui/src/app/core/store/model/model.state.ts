@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
-import { pluck } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { filter, pluck, switchMap } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../../shared/components/extraction-set-dropdown/extraction-set-dropdown.component';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -76,8 +77,8 @@ export interface ModelStateModel {
     id: '',
     label: '',
     organ: '',
-    gender: undefined,
-    side: undefined,
+    gender: 'male',
+    side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
     slicesConfig: { thickness: NaN, numSlices: NaN },
@@ -114,7 +115,6 @@ export interface ModelStateModel {
     extractionSets: [
       {
         name: 'HuBMAP',
-        organ: 'Heart',
         sites: [
           {id: 1, name: 'Left atrium, appendage', visible: false,
             tooltip: 'Tooltip:  Left atrium, appendage'},
@@ -140,7 +140,6 @@ export interface ModelStateModel {
       },
       {
         name: 'SPARC',
-        organ: 'Heart',
         sites: [
           {id: 1, name: '1', visible: false, tooltip: 'test'},
           {id: 2, name: '2', visible: false, tooltip: 'test'},
@@ -161,7 +160,6 @@ export interface ModelStateModel {
       },
       {
         name: 'HCA',
-        organ: 'Heart',
         sites: [
           {id: 1, name: '1', visible: false, tooltip: 'test'},
           {id: 2, name: '2', visible: false, tooltip: 'test'},
@@ -253,6 +251,19 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setViewSide(viewSide: ViewSide): void {
     this.ctx.patchState({ viewSide });
+  }
+
+  /**
+   * Gets the reference organ's IRI based on the current state
+   */
+  @Computed()
+  get organIri$(): Observable<string> {
+    return combineLatest([this.organ$, this.gender$, this.side$]).pipe(
+      switchMap(([organ, sex, side]) =>
+        this.dataSourceService.getReferenceOrganIri(organ, sex, side) as Observable<string>
+      ),
+      filter((iri) => !!iri)
+    );
   }
 
   /**

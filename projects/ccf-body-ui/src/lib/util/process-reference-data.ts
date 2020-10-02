@@ -222,6 +222,7 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
   for (const refOrgan of config.referenceOrgans) {
     const entity = (lookup[refOrgan.source] || {}) as SpatialEntityJsonLd;
     Object.assign(entity, refOrgan.entityOverrides);
+    entity.object.placement.target = entity['@id'];
 
     if (refOrgan.ruiPlacement) {
       let placements: SpatialPlacementJsonLd[] = [refOrgan.ruiPlacement];
