@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
 import { Observable, ObservableInput } from 'rxjs';
 import { map, pluck, shareReplay, startWith, switchMap } from 'rxjs/operators';
@@ -46,11 +46,20 @@ export class TagSearchComponent {
     other: '# results'
   };
 
+  readonly formGroup = this.fb.group({
+    select: [[...EMPTY_SELECTION]],
+    search: ['']
+  });
+
   /** Controller for the select element */
-  readonly selectController = new FormControl([...EMPTY_SELECTION]);
+  get selectController(): AbstractControl {
+    return this.formGroup.get('select') as AbstractControl;
+  }
 
   /** Controller for the search element */
-  readonly searchController = new FormControl('');
+  get searchController(): AbstractControl {
+    return this.formGroup.get('search') as AbstractControl;
+  }
 
   /** Current search result */
   readonly searchResult$ =
@@ -66,6 +75,13 @@ export class TagSearchComponent {
 
   /** Current results */
   readonly results$ = this.searchResult$.pipe(pluck('results'));
+
+  /**
+   * Creates an instance of tag search component.
+   *
+   * @param fb Form builder helper service
+   */
+  constructor(private readonly fb: FormBuilder) {}
 
   /**
    * Extracts the tag identifier

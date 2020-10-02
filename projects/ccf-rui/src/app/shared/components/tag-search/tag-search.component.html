@@ -1,5 +1,5 @@
-<mat-form-field appearance="outline">
-  <mat-select panelClass="tag-search-panel" multiple disableRipple [formControl]="selectController"
+<mat-form-field appearance="outline" [formGroup]="formGroup">
+  <mat-select panelClass="tag-search-panel" multiple disableRipple formControlName="select"
               [placeholder]="placeholder" (openedChange)="$event ? search.focus() : null">
     <mat-select-trigger>
       <span>{{ searchController.value || placeholder }}</span>
@@ -9,7 +9,7 @@
     </mat-select-trigger>
 
     <mat-option class="search-container" value="search" disabled>
-      <input matInput type="search" [formControl]="searchController" #search>
+      <input matInput type="search" formControlName="search" #search>
       <mat-icon class="icon add" fontSet="material-icons-sharp" (click)="emitTagsAndClear(search)">
         add_box
       </mat-icon>
