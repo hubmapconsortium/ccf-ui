@@ -85,91 +85,9 @@ export interface ModelStateModel {
     viewType: 'register',
     viewSide: 'anterior',
     showPrevious: false,
-    extractionSites: [
-      {id: 1, name: 'Left atrium, appendage', visible: false,
-        tooltip: 'Tooltip:  Left atrium, appendage'},
-      {id: 2, name: 'Left atrium, PV inflow', visible: false,
-        tooltip: 'Tooltip:  Left atrium, PV inflow'},
-      {id: 3, name: 'Left ventricle, apex', visible: false,
-        tooltip: 'Tooltip:  Left ventricle, apex'},
-      {id: 4, name: 'Left ventricle, free wall 3cm from apex', visible: false,
-        tooltip: 'Tooltip:  Left ventricle, free wall 3cm from apex'},
-      {id: 5, name: 'Septum, 3cm from apex including LAD', visible: false,
-        tooltip: 'Tooltip:  Septum, 3cm from apex including LAD'},
-      {id: 6, name: 'Posterior, adjacent to coronary sinus', visible: false,
-        tooltip: 'Tooltip:  Posterior, adjacent to coronary sinus'},
-      {id: 7, name: 'Right atrium appendage', visible: false,
-        tooltip: 'Tooltip:  Right atrium appendage'},
-      {id: 8, name: 'Right atrium, AV(atrioventricular) node', visible: false,
-        tooltip: 'Tooltip:  Right atrium, AV(atrioventricular) node'},
-      {id: 9, name: 'Right atrium, SA(sinoatrial) node', visible: false,
-        tooltip: 'Tooltip:  Right atrium, SA(sinoatrial) node'},
-      {id: 10, name: 'Right ventricle, free wall 3cm from apex', visible: false,
-        tooltip: 'Tooltip:  Right ventricle, free wall 3cm from apex'}
-    ],
-    anatomicalStructures: [
-      {id: 1, name: 'Structure A', visible: false, opacity: 100},
-      {id: 2, name: 'Structure B', visible: false, opacity: 100},
-      {id: 3, name: 'Structure C', visible: false, opacity: 100}
-    ],
-    extractionSets: [
-      {
-        name: 'HuBMAP',
-        sites: [
-          {id: 1, name: 'Left atrium, appendage', visible: false,
-            tooltip: 'Tooltip:  Left atrium, appendage'},
-          {id: 2, name: 'Left atrium, PV inflow', visible: false,
-            tooltip: 'Tooltip:  Left atrium, PV inflow'},
-          {id: 3, name: 'Left ventricle, apex', visible: false,
-            tooltip: 'Tooltip:  Left ventricle, apex'},
-          {id: 4, name: 'Left ventricle, free wall 3cm from apex', visible: false,
-            tooltip: 'Tooltip:  Left ventricle, free wall 3cm from apex'},
-          {id: 5, name: 'Septum, 3cm from apex including LAD', visible: false,
-            tooltip: 'Tooltip:  Septum, 3cm from apex including LAD'},
-          {id: 6, name: 'Posterior, adjacent to coronary sinus', visible: false,
-            tooltip: 'Tooltip:  Posterior, adjacent to coronary sinus'},
-          {id: 7, name: 'Right atrium appendage', visible: false,
-            tooltip: 'Tooltip:  Right atrium appendage'},
-          {id: 8, name: 'Right atrium, AV(atrioventricular) node', visible: false,
-            tooltip: 'Tooltip:  Right atrium, AV(atrioventricular) node'},
-          {id: 9, name: 'Right atrium, SA(sinoatrial) node', visible: false,
-            tooltip: 'Tooltip:  Right atrium, SA(sinoatrial) node'},
-          {id: 10, name: 'Right ventricle, free wall 3cm from apex', visible: false,
-            tooltip: 'Tooltip:  Right ventricle, free wall 3cm from apex'}
-        ]
-      },
-      {
-        name: 'SPARC',
-        sites: [
-          {id: 1, name: '1', visible: false, tooltip: 'test'},
-          {id: 2, name: '2', visible: false, tooltip: 'test'},
-          {id: 3, name: '3', visible: false, tooltip: 'test'},
-          {id: 4, name: '4', visible: false, tooltip: 'test'},
-          {id: 5, name: '5', visible: false, tooltip: 'test'},
-          {id: 6, name: '6', visible: false, tooltip: 'test'},
-          {id: 7, name: '7', visible: false, tooltip: 'test'},
-          {id: 8, name: '8', visible: false, tooltip: 'test'},
-          {id: 9, name: '9', visible: false, tooltip: 'test'},
-          {id: 10, name: '10', visible: false, tooltip: 'test'},
-          {id: 11, name: '11', visible: false, tooltip: 'test'},
-          {id: 12, name: '12', visible: false, tooltip: 'test'},
-          {id: 13, name: '13', visible: false, tooltip: 'test'},
-          {id: 14, name: '14', visible: false, tooltip: 'test'},
-          {id: 15, name: '15', visible: false, tooltip: 'test'},
-        ]
-      },
-      {
-        name: 'HCA',
-        sites: [
-          {id: 1, name: '1', visible: false, tooltip: 'test'},
-          {id: 2, name: '2', visible: false, tooltip: 'test'},
-          {id: 3, name: '3', visible: false, tooltip: 'test'},
-          {id: 4, name: '4', visible: false, tooltip: 'test'},
-          {id: 5, name: '5', visible: false, tooltip: 'test'},
-          {id: 6, name: '6', visible: false, tooltip: 'test'},
-        ]
-      }
-    ]
+    extractionSites: [],
+    anatomicalStructures: [],
+    extractionSets: []
   }
 })
 @Injectable()
@@ -266,6 +184,37 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     );
   }
 
+  private async onOrganIriChange(): Promise<void> {
+    const iri = await this.dataSourceService.getReferenceOrganIri(
+      this.snapshot.organ, this.snapshot.gender, this.snapshot.side
+    ).toPromise();
+
+    if (iri) {
+      const db = await this.dataSourceService.getDB();
+      const structures = (db.anatomicalStructures[iri] || []).map((entity) => ({
+        id: entity['@id'],
+        name: entity.label,
+        visible: true,
+        opacity: 100,
+        tooltip: entity.comment
+      } as VisibilityItem));
+      this.setAnatomicalStructures(structures);
+
+      const sets = (db.extractionSets[iri] || []).map((set) => ({
+        name: set.label,
+        sites: set.extractionSites.map((entity) => ({
+          id: entity['@id'],
+          name: entity.label,
+          visible: false,
+          opacity: 100,
+          tooltip: entity.comment
+        } as VisibilityItem))
+      } as ExtractionSet));
+      this.setExtractionSets(sets);
+      this.setExtractionSites(sets.length > 0 ? sets[0].sites : []);
+    }
+  }
+
   /**
    * Updates the organ
    *
@@ -274,6 +223,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setOrgan(organ: string): void {
     this.ctx.patchState({ organ });
+    this.onOrganIriChange();
   }
 
   /**
@@ -284,6 +234,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setGender(gender?: 'male' | 'female'): void {
     this.ctx.patchState({ gender });
+    this.onOrganIriChange();
   }
 
   /**
@@ -294,6 +245,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setSide(side?: 'left' | 'right'): void {
     this.ctx.patchState({ side });
+    this.onOrganIriChange();
   }
 
   /**
