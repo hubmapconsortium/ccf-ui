@@ -60,13 +60,27 @@ export const ccf = {
     file_format: ccfx('has_object_file_format'),
     file_subpath: ccfx('has_object_file_subpath')
   },
+  extractionSet: {
+    label: prefixer('rdf')('label'),
+    rui_rank: ccfx('ccf_rui_rank')
+  },
   spatialEntity: {
     label: prefixer('rdf')('label'),
+    comment: prefixer('rdf')('comment'),
     creator: prefixer('dc')('creator'),
     creator_first_name: ccfx('creator_first_name'),
     creator_last_name: ccfx('creator_last_name'),
     creator_orcid: ccfx('creator_orcid'),
     creation_date: ccfx('creation_date'),
+    updated_date: ccfx('updated_date'),
+    ccf_annotations: ccfx('ccf_annotation'),
+    representation_of: ccfx('ccf_representation_of'),
+    reference_organ: ccfx('anatomical_structure_of'),
+    extraction_set_for: ccfx('extraction_set_for'),
+    extraction_set: ccfx('extraction_site_for'),
+    sex: ccfx('has_sex'),
+    side: ccfx('has_side'),
+    rui_rank: ccfx('ccf_rui_rank'),
     x_dimension: ccfx('has_x_dimension'),
     y_dimension: ccfx('has_y_dimension'),
     z_dimension: ccfx('has_z_dimension'),

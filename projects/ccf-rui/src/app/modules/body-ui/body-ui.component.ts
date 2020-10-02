@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
-import { Matrix4 } from '@math.gl/core';
 import { BodyUI, SpatialSceneNode } from 'ccf-body-ui';
+
 import { ModelState } from '../../core/store/model/model.state';
+
 
 /**
  * Component that handles displaying the 3D models in the stage
@@ -54,13 +55,14 @@ export class BodyUiComponent implements AfterViewInit {
   /**
    * Set up required to render the body UI with the scene nodes.
    */
-  setupBodyUI(): void {
+  async setupBodyUI(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
-    this.bodyUI = new BodyUI({ id: 'body-ui', canvas });
+    const bodyUI = new BodyUI({ id: 'body-ui', canvas });
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
-
-    setTimeout(() => {
+    await bodyUI.initialize();
+    this.bodyUI = bodyUI;
+    if (this.scene?.length > 0) {
       this.bodyUI.setScene(this.scene);
-    }, 100);
+    }
   }
 }

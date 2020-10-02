@@ -17,8 +17,6 @@ export class DataSourceService {
   dataSource: Remote<CCFDatabase> | CCFDatabase;
   /** Database initialization options. */
   dbOptions: CCFDatabaseOptions;
-  /** Indicator of when the database is ready. */
-  private _afterConnected: Promise<unknown>;
 
   /**
    * Creates an instance of data source service.
@@ -50,11 +48,8 @@ export class DataSourceService {
    *
    * @returns A promise that resolves to the database when ready.
    */
-  private async getDB(): Promise<Remote<CCFDatabase> | CCFDatabase> {
-    if (!this._afterConnected) {
-      this._afterConnected = this.dataSource.connect(this.dbOptions);
-    }
-    await this._afterConnected;
+  async getDB(): Promise<Remote<CCFDatabase> | CCFDatabase> {
+    await this.dataSource.connect(this.dbOptions);
     return this.dataSource;
   }
 

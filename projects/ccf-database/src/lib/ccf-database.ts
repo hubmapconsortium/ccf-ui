@@ -49,6 +49,8 @@ export class CCFDatabase implements DataSource {
   graph: CCFSpatialGraph;
   /** Creates SpatialEntity Scenes */
   scene: CCFSpatialScene;
+  /** If the database is initialized */
+  private initializing?: Promise<void>;
 
   /**
    * Creates an instance of ccfdatabase.
@@ -71,30 +73,40 @@ export class CCFDatabase implements DataSource {
     if (options) {
       this.options = options;
     }
-    if (this.store.size === 0) {
-      const ops: Promise<unknown>[] = [];
-      const ccfOwlUrl = this.options.ccfOwlUrl;
-      if (ccfOwlUrl.endsWith('.n3')) {
-        ops.push(addN3ToStore(this.options.ccfOwlUrl, this.store));
-      } else {
-        ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
-      }
-      if (this.options.hubmapDataUrl) {
-        if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
-          ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
-        } else {
-          ops.push(addHubmapDataToStore(
-            this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken,
-            this.options.hubmapAssetsUrl, this.options.hubmapPortalUrl
-          ));
-        }
-      }
-      await Promise.all(ops);
-      // Add a small delay to allow the triple store to settle
-      await new Promise(r => setTimeout(r, 500));
-      this.graph.createGraph();
+    if (!this.initializing) {
+      this.initializing = this.doConnect();
     }
+    await this.initializing;
     return this.store.size > 0;
+  }
+
+  /**
+   * Actually connects to the database.
+   *
+   * @returns A promise resolving to void when connected.
+   */
+  private async doConnect(): Promise<void> {
+    const ops: Promise<unknown>[] = [];
+    const ccfOwlUrl = this.options.ccfOwlUrl;
+    if (ccfOwlUrl.endsWith('.n3')) {
+      ops.push(addN3ToStore(this.options.ccfOwlUrl, this.store));
+    } else {
+      ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
+    }
+    if (this.options.hubmapDataUrl) {
+      if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
+        ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
+      } else {
+        ops.push(addHubmapDataToStore(
+          this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken,
+          this.options.hubmapAssetsUrl, this.options.hubmapPortalUrl
+        ));
+      }
+    }
+    await Promise.all(ops);
+    // Add a small delay to allow the triple store to settle
+    await new Promise(r => setTimeout(r, 500));
+    this.graph.createGraph();
   }
 
   /**

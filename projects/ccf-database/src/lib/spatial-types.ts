@@ -12,6 +12,18 @@ export interface SpatialObjectReference {
   file_subpath?: string;
 }
 
+/** A set of extraction sites */
+export interface ExtractionSet {
+  /** Identifier. */
+  '@id': string;
+  /** Type name. */
+  '@type': 'ExtractionSet';
+  /** Entity label. */
+  label: string;
+  /** The list of extraction sites in this set */
+  extractionSites: SpatialEntity[];
+}
+
 /** A spatial entity. */
 export interface SpatialEntity {
   /** Identifier. */
@@ -22,6 +34,8 @@ export interface SpatialEntity {
   entityId?: string;
   /** Entity label. */
   label?: string;
+  /** Entity comment. */
+  comment?: string;
   /** Creator. */
   creator?: string;
   /** Creator first name. */
@@ -32,6 +46,20 @@ export interface SpatialEntity {
   creator_orcid?: string;
   /** Creation date. */
   creation_date?: string;
+
+  /** Annotations (a set of IRIs) */
+  ccf_annotations?: string[];
+  /** Annotation (IRI) that says what this entity represents */
+  representation_of?: string;
+  /** Specifies if this is an anatomical structure of this organ (IRI) */
+  reference_organ?: string;
+  /** Specifies (where applicable) if this entity came from a Male or Female */
+  sex: 'Male' | 'Female' | undefined;
+  /** Specifies (where applicable) if this entity came from the left or right side organ */
+  side: 'Left' | 'Right' | undefined;
+  /** Ranking used in the RUI for ordering lists */
+  rui_rank?: number;
+
   /** X-dimension. */
   x_dimension: number;
   /** Y-dimension. */
