@@ -4,7 +4,7 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { pluck } from 'rxjs/operators';
 import { VisibilityItem } from '../../models/visibility-item';
-import { ExtractionSet } from '../../../shared/components/extraction-set-dropdown/extraction-set-dropdown.component';
+import { ExtractionSet } from '../../models/extraction-set';
 
 
 /** A object with x, y, and z channels of the same type. */

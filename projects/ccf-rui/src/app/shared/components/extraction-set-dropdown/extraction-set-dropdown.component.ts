@@ -1,14 +1,5 @@
 import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
-import { VisibilityItem } from '../../../core/models/visibility-item';
-
-/**
- * Contains information for an extraction set
- */
-export interface ExtractionSet {
-  name: string;
-  organ: string;
-  sites: VisibilityItem[];
-}
+import { ExtractionSet } from '../../../core/models/extraction-set';
 
 /**
  * Dropdown for selecting the extraction set
