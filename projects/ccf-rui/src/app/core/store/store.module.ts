@@ -4,6 +4,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
+import { AnatomicalStructureTagState } from './anatomical-structure-tags/anatomical-structure-tags.state';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { ModelState } from './model/model.state';
 import { PageState } from './page/page.state';
@@ -18,6 +19,7 @@ export const ROOT_STATES = [
   IconRegistryState,
   PageState,
   ModelState,
+  AnatomicalStructureTagState,
   RegistrationState,
   SceneState
 ];

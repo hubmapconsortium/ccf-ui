@@ -4,32 +4,31 @@
   <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-4"
                           tooltip="Enter tissue block dimensions."></ccf-toggleable-tooltip>
 
-  <hr>
+  <mat-divider></mat-divider>
 
   <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
   </ccf-slices-input>
   <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-4"
                           tooltip="Enter the thickness and number of planned tissue slices."></ccf-toggleable-tooltip>
 
-  <hr>
+  <mat-divider></mat-divider>
 
   <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
   </ccf-rotation-slider>
   <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-9"
                           tooltip="Rotation tissue block in 3D as needed to register."></ccf-toggleable-tooltip>
 
-  <hr>
+  <mat-divider></mat-divider>
 
-  <mat-expansion-panel class="tags-container" expanded>
+  <mat-expansion-panel class="tags-container">
     <mat-expansion-panel-header class="header">
       <mat-panel-title>Anatomical Structure Tags</mat-panel-title>
     </mat-expansion-panel-header>
 
-    <ccf-text-search class="search" [autoCompleter]="fakeAutocomplete">
-      <mat-icon matSuffix class="icon add">add_box</mat-icon>
-    </ccf-text-search>
+    <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addMany($event)">
+    </ccf-tag-search>
 
-    <ccf-tag-list class="tag-list" [items]="placeholderTags">
+    <ccf-tag-list class="tag-list" [tags]="astags.tags$ | async" (tagRemoved)="astags.removeByEntity($event)">
     </ccf-tag-list>
 
     <div class="legend">
@@ -40,7 +39,7 @@
     </div>
   </mat-expansion-panel>
 
-  <hr>
+  <mat-divider></mat-divider>
 
   <div class="filler"></div>
 

@@ -1,9 +1,9 @@
-import { set } from 'lodash';
+import { set, sortBy } from 'lodash';
 import { fromRdf } from 'rdf-literal';
 import { DataFactory, NamedNode, Store } from 'triple-store-utils';
 
-import { SpatialEntity, SpatialObjectReference, SpatialPlacement } from './../spatial-types';
-import { ccf, entity } from './../util/prefixes';
+import { SpatialEntity, SpatialObjectReference, SpatialPlacement, ExtractionSet } from '../spatial-types';
+import { ccf, entity } from '../util/prefixes';
 
 
 /**
@@ -58,6 +58,69 @@ function create<T = unknown>(store: Store, iri: string, type: string, mapping: {
  */
 export function getSpatialObjectReference(store: Store, iri: string): SpatialObjectReference {
   return create<SpatialObjectReference>(store, iri, 'SpatialObjectReference', mappings.spatialObjectReference);
+}
+
+/**
+ * Creates an extraction set data object.
+ *
+ * @param store The triple store.
+ * @param iri The data identifier.
+ * @returns The new entity.
+ */
+export function getExtractionSet(store: Store, iri: string): ExtractionSet {
+  const result = create<ExtractionSet>(store, iri, 'ExtractionSet', mappings.spatialEntity);
+  result.extractionSites = sortBy(
+      store.getSubjects(ccf.spatialEntity.extraction_set, iri, null)
+        .map((value) => getSpatialEntity(store, value.id)),
+    ['rui_rank']);
+  return result;
+}
+
+/**
+ * Gets extraction sets associated with a reference organ
+ *
+ * @param store The triple store.
+ * @param iri The data identifier (the reference organ).
+ * @returns A set of extraction sets associated with the reference organ
+ */
+export function getExtractionSets(store: Store, iri: string): ExtractionSet[] {
+  return sortBy(
+    store.getSubjects(ccf.spatialEntity.extraction_set_for, iri, null)
+      .map((value) => getExtractionSet(store, value.id)),
+    ['rui_rank']
+  );
+}
+
+/**
+ * Gets the anatomical structures associated with a reference organ.
+ *
+ * @param store The triple store.
+ * @param iri The data identifier (reference organ).
+ * @returns The new entity.
+ */
+export function getAnatomicalStructures(store: Store, iri: string): SpatialEntity[] {
+  return sortBy(
+    store.getSubjects(ccf.spatialEntity.reference_organ, iri, null)
+      .map((value) => getSpatialEntity(store, value.id))
+      .filter((e) => e['@id'] !== iri),
+    ['rui_rank']
+  );
+}
+
+/**
+ * Gets all reference organs in the triple store
+ *
+ * @param store The triple store.
+ * @returns All the reference organs.
+ */
+export function getReferenceOrgans(store: Store): SpatialEntity[] {
+  const results: SpatialEntity[] = [];
+  store.forEach((quad) => {
+    if (quad.subject.id === quad.object.id) {
+      results.push(getSpatialEntity(store, quad.subject.id));
+    }
+  }, null, ccf.spatialEntity.reference_organ, null, null);
+  return sortBy(results, ['rui_rank']);
 }
 
 /**

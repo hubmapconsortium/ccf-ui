@@ -8,15 +8,15 @@
     <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
                             tooltip="Add your first and last name."></ccf-toggleable-tooltip>
 
-    <hr>
+    <mat-divider></mat-divider>
 
-    <ccf-organ-selector [displayErrors]="registration.displayErrors$ | async" [organList]="organList" (organChanged)="model.setOrgan($event)">
+    <ccf-organ-selector #organSelector [displayErrors]="registration.displayErrors$ | async" [organList]="organList" (organChanged)="model.setOrgan($event)">
     </ccf-organ-selector>
     <div class="organ-sliders">
-      <ccf-labeled-slide-toggle class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
+      <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSides : false" class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
                                 (valueChange)="setSideFromLabel($event)">
       </ccf-labeled-slide-toggle>
-      <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
+      <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSex : false" class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
                                 (valueChange)="setGenderFromLabel($event)">
       </ccf-labeled-slide-toggle>
     </div>
@@ -24,7 +24,7 @@
                             tooltip="Next, select the organ your tissue block is from."></ccf-toggleable-tooltip>
   </ng-template>
 
-  <hr>
+  <mat-divider></mat-divider>
 
   <mat-expansion-panel class="extraction-menu">
     <mat-expansion-panel-header class="expansion-header">
@@ -42,7 +42,7 @@
                           tooltip="Some organs have predefined extraction sites--you can turn these on/off.">
   </ccf-toggleable-tooltip>
 
-  <hr>
+  <mat-divider></mat-divider>
 
   <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
                          (visibilityChanged)="togglePreviousRegistrationBlocks($event)">
@@ -50,7 +50,7 @@
   <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
                           tooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
   </ccf-toggleable-tooltip>
-  <hr>
+  <mat-divider></mat-divider>
 
   <mat-expansion-panel class="anatomical-structures-menu">
     <mat-expansion-panel-header class="expansion-header">
@@ -70,7 +70,7 @@
                           tooltip="Toggle visibility and opacity of anatomical structures to ease registration.">
   </ccf-toggleable-tooltip>
 
-  <hr>
+  <mat-divider></mat-divider>
 
   <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">
     {{ extractionSiteTooltip }}

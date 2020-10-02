@@ -1,0 +1,41 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .ccf-tag-search {
+    mat-form-field-outline-thick {
+      color: mat-color($foreground, contrast-icon);
+    }
+
+    mat-select-trigger {
+      .icon.add {
+        color: mat-color($foreground, contrast-icon);
+      }
+    }
+  }
+
+  // Located inside material overlay - ugh!
+  .tag-search-panel {
+    background-color: mat-color($primary, 'white');
+
+    mat-option.mat-active {
+      background-color: unset;
+    }
+
+    .mat-pseudo-checkbox-checked {
+      background: mat-color($foreground, active-icon);
+    }
+
+    .search-container {
+      color: mat-color($foreground, text);
+
+      .icon.add {
+        color: mat-color($foreground, active-icon);
+      }
+    }
+  }
+}

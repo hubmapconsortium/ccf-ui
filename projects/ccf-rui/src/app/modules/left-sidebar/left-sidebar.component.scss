@@ -15,11 +15,8 @@
     margin-left: 1.5rem;
     margin-right: 0.375rem;
 
-    hr {
-      width: 100%;
-      margin: 0;
-      border-style: solid;
-      border-width: 1.5px;
+    mat-divider {
+      border-top-width: 3px;
     }
 
     & > :first-child {
@@ -41,16 +38,26 @@
     }
 
     ::ng-deep .mat-expansion-panel-body {
-      padding: 0 0 1rem;
+      padding: 0;
     }
 
     .extraction-menu,
     .anatomical-structures-menu {
-      .expansion-header {
+      ::ng-deep .expansion-header {
         -webkit-user-select: none;
         -moz-user-select: none;
-        padding: 0 0.5rem 0 0;
+        padding: 0;
         font-weight: bold;
+        height: 3rem;
+
+        .mat-expansion-indicator {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 24px;
+          width: 24px;
+        }
+        
       }
 
       .expansion-content {

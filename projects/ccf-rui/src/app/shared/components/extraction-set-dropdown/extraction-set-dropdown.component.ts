@@ -6,7 +6,6 @@ import { VisibilityItem } from '../../../core/models/visibility-item';
  */
 export interface ExtractionSet {
   name: string;
-  organ: string;
   sites: VisibilityItem[];
 }
 

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { DetailsLabelModule } from '../../shared/components/details-label/details-label.module';
 import { ExtractionSetDropdownModule } from '../../shared/components/extraction-set-dropdown/extraction-set-dropdown.module';
@@ -18,10 +19,10 @@ import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   imports: [
     CommonModule,
-
     MatExpansionModule,
     MatIconModule,
 
+    MatDividerModule,
     DetailsLabelModule,
     LabeledSlideToggleModule,
     NameInputModule,

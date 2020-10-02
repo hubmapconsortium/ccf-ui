@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  disableDbWorker: true,
+  dbOptions: {
+    ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
+    ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+    hubmapDataService: 'search-api',
+    hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
+    hubmapDataUrl: '', // Do not query the search-api for spatial entities by default
+    hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
+    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
+  }
 };
 
 /*
