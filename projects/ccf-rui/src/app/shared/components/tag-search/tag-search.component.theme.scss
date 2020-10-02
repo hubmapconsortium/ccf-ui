@@ -26,6 +26,10 @@
       background-color: unset;
     }
 
+    .mat-pseudo-checkbox-checked {
+      background: mat-color($foreground, active-icon);
+    }
+
     .search-container {
       color: mat-color($foreground, text);
 
