@@ -97,9 +97,7 @@ describe('OrganSelectorComponent', () => {
       return new Promise(resolve => setTimeout(resolve, duration));
     }
 
-    const { instance, find } = await shallow.render();
-    const carousel = find('.carousel-item-list')[0].nativeElement as HTMLElement;
-    carousel.style.left = '1000px';
+    const { instance } = await shallow.render();
     const spy = spyOn(instance, 'shift');
     instance.scroll('left');
     await wait(200);
