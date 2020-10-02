@@ -45,6 +45,10 @@ export class ReviewModalComponent {
    * Closes info dialog component
    */
   close(): void {
-    this.dialogRef.close(false);
+    document.getElementsByClassName('modal-animated')[0].classList.add('modal-animate-fade-out');
+
+    setTimeout(()=>{
+      this.dialogRef.close();
+    }, 250);
   }
 }

@@ -84,6 +84,7 @@ export class ReviewButtonComponent {
    */
   launchReviewModal(): void {
     const dialogRef = this.dialog.open(ReviewModalComponent, {
+      panelClass: 'modal-animated',
       width: '60rem',
       data: {
         embeddedMode: this.embeddedMode,

@@ -71,9 +71,23 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+
+/* Global Angular Material Modal Style Overrides */
+@keyframes fadeOut {
+  100% {
+    transform: scale(0.75);
+    opacity: 0;
+  }
+}
+
 .modal-backdrop-dark {
   background: rgba(0, 0, 0, 0.9);
 }
+
+.modal-animate-fade-out {
+  animation: fadeOut .25s forwards;
+}
+
 
 // Workaround for https://github.com/angular/components/issues/16503 and related bugs
 .ng-animating mat-expansion-panel mat-expansion-panel-header {
