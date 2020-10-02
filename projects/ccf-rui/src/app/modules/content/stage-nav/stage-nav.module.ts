@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { LabeledSlideToggleModule } from '../../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
 
 import { StageNavComponent } from './stage-nav.component';
 
 
 @NgModule({
-  imports: [CommonModule, MatRadioModule, MatSelectModule, MatIconModule, LabeledSlideToggleModule],
+  imports: [CommonModule, MatRadioModule, MatSelectModule, MatIconModule, MatDividerModule, LabeledSlideToggleModule],
   declarations: [StageNavComponent],
   exports: [StageNavComponent]
 })

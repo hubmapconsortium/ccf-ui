@@ -33,12 +33,16 @@
         color: mat-color($foreground, contrast-text);
       }
     }
+
+    .dropdown-label:hover {
+      color: mat-color($accent);
+    }
   
     .stage-options {
       &.dropdowncontainer {
         background-color: white;
   
-        hr {
+        mat-divider {
           color: mat-color($foreground, icon);
         }
       }
