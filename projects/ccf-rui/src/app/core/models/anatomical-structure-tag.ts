@@ -12,3 +12,13 @@ export interface Tag {
   /** How the tag was added */
   type: 'assigned' | 'added';
 }
+
+/**
+ * Search result
+ */
+export interface TagSearchResult {
+  /** Total number of possible results */
+  totalCount: number;
+  /** Partial results up to a limit */
+  results: Tag[];
+}
