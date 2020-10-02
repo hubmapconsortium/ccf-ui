@@ -3,11 +3,12 @@ import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { SpatialSceneNode } from 'ccf-body-ui';
-import { from, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { combineLatest, from, Observable } from 'rxjs';
+import { debounceTime, switchMap } from 'rxjs/operators';
 
 import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ModelState } from '../model/model.state';
+import { VisibilityItem } from './../../models/visibility-item';
 
 
 /**
@@ -31,7 +32,12 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   /** Observable of spatial nodes */
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
-    return this.model.organIri$.pipe(switchMap((iri) => this.lookupSceneNodes(iri)));
+    return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$]).pipe(
+      debounceTime(400),
+      switchMap(([anatomicalStructures, extractionSites]) =>
+        this.createSceneNodes([...anatomicalStructures, ...extractionSites] as VisibilityItem[])
+      )
+    );
   }
 
   /** Reference to the model state */
@@ -61,20 +67,14 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     this.model = this.injector.get(ModelState);
   }
 
-  /**
-   * Looks up scene nodes associated with the reference organ
-   *
-   * @param iri reference organ iri
-   */
-  private lookupSceneNodes(iri: string): Observable<SpatialSceneNode[]> {
+  private createSceneNodes(items: VisibilityItem[]): Observable<SpatialSceneNode[]> {
     return from(this.dataSourceService.getDB().then((db) => {
-      const {anatomicalStructures, extractionSets, sceneNodeLookup} = db;
-      const nodes = [
-        anatomicalStructures[iri],
-        ...extractionSets[iri].map(set => set.extractionSites)
-      ].reduce((acc, n) => acc.concat(n), []);
-      const scene = nodes.map(n => sceneNodeLookup[n['@id']]).filter(n => !!n);
-      return scene;
+      return items
+        .filter(item => item.visible && item.opacity && item.opacity > 0)
+        .map(item => ({
+          ...db.sceneNodeLookup[item.id],
+          color: [255, 255, 255, (item.opacity || 100) / 100 * 255]
+        } as SpatialSceneNode));
     }));
   }
 }

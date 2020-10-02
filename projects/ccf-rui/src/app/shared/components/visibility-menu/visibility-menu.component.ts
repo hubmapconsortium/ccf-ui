@@ -134,7 +134,7 @@ export class VisibilityMenuComponent {
    * @param item The item to get an id for
    * @returns id Id of the item
    */
-  getId(_index: number, item: VisibilityItem): number {
+  getId(_index: number, item: VisibilityItem): string | number {
     return item.id;
   }
 
