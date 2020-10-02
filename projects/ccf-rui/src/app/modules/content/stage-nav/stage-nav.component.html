@@ -1,10 +1,17 @@
-<mat-radio-group class="input-group" (change)="updateSide($event.value)">
-  <mat-radio-button value="left" class="nav-input">Left</mat-radio-button>
-  <mat-radio-button value="right" class="nav-input">Right</mat-radio-button>
-  <mat-radio-button value="anterior" class="nav-input" checked>Anterior</mat-radio-button>
-  <mat-radio-button value="posterior" class="nav-input">Posterior</mat-radio-button>
-</mat-radio-group>
-
-<ccf-labeled-slide-toggle class="view-slider" [labels]="['Register', '3D\u00A0Preview']"
-                          (valueChange)="updateView($event !== 'Register')">
-</ccf-labeled-slide-toggle>
+<div #label class='dropdown-label' [class.dropdown]="activateDropdown">
+  <mat-label>Options</mat-label>
+  <mat-icon>arrow_drop_down</mat-icon>
+</div>
+<div #options class='stage-options' [class.dropdowncontainer]="activateDropdown" [class.hidden]="stageNavHidden" #stagenav>
+  <mat-radio-group class="input-group" (change)="updateSide($event.value)">
+    <mat-radio-button value="left" class="nav-input">Left</mat-radio-button>
+    <mat-radio-button value="right" class="nav-input">Right</mat-radio-button>
+    <mat-radio-button value="anterior" class="nav-input" checked>Anterior</mat-radio-button>
+    <mat-radio-button value="posterior" class="nav-input">Posterior</mat-radio-button>
+  </mat-radio-group>
+  <hr>
+  <ccf-labeled-slide-toggle class="view-slider" [labels]="['Register', '3D\u00A0Preview']"
+    (valueChange)="updateView($event !== 'Register')">
+  </ccf-labeled-slide-toggle>
+  <hr>
+</div>

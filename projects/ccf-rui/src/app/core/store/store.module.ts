@@ -9,6 +9,7 @@ import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { ModelState } from './model/model.state';
 import { PageState } from './page/page.state';
 import { RegistrationState } from './registration/registration.state';
+import { SceneState } from './scene/scene.state';
 
 
 /**
@@ -19,7 +20,8 @@ export const ROOT_STATES = [
   PageState,
   ModelState,
   AnatomicalStructureTagState,
-  RegistrationState
+  RegistrationState,
+  SceneState
 ];
 
 @NgModule({

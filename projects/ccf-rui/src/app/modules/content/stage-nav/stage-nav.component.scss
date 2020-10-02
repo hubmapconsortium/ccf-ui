@@ -1,20 +1,97 @@
 :host {
   display: flex;
-  align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 
-  .view-slider {
-    margin-left: -1rem;
-    margin-bottom: 1.5rem;
+  .dropdown-label {
+    display: none;
+    align-items: center;
+
+    mat-label, mat-icon {
+      line-height: 1.5rem;
+    }
+
+    &.dropdown {
+      display: flex;
+      height: 3rem;
+      cursor: pointer;
+      align-items: start;
+    }
   }
 
-  .input-group {
-    margin-right: 1.5rem;
-
-    .nav-input {
+  .stage-options {
+    .input-group {
       margin-right: 1.5rem;
+      
+      .nav-input {
+        margin-right: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    hr {
+      display: none;
+    }
+    
+    .view-slider {
+      margin-left: -1rem;
       margin-bottom: 1.5rem;
+      white-space: nowrap;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    &.dropdowncontainer {
+      display: flex;
+      flex-direction: column;
+      border-radius: 0.25rem;
+      width: 16.5rem;
+      position: absolute;
+      top: 3rem;
+  
+      :first-child {
+        margin-top: 0.5rem;
+      }
+  
+      :last-child {
+        margin-bottom: 0.5rem;
+      }
+      
+      &.hidden {
+        display: none;
+      }
+
+      .input-group {
+        margin-left: 1.5rem;
+        margin-right: 0;
+        display: flex;
+        flex-wrap: wrap;
+        
+        .nav-input {
+          display: flex;
+          margin: 0;
+          margin-right: 1.5rem;
+          height: 2.5rem;
+        }
+      }
+
+      hr {
+        display: inherit;
+        width: 100%;
+        margin: 0;
+        border-top: 3px solid;
+      }
+
+      .view-slider {
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        margin: 0 0.5rem;
+      }
     }
   }
 }
+
