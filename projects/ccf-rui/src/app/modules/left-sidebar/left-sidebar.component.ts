@@ -16,8 +16,8 @@ export class LeftSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
 
-  readonly genderByLabel$ = this.model.gender$.pipe(
-    map(gender => gender === 'female' ? 'Female' : 'Male')
+  readonly sexByLabel$ = this.model.sex$.pipe(
+    map(sex => sex === 'female' ? 'Female' : 'Male')
   );
 
   readonly sideByLabel$ = this.model.side$.pipe(
@@ -76,11 +76,11 @@ export class LeftSidebarComponent {
   }
 
   /**
-   * Sets gender from gender toggle slider
-   * @param label Selected gender
+   * Sets sex from sex toggle slider
+   * @param label Selected sex
    */
-  setGenderFromLabel(label: 'Female' | 'Male'): void {
-    this.model.setGender(label === 'Female' ? 'female' : 'male');
+  setSexFromLabel(label: 'Female' | 'Male'): void {
+    this.model.setSex(label === 'Female' ? 'female' : 'male');
   }
 
   /**

@@ -41,8 +41,8 @@ export interface ModelStateModel {
   label: string;
   /** Organ name */
   organ: string;
-  /** Gender if applicable */
-  gender?: 'male' | 'female';
+  /** Sex if applicable */
+  sex?: 'male' | 'female';
   /** Side if applicable */
   side?: 'left' | 'right';
   /** Block size */
@@ -76,7 +76,7 @@ export interface ModelStateModel {
     id: '',
     label: '',
     organ: '',
-    gender: 'male',
+    sex: 'male',
     side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
@@ -103,8 +103,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly viewSide$ = this.state$.pipe(pluck('viewSide'));
   /** Organ observable */
   readonly organ$ = this.state$.pipe(pluck('organ'));
-  /** Gender observable */
-  readonly gender$ = this.state$.pipe(pluck('gender'));
+  /** Sex observable */
+  readonly sex$ = this.state$.pipe(pluck('sex'));
   /** Side observable */
   readonly side$ = this.state$.pipe(pluck('side'));
   /** Show previous observable */
@@ -175,7 +175,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    */
   @Computed()
   get organIri$(): Observable<string> {
-    return combineLatest([this.organ$, this.gender$, this.side$]).pipe(
+    return combineLatest([this.organ$, this.sex$, this.side$]).pipe(
       switchMap(([organ, sex, side]) =>
         this.dataSourceService.getReferenceOrganIri(organ, sex, side) as Observable<string>
       ),
@@ -185,7 +185,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
   private async onOrganIriChange(): Promise<void> {
     const iri = await this.dataSourceService.getReferenceOrganIri(
-      this.snapshot.organ, this.snapshot.gender, this.snapshot.side
+      this.snapshot.organ, this.snapshot.sex, this.snapshot.side
     ).toPromise();
 
     if (iri) {
@@ -226,13 +226,13 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   }
 
   /**
-   * Updates the gender
+   * Updates the sex
    *
-   * @param [gender] The new gender
+   * @param [sex] The new sex
    */
   @DataAction()
-  setGender(gender?: 'male' | 'female'): void {
-    this.ctx.patchState({ gender });
+  setSex(sex?: 'male' | 'female'): void {
+    this.ctx.patchState({ sex });
     this.onOrganIriChange();
   }
 

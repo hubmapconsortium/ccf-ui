@@ -14,7 +14,7 @@ describe('LeftSidebarComponent', () => {
 
     beforeEach(() => {
         const mockModelState = jasmine.createSpyObj<ModelState>(
-            'ModelState', ['setViewType', 'setViewSide', 'toggleRegistrationBlocksVisibility', 'setGender', 'setSide']
+            'ModelState', ['setViewType', 'setViewSide', 'toggleRegistrationBlocksVisibility', 'setSex', 'setSide']
         );
 
         const mockPageState = jasmine.createSpyObj<PageState>(
@@ -26,7 +26,7 @@ describe('LeftSidebarComponent', () => {
                 ...mockModelState,
                 viewType$: of('register'),
                 viewSide$: of('anterior'),
-                gender$: of('male' as 'male' | 'female'),
+                sex$: of('male' as 'male' | 'female'),
                 side$: of('left' as 'left' | 'right'),
                 organ$: of('Heart'),
                 anatomicalStructures$: of(testVisibilityItems),
@@ -70,10 +70,10 @@ describe('LeftSidebarComponent', () => {
         expect(instance.previousVisibilityItems).toEqual(testVisibilityItems);
     });
 
-    it('should set the gender from label', async () => {
+    it('should set the sex from label', async () => {
         const { instance } = await shallow.render();
-        instance.setGenderFromLabel('Female');
-        expect(instance.model.setGender).toHaveBeenCalledWith('female');
+        instance.setSexFromLabel('Female');
+        expect(instance.model.setSex).toHaveBeenCalledWith('female');
     });
 
     it('should set the side from label', async () => {

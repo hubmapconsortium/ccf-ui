@@ -16,8 +16,8 @@
       <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSides : false" class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
                                 (valueChange)="setSideFromLabel($event)">
       </ccf-labeled-slide-toggle>
-      <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSex : false" class="toggle gender" [labels]="['Male', 'Female']" [value]="genderByLabel$ | async"
-                                (valueChange)="setGenderFromLabel($event)">
+      <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSex : false" class="toggle sex" [labels]="['Male', 'Female']" [value]="sexByLabel$ | async"
+                                (valueChange)="setSexFromLabel($event)">
       </ccf-labeled-slide-toggle>
     </div>
     <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-6"

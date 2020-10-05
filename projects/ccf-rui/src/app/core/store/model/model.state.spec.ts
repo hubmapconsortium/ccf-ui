@@ -50,7 +50,7 @@ describe('ModelState', () => {
         id: '',
         label: '',
         organ: 'kidney',
-        gender: undefined,
+        sex: undefined,
         side: 'left',
         showPrevious: false,
         extractionSites: [],
@@ -91,8 +91,8 @@ describe('ModelState', () => {
     expect(value).toEqual('kidney');
   });
 
-  it('has the latest gender', async () => {
-    const value = await nextValue(state.gender$);
+  it('has the latest sex', async () => {
+    const value = await nextValue(state.sex$);
     expect(value).toEqual(undefined);
   });
 
@@ -165,11 +165,11 @@ describe('ModelState', () => {
   });
 
   it('updates the view side', async () => {
-    const newGender = 'female';
-    state.setGender(newGender);
+    const newSex = 'female';
+    state.setSex(newSex);
 
-    const value = await nextValue(state.gender$);
-    expect(value).toEqual(newGender);
+    const value = await nextValue(state.sex$);
+    expect(value).toEqual(newSex);
   });
 
   it('updates the side', async () => {

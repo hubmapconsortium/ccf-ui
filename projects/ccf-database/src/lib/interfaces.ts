@@ -52,7 +52,7 @@ export interface ImageViewerData {
 export interface SearchableItem {
   /** Identifier. */
   id: string;
-  /** Gender. */
+  /** Sex. */
   sex?: 'Male' | 'Female';
   /** Age. */
   age?: number;
@@ -64,7 +64,7 @@ export interface SearchableItem {
 
 /** Options applied during queries. */
 export interface Filter {
-  /** Gender. */
+  /** Sex. */
   sex: 'Both' | 'Male' | 'Female';
   /** Age range. */
   ageRange: [number, number];
