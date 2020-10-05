@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
+import { VisibilityItem } from '../../models/visibility-item';
+import { ExtractionSet } from '../../models/extraction-set';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, pluck, switchMap } from 'rxjs/operators';
-
-import { ExtractionSet } from '../../../shared/components/extraction-set-dropdown/extraction-set-dropdown.component';
-import { VisibilityItem } from '../../models/visibility-item';
 import { DataSourceService } from '../../services/data-source/data-source.service';
 
 

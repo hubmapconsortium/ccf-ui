@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { VisibilityItem } from '../../models/visibility-item';
+import { ExtractionSet } from '../../models/extraction-set';
 import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
 
@@ -200,6 +201,14 @@ describe('ModelState', () => {
 
     const value = await nextValue(state.anatomicalStructures$);
     expect(value).toEqual(newStructures);
+  });
+
+  it('updates extraction sets', async () => {
+    const newSets = [{ name: '', organ: '', sites: [{id: 1}] }] as ExtractionSet[];
+    state.setExtractionSets(newSets);
+
+    const value = await nextValue(state.extractionSets$);
+    expect(value).toEqual(newSets);
   });
 
   it('should call setShowPrevious with visible boolean when toggleRegistrationBlocks is called', async () => {
