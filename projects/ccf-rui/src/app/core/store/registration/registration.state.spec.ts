@@ -3,11 +3,11 @@ import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { Immutable } from '@ngxs-labs/data/typings';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalsService } from 'ccf-shared';
+import { ExtractionSet } from '../../models/extraction-set';
 import * as FileSaver from 'file-saver';
 import { Observable, ReplaySubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { ExtractionSet } from '../../../shared/components/extraction-set-dropdown/extraction-set-dropdown.component';
 import { VisibilityItem } from '../../models/visibility-item';
 import { ModelState, ModelStateModel } from '../model/model.state';
 import { PageState, PageStateModel, Person } from '../page/page.state';
