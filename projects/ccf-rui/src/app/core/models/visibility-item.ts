@@ -5,7 +5,7 @@ export interface VisibilityItem {
     /**
      * Id of the item
      */
-    id: number;
+    id: string | number;
 
     /**
      * Name of the item

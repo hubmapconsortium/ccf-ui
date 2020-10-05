@@ -23,7 +23,8 @@ describe('ModelState', () => {
   let state: ModelState;
 
   beforeEach(() => {
-    mockDataSource = jasmine.createSpyObj<DataSourceService>('DataSourceService', ['getDB']);
+    mockDataSource = jasmine.createSpyObj<DataSourceService>('DataSourceService', ['getReferenceOrganIri']);
+    mockDataSource.getReferenceOrganIri.and.returnValue(of(undefined));
 
     // NOTE: No need for shallow-render since
     // the setup is so simple. It would also require
