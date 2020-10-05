@@ -174,7 +174,7 @@ describe('RegistrationState', () => {
       download = spyOn(FileSaver, 'saveAs');
       globals = TestBed.inject(GlobalsService) as jasmine.SpyObj<GlobalsService>;
       globals.get.and.returnValue(callback);
-
+      spyOn(state, 'isValid').and.returnValue(true);
     });
 
     it('finds the callback from the global object', () => {
