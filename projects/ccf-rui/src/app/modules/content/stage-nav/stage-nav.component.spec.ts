@@ -43,6 +43,7 @@ describe('StageNavComponent', () => {
 
   it('should hide the stage nav menu if user clicks outside it', async () => {
     const { instance } = await shallow.render();
+    instance.activateDropdown = true;
     instance.stageNavHidden = false;
 
     const testHtmlElement: HTMLElement = document.createElement('div');
