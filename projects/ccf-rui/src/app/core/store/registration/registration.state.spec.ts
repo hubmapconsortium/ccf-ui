@@ -14,10 +14,36 @@ import { PageState, PageStateModel, Person } from '../page/page.state';
 import { RegistrationState } from './registration.state';
 
 
+const testVisibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
+const testExtractionSets: ExtractionSet[] = [{ name: 'test', sites: [] }];
+const testModel: Immutable<ModelStateModel> = {
+  id: '0',
+  label: 'test',
+  organ: 'test',
+  blockSize: { x: 0, y: 0, z: 0 },
+  rotation: { x: 0, y: 0, z: 0 },
+  slicesConfig: { thickness: 0, numSlices: 0 },
+  viewType: '3d',
+  viewSide: 'anterior',
+  showPrevious: false,
+  extractionSites: testVisibilityItems,
+  anatomicalStructures: testVisibilityItems,
+  extractionSets: testExtractionSets
+};
+
+const testPage: Immutable<PageStateModel> = {
+  user: {
+    firstName: 'John',
+    lastName: 'Doe'
+  } as Person,
+  embedded: true,
+  homeUrl: 'www.test.com',
+  tutorialMode: false
+};
+
 function nextValue<T>(obs: Observable<T>): Promise<T> {
   return obs.pipe(take(1)).toPromise();
 }
-
 
 describe('RegistrationState', () => {
   const initialPageState: Partial<PageStateModel> = {
@@ -98,92 +124,19 @@ describe('RegistrationState', () => {
     });
 
     it('should consider isValid true if the user and organ are set', async () => {
-      const page: Immutable<PageStateModel> = {
-        user: {
-          firstName: 'John',
-          lastName: 'Doe'
-        } as Person,
-        embedded: true,
-        homeUrl: 'www.test.com',
-        tutorialMode: false
-      };
-      const visibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
-      const extractionSets: ExtractionSet[] = [{ name: 'test', organ: 'test', sites: [] }];
-      const model: Immutable<ModelStateModel> = {
-        id: '0',
-        label: 'test',
-        organ: 'test',
-        blockSize: { x: 0, y: 0, z: 0 },
-        rotation: { x: 0, y: 0, z: 0 },
-        slicesConfig: { thickness: 0, numSlices: 0 },
-        viewType: '3d',
-        viewSide: 'anterior',
-        showPrevious: false,
-        extractionSites: visibilityItems,
-        anatomicalStructures: visibilityItems,
-        extractionSets
-      };
-
-      const result = state.isValid(page, model);
+      const result = state.isValid(testPage, testModel);
       expect(result).toBeTrue();
     });
 
     it('should consider isValid false if the organ is not set', async () => {
-      const page: Immutable<PageStateModel> = {
-        user: {
-          firstName: 'John',
-          lastName: 'Doe'
-        } as Person,
-        embedded: true,
-        homeUrl: 'www.test.com',
-        tutorialMode: false
-      };
-      const visibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
-      const extractionSets: ExtractionSet[] = [{ name: 'test', organ: 'test', sites: [] }];
-      const model: Immutable<ModelStateModel> = {
-        id: '0',
-        label: 'test',
-        organ: '',
-        blockSize: { x: 0, y: 0, z: 0 },
-        rotation: { x: 0, y: 0, z: 0 },
-        slicesConfig: { thickness: 0, numSlices: 0 },
-        viewType: '3d',
-        viewSide: 'anterior',
-        showPrevious: false,
-        extractionSites: visibilityItems,
-        anatomicalStructures: visibilityItems,
-        extractionSets
-      };
-
-      const result = state.isValid(page, model);
+      const invalidModel = {...testModel, organ: '' };
+      const result = state.isValid(testPage, invalidModel);
       expect(result).toBeFalse();
     });
 
     it('should consider isValid false if the user is not set', async () => {
-      const page: Immutable<PageStateModel> = {
-        user: { } as Person,
-        embedded: true,
-        homeUrl: 'www.test.com',
-        tutorialMode: false
-      };
-      const visibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
-      const extractionSets: ExtractionSet[] = [{ name: 'test', organ: 'test', sites: [] }];
-      const model: Immutable<ModelStateModel> = {
-        id: '0',
-        label: 'test',
-        organ: '',
-        blockSize: { x: 0, y: 0, z: 0 },
-        rotation: { x: 0, y: 0, z: 0 },
-        slicesConfig: { thickness: 0, numSlices: 0 },
-        viewType: '3d',
-        viewSide: 'anterior',
-        showPrevious: false,
-        extractionSites: visibilityItems,
-        anatomicalStructures: visibilityItems,
-        extractionSets
-      };
-
-      const result = state.isValid(page, model);
+      const invalidPage = {...testPage, user: { } as Person };
+      const result = state.isValid(invalidPage, testModel);
       expect(result).toBeFalse();
     });
   });

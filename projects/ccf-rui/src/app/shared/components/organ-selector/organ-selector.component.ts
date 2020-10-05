@@ -86,7 +86,7 @@ export class OrganSelectorComponent {
       return false;
     }
 
-    if (this.selectedOrgan?.length > 0) {
+    if (!this.selectedOrgan) {
       return false;
     }
 
