@@ -80,10 +80,18 @@ export class LeftSidebarComponent {
     }
   }
 
+  /**
+   * Sets gender from gender toggle slider
+   * @param label Selected gender
+   */
   setGenderFromLabel(label: 'Female' | 'Male'): void {
     this.model.setGender(label === 'Female' ? 'female' : 'male');
   }
 
+  /**
+   * Sets side from side toggle slider
+   * @param label Selected side
+   */
   setSideFromLabel(label: 'L' | 'R'): void {
     this.model.setSide(label === 'L' ? 'left' : 'right');
   }

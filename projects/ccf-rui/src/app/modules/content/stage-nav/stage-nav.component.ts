@@ -84,7 +84,7 @@ export class StageNavComponent implements AfterViewInit {
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
   handleClick(target: HTMLElement): void {
     const { stageNavHidden, label, options } = this;
-    if (label.nativeElement.contains(target) || (!stageNavHidden && !options.nativeElement.contains(target))) {
+    if (this.activateDropdown && (label.nativeElement.contains(target) || (!stageNavHidden && !options.nativeElement.contains(target)))) {
       this.stageNavHidden = !this.stageNavHidden;
       return;
     } else {

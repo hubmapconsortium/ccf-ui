@@ -24,6 +24,18 @@ describe('VisibilityMenuComponent', () => {
     expect(outputs.visibleItemsChange.emit).toHaveBeenCalledWith(instance.visibleItems);
   });
 
+  it('should enable the slider if a visible item is selected', async () => {
+    const testItem2 = {
+      id: 1,
+      name: 'test',
+      visible: true,
+      opacity: 100
+    };
+    const { instance } = await shallow.render({ bind: { items: testItems, selection: testItem2 } });
+    instance.toggleVisibility(instance.items[0]);
+    expect(instance.disableSlider).toBeFalse();
+  });
+
   it('should change selection when toggleSelected is called', async () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
     instance.toggleSelected(testItem);

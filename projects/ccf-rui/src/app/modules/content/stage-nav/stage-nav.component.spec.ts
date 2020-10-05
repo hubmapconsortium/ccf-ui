@@ -41,4 +41,25 @@ describe('StageNavComponent', () => {
     expect(outputs.view3DChange.emit).toHaveBeenCalled();
   });
 
+  it('should hide the stage nav menu if user clicks outside it', async () => {
+    const { instance } = await shallow.render();
+    instance.activateDropdown = true;
+    instance.stageNavHidden = false;
+
+    const testHtmlElement: HTMLElement = document.createElement('div');
+    instance.handleClick(testHtmlElement);
+
+    expect(instance.stageNavHidden).toBeTrue();
+  });
+
+  it('should not hide the stage nav menu if user clicks inside it', async () => {
+    const { instance } = await shallow.render();
+    instance.stageNavHidden = false;
+
+    const testHtmlElement: HTMLElement = document.createElement('div');
+    instance.options.nativeElement.append(testHtmlElement);
+    instance.handleClick(testHtmlElement);
+
+    expect(instance.stageNavHidden).toBeFalse();
+  });
 });

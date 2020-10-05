@@ -78,4 +78,16 @@ describe('LeftSidebarComponent', () => {
         instance.togglePreviousRegistrationBlocks(true);
         expect(instance.previousVisibilityItems).toEqual(testVisibilityItems);
     });
+
+    it('should set the gender from label', async () => {
+        const { instance } = await shallow.render();
+        instance.setGenderFromLabel('Female');
+        expect(instance.model.setGender).toHaveBeenCalledWith('female');
+    });
+
+    it('should set the side from label', async () => {
+        const { instance } = await shallow.render();
+        instance.setSideFromLabel('R');
+        expect(instance.model.setSide).toHaveBeenCalledWith('right');
+    });
 });

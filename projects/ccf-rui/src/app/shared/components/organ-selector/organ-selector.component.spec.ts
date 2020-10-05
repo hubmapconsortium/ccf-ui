@@ -105,4 +105,15 @@ describe('OrganSelectorComponent', () => {
     expect(value).toBeTrue();
   });
 
+  it('should shift the carousel when scroll is called', async () => {
+    function wait(duration: number): Promise<void> {
+      return new Promise(resolve => setTimeout(resolve, duration));
+    }
+
+    const { instance } = await shallow.render();
+    const spy = spyOn(instance, 'shift');
+    instance.scroll('left');
+    await wait(200);
+    expect(spy).toHaveBeenCalled();
+  });
 });

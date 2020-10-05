@@ -2,7 +2,7 @@ import { Shallow } from 'shallow-render';
 
 import { ExtractionSetDropdownComponent } from './extraction-set-dropdown.component';
 import { ExtractionSetDropdownModule } from './extraction-set-dropdown.module';
-import { ExtractionSet } from './extraction-set-dropdown.component';
+import { ExtractionSet } from '../../../core/models/extraction-set';
 
 const testSet = {
   name: 'testName',
