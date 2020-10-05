@@ -25,7 +25,7 @@ export class LeftSidebarComponent {
   );
 
   readonly organSelected$ = this.model.organ$.pipe(
-    map(organ => organ === '' ? false : true)
+    map(organ => organ === undefined ? false : true)
   );
 
   /**

@@ -7,6 +7,7 @@ import { ExtractionSet } from '../../models/extraction-set';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, pluck, switchMap } from 'rxjs/operators';
 import { DataSourceService } from '../../services/data-source/data-source.service';
+import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
 
 
 /** A object with x, y, and z channels of the same type. */
@@ -40,7 +41,7 @@ export interface ModelStateModel {
   /** Model label */
   label: string;
   /** Organ name */
-  organ: string;
+  organ: OrganInfo;
   /** Sex if applicable */
   sex?: 'male' | 'female';
   /** Side if applicable */
@@ -75,7 +76,7 @@ export interface ModelStateModel {
   defaults: {
     id: '',
     label: '',
-    organ: '',
+    organ: { src: '', name: '' } as OrganInfo,
     sex: 'male',
     side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
@@ -177,7 +178,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   get organIri$(): Observable<string> {
     return combineLatest([this.organ$, this.sex$, this.side$]).pipe(
       switchMap(([organ, sex, side]) =>
-        this.dataSourceService.getReferenceOrganIri(organ, sex, side) as Observable<string>
+        this.dataSourceService.getReferenceOrganIri(organ?.name || '', sex, side) as Observable<string>
       ),
       filter((iri) => !!iri)
     );
@@ -185,7 +186,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
   private async onOrganIriChange(): Promise<void> {
     const iri = await this.dataSourceService.getReferenceOrganIri(
-      this.snapshot.organ, this.snapshot.sex, this.snapshot.side
+      this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
     ).toPromise();
 
     if (iri) {
@@ -220,7 +221,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    * @param organ Name of the organ
    */
   @DataAction()
-  setOrgan(organ: string): void {
+  setOrgan(organ: OrganInfo): void {
     this.ctx.patchState({ organ });
     this.onOrganIriChange();
   }

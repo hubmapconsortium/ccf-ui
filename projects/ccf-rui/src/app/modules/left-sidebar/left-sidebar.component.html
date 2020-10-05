@@ -10,7 +10,7 @@
 
     <mat-divider></mat-divider>
 
-    <ccf-organ-selector #organSelector [organList]="organList" (organChanged)="model.setOrgan($event.name)">
+    <ccf-organ-selector #organSelector [organList]="organList" (organChanged)="model.setOrgan($event)" [selectedOrgan]="model.organ$ | async">
     </ccf-organ-selector>
     <div class="organ-sliders">
       <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSides : false" class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
