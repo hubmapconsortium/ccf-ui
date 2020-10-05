@@ -4,6 +4,7 @@ import { Shallow } from 'shallow-render';
 import { VisibilityItem } from '../../core/models/visibility-item';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
+import { OrganInfo } from '../../shared/components/organ-selector/organ-selector.component';
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { LeftSidebarModule } from './left-sidebar.module';
 
@@ -28,7 +29,7 @@ describe('LeftSidebarComponent', () => {
                 viewSide$: of('anterior'),
                 sex$: of('male' as 'male' | 'female'),
                 side$: of('left' as 'left' | 'right'),
-                organ$: of('Heart'),
+                organ$: of({ src: 'app:heart', name: 'Heart' } as OrganInfo),
                 anatomicalStructures$: of(testVisibilityItems),
                 snapshot: { anatomicalStructures: testVisibilityItems }
             })

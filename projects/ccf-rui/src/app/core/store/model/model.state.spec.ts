@@ -8,6 +8,7 @@ import { VisibilityItem } from '../../models/visibility-item';
 import { ExtractionSet } from '../../models/extraction-set';
 import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
+import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
@@ -49,7 +50,7 @@ describe('ModelState', () => {
         viewSide: initialViewSide,
         id: '',
         label: '',
-        organ: 'kidney',
+        organ: { src: 'app:kidney', name: 'Kidney' } as OrganInfo,
         sex: undefined,
         side: 'left',
         showPrevious: false,
@@ -88,7 +89,7 @@ describe('ModelState', () => {
 
   it('has the latest organ', async () => {
     const value = await nextValue(state.organ$);
-    expect(value).toEqual('kidney');
+    expect(value?.src).toEqual('app:kidney');
   });
 
   it('has the latest sex', async () => {
@@ -157,7 +158,7 @@ describe('ModelState', () => {
   });
 
   it('updates the organ', async () => {
-    const newOrgan = 'heart';
+    const newOrgan = { src: 'app:heart', name: 'Heart' } as OrganInfo;
     state.setOrgan(newOrgan);
 
     const value = await nextValue(state.organ$);
