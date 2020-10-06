@@ -1,62 +1,73 @@
 :host {
-  display: flex;
-  align-items: center;
-  height: 4.5rem;
-  justify-content: space-between;
-  border-radius: 0.1875rem;
+  .container {
+    display: flex;
+    align-items: center;
+    height: 4.5rem;
+    justify-content: space-between;
+    border-radius: 0.1875rem;
 
-  .carousel-left-icon,
-  .carousel-right-icon {
-    font-size: 2rem;
-    transform: scale(1, 1.2);
-    height: 2rem;
-    width: 2rem;
-    cursor: pointer;
+    .carousel-left-icon,
+    .carousel-right-icon {
+      font-size: 2rem;
+      transform: scale(1, 1.2);
+      height: 2rem;
+      width: 2rem;
+      cursor: pointer;
 
-    &.disabled {
-      cursor: default;
+      &.disabled {
+        cursor: default;
+      }
+    }
+
+    .carousel-left-icon {
+      text-align: right;
+    }
+
+    .carousel-right-icon {
+      text-align: left;
+    }
+
+    .carousel-item-container {
+      overflow: hidden;
+
+      .carousel-item-list {
+        position: relative;
+        left: 0rem;
+        display: flex;
+        transition: all 0.2s linear;
+        width: 17.5rem;
+
+        .carousel-item {
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+          justify-content: center;
+
+          .carousel-icon {
+            text-align: center;
+            width: 3.5rem;
+            height: 2.75rem;
+          }
+
+          .carousel-text {
+            text-align: center;
+            font-size: 0.625rem;
+          }
+
+          &.disabled {
+            pointer-events: none;
+          }
+        }
+      }
     }
   }
 
-  .carousel-left-icon {
-    text-align: right;
-  }
+  .error-message {
+    color: red;
+    height: 1rem;
 
-  .carousel-right-icon {
-    text-align: left;
-  }
-
-  .carousel-item-container {
-    overflow: hidden;
-
-    .carousel-item-list {
-      position: relative;
-      left: 0rem;
-      display: flex;
-      transition: all 0.2s linear;
-      width: 17.5rem;
-
-      .carousel-item {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        justify-content: center;
-
-        .carousel-icon {
-          text-align: center;
-          width: 3.5rem;
-          height: 2.75rem;
-        }
-
-        .carousel-text {
-          text-align: center;
-          font-size: 0.625rem;
-        }
-
-        &.disabled {
-          pointer-events: none;
-        }
-      }
+    &.hidden {
+      opacity: 0;
     }
   }
 }

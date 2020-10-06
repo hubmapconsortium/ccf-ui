@@ -1,11 +1,14 @@
-<mat-icon class="carousel-left-icon" (touchstart)="scroll('left')" (touchend)="stopScroll()" (click)="shift('left')" (mousedown)="scroll('left')" (mouseup)="stopScroll()" [class.disabled]="onLeft">chevron_left</mat-icon>
-<div class="carousel-item-container">
-  <div class="carousel-item-list">
-    <div *ngFor="let icon of organList" class="carousel-item" [class.disabled]="icon.disabled" (click)="selectOrgan(icon)"
-          [class.selected]="isSelected(icon)">
-      <mat-icon class="carousel-icon" svgIcon="{{icon.src}}"></mat-icon>
-      <span class="carousel-text">{{icon.name}}</span>
+<div class="container" [class.error]="error">
+  <mat-icon class="carousel-left-icon" (touchstart)="scroll('left')" (touchend)="stopScroll()" (click)="shift('left')" (mousedown)="scroll('left')" (mouseup)="stopScroll()" [class.disabled]="onLeft">chevron_left</mat-icon>
+  <div class="carousel-item-container">
+    <div class="carousel-item-list">
+      <div *ngFor="let icon of organList" class="carousel-item" [class.disabled]="icon.disabled" (click)="selectOrgan(icon)"
+            [class.selected]="isSelected(icon)">
+        <mat-icon class="carousel-icon" svgIcon="{{icon.src}}"></mat-icon>
+        <span class="carousel-text">{{icon.name}}</span>
+      </div>
     </div>
   </div>
+  <mat-icon class="carousel-right-icon" (touchstart)="scroll('right')" (touchend)="stopScroll()" (click)="shift('right')" (mousedown)="scroll('right')" (mouseup)="stopScroll()" [class.disabled]="onRight">chevron_right</mat-icon>
 </div>
-<mat-icon class="carousel-right-icon" (touchstart)="scroll('right')" (touchend)="stopScroll()" (click)="shift('right')" (mousedown)="scroll('right')" (mouseup)="stopScroll()" [class.disabled]="onRight">chevron_right</mat-icon>
+<div class="error-message" [class.hidden]="!error">You must select an organ</div>

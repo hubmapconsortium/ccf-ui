@@ -40,6 +40,8 @@ export class OrganSelectorComponent {
   /** HTML class */
   @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
+  @Input() displayErrors = false;
+
   /**
    * List of organs in the carousel
    */
@@ -74,6 +76,22 @@ export class OrganSelectorComponent {
    * Distance the carousel moves in each shift (px)
    */
   step = 56;
+
+  /**
+   * Decides whether or not an error has occured,
+   * used to display or hide error message.
+   */
+  get error(): boolean {
+    if (!this.displayErrors) {
+      return false;
+    }
+
+    if (!this.selectedOrgan) {
+      return false;
+    }
+
+    return true;
+  }
 
   /**
    * Scrolls the carousel left or right by one step.

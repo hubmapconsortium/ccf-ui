@@ -1,9 +1,11 @@
 <mat-form-field class="field">
-  <mat-label class="text label">First Name</mat-label>
-  <input matInput class="input" [value]="name.firstName" (input)="updateName($event, 'firstName')">
+  <mat-label class="text label">First Name </mat-label>
+  <input matInput [formControl]="firstNameValidator" class="input" [value]="name.firstName" (input)="updateName($event, 'firstName')" required>
+  <mat-error *ngIf="firstNameValidator.invalid">You must enter a value</mat-error>
 </mat-form-field>
 
 <mat-form-field class="field">
-  <mat-label class="text label">Last Name</mat-label>
-  <input matInput class="input" [value]="name.lastName" (input)="updateName($event, 'lastName')">
+  <mat-label class="text label">Last Name </mat-label>
+  <input matInput [formControl]="lastNameValidator" class="input" [value]="name.lastName" (input)="updateName($event, 'lastName')" required>
+  <mat-error *ngIf="lastNameValidator.invalid">You must enter a value</mat-error>
 </mat-form-field>

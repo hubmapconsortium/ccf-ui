@@ -25,6 +25,7 @@ export class InfoButtonComponent {
    */
   launchInfoDialog(): void {
     this.dialog.open(InfoDialogComponent, {
+      panelClass: 'modal-animated',
       width: '60rem',
       data: {}
     });

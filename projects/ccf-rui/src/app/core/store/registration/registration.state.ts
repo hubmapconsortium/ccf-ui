@@ -6,7 +6,7 @@ import { State } from '@ngxs/store';
 import { GlobalsService } from 'ccf-shared';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { MetaData } from '../../models/meta-data';
@@ -20,6 +20,8 @@ import { PageState, PageStateModel } from '../page/page.state';
 export interface RegistrationStateModel {
   /** Whether to use the registration callback function */
   useRegistrationCallback: boolean;
+  /** Whether or not to display user registration errors */
+  displayErrors: boolean;
 }
 
 
@@ -30,7 +32,8 @@ export interface RegistrationStateModel {
 @State<RegistrationStateModel>({
   name: 'registration',
   defaults: {
-    useRegistrationCallback: false
+    useRegistrationCallback: false,
+    displayErrors: false
   }
 })
 @Injectable()
@@ -69,6 +72,28 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     );
   }
 
+  readonly displayErrors$ = this.state$.pipe(pluck('displayErrors'));
+
+  @Computed()
+  get valid$(): Observable<boolean> {
+    return combineLatest([this.page.state$, this.model.state$]).pipe(map(data => this.isValid(...data)));
+  }
+
+  /**
+   * registration block ?
+   */
+  isValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
+    if (!page.user || !page.user.firstName || !page.user.lastName) {
+      return false;
+    }
+
+    if (!model.organ) {
+      return false;
+    }
+
+    return true;
+  }
+
   /**
    * Creates an instance of registration state.
    *
@@ -105,11 +130,24 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   }
 
   /**
+   * Set's whether or not we should display the user's registration errors
+   * @param displayErrors the value to set it to
+   */
+  @DataAction()
+  setDisplayErrors(displayErrors: boolean): void {
+    this.ctx.patchState({ displayErrors });
+  }
+
+  /**
    * Registers or downloads json data.
    *
    * @param [useCallback] Explicit override selecting the register/download action
    */
   register(useCallback?: boolean): void {
+    if (!this.isValid(this.page.snapshot, this.model.snapshot)) {
+      return;
+    }
+
     const { page, model, globals, snapshot } = this;
     const registrationCallback = globals.get<(json: string) => void>('ruiRegistrationCallback');
     const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot);
@@ -125,6 +163,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
       saveAs(data, 'registration-data.json');
     }
+
+    this.setDisplayErrors(false);
   }
 
   /**

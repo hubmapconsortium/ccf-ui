@@ -16,6 +16,17 @@
           color: mat-color($foreground, active-icon);
           border: 1px solid mat-color($foreground, active-icon);
       }
+
+      &.disabled {
+        background-color: mat-color($foreground, disabled);
+        color:  mat-color($foreground, disabled-text);
+        border: 1px solid mat-color($foreground, disabled);
+
+        &:hover {
+          background-color: mat-color($foreground, disabled);
+          color:  mat-color($foreground, disabled-text);
+        }
+    }
     }
   }
 }

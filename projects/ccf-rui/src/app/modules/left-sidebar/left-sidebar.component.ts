@@ -4,6 +4,7 @@ import { VisibilityItem } from '../../core/models/visibility-item';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
+import { RegistrationState } from '../../core/store/registration/registration.state';
 import { OrganInfo } from '../../shared/components/organ-selector/organ-selector.component';
 
 @Component({
@@ -58,7 +59,11 @@ export class LeftSidebarComponent {
     { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false, hasSex: true }
   ];
 
-  constructor(readonly page: PageState, readonly model: ModelState) { }
+  constructor(
+    readonly page: PageState,
+    readonly model: ModelState,
+    readonly registration: RegistrationState
+  ) { }
 
 
   /**
