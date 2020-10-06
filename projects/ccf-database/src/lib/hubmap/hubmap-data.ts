@@ -170,9 +170,9 @@ export class HuBMAPEntity {
     let bmi: number | undefined;
     let ethnicity: string | undefined;
     for (const md of get(this.donor, 'metadata.organ_donor_data', []) as JsonDict[]) {
-      if (md.preferred_term === 'Feminine sex' || md.preferred_term === 'Female') {
+      if (md.preferred_term === 'Feminine gender' || md.preferred_term === 'Female') {
         sex = 'Female';
-      } else if (md.preferred_term === 'Masculine sex' || md.preferred_term === 'Male') {
+      } else if (md.preferred_term === 'Masculine gender' || md.preferred_term === 'Male') {
         sex = 'Male';
       } else if (md.preferred_term === 'Current chronological age' || md.preferred_term === 'Age') {
         age = toNumber(md.data_value);
