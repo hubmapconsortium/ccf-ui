@@ -1,8 +1,12 @@
 import { Shallow } from 'shallow-render';
 
-import { OrganSelectorComponent } from './organ-selector.component';
+import { OrganInfo, OrganSelectorComponent } from './organ-selector.component';
 import { OrganSelectorModule } from './organ-selector.module';
-import { OrganInfo } from './organ-selector.component';
+
+
+function wait(duration: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, duration));
+}
 
 describe('OrganSelectorComponent', () => {
   let shallow: Shallow<OrganSelectorComponent>;
@@ -106,14 +110,11 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should shift the carousel when scroll is called', async () => {
-    function wait(duration: number): Promise<void> {
-      return new Promise(resolve => setTimeout(resolve, duration));
-    }
-
     const { instance } = await shallow.render();
     const spy = spyOn(instance, 'shift');
     instance.scroll('left');
-    await wait(200);
+    await wait(250);
+    instance.stopScroll();
     expect(spy).toHaveBeenCalled();
   });
 });

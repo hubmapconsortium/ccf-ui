@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, HostBinding, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 /**
  * Contains the organ name and url of the icon svg
@@ -50,7 +50,7 @@ export class OrganSelectorComponent {
   /**
    * Currently selected organ
    */
-  @Input() selectedOrgan: OrganInfo | undefined;
+  @Input() selectedOrgan: OrganInfo | undefined = undefined;
 
   /**
    * Emits the name of the organ when selected
@@ -137,9 +137,9 @@ export class OrganSelectorComponent {
    * Sets currently selected organ and emits the organ name
    * @param icon The icon selected
    */
-  selectOrgan(icon: OrganInfo | undefined): void {
-    this.selectedOrgan = icon;
-    this.organChanged.emit(icon);
+  selectOrgan(organ: OrganInfo | undefined): void {
+    this.selectedOrgan = organ;
+    this.organChanged.emit(organ);
   }
 
   /**
@@ -147,7 +147,7 @@ export class OrganSelectorComponent {
    * @param icon The icon of interest
    * @returns true if selected
    */
-  isSelected(icon: OrganInfo): boolean {
-    return this.selectedOrgan === icon;
+  isSelected(organ: OrganInfo): boolean {
+    return this.selectedOrgan?.src === organ.src;
   }
 }

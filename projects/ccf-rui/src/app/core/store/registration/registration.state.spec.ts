@@ -12,6 +12,7 @@ import { VisibilityItem } from '../../models/visibility-item';
 import { ModelState, ModelStateModel } from '../model/model.state';
 import { PageState, PageStateModel, Person } from '../page/page.state';
 import { RegistrationState } from './registration.state';
+import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
 
 
 const testVisibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
@@ -19,7 +20,7 @@ const testExtractionSets: ExtractionSet[] = [{ name: 'test', sites: [] }];
 const testModel: Immutable<ModelStateModel> = {
   id: '0',
   label: 'test',
-  organ: 'test',
+  organ: { name: 'test', src: 'test' } as OrganInfo,
   blockSize: { x: 0, y: 0, z: 0 },
   rotation: { x: 0, y: 0, z: 0 },
   slicesConfig: { thickness: 0, numSlices: 0 },
@@ -129,7 +130,7 @@ describe('RegistrationState', () => {
     });
 
     it('should consider isValid false if the organ is not set', async () => {
-      const invalidModel = {...testModel, organ: '' };
+      const invalidModel = {...testModel, organ: {} as OrganInfo };
       const result = state.isValid(testPage, invalidModel);
       expect(result).toBeFalse();
     });
