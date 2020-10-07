@@ -87,7 +87,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       return false;
     }
 
-    if (!model.organ) {
+    if (!model.organ || !model.organ?.src || !model.organ?.name ) {
       return false;
     }
 
