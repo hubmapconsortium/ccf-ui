@@ -8,9 +8,6 @@ describe('StageNavComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(StageNavComponent, StageNavModule);
-    const testTopBar = document.createElement('div');
-    testTopBar.setAttribute('class', ('top-bar'));
-    document.body.append(testTopBar);
   });
 
   it('should properly update the side variable when updateSide is called.', async () => {
@@ -43,23 +40,19 @@ describe('StageNavComponent', () => {
 
   it('should hide the stage nav menu if user clicks outside it', async () => {
     const { instance } = await shallow.render();
-    instance.activateDropdown = true;
-    instance.stageNavHidden = false;
+    instance.isDropdownActive = true;
+    instance.isDropdownHidden = false;
+    instance.handleClick(document.body);
 
-    const testHtmlElement: HTMLElement = document.createElement('div');
-    instance.handleClick(testHtmlElement);
-
-    expect(instance.stageNavHidden).toBeTrue();
+    expect(instance.isDropdownHidden).toBeTrue();
   });
 
   it('should not hide the stage nav menu if user clicks inside it', async () => {
-    const { instance } = await shallow.render();
-    instance.stageNavHidden = false;
+    const { instance, find } = await shallow.render();
+    const el = find('.input-group');
+    instance.isDropdownHidden = false;
+    instance.handleClick(el.nativeElement as HTMLElement);
 
-    const testHtmlElement: HTMLElement = document.createElement('div');
-    instance.options.nativeElement.append(testHtmlElement);
-    instance.handleClick(testHtmlElement);
-
-    expect(instance.stageNavHidden).toBeFalse();
+    expect(instance.isDropdownHidden).toBeFalse();
   });
 });
