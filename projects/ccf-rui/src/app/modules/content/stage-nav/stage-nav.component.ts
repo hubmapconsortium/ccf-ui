@@ -1,18 +1,7 @@
 import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  HostBinding,
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  HostListener,
-  ViewChild,
-  ElementRef
- } from '@angular/core';
+  ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild,
+} from '@angular/core';
 
-import { ResizeSensor } from 'css-element-queries';
 
 /** Valid values for side. */
 export type Side = 'left' | 'right' | 'anterior' | 'posterior';
@@ -24,10 +13,17 @@ export type Side = 'left' | 'right' | 'anterior' | 'posterior';
   styleUrls: ['./stage-nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StageNavComponent implements AfterViewInit {
-
+export class StageNavComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-stage-nav';
+
+  /** Whether to use a drop down menu instead of a options bar */
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  set useDropdownMenu(value: boolean) {
+    this.isDropdownActive = value;
+    this.isDropdownHidden = true;
+  }
 
   /** Input that allows changing the current side from outside the component */
   @Input() side: Side = 'anterior';
@@ -36,44 +32,31 @@ export class StageNavComponent implements AfterViewInit {
   @Input() view3D = false;
 
   /** Output that emits whenever the current side selection changes */
-  @Output() sideChange = new EventEmitter<Side>();
+  @Output() readonly sideChange = new EventEmitter<Side>();
 
   /** Output that emits whenever the 3D view is toggled on / off */
-  @Output() view3DChange = new EventEmitter<boolean>();
+  @Output() readonly view3DChange = new EventEmitter<boolean>();
 
   /** Label for dropdown */
-  @ViewChild('label', { static: true, read: ElementRef }) label: ElementRef<HTMLElement>;
+  @ViewChild('label', { static: true }) labelRef: ElementRef<HTMLElement>;
 
   /** Options dropdown */
-  @ViewChild('options', { static: true, read: ElementRef }) options: ElementRef<HTMLElement>;
+  @ViewChild('options', { static: true }) optionsRef: ElementRef<HTMLElement>;
 
-  /** Determines if stage nav settings are visible */
-  stageNavHidden = true;
+  /** Whether this component shows a dropdown menu or an options bar */
+  isDropdownActive = false;
 
-  /** Determines if the stage nav should be displayed as a dropdown menu */
-  activateDropdown = false;
+  /** Whether the dropdown menu is hidden */
+  isDropdownHidden = true;
 
-  /** Sensor for detecting changes in size of an element */
-  private sensor: ResizeSensor;
+  /** Simple helper for accessing the native label element */
+  private get labelEl(): HTMLElement {
+    return this.labelRef.nativeElement;
+  }
 
-  /**
-   * Creates an instance of stage nav component.
-   *
-   * @param cdr Change detector
-   */
-  constructor(private cdr: ChangeDetectorRef) { }
-
-  /**
-   * Sets up ResizeSensor to listen to changes in top bar width and enables dropdown if below a certain width
-   */
-  ngAfterViewInit(): void {
-    const topbar = document.getElementsByClassName('top-bar')[0] as HTMLElement;
-    this.sensor = new ResizeSensor(topbar, () => {
-      const width = parseInt(getComputedStyle(topbar).width, 10);
-      this.activateDropdown = width < 440 ? true : false;
-      this.stageNavHidden = width < 440 ? true : false;
-      this.cdr.detectChanges();
-    });
+  /** Simple helper for accessing the native options element */
+  private get optionsEl(): HTMLElement {
+    return this.optionsRef.nativeElement;
   }
 
   /**
@@ -83,12 +66,12 @@ export class StageNavComponent implements AfterViewInit {
    */
   @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
   handleClick(target: HTMLElement): void {
-    const { stageNavHidden, label, options } = this;
-    if (this.activateDropdown && (label.nativeElement.contains(target) || (!stageNavHidden && !options.nativeElement.contains(target)))) {
-      this.stageNavHidden = !this.stageNavHidden;
-      return;
-    } else {
-      return;
+    const { isDropdownHidden, labelEl, optionsEl } = this;
+
+    if (labelEl.contains(target)) {
+      this.isDropdownHidden = !isDropdownHidden;
+    } else if (!optionsEl.contains(target)) {
+      this.isDropdownHidden = true;
     }
   }
 

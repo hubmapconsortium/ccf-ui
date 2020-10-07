@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, OnDestroy, OnInit,
+} from '@angular/core';
+import { ResizeSensor } from 'css-element-queries';
 import { map } from 'rxjs/operators';
 
 import { ModelState } from '../../core/store/model/model.state';
@@ -15,19 +18,25 @@ import { SceneState } from '../../core/store/scene/scene.state';
   styleUrls: ['./content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContentComponent {
+export class ContentComponent implements OnInit, OnDestroy {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-content';
+
+  /** Whether the view type is 3d or register */
+  readonly is3DView$ = this.model.viewType$.pipe(
+    map(type => type === '3d')
+  );
+
+  /** Whether the content area is very narrow */
+  isNarrowView = false;
 
   /**
    * Shows / hides the state debug component for testing purposes.
    */
   debugMode = false;
 
-  /** Whether the view type is 3d or register */
-  readonly is3DView$ = this.model.viewType$.pipe(
-    map(type => type === '3d')
-  );
+  /** Resize detection */
+  private sensor: ResizeSensor;
 
   /**
    * Creates an instance of content component.
@@ -35,13 +44,37 @@ export class ContentComponent {
    * @param model The model state
    * @param page The page state
    * @param registration The registration state
+   * @param rootRef Component's root element
+   * @param cdr Change detector
    */
   constructor(
     readonly model: ModelState,
     readonly page: PageState,
     readonly registration: RegistrationState,
-    readonly scene: SceneState
+    readonly scene: SceneState,
+    private readonly rootRef: ElementRef<HTMLElement>,
+    private readonly cdr: ChangeDetectorRef
   ) { }
+
+  /**
+   * Sets up the resize sensor
+   */
+  ngOnInit(): void {
+    this.sensor = new ResizeSensor(this.rootRef.nativeElement, ({ width }) => {
+      const isNarrowView = width < 440; // 27.5rem
+      if (this.isNarrowView !== isNarrowView) {
+        this.isNarrowView = isNarrowView;
+        this.cdr.markForCheck();
+      }
+    });
+  }
+
+  /**
+   * Detaches the resize sensor
+   */
+  ngOnDestroy(): void {
+    this.sensor.detach();
+  }
 
   /**
    * Sets view type

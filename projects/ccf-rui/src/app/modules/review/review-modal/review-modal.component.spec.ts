@@ -6,6 +6,10 @@ import { ReviewModalComponent } from './review-modal.component';
 import { ReviewModalModule } from './review-modal.module';
 
 
+function wait(duration: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, duration));
+}
+
 const metaData: MetaData = [
   { label: 'First Name', value: 'Homer' },
   { label: 'Last Name', value: 'Simpson' },
@@ -48,12 +52,9 @@ describe('ReviewModalComponent', () => {
       .mock(MatDialogRef, { close(): void { } })
       .render();
     const ref = get(MatDialogRef);
-
     instance.close();
+    await wait(250);
 
-    // close() method waits for animations purposes.
-    setTimeout(() => {
-      expect(ref.close).toHaveBeenCalled();
-    }, 250);
+    expect(ref.close).toHaveBeenCalled();
   });
 });

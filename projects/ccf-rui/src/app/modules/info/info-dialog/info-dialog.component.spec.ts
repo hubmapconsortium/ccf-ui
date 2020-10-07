@@ -4,6 +4,11 @@ import { Shallow } from 'shallow-render';
 import { InfoDialogComponent } from './info-dialog.component';
 import { InfoDialogModule } from './info-dialog.module';
 
+
+function wait(duration: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, duration));
+}
+
 describe('InfoDialogComponent', () => {
   let shallow: Shallow<InfoDialogComponent>;
 
@@ -27,12 +32,9 @@ describe('InfoDialogComponent', () => {
       .mock(MatDialogRef, { close(): void { } })
       .render();
     const ref = get(MatDialogRef);
-
     instance.close();
+    await wait(250);
 
-    // close() method waits for animations purposes.
-    setTimeout(()=>{
-      expect(ref.close).toHaveBeenCalled();
-    }, 250);
+    expect(ref.close).toHaveBeenCalled();
   });
 });

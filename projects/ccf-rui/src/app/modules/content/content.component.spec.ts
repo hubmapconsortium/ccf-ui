@@ -1,3 +1,4 @@
+import * as ResizeSensorModule from 'css-element-queries';
 import { from, of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
@@ -68,6 +69,33 @@ describe('ContentComponent', () => {
       const { instance, get } = await shallow.render();
       instance.setViewType(false);
       expect(get(ModelState).setViewType).toHaveBeenCalledWith('register');
+    });
+  });
+
+  describe('.isNarrowView', () => {
+    let sensorCallback: (size: { width: number, height: number }) => void;
+
+    beforeEach(() => {
+      // Constructors can't be arrow functions
+      // tslint:disable-next-line: typedef only-arrow-functions
+      spyOn(ResizeSensorModule, 'ResizeSensor').and.callFake(function(_el, callback) {
+        sensorCallback = callback;
+        return jasmine.createSpyObj<ResizeSensorModule.ResizeSensor>(
+          'ResizeSensor', ['detach']
+        );
+      });
+    });
+
+    it('should be set when the view width is less than a predefined value', async () => {
+      const { instance } = await shallow.render();
+      sensorCallback({ width: 10, height: 10 });
+      expect(instance.isNarrowView).toBeTrue();
+    });
+
+    it('should be unset when the view width is larger or equal to a predefined value', async () => {
+      const { instance } = await shallow.render();
+      sensorCallback({ width: 10000000, height: 10 });
+      expect(instance.isNarrowView).toBeFalse();
     });
   });
 });
