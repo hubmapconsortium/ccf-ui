@@ -38,6 +38,15 @@ describe('StageNavComponent', () => {
     expect(outputs.view3DChange.emit).toHaveBeenCalled();
   });
 
+  it('should toggle the stage nav menu when the label is clicked', async () => {
+    const { instance, find } = await shallow.render();
+    const el = find('.dropdown-label');
+    instance.useDropdownMenu = true;
+    instance.handleClick(el.nativeElement as HTMLElement);
+
+    expect(instance.isDropdownHidden).toBeFalse();
+  });
+
   it('should hide the stage nav menu if user clicks outside it', async () => {
     const { instance } = await shallow.render();
     instance.isDropdownActive = true;
