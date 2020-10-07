@@ -7,7 +7,8 @@
     display: none;
     align-items: center;
 
-    mat-label, mat-icon {
+    mat-label,
+    mat-icon {
       line-height: 1.5rem;
     }
 
@@ -21,7 +22,7 @@
   .stage-options {
     .input-group {
       margin-right: 1.5rem;
-      
+
       .nav-input {
         margin-right: 1.5rem;
         margin-bottom: 1.5rem;
@@ -40,14 +41,14 @@
       border-radius: 0.25rem;
       width: 16.5rem;
       position: absolute;
-      top: 2rem;
+      top: 3.5rem;
       z-index: 1;
       transition: opacity 0.25s;
-  
+
       :first-child {
         margin-top: 0.5rem;
       }
-  
+
       :last-child {
         margin-bottom: 0.5rem;
       }
@@ -57,7 +58,7 @@
         margin-right: 0;
         display: flex;
         flex-wrap: wrap;
-        
+
         .nav-input {
           display: flex;
           margin: 0;
@@ -90,4 +91,3 @@
     }
   }
 }
-
