@@ -92,6 +92,19 @@ describe('OrganSelectorComponent', () => {
     expect(instance.timeoutHandler).toBeUndefined();
   });
 
+  it('getError() should return false if displayErrors is set to false', async () => {
+    const { instance } = await shallow.render({ bind: { displayErrors: false }});
+    const value = instance.error;
+    expect(value).toBeFalse();
+  });
+
+  it('getError() should return true if displayErrors is set to true and there is an organ selected', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const { instance } = await shallow.render({ bind: { displayErrors: true, selectedOrgan: testOrgan }});
+    const value = instance.error;
+    expect(value).toBeTrue();
+  });
+
   it('should shift the carousel when scroll is called', async () => {
     function wait(duration: number): Promise<void> {
       return new Promise(resolve => setTimeout(resolve, duration));

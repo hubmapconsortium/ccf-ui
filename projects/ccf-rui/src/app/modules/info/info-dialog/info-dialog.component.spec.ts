@@ -30,6 +30,9 @@ describe('InfoDialogComponent', () => {
 
     instance.close();
 
-    expect(ref.close).toHaveBeenCalled();
+    // close() method waits for animations purposes.
+    setTimeout(()=>{
+      expect(ref.close).toHaveBeenCalled();
+    }, 250);
   });
 });

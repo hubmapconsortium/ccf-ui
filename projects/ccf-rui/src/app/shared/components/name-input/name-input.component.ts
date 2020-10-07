@@ -1,10 +1,10 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 /**
  * User name data
  */
 export interface UserName {
-
   /**
    * User's first name
    */
@@ -29,6 +29,15 @@ export class NameInputComponent {
    * HTML class name
    */
   @HostBinding('class') readonly clsName = 'ccf-name-input';
+
+  /**
+   * Used to validate the first name input field.
+   */
+  firstNameValidator = new FormControl('', [Validators.required]);
+  /**
+   * Used to validate the last name input field.
+   */
+  lastNameValidator  = new FormControl('', [Validators.required]);
 
   /**
    * Current user name

@@ -10,7 +10,7 @@
 
     <mat-divider></mat-divider>
 
-    <ccf-organ-selector #organSelector [organList]="organList" (organChanged)="model.setOrgan($event)" [selectedOrgan]="model.organ$ | async">
+    <ccf-organ-selector #organSelector [displayErrors]="registration.displayErrors$ | async" [organList]="organList" (organChanged)="model.setOrgan($event)" [selectedOrgan]="model.organ$ | async">
     </ccf-organ-selector>
     <div class="organ-sliders">
       <ccf-labeled-slide-toggle [disabled]="organSelector.selectedOrgan ? !organSelector.selectedOrgan.hasSides : false" class="toggle side" [labels]="['L', 'R']" [value]="sideByLabel$ | async"
@@ -72,7 +72,7 @@
 
   <mat-divider></mat-divider>
 
-  <div class="extraction-site-tooltip mat-elevation-z5" *ngIf="extractionSiteTooltip.length > 0">
+  <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">
     {{ extractionSiteTooltip }}
   </div>
 </div>

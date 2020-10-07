@@ -25,6 +25,10 @@ export class InfoDialogComponent {
    * Closes info dialog component
    */
   close(): void {
-    this.dialogRef.close();
+    document.getElementsByClassName('modal-animated')[0]?.classList.add('modal-animate-fade-out');
+
+    setTimeout(()=>{
+      this.dialogRef.close();
+    }, 250);
   }
 }

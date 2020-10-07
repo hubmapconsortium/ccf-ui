@@ -6,20 +6,26 @@
   $primary: map-get($theme, primary);
 
   .ccf-organ-selector {
-    color: mat-color($foreground, text);
-    border: 1px solid mat-color($foreground, borders);
-    background-color: mat-color($primary, 'white');
+    .container {
+      color: mat-color($foreground, text);
+      border: 1px solid mat-color($foreground, borders);
+      background-color: mat-color($primary, "white");
 
-    .carousel-left-icon,
-    .carousel-right-icon {
-      color: mat-color($foreground, icon);
-
-      &:hover {
-        color: mat-color($foreground, active-icon);
+      &.error {
+        border-color: mat-color($foreground, slider-red);;
       }
 
-      &.disabled {
-        color: mat-color($foreground, disabled);
+      .carousel-left-icon,
+      .carousel-right-icon {
+        color: mat-color($foreground, icon);
+
+        &:hover {
+          color: mat-color($foreground, active-icon);
+        }
+
+        &.disabled {
+          color: mat-color($foreground, disabled);
+        }
       }
     }
   }
@@ -34,7 +40,7 @@
     }
 
     &.disabled {
-      color: mat-color($foreground, disabled)
+      color: mat-color($foreground, disabled);
     }
   }
 }
