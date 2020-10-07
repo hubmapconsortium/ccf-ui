@@ -74,12 +74,12 @@ function differenceCallback(seen: Set<string>, newSeen: Set<string>): (s: Term) 
 }
 
 /**
- * Filters ids by gender.
+ * Filters ids by sex.
  *
  * @param store The triple store.
  * @param seen All ids to choose from.
- * @param sex Gender to filter on.
- * @returns The subset of ids with the specified gender.
+ * @param sex Sex to filter on.
+ * @returns The subset of ids with the specified sex.
  */
 function filterBySex(store: Store, seen: Set<string>, sex: 'Male' | 'Female'): Set<string> {
   const newSeen = new Set<string>();

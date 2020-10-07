@@ -7,6 +7,7 @@ import { ExtractionSet } from '../../models/extraction-set';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, pluck, switchMap } from 'rxjs/operators';
 import { DataSourceService } from '../../services/data-source/data-source.service';
+import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
 
 
 /** A object with x, y, and z channels of the same type. */
@@ -40,9 +41,9 @@ export interface ModelStateModel {
   /** Model label */
   label: string;
   /** Organ name */
-  organ: string;
-  /** Gender if applicable */
-  gender?: 'male' | 'female';
+  organ: OrganInfo;
+  /** Sex if applicable */
+  sex?: 'male' | 'female';
   /** Side if applicable */
   side?: 'left' | 'right';
   /** Block size */
@@ -75,8 +76,8 @@ export interface ModelStateModel {
   defaults: {
     id: '',
     label: '',
-    organ: '',
-    gender: 'male',
+    organ: { src: '', name: '' } as OrganInfo,
+    sex: 'male',
     side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
@@ -103,8 +104,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly viewSide$ = this.state$.pipe(pluck('viewSide'));
   /** Organ observable */
   readonly organ$ = this.state$.pipe(pluck('organ'));
-  /** Gender observable */
-  readonly gender$ = this.state$.pipe(pluck('gender'));
+  /** Sex observable */
+  readonly sex$ = this.state$.pipe(pluck('sex'));
   /** Side observable */
   readonly side$ = this.state$.pipe(pluck('side'));
   /** Show previous observable */
@@ -175,9 +176,9 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    */
   @Computed()
   get organIri$(): Observable<string> {
-    return combineLatest([this.organ$, this.gender$, this.side$]).pipe(
+    return combineLatest([this.organ$, this.sex$, this.side$]).pipe(
       switchMap(([organ, sex, side]) =>
-        this.dataSourceService.getReferenceOrganIri(organ, sex, side) as Observable<string>
+        this.dataSourceService.getReferenceOrganIri(organ?.name || '', sex, side) as Observable<string>
       ),
       filter((iri) => !!iri)
     );
@@ -185,7 +186,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
   private async onOrganIriChange(): Promise<void> {
     const iri = await this.dataSourceService.getReferenceOrganIri(
-      this.snapshot.organ, this.snapshot.gender, this.snapshot.side
+      this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
     ).toPromise();
 
     if (iri) {
@@ -220,19 +221,19 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    * @param organ Name of the organ
    */
   @DataAction()
-  setOrgan(organ: string): void {
+  setOrgan(organ: OrganInfo): void {
     this.ctx.patchState({ organ });
     this.onOrganIriChange();
   }
 
   /**
-   * Updates the gender
+   * Updates the sex
    *
-   * @param [gender] The new gender
+   * @param [sex] The new sex
    */
   @DataAction()
-  setGender(gender?: 'male' | 'female'): void {
-    this.ctx.patchState({ gender });
+  setSex(sex?: 'male' | 'female'): void {
+    this.ctx.patchState({ sex });
     this.onOrganIriChange();
   }
 

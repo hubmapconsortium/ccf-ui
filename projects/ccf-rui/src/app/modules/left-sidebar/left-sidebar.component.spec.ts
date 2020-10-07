@@ -5,6 +5,7 @@ import { VisibilityItem } from '../../core/models/visibility-item';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
+import { OrganInfo } from '../../shared/components/organ-selector/organ-selector.component';
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { LeftSidebarModule } from './left-sidebar.module';
 
@@ -15,7 +16,7 @@ describe('LeftSidebarComponent', () => {
 
     beforeEach(() => {
         const mockModelState = jasmine.createSpyObj<ModelState>(
-            'ModelState', ['setViewType', 'setViewSide', 'toggleRegistrationBlocksVisibility', 'setGender', 'setSide']
+            'ModelState', ['setViewType', 'setViewSide', 'toggleRegistrationBlocksVisibility', 'setSex', 'setSide']
         );
 
         const mockPageState = jasmine.createSpyObj<PageState>(
@@ -31,9 +32,9 @@ describe('LeftSidebarComponent', () => {
                 ...mockModelState,
                 viewType$: of('register'),
                 viewSide$: of('anterior'),
-                gender$: of('male' as 'male' | 'female'),
+                sex$: of('male' as 'male' | 'female'),
                 side$: of('left' as 'left' | 'right'),
-                organ$: of('Heart'),
+                organ$: of({ src: 'app:heart', name: 'Heart' } as OrganInfo),
                 anatomicalStructures$: of(testVisibilityItems),
                 snapshot: { anatomicalStructures: testVisibilityItems }
             })
@@ -79,10 +80,10 @@ describe('LeftSidebarComponent', () => {
         expect(instance.previousVisibilityItems).toEqual(testVisibilityItems);
     });
 
-    it('should set the gender from label', async () => {
+    it('should set the sex from label', async () => {
         const { instance } = await shallow.render();
-        instance.setGenderFromLabel('Female');
-        expect(instance.model.setGender).toHaveBeenCalledWith('female');
+        instance.setSexFromLabel('Female');
+        expect(instance.model.setSex).toHaveBeenCalledWith('female');
     });
 
     it('should set the side from label', async () => {
