@@ -264,7 +264,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    */
   @DataAction()
   setExtractionSites(extractionSites: VisibilityItem[]): void {
-    this.patchState({ extractionSites });
+    this.ctx.patchState({ extractionSites });
   }
 
   /**
