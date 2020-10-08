@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { ExtractionSet, SpatialEntity } from 'ccf-database';
+import { GlobalsService } from 'ccf-shared';
 import { from, Observable, of } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
@@ -27,14 +28,10 @@ export class DataSourceService {
   /**
    * Creates an instance of data source service.
    */
-  constructor() {
-    if (typeof globalThis === 'object') {
+  constructor(globals: GlobalsService) {
       // In development, make the db globally accessible
-      if (!environment.production) {
-        this.getDB().then((db) => {
-          ((globalThis as unknown) as { db: ReferenceOrganDatabase }).db = db;
-        });
-      }
+    if (!environment.production) {
+      this.getDB().then(db => globals.set('db', db));
     }
   }
 
