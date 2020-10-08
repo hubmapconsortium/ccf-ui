@@ -92,5 +92,7 @@ export class ContentComponent implements OnInit, OnDestroy {
     // Registration block return to starting position
     // The crosshairs return to start position
     // the x, y, z info above the gizmo goes back to zero
+    this.model.setViewSide('anterior');
+    this.model.setViewType('register');
   }
 }
