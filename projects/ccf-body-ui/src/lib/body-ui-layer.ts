@@ -56,7 +56,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
       ...models.map((model) =>
         new ScenegraphLayer({
           id: 'models-' + model['@id'],
-          opacity: model.zoomBasedOpacity ? state.zoomOpacity : 1.0,
+          opacity: model.zoomBasedOpacity ? state.zoomOpacity : (model.opacity !== undefined ? model.opacity : 1.0),
           pickable: !model.unpickable,
           coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
           data: [model],

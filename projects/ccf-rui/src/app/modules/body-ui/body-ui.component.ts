@@ -57,7 +57,7 @@ export class BodyUiComponent implements AfterViewInit {
    */
   async setupBodyUI(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
-    const bodyUI = new BodyUI({ id: 'body-ui', canvas });
+    const bodyUI = new BodyUI({ id: 'body-ui', canvas, target: [0, 0, 0]});
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
     await bodyUI.initialize();
     this.bodyUI = bodyUI;

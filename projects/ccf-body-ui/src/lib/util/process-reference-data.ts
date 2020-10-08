@@ -233,6 +233,20 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
       }
       entity.placement = placements;
     }
+
+    if (Array.isArray(entity.placement)) {
+      const ruiPlacement = {
+        ...entity.placement.find(p => p.target === '#VHBothSexes'),
+        '@id': `${entity['@id']}_VHBothSexes_RUIPlacement`,
+        x_rotation: 0,
+        source: '#VHBothSexes',
+        target: entity['@id']
+      } as SpatialPlacementJsonLd;
+      ruiPlacement.x_translation = -ruiPlacement.x_translation;
+      ruiPlacement.y_translation = -ruiPlacement.y_translation;
+      ruiPlacement.z_translation = -ruiPlacement.z_translation;
+      jsonld.push(ruiPlacement);
+    }
   }
 
   return jsonld;

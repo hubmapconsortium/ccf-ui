@@ -12,3 +12,4 @@ export * from './lib/shared/spatial-scene-node';
 export * from './lib/util/load-gltf';
 export * from './lib/util/scene-traversal';
 export * from './lib/util/spatial-scene-collider';
+export * from './lib/util/process-scene-nodes';

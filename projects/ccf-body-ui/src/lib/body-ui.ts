@@ -21,6 +21,7 @@ export interface BodyUIProps {
   canvas: string | HTMLCanvasElement;
   parent: HTMLElement;
   debugSceneNodeProcessing?: boolean;
+  target?: Matrix4 | number[];
 }
 
 /**
@@ -59,7 +60,7 @@ export class BodyUI {
         orbitAxis: 'Y',
         minRotationX: -15,
         maxRotationX: 15,
-        target: [0.5, 0.5, 0],
+        target: deckProps.target || [0.5, 0.5, 0],
         rotationX: 0,
         rotationOrbit: 0,
         zoom: 9.5

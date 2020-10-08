@@ -1,3 +1,4 @@
+import { Matrix4 } from '@math.gl/core';
 import { writeFileSync } from 'fs';
 import fetch from 'node-fetch';
 import { argv } from 'process';
@@ -32,10 +33,10 @@ async function main(outputFile?: string): Promise<void> {
     zoomBasedOpacity: false,
     color: [255, 255, 255, 255]
   };
-  const bothSexes = db.scene.getSpatialEntity('http://purl.org/ccf/latest/ccf.owl#VHBothSexes');
 
   for (const organ of organs) {
     const iri = organ['@id'];
+    const organSpatialEntity = db.scene.getSpatialEntity(iri);
     anatomicalStructures[iri] = db.scene.getAnatomicalStructures(iri);
     extractionSets[iri] = db.scene.getExtractionSets(iri);
     organIRILookup[[organ.label, organ.sex, organ.side].join('|')] = iri;
@@ -47,8 +48,16 @@ async function main(outputFile?: string): Promise<void> {
 
     for (const node of nodes) {
       if (!sceneNodeLookup[node['@id']]) {
-        const sceneNode = db.scene.getSceneNode(node, bothSexes, sceneNodeAttrs);
+        const sceneNode = db.scene.getSceneNode(node, organSpatialEntity, sceneNodeAttrs);
         if (sceneNode) {
+          const dimensions = [
+            organSpatialEntity.x_dimension,
+            organSpatialEntity.y_dimension,
+            organSpatialEntity.z_dimension
+          ].map(n => -n / 1000 / 2);
+
+          sceneNode.transformMatrix.translate(dimensions);
+          sceneNode.transformMatrix = new Matrix4(Matrix4.IDENTITY).multiplyRight(sceneNode.transformMatrix);
           sceneNodeLookup[node['@id']] = sceneNode;
         } else {
           console.log(node.label);

@@ -13,6 +13,7 @@ export interface SpatialSceneNode {
   zoomBasedOpacity?: boolean;
   zoomToOnLoad?: boolean;
   color?: [number, number, number, number];
+  opacity?: number;
   transformMatrix: Matrix4;
   tooltip?: string;
 }
