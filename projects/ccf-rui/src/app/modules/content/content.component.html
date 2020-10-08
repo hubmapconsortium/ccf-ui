@@ -25,9 +25,9 @@
   (rotationChange)="gizmo.rotation = $event"
 ></ccf-body-ui>
 
-<ccf-store-debug *ngIf="debugMode" class="debug" [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100">
+<ccf-store-debug *ngIf="showDebugButtons && debugMode" class="debug" [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100">
 </ccf-store-debug>
-<div
+<div *ngIf="showDebugButtons"
      style="position: absolute; bottom: 1rem; display: flex; flex-direction: row; justify-content: space-between; width: 7rem;">
   <button style="width: 3.5rem; font-size: .7rem;"
           (click)="page.setTutorialMode(!page.snapshot.tutorialMode);">Tutorial</button>

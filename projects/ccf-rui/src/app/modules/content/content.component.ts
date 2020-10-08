@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, OnDestroy, OnInit,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, OnDestroy, OnInit
 } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
 import { map } from 'rxjs/operators';
@@ -8,6 +8,8 @@ import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 import { SceneState } from '../../core/store/scene/scene.state';
+import { environment } from './../../../environments/environment';
+
 
 /**
  * Main content component
@@ -34,6 +36,11 @@ export class ContentComponent implements OnInit, OnDestroy {
    * Shows / hides the state debug component for testing purposes.
    */
   debugMode = false;
+
+  /**
+   * Show debug buttons of content component
+   */
+  showDebugButtons = !environment.production;
 
   /** Resize detection */
   private sensor: ResizeSensor;
