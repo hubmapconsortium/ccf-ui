@@ -2,7 +2,7 @@ import { Deck, OrbitView } from '@deck.gl/core';
 import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
 import bind from 'bind-decorator';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
 
 import { BodyUILayer } from './body-ui-layer';
@@ -13,15 +13,18 @@ import { processSceneNodes } from './util/process-scene-nodes';
 interface BodyUIViewStateProps extends ViewStateProps {
   orbitAxis?: string;
   target?: Matrix4 | number[];
+  zoom: number;
+  rotationOrbit: number;
 }
-
 
 export interface BodyUIProps {
   id: string;
   canvas: string | HTMLCanvasElement;
   parent: HTMLElement;
   debugSceneNodeProcessing?: boolean;
-  target?: Matrix4 | number[];
+  target: Matrix4 | number[];
+  interactive: boolean;
+  rotation: number;
 }
 
 /**
@@ -34,10 +37,12 @@ export class BodyUI {
   private readonly nodeClickSubject = new Subject<{node: SpatialSceneNode, ctrlClick: boolean}>();
   private readonly nodeHoverStartSubject = new Subject<SpatialSceneNode>();
   private readonly nodeHoverStopSubject = new Subject<SpatialSceneNode>();
+  private readonly sceneRotationSubject = new BehaviorSubject<number>(0);
 
   readonly nodeClick$ = this.nodeClickSubject.pipe(share());
   readonly nodeHoverStart$ = this.nodeHoverStartSubject.pipe(share());
   readonly nodeHoverStop$ = this.nodeHoverStopSubject.pipe(share());
+  readonly sceneRotation$ = this.sceneRotationSubject.pipe(share());
 
   private cursor?: string;
   private lastHovered?: SpatialSceneNode;
@@ -46,7 +51,7 @@ export class BodyUI {
     const props = {
       ...deckProps,
       views: [ new OrbitView({}) ],
-      controller: true,
+      controller: deckProps.interactive !== undefined ? deckProps.interactive : true,
       layers: [ this.bodyUILayer ],
       onHover: this._onHover,
       onClick: this._onClick,
@@ -62,10 +67,13 @@ export class BodyUI {
         maxRotationX: 15,
         target: deckProps.target || [0.5, 0.5, 0],
         rotationX: 0,
-        rotationOrbit: 0,
+        rotationOrbit: deckProps.rotation || 0,
         zoom: 9.5
       } as BodyUIViewStateProps
     });
+    if (deckProps.rotation) {
+      this.sceneRotationSubject.next(deckProps.rotation);
+    }
   }
 
   async initialize(): Promise<void> {
@@ -130,6 +138,21 @@ export class BodyUI {
     });
   }
 
+  setRotation(value: number): void {
+    this.deck.setProps({
+      viewState: {
+        ...this.deck.props.viewState,
+        rotationOrbit: value
+      } as BodyUIViewStateProps
+    });
+  }
+
+  setInteractive(value: boolean): void {
+    this.deck.setProps({
+      controller: value
+    });
+  }
+
   @bind
   private _onHover(e: {picked: boolean, object: SpatialSceneNode}): void {
     const { lastHovered } = this;
@@ -156,7 +179,7 @@ export class BodyUI {
   }
 
   @bind
-  private _onViewStateChange(event: { interactionState: { isZooming: boolean; }; viewState: { zoom: number; } }): void {
+  private _onViewStateChange(event: { interactionState: { isZooming: boolean; }; viewState: BodyUIViewStateProps }): void {
     if (event.interactionState?.isZooming) {
       const currentState = this.bodyUILayer.state as {zoomOpacity: number, data: unknown};
       const zoomOpacity = Math.min(Math.max(1 - (event.viewState.zoom - 8.9) / 3, 0.2), 1.0);
@@ -165,5 +188,6 @@ export class BodyUI {
       }
     }
     this.deck.setProps({viewState: { ...event.viewState }});
+    this.sceneRotationSubject.next(event.viewState.rotationOrbit);
   }
 }

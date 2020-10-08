@@ -5,7 +5,7 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { combineLatest, from, Observable, of } from 'rxjs';
-import { debounceTime, switchMap } from 'rxjs/operators';
+import { debounceTime, map, switchMap } from 'rxjs/operators';
 
 import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ModelState } from '../model/model.state';
@@ -38,6 +38,29 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       switchMap(([anatomicalStructures, extractionSites]) =>
         this.createSceneNodes([...anatomicalStructures, ...extractionSites] as VisibilityItem[])
       )
+    );
+  }
+
+  @Computed()
+  get rotation$(): Observable<number> {
+    return combineLatest([this.model.viewType$, this.model.viewSide$]).pipe(
+      map(([type, side]) => {
+        let rotation = 0;
+        if (type === 'register') {
+          switch(side) {
+            case 'left':
+              rotation = -90;
+              break;
+            case 'right':
+              rotation = 90;
+              break;
+            case 'posterior':
+              rotation = 180;
+              break;
+          }
+        }
+        return rotation;
+      })
     );
   }
 

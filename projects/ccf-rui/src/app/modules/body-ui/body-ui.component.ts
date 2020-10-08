@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { BodyUI, SpatialSceneNode } from 'ccf-body-ui';
+import { Subscription } from 'rxjs';
 
 import { ModelState } from '../../core/store/model/model.state';
 
@@ -12,14 +13,10 @@ import { ModelState } from '../../core/store/model/model.state';
   templateUrl: './body-ui.component.html',
   styleUrls: ['./body-ui.component.scss']
 })
-export class BodyUiComponent implements AfterViewInit {
+export class BodyUiComponent implements AfterViewInit, OnDestroy {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-body-ui';
 
-  /**
-   * Spacial Scene nodes that make up the deckgl scene
-   * To be replaced by a call to the store when set up
-   */
   // tslint:disable-next-line: no-unsafe-any
   @Input()
   get scene(): SpatialSceneNode[] {
@@ -31,7 +28,35 @@ export class BodyUiComponent implements AfterViewInit {
     this.bodyUI?.setScene(nodes);
   }
 
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  get rotation(): number {
+    return this._rotation;
+  }
+
+  set rotation(value: number) {
+    this._rotation = value;
+    this.bodyUI?.setRotation(value);
+  }
+
+  @Output()
+  readonly rotationChange = new EventEmitter<number>();
+
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  get interactive(): boolean {
+    return this._interactive;
+  }
+
+  set interactive(value: boolean) {
+    this._interactive = value;
+    this.bodyUI?.setInteractive(value);
+  }
+
+  private _interactive = true;
+  private _rotation = 0;
   private _scene: SpatialSceneNode[] = [];
+  private rotationSubscription: Subscription;
 
   /**
    * Instance of the body UI class for rendering the deckGL scene
@@ -57,12 +82,19 @@ export class BodyUiComponent implements AfterViewInit {
    */
   async setupBodyUI(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
-    const bodyUI = new BodyUI({ id: 'body-ui', canvas, target: [0, 0, 0]});
+    const bodyUI = new BodyUI({ id: 'body-ui', canvas, target: [0, 0, 0], rotation: this.rotation, interactive: this.interactive});
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
     await bodyUI.initialize();
     this.bodyUI = bodyUI;
     if (this.scene?.length > 0) {
       this.bodyUI.setScene(this.scene);
     }
+    this.rotationSubscription = this.bodyUI.sceneRotation$.subscribe((rotation) => {
+      this.rotationChange.next(rotation);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.rotationSubscription.unsubscribe();
   }
 }

@@ -11,9 +11,19 @@
 
 <ccf-video-modal-launcher [visible]="page.tutorialMode$ | async"></ccf-video-modal-launcher>
 
-<ccf-body-ui class="gizmo" [scene]="scene.gizmo$ | async"></ccf-body-ui>
+<ccf-body-ui class="gizmo"
+  [scene]="scene.gizmo$ | async"
+  [rotation]="scene.rotation$ | async"
+  [interactive]="false"
+  #gizmo
+></ccf-body-ui>
 
-<ccf-body-ui class="body-ui" [class.hidden]="page.tutorialMode$ | async" [scene]="scene.nodes$ | async"></ccf-body-ui>
+<ccf-body-ui class="body-ui"
+  [class.hidden]="page.tutorialMode$ | async"
+  [scene]="scene.nodes$ | async"
+  [rotation]="scene.rotation$ | async"
+  (rotationChange)="gizmo.rotation = $event"
+></ccf-body-ui>
 
 <ccf-store-debug *ngIf="debugMode" class="debug" [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100">
 </ccf-store-debug>
