@@ -96,9 +96,7 @@ export class ContentComponent implements OnInit, OnDestroy {
    * Method to reset registration block, crosshairs, and x,y,z information.
    */
   resetStage(): void {
-    // Registration block return to starting position
-    // The crosshairs return to start position
-    // the x, y, z info above the gizmo goes back to zero
+    this.model.setPosition({x: 200, y: 0, z: 0});
     this.model.setViewSide('anterior');
     this.model.setViewType('register');
   }

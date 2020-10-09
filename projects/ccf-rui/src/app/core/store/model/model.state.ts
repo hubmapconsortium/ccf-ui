@@ -50,6 +50,8 @@ export interface ModelStateModel {
   blockSize: XYZTriplet;
   /** Model rotation */
   rotation: XYZTriplet;
+  /** Model position */
+  position: XYZTriplet;
   /** Slice configuration */
   slicesConfig: SlicesConfig;
   /** View type */
@@ -81,6 +83,7 @@ export interface ModelStateModel {
     side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
+    position: { x: 0, y: 0, z: 0 },
     slicesConfig: { thickness: NaN, numSlices: NaN },
     viewType: 'register',
     viewSide: 'anterior',
@@ -96,6 +99,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly blockSize$ = this.state$.pipe(pluck('blockSize'));
   /** Rotation observable */
   readonly rotation$ = this.state$.pipe(pluck('rotation'));
+  /** Position observable */
+  readonly position$ = this.state$.pipe(pluck('position'));
   /** Slice configuration observable */
   readonly slicesConfig$ = this.state$.pipe(pluck('slicesConfig'));
   /** View type observable */
@@ -139,6 +144,16 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setRotation(rotation: XYZTriplet): void {
     this.ctx.patchState({ rotation });
+  }
+
+  /**
+   * Updates the position
+   *
+   * @param position The new position values
+   */
+  @DataAction()
+  setPosition(position: XYZTriplet): void {
+    this.ctx.patchState({ position });
   }
 
   /**

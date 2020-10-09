@@ -30,9 +30,17 @@ export interface SceneStateModel {
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> implements NgxsOnInit {
-  /** Observable of spatial nodes */
+
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
+    return combineLatest([this.placementCube$, this.referenceOrganNodes$]).pipe(
+      map(([placement, nodes]) => placement ? [placement, ...nodes] : nodes)
+    );
+  }
+
+  /** Observable of spatial nodes */
+  @Computed()
+  get referenceOrganNodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$]).pipe(
       debounceTime(400),
       switchMap(([anatomicalStructures, extractionSites]) =>
@@ -42,22 +50,40 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   @Computed()
+  get placementCube$(): Observable<SpatialSceneNode> {
+    return combineLatest([this.model.blockSize$, this.model.rotation$, this.model.position$]).pipe(
+      map(([blockSize, rotation, position]) => {
+        return {
+          '@id': '#DraftPlacement',
+          '@type': 'SpatialSceneNode',
+          transformMatrix: new Matrix4(Matrix4.IDENTITY)
+            .translate([position.x, position.y, position.z].map(n => n / 1000))
+            .rotateXYZ([rotation.x, rotation.y, rotation.z].map<number>(toRadians))
+            .scale([blockSize.x, blockSize.y, blockSize.z].map(n => n / 1000)),
+          color: [255, 255, 0, 200],
+          tooltip: 'Draft Placement',
+          unpickable: false,
+        } as SpatialSceneNode;
+      })
+    );
+  }
+
+
+  @Computed()
   get rotation$(): Observable<number> {
-    return combineLatest([this.model.viewType$, this.model.viewSide$]).pipe(
-      map(([type, side]) => {
+    return this.model.viewSide$.pipe(
+      map((side) => {
         let rotation = 0;
-        if (type === 'register') {
-          switch(side) {
-            case 'left':
-              rotation = -90;
-              break;
-            case 'right':
-              rotation = 90;
-              break;
-            case 'posterior':
-              rotation = 180;
-              break;
-          }
+        switch(side) {
+          case 'left':
+            rotation = -90;
+            break;
+          case 'right':
+            rotation = 90;
+            break;
+          case 'posterior':
+            rotation = 180;
+            break;
         }
         return rotation;
       })
