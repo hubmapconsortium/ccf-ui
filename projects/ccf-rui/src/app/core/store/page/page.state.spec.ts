@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
-import { GlobalsService } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { GLOBAL_CONFIG } from '../../services/config/config';
 import { PageState } from './page.state';
 
 
@@ -13,21 +13,17 @@ function nextValue<T>(obs: Observable<T>): Promise<T> {
 }
 
 describe('PageState', () => {
-  let mockGlobals: jasmine.SpyObj<GlobalsService>;
   let state: PageState;
 
 
   beforeEach(() => {
-    mockGlobals = jasmine.createSpyObj<GlobalsService>('GlobalsService', ['get']);
-    mockGlobals.get.and.returnValue(false);
-
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
         NgxsModule.forRoot([PageState])
       ],
       providers: [
-        { provide: GlobalsService, useValue: mockGlobals }
+        { provide: GLOBAL_CONFIG, useValue: {} }
       ]
     });
 
@@ -82,8 +78,8 @@ describe('PageState', () => {
     expect(value).toEqual(jasmine.objectContaining(newName));
   });
 
-  it('reads embedded from the global object', async () => {
-    mockGlobals.get.and.returnValue(true);
+  it('reads embedded from the global config', async () => {
+    TestBed.inject(GLOBAL_CONFIG).embedded = true;
     state.ngxsOnInit(); // Retrigger initialization
 
     const value = await nextValue(state.embedded$);

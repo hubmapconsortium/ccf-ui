@@ -1,12 +1,13 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
+import { ConfigModule } from './services/config/config.module';
 import { ThemingModule } from './services/theming/theming.module';
 import { StoreModule } from './store/store.module';
 
 
 @NgModule({
-  imports: [HttpClientModule, StoreModule, ThemingModule],
+  imports: [HttpClientModule, ConfigModule, StoreModule, ThemingModule],
   exports: []
 })
 export class CoreModule {
