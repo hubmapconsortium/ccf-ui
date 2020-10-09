@@ -18,12 +18,18 @@
   #gizmo
 ></ccf-body-ui>
 
-<ccf-body-ui class="body-ui"
+<ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === '3d'"
   [class.hidden]="page.tutorialMode$ | async"
   [scene]="scene.nodes$ | async"
   [rotation]="scene.rotation$ | async"
   (rotationChange)="gizmo.rotation = $event"
-  [interactive]="(model.viewType$ | async) === '3d'"
+  [interactive]="true"
+></ccf-body-ui>
+
+<ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === 'register'"
+  [class.hidden]="page.tutorialMode$ | async"
+  [scene]="scene.rotatedNodes$ | async"
+  [interactive]="false"
   (nodeDrag)="handleNodeDrag($event)"
 ></ccf-body-ui>
 

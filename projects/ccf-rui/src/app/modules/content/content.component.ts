@@ -104,7 +104,7 @@ export class ContentComponent implements OnInit, OnDestroy {
 
   handleNodeDrag(event: NodeDragEvent): void {
     if (event.node['@id'] === '#DraftPlacement') {
-      if (event.info.coordinate && this.model.snapshot.viewType === 'register') {
+      if (event.info.coordinate) {
         const [a, b] = (event.info.coordinate as number[]).map(n => n * 1000) as [number, number];
         const {position, viewSide } = this.model.snapshot;
         let newPosition = position;
@@ -113,13 +113,13 @@ export class ContentComponent implements OnInit, OnDestroy {
             newPosition = {x: a, y: b, z: position.z};
             break;
           case 'posterior':
-            newPosition = {x: a, y: b, z: position.z};
+            newPosition = {x: -a, y: b, z: position.z};
             break;
           case 'left':
-            // newPosition = {x: position.x, y: b, z: position.z};
+            newPosition = {x: position.x, y: b, z: -a};
             break;
           case 'right':
-            // newPosition = {x: position.x, y: b, z: position.z};
+            newPosition = {x: position.x, y: b, z: a};
             break;
         }
         this.model.setPosition(newPosition);

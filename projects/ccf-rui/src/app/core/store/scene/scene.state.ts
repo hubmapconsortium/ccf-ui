@@ -38,6 +38,22 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     );
   }
 
+  @Computed()
+  get rotatedNodes$(): Observable<SpatialSceneNode[]> {
+    return combineLatest([this.rotation$, this.nodes$]).pipe(
+      map(([rotation, nodes]) => {
+        if (rotation === 0) {
+          return nodes;
+        } else {
+          return nodes.map(n => ({
+            ...n,
+            transformMatrix: new Matrix4(Matrix4.IDENTITY).rotateY(toRadians(rotation)).multiplyRight(n.transformMatrix)
+          }));
+        }
+      })
+    );
+  }
+
   /** Observable of spatial nodes */
   @Computed()
   get referenceOrganNodes$(): Observable<SpatialSceneNode[]> {
