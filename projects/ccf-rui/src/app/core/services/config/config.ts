@@ -1,5 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { GlobalsService } from 'ccf-shared';
+import { ObservableInput } from 'rxjs';
 
 
 export interface GlobalConfig {
@@ -12,7 +13,9 @@ export interface GlobalConfig {
   };
 
   register?: (data: string) => void;
-  fetchPreviousRegistrations?: () => Promise<object[]>;
+  useDownload?: boolean;
+
+  fetchPreviousRegistrations?: () => ObservableInput<object[]>;
 }
 
 declare global {

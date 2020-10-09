@@ -122,6 +122,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     // Lazy load here
     this.page = this.injector.get(PageState);
     this.model = this.injector.get(ModelState);
+
+    const { globalConfig: { useDownload, register } } = this;
+    this.ctx.patchState({
+      useRegistrationCallback: !!(!useDownload && register)
+    });
   }
 
   /**
