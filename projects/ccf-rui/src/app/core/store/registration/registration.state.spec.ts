@@ -23,6 +23,7 @@ const testModel: Immutable<ModelStateModel> = {
   organ: { name: 'test', src: 'test' },
   blockSize: { x: 0, y: 0, z: 0 },
   rotation: { x: 0, y: 0, z: 0 },
+  position: { x: 0, y: 0, z: 0 },
   slicesConfig: { thickness: 0, numSlices: 0 },
   viewType: '3d',
   viewSide: 'anterior',
