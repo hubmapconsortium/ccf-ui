@@ -17,7 +17,7 @@ To embed *CCF-RUI* the following code snippet should be used.
   </script>
   <meta charset="utf-8">
   <title>HuBMAP CCF Registration User Interface (CCF-RUI)</title>
-  <base href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-rui@1/">
+  <base href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/">
   <script>
     window.ruiConfig = {
       // Custom configuration
