@@ -34,6 +34,7 @@ export interface PickInfo<D> {
   x: number;
   y: number;
   coordinate?: {};
+  picked?: boolean;
 }
 
 export type NodeDragEvent = {node: SpatialSceneNode, info: PickInfo<SpatialSceneNode>, e: MouseEvent};
@@ -196,7 +197,7 @@ export class BodyUI {
   }
 
   @bind
-  private _onClick(info: {picked: boolean, object: SpatialSceneNode}, e: { srcEvent: { ctrlKey: boolean; }; }): void {
+  private _onClick(info: PickInfo<SpatialSceneNode>, e: { srcEvent: { ctrlKey: boolean; }; }): void {
     if (info.picked && info.object && info.object['@id']) {
       this.nodeClickSubject.next({node: info.object, ctrlClick: e?.srcEvent?.ctrlKey ?? undefined});
     }
