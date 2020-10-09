@@ -102,7 +102,9 @@ describe('RegistrationState', () => {
 
     TestBed.inject(Store).reset({
       registration: {
-        useRegistrationCallback: false
+        useRegistrationCallback: false,
+        displayErrors: false,
+        registrations: []
       }
     });
 
@@ -154,6 +156,40 @@ describe('RegistrationState', () => {
     });
   });
 
+  describe('.previousRegistrations$', () => {
+    const reg1 = { id: 1 };
+    const reg2 = { id: 2 };
+
+    beforeEach(() => {
+      TestBed.inject(Store).reset({
+        registration: {
+          registrations: [reg1]
+        }
+      });
+    });
+
+    it('emits arrays of previous registration objects', async () => {
+      const value = await nextValue(state.previousRegistrations$);
+      expect(value).toEqual([reg1]);
+    });
+
+    it('calls fetchPreviousRegistrations if available', () => {
+      const spy = jasmine.createSpy().and.returnValue([[]]);
+      TestBed.inject(GLOBAL_CONFIG).fetchPreviousRegistrations = spy;
+
+      const _unused = state.previousRegistrations$;
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('combines the results from fetchPreviousRegistrations and local registrations', async () => {
+      const spy = jasmine.createSpy().and.returnValue([[reg2]]);
+      TestBed.inject(GLOBAL_CONFIG).fetchPreviousRegistrations = spy;
+
+      const value = await nextValue(state.previousRegistrations$);
+      expect(value).toEqual(jasmine.arrayWithExactContents([reg1, reg2]));
+    });
+  });
+
   describe('setUseRegistrationCallback', () => {
     it('updates use registration callback', async () => {
       state.setUseRegistrationCallback(true);
@@ -179,6 +215,13 @@ describe('RegistrationState', () => {
       download = spyOn(FileSaver, 'saveAs');
       TestBed.inject(GLOBAL_CONFIG).register = callback;
       spyOn(state, 'isValid').and.returnValue(true);
+    });
+
+    it('does nothing if isValid() is false', () => {
+      (state.isValid as jasmine.Spy).and.returnValue(false);
+      state.register();
+      expect(callback).not.toHaveBeenCalled();
+      expect(download).not.toHaveBeenCalled();
     });
 
     it('uses the callback when useCallback argument is true', () => {
