@@ -96,6 +96,7 @@ jobs:
     name: Deploy Preview for PRs
     if: branch =~ /^pbi-.*$/ AND NOT(type = pull_request)
     script:
+    - npm run fix-types
     - npm run build:libs
     - npm run build -- --project ccf-rui --output-hashing=none --base-href=/
 
