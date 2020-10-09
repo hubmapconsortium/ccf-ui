@@ -1,5 +1,5 @@
 import { Deck, OrbitView } from '@deck.gl/core';
-import { ViewStateProps } from '@deck.gl/core/lib/deck';
+import { PickInfo, ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
 import bind from 'bind-decorator';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -27,6 +27,8 @@ export interface BodyUIProps {
   rotation: number;
 }
 
+export type NodeDragEvent = {node: SpatialSceneNode, info: PickInfo<SpatialSceneNode>, e: MouseEvent};
+
 /**
  * A convenience wrapper class for the CCF Body UI
  */
@@ -38,11 +40,17 @@ export class BodyUI {
   private readonly nodeHoverStartSubject = new Subject<SpatialSceneNode>();
   private readonly nodeHoverStopSubject = new Subject<SpatialSceneNode>();
   private readonly sceneRotationSubject = new BehaviorSubject<number>(0);
+  private readonly nodeDragStartSubject = new Subject<NodeDragEvent>();
+  private readonly nodeDragSubject = new Subject<NodeDragEvent>();
+  private readonly nodeDragEndSubject = new Subject<NodeDragEvent>();
 
   readonly nodeClick$ = this.nodeClickSubject.pipe(share());
   readonly nodeHoverStart$ = this.nodeHoverStartSubject.pipe(share());
   readonly nodeHoverStop$ = this.nodeHoverStopSubject.pipe(share());
   readonly sceneRotation$ = this.sceneRotationSubject.pipe(share());
+  readonly nodeDragStart$ = this.nodeDragStartSubject.pipe(share());
+  readonly nodeDrag$ = this.nodeDragSubject.pipe(share());
+  readonly nodeDragEnd$ = this.nodeDragEndSubject.pipe(share());
 
   private cursor?: string;
   private lastHovered?: SpatialSceneNode;
@@ -56,6 +64,9 @@ export class BodyUI {
       onHover: this._onHover,
       onClick: this._onClick,
       onViewStateChange: this._onViewStateChange,
+      onDragStart: this._onDragStart,
+      onDrag: this._onDrag,
+      onDragEnd: this._onDragEnd,
       getCursor: (e: {isDragging: boolean}) => this.cursor || (e.isDragging ? 'grabbing' : 'grab')
     };
     // tslint:disable-next-line: no-any
@@ -80,6 +91,10 @@ export class BodyUI {
     while (!this.bodyUILayer.state) {
       await new Promise(r => setTimeout(r, 200));
     }
+  }
+
+  finalize(): void {
+    this.deck.finalize();
   }
 
   setScene(data: SpatialSceneNode[]): void {
@@ -172,9 +187,9 @@ export class BodyUI {
   }
 
   @bind
-  private _onClick(e: {picked: boolean, object: SpatialSceneNode}, mouseEvent: { srcEvent: { ctrlKey: boolean; }; }): void {
-    if (e.picked && e.object && e.object['@id']) {
-      this.nodeClickSubject.next({node: e.object, ctrlClick: mouseEvent?.srcEvent?.ctrlKey ?? undefined});
+  private _onClick(info: {picked: boolean, object: SpatialSceneNode}, e: { srcEvent: { ctrlKey: boolean; }; }): void {
+    if (info.picked && info.object && info.object['@id']) {
+      this.nodeClickSubject.next({node: info.object, ctrlClick: e?.srcEvent?.ctrlKey ?? undefined});
     }
   }
 
@@ -189,5 +204,26 @@ export class BodyUI {
     }
     this.deck.setProps({viewState: { ...event.viewState }});
     this.sceneRotationSubject.next(event.viewState.rotationOrbit);
+  }
+
+  @bind
+  private _onDragStart(info: PickInfo<SpatialSceneNode>, e: MouseEvent): void {
+    this._dragEvent(info, e, this.nodeDragStartSubject);
+  }
+
+  @bind
+  private _onDrag(info: PickInfo<SpatialSceneNode>, e: MouseEvent): void {
+    this._dragEvent(info, e, this.nodeDragSubject);
+  }
+
+  @bind
+  private _onDragEnd(info: PickInfo<SpatialSceneNode>, e: MouseEvent): void {
+    this._dragEvent(info, e, this.nodeDragEndSubject);
+  }
+
+  private _dragEvent(info: PickInfo<SpatialSceneNode>, e: MouseEvent, subject: Subject<NodeDragEvent>): void {
+    if (info.object && info.object['@id']) {
+      subject.next({node: info.object, info, e});
+    }
   }
 }

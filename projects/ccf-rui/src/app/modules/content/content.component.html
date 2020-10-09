@@ -23,6 +23,8 @@
   [scene]="scene.nodes$ | async"
   [rotation]="scene.rotation$ | async"
   (rotationChange)="gizmo.rotation = $event"
+  [interactive]="(model.viewType$ | async) === '3d'"
+  (nodeDrag)="handleNodeDrag($event)"
 ></ccf-body-ui>
 
 <ccf-store-debug *ngIf="showDebugButtons && debugMode" class="debug" [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100">

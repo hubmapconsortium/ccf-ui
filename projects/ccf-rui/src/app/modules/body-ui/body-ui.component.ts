@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { BodyUI, SpatialSceneNode } from 'ccf-body-ui';
+import { BodyUI, NodeDragEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { Subscription } from 'rxjs';
 
 import { ModelState } from '../../core/store/model/model.state';
@@ -42,6 +42,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   @Output()
   readonly rotationChange = new EventEmitter<number>();
 
+  @Output()
+  readonly nodeDrag = new EventEmitter<NodeDragEvent>();
+
   // tslint:disable-next-line: no-unsafe-any
   @Input()
   get interactive(): boolean {
@@ -50,13 +53,15 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
 
   set interactive(value: boolean) {
     this._interactive = value;
-    this.bodyUI?.setInteractive(value);
+    if (this.bodyUI) {
+      this.recreateBodyUI();
+    }
   }
 
   private _interactive = true;
   private _rotation = 0;
   private _scene: SpatialSceneNode[] = [];
-  private rotationSubscription: Subscription;
+  private subscriptions: Subscription[] = [];
 
   /**
    * Instance of the body UI class for rendering the deckGL scene
@@ -80,7 +85,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   /**
    * Set up required to render the body UI with the scene nodes.
    */
-  async setupBodyUI(): Promise<void> {
+  private async setupBodyUI(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
     const bodyUI = new BodyUI({ id: 'body-ui', canvas, target: [0, 0, 0], rotation: this.rotation, interactive: this.interactive});
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
@@ -89,12 +94,24 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     if (this.scene?.length > 0) {
       this.bodyUI.setScene(this.scene);
     }
-    this.rotationSubscription = this.bodyUI.sceneRotation$.subscribe((rotation) => {
-      this.rotationChange.next(rotation);
-    });
+    this.subscriptions = [
+      this.bodyUI.sceneRotation$.subscribe((rotation) => this.rotationChange.next(rotation)),
+      this.bodyUI.nodeDrag$.subscribe((event) => this.nodeDrag.emit(event))
+    ];
+  }
+
+  private recreateBodyUI(): void {
+    this.clearSubscriptions();
+    this.bodyUI.finalize();
+    this.setupBodyUI();
+  }
+
+  private clearSubscriptions(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+    this.subscriptions = [];
   }
 
   ngOnDestroy(): void {
-    this.rotationSubscription.unsubscribe();
+    this.clearSubscriptions();
   }
 }

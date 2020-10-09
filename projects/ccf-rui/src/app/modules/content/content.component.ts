@@ -1,14 +1,15 @@
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, OnDestroy, OnInit
 } from '@angular/core';
+import { NodeDragEvent } from 'ccf-body-ui';
 import { ResizeSensor } from 'css-element-queries';
 import { map } from 'rxjs/operators';
 
-import { ModelState } from '../../core/store/model/model.state';
+import { environment } from '../../../environments/environment';
+import { ModelState, XYZTriplet } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 import { SceneState } from '../../core/store/scene/scene.state';
-import { environment } from './../../../environments/environment';
 
 
 /**
@@ -99,5 +100,30 @@ export class ContentComponent implements OnInit, OnDestroy {
     this.model.setPosition({x: 200, y: 0, z: 0});
     this.model.setViewSide('anterior');
     this.model.setViewType('register');
+  }
+
+  handleNodeDrag(event: NodeDragEvent): void {
+    if (event.node['@id'] === '#DraftPlacement') {
+      if (event.info.coordinate && this.model.snapshot.viewType === 'register') {
+        const [a, b] = (event.info.coordinate as number[]).map(n => n * 1000) as [number, number];
+        const {position, viewSide } = this.model.snapshot;
+        let newPosition = position;
+        switch (viewSide) {
+          case 'anterior':
+            newPosition = {x: a, y: b, z: position.z};
+            break;
+          case 'posterior':
+            newPosition = {x: a, y: b, z: position.z};
+            break;
+          case 'left':
+            // newPosition = {x: position.x, y: b, z: position.z};
+            break;
+          case 'right':
+            // newPosition = {x: position.x, y: b, z: position.z};
+            break;
+        }
+        this.model.setPosition(newPosition);
+      }
+    }
   }
 }
