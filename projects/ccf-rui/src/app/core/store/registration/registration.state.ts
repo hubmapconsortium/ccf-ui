@@ -1,15 +1,16 @@
-import { Injectable, Injector } from '@angular/core';
+import { Inject, Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { Immutable } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
-import { GlobalsService } from 'ccf-shared';
+import { insertItem, patch } from '@ngxs/store/operators';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { MetaData } from '../../models/meta-data';
+import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
 
@@ -22,6 +23,8 @@ export interface RegistrationStateModel {
   useRegistrationCallback: boolean;
   /** Whether or not to display user registration errors */
   displayErrors: boolean;
+  /** Previous registrations */
+  registrations: object[];
 }
 
 
@@ -33,28 +36,13 @@ export interface RegistrationStateModel {
   name: 'registration',
   defaults: {
     useRegistrationCallback: false,
-    displayErrors: false
+    displayErrors: false,
+    registrations: []
   }
 })
 @Injectable()
 export class RegistrationState extends NgxsImmutableDataRepository<RegistrationStateModel> {
-  /** Reference to the page state */
-  private page: PageState;
-
-  /** Reference to the model state */
-  private model: ModelState;
-
-  /** Current uuid identifier used when registering */
-  @Computed()
-  private get currentIdentifier(): string {
-    return uuidV4();
-  }
-
-  /** Time of last modification to registration data */
-  @Computed()
-  private get currentDate(): string {
-    return new Date().toISOString();
-  }
+  readonly displayErrors$ = this.state$.pipe(pluck('displayErrors'));
 
   /** Observable of registration metadata */
   @Computed()
@@ -72,37 +60,54 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     );
   }
 
-  readonly displayErrors$ = this.state$.pipe(pluck('displayErrors'));
-
   @Computed()
   get valid$(): Observable<boolean> {
-    return combineLatest([this.page.state$, this.model.state$]).pipe(map(data => this.isValid(...data)));
+    return combineLatest([this.page.state$, this.model.state$]).pipe(
+      map(data => this.isValid(...data))
+    );
   }
 
   /**
-   * registration block ?
+   * Observable of previous registrations
    */
-  isValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
-    if (!page.user || !page.user.firstName || !page.user.lastName) {
-      return false;
-    }
-
-    if (!model.organ || !model.organ?.src || !model.organ?.name ) {
-      return false;
-    }
-
-    return true;
+  @Computed()
+  get previousRegistrations$(): Observable<object[]> {
+    const { globalConfig: { fetchPreviousRegistrations }, state$ } = this;
+    return combineLatest([
+      state$.pipe(pluck('registrations')),
+      fetchPreviousRegistrations?.() ?? [[]]
+    ]).pipe(
+      map(([local, external]) => [...local, ...external])
+    );
   }
+
+  /** Current uuid identifier used when registering */
+  @Computed()
+  private get currentIdentifier(): string {
+    return uuidV4();
+  }
+
+  /** Time of last modification to registration data */
+  @Computed()
+  private get currentDate(): string {
+    return new Date().toISOString();
+  }
+
+  /** Reference to the page state */
+  private page: PageState;
+
+  /** Reference to the model state */
+  private model: ModelState;
 
   /**
    * Creates an instance of registration state.
    *
    * @param injector Injector service used to lazy load page and model state
-   * @param globals Global object access
+   * @param globalConfig The global configuration
    */
   constructor(
     private readonly injector: Injector,
-    private readonly globals: GlobalsService
+    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
   ) {
     super();
   }
@@ -117,6 +122,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     // Lazy load here
     this.page = this.injector.get(PageState);
     this.model = this.injector.get(ModelState);
+
+    const { globalConfig: { useDownload, register } } = this;
+    this.ctx.patchState({
+      useRegistrationCallback: !!(!useDownload && register)
+    });
   }
 
   /**
@@ -139,6 +149,32 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   }
 
   /**
+   * Adds an entry to the previous registrations
+   *
+   * @param registration The new entry
+   */
+  @DataAction()
+  addRegistration(registration: object): void {
+    this.ctx.setState(patch<Immutable<RegistrationStateModel>>({
+      registrations: insertItem(registration)
+    }));
+  }
+
+  /**
+   * registration block ?
+   */
+  isValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
+    const requiredValues = [
+      page.user.firstName,
+      page.user.lastName,
+      model.organ.src,
+      model.organ.name
+    ];
+
+    return requiredValues.every(value => !!value);
+  }
+
+  /**
    * Registers or downloads json data.
    *
    * @param [useCallback] Explicit override selecting the register/download action
@@ -148,8 +184,10 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       return;
     }
 
-    const { page, model, globals, snapshot } = this;
-    const registrationCallback = globals.get<(json: string) => void>('ruiRegistrationCallback');
+    const {
+      globalConfig: { register: registrationCallback },
+      page, model, snapshot
+    } = this;
     const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot);
     const json = JSON.stringify(jsonObj, undefined, 2);
 
@@ -164,6 +202,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       saveAs(data, 'registration-data.json');
     }
 
+    this.addRegistration(jsonObj);
     this.setDisplayErrors(false);
   }
 

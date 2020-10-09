@@ -2,17 +2,17 @@ import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { Immutable } from '@ngxs-labs/data/typings';
 import { NgxsModule, Store } from '@ngxs/store';
-import { GlobalsService } from 'ccf-shared';
-import { ExtractionSet } from '../../models/extraction-set';
 import * as FileSaver from 'file-saver';
 import { Observable, ReplaySubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
+import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
+import { GLOBAL_CONFIG } from '../../services/config/config';
 import { ModelState, ModelStateModel } from '../model/model.state';
 import { PageState, PageStateModel, Person } from '../page/page.state';
 import { RegistrationState } from './registration.state';
-import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
 
 
 const testVisibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
@@ -20,7 +20,7 @@ const testExtractionSets: ExtractionSet[] = [{ name: 'test', sites: [] }];
 const testModel: Immutable<ModelStateModel> = {
   id: '0',
   label: 'test',
-  organ: { name: 'test', src: 'test' } as OrganInfo,
+  organ: { name: 'test', src: 'test' },
   blockSize: { x: 0, y: 0, z: 0 },
   rotation: { x: 0, y: 0, z: 0 },
   slicesConfig: { thickness: 0, numSlices: 0 },
@@ -36,7 +36,7 @@ const testPage: Immutable<PageStateModel> = {
   user: {
     firstName: 'John',
     lastName: 'Doe'
-  } as Person,
+  },
   embedded: true,
   homeUrl: 'www.test.com',
   tutorialMode: false
@@ -57,7 +57,11 @@ describe('RegistrationState', () => {
   const initialModelState: Partial<ModelStateModel> = {
     id: 'a-b-c',
     blockSize: { x: 0, y: 0, z: 0 },
-    rotation: { x: 0, y: 0, z: 0 }
+    rotation: { x: 0, y: 0, z: 0 },
+    organ: {
+      src: '',
+      name: ''
+    }
   };
 
   let pageStateSubject: ReplaySubject<Partial<PageStateModel>>;
@@ -71,33 +75,36 @@ describe('RegistrationState', () => {
     modelStateSubject = new ReplaySubject();
     modelStateSubject.next(initialModelState);
 
-    const mockGlobalsService = jasmine.createSpyObj<GlobalsService>(
-      'GlobalsService', ['get']
-    );
-
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
         NgxsModule.forRoot([RegistrationState])
       ],
       providers: [
-        { provide: PageState, useValue: {
+        {
+          provide: PageState, useValue: {
             state$: pageStateSubject,
             snapshot: initialPageState
           }
         },
-        { provide: ModelState, useValue: {
+        {
+          provide: ModelState, useValue: {
             state$: modelStateSubject,
             snapshot: initialModelState
           }
         },
-        { provide: GlobalsService, useValue: mockGlobalsService }
+        {
+          provide: GLOBAL_CONFIG,
+          useValue: {}
+        }
       ]
     });
 
     TestBed.inject(Store).reset({
       registration: {
-        useRegistrationCallback: false
+        useRegistrationCallback: false,
+        displayErrors: false,
+        registrations: []
       }
     });
 
@@ -130,13 +137,13 @@ describe('RegistrationState', () => {
     });
 
     it('should consider isValid false if the organ is not set', async () => {
-      const invalidModel = {...testModel, organ: {} as OrganInfo };
+      const invalidModel = { ...testModel, organ: {} as OrganInfo };
       const result = state.isValid(testPage, invalidModel);
       expect(result).toBeFalse();
     });
 
     it('should consider isValid false if the user is not set', async () => {
-      const invalidPage = {...testPage, user: { } as Person };
+      const invalidPage = { ...testPage, user: {} as Person };
       const result = state.isValid(invalidPage, testModel);
       expect(result).toBeFalse();
     });
@@ -146,6 +153,40 @@ describe('RegistrationState', () => {
     it('creates jsonld objects', async () => {
       const value = await nextValue(state.jsonld$);
       expect(value).toBeInstanceOf(Object);
+    });
+  });
+
+  describe('.previousRegistrations$', () => {
+    const reg1 = { id: 1 };
+    const reg2 = { id: 2 };
+
+    beforeEach(() => {
+      TestBed.inject(Store).reset({
+        registration: {
+          registrations: [reg1]
+        }
+      });
+    });
+
+    it('emits arrays of previous registration objects', async () => {
+      const value = await nextValue(state.previousRegistrations$);
+      expect(value).toEqual([reg1]);
+    });
+
+    it('calls fetchPreviousRegistrations if available', () => {
+      const spy = jasmine.createSpy().and.returnValue([[]]);
+      TestBed.inject(GLOBAL_CONFIG).fetchPreviousRegistrations = spy;
+
+      const _unused = state.previousRegistrations$;
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('combines the results from fetchPreviousRegistrations and local registrations', async () => {
+      const spy = jasmine.createSpy().and.returnValue([[reg2]]);
+      TestBed.inject(GLOBAL_CONFIG).fetchPreviousRegistrations = spy;
+
+      const value = await nextValue(state.previousRegistrations$);
+      expect(value).toEqual(jasmine.arrayWithExactContents([reg1, reg2]));
     });
   });
 
@@ -168,19 +209,19 @@ describe('RegistrationState', () => {
   describe('register(useCallback)', () => {
     let callback: jasmine.Spy<(json: string) => void>;
     let download: jasmine.Spy;
-    let globals: jasmine.SpyObj<GlobalsService>;
 
     beforeEach(() => {
       callback = jasmine.createSpy();
       download = spyOn(FileSaver, 'saveAs');
-      globals = TestBed.inject(GlobalsService) as jasmine.SpyObj<GlobalsService>;
-      globals.get.and.returnValue(callback);
+      TestBed.inject(GLOBAL_CONFIG).register = callback;
       spyOn(state, 'isValid').and.returnValue(true);
     });
 
-    it('finds the callback from the global object', () => {
+    it('does nothing if isValid() is false', () => {
+      (state.isValid as jasmine.Spy).and.returnValue(false);
       state.register();
-      expect(globals.get).toHaveBeenCalled();
+      expect(callback).not.toHaveBeenCalled();
+      expect(download).not.toHaveBeenCalled();
     });
 
     it('uses the callback when useCallback argument is true', () => {
@@ -210,7 +251,7 @@ describe('RegistrationState', () => {
     });
 
     it('does nothing if there is no callback and the registration method is selected', () => {
-      globals.get.and.returnValue(undefined);
+      TestBed.inject(GLOBAL_CONFIG).register = undefined;
       state.register(true);
       expect(callback).not.toHaveBeenCalled();
     });

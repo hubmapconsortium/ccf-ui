@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
+import { Immutable } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
-import { patch } from '@ngxs/store/operators';
-import { GlobalsService } from 'ccf-shared';
+import { iif, patch } from '@ngxs/store/operators';
 import { pluck } from 'rxjs/operators';
+
+import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 
 
 /** A record with information about a single person */
@@ -56,9 +58,11 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /**
    * Creates an instance of page state.
    *
-   * @param globals The service used to query properties from the global object
+   * @param globalConfig The global configuration
    */
-  constructor(private globals: GlobalsService) {
+  constructor(
+    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+  ) {
     super();
   }
 
@@ -68,10 +72,13 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
-    this.ctx.patchState({
-      // TODO: Check correct property + load homeUrl + load user if embedded
-      embedded: this.globals.get('hideSignupScreen', false)
-    });
+    const { globalConfig: { embedded, homeUrl, user, tutorialMode } } = this;
+    this.ctx.setState(patch<Immutable<PageStateModel>>({
+      embedded: embedded ?? !!user,
+      homeUrl: iif(!!homeUrl, homeUrl!),
+      user: iif(!!user, user!),
+      tutorialMode: !!tutorialMode
+    }));
   }
 
   /**
