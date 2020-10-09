@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
@@ -33,6 +34,11 @@ export const ROOT_STATES = [
       developmentMode: !environment.production
       // Consider setting compatibility and executionStrategy
       // https://www.ngxs.io/advanced/options
+    }),
+
+    // Must come before all other plugins except the ngxs data plugin!
+    NgxsStoragePluginModule.forRoot({
+      key: ['registration.registrations']
     }),
 
     // Logger plugin must be last!
