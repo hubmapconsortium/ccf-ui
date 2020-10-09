@@ -1,5 +1,5 @@
 import { Deck, OrbitView } from '@deck.gl/core';
-import { PickInfo, ViewStateProps } from '@deck.gl/core/lib/deck';
+import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
 import bind from 'bind-decorator';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -25,6 +25,15 @@ export interface BodyUIProps {
   target: Matrix4 | number[];
   interactive: boolean;
   rotation: number;
+}
+
+export interface PickInfo<D> {
+  layer: unknown;
+  index: number;
+  object: D;
+  x: number;
+  y: number;
+  coordinate?: {};
 }
 
 export type NodeDragEvent = {node: SpatialSceneNode, info: PickInfo<SpatialSceneNode>, e: MouseEvent};
