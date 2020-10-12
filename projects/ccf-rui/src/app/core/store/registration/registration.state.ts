@@ -275,7 +275,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
         target: model.id,
         placement_date: this.currentDate,
 
-        // x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
+        x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
 
         x_rotation: model.rotation.x,
         y_rotation: model.rotation.y,
@@ -283,7 +283,10 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
         rotation_order: 'XYZ',
         rotation_units: 'degree',
 
-        // x_translation: T.x, y_translation: T.y, z_translation: T.z, translation_units: 'millimeter'
+        x_translation: model.position.x,
+        y_translation: model.position.y,
+        z_translation: model.position.z,
+        translation_units: 'millimeter'
       }
     };
   }
