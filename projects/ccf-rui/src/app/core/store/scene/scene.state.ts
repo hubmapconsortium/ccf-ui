@@ -34,7 +34,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.placementCube$, this.referenceOrganNodes$]).pipe(
-      map(([placement, nodes]) => placement ? [placement, ...nodes] : nodes)
+      map(([placement, nodes]) => nodes.length > 0 ? [...placement, ...nodes] : [])
     );
   }
 
@@ -66,10 +66,10 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   @Computed()
-  get placementCube$(): Observable<SpatialSceneNode> {
+  get placementCube$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$]).pipe(
-      map(([viewType, blockSize, rotation, position]) => {
-        return {
+      map(([viewType, blockSize, rotation, position]) => [
+        {
           '@id': '#DraftPlacement',
           '@type': 'SpatialSceneNode',
           transformMatrix: new Matrix4(Matrix4.IDENTITY)
@@ -79,8 +79,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
           color: [255, 255, 0, 200],
           tooltip: 'Draft Placement',
           unpickable: viewType === '3d',
-        } as SpatialSceneNode;
-      })
+        }
+      ])
     );
   }
 
