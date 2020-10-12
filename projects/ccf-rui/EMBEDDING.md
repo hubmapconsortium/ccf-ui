@@ -31,12 +31,9 @@ To embed *CCF-RUI* the following code snippet should be used.
 </head>
 <body class="mat-typography">
   <ccf-root></ccf-root>
-  <script src="runtime-es2015.js" type="module"></script>
-  <script src="runtime-es5.js" nomodule defer></script>
-  <script src="polyfills-es5.js" nomodule defer></script>
-  <script src="polyfills-es2015.js" type="module"></script>
-  <script src="main-es2015.js" type="module"></script>
-  <script src="main-es5.js" nomodule defer></script>
+  <script src="runtime.js" type="module"></script>
+  <script src="polyfills.js" type="module"></script>
+  <script src="main.js" type="module"></script>
 </body>
 </html>
 ```
