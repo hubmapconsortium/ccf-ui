@@ -1,16 +1,18 @@
-import { RegistrationState } from './../registration/registration.state';
+import { SpatialEntity } from 'ccf-database';
 import { Injectable, Injector } from '@angular/core';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
-import { SpatialSceneNode, SpatialEntityJsonLd } from 'ccf-body-ui';
+import { AABB, Vec3 } from 'cannon-es';
+import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { combineLatest, from, Observable, of } from 'rxjs';
-import { debounceTime, map, switchMap } from 'rxjs/operators';
+import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
 
 import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ModelState } from '../model/model.state';
 import { VisibilityItem } from './../../models/visibility-item';
+import { RegistrationState } from './../registration/registration.state';
 
 
 /**
@@ -20,6 +22,15 @@ import { VisibilityItem } from './../../models/visibility-item';
 export interface SceneStateModel {
 }
 
+function getNodeBbox(model: SpatialSceneNode): AABB {
+  const mat = new Matrix4(model.transformMatrix);
+  const lowerBound = mat.transformAsPoint([-1, -1, -1], []);
+  const upperBound = mat.transformAsPoint([1, 1, 1], []);
+  return new AABB({
+    lowerBound: new Vec3(...lowerBound.map((n, i) => Math.min(n, upperBound[i]))),
+    upperBound: new Vec3(...upperBound.map((n, i) => Math.max(n, lowerBound[i])))
+  });
+}
 
 /**
  * 3d Scene state
@@ -58,11 +69,51 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   /** Observable of spatial nodes */
   @Computed()
   get referenceOrganNodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$]).pipe(
+    return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
       debounceTime(400),
-      switchMap(([anatomicalStructures, extractionSites]) =>
-        this.createSceneNodes([...anatomicalStructures, ...extractionSites] as VisibilityItem[])
+      switchMap(([anatomicalStructures, extractionSites, organIri]) =>
+        this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
       )
+    );
+  }
+
+  @Computed()
+  get referenceOrganSimpleNodes$(): Observable<SpatialSceneNode[]> {
+    return combineLatest([this.model.anatomicalStructures$, this.model.organIri$, from(this.dataSourceService.getDB())]).pipe(
+      map(([anatomicalStructures, organIri, db]) =>
+        anatomicalStructures
+          // .filter(item => item.visible && item.opacity && item.opacity > 0)
+          // .map((node) => db.simpleSceneNodeLookup[node.id])
+          .map(item => {
+            if (db.sceneNodeLookup[item.id]) {
+              return [{
+                ...db.sceneNodeLookup[item.id],
+                opacity: (item.opacity || 100) / 100,
+                color: [255, 255, 255, 255]
+              } as SpatialSceneNode];
+            } else {
+              return (db.anatomicalStructures[organIri as string] || [])
+                .filter((node) => node.representation_of === item.id)
+                .map((node) => ({
+                  ...db.sceneNodeLookup[node['@id']],
+                  opacity: (item.opacity || 100) / 100,
+                  color: [255, 255, 255, 255]
+                } as SpatialSceneNode));
+            }
+          })
+          .reduce((acc, nodes) => acc.concat(nodes), [])
+      )
+    );
+  }
+
+  @Computed()
+  get nodeCollisions$(): Observable<SpatialSceneNode[]> {
+    return combineLatest([this.referenceOrganSimpleNodes$, this.placementCube$]).pipe(
+      filter(([nodes, placement]) => placement.length > 0),
+      map(([nodes, placement]) => {
+        const bbox = getNodeBbox(placement[0]);
+        return nodes.filter((model) => bbox.overlaps(getNodeBbox(model)));
+      })
     );
   }
 
@@ -178,15 +229,28 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     this.registration = this.injector.get(RegistrationState);
   }
 
-  private createSceneNodes(items: VisibilityItem[]): Observable<SpatialSceneNode[]> {
+  private createSceneNodes(organIri: string, items: VisibilityItem[]): Observable<SpatialSceneNode[]> {
     return from(this.dataSourceService.getDB().then((db) => {
       return items
         .filter(item => item.visible && item.opacity && item.opacity > 0)
-        .map(item => ({
-          ...db.sceneNodeLookup[item.id],
-          opacity: (item.opacity || 100) / 100,
-          color: [255, 255, 255, 255]
-        } as SpatialSceneNode));
+        .map(item => {
+          if (db.sceneNodeLookup[item.id]) {
+            return [{
+              ...db.sceneNodeLookup[item.id],
+              opacity: (item.opacity || 100) / 100,
+              color: [255, 255, 255, 255]
+            } as SpatialSceneNode];
+          } else {
+            return (db.anatomicalStructures[organIri] || [])
+              .filter((node) => node.representation_of === item.id)
+              .map((node) => ({
+                ...db.sceneNodeLookup[node['@id']],
+                opacity: (item.opacity || 100) / 100,
+                color: [255, 255, 255, 255]
+              } as SpatialSceneNode));
+          }
+        })
+        .reduce((acc, nodes) => acc.concat(nodes), []);
     }));
   }
 }

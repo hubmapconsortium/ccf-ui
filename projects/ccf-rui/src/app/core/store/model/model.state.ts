@@ -199,14 +199,20 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
     if (organIri) {
       const db = await this.dataSourceService.getDB();
-      const structures = (db.anatomicalStructures[organIri] || []).map((entity) => ({
-        id: entity['@id'],
-        name: entity.label,
-        visible: true,
-        opacity: 100,
-        tooltip: entity.comment
-      } as VisibilityItem));
-      this.setAnatomicalStructures(structures);
+      const asLookup: { [id: string]: VisibilityItem} = {};
+      for (const entity of (db.anatomicalStructures[organIri] || [])) {
+        const iri = entity.representation_of || entity['@id'];
+        if (!asLookup[iri]) {
+          asLookup[iri] = {
+            id: entity.representation_of || entity['@id'],
+            name: entity.label,
+            visible: true,
+            opacity: 100,
+            tooltip: entity.comment
+          } as VisibilityItem;
+        }
+      }
+      this.setAnatomicalStructures(Object.values(asLookup));
 
       const sets = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,

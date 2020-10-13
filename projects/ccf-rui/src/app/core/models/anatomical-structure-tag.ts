@@ -10,7 +10,7 @@ export interface Tag {
   /** Display label */
   label: string;
   /** How the tag was added */
-  type: 'assigned' | 'added';
+  type: 'assigned' | 'added' | 'removed';
 }
 
 /**

@@ -26,10 +26,10 @@
         <mat-panel-title>Anatomical Structure Tags</mat-panel-title>
       </mat-expansion-panel-header>
 
-      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addMany($event)">
+      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">
       </ccf-tag-search>
 
-      <ccf-tag-list class="tag-list" [tags]="astags.tags$ | async" (tagRemoved)="astags.removeByEntity($event)">
+      <ccf-tag-list class="tag-list" [tags]="astags.tags$ | async" (tagRemoved)="astags.removeTag($event)">
       </ccf-tag-list>
 
       <div class="legend">

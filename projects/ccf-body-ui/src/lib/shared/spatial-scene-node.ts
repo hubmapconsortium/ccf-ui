@@ -5,6 +5,7 @@ export interface SpatialSceneNode {
   '@id': string;
   '@type': string;
   entityId?: string;
+  representation_of?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
