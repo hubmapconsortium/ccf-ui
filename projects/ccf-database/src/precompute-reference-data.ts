@@ -4,6 +4,7 @@ import fetch from 'node-fetch';
 import { argv } from 'process';
 
 import { CCFDatabase, ExtractionSet, SpatialEntity, SpatialSceneNode } from './public-api';
+import { simplifyScene } from '../../ccf-body-ui/src/lib/util/simplify-scene';
 
 
 if (!(global as {fetch: unknown}).fetch) {
@@ -66,11 +67,15 @@ async function main(outputFile?: string): Promise<void> {
     }
   }
 
+  const simpleSceneNodes = await simplifyScene(Object.values(sceneNodeLookup));
+  const simpleSceneNodeLookup = simpleSceneNodes.reduce((acc, node) => { acc[node['@id']] = node; return acc; }, {});
+
   const data = {
     organIRILookup,
     anatomicalStructures,
     extractionSets,
-    sceneNodeLookup
+    sceneNodeLookup,
+    simpleSceneNodeLookup
   };
 
   if (outputFile) {

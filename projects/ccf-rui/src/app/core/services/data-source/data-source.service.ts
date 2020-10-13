@@ -12,6 +12,7 @@ export interface ReferenceOrganDatabase {
   anatomicalStructures: {[iri: string]: SpatialEntity[]};
   extractionSets: {[iri: string]: ExtractionSet[]};
   sceneNodeLookup: {[iri: string]: SpatialSceneNode};
+  simpleSceneNodeLookup: {[iri: string]: SpatialSceneNode};
 }
 
 
