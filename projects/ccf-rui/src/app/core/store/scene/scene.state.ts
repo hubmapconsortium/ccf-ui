@@ -87,7 +87,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
           .map(item => {
             if (db.sceneNodeLookup[item.id]) {
               return [{
-                ...db.sceneNodeLookup[item.id],
+                ...db.simpleSceneNodeLookup[item.id],
                 opacity: (item.opacity || 100) / 100,
                 color: [255, 255, 255, 255]
               } as SpatialSceneNode];
@@ -95,7 +95,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
               return (db.anatomicalStructures[organIri as string] || [])
                 .filter((node) => node.representation_of === item.id)
                 .map((node) => ({
-                  ...db.sceneNodeLookup[node['@id']],
+                  ...db.simpleSceneNodeLookup[node['@id']],
                   opacity: (item.opacity || 100) / 100,
                   color: [255, 255, 255, 255]
                 } as SpatialSceneNode));
