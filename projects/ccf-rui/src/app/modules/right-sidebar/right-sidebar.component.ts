@@ -29,16 +29,5 @@ export class RightSidebarComponent {
     readonly registration: RegistrationState,
     readonly page: PageState,
     readonly astags: AnatomicalStructureTagState
-  ) {
-    // FIXME: Temporary for testing
-    astags.addMany([
-      { id: 0, label: 'calyces', type: 'assigned' },
-      { id: 1, label: 'capsule', type: 'assigned' },
-      { id: 2, label: 'medulla', type: 'assigned' },
-      { id: 3, label: 'outer cortex', type: 'assigned' },
-      { id: 4, label: 'papilla', type: 'assigned' },
-      { id: 5, label: 'pyramids', type: 'assigned' },
-      { id: 6, label: 'renal', type: 'added' }
-    ]);
-  }
+  ) { }
 }
