@@ -10,7 +10,7 @@ import { map, pluck } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { MetaData } from '../../models/meta-data';
-import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
+import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
 import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
 
@@ -63,7 +63,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get valid$(): Observable<boolean> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(data => this.isValid(...data))
+      map(data => this.isValid)
     );
   }
 
@@ -160,10 +160,10 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     }));
   }
 
-  /**
-   * registration block ?
-   */
-  isValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
+  @Computed()
+  get isValid(): boolean {
+    const page = this.page.snapshot;
+    const model = this.model.snapshot;
     const requiredValues = [
       page.user.firstName,
       page.user.lastName,
@@ -180,7 +180,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    * @param [useCallback] Explicit override selecting the register/download action
    */
   register(useCallback?: boolean): void {
-    if (!this.isValid(this.page.snapshot, this.model.snapshot)) {
+    if (!this.isValid) {
       return;
     }
 
@@ -272,7 +272,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
         '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
         '@id': `http://purl.org/ccf/0.5/${this.currentIdentifier}_placement`,
         '@type': 'SpatialPlacement',
-        target: model.id,
+        target: model.organIri as string,
         placement_date: this.currentDate,
 
         x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',

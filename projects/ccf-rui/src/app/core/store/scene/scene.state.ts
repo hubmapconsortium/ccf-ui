@@ -1,9 +1,10 @@
+import { RegistrationState } from './../registration/registration.state';
 import { Injectable, Injector } from '@angular/core';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
-import { SpatialSceneNode } from 'ccf-body-ui';
+import { SpatialSceneNode, SpatialEntityJsonLd } from 'ccf-body-ui';
 import { combineLatest, from, Observable, of } from 'rxjs';
 import { debounceTime, map, switchMap } from 'rxjs/operators';
 
@@ -33,8 +34,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.placementCube$, this.referenceOrganNodes$]).pipe(
-      map(([placement, nodes]) => nodes.length > 0 ? [...placement, ...nodes] : [])
+    return combineLatest([this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$]).pipe(
+      map(([placement, nodes, prevNodes]) => nodes.length > 0 ? [...placement, ...prevNodes, ...nodes] : [])
     );
   }
 
@@ -61,6 +62,33 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       debounceTime(400),
       switchMap(([anatomicalStructures, extractionSites]) =>
         this.createSceneNodes([...anatomicalStructures, ...extractionSites] as VisibilityItem[])
+      )
+    );
+  }
+
+  @Computed()
+  get previousRegistrationNodes$(): Observable<SpatialSceneNode[]> {
+    return combineLatest([this.model.organIri$, this.model.showPrevious$, this.registration.previousRegistrations$]).pipe(
+      map(([organIri, showPrevious, previousRegistrations]) =>
+        showPrevious ? previousRegistrations.map((entity: SpatialEntityJsonLd) => {
+          const p = Array.isArray(entity.placement) ? entity.placement[0] : entity.placement;
+          console.log(entity);
+          if (p.target === organIri) {
+            return {
+              '@id': entity['@id'],
+              '@type': 'SpatialSceneNode',
+              transformMatrix: new Matrix4(Matrix4.IDENTITY)
+                .translate([p.x_translation, p.y_translation, p.z_translation].map(n => n / 1000))
+                .rotateXYZ([p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians))
+                .scale([entity.x_dimension, entity.y_dimension, entity.z_dimension].map(n => n / 1000)),
+              color: [25, 118, 210, 200],
+              tooltip: entity.label,
+              unpickable: true
+            } as SpatialSceneNode;
+          } else {
+            return undefined as unknown as SpatialSceneNode;
+          }
+        }).filter(e => !!e) : []
       )
     );
   }
@@ -123,6 +151,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   /** Reference to the model state */
   private model: ModelState;
+  private registration: RegistrationState;
 
   /**
    * Creates an instance of scene state.
@@ -146,6 +175,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     // Injecting page and model states in the constructor breaks things!?
     // Lazy load here
     this.model = this.injector.get(ModelState);
+    this.registration = this.injector.get(RegistrationState);
   }
 
   private createSceneNodes(items: VisibilityItem[]): Observable<SpatialSceneNode[]> {

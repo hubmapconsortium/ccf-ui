@@ -8,6 +8,7 @@
 export * from './lib/body-ui-layer';
 export * from './lib/body-ui';
 export * from './lib/shared/spatial-scene-node';
+export * from './lib/shared/ccf-spatial-jsonld';
 
 export * from './lib/util/load-gltf';
 export * from './lib/util/scene-traversal';

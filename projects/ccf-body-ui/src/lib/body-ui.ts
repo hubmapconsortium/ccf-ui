@@ -25,6 +25,7 @@ export interface BodyUIProps {
   target: Matrix4 | number[];
   interactive: boolean;
   rotation: number;
+  zoom: number;
 }
 
 export interface PickInfo<D> {
@@ -89,7 +90,7 @@ export class BodyUI {
         target: deckProps.target || [0.5, 0.5, 0],
         rotationX: 0,
         rotationOrbit: deckProps.rotation || 0,
-        zoom: 9.5
+        zoom: deckProps.zoom || 9.5
       } as BodyUIViewStateProps
     });
     if (deckProps.rotation) {
@@ -168,6 +169,15 @@ export class BodyUI {
       viewState: {
         ...this.deck.props.viewState,
         rotationOrbit: value
+      } as BodyUIViewStateProps
+    });
+  }
+
+  setZoom(value: number): void {
+    this.deck.setProps({
+      viewState: {
+        ...this.deck.props.viewState,
+        zoom: value
       } as BodyUIViewStateProps
     });
   }

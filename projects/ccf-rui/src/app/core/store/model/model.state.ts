@@ -42,6 +42,8 @@ export interface ModelStateModel {
   label: string;
   /** Organ name */
   organ: OrganInfo;
+  /** Reference Organ IRI */
+  organIri?: string;
   /** Sex if applicable */
   sex?: 'male' | 'female';
   /** Side if applicable */
@@ -79,6 +81,7 @@ export interface ModelStateModel {
     id: '',
     label: '',
     organ: { src: '', name: '' } as OrganInfo,
+    organIri: '',
     sex: 'male',
     side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
@@ -109,6 +112,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly viewSide$ = this.state$.pipe(pluck('viewSide'));
   /** Organ observable */
   readonly organ$ = this.state$.pipe(pluck('organ'));
+  /** Organ IRI observable */
+  readonly organIri$ = this.state$.pipe(pluck('organIri'));
   /** Sex observable */
   readonly sex$ = this.state$.pipe(pluck('sex'));
   /** Side observable */
@@ -186,27 +191,15 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.ctx.patchState({ viewSide });
   }
 
-  /**
-   * Gets the reference organ's IRI based on the current state
-   */
-  @Computed()
-  get organIri$(): Observable<string> {
-    return combineLatest([this.organ$, this.sex$, this.side$]).pipe(
-      switchMap(([organ, sex, side]) =>
-        this.dataSourceService.getReferenceOrganIri(organ?.name || '', sex, side) as Observable<string>
-      ),
-      filter((iri) => !!iri)
-    );
-  }
-
+  @DataAction()
   private async onOrganIriChange(): Promise<void> {
-    const iri = await this.dataSourceService.getReferenceOrganIri(
+    const organIri = await this.dataSourceService.getReferenceOrganIri(
       this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
     ).toPromise();
 
-    if (iri) {
+    if (organIri) {
       const db = await this.dataSourceService.getDB();
-      const structures = (db.anatomicalStructures[iri] || []).map((entity) => ({
+      const structures = (db.anatomicalStructures[organIri] || []).map((entity) => ({
         id: entity['@id'],
         name: entity.label,
         visible: true,
@@ -215,7 +208,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       } as VisibilityItem));
       this.setAnatomicalStructures(structures);
 
-      const sets = (db.extractionSets[iri] || []).map((set) => ({
+      const sets = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,
         sites: set.extractionSites.map((entity) => ({
           id: entity['@id'],
@@ -228,6 +221,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       this.setExtractionSets(sets);
       this.setExtractionSites(sets.length > 0 ? sets[0].sites : []);
     }
+
+    this.ctx.patchState({ organIri });
   }
 
   /**

@@ -39,6 +39,17 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.bodyUI?.setRotation(value);
   }
 
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  get zoom(): number {
+    return this._zoom;
+  }
+
+  set zoom(value: number) {
+    this._zoom = value;
+    this.bodyUI?.setZoom(value);
+  }
+
   @Output()
   readonly rotationChange = new EventEmitter<number>();
 
@@ -60,6 +71,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
 
   private _interactive = true;
   private _rotation = 0;
+  private _zoom = 9.5;
   private _scene: SpatialSceneNode[] = [];
   private subscriptions: Subscription[] = [];
 
@@ -87,7 +99,14 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
    */
   private async setupBodyUI(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
-    const bodyUI = new BodyUI({ id: 'body-ui', canvas, target: [0, 0, 0], rotation: this.rotation, interactive: this.interactive});
+    const bodyUI = new BodyUI({
+      id: 'body-ui',
+      canvas,
+      zoom: this.zoom,
+      target: [0, 0, 0],
+      rotation: this.rotation,
+      interactive: this.interactive
+    });
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
     await bodyUI.initialize();
     this.bodyUI = bodyUI;

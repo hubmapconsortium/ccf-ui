@@ -15,6 +15,7 @@
   [scene]="scene.gizmo$ | async"
   [rotation]="scene.rotation$ | async"
   [interactive]="false"
+  [zoom]="9.5"
   #gizmo
 ></ccf-body-ui>
 
@@ -23,6 +24,7 @@
   [scene]="scene.nodes$ | async"
   [rotation]="scene.rotation$ | async"
   (rotationChange)="gizmo.rotation = $event"
+  [zoom]="11.5"
   [interactive]="true"
 ></ccf-body-ui>
 
@@ -30,6 +32,7 @@
   [class.hidden]="page.tutorialMode$ | async"
   [scene]="scene.rotatedNodes$ | async"
   [interactive]="false"
+  [zoom]="11.5"
   (nodeDrag)="handleNodeDrag($event)"
 ></ccf-body-ui>
 

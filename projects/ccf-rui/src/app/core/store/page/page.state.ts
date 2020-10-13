@@ -1,12 +1,14 @@
-import { Inject, Injectable } from '@angular/core';
-import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { Inject, Injectable, Injector } from '@angular/core';
+import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { Immutable } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
-import { pluck } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 
-import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
+import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { ModelState } from './../model/model.state';
 
 
 /** A record with information about a single person */
@@ -52,8 +54,16 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
   /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
+
   /** Tutorial mode observable */
-  readonly tutorialMode$ = this.state$.pipe(pluck('tutorialMode'));
+  @Computed()
+  get tutorialMode$(): Observable<boolean> {
+    return combineLatest([this.embedded$, this.model.organIri$]).pipe(
+      map(([embedded, organIri]) => !embedded && !organIri)
+    );
+  }
+
+  private model: ModelState;
 
   /**
    * Creates an instance of page state.
@@ -61,6 +71,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    * @param globalConfig The global configuration
    */
   constructor(
+    private readonly injector: Injector,
     @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
   ) {
     super();
@@ -71,6 +82,10 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    */
   ngxsOnInit(): void {
     super.ngxsOnInit();
+
+    // Injecting page and model states in the constructor breaks things!?
+    // Lazy load here
+    this.model = this.injector.get(ModelState);
 
     const { globalConfig: { embedded, homeUrl, user, tutorialMode } } = this;
     this.ctx.setState(patch<Immutable<PageStateModel>>({
