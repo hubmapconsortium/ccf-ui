@@ -1,4 +1,3 @@
-import { SpatialEntity } from 'ccf-database';
 import { Injectable, Injector } from '@angular/core';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
@@ -9,6 +8,7 @@ import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { combineLatest, from, Observable, of } from 'rxjs';
 import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
 
+import { environment } from '../../../../environments/environment';
 import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ModelState } from '../model/model.state';
 import { VisibilityItem } from './../../models/visibility-item';
@@ -20,6 +20,7 @@ import { RegistrationState } from './../registration/registration.state';
  */
 // tslint:disable-next-line: no-empty-interface
 export interface SceneStateModel {
+  showCollisions: boolean;
 }
 
 function getNodeBbox(model: SpatialSceneNode): AABB {
@@ -38,15 +39,19 @@ function getNodeBbox(model: SpatialSceneNode): AABB {
 @StateRepository()
 @State<SceneStateModel>({
   name: 'scene',
-  defaults: {}
+  defaults: {showCollisions: !environment.production}
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> implements NgxsOnInit {
 
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$]).pipe(
-      map(([placement, nodes, prevNodes]) => nodes.length > 0 ? [...placement, ...prevNodes, ...nodes] : [])
+    return combineLatest([
+      this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$, this.nodeCollisions$
+    ]).pipe(
+      map(([placement, nodes, prevNodes, collisions]) => nodes.length > 0 ? [
+        ...placement, ...prevNodes, ...nodes, ...(this.snapshot.showCollisions ? collisions : [])
+      ] : [])
     );
   }
 
@@ -83,7 +88,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       map(([anatomicalStructures, organIri, db]) =>
         anatomicalStructures
           // .filter(item => item.visible && item.opacity && item.opacity > 0)
-          // .map((node) => db.simpleSceneNodeLookup[node.id])
           .map(item => {
             if (db.sceneNodeLookup[item.id]) {
               return [{
@@ -131,7 +135,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
               transformMatrix: new Matrix4(Matrix4.IDENTITY)
                 .translate([p.x_translation, p.y_translation, p.z_translation].map(n => n / 1000))
                 .rotateXYZ([p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians))
-                .scale([entity.x_dimension, entity.y_dimension, entity.z_dimension].map(n => n / 1000)),
+                .scale([entity.x_dimension, entity.y_dimension, entity.z_dimension].map(n => n / 1000 / 2)),
               color: [25, 118, 210, 200],
               tooltip: entity.label,
               unpickable: true
@@ -154,7 +158,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
           transformMatrix: new Matrix4(Matrix4.IDENTITY)
             .translate([position.x, position.y, position.z].map(n => n / 1000))
             .rotateXYZ([rotation.x, rotation.y, rotation.z].map<number>(toRadians))
-            .scale([blockSize.x, blockSize.y, blockSize.z].map(n => n / 1000)),
+            .scale([blockSize.x, blockSize.y, blockSize.z].map(n => n / 1000 / 2)),
           color: [255, 255, 0, 200],
           tooltip: 'Draft Placement',
           unpickable: viewType === '3d',

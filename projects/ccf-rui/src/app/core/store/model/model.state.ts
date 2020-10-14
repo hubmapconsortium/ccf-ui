@@ -212,7 +212,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
           } as VisibilityItem;
         }
       }
-      this.setAnatomicalStructures(sortBy(Object.values(asLookup), ['name']));
+      this.setAnatomicalStructures(Object.values(asLookup));
 
       const sets = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,
