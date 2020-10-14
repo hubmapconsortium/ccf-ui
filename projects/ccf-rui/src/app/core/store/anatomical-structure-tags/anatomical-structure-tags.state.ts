@@ -63,6 +63,12 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
     );
   }
 
+  private _latestTags: Tag[] = [];
+
+  get latestTags(): Tag[] {
+    return this._latestTags;
+  }
+
   /** Reference to the model state */
   private model: ModelState;
   /** Reference to the scene state */
@@ -89,6 +95,10 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
     // Lazy load here
     this.model = this.injector.get(ModelState);
     this.scene = this.injector.get(SceneState);
+
+    this.tags$.subscribe((tags) => {
+      this._latestTags = tags;
+    });
   }
 
   @DataAction()

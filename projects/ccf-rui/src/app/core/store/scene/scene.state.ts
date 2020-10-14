@@ -152,19 +152,25 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   get placementCube$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$]).pipe(
       map(([viewType, blockSize, rotation, position]) => [
-        {
-          '@id': '#DraftPlacement',
-          '@type': 'SpatialSceneNode',
-          transformMatrix: new Matrix4(Matrix4.IDENTITY)
-            .translate([position.x, position.y, position.z].map(n => n / 1000))
-            .rotateXYZ([rotation.x, rotation.y, rotation.z].map<number>(toRadians))
-            .scale([blockSize.x, blockSize.y, blockSize.z].map(n => n / 1000 / 2)),
-          color: [255, 255, 0, 200],
-          tooltip: 'Draft Placement',
-          unpickable: viewType === '3d',
-        }
+        this.placementCube
       ])
     );
+  }
+
+  @Computed()
+  get placementCube(): SpatialSceneNode {
+    const {viewType, blockSize, rotation, position} = this.model.snapshot;
+    return {
+      '@id': '#DraftPlacement',
+      '@type': 'SpatialSceneNode',
+      transformMatrix: new Matrix4(Matrix4.IDENTITY)
+        .translate([position.x, position.y, position.z].map(n => n / 1000))
+        .rotateXYZ([rotation.x, rotation.y, rotation.z].map<number>(toRadians))
+        .scale([blockSize.x, blockSize.y, blockSize.z].map(n => n / 1000 / 2)),
+      color: [255, 255, 0, 200],
+      tooltip: 'Draft Placement',
+      unpickable: viewType === '3d',
+    };
   }
 
 

@@ -9,8 +9,10 @@ import { combineLatest, Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
+import { Tag } from '../../models/anatomical-structure-tag';
 import { MetaData } from '../../models/meta-data';
 import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
 import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
 
@@ -99,6 +101,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   /** Reference to the model state */
   private model: ModelState;
 
+  /** Reference to the AS Tag state */
+  private tags: AnatomicalStructureTagState;
+
   /**
    * Creates an instance of registration state.
    *
@@ -122,6 +127,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     // Lazy load here
     this.page = this.injector.get(PageState);
     this.model = this.injector.get(ModelState);
+    this.tags = this.injector.get(AnatomicalStructureTagState);
 
     const { globalConfig: { useDownload, register } } = this;
     this.ctx.patchState({
@@ -188,7 +194,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       globalConfig: { register: registrationCallback },
       page, model, snapshot
     } = this;
-    const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot);
+    const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot, this.tags.latestTags);
     const json = JSON.stringify(jsonObj, undefined, 2);
 
     if (useCallback || (useCallback === undefined && snapshot.useRegistrationCallback)) {
@@ -249,7 +255,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   private buildJsonLd(
     page: Immutable<PageStateModel>,
-    model: Immutable<ModelStateModel>
+    model: Immutable<ModelStateModel>,
+    tags: Tag[]
   ): object {
     return {
       '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
@@ -261,7 +268,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       creator_last_name: page.user.lastName,
       // creator_orcid: data.alignment_operator_orcid,
       creation_date: this.currentDate,
-      ccf_annotations: [],
+      ccf_annotations: tags.map(tag => tag.id),
 
       x_dimension: model.blockSize.x,
       y_dimension: model.blockSize.y,
