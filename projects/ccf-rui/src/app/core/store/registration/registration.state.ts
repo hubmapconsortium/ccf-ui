@@ -58,7 +58,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get jsonld$(): Observable<object> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(data => this.buildJsonLd(...data))
+      map(([page, model]) => this.buildJsonLd(page, model, this.tags.latestTags))
     );
   }
 
