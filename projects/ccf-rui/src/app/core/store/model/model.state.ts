@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
-import { VisibilityItem } from '../../models/visibility-item';
-import { ExtractionSet } from '../../models/extraction-set';
-import { combineLatest, Observable } from 'rxjs';
-import { filter, pluck, switchMap } from 'rxjs/operators';
-import { DataSourceService } from '../../services/data-source/data-source.service';
+import { sortBy } from 'lodash';
+import { pluck } from 'rxjs/operators';
 import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
+import { ExtractionSet } from '../../models/extraction-set';
+import { VisibilityItem } from '../../models/visibility-item';
+import { DataSourceService } from '../../services/data-source/data-source.service';
 
 
 /** A object with x, y, and z channels of the same type. */
@@ -212,17 +212,17 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
           } as VisibilityItem;
         }
       }
-      this.setAnatomicalStructures(Object.values(asLookup));
+      this.setAnatomicalStructures(sortBy(Object.values(asLookup), ['name']));
 
       const sets = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,
-        sites: set.extractionSites.map((entity) => ({
+        sites: sortBy(set.extractionSites.map((entity) => ({
           id: entity['@id'],
           name: entity.label,
           visible: false,
           opacity: 100,
           tooltip: entity.comment
-        } as VisibilityItem))
+        } as VisibilityItem)), 'name')
       } as ExtractionSet));
       this.setExtractionSets(sets);
       this.setExtractionSites(sets.length > 0 ? sets[0].sites : []);
