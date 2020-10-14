@@ -66,7 +66,7 @@ export async function simplifyScene(nodes: SpatialSceneNode[]): Promise<SpatialS
     const position = bbox.lowerBound.clone().vadd(halfSize);
     const transformMatrix = new Matrix4(Matrix4.IDENTITY)
       .translate(position.toArray())
-      .scale(size.toArray());
+      .scale(halfSize.toArray());
     const newNode: SpatialSceneNode = {
       ...model,
       transformMatrix,
