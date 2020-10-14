@@ -48,11 +48,12 @@
 
     <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="-17" tooltip="Keep track of reference organ rotation.">
     </ccf-toggleable-tooltip>
-
-    <div style="height: 10rem"></div>
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="up" [offset]="-21" tooltip="Use mouse, or touch if available, to move tissue registration block.">
-    </ccf-toggleable-tooltip>
   </div>
+</div>
+
+<div style="margin-top: -15rem" [hidden]="!(page.tutorialMode$ | async)">
+  <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="-2" tooltip="Use mouse, or touch if available, to move tissue registration block.">
+  </ccf-toggleable-tooltip>
 </div>
 
 <ccf-store-debug *ngIf="showDebugButtons && debugMode" class="debug" [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100">
