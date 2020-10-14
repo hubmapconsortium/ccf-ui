@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { sortBy } from 'lodash';
 import { pluck } from 'rxjs/operators';
+
 import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
-import { DataSourceService } from '../../services/data-source/data-source.service';
+import { ReferenceDataState } from '../reference-data/reference-data.state';
 
 
 /** A object with x, y, and z channels of the same type. */
@@ -127,8 +128,27 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   /** Extraction sets observable */
   readonly extractionSets$ = this.state$.pipe(pluck('extractionSets'));
 
-  constructor(private dataSourceService: DataSourceService) {
+  /** Reference to the reference data state */
+  private referenceData: ReferenceDataState;
+
+  /**
+   * Creates an instance of model state.
+   *
+   * @param injector Injector service used to lazy load reference data state
+   */
+  constructor(
+    private readonly injector: Injector
+  ) {
     super();
+  }
+
+  /**
+   * Initializes this state service.
+   */
+  ngxsOnInit(): void {
+    super.ngxsOnInit();
+
+    this.referenceData = this.injector.get(ReferenceDataState);
   }
 
   /**
@@ -192,13 +212,13 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   }
 
   @DataAction()
-  private async onOrganIriChange(): Promise<void> {
-    const organIri = await this.dataSourceService.getReferenceOrganIri(
+  private onOrganIriChange(): void {
+    const organIri = this.referenceData.getReferenceOrganIri(
       this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
-    ).toPromise();
+    );
 
     if (organIri) {
-      const db = await this.dataSourceService.getDB();
+      const db = this.referenceData.snapshot;
       const asLookup: { [id: string]: VisibilityItem} = {};
       for (const entity of (db.anatomicalStructures[organIri] || [])) {
         const iri = entity.representation_of || entity['@id'];

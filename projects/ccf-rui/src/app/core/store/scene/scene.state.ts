@@ -5,14 +5,14 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
-import { combineLatest, from, Observable, of } from 'rxjs';
-import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { debounceTime, filter, map } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
-import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ModelState } from '../model/model.state';
+import { RegistrationState } from '../registration/registration.state';
 import { VisibilityItem } from './../../models/visibility-item';
-import { RegistrationState } from './../registration/registration.state';
+import { ReferenceDataState } from './../reference-data/reference-data.state';
 
 
 /**
@@ -76,7 +76,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   get referenceOrganNodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
       debounceTime(400),
-      switchMap(([anatomicalStructures, extractionSites, organIri]) =>
+      map(([anatomicalStructures, extractionSites, organIri]) =>
         this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
       )
     );
@@ -84,7 +84,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   @Computed()
   get referenceOrganSimpleNodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.model.anatomicalStructures$, this.model.organIri$, from(this.dataSourceService.getDB())]).pipe(
+    return combineLatest([this.model.anatomicalStructures$, this.model.organIri$, this.referenceData.state$]).pipe(
       map(([anatomicalStructures, organIri, db]) =>
         anatomicalStructures
           // .filter(item => item.visible && item.opacity && item.opacity > 0)
@@ -213,16 +213,15 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   /** Reference to the model state */
   private model: ModelState;
   private registration: RegistrationState;
+  private referenceData: ReferenceDataState;
 
   /**
    * Creates an instance of scene state.
    *
    * @param injector Injector service used to lazy load page and model state
-   * @param dataSourceService data access service
    */
   constructor(
-    private readonly injector: Injector,
-    private readonly dataSourceService: DataSourceService
+    private readonly injector: Injector
   ) {
     super();
   }
@@ -237,30 +236,30 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     // Lazy load here
     this.model = this.injector.get(ModelState);
     this.registration = this.injector.get(RegistrationState);
+    this.referenceData = this.injector.get(ReferenceDataState);
   }
 
-  private createSceneNodes(organIri: string, items: VisibilityItem[]): Observable<SpatialSceneNode[]> {
-    return from(this.dataSourceService.getDB().then((db) => {
-      return items
-        .filter(item => item.visible && item.opacity && item.opacity > 0)
-        .map(item => {
-          if (db.sceneNodeLookup[item.id]) {
-            return [{
-              ...db.sceneNodeLookup[item.id],
+  private createSceneNodes(organIri: string, items: VisibilityItem[]): SpatialSceneNode[] {
+    const db = this.referenceData.snapshot;
+    return items
+      .filter(item => item.visible && item.opacity && item.opacity > 0)
+      .map(item => {
+        if (db.sceneNodeLookup[item.id]) {
+          return [{
+            ...db.sceneNodeLookup[item.id],
+            opacity: (item.opacity || 100) / 100,
+            color: [255, 255, 255, 255]
+          } as SpatialSceneNode];
+        } else {
+          return (db.anatomicalStructures[organIri] || [])
+            .filter((node) => node.representation_of === item.id)
+            .map((node) => ({
+              ...db.sceneNodeLookup[node['@id']],
               opacity: (item.opacity || 100) / 100,
               color: [255, 255, 255, 255]
-            } as SpatialSceneNode];
-          } else {
-            return (db.anatomicalStructures[organIri] || [])
-              .filter((node) => node.representation_of === item.id)
-              .map((node) => ({
-                ...db.sceneNodeLookup[node['@id']],
-                opacity: (item.opacity || 100) / 100,
-                color: [255, 255, 255, 255]
-              } as SpatialSceneNode));
-          }
-        })
-        .reduce((acc, nodes) => acc.concat(nodes), []);
-    }));
+            } as SpatialSceneNode));
+        }
+      })
+      .reduce((acc, nodes) => acc.concat(nodes), []);
   }
 }
