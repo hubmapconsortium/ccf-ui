@@ -14,28 +14,6 @@
   "anatomicalStructures": {
     "http://purl.org/ccf/latest/ccf.owl#VHFColon": [
       {
-        "@id": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Colon",
-        "@type": "SpatialEntity",
-        "label": "colon",
-        "creation_date": "2020-10-14T00:00:00.000Z",
-        "creator_first_name": "Kristin",
-        "creator_last_name": "Browne",
-        "dimension_units": "millimeter",
-        "x_dimension": 2974.7588699999997,
-        "y_dimension": 3055.047528,
-        "z_dimension": 2365.09991,
-        "creator": "Kristin Browne",
-        "rui_rank": 2250,
-        "object": {
-          "@id": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_ColonObj",
-          "@type": "SpatialObjectReference",
-          "file": "https://hubmapconsortium.github.io/ccf-3d-reference-object-library/VH_Female/United/VHF_United_Color.glb",
-          "file_format": "model/gltf-binary",
-          "file_subpath": "VHF_Colon"
-        },
-        "reference_organ": "http://purl.org/ccf/latest/ccf.owl#VHFColon"
-      },
-      {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Appendix",
         "@type": "SpatialEntity",
         "label": "vermiform appendix",
@@ -257,28 +235,6 @@
       }
     ],
     "http://purl.org/ccf/latest/ccf.owl#VHMColon": [
-      {
-        "@id": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Colon",
-        "@type": "SpatialEntity",
-        "label": "Visual Human Male Organs (VHM_Colon)",
-        "creation_date": "2020-10-14T00:00:00.000Z",
-        "creator_first_name": "Kristin",
-        "creator_last_name": "Browne",
-        "dimension_units": "millimeter",
-        "x_dimension": 323.90749500000004,
-        "y_dimension": 562.8760480000001,
-        "z_dimension": 281.055198,
-        "creator": "Kristin Browne",
-        "rui_rank": 4310,
-        "object": {
-          "@id": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_ColonObj",
-          "@type": "SpatialObjectReference",
-          "file": "https://hubmapconsortium.github.io/ccf-3d-reference-object-library/VH_Male/United/VHM_United_Color.glb",
-          "file_format": "model/gltf-binary",
-          "file_subpath": "VHM_Colon"
-        },
-        "reference_organ": "http://purl.org/ccf/latest/ccf.owl#VHMColon"
-      },
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Appendix",
         "@type": "SpatialEntity",
@@ -6585,41 +6541,6 @@
     ]
   },
   "sceneNodeLookup": {
-    "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Colon": {
-      "@id": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Colon",
-      "@type": "SpatialSceneNode",
-      "representation_of": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Colon",
-      "scenegraph": "https://hubmapconsortium.github.io/ccf-3d-reference-object-library/VH_Female/United/VHF_United_Color.glb",
-      "scenegraphNode": "VHF_Colon",
-      "transformMatrix": [
-        0.076,
-        0,
-        0,
-        0,
-        0,
-        0.076,
-        1.6875389974302382e-17,
-        0,
-        0,
-        -1.6875389974302382e-17,
-        0.076,
-        0,
-        -0.0036193962599999907,
-        -0.151058757936,
-        -0.0022174212200000293,
-        1
-      ],
-      "tooltip": "colon",
-      "unpickable": true,
-      "_lighting": "pbr",
-      "zoomBasedOpacity": false,
-      "color": [
-        255,
-        255,
-        255,
-        255
-      ]
-    },
     "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Appendix": {
       "@id": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Appendix",
       "@type": "SpatialSceneNode",
@@ -7100,41 +7021,6 @@
         1
       ],
       "tooltip": "Sigmoid colon",
-      "unpickable": true,
-      "_lighting": "pbr",
-      "zoomBasedOpacity": false,
-      "color": [
-        255,
-        255,
-        255,
-        255
-      ]
-    },
-    "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Colon": {
-      "@id": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Colon",
-      "@type": "SpatialSceneNode",
-      "representation_of": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Colon",
-      "scenegraph": "https://hubmapconsortium.github.io/ccf-3d-reference-object-library/VH_Male/United/VHM_United_Color.glb",
-      "scenegraphNode": "VHM_Colon",
-      "transformMatrix": [
-        0.677,
-        0,
-        0,
-        0,
-        0,
-        0.677,
-        1.503241975342462e-16,
-        0,
-        0,
-        -1.503241975342462e-16,
-        0.677,
-        0,
-        -0.016063320154500016,
-        -0.397234472752,
-        -0.014641631325000029,
-        1
-      ],
-      "tooltip": "Visual Human Male Organs (VHM_Colon)",
       "unpickable": true,
       "_lighting": "pbr",
       "zoomBasedOpacity": false,
@@ -16492,40 +16378,6 @@
     }
   },
   "simpleSceneNodeLookup": {
-    "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Colon": {
-      "@id": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Colon",
-      "@type": "SpatialSceneNode",
-      "representation_of": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Colon",
-      "transformMatrix": [
-        0.11304083705999998,
-        0,
-        0,
-        0,
-        0,
-        0.11609180606399998,
-        0,
-        0,
-        0,
-        0,
-        0.08987379658000003,
-        0,
-        0,
-        1.3877787807814457e-17,
-        1.3877787807814457e-17,
-        1
-      ],
-      "tooltip": "colon",
-      "unpickable": true,
-      "_lighting": "pbr",
-      "zoomBasedOpacity": false,
-      "color": [
-        255,
-        255,
-        255,
-        255
-      ],
-      "wireframe": true
-    },
     "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Appendix": {
       "@id": "http://purl.org/ccf/latest/ccf.owl#VHFemaleOrgans_VHF_Appendix",
       "@type": "SpatialSceneNode",
@@ -16991,40 +16843,6 @@
         1
       ],
       "tooltip": "Sigmoid colon",
-      "unpickable": true,
-      "_lighting": "pbr",
-      "zoomBasedOpacity": false,
-      "color": [
-        255,
-        255,
-        255,
-        255
-      ],
-      "wireframe": true
-    },
-    "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Colon": {
-      "@id": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Colon",
-      "@type": "SpatialSceneNode",
-      "representation_of": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Colon",
-      "transformMatrix": [
-        0.10964268705750002,
-        0,
-        0,
-        0,
-        0,
-        0.19053354224800004,
-        0,
-        0,
-        0,
-        0,
-        0.09513718452300005,
-        0,
-        -1.3877787807814457e-17,
-        2.7755575615628914e-17,
-        5.551115123125783e-17,
-        1
-      ],
-      "tooltip": "Visual Human Male Organs (VHM_Colon)",
       "unpickable": true,
       "_lighting": "pbr",
       "zoomBasedOpacity": false,
