@@ -17,5 +17,9 @@
         }
       }
     }
+
+    .position-display {
+      color: mat-color($foreground, contrast-text);
+    }
   }
 }

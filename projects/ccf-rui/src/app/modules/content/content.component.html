@@ -6,35 +6,54 @@
             class="icon reset" (click)="resetStage()">refresh</mat-icon>
 </div>
 
-<ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="21" tooltip="Change view.">
+<ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="-7" tooltip="Change view.">
 </ccf-toggleable-tooltip>
 
 <ccf-video-modal-launcher [visible]="page.tutorialMode$ | async"></ccf-video-modal-launcher>
 
-<ccf-body-ui class="gizmo"
-  [scene]="scene.gizmo$ | async"
-  [rotation]="scene.rotation$ | async"
-  [interactive]="false"
-  [zoom]="9.5"
-  #gizmo
-></ccf-body-ui>
+<div class="main-content">
+  <ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === '3d'"
+    [class.hidden]="page.tutorialMode$ | async"
+    [scene]="scene.nodes$ | async"
+    [rotation]="scene.rotation$ | async"
+    (rotationChange)="gizmo.rotation = $event"
+    [zoom]="11.5"
+    [interactive]="true"
+  ></ccf-body-ui>
 
-<ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === '3d'"
-  [class.hidden]="page.tutorialMode$ | async"
-  [scene]="scene.nodes$ | async"
-  [rotation]="scene.rotation$ | async"
-  (rotationChange)="gizmo.rotation = $event"
-  [zoom]="11.5"
-  [interactive]="true"
-></ccf-body-ui>
+  <ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === 'register'"
+    [class.hidden]="page.tutorialMode$ | async"
+    [scene]="scene.rotatedNodes$ | async"
+    [interactive]="false"
+    [zoom]="11.5"
+    (nodeDrag)="handleNodeDrag($event)"
+  ></ccf-body-ui>
 
-<ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === 'register'"
-  [class.hidden]="page.tutorialMode$ | async"
-  [scene]="scene.rotatedNodes$ | async"
-  [interactive]="false"
-  [zoom]="11.5"
-  (nodeDrag)="handleNodeDrag($event)"
-></ccf-body-ui>
+  <div class="gizmo-area">
+    <div class="position-display">
+      <div class="position">
+        <div class="x">X: {{ (position$ | async)?.x }}</div>
+        <div class="y">Y: {{ (position$ | async)?.y }}</div>
+        <div class="z">Z: {{ (position$ | async)?.z }}</div>
+      </div>
+    </div>
+
+    <ccf-body-ui class="gizmo"
+      [scene]="scene.gizmo$ | async"
+      [rotation]="scene.rotation$ | async"
+      [interactive]="false"
+      [zoom]="9.5"
+      #gizmo
+    ></ccf-body-ui>
+
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="-17" tooltip="Keep track of reference organ rotation.">
+    </ccf-toggleable-tooltip>
+
+    <div style="height: 10rem"></div>
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="up" [offset]="-21" tooltip="Use mouse, or touch if available, to move tissue registration block.">
+    </ccf-toggleable-tooltip>
+  </div>
+</div>
 
 <ccf-store-debug *ngIf="showDebugButtons && debugMode" class="debug" [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100">
 </ccf-store-debug>

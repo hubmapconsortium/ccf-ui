@@ -25,6 +25,10 @@ export class ContentComponent implements OnInit, OnDestroy {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-content';
 
+  readonly position$ = this.model.position$.pipe(
+    map(p => ({x: Math.floor(p.x), y: Math.floor(p.y), z: Math.floor(p.z)}))
+  );
+
   /** Whether the view type is 3d or register */
   readonly is3DView$ = this.model.viewType$.pipe(
     map(type => type === '3d')
@@ -97,7 +101,7 @@ export class ContentComponent implements OnInit, OnDestroy {
    * Method to reset registration block, crosshairs, and x,y,z information.
    */
   resetStage(): void {
-    this.model.setPosition({x: 200, y: 0, z: 0});
+    this.model.setPosition({x: 0, y: 0, z: 0});
     this.model.setViewSide('anterior');
     this.model.setViewType('register');
   }

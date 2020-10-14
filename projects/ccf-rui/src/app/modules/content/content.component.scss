@@ -17,26 +17,38 @@
     }
   }
 
-  .body-ui {
-    transition: opacity 1s;
+  .main-content {
+    display: flex;
 
-    .hidden {
-      opacity: 0;
-      z-index: 0;
+    .body-ui {
+      flex: auto;
+      transition: opacity 1s;
+
+      .hidden {
+        opacity: 0;
+        z-index: 0;
+      }
     }
-  }
 
-  .gizmo {
-    position: absolute;
-    top: 6rem;
-    transition: opacity 1s;
-    width: 4rem;
-    height: 5.5rem;
-    z-index: 10;
+    .gizmo-area {
+      width: 4rem;
+      margin-top: 1.5rem;
+      margin-left: 1.5rem;
+      z-index: 10;
 
-    .hidden {
-      opacity: 0;
-      z-index: 0;
+      .position-display {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .gizmo {
+        height: 5.5rem;
+        .hidden {
+          opacity: 0;
+          z-index: 0;
+        }
+      }
     }
   }
 

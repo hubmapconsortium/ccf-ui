@@ -1,16 +1,16 @@
 <div class="scroll-wrapper">
   <div class="container">
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="0.25"
+                            tooltip="Enter tissue block dimensions."></ccf-toggleable-tooltip>
     <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
     </ccf-block-size-input>
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-4"
-                            tooltip="Enter tissue block dimensions."></ccf-toggleable-tooltip>
 
     <mat-divider></mat-divider>
 
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-0.5"
+                            tooltip="Enter the thickness and number of planned tissue slices."></ccf-toggleable-tooltip>
     <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
     </ccf-slices-input>
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-4"
-                            tooltip="Enter the thickness and number of planned tissue slices."></ccf-toggleable-tooltip>
 
     <mat-divider></mat-divider>
 
@@ -21,6 +21,8 @@
 
     <mat-divider></mat-divider>
 
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="0.25"
+                            tooltip="Review tags generated via collision detection. Add or delete tags as needed."></ccf-toggleable-tooltip>
     <mat-expansion-panel class="tags-container">
       <mat-expansion-panel-header class="header">
         <mat-panel-title>Anatomical Structure Tags</mat-panel-title>

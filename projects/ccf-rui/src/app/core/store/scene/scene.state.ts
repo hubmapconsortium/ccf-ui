@@ -49,9 +49,9 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     return combineLatest([
       this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$, this.nodeCollisions$
     ]).pipe(
-      map(([placement, nodes, prevNodes, collisions]) => nodes.length > 0 ? [
+      map(([placement, nodes, prevNodes, collisions]) => [
         ...placement, ...prevNodes, ...nodes, ...(this.snapshot.showCollisions ? collisions : [])
-      ] : [])
+      ])
     );
   }
 
