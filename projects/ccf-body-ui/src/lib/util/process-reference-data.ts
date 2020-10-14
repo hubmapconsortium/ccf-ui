@@ -211,12 +211,17 @@ export const referenceDataConfig = {
 
 export async function processReferenceData(refEntities: SpatialEntityJsonLd[], config = referenceDataConfig): Promise<JsonLdObj[]> {
   const entities: {[id: string]: SpatialEntityJsonLd} = refEntities.reduce((acc, e) => {acc[e['@id']] = e; return acc;}, {});
+  const refOrganSources = new Set(config.referenceOrgans.map(s => s.source));
 
-  const jsonld = await processExtractionSites(config.extractionSitesUrl,
+  const jsonld = (await processExtractionSites(config.extractionSitesUrl,
     await processAnatomicalStructures(config.anatomicalStructuresUrl, [
       ...(await processSpatialEntities(entities['#VHFemaleOrgans'])),
       ...(await processSpatialEntities(entities['#VHMaleOrgans']))
-    ]));
+    ])))
+    .filter((entity: SpatialEntityJsonLd) =>
+      entity.reference_organ || entity.extraction_set ||
+      entity['@type'] === 'ExtractionSet' || refOrganSources.has(entity['@id'])
+    );
   const lookup = jsonld.reduce((acc, e) => {acc[e['@id']] = e; return acc;}, {});
 
   for (const refOrgan of config.referenceOrgans) {

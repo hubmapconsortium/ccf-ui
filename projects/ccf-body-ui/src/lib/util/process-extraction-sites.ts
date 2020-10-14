@@ -11,7 +11,7 @@ export async function processExtractionSites(sourceUrl: string, entities: Spatia
   rows.forEach( (row, rank) => {
     const entityId = `${row.source_spatial_entity}_${encodeURIComponent(row.node_name)}`;
     const entity = lookup[entityId] as SpatialEntityJsonLd;
-    if (entity) {
+    if (entity && row.extraction_set_for.trim().length > 0) {
       entity.extraction_set = row.extraction_set_id;
       entity.label = row.label || entity.label;
       entity.comment = row.tooltip || entity.comment;
