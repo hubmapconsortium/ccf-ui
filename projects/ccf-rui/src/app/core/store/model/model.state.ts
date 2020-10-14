@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { sortBy } from 'lodash';
@@ -45,6 +45,8 @@ export interface ModelStateModel {
   organ: OrganInfo;
   /** Reference Organ IRI */
   organIri?: string;
+  /** Reference Organ Dimensions */
+  organDimensions: XYZTriplet;
   /** Sex if applicable */
   sex?: 'male' | 'female';
   /** Side if applicable */
@@ -83,6 +85,7 @@ export interface ModelStateModel {
     label: '',
     organ: { src: '', name: '' } as OrganInfo,
     organIri: '',
+    organDimensions: { x: 100, y: 100, z: 100 },
     sex: 'male',
     side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
@@ -216,6 +219,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     const organIri = this.referenceData.getReferenceOrganIri(
       this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
     );
+    const organDimensions: XYZTriplet = {x: 100, y: 100, z: 100};
 
     if (organIri) {
       const db = this.referenceData.snapshot;
@@ -246,9 +250,21 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       } as ExtractionSet));
       this.setExtractionSets(sets);
       this.setExtractionSites(sets.length > 0 ? sets[0].sites : []);
+
+      const spatialEntity = db.organSpatialEntities[organIri];
+      organDimensions.x = spatialEntity.x_dimension;
+      organDimensions.y = spatialEntity.y_dimension;
+      organDimensions.z = spatialEntity.z_dimension;
     }
 
-    this.ctx.patchState({ organIri });
+    this.ctx.patchState({ organIri, organDimensions });
+    this.ctx.patchState({ position: this.defaultPosition });
+  }
+
+  @Computed()
+  get defaultPosition(): XYZTriplet {
+    const dims = this.snapshot.organDimensions;
+    return {x: dims.x, y: dims.y / 2, z: dims.z / 2};
   }
 
   /**

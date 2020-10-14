@@ -127,13 +127,14 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       map(([organIri, showPrevious, previousRegistrations]) =>
         showPrevious ? previousRegistrations.map((entity: SpatialEntityJsonLd) => {
           const p = Array.isArray(entity.placement) ? entity.placement[0] : entity.placement;
-          console.log(entity);
           if (p.target === organIri) {
+            const organDimensions = this.model.snapshot.organDimensions;
+            const dims = [organDimensions.x, organDimensions.y, organDimensions.z].map(n => -n / 1000 / 2);
             return {
               '@id': entity['@id'],
               '@type': 'SpatialSceneNode',
               transformMatrix: new Matrix4(Matrix4.IDENTITY)
-                .translate([p.x_translation, p.y_translation, p.z_translation].map(n => n / 1000))
+                .translate([p.x_translation, p.y_translation, p.z_translation].map((n, i) => n / 1000 + dims[i]))
                 .rotateXYZ([p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians))
                 .scale([entity.x_dimension, entity.y_dimension, entity.z_dimension].map(n => n / 1000 / 2)),
               color: [25, 118, 210, 200],
@@ -159,12 +160,13 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   @Computed()
   get placementCube(): SpatialSceneNode {
-    const {viewType, blockSize, rotation, position} = this.model.snapshot;
+    const {viewType, blockSize, rotation, position, organDimensions} = this.model.snapshot;
+    const dims = [organDimensions.x, organDimensions.y, organDimensions.z].map(n => -n / 1000 / 2);
     return {
       '@id': '#DraftPlacement',
       '@type': 'SpatialSceneNode',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([position.x, position.y, position.z].map(n => n / 1000))
+        .translate([position.x, position.y, position.z].map((n, i) => n / 1000 + dims[i]))
         .rotateXYZ([rotation.x, rotation.y, rotation.z].map<number>(toRadians))
         .scale([blockSize.x, blockSize.y, blockSize.z].map(n => n / 1000 / 2)),
       color: [255, 255, 0, 200],

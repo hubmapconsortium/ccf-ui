@@ -101,7 +101,7 @@ export class ContentComponent implements OnInit, OnDestroy {
    * Method to reset registration block, crosshairs, and x,y,z information.
    */
   resetStage(): void {
-    this.model.setPosition({x: 0, y: 0, z: 0});
+    this.model.setPosition(this.model.defaultPosition);
     this.model.setViewSide('anterior');
     this.model.setViewType('register');
   }
@@ -110,20 +110,21 @@ export class ContentComponent implements OnInit, OnDestroy {
     if (event.node['@id'] === '#DraftPlacement') {
       if (event.info.coordinate) {
         const [a, b] = (event.info.coordinate as number[]).map(n => n * 1000) as [number, number];
-        const {position, viewSide } = this.model.snapshot;
+        const {position, viewSide, organDimensions } = this.model.snapshot;
+        const dims = [organDimensions.x, organDimensions.y, organDimensions.z].map(n => n / 2);
         let newPosition = position;
         switch (viewSide) {
           case 'anterior':
-            newPosition = {x: a, y: b, z: position.z};
+            newPosition = {x: a + dims[0], y: b + dims[1], z: position.z};
             break;
           case 'posterior':
-            newPosition = {x: -a, y: b, z: position.z};
+            newPosition = {x: -a + dims[0], y: b + dims[1], z: position.z};
             break;
           case 'left':
-            newPosition = {x: position.x, y: b, z: -a};
+            newPosition = {x: position.x, y: b + dims[1], z: -a + dims[2]};
             break;
           case 'right':
-            newPosition = {x: position.x, y: b, z: a};
+            newPosition = {x: position.x, y: b + dims[1], z: a + dims[2]};
             break;
         }
         this.model.setPosition(newPosition);
