@@ -132,20 +132,20 @@ describe('RegistrationState', () => {
       expect(value).toBeInstanceOf(Boolean);
     });
 
-    it('should consider isValid true if the user and organ are set', async () => {
-      const result = state.isValid(testPage, testModel);
+    it('should consider isDataValid true if the user and organ are set', async () => {
+      const result = state.isDataValid(testPage, testModel);
       expect(result).toBeTrue();
     });
 
-    it('should consider isValid false if the organ is not set', async () => {
+    it('should consider isDataValid false if the organ is not set', async () => {
       const invalidModel = { ...testModel, organ: {} as OrganInfo };
-      const result = state.isValid(testPage, invalidModel);
+      const result = state.isDataValid(testPage, invalidModel);
       expect(result).toBeFalse();
     });
 
-    it('should consider isValid false if the user is not set', async () => {
+    it('should consider isDataValid false if the user is not set', async () => {
       const invalidPage = { ...testPage, user: {} as Person };
-      const result = state.isValid(invalidPage, testModel);
+      const result = state.isDataValid(invalidPage, testModel);
       expect(result).toBeFalse();
     });
   });
@@ -215,11 +215,11 @@ describe('RegistrationState', () => {
       callback = jasmine.createSpy();
       download = spyOn(FileSaver, 'saveAs');
       TestBed.inject(GLOBAL_CONFIG).register = callback;
-      spyOn(state, 'isValid').and.returnValue(true);
+      spyOn(state, 'isDataValid').and.returnValue(true);
     });
 
-    it('does nothing if isValid() is false', () => {
-      (state.isValid as jasmine.Spy).and.returnValue(false);
+    it('does nothing if isDataValid() is false', () => {
+      (state.isDataValid as jasmine.Spy).and.returnValue(false);
       state.register();
       expect(callback).not.toHaveBeenCalled();
       expect(download).not.toHaveBeenCalled();

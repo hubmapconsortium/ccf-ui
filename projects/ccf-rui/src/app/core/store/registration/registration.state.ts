@@ -166,10 +166,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     }));
   }
 
-  @Computed()
-  get isValid(): boolean {
-    const page = this.page.snapshot;
-    const model = this.model.snapshot;
+  isDataValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
     const requiredValues = [
       page.user.firstName,
       page.user.lastName,
@@ -178,6 +175,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     ];
 
     return requiredValues.every(value => !!value);
+  }
+
+  @Computed()
+  get isValid(): boolean {
+    return this.isDataValid(this.page.snapshot, this.model.snapshot);
   }
 
   /**
