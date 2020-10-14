@@ -9,6 +9,7 @@ import { environment } from '../../../../environments/environment';
 
 export interface ReferenceOrganDatabase {
   organIRILookup: {[lookup: string]: string};
+  organSpatialEntities: {[iri: string]: SpatialEntity};
   anatomicalStructures: {[iri: string]: SpatialEntity[]};
   extractionSets: {[iri: string]: ExtractionSet[]};
   sceneNodeLookup: {[iri: string]: SpatialSceneNode};

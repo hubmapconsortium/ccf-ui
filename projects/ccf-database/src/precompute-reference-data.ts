@@ -24,10 +24,11 @@ async function main(outputFile?: string): Promise<void> {
   });
   await db.connect();
   const organs = db.scene.getReferenceOrgans();
-  const organIRILookup: { [options: string]: string} = {};
-  const anatomicalStructures: { [iri: string]: SpatialEntity[]} = {};
-  const extractionSets: { [iri: string]: ExtractionSet[]} = {};
-  const sceneNodeLookup: { [iri: string]: SpatialSceneNode } = {};
+  const organIRILookup: {[options: string]: string} = {};
+  const organSpatialEntities: {[iri: string]: SpatialEntity} = {};
+  const anatomicalStructures: {[iri: string]: SpatialEntity[]} = {};
+  const extractionSets: {[iri: string]: ExtractionSet[]} = {};
+  const sceneNodeLookup: {[iri: string]: SpatialSceneNode} = {};
   const sceneNodeAttrs: Partial<SpatialSceneNode> = {
     unpickable: true,
     _lighting: 'pbr',
@@ -37,7 +38,7 @@ async function main(outputFile?: string): Promise<void> {
 
   for (const organ of organs) {
     const iri = organ['@id'];
-    const organSpatialEntity = db.scene.getSpatialEntity(iri);
+    const organSpatialEntity = organSpatialEntities[iri] = db.scene.getSpatialEntity(iri);
     anatomicalStructures[iri] = db.scene.getAnatomicalStructures(iri);
     extractionSets[iri] = db.scene.getExtractionSets(iri);
     organIRILookup[[organ.label, organ.sex, organ.side].join('|')] = iri;
@@ -58,7 +59,6 @@ async function main(outputFile?: string): Promise<void> {
           ].map(n => -n / 1000 / 2);
 
           sceneNode.transformMatrix.translate(dimensions);
-          sceneNode.transformMatrix = new Matrix4(Matrix4.IDENTITY).multiplyRight(sceneNode.transformMatrix);
           sceneNode.representation_of = sceneNode.representation_of || sceneNode['@id'];
           sceneNodeLookup[node['@id']] = sceneNode;
         } else {
@@ -73,6 +73,7 @@ async function main(outputFile?: string): Promise<void> {
 
   const data = {
     organIRILookup,
+    organSpatialEntities,
     anatomicalStructures,
     extractionSets,
     sceneNodeLookup,
