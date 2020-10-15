@@ -279,7 +279,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
       placement: {
         '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
-        '@id': `http://purl.org/ccf/0.5/${this.currentIdentifier}_placement`,
+        '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}_placement`,
         '@type': 'SpatialPlacement',
         target: model.organIri as string,
         placement_date: this.currentDate,
