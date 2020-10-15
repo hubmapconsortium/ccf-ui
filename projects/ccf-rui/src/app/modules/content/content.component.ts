@@ -34,6 +34,14 @@ export class ContentComponent implements OnInit, OnDestroy {
     map(type => type === '3d')
   );
 
+  readonly bounds$ = this.model.organDimensions$.pipe(
+    map(dims => ({
+      x: (dims.x + 10) / 1000,
+      y: (dims.y + 10) / 1000,
+      z: (dims.z + 10) / 1000
+    }))
+  );
+
   /** Whether the content area is very narrow */
   isNarrowView = false;
 

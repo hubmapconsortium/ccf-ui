@@ -3,6 +3,7 @@ import { BodyUI, NodeDragEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { Subscription } from 'rxjs';
 
 import { ModelState } from '../../core/store/model/model.state';
+import { XYZTriplet } from './../../core/store/model/model.state';
 
 
 /**
@@ -50,6 +51,17 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.bodyUI?.setZoom(value);
   }
 
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  get bounds(): XYZTriplet {
+    return this._bounds;
+  }
+
+  set bounds(value: XYZTriplet) {
+    this._bounds = value;
+    this.zoomToBounds(value);
+  }
+
   @Output()
   readonly rotationChange = new EventEmitter<number>();
 
@@ -72,6 +84,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   private _interactive = true;
   private _rotation = 0;
   private _zoom = 9.5;
+  private _bounds: XYZTriplet;
   private _scene: SpatialSceneNode[] = [];
   private subscriptions: Subscription[] = [];
 
@@ -94,6 +107,17 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.setupBodyUI();
   }
 
+  zoomToBounds(bounds: XYZTriplet): void {
+    if (this.bodyCanvas) {
+      const {width, height} = this.bodyCanvas.nativeElement;
+      const zoom = Math.min(
+        Math.log2(width / bounds.x),
+        Math.log2(height / bounds.y)
+      );
+      this.zoom = zoom;
+    }
+  }
+
   /**
    * Set up required to render the body UI with the scene nodes.
    */
@@ -110,8 +134,12 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
     await bodyUI.initialize();
     this.bodyUI = bodyUI;
+    (window as unknown as {bodyUI: unknown}).bodyUI = bodyUI;
     if (this.scene?.length > 0) {
       this.bodyUI.setScene(this.scene);
+    }
+    if (this.bounds) {
+      this.zoomToBounds(this.bounds);
     }
     this.subscriptions = [
       this.bodyUI.sceneRotation$.subscribe((rotation) => this.rotationChange.next(rotation)),

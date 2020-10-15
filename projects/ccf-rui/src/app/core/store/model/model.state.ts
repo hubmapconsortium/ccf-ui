@@ -118,6 +118,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly organ$ = this.state$.pipe(pluck('organ'));
   /** Organ IRI observable */
   readonly organIri$ = this.state$.pipe(pluck('organIri'));
+  /** Organ IRI observable */
+  readonly organDimensions$ = this.state$.pipe(pluck('organDimensions'));
   /** Sex observable */
   readonly sex$ = this.state$.pipe(pluck('sex'));
   /** Side observable */
