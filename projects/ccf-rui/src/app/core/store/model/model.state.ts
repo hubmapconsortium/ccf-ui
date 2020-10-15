@@ -255,6 +255,13 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       organDimensions.x = spatialEntity.x_dimension;
       organDimensions.y = spatialEntity.y_dimension;
       organDimensions.z = spatialEntity.z_dimension;
+
+      // FIXME: Female dimensions are off by a lot...
+      if (this.snapshot.sex === 'female') {
+        organDimensions.x *= 0.10439349064182037;
+        organDimensions.y *= 0.1354268413617529;
+        organDimensions.z *= 0.1175706855539159;
+      }
     }
 
     this.ctx.patchState({ organIri, organDimensions });
