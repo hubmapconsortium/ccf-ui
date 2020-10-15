@@ -6,7 +6,7 @@ import { ResizeSensor } from 'css-element-queries';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { ModelState, XYZTriplet } from '../../core/store/model/model.state';
+import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 import { SceneState } from '../../core/store/scene/scene.state';

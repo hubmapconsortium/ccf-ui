@@ -36,7 +36,7 @@ export interface ReferenceDataStateModel {
 @Injectable()
 export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDataStateModel> {
 
-  constructor(private globals: GlobalsService) {
+  constructor(private readonly globals: GlobalsService) {
     super();
   }
 
@@ -75,7 +75,6 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
     }
     const lookup = [organ, sex, side].join('|').toUpperCase();
     const key = Object.keys(db.organIRILookup).find((code) => code.toUpperCase().endsWith(lookup));
-    const iri = key ? db.organIRILookup[key] : undefined;
-    return iri;
+    return key ? db.organIRILookup[key] : undefined;
   }
 }
