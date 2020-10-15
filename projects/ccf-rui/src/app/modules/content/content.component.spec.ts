@@ -34,7 +34,9 @@ describe('ContentComponent', () => {
       .mock(ModelState, {
         ...mockModelState,
         viewType$: of('register'),
-        viewSide$: of('anterior')
+        viewSide$: of('anterior'),
+        position$: of({x: 0, y: 0, z: 0}),
+        organDimensions$: of({x: 0, y: 0, z: 0}),
       })
       .mock(PageState, {
         ...mockPageState,

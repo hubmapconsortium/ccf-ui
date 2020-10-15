@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { GLOBAL_CONFIG } from '../../services/config/config';
+import { ModelState } from './../model/model.state';
 import { PageState } from './page.state';
 
 
@@ -20,9 +21,10 @@ describe('PageState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([PageState])
+        NgxsModule.forRoot([PageState, ModelState])
       ],
       providers: [
+        ModelState,
         { provide: GLOBAL_CONFIG, useValue: {} }
       ]
     });
@@ -39,6 +41,7 @@ describe('PageState', () => {
     });
 
     state = TestBed.inject(PageState);
+    state.ngxsOnInit();
   });
 
   it('has the latest embedded', async () => {
@@ -84,15 +87,5 @@ describe('PageState', () => {
 
     const value = await nextValue(state.embedded$);
     expect(value).toEqual(true);
-  });
-
-  it('updates tutorialMode', async () => {
-    state.setTutorialMode(true);
-    const value = await nextValue(state.tutorialMode$);
-    expect(value).toEqual(true);
-
-    state.setTutorialMode(false);
-    const value2 = await nextValue(state.tutorialMode$);
-    expect(value2).toEqual(false);
   });
 });

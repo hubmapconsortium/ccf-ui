@@ -4,6 +4,8 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { ModelState } from './../model/model.state';
+import { SceneState } from './../scene/scene.state';
 import { AnatomicalStructureTagState } from './anatomical-structure-tags.state';
 
 
@@ -18,9 +20,10 @@ describe('AnatomicalStructureTagsState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([AnatomicalStructureTagState])
+        NgxsModule.forRoot([AnatomicalStructureTagState, SceneState, ModelState])
       ],
       providers: [
+        AnatomicalStructureTagState, SceneState, ModelState
       ]
     });
 
@@ -41,7 +44,7 @@ describe('AnatomicalStructureTagsState', () => {
   });
 
   it('has the latest tags', async () => {
-    const value = await nextValue(state.tags$);
+    const value = Object.values(await nextValue(state.entities$));
     expect(value).toEqual([{ id: 1, label: 'foo', type: 'assigned' }]);
   });
 });

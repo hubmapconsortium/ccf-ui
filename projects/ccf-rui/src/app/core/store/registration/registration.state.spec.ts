@@ -12,6 +12,7 @@ import { VisibilityItem } from '../../models/visibility-item';
 import { GLOBAL_CONFIG } from '../../services/config/config';
 import { ModelState, ModelStateModel } from '../model/model.state';
 import { PageState, PageStateModel, Person } from '../page/page.state';
+import { AnatomicalStructureTagState } from './../anatomical-structure-tags/anatomical-structure-tags.state';
 import { RegistrationState } from './registration.state';
 
 
@@ -21,6 +22,7 @@ const testModel: Immutable<ModelStateModel> = {
   id: '0',
   label: 'test',
   organ: { name: 'test', src: 'test' },
+  organDimensions: { x: 0, y: 0, z: 0 },
   blockSize: { x: 0, y: 0, z: 0 },
   rotation: { x: 0, y: 0, z: 0 },
   position: { x: 0, y: 0, z: 0 },
@@ -59,6 +61,7 @@ describe('RegistrationState', () => {
     id: 'a-b-c',
     blockSize: { x: 0, y: 0, z: 0 },
     rotation: { x: 0, y: 0, z: 0 },
+    position: { x: 0, y: 0, z: 0 },
     organ: {
       src: '',
       name: ''
@@ -79,9 +82,10 @@ describe('RegistrationState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([RegistrationState])
+        NgxsModule.forRoot([RegistrationState, AnatomicalStructureTagState, ModelState, PageState])
       ],
       providers: [
+        AnatomicalStructureTagState,
         {
           provide: PageState, useValue: {
             state$: pageStateSubject,
@@ -110,6 +114,7 @@ describe('RegistrationState', () => {
     });
 
     state = TestBed.inject(RegistrationState);
+    state.ngxsOnInit();
   });
 
   describe('.metadata$', () => {
