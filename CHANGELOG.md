@@ -1,6 +1,22 @@
 # Changelog
 
-Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface (EUI).
+Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
+
+## RUI 1.0 BETA - 2020-10-16
+
+### Added in RUI 1.0 BETA
+
+* Created the first version of the RUI 1.0. This version is a BETA and works in standalone mode only. The next version will include full support and integration into the HuBMAP Ingestion Portal.
+* 10 Reference Organs are available to choose from (a combination of 4 organs, 2 sexes, and one organ with 2 sides [kidney])
+* Implemented automatic tagging of data via collisions with anatomical structures
+* RUI Location data is in standard JSON-LD format linked via the CCF Ontology and related ontologies
+* Implemented extraction sites display to help guide placement of tissues
+
+### Known Issues in RUI 1.0 BETA
+
+* While support for embedding is implemented, more testing and collaboration with IEC is required before it is made fully available. Initial embedding documentation is available [here](RUI_EMBEDDING.md).
+* When adjusting transparency via the left-hand `Anatomical Structures` menu or `Show Previous Registrations` option, the transparency effect is not very good. This will be addressed before the RUI 1.0 production release.
+* Sometimes the 3d organ fails to load when clicking through reference organs quickly (and other side cases). If this happens, just refresh and try again.
 
 ## 1.1.0 - 2020-07-31
 

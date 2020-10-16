@@ -1,5 +1,7 @@
-# Embedding
+# Embedding the RUI
+
 ## Code
+
 To embed *CCF-RUI* the following code snippet should be used.
 
 ```html
@@ -39,7 +41,9 @@ To embed *CCF-RUI* the following code snippet should be used.
 ```
 
 ## Configuration
+
 *CCF-RUI* can be customized by adding code to the global `ruiConfig` object. I.e.
+
 ```js
 window.ruiConfig = {
   configuration options...
@@ -47,10 +51,11 @@ window.ruiConfig = {
 ```
 
 The following options are available for configuration
-- `embedded(boolean)` - Whether the *CCF-RUI* is embedded as a part of HUBMap or as a standalone app. If not specified it is inferred from the presence of the `user` configuration option.
-- `tutorialMode(boolean)` - Whether to present *CCF-RUI* in tutorial mode with additional textual information.
-- `homeUrl(string)` - URL that the user will be redirected to when clicking the HUBMap logo or back button in the upper left corner of the app.
-- `user({ firstName(string), lastName(string) })` - The user of the app. Should always be specified when the app is in embedded mode!
-- `register(function)` A callback function called whenever the user hits registers. It should take a single argument which is the stringified json object containing the registration data.
-- `useDownload(boolean)` - Prefer downloading the json registration data rather than using the `register` callback.
-- `fetchPreviousRegistrations(function)` - A callback function called when the user wishes to see previous registered objects. It should take no arguments and return a list of previously registrations, possibly asynchronously.
+
+- `embedded: boolean` - Whether the *CCF-RUI* is embedded as a part of HUBMap or as a standalone app. If not specified it is inferred from the presence of the `user` configuration option.
+- `tutorialMode: boolean` - Whether to present *CCF-RUI* in tutorial mode with additional textual information.
+- `homeUrl: string` - URL that the user will be redirected to when clicking the HUBMap logo or back button in the upper left corner of the app.
+- `user: { firstName: string, lastName: string })` - The user of the app. Should always be specified when the app is in embedded mode!
+- `register: (rui_location: string) => void` A callback function called whenever the user hits registers. It should take a single argument which is the stringified json object containing the registration data.
+- `useDownload: boolean` - Prefer downloading the json registration data rather than using the `register` callback.
+- `fetchPreviousRegistrations: () => rui_location[] | Promise<rui_location[]>` - A callback function called when the user wishes to see previous registered objects. It should take no arguments and return a list of previous registrations, possibly asynchronously.
