@@ -17,12 +17,38 @@
     }
   }
 
-  .body-ui {
-    transition: opacity 1s;
+  .main-content {
+    display: flex;
 
-    .hidden {
-      opacity: 0;
-      z-index: 0;
+    .body-ui {
+      flex: auto;
+      transition: opacity 1s;
+
+      .hidden {
+        opacity: 0;
+        z-index: 0;
+      }
+    }
+
+    .gizmo-area {
+      width: 4rem;
+      margin-top: 1.5rem;
+      margin-left: 1.5rem;
+      z-index: 10;
+
+      .position-display {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .gizmo {
+        height: 5.5rem;
+        .hidden {
+          opacity: 0;
+          z-index: 0;
+        }
+      }
     }
   }
 

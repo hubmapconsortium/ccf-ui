@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
-import { VisibilityItem } from '../../models/visibility-item';
-import { ExtractionSet } from '../../models/extraction-set';
-import { combineLatest, Observable } from 'rxjs';
-import { filter, pluck, switchMap } from 'rxjs/operators';
-import { DataSourceService } from '../../services/data-source/data-source.service';
+import { sortBy } from 'lodash';
+import { pluck } from 'rxjs/operators';
+
 import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
+import { ExtractionSet } from '../../models/extraction-set';
+import { VisibilityItem } from '../../models/visibility-item';
+import { ReferenceDataState } from '../reference-data/reference-data.state';
 
 
 /** A object with x, y, and z channels of the same type. */
@@ -42,6 +43,10 @@ export interface ModelStateModel {
   label: string;
   /** Organ name */
   organ: OrganInfo;
+  /** Reference Organ IRI */
+  organIri?: string;
+  /** Reference Organ Dimensions */
+  organDimensions: XYZTriplet;
   /** Sex if applicable */
   sex?: 'male' | 'female';
   /** Side if applicable */
@@ -50,6 +55,8 @@ export interface ModelStateModel {
   blockSize: XYZTriplet;
   /** Model rotation */
   rotation: XYZTriplet;
+  /** Model position */
+  position: XYZTriplet;
   /** Slice configuration */
   slicesConfig: SlicesConfig;
   /** View type */
@@ -77,10 +84,13 @@ export interface ModelStateModel {
     id: '',
     label: '',
     organ: { src: '', name: '' } as OrganInfo,
+    organIri: '',
+    organDimensions: { x: 100, y: 100, z: 100 },
     sex: 'male',
     side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
+    position: { x: 0, y: 0, z: 0 },
     slicesConfig: { thickness: NaN, numSlices: NaN },
     viewType: 'register',
     viewSide: 'anterior',
@@ -96,6 +106,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly blockSize$ = this.state$.pipe(pluck('blockSize'));
   /** Rotation observable */
   readonly rotation$ = this.state$.pipe(pluck('rotation'));
+  /** Position observable */
+  readonly position$ = this.state$.pipe(pluck('position'));
   /** Slice configuration observable */
   readonly slicesConfig$ = this.state$.pipe(pluck('slicesConfig'));
   /** View type observable */
@@ -104,6 +116,10 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly viewSide$ = this.state$.pipe(pluck('viewSide'));
   /** Organ observable */
   readonly organ$ = this.state$.pipe(pluck('organ'));
+  /** Organ IRI observable */
+  readonly organIri$ = this.state$.pipe(pluck('organIri'));
+  /** Organ IRI observable */
+  readonly organDimensions$ = this.state$.pipe(pluck('organDimensions'));
   /** Sex observable */
   readonly sex$ = this.state$.pipe(pluck('sex'));
   /** Side observable */
@@ -117,8 +133,27 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   /** Extraction sets observable */
   readonly extractionSets$ = this.state$.pipe(pluck('extractionSets'));
 
-  constructor(private dataSourceService: DataSourceService) {
+  /** Reference to the reference data state */
+  private referenceData: ReferenceDataState;
+
+  /**
+   * Creates an instance of model state.
+   *
+   * @param injector Injector service used to lazy load reference data state
+   */
+  constructor(
+    private readonly injector: Injector
+  ) {
     super();
+  }
+
+  /**
+   * Initializes this state service.
+   */
+  ngxsOnInit(): void {
+    super.ngxsOnInit();
+
+    this.referenceData = this.injector.get(ReferenceDataState);
   }
 
   /**
@@ -139,6 +174,16 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setRotation(rotation: XYZTriplet): void {
     this.ctx.patchState({ rotation });
+  }
+
+  /**
+   * Updates the position
+   *
+   * @param position The new position values
+   */
+  @DataAction()
+  setPosition(position: XYZTriplet): void {
+    this.ctx.patchState({ position });
   }
 
   /**
@@ -171,48 +216,64 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.ctx.patchState({ viewSide });
   }
 
-  /**
-   * Gets the reference organ's IRI based on the current state
-   */
-  @Computed()
-  get organIri$(): Observable<string> {
-    return combineLatest([this.organ$, this.sex$, this.side$]).pipe(
-      switchMap(([organ, sex, side]) =>
-        this.dataSourceService.getReferenceOrganIri(organ?.name || '', sex, side) as Observable<string>
-      ),
-      filter((iri) => !!iri)
-    );
-  }
-
-  private async onOrganIriChange(): Promise<void> {
-    const iri = await this.dataSourceService.getReferenceOrganIri(
+  @DataAction()
+  private onOrganIriChange(): void {
+    const organIri = this.referenceData.getReferenceOrganIri(
       this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
-    ).toPromise();
+    );
+    const organDimensions: XYZTriplet = {x: 100, y: 100, z: 100};
 
-    if (iri) {
-      const db = await this.dataSourceService.getDB();
-      const structures = (db.anatomicalStructures[iri] || []).map((entity) => ({
-        id: entity['@id'],
-        name: entity.label,
-        visible: true,
-        opacity: 100,
-        tooltip: entity.comment
-      } as VisibilityItem));
-      this.setAnatomicalStructures(structures);
+    if (organIri) {
+      const db = this.referenceData.snapshot;
+      const asLookup: { [id: string]: VisibilityItem} = {};
+      for (const entity of (db.anatomicalStructures[organIri] || [])) {
+        const iri = entity.representation_of || entity['@id'];
+        if (!asLookup[iri]) {
+          asLookup[iri] = {
+            id: entity.representation_of || entity['@id'],
+            name: entity.label,
+            visible: true,
+            opacity: 100,
+            tooltip: entity.comment
+          } as VisibilityItem;
+        }
+      }
+      this.setAnatomicalStructures(Object.values(asLookup));
 
-      const sets = (db.extractionSets[iri] || []).map((set) => ({
+      const sets = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,
-        sites: set.extractionSites.map((entity) => ({
+        sites: sortBy(set.extractionSites.map((entity) => ({
           id: entity['@id'],
           name: entity.label,
           visible: false,
           opacity: 100,
           tooltip: entity.comment
-        } as VisibilityItem))
+        } as VisibilityItem)), 'name')
       } as ExtractionSet));
       this.setExtractionSets(sets);
       this.setExtractionSites(sets.length > 0 ? sets[0].sites : []);
+
+      const spatialEntity = db.organSpatialEntities[organIri];
+      organDimensions.x = spatialEntity.x_dimension;
+      organDimensions.y = spatialEntity.y_dimension;
+      organDimensions.z = spatialEntity.z_dimension;
+
+      // FIXME: Female dimensions are off by a lot...
+      if (this.snapshot.sex === 'female') {
+        organDimensions.x *= 0.10439349064182037;
+        organDimensions.y *= 0.1354268413617529;
+        organDimensions.z *= 0.1175706855539159;
+      }
     }
+
+    this.ctx.patchState({ organIri, organDimensions });
+    this.ctx.patchState({ position: this.defaultPosition });
+  }
+
+  @Computed()
+  get defaultPosition(): XYZTriplet {
+    const dims = this.snapshot.organDimensions;
+    return {x: dims.x, y: dims.y / 2, z: dims.z / 2};
   }
 
   /**

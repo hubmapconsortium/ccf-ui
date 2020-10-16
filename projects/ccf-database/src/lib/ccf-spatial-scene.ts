@@ -11,6 +11,7 @@ export interface SpatialSceneNode {
   '@id': string;
   '@type': 'SpatialSceneNode';
   entityId?: string;
+  representation_of?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -19,6 +20,7 @@ export interface SpatialSceneNode {
   zoomBasedOpacity?: boolean;
   zoomToOnLoad?: boolean;
   color?: [number, number, number, number];
+  opacity?: number;
   transformMatrix: Matrix4;
   name?: string;
   tooltip: string;
@@ -156,6 +158,7 @@ export class CCFSpatialScene {
       return {
         '@id': source['@id'], '@type': 'SpatialSceneNode',
         entityId: source.entityId || undefined,
+        representation_of: source.representation_of || undefined,
         scenegraph: has3dObject ? source.object?.file : undefined,
         scenegraphNode: has3dObject ? source.object?.file_subpath : undefined,
         transformMatrix: transform,

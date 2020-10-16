@@ -1,13 +1,16 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, OnDestroy, OnInit,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, OnDestroy, OnInit
 } from '@angular/core';
+import { NodeDragEvent } from 'ccf-body-ui';
 import { ResizeSensor } from 'css-element-queries';
 import { map } from 'rxjs/operators';
 
+import { environment } from '../../../environments/environment';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 import { SceneState } from '../../core/store/scene/scene.state';
+
 
 /**
  * Main content component
@@ -22,9 +25,21 @@ export class ContentComponent implements OnInit, OnDestroy {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-content';
 
+  readonly position$ = this.model.position$.pipe(
+    map(p => ({x: Math.floor(p.x), y: Math.floor(p.y), z: Math.floor(p.z)}))
+  );
+
   /** Whether the view type is 3d or register */
   readonly is3DView$ = this.model.viewType$.pipe(
     map(type => type === '3d')
+  );
+
+  readonly bounds$ = this.model.organDimensions$.pipe(
+    map(dims => ({
+      x: (dims.x + 10) / 1000,
+      y: (dims.y + 10) / 1000,
+      z: (dims.z + 10) / 1000
+    }))
   );
 
   /** Whether the content area is very narrow */
@@ -34,6 +49,11 @@ export class ContentComponent implements OnInit, OnDestroy {
    * Shows / hides the state debug component for testing purposes.
    */
   debugMode = false;
+
+  /**
+   * Show debug buttons of content component
+   */
+  showDebugButtons = !environment.production;
 
   /** Resize detection */
   private sensor: ResizeSensor;
@@ -89,8 +109,34 @@ export class ContentComponent implements OnInit, OnDestroy {
    * Method to reset registration block, crosshairs, and x,y,z information.
    */
   resetStage(): void {
-    // Registration block return to starting position
-    // The crosshairs return to start position
-    // the x, y, z info above the gizmo goes back to zero
+    this.model.setPosition(this.model.defaultPosition);
+    this.model.setViewSide('anterior');
+    this.model.setViewType('register');
+  }
+
+  handleNodeDrag(event: NodeDragEvent): void {
+    if (event.node['@id'] === '#DraftPlacement') {
+      if (event.info.coordinate) {
+        const [a, b] = (event.info.coordinate as number[]).map(n => n * 1000) as [number, number];
+        const {position, viewSide, organDimensions } = this.model.snapshot;
+        const dims = [organDimensions.x, organDimensions.y, organDimensions.z].map(n => n / 2);
+        let newPosition = position;
+        switch (viewSide) {
+          case 'anterior':
+            newPosition = {x: a + dims[0], y: b + dims[1], z: position.z};
+            break;
+          case 'posterior':
+            newPosition = {x: -a + dims[0], y: b + dims[1], z: position.z};
+            break;
+          case 'left':
+            newPosition = {x: position.x, y: b + dims[1], z: -a + dims[2]};
+            break;
+          case 'right':
+            newPosition = {x: position.x, y: b + dims[1], z: a + dims[2]};
+            break;
+        }
+        this.model.setPosition(newPosition);
+      }
+    }
   }
 }

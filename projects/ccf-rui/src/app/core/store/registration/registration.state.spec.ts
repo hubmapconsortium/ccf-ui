@@ -12,6 +12,7 @@ import { VisibilityItem } from '../../models/visibility-item';
 import { GLOBAL_CONFIG } from '../../services/config/config';
 import { ModelState, ModelStateModel } from '../model/model.state';
 import { PageState, PageStateModel, Person } from '../page/page.state';
+import { AnatomicalStructureTagState } from './../anatomical-structure-tags/anatomical-structure-tags.state';
 import { RegistrationState } from './registration.state';
 
 
@@ -21,8 +22,10 @@ const testModel: Immutable<ModelStateModel> = {
   id: '0',
   label: 'test',
   organ: { name: 'test', src: 'test' },
+  organDimensions: { x: 0, y: 0, z: 0 },
   blockSize: { x: 0, y: 0, z: 0 },
   rotation: { x: 0, y: 0, z: 0 },
+  position: { x: 0, y: 0, z: 0 },
   slicesConfig: { thickness: 0, numSlices: 0 },
   viewType: '3d',
   viewSide: 'anterior',
@@ -58,6 +61,7 @@ describe('RegistrationState', () => {
     id: 'a-b-c',
     blockSize: { x: 0, y: 0, z: 0 },
     rotation: { x: 0, y: 0, z: 0 },
+    position: { x: 0, y: 0, z: 0 },
     organ: {
       src: '',
       name: ''
@@ -78,9 +82,10 @@ describe('RegistrationState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([RegistrationState])
+        NgxsModule.forRoot([RegistrationState, AnatomicalStructureTagState, ModelState, PageState])
       ],
       providers: [
+        AnatomicalStructureTagState,
         {
           provide: PageState, useValue: {
             state$: pageStateSubject,
@@ -109,6 +114,7 @@ describe('RegistrationState', () => {
     });
 
     state = TestBed.inject(RegistrationState);
+    state.ngxsOnInit();
   });
 
   describe('.metadata$', () => {
@@ -131,20 +137,20 @@ describe('RegistrationState', () => {
       expect(value).toBeInstanceOf(Boolean);
     });
 
-    it('should consider isValid true if the user and organ are set', async () => {
-      const result = state.isValid(testPage, testModel);
+    it('should consider isDataValid true if the user and organ are set', async () => {
+      const result = state.isDataValid(testPage, testModel);
       expect(result).toBeTrue();
     });
 
-    it('should consider isValid false if the organ is not set', async () => {
+    it('should consider isDataValid false if the organ is not set', async () => {
       const invalidModel = { ...testModel, organ: {} as OrganInfo };
-      const result = state.isValid(testPage, invalidModel);
+      const result = state.isDataValid(testPage, invalidModel);
       expect(result).toBeFalse();
     });
 
-    it('should consider isValid false if the user is not set', async () => {
+    it('should consider isDataValid false if the user is not set', async () => {
       const invalidPage = { ...testPage, user: {} as Person };
-      const result = state.isValid(invalidPage, testModel);
+      const result = state.isDataValid(invalidPage, testModel);
       expect(result).toBeFalse();
     });
   });
@@ -214,11 +220,11 @@ describe('RegistrationState', () => {
       callback = jasmine.createSpy();
       download = spyOn(FileSaver, 'saveAs');
       TestBed.inject(GLOBAL_CONFIG).register = callback;
-      spyOn(state, 'isValid').and.returnValue(true);
+      spyOn(state, 'isDataValid').and.returnValue(true);
     });
 
-    it('does nothing if isValid() is false', () => {
-      (state.isValid as jasmine.Spy).and.returnValue(false);
+    it('does nothing if isDataValid() is false', () => {
+      (state.isDataValid as jasmine.Spy).and.returnValue(false);
       state.register();
       expect(callback).not.toHaveBeenCalled();
       expect(download).not.toHaveBeenCalled();

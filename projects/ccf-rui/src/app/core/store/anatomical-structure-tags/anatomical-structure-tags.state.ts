@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
-import { StateRepository } from '@ngxs-labs/data/decorators';
+import { Injectable, Injector } from '@angular/core';
+import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataEntityCollectionsRepository } from '@ngxs-labs/data/repositories';
 import { NgxsEntityCollections } from '@ngxs-labs/data/typings';
 import { createEntityCollections } from '@ngxs-labs/data/utils';
 import { State } from '@ngxs/store';
 import { bind as Bind } from 'bind-decorator';
-import { ObservableInput } from 'rxjs';
+import { combineLatest, Observable, ObservableInput } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Tag, TagId, TagSearchResult } from '../../models/anatomical-structure-tag';
+import { ModelState } from '../model/model.state';
+import { SceneState } from '../scene/scene.state';
 
 
 /** Tag state model */
@@ -30,7 +32,99 @@ export interface AnatomicalStructureTagStateModel {
 @Injectable()
 export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsRepository<Tag, TagId, AnatomicalStructureTagStateModel> {
   /** Observable of tags */
-  readonly tags$ = this.entities$.pipe(map(obj => Object.values(obj)));
+  @Computed()
+  get tags$(): Observable<Tag[]> {
+    return combineLatest([this.entities$, this.scene.nodeCollisions$]).pipe(
+      map(([entities, collisions]) => {
+        const tags: Tag[] = [];
+        const added = new Set<string>();
+        const removed = new Set<string>();
+        Object.entries(entities).forEach(([id, tag]) => {
+          if (tag.type === 'removed') {
+            removed.add(id);
+          } else {
+            added.add(id);
+            tags.push(tag);
+          }
+        });
+        for (const model of collisions) {
+          const iri = model.representation_of;
+          if (iri && !removed.has(iri) && !added.has(iri)) {
+            added.add(iri);
+            tags.push({
+              id: iri,
+              label: model.tooltip as string,
+              type: 'assigned'
+            });
+          }
+        }
+        return tags;
+      })
+    );
+  }
+
+  private _latestTags: Tag[] = [];
+
+  get latestTags(): Tag[] {
+    return this._latestTags;
+  }
+
+  /** Reference to the model state */
+  private model: ModelState;
+  /** Reference to the scene state */
+  private scene: SceneState;
+
+  /**
+   * Creates an instance of scene state.
+   *
+   * @param injector Injector service used to lazy load page and model state
+   */
+  constructor(
+    private readonly injector: Injector
+  ) {
+    super();
+  }
+
+  /**
+   * Initializes this state service.
+   */
+  ngxsOnInit(): void {
+    super.ngxsOnInit();
+
+    // Injecting page and model states in the constructor breaks things!?
+    // Lazy load here
+    this.model = this.injector.get(ModelState);
+    this.scene = this.injector.get(SceneState);
+
+    this.tags$.subscribe((tags) => {
+      this._latestTags = tags;
+    });
+  }
+
+  @DataAction()
+  addTags(tags: Tag[]): void {
+    for (const tag of tags) {
+      this.addTag(tag);
+    }
+  }
+
+  @DataAction()
+  addTag(tag: Tag): void {
+    if (this.snapshot.entities[tag.id]) {
+      this.updateOne({id: tag.id, changes: {type: 'added'}});
+    } else {
+      this.addOne({ ...tag, type: 'added'});
+    }
+  }
+
+  @DataAction()
+  removeTag(tag: Tag): void {
+    if (this.snapshot.entities[tag.id]) {
+      this.updateOne({id: tag.id, changes: {type: 'removed'}});
+    } else {
+      this.addOne({...tag, type: 'removed'});
+    }
+  }
 
   /**
    * Searches for matching tags (not in the state)
@@ -41,14 +135,15 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
    */
   @Bind
   searchExternal(text: string, limit: number): ObservableInput<TagSearchResult> {
-    // FIXME: Needs implementation
+    const matches = this.model.snapshot.anatomicalStructures
+      .filter(as => as.name.toLowerCase().indexOf(text.toLowerCase()) !== -1);
     return [{
-      totalCount: 1,
-      results: [{
-        id: 'test-tag',
-        label: 'test-tag',
+      totalCount: matches.length,
+      results: matches.map((as) => ({
+        id: as.id,
+        label: as.name,
         type: 'added'
-      }]
+      } as Tag)).slice(0, limit)
     }];
   }
 }

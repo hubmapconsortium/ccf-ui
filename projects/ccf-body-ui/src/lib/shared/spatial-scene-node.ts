@@ -5,6 +5,7 @@ export interface SpatialSceneNode {
   '@id': string;
   '@type': string;
   entityId?: string;
+  representation_of?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -13,6 +14,7 @@ export interface SpatialSceneNode {
   zoomBasedOpacity?: boolean;
   zoomToOnLoad?: boolean;
   color?: [number, number, number, number];
+  opacity?: number;
   transformMatrix: Matrix4;
   tooltip?: string;
 }

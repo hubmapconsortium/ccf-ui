@@ -1,6 +1,6 @@
 <div class="display-right" *ngIf="visible && direction === 'right'" [style.margin-top.rem]="offset">
-    <div class="h-flex">
-        <div class="h-bar"></div>
+    <div class="h-flex h-flex-right">
+        <div class="h-bar h-bar-right"></div>
         <div class="description align-left">
             {{ tooltip }}
         </div>
@@ -8,11 +8,11 @@
 </div>
 
 <div class="display-left" *ngIf="visible && direction === 'left'" [style.margin-top.rem]="offset">
-    <div class="h-flex">
+    <div class="h-flex h-flex-left">
         <div class="description align-right">
             {{ tooltip }}
         </div>
-        <div class="h-bar"></div>
+        <div class="h-bar h-bar-left"></div>
     </div>
 </div>
 

@@ -9,8 +9,10 @@ import { combineLatest, Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
+import { Tag } from '../../models/anatomical-structure-tag';
 import { MetaData } from '../../models/meta-data';
-import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
+import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
 import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
 
@@ -56,14 +58,14 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get jsonld$(): Observable<object> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(data => this.buildJsonLd(...data))
+      map(([page, model]) => this.buildJsonLd(page, model, this.tags.latestTags))
     );
   }
 
   @Computed()
   get valid$(): Observable<boolean> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(data => this.isValid(...data))
+      map(data => this.isValid)
     );
   }
 
@@ -99,6 +101,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   /** Reference to the model state */
   private model: ModelState;
 
+  /** Reference to the AS Tag state */
+  private tags: AnatomicalStructureTagState;
+
   /**
    * Creates an instance of registration state.
    *
@@ -122,6 +127,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     // Lazy load here
     this.page = this.injector.get(PageState);
     this.model = this.injector.get(ModelState);
+    this.tags = this.injector.get(AnatomicalStructureTagState);
 
     const { globalConfig: { useDownload, register } } = this;
     this.ctx.patchState({
@@ -160,10 +166,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     }));
   }
 
-  /**
-   * registration block ?
-   */
-  isValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
+  isDataValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
     const requiredValues = [
       page.user.firstName,
       page.user.lastName,
@@ -174,13 +177,18 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     return requiredValues.every(value => !!value);
   }
 
+  @Computed()
+  get isValid(): boolean {
+    return this.isDataValid(this.page.snapshot, this.model.snapshot);
+  }
+
   /**
    * Registers or downloads json data.
    *
    * @param [useCallback] Explicit override selecting the register/download action
    */
   register(useCallback?: boolean): void {
-    if (!this.isValid(this.page.snapshot, this.model.snapshot)) {
+    if (!this.isValid) {
       return;
     }
 
@@ -188,7 +196,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       globalConfig: { register: registrationCallback },
       page, model, snapshot
     } = this;
-    const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot);
+    const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot, this.tags.latestTags);
     const json = JSON.stringify(jsonObj, undefined, 2);
 
     if (useCallback || (useCallback === undefined && snapshot.useRegistrationCallback)) {
@@ -249,7 +257,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   private buildJsonLd(
     page: Immutable<PageStateModel>,
-    model: Immutable<ModelStateModel>
+    model: Immutable<ModelStateModel>,
+    tags: Tag[]
   ): object {
     return {
       '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
@@ -261,7 +270,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       creator_last_name: page.user.lastName,
       // creator_orcid: data.alignment_operator_orcid,
       creation_date: this.currentDate,
-      ccf_annotations: [],
+      ccf_annotations: tags.map(tag => tag.id),
 
       x_dimension: model.blockSize.x,
       y_dimension: model.blockSize.y,
@@ -270,12 +279,12 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
       placement: {
         '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
-        '@id': `http://purl.org/ccf/0.5/${this.currentIdentifier}_placement`,
+        '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}_placement`,
         '@type': 'SpatialPlacement',
-        target: model.id,
+        target: model.organIri as string,
         placement_date: this.currentDate,
 
-        // x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
+        x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
 
         x_rotation: model.rotation.x,
         y_rotation: model.rotation.y,
@@ -283,7 +292,10 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
         rotation_order: 'XYZ',
         rotation_units: 'degree',
 
-        // x_translation: T.x, y_translation: T.y, z_translation: T.z, translation_units: 'millimeter'
+        x_translation: model.position.x,
+        y_translation: model.position.y,
+        z_translation: model.position.z,
+        translation_units: 'millimeter'
       }
     };
   }

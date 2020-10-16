@@ -7,6 +7,11 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promi
   return Object.values(nodes).filter(n => n['@type'] !== 'GLTFNode').map((node) => {
     const id = `${parent['@id']}_${encodeURIComponent(node['@id'])}`;
     const creationDate = new Date().toISOString().split('T')[0];
+
+    const tx = (node.bbox.lowerBound.x * -1000 * parent.object.placement.x_scaling); // + parent.object.placement.x_translation;
+    const ty = (node.bbox.lowerBound.y * -1000 * parent.object.placement.y_scaling); // + parent.object.placement.y_translation;
+    const tz = (node.bbox.lowerBound.z * -1000 * parent.object.placement.z_scaling); // + parent.object.placement.z_translation;
+
     return {
       '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
       '@id': id,
@@ -44,9 +49,9 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promi
           z_rotation: parent.object.placement.z_rotation,
           rotation_units: parent.object.placement.rotation_units,
 
-          x_translation: (node.center.x * -1000) + parent.object.placement.x_translation,
-          y_translation: (node.center.y * -1000) + parent.object.placement.y_translation,
-          z_translation: (node.center.z * -1000) + parent.object.placement.z_translation,
+          x_translation: tx,
+          y_translation: ty,
+          z_translation: tz,
           translation_units: parent.object.placement.translation_units // Assumed 'millimeters'
         }
       },
@@ -56,10 +61,10 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promi
         '@id': `${id}GlobalPlacement${i+1}`,
         placement_date: creationDate,
 
-        x_translation: (node.center.x * 1000) + placement.x_translation,
-        y_translation: (node.center.y * 1000) + placement.y_translation,
-        z_translation: (node.center.z * 1000) + placement.z_translation,
-        translation_units: placement.translation_units
+        x_translation: - tx,
+        y_translation: -ty,
+        z_translation: -tz,
+        translation_units: placement.translation_units // Assumed 'millimeters'
       }))
     } as Partial<SpatialEntityJsonLd>;
   }) as SpatialEntityJsonLd[];

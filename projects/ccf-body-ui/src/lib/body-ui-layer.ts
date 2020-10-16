@@ -42,7 +42,8 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
 
   renderLayers(): unknown[] {
     const state = this.state as {data: SpatialSceneNode[], zoomOpacity: number, doCollisions: boolean};
-    const cubes = state.data.filter(d => !d.scenegraph && !d.wireframe);
+    const cubes = state.data.filter(d => !d.scenegraph && !d.wireframe && d.unpickable);
+    const pickableCubes = state.data.filter(d => !d.scenegraph && !d.wireframe && !d.unpickable);
     const wireframes = state.data.filter(d => !d.scenegraph && d.wireframe);
     const models = state.data.filter(d => !!d.scenegraph);
 
@@ -51,12 +52,13 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
     }
 
     return [
-      meshLayer('cubes', cubes, {wireframe: false}),
+      meshLayer('cubes', cubes, {wireframe: false, pickable: false}),
+      meshLayer('pickableCubes', pickableCubes, {wireframe: false, pickable: true}),
       meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}),
       ...models.map((model) =>
         new ScenegraphLayer({
           id: 'models-' + model['@id'],
-          opacity: model.zoomBasedOpacity ? state.zoomOpacity : 1.0,
+          opacity: model.zoomBasedOpacity ? state.zoomOpacity : (model.opacity !== undefined ? model.opacity : 1.0),
           pickable: !model.unpickable,
           coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
           data: [model],

@@ -5,6 +5,7 @@ export interface SpatialPlacementJsonLd extends JsonLdObj {
   '@context'?: string;
   '@id': string;
   '@type': string;
+  source?: string;
   target: string;
   placement_date: string;
   x_scaling: number;

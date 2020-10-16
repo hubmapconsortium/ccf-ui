@@ -1,8 +1,10 @@
+import { Matrix4 } from '@math.gl/core';
 import { writeFileSync } from 'fs';
 import fetch from 'node-fetch';
 import { argv } from 'process';
 
 import { CCFDatabase, ExtractionSet, SpatialEntity, SpatialSceneNode } from './public-api';
+import { simplifyScene } from '../../ccf-body-ui/src/lib/util/simplify-scene';
 
 
 if (!(global as {fetch: unknown}).fetch) {
@@ -22,20 +24,21 @@ async function main(outputFile?: string): Promise<void> {
   });
   await db.connect();
   const organs = db.scene.getReferenceOrgans();
-  const organIRILookup: { [options: string]: string} = {};
-  const anatomicalStructures: { [iri: string]: SpatialEntity[]} = {};
-  const extractionSets: { [iri: string]: ExtractionSet[]} = {};
-  const sceneNodeLookup: { [iri: string]: SpatialSceneNode } = {};
+  const organIRILookup: {[options: string]: string} = {};
+  const organSpatialEntities: {[iri: string]: SpatialEntity} = {};
+  const anatomicalStructures: {[iri: string]: SpatialEntity[]} = {};
+  const extractionSets: {[iri: string]: ExtractionSet[]} = {};
+  const sceneNodeLookup: {[iri: string]: SpatialSceneNode} = {};
   const sceneNodeAttrs: Partial<SpatialSceneNode> = {
     unpickable: true,
     _lighting: 'pbr',
     zoomBasedOpacity: false,
     color: [255, 255, 255, 255]
   };
-  const bothSexes = db.scene.getSpatialEntity('http://purl.org/ccf/latest/ccf.owl#VHBothSexes');
 
   for (const organ of organs) {
     const iri = organ['@id'];
+    const organSpatialEntity = organSpatialEntities[iri] = db.scene.getSpatialEntity(iri);
     anatomicalStructures[iri] = db.scene.getAnatomicalStructures(iri);
     extractionSets[iri] = db.scene.getExtractionSets(iri);
     organIRILookup[[organ.label, organ.sex, organ.side].join('|')] = iri;
@@ -47,8 +50,16 @@ async function main(outputFile?: string): Promise<void> {
 
     for (const node of nodes) {
       if (!sceneNodeLookup[node['@id']]) {
-        const sceneNode = db.scene.getSceneNode(node, bothSexes, sceneNodeAttrs);
+        const sceneNode = db.scene.getSceneNode(node, organSpatialEntity, sceneNodeAttrs);
         if (sceneNode) {
+          const dimensions = [
+            organSpatialEntity.x_dimension,
+            organSpatialEntity.y_dimension,
+            organSpatialEntity.z_dimension
+          ].map(n => -n / 1000 / 2);
+
+          sceneNode.transformMatrix.translate(dimensions);
+          sceneNode.representation_of = sceneNode.representation_of || sceneNode['@id'];
           sceneNodeLookup[node['@id']] = sceneNode;
         } else {
           console.log(node.label);
@@ -57,11 +68,16 @@ async function main(outputFile?: string): Promise<void> {
     }
   }
 
+  const simpleSceneNodes = await simplifyScene(Object.values(sceneNodeLookup));
+  const simpleSceneNodeLookup = simpleSceneNodes.reduce((acc, node) => { acc[node['@id']] = node; return acc; }, {});
+
   const data = {
     organIRILookup,
+    organSpatialEntities,
     anatomicalStructures,
     extractionSets,
-    sceneNodeLookup
+    sceneNodeLookup,
+    simpleSceneNodeLookup
   };
 
   if (outputFile) {

@@ -31,6 +31,19 @@
         align-self: center;
     }
 
+    .h-bar-left {
+      width: 4.5rem;
+    }
+    .h-bar-right {
+      width: 2rem;
+    }
+    .h-flex-left {
+      width: 26.5rem;
+    }
+    .h-flex-right {
+      width: 24rem;
+    }
+
     .v-flex {
         display: flex;
         flex-direction: column;
