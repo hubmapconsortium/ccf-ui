@@ -50,7 +50,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get metadata$(): Observable<MetaData> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(data => this.buildMetadata(...data))
+      map(([page, model]) => this.buildMetadata(page, model, this.tags.latestTags))
     );
   }
 
@@ -223,7 +223,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   private buildMetadata(
     page: Immutable<PageStateModel>,
-    model: Immutable<ModelStateModel>
+    model: Immutable<ModelStateModel>,
+    tags: Tag[]
   ): MetaData {
     const data: MetaData = [];
 
@@ -235,12 +236,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     }
 
     data.push(
-      { label: 'Reference Organ Name', value: '' }, // FIXME: Is this the same as the jsonld label?
+      { label: 'Reference Organ Name', value: model.organ.name },
       { label: 'Tissue Block Size (mm)', value: this.xyzTripletToString(model.blockSize) },
-      { label: 'Tissue Block Position (mm)', value: '' }, // TODO: Add when available
+      { label: 'Tissue Block Position (mm)', value: this.xyzTripletToString(model.position) },
       { label: 'Tissue Block Rotation', value: this.xyzTripletToString(model.rotation) },
-      { label: 'Extraction Site(s)', value: 'Bisection line' }, // TODO: Add to state
-      { label: 'Anatomical Structure Tags', value: 'Tag 1, Tag 2, Tag 3' }, // TODO: Add to state
+      { label: 'Anatomical Structure Tags', value: tags.map(t => t.label).join(', ') },
       { label: 'Time Stamp', value: this.currentDate },
       { label: 'Alignment ID', value: this.currentIdentifier }
     );
@@ -307,6 +307,6 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    * @returns The string representation
    */
   private xyzTripletToString(xyz: XYZTriplet): string {
-    return `${xyz.x}, ${xyz.y}, ${xyz.z}`;
+    return `${Math.round(xyz.x)}, ${Math.round(xyz.y)}, ${Math.round(xyz.z)}`;
   }
 }
