@@ -326,7 +326,7 @@ export class HuBMAPEntity {
       '@id': HBM_PREFIX + this.id,
       '@type': 'Entity',
       ...omit(this, [
-        'data', 'donor', 'organ_sample', 'ancestors', 'descendants', 'assetsApi'
+        'data', 'donor', 'organ_sample', 'organSample', 'ancestors', 'descendants', 'assetsApi'
       ]),
       donor: HBM_PREFIX + this.donor.uuid,
       shortInfo0: this.doi,

@@ -3,15 +3,15 @@
     display: none !important;
   }
 
-  margin-top: 2em;
+  margin-top: 2rem;
 }
 
 .button-container {
   &.hidden {
     display: none !important;
   }
-  
-  margin-top: 2em;
+
+  margin-top: 2rem;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -22,7 +22,7 @@
   background: none;
   border-width: 1px;
   border-style: solid;
-  padding: 0.4em;
+  padding: 0.4rem;
   cursor: pointer;
 }
 
@@ -40,7 +40,7 @@
   }
 
   ccf-dual-slider {
-    margin-left: .5em;
+    margin-left: .5rem;
     width: 33%;
   }
 

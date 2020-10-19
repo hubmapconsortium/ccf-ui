@@ -30,14 +30,22 @@ export class BodyUiComponent implements AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
-    this.bodyUI = new BodyUI({ id: 'body-ui', canvas });
+    this.bodyUI = new BodyUI({ id: 'body-ui', canvas, legacyLighting: true });
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
     await this.bodyUI.initialize();
 
     // TODO: Replace with a single @Input with scene provided by ngxs
     this.data.filter$.subscribe(async (f: Filter) => {
       const db = await this.dataSourceService.getDB();
-      this.bodyUI.setScene(await db.getScene(f));
+      const scene = await db.getScene(f);
+      // FIXME: Temporary fix until EUI and RUI are harmonized
+      for (const node of scene) {
+        const id = node['@id'] as string;
+        if (id.endsWith('#VHFemaleOrgans') || id.endsWith('#VHMaleOrgans')) {
+          node.color = [255, 0, 0, 255];
+        }
+      }
+      this.bodyUI.setScene(scene);
     });
 
     this.bodyUI.nodeClick$.subscribe(async ({node, ctrlClick}) => {

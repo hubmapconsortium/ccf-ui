@@ -1,4 +1,4 @@
-import { Deck, OrbitView } from '@deck.gl/core';
+import { AmbientLight, Deck, LightingEffect, OrbitView } from '@deck.gl/core';
 import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
 import bind from 'bind-decorator';
@@ -26,6 +26,7 @@ export interface BodyUIProps {
   interactive: boolean;
   rotation: number;
   zoom: number;
+  legacyLighting?: boolean;
 }
 
 export interface PickInfo<D> {
@@ -67,7 +68,8 @@ export class BodyUI {
   private lastHovered?: SpatialSceneNode;
 
   constructor(private deckProps: Partial<BodyUIProps>) {
-    const props = {
+    // tslint:disable-next-line: no-any
+    const props: any = {
       ...deckProps,
       views: [ new OrbitView({}) ],
       controller: deckProps.interactive !== undefined ? deckProps.interactive : true,
@@ -80,8 +82,19 @@ export class BodyUI {
       onDragEnd: this._onDragEnd,
       getCursor: (e: {isDragging: boolean}) => this.cursor || (e.isDragging ? 'grabbing' : 'grab')
     };
-    // tslint:disable-next-line: no-any
-    this.deck = new Deck(props as any);
+    if (deckProps.legacyLighting) {
+      // tslint:disable-next-line: no-unsafe-any
+      props.effects = [
+        new LightingEffect({
+          ambientLight: new AmbientLight({
+            color: [255, 255, 255],
+            intensity: 10.0
+          })
+        })
+      ];
+    }
+    // tslint:disable-next-line: no-unsafe-any
+    this.deck = new Deck(props);
     this.deck.setProps({
       viewState: {
         orbitAxis: 'Y',

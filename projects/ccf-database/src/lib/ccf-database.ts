@@ -103,6 +103,7 @@ export class CCFDatabase implements DataSource {
         ));
       }
     }
+    ops.push(addJsonLdToStore('assets/kpmp/data/rui_locations.jsonld', this.store));
     await Promise.all(ops);
     // Add a small delay to allow the triple store to settle
     await new Promise(r => setTimeout(r, 500));
