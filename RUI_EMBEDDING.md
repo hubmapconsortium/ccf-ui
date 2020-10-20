@@ -55,6 +55,7 @@ The following options are available for configuration
 - `embedded: boolean` - Whether the *CCF-RUI* is embedded as a part of HUBMap or as a standalone app. If not specified it is inferred from the presence of the `user` configuration option.
 - `tutorialMode: boolean` - Whether to present *CCF-RUI* in tutorial mode with additional textual information.
 - `homeUrl: string` - URL that the user will be redirected to when clicking the HUBMap logo or back button in the upper left corner of the app.
+- `organ: { name: 'colon' | 'heart' | 'kidney' | 'spleen', sex?: 'male' | 'female', side?: 'left' | 'right' }` - the reference organ to preload.
 - `user: { firstName: string, lastName: string })` - The user of the app. Should always be specified when the app is in embedded mode!
 - `register: (rui_location: string) => void` A callback function called whenever the user hits registers. It should take a single argument which is the stringified json object containing the registration data.
 - `useDownload: boolean` - Prefer downloading the json registration data rather than using the `register` callback.
