@@ -131,7 +131,7 @@ export class BodyUI {
           didZoom = true;
         }
       }
-      zoomOpacity = didZoom ? 0.5 : zoomOpacity;
+      zoomOpacity = didZoom ? 0.05 : zoomOpacity;
       if (!this.deckProps.debugSceneNodeProcessing) {
         this.bodyUILayer.setState({data, zoomOpacity});
       } else {
@@ -230,7 +230,7 @@ export class BodyUI {
   private _onViewStateChange(event: { interactionState: { isZooming: boolean; }; viewState: BodyUIViewStateProps }): void {
     if (event.interactionState?.isZooming) {
       const currentState = this.bodyUILayer.state as {zoomOpacity: number, data: unknown};
-      const zoomOpacity = Math.min(Math.max(1 - (event.viewState.zoom - 8.9) / 3, 0.2), 1.0);
+      const zoomOpacity = Math.min(Math.max(1 - (event.viewState.zoom - 8.9) / 2, 0.05), 1.0);
       if (currentState.zoomOpacity !== zoomOpacity) {
         this.bodyUILayer.setState({data: currentState.data, zoomOpacity});
       }

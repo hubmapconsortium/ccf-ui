@@ -69,7 +69,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
           getTransformMatrix: model.transformMatrix as unknown as number[][],
           getColor: model.color || [0, 255, 0, 0.5*255],
           // tslint:disable-next-line: no-any
-          parameters: {depthMask: model.opacity === undefined || model.opacity === 1} as any
+          parameters: {depthMask: !model.zoomBasedOpacity && (model.opacity === undefined || model.opacity === 1)} as any
         })
       )
     ].filter(l => !!l);
