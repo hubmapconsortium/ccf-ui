@@ -4,6 +4,7 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { GLOBAL_CONFIG } from './../../services/config/config';
 import { ModelState } from './../model/model.state';
 import { SceneState } from './../scene/scene.state';
 import { AnatomicalStructureTagState } from './anatomical-structure-tags.state';
@@ -23,7 +24,11 @@ describe('AnatomicalStructureTagsState', () => {
         NgxsModule.forRoot([AnatomicalStructureTagState, SceneState, ModelState])
       ],
       providers: [
-        AnatomicalStructureTagState, SceneState, ModelState
+        AnatomicalStructureTagState, SceneState, ModelState,
+        {
+          provide: GLOBAL_CONFIG,
+          useValue: {}
+        }
       ]
     });
 

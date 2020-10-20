@@ -7,6 +7,11 @@ export interface GlobalConfig {
   embedded?: boolean;
   tutorialMode?: boolean;
   homeUrl?: string;
+  organ?: {
+    name: 'colon' | 'heart' | 'kidney' | 'spleen',
+    sex?: 'male' | 'female',
+    side?: 'left' | 'right'
+  };
   user?: {
     firstName: string;
     lastName: string;

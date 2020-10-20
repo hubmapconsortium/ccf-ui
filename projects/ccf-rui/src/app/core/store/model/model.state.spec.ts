@@ -8,6 +8,7 @@ import { OrganInfo } from '../../../shared/components/organ-selector/organ-selec
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
+import { GLOBAL_CONFIG } from './../../services/config/config';
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
 
 
@@ -37,7 +38,11 @@ describe('ModelState', () => {
         NgxsModule.forRoot([ModelState])
       ],
       providers: [
-        { provide: ReferenceDataState, useValue: mockDataSource }
+        { provide: ReferenceDataState, useValue: mockDataSource },
+        {
+          provide: GLOBAL_CONFIG,
+          useValue: {}
+        }
       ]
     });
 

@@ -59,3 +59,5 @@ The following options are available for configuration
 - `register: (rui_location: string) => void` A callback function called whenever the user hits registers. It should take a single argument which is the stringified json object containing the registration data.
 - `useDownload: boolean` - Prefer downloading the json registration data rather than using the `register` callback.
 - `fetchPreviousRegistrations: () => rui_location[] | Promise<rui_location[]>` - A callback function called when the user wishes to see previous registered objects. It should take no arguments and return a list of previous registrations, possibly asynchronously.
+
+The TypeScript definition for this configuration object is [here](projects/ccf-rui/src/app/core/services/config/config.ts).

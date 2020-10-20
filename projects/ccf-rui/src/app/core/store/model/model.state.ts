@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+import { Inject, Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
@@ -8,6 +8,7 @@ import { pluck } from 'rxjs/operators';
 import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
+import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
 
@@ -73,6 +74,21 @@ export interface ModelStateModel {
   extractionSets: ExtractionSet[];
 }
 
+export const ALL_ORGANS: OrganInfo[] = [
+  { src: 'app:colon', name: 'Colon', hasSides: false, hasSex: true },
+  { src: 'app:heart', name: 'Heart', hasSides: false, hasSex: true },
+  { src: 'app:kidney', name: 'Kidney', hasSides: true, hasSex: true },
+  { src: 'app:spleen', name: 'Spleen', hasSides: false, hasSex: true },
+  { src: 'app:bladder', name: 'Bladder', disabled: true, hasSides: false, hasSex: true },
+  { src: 'app:brain', name: 'Brain', disabled: true, hasSides: false, hasSex: true },
+  { src: 'app:liver', name: 'Liver', disabled: true, hasSides: false, hasSex: true },
+  { src: 'app:lung', name: 'Lung', disabled: true, hasSides: true, hasSex: true },
+  { src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true, hasSides: false, hasSex: true },
+  { src: 'app:ovaries', name: 'Ovaries', disabled: true, hasSides: true, hasSex: false },
+  { src: 'app:small_intestine', name: 'Small Intestine', disabled: true, hasSides: false, hasSex: true },
+  { src: 'app:stomach', name: 'Stomach', disabled: true, hasSides: false, hasSex: true },
+  { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false, hasSex: true }
+];
 
 /**
  * Data for the main 3d model display
@@ -142,7 +158,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    * @param injector Injector service used to lazy load reference data state
    */
   constructor(
-    private readonly injector: Injector
+    private readonly injector: Injector,
+    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
   ) {
     super();
   }
@@ -154,6 +171,19 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     super.ngxsOnInit();
 
     this.referenceData = this.injector.get(ReferenceDataState);
+
+    if (this.globalConfig.organ) {
+      const organConfig = this.globalConfig.organ;
+      const organName = organConfig.name.toLowerCase();
+      const organInfo = ALL_ORGANS.find((o) => o.name.toLowerCase() === organName);
+      if (organInfo) {
+        this.ctx.patchState({
+          organ: organInfo,
+          sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
+          side: organConfig.side?.toLowerCase() as 'left' | 'right'
+        });
+      }
+    }
   }
 
   /**
