@@ -70,13 +70,15 @@ export class ReviewButtonComponent {
   /**
    * Handles the click action for the register button.
    */
-  registerButtonClick(): void {
-    this.enterErrorMode.emit();
-    if (!this.registrationIsValid) {
-      return;
+  registerButtonClick(event?: MouseEvent): false {
+    if (event) {
+      event.preventDefault();
     }
-
-    this.launchReviewModal();
+    this.enterErrorMode.emit();
+    if (this.registrationIsValid) {
+      this.launchReviewModal();
+    }
+    return false;
   }
 
   /**

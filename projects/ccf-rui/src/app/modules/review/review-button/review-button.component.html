@@ -1,3 +1,3 @@
-<button [class.disabled]="disabled" mat-button  class="review-button" (click)="registerButtonClick()">
+<button [class.disabled]="disabled" mat-button  class="review-button" (click)="registerButtonClick($event)">
     {{ embeddedMode ? 'REVIEW AND REGISTER' : 'REVIEW AND DOWNLOAD' }}
 </button>
