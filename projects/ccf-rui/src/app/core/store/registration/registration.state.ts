@@ -4,6 +4,7 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { Immutable } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
+import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from 'ccf-body-ui';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
@@ -135,6 +136,33 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     });
   }
 
+  ngxsAfterBootstrap(): void {
+    super.ngxsAfterBootstrap();
+
+    const { globalConfig: { editRegistration } } = this;
+    if (editRegistration) {
+      this.editRegistration(editRegistration as SpatialEntityJsonLd);
+    }
+  }
+
+  async editRegistration(reg: SpatialEntityJsonLd): Promise<void> {
+    const place = Array.isArray(reg.placement) ? reg.placement[0] : reg.placement as SpatialPlacementJsonLd;
+    this.page.setUserName({firstName: reg.creator_first_name, lastName: reg.creator_last_name});
+    // const iri = place.target;
+    this.model.setBlockSize({x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension});
+    this.model.setRotation({x: place.x_rotation, y: place.y_rotation, z: place.z_rotation});
+
+    await new Promise(r => setTimeout(r, 1000));
+
+    this.model.setPosition({x: place.x_translation, y: place.y_translation, z: place.z_translation});
+    const iris = new Set<string>(reg.ccf_annotations);
+    this.tags.addTags(
+      this.model.snapshot.anatomicalStructures
+      .filter(item => iris.has(item.id as string))
+      .map((item) => ({id: item.id, label: item.name, type: 'added'}))
+    );
+  }
+
   /**
    * Sets whether to use the registration callback function or download.
    *
@@ -262,7 +290,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   ): object {
     return {
       '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
-      '@id': `http://purl.org/ccf/0.5/${this.currentIdentifier}`,
+      '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}`,
       '@type': 'SpatialEntity',
       label: model.label || undefined,
       creator: `${page.user.firstName} ${page.user.lastName}`,

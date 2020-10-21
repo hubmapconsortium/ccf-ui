@@ -7,6 +7,7 @@ export interface GlobalConfig {
   embedded?: boolean;
   tutorialMode?: boolean;
   homeUrl?: string;
+  editRegistration?: object;
   organ?: {
     name: 'colon' | 'heart' | 'kidney' | 'spleen',
     sex?: 'male' | 'female',
