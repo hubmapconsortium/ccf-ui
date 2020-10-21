@@ -1,7 +1,7 @@
 <div class="scroll-wrapper">
   <div class="container">
     <ng-container *ngIf="page.embedded$ | async; else selectors">
-      <ccf-details-label [details]="detailsLabels"></ccf-details-label>
+      <ccf-details-label [details]="detailsLabels$ | async"></ccf-details-label>
     </ng-container>
     <ng-template #selectors>
       <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">

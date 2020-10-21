@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { VisibilityItem } from '../../core/models/visibility-item';
@@ -30,6 +31,11 @@ export class LeftSidebarComponent {
     map(organ => organ === undefined ? false : true)
   );
 
+  readonly detailsLabels$: Observable<string[]> = combineLatest(
+    [this.model.organ$, this.model.side$, this.model.sex$]).pipe(
+      map(([organ, side, sex]) => [organ?.name as string, side as string, sex as string])
+  );
+
   /**
    * Variable that keeps track of the extraction site tooltip to display on
    * the stage when hovered.
@@ -41,8 +47,6 @@ export class LeftSidebarComponent {
    * back to what it was before we changed them to 20%
    */
   previousVisibilityItems = [...this.model.snapshot.anatomicalStructures] as VisibilityItem[];
-
-  detailsLabels: string[] = ['heart', 'front', 'female'];
 
   organList = ALL_ORGANS;
 
