@@ -1,10 +1,11 @@
-import { Injectable, Optional } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 
+import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
 import { DEFAULT_ICONS } from './default-icons';
 
 
@@ -48,13 +49,15 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @param sanitizer Service used to sanitize default imported urls and html.
    */
   constructor(@Optional() private registry: MatIconRegistry | null,
-              sanitizer: DomSanitizer) {
+              sanitizer: DomSanitizer,
+              @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig) {
     super();
 
     for (const { name, namespace, url, html } of DEFAULT_ICONS) {
+      const baseHref = globalConfig.baseHref || '';
       const safeDef: IconDefinition = {
         name, namespace,
-        url: url && sanitizer.bypassSecurityTrustResourceUrl(url),
+        url: url && sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
         html: html && sanitizer.bypassSecurityTrustHtml(html)
       };
 

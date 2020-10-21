@@ -4,6 +4,7 @@ import { ObservableInput } from 'rxjs';
 
 
 export interface GlobalConfig {
+  baseHref?: string;
   embedded?: boolean;
   tutorialMode?: boolean;
   homeUrl?: string;

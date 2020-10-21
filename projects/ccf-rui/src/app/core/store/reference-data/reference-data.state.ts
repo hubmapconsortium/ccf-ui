@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
@@ -7,6 +7,7 @@ import { ExtractionSet, SpatialEntity } from 'ccf-database';
 import { GlobalsService } from 'ccf-shared';
 
 import { environment } from '../../../../environments/environment';
+import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
 
 
 export interface ReferenceDataStateModel {
@@ -36,7 +37,8 @@ export interface ReferenceDataStateModel {
 @Injectable()
 export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDataStateModel> {
 
-  constructor(private readonly globals: GlobalsService) {
+  constructor(private readonly globals: GlobalsService,
+              @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig) {
     super();
   }
 
@@ -57,7 +59,8 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
   }
 
   private getSourceDB(): Promise<ReferenceDataStateModel> {
-    return fetch('assets/reference-organ-data.json').then(r => r.json());
+    const baseHref = this.globalConfig.baseHref || '';
+    return fetch(baseHref + 'assets/reference-organ-data.json').then(r => r.json());
   }
 
   /**
