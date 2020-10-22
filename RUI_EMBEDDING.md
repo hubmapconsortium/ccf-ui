@@ -52,7 +52,7 @@ window.ruiConfig = {
 
 <details>
 <summary>Full example</summary>
-```js
+<pre>
 const sampleRegistration = {
   "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
   "@id": "http://purl.org/ccf/0.5/06b79119-0e5c-4a46-b7cb-57674ae4f1d8",
@@ -104,7 +104,7 @@ window.ruiConfig = {
   },
   useDownload: true
 }
-```
+</pre>
 </details>
 
 The following options are available for configuration
