@@ -81,6 +81,8 @@ export const ccf = {
     sex: ccfx('has_sex'),
     side: ccfx('has_side'),
     rui_rank: ccfx('ccf_rui_rank'),
+    slice_thickness: ccfx('ccf_slice_thickness'),
+    slice_count: ccfx('ccf_slice_count'),
     x_dimension: ccfx('has_x_dimension'),
     y_dimension: ccfx('has_y_dimension'),
     z_dimension: ccfx('has_z_dimension'),

@@ -48,6 +48,8 @@ export interface SpatialEntityJsonLd extends JsonLdObj {
   sex: 'Male' | 'Female' | undefined;
   side: 'Left' | 'Right' | undefined;
   rui_rank: number;
+  slice_thickness: number;
+  slice_count: number;
   x_dimension: number;
   y_dimension: number;
   z_dimension: number;

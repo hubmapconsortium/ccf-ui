@@ -151,6 +151,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     // const iri = place.target;
     this.model.setBlockSize({x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension});
     this.model.setRotation({x: place.x_rotation, y: place.y_rotation, z: place.z_rotation});
+    this.model.setSlicesConfig({thickness: reg.slice_thickness || NaN, numSlices: reg.slice_count || NaN});
 
     await new Promise(r => setTimeout(r, 1000));
 
@@ -299,6 +300,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       // creator_orcid: data.alignment_operator_orcid,
       creation_date: this.currentDate,
       ccf_annotations: tags.map(tag => tag.id),
+      slice_thickness: model.slicesConfig?.thickness || undefined,
+      slice_count: model.slicesConfig?.numSlices || undefined,
 
       x_dimension: model.blockSize.x,
       y_dimension: model.blockSize.y,

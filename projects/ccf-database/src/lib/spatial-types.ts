@@ -59,6 +59,10 @@ export interface SpatialEntity {
   side: 'Left' | 'Right' | undefined;
   /** Ranking used in the RUI for ordering lists */
   rui_rank?: number;
+  /** The thickness (in nanometers) of slices taken out of this spatial entity */
+  slice_thickness?: number;
+  /** The number of slices taken out of this spatial entity */
+  slice_count?: number;
 
   /** X-dimension. */
   x_dimension: number;
