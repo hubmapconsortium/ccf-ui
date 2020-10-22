@@ -42,7 +42,19 @@ export class NameInputComponent {
   /**
    * Current user name
    */
-  @Input() name: UserName = {
+  // tslint:disable-next-line: no-unsafe-any
+  @Input()
+  get name(): UserName {
+    return this._name;
+  }
+
+  set name(value: UserName) {
+    this._name = value;
+    this.firstNameValidator.setValue(value?.firstName || '');
+    this.lastNameValidator.setValue(value?.lastName || '');
+  }
+
+  private _name: UserName = {
     firstName: '',
     lastName: ''
   };
