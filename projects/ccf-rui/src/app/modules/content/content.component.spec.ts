@@ -37,6 +37,7 @@ describe('ContentComponent', () => {
         viewSide$: of('anterior'),
         position$: of({x: 0, y: 0, z: 0}),
         organDimensions$: of({x: 0, y: 0, z: 0}),
+        defaultPosition: {x: 0, y: 0, z: 0}
       })
       .mock(PageState, {
         ...mockPageState,
