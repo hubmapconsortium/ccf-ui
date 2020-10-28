@@ -214,16 +214,22 @@ export class HuBMAPEntity {
       if (typeof ruiLocation === 'string') {
         ruiLocation = JSON.parse(ruiLocation as string) as OldRuiData;
       }
-      if (groupUUID === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // UFL
-        ruiLocation = fixUflRuiLocation(ruiLocation, data);
+      // Detect RUI 0.5 generated JSON
+      if (ruiLocation.alignment_id) {
+        if (groupUUID === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // UFL
+          ruiLocation = fixUflRuiLocation(ruiLocation, data);
+        }
+        let refOrganId: string | undefined;
+        if (this.organ === RUI_ORGANS.left_kidney) {
+          refOrganId = ccf.x('VHLeftKidney').id;
+        } else if (this.organ === RUI_ORGANS.right_kidney) {
+          refOrganId = ccf.x('VHRightKidney').id;
+        }
+        this.spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + this.label, refOrganId);
+      // Detect RUI 1.0+ generated JSON-LD
+      } else if ((ruiLocation as unknown as {'@id': string})['@id']) {
+        this.spatialEntity = ruiLocation;
       }
-      let refOrganId: string | undefined;
-      if (this.organ === RUI_ORGANS.left_kidney) {
-        refOrganId = ccf.x('VHLeftKidney').id;
-      } else if (this.organ === RUI_ORGANS.right_kidney) {
-        refOrganId = ccf.x('VHRightKidney').id;
-      }
-      this.spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + this.label, refOrganId);
     }
 
     // Find TIFF Images for use in the HuBMAP Tissue Viewer
