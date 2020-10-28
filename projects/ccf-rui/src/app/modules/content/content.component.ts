@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { NodeDragEvent } from 'ccf-body-ui';
 import { ResizeSensor } from 'css-element-queries';
-import { map } from 'rxjs/operators';
+import { distinctUntilKeyChanged, map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { ModelState } from '../../core/store/model/model.state';
@@ -39,7 +39,9 @@ export class ContentComponent implements OnInit, OnDestroy {
       x: Math.max(dims.x, this.model.defaultPosition.x + 40) / 1000,
       y: Math.max(dims.y, this.model.defaultPosition.y + 40) / 1000,
       z: Math.max(dims.z, this.model.defaultPosition.z + 40) / 1000
-    }))
+    })),
+    distinctUntilKeyChanged('x'),
+    distinctUntilKeyChanged('y')
   );
 
   /** Whether the content area is very narrow */
