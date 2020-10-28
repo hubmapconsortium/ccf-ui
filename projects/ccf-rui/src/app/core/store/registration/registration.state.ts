@@ -93,7 +93,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   /** Time of last modification to registration data */
   @Computed()
   private get currentDate(): string {
-    return new Date().toISOString();
+    return new Date().toISOString().split('T')[0];
   }
 
   /** Reference to the page state */
