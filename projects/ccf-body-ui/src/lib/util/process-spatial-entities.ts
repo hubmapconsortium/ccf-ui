@@ -1,16 +1,19 @@
+import { Matrix4 } from '@math.gl/core';
 import { SpatialEntityJsonLd } from '../shared/ccf-spatial-jsonld';
 import { processSceneNodes } from './process-scene-nodes';
 
 
 export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promise<SpatialEntityJsonLd[]> {
-  const nodes = await processSceneNodes(parent.object.file);
+  const parentPlacement = parent.object.placement;
+  const R = {x: parentPlacement.x_rotation, y: parentPlacement.y_rotation, z: parentPlacement.z_rotation};
+  const S = {x: parentPlacement.x_scaling, y: parentPlacement.y_scaling, z: parentPlacement.z_scaling};
+  const scalar = new Matrix4(Matrix4.IDENTITY).scale([S.x * 1000, S.y * 1000, S.z * 1000]);
+  const nodes = await processSceneNodes(parent.object.file, scalar);
+
   return Object.values(nodes).filter(n => n['@type'] !== 'GLTFNode').map((node) => {
     const id = `${parent['@id']}_${encodeURIComponent(node['@id'])}`;
     const creationDate = new Date().toISOString().split('T')[0];
-
-    const tx = (node.bbox.lowerBound.x * -1000 * parent.object.placement.x_scaling); // + parent.object.placement.x_translation;
-    const ty = (node.bbox.lowerBound.y * -1000 * parent.object.placement.y_scaling); // + parent.object.placement.y_translation;
-    const tz = (node.bbox.lowerBound.z * -1000 * parent.object.placement.z_scaling); // + parent.object.placement.z_translation;
+    const T = {x: node.bbox.lowerBound.x, y: node.bbox.lowerBound.y, z: node.bbox.lowerBound.z};
 
     return {
       '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
@@ -21,9 +24,9 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promi
       creator_first_name: parent.creator_first_name,
       creator_last_name: parent.creator_last_name,
       creation_date: creationDate,
-      x_dimension: node.size.x * 1000,
-      y_dimension: node.size.y * 1000,
-      z_dimension: node.size.z * 1000,
+      x_dimension: node.size.x,
+      y_dimension: node.size.y,
+      z_dimension: node.size.z,
       dimension_units: 'millimeter',
 
       object: {
@@ -39,20 +42,20 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promi
           target: id,
           placement_date: creationDate,
 
-          x_scaling: parent.object.placement.x_scaling,
-          y_scaling: parent.object.placement.y_scaling,
-          z_scaling: parent.object.placement.z_scaling,
-          scaling_units: parent.object.placement.scaling_units,
+          x_scaling: S.x,
+          y_scaling: S.y,
+          z_scaling: S.z,
+          scaling_units: parentPlacement.scaling_units,
 
-          x_rotation: parent.object.placement.x_rotation,
-          y_rotation: parent.object.placement.y_rotation,
-          z_rotation: parent.object.placement.z_rotation,
-          rotation_units: parent.object.placement.rotation_units,
+          x_rotation: R.x,
+          y_rotation: R.y,
+          z_rotation: R.z,
+          rotation_units: parentPlacement.rotation_units,
 
-          x_translation: tx,
-          y_translation: ty,
-          z_translation: tz,
-          translation_units: parent.object.placement.translation_units // Assumed 'millimeters'
+          x_translation: -T.x,
+          y_translation: -T.y,
+          z_translation: -T.z,
+          translation_units: parentPlacement.translation_units // Assumed 'millimeters'
         }
       },
 
@@ -61,9 +64,9 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promi
         '@id': `${id}GlobalPlacement${i+1}`,
         placement_date: creationDate,
 
-        x_translation: - tx,
-        y_translation: -ty,
-        z_translation: -tz,
+        x_translation: T.x,
+        y_translation: T.y,
+        z_translation: T.z,
         translation_units: placement.translation_units // Assumed 'millimeters'
       }))
     } as Partial<SpatialEntityJsonLd>;

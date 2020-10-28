@@ -101,7 +101,7 @@ export const ALL_ORGANS: OrganInfo[] = [
     label: '',
     organ: { src: '', name: '' } as OrganInfo,
     organIri: '',
-    organDimensions: { x: 100, y: 100, z: 100 },
+    organDimensions: { x: 90, y: 90, z: 90 },
     sex: 'male',
     side: 'left',
     blockSize: { x: 10, y: 10, z: 10 },
@@ -294,13 +294,6 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       organDimensions.x = spatialEntity.x_dimension;
       organDimensions.y = spatialEntity.y_dimension;
       organDimensions.z = spatialEntity.z_dimension;
-
-      // FIXME: Female dimensions are off by a lot...
-      if (this.snapshot.sex === 'female') {
-        organDimensions.x *= 0.10439349064182037;
-        organDimensions.y *= 0.1354268413617529;
-        organDimensions.z *= 0.1175706855539159;
-      }
     }
 
     this.ctx.patchState({ organIri, organDimensions });
@@ -310,7 +303,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @Computed()
   get defaultPosition(): XYZTriplet {
     const dims = this.snapshot.organDimensions;
-    return {x: dims.x, y: dims.y / 2, z: dims.z / 2};
+    const block = this.snapshot.blockSize;
+    return {x: dims.x + 2 * block.x, y: dims.y / 2, z: dims.z / 2};
   }
 
   /**

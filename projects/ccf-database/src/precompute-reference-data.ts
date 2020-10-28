@@ -58,7 +58,8 @@ async function main(outputFile?: string): Promise<void> {
             organSpatialEntity.z_dimension
           ].map(n => -n / 1000 / 2);
 
-          sceneNode.transformMatrix.translate(dimensions);
+          sceneNode.transformMatrix = new Matrix4(Matrix4.IDENTITY)
+            .translate(dimensions).multiplyRight(sceneNode.transformMatrix);
           sceneNode.representation_of = sceneNode.representation_of || sceneNode['@id'];
           sceneNodeLookup[node['@id']] = sceneNode;
         } else {

@@ -36,9 +36,9 @@ export class ContentComponent implements OnInit, OnDestroy {
 
   readonly bounds$ = this.model.organDimensions$.pipe(
     map(dims => ({
-      x: (dims.x + 10) / 1000,
-      y: (dims.y + 10) / 1000,
-      z: (dims.z + 10) / 1000
+      x: Math.max(dims.x, this.model.defaultPosition.x + 40) / 1000,
+      y: Math.max(dims.y, this.model.defaultPosition.y + 40) / 1000,
+      z: Math.max(dims.z, this.model.defaultPosition.z + 40) / 1000
     }))
   );
 
