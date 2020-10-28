@@ -188,7 +188,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
             side: organConfig.side?.toLowerCase() as 'left' | 'right'
           });
           this.onOrganIriChange();
-        }, 500);
+        }, 1000);
       }
     }
   }
