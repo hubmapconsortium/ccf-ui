@@ -2,6 +2,20 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
 
+## EUI 1.2.0 / RUI 1.0 FINAL - 2020-10-30
+
+### Added in EUI 1.2.0 / RUI 1.0 FINAL
+
+* Bug fixes and improvements
+* Updated embedding API in collaboration with the IEC
+* Updated EUI codebase to be in sync with code changes made for the RUI
+* Added KPMP data to the EUI
+
+### Known Issues in EUI 1.2.0 / RUI 1.0 FINAL
+
+* It is still possible that a 3d organ may fail to load. If this happens, just refresh and try again.
+* EUI has not been updated with the latest organ set. This will be added in December with its scheduled refresh.
+
 ## RUI 1.0 BETA - 2020-10-16
 
 ### Added in RUI 1.0 BETA
