@@ -129,6 +129,8 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
       zoom: this.zoom,
       target: [0, 0, 0],
       rotation: this.rotation,
+      minRotationX: -45,
+      maxRotationX: 45,
       interactive: this.interactive
     });
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());

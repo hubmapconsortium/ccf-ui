@@ -25,6 +25,8 @@ export interface BodyUIProps {
   target: Matrix4 | number[];
   interactive: boolean;
   rotation: number;
+  minRotationX: number;
+  maxRotationX: number;
   zoom: number;
   legacyLighting?: boolean;
 }
@@ -98,8 +100,8 @@ export class BodyUI {
     this.deck.setProps({
       viewState: {
         orbitAxis: 'Y',
-        minRotationX: -15,
-        maxRotationX: 15,
+        minRotationX: deckProps.minRotationX || -15,
+        maxRotationX: deckProps.maxRotationX || 15,
         target: deckProps.target || [0.5, 0.5, 0],
         rotationX: 0,
         rotationOrbit: deckProps.rotation || 0,
