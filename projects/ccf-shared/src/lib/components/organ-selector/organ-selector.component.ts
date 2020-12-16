@@ -40,6 +40,8 @@ export class OrganSelectorComponent {
   /** HTML class */
   @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
+  @Input() multiselect = false;
+
   @Input() displayErrors = false;
 
   /**
@@ -55,7 +57,7 @@ export class OrganSelectorComponent {
   /**
    * Emits the name of the organ when selected
    */
-  @Output() organChanged = new EventEmitter<OrganInfo>();
+  @Output() organsChanged = new EventEmitter<OrganInfo[]>();
 
   /**
    * Determines whether the carousel is at the beginning
@@ -144,14 +146,18 @@ export class OrganSelectorComponent {
    * @param icon The icon selected
    */
   selectOrgan(organ: OrganInfo): void {
-    if (this.selectedOrgans.includes(organ)) {
-      this.selectedOrgans = this.selectedOrgans.filter( (selectedOrgan) => {
-        return organ !== selectedOrgan
-    })
+    if (!this.multiselect) {
+      this.selectedOrgans = [organ];
     } else {
-      this.selectedOrgans = this.selectedOrgans.concat([organ]);
+      if (this.selectedOrgans.includes(organ)) {
+        this.selectedOrgans = this.selectedOrgans.filter( (selectedOrgan) => {
+          return organ !== selectedOrgan
+      })
+      } else {
+        this.selectedOrgans = this.selectedOrgans.concat([organ]);
+      }
     }
-    this.organChanged.emit(organ);
+    this.organsChanged.emit(this.selectedOrgans);
   }
 
   /**
