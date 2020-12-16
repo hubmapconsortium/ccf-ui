@@ -5,7 +5,7 @@ import { State } from '@ngxs/store';
 import { sortBy } from 'lodash';
 import { pluck } from 'rxjs/operators';
 
-import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
+import { OrganInfo } from '../../../../../../ccf-shared/src/lib/components/organ-selector/organ-selector.component';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';

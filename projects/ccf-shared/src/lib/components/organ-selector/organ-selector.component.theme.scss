@@ -17,7 +17,7 @@
 
       .carousel-left-icon,
       .carousel-right-icon {
-        color: mat-color($foreground, icon);
+        color: mat-color($foreground, carousel-arrow);
 
         &:hover {
           color: mat-color($foreground, active-icon);
