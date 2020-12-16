@@ -50,7 +50,7 @@ export class OrganSelectorComponent {
   /**
    * Currently selected organ
    */
-  @Input() selectedOrgan: OrganInfo | undefined = undefined;
+  @Input() selectedOrgans: OrganInfo[] = [];
 
   /**
    * Emits the name of the organ when selected
@@ -86,7 +86,7 @@ export class OrganSelectorComponent {
       return false;
     }
 
-    if (!this.selectedOrgan) {
+    if (!this.selectedOrgans) {
       return false;
     }
 
@@ -99,17 +99,23 @@ export class OrganSelectorComponent {
    * @param dir Direction to be scrolled
    */
   shift(dir: string): void {
-    if (this.onLeft && dir === 'left') {
-      return;
-    } else if (this.onRight && dir === 'right') {
-      return;
-    }
     const element = document.getElementsByClassName('carousel-item-list')[0] as HTMLElement;
+    const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;
     let val = parseInt(element.style.left, 10) || 0;
-    val = dir === 'right' ? val -= this.step : val += this.step;
-    element.style.left = val+'px';
-    this.onLeft = val === 0 ? true : false;
-    this.onRight = val === this.step*(5 - this.organList.length) ? true : false;
+    if (container.offsetWidth >= this.organList.length*this.step) {
+
+      return;
+    } else {
+      if (this.onLeft && dir === 'left') {
+        return;
+      } else if (this.onRight && dir === 'right') {
+        return;
+      }
+      val = dir === 'right' ? val -= this.step : val += this.step;
+      element.style.left = val+'px';
+      this.onLeft = val === 0 ? true : false;
+      this.onRight = val <= (container.offsetWidth - this.organList.length*this.step) ? true : false;
+    }
   }
 
   /**
@@ -137,8 +143,14 @@ export class OrganSelectorComponent {
    * Sets currently selected organ and emits the organ name
    * @param icon The icon selected
    */
-  selectOrgan(organ: OrganInfo | undefined): void {
-    this.selectedOrgan = organ;
+  selectOrgan(organ: OrganInfo): void {
+    if (this.selectedOrgans.includes(organ)) {
+      this.selectedOrgans = this.selectedOrgans.filter( (selectedOrgan) => {
+        return organ !== selectedOrgan
+    })
+    } else {
+      this.selectedOrgans = this.selectedOrgans.concat([organ]);
+    }
     this.organChanged.emit(organ);
   }
 
@@ -148,6 +160,6 @@ export class OrganSelectorComponent {
    * @returns true if selected
    */
   isSelected(organ: OrganInfo): boolean {
-    return this.selectedOrgan?.src === organ.src;
+    return this.selectedOrgans.includes(organ) ? true : false;
   }
 }

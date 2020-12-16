@@ -29,7 +29,7 @@
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer-content>
-      <ccf-organ-selector [organList]="organList" [selectedOrgan]="organList[0]"></ccf-organ-selector>
+      <ccf-organ-selector [organList]="organList" [selectedOrgans]="[organList[0]]"></ccf-organ-selector>
       <ccf-body-ui [filter]="data.filter$ | async" (filterChange)="data.updateFilter($event)"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
