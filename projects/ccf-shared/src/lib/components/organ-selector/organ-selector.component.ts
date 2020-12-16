@@ -1,4 +1,5 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef } from '@angular/core';
+import { ResizeSensor } from 'css-element-queries';
 
 /**
  * Contains the organ name and url of the icon svg
@@ -36,7 +37,7 @@ export interface OrganInfo {
   templateUrl: './organ-selector.component.html',
   styleUrls: ['./organ-selector.component.scss']
 })
-export class OrganSelectorComponent {
+export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /** HTML class */
   @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
@@ -79,6 +80,20 @@ export class OrganSelectorComponent {
    */
   step = 56;
 
+  private sensor: ResizeSensor;
+
+  ngAfterViewInit() {
+    const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;
+    this.sensor = new ResizeSensor(container, () => {
+      console.log('Changed to ' + container.clientWidth);
+      this.set();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sensor.detach();
+  }
+
   /**
    * Decides whether or not an error has occured,
    * used to display or hide error message.
@@ -104,20 +119,15 @@ export class OrganSelectorComponent {
     const element = document.getElementsByClassName('carousel-item-list')[0] as HTMLElement;
     const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;
     let val = parseInt(element.style.left, 10) || 0;
-    if (container.offsetWidth >= this.organList.length*this.step) {
-
+    if (this.onLeft && dir === 'left') {
       return;
-    } else {
-      if (this.onLeft && dir === 'left') {
-        return;
-      } else if (this.onRight && dir === 'right') {
-        return;
-      }
-      val = dir === 'right' ? val -= this.step : val += this.step;
-      element.style.left = val+'px';
-      this.onLeft = val === 0 ? true : false;
-      this.onRight = val <= (container.offsetWidth - this.organList.length*this.step) ? true : false;
+    } else if (this.onRight && dir === 'right') {
+      return;
     }
+    val = dir === 'right' ? val -= this.step : val += this.step;
+    element.style.left = val+'px';
+    this.onLeft = val === 0 ? true : false;
+    this.onRight = val <= (container.offsetWidth - this.organList.length*this.step) ? true : false;
   }
 
   /**
@@ -167,5 +177,19 @@ export class OrganSelectorComponent {
    */
   isSelected(organ: OrganInfo): boolean {
     return this.selectedOrgans.includes(organ) ? true : false;
+  }
+
+  set(): void {
+    const element = document.getElementsByClassName('carousel-item-list')[0] as HTMLElement;
+    const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;
+    let val = parseInt(element.style.left, 10) || 0;
+    if (container.offsetWidth >= this.organList.length*this.step) {
+      element.style.left = '0px';
+      this.onLeft = true;
+      this.onRight = true;
+    } else {
+      this.onLeft = val === 0 ? true : false;
+      this.onRight = val <= (container.offsetWidth - this.organList.length*this.step) ? true : false;
+    }
   }
 }
