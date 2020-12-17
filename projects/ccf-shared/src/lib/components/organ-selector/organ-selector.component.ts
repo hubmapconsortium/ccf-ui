@@ -1,4 +1,4 @@
-import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef } from '@angular/core';
+import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef, ViewChild } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
 
 /**
@@ -40,6 +40,9 @@ export interface OrganInfo {
 export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /** HTML class */
   @HostBinding('class') readonly clsName = 'ccf-organ-selector';
+
+  @ViewChild('itemlist', { static: true }) itemList: ElementRef<HTMLElement>;
+  @ViewChild('itemcontainer', { static: true }) itemContainer: ElementRef<HTMLElement>;
 
   /**
    * If multiple selections should be allowed
@@ -92,8 +95,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Set resize sensor on carousel
    */
   ngAfterViewInit() {
-    const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;
-    this.sensor = new ResizeSensor(container, () => {
+    const { itemContainer } = this;
+    this.sensor = new ResizeSensor(itemContainer.nativeElement, () => {
       this.set();
     });
   }
@@ -127,18 +130,17 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * @param dir Direction to be scrolled
    */
   shift(dir: string): void {
-    const element = document.getElementsByClassName('carousel-item-list')[0] as HTMLElement;
-    const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;
-    let val = parseInt(element.style.left, 10) || 0;
+    const { itemList, itemContainer } = this;
+    let val = parseInt(itemList.nativeElement.style.left, 10) || 0;
     if (this.onLeft && dir === 'left') {
       return;
     } else if (this.onRight && dir === 'right') {
       return;
     }
     val = dir === 'right' ? val -= this.step : val += this.step;
-    element.style.left = val+'px';
+    itemList.nativeElement.style.left = val+'px';
     this.onLeft = val === 0 ? true : false;
-    this.onRight = val <= (container.offsetWidth - this.organList.length*this.step) ? true : false;
+    this.onRight = val <= (itemContainer.nativeElement.offsetWidth - this.organList.length*this.step) ? true : false;
   }
 
   /**
@@ -192,16 +194,15 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Disables scrolling if the list of organs is smaller than the container, otherwise sets onLeft and onRight as normal
    */
   set(): void {
-    const element = document.getElementsByClassName('carousel-item-list')[0] as HTMLElement;
-    const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;
-    let val = parseInt(element.style.left, 10) || 0;
-    if (container.offsetWidth >= this.organList.length*this.step) {
-      element.style.left = '0px';
+    const { itemList, itemContainer } = this;
+    let val = parseInt(itemList.nativeElement.style.left, 10) || 0;
+    if (itemList.nativeElement.offsetWidth >= this.organList.length*this.step) {
+      itemList.nativeElement.style.left = '0px';
       this.onLeft = true;
       this.onRight = true;
     } else {
       this.onLeft = val === 0 ? true : false;
-      this.onRight = val <= (container.offsetWidth - this.organList.length*this.step) ? true : false;
+      this.onRight = val <= (itemContainer.nativeElement.offsetWidth - this.organList.length*this.step) ? true : false;
     }
   }
 }

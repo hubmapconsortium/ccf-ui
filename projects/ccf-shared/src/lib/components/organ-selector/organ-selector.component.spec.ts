@@ -3,6 +3,8 @@ import { Shallow } from 'shallow-render';
 import { OrganInfo, OrganSelectorComponent } from './organ-selector.component';
 import { OrganSelectorModule } from './organ-selector.module';
 
+import * as ResizeModule from 'css-element-queries';
+
 
 function wait(duration: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, duration));
@@ -13,6 +15,13 @@ describe('OrganSelectorComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(OrganSelectorComponent, OrganSelectorModule);
+    spyOn(ResizeModule, 'ResizeSensor').and.callFake(function (_element, callback) {
+      (async () => {
+        await wait(100);
+        callback({ width: 0, height: 0 });
+      })();
+      return jasmine.createSpyObj<ResizeModule.ResizeSensor>('', ['detach']);
+    });
   });
 
   it('should shift the carousel left if dir === left.', async () => {
@@ -118,13 +127,45 @@ describe('OrganSelectorComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  it('should allow multiple selection of organs', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const testOrgan2: OrganInfo = { src: 'test2', name: 'test2' };
+    const { instance } = await shallow.render({bind: { multiselect: true }});
+    instance.selectOrgan(testOrgan);
+    instance.selectOrgan(testOrgan2);
+    expect(instance.selectedOrgans).toEqual([testOrgan, testOrgan2]);
+  });
+
+  it('should deselect a selected organ', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const testOrgan2: OrganInfo = { src: 'test2', name: 'test2' };
+    const { instance } = await shallow.render({bind: { multiselect: true }});
+    instance.selectOrgan(testOrgan);
+    instance.selectOrgan(testOrgan2);
+    instance.selectOrgan(testOrgan2);
+    expect(instance.selectedOrgans).toEqual([testOrgan]);
+  });
+
   it('should set onLeft and onRight to true if the list of organs is smaller than the container', async () => {
-    const { instance, find } = await shallow.render();
-    const element = find('carousel-item-list')[0].nativeElement as HTMLElement;
-    const container = find('carousel-item-container')[0].nativeElement as HTMLElement;
-    element.style.width = '100px';
-    container.style.width = '150px';
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
+    const list = find('.carousel-item-list').nativeElement as HTMLElement;
+    list.style.width = '224px';
+    instance.set();
     expect(instance.onLeft).toBeTrue();
+    expect(instance.onRight).toBeTrue();
+  });
+
+  it('should set onLeft and onRight to true if the list of organs is smaller than the container', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
+    const list = find('.carousel-item-list').nativeElement as HTMLElement;
+    const container = find('.carousel-item-container').nativeElement as HTMLElement;
+    list.style.left = '-124px';
+    list.style.width = '150px';
+    container.style.width = '100px';
+    instance.set();
+    expect(instance.onLeft).toBeFalse();
     expect(instance.onRight).toBeTrue();
   });
 });
