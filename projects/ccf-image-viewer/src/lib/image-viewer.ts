@@ -162,8 +162,8 @@ export abstract class ImageViewer<Props extends ImageViewerProps = ImageViewerPr
     return this;
   }
 
-  protected abstract async createVivViews(): Promise<VivView[]>;
-  protected abstract async createLayerConfigs(): Promise<LayerConfig[]>;
+  protected abstract createVivViews(): Promise<VivView[]>;
+  protected abstract createLayerConfigs(): Promise<LayerConfig[]>;
 
   protected update(): void {
     this.updateViews();
