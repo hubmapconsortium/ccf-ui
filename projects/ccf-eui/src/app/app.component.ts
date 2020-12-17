@@ -22,7 +22,9 @@ import { OrganInfo } from '../../../ccf-shared/src/lib/components/organ-selector
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  /**
+   * List of organs to be displayed in the carousel
+   */
   organList: OrganInfo[] = [
     { src: 'app:colon', name: 'Colon', hasSides: false, hasSex: true },
     { src: 'app:heart', name: 'Heart', hasSides: false, hasSex: true },

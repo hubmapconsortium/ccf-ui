@@ -41,6 +41,9 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /** HTML class */
   @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
+  /**
+   * If multiple selections should be allowed
+   */
   @Input() multiselect = false;
 
   @Input() displayErrors = false;
@@ -80,16 +83,24 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    */
   step = 56;
 
+  /**
+   * Detects resizing of carousel
+   */
   private sensor: ResizeSensor;
 
+  /**
+   * Set resize sensor on carousel
+   */
   ngAfterViewInit() {
     const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;
     this.sensor = new ResizeSensor(container, () => {
-      console.log('Changed to ' + container.clientWidth);
       this.set();
     });
   }
 
+  /**
+   * Detaches resize sensor
+   */
   ngOnDestroy(): void {
     this.sensor.detach();
   }
@@ -152,17 +163,15 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Sets currently selected organ and emits the organ name
-   * @param icon The icon selected
+   * Sets and emits currently selected organ(s)
+   * @param organ The organ selected
    */
   selectOrgan(organ: OrganInfo): void {
     if (!this.multiselect) {
       this.selectedOrgans = [organ];
     } else {
       if (this.selectedOrgans.includes(organ)) {
-        this.selectedOrgans = this.selectedOrgans.filter( (selectedOrgan) => {
-          return organ !== selectedOrgan
-      })
+        this.selectedOrgans = this.selectedOrgans.filter((selectedOrgan) => {return organ !== selectedOrgan})
       } else {
         this.selectedOrgans = this.selectedOrgans.concat([organ]);
       }
@@ -171,7 +180,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Determines whether an icon represents the currently selected organ
+   * Determines whether an icon represents a currently selected organ
    * @param icon The icon of interest
    * @returns true if selected
    */
@@ -179,6 +188,9 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
     return this.selectedOrgans.includes(organ) ? true : false;
   }
 
+  /**
+   * Disables scrolling if the list of organs is smaller than the container, otherwise sets onLeft and onRight as normal
+   */
   set(): void {
     const element = document.getElementsByClassName('carousel-item-list')[0] as HTMLElement;
     const container = document.getElementsByClassName('carousel-item-container')[0] as HTMLElement;

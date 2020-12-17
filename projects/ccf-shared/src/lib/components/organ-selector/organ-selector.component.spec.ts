@@ -55,7 +55,7 @@ describe('OrganSelectorComponent', () => {
     const { instance, outputs } = await shallow.render();
     const testOrgan: OrganInfo = {name: 'test', src: 'test'};
     instance.selectOrgan(testOrgan);
-    expect(outputs.organChanged.emit).toHaveBeenCalled();
+    expect(outputs.organsChanged.emit).toHaveBeenCalled();
   });
 
   it('should tell if an icon is selected.', async () => {
@@ -104,7 +104,7 @@ describe('OrganSelectorComponent', () => {
 
   it('getError() should return true if displayErrors is set to true and there is an organ selected', async () => {
     const testOrgan: OrganInfo = { src: 'test', name: 'test' };
-    const { instance } = await shallow.render({ bind: { displayErrors: true, selectedOrgan: testOrgan }});
+    const { instance } = await shallow.render({ bind: { displayErrors: true, selectedOrgans: [testOrgan] }});
     const value = instance.error;
     expect(value).toBeTrue();
   });
@@ -116,5 +116,15 @@ describe('OrganSelectorComponent', () => {
     await wait(250);
     instance.stopScroll();
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should set onLeft and onRight to true if the list of organs is smaller than the container', async () => {
+    const { instance, find } = await shallow.render();
+    const element = find('carousel-item-list')[0].nativeElement as HTMLElement;
+    const container = find('carousel-item-container')[0].nativeElement as HTMLElement;
+    element.style.width = '100px';
+    container.style.width = '150px';
+    expect(instance.onLeft).toBeTrue();
+    expect(instance.onRight).toBeTrue();
   });
 });
