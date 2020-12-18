@@ -6,7 +6,7 @@ import { VisibilityItem } from '../../core/models/visibility-item';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
-import { ALL_ORGANS } from './../../core/store/model/model.state';
+import { RUI_ORGANS } from './../../core/store/model/model.state';
 
 
 @Component({
@@ -48,7 +48,7 @@ export class LeftSidebarComponent {
    */
   previousVisibilityItems = [...this.model.snapshot.anatomicalStructures] as VisibilityItem[];
 
-  organList = ALL_ORGANS;
+  organList = RUI_ORGANS;
 
   constructor(
     readonly page: PageState,
