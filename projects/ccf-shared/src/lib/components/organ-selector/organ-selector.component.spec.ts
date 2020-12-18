@@ -11,6 +11,7 @@ function wait(duration: number): Promise<void> {
 
 describe('OrganSelectorComponent', () => {
   let shallow: Shallow<OrganSelectorComponent>;
+  const carousel = document.getElementsByClassName('carousel-item-list')[0] as HTMLElement;
 
   beforeEach(() => {
     shallow = new Shallow(OrganSelectorComponent, OrganSelectorModule);
@@ -24,8 +25,7 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should shift the carousel left if dir === left.', async () => {
-    const { find, instance } = await shallow.render();
-    const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
+    const { instance } = await shallow.render();
     carousel.style.left = '80px';
     instance.onLeft = false;
     instance.shift('left');
@@ -33,8 +33,7 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should shift the carousel right if dir === right.', async () => {
-    const { find, instance } = await shallow.render();
-    const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
+    const { instance } = await shallow.render();
     carousel.style.left = '80px';
     instance.onRight = false;
     instance.shift('right');
@@ -42,8 +41,7 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should not shift the carousel right if carousel is already at right end.', async () => {
-    const { find, instance } = await shallow.render();
-    const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
+    const { instance } = await shallow.render();
     carousel.style.left = '-80px';
     instance.onRight = true;
     instance.shift('right');
@@ -51,8 +49,7 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should not shift the carousel left if carousel is already at left end.', async () => {
-    const { find, instance } = await shallow.render();
-    const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
+    const { instance } = await shallow.render();
     carousel.style.left = '0px';
     instance.onLeft = true;
     instance.shift('left');
@@ -148,8 +145,7 @@ describe('OrganSelectorComponent', () => {
   it('should set onLeft and onRight to true if the list of organs is smaller than the container', async () => {
     const testOrgan: OrganInfo = { src: 'test', name: 'test' };
     const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
-    const list = find('.carousel-item-list').nativeElement as HTMLElement;
-    list.style.width = '224px';
+    carousel.style.width = '224px';
     instance.set();
     expect(instance.onLeft).toBeTrue();
     expect(instance.onRight).toBeTrue();
@@ -158,10 +154,9 @@ describe('OrganSelectorComponent', () => {
   it('should set onLeft and onRight to true if the list of organs is smaller than the container', async () => {
     const testOrgan: OrganInfo = { src: 'test', name: 'test' };
     const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
-    const list = find('.carousel-item-list').nativeElement as HTMLElement;
     const container = find('.carousel-item-container').nativeElement as HTMLElement;
-    list.style.left = '-124px';
-    list.style.width = '150px';
+    carousel.style.left = '-124px';
+    carousel.style.width = '150px';
     container.style.width = '100px';
     instance.set();
     expect(instance.onLeft).toBeFalse();
