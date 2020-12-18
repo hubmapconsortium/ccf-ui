@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
-import { State } from '@ngxs/store';
+import { NgxsOnInit, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
 import { AggregateResult, Filter, ListResult } from 'ccf-database';
-import { combineLatest, Observable, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
-import { distinct, map, pluck, publishReplay, refCount, switchMap, tap } from 'rxjs/operators';
+import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
+import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from 'rxjs/operators';
 
 import { DataSourceService } from '../../services/data-source/data-source.service';
 
@@ -87,7 +87,7 @@ export interface DataStateModel {
   }
 })
 @Injectable()
-export class DataState extends NgxsDataRepository<DataStateModel> {
+export class DataState extends NgxsDataRepository<DataStateModel> implements NgxsOnInit {
   /** Implementation subject for listDataQueryStatus$. */
   private readonly _listDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
@@ -95,7 +95,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
   /** Implementation subject for termOccurencesDataQueryStatus$. */
   private readonly _termOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Keeping track of all ontology terms there is data for. */
-  readonly ontologyTermsFullData$: Observable<Record<string, number>>;
+  readonly ontologyTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
 
   /** Current filter. */
   readonly filter$ = this.state$.pipe(pluck('filter'));
@@ -140,10 +140,16 @@ export class DataState extends NgxsDataRepository<DataStateModel> {
     this._listDataQueryStatus$.next(DataQueryState.Completed);
     this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
     this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
+  }
 
-    const ontologyTermsData = new ReplaySubject<Record<string, number>>(1);
-    source.getOntologyTermOccurences().subscribe(ontologyTermsData);
-    this.ontologyTermsFullData$ = ontologyTermsData;
+  ngxsOnInit(): void {
+    const { ontologyTermsFullData$, termOccurencesData$, source, snapshot: { filter } } = this;
+    if (filter === DEFAULT_FILTER) {
+      // Common case - Reuse the result of the regular query
+      termOccurencesData$.pipe(take(1)).subscribe(ontologyTermsFullData$);
+    } else {
+      source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
+    }
   }
 
   /**
