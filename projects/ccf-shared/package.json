@@ -4,8 +4,12 @@
   "peerDependencies": {
     "@angular/common": "^10.0.6",
     "@angular/core": "^10.0.6"
+
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "@angular/material": "^10.1.1",
+    "css-element-queries": "^1.2.3",
+    "shallow-render": "^10.0.1"
   }
 }

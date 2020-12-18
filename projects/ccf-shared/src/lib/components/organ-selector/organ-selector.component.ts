@@ -110,7 +110,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /**
    * Set resize sensor on carousel
    */
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     const { itemContainer } = this;
     this.sensor = new ResizeSensor(itemContainer.nativeElement, () => {
       this.set();
@@ -148,9 +148,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   shift(dir: string): void {
     const { itemList } = this;
     let val = parseInt(itemList.nativeElement.style.left, 10) || 0;
-    if (this.onLeft && dir === 'left') {
-      return;
-    } else if (this.onRight && dir === 'right') {
+    if (this.onLeft && dir === 'left' || this.onRight && dir === 'right') {
       return;
     }
     val = dir === 'right' ? val - this.step : val + this.step;
@@ -189,8 +187,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
     } else {
       if (this.selectedOrgans.includes(organ)) {
         this.selectedOrgans = this.selectedOrgans.filter((selectedOrgan) => {
-          return organ !== selectedOrgan
-        })
+          return organ !== selectedOrgan;
+        });
       } else {
         this.selectedOrgans = this.selectedOrgans.concat([organ]);
       }
