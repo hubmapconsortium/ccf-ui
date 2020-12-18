@@ -130,17 +130,16 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * @param dir Direction to be scrolled
    */
   shift(dir: string): void {
-    const { itemList, itemContainer } = this;
+    const { itemList } = this;
     let val = parseInt(itemList.nativeElement.style.left, 10) || 0;
     if (this.onLeft && dir === 'left') {
       return;
     } else if (this.onRight && dir === 'right') {
       return;
     }
-    val = dir === 'right' ? val -= this.step : val += this.step;
+    val = dir === 'right' ? val - this.step : val + this.step;
     itemList.nativeElement.style.left = val+'px';
-    this.onLeft = val === 0 ? true : false;
-    this.onRight = val <= (itemContainer.nativeElement.offsetWidth - this.organList.length*this.step) ? true : false;
+    this.setLeftRight(val);
   }
 
   /**
@@ -173,7 +172,9 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
       this.selectedOrgans = [organ];
     } else {
       if (this.selectedOrgans.includes(organ)) {
-        this.selectedOrgans = this.selectedOrgans.filter((selectedOrgan) => {return organ !== selectedOrgan})
+        this.selectedOrgans = this.selectedOrgans.filter((selectedOrgan) => {
+          return organ !== selectedOrgan
+        })
       } else {
         this.selectedOrgans = this.selectedOrgans.concat([organ]);
       }
@@ -194,15 +195,20 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Disables scrolling if the list of organs is smaller than the container, otherwise sets onLeft and onRight as normal
    */
   set(): void {
-    const { itemList, itemContainer } = this;
-    let val = parseInt(itemList.nativeElement.style.left, 10) || 0;
+    const { itemList } = this;
+    const val = parseInt(itemList.nativeElement.style.left, 10) || 0;
     if (itemList.nativeElement.offsetWidth >= this.organList.length*this.step) {
       itemList.nativeElement.style.left = '0px';
       this.onLeft = true;
       this.onRight = true;
     } else {
-      this.onLeft = val === 0 ? true : false;
-      this.onRight = val <= (itemContainer.nativeElement.offsetWidth - this.organList.length*this.step) ? true : false;
+      this.setLeftRight(val);
     }
+  }
+
+  setLeftRight(val: number): void {
+    const { itemContainer } = this;
+    this.onLeft = val === 0 ? true : false;
+    this.onRight = val <= (itemContainer.nativeElement.offsetWidth - this.organList.length*this.step) ? true : false;
   }
 }

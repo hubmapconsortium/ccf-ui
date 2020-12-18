@@ -5,7 +5,6 @@ import { OrganSelectorModule } from './organ-selector.module';
 
 import * as ResizeModule from 'css-element-queries';
 
-
 function wait(duration: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, duration));
 }

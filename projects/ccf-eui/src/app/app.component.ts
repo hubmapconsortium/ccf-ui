@@ -11,6 +11,7 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { OrganInfo } from '../../../ccf-shared/src/lib/components/organ-selector/organ-selector.component';
+import { ALL_ORGANS } from '../../../ccf-rui/src/app/core/store/model/model.state';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -25,21 +26,7 @@ export class AppComponent {
   /**
    * List of organs to be displayed in the carousel
    */
-  organList: OrganInfo[] = [
-    { src: 'app:colon', name: 'Colon', hasSides: false, hasSex: true },
-    { src: 'app:heart', name: 'Heart', hasSides: false, hasSex: true },
-    { src: 'app:kidney', name: 'Kidney', hasSides: true, hasSex: true },
-    { src: 'app:spleen', name: 'Spleen', hasSides: false, hasSex: true },
-    { src: 'app:bladder', name: 'Bladder', disabled: true, hasSides: false, hasSex: true },
-    { src: 'app:brain', name: 'Brain', disabled: true, hasSides: false, hasSex: true },
-    { src: 'app:liver', name: 'Liver', disabled: true, hasSides: false, hasSex: true },
-    { src: 'app:lung', name: 'Lung', disabled: true, hasSides: true, hasSex: true },
-    { src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true, hasSides: false, hasSex: true },
-    { src: 'app:ovaries', name: 'Ovaries', disabled: true, hasSides: true, hasSex: false },
-    { src: 'app:small_intestine', name: 'Small Intestine', disabled: true, hasSides: false, hasSex: true },
-    { src: 'app:stomach', name: 'Stomach', disabled: true, hasSides: false, hasSex: true },
-    { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false, hasSex: true }
-  ];
+  organList = ALL_ORGANS;
 
   /**
    * Used to keep track of the ontology label to be passed down to the
