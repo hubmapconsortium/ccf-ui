@@ -1,0 +1,360 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>Collision</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-body-ui/src/lib/util/spatial-scene-collider.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#@id">@id</a>
+                                </li>
+                                <li>
+                                        <a href="#hits">hits</a>
+                                </li>
+                                <li>
+                                        <a href="#name">name</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="@id"></a>
+                                        <span class="name"><b>@id</b><a href="#@id"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>@id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="hits"></a>
+                                        <span class="name"><b>hits</b><a href="#hits"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>hits:     <code>literal type[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>literal type[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="name"></a>
+                                        <span class="name"><b>name</b><a href="#name"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { load } from &#x27;@loaders.gl/core&#x27;;
+import { DracoLoader } from &#x27;@loaders.gl/draco&#x27;;
+import { GLTFLoader } from &#x27;@loaders.gl/gltf&#x27;;
+import { Matrix4 } from &#x27;@math.gl/core&#x27;;
+import { AABB, Vec3 } from &#x27;cannon-es&#x27;;
+
+import { SpatialSceneNode } from &#x27;../shared/spatial-scene-node&#x27;;
+import { traverseScene } from &#x27;./scene-traversal&#x27;;
+
+
+interface Collision {
+  &#x27;@id&#x27;: string;
+  name: string;
+  hits: {&#x27;@id&#x27;: string, name: string}[];
+}
+
+// tslint:disable: no-unsafe-any
+export async function doCollisions(scene: SpatialSceneNode[]): Promise&lt;Collision[]&gt; {
+  console.log(&#x27;Starting Collisioning&#x27;);
+  const sourceBoxes &#x3D; scene
+    .filter(d &#x3D;&gt; !d.scenegraph &amp;&amp; !d.wireframe)
+    .map(model &#x3D;&gt; {
+      const mat &#x3D; new Matrix4(model.transformMatrix);
+      const lowerBound &#x3D; mat.transformAsPoint([-1, -1, -1], []);
+      const upperBound &#x3D; mat.transformAsPoint([1, 1, 1], []);
+      return {
+        &#x27;@id&#x27;: model[&#x27;@id&#x27;],
+        name: model.tooltip,
+        entityId: model.entityId,
+        bbox: new AABB({
+          lowerBound: new Vec3(...lowerBound.map((n, i) &#x3D;&gt; Math.min(n, upperBound[i]))),
+          upperBound: new Vec3(...upperBound.map((n, i) &#x3D;&gt; Math.max(n, lowerBound[i])))
+        })
+      };
+    });
+
+  const targetBoxes: {&#x27;@id&#x27;: string, name: string, entityId?: string; bbox: AABB, gltf: unknown}[] &#x3D; [];
+  for (const model of scene.filter(d &#x3D;&gt; !!d.scenegraph)) {
+    const gltf &#x3D; await load(model.scenegraph as string, GLTFLoader, {DracoLoader, decompress: true, postProcess: true});
+    for (const gltfScene of gltf.scenes) {
+      traverseScene(gltfScene, new Matrix4(model.transformMatrix), (node, modelMatrix) &#x3D;&gt; {
+        if (node.mesh &amp;&amp; node.mesh.primitives &amp;&amp; node.mesh.primitives.length &gt; 0) {
+          for (const primitive of node.mesh.primitives) {
+            if (primitive.attributes.POSITION &amp;&amp; primitive.attributes.POSITION.min) {
+              const lowerBound &#x3D; modelMatrix.transformAsPoint(primitive.attributes.POSITION.min, []);
+              const upperBound &#x3D; modelMatrix.transformAsPoint(primitive.attributes.POSITION.max, []);
+              targetBoxes.push({
+                &#x27;@id&#x27;: model[&#x27;@id&#x27;],
+                name: node.name,
+                entityId: model.entityId,
+                bbox: new AABB({
+                  lowerBound: new Vec3(...lowerBound.map((n, i) &#x3D;&gt; Math.min(n, upperBound[i]))),
+                  upperBound: new Vec3(...upperBound.map((n, i) &#x3D;&gt; Math.max(n, lowerBound[i])))
+                }),
+                gltf
+              });
+            }
+          }
+        }
+        return true;
+      });
+    }
+  }
+
+  const report: Collision[] &#x3D; [];
+  const sad: unknown[] &#x3D; [];
+  for (const src of sourceBoxes) {
+    const hits: {&#x27;@id&#x27;: string, name: string}[] &#x3D; [];
+    for (const target of targetBoxes) {
+      if (src.bbox.overlaps(target.bbox)) {
+        hits.push({&#x27;@id&#x27;: target[&#x27;@id&#x27;], name: target.name});
+      }
+    }
+    if (hits.length &gt; 0) {
+      report.push({
+        &#x27;@id&#x27;: src.entityId as string,
+        name: src.name as string,
+        hits
+      });
+    } else {
+      sad.push(src);
+    }
+  }
+
+  console.log({ sourceBoxes, targetBoxes, report, sad, maxHits: Math.max(...report.map(r &#x3D;&gt; r.hits.length)) });
+
+  const csvReport: unknown[] &#x3D; [];
+  for (const hit of report) {
+    csvReport.push({
+      &#x27;Tissue ID&#x27;: hit[&#x27;@id&#x27;],
+      &#x27;Tissue Name&#x27;: hit.name,
+      &#x27;Hit ID&#x27;: &#x27;&#x27;,
+      &#x27;Hit Name&#x27;: &#x27;&#x27;
+    });
+    for (const h of hit.hits) {
+      csvReport.push({
+        &#x27;Tissue ID&#x27;: hit[&#x27;@id&#x27;],
+        &#x27;Tissue Name&#x27;: hit.name,
+        &#x27;Hit ID&#x27;: h[&#x27;@id&#x27;],
+        &#x27;Hit Name&#x27;: h.name
+      });
+    }
+  }
+  console.log(csvReport);
+
+  return report;
+}
+// tslint:enable: no-unsafe-any
+</code></pre>
+    </div>
+</div>
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'Collision.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
