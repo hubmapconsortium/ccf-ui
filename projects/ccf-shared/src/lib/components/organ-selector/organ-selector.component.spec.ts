@@ -17,7 +17,8 @@ describe('OrganSelectorComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(OrganSelectorComponent, OrganSelectorModule);
-    spyOn(ResizeModule, 'ResizeSensor').and.callFake(function(_element, callback) {
+    // tslint:disable-next-line: only-arrow-functions
+    spyOn(ResizeModule, 'ResizeSensor').and.callFake(function(_element, callback): ResizeModule.ResizeSensor {
       (async () => {
         await wait(100);
         callback({ width: 0, height: 0 });
