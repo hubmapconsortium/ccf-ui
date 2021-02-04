@@ -110,9 +110,10 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   zoomToBounds(bounds: XYZTriplet, margin = {x: 48, y: 48}): void {
     if (this.bodyCanvas) {
       const {width, height} = this.bodyCanvas.nativeElement;
+      const pxRatio = window.devicePixelRatio;
       const zoom = Math.min(
-        Math.log2((width - margin.x) / bounds.x),
-        Math.log2((height - margin.y) / bounds.y)
+        Math.log2((width - margin.x) / pxRatio / bounds.x),
+        Math.log2((height - margin.y) / pxRatio / bounds.y)
       );
       this.zoom = zoom;
     }
