@@ -1,0 +1,687 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ExtractionSetDropdownComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Dropdown for selecting the extraction set</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-extraction-set-dropdown</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./extraction-set-dropdown.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./extraction-set-dropdown.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selected">selected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#extractionSetChanged">extractionSetChanged</a>
+                            </li>
+                            <li>
+                                <a href="#isMultiple">isMultiple</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#sets">sets</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#setChange">setChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class">class</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sets"></a>
+                        <b>sets</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ExtractionSet[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.ts:25</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Extraction sets to be displayed as options</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setChange"></a>
+                        <b>setChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.ts:20</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits the current extraction set when selected</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3>HostBindings</h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="class"></a>
+                        <span class="name">
+                            <b>
+                            class</b>
+                            <a href="#class"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;ccf-extraction-set-dropdown&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>HTML class name </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extractionSetChanged"></a>
+                    <span class="name">
+                        <b>
+                            extractionSetChanged
+                        </b>
+                        <a href="#extractionSetChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>extractionSetChanged(value: <a href="../interfaces/ExtractionSet.html">ExtractionSet</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets the selected extraction set and emits the extraction set</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="../interfaces/ExtractionSet.html" target="_self" >ExtractionSet</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The extraction set selected</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isMultiple"></a>
+                    <span class="name">
+                        <b>
+                            isMultiple
+                        </b>
+                        <a href="#isMultiple"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isMultiple()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines whether there is more than one extraction set</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>true if there is more than one extraction set</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selected"></a>
+                        <span class="name">
+                            <b>
+                            selected</b>
+                            <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/ExtractionSet.html" target="_self" >ExtractionSet</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The currently selected extraction set</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, HostBinding, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+import { ExtractionSet } from &#x27;../../../core/models/extraction-set&#x27;;
+
+/**
+ * Dropdown for selecting the extraction set
+ */
+@Component({
+  selector: &#x27;ccf-extraction-set-dropdown&#x27;,
+  templateUrl: &#x27;./extraction-set-dropdown.component.html&#x27;,
+  styleUrls: [&#x27;./extraction-set-dropdown.component.scss&#x27;]
+})
+export class ExtractionSetDropdownComponent {
+
+  /** HTML class name */
+  @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-extraction-set-dropdown&#x27;;
+
+  /**
+   * Emits the current extraction set when selected
+   */
+  @Output() setChange &#x3D; new EventEmitter&lt;ExtractionSet&gt;();
+
+  /**
+   * Extraction sets to be displayed as options
+   */
+  @Input() sets: ExtractionSet[];
+
+  /**
+   * The currently selected extraction set
+   */
+  selected: ExtractionSet;
+
+  /**
+   * Sets the selected extraction set and emits the extraction set
+   * @param value The extraction set selected
+   */
+  extractionSetChanged(value: ExtractionSet): void {
+    this.selected &#x3D; value;
+    this.setChange.emit(value);
+  }
+
+  /**
+   * Determines whether there is more than one extraction set
+   * @returns true if there is more than one extraction set
+   */
+  isMultiple(): boolean {
+    return this.sets.length &gt; 1;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-form-field class&#x3D;&quot;dropdown-form-field&quot; *ngIf&#x3D;&quot;isMultiple()&quot; appearance&#x3D;&quot;fill&quot;&gt;
+  &lt;mat-label class&#x3D;&quot;extraction-dropdown-label&quot;&gt;Extraction Set&lt;/mat-label&gt;
+  &lt;mat-select disableOptionCentering&#x3D;true (selectionChange)&#x3D;&quot;extractionSetChanged($event.value)&quot; [value]&#x3D;&quot;sets[0]&quot; panelClass&#x3D;&quot;extraction-set-panel&quot;&gt;
+    &lt;mat-option class&#x3D;&quot;extraction-set-options&quot; *ngFor&#x3D;&quot;let set of sets&quot; [value]&#x3D;&#x27;set&#x27;&gt;
+      {{set.name}} ({{set.sites.length}})
+    &lt;/mat-option&gt;
+  &lt;/mat-select&gt;
+&lt;/mat-form-field&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./extraction-set-dropdown.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">::ng-deep .extraction-set-panel {
+  box-shadow: 0rem 0rem 0.3rem 0.1rem #9e9e9e;
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  width: 10.5rem;
+
+  .extraction-set-options {
+    height: 2.5rem !important;
+  }
+  
+  .extraction-set-options:first-child {
+    margin-top: 0.5rem;
+  }
+
+  .extraction-set-options:last-child {
+    margin-bottom: 0.5rem;
+  }
+
+}
+
+:host {
+  ::ng-deep .mat-form-field {
+    width: 10.5rem;
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0.5rem;
+      .mat-form-field-flex {
+        padding: 0;
+      }
+  
+      .mat-form-field-underline {
+        bottom: 0.75rem;
+      }
+
+      .mat-select-arrow-wrapper {
+        transform: none;
+      }
+    }
+  }
+}
+
+::ng-deep .cdk-overlay-pane {
+  min-width: 0rem !important;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-form-field class="dropdown-form-field" *ngIf="isMultiple()" appearance="fill">  <mat-label class="extraction-dropdown-label">Extraction Set</mat-label>  <mat-select disableOptionCentering=true (selectionChange)="extractionSetChanged($event.value)" [value]="sets[0]" panelClass="extraction-set-panel">    <mat-option class="extraction-set-options" *ngFor="let set of sets" [value]=\'set\'>      {{set.name}} ({{set.sites.length}})    </mat-option>  </mat-select></mat-form-field></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ColorBarComponent', 'selector': 'ccf-color-bar'},{'name': 'ColorPickerLauncherComponent', 'selector': 'ccf-color-picker-launcher'},{'name': 'ColorSchemeContentsComponent', 'selector': 'ccf-color-scheme-contents'},{'name': 'ColorSchemePopupComponent', 'selector': 'ccf-color-scheme-popup'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'ImageViewerAccordionComponent', 'selector': 'ccf-image-viewer-accordion'},{'name': 'ImageViewerContentComponent', 'selector': 'ccf-image-viewer-content'},{'name': 'ImageViewerLayersComponent', 'selector': 'ccf-image-viewer-layers'},{'name': 'ImageViewerLegendComponent', 'selector': 'ccf-image-viewer-legend'},{'name': 'ImageViewerPopoverComponent', 'selector': 'ccf-image-viewer-popover'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SchemeDropdownComponent', 'selector': 'ccf-scheme-dropdown'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleableTooltipComponent', 'selector': 'ccf-toggleable-tooltip'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
+    var ACTUAL_COMPONENT = {'name': 'ExtractionSetDropdownComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExtractionSetDropdownComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
