@@ -33,7 +33,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   info-icon: map-get($primary-colors, 'white'),
   input-label: map-get($primary-colors, 600), // #757575
   legend-contrast: #992661, // Not in any builtin palettes
-  logo: map-get($primary-colors, 'white'),
+  logo: #8289A3,
   placeholder-text: map-get($primary-colors, 600), // #757575
   scrollbar-thumb: #cdcdcd, // Can't find this color in any builtin palettes!?
   secondary-text: map-get($primary, 500), // #9E9E9E
