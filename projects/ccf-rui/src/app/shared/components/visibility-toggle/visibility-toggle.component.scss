@@ -5,44 +5,45 @@
      ::ng-deep .mat-chip {
         padding-left: 0 !important;
     }
-    .toggle-wrapper {
-        -webkit-user-select: none;
-        -moz-user-select: none;
+    .toggle-div {
+        width: 100%;
         display: flex;
-        padding-left: .5rem;
-        cursor: pointer;
-        align-items: center;
-        position: relative;
-        border-width: 0.063rem;
-        border-style: solid;
-
-        .icon-background {
-            border-radius: 1rem;
-            height: 1.875rem;
-            width: 1.875rem;
-            z-index: -1;
+        justify-content: center;
+        .toggle-wrapper {
+            -webkit-user-select: none;
+            -moz-user-select: none;
             display: flex;
+            padding-left: .5rem;
+            cursor: pointer;
             align-items: center;
-            justify-content: center;
-
-            .icon {
-                transition: .6s;
-                position: absolute;
-
-                &.block {
-                    width: 1.125rem;
-                    transform: rotate(90deg);
-                }
-                &.hidden {
-                    opacity: 0;
+            position: relative;
+            border-width: 0.063rem;
+            border-style: solid;
+            .icon-background {
+                border-radius: 1rem;
+                height: 1.875rem;
+                width: 1.875rem;
+                z-index: -1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .icon {
+                    transition: .6s;
+                    position: absolute;
+                    &.block {
+                        width: 1.125rem;
+                        transform: rotate(90deg);
+                    }
+                    &.hidden {
+                        opacity: 0;
+                    }
                 }
             }
-        }
-        
-        .toggle-label {
-            font-weight: bold;
-            margin-left: 0.5rem;
-            padding-right: 0.25rem;
+            .toggle-label {
+                font-weight: bold;
+                margin-left: 0.5rem;
+                padding-right: 0.25rem;
+            }
         }
     }
 }
