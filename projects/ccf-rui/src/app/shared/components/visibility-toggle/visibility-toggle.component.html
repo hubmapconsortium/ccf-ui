@@ -1,5 +1,8 @@
-<div (click)="toggleVisibility()" class="toggle-wrapper">
-    <mat-icon class="icon" [class.hidden]="visible" svgIcon="app:visibility_off"></mat-icon>
-    <mat-icon class="icon visible" [class.hidden]="!visible" svgIcon="app:visibility_on"></mat-icon>
+<mat-chip (click)="toggleVisibility()" class="toggle-wrapper" >
+    <div class="icon-background" [class.hidden]="visible">
+        <mat-icon class="icon block" [class.hidden]="visible" svgIcon="app:visibility_off_cube"></mat-icon>
+        <mat-icon class="icon green" [class.hidden]="!visible">done</mat-icon>
+    </div>
+   
     <div class="toggle-label">{{ toggleLabel }}</div>
-</div>
+</mat-chip>

@@ -49,5 +49,6 @@ export const DEFAULT_ICONS: DefaultIconDefinition[] = [
 
   { name: 'visibility_on', namespace: 'app', url: 'assets/icons/visibility-on-24px.svg' },
   { name: 'visibility_off', namespace: 'app', url: 'assets/icons/visibility-off-24px.svg' },
+  { name: 'visibility_off_cube', namespace: 'app', url: 'assets/icons/ico-cube.svg' },
   // Add default icons here!
 ];
