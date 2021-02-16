@@ -31,7 +31,7 @@ export interface DefaultIconDefinition {
  * Icons registered at startup.
  */
 export const DEFAULT_ICONS: DefaultIconDefinition[] = [
-  { name: 'logo', namespace: 'app', url: 'assets/icons/hubmap-logo.svg' },
+  { name: 'logo', namespace: 'app', url: 'assets/icons/logo-rui.svg' },
 
   { name: 'bladder', namespace: 'app', url: 'assets/icons/icons-organs_bladder.svg' },
   { name: 'brain', namespace: 'app', url: 'assets/icons/icons-organs_brain.svg' },
