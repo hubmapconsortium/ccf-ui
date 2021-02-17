@@ -2,13 +2,17 @@
     height: 3rem;
     display: flex;
     align-items: center;
+    
      ::ng-deep .mat-chip {
         padding-left: 0 !important;
     }
+    
     .toggle-div {
         width: 100%;
         display: flex;
         justify-content: center;
+        padding-top: 1.5rem;
+
         .toggle-wrapper {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -17,12 +21,14 @@
             cursor: pointer;
             align-items: center;
             position: relative;
-            border-width: 0.063rem;
+            border-width: 0.075rem;
             border-style: solid;
+            height: 2.25rem;
+            border-radius: 1.5rem;
             .icon-background {
-                border-radius: 1rem;
-                height: 1.875rem;
-                width: 1.875rem;
+                border-radius: 1.5rem;
+                height: 2.06rem;
+                width: 2.06rem;
                 z-index: -1;
                 display: flex;
                 align-items: center;
@@ -32,7 +38,6 @@
                     position: absolute;
                     &.block {
                         width: 1.125rem;
-                        transform: rotate(90deg);
                     }
                     &.hidden {
                         opacity: 0;
