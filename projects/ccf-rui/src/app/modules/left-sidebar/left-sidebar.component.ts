@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -49,6 +49,8 @@ export class LeftSidebarComponent {
   previousVisibilityItems = [...this.model.snapshot.anatomicalStructures] as VisibilityItem[];
 
   organList = RUI_ORGANS;
+
+  @Input() disableSlider = false;
 
   constructor(
     readonly page: PageState,

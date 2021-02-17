@@ -4,7 +4,6 @@
     align-items: center;
     height: 4.5rem;
     justify-content: space-between;
-    border-radius: 0.1875rem;
 
     .carousel-left-icon,
     .carousel-right-icon {
@@ -35,7 +34,7 @@
         left: 0rem;
         display: flex;
         transition: all 0.2s linear;
-        width: 100%;
+        width: 24rem;
 
         .carousel-item {
           display: flex;

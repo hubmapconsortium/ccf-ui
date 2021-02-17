@@ -2,7 +2,7 @@
 
 <ccf-drawer-container>
   <ccf-drawer opened>
-    <ccf-left-sidebar></ccf-left-sidebar>
+    <ccf-left-sidebar [disableSlider]="!organSelector.selectedOrgans[0]?.hasSex"></ccf-left-sidebar>
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
   <ccf-drawer position="end" opened>
@@ -11,8 +11,8 @@
   </ccf-drawer>
 
   <ccf-drawer-content>
-    <ccf-organ-selector [organList]="organList" 
-                        (organsChanged)="model.setOrgan($event[0])" [selectedOrgans]="[model.organ$ | async]"></ccf-organ-selector>
+    <ccf-organ-selector  #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])" 
+                        [selectedOrgans]="[model.organ$ | async]"></ccf-organ-selector>
     <ccf-content></ccf-content>
   </ccf-drawer-content>
 </ccf-drawer-container>

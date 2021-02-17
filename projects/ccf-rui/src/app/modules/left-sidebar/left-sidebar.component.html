@@ -11,19 +11,13 @@
 
       <mat-divider></mat-divider>
 
-      <!-- <ccf-organ-selector #organSelector [displayErrors]="registration.displayErrors$ | async" [organList]="organList"
-                          (organsChanged)="model.setOrgan($event[0])" [selectedOrgans]="[model.organ$ | async]">
-      </ccf-organ-selector>
       <div class="organ-sliders">
-        <ccf-labeled-slide-toggle [disabled]="!organSelector.selectedOrgans[0]?.hasSides" class="toggle side"
-                                  [labels]="['L', 'R']" [value]="sideByLabel$ | async"
-                                  (valueChange)="setSideFromLabel($event)">
-        </ccf-labeled-slide-toggle>
-        <ccf-labeled-slide-toggle [disabled]="!organSelector.selectedOrgans[0]?.hasSex" class="toggle gender"
+        <div class="slider-label">Donor Sex:</div>
+        <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender"
                                   [labels]="['Male', 'Female']" [value]="sexByLabel$ | async"
                                   (valueChange)="setSexFromLabel($event)">
         </ccf-labeled-slide-toggle>
-      </div> -->
+      </div>
       <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-6"
                               tooltip="Next, select the organ your tissue block is from."></ccf-toggleable-tooltip>
     </ng-template>
