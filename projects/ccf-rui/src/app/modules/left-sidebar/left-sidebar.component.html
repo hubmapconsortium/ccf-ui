@@ -48,14 +48,6 @@
 
     <mat-divider></mat-divider>
 
-    <ccf-visibility-toggle toggleLabel="Show Previous Registration Blocks" [visible]="model.showPrevious$ | async"
-                           (visibilityChanged)="togglePreviousRegistrationBlocks($event)">
-    </ccf-visibility-toggle>
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
-                            tooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
-    </ccf-toggleable-tooltip>
-    <mat-divider></mat-divider>
-
     <mat-expansion-panel class="anatomical-structures-menu">
       <mat-expansion-panel-header class="expansion-header">
         <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
@@ -75,6 +67,14 @@
     </ccf-toggleable-tooltip>
 
     <mat-divider></mat-divider>
+
+    <ccf-visibility-toggle toggleLabel="Previously Registered Blocks" [visible]="model.showPrevious$ | async"
+                           (visibilityChanged)="togglePreviousRegistrationBlocks($event)">
+    </ccf-visibility-toggle>
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
+                            tooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
+    </ccf-toggleable-tooltip>
+
 
     <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">
       {{ extractionSiteTooltip }}

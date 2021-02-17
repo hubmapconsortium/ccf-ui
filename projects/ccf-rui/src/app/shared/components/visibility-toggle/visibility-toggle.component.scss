@@ -1,31 +1,54 @@
 :host {
-  height: 3rem;
-  display: flex;
-  align-items: center;
-
-  .toggle-wrapper {
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    height: 3rem;
     display: flex;
-    padding-left: .5rem;
-    cursor: pointer;
     align-items: center;
-    position: relative;
-
-    .icon {
-      height: 1.5rem;
-      width: 1.5rem;
-      transition: .6s;
-      position: absolute;
-
-      &.hidden {
-        opacity: 0;
-      }
+    
+     ::ng-deep .mat-chip {
+        padding-left: 0 !important;
     }
+    
+    .toggle-div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 1.5rem;
 
-    .toggle-label {
-      font-weight: bold;
-      margin-left: 2.5rem;
+        .toggle-wrapper {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            display: flex;
+            padding-left: .5rem;
+            cursor: pointer;
+            align-items: center;
+            position: relative;
+            border-width: 0.075rem;
+            border-style: solid;
+            height: 2.25rem;
+            border-radius: 1.5rem;
+            .icon-background {
+                border-radius: 1.5rem;
+                height: 2.06rem;
+                width: 2.06rem;
+                z-index: -1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .icon {
+                    transition: .6s;
+                    position: absolute;
+                    &.block {
+                        width: 1.125rem;
+                    }
+                    &.hidden {
+                        opacity: 0;
+                    }
+                }
+            }
+            .toggle-label {
+                font-weight: bold;
+                margin-left: 0.5rem;
+                padding-right: 0.25rem;
+            }
+        }
     }
-  }
 }
