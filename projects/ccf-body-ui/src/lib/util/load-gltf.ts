@@ -3,8 +3,8 @@ import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
 import { GLTFLoader } from '@loaders.gl/gltf';
 import { Matrix4 } from '@math.gl/core';
 
-import { traverseScene } from './scene-traversal';
 import { SpatialSceneNode } from '../shared/spatial-scene-node';
+import { traverseScene } from './scene-traversal';
 
 
 export function registerGLTFLoaders(): void {
@@ -14,17 +14,8 @@ export function registerGLTFLoaders(): void {
 
 // tslint:disable: no-unsafe-any
 // tslint:disable-next-line: no-any
-export async function loadGLTF(model: SpatialSceneNode, cache?: { [url: string]: Promise<Blob> }): Promise<any> {
-  const gltfUrl = model.scenegraph as string;
-  let gltfPromise: Promise<Blob|Response>;
-  if (cache) {
-    gltfPromise = cache[gltfUrl] || (cache[gltfUrl] = fetch(gltfUrl).then(r => r.blob()));
-  } else {
-    gltfPromise = fetch(gltfUrl);
-  }
-  const gltf = await parse(gltfPromise, GLTFLoader, {DracoLoader, decompress: true, postProcess: true});
-
-  const scenegraphNode = model.scenegraphNode ? gltf.nodes.find((n) => n.name === model.scenegraphNode) : undefined;
+export function deriveScenegraph(scenegraphNodeName: string, gltf: any): any {
+  const scenegraphNode = gltf.nodes.find((n) => n.name === scenegraphNodeName);
   if (scenegraphNode) {
     let foundNodeInScene = false;
     for (const scene of gltf.scenes) {
@@ -43,12 +34,34 @@ export async function loadGLTF(model: SpatialSceneNode, cache?: { [url: string]:
       }
     }
     gltf.scene = {
-      id: model.scenegraphNode,
-      name: model.scenegraphNode,
+      id: scenegraphNodeName,
+      name: scenegraphNodeName,
       nodes: [scenegraphNode]
     };
     gltf.scenes = [gltf.scene];
+
+    return {scene: gltf.scene, scenes: gltf.scenes};
+  } else {
+    return gltf;
   }
-  return gltf;
+}
+
+// tslint:disable-next-line: no-any
+export async function loadGLTF(model: SpatialSceneNode, cache?: { [url: string]: Promise<Blob> }): Promise<any> {
+  const gltfUrl = model.scenegraph as string;
+  let gltfPromise: Promise<Blob|Response>;
+  if (cache) {
+    gltfPromise = cache[gltfUrl] || (cache[gltfUrl] = fetch(gltfUrl).then(r => r.blob()));
+  } else {
+    gltfPromise = fetch(gltfUrl);
+  }
+  const gltf = await parse(gltfPromise, GLTFLoader, {DracoLoader, decompress: true, postProcess: true});
+
+  return deriveScenegraph(model.scenegraphNode as string, gltf);
+}
+
+// tslint:disable-next-line: no-any
+export async function loadGLTF2(scenegraphNodeName: string, gltfPromise: Promise<any>): Promise<any> {
+  return deriveScenegraph(scenegraphNodeName, await gltfPromise);
 }
 // tslint:enable: no-unsafe-any
