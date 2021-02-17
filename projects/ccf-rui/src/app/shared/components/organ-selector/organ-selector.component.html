@@ -1,4 +1,4 @@
-<div class="container" [class.error]="error">
+<div class="container" [class.error]="error" matTooltip="Select the organ your tissue block is from.">
   <mat-icon class="carousel-left-icon" (touchstart)="scroll('left')" (touchend)="stopScroll()" (click)="shift('left')" (mousedown)="scroll('left')" (mouseup)="stopScroll()" [class.disabled]="onLeft">chevron_left</mat-icon>
   <div class="carousel-item-container">
     <div class="carousel-item-list">

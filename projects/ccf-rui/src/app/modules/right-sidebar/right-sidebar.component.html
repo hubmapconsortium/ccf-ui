@@ -1,14 +1,10 @@
 <div class="scroll-wrapper">
   <div class="container">
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="0.25"
-                            tooltip="Enter tissue block dimensions."></ccf-toggleable-tooltip>
     <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
     </ccf-block-size-input>
 
     <mat-divider></mat-divider>
 
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-0.5"
-                            tooltip="Enter the thickness and number of planned tissue slices."></ccf-toggleable-tooltip>
     <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
     </ccf-slices-input>
 
@@ -16,16 +12,12 @@
 
     <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
     </ccf-rotation-slider>
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-9"
-                            tooltip="Rotation tissue block in 3D as needed to register."></ccf-toggleable-tooltip>
 
     <mat-divider></mat-divider>
 
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="0.25"
-                            tooltip="Review tags generated via collision detection. Add or delete tags as needed."></ccf-toggleable-tooltip>
     <mat-expansion-panel class="tags-container">
       <mat-expansion-panel-header class="header">
-        <mat-panel-title>Anatomical Structure Tags</mat-panel-title>
+        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>
       </mat-expansion-panel-header>
 
       <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">
@@ -54,8 +46,5 @@
       (registerData)="registration.register()"
       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">
     </ccf-review-button>
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-2"
-                            tooltip="Review registration and submit/download.">
-    </ccf-toggleable-tooltip>
   </div>
 </div>

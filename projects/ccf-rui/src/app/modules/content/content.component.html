@@ -6,9 +6,6 @@
             class="icon reset" (click)="resetStage()">refresh</mat-icon>
 </div>
 
-<ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="-7" tooltip="Change view.">
-</ccf-toggleable-tooltip>
-
 <ccf-video-modal-launcher [visible]="page.tutorialMode$ | async"></ccf-video-modal-launcher>
 
 <div class="main-content">
@@ -47,15 +44,7 @@
       [zoom]="9.5"
       #gizmo
     ></ccf-body-ui>
-
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="-17" tooltip="Keep track of reference organ rotation.">
-    </ccf-toggleable-tooltip>
   </div>
-</div>
-
-<div style="margin-top: -10rem" [hidden]="(page.tutorialMode$ | async) !== true">
-  <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="down" [offset]="4" tooltip="Use mouse, or touch if available, to move tissue registration block.">
-  </ccf-toggleable-tooltip>
 </div>
 
 <ccf-store-debug *ngIf="showDebugButtons && debugMode" class="debug" [style.opacity]="(page.tutorialMode$ | async) ? 0 : 100">
