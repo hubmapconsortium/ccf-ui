@@ -49,5 +49,16 @@
       }
     }
 
+    ccf-content {
+      top: 0rem;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+      transition-property: top;
+
+      &.carousel-closed {
+        top: -3rem;
+      }
+    }
+
   }
 }
