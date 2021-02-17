@@ -11,6 +11,8 @@
   </ccf-drawer>
 
   <ccf-drawer-content>
+    <ccf-organ-selector [multiselect]="true" [organList]="organList" 
+                        (organsChanged)="model.setOrgan($event[0])" [selectedOrgans]="[model.organ$ | async]"></ccf-organ-selector>
     <ccf-content></ccf-content>
   </ccf-drawer-content>
 </ccf-drawer-container>

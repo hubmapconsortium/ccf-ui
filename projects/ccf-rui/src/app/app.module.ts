@@ -11,6 +11,8 @@ import { LeftSidebarModule } from './modules/left-sidebar/left-sidebar.module';
 import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { OrganSelectorModule } from '../../../ccf-shared/src/lib/components/organ-selector/organ-selector.module';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     HeaderModule,
     ContentModule,
     LeftSidebarModule,
-    RightSidebarModule
+    RightSidebarModule,
+    OrganSelectorModule
   ],
   declarations: [AppComponent],
   providers: [
