@@ -36,6 +36,10 @@
         transition: all 0.2s linear;
         width: 24rem;
 
+        &.hidden {
+          opacity: 0;
+        }
+
         .carousel-item {
           display: flex;
           flex-direction: column;

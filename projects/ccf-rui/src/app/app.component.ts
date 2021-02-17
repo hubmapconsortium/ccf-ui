@@ -17,9 +17,16 @@ export class AppComponent {
 
   organList = RUI_ORGANS;
 
+  open = true;
+
+  icon = "keyboard_arrow_down";
+
   constructor(
-    // readonly page: PageState,
     readonly model: ModelState,
-    // readonly registration: RegistrationState
   ) { }
+
+  toggle() {
+    this.open = !this.open;
+    this.icon = this.open ? "keyboard_arrow_down" : "keyboard_arrow_up"
+  }
 }
