@@ -22,7 +22,8 @@
     <mat-divider></mat-divider>
 
     <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="0.25"
-                            tooltip="Review tags generated via collision detection. Add or delete tags as needed."></ccf-toggleable-tooltip>
+                            tooltip="Review tags generated via collision detection. Add or delete tags as needed.">
+    </ccf-toggleable-tooltip>
     <mat-expansion-panel class="tags-container">
       <mat-expansion-panel-header class="header">
         <mat-panel-title>Anatomical Structure Tags</mat-panel-title>
@@ -31,8 +32,14 @@
       <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">
       </ccf-tag-search>
 
-      <ccf-tag-list class="tag-list" [tags]="astags.tags$ | async" (tagRemoved)="astags.removeTag($event)">
+      <ccf-tag-list *ngIf="model.id$ | async; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"
+                    (tagRemoved)="astags.removeTag($event)">
       </ccf-tag-list>
+      <ng-template #tagListPlaceholder>
+        <div class="tag-list-placeholder">
+          Select an organ to see tags
+        </div>
+      </ng-template>
 
       <div class="legend">
         <span class="dot assigned"></span>
@@ -46,13 +53,10 @@
 
     <div class="filler"></div>
 
-    <ccf-review-button
-      [embeddedMode]="page.embedded$ | async"
-      [displayErrors]="registration.displayErrors$ | async"
-      [registrationIsValid]="registration.valid$ | async"
-      [metaData]="registration.metadata$ | async"
-      (registerData)="registration.register()"
-      (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">
+    <ccf-review-button [embeddedMode]="page.embedded$ | async" [displayErrors]="registration.displayErrors$ | async"
+                       [registrationIsValid]="registration.valid$ | async" [metaData]="registration.metadata$ | async"
+                       (registerData)="registration.register()"
+                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">
     </ccf-review-button>
     <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="left" [offset]="-2"
                             tooltip="Review registration and submit/download.">

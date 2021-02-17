@@ -118,6 +118,8 @@ export const ALL_ORGANS: OrganInfo[] = [
 })
 @Injectable()
 export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
+  /** Identifier observable */
+  readonly id$ = this.state$.pipe(pluck('id'));
   /** Block size observable */
   readonly blockSize$ = this.state$.pipe(pluck('blockSize'));
   /** Rotation observable */
