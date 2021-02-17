@@ -54,6 +54,10 @@ $foreground: map-merge($mat-light-theme-foreground, (
   search-result-text: map-get($primary-colors, 600), // #757575
   download-icon: map-get($primary-colors, 600), // #757575
   highlight: map-get($primary-colors, 'black'),
+  chip-icon-block-primary:  map-get($primary-colors, light-header),
+  chip-icon-done-green: map-get($mat-green, A700),
+  chip-icon-background:  #E9E9E9,
+  chip-border-primary:  map-get($primary-colors, light-header),
 ));
 
 $background: map-merge($mat-light-theme-background, (

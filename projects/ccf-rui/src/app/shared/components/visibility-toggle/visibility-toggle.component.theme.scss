@@ -8,11 +8,20 @@
   .ccf-visibility-toggle {
 
     .toggle-wrapper {
+      border-color: mat-color($foreground,  chip-border-primary);
       .icon {
-        color: mat-color($foreground, icon);
+        color: mat-color($foreground, chip-icon-block-primary);
         &.visible {
           color: mat-color($accent);
         }
+      }
+
+      .green {
+        color: mat-color($foreground,  chip-icon-done-green);
+      }
+
+      .icon-background {
+        background-color: mat-color($foreground, chip-icon-background);
       }
     }
   }
