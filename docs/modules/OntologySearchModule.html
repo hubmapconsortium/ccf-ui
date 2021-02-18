@@ -133,7 +133,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/components/ontology-search/ontology-search.module.ts</code>
+            <code>projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.module.ts</code>
         </p>
 
 
@@ -173,24 +173,25 @@ import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { MatAutocompleteModule } from &#x27;@angular/material/autocomplete&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 import { MatInputModule } from &#x27;@angular/material/input&#x27;;
-import { PopoverModule } from &#x27;ngx-smart-popover&#x27;;
 
 import { OntologySearchComponent } from &#x27;./ontology-search.component&#x27;;
+import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
+
 
 @NgModule({
-  declarations: [OntologySearchComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatIconModule,
+    MatFormFieldModule,
     MatInputModule,
-    PopoverModule
+    MatIconModule
   ],
+  declarations: [OntologySearchComponent],
   exports: [OntologySearchComponent]
 })
-export class OntologySearchModule { }
+export class OntologySearchModule {}
 </code></pre>
     </div>
 </div>

@@ -58,10 +58,10 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
-                            <a href="#Compare" title="src/app/shared/common/filter/filter-builder.ts"><b>Compare</b>&nbsp;&nbsp;&nbsp;(src/.../filter-builder.ts)</a>
+                            <a href="#DataQueryState" title="projects/ccf-eui/src/app/core/store/data/data.state.ts"><b>DataQueryState</b>&nbsp;&nbsp;&nbsp;(projects/.../data.state.ts)</a>
                         </li>
                         <li>
-                            <a href="#OverlayVisibility" title="src/app/views/tissue/tissue.component.ts"><b>OverlayVisibility</b>&nbsp;&nbsp;&nbsp;(src/.../tissue.component.ts)</a>
+                            <a href="#LoaderType" title="projects/ccf-image-viewer/src/lib/loader.ts"><b>LoaderType</b>&nbsp;&nbsp;&nbsp;(projects/.../loader.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -70,99 +70,133 @@
     </table>
 </section>
 
-    <h3>src/app/shared/common/filter/filter-builder.ts</h3>
+    <h3>projects/ccf-eui/src/app/core/store/data/data.state.ts</h3>
     <section>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="Compare"></a>
-                        <span class="name"><b>Compare</b><a href="#Compare"><span class="icon ion-ios-link"></span></a></span>
+                        <a name="DataQueryState"></a>
+                        <span class="name"><b>DataQueryState</b><a href="#DataQueryState"><span class="icon ion-ios-link"></span></a></span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-description"><p>Enumeration for selecting a comparison operation.</p>
+                            <div class="io-description"><p>Current state of data queries. </p>
 </div>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                &nbsp;equal
+                                &nbsp;Running
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                &nbsp;not_equal
+                                <i>Value : </i><code>running</code>
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                &nbsp;less_than
+                                &nbsp;Completed
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                &nbsp;less_than_equal
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                &nbsp;greater_than
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                &nbsp;greater_than_equal
+                                <i>Value : </i><code>completed</code>
                             </td>
                         </tr>
             </tbody>
         </table>
 </section>
-    <h3>src/app/views/tissue/tissue.component.ts</h3>
+    <h3>projects/ccf-image-viewer/src/lib/loader.ts</h3>
     <section>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="OverlayVisibility"></a>
-                        <span class="name"><b>OverlayVisibility</b><a href="#OverlayVisibility"><span class="icon ion-ios-link"></span></a></span>
+                        <a name="LoaderType"></a>
+                        <span class="name"><b>LoaderType</b><a href="#LoaderType"><span class="icon ion-ios-link"></span></a></span>
                     </td>
                 </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-description"><p>Bit flags indicating the current visibility status of an overlay.</p>
-</div>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                &nbsp;Hidden
+                                &nbsp;Zarr
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Value : </i><code>0</code>
+                                <i>Value : </i><code>zarr</code>
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                &nbsp;Visible
+                                &nbsp;OMEZarr
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Value : </i><code>1</code>
+                                <i>Value : </i><code>ome-zarr</code>
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                &nbsp;AlwaysVisible
+                                &nbsp;StaticZarr
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Value : </i><code>2</code>
+                                <i>Value : </i><code>static</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;Tiff
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>tiff</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;Tiff2
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>tiff 2</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;BFTiff
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>bf tiff</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;CovidTiff
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>covid tiff</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;StaticTiff
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>static tiff</code>
                             </td>
                         </tr>
             </tbody>

@@ -60,14 +60,14 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/components/ontology-tree/shared/flat-node.ts</code>
+            <code>projects/ccf-eui/src/app/core/models/flat-node.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A flat tree node.</p>
+                <p>Node type used by ontology tree component.</p>
 
             </p>
 
@@ -131,7 +131,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/ontology-tree/shared/flat-node.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-eui/src/app/core/models/flat-node.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -222,8 +222,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/components/ontology-tree/shared/flat-node.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/models/flat-node.ts:27</a></div>
                 </td>
             </tr>
 
@@ -320,12 +320,12 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/components/ontology-tree/shared/flat-node.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/ccf-eui/src/app/core/models/flat-node.ts:11</a></div>
                                 </td>
                             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Same as the original node&#39;s label.</p>
+                                <div class="io-description"><p>Gets this node&#39;s label.</p>
 </div>
 
                                 <div class="io-description">
@@ -353,7 +353,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/ontology-tree/shared/flat-node.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/ccf-eui/src/app/core/models/flat-node.ts:16</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -375,21 +375,24 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { OntologyNode } from &#x27;../../../shared/state/ontology/ontology.model&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { OntologyNode } from &#x27;./ontology-node&#x27;;
+
 
 /**
- * A flat tree node.
+ * Node type used by ontology tree component.
  */
 export class FlatNode {
   /**
-   * Same as the original node&#x27;s label.
+   * Gets this node&#x27;s label.
    */
   get label(): string { return this.original.label; }
 
   /**
    * Indicates whether this node has children.
    */
-  get expandable(): boolean { return this.original.children.length &gt; 0; }
+  get expandable(): boolean {
+    return this.original.children.length &gt; 0;
+  }
 
   /**
    * Creates a flat node from a ontology node object and a level in the tree.
@@ -408,7 +411,7 @@ export class FlatNode {
    * @param original The original ontology node object.
    * @param level The level of the new flat node in the tree.
    */
-  constructor(readonly original: OntologyNode, readonly level: number) { }
+  constructor(readonly original: OntologyNode, readonly level: number) {}
 }
 </code></pre>
     </div>

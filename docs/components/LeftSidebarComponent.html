@@ -1,0 +1,1278 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>LeftSidebarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-left-sidebar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./left-sidebar.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./left-sidebar.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#detailsLabels$">detailsLabels$</a>
+                            </li>
+                            <li>
+                                <a href="#extractionSiteTooltip">extractionSiteTooltip</a>
+                            </li>
+                            <li>
+                                <a href="#organList">organList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#organSelected$">organSelected$</a>
+                            </li>
+                            <li>
+                                <a href="#previousVisibilityItems">previousVisibilityItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#sexByLabel$">sexByLabel$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#sideByLabel$">sideByLabel$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#setSexFromLabel">setSexFromLabel</a>
+                            </li>
+                            <li>
+                                <a href="#setSideFromLabel">setSideFromLabel</a>
+                            </li>
+                            <li>
+                                <a href="#togglePreviousRegistrationBlocks">togglePreviousRegistrationBlocks</a>
+                            </li>
+                            <li>
+                                <a href="#updateExtractionSiteTooltip">updateExtractionSiteTooltip</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#disableSlider">disableSlider</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class">class</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(page: <a href="../injectables/PageState.html">PageState</a>, model: <a href="../injectables/ModelState.html">ModelState</a>, registration: <a href="../injectables/RegistrationState.html">RegistrationState</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>page</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PageState.html" target="_self" >PageState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>model</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ModelState.html" target="_self" >ModelState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>registration</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RegistrationState.html" target="_self" >RegistrationState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disableSlider"></a>
+                        <b>disableSlider</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:53</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3>HostBindings</h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="class"></a>
+                        <span class="name">
+                            <b>
+                            class</b>
+                            <a href="#class"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;ccf-left-sidebar&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>HTML class name </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSexFromLabel"></a>
+                    <span class="name">
+                        <b>
+                            setSexFromLabel
+                        </b>
+                        <a href="#setSexFromLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setSexFromLabel(label: "Female" | "Male")</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets sex from sex toggle slider</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>label</td>
+                                    <td>
+                                            <code>&quot;Female&quot; | &quot;Male&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Selected sex</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSideFromLabel"></a>
+                    <span class="name">
+                        <b>
+                            setSideFromLabel
+                        </b>
+                        <a href="#setSideFromLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setSideFromLabel(label: "L" | "R")</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:88</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets side from side toggle slider</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>label</td>
+                                    <td>
+                                            <code>&quot;L&quot; | &quot;R&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Selected side</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePreviousRegistrationBlocks"></a>
+                    <span class="name">
+                        <b>
+                            togglePreviousRegistrationBlocks
+                        </b>
+                        <a href="#togglePreviousRegistrationBlocks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePreviousRegistrationBlocks(visible: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:99</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles toggling previous registration blocks visibility.
+When making them visible, it updates current structures to 20%
+opacity; when making not visible it sets them back to their
+previous opacity.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>visible</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the state to set the visibility to.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateExtractionSiteTooltip"></a>
+                    <span class="name">
+                        <b>
+                            updateExtractionSiteTooltip
+                        </b>
+                        <a href="#updateExtractionSiteTooltip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateExtractionSiteTooltip(item: <a href="../interfaces/VisibilityItem.html">VisibilityItem | undefined</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates extraction site tooltip to either the VisibilityItem passed in&#39;s
+tooltip property, or an empty string if undefined.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../interfaces/VisibilityItem.html" target="_self" >VisibilityItem | undefined</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The VisibilityItem which we want to show the tooltip of, or
+undefined.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="detailsLabels$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            detailsLabels$</b>
+                            <a href="#detailsLabels$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;string[]&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>combineLatest(
+    [this.model.organ$, this.model.side$, this.model.sex$]).pipe(
+      map(([organ, side, sex]) &#x3D;&gt; [organ?.name as string, side as string, sex as string])
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="extractionSiteTooltip"></a>
+                        <span class="name">
+                            <b>
+                            extractionSiteTooltip</b>
+                            <a href="#extractionSiteTooltip"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Variable that keeps track of the extraction site tooltip to display on
+the stage when hovered.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="organList"></a>
+                        <span class="name">
+                            <b>
+                            organList</b>
+                            <a href="#organList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>RUI_ORGANS</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:51</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="organSelected$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            organSelected$</b>
+                            <a href="#organSelected$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.model.organ$.pipe(
+    map(organ &#x3D;&gt; organ &#x3D;&#x3D;&#x3D; undefined ? false : true)
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="previousVisibilityItems"></a>
+                        <span class="name">
+                            <b>
+                            previousVisibilityItems</b>
+                            <a href="#previousVisibilityItems"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[...this.model.snapshot.anatomicalStructures] as VisibilityItem[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Keeps track of the previousVisibility items so we can set the opacity
+back to what it was before we changed them to 20%</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sexByLabel$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            sexByLabel$</b>
+                            <a href="#sexByLabel$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.model.sex$.pipe(
+    map(sex &#x3D;&gt; sex &#x3D;&#x3D;&#x3D; &#x27;female&#x27; ? &#x27;Female&#x27; : &#x27;Male&#x27;)
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sideByLabel$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            sideByLabel$</b>
+                            <a href="#sideByLabel$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.model.side$.pipe(
+    map(side &#x3D;&gt; side &#x3D;&#x3D;&#x3D; &#x27;left&#x27; ? &#x27;L&#x27; : &#x27;R&#x27;)
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding, Input } from &#x27;@angular/core&#x27;;
+import { Observable, combineLatest } from &#x27;rxjs&#x27;;
+import { map } from &#x27;rxjs/operators&#x27;;
+
+import { VisibilityItem } from &#x27;../../core/models/visibility-item&#x27;;
+import { ModelState } from &#x27;../../core/store/model/model.state&#x27;;
+import { PageState } from &#x27;../../core/store/page/page.state&#x27;;
+import { RegistrationState } from &#x27;../../core/store/registration/registration.state&#x27;;
+import { RUI_ORGANS } from &#x27;./../../core/store/model/model.state&#x27;;
+
+
+@Component({
+  selector: &#x27;ccf-left-sidebar&#x27;,
+  templateUrl: &#x27;./left-sidebar.component.html&#x27;,
+  styleUrls: [&#x27;./left-sidebar.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class LeftSidebarComponent {
+  /** HTML class name */
+  @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-left-sidebar&#x27;;
+
+  readonly sexByLabel$ &#x3D; this.model.sex$.pipe(
+    map(sex &#x3D;&gt; sex &#x3D;&#x3D;&#x3D; &#x27;female&#x27; ? &#x27;Female&#x27; : &#x27;Male&#x27;)
+  );
+
+  readonly sideByLabel$ &#x3D; this.model.side$.pipe(
+    map(side &#x3D;&gt; side &#x3D;&#x3D;&#x3D; &#x27;left&#x27; ? &#x27;L&#x27; : &#x27;R&#x27;)
+  );
+
+  readonly organSelected$ &#x3D; this.model.organ$.pipe(
+    map(organ &#x3D;&gt; organ &#x3D;&#x3D;&#x3D; undefined ? false : true)
+  );
+
+  readonly detailsLabels$: Observable&lt;string[]&gt; &#x3D; combineLatest(
+    [this.model.organ$, this.model.side$, this.model.sex$]).pipe(
+      map(([organ, side, sex]) &#x3D;&gt; [organ?.name as string, side as string, sex as string])
+  );
+
+  /**
+   * Variable that keeps track of the extraction site tooltip to display on
+   * the stage when hovered.
+   */
+  extractionSiteTooltip &#x3D; &#x27;&#x27;;
+
+  /**
+   * Keeps track of the previousVisibility items so we can set the opacity
+   * back to what it was before we changed them to 20%
+   */
+  previousVisibilityItems &#x3D; [...this.model.snapshot.anatomicalStructures] as VisibilityItem[];
+
+  organList &#x3D; RUI_ORGANS;
+
+  @Input() disableSlider &#x3D; false;
+
+  constructor(
+    readonly page: PageState,
+    readonly model: ModelState,
+    readonly registration: RegistrationState
+  ) { }
+
+
+  /**
+   * Updates extraction site tooltip to either the VisibilityItem passed in&#x27;s
+   * tooltip property, or an empty string if undefined.
+   * @param item The VisibilityItem which we want to show the tooltip of, or
+   * undefined.
+   */
+  updateExtractionSiteTooltip(item: VisibilityItem | undefined): void {
+    if (item?.tooltip) {
+      this.extractionSiteTooltip &#x3D; item.tooltip;
+    } else {
+      this.extractionSiteTooltip &#x3D; &#x27;&#x27;;
+    }
+  }
+
+  /**
+   * Sets sex from sex toggle slider
+   * @param label Selected sex
+   */
+  setSexFromLabel(label: &#x27;Female&#x27; | &#x27;Male&#x27;): void {
+    this.model.setSex(label &#x3D;&#x3D;&#x3D; &#x27;Female&#x27; ? &#x27;female&#x27; : &#x27;male&#x27;);
+  }
+
+  /**
+   * Sets side from side toggle slider
+   * @param label Selected side
+   */
+  setSideFromLabel(label: &#x27;L&#x27; | &#x27;R&#x27;): void {
+    this.model.setSide(label &#x3D;&#x3D;&#x3D; &#x27;L&#x27; ? &#x27;left&#x27; : &#x27;right&#x27;);
+  }
+
+  /**
+   * Handles toggling previous registration blocks visibility.
+   * When making them visible, it updates current structures to 20%
+   * opacity; when making not visible it sets them back to their
+   * previous opacity.
+   * @param visible the state to set the visibility to.
+   */
+  togglePreviousRegistrationBlocks(visible: boolean): void {
+    if (visible) {
+      this.previousVisibilityItems &#x3D; [...this.model.snapshot.anatomicalStructures];
+    }
+    this.model.toggleRegistrationBlocksVisibility(visible, this.previousVisibilityItems);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;scroll-wrapper&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;page.embedded$ | async; else selectors&quot;&gt;
+      &lt;ccf-details-label [details]&#x3D;&quot;detailsLabels$ | async&quot;&gt;&lt;/ccf-details-label&gt;
+    &lt;/ng-container&gt;
+    &lt;ng-template #selectors&gt;
+      &lt;ccf-name-input [name]&#x3D;&quot;page.user$ | async&quot; (nameChange)&#x3D;&quot;page.setUserName($event)&quot;&gt;
+      &lt;/ccf-name-input&gt;
+      &lt;ccf-toggleable-tooltip [visible]&#x3D;&quot;page.tutorialMode$ | async&quot; direction&#x3D;&quot;right&quot; [offset]&#x3D;&quot;-3&quot;
+                              tooltip&#x3D;&quot;Add your first and last name.&quot;&gt;&lt;/ccf-toggleable-tooltip&gt;
+
+      &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+      &lt;div class&#x3D;&quot;organ-sliders&quot;&gt;
+        &lt;div class&#x3D;&quot;slider-label&quot;&gt;Donor Sex:&lt;/div&gt;
+        &lt;ccf-labeled-slide-toggle [disabled]&#x3D;&quot;disableSlider&quot; class&#x3D;&quot;toggle gender&quot;
+                                  [labels]&#x3D;&quot;[&#x27;Male&#x27;, &#x27;Female&#x27;]&quot; [value]&#x3D;&quot;sexByLabel$ | async&quot;
+                                  (valueChange)&#x3D;&quot;setSexFromLabel($event)&quot;&gt;
+        &lt;/ccf-labeled-slide-toggle&gt;
+      &lt;/div&gt;
+      &lt;ccf-toggleable-tooltip [visible]&#x3D;&quot;page.tutorialMode$ | async&quot; direction&#x3D;&quot;right&quot; [offset]&#x3D;&quot;-6&quot;
+                              tooltip&#x3D;&quot;Next, select the organ your tissue block is from.&quot;&gt;&lt;/ccf-toggleable-tooltip&gt;
+    &lt;/ng-template&gt;
+
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+    &lt;mat-expansion-panel class&#x3D;&quot;extraction-menu&quot;&gt;
+      &lt;mat-expansion-panel-header class&#x3D;&quot;expansion-header&quot;&gt;
+        &lt;mat-panel-title class&#x3D;&quot;expansion-title&quot;&gt;Common Extraction Sites&lt;/mat-panel-title&gt;
+      &lt;/mat-expansion-panel-header&gt;
+      &lt;div *ngIf&#x3D;&quot;organSelected$ | async&quot; class&#x3D;&quot;expansion-content&quot;&gt;
+        &lt;ccf-extraction-set-dropdown [sets]&#x3D;&quot;model.extractionSets$ | async&quot;
+                                     (setChange)&#x3D;&quot;model.setExtractionSites($event.sites)&quot; #dropdown&gt;
+        &lt;/ccf-extraction-set-dropdown&gt;
+        &lt;ccf-visibility-menu [items]&#x3D;&quot;model.extractionSites$ | async&quot; (itemsChange)&#x3D;&quot;model.setExtractionSites($event)&quot;
+                             (hover)&#x3D;&quot;updateExtractionSiteTooltip($event)&quot;&gt;&lt;/ccf-visibility-menu&gt;
+      &lt;/div&gt;
+    &lt;/mat-expansion-panel&gt;
+    &lt;ccf-toggleable-tooltip [visible]&#x3D;&quot;page.tutorialMode$ | async&quot; direction&#x3D;&quot;right&quot; [offset]&#x3D;&quot;-3&quot;
+                            tooltip&#x3D;&quot;Some organs have predefined extraction sites--you can turn these on/off.&quot;&gt;
+    &lt;/ccf-toggleable-tooltip&gt;
+
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+    &lt;mat-expansion-panel class&#x3D;&quot;anatomical-structures-menu&quot;&gt;
+      &lt;mat-expansion-panel-header class&#x3D;&quot;expansion-header&quot;&gt;
+        &lt;mat-panel-title class&#x3D;&quot;expansion-title&quot;&gt;Anatomical Structures&lt;/mat-panel-title&gt;
+      &lt;/mat-expansion-panel-header&gt;
+      &lt;div class&#x3D;&quot;expansion-content&quot;&gt;
+        &lt;ccf-visibility-menu #menu (selectionChange)&#x3D;&quot;slider.changeOpacity($event?.opacity)&quot;
+                             [items]&#x3D;&quot;model.anatomicalStructures$ | async&quot;
+                             (itemsChange)&#x3D;&quot;model.setAnatomicalStructures($event)&quot;&gt;&lt;/ccf-visibility-menu&gt;
+        &lt;ccf-opacity-slider #slider [class.disabled]&#x3D;&quot;menu.disableSlider&quot; (opacityChange)&#x3D;&quot;menu.updateOpacity($event)&quot;
+                            (opacityReset)&#x3D;&quot;menu.resetOpacity()&quot;
+                            [opacity]&#x3D;&quot;menu.selection ? menu.selection?.opacity : 100&quot;&gt;
+        &lt;/ccf-opacity-slider&gt;
+      &lt;/div&gt;
+    &lt;/mat-expansion-panel&gt;
+    &lt;ccf-toggleable-tooltip [visible]&#x3D;&quot;page.tutorialMode$ | async&quot; direction&#x3D;&quot;right&quot; [offset]&#x3D;&quot;-3&quot;
+                            tooltip&#x3D;&quot;Toggle visibility and opacity of anatomical structures to ease registration.&quot;&gt;
+    &lt;/ccf-toggleable-tooltip&gt;
+
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+    &lt;ccf-visibility-toggle toggleLabel&#x3D;&quot;Previously Registered Blocks&quot; [visible]&#x3D;&quot;model.showPrevious$ | async&quot;
+                           (visibilityChanged)&#x3D;&quot;togglePreviousRegistrationBlocks($event)&quot;&gt;
+    &lt;/ccf-visibility-toggle&gt;
+    &lt;ccf-toggleable-tooltip [visible]&#x3D;&quot;page.tutorialMode$ | async&quot; direction&#x3D;&quot;right&quot; [offset]&#x3D;&quot;-3&quot;
+                            tooltip&#x3D;&quot;If you previously registered tissue blocks, you can turn their positions on/off.&quot;&gt;
+    &lt;/ccf-toggleable-tooltip&gt;
+
+
+    &lt;div class&#x3D;&quot;extraction-site-tooltip mat-elevation-z8&quot; *ngIf&#x3D;&quot;extractionSiteTooltip.length &gt; 0&quot;&gt;
+      {{ extractionSiteTooltip }}
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./left-sidebar.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  display: block;
+  height: calc(100% - 3rem);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  .scroll-wrapper {
+    overflow-y: scroll;
+    height: 100%;
+    margin-right: 0.375rem;
+
+    scrollbar-width: thin;
+    &amp;::-webkit-scrollbar {
+      width: 0.75rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1.5rem;
+      margin-right: 0.375rem;
+
+      mat-divider {
+        border-top-width: 3px;
+      }
+
+      .ccf-organ-selector {
+        margin-top: 1.5rem;
+      }
+
+      .organ-sliders {
+        .slider-label {
+          font-weight: bold;
+        }
+        
+        display: flex;
+        height: 3rem;
+        align-items: center;
+      }
+
+      mat-expansion-panel {
+        box-shadow: none;
+      }
+
+      ::ng-deep .mat-expansion-panel-body {
+        padding: 0;
+      }
+
+      .extraction-menu,
+      .anatomical-structures-menu {
+        ::ng-deep .expansion-header {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          padding: 0;
+          font-weight: bold;
+          height: 3rem;
+
+          .mat-expansion-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            width: 24px;
+          }
+        }
+
+        .expansion-content {
+          margin-bottom: 0.75rem;
+        }
+      }
+
+      .extraction-site-tooltip {
+        position: absolute;
+        top: 4rem;
+        left: 27rem;
+        width: 21rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid;
+        z-index: 2;
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="scroll-wrapper">  <div class="container">    <ng-container *ngIf="page.embedded$ | async; else selectors">      <ccf-details-label [details]="detailsLabels$ | async"></ccf-details-label>    </ng-container>    <ng-template #selectors>      <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">      </ccf-name-input>      <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"                              tooltip="Add your first and last name."></ccf-toggleable-tooltip>      <mat-divider></mat-divider>      <div class="organ-sliders">        <div class="slider-label">Donor Sex:</div>        <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender"                                  [labels]="[\'Male\', \'Female\']" [value]="sexByLabel$ | async"                                  (valueChange)="setSexFromLabel($event)">        </ccf-labeled-slide-toggle>      </div>      <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-6"                              tooltip="Next, select the organ your tissue block is from."></ccf-toggleable-tooltip>    </ng-template>    <mat-divider></mat-divider>    <mat-expansion-panel class="extraction-menu">      <mat-expansion-panel-header class="expansion-header">        <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>      </mat-expansion-panel-header>      <div *ngIf="organSelected$ | async" class="expansion-content">        <ccf-extraction-set-dropdown [sets]="model.extractionSets$ | async"                                     (setChange)="model.setExtractionSites($event.sites)" #dropdown>        </ccf-extraction-set-dropdown>        <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)"                             (hover)="updateExtractionSiteTooltip($event)"></ccf-visibility-menu>      </div>    </mat-expansion-panel>    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"                            tooltip="Some organs have predefined extraction sites--you can turn these on/off.">    </ccf-toggleable-tooltip>    <mat-divider></mat-divider>    <mat-expansion-panel class="anatomical-structures-menu">      <mat-expansion-panel-header class="expansion-header">        <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>      </mat-expansion-panel-header>      <div class="expansion-content">        <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event?.opacity)"                             [items]="model.anatomicalStructures$ | async"                             (itemsChange)="model.setAnatomicalStructures($event)"></ccf-visibility-menu>        <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider" (opacityChange)="menu.updateOpacity($event)"                            (opacityReset)="menu.resetOpacity()"                            [opacity]="menu.selection ? menu.selection?.opacity : 100">        </ccf-opacity-slider>      </div>    </mat-expansion-panel>    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"                            tooltip="Toggle visibility and opacity of anatomical structures to ease registration.">    </ccf-toggleable-tooltip>    <mat-divider></mat-divider>    <ccf-visibility-toggle toggleLabel="Previously Registered Blocks" [visible]="model.showPrevious$ | async"                           (visibilityChanged)="togglePreviousRegistrationBlocks($event)">    </ccf-visibility-toggle>    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"                            tooltip="If you previously registered tissue blocks, you can turn their positions on/off.">    </ccf-toggleable-tooltip>    <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">      {{ extractionSiteTooltip }}    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ColorBarComponent', 'selector': 'ccf-color-bar'},{'name': 'ColorPickerLauncherComponent', 'selector': 'ccf-color-picker-launcher'},{'name': 'ColorSchemeContentsComponent', 'selector': 'ccf-color-scheme-contents'},{'name': 'ColorSchemePopupComponent', 'selector': 'ccf-color-scheme-popup'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'ImageViewerAccordionComponent', 'selector': 'ccf-image-viewer-accordion'},{'name': 'ImageViewerContentComponent', 'selector': 'ccf-image-viewer-content'},{'name': 'ImageViewerLayersComponent', 'selector': 'ccf-image-viewer-layers'},{'name': 'ImageViewerLegendComponent', 'selector': 'ccf-image-viewer-legend'},{'name': 'ImageViewerPopoverComponent', 'selector': 'ccf-image-viewer-popover'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SchemeDropdownComponent', 'selector': 'ccf-scheme-dropdown'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleableTooltipComponent', 'selector': 'ccf-toggleable-tooltip'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
+    var ACTUAL_COMPONENT = {'name': 'LeftSidebarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LeftSidebarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

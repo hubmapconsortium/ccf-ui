@@ -61,14 +61,15 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/header/header.component.ts</code>
+    <code>projects/ccf-eui/src/app/core/header/header.component.ts</code>
 </p>
 
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Component displayed at the top of the page. Contains the HuBMAP logo and an info button.</p>
+        <p>Header which is always displayed on the site; contains current filter info,
+a link to download data, and a logo which resets the page when clicked.</p>
 
     </p>
 
@@ -80,6 +81,10 @@
     <table class="table table-sm table-hover">
         <tbody>
 
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
 
 
 
@@ -122,16 +127,24 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+
+
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
+                        <h6><b>Inputs</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#isAboutItemHovered">isAboutItemHovered</a>
+                                <a href="#filters">filters</a>
+                            </li>
+                            <li>
+                                <a href="#hubmapPortalUrl">hubmapPortalUrl</a>
+                            </li>
+                            <li>
+                                <a href="#loggedIn">loggedIn</a>
                             </li>
                         </ul>
                     </td>
@@ -139,20 +152,21 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
+                        <h6><b>Outputs</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#openAboutDialog">openAboutDialog</a>
+                                <a href="#downloadClicked">downloadClicked</a>
+                            </li>
+                            <li>
+                                <a href="#refreshClicked">refreshClicked</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
-
-
 
 
 
@@ -160,56 +174,143 @@
     </table>
 </section>
 
+
     <section>
-    <h3 id="constructor">Constructor</h3>
+    <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dialog: MatDialog)</code>
+                        <a name="filters"></a>
+                        <b>filters</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Record&lt;string | [] | unknown&gt;</code>
+
                     </td>
                 </tr>
                         <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/header/header.component.ts:18</a></div>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/ccf-eui/src/app/core/header/header.component.ts:28</a></div>
                             </td>
                         </tr>
-
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Creates an instance of toolbar component.</p>
+                        <div class="io-description"><p>Current filter settings</p>
 </div>
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                                    <td>Description</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>dialog</td>
-                                                  
-                                                        <td>
-                                                                    <code>MatDialog</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code><p>Service used to open modal dialogs.</p>
-</code>
-                                                        </td>
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hubmapPortalUrl"></a>
+                        <b>hubmapPortalUrl</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/ccf-eui/src/app/core/header/header.component.ts:18</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>URL to Hubmap Portal site</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loggedIn"></a>
+                        <b>loggedIn</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/core/header/header.component.ts:23</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Is the user logged in?</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="downloadClicked"></a>
+                        <b>downloadClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-eui/src/app/core/header/header.component.ts:38</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emitted when download button is clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="refreshClicked"></a>
+                        <b>refreshClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-eui/src/app/core/header/header.component.ts:33</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emitted when refresh button is clicked</p>
+</div>
                     </td>
                 </tr>
             </tbody>
@@ -218,155 +319,79 @@
 
 
 
-
-
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="openAboutDialog"></a>
-                    <span class="name">
-                        <b>
-                            openAboutDialog
-                        </b>
-                        <a href="#openAboutDialog"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>openAboutDialog()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/app/components/header/header.component.ts:30</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Opens the about modal dialog.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-    <section>
-    
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="isAboutItemHovered"></a>
-                        <span class="name">
-                            <b>
-                            isAboutItemHovered</b>
-                            <a href="#isAboutItemHovered"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>false</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/header/header.component.ts:18</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Indicates whether the about item is currenlty being hovered over.</p>
-</div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
-
-import { AboutComponent } from &#x27;../../components/about/about.component&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 
 /**
- * Component displayed at the top of the page. Contains the HuBMAP logo and an info button.
+ * Header which is always displayed on the site; contains current filter info,
+ * a link to download data, and a logo which resets the page when clicked.
  */
 @Component({
   selector: &#x27;ccf-header&#x27;,
   templateUrl: &#x27;./header.component.html&#x27;,
-  styleUrls: [&#x27;./header.component.scss&#x27;]
+  styleUrls: [&#x27;./header.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  /**
-   * Indicates whether the about item is currenlty being hovered over.
-   */
-  isAboutItemHovered &#x3D; false;
 
   /**
-   * Creates an instance of toolbar component.
-   *
-   * @param dialog Service used to open modal dialogs.
+   * URL to Hubmap Portal site
    */
-  constructor(private readonly dialog: MatDialog) { }
+  @Input() hubmapPortalUrl: string;
 
-   /**
-   * Opens the about modal dialog.
+  /**
+   * Is the user logged in?
    */
-  openAboutDialog(): void {
-    this.dialog.open(AboutComponent, {
-      width: &#x27;50rem&#x27;
-    });
-  }
+  @Input() loggedIn: boolean;
+
+  /**
+   * Current filter settings
+   */
+  @Input() filters: Record&lt;string, unknown[] | unknown&gt;;
+
+  /**
+   * Emitted when refresh button is clicked
+   */
+  @Output() refreshClicked &#x3D; new EventEmitter&lt;void&gt;();
+
+  /**
+   * Emitted when download button is clicked
+   */
+  @Output() downloadClicked &#x3D; new EventEmitter&lt;void&gt;();
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ccf-header wrapper&quot;&gt;
-  &lt;div class&#x3D;&quot;container&quot;&gt;
-    &lt;a href&#x3D;&quot;https://hubmapconsortium.org/&quot; target&#x3D;&quot;_blank&quot; rel&#x3D;&quot;noreferrer noopener&quot;&gt;
-      &lt;mat-icon class&#x3D;&quot;icon svg-icon logo&quot; svgIcon&#x3D;&quot;app:hubmap-logo&quot;&gt;&lt;/mat-icon&gt;
-    &lt;/a&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;mat-toolbar class&#x3D;&quot;ccf-header&quot;&gt;
+  &lt;a class&#x3D;&quot;portal-home&quot; [href]&#x3D;&quot;hubmapPortalUrl&quot;&gt;
+    &lt;mat-icon class&#x3D;&quot;logo&quot;  aria-hidden&#x3D;&quot;false&quot; aria-label&#x3D;&quot;Reset tool&quot; matTooltip&#x3D;&quot;Human BioMolecular Atlas Project&quot;
+    matTooltipPosition&#x3D;&quot;right&quot; svgIcon&#x3D;&quot;app:logo&quot;&gt;&lt;/mat-icon&gt;
+  &lt;/a&gt;
 
-    &lt;!-- Element used to push all elements after itself to the end of the container --&gt;
-    &lt;div class&#x3D;&quot;filler&quot;&gt;&lt;/div&gt;
-
-    &lt;div class&#x3D;&quot;item about&quot; (mouseover)&#x3D;&quot;isAboutItemHovered &#x3D; true&quot; (mouseout)&#x3D;&quot;isAboutItemHovered &#x3D; false&quot;
-         (click)&#x3D;openAboutDialog()&gt;
-      &lt;mat-icon *ngIf&#x3D;&quot;!isAboutItemHovered; else hoveredAboutIcon&quot; class&#x3D;&quot;icon font-icon&quot;&gt;info_outline&lt;/mat-icon&gt;
-      &lt;ng-template #hoveredAboutIcon&gt;
-        &lt;mat-icon class&#x3D;&quot;icon font-icon&quot;&gt;info&lt;/mat-icon&gt;
-      &lt;/ng-template&gt;
-    &lt;/div&gt;
+  &lt;div class&#x3D;&quot;filler&quot;&gt;&lt;/div&gt;
+  &lt;div class&#x3D;&quot;filter-labels&quot;&gt;
+    &lt;div&gt;Sex: {{filters?.sex}}&lt;/div&gt;
+    &lt;div&gt;Age: {{filters?.ageRange[0]}}-{{filters?.ageRange[1]}}&lt;/div&gt;
+    &lt;div&gt;BMI: {{filters?.bmiRange[0]}}-{{filters?.bmiRange[1]}}&lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
+
+  &lt;mat-icon class&#x3D;&quot;refresh button&quot; (click)&#x3D;&quot;refreshClicked.emit()&quot;&gt;refresh&lt;/mat-icon&gt;
+
+  &lt;a class&#x3D;&quot;download&quot; [href]&#x3D;&quot;hubmapPortalUrl&quot; rel&#x3D;&quot;noreferrer noopener&quot; target&#x3D;&quot;_blank&quot;&gt;
+    &lt;mat-icon class&#x3D;&quot;download-icon&quot; aria-hidden&#x3D;&quot;false&quot; aria-label&#x3D;&quot;Download content&quot; (click)&#x3D;&quot;downloadClicked.emit()&quot;&gt;
+      cloud_download
+    &lt;/mat-icon&gt;
+  &lt;/a&gt;
+  &lt;ccf-info-button&gt;&lt;/ccf-info-button&gt;
+
+  &lt;a mat-button class&#x3D;&quot;authentication&quot; *ngIf&#x3D;&quot;!loggedIn&quot; [href]&#x3D;&quot;hubmapPortalUrl + &#x27;login&#x27;&quot; rel&#x3D;&quot;noreferrer noopener&quot; target&#x3D;&quot;_blank&quot;&gt;Login&lt;/a&gt;
+  &lt;a mat-button class&#x3D;&quot;authentication&quot; *ngIf&#x3D;&quot;loggedIn&quot; [href]&#x3D;&quot;hubmapPortalUrl + &#x27;logout&#x27;&quot; rel&#x3D;&quot;noreferrer noopener&quot; target&#x3D;&quot;_blank&quot;&gt;Logout&lt;/a&gt;
+&lt;/mat-toolbar&gt;
 </code></pre>
     </div>
 
@@ -374,38 +399,60 @@ export class HeaderComponent {
                 <p class="comment">
                     <code>./header.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">@import &#x27;global/sizes&#x27;, &#x27;global/colors&#x27;, &#x27;global/mixins&#x27;;
+                <pre class="line-numbers"><code class="language-scss">.ccf-header {
+  height: 4rem;
+  padding: 0 1.5rem;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: flex;
 
-.ccf-header.wrapper {
-  .container {
+  .logo {
+    width: 6rem;
+  }
+
+  .download {
+    height: 1.5rem;
+  }
+
+  // Styled to match the HuBMAP Portal
+  .authentication {
+    width: 8.25rem;
+    border-radius: 0.125rem;
+  }
+
+  .logo, .download, .refresh {
     display: flex;
     align-items: center;
-    width: 100%;
-    height: $header-height;
-    padding: 0 1rem;
-    background: $background-color;
-    @include default-border(bottom);
+    transition: color 1s;
+    cursor: pointer;
+    text-decoration: none;
+  }
 
-    .filler {
-      flex-grow: 100000;
-    }
+  :not(:last-child) {
+    margin-right: 1.5rem;
+  }
 
-    .logo {
-      width: 9rem;
-      color: #223352; // Default color for HuBMAP logo icon
-    }
+  .filler {
+    flex-grow: 1;
+    margin: 0;
+  }
 
-    .about {
-      cursor: pointer;
+  .filter-labels {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font: 400 1rem/1.25rem Inter, sans-serif;
+  }
 
-      .icon {
-        $icon-size: 2.25rem;
-
-        width: $icon-size;
-        height: $icon-size;
-        font-size: $icon-size;
-        color: $icon-color;
-      }
+  ::ng-deep ccf-info-button {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    .mat-icon {
+      height: 2rem;
+      width: 2rem;
+      font-size: 2rem;
     }
   }
 }
@@ -437,9 +484,9 @@ export class HeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ccf-header wrapper">  <div class="container">    <a href="https://hubmapconsortium.org/" target="_blank" rel="noreferrer noopener">      <mat-icon class="icon svg-icon logo" svgIcon="app:hubmap-logo"></mat-icon>    </a>    <!-- Element used to push all elements after itself to the end of the container -->    <div class="filler"></div>    <div class="item about" (mouseover)="isAboutItemHovered = true" (mouseout)="isAboutItemHovered = false"         (click)=openAboutDialog()>      <mat-icon *ngIf="!isAboutItemHovered; else hoveredAboutIcon" class="icon font-icon">info_outline</mat-icon>      <ng-template #hoveredAboutIcon>        <mat-icon class="icon font-icon">info</mat-icon>      </ng-template>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ccf-about'},{'name': 'AgeSelectorComponent', 'selector': 'ccf-age-selector'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BodyComponent', 'selector': 'ccf-body'},{'name': 'CalloutComponent', 'selector': 'ccf-callout, [ccf-callout]'},{'name': 'GenderSelectorComponent', 'selector': 'ccf-gender-selector'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HomeComponent', 'selector': 'ccf-home'},{'name': 'MainComponent', 'selector': 'ccf-main'},{'name': 'MetadataComponent', 'selector': 'ccf-metadata'},{'name': 'NavigationComponent', 'selector': 'ccf-navigation'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'Organ3dComponent', 'selector': 'ccf-organ3d'},{'name': 'OrganComponent', 'selector': 'ccf-organ'},{'name': 'SearchCategoriesComponent', 'selector': 'ccf-search-categories'},{'name': 'SearchComponent', 'selector': 'ccf-search'},{'name': 'TissueComponent', 'selector': 'ccf-tissue'},{'name': 'TissuesBrowserComponent', 'selector': 'ccf-tissues-browser'},{'name': 'TissuesBrowserGridComponent', 'selector': 'ccf-tissues-browser-grid'},{'name': 'TissuesBrowserGridItemComponent', 'selector': 'ccf-tissues-browser-grid-item'},{'name': 'TissuesBrowserGridPopoverContentComponent', 'selector': 'ccf-tissues-browser-grid-popover-content'}];
-    var DIRECTIVES = [];
+        var COMPONENT_TEMPLATE = '<div><mat-toolbar class="ccf-header">  <a class="portal-home" [href]="hubmapPortalUrl">    <mat-icon class="logo"  aria-hidden="false" aria-label="Reset tool" matTooltip="Human BioMolecular Atlas Project"    matTooltipPosition="right" svgIcon="app:logo"></mat-icon>  </a>  <div class="filler"></div>  <div class="filter-labels">    <div>Sex: {{filters?.sex}}</div>    <div>Age: {{filters?.ageRange[0]}}-{{filters?.ageRange[1]}}</div>    <div>BMI: {{filters?.bmiRange[0]}}-{{filters?.bmiRange[1]}}</div>  </div>  <mat-icon class="refresh button" (click)="refreshClicked.emit()">refresh</mat-icon>  <a class="download" [href]="hubmapPortalUrl" rel="noreferrer noopener" target="_blank">    <mat-icon class="download-icon" aria-hidden="false" aria-label="Download content" (click)="downloadClicked.emit()">      cloud_download    </mat-icon>  </a>  <ccf-info-button></ccf-info-button>  <a mat-button class="authentication" *ngIf="!loggedIn" [href]="hubmapPortalUrl + \'login\'" rel="noreferrer noopener" target="_blank">Login</a>  <a mat-button class="authentication" *ngIf="loggedIn" [href]="hubmapPortalUrl + \'logout\'" rel="noreferrer noopener" target="_blank">Logout</a></mat-toolbar></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ColorBarComponent', 'selector': 'ccf-color-bar'},{'name': 'ColorPickerLauncherComponent', 'selector': 'ccf-color-picker-launcher'},{'name': 'ColorSchemeContentsComponent', 'selector': 'ccf-color-scheme-contents'},{'name': 'ColorSchemePopupComponent', 'selector': 'ccf-color-scheme-popup'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'ImageViewerAccordionComponent', 'selector': 'ccf-image-viewer-accordion'},{'name': 'ImageViewerContentComponent', 'selector': 'ccf-image-viewer-content'},{'name': 'ImageViewerLayersComponent', 'selector': 'ccf-image-viewer-layers'},{'name': 'ImageViewerLegendComponent', 'selector': 'ccf-image-viewer-legend'},{'name': 'ImageViewerPopoverComponent', 'selector': 'ccf-image-viewer-popover'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SchemeDropdownComponent', 'selector': 'ccf-scheme-dropdown'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleableTooltipComponent', 'selector': 'ccf-toggleable-tooltip'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
 </script>
 <script src="../js/tree.js"></script>

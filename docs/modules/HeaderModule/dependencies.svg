@@ -22,15 +22,15 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_HeaderModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="112,-70 112,-268 384,-268 384,-70 112,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="99,-70 99,-268 397,-268 397,-70 99,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_HeaderModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="238,-78 238,-130 376,-130 376,-78 238,-78"/>
+<polygon fill="none" stroke="#000000" points="251,-78 251,-130 389,-130 389,-78 251,-78"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_HeaderModule_imports</title>
-<polygon fill="none" stroke="#000000" points="120,-78 120,-130 230,-130 230,-78 120,-78"/>
+<polygon fill="none" stroke="#000000" points="107,-78 107,-130 243,-130 243,-78 107,-78"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_HeaderModule_exports</title>
@@ -39,8 +39,8 @@
 <!-- HeaderComponent -->
 <g id="node1" class="node">
 <title>HeaderComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="367.7437,-122 246.2563,-122 246.2563,-86 367.7437,-86 367.7437,-122"/>
-<text text-anchor="middle" x="307" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HeaderComponent</text>
+<polygon fill="#ffffb3" stroke="#000000" points="380.7437,-122 259.2563,-122 259.2563,-86 380.7437,-86 380.7437,-122"/>
+<text text-anchor="middle" x="320" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HeaderComponent</text>
 </g>
 <!-- HeaderModule -->
 <g id="node2" class="node">
@@ -51,8 +51,8 @@
 <!-- HeaderComponent&#45;&gt;HeaderModule -->
 <g id="edge1" class="edge">
 <title>HeaderComponent&#45;&gt;HeaderModule</title>
-<path fill="none" stroke="#000000" d="M272.0544,-122.1061C272.0544,-122.1061 272.0544,-140.991 272.0544,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="268.5544,-140.9909 272.0544,-150.991 275.5544,-140.991 268.5544,-140.9909"/>
+<path fill="none" stroke="#000000" d="M278.5544,-122.1061C278.5544,-122.1061 278.5544,-140.991 278.5544,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="275.0544,-140.9909 278.5544,-150.991 282.0544,-140.991 275.0544,-140.9909"/>
 </g>
 <!-- HeaderComponent  -->
 <g id="node4" class="node">
@@ -66,17 +66,17 @@
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248,-187.1061C248,-187.1061 248,-205.991 248,-205.991"/>
 <polygon fill="#000000" stroke="#000000" points="244.5001,-205.9909 248,-215.991 251.5001,-205.991 244.5001,-205.9909"/>
 </g>
-<!-- AboutModule -->
+<!-- InfoButtonModule -->
 <g id="node3" class="node">
-<title>AboutModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="222.0481,-122 219.0481,-126 198.0481,-126 195.0481,-122 127.9519,-122 127.9519,-86 222.0481,-86 222.0481,-122"/>
-<text text-anchor="middle" x="175" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AboutModule</text>
+<title>InfoButtonModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="235.4888,-122 232.4888,-126 211.4888,-126 208.4888,-122 114.5112,-122 114.5112,-86 235.4888,-86 235.4888,-122"/>
+<text text-anchor="middle" x="175" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">InfoButtonModule</text>
 </g>
-<!-- AboutModule&#45;&gt;HeaderModule -->
+<!-- InfoButtonModule&#45;&gt;HeaderModule -->
 <g id="edge2" class="edge">
-<title>AboutModule&#45;&gt;HeaderModule</title>
-<path fill="none" stroke="#000000" d="M210.1466,-122.1061C210.1466,-122.1061 210.1466,-140.991 210.1466,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="206.6466,-140.9909 210.1466,-150.991 213.6466,-140.991 206.6466,-140.9909"/>
+<title>InfoButtonModule&#45;&gt;HeaderModule</title>
+<path fill="none" stroke="#000000" d="M216.757,-122.1061C216.757,-122.1061 216.757,-140.991 216.757,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="213.2571,-140.9909 216.757,-150.991 220.2571,-140.991 213.2571,-140.9909"/>
 </g>
 </g>
 </svg>

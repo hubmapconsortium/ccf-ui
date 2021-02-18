@@ -31,9 +31,89 @@
                    <div class="content-data">
 
 <h1 id="changelog">Changelog</h1>
-<p>Changelog for the Common Coordinate Framework (CCF) - Exploration User Interface (EUI).</p>
+<p>Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)</p>
+<h2 id="eui-120--rui-10-final---2020-10-30">EUI 1.2.0 / RUI 1.0 FINAL - 2020-10-30</h2>
+<h3 id="added-in-eui-120--rui-10-final">Added in EUI 1.2.0 / RUI 1.0 FINAL</h3>
+<ul>
+<li>Bug fixes and improvements</li>
+<li>Updated embedding API in collaboration with the IEC</li>
+<li>Updated EUI codebase to be in sync with code changes made for the RUI</li>
+<li>Added KPMP data to the EUI</li>
+</ul>
+<h3 id="known-issues-in-eui-120--rui-10-final">Known Issues in EUI 1.2.0 / RUI 1.0 FINAL</h3>
+<ul>
+<li>It is still possible that a 3d organ may fail to load. If this happens, just refresh and try again.</li>
+<li>EUI has not been updated with the latest organ set. This will be added in December with its scheduled refresh.</li>
+</ul>
+<h2 id="rui-10-beta---2020-10-16">RUI 1.0 BETA - 2020-10-16</h2>
+<h3 id="added-in-rui-10-beta">Added in RUI 1.0 BETA</h3>
+<ul>
+<li>Created the first version of the RUI 1.0. This version is a BETA and works in standalone mode only. The next version will include full support and integration into the HuBMAP Ingestion Portal.</li>
+<li>10 Reference Organs are available to choose from (a combination of 4 organs, 2 sexes, and one organ with 2 sides [kidney])</li>
+<li>Implemented automatic tagging of data via collisions with anatomical structures</li>
+<li>RUI Location data is in standard JSON-LD format linked via the CCF Ontology and related ontologies</li>
+<li>Implemented extraction sites display to help guide placement of tissues</li>
+</ul>
+<h3 id="known-issues-in-rui-10-beta">Known Issues in RUI 1.0 BETA</h3>
+<ul>
+<li>While support for embedding is implemented, more testing and collaboration with IEC is required before it is made fully available. Initial embedding documentation is available <a href="RUI_EMBEDDING.md">here</a>.</li>
+<li>When adjusting transparency via the left-hand <code>Anatomical Structures</code> menu or <code>Show Previous Registrations</code> option, the transparency effect is not very good. This will be addressed before the RUI 1.0 production release.</li>
+<li>Sometimes the 3d organ fails to load when clicking through reference organs quickly (and other side cases). If this happens, just refresh and try again.</li>
+</ul>
+<h2 id="110---2020-07-31">1.1.0 - 2020-07-31</h2>
+<h3 id="added-in-110">Added in 1.1.0</h3>
+<ul>
+<li>Upgraded to latest Vitessce Image Viewer and started showing processed TIFF images coming directly from the HuBMAP infrastructure</li>
+<li>Processed CODEX and 10x datasets are shown in the HuBMAP Portal&#39;s visualization tool</li>
+<li>Added a limited set of TIFF image thumbnails, with more to come</li>
+<li>Added two qualitative color schemes for colorizing images in the image viewer</li>
+<li>Bug fixes/performance optimizations</li>
+</ul>
+<h2 id="100-rc1---2020-06-22">1.0.0-rc.1 - 2020-06-22</h2>
+<blockquote>
+<p>:warning: <strong>WARNING:</strong> This version is a release candidate. Some minor updates will likely happen between now and the official HuBMAP Data Release 1 in July.</p>
+</blockquote>
+<h3 id="added-in-100-rc1">Added in 1.0.0-rc.1</h3>
+<ul>
+<li>Body UI interactions</li>
+<li>Image Viewer Integration</li>
+<li>Partonomy linkage to search / Body UI</li>
+<li>Now fully integrated into the HuBMAP Portal</li>
+</ul>
+<h3 id="known-issues-in-100-rc1">Known Issues in 1.0.0-rc.1</h3>
+<ul>
+<li>Image Viewer is using a placeholder .tiff until more .tiff images can be loaded from the IEC</li>
+</ul>
+<h2 id="100-alpha3---2019-05-08">1.0.0-alpha.3 - 2019-05-08</h2>
+<h3 id="added-in-100-alpha3">Added in 1.0.0-alpha.3</h3>
+<ul>
+<li>Hooked up the interface to real data (not shown online as the data is not public yet)</li>
+<li>Added the Tissue Browser on the right</li>
+<li>Added the initial (Tissue) Image Viewer popup. Currently shows metadata, but no images yet.</li>
+<li>Added an initial 3D Body. Tissues cuboids currently not displayed, but a test cuboid is shown.</li>
+<li>Documentation (&gt;90%) and testing coverage improved further</li>
+</ul>
+<h2 id="100-alpha2---2019-03-27">1.0.0-alpha.2 - 2019-03-27</h2>
+<h3 id="added-in-100-alpha2">Added in 1.0.0-alpha.2</h3>
+<ul>
+<li>Increased documentation and testing coverage across the board</li>
+<li>Added fullscreen button</li>
+<li>Bug fixes and optimizations</li>
+</ul>
+<h2 id="100-alpha1---2019-03-06">1.0.0-alpha.1 - 2019-03-06</h2>
+<h3 id="added-in-100-alpha1">Added in 1.0.0-alpha.1</h3>
+<ul>
+<li>Started the process of implementing the 1.0.0 UI spec<ul>
+<li><a href="https://iu.box.com/s/ip91f6x6t3ni1m6xntg7r72dfzc8c08c">Spec Doc</a></li>
+<li><a href="https://iu.box.com/s/i0n9rales8c5556xs05vxa43u633b3n3">User Stories</a></li>
+</ul>
+</li>
+<li>Setup the base project scaffolding for the new version</li>
+<li>Added CCF Partonomy (CCF-P) search and tree display</li>
+<li>Added a filter for filter tissues</li>
+</ul>
 <h2 id="060---2019-11-08">0.6.0 - 2019-11-08</h2>
-<h2 id="added-in-060">Added in 0.6.0</h2>
+<h3 id="added-in-060">Added in 0.6.0</h3>
 <ul>
 <li>The <a href="https://github.com/hubmapconsortium/ccf-api">CCF API</a> project was started with an initial OpenAPI Schema, <a href="http://smart-api.info/ui/d1f33c1a75e9dcda984194e4d8cea7d8">documentation</a>, and code for spinning up a mock data server. This codifies the <a href="https://docs.google.com/document/d/1Qgx4mNutE1V3CfQ7y8Lg3rxQy5nhiOSKCSv5MJkPRMc/edit">CCF data and metadata standards</a> defined by MC-IU and will be used by the CCF EUI and RUI.</li>
 <li>In preparation for future developments, we added a hidden, alpha-level 3d organ viewer. You can toggle this on and off in the organ view, by typing 3d with your keyboard.</li>
@@ -49,7 +129,7 @@
 </li>
 </ul>
 <h2 id="050---2019-05-24">0.5.0 - 2019-05-24</h2>
-<h2 id="added-in-050">Added in 0.5.0</h2>
+<h3 id="added-in-050">Added in 0.5.0</h3>
 <ul>
 <li>Display of the CCF ontology, integrated with search</li>
 <li>Semantic search by ontology, results are presented at all levels</li>
@@ -61,7 +141,7 @@
 <h3 id="added-in-020">Added in 0.2.0</h3>
 <ul>
 <li>Sprint 2 release of the CCF-UI!</li>
-<li>A search interface was added to query data by age, gender, technology and TMC. Ontological search will be implemented in the next sprint.</li>
+<li>A search interface was added to query data by age, sex, technology and TMC. Ontological search will be implemented in the next sprint.</li>
 <li>Body, Organ, and Tissue views now respond to updates to the search on the fly</li>
 <li>Appropriate metadata is now displayed in the Body, Organ, Tissue, and Cell views</li>
 </ul>

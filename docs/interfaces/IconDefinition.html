@@ -61,14 +61,14 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/shared/state/icon-registry/icon-registry.model.ts</code>
+            <code>projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Definitions for registering an icon.</p>
+                <p>Object definition for registering new svg icons.</p>
 
             </p>
 
@@ -277,10 +277,18 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SafeResourceUrl, SafeHtml } from &#x27;@angular/platform-browser&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Optional } from &#x27;@angular/core&#x27;;
+import { MatIconRegistry } from &#x27;@angular/material/icon&#x27;;
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from &#x27;@angular/platform-browser&#x27;;
+import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { State } from &#x27;@ngxs/store&#x27;;
+
+import { DEFAULT_ICONS } from &#x27;./default-icons&#x27;;
+
 
 /**
- * Definitions for registering an icon.
+ * Object definition for registering new svg icons.
  */
 export interface IconDefinition {
   /**
@@ -302,6 +310,96 @@ export interface IconDefinition {
    * Html containing the svg of the icon or icon set.
    */
   html?: SafeHtml;
+}
+
+
+/**
+ * State handling the registration of icons for use with &#x60;mat-icon&#x60;.
+ */
+@StateRepository()
+@State&lt;void&gt;({ name: &#x27;iconRegistry&#x27; })
+@Injectable()
+export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
+  /**
+   * Creates an instance of icon registry state.
+   *
+   * @param registry Material icon registry.
+   * @param sanitizer Service used to sanitize default imported urls and html.
+   */
+  constructor(@Optional() private registry: MatIconRegistry | null,
+              sanitizer: DomSanitizer) {
+    super();
+
+    for (const { name, namespace, url, html } of DEFAULT_ICONS) {
+      const safeDef: IconDefinition &#x3D; {
+        name, namespace,
+        url: url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(url),
+        html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
+      };
+
+      this.registerIconImpl(safeDef);
+    }
+  }
+
+  /**
+   * Registers a svg icon for use in mat-icon.
+   *
+   * @param definition Icon to register.
+   * @returns true if registration was successful, otherwise false.
+   */
+  @DataAction()
+  registerIcon(definition: IconDefinition): boolean {
+    return this.registerIconImpl(definition);
+  }
+
+  /**
+   * Backing implementation of registerIcon.
+   *
+   * @param definition Icon to register.
+   * @returns true if registration was successful, otherwise false.
+   */
+  private registerIconImpl(definition: IconDefinition): boolean {
+    if (!this.registry) { return false; }
+    if (!definition.url &amp;&amp; !definition.html) { return false; }
+
+    const registry &#x3D; this.registry as unknown as { [prop: string]: (...args: unknown[]) &#x3D;&gt; void };
+    const methodName &#x3D; this.getMethodName(definition);
+    const method &#x3D; registry[methodName];
+    const args &#x3D; this.getArguments(definition);
+
+    if (!method) { return false; }
+    try {
+      method.apply(registry, args);
+      return true;
+    } catch (_error) {
+      return false;
+    }
+  }
+
+  /**
+   * Selects the MatIconRegistry method used to register the icon.
+   *
+   * @param definition Icon definition.
+   * @returns The name of the registry method.
+   */
+  private getMethodName({ name, namespace, url }: IconDefinition): string {
+    const parts &#x3D; [&#x27;addSvgIcon&#x27;];
+    if (!name) { parts.push(&#x27;Set&#x27;); }
+    if (!url) { parts.push(&#x27;Literal&#x27;); }
+    if (namespace) { parts.push(&#x27;InNamespace&#x27;); }
+    return parts.join(&#x27;&#x27;);
+  }
+
+  /**
+   * Selects the argument used to call the registration method.
+   *
+   * @param definition Icon definition.
+   * @returns An array of arguments.
+   */
+  private getArguments({ name, namespace, url, html }: IconDefinition): unknown[] {
+    const args: unknown[] &#x3D; [namespace, name, url || html];
+    return args.filter(value &#x3D;&gt; !!value);
+  }
 }
 </code></pre>
     </div>

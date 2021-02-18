@@ -61,14 +61,14 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/shared/state/ontology/ontology.model.ts</code>
+            <code>projects/ccf-eui/src/app/core/store/ontology/ontology.state.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A flat representation of an ontology tree.</p>
+                <p>Data model for the ontology state.</p>
 
             </p>
 
@@ -177,35 +177,17 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface OntologyNode {
-  /**
-   * The unique identifier of this node.
-   */
-  id: string;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { State } from &#x27;@ngxs/store&#x27;;
+import { map } from &#x27;rxjs/operators&#x27;;
 
-  /**
-   * Label for this ontology node.
-   */
-  label: string;
+import { OntologyNode } from &#x27;../../models/ontology-node&#x27;;
 
-  /**
-   * The identifier of the parent node. &#x60;undefined&#x60; if this is the root node.
-   */
-  parent: string | undefined;
-
-  /**
-   * An array of child identifiers.
-   */
-  children: string[];
-
-  /**
-   * Labels for the synonyms of the label of this node.
-   */
-  synonymLabels: string[];
-}
 
 /**
- * A flat representation of an ontology tree.
+ * Data model for the ontology state.
  */
 export interface OntologyStateModel {
   /**
@@ -217,6 +199,36 @@ export interface OntologyStateModel {
    * Hash table of nodes.
    */
   nodes: { [id: string]: OntologyNode };
+}
+
+/**
+ * Ontology tree state.
+ */
+@StateRepository()
+@State&lt;OntologyStateModel&gt;({
+  name: &#x27;ontology&#x27;,
+  defaults: {
+    root: &#x27;&#x27;,
+    nodes: {}
+  }
+})
+@Injectable()
+export class OntologyState extends NgxsDataRepository&lt;OntologyStateModel&gt; {
+  /** All nodes in the ontology tree. */
+  public readonly nodes$ &#x3D; this.state$.pipe(map(state &#x3D;&gt; Object.values(state.nodes)));
+
+  /** Root node of the ontology tree. */
+  public readonly rootNode$ &#x3D; this.state$.pipe(map(state &#x3D;&gt; state.nodes[state.root]));
+
+  /**
+   * Sets the ontology state.
+   *
+   * @param ontology The new state.
+   */
+  @DataAction()
+  setOntology(ontology: OntologyStateModel): void {
+    this.ctx.setState(ontology);
+  }
 }
 </code></pre>
     </div>
