@@ -8,7 +8,6 @@ import { ExtractionSetDropdownModule } from '../../shared/components/extraction-
 import { LabeledSlideToggleModule } from '../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
 import { NameInputModule } from '../../shared/components/name-input/name-input.module';
 import { OpacitySliderModule } from '../../shared/components/opacity-slider/opacity-slider.module';
-import { OrganSelectorModule } from '../../shared/components/organ-selector/organ-selector.module';
 import { VisibilityMenuModule } from '../../shared/components/visibility-menu/visibility-menu.module';
 import { VisibilityToggleModule } from '../../shared/components/visibility-toggle/visibility-toggle.module';
 import { LeftSidebarComponent } from './left-sidebar.component';
@@ -33,7 +32,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     VisibilityToggleModule,
     ExtractionSetDropdownModule,
     OpacitySliderModule,
-    OrganSelectorModule,
     VisibilityMenuModule,
     VisibilityToggleModule
   ],
