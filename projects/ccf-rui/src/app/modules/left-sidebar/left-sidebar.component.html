@@ -9,14 +9,13 @@
 
             <mat-divider></mat-divider>
 
-      <div class="organ-sliders">
-        <div class="slider-label">Donor Sex:</div>
-        <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender"
-                                  [labels]="['Male', 'Female']" [value]="sexByLabel$ | async"
-                                  (valueChange)="setSexFromLabel($event)">
-        </ccf-labeled-slide-toggle>
-      </div>
-    </ng-template>
+            <div class="organ-sliders">
+                <div class="slider-label">Donor Sex:</div>
+                <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender" [labels]="['Male', 'Female']"
+                    [value]="sexByLabel$ | async" (valueChange)="setSexFromLabel($event)">
+                </ccf-labeled-slide-toggle>
+            </div>
+        </ng-template>
 
         <mat-divider></mat-divider>
 
@@ -63,3 +62,4 @@
             {{ extractionSiteTooltip }}
         </div>
     </div>
+</div>
