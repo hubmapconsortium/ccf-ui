@@ -19,14 +19,12 @@ export class AppComponent {
 
   open = true;
 
-  icon = "keyboard_arrow_down";
+  icon = 'keyboard_arrow_up';
 
-  constructor(
-    readonly model: ModelState,
-  ) { }
+  constructor( readonly model: ModelState ) { }
 
-  toggle() {
+  toggle(): void {
     this.open = !this.open;
-    this.icon = this.open ? "keyboard_arrow_down" : "keyboard_arrow_up"
+    this.icon = this.open ? 'keyboard_arrow_up': 'keyboard_arrow_down';
   }
 }
