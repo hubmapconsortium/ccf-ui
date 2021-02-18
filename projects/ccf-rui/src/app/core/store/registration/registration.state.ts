@@ -303,9 +303,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       slice_thickness: model.slicesConfig?.thickness || undefined,
       slice_count: model.slicesConfig?.numSlices || undefined,
 
-      x_dimension: model.blockSize.x,
-      y_dimension: model.blockSize.y,
-      z_dimension: model.blockSize.z,
+      x_dimension: +model.blockSize.x.toFixed(3),
+      y_dimension: +model.blockSize.y.toFixed(3),
+      z_dimension: +model.blockSize.z.toFixed(3),
       dimension_units: 'millimeter',
 
       placement: {
@@ -317,15 +317,15 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
         x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: 'ratio',
 
-        x_rotation: model.rotation.x,
-        y_rotation: model.rotation.y,
-        z_rotation: model.rotation.z,
+        x_rotation: +model.rotation.x.toFixed(3),
+        y_rotation: +model.rotation.y.toFixed(3),
+        z_rotation: +model.rotation.z.toFixed(3),
         rotation_order: 'XYZ',
         rotation_units: 'degree',
 
-        x_translation: model.position.x,
-        y_translation: model.position.y,
-        z_translation: model.position.z,
+        x_translation: +model.position.x.toFixed(3),
+        y_translation: +model.position.y.toFixed(3),
+        z_translation: +model.position.z.toFixed(3),
         translation_units: 'millimeter'
       }
     };
