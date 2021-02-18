@@ -12,13 +12,13 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multipl
 ## Website Links
 
 * CCF Exploration User Interface (CCF-EUI)
-** Production: <https://portal.hubmapconsortium.org/ccf-eui>
-** Production (alt): <https://hubmapconsortium.github.io/ccf-ui/>
-** Staging: <https://hubmap-ccf-ui.netlify.app/>
-** Old Version 0.6.0: <https://old--hubmap-ccf-ui.netlify.app>
+  * Production: <https://portal.hubmapconsortium.org/ccf-eui>
+  * Production (alt): <https://hubmapconsortium.github.io/ccf-ui/>
+  * Staging: <https://hubmap-ccf-ui.netlify.app/>
+  * Old Version 0.6.0: <https://old--hubmap-ccf-ui.netlify.app>
 * CCF Registration User Interface (CCF-RUI)
-** Production: <https://hubmapconsortium.github.io/ccf-ui/rui/>
-** Staging: <https://hubmap-ccf-ui.netlify.app/rui/>
+  * Production: <https://hubmapconsortium.github.io/ccf-ui/rui/>
+  * Staging: <https://hubmap-ccf-ui.netlify.app/rui/>
 
 ## Background and More Information
 
