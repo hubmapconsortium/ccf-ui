@@ -12,7 +12,6 @@ import { VisibilityMenuModule } from '../../shared/components/visibility-menu/vi
 import { VisibilityToggleModule } from '../../shared/components/visibility-toggle/visibility-toggle.module';
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { MatIconModule } from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 
@@ -23,7 +22,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
-    BrowserAnimationsModule,
 
     MatDividerModule,
     DetailsLabelModule,
