@@ -11,15 +11,9 @@
 
       <mat-divider></mat-divider>
 
-      <ccf-organ-selector #organSelector [displayErrors]="registration.displayErrors$ | async" [organList]="organList"
-                          (organChanged)="model.setOrgan($event)" [selectedOrgan]="model.organ$ | async">
-      </ccf-organ-selector>
       <div class="organ-sliders">
-        <ccf-labeled-slide-toggle [disabled]="!organSelector.selectedOrgan?.hasSides" class="toggle side"
-                                  [labels]="['L', 'R']" [value]="sideByLabel$ | async"
-                                  (valueChange)="setSideFromLabel($event)">
-        </ccf-labeled-slide-toggle>
-        <ccf-labeled-slide-toggle [disabled]="!organSelector.selectedOrgan?.hasSex" class="toggle gender"
+        <div class="slider-label">Donor Sex:</div>
+        <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender"
                                   [labels]="['Male', 'Female']" [value]="sexByLabel$ | async"
                                   (valueChange)="setSexFromLabel($event)">
         </ccf-labeled-slide-toggle>

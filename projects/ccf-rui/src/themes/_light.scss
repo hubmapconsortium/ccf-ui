@@ -30,6 +30,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   divider: map-get($primary-colors, 600), // #757575
   header-border: map-get($primary-colors, 800), // #424242
   icon: map-get($primary-colors, 500), // #9E9E9E
+  carousel-arrow: map-get($primary-colors, 500), // #9E9E9E
   info-icon: map-get($primary-colors, 'white'),
   input-label: map-get($primary-colors, 600), // #757575
   legend-contrast: #992661, // Not in any builtin palettes

@@ -8,8 +8,7 @@
   .ccf-organ-selector {
     .container {
       color: mat-color($foreground, text);
-      border: 1px solid mat-color($foreground, borders);
-      background-color: mat-color($primary, "white");
+      background-color: whitesmoke;
 
       &.error {
         border-color: mat-color($foreground, slider-red);;
@@ -17,7 +16,7 @@
 
       .carousel-left-icon,
       .carousel-right-icon {
-        color: mat-color($foreground, icon);
+        color: mat-color($foreground, carousel-arrow);
 
         &:hover {
           color: mat-color($foreground, active-icon);

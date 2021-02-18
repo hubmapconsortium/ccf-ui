@@ -29,6 +29,10 @@
       }
 
       .organ-sliders {
+        .slider-label {
+          font-weight: bold;
+        }
+        
         display: flex;
         height: 3rem;
         align-items: center;

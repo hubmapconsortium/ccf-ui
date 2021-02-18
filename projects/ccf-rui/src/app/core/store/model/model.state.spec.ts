@@ -4,7 +4,7 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
+import { OrganInfo } from 'ccf-shared';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
