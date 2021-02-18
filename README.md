@@ -1,6 +1,6 @@
 # Common Coordinate Framework (CCF) - User Interfaces
 
-[![Tests](https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml/badge.svg)](https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml)
+[![Tests](https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml)
 [![GitHub last commit](https://img.shields.io/github/last-commit/hubmapconsortium/ccf-ui.svg)](https://github.com/hubmapconsortium/ccf-ui/commits/develop)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hubmapconsortium_ccf-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=hubmapconsortium_ccf-ui)
