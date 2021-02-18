@@ -11,7 +11,11 @@
     .video-description {
         margin-bottom: 1.5rem;
         text-align: center;
-        width: 21rem;
+        width: 30rem;
+
+        .title {
+            margin-bottom: 1rem;
+        }
     }
 
     .play-icon-button {

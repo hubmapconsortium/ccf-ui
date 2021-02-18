@@ -1,22 +1,40 @@
-::ng-deep .mat-dialog-container {
-  padding: 0;
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0;
+  }
+
+  .mat-dialog-content {
+    display: block;
+    margin: auto;
+    padding: 0;
+    max-height: 65vh;
+    overflow: auto;
+    width: fit-content;
+  }
 }
 
 :host {
   .video-modal.wrapper {
+    width: fit-content;
+
     .container {
+      position: relative;
+
       .content {
-        min-height: 31rem;
-        padding: 3rem;
+        padding: 0.5rem;
+        padding-top: 3rem;
+        width: fit-content;
+        border-radius: .5rem;
       }
 
-      .close {
-        .close-icon {
-          float: right;
-          margin-top: 1rem;
-          margin-right: 1rem;
-          cursor: pointer;
-        }
+      .close-icon {
+        cursor: pointer;
+        position: absolute;
+        right: 0rem;
+        font-size: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        transition: .5s color;
       }
     }
   }
