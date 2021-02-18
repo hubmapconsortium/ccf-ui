@@ -266,7 +266,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
     data.push(
       { label: 'Reference Organ Name', value: model.organ.name },
-      { label: 'Tissue Block Size (mm)', value: this.xyzTripletToString(model.blockSize) },
+      { label: 'Tissue Block Dimensions (mm)', value: this.xyzTripletToString(model.blockSize) },
       { label: 'Tissue Block Position (mm)', value: this.xyzTripletToString(model.position) },
       { label: 'Tissue Block Rotation', value: this.xyzTripletToString(model.rotation) },
       { label: 'Anatomical Structure Tags', value: tags.map(t => t.label).join(', ') },

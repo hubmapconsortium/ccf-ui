@@ -5,7 +5,7 @@
       <div *ngFor="let organ of organList" class="carousel-item" [class.disabled]="organ.disabled" (click)="selectOrgan(organ)"
           [class.selected]="isSelected(organ)">
           <mat-icon class="carousel-icon" svgIcon="{{organ.src}}"></mat-icon>
-          <span class="carousel-text">{{organ.name}}</span>
+          <span class="carousel-text">{{organ.name === 'Colon' ? 'Small Intestine' : organ.name}}</span>
       </div>
     </div>
   </div>
