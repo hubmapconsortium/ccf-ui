@@ -11,6 +11,9 @@ export * from './lib/components/store-debug/store-debug.component';
 export * from './lib/components/text-search/text-search.module';
 export * from './lib/components/text-search/text-search.component';
 
+export * from './lib/components/organ-selector/organ-selector.module';
+export * from './lib/components/organ-selector/organ-selector.component';
+
 export * from './lib/directives/numbers-only/numbers-only.module';
 export * from './lib/directives/numbers-only/numbers-only.directive';
 

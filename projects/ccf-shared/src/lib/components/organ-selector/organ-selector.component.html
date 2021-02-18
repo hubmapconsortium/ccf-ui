@@ -1,7 +1,7 @@
 <div class="container" [class.error]="error" matTooltip="Select the organ your tissue block is from.">
   <mat-icon class="carousel-left-icon" (touchstart)="scroll('left')" (touchend)="stopScroll()" (click)="shift('left')" (mousedown)="scroll('left')" (mouseup)="stopScroll()" [class.disabled]="onLeft">chevron_left</mat-icon>
-  <div class="carousel-item-container">
-    <div class="carousel-item-list">
+  <div class="carousel-item-container" #itemcontainer>
+    <div class="carousel-item-list" [class.hidden]="hidden" #itemlist>
       <div *ngFor="let organ of organList" class="carousel-item" [class.disabled]="organ.disabled" (click)="selectOrgan(organ)"
           [class.selected]="isSelected(organ)">
           <mat-icon class="carousel-icon" svgIcon="{{organ.src}}"></mat-icon>
@@ -11,4 +11,3 @@
   </div>
   <mat-icon class="carousel-right-icon" (touchstart)="scroll('right')" (touchend)="stopScroll()" (click)="shift('right')" (mousedown)="scroll('right')" (mouseup)="stopScroll()" [class.disabled]="onRight">chevron_right</mat-icon>
 </div>
-<div class="error-message" [class.hidden]="!error">You must select an organ</div>

@@ -10,5 +10,55 @@
     ccf-drawer {
       width: 25.5rem;
     }
+
+    ccf-drawer-content {
+      .selector-drawer {
+        top: 0rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+        transition-property: top;
+
+        &.closed {
+          top: -3rem;
+        }
+      }
+
+      .close-button {
+        display: flex;
+        justify-content: center;
+        background-color: whitesmoke;
+        color: #9e9e9e;
+        height: 1.0625rem;
+        width: 3rem;
+        align-self: center;
+        border-radius: 0rem 0rem 0.25rem 0.25rem;
+        cursor: pointer;
+        transition: 0.6s;
+
+        &:hover {
+          background-color: #1976d2;
+        }
+
+        .mat-icon {
+          position: relative;
+          bottom: 0.2rem;
+        }
+      }
+    }
+
+    ccf-content {
+      top: 0rem;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+      transition-property: top;
+
+      &.carousel-closed {
+        top: -3rem;
+      }
+    }
+
   }
 }
