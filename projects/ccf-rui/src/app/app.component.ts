@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { ModelState } from './core/store/model/model.state';
-import { RUI_ORGANS } from './core/store/model/model.state';
+import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
 
 @Component({
   selector: 'ccf-root',
