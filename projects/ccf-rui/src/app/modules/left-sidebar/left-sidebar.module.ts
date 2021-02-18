@@ -8,12 +8,12 @@ import { ExtractionSetDropdownModule } from '../../shared/components/extraction-
 import { LabeledSlideToggleModule } from '../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
 import { NameInputModule } from '../../shared/components/name-input/name-input.module';
 import { OpacitySliderModule } from '../../shared/components/opacity-slider/opacity-slider.module';
-import { OrganSelectorModule } from 'ccf-shared';
-import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
 import { VisibilityMenuModule } from '../../shared/components/visibility-menu/visibility-menu.module';
 import { VisibilityToggleModule } from '../../shared/components/visibility-toggle/visibility-toggle.module';
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 
 @NgModule({
@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatExpansionModule,
     MatIconModule,
+    MatTooltipModule,
 
     MatDividerModule,
     DetailsLabelModule,
@@ -29,10 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     VisibilityToggleModule,
     ExtractionSetDropdownModule,
     OpacitySliderModule,
-    OrganSelectorModule,
-    ToggleableTooltipModule,
     VisibilityMenuModule,
-    VisibilityToggleModule,
+    VisibilityToggleModule
   ],
   declarations: [LeftSidebarComponent],
   exports: [LeftSidebarComponent]

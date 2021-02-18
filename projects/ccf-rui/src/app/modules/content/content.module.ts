@@ -6,7 +6,6 @@ import { ContentComponent } from '../content/content.component';
 import { StageNavModule } from './stage-nav/stage-nav.module';
 import { MatIconModule } from '@angular/material/icon';
 import { VideoModalLauncherModule } from './video-modal/video-modal-launcher/video-modal-launcher.module';
-import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
 import { MatRippleModule } from '@angular/material/core';
 import { BodyUiModule } from '../body-ui/body-ui.module';
 
@@ -18,7 +17,6 @@ import { BodyUiModule } from '../body-ui/body-ui.module';
     MatIconModule,
     StoreDebugModule,
     VideoModalLauncherModule,
-    ToggleableTooltipModule,
     MatRippleModule,
     BodyUiModule
   ],
