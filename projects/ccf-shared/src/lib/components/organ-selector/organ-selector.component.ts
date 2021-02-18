@@ -2,7 +2,7 @@ import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, 
 import { ResizeSensor } from 'css-element-queries';
 
 export const ALL_ORGANS: OrganInfo[] = [
-  { src: 'app:colon', name: 'Colon', hasSides: false, hasSex: true },
+  { src: 'app:large_intestine', name: 'Large Intestine', hasSides: false, hasSex: true },
   { src: 'app:heart', name: 'Heart', hasSides: false, hasSex: true },
   { src: 'app:kidney', name: 'Kidney', hasSides: true, hasSex: true },
   { src: 'app:spleen', name: 'Spleen', hasSides: false, hasSex: true },

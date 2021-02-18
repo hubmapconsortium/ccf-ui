@@ -165,9 +165,6 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     if (this.globalConfig.organ) {
       const organConfig = this.globalConfig.organ;
       let organName = organConfig.name.toLowerCase();
-      if (organName === 'large intestine') {
-        organName = 'colon';
-      }
       const organInfo = ALL_ORGANS.find((o) => o.name.toLowerCase() === organName);
       if (organInfo) {
         setTimeout(() => {

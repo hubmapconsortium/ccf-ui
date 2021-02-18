@@ -10,7 +10,7 @@ export interface GlobalConfig {
   homeUrl?: string;
   editRegistration?: object;
   organ?: {
-    name: 'colon' | 'heart' | 'kidney' | 'spleen',
+    name: 'large intestine' | 'heart' | 'kidney' | 'spleen',
     sex?: 'male' | 'female',
     side?: 'left' | 'right'
   };

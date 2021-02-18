@@ -39,7 +39,7 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
   RK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.right_kidney],
   LK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.left_kidney],
   HT: [RUI_ORGANS.body, RUI_ORGANS.heart],
-  LI: [RUI_ORGANS.body, RUI_ORGANS.colon], // large_intestine
+  LI: [RUI_ORGANS.body, RUI_ORGANS.large_intestine], // large_intestine
   SI: [RUI_ORGANS.body, RUI_ORGANS.small_instestine],
   LL: [RUI_ORGANS.body, RUI_ORGANS.lung, RUI_ORGANS.left_lung],
   RL: [RUI_ORGANS.body, RUI_ORGANS.lung, RUI_ORGANS.right_lung],
