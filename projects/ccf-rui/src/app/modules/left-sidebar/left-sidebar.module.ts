@@ -8,7 +8,7 @@ import { ExtractionSetDropdownModule } from '../../shared/components/extraction-
 import { LabeledSlideToggleModule } from '../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module';
 import { NameInputModule } from '../../shared/components/name-input/name-input.module';
 import { OpacitySliderModule } from '../../shared/components/opacity-slider/opacity-slider.module';
-import { OrganSelectorModule } from '../../../../../ccf-shared/src/lib/components/organ-selector/organ-selector.module';
+import { OrganSelectorModule } from 'ccf-shared';
 import { ToggleableTooltipModule } from '../../shared/components/toggleable-tooltip/toggleable-tooltip.module';
 import { VisibilityMenuModule } from '../../shared/components/visibility-menu/visibility-menu.module';
 import { VisibilityToggleModule } from '../../shared/components/visibility-toggle/visibility-toggle.module';

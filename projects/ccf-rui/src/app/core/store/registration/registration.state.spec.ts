@@ -6,7 +6,7 @@ import * as FileSaver from 'file-saver';
 import { Observable, ReplaySubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { OrganInfo } from '../../../../../../ccf-shared/src/lib/components/organ-selector/organ-selector.component';
+import { OrganInfo } from 'ccf-shared';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { GLOBAL_CONFIG } from '../../services/config/config';
