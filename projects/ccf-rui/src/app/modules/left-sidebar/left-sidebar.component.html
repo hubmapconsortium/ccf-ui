@@ -24,24 +24,6 @@
 
     <mat-divider></mat-divider>
 
-    <mat-expansion-panel class="extraction-menu">
-      <mat-expansion-panel-header class="expansion-header">
-        <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
-      </mat-expansion-panel-header>
-      <div *ngIf="organSelected$ | async" class="expansion-content">
-        <ccf-extraction-set-dropdown [sets]="model.extractionSets$ | async"
-                                     (setChange)="model.setExtractionSites($event.sites)" #dropdown>
-        </ccf-extraction-set-dropdown>
-        <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)"
-                             (hover)="updateExtractionSiteTooltip($event)"></ccf-visibility-menu>
-      </div>
-    </mat-expansion-panel>
-    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
-                            tooltip="Some organs have predefined extraction sites--you can turn these on/off.">
-    </ccf-toggleable-tooltip>
-
-    <mat-divider></mat-divider>
-
     <mat-expansion-panel class="anatomical-structures-menu">
       <mat-expansion-panel-header class="expansion-header">
         <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
@@ -58,6 +40,24 @@
     </mat-expansion-panel>
     <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
                             tooltip="Toggle visibility and opacity of anatomical structures to ease registration.">
+    </ccf-toggleable-tooltip>
+
+    <mat-divider></mat-divider>
+
+    <mat-expansion-panel class="extraction-menu">
+      <mat-expansion-panel-header class="expansion-header">
+        <mat-panel-title class="expansion-title">Common Extraction Sites</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="organSelected$ | async" class="expansion-content">
+        <ccf-extraction-set-dropdown [sets]="model.extractionSets$ | async"
+                                     (setChange)="model.setExtractionSites($event.sites)" #dropdown>
+        </ccf-extraction-set-dropdown>
+        <ccf-visibility-menu [items]="model.extractionSites$ | async" (itemsChange)="model.setExtractionSites($event)"
+                             (hover)="updateExtractionSiteTooltip($event)"></ccf-visibility-menu>
+      </div>
+    </mat-expansion-panel>
+    <ccf-toggleable-tooltip [visible]="page.tutorialMode$ | async" direction="right" [offset]="-3"
+                            tooltip="Some organs have predefined extraction sites--you can turn these on/off.">
     </ccf-toggleable-tooltip>
 
     <mat-divider></mat-divider>
