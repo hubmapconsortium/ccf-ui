@@ -14,7 +14,8 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multipl
 ## Website Links
 
 * CCF Exploration User Interface (EUI) - <https://portal.hubmapconsortium.org/ccf-eui>
-* ![BETA](https://img.shields.io/badge/BETA-red.svg) CCF Registration User Interface (RUI) - <https://hubmap-ccf-ui.netlify.app/rui/>
+* CCF Registration User Interface (RUI) - <https://hubmap-ccf-ui.netlify.app/rui/>
+* EUI v0.6.0 - <https://old--hubmap-ccf-ui.netlify.app>
 
 ## Background and More Information
 
