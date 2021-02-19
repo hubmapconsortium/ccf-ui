@@ -134,7 +134,7 @@ export const rui = {
   left_kidney: uberon.x('0004538'),
   right_kidney: uberon.x('0004539'),
   spleen: uberon.x('0002106'),
-  colon: uberon.x('0001155'),
+  large_intestine: uberon.x('0001155'),
   small_intestine: uberon.x('0002108'),
   rectum: uberon.x('0001052'),
   liver: uberon.x('0002107'),
