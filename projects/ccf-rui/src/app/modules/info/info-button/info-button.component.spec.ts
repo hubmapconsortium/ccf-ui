@@ -24,14 +24,14 @@ describe('InfoButtonComponent', () => {
 
   it('should launch the info dialog', async () => {
     const { find, instance } = await shallow.mock(MatDialog, mockMatDialog).render();
-    const spy = spyOn(instance, 'launchInfoDialog');
+    const spy = spyOn(instance, 'onDialogButtonClick');
     find('mat-icon').triggerEventHandler('click', '');
     expect(spy).toHaveBeenCalled();
   });
 
   it('launchInfoDialog opens dialog box', async () => {
     const { instance, get } = await shallow.mock(MatDialog, mockMatDialog).render();
-    instance.launchInfoDialog();
+    instance.onDialogButtonClick();
     expect(get(MatDialog).open).toHaveBeenCalled();
   });
 });

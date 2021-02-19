@@ -6,8 +6,8 @@
     <div class="content">
       <h2 class="title" mat-dialog-title>HuBMAP CCF Registration User Interface 1.0</h2>
       
-      <mat-dialog-content class="mat-typography">
-        <div *ngFor="let content of (infoDialogService.markdownContent | async); let i = index;" class="panel">
+      <mat-dialog-content class="mat-typography dialog-content">
+        <div *ngFor="let content of documentationComtents; let i = index;" class="panel">
           <ccf-info-panel [content]="content" [index]="i"></ccf-info-panel>
         </div>
       </mat-dialog-content>

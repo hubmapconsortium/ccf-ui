@@ -38,5 +38,9 @@
     .panel {
       margin-bottom: 1.5rem;
     }
+
+    .dialog-content {
+      height: 50rem !important; min-height: 20px !important;
+    }
   }
 }
