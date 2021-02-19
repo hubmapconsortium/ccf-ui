@@ -5,73 +5,11 @@
     </div>
     <div class="content">
       <h2 class="title" mat-dialog-title>HuBMAP CCF Registration User Interface 1.0</h2>
-
+      
       <mat-dialog-content class="mat-typography">
-        <p class="description">
-          This Registration User Interface (RUI) supports the registration of three-dimensional (3D) tissue blocks within 3D reference organs. Surgeons and others involved in the tissue procurement process can use the interface to
-        </p>
-        <ul>
-          <li>
-            Enter their name to track data provenance.
-          </li>
-          <li>
-            Select a reference organ via the organ carousal (kidney, heart, spleen, colon).
-          </li>
-          <li>
-            Select a set of common tissue extraction sites.
-          </li>
-          <li>
-            Size the tissue block in three dimensions.
-          </li>
-          <li>
-            Enter information on tissue slice thickness.
-          </li>
-          <li>
-            Position and rotate the 3D tissue block within a 3D reference organ so its placement correctly mirrors the tissue block extraction site.
-          </li>
-          <li>
-            Identify anatomical structure tags via collision detection and manual annotation.
-          </li>
-          <li>
-            Save all registration information into a file for easy uploading to custom templates in REDCap (or other systems) used to keep track of tissue and tissue registration data. If using the RUI integrated into the HuBMAP Ingestion Portal, registration information is automatically saved with the associated tissue block.
-          </li>
-        </ul>
-
-        <p class="description">
-          A first beta of the CCF RUI became available in October 2020. The CCF RUI specification is available
-          <a class="link-blue" rel="noopener noreferrer" href="https://drive.google.com/drive/folders/1yXXHObo5bnwlFti9adetGP5eLOBxBrec?usp=sharing" target="_blank">here</a>,
-          3D reference organs are freely available on the <a class="link-blue" rel="noopener noreferrer" href="https://hubmapconsortium.github.io/ccf/pages/ccf-3d-reference-library.html" target="_blank">CCF Portal</a>,
-          the ontology can be found on
-          <a class="link-blue" rel="noopener noreferrer" href="https://bioportal.bioontology.org/ontologies/CCF/" target="_blank">BioPortal</a>,
-          and code is available on
-          <a class="link-blue" rel="noopener noreferrer" href="https://github.com/hubmapconsortium/ccf-ui/" target="_blank">GitHub</a>.
-          A demo video is on YouTube
-          <a class="link-blue" rel="noopener noreferrer" href="https://youtu.be/z1aOjHFetME" target="_blank">here</a>.
-        </p>
-
-        <p class="description">
-          The registration data is used in current versions of the Common Coordinate Framework (CCF, see
-          <a class="link-blue" rel="noopener noreferrer" href="https://hubmapconsortium.github.io/ccf/" target="_blank">CCF Portal</a>
-          for details) and the
-          <a class="link-blue" rel="noopener noreferrer" href="https://portal.hubmapconsortium.org/ccf-eui" target="_blank">CCF Exploration User Interface (EUI)</a>
-          developed within HuBMAP.
-        </p>
-
-        <br />
-
-        <h2>Acknowledgements</h2>
-        <p class="description">
-          The CCF and associated user interfaces are developed by the MC-IU team within the HuBMAP HIVE. The MC-IU team includes Katy Börner, Lisel Record, Bruce Herr II, Leonard Cross, Ellen Quardokus, and Andreas Bueckle, Indiana University, Bloomington, IN and Griffin Weber, Harvard Medical School, Boston, MA. Former members of the team are Paul Macklin, Randy Heiland, and Jim Sluka at Indiana University, Bloomington, IN and Samuel Friedman, Opto-Knowledge Systems, Inc. We acknowledge expert input from Jeffrey Spraggins, Sanjay Jain, and Clive Wasserfall and their teams as well as the overall HuBMAP consortium.
-        </p>
-
-        <p class="description">
-          The 3D reference organs were designed by Kristen Browne, U.S. National Library of Medicine using data from the
-          <a class="link-blue" rel="noopener noreferrer" href="https://www.nlm.nih.gov/research/visible/visible_human.html" target="_blank">Visible Human Project</a>.
-        </p>
-
-        <p class="description">
-          The work is funded by NIH Award <a class="link-blue" rel="noopener noreferrer" href="https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220" target="_blank">OT2OD026671</a>.
-        </p>
+        <div *ngFor="let content of (infoDialogService.markdownContent | async)" class="panel">
+          <ccf-info-panel [content]="content"></ccf-info-panel>
+        </div>
       </mat-dialog-content>
     </div>
   </div>
