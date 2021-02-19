@@ -33,9 +33,9 @@ export class InfoDialogService {
           });
         }
       }
-  
+
       this.markdownContent.next(markdownContent);
-    })
-   
+    });
+
   }
 }
