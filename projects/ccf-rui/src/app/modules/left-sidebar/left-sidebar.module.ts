@@ -13,6 +13,7 @@ import { VisibilityToggleModule } from '../../shared/components/visibility-toggl
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -22,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
+    MatButtonModule,
 
     MatDividerModule,
     DetailsLabelModule,
