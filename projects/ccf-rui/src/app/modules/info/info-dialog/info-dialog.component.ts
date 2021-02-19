@@ -13,7 +13,7 @@ import { DocumentationContent } from '../../../core/models/documentation';
 })
 export class InfoDialogComponent {
 
-  documentationComtents: DocumentationContent[]
+  documentationComtents: DocumentationContent[];
   /**
    * Creates an instance of info dialog component.
    * @param dialogRef A reference to the dialog that this component creates, used to call the dialog's methods
@@ -22,8 +22,8 @@ export class InfoDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<InfoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DocumentationContent[]
-  ) {  
-    if (data) this.documentationComtents = data;
+  ) {
+    if (data) { this.documentationComtents = data; }
   }
 
   /**

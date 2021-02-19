@@ -23,8 +23,8 @@ export class InfoButtonComponent {
    */
   constructor(private readonly dialog: MatDialog, private infoButtonService: InfoButtonService) {
     infoButtonService.markdownContent.subscribe(data => {
-      if(data.length) this.launchInfoDialog(data);
-    })
+      if(data.length) { this.launchInfoDialog(data); }
+    });
    }
 
   /**
@@ -34,11 +34,11 @@ export class InfoButtonComponent {
     this.dialog.open(InfoDialogComponent, {
       panelClass: 'modal-animated',
       width: '60rem',
-      data: data
+      data
     });
   }
-  
-  /** 
+
+  /**
    * Detects button click and reads markdown function
    */
   onDialogButtonClick(): void {
