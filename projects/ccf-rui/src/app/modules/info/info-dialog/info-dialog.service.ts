@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { DocumentationContent } from '../../../core/models/documentation';
 import { HttpClient } from '@angular/common/http';
 
-const documentationURL = './../../../../assets/documentation.md';
+const documentationURL = './../../../../assets/README.md';
 
 @Injectable({
   providedIn: 'root'
