@@ -11,6 +11,13 @@
         .content {
           background-color: mat-color($background, background);
         }
+        .close-icon {
+          color: mat-color($foreground, contrast-icon);
+
+          &:hover {
+            color: mat-color($accent);
+          }
+        }
       }
     }
   }
