@@ -7,7 +7,7 @@ import { DocumentationContent } from '../../../core/models/documentation';
   styleUrls: ['./info-panel.component.scss']
 })
 export class InfoPanelComponent implements OnInit {
-  
+
   /** Documentation content for each expansion panel. Contains the title
    * and the panel body content
    */
