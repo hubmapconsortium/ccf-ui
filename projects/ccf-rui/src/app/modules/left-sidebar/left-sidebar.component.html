@@ -9,7 +9,7 @@
 
             <mat-divider></mat-divider>
 
-            <div class="organ-sliders">
+            <div class="organ-sliders" matTooltip="Select sex to filter organs.">
                 <div class="slider-label">Donor Sex:</div>
                 <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender" [labels]="['Male', 'Female']"
                     [value]="sexByLabel$ | async" (valueChange)="setSexFromLabel($event)">
@@ -55,7 +55,7 @@
         <mat-divider></mat-divider>
 
         <ccf-visibility-toggle toggleLabel="Previously Registered Blocks" [visible]="model.showPrevious$ | async"
-            (visibilityChanged)="togglePreviousRegistrationBlocks($event)">
+            (visibilityChanged)="togglePreviousRegistrationBlocks($event)" matTooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
         </ccf-visibility-toggle>
 
         <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">

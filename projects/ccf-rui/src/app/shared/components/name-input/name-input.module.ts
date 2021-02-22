@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { NameInputComponent } from './name-input.component';
 
@@ -13,7 +14,8 @@ import { NameInputComponent } from './name-input.component';
     MatSlideToggleModule,
      MatInputModule,
      FormsModule,
-     ReactiveFormsModule
+     ReactiveFormsModule,
+     MatTooltipModule
   ],
   declarations: [NameInputComponent],
   exports: [NameInputComponent]
