@@ -264,7 +264,7 @@ export class HuBMAPEntity {
       if (assayType) {
         assayTypes.set(assayType, e);
       }
-      if (e.contains_human_genetic_sequences === 'yes') {
+      if (e.contains_human_genetic_sequences === 'yes' || e.contains_human_genetic_sequences === true) {
         containsSequence = true;
       }
     }
