@@ -7,8 +7,13 @@
       <h2 class="title" mat-dialog-title>HuBMAP CCF Registration User Interface 1.0</h2>
       
       <mat-dialog-content class="mat-typography dialog-content">
-        <div *ngFor="let content of documentationComtents; let i = index;" class="panel">
-          <ccf-info-panel [content]="content" [index]="i"></ccf-info-panel>
+        <div *ngFor="let content of documentationContents; let i = index;" class="panel">
+          <mat-expansion-panel *ngIf="content" [expanded]="i === 0">
+            <mat-expansion-panel-header>
+              <h2 class="no-header-margin">{{content.title}}</h2>
+            </mat-expansion-panel-header>
+              <markdown class="variable-binding" [data]="content.content"></markdown>
+          </mat-expansion-panel>
         </div>
       </mat-dialog-content>
     </div>

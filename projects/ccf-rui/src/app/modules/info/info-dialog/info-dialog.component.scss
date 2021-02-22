@@ -37,10 +37,16 @@
 
     .panel {
       margin-bottom: 1.5rem;
+
+      .no-header-margin {
+        margin-bottom: 0;
+      }
     }
 
     .dialog-content {
-      height: 50rem !important; min-height: 20px !important;
+      height: 50rem; 
+      min-height: 10rem;
     }
+
   }
 }
