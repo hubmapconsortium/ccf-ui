@@ -13,7 +13,7 @@ import { VisibilityToggleModule } from '../../shared/components/visibility-toggl
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatButtonModule } from '@angular/material/button';
+import { JsonFileReaderModule } from '../../shared/components/json-file-reader/json-file-reader.module';
 
 
 
@@ -23,7 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
-    MatButtonModule,
 
     MatDividerModule,
     DetailsLabelModule,
@@ -33,7 +32,8 @@ import { MatButtonModule } from '@angular/material/button';
     ExtractionSetDropdownModule,
     OpacitySliderModule,
     VisibilityMenuModule,
-    VisibilityToggleModule
+    VisibilityToggleModule,
+    JsonFileReaderModule
   ],
   declarations: [LeftSidebarComponent],
   exports: [LeftSidebarComponent]

@@ -64,7 +64,6 @@
 
         <div class="filler"></div>
 
-        <button mat-button class="upload-button" (click)="triggerFileInput()">UPLOAD PREVIOUS REGISTRATION DATA</button>
-        <input #fileInput type="file" accept="application/JSON" name="fileInput" id="fileInput" style="display: none;">
+        <ccf-json-file-reader (parsedJson)="updateRegistration($event)" label="UPLOAD PREVIOUS REGISTRATION DATA"></ccf-json-file-reader>
     </div>
 </div>

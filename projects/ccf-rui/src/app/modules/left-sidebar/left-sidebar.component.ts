@@ -18,7 +18,6 @@ import { RUI_ORGANS } from './../../core/store/model/model.state';
 export class LeftSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
-  @ViewChild('fileInput') fileInput: ElementRef<HTMLElement>;
 
   readonly sexByLabel$ = this.model.sex$.pipe(
     map(sex => sex === 'female' ? 'Female' : 'Male')
@@ -35,7 +34,7 @@ export class LeftSidebarComponent {
   readonly detailsLabels$: Observable<string[]> = combineLatest(
     [this.model.organ$, this.model.side$, this.model.sex$]).pipe(
       map(([organ, side, sex]) => [organ?.name as string, side as string, sex as string])
-  );
+    );
 
   /**
    * Variable that keeps track of the extraction site tooltip to display on
@@ -104,8 +103,9 @@ export class LeftSidebarComponent {
     this.model.toggleRegistrationBlocksVisibility(visible, this.previousVisibilityItems);
   }
 
-  triggerFileInput(): void {
-    let fileInputElement: HTMLElement = this.fileInput.nativeElement;
-    fileInputElement.click();
+  updateRegistration(event): void {
+    console.log('update registration: ', event);
+
+    // @TODO
   }
 }

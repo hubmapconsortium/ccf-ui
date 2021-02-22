@@ -1,0 +1,21 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .ccf-json-file-reader {
+    .upload-button {
+      background-color: mat-color($foreground, active-icon);
+      color: mat-color($foreground, sidebar-dividers);
+      border: 1px solid mat-color($foreground, active-icon);
+
+      &:hover {
+        background-color: mat-color($foreground, sidebar-dividers);
+        color: mat-color($foreground, active-icon);
+        border: 1px solid mat-color($foreground, active-icon);
+      }
+    }
+  }
+}
