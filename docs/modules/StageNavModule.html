@@ -198,15 +198,24 @@ import { MatRadioModule } from &#x27;@angular/material/radio&#x27;;
 import { MatSelectModule } from &#x27;@angular/material/select&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 import { MatDividerModule } from &#x27;@angular/material/divider&#x27;;
+import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
 import { LabeledSlideToggleModule } from &#x27;../../../shared/components/labeled-slide-toggle/labeled-slide-toggle.module&#x27;;
 
 import { StageNavComponent } from &#x27;./stage-nav.component&#x27;;
 
 
 @NgModule({
-  imports: [CommonModule, MatRadioModule, MatSelectModule, MatIconModule, MatDividerModule, LabeledSlideToggleModule],
-  declarations: [StageNavComponent],
-  exports: [StageNavComponent]
+    imports: [
+        CommonModule,
+        MatRadioModule,
+        MatSelectModule,
+        MatIconModule,
+        MatDividerModule,
+        LabeledSlideToggleModule,
+        MatTooltipModule
+    ],
+    declarations: [StageNavComponent],
+    exports: [StageNavComponent]
 })
 export class StageNavModule { }
 </code></pre>

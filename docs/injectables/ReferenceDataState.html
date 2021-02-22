@@ -452,6 +452,9 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
     if (organ.toUpperCase() !&#x3D;&#x3D; &#x27;KIDNEY&#x27;) {
       side &#x3D; &#x27;&#x27;;
     }
+    if (organ.toUpperCase() &#x3D;&#x3D;&#x3D; &#x27;LARGE INTESTINE&#x27;) {
+      organ &#x3D; &#x27;Colon&#x27;;
+    }
     const lookup &#x3D; [organ, sex, side].join(&#x27;|&#x27;).toUpperCase();
     const key &#x3D; Object.keys(db.organIRILookup).find((code) &#x3D;&gt; code.toUpperCase().endsWith(lookup));
     return key ? db.organIRILookup[key] : undefined;

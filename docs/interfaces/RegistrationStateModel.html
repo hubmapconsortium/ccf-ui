@@ -483,7 +483,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
 
     data.push(
       { label: &#x27;Reference Organ Name&#x27;, value: model.organ.name },
-      { label: &#x27;Tissue Block Size (mm)&#x27;, value: this.xyzTripletToString(model.blockSize) },
+      { label: &#x27;Tissue Block Dimensions (mm)&#x27;, value: this.xyzTripletToString(model.blockSize) },
       { label: &#x27;Tissue Block Position (mm)&#x27;, value: this.xyzTripletToString(model.position) },
       { label: &#x27;Tissue Block Rotation&#x27;, value: this.xyzTripletToString(model.rotation) },
       { label: &#x27;Anatomical Structure Tags&#x27;, value: tags.map(t &#x3D;&gt; t.label).join(&#x27;, &#x27;) },
@@ -520,9 +520,9 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
       slice_thickness: model.slicesConfig?.thickness || undefined,
       slice_count: model.slicesConfig?.numSlices || undefined,
 
-      x_dimension: model.blockSize.x,
-      y_dimension: model.blockSize.y,
-      z_dimension: model.blockSize.z,
+      x_dimension: +model.blockSize.x.toFixed(3),
+      y_dimension: +model.blockSize.y.toFixed(3),
+      z_dimension: +model.blockSize.z.toFixed(3),
       dimension_units: &#x27;millimeter&#x27;,
 
       placement: {
@@ -534,15 +534,15 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
 
         x_scaling: 1, y_scaling: 1, z_scaling: 1, scaling_units: &#x27;ratio&#x27;,
 
-        x_rotation: model.rotation.x,
-        y_rotation: model.rotation.y,
-        z_rotation: model.rotation.z,
+        x_rotation: +model.rotation.x.toFixed(3),
+        y_rotation: +model.rotation.y.toFixed(3),
+        z_rotation: +model.rotation.z.toFixed(3),
         rotation_order: &#x27;XYZ&#x27;,
         rotation_units: &#x27;degree&#x27;,
 
-        x_translation: model.position.x,
-        y_translation: model.position.y,
-        z_translation: model.position.z,
+        x_translation: +model.position.x.toFixed(3),
+        y_translation: +model.position.y.toFixed(3),
+        z_translation: +model.position.z.toFixed(3),
         translation_units: &#x27;millimeter&#x27;
       }
     };

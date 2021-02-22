@@ -172,14 +172,22 @@ import { NgModule } from &#x27;@angular/core&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 import { MatInputModule } from &#x27;@angular/material/input&#x27;;
 import { MatRippleModule } from &#x27;@angular/material/core&#x27;;
+import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
+
 
 import { BlockSizeInputComponent } from &#x27;./block-size-input.component&#x27;;
 
 
 @NgModule({
-  imports: [CommonModule, MatInputModule, MatIconModule, MatRippleModule],
-  declarations: [BlockSizeInputComponent],
-  exports: [BlockSizeInputComponent]
+    imports: [
+        CommonModule,
+        MatInputModule,
+        MatIconModule,
+        MatRippleModule,
+        MatTooltipModule
+    ],
+    declarations: [BlockSizeInputComponent],
+    exports: [BlockSizeInputComponent]
 })
 export class BlockSizeInputModule { }
 </code></pre>
