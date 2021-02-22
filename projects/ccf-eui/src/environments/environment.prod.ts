@@ -7,7 +7,7 @@ export const environment = {
     'http://purl.obolibrary.org/obo/LMHA_00211', // Lung
     'http://purl.obolibrary.org/obo/UBERON_0002113', // Kidney
     'http://purl.obolibrary.org/obo/UBERON_0002106', // Spleen
-    'http://purl.obolibrary.org/obo/UBERON_0001155', // Colon
+    'http://purl.obolibrary.org/obo/UBERON_0001155', // Large Intestine
     'http://purl.obolibrary.org/obo/UBERON_0002108', // Small Intestine
     'http://purl.obolibrary.org/obo/UBERON_0001052' // Rectum
   ],

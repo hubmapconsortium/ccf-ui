@@ -14,7 +14,7 @@ const metaData: MetaData = [
   { label: 'First Name', value: 'Homer' },
   { label: 'Last Name', value: 'Simpson' },
   { label: 'Reference Organ Name', value: 'kidney, left, make, vh' },
-  { label: 'Tissue Block Size (mm)', value: '20, 10, 10' },
+  { label: 'Tissue Block Dimensions (mm)', value: '20, 10, 10' },
   { label: 'Tissue Block Position (mm)', value: '10, 74 16' },
   { label: 'Tissue Block Rotation', value: '0, 358.75, 20.07' },
   { label: 'Extraction Site(s)', value: 'Bisection line' },

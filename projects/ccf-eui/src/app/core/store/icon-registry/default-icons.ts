@@ -35,7 +35,7 @@ export const DEFAULT_ICONS: DefaultIconDefinition[] = [
 
   { name: 'bladder', namespace: 'app', url: 'assets/icons/icons-organs_bladder.svg' },
   { name: 'brain', namespace: 'app', url: 'assets/icons/icons-organs_brain.svg' },
-  { name: 'colon', namespace: 'app', url: 'assets/icons/icons-organs_colon.svg' },
+  { name: 'large_intestine', namespace: 'app', url: 'assets/icons/icons-organs_large intestine.svg' },
   { name: 'heart', namespace: 'app', url: 'assets/icons/icons-organs_heart.svg' },
   { name: 'kidney', namespace: 'app', url: 'assets/icons/icons-organs_kidney.svg' },
   { name: 'liver', namespace: 'app', url: 'assets/icons/icons-organs_liver.svg' },
