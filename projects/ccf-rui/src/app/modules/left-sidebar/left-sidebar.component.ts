@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -18,6 +18,7 @@ import { RUI_ORGANS } from './../../core/store/model/model.state';
 export class LeftSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
+  @ViewChild('fileInput') fileInput: ElementRef<HTMLElement>;
 
   readonly sexByLabel$ = this.model.sex$.pipe(
     map(sex => sex === 'female' ? 'Female' : 'Male')
@@ -101,5 +102,10 @@ export class LeftSidebarComponent {
       this.previousVisibilityItems = [...this.model.snapshot.anatomicalStructures];
     }
     this.model.toggleRegistrationBlocksVisibility(visible, this.previousVisibilityItems);
+  }
+
+  triggerFileInput(): void {
+    let fileInputElement: HTMLElement = this.fileInput.nativeElement;
+    fileInputElement.click();
   }
 }

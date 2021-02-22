@@ -64,6 +64,7 @@
 
         <div class="filler"></div>
 
-        <button mat-button class="upload-button">UPLOAD PREVIOUS REGISTRATION DATA</button>
+        <button mat-button class="upload-button" (click)="triggerFileInput()">UPLOAD PREVIOUS REGISTRATION DATA</button>
+        <input #fileInput type="file" accept="application/JSON" name="fileInput" id="fileInput" style="display: none;">
     </div>
 </div>
