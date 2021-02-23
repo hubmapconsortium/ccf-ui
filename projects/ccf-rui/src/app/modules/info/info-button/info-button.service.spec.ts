@@ -20,13 +20,13 @@ describe('InfoButtonService', () => {
 
   it('can test http GET', () => {
     const testData = '# About';
-    const documentationURL = 'assets/docs/TEST.md';
-    httpClient.get(documentationURL)
+    const testURL = 'assets/docs/TEST.md';
+    httpClient.get(testURL)
       .subscribe(data => {
         expect(data).toEqual(testData);
       });
 
-    const req = httpTestingController.expectOne('assets/docs/TEST.md');
+    const req = httpTestingController.expectOne(testURL);
     expect(req.request.method).toEqual('GET');
     req.flush(testData);
     httpTestingController.verify();

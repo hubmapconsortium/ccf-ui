@@ -3,9 +3,13 @@ import { Shallow } from 'shallow-render';
 import { InfoButtonComponent } from './info-button.component';
 import { InfoButtonModule } from './info-button.module';
 import { InfoButtonService } from './info-button.service';
+import { HttpClient } from '@angular/common/http';
+import { EMPTY } from 'rxjs';
 
 describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
+  let httpGet: jasmine.Spy;
+  let service: InfoButtonService;
 
   const mockMatDialog = {
     open(...args: unknown[]): MatDialogRef<unknown, unknown> {
@@ -15,7 +19,10 @@ describe('InfoButtonComponent', () => {
 
 
   beforeEach(() => {
-    shallow = new Shallow(InfoButtonComponent, InfoButtonModule);
+    httpGet = jasmine.createSpy('get', () => EMPTY);
+    shallow = new Shallow(InfoButtonComponent, InfoButtonModule)
+      .provide({provide: HttpClient, useValue: {get: httpGet}})
+    service = new InfoButtonService({get: httpGet} as unknown as HttpClient);
   });
 
   it('should display the info icon', async () => {
@@ -32,7 +39,10 @@ describe('InfoButtonComponent', () => {
   });
 
   it('launchInfoDialog opens dialog box', async () => {
-    const { instance, get } = await shallow.mock(MatDialog, mockMatDialog).render();
+    const { instance, get } = await shallow
+      .mock(MatDialog, mockMatDialog)
+      .mock(InfoButtonService, service)
+      .render();
     instance.onDialogButtonClick();
     expect(get(MatDialog).open).toHaveBeenCalled();
   });

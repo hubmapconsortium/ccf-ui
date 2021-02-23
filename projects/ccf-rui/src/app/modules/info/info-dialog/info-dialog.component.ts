@@ -23,7 +23,7 @@ export class InfoDialogComponent {
     public dialogRef: MatDialogRef<InfoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DocumentationContent[]
   ) {
-    if (data) { this.documentationContents = data; }
+      this.documentationContents = data || [];
   }
 
   /**
