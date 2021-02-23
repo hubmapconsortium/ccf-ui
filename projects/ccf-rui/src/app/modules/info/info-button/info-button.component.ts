@@ -23,8 +23,8 @@ export class InfoButtonComponent implements OnDestroy {
    */
   constructor(private readonly dialog: MatDialog, private readonly infoButtonService: InfoButtonService) {
     infoButtonService.markdownContent.subscribe(data => {
-      if(data.length) { 
-        this.launchInfoDialog(data); 
+      if(data.length) {
+        this.launchInfoDialog(data);
       }
     });
    }
