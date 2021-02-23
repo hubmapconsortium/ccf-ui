@@ -1,6 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
+import { PageState } from './core/store/page/page.state';
+
 
 @Component({
   selector: 'ccf-root',
@@ -8,7 +12,7 @@ import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
 
   readonly organSelected$ = this.model.organ$.pipe(
     map(organ => organ === undefined ? false : true)
@@ -18,12 +22,19 @@ export class AppComponent {
 
   open = true;
 
-  icon = 'keyboard_arrow_up';
+  /** All subscriptions managed by the container. */
+  private subscriptions = new Subscription();
 
-  constructor( readonly model: ModelState ) { }
+  constructor(readonly model: ModelState, readonly page: PageState) {
+    this.subscriptions.add(
+      page.embedded$.subscribe((embedded) => { this.open = !embedded; })
+    );
+  }
 
-  toggle(): void {
-    this.open = !this.open;
-    this.icon = this.open ? 'keyboard_arrow_up': 'keyboard_arrow_down';
+  /**
+   * Cleans up all subscriptions.
+   */
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }
