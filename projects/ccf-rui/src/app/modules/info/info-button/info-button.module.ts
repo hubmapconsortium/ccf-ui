@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { InfoButtonComponent } from './info-button.component';
 import { InfoDialogModule } from '../info-dialog/info-dialog.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [InfoButtonComponent],
-  imports: [CommonModule, InfoDialogModule, MatIconModule],
+  imports: [CommonModule, InfoDialogModule, MatIconModule, HttpClientModule],
   exports: [InfoButtonComponent]
 })
 export class InfoButtonModule {}
