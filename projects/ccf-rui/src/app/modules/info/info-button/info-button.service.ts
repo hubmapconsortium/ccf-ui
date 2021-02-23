@@ -30,7 +30,7 @@ export class InfoButtonService {
    * documentation content used by the info-dialog panels
    *
    * @param data Markdown file sent as a string after reading it
-   * @returns array of Documentationcontent
+   * @returns array of DocumentationContent
    */
   parseMarkdown(data: string): DocumentationContent[] {
     const markdownContent: DocumentationContent[] = [];

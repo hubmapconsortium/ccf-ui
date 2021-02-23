@@ -3,13 +3,10 @@ import { Shallow } from 'shallow-render';
 import { InfoButtonComponent } from './info-button.component';
 import { InfoButtonModule } from './info-button.module';
 import { InfoButtonService } from './info-button.service';
-import { HttpClient } from '@angular/common/http';
-import { EMPTY } from 'rxjs';
+import { DocumentationContent } from '../../../core/models/documentation';
 
 describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
-  let httpGet: jasmine.Spy;
-  let service: InfoButtonService;
 
   const mockMatDialog = {
     open(...args: unknown[]): MatDialogRef<unknown, unknown> {
@@ -19,10 +16,8 @@ describe('InfoButtonComponent', () => {
 
 
   beforeEach(() => {
-    httpGet = jasmine.createSpy('get', () => EMPTY);
     shallow = new Shallow(InfoButtonComponent, InfoButtonModule)
-      .provide({provide: HttpClient, useValue: {get: httpGet}})
-    service = new InfoButtonService({get: httpGet} as unknown as HttpClient);
+      .mock(MatDialog, { open(): {} { return {}; } });
   });
 
   it('should display the info icon', async () => {
@@ -39,11 +34,29 @@ describe('InfoButtonComponent', () => {
   });
 
   it('launchInfoDialog opens dialog box', async () => {
-    const { instance, get } = await shallow
-      .mock(MatDialog, mockMatDialog)
-      .mock(InfoButtonService, service)
-      .render();
-    instance.onDialogButtonClick();
+    const { instance, get } = await shallow.render();
+    instance.launchInfoDialog([]);
     expect(get(MatDialog).open).toHaveBeenCalled();
+  });
+
+  it('launches the dialog when data is emitted from the service', async () => {
+    const { instance, get } = await shallow.render();
+    const spy = spyOn(instance, 'launchInfoDialog');
+    get(InfoButtonService).markdownContent.next([{} as DocumentationContent]);
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('does not launch the dialog when data is empty', async () => {
+    const { instance, get } = await shallow.render();
+    const spy = spyOn(instance, 'launchInfoDialog');
+    get(InfoButtonService).markdownContent.next([]);
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('should call onDialogButtonClick', async () => {
+    const { instance, get } = await shallow.render();
+    const spy = spyOn(get(InfoButtonService), 'readMarkdown');
+    instance.onDialogButtonClick();
+    expect(spy).toHaveBeenCalled();
   });
 });
