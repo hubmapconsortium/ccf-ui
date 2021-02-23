@@ -24,7 +24,7 @@ describe('LeftSidebarComponent', () => {
         );
 
         const mockRegistrationState = jasmine.createSpyObj<RegistrationState>(
-            'RegistrationState', ['isValid']
+            'RegistrationState', ['isValid', 'editRegistration']
         );
 
         shallow = new Shallow(LeftSidebarComponent, LeftSidebarModule)
@@ -90,5 +90,12 @@ describe('LeftSidebarComponent', () => {
         const { instance } = await shallow.render();
         instance.setSideFromLabel('R');
         expect(instance.model.setSide).toHaveBeenCalledWith('right');
+    });
+
+    it('should call the registration state method whenever update registration is called', async () => {
+      const { instance, get } = await shallow.render();
+      const spy = get(RegistrationState).editRegistration;
+      instance.updateRegistration({});
+      expect(spy).toHaveBeenCalled();
     });
 });

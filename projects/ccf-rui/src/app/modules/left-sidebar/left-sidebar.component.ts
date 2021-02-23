@@ -103,9 +103,12 @@ export class LeftSidebarComponent {
     this.model.toggleRegistrationBlocksVisibility(visible, this.previousVisibilityItems);
   }
 
+  /**
+   * Event handler for capturing uploaded json and passing it along to
+   * the relevant registration state method.
+   * @param event the new registration state json
+   */
   updateRegistration(event): void {
-    console.log('update registration: ', event);
-
-    // @TODO
+    this.registration.editRegistration(event);
   }
 }
