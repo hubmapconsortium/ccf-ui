@@ -12,11 +12,11 @@
 
   <ccf-drawer-content>
     <div [class.closed]="!open" class="selector-drawer">
-      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])" 
+      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])"
       [selectedOrgans]="[model.organ$ | async]" [hidden]="!open"></ccf-organ-selector>
-      <div class="close-button" (click)="toggle()">
+      <div class="close-button" (click)="open = !open">
         <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">
-          {{ icon }}
+          {{ open ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}
         </mat-icon>
       </div>
     </div>
