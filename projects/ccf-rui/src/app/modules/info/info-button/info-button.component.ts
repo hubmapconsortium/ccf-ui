@@ -21,9 +21,11 @@ export class InfoButtonComponent implements OnDestroy {
    * @param dialog Reference to the dialog creation service.
    * @param infoButtonService Reference to the info button service
    */
-  constructor(private readonly dialog: MatDialog, private infoButtonService: InfoButtonService) {
+  constructor(private readonly dialog: MatDialog, private readonly infoButtonService: InfoButtonService) {
     infoButtonService.markdownContent.subscribe(data => {
-      if(data.length) { this.launchInfoDialog(data); }
+      if(data.length) { 
+        this.launchInfoDialog(data); 
+      }
     });
    }
 

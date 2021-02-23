@@ -6,7 +6,6 @@ import { of } from 'rxjs';
 
 describe('InfoButtonService', () => {
   let service: InfoButtonService;
-  let httpGet: jasmine.Spy<HttpClient['get']>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,7 +13,7 @@ describe('InfoButtonService', () => {
       providers: [InfoButtonService]
     }).compileComponents();
 
-    httpGet = spyOn(TestBed.inject(HttpClient), 'get').and.returnValue(of('# About'));
+    spyOn(TestBed.inject(HttpClient), 'get').and.returnValue(of('# About'));
     service = TestBed.inject(InfoButtonService);
   });
 

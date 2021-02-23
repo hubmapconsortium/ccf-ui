@@ -13,7 +13,7 @@ export class InfoButtonService {
   /** Subject to send the documentation data to the component when its done processing */
   markdownContent: BehaviorSubject<DocumentationContent[]> = new BehaviorSubject<DocumentationContent[]>([]);
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   /**
    * Read the markdown file to split it by h1 tags.
