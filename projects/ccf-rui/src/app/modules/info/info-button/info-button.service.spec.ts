@@ -1,7 +1,7 @@
 import { InfoButtonService } from './info-button.service';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 
 describe('InfoButtonService', () => {
