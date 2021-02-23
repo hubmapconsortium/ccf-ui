@@ -20,20 +20,30 @@ export class InfoButtonService {
    */
   readMarkdown(): void {
     this.http.get(documentationURL, {responseType: 'text'}).subscribe((data: string) => {
-      const markdownContent: DocumentationContent[] = [];
-      const splitByHeaderTag: string[] = data.split('# ');
-      for (const split of splitByHeaderTag) {
-        if (split.length) {
-          const headerAndContent: string[] = split.split('\n\n');
-          markdownContent.push({
-            title: headerAndContent[0],
-            content: headerAndContent.splice(1).join('\n\n')
-          });
-        }
-      }
-
+      const markdownContent: DocumentationContent[] = this.parseMarkdown(data);
       this.markdownContent.next(markdownContent);
     });
+  }
 
+  /**
+   * Function to parse the markdown file and convert to
+   * documentation content used by the info-dialog panels
+   *
+   * @param data Markdown file sent as a string after reading it
+   * @returns array of Documentationcontent
+   */
+  parseMarkdown(data: string): DocumentationContent[] {
+    const markdownContent: DocumentationContent[] = [];
+    const splitByHeaderTag: string[] = data.split('# ');
+    for (const split of splitByHeaderTag) {
+      if (split.length) {
+        const headerAndContent: string[] = split.split('\n\n');
+        markdownContent.push({
+          title: headerAndContent[0],
+          content: headerAndContent.splice(1).join('\n\n')
+        });
+      }
+    }
+    return markdownContent;
   }
 }

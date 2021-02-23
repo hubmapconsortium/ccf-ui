@@ -2,15 +2,17 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Shallow } from 'shallow-render';
 import { InfoButtonComponent } from './info-button.component';
 import { InfoButtonModule } from './info-button.module';
-
+import { InfoButtonService } from './info-button.service';
 
 describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
+
   const mockMatDialog = {
     open(...args: unknown[]): MatDialogRef<unknown, unknown> {
       return undefined as unknown as MatDialogRef<unknown, unknown>;
     }
   };
+
 
   beforeEach(() => {
     shallow = new Shallow(InfoButtonComponent, InfoButtonModule);

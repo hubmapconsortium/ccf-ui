@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
@@ -14,7 +14,7 @@ import { DocumentationContent } from '../../../core/models/documentation';
   templateUrl: './info-button.component.html',
   styleUrls: ['./info-button.component.scss']
 })
-export class InfoButtonComponent {
+export class InfoButtonComponent implements OnDestroy {
   /**
    * Creates an instance of info button component.
    *
@@ -25,6 +25,14 @@ export class InfoButtonComponent {
     infoButtonService.markdownContent.subscribe(data => {
       if(data.length) { this.launchInfoDialog(data); }
     });
+   }
+
+   /**
+    * Unsubscribe to the observable when the component
+    * is destroyed
+    */
+   ngOnDestroy(): void {
+     this.infoButtonService.markdownContent.unsubscribe();
    }
 
   /**
