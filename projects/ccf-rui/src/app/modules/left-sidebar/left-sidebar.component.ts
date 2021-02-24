@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { SpatialEntityJsonLd } from 'ccf-body-ui';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
