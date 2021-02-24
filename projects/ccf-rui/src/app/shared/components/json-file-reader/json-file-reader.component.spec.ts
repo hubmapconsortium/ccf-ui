@@ -6,15 +6,17 @@ import { JsonFileReaderModule } from './json-file-reader.module';
 
 describe('JsonFileReaderComponent', () => {
   let shallow: Shallow<JsonFileReaderComponent>;
-
   let fileReaderInstance: jasmine.SpyObj<FileReader>;
 
   beforeEach(() => {
     shallow = new Shallow(JsonFileReaderComponent, JsonFileReaderModule);
     fileReaderInstance = jasmine.createSpyObj<FileReader>('FileReader', ['readAsText'], {result: '"abc"'});
-    spyOn(globalThis, 'FileReader').and.callFake(function () {
-      return fileReaderInstance
-    })
+
+    // Doesn't work with arrow functions.
+    // tslint:disable-next-line: only-arrow-functions
+    spyOn(globalThis, 'FileReader').and.callFake(function(): jasmine.SpyObj<FileReader> {
+      return fileReaderInstance;
+    });
   });
 
   it('should call triggerFileInput when the upload button is clicked', async () => {

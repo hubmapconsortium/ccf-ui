@@ -12,17 +12,17 @@ export class JsonFileReaderComponent {
   @ViewChild('fileInput') fileInput: ElementRef<HTMLElement>;
 
   /** Allows the label on the upload button to be customized. */
-  @Input() label: string = 'Upload';
+  @Input() label = 'Upload';
 
   /** Emits the json object of any files uploaded. */
-  @Output() parsedJson = new EventEmitter<Object>();
+  @Output() parsedJson = new EventEmitter<unknown>();
 
   /**
    * Method used to trigger the file input element's click handler
    * from the placeholder button used for styling purposes.
    */
   triggerFileInput(): void {
-    let fileInputElement: HTMLElement = this.fileInput.nativeElement;
+    const fileInputElement: HTMLElement = this.fileInput.nativeElement;
     fileInputElement.click();
   }
 
@@ -33,11 +33,11 @@ export class JsonFileReaderComponent {
   handleFile(event: InputEvent): void {
     const inputTarget = event.target as HTMLInputElement;
     const file = inputTarget.files![0];
-    let fileReader = new FileReader();
+    const fileReader = new FileReader();
     fileReader.onload = () => {
-      const json = JSON.parse(fileReader.result as string);
+      const json = JSON.parse(fileReader.result as string) as unknown;
       this.parsedJson.emit(json);
-    }
+    };
     fileReader.readAsText(file);
   }
 }

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
+import { SpatialEntityJsonLd } from 'ccf-body-ui';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -108,7 +109,7 @@ export class LeftSidebarComponent {
    * the relevant registration state method.
    * @param event the new registration state json
    */
-  updateRegistration(event): void {
+  updateRegistration(event: SpatialEntityJsonLd): void {
     this.registration.editRegistration(event);
   }
 }
