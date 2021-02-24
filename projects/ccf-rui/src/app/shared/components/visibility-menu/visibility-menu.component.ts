@@ -1,5 +1,6 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, ViewChild } from '@angular/core';
 import { VisibilityItem } from '../../../core/models/visibility-item';
+import { OpacitySliderComponent } from '../opacity-slider/opacity-slider.component';
 
 /**
  * Menu for displaying visibility options
@@ -56,6 +57,8 @@ export class VisibilityMenuComponent {
    */
   @Output() readonly itemsChange = new EventEmitter<VisibilityItem[]>();
 
+  @ViewChild('slider', { static: true }) slider: OpacitySliderComponent;
+
   /**
    * Disables slider interactions
    */
@@ -68,40 +71,53 @@ export class VisibilityMenuComponent {
    */
   toggleVisibility(item: VisibilityItem): void {
     item = {...item, visible: !item.visible};
+    const prevOpacity = item.opacity || 0;
     if (this.selection && item.id === this.selection.id) {
       this.selection = {...this.selection, visible: item.visible};
       this.disableSlider = this.selection ? !this.selection.visible : true;
     }
+    if (!item.visible) {
+      this.updateOpacity(0);
+    } else {
+      this.updateOpacity(prevOpacity);
+    };
     this.items = this.items.map(x => x.id === item.id ? item : x);
     this.visibleItems = this.items.filter(x => x.visible);
     this.visibleItemsChange.emit(this.visibleItems);
     this.itemsChange.emit(this.items);
   }
 
-  /**
-   * Toggles selected status of an item on click
-   * Disables the slider if no item selected or if selected item is not set to visible
-   * @param item Menu item
-   */
-  toggleSelected(item: VisibilityItem): void {
-    this.selection = item === this.selection ? undefined : item;
-    this.disableSlider = this.selection ? !this.selection.visible : true;
-    this.selectionChange.emit(item);
-  }
+  // /**
+  //  * Toggles selected status of an item on click
+  //  * Disables the slider if no item selected or if selected item is not set to visible
+  //  * @param item Menu item
+  //  */
+  // toggleSelected(item: VisibilityItem): void {
+  //   this.selection = item === this.selection ? undefined : item;
+  //   this.disableSlider = this.selection ? !this.selection.visible : true;
+  //   this.selectionChange.emit(item);
+  //   this.slider.changeOpacity(item?.opacity!.toString())
+  // }
 
   /**
    * Emits an item in response to hover action
    * @param item Menu item
    */
   mouseOver(item: VisibilityItem): void {
-    this.hover.emit(item);
+    // this.hoveredItem = item;
+    // this.hover.emit(item);
+    this.selection = item === this.selection ? undefined : item;
+    this.disableSlider = this.selection ? !this.selection.visible : true;
+    // this.selectionChange.emit(item);
+    // this.slider.changeOpacity(item?.opacity!.toString())
   }
 
   /**
    * Emits undefined in response to mouse out
    * @param item Menu item
    */
-  mouseOut(item: VisibilityItem): void {
+  mouseOut(): void {
+    this.selection = undefined;
     this.hover.emit(undefined);
   }
 
@@ -124,8 +140,8 @@ export class VisibilityMenuComponent {
    * Resets all item opacity values and current selected item opacity to 100;
    */
   resetOpacity(): void {
-    this.items = this.items.map(i => ({ ...i, opacity: 100}));
-    this.updateOpacity(100);
+    // this.items = this.items.map(i => ({ ...i, opacity: 20}));
+    this.updateOpacity(20);
   }
 
   /**

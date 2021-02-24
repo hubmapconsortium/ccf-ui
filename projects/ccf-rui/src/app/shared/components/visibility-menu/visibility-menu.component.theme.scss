@@ -13,9 +13,6 @@
       }
     }
     .item-entry {
-      &.selected {
-        background-color: mat-color($background, hover-background);
-      }
       .opacity-setting {
         color: mat-color($foreground, icon);
       }

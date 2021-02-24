@@ -14,26 +14,15 @@
     flex-shrink: 0;
     position: relative;
 
-    .visibility-icon {
-      margin-left: .5rem;
-      position: absolute;
-      transition: .6s;
-
-      &.hidden {
-        opacity: 0;
-      }
-    }
-
-    .visibility-icon, .item-name {
-      cursor: pointer;
-    }
-
     .item-name {
-      margin-left: 2.5rem;
       user-select: none;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      &.hidden {
+        display: none
+      }
     }
 
     .opacity-setting {
@@ -42,6 +31,23 @@
 
       &.hidden {
         display: none;
+      }
+    }
+
+    .slider {
+      &.hidden {
+        display: none;
+      }
+
+      .visibility-icon {
+        margin-left: .5rem;
+        position: absolute;
+        transition: .6s;
+  
+      }
+  
+      .visibility-icon, .item-name {
+        cursor: pointer;
       }
     }
   }

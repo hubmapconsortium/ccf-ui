@@ -18,12 +18,16 @@ export class OpacitySliderComponent {
   /**
    * The value displayed in the slider
    */
-  @Input() opacity = 100;
+  @Input() opacity = 20;
 
+  @Input() visible = true;
   /**
    * Emits the updated opacity when the opacity chanes
    */
   @Output() readonly opacityChange = new EventEmitter<number>();
+
+  
+  @Output() readonly visibilityToggle = new EventEmitter();
 
   /**
    * Emitter for resetting all opacity values to default
@@ -37,6 +41,10 @@ export class OpacitySliderComponent {
   changeOpacity(newOpacity: string): void {
     this.opacity = parseInt(newOpacity, 10);
     this.opacityChange.emit(this.opacity);
+  }
+
+  toggleVisibility(): void {
+    this.visibilityToggle.emit();
   }
 
   /**
