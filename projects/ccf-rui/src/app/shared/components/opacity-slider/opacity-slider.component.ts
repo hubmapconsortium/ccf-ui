@@ -26,7 +26,7 @@ export class OpacitySliderComponent {
    */
   @Output() readonly opacityChange = new EventEmitter<number>();
 
-  
+
   @Output() readonly visibilityToggle = new EventEmitter();
 
   /**

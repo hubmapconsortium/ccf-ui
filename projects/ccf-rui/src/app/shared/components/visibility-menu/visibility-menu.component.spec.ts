@@ -36,25 +36,6 @@ describe('VisibilityMenuComponent', () => {
     expect(instance.disableSlider).toBeFalse();
   });
 
-  it('should change selection when toggleSelected is called', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    instance.toggleSelected(testItem);
-    expect(instance.selection).toEqual(testItem);
-  });
-
-  it('should set selection to undefined when toggleSelected is called on the selected item', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    instance.selection = testItem;
-    instance.toggleSelected(testItem);
-    expect(instance.selection).toBeUndefined();
-  });
-
-  it('should emit the selected item when toggleSelected is called', async () => {
-    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
-    instance.toggleSelected(testItem);
-    expect(outputs.selectionChange.emit).toHaveBeenCalledWith(testItem);
-  });
-
   it('should emit the item when user hovers over an item', async () => {
     const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
     instance.mouseOver(testItem);
@@ -63,7 +44,7 @@ describe('VisibilityMenuComponent', () => {
 
   it('should emit undefined when the user moves cursor off the item', async () => {
     const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
-    instance.mouseOut(testItem);
+    instance.mouseOut();
     expect(outputs.hover.emit).toHaveBeenCalledWith(undefined);
   });
 
@@ -82,11 +63,11 @@ describe('VisibilityMenuComponent', () => {
     expect(outputs.opacityChange.emit).toHaveBeenCalledTimes(0);
   });
 
-  it('should reset all opacity values to 100 when resetOpacity is called', async () => {
+  it('should reset opacity to default when resetOpacity is called', async () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
     instance.items[0].opacity = 50;
-    instance.resetOpacity();
-    expect(instance.items[0].opacity).toEqual(100);
+    instance.resetOpacity(20);
+    expect(instance.items[0].opacity).toEqual(20);
   });
 
   it('should set the current selection opacity value to 100 when resetOpacity is called', async () => {

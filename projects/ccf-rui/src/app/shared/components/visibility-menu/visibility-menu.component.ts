@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, OnInit } from '@angular/core';
 import { VisibilityItem } from '../../../core/models/visibility-item';
 
 /**
@@ -9,7 +9,7 @@ import { VisibilityItem } from '../../../core/models/visibility-item';
   templateUrl: './visibility-menu.component.html',
   styleUrls: ['./visibility-menu.component.scss']
 })
-export class VisibilityMenuComponent {
+export class VisibilityMenuComponent implements OnInit {
 
   /**
    * HTML class name
@@ -61,7 +61,14 @@ export class VisibilityMenuComponent {
    */
   disableSlider = true;
 
-  prevOpacity: number;
+  /**
+   * Previous opacity value of the currently selected item
+   */
+  prevOpacities: (number | undefined)[];
+
+  ngOnInit() {
+    this.prevOpacities = this.items.map(i => 0);
+  }
 
   /**
    * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
@@ -69,6 +76,7 @@ export class VisibilityMenuComponent {
    * @param item Menu item
    */
   toggleVisibility(item: VisibilityItem): void {
+    const index = this.items.indexOf(item);
     item = {...item, visible: !item.visible};
     if (this.selection && item.id === this.selection.id) {
       this.selection = {...this.selection, visible: item.visible};
@@ -76,11 +84,11 @@ export class VisibilityMenuComponent {
     }
     if (!item.visible) {
       this.updateOpacity(0);
-      this.prevOpacity = item.opacity || 0;
+      this.prevOpacities[index] = item.opacity;
     } else {
-      this.updateOpacity(this.prevOpacity);
-      this.prevOpacity = 0;
-    };
+      this.updateOpacity(this.prevOpacities[index]);
+      this.prevOpacities[index] = 0;
+    }
   }
 
   /**
@@ -105,7 +113,7 @@ export class VisibilityMenuComponent {
    * Updates opacity of the currently selected item (if selected) and emits the new opacity value
    * @param event [Updated opacity value, old opacity value]
    */
-  updateOpacity(value: number): void {
+  updateOpacity(value: number | undefined): void {
     if (!this.selection) {
       return;
     }
@@ -114,14 +122,6 @@ export class VisibilityMenuComponent {
     this.items = this.items.map(x => x.id === updatedSelection.id ? updatedSelection : x);
     this.opacityChange.emit(updatedSelection);
     this.itemsChange.emit(this.items);
-  }
-
-  /**
-   * Resets opacity for the current selection
-   */
-  resetOpacity(value: number): void {
-    this.updateOpacity(value);
-    this.prevOpacity = value;
   }
 
   setAllOpacity(value: number): void {
