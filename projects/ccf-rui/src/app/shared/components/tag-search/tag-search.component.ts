@@ -1,18 +1,22 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl } from '@angular/forms';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input,
+  OnDestroy, Output,
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
-import { Observable, ObservableInput } from 'rxjs';
-import { map, pluck, shareReplay, startWith, switchMap } from 'rxjs/operators';
+import { from, interval, ObservableInput, Subject } from 'rxjs';
+import { map, switchMap, take, takeUntil, throttle } from 'rxjs/operators';
 
 import { Tag, TagId, TagSearchResult } from '../../../core/models/anatomical-structure-tag';
 
 
 /** Default search results limit */
 const DEFAULT_SEARCH_LIMIT = 5;
-/** Initial selection for mat-select */
-const EMPTY_SELECTION = ['search'];
+/** Default search throttle time in ms */
+const DEFAULT_SEARCH_THROTTLE = 100;
 /** Empty search result object */
 const EMPTY_RESULT: TagSearchResult = { totalCount: 0, results: [] };
+
 
 /**
  * Component for searching, selecting, and adding tags.
@@ -23,7 +27,7 @@ const EMPTY_RESULT: TagSearchResult = { totalCount: 0, results: [] };
   styleUrls: ['./tag-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TagSearchComponent {
+export class TagSearchComponent implements OnDestroy {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-tag-search';
 
@@ -31,57 +35,69 @@ export class TagSearchComponent {
   @Input() placeholder = 'Add Anatomical Structures ...';
 
   /** Search method */
-  @Input() search: (text: string, limit: number) => ObservableInput<TagSearchResult>;
+  @Input() search?: (text: string, limit: number) => ObservableInput<TagSearchResult>;
 
   /** Maximum number of results to show */
   @Input() searchLimit?: number;
+
+  /** Throttle time between search calls */
+  @Input() searchThrottle?: number;
 
   /** Emits when tags are added */
   @Output() readonly added = new EventEmitter<Tag[]>();
 
   /** Mapping for pluralizing the result total count */
   readonly countMapping = {
-    '=0': '0 results',
     '=1': '1 result',
     other: '# results'
   };
 
-  readonly formGroup = this.fb.group({
-    select: [[...EMPTY_SELECTION]],
-    search: ['']
-  });
+  /** Search field controller */
+  readonly searchControl = new FormControl();
 
-  /** Controller for the select element */
-  get selectController(): AbstractControl {
-    return this.formGroup.get('select') as AbstractControl;
-  }
+  /** Search results */
+  searchResults = EMPTY_RESULT;
 
-  /** Controller for the search element */
-  get searchController(): AbstractControl {
-    return this.formGroup.get('search') as AbstractControl;
-  }
+  /** Object of currently checked search results */
+  checkedResults: Record<TagId, boolean> = {};
 
-  /** Current search result */
-  readonly searchResult$ =
-    (this.searchController.valueChanges as Observable<string | undefined>).pipe(
-      startWith(''),
-      switchMap(this.doSearch),
-      map(this.limitSearchResult),
-      shareReplay(1)
-    );
+  /** Whether results are shown */
+  resultsVisible = false;
 
-  /** Current result total count */
-  readonly totalCount$ = this.searchResult$.pipe(pluck('totalCount'));
-
-  /** Current results */
-  readonly results$ = this.searchResult$.pipe(pluck('results'));
+  /** Emits and completes when component is destroyed. Used to clean up observables. */
+  private readonly destroy$ = new Subject<void>();
 
   /**
    * Creates an instance of tag search component.
    *
-   * @param fb Form builder helper service
+   * @param el: Element for this component
+   * @param cdr Reference to change detector
    */
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly el: ElementRef<Node>,
+    cdr: ChangeDetectorRef
+  ) {
+    this.searchControl.valueChanges.pipe(
+      takeUntil(this.destroy$),
+      throttle(
+        () => interval(this.searchThrottle ?? DEFAULT_SEARCH_THROTTLE),
+        { leading: true, trailing: true }
+      ),
+      switchMap(this.executeSearch),
+    ).subscribe(result => {
+      this.searchResults = result;
+      this.checkedResults = this.getUpdatedCheckedResults(result);
+      cdr.markForCheck();
+    });
+  }
+
+  /**
+   * Cleans up component on destruction
+   */
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   /**
    * Extracts the tag identifier
@@ -95,52 +111,106 @@ export class TagSearchComponent {
   }
 
   /**
-   * Adds currently selected tags and clears the search.
-   * Does nothing if no tags have been selected.
+   * Determines whether any tags have been checked
    *
-   * @param searchEl Used to refocus on the input element after clearing the search
+   * @returns true if any tag has been checked by the user
    */
-  emitTagsAndClear(searchEl: { focus(): void }): void {
-    const { added, selectController, searchController } = this;
-    const selection = selectController.value as [string, ...Tag[]];
-    const tags = selection.slice(1) as Tag[]; // Remove initial 'search' value
+  hasCheckedTags(): boolean {
+    return Object.values(this.checkedResults).some(v => v);
+  }
+
+  /**
+   * Emits selected tags and resets the search and selections
+   */
+  addTags(): void {
+    const { searchControl, searchResults, checkedResults } = this;
+    const tags = searchResults.results.filter(tag => checkedResults[tag.id]);
 
     if (tags.length > 0) {
-      searchController.setValue('');
-      searchEl.focus();
-      added.emit(tags);
+      searchControl.reset();
+      this.searchResults = EMPTY_RESULT;
+      this.checkedResults = {};
+      this.added.emit(tags);
     }
   }
 
   /**
-   * Performs a text search
+   * Opens the results panel
+   */
+  @HostListener('click') // tslint:disable-line: no-unsafe-any
+  @HostListener('focusin') // tslint:disable-line: no-unsafe-any
+  openResults(): void {
+    if (!this.resultsVisible) {
+      this.resultsVisible = true;
+    }
+  }
+
+  /**
+   * Closes the results panel
    *
-   * @param text The search text
+   * @param event DOM event
+   */
+  @HostListener('window:click', ['$event']) // tslint:disable-line: no-unsafe-any
+  @HostListener('window:focusin', ['$event']) // tslint:disable-line: no-unsafe-any
+  closeResults(event: Event): void {
+    if (this.resultsVisible && event.target instanceof Node) {
+      if (!this.el.nativeElement.contains(event.target)) {
+        this.resultsVisible = false;
+      }
+    }
+  }
+
+  /**
+   * Executes a search on a piece of text.
+   *
+   * @param text Search text
+   * @returns An observable of the search result.
    */
   @Bind
-  private doSearch(text: string | undefined): ObservableInput<TagSearchResult> {
-    if (!text) {
+  private executeSearch(text: string): ObservableInput<TagSearchResult> {
+    const { search, searchLimit = DEFAULT_SEARCH_LIMIT } = this;
+    if (!text || !search) {
       return [EMPTY_RESULT];
     }
 
-    const { search, searchLimit = DEFAULT_SEARCH_LIMIT } = this;
-    const result = search?.(text, searchLimit);
-    return result ?? [EMPTY_RESULT];
+    return from(search(text, searchLimit)).pipe(
+      take(1),
+      map(this.truncateResults)
+    );
   }
 
   /**
-   * Limits the number of items in a search
+   * Truncates the number of results returned by a search
    *
-   * @param search The search result object
-   * @returns A possible modified object with search limits applied
+   * @param result The results
+   * @returns Results with at most `searchLimit` items
    */
   @Bind
-  private limitSearchResult(search: TagSearchResult): TagSearchResult {
+  private truncateResults(result: TagSearchResult): TagSearchResult {
     const { searchLimit = DEFAULT_SEARCH_LIMIT } = this;
+    const items = result.results;
 
-    if (search.results.length > searchLimit) {
-      return { ...search, results: search.results.slice(0, searchLimit) };
+    if (items.length > searchLimit) {
+      return {
+        ...result,
+        results: items.slice(0, searchLimit)
+      };
     }
-    return search;
+
+    return result;
+  }
+
+  /**
+   * Computes a new checked object for result items. Already checked items are preserved.
+   *
+   * @param result New results
+   * @returns A new checked object
+   */
+  private getUpdatedCheckedResults(result: TagSearchResult): Record<TagId, boolean> {
+    const prev = this.checkedResults;
+    return result.results.reduce((acc, { id }) => {
+      acc[id] = prev[id] ?? false;
+      return acc;
+    }, {});
   }
 }
