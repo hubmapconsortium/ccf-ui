@@ -12,21 +12,11 @@
       }
     }
 
-    .opacity-icon {
-      &.fade {
-        color: mat-color($foreground, disabled);
-      }
-    }
-
-    .visibility-icon {
-      color: mat-color($foreground, icon);
-      &.visible {
-        color: mat-color($accent);
-      }
-    }
     .item-entry {
-      .opacity-setting {
-        color: mat-color($foreground, icon);
+      .opacity-icon {
+        &.fade {
+          color: mat-color($foreground, disabled);
+        }
       }
     }
   }

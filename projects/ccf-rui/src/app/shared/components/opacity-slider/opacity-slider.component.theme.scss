@@ -1,6 +1,7 @@
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
+  $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $primary: map-get($theme, primary);
 
@@ -9,6 +10,14 @@
       &:hover {
         color: mat-color($foreground, active-icon);
       }
+    }
+
+    .invisible {
+      color: mat-color($foreground, disabled);
+    }
+
+    .visible {
+      color: mat-color($accent);
     }
   }
 }

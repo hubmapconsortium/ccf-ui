@@ -20,13 +20,19 @@ export class OpacitySliderComponent {
    */
   @Input() opacity = 20;
 
-  @Input() visible = true;
   /**
-   * Emits the updated opacity when the opacity chanes
+   * Whether the item is set to visible
+   */
+  @Input() visible = true;
+
+  /**
+   * Emits the updated opacity when the opacity changes
    */
   @Output() readonly opacityChange = new EventEmitter<number>();
 
-
+  /**
+   * Output  of opacity slider component
+   */
   @Output() readonly visibilityToggle = new EventEmitter();
 
   /**
@@ -43,12 +49,15 @@ export class OpacitySliderComponent {
     this.opacityChange.emit(this.opacity);
   }
 
+  /**
+   * Emits signal to toggle the visibility of the item
+   */
   toggleVisibility(): void {
     this.visibilityToggle.emit();
   }
 
   /**
-   * Resets opacity value for the item
+   * Emits signal to reset the opacity of the item
    */
   resetOpacity(): void {
     this.opacityReset.emit();

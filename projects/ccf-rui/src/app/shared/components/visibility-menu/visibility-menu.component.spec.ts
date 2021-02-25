@@ -17,13 +17,6 @@ describe('VisibilityMenuComponent', () => {
     shallow = new Shallow(VisibilityMenuComponent, VisibilityMenuModule);
   });
 
-  it('should emit the visible items when toggleVisibility is called', async () => {
-    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
-    testItem.visible = false;
-    instance.toggleVisibility(testItem);
-    expect(outputs.visibleItemsChange.emit).toHaveBeenCalledWith(instance.visibleItems);
-  });
-
   it('should enable the slider if a visible item is selected', async () => {
     const testItem2 = {
       id: 1,
@@ -61,21 +54,6 @@ describe('VisibilityMenuComponent', () => {
     instance.selection = undefined;
     instance.updateOpacity(50);
     expect(outputs.opacityChange.emit).toHaveBeenCalledTimes(0);
-  });
-
-  it('should reset opacity to default when resetOpacity is called', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    instance.items[0].opacity = 50;
-    instance.resetOpacity(20);
-    expect(instance.items[0].opacity).toEqual(20);
-  });
-
-  it('should set the current selection opacity value to 100 when resetOpacity is called', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    instance.items[0].opacity = 50;
-    const spy = spyOn(instance, 'updateOpacity');
-    instance.resetOpacity();
-    expect(spy).toHaveBeenCalledWith(100);
   });
 
   it('should return the id with getId', async () => {

@@ -22,29 +22,9 @@ export class VisibilityMenuComponent implements OnInit {
   @Input() items: VisibilityItem[];
 
   /**
-   * Items that are currently set to visible
-   */
-  @Input() visibleItems: VisibilityItem[];
-
-  /**
    * The currently selected item
    */
   @Input() selection: VisibilityItem | undefined;
-
-  /**
-   * Emits the currently visible items
-   */
-  @Output() visibleItemsChange = new EventEmitter<VisibilityItem[]>();
-
-  /**
-   * Emits the currently selected item
-   */
-  @Output() selectionChange = new EventEmitter<VisibilityItem | undefined>();
-
-  /**
-   * Emits the current opacity value
-   */
-  @Output() opacityChange = new EventEmitter<VisibilityItem>();
 
   /**
    * Emits the currently hovered item
@@ -62,17 +42,19 @@ export class VisibilityMenuComponent implements OnInit {
   disableSlider = true;
 
   /**
-   * Previous opacity value of the currently selected item
+   * Previous opacity values
    */
   prevOpacities: (number | undefined)[];
 
-  ngOnInit() {
+  /**
+   * Sets all previous opacities to 0
+   */
+  ngOnInit(): void {
     this.prevOpacities = this.items.map(i => 0);
   }
 
   /**
-   * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
-   * Disables the slider if a visible item is not selected
+   * Toggles visibility of an item; opacity is reverted to the previous value if visibility toggled back on
    * @param item Menu item
    */
   toggleVisibility(item: VisibilityItem): void {
@@ -92,16 +74,16 @@ export class VisibilityMenuComponent implements OnInit {
   }
 
   /**
-   * Emits an item in response to hover action
+   * Changes current selection to hovered over item and emits the item
    * @param item Menu item
    */
   mouseOver(item: VisibilityItem): void {
     this.selection = item === this.selection ? undefined : item;
-    this.disableSlider = this.selection ? !this.selection.visible : true;
+    this.hover.emit(item);
   }
 
   /**
-   * Emits undefined in response to mouse out
+   * Clears current selection and emits undefined in response to mouse out
    * @param item Menu item
    */
   mouseOut(): void {
@@ -110,8 +92,8 @@ export class VisibilityMenuComponent implements OnInit {
   }
 
   /**
-   * Updates opacity of the currently selected item (if selected) and emits the new opacity value
-   * @param event [Updated opacity value, old opacity value]
+   * Updates opacity of the currently selected item (if one is selected) and emits the new items
+   * @param value Updated opacity value
    */
   updateOpacity(value: number | undefined): void {
     if (!this.selection) {
@@ -119,11 +101,14 @@ export class VisibilityMenuComponent implements OnInit {
     }
     const updatedSelection = {...this.selection, opacity: value};
     this.selection = updatedSelection;
-    this.items = this.items.map(x => x.id === updatedSelection.id ? updatedSelection : x);
-    this.opacityChange.emit(updatedSelection);
+    this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
     this.itemsChange.emit(this.items);
   }
 
+  /**
+   * Sets all items to the same opacity and makes them visible
+   * @param value Updated opacity value
+   */
   setAllOpacity(value: number): void {
     this.items = this.items.map(i => ({ ...i, opacity: value, visible: true}));
     this.itemsChange.emit(this.items);
@@ -137,14 +122,5 @@ export class VisibilityMenuComponent implements OnInit {
    */
   getId(_index: number, item: VisibilityItem): string | number {
     return item.id;
-  }
-
-  /**
-   * Determines if opacity value of the item is hidden (when opacity = 100)
-   * @param item Item of interest
-   * @returns true if hidden
-   */
-  isHidden(item: VisibilityItem): boolean {
-    return item.opacity === 100 ? true : false;
   }
 }
