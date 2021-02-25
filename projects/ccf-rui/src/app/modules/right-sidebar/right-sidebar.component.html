@@ -23,7 +23,7 @@
       <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">
       </ccf-tag-search>
 
-      <ccf-tag-list *ngIf="model.id$ | async; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"
+      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"
                     (tagRemoved)="astags.removeTag($event)">
       </ccf-tag-list>
       <ng-template #tagListPlaceholder>

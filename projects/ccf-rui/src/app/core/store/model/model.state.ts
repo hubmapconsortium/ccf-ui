@@ -241,58 +241,11 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.ctx.patchState({ viewSide });
   }
 
-  @DataAction()
-  private onOrganIriChange(): void {
-    const organIri = this.referenceData.getReferenceOrganIri(
-      this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
-    );
-    const organDimensions: XYZTriplet = {x: 100, y: 100, z: 100};
-
-    if (organIri) {
-      const db = this.referenceData.snapshot;
-      const asLookup: { [id: string]: VisibilityItem} = {};
-      for (const entity of (db.anatomicalStructures[organIri] || [])) {
-        const iri = entity.representation_of || entity['@id'];
-        if (!asLookup[iri]) {
-          asLookup[iri] = {
-            id: entity.representation_of || entity['@id'],
-            name: entity.label,
-            visible: true,
-            opacity: 100,
-            tooltip: entity.comment
-          } as VisibilityItem;
-        }
-      }
-      this.setAnatomicalStructures(Object.values(asLookup));
-
-      const sets = (db.extractionSets[organIri] || []).map((set) => ({
-        name: set.label,
-        sites: sortBy(set.extractionSites.map((entity) => ({
-          id: entity['@id'],
-          name: entity.label,
-          visible: false,
-          opacity: 100,
-          tooltip: entity.comment
-        } as VisibilityItem)), 'name')
-      } as ExtractionSet));
-      this.setExtractionSets(sets);
-      this.setExtractionSites(sets.length > 0 ? sets[0].sites : []);
-
-      const spatialEntity = db.organSpatialEntities[organIri];
-      organDimensions.x = spatialEntity.x_dimension;
-      organDimensions.y = spatialEntity.y_dimension;
-      organDimensions.z = spatialEntity.z_dimension;
-    }
-
-    this.ctx.patchState({ organIri, organDimensions });
-    this.ctx.patchState({ position: this.defaultPosition });
-  }
-
   @Computed()
   get defaultPosition(): XYZTriplet {
     const dims = this.snapshot.organDimensions;
     const block = this.snapshot.blockSize;
-    return {x: dims.x + 2 * block.x, y: dims.y / 2, z: dims.z / 2};
+    return { x: dims.x + 2 * block.x, y: dims.y / 2, z: dims.z / 2 };
   }
 
   /**
@@ -368,13 +321,13 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.ctx.patchState({ extractionSets });
   }
 
-/**
- * Toggles registration blocks visibility and handles anatomical structures
- * opacity changes accordingly
- * @param visible the visible state to pass along to setShowPrevious()
- * @param previousItems visibilityItems to set anatomical structures
- */
-toggleRegistrationBlocksVisibility(visible: boolean, previousItems: VisibilityItem[]): void {
+  /**
+   * Toggles registration blocks visibility and handles anatomical structures
+   * opacity changes accordingly
+   * @param visible the visible state to pass along to setShowPrevious()
+   * @param previousItems visibilityItems to set anatomical structures
+   */
+  toggleRegistrationBlocksVisibility(visible: boolean, previousItems: VisibilityItem[]): void {
     this.setShowPrevious(visible);
 
     if (!visible) {
@@ -385,5 +338,51 @@ toggleRegistrationBlocksVisibility(visible: boolean, previousItems: VisibilityIt
       });
       this.setAnatomicalStructures(newStructures);
     }
+  }
+
+  private onOrganIriChange(): void {
+    const organIri = this.referenceData.getReferenceOrganIri(
+      this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
+    );
+    const organDimensions: XYZTriplet = { x: 100, y: 100, z: 100 };
+
+    if (organIri) {
+      const db = this.referenceData.snapshot;
+      const asLookup: { [id: string]: VisibilityItem } = {};
+      for (const entity of (db.anatomicalStructures[organIri] || [])) {
+        const iri = entity.representation_of || entity['@id'];
+        if (!asLookup[iri]) {
+          asLookup[iri] = {
+            id: entity.representation_of || entity['@id'],
+            name: entity.label,
+            visible: true,
+            opacity: 100,
+            tooltip: entity.comment
+          } as VisibilityItem;
+        }
+      }
+      this.ctx.patchState({ anatomicalStructures: Object.values(asLookup) });
+
+      const sets = (db.extractionSets[organIri] || []).map((set) => ({
+        name: set.label,
+        sites: sortBy(set.extractionSites.map((entity) => ({
+          id: entity['@id'],
+          name: entity.label,
+          visible: false,
+          opacity: 100,
+          tooltip: entity.comment
+        } as VisibilityItem)), 'name')
+      } as ExtractionSet));
+      this.ctx.patchState({ extractionSets: sets });
+      this.ctx.patchState({ extractionSites: sets.length > 0 ? sets[0].sites : [] });
+
+      const spatialEntity = db.organSpatialEntities[organIri];
+      organDimensions.x = spatialEntity.x_dimension;
+      organDimensions.y = spatialEntity.y_dimension;
+      organDimensions.z = spatialEntity.z_dimension;
+    }
+
+    this.ctx.patchState({ organIri, organDimensions });
+    this.ctx.patchState({ position: this.defaultPosition });
   }
 }
