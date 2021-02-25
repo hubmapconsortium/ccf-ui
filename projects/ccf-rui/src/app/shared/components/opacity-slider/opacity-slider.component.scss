@@ -24,8 +24,12 @@
       display: flex;
       align-items: center;
 
-      mat-slider {
+      .slider {
         width: 100%;
+        
+        &.disabled {
+          pointer-events: none;
+        }
       }
 
       .opacity-value {

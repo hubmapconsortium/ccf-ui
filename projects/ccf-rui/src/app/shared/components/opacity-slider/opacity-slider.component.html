@@ -1,6 +1,6 @@
 <div class="slider-box opacity">
   <div class="slider-and-label">
-    <mat-slider class="slider" [step]="1" [min]="0" [max]="100" [value]="opacity" (input)="changeOpacity($event.value)"></mat-slider>
+    <mat-slider class="slider" [class.disabled]="!visible" [step]="1" [min]="0" [max]="100" [value]="opacity" (input)="changeOpacity($event.value)"></mat-slider>
     <span class="opacity-value">{{opacity}}%</span>
   </div>
   <div class="icons">

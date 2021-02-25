@@ -269,7 +269,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
           id: entity['@id'],
           name: entity.label,
           visible: false,
-          opacity: 100,
+          opacity: 20,
           tooltip: entity.comment
         } as VisibilityItem)), 'name')
       } as ExtractionSet));

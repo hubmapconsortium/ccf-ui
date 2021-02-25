@@ -61,6 +61,8 @@ export class VisibilityMenuComponent {
    */
   disableSlider = true;
 
+  prevOpacity: number;
+
   /**
    * Toggles highlight state, sets the icon type, and emits an array containing the currently visible items
    * Disables the slider if a visible item is not selected
@@ -68,20 +70,17 @@ export class VisibilityMenuComponent {
    */
   toggleVisibility(item: VisibilityItem): void {
     item = {...item, visible: !item.visible};
-    const prevOpacity = item.opacity || 0;
     if (this.selection && item.id === this.selection.id) {
       this.selection = {...this.selection, visible: item.visible};
       this.disableSlider = this.selection ? !this.selection.visible : true;
     }
     if (!item.visible) {
       this.updateOpacity(0);
+      this.prevOpacity = item.opacity || 0;
     } else {
-      this.updateOpacity(prevOpacity);
+      this.updateOpacity(this.prevOpacity);
+      this.prevOpacity = 0;
     };
-    this.items = this.items.map(x => x.id === item.id ? item : x);
-    this.visibleItems = this.items.filter(x => x.visible);
-    this.visibleItemsChange.emit(this.visibleItems);
-    this.itemsChange.emit(this.items);
   }
 
   /**
@@ -104,7 +103,7 @@ export class VisibilityMenuComponent {
 
   /**
    * Updates opacity of the currently selected item (if selected) and emits the new opacity value
-   * @param value Updated opacity value
+   * @param event [Updated opacity value, old opacity value]
    */
   updateOpacity(value: number): void {
     if (!this.selection) {
@@ -122,10 +121,11 @@ export class VisibilityMenuComponent {
    */
   resetOpacity(value: number): void {
     this.updateOpacity(value);
+    this.prevOpacity = value;
   }
 
   setAllOpacity(value: number): void {
-    this.items = this.items.map(i => ({ ...i, opacity: value}));
+    this.items = this.items.map(i => ({ ...i, opacity: value, visible: true}));
     this.itemsChange.emit(this.items);
   }
 

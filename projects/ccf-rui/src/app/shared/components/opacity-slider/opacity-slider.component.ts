@@ -48,7 +48,7 @@ export class OpacitySliderComponent {
   }
 
   /**
-   * Tells the anatomical structures menu to reset all opacity values
+   * Resets opacity value for the item
    */
   resetOpacity(): void {
     this.opacityReset.emit();
