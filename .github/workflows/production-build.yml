@@ -1,0 +1,51 @@
+name: 'Production Build'
+
+on:
+  workflow_run:
+    workflows: ['Tests']
+    branches: ['main']
+    types:
+      - completed
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [13.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci
+      - run: npm run build:libs
+      - name: Build EUI
+        run: npm run build -- --output-hashing=none --base-href=/ccf-ui/
+      - name: Build RUI
+        run: |
+          npm run build -- --project ccf-rui --output-hashing=none --base-href=/ccf-ui/rui/
+          cp -r dist/ccf-rui dist/ccf-ui/rui
+      - run: npm run compodoc
+      - name: Setup GitHub Pages files
+        run: |
+          cp dist/ccf-ui/index.html dist/ccf-ui/404.html
+          touch dist/ccf-ui/.nojekyll
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/ccf-ui
+          commit_message: "Production deploy -- ${{ github.event.head_commit.message }}"

@@ -1,0 +1,49 @@
+name: 'Staging Build'
+
+on:
+  workflow_run:
+    workflows: ['Tests']
+    branches: ['develop']
+    types:
+      - completed
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [13.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: develop
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci
+      - run: npm run build:libs
+      - name: Build EUI
+        run: npm run build -- --output-hashing=none --base-href=/
+      - name: Build RUI
+        run: |
+          npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
+          cp -r dist/ccf-rui dist/ccf-ui/rui
+      - run: npm run compodoc
+      - uses: jsmrcaga/action-netlify-deploy@master
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_DEPLOY_MESSAGE: "Staging deploy to Netlify"
+          NETLIFY_DEPLOY_TO_PROD: true
+          build_command: false
+          build_directory: dist/ccf-ui

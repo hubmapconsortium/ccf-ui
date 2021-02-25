@@ -4,7 +4,6 @@
     align-items: center;
     height: 4.5rem;
     justify-content: space-between;
-    border-radius: 0.1875rem;
 
     .carousel-left-icon,
     .carousel-right-icon {
@@ -35,13 +34,17 @@
         left: 0rem;
         display: flex;
         transition: all 0.2s linear;
-        width: 17.5rem;
+        width: 24rem;
+
+        &.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
 
         .carousel-item {
           display: flex;
           flex-direction: column;
           cursor: pointer;
-          justify-content: center;
 
           .carousel-icon {
             text-align: center;
@@ -52,6 +55,8 @@
           .carousel-text {
             text-align: center;
             font-size: 0.625rem;
+            max-width: 3.5rem;
+            line-height: .8rem;
           }
 
           &.disabled {

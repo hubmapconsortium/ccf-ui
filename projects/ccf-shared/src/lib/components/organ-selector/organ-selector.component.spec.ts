@@ -3,21 +3,33 @@ import { Shallow } from 'shallow-render';
 import { OrganInfo, OrganSelectorComponent } from './organ-selector.component';
 import { OrganSelectorModule } from './organ-selector.module';
 
+import * as ResizeModule from 'css-element-queries';
 
 function wait(duration: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, duration));
 }
+
+const carouselItemListClass = '.carousel-item-list';
+const carouselContainerClass = '.carousel-item-container';
 
 describe('OrganSelectorComponent', () => {
   let shallow: Shallow<OrganSelectorComponent>;
 
   beforeEach(() => {
     shallow = new Shallow(OrganSelectorComponent, OrganSelectorModule);
+    // tslint:disable-next-line: only-arrow-functions
+    spyOn(ResizeModule, 'ResizeSensor').and.callFake(function(_element, callback): ResizeModule.ResizeSensor {
+      (async () => {
+        await wait(100);
+        callback({ width: 0, height: 0 });
+      })();
+      return jasmine.createSpyObj<ResizeModule.ResizeSensor>('', ['detach']);
+    });
   });
 
   it('should shift the carousel left if dir === left.', async () => {
     const { find, instance } = await shallow.render();
-    const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
+    const carousel = find(carouselItemListClass).nativeElement as HTMLElement;
     carousel.style.left = '80px';
     instance.onLeft = false;
     instance.shift('left');
@@ -26,7 +38,7 @@ describe('OrganSelectorComponent', () => {
 
   it('should shift the carousel right if dir === right.', async () => {
     const { find, instance } = await shallow.render();
-    const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
+    const carousel = find(carouselItemListClass).nativeElement as HTMLElement;
     carousel.style.left = '80px';
     instance.onRight = false;
     instance.shift('right');
@@ -35,7 +47,7 @@ describe('OrganSelectorComponent', () => {
 
   it('should not shift the carousel right if carousel is already at right end.', async () => {
     const { find, instance } = await shallow.render();
-    const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
+    const carousel = find(carouselItemListClass).nativeElement as HTMLElement;
     carousel.style.left = '-80px';
     instance.onRight = true;
     instance.shift('right');
@@ -44,7 +56,7 @@ describe('OrganSelectorComponent', () => {
 
   it('should not shift the carousel left if carousel is already at left end.', async () => {
     const { find, instance } = await shallow.render();
-    const carousel = find('.carousel-item-list').nativeElement as HTMLElement;
+    const carousel = find(carouselItemListClass).nativeElement as HTMLElement;
     carousel.style.left = '0px';
     instance.onLeft = true;
     instance.shift('left');
@@ -55,7 +67,7 @@ describe('OrganSelectorComponent', () => {
     const { instance, outputs } = await shallow.render();
     const testOrgan: OrganInfo = {name: 'test', src: 'test'};
     instance.selectOrgan(testOrgan);
-    expect(outputs.organChanged.emit).toHaveBeenCalled();
+    expect(outputs.organsChanged.emit).toHaveBeenCalled();
   });
 
   it('should tell if an icon is selected.', async () => {
@@ -104,7 +116,7 @@ describe('OrganSelectorComponent', () => {
 
   it('getError() should return true if displayErrors is set to true and there is an organ selected', async () => {
     const testOrgan: OrganInfo = { src: 'test', name: 'test' };
-    const { instance } = await shallow.render({ bind: { displayErrors: true, selectedOrgan: testOrgan }});
+    const { instance } = await shallow.render({ bind: { displayErrors: true, selectedOrgans: [testOrgan] }});
     const value = instance.error;
     expect(value).toBeTrue();
   });
@@ -116,5 +128,46 @@ describe('OrganSelectorComponent', () => {
     await wait(250);
     instance.stopScroll();
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should allow multiple selection of organs', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const testOrgan2: OrganInfo = { src: 'test2', name: 'test2' };
+    const { instance } = await shallow.render({bind: { multiselect: true }});
+    instance.selectOrgan(testOrgan);
+    instance.selectOrgan(testOrgan2);
+    expect(instance.selectedOrgans).toEqual([testOrgan, testOrgan2]);
+  });
+
+  it('should deselect a selected organ', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const testOrgan2: OrganInfo = { src: 'test2', name: 'test2' };
+    const { instance } = await shallow.render({bind: { multiselect: true }});
+    instance.selectOrgan(testOrgan);
+    instance.selectOrgan(testOrgan2);
+    instance.selectOrgan(testOrgan2);
+    expect(instance.selectedOrgans).toEqual([testOrgan]);
+  });
+
+  it('should set onLeft and onRight to true if the list of organs is smaller than the container', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
+    const list = find(carouselItemListClass).nativeElement as HTMLElement;
+    list.style.width = '224px';
+    instance.set();
+    expect(instance.onLeft).toBeTrue();
+    expect(instance.onRight).toBeTrue();
+  });
+
+  it('should set onRight to true if the list of organs is larger than the container and carousel is scrolled to end', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
+    const list = find(carouselItemListClass).nativeElement as HTMLElement;
+    const container = find(carouselContainerClass).nativeElement as HTMLElement;
+    list.style.left = '-124px';
+    list.style.width = '150px';
+    container.style.width = '100px';
+    instance.set();
+    expect(instance.onRight).toBeTrue();
   });
 });

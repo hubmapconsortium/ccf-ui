@@ -10,6 +10,7 @@ import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+import { ALL_ORGANS } from 'ccf-shared';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -21,6 +22,11 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  /**
+   * List of organs to be displayed in the carousel
+   */
+  organList = ALL_ORGANS;
+
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.

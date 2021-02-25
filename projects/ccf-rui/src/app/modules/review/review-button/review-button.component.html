@@ -1,3 +1,3 @@
-<button [class.disabled]="disabled" mat-button  class="review-button" (click)="registerButtonClick($event)">
+<button [class.disabled]="disabled" mat-button  class="review-button" (click)="registerButtonClick($event)" matTooltip="Review registration and submit/download.">
     {{ embeddedMode ? 'REVIEW AND REGISTER' : 'REVIEW AND DOWNLOAD' }}
 </button>

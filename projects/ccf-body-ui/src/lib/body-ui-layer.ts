@@ -3,7 +3,7 @@ import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
 import { CubeGeometry } from '@luma.gl/core';
 
 import { SpatialSceneNode } from './shared/spatial-scene-node';
-import { loadGLTF, registerGLTFLoaders } from './util/load-gltf';
+import { loadGLTF, loadGLTF2, registerGLTFLoaders } from './util/load-gltf';
 import { doCollisions } from './util/spatial-scene-collider';
 
 
@@ -51,6 +51,14 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
       doCollisions(state.data);
     }
 
+    // tslint:disable-next-line: no-any
+    const url2gltf: {[url: string]: Promise<any>} = {};
+    for (const m of models) {
+      if (m.scenegraph && m.scenegraphNode && !url2gltf.hasOwnProperty(m.scenegraph)) {
+        url2gltf[m.scenegraph] = loadGLTF({scenegraph: m.scenegraph} as SpatialSceneNode, BodyUILayer.gltfCache);
+      }
+    }
+
     return [
       meshLayer('cubes', cubes, {wireframe: false, pickable: false}),
       meshLayer('pickableCubes', pickableCubes, {wireframe: false, pickable: true}),
@@ -63,7 +71,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
           coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
           data: [model],
           scenegraph: model.scenegraphNode ?
-            loadGLTF(model, BodyUILayer.gltfCache) :
+            loadGLTF2(model.scenegraphNode, url2gltf[model.scenegraph as string]) :
             model.scenegraph as unknown as URL,
           _lighting: model._lighting,  // 'pbr' | undefined
           getTransformMatrix: model.transformMatrix as unknown as number[][],

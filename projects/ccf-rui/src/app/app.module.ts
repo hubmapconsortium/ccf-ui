@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -11,6 +12,8 @@ import { LeftSidebarModule } from './modules/left-sidebar/left-sidebar.module';
 import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { OrganSelectorModule } from 'ccf-shared';
+
 
 
 @NgModule({
@@ -18,11 +21,13 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
+    MatIconModule,
     DrawerModule,
     HeaderModule,
     ContentModule,
     LeftSidebarModule,
-    RightSidebarModule
+    RightSidebarModule,
+    OrganSelectorModule
   ],
   declarations: [AppComponent],
   providers: [

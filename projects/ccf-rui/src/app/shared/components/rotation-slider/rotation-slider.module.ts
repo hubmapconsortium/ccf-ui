@@ -5,6 +5,7 @@ import { RotationSliderComponent } from './rotation-slider.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatRippleModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [RotationSliderComponent],
@@ -12,7 +13,8 @@ import { MatRippleModule } from '@angular/material/core';
     CommonModule,
     MatIconModule,
     MatSliderModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTooltipModule
   ],
   exports: [RotationSliderComponent]
 })

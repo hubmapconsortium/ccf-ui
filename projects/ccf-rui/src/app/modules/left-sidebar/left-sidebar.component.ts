@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { SpatialEntityJsonLd } from 'ccf-body-ui';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -6,7 +7,7 @@ import { VisibilityItem } from '../../core/models/visibility-item';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
-import { ALL_ORGANS } from './../../core/store/model/model.state';
+import { RUI_ORGANS } from './../../core/store/model/model.state';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class LeftSidebarComponent {
   readonly detailsLabels$: Observable<string[]> = combineLatest(
     [this.model.organ$, this.model.side$, this.model.sex$]).pipe(
       map(([organ, side, sex]) => [organ?.name as string, side as string, sex as string])
-  );
+    );
 
   /**
    * Variable that keeps track of the extraction site tooltip to display on
@@ -48,7 +49,9 @@ export class LeftSidebarComponent {
    */
   previousVisibilityItems = [...this.model.snapshot.anatomicalStructures] as VisibilityItem[];
 
-  organList = ALL_ORGANS;
+  organList = RUI_ORGANS;
+
+  @Input() disableSlider = false;
 
   constructor(
     readonly page: PageState,
@@ -99,5 +102,14 @@ export class LeftSidebarComponent {
       this.previousVisibilityItems = [...this.model.snapshot.anatomicalStructures];
     }
     this.model.toggleRegistrationBlocksVisibility(visible, this.previousVisibilityItems);
+  }
+
+  /**
+   * Event handler for capturing uploaded json and passing it along to
+   * the relevant registration state method.
+   * @param event the new registration state json
+   */
+  updateRegistration(event: SpatialEntityJsonLd): void {
+    this.registration.editRegistration(event);
   }
 }

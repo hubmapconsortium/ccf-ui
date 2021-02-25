@@ -5,7 +5,7 @@ import { State } from '@ngxs/store';
 import { sortBy } from 'lodash';
 import { pluck } from 'rxjs/operators';
 
-import { OrganInfo } from '../../../shared/components/organ-selector/organ-selector.component';
+import { OrganInfo, ALL_ORGANS } from 'ccf-shared';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
@@ -74,21 +74,7 @@ export interface ModelStateModel {
   extractionSets: ExtractionSet[];
 }
 
-export const ALL_ORGANS: OrganInfo[] = [
-  { src: 'app:colon', name: 'Colon', hasSides: false, hasSex: true },
-  { src: 'app:heart', name: 'Heart', hasSides: false, hasSex: true },
-  { src: 'app:kidney', name: 'Kidney', hasSides: true, hasSex: true },
-  { src: 'app:spleen', name: 'Spleen', hasSides: false, hasSex: true },
-  { src: 'app:bladder', name: 'Bladder', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:brain', name: 'Brain', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:liver', name: 'Liver', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:lung', name: 'Lung', disabled: true, hasSides: true, hasSex: true },
-  { src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:ovaries', name: 'Ovaries', disabled: true, hasSides: true, hasSex: false },
-  { src: 'app:small_intestine', name: 'Small Intestine', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:stomach', name: 'Stomach', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false, hasSex: true }
-];
+export const RUI_ORGANS = ALL_ORGANS;
 
 /**
  * Data for the main 3d model display
@@ -180,10 +166,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
     if (this.globalConfig.organ) {
       const organConfig = this.globalConfig.organ;
-      let organName = organConfig.name.toLowerCase();
-      if (organName === 'large intestine') {
-        organName = 'colon';
-      }
+      const organName = organConfig.name.toLowerCase();
       const organInfo = ALL_ORGANS.find((o) => o.name.toLowerCase() === organName);
       if (organInfo) {
         setTimeout(() => {
