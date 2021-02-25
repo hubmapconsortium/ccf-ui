@@ -5,7 +5,7 @@ import {
 import { FormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
 import { from, interval, ObservableInput, Subject } from 'rxjs';
-import { map, switchMap, take, takeUntil, throttle } from 'rxjs/operators';
+import { catchError, map, switchMap, takeUntil, throttle } from 'rxjs/operators';
 
 import { Tag, TagId, TagSearchResult } from '../../../core/models/anatomical-structure-tag';
 
@@ -174,7 +174,7 @@ export class TagSearchComponent implements OnDestroy {
     }
 
     return from(search(text, searchLimit)).pipe(
-      take(1),
+      catchError(() => [EMPTY_RESULT]),
       map(this.truncateResults)
     );
   }

@@ -39,6 +39,9 @@
       }
 
       .tags-container {
+        // Allow tag search to overflow when displaying results
+        overflow: visible;
+
         ::ng-deep .mat-expansion-panel-body {
           padding-left: 0;
           padding-right: 0;

@@ -7,35 +7,24 @@
   $accent: map-get($theme, accent);
 
   .ccf-tag-search {
-    mat-form-field-outline-thick {
-      color: mat-color($foreground, contrast-icon);
+    .search-box input::placeholder {
+      color: #cccccc;
     }
 
-    mat-select-trigger {
-      .icon.add {
-        color: mat-color($foreground, contrast-icon);
-      }
+    .count {
+      color: #cccccc;
     }
-  }
 
-  // Located inside material overlay - ugh!
-  .tag-search-panel {
-    background-color: mat-color($primary, 'white');
+    .mat-form-field-wrapper {
+      background-color: white;
+    }
 
-    mat-option.mat-active {
-      background-color: unset;
+    .mat-form-field-outline {
+      color: mat-color($foreground, text);
     }
 
     .mat-pseudo-checkbox-checked {
       background: mat-color($foreground, active-icon);
-    }
-
-    .search-container {
-      color: mat-color($foreground, text);
-
-      .icon.add {
-        color: mat-color($foreground, active-icon);
-      }
     }
   }
 }
