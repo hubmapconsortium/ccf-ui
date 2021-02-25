@@ -72,7 +72,7 @@ describe('TagSearchComponent', () => {
       get = rendering.get;
       zone = get(NgZone);
 
-      subs.add(zone.onError.subscribe(() => errorCount++));
+      subs.add(zone.onError.subscribe(() => { errorCount++; }));
     });
 
     afterEach(() => {
