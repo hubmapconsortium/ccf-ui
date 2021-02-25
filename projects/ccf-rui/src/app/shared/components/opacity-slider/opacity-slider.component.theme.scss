@@ -5,15 +5,7 @@
   $primary: map-get($theme, primary);
 
   .ccf-opacity-slider {
-    border: 1px solid mat-color($foreground, borders);
-    background-color: mat-color($primary, 'white');
-
-    .opacity-value {
-      color: mat-color($foreground, icon);
-    }
-
     .reset {
-      color: mat-color($foreground, icon);
       &:hover {
         color: mat-color($foreground, active-icon);
       }

@@ -7,6 +7,10 @@
   overflow-y: auto;
   scrollbar-width: thin;
 
+  .reset {
+    cursor: pointer;
+  }
+
   .item-entry {
     display: flex;
     height: 2.25rem;
@@ -14,42 +18,37 @@
     flex-shrink: 0;
     position: relative;
 
+    .opacity-icon {
+      z-index: 2;
+    }
+
     .item-name {
       user-select: none;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      margin-left: 0.5rem;
 
       &.hidden {
         display: none
       }
     }
 
-    .opacity-setting {
-      margin-left: auto;
-      margin-right: 1rem;
-
-      &.hidden {
-        display: none;
-      }
-    }
-
     .slider {
-      &.hidden {
-        display: none;
-      }
+      width: calc(100% - 2rem);
+      transition-duration: 0.25s;
+      transition-timing-function: ease-in-out;
+      transition-property: width;
+      left: 2rem;
+      position: absolute;
 
-      .visibility-icon {
-        margin-left: .5rem;
-        position: absolute;
-        transition: .6s;
-  
-      }
-  
-      .visibility-icon, .item-name {
-        cursor: pointer;
+      &.hidden {
+        width: 0rem;
+
+        ccf-opacity-slider {
+          display: none;
+        }
       }
     }
   }
-
 }

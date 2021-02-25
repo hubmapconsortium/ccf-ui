@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
   border-radius: 0.1875rem;
 
   &.disabled {
@@ -18,31 +17,31 @@
     display: flex;
     width: 100%;
     align-items: center;
-  }
+    justify-content: space-between;
 
-  ::ng-deep .slider {
-    width: 40%;
+    .slider-and-label {
+      width: 60%;
+      display: flex;
+      align-items: center;
 
-    .mat-slider-track-wrapper, .mat-slider-track-fill {
-      height: .2rem;
+      mat-slider {
+        width: 100%;
+      }
+
+      .opacity-value {
+        width: 1.5rem;
+        margin-left: 0.5rem;
+      }
     }
-    
-    .mat-slider-track-fill {
-      opacity: 0.5;
+
+    .icons {
+      display: flex;
     }
 
-    .mat-slider-thumb {
-      transform: none !important;
-    }
-  }
-
-  .opacity-value {
-    width: 1.5rem;
-    margin-left: 0.5rem;
   }
 
   .reset {
-    margin-left: auto;
+    margin-left: 1rem;
     margin-right: 1rem;
     transform: scaleX(-1);
     cursor: pointer;

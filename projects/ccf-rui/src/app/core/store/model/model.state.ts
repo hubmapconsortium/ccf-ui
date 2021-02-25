@@ -256,7 +256,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
             id: entity.representation_of || entity['@id'],
             name: entity.label,
             visible: true,
-            opacity: 100,
+            opacity: 20,
             tooltip: entity.comment
           } as VisibilityItem;
         }

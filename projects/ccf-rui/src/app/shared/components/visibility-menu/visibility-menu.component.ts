@@ -1,6 +1,5 @@
-import { Component, EventEmitter, HostBinding, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { VisibilityItem } from '../../../core/models/visibility-item';
-import { OpacitySliderComponent } from '../opacity-slider/opacity-slider.component';
 
 /**
  * Menu for displaying visibility options
@@ -57,8 +56,6 @@ export class VisibilityMenuComponent {
    */
   @Output() readonly itemsChange = new EventEmitter<VisibilityItem[]>();
 
-  @ViewChild('slider', { static: true }) slider: OpacitySliderComponent;
-
   /**
    * Disables slider interactions
    */
@@ -87,29 +84,13 @@ export class VisibilityMenuComponent {
     this.itemsChange.emit(this.items);
   }
 
-  // /**
-  //  * Toggles selected status of an item on click
-  //  * Disables the slider if no item selected or if selected item is not set to visible
-  //  * @param item Menu item
-  //  */
-  // toggleSelected(item: VisibilityItem): void {
-  //   this.selection = item === this.selection ? undefined : item;
-  //   this.disableSlider = this.selection ? !this.selection.visible : true;
-  //   this.selectionChange.emit(item);
-  //   this.slider.changeOpacity(item?.opacity!.toString())
-  // }
-
   /**
    * Emits an item in response to hover action
    * @param item Menu item
    */
   mouseOver(item: VisibilityItem): void {
-    // this.hoveredItem = item;
-    // this.hover.emit(item);
     this.selection = item === this.selection ? undefined : item;
     this.disableSlider = this.selection ? !this.selection.visible : true;
-    // this.selectionChange.emit(item);
-    // this.slider.changeOpacity(item?.opacity!.toString())
   }
 
   /**
@@ -137,11 +118,15 @@ export class VisibilityMenuComponent {
   }
 
   /**
-   * Resets all item opacity values and current selected item opacity to 100;
+   * Resets opacity for the current selection
    */
-  resetOpacity(): void {
-    // this.items = this.items.map(i => ({ ...i, opacity: 20}));
-    this.updateOpacity(20);
+  resetOpacity(value: number): void {
+    this.updateOpacity(value);
+  }
+
+  setAllOpacity(value: number): void {
+    this.items = this.items.map(i => ({ ...i, opacity: value}));
+    this.itemsChange.emit(this.items);
   }
 
   /**

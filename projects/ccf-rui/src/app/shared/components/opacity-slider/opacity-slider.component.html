@@ -1,7 +1,11 @@
 <div class="slider-box opacity">
-  <mat-slider class="slider" [step]="1" [min]="0" [max]="100" [value]="opacity" (input)="changeOpacity($event.value)"></mat-slider>
-  <span class="opacity-value">{{opacity}}</span>
-  <mat-icon class="visibility-icon invisible" (click)="toggleVisibility()" [class.hidden]="visible" svgIcon="app:visibility_off"></mat-icon>
-  <mat-icon class="visibility-icon visible" (click)="toggleVisibility()" [class.hidden]="!visible" svgIcon="app:visibility_on"></mat-icon>
-  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetOpacity()">refresh</mat-icon>
+  <div class="slider-and-label">
+    <mat-slider class="slider" [step]="1" [min]="0" [max]="100" [value]="opacity" (input)="changeOpacity($event.value)"></mat-slider>
+    <span class="opacity-value">{{opacity}}%</span>
+  </div>
+  <div class="icons">
+    <mat-icon class="visibility-icon invisible" (click)="toggleVisibility()" [class.hidden]="visible" svgIcon="app:visibility_off"></mat-icon>
+    <mat-icon class="visibility-icon visible" (click)="toggleVisibility()" [class.hidden]="!visible" svgIcon="app:visibility_on"></mat-icon>
+    <mat-icon class="icon reset" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" (click)="resetOpacity()">refresh</mat-icon>
+  </div>
 </div>
