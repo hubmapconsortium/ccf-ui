@@ -32,7 +32,8 @@ export class JsonFileReaderComponent {
    */
   handleFile(event: InputEvent): void {
     const inputTarget = event.target as HTMLInputElement;
-    const file = inputTarget.files![0];
+    if (!inputTarget.files) { return; }
+    const file = inputTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onload = () => {
       const json = JSON.parse(fileReader.result as string) as unknown;
