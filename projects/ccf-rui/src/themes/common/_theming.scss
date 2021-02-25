@@ -24,6 +24,7 @@
 @use '../../app/modules/review/review-modal/review-modal.component.theme.scss' as reviewModal;
 @use '../../app/modules/content/video-modal/video-modal/video-modal.component.theme.scss' as videoModal;
 @use '../../app/modules/content/video-modal/video-modal-launcher/video-modal-launcher.component.theme.scss' as videoModalLauncher;
+@use '../../app/shared/components/json-file-reader/json-file-reader.theme.scss' as jsonFileReader;
 
 
 @mixin ccf-theme($theme) {
@@ -73,5 +74,6 @@
   @include reviewModal.theme($theme);
   @include videoModal.theme($theme);
   @include videoModalLauncher.theme($theme);
+  @include jsonFileReader.theme($theme);
   // Overrides goes here!
 }
