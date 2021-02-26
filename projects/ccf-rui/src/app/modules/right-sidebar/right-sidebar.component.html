@@ -1,9 +1,12 @@
 <div class="scroll-wrapper">
+  
   <div class="container">
+    <div class='info-button-container'>
+      <ccf-info-button></ccf-info-button>
+    </div>
     <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
     </ccf-block-size-input>
 
-    <mat-divider></mat-divider>
 
     <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
     </ccf-slices-input>

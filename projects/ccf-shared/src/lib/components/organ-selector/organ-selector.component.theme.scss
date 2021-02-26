@@ -8,7 +8,7 @@
   .ccf-organ-selector {
     .container {
       color: mat-color($foreground, text);
-      background-color: whitesmoke;
+      background-color: white;
 
       &.error {
         border-color: mat-color($foreground, slider-red);;

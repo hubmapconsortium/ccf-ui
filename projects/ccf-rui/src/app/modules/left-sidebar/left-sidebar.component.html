@@ -7,8 +7,6 @@
             <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
             </ccf-name-input>
 
-            <mat-divider></mat-divider>
-
             <div class="organ-sliders" matTooltip="Select sex to filter organs.">
                 <div class="slider-label">Donor Sex:</div>
                 <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender" [labels]="['Male', 'Female']"
@@ -51,6 +49,7 @@
         <mat-divider></mat-divider>
 
         <ccf-visibility-toggle toggleLabel="Previously Registered Blocks" [visible]="model.showPrevious$ | async"
+            [disabled]="disableSlider" 
             (visibilityChanged)="togglePreviousRegistrationBlocks($event)" matTooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
         </ccf-visibility-toggle>
 

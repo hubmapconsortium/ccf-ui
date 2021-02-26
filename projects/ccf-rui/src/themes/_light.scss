@@ -23,6 +23,7 @@ $warn: mat-palette($mat-red);
 
 $foreground: map-merge($mat-light-theme-foreground, (
   active-icon: map-get($mat-blue, 700),
+  app-bar-shadow: map-get($primary-colors, light-header),
   contrast-icon: map-get($primary-colors, 500), // #9E9E9E (icons on light background)
   contrast-text: map-get($primary-colors, 500), // #9E9E9E (text on dark background)
   disabled: map-get($primary-colors, light-disabled), // #E0E0E0
@@ -51,6 +52,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   borders: map-get($primary-colors, 300), // #E0E0E0
   button-text: map-get($accent, 700),
   button-border: map-get($primary-colors, 'black'),
+  button-background: map-get($primary-colors, light-header),
+  button-background-hover: #2f3346,
   headers: map-get($primary-colors, 300), // #E0E0E0
   search-result-text: map-get($primary-colors, 600), // #757575
   download-icon: map-get($primary-colors, 600), // #757575
@@ -60,20 +63,26 @@ $foreground: map-merge($mat-light-theme-foreground, (
   chip-icon-background:  #E9E9E9,
   chip-border-primary:  map-get($primary-colors, light-header),
 
+
+  toggle-thumb: map-get($primary-colors, light-header),
+  toggle-bg: #ECECEC,
+  mat-divider: rgba(0, 0, 0, 0.03),
+
   main: #444A65,
   opacity-numbers: #CCCCCC,
   icons-disabled: #CCCCCC,
   icons-hover: #e0e0e0
+
 ));
 
 $background: map-merge($mat-light-theme-background, (
   app-bar: map-get($primary-colors, light-header), // #444A65
-  background: map-get($primary-colors, 100), // #F5F5F5
-  card: map-get($primary-colors, 100), // #F5F5F5,
+  background: map-get($primary-colors, 'white'),
+  card: map-get($primary-colors,  'white'), 
   content-background: map-get($primary-colors, 'black'),
   legend-background: map-get($primary-colors, 'white'),
-  modal: map-get($primary-colors, 100), // #F5F5F5
-  sidebar-background: map-get($primary-colors, 100), // #F5F5F5
+  modal: map-get($primary-colors,  'white'),
+  sidebar-background: map-get($primary-colors,  'white'),
   stage-background: map-get($primary-colors, 'black'),
 
   hover-background: map-get($primary-colors, 300), // #E0E0E0
@@ -82,6 +91,7 @@ $background: map-merge($mat-light-theme-background, (
   dropdown-menu: map-get($primary-colors, 300), // #E0E0E0
   dropdown-hover: map-get($primary-colors, 300), // #E0E0E0
   image-placeholder: map-get($primary-colors, light-disabled), // #BDBDBD
+  drawer-background: map-get($primary-colors, 'white'),
 ));
 
 $theme: (

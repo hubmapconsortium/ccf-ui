@@ -1,7 +1,8 @@
 .review-button {
     width: 100%;
-    height: 3rem;
+    height: 2.25rem;
     transition: .6s;
+    font-weight: 500;
 
     &.disabled {
         cursor: not-allowed;

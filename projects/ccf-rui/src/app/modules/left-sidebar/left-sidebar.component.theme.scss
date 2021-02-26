@@ -26,5 +26,9 @@
       background-color: mat-color($foreground, text);
       color: mat-color($foreground, logo);
     }
+
+    .mat-divider {
+      border-top-color: mat-color($foreground, mat-divider);
+    }
   }
 }
