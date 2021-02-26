@@ -16,7 +16,7 @@
       [selectedOrgans]="[model.organ$ | async]" [hidden]="!open"></ccf-organ-selector>
       <div class="close-button" (click)="open = !open">
         <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">
-          {{ open ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}
+          {{ open ? 'arrow_drop_up': 'arrow_drop_down' }}
         </mat-icon>
       </div>
     </div>
