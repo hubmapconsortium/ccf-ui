@@ -257,7 +257,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   setOrgan(organ: OrganInfo): void {
     this.ctx.patchState({ organ });
     if (organ.side) {
-      this.setSide(organ.side);
+      this.ctx.patchState({ side: organ.side });
     }
     this.onOrganIriChange();
   }
