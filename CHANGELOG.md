@@ -2,6 +2,21 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
 
+## 1.3.5 - 2021-02-26
+
+### Added in RUI 1.3.5
+
+* Updated with a new round of [User Interface improvements](https://drive.google.com/file/d/1M0Pfu41Kv-RBOvIF9hB-mcNK9U4qsDIp/view)
+* Added the ability to upload previous registrations created using the [standalone version](https://hubmapconsortium.github.io/ccf-ui/rui/) of the RUI tool
+* Organs now have transparency applied automatically
+* Solved a major memory leak and performance issue with the 3D reference organ interface. You should notice a sizable speed and reliability increase.
+* RUI location numeric data is now rounded to 3 digits
+* Switched to using GitHub Actions over TravisCI for our CI/CD workflows
+
+### Added in EUI 1.3.5
+
+* Removed CCF's internal image-viewer in favor of the image-viewer on the HuBMAP Data Portal
+
 ## EUI 1.2.0 / RUI 1.0 FINAL - 2020-10-30
 
 ### Added in EUI 1.2.0 / RUI 1.0 FINAL
