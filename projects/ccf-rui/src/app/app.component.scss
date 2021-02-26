@@ -18,17 +18,22 @@
         flex-direction: column;
         position: relative;
         height: 5.688rem;
-        transition: height 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
 
         &.closed {
-          height: 0;
-          visibility: hidden;
+          height: 1.5rem;
+          top: -4.25rem;
         }
       }
 
       .stage-content {
         border-bottom-right-radius: 0.5rem;
         border-bottom-left-radius: 0.5rem;
+        height: calc(100% - 5.688rem);        
+      }
+
+      .expanded-stage {
+        height: 100%;
       }
       
     }
@@ -39,11 +44,6 @@
       justify-content: center;
       border-top-right-radius: 0.5rem;
       border-top-left-radius: 0.5rem;
-
-
-      &.closed {
-        margin-top: 1.5rem;
-      }
 
       .close-button {
         display: flex;

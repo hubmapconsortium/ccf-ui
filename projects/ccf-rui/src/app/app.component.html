@@ -13,7 +13,7 @@
   <ccf-drawer-content>
     <div [class.closed]="!open" class="selector-drawer">
         <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])"
-          [selectedOrgans]="[model.organ$ | async]" [hidden]="!open"></ccf-organ-selector>
+          [selectedOrgans]="[model.organ$ | async]"></ccf-organ-selector>
     </div>
     <div class="close-button-wrapper" [class.closed]="!open">
       <div class="close-button" (click)="open = !open">
@@ -22,6 +22,6 @@
         </mat-icon>
       </div>
     </div>
-    <ccf-content [class.carousel-closed]="!open" class="stage-content"></ccf-content>
+    <ccf-content [class.expanded-stage]="!open" class="stage-content" ></ccf-content>
   </ccf-drawer-content>
 </ccf-drawer-container>
