@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BodyModule } from './modules/body/body.module';
 import { FiltersPopoverModule } from './modules/filters/filters-popover/filters-popover.module';
-import { ImageViewerModule } from './modules/image-viewer/image-viewer.module';
 import { InfoDialogModule } from './modules/info/info-dialog/info-dialog.module';
 import { OntologyExplorationModule } from './modules/ontology-exploration/ontology-exploration.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
@@ -31,7 +30,6 @@ import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
     DualSliderModule,
     ResultsBrowserModule,
     SpinnerOverlayModule,
-    ImageViewerModule,
     BodyModule,
     OrganSelectorModule
   ],

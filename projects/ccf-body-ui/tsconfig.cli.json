@@ -43,10 +43,6 @@
         "dist/ccf-body-ui/ccf-body-ui",
         "dist/ccf-body-ui"
       ],
-      "ccf-image-viewer": [
-        "dist/ccf-image-viewer/ccf-image-viewer",
-        "dist/ccf-image-viewer"
-      ],
       "ccf-shared": [
         "dist/ccf-shared/ccf-shared",
         "dist/ccf-shared"
