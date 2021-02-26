@@ -43,8 +43,10 @@ export interface OrganData {
 @Injectable()
 export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDataStateModel> {
 
-  constructor(private readonly globals: GlobalsService,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig) {
+  constructor(
+    private readonly globals: GlobalsService,
+    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+  ) {
     super();
   }
 
