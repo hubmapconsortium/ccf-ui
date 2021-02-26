@@ -64,6 +64,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   toggle-thumb: map-get($primary-colors, light-header),
   toggle-bg: #ECECEC,
   mat-divider: rgba(0, 0, 0, 0.03),
+
+  
 ));
 
 $background: map-merge($mat-light-theme-background, (
@@ -82,6 +84,7 @@ $background: map-merge($mat-light-theme-background, (
   dropdown-menu: map-get($primary-colors, 300), // #E0E0E0
   dropdown-hover: map-get($primary-colors, 300), // #E0E0E0
   image-placeholder: map-get($primary-colors, light-disabled), // #BDBDBD
+  drawer-background: map-get($primary-colors, 'white'),
 ));
 
 $theme: (
