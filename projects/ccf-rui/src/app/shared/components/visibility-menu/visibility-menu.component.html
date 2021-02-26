@@ -1,6 +1,12 @@
-<div class="item-entry" [class.selected]="selection ? getId(0, selection) === getId(0, item) : false" *ngFor="let item of items; trackBy: getId" (mouseover)="mouseOver(item)" (mouseout)="mouseOut(item)">
-  <mat-icon class="visibility-icon visible" (click)="toggleVisibility(item)" [class.hidden]="!item.visible" svgIcon="app:visibility_on"></mat-icon>
-  <mat-icon class="visibility-icon" (click)="toggleVisibility(item)" [class.hidden]="item.visible" svgIcon="app:visibility_off"></mat-icon>
-  <div class="item-name" title="{{item.name}}" (click)="toggleSelected(item)">{{ item.name }}</div>
-  <div class="opacity-setting" [class.hidden]="isHidden(item)">{{ item.opacity }}</div>
+<mat-icon class="icon reset" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" (click)="setAllOpacity(20)">refresh</mat-icon>
+
+<div class="item-entry" [class.selected]="selection ? getId(0, selection) === getId(0, item) : false" (mouseleave)="mouseOut()" *ngFor="let item of items; trackBy: getId">
+  <mat-icon class="icon opacity" [class.fade]="!item.visible" (mouseenter)="mouseOver(item)" svgIcon="app:opacity"></mat-icon>
+  <div class="item-name" [class.hidden]="item.id == selection?.id" title="{{item.name}}">{{ item.name }}</div>
+
+  <div class="slider" [class.hidden]="item.id != selection?.id">
+    <ccf-opacity-slider #slider [visible]="item.visible" [opacity]="selection ? selection?.opacity : 20"
+      (opacityChange)="updateOpacity($event)" (opacityReset)="resetItem()" (visibilityToggle)="toggleVisibility(item)">
+    </ccf-opacity-slider>
+  </div>
 </div>

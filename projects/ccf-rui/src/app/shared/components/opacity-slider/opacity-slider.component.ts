@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, OnInit } from '@angular/core';
 
 /**
  * Slider for setting opacity on an anatomical structure
@@ -8,7 +8,7 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
   templateUrl: './opacity-slider.component.html',
   styleUrls: ['./opacity-slider.component.scss']
 })
-export class OpacitySliderComponent {
+export class OpacitySliderComponent implements OnInit {
 
   /**
    * HTML class name
@@ -18,17 +18,37 @@ export class OpacitySliderComponent {
   /**
    * The value displayed in the slider
    */
-  @Input() opacity = 100;
+  @Input() opacity = 20;
 
   /**
-   * Emits the updated opacity when the opacity chanes
+   * Whether the item is set to visible
+   */
+  @Input() visible = true;
+
+  /**
+   * Emits the updated opacity when the opacity changes
    */
   @Output() readonly opacityChange = new EventEmitter<number>();
+
+  /**
+   * Output  of opacity slider component
+   */
+  @Output() readonly visibilityToggle = new EventEmitter();
 
   /**
    * Emitter for resetting all opacity values to default
    */
   @Output() readonly opacityReset = new EventEmitter();
+
+  prevOpacity: number;
+
+  ngOnInit(): void {
+    if (this.visible) {
+      this.prevOpacity = 0;
+    } else {
+      this.prevOpacity = 20;
+    }
+  }
 
   /**
    * Emits opacityChange with the new opacity value
@@ -40,9 +60,21 @@ export class OpacitySliderComponent {
   }
 
   /**
-   * Tells the anatomical structures menu to reset all opacity values
+   * Emits signal to toggle the visibility of the item
+   */
+  toggleVisibility(): void {
+    const temp = this.opacity;
+    this.opacity = this.prevOpacity;
+    this.prevOpacity = temp;
+    this.visibilityToggle.emit();
+    this.opacityChange.emit(this.opacity);
+  }
+
+  /**
+   * Emits signal to reset the opacity of the item
    */
   resetOpacity(): void {
+    this.prevOpacity = 0;
     this.opacityReset.emit();
   }
 }
