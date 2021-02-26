@@ -52,6 +52,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   borders: map-get($primary-colors, 300), // #E0E0E0
   button-text: map-get($accent, 700),
   button-border: map-get($primary-colors, 'black'),
+  button-background: map-get($primary-colors, light-header),
+  button-background-hover: #2f3346,
   headers: map-get($primary-colors, 300), // #E0E0E0
   search-result-text: map-get($primary-colors, 600), // #757575
   download-icon: map-get($primary-colors, 600), // #757575
