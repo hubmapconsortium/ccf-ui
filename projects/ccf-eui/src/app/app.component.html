@@ -1,7 +1,6 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn" [filters]="data.filter$ | async" (refreshClicked)="reset(left, right, filterbox, viewer)"></ccf-header>
+  <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn" [filters]="data.filter$ | async" (refreshClicked)="reset(left, right, filterbox)"></ccf-header>
   <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
-  <ccf-image-viewer-popover #viewer></ccf-image-viewer-popover>
 
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
@@ -21,7 +20,6 @@
       </div>
       <ccf-results-browser
         [dataLoading]="spinnerActive$ | async"
-        (resultClicked)="openViewer(viewer, $event)"
         [data]="data.listData$ | async"
         [aggregateData]="data.aggregateData$ | async"
         [resultLabel]="ontologySelectionLabel"

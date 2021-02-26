@@ -1,4 +1,0 @@
-
-describe('image-viewer:Viewer', () => {
-  //
-});

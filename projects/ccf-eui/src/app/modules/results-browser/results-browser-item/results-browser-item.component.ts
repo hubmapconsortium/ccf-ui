@@ -29,11 +29,6 @@ export class ResultsBrowserItemComponent {
    */
   openResult(): void {
     switch (this.data.resultType) {
-      case ('image_viewer'): {
-        // Open the image-viewer
-        this.openImageViewer.emit();
-        break;
-      }
       case ('external_link'): {
         // Open link in new tab
         window.open(this.data.resultUrl, '_blank');
