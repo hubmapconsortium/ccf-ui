@@ -200,7 +200,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       page.user.firstName,
       page.user.lastName,
       model.organ.src,
-      model.organ.name
+      model.organ.name,
+      model.organ.organ
     ];
 
     return requiredValues.every(value => !!value);

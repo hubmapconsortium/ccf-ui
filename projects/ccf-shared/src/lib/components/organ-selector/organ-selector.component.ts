@@ -2,22 +2,22 @@ import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, 
 import { ResizeSensor } from 'css-element-queries';
 
 export const ALL_ORGANS: OrganInfo[] = [
-  { src: 'app:large_intestine', name: 'Large Intestine', hasSides: false, hasSex: true },
-  { src: 'app:heart', name: 'Heart', hasSides: false, hasSex: true },
-  { src: 'app:kidney-right', name: 'Right Kidney', hasSides: false, hasSex: true },
-  { src: 'app:kidney-left', name: 'Left Kidney', hasSides: false, hasSex: true },
-  { src: 'app:spleen', name: 'Spleen', hasSides: false, hasSex: true },
-  { src: 'app:bladder', name: 'Bladder', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:brain', name: 'Brain', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:liver', name: 'Liver', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:lung-right', name: 'Right Lung', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:lung-left', name: 'Left Lung', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:ovary-left', name: 'Left Ovary', disabled: true, hasSides: false, hasSex: false },
-  { src: 'app:ovary-right', name: 'Right Ovary', disabled: true, hasSides: false, hasSex: false },
-  { src: 'app:small_intestine', name: 'Small Intestine', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:stomach', name: 'Stomach', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false, hasSex: true }
+  { src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true },
+  { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true },
+  { src: 'app:kidney-left', organ: 'Kidney', name: 'Left Kidney', side: 'left', hasSex: true },
+  { src: 'app:kidney-right', organ: 'Kidney', name: 'Right Kidney', side: 'right', hasSex: true },
+  { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true },
+  { src: 'app:bladder', organ: 'Bladder', name: 'Bladder', disabled: true, hasSex: true },
+  { src: 'app:brain', organ: 'Brain', name: 'Brain', disabled: true, hasSex: true },
+  { src: 'app:liver', organ: 'Liver', name: 'Liver', disabled: true, hasSex: true },
+  { src: 'app:lung-left', organ: 'Lung', name: 'Left Lung', disabled: true, side: 'left', hasSex: true },
+  { src: 'app:lung-right', organ: 'Lung', name: 'Right Lung', disabled: true, side: 'right', hasSex: true },
+  { src: 'app:lymph_nodes', organ: 'Lymph Nodes', name: 'Lymph Nodes', disabled: true, hasSex: true },
+  { src: 'app:ovary-left', organ: 'Ovaries', name: 'Left Ovary', disabled: true, side: 'left', hasSex: false },
+  { src: 'app:ovary-right', organ: 'Ovaries', name: 'Right Ovary', disabled: true, side: 'right', hasSex: false },
+  { src: 'app:small_intestine', organ: 'Small Intestine', name: 'Small Intestine', disabled: true, hasSex: true },
+  { src: 'app:stomach', organ: 'Stomach', name: 'Stomach', disabled: true, hasSex: true },
+  { src: 'app:thymus', organ: 'Stomach', name: 'Thymus', disabled: true, hasSex: true }
 ];
 
 /**
@@ -28,9 +28,14 @@ export interface OrganInfo {
   src: string;
 
   /**
-   * Name of the organ
+   * Label to display for the organ
    */
   name: string;
+
+  /**
+   * Name of the organ (to help match organs with left / right)
+   */
+  organ: string;
 
   /**
    * True if the icon is disabled
@@ -40,7 +45,7 @@ export interface OrganInfo {
   /**
    * True for paired organs
    */
-  hasSides?: boolean;
+  side?: 'left' | 'right';
 
   /**
    * True if applies to both sexes
