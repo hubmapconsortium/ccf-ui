@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 
 import { TagSearchComponent } from './tag-search.component';
 
@@ -15,10 +16,11 @@ import { TagSearchComponent } from './tag-search.component';
     FormsModule,
     ReactiveFormsModule,
 
+    MatButtonModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatSelectModule
   ],
   declarations: [TagSearchComponent],
   exports: [TagSearchComponent]

@@ -1,26 +1,22 @@
-<mat-form-field appearance="outline" [formGroup]="formGroup">
-  <mat-select panelClass="tag-search-panel" multiple disableRipple formControlName="select"
-              [placeholder]="placeholder" (openedChange)="$event ? search.focus() : null">
-    <mat-select-trigger>
-      <span>{{ searchController.value || placeholder }}</span>
-      <mat-icon class="icon add" fontSet="material-icons-sharp">
-        add_box
-      </mat-icon>
-    </mat-select-trigger>
+<div class="spacer"></div>
 
-    <mat-option class="search-container" value="search" disabled>
-      <input matInput type="search" formControlName="search" #search>
-      <mat-icon class="icon add" fontSet="material-icons-sharp" (click)="emitTagsAndClear(search)">
-        add_box
-      </mat-icon>
-    </mat-option>
+<mat-form-field class="overlay" [class.expanded]="resultsVisible" appearance="outline">
+  <div class="search-box">
+    <input matInput type="search" [placeholder]="placeholder" [formControl]="searchControl" #search>
+    <button mat-icon-button class="add-button" [disabled]="!hasCheckedTags()" (click)="addTags(); search.focus()">
+      <mat-icon class="icon">add</mat-icon>
+    </button>
+  </div>
 
-    <mat-option *ngFor="let tag of results$ | async; trackBy: tagId" [value]="tag">
-      {{ tag.label }}
-    </mat-option>
+  <div *ngIf="resultsVisible" class="results">
+    <div *ngFor="let result of searchResults.results; trackBy: tagId" class="item">
+      <mat-checkbox labelPosition="after" [(ngModel)]="checkedResults[result.id]">
+        {{ result.label }}
+      </mat-checkbox>
+    </div>
 
-    <mat-option class="count-container" value="count" disabled>
-      {{ ((totalCount$ | async) || 0) | i18nPlural: countMapping }}
-    </mat-option>
-  </mat-select>
+    <div class="count">
+      {{ searchResults.totalCount | i18nPlural:countMapping }}
+    </div>
+  </div>
 </mat-form-field>

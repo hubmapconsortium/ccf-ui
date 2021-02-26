@@ -39,6 +39,9 @@
       }
 
       .tags-container {
+        // Allow tag search to overflow when displaying results
+        overflow: visible;
+
         ::ng-deep .mat-expansion-panel-body {
           padding-left: 0;
           padding-right: 0;
@@ -65,6 +68,13 @@
         .tag-list {
           max-height: 7.5rem;
           margin-left: -1rem;
+        }
+
+        .tag-list-placeholder {
+          display: flex;
+          height: 4rem;
+          align-items: center;
+          justify-content: center;
         }
 
         .legend {
