@@ -14,6 +14,8 @@ import { TagSearchModule } from '../../shared/components/tag-search/tag-search.m
 import { ReviewButtonModule } from '../review/review-button/review-button.module';
 import { RightSidebarComponent } from './right-sidebar.component';
 
+import { InfoButtonModule } from '../info/info-button/info-button.module';
+
 
 @NgModule({
   imports: [
@@ -30,7 +32,8 @@ import { RightSidebarComponent } from './right-sidebar.component';
     RotationSliderModule,
     SlicesInputModule,
     TagListModule,
-    TagSearchModule
+    TagSearchModule,
+    InfoButtonModule
   ],
   declarations: [RightSidebarComponent],
   exports: [RightSidebarComponent]
