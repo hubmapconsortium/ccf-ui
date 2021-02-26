@@ -13,10 +13,8 @@ export const ALL_ORGANS: OrganInfo[] = [
   { src: 'app:lung-right', name: 'Right Lung', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:lung-left', name: 'Left Lung', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:ovaries', name: 'Ovaries', disabled: true, hasSides: true, hasSex: false },
-  // No left / right images
-  // { src: 'app:ovary-left', name: 'Left Ovary', disabled: true, hasSides: false, hasSex: false },
-  // { src: 'app:ovary-right', name: 'Right Ovary', disabled: true, hasSides: false, hasSex: false },
+  { src: 'app:ovary-left', name: 'Left Ovary', disabled: true, hasSides: false, hasSex: false },
+  { src: 'app:ovary-right', name: 'Right Ovary', disabled: true, hasSides: false, hasSex: false },
   { src: 'app:small_intestine', name: 'Small Intestine', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:stomach', name: 'Stomach', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false, hasSex: true }
