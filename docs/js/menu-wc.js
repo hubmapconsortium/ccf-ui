@@ -992,13 +992,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/VisibilityMenuModule.html" data-type="entity-link">VisibilityMenuModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-VisibilityMenuModule-9274ca6bddfeeaf94ff6b82e0c2f877d"' : 'data-target="#xs-components-links-module-VisibilityMenuModule-9274ca6bddfeeaf94ff6b82e0c2f877d"' }>
+                                            'data-target="#components-links-module-VisibilityMenuModule-fa46e9248a92aa97f8eeac74a526bb5e"' : 'data-target="#xs-components-links-module-VisibilityMenuModule-fa46e9248a92aa97f8eeac74a526bb5e"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-VisibilityMenuModule-9274ca6bddfeeaf94ff6b82e0c2f877d"' :
-                                            'id="xs-components-links-module-VisibilityMenuModule-9274ca6bddfeeaf94ff6b82e0c2f877d"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-VisibilityMenuModule-fa46e9248a92aa97f8eeac74a526bb5e"' :
+                                            'id="xs-components-links-module-VisibilityMenuModule-fa46e9248a92aa97f8eeac74a526bb5e"' }>
                                             <li class="link">
                                                 <a href="components/VisibilityMenuComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">VisibilityMenuComponent</a>
@@ -1288,6 +1288,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/OntologyStateModel.html" data-type="entity-link">OntologyStateModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/OrganData.html" data-type="entity-link">OrganData</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/OrganInfo.html" data-type="entity-link">OrganInfo</a>

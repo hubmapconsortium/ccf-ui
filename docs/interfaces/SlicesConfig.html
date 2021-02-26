@@ -346,13 +346,20 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
     if (this.globalConfig.organ) {
       const organConfig &#x3D; this.globalConfig.organ;
       const organName &#x3D; organConfig.name.toLowerCase();
-      const organInfo &#x3D; ALL_ORGANS.find((o) &#x3D;&gt; o.name.toLowerCase() &#x3D;&#x3D;&#x3D; organName);
+      const organSide &#x3D; organConfig.side;
+      const organInfo &#x3D; ALL_ORGANS.find((o) &#x3D;&gt; {
+        if (o.side) {
+          return o.organ.toLowerCase() &#x3D;&#x3D;&#x3D; organName &amp;&amp; o.side &#x3D;&#x3D;&#x3D; organSide;
+        } else {
+          return o.organ.toLowerCase() &#x3D;&#x3D;&#x3D; organName;
+        }
+      });
       if (organInfo) {
         setTimeout(() &#x3D;&gt; {
           this.ctx.patchState({
             organ: organInfo,
             sex: organConfig.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;,
-            side: organConfig.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
+            side: organInfo.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
           });
           this.onOrganIriChange();
         }, 1000);
@@ -435,6 +442,9 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
   @DataAction()
   setOrgan(organ: OrganInfo): void {
     this.ctx.patchState({ organ });
+    if (organ.side) {
+      this.ctx.patchState({ side: organ.side });
+    }
     this.onOrganIriChange();
   }
 
@@ -521,7 +531,7 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
 
   private onOrganIriChange(): void {
     const organIri &#x3D; this.referenceData.getReferenceOrganIri(
-      this.snapshot.organ?.name || &#x27;&#x27;, this.snapshot.sex, this.snapshot.side
+      this.snapshot.organ?.organ || &#x27;&#x27;, this.snapshot.sex, this.snapshot.side
     );
     const organDimensions: XYZTriplet &#x3D; { x: 100, y: 100, z: 100 };
 
@@ -535,7 +545,7 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
             id: entity.representation_of || entity[&#x27;@id&#x27;],
             name: entity.label,
             visible: true,
-            opacity: 100,
+            opacity: 20,
             tooltip: entity.comment
           } as VisibilityItem;
         }
@@ -548,7 +558,7 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
           id: entity[&#x27;@id&#x27;],
           name: entity.label,
           visible: false,
-          opacity: 100,
+          opacity: 0,
           tooltip: entity.comment
         } as VisibilityItem)), &#x27;name&#x27;)
       } as ExtractionSet));

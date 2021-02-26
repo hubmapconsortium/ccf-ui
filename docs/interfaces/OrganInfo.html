@@ -94,11 +94,14 @@
                                         <a href="#hasSex">hasSex</a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#hasSides">hasSides</a>
+                                        <a href="#name">name</a>
                                 </li>
                                 <li>
-                                        <a href="#name">name</a>
+                                        <a href="#organ">organ</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#side">side</a>
                                 </li>
                                 <li>
                                         <a href="#src">src</a>
@@ -198,46 +201,6 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="hasSides"></a>
-                                        <span class="name"><b>hasSides</b><a href="#hasSides"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>hasSides:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>True for paired organs</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
                                         <a name="name"></a>
                                         <span class="name"><b>name</b><a href="#name"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
@@ -263,7 +226,82 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Name of the organ</p>
+                                    <div class="io-description"><p>Label to display for the organ</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="organ"></a>
+                                        <span class="name"><b>organ</b><a href="#organ"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>organ:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Name of the organ (to help match organs with left / right)</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="side"></a>
+                                        <span class="name"><b>side</b><a href="#side"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>side:     <code>&quot;left&quot; | &quot;right&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;left&quot; | &quot;right&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Used for paired organs</p>
 </div>
                                 </td>
                             </tr>
@@ -307,19 +345,22 @@
 import { ResizeSensor } from &#x27;css-element-queries&#x27;;
 
 export const ALL_ORGANS: OrganInfo[] &#x3D; [
-  { src: &#x27;app:large_intestine&#x27;, name: &#x27;Large Intestine&#x27;, hasSides: false, hasSex: true },
-  { src: &#x27;app:heart&#x27;, name: &#x27;Heart&#x27;, hasSides: false, hasSex: true },
-  { src: &#x27;app:kidney&#x27;, name: &#x27;Kidney&#x27;, hasSides: true, hasSex: true },
-  { src: &#x27;app:spleen&#x27;, name: &#x27;Spleen&#x27;, hasSides: false, hasSex: true },
-  { src: &#x27;app:bladder&#x27;, name: &#x27;Bladder&#x27;, disabled: true, hasSides: false, hasSex: true },
-  { src: &#x27;app:brain&#x27;, name: &#x27;Brain&#x27;, disabled: true, hasSides: false, hasSex: true },
-  { src: &#x27;app:liver&#x27;, name: &#x27;Liver&#x27;, disabled: true, hasSides: false, hasSex: true },
-  { src: &#x27;app:lung&#x27;, name: &#x27;Lung&#x27;, disabled: true, hasSides: true, hasSex: true },
-  { src: &#x27;app:lymph_nodes&#x27;, name: &#x27;Lymph Nodes&#x27;, disabled: true, hasSides: false, hasSex: true },
-  { src: &#x27;app:ovaries&#x27;, name: &#x27;Ovaries&#x27;, disabled: true, hasSides: true, hasSex: false },
-  { src: &#x27;app:small_intestine&#x27;, name: &#x27;Small Intestine&#x27;, disabled: true, hasSides: false, hasSex: true },
-  { src: &#x27;app:stomach&#x27;, name: &#x27;Stomach&#x27;, disabled: true, hasSides: false, hasSex: true },
-  { src: &#x27;app:thymus&#x27;, name: &#x27;Thymus&#x27;, disabled: true, hasSides: false, hasSex: true }
+  { src: &#x27;app:large_intestine&#x27;, organ: &#x27;Large Intestine&#x27;, name: &#x27;Large Intestine&#x27;, hasSex: true },
+  { src: &#x27;app:heart&#x27;, organ: &#x27;Heart&#x27;, name: &#x27;Heart&#x27;, hasSex: true },
+  { src: &#x27;app:kidney-left&#x27;, organ: &#x27;Kidney&#x27;, name: &#x27;Kidney, L&#x27;, side: &#x27;left&#x27;, hasSex: true },
+  { src: &#x27;app:kidney-right&#x27;, organ: &#x27;Kidney&#x27;, name: &#x27;Kidney, R&#x27;, side: &#x27;right&#x27;, hasSex: true },
+  { src: &#x27;app:spleen&#x27;, organ: &#x27;Spleen&#x27;, name: &#x27;Spleen&#x27;, hasSex: true },
+  { src: &#x27;app:bladder&#x27;, organ: &#x27;Bladder&#x27;, name: &#x27;Bladder&#x27;, disabled: true, hasSex: true },
+  { src: &#x27;app:brain&#x27;, organ: &#x27;Brain&#x27;, name: &#x27;Brain&#x27;, disabled: true, hasSex: true },
+  { src: &#x27;app:liver&#x27;, organ: &#x27;Liver&#x27;, name: &#x27;Liver&#x27;, disabled: true, hasSex: true },
+  { src: &#x27;app:lung-left&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lung, L&#x27;, disabled: true, side: &#x27;left&#x27;, hasSex: true },
+  { src: &#x27;app:lung-right&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lung, R&#x27;, disabled: true, side: &#x27;right&#x27;, hasSex: true },
+  { src: &#x27;app:lymph_nodes&#x27;, organ: &#x27;Lymph Nodes&#x27;, name: &#x27;Lymph Nodes&#x27;, disabled: true, hasSex: true },
+  { src: &#x27;app:ovary-left&#x27;, organ: &#x27;Ovaries&#x27;, name: &#x27;Ovary, L&#x27;, disabled: true, side: &#x27;left&#x27;, hasSex: false },
+  { src: &#x27;app:ovary-right&#x27;, organ: &#x27;Ovaries&#x27;, name: &#x27;Ovary, R&#x27;, disabled: true, side: &#x27;right&#x27;, hasSex: false },
+  { src: &#x27;app:small_intestine&#x27;, organ: &#x27;Small Intestine&#x27;, name: &#x27;Small Intestine&#x27;, disabled: true, hasSex: true },
+  { src: &#x27;app:stomach&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Stomach&#x27;, disabled: true, hasSex: true },
+  { src: &#x27;app:thymus&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Thymus&#x27;, disabled: true, hasSex: true }
 ];
 
 /**
@@ -330,9 +371,14 @@ export interface OrganInfo {
   src: string;
 
   /**
-   * Name of the organ
+   * Label to display for the organ
    */
   name: string;
+
+  /**
+   * Name of the organ (to help match organs with left / right)
+   */
+  organ: string;
 
   /**
    * True if the icon is disabled
@@ -340,9 +386,9 @@ export interface OrganInfo {
   disabled?: boolean;
 
   /**
-   * True for paired organs
+   * Used for paired organs
    */
-  hasSides?: boolean;
+  side?: &#x27;left&#x27; | &#x27;right&#x27;;
 
   /**
    * True if applies to both sexes

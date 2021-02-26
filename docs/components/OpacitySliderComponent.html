@@ -73,6 +73,12 @@
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
 
 
 <section>
@@ -122,6 +128,20 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#prevOpacity">prevOpacity</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -135,7 +155,13 @@
                                 <a href="#changeOpacity">changeOpacity</a>
                             </li>
                             <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
                                 <a href="#resetOpacity">resetOpacity</a>
+                            </li>
+                            <li>
+                                <a href="#toggleVisibility">toggleVisibility</a>
                             </li>
                         </ul>
                     </td>
@@ -151,6 +177,9 @@
                         <ul class="index-list">
                             <li>
                                 <a href="#opacity">opacity</a>
+                            </li>
+                            <li>
+                                <a href="#visible">visible</a>
                             </li>
                         </ul>
                     </td>
@@ -169,6 +198,9 @@
                             </li>
                             <li>
                                 <a href="#opacityReset">opacityReset</a>
+                            </li>
+                            <li>
+                                <a href="#visibilityToggle">visibilityToggle</a>
                             </li>
                         </ul>
                     </td>
@@ -207,7 +239,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>100</code>
+                        <i>Default value : </i><code>20</code>
                     </td>
                 </tr>
                         <tr>
@@ -218,6 +250,32 @@
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>The value displayed in the slider</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="visible"></a>
+                        <b>visible</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:26</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether the item is set to visible</p>
 </div>
                     </td>
                 </tr>
@@ -242,12 +300,12 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:31</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Emits the updated opacity when the opacity chanes</p>
+                        <div class="io-description"><p>Emits the updated opacity when the opacity changes</p>
 </div>
                     </td>
                 </tr>
@@ -269,12 +327,39 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:41</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>Emitter for resetting all opacity values to default</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="visibilityToggle"></a>
+                        <b>visibilityToggle</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:36</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Output  of opacity slider component</p>
 </div>
                     </td>
                 </tr>
@@ -344,8 +429,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:57</a></div>
                 </td>
             </tr>
 
@@ -403,6 +488,45 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="resetOpacity"></a>
                     <span class="name">
                         <b>
@@ -421,15 +545,56 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:76</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Tells the anatomical structures menu to reset all opacity values</p>
+                    <div class="io-description"><p>Emits signal to reset the opacity of the item</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleVisibility"></a>
+                    <span class="name">
+                        <b>
+                            toggleVisibility
+                        </b>
+                        <a href="#toggleVisibility"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleVisibility()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:65</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits signal to toggle the visibility of the item</p>
 </div>
 
                     <div class="io-description">
@@ -441,12 +606,45 @@
         </tbody>
     </table>
 </section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="prevOpacity"></a>
+                        <span class="name">
+                            <b>
+                            prevOpacity</b>
+                            <a href="#prevOpacity"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-rui/src/app/shared/components/opacity-slider/opacity-slider.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, HostBinding, Input, Output, OnInit } from &#x27;@angular/core&#x27;;
 
 /**
  * Slider for setting opacity on an anatomical structure
@@ -456,7 +654,7 @@
   templateUrl: &#x27;./opacity-slider.component.html&#x27;,
   styleUrls: [&#x27;./opacity-slider.component.scss&#x27;]
 })
-export class OpacitySliderComponent {
+export class OpacitySliderComponent implements OnInit {
 
   /**
    * HTML class name
@@ -466,17 +664,37 @@ export class OpacitySliderComponent {
   /**
    * The value displayed in the slider
    */
-  @Input() opacity &#x3D; 100;
+  @Input() opacity &#x3D; 20;
 
   /**
-   * Emits the updated opacity when the opacity chanes
+   * Whether the item is set to visible
+   */
+  @Input() visible &#x3D; true;
+
+  /**
+   * Emits the updated opacity when the opacity changes
    */
   @Output() readonly opacityChange &#x3D; new EventEmitter&lt;number&gt;();
+
+  /**
+   * Output  of opacity slider component
+   */
+  @Output() readonly visibilityToggle &#x3D; new EventEmitter();
 
   /**
    * Emitter for resetting all opacity values to default
    */
   @Output() readonly opacityReset &#x3D; new EventEmitter();
+
+  prevOpacity: number;
+
+  ngOnInit(): void {
+    if (this.visible) {
+      this.prevOpacity &#x3D; 0;
+    } else {
+      this.prevOpacity &#x3D; 20;
+    }
+  }
 
   /**
    * Emits opacityChange with the new opacity value
@@ -488,9 +706,21 @@ export class OpacitySliderComponent {
   }
 
   /**
-   * Tells the anatomical structures menu to reset all opacity values
+   * Emits signal to toggle the visibility of the item
+   */
+  toggleVisibility(): void {
+    const temp &#x3D; this.opacity;
+    this.opacity &#x3D; this.prevOpacity;
+    this.prevOpacity &#x3D; temp;
+    this.visibilityToggle.emit();
+    this.opacityChange.emit(this.opacity);
+  }
+
+  /**
+   * Emits signal to reset the opacity of the item
    */
   resetOpacity(): void {
+    this.prevOpacity &#x3D; 0;
     this.opacityReset.emit();
   }
 }
@@ -498,11 +728,16 @@ export class OpacitySliderComponent {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;slider-box opacity&quot;&gt;
-  &lt;span class&#x3D;&quot;text label&quot;&gt;Opacity&lt;/span&gt;
-  &lt;mat-slider class&#x3D;&quot;slider&quot; [step]&#x3D;&quot;1&quot; [min]&#x3D;&quot;0&quot; [max]&#x3D;&quot;100&quot; [value]&#x3D;&quot;opacity&quot; (input)&#x3D;&quot;changeOpacity($event.value)&quot;&gt;&lt;/mat-slider&gt;
-  &lt;span class&#x3D;&quot;opacity-value&quot;&gt;{{opacity}}&lt;/span&gt;
-  &lt;mat-icon matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; class&#x3D;&quot;icon reset&quot; (click)&#x3D;&quot;resetOpacity()&quot;&gt;refresh&lt;/mat-icon&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;slider-box&quot;&gt;
+  &lt;div class&#x3D;&quot;slider-and-label&quot;&gt;
+    &lt;mat-slider class&#x3D;&quot;slider&quot; [class.disabled]&#x3D;&quot;!visible&quot; [step]&#x3D;&quot;1&quot; [min]&#x3D;&quot;0&quot; [max]&#x3D;&quot;100&quot; [value]&#x3D;&quot;opacity&quot; (input)&#x3D;&quot;changeOpacity($event.value)&quot;&gt;&lt;/mat-slider&gt;
+    &lt;span class&#x3D;&quot;opacity-value&quot;&gt;{{opacity}}%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;icons&quot;&gt;
+    &lt;mat-icon matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; class&#x3D;&quot;visibility icon invisible&quot; (click)&#x3D;&quot;toggleVisibility()&quot; [class.hidden]&#x3D;&quot;visible&quot; svgIcon&#x3D;&quot;app:visibility_off&quot;&gt;&lt;/mat-icon&gt;
+    &lt;mat-icon matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; class&#x3D;&quot;visibility icon visible&quot; (click)&#x3D;&quot;toggleVisibility()&quot; [class.hidden]&#x3D;&quot;!visible&quot; svgIcon&#x3D;&quot;app:visibility_on&quot;&gt;&lt;/mat-icon&gt;
+    &lt;mat-icon matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; class&#x3D;&quot;icon reset&quot; (click)&#x3D;&quot;resetOpacity()&quot;&gt;refresh&lt;/mat-icon&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
 
@@ -515,55 +750,62 @@ export class OpacitySliderComponent {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
   border-radius: 0.1875rem;
-
-  &amp;.disabled {
-    opacity: 30%;
-    cursor: not-allowed;
-    .slider-box {
-      pointer-events: none;
-    }
-  }
 
   .slider-box {
     display: flex;
     width: 100%;
     align-items: center;
-  }
+    justify-content: space-between;
 
-  .label {
-    margin-left: 0.5rem;
-    margin-right: 2rem;
-  }
+    .slider-and-label {
+      width: 60%;
+      display: flex;
+      align-items: center;
 
-  ::ng-deep .slider {
-    width: 40%;
+      .slider {
+        width: 100%;
+        
+        &amp;.disabled {
+          pointer-events: none;
+          cursor: not-allowed;
+        }
+      }
 
-    .mat-slider-track-wrapper, .mat-slider-track-fill {
-      height: .2rem;
+      .opacity-value {
+        width: 1.5rem;
+        margin-left: 0.5rem;
+      }
     }
+
+    .icons {
+      display: flex;
+
+      .reset {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        transform: scaleX(-1);
+        cursor: pointer;
+        transition: .6s;
+
+        &amp;:hover {
+          border-radius: 2px;
+        }
+      }
     
-    .mat-slider-track-fill {
-      opacity: 0.5;
+      .visibility {
+        transition: .6s;
+        cursor: pointer;
+
+        &amp;:hover {
+          border-radius: 2px;
+        }
+    
+        &amp;.hidden {
+          display: none;
+        }
+      }
     }
-
-    .mat-slider-thumb {
-      transform: none !important;
-    }
-  }
-
-  .opacity-value {
-    width: 1.5rem;
-    margin-left: 0.5rem;
-  }
-
-  .reset {
-    margin-left: auto;
-    margin-right: 1rem;
-    transform: scaleX(-1);
-    cursor: pointer;
-    transition: .6s;
   }
 }</code></pre>
     </div>
@@ -593,7 +835,7 @@ export class OpacitySliderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="slider-box opacity">  <span class="text label">Opacity</span>  <mat-slider class="slider" [step]="1" [min]="0" [max]="100" [value]="opacity" (input)="changeOpacity($event.value)"></mat-slider>  <span class="opacity-value">{{opacity}}</span>  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetOpacity()">refresh</mat-icon></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="slider-box">  <div class="slider-and-label">    <mat-slider class="slider" [class.disabled]="!visible" [step]="1" [min]="0" [max]="100" [value]="opacity" (input)="changeOpacity($event.value)"></mat-slider>    <span class="opacity-value">{{opacity}}%</span>  </div>  <div class="icons">    <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="visibility icon invisible" (click)="toggleVisibility()" [class.hidden]="visible" svgIcon="app:visibility_off"></mat-icon>    <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="visibility icon visible" (click)="toggleVisibility()" [class.hidden]="!visible" svgIcon="app:visibility_on"></mat-icon>    <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetOpacity()">refresh</mat-icon>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'OpacitySliderComponent'};

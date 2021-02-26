@@ -89,6 +89,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#getOrganData">getOrganData</a>
+                            </li>
+                            <li>
                                 <a href="#getReferenceOrganIri">getReferenceOrganIri</a>
                             </li>
                             <li>
@@ -121,7 +124,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -180,6 +183,84 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getOrganData"></a>
+                    <span class="name">
+                        <b>
+                            getOrganData
+                        </b>
+                        <a href="#getOrganData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOrganData(iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Looks up organ information from an IRI</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The IRI</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/OrganData.html" target="_self" >OrganData | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A populated organ data if the IRI is valid, otherwise undefined</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getReferenceOrganIri"></a>
                     <span class="name">
                         <b>
@@ -198,8 +279,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:82</a></div>
                 </td>
             </tr>
 
@@ -310,8 +391,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:69</a></div>
                 </td>
             </tr>
 
@@ -349,8 +430,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:56</a></div>
                 </td>
             </tr>
 
@@ -380,19 +461,25 @@ import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#
 import { State } from &#x27;@ngxs/store&#x27;;
 import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { ExtractionSet, SpatialEntity } from &#x27;ccf-database&#x27;;
-import { GlobalsService } from &#x27;ccf-shared&#x27;;
+import { ALL_ORGANS, GlobalsService, OrganInfo } from &#x27;ccf-shared&#x27;;
 
 import { environment } from &#x27;../../../../environments/environment&#x27;;
-import { GlobalConfig, GLOBAL_CONFIG } from &#x27;../../services/config/config&#x27;;
+import { GLOBAL_CONFIG, GlobalConfig } from &#x27;../../services/config/config&#x27;;
 
 
 export interface ReferenceDataStateModel {
-  organIRILookup: {[lookup: string]: string};
-  organSpatialEntities: {[iri: string]: SpatialEntity};
-  anatomicalStructures: {[iri: string]: SpatialEntity[]};
-  extractionSets: {[iri: string]: ExtractionSet[]};
-  sceneNodeLookup: {[iri: string]: SpatialSceneNode};
-  simpleSceneNodeLookup: {[iri: string]: SpatialSceneNode};
+  organIRILookup: { [lookup: string]: string };
+  organSpatialEntities: { [iri: string]: SpatialEntity };
+  anatomicalStructures: { [iri: string]: SpatialEntity[] };
+  extractionSets: { [iri: string]: ExtractionSet[] };
+  sceneNodeLookup: { [iri: string]: SpatialSceneNode };
+  simpleSceneNodeLookup: { [iri: string]: SpatialSceneNode };
+}
+
+export interface OrganData {
+  organ: OrganInfo;
+  sex?: &#x27;male&#x27; | &#x27;female&#x27;;
+  side?: &#x27;left&#x27; | &#x27;right&#x27;;
 }
 
 /**
@@ -413,8 +500,10 @@ export interface ReferenceDataStateModel {
 @Injectable()
 export class ReferenceDataState extends NgxsImmutableDataRepository&lt;ReferenceDataStateModel&gt; {
 
-  constructor(private readonly globals: GlobalsService,
-              @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig) {
+  constructor(
+    private readonly globals: GlobalsService,
+    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+  ) {
     super();
   }
 
@@ -447,7 +536,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
    * @param side the side: left, right, or undefined
    * @returns An IRI if there is a reference organ for this state, otherwise undefined
    */
-  getReferenceOrganIri(organ: string, sex?: &#x27;Male&#x27; | &#x27;Female&#x27; | string, side?: &#x27;Left&#x27; | &#x27;Right&#x27; | string): string|undefined {
+  getReferenceOrganIri(organ: string, sex?: &#x27;Male&#x27; | &#x27;Female&#x27; | string, side?: &#x27;Left&#x27; | &#x27;Right&#x27; | string): string | undefined {
     const db &#x3D; this.snapshot;
     if (organ.toUpperCase() !&#x3D;&#x3D; &#x27;KIDNEY&#x27;) {
       side &#x3D; &#x27;&#x27;;
@@ -458,6 +547,32 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
     const lookup &#x3D; [organ, sex, side].join(&#x27;|&#x27;).toUpperCase();
     const key &#x3D; Object.keys(db.organIRILookup).find((code) &#x3D;&gt; code.toUpperCase().endsWith(lookup));
     return key ? db.organIRILookup[key] : undefined;
+  }
+
+  /**
+   * Looks up organ information from an IRI
+   *
+   * @param iri The IRI
+   * @returns A populated organ data if the IRI is valid, otherwise undefined
+   */
+  getOrganData(iri: string): OrganData | undefined {
+    const state &#x3D; this.snapshot;
+    const entity &#x3D; state.organSpatialEntities[iri];
+    if (!entity) {
+      return undefined;
+    }
+
+    const name &#x3D; entity.label || &#x27;&#x27;;
+    const organ &#x3D; ALL_ORGANS.find(info &#x3D;&gt; name.endsWith(info.organ));
+    if (!organ) {
+      return undefined;
+    }
+
+    return {
+      organ,
+      sex: entity.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;,
+      side: entity.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
+    };
   }
 }
 </code></pre>

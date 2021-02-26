@@ -63,11 +63,15 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_VisibilityMenuModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="147,-70 147,-268 349,-268 349,-70 147,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="68,-70 68,-268 428,-268 428,-70 68,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_VisibilityMenuModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="157,-78 157,-130 339,-130 339,-78 157,-78"/>
+<polygon fill="none" stroke="#000000" points="238,-78 238,-130 420,-130 420,-78 238,-78"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_VisibilityMenuModule_imports</title>
+<polygon fill="none" stroke="#000000" points="76,-78 76,-130 230,-130 230,-78 76,-78"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_VisibilityMenuModule_exports</title>
@@ -76,8 +80,8 @@
 <!-- VisibilityMenuComponent -->
 <g id="node1" class="node">
 <title>VisibilityMenuComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="331.3864,-122 164.6136,-122 164.6136,-86 331.3864,-86 331.3864,-122"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">VisibilityMenuComponent</text>
+<polygon fill="#ffffb3" stroke="#000000" points="412.3864,-122 245.6136,-122 245.6136,-86 412.3864,-86 412.3864,-122"/>
+<text text-anchor="middle" x="329" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">VisibilityMenuComponent</text>
 </g>
 <!-- VisibilityMenuModule -->
 <g id="node2" class="node">
@@ -88,20 +92,32 @@
 <!-- VisibilityMenuComponent&#45;&gt;VisibilityMenuModule -->
 <g id="edge1" class="edge">
 <title>VisibilityMenuComponent&#45;&gt;VisibilityMenuModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+<path fill="none" stroke="#000000" d="M283.0544,-122.1061C283.0544,-122.1061 283.0544,-140.991 283.0544,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="279.5544,-140.9909 283.0544,-150.991 286.5544,-140.991 279.5544,-140.9909"/>
 </g>
 <!-- VisibilityMenuComponent  -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>VisibilityMenuComponent </title>
 <polygon fill="#fb8072" stroke="#000000" points="333.3868,-252 162.6132,-252 162.6132,-216 333.3868,-216 333.3868,-252"/>
 <text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">VisibilityMenuComponent </text>
 </g>
 <!-- VisibilityMenuModule&#45;&gt;VisibilityMenuComponent  -->
-<g id="edge2" class="edge">
+<g id="edge3" class="edge">
 <title>VisibilityMenuModule&#45;&gt;VisibilityMenuComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248,-187.1061C248,-187.1061 248,-205.991 248,-205.991"/>
 <polygon fill="#000000" stroke="#000000" points="244.5001,-205.9909 248,-215.991 251.5001,-205.991 244.5001,-205.9909"/>
+</g>
+<!-- OpacitySliderModule -->
+<g id="node3" class="node">
+<title>OpacitySliderModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="221.8061,-122 218.8061,-126 197.8061,-126 194.8061,-122 84.1939,-122 84.1939,-86 221.8061,-86 221.8061,-122"/>
+<text text-anchor="middle" x="153" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">OpacitySliderModule</text>
+</g>
+<!-- OpacitySliderModule&#45;&gt;VisibilityMenuModule -->
+<g id="edge2" class="edge">
+<title>OpacitySliderModule&#45;&gt;VisibilityMenuModule</title>
+<path fill="none" stroke="#000000" d="M198.5505,-122.1061C198.5505,-122.1061 198.5505,-140.991 198.5505,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="195.0506,-140.9909 198.5505,-150.991 202.0506,-140.991 195.0506,-140.9909"/>
 </g>
 </g>
 </svg>
@@ -151,6 +167,15 @@
                     </ul>
                 </div>
                 <div class="col-sm-3">
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" title="Official documentation about module imports"><span
+                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="../modules/OpacitySliderModule.html">OpacitySliderModule</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
                     <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" title="Official documentation about module exports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
@@ -170,12 +195,14 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { OpacitySliderModule } from &#x27;../opacity-slider/opacity-slider.module&#x27;;
+import { MatRippleModule } from &#x27;@angular/material/core&#x27;;
 
 import { VisibilityMenuComponent } from &#x27;./visibility-menu.component&#x27;;
 
 
 @NgModule({
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, MatRippleModule, OpacitySliderModule],
   declarations: [VisibilityMenuComponent],
   exports: [VisibilityMenuComponent]
 })
