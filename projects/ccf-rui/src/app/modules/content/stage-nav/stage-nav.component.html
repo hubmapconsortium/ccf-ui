@@ -10,17 +10,18 @@
     <mat-radio-button value="right" class="nav-input">Right</mat-radio-button>
     <mat-radio-button value="anterior" class="nav-input" checked>Anterior</mat-radio-button>
     <mat-radio-button value="posterior" class="nav-input">Posterior</mat-radio-button>
+    <mat-radio-button value='3D' class="nav-input">3D</mat-radio-button>
   </mat-radio-group>
 
   <mat-divider></mat-divider>
 
-  <ccf-labeled-slide-toggle
+  <!-- <ccf-labeled-slide-toggle
     matTooltip="Change view."
     class="view-slider"
     [labels]="['Register', '3D\u00A0Preview']"
     [value]="view3D ? '3D\u00A0Preview' : 'Register'"
     (valueChange)="updateView($event !== 'Register')"
-  ></ccf-labeled-slide-toggle>
+  ></ccf-labeled-slide-toggle> -->
 
-  <mat-divider></mat-divider>
+  <!-- <mat-divider></mat-divider> -->
 </div>
