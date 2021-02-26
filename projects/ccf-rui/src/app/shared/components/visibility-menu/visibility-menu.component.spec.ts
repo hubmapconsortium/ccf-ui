@@ -11,23 +11,39 @@ describe('VisibilityMenuComponent', () => {
     visible: false,
     opacity: 100
   };
-  const testItems = [testItem];
+  const testItem2 = {
+    id: 1,
+    name: 'test',
+    visible: true,
+    opacity: 100
+  };
+  const testItems = [testItem, testItem2];
 
   beforeEach(() => {
     shallow = new Shallow(VisibilityMenuComponent, VisibilityMenuModule);
   });
 
-  it('should enable the slider if a visible item is selected', async () => {
-    const testItem2 = {
-      id: 1,
-      name: 'test',
-      visible: true,
-      opacity: 100
-    };
-    const { instance } = await shallow.render({ bind: { items: testItems, selection: testItem2 } });
-    instance.toggleVisibility(instance.items[0]);
-    expect(instance.disableSlider).toBeFalse();
+  it('should set the opacity to 0 if an item is toggled to invisible', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    const spy = spyOn(instance, 'updateOpacity');
+    instance.toggleVisibility(instance.items[1]);
+    expect(spy).toHaveBeenCalledWith(0);
   });
+
+  it('should restore the opacity to the previous opacity', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.toggleVisibility(instance.items[0]);
+    instance.toggleVisibility(instance.items[0]);
+    expect(instance.items[0].opacity).toEqual(100);
+  });
+
+  it('should toggle the visibility of the currently selected item', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.mouseOver(instance.items[0]);
+    instance.toggleVisibility(instance.items[0]);
+    expect(instance.selection?.visible).toBeTrue();
+  });
+
 
   it('should emit the item when user hovers over an item', async () => {
     const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
@@ -41,35 +57,22 @@ describe('VisibilityMenuComponent', () => {
     expect(outputs.hover.emit).toHaveBeenCalledWith(undefined);
   });
 
-  it('should emit the opacity value when the opacity is updated', async () => {
-    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
-    instance.selection = testItem;
+  it('should update the opacity of the current item', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.mouseOver(instance.items[0]);
     instance.updateOpacity(50);
-    expect(instance.selection.opacity).toEqual(50);
-    expect(outputs.opacityChange.emit).toHaveBeenCalledWith({ ...testItem, opacity: 50 });
+    expect(instance.items[0].opacity).toEqual(50);
   });
 
-  it('should return when updateOpacity is called when no item is selected', async () => {
-    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
-    instance.selection = undefined;
-    instance.updateOpacity(50);
-    expect(outputs.opacityChange.emit).toHaveBeenCalledTimes(0);
+  it('should set all opacity values', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.setAllOpacity(30);
+    expect(instance.items[0].opacity).toEqual(30);
+    expect(instance.items[1].opacity).toEqual(30);
   });
 
   it('should return the id with getId', async () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
     expect(instance.getId(0, testItem)).toEqual(1);
-  });
-
-  it('should hide an items opacity value when opacity is changed to 100', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    instance.items[0].opacity = 100;
-    expect(instance.isHidden(instance.items[0])).toBeTrue();
-  });
-
-  it('should show an items opacity value when opacity is changed to a value less than 100', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    instance.items[0].opacity = 50;
-    expect(instance.isHidden(instance.items[0])).toBeFalse();
   });
 });

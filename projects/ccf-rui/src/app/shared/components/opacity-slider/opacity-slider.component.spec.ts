@@ -10,7 +10,6 @@ describe('OpacitySliderComponent', () => {
     name: 'test',
     visible: false
   };
-  const testItems = [testItem];
 
   beforeEach(() => {
     shallow = new Shallow(OpacitySliderComponent, OpacitySliderModule);
@@ -26,6 +25,12 @@ describe('OpacitySliderComponent', () => {
     const { instance, outputs} = await shallow.render();
     instance.resetOpacity();
     expect(outputs.opacityReset.emit).toHaveBeenCalled();
+  });
+
+  it('should emit visibilityToggle when toggleVisibility is called', async () => {
+    const { instance, outputs} = await shallow.render();
+    instance.toggleVisibility();
+    expect(outputs.visibilityToggle.emit).toHaveBeenCalled();
   });
 
 });

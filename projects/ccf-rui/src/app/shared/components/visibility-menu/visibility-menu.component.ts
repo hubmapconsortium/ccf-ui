@@ -37,11 +37,6 @@ export class VisibilityMenuComponent implements OnInit {
   @Output() readonly itemsChange = new EventEmitter<VisibilityItem[]>();
 
   /**
-   * Disables slider interactions
-   */
-  disableSlider = true;
-
-  /**
    * Previous opacity values
    */
   prevOpacities: (number | undefined)[];
@@ -62,7 +57,6 @@ export class VisibilityMenuComponent implements OnInit {
     item = {...item, visible: !item.visible};
     if (this.selection && item.id === this.selection.id) {
       this.selection = {...this.selection, visible: item.visible};
-      this.disableSlider = this.selection ? !this.selection.visible : true;
     }
     if (!item.visible) {
       this.updateOpacity(0);
