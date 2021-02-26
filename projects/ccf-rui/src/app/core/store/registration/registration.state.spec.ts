@@ -14,6 +14,7 @@ import { ModelState, ModelStateModel } from '../model/model.state';
 import { PageState, PageStateModel, Person } from '../page/page.state';
 import { AnatomicalStructureTagState } from './../anatomical-structure-tags/anatomical-structure-tags.state';
 import { RegistrationState } from './registration.state';
+import { ReferenceDataState, ReferenceDataStateModel } from '../reference-data/reference-data.state';
 
 
 const testVisibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
@@ -67,9 +68,18 @@ describe('RegistrationState', () => {
       name: ''
     }
   };
+  const initialReferenceDataState: Partial<ReferenceDataStateModel> = {
+    anatomicalStructures: {},
+    extractionSets: {},
+    organIRILookup: {},
+    organSpatialEntities: {},
+    sceneNodeLookup: {},
+    simpleSceneNodeLookup: {}
+  };
 
   let pageStateSubject: ReplaySubject<Partial<PageStateModel>>;
   let modelStateSubject: ReplaySubject<Partial<ModelStateModel>>;
+  let referenceDataStateSubject: ReplaySubject<Partial<ReferenceDataStateModel>>;
   let state: RegistrationState;
 
   beforeEach(() => {
@@ -78,6 +88,9 @@ describe('RegistrationState', () => {
 
     modelStateSubject = new ReplaySubject();
     modelStateSubject.next(initialModelState);
+
+    referenceDataStateSubject = new ReplaySubject();
+    referenceDataStateSubject.next(initialReferenceDataState);
 
     TestBed.configureTestingModule({
       imports: [
@@ -96,6 +109,12 @@ describe('RegistrationState', () => {
           provide: ModelState, useValue: {
             state$: modelStateSubject,
             snapshot: initialModelState
+          }
+        },
+        {
+          provide: ReferenceDataState, useValue: {
+            state$: referenceDataStateSubject,
+            snapshot: initialReferenceDataState
           }
         },
         {
