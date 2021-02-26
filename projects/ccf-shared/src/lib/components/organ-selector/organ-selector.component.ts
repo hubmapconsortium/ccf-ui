@@ -4,14 +4,20 @@ import { ResizeSensor } from 'css-element-queries';
 export const ALL_ORGANS: OrganInfo[] = [
   { src: 'app:large_intestine', name: 'Large Intestine', hasSides: false, hasSex: true },
   { src: 'app:heart', name: 'Heart', hasSides: false, hasSex: true },
-  { src: 'app:kidney', name: 'Kidney', hasSides: true, hasSex: true },
+  { src: 'app:kidney-right', name: 'Right Kidney', hasSides: false, hasSex: true },
+  { src: 'app:kidney-left', name: 'Left Kidney', hasSides: false, hasSex: true },
   { src: 'app:spleen', name: 'Spleen', hasSides: false, hasSex: true },
   { src: 'app:bladder', name: 'Bladder', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:brain', name: 'Brain', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:liver', name: 'Liver', disabled: true, hasSides: false, hasSex: true },
-  { src: 'app:lung', name: 'Lung', disabled: true, hasSides: true, hasSex: true },
+  { src: 'app:lung-right', name: 'Right Lung', disabled: true, hasSides: false, hasSex: true },
+  { src: 'app:lung-left', name: 'Left Lung', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:lymph_nodes', name: 'Lymph Nodes', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:ovaries', name: 'Ovaries', disabled: true, hasSides: true, hasSex: false },
+  /** No left / right images
+  { src: 'app:ovary-left', name: 'Left Ovary', disabled: true, hasSides: false, hasSex: false },
+  { src: 'app:ovary-right', name: 'Right Ovary', disabled: true, hasSides: false, hasSex: false },
+  */
   { src: 'app:small_intestine', name: 'Small Intestine', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:stomach', name: 'Stomach', disabled: true, hasSides: false, hasSex: true },
   { src: 'app:thymus', name: 'Thymus', disabled: true, hasSides: false, hasSex: true }
