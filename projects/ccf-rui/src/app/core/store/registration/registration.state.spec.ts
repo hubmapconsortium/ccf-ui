@@ -21,7 +21,7 @@ const testExtractionSets: ExtractionSet[] = [{ name: 'test', sites: [] }];
 const testModel: Immutable<ModelStateModel> = {
   id: '0',
   label: 'test',
-  organ: { name: 'test', src: 'test' },
+  organ: { name: 'test', src: 'test', organ: 'test' },
   organDimensions: { x: 0, y: 0, z: 0 },
   blockSize: { x: 0, y: 0, z: 0 },
   rotation: { x: 0, y: 0, z: 0 },
@@ -64,7 +64,8 @@ describe('RegistrationState', () => {
     position: { x: 0, y: 0, z: 0 },
     organ: {
       src: '',
-      name: ''
+      name: '',
+      organ: ''
     }
   };
 
