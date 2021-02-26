@@ -53,6 +53,7 @@
         <mat-divider></mat-divider>
 
         <ccf-visibility-toggle toggleLabel="Previously Registered Blocks" [visible]="model.showPrevious$ | async"
+            [disabled]="disableSlider" 
             (visibilityChanged)="togglePreviousRegistrationBlocks($event)" matTooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
         </ccf-visibility-toggle>
 
