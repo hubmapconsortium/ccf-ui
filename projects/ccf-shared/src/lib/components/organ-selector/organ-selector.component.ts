@@ -43,7 +43,7 @@ export interface OrganInfo {
   disabled?: boolean;
 
   /**
-   * True for paired organs
+   * Used for paired organs
    */
   side?: 'left' | 'right';
 
