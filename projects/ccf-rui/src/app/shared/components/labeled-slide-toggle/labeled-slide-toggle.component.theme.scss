@@ -2,16 +2,17 @@
 
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
+  $accent: map-get($theme, accent);
 
   .ccf-labeled-slide-toggle {
     .mat-slide-toggle-bar {
-      background-color: mat-color($foreground, toggle-bg) !important; // adding !important otherwise the color reverts to blue
+      background-color: mat-color($accent, 0.54);
     }
     .mat-slide-toggle-thumb {
-      background-color: mat-color($foreground, toggle-thumb) !important;  // adding !important otherwise the color reverts to blue
+      background-color: mat-color($accent);
     }
     .highlighted {
-      color: mat-color($foreground, toggle-thumb);
+      color: mat-color($accent);
     }
   }
 }
