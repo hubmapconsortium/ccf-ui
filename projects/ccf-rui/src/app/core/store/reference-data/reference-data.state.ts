@@ -4,19 +4,25 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { ExtractionSet, SpatialEntity } from 'ccf-database';
-import { GlobalsService } from 'ccf-shared';
+import { ALL_ORGANS, GlobalsService, OrganInfo } from 'ccf-shared';
 
 import { environment } from '../../../../environments/environment';
-import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 
 
 export interface ReferenceDataStateModel {
-  organIRILookup: {[lookup: string]: string};
-  organSpatialEntities: {[iri: string]: SpatialEntity};
-  anatomicalStructures: {[iri: string]: SpatialEntity[]};
-  extractionSets: {[iri: string]: ExtractionSet[]};
-  sceneNodeLookup: {[iri: string]: SpatialSceneNode};
-  simpleSceneNodeLookup: {[iri: string]: SpatialSceneNode};
+  organIRILookup: { [lookup: string]: string };
+  organSpatialEntities: { [iri: string]: SpatialEntity };
+  anatomicalStructures: { [iri: string]: SpatialEntity[] };
+  extractionSets: { [iri: string]: ExtractionSet[] };
+  sceneNodeLookup: { [iri: string]: SpatialSceneNode };
+  simpleSceneNodeLookup: { [iri: string]: SpatialSceneNode };
+}
+
+export interface OrganData {
+  organ: OrganInfo;
+  sex?: 'male' | 'female';
+  side?: 'left' | 'right';
 }
 
 /**
@@ -37,8 +43,10 @@ export interface ReferenceDataStateModel {
 @Injectable()
 export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDataStateModel> {
 
-  constructor(private readonly globals: GlobalsService,
-              @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig) {
+  constructor(
+    private readonly globals: GlobalsService,
+    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+  ) {
     super();
   }
 
@@ -71,7 +79,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
    * @param side the side: left, right, or undefined
    * @returns An IRI if there is a reference organ for this state, otherwise undefined
    */
-  getReferenceOrganIri(organ: string, sex?: 'Male' | 'Female' | string, side?: 'Left' | 'Right' | string): string|undefined {
+  getReferenceOrganIri(organ: string, sex?: 'Male' | 'Female' | string, side?: 'Left' | 'Right' | string): string | undefined {
     const db = this.snapshot;
     if (organ.toUpperCase() !== 'KIDNEY') {
       side = '';
@@ -82,5 +90,31 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
     const lookup = [organ, sex, side].join('|').toUpperCase();
     const key = Object.keys(db.organIRILookup).find((code) => code.toUpperCase().endsWith(lookup));
     return key ? db.organIRILookup[key] : undefined;
+  }
+
+  /**
+   * Looks up organ information from an IRI
+   *
+   * @param iri The IRI
+   * @returns A populated organ data if the IRI is valid, otherwise undefined
+   */
+  getOrganData(iri: string): OrganData | undefined {
+    const state = this.snapshot;
+    const entity = state.organSpatialEntities[iri];
+    if (!entity) {
+      return undefined;
+    }
+
+    const name = entity.label!;
+    const organ = ALL_ORGANS.find(info => name.endsWith(info.name));
+    if (!organ) {
+      return undefined;
+    }
+
+    return {
+      organ,
+      sex: entity.sex?.toLowerCase() as 'male' | 'female',
+      side: entity.side?.toLowerCase() as 'left' | 'right'
+    };
   }
 }

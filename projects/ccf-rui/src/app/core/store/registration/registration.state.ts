@@ -12,10 +12,11 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
 import { MetaData } from '../../models/meta-data';
-import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
 import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
+import { ReferenceDataState } from '../reference-data/reference-data.state';
 
 
 /**
@@ -105,6 +106,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   /** Reference to the AS Tag state */
   private tags: AnatomicalStructureTagState;
 
+  /** Reference to the reference data state */
+  private refData: ReferenceDataState;
+
   /**
    * Creates an instance of registration state.
    *
@@ -129,6 +133,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.page = this.injector.get(PageState);
     this.model = this.injector.get(ModelState);
     this.tags = this.injector.get(AnatomicalStructureTagState);
+    this.refData = this.injector.get(ReferenceDataState);
 
     const { globalConfig: { useDownload, register } } = this;
     this.ctx.patchState({
@@ -147,8 +152,20 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
   async editRegistration(reg: SpatialEntityJsonLd): Promise<void> {
     const place = Array.isArray(reg.placement) ? reg.placement[0] : reg.placement as SpatialPlacementJsonLd;
+    const data = this.refData.getOrganData(place.target);
+
     this.page.setUserName({firstName: reg.creator_first_name, lastName: reg.creator_last_name});
-    // const iri = place.target;
+
+    if (data) {
+      this.model.setOrgan(data.organ);
+      if (data.sex) {
+        this.model.setSex(data.sex);
+      }
+      if (data.side) {
+        this.model.setSide(data.side);
+      }
+    }
+
     this.model.setBlockSize({x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension});
     this.model.setRotation({x: place.x_rotation, y: place.y_rotation, z: place.z_rotation});
     this.model.setSlicesConfig({thickness: reg.slice_thickness || NaN, numSlices: reg.slice_count || NaN});
