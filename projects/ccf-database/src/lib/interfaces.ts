@@ -27,7 +27,7 @@ export interface ListResult {
   /** Result url. */
   resultUrl?: string;
   /** Type of result url. */
-  resultType?: 'external_link' | 'local_link' | 'image_viewer';
+  resultType?: 'external_link' | 'local_link';
   /** If the result should be highlighted */
   highlighted?: boolean;
 }

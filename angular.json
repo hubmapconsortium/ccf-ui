@@ -269,51 +269,6 @@
         }
       }
     },
-    "ccf-image-viewer": {
-      "projectType": "library",
-      "root": "projects/ccf-image-viewer",
-      "sourceRoot": "projects/ccf-image-viewer/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/ccf-image-viewer/tsconfig.lib.json",
-            "project": "projects/ccf-image-viewer/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ccf-image-viewer/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ccf-image-viewer/src/test.ts",
-            "tsConfig": "projects/ccf-image-viewer/tsconfig.spec.json",
-            "karmaConfig": "projects/ccf-image-viewer/karma.conf.js",
-            "codeCoverage": true,
-            "codeCoverageExclude": [
-              "**/src/test.ts",
-              "**/*.module.ts"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ccf-image-viewer/tsconfig.lib.json",
-              "projects/ccf-image-viewer/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "ccf-rui": {
       "projectType": "application",
       "schematics": {
