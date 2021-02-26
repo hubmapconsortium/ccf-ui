@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ListResult } from 'ccf-database';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 

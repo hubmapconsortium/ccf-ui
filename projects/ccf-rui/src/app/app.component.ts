@@ -23,7 +23,7 @@ export class AppComponent implements OnDestroy {
   open = true;
 
   /** All subscriptions managed by the container. */
-  private subscriptions = new Subscription();
+  private readonly subscriptions = new Subscription();
 
   constructor(readonly model: ModelState, readonly page: PageState) {
     this.subscriptions.add(
