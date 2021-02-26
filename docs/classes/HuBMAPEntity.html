@@ -1211,8 +1211,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="329"
-                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:329</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="331"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:331</a></div>
                 </td>
             </tr>
 
@@ -1543,11 +1543,13 @@ export class HuBMAPEntity {
     // this.portalUrl &#x3D; &#x60;${portalUrl}search?ancestor_ids[0]&#x3D;${this.id}&amp;entity_type[0]&#x3D;Dataset&#x60;;
 
     if (images.length &gt; 0 &amp;&amp; typesSearch.indexOf(&#x27;codex&#x27;) &#x3D;&#x3D;&#x3D; -1) {
-      this.resultUrl &#x3D; images[0];
-      this.resultType &#x3D; &#x27;image_viewer&#x27;;
+      const uuid &#x3D; images[0].replace(&#x60;${this.assetsApi}/&#x60;, &#x27;&#x27;).split(&#x27;/&#x27;)[0];
+      this.resultUrl &#x3D; &#x60;${portalUrl}browse/dataset/${uuid}&#x60;;
+      this.resultType &#x3D; &#x27;external_link&#x27;;
+
       this.thumbnailUrl &#x3D; &#x27;assets/histology3.jpg&#x27;;
       if (groupUUID &#x3D;&#x3D;&#x3D; &#x27;73bb26e4-ed43-11e8-8f19-0a7c1eab007a&#x27;) { // VU
-        const thumb &#x3D; this.resultUrl.split(&#x27;/&#x27;).slice(-1)[0].split(&#x27;?&#x27;)[0].replace(&#x27;.ome.tif&#x27;, &#x27;_thumbnail.jpg&#x27;);
+        const thumb &#x3D; images[0].split(&#x27;/&#x27;).slice(-1)[0].split(&#x27;?&#x27;)[0].replace(&#x27;.ome.tif&#x27;, &#x27;_thumbnail.jpg&#x27;);
         if (DR1_VU_THUMBS.has(thumb)) {
           this.thumbnailUrl &#x3D; &#x60;assets/thumbnails/DR1-VU/${thumb}&#x60;;
         }
@@ -1555,13 +1557,13 @@ export class HuBMAPEntity {
     } else {
       if (dataTypes.has(&#x27;codex_cytokit&#x27;)) {
         const uuid &#x3D; dataTypes.get(&#x27;codex_cytokit&#x27;)?.uuid;
-        this.resultUrl &#x3D; &#x60;${portalUrl}browse/dataset/${uuid}#visualization&#x60;;
+        this.resultUrl &#x3D; &#x60;${portalUrl}browse/dataset/${uuid}&#x60;;
       } else if (dataTypes.has(&#x27;salmon_rnaseq_10x&#x27;)) {
         const uuid &#x3D; dataTypes.get(&#x27;salmon_rnaseq_10x&#x27;)?.uuid;
-        this.resultUrl &#x3D; &#x60;${portalUrl}browse/dataset/${uuid}#visualization&#x60;;
+        this.resultUrl &#x3D; &#x60;${portalUrl}browse/dataset/${uuid}&#x60;;
       } else if (dataTypes.has(&#x27;image_pyramid&#x27;)) {
         const uuid &#x3D; dataTypes.get(&#x27;image_pyramid&#x27;)?.uuid;
-        this.resultUrl &#x3D; &#x60;${portalUrl}browse/dataset/${uuid}#visualization&#x60;;
+        this.resultUrl &#x3D; &#x60;${portalUrl}browse/dataset/${uuid}&#x60;;
       } else {
         this.resultUrl &#x3D; this.portalUrl;
       }

@@ -138,6 +138,9 @@
                                     <span class="modifier">Public</span>
                                 <a href="#dialogRef">dialogRef</a>
                             </li>
+                            <li>
+                                <a href="#documentationContents">documentationContents</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -171,12 +174,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dialogRef: MatDialogRef<InfoDialogComponent>, data: unknown)</code>
+<code>constructor(dialogRef: MatDialogRef<InfoDialogComponent>, data: <a href="../interfaces/DocumentationContent.html">DocumentationContent[]</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -216,7 +219,7 @@
                                                         <td>data</td>
                                                   
                                                         <td>
-                                                                    <code>unknown</code>
+                                                                        <code><a href="../interfaces/DocumentationContent.html" target="_self" >DocumentationContent[]</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -268,8 +271,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:31</a></div>
                 </td>
             </tr>
 
@@ -308,7 +311,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>unknown</code>
+                            <i>Type : </i>        <code><a href="../interfaces/DocumentationContent.html" target="_self" >DocumentationContent[]</a></code>
 
                         </td>
                     </tr>
@@ -323,7 +326,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -356,7 +359,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -368,6 +371,33 @@
 
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="documentationContents"></a>
+                        <span class="name">
+                            <b>
+                            documentationContents</b>
+                            <a href="#documentationContents"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/DocumentationContent.html" target="_self" >DocumentationContent[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-rui/src/app/modules/info/info-dialog/info-dialog.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
 </section>
 
 </div>
@@ -376,7 +406,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject } from &#x27;@angular/core&#x27;;
 import { MAT_DIALOG_DATA, MatDialogRef } from &#x27;@angular/material/dialog&#x27;;
-
+import { DocumentationContent } from &#x27;../../../core/models/documentation&#x27;;
 
 /**
  * This component handles displaying and hiding a full screen modal / overlay that displays information about the project.
@@ -387,6 +417,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from &#x27;@angular/material/dialog&#x2
   styleUrls: [&#x27;./info-dialog.component.scss&#x27;]
 })
 export class InfoDialogComponent {
+
+  documentationContents: DocumentationContent[];
   /**
    * Creates an instance of info dialog component.
    * @param dialogRef A reference to the dialog that this component creates, used to call the dialog&#x27;s methods
@@ -394,8 +426,10 @@ export class InfoDialogComponent {
    */
   constructor(
     public dialogRef: MatDialogRef&lt;InfoDialogComponent&gt;,
-    @Inject(MAT_DIALOG_DATA) public data: unknown
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: DocumentationContent[]
+  ) {
+      this.documentationContents &#x3D; data || [];
+  }
 
   /**
    * Closes info dialog component
@@ -415,77 +449,20 @@ export class InfoDialogComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;rui-about wrapper&quot;&gt;
   &lt;div class&#x3D;&quot;container&quot;&gt;
     &lt;div class&#x3D;&quot;close&quot;&gt;
-      &lt;mat-icon class&#x3D;&quot;material-icons close-icon&quot; (click)&#x3D;close()&gt;clear&lt;/mat-icon&gt;
+      &lt;mat-icon class&#x3D;&quot;material-icons close-icon&quot; (click)&#x3D;&quot;close()&quot;&gt;clear&lt;/mat-icon&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;content&quot;&gt;
       &lt;h2 class&#x3D;&quot;title&quot; mat-dialog-title&gt;HuBMAP CCF Registration User Interface 1.0&lt;/h2&gt;
-
-      &lt;mat-dialog-content class&#x3D;&quot;mat-typography&quot;&gt;
-        &lt;p class&#x3D;&quot;description&quot;&gt;
-          This Registration User Interface (RUI) supports the registration of three-dimensional (3D) tissue blocks within 3D reference organs. Surgeons and others involved in the tissue procurement process can use the interface to
-        &lt;/p&gt;
-        &lt;ul&gt;
-          &lt;li&gt;
-            Enter their name to track data provenance.
-          &lt;/li&gt;
-          &lt;li&gt;
-            Select a reference organ via the organ carousal (kidney, heart, spleen, large intestine).
-          &lt;/li&gt;
-          &lt;li&gt;
-            Select a set of common tissue extraction sites.
-          &lt;/li&gt;
-          &lt;li&gt;
-            Size the tissue block in three dimensions.
-          &lt;/li&gt;
-          &lt;li&gt;
-            Enter information on tissue slice thickness.
-          &lt;/li&gt;
-          &lt;li&gt;
-            Position and rotate the 3D tissue block within a 3D reference organ so its placement correctly mirrors the tissue block extraction site.
-          &lt;/li&gt;
-          &lt;li&gt;
-            Identify anatomical structure tags via collision detection and manual annotation.
-          &lt;/li&gt;
-          &lt;li&gt;
-            Save all registration information into a file for easy uploading to custom templates in REDCap (or other systems) used to keep track of tissue and tissue registration data. If using the RUI integrated into the HuBMAP Ingestion Portal, registration information is automatically saved with the associated tissue block.
-          &lt;/li&gt;
-        &lt;/ul&gt;
-
-        &lt;p class&#x3D;&quot;description&quot;&gt;
-          A first beta of the CCF RUI became available in October 2020. The CCF RUI specification is available
-          &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://drive.google.com/drive/folders/1yXXHObo5bnwlFti9adetGP5eLOBxBrec?usp&#x3D;sharing&quot; target&#x3D;&quot;_blank&quot;&gt;here&lt;/a&gt;,
-          3D reference organs are freely available on the &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://hubmapconsortium.github.io/ccf/pages/ccf-3d-reference-library.html&quot; target&#x3D;&quot;_blank&quot;&gt;CCF Portal&lt;/a&gt;,
-          the ontology can be found on
-          &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://bioportal.bioontology.org/ontologies/CCF/&quot; target&#x3D;&quot;_blank&quot;&gt;BioPortal&lt;/a&gt;,
-          and code is available on
-          &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://github.com/hubmapconsortium/ccf-ui/&quot; target&#x3D;&quot;_blank&quot;&gt;GitHub&lt;/a&gt;.
-          A demo video is on YouTube
-          &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://youtu.be/z1aOjHFetME&quot; target&#x3D;&quot;_blank&quot;&gt;here&lt;/a&gt;.
-        &lt;/p&gt;
-
-        &lt;p class&#x3D;&quot;description&quot;&gt;
-          The registration data is used in current versions of the Common Coordinate Framework (CCF, see
-          &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://hubmapconsortium.github.io/ccf/&quot; target&#x3D;&quot;_blank&quot;&gt;CCF Portal&lt;/a&gt;
-          for details) and the
-          &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://portal.hubmapconsortium.org/ccf-eui&quot; target&#x3D;&quot;_blank&quot;&gt;CCF Exploration User Interface (EUI)&lt;/a&gt;
-          developed within HuBMAP.
-        &lt;/p&gt;
-
-        &lt;br /&gt;
-
-        &lt;h2&gt;Acknowledgements&lt;/h2&gt;
-        &lt;p class&#x3D;&quot;description&quot;&gt;
-          The CCF and associated user interfaces are developed by the MC-IU team within the HuBMAP HIVE. The MC-IU team includes Katy Börner, Lisel Record, Bruce Herr II, Leonard Cross, Ellen Quardokus, and Andreas Bueckle, Indiana University, Bloomington, IN and Griffin Weber, Harvard Medical School, Boston, MA. Former members of the team are Paul Macklin, Randy Heiland, and Jim Sluka at Indiana University, Bloomington, IN and Samuel Friedman, Opto-Knowledge Systems, Inc. We acknowledge expert input from Jeffrey Spraggins, Sanjay Jain, and Clive Wasserfall and their teams as well as the overall HuBMAP consortium.
-        &lt;/p&gt;
-
-        &lt;p class&#x3D;&quot;description&quot;&gt;
-          The 3D reference organs were designed by Kristen Browne, U.S. National Library of Medicine using data from the
-          &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://www.nlm.nih.gov/research/visible/visible_human.html&quot; target&#x3D;&quot;_blank&quot;&gt;Visible Human Project&lt;/a&gt;.
-        &lt;/p&gt;
-
-        &lt;p class&#x3D;&quot;description&quot;&gt;
-          The work is funded by NIH Award &lt;a class&#x3D;&quot;link-blue&quot; rel&#x3D;&quot;noopener noreferrer&quot; href&#x3D;&quot;https://projectreporter.nih.gov/project_info_description.cfm?aid&#x3D;9687220&quot; target&#x3D;&quot;_blank&quot;&gt;OT2OD026671&lt;/a&gt;.
-        &lt;/p&gt;
+      
+      &lt;mat-dialog-content class&#x3D;&quot;mat-typography dialog-content&quot;&gt;
+        &lt;div *ngFor&#x3D;&quot;let content of documentationContents; let i &#x3D; index;&quot; class&#x3D;&quot;panel&quot;&gt;
+          &lt;mat-expansion-panel *ngIf&#x3D;&quot;content&quot; [expanded]&#x3D;&quot;i &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+            &lt;mat-expansion-panel-header&gt;
+              &lt;h2 class&#x3D;&quot;no-header-margin&quot;&gt;{{content.title}}&lt;/h2&gt;
+            &lt;/mat-expansion-panel-header&gt;
+              &lt;markdown class&#x3D;&quot;variable-binding&quot; [data]&#x3D;&quot;content.content&quot;&gt;&lt;/markdown&gt;
+          &lt;/mat-expansion-panel&gt;
+        &lt;/div&gt;
       &lt;/mat-dialog-content&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -533,6 +510,20 @@ export class InfoDialogComponent {
       margin-top: 0;
       margin-bottom: 0.5rem;
     }
+
+    .panel {
+      margin-bottom: 1.5rem;
+
+      .no-header-margin {
+        margin-bottom: 0;
+      }
+    }
+
+    .dialog-content {
+      height: 50rem; 
+      min-height: 10rem;
+    }
+
   }
 }
 </code></pre>
@@ -563,8 +554,8 @@ export class InfoDialogComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="rui-about wrapper">  <div class="container">    <div class="close">      <mat-icon class="material-icons close-icon" (click)=close()>clear</mat-icon>    </div>    <div class="content">      <h2 class="title" mat-dialog-title>HuBMAP CCF Registration User Interface 1.0</h2>      <mat-dialog-content class="mat-typography">        <p class="description">          This Registration User Interface (RUI) supports the registration of three-dimensional (3D) tissue blocks within 3D reference organs. Surgeons and others involved in the tissue procurement process can use the interface to        </p>        <ul>          <li>            Enter their name to track data provenance.          </li>          <li>            Select a reference organ via the organ carousal (kidney, heart, spleen, large intestine).          </li>          <li>            Select a set of common tissue extraction sites.          </li>          <li>            Size the tissue block in three dimensions.          </li>          <li>            Enter information on tissue slice thickness.          </li>          <li>            Position and rotate the 3D tissue block within a 3D reference organ so its placement correctly mirrors the tissue block extraction site.          </li>          <li>            Identify anatomical structure tags via collision detection and manual annotation.          </li>          <li>            Save all registration information into a file for easy uploading to custom templates in REDCap (or other systems) used to keep track of tissue and tissue registration data. If using the RUI integrated into the HuBMAP Ingestion Portal, registration information is automatically saved with the associated tissue block.          </li>        </ul>        <p class="description">          A first beta of the CCF RUI became available in October 2020. The CCF RUI specification is available          <a class="link-blue" rel="noopener noreferrer" href="https://drive.google.com/drive/folders/1yXXHObo5bnwlFti9adetGP5eLOBxBrec?usp=sharing" target="_blank">here</a>,          3D reference organs are freely available on the <a class="link-blue" rel="noopener noreferrer" href="https://hubmapconsortium.github.io/ccf/pages/ccf-3d-reference-library.html" target="_blank">CCF Portal</a>,          the ontology can be found on          <a class="link-blue" rel="noopener noreferrer" href="https://bioportal.bioontology.org/ontologies/CCF/" target="_blank">BioPortal</a>,          and code is available on          <a class="link-blue" rel="noopener noreferrer" href="https://github.com/hubmapconsortium/ccf-ui/" target="_blank">GitHub</a>.          A demo video is on YouTube          <a class="link-blue" rel="noopener noreferrer" href="https://youtu.be/z1aOjHFetME" target="_blank">here</a>.        </p>        <p class="description">          The registration data is used in current versions of the Common Coordinate Framework (CCF, see          <a class="link-blue" rel="noopener noreferrer" href="https://hubmapconsortium.github.io/ccf/" target="_blank">CCF Portal</a>          for details) and the          <a class="link-blue" rel="noopener noreferrer" href="https://portal.hubmapconsortium.org/ccf-eui" target="_blank">CCF Exploration User Interface (EUI)</a>          developed within HuBMAP.        </p>        <br />        <h2>Acknowledgements</h2>        <p class="description">          The CCF and associated user interfaces are developed by the MC-IU team within the HuBMAP HIVE. The MC-IU team includes Katy Börner, Lisel Record, Bruce Herr II, Leonard Cross, Ellen Quardokus, and Andreas Bueckle, Indiana University, Bloomington, IN and Griffin Weber, Harvard Medical School, Boston, MA. Former members of the team are Paul Macklin, Randy Heiland, and Jim Sluka at Indiana University, Bloomington, IN and Samuel Friedman, Opto-Knowledge Systems, Inc. We acknowledge expert input from Jeffrey Spraggins, Sanjay Jain, and Clive Wasserfall and their teams as well as the overall HuBMAP consortium.        </p>        <p class="description">          The 3D reference organs were designed by Kristen Browne, U.S. National Library of Medicine using data from the          <a class="link-blue" rel="noopener noreferrer" href="https://www.nlm.nih.gov/research/visible/visible_human.html" target="_blank">Visible Human Project</a>.        </p>        <p class="description">          The work is funded by NIH Award <a class="link-blue" rel="noopener noreferrer" href="https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220" target="_blank">OT2OD026671</a>.        </p>      </mat-dialog-content>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ColorBarComponent', 'selector': 'ccf-color-bar'},{'name': 'ColorPickerLauncherComponent', 'selector': 'ccf-color-picker-launcher'},{'name': 'ColorSchemeContentsComponent', 'selector': 'ccf-color-scheme-contents'},{'name': 'ColorSchemePopupComponent', 'selector': 'ccf-color-scheme-popup'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'ImageViewerAccordionComponent', 'selector': 'ccf-image-viewer-accordion'},{'name': 'ImageViewerContentComponent', 'selector': 'ccf-image-viewer-content'},{'name': 'ImageViewerLayersComponent', 'selector': 'ccf-image-viewer-layers'},{'name': 'ImageViewerLegendComponent', 'selector': 'ccf-image-viewer-legend'},{'name': 'ImageViewerPopoverComponent', 'selector': 'ccf-image-viewer-popover'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SchemeDropdownComponent', 'selector': 'ccf-scheme-dropdown'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><div class="rui-about wrapper">  <div class="container">    <div class="close">      <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>    </div>    <div class="content">      <h2 class="title" mat-dialog-title>HuBMAP CCF Registration User Interface 1.0</h2>            <mat-dialog-content class="mat-typography dialog-content">        <div *ngFor="let content of documentationContents; let i = index;" class="panel">          <mat-expansion-panel *ngIf="content" [expanded]="i === 0">            <mat-expansion-panel-header>              <h2 class="no-header-margin">{{content.title}}</h2>            </mat-expansion-panel-header>              <markdown class="variable-binding" [data]="content.content"></markdown>          </mat-expansion-panel>        </div>      </mat-dialog-content>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'InfoDialogComponent-1'};
 </script>

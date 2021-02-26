@@ -73,6 +73,12 @@
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
 
 
 <section>
@@ -135,24 +141,26 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#checkedResults">checkedResults</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Readonly</span>
                                 <a href="#countMapping">countMapping</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
                                     <span class="modifier">Readonly</span>
-                                <a href="#formGroup">formGroup</a>
+                                <a href="#destroy$">destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#resultsVisible">resultsVisible</a>
                             </li>
                             <li>
                                     <span class="modifier">Readonly</span>
-                                <a href="#results$">results$</a>
+                                <a href="#searchControl">searchControl</a>
                             </li>
                             <li>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#searchResult$">searchResult$</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#totalCount$">totalCount$</a>
+                                <a href="#searchResults">searchResults</a>
                             </li>
                         </ul>
                     </td>
@@ -167,18 +175,28 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#doSearch">doSearch</a>
-                            </li>
-                            <li>
-                                <a href="#emitTagsAndClear">emitTagsAndClear</a>
+                                <a href="#addTags">addTags</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#limitSearchResult">limitSearchResult</a>
+                                <a href="#executeSearch">executeSearch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getUpdatedCheckedResults">getUpdatedCheckedResults</a>
+                            </li>
+                            <li>
+                                <a href="#hasCheckedTags">hasCheckedTags</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
                             </li>
                             <li>
                                 <a href="#tagId">tagId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#truncateResults">truncateResults</a>
                             </li>
                         </ul>
                     </td>
@@ -200,6 +218,9 @@
                             </li>
                             <li>
                                 <a href="#searchLimit">searchLimit</a>
+                            </li>
+                            <li>
+                                <a href="#searchThrottle">searchThrottle</a>
                             </li>
                         </ul>
                     </td>
@@ -235,24 +256,24 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#click">click</a>
+                            </li>
+                            <li>
+                                <a href="#window:click">window:click</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#selectController">selectController</a>
-                                </li>
-                                <li>
-                                    <a href="#searchController">searchController</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
@@ -263,12 +284,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>)</code>
+<code>constructor(el: ElementRef<Node>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:77</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:68</a></div>
                             </td>
                         </tr>
 
@@ -289,10 +310,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>fb</td>
+                                                        <td>el</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                                    <code>ElementRef&lt;Node&gt;</code>
                                                         </td>
                                                   
                                                     <td>
@@ -300,7 +321,23 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Form builder helper service</p>
+                                                                <code><p>: Element for this component</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Reference to change detector</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -330,7 +367,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:35</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -357,7 +394,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:38</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -384,12 +421,39 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:41</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>Maximum number of results to show </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchThrottle"></a>
+                        <b>searchThrottle</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:44</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Throttle time between search calls </p>
 </div>
                     </td>
                 </tr>
@@ -414,7 +478,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:47</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -446,7 +510,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -461,7 +525,87 @@
         </table>
 </section>
 
+    <section>
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="click"></a>
+                    <span class="name">
+                        <b>
+                            click
+                        </b>
+                        <a href="#click"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>click()</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:142</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens the results panel</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="window:click"></a>
+                    <span class="name">
+                        <b>
+                            window:click
+                        </b>
+                        <a href="#window:click"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>window:click(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:155</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Closes the results panel</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     <section>
     
     <h3 id="methods">
@@ -471,20 +615,61 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="doSearch"></a>
+                    <a name="addTags"></a>
+                    <span class="name">
+                        <b>
+                            addTags
+                        </b>
+                        <a href="#addTags"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addTags()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emits selected tags and resets the search and selections</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="executeSearch"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Private</span>
-                            doSearch
+                            executeSearch
                         </b>
-                        <a href="#doSearch"><span class="icon ion-ios-link"></span></a>
+                        <a href="#executeSearch"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>doSearch(text: string | undefined)</code>
+                    <code>executeSearch(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -498,15 +683,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:170</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Performs a text search</p>
+                    <div class="io-description"><p>Executes a search on a piece of text.</p>
 </div>
 
                     <div class="io-description">
@@ -524,7 +709,7 @@
                                 <tr>
                                     <td>text</td>
                                     <td>
-                                            <code>string | undefined</code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -533,7 +718,7 @@
 
 
                                     <td>
-                                        <p>The search text</p>
+                                        <p>Search text</p>
 
                                     </td>
                                 </tr>
@@ -547,7 +732,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>An observable of the search result.</p>
+
                     </div>
                 </td>
             </tr>
@@ -557,120 +743,35 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="emitTagsAndClear"></a>
-                    <span class="name">
-                        <b>
-                            emitTagsAndClear
-                        </b>
-                        <a href="#emitTagsAndClear"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>emitTagsAndClear(searchEl: literal type)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:103</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Adds currently selected tags and clears the search.
-Does nothing if no tags have been selected.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>searchEl</td>
-                                    <td>
-                                            <code>literal type</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>Used to refocus on the input element after clearing the search</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="limitSearchResult"></a>
+                    <a name="getUpdatedCheckedResults"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Private</span>
-                            limitSearchResult
+                            getUpdatedCheckedResults
                         </b>
-                        <a href="#limitSearchResult"><span class="icon ion-ios-link"></span></a>
+                        <a href="#getUpdatedCheckedResults"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>limitSearchResult(search: <a href="../interfaces/TagSearchResult.html">TagSearchResult</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Bind()<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="138"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:138</a></div>
+                    <code>getUpdatedCheckedResults(result: <a href="../interfaces/TagSearchResult.html">TagSearchResult</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Limits the number of items in a search</p>
+                    <div class="io-line">Defined in <a href="" data-line="209"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:209</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Computes a new checked object for result items. Already checked items are preserved.</p>
 </div>
 
                     <div class="io-description">
@@ -686,7 +787,7 @@ Does nothing if no tags have been selected.</p>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>search</td>
+                                    <td>result</td>
                                     <td>
                                                 <code><a href="../interfaces/TagSearchResult.html" target="_self" >TagSearchResult</a></code>
                                     </td>
@@ -697,7 +798,7 @@ Does nothing if no tags have been selected.</p>
 
 
                                     <td>
-                                        <p>The search result object</p>
+                                        <p>New results</p>
 
                                     </td>
                                 </tr>
@@ -707,11 +808,99 @@ Does nothing if no tags have been selected.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/TagSearchResult.html" target="_self" >TagSearchResult</a></code>
+                        <b>Returns : </b>        <code><a href="../interfaces/Tag.html" target="_self" >Record&lt;TagId, boolean&gt;</a></code>
 
                     </div>
                     <div class="io-description">
-                        <p>A possible modified object with search limits applied</p>
+                        <p>A new checked object</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasCheckedTags"></a>
+                    <span class="name">
+                        <b>
+                            hasCheckedTags
+                        </b>
+                        <a href="#hasCheckedTags"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasCheckedTags()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:118</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines whether any tags have been checked</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>true if any tag has been checked by the user</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cleans up component on destruction</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                 </td>
@@ -740,8 +929,8 @@ Does nothing if no tags have been selected.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:109</a></div>
                 </td>
             </tr>
 
@@ -812,12 +1001,137 @@ Does nothing if no tags have been selected.</p>
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="truncateResults"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            truncateResults
+                        </b>
+                        <a href="#truncateResults"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>truncateResults(result: <a href="../interfaces/TagSearchResult.html">TagSearchResult</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="189"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:189</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Truncates the number of results returned by a search</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>result</td>
+                                    <td>
+                                                <code><a href="../interfaces/TagSearchResult.html" target="_self" >TagSearchResult</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The results</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/TagSearchResult.html" target="_self" >TagSearchResult</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Results with at most <code>searchLimit</code> items</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
     <section>
     
         <h3 id="inputs">
             Properties
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="checkedResults"></a>
+                        <span class="name">
+                            <b>
+                            checkedResults</b>
+                            <a href="#checkedResults"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Tag.html" target="_self" >Record&lt;TagId | boolean&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:62</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Object of currently checked search results </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -840,7 +1154,6 @@ Does nothing if no tags have been selected.</p>
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>{
-    &#x27;&#x3D;0&#x27;: &#x27;0 results&#x27;,
     &#x27;&#x3D;1&#x27;: &#x27;1 result&#x27;,
     other: &#x27;# results&#x27;
   }</code>
@@ -848,7 +1161,7 @@ Does nothing if no tags have been selected.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -865,59 +1178,30 @@ Does nothing if no tags have been selected.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="formGroup"></a>
+                        <a name="destroy$"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Private</span>
                                 <span class="modifier">Readonly</span>
-                            formGroup</b>
-                            <a href="#formGroup"><span class="icon ion-ios-link"></span></a>
+                            destroy$</b>
+                            <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>this.fb.group({
-    select: [[...EMPTY_SELECTION]],
-    search: [&#x27;&#x27;]
-  })</code>
+                            <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:49</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="results$"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Readonly</span>
-                            results$</b>
-                            <a href="#results$"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>this.searchResult$.pipe(pluck(&#x27;results&#x27;))</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:68</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Current results </p>
+                        <div class="io-description"><p>Emits and completes when component is destroyed. Used to clean up observables. </p>
 </div>
                     </td>
                 </tr>
@@ -928,23 +1212,17 @@ Does nothing if no tags have been selected.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="searchResult$"></a>
+                        <a name="resultsVisible"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Readonly</span>
-                            searchResult$</b>
-                            <a href="#searchResult$"><span class="icon ion-ios-link"></span></a>
+                            resultsVisible</b>
+                            <a href="#resultsVisible"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>(this.searchController.valueChanges as Observable&lt;string | undefined&gt;).pipe(
-      startWith(&#x27;&#x27;),
-      switchMap(this.doSearch),
-      map(this.limitSearchResult),
-      shareReplay(1)
-    )</code>
+                            <i>Default value : </i><code>false</code>
                         </td>
                     </tr>
                         <tr>
@@ -955,7 +1233,7 @@ Does nothing if no tags have been selected.</p>
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Current search result </p>
+                        <div class="io-description"><p>Whether results are shown </p>
 </div>
                     </td>
                 </tr>
@@ -966,29 +1244,61 @@ Does nothing if no tags have been selected.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="totalCount$"></a>
+                        <a name="searchControl"></a>
                         <span class="name">
                             <b>
                                 <span class="modifier">Readonly</span>
-                            totalCount$</b>
-                            <a href="#totalCount$"><span class="icon ion-ios-link"></span></a>
+                            searchControl</b>
+                            <a href="#searchControl"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>this.searchResult$.pipe(pluck(&#x27;totalCount&#x27;))</code>
+                            <i>Default value : </i><code>new FormControl()</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:56</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Current result total count </p>
+                        <div class="io-description"><p>Search field controller </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchResults"></a>
+                        <span class="name">
+                            <b>
+                            searchResults</b>
+                            <a href="#searchResults"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>EMPTY_RESULT</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Search results </p>
 </div>
                     </td>
                 </tr>
@@ -997,96 +1307,29 @@ Does nothing if no tags have been selected.</p>
         </table>
 </section>
 
-    <section>
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="selectController"></a>
-                        <span class="name"><b>selectController</b><a href="#selectController"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>selectController()</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:55</a></div>
-                                </td>
-                            </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Controller for the select element </p>
-</div>
-
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="searchController"></a>
-                        <span class="name"><b>searchController</b><a href="#searchController"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>searchController()</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts:60</a></div>
-                                </td>
-                            </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Controller for the search element </p>
-</div>
-
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-
-            </tbody>
-        </table>
-</section>
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
-import { AbstractControl, FormBuilder, FormControl } from &#x27;@angular/forms&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input,
+  OnDestroy, Output,
+} from &#x27;@angular/core&#x27;;
+import { FormControl } from &#x27;@angular/forms&#x27;;
 import { bind as Bind } from &#x27;bind-decorator&#x27;;
-import { Observable, ObservableInput } from &#x27;rxjs&#x27;;
-import { map, pluck, shareReplay, startWith, switchMap } from &#x27;rxjs/operators&#x27;;
+import { from, interval, ObservableInput, Subject } from &#x27;rxjs&#x27;;
+import { catchError, map, switchMap, takeUntil, throttle } from &#x27;rxjs/operators&#x27;;
 
 import { Tag, TagId, TagSearchResult } from &#x27;../../../core/models/anatomical-structure-tag&#x27;;
 
 
 /** Default search results limit */
 const DEFAULT_SEARCH_LIMIT &#x3D; 5;
-/** Initial selection for mat-select */
-const EMPTY_SELECTION &#x3D; [&#x27;search&#x27;];
+/** Default search throttle time in ms */
+const DEFAULT_SEARCH_THROTTLE &#x3D; 100;
 /** Empty search result object */
 const EMPTY_RESULT: TagSearchResult &#x3D; { totalCount: 0, results: [] };
+
 
 /**
  * Component for searching, selecting, and adding tags.
@@ -1097,7 +1340,7 @@ const EMPTY_RESULT: TagSearchResult &#x3D; { totalCount: 0, results: [] };
   styleUrls: [&#x27;./tag-search.component.scss&#x27;],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TagSearchComponent {
+export class TagSearchComponent implements OnDestroy {
   /** HTML class name */
   @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-tag-search&#x27;;
 
@@ -1105,57 +1348,69 @@ export class TagSearchComponent {
   @Input() placeholder &#x3D; &#x27;Add Anatomical Structures ...&#x27;;
 
   /** Search method */
-  @Input() search: (text: string, limit: number) &#x3D;&gt; ObservableInput&lt;TagSearchResult&gt;;
+  @Input() search?: (text: string, limit: number) &#x3D;&gt; ObservableInput&lt;TagSearchResult&gt;;
 
   /** Maximum number of results to show */
   @Input() searchLimit?: number;
+
+  /** Throttle time between search calls */
+  @Input() searchThrottle?: number;
 
   /** Emits when tags are added */
   @Output() readonly added &#x3D; new EventEmitter&lt;Tag[]&gt;();
 
   /** Mapping for pluralizing the result total count */
   readonly countMapping &#x3D; {
-    &#x27;&#x3D;0&#x27;: &#x27;0 results&#x27;,
     &#x27;&#x3D;1&#x27;: &#x27;1 result&#x27;,
     other: &#x27;# results&#x27;
   };
 
-  readonly formGroup &#x3D; this.fb.group({
-    select: [[...EMPTY_SELECTION]],
-    search: [&#x27;&#x27;]
-  });
+  /** Search field controller */
+  readonly searchControl &#x3D; new FormControl();
 
-  /** Controller for the select element */
-  get selectController(): AbstractControl {
-    return this.formGroup.get(&#x27;select&#x27;) as AbstractControl;
-  }
+  /** Search results */
+  searchResults &#x3D; EMPTY_RESULT;
 
-  /** Controller for the search element */
-  get searchController(): AbstractControl {
-    return this.formGroup.get(&#x27;search&#x27;) as AbstractControl;
-  }
+  /** Object of currently checked search results */
+  checkedResults: Record&lt;TagId, boolean&gt; &#x3D; {};
 
-  /** Current search result */
-  readonly searchResult$ &#x3D;
-    (this.searchController.valueChanges as Observable&lt;string | undefined&gt;).pipe(
-      startWith(&#x27;&#x27;),
-      switchMap(this.doSearch),
-      map(this.limitSearchResult),
-      shareReplay(1)
-    );
+  /** Whether results are shown */
+  resultsVisible &#x3D; false;
 
-  /** Current result total count */
-  readonly totalCount$ &#x3D; this.searchResult$.pipe(pluck(&#x27;totalCount&#x27;));
-
-  /** Current results */
-  readonly results$ &#x3D; this.searchResult$.pipe(pluck(&#x27;results&#x27;));
+  /** Emits and completes when component is destroyed. Used to clean up observables. */
+  private readonly destroy$ &#x3D; new Subject&lt;void&gt;();
 
   /**
    * Creates an instance of tag search component.
    *
-   * @param fb Form builder helper service
+   * @param el: Element for this component
+   * @param cdr Reference to change detector
    */
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly el: ElementRef&lt;Node&gt;,
+    cdr: ChangeDetectorRef
+  ) {
+    this.searchControl.valueChanges.pipe(
+      takeUntil(this.destroy$),
+      throttle(
+        () &#x3D;&gt; interval(this.searchThrottle ?? DEFAULT_SEARCH_THROTTLE),
+        { leading: true, trailing: true }
+      ),
+      switchMap(this.executeSearch),
+    ).subscribe(result &#x3D;&gt; {
+      this.searchResults &#x3D; result;
+      this.checkedResults &#x3D; this.getUpdatedCheckedResults(result);
+      cdr.markForCheck();
+    });
+  }
+
+  /**
+   * Cleans up component on destruction
+   */
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   /**
    * Extracts the tag identifier
@@ -1169,84 +1424,134 @@ export class TagSearchComponent {
   }
 
   /**
-   * Adds currently selected tags and clears the search.
-   * Does nothing if no tags have been selected.
+   * Determines whether any tags have been checked
    *
-   * @param searchEl Used to refocus on the input element after clearing the search
+   * @returns true if any tag has been checked by the user
    */
-  emitTagsAndClear(searchEl: { focus(): void }): void {
-    const { added, selectController, searchController } &#x3D; this;
-    const selection &#x3D; selectController.value as [string, ...Tag[]];
-    const tags &#x3D; selection.slice(1) as Tag[]; // Remove initial &#x27;search&#x27; value
+  hasCheckedTags(): boolean {
+    return Object.values(this.checkedResults).some(v &#x3D;&gt; v);
+  }
+
+  /**
+   * Emits selected tags and resets the search and selections
+   */
+  addTags(): void {
+    const { searchControl, searchResults, checkedResults } &#x3D; this;
+    const tags &#x3D; searchResults.results.filter(tag &#x3D;&gt; checkedResults[tag.id]);
 
     if (tags.length &gt; 0) {
-      searchController.setValue(&#x27;&#x27;);
-      searchEl.focus();
-      added.emit(tags);
+      searchControl.reset();
+      this.searchResults &#x3D; EMPTY_RESULT;
+      this.checkedResults &#x3D; {};
+      this.added.emit(tags);
     }
   }
 
   /**
-   * Performs a text search
+   * Opens the results panel
+   */
+  @HostListener(&#x27;click&#x27;) // tslint:disable-line: no-unsafe-any
+  @HostListener(&#x27;focusin&#x27;) // tslint:disable-line: no-unsafe-any
+  openResults(): void {
+    if (!this.resultsVisible) {
+      this.resultsVisible &#x3D; true;
+    }
+  }
+
+  /**
+   * Closes the results panel
    *
-   * @param text The search text
+   * @param event DOM event
+   */
+  @HostListener(&#x27;window:click&#x27;, [&#x27;$event&#x27;]) // tslint:disable-line: no-unsafe-any
+  @HostListener(&#x27;window:focusin&#x27;, [&#x27;$event&#x27;]) // tslint:disable-line: no-unsafe-any
+  closeResults(event: Event): void {
+    if (this.resultsVisible &amp;&amp; event.target instanceof Node) {
+      if (!this.el.nativeElement.contains(event.target)) {
+        this.resultsVisible &#x3D; false;
+      }
+    }
+  }
+
+  /**
+   * Executes a search on a piece of text.
+   *
+   * @param text Search text
+   * @returns An observable of the search result.
    */
   @Bind
-  private doSearch(text: string | undefined): ObservableInput&lt;TagSearchResult&gt; {
-    if (!text) {
+  private executeSearch(text: string): ObservableInput&lt;TagSearchResult&gt; {
+    const { search, searchLimit &#x3D; DEFAULT_SEARCH_LIMIT } &#x3D; this;
+    if (!text || !search) {
       return [EMPTY_RESULT];
     }
 
-    const { search, searchLimit &#x3D; DEFAULT_SEARCH_LIMIT } &#x3D; this;
-    const result &#x3D; search?.(text, searchLimit);
-    return result ?? [EMPTY_RESULT];
+    return from(search(text, searchLimit)).pipe(
+      catchError(() &#x3D;&gt; [EMPTY_RESULT]),
+      map(this.truncateResults)
+    );
   }
 
   /**
-   * Limits the number of items in a search
+   * Truncates the number of results returned by a search
    *
-   * @param search The search result object
-   * @returns A possible modified object with search limits applied
+   * @param result The results
+   * @returns Results with at most &#x60;searchLimit&#x60; items
    */
   @Bind
-  private limitSearchResult(search: TagSearchResult): TagSearchResult {
+  private truncateResults(result: TagSearchResult): TagSearchResult {
     const { searchLimit &#x3D; DEFAULT_SEARCH_LIMIT } &#x3D; this;
+    const items &#x3D; result.results;
 
-    if (search.results.length &gt; searchLimit) {
-      return { ...search, results: search.results.slice(0, searchLimit) };
+    if (items.length &gt; searchLimit) {
+      return {
+        ...result,
+        results: items.slice(0, searchLimit)
+      };
     }
-    return search;
+
+    return result;
+  }
+
+  /**
+   * Computes a new checked object for result items. Already checked items are preserved.
+   *
+   * @param result New results
+   * @returns A new checked object
+   */
+  private getUpdatedCheckedResults(result: TagSearchResult): Record&lt;TagId, boolean&gt; {
+    const prev &#x3D; this.checkedResults;
+    return result.results.reduce((acc, { id }) &#x3D;&gt; {
+      acc[id] &#x3D; prev[id] ?? false;
+      return acc;
+    }, {});
   }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;mat-form-field appearance&#x3D;&quot;outline&quot; [formGroup]&#x3D;&quot;formGroup&quot;&gt;
-  &lt;mat-select panelClass&#x3D;&quot;tag-search-panel&quot; multiple disableRipple formControlName&#x3D;&quot;select&quot;
-              [placeholder]&#x3D;&quot;placeholder&quot; (openedChange)&#x3D;&quot;$event ? search.focus() : null&quot;&gt;
-    &lt;mat-select-trigger&gt;
-      &lt;span&gt;{{ searchController.value || placeholder }}&lt;/span&gt;
-      &lt;mat-icon class&#x3D;&quot;icon add&quot; fontSet&#x3D;&quot;material-icons-sharp&quot;&gt;
-        add_box
-      &lt;/mat-icon&gt;
-    &lt;/mat-select-trigger&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;spacer&quot;&gt;&lt;/div&gt;
 
-    &lt;mat-option class&#x3D;&quot;search-container&quot; value&#x3D;&quot;search&quot; disabled&gt;
-      &lt;input matInput type&#x3D;&quot;search&quot; formControlName&#x3D;&quot;search&quot; #search&gt;
-      &lt;mat-icon class&#x3D;&quot;icon add&quot; fontSet&#x3D;&quot;material-icons-sharp&quot; (click)&#x3D;&quot;emitTagsAndClear(search)&quot;&gt;
-        add_box
-      &lt;/mat-icon&gt;
-    &lt;/mat-option&gt;
+&lt;mat-form-field class&#x3D;&quot;overlay&quot; [class.expanded]&#x3D;&quot;resultsVisible&quot; appearance&#x3D;&quot;outline&quot;&gt;
+  &lt;div class&#x3D;&quot;search-box&quot;&gt;
+    &lt;input matInput type&#x3D;&quot;search&quot; [placeholder]&#x3D;&quot;placeholder&quot; [formControl]&#x3D;&quot;searchControl&quot; #search&gt;
+    &lt;button mat-icon-button class&#x3D;&quot;add-button&quot; [disabled]&#x3D;&quot;!hasCheckedTags()&quot; (click)&#x3D;&quot;addTags(); search.focus()&quot;&gt;
+      &lt;mat-icon class&#x3D;&quot;icon&quot;&gt;add&lt;/mat-icon&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
 
-    &lt;mat-option *ngFor&#x3D;&quot;let tag of results$ | async; trackBy: tagId&quot; [value]&#x3D;&quot;tag&quot;&gt;
-      {{ tag.label }}
-    &lt;/mat-option&gt;
+  &lt;div *ngIf&#x3D;&quot;resultsVisible&quot; class&#x3D;&quot;results&quot;&gt;
+    &lt;div *ngFor&#x3D;&quot;let result of searchResults.results; trackBy: tagId&quot; class&#x3D;&quot;item&quot;&gt;
+      &lt;mat-checkbox labelPosition&#x3D;&quot;after&quot; [(ngModel)]&#x3D;&quot;checkedResults[result.id]&quot;&gt;
+        {{ result.label }}
+      &lt;/mat-checkbox&gt;
+    &lt;/div&gt;
 
-    &lt;mat-option class&#x3D;&quot;count-container&quot; value&#x3D;&quot;count&quot; disabled&gt;
-      {{ ((totalCount$ | async) || 0) | i18nPlural: countMapping }}
-    &lt;/mat-option&gt;
-  &lt;/mat-select&gt;
+    &lt;div class&#x3D;&quot;count&quot;&gt;
+      {{ searchResults.totalCount | i18nPlural:countMapping }}
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/mat-form-field&gt;
 </code></pre>
     </div>
@@ -1257,98 +1562,67 @@ export class TagSearchComponent {
                 </p>
                 <pre class="line-numbers"><code class="language-scss">:host {
   display: block;
+  position: relative;
 
-  mat-form-field {
-    width: 100%;
+  .spacer {
+    // Calculated by adding up all padding/margin/height of material form fields
+    height: 3.25rem;
+  }
 
-    mat-select {
-      cursor: text;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
 
-      mat-select-trigger {
-        .icon.add {
-          position: absolute;
-          // Position determined by experimentation
-          top: -1.1875rem;
-          right: -1.1875rem;
-          width: 3.625rem;
-          height: 3.625rem;
-          font-size: 3.625rem;
-          cursor: pointer;
-        }
+    .search-box {
+      display: flex;
+      width: 100%;
+
+      .add-button {
+        width: 1.5rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
       }
     }
-  }
 
-  ::ng-deep .mat-form-field-outline-thick {
-    opacity: 1 !important;
-  }
+    .results {
+      margin-top: 0.5rem;
 
-  ::ng-deep .mat-form-field-infix {
-    height: 3rem;
-    border-top: 0;
-    cursor: text;
-  }
-
-  ::ng-deep .mat-select-trigger {
-    width: 100%;
-    cursor: text;
-  }
-
-  ::ng-deep .mat-select-arrow-wrapper {
-    display: none;
-  }
-}
-
-// Overlay is located outside this element - ugh!
-::ng-deep .tag-search-panel {
-  position: absolute;
-  // Position determined by experimentation
-  top: 0.1875rem;
-  left: 1.75rem;
-  width: 22.5rem;
-  // Override stupid material settings
-  min-width: unset !important;
-  max-width: 22.5rem !important;
-  box-shadow: 0rem 0rem 0.3rem 0.1rem #9e9e9e;
-
-  mat-option {
-    height: 3rem !important;
-  }
-
-  .search-container, .count-container {
-    mat-pseudo-checkbox {
-      display: none;
-    }
-  }
-
-  .search-container {
-    .mat-option-text {
-      overflow: unset;
+      .count {
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        text-align: end;
+      }
     }
 
-    input {
-      width: calc(100% - 3rem);
-      vertical-align: middle;
+    ::ng-deep {
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+        border-radius: 0.5rem;
+        // box-shadow: 0rem 0rem 0.3rem 0.1rem #9e9e9e;
+      }
+
+      .mat-form-field-outline {
+        opacity: 1 !important;
+      }
+
+      .mat-form-field-outline-thick {
+        opacity: 0 !important;
+      }
+
+      .mat-form-field-infix {
+        padding: 0 0 0.5rem 0;
+      }
     }
 
-    .icon.add {
-      position: relative;
-      // Position determined by experimentation
-      top: -0.09375rem;
-      right: -0.8125rem;
-      width: 3.625rem;
-      height: 3.625rem;
-      font-size: 3.625rem;
-      cursor: pointer;
-    }
-  }
-
-  .count-container {
-    height: 2rem !important;
-
-    span {
-      font-size: 0.75rem;
-      text-align: end;
+    &amp;.expanded {
+      ::ng-deep {
+        .mat-form-field-wrapper {
+          box-shadow: 0rem 0rem 0.3rem 0.1rem #9e9e9e;
+        }
+      }
     }
   }
 }
@@ -1380,8 +1654,8 @@ export class TagSearchComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-form-field appearance="outline" [formGroup]="formGroup">  <mat-select panelClass="tag-search-panel" multiple disableRipple formControlName="select"              [placeholder]="placeholder" (openedChange)="$event ? search.focus() : null">    <mat-select-trigger>      <span>{{ searchController.value || placeholder }}</span>      <mat-icon class="icon add" fontSet="material-icons-sharp">        add_box      </mat-icon>    </mat-select-trigger>    <mat-option class="search-container" value="search" disabled>      <input matInput type="search" formControlName="search" #search>      <mat-icon class="icon add" fontSet="material-icons-sharp" (click)="emitTagsAndClear(search)">        add_box      </mat-icon>    </mat-option>    <mat-option *ngFor="let tag of results$ | async; trackBy: tagId" [value]="tag">      {{ tag.label }}    </mat-option>    <mat-option class="count-container" value="count" disabled>      {{ ((totalCount$ | async) || 0) | i18nPlural: countMapping }}    </mat-option>  </mat-select></mat-form-field></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ColorBarComponent', 'selector': 'ccf-color-bar'},{'name': 'ColorPickerLauncherComponent', 'selector': 'ccf-color-picker-launcher'},{'name': 'ColorSchemeContentsComponent', 'selector': 'ccf-color-scheme-contents'},{'name': 'ColorSchemePopupComponent', 'selector': 'ccf-color-scheme-popup'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'ImageViewerAccordionComponent', 'selector': 'ccf-image-viewer-accordion'},{'name': 'ImageViewerContentComponent', 'selector': 'ccf-image-viewer-content'},{'name': 'ImageViewerLayersComponent', 'selector': 'ccf-image-viewer-layers'},{'name': 'ImageViewerLegendComponent', 'selector': 'ccf-image-viewer-legend'},{'name': 'ImageViewerPopoverComponent', 'selector': 'ccf-image-viewer-popover'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SchemeDropdownComponent', 'selector': 'ccf-scheme-dropdown'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><div class="spacer"></div><mat-form-field class="overlay" [class.expanded]="resultsVisible" appearance="outline">  <div class="search-box">    <input matInput type="search" [placeholder]="placeholder" [formControl]="searchControl" #search>    <button mat-icon-button class="add-button" [disabled]="!hasCheckedTags()" (click)="addTags(); search.focus()">      <mat-icon class="icon">add</mat-icon>    </button>  </div>  <div *ngIf="resultsVisible" class="results">    <div *ngFor="let result of searchResults.results; trackBy: tagId" class="item">      <mat-checkbox labelPosition="after" [(ngModel)]="checkedResults[result.id]">        {{ result.label }}      </mat-checkbox>    </div>    <div class="count">      {{ searchResults.totalCount | i18nPlural:countMapping }}    </div>  </div></mat-form-field></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'TagSearchComponent'};
 </script>

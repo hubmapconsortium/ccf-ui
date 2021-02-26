@@ -115,6 +115,10 @@
                                 <a href="#addTag">addTag</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#addTagRaw">addTagRaw</a>
+                            </li>
+                            <li>
                                 <a href="#addTags">addTags</a>
                             </li>
                             <li>
@@ -297,6 +301,85 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="addTagRaw"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            addTagRaw
+                        </b>
+                        <a href="#addTagRaw"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addTagRaw(tag: <a href="../interfaces/Tag.html">Tag</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/anatomical-structure-tags/anatomical-structure-tags.state.ts:151</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds a tag. Implementation helper for <code>addTags</code> and <code>addTag</code></p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>tag</td>
+                                    <td>
+                                                <code><a href="../interfaces/Tag.html" target="_self" >Tag</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The tag</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="addTags"></a>
                     <span class="name">
                         <b>
@@ -440,8 +523,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/anatomical-structure-tags/anatomical-structure-tags.state.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/anatomical-structure-tags/anatomical-structure-tags.state.ts:117</a></div>
                 </td>
             </tr>
 
@@ -517,8 +600,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="137"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/anatomical-structure-tags/anatomical-structure-tags.state.ts:137</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="133"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/anatomical-structure-tags/anatomical-structure-tags.state.ts:133</a></div>
                 </td>
             </tr>
 
@@ -868,25 +951,21 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
   @DataAction()
   addTags(tags: Tag[]): void {
     for (const tag of tags) {
-      this.addTag(tag);
+      this.addTagRaw(tag);
     }
   }
 
   @DataAction()
   addTag(tag: Tag): void {
-    if (this.snapshot.entities[tag.id]) {
-      this.updateOne({id: tag.id, changes: {type: &#x27;added&#x27;}});
-    } else {
-      this.addOne({ ...tag, type: &#x27;added&#x27;});
-    }
+    this.addTagRaw(tag);
   }
 
   @DataAction()
   removeTag(tag: Tag): void {
     if (this.snapshot.entities[tag.id]) {
-      this.updateOne({id: tag.id, changes: {type: &#x27;removed&#x27;}});
+      this.updateEntitiesMany([{id: tag.id, changes: {type: &#x27;removed&#x27;}}]);
     } else {
-      this.addOne({...tag, type: &#x27;removed&#x27;});
+      this.addEntityOne({...tag, type: &#x27;removed&#x27;});
     }
   }
 
@@ -909,6 +988,19 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
         type: &#x27;added&#x27;
       } as Tag)).slice(0, limit)
     }];
+  }
+
+  /**
+   * Adds a tag. Implementation helper for &#x60;addTags&#x60; and &#x60;addTag&#x60;
+   *
+   * @param tag The tag
+   */
+  private addTagRaw(tag: Tag): void {
+    if (this.snapshot.entities[tag.id]) {
+      this.updateEntitiesMany([{id: tag.id, changes: {type: &#x27;added&#x27;}}]);
+    } else {
+      this.addEntityOne({ ...tag, type: &#x27;added&#x27;});
+    }
   }
 }
 </code></pre>

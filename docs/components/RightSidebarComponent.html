@@ -329,11 +329,14 @@ export class RightSidebarComponent {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;scroll-wrapper&quot;&gt;
+  
   &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&#x27;info-button-container&#x27;&gt;
+      &lt;ccf-info-button&gt;&lt;/ccf-info-button&gt;
+    &lt;/div&gt;
     &lt;ccf-block-size-input [blockSize]&#x3D;&quot;model.blockSize$ | async&quot; (blockSizeChange)&#x3D;&quot;model.setBlockSize($event)&quot;&gt;
     &lt;/ccf-block-size-input&gt;
 
-    &lt;mat-divider&gt;&lt;/mat-divider&gt;
 
     &lt;ccf-slices-input [slicesConfig]&#x3D;&quot;model.slicesConfig$ | async&quot; (slicesConfigChange)&#x3D;&quot;model.setSlicesConfig($event)&quot;&gt;
     &lt;/ccf-slices-input&gt;
@@ -353,8 +356,14 @@ export class RightSidebarComponent {
       &lt;ccf-tag-search [search]&#x3D;&quot;astags.searchExternal&quot; (added)&#x3D;&quot;astags.addTags($event)&quot;&gt;
       &lt;/ccf-tag-search&gt;
 
-      &lt;ccf-tag-list class&#x3D;&quot;tag-list&quot; [tags]&#x3D;&quot;astags.tags$ | async&quot; (tagRemoved)&#x3D;&quot;astags.removeTag($event)&quot;&gt;
+      &lt;ccf-tag-list *ngIf&#x3D;&quot;(model.organ$ | async)?.name; else: tagListPlaceholder&quot; class&#x3D;&quot;tag-list&quot; [tags]&#x3D;&quot;astags.tags$ | async&quot;
+                    (tagRemoved)&#x3D;&quot;astags.removeTag($event)&quot;&gt;
       &lt;/ccf-tag-list&gt;
+      &lt;ng-template #tagListPlaceholder&gt;
+        &lt;div class&#x3D;&quot;tag-list-placeholder&quot;&gt;
+          Select an organ to see tags
+        &lt;/div&gt;
+      &lt;/ng-template&gt;
 
       &lt;div class&#x3D;&quot;legend&quot;&gt;
         &lt;span class&#x3D;&quot;dot assigned&quot;&gt;&lt;/span&gt;
@@ -368,13 +377,10 @@ export class RightSidebarComponent {
 
     &lt;div class&#x3D;&quot;filler&quot;&gt;&lt;/div&gt;
 
-    &lt;ccf-review-button
-      [embeddedMode]&#x3D;&quot;page.embedded$ | async&quot;
-      [displayErrors]&#x3D;&quot;registration.displayErrors$ | async&quot;
-      [registrationIsValid]&#x3D;&quot;registration.valid$ | async&quot;
-      [metaData]&#x3D;&quot;registration.metadata$ | async&quot;
-      (registerData)&#x3D;&quot;registration.register()&quot;
-      (enterErrorMode)&#x3D;&quot;registration.setDisplayErrors(!registration.isValid)&quot;&gt;
+    &lt;ccf-review-button [embeddedMode]&#x3D;&quot;page.embedded$ | async&quot; [displayErrors]&#x3D;&quot;registration.displayErrors$ | async&quot;
+                       [registrationIsValid]&#x3D;&quot;registration.valid$ | async&quot; [metaData]&#x3D;&quot;registration.metadata$ | async&quot;
+                       (registerData)&#x3D;&quot;registration.register()&quot;
+                       (enterErrorMode)&#x3D;&quot;registration.setDisplayErrors(!registration.isValid)&quot;&gt;
     &lt;/ccf-review-button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -392,7 +398,7 @@ export class RightSidebarComponent {
   margin-bottom: 1.5rem;
 
   .scroll-wrapper {
-    overflow-y: scroll;
+    // overflow-y: scroll;
     height: 100%;
     margin-right: 0.375rem;
 
@@ -401,6 +407,8 @@ export class RightSidebarComponent {
       width: 0.75rem;
     }
 
+    
+
     .container {
       display: flex;
       flex-direction: column;
@@ -408,11 +416,17 @@ export class RightSidebarComponent {
       margin-left: 1.5rem;
       margin-right: 0.375rem;
 
+      .info-button-container {
+        height: 3.75rem;
+        display: flex;
+        justify-content: flex-end;
+      }
+
       mat-divider {
         border-top-width: 3px;
         margin-top: 0.75rem;
         margin-bottom: 1.5rem;
-      }
+      } 
 
       mat-expansion-panel {
         box-shadow: none;
@@ -426,6 +440,9 @@ export class RightSidebarComponent {
       }
 
       .tags-container {
+        // Allow tag search to overflow when displaying results
+        overflow: visible;
+
         ::ng-deep .mat-expansion-panel-body {
           padding-left: 0;
           padding-right: 0;
@@ -452,6 +469,13 @@ export class RightSidebarComponent {
         .tag-list {
           max-height: 7.5rem;
           margin-left: -1rem;
+        }
+
+        .tag-list-placeholder {
+          display: flex;
+          height: 4rem;
+          align-items: center;
+          justify-content: center;
         }
 
         .legend {
@@ -516,8 +540,8 @@ export class RightSidebarComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="scroll-wrapper">  <div class="container">    <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">    </ccf-block-size-input>    <mat-divider></mat-divider>    <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">    </ccf-slices-input>    <mat-divider></mat-divider>    <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">    </ccf-rotation-slider>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list class="tag-list" [tags]="astags.tags$ | async" (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button      [embeddedMode]="page.embedded$ | async"      [displayErrors]="registration.displayErrors$ | async"      [registrationIsValid]="registration.valid$ | async"      [metaData]="registration.metadata$ | async"      (registerData)="registration.register()"      (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ColorBarComponent', 'selector': 'ccf-color-bar'},{'name': 'ColorPickerLauncherComponent', 'selector': 'ccf-color-picker-launcher'},{'name': 'ColorSchemeContentsComponent', 'selector': 'ccf-color-scheme-contents'},{'name': 'ColorSchemePopupComponent', 'selector': 'ccf-color-scheme-popup'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'ImageViewerAccordionComponent', 'selector': 'ccf-image-viewer-accordion'},{'name': 'ImageViewerContentComponent', 'selector': 'ccf-image-viewer-content'},{'name': 'ImageViewerLayersComponent', 'selector': 'ccf-image-viewer-layers'},{'name': 'ImageViewerLegendComponent', 'selector': 'ccf-image-viewer-legend'},{'name': 'ImageViewerPopoverComponent', 'selector': 'ccf-image-viewer-popover'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SchemeDropdownComponent', 'selector': 'ccf-scheme-dropdown'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><div class="scroll-wrapper">    <div class="container">    <div class=\'info-button-container\'>      <ccf-info-button></ccf-info-button>    </div>    <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">    </ccf-block-size-input>    <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">    </ccf-slices-input>    <mat-divider></mat-divider>    <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">    </ccf-rotation-slider>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"                    (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <ng-template #tagListPlaceholder>        <div class="tag-list-placeholder">          Select an organ to see tags        </div>      </ng-template>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button [embeddedMode]="page.embedded$ | async" [displayErrors]="registration.displayErrors$ | async"                       [registrationIsValid]="registration.valid$ | async" [metaData]="registration.metadata$ | async"                       (registerData)="registration.register()"                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'RightSidebarComponent'};
 </script>

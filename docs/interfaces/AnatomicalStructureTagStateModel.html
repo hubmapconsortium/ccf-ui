@@ -186,25 +186,21 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
   @DataAction()
   addTags(tags: Tag[]): void {
     for (const tag of tags) {
-      this.addTag(tag);
+      this.addTagRaw(tag);
     }
   }
 
   @DataAction()
   addTag(tag: Tag): void {
-    if (this.snapshot.entities[tag.id]) {
-      this.updateOne({id: tag.id, changes: {type: &#x27;added&#x27;}});
-    } else {
-      this.addOne({ ...tag, type: &#x27;added&#x27;});
-    }
+    this.addTagRaw(tag);
   }
 
   @DataAction()
   removeTag(tag: Tag): void {
     if (this.snapshot.entities[tag.id]) {
-      this.updateOne({id: tag.id, changes: {type: &#x27;removed&#x27;}});
+      this.updateEntitiesMany([{id: tag.id, changes: {type: &#x27;removed&#x27;}}]);
     } else {
-      this.addOne({...tag, type: &#x27;removed&#x27;});
+      this.addEntityOne({...tag, type: &#x27;removed&#x27;});
     }
   }
 
@@ -227,6 +223,19 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
         type: &#x27;added&#x27;
       } as Tag)).slice(0, limit)
     }];
+  }
+
+  /**
+   * Adds a tag. Implementation helper for &#x60;addTags&#x60; and &#x60;addTag&#x60;
+   *
+   * @param tag The tag
+   */
+  private addTagRaw(tag: Tag): void {
+    if (this.snapshot.entities[tag.id]) {
+      this.updateEntitiesMany([{id: tag.id, changes: {type: &#x27;added&#x27;}}]);
+    } else {
+      this.addEntityOne({ ...tag, type: &#x27;added&#x27;});
+    }
   }
 }
 </code></pre>
