@@ -5,7 +5,7 @@
   margin-bottom: 1.5rem;
 
   .scroll-wrapper {
-    overflow-y: scroll;
+    // overflow-y: scroll;
     height: 100%;
     margin-right: 0.375rem;
 
@@ -14,6 +14,8 @@
       width: 0.75rem;
     }
 
+    
+
     .container {
       display: flex;
       flex-direction: column;
@@ -21,11 +23,17 @@
       margin-left: 1.5rem;
       margin-right: 0.375rem;
 
+      .info-button-container {
+        height: 3.75rem;
+        display: flex;
+        justify-content: flex-end;
+      }
+
       mat-divider {
         border-top-width: 3px;
         margin-top: 0.75rem;
         margin-bottom: 1.5rem;
-      }
+      } 
 
       mat-expansion-panel {
         box-shadow: none;
@@ -39,6 +47,9 @@
       }
 
       .tags-container {
+        // Allow tag search to overflow when displaying results
+        overflow: visible;
+
         ::ng-deep .mat-expansion-panel-body {
           padding-left: 0;
           padding-right: 0;
@@ -65,6 +76,13 @@
         .tag-list {
           max-height: 7.5rem;
           margin-left: -1rem;
+        }
+
+        .tag-list-placeholder {
+          display: flex;
+          height: 4rem;
+          align-items: center;
+          justify-content: center;
         }
 
         .legend {

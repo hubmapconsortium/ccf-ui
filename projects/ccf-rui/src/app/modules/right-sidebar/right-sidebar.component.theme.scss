@@ -15,7 +15,7 @@
     }
 
     mat-divider {
-      border-color: mat-color($foreground, sidebar-dividers);
+      border-color: mat-color($foreground, mat-divider);
     }
 
     .tags-container {
@@ -23,9 +23,11 @@
         color: mat-color($foreground, contrast-icon);
       }
 
-      .legend {
-        background-color: mat-color($background, legend-background);
+      .tag-list-placeholder {
+        color: mat-color($foreground, placeholder-text, 0.6);
+      }
 
+      .legend {
         .dot.assigned {
           background-color: mat-color($primary, text);
         }

@@ -1,5 +1,6 @@
 # Common Coordinate Framework (CCF) - User Interfaces
 
+[![Production CDN by JSDelivr](https://data.jsdelivr.com/v1/package/gh/hubmapconsortium/ccf-ui/badge)](https://www.jsdelivr.com/package/gh/hubmapconsortium/ccf-ui)
 [![Tests](https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml)
 [![GitHub last commit](https://img.shields.io/github/last-commit/hubmapconsortium/ccf-ui.svg)](https://github.com/hubmapconsortium/ccf-ui/commits/develop)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)

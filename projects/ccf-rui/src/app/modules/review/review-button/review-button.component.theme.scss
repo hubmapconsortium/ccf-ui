@@ -7,14 +7,11 @@
 
   .ccf-review-button {
     .review-button {
-      background-color: mat-color($foreground, active-icon);
+      background-color: mat-color($foreground, button-background);
       color: mat-color($foreground, sidebar-dividers);
-      border: 1px solid mat-color($foreground, active-icon);
 
       &:hover {
-          background-color: mat-color($foreground, sidebar-dividers);
-          color: mat-color($foreground, active-icon);
-          border: 1px solid mat-color($foreground, active-icon);
+          background-color: mat-color($foreground, button-background-hover);
       }
 
       &.disabled {

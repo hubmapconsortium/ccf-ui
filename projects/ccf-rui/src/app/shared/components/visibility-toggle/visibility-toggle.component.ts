@@ -27,6 +27,11 @@ export class VisibilityToggleComponent {
   @Input() toggleLabel = '';
 
   /**
+   * Whether or not the slider is disabled
+   */
+  @Input() disabled = false;
+
+  /**
    * Outputs the new visibility state whenever toggleVisibility()
    * changes it.
    */

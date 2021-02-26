@@ -52,14 +52,6 @@ describe('ResultsBrowserItemComponent', () => {
     expect(find('.download')).toHaveFoundOne();
   });
 
-  it('should trigger the openImageViewer emit when a result with resultType image_viewer is clicked', async () => {
-    const { outputs, instance } = await shallow.render({ bind: { data: getListResult() }});
-    instance.data.resultType = 'image_viewer';
-
-    instance.openResult();
-    expect(outputs.openImageViewer.emit).toHaveBeenCalled();
-  });
-
   it('should trigger the openImageViewer emit when a result with no resultType is clicked', async () => {
     const { outputs, instance } = await shallow.render({ bind: { data: getListResult() }});
 

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ListResult } from 'ccf-database';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -8,7 +7,6 @@ import { DataSourceService } from './core/services/data-source/data-source.servi
 import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
-import { ImageViewerPopoverComponent } from './modules/image-viewer/image-viewer-popover/image-viewer-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { ALL_ORGANS } from 'ccf-shared';
 
@@ -61,25 +59,13 @@ export class AppComponent {
   reset(
     left: DrawerComponent,
     right: DrawerComponent,
-    filterbox: FiltersPopoverComponent,
-    viewer: ImageViewerPopoverComponent
+    filterbox: FiltersPopoverComponent
   ): void {
-    viewer.close();
     left.open();
     left.closeExpanded();
     right.open();
     right.closeExpanded();
     filterbox.removeBox();
-  }
-
-  /**
-   * Fetches relevant data from the database and calls the open function on the image viewer with the data
-   * @param viewer The image viewer component
-   * @param iri URL containing the image data
-   */
-  openViewer(viewer: ImageViewerPopoverComponent, result: ListResult): void {
-    const source = this.dataSourceService.getImageViewerData(result['@id']);
-    source.subscribe(data => viewer.open(data, result));
   }
 
   /**

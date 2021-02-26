@@ -1,6 +1,6 @@
 <div class="toggle-div">
-    <mat-chip (click)="toggleVisibility()" class="toggle-wrapper" >
-        <div class="icon-background" [class.hidden]="visible">
+    <mat-chip (click)="toggleVisibility()" class="toggle-wrapper" [disabled]="disabled">
+        <div class="icon-background" *ngIf="!disabled">
             <mat-icon class="icon block" [class.hidden]="visible" svgIcon="app:visibility_off_cube"></mat-icon>
             <mat-icon class="icon green" [class.hidden]="!visible">done</mat-icon>
         </div>

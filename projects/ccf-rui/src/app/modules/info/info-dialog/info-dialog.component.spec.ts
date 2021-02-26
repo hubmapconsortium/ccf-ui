@@ -15,11 +15,13 @@ describe('InfoDialogComponent', () => {
   beforeEach(() => {
     shallow = new Shallow(InfoDialogComponent, InfoDialogModule)
       .provide({ provide: MatDialogRef, useValue: {} })
-      .provide({ provide: MAT_DIALOG_DATA, useValue: {} });
+      .provide({ provide: MAT_DIALOG_DATA, useValue: [ ] });
   });
 
   it('should call the close() method when the close button is pressed', async () => {
-    const { find, instance } = await shallow.render();
+    const { find, instance } = await shallow
+      .mock(MAT_DIALOG_DATA, [])
+      .render();
     const spy = spyOn(instance, 'close');
     const closeButton = find('.close-icon');
 
@@ -30,6 +32,7 @@ describe('InfoDialogComponent', () => {
   it('should close the dialog when the close() method is called', async () => {
     const { instance, get } = await shallow
       .mock(MatDialogRef, { close(): void { } })
+      .mock(MAT_DIALOG_DATA, [])
       .render();
     const ref = get(MatDialogRef);
     instance.close();

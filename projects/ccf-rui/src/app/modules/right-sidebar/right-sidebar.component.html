@@ -1,9 +1,12 @@
 <div class="scroll-wrapper">
+  
   <div class="container">
+    <div class='info-button-container'>
+      <ccf-info-button></ccf-info-button>
+    </div>
     <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
     </ccf-block-size-input>
 
-    <mat-divider></mat-divider>
 
     <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
     </ccf-slices-input>
@@ -23,8 +26,14 @@
       <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">
       </ccf-tag-search>
 
-      <ccf-tag-list class="tag-list" [tags]="astags.tags$ | async" (tagRemoved)="astags.removeTag($event)">
+      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"
+                    (tagRemoved)="astags.removeTag($event)">
       </ccf-tag-list>
+      <ng-template #tagListPlaceholder>
+        <div class="tag-list-placeholder">
+          Select an organ to see tags
+        </div>
+      </ng-template>
 
       <div class="legend">
         <span class="dot assigned"></span>
@@ -38,13 +47,10 @@
 
     <div class="filler"></div>
 
-    <ccf-review-button
-      [embeddedMode]="page.embedded$ | async"
-      [displayErrors]="registration.displayErrors$ | async"
-      [registrationIsValid]="registration.valid$ | async"
-      [metaData]="registration.metadata$ | async"
-      (registerData)="registration.register()"
-      (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">
+    <ccf-review-button [embeddedMode]="page.embedded$ | async" [displayErrors]="registration.displayErrors$ | async"
+                       [registrationIsValid]="registration.valid$ | async" [metaData]="registration.metadata$ | async"
+                       (registerData)="registration.register()"
+                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">
     </ccf-review-button>
   </div>
 </div>

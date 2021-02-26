@@ -23,8 +23,8 @@ export class ToggleButtonComponent implements AfterViewInit, OnDestroy {
 
   /** Gets the name of the icon to display. */
   get icon(): string {
-    let expand = 'keyboard_arrow_right';
-    let collapse = 'keyboard_arrow_left';
+    let expand = 'arrow_right';
+    let collapse = 'arrow_left';
     if (this.position === 'end') { ([expand, collapse] = [collapse, expand]); }
 
     return this.opened ? collapse : expand;

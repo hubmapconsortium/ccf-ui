@@ -1,8 +1,5 @@
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInput, MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Observable } from 'rxjs';
+import { NgZone } from '@angular/core';
+import { Observable, ReplaySubject, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
@@ -15,119 +12,224 @@ function nextValue<T>(obs: Observable<T>): Promise<T> {
   return obs.pipe(take(1)).toPromise();
 }
 
+function delay(duration: number): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(resolve, duration);
+  });
+}
+
 
 describe('TagSearchComponent', () => {
+  const defaultInputs = {
+    placeholder: 'placeholder',
+    searchLimit: 2,
+    searchThrottle: 1
+  };
+
   let shallow: Shallow<TagSearchComponent>;
 
   beforeEach(() => {
-    shallow = new Shallow(TagSearchComponent, TagSearchModule)
-      .import(NoopAnimationsModule)
-      .dontMock(NoopAnimationsModule, MatFormFieldModule, MatInputModule, MatSelectModule);
+    shallow = new Shallow(TagSearchComponent, TagSearchModule);
   });
 
-  describe('.search', () => {
-    const simpleResult: TagSearchResult = {
-      totalCount: 1,
-      results: [{
-        id: 1,
-      } as Tag]
-    };
-    let search: jasmine.Spy<(text: string, limit: number) => TagSearchResult[]>;
+  describe('search', () => {
+    type PromiseResult<T> = T extends Promise<infer U> ? U : T;
+    type SearcherType = NonNullable<TagSearchComponent['search']>;
 
-    function doSearch(
-      instance: TagSearchComponent,
-      text: string,
-      result: TagSearchResult = simpleResult
-    ): Promise<TagSearchResult> {
-      search.and.returnValue([result]);
-      instance.searchController.setValue(text);
-      return nextValue(instance.searchResult$);
+    let searcher: jasmine.Spy<SearcherType>;
+    let results: ReplaySubject<TagSearchResult>;
+    let errorCount: number;
+    let rendering: PromiseResult<ReturnType<Shallow<TagSearchComponent>['render']>>;
+    let instance: TagSearchComponent;
+    let get: (typeof rendering)['get'];
+    let zone: NgZone;
+    let subs: Subscription;
+
+    async function setInputValue(val: string): Promise<void> {
+      rendering.instance.searchControl.setValue(val);
+      await delay((rendering.instance.searchThrottle ?? 100) + 10);
     }
 
-    beforeEach(() => {
-      search = jasmine.createSpy('searcher');
-    });
-
-    it('calls the provided search function', async () => {
-      const { instance } = await shallow.render({ bind: { search, searchLimit: 10 } });
-      await doSearch(instance, 'foo');
-      expect(search).toHaveBeenCalledWith('foo', 10);
-    });
-
-    it('limits the number of search results', async () => {
-      const bigResult: TagSearchResult = {
-        totalCount: 500,
-        results: [
-          { id: 1 },
-          { id: 2 }
-        ] as Tag[]
-      };
-      const { instance } = await shallow.render({ bind: { search, searchLimit: 1 } });
-      const result = await doSearch(instance, 'foo', bigResult);
-      expect(result.results.length).toEqual(1);
-    });
-
-    it('does not call search on empty search text', async () => {
-      const { instance } = await shallow.render({ bind: { search } });
-      await doSearch(instance, '');
-      expect(search).not.toHaveBeenCalled();
-    });
-
-    it('returns an empty result if not provided', async () => {
-      const { instance } = await shallow.render();
-      const result = await doSearch(instance, 'bar');
-      expect(result).toEqual({ totalCount: 0, results: [] });
-    });
-  });
-
-  describe('tagId(index, tag)', () => {
-    it('returns the tag identifier', async () => {
-      const { instance } = await shallow.render();
-      const id = instance.tagId(0, { id: 1 } as Tag);
-      expect(id).toEqual(1);
-    });
-  });
-
-  describe('emitTagsAndClear(searchEl)', () => {
-    const tags = [{ id: 1 } as Tag];
-    let focusable: jasmine.SpyObj<{ focus(): void }>;
-
-    function setSelected(instance: TagSearchComponent, items: Tag[] = tags): void {
-      const controller = instance.selectController;
-      const selected = [...controller.value as unknown[], ...items];
-      controller.setValue(selected);
+    async function zoneStable(): Promise<void> {
+      if (!zone.isStable) {
+        await nextValue(zone.onStable);
+      }
     }
 
-    beforeEach(() => {
-      focusable = jasmine.createSpyObj<MatInput>('MatInput', ['focus']);
+    beforeEach(async () => {
+      results = new ReplaySubject(1);
+      searcher = jasmine.createSpy<SearcherType>().and.returnValue(results);
+      errorCount = 0;
+      subs = new Subscription();
+
+      rendering = await shallow.render({
+        bind: {
+          ...defaultInputs, search: searcher
+        }
+      });
+
+      instance = rendering.instance;
+      get = rendering.get;
+      zone = get(NgZone);
+
+      subs.add(zone.onError.subscribe(() => {
+        errorCount++;
+      }));
     });
 
-    it('emits the selected tags', async () => {
-      const { instance, outputs } = await shallow.render();
-      setSelected(instance);
-      instance.emitTagsAndClear(focusable);
-      expect(outputs.added.emit).toHaveBeenCalledWith(tags);
+    afterEach(() => {
+      subs.unsubscribe();
     });
 
-    it('focuses the provided element', async () => {
+    it('calls the search function when the input changes', async () => {
+      await setInputValue('abc');
+      expect(searcher).toHaveBeenCalledWith('abc', defaultInputs.searchLimit);
+    });
+
+    it('does not call the search function on empty inputs', async () => {
+      await setInputValue('');
+      expect(searcher).not.toHaveBeenCalled();
+    });
+
+    it('does nothing with an undefined search function', async () => {
+      instance.search = undefined;
+      await setInputValue('def');
+      await zoneStable();
+      expect(errorCount).toEqual(0);
+    });
+
+    it('provides a default search limit if not provided', async () => {
+      instance.searchLimit = undefined;
+      await setInputValue('q');
+      expect(searcher).toHaveBeenCalledWith('q', jasmine.any(Number));
+    });
+
+    it('truncate results if to many items are returned', async () => {
+      const res = { totalCount: 1, results: [{}, {}, {}] as Tag[] };
+      instance.searchLimit = 1;
+      results.next(res);
+      await setInputValue('w');
+      expect(instance.searchResults.results.length).toEqual(1);
+    });
+
+    it('does not truncate results if within limits', async () => {
+      const res = { totalCount: 1, results: [{} as Tag] };
+      instance.searchLimit = undefined;
+      results.next(res);
+      await setInputValue('a');
+      expect(instance.searchResults.results.length).toEqual(1);
+    });
+
+    it('throttles calls to the search', async () => {
+      const control = instance.searchControl;
+      instance.searchThrottle = 10;
+      control.setValue('a');
+      control.setValue('b');
+      control.setValue('c');
+
+      await delay(1);
+      expect(searcher).toHaveBeenCalledTimes(1);
+      await delay(20);
+      expect(searcher).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('tagId(_, tag)', () => {
+    it('returns the tag\'s identifier', async () => {
       const { instance } = await shallow.render();
-      setSelected(instance);
-      instance.emitTagsAndClear(focusable);
-      expect(focusable.focus).toHaveBeenCalled();
+      const res = instance.tagId(0, { id: 'foo' } as Tag);
+      expect(res).toEqual('foo');
+    });
+  });
+
+  describe('hasCheckedTags', () => {
+    it('returns false if there are no truthy values in checkedResults', async () => {
+      const { instance } = await shallow.render();
+      instance.checkedResults = { foo: false };
+      expect(instance.hasCheckedTags()).toBeFalse();
     });
 
-    it('clears the search', async () => {
+    it('returns true if there is at least on truthy value in checkedResults', async () => {
       const { instance } = await shallow.render();
-      const spy = spyOn(instance.searchController, 'setValue');
-      setSelected(instance);
-      instance.emitTagsAndClear(focusable);
-      expect(spy).toHaveBeenCalledWith('');
+      instance.checkedResults = { bar: true, foo: false };
+      expect(instance.hasCheckedTags()).toBeTrue();
     });
+  });
+
+  describe('addTags()', () => {
+    const tag: Tag = { id: 'foo', label: 'bar', type: 'added' };
+
+    function setTags(instance: TagSearchComponent): void {
+      instance.searchResults = { totalCount: 1, results: [tag] };
+      instance.checkedResults = { foo: true };
+    }
 
     it('does nothing if no tags are selected', async () => {
       const { instance, outputs } = await shallow.render();
-      instance.emitTagsAndClear(focusable);
+      instance.checkedResults = { foo: false };
+      instance.addTags();
       expect(outputs.added.emit).not.toHaveBeenCalled();
+    });
+
+    it('resets the search input', async () => {
+      const { instance } = await shallow.render();
+      const spy = spyOn(instance.searchControl, 'reset');
+      setTags(instance);
+      instance.addTags();
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('resets search results', async () => {
+      const { instance } = await shallow.render();
+      setTags(instance);
+      instance.addTags();
+      expect(instance.searchResults).toEqual({ totalCount: 0, results: [] });
+    });
+
+    it('resets checked tags', async () => {
+      const { instance } = await shallow.render();
+      setTags(instance);
+      instance.addTags();
+      expect(instance.checkedResults).toEqual({});
+    });
+
+    it('emits selected tags', async () => {
+      const { instance, outputs } = await shallow.render();
+      setTags(instance);
+      instance.addTags();
+      expect(outputs.added.emit).toHaveBeenCalledWith([tag]);
+    });
+  });
+
+  describe('openResults()', () => {
+    it('set resultsVisible to true', async () => {
+      const { instance } = await shallow.render();
+      instance.resultsVisible = false;
+      instance.openResults();
+      expect(instance.resultsVisible).toBeTrue();
+    });
+  });
+
+  describe('closeResults(event)', () => {
+    it('sets resultsVisible to false if the event is outside the component', async () => {
+      const { instance } = await shallow.render();
+      instance.resultsVisible = true;
+      instance.closeResults({ target: document } as unknown as Event);
+      expect(instance.resultsVisible).toBeFalse();
+    });
+
+    it('does nothing if the event is inside the component', async () => {
+      const { instance, find } = await shallow.render();
+      instance.resultsVisible = true;
+      instance.closeResults({ target: find('.search-box') } as unknown as Event);
+      expect(instance.resultsVisible).toBeTrue();
+    });
+
+    it('does nothing if the event target is not a HTML node', async () => {
+      const { instance } = await shallow.render();
+      instance.resultsVisible = true;
+      instance.closeResults({} as Event);
+      expect(instance.resultsVisible).toBeTrue();
     });
   });
 });
