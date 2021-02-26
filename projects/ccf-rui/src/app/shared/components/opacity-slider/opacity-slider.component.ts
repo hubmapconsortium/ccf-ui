@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, OnInit } from '@angular/core';
 
 /**
  * Slider for setting opacity on an anatomical structure
@@ -8,7 +8,7 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
   templateUrl: './opacity-slider.component.html',
   styleUrls: ['./opacity-slider.component.scss']
 })
-export class OpacitySliderComponent {
+export class OpacitySliderComponent implements OnInit {
 
   /**
    * HTML class name
@@ -40,6 +40,16 @@ export class OpacitySliderComponent {
    */
   @Output() readonly opacityReset = new EventEmitter();
 
+  prevOpacity: number;
+
+  ngOnInit():void {
+    if (this.visible) {
+      this.prevOpacity = 0;
+    } else {
+      this.prevOpacity = 20;
+    }
+  }
+
   /**
    * Emits opacityChange with the new opacity value
    * @param newOpacity The updated opacity value
@@ -53,13 +63,18 @@ export class OpacitySliderComponent {
    * Emits signal to toggle the visibility of the item
    */
   toggleVisibility(): void {
+    const temp = this.opacity;
+    this.opacity = this.prevOpacity;
+    this.prevOpacity = temp;
     this.visibilityToggle.emit();
+    this.opacityChange.emit(this.opacity);
   }
 
   /**
    * Emits signal to reset the opacity of the item
    */
   resetOpacity(): void {
+    this.prevOpacity = 0;
     this.opacityReset.emit();
   }
 }

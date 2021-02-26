@@ -5,8 +5,8 @@
   <div class="item-name" [class.hidden]="item.id == selection?.id" title="{{item.name}}">{{ item.name }}</div>
 
   <div class="slider" [class.hidden]="item.id != selection?.id">
-    <ccf-opacity-slider #slider [visible]="item.visible" [opacity]="selection ? selection?.opacity : 20" 
-      (opacityChange)="updateOpacity($event)" (opacityReset)="updateOpacity(20)" (visibilityToggle)="toggleVisibility(item)">
+    <ccf-opacity-slider #slider [visible]="item.visible" [opacity]="selection ? selection?.opacity : 20"
+      (opacityChange)="updateOpacity($event)" (opacityReset)="resetItem()" (visibilityToggle)="toggleVisibility(item)">
     </ccf-opacity-slider>
   </div>
 </div>

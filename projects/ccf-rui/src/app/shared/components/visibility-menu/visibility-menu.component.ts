@@ -9,7 +9,7 @@ import { VisibilityItem } from '../../../core/models/visibility-item';
   templateUrl: './visibility-menu.component.html',
   styleUrls: ['./visibility-menu.component.scss']
 })
-export class VisibilityMenuComponent implements OnInit {
+export class VisibilityMenuComponent {
 
   /**
    * HTML class name
@@ -37,34 +37,15 @@ export class VisibilityMenuComponent implements OnInit {
   @Output() readonly itemsChange = new EventEmitter<VisibilityItem[]>();
 
   /**
-   * Previous opacity values
-   */
-  prevOpacities: (number | undefined)[];
-
-  /**
-   * Sets all previous opacities to 0
-   */
-  ngOnInit(): void {
-    this.prevOpacities = this.items.map(i => 0);
-  }
-
-  /**
    * Toggles visibility of an item; opacity is reverted to the previous value if visibility toggled back on
    * @param item Menu item
    */
   toggleVisibility(item: VisibilityItem): void {
-    const index = this.items.indexOf(item);
     item = {...item, visible: !item.visible};
     if (this.selection && item.id === this.selection.id) {
       this.selection = {...this.selection, visible: item.visible};
     }
-    if (!item.visible) {
-      this.updateOpacity(0);
-      this.prevOpacities[index] = item.opacity;
-    } else {
-      this.updateOpacity(this.prevOpacities[index]);
-      this.prevOpacities[index] = 0;
-    }
+    this.updateOpacity(item.opacity)
   }
 
   /**
@@ -97,6 +78,15 @@ export class VisibilityMenuComponent implements OnInit {
     this.selection = updatedSelection;
     this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
     this.itemsChange.emit(this.items);
+  }
+
+  resetItem() {
+    if (this.selection) {
+      const updatedSelection = {...this.selection, opacity: 20, visible: true};
+      this.selection = updatedSelection;
+      this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
+      this.itemsChange.emit(this.items);
+    }
   }
 
   /**
