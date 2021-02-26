@@ -105,7 +105,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
       return undefined;
     }
 
-    const name = entity.label!;
+    const name = entity.label || '';
     const organ = ALL_ORGANS.find(info => name.endsWith(info.organ));
     if (!organ) {
       return undefined;
