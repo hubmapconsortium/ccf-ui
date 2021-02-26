@@ -167,13 +167,20 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     if (this.globalConfig.organ) {
       const organConfig = this.globalConfig.organ;
       const organName = organConfig.name.toLowerCase();
-      const organInfo = ALL_ORGANS.find((o) => o.name.toLowerCase() === organName);
+      const organSide = organConfig.side;
+      const organInfo = ALL_ORGANS.find((o) => {
+        if (o.side) {
+          return o.organ.toLowerCase() === organName && o.side === organSide;
+        } else {
+          return o.organ.toLowerCase() === organName;
+        }
+      });
       if (organInfo) {
         setTimeout(() => {
           this.ctx.patchState({
             organ: organInfo,
             sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
-            side: organConfig.side?.toLowerCase() as 'left' | 'right'
+            side: organInfo.side?.toLowerCase() as 'left' | 'right'
           });
           this.onOrganIriChange();
         }, 1000);
@@ -256,6 +263,9 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   @DataAction()
   setOrgan(organ: OrganInfo): void {
     this.ctx.patchState({ organ });
+    if (organ.side) {
+      this.ctx.patchState({ side: organ.side });
+    }
     this.onOrganIriChange();
   }
 
@@ -342,7 +352,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
   private onOrganIriChange(): void {
     const organIri = this.referenceData.getReferenceOrganIri(
-      this.snapshot.organ?.name || '', this.snapshot.sex, this.snapshot.side
+      this.snapshot.organ?.organ || '', this.snapshot.sex, this.snapshot.side
     );
     const organDimensions: XYZTriplet = { x: 100, y: 100, z: 100 };
 
