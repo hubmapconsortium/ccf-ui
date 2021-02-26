@@ -6,18 +6,15 @@
   $background: map-get($theme, background);
 
   .ccf-visibility-menu {
-    .visibility-icon {
-      color: mat-color($foreground, icon);
-      &.visible {
-        color: mat-color($accent);
+    .icon {
+      color: mat-color($foreground, main);
+
+      &:hover {
+        background: mat-color($foreground, icons-hover);
       }
-    }
-    .item-entry {
-      &.selected {
-        background-color: mat-color($background, hover-background);
-      }
-      .opacity-setting {
-        color: mat-color($foreground, icon);
+
+      &.fade {
+        color: mat-color($foreground, icons-disabled);
       }
     }
   }

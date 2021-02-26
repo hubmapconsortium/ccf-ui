@@ -59,6 +59,11 @@ $foreground: map-merge($mat-light-theme-foreground, (
   chip-icon-done-green: map-get($mat-green, A700),
   chip-icon-background:  #E9E9E9,
   chip-border-primary:  map-get($primary-colors, light-header),
+
+  main: #444A65,
+  opacity-numbers: #CCCCCC,
+  icons-disabled: #CCCCCC,
+  icons-hover: #e0e0e0
 ));
 
 $background: map-merge($mat-light-theme-background, (
