@@ -10,6 +10,16 @@ describe('OpacitySliderComponent', () => {
     shallow = new Shallow(OpacitySliderComponent, OpacitySliderModule);
   });
 
+  it('should initialize prevOpacity to 0 if item is visible', async () => {
+    const { instance } = await shallow.render({ bind: { visible: true } });
+    expect(instance.prevOpacity).toEqual(0);
+  });
+
+  it('should initialize prevOpacity to 20 if item is hidden', async () => {
+    const { instance } = await shallow.render({ bind: { visible: false } });
+    expect(instance.prevOpacity).toEqual(20);
+  });
+
   it('should emit the new opacity value when changeOpacity is called', async () => {
     const { instance, outputs} = await shallow.render();
     instance.changeOpacity('50');

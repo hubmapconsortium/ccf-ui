@@ -54,7 +54,17 @@ describe('VisibilityMenuComponent', () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
     instance.mouseOver(instance.items[0]);
     instance.updateOpacity(50);
-    expect(instance.items[0].opacity).toEqual(50);
+    expect(instance.selection?.opacity).toEqual(50);
+  });
+
+  it('should reset the item', async () => {
+    const { instance } = await shallow.render({ bind: { items: testItems } });
+    instance.mouseOver(instance.items[1]);
+    instance.updateOpacity(50);
+    instance.toggleVisibility(instance.items[1]);
+    instance.resetItem();
+    expect(instance.selection?.opacity).toEqual(20);
+    expect(instance.selection?.visible).toBeTrue();
   });
 
   it('should set all opacity values', async () => {
