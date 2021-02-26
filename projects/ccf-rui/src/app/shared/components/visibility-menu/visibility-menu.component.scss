@@ -7,6 +7,16 @@
   overflow-y: auto;
   scrollbar-width: thin;
 
+  .reset {
+    transform: scaleX(-1);
+    cursor: pointer;
+    transition: .6s;
+
+    &:hover {
+      border-radius: 2px;
+    }
+  }
+
   .item-entry {
     display: flex;
     height: 2.25rem;
@@ -14,36 +24,42 @@
     flex-shrink: 0;
     position: relative;
 
-    .visibility-icon {
-      margin-left: .5rem;
-      position: absolute;
+    .opacity-icon {
+      z-index: 1;
       transition: .6s;
 
-      &.hidden {
-        opacity: 0;
+      &:hover {
+        border-radius: 2px;
       }
     }
 
-    .visibility-icon, .item-name {
-      cursor: pointer;
-    }
-
     .item-name {
-      margin-left: 2.5rem;
       user-select: none;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    .opacity-setting {
-      margin-left: auto;
-      margin-right: 1rem;
+      margin-left: 0.5rem;
 
       &.hidden {
-        display: none;
+        display: none
+      }
+    }
+
+    .slider {
+      width: calc(100% - 2rem);
+      transition-duration: 0.25s;
+      transition-timing-function: ease-in-out;
+      transition-property: width;
+      left: 2rem;
+      position: absolute;
+
+      &.hidden {
+        width: 0rem;
+
+        ccf-opacity-slider {
+          display: none;
+        }
       }
     }
   }
-
 }

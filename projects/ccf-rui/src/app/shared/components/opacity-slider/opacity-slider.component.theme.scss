@@ -1,21 +1,39 @@
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
+  $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $primary: map-get($theme, primary);
 
   .ccf-opacity-slider {
-    border: 1px solid mat-color($foreground, borders);
-    background-color: mat-color($primary, 'white');
+    mat-slider {
+      .mat-slider-thumb {
+        background-color: mat-color($foreground, main);
+      }
 
-    .opacity-value {
-      color: mat-color($foreground, icon);
+      .mat-slider-track-background {
+        background-color: mat-color($foreground, icons-disabled);
+      }
+
+      .mat-slider-track-fill {
+        background-color: mat-color($foreground, main);
+      }
     }
 
-    .reset {
-      color: mat-color($foreground, icon);
+    .opacity-value {
+      color: mat-color($foreground, opacity-numbers);
+    }
+
+    .icon {
+      color: mat-color($foreground, main);
       &:hover {
-        color: mat-color($foreground, active-icon);
+        background: mat-color($foreground, icons-hover);
+      }
+    }
+
+    .visibility {
+      &.invisible {
+        color: mat-color($foreground, icons-disabled);
       }
     }
   }

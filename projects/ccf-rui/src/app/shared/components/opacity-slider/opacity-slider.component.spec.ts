@@ -5,15 +5,19 @@ import { OpacitySliderModule } from './opacity-slider.module';
 
 describe('OpacitySliderComponent', () => {
   let shallow: Shallow<OpacitySliderComponent>;
-  const testItem = {
-    id: 1,
-    name: 'test',
-    visible: false
-  };
-  const testItems = [testItem];
 
   beforeEach(() => {
     shallow = new Shallow(OpacitySliderComponent, OpacitySliderModule);
+  });
+
+  it('should initialize prevOpacity to 0 if item is visible', async () => {
+    const { instance } = await shallow.render({ bind: { visible: true } });
+    expect(instance.prevOpacity).toEqual(0);
+  });
+
+  it('should initialize prevOpacity to 20 if item is hidden', async () => {
+    const { instance } = await shallow.render({ bind: { visible: false } });
+    expect(instance.prevOpacity).toEqual(20);
   });
 
   it('should emit the new opacity value when changeOpacity is called', async () => {
@@ -26,6 +30,12 @@ describe('OpacitySliderComponent', () => {
     const { instance, outputs} = await shallow.render();
     instance.resetOpacity();
     expect(outputs.opacityReset.emit).toHaveBeenCalled();
+  });
+
+  it('should emit visibilityToggle when toggleVisibility is called', async () => {
+    const { instance, outputs} = await shallow.render();
+    instance.toggleVisibility();
+    expect(outputs.visibilityToggle.emit).toHaveBeenCalled();
   });
 
 });

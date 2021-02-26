@@ -4,7 +4,7 @@ import {
 
 
 /** Valid values for side. */
-export type Side = 'left' | 'right' | 'anterior' | 'posterior';
+export type Side = 'left' | 'right' | 'anterior' | 'posterior' | '3D';
 
 /** Component that allows the user to change the viewing angle and rendering mode of the stage. */
 @Component({
@@ -80,8 +80,13 @@ export class StageNavComponent {
    * @param selection the new selected side
    */
   updateSide(selection: Side): void {
-    this.side = selection;
-    this.sideChange.emit(this.side);
+    if (selection === '3D') {
+      this.updateView(true);
+    } else {
+      this.updateView(false);
+      this.side = selection;
+      this.sideChange.emit(this.side);
+    }
   }
 
   /**

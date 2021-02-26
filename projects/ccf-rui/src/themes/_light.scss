@@ -63,11 +63,16 @@ $foreground: map-merge($mat-light-theme-foreground, (
   chip-icon-background:  #E9E9E9,
   chip-border-primary:  map-get($primary-colors, light-header),
 
+
   toggle-thumb: map-get($primary-colors, light-header),
   toggle-bg: #ECECEC,
   mat-divider: rgba(0, 0, 0, 0.03),
 
-  
+  main: #444A65,
+  opacity-numbers: #CCCCCC,
+  icons-disabled: #CCCCCC,
+  icons-hover: #e0e0e0
+
 ));
 
 $background: map-merge($mat-light-theme-background, (

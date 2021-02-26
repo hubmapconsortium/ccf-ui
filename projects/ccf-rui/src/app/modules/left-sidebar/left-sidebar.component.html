@@ -23,13 +23,9 @@
               <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
           </mat-expansion-panel-header>
           <div class="expansion-content">
-              <ccf-visibility-menu #menu (selectionChange)="slider.changeOpacity($event?.opacity)"
+              <ccf-visibility-menu
                   [items]="model.anatomicalStructures$ | async" (itemsChange)="model.setAnatomicalStructures($event)">
               </ccf-visibility-menu>
-              <ccf-opacity-slider #slider [class.disabled]="menu.disableSlider"
-                  (opacityChange)="menu.updateOpacity($event)" (opacityReset)="menu.resetOpacity()"
-                  [opacity]="menu.selection ? menu.selection?.opacity : 100">
-              </ccf-opacity-slider>
           </div>
         </mat-expansion-panel>
 

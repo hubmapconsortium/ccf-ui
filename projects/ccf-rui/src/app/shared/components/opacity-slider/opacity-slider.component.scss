@@ -3,54 +3,61 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
   border-radius: 0.1875rem;
-
-  &.disabled {
-    opacity: 30%;
-    cursor: not-allowed;
-    .slider-box {
-      pointer-events: none;
-    }
-  }
 
   .slider-box {
     display: flex;
     width: 100%;
     align-items: center;
-  }
+    justify-content: space-between;
 
-  .label {
-    margin-left: 0.5rem;
-    margin-right: 2rem;
-  }
+    .slider-and-label {
+      width: 60%;
+      display: flex;
+      align-items: center;
 
-  ::ng-deep .slider {
-    width: 40%;
+      .slider {
+        width: 100%;
+        
+        &.disabled {
+          pointer-events: none;
+          cursor: not-allowed;
+        }
+      }
 
-    .mat-slider-track-wrapper, .mat-slider-track-fill {
-      height: .2rem;
+      .opacity-value {
+        width: 1.5rem;
+        margin-left: 0.5rem;
+      }
     }
+
+    .icons {
+      display: flex;
+
+      .reset {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        transform: scaleX(-1);
+        cursor: pointer;
+        transition: .6s;
+
+        &:hover {
+          border-radius: 2px;
+        }
+      }
     
-    .mat-slider-track-fill {
-      opacity: 0.5;
+      .visibility {
+        transition: .6s;
+        cursor: pointer;
+
+        &:hover {
+          border-radius: 2px;
+        }
+    
+        &.hidden {
+          display: none;
+        }
+      }
     }
-
-    .mat-slider-thumb {
-      transform: none !important;
-    }
-  }
-
-  .opacity-value {
-    width: 1.5rem;
-    margin-left: 0.5rem;
-  }
-
-  .reset {
-    margin-left: auto;
-    margin-right: 1rem;
-    transform: scaleX(-1);
-    cursor: pointer;
-    transition: .6s;
   }
 }
