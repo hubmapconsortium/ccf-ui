@@ -14,12 +14,14 @@
     <div [class.closed]="!open" class="selector-drawer">
       <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])"
       [selectedOrgans]="[model.organ$ | async]" [hidden]="!open"></ccf-organ-selector>
+     <div class="close-button-wrapper">
       <div class="close-button" (click)="open = !open">
         <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">
           {{ open ? 'arrow_drop_up': 'arrow_drop_down' }}
         </mat-icon>
       </div>
+     </div>
     </div>
-    <ccf-content [class.carousel-closed]="!open" style="border-radius: 8px !important;"></ccf-content>
+    <ccf-content [class.carousel-closed]="!open" class="stage-content"></ccf-content>
   </ccf-drawer-content>
 </ccf-drawer-container>
