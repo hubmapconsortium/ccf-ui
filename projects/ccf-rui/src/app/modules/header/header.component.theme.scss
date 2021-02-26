@@ -9,6 +9,9 @@
     border-bottom-color: mat-color($foreground, header-border);
     background-color: mat-color($background, app-bar);
     color: mat-color($foreground, headers);
+    box-shadow: 0px 1px 5px 1px map-get($foreground, app-bar-shadow);
+    ;
+    z-index: 2;
 
     .icon {
       color: mat-color($foreground, icon);

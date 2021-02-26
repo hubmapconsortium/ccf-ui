@@ -23,6 +23,7 @@ $warn: mat-palette($mat-red);
 
 $foreground: map-merge($mat-light-theme-foreground, (
   active-icon: map-get($mat-blue, 700),
+  app-bar-shadow: map-get($primary-colors, light-header),
   contrast-icon: map-get($primary-colors, 500), // #9E9E9E (icons on light background)
   contrast-text: map-get($primary-colors, 500), // #9E9E9E (text on dark background)
   disabled: map-get($primary-colors, light-disabled), // #E0E0E0
@@ -63,12 +64,12 @@ $foreground: map-merge($mat-light-theme-foreground, (
 
 $background: map-merge($mat-light-theme-background, (
   app-bar: map-get($primary-colors, light-header), // #444A65
-  background: map-get($primary-colors, 'white'), // #F5F5F5
-  card: map-get($primary-colors,  'white'), // #F5F5F5,
+  background: map-get($primary-colors, 'white'),
+  card: map-get($primary-colors,  'white'), 
   content-background: map-get($primary-colors, 'black'),
   legend-background: map-get($primary-colors, 'white'),
-  modal: map-get($primary-colors,  'white'), // #F5F5F5
-  sidebar-background: map-get($primary-colors,  'white'), // #F5F5F5
+  modal: map-get($primary-colors,  'white'),
+  sidebar-background: map-get($primary-colors,  'white'),
   stage-background: map-get($primary-colors, 'black'),
 
   hover-background: map-get($primary-colors, 300), // #E0E0E0
