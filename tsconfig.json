@@ -35,12 +35,6 @@
       "path": "./projects/ccf-body-ui/tsconfig.spec.json"
     },
     {
-      "path": "./projects/ccf-image-viewer/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/ccf-image-viewer/tsconfig.spec.json"
-    },
-    {
       "path": "./projects/ccf-rui/tsconfig.app.json"
     },
     {

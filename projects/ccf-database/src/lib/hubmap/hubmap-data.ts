@@ -297,20 +297,17 @@ export class HuBMAPEntity {
     // this.portalUrl = `${portalUrl}search?ancestor_ids[0]=${this.id}&entity_type[0]=Dataset`;
 
     if (images.length > 0 && typesSearch.indexOf('codex') === -1) {
-      this.resultUrl = images[0];
-      this.resultType = 'image_viewer';
+      const uuid = images[0].replace(`${this.assetsApi}/`, '').split('/')[0];
+      this.resultUrl = `${portalUrl}browse/dataset/${uuid}`;
+      this.resultType = 'external_link';
+
       this.thumbnailUrl = 'assets/histology3.jpg';
       if (groupUUID === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a') { // VU
-        const thumb = this.resultUrl.split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg');
+        const thumb = images[0].split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg');
         if (DR1_VU_THUMBS.has(thumb)) {
           this.thumbnailUrl = `assets/thumbnails/DR1-VU/${thumb}`;
         }
       }
-      // Temporary way to remove VIV before its fully removed.
-      // We will be using the VIV portal via the portal links.
-      const uuid = images[0].replace(`${this.assetsApi}/`, '').split('/')[0];
-      this.resultUrl = `${portalUrl}browse/dataset/${uuid}`;
-      this.resultType = 'external_link';
     } else {
       if (dataTypes.has('codex_cytokit')) {
         const uuid = dataTypes.get('codex_cytokit')?.uuid;
