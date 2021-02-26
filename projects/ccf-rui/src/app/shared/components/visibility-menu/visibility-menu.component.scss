@@ -8,7 +8,13 @@
   scrollbar-width: thin;
 
   .reset {
+    transform: scaleX(-1);
     cursor: pointer;
+    transition: .6s;
+
+    &:hover {
+      border-radius: 2px;
+    }
   }
 
   .item-entry {
@@ -19,7 +25,12 @@
     position: relative;
 
     .opacity-icon {
-      z-index: 2;
+      z-index: 1;
+      transition: .6s;
+
+      &:hover {
+        border-radius: 2px;
+      }
     }
 
     .item-name {

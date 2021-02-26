@@ -40,11 +40,19 @@
         transform: scaleX(-1);
         cursor: pointer;
         transition: .6s;
+
+        &:hover {
+          border-radius: 2px;
+        }
       }
     
-      .visibility-icon {
+      .visibility {
         transition: .6s;
         cursor: pointer;
+
+        &:hover {
+          border-radius: 2px;
+        }
     
         &.hidden {
           display: none;

@@ -6,18 +6,35 @@
   $primary: map-get($theme, primary);
 
   .ccf-opacity-slider {
-    .reset {
-      &:hover {
-        color: mat-color($foreground, active-icon);
+    mat-slider {
+      .mat-slider-thumb {
+        background-color: mat-color($foreground, main);
+      }
+
+      .mat-slider-track-background {
+        background-color: mat-color($foreground, icons-disabled);
+      }
+
+      .mat-slider-track-fill {
+        background-color: mat-color($foreground, main);
       }
     }
 
-    .invisible {
-      color: mat-color($foreground, disabled);
+    .opacity-value {
+      color: mat-color($foreground, opacity-numbers);
     }
 
-    .visible {
-      color: mat-color($accent);
+    .icon {
+      color: mat-color($foreground, main);
+      &:hover {
+        background: mat-color($foreground, icons-hover);
+      }
+    }
+
+    .visibility {
+      &.invisible {
+        color: mat-color($foreground, icons-disabled);
+      }
     }
   }
 }
