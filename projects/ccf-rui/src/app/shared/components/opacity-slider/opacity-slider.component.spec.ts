@@ -5,11 +5,6 @@ import { OpacitySliderModule } from './opacity-slider.module';
 
 describe('OpacitySliderComponent', () => {
   let shallow: Shallow<OpacitySliderComponent>;
-  const testItem = {
-    id: 1,
-    name: 'test',
-    visible: false
-  };
 
   beforeEach(() => {
     shallow = new Shallow(OpacitySliderComponent, OpacitySliderModule);

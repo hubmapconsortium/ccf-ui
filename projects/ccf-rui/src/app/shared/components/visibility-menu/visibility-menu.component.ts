@@ -45,7 +45,7 @@ export class VisibilityMenuComponent {
     if (this.selection && item.id === this.selection.id) {
       this.selection = {...this.selection, visible: item.visible};
     }
-    this.updateOpacity(item.opacity)
+    this.updateOpacity(item.opacity);
   }
 
   /**
@@ -80,7 +80,7 @@ export class VisibilityMenuComponent {
     this.itemsChange.emit(this.items);
   }
 
-  resetItem() {
+  resetItem(): void {
     if (this.selection) {
       const updatedSelection = {...this.selection, opacity: 20, visible: true};
       this.selection = updatedSelection;

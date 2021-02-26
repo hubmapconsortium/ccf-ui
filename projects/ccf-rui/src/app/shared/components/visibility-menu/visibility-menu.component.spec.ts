@@ -23,13 +23,6 @@ describe('VisibilityMenuComponent', () => {
     shallow = new Shallow(VisibilityMenuComponent, VisibilityMenuModule);
   });
 
-  it('should set the opacity to 0 if an item is toggled to invisible', async () => {
-    const { instance } = await shallow.render({ bind: { items: testItems } });
-    const spy = spyOn(instance, 'updateOpacity');
-    instance.toggleVisibility(instance.items[1]);
-    expect(spy).toHaveBeenCalledWith(0);
-  });
-
   it('should restore the opacity to the previous opacity', async () => {
     const { instance } = await shallow.render({ bind: { items: testItems } });
     instance.toggleVisibility(instance.items[0]);

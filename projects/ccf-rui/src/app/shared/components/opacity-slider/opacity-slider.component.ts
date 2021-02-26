@@ -42,7 +42,7 @@ export class OpacitySliderComponent implements OnInit {
 
   prevOpacity: number;
 
-  ngOnInit():void {
+  ngOnInit(): void {
     if (this.visible) {
       this.prevOpacity = 0;
     } else {
