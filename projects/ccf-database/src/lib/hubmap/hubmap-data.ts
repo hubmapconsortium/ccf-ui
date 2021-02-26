@@ -306,16 +306,21 @@ export class HuBMAPEntity {
           this.thumbnailUrl = `assets/thumbnails/DR1-VU/${thumb}`;
         }
       }
+      // Temporary way to remove VIV before its fully removed.
+      // We will be using the VIV portal via the portal links.
+      const uuid = images[0].replace(`${this.assetsApi}/`, '').split('/')[0];
+      this.resultUrl = `${portalUrl}browse/dataset/${uuid}`;
+      this.resultType = 'external_link';
     } else {
       if (dataTypes.has('codex_cytokit')) {
         const uuid = dataTypes.get('codex_cytokit')?.uuid;
-        this.resultUrl = `${portalUrl}browse/dataset/${uuid}#visualization`;
+        this.resultUrl = `${portalUrl}browse/dataset/${uuid}`;
       } else if (dataTypes.has('salmon_rnaseq_10x')) {
         const uuid = dataTypes.get('salmon_rnaseq_10x')?.uuid;
-        this.resultUrl = `${portalUrl}browse/dataset/${uuid}#visualization`;
+        this.resultUrl = `${portalUrl}browse/dataset/${uuid}`;
       } else if (dataTypes.has('image_pyramid')) {
         const uuid = dataTypes.get('image_pyramid')?.uuid;
-        this.resultUrl = `${portalUrl}browse/dataset/${uuid}#visualization`;
+        this.resultUrl = `${portalUrl}browse/dataset/${uuid}`;
       } else {
         this.resultUrl = this.portalUrl;
       }
