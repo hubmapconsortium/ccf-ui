@@ -60,6 +60,10 @@ $foreground: map-merge($mat-light-theme-foreground, (
   chip-icon-done-green: map-get($mat-green, A700),
   chip-icon-background:  #E9E9E9,
   chip-border-primary:  map-get($primary-colors, light-header),
+
+  toggle-thumb: map-get($primary-colors, light-header),
+  toggle-bg: #ECECEC,
+  mat-divider: rgba(0, 0, 0, 0.03),
 ));
 
 $background: map-merge($mat-light-theme-background, (
