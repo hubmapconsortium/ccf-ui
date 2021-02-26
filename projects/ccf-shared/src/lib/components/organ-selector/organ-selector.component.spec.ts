@@ -65,15 +65,15 @@ describe('OrganSelectorComponent', () => {
 
   it('should emit the organ name whenever selectOrgan is called.', async () => {
     const { instance, outputs } = await shallow.render();
-    const testOrgan: OrganInfo = {name: 'test', src: 'test'};
+    const testOrgan: OrganInfo = {name: 'test', src: 'test', organ: 'test'};
     instance.selectOrgan(testOrgan);
     expect(outputs.organsChanged.emit).toHaveBeenCalled();
   });
 
   it('should tell if an icon is selected.', async () => {
     const { instance } = await shallow.render();
-    const testOrgan: OrganInfo = {name: 'test', src: 'test'};
-    const testOrgan2: OrganInfo = {name: 'test2', src: 'test2'};
+    const testOrgan: OrganInfo = {name: 'test', src: 'test', organ: 'test'};
+    const testOrgan2: OrganInfo = {name: 'test2', src: 'test2', organ: 'test2'};
     instance.selectOrgan(testOrgan);
     expect(instance.isSelected(testOrgan)).toBeTrue();
     expect(instance.isSelected(testOrgan2)).toBeFalse();
@@ -115,7 +115,7 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('getError() should return true if displayErrors is set to true and there is an organ selected', async () => {
-    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
     const { instance } = await shallow.render({ bind: { displayErrors: true, selectedOrgans: [testOrgan] }});
     const value = instance.error;
     expect(value).toBeTrue();
@@ -131,8 +131,8 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should allow multiple selection of organs', async () => {
-    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
-    const testOrgan2: OrganInfo = { src: 'test2', name: 'test2' };
+    const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
+    const testOrgan2: OrganInfo = { src: 'test2', name: 'test2', organ: 'test2' };
     const { instance } = await shallow.render({bind: { multiselect: true }});
     instance.selectOrgan(testOrgan);
     instance.selectOrgan(testOrgan2);
@@ -140,8 +140,8 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should deselect a selected organ', async () => {
-    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
-    const testOrgan2: OrganInfo = { src: 'test2', name: 'test2' };
+    const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
+    const testOrgan2: OrganInfo = { src: 'test2', name: 'test2', organ: 'test2' };
     const { instance } = await shallow.render({bind: { multiselect: true }});
     instance.selectOrgan(testOrgan);
     instance.selectOrgan(testOrgan2);
@@ -150,7 +150,7 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should set onLeft and onRight to true if the list of organs is smaller than the container', async () => {
-    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
     const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
     const list = find(carouselItemListClass).nativeElement as HTMLElement;
     list.style.width = '224px';
@@ -160,7 +160,7 @@ describe('OrganSelectorComponent', () => {
   });
 
   it('should set onRight to true if the list of organs is larger than the container and carousel is scrolled to end', async () => {
-    const testOrgan: OrganInfo = { src: 'test', name: 'test' };
+    const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
     const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
     const list = find(carouselItemListClass).nativeElement as HTMLElement;
     const container = find(carouselContainerClass).nativeElement as HTMLElement;
