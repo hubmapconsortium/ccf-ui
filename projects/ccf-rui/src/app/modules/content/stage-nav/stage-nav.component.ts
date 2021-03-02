@@ -18,7 +18,6 @@ export class StageNavComponent {
   @HostBinding('class') readonly clsName = 'ccf-stage-nav';
 
   /** Whether to use a drop down menu instead of a options bar */
-  // eslint-disable-next-line 
   @Input()
   set useDropdownMenu(value: boolean) {
     this.isDropdownActive = value;
@@ -62,9 +61,10 @@ export class StageNavComponent {
   /**
    * Listens to document click event
    * Closes the popup only if user clicks outside the popup
+   *
    * @param target The element on which the event was fired
    */
-  @HostListener('document:click', ['$event.target']) // eslint-disable-line
+  @HostListener('document:click', ['$event.target'])
   handleClick(target: HTMLElement): void {
     const { isDropdownHidden, labelEl, optionsEl } = this;
 
@@ -77,6 +77,7 @@ export class StageNavComponent {
 
   /**
    * Handles the updating of the side selection and calling the event emitter
+   *
    * @param selection the new selected side
    */
   updateSide(selection: Side): void {
@@ -92,6 +93,7 @@ export class StageNavComponent {
   /**
    * Handles updating of the boolean that keeps track of current view
    * and calling the event emitter.
+   *
    * @param selection 3D (true) or Register (false)
    */
   updateView(selection: boolean): void {

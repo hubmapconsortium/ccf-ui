@@ -1,8 +1,9 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @typescript-eslint/member-ordering */
+import { createEntityCollections, EntityCollections } from '@angular-ru/common/entity';
 import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataEntityCollectionsRepository } from '@ngxs-labs/data/repositories';
-import { NgxsEntityCollections } from '@ngxs-labs/data/typings';
-import { createEntityCollections } from '@ngxs-labs/data/utils';
 import { State } from '@ngxs/store';
 import { bind as Bind } from 'bind-decorator';
 import { combineLatest, Observable, ObservableInput } from 'rxjs';
@@ -23,7 +24,7 @@ export interface AnatomicalStructureTagStateModel {
  * Tag collection global state
  */
 @StateRepository()
-@State<NgxsEntityCollections<Tag, TagId, AnatomicalStructureTagStateModel>>({
+@State<EntityCollections<Tag, TagId, AnatomicalStructureTagStateModel>>({
   name: 'tags',
   defaults: {
     ...createEntityCollections()

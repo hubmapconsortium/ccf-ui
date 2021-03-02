@@ -21,6 +21,7 @@ export class DetailsLabelComponent {
   /**
    * Function that handles converting the array given
    * into a formatted string for display.
+   *
    * @param inputArray an array of strings to join.
    * @returns the formatted string of items separated by a comma.
    */

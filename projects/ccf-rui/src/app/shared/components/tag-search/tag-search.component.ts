@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input,
   OnDestroy, Output,
@@ -137,8 +138,8 @@ export class TagSearchComponent implements OnDestroy {
   /**
    * Opens the results panel
    */
-  @HostListener('click') // eslint-disable-line 
-  @HostListener('focusin') // eslint-disable-line 
+  @HostListener('click') // eslint-disable-line
+  @HostListener('focusin') // eslint-disable-line
   openResults(): void {
     if (!this.resultsVisible) {
       this.resultsVisible = true;
@@ -150,7 +151,7 @@ export class TagSearchComponent implements OnDestroy {
    *
    * @param event DOM event
    */
-  @HostListener('window:click', ['$event']) // eslint-disable-line 
+  @HostListener('window:click', ['$event']) // eslint-disable-line
   @HostListener('window:focusin', ['$event']) // eslint-disable-line
   closeResults(event: Event): void {
     if (this.resultsVisible && event.target instanceof Node) {

@@ -86,9 +86,9 @@ export class IconRegistryState extends NgxsDataRepository<void> {
     if (!this.registry) { return false; }
     if (!definition.url && !definition.html) { return false; }
 
-    const registry = this.registry as unknown as { [prop: string]: (...args: unknown[]) => void };
+    const registry = this.registry;
     const methodName = this.getMethodName(definition);
-    const method = registry[methodName];
+    const method = registry[methodName] as (...arg: unknown[]) => void;
     const args = this.getArguments(definition);
 
     if (!method) { return false; }

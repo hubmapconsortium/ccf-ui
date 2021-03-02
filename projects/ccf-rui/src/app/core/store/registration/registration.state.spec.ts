@@ -1,20 +1,20 @@
+import { Immutable } from '@angular-ru/common/typings';
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
-import { Immutable } from '@ngxs-labs/data/typings';
 import { NgxsModule, Store } from '@ngxs/store';
+import { OrganInfo } from 'ccf-shared';
 import * as FileSaver from 'file-saver';
 import { Observable, ReplaySubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { OrganInfo } from 'ccf-shared';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { GLOBAL_CONFIG } from '../../services/config/config';
 import { ModelState, ModelStateModel } from '../model/model.state';
 import { PageState, PageStateModel, Person } from '../page/page.state';
+import { ReferenceDataState, ReferenceDataStateModel } from '../reference-data/reference-data.state';
 import { AnatomicalStructureTagState } from './../anatomical-structure-tags/anatomical-structure-tags.state';
 import { RegistrationState } from './registration.state';
-import { ReferenceDataState, ReferenceDataStateModel } from '../reference-data/reference-data.state';
 
 
 const testVisibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];

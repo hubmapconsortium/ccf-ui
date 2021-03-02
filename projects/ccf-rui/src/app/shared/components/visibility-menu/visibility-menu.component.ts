@@ -38,6 +38,7 @@ export class VisibilityMenuComponent {
 
   /**
    * Toggles visibility of an item; opacity is reverted to the previous value if visibility toggled back on
+   *
    * @param item Menu item
    */
   toggleVisibility(item: VisibilityItem): void {
@@ -50,6 +51,7 @@ export class VisibilityMenuComponent {
 
   /**
    * Changes current selection to hovered over item and emits the item
+   *
    * @param item Menu item
    */
   mouseOver(item: VisibilityItem): void {
@@ -59,6 +61,7 @@ export class VisibilityMenuComponent {
 
   /**
    * Clears current selection and emits undefined in response to mouse out
+   *
    * @param item Menu item
    */
   mouseOut(): void {
@@ -68,6 +71,7 @@ export class VisibilityMenuComponent {
 
   /**
    * Updates opacity of the currently selected item (if one is selected) and emits the new items
+   *
    * @param value Updated opacity value
    */
   updateOpacity(value: number | undefined): void {
@@ -91,6 +95,7 @@ export class VisibilityMenuComponent {
 
   /**
    * Sets all items to the same opacity and makes them visible
+   *
    * @param value Updated opacity value
    */
   setAllOpacity(value: number): void {
@@ -100,6 +105,7 @@ export class VisibilityMenuComponent {
 
   /**
    * Returns the id of an item
+   *
    * @param index Index of item in items array
    * @param item The item to get an id for
    * @returns id Id of the item

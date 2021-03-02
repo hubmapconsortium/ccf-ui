@@ -1,4 +1,8 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable no-underscore-dangle */
+import {
+  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild,
+} from '@angular/core';
 import { BodyUI, NodeDragEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { Subscription } from 'rxjs';
 
@@ -18,7 +22,6 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-body-ui';
 
-  // eslint-disable-next-line 
   @Input()
   get scene(): SpatialSceneNode[] {
     return this._scene;
@@ -29,7 +32,6 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.bodyUI?.setScene(nodes);
   }
 
-  // eslint-disable-next-line 
   @Input()
   get rotation(): number {
     return this._rotation;
@@ -40,7 +42,6 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.bodyUI?.setRotation(value);
   }
 
-  // eslint-disable-next-line 
   @Input()
   get zoom(): number {
     return this._zoom;
@@ -51,7 +52,6 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.bodyUI?.setZoom(value);
   }
 
-  // eslint-disable-next-line 
   @Input()
   get bounds(): XYZTriplet {
     return this._bounds;
@@ -68,7 +68,6 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   @Output()
   readonly nodeDrag = new EventEmitter<NodeDragEvent>();
 
-  // eslint-disable-next-line
   @Input()
   get interactive(): boolean {
     return this._interactive;

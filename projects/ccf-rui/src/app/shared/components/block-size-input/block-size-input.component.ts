@@ -44,6 +44,7 @@ export class BlockSizeInputComponent {
 
   /**
    * Updates values when an input changes
+   *
    * @param input InputEvent from the input element which contains the new value
    * @param key Name of the dimension to be updated
    */

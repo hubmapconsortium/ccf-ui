@@ -18,13 +18,6 @@ export class ReviewButtonComponent {
   @HostBinding('class') readonly clsName = 'ccf-review-button';
 
   /**
-   * Creates an instance of review button component.
-   *
-   * @param dialog Reference to the dialog creation service.
-   */
-  constructor(private readonly dialog: MatDialog) { }
-
-  /**
    * Input to set whether the component should be in register (true) or download (false) mode
    */
   @Input() embeddedMode = true;
@@ -58,6 +51,13 @@ export class ReviewButtonComponent {
    * do to be able to register / download.
    */
   @Output() enterErrorMode = new EventEmitter<void>();
+
+  /**
+   * Creates an instance of review button component.
+   *
+   * @param dialog Reference to the dialog creation service.
+   */
+  constructor(private readonly dialog: MatDialog) { }
 
   /**
    * Decides whether or not the download / register button should

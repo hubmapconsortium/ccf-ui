@@ -46,6 +46,7 @@ export class LabeledSlideToggleComponent {
 
   /**
    * Updates and emits the currently selected option
+   *
    * @param selection The current toggle state (true=left, false=right)
    */
   updateToggle(selection: boolean): void {
