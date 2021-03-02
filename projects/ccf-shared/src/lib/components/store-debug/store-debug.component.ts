@@ -24,16 +24,14 @@ export class StoreDebugComponent implements OnDestroy {
    * Gets the store data as a list of state name to key-value pairs
    */
   get data(): KVList<KVList> {
-    const states: KVList<object> = Object.entries(this.root as object);
-    const stateValues: KVList<KVList> = states.map(([key, values]) => {
-      return [key, Object.entries(values)];
-    });
+    const states: KVList<Record<string, unknown>> = Object.entries(this.root);
+    const stateValues: KVList<KVList> = states.map(([key, values]) => [key, Object.entries(values)]);
     const statesWithData = stateValues.filter(([_key, values]) => values.length > 0);
     return statesWithData;
   }
 
   /** Latest store data */
-  private root: unknown = {};
+  private root: Record<string, Record<string, unknown>> = {};
 
   /** Subscriptions managed by this component */
   private subscriptions = new Subscription();
@@ -47,7 +45,7 @@ export class StoreDebugComponent implements OnDestroy {
    */
   constructor(store: Store, cdr: ChangeDetectorRef) {
     const sub = store.subscribe(root => {
-      this.root = root;
+      this.root = root as Record<string, Record<string, unknown>>;
       cdr.markForCheck();
     });
 

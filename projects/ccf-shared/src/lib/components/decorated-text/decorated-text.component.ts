@@ -13,7 +13,7 @@ interface Segment {
   /** Classes to add to the text container */
   classes: string[];
   /** Styles to set on the text container */
-  styles: object;
+  styles: Record<string, unknown>;
 }
 
 /** Represents an operation to apply to the stack when building segments */
@@ -123,10 +123,7 @@ export class DecoratedTextComponent implements OnChanges {
    */
   private createStackOps(ranges: DecoratedRange[]): StackOp[] {
     const ops: Record<number, StackOp> = {};
-    const getOp = (index: number) => {
-      return ops[index]
-        || (ops[index] = { index, added: [], removed: [] });
-    };
+    const getOp = (index: number) => (ops[index] ??= { index, added: [], removed: [] });
 
     for (const range of ranges) {
       getOp(range.start).added.push(range);
@@ -191,7 +188,7 @@ export class DecoratedTextComponent implements OnChanges {
     );
     const styles = decorations.reduce(
       (result, range) => ({ ...result, ...range.styles }),
-      {} as object
+      {}
     );
 
     return { text, classes, styles };

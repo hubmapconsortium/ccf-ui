@@ -8,12 +8,6 @@ export type GlobalKey = string | symbol;
 export type GlobalThis = typeof globalThis;
 
 
-declare global {
-  /** Name of the global object in NodeJS environments */
-  const global: GlobalThis | undefined;
-}
-
-
 /**
  * Provide functionality for interacting with the global object.
  */
