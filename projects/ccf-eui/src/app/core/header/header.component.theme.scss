@@ -37,6 +37,7 @@
 
     .authentication {
       background-color: mat-color($background, authentication);
+      color: mat-color($foreground, button-text);
     }
   }
 }
