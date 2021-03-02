@@ -210,14 +210,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/triple-store-utils/tsconfig.lib.json",
-              "projects/triple-store-utils/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/triple-store-utils/**/*.ts",
+              "projects/triple-store-utils/**/*.html"
             ]
           }
         }
