@@ -40,6 +40,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   disabled: map-get($primary-colors, light-disabled), //#BDBDBD
   highlight: map-get($primary-colors, 'black'),
   header-download-icon: map-get($primary-colors, 300), //#E0E0E0
+  header-shadow: map-get($primary-colors, light-header),
 ));
 
 $background: map-merge($mat-light-theme-background, (
