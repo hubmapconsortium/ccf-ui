@@ -18,7 +18,7 @@ export class StageNavComponent {
   @HostBinding('class') readonly clsName = 'ccf-stage-nav';
 
   /** Whether to use a drop down menu instead of a options bar */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line 
   @Input()
   set useDropdownMenu(value: boolean) {
     this.isDropdownActive = value;
@@ -64,7 +64,7 @@ export class StageNavComponent {
    * Closes the popup only if user clicks outside the popup
    * @param target The element on which the event was fired
    */
-  @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  @HostListener('document:click', ['$event.target']) // eslint-disable-line
   handleClick(target: HTMLElement): void {
     const { isDropdownHidden, labelEl, optionsEl } = this;
 

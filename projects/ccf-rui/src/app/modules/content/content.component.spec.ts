@@ -80,7 +80,7 @@ describe('ContentComponent', () => {
 
     beforeEach(() => {
       // Constructors can't be arrow functions
-      // tslint:disable-next-line: typedef only-arrow-functions
+      // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
       spyOn(ResizeSensorModule, 'ResizeSensor').and.callFake(function(_el, callback) {
         sensorCallback = callback;
         return jasmine.createSpyObj<ResizeSensorModule.ResizeSensor>(

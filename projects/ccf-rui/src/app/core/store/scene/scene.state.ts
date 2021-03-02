@@ -18,7 +18,7 @@ import { ReferenceDataState } from './../reference-data/reference-data.state';
 /**
  * Scene state model
  */
-// tslint:disable-next-line: no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SceneStateModel {
   showCollisions: boolean;
 }

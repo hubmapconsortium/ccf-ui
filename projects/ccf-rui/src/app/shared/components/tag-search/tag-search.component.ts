@@ -137,8 +137,8 @@ export class TagSearchComponent implements OnDestroy {
   /**
    * Opens the results panel
    */
-  @HostListener('click') // tslint:disable-line: no-unsafe-any
-  @HostListener('focusin') // tslint:disable-line: no-unsafe-any
+  @HostListener('click') // eslint-disable-line 
+  @HostListener('focusin') // eslint-disable-line 
   openResults(): void {
     if (!this.resultsVisible) {
       this.resultsVisible = true;
@@ -150,8 +150,8 @@ export class TagSearchComponent implements OnDestroy {
    *
    * @param event DOM event
    */
-  @HostListener('window:click', ['$event']) // tslint:disable-line: no-unsafe-any
-  @HostListener('window:focusin', ['$event']) // tslint:disable-line: no-unsafe-any
+  @HostListener('window:click', ['$event']) // eslint-disable-line 
+  @HostListener('window:focusin', ['$event']) // eslint-disable-line
   closeResults(event: Event): void {
     if (this.resultsVisible && event.target instanceof Node) {
       if (!this.el.nativeElement.contains(event.target)) {

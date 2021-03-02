@@ -42,7 +42,7 @@ export class NameInputComponent {
   /**
    * Current user name
    */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line
   @Input()
   get name(): UserName {
     return this._name;
