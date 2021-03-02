@@ -252,14 +252,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ccf-body-ui/tsconfig.lib.json",
-              "projects/ccf-body-ui/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/ccf-body-ui/**/*.ts",
+              "projects/ccf-body-ui/**/*.html"
             ]
           }
         }

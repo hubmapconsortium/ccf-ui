@@ -70,7 +70,7 @@ export class BodyUI {
   private lastHovered?: SpatialSceneNode;
 
   constructor(private deckProps: Partial<BodyUIProps>) {
-    // tslint:disable-next-line: no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const props: any = {
       ...deckProps,
       views: [ new OrbitView({}) ],
@@ -85,7 +85,7 @@ export class BodyUI {
       getCursor: (e: {isDragging: boolean}) => this.cursor || (e.isDragging ? 'grabbing' : 'grab')
     };
     if (deckProps.legacyLighting) {
-      // tslint:disable-next-line: no-unsafe-any
+      // eslint-disable-next-line 
       props.effects = [
         new LightingEffect({
           ambientLight: new AmbientLight({
@@ -95,7 +95,7 @@ export class BodyUI {
         })
       ];
     }
-    // tslint:disable-next-line: no-unsafe-any
+    // eslint-disable-next-line
     this.deck = new Deck(props);
     this.deck.setProps({
       viewState: {

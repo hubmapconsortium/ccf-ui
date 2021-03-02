@@ -14,7 +14,7 @@ export interface ProcessedNode extends SpatialSceneNode {
   center: Vec3;
 }
 
-// tslint:disable: no-unsafe-any
+/* eslint-disable  */
 function childNames(scene, names: string[] = []): string[] {
   for (const child of (scene.nodes || scene.children || [])) {
     names.push(child.name);
@@ -96,4 +96,4 @@ export async function processSceneNodes(gltfUrl: string, worldMatrix?: Matrix4, 
   }
   return nodes;
 }
-// tslint:enable: no-unsafe-any
+/* eslint-enable */

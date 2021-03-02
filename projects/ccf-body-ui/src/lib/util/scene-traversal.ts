@@ -3,7 +3,7 @@ import { Matrix4 } from '@math.gl/core';
 
 export type SceneTraversalVisitor = (child, modelMatrix: Matrix4, parentMatrix: Matrix4) => boolean;
 
-// tslint:disable: no-unsafe-any
+/* eslint-disable  */
 export function traverseScene(scene, worldMatrix = new Matrix4(), visitor: SceneTraversalVisitor): boolean {
   const matrix = new Matrix4().identity();
   if (scene.matrix) {
@@ -35,4 +35,4 @@ export function traverseScene(scene, worldMatrix = new Matrix4(), visitor: Scene
   }
   return true;
 }
-// tslint:enable: no-unsafe-any
+/* eslint-enable */
