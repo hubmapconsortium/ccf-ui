@@ -25,7 +25,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   logo: map-get($primary-colors, 'white'),
   header-border: map-get($primary-colors, 800), //#424242
   modal-borders: map-get($primary-colors, 'black'),
-  divider: map-get($primary-colors, 300), //#E0E0E0
+  divider: map-get($primary-colors, light-disabled), //#E0E0E0
   borders: map-get($primary-colors, 300), //#E0E0E0
   carousel-arrow: map-get($primary-colors, 500), // #9E9E9E;
   icon: map-get($primary-colors, 300), //#E0E0E0
@@ -44,7 +44,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
 ));
 
 $background: map-merge($mat-light-theme-background, (
-  background: map-get($primary-colors, 50),
+  background: map-get($primary-colors, 'white'),
   hover-background: map-get($primary-colors, 300), // #E0E0E0
   stage-background: map-get($primary-colors, 'black'),
   dialog: map-get($primary-colors, 50), //#FAFAFA
