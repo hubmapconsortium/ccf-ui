@@ -41,10 +41,13 @@ $foreground: map-merge($mat-light-theme-foreground, (
   highlight: map-get($primary-colors, 'black'),
   header-download-icon: map-get($primary-colors, 300), //#E0E0E0
   header-shadow: map-get($primary-colors, light-header),
+<<<<<<< HEAD
 
   main: #444A65,
   organ-off: #cccccc,
   organ-numbers: #757575
+=======
+>>>>>>> chore: added shadow to header
 ));
 
 $background: map-merge($mat-light-theme-background, (
