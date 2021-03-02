@@ -27,7 +27,7 @@ export function applySpatialPlacement(tx: Matrix4, placement: SpatialPlacement):
   }
   const T = [p.x_translation, p.y_translation, p.z_translation].map(t => t * factor);
   const R_RAD = [p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians);
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line
   const R = toEuler(fromEuler(R_RAD[1], R_RAD[0], R_RAD[2], 'XYZ').toVector()) as number[];
   const S = [p.x_scaling, p.y_scaling, p.z_scaling];
 
