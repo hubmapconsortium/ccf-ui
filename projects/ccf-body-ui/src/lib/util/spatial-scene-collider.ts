@@ -11,7 +11,7 @@ import { traverseScene } from './scene-traversal';
 interface Collision {
   '@id': string;
   name: string;
-  hits: {'@id': string, name: string}[];
+  hits: {'@id': string; name: string}[];
 }
 
 /* eslint-disable  */

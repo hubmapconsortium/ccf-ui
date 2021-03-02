@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable no-underscore-dangle */
 import { AmbientLight, Deck, LightingEffect, OrbitView } from '@deck.gl/core';
 import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
@@ -37,11 +39,11 @@ export interface PickInfo<D> {
   object: D;
   x: number;
   y: number;
-  coordinate?: {};
+  coordinate?: unknown;
   picked?: boolean;
 }
 
-export type NodeDragEvent = {node: SpatialSceneNode, info: PickInfo<SpatialSceneNode>, e: MouseEvent};
+export type NodeDragEvent = {node: SpatialSceneNode; info: PickInfo<SpatialSceneNode>; e: MouseEvent};
 
 /**
  * A convenience wrapper class for the CCF Body UI
@@ -50,7 +52,7 @@ export class BodyUI {
   deck: Deck;
   private readonly bodyUILayer = new BodyUILayer({});
 
-  private readonly nodeClickSubject = new Subject<{node: SpatialSceneNode, ctrlClick: boolean}>();
+  private readonly nodeClickSubject = new Subject<{node: SpatialSceneNode; ctrlClick: boolean}>();
   private readonly nodeHoverStartSubject = new Subject<SpatialSceneNode>();
   private readonly nodeHoverStopSubject = new Subject<SpatialSceneNode>();
   private readonly sceneRotationSubject = new BehaviorSubject<number>(0);
@@ -85,7 +87,7 @@ export class BodyUI {
       getCursor: (e: {isDragging: boolean}) => this.cursor || (e.isDragging ? 'grabbing' : 'grab')
     };
     if (deckProps.legacyLighting) {
-      // eslint-disable-next-line 
+      // eslint-disable-next-line
       props.effects = [
         new LightingEffect({
           ambientLight: new AmbientLight({
@@ -204,7 +206,7 @@ export class BodyUI {
   }
 
   @bind
-  private _onHover(e: {picked: boolean, object: SpatialSceneNode}): void {
+  private _onHover(e: {picked: boolean; object: SpatialSceneNode}): void {
     const { lastHovered } = this;
     this.cursor = e.picked ? 'pointer' : undefined;
     if (e.picked && e.object && e.object['@id']) {
@@ -222,16 +224,16 @@ export class BodyUI {
   }
 
   @bind
-  private _onClick(info: PickInfo<SpatialSceneNode>, e: { srcEvent: { ctrlKey: boolean; }; }): void {
+  private _onClick(info: PickInfo<SpatialSceneNode>, e: { srcEvent: { ctrlKey: boolean } }): void {
     if (info.picked && info.object && info.object['@id']) {
       this.nodeClickSubject.next({node: info.object, ctrlClick: e?.srcEvent?.ctrlKey ?? undefined});
     }
   }
 
   @bind
-  private _onViewStateChange(event: { interactionState: { isZooming: boolean; }; viewState: BodyUIViewStateProps }): void {
+  private _onViewStateChange(event: { interactionState: { isZooming: boolean }; viewState: BodyUIViewStateProps }): void {
     if (event.interactionState?.isZooming) {
-      const currentState = this.bodyUILayer.state as {zoomOpacity: number, data: unknown};
+      const currentState = this.bodyUILayer.state as {zoomOpacity: number; data: unknown};
       const zoomOpacity = Math.min(Math.max(1 - (event.viewState.zoom - 8.9) / 2, 0.05), 1.0);
       if (currentState.zoomOpacity !== zoomOpacity) {
         this.bodyUILayer.setState({data: currentState.data, zoomOpacity});

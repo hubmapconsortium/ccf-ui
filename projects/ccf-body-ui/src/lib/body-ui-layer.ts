@@ -41,7 +41,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
   }
 
   renderLayers(): unknown[] {
-    const state = this.state as {data: SpatialSceneNode[], zoomOpacity: number, doCollisions: boolean};
+    const state = this.state as { data: SpatialSceneNode[]; zoomOpacity: number; doCollisions: boolean };
     const cubes = state.data.filter(d => !d.scenegraph && !d.wireframe && d.unpickable);
     const pickableCubes = state.data.filter(d => !d.scenegraph && !d.wireframe && !d.unpickable);
     const wireframes = state.data.filter(d => !d.scenegraph && d.wireframe);
@@ -73,6 +73,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
           scenegraph: model.scenegraphNode ?
             loadGLTF2(model.scenegraphNode, url2gltf[model.scenegraph as string]) :
             model.scenegraph as unknown as URL,
+          // eslint-disable-next-line no-underscore-dangle
           _lighting: model._lighting,  // 'pbr' | undefined
           getTransformMatrix: model.transformMatrix as unknown as number[][],
           getColor: model.color || [0, 255, 0, 0.5*255],
@@ -83,7 +84,9 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
     ].filter(l => !!l);
   }
 
-  getPickingInfo(e: {info: object}): unknown {
+  getPickingInfo(
+    e: Parameters<CompositeLayer<SpatialSceneNode>['getPickingInfo']>[0]
+  ): ReturnType<CompositeLayer<SpatialSceneNode>['getPickingInfo']> {
     return e.info;
   }
 }

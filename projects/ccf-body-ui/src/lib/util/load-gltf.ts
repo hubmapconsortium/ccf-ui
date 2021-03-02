@@ -1,3 +1,4 @@
+/* tslint:disable:no-unsafe-any no-any */
 import { parse, registerLoaders } from '@loaders.gl/core';
 import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
 import { GLTFLoader } from '@loaders.gl/gltf';
@@ -8,7 +9,7 @@ import { traverseScene } from './scene-traversal';
 
 
 export function registerGLTFLoaders(): void {
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   registerLoaders([DracoWorkerLoader, GLTFLoader]);
 }
 

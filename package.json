@@ -99,7 +99,7 @@
     "@angular/compiler-cli": "^11.2.3",
     "@angular/language-service": "^11.2.3",
     "@compodoc/compodoc": "^1.1.11",
-    "@danmarshall/deckgl-typings": "^4.6.0",
+    "@danmarshall/deckgl-typings": "^4.6.1",
     "@types/file-saver": "^2.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
