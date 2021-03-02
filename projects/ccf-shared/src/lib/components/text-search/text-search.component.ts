@@ -55,7 +55,7 @@ export class TextSearchComponent {
   /**
    * The text to show on the search bar
    */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line
   @Input()
   get value(): string {
     return this.controller.value as string;
