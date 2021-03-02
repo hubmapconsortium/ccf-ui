@@ -36,7 +36,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * The node like objects to display in the tree.
    */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line 
   @Input()
   set nodes(nodes: OntologyNode[] | undefined) {
     this._nodes = nodes;
@@ -50,7 +50,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Method for fetching the children of a node.
    */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line 
   @Input()
   set getChildren(fun: GetChildrenFunc | undefined) {
     this._getChildren = fun;
@@ -64,7 +64,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Occurence Data is a record of terms that are in the current filter.
    */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line 
   @Input()
   set occurenceData(value: Record<string, number>) {
     if (value) {
@@ -86,7 +86,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Term Data is a record of terms that the app currently has data for.
    */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line
   @Input()
   set termData(value: Record<string, number>) {
     if (value) {

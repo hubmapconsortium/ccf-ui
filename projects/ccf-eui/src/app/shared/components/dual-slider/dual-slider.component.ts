@@ -162,9 +162,9 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    *
    * @param target The element on which the event was fired.
    */
-  @HostListener('document:click', ['$event.target']) // tslint:disable-line:no-unsafe-any
-  // @HostListener('document:mousemove', ['$event.target']) // tslint:disable-line:no-unsafe-any
-  @HostListener('document:touchstart', ['$event.target']) // tslint:disable-line:no-unsafe-any
+  @HostListener('document:click', ['$event.target']) // eslint-disable-line 
+  // eslint-disable-line
+  @HostListener('document:touchstart', ['$event.target']) // eslint-disable-line
   closeSliderPopover(target: HTMLElement): void {
     const { element, isSliderOpen, popoverElement } = this;
     if (!isSliderOpen) {
