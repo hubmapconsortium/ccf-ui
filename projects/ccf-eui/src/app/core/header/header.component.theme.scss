@@ -9,7 +9,7 @@
     border-bottom-color: mat-color($foreground, header-border);
     background-color: mat-color($background, app-bar);
     color: mat-color($foreground, headers);
-    box-shadow: 0rem 1px 5px 1px map-get($foreground, header-shadow);
+    box-shadow: 0rem 0.063rem 0.313rem 0.063rem map-get($foreground, header-shadow);
 
     .logo {
       color: mat-color($foreground, logo);
