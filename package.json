@@ -40,6 +40,7 @@
     "fs": false
   },
   "dependencies": {
+    "@angular-ru/common": "^15.126.1",
     "@angular/animations": "^11.2.3",
     "@angular/cdk": "^11.2.2",
     "@angular/common": "^11.2.3",
