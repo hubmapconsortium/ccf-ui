@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { DataFactory, Util } from 'triple-store-utils';
 
 /** Constants used to create entity accessors. */

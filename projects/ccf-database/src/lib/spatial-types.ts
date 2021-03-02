@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /** A reference to a spatial object. */
 export interface SpatialObjectReference {
   /** Identifier. */
