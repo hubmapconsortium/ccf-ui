@@ -18,7 +18,6 @@
 
     ccf-drawer-content {
       overflow: hidden;
-      margin-top: 1.5rem;
       margin-bottom: 1.5rem;
       border-radius: 0.5rem;
     }
@@ -53,6 +52,52 @@
             align-items: center;
             justify-content: center;
           }
+        }
+      }
+    }
+
+    ccf-drawer-content {
+      .selector-drawer {
+        top: 0rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        justify-content: center;
+        height: 5rem;
+        transition: all 0.5s ease-in-out;
+
+        &.closed {
+          margin-bottom: 1.5rem;
+          height: 0rem;
+          top: -4.25rem;
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+    }
+
+    .close-button-wrapper {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      border-top-right-radius: 0.5rem;
+      border-top-left-radius: 0.5rem;
+
+      .close-button {
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        color: black;
+        height: 1.0625rem;
+        width: 3rem;
+        align-self: center;
+        border-radius: 0rem 0rem 0.25rem 0.25rem;
+        cursor: pointer;
+        transition: 0.6s;
+
+        .mat-icon {
+          position: relative;
+          bottom: 0.2rem;
         }
       }
     }

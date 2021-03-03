@@ -36,11 +36,6 @@
         transition: all 0.2s linear;
         width: 24rem;
 
-        &.hidden {
-          opacity: 0;
-          pointer-events: none;
-        }
-
         .carousel-item {
           display: flex;
           flex-direction: column;
@@ -52,12 +47,29 @@
             height: 2.75rem;
           }
 
-          .carousel-text {
+          .carousel-text-container {
+            display: flex;
+            flex-direction: column;
+            height: 2rem;
+            justify-content: center;
             text-align: center;
-            font-size: 0.625rem;
-            max-width: 3.5rem;
-            line-height: .8rem;
+
+            .carousel-text {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 0.625rem;
+              max-width: 3.5rem;
+              line-height: .8rem;
+              min-height: 1.5rem;
+            }
+  
+            .num-results {
+              font-size: 0.6875rem;
+              line-height: 1.5;
+            }
           }
+
 
           &.disabled {
             pointer-events: none;
