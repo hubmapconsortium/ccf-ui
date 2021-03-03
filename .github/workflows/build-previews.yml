@@ -26,8 +26,8 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run build:libs
-      - name: Build RUI
-        run: npm run build -- --project ccf-rui --output-hashing=none --base-href=/
+      - name: Build EUI
+        run: npm run build -- --project ccf-eui --output-hashing=none --base-href=/
 
       ### Temporarily disabling building of EUI and compodoc for build previews
       ### to speed up build preview generation
