@@ -27,26 +27,15 @@ jobs:
       - run: npm ci
       - run: npm run build:libs
       - name: Build EUI
-        run: npm run build -- --project ccf-eui --output-hashing=none --base-href=/
-
-      ### Temporarily disabling building of EUI and compodoc for build previews
-      ### to speed up build preview generation
-      # - name: Build EUI
-      #   run: npm run build -- --output-hashing=none --base-href=/
+        run: npm run build -- --output-hashing=none --base-href=/
       # - name: Build RUI
       #   run: |
       #     npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
       #     cp -r dist/ccf-rui dist/ccf-ui/rui
-      # - name: Setup GitHub Pages files
-      #   run: |
-      #     cp dist/ccf-ui/index.html dist/ccf-ui/404.html
-      #     touch dist/ccf-ui/.nojekyll
-      # - run: npm run compodoc
 
       - uses: jsmrcaga/action-netlify-deploy@master
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           build_command: false
-          #build_directory: dist/ccf-ui
-          build_directory: dist/ccf-rui
+          build_directory: dist/ccf-ui
