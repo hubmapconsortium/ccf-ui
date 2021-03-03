@@ -139,7 +139,7 @@ export class CCFSpatialScene {
     let transform = this.db.graph.getTransformationMatrix(sourceID, target['@id']);
     if (transform) {
       if (has3dObject) {
-        transform = new Matrix4([]).rotateX(toRadians(90)).multiplyLeft(transform);
+        transform = new Matrix4(Matrix4.IDENTITY).rotateX(toRadians(90)).multiplyLeft(transform);
       } else {
         // Scale visible bounding boxes to the desired dimensions
         let factor: number;

@@ -73,13 +73,13 @@ export class CCFSpatialGraph {
 
   getTransformationMatrix(sourceIRI: string, targetIRI: string): Matrix4 | undefined {
     if (sourceIRI === targetIRI) {
-      return new Matrix4([]); // identity
+      return new Matrix4(Matrix4.IDENTITY); // identity
     }
     if (!this.graph.hasNode(sourceIRI) || !this.graph.hasNode(targetIRI)) {
       return undefined;
     }
 
-    const tx = new Matrix4([]);
+    const tx = new Matrix4(Matrix4.IDENTITY);
     const path = shortestPath(this.graph, sourceIRI, targetIRI);
     if (path && path.length > 0) {
       path.reverse();
