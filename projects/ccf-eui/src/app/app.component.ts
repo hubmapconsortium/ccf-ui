@@ -31,6 +31,8 @@ export class AppComponent {
    */
   ontologySelectionLabel = 'body';
 
+  open = true;
+
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
     map(state => state === DataQueryState.Running)

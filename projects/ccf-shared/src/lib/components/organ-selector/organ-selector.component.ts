@@ -121,6 +121,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Set resize sensor on carousel
    */
   ngAfterViewInit(): void {
+    this.selectedOrgans = this.selectedOrgans.slice(1);
     const { itemContainer } = this;
     this.sensor = new ResizeSensor(itemContainer.nativeElement, () => {
       this.set();
