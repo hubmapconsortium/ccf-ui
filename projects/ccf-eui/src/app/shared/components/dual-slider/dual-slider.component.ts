@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
 import {
@@ -103,6 +104,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
   /**
    * Creates an instance of dual slider component.
+   *
    * @param overlay The overlay service used to create the slider popover.
    * @param element A reference to the component's element. Used during event handling.
    */
@@ -120,6 +122,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
   /**
    * Updates slider options (with optionsChanged) and selection when changes detected.
+   *
    * @param changes Changes that have been made to the slider properties.
    */
   ngOnChanges(changes: SimpleChanges): void {
@@ -162,7 +165,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    *
    * @param target The element on which the event was fired.
    */
-  @HostListener('document:click', ['$event.target']) // eslint-disable-line 
+  @HostListener('document:click', ['$event.target']) // eslint-disable-line
   // eslint-disable-line
   @HostListener('document:touchstart', ['$event.target']) // eslint-disable-line
   closeSliderPopover(target: HTMLElement): void {
@@ -222,6 +225,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
   /**
    * Updates the slider's low pointer value when Enter key is pressed.
+   *
    * @param event Event passed into the component
    */
   onKeyLow(event: KeyboardEvent): void {
@@ -238,6 +242,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
 
   /**
    * Updates the slider's high pointer value when Enter key is pressed.
+   *
    * @param event Event passed into the component
    */
   onKeyHigh(event: KeyboardEvent): void {

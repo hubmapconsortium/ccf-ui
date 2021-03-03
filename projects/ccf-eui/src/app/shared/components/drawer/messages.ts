@@ -56,4 +56,5 @@ export type MessageChannel = GenericMessageChannel<Payload>;
 /** Specific service type. */
 export type MessageService = GenericMessageService<Payload>;
 /** Reference to the service class. */
-export const MessageService = GenericMessageService; // eslint-disable-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const MessageService = GenericMessageService;

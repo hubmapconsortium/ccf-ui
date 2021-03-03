@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable no-underscore-dangle */
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -100,27 +102,27 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   /** HTML class */
   @HostBinding('class') readonly className = 'ccf-drawer';
   /** Whether this is located at the end position. */
-  @HostBinding('class.ccf-drawer-end') // eslint-disable-line 
+  @HostBinding('class.ccf-drawer-end') // eslint-disable-line
   get classEnd(): boolean { return this.position === 'end'; }
 
   /** Position of the drawer - start (left) or end (right). */
-  @Input()// eslint-disable-line 
+  @Input()// eslint-disable-line
   get position(): 'start' | 'end' { return this._position; }
   set position(value: 'start' | 'end') { this._position = value || 'start'; }
   /** Property for position getter/setter. */
   private _position: 'start' | 'end' = 'start';
 
   /** Whether the drawer is opened. */
-  @Input() // eslint-disable-line 
-  @HostBinding('class.ccf-drawer-opened') // eslint-disable-line 
+  @Input() // eslint-disable-line
+  @HostBinding('class.ccf-drawer-opened') // eslint-disable-line
   get opened(): boolean { return this._opened; }
   set opened(value: boolean) { this.toggle(coerceBooleanProperty(value)); }
   /** Property for opened getter/setter. */
   private _opened = false;
 
   /** Whether the drawer is expanded. */
-  @Input() // eslint-disable-line 
-  @HostBinding('class.ccf-drawer-expanded') // eslint-disable-line 
+  @Input() // eslint-disable-line
+  @HostBinding('class.ccf-drawer-expanded') // eslint-disable-line
   get expanded(): boolean { return this._expanded; }
   set expanded(value: boolean) { this.toggleExpanded(coerceBooleanProperty(value)); }
   /** Property for expanded getter/setter */
@@ -138,7 +140,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   openedState: OpenedState = 'closed';
 
   /** Expanded/collapsed state parameters. */
-  @HostBinding('@expandCollapse')  // eslint-disable-line 
+  @HostBinding('@expandCollapse')  // eslint-disable-line
   get expandedStateObj(): unknown {
     return { value: this.expandedState2, params: {
       width: this.width, margin: this.measuredMargin,
@@ -292,7 +294,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   /**
    * Listener to open/close animation completion.
    */
-  @HostListener('@openClose.done') // eslint-disable-line 
+  @HostListener('@openClose.done') // eslint-disable-line
   closeOpenDone(): void {
     this.openedChange.emit(this.opened);
   }
@@ -369,9 +371,10 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   }
 
   /** Workaround for getter/setter pair not accepting different types. */
-  static ngAcceptInputType_position: '' | 'start' | 'end'; // eslint-disable-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match, @typescript-eslint/member-ordering
-  /** Workaround for getter/setter pair not accepting different types. */
-  static ngAcceptInputType_opened: BooleanInput; // eslint-disable-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match, @typescript-eslint/member-ordering
-  /** Workaround for getter/setter pair not accepting different types. */
-  static ngAcceptInputType_expanded: BooleanInput; // eslint-disable-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match, @typescript-eslint/member-ordering
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  static ngAcceptInputType_position: '' | 'start' | 'end';
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  static ngAcceptInputType_opened: BooleanInput;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  static ngAcceptInputType_expanded: BooleanInput;
 }

@@ -32,6 +32,7 @@ export class FiltersContentComponent {
 
   /**
    * Updates the filter object with a new key/value
+   *
    * @param value The value to be saved for the filter
    * @param key The key for the filter to be saved at
    */

@@ -46,6 +46,7 @@ export class OntologySelectionComponent {
 
   /**
    * Creates an instance of ontology selection component.
+   *
    * @param ontologySearchService Service for searching the ontology.
    * @param store The global state store.
    */
@@ -56,6 +57,7 @@ export class OntologySelectionComponent {
 
   /**
    * Ontology selection event when node is selected from the search results.
+   *
    * @param ontologyNode selected ontology node.
    */
   selected(ontologyNode: OntologyNode): void {

@@ -42,6 +42,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Creates an instance of ontology search component.
+   *
    * @param ontologyService instance of searchService which provides all the search functionality
    */
   constructor(public ontologyService: OntologySearchService) { }
@@ -66,6 +67,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * A formatter function to enable different display and selected value
+   *
    * @param option a search result entry
    * @returns a part of the search result entry to be displayed as a display value
    */
@@ -75,6 +77,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Sorts by results which have synonyms
+   *
    * @param entry search result entry
    * @returns 1 or -1
    */
@@ -84,6 +87,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Sorts lexically
+   *
    * @param entry search result entry
    * @returns lower case value of node label
    */
@@ -93,6 +97,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Callback function triggered when the user selects a value from search results
+   *
    * @param event instance of MatAutocompleteSelectedEvent
    */
   onSelect(event: MatAutocompleteSelectedEvent): void {
