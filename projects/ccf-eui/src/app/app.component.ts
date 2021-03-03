@@ -23,7 +23,7 @@ export class AppComponent {
   /**
    * List of organs to be displayed in the carousel
    */
-  organList = ALL_ORGANS;
+  organList = ALL_ORGANS.map(i => ({ ...i, numResults: 0})) as OrganInfo[];
 
   /**
    * Organs to be selected in the organ selector carousel
