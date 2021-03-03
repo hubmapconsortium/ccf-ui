@@ -12,6 +12,7 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
 import { ThemingService } from './core/services/theming/theming.service';
+import { OrganInfo } from 'ccf-shared';
 
 @NgModule({})
 class EmptyModule {}
@@ -74,5 +75,15 @@ describe('AppComponent', () => {
 
     header.refreshClicked.emit();
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should change the selected organs', async () => {
+    const { instance } = await shallow.render();
+    const organ = {
+      src: '',
+      name: 'testOrgan',
+    } as OrganInfo;
+    instance.changeOrgans([organ]);
+    expect(instance.selectedOrgans).toEqual([organ]);
   });
 });

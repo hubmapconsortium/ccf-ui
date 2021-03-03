@@ -39,7 +39,7 @@ export class AppComponent {
   /**
    * Whether or not organ carousel is open
    */
-  open = true;
+  organListVisible = true;
 
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(

@@ -27,14 +27,14 @@
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
     <ccf-drawer-content>
-      <div [class.closed]="!open" class="selector-drawer">
+      <div [class.closed]="!organListVisible" class="selector-drawer">
         <ccf-organ-selector [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
           [selectedOrgans]="selectedOrgans"></ccf-organ-selector>
       </div>
-      <div class="close-button-wrapper" [class.closed]="!open">
-        <div class="close-button" (click)="open = !open">
+      <div class="close-button-wrapper" [class.closed]="!organListVisible">
+        <div class="close-button" (click)="organListVisible = !organListVisible">
           <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">
-            {{ open ? 'arrow_drop_up': 'arrow_drop_down' }}
+            {{ organListVisible ? 'arrow_drop_up': 'arrow_drop_down' }}
           </mat-icon>
         </div>
       </div>

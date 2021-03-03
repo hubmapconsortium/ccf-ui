@@ -7,7 +7,7 @@
           <mat-icon class="carousel-icon" svgIcon="{{organ.src}}"></mat-icon>
           <div class="carousel-text-container">
             <div class="carousel-text">{{ organ.name }}</div>
-            <div class="organ-number" *ngIf="multiselect">{{ organ.num ? organ.num : 0 }}</div>
+            <div class="num-results" *ngIf="organ.numResults !== undefined">{{ organ.numResults ? organ.numResults : 0 }}</div>
           </div>
       </div>
     </div>

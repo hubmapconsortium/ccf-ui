@@ -52,7 +52,7 @@ export interface OrganInfo {
    */
   hasSex?: boolean;
 
-  num?: number;
+  numResults?: number;
 }
 
 /**
