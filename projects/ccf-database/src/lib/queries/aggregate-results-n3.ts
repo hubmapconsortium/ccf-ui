@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Store } from 'triple-store-utils';
 
 import { AggregateResult } from '../interfaces';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ccf } from '../util/prefixes';
 
 /** RUI v0.5.0 format */
@@ -16,21 +17,21 @@ export interface OldRuiData {
   tissue_position_vertices: unknown[];
   /** Tissue point of mass. */
   tissue_position_mass_point: {
-    x: number,
-    y: number,
-    z: number
+    x: number;
+    y: number;
+    z: number;
   };
   /** Tissue object rotation. */
   tissue_object_rotation: {
-    x: number,
-    y: number,
-    z: number
+    x: number;
+    y: number;
+    z: number;
   };
   /** Tissue object size. */
   tissue_object_size: {
-    x: number,
-    y: number,
-    z: number
+    x: number;
+    y: number;
+    z: number;
   };
 }
 
@@ -53,12 +54,13 @@ function fixOldRuiKidneyData(data: OldRuiData): OldRuiData {
 
 /**
  * Converts version 0.5.0 RUI data to new JSONLD format.
+ *
  * @param data The old data.
  * @param [externalId] An optional label.
  * @param [refOrganId] The organ id.
  * @returns The translated JSONLD data.
  */
-export function convertOldRuiToJsonLd(data: OldRuiData, label?: string, refOrganId?: string): object {
+export function convertOldRuiToJsonLd(data: OldRuiData, label?: string, refOrganId?: string): Record<string, unknown> {
   let placementTarget: string | undefined;
   if (refOrganId) {
     placementTarget = refOrganId;

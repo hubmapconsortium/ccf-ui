@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Iri, JsonLd, Url } from 'jsonld/jsonld-spec';
 import { get, omit, toNumber } from 'lodash';
 import { addJsonLdToStore, Store } from 'triple-store-utils';
@@ -11,6 +12,7 @@ import { convertOldRuiToJsonLd, OldRuiData } from './old-rui-utils';
 export type JsonDict = { [key: string]: unknown };
 const HBM_PREFIX = 'https://entity-api.hubmapconsortium.org/entities/';
 
+// eslint-disable-next-line max-len
 export const DR1_VU_THUMBS = new Set(['VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.jpg', 'VAN0003-LK-32-21-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0003-LK-32-21-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0003-LK-32-21-PAS_registered_thumbnail.jpg', 'VAN0003-LK-32-22-AF_preMxIF_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0005-RK-1-1-AF_preIMS_registered_thumbnail.jpg', 'VAN0005-RK-1-1-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0005-RK-1-1-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0005-RK-1-1-PAS_registered_thumbnail.jpg', 'VAN0005-RK-4-172-AF_preIMS_registered_thumbnail.jpg', 'VAN0005-RK-4-172-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0005-RK-4-172-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0005-RK-4-172-PAS_registered_thumbnail.jpg', 'VAN0006-LK-2-85-AF_preIMS_registered_thumbnail.jpg', 'VAN0006-LK-2-85-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0006-LK-2-85-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0006-LK-2-85-PAS_registered_thumbnail.jpg', 'VAN0006-LK-2-86-AF_preMxIF_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0007-LK-203-103-AF_preIMS_registered_thumbnail.jpg', 'VAN0007-LK-203-103-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0007-LK-203-103-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0007-LK-203-103-PAS_registered_thumbnail.jpg', 'VAN0008-RK-403-100-AF_preIMS_registered_thumbnail.jpg', 'VAN0008-RK-403-100-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0008-RK-403-100-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0008-RK-403-100-PAS_registered_thumbnail.jpg', 'VAN0008-RK-403-101-AF_preMxIF_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0009-LK-102-7-AF_preIMS_registered_thumbnail.jpg', 'VAN0009-LK-102-7-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0009-LK-102-7-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0009-LK-102-7-PAS_registered_thumbnail.jpg', 'VAN0010-LK-155-40-AF_preIMS_registered_thumbnail.jpg', 'VAN0010-LK-155-40-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0010-LK-155-40-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0010-LK-155-40-PAS_registered_thumbnail.jpg', 'VAN0011-RK-3-10-AF_preIMS_registered_thumbnail.jpg', 'VAN0011-RK-3-10-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0011-RK-3-10-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0011-RK-3-10-PAS_registered_thumbnail.jpg', 'VAN0011-RK-3-11-AF_preMxIF_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0012-RK-103-75-AF_preIMS_registered_thumbnail.jpg', 'VAN0012-RK-103-75-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0012-RK-103-75-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0012-RK-103-75-PAS_registered_thumbnail.jpg', 'VAN0012-RK-103-76-AF_preMxIF_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0013-LK-202-96-AF_preIMS_registered_thumbnail.jpg', 'VAN0013-LK-202-96-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0013-LK-202-96-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0013-LK-202-96-PAS_registered_thumbnail.jpg', 'VAN0013-LK-202-97-AF_preMxIF_registered_thumbnail.jpg', 'VAN0013-LK-202-97-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0013-LK-202-97-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0013-LK-202-97-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0014-LK-203-108-AF_preIMS_registered_thumbnail.jpg', 'VAN0014-LK-203-108-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0014-LK-203-108-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0014-LK-203-108-PAS_registered_thumbnail.jpg', 'VAN0016-LK-202-89-AF_preIMS_registered_thumbnail.jpg', 'VAN0016-LK-202-89-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0016-LK-202-89-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0016-LK-202-89-PAS_registered_thumbnail.jpg', '', 'DR1-VU:', 'VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.jpg', 'VAN0003-LK-32-21-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0003-LK-32-21-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0003-LK-32-21-PAS_registered_thumbnail.jpg', 'VAN0003-LK-32-22-AF_preMxIF_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0005-RK-1-1-AF_preIMS_registered_thumbnail.jpg', 'VAN0005-RK-1-1-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0005-RK-1-1-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0005-RK-1-1-PAS_registered_thumbnail.jpg', 'VAN0005-RK-4-172-AF_preIMS_registered_thumbnail.jpg', 'VAN0005-RK-4-172-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0005-RK-4-172-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0005-RK-4-172-PAS_registered_thumbnail.jpg', 'VAN0006-LK-2-85-AF_preIMS_registered_thumbnail.jpg', 'VAN0006-LK-2-85-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0006-LK-2-85-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0006-LK-2-85-PAS_registered_thumbnail.jpg', 'VAN0006-LK-2-86-AF_preMxIF_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0007-LK-203-103-AF_preIMS_registered_thumbnail.jpg', 'VAN0007-LK-203-103-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0007-LK-203-103-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0007-LK-203-103-PAS_registered_thumbnail.jpg', 'VAN0008-RK-403-100-AF_preIMS_registered_thumbnail.jpg', 'VAN0008-RK-403-100-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0008-RK-403-100-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0008-RK-403-100-PAS_registered_thumbnail.jpg', 'VAN0008-RK-403-101-AF_preMxIF_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0011-RK-3-10-AF_preIMS_registered_thumbnail.jpg', 'VAN0011-RK-3-10-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0011-RK-3-10-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0011-RK-3-10-PAS_registered_thumbnail.jpg', 'VAN0011-RK-3-11-AF_preMxIF_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0012-RK-103-75-AF_preIMS_registered_thumbnail.jpg', 'VAN0012-RK-103-75-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0012-RK-103-75-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0012-RK-103-75-PAS_registered_thumbnail.jpg', 'VAN0012-RK-103-76-AF_preMxIF_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc3_registered_thumbnail.jpg']);
 
 /** UUID to TMC mapping. */
@@ -75,7 +77,7 @@ const HBM_ORGAN_LABELS: { [organName: string]: string } = {
  * @param data The hubmap data.
  * @returns The converted data.
  */
-export function hubmapResponseAsJsonLd(data: object, assetsApi = '', portalUrl = '', serviceToken?: string, debug = false): JsonLd {
+export function hubmapResponseAsJsonLd(data: unknown, assetsApi = '', portalUrl = '', serviceToken?: string, debug = false): JsonLd {
   const entries = (get(data, 'hits.hits', []) as JsonDict[])
     .map(e => get(e, '_source', {}) as { [key: string]: unknown });
 
@@ -91,9 +93,10 @@ export function hubmapResponseAsJsonLd(data: object, assetsApi = '', portalUrl =
       descendants: { '@type': '@id' },
       organ: { '@type': '@id' },
       images: { '@id': 'hasImage', '@type': '@id' },
-      imageProviders: { '@id': 'hasImageProvider', '@type': '@id'}
+      imageProviders: { '@id': 'hasImageProvider', '@type': '@id' }
     },
-    '@graph': entries.map(e => new HuBMAPEntity(e, assetsApi, portalUrl, serviceToken).toJsonLd())
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    '@graph': entries.map(e => new HuBMAPEntity(e, assetsApi, portalUrl, serviceToken).toJsonLd()) as any
   };
 }
 
@@ -201,7 +204,7 @@ export class HuBMAPEntity {
 
     const groupUUID = this.groupUUID = (data.group_uuid || this.donor.group_uuid) as string;
     this.groupName = (GROUP_UUID_MAPPING[groupUUID] || data.group_name || this.donor.group_name) as string;
-    this.organName = [ data, ...this.ancestors, ...this.descendants ]
+    this.organName = [data, ...this.ancestors, ...this.descendants]
       .map((d) => d.organ as string)
       .find((organ) => !!organ) as string;
     this.ontologyTerms = HBM_ORGANS[this.organName] || [RUI_ORGANS.body];
@@ -225,24 +228,26 @@ export class HuBMAPEntity {
         } else if (this.organ === RUI_ORGANS.right_kidney) {
           refOrganId = ccf.x('VHRightKidney').id;
         }
-        this.spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + this.label, refOrganId);
-      // Detect RUI 1.0+ generated JSON-LD
-      } else if ((ruiLocation as unknown as {'@id': string})['@id']) {
-        this.spatialEntity = ruiLocation;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        this.spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + this.label, refOrganId) as any;
+        // Detect RUI 1.0+ generated JSON-LD
+      } else if ((ruiLocation as unknown as { '@id': string })['@id']) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        this.spatialEntity = ruiLocation as any;
       }
     }
 
     // Find TIFF Images for use in the HuBMAP Tissue Viewer
     let images: Url[] = [];
     const imageProviders: Iri[] = [];
-    for (const d of [ data, ...this.ancestors, ...this.descendants ]) {
-      const tiffs = (get(d, 'metadata.files', []) as {rel_path: string}[])
+    for (const d of [data, ...this.ancestors, ...this.descendants]) {
+      const tiffs = (get(d, 'metadata.files', []) as { rel_path: string }[])
         .filter(f => /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
         .filter(f => !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path)) // FIXME: Temporarily ignore IMS and MxIF data
         // FIXME: Temporarily only use VU tifs that we have thumbnails for
         .filter(f => groupUUID === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a' ? DR1_VU_THUMBS.has(
-            f.rel_path.split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg')
-          ) : true
+          f.rel_path.split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg')
+        ) : true
         )
         .map(f => `${this.assetsApi}/${d.uuid}/${f.rel_path}` + (serviceToken ? `?token=${serviceToken}` : ''));
       if (tiffs.length > 0) {
@@ -260,7 +265,7 @@ export class HuBMAPEntity {
     let containsSequence = false;
     for (const e of [...this.ancestors, data, ...this.descendants] as JsonDict[]) {
       (e.data_types as string[] || []).forEach(t => dataTypes.set(t, e));
-      const assayType = (e as {metadata: { metadata: JsonDict }}).metadata?.metadata?.assay_type as string;
+      const assayType = (e as { metadata: { metadata: JsonDict } }).metadata?.metadata?.assay_type as string;
       if (assayType) {
         assayTypes.set(assayType, e);
       }
@@ -272,7 +277,7 @@ export class HuBMAPEntity {
     this.dataTypes = [...dataTypes.keys()].sort();
     this.assayTypes = [...assayTypes.keys()].sort();
 
-    const typesSearch = [ ...this.dataTypes, ...this.assayTypes].map(l => l.toLowerCase()).join('|');
+    const typesSearch = [...this.dataTypes, ...this.assayTypes].map(l => l.toLowerCase()).join('|');
     if (typesSearch.indexOf('10x') !== -1) {
       this.thumbnailUrl = 'assets/icons/ico-bulk-10x.svg';
       this.spatialOrBulk = 'Bulk';
@@ -335,11 +340,11 @@ export class HuBMAPEntity {
       '@type': 'Entity',
       ...omit(this, [
         'data', 'donor', 'organ_sample', 'organSample', 'ancestors', 'descendants', 'assetsApi'
-      ]),
+      ]) as Record<string, unknown>,
       donor: HBM_PREFIX + this.donor.uuid,
       shortInfo0: this.doi,
       shortInfo1: this.groupName,
-      shortInfo2: data.description || this.donor.description,
+      shortInfo2: (data.description || this.donor.description) as string,
       downloadUrl: this.portalUrl,
       downloadTooltip: 'View in the HuBMAP Data Portal',
 
@@ -350,18 +355,18 @@ export class HuBMAPEntity {
       bmi: this.bmi?.toFixed(1),
       ethnicity: this.ethnicity,
       authorGroup: this.groupName,
-      creator: data.created_by_user_displayname,
+      creator: data.created_by_user_displayname as string,
       creation_date: new Date(data.create_timestamp as number || 0).toLocaleDateString(),
       modified_date: new Date(data.last_modified_timestamp as number || 0).toLocaleDateString(),
-      donor_id: this.donor.display_doi,
-      organ_id: this.organSample.display_doi,
+      donor_id: this.donor.display_doi as string,
+      organ_id: this.organSample.display_doi as string,
       tissue_id: this.doi,
-      specimen_type: this.data.specimen_type,
+      specimen_type: this.data.specimen_type as Record<string, string>,
       data_types: this.dataTypes.join(', '),
       assay_types: this.assayTypes.join(', '),
       spatial_bulk: this.spatialOrBulk,
       contains_sequence: this.containsHumanGeneticSequences ? 'Yes' : 'No',
-      description: data.description || this.donor.description,
+      description: (data.description || this.donor.description) as string,
     };
   }
 }
@@ -376,9 +381,9 @@ export class HuBMAPEntity {
 export async function addHubmapDataToStore(
   store: Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string, assetsApi = '', portalUrl = ''
 ): Promise<void> {
-  let hubmapData: object | undefined;
+  let hubmapData: Record<string, unknown> | undefined;
   if (serviceType === 'static') {
-    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => { }) as Record<string, unknown>;
   } else if (serviceType === 'search-api') {
     const headers: Record<string, string> = { 'Content-type': 'application/json' };
     if (serviceToken && serviceToken.length > 0) {
@@ -398,7 +403,7 @@ export async function addHubmapDataToStore(
         docvalue_fields: [],
         query: { exists: { field: 'rui_location' } }
       })
-    }).then(r => r.ok ? r.json() : undefined).catch(() => {}) as object;
+    }).then(r => r.ok ? r.json() : undefined).catch(() => { }) as Record<string, unknown>;
   }
   if (hubmapData) {
     await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken), store);

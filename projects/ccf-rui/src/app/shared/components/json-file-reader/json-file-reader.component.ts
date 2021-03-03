@@ -28,6 +28,7 @@ export class JsonFileReaderComponent {
 
   /**
    * Takes in a json file and emits the parsed json object.
+   *
    * @param event file input event
    */
   handleFile(event: InputEvent): void {

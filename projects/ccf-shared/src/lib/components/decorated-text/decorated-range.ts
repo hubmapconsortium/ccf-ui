@@ -8,7 +8,7 @@ export interface DecoratedRange {
   /** Classes to add */
   classes: string[];
   /** Styles to set */
-  styles: object;
+  styles: Record<string, unknown>;
 }
 
 /**

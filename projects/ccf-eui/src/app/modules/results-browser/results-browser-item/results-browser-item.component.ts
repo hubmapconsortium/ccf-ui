@@ -25,6 +25,7 @@ export class ResultsBrowserItemComponent {
 
   /**
    * Decided which action to take based on the result's resultType property
+   *
    * @param result the result which was clicked on
    */
   openResult(): void {

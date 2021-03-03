@@ -22,9 +22,9 @@ export class BodyUiComponent implements AfterViewInit {
    */
   @Output() filterChange = new EventEmitter<Filter>();
 
-  bodyUI: BodyUI;
-
   @ViewChild('bodyCanvas', { read: ElementRef }) bodyCanvas: ElementRef<HTMLCanvasElement>;
+
+  bodyUI: BodyUI;
 
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) { }
 

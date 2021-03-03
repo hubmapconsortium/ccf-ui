@@ -13,6 +13,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class InfoDialogComponent {
   /**
    * Creates an instance of info dialog component.
+   *
    * @param dialogRef A reference to the dialog that this component creates, used to call the dialog's methods
    * @param data Data being injected into the dialog
    */

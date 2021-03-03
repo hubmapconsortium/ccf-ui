@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable no-underscore-dangle */
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -42,7 +44,6 @@ export class NameInputComponent {
   /**
    * Current user name
    */
-  // tslint:disable-next-line: no-unsafe-any
   @Input()
   get name(): UserName {
     return this._name;
@@ -66,6 +67,7 @@ export class NameInputComponent {
 
   /**
    * Updates username with a new entry and emits the UserName object
+   *
    * @param input InputEvent from the input element which contains the new value
    * @param key firstName or lastName
    */

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, Quad, Store } from 'triple-store-utils';
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
@@ -197,6 +198,7 @@ export class CCFDatabase implements DataSource {
 
   /**
    * Get all nodes to form the 3D scene of reference body, organs, and tissues
+   *
    * @param [filter] The filter.
    * @returns A list of Spatial Scene Nodes for the 3D Scene
    */

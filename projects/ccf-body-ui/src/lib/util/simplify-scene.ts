@@ -7,7 +7,7 @@ import { traverseScene } from './scene-traversal';
 
 
 export async function simplifyScene(nodes: SpatialSceneNode[]): Promise<SpatialSceneNode[]> {
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const gltfCache: { [url: string]: any } = {};
   const gltfUrls = new Set(nodes.map(n => n.scenegraph).filter(n => !!n));
   for (const gltfUrl of gltfUrls) {
@@ -20,7 +20,7 @@ export async function simplifyScene(nodes: SpatialSceneNode[]): Promise<SpatialS
     const bbox = new AABB();
     let worldMatrix = new Matrix4(model.transformMatrix);
 
-    // tslint:disable: no-unsafe-any
+    /* eslint-disable  */
     if (model.scenegraphNode) {
       const scenegraphNode = model.scenegraphNode ? gltf.nodes.find((n) => n.name === model.scenegraphNode) : undefined;
       let foundNodeInScene = false;
@@ -59,7 +59,7 @@ export async function simplifyScene(nodes: SpatialSceneNode[]): Promise<SpatialS
       }
       return true;
     });
-    // tslint:enable: no-unsafe-any
+    /* eslint-enable */
 
     const size = bbox.upperBound.clone().vsub(bbox.lowerBound);
     const halfSize = size.clone().vmul(new Vec3(0.5, 0.5, 0.5));

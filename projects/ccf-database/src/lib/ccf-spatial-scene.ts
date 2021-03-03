@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Matrix4, toRadians } from '@math.gl/core';
 
 import { CCFDatabase } from './ccf-database';
 import { Filter } from './interfaces';
-import { getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity } from './queries/spatial-result-n3';
+import {
+  getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity,
+} from './queries/spatial-result-n3';
 import { ExtractionSet, SpatialEntity } from './spatial-types';
 import { ccf, rui } from './util/prefixes';
 
@@ -136,7 +139,7 @@ export class CCFSpatialScene {
     let transform = this.db.graph.getTransformationMatrix(sourceID, target['@id']);
     if (transform) {
       if (has3dObject) {
-        transform = new Matrix4().rotateX(toRadians(90)).multiplyLeft(transform);
+        transform = new Matrix4(Matrix4.IDENTITY).rotateX(toRadians(90)).multiplyLeft(transform);
       } else {
         // Scale visible bounding boxes to the desired dimensions
         let factor: number;

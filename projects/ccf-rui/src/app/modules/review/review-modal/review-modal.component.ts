@@ -30,6 +30,7 @@ export class ReviewModalComponent {
 
   /**
    * Creates an instance of the review modal component.
+   *
    * @param dialogRef A reference to the dialog that this component creates, used to call the dialog's methods
    * @param data Data being injected into the dialog
    */

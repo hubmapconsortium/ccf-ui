@@ -63,6 +63,7 @@ export class AppComponent {
 
   /**
    * Resets the drawers and filter components to their default state.
+   *
    * @param left The left drawer component gets passed in so we can call it's methods to control it's state
    * @param right The right drawer component gets passed in so we can call it's methods to control it's state
    * @param filterbox The filter's popover component gets passed in so we can control it's popover's state
@@ -89,6 +90,7 @@ export class AppComponent {
   /**
    * Captures changes in the ontologySelection and uses them to update the results-browser label
    * and the filter object in the data store.
+   *
    * @param ontologySelection the list of currently selected organ nodes
    */
   ontologySelected(ontologySelection: OntologySelection[]): void {

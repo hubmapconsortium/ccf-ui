@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+import { Immutable } from '@angular-ru/common/typings';
 import { Inject, Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
-import { Immutable } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
-import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 import { ModelState } from './../model/model.state';
 
 
@@ -124,6 +125,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
 
   /**
    * Turns tutorialMode on or off
+   *
    * @param tutorialMode the state to set the mode to.
    */
   @DataAction()

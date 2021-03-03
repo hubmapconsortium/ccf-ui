@@ -1,3 +1,4 @@
+/* tslint:disable:no-unsafe-any no-any */
 import { parse, registerLoaders } from '@loaders.gl/core';
 import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
 import { GLTFLoader } from '@loaders.gl/gltf';
@@ -8,12 +9,12 @@ import { traverseScene } from './scene-traversal';
 
 
 export function registerGLTFLoaders(): void {
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line
   registerLoaders([DracoWorkerLoader, GLTFLoader]);
 }
 
-// tslint:disable: no-unsafe-any
-// tslint:disable-next-line: no-any
+/* eslint-disable  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function deriveScenegraph(scenegraphNodeName: string, gltf: any): any {
   const scenegraphNode = gltf.nodes.find((n) => n.name === scenegraphNodeName);
   if (scenegraphNode) {
@@ -46,7 +47,7 @@ export function deriveScenegraph(scenegraphNodeName: string, gltf: any): any {
   }
 }
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function loadGLTF(model: SpatialSceneNode, cache?: { [url: string]: Promise<Blob> }): Promise<any> {
   const gltfUrl = model.scenegraph as string;
   let gltfPromise: Promise<Blob|Response>;
@@ -60,8 +61,8 @@ export async function loadGLTF(model: SpatialSceneNode, cache?: { [url: string]:
   return deriveScenegraph(model.scenegraphNode as string, gltf);
 }
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function loadGLTF2(scenegraphNodeName: string, gltfPromise: Promise<any>): Promise<any> {
   return deriveScenegraph(scenegraphNodeName, await gltfPromise);
 }
-// tslint:enable: no-unsafe-any
+/* eslint-enable */

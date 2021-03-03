@@ -31,6 +31,7 @@ export class ExtractionSetDropdownComponent {
 
   /**
    * Sets the selected extraction set and emits the extraction set
+   *
    * @param value The extraction set selected
    */
   extractionSetChanged(value: ExtractionSet): void {
@@ -40,6 +41,7 @@ export class ExtractionSetDropdownComponent {
 
   /**
    * Determines whether there is more than one extraction set
+   *
    * @returns true if there is more than one extraction set
    */
   isMultiple(): boolean {

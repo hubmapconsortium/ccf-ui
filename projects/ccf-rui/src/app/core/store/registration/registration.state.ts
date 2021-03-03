@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/naming-convention */
+import { Immutable } from '@angular-ru/common/typings';
 import { Inject, Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
-import { Immutable } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from 'ccf-body-ui';
@@ -28,7 +30,7 @@ export interface RegistrationStateModel {
   /** Whether or not to display user registration errors */
   displayErrors: boolean;
   /** Previous registrations */
-  registrations: object[];
+  registrations: Record<string, unknown>[];
 }
 
 
@@ -58,7 +60,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
   /** Observable of registration data in jsonld format */
   @Computed()
-  get jsonld$(): Observable<object> {
+  get jsonld$(): Observable<Record<string, unknown>> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
       map(([page, model]) => this.buildJsonLd(page, model, this.tags.latestTags))
     );
@@ -75,11 +77,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    * Observable of previous registrations
    */
   @Computed()
-  get previousRegistrations$(): Observable<object[]> {
+  get previousRegistrations$(): Observable<Record<string, unknown>[]> {
     const { globalConfig: { fetchPreviousRegistrations }, state$ } = this;
     return combineLatest([
       state$.pipe(pluck('registrations')),
-      fetchPreviousRegistrations?.() ?? [[]]
+      fetchPreviousRegistrations?.() as Observable<Record<string, unknown>[]> ?? [[]]
     ]).pipe(
       map(([local, external]) => [...local, ...external])
     );
@@ -193,6 +195,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
   /**
    * Set's whether or not we should display the user's registration errors
+   *
    * @param displayErrors the value to set it to
    */
   @DataAction()
@@ -206,9 +209,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    * @param registration The new entry
    */
   @DataAction()
-  addRegistration(registration: object): void {
+  addRegistration(registration: Record<string, unknown>): void {
     this.ctx.setState(patch<Immutable<RegistrationStateModel>>({
-      registrations: insertItem(registration)
+      registrations: insertItem(registration as Immutable<Record<string, unknown>>)
     }));
   }
 
@@ -306,7 +309,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     page: Immutable<PageStateModel>,
     model: Immutable<ModelStateModel>,
     tags: Tag[]
-  ): object {
+  ): Record<string, unknown> {
     return {
       '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
       '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}`,

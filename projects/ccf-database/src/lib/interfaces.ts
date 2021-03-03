@@ -45,7 +45,7 @@ export interface ImageViewerData {
   /** Containing organ name. */
   organName: string;
   /** Other metadata. */
-  metadata: { label: string, value: string }[];
+  metadata: { label: string; value: string }[];
 }
 
 /** Item that can be searched for. */

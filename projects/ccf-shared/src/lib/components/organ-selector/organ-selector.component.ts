@@ -153,6 +153,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /**
    * Scrolls the carousel left or right by one step.
    * Prevents scrolling past the beginning or end of the carousel.
+   *
    * @param dir Direction to be scrolled
    */
   shift(dir: string): void {
@@ -168,6 +169,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Scrolls carousel continuously
+   *
    * @param dir Direction to be scrolled
    */
   scroll(dir: string): void {
@@ -189,6 +191,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Sets and emits currently selected organ(s)
+   *
    * @param organ The organ selected
    */
   selectOrgan(organ: OrganInfo): void {
@@ -196,9 +199,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
       this.selectedOrgans = [organ];
     } else {
       if (this.selectedOrgans.includes(organ)) {
-        this.selectedOrgans = this.selectedOrgans.filter((selectedOrgan) => {
-          return organ !== selectedOrgan;
-        });
+        this.selectedOrgans = this.selectedOrgans.filter((selectedOrgan) => organ !== selectedOrgan);
       } else {
         this.selectedOrgans = this.selectedOrgans.concat([organ]);
       }
@@ -208,6 +209,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Determines whether an icon represents a currently selected organ
+   *
    * @param icon The icon of interest
    * @returns true if selected
    */

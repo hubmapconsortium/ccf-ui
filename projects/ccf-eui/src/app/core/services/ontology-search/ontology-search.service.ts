@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+import { Immutable } from '@angular-ru/common/typings';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Immutable } from '@ngxs-labs/data/typings';
 import { Store } from '@ngxs/store';
 import { at, find, forEach, keyBy, map as loMap, partial } from 'lodash';
 import { Observable } from 'rxjs';
@@ -136,6 +137,7 @@ export class OntologySearchService {
 
   /**
    * Searches the ontology with the search-term
+   *
    * @param value the search term
    * @returns an array of search-results
    */
@@ -147,6 +149,7 @@ export class OntologySearchService {
 
   /**
    * looks up ontology nodes and composes search results
+   *
    * @param nodes Ontology nodes
    * @param searchValue search text in lower case
    * @returns search results
@@ -183,6 +186,7 @@ export class OntologySearchService {
 
   /**
    * Gets index of match in the ontology label
+   *
    * @param label the provided ontology node label or synonym label
    * @param searchValue the searched text in lower case
    * @returns the index of the match in the label
@@ -193,6 +197,7 @@ export class OntologySearchService {
 
   /**
    * Formats label based on where the search-term was found in the OntologyNode
+   *
    * @param label label or first synonym-label of OntologyNode which has the search-term
    * @param searchValue search-term
    * @returns an array in the form of [prefix, search-term, suffix]

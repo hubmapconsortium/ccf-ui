@@ -15,6 +15,7 @@ export class InfoDialogComponent {
   documentationContents: DocumentationContent[];
   /**
    * Creates an instance of info dialog component.
+   *
    * @param dialogRef A reference to the dialog that this component creates, used to call the dialog's methods
    * @param data Data being injected into the dialog
    */

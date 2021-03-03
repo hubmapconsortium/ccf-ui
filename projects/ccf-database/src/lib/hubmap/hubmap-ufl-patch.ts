@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { set } from 'lodash';
 import { OldRuiData } from './old-rui-utils';
 
@@ -31,7 +32,7 @@ function fixNumber(value: string | number): number {
  * @param value The original triplet.
  * @returns The fixed triplet.
  */
-function fixXYZ(value: { x: string | number, y: string | number, z: string | number }): { x: number, y: number, z: number } {
+function fixXYZ(value: { x: string | number; y: string | number; z: string | number }): { x: number; y: number; z: number } {
   const { x, y, z } = value;
   return { x: fixNumber(x), y: fixNumber(y), z: fixNumber(z) };
 }
