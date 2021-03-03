@@ -1,5 +1,6 @@
 <form class="ccf-ontology-search" [class.autocomplete-open]="autoCompleteOpen">
   <mat-form-field appearance="outline" class="field">
+    <mat-icon matPrefix color="primary" class="search">search</mat-icon>
     <input class="input" type="text" placeholder="Search ontology terms ..." matInput [formControl]="formControl"
            [matAutocomplete]="autocomplete">
 
@@ -14,7 +15,5 @@
         </mat-option>
       </div>
     </mat-autocomplete>
-
-    <mat-icon matSuffix color="primary" class="search">search</mat-icon>
   </mat-form-field>
 </form>

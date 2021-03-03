@@ -4,6 +4,10 @@
   height: 100%;
   overflow: hidden;
 
+  ccf-header {
+    z-index: 200;
+  }
+
   ccf-drawer-container {
     flex-grow: 1;
     position: fixed;
@@ -16,6 +20,7 @@
       overflow: hidden;
       margin-top: 1.5rem;
       margin-bottom: 1.5rem;
+      border-radius: 0.5rem;
     }
 
     ccf-drawer {
