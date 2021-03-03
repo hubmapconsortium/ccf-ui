@@ -32,6 +32,7 @@ export class CheckboxComponent {
 
   /**
    * This method captures checkbox events and decides whether to add or remove a filter selection based on the checked property
+   *
    * @param event Event object from the checkbox that contains the boolean property 'checked'
    * @param option Tells us which option was checked or unchecked
    */

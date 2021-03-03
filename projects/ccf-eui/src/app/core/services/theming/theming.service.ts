@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Renderer2 } from '@angular/core';
 

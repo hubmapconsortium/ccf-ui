@@ -21,7 +21,7 @@ describe('DecoratedRange', () => {
     it('copies existing properties', () => {
       const result = normalize(partial, 10);
       expect(result.classes).toEqual(partial.classes as string[]);
-      expect(result.styles).toEqual(partial.styles as object);
+      expect(result.styles).toEqual(partial.styles!);
     });
 
     it('handles negative indices for start and end', () => {

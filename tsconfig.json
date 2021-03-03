@@ -1,50 +1,55 @@
-/*
-  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
-  It is not intended to be used to perform a compilation.
-
-  To learn more about this file see: https://angular.io/config/solution-tsconfig.
-*/
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./projects/ccf-eui/tsconfig.worker.json"
-    },
-    {
-      "path": "./projects/ccf-eui/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/ccf-eui/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/ccf-database/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/ccf-database/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/triple-store-utils/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/triple-store-utils/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/ccf-body-ui/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/ccf-body-ui/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/ccf-rui/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/ccf-rui/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/ccf-shared/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/ccf-shared/tsconfig.spec.json"
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "ccf-database": [
+        "dist/ccf-database/ccf-database",
+        "dist/ccf-database"
+      ],
+      "triple-store-utils-not-fixed": [
+        "dist/triple-store-utils/triple-store-utils",
+        "dist/triple-store-utils"
+      ],
+      "triple-store-utils": [
+        "dist/triple-store-fixed/index"
+      ],
+      "ccf-body-ui": [
+        "dist/ccf-body-ui/ccf-body-ui",
+        "dist/ccf-body-ui"
+      ],
+      "ccf-shared": [
+        "dist/ccf-shared/ccf-shared",
+        "dist/ccf-shared"
+      ]
     }
-  ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
 }

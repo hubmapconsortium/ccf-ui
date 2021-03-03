@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { SpatialPlacementJsonLd } from './../shared/ccf-spatial-jsonld';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
 

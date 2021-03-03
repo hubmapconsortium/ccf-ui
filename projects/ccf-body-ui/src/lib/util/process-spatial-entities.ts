@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Matrix4 } from '@math.gl/core';
 import { SpatialEntityJsonLd } from '../shared/ccf-spatial-jsonld';
 import { processSceneNodes } from './process-scene-nodes';

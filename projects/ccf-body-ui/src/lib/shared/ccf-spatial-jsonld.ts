@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { JsonLdObj } from 'jsonld/jsonld-spec';
 
 

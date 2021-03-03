@@ -27,6 +27,7 @@ export class ThemingService {
    *
    * @param defaultTheme An optional default theme.
    */
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(@Optional() @Inject(DEFAULT_THEME) defaultTheme: string | null) {
     this.defaultTheme = this.theme = defaultTheme || '';
   }

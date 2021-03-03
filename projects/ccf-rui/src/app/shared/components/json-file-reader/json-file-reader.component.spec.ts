@@ -13,7 +13,7 @@ describe('JsonFileReaderComponent', () => {
     fileReaderInstance = jasmine.createSpyObj<FileReader>('FileReader', ['readAsText'], {result: '"abc"'});
 
     // Doesn't work with arrow functions.
-    // tslint:disable-next-line: only-arrow-functions
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     spyOn(globalThis, 'FileReader').and.callFake(function(): jasmine.SpyObj<FileReader> {
       return fileReaderInstance;
     });

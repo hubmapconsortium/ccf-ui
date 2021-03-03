@@ -17,7 +17,7 @@ describe('InfoButtonComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(InfoButtonComponent, InfoButtonModule)
-      .mock(MatDialog, { open(): {} { return {}; } });
+      .mock(MatDialog, { open() { return {}; } });
   });
 
   it('should display the info icon', async () => {

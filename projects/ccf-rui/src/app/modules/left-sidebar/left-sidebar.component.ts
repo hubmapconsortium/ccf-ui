@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { SpatialEntityJsonLd } from 'ccf-body-ui';
-import { Observable, combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { VisibilityItem } from '../../core/models/visibility-item';
@@ -19,6 +19,8 @@ import { RUI_ORGANS } from './../../core/store/model/model.state';
 export class LeftSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
+
+  @Input() disableSlider = false;
 
   readonly sexByLabel$ = this.model.sex$.pipe(
     map(sex => sex === 'female' ? 'Female' : 'Male')
@@ -51,8 +53,6 @@ export class LeftSidebarComponent {
 
   organList = RUI_ORGANS;
 
-  @Input() disableSlider = false;
-
   constructor(
     readonly page: PageState,
     readonly model: ModelState,
@@ -63,6 +63,7 @@ export class LeftSidebarComponent {
   /**
    * Updates extraction site tooltip to either the VisibilityItem passed in's
    * tooltip property, or an empty string if undefined.
+   *
    * @param item The VisibilityItem which we want to show the tooltip of, or
    * undefined.
    */
@@ -76,6 +77,7 @@ export class LeftSidebarComponent {
 
   /**
    * Sets sex from sex toggle slider
+   *
    * @param label Selected sex
    */
   setSexFromLabel(label: 'Female' | 'Male'): void {
@@ -84,6 +86,7 @@ export class LeftSidebarComponent {
 
   /**
    * Sets side from side toggle slider
+   *
    * @param label Selected side
    */
   setSideFromLabel(label: 'L' | 'R'): void {
@@ -95,6 +98,7 @@ export class LeftSidebarComponent {
    * When making them visible, it updates current structures to 20%
    * opacity; when making not visible it sets them back to their
    * previous opacity.
+   *
    * @param visible the state to set the visibility to.
    */
   togglePreviousRegistrationBlocks(visible: boolean): void {
@@ -107,6 +111,7 @@ export class LeftSidebarComponent {
   /**
    * Event handler for capturing uploaded json and passing it along to
    * the relevant registration state method.
+   *
    * @param event the new registration state json
    */
   updateRegistration(event: SpatialEntityJsonLd): void {

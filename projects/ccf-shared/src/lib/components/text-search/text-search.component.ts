@@ -77,19 +77,19 @@ export class TextSearchComponent {
   @Input() autoCompleter?: (search: string, max: number) => ObservableInput<AutoCompleteOption[]>;
 
   /**
-   * Form controller for search bar
-   */
-  readonly controller = new FormControl();
-
-  /**
    * Emits when the search bar text changes
    */
-  @Output() readonly valueChange = this.controller.valueChanges as Observable<string>;
+  @Output() readonly valueChange: Observable<string>;
 
   /**
    * Emits when an autocomplete option has been selected
    */
   @Output() readonly optionSelected = new EventEmitter<AutoCompleteOption>();
+
+  /**
+   * Form controller for search bar
+   */
+  readonly controller = new FormControl();
 
   /**
    * Emits the latest autocomplete suggestions
@@ -107,27 +107,8 @@ export class TextSearchComponent {
    */
   constructor(
     @Inject(DEFAULT_MAX_OPTIONS) private readonly defaultMaxOptions: number
-  ) { }
-
-  /**
-   * Text to show in search bar when an autocomplete option is selected.
-   *
-   * @param option The autocomplete option
-   * @returns The displayed text
-   */
-  optionDisplay(option: AutoCompleteOption | null): string {
-    return option?.label ?? '';
-  }
-
-  /**
-   * Gets an unique identifier for an autocomplete option object.
-   *
-   * @param _index Unused
-   * @param option The option object
-   * @returns The unique identifier
-   */
-  optionId(_index: number, option: AutoCompleteOption): unknown {
-    return option.id;
+  ) {
+    this.valueChange = this.controller.valueChanges;
   }
 
   /**
@@ -148,5 +129,26 @@ export class TextSearchComponent {
       take(1),
       map(array => array.length <= maxOptions ? array : array.slice(0, maxOptions))
     ).toPromise();
+  }
+
+  /**
+   * Text to show in search bar when an autocomplete option is selected.
+   *
+   * @param option The autocomplete option
+   * @returns The displayed text
+   */
+  optionDisplay(option: AutoCompleteOption | null): string {
+    return option?.label ?? '';
+  }
+
+  /**
+   * Gets an unique identifier for an autocomplete option object.
+   *
+   * @param _index Unused
+   * @param option The option object
+   * @returns The unique identifier
+   */
+  optionId(_index: number, option: AutoCompleteOption): unknown {
+    return option.id;
   }
 }

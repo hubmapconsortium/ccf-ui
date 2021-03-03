@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { Inject, Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
@@ -334,6 +335,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   /**
    * Toggles registration blocks visibility and handles anatomical structures
    * opacity changes accordingly
+   *
    * @param visible the visible state to pass along to setShowPrevious()
    * @param previousItems visibilityItems to set anatomical structures
    */
@@ -343,9 +345,9 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     if (!visible) {
       this.setAnatomicalStructures(previousItems);
     } else {
-      const newStructures = previousItems.map(structure => {
-        return { ...structure, opacity: Math.min(20, structure.opacity || 20) };
-      });
+      const newStructures = previousItems.map(structure => ({
+        ...structure, opacity: Math.min(20, structure.opacity || 20)
+      }));
       this.setAnatomicalStructures(newStructures);
     }
   }

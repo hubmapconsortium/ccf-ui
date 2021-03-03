@@ -52,6 +52,7 @@ export class OpacitySliderComponent implements OnInit {
 
   /**
    * Emits opacityChange with the new opacity value
+   *
    * @param newOpacity The updated opacity value
    */
   changeOpacity(newOpacity: string): void {

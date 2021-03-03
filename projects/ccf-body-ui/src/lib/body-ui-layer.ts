@@ -19,7 +19,7 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
         highlightColor: [30, 136, 229, 255],
         coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
         data,
-        // tslint:disable-next-line: no-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mesh: new CubeGeometry() as any,
         wireframe: false,
         getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
@@ -41,7 +41,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
   }
 
   renderLayers(): unknown[] {
-    const state = this.state as {data: SpatialSceneNode[], zoomOpacity: number, doCollisions: boolean};
+    const state = this.state as { data: SpatialSceneNode[]; zoomOpacity: number; doCollisions: boolean };
     const cubes = state.data.filter(d => !d.scenegraph && !d.wireframe && d.unpickable);
     const pickableCubes = state.data.filter(d => !d.scenegraph && !d.wireframe && !d.unpickable);
     const wireframes = state.data.filter(d => !d.scenegraph && d.wireframe);
@@ -51,7 +51,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
       doCollisions(state.data);
     }
 
-    // tslint:disable-next-line: no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const url2gltf: {[url: string]: Promise<any>} = {};
     for (const m of models) {
       if (m.scenegraph && m.scenegraphNode && !url2gltf.hasOwnProperty(m.scenegraph)) {
@@ -73,17 +73,20 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
           scenegraph: model.scenegraphNode ?
             loadGLTF2(model.scenegraphNode, url2gltf[model.scenegraph as string]) :
             model.scenegraph as unknown as URL,
+          // eslint-disable-next-line no-underscore-dangle
           _lighting: model._lighting,  // 'pbr' | undefined
           getTransformMatrix: model.transformMatrix as unknown as number[][],
           getColor: model.color || [0, 255, 0, 0.5*255],
-          // tslint:disable-next-line: no-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           parameters: {depthMask: !model.zoomBasedOpacity && (model.opacity === undefined || model.opacity === 1)} as any
         })
       )
     ].filter(l => !!l);
   }
 
-  getPickingInfo(e: {info: object}): unknown {
+  getPickingInfo(
+    e: Parameters<CompositeLayer<SpatialSceneNode>['getPickingInfo']>[0]
+  ): ReturnType<CompositeLayer<SpatialSceneNode>['getPickingInfo']> {
     return e.info;
   }
 }

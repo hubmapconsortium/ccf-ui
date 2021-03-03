@@ -27,15 +27,16 @@ export function applySpatialPlacement(tx: Matrix4, placement: SpatialPlacement):
   }
   const T = [p.x_translation, p.y_translation, p.z_translation].map(t => t * factor);
   const R_RAD = [p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians);
-  // tslint:disable-next-line: no-unsafe-any
-  const R = toEuler(fromEuler(R_RAD[1], R_RAD[0], R_RAD[2], 'XYZ').toVector()) as number[];
+  // eslint-disable-next-line
+  const R = toEuler(fromEuler(R_RAD[1], R_RAD[0], R_RAD[2], 'XYZ').toVector()) as [number, number, number];
   const S = [p.x_scaling, p.y_scaling, p.z_scaling];
 
   return tx.translate(T).rotateXYZ(R).scale(S);
 }
 
 export class CCFSpatialGraph {
-  graph: DirectedGraph;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  graph: any;
 
   constructor(private db: CCFDatabase) {
     this.createGraph();
@@ -72,13 +73,13 @@ export class CCFSpatialGraph {
 
   getTransformationMatrix(sourceIRI: string, targetIRI: string): Matrix4 | undefined {
     if (sourceIRI === targetIRI) {
-      return new Matrix4(); // identity
+      return new Matrix4(Matrix4.IDENTITY); // identity
     }
     if (!this.graph.hasNode(sourceIRI) || !this.graph.hasNode(targetIRI)) {
       return undefined;
     }
 
-    const tx = new Matrix4();
+    const tx = new Matrix4(Matrix4.IDENTITY);
     const path = shortestPath(this.graph, sourceIRI, targetIRI);
     if (path && path.length > 0) {
       path.reverse();

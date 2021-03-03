@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable no-underscore-dangle */
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges,
+} from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { filter, invoke, property } from 'lodash';
 
@@ -36,7 +40,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * The node like objects to display in the tree.
    */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line
   @Input()
   set nodes(nodes: OntologyNode[] | undefined) {
     this._nodes = nodes;
@@ -50,7 +54,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Method for fetching the children of a node.
    */
-  // tslint:disable-next-line: no-unsafe-any
   @Input()
   set getChildren(fun: GetChildrenFunc | undefined) {
     this._getChildren = fun;
@@ -64,7 +67,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Occurence Data is a record of terms that are in the current filter.
    */
-  // tslint:disable-next-line: no-unsafe-any
+  // eslint-disable-next-line
   @Input()
   set occurenceData(value: Record<string, number>) {
     if (value) {
@@ -86,7 +89,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Term Data is a record of terms that the app currently has data for.
    */
-  // tslint:disable-next-line: no-unsafe-any
   @Input()
   set termData(value: Record<string, number>) {
     if (value) {
@@ -224,7 +226,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    *
    * @param node The node to expand to and select.
    */
-  expandAndSelect(node: OntologyNode, getParent: (node: OntologyNode) => OntologyNode, additive = false): void {
+  expandAndSelect(node: OntologyNode, getParent: (n: OntologyNode) => OntologyNode, additive = false): void {
     const { cdr, control } = this;
 
     // Add all parents to a set

@@ -43,6 +43,7 @@ export class RotationSliderComponent {
 
   /**
    * Function that handles updating the rotation and emitting the new value
+   *
    * @param newRotation the new value for one of the axis to be set to
    * @param axis which axis to update
    */

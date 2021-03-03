@@ -44,6 +44,7 @@ export class DropdownComponent {
 
   /**
    * Updates the selected value.
+   *
    * @param value The value that has been selected
    */
   selectionChanged(value: string): void {

@@ -46,6 +46,7 @@ export class FiltersPopoverComponent {
 
   /**
    * Emits the current filters, and hides the popover box
+   *
    * @param filters The object containing all the currently set filters
    */
   applyFilters(filters: Record<string, unknown>): void {

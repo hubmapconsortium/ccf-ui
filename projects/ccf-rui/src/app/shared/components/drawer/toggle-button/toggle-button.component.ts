@@ -18,7 +18,7 @@ export class ToggleButtonComponent implements AfterViewInit, OnDestroy {
   /** HTML class */
   @HostBinding('class') readonly className = 'ccf-drawer-toggle-button';
   /** Whether this button is attach to a drawer in position 'end'. */
-  @HostBinding('class.ccf-drawer-toggle-button-end') // tslint:disable-line: no-unsafe-any
+  @HostBinding('class.ccf-drawer-toggle-button-end')
   get classEnd(): boolean { return this.position === 'end'; }
 
   /** Gets the name of the icon to display. */
