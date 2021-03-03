@@ -25,6 +25,8 @@ export class AppComponent {
    */
   organList = ALL_ORGANS;
 
+  selectedOrgans = this.organList.filter(organ => organ.name != 'Large Intestine')
+
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.

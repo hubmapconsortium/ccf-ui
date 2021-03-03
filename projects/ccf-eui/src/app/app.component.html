@@ -28,7 +28,7 @@
     </ccf-drawer>
     <ccf-drawer-content>
       <div [class.closed]="!open" class="selector-drawer">
-        <ccf-organ-selector [multiselect]="true" [organList]="organList" [selectedOrgans]="organList"></ccf-organ-selector>
+        <ccf-organ-selector [multiselect]="true" [organList]="organList" [selectedOrgans]="selectedOrgans"></ccf-organ-selector>
       </div>
       <div class="close-button-wrapper" [class.closed]="!open">
         <div class="close-button" (click)="open = !open">
