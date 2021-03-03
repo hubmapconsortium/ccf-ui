@@ -9,6 +9,7 @@ import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { ALL_ORGANS } from 'ccf-shared';
+import { OrganInfo } from 'ccf-shared'
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -133,5 +134,9 @@ export class AppComponent {
   get loggedIn(): boolean {
     const token = this.dataSourceService.dbOptions.hubmapToken || '';
     return token.length > 0;
+  }
+
+  changeOrgans(organs: OrganInfo[]): void {
+    this.selectedOrgans = organs;
   }
 }

@@ -51,6 +51,8 @@ export interface OrganInfo {
    * True if applies to both sexes
    */
   hasSex?: boolean;
+
+  num?: number;
 }
 
 /**
@@ -89,8 +91,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Emits the name of the organ when selected
    */
   @Output() organsChanged = new EventEmitter<OrganInfo[]>();
-
-  @Input() hidden = false;
 
   /**
    * Determines whether the carousel is at the beginning

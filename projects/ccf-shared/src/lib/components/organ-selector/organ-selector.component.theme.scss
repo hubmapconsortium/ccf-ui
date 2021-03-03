@@ -29,16 +29,22 @@
   }
 
   .carousel-item {
+    color: mat-color($foreground, organ-off);
+    
     &:hover {
       background-color: mat-color($background, hover-background);
     }
 
     &.selected {
-      color: mat-color($foreground, active-icon);
+      color: mat-color($foreground, main);
     }
 
     &.disabled {
       color: mat-color($foreground, disabled);
+    }
+
+    .organ-number {
+      color: mat-color($foreground, organ-numbers);
     }
   }
 }
