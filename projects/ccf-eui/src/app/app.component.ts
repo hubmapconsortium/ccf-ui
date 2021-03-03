@@ -25,7 +25,10 @@ export class AppComponent {
    */
   organList = ALL_ORGANS;
 
-  selectedOrgans = this.organList.filter(organ => organ.name != 'Large Intestine')
+  /**
+   * Organs to be selected in the organ selector carousel
+   */
+  selectedOrgans = this.organList.filter(organ => organ.name !== 'Large Intestine');
 
   /**
    * Used to keep track of the ontology label to be passed down to the
@@ -33,6 +36,9 @@ export class AppComponent {
    */
   ontologySelectionLabel = 'body';
 
+  /**
+   * Whether or not organ carousel is open
+   */
   open = true;
 
   /** Emits true whenever the overlay spinner should activate. */
