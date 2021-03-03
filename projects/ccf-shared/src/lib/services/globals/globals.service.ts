@@ -7,6 +7,7 @@ export type GlobalKey = string | symbol;
 /** Type of the global object */
 export type GlobalThis = typeof globalThis;
 
+declare let global: GlobalThis;
 
 /**
  * Provide functionality for interacting with the global object.
