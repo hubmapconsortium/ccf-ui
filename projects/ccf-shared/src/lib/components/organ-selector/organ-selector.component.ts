@@ -92,8 +92,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    */
   @Output() organsChanged = new EventEmitter<OrganInfo[]>();
 
-  @Input() hidden = false;
-
   /**
    * Determines whether the carousel is at the beginning
    */
