@@ -8,11 +8,11 @@ export interface GlobalConfig {
   embedded?: boolean;
   tutorialMode?: boolean;
   homeUrl?: string;
-  editRegistration?: object;
+  editRegistration?: Record<string, unknown>;
   organ?: {
-    name: 'large intestine' | 'heart' | 'kidney' | 'spleen',
-    sex?: 'male' | 'female',
-    side?: 'left' | 'right'
+    name: 'large intestine' | 'heart' | 'kidney' | 'spleen';
+    sex?: 'male' | 'female';
+    side?: 'left' | 'right';
   };
   user?: {
     firstName: string;
@@ -22,11 +22,11 @@ export interface GlobalConfig {
   register?: (data: string) => void;
   useDownload?: boolean;
 
-  fetchPreviousRegistrations?: () => ObservableInput<object[]>;
+  fetchPreviousRegistrations?: () => ObservableInput<Record<string, unknown>[]>;
 }
 
 declare global {
-  var ruiConfig: GlobalConfig;
+  let ruiConfig: GlobalConfig;
 }
 
 export const GLOBAL_CONFIG = new InjectionToken<GlobalConfig>(

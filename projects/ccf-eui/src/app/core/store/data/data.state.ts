@@ -1,3 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
@@ -21,6 +24,7 @@ export const DEFAULT_FILTER: Filter = {
 };
 
 /** Current state of data queries. */
+// eslint-disable-next-line no-shadow
 export enum DataQueryState {
   /** One or more queries are running. */
   Running = 'running',

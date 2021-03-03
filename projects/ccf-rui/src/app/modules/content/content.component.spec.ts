@@ -76,7 +76,7 @@ describe('ContentComponent', () => {
   });
 
   describe('.isNarrowView', () => {
-    let sensorCallback: (size: { width: number, height: number }) => void;
+    let sensorCallback: (size: { width: number; height: number }) => void;
 
     beforeEach(() => {
       // Constructors can't be arrow functions
