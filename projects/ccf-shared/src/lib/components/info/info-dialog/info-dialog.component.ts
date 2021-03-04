@@ -2,9 +2,12 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DocumentationContent } from '../info-button/info-button.service';
 
-export interface InfoModalData {
-  content: DocumentationContent[],
-  title: string
+/**
+ * Data model for the dialog input
+ */
+export interface InfoDialogData {
+  content: DocumentationContent[];
+  title: string;
 }
 
 /**
@@ -16,8 +19,13 @@ export interface InfoModalData {
   styleUrls: ['./info-dialog.component.scss']
 })
 export class InfoDialogComponent {
-
+  /**
+   * Documentation contents
+   */
   documentationContents: DocumentationContent[];
+  /**
+   * Title of the dialog
+   */
   infoTitle: string;
   /**
    * Creates an instance of info dialog component.
@@ -27,7 +35,7 @@ export class InfoDialogComponent {
    */
   constructor(
     public dialogRef: MatDialogRef<InfoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: InfoModalData
+    @Inject(MAT_DIALOG_DATA) public data: InfoDialogData
   ) {
       this.documentationContents = data.content || [];
       this.infoTitle = data.title || '';
