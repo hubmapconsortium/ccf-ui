@@ -28,8 +28,10 @@
       .drawer-icons {
         display: flex;
         padding-left: 1.5rem;
-        height: 80px;
+        height: 5rem;
+        padding-right: 1.5rem;
         align-items: center;
+        justify-content: space-between;
 
         .drawer-icons-left {
           display: flex;
@@ -99,21 +101,22 @@
     }
 
     .left-drawer {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      height: 100%;
       ::ng-deep .cff-drawer-inner-container {
         height: 100%;
       }
 
       .filter-data {
-        height: 80px;
+        height: 5rem;
         display: flex;
         align-items: center;
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
 
         .filter-text {
           display:flex;
           justify-content: space-between;
-          width: 100%;
+          width: 75%;
           margin-left: 1.5rem;
 
           .filter-tag {
