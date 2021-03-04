@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DocumentationContent } from '../../../core/models/documentation';
+import { DocumentationContent } from '../info-button/info-button.service'
 
 /**
  * This component handles displaying and hiding a full screen modal / overlay that displays information about the project.

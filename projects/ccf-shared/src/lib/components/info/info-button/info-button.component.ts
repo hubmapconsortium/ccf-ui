@@ -1,10 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
+import { DocumentationContent } from '../info-button/info-button.service'
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { InfoButtonService } from './info-button.service';
-import { DocumentationContent } from '../../../core/models/documentation';
-
 
 /**
  * Info button component: Information icon displays project details when clicked.
