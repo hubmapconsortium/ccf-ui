@@ -1,22 +1,36 @@
 <div class="ccf-app mat-app-background">
   <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn" [filters]="data.filter$ | async" (refreshClicked)="reset(left, right, filterbox)"></ccf-header>
-  <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
+  <!-- <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay> -->
 
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
+    <div>
+      <div class="filter-data">
+        <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
+        (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>
+
+        <div class="filter-text">
+          <div>Sex: <b>{{(data.filter$ | async)?.sex}}</b></div>
+          <div>Age: <b>{{(data.filter$ | async)?.ageRange[0]}}-{{(data.filter$ | async)?.ageRange[1]}}</b></div>
+          <div>BMI: <b>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</b></div>
+        </div>
+      </div>
       <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async" [occurenceData]="data.termOccurencesData$ | async" (ontologySelection)="ontologySelected($event)"></ccf-ontology-selection>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
+    </div>
     </ccf-drawer>
     <ccf-drawer class="right-drawer" position="end" opened #right (stateChange)="filterbox.removeBox()">
       <div class="drawer-icons">
-        <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
-                             (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>
+       <div class="drawer-icons-left">
         <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();">
           <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
         </button>
         <button class="scheme-toggle button" (click)="toggleScheme()">
           <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
         </button>
+        <mat-icon class="refresh button" (click)="reset(left, right, filterbox)">refresh</mat-icon>
+       </div>
+       
       </div>
       <ccf-results-browser
         [dataLoading]="spinnerActive$ | async"
