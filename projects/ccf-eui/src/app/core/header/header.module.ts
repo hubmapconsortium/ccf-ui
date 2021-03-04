@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { InfoButtonModule } from '../../modules/info/info-button/info-button.module';
+import { InfoButtonModule } from 'ccf-shared';
 import { HeaderComponent } from './header.component';
 
 
