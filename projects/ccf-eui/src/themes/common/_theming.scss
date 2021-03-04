@@ -12,6 +12,8 @@
 @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 @use '../../app/modules/ontology-exploration/ontology-tree/ontology-tree.component.theme' as tree;
 @use '../../../../ccf-shared/src/lib/components/organ-selector/organ-selector.component.theme' as organSelector;
+@use '../../../../ccf-shared/src/lib/components//info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
+@use '../../../../ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss' as infoButton;
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
@@ -35,6 +37,8 @@
   @include tree.theme($theme);
   @include ontologyExploration.theme($theme);
   @include organSelector.theme($theme);
+  @include infoDialog.theme($theme);
+  @include infoButton.theme($theme);
 
   // Overrides goes here!
 }

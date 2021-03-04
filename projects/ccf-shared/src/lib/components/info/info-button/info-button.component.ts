@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DocumentationContent } from '../info-button/info-button.service'
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
@@ -13,6 +13,9 @@ import { InfoButtonService } from './info-button.service';
   styleUrls: ['./info-button.component.scss']
 })
 export class InfoButtonComponent implements OnDestroy {
+
+  @Input() infoTitle: string = '';
+
   /**
    * Creates an instance of info button component.
    *
@@ -42,7 +45,10 @@ export class InfoButtonComponent implements OnDestroy {
     this.dialog.open(InfoDialogComponent, {
       panelClass: 'modal-animated',
       width: '60rem',
-      data
+      data: {
+        title: this.infoTitle,
+        content: data
+      }
     });
   }
 

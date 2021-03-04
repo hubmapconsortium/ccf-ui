@@ -1,6 +1,11 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DocumentationContent } from '../info-button/info-button.service'
+import { DocumentationContent } from '../info-button/info-button.service';
+
+export interface InfoModalData {
+  content: DocumentationContent[],
+  title: string
+}
 
 /**
  * This component handles displaying and hiding a full screen modal / overlay that displays information about the project.
@@ -13,6 +18,7 @@ import { DocumentationContent } from '../info-button/info-button.service'
 export class InfoDialogComponent {
 
   documentationContents: DocumentationContent[];
+  infoTitle: string;
   /**
    * Creates an instance of info dialog component.
    *
@@ -21,9 +27,10 @@ export class InfoDialogComponent {
    */
   constructor(
     public dialogRef: MatDialogRef<InfoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DocumentationContent[]
+    @Inject(MAT_DIALOG_DATA) public data: InfoModalData
   ) {
-      this.documentationContents = data || [];
+      this.documentationContents = data.content || [];
+      this.infoTitle = data.title || '';
   }
 
   /**
