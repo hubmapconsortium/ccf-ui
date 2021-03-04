@@ -12,7 +12,9 @@
             <mat-expansion-panel-header>
               <h2 class="no-header-margin">{{content.title}}</h2>
             </mat-expansion-panel-header>
-              <markdown class="variable-binding" [data]="content.content"></markdown>
+              <div class="top-padding">
+                <markdown class="variable-binding" [data]="content.content"></markdown>
+              </div>
           </mat-expansion-panel>
         </div>
       </mat-dialog-content>
