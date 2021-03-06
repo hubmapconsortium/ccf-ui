@@ -16,14 +16,11 @@
 
 .popup-container {
   position: absolute;
-  border-width: 0px;
-  border-style: solid;
   width: 0em;
-  height: 16.5rem; // 22.5rem
   z-index: 5;
-  top: 0;
-  right: 24rem;
-  box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
+  top: 1.25rem;
+  left: 1.25rem;
+  box-shadow: 0.2rem 0.2rem 1rem 0rem #00000058;
   transition-property: width;
   transition-duration: 0.3s;
 

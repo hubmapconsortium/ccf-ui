@@ -44,7 +44,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
 
   main: #444A65,
   organ-off: #cccccc,
-  organ-numbers: #757575
+  organ-numbers: #757575,
+  light-button-text: map-get($primary-colors, 'white'),
 ));
 
 $background: map-merge($mat-light-theme-background, (
@@ -58,6 +59,7 @@ $background: map-merge($mat-light-theme-background, (
   dropdown-menu: map-get($primary-colors, 300), //#E0E0E0
   dropdown-hover: map-get($primary-colors, 300), //#E0E0E0
   image-placeholder: map-get($primary-colors, light-disabled), //#BDBDBD
+  button-bg: map-get($primary-colors, light-header),
 ));
 
 $theme: (
