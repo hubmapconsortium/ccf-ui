@@ -36,7 +36,8 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   disabled: map-get($primary-colors, 800), //#424242
   highlight: map-get($primary-colors, 'white'),
   header-download-icon: map-get($mat-amber, A400),
-  header-shadow: map-get($primary-colors, 'black')
+  header-shadow: map-get($primary-colors, 'black'),
+  text-muted: #9a9a9a,
 ));
 
 $background: map-merge($mat-dark-theme-background, (
@@ -48,7 +49,8 @@ $background: map-merge($mat-dark-theme-background, (
   modal: map-get($primary-colors, 850), //#323232
   dropdown-menu: map-get($primary-colors, 800), //#424242
   dropdown-hover: map-get($primary-colors, 500), //#9E9E9E
-  image-placeholder: map-get($primary-colors, 500) //#9E9E9E
+  image-placeholder: map-get($primary-colors, 500), //#9E9E9E
+  mat-slider-primary: #ececec
 ));
 
 $theme: (

@@ -29,7 +29,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   borders: map-get($primary-colors, 300), //#E0E0E0
   carousel-arrow: map-get($primary-colors, 500), // #9E9E9E;
   icon: map-get($primary-colors, 300), //#E0E0E0
-  contrast-icon: map-get($primary-colors, 600), //#757575 (icons on light background)
+  contrast-icon: map-get($primary-colors, light-header), //#757575 (icons on light background)
   button-text: map-get($primary, light-header),
   button-border: map-get($primary-colors, 'black'),
   headers: map-get($primary-colors, 300), //#E0E0E0
@@ -46,6 +46,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   organ-off: #cccccc,
   organ-numbers: #757575,
   light-button-text: map-get($primary-colors, 'white'),
+  text-muted: #757575,
+  
 ));
 
 $background: map-merge($mat-light-theme-background, (
@@ -60,6 +62,8 @@ $background: map-merge($mat-light-theme-background, (
   dropdown-hover: map-get($primary-colors, 300), //#E0E0E0
   image-placeholder: map-get($primary-colors, light-disabled), //#BDBDBD
   button-bg: map-get($primary-colors, light-header),
+  mat-selected-option: map-get($primary-colors, light-header),
+  mat-slider-primary: map-get($primary-colors, light-header),
 ));
 
 $theme: (

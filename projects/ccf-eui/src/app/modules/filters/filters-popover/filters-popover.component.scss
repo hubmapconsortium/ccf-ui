@@ -23,7 +23,7 @@
   box-shadow: 0.2rem 0.2rem 1rem 0rem #00000058;
   transition-property: width;
   transition-duration: 0.3s;
-
+  
   .popup-body {
     position: relative;
     opacity: 0;
@@ -53,4 +53,8 @@
   cursor: pointer;
   outline: none;
   padding: 0;
+
+  .funnel {
+    margin-top: 0.25rem;
+  }
 }
