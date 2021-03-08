@@ -28,30 +28,28 @@
       .drawer-icons {
         display: flex;
         padding-left: 1.5rem;
+        height: 5rem;
+        padding-right: 1.5rem;
+        align-items: center;
+        justify-content: space-between;
 
-        .scheme-toggle {
-          mat-icon {
-            font-size: 2rem !important;
+        .drawer-icons-left {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+
+          button, mat-icon {
+            margin-right: 0.5rem;
           }
         }
 
         .button {
-          width: 3rem;
-          height: 3rem;
           padding: 0;
           background: none;
           border: none;
           cursor: pointer;
           outline: none;
 
-          mat-icon {
-            width: 100%;
-            height: 100%;
-            font-size: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
         }
       }
     }
@@ -103,8 +101,28 @@
     }
 
     .left-drawer {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      height: 100%;
       ::ng-deep .cff-drawer-inner-container {
-        height: calc(100% - 5.5rem);
+        height: 100%;
+      }
+
+      .filter-data {
+        height: 5rem;
+        display: flex;
+        align-items: center;
+
+        .filter-text {
+          display:flex;
+          justify-content: space-between;
+          width: 75%;
+          margin-left: 1.5rem;
+
+          .filter-tag {
+            font-weight: 300;
+          }
+        }
       }
     }
   }

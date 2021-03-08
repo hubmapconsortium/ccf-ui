@@ -3,20 +3,20 @@
   height: 3rem;
 
   ::ng-deep .mat-form-field-wrapper {
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
     height: 3rem;
 
     .mat-form-field-flex {
       .mat-form-field-infix {
         border: none;
+        font-size: 0.875rem;
       }
     }
 
     .mat-form-field-underline {
       left: 0rem;
       bottom: 0rem;
-      background-color: black;
       transform: none;
       height: 0.125rem;
     }
@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   .name-label {
-    font-size: 0.875rem;
+    padding-bottom: 0.25rem;
   }
 
   .range-label {
@@ -74,8 +74,6 @@
 }
 
 ::ng-deep .slider-pane {
-  border-width: 1px;
-  border-style: solid;
   position: absolute !important;
   top: -1px;
 }
@@ -83,7 +81,7 @@
 .ccf-slider.detached {
   animation: slideInHorizontalSlider 0.3s;
   animation-fill-mode: forwards;
-  box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
+  box-shadow: 0.2rem 0.2rem 1rem 0rem #0000003e;
 
   display: flex;
   justify-content: center;
@@ -111,8 +109,6 @@
       width: $pointer-size;
       height: $pointer-size;
       top: 0.095rem - ($pointer-size / 2);
-      border-width: .1rem;
-      border-style: solid;
 
       &:after {
         display: none;

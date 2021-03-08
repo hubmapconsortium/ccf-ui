@@ -36,11 +36,16 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   disabled: map-get($primary-colors, 800), //#424242
   highlight: map-get($primary-colors, 'white'),
   header-download-icon: map-get($mat-amber, A400),
-  header-shadow: map-get($primary-colors, 'black')
+  header-shadow: map-get($primary-colors, 'black'),
+  text-muted: #9a9a9a,
+  main: map-get($primary-colors, 'white'),
+  organ-off: map-get($primary-colors, 800),
+  organ-numbers: #757575,
 ));
 
 $background: map-merge($mat-dark-theme-background, (
   background: map-get($primary-colors, 900), //#212121
+  hover-background: map-get($primary-colors, 850),
   stage-background: map-get($primary-colors, 'black'),
   dialog: map-get($primary-colors, 900), //#212121
   authentication: map-get($primary-colors, 'white'), //#FAFAFA
@@ -48,7 +53,8 @@ $background: map-merge($mat-dark-theme-background, (
   modal: map-get($primary-colors, 850), //#323232
   dropdown-menu: map-get($primary-colors, 800), //#424242
   dropdown-hover: map-get($primary-colors, 500), //#9E9E9E
-  image-placeholder: map-get($primary-colors, 500) //#9E9E9E
+  image-placeholder: map-get($primary-colors, 500), //#9E9E9E
+  mat-slider-primary: #ececec
 ));
 
 $theme: (
