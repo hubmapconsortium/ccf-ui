@@ -38,6 +38,9 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   header-download-icon: map-get($mat-amber, A400),
   header-shadow: map-get($primary-colors, 'black'),
   text-muted: #9a9a9a,
+  main: map-get($primary-colors, 'white'),
+  organ-off: map-get($primary-colors, 800),
+  organ-numbers: #757575,
 ));
 
 $background: map-merge($mat-dark-theme-background, (

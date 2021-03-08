@@ -1,6 +1,6 @@
 <div class="ccf-app mat-app-background">
   <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn"></ccf-header>
-  <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
+  <!-- <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay> -->
 
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
