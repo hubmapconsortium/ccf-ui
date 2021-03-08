@@ -17,23 +17,13 @@
 }
 
 .outline-button {
-  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000000;
-  border-radius: 0.25rem;
-  background: none;
-  border-width: 1px;
-  border-style: solid;
-  padding: 0.4rem;
-  cursor: pointer;
-}
-
-.outline-button:active {
-  background: #69f0ae;
-  color: black;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #0000001d;
 }
 
 .patient-filters {
   display: flex;
   width: 90%;
+  padding-top: 1rem;
 
   &.hidden {
     display: none !important;

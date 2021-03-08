@@ -40,7 +40,6 @@
     .mat-form-field-underline {
       left: 0rem;
       bottom: 0rem;
-      background-color: black;
       transform: none;
       height: 0.125rem;
     }
@@ -60,14 +59,10 @@
 ::ng-deep .option-panel {
   animation: slideInHorizontalDropdown .3s;
   animation-fill-mode: forwards;
-  box-shadow: 0.4rem 0.4rem 0.8rem 0rem #000000;
+  box-shadow: 0.2rem 0.2rem 1rem 0rem #0000003e;
   position: absolute !important;
   top: 1.55rem;
   max-width: 9.5rem;
-  border-radius: 0rem;
-  border-width: 1px;
-  border-style: solid;
-
 
   .mat-option {
     border-bottom-width: 1px;
@@ -87,9 +82,13 @@
 .dropdown-form-field {
   height: 3rem;
   width: 100%;
+  
+  .label {
+    padding-bottom: 0.063rem;
+  }
   ::ng-deep .mat-form-field-wrapper {
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
   }
 }
 

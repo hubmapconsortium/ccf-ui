@@ -2,23 +2,16 @@
   padding: 0;
 }
 
-.ccf-about.wrapper {
+.rui-about.wrapper {
   .container {
     .content {
       padding: 3rem;
-      background-color: white;
     }
 
     .description {
       font-size: 0.875rem;
       line-height: 1.5rem;
       margin-bottom: 1rem;
-    }
-
-    .heading {
-      margin-bottom: 0;
-      font-size: 0.875rem;
-      font-weight: bold;
     }
 
     .close {
@@ -32,7 +25,8 @@
 
     .title {
       font-size: 1.5rem;
-      margin-bottom: 0;
+      margin-bottom: 2.25rem;
+      text-align: center;
     }
 
     .subtitle {
@@ -41,13 +35,22 @@
       margin-bottom: 0.5rem;
     }
 
-    .footer {
-      padding-top: 1.5rem;
-      .nih-logo {
-        height: 2.25rem;
-        display: block;
-        margin: auto;
+    .panel {
+      margin-bottom: 1.5rem;
+
+      .no-header-margin {
+        margin-bottom: 0;
+      }
+
+      .top-padding {
+        padding-top: 0.5rem;
       }
     }
+
+    .dialog-content {
+      height: 50rem; 
+      min-height: 10rem;
+    }
+
   }
 }

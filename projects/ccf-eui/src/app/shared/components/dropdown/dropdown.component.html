@@ -1,7 +1,9 @@
 <div class="ccf-dropdown wrapper">
   <div class="container">
     <mat-form-field class="dropdown-form-field">
-      {{ label }}
+      <div class="label">
+        {{ label }}
+      </div>
       <mat-select class="selected-value" [value]="selection" (selectionChange)="selectionChanged($event.value)"
                   disableOptionCentering=true panelClass="option-panel" (openedChange)="toggleOptions()"
                   disableRipple=true>

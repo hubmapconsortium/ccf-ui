@@ -4,7 +4,7 @@
       <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>
     </div>
     <div class="content">
-      <h2 class="title" mat-dialog-title>HuBMAP CCF Registration User Interface 1.0</h2>
+      <h2 class="title" mat-dialog-title>{{infoTitle}}</h2>
       
       <mat-dialog-content class="mat-typography dialog-content">
         <div *ngFor="let content of documentationContents; let i = index;" class="panel">
@@ -12,7 +12,9 @@
             <mat-expansion-panel-header>
               <h2 class="no-header-margin">{{content.title}}</h2>
             </mat-expansion-panel-header>
-              <markdown class="variable-binding" [data]="content.content"></markdown>
+              <div class="top-padding">
+                <markdown class="variable-binding" [data]="content.content"></markdown>
+              </div>
           </mat-expansion-panel>
         </div>
       </mat-dialog-content>

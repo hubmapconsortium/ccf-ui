@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DocumentationContent } from '../../../core/models/documentation';
 import { HttpClient } from '@angular/common/http';
 
 const documentationURL = 'assets/docs/README.md';
+
+/**
+ * The structure to define how each documentation panel
+ * should look like in the info dialog
+ */
+
+export interface DocumentationContent {
+  /** Title of the panel */
+  title: string;
+
+  /** Content inside the panel */
+  content: string;
+}
+
 
 @Injectable({
   providedIn: 'root'

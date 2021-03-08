@@ -3,7 +3,7 @@ import { Shallow } from 'shallow-render';
 import { InfoButtonComponent } from './info-button.component';
 import { InfoButtonModule } from './info-button.module';
 import { InfoButtonService } from './info-button.service';
-import { DocumentationContent } from '../../../core/models/documentation';
+import { DocumentationContent } from '../info-button/info-button.service';
 
 describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
