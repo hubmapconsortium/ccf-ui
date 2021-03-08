@@ -31,6 +31,10 @@
     flex-wrap: wrap;
     overflow-y: scroll;
     scrollbar-width: thin;
+
+    .browser-item-container {
+      width: 100%;
+    }
   }
 
   .scroll-gradient {

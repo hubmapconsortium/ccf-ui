@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AggregateResult, ListResult } from 'ccf-database';
+import { DonorCard } from '../../../core/models/donor';
 
 
 /**
@@ -12,7 +13,7 @@ import { AggregateResult, ListResult } from 'ccf-database';
   templateUrl: './results-browser.component.html',
   styleUrls: ['./results-browser.component.scss']
 })
-export class ResultsBrowserComponent {
+export class ResultsBrowserComponent implements OnInit {
 
   /**
    * Input array of items used to generate the list of results in the results browser.
@@ -50,6 +51,119 @@ export class ResultsBrowserComponent {
    * Keeps track of the selected result for highlighting
    */
   selectedResult: ListResult;
+
+
+  /**
+   * Placeholder data for donor card component
+   * */
+  sampleDonor: DonorCard = {
+    selected: false,
+    color: '',
+    donor: {
+      link: 'www.google.com',
+      label: 'Female, Age 38, BMI 14.7',
+      description: 'Entered 1/21/2021, Hom Sim, VU'
+    },
+    rui_location: {},
+    sample: {
+      link: 'www.google.com',
+      label: 'Registered 1/3/2021, Hom Sim, VU',
+      description: '1 x 1.2 x 3mm, 10um, Flash Frozen, 4 Sections',
+      datasets: [
+        {
+          thumbnail: 'assets/thumbnails/DR1-VU/VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.jpg',
+          link: 'www.google.com',
+          label: ''
+        },
+        {
+          thumbnail: 'assets/thumbnails/DR1-VU/VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.jpg',
+          link: 'www.google.com',
+          label: ''
+        },
+        {
+          thumbnail: 'assets/thumbnails/DR1-VU/VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.jpg',
+          link: 'www.google.com',
+          label: ''
+        }
+      ],
+      samples: [
+        {
+          link: 'www.google.com',
+          label: '',
+          description: '',
+          datasets: [
+            {
+              thumbnail: 'assets/images/image1.png',
+              link: 'www.google.com',
+              label: ''
+            },
+            {
+              thumbnail: 'assets/images/image1.png',
+              link: 'www.google.com',
+              label: ''
+            }
+          ]
+        }
+      ]
+    }
+  }
+  donorData: DonorCard[] = [];
+
+  test = {
+    "@id": "iri",
+    "@type": "Donor",
+    "label": "blah",
+    "description": "blah blah",
+    "link": "http://datadata",
+    "age": 123,
+    "sex": "Male",
+    "bmi": 30.0,
+    "consortium_name": "HuBMAP",
+    "provider_name": "MC-IU",
+    "provider_uuid": "1224",
+    "samples": [{
+      "@id": "iri",
+      "@type": "Sample",
+      "label": "blah",
+      "description": "blah blah",
+      "link": "http://datadata",
+      "sample_type": "Tissue Block",
+      "section_count": 10,
+      "section_size": 10,
+      "section_units": "um",
+      "rui_location": {
+        "@id": "iri",
+        "@type": "SpatialEntity",
+        "creation_date": "124",
+        "ccf_annotations": []
+      },
+      "samples": [{
+        "@id": "iri",
+        "@type": "Sample",
+        "label": "blah",
+        "description": "blah blah",
+        "link": "http://datadata",
+        "sample_type": "Tissue Section",
+        "section_number": 1,
+        "datasets": []
+      }],
+      "datasets": [{
+        "@id": "iri",
+        "@type": "Dataset",
+        "label": "blah",
+        "description": "blah blah",
+        "technology": "AF",
+        "thumbnail": "http://example.com",
+        "link": "http://datadata"
+      }]
+    }]
+  }
+
+  ngOnInit(): void {
+    for (let i = 0; i <= 25; i++) {
+      this.donorData.push(this.sampleDonor);
+    }
+  }
 
   /**
    * Handles the scroll event to detect when scroll is at the bottom.

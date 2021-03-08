@@ -1,0 +1,14 @@
+<mat-checkbox
+  class="example-margin"
+  [checked]="donor.selected"
+  (change)="handleCheckbox($event)"
+></mat-checkbox>
+
+<div class="donor-card mat-elevation-z2">
+  <mat-icon class="icon">person</mat-icon>
+
+  <div class="donor-info">
+    <div class="title">{{ donor.donor.label }}</div>
+    <div class="description">{{ donor.donor.description }}</div>
+  </div>
+</div>
