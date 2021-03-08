@@ -1,5 +1,5 @@
 <div class="ccf-app mat-app-background">
-  <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn" [filters]="data.filter$ | async" (refreshClicked)="reset(left, right, filterbox)"></ccf-header>
+  <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn"></ccf-header>
   <!-- <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay> -->
 
   <ccf-drawer-container class="main-drawers">
@@ -10,9 +10,9 @@
         (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>
 
         <div class="filter-text">
-          <div>Sex: <b>{{(data.filter$ | async)?.sex}}</b></div>
-          <div>Age: <b>{{(data.filter$ | async)?.ageRange[0]}}-{{(data.filter$ | async)?.ageRange[1]}}</b></div>
-          <div>BMI: <b>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</b></div>
+          <div class="sex">Sex: {{(data.filter$ | async)?.sex}}</div>
+          <div class="age">Age: {{(data.filter$ | async)?.ageRange[0]}}-{{(data.filter$ | async)?.ageRange[1]}}</div>
+          <div class="bmi">BMI: {{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</div>
         </div>
       </div>
       <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async" [occurenceData]="data.termOccurencesData$ | async" (ontologySelection)="ontologySelected($event)"></ccf-ontology-selection>
