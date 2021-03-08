@@ -42,6 +42,7 @@ $foreground: map-merge($mat-dark-theme-foreground, (
 
 $background: map-merge($mat-dark-theme-background, (
   background: map-get($primary-colors, 900), //#212121
+  hover-background: map-get($primary-colors, 850),
   stage-background: map-get($primary-colors, 'black'),
   dialog: map-get($primary-colors, 900), //#212121
   authentication: map-get($primary-colors, 'white'), //#FAFAFA
