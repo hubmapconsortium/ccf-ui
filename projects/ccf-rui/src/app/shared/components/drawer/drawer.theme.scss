@@ -13,10 +13,6 @@
 
   .ccf-drawer-toggle-button {
     background-color: mat-color($background, modal);
-
-    &:hover {
-      background-color: mat-color($accent);
-    }
   }
 
   .drawer-icons {
