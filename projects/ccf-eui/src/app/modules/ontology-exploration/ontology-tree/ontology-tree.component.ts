@@ -186,7 +186,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   selectedNodes: FlatNode[] = [];
 
-  highlightedNode: OntologyNode | undefined;
+  highlightedNode: FlatNode | undefined;
 
   /**
    * Expand the body node when the component is initialized.
@@ -321,9 +321,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     }
   }
 
-  mouseOver(node: OntologyNode): void {
+  mouseOver(node: FlatNode): void {
     this.highlightedNode = node;
-    console.log('mouseover', this.highlightedNode)
   }
 
   mouseOut(): void {
@@ -331,23 +330,19 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   }
 
   updateOpacity(value: number | undefined): void {
-    if (!this.highlightedNode) {
-      return;
-    }
-    const updatedNode = {...this.highlightedNode, opacity: value};
-    this.highlightedNode = updatedNode;
-    console.log (this.highlightedNode)
+    this.highlightedNode = {...this.highlightedNode, opacity: value} as FlatNode;
+    // update nodes
   }
 
-  resetNode(): void {
+  resetNode(node: FlatNode): void {
     if (this.highlightedNode) {
-      const updatedNode = {...this.highlightedNode, opacity: 20, visible: true};
-      this.highlightedNode = updatedNode;
+      this.highlightedNode = {...node, opacity: 20, visible: true, label: node.label, expandable: node.expandable} as FlatNode;
     }
+    // update nodes
   }
 
-  toggleVisibility(node: OntologyNode): void {
-    node = node.visible ? {...node, opacity: 20, visible: false} : {...node, opacity: 20, visible: true};
-    this.updateOpacity(node.opacity);
+  toggleVisibility(node: FlatNode): void {
+    this.highlightedNode = {...node, visible: this.highlightedNode?.visible ? false : true, opacity: this.highlightedNode?.visible ? 20 : 0, label: node.label, expandable: node.expandable} as FlatNode; 
+    // update nodes
   }
 }

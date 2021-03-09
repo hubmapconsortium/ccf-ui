@@ -16,26 +16,26 @@
 
     <mat-icon class="icon opacity" [class.fade]="!node.visible" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
     <div class="slider" [class.hidden]="node.label != highlightedNode?.label">
-      <ccf-opacity-slider [visible]="node.visible" [opacity]="highlightedNode ? highlightedNode?.opacity : 20"
-      (opacityChange)="updateOpacity($event)" (opacityReset)="resetNode()" (visibilityToggle)="toggleVisibility(node)">
+      <ccf-opacity-slider [visible]="highlightedNode?.visible" [opacity]="highlightedNode?.visible ? highlightedNode?.opacity : 0"
+      (opacityChange)="updateOpacity($event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">
       </ccf-opacity-slider>
     </div>
 
     <!-- Disabled button used to add equal amount of space as an inner node's button -->
     <div class="non-expandable"></div>
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results">{{node.numResults ? node.numResults : 0}}</div>
+    <div class="num-results">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
 
   </mat-tree-node>
 
   <!-- Inner node template -->
   <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding
-                 [matTreeNodePaddingIndent]="indent"  (mouseleave)="mouseOut()">
+                 [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut()">
 
     <mat-icon class="icon opacity" [class.fade]="!node.visible" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
     <div class="slider" [class.hidden]="node.label != highlightedNode?.label">
-      <ccf-opacity-slider [visible]="node.visible" [opacity]="highlightedNode ? highlightedNode?.opacity : 20"
-        (opacityChange)="updateOpacity($event)" (opacityReset)="resetNode()" (visibilityToggle)="toggleVisibility(node)">
+      <ccf-opacity-slider [visible]="highlightedNode?.visible" [opacity]="highlightedNode?.visible ? highlightedNode?.opacity : 0"
+        (opacityChange)="updateOpacity($event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">
       </ccf-opacity-slider>
     </div>
 
@@ -46,7 +46,7 @@
     </button>
 
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results">{{node.numResults ? node.numResults : 0}}</div>
+    <div class="num-results">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
 
   </mat-tree-node>
 </mat-tree>
