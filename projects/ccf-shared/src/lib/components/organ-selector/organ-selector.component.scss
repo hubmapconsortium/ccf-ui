@@ -40,6 +40,10 @@
           display: flex;
           flex-direction: column;
           cursor: pointer;
+          padding-top: 0.125rem;
+          padding-bottom: 0.125rem;
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
 
           .carousel-icon {
             text-align: center;
