@@ -56,7 +56,11 @@
         align-self: center;
         border-radius: 0rem 0rem 0.25rem 0.25rem;
         cursor: pointer;
-        transition: 0.6s;
+        transition: 0.25s;
+
+        &:hover {
+          background-color: #e0e0e0;
+        }
 
         .mat-icon {
           position: relative;
