@@ -186,6 +186,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   selectedNodes: FlatNode[] = [];
 
+  highlightedNode: OntologyNode | undefined;
+
   /**
    * Expand the body node when the component is initialized.
    */
@@ -317,5 +319,35 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     if (emit) {
       this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
     }
+  }
+
+  mouseOver(node: OntologyNode): void {
+    this.highlightedNode = node;
+    console.log('mouseover', this.highlightedNode)
+  }
+
+  mouseOut(): void {
+    this.highlightedNode = undefined;
+  }
+
+  updateOpacity(value: number | undefined): void {
+    if (!this.highlightedNode) {
+      return;
+    }
+    const updatedNode = {...this.highlightedNode, opacity: value};
+    this.highlightedNode = updatedNode;
+    console.log (this.highlightedNode)
+  }
+
+  resetNode(): void {
+    if (this.highlightedNode) {
+      const updatedNode = {...this.highlightedNode, opacity: 20, visible: true};
+      this.highlightedNode = updatedNode;
+    }
+  }
+
+  toggleVisibility(node: OntologyNode): void {
+    node = node.visible ? {...node, opacity: 20, visible: false} : {...node, opacity: 20, visible: true};
+    this.updateOpacity(node.opacity);
   }
 }

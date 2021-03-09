@@ -3,13 +3,57 @@
   margin-left: 1.5rem;
   scrollbar-width: thin;
   height: calc(100% - 5.625rem);
-  width: 25.5rem;
+  width: 25.25rem;
   overflow: auto;
 
   .node {
     min-height: 0;
     font-size: 1rem;
     margin-bottom: .25rem;
+
+    .slider {
+      width: calc(100% - 6rem);
+      transition-duration: 0.25s;
+      transition-timing-function: ease-in-out;
+      transition-property: width;
+      left: 4rem;
+      position: absolute;
+      z-index: 1;
+
+      &.hidden {
+        width: 0rem;
+
+        ccf-opacity-slider {
+          display: none;
+        }
+      }
+
+      ::ng-deep ccf-opacity-slider {
+        height: 1.5rem;
+        .mat-slider {
+          height: 1.5rem;
+
+          .mat-slider-wrapper {
+            top: 12px;
+          }
+        }
+      }
+    }
+    
+    .num-results {
+      margin-right: 0.25rem;
+    }
+
+    &.inner-node {
+      button {
+        margin-left: 3rem;
+      }
+    }
+
+    .opacity {
+      position: absolute;
+      left: 1.5rem;
+    }
 
     .toggle {
       width: 1.5rem;
@@ -29,6 +73,10 @@
       white-space: nowrap;
       cursor: pointer;
       margin-left: 0.5rem;
+    }
+
+    .num-results {
+      margin-left: auto;
     }
   }
 }

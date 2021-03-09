@@ -26,4 +26,10 @@ export interface OntologyNode {
    * Labels for the synonyms of the label of this node.
    */
   synonymLabels: string[];
+
+  visible?: boolean;
+
+  opacity?: number;
+
+  numResults?: number;
 }

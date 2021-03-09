@@ -52,6 +52,9 @@ export const DEFAULT_ICONS: DefaultIconDefinition[] = [
   { name: 'stomach', namespace: 'app', url: 'assets/icons/icons-organs_stomach.svg' },
   { name: 'thymus', namespace: 'app', url: 'assets/icons/icons-organs_thymus.svg' },
 
+  { name: 'opacity', namespace: 'app', url: 'assets/icons/opacity-24px.svg' },
+  { name: 'visibility_on', namespace: 'app', url: 'assets/icons/visibility-on-24px.svg' },
+  { name: 'visibility_off', namespace: 'app', url: 'assets/icons/visibility-off-24px.svg' },
   { name: 'filter', url: 'assets/icons/filter.svg' }
 
   // Add default icons here!

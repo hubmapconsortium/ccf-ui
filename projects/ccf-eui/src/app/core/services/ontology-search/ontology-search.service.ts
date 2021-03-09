@@ -70,7 +70,10 @@ function pruneModel(model: OntologyStateModel, organIds: string[]): OntologyStat
     label: 'body',
     parent: '',
     children: organIds,
-    synonymLabels: []
+    synonymLabels: [],
+    visible: true,
+    opacity: 20,
+    numResults: 0
   };
   const organNodes = at(model.nodes, organIds);
   const prunedNodes = { [body.id]: body };
