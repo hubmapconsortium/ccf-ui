@@ -5,8 +5,8 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
-import { combineLatest, Observable, of } from 'rxjs';
-import { debounceTime, filter, map } from 'rxjs/operators';
+import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { debounceTime, filter, map,} from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { ModelState } from '../model/model.state';
@@ -150,12 +150,10 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   @Computed()
-  get placementCube$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$]).pipe(
-      map(([viewType, blockSize, rotation, position]) => [
-        this.placementCube
-      ])
-    );
+  get placementCube$(): Observable<SpatialSceneNode[]> | [] {
+    return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$, this.model.organ$]).pipe(
+      map(([viewType, blockSize, rotation, position, organ]) => organ.src === '' ? [] : [this.placementCube])
+    )
   }
 
   @Computed()
