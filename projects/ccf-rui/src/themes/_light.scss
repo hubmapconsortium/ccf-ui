@@ -70,7 +70,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   icons-disabled: #CCCCCC,
   icons-hover: #eeeeee,
   organ-off: #cccccc,
-  carousel-text: map-get($primary-colors, 'black')
+  carousel-text: map-get($primary-colors, 'black'),
+  
 ));
 
 $background: map-merge($mat-light-theme-background, (
@@ -90,6 +91,7 @@ $background: map-merge($mat-light-theme-background, (
   dropdown-hover: map-get($primary-colors, 300), // #E0E0E0
   image-placeholder: map-get($primary-colors, light-disabled), // #BDBDBD
   drawer-background: map-get($primary-colors, 'white'),
+  info-button-hover: map-get($primary-colors, 300)
 ));
 
 $theme: (
