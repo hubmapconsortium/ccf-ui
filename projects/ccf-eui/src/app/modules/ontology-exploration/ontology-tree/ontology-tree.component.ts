@@ -323,6 +323,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   mouseOver(node: FlatNode): void {
     this.highlightedNode = node;
+    console.log(this.highlightedNode)
   }
 
   mouseOut(): void {
@@ -335,14 +336,13 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   }
 
   resetNode(node: FlatNode): void {
-    if (this.highlightedNode) {
-      this.highlightedNode = {...node, opacity: 20, visible: true, label: node.label, expandable: node.expandable} as FlatNode;
-    }
+    this.highlightedNode = {...node, opacity: 20, visible: true, label: node.label, expandable: node.expandable} as FlatNode;
     // update nodes
   }
 
   toggleVisibility(node: FlatNode): void {
-    this.highlightedNode = {...node, visible: this.highlightedNode?.visible ? false : true, opacity: this.highlightedNode?.visible ? 20 : 0, label: node.label, expandable: node.expandable} as FlatNode; 
+    this.highlightedNode = {...node, visible: this.highlightedNode?.visible ? false : true, label: node.label, expandable: node.expandable} as FlatNode; 
     // update nodes
+    console.log(this.highlightedNode)
   }
 }
