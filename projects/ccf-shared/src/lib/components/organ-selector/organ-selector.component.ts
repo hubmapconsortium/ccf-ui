@@ -1,12 +1,12 @@
 import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef, ViewChild } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
 
-export let ALL_ORGANS: OrganInfo[] = [
-  { src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', disabled: false, hasSex: true },
-  { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true, disabled: false, },
-  { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true, disabled: false, },
-  { src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true, disabled: false, },
-  { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true, disabled: false, },
+export const ALL_ORGANS: OrganInfo[] = [
+  { src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true },
+  { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true },
+  { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true },
+  { src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true },
+  { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true, },
   { src: 'app:bladder', organ: 'Bladder', name: 'Bladder', disabled: true, hasSex: true },
   { src: 'app:brain', organ: 'Brain', name: 'Brain', disabled: true, hasSex: true },
   { src: 'app:liver', organ: 'Liver', name: 'Liver', disabled: true, hasSex: true },
@@ -18,8 +18,7 @@ export let ALL_ORGANS: OrganInfo[] = [
   { src: 'app:small_intestine', organ: 'Small Intestine', name: 'Small Intestine', disabled: true, hasSex: true },
   { src: 'app:stomach', organ: 'Stomach', name: 'Stomach', disabled: true, hasSex: true },
   { src: 'app:thymus', organ: 'Stomach', name: 'Thymus', disabled: true, hasSex: true }
-];
-ALL_ORGANS = ALL_ORGANS.filter(organ => !organ.disabled);
+].filter(organ => organ.disabled !== true) as OrganInfo[];
 
 /**
  * Contains the organ name and url of the icon svg
