@@ -1,4 +1,4 @@
-<mat-icon class="icon reset" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" (click)="setAllOpacity(20)">refresh</mat-icon>
+<mat-icon class="icon reset" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" (click)="setAllOpacity(20)" *ngIf="items.length">refresh</mat-icon>
 
 <div class="item-entry" [class.selected]="selection ? getId(0, selection) === getId(0, item) : false" (mouseleave)="mouseOut()" *ngFor="let item of items; trackBy: getId">
   <mat-icon class="icon opacity" [class.fade]="!item.visible" (mouseenter)="mouseOver(item)" svgIcon="app:opacity"></mat-icon>

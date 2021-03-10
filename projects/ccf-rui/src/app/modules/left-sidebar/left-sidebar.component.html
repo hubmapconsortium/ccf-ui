@@ -17,21 +17,23 @@
 
         <mat-divider></mat-divider>
 
-        <mat-expansion-panel class="anatomical-structures-menu">
+        <mat-expansion-panel class="anatomical-structures-menu" expanded>
           <mat-expansion-panel-header class="expansion-header"
               matTooltip="Toggle visibility and opacity of anatomical structures to ease registration.">
               <mat-panel-title class="expansion-title">Anatomical Structures</mat-panel-title>
           </mat-expansion-panel-header>
+          
           <div class="expansion-content">
               <ccf-visibility-menu
                   [items]="model.anatomicalStructures$ | async" (itemsChange)="model.setAnatomicalStructures($event)">
               </ccf-visibility-menu>
+              <span *ngIf="disableSlider" class="expansion-placeholder">Select an organ to see available structures</span>
           </div>
         </mat-expansion-panel>
 
         <mat-divider></mat-divider>
 
-        <mat-expansion-panel class="extraction-menu">
+        <mat-expansion-panel class="extraction-menu" expanded>
             <mat-expansion-panel-header class="expansion-header">
                 <mat-panel-title matTooltip="Some organs have predefined extraction sites--you can turn these on/off."
                     class="expansion-title">Common Extraction Sites</mat-panel-title>
@@ -43,6 +45,7 @@
                 <ccf-visibility-menu [items]="model.extractionSites$ | async"
                     (itemsChange)="model.setExtractionSites($event)" (hover)="updateExtractionSiteTooltip($event)">
                 </ccf-visibility-menu>
+                <span *ngIf="disableSlider" class="expansion-placeholder">Select an organ to see available extraction sites</span>
             </div>
         </mat-expansion-panel>
 
