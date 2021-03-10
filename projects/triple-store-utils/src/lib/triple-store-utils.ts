@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import { toRDF } from 'jsonld';
 import { JsonLd, Url } from 'jsonld/jsonld-spec';
-import { DataFactory, Parser } from 'n3';
+import { DataFactory, Parser, Store as N3Store } from 'n3';
 import * as RDF from 'rdf-js';
 import { RdfXmlParser } from 'rdfxml-streaming-parser';
 import { Readable } from 'readable-stream';
@@ -128,8 +128,12 @@ export async function addN3ToStore(
     data = uri;
   }
   if (data) {
-    const quads = new Parser({format: 'n3'}).parse(data);
-    store.import(arrayToStream(quads));
+    if (store instanceof N3Store) {
+      new Parser({format: 'n3'}).parse(data, store.addQuad.bind(store));
+    } else {
+      const quads = new Parser({format: 'n3'}).parse(data);
+      store.import(arrayToStream(quads));
+    }
   }
   return store;
 }

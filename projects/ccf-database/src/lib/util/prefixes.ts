@@ -8,7 +8,8 @@ export const PREFIXES = {
   obo: 'http://purl.obolibrary.org/obo/',
   uberon: 'http://purl.obolibrary.org/obo/UBERON_',
   lmha: 'http://purl.obolibrary.org/obo/LMHA_',
-  rdf: 'http://www.w3.org/2000/01/rdf-schema#',
+  rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+  rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
   dc: 'http://purl.org/dc/elements/1.1/'
 };
 
@@ -17,24 +18,63 @@ export const prefixer = Util.prefixes(PREFIXES, DataFactory);
 
 export const rdf = {
   x: prefixer('rdf'),
-  type: DataFactory.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
+  type: prefixer('rdf')('type')
+};
+
+export const rdfs = {
+  x: prefixer('rdfs'),
+  label: prefixer('rdfs')('label'),
+  comment: prefixer('rdfs')('comment'),
+  isDefinedBy: prefixer('rdfs')('isDefinedBy'),
+  seeAlso: prefixer('rdfs')('seeAlso')
 };
 
 /** Common entity ids. */
 export const entity = {
   x: prefixer('entity'),
   id: prefixer('entity')('id'),
+  label: rdfs.label,
+  description: rdfs.comment,
+  link: rdfs.seeAlso,
+
   sex: prefixer('entity')('sex'),
   age: prefixer('entity')('age'),
   bmi: prefixer('entity')('bmi'),
+
   Male: DataFactory.literal('Male'),
   Female: DataFactory.literal('Female'),
-  donor: prefixer('entity')('donor'),
+
+  consortiumName: prefixer('entity')('consortium_name'),
+  providerName: prefixer('entity')('provider_name'),
+  providerUUID: prefixer('entity')('provider_uuid'),
+
+  donor: prefixer('entity')('has_donor'),
+
+  sections: prefixer('entity')('has_tissue_section'),
+  datasets: prefixer('entity')('has_dataset'),
+
+  sampleType: prefixer('entity')('sample_type'),
+
+  TissueBlock: DataFactory.literal('Tissue Block'),
+  TissueSection: DataFactory.literal('Tissue Section'),
+  NonStandard: DataFactory.literal('Non-standard'),
+
+  sectionCount: prefixer('entity')('section_count'),
+  sectionSize: prefixer('entity')('section_size'),
+  sectionUnits: prefixer('entity')('section_units'),
+  sectionNumber: prefixer('entity')('section_number'),
+
+  spatialEntity: prefixer('entity')('has_spatial_entity'),
+  // ontologyTerms: prefixer('entity')('has_ontology_term'),
+
+  technology: prefixer('entity')('technology'),
+  thumbnail: prefixer('entity')('has_thumbnail'),
+
+  // TODO: Delete these when list-result-n3 is removed
   entityType: prefixer('entity')('entityType'),
   groupName: prefixer('entity')('groupName'),
   groupUUID: prefixer('entity')('groupUUID'),
   ontologyTerms: prefixer('entity')('ontologyTerms'),
-  spatialEntity: prefixer('entity')('spatialEntity'),
   images: prefixer('entity')('hasImage'),
   imageProviders: prefixer('entity')('hasImageProvider')
 };
@@ -62,12 +102,12 @@ export const ccf = {
     file_subpath: ccfx('has_object_file_subpath')
   },
   extractionSet: {
-    label: prefixer('rdf')('label'),
+    label: rdfs.label,
     rui_rank: ccfx('ccf_rui_rank')
   },
   spatialEntity: {
-    label: prefixer('rdf')('label'),
-    comment: prefixer('rdf')('comment'),
+    label: rdfs.label,
+    comment: rdfs.comment,
     creator: prefixer('dc')('creator'),
     creator_first_name: ccfx('creator_first_name'),
     creator_last_name: ccfx('creator_last_name'),

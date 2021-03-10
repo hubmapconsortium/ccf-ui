@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { get, sortBy } from 'lodash';
-import { DR1_VU_THUMBS, HuBMAPEntity, JsonDict } from './hubmap-data';
+
+import { DR1_VU_THUMBS, HuBMAPEntity, JsonDict } from './hubmap-data--deprecated';
 
 
 export function debugData(entities: HuBMAPEntity[]): void  {

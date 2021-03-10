@@ -6,43 +6,6 @@ export interface AggregateResult {
   count: string | number;
 }
 
-export interface ListResultItem {
-  '@id': string;
-  label: string;
-  description: string;
-  link: string;
-}
-
-export interface DonorResult extends ListResultItem {
-  '@type': 'Donor';
-}
-
-export interface DatasetResult extends ListResultItem {
-  '@type': 'Dataset';
-  technology: string;
-  thumbnail: string;
-}
-
-export interface TissueSectionResult extends ListResultItem {
-  '@type': 'Sample';
-  sampleType: 'Tissue Section' | 'Non-Standard';
-  sectionNumber: number;
-  datasets: DatasetResult[];
-}
-
-export interface TissueBlockResult extends ListResultItem {
-  '@type': 'Sample';
-  sampleType: 'Tissue Block' | 'Non-Standard';
-  sectionCount: number;
-  sectionSize: number;
-  sectionUnits: string;
-
-  donor: DonorResult;
-  spatialEntityId: string;
-  sections: TissueSectionResult[];
-  datasets: DatasetResult[];
-}
-
 /** Result for list of tissues. */
 export interface ListResult {
   /** Identifier. */
@@ -103,4 +66,12 @@ export interface Filter {
   hasSpatialEntity?: boolean;
   /** Include optional debugging information */
   debug?: boolean;
+}
+
+/** Backend query interface. */
+export interface DataSource {
+  /** Query list items. */
+  getListResults(filter?: Filter): Promise<ListResult[]>;
+  /** Query aggregate items. */
+  getAggregateResults(filter?: Filter): Promise<AggregateResult[]>;
 }
