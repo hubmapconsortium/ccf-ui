@@ -56,6 +56,8 @@
             (visibilityChanged)="togglePreviousRegistrationBlocks($event)" matTooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
         </ccf-visibility-toggle>
 
+        <div class="space"></div>
+
         <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">
             {{ extractionSiteTooltip }}
         </div>
