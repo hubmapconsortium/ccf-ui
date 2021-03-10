@@ -150,11 +150,9 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   @Computed()
-  get placementCube$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$]).pipe(
-      map(([viewType, blockSize, rotation, position]) => [
-        this.placementCube
-      ])
+  get placementCube$(): Observable<SpatialSceneNode[]> | [] {
+    return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$, this.model.organ$]).pipe(
+      map(([viewType, blockSize, rotation, position, organ]) => organ.src === '' ? [] : [this.placementCube])
     );
   }
 
