@@ -6,7 +6,7 @@ import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { combineLatest, Observable, of } from 'rxjs';
-import { debounceTime, filter, map,} from 'rxjs/operators';
+import { debounceTime, filter, map } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { ModelState } from '../model/model.state';

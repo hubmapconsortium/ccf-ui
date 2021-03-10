@@ -70,8 +70,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   icons-disabled: #CCCCCC,
   icons-hover: #eeeeee,
   organ-off: #cccccc,
-  carousel-text: map-get($primary-colors, 'black'),
-  
+  carousel-text: map-get($primary-colors, 'black')  
 ));
 
 $background: map-merge($mat-light-theme-background, (

@@ -6,7 +6,7 @@ export const ALL_ORGANS: OrganInfo[] = [
   { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true },
   { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true },
   { src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true },
-  { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true, },
+  { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true },
   { src: 'app:bladder', organ: 'Bladder', name: 'Bladder', disabled: true, hasSex: true },
   { src: 'app:brain', organ: 'Brain', name: 'Brain', disabled: true, hasSex: true },
   { src: 'app:liver', organ: 'Liver', name: 'Liver', disabled: true, hasSex: true },
