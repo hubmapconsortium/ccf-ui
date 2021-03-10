@@ -47,7 +47,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   organ-numbers: #757575,
   opacity-numbers: #CCCCCC,
   icons-disabled: #CCCCCC,
-  icons-hover: #e0e0e0
+  icons-hover: #e0e0e0,
+  results-numbers: #9e9e9e
 ));
 
 $background: map-merge($mat-light-theme-background, (

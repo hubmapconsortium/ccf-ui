@@ -54,6 +54,12 @@
           }
         }
       }
+
+      .num-results {
+        &.suborgan {
+          color: mat-color($foreground, results-numbers);
+        }
+      }
   
       .text {
         color: mat-color($foreground, text);

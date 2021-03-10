@@ -92,4 +92,34 @@ describe('OntologyTreeComponent', () => {
     const { instance } = await shallow.render();
     expect(instance.isInnerNode(1, flatNode2)).toBeFalse();
   });
+
+  it('should change highlightedNode when moused over', async () => {
+    const { instance } = await shallow.render();
+    instance.mouseOver(flatNode1);
+    expect(instance.highlightedNode).toEqual(flatNode1);
+  });
+
+  it('should remove highlightedNode when moused out', async () => {
+    const { instance } = await shallow.render();
+    instance.mouseOut();
+    expect(instance.highlightedNode).toBeUndefined();
+  });
+
+  it('should reset the node', async () => {
+    const { instance, outputs } = await shallow.render();
+    instance.resetNode(flatNode1);
+    expect(outputs.nodeChanged.emit).toHaveBeenCalled();
+  });
+
+  it('should update the opacity', async () => {
+    const { instance } = await shallow.render();
+    instance.updateOpacity(50);
+    expect(instance.highlightedNode?.opacity).toEqual(50);
+  });
+
+  it('should toggle the visibility', async () => {
+    const { instance } = await shallow.render();
+    instance.toggleVisibility(flatNode1);
+    expect(instance.highlightedNode?.visible).toBeTrue();
+  });
 });

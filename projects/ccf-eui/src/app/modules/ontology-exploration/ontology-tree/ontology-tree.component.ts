@@ -119,6 +119,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   @Output() nodeSelected = new EventEmitter<OntologyNode[]>();
 
+  @Output() nodeChanged = new EventEmitter<FlatNode>();
+
   /**
    * Indentation of each level in the tree.
    */
@@ -323,7 +325,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   mouseOver(node: FlatNode): void {
     this.highlightedNode = node;
-    console.log(this.highlightedNode)
   }
 
   mouseOut(): void {
@@ -332,17 +333,27 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   updateOpacity(value: number | undefined): void {
     this.highlightedNode = {...this.highlightedNode, opacity: value} as FlatNode;
-    // update nodes
+    this.nodeChanged.emit(this.highlightedNode);
   }
 
   resetNode(node: FlatNode): void {
-    this.highlightedNode = {...node, opacity: 20, visible: true, label: node.label, expandable: node.expandable} as FlatNode;
-    // update nodes
+    this.highlightedNode = {
+      ...node,
+      opacity: 20,
+      visible: true,
+      label: node.label,
+      expandable: node.expandable
+    } as FlatNode;
+    this.nodeChanged.emit(this.highlightedNode);
   }
 
   toggleVisibility(node: FlatNode): void {
-    this.highlightedNode = {...node, visible: this.highlightedNode?.visible ? false : true, label: node.label, expandable: node.expandable} as FlatNode; 
-    // update nodes
-    console.log(this.highlightedNode)
+    this.highlightedNode = {
+      ...node,
+      visible: this.highlightedNode?.visible ? false : true,
+      label: node.label,
+      expandable: node.expandable
+    } as FlatNode;
+    this.nodeChanged.emit(this.highlightedNode);
   }
 }

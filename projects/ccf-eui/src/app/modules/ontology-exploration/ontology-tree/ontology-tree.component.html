@@ -24,7 +24,7 @@
     <!-- Disabled button used to add equal amount of space as an inner node's button -->
     <div class="non-expandable"></div>
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
 
   </mat-tree-node>
 
@@ -41,12 +41,12 @@
 
     <button class="toggle" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">
       <mat-icon class="icon font-icon">
-        {{ 'expand_more' }}
+        {{ control.isExpanded(node) ? 'expand_less' : 'expand_more' }}
       </mat-icon>
     </button>
 
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
 
   </mat-tree-node>
 </mat-tree>

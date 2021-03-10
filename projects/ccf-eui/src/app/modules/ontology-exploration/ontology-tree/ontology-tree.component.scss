@@ -12,7 +12,7 @@
       opacity: 0;
     }
     .text {
-      margin-left: 1rem;
+      margin-left: 0.5rem;
     }
   }
 
@@ -23,7 +23,7 @@
 
     &.leaf-node {
       .text {
-        margin-left: 1.5rem;
+        margin-left: 2rem;
       }
     }
 
@@ -31,17 +31,16 @@
       width: calc(100% - 6rem);
       transition-duration: 0.25s;
       transition-timing-function: ease-in-out;
-      transition-property: width;
+      transition-property: left;
       left: 4rem;
       position: absolute;
       z-index: 1;
 
       &.hidden {
-        width: 0rem;
-
-        ccf-opacity-slider {
-          display: none;
-        }
+        left: -25rem;
+        transition-duration: 0.25s;
+        transition-timing-function: ease-in-out;
+        transition-property: left;
       }
 
       ::ng-deep ccf-opacity-slider {
@@ -73,10 +72,11 @@
     .opacity {
       position: absolute;
       left: 1.5rem;
+      z-index: 2;
     }
 
     .toggle {
-      width: 1rem;
+      width: 1.5rem;
       height: 1.5rem;
       line-height: normal;
     }
