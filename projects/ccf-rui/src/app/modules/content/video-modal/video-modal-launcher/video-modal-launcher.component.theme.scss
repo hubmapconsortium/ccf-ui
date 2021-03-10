@@ -14,7 +14,7 @@
         color: mat-color($foreground, contrast-text);
 
         &:hover {
-            color: mat-color($foreground, active-icon);
+            color: mat-color($background, drawer-hover);
         }
     }
   }

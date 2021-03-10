@@ -1,0 +1,12 @@
+.info-button-wrapper {
+  border-radius: 0.25rem;
+  padding: 0.65rem;
+
+  .ccf-info-button {
+    cursor: pointer;
+    transition: color .6s;
+    font-size: 1.5rem;
+    vertical-align: sub;
+  }
+  
+}

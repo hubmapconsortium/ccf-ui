@@ -7,17 +7,8 @@
   $accent: map-get($theme, accent);
 
   .outline-button {
-    color: mat-color($foreground, button-text);
-    border-color: mat-color($foreground, button-border);
-
-    &:hover {
-      background-color: mat-color($accent);
-      color: mat-color($foreground, contrast-text);
-    }
-
-    &:focus {
-      outline: mat-color($primary, "white");
-    }
+    color: mat-color($foreground, light-button-text);
+    background-color: mat-color($background, button-bg);
   }
 
   .popup-container {

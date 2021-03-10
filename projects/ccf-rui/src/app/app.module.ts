@@ -14,8 +14,6 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { OrganSelectorModule } from 'ccf-shared';
 
-
-
 @NgModule({
   imports: [
     BrowserModule,

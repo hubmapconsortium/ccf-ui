@@ -15,7 +15,7 @@
     background-color: mat-color($background, modal);
 
     &:hover {
-      background-color: mat-color($accent);
+      background-color: mat-color($background, drawer-hover);
     }
   }
 

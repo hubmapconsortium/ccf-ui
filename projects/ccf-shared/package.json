@@ -6,7 +6,9 @@
     "@angular/core": "^10.0.6",
     "@angular/material": "^10.1.1",
     "css-element-queries": "^1.2.3",
-    "shallow-render": "^10.0.1"
+    "ngx-markdown": "^11.1.1",
+    "shallow-render": "^10.0.1",
+    "rxjs": "~6.6.6"
   },
   "dependencies": {
     "tslib": "^2.0.0"

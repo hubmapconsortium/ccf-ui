@@ -46,5 +46,9 @@
     .organ-number {
       color: mat-color($foreground, organ-numbers);
     }
+
+    .carousel-text {
+      color: mat-color($foreground, carousel-text);
+    }
   }
 }

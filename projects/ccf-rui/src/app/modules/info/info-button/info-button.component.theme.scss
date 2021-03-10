@@ -1,9 +1,0 @@
-@use '~@angular/material/theming' as *;
-
-@mixin theme($theme) {
-  $foreground: map-get($theme, foreground);
-
-    .ccf-info-button:hover {
-        color: mat-color($foreground, active-icon);
-    }
-}

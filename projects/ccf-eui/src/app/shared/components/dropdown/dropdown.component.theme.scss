@@ -17,15 +17,16 @@
       }
 
       &.mat-selected.mat-active {
-        background-color: mat-color($accent);
+        background-color: mat-color($background, mat-selected-option);
         color: mat-color($foreground, contrast-text);
       }
     }
   }
 
   .dropdown-form-field {
-    background-color: mat-color($background, dropdown-menu);
-    color: mat-color($accent);
+    .label {
+      color: mat-color($foreground, text-muted)
+    }
 
     .mat-form-field-wrapper {
       .mat-form-field-underline {

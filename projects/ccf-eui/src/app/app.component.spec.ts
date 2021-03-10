@@ -5,7 +5,6 @@ import { Shallow } from 'shallow-render';
 
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
-import { HeaderComponent } from './core/header/header.component';
 import { DataState } from './core/store/data/data.state';
 import { StoreModule } from './core/store/store.module';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
@@ -23,13 +22,14 @@ describe('AppComponent', () => {
   let left: jasmine.SpyObj<DrawerComponent>;
   let right: jasmine.SpyObj<DrawerComponent>;
   let filterbox: jasmine.SpyObj<FiltersPopoverComponent>;
+  const testFilter = { sex: 'Both', ageRange: [5, 99], bmiRange: [30, 80] };
 
   beforeEach(() => {
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
       .replaceModule(StoreModule, EmptyModule)
       .mock(DataState, {
-        filter$: of(),
+        filter$: of(testFilter),
         listData$: of(),
         aggregateData$: of(),
         queryStatus$: of(),
@@ -68,15 +68,6 @@ describe('AppComponent', () => {
     expect(filterbox.removeBox).toHaveBeenCalled();
   });
 
-  it('should trigger the reset() method when the refresh button is clicked', async () => {
-    const { instance, findComponent } = await shallow.render();
-    const header = findComponent(HeaderComponent);
-    const spy = spyOn(instance, 'reset');
-
-    header.refreshClicked.emit();
-    expect(spy).toHaveBeenCalled();
-  });
-
   it('should change the selected organs', async () => {
     const { instance } = await shallow.render();
     const organ = {
@@ -85,5 +76,31 @@ describe('AppComponent', () => {
     } as OrganInfo;
     instance.changeOrgans([organ]);
     expect(instance.selectedOrgans).toEqual([organ]);
+  });
+
+  it('should call reset when refresh button is clicked', async () => {
+    const { find, instance } = await shallow.render();
+    const spy = spyOn(instance, 'reset');
+    const resetButton = find('.refresh');
+    resetButton.triggerEventHandler('click', {});
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should display the current sex', async () => {
+    const { find } = await shallow.render();
+    const label = find('.filter-text .sex').nativeElement as HTMLElement;
+    expect(label.textContent).toBe('Sex: Both');
+  });
+
+  it('should display the current age range', async () => {
+    const { find } = await shallow.render();
+    const label = find('.filter-text .age').nativeElement as HTMLElement;
+    expect(label.textContent).toBe('Age: 5-99');
+  });
+
+  it('should display the current BMI range', async () => {
+    const { find } = await shallow.render();
+    const label = find('.filter-text .bmi').nativeElement as HTMLElement;
+    expect(label.textContent).toBe('BMI: 30-80');
   });
 });

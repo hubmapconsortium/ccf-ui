@@ -14,6 +14,12 @@ export * from './lib/components/text-search/text-search.component';
 export * from './lib/components/organ-selector/organ-selector.module';
 export * from './lib/components/organ-selector/organ-selector.component';
 
+export * from './lib/components/info/info-dialog/info-dialog.module';
+export * from './lib/components/info/info-dialog/info-dialog.component';
+
+export * from './lib/components/info/info-button/info-button.module';
+export * from './lib/components/info/info-button/info-button.component';
+
 export * from './lib/directives/numbers-only/numbers-only.module';
 export * from './lib/directives/numbers-only/numbers-only.directive';
 
