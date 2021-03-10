@@ -2,6 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AggregateResult, ListResult } from 'ccf-database';
 import { DonorCard } from '../../../core/models/donor';
 
+interface ColorSwatch {
+  color: string;
+  available: boolean;
+}
+
+type ColorPalette = ColorSwatch[];
 
 /**
  * ResultsBrowser is the container component in charge of rendering the label and stats of
@@ -53,12 +59,22 @@ export class ResultsBrowserComponent implements OnInit {
   selectedResult: ListResult;
 
 
+
+  donorColorPalette: ColorPalette = [
+    { available: true, color: 'blue' },
+    { available: true, color: 'pink' },
+    { available: true, color: 'orange' },
+    { available: true, color: 'green' },
+  ];
+
+
+
   /**
    * Placeholder data for donor card component
    * */
   sampleDonor: DonorCard = {
     selected: false,
-    color: '',
+    color: 'pink',
     donor: {
       link: 'www.google.com',
       label: 'Female, Age 38, BMI 14.7',
@@ -160,8 +176,52 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for (let i = 0; i <= 25; i++) {
-      this.donorData.push(this.sampleDonor);
+    let tempDonorA: DonorCard;
+    let tempDonorB: DonorCard;
+    let donor;
+    for (let i = 0; i <= 15; i++) {
+      donor = {
+        label: `(ID: ${i})Female, Age 38, BMI 14.7`,
+        description: 'Entered 1/21/2021, Hom Sim, VU',
+        link: 'www.google.com'
+      }
+      tempDonorA = {...this.sampleDonor, donor};
+      tempDonorB = {...tempDonorA};
+      this.donorData.push(tempDonorA);
+      this.donorData.push(tempDonorB);
+    }
+  }
+
+  getAvailableColor(): string {
+    let availableColors = this.donorColorPalette.filter(color => color.available);
+    if (!availableColors.length) {
+      // ?
+      return '';
+    }
+
+    const color = availableColors[0].color;
+    return color;
+  }
+
+  setColorAvailability(color: string, available: boolean): void {
+    if (!this.donorColorPalette.find(tColor => tColor.color === color)) {
+      return;
+    }
+
+    this.donorColorPalette.find(tColor => tColor.color === color)!.available = available;
+  }
+
+
+  handleDonorCardSelection($event: boolean, donor: DonorCard): void {
+    const selected = $event;
+    console.log('event: ', $event, '\ndonor: ', donor);
+    // @TODO:  ask how to match to determine when to use same colors.
+    if (selected) {
+      const newColor = this.getAvailableColor();
+      this.donorData.find(oldDonor => oldDonor.donor === donor.donor)!.color = this.getAvailableColor();
+      this.setColorAvailability(newColor, false);
+    } else {
+      this.setColorAvailability(donor.color, true);
     }
   }
 

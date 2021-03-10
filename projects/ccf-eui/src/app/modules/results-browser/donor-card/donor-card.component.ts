@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+
 import { DonorCard } from '../../../core/models/donor';
 
 
@@ -14,9 +15,16 @@ export class DonorCardComponent {
   @Input() donor: DonorCard;
   @Output() checked = new EventEmitter<boolean>();
 
-  handleCheckbox(event): void {
-    const { checked } = event;
-    this.donor.selected = checked;
-    this.checked.emit(checked);
+  handleCheckbox(): void {
+    this.donor.selected = !this.donor.selected;
+    this.checked.emit(this.donor.selected);
+  }
+
+  applyStyles(): unknown {
+    if (!this.donor.selected) {
+      return { 'background-color: ': 'white' };
+    }
+
+    return { 'background-color': this.donor.color };
   }
 }
