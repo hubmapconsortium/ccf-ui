@@ -5,12 +5,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { InfoButtonModule } from 'ccf-shared';
 import { HeaderComponent } from './header.component';
 
 
 @NgModule({
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatToolbarModule, MatTooltipModule, InfoButtonModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatToolbarModule, MatTooltipModule],
   declarations: [HeaderComponent],
   exports: [HeaderComponent]
 })
