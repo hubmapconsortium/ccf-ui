@@ -7,11 +7,16 @@
   overflow-y: auto;
   scrollbar-width: thin;
 
+  .icon {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+  }
+
   .reset {
     transform: scaleX(-1);
     cursor: pointer;
     transition: .6s;
-
+    
     &:hover {
       border-radius: 2px;
     }

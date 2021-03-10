@@ -32,8 +32,19 @@
     }
 
     .visibility {
+
+      &:active {
+        background-color: #f5f5f5;
+      }
       &.invisible {
         color: mat-color($foreground, icons-disabled);
+      }
+    }
+
+    .reset {
+
+      &:active {
+        background-color: #f5f5f5;
       }
     }
   }
