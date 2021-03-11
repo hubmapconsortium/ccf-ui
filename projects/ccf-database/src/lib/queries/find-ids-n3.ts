@@ -6,6 +6,32 @@ import { Filter } from '../interfaces';
 import { entity } from '../util/prefixes';
 
 
+function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen: Set<string>) => Set<string>): Set<string> {
+  const donor2entity = new Map<string, string[]>();
+  const donors = new Set<string>();
+  store.some((quad) => {
+    if (seen.has(quad.subject.id)) {
+      donors.add(quad.object.id);
+      if (!donor2entity.has(quad.object.id)) {
+        donor2entity.set(quad.object.id, [quad.subject.id]);
+      } else {
+        donor2entity.get(quad.object.id)?.push(quad.subject.id);
+      }
+    }
+    return false;
+  }, null, entity.donor, null, null);
+
+  const newDonors = callback(donors);
+
+  const newSeen = new Set<string>();
+  for (const d of newDonors) {
+    for (const s of donor2entity.get(d) || []) {
+      newSeen.add(s);
+    }
+  }
+  return newSeen;
+}
+
 /**
  * Finds all ids of object matching a filter.
  *
@@ -17,16 +43,20 @@ export function findIds(store: Store, filter: Filter): Set<string> {
   let seen = getAllEntities(store);
   if (seen.size > 0) {
     seen = filterByHasSpatialEntity(store, seen);
-    return seen;
   }
   if (seen.size > 0 && (filter.sex === 'Male' || filter.sex === 'Female')) {
-    seen = filterBySex(store, seen, filter.sex);
+    const sex = filter.sex;
+    seen = filterWithDonor(store, seen, (donors) =>
+      filterBySex(store, donors, sex)
+    );
   }
   if (seen.size > 0 && filter.tmc?.length > 0) {
-    seen = filterByGroupName(store, seen, filter.tmc);
+    seen = filterWithDonor(store, seen, (donors) =>
+      filterByGroupName(store, donors, filter.tmc)
+    );
   }
   if (seen.size > 0 && filter.ontologyTerms?.length > 0) {
-    seen = filterByOntologyTerms(store, seen, filter.ontologyTerms);
+    // seen = filterByOntologyTerms(store, seen, filter.ontologyTerms);
   }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
     isFinite(filter.ageRange[0]) && isFinite(filter.ageRange[1])) {
@@ -35,7 +65,9 @@ export function findIds(store: Store, filter: Filter): Set<string> {
 
     // Age filter given by their default range will be ignored
     if (!(minAge === 1 && maxAge === 110)) {
-      seen = filterByAge(store, seen, minAge, maxAge);
+      seen = filterWithDonor(store, seen, (donors) =>
+        filterByAge(store, donors, minAge, maxAge)
+      );
     }
   }
   if (seen.size > 0 && filter.bmiRange?.length === 2 &&
@@ -45,7 +77,9 @@ export function findIds(store: Store, filter: Filter): Set<string> {
 
     // BMI filter given by their default range will be ignored
     if (!(minBMI === 13 && maxBMI === 83)) {
-      seen = filterByBMI(store, seen, minBMI, maxBMI);
+      seen = filterWithDonor(store, seen, (donors) =>
+        filterByBMI(store, donors, minBMI, maxBMI)
+      );
     }
   }
   return seen;
