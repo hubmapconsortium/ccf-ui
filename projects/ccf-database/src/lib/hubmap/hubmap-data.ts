@@ -101,8 +101,7 @@ const ENTITY_CONTEXT = {
     '@type': '@id'
   },
   thumbnail: {
-    '@id': 'has_thumbnail',
-    '@type': '@id'
+    '@id': 'has_thumbnail'
   }
 };
 
@@ -129,27 +128,33 @@ const ENTITY_CONTEXT = {
       samples.push((donor.samples as JsonLdObj[])[0]);
     }
   }
-
   const donors = Object.values(donorLookup);
-  let deleted = 0;
-  for (const donor of donors.filter(d => (d.samples as []).length > 1)) {
-    const samples = donor.samples as JsonLdObj[];
-    for (let i=0; i < samples.length; i++) {
-      const blockId = samples[i]['@id'] as string;
-      for (let j=i+1; j < samples.length; j++) {
-        const sections = samples[j].sections as JsonLdObj[];
-        if (sections.find(s => s['@id'] === blockId)) {
-          samples[i].deleteMe = true;
-          deleted += 1;
+
+  if (debug) {
+    let datasets: JsonLdObj[] = [];
+    let deleted = 0;
+    for (const donor of donors.filter(d => (d.samples as []).length > 1)) {
+      const samples = donor.samples as JsonLdObj[];
+      for (let i=0; i < samples.length; i++) {
+        const blockId = samples[i]['@id'] as string;
+        datasets = datasets.concat(samples[i].datasets as JsonLdObj[]);
+        for (const section of samples[i].sections as JsonLdObj[]) {
+          datasets = datasets.concat(section.datasets as JsonLdObj[]);
+        }
+        for (let j=i+1; j < samples.length; j++) {
+          const sections = samples[j].sections as JsonLdObj[];
+          if (sections.find(s => s['@id'] === blockId)) {
+            samples[i].deleteMe = true;
+            deleted++;
+          }
         }
       }
+      donor.samples = samples.filter(s => s.deleteMe !== true);
     }
-    donor.samples = samples.filter(s => s.deleteMe !== true);
-  }
-  if (deleted > 0) {
-    console.log(`⚠ ${deleted} sections identified as blocks`);
-  }
-  if (debug) {
+    if (deleted > 0) {
+      console.log(`⚠ ${deleted} sections identified as blocks`);
+    }
+
     console.log(donors.map(d => ({ '@context': ENTITY_CONTEXT, ...d })));
   }
 
@@ -161,7 +166,7 @@ export class HuBMAPTissueBlock {
   donor: JsonLdObj;
 
   '@id': string;
-  '@type' = 'TissueSection';
+  '@type' = 'Sample';
   label: string;
   description: string;
   link: string;
@@ -215,7 +220,7 @@ export class HuBMAPTissueBlock {
     }
     for (const descendant of descendants) {
       if (descendant.entity_type === 'Dataset') {
-        const dataset = this.getDataset(descendant, data, portalUrl);
+        const dataset = this.getDataset(descendant, assetsApi, portalUrl, serviceToken);
 
         const sectionId = get(descendant, ['metadata', 'metadata', 'tissue_id']) as string;
         if (sectionLookup[sectionId]) {
@@ -264,22 +269,75 @@ export class HuBMAPTissueBlock {
     };
   }
 
-  getDataset(dataset: JsonDict, data: JsonDict, portalUrl: string): JsonLdObj {
+  getDataset(dataset: JsonDict, assetsApi = '', portalUrl = '', serviceToken?: string): JsonLdObj {
     const date_entered = new Date(dataset.last_modified_timestamp as number).toLocaleDateString();
     const group_name = GROUP_UUID_MAPPING[dataset.group_uuid as string] || dataset.group_name as string;
     const creator = dataset.created_by_user_displayname;
+
+    const types = [
+      ...dataset.data_types as string[],
+      get(dataset, ['metadata', 'metadata', 'assay_type'], '')
+    ];
+    const typesSearch = types.join('|').toLowerCase();
+
+    let technology: string;
+    let thumbnail: string;
+    if (typesSearch.indexOf('10x') !== -1) {
+      technology = '10x';
+      thumbnail = 'assets/icons/ico-bulk-10x.svg';
+    } else if (typesSearch.indexOf('af') !== -1) {
+      technology = 'AF';
+      thumbnail = 'assets/icons/ico-spatial-af.svg';
+    } else if (typesSearch.indexOf('codex') !== -1) {
+      technology = 'CODEX';
+      thumbnail = 'assets/icons/ico-spatial-codex.svg';
+    } else if (typesSearch.indexOf('imc') !== -1) {
+      technology = 'IMC';
+      thumbnail = 'assets/icons/ico-spatial-imc.svg';
+    } else if ((typesSearch.indexOf('lc') !== -1) && (typesSearch.indexOf('af') === -1)) {
+      technology = 'LC';
+      thumbnail = 'assets/icons/ico-bulk-lc.svg';
+    } else if (typesSearch.indexOf('maldi') !== -1) {
+      technology = 'MALDI';
+      thumbnail = 'assets/icons/ico-unknown.svg';
+    } else if (typesSearch.indexOf('pas') !== -1) {
+      technology = 'PAS';
+      thumbnail = 'assets/icons/ico-unknown.svg';
+    } else {
+      technology = 'OTHER';
+      thumbnail = 'assets/icons/ico-unknown.svg';
+    }
+    thumbnail = this.getDatasetThumbnail(dataset, assetsApi, serviceToken) || thumbnail;
 
     return {
       '@id': HBM_PREFIX + dataset.uuid,
       '@type': 'Dataset',
       label: `Registered ${date_entered}, ${creator}, ${group_name}`,
-      description: ``,
+      description: `Data/Assay Types: ${types.join(', ')}`,
       link: `${portalUrl}browse/dataset/${dataset.uuid}`,
-
-      technology: ``,
-      thumbnail: ``,
-      // dataset: dataset as unknown as string
+      technology,
+      thumbnail
     };
+  }
+
+  getDatasetThumbnail(dataset: JsonDict, assetsApi: string, serviceToken?: string): string | undefined {
+    const tiffs = (get(dataset, 'metadata.files', []) as { rel_path: string }[])
+      .filter(f => /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
+      .filter(f => !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path)) // FIXME: Temporarily ignore IMS and MxIF data
+      // FIXME: Temporarily only use VU tifs that we have thumbnails for
+      .filter(f => dataset.group_uuid === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a' ? DR1_VU_THUMBS.has(
+          f.rel_path.split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg')
+        ) : false
+      )
+      .map(f => `${assetsApi}/${dataset.uuid}/${f.rel_path}` + (serviceToken ? `?token=${serviceToken}` : ''));
+
+    if (tiffs.length > 0 && dataset.group_uuid === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a') {
+      const thumb = tiffs[0].split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg');
+      if (DR1_VU_THUMBS.has(thumb)) {
+        return `assets/thumbnails/DR1-VU/${thumb}`;
+      }
+    }
+    return undefined;
   }
 
   getDonor(donor: JsonDict, portalUrl: string): JsonLdObj {
@@ -381,11 +439,6 @@ export class HuBMAPTissueBlock {
   }
 
   toJsonLd(): JsonLdObj {
-    return {
-      ...this.donor,
-      samples: [this.getTissueBlock()],
-
-      // data: this.data as unknown as string
-    };
+    return { ...this.donor, samples: [this.getTissueBlock()] };
   }
 }

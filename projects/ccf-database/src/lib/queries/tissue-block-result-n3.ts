@@ -14,7 +14,8 @@ const listResultSet: { [iri: string]: string | string[] } = {
 };
 
 const donorResultSet: { [iri: string]: string | string[] } = {
-  ...listResultSet
+  ...listResultSet,
+  [entity.providerName.id]: 'providerName'
 };
 
 const datasetResultSet: { [iri: string]: string | string[] } = {
@@ -135,20 +136,26 @@ export function getTissueBlockResult(store: Store, iri: string): TissueBlockResu
 
 export function getListResult(store: Store, iri: string): ListResult {
   const block = getTissueBlockResult(store, iri);
+  const datasets = [block.datasets]
+    .concat(block.sections.map(s => s.datasets))
+    .reduce((acc, d) => acc.concat(d), []);
+  const goodDataset = datasets.find(d => d.thumbnail.indexOf('thumbnails') !== -1) ||
+    datasets.filter(d => d.thumbnail !== 'assets/icons/ico-unknown.svg').find(d => d.thumbnail);
+
   return {
     '@id': block['@id'],
     '@type': 'ListResult',
     id: block['@id'],
-    label: block.label,
+    label: block.donor.label,
     shortInfo: [
-      block.description,
-      block.sections.length > 0 ? block.sections[0].label : 'no sections',
-      block.datasets.length > 0 ? block.datasets[0].label : 'no block datasets',
+      block.label,
+      block.donor.providerName,
+      `${block.sections.length} sections, ${datasets.length} datasets`
     ],
-    // thumbnailUrl: block.datasets[0].thumbnail,
-    downloadUrl: `${block.link}.json`,
-    downloadTooltip: 'Download JSON',
-    resultUrl: block.link,
+    thumbnailUrl: goodDataset ? goodDataset.thumbnail : 'assets/icons/ico-unknown.svg',
+    downloadUrl: `${block.link}`,
+    downloadTooltip: 'View Tissue Block',
+    resultUrl: goodDataset ? goodDataset.link : block.link,
     resultType: 'external_link'
   };
 }

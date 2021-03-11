@@ -15,6 +15,7 @@ export interface ListResultItem {
 
 export interface DonorResult extends ListResultItem {
   '@type': 'Donor';
+  providerName: string;
 }
 
 export interface DatasetResult extends ListResultItem {
