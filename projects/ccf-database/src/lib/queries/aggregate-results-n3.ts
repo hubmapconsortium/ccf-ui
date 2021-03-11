@@ -15,31 +15,41 @@ import { entity } from '../util/prefixes';
 export function getAggregateResults(ids: Set<string>, store: Store): AggregateResult[] {
   const donors = new Set<string>();
   store.some((quad) => {
-    if (ids.has(quad.subject.id)) { donors.add(quad.object.id); }
+    if (ids.has(quad.subject.id)) {
+      donors.add(quad.object.id);
+    }
     return false;
   }, null, entity.donor, null, null);
 
   const centers = new Set<string>();
   store.some((quad) => {
-    if (donors.has(quad.subject.id)) { centers.add(quad.object.id); }
+    if (donors.has(quad.subject.id)) {
+      centers.add(quad.object.id);
+    }
     return false;
   }, null, entity.providerUUID, null, null);
 
   const tissueBlocks = new Set<string>();
   store.forSubjects((subject) => {
-    if (ids.has(subject.id)) { tissueBlocks.add(subject.id); }
+    if (ids.has(subject.id)) {
+      tissueBlocks.add(subject.id);
+    }
   }, entity.spatialEntity, null, null);
 
   const tissueSections = new Set<string>();
   store.some((quad) => {
-    if (tissueBlocks.has(quad.subject.id)) { tissueSections.add(quad.object.id); }
+    if (tissueBlocks.has(quad.subject.id)) {
+      tissueSections.add(quad.object.id);
+    }
     return false;
   }, null, entity.sections, null, null);
 
   const tissueDatasets = new Set<string>();
   store.some((quad) => {
     const subject = quad.subject;
-    if (tissueBlocks.has(subject.id) || tissueSections.has(subject.id)) { tissueDatasets.add(quad.object.id); }
+    if (tissueBlocks.has(subject.id) || tissueSections.has(subject.id)) {
+      tissueDatasets.add(quad.object.id);
+    }
     return false;
   }, null, entity.datasets, null, null);
 

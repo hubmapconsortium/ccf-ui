@@ -191,11 +191,11 @@ export class HuBMAPTissueBlock {
 
     const donor = ancestors.find(e => e.entity_type === 'Donor') as JsonDict;
     this.donor = this.getDonor(donor, portalUrl);
-    const rui_location = this.getRuiLocation(data, donor);
-    if (!rui_location) {
+    const ruiLocation = this.getRuiLocation(data, donor);
+    if (!ruiLocation) {
       this.bad = true;
     } else {
-      this.rui_location = rui_location;
+      this.rui_location = ruiLocation;
     }
 
     const dateEntered = new Date(data.last_modified_timestamp as number).toLocaleDateString();
@@ -233,7 +233,7 @@ export class HuBMAPTissueBlock {
       }
     }
 
-    const loc = rui_location || {} as JsonDict;
+    const loc = ruiLocation || {} as JsonDict;
     const dims = `${loc.x_dimension} x ${loc.y_dimension} x ${loc.z_dimension} ${loc.dimension_units}`;
     this.section_count = loc.slice_count as number || sections.length;
     const sSize = parseFloat(
