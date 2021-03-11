@@ -58,6 +58,41 @@ function filterWithSpatialEntity(store: Store, seen: Set<string>, callback: (ent
   return newSeen;
 }
 
+function filterWithDataset(store: Store, seen: Set<string>, callback: (datasetsSeen: Set<string>) => Set<string>): Set<string> {
+  const dataset2entity = new Map<string, string[]>();
+  const datasets = new Set<string>();
+
+  const sectionSeen = new Set<string>();
+  store.some((quad) => {
+    if (seen.has(quad.subject.id)) {
+      sectionSeen.add(quad.object.id);
+    }
+    return false;
+  }, null, entity.sections, null, null);
+
+  store.some((quad) => {
+    if (seen.has(quad.subject.id) || sectionSeen.has(quad.subject.id)) {
+      datasets.add(quad.object.id);
+      if (!dataset2entity.has(quad.object.id)) {
+        dataset2entity.set(quad.object.id, [quad.subject.id]);
+      } else {
+        dataset2entity.get(quad.object.id)?.push(quad.subject.id);
+      }
+    }
+    return false;
+  }, null, entity.datasets, null, null);
+
+  const newDatasets = callback(datasets);
+
+  const newSeen = new Set<string>();
+  for (const e of newDatasets) {
+    for (const s of dataset2entity.get(e) || []) {
+      newSeen.add(s);
+    }
+  }
+  return newSeen;
+}
+
 /**
  * Finds all ids of object matching a filter.
  *
@@ -79,6 +114,11 @@ export function findIds(store: Store, filter: Filter): Set<string> {
   if (seen.size > 0 && filter.tmc?.length > 0) {
     seen = filterWithDonor(store, seen, (donors) =>
       filterByGroupName(store, donors, filter.tmc)
+    );
+  }
+  if (seen.size > 0 && filter.technologies?.length > 0) {
+    seen = filterWithDataset(store, seen, (datasets) =>
+      filterByTechnology(store, datasets, filter.technologies)
     );
   }
   if (seen.size > 0 && filter.ontologyTerms?.length > 0) {
@@ -163,6 +203,23 @@ function filterByGroupName(store: Store, seen: Set<string>, groupNames: string[]
   for (const groupName of groupNames) {
     const literal = DataFactory.literal(groupName);
     store.forSubjects(differenceCallback(seen, newSeen), entity.providerName, literal, null);
+  }
+  return newSeen;
+}
+
+/**
+ * Filters ids by technology names.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param technologies Technology names to filter on.
+ * @returns The subset of ids with the specified technology names.
+ */
+ function filterByTechnology(store: Store, seen: Set<string>, technologies: string[]): Set<string> {
+  const newSeen = new Set<string>();
+  for (const technology of technologies) {
+    const literal = DataFactory.literal(technology);
+    store.forSubjects(differenceCallback(seen, newSeen), entity.technology, literal, null);
   }
   return newSeen;
 }

@@ -42,7 +42,7 @@ import { hubmapResponseAsJsonLd } from './hubmap-data';
     }).then(r => r.ok ? r.json() : undefined).catch(() => { }) as Record<string, unknown>;
   }
   if (hubmapData) {
-    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken, true), store);
+    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken), store);
   } else {
     console.warn(`Unable to load ${dataUrl} as HuBMAP Data`);
   }
