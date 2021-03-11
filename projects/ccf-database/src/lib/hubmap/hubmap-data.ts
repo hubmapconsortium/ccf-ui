@@ -2,9 +2,8 @@
 import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
 import { get, omit, toNumber } from 'lodash';
 
-import { ccf, rui } from '../util/prefixes';
-import { fixUflRuiLocation } from './hubmap-ufl-patch';
-import { convertOldRuiToJsonLd, OldRuiData } from './old-rui-utils';
+import { rui } from '../util/prefixes';
+
 
 type JsonDict = Record<string, unknown>;
 const HBM_PREFIX = 'https://entity.api.hubmapconsortium.org/entities/';
@@ -404,28 +403,15 @@ export class HuBMAPTissueBlock {
     const organ = ontologyTerms[ontologyTerms.length - 1];
 
     let spatialEntity: JsonLdObj | undefined;
-    let ruiLocation = data.rui_location as OldRuiData;
+    let ruiLocation = data.rui_location as JsonDict;
     if (ruiLocation) {
       // RUI Location may come in as an unparsed string
       if (typeof ruiLocation === 'string') {
-        ruiLocation = JSON.parse(ruiLocation as string) as OldRuiData;
+        ruiLocation = JSON.parse(ruiLocation as string) as JsonDict;
       }
-      // Detect RUI 0.5 generated JSON
-      if (ruiLocation.alignment_id) {
-        console.log('DONKEY BALLS', ruiLocation);
-        if (donor.group_uuid === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // UFL
-          ruiLocation = fixUflRuiLocation(ruiLocation, data);
-        }
-        let refOrganId: string | undefined;
-        if (organ === RUI_ORGANS.left_kidney) {
-          refOrganId = ccf.x('VHLeftKidney').id;
-        } else if (organ === RUI_ORGANS.right_kidney) {
-          refOrganId = ccf.x('VHRightKidney').id;
-        }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        spatialEntity = convertOldRuiToJsonLd(ruiLocation, 'SpatialEntity for ' + this.label, refOrganId) as any;
-        // Detect RUI 1.0+ generated JSON-LD
-      } else if ((ruiLocation as unknown as { '@id': string })['@id']) {
+      if (ruiLocation.alignment_id) { // Detect RUI 0.5 generated JSON
+        console.log('Detected a deprecated rui_location', data.uuid);
+      } else if ((ruiLocation as unknown as { '@id': string })['@id']) { // Detect RUI 1.0+ generated JSON-LD
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         spatialEntity = ruiLocation as unknown as JsonLdObj;
       }
