@@ -26,5 +26,14 @@
     .mat-pseudo-checkbox-checked {
       background: mat-color($foreground, active-icon);
     }
+
+    .add-button{
+      background-color: transparent;
+      
+      &:hover {
+        background-color: mat-color($foreground, icons-hover);
+      }
+      
+    }
   }
 }
