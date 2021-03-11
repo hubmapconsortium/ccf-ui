@@ -400,7 +400,6 @@ export class HuBMAPTissueBlock {
     const ancestors = (data.ancestors || []) as JsonDict[];
     const organSample = ancestors.find(e => e.entity_type === 'Sample' && e.specimen_type === 'organ') as JsonDict;
     const ontologyTerms = HBM_ORGANS[organSample?.organ as string] || [RUI_ORGANS.body];
-    const organ = ontologyTerms[ontologyTerms.length - 1];
 
     let spatialEntity: JsonLdObj | undefined;
     let ruiLocation = data.rui_location as JsonDict;
