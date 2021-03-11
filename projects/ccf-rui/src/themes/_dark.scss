@@ -15,7 +15,7 @@ $primary-colors: utility.add-colors($mat-gray, (
 ));
 
 $primary: mat-palette($primary-colors, $text: 50);
-$accent: mat-palette($mat-blue, 600);
+$accent: mat-palette($mat-blue, #3781d1);
 $warn: mat-palette($mat-red);
 
 $foreground: map-merge($mat-dark-theme-foreground, (
