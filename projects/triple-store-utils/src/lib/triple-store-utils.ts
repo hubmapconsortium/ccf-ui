@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import { toRDF } from 'jsonld';
 import { JsonLd, Url } from 'jsonld/jsonld-spec';
-import { DataFactory, Parser, Store as N3Store } from 'n3';
+import { DataFactory, Parser } from 'n3';
 import * as RDF from 'rdf-js';
 import { RdfXmlParser } from 'rdfxml-streaming-parser';
 import { Readable } from 'readable-stream';

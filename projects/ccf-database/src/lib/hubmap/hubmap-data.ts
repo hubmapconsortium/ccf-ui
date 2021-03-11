@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { JsonLd, JsonLdArray, JsonLdObj } from 'jsonld/jsonld-spec';
+import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
 import { get, omit, toNumber } from 'lodash';
 
 import { ccf, rui } from '../util/prefixes';
@@ -198,17 +198,19 @@ export class HuBMAPTissueBlock {
       this.rui_location = rui_location;
     }
 
-    const date_entered = new Date(data.last_modified_timestamp as number).toLocaleDateString();
-    const group_name = GROUP_UUID_MAPPING[data.group_uuid as string] || data.group_name as string;
+    const dateEntered = new Date(data.last_modified_timestamp as number).toLocaleDateString();
+    const groupName = GROUP_UUID_MAPPING[data.group_uuid as string] || data.group_name as string;
     const creator = data.created_by_user_displayname;
 
     this['@id'] = HBM_PREFIX + data.uuid;
-    this.label = `Registered ${date_entered}, ${creator}, ${group_name}`;
+    this.label = `Registered ${dateEntered}, ${creator}, ${groupName}`;
     this.link = `${portalUrl}browse/sample/${data.uuid}`;
 
     const sectionLookup: Record<string, JsonLdObj> = {};
-    const sections: JsonLdObj[] = this.sections = [];
-    const datasets: JsonLdObj[] = this.datasets = [];
+    const sections: JsonLdObj[] = [];
+    this.sections = sections;
+    const datasets: JsonLdObj[] = [];
+    this.datasets = datasets;
 
     for (const descendant of descendants.filter(d => d.entity_type === 'Sample')) {
       const section = this.getSection(descendant, data, portalUrl);
@@ -234,30 +236,32 @@ export class HuBMAPTissueBlock {
     const loc = rui_location || {} as JsonDict;
     const dims = `${loc.x_dimension} x ${loc.y_dimension} x ${loc.z_dimension} ${loc.dimension_units}`;
     this.section_count = loc.slice_count as number || sections.length;
-    const s_size = this.section_size = parseFloat(
+    const sSize = parseFloat(
       (loc.slice_thickness as number ||
         ((loc.z_dimension as number || 0) / Math.max(this.section_count, 1)))
       .toFixed(1)
     );
-    const s_units = this.section_units = loc.dimension_units as string || 'millimeter';
+    this.section_size = sSize;
+    const sUnits = loc.dimension_units as string || 'millimeter';
+    this.section_units = sUnits;
 
-    this.description = `${dims}, ${s_size} ${s_units}, ${data.specimen_type}, ${this.section_count} Sections`;
+    this.description = `${dims}, ${sSize} ${sUnits}, ${data.specimen_type}, ${this.section_count} Sections`;
 
     sections.forEach((section, index) => {
-      section.description = `${loc.x_dimension} x ${loc.y_dimension} x ${s_size} ${s_units}, ${s_size} ${s_units}, ${section.description}`;
+      section.description = `${loc.x_dimension} x ${loc.y_dimension} x ${sSize} ${sUnits}, ${sSize} ${sUnits}, ${section.description}`;
       section.section_number = index + 1;
     });
   }
 
   getSection(section: JsonDict, data: JsonDict, portalUrl: string): JsonLdObj {
-    const date_entered = new Date(section.last_modified_timestamp as number).toLocaleDateString();
-    const group_name = GROUP_UUID_MAPPING[section.group_uuid as string] || section.group_name as string;
+    const dateEntered = new Date(section.last_modified_timestamp as number).toLocaleDateString();
+    const groupName = GROUP_UUID_MAPPING[section.group_uuid as string] || section.group_name as string;
     const creator = section.created_by_user_displayname;
 
     return {
       '@id': HBM_PREFIX + section.uuid,
       '@type': 'Sample',
-      label: `Registered ${date_entered}, ${creator}, ${group_name}`,
+      label: `Registered ${dateEntered}, ${creator}, ${groupName}`,
       description: `${data.specimen_type}`,
       link: `${portalUrl}browse/sample/${section.uuid}`,
 
@@ -270,8 +274,8 @@ export class HuBMAPTissueBlock {
   }
 
   getDataset(dataset: JsonDict, assetsApi = '', portalUrl = '', serviceToken?: string): JsonLdObj {
-    const date_entered = new Date(dataset.last_modified_timestamp as number).toLocaleDateString();
-    const group_name = GROUP_UUID_MAPPING[dataset.group_uuid as string] || dataset.group_name as string;
+    const dateEntered = new Date(dataset.last_modified_timestamp as number).toLocaleDateString();
+    const groupName = GROUP_UUID_MAPPING[dataset.group_uuid as string] || dataset.group_name as string;
     const creator = dataset.created_by_user_displayname;
 
     const types = [
@@ -281,7 +285,7 @@ export class HuBMAPTissueBlock {
     const typesSearch = types.join('|').toLowerCase();
 
     let technology: string;
-    let thumbnail: string;
+    let thumbnail = 'assets/icons/ico-unknown.svg';
     if (typesSearch.indexOf('10x') !== -1) {
       technology = '10x';
       thumbnail = 'assets/icons/ico-bulk-10x.svg';
@@ -299,20 +303,17 @@ export class HuBMAPTissueBlock {
       thumbnail = 'assets/icons/ico-bulk-lc.svg';
     } else if (typesSearch.indexOf('maldi') !== -1) {
       technology = 'MALDI';
-      thumbnail = 'assets/icons/ico-unknown.svg';
     } else if (typesSearch.indexOf('pas') !== -1) {
       technology = 'PAS';
-      thumbnail = 'assets/icons/ico-unknown.svg';
     } else {
       technology = 'OTHER';
-      thumbnail = 'assets/icons/ico-unknown.svg';
     }
     thumbnail = this.getDatasetThumbnail(dataset, assetsApi, serviceToken) || thumbnail;
 
     return {
       '@id': HBM_PREFIX + dataset.uuid,
       '@type': 'Dataset',
-      label: `Registered ${date_entered}, ${creator}, ${group_name}`,
+      label: `Registered ${dateEntered}, ${creator}, ${groupName}`,
       description: `Data/Assay Types: ${types.join(', ')}`,
       link: `${portalUrl}browse/dataset/${dataset.uuid}`,
       technology,
@@ -323,8 +324,8 @@ export class HuBMAPTissueBlock {
   getDatasetThumbnail(dataset: JsonDict, assetsApi: string, serviceToken?: string): string | undefined {
     const tiffs = (get(dataset, 'metadata.files', []) as { rel_path: string }[])
       .filter(f => /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
-      .filter(f => !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path)) // FIXME: Temporarily ignore IMS and MxIF data
-      // FIXME: Temporarily only use VU tifs that we have thumbnails for
+      .filter(f => !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path))
+      // Temporarily only checking VU tifs that we have thumbnails for
       .filter(f => dataset.group_uuid === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a' ? DR1_VU_THUMBS.has(
           f.rel_path.split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg')
         ) : false
@@ -373,15 +374,15 @@ export class HuBMAPTissueBlock {
       }
     }
 
-    const date_entered = new Date(donor.last_modified_timestamp as number).toLocaleDateString();
-    const group_name = GROUP_UUID_MAPPING[donor.group_uuid as string] || donor.group_name as string;
+    const dateEntered = new Date(donor.last_modified_timestamp as number).toLocaleDateString();
+    const groupName = GROUP_UUID_MAPPING[donor.group_uuid as string] || donor.group_name as string;
     const creator = donor.created_by_user_displayname;
 
     return {
       '@id': HBM_PREFIX + donor.uuid,
       '@type': 'Donor',
       label,
-      description: `Entered ${date_entered}, ${creator}, ${group_name}`,
+      description: `Entered ${dateEntered}, ${creator}, ${groupName}`,
       link: `${portalUrl}browse/donor/${donor.uuid}`,
 
       age,
@@ -389,7 +390,7 @@ export class HuBMAPTissueBlock {
       bmi,
 
       consortium_name: 'HuBMAP',
-      provider_name: group_name,
+      provider_name: groupName,
       provider_uuid: donor.group_uuid as string,
 
       samples: []
@@ -411,6 +412,7 @@ export class HuBMAPTissueBlock {
       }
       // Detect RUI 0.5 generated JSON
       if (ruiLocation.alignment_id) {
+        console.log('DONKEY BALLS', ruiLocation);
         if (donor.group_uuid === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // UFL
           ruiLocation = fixUflRuiLocation(ruiLocation, data);
         }
