@@ -35,24 +35,18 @@
       display: flex;
 
       .reset {
-        margin-left: 1rem;
         margin-right: 1rem;
-        transform: scaleX(-1);
+        padding: 0.25rem;
         cursor: pointer;
         transition: .6s;
-
-        &:hover {
-          border-radius: 2px;
-        }
+        border-radius: 0.25rem;
       }
     
       .visibility {
         transition: .6s;
         cursor: pointer;
-
-        &:hover {
-          border-radius: 2px;
-        }
+        padding: 0.25rem;
+        border-radius: 0.25rem;
     
         &.hidden {
           display: none;

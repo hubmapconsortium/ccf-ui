@@ -70,7 +70,12 @@ $foreground: map-merge($mat-light-theme-foreground, (
   icons-disabled: #CCCCCC,
   icons-hover: #eeeeee,
   organ-off: #cccccc,
-  carousel-text: map-get($primary-colors, 'black')  
+  carousel-text: map-get($primary-colors, 'black'),
+  icon-active: #f5f5f5,
+  donor-sex-toggle-nob: map-get($primary-colors, light-header),
+  donor-sex-bg: #CCCCCC,
+  inactive-sex: #636363,
+  active-sex: #212121
 ));
 
 $background: map-merge($mat-light-theme-background, (
