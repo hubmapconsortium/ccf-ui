@@ -65,18 +65,10 @@ export const entity = {
   sectionNumber: prefixer('entity')('section_number'),
 
   spatialEntity: prefixer('entity')('has_spatial_entity'),
-  // ontologyTerms: prefixer('entity')('has_ontology_term'),
+  ontologyTerms: prefixer('entity')('has_ontology_term'),
 
   technology: prefixer('entity')('technology'),
-  thumbnail: prefixer('entity')('has_thumbnail'),
-
-  // TODO: Delete these when list-result-n3 is removed
-  entityType: prefixer('entity')('entityType'),
-  groupName: prefixer('entity')('groupName'),
-  groupUUID: prefixer('entity')('groupUUID'),
-  ontologyTerms: prefixer('entity')('ontologyTerms'),
-  images: prefixer('entity')('hasImage'),
-  imageProviders: prefixer('entity')('hasImageProvider')
+  thumbnail: prefixer('entity')('has_thumbnail')
 };
 
 /** CCF id helper. */

@@ -7,10 +7,9 @@ import { addHubmapDataToStore } from './hubmap/hubmap-data-import';
 import { AggregateResult, Filter, ListResult, TissueBlockResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
-import { getListResult } from './queries/list-result-n3';
 import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
-import { getTissueBlockResult } from './queries/tissue-block-result-n3';
+import { getListResult, getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { SpatialEntity } from './spatial-types';
 
 

@@ -15,8 +15,9 @@ import { entity } from '../util/prefixes';
  */
 export function findIds(store: Store, filter: Filter): Set<string> {
   let seen = getAllEntities(store);
-  if (seen.size > 0 && (filter.hasSpatialEntity === true || filter.hasSpatialEntity === false)) {
-    seen = filterByHasSpatialEntity(store, seen, filter.hasSpatialEntity);
+  if (seen.size > 0) {
+    seen = filterByHasSpatialEntity(store, seen);
+    return seen;
   }
   if (seen.size > 0 && (filter.sex === 'Male' || filter.sex === 'Female')) {
     seen = filterBySex(store, seen, filter.sex);
@@ -58,7 +59,7 @@ export function findIds(store: Store, filter: Filter): Set<string> {
  */
 function getAllEntities(store: Store): Set<string> {
   const seen = new Set<string>();
-  store.forSubjects((s) => seen.add(s.id), entity.id, null, null);
+  store.forSubjects((s) => seen.add(s.id), entity.spatialEntity, null, null);
   return seen;
 }
 
@@ -99,7 +100,7 @@ function filterByGroupName(store: Store, seen: Set<string>, groupNames: string[]
   const newSeen = new Set<string>();
   for (const groupName of groupNames) {
     const literal = DataFactory.literal(groupName);
-    store.forSubjects(differenceCallback(seen, newSeen), entity.groupName, literal, null);
+    store.forSubjects(differenceCallback(seen, newSeen), entity.providerName, literal, null);
   }
   return newSeen;
 }
@@ -175,7 +176,7 @@ function filterByBMI(store: Store, seen: Set<string>, minBMI: number, maxBMI: nu
  * @param hasSpatialEntity Whether the filtered objects should have a spatial entity.
  * @returns The subset of ids with/without spatial entities.
  */
-function filterByHasSpatialEntity(store: Store, seen: Set<string>, hasSpatialEntity: boolean): Set<string> {
+function filterByHasSpatialEntity(store: Store, seen: Set<string>, hasSpatialEntity = true): Set<string> {
   const newSeen = new Set<string>();
   store.forSubjects(differenceCallback(seen, newSeen), entity.spatialEntity, null, null);
   if (!hasSpatialEntity) {

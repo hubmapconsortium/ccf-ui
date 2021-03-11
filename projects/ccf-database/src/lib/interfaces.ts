@@ -99,8 +99,6 @@ export interface Filter {
   ontologyTerms: string[];
   /** Entities to be highlighted */
   highlightedEntities?: string[];
-  /** Whether it has a spatial entity. */
-  hasSpatialEntity?: boolean;
   /** Include optional debugging information */
   debug?: boolean;
 }

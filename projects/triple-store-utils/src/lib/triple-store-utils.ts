@@ -128,12 +128,8 @@ export async function addN3ToStore(
     data = uri;
   }
   if (data) {
-    if (store instanceof N3Store) {
-      new Parser({format: 'n3'}).parse(data, store.addQuad.bind(store));
-    } else {
-      const quads = new Parser({format: 'n3'}).parse(data);
-      store.import(arrayToStream(quads));
-    }
+    const quads = new Parser({format: 'n3'}).parse(data);
+    store.import(arrayToStream(quads));
   }
   return store;
 }

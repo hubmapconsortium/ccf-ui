@@ -150,7 +150,7 @@ const ENTITY_CONTEXT = {
     console.log(`⚠ ${deleted} sections identified as blocks`);
   }
   if (debug) {
-    console.log(donors);
+    console.log(donors.map(d => ({ '@context': ENTITY_CONTEXT, ...d })));
   }
 
   return { '@context': ENTITY_CONTEXT, '@graph': donors };

@@ -2,7 +2,7 @@ import { set } from 'lodash';
 import { fromRdf } from 'rdf-literal';
 import { DataFactory, Store } from 'triple-store-utils';
 
-import { DatasetResult, DonorResult, TissueBlockResult, TissueSectionResult } from '../interfaces';
+import { DatasetResult, DonorResult, ListResult, TissueBlockResult, TissueSectionResult } from '../interfaces';
 import { entity } from '../util/prefixes';
 
 
@@ -131,4 +131,24 @@ export function getTissueBlockResult(store: Store, iri: string): TissueBlockResu
     return false;
   }, DataFactory.namedNode(iri), null, null, null);
   return result;
+}
+
+export function getListResult(store: Store, iri: string): ListResult {
+  const block = getTissueBlockResult(store, iri);
+  return {
+    '@id': block['@id'],
+    '@type': 'ListResult',
+    id: block['@id'],
+    label: block.label,
+    shortInfo: [
+      block.description,
+      block.sections.length > 0 ? block.sections[0].label : 'no sections',
+      block.datasets.length > 0 ? block.datasets[0].label : 'no block datasets',
+    ],
+    // thumbnailUrl: block.datasets[0].thumbnail,
+    downloadUrl: `${block.link}.json`,
+    downloadTooltip: 'Download JSON',
+    resultUrl: block.link,
+    resultType: 'external_link'
+  };
 }

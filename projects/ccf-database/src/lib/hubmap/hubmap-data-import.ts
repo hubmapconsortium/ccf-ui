@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { addJsonLdToStore, Store } from 'triple-store-utils';
 
-import { oldHubmapResponseAsJsonLd } from './hubmap-data--deprecated';
 import { hubmapResponseAsJsonLd } from './hubmap-data';
+
 
 /**
  * Adds hubmap data from a url to the triple store.
@@ -39,10 +39,7 @@ import { hubmapResponseAsJsonLd } from './hubmap-data';
     }).then(r => r.ok ? r.json() : undefined).catch(() => { }) as Record<string, unknown>;
   }
   if (hubmapData) {
-    // await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken), store);
-
-    // TODO: Remove me when we switch over to the new results display
-    await addJsonLdToStore(oldHubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken), store);
+    await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken, true), store);
   } else {
     console.warn(`Unable to load ${dataUrl} as HuBMAP Data`);
   }
