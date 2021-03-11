@@ -6,6 +6,44 @@ export interface AggregateResult {
   count: string | number;
 }
 
+export interface ListResultItem {
+  '@id': string;
+  label: string;
+  description: string;
+  link: string;
+}
+
+export interface DonorResult extends ListResultItem {
+  '@type': 'Donor';
+  providerName: string;
+}
+
+export interface DatasetResult extends ListResultItem {
+  '@type': 'Dataset';
+  technology: string;
+  thumbnail: string;
+}
+
+export interface TissueSectionResult extends ListResultItem {
+  '@type': 'Sample';
+  sampleType: 'Tissue Section' | 'Non-Standard';
+  sectionNumber: number;
+  datasets: DatasetResult[];
+}
+
+export interface TissueBlockResult extends ListResultItem {
+  '@type': 'Sample';
+  sampleType: 'Tissue Block' | 'Non-Standard';
+  sectionCount: number;
+  sectionSize: number;
+  sectionUnits: string;
+
+  donor: DonorResult;
+  spatialEntityId: string;
+  sections: TissueSectionResult[];
+  datasets: DatasetResult[];
+}
+
 /** Result for list of tissues. */
 export interface ListResult {
   /** Identifier. */
@@ -30,22 +68,6 @@ export interface ListResult {
   resultType?: 'external_link' | 'local_link';
   /** If the result should be highlighted */
   highlighted?: boolean;
-}
-
-/** Data for image viewer display. */
-export interface ImageViewerData {
-  /** Identifier. */
-  '@id': string;
-  /** Type string. */
-  '@type': 'ImageViewerData';
-  /** Identifier. */
-  id: string;
-  /** Image label. */
-  label: string;
-  /** Containing organ name. */
-  organName: string;
-  /** Other metadata. */
-  metadata: { label: string; value: string }[];
 }
 
 /** Item that can be searched for. */
@@ -78,18 +100,6 @@ export interface Filter {
   ontologyTerms: string[];
   /** Entities to be highlighted */
   highlightedEntities?: string[];
-  /** Whether it has a spatial entity. */
-  hasSpatialEntity?: boolean;
   /** Include optional debugging information */
   debug?: boolean;
-}
-
-/** Backend query interface. */
-export interface DataSource {
-  /** Query list items. */
-  getListResults(filter?: Filter): Promise<ListResult[]>;
-  /** Query aggregate items. */
-  getAggregateResults(filter?: Filter): Promise<AggregateResult[]>;
-  /** Query a specific image. */
-  getImageViewerData(iri: string): Promise<ImageViewerData>;
 }

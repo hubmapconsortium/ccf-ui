@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ImageViewerData, ListResult } from 'ccf-database';
+import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult, SpatialSceneNode } from 'ccf-database';
 import { Remote, wrap } from 'comlink';
 import { from, Observable } from 'rxjs';
 
@@ -84,12 +84,24 @@ export class DataSourceService {
   }
 
   /**
-   * Queries data for a specific image.
+   * Queries for scene nodes to display.
    *
-   * @param iri The image identifier ('@id').
-   * @returns An observable emitting the result.
+   * @param [filter] Currently applied filter.
+   * @returns An observable emitting the results.
    */
-  getImageViewerData(iri: string): Observable<ImageViewerData> {
-    return from(this.getDB().then((db) => db.getImageViewerData(iri)));
+   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
+    return from(
+      this.getDB().then((db) => db.getScene(filter))
+      .then((scene) => {
+        // FIXME: Temporary fix until EUI and RUI are harmonized
+        for (const node of scene) {
+          const id = node['@id'];
+          if (id.endsWith('#VHFemaleOrgans') || id.endsWith('#VHMaleOrgans')) {
+            node.color = [255, 0, 0, 255];
+          }
+        }
+        return scene;
+      })
+    );
   }
 }

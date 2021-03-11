@@ -3,14 +3,13 @@ import { addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, Quad, St
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
-import { addHubmapDataToStore } from './hubmap/hubmap-data';
-import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from './interfaces';
+import { addHubmapDataToStore } from './hubmap/hubmap-data-import';
+import { AggregateResult, Filter, ListResult, TissueBlockResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
-import { getImageViewerData } from './queries/image-viewer-data-n3';
-import { getListResult } from './queries/list-result-n3';
 import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
+import { getListResult, getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { SpatialEntity } from './spatial-types';
 
 
@@ -43,7 +42,7 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
 };
 
 /** Database provider. */
-export class CCFDatabase implements DataSource {
+export class CCFDatabase {
   /** The triple store. */
   store: Store;
   /** The spatial graph */
@@ -153,6 +152,20 @@ export class CCFDatabase implements DataSource {
   }
 
   /**
+   * Gets all tissue block results for a filter.
+   *
+   * @param [filter] The filter.
+   * @returns A list of results.
+   */
+   async getTissueBlockResults(filter?: Filter): Promise<TissueBlockResult[]> {
+    filter = {...filter, hasSpatialEntity: true} as Filter;
+    const highlighted = new Set<string>(filter.highlightedEntities);
+    return [...this.getIds(filter)].map((s) => getTissueBlockResult(this.store, s))
+      .map((s) => Object.assign(s, {highlighted: highlighted.has(s['@id'])}))
+      .sort((a, b) => (a.highlighted ? 0 : 1) - (b.highlighted ? 0 : 1));
+  }
+
+  /**
    * Gets all list results for a filter.
    *
    * @param [filter] The filter.
@@ -184,16 +197,6 @@ export class CCFDatabase implements DataSource {
    */
   async getOntologyTermOccurences(filter?: Filter): Promise<Record<string, number>> {
     return getOntologyTermOccurences(this.getIds(filter), this.store);
-  }
-
-  /**
-   * Gets image data for the associated id.
-   *
-   * @param id The identifier.
-   * @returns The image data.
-   */
-  async getImageViewerData(id: string): Promise<ImageViewerData> {
-    return getImageViewerData(id, this.store);
   }
 
   /**

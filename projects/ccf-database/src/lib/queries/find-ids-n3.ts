@@ -3,8 +3,95 @@ import { fromRdf } from 'rdf-literal';
 import { DataFactory, Literal, Store, Term } from 'triple-store-utils';
 
 import { Filter } from '../interfaces';
-import { entity } from '../util/prefixes';
+import { ccf, entity } from '../util/prefixes';
 
+
+function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen: Set<string>) => Set<string>): Set<string> {
+  const donor2entity = new Map<string, string[]>();
+  const donors = new Set<string>();
+  store.some((quad) => {
+    if (seen.has(quad.subject.id)) {
+      donors.add(quad.object.id);
+      if (!donor2entity.has(quad.object.id)) {
+        donor2entity.set(quad.object.id, [quad.subject.id]);
+      } else {
+        donor2entity.get(quad.object.id)?.push(quad.subject.id);
+      }
+    }
+    return false;
+  }, null, entity.donor, null, null);
+
+  const newDonors = callback(donors);
+
+  const newSeen = new Set<string>();
+  for (const d of newDonors) {
+    for (const s of donor2entity.get(d) || []) {
+      newSeen.add(s);
+    }
+  }
+  return newSeen;
+}
+
+function filterWithSpatialEntity(store: Store, seen: Set<string>, callback: (entitiesSeen: Set<string>) => Set<string>): Set<string> {
+  const spatial2entity = new Map<string, string[]>();
+  const entities = new Set<string>();
+  store.some((quad) => {
+    if (seen.has(quad.subject.id)) {
+      entities.add(quad.object.id);
+      if (!spatial2entity.has(quad.object.id)) {
+        spatial2entity.set(quad.object.id, [quad.subject.id]);
+      } else {
+        spatial2entity.get(quad.object.id)?.push(quad.subject.id);
+      }
+    }
+    return false;
+  }, null, entity.spatialEntity, null, null);
+
+  const newSpatialEntities = callback(entities);
+
+  const newSeen = new Set<string>();
+  for (const e of newSpatialEntities) {
+    for (const s of spatial2entity.get(e) || []) {
+      newSeen.add(s);
+    }
+  }
+  return newSeen;
+}
+
+function filterWithDataset(store: Store, seen: Set<string>, callback: (datasetsSeen: Set<string>) => Set<string>): Set<string> {
+  const dataset2entity = new Map<string, string[]>();
+  const datasets = new Set<string>();
+
+  const sectionSeen = new Set<string>();
+  store.some((quad) => {
+    if (seen.has(quad.subject.id)) {
+      sectionSeen.add(quad.object.id);
+    }
+    return false;
+  }, null, entity.sections, null, null);
+
+  store.some((quad) => {
+    if (seen.has(quad.subject.id) || sectionSeen.has(quad.subject.id)) {
+      datasets.add(quad.object.id);
+      if (!dataset2entity.has(quad.object.id)) {
+        dataset2entity.set(quad.object.id, [quad.subject.id]);
+      } else {
+        dataset2entity.get(quad.object.id)?.push(quad.subject.id);
+      }
+    }
+    return false;
+  }, null, entity.datasets, null, null);
+
+  const newDatasets = callback(datasets);
+
+  const newSeen = new Set<string>();
+  for (const e of newDatasets) {
+    for (const s of dataset2entity.get(e) || []) {
+      newSeen.add(s);
+    }
+  }
+  return newSeen;
+}
 
 /**
  * Finds all ids of object matching a filter.
@@ -15,17 +102,29 @@ import { entity } from '../util/prefixes';
  */
 export function findIds(store: Store, filter: Filter): Set<string> {
   let seen = getAllEntities(store);
-  if (seen.size > 0 && (filter.hasSpatialEntity === true || filter.hasSpatialEntity === false)) {
-    seen = filterByHasSpatialEntity(store, seen, filter.hasSpatialEntity);
+  if (seen.size > 0) {
+    seen = filterByHasSpatialEntity(store, seen);
   }
   if (seen.size > 0 && (filter.sex === 'Male' || filter.sex === 'Female')) {
-    seen = filterBySex(store, seen, filter.sex);
+    const sex = filter.sex;
+    seen = filterWithDonor(store, seen, (donors) =>
+      filterBySex(store, donors, sex)
+    );
   }
   if (seen.size > 0 && filter.tmc?.length > 0) {
-    seen = filterByGroupName(store, seen, filter.tmc);
+    seen = filterWithDonor(store, seen, (donors) =>
+      filterByGroupName(store, donors, filter.tmc)
+    );
+  }
+  if (seen.size > 0 && filter.technologies?.length > 0) {
+    seen = filterWithDataset(store, seen, (datasets) =>
+      filterByTechnology(store, datasets, filter.technologies)
+    );
   }
   if (seen.size > 0 && filter.ontologyTerms?.length > 0) {
-    seen = filterByOntologyTerms(store, seen, filter.ontologyTerms);
+    seen = filterWithSpatialEntity(store, seen, (entities) =>
+      filterByOntologyTerms(store, entities, filter.ontologyTerms)
+    );
   }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
     isFinite(filter.ageRange[0]) && isFinite(filter.ageRange[1])) {
@@ -34,7 +133,9 @@ export function findIds(store: Store, filter: Filter): Set<string> {
 
     // Age filter given by their default range will be ignored
     if (!(minAge === 1 && maxAge === 110)) {
-      seen = filterByAge(store, seen, minAge, maxAge);
+      seen = filterWithDonor(store, seen, (donors) =>
+        filterByAge(store, donors, minAge, maxAge)
+      );
     }
   }
   if (seen.size > 0 && filter.bmiRange?.length === 2 &&
@@ -44,7 +145,9 @@ export function findIds(store: Store, filter: Filter): Set<string> {
 
     // BMI filter given by their default range will be ignored
     if (!(minBMI === 13 && maxBMI === 83)) {
-      seen = filterByBMI(store, seen, minBMI, maxBMI);
+      seen = filterWithDonor(store, seen, (donors) =>
+        filterByBMI(store, donors, minBMI, maxBMI)
+      );
     }
   }
   return seen;
@@ -58,7 +161,7 @@ export function findIds(store: Store, filter: Filter): Set<string> {
  */
 function getAllEntities(store: Store): Set<string> {
   const seen = new Set<string>();
-  store.forSubjects((s) => seen.add(s.id), entity.id, null, null);
+  store.forSubjects((s) => seen.add(s.id), entity.spatialEntity, null, null);
   return seen;
 }
 
@@ -99,7 +202,24 @@ function filterByGroupName(store: Store, seen: Set<string>, groupNames: string[]
   const newSeen = new Set<string>();
   for (const groupName of groupNames) {
     const literal = DataFactory.literal(groupName);
-    store.forSubjects(differenceCallback(seen, newSeen), entity.groupName, literal, null);
+    store.forSubjects(differenceCallback(seen, newSeen), entity.providerName, literal, null);
+  }
+  return newSeen;
+}
+
+/**
+ * Filters ids by technology names.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param technologies Technology names to filter on.
+ * @returns The subset of ids with the specified technology names.
+ */
+ function filterByTechnology(store: Store, seen: Set<string>, technologies: string[]): Set<string> {
+  const newSeen = new Set<string>();
+  for (const technology of technologies) {
+    const literal = DataFactory.literal(technology);
+    store.forSubjects(differenceCallback(seen, newSeen), entity.technology, literal, null);
   }
   return newSeen;
 }
@@ -116,7 +236,7 @@ function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[])
   const newSeen = new Set<string>();
   for (const term of terms) {
     const namedNode = DataFactory.namedNode(term);
-    store.forSubjects(differenceCallback(seen, newSeen), entity.ontologyTerms, namedNode, null);
+    store.forSubjects(differenceCallback(seen, newSeen), ccf.spatialEntity.ccf_annotations, namedNode, null);
   }
   return newSeen;
 }
@@ -175,7 +295,7 @@ function filterByBMI(store: Store, seen: Set<string>, minBMI: number, maxBMI: nu
  * @param hasSpatialEntity Whether the filtered objects should have a spatial entity.
  * @returns The subset of ids with/without spatial entities.
  */
-function filterByHasSpatialEntity(store: Store, seen: Set<string>, hasSpatialEntity: boolean): Set<string> {
+function filterByHasSpatialEntity(store: Store, seen: Set<string>, hasSpatialEntity = true): Set<string> {
   const newSeen = new Set<string>();
   store.forSubjects(differenceCallback(seen, newSeen), entity.spatialEntity, null, null);
   if (!hasSpatialEntity) {
