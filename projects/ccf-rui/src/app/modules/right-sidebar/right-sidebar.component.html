@@ -11,13 +11,10 @@
     <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
     </ccf-slices-input>
 
-    <mat-divider></mat-divider>
-
     <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
     </ccf-rotation-slider>
 
     <mat-divider></mat-divider>
-
     <mat-expansion-panel class="tags-container">
       <mat-expansion-panel-header class="header">
         <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>
@@ -42,7 +39,6 @@
         <span class="text added">Added</span>
       </div>
     </mat-expansion-panel>
-
     <mat-divider></mat-divider>
 
     <div class="filler"></div>

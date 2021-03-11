@@ -9,6 +9,12 @@
 
     .toggle-wrapper {
       border-color: mat-color($foreground,  chip-border-primary);
+
+      &.disabled {
+        color: mat-color($foreground, icons-disabled);
+        border-color: mat-color($foreground, icons-disabled);
+      }
+
       .icon {
         color: mat-color($foreground, chip-icon-block-primary);
         &.visible {
@@ -22,6 +28,9 @@
 
       .icon-background {
         background-color: mat-color($foreground, chip-icon-background);
+        &.disabled {
+          opacity: 40%;
+        }
       }
     }
   }

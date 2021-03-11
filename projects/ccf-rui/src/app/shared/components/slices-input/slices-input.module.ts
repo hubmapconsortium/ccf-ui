@@ -4,18 +4,17 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { NumbersOnlyModule } from 'ccf-shared';
-
 import { SlicesInputComponent } from './slices-input.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
   imports: [
     CommonModule,
-
     MatInputModule,
     MatIconModule,
     MatRippleModule,
-
+    MatTooltipModule,
     NumbersOnlyModule
   ],
   declarations: [SlicesInputComponent],
