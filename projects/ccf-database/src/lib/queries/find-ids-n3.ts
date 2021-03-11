@@ -3,7 +3,7 @@ import { fromRdf } from 'rdf-literal';
 import { DataFactory, Literal, Store, Term } from 'triple-store-utils';
 
 import { Filter } from '../interfaces';
-import { entity } from '../util/prefixes';
+import { ccf, entity } from '../util/prefixes';
 
 
 function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen: Set<string>) => Set<string>): Set<string> {
@@ -26,6 +26,32 @@ function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen:
   const newSeen = new Set<string>();
   for (const d of newDonors) {
     for (const s of donor2entity.get(d) || []) {
+      newSeen.add(s);
+    }
+  }
+  return newSeen;
+}
+
+function filterWithSpatialEntity(store: Store, seen: Set<string>, callback: (entitiesSeen: Set<string>) => Set<string>): Set<string> {
+  const spatial2entity = new Map<string, string[]>();
+  const entities = new Set<string>();
+  store.some((quad) => {
+    if (seen.has(quad.subject.id)) {
+      entities.add(quad.object.id);
+      if (!spatial2entity.has(quad.object.id)) {
+        spatial2entity.set(quad.object.id, [quad.subject.id]);
+      } else {
+        spatial2entity.get(quad.object.id)?.push(quad.subject.id);
+      }
+    }
+    return false;
+  }, null, entity.spatialEntity, null, null);
+
+  const newSpatialEntities = callback(entities);
+
+  const newSeen = new Set<string>();
+  for (const e of newSpatialEntities) {
+    for (const s of spatial2entity.get(e) || []) {
       newSeen.add(s);
     }
   }
@@ -56,7 +82,9 @@ export function findIds(store: Store, filter: Filter): Set<string> {
     );
   }
   if (seen.size > 0 && filter.ontologyTerms?.length > 0) {
-    // seen = filterByOntologyTerms(store, seen, filter.ontologyTerms);
+    seen = filterWithSpatialEntity(store, seen, (entities) =>
+      filterByOntologyTerms(store, entities, filter.ontologyTerms)
+    );
   }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
     isFinite(filter.ageRange[0]) && isFinite(filter.ageRange[1])) {
@@ -151,7 +179,7 @@ function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[])
   const newSeen = new Set<string>();
   for (const term of terms) {
     const namedNode = DataFactory.namedNode(term);
-    store.forSubjects(differenceCallback(seen, newSeen), entity.ontologyTerms, namedNode, null);
+    store.forSubjects(differenceCallback(seen, newSeen), ccf.spatialEntity.ccf_annotations, namedNode, null);
   }
   return newSeen;
 }
