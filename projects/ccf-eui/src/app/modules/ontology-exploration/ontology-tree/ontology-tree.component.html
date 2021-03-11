@@ -3,6 +3,7 @@
   <ng-template #selectableRegion let-node="node">
     <div
       class="text"
+      [class.hidden]="node.label === highlightedNode?.label"
       [class.filtered-out]="!occurenceData[node.original.id] && !!termData[node.original.id]"
       [class.unavailable]="!termData[node.original.id]"
       [class.selected]="isSelected(node)"
@@ -14,8 +15,8 @@
   <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding
   [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider1.reset()">
 
-    <mat-icon class="icon opacity" [class.fade]="!highlightedNode?.visible && node.label === highlightedNode?.label" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
-    <div class="slider" [class.hidden]="node.label != highlightedNode?.label">
+    <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="!highlightedNode?.visible && node.label === highlightedNode?.label" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
+    <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label != highlightedNode?.label">
       <ccf-opacity-slider #slider1 [visible]="highlightedNode?.visible" [opacity]="highlightedNode?.opacity"
       (opacityChange)="updateOpacity($event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">
       </ccf-opacity-slider>
@@ -31,15 +32,14 @@
   <!-- Inner node template -->
   <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding
                  [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider2.reset()">
-
-    <mat-icon class="icon opacity" [class.fade]="!highlightedNode?.visible && node.label === highlightedNode?.label" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
-    <div class="slider" [class.hidden]="node.label != highlightedNode?.label">
+    <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="!highlightedNode?.visible && node.label === highlightedNode?.label" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
+    <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label != highlightedNode?.label">
       <ccf-opacity-slider #slider2 [visible]="highlightedNode?.visible" [opacity]="highlightedNode?.opacity"
         (opacityChange)="updateOpacity($event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">
       </ccf-opacity-slider>
     </div>
 
-    <button class="toggle" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">
+    <button class="toggle" [class.hidden]="node.label === highlightedNode?.label" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">
       <mat-icon class="icon font-icon">
         {{ control.isExpanded(node) ? 'expand_less' : 'expand_more' }}
       </mat-icon>

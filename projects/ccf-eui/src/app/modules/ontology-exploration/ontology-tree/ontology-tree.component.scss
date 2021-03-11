@@ -4,6 +4,7 @@
   height: calc(100% - 5.625rem);
   width: 25.25rem;
   overflow: auto;
+  overflow-x: hidden;
 
   .node:first-of-type {
     .toggle {
@@ -19,33 +20,37 @@
     min-height: 0;
     font-size: 1rem;
     margin-bottom: .25rem;
-
-    &.leaf-node {
-      .text {
-        margin-left: 2rem;
-      }
-    }
-
+    
     .slider {
-      width: calc(100% - 6rem);
-      transition-duration: 0.25s;
+      width: 100%;
+      transition-duration: .25s;
       transition-timing-function: ease-in-out;
-      transition-property: left;
-      left: 4rem;
-      position: absolute;
+      transition-property: width;
+      position: relative;
       z-index: 1;
 
       &.hidden {
-        left: -25rem;
-        transition-duration: 0.25s;
-        transition-timing-function: ease-in-out;
-        transition-property: left;
+        width: 0;
+        ccf-opacity-slider {
+          display: none;
+        }
       }
 
       ::ng-deep ccf-opacity-slider {
         height: 1.5rem;
+        margin-left: 1rem;
+
+        .slider-box {
+          width: 100%;
+
+          .slider-and-label {
+            width: 100%;
+          }
+        }
+        
         .mat-slider {
           height: 1.5rem;
+          width: 15rem;
 
           .mat-slider-wrapper {
             top: 12px;
@@ -64,14 +69,16 @@
 
     &.inner-node {
       button {
-        margin-left: 1rem;
+
+        &.hidden {
+          display: none;
+        }
       }
     }
 
     .opacity {
-      position: absolute;
-      left: 1.5rem;
-      z-index: 2;
+      position: relative;
+      min-width: 1.5rem;
     }
 
     .toggle {
@@ -92,6 +99,16 @@
       white-space: nowrap;
       cursor: pointer;
       margin-left: 1rem;
+      opacity: 100%;
+      width: 50%;
+      transition-duration: 0.25s;
+      transition-timing-function: ease-in-out;
+      transition-property: opacity, width;
+
+      &.hidden {
+        opacity: 0;
+        width: 0%;
+      }
     }
 
     .num-results {

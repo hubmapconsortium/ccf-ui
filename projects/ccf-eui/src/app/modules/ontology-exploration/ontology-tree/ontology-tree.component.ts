@@ -356,4 +356,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     } as FlatNode;
     this.nodeChanged.emit(this.highlightedNode);
   }
+
+  getLeftIndent(level: number): string {
+    return `${level*-1.5}rem`;
+  }
 }
