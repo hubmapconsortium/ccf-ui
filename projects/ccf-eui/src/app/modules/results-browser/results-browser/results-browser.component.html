@@ -14,7 +14,7 @@
       </ccf-results-browser-item>
     </div> -->
     <div class="browser-item-container" *ngFor="let donor of donorData">
-      <ccf-donor-card [donor]="donor" (checked)="handleDonorCardSelection($event, donor)"></ccf-donor-card>
+      <ccf-donor-card [donor]="donor" [selected]="isTissueBlockSelected(donor)" [color]="getTissueBlockColor(donor.ruiLocationId)" (checked)="handleDonorCardSelection($event, donor)"></ccf-donor-card>
     </div>
   </div>
   <div class="scroll-gradient" [class.hidden]="!!atScrollBottom"></div>

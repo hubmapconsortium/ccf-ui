@@ -20,13 +20,6 @@ export class DonorCardComponent {
   handleCheckbox(): void {
     this.selected = !this.selected;
     this.checked.emit(this.selected);
-  }
-
-  applyStyles(): unknown {
-    if (!this.selected) {
-      return { 'background-color: ': 'white' };
-    }
-
-    return { 'background-color': this.color };
+    console.log('donor: ', this.donor, '\nselected: ', this.selected, '\ncolor: ', this.color);
   }
 }

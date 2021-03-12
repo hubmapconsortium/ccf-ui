@@ -5,15 +5,14 @@ import { TissueBlockResult } from '../../../core/models/tissue-block-result';
 interface ColorSwatch {
   color: string;
   available: boolean;
-  '@id': string;
+  ruiLocationId: string;
 }
 
 type ColorPalette = ColorSwatch[];
 
 interface TissueBlockRegistryEntry {
-  '@id': string;
+  tissueBlockId: string;
   ruiLocationId: string;
-  color: string;
 }
 
 type TissueBlockRegistry = TissueBlockRegistryEntry[];
@@ -70,10 +69,10 @@ export class ResultsBrowserComponent implements OnInit {
 
 
   donorColorPalette: ColorPalette = [
-    { available: true, color: 'blue' },
-    { available: true, color: 'pink' },
-    { available: true, color: 'orange' },
-    { available: true, color: 'green' },
+    { available: true, color: 'blue', ruiLocationId: '' },
+    { available: true, color: 'pink', ruiLocationId: ''  },
+    { available: true, color: 'orange', ruiLocationId: ''  },
+    { available: true, color: 'green', ruiLocationId: ''  },
   ];
 
 
@@ -179,32 +178,55 @@ export class ResultsBrowserComponent implements OnInit {
   ngOnInit(): void {
     let tempDonorA: TissueBlockResult;
     let tempDonorB: TissueBlockResult;
-    let donor;
-    for (let i = 0; i <= 15; i++) {
-      donor = {
-        label: `(ID: ${i})Female, Age 38, BMI 14.7`,
-        description: 'Entered 1/21/2021, Hom Sim, VU',
-        link: 'www.google.com'
-      }
-      tempDonorA = {...this.sampleDonor, donor};
-      tempDonorB = {...tempDonorA};
+    for (let i = 1; i <= 15; i++) {
+      tempDonorA = {...this.sampleDonor, '@id': i.toString(), ruiLocationId: i.toString() }
+      tempDonorB = {...tempDonorA, '@id': (i*100).toString() };
       this.donorData.push(tempDonorA);
       this.donorData.push(tempDonorB);
     }
+
+    console.log('donors: ', this.donorData);
   }
 
-  getAvailableColor(): string {
-    let availableColors = this.donorColorPalette.filter(color => color.available);
-    if (availableColors.length) {
-      return availableColors[0].color;
+  getNextColor(ruiLocationId?: string): string {
+    // If ruiLocationId is passed in, check first if there is already a color assigned to it.
+    if (ruiLocationId) {
+      if (this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)) {
+        return this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)!.color;
+      }
     }
 
-    // @TODO:  remove test code
-    const before = this.tissueBlockRegistry
-    const color = this.tissueBlockRegistry.shift()?.color || '';
-    // pop oldest selection from registry
-    // return color of popped selection
-    return '';
+    const availableColors = this.donorColorPalette.filter(color => !!color.available);
+    let newColor: string;
+
+    if (availableColors.length > 0) {
+      newColor = availableColors[0].color;
+      this.donorColorPalette.find(color => color.color === newColor)!.available = false;
+      return newColor;
+    }
+
+    // If there are no available colors, we need to make one available.
+    return this.recycleOldestColor();
+  }
+
+  recycleOldestColor(): string {
+    // Should not be recycling colors if none are currently selected.
+    if (this.tissueBlockRegistry.length >= 0) {
+      return '';
+    }
+    const registryCopy = [...this.tissueBlockRegistry];
+    const oldestRuiLocation = registryCopy[0].ruiLocationId;
+    const oldColor = this.getTissueBlockColor(oldestRuiLocation);
+
+    // Remove all registry entries that have the same RUI location ID.
+    registryCopy.forEach((entry, index) => {
+      if (entry.ruiLocationId === oldestRuiLocation) {
+        registryCopy.splice(index, 1);
+      }
+    });
+
+    this.tissueBlockRegistry = registryCopy;
+    return oldColor;
   }
 
   setColorAvailability(color: string, available: boolean): void {
@@ -212,31 +234,57 @@ export class ResultsBrowserComponent implements OnInit {
       return;
     }
 
-    this.donorColorPalette.find(tColor => tColor.color === color)!.available = available;
+    this.donorColorPalette.find(tempColor => tempColor.color === color)!.available = available;
+  }
+
+  useColor(color: string, ruiLocationId): void {
+    if (!this.donorColorPalette.find(tempColor => tempColor.color === color)) {
+      return;
+    }
+
+    this.donorColorPalette.find(tempColor => tempColor.color === color)!.ruiLocationId = ruiLocationId;
+    this.donorColorPalette.find(tempColor => tempColor.color === color)!.available = false;
   }
 
 
   handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {
     const selected = $event;
-    // same rui_location_id = same color.
+
     if (selected) {
-      const newColor = this.getAvailableColor();
-      this.setTissueBlockColor(donor, this.getAvailableColor());
+      const newColor = this.getNextColor();
+      this.selectTissueBlock(donor, this.getNextColor());
       this.setColorAvailability(newColor, false);
     } else {
-      this.setColorAvailability(this.getTissueBlockColor(donor), true);
+      this.setColorAvailability(this.getTissueBlockColor(donor.ruiLocationId), true);
     }
   }
 
-  getTissueBlockColor(tissueBlock: TissueBlockResult): string {
-    return this.tissueBlockRegistry.find(block => block.id === tissueBlock.ruiLocationId)?.color || '';
+  getTissueBlockColor(ruiLocationId: string): string {
+    return this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)?.color || '';
   }
 
-  setTissueBlockColor(tissueBlock: TissueBlockResult, color?: string): void {
-    this.tissueBlockRegistry.push({
-      color: color ? color : this.getAvailableColor(),
-      id: tissueBlock['@id']
-    });
+  isTissueBlockSelected(block: TissueBlockResult): boolean {
+    if (this.tissueBlockRegistry.find(tissueBlock => tissueBlock['@id'] === block['@id'])) {
+      return true;
+    }
+
+    return false;
+  }
+
+  selectTissueBlock(tissueBlock: TissueBlockResult, color?: string): void {
+    this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], ruiLocationId: tissueBlock.ruiLocationId });
+
+    if (color) {
+      if (this.donorColorPalette.find(tempColor => tempColor.color === color)) {
+        this.useColor(this.donorColorPalette.find(tempColor => tempColor.color === color)!.color, tissueBlock.ruiLocationId);
+      }
+    }
+
+    if (this.donorColorPalette.find(color => color.ruiLocationId === tissueBlock.ruiLocationId)) {
+      return;
+    }
+
+    this.useColor(this.getNextColor(), tissueBlock.ruiLocationId);
   }
 
   /**

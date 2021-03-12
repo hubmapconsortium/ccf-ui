@@ -1,4 +1,4 @@
-<div class="checkbox-background" [class.selected]="selected" [ngStyle]="applyStyles()" (click)="handleCheckbox()">
+<div class="checkbox-background" [class.selected]="selected" [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
   <ng-container *ngIf="selected; else unselected">
     <mat-icon class="checkbox selected">check_box</mat-icon>
   </ng-container>
