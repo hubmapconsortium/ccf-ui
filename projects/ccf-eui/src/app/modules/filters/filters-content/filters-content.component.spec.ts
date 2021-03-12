@@ -47,7 +47,7 @@ describe('FiltersContentComponent', () => {
     expect(instance.filters.sex).toEqual('Both');
     expect(instance.filters.ageRange).toEqual([1, 110]);
     expect(instance.filters.bmiRange).toEqual([13, 83]);
-    expect(instance.filters.technologies).toEqual([]]);
+    expect(instance.filters.technologies).toEqual([]);
     expect(instance.filters.tmc).toEqual([]);
   });
 });
