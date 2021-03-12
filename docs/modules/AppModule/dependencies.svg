@@ -126,15 +126,15 @@
 <path fill="none" stroke="#000000" d="M920,-122.1061C920,-122.1061 920,-140.991 920,-140.991"/>
 <polygon fill="#000000" stroke="#000000" points="916.5001,-140.9909 920,-150.991 923.5001,-140.991 916.5001,-140.9909"/>
 </g>
-<!-- InfoDialogModule -->
+<!-- InfoButtonModule -->
 <g id="node8" class="node">
-<title>InfoDialogModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="831.4734,-122 828.4734,-126 807.4734,-126 804.4734,-122 710.5266,-122 710.5266,-86 831.4734,-86 831.4734,-122"/>
-<text text-anchor="middle" x="771" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">InfoDialogModule</text>
+<title>InfoButtonModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="831.4888,-122 828.4888,-126 807.4888,-126 804.4888,-122 710.5112,-122 710.5112,-86 831.4888,-86 831.4888,-122"/>
+<text text-anchor="middle" x="771" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">InfoButtonModule</text>
 </g>
-<!-- InfoDialogModule&#45;&gt;AppModule -->
+<!-- InfoButtonModule&#45;&gt;AppModule -->
 <g id="edge7" class="edge">
-<title>InfoDialogModule&#45;&gt;AppModule</title>
+<title>InfoButtonModule&#45;&gt;AppModule</title>
 <path fill="none" stroke="#000000" d="M771,-122.2396C771,-137.5706 771,-157 771,-157 771,-157 868.0987,-157 868.0987,-157"/>
 <polygon fill="#000000" stroke="#000000" points="868.0987,-160.5001 878.0987,-157 868.0986,-153.5001 868.0987,-160.5001"/>
 </g>

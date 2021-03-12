@@ -133,7 +133,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ccf-eui/src/app/modules/info/info-dialog/info-dialog.module.ts</code>
+            <code>projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.module.ts</code>
         </p>
 
 
@@ -172,10 +172,12 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { InfoDialogComponent } from &#x27;./info-dialog.component&#x27;;
 import { MatDialogModule } from &#x27;@angular/material/dialog&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { MatExpansionModule } from &#x27;@angular/material/expansion&#x27;;
+import { MarkdownModule } from &#x27;ngx-markdown&#x27;;
 
 @NgModule({
   declarations: [InfoDialogComponent],
-  imports: [CommonModule, MatDialogModule, MatIconModule],
+  imports: [CommonModule, MatDialogModule, MatIconModule, MatExpansionModule, MarkdownModule.forRoot({})],
   exports: [InfoDialogComponent]
 })
 export class InfoDialogModule {}

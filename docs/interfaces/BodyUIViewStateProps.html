@@ -279,11 +279,11 @@ export interface PickInfo&lt;D&gt; {
   object: D;
   x: number;
   y: number;
-  coordinate?: {};
+  coordinate?: unknown;
   picked?: boolean;
 }
 
-export type NodeDragEvent &#x3D; {node: SpatialSceneNode, info: PickInfo&lt;SpatialSceneNode&gt;, e: MouseEvent};
+export type NodeDragEvent &#x3D; {node: SpatialSceneNode; info: PickInfo&lt;SpatialSceneNode&gt;; e: MouseEvent};
 
 /**
  * A convenience wrapper class for the CCF Body UI
@@ -292,7 +292,7 @@ export class BodyUI {
   deck: Deck;
   private readonly bodyUILayer &#x3D; new BodyUILayer({});
 
-  private readonly nodeClickSubject &#x3D; new Subject&lt;{node: SpatialSceneNode, ctrlClick: boolean}&gt;();
+  private readonly nodeClickSubject &#x3D; new Subject&lt;{node: SpatialSceneNode; ctrlClick: boolean}&gt;();
   private readonly nodeHoverStartSubject &#x3D; new Subject&lt;SpatialSceneNode&gt;();
   private readonly nodeHoverStopSubject &#x3D; new Subject&lt;SpatialSceneNode&gt;();
   private readonly sceneRotationSubject &#x3D; new BehaviorSubject&lt;number&gt;(0);
@@ -312,7 +312,7 @@ export class BodyUI {
   private lastHovered?: SpatialSceneNode;
 
   constructor(private deckProps: Partial&lt;BodyUIProps&gt;) {
-    // tslint:disable-next-line: no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const props: any &#x3D; {
       ...deckProps,
       views: [ new OrbitView({}) ],
@@ -327,7 +327,7 @@ export class BodyUI {
       getCursor: (e: {isDragging: boolean}) &#x3D;&gt; this.cursor || (e.isDragging ? &#x27;grabbing&#x27; : &#x27;grab&#x27;)
     };
     if (deckProps.legacyLighting) {
-      // tslint:disable-next-line: no-unsafe-any
+      // eslint-disable-next-line
       props.effects &#x3D; [
         new LightingEffect({
           ambientLight: new AmbientLight({
@@ -337,7 +337,7 @@ export class BodyUI {
         })
       ];
     }
-    // tslint:disable-next-line: no-unsafe-any
+    // eslint-disable-next-line
     this.deck &#x3D; new Deck(props);
     this.deck.setProps({
       viewState: {
@@ -446,7 +446,7 @@ export class BodyUI {
   }
 
   @bind
-  private _onHover(e: {picked: boolean, object: SpatialSceneNode}): void {
+  private _onHover(e: {picked: boolean; object: SpatialSceneNode}): void {
     const { lastHovered } &#x3D; this;
     this.cursor &#x3D; e.picked ? &#x27;pointer&#x27; : undefined;
     if (e.picked &amp;&amp; e.object &amp;&amp; e.object[&#x27;@id&#x27;]) {
@@ -464,16 +464,16 @@ export class BodyUI {
   }
 
   @bind
-  private _onClick(info: PickInfo&lt;SpatialSceneNode&gt;, e: { srcEvent: { ctrlKey: boolean; }; }): void {
+  private _onClick(info: PickInfo&lt;SpatialSceneNode&gt;, e: { srcEvent: { ctrlKey: boolean } }): void {
     if (info.picked &amp;&amp; info.object &amp;&amp; info.object[&#x27;@id&#x27;]) {
       this.nodeClickSubject.next({node: info.object, ctrlClick: e?.srcEvent?.ctrlKey ?? undefined});
     }
   }
 
   @bind
-  private _onViewStateChange(event: { interactionState: { isZooming: boolean; }; viewState: BodyUIViewStateProps }): void {
+  private _onViewStateChange(event: { interactionState: { isZooming: boolean }; viewState: BodyUIViewStateProps }): void {
     if (event.interactionState?.isZooming) {
-      const currentState &#x3D; this.bodyUILayer.state as {zoomOpacity: number, data: unknown};
+      const currentState &#x3D; this.bodyUILayer.state as {zoomOpacity: number; data: unknown};
       const zoomOpacity &#x3D; Math.min(Math.max(1 - (event.viewState.zoom - 8.9) / 2, 0.05), 1.0);
       if (currentState.zoomOpacity !&#x3D;&#x3D; zoomOpacity) {
         this.bodyUILayer.setState({data: currentState.data, zoomOpacity});

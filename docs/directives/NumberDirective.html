@@ -116,7 +116,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(_el: ElementRef<HTMLInputElement>)</code>
+<code>constructor(el: ElementRef<HTMLInputElement>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -142,7 +142,7 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>_el</td>
+                                                        <td>el</td>
                                                   
                                                         <td>
                                                                     <code>ElementRef&lt;HTMLInputElement&gt;</code>
@@ -232,9 +232,9 @@ export class NumberDirective {
   /**
    * Creates an instance of number directive.
    *
-   * @param _el Reference to input element
+   * @param el Reference to input element
    */
-  constructor(private _el: ElementRef&lt;HTMLInputElement&gt;) { }
+  constructor(private el: ElementRef&lt;HTMLInputElement&gt;) { }
 
   /**
    * Listens to input changes and updates the text to only include numbers.
@@ -244,9 +244,9 @@ export class NumberDirective {
   // tslint:disable-next-line: no-unsafe-any
   @HostListener(&#x27;input&#x27;, [&#x27;$event&#x27;])
   onInputChange(event: Event): void {
-    const initalValue &#x3D; this._el.nativeElement.value;
-    this._el.nativeElement.value &#x3D; initalValue.replace(/[^0-9]*/g, &#x27;&#x27;);
-    if (initalValue !&#x3D;&#x3D; this._el.nativeElement.value) {
+    const initalValue &#x3D; this.el.nativeElement.value;
+    this.el.nativeElement.value &#x3D; initalValue.replace(/[^0-9]*/g, &#x27;&#x27;);
+    if (initalValue !&#x3D;&#x3D; this.el.nativeElement.value) {
       event.stopPropagation();
     }
   }

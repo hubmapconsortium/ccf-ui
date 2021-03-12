@@ -198,18 +198,17 @@ import { MatRippleModule } from &#x27;@angular/material/core&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 import { MatInputModule } from &#x27;@angular/material/input&#x27;;
 import { NumbersOnlyModule } from &#x27;ccf-shared&#x27;;
-
 import { SlicesInputComponent } from &#x27;./slices-input.component&#x27;;
+import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
 
 
 @NgModule({
   imports: [
     CommonModule,
-
     MatInputModule,
     MatIconModule,
     MatRippleModule,
-
+    MatTooltipModule,
     NumbersOnlyModule
   ],
   declarations: [SlicesInputComponent],

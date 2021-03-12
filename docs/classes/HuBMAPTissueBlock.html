@@ -1,0 +1,1732 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>HuBMAPTissueBlock</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-database/src/lib/hubmap/hubmap-data.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#@id">@id</a>
+                            </li>
+                            <li>
+                                <a href="#@type">@type</a>
+                            </li>
+                            <li>
+                                <a href="#bad">bad</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#data">data</a>
+                            </li>
+                            <li>
+                                <a href="#datasets">datasets</a>
+                            </li>
+                            <li>
+                                <a href="#description">description</a>
+                            </li>
+                            <li>
+                                <a href="#donor">donor</a>
+                            </li>
+                            <li>
+                                <a href="#label">label</a>
+                            </li>
+                            <li>
+                                <a href="#link">link</a>
+                            </li>
+                            <li>
+                                <a href="#rui_location">rui_location</a>
+                            </li>
+                            <li>
+                                <a href="#sample_type">sample_type</a>
+                            </li>
+                            <li>
+                                <a href="#section_count">section_count</a>
+                            </li>
+                            <li>
+                                <a href="#section_size">section_size</a>
+                            </li>
+                            <li>
+                                <a href="#section_units">section_units</a>
+                            </li>
+                            <li>
+                                <a href="#sections">sections</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getDataset">getDataset</a>
+                            </li>
+                            <li>
+                                <a href="#getDatasetThumbnail">getDatasetThumbnail</a>
+                            </li>
+                            <li>
+                                <a href="#getDonor">getDonor</a>
+                            </li>
+                            <li>
+                                <a href="#getRuiLocation">getRuiLocation</a>
+                            </li>
+                            <li>
+                                <a href="#getSection">getSection</a>
+                            </li>
+                            <li>
+                                <a href="#getTissueBlock">getTissueBlock</a>
+                            </li>
+                            <li>
+                                <a href="#toJsonLd">toJsonLd</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(data: <a href="../undefineds/JsonDict.html">JsonDict</a>, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serviceToken?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:180</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>data</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>assetsApi</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>portalUrl</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>serviceToken</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="@id"></a>
+                        <span class="name">
+                            <b>
+                            @id</b>
+                            <a href="#@id"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:167</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="@type"></a>
+                        <span class="name">
+                            <b>
+                            @type</b>
+                            <a href="#@type"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;Sample&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:168</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="bad"></a>
+                        <span class="name">
+                            <b>
+                            bad</b>
+                            <a href="#bad"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:164</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            data</b>
+                            <a href="#data"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:182</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datasets"></a>
+                        <span class="name">
+                            <b>
+                            datasets</b>
+                            <a href="#datasets"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>JsonLdObj[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:180</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="description"></a>
+                        <span class="name">
+                            <b>
+                            description</b>
+                            <a href="#description"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:170</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="donor"></a>
+                        <span class="name">
+                            <b>
+                            donor</b>
+                            <a href="#donor"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>JsonLdObj</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:165</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="label"></a>
+                        <span class="name">
+                            <b>
+                            label</b>
+                            <a href="#label"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:169</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="link"></a>
+                        <span class="name">
+                            <b>
+                            link</b>
+                            <a href="#link"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:171</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rui_location"></a>
+                        <span class="name">
+                            <b>
+                            rui_location</b>
+                            <a href="#rui_location"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>JsonLdObj</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:178</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sample_type"></a>
+                        <span class="name">
+                            <b>
+                            sample_type</b>
+                            <a href="#sample_type"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;Tissue Block&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:173</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="section_count"></a>
+                        <span class="name">
+                            <b>
+                            section_count</b>
+                            <a href="#section_count"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:174</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="section_size"></a>
+                        <span class="name">
+                            <b>
+                            section_size</b>
+                            <a href="#section_size"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:175</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="section_units"></a>
+                        <span class="name">
+                            <b>
+                            section_units</b>
+                            <a href="#section_units"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:176</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sections"></a>
+                        <span class="name">
+                            <b>
+                            sections</b>
+                            <a href="#sections"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>JsonLdObj[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:179</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDataset"></a>
+                    <span class="name">
+                        <b>
+                            getDataset
+                        </b>
+                        <a href="#getDataset"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDataset(dataset: <a href="../undefineds/JsonDict.html">JsonDict</a>, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serviceToken?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="275"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:275</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dataset</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>assetsApi</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>portalUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>serviceToken</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>JsonLdObj</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatasetThumbnail"></a>
+                    <span class="name">
+                        <b>
+                            getDatasetThumbnail
+                        </b>
+                        <a href="#getDatasetThumbnail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatasetThumbnail(dataset: <a href="../undefineds/JsonDict.html">JsonDict</a>, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serviceToken?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="323"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:323</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dataset</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>assetsApi</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>serviceToken</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>string | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDonor"></a>
+                    <span class="name">
+                        <b>
+                            getDonor
+                        </b>
+                        <a href="#getDonor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDonor(donor: <a href="../undefineds/JsonDict.html">JsonDict</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="343"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:343</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>donor</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>portalUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>JsonLdObj</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRuiLocation"></a>
+                    <span class="name">
+                        <b>
+                            getRuiLocation
+                        </b>
+                        <a href="#getRuiLocation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRuiLocation(data: <a href="../undefineds/JsonDict.html">JsonDict</a>, donor: <a href="../undefineds/JsonDict.html">JsonDict</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="399"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:399</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>donor</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>JsonLdObj | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSection"></a>
+                    <span class="name">
+                        <b>
+                            getSection
+                        </b>
+                        <a href="#getSection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSection(section: <a href="../undefineds/JsonDict.html">JsonDict</a>, data: <a href="../undefineds/JsonDict.html">JsonDict</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="255"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:255</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>section</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>portalUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>JsonLdObj</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTissueBlock"></a>
+                    <span class="name">
+                        <b>
+                            getTissueBlock
+                        </b>
+                        <a href="#getTissueBlock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTissueBlock()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="424"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:424</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>JsonLdObj</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toJsonLd"></a>
+                    <span class="name">
+                        <b>
+                            toJsonLd
+                        </b>
+                        <a href="#toJsonLd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toJsonLd()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="428"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:428</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>JsonLdObj</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { JsonLd, JsonLdObj } from &#x27;jsonld/jsonld-spec&#x27;;
+import { get, omit, toNumber } from &#x27;lodash&#x27;;
+
+import { rui } from &#x27;../util/prefixes&#x27;;
+
+
+type JsonDict &#x3D; Record&lt;string, unknown&gt;;
+const HBM_PREFIX &#x3D; &#x27;https://entity.api.hubmapconsortium.org/entities/&#x27;;
+
+// eslint-disable-next-line max-len
+export const DR1_VU_THUMBS &#x3D; new Set([&#x27;VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-21-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-21-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-21-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-22-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-22-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-22-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-22-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-1-1-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-1-1-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-1-1-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-1-1-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-4-172-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-4-172-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-4-172-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-4-172-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-85-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-85-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-85-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-85-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-86-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-86-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-86-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0007-LK-203-103-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0007-LK-203-103-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0007-LK-203-103-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0007-LK-203-103-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-100-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-100-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-100-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-100-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-101-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-101-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-101-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0009-LK-102-7-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0009-LK-102-7-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0009-LK-102-7-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0009-LK-102-7-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0010-LK-155-40-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0010-LK-155-40-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0010-LK-155-40-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0010-LK-155-40-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-10-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-10-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-10-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-10-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-11-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-11-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-11-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-11-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-75-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-75-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-75-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-75-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-76-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-76-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-76-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-76-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0013-LK-202-96-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0013-LK-202-96-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0013-LK-202-96-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0013-LK-202-96-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0013-LK-202-97-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0013-LK-202-97-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0013-LK-202-97-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0013-LK-202-97-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0014-LK-203-108-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0014-LK-203-108-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0014-LK-203-108-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0014-LK-203-108-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0016-LK-202-89-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0016-LK-202-89-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0016-LK-202-89-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0016-LK-202-89-PAS_registered_thumbnail.jpg&#x27;, &#x27;&#x27;, &#x27;DR1-VU:&#x27;, &#x27;VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-21-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-21-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-21-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-22-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-22-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-22-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0003-LK-32-22-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-1-1-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-1-1-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-1-1-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-1-1-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-4-172-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-4-172-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-4-172-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0005-RK-4-172-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-85-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-85-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-85-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-85-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-86-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-86-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0006-LK-2-86-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0007-LK-203-103-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0007-LK-203-103-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0007-LK-203-103-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0007-LK-203-103-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-100-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-100-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-100-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-100-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-101-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-101-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0008-RK-403-101-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-10-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-10-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-10-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-10-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-11-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-11-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-11-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0011-RK-3-11-MxIF_cyc3_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-75-AF_preIMS_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-75-IMS_NegMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-75-IMS_PosMode_multilayer_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-75-PAS_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-76-AF_preMxIF_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-76-MxIF_cyc1_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-76-MxIF_cyc2_registered_thumbnail.jpg&#x27;, &#x27;VAN0012-RK-103-76-MxIF_cyc3_registered_thumbnail.jpg&#x27;]);
+
+/** UUID to TMC mapping. */
+const GROUP_UUID_MAPPING: { [uuid: string]: string } &#x3D; {
+  &#x27;03b3d854-ed44-11e8-8bce-0e368f3075e8&#x27;: &#x27;TMC-UCSD&#x27;,
+  &#x27;07a29e4c-ed43-11e8-b56a-0e8017bdda58&#x27;: &#x27;TMC-Florida&#x27;,
+  &#x27;308f5ffc-ed43-11e8-b56a-0e8017bdda58&#x27;: &#x27;TMC-CalTech&#x27;,
+  &#x27;5bd084c8-edc2-11e8-802f-0e368f3075e8&#x27;: &#x27;HBM-TestingGroup&#x27;,
+  &#x27;73bb26e4-ed43-11e8-8f19-0a7c1eab007a&#x27;: &#x27;TMC-Vanderbilt&#x27;,
+  &#x27;def5fd76-ed43-11e8-b56a-0e8017bdda58&#x27;: &#x27;TMC-Stanford&#x27;
+};
+
+function createRuiOrganLookup(): { [organName: string]: string } {
+  const lookup: { [organName: string]: string } &#x3D; {};
+  Object.entries(rui).forEach(([k, v]) &#x3D;&gt; lookup[k] &#x3D; v.id);
+  return lookup;
+}
+
+/** RUI organ name to entity identifier. */
+const RUI_ORGANS: { [organName: string]: string } &#x3D; createRuiOrganLookup();
+
+// Taken from: https://github.com/hubmapconsortium/commons/blob/master/hubmap_commons/hubmap_const.py#L101
+/** HBM organ names to set of RUI organs. */
+const HBM_ORGANS: { [organName: string]: string[] } &#x3D; {
+  BL: [RUI_ORGANS.body, RUI_ORGANS.bladder],
+  RK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.right_kidney],
+  LK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.left_kidney],
+  HT: [RUI_ORGANS.body, RUI_ORGANS.heart],
+  LI: [RUI_ORGANS.body, RUI_ORGANS.large_intestine], // large_intestine
+  SI: [RUI_ORGANS.body, RUI_ORGANS.small_instestine],
+  LL: [RUI_ORGANS.body, RUI_ORGANS.lung, RUI_ORGANS.left_lung],
+  RL: [RUI_ORGANS.body, RUI_ORGANS.lung, RUI_ORGANS.right_lung],
+  LY: [RUI_ORGANS.body, RUI_ORGANS.lymph_node],
+  SP: [RUI_ORGANS.body, RUI_ORGANS.spleen],
+  TH: [RUI_ORGANS.body, RUI_ORGANS.thymus],
+  UR: [RUI_ORGANS.body, RUI_ORGANS.ureter],
+  LV: [RUI_ORGANS.body, RUI_ORGANS.liver],
+  OT: [RUI_ORGANS.body], // other_organ
+};
+
+/** HBM organ names to display name. */
+const HBM_ORGAN_LABELS: { [organName: string]: string } &#x3D; {
+  BL: &#x27;Bladder&#x27;,
+  RK: &#x27;Right Kidney&#x27;,
+  LK: &#x27;Left Kidney&#x27;,
+  HT: &#x27;Heart&#x27;,
+  LI: &#x27;Large Intestine&#x27;,
+  SI: &#x27;Small Intestine&#x27;,
+  LL: &#x27;Left Lung&#x27;,
+  RL: &#x27;Right Lung&#x27;,
+  LY: &#x27;Lymph Node&#x27;,
+  SP: &#x27;Spleen&#x27;,
+  TH: &#x27;Thymus&#x27;,
+  UR: &#x27;Ureter&#x27;,
+  LV: &#x27;Liver&#x27;,
+  OT: &#x27;Other Organ&#x27;,
+};
+
+const ENTITY_CONTEXT &#x3D; {
+  &#x27;@base&#x27;: &#x27;http://purl.org/ccf/latest/ccf-entity.owl#&#x27;,
+  &#x27;@vocab&#x27;: &#x27;http://purl.org/ccf/latest/ccf-entity.owl#&#x27;,
+  ccf: &#x27;http://purl.org/ccf/latest/ccf.owl#&#x27;,
+  rdfs: &#x27;http://www.w3.org/2000/01/rdf-schema#&#x27;,
+
+  label: &#x27;rdfs:label&#x27;,
+  description: &#x27;rdfs:comment&#x27;,
+  link: {
+    &#x27;@id&#x27;: &#x27;rdfs:seeAlso&#x27;,
+    &#x27;@type&#x27;: &#x27;@id&#x27;
+  },
+  samples: {
+    &#x27;@reverse&#x27;: &#x27;has_donor&#x27;
+  },
+  sections: {
+    &#x27;@id&#x27;: &#x27;has_tissue_section&#x27;,
+    &#x27;@type&#x27;: &#x27;@id&#x27;
+  },
+  datasets: {
+    &#x27;@id&#x27;: &#x27;has_dataset&#x27;,
+    &#x27;@type&#x27;: &#x27;@id&#x27;
+  },
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  rui_location: {
+    &#x27;@id&#x27;: &#x27;has_spatial_entity&#x27;,
+    &#x27;@type&#x27;: &#x27;@id&#x27;
+  },
+  ontologyTerms: {
+    &#x27;@id&#x27;: &#x27;has_ontology_term&#x27;,
+    &#x27;@type&#x27;: &#x27;@id&#x27;
+  },
+  thumbnail: {
+    &#x27;@id&#x27;: &#x27;has_thumbnail&#x27;
+  }
+};
+
+/**
+ * Converts a hubmap response object into JsonLd.
+ *
+ * @param data The hubmap data.
+ * @returns The converted data.
+ */
+ export function hubmapResponseAsJsonLd(data: unknown, assetsApi &#x3D; &#x27;&#x27;, portalUrl &#x3D; &#x27;&#x27;, serviceToken?: string, debug &#x3D; false): JsonLd {
+  const entries &#x3D; (get(data, &#x27;hits.hits&#x27;, []) as JsonDict[])
+    .map(e &#x3D;&gt; get(e, &#x27;_source&#x27;, {}) as JsonDict);
+
+  const donorLookup: Record&lt;string, JsonLdObj&gt; &#x3D; {};
+  const unflattened: JsonLdObj[] &#x3D; entries.map(e &#x3D;&gt;
+    new HuBMAPTissueBlock(e, assetsApi, portalUrl, serviceToken).toJsonLd()
+  );
+  for (const donor of unflattened) {
+    const donorId &#x3D; donor[&#x27;@id&#x27;] as string;
+    if (!donorLookup[donorId]) {
+      donorLookup[donorId] &#x3D; donor;
+    } else {
+      const samples &#x3D; donorLookup[donorId].samples as JsonLdObj[];
+      samples.push((donor.samples as JsonLdObj[])[0]);
+    }
+  }
+  const donors &#x3D; Object.values(donorLookup);
+
+  if (debug) {
+    let datasets: JsonLdObj[] &#x3D; [];
+    let deleted &#x3D; 0;
+    for (const donor of donors.filter(d &#x3D;&gt; (d.samples as []).length &gt; 1)) {
+      const samples &#x3D; donor.samples as JsonLdObj[];
+      for (let i&#x3D;0; i &lt; samples.length; i++) {
+        const blockId &#x3D; samples[i][&#x27;@id&#x27;] as string;
+        datasets &#x3D; datasets.concat(samples[i].datasets as JsonLdObj[]);
+        for (const section of samples[i].sections as JsonLdObj[]) {
+          datasets &#x3D; datasets.concat(section.datasets as JsonLdObj[]);
+        }
+        for (let j&#x3D;i+1; j &lt; samples.length; j++) {
+          const sections &#x3D; samples[j].sections as JsonLdObj[];
+          if (sections.find(s &#x3D;&gt; s[&#x27;@id&#x27;] &#x3D;&#x3D;&#x3D; blockId)) {
+            samples[i].deleteMe &#x3D; true;
+            deleted++;
+          }
+        }
+      }
+      donor.samples &#x3D; samples.filter(s &#x3D;&gt; s.deleteMe !&#x3D;&#x3D; true);
+    }
+    if (deleted &gt; 0) {
+      console.log(&#x60;⚠ ${deleted} sections identified as blocks&#x60;);
+    }
+
+    console.log(donors.map(d &#x3D;&gt; ({ &#x27;@context&#x27;: ENTITY_CONTEXT, ...d })));
+  }
+
+  return { &#x27;@context&#x27;: ENTITY_CONTEXT, &#x27;@graph&#x27;: donors };
+}
+
+export class HuBMAPTissueBlock {
+  bad &#x3D; false;
+  donor: JsonLdObj;
+
+  &#x27;@id&#x27;: string;
+  &#x27;@type&#x27; &#x3D; &#x27;Sample&#x27;;
+  label: string;
+  description: string;
+  link: string;
+
+  sample_type &#x3D; &#x27;Tissue Block&#x27;;
+  section_count: number;
+  section_size: number;
+  section_units: string;
+
+  rui_location: JsonLdObj;
+  sections: JsonLdObj[];
+  datasets: JsonLdObj[];
+
+  constructor(public data: JsonDict, assetsApi &#x3D; &#x27;&#x27;, portalUrl &#x3D; &#x27;&#x27;, serviceToken?: string) {
+    const entityType &#x3D; this.data.entity_type;
+    if (entityType !&#x3D;&#x3D; &#x27;Sample&#x27;) {
+      this.bad &#x3D; true;
+      return;
+    }
+    const ancestors &#x3D; (this.data.ancestors || []) as JsonDict[];
+    const descendants &#x3D; (this.data.descendants || []) as JsonDict[];
+
+    const donor &#x3D; ancestors.find(e &#x3D;&gt; e.entity_type &#x3D;&#x3D;&#x3D; &#x27;Donor&#x27;) as JsonDict;
+    this.donor &#x3D; this.getDonor(donor, portalUrl);
+    const ruiLocation &#x3D; this.getRuiLocation(data, donor);
+    if (!ruiLocation) {
+      this.bad &#x3D; true;
+    } else {
+      this.rui_location &#x3D; ruiLocation;
+    }
+
+    const dateEntered &#x3D; new Date(data.last_modified_timestamp as number).toLocaleDateString();
+    const groupName &#x3D; GROUP_UUID_MAPPING[data.group_uuid as string] || data.group_name as string;
+    const creator &#x3D; data.created_by_user_displayname;
+
+    this[&#x27;@id&#x27;] &#x3D; HBM_PREFIX + data.uuid;
+    this.label &#x3D; &#x60;Registered ${dateEntered}, ${creator}, ${groupName}&#x60;;
+    this.link &#x3D; &#x60;${portalUrl}browse/sample/${data.uuid}&#x60;;
+
+    const sectionLookup: Record&lt;string, JsonLdObj&gt; &#x3D; {};
+    const sections: JsonLdObj[] &#x3D; [];
+    this.sections &#x3D; sections;
+    const datasets: JsonLdObj[] &#x3D; [];
+    this.datasets &#x3D; datasets;
+
+    for (const descendant of descendants.filter(d &#x3D;&gt; d.entity_type &#x3D;&#x3D;&#x3D; &#x27;Sample&#x27;)) {
+      const section &#x3D; this.getSection(descendant, data, portalUrl);
+
+      const sectionId &#x3D; descendant.hubmap_display_id as string;
+      sectionLookup[sectionId] &#x3D; section;
+      sections.push(section);
+      section.section_number &#x3D; section.section_number || sections.length;
+    }
+    for (const descendant of descendants) {
+      if (descendant.entity_type &#x3D;&#x3D;&#x3D; &#x27;Dataset&#x27;) {
+        const dataset &#x3D; this.getDataset(descendant, assetsApi, portalUrl, serviceToken);
+
+        const sectionId &#x3D; get(descendant, [&#x27;metadata&#x27;, &#x27;metadata&#x27;, &#x27;tissue_id&#x27;]) as string;
+        if (sectionLookup[sectionId]) {
+          (sectionLookup[sectionId].datasets as JsonLd[])?.push(dataset);
+        } else {
+          datasets.push(dataset);
+        }
+      }
+    }
+
+    const loc &#x3D; ruiLocation || {} as JsonDict;
+    const dims &#x3D; &#x60;${loc.x_dimension} x ${loc.y_dimension} x ${loc.z_dimension} ${loc.dimension_units}&#x60;;
+    this.section_count &#x3D; loc.slice_count as number || sections.length;
+    const sSize &#x3D; parseFloat(
+      (loc.slice_thickness as number ||
+        ((loc.z_dimension as number || 0) / Math.max(this.section_count, 1)))
+      .toFixed(1)
+    );
+    this.section_size &#x3D; sSize;
+    const sUnits &#x3D; loc.dimension_units as string || &#x27;millimeter&#x27;;
+    this.section_units &#x3D; sUnits;
+
+    this.description &#x3D; &#x60;${dims}, ${sSize} ${sUnits}, ${data.specimen_type}, ${this.section_count} Sections&#x60;;
+
+    sections.forEach((section, index) &#x3D;&gt; {
+      section.description &#x3D; &#x60;${loc.x_dimension} x ${loc.y_dimension} x ${sSize} ${sUnits}, ${sSize} ${sUnits}, ${section.description}&#x60;;
+      section.section_number &#x3D; index + 1;
+    });
+  }
+
+  getSection(section: JsonDict, data: JsonDict, portalUrl: string): JsonLdObj {
+    const dateEntered &#x3D; new Date(section.last_modified_timestamp as number).toLocaleDateString();
+    const groupName &#x3D; GROUP_UUID_MAPPING[section.group_uuid as string] || section.group_name as string;
+    const creator &#x3D; section.created_by_user_displayname;
+
+    return {
+      &#x27;@id&#x27;: HBM_PREFIX + section.uuid,
+      &#x27;@type&#x27;: &#x27;Sample&#x27;,
+      label: &#x60;Registered ${dateEntered}, ${creator}, ${groupName}&#x60;,
+      description: &#x60;${data.specimen_type}&#x60;,
+      link: &#x60;${portalUrl}browse/sample/${section.uuid}&#x60;,
+
+      sample_type: &#x27;Tissue Section&#x27;,
+      section_number: 1,
+
+      samples: [],
+      datasets: []
+    };
+  }
+
+  getDataset(dataset: JsonDict, assetsApi &#x3D; &#x27;&#x27;, portalUrl &#x3D; &#x27;&#x27;, serviceToken?: string): JsonLdObj {
+    const dateEntered &#x3D; new Date(dataset.last_modified_timestamp as number).toLocaleDateString();
+    const groupName &#x3D; GROUP_UUID_MAPPING[dataset.group_uuid as string] || dataset.group_name as string;
+    const creator &#x3D; dataset.created_by_user_displayname;
+
+    const types &#x3D; [
+      ...dataset.data_types as string[],
+      get(dataset, [&#x27;metadata&#x27;, &#x27;metadata&#x27;, &#x27;assay_type&#x27;], &#x27;&#x27;)
+    ];
+    const typesSearch &#x3D; types.join(&#x27;|&#x27;).toLowerCase();
+
+    let technology: string;
+    let thumbnail &#x3D; &#x27;assets/icons/ico-unknown.svg&#x27;;
+    if (typesSearch.indexOf(&#x27;10x&#x27;) !&#x3D;&#x3D; -1) {
+      technology &#x3D; &#x27;10x&#x27;;
+      thumbnail &#x3D; &#x27;assets/icons/ico-bulk-10x.svg&#x27;;
+    } else if (typesSearch.indexOf(&#x27;af&#x27;) !&#x3D;&#x3D; -1) {
+      technology &#x3D; &#x27;AF&#x27;;
+      thumbnail &#x3D; &#x27;assets/icons/ico-spatial-af.svg&#x27;;
+    } else if (typesSearch.indexOf(&#x27;codex&#x27;) !&#x3D;&#x3D; -1) {
+      technology &#x3D; &#x27;CODEX&#x27;;
+      thumbnail &#x3D; &#x27;assets/icons/ico-spatial-codex.svg&#x27;;
+    } else if (typesSearch.indexOf(&#x27;imc&#x27;) !&#x3D;&#x3D; -1) {
+      technology &#x3D; &#x27;IMC&#x27;;
+      thumbnail &#x3D; &#x27;assets/icons/ico-spatial-imc.svg&#x27;;
+    } else if ((typesSearch.indexOf(&#x27;lc&#x27;) !&#x3D;&#x3D; -1) &amp;&amp; (typesSearch.indexOf(&#x27;af&#x27;) &#x3D;&#x3D;&#x3D; -1)) {
+      technology &#x3D; &#x27;LC&#x27;;
+      thumbnail &#x3D; &#x27;assets/icons/ico-bulk-lc.svg&#x27;;
+    } else if (typesSearch.indexOf(&#x27;maldi&#x27;) !&#x3D;&#x3D; -1) {
+      technology &#x3D; &#x27;MALDI&#x27;;
+    } else if (typesSearch.indexOf(&#x27;pas&#x27;) !&#x3D;&#x3D; -1) {
+      technology &#x3D; &#x27;PAS&#x27;;
+    } else {
+      technology &#x3D; &#x27;OTHER&#x27;;
+    }
+    thumbnail &#x3D; this.getDatasetThumbnail(dataset, assetsApi, serviceToken) || thumbnail;
+
+    return {
+      &#x27;@id&#x27;: HBM_PREFIX + dataset.uuid,
+      &#x27;@type&#x27;: &#x27;Dataset&#x27;,
+      label: &#x60;Registered ${dateEntered}, ${creator}, ${groupName}&#x60;,
+      description: &#x60;Data/Assay Types: ${types.join(&#x27;, &#x27;)}&#x60;,
+      link: &#x60;${portalUrl}browse/dataset/${dataset.uuid}&#x60;,
+      technology,
+      thumbnail
+    };
+  }
+
+  getDatasetThumbnail(dataset: JsonDict, assetsApi: string, serviceToken?: string): string | undefined {
+    const tiffs &#x3D; (get(dataset, &#x27;metadata.files&#x27;, []) as { rel_path: string }[])
+      .filter(f &#x3D;&gt; /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
+      .filter(f &#x3D;&gt; !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path))
+      // Temporarily only checking VU tifs that we have thumbnails for
+      .filter(f &#x3D;&gt; dataset.group_uuid &#x3D;&#x3D;&#x3D; &#x27;73bb26e4-ed43-11e8-8f19-0a7c1eab007a&#x27; ? DR1_VU_THUMBS.has(
+          f.rel_path.split(&#x27;/&#x27;).slice(-1)[0].split(&#x27;?&#x27;)[0].replace(&#x27;.ome.tif&#x27;, &#x27;_thumbnail.jpg&#x27;)
+        ) : false
+      )
+      .map(f &#x3D;&gt; &#x60;${assetsApi}/${dataset.uuid}/${f.rel_path}&#x60; + (serviceToken ? &#x60;?token&#x3D;${serviceToken}&#x60; : &#x27;&#x27;));
+
+    if (tiffs.length &gt; 0 &amp;&amp; dataset.group_uuid &#x3D;&#x3D;&#x3D; &#x27;73bb26e4-ed43-11e8-8f19-0a7c1eab007a&#x27;) {
+      const thumb &#x3D; tiffs[0].split(&#x27;/&#x27;).slice(-1)[0].split(&#x27;?&#x27;)[0].replace(&#x27;.ome.tif&#x27;, &#x27;_thumbnail.jpg&#x27;);
+      if (DR1_VU_THUMBS.has(thumb)) {
+        return &#x60;assets/thumbnails/DR1-VU/${thumb}&#x60;;
+      }
+    }
+    return undefined;
+  }
+
+  getDonor(donor: JsonDict, portalUrl: string): JsonLdObj {
+    const donorDescription &#x3D; (donor.description as string || &#x27;&#x27;).toLowerCase();
+    let sex: &#x27;Male&#x27; | &#x27;Female&#x27; | undefined;
+    if (donorDescription.includes(&#x27;female&#x27;)) {
+      sex &#x3D; &#x27;Female&#x27;;
+    } else if (donorDescription.includes(&#x27;male&#x27;)) {
+      sex &#x3D; &#x27;Male&#x27;;
+    }
+    const ageMatch &#x3D; donorDescription.match(/age\ ([0-9]+)/);
+    let age: number | undefined;
+    if (ageMatch) {
+      age &#x3D; toNumber(ageMatch[1]);
+    }
+    let bmi: number | undefined;
+    for (const md of get(donor, &#x27;metadata.organ_donor_data&#x27;, []) as JsonDict[]) {
+      if (md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Feminine gender&#x27; || md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Female&#x27;) {
+        sex &#x3D; &#x27;Female&#x27;;
+      } else if (md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Masculine gender&#x27; || md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Male&#x27;) {
+        sex &#x3D; &#x27;Male&#x27;;
+      } else if (md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Current chronological age&#x27; || md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Age&#x27;) {
+        age &#x3D; toNumber(md.data_value);
+      } else if (md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Body mass index&#x27;) {
+        bmi &#x3D; toNumber(md.data_value);
+      }
+    }
+    let label &#x3D; &#x27;&#x27;;
+    if (sex &amp;&amp; age) {
+      label +&#x3D; &#x60;${sex}, Age ${age}&#x60;;
+      if (bmi) {
+        label +&#x3D; &#x60;, BMI ${bmi.toFixed(1)}&#x60;;
+      }
+    }
+
+    const dateEntered &#x3D; new Date(donor.last_modified_timestamp as number).toLocaleDateString();
+    const groupName &#x3D; GROUP_UUID_MAPPING[donor.group_uuid as string] || donor.group_name as string;
+    const creator &#x3D; donor.created_by_user_displayname;
+
+    return {
+      &#x27;@id&#x27;: HBM_PREFIX + donor.uuid,
+      &#x27;@type&#x27;: &#x27;Donor&#x27;,
+      label,
+      description: &#x60;Entered ${dateEntered}, ${creator}, ${groupName}&#x60;,
+      link: &#x60;${portalUrl}browse/donor/${donor.uuid}&#x60;,
+
+      age,
+      sex,
+      bmi,
+
+      consortium_name: &#x27;HuBMAP&#x27;,
+      provider_name: groupName,
+      provider_uuid: donor.group_uuid as string,
+
+      samples: []
+    };
+  }
+
+  getRuiLocation(data: JsonDict, donor: JsonDict): JsonLdObj | undefined {
+    const ancestors &#x3D; (data.ancestors || []) as JsonDict[];
+    const organSample &#x3D; ancestors.find(e &#x3D;&gt; e.entity_type &#x3D;&#x3D;&#x3D; &#x27;Sample&#x27; &amp;&amp; e.specimen_type &#x3D;&#x3D;&#x3D; &#x27;organ&#x27;) as JsonDict;
+    const ontologyTerms &#x3D; HBM_ORGANS[organSample?.organ as string] || [RUI_ORGANS.body];
+
+    let spatialEntity: JsonLdObj | undefined;
+    let ruiLocation &#x3D; data.rui_location as JsonDict;
+    if (ruiLocation) {
+      // RUI Location may come in as an unparsed string
+      if (typeof ruiLocation &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        ruiLocation &#x3D; JSON.parse(ruiLocation as string) as JsonDict;
+      }
+      if (ruiLocation.alignment_id) { // Detect RUI 0.5 generated JSON
+        console.log(&#x27;Detected a deprecated rui_location&#x27;, data.uuid);
+      } else if ((ruiLocation as unknown as { &#x27;@id&#x27;: string })[&#x27;@id&#x27;]) { // Detect RUI 1.0+ generated JSON-LD
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        spatialEntity &#x3D; ruiLocation as unknown as JsonLdObj;
+      }
+    }
+    if (spatialEntity) {
+      spatialEntity.ccf_annotations &#x3D; ontologyTerms.concat(spatialEntity.ccf_annotations as string[] || []);
+    }
+    return spatialEntity;
+  }
+
+  getTissueBlock(): JsonLdObj {
+    return omit(Object.assign({}, this), [&#x27;data&#x27;, &#x27;bad&#x27;, &#x27;donor&#x27;]) as unknown as JsonLdObj;
+  }
+
+  toJsonLd(): JsonLdObj {
+    return { ...this.donor, samples: [this.getTissueBlock()] };
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'HuBMAPTissueBlock.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

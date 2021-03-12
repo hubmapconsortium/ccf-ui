@@ -319,8 +319,8 @@ selected by the user in the search-results</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:74</a></div>
                 </td>
             </tr>
 
@@ -397,8 +397,8 @@ selected by the user in the search-results</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:55</a></div>
                 </td>
             </tr>
 
@@ -440,8 +440,8 @@ and gets the search results from the service</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:103</a></div>
                 </td>
             </tr>
 
@@ -517,8 +517,8 @@ and gets the search results from the service</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:84</a></div>
                 </td>
             </tr>
 
@@ -609,8 +609,8 @@ and gets the search results from the service</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:94</a></div>
                 </td>
             </tr>
 
@@ -803,7 +803,7 @@ and gets the search results from the service</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -865,6 +865,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Creates an instance of ontology search component.
+   *
    * @param ontologyService instance of searchService which provides all the search functionality
    */
   constructor(public ontologyService: OntologySearchService) { }
@@ -889,6 +890,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * A formatter function to enable different display and selected value
+   *
    * @param option a search result entry
    * @returns a part of the search result entry to be displayed as a display value
    */
@@ -898,6 +900,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Sorts by results which have synonyms
+   *
    * @param entry search result entry
    * @returns 1 or -1
    */
@@ -907,6 +910,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Sorts lexically
+   *
    * @param entry search result entry
    * @returns lower case value of node label
    */
@@ -916,6 +920,7 @@ export class OntologySearchComponent implements OnInit {
 
   /**
    * Callback function triggered when the user selects a value from search results
+   *
    * @param event instance of MatAutocompleteSelectedEvent
    */
   onSelect(event: MatAutocompleteSelectedEvent): void {
@@ -932,6 +937,7 @@ export class OntologySearchComponent implements OnInit {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;form class&#x3D;&quot;ccf-ontology-search&quot; [class.autocomplete-open]&#x3D;&quot;autoCompleteOpen&quot;&gt;
   &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;field&quot;&gt;
+    &lt;mat-icon matPrefix color&#x3D;&quot;primary&quot; class&#x3D;&quot;search&quot;&gt;search&lt;/mat-icon&gt;
     &lt;input class&#x3D;&quot;input&quot; type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Search ontology terms ...&quot; matInput [formControl]&#x3D;&quot;formControl&quot;
            [matAutocomplete]&#x3D;&quot;autocomplete&quot;&gt;
 
@@ -946,8 +952,6 @@ export class OntologySearchComponent implements OnInit {
         &lt;/mat-option&gt;
       &lt;/div&gt;
     &lt;/mat-autocomplete&gt;
-
-    &lt;mat-icon matSuffix color&#x3D;&quot;primary&quot; class&#x3D;&quot;search&quot;&gt;search&lt;/mat-icon&gt;
   &lt;/mat-form-field&gt;
 &lt;/form&gt;
 </code></pre>
@@ -958,33 +962,34 @@ export class OntologySearchComponent implements OnInit {
                     <code>./ontology-search.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.ccf-ontology-search {
-  width: 25rem;
-  margin-top: 1.5rem;
+  width: 100%;
 
   .field {
-    margin-left: 1.5rem;
     width: 100%;
+    
   }
 
   ::ng-deep .mat-form-field-appearance-outline {
     .mat-form-field-outline-end {
-      border-radius: 0 31.25rem 31.25rem 0;
+      border-radius: 0 0.25rem 0.25rem 0;
       margin: 0;
     }
 
     .mat-form-field-wrapper {
       margin: 0;
+      
 
       .mat-form-field-flex {
         .mat-form-field-infix {
           border: none;
           height: 3rem;
+          
 
           input {
             margin-left: .4rem;
           }
         }
-        .mat-form-field-suffix {
+        .mat-form-field-prefix {
           top: .5rem;
           border: none;
         }
@@ -992,16 +997,16 @@ export class OntologySearchComponent implements OnInit {
     }
 
     .mat-form-field-outline-start {
-      border-radius: 31.25rem 0 0 31.25rem;
+      border-radius: 0.25rem 0 0 0.25rem;
       min-width: 2.5rem;
 	  }
   }
 }
 
 ::ng-deep .ccf-ontology-search.detached {
-  border: 2px solid;
+  border: 0.125rem solid;
   border-top: none;
-  border-radius: 0 0 1rem 1rem;
+  border-radius: 0 0 0.25rem 0.25rem;
   max-height: 18rem;
 
   .results-container {
@@ -1026,12 +1031,12 @@ export class OntologySearchComponent implements OnInit {
 .autocomplete-open {
   ::ng-deep .mat-form-field-appearance-outline {
     .mat-form-field-outline-start {
-      border-radius: 50% 0 0 0;
+      border-radius: 0.25rem 0 0 0;
       border-bottom: none;
     }
 
     .mat-form-field-outline-end {
-      border-radius: 0 1rem 0 0;
+      border-radius: 0 0.25rem 0 0;
       border-bottom: none;
     }
   }
@@ -1063,8 +1068,8 @@ export class OntologySearchComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form class="ccf-ontology-search" [class.autocomplete-open]="autoCompleteOpen">  <mat-form-field appearance="outline" class="field">    <input class="input" type="text" placeholder="Search ontology terms ..." matInput [formControl]="formControl"           [matAutocomplete]="autocomplete">    <mat-autocomplete class="ccf-ontology-search detached autocomplete" [displayWith]="displayFormatter"                      (optionSelected)="onSelect($event)" (opened)="autoCompleteOpen = true"                      (closed)="autoCompleteOpen = false" #autocomplete>      <div class="results-container">        <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">          <span class="prefix">{{option.displayLabel[0]}}</span>          <span class="search-term">{{option.displayLabel[1]}}</span>          <span class="suffix">{{option.displayLabel[2]}}</span>        </mat-option>      </div>    </mat-autocomplete>    <mat-icon matSuffix color="primary" class="search">search</mat-icon>  </mat-form-field></form></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><form class="ccf-ontology-search" [class.autocomplete-open]="autoCompleteOpen">  <mat-form-field appearance="outline" class="field">    <mat-icon matPrefix color="primary" class="search">search</mat-icon>    <input class="input" type="text" placeholder="Search ontology terms ..." matInput [formControl]="formControl"           [matAutocomplete]="autocomplete">    <mat-autocomplete class="ccf-ontology-search detached autocomplete" [displayWith]="displayFormatter"                      (optionSelected)="onSelect($event)" (opened)="autoCompleteOpen = true"                      (closed)="autoCompleteOpen = false" #autocomplete>      <div class="results-container">        <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">          <span class="prefix">{{option.displayLabel[0]}}</span>          <span class="search-term">{{option.displayLabel[1]}}</span>          <span class="suffix">{{option.displayLabel[2]}}</span>        </mat-option>      </div>    </mat-autocomplete>  </mat-form-field></form></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'OntologySearchComponent'};
 </script>

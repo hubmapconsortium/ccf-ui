@@ -230,7 +230,7 @@ interface Segment {
   /** Classes to add to the text container */
   classes: string[];
   /** Styles to set on the text container */
-  styles: object;
+  styles: Record&lt;string, unknown&gt;;
 }
 
 /** Represents an operation to apply to the stack when building segments */
@@ -340,10 +340,7 @@ export class DecoratedTextComponent implements OnChanges {
    */
   private createStackOps(ranges: DecoratedRange[]): StackOp[] {
     const ops: Record&lt;number, StackOp&gt; &#x3D; {};
-    const getOp &#x3D; (index: number) &#x3D;&gt; {
-      return ops[index]
-        || (ops[index] &#x3D; { index, added: [], removed: [] });
-    };
+    const getOp &#x3D; (index: number) &#x3D;&gt; (ops[index] ??&#x3D; { index, added: [], removed: [] });
 
     for (const range of ranges) {
       getOp(range.start).added.push(range);
@@ -408,7 +405,7 @@ export class DecoratedTextComponent implements OnChanges {
     );
     const styles &#x3D; decorations.reduce(
       (result, range) &#x3D;&gt; ({ ...result, ...range.styles }),
-      {} as object
+      {}
     );
 
     return { text, classes, styles };
