@@ -3,6 +3,13 @@
     display: none !important;
   }
 
+  &.assays {
+    .option {
+      margin-right: 0 rem;
+      width: 25%
+    }
+  }
+
   margin-top: 2rem;
 }
 
