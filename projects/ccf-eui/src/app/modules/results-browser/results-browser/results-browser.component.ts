@@ -237,7 +237,9 @@ export class ResultsBrowserComponent implements OnInit {
       return;
     }
 
-    this.donorColorPalette.find(tempColor => tempColor.color === color)!.available = available;
+    let paletteCopy = [...this.donorColorPalette];
+    paletteCopy.find(tempColor => tempColor.color === color)!.available = available;
+    this.donorColorPalette = paletteCopy;
   }
 
   useColor(color: string, ruiLocationId): void {
@@ -246,8 +248,10 @@ export class ResultsBrowserComponent implements OnInit {
       return;
     }
 
-    this.donorColorPalette.find(tempColor => tempColor.color === color)!.ruiLocationId = ruiLocationId;
-    this.donorColorPalette.find(tempColor => tempColor.color === color)!.available = false;
+    let paletteCopy = [...this.donorColorPalette];
+    paletteCopy.find(tempColor => tempColor.color === color)!.ruiLocationId = ruiLocationId;
+    paletteCopy.find(tempColor => tempColor.color === color)!.available = false;
+    this.donorColorPalette = paletteCopy;
   }
 
 
@@ -268,7 +272,7 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
   isTissueBlockSelected(block: TissueBlockResult): boolean {
-    if (this.tissueBlockRegistry.find(tissueBlock => tissueBlock['@id'] === block['@id'])) {
+    if (this.tissueBlockRegistry.find(tissueBlock => tissueBlock.tissueBlockId === block['@id'])) {
       return true;
     }
 
@@ -277,12 +281,12 @@ export class ResultsBrowserComponent implements OnInit {
 
   deselectTissueBlock(tissueBlock: TissueBlockResult): void {
     // If the passed in tissue block isn't on the registry then it's already deselected.
-    if (!this.tissueBlockRegistry.find(tBlock => tBlock['@id'] === tissueBlock['@id'])) {
+    if (!this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])) {
       return;
     }
 
     // Remove the block from the selection registry.
-    const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry.find(tBlock => tBlock['@id'] === tissueBlock['@id'])!);
+    const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
     this.tissueBlockRegistry.splice(blockIndex, 1);
 
     // If there are no more blocks with the same ruiLocationId selected then the color needs to be set to available now.
