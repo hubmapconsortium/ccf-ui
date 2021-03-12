@@ -3,29 +3,50 @@
   <ng-template #selectableRegion let-node="node">
     <div
       class="text"
+      [class.hidden]="node.label === highlightedNode?.label"
       [class.filtered-out]="!occurenceData[node.original.id] && !!termData[node.original.id]"
       [class.unavailable]="!termData[node.original.id]"
       [class.selected]="isSelected(node)"
       (click)="select($event.ctrlKey, node, true, !isSelected(node))"
     >{{ node.label }}</div>
   </ng-template>
-
+  
   <!-- Leaf node template -->
   <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding
-                 [matTreeNodePaddingIndent]="indent">
+  [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider1.reset()">
+
+    <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="!highlightedNode?.visible && node.label === highlightedNode?.label" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
+    <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label != highlightedNode?.label">
+      <ccf-opacity-slider #slider1 [visible]="highlightedNode?.visible" [opacity]="highlightedNode?.opacity"
+      (opacityChange)="updateOpacity($event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">
+      </ccf-opacity-slider>
+    </div>
+
     <!-- Disabled button used to add equal amount of space as an inner node's button -->
     <div class="non-expandable"></div>
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
+
   </mat-tree-node>
 
   <!-- Inner node template -->
   <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding
-                 [matTreeNodePaddingIndent]="indent">
-    <button class="toggle" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">
+                 [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider2.reset()">
+    <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="!highlightedNode?.visible && node.label === highlightedNode?.label" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
+    <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label != highlightedNode?.label">
+      <ccf-opacity-slider #slider2 [visible]="highlightedNode?.visible" [opacity]="highlightedNode?.opacity"
+        (opacityChange)="updateOpacity($event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">
+      </ccf-opacity-slider>
+    </div>
+
+    <button class="toggle" [class.hidden]="node.label === highlightedNode?.label" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">
       <mat-icon class="icon font-icon">
-        {{ control.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+        {{ control.isExpanded(node) ? 'expand_less' : 'expand_more' }}
       </mat-icon>
     </button>
+
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
+
   </mat-tree-node>
 </mat-tree>

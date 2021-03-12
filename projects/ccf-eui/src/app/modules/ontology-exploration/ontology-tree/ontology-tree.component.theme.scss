@@ -8,9 +8,57 @@
 
   .ccf-ontology-tree {
     .node {
-      .toggle {
-        background: mat-color($foreground, contrast-icon);
-        color: mat-color($background, background);
+      .opacity {
+        color: mat-color($foreground, main);
+  
+        &:hover {
+          background: mat-color($foreground, icons-hover);
+        }
+  
+        &.fade {
+          color: mat-color($foreground, icons-disabled);
+        }
+      }
+
+      .slider {
+        background-color: white;
+        
+        mat-slider {
+          .mat-slider-thumb {
+            background-color: mat-color($foreground, main);
+          }
+    
+          .mat-slider-track-background {
+            background-color: mat-color($foreground, icons-disabled);
+          }
+    
+          .mat-slider-track-fill {
+            background-color: mat-color($foreground, main);
+          }
+        }
+  
+        .opacity-value {
+          color: mat-color($foreground, opacity-numbers);
+        }
+    
+        .icon {
+          color: mat-color($foreground, main);
+          &:hover {
+            background: mat-color($foreground, icons-hover);
+          }
+        }
+    
+        .visibility {
+          &.invisible {
+            color: mat-color($foreground, icons-disabled);
+          }
+        }
+      }
+
+      .num-results {
+        &.suborgan {
+          color: mat-color($foreground, results-numbers);
+        }
       }
   
       .text {
