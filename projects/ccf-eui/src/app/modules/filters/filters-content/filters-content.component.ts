@@ -39,7 +39,6 @@ export class FiltersContentComponent {
   updateFilter(value: unknown, key: string): void {
     this.filters = { ...this.filters, [key]: value };
     this.filtersChange.emit(this.filters);
-    console.log(this.filters)
   }
 
   /**

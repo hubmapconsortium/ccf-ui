@@ -42,6 +42,7 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   organ-off: map-get($primary-colors, 800),
   organ-numbers: #757575,
 
+  icons-background-hover: #e0e0e0,
   icon-active: map-get($primary-colors, 500), //#9E9E9E
 ));
 

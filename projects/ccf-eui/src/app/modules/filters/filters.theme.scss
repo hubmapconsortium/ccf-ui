@@ -32,7 +32,8 @@
     }
 
     &:hover {
-      background: mat-color($foreground, icons-hover);
+      color: mat-color($foreground, contrast-icon);
+      background: mat-color($foreground, icons-background-hover);
     }
   }
 }

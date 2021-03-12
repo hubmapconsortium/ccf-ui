@@ -28,7 +28,9 @@
         <button class="scheme-toggle button" (click)="toggleScheme()">
           <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
         </button>
-        <mat-icon class="refresh button" (click)="reset(left, right, filterbox)">refresh</mat-icon>
+        <button class="button" (click)="reset(left, right, filterbox)">
+          <mat-icon class="refresh icon">refresh</mat-icon>
+        </button>
        </div>
        <ccf-info-button [infoTitle]="'HuBMAP CCF Exploration User Interface 1.0'"></ccf-info-button>
        
