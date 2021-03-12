@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { BodyUI } from 'ccf-body-ui';
 import { Filter } from 'ccf-database';
 
-import { DataSourceService } from './../../../core/services/data-source/data-source.service';
-import { DataState } from './../../../core/store/data/data.state';
+import { DataState } from '../../../core/store/data/data.state';
 
 
 @Component({
@@ -26,7 +25,7 @@ export class BodyUiComponent implements AfterViewInit {
 
   bodyUI: BodyUI;
 
-  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService) { }
+  constructor(readonly data: DataState) { }
 
   async ngAfterViewInit(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
@@ -35,18 +34,7 @@ export class BodyUiComponent implements AfterViewInit {
     await this.bodyUI.initialize();
 
     // TODO: Replace with a single @Input with scene provided by ngxs
-    this.data.filter$.subscribe(async (f: Filter) => {
-      const db = await this.dataSourceService.getDB();
-      const scene = await db.getScene(f);
-      // FIXME: Temporary fix until EUI and RUI are harmonized
-      for (const node of scene) {
-        const id = node['@id'] as string;
-        if (id.endsWith('#VHFemaleOrgans') || id.endsWith('#VHMaleOrgans')) {
-          node.color = [255, 0, 0, 255];
-        }
-      }
-      this.bodyUI.setScene(scene);
-    });
+    this.data.sceneData$.subscribe((scene) => this.bodyUI.setScene(scene));
 
     this.bodyUI.nodeClick$.subscribe(async ({node, ctrlClick}) => {
       switch (node['@id']) {

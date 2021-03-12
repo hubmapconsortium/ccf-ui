@@ -18,7 +18,7 @@ export const ALL_ORGANS: OrganInfo[] = [
   { src: 'app:small_intestine', organ: 'Small Intestine', name: 'Small Intestine', disabled: true, hasSex: true },
   { src: 'app:stomach', organ: 'Stomach', name: 'Stomach', disabled: true, hasSex: true },
   { src: 'app:thymus', organ: 'Stomach', name: 'Thymus', disabled: true, hasSex: true }
-];
+].filter(organ => organ.disabled !== true) as OrganInfo[];
 
 /**
  * Contains the organ name and url of the icon svg

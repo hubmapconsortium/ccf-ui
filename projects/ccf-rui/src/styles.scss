@@ -94,3 +94,7 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 0rem;
   visibility: hidden;
 }
+
+.light-theme .mat-tooltip {
+  background: rgba(97, 97, 97);
+}

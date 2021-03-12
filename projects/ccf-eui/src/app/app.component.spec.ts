@@ -34,6 +34,7 @@ describe('AppComponent', () => {
         aggregateData$: of(),
         queryStatus$: of(),
         termOccurencesData$: of(),
+        sceneData$: of(),
         updateFilter: () => undefined
       })
       .mock(ThemingService, {

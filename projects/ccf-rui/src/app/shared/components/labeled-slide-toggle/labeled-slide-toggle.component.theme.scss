@@ -6,13 +6,18 @@
 
   .ccf-labeled-slide-toggle {
     .mat-slide-toggle-bar {
-      background-color: mat-color($accent, 0.54);
+      background-color: mat-color($foreground, donor-sex-bg) !important;
     }
     .mat-slide-toggle-thumb {
-      background-color: mat-color($accent);
+      background-color: mat-color($foreground, donor-sex-toggle-nob) !important;
     }
+
+    .slide-label {
+      color: mat-color($foreground, inactive-sex);
+    }
+
     .highlighted {
-      color: mat-color($accent);
+      color: mat-color($foreground, active-sex);
     }
   }
 }

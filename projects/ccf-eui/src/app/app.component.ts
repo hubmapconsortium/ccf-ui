@@ -57,6 +57,7 @@ export class AppComponent {
     data.listData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();
+    data.sceneData$.subscribe();
     data.filter$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
   }

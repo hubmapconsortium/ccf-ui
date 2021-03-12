@@ -13,27 +13,52 @@ import { entity } from '../util/prefixes';
  * @returns The list of aggregate results.
  */
 export function getAggregateResults(ids: Set<string>, store: Store): AggregateResult[] {
-  const centers = new Set<string>();
-  store.some((quad) => {
-    if (ids.has(quad.subject.id)) { centers.add(quad.object.id); }
-    return false;
-  }, null, entity.groupUUID, null, null);
-
   const donors = new Set<string>();
   store.some((quad) => {
-    if (ids.has(quad.subject.id)) { donors.add(quad.object.id); }
+    if (ids.has(quad.subject.id)) {
+      donors.add(quad.object.id);
+    }
     return false;
   }, null, entity.donor, null, null);
 
-  const spatialEntities = new Set<string>();
+  const centers = new Set<string>();
+  store.some((quad) => {
+    if (donors.has(quad.subject.id)) {
+      centers.add(quad.object.id);
+    }
+    return false;
+  }, null, entity.providerUUID, null, null);
+
+  const tissueBlocks = new Set<string>();
   store.forSubjects((subject) => {
-    if (ids.has(subject.id)) { spatialEntities.add(subject.id); }
+    if (ids.has(subject.id)) {
+      tissueBlocks.add(subject.id);
+    }
   }, entity.spatialEntity, null, null);
 
+  const tissueSections = new Set<string>();
+  store.some((quad) => {
+    if (tissueBlocks.has(quad.subject.id)) {
+      tissueSections.add(quad.object.id);
+    }
+    return false;
+  }, null, entity.sections, null, null);
+
+  const tissueDatasets = new Set<string>();
+  store.some((quad) => {
+    const subject = quad.subject;
+    if (tissueBlocks.has(subject.id) || tissueSections.has(subject.id)) {
+      tissueDatasets.add(quad.object.id);
+    }
+    return false;
+  }, null, entity.datasets, null, null);
+
   const results: { [key: string]: number } = {
-    Centers: centers.size,
+    'Tissue Data Providers': centers.size,
     Donors: donors.size,
-    Samples: spatialEntities.size
+    'Tissue Blocks': tissueBlocks.size,
+    'Tissue Sections': tissueSections.size,
+    'Tissue Datasets': tissueDatasets.size
   };
 
   return Object.entries(results).map(([label, count]) => ({ label, count }));
