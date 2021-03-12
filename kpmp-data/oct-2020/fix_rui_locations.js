@@ -1,3 +1,5 @@
+// DON'T RUN THIS CODE ANYMORE, we are now generating JSONLD file by hand //
+
 /* jshint esversion: 6 */
 const fs = require('fs');
 

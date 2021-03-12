@@ -8,6 +8,8 @@ import { ReviewButtonModule } from './review-button.module';
 describe('ReviewButtonComponent', () => {
   let shallow: Shallow<ReviewButtonComponent>;
   let afterClosedObservable: Subject<boolean>;
+  const emptyMetaData = [{value: ''}, {value: ''}, {value: ''}];
+  const metaData = [{value: 'First Name'}, {value: 'Last Name'}, {value: 'Organ'}];
 
   beforeEach(() => {
     const mockDialog = jasmine.createSpyObj<MatDialogRef<unknown, boolean>>('DialogRef', ['afterClosed']);
@@ -19,14 +21,14 @@ describe('ReviewButtonComponent', () => {
   });
 
   it('should launch the review dialog if the registration is valid', async () => {
-    const { find, instance } = await shallow.render({ bind: { registrationIsValid: true }});
+    const { find, instance } = await shallow.render({ bind: { registrationIsValid: true, metaData }});
     const spy = spyOn(instance, 'launchReviewModal');
     find('.review-button').triggerEventHandler('click', '');
     expect(spy).toHaveBeenCalled();
   });
 
   it('should not launch the review dialog if the registration is not valid', async () => {
-    const { find, instance } = await shallow.render({ bind: { registrationIsValid: false }});
+    const { find, instance } = await shallow.render({ bind: { registrationIsValid: false, metaData: emptyMetaData }});
     const spy = spyOn(instance, 'launchReviewModal');
     find('.review-button').triggerEventHandler('click', '');
     expect(spy).not.toHaveBeenCalled();

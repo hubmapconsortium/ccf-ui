@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { MetaData } from '../../../core/models/meta-data';
@@ -13,7 +13,7 @@ import { ReviewModalComponent } from '../review-modal/review-modal.component';
   templateUrl: './review-button.component.html',
   styleUrls: ['./review-button.component.scss']
 })
-export class ReviewButtonComponent {
+export class ReviewButtonComponent implements OnChanges {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-review-button';
 
@@ -60,11 +60,19 @@ export class ReviewButtonComponent {
   constructor(private readonly dialog: MatDialog) { }
 
   /**
+   * Updates the value of registrationIsValid based on the
+   * meta data.
+   */
+  ngOnChanges() {
+    this.registrationIsValid = Boolean(this.metaData[0].value && this.metaData[1].value && this.metaData[2].value);
+  }
+
+  /**
    * Decides whether or not the download / register button should
    * be disabled.
    */
   get disabled(): boolean {
-    return this.displayErrors && !this.registrationIsValid;
+    return !this.registrationIsValid;
   }
 
   /**

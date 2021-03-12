@@ -62,17 +62,20 @@ $foreground: map-merge($mat-light-theme-foreground, (
   chip-icon-done-green: map-get($mat-green, A700),
   chip-icon-background:  #E9E9E9,
   chip-border-primary:  map-get($primary-colors, light-header),
-
-
   toggle-thumb: map-get($primary-colors, light-header),
   toggle-bg: #ECECEC,
   mat-divider: rgba(0, 0, 0, 0.03),
-
   main: #444A65,
   opacity-numbers: #CCCCCC,
   icons-disabled: #CCCCCC,
-  icons-hover: #e0e0e0
-
+  icons-hover: #eeeeee,
+  organ-off: #cccccc,
+  carousel-text: map-get($primary-colors, 'black'),
+  icon-active: #f5f5f5,
+  donor-sex-toggle-nob: map-get($primary-colors, light-header),
+  donor-sex-bg: #CCCCCC,
+  inactive-sex: #636363,
+  active-sex: #212121
 ));
 
 $background: map-merge($mat-light-theme-background, (
@@ -85,13 +88,15 @@ $background: map-merge($mat-light-theme-background, (
   sidebar-background: map-get($primary-colors,  'white'),
   stage-background: map-get($primary-colors, 'black'),
 
-  hover-background: map-get($primary-colors, 300), // #E0E0E0
+  hover-background: map-get($primary-colors, 100), // #E0E0E0
   dialog: map-get($primary-colors, 50), // #FAFAFA
   authentication: map-get($primary-colors, 50), // #FAFAFA
   dropdown-menu: map-get($primary-colors, 300), // #E0E0E0
   dropdown-hover: map-get($primary-colors, 300), // #E0E0E0
   image-placeholder: map-get($primary-colors, light-disabled), // #BDBDBD
   drawer-background: map-get($primary-colors, 'white'),
+  drawer-hover: map-get($primary-colors, 300),
+  info-button-hover: map-get($primary-colors, 300)
 ));
 
 $theme: (

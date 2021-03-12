@@ -1,6 +1,7 @@
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
+  $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
   $accent: map-get($theme, accent);
   $primary: map-get($theme, primary);
@@ -8,7 +9,8 @@
   .ccf-ontology-tree {
     .node {
       .toggle {
-        background-color: mat-color($foreground, divider);
+        background: mat-color($background, background);
+        color: mat-color($foreground, text);
       }
 
       .text {

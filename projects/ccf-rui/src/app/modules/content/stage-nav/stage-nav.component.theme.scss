@@ -47,5 +47,16 @@
         }
       }
     }
+
+    .mat-slide-toggle-bar {
+      background-color: mat-color($accent, 900) !important;
+    }
+    .mat-slide-toggle-thumb {
+      background-color: mat-color($accent) !important;
+    }
+    
+    .highlighted {
+      color: mat-color($accent) !important;
+    }
   }
 }

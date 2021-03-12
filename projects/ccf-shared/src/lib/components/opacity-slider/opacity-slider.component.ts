@@ -50,6 +50,10 @@ export class OpacitySliderComponent implements OnInit {
     }
   }
 
+  reset(): void {
+    this.prevOpacity = 20;
+  }
+
   /**
    * Emits opacityChange with the new opacity value
    *
