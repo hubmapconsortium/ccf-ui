@@ -4,6 +4,10 @@
   height: 100%;
   overflow: hidden;
 
+  ::ng-deep .mat-tooltip {
+    background-color: rbg(97, 97, 97) !important;
+  }
+
   ccf-header {
     z-index: 200;
   }

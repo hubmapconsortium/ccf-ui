@@ -24,6 +24,7 @@
   @include mat-checkbox-theme($theme);
   @include mat-progress-spinner-theme($theme);
   @include mat-expansion-panel-theme($theme);
+  @include mat-tooltip-theme($theme);
 
   @include header.theme($theme);
   @include drawer.theme($theme);
