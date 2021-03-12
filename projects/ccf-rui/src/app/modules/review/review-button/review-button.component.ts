@@ -65,9 +65,9 @@ export class ReviewButtonComponent {
    */
   get disabled(): boolean {
     if(this.metaData[0].value && this.metaData[1].value && this.metaData[2].value) {
-      return false
+      return false;
     }
-    return true
+    return true;
   }
 
   /**
@@ -88,7 +88,7 @@ export class ReviewButtonComponent {
    * Opens the info dialogue with the project details
    */
   launchReviewModal(): void {
-   
+
     const dialogRef = this.dialog.open(ReviewModalComponent, {
       panelClass: 'modal-animated',
       width: '60rem',
