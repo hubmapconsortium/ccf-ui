@@ -28,8 +28,8 @@
         <button class="scheme-toggle button" (click)="toggleScheme()" [matTooltip]="theming.getTheme() === 'light-theme' ? 'Enter Dark Mode' : 'Enter Light Mode'">
           <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
         </button>
-        <button class="button" (click)="reset(left, right, filterbox)">
-          <mat-icon class="refresh icon">refresh</mat-icon>
+        <button class="button">
+          <mat-icon class="refresh icon" (click)="reset(left, right, filterbox)">refresh</mat-icon>
         </button>
        </div>
        <ccf-info-button [infoTitle]="'HuBMAP CCF Exploration User Interface 1.0'" [matTooltip]="'Open Info'"></ccf-info-button>
