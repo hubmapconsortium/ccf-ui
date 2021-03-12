@@ -170,7 +170,7 @@ export class HuBMAPTissueBlock {
   description: string;
   link: string;
 
-  sample_type: 'Tissue Block';
+  sample_type = 'Tissue Block';
   section_count: number;
   section_size: number;
   section_units: string;
