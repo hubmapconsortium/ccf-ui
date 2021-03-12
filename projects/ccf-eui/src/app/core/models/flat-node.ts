@@ -6,6 +6,12 @@ import { OntologyNode } from './ontology-node';
  * Node type used by ontology tree component.
  */
 export class FlatNode {
+  visible?: boolean;
+
+  opacity?: number;
+
+  numResults?: number;
+
   /**
    * Gets this node's label.
    */

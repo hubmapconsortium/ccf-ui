@@ -15,6 +15,7 @@ import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinne
 import { OrganSelectorModule, InfoButtonModule } from 'ccf-shared';
 
 import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
     SpinnerOverlayModule,
     BodyModule,
     OrganSelectorModule,
-    InfoButtonModule
+    InfoButtonModule,
+    MatTooltipModule
   ],
   declarations: [AppComponent],
   providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],

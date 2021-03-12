@@ -14,6 +14,9 @@ export * from './lib/components/text-search/text-search.component';
 export * from './lib/components/organ-selector/organ-selector.module';
 export * from './lib/components/organ-selector/organ-selector.component';
 
+export * from './lib/components/opacity-slider/opacity-slider.module';
+export * from './lib/components/opacity-slider/opacity-slider.component';
+
 export * from './lib/components/info/info-dialog/info-dialog.module';
 export * from './lib/components/info/info-dialog/info-dialog.component';
 

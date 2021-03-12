@@ -2,6 +2,25 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
 
+## 1.4.0 - 2021-03-12
+
+### Added in RUI 1.4.0
+
+* Updated library dependencies, including to Angular 11
+* Updated styling to better fit the [user interface spec](https://drive.google.com/file/d/1M0Pfu41Kv-RBOvIF9hB-mcNK9U4qsDIp/view)
+
+### Added in EUI 1.4.0
+
+NOTE: EUI will not be pushed to production during this cycle as there are some features partly integrated. This will be resolved in the next release scheduled for March 26th. You can view the results of this sprint on [staging](https://hubmap-ccf-ui.netlify.app/).
+
+* Updated library dependencies, including to Angular 11
+* Updated styling to better fit the [user interface spec](https://drive.google.com/file/d/15mx__aHeNDCBBYBXM64ED6YAOeyp9Fcy/view) and match RUI styling
+* Updated the Info Dialog to match the RUI look and feel
+* Updated the data processing to improve efficiency and generate data in the form needed for the v1.5.0 spec
+* Added a reference organ selector, also used in the RUI, to turn off/on reference organs on the stage. UI is implemented, but still needs hooked up to the 3d Stage.
+* Added a technology filter
+* Added a control to set Opacities of individual organs/anatomical structures on the stage. UI is implemented, but still needs hooked up to the 3d Stage.
+
 ## 1.3.5 - 2021-02-26
 
 ### Added in RUI 1.3.5
