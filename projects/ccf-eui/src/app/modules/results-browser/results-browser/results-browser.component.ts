@@ -66,15 +66,12 @@ export class ResultsBrowserComponent implements OnInit {
    */
   selectedResult: ListResult;
 
-
-
   donorColorPalette: ColorPalette = [
     { available: true, color: 'blue', ruiLocationId: '' },
     { available: true, color: 'pink', ruiLocationId: ''  },
     { available: true, color: 'orange', ruiLocationId: ''  },
     { available: true, color: 'green', ruiLocationId: ''  },
   ];
-
 
 
   /**
@@ -189,18 +186,21 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
   getNextColor(ruiLocationId?: string): string {
+    console.log('get next color() called.')
     // If ruiLocationId is passed in, check first if there is already a color assigned to it.
     if (ruiLocationId) {
       if (this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)) {
+        console.log('re-using old color.')
         return this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)!.color;
       }
     }
 
-    const availableColors = this.donorColorPalette.filter(color => !!color.available);
-    let newColor: string;
+    let availableColors = [...this.donorColorPalette];
+    availableColors = availableColors.filter(color => color.available);
+    console.log('availablecolors: ', availableColors);
 
     if (availableColors.length > 0) {
-      newColor = availableColors[0].color;
+      let newColor = availableColors[0].color;
       this.donorColorPalette.find(color => color.color === newColor)!.available = false;
       return newColor;
     }
@@ -210,8 +210,10 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
   recycleOldestColor(): string {
+    console.log('attempting to recycle oldest color().');
     // Should not be recycling colors if none are currently selected.
-    if (this.tissueBlockRegistry.length >= 0) {
+    if (this.tissueBlockRegistry.length <= 0) {
+      console.log('but it should not be');
       return '';
     }
     const registryCopy = [...this.tissueBlockRegistry];
@@ -230,7 +232,8 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
   setColorAvailability(color: string, available: boolean): void {
-    if (!this.donorColorPalette.find(tColor => tColor.color === color)) {
+    // Color must be a valid color from the palette.
+    if (!this.donorColorPalette.find(tempColor => tempColor.color === color)) {
       return;
     }
 
@@ -238,6 +241,7 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
   useColor(color: string, ruiLocationId): void {
+    // Can only use colors that are in the color palette.
     if (!this.donorColorPalette.find(tempColor => tempColor.color === color)) {
       return;
     }
@@ -253,9 +257,9 @@ export class ResultsBrowserComponent implements OnInit {
     if (selected) {
       const newColor = this.getNextColor();
       this.selectTissueBlock(donor, this.getNextColor());
-      this.setColorAvailability(newColor, false);
     } else {
       this.setColorAvailability(this.getTissueBlockColor(donor.ruiLocationId), true);
+      this.deselectTissueBlock(donor);
     }
   }
 
@@ -271,19 +275,39 @@ export class ResultsBrowserComponent implements OnInit {
     return false;
   }
 
+  deselectTissueBlock(tissueBlock: TissueBlockResult): void {
+    // If the passed in tissue block isn't on the registry then it's already deselected.
+    if (!this.tissueBlockRegistry.find(tBlock => tBlock['@id'] === tissueBlock['@id'])) {
+      return;
+    }
+
+    // Remove the block from the selection registry.
+    const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry.find(tBlock => tBlock['@id'] === tissueBlock['@id'])!);
+    this.tissueBlockRegistry.splice(blockIndex, 1);
+
+    // If there are no more blocks with the same ruiLocationId selected then the color needs to be set to available now.
+    if (this.tissueBlockRegistry.filter(block => block.ruiLocationId === tissueBlock.ruiLocationId).length < 1) {
+      this.setColorAvailability(this.getTissueBlockColor(tissueBlock.ruiLocationId), true);
+    }
+  }
+
   selectTissueBlock(tissueBlock: TissueBlockResult, color?: string): void {
+    // Register this tissue block as having been selected.
     this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], ruiLocationId: tissueBlock.ruiLocationId });
 
     if (color) {
+      // If a color is passed in, and it is a valid color of the color palette, then use it for the selected tissueBlock.
       if (this.donorColorPalette.find(tempColor => tempColor.color === color)) {
         this.useColor(this.donorColorPalette.find(tempColor => tempColor.color === color)!.color, tissueBlock.ruiLocationId);
       }
     }
 
+    // If the ruiLocationId of this tissue block already has a color assigned to it, we're done.
     if (this.donorColorPalette.find(color => color.ruiLocationId === tissueBlock.ruiLocationId)) {
       return;
     }
 
+    // Otherwise we need to assign the next available color.
     this.useColor(this.getNextColor(), tissueBlock.ruiLocationId);
   }
 
