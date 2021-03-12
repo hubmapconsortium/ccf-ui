@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { TissueBlockResult } from '../../../core/models/tissue-block-result';
 
-import { DonorCard } from '../../../core/models/donor';
 
 
 @Component({
@@ -12,19 +12,21 @@ export class DonorCardComponent {
   /** HTML Class Name */
   @HostBinding('class') readonly clsName = 'ccf-donor-card';
 
-  @Input() donor: DonorCard;
+  @Input() donor!: TissueBlockResult;
+  @Input() selected: boolean = false;
+  @Input() color!: string;
   @Output() checked = new EventEmitter<boolean>();
 
   handleCheckbox(): void {
-    this.donor.selected = !this.donor.selected;
-    this.checked.emit(this.donor.selected);
+    this.selected = !this.selected;
+    this.checked.emit(this.selected);
   }
 
   applyStyles(): unknown {
-    if (!this.donor.selected) {
+    if (!this.selected) {
       return { 'background-color: ': 'white' };
     }
 
-    return { 'background-color': this.donor.color };
+    return { 'background-color': this.color };
   }
 }

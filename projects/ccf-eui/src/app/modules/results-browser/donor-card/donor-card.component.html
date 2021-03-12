@@ -1,5 +1,5 @@
-<div class="checkbox-background" [class.selected]="donor.selected" [ngStyle]="applyStyles()" (click)="handleCheckbox()">
-  <ng-container *ngIf="donor.selected; else unselected">
+<div class="checkbox-background" [class.selected]="selected" [ngStyle]="applyStyles()" (click)="handleCheckbox()">
+  <ng-container *ngIf="selected; else unselected">
     <mat-icon class="checkbox selected">check_box</mat-icon>
   </ng-container>
   <!-- @TODO:  Update to outlined icon. -->
@@ -18,5 +18,5 @@
 
   <div class="spacer"></div>
 
-  <mat-icon class="icon" *ngIf="donor.selected">expand_more</mat-icon>
+  <mat-icon class="icon" *ngIf="selected">expand_more</mat-icon>
 </div>

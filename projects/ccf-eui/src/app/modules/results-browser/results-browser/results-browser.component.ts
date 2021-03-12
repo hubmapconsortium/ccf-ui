@@ -1,13 +1,22 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AggregateResult, ListResult } from 'ccf-database';
-import { DonorCard } from '../../../core/models/donor';
+import { TissueBlockResult } from '../../../core/models/tissue-block-result';
 
 interface ColorSwatch {
   color: string;
   available: boolean;
+  '@id': string;
 }
 
 type ColorPalette = ColorSwatch[];
+
+interface TissueBlockRegistryEntry {
+  '@id': string;
+  ruiLocationId: string;
+  color: string;
+}
+
+type TissueBlockRegistry = TissueBlockRegistryEntry[];
 
 /**
  * ResultsBrowser is the container component in charge of rendering the label and stats of
@@ -72,58 +81,50 @@ export class ResultsBrowserComponent implements OnInit {
   /**
    * Placeholder data for donor card component
    * */
-  sampleDonor: DonorCard = {
-    selected: false,
-    color: 'pink',
+  sampleDonor: TissueBlockResult = {
+    '@id': '4321',
+    '@type': 'Sample',
+    label: '',
+    description: '',
+    link: '',
+    sampleType: 'Tissue Block',
+    sectionCount: 2,
+    sectionSize: 10,
+    sectionUnits: 'um',
+    ruiLocationId: '121',
     donor: {
+      '@id': '12',
+      '@type': 'Donor',
       link: 'www.google.com',
       label: 'Female, Age 38, BMI 14.7',
       description: 'Entered 1/21/2021, Hom Sim, VU'
     },
-    rui_location: {},
-    sample: {
-      link: 'www.google.com',
-      label: 'Registered 1/3/2021, Hom Sim, VU',
-      description: '1 x 1.2 x 3mm, 10um, Flash Frozen, 4 Sections',
-      datasets: [
-        {
-          thumbnail: 'assets/thumbnails/DR1-VU/VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.jpg',
-          link: 'www.google.com',
-          label: ''
-        },
-        {
-          thumbnail: 'assets/thumbnails/DR1-VU/VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.jpg',
-          link: 'www.google.com',
-          label: ''
-        },
-        {
-          thumbnail: 'assets/thumbnails/DR1-VU/VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.jpg',
-          link: 'www.google.com',
-          label: ''
-        }
-      ],
-      samples: [
-        {
-          link: 'www.google.com',
-          label: '',
-          description: '',
-          datasets: [
-            {
-              thumbnail: 'assets/images/image1.png',
-              link: 'www.google.com',
-              label: ''
-            },
-            {
-              thumbnail: 'assets/images/image1.png',
-              link: 'www.google.com',
-              label: ''
-            }
-          ]
-        }
-      ]
-    }
+    datasets: [
+      {
+        '@id': '432',
+        '@type': 'Dataset',
+        link: 'www.google.com',
+        thumbnail: '',
+        technology: '',
+        label: 'Registered 1/3/2021, Hom Sim, VU',
+        description: '1 x 1.2 x 3mm, 10um, Flash Frozen, 4 Sections'
+      }
+    ],
+    sections: [
+      {
+        '@id': '321',
+        '@type': 'Sample',
+        label: '',
+        description: '',
+        link: '',
+        sampleType: 'Tissue Section',
+        sectionNumber: 1,
+        datasets: []
+      }
+    ]
   }
-  donorData: DonorCard[] = [];
+  donorData: TissueBlockResult[] = [];
+  tissueBlockRegistry: TissueBlockRegistry = [];
 
   test = {
     "@id": "iri",
@@ -176,8 +177,8 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let tempDonorA: DonorCard;
-    let tempDonorB: DonorCard;
+    let tempDonorA: TissueBlockResult;
+    let tempDonorB: TissueBlockResult;
     let donor;
     for (let i = 0; i <= 15; i++) {
       donor = {
@@ -194,13 +195,16 @@ export class ResultsBrowserComponent implements OnInit {
 
   getAvailableColor(): string {
     let availableColors = this.donorColorPalette.filter(color => color.available);
-    if (!availableColors.length) {
-      // ?
-      return '';
+    if (availableColors.length) {
+      return availableColors[0].color;
     }
 
-    const color = availableColors[0].color;
-    return color;
+    // @TODO:  remove test code
+    const before = this.tissueBlockRegistry
+    const color = this.tissueBlockRegistry.shift()?.color || '';
+    // pop oldest selection from registry
+    // return color of popped selection
+    return '';
   }
 
   setColorAvailability(color: string, available: boolean): void {
@@ -212,17 +216,27 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
 
-  handleDonorCardSelection($event: boolean, donor: DonorCard): void {
+  handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {
     const selected = $event;
-    console.log('event: ', $event, '\ndonor: ', donor);
-    // @TODO:  ask how to match to determine when to use same colors.
+    // same rui_location_id = same color.
     if (selected) {
       const newColor = this.getAvailableColor();
-      this.donorData.find(oldDonor => oldDonor.donor === donor.donor)!.color = this.getAvailableColor();
+      this.setTissueBlockColor(donor, this.getAvailableColor());
       this.setColorAvailability(newColor, false);
     } else {
-      this.setColorAvailability(donor.color, true);
+      this.setColorAvailability(this.getTissueBlockColor(donor), true);
     }
+  }
+
+  getTissueBlockColor(tissueBlock: TissueBlockResult): string {
+    return this.tissueBlockRegistry.find(block => block.id === tissueBlock.ruiLocationId)?.color || '';
+  }
+
+  setTissueBlockColor(tissueBlock: TissueBlockResult, color?: string): void {
+    this.tissueBlockRegistry.push({
+      color: color ? color : this.getAvailableColor(),
+      id: tissueBlock['@id']
+    });
   }
 
   /**
