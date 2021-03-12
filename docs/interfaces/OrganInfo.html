@@ -97,10 +97,6 @@
                                         <a href="#name">name</a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#numResults">numResults</a>
-                                </li>
-                                <li>
                                         <a href="#organ">organ</a>
                                 </li>
                                 <li>
@@ -240,40 +236,6 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="numResults"></a>
-                                        <span class="name"><b>numResults</b><a href="#numResults"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>numResults:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
                                         <a name="organ"></a>
                                         <span class="name"><b>organ</b><a href="#organ"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
@@ -399,7 +361,7 @@ export const ALL_ORGANS: OrganInfo[] &#x3D; [
   { src: &#x27;app:small_intestine&#x27;, organ: &#x27;Small Intestine&#x27;, name: &#x27;Small Intestine&#x27;, disabled: true, hasSex: true },
   { src: &#x27;app:stomach&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Stomach&#x27;, disabled: true, hasSex: true },
   { src: &#x27;app:thymus&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Thymus&#x27;, disabled: true, hasSex: true }
-].filter(organ &#x3D;&gt; organ.disabled !&#x3D;&#x3D; true) as OrganInfo[];
+];
 
 /**
  * Contains the organ name and url of the icon svg
@@ -432,8 +394,6 @@ export interface OrganInfo {
    * True if applies to both sexes
    */
   hasSex?: boolean;
-
-  numResults?: number;
 }
 
 /**
@@ -472,6 +432,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Emits the name of the organ when selected
    */
   @Output() organsChanged &#x3D; new EventEmitter&lt;OrganInfo[]&gt;();
+
+  @Input() hidden &#x3D; false;
 
   /**
    * Determines whether the carousel is at the beginning
@@ -534,7 +496,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /**
    * Scrolls the carousel left or right by one step.
    * Prevents scrolling past the beginning or end of the carousel.
-   *
    * @param dir Direction to be scrolled
    */
   shift(dir: string): void {
@@ -550,7 +511,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Scrolls carousel continuously
-   *
    * @param dir Direction to be scrolled
    */
   scroll(dir: string): void {
@@ -572,7 +532,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Sets and emits currently selected organ(s)
-   *
    * @param organ The organ selected
    */
   selectOrgan(organ: OrganInfo): void {
@@ -580,7 +539,9 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
       this.selectedOrgans &#x3D; [organ];
     } else {
       if (this.selectedOrgans.includes(organ)) {
-        this.selectedOrgans &#x3D; this.selectedOrgans.filter((selectedOrgan) &#x3D;&gt; organ !&#x3D;&#x3D; selectedOrgan);
+        this.selectedOrgans &#x3D; this.selectedOrgans.filter((selectedOrgan) &#x3D;&gt; {
+          return organ !&#x3D;&#x3D; selectedOrgan;
+        });
       } else {
         this.selectedOrgans &#x3D; this.selectedOrgans.concat([organ]);
       }
@@ -590,7 +551,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Determines whether an icon represents a currently selected organ
-   *
    * @param icon The icon of interest
    * @returns true if selected
    */

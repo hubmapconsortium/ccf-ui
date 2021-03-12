@@ -158,7 +158,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -191,7 +191,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -225,7 +225,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -267,8 +267,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:42</a></div>
                 </td>
             </tr>
 
@@ -308,8 +308,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:59</a></div>
                 </td>
             </tr>
 
@@ -357,8 +357,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.ts:52</a></div>
                 </td>
             </tr>
 
@@ -494,27 +494,27 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   /** HTML class */
   @HostBinding(&#x27;class&#x27;) readonly className &#x3D; &#x27;ccf-drawer&#x27;;
   /** Whether this is located at the end position. */
-  @HostBinding(&#x27;class.ccf-drawer-end&#x27;) // eslint-disable-line
+  @HostBinding(&#x27;class.ccf-drawer-end&#x27;) // tslint:disable-line: no-unsafe-any
   get classEnd(): boolean { return this.position &#x3D;&#x3D;&#x3D; &#x27;end&#x27;; }
 
   /** Position of the drawer - start (left) or end (right). */
-  @Input()// eslint-disable-line
+  @Input()// tslint:disable-line: no-unsafe-any
   get position(): &#x27;start&#x27; | &#x27;end&#x27; { return this._position; }
   set position(value: &#x27;start&#x27; | &#x27;end&#x27;) { this._position &#x3D; value || &#x27;start&#x27;; }
   /** Property for position getter/setter. */
   private _position: &#x27;start&#x27; | &#x27;end&#x27; &#x3D; &#x27;start&#x27;;
 
   /** Whether the drawer is opened. */
-  @Input() // eslint-disable-line
-  @HostBinding(&#x27;class.ccf-drawer-opened&#x27;) // eslint-disable-line
+  @Input() // tslint:disable-line: no-unsafe-any
+  @HostBinding(&#x27;class.ccf-drawer-opened&#x27;) // tslint:disable-line: no-unsafe-any
   get opened(): boolean { return this._opened; }
   set opened(value: boolean) { this.toggle(coerceBooleanProperty(value)); }
   /** Property for opened getter/setter. */
   private _opened &#x3D; false;
 
   /** Whether the drawer is expanded. */
-  @Input() // eslint-disable-line
-  @HostBinding(&#x27;class.ccf-drawer-expanded&#x27;) // eslint-disable-line
+  @Input() // tslint:disable-line: no-unsafe-any
+  @HostBinding(&#x27;class.ccf-drawer-expanded&#x27;) // tslint:disable-line: no-unsafe-any
   get expanded(): boolean { return this._expanded; }
   set expanded(value: boolean) { this.toggleExpanded(coerceBooleanProperty(value)); }
   /** Property for expanded getter/setter */
@@ -532,7 +532,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   openedState: OpenedState &#x3D; &#x27;closed&#x27;;
 
   /** Expanded/collapsed state parameters. */
-  @HostBinding(&#x27;@expandCollapse&#x27;)  // eslint-disable-line
+  @HostBinding(&#x27;@expandCollapse&#x27;)  // tslint:disable-line: no-unsafe-any
   get expandedStateObj(): unknown {
     return { value: this.expandedState2, params: {
       width: this.width, margin: this.measuredMargin,
@@ -686,7 +686,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   /**
    * Listener to open/close animation completion.
    */
-  @HostListener(&#x27;@openClose.done&#x27;) // eslint-disable-line
+  @HostListener(&#x27;@openClose.done&#x27;) // tslint:disable-line: no-unsafe-any
   closeOpenDone(): void {
     this.openedChange.emit(this.opened);
   }
@@ -694,7 +694,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   /**
    * Listener to expand/collapse animation completion.
    */
-  @HostListener(&#x27;@expandCollapse.done&#x27;) // eslint-disable-line
+  @HostListener(&#x27;@expandCollapse.done&#x27;) // tslint:disable-line: no-unsafe-any
   expandCollapseDone(): void {
     this.expandedChange.emit(this.expanded);
   }
@@ -763,12 +763,11 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   }
 
   /** Workaround for getter/setter pair not accepting different types. */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  static ngAcceptInputType_position: &#x27;&#x27; | &#x27;start&#x27; | &#x27;end&#x27;;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  static ngAcceptInputType_opened: BooleanInput;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  static ngAcceptInputType_expanded: BooleanInput;
+  static ngAcceptInputType_position: &#x27;&#x27; | &#x27;start&#x27; | &#x27;end&#x27;; // tslint:disable-line: variable-name member-ordering
+  /** Workaround for getter/setter pair not accepting different types. */
+  static ngAcceptInputType_opened: BooleanInput; // tslint:disable-line: variable-name member-ordering
+  /** Workaround for getter/setter pair not accepting different types. */
+  static ngAcceptInputType_expanded: BooleanInput; // tslint:disable-line: variable-name member-ordering
 }
 </code></pre>
     </div>

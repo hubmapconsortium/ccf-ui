@@ -714,9 +714,7 @@
 
 import { CCFDatabase } from &#x27;./ccf-database&#x27;;
 import { Filter } from &#x27;./interfaces&#x27;;
-import {
-  getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity,
-} from &#x27;./queries/spatial-result-n3&#x27;;
+import { getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity } from &#x27;./queries/spatial-result-n3&#x27;;
 import { ExtractionSet, SpatialEntity } from &#x27;./spatial-types&#x27;;
 import { ccf, rui } from &#x27;./util/prefixes&#x27;;
 
@@ -850,7 +848,7 @@ export class CCFSpatialScene {
     let transform &#x3D; this.db.graph.getTransformationMatrix(sourceID, target[&#x27;@id&#x27;]);
     if (transform) {
       if (has3dObject) {
-        transform &#x3D; new Matrix4(Matrix4.IDENTITY).rotateX(toRadians(90)).multiplyLeft(transform);
+        transform &#x3D; new Matrix4().rotateX(toRadians(90)).multiplyLeft(transform);
       } else {
         // Scale visible bounding boxes to the desired dimensions
         let factor: number;

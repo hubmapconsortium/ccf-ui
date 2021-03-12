@@ -215,9 +215,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
-import { HttpClient } from &#x27;@angular/common/http&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
+import { Immutable } from &#x27;@ngxs-labs/data/typings&#x27;;
 import { Store } from &#x27;@ngxs/store&#x27;;
 import { at, find, forEach, keyBy, map as loMap, partial } from &#x27;lodash&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
@@ -353,7 +353,6 @@ export class OntologySearchService {
 
   /**
    * Searches the ontology with the search-term
-   *
    * @param value the search term
    * @returns an array of search-results
    */
@@ -365,7 +364,6 @@ export class OntologySearchService {
 
   /**
    * looks up ontology nodes and composes search results
-   *
    * @param nodes Ontology nodes
    * @param searchValue search text in lower case
    * @returns search results
@@ -402,7 +400,6 @@ export class OntologySearchService {
 
   /**
    * Gets index of match in the ontology label
-   *
    * @param label the provided ontology node label or synonym label
    * @param searchValue the searched text in lower case
    * @returns the index of the match in the label
@@ -413,7 +410,6 @@ export class OntologySearchService {
 
   /**
    * Formats label based on where the search-term was found in the OntologyNode
-   *
    * @param label label or first synonym-label of OntologyNode which has the search-term
    * @param searchValue search-term
    * @returns an array in the form of [prefix, search-term, suffix]

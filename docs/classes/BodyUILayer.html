@@ -224,15 +224,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getPickingInfo(e)</code>
+<code>getPickingInfo(e: literal type)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui-layer.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui-layer.ts:86</a></div>
                 </td>
             </tr>
 
@@ -246,12 +246,16 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>e</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -265,7 +269,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>ReturnType&lt;&gt;</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -384,7 +388,7 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
         highlightColor: [30, 136, 229, 255],
         coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
         data,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // tslint:disable-next-line: no-any
         mesh: new CubeGeometry() as any,
         wireframe: false,
         getTransformMatrix: (d) &#x3D;&gt; (d as {transformMatrix: number[][]}).transformMatrix,
@@ -406,7 +410,7 @@ export class BodyUILayer extends CompositeLayer&lt;SpatialSceneNode&gt; {
   }
 
   renderLayers(): unknown[] {
-    const state &#x3D; this.state as { data: SpatialSceneNode[]; zoomOpacity: number; doCollisions: boolean };
+    const state &#x3D; this.state as {data: SpatialSceneNode[], zoomOpacity: number, doCollisions: boolean};
     const cubes &#x3D; state.data.filter(d &#x3D;&gt; !d.scenegraph &amp;&amp; !d.wireframe &amp;&amp; d.unpickable);
     const pickableCubes &#x3D; state.data.filter(d &#x3D;&gt; !d.scenegraph &amp;&amp; !d.wireframe &amp;&amp; !d.unpickable);
     const wireframes &#x3D; state.data.filter(d &#x3D;&gt; !d.scenegraph &amp;&amp; d.wireframe);
@@ -416,7 +420,7 @@ export class BodyUILayer extends CompositeLayer&lt;SpatialSceneNode&gt; {
       doCollisions(state.data);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // tslint:disable-next-line: no-any
     const url2gltf: {[url: string]: Promise&lt;any&gt;} &#x3D; {};
     for (const m of models) {
       if (m.scenegraph &amp;&amp; m.scenegraphNode &amp;&amp; !url2gltf.hasOwnProperty(m.scenegraph)) {
@@ -438,20 +442,17 @@ export class BodyUILayer extends CompositeLayer&lt;SpatialSceneNode&gt; {
           scenegraph: model.scenegraphNode ?
             loadGLTF2(model.scenegraphNode, url2gltf[model.scenegraph as string]) :
             model.scenegraph as unknown as URL,
-          // eslint-disable-next-line no-underscore-dangle
           _lighting: model._lighting,  // &#x27;pbr&#x27; | undefined
           getTransformMatrix: model.transformMatrix as unknown as number[][],
           getColor: model.color || [0, 255, 0, 0.5*255],
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          // tslint:disable-next-line: no-any
           parameters: {depthMask: !model.zoomBasedOpacity &amp;&amp; (model.opacity &#x3D;&#x3D;&#x3D; undefined || model.opacity &#x3D;&#x3D;&#x3D; 1)} as any
         })
       )
     ].filter(l &#x3D;&gt; !!l);
   }
 
-  getPickingInfo(
-    e: Parameters&lt;CompositeLayer&lt;SpatialSceneNode&gt;[&#x27;getPickingInfo&#x27;]&gt;[0]
-  ): ReturnType&lt;CompositeLayer&lt;SpatialSceneNode&gt;[&#x27;getPickingInfo&#x27;]&gt; {
+  getPickingInfo(e: {info: object}): unknown {
     return e.info;
   }
 }

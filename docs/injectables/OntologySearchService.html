@@ -138,7 +138,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:108</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:107</a></div>
                             </td>
                         </tr>
 
@@ -242,8 +242,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="144"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:144</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:142</a></div>
                 </td>
             </tr>
 
@@ -320,8 +320,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="205"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:205</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="200"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:200</a></div>
                 </td>
             </tr>
 
@@ -414,8 +414,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="221"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:221</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="216"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:216</a></div>
                 </td>
             </tr>
 
@@ -493,8 +493,8 @@ Note: This can be called without a reference to <code>this</code>.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="194"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:194</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="190"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:190</a></div>
                 </td>
             </tr>
 
@@ -587,8 +587,8 @@ Note: This can be called without a reference to <code>this</code>.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:125</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:124</a></div>
                 </td>
             </tr>
 
@@ -630,8 +630,8 @@ Note: This can be called without a reference to <code>this</code>.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="157"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:157</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="154"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:154</a></div>
                 </td>
             </tr>
 
@@ -728,7 +728,7 @@ Note: This can be called without a reference to <code>this</code>.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:108</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts:107</a></div>
                             </td>
                         </tr>
 
@@ -747,9 +747,9 @@ Note: This can be called without a reference to <code>this</code>.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
-import { HttpClient } from &#x27;@angular/common/http&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
+import { Immutable } from &#x27;@ngxs-labs/data/typings&#x27;;
 import { Store } from &#x27;@ngxs/store&#x27;;
 import { at, find, forEach, keyBy, map as loMap, partial } from &#x27;lodash&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
@@ -885,7 +885,6 @@ export class OntologySearchService {
 
   /**
    * Searches the ontology with the search-term
-   *
    * @param value the search term
    * @returns an array of search-results
    */
@@ -897,7 +896,6 @@ export class OntologySearchService {
 
   /**
    * looks up ontology nodes and composes search results
-   *
    * @param nodes Ontology nodes
    * @param searchValue search text in lower case
    * @returns search results
@@ -934,7 +932,6 @@ export class OntologySearchService {
 
   /**
    * Gets index of match in the ontology label
-   *
    * @param label the provided ontology node label or synonym label
    * @param searchValue the searched text in lower case
    * @returns the index of the match in the label
@@ -945,7 +942,6 @@ export class OntologySearchService {
 
   /**
    * Formats label based on where the search-term was found in the OntologyNode
-   *
    * @param label label or first synonym-label of OntologyNode which has the search-term
    * @param searchValue search-term
    * @returns an array in the form of [prefix, search-term, suffix]

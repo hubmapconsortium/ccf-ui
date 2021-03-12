@@ -167,15 +167,15 @@
 <path fill="none" stroke="#000000" d="M920,-122.1061C920,-122.1061 920,-140.991 920,-140.991"/>
 <polygon fill="#000000" stroke="#000000" points="916.5001,-140.9909 920,-150.991 923.5001,-140.991 916.5001,-140.9909"/>
 </g>
-<!-- InfoButtonModule -->
+<!-- InfoDialogModule -->
 <g id="node8" class="node">
-<title>InfoButtonModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="831.4888,-122 828.4888,-126 807.4888,-126 804.4888,-122 710.5112,-122 710.5112,-86 831.4888,-86 831.4888,-122"/>
-<text text-anchor="middle" x="771" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">InfoButtonModule</text>
+<title>InfoDialogModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="831.4734,-122 828.4734,-126 807.4734,-126 804.4734,-122 710.5266,-122 710.5266,-86 831.4734,-86 831.4734,-122"/>
+<text text-anchor="middle" x="771" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">InfoDialogModule</text>
 </g>
-<!-- InfoButtonModule&#45;&gt;AppModule -->
+<!-- InfoDialogModule&#45;&gt;AppModule -->
 <g id="edge7" class="edge">
-<title>InfoButtonModule&#45;&gt;AppModule</title>
+<title>InfoDialogModule&#45;&gt;AppModule</title>
 <path fill="none" stroke="#000000" d="M771,-122.2396C771,-137.5706 771,-157 771,-157 771,-157 868.0987,-157 868.0987,-157"/>
 <polygon fill="#000000" stroke="#000000" points="868.0987,-160.5001 878.0987,-157 868.0986,-153.5001 868.0987,-160.5001"/>
 </g>
@@ -294,7 +294,7 @@
                             <a href="../modules/FiltersPopoverModule.html">FiltersPopoverModule</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="../modules/InfoButtonModule.html">InfoButtonModule</a>
+                            <a href="../modules/InfoDialogModule.html">InfoDialogModule</a>
                         </li>
                         <li class="list-group-item">
                             <a href="../modules/OntologyExplorationModule.html">OntologyExplorationModule</a>
@@ -336,15 +336,15 @@ import { AppComponent } from &#x27;./app.component&#x27;;
 import { CoreModule } from &#x27;./core/core.module&#x27;;
 import { BodyModule } from &#x27;./modules/body/body.module&#x27;;
 import { FiltersPopoverModule } from &#x27;./modules/filters/filters-popover/filters-popover.module&#x27;;
+import { InfoDialogModule } from &#x27;./modules/info/info-dialog/info-dialog.module&#x27;;
 import { OntologyExplorationModule } from &#x27;./modules/ontology-exploration/ontology-exploration.module&#x27;;
 import { DrawerModule } from &#x27;./shared/components/drawer/drawer.module&#x27;;
 import { DualSliderModule } from &#x27;./shared/components/dual-slider/dual-slider.module&#x27;;
 import { ResultsBrowserModule } from &#x27;./modules/results-browser/results-browser/results-browser.module&#x27;;
 import { SpinnerOverlayModule } from &#x27;./shared/components/spinner-overlay/spinner-overlay.module&#x27;;
-import { OrganSelectorModule, InfoButtonModule } from &#x27;ccf-shared&#x27;;
+import { OrganSelectorModule } from &#x27;ccf-shared&#x27;;
 
 import { DEFAULT_THEME } from &#x27;../app/core/services/theming/theming.service&#x27;;
-import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
 
 @NgModule({
   imports: [
@@ -354,14 +354,13 @@ import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
     DrawerModule,
     FiltersPopoverModule,
     OntologyExplorationModule,
+    InfoDialogModule,
     MatIconModule,
     DualSliderModule,
     ResultsBrowserModule,
     SpinnerOverlayModule,
     BodyModule,
-    OrganSelectorModule,
-    InfoButtonModule,
-    MatTooltipModule
+    OrganSelectorModule
   ],
   declarations: [AppComponent],
   providers: [{provide: DEFAULT_THEME, useValue: &#x27;light-theme&#x27;}],

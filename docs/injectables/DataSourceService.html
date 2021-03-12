@@ -107,13 +107,13 @@
                                 <a href="#getDB">getDB</a>
                             </li>
                             <li>
+                                <a href="#getImageViewerData">getImageViewerData</a>
+                            </li>
+                            <li>
                                 <a href="#getListResults">getListResults</a>
                             </li>
                             <li>
                                 <a href="#getOntologyTermOccurences">getOntologyTermOccurences</a>
-                            </li>
-                            <li>
-                                <a href="#getScene">getScene</a>
                             </li>
                         </ul>
                     </td>
@@ -288,6 +288,84 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getImageViewerData"></a>
+                    <span class="name">
+                        <b>
+                            getImageViewerData
+                        </b>
+                        <a href="#getImageViewerData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getImageViewerData(iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries data for a specific image.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The image identifier (&#39;</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/ImageViewerData.html" target="_self" >Observable&lt;ImageViewerData&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An observable emitting the result.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getListResults"></a>
                     <span class="name">
                         <b>
@@ -440,84 +518,6 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getScene"></a>
-                    <span class="name">
-                        <b>
-                            getScene
-                        </b>
-                        <a href="#getScene"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getScene(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:92</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Queries for scene nodes to display.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                    <td>
-                                        <p>Currently applied filter.</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>An observable emitting the results.</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
             <section>
     
@@ -597,7 +597,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult, SpatialSceneNode } from &#x27;ccf-database&#x27;;
+import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ImageViewerData, ListResult } from &#x27;ccf-database&#x27;;
 import { Remote, wrap } from &#x27;comlink&#x27;;
 import { from, Observable } from &#x27;rxjs&#x27;;
 
@@ -682,25 +682,13 @@ export class DataSourceService {
   }
 
   /**
-   * Queries for scene nodes to display.
+   * Queries data for a specific image.
    *
-   * @param [filter] Currently applied filter.
-   * @returns An observable emitting the results.
+   * @param iri The image identifier (&#x27;@id&#x27;).
+   * @returns An observable emitting the result.
    */
-   getScene(filter?: Filter): Observable&lt;SpatialSceneNode[]&gt; {
-    return from(
-      this.getDB().then((db) &#x3D;&gt; db.getScene(filter))
-      .then((scene) &#x3D;&gt; {
-        // FIXME: Temporary fix until EUI and RUI are harmonized
-        for (const node of scene) {
-          const id &#x3D; node[&#x27;@id&#x27;];
-          if (id.endsWith(&#x27;#VHFemaleOrgans&#x27;) || id.endsWith(&#x27;#VHMaleOrgans&#x27;)) {
-            node.color &#x3D; [255, 0, 0, 255];
-          }
-        }
-        return scene;
-      })
-    );
+  getImageViewerData(iri: string): Observable&lt;ImageViewerData&gt; {
+    return from(this.getDB().then((db) &#x3D;&gt; db.getImageViewerData(iri)));
   }
 }
 </code></pre>

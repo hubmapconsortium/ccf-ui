@@ -72,6 +72,12 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                            <code><a href="../interfaces/DataSource.html" target="_self" >DataSource</a></code>
+            </p>
 
 
             <section>
@@ -137,6 +143,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#getImageViewerData">getImageViewerData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#getListResults">getListResults</a>
                             </li>
                             <li>
@@ -149,10 +159,6 @@
                             </li>
                             <li>
                                 <a href="#getSpatialEntities">getSpatialEntities</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#getTissueBlockResults">getTissueBlockResults</a>
                             </li>
                             <li>
                                 <a href="#search">search</a>
@@ -641,8 +647,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="188"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:188</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="174"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:174</a></div>
                 </td>
             </tr>
 
@@ -783,6 +789,86 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getImageViewerData"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            getImageViewerData
+                        </b>
+                        <a href="#getImageViewerData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getImageViewerData(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets image data for the associated id.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The identifier.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/ImageViewerData.html" target="_self" >Promise&lt;ImageViewerData&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The image data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getListResults"></a>
                     <span class="name">
                         <b>
@@ -803,8 +889,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="174"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:174</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="160"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:160</a></div>
                 </td>
             </tr>
 
@@ -883,8 +969,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="198"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:198</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="184"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:184</a></div>
                 </td>
             </tr>
 
@@ -963,8 +1049,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:208</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="203"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:203</a></div>
                 </td>
             </tr>
 
@@ -1101,86 +1187,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getTissueBlockResults"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getTissueBlockResults
-                        </b>
-                        <a href="#getTissueBlockResults"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getTissueBlockResults(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="160"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:160</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Gets all tissue block results for a filter.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                    <td>
-                                        <p>The filter.</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/TissueBlockResult.html" target="_self" >Promise&lt;TissueBlockResult[]&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>A list of results.</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="search"></a>
                     <span class="name">
                         <b>
@@ -1273,13 +1279,14 @@
 
 import { CCFSpatialGraph } from &#x27;./ccf-spatial-graph&#x27;;
 import { CCFSpatialScene, SpatialSceneNode } from &#x27;./ccf-spatial-scene&#x27;;
-import { addHubmapDataToStore } from &#x27;./hubmap/hubmap-data-import&#x27;;
-import { AggregateResult, Filter, ListResult, TissueBlockResult } from &#x27;./interfaces&#x27;;
+import { addHubmapDataToStore } from &#x27;./hubmap/hubmap-data&#x27;;
+import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from &#x27;./interfaces&#x27;;
 import { getAggregateResults } from &#x27;./queries/aggregate-results-n3&#x27;;
 import { findIds } from &#x27;./queries/find-ids-n3&#x27;;
+import { getImageViewerData } from &#x27;./queries/image-viewer-data-n3&#x27;;
+import { getListResult } from &#x27;./queries/list-result-n3&#x27;;
 import { getOntologyTermOccurences } from &#x27;./queries/ontology-term-occurences-n3&#x27;;
 import { getSpatialEntityForEntity } from &#x27;./queries/spatial-result-n3&#x27;;
-import { getListResult, getTissueBlockResult } from &#x27;./queries/tissue-block-result-n3&#x27;;
 import { SpatialEntity } from &#x27;./spatial-types&#x27;;
 
 
@@ -1312,7 +1319,7 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions &#x3D; {
 };
 
 /** Database provider. */
-export class CCFDatabase {
+export class CCFDatabase implements DataSource {
   /** The triple store. */
   store: Store;
   /** The spatial graph */
@@ -1422,20 +1429,6 @@ export class CCFDatabase {
   }
 
   /**
-   * Gets all tissue block results for a filter.
-   *
-   * @param [filter] The filter.
-   * @returns A list of results.
-   */
-   async getTissueBlockResults(filter?: Filter): Promise&lt;TissueBlockResult[]&gt; {
-    filter &#x3D; {...filter, hasSpatialEntity: true} as Filter;
-    const highlighted &#x3D; new Set&lt;string&gt;(filter.highlightedEntities);
-    return [...this.getIds(filter)].map((s) &#x3D;&gt; getTissueBlockResult(this.store, s))
-      .map((s) &#x3D;&gt; Object.assign(s, {highlighted: highlighted.has(s[&#x27;@id&#x27;])}))
-      .sort((a, b) &#x3D;&gt; (a.highlighted ? 0 : 1) - (b.highlighted ? 0 : 1));
-  }
-
-  /**
    * Gets all list results for a filter.
    *
    * @param [filter] The filter.
@@ -1470,8 +1463,17 @@ export class CCFDatabase {
   }
 
   /**
-   * Get all nodes to form the 3D scene of reference body, organs, and tissues
+   * Gets image data for the associated id.
    *
+   * @param id The identifier.
+   * @returns The image data.
+   */
+  async getImageViewerData(id: string): Promise&lt;ImageViewerData&gt; {
+    return getImageViewerData(id, this.store);
+  }
+
+  /**
+   * Get all nodes to form the 3D scene of reference body, organs, and tissues
    * @param [filter] The filter.
    * @returns A list of Spatial Scene Nodes for the 3D Scene
    */
