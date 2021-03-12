@@ -47,6 +47,8 @@ $foreground: map-merge($mat-light-theme-foreground, (
   organ-numbers: #757575,
   light-button-text: map-get($primary-colors, 'white'),
   text-muted: #757575,
+  icons-hover: #eeeeee,
+  icon-active:  #f5f5f5,
   
 ));
 

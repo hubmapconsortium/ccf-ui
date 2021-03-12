@@ -39,6 +39,7 @@ export class FiltersContentComponent {
   updateFilter(value: unknown, key: string): void {
     this.filters = { ...this.filters, [key]: value };
     this.filtersChange.emit(this.filters);
+    console.log(this.filters)
   }
 
   /**
@@ -46,5 +47,13 @@ export class FiltersContentComponent {
    */
   applyButtonClick(): void {
     this.applyFilters.emit(this.filters);
+  }
+
+  /**
+   * Refreshes all filter settings
+   */
+  refreshFilters(): void {
+    this.filters = { ...this.filters, sex: 'Both', ageRange: [1, 110], bmiRange: [13, 83], technologies: [], tmc: []};
+    this.filtersChange.emit(this.filters);
   }
 }
