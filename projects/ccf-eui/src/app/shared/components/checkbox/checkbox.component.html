@@ -1,7 +1,7 @@
 <div class="filter-container">
   <div class="filter-label">{{ label }}</div>
 
-  <div class="options-container">
+  <div class="options-container" [class.three]="columns === 3" [class.four]="columns === 4">
     <div *ngFor="let option of options" class="option">
       <mat-checkbox [checked]="selection?.includes(option)" (change)="filterOnChange($event, option)">
         {{ option }}
