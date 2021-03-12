@@ -28,7 +28,7 @@ export class CheckboxComponent {
   /**
    * Number of columns
    */
-  @Input() columns: number = 3;
+  @Input() columns = 3;
 
   /**
    * Any time a checkbox changes we emit that value so the parent component has that information
