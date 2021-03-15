@@ -17,7 +17,7 @@ export function getOntologyTermOccurences(ids: Set<string>, store: Store): Recor
       if (!spatial2entity.has(quad.object.id)) {
         spatial2entity.set(quad.object.id, [quad.subject.id]);
       } else {
-        spatial2entity.get(quad.object.id)?.push(quad.subject.id);
+        spatial2entity.get(quad.object.id)!.push(quad.subject.id);
       }
     }
     return false;

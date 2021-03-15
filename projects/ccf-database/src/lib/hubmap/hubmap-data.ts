@@ -132,34 +132,37 @@ const ENTITY_CONTEXT = {
   const donors = Object.values(donorLookup);
 
   if (debug) {
-    let datasets: JsonLdObj[] = [];
-    let deleted = 0;
-    for (const donor of donors.filter(d => (d.samples as []).length > 1)) {
-      const samples = donor.samples as JsonLdObj[];
-      for (let i=0; i < samples.length; i++) {
-        const blockId = samples[i]['@id'] as string;
-        datasets = datasets.concat(samples[i].datasets as JsonLdObj[]);
-        for (const section of samples[i].sections as JsonLdObj[]) {
-          datasets = datasets.concat(section.datasets as JsonLdObj[]);
-        }
-        for (let j=i+1; j < samples.length; j++) {
-          const sections = samples[j].sections as JsonLdObj[];
-          if (sections.find(s => s['@id'] === blockId)) {
-            samples[i].deleteMe = true;
-            deleted++;
-          }
-        }
-      }
-      donor.samples = samples.filter(s => s.deleteMe !== true);
-    }
-    if (deleted > 0) {
-      console.log(`⚠ ${deleted} sections identified as blocks`);
-    }
-
+    debugDonors(donors);
     console.log(donors.map(d => ({ '@context': ENTITY_CONTEXT, ...d })));
   }
 
   return { '@context': ENTITY_CONTEXT, '@graph': donors };
+}
+
+function debugDonors(donors: JsonLdObj[]) {
+  let datasets: JsonLdObj[] = [];
+  let deleted = 0;
+  for (const donor of donors.filter(d => (d.samples as []).length > 1)) {
+    const samples = donor.samples as JsonLdObj[];
+    for (let i=0; i < samples.length; i++) {
+      const blockId = samples[i]['@id'] as string;
+      datasets = datasets.concat(samples[i].datasets as JsonLdObj[]);
+      for (const section of samples[i].sections as JsonLdObj[]) {
+        datasets = datasets.concat(section.datasets as JsonLdObj[]);
+      }
+      for (let j=i+1; j < samples.length; j++) {
+        const sections = samples[j].sections as JsonLdObj[];
+        if (sections.find(s => s['@id'] === blockId)) {
+          samples[i].deleteMe = true;
+          deleted++;
+        }
+      }
+    }
+    donor.samples = samples.filter(s => s.deleteMe !== true);
+  }
+  if (deleted > 0) {
+    console.log(`⚠ ${deleted} sections identified as blocks`);
+  }
 }
 
 export class HuBMAPTissueBlock {
