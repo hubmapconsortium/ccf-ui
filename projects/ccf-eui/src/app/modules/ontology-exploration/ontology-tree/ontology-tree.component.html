@@ -10,7 +10,7 @@
       (click)="select($event.ctrlKey, node, true, !isSelected(node))"
     >{{ node.label }}</div>
   </ng-template>
-  
+
   <!-- Leaf node template -->
   <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding
   [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider1.reset()">
@@ -46,7 +46,7 @@
     </button>
 
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results" [class.suborgan]="node.level > 1">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{ occurenceData[node.original.id] || 0 }}</div>
 
   </mat-tree-node>
 </mat-tree>
