@@ -26,7 +26,7 @@ export function getOntologyTermOccurences(ids: Set<string>, store: Store): Recor
   const counts: Record<string, number> = {};
   store.some((quad) => {
     if (spatial2entity.has(quad.subject.id)) {
-      const numEntities = spatial2entity.get(quad.subject.id)?.length ?? 0;
+      const numEntities = spatial2entity.get(quad.subject.id)!.length;
       counts[quad.object.id] = numEntities + (counts[quad.object.id] || 0);
     }
     return false;

@@ -33,7 +33,6 @@
         </button>
        </div>
        <ccf-info-button [infoTitle]="'HuBMAP CCF Exploration User Interface 1.0'" [matTooltip]="'Open Info'"></ccf-info-button>
-       
       </div>
       <ccf-results-browser
         [dataLoading]="spinnerActive$ | async"
@@ -55,7 +54,7 @@
           </mat-icon>
         </div>
       </div>
-      <ccf-body-ui [filter]="data.filter$ | async" (filterChange)="data.updateFilter($event)"></ccf-body-ui>
+      <ccf-body-ui [scene]="data.sceneData$ | async" (nodeClick)="sceneNodeClicked($event)"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
 </div>

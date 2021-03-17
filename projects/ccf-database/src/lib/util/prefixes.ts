@@ -78,7 +78,6 @@ const ccfx = prefixer('ccf');
 export const ccf = {
   x: ccfx,
   spatial: {
-    Body: ccfx('VHBody'),
     Female: ccfx('VHFemale'),
     Male: ccfx('VHMale'),
     BothSexes: ccfx('VHBothSexes'),

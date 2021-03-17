@@ -56,7 +56,7 @@ export async function loadGLTF(model: SpatialSceneNode, cache?: { [url: string]:
   } else {
     gltfPromise = fetch(gltfUrl);
   }
-  const gltf = await parse(gltfPromise, GLTFLoader, {DracoLoader, decompress: true, postProcess: true});
+  const gltf = await parse(gltfPromise, GLTFLoader, {DracoLoader, gltf: {decompressMeshes: true, postProcess: true}});
 
   return deriveScenegraph(model.scenegraphNode as string, gltf);
 }

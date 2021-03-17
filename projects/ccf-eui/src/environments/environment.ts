@@ -6,7 +6,7 @@
 /** Testing environment configuration. */
 export const environment = {
   production: false,
-  ontologyUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-partonomy.jsonld',
+  ontologyUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/staging/ccf-partonomy.jsonld',
   organNodes: [
     'http://purl.obolibrary.org/obo/UBERON_0000948', // Heart
     'http://purl.obolibrary.org/obo/LMHA_00211', // Lung
@@ -18,7 +18,7 @@ export const environment = {
   ],
   disableDbWorker: false,
   dbOptions: {
-    ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
+    ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/staging/ccf.owl.n3',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
