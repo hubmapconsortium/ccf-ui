@@ -26,6 +26,11 @@ export class CheckboxComponent {
   @Input() selection: string[] = [];
 
   /**
+   * Number of columns
+   */
+  @Input() columns = 3;
+
+  /**
    * Any time a checkbox changes we emit that value so the parent component has that information
    */
   @Output() selectionChange = new EventEmitter<string[]>();

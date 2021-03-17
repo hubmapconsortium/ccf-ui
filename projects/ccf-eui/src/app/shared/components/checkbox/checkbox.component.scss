@@ -17,10 +17,20 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  &.three {
+    .option {
+      width: 33%;
+    }
+  }
+
+  &.four {
+    .option {
+      width: 25%;
+    }
+  }
 }
 
 .option {
-  margin-right: 2rem;
-  width: 8rem;
   color: #fafafa;
 }

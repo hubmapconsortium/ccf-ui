@@ -8,13 +8,16 @@
                    (selectionChange)="updateFilter($event, 'bmiRange')"></ccf-dual-slider>
 </div>
 
-<div class="filter" [class.hidden]="true">
-  <ccf-checkbox label="Technologies" [options]="[ 'IMS', 'MxIF', 'PAS' ]" [selection]="filters?.technologies"
-                (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
+<div class="filter assays" [class.hidden]="hidden">
+  <ccf-checkbox label="Assay Types"
+                [columns]="4"
+                [options]="[ '10x', 'AF', 'CODEX', 'IMC', 'LC', 'MALDI', 'OTHER', 'PAS' ]" 
+                [selection]="filters?.technologies" (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
 </div>
 
-<div class="filter" [class.hidden]="hidden">
-  <ccf-checkbox label="Tissue Mapping Center (TMC)"
+<div class="filter providers" [class.hidden]="hidden">
+  <ccf-checkbox label="Tissue Providers"
+                [columns]="3"
                 [options]="[ 'TMC-CalTech', 'TMC-Florida', 'TMC-Stanford', 'TMC-UCSD', 'TMC-Vanderbilt', 'KPMP-IU/OSU' ]"
                 [selection]="filters?.tmc" (selectionChange)="updateFilter($event, 'tmc')"></ccf-checkbox>
 </div>
