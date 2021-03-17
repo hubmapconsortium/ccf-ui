@@ -1,22 +1,40 @@
-<div class="checkbox-background" [class.selected]="selected" [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
-  <ng-container *ngIf="selected; else unselected">
-    <mat-icon class="checkbox selected">check_box</mat-icon>
-  </ng-container>
-  <!-- @TODO:  Update to outlined icon. -->
-  <ng-template #unselected>
-    <mat-icon class="checkbox unselected">check_box_outline_blank</mat-icon>
-  </ng-template>
-</div>
-
-<div class="donor-card mat-elevation-z2">
-  <mat-icon class="icon person-icon">person</mat-icon>
-
-  <div class="donor-info">
-    <div class="title">{{ donor.donor.label }}</div>
-    <div class="description">{{ donor.donor.description }}</div>
+<div class="main-container">
+  <div class="checkbox-background" [class.selected]="selected" [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
+    <ng-container *ngIf="selected; else unselected">
+      <mat-icon class="checkbox selected">check_box</mat-icon>
+    </ng-container>
+    <!-- @TODO:  Update to outlined icon. -->
+    <ng-template #unselected>
+      <mat-icon class="checkbox unselected">check_box_outline_blank</mat-icon>
+    </ng-template>
   </div>
 
-  <div class="spacer"></div>
 
-  <mat-icon class="icon" *ngIf="selected">expand_more</mat-icon>
+  <div class="donor-card donor mat-elevation-z2" [class.selectable]="selected" [class.expanded]="expanded" (click)="toggleExpansion()">
+    <mat-icon class="icon person-icon">person</mat-icon>
+
+    <div class="donor-info">
+      <div class="title">{{ donor.donor.label }}</div>
+      <div class="description">{{ donor.donor.description }}</div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <mat-icon class="icon" *ngIf="selected">{{ expanded ? "expand_less" :  "expand_more" }}</mat-icon>
+  </div>
 </div>
+
+<ng-container *ngIf="expanded">
+  <div class="donor-card expanded-view mat-elevation-z2 align-end">
+    <div class="info-block">
+      <mat-icon class="icon info-icon">bubble_chart</mat-icon>
+      <div class="text-content">
+        <div class="title">{{ donor.donor.label }}</div>
+        <div class="description">{{ donor.donor.description }}</div>
+      </div>
+    </div>
+    <!--
+      Line graph goes here.
+     -->
+  </div>
+</ng-container>

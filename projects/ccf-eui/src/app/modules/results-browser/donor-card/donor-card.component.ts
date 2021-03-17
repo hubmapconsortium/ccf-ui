@@ -15,11 +15,19 @@ export class DonorCardComponent {
   @Input() donor!: TissueBlockResult;
   @Input() selected: boolean = false;
   @Input() color!: string;
+  @Input() expanded = false;
   @Output() checked = new EventEmitter<boolean>();
 
   handleCheckbox(): void {
     this.selected = !this.selected;
     this.checked.emit(this.selected);
+    this.expanded = false;
     console.log('donor: ', this.donor, '\nselected: ', this.selected, '\ncolor: ', this.color);
+  }
+
+  toggleExpansion(): void {
+    if(this.selected) {
+      this.expanded = !this.expanded;
+    }
   }
 }
