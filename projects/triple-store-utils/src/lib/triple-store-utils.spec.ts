@@ -66,7 +66,6 @@ describe('triple-store-utils', () => {
       stream = jasmine.createSpyObj<EventEmitter>('TestEmitter', ['on', 'once']);
       stream.on.and.returnValue(stream);
       stream.once.and.returnValue(stream);
-
       result = streamToArray(stream);
     });
 
@@ -158,7 +157,6 @@ describe('triple-store-utils', () => {
 
     beforeEach(async () => {
       storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
-
       await addJsonLdToStore({}, storeSpy);
     });
 
@@ -227,7 +225,6 @@ describe('triple-store-utils', () => {
 
     beforeEach(async () => {
       storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
-
       await addN3ToStore(`
         PREFIX c: <http://example.org/cartoons#>
         c:Tom a c:Cat.
@@ -273,7 +270,6 @@ describe('triple-store-utils', () => {
       const storeString = serializeN3Store(store);
       const restored = deserializeN3Store(storeString);
       const restoredQuads = restored.getQuads(null, null, null, null);
-
       expect(store.size === restored.size).toBeTruthy();
       expect(storeQuads.length === restoredQuads.length).toBeTruthy();
     });
@@ -282,7 +278,6 @@ describe('triple-store-utils', () => {
       const storeString = serializeN3Store(store);
       const restored = deserializeN3Store(storeString);
       const restoredString = serializeN3Store(restored);
-
       expect(storeString.length === restoredString.length).toBeTruthy();
     });
   });
