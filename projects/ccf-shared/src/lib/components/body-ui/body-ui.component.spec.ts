@@ -16,4 +16,8 @@ describe('BodyUiComponent', () => {
     shallow = new Shallow(BodyUiComponent, BodyUiModule)
       .mock(BodyUI, mockBodyUI);
   });
+
+  it('exists', () => {
+    expect(shallow).toBeTruthy();
+  });
 });

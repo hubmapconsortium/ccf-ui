@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { SpatialPlacementJsonLd } from './../shared/ccf-spatial-jsonld';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
 
 import { SpatialEntityJsonLd } from '../shared/ccf-spatial-jsonld';
@@ -139,10 +138,20 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
       ...(await processSpatialEntities(entities['#VHMaleOrgans']))
     ])))
     .filter((entity: SpatialEntityJsonLd) =>
-      (entity.reference_organ && goodRefOrgans.has(entity.reference_organ)) || entity.extraction_set ||
-      entity['@type'] === 'ExtractionSet' || refOrganSources.has(entity['@id'])
-    );
-  const lookup = jsonld.reduce((acc, e) => {acc[e['@id']!] = e; return acc;}, {} as Record<string, unknown>);
+      (
+        entity.reference_organ &&
+        goodRefOrgans.has(entity.reference_organ)
+      ) ||
+      entity.extraction_set ||
+      entity['@type'] === 'ExtractionSet' ||
+      refOrganSources.has(entity['@id']
+    ));
+  const lookup = jsonld.reduce((acc, e) => {
+    if (e['@id']) {
+      acc[e['@id']] = e;
+    }
+    return acc;
+  }, {} as Record<string, unknown>);
 
   for (const refOrgan of config.referenceOrgans) {
     const entity = (lookup[refOrgan.source] || {}) as SpatialEntityJsonLd;

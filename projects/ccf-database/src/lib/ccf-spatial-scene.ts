@@ -7,7 +7,7 @@ import {
   getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity,
 } from './queries/spatial-result-n3';
 import { ExtractionSet, SpatialEntity } from './spatial-types';
-import { ccf, rui } from './util/prefixes';
+import { ccf } from './util/prefixes';
 
 
 export interface SpatialSceneNode {
