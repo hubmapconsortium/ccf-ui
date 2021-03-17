@@ -24,6 +24,7 @@ export class DataSourceService {
    */
   constructor(private readonly locator: LocationStrategy) {
     if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
+      this.dataSource = this.getWebWorkerDataSource(true);
       this.dataSource = this.getWebWorkerDataSource(!environment.production);
     } else {
       this.dataSource = new CCFDatabase();
@@ -93,7 +94,7 @@ export class DataSourceService {
     return from(this.getDB().then((db) => db.getScene(filter)));
   }
 
-  getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {
+  private getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {
     let worker: Worker;
     if (directImport) {
       worker = new Worker('./data-source.worker', { type: 'module' });
