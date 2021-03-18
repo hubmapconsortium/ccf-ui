@@ -44,7 +44,7 @@
     </ccf-drawer>
     <ccf-drawer-content>
       <div [class.closed]="!organListVisible" class="selector-drawer">
-        <ccf-organ-selector [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
+        <ccf-organ-selector [occurenceData]="data.termOccurencesData$ | async" [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
           [selectedOrgans]="selectedOrgans"></ccf-organ-selector>
       </div>
       <div class="close-button-wrapper" [class.closed]="!organListVisible">
