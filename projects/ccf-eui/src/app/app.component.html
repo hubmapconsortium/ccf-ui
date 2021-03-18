@@ -54,7 +54,7 @@
           </mat-icon>
         </div>
       </div>
-      <ccf-body-ui [scene]="data.sceneData$ | async" (nodeClick)="sceneNodeClicked($event)"></ccf-body-ui>
+      <ccf-body-ui [scene]="data.sceneData$ | async" (nodeClick)="sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
 </div>
