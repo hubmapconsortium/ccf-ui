@@ -93,7 +93,7 @@ export class CCFSpatialScene {
         const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
         return this.getSceneNode(organ, body, {
           unpickable: isTermSelected || isSkin,
-          zoomToOnLoad: isTermSelected && !isSkin,
+          zoomToOnLoad: isTermSelected && !isSkin && !isTermSelected, // Turning off for now
           _lighting: 'pbr',
           color: [255, 255, 255, 255],
           opacity: 0.5,

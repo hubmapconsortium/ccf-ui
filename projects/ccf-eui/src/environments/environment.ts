@@ -6,7 +6,7 @@
 /** Testing environment configuration. */
 export const environment = {
   production: false,
-  ontologyUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/staging/ccf-partonomy.jsonld',
+  ontologyUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-partonomy.jsonld',
   organNodes: [
     'http://purl.obolibrary.org/obo/UBERON_0000948', // Heart
     'http://purl.obolibrary.org/obo/LMHA_00211', // Lung
