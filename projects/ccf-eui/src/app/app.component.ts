@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NodeClickEvent } from 'ccf-body-ui';
+import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -8,7 +10,7 @@ import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
+
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -141,5 +143,19 @@ export class AppComponent {
 
   changeOrgans(organs: OrganInfo[]): void {
     this.selectedOrgans = organs;
+  }
+
+  sceneNodeClicked({node, ctrlClick}: NodeClickEvent): void {
+    if (node.representation_of &&
+        node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin') {
+      this.data.updateFilter({ontologyTerms: [ node.representation_of ]});
+    } else if (node.entityId) {
+      const highlightedEntities = ctrlClick ? this.data.snapshot.filter?.highlightedEntities ?? [] : [];
+      if (highlightedEntities.length === 1 && highlightedEntities[0] === node.entityId) {
+        this.data.updateFilter({highlightedEntities: []});
+      } else {
+        this.data.updateFilter({highlightedEntities: highlightedEntities.concat([node.entityId])});
+      }
+    }
   }
 }

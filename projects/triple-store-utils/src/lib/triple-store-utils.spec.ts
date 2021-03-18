@@ -1,9 +1,19 @@
 import { EventEmitter } from 'events';
+import { DataFactory, Quad, Store as N3Store } from 'n3';
 import { Sink } from 'rdf-js';
 import { Readable } from 'readable-stream';
+import {
+  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, arrayToStream, deserializeN3Store, serializeN3Store, streamToArray
+} from './triple-store-utils';
 
-import { addJsonLdToStore, addRdfXmlToStore, arrayToStream, streamToArray, addN3ToStore } from './triple-store-utils';
 
+function quad(subject: string, predicate: string, object: string): Quad {
+  return DataFactory.quad(
+    DataFactory.namedNode(subject),
+    DataFactory.namedNode(predicate),
+    DataFactory.namedNode(object)
+  );
+}
 
 type Store = Sink<EventEmitter, EventEmitter>;
 
@@ -56,7 +66,6 @@ describe('triple-store-utils', () => {
       stream = jasmine.createSpyObj<EventEmitter>('TestEmitter', ['on', 'once']);
       stream.on.and.returnValue(stream);
       stream.once.and.returnValue(stream);
-
       result = streamToArray(stream);
     });
 
@@ -148,7 +157,6 @@ describe('triple-store-utils', () => {
 
     beforeEach(async () => {
       storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
-
       await addJsonLdToStore({}, storeSpy);
     });
 
@@ -217,7 +225,6 @@ describe('triple-store-utils', () => {
 
     beforeEach(async () => {
       storeSpy = jasmine.createSpyObj<Store>('Store', ['import']);
-
       await addN3ToStore(`
         PREFIX c: <http://example.org/cartoons#>
         c:Tom a c:Cat.
@@ -228,6 +235,50 @@ describe('triple-store-utils', () => {
 
     it('adds data to the store', () => {
       expect(storeSpy.import).toHaveBeenCalled();
+    });
+  });
+
+  describe('serializeN3Store(store)', () => {
+    let store: N3Store;
+
+    beforeEach(() => {
+      store = new N3Store(undefined, {factory: DataFactory});
+      store.addQuads([
+        quad('sub1', 'thing', 'sub2')
+      ]);
+    });
+
+    it('serializes a store', () => {
+      const storeString = serializeN3Store(store);
+      expect(storeString.length > 0).toBeTruthy();
+    });
+  });
+
+  describe('deserializeN3Store(store)', () => {
+    let store: N3Store;
+    let storeQuads: Quad[];
+
+    beforeEach(() => {
+      store = new N3Store(undefined, {factory: DataFactory});
+      store.addQuads([
+        quad('sub1', 'thing', 'sub2')
+      ]);
+      storeQuads = store.getQuads(null, null, null, null);
+    });
+
+    it('it deserializes a store', () => {
+      const storeString = serializeN3Store(store);
+      const restored = deserializeN3Store(storeString);
+      const restoredQuads = restored.getQuads(null, null, null, null);
+      expect(store.size === restored.size).toBeTruthy();
+      expect(storeQuads.length === restoredQuads.length).toBeTruthy();
+    });
+
+    it('it reserializes to the same as input string', () => {
+      const storeString = serializeN3Store(store);
+      const restored = deserializeN3Store(storeString);
+      const restoredString = serializeN3Store(restored);
+      expect(storeString.length === restoredString.length).toBeTruthy();
     });
   });
 });

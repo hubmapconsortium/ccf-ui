@@ -1,3 +1,4 @@
+import { LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult, SpatialSceneNode } from 'ccf-database';
 import { Remote, wrap } from 'comlink';
@@ -21,10 +22,9 @@ export class DataSourceService {
   /**
    * Creates an instance of data source service.
    */
-  constructor() {
+  constructor(private readonly locator: LocationStrategy) {
     if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
-      const worker = new Worker('./data-source.worker', { type: 'module' });
-      this.dataSource = wrap(worker);
+      this.dataSource = this.getWebWorkerDataSource(true);
     } else {
       this.dataSource = new CCFDatabase();
     }
@@ -90,18 +90,18 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
    getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
-    return from(
-      this.getDB().then((db) => db.getScene(filter))
-      .then((scene) => {
-        // FIXME: Temporary fix until EUI and RUI are harmonized
-        for (const node of scene) {
-          const id = node['@id'];
-          if (id.endsWith('#VHFemaleOrgans') || id.endsWith('#VHMaleOrgans')) {
-            node.color = [255, 0, 0, 255];
-          }
-        }
-        return scene;
-      })
-    );
+    return from(this.getDB().then((db) => db.getScene(filter)));
+  }
+
+  private getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {
+    let worker: Worker;
+    if (directImport) {
+      worker = new Worker('./data-source.worker', { type: 'module' });
+    } else {
+      const workerUrl = this.locator.prepareExternalUrl('0.worker.js');
+      const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
+      worker = new Worker(URL.createObjectURL(workerBlob), { type: 'module' });
+    }
+    return wrap(worker);
   }
 }
