@@ -57,6 +57,7 @@ export class AppComponent {
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
     data.listData$.subscribe();
+    data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();
     data.sceneData$.subscribe();

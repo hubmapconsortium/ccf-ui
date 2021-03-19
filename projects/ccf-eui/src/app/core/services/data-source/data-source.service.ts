@@ -1,6 +1,6 @@
 import { LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult, SpatialSceneNode } from 'ccf-database';
+import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { Remote, wrap } from 'comlink';
 import { from, Observable } from 'rxjs';
 
@@ -61,6 +61,16 @@ export class DataSourceService {
    */
   getListResults(filter?: Filter): Observable<ListResult[]> {
     return from(this.getDB().then((db) => db.getListResults(filter)));
+  }
+
+  /**
+   * Queries for tissue block values.
+   *
+   * @param [filter] Currently applied filter.
+   * @returns An observable emitting the results.
+   */
+   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
+    return from(this.getDB().then((db) => db.getTissueBlockResults(filter)));
   }
 
   /**
