@@ -21,11 +21,11 @@ function getListResult(): ListResult {
 
 describe('ResultsBrowserItemComponent', () => {
   let shallow: Shallow<ResultsBrowserItemComponent>;
-  let whitelistedDomain = 'https://portal.hubmapconsortium.org/browse/dataset/14946a8eb12f2d787302f818b72fdc4e';
-  let notWhitelistedDomain = 'https://www.cns.iu.edu';
+  const whitelistedDomain = 'https://portal.hubmapconsortium.org/browse/dataset/14946a8eb12f2d787302f818b72fdc4e';
+  const notWhitelistedDomain = 'https://www.cns.iu.edu';
 
   beforeEach(() => {
-    shallow = new Shallow(ResultsBrowserItemComponent, ResultsBrowserItemModule)
+    shallow = new Shallow(ResultsBrowserItemComponent, ResultsBrowserItemModule);
   });
 
   it('should show a placeholder div when no thumbnail image url is present', async () => {
@@ -73,7 +73,7 @@ describe('ResultsBrowserItemComponent', () => {
   it('should return true if the url is whitelisted', async () => {
     const data = getListResult();
     delete data.downloadUrl;
-    const {instance} = await shallow.render({bind: {data: data}})
+    const {instance} = await shallow.render({bind: {data}});
     const result = instance.checkURL(whitelistedDomain);
     expect(result).toBe(true);
   });
@@ -81,7 +81,7 @@ describe('ResultsBrowserItemComponent', () => {
   it('should return false if the url is whitelisted', async () => {
     const data = getListResult();
     delete data.downloadUrl;
-    const {instance} = await shallow.render({bind: {data: data}})
+    const {instance} = await shallow.render({bind: {data}});
     const result = instance.checkURL(notWhitelistedDomain);
     expect(result).toBe(false);
   });

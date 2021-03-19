@@ -30,7 +30,7 @@ export class ResultsBrowserItemComponent {
    * @param result the result which was clicked on
    */
   openResult(): void {
-    const isWhitelisted = this.checkURL(this.data.resultUrl || '')
+    const isWhitelisted = this.checkURL(this.data.resultUrl || '');
     if(isWhitelisted) {
       this.openImageViewer.emit();
     } else {
