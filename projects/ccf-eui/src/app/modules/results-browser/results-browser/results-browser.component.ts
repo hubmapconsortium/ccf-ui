@@ -17,8 +17,11 @@ export class ResultsBrowserComponent implements OnInit {
 
   /**
    * Input array of items used to generate the list of results in the results browser.
+   * Keeping this separate so that we can switch back to the old data if need be more easily.
    */
   @Input() data: ListResult[];
+
+  @Input() tissueBlockData: TissueBlockResult[];
 
   /**
    * Input used to add a list of stats at the top the results browser.
@@ -52,64 +55,9 @@ export class ResultsBrowserComponent implements OnInit {
    */
   selectedResult: ListResult;
 
-  /**
-   * Placeholder data for donor card component
-   * */
-  sampleDonor: TissueBlockResult = {
-    '@id': '4321',
-    '@type': 'Sample',
-    label: '',
-    description: '',
-    link: '',
-    sampleType: 'Tissue Block',
-    sectionCount: 2,
-    sectionSize: 10,
-    sectionUnits: 'um',
-    ruiLocationId: '121',
-    donor: {
-      '@id': '12',
-      '@type': 'Donor',
-      link: 'www.google.com',
-      label: 'Female, Age 38, BMI 14.7',
-      description: 'Entered 1/21/2021, Hom Sim, VU'
-    },
-    datasets: [
-      {
-        '@id': '432',
-        '@type': 'Dataset',
-        link: 'www.google.com',
-        thumbnail: '',
-        technology: '',
-        label: 'Registered 1/3/2021, Hom Sim, VU',
-        description: '1 x 1.2 x 3mm, 10um, Flash Frozen, 4 Sections'
-      }
-    ],
-    sections: [
-      {
-        '@id': '321',
-        '@type': 'Sample',
-        label: '',
-        description: '',
-        link: '',
-        sampleType: 'Tissue Section',
-        sectionNumber: 1,
-        datasets: []
-      }
-    ]
-  }
-  donorData: TissueBlockResult[] = [];
-
   ngOnInit(): void {
-    let tempDonorA: TissueBlockResult;
-    let tempDonorB: TissueBlockResult;
-    for (let i = 1; i <= 15; i++) {
-      tempDonorA = {...this.sampleDonor, '@id': i.toString(), ruiLocationId: i.toString() }
-      tempDonorB = {...tempDonorA, '@id': (i*100).toString() };
-      this.donorData.push(tempDonorA);
-      this.donorData.push(tempDonorB);
-    }
-
-    console.log('donors: ', this.donorData);
+    setTimeout(() => { console.log('real data: ', this.tissueBlockData); }, 10000);
+    ;
   }
 
   handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {

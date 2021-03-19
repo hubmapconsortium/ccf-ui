@@ -62,6 +62,7 @@ export class AppComponent {
     data.termOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
+    data.tissueBlockData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
   }
 

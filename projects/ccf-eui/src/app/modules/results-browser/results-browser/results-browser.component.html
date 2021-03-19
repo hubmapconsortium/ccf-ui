@@ -13,7 +13,7 @@
                                 class="result-browser-item">
       </ccf-results-browser-item>
     </div> -->
-    <div class="browser-item-container" *ngFor="let donor of donorData">
+    <div class="browser-item-container" *ngFor="let donor of tissueBlockData">
       <ccf-donor-card
         [donor]="donor"
         [selected]="isTissueBlockSelected(donor)"
