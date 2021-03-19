@@ -1,9 +1,9 @@
 <div class="main-container">
   <div class="checkbox-background" [class.selected]="selected" [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
     <ng-container *ngIf="selected; else unselected">
-      <mat-icon class="checkbox selected">check_box</mat-icon>
+      <mat-icon fontSet="material-icons-outlined" class="checkbox selected">check_box_outlined</mat-icon>
     </ng-container>
-    <!-- @TODO:  Update to outlined icon. -->
+
     <ng-template #unselected>
       <mat-icon class="checkbox unselected">check_box_outline_blank</mat-icon>
     </ng-template>
@@ -35,6 +35,19 @@
     </div>
     <!--
       Line graph goes here.
+     -->
+  </div>
+
+  <div class="donor-card expanded-view w-80 mat-elevation-z2 align-end">
+    <div class="info-block"> <!-- *ngFor...-->
+      <mat-icon class="icon info-icon icon-light">bubble_chart</mat-icon>
+      <div class="text-content">
+        <div>{{ donor.donor.label }} ??</div>
+        <div class="description">{{ donor.donor.description }}</div>
+      </div>
+    </div>
+    <!--
+      Data carousel goes here.
      -->
   </div>
 </ng-container>
