@@ -21,7 +21,6 @@ export class ViewerComponent implements OnChanges, AfterViewInit {
       this.loading = true;
       this.iframe.nativeElement.src = this.result.resultUrl;
     }
-
   }
 
   ngAfterViewInit(): void {
@@ -29,9 +28,7 @@ export class ViewerComponent implements OnChanges, AfterViewInit {
   }
 
   openLink(): void {
-    if(this.result) {
-      window.open(this.result.resultUrl, '_blank');
-    }
+    window.open(this.result.resultUrl, '_blank');
   }
 
   onLoad(): void {
