@@ -5,36 +5,36 @@ import { DonorCardModule } from './donor-card.module';
 
 
 const donor: TissueBlockResult = {
-  "@id": "http://dx.doi.org/10.1016/j.trsl.2017.07.006#TissueBlock",
-  "@type": "Sample",
-  "sections": [],
-  "datasets": [
+  '@id': 'http://dx.doi.org/10.1016/j.trsl.2017.07.006#TissueBlock',
+  '@type': 'Sample',
+  sections: [],
+  datasets: [
       {
-          "@id": "http://dx.doi.org/10.1016/j.trsl.2017.07.006#Dataset",
-          "@type": "Dataset",
-          "label": "Registered 5/18/2020, Seth Winfree, KPMP-IU/OSU",
-          "thumbnail": "assets/kpmp/thumbnails/kpmp-sample.jpg",
-          "technology": "OTHER",
-          "description": "Data/Assay Types: Cytometry",
-          "link": "http://dx.doi.org/10.1016/j.trsl.2017.07.006"
+          '@id': 'http://dx.doi.org/10.1016/j.trsl.2017.07.006#Dataset',
+          '@type': 'Dataset',
+          label: 'Registered 5/18/2020, Seth Winfree, KPMP-IU/OSU',
+          thumbnail: 'assets/kpmp/thumbnails/kpmp-sample.jpg',
+          technology: 'OTHER',
+          description: 'Data/Assay Types: Cytometry',
+          link: 'http://dx.doi.org/10.1016/j.trsl.2017.07.006'
       }
   ],
-  "label": "Registered 5/18/2020, Seth Winfree, KPMP-IU/OSU",
-  "description": "3.44 x 7.78 x 0.07 millimeter, 0.07 millimeter, nephrectomy, 0 Sections",
-  "link": "http://dx.doi.org/10.1016/j.trsl.2017.07.006",
-  "donor": {
-      "@id": "http://dx.doi.org/10.1016/j.trsl.2017.07.006#Donor",
-      "@type": "Donor",
-      "label": "CoverNephrectomy",
-      "description": "Entered 5/18/2020, Seth Winfree, KPMP-IU/OSU",
-      "link": "http://dx.doi.org/10.1016/j.trsl.2017.07.006",
-      "providerName": "KPMP-IU/OSU"
+  label: 'Registered 5/18/2020, Seth Winfree, KPMP-IU/OSU',
+  description: '3.44 x 7.78 x 0.07 millimeter, 0.07 millimeter, nephrectomy, 0 Sections',
+  link: 'http://dx.doi.org/10.1016/j.trsl.2017.07.006',
+  donor: {
+      '@id': 'http://dx.doi.org/10.1016/j.trsl.2017.07.006#Donor',
+      '@type': 'Donor',
+      label: 'CoverNephrectomy',
+      description: 'Entered 5/18/2020, Seth Winfree, KPMP-IU/OSU',
+      link: 'http://dx.doi.org/10.1016/j.trsl.2017.07.006',
+      providerName: 'KPMP-IU/OSU'
   },
-  "spatialEntityId": "http://purl.org/ccf/0.5/bd7a9bea-a726-427a-8360-8a017ef8178d",
-  "sampleType": "Tissue Block",
-  "sectionCount": 1,
-  "sectionSize": 0.07,
-  "sectionUnits": "millimeter"
+  spatialEntityId: 'http://purl.org/ccf/0.5/bd7a9bea-a726-427a-8360-8a017ef8178d',
+  sampleType: 'Tissue Block',
+  sectionCount: 1,
+  sectionSize: 0.07,
+  sectionUnits: 'millimeter'
 }
 
 describe('DonorCardComponent', () => {

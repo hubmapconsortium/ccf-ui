@@ -13,7 +13,7 @@ export class DonorCardComponent {
   @HostBinding('class') readonly clsName = 'ccf-donor-card';
 
   @Input() donor!: TissueBlockResult;
-  @Input() selected: boolean = false;
+  @Input() selected = false;
   @Input() color!: string;
   @Input() expanded = false;
   @Output() checked = new EventEmitter<boolean>();
