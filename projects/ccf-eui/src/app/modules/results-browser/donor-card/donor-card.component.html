@@ -1,5 +1,6 @@
 <div class="main-container">
-  <div class="checkbox-background" [class.selected]="selected" [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
+  <div class="checkbox-background" [class.selected]="selected"
+    [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
     <ng-container *ngIf="selected; else unselected">
       <mat-icon fontSet="material-icons-outlined" class="checkbox selected">check_box_outlined</mat-icon>
     </ng-container>
@@ -10,7 +11,8 @@
   </div>
 
 
-  <div class="donor-card donor mat-elevation-z2" [class.selectable]="selected" [class.expanded]="expanded" (click)="toggleExpansion()">
+  <div class="donor-card donor mat-elevation-z2" [class.selectable]="selected" [class.expanded]="expanded"
+    (click)="toggleExpansion()">
     <mat-icon class="icon person-icon">person</mat-icon>
 
     <div class="donor-info">
@@ -20,7 +22,7 @@
 
     <div class="spacer"></div>
 
-    <mat-icon class="icon" *ngIf="selected">{{ expanded ? "expand_less" :  "expand_more" }}</mat-icon>
+    <mat-icon class="icon" *ngIf="selected">{{ expanded ? "expand_less" : "expand_more" }}</mat-icon>
   </div>
 </div>
 
@@ -29,8 +31,8 @@
     <div class="info-block">
       <mat-icon class="icon info-icon">bubble_chart</mat-icon>
       <div class="text-content">
-        <div class="title">{{ donor.donor.label }}</div>
-        <div class="description">{{ donor.donor.description }}</div>
+        <div>{{ donor.label }}</div>
+        <div class="description">{{ donor.description }}</div>
       </div>
     </div>
     <!--
@@ -39,15 +41,17 @@
   </div>
 
   <div class="donor-card expanded-view w-80 mat-elevation-z2 align-end">
-    <div class="info-block"> <!-- *ngFor...-->
-      <mat-icon class="icon info-icon icon-light">bubble_chart</mat-icon>
-      <div class="text-content">
-        <div>{{ donor.donor.label }} ??</div>
-        <div class="description">{{ donor.donor.description }}</div>
+    <ng-container *ngFor="let dataset of donor.datasets">
+      <div class="info-block">
+        <mat-icon class="icon info-icon icon-light">bubble_chart</mat-icon>
+        <div class="text-content">
+          <div>{{ dataset.label }}</div>
+          <div class="description">{{ dataset.description }}</div>
+        </div>
       </div>
-    </div>
-    <!--
-      Data carousel goes here.
-     -->
+      <!--
+        Data carousel goes here.
+       -->
+    </ng-container>
   </div>
 </ng-container>

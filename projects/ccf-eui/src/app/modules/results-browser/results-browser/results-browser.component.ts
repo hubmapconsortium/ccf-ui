@@ -21,6 +21,9 @@ export class ResultsBrowserComponent implements OnInit {
    */
   @Input() data: ListResult[];
 
+  /**
+   * Input array of Tissue Blocks to pass along to the donor card component.
+   */
   @Input() tissueBlockData: TissueBlockResult[];
 
   /**
@@ -55,9 +58,9 @@ export class ResultsBrowserComponent implements OnInit {
    */
   selectedResult: ListResult;
 
+  // @TODO:  Remove testing code
   ngOnInit(): void {
-    setTimeout(() => { console.log('real data: ', this.tissueBlockData); }, 10000);
-    ;
+    // setTimeout(() => { console.log('real data: ', this.tissueBlockData); }, 10000);
   }
 
   handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {

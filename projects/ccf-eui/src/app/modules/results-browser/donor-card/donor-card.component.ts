@@ -22,7 +22,6 @@ export class DonorCardComponent {
     this.selected = !this.selected;
     this.checked.emit(this.selected);
     this.expanded = false;
-    console.log('donor: ', this.donor, '\nselected: ', this.selected, '\ncolor: ', this.color);
   }
 
   toggleExpansion(): void {
