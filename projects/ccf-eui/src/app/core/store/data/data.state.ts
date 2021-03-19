@@ -6,7 +6,7 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
-import { AggregateResult, Filter, ListResult, SpatialSceneNode } from 'ccf-database';
+import { AggregateResult, Filter, ListResult, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
 import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from 'rxjs/operators';
 
@@ -94,6 +94,8 @@ export interface DataStateModel {
 export class DataState extends NgxsDataRepository<DataStateModel> implements NgxsOnInit {
   /** Implementation subject for listDataQueryStatus$. */
   private readonly _listDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  /** Implementation subject for tissueBlockDataQueryStatus$. */
+  private readonly _tissueBlockDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
   private readonly _aggregateDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for termOccurencesDataQueryStatus$. */
@@ -108,6 +110,10 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   /** Latest list query data. */
   readonly listData$ = this.filter$.pipe(queryData(
     this.listData, sendCompletedTo(this._listDataQueryStatus$)
+  ));
+  /** Latest tissue block query data. */
+  readonly tissueBlockData$ = this.filter$.pipe(queryData(
+    this.tissueBlockData, sendCompletedTo(this._tissueBlockDataQueryStatus$)
   ));
   /** Latest aggregate query data. */
   readonly aggregateData$ = this.filter$.pipe(queryData(
@@ -124,6 +130,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
 
   /** Current status of queries in the listData$ observable. */
   readonly listDataQueryStatus$ = this._listDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the tissueBlockData$ observable. */
+  readonly tissueBlockDataQueryStatus$ = this._tissueBlockDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the aggregateData$ observable. */
   readonly aggregateDataQueryStatus$ = this._aggregateDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the aggregateData$ observable. */
@@ -134,6 +142,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   /** Current status of all queries. */
   readonly queryStatus$ = combineLatest([
     this.listDataQueryStatus$,
+    this.tissueBlockDataQueryStatus$,
     this.aggregateDataQueryStatus$,
     this.termOccurencesDataQueryStatus$,
     this.sceneDataQueryStatus$
@@ -151,6 +160,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
     super();
     // Start everything in the completed state
     this._listDataQueryStatus$.next(DataQueryState.Completed);
+    this._tissueBlockDataQueryStatus$.next(DataQueryState.Completed);
     this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
     this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
     this._sceneDataQueryStatus$.next(DataQueryState.Completed);
@@ -190,6 +200,18 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
     this._listDataQueryStatus$.next(DataQueryState.Running);
     return this.source.getListResults(filter);
   }
+
+  /**
+   * Queries for tissue block data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+   @bind
+   private tissueBlockData(filter: Filter): ObservableInput<TissueBlockResult[]> {
+     this._tissueBlockDataQueryStatus$.next(DataQueryState.Running);
+     return this.source.getTissueBlockResults(filter);
+   }
 
   /**
    * Queries for aggregate data.

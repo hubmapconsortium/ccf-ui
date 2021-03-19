@@ -45,6 +45,8 @@ export interface PickInfo<D> {
 
 export type NodeDragEvent = {node: SpatialSceneNode; info: PickInfo<SpatialSceneNode>; e: MouseEvent};
 
+export type NodeClickEvent = {node: SpatialSceneNode; ctrlClick: boolean};
+
 /**
  * A convenience wrapper class for the CCF Body UI
  */
@@ -52,7 +54,7 @@ export class BodyUI {
   deck: Deck;
   private readonly bodyUILayer = new BodyUILayer({});
 
-  private readonly nodeClickSubject = new Subject<{node: SpatialSceneNode; ctrlClick: boolean}>();
+  private readonly nodeClickSubject = new Subject<NodeClickEvent>();
   private readonly nodeHoverStartSubject = new Subject<SpatialSceneNode>();
   private readonly nodeHoverStopSubject = new Subject<SpatialSceneNode>();
   private readonly sceneRotationSubject = new BehaviorSubject<number>(0);

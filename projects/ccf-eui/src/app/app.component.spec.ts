@@ -31,6 +31,7 @@ describe('AppComponent', () => {
       .mock(DataState, {
         filter$: of(testFilter),
         listData$: of(),
+        tissueBlockData$: of(),
         aggregateData$: of(),
         queryStatus$: of(),
         termOccurencesData$: of(),
