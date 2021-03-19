@@ -9,15 +9,15 @@ import { ListResult } from 'ccf-database';
 export class ViewerComponent implements OnChanges, AfterViewInit {
 
   @Input() result: ListResult;
-  @ViewChild('iframe') iframe: ElementRef;
+  @ViewChild('iframe', {static: false}) iframe: ElementRef;
   @Output() closeViewer = new EventEmitter();
 
-  loading: boolean;
+  loading: boolean = true;
 
   constructor() { }
 
   ngOnChanges(): void {
-    if(this.result) {
+    if(this.result && this.iframe) {
       this.loading = true;
       this.iframe.nativeElement.src = this.result.resultUrl;
     }
@@ -27,13 +27,13 @@ export class ViewerComponent implements OnChanges, AfterViewInit {
     this.iframe.nativeElement.addEventListener('load', this.onLoad.bind(this));
   }
 
-  openLink(): void {
-    window.open(this.result.resultUrl, '_blank');
-  }
-
   onLoad(): void {
     this.loading = false;
   }
 
+
+  openLink(): void {
+    window.open(this.result.resultUrl, '_blank');
+  }
 
 }
