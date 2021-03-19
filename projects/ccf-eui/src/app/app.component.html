@@ -33,7 +33,6 @@
         </button>
        </div>
        <ccf-info-button [infoTitle]="'HuBMAP CCF Exploration User Interface 1.0'" [matTooltip]="'Open Info'"></ccf-info-button>
-       
       </div>
       <ccf-results-browser
         [dataLoading]="spinnerActive$ | async"
@@ -50,7 +49,7 @@
       <ccf-viewer [result]="url" [class.inactive]="!viewerOpen" class="portal-view" (closeViewer)="viewerOpen = false"></ccf-viewer>
 
       <div [class.closed]="!organListVisible" class="selector-drawer">
-        <ccf-organ-selector [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
+        <ccf-organ-selector [occurenceData]="data.termOccurencesData$ | async" [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
           [selectedOrgans]="selectedOrgans"></ccf-organ-selector>
       </div>
       <div class="close-button-wrapper" [class.closed]="!organListVisible">
@@ -60,7 +59,7 @@
           </mat-icon>
         </div>
       </div>
-      <ccf-body-ui [filter]="data.filter$ | async" (filterChange)="data.updateFilter($event)"></ccf-body-ui>
+      <ccf-body-ui [scene]="data.sceneData$ | async" (nodeClick)="sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
   

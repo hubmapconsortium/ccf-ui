@@ -7,7 +7,7 @@
           <mat-icon class="carousel-icon" svgIcon="{{organ.src}}"></mat-icon>
           <div class="carousel-text-container">
             <div class="carousel-text">{{ organ.name }}</div>
-            <div class="num-results" *ngIf="organ.numResults !== undefined">{{ organ.numResults }}</div>
+            <div class="num-results" *ngIf="organ.numResults !== undefined">{{ occurenceData[organ.id] || 0 }}</div>
           </div>
       </div>
     </div>
