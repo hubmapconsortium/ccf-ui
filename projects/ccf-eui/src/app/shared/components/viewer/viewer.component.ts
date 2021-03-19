@@ -12,7 +12,7 @@ export class ViewerComponent implements OnChanges, AfterViewInit {
   @ViewChild('iframe', {static: false}) iframe: ElementRef;
   @Output() closeViewer = new EventEmitter();
 
-  loading: boolean = true;
+  loading = true;
 
   constructor() { }
 

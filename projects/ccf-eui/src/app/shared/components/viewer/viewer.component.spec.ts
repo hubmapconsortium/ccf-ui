@@ -40,7 +40,7 @@ describe('ViewerComponent', () => {
     const { instance } = await shallow.render({bind: {result: getListResult()}});
     instance.iframe.nativeElement = {};
     spyOn(instance, 'ngOnChanges');
-    
+
     expect(instance.loading).toBeTrue();
   });
 
