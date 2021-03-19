@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ListResult } from 'ccf-database';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'ccf-viewer',
@@ -11,10 +10,10 @@ export class ViewerComponent implements OnChanges, AfterViewInit {
 
   @Input() result: ListResult;
   @ViewChild('iframe') iframe: ElementRef;
-  @Output() close = new EventEmitter();
+  @Output() closeViewer = new EventEmitter();
 
   loading: boolean;
-  
+
   constructor() { }
 
   ngOnChanges(): void {
@@ -22,7 +21,7 @@ export class ViewerComponent implements OnChanges, AfterViewInit {
       this.loading = true;
       this.iframe.nativeElement.src = this.result.resultUrl;
     }
-    
+
   }
 
   ngAfterViewInit(): void {
