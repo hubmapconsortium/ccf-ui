@@ -8,9 +8,9 @@
       [class.unavailable]="!termData[node.original.id]"
       [class.selected]="isSelected(node)"
       (click)="select($event.ctrlKey, node, true, !isSelected(node))"
-    >{{ node.label }}</div>
+    >{{ node.label === 'colon' ? 'large intestine' : node.label }}</div>
   </ng-template>
-  
+
   <!-- Leaf node template -->
   <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding
   [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider1.reset()">
@@ -25,7 +25,7 @@
     <!-- Disabled button used to add equal amount of space as an inner node's button -->
     <div class="non-expandable"></div>
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results" [class.suborgan]="node.level > 1">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{ occurenceData[node.original.id] || 0}}</div>
 
   </mat-tree-node>
 
@@ -46,7 +46,7 @@
     </button>
 
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results" [class.suborgan]="node.level > 1">{{highlightedNode?.numResults ? highlightedNode?.numResults : 0}}</div>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{ occurenceData[node.original.id] || 0 }}</div>
 
   </mat-tree-node>
 </mat-tree>

@@ -21,10 +21,19 @@
   margin-top: 2rem;
   display: flex;
   flex-direction: row-reverse;
+  align-items: center;
 }
 
 .outline-button {
   box-shadow: 0.1rem 0.1rem 0.2rem 0rem #0000001d;
+}
+
+.refresh {
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: .6s;
+  transition-property: background;
+  border-radius: 0.25rem;
 }
 
 .patient-filters {

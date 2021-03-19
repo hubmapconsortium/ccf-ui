@@ -40,4 +40,14 @@ describe('FiltersContentComponent', () => {
 
     expect(outputs.applyFilters.emit).toHaveBeenCalled();
   });
+
+  it('should refresh all filter settings', async () => {
+    const { instance } = await shallow.render({ bind: {} });
+    instance.refreshFilters();
+    expect(instance.filters.sex).toEqual('Both');
+    expect(instance.filters.ageRange).toEqual([1, 110]);
+    expect(instance.filters.bmiRange).toEqual([13, 83]);
+    expect(instance.filters.technologies).toEqual([]);
+    expect(instance.filters.tmc).toEqual([]);
+  });
 });

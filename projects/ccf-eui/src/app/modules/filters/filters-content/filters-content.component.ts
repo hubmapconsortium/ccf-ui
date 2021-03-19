@@ -47,4 +47,12 @@ export class FiltersContentComponent {
   applyButtonClick(): void {
     this.applyFilters.emit(this.filters);
   }
+
+  /**
+   * Refreshes all filter settings
+   */
+  refreshFilters(): void {
+    this.filters = { ...this.filters, sex: 'Both', ageRange: [1, 110], bmiRange: [13, 83], technologies: [], tmc: []};
+    this.filtersChange.emit(this.filters);
+  }
 }

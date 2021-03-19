@@ -109,6 +109,10 @@
         opacity: 0;
         width: 0%;
       }
+
+      &.unavailable {
+        pointer-events: none;
+      }
     }
 
     .num-results {

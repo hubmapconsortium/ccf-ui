@@ -23,4 +23,17 @@
       color: mat-color($accent);
     }
   }
+
+  .icon {
+    color: mat-color($foreground, main);
+
+    &:active {
+      color: mat-color($foreground, icon-active);
+    }
+
+    &:hover {
+      color: mat-color($foreground, contrast-icon);
+      background: mat-color($foreground, icons-background-hover);
+    }
+  }
 }
