@@ -39,7 +39,7 @@ export class ResultsBrowserItemComponent {
   }
 
   checkURL(resultUrl: string): boolean {
-    for(let url of whitelistDomains) {
+    for(const url of whitelistDomains) {
       if (resultUrl.startsWith(url)) {
         return true;
       }

@@ -46,7 +46,7 @@
     
 
     <ccf-drawer-content>
-      <ccf-viewer [result]="url" [class.inactive]="!viewerOpen" class="portal-view" (close)="viewerOpen = false"></ccf-viewer>
+      <ccf-viewer [result]="url" [class.inactive]="!viewerOpen" class="portal-view" (closeViewer)="viewerOpen = false"></ccf-viewer>
 
       <div [class.closed]="!organListVisible" class="selector-drawer">
         <ccf-organ-selector [occurenceData]="data.termOccurencesData$ | async" [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
