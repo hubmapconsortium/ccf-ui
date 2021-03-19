@@ -7,10 +7,21 @@
   .wrapper {
     height: 100%;
 
+    .overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
     .toolbar {
       display: flex;
-      justify-content: space-between;
-      box-shadow: -0.25rem 0rem 0.2rem 0.1rem rgb(40, 40, 40);
+      justify-content: flex-end;
       height: 1.5rem;
       width: 100%;
 
@@ -20,7 +31,6 @@
 
       .right {
         display: flex;
-
       }
 
       .launch {
@@ -30,9 +40,12 @@
       }
 
       .icon {
-        margin-right: 0.25rem;
         &:hover {
           cursor: pointer;
+        }
+
+        .text {
+          padding-left: 0.3rem;
         }
 
         .close {

@@ -1,11 +1,14 @@
 <div class="wrapper">
+  <div class="overlay" *ngIf="loading">
+    <p>
+      <mat-spinner></mat-spinner>
+    </p>
+    <span>Loading data</span>
+  </div>
   <div class="toolbar">
-    <div class="loading">
-      <span *ngIf="loading">Loading...</span>
-    </div>
    <div class="right">
     <div class="launch">
-      <mat-icon class="icon" (click)="openLink()">launch</mat-icon> Open in Portal
+      <mat-icon class="icon" (click)="openLink()">launch</mat-icon> <span class="text">Open in Portal</span>
      </div>
       <mat-icon class="icon close" (click)="closeViewer.emit();">clear</mat-icon>
    </div>
