@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ListResult } from 'ccf-database';
+import { whitelistDomains } from './whitelist.data';
 
 
 /**
@@ -29,22 +30,20 @@ export class ResultsBrowserItemComponent {
    * @param result the result which was clicked on
    */
   openResult(): void {
-    switch (this.data.resultType) {
-      case ('external_link'): {
-        // Open link in new tab
-        window.open(this.data.resultUrl, '_blank');
-        break;
-      }
-      case ('local_link'): {
-        // Open link in current tab
-        window.open(this.data.resultUrl, '_self');
-        break;
-      }
-      default: {
-        // When no resultType is set, image viewer is the default
-        this.openImageViewer.emit();
-        break;
+    if(this.checkURL(this.data.resultUrl || '')) {
+      this.openImageViewer.emit();
+    } else {
+     // Open link in new tab
+      window.open(this.data.resultUrl, '_blank');
+    }
+  }
+
+  checkURL(resultUrl: string): boolean {
+    for(let url of whitelistDomains) {
+      if (resultUrl.startsWith(url)) {
+        return true;
       }
     }
+    return false;
   }
 }
