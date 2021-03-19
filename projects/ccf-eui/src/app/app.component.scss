@@ -16,6 +16,21 @@
     width: 100%;
     opacity: 1;
 
+    .portal-view {
+      transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
+      position: absolute;
+      left: 0;
+      z-index: 100;
+    }
+
+    .inactive {
+      left: calc(450px - 100%);
+    }
+
+    .right-toggle-button {
+      z-index: 200 !important;
+    }
+
     ccf-drawer-content {
       overflow: hidden;
       margin-bottom: 1.5rem;
@@ -125,6 +140,8 @@
         }
       }
     }
+
+    
   }
 }
 

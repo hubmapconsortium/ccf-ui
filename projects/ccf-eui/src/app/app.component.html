@@ -1,7 +1,7 @@
 <div class="ccf-app mat-app-background">
   <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn"></ccf-header>
-  <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
-
+  <!-- <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay> -->
+  
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
     <div>
@@ -40,10 +40,15 @@
         [data]="data.listData$ | async"
         [aggregateData]="data.aggregateData$ | async"
         [resultLabel]="ontologySelectionLabel"
+        (resultClicked)="resultsClicked($event)"
       ></ccf-results-browser>
-      <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
+      <ccf-drawer-toggle-button class="right-toggle-button"></ccf-drawer-toggle-button>
     </ccf-drawer>
+    
+
     <ccf-drawer-content>
+      <ccf-viewer [result]="url" [class.inactive]="!viewerOpen" class="portal-view" (close)="viewerOpen = false"></ccf-viewer>
+
       <div [class.closed]="!organListVisible" class="selector-drawer">
         <ccf-organ-selector [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
           [selectedOrgans]="selectedOrgans"></ccf-organ-selector>
@@ -58,4 +63,5 @@
       <ccf-body-ui [filter]="data.filter$ | async" (filterChange)="data.updateFilter($event)"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
+  
 </div>

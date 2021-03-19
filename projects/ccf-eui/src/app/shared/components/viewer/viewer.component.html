@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="toolbar">
+    <div class="loading">
+      <span *ngIf="loading">Loading...</span>
+    </div>
+   <div class="right">
+    <div class="launch">
+      <mat-icon class="icon" (click)="openLink()">launch</mat-icon> Open in Portal
+     </div>
+      <mat-icon class="icon close" (click)="close.emit()">clear</mat-icon>
+   </div>
+  </div>
+  <iframe style="height: 100%; width: 100%;" #iframe id="iframe" (onload)="onLoad()"></iframe>
+</div>

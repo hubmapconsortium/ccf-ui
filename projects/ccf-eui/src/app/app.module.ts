@@ -16,6 +16,7 @@ import { OrganSelectorModule, InfoButtonModule } from 'ccf-shared';
 
 import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ViewerModule } from './shared/components/viewer/viewer.module';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     BodyModule,
     OrganSelectorModule,
     InfoButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ViewerModule
   ],
   declarations: [AppComponent],
   providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],

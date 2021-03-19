@@ -14,6 +14,7 @@
 @use '../../../../ccf-shared/src/lib/components/organ-selector/organ-selector.component.theme' as organSelector;
 @use '../../../../ccf-shared/src/lib/components//info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
 @use '../../../../ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss' as infoButton;
+@use '../../app/shared/components/viewer/viewer.component.theme.scss' as viewer;
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
@@ -41,6 +42,7 @@
   @include organSelector.theme($theme);
   @include infoDialog.theme($theme);
   @include infoButton.theme($theme);
+  @include viewer.theme($theme);
 
   // Overrides goes here!
 }
