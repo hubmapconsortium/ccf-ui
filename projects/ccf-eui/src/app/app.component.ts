@@ -11,7 +11,6 @@ import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
-import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
 import { ListResult } from 'ccf-database';
 
 /**
