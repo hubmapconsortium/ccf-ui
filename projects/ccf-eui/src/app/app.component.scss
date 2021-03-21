@@ -65,12 +65,20 @@
         transition: all 0.5s ease-in-out;
 
         &.closed {
-          margin-bottom: 1.5rem;
-          height: 0rem;
+          height: 1.5rem;
           top: -4.25rem;
-          opacity: 0;
-          pointer-events: none;
         }
+      }
+
+      .stage-content {
+        transition: all 0.5s ease-in-out;
+        border-bottom-right-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        height: calc(100% - 5.688rem);
+      }
+
+      .expanded-stage {
+        height: 100%;
       }
     }
 
