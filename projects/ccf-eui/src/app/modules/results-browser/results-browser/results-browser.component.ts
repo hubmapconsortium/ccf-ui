@@ -13,7 +13,7 @@ import { TissueBlockResult } from '../../../core/models/tissue-block-result';
   templateUrl: './results-browser.component.html',
   styleUrls: ['./results-browser.component.scss']
 })
-export class ResultsBrowserComponent implements OnInit {
+export class ResultsBrowserComponent {
 
   /**
    * Input array of items used to generate the list of results in the results browser.
@@ -59,10 +59,6 @@ export class ResultsBrowserComponent implements OnInit {
   selectedResult: ListResult;
 
   // @TODO:  Plug up to state that Edward is working on.
-  ngOnInit(): void {
-    // setTimeout(() => { console.log('real data: ', this.tissueBlockData); }, 10000);
-  }
-
   handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {
     // Will call results state method to update selections / colors.
   }
