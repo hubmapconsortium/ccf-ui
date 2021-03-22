@@ -57,7 +57,6 @@ export class ResultsBrowserComponent {
    */
   selectedResult: ListResult;
 
-  // @TODO:  Plug up to state that Edward is working on.
   handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {
     // Will call results state method to update selections / colors.
   }
