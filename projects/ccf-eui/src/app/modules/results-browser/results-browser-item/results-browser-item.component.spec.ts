@@ -3,7 +3,6 @@ import { Shallow } from 'shallow-render';
 import { ResultsBrowserItemComponent } from './results-browser-item.component';
 import { ResultsBrowserItemModule } from './results-browser-item.module';
 import { ListResult } from 'ccf-database';
-import { whitelistDomains } from './whitelist.data';
 
 function getListResult(): ListResult {
   return {
