@@ -35,23 +35,26 @@
         <div class="description">{{ donor.description }}</div>
       </div>
     </div>
+    <ng-container *ngIf="donor.datasets.length > 0">
+      <!--
+        Data carousel here.
+      -->
+    </ng-container>
     <!--
       Line graph goes here.
      -->
   </div>
 
-  <div class="donor-card expanded-view w-80 mat-elevation-z2 align-end">
-    <ng-container *ngFor="let dataset of donor.datasets">
-      <div class="info-block">
-        <mat-icon class="icon info-icon icon-light">bubble_chart</mat-icon>
-        <div class="text-content">
-          <div>{{ dataset.label }}</div>
-          <div class="description">{{ dataset.description }}</div>
-        </div>
+  <div class="donor-card expanded-view w-80 mat-elevation-z2 align-end" *ngFor="let section of donor.sections">
+    <div class="info-block">
+      <mat-icon class="icon info-icon icon-light">bubble_chart</mat-icon>
+      <div class="text-content">
+        <div>{{ section.label }}</div>
+        <div class="description">{{ section.description }}</div>
       </div>
-      <!--
-        Data carousel goes here.
-       -->
-    </ng-container>
+    </div>
+    <!--
+      Data carousel goes here.
+      -->
   </div>
 </ng-container>

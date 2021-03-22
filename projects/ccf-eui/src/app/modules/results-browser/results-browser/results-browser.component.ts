@@ -58,7 +58,7 @@ export class ResultsBrowserComponent implements OnInit {
    */
   selectedResult: ListResult;
 
-  // @TODO:  Remove testing code
+  // @TODO:  Plug up to state that Edward is working on.
   ngOnInit(): void {
     // setTimeout(() => { console.log('real data: ', this.tissueBlockData); }, 10000);
   }
