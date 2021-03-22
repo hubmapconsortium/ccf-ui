@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { TissueBlockResult } from '../../../core/models/tissue-block-result';
+import { TissueBlockResult } from 'ccf-database';
+
 
 
 

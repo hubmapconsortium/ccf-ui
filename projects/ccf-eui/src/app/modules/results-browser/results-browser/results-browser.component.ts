@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AggregateResult, ListResult } from 'ccf-database';
-import { TissueBlockResult } from '../../../core/models/tissue-block-result';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AggregateResult, ListResult, TissueBlockResult } from 'ccf-database';
 
 
 /**
