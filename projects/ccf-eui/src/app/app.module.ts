@@ -14,6 +14,9 @@ import { ResultsBrowserModule } from './modules/results-browser/results-browser/
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
+import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ViewerModule } from './shared/components/viewer/viewer.module';
 
 import { ViewerModule } from './shared/components/viewer/viewer.module';
 
