@@ -1,10 +1,13 @@
 import { LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
+import {
+  AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult,
+  OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
+} from 'ccf-database';
 import { Remote, wrap } from 'comlink';
 import { from, Observable } from 'rxjs';
-
-import { environment } from './../../../../environments/environment';
+import { take } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment';
 
 
 /**
@@ -94,13 +97,31 @@ export class DataSourceService {
   }
 
   /**
+   * Get the ontology tree model.
+   *
+   * @returns An observable emitting the results.
+   */
+  getOntologyTreeModel(): Observable<OntologyTreeModel> {
+    return from(this.getDB().then((db) => db.getOntologyTreeModel())).pipe(take(1));
+  }
+
+  /**
+   * Get the reference organs.
+   *
+   * @returns An observable emitting the results.
+   */
+   getReferenceOrgans(): Observable<SpatialEntity[]> {
+    return from(this.getDB().then((db) => db.getReferenceOrgans())).pipe(take(1));
+  }
+
+  /**
    * Queries for scene nodes to display.
    *
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
    getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
-    return from(this.getDB().then((db) => db.getScene(filter)));
+    return from(this.getDB().then((db) => db.getScene(filter)).then(s => {console.log(s); return s;}));
   }
 
   private getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {

@@ -4,9 +4,10 @@ import { Matrix4 } from '@math.gl/core';
 
 export interface SpatialSceneNode {
   '@id': string;
-  '@type': string;
+  '@type': 'SpatialSceneNode';
   entityId?: string;
   representation_of?: string;
+  reference_organ?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -17,5 +18,7 @@ export interface SpatialSceneNode {
   color?: [number, number, number, number];
   opacity?: number;
   transformMatrix: Matrix4;
-  tooltip?: string;
+  name?: string;
+  tooltip: string;
+  priority?: number;
 }

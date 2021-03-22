@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Immutable } from '@angular-ru/common/typings';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { at, find, forEach, keyBy, map as loMap, partial } from 'lodash';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { at, find, forEach, partial } from 'lodash';
+import { forkJoin, Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
-import { JsonOntologyNode, jsonToOntologyNode } from '../../models/json-ontology';
 import { OntologyNode } from '../../models/ontology-node';
 import { OntologyState, OntologyStateModel } from '../../store/ontology/ontology.state';
+import { DataSourceService } from '../data-source/data-source.service';
 
 
 /**
@@ -66,7 +65,7 @@ export function createModel(nodeMap: { [id: string]: OntologyNode }): OntologySt
  */
 function pruneModel(model: OntologyStateModel, organIds: string[]): OntologyStateModel {
   const body: OntologyNode = {
-    id: 'http://purl.obolibrary.org/obo/UBERON_0013702',
+    id: model.root,
     label: 'body',
     parent: '',
     children: organIds,
@@ -114,7 +113,7 @@ export class OntologySearchService {
    * @param store The global data store.
    * @param ontologyState The global ontology state.
    */
-  constructor(private http: HttpClient, private store: Store, private ontologyState: OntologyState) {
+  constructor(private dataService: DataSourceService, private store: Store, private ontologyState: OntologyState) {
     this.rootNode = this.ontologyState.rootNode$;
     this.getChildren = this.getChildren.bind(this) as GetChildrenFunc;
   }
@@ -123,16 +122,23 @@ export class OntologySearchService {
    * Loads ontology.
    */
   loadOntology(): void {
-    const jsonOntology = this.http.get<JsonOntologyNode[]>(environment.ontologyUrl, { responseType: 'json' });
-    const model = jsonOntology.pipe(
-      map(ontology => loMap(ontology, jsonToOntologyNode)),
-      map(nodes => keyBy(nodes, 'id')),
-      tap(linkChildren),
-      map(createModel),
-      map(partial(pruneModel, partial.placeholder, environment.organNodes))
-    );
-
-    model.subscribe(ontology => this.ontologyState.setOntology(ontology));
+    forkJoin([
+      this.dataService.getOntologyTreeModel().pipe(take(1)),
+      this.dataService.getReferenceOrgans().pipe(take(1))
+    ]).subscribe(([fullOntology, refOrgans]) => {
+      const organNodes = environment.organNodes.concat();
+      for (const organ of refOrgans) {
+        const ref = organ.representation_of;
+        const ontoNode = fullOntology.nodes[ref as string];
+        if (ref && ontoNode && organNodes.indexOf(ref) === -1) {
+          if (!organ.side) { // Organs with sides have to be added via environment.organNodes
+            organNodes.push(ref);
+          }
+        }
+      }
+      const ontology = partial(pruneModel, partial.placeholder, organNodes)(fullOntology);
+      this.ontologyState.setOntology(ontology);
+    });
   }
 
   /**
