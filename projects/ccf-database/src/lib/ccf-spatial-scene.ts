@@ -12,7 +12,7 @@ import { ccf } from './util/prefixes';
 
 export interface SpatialSceneNode {
   '@id': string;
-  '@type': 'SpatialSceneNode';
+  '@type': string;
   entityId?: string;
   representation_of?: string;
   reference_organ?: string;
@@ -27,7 +27,7 @@ export interface SpatialSceneNode {
   opacity?: number;
   transformMatrix: Matrix4;
   name?: string;
-  tooltip: string;
+  tooltip?: string;
   priority?: number;
 }
 
