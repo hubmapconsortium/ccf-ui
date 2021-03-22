@@ -7,6 +7,7 @@
   .stat-box {
     margin-bottom: 1.5rem;
     line-height: 1.25;
+    min-height: 7.75rem;
 
     #title {
       margin-bottom: 0.75rem;
@@ -31,6 +32,11 @@
     flex-wrap: wrap;
     overflow-y: scroll;
     scrollbar-width: thin;
+    padding-right: .5rem;
+
+    .browser-item-container {
+      width: 100%;
+    }
   }
 
   .scroll-gradient {

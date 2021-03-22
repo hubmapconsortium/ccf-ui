@@ -1,0 +1,119 @@
+:host {
+  width: 100%;
+
+  .main-container {
+    display: flex;
+    min-height: 3rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .checkbox-background {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin-right: .5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+
+    .checkbox {
+      height: 1.5rem;
+      width: 1.5rem;
+      font-size: 1.5rem;
+
+      &.selected {
+        color: white;
+      }
+
+      &.unselected {
+        color: darkgray;
+      }
+    }
+  }
+
+  .donor-card {
+    padding: .5rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+
+    &.expanded-view {
+      margin-top: .25rem;
+      width: 85%;
+      margin-bottom: .25rem;
+    }
+  }
+
+  .align-end {
+    margin-left: auto;
+  }
+
+  .info-block {
+    display: flex;
+    font-size: .75rem;
+    line-height: 1rem;
+    width: 100%;
+    align-items: center;
+
+    &:not(:first-child) {
+      margin-top: .5rem;
+    }
+
+    .icon {
+      height: 1.5rem;
+      width: 1.5rem;
+      font-size: 1.5rem;
+
+      &.info-icon {
+        margin-right: .5rem;
+      }
+    }
+
+    .text-content {
+      .title {
+        font-weight: bolder;
+      }
+    }
+  }
+
+  .donor {
+    display: flex;
+    font-size: .75rem;
+    line-height: 1rem;
+    align-items: center;
+    flex-grow: 1;
+
+    &.selectable {
+      cursor: pointer;
+    }
+
+    .icon {
+      height: 1.5rem;
+      width: 1.5rem;
+      font-size: 1.5rem;
+
+      &.person-icon {
+        margin-right: .5rem;
+      }
+    }
+
+    .donor-info {
+      .title {
+        font-weight: bolder;
+      }
+    }
+
+    .spacer {
+      flex-grow: 1;
+    }
+  }
+
+  .icon-light {
+    color: gray;
+  }
+
+  .w-80 {
+    width: 80% !important;
+  }
+}
