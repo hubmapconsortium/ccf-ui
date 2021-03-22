@@ -14,7 +14,7 @@ import { ResultsBrowserModule } from './modules/results-browser/results-browser/
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
-
+import { ViewerModule } from './shared/components/viewer/viewer.module';
 
 @NgModule({
   imports: [
@@ -31,7 +31,8 @@ import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinne
     BodyUiModule,
     OrganSelectorModule,
     InfoButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ViewerModule
   ],
   declarations: [AppComponent],
   providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],
