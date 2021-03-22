@@ -35,7 +35,7 @@ const donor: TissueBlockResult = {
   sectionCount: 1,
   sectionSize: 0.07,
   sectionUnits: 'millimeter'
-}
+};
 
 describe('DonorCardComponent', () => {
   let shallow: Shallow<DonorCardComponent>;
