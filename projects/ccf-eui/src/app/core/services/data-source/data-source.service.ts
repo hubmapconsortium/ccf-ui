@@ -1,10 +1,14 @@
 import { LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
+import {
+  AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult,
+  OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
+} from 'ccf-database';
 import { Remote, wrap } from 'comlink';
 import { from, Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
-import { environment } from './../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 
 /**
@@ -91,6 +95,24 @@ export class DataSourceService {
    */
   getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return from(this.getDB().then((db) => db.getOntologyTermOccurences(filter)));
+  }
+
+  /**
+   * Get the ontology tree model.
+   *
+   * @returns An observable emitting the results.
+   */
+  getOntologyTreeModel(): Observable<OntologyTreeModel> {
+    return from(this.getDB().then((db) => db.getOntologyTreeModel())).pipe(take(1));
+  }
+
+  /**
+   * Get the reference organs.
+   *
+   * @returns An observable emitting the results.
+   */
+   getReferenceOrgans(): Observable<SpatialEntity[]> {
+    return from(this.getDB().then((db) => db.getReferenceOrgans())).pipe(take(1));
   }
 
   /**

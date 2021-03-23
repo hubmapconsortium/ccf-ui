@@ -2,14 +2,15 @@
 /* eslint-disable no-underscore-dangle */
 import { FlatTreeControl } from '@angular/cdk/tree';
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { OntologyTreeNode } from 'ccf-database';
 import { filter, invoke, property } from 'lodash';
 
 import { FlatNode } from '../../../core/models/flat-node';
-import { OntologyNode } from '../../../core/models/ontology-node';
 import { GetChildrenFunc } from '../../../core/services/ontology-search/ontology-search.service';
+
 
 /**
  * Getter function for 'level' on a flat node.
@@ -42,14 +43,14 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   // eslint-disable-next-line
   @Input()
-  set nodes(nodes: OntologyNode[] | undefined) {
+  set nodes(nodes: OntologyTreeNode[] | undefined) {
     this._nodes = nodes;
     if (this.control) {
       this.dataSource.data = this._nodes ?? [];
     }
   }
 
-  get nodes(): OntologyNode[] | undefined { return this._nodes; }
+  get nodes(): OntologyTreeNode[] | undefined { return this._nodes; }
 
   /**
    * Method for fetching the children of a node.
@@ -117,7 +118,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Emits an event whenever a node has been selected.
    */
-  @Output() nodeSelected = new EventEmitter<OntologyNode[]>();
+  @Output() nodeSelected = new EventEmitter<OntologyTreeNode[]>();
 
   @Output() nodeChanged = new EventEmitter<FlatNode>();
 
@@ -148,7 +149,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Storage for getter/setter 'nodes'.
    */
-  private _nodes?: OntologyNode[] = undefined;
+  private _nodes?: OntologyTreeNode[] = undefined;
 
   /**
    * Storage for getter/setter 'getChildren'.
@@ -160,6 +161,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   bodyNode = new FlatNode(
     {
+      '@id': 'http://purl.obolibrary.org/obo/UBERON_0013702',
+      '@type': 'OntologyTreeNode',
       id: 'http://purl.obolibrary.org/obo/UBERON_0013702',
       label: 'body',
       parent: '',
@@ -219,7 +222,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
       this.control.collapseAll();
       this.selectedNodes.forEach(selectedNode => {
         this.expandAndSelect(selectedNode.original, (node) =>
-          dataNodes.find(findNode => findNode.original.id === node.parent)?.original as OntologyNode, true
+          dataNodes.find(findNode => findNode.original.id === node.parent)?.original as OntologyTreeNode, true
         );
       });
     }
@@ -230,11 +233,11 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    *
    * @param node The node to expand to and select.
    */
-  expandAndSelect(node: OntologyNode, getParent: (n: OntologyNode) => OntologyNode, additive = false): void {
+  expandAndSelect(node: OntologyTreeNode, getParent: (n: OntologyTreeNode) => OntologyTreeNode, additive = false): void {
     const { cdr, control } = this;
 
     // Add all parents to a set
-    const parents = new Set<OntologyNode>();
+    const parents = new Set<OntologyTreeNode>();
     let current = getParent(node);
 
     while (current) {

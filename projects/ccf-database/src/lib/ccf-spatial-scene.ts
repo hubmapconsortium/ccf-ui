@@ -12,9 +12,10 @@ import { ccf } from './util/prefixes';
 
 export interface SpatialSceneNode {
   '@id': string;
-  '@type': 'SpatialSceneNode';
+  '@type': string;
   entityId?: string;
   representation_of?: string;
+  reference_organ?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -26,7 +27,7 @@ export interface SpatialSceneNode {
   opacity?: number;
   transformMatrix: Matrix4;
   name?: string;
-  tooltip: string;
+  tooltip?: string;
   priority?: number;
 }
 
@@ -80,6 +81,8 @@ export class CCFSpatialScene {
       default:
         break;
     }
+    organSet = organSet.map(o => [ [o], this.getAnatomicalStructures(o['@id'])])
+      .reduce((acc, [organ, structures]) => acc.concat(structures.length > 0 ? structures : organ), [] as SpatialEntity[]);
     return organSet;
   }
 
@@ -96,7 +99,7 @@ export class CCFSpatialScene {
           zoomToOnLoad: isTermSelected && !isSkin && !isTermSelected, // Turning off for now
           _lighting: 'pbr',
           color: [255, 255, 255, 255],
-          opacity: 0.5,
+          opacity: isSkin ? 0.5 : 0.2,
           zoomBasedOpacity: false
         });
       })
@@ -155,6 +158,7 @@ export class CCFSpatialScene {
         '@id': source['@id'], '@type': 'SpatialSceneNode',
         entityId: source.entityId || undefined,
         representation_of: source.representation_of || undefined,
+        reference_organ: source.reference_organ || undefined,
         scenegraph: has3dObject ? source.object?.file : undefined,
         scenegraphNode: has3dObject ? source.object?.file_subpath : undefined,
         transformMatrix: transform,

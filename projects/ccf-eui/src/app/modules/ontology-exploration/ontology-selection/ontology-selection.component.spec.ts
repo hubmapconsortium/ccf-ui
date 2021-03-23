@@ -1,8 +1,8 @@
 import { Store } from '@ngxs/store';
+import { OntologyTreeNode } from 'ccf-database';
 import { of } from 'rxjs';
 import { RecursivePartial, Shallow } from 'shallow-render';
 
-import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologySearchComponent } from '../ontology-search/ontology-search.component';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
@@ -16,7 +16,7 @@ function fromPartial<T>(partial: RecursivePartial<T>): T {
 
 
 describe('OntologySelectionComponent', () => {
-  const ontologyNode = fromPartial<OntologyNode>({ label: 'label' });
+  const ontologyNode = fromPartial<OntologyTreeNode>({ label: 'label' });
 
   let shallow: Shallow<OntologySelectionComponent>;
   let mockStore: jasmine.SpyObj<Store>;
@@ -28,7 +28,7 @@ describe('OntologySelectionComponent', () => {
     shallow = new Shallow(OntologySelectionComponent, OntologySelectionModule)
       .provide(OntologySearchService)
       .mock(Store, mockStore)
-      .mock(OntologySearchService, { rootNode: of(fromPartial<OntologyNode>({})) })
+      .mock(OntologySearchService, { rootNode: of(fromPartial<OntologyTreeNode>({})) })
       .mock(OntologyTreeComponent, { expandAndSelect: () => undefined });
   });
 
