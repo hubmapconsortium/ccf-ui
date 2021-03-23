@@ -7,6 +7,7 @@ import {
 import { Remote, wrap } from 'comlink';
 import { from, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+
 import { environment } from '../../../../environments/environment';
 
 
@@ -121,7 +122,7 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
    getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
-    return from(this.getDB().then((db) => db.getScene(filter)).then(s => {console.log(s); return s;}));
+    return from(this.getDB().then((db) => db.getScene(filter)));
   }
 
   private getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {

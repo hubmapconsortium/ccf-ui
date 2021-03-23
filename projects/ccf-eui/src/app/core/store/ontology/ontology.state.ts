@@ -2,31 +2,15 @@ import { Injectable } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
+import { OntologyTreeModel } from 'ccf-database';
 import { map } from 'rxjs/operators';
 
-import { OntologyNode } from '../../models/ontology-node';
-
-
-/**
- * Data model for the ontology state.
- */
-export interface OntologyStateModel {
-  /**
-   * Identifier of the root node.
-   */
-  root: string;
-
-  /**
-   * Hash table of nodes.
-   */
-  nodes: { [id: string]: OntologyNode };
-}
 
 /**
  * Ontology tree state.
  */
 @StateRepository()
-@State<OntologyStateModel>({
+@State<OntologyTreeModel>({
   name: 'ontology',
   defaults: {
     root: '',
@@ -34,7 +18,7 @@ export interface OntologyStateModel {
   }
 })
 @Injectable()
-export class OntologyState extends NgxsDataRepository<OntologyStateModel> {
+export class OntologyState extends NgxsDataRepository<OntologyTreeModel> {
   /** All nodes in the ontology tree. */
   public readonly nodes$ = this.state$.pipe(map(state => Object.values(state.nodes)));
 
@@ -47,7 +31,7 @@ export class OntologyState extends NgxsDataRepository<OntologyStateModel> {
    * @param ontology The new state.
    */
   @DataAction()
-  setOntology(ontology: OntologyStateModel): void {
+  setOntology(ontology: OntologyTreeModel): void {
     this.ctx.setState(ontology);
   }
 }
