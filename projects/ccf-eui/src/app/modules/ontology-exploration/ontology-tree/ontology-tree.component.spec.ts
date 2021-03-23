@@ -113,8 +113,8 @@ describe('OntologyTreeComponent', () => {
 
   it('should update the opacity', async () => {
     const { instance } = await shallow.render();
-    instance.updateOpacity(50);
-    expect(instance.highlightedNode?.opacity).toEqual(50);
+    instance.updateOpacity(flatNode1, 50);
+    expect(flatNode1.opacity).toEqual(50);
   });
 
   it('should toggle the visibility', async () => {
