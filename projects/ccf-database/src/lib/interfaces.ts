@@ -103,3 +103,18 @@ export interface Filter {
   /** Include optional debugging information */
   debug?: boolean;
 }
+
+export interface OntologyTreeNode {
+  '@id': string;
+  '@type': 'OntologyTreeNode';
+  id: string;
+  label: string;
+  parent: string;
+  children: string[];
+  synonymLabels: string[];
+}
+
+export interface OntologyTreeModel {
+  root: string;
+  nodes: { [id: string]: OntologyTreeNode };
+}

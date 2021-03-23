@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { OntologyNode } from './ontology-node';
+import { OntologyTreeNode } from 'ccf-database';
 
 
 /**
@@ -31,7 +31,7 @@ export class FlatNode {
    * @param level The level of the new flat node in the tree.
    * @returns The newly created flat node.
    */
-  static create(original: OntologyNode, level: number): FlatNode {
+  static create(original: OntologyTreeNode, level: number): FlatNode {
     return new FlatNode(original, level);
   }
 
@@ -41,5 +41,5 @@ export class FlatNode {
    * @param original The original ontology node object.
    * @param level The level of the new flat node in the tree.
    */
-  constructor(readonly original: OntologyNode, readonly level: number) {}
+  constructor(readonly original: OntologyTreeNode, readonly level: number) {}
 }

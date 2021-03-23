@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
+import { OntologyTreeNode } from 'ccf-database';
 import { of } from 'rxjs';
 import { RecursivePartial, Shallow } from 'shallow-render';
 
-import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologySearchService, SearchResult } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologySearchComponent } from './ontology-search.component';
 import { OntologySearchModule } from './ontology-search.module';
@@ -82,7 +82,7 @@ describe('OntologySearchComponent', () => {
   });
 
   it('should emit the node when selected', async () => {
-    const node = fromPartial<OntologyNode>({ label: 'label' });
+    const node = fromPartial<OntologyTreeNode>({ label: 'label' });
     const event = fromPartial<MatAutocompleteSelectedEvent>({
       option: { value: { node } }
     });
@@ -103,7 +103,7 @@ describe('OntologySearchComponent', () => {
   });
 
   it('should handle the node selection', async () => {
-    const node = fromPartial<OntologyNode>({ label: 'label' });
+    const node = fromPartial<OntologyTreeNode>({ label: 'label' });
     const event = fromPartial<MatAutocompleteSelectedEvent>({
       option: { value: { node } }
     });

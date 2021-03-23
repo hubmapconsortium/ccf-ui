@@ -1,0 +1,60 @@
+<div class="main-container">
+  <div class="checkbox-background" [class.selected]="selected"
+    [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
+    <ng-container *ngIf="selected; else unselected">
+      <mat-icon fontSet="material-icons-outlined" class="checkbox selected">check_box_outlined</mat-icon>
+    </ng-container>
+
+    <ng-template #unselected>
+      <mat-icon class="checkbox unselected">check_box_outline_blank</mat-icon>
+    </ng-template>
+  </div>
+
+
+  <div class="donor-card donor mat-elevation-z2" [class.selectable]="selected" [class.expanded]="expanded"
+    (click)="toggleExpansion()">
+    <mat-icon class="icon person-icon">person</mat-icon>
+
+    <div class="donor-info">
+      <div class="title">{{ donor.donor.label }}</div>
+      <div class="description">{{ donor.donor.description }}</div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <mat-icon class="icon" *ngIf="selected">{{ expanded ? "expand_less" : "expand_more" }}</mat-icon>
+  </div>
+</div>
+
+<ng-container *ngIf="expanded">
+  <div class="donor-card expanded-view mat-elevation-z2 align-end">
+    <div class="info-block">
+      <mat-icon class="icon info-icon">bubble_chart</mat-icon>
+      <div class="text-content">
+        <div>{{ donor.label }}</div>
+        <div class="description">{{ donor.description }}</div>
+      </div>
+    </div>
+    <ng-container *ngIf="donor.datasets.length > 0">
+      <!--
+        Data carousel here.
+      -->
+    </ng-container>
+    <!--
+      Line graph goes here.
+     -->
+  </div>
+
+  <div class="donor-card expanded-view w-80 mat-elevation-z2 align-end" *ngFor="let section of donor.sections">
+    <div class="info-block">
+      <mat-icon class="icon info-icon icon-light">bubble_chart</mat-icon>
+      <div class="text-content">
+        <div>{{ section.label }}</div>
+        <div class="description">{{ section.description }}</div>
+      </div>
+    </div>
+    <!--
+      Data carousel goes here.
+      -->
+  </div>
+</ng-container>

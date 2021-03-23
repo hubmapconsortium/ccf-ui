@@ -77,8 +77,14 @@ const ccfx = prefixer('ccf');
 /** CCF specific ids. */
 export const ccf = {
   x: ccfx,
+  ontologyNode: {
+    label: ccfx('ccf_preferred_label'),
+    parent: ccfx('ccf_part_of'),
+    children: ccfx('ccf_part_of'),
+    rui_rank: ccfx('ccf_rui_rank'),
+    synonymLabels: DataFactory.namedNode('http://www.geneontology.org/formats/oboInOwl#hasExactSynonym')
+  },
   spatial: {
-    Body: ccfx('VHBody'),
     Female: ccfx('VHFemale'),
     Male: ccfx('VHMale'),
     BothSexes: ccfx('VHBothSexes'),

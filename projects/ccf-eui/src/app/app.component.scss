@@ -16,6 +16,17 @@
     width: 100%;
     opacity: 1;
 
+    .portal-view {
+      transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
+      position: absolute;
+      left: 0;
+      z-index: 100;
+    }
+
+    .inactive {
+      left: calc(450px - 100%);
+    }
+
     ccf-drawer-content {
       overflow: hidden;
       margin-bottom: 1.5rem;
@@ -65,12 +76,20 @@
         transition: all 0.5s ease-in-out;
 
         &.closed {
-          margin-bottom: 1.5rem;
-          height: 0rem;
+          height: 1.5rem;
           top: -4.25rem;
-          opacity: 0;
-          pointer-events: none;
         }
+      }
+
+      .stage-content {
+        transition: all 0.5s ease-in-out;
+        border-bottom-right-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        height: calc(100% - 5.688rem);
+      }
+
+      .expanded-stage {
+        height: 100%;
       }
     }
 
@@ -125,6 +144,8 @@
         }
       }
     }
+
+    
   }
 }
 

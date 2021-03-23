@@ -1,9 +1,14 @@
+import { LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult, SpatialSceneNode } from 'ccf-database';
+import {
+  AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult,
+  OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
+} from 'ccf-database';
 import { Remote, wrap } from 'comlink';
 import { from, Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
-import { environment } from './../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 
 /**
@@ -21,10 +26,9 @@ export class DataSourceService {
   /**
    * Creates an instance of data source service.
    */
-  constructor() {
+  constructor(private readonly locator: LocationStrategy) {
     if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
-      const worker = new Worker('./data-source.worker', { type: 'module' });
-      this.dataSource = wrap(worker);
+      this.dataSource = this.getWebWorkerDataSource(true);
     } else {
       this.dataSource = new CCFDatabase();
     }
@@ -64,6 +68,16 @@ export class DataSourceService {
   }
 
   /**
+   * Queries for tissue block values.
+   *
+   * @param [filter] Currently applied filter.
+   * @returns An observable emitting the results.
+   */
+   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
+    return from(this.getDB().then((db) => db.getTissueBlockResults(filter)));
+  }
+
+  /**
    * Queries for aggregate values.
    *
    * @param [filter] Currently applied filter.
@@ -84,24 +98,42 @@ export class DataSourceService {
   }
 
   /**
+   * Get the ontology tree model.
+   *
+   * @returns An observable emitting the results.
+   */
+  getOntologyTreeModel(): Observable<OntologyTreeModel> {
+    return from(this.getDB().then((db) => db.getOntologyTreeModel())).pipe(take(1));
+  }
+
+  /**
+   * Get the reference organs.
+   *
+   * @returns An observable emitting the results.
+   */
+   getReferenceOrgans(): Observable<SpatialEntity[]> {
+    return from(this.getDB().then((db) => db.getReferenceOrgans())).pipe(take(1));
+  }
+
+  /**
    * Queries for scene nodes to display.
    *
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
    getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
-    return from(
-      this.getDB().then((db) => db.getScene(filter))
-      .then((scene) => {
-        // FIXME: Temporary fix until EUI and RUI are harmonized
-        for (const node of scene) {
-          const id = node['@id'];
-          if (id.endsWith('#VHFemaleOrgans') || id.endsWith('#VHMaleOrgans')) {
-            node.color = [255, 0, 0, 255];
-          }
-        }
-        return scene;
-      })
-    );
+    return from(this.getDB().then((db) => db.getScene(filter)));
+  }
+
+  private getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {
+    let worker: Worker;
+    if (directImport) {
+      worker = new Worker('./data-source.worker', { type: 'module' });
+    } else {
+      const workerUrl = this.locator.prepareExternalUrl('0.worker.js');
+      const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
+      worker = new Worker(URL.createObjectURL(workerBlob), { type: 'module' });
+    }
+    return wrap(worker);
   }
 }

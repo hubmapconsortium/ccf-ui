@@ -6,7 +6,7 @@
 /** Testing environment configuration. */
 export const environment = {
   production: false,
-  ontologyUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-partonomy.jsonld',
+  disableDbWorker: false,
   organNodes: [
     'http://purl.obolibrary.org/obo/UBERON_0000948', // Heart
     'http://purl.obolibrary.org/obo/LMHA_00211', // Lung
@@ -16,9 +16,8 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0002108', // Small Intestine
     'http://purl.obolibrary.org/obo/UBERON_0001052' // Rectum
   ],
-  disableDbWorker: false,
   dbOptions: {
-    ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
+    ccfOwlUrl: 'assets/ccf.owl.n3store.json',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',

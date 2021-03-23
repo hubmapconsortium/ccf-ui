@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, Quad, Store } from 'triple-store-utils';
+import {
+  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, deserializeN3Store, DataFactory, Quad, Store
+} from 'triple-store-utils';
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
 import { addHubmapDataToStore } from './hubmap/hubmap-data-import';
-import { AggregateResult, Filter, ListResult, TissueBlockResult } from './interfaces';
+import { AggregateResult, Filter, ListResult, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
+import { getOntologyTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getListResult, getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { SpatialEntity } from './spatial-types';
@@ -58,7 +61,7 @@ export class CCFDatabase {
    * @param [options] Initialization options.
    */
   constructor(public options: CCFDatabaseOptions = DEFAULT_CCF_DB_OPTIONS) {
-    this.store = new Store();
+    this.store = new Store(undefined, {factory: DataFactory});
     this.graph = new CCFSpatialGraph(this);
     this.scene = new CCFSpatialScene(this);
   }
@@ -88,7 +91,13 @@ export class CCFDatabase {
   private async doConnect(): Promise<void> {
     const ops: Promise<unknown>[] = [];
     const ccfOwlUrl = this.options.ccfOwlUrl;
-    if (ccfOwlUrl.endsWith('.n3')) {
+    if (ccfOwlUrl.endsWith('.n3store.json')) {
+      const storeString = await fetch(ccfOwlUrl).then(r => r.text())
+        .catch(x => console.log('Couldn\'t locate serialized store.'));
+      if (storeString) {
+        this.store = deserializeN3Store(storeString, DataFactory);
+      }
+    } else if (ccfOwlUrl.endsWith('.n3')) {
       ops.push(addN3ToStore(this.options.ccfOwlUrl, this.store));
     } else {
       ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
@@ -102,8 +111,12 @@ export class CCFDatabase {
           this.options.hubmapAssetsUrl, this.options.hubmapPortalUrl
         ));
       }
+
+      ops.push(
+        addJsonLdToStore('assets/kpmp/data/rui_locations.jsonld', this.store)
+        .catch(x => console.log('Couldn\'t locate KPMP data.'))
+      );
     }
-    ops.push(addJsonLdToStore('assets/kpmp/data/rui_locations.jsonld', this.store).catch(x => console.log('Couldn\'t locate KPMP data.')));
     await Promise.all(ops);
     // Add a small delay to allow the triple store to settle
     await new Promise(r => setTimeout(r, 500));
@@ -197,6 +210,24 @@ export class CCFDatabase {
    */
   async getOntologyTermOccurences(filter?: Filter): Promise<Record<string, number>> {
     return getOntologyTermOccurences(this.getIds(filter), this.store);
+  }
+
+  /**
+   * Get ontology term tree nodes
+   *
+   * @returns Ontology term counts.
+   */
+   async getOntologyTreeModel(): Promise<OntologyTreeModel> {
+    return getOntologyTreeModel(this.store);
+  }
+
+  /**
+   * Get reference organs
+   *
+   * @returns Ontology term counts.
+   */
+   async getReferenceOrgans(): Promise<SpatialEntity[]> {
+    return this.scene.getReferenceOrgans();
   }
 
   /**

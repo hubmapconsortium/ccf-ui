@@ -2,20 +2,28 @@ import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, 
 import { ResizeSensor } from 'css-element-queries';
 
 export const ALL_ORGANS: OrganInfo[] = [
-  { src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true },
-  { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true },
-  { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true },
-  { src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true },
-  { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true },
+  { src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001155' },
+  { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000948'},
+  { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004538'},
+  { src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004539'},
+  { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002106'},
   { src: 'app:bladder', organ: 'Bladder', name: 'Bladder', disabled: true, hasSex: true },
   { src: 'app:brain', organ: 'Brain', name: 'Brain', disabled: true, hasSex: true },
   { src: 'app:liver', organ: 'Liver', name: 'Liver', disabled: true, hasSex: true },
-  { src: 'app:lung-left', organ: 'Lung', name: 'Lung, L', disabled: true, side: 'left', hasSex: true },
-  { src: 'app:lung-right', organ: 'Lung', name: 'Lung, R', disabled: true, side: 'right', hasSex: true },
+  { src: 'app:lung-left', organ: 'Lung', name: 'Lung, L', disabled: true, side: 'left', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002168'},
+  { src: 'app:lung-right', organ: 'Lung', name: 'Lung, R', disabled: true, side: 'right', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002167'},
   { src: 'app:lymph_nodes', organ: 'Lymph Nodes', name: 'Lymph Nodes', disabled: true, hasSex: true },
   { src: 'app:ovary-left', organ: 'Ovaries', name: 'Ovary, L', disabled: true, side: 'left', hasSex: false },
   { src: 'app:ovary-right', organ: 'Ovaries', name: 'Ovary, R', disabled: true, side: 'right', hasSex: false },
-  { src: 'app:small_intestine', organ: 'Small Intestine', name: 'Small Intestine', disabled: true, hasSex: true },
+  { src: 'app:small_intestine', organ: 'Small Intestine', name: 'Small Intestine', disabled: true, hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002108'},
   { src: 'app:stomach', organ: 'Stomach', name: 'Stomach', disabled: true, hasSex: true },
   { src: 'app:thymus', organ: 'Stomach', name: 'Thymus', disabled: true, hasSex: true }
 ].filter(organ => organ.disabled !== true) as OrganInfo[];
@@ -52,7 +60,7 @@ export interface OrganInfo {
    */
   hasSex?: boolean;
 
-  numResults?: number;
+  id?: string;
 }
 
 /**
@@ -116,6 +124,25 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Detects resizing of carousel
    */
   private sensor: ResizeSensor;
+
+  // eslint-disable-next-line
+  @Input()
+  set occurenceData(value: Record<string, number>) {
+    if (value) {
+      // eslint-disable-next-line
+      this._occurenceData = value;
+    } else {
+      // eslint-disable-next-line
+      this._occurenceData = {};
+    }
+  }
+
+  get occurenceData(): Record<string, number> {
+    // eslint-disable-next-line
+    return this._occurenceData;
+  }
+
+  private _occurenceData: Record<string, number>;
 
   /**
    * Set resize sensor on carousel
