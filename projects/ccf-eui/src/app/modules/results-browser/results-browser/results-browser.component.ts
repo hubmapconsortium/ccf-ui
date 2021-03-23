@@ -13,13 +13,6 @@ import { AggregateResult, ListResult, TissueBlockResult } from 'ccf-database';
   styleUrls: ['./results-browser.component.scss']
 })
 export class ResultsBrowserComponent {
-
-  /**
-   * Input array of items used to generate the list of results in the results browser.
-   * Keeping this separate so that we can switch back to the old data if need be more easily.
-   */
-  @Input() data: ListResult[];
-
   /**
    * Input array of Tissue Blocks to pass along to the donor card component.
    */
