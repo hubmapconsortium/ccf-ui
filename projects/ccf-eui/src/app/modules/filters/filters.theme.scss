@@ -20,7 +20,7 @@
     color: mat-color($foreground, contrast-icon);
 
     &:hover {
-      color: mat-color($accent);
+      background-color: map-get($background, info-button-hover) !important;
     }
   }
 
@@ -29,11 +29,6 @@
 
     &:active {
       color: mat-color($foreground, icon-active);
-    }
-
-    &:hover {
-      color: mat-color($foreground, contrast-icon);
-      background: mat-color($foreground, icons-background-hover);
     }
   }
 }

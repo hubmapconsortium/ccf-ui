@@ -1,6 +1,6 @@
 <div class="ccf-app mat-app-background">
   <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn"></ccf-header>
-  <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
+  <!-- <ccf-spinner-overlay text="Loading data" [active]="spinnerActive$ | async"></ccf-spinner-overlay> -->
   
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
@@ -29,7 +29,7 @@
           <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}</mat-icon>
         </button>
         <button class="button">
-          <mat-icon class="refresh icon" (click)="reset(left, right, filterbox)">refresh</mat-icon>
+          <mat-icon class="refresh icon" (click)="reset(left, right, filterbox)" matTooltip="Refresh">refresh</mat-icon>
         </button>
        </div>
        <ccf-info-button [infoTitle]="'HuBMAP CCF Exploration User Interface 1.0'" [matTooltip]="'Open Info'"></ccf-info-button>
@@ -51,7 +51,7 @@
 
       <div [class.closed]="!organListVisible" class="selector-drawer">
         <ccf-organ-selector [occurenceData]="data.termOccurencesData$ | async" [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
-          [selectedOrgans]="selectedOrgans"></ccf-organ-selector>
+          [selectedOrgans]="selectedOrgans" class="organ-selector"></ccf-organ-selector>
       </div>
       <div class="close-button-wrapper" [class.closed]="!organListVisible">
         <div class="close-button" (click)="organListVisible = !organListVisible">
