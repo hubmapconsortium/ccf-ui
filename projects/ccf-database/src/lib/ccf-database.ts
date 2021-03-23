@@ -6,10 +6,11 @@ import {
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
 import { addHubmapDataToStore } from './hubmap/hubmap-data-import';
-import { AggregateResult, Filter, ListResult, TissueBlockResult } from './interfaces';
+import { AggregateResult, Filter, ListResult, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
+import { getOntologyTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getListResult, getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { SpatialEntity } from './spatial-types';
@@ -209,6 +210,24 @@ export class CCFDatabase {
    */
   async getOntologyTermOccurences(filter?: Filter): Promise<Record<string, number>> {
     return getOntologyTermOccurences(this.getIds(filter), this.store);
+  }
+
+  /**
+   * Get ontology term tree nodes
+   *
+   * @returns Ontology term counts.
+   */
+   async getOntologyTreeModel(): Promise<OntologyTreeModel> {
+    return getOntologyTreeModel(this.store);
+  }
+
+  /**
+   * Get reference organs
+   *
+   * @returns Ontology term counts.
+   */
+   async getReferenceOrgans(): Promise<SpatialEntity[]> {
+    return this.scene.getReferenceOrgans();
   }
 
   /**

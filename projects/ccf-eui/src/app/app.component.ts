@@ -10,7 +10,7 @@ import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-
+import { ListResult } from 'ccf-database';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -42,6 +42,17 @@ export class AppComponent {
    * Whether or not organ carousel is open
    */
   organListVisible = true;
+
+  /**
+   * Emitted url object from the results browser item
+   */
+  url: ListResult;
+
+  /**
+   * Variable to keep track of whether the viewer is open
+   * or not
+   */
+  viewerOpen = false;
 
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
@@ -132,6 +143,15 @@ export class AppComponent {
       }
     });
     return selectionString;
+  }
+
+  /**
+   * Function to handle the display of the viewer
+   * to show the appropriate iframe data
+   */
+  resultsClicked(resultUrl: ListResult) {
+    this.url = resultUrl;
+    this.viewerOpen = true;
   }
 
   get hubmapPortalUrl(): string {
