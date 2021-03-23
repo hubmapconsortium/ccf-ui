@@ -71,7 +71,9 @@ $background: map-merge($mat-light-theme-background, (
   button-bg: map-get($primary-colors, light-header),
   mat-selected-option: map-get($primary-colors, light-header),
   mat-slider-primary: map-get($primary-colors, light-header),
-  info-button-hover: map-get($primary-colors, 300)
+  info-button-hover: map-get($primary-colors, 300),
+  checkbox-color: #636363,
+  button-background-hover: #2f3346,
 ));
 
 $theme: (

@@ -63,7 +63,9 @@ $background: map-merge($mat-dark-theme-background, (
   dropdown-hover: map-get($primary-colors, 500), //#9E9E9E
   image-placeholder: map-get($primary-colors, 500), //#9E9E9E
   mat-slider-primary: #ececec,
-  info-button-hover: map-get($primary-colors, 850)
+  info-button-hover: map-get($primary-colors, 850),
+  checkbox-color: #636363,
+  button-background-hover: #2f3346
 ));
 
 $theme: (
