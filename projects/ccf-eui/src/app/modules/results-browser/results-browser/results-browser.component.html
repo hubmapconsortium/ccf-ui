@@ -8,11 +8,6 @@
   </div>
 
   <div class="results-browser-list" (scroll)="onScroll($event)">
-    <!-- <div *ngFor="let result of data" class="browser-item-container" [class.selected]="result === selectedResult">
-      <ccf-results-browser-item [data]="result" (openImageViewer)="selectedResult = result; resultClicked.emit(result);"
-                                class="result-browser-item">
-      </ccf-results-browser-item>
-    </div> -->
     <div class="browser-item-container" *ngFor="let donor of donorData">
       <ccf-donor-card
         [donor]="donor"

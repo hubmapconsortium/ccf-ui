@@ -12,6 +12,7 @@ interface ColorSwatch {
   ruiLocationId: string;
 }
 type ColorPalette = ColorSwatch[];
+
 interface TissueBlockRegistryEntry {
   tissueBlockId: string;
   ruiLocationId: string;
@@ -51,20 +52,13 @@ export class ResultsBrowserComponent implements OnInit {
    */
   @Input() dataLoading: boolean;
 
-  @Input() allColors: string[] = [
-    '#FF8800',
-    '#2979ff',
-    '#ffd740',
-    '#b92dff',
-    '#da326f',
-    '#7323e2',
-    '#acf32b',
-    '#82B1FF',
-    '#E040FB',
-    '#00E5FF',
-  ]
+  /**
+   * Output emitting the result that was clicked on and its relevant information.
+   * Used for opening and rendering the result viewer.
+   */
+  @Output() resultClicked = new EventEmitter<ListResult>();
 
-  @Input() availableColors: string[] = [
+  paletteColors = [
     '#FF8800',
     '#2979ff',
     '#ffd740',
@@ -78,10 +72,14 @@ export class ResultsBrowserComponent implements OnInit {
   ];
 
   /**
-   * Output emitting the result that was clicked on and its relevant information.
-   * Used for opening and rendering the result viewer.
+   * All colors in the palette
    */
-  @Output() resultClicked = new EventEmitter<ListResult>();
+  allColors: string[] = [...this.paletteColors];
+
+  /**
+   * Palette colors that can currently be used
+   */
+  availableColors: string[] = [...this.paletteColors];
 
   /**
    * Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
@@ -144,8 +142,14 @@ export class ResultsBrowserComponent implements OnInit {
 
   donorColorPalette: ColorPalette = [];
 
+  /**
+   * Contains RUI locations of selected tissue blocks
+   */
   selectedRUIs: string[] = [];
 
+  /**
+   * Keeps track of tissue blocks selected
+   */
   tissueBlockRegistry: TissueBlockRegistry = [];
 
   ngOnInit(): void {
@@ -163,9 +167,8 @@ export class ResultsBrowserComponent implements OnInit {
     }
   }
   
-
+  // Will call results state method to update selections / colors.
   handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {
-    // Will call results state method to update selections / colors.
     const selected = $event;
     if (selected) {
       this.selectTissueBlock(donor);
@@ -174,27 +177,18 @@ export class ResultsBrowserComponent implements OnInit {
     }
   }
 
+  // Will get colors from results state.
   getTissueBlockColor(ruiLocationId: string): string {
-    // Will get colors from results state.
     return this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)?.color || '';
   }
 
+  // Will get selected state from results state.
   isTissueBlockSelected(block: TissueBlockResult): boolean {
-    // Will get selected state from results state.
-    if (this.tissueBlockRegistry.find(tissueBlock => tissueBlock.tissueBlockId === block['@id'])) {
-      return true;
-    }
-    return false;
+    return this.tissueBlockRegistry.find(tissueBlock => tissueBlock.tissueBlockId === block['@id']) ? true : false;
   }
 
-  selectTissueBlock(tissueBlock: TissueBlockResult, color?: string): void {
+  selectTissueBlock(tissueBlock: TissueBlockResult): void {
     let availableColor: string;
-    if (color) {
-      // If a color is passed in, and it is a valid color of the color palette, then use it for the selected tissueBlock.
-      if (this.donorColorPalette.find(tempColor => tempColor.color === color)) {
-        // this.useColor(this.donorColorPalette.find(tempColor => tempColor.color === color)!.color, tissueBlock.ruiLocationId);
-      }
-    }
     // If the block's rui location has already been selected, assign the color of the block to the color assigned to the rui location
     if (this.selectedRUIs.find(url => url === tissueBlock.ruiLocationId)) {
       // Find the color assigned to the rui location
@@ -206,6 +200,7 @@ export class ResultsBrowserComponent implements OnInit {
     } else {
       // If there are no more colors left and selected tissue block does not share a rui location with another selected block
       if (this.availableColors.length === 0 && !this.selectedRUIs.includes(tissueBlock.ruiLocationId)) {
+        // make the available color the oldest color
         availableColor = this.recycleOldestColor(tissueBlock.ruiLocationId);
       } else {
         // Add new ruiLocation to selectedRUIs
@@ -213,7 +208,6 @@ export class ResultsBrowserComponent implements OnInit {
         // Get first available color and remove it from the available colors list
         availableColor = this.availableColors.shift()!;
       }
-
       // Update appropriate color in donorColorPalette with new ruiLocation
       this.updateColorWithLocation(availableColor, tissueBlock.ruiLocationId);
       // Find the color assigned to the rui location
@@ -253,82 +247,32 @@ export class ResultsBrowserComponent implements OnInit {
     this.updateColorWithLocation(blockColor, '');
   }
 
-  updateColorWithLocation(oldColor: string, newColor: string): void {
+  /**
+   * Updates the RUI location assigned to a color in the palette
+   * @param color The color to assign a location to
+   * @param newLocation The new RUI location
+   */
+  updateColorWithLocation(color: string, newLocation: string): void {
     let paletteCopy = [...this.donorColorPalette];
-    paletteCopy.find(tempColor => tempColor.color === oldColor)!.ruiLocationId = newColor;
+    paletteCopy.find(tempColor => tempColor.color === color)!.ruiLocationId = newLocation;
     this.donorColorPalette = paletteCopy;
   }
 
-
-  // selectTissueBlock(tissueBlock: TissueBlockResult, color?: string): void {
-  //   console.log('select tissue block');
-  //   // Register this tissue block as having been selected.
-  //   this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], ruiLocationId: tissueBlock.ruiLocationId });
-  //   console.log(this.tissueBlockRegistry)
-  //   if (color) {
-  //     // If a color is passed in, and it is a valid color of the color palette, then use it for the selected tissueBlock.
-  //     if (this.donorColorPalette.find(tempColor => tempColor.color === color)) {
-  //       this.useColor(this.donorColorPalette.find(tempColor => tempColor.color === color)!.color, tissueBlock.ruiLocationId);
-  //     }
-  //   }
-  //   // If the ruiLocationId of this tissue block already has a color assigned to it, we're done.
-  //   if (this.donorColorPalette.find(color => color.ruiLocationId === tissueBlock.ruiLocationId)) {
-  //     return;
-  //   }
-  //   // Otherwise we need to assign the next available color.
-  //   this.useColor(this.getNextColor(), tissueBlock.ruiLocationId);
-  // }
-
-  // deselectTissueBlock(tissueBlock: TissueBlockResult): void {
-  //   console.log('deselect tissue block');
-  //   // If the passed in tissue block isn't on the registry then it's already deselected.
-  //   if (!this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])) {
-  //     return;
-  //   }
-  //   // Remove the block from the selection registry.
-  //   const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
-  //   this.tissueBlockRegistry.splice(blockIndex, 1);
-  //   // If there are no more blocks with the same ruiLocationId selected then the color needs to be set to available now.
-  //   if (this.tissueBlockRegistry.filter(block => block.ruiLocationId === tissueBlock.ruiLocationId).length < 1) {
-  //     this.setColorAvailability(this.getTissueBlockColor(tissueBlock.ruiLocationId), true);
-  //   }
-  // }
-
-  // getNextColor(ruiLocationId?: string): string {
-  //   console.log('get next color() called.')
-  //   // If ruiLocationId is passed in, check first if there is already a color assigned to it.
-  //   if (ruiLocationId) {
-  //     if (this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)) {
-  //       console.log('re-using old color.')
-  //       return this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)!.color;
-  //     }
-  //   }
-  //   let availableColors = [...this.donorColorPalette];
-  //   availableColors = availableColors.filter(color => color.available);
-  //   console.log('availablecolors: ', availableColors);
-  //   if (availableColors.length > 0) {
-  //     console.log('availableColors.length', availableColors.length)
-  //     let newColor = availableColors[0].color;
-  //     this.donorColorPalette.find(color => color.color === newColor)!.available = false;
-  //     return newColor;
-  //   }
-  //   // If there are no available colors, we need to make one available.
-  //   return this.recycleOldestColor();
-  // }
-
+  /**
+   * Recycles oldest color when all colors in the palette have been used
+   * @param newRuiLocation the RUI location of the latestblock
+   * @returns oldest color
+   */
   recycleOldestColor(newRuiLocation: string): string {
-    console.log('attempting to recycle oldest color().');
     // Should not be recycling colors if none are currently selected.
     if (this.tissueBlockRegistry.length <= 0) {
-      console.log('but it should not be');
       return '';
     }
     const registryCopy: TissueBlockRegistry = [];
     const oldestRuiLocation = this.tissueBlockRegistry[0].ruiLocationId;
     const oldColor = this.getTissueBlockColor(oldestRuiLocation);
-    // Remove all registry entries that have the same RUI location ID.
+    // Remove all registry entries that have the same RUI location ID; update selectedRUIs to remove the old RUI location
     this.tissueBlockRegistry.forEach((entry: TissueBlockRegistryEntry) => {
-      console.log(entry)
       if (entry.ruiLocationId !== oldestRuiLocation) {
         this.selectedRUIs = this.selectedRUIs.filter(rui => rui !== oldestRuiLocation);
         registryCopy.push(entry);
@@ -339,29 +283,25 @@ export class ResultsBrowserComponent implements OnInit {
     return oldColor;
   }
 
-  // setColorAvailability(color: string, available: boolean): void {
-  //   console.log('set color availability');
-  //   // Color must be a valid color from the palette.
-  //   if (!this.donorColorPalette.find(tempColor => tempColor.color === color)) {
+  // highlightTissueBlock(tissueBlock: TissueBlockResult): void {
+  //   let availableColor: string;
+  //   // If the block's rui location has already been selected, assign the color of the block to the color assigned to the rui location
+  //   if (this.selectedRUIs.find(url => url === tissueBlock.ruiLocationId)) {
+  //     // Find the color assigned to the rui location
+  //     availableColor = this.donorColorPalette.find(colorSwatch => colorSwatch.ruiLocationId === tissueBlock.ruiLocationId)!.color;
   //     return;
+  //   // Otherwise we need to assign the next available color.
+  //   } else {
+  //     // If there are no more colors left and selected tissue block does not share a rui location with another selected block
+  //     if (this.availableColors.length === 0 && !this.selectedRUIs.includes(tissueBlock.ruiLocationId)) {
+  //       // make the available color the oldest color
+  //       const oldestRuiLocation = this.tissueBlockRegistry[0].ruiLocationId;
+  //       availableColor = this.getTissueBlockColor(oldestRuiLocation);
+  //     } else {
+  //       availableColor = this.availableColors[0];
+  //     }
   //   }
-  //   let paletteCopy = [...this.donorColorPalette];
-  //   paletteCopy.find(tempColor => tempColor.color === color)!.available = available;
-  //   this.donorColorPalette = paletteCopy;
-  // }
-  
-  // useColor(color: string, ruiLocationId): void {
-  //   console.log('use color');
-  //   // Can only use colors that are in the color palette.
-  //   if (!this.donorColorPalette.find(tempColor => tempColor.color === color)) {
-  //     console.log('color not found')
-  //     return;
-  //   }
-  //   let paletteCopy = [...this.donorColorPalette];
-  //   paletteCopy.find(tempColor => tempColor.color === color)!.ruiLocationId = ruiLocationId;
-  //   paletteCopy.find(tempColor => tempColor.color === color)!.available = false;
-  //   this.donorColorPalette = paletteCopy;
-  //   console.log(this.donorColorPalette)
+  //   console.log(availableColor);
   // }
 
   /**
@@ -373,7 +313,6 @@ export class ResultsBrowserComponent implements OnInit {
     if (!event.target) {
       return;
     }
-
     const { clientHeight, scrollHeight, scrollTop } = event.target as Element;
     const diff = scrollHeight - scrollTop - clientHeight;
     this.atScrollBottom = diff < 64;
