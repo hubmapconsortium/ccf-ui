@@ -78,4 +78,12 @@ export class ResultsBrowserComponent {
     const diff = scrollHeight - scrollTop - clientHeight;
     this.atScrollBottom = diff < 64;
   }
+
+  /**
+   * Placeholder method until this is connected ot the iFrame component
+   * @param link to pass to the iFrame.
+   */
+  visitLink(link: string): void {
+    console.log('visit link: ', link);
+  }
 }

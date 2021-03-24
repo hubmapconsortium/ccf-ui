@@ -14,6 +14,7 @@
         [selected]="isTissueBlockSelected(donor)"
         [color]="getTissueBlockColor(donor.ruiLocationId)"
         (checked)="handleDonorCardSelection($event, donor)"
+        (linkClick)="visitLink($event)"
       ></ccf-donor-card>
     </div>
   </div>

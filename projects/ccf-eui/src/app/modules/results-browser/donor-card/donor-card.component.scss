@@ -12,7 +12,7 @@
     height: 2rem;
     width: 2rem;
     border-radius: 50%;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -34,14 +34,14 @@
   }
 
   .donor-card {
-    padding: .5rem;
-    padding-top: .25rem;
-    padding-bottom: .25rem;
+    padding: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 
     &.expanded-view {
-      margin-top: .25rem;
+      margin-top: 0.25rem;
       width: 85%;
-      margin-bottom: .25rem;
+      margin-bottom: 0.25rem;
     }
   }
 
@@ -51,23 +51,13 @@
 
   .info-block {
     display: flex;
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1rem;
     width: 100%;
     align-items: center;
 
     &:not(:first-child) {
-      margin-top: .5rem;
-    }
-
-    .icon {
-      height: 1.5rem;
-      width: 1.5rem;
-      font-size: 1.5rem;
-
-      &.info-icon {
-        margin-right: .5rem;
-      }
+      margin-top: 0.5rem;
     }
 
     .text-content {
@@ -79,23 +69,15 @@
 
   .donor {
     display: flex;
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1rem;
     align-items: center;
     flex-grow: 1;
+    height: 2.5rem;
 
-    &.selectable {
-      cursor: pointer;
-    }
-
-    .icon {
-      height: 1.5rem;
-      width: 1.5rem;
-      font-size: 1.5rem;
-
-      &.person-icon {
-        margin-right: .5rem;
-      }
+    .hover-state {
+      width: 19.5rem !important;
+      border-right: 1px solid darkgray;
     }
 
     .donor-info {
@@ -103,17 +85,83 @@
         font-weight: bolder;
       }
     }
+  }
 
-    .spacer {
-      flex-grow: 1;
+  .hoverable {
+    position: relative;
+  }
+
+  .hover-enabled {
+    position: relative;
+
+    &:hover {
+      .hover-state {
+        opacity: 1;
+      }
     }
+  }
+
+  .hover-state {
+    transition: opacity 0.15s ease-in-out;
+    opacity: 0;
+    background-color: lightgray;
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    margin-left: -0.5rem;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    font-size: 0.75rem;
+
+    .hover-title {
+      color: black;
+      font-weight: lighter;
+    }
+
+    .hover-icon {
+      margin-left: 1rem;
+      color: slategray;
+    }
+  }
+
+  .d-flex {
+    display: flex;
   }
 
   .icon-light {
     color: gray;
   }
 
+  .icon-size {
+    height: 1.5rem;
+    width: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .selectable {
+    cursor: pointer;
+  }
+
   .w-80 {
     width: 80% !important;
+  }
+
+  .ml-5 {
+    margin-left: 0.5rem;
+  }
+
+  .mr-5 {
+    margin-right: 0.5rem;
+  }
+
+  .description {
+    width: 17rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
