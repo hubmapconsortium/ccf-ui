@@ -85,6 +85,7 @@
       left: 0;
 
       opacity: 0;
+      transition: opacity ease-in-out 0.2s;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 
       font-size: 0.75rem;
