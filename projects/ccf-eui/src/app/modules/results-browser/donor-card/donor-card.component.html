@@ -37,15 +37,17 @@
         <div class="description">{{ donor.description }}</div>
       </div>
     </div>
+
     <div class="hover-state" (click)="linkHandler(donor.link)">
       <div class="hover-title">TISSUE SECTION</div>
       <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
     </div>
+
     <ng-container *ngIf="donor.datasets.length > 0">
-      <!--
-        Data carousel here.
-      -->
+      <ccf-thumbnail-carousel *ngIf="donor.datasets.length > 0" [data]="donor.datasets">
+      </ccf-thumbnail-carousel>
     </ng-container>
+
     <!--
       Line graph goes here.
      -->

@@ -18,6 +18,7 @@
   .expand-collapse-icon {
     position: relative;
     right: 0.25rem;
+    transition: all 0.5s;
   }
 
   &.ccf-drawer-toggle-button-end .expand-collapse-icon {

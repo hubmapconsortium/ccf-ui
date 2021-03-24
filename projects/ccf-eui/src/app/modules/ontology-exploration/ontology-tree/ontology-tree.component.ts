@@ -334,30 +334,20 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     this.highlightedNode = undefined;
   }
 
-  updateOpacity(value: number | undefined): void {
-    this.highlightedNode = {...this.highlightedNode, opacity: value} as FlatNode;
-    this.nodeChanged.emit(this.highlightedNode);
+  updateOpacity(node: FlatNode, value: number | undefined): void {
+    node.opacity = value;
+    this.nodeChanged.emit(node);
   }
 
   resetNode(node: FlatNode): void {
-    this.highlightedNode = {
-      ...node,
-      opacity: 20,
-      visible: true,
-      label: node.label,
-      expandable: node.expandable
-    } as FlatNode;
-    this.nodeChanged.emit(this.highlightedNode);
+    node.opacity = 20;
+    node.visible = true;
+    this.nodeChanged.emit(node);
   }
 
   toggleVisibility(node: FlatNode): void {
-    this.highlightedNode = {
-      ...node,
-      visible: this.highlightedNode?.visible ? false : true,
-      label: node.label,
-      expandable: node.expandable
-    } as FlatNode;
-    this.nodeChanged.emit(this.highlightedNode);
+    node.visible = node.visible === true ? false : true;
+    this.nodeChanged.emit(node);
   }
 
   getLeftIndent(level: number): string {

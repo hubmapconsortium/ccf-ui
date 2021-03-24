@@ -16,18 +16,13 @@
     background-color: mat-color($background, modal);
 
     &:hover {
-      background-color: mat-color($accent);
-      color: mat-color($foreground, icon);
+      background-color: mat-color($background, info-button-hover);
     }
   }
 
   .drawer-icons {
     .button {
       color: mat-color($foreground, contrast-icon);
-
-      :hover {
-        color: mat-color($accent);
-      }
     }
   }
 

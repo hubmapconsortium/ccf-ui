@@ -4,6 +4,7 @@
   $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $primary: map-get($theme, primary);
+  $background: map-get($theme, background);
 
   .mat-checkbox-label, .filter-label {
     color: mat-color($primary, text)
@@ -11,5 +12,10 @@
 
   .mat-checkbox-frame {
     border-color: mat-color($foreground, contrast-icon);
+  }
+
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: mat-color($background, checkbox-color);
   }
 }

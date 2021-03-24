@@ -16,13 +16,10 @@
 
 .popup-container {
   position: absolute;
-  width: 0em;
   z-index: 5;
-  top: 1.25rem;
-  left: 1.25rem;
+  top: 1.2rem;
+  left: 1.48rem;
   box-shadow: 0.2rem 0.2rem 1rem 0rem #00000058;
-  transition-property: width;
-  transition-duration: 0.3s;
   
   .popup-body {
     position: relative;
@@ -35,6 +32,7 @@
   &.visible {
     width: 35rem;
     border-width: 1px;
+    transition: width 0.2s ease-in-out;
 
     .popup-body {
       padding: 1.5rem;
@@ -42,6 +40,11 @@
       transition-delay: 0.3s;
       transition-duration: 0.3s;
     }
+  }
+
+  &.hidden {
+    width: 0;
+    transition: all 0.2s ease-out;
   }
 }
 
@@ -52,9 +55,9 @@
   position: relative;
   cursor: pointer;
   outline: none;
-  padding: 0;
-
+  padding: 0.5rem;
+  
   .funnel {
-    margin-top: 0.25rem;
+    // margin-top: 0.25rem;
   }
 }

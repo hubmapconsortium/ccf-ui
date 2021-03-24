@@ -8,6 +8,7 @@
 @use '../../app/shared/components/dropdown/dropdown.component.theme' as dropdown;
 @use '../../app/shared/components/dual-slider/dual-slider.component.theme' as dualSlider;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme' as spinner;
+@use '../../app/shared/components/thumbnail-carousel/thumbnail-carousel.theme' as thumbnailCarousel;
 @use '../../app/modules/ontology-exploration/ontology-exploration.theme' as ontologyExploration;
 @use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
 @use '../../app/modules/ontology-exploration/ontology-tree/ontology-tree.component.theme' as tree;
@@ -15,6 +16,7 @@
 @use '../../../../ccf-shared/src/lib/components//info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
 @use '../../../../ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss' as infoButton;
 @use '../../app/shared/components/viewer/viewer.component.theme.scss' as viewer;
+@use '../../app/app.component.theme.scss' as app;
 
 @mixin ccf-theme($theme) {
   @include mat-core-theme($theme);
@@ -35,6 +37,7 @@
   @include dropdown.theme($theme);
   @include dualSlider.theme($theme);
   @include spinner.theme($theme);
+  @include thumbnailCarousel.theme($theme);
   @include filters.theme($theme);
   @include search.theme($theme);
   @include tree.theme($theme);
@@ -43,6 +46,7 @@
   @include infoDialog.theme($theme);
   @include infoButton.theme($theme);
   @include viewer.theme($theme);
+  @include app.theme($theme);
 
   // Overrides goes here!
 }
