@@ -120,6 +120,6 @@ describe('OntologyTreeComponent', () => {
   it('should toggle the visibility', async () => {
     const { instance } = await shallow.render();
     instance.toggleVisibility(flatNode1);
-    expect(flatNode1.visible).toBeTrue();
+    expect(flatNode1.visible).toBeFalse();
   });
 });
