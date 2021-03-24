@@ -1,10 +1,16 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { DatasetResult } from 'ccf-database';
 import { SwiperOptions } from 'swiper';
 import { NavigationOptions } from 'swiper/types';
 
 
-let nextIdentifier = 0;
+const nextUid = (() => {
+  let counter = -1;
+  return () => {
+    counter += 1;
+    return counter;
+  };
+})();
 
 
 @Component({
@@ -25,9 +31,14 @@ export class ThumbnailCarouselComponent {
   @Input() data: DatasetResult[];
 
   /**
+   * Outputs the result whose link was clicked
+   */
+  @Output() readonly linkClicked = new EventEmitter<DatasetResult>();
+
+  /**
    * Per instance unique identifier
    */
-  readonly uid = nextIdentifier++;
+  readonly uid = nextUid();
 
   /**
    * HTML id for previous slide button

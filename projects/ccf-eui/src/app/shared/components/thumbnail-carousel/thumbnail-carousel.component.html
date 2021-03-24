@@ -11,7 +11,7 @@
         <div class="thumbnail" [style.background-image]="'url(' + item.thumbnail + ')'">
           {{ item.technology }}
         </div>
-        <a class="link" target="_blank" rel="noreferrer noopener" [href]="item.link">
+        <a class="link" (click)="linkClicked.emit(item)">
           DATA
           <mat-icon>open_in_new</mat-icon>
         </a>

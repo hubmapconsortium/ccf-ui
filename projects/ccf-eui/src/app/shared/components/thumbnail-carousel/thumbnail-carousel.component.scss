@@ -33,7 +33,7 @@
       height: 2.8125rem + 0.3125rem;
 
       opacity: 1;
-      transition: opacity ease-in-out 0.5s;
+      transition: opacity ease-in-out 0.3s;
 
       pointer-events: none;
     }
@@ -85,7 +85,7 @@
       left: 0;
 
       opacity: 0;
-      transition: opacity ease-in-out 0.2s;
+      transition: opacity ease-in-out 0.3s;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 
       font-size: 0.75rem;
@@ -97,6 +97,7 @@
       &:hover,
       &:focus,
       &:active {
+        cursor: pointer;
         text-decoration: none;
       }
     }
