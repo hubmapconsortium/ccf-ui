@@ -38,6 +38,11 @@
     .authentication {
       background-color: mat-color($background, authentication);
       color: mat-color($foreground, button-text);
+      box-shadow: 0rem 0.313rem 0.313rem -0.25rem map-get($foreground, button-shadow);
+
+      &:hover {
+        background-color: mat-color($foreground, icons-hover);
+      }
     }
   }
 }
