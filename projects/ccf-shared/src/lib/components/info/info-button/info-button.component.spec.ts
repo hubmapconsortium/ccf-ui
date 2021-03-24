@@ -23,7 +23,7 @@ describe('InfoButtonComponent', () => {
   it('should display the info icon', async () => {
     const { find } = await shallow.render();
     const nativeElement = find('mat-icon').nativeElement as HTMLElement;
-    expect(nativeElement.textContent?.trim()).toBe('info_outline');
+    expect(nativeElement.textContent?.trim()).toBe('info');
   });
 
   it('should launch the info dialog', async () => {
