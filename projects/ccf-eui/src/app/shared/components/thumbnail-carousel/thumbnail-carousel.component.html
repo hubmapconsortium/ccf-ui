@@ -1,1 +1,30 @@
-<swiper></swiper>
+<div class="prev">
+  <button mat-icon-button disableRipple [attr.id]="prevButtonId">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+</div>
+
+<swiper class="swiper" [config]="config" [navigation]="navigation">
+  <ng-container *ngFor="let item of data; trackBy: itemId">
+    <ng-template swiperSlide>
+      <div class="slide">
+        <div class="thumbnail" [style.background-image]="'url(' + item.thumbnail + ')'">
+          {{ item.technology }}
+        </div>
+        <a class="link" target="_blank" rel="noreferrer noopener" [href]="item.link">
+          DATA
+          <mat-icon>open_in_new</mat-icon>
+        </a>
+      </div>
+    </ng-template>
+  </ng-container>
+</swiper>
+
+<div class="next">
+  <button mat-icon-button disableRipple [attr.id]="nextButtonId">
+    <!-- Fade element is in here so it can be hidden when the button is disabled -->
+    <div class="fade"></div>
+
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+</div>

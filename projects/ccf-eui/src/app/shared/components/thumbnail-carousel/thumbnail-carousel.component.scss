@@ -1,3 +1,107 @@
 :host {
-  display: block;
+  display: flex;
+
+  .swiper {
+    flex-grow: 1;
+    padding-bottom: 0.3125rem;
+
+    ::ng-deep .swiper-slide {
+      width: 3.75rem;
+      height: 2.8125rem;
+    }
+  }
+
+  .prev, .next {
+    display: flex;
+    align-items: center;
+
+    height: 2.8125rem;
+
+    button {
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+    }
+
+    .fade {
+      position: absolute;
+      top: -0.625rem;
+      left: -2rem;
+      z-index: 10;
+
+      width: 2rem;
+      height: 2.8125rem + 0.3125rem;
+
+      opacity: 1;
+      transition: opacity ease-in-out 0.5s;
+
+      pointer-events: none;
+    }
+
+    .swiper-button-disabled, .swiper-button-lock {
+      cursor: default;
+      pointer-events: none;
+
+      .fade {
+        opacity: 0;
+      }
+    }
+  }
+
+  .slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .thumbnail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: calc(100% - 2 * 0.125rem);
+      height: calc(100% - 2 * 0.125rem);
+
+      border-style: solid;
+      border-width: 0.125rem;
+      border-radius: 0.25rem;
+
+      background-origin: padding-box;
+      background-clip: padding-box;
+
+      font-size: 0.875rem;
+      font-weight: bold;
+    }
+
+    .link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+
+      opacity: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+
+      font-size: 0.75rem;
+      line-height: 0.75rem;
+
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+    }
+
+    &:hover .link {
+      opacity: 1;
+    }
+  }
 }
