@@ -33,18 +33,6 @@
     }
   }
 
-  .donor-card {
-    padding: 0.5rem;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-
-    &.expanded-view {
-      margin-top: 0.25rem;
-      width: 85%;
-      margin-bottom: 0.25rem;
-    }
-  }
-
   .align-end {
     margin-left: auto;
   }
@@ -128,6 +116,18 @@
     }
   }
 
+  .default-padding {
+    padding: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .expanded-view {
+    margin-top: 0.25rem;
+    width: 85%;
+    margin-bottom: 0.25rem;
+  }
+
   .d-flex {
     display: flex;
   }
@@ -148,6 +148,14 @@
 
   .w-80 {
     width: 80% !important;
+
+    .info-block {
+      .text-content {
+        .description {
+          width: 16rem !important;
+        }
+      }
+    }
   }
 
   .ml-5 {
@@ -156,6 +164,10 @@
 
   .mr-5 {
     margin-right: 0.5rem;
+  }
+
+  .mt-05 {
+    margin-top: 0.5rem;
   }
 
   .description {

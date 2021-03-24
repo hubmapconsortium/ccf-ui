@@ -10,7 +10,7 @@
     </ng-template>
   </div>
 
-  <div class="hoverable donor-card donor mat-elevation-z2" [class.hover-enabled]="selected" [class.expanded]="expanded">
+  <div class="hoverable default-padding donor mat-elevation-z2" [class.hover-enabled]="selected" [class.expanded]="expanded">
     <div class="d-flex">
       <mat-icon class="icon-size mr-5">person</mat-icon>
 
@@ -29,22 +29,22 @@
 </div>
 
 <ng-container *ngIf="expanded">
-  <div class="donor-card expanded-view mat-elevation-z2 align-end hover-enabled">
-    <div class="info-block">
+  <div class="expanded-view mat-elevation-z2 align-end">
+    <div class="info-block hover-enabled default-padding">
       <mat-icon class="icon-size mr-5">bubble_chart</mat-icon>
       <div class="text-content">
         <div class="description">{{ donor.label }}</div>
         <div class="description">{{ donor.description }}</div>
       </div>
-    </div>
 
-    <div class="hover-state" (click)="linkHandler(donor.link)">
-      <div class="hover-title">TISSUE SECTION</div>
-      <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
+      <div class="hover-state mat-elevation-z4" (click)="linkHandler(donor.link)">
+        <div class="hover-title">TISSUE SECTION</div>
+        <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
+      </div>
     </div>
 
     <ng-container *ngIf="donor.datasets.length > 0">
-      <ccf-thumbnail-carousel *ngIf="donor.datasets.length > 0" [data]="donor.datasets">
+      <ccf-thumbnail-carousel class="mt-05" [data]="donor.datasets">
       </ccf-thumbnail-carousel>
     </ng-container>
 
@@ -53,20 +53,23 @@
      -->
   </div>
 
-  <div class="donor-card expanded-view w-80 mat-elevation-z2 align-end hover-enabled" *ngFor="let section of donor.sections">
-    <div class="info-block">
+  <div class="expanded-view w-80 mat-elevation-z2 align-end" *ngFor="let section of donor.sections">
+    <div class="default-padding info-block hover-enabled">
       <mat-icon class="icon-size mr-5 icon-light">bubble_chart</mat-icon>
       <div class="text-content">
         <div class="description">{{ section.label }}</div>
         <div class="description">{{ section.description }}</div>
       </div>
+
+      <div class="hover-state mat-elevation-z4" (click)="linkHandler(section.link)">
+        <div class="hover-title">DONOR TISSUE SECTION</div>
+        <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
+      </div>
     </div>
-    <div class="hover-state" (click)="linkHandler(section.link)">
-      <div class="hover-title">DONOR TISSUE SECTION</div>
-      <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
-    </div>
-    <!--
-      Data carousel goes here.
-      -->
+
+    <ng-container *ngIf="section.datasets.length > 0">
+      <ccf-thumbnail-carousel class="mt-05" [data]="section.datasets">
+      </ccf-thumbnail-carousel>
+    </ng-container>
   </div>
 </ng-container>
