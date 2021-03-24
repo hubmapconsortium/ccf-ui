@@ -1,18 +1,23 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DonorCardComponent } from './donor-card.component';
+import { NgModule } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+
+import { ThumbnailCarouselModule } from '../../../shared/components/thumbnail-carousel/thumbnail-carousel.module';
+import { DonorCardComponent } from './donor-card.component';
 
 
 
 @NgModule({
-  declarations: [DonorCardComponent],
   imports: [
     CommonModule,
+
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+
+    ThumbnailCarouselModule
   ],
+  declarations: [DonorCardComponent],
   exports: [DonorCardComponent]
 })
 export class DonorCardModule { }
