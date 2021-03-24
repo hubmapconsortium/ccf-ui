@@ -8,13 +8,13 @@ import { AggregateResult, ListResult, TissueBlockResult } from 'ccf-database';
 // @TODO:  selected tissueBlocks need to be pulled to the top of the list while selected.
 interface ColorSwatch {
   color: string;
-  ruiLocationId: string;
+  spatialEntityId: string;
 }
 type ColorPalette = ColorSwatch[];
 
 interface TissueBlockRegistryEntry {
   tissueBlockId: string;
-  ruiLocationId: string;
+  spatialEntityId: string;
   color: string;
 }
 type TissueBlockRegistry = TissueBlockRegistryEntry[];
@@ -97,74 +97,14 @@ export class ResultsBrowserComponent implements OnInit {
    */
   selectedResult: ListResult;
 
-  handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {
-    // Will call results state method to update selections / colors.
-  }
-
-  getTissueBlockColor(ruiLocationId: string): string {
-    // Will get colors from results state.
-    return 'blue';
-  }
-
-  isTissueBlockSelected(block: TissueBlockResult): boolean {
-    // Will get selected state from results state.
-    return false;
-  }
-
-  /**
-   * Placeholder data for donor card component
-   * */
-  sampleDonor: TissueBlockResult = {
-    '@id': '4321',
-    '@type': 'Sample',
-    label: '',
-    description: '',
-    link: '',
-    sampleType: 'Tissue Block',
-    sectionCount: 2,
-    sectionSize: 10,
-    sectionUnits: 'um',
-    ruiLocationId: '121',
-    donor: {
-      '@id': '12',
-      '@type': 'Donor',
-      link: 'www.google.com',
-      label: 'Female, Age 38, BMI 14.7',
-      description: 'Entered 1/21/2021, Hom Sim, VU'
-    },
-    datasets: [
-      {
-        '@id': '432',
-        '@type': 'Dataset',
-        link: 'www.google.com',
-        thumbnail: '',
-        technology: '',
-        label: 'Registered 1/3/2021, Hom Sim, VU',
-        description: '1 x 1.2 x 3mm, 10um, Flash Frozen, 4 Sections'
-      }
-    ],
-    sections: [
-      {
-        '@id': '321',
-        '@type': 'Sample',
-        label: '',
-        description: '',
-        link: '',
-        sampleType: 'Tissue Section',
-        sectionNumber: 1,
-        datasets: []
-      }
-    ]
-  }
-
   donorData: TissueBlockResult[] = [];
 
   donorColorPalette: ColorPalette = [];
 
   /**
-   * Contains RUI locations of selected tissue blocks
+   * Contains spatialEntityIds of selected tissue blocks
    */
-  selectedRUIs: string[] = [];
+  spatialEntityIds: string[] = [];
 
   /**
    * Keeps track of tissue blocks selected
@@ -173,16 +113,8 @@ export class ResultsBrowserComponent implements OnInit {
 
   ngOnInit(): void {
     for (const i in this.allColors) {
-      const colorSwatch = {color: this.allColors[i], ruiLocationId: ''};
+      const colorSwatch = {color: this.allColors[i], spatialEntityId: ''};
       this.donorColorPalette.push(colorSwatch);
-    }
-    let tempDonorA: TissueBlockResult;
-    let tempDonorB: TissueBlockResult;
-    for (let i = 1; i <= 15; i++) {
-      tempDonorA = {...this.sampleDonor, '@id': i.toString(), ruiLocationId: i.toString() }
-      tempDonorB = {...tempDonorA, '@id': (i*100).toString() };
-      this.donorData.push(tempDonorA);
-      this.donorData.push(tempDonorB);
     }
   }
   
@@ -197,8 +129,8 @@ export class ResultsBrowserComponent implements OnInit {
   }
 
   // Will get colors from results state.
-  getTissueBlockColor(ruiLocationId: string): string {
-    return this.donorColorPalette.find(color => color.ruiLocationId === ruiLocationId)?.color || '';
+  getTissueBlockColor(spatialEntityId: string): string {
+    return this.donorColorPalette.find(color => color.spatialEntityId === spatialEntityId)?.color || '';
   }
 
   // Will get selected state from results state.
@@ -208,31 +140,31 @@ export class ResultsBrowserComponent implements OnInit {
 
   selectTissueBlock(tissueBlock: TissueBlockResult): void {
     let availableColor: string;
-    // If the block's rui location has already been selected, assign the color of the block to the color assigned to the rui location
-    if (this.selectedRUIs.find(url => url === tissueBlock.ruiLocationId)) {
-      // Find the color assigned to the rui location
-      const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.ruiLocationId === tissueBlock.ruiLocationId)!.color;
+    // If the block's spatialEntityId has already been selected, assign the color of the block to the color assigned to the spatialEntityId
+    if (this.spatialEntityIds.find(url => url === tissueBlock.spatialEntityId)) {
+      // Find the color assigned to the spatialEntityId
+      const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
       // Assign the color to the block and add block to tissueBlockRegistry
-      this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], ruiLocationId: tissueBlock.ruiLocationId, color: newColor});
+      this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], spatialEntityId: tissueBlock.spatialEntityId, color: newColor});
       return;
     // Otherwise we need to assign the next available color.
     } else {
-      // If there are no more colors left and selected tissue block does not share a rui location with another selected block
-      if (this.availableColors.length === 0 && !this.selectedRUIs.includes(tissueBlock.ruiLocationId)) {
+      // If there are no more colors left and selected tissue block does not share a spatialEntityId with another selected block
+      if (this.availableColors.length === 0 && !this.spatialEntityIds.includes(tissueBlock.spatialEntityId)) {
         // make the available color the oldest color
-        availableColor = this.recycleOldestColor(tissueBlock.ruiLocationId);
+        availableColor = this.recycleOldestColor(tissueBlock.spatialEntityId);
       } else {
-        // Add new ruiLocation to selectedRUIs
-        this.selectedRUIs.push(tissueBlock.ruiLocationId);
+        // Add new spatialEntityId to spatialEntityIds
+        this.spatialEntityIds.push(tissueBlock.spatialEntityId);
         // Get first available color and remove it from the available colors list
         availableColor = this.availableColors.shift()!;
       }
-      // Update appropriate color in donorColorPalette with new ruiLocation
-      this.updateColorWithLocation(availableColor, tissueBlock.ruiLocationId);
-      // Find the color assigned to the rui location
-      const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.ruiLocationId === tissueBlock.ruiLocationId)!.color;
+      // Update appropriate color in donorColorPalette with new spatialEntityId
+      this.updateColorWithLocation(availableColor, tissueBlock.spatialEntityId);
+      // Find the color assigned to the spatialEntityId
+      const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
       // Assign the color to the block and add block to tissueBlockRegistry
-      this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], ruiLocationId: tissueBlock.ruiLocationId, color: newColor});
+      this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], spatialEntityId: tissueBlock.spatialEntityId, color: newColor});
     }
   }
 
@@ -251,71 +183,71 @@ export class ResultsBrowserComponent implements OnInit {
     if (!this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])) {
       return;
     }
-    const blockColor = this.donorColorPalette.find(colorSwatch => colorSwatch.ruiLocationId === tissueBlock.ruiLocationId)!.color;
+    const blockColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
     // Otherwise, remove tissue block from the registry
     const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
     this.tissueBlockRegistry.splice(blockIndex, 1);
     // If removed block's color is still being used, do nothing
-    if (this.tissueBlockRegistry.find((tBlock) => tBlock.ruiLocationId === tissueBlock.ruiLocationId)) {
+    if (this.tissueBlockRegistry.find((tBlock) => tBlock.spatialEntityId === tissueBlock.spatialEntityId)) {
       return;
     }
-    // Otherwise, add the color to available colors, remove ruiLocation from selectedRUIs, and clear ruiLocation for that color in donorColorPalette
+    // Otherwise, add the color to available colors, remove spatialEntityId from spatialEntityIds, and clear spatialEntityId for that color in donorColorPalette
     this.availableColors.push(blockColor);
     this.availableColors.sort(sorter);
-    this.selectedRUIs.splice(this.selectedRUIs.indexOf(tissueBlock.ruiLocationId))
+    this.spatialEntityIds.splice(this.spatialEntityIds.indexOf(tissueBlock.spatialEntityId))
     this.updateColorWithLocation(blockColor, '');
   }
 
   /**
-   * Updates the RUI location assigned to a color in the palette
+   * Updates the spatialEntityId assigned to a color in the palette
    * @param color The color to assign a location to
-   * @param newLocation The new RUI location
+   * @param newLocation The new spatialEntityId
    */
   updateColorWithLocation(color: string, newLocation: string): void {
     let paletteCopy = [...this.donorColorPalette];
-    paletteCopy.find(tempColor => tempColor.color === color)!.ruiLocationId = newLocation;
+    paletteCopy.find(tempColor => tempColor.color === color)!.spatialEntityId = newLocation;
     this.donorColorPalette = paletteCopy;
   }
 
   /**
    * Recycles oldest color when all colors in the palette have been used
-   * @param newRuiLocation the RUI location of the latestblock
+   * @param newspatialEntityId the spatialEntityId of the latestblock
    * @returns oldest color
    */
-  recycleOldestColor(newRuiLocation: string): string {
+  recycleOldestColor(newspatialEntityId: string): string {
     // Should not be recycling colors if none are currently selected.
     if (this.tissueBlockRegistry.length <= 0) {
       return '';
     }
     const registryCopy: TissueBlockRegistry = [];
-    const oldestRuiLocation = this.tissueBlockRegistry[0].ruiLocationId;
-    const oldColor = this.getTissueBlockColor(oldestRuiLocation);
-    // Remove all registry entries that have the same RUI location ID; update selectedRUIs to remove the old RUI location
+    const oldestspatialEntityId = this.tissueBlockRegistry[0].spatialEntityId;
+    const oldColor = this.getTissueBlockColor(oldestspatialEntityId);
+    // Remove all registry entries that have the same spatialEntityId ID; update spatialEntityIds to remove the old spatialEntityId
     this.tissueBlockRegistry.forEach((entry: TissueBlockRegistryEntry) => {
-      if (entry.ruiLocationId !== oldestRuiLocation) {
-        this.selectedRUIs = this.selectedRUIs.filter(rui => rui !== oldestRuiLocation);
+      if (entry.spatialEntityId !== oldestspatialEntityId) {
+        this.spatialEntityIds = this.spatialEntityIds.filter(rui => rui !== oldestspatialEntityId);
         registryCopy.push(entry);
       }
     });
-    this.selectedRUIs.push(newRuiLocation)
+    this.spatialEntityIds.push(newspatialEntityId)
     this.tissueBlockRegistry = registryCopy;
     return oldColor;
   }
 
   // highlightTissueBlock(tissueBlock: TissueBlockResult): void {
   //   let availableColor: string;
-  //   // If the block's rui location has already been selected, assign the color of the block to the color assigned to the rui location
-  //   if (this.selectedRUIs.find(url => url === tissueBlock.ruiLocationId)) {
-  //     // Find the color assigned to the rui location
-  //     availableColor = this.donorColorPalette.find(colorSwatch => colorSwatch.ruiLocationId === tissueBlock.ruiLocationId)!.color;
+  //   // If the block's spatialEntityId has already been selected, assign the color of the block to the color assigned to the spatialEntityId
+  //   if (this.spatialEntityIds.find(url => url === tissueBlock.spatialEntityId)) {
+  //     // Find the color assigned to the spatialEntityId
+  //     availableColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
   //     return;
   //   // Otherwise we need to assign the next available color.
   //   } else {
-  //     // If there are no more colors left and selected tissue block does not share a rui location with another selected block
-  //     if (this.availableColors.length === 0 && !this.selectedRUIs.includes(tissueBlock.ruiLocationId)) {
+  //     // If there are no more colors left and selected tissue block does not share a spatialEntityId with another selected block
+  //     if (this.availableColors.length === 0 && !this.spatialEntityIds.includes(tissueBlock.spatialEntityId)) {
   //       // make the available color the oldest color
-  //       const oldestRuiLocation = this.tissueBlockRegistry[0].ruiLocationId;
-  //       availableColor = this.getTissueBlockColor(oldestRuiLocation);
+  //       const oldestspatialEntityId = this.tissueBlockRegistry[0].spatialEntityId;
+  //       availableColor = this.getTissueBlockColor(oldestspatialEntityId);
   //     } else {
   //       availableColor = this.availableColors[0];
   //     }
