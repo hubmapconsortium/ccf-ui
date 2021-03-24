@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AggregateResult, ListResult } from 'ccf-database';
-import { TissueBlockResult } from '../../../core/models/tissue-block-result';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { AggregateResult, ListResult, TissueBlockResult } from 'ccf-database';
 
 /**
  * WIP / Placeholder.
@@ -34,8 +33,14 @@ export class ResultsBrowserComponent implements OnInit {
 
   /**
    * Input array of items used to generate the list of results in the results browser.
+   * Keeping this separate so that we can switch back to the old data if need be more easily.
    */
   @Input() data: ListResult[];
+
+  /**
+   * Input array of Tissue Blocks to pass along to the donor card component.
+   */
+  @Input() tissueBlockData: TissueBlockResult[];
 
   /**
    * Input used to add a list of stats at the top the results browser.
@@ -91,6 +96,20 @@ export class ResultsBrowserComponent implements OnInit {
    * Keeps track of the selected result for highlighting
    */
   selectedResult: ListResult;
+
+  handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {
+    // Will call results state method to update selections / colors.
+  }
+
+  getTissueBlockColor(ruiLocationId: string): string {
+    // Will get colors from results state.
+    return 'blue';
+  }
+
+  isTissueBlockSelected(block: TissueBlockResult): boolean {
+    // Will get selected state from results state.
+    return false;
+  }
 
   /**
    * Placeholder data for donor card component

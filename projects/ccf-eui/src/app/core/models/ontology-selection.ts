@@ -1,7 +1,7 @@
-import { OntologyNode } from './ontology-node';
+import { OntologyTreeNode } from 'ccf-database';
 
 export interface OntologySelection {
-  location: OntologyNode | undefined;
+  location: OntologyTreeNode | undefined;
   id: string;
   label: string;
 }

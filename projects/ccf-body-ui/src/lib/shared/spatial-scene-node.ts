@@ -7,6 +7,7 @@ export interface SpatialSceneNode {
   '@type': string;
   entityId?: string;
   representation_of?: string;
+  reference_organ?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -17,5 +18,7 @@ export interface SpatialSceneNode {
   color?: [number, number, number, number];
   opacity?: number;
   transformMatrix: Matrix4;
+  name?: string;
   tooltip?: string;
+  priority?: number;
 }

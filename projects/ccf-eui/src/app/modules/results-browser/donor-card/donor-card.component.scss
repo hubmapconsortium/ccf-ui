@@ -19,9 +19,9 @@
     cursor: pointer;
 
     .checkbox {
-      height: 1rem;
-      width: 1rem;
-      font-size: 1rem;
+      height: 1.5rem;
+      width: 1.5rem;
+      font-size: 1.5rem;
 
       &.selected {
         color: white;
@@ -56,6 +56,10 @@
     width: 100%;
     align-items: center;
 
+    &:not(:first-child) {
+      margin-top: .5rem;
+    }
+
     .icon {
       height: 1.5rem;
       width: 1.5rem;
@@ -77,8 +81,8 @@
     display: flex;
     font-size: .75rem;
     line-height: 1rem;
-    width: 100%;
     align-items: center;
+    flex-grow: 1;
 
     &.selectable {
       cursor: pointer;
@@ -103,5 +107,13 @@
     .spacer {
       flex-grow: 1;
     }
+  }
+
+  .icon-light {
+    color: gray;
+  }
+
+  .w-80 {
+    width: 80% !important;
   }
 }

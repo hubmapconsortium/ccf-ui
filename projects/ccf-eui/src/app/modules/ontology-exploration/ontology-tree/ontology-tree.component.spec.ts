@@ -1,7 +1,7 @@
+import { OntologyTreeNode } from 'ccf-database';
 import { RecursivePartial, Shallow } from 'shallow-render';
 
 import { FlatNode } from '../../../core/models/flat-node';
-import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologyTreeComponent } from './ontology-tree.component';
 import { OntologyTreeModule } from './ontology-tree.module';
 
@@ -12,8 +12,8 @@ function fromPartial<T>(partial: RecursivePartial<T>): T {
 
 
 describe('OntologyTreeComponent', () => {
-  const node1 = fromPartial<OntologyNode>({ label: 'label', children: ['child1', 'child2'] });
-  const node2 = fromPartial<OntologyNode>({ label: 'label2', children: [] });
+  const node1 = fromPartial<OntologyTreeNode>({ label: 'label', children: ['child1', 'child2'] });
+  const node2 = fromPartial<OntologyTreeNode>({ label: 'label2', children: [] });
   const flatNode1 = new FlatNode(node1, 1);
   const flatNode2 = new FlatNode(node2, 1);
 

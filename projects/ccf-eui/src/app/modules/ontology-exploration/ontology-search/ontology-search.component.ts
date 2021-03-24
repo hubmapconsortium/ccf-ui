@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { OntologyTreeNode } from 'ccf-database';
 import { get, sortBy } from 'lodash';
 import { Observable } from 'rxjs';
 import { filter, map, startWith, switchMap } from 'rxjs/operators';
 
-import { OntologyNode } from '../../../core/models/ontology-node';
 import { OntologySearchService, SearchResult } from '../../../core/services/ontology-search/ontology-search.service';
 
 
@@ -19,10 +19,10 @@ import { OntologySearchService, SearchResult } from '../../../core/services/onto
 })
 export class OntologySearchComponent implements OnInit {
   /**
-   * Output event-emitter which emits the id of the OntologyNode whose label was
+   * Output event-emitter which emits the id of the OntologyTreeNode whose label was
    * selected by the user in the search-results
    */
-  @Output() selected = new EventEmitter<OntologyNode>();
+  @Output() selected = new EventEmitter<OntologyTreeNode>();
 
   /**
    * Instance of FormControl - tracks the value and validation status of an individual form control
@@ -101,7 +101,7 @@ export class OntologySearchComponent implements OnInit {
    * @param event instance of MatAutocompleteSelectedEvent
    */
   onSelect(event: MatAutocompleteSelectedEvent): void {
-    const node = get(event, ['option', 'value', 'node']) as OntologyNode;
+    const node = get(event, ['option', 'value', 'node']) as OntologyTreeNode;
     if (node) {
       this.selected.emit(node);
       this.formControl.reset();

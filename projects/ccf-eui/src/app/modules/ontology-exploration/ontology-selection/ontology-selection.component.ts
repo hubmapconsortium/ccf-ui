@@ -1,11 +1,11 @@
-import { Component, ViewChild, Output, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Store } from '@ngxs/store';
+import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
 
-import { OntologyNode } from '../../../core/models/ontology-node';
-import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
-import { OntologyState, OntologyStateModel } from '../../../core/store/ontology/ontology.state';
-import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
 import { OntologySelection } from '../../../core/models/ontology-selection';
+import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
+import { OntologyState } from '../../../core/store/ontology/ontology.state';
+import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
 
 
 /**
@@ -60,8 +60,8 @@ export class OntologySelectionComponent {
    *
    * @param ontologyNode selected ontology node.
    */
-  selected(ontologyNode: OntologyNode): void {
-    const { nodes } = this.store.selectSnapshot<OntologyStateModel>(OntologyState);
+  selected(ontologyNode: OntologyTreeNode): void {
+    const { nodes } = this.store.selectSnapshot<OntologyTreeModel>(OntologyState);
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
   }
 }
