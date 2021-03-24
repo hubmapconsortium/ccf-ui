@@ -35,11 +35,8 @@
         <div class="description">{{ donor.description }}</div>
       </div>
     </div>
-    <ng-container *ngIf="donor.datasets.length > 0">
-      <!--
-        Data carousel here.
-      -->
-    </ng-container>
+    <ccf-thumbnail-carousel *ngIf="donor.datasets.length > 0" [data]="donor.datasets">
+    </ccf-thumbnail-carousel>
     <!--
       Line graph goes here.
      -->
