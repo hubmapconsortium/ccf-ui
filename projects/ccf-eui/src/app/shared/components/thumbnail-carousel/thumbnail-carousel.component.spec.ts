@@ -1,6 +1,5 @@
 import { DatasetResult } from 'ccf-database';
 import { Shallow } from 'shallow-render';
-import { Swiper } from 'swiper';
 
 import { ThumbnailCarouselComponent } from './thumbnail-carousel.component';
 import { ThumbnailCarouselModule } from './thumbnail-carousel.module';

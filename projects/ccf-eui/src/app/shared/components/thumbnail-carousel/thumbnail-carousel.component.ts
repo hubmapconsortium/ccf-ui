@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { DatasetResult } from 'ccf-database';
-import { Swiper, SwiperOptions } from 'swiper';
+import { SwiperOptions } from 'swiper';
 import { NavigationOptions } from 'swiper/types';
 
 
