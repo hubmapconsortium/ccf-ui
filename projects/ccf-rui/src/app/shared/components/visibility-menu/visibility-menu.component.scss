@@ -44,26 +44,30 @@
       overflow: hidden;
       text-overflow: ellipsis;
       margin-left: 0.5rem;
+      opacity: 1;
+      transition-duration: 0.1s;
+      transition-timing-function: ease-in-out;
+      transition-property: opacity;
 
       &.hidden {
-        display: none
+        opacity: 0;
       }
     }
 
     .slider {
       width: calc(100% - 2rem);
-      transition-duration: 0.25s;
+      transition-duration: 0.3s;
       transition-timing-function: ease-in-out;
-      transition-property: width;
+      transition-property: opacity;
       left: 2rem;
       position: absolute;
+      opacity: 1;
 
       &.hidden {
-        width: 0rem;
-
-        ccf-opacity-slider {
-          display: none;
-        }
+        opacity: 0;
+        transition-duration: 0.1s;
+        transition-timing-function: ease-in-out;
+        transition-property: opacity;
       }
     }
   }
