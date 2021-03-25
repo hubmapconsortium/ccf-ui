@@ -31,6 +31,10 @@
       overflow: hidden;
       margin-bottom: 1.5rem;
       border-radius: 0.5rem;
+
+      .organ-selector {
+        height: 100%;
+      }
     }
 
     ccf-drawer {
@@ -48,20 +52,20 @@
           display: flex;
           justify-content: flex-start;
           align-items: center;
-
-          button, mat-icon {
-            margin-right: 0.5rem;
+          
+          .button {
+            padding: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            border-radius: 0.25rem;
+            padding: 0.65rem;
+  
           }
         }
 
-        .button {
-          padding: 0;
-          background: none;
-          border: none;
-          cursor: pointer;
-          outline: none;
-
-        }
+        
       }
     }
 

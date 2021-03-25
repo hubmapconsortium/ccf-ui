@@ -1,0 +1,51 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  .ccf-thumbnail-carousel {
+    .prev,
+    .next {
+      & > button {
+        background-color: unset;
+      }
+
+      .swiper-button-disabled,
+      .swiper-button-lock {
+        color: mat-color($foreground, disabled);
+      }
+    }
+
+    .fade {
+      background-image: linear-gradient(to right, transparent, white);
+    }
+
+    .slide {
+      .thumbnail {
+        border-top-color: white;
+        border-bottom-color: #d50000;
+        border-right-color: white;
+        border-left-color: #00c853;
+
+        background-color: black;
+        color: white;
+        // Text stroke
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+          1px 1px 0 #000;
+      }
+
+      .link {
+        background-color: mat-color($foreground, icons-background-hover);
+
+        &,
+        &:link,
+        &:visited,
+        &:hover,
+        &:focus,
+        &:active {
+          color: #636363;
+        }
+      }
+    }
+  }
+}

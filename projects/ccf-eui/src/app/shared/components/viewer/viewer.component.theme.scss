@@ -4,7 +4,7 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .wrapper {
+  .viewer-wrapper {
     background-color: mat-color($background, background);
     box-shadow: -0.25rem 0rem 0.6rem 0.1rem map-get($foreground, header-shadow);
 

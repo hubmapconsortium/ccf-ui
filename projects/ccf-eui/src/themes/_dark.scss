@@ -44,6 +44,11 @@ $foreground: map-merge($mat-dark-theme-foreground, (
 
   icons-background-hover: #e0e0e0,
   icon-active: map-get($primary-colors, 500), //#9E9E9E
+  button-shadow: rgba(0, 0, 0, 0.14),
+  icons-hover: #e0e0e0,
+  results-numbers: #9e9e9e,
+  icons-disabled: #CCCCCC,
+  opacity-numbers: #CCCCCC,
 ));
 
 $background: map-merge($mat-dark-theme-background, (
@@ -57,7 +62,10 @@ $background: map-merge($mat-dark-theme-background, (
   dropdown-menu: map-get($primary-colors, 800), //#424242
   dropdown-hover: map-get($primary-colors, 500), //#9E9E9E
   image-placeholder: map-get($primary-colors, 500), //#9E9E9E
-  mat-slider-primary: #ececec
+  mat-slider-primary: #ececec,
+  info-button-hover: map-get($primary-colors, 850),
+  checkbox-color: #636363,
+  button-background-hover: #2f3346
 ));
 
 $theme: (

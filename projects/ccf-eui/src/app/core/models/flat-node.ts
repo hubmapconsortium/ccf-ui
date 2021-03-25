@@ -6,9 +6,9 @@ import { OntologyTreeNode } from 'ccf-database';
  * Node type used by ontology tree component.
  */
 export class FlatNode {
-  visible?: boolean;
+  visible?: boolean = true;
 
-  opacity?: number;
+  opacity?: number = 20;
 
   numResults?: number;
 
