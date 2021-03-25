@@ -148,24 +148,24 @@ describe('ResultsBrowserComponent', () => {
     expect(instance.tissueBlockRegistry[1].color).toEqual('red');
   });
 
-  // it('should assign the same color to each spatialEntityId', async () => {
-  //   const { instance } = await shallow.render();
-  //   const testPalette = [
-  //     {
-  //       color: 'red',
-  //       spatialEntityId: '1'
-  //     },
-  //     {
-  //       color: 'blue',
-  //       spatialEntityId: '2'
-  //     },
-  //   ] as ColorPalette;
-  //   instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1, testTissueBlockRegistryEntry2];
-  //   instance.donorColorPalette = testPalette;
-  //   instance.spatialEntityIds = ['1'];
-  //   instance.selectTissueBlock(testBlock);
-  //   expect(instance.tissueBlockRegistry[2].color).toEqual('red');
-  // });
+  it('should assign the same color to each spatialEntityId', async () => {
+    const { instance } = await shallow.render();
+    const testPalette = [
+      {
+        color: 'red',
+        spatialEntityId: '1'
+      },
+      {
+        color: 'blue',
+        spatialEntityId: '2'
+      },
+    ] as ColorPalette;
+    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry2, testTissueBlockRegistryEntry3];
+    instance.donorColorPalette = testPalette;
+    instance.spatialEntityIds = ['1', '2'];
+    instance.selectTissueBlock(testBlock);
+    expect(instance.tissueBlockRegistry[2].color).toEqual('red');
+  });
 
   it('should deselect the tissue block', async () => {
     const { instance } = await shallow.render();
@@ -184,6 +184,27 @@ describe('ResultsBrowserComponent', () => {
     instance.spatialEntityIds = ['1', '2'];
     instance.deselectTissueBlock(testBlock);
     expect(instance.tissueBlockRegistry.length).toEqual(2);
+  });
+
+  it('should add the color back into the availableColor pool and preserve correct order', async () => {
+    const { instance } = await shallow.render();
+    const testPalette = [
+      {
+        color: 'red',
+        spatialEntityId: '1'
+      },
+      {
+        color: 'blue',
+        spatialEntityId: ''
+      },
+    ] as ColorPalette;
+    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1];
+    instance.donorColorPalette = testPalette;
+    instance.allColors = ['red', 'blue'];
+    instance.availableColors = ['blue'];
+    instance.spatialEntityIds = ['1'];
+    instance.deselectTissueBlock(testBlock);
+    expect(instance.availableColors).toEqual(['red', 'blue']);
   });
 
 
@@ -225,5 +246,11 @@ describe('ResultsBrowserComponent', () => {
     instance.availableColors = [];
     instance.spatialEntityIds = ['1', '2'];
     expect(instance.recycleOldestColor('3')).toEqual('red');
+  });
+
+  it('should not be recycling colors if none are currently selected', async () => {
+    const { instance } = await shallow.render();
+    instance.tissueBlockRegistry = [];
+    expect(instance.recycleOldestColor('1')).toEqual('');
   });
 });

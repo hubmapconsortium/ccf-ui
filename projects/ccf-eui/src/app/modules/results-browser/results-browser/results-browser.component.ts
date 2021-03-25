@@ -1,11 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { AggregateResult, ListResult, TissueBlockResult } from 'ccf-database';
 
-/**
- * WIP / Placeholder.
- * Throwing in current (non-fully functional) code that I've torn out of results-browser
- */
-// @TODO:  selected tissueBlocks need to be pulled to the top of the list while selected.
+
 export interface ColorSwatch {
   color: string;
   spatialEntityId: string;
@@ -143,7 +139,7 @@ export class ResultsBrowserComponent implements OnInit {
     // If the block's spatialEntityId has already been selected, assign the color of the block to the color assigned to the spatialEntityId
     if (this.spatialEntityIds.find(url => url === tissueBlock.spatialEntityId)) {
       // Find the color assigned to the spatialEntityId
-      const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
+      const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)?.color || '';
       // Assign the color to the block and add block to tissueBlockRegistry
       this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], spatialEntityId: tissueBlock.spatialEntityId, color: newColor});
       return;
@@ -157,12 +153,12 @@ export class ResultsBrowserComponent implements OnInit {
         // Add new spatialEntityId to spatialEntityIds
         this.spatialEntityIds.push(tissueBlock.spatialEntityId);
         // Get first available color and remove it from the available colors list
-        availableColor = this.availableColors.shift()!;
+        availableColor = this.availableColors.shift() || '';
       }
       // Update appropriate color in donorColorPalette with new spatialEntityId
       this.updateColorWithId(availableColor, tissueBlock.spatialEntityId);
       // Find the color assigned to the spatialEntityId
-      const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
+      const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)?.color || '';
       // Assign the color to the block and add block to tissueBlockRegistry
       this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], spatialEntityId: tissueBlock.spatialEntityId, color: newColor});
     }
@@ -176,29 +172,29 @@ export class ResultsBrowserComponent implements OnInit {
       };
       if(allColors.indexOf(a) < allColors.indexOf(b)){
          return -1;
-      };
+      }
       return 0;
-    };
+    }
     // If tissue block is not in the registry then do nothing
     if (!this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])) {
       console.log('block not found');
-      return;
+    } else {
+      // Otherwise, remove tissue block from the registry
+      const blockColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)?.color || '';
+      const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry
+        .find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
+      this.tissueBlockRegistry.splice(blockIndex, 1);
+      // If removed block's color is still being used, do nothing
+      if (this.tissueBlockRegistry.find((tBlock) => tBlock.spatialEntityId === tissueBlock.spatialEntityId)) {
+        return;
+      }
+      // Otherwise, add the color to available colors, remove spatialEntityId from spatialEntityIds,
+      // and clear spatialEntityId for that color in donorColorPalette
+      this.availableColors.push(blockColor);
+      this.availableColors.sort(sorter);
+      this.spatialEntityIds.splice(this.spatialEntityIds.indexOf(tissueBlock.spatialEntityId));
+      this.updateColorWithId(blockColor, '');
     }
-    // Otherwise, remove tissue block from the registry
-    const blockColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
-    const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry
-      .find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
-    this.tissueBlockRegistry.splice(blockIndex, 1);
-    // If removed block's color is still being used, do nothing
-    if (this.tissueBlockRegistry.find((tBlock) => tBlock.spatialEntityId === tissueBlock.spatialEntityId)) {
-      return;
-    }
-    // Otherwise, add the color to available colors, remove spatialEntityId from spatialEntityIds,
-    // and clear spatialEntityId for that color in donorColorPalette
-    this.availableColors.push(blockColor);
-    this.availableColors.sort(sorter);
-    this.spatialEntityIds.splice(this.spatialEntityIds.indexOf(tissueBlock.spatialEntityId));
-    this.updateColorWithId(blockColor, '');
   }
 
   /**
@@ -209,7 +205,7 @@ export class ResultsBrowserComponent implements OnInit {
    */
   updateColorWithId(color: string, newId: string): void {
     const paletteCopy = [...this.donorColorPalette];
-    paletteCopy.find(tempColor => tempColor.color === color)!.spatialEntityId = newId;
+    paletteCopy.find(tempColor => tempColor.color === color).spatialEntityId = newId;
     this.donorColorPalette = paletteCopy;
   }
 
