@@ -28,7 +28,7 @@ export class DonorCardComponent {
   /** Emits the new checked state whenever it changes */
   @Output() checked = new EventEmitter<boolean>();
 
-  /** Emite the url of any link when clicked. */
+  /** Emit the url of any link when clicked. */
   @Output() linkClick = new EventEmitter<string>();
 
   /** To keep track of which element, if any, are hovered over. */
@@ -56,6 +56,7 @@ export class DonorCardComponent {
    * Handles what happens when an info card is clicked.
    * Passes up the link click event unless the card isn't selected
    * In which case it selects it for ease of use.
+   *
    * @param url the URL to emit up.
    */
   linkHandler(url: string): void {

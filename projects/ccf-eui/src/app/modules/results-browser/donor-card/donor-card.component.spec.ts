@@ -92,4 +92,25 @@ describe('DonorCardComponent', () => {
     instance.handleCheckbox();
     expect(instance.expanded).not.toBeTrue();
   });
+
+  it('should emit linkClick when linkHandler is called if selected is true', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { donor, selected: true }});
+
+    instance.linkHandler('test.com');
+    expect(outputs.linkClick.emit).toHaveBeenCalled();
+  });
+
+  it('should not emit linkClick when linkHandler is called if selected is false', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { donor, selected: false }});
+
+    instance.linkHandler('test.com');
+    expect(outputs.linkClick.emit).not.toHaveBeenCalled();
+  });
+
+  it('should set selected to true if linkHandler is called when selected is false', async () => {
+    const { instance } = await shallow.render({ bind: { donor, selected: false }});
+
+    instance.linkHandler('test.com');
+    expect(instance.selected).toBeTrue();
+  })
 });

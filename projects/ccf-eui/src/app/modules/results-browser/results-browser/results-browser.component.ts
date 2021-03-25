@@ -81,6 +81,7 @@ export class ResultsBrowserComponent {
 
   /**
    * Placeholder method until this is connected ot the iFrame component
+   *
    * @param link to pass to the iFrame.
    */
   visitLink(link: string): void {
