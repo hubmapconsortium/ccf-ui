@@ -181,10 +181,11 @@ export class ResultsBrowserComponent implements OnInit {
     };
     // If tissue block is not in the registry then do nothing
     if (!this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])) {
+      console.log('block not found');
       return;
     }
-    const blockColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
     // Otherwise, remove tissue block from the registry
+    const blockColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
     const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry
       .find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
     this.tissueBlockRegistry.splice(blockIndex, 1);
