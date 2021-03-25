@@ -10,6 +10,10 @@
     .toggle-wrapper {
       border-color: mat-color($foreground,  chip-border-primary);
 
+      &:hover {
+        background-color: mat-color($foreground, toggle-bg);
+      }
+
       &.disabled {
         color: mat-color($foreground, icons-disabled);
         border-color: mat-color($foreground, icons-disabled);

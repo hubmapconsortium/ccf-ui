@@ -12,6 +12,16 @@
     }
 
     ccf-drawer-content {
+      ccf-organ-selector {
+        height: 100%;
+        padding-top: 0.5rem;
+        transition:  padding 0.5s;
+
+        &.closed {
+          padding-top: 0;
+        }
+      }
+      
       .selector-drawer {
         top: 0rem;
         display: flex;
