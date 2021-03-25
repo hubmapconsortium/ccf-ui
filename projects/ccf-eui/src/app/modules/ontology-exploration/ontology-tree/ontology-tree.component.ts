@@ -9,8 +9,10 @@ import { OntologyTreeNode } from 'ccf-database';
 import { filter, invoke, property } from 'lodash';
 
 import { FlatNode } from '../../../core/models/flat-node';
-import { GetChildrenFunc } from '../../../core/services/ontology-search/ontology-search.service';
 
+
+/** Type of function for getting child nodes from a parent node. */
+type GetChildrenFunc = (o: OntologyTreeNode) => OntologyTreeNode[];
 
 /**
  * Getter function for 'level' on a flat node.
@@ -166,15 +168,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
       id: 'http://purl.obolibrary.org/obo/UBERON_0013702',
       label: 'body',
       parent: '',
-      children: [
-        'http://purl.obolibrary.org/obo/UBERON_0000948',
-        'http://purl.obolibrary.org/obo/LMHA_00211',
-        'http://purl.obolibrary.org/obo/UBERON_0002113',
-        'http://purl.obolibrary.org/obo/UBERON_0002106',
-        'http://purl.obolibrary.org/obo/UBERON_0001155',
-        'http://purl.obolibrary.org/obo/UBERON_0002108',
-        'http://purl.obolibrary.org/obo/UBERON_0001052'
-      ],
+      children: [],
       synonymLabels: []
     },
     0

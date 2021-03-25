@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NodeClickEvent } from 'ccf-body-ui';
-import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -11,6 +10,7 @@ import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { ListResult } from 'ccf-database';
+import { SceneState } from './core/store/scene/scene.state';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -22,16 +22,6 @@ import { ListResult } from 'ccf-database';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  /**
-   * List of organs to be displayed in the carousel
-   */
-  organList = ALL_ORGANS.map(i => ({ ...i, numResults: 0})) as OrganInfo[];
-
-  /**
-   * Organs to be selected in the organ selector carousel
-   */
-  selectedOrgans = this.organList.filter(organ => organ.name !== 'Large Intestine');
-
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -66,7 +56,8 @@ export class AppComponent {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
+  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
+      readonly scene: SceneState) {
     data.listData$.subscribe();
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
@@ -161,10 +152,6 @@ export class AppComponent {
   get loggedIn(): boolean {
     const token = this.dataSourceService.dbOptions.hubmapToken || '';
     return token.length > 0;
-  }
-
-  changeOrgans(organs: OrganInfo[]): void {
-    this.selectedOrgans = organs;
   }
 
   sceneNodeClicked({node, ctrlClick}: NodeClickEvent): void {
