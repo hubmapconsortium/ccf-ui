@@ -112,5 +112,5 @@ describe('DonorCardComponent', () => {
 
     instance.linkHandler('test.com');
     expect(instance.selected).toBeTrue();
-  })
+  });
 });
