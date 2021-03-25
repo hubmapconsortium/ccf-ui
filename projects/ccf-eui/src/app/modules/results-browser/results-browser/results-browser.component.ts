@@ -206,7 +206,7 @@ export class ResultsBrowserComponent implements OnInit {
    */
   updateColorWithId(color: string, newId: string): void {
     const paletteCopy = [...this.donorColorPalette];
-    paletteCopy.find(tempColor => tempColor.color === color).spatialEntityId = newId;
+    paletteCopy.find(tempColor => tempColor.color === color)!.spatialEntityId = newId;
     this.donorColorPalette = paletteCopy;
   }
 
