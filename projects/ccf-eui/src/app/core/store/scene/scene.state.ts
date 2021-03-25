@@ -1,14 +1,14 @@
-import { SpatialEntity } from 'ccf-database';
-import { DataSourceService } from './../../services/data-source/data-source.service';
 import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
+import { SpatialSceneNode } from 'ccf-body-ui';
 import { ALL_POSSIBLE_ORGANS, OrganInfo } from 'ccf-shared';
-import { DataState } from '../data/data.state';
 import { combineLatest, Observable } from 'rxjs';
 import { map, pluck, take } from 'rxjs/operators';
-import { SpatialSceneNode } from 'ccf-body-ui';
+
+import { DataState } from '../data/data.state';
+import { DataSourceService } from './../../services/data-source/data-source.service';
 
 
 export interface SceneStateModel {

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NodeClickEvent } from 'ccf-body-ui';
-import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
