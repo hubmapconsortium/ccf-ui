@@ -117,7 +117,7 @@ export class ResultsBrowserComponent implements OnInit {
       this.donorColorPalette.push(colorSwatch);
     }
   }
-  
+
   // Will call results state method to update selections / colors.
   handleDonorCardSelection($event: boolean, donor: TissueBlockResult): void {
     const selected = $event;
@@ -185,33 +185,37 @@ export class ResultsBrowserComponent implements OnInit {
     }
     const blockColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
     // Otherwise, remove tissue block from the registry
-    const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry.find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
+    const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry
+      .find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
     this.tissueBlockRegistry.splice(blockIndex, 1);
     // If removed block's color is still being used, do nothing
     if (this.tissueBlockRegistry.find((tBlock) => tBlock.spatialEntityId === tissueBlock.spatialEntityId)) {
       return;
     }
-    // Otherwise, add the color to available colors, remove spatialEntityId from spatialEntityIds, and clear spatialEntityId for that color in donorColorPalette
+    // Otherwise, add the color to available colors, remove spatialEntityId from spatialEntityIds,
+    // and clear spatialEntityId for that color in donorColorPalette
     this.availableColors.push(blockColor);
     this.availableColors.sort(sorter);
-    this.spatialEntityIds.splice(this.spatialEntityIds.indexOf(tissueBlock.spatialEntityId))
+    this.spatialEntityIds.splice(this.spatialEntityIds.indexOf(tissueBlock.spatialEntityId));
     this.updateColorWithLocation(blockColor, '');
   }
 
   /**
    * Updates the spatialEntityId assigned to a color in the palette
+   *
    * @param color The color to assign a location to
    * @param newLocation The new spatialEntityId
    */
   updateColorWithLocation(color: string, newLocation: string): void {
-    let paletteCopy = [...this.donorColorPalette];
+    const paletteCopy = [...this.donorColorPalette];
     paletteCopy.find(tempColor => tempColor.color === color)!.spatialEntityId = newLocation;
     this.donorColorPalette = paletteCopy;
   }
 
   /**
    * Recycles oldest color when all colors in the palette have been used
-   * @param newspatialEntityId the spatialEntityId of the latestblock
+   *
+   * @param newspatialEntityId the spatialEntityId of the latest block
    * @returns oldest color
    */
   recycleOldestColor(newspatialEntityId: string): string {
@@ -229,31 +233,10 @@ export class ResultsBrowserComponent implements OnInit {
         registryCopy.push(entry);
       }
     });
-    this.spatialEntityIds.push(newspatialEntityId)
+    this.spatialEntityIds.push(newspatialEntityId);
     this.tissueBlockRegistry = registryCopy;
     return oldColor;
   }
-
-  // highlightTissueBlock(tissueBlock: TissueBlockResult): void {
-  //   let availableColor: string;
-  //   // If the block's spatialEntityId has already been selected, assign the color of the block to the color assigned to the spatialEntityId
-  //   if (this.spatialEntityIds.find(url => url === tissueBlock.spatialEntityId)) {
-  //     // Find the color assigned to the spatialEntityId
-  //     availableColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
-  //     return;
-  //   // Otherwise we need to assign the next available color.
-  //   } else {
-  //     // If there are no more colors left and selected tissue block does not share a spatialEntityId with another selected block
-  //     if (this.availableColors.length === 0 && !this.spatialEntityIds.includes(tissueBlock.spatialEntityId)) {
-  //       // make the available color the oldest color
-  //       const oldestspatialEntityId = this.tissueBlockRegistry[0].spatialEntityId;
-  //       availableColor = this.getTissueBlockColor(oldestspatialEntityId);
-  //     } else {
-  //       availableColor = this.availableColors[0];
-  //     }
-  //   }
-  //   console.log(availableColor);
-  // }
 
   /**
    * Handles the scroll event to detect when scroll is at the bottom.

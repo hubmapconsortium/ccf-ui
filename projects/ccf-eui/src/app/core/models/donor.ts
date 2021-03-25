@@ -29,6 +29,6 @@ export interface DonorCard {
   selected: boolean;
   color: string;
   donor: Donor;
-  rui_location: unknown;
+  ruiLocation: unknown;
   sample: DonorSample;
 }
