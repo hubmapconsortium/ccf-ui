@@ -6,18 +6,18 @@ import { AggregateResult, ListResult, TissueBlockResult } from 'ccf-database';
  * Throwing in current (non-fully functional) code that I've torn out of results-browser
  */
 // @TODO:  selected tissueBlocks need to be pulled to the top of the list while selected.
-interface ColorSwatch {
+export interface ColorSwatch {
   color: string;
   spatialEntityId: string;
 }
-type ColorPalette = ColorSwatch[];
+export type ColorPalette = ColorSwatch[];
 
-interface TissueBlockRegistryEntry {
+export interface TissueBlockRegistryEntry {
   tissueBlockId: string;
   spatialEntityId: string;
   color: string;
 }
-type TissueBlockRegistry = TissueBlockRegistryEntry[];
+export type TissueBlockRegistry = TissueBlockRegistryEntry[];
 
 /**
  * ResultsBrowser is the container component in charge of rendering the label and stats of
@@ -112,7 +112,7 @@ export class ResultsBrowserComponent implements OnInit {
   tissueBlockRegistry: TissueBlockRegistry = [];
 
   ngOnInit(): void {
-    for (const i in this.allColors) {
+    for (var i = 0; i < this.allColors.length; i++) {
       const colorSwatch = {color: this.allColors[i], spatialEntityId: ''};
       this.donorColorPalette.push(colorSwatch);
     }
@@ -160,7 +160,7 @@ export class ResultsBrowserComponent implements OnInit {
         availableColor = this.availableColors.shift()!;
       }
       // Update appropriate color in donorColorPalette with new spatialEntityId
-      this.updateColorWithLocation(availableColor, tissueBlock.spatialEntityId);
+      this.updateColorWithId(availableColor, tissueBlock.spatialEntityId);
       // Find the color assigned to the spatialEntityId
       const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)!.color;
       // Assign the color to the block and add block to tissueBlockRegistry
@@ -197,18 +197,18 @@ export class ResultsBrowserComponent implements OnInit {
     this.availableColors.push(blockColor);
     this.availableColors.sort(sorter);
     this.spatialEntityIds.splice(this.spatialEntityIds.indexOf(tissueBlock.spatialEntityId));
-    this.updateColorWithLocation(blockColor, '');
+    this.updateColorWithId(blockColor, '');
   }
 
   /**
    * Updates the spatialEntityId assigned to a color in the palette
    *
-   * @param color The color to assign a location to
-   * @param newLocation The new spatialEntityId
+   * @param color The color to assign a id to
+   * @param newId The new spatialEntityId
    */
-  updateColorWithLocation(color: string, newLocation: string): void {
+  updateColorWithId(color: string, newId: string): void {
     const paletteCopy = [...this.donorColorPalette];
-    paletteCopy.find(tempColor => tempColor.color === color)!.spatialEntityId = newLocation;
+    paletteCopy.find(tempColor => tempColor.color === color)!.spatialEntityId = newId;
     this.donorColorPalette = paletteCopy;
   }
 
