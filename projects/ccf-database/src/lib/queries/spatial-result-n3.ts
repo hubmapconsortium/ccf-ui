@@ -136,6 +136,9 @@ export function getSpatialEntity(store: Store, iri: string): SpatialEntity {
   if (result.object) {
     result.object = getSpatialObjectReference(store, (result.object as unknown) as string);
   }
+  if (result.ccf_annotations) {
+    result.ccf_annotations = store.getObjects(iri, ccf.spatialEntity.ccf_annotations, null).map(o => o.id);
+  }
   store.forSubjects((subject) => result.entityId = subject.id, entity.spatialEntity, iri, null);
   return result;
 }
