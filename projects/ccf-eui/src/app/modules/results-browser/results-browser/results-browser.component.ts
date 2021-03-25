@@ -112,8 +112,8 @@ export class ResultsBrowserComponent implements OnInit {
   tissueBlockRegistry: TissueBlockRegistry = [];
 
   ngOnInit(): void {
-    for (var i = 0; i < this.allColors.length; i++) {
-      const colorSwatch = {color: this.allColors[i], spatialEntityId: ''};
+    for (const color of this.allColors) {
+      const colorSwatch = {color, spatialEntityId: ''};
       this.donorColorPalette.push(colorSwatch);
     }
   }

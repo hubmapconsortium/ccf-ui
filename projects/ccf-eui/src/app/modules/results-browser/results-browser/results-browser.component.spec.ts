@@ -1,11 +1,10 @@
 import { Shallow } from 'shallow-render';
 
-import { 
-  ResultsBrowserComponent, 
-  ColorSwatch, 
-  ColorPalette, 
-  TissueBlockRegistryEntry, 
-  TissueBlockRegistry 
+import {
+  ResultsBrowserComponent,
+  ColorSwatch,
+  ColorPalette,
+  TissueBlockRegistryEntry,
 } from './results-browser.component';
 import { AggregateResult, ListResult, TissueBlockResult, DonorResult } from 'ccf-database';
 
@@ -138,13 +137,13 @@ describe('ResultsBrowserComponent', () => {
 
   it('should tell if the tissue block is selected', async () => {
     const { instance } = await shallow.render();
-    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1]
+    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1];
     expect(instance.isTissueBlockSelected(testBlock)).toBeTrue();
   });
 
   it('should select the tissue block', async () => {
     const { instance } = await shallow.render();
-    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1]
+    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1];
     instance.donorColorPalette = testPalette;
     instance.paletteColors = paletteColors;
     instance.availableColors = ['red', 'blue'];
@@ -174,7 +173,7 @@ describe('ResultsBrowserComponent', () => {
       datasets: [],
     } as TissueBlockResult;
 
-    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1, testTissueBlockRegistryEntry2]
+    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1, testTissueBlockRegistryEntry2];
     instance.donorColorPalette = testPalette;
     instance.paletteColors = paletteColors;
     instance.availableColors = [];
@@ -186,7 +185,7 @@ describe('ResultsBrowserComponent', () => {
 
   it('should deselect the tissue block and update', async () => {
     const { instance } = await shallow.render();
-    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1]
+    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1];
     instance.donorColorPalette = testPalette;
     instance.availableColors = [];
     instance.spatialEntityIds = ['1'];
@@ -198,7 +197,7 @@ describe('ResultsBrowserComponent', () => {
 
   it('should update color with new id', async () => {
     const { instance } = await shallow.render();
-    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1]
+    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1];
     instance.donorColorPalette = testPalette;
     instance.updateColorWithId('red', '2');
     expect(instance.donorColorPalette[0].spatialEntityId).toEqual('2');
@@ -206,7 +205,7 @@ describe('ResultsBrowserComponent', () => {
 
   it('should return the oldest color when recycleOldestColor is called', async () => {
     const { instance } = await shallow.render();
-    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1, testTissueBlockRegistryEntry2]
+    instance.tissueBlockRegistry = [testTissueBlockRegistryEntry1, testTissueBlockRegistryEntry2];
     instance.donorColorPalette = testPalette;
     instance.spatialEntityIds = ['1', '2'];
     expect(instance.recycleOldestColor('3')).toEqual('red');
