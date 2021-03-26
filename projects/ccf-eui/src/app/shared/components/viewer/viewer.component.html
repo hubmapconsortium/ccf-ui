@@ -1,17 +1,19 @@
-<div class="viewer-wrapper">
-  <div class="overlay" *ngIf="loading">
-    <p>
-      <mat-spinner></mat-spinner>
-    </p>
-    <span>Loading data</span>
-  </div>
-  <div class="toolbar">
-   <div class="right">
-    <div class="launch">
-      <mat-icon class="icon" (click)="openLink()">launch</mat-icon> <span class="text">Open in Portal</span>
-     </div>
-      <mat-icon class="icon close" (click)="closeViewer.emit();">clear</mat-icon>
-   </div>
-  </div>
-  <iframe style="height: 100%; width: 100%;" #iframe id="iframe" (onload)="onLoad()" title="Portal Data Viewer"></iframe>
+<div class="toolbar">
+  <a mat-flat-button class="launch" target="_blank" rel="noopener noreferrer" [attr.src]="safeUrl"
+     [disabled]="!safeUrl">
+    <mat-icon class="icon">launch</mat-icon>
+    <span class="text">Open in Portal</span>
+  </a>
+  <button mat-flat-button class="close" (click)="closed.emit()">
+    <mat-icon class="icon">clear</mat-icon>
+  </button>
 </div>
+
+<div class="overlay" *ngIf="loading">
+  <mat-spinner class="spinner"></mat-spinner>
+  <span class="text">Loading External Site</span>
+</div>
+
+<iframe *ngIf="safeUrl" class="frame" title="Portal Data Viewer" referrerpolicy="no-referrer" [attr.src]="safeUrl"
+        (load)="loading = false">
+</iframe>

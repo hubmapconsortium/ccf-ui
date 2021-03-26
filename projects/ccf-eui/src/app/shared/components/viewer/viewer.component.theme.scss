@@ -4,16 +4,22 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .viewer-wrapper {
-    background-color: mat-color($background, background);
+  .ccf-viewer {
+    background-color: white;
     box-shadow: -0.25rem 0rem 0.6rem 0.1rem map-get($foreground, header-shadow);
 
     .toolbar {
+      color: mat-color($foreground, text-muted);
       box-shadow: -0.25rem 0rem 0.2rem 0.1rem map-get($foreground, header-shadow);
+
+      .close {
+        color: white;
+        background-color: mat-color($foreground, text-muted);
+      }
     }
 
     .overlay {
-      background-color: mat-color($background, background);
+      background-color: white;
     }
   }
 }
