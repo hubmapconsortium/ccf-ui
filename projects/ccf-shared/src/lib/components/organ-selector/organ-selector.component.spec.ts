@@ -33,7 +33,7 @@ describe('OrganSelectorComponent', () => {
     carousel.style.left = '80px';
     instance.onLeft = false;
     instance.shift('left');
-    expect(carousel.style.left).toBe('136px');
+    expect(carousel.style.left).toBe('152px');
   });
 
   it('should shift the carousel right if dir === right.', async () => {
@@ -42,7 +42,7 @@ describe('OrganSelectorComponent', () => {
     carousel.style.left = '80px';
     instance.onRight = false;
     instance.shift('right');
-    expect(carousel.style.left).toBe('24px');
+    expect(carousel.style.left).toBe('8px');
   });
 
   it('should not shift the carousel right if carousel is already at right end.', async () => {
@@ -153,7 +153,7 @@ describe('OrganSelectorComponent', () => {
     const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
     const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
     const list = find(carouselItemListClass).nativeElement as HTMLElement;
-    list.style.width = '224px';
+    list.style.width = '288px';
     instance.set();
     expect(instance.onLeft).toBeTrue();
     expect(instance.onRight).toBeTrue();
@@ -166,7 +166,7 @@ describe('OrganSelectorComponent', () => {
     const container = find(carouselContainerClass).nativeElement as HTMLElement;
     list.style.left = '-124px';
     list.style.width = '150px';
-    container.style.width = '100px';
+    container.style.width = '164px';
     instance.set();
     expect(instance.onRight).toBeTrue();
   });
