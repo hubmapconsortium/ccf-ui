@@ -12,7 +12,7 @@
       <ccf-donor-card
         [donor]="donor"
         [selected]="isTissueBlockSelected(donor)"
-        [color]="getTissueBlockColor(donor.ruiLocationId)"
+        [color]="getTissueBlockColor(donor.spatialEntityId)"
         (checked)="handleDonorCardSelection($event, donor)"
         (linkClick)="visitLink($event)"
       ></ccf-donor-card>

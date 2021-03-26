@@ -8,9 +8,9 @@ on <a rel="noopener noreferrer" href="https://github.com/hubmapconsortium/ccf-ui
 A demo video is on <a rel="noopener noreferrer" href="https://youtu.be/rWMqKQc_00w"
             target="_blank">YouTube</a>.
 
-# The Human Biomolecular Atlas Project
+# The Human Biomolecular Atlas Program
 
-The Human Biomolecular Atlas Project (HuBMAP) will develop the next generation of molecular analysis
+The Human Biomolecular Atlas Program (HuBMAP) will develop the next generation of molecular analysis
 technologies, computational tools, and generate foundational tissue maps in order to accelerate the
 construction of an atlas of the human body at single-cell resolution for understanding the relationship
 between tissue organization and function.
