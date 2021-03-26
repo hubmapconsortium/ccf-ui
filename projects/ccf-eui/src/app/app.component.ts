@@ -9,7 +9,6 @@ import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { ListResult } from 'ccf-database';
 import { SceneState } from './core/store/scene/scene.state';
 
 /**
