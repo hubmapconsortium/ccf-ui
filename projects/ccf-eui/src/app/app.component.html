@@ -51,7 +51,7 @@
       </div>
       <ccf-results-browser [dataLoading]="spinnerActive$ | async" [tissueBlockData]="data.tissueBlockData$ | async"
                            [aggregateData]="data.aggregateData$ | async" [resultLabel]="ontologySelectionLabel"
-                           (urlClicked)="openUrl($event)"></ccf-results-browser>
+                           (resultClicked)="openUrl($event)"></ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
 

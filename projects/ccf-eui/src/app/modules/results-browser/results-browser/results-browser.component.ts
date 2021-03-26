@@ -76,11 +76,6 @@ export class ResultsBrowserComponent implements OnInit {
   availableColors: string[] = [...this.paletteColors];
 
   /**
-   * Output emitting when an url is clicked.
-   */
-  @Output() urlClicked = new EventEmitter<string>();
-
-  /**
    * Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
    * Used to determine whether or not to render the gradient at the bottom.
    */
