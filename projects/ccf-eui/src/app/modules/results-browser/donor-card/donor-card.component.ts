@@ -28,6 +28,9 @@ export class DonorCardComponent {
   /** Emits the new checked state whenever it changes */
   @Output() checked = new EventEmitter<boolean>();
 
+  /** Emits when a url is clicked */
+  @Output() urlClicked = new EventEmitter<string>();
+
   /**
    * Handles the logic that needs to run when the checkbox is clicked on.
    */

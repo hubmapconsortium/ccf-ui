@@ -1,6 +1,6 @@
 <div class="main-container">
   <div class="checkbox-background" [class.selected]="selected"
-    [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
+       [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
     <ng-container *ngIf="selected; else unselected">
       <mat-icon fontSet="material-icons-outlined" class="checkbox selected">check_box_outlined</mat-icon>
     </ng-container>
@@ -12,7 +12,7 @@
 
 
   <div class="donor-card donor mat-elevation-z2" [class.selectable]="selected" [class.expanded]="expanded"
-    (click)="toggleExpansion()">
+       (click)="toggleExpansion()">
     <mat-icon class="icon person-icon">person</mat-icon>
 
     <div class="donor-info">
@@ -35,7 +35,8 @@
         <div class="description">{{ donor.description }}</div>
       </div>
     </div>
-    <ccf-thumbnail-carousel *ngIf="donor.datasets.length > 0" [data]="donor.datasets">
+    <ccf-thumbnail-carousel *ngIf="donor.datasets.length > 0" [data]="donor.datasets"
+                            (linkClicked)="urlClicked.emit($event.link)">
     </ccf-thumbnail-carousel>
     <!--
       Line graph goes here.
@@ -50,8 +51,8 @@
         <div class="description">{{ section.description }}</div>
       </div>
     </div>
-    <!--
-      Data carousel goes here.
-      -->
+    <ccf-thumbnail-carousel *ngIf="section.datasets.length > 0" [data]="section.datasets"
+                            (linkClicked)="urlClicked.emit($event.link)">
+    </ccf-thumbnail-carousel>
   </div>
 </ng-container>
