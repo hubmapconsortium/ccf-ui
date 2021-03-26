@@ -32,6 +32,39 @@
 
 <h1 id="changelog">Changelog</h1>
 <p>Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)</p>
+<h2 id="150---2021-03-26">1.5.0 - 2021-03-26</h2>
+<h3 id="added-in-rui-150">Added in RUI 1.5.0</h3>
+<ul>
+<li>Minor styling updates</li>
+</ul>
+<h3 id="added-in-eui-150">Added in EUI 1.5.0</h3>
+<p>NOTE: EUI will not be pushed to production during this cycle as there are some features not fully integrated. This should be resolved in the next release scheduled for April 9th. You can view the results of this sprint on <a href="https://hubmap-ccf-ui.netlify.app/">staging</a>.</p>
+<ul>
+<li>Updated styling to better fit the <a href="https://drive.google.com/file/d/15mx__aHeNDCBBYBXM64ED6YAOeyp9Fcy/view">user interface spec</a></li>
+<li>Added a new results pane which structures data into Donor-&gt;Tissue Blocks (+Datasets)-&gt;Tissue Samples (+Datasets)</li>
+<li>Added a link viewer that allows us to display donors, samples, and datasets in a frame within the application</li>
+<li>Added UFL thumbnails</li>
+<li>Updated and optimized the ccf-database for the new results structure and future integrations</li>
+<li>Tied organ carousel to the 3D scene. Turning off an organ removes the organ and related tissues from the 3D scene.</li>
+<li>Turned off anatomical structure opacity adjustment until it can be fully integrated</li>
+</ul>
+<h2 id="140---2021-03-12">1.4.0 - 2021-03-12</h2>
+<h3 id="added-in-rui-140">Added in RUI 1.4.0</h3>
+<ul>
+<li>Updated library dependencies, including to Angular 11</li>
+<li>Updated styling to better fit the <a href="https://drive.google.com/file/d/1M0Pfu41Kv-RBOvIF9hB-mcNK9U4qsDIp/view">user interface spec</a></li>
+</ul>
+<h3 id="added-in-eui-140">Added in EUI 1.4.0</h3>
+<p>NOTE: EUI will not be pushed to production during this cycle as there are some features partly integrated. This should be resolved in the next release scheduled for March 26th. You can view the results of this sprint on <a href="https://hubmap-ccf-ui.netlify.app/">staging</a>.</p>
+<ul>
+<li>Updated library dependencies, including to Angular 11</li>
+<li>Updated styling to better fit the <a href="https://drive.google.com/file/d/15mx__aHeNDCBBYBXM64ED6YAOeyp9Fcy/view">user interface spec</a> and match RUI styling</li>
+<li>Updated the Info Dialog to match the RUI look and feel</li>
+<li>Updated the data processing to improve efficiency and generate data in the form needed for the v1.5.0 spec</li>
+<li>Added a reference organ selector, also used in the RUI, to turn off/on reference organs on the stage. UI is implemented, but still needs hooked up to the 3d Stage.</li>
+<li>Added a technology filter</li>
+<li>Added a control to set Opacities of individual organs/anatomical structures on the stage. UI is implemented, but still needs hooked up to the 3d Stage.</li>
+</ul>
 <h2 id="135---2021-02-26">1.3.5 - 2021-02-26</h2>
 <h3 id="added-in-rui-135">Added in RUI 1.3.5</h3>
 <ul>

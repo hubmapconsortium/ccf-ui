@@ -136,7 +136,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -202,8 +202,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:48</a></div>
                 </td>
             </tr>
 
@@ -342,8 +342,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:45</a></div>
                 </td>
             </tr>
 
@@ -412,8 +412,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:42</a></div>
                 </td>
             </tr>
 
@@ -482,8 +482,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:55</a></div>
                 </td>
             </tr>
 
@@ -552,8 +552,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:51</a></div>
                 </td>
             </tr>
 
@@ -591,8 +591,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:72</a></div>
                 </td>
             </tr>
 
@@ -661,8 +661,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:90</a></div>
                 </td>
             </tr>
 
@@ -731,8 +731,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="173"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:173</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="175"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:175</a></div>
                 </td>
             </tr>
 
@@ -903,8 +903,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-scene.ts:39</a></div>
                 </td>
             </tr>
 
@@ -965,16 +965,20 @@
 
 import { CCFDatabase } from &#x27;./ccf-database&#x27;;
 import { Filter } from &#x27;./interfaces&#x27;;
-import { getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity } from &#x27;./queries/spatial-result-n3&#x27;;
+import {
+  getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity,
+} from &#x27;./queries/spatial-result-n3&#x27;;
 import { ExtractionSet, SpatialEntity } from &#x27;./spatial-types&#x27;;
-import { ccf, rui } from &#x27;./util/prefixes&#x27;;
+import { ccf } from &#x27;./util/prefixes&#x27;;
 
 
 export interface SpatialSceneNode {
   &#x27;@id&#x27;: string;
-  &#x27;@type&#x27;: &#x27;SpatialSceneNode&#x27;;
+  &#x27;@type&#x27;: string;
   entityId?: string;
+  ccf_annotations?: string[];
   representation_of?: string;
+  reference_organ?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -986,7 +990,7 @@ export interface SpatialSceneNode {
   opacity?: number;
   transformMatrix: Matrix4;
   name?: string;
-  tooltip: string;
+  tooltip?: string;
   priority?: number;
 }
 
@@ -1028,55 +1032,50 @@ export class CCFSpatialScene {
   }
 
   getReferenceOrganSets(filter?: Filter): SpatialEntity[] {
-    let organsId: string;
+    let organSet &#x3D; this.getReferenceOrgans();
     switch (filter?.sex) {
       case &#x27;Male&#x27;:
-        organsId &#x3D; ccf.spatial.MaleOrgans.id;
+        organSet &#x3D; organSet.filter(s &#x3D;&gt; s.sex &#x3D;&#x3D;&#x3D; &#x27;Male&#x27;);
         break;
       case &#x27;Female&#x27;:
-        organsId &#x3D; ccf.spatial.FemaleOrgans.id;
+        organSet &#x3D; organSet.filter(s &#x3D;&gt; s.sex &#x3D;&#x3D;&#x3D; &#x27;Female&#x27;);
         break;
       case &#x27;Both&#x27;:
       default:
-        organsId &#x3D; ccf.spatial.FemaleOrgans.id;
         break;
     }
-    return [this.getSpatialEntity(organsId)];
+    organSet &#x3D; organSet.map(o &#x3D;&gt; [ [o], this.getAnatomicalStructures(o[&#x27;@id&#x27;])])
+      .reduce((acc, [organ, structures]) &#x3D;&gt; acc.concat(structures.length &gt; 0 ? structures : organ), [] as SpatialEntity[]);
+    return organSet;
   }
 
   getReferenceSceneNodes(filter?: Filter): SpatialSceneNode[] {
-    const wholeBody &#x3D; this.getSpatialEntity(ccf.spatial.Body.id);
     const body &#x3D; this.getReferenceBody(filter);
-    const terms &#x3D; filter?.ontologyTerms || [];
-    const hasTerm &#x3D; {
-      body: terms.indexOf(rui.body.id) &#x3D;&#x3D;&#x3D; 0,
-      kidney: terms.indexOf(rui.kidney.id) &#x3D;&#x3D;&#x3D; 0,
-      right_kidney: terms.indexOf(rui.right_kidney.id) &#x3D;&#x3D;&#x3D; 0,
-      left_kidney: terms.indexOf(rui.left_kidney.id) &#x3D;&#x3D;&#x3D; 0,
-      spleen: terms.indexOf(rui.spleen.id) &#x3D;&#x3D;&#x3D; 0,
-    };
 
+    const terms &#x3D; new Set&lt;string&gt;(filter?.ontologyTerms ?? []);
     let nodes: (SpatialSceneNode | undefined)[] &#x3D; [
-      this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
-      ...this.getReferenceOrganSets(filter).map((organ) &#x3D;&gt;
-        this.getSceneNode(organ, body, {unpickable: true, _lighting: &#x27;pbr&#x27;, zoomBasedOpacity: true,  color: [255, 255, 255, 1*255]})
-      ),
-      this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHRightKidney&#x27;).id), body, {color: [255, 255, 255, 1],
-        unpickable: hasTerm.kidney || hasTerm.right_kidney, zoomToOnLoad: hasTerm.right_kidney}),
-      this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHLeftKidney&#x27;).id), body, {color: [255, 255, 255, 1],
-        unpickable: hasTerm.kidney || hasTerm.left_kidney, zoomToOnLoad: hasTerm.left_kidney}),
-      this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleen&#x27;).id), body, {color: [255, 255, 255, 1],
-        unpickable: hasTerm.spleen, zoomToOnLoad: hasTerm.spleen})
+      ...this.getReferenceOrganSets(filter).map((organ) &#x3D;&gt; {
+        const isTermSelected &#x3D; terms.has(organ.representation_of || &#x27;&#x27;);
+        const isSkin &#x3D; organ.representation_of &#x3D;&#x3D;&#x3D; &#x27;http://purl.obolibrary.org/obo/UBERON_0002097&#x27;;
+        return this.getSceneNode(organ, body, {
+          unpickable: isTermSelected || isSkin,
+          zoomToOnLoad: isTermSelected &amp;&amp; !isSkin &amp;&amp; !isTermSelected, // Turning off for now
+          _lighting: &#x27;pbr&#x27;,
+          color: [255, 255, 255, 255],
+          opacity: isSkin ? 0.5 : 0.2,
+          zoomBasedOpacity: false
+        });
+      })
     ];
 
     if (filter?.debug) {
       // Debug bounding boxes
       nodes &#x3D; nodes.concat([
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHRightKidney&#x27;).id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHLeftKidney&#x27;).id), wholeBody, {color: [255, 0, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC1&#x27;).id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC2&#x27;).id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC3&#x27;).id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true})
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHRightKidney&#x27;).id), body, {color: [0, 0, 255, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHLeftKidney&#x27;).id), body, {color: [255, 0, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC1&#x27;).id), body, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC2&#x27;).id), body, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC3&#x27;).id), body, {color: [0, 255, 0, 0.5*255], wireframe: true})
       ]);
     }
 
@@ -1099,7 +1098,7 @@ export class CCFSpatialScene {
     let transform &#x3D; this.db.graph.getTransformationMatrix(sourceID, target[&#x27;@id&#x27;]);
     if (transform) {
       if (has3dObject) {
-        transform &#x3D; new Matrix4().rotateX(toRadians(90)).multiplyLeft(transform);
+        transform &#x3D; new Matrix4(Matrix4.IDENTITY).rotateX(toRadians(90)).multiplyLeft(transform);
       } else {
         // Scale visible bounding boxes to the desired dimensions
         let factor: number;
@@ -1121,7 +1120,9 @@ export class CCFSpatialScene {
       return {
         &#x27;@id&#x27;: source[&#x27;@id&#x27;], &#x27;@type&#x27;: &#x27;SpatialSceneNode&#x27;,
         entityId: source.entityId || undefined,
+        ccf_annotations: source.ccf_annotations || undefined,
         representation_of: source.representation_of || undefined,
+        reference_organ: source.reference_organ || undefined,
         scenegraph: has3dObject ? source.object?.file : undefined,
         scenegraphNode: has3dObject ? source.object?.file_subpath : undefined,
         transformMatrix: transform,

@@ -203,10 +203,10 @@ import { traverseScene } from &#x27;./scene-traversal&#x27;;
 interface Collision {
   &#x27;@id&#x27;: string;
   name: string;
-  hits: {&#x27;@id&#x27;: string, name: string}[];
+  hits: {&#x27;@id&#x27;: string; name: string}[];
 }
 
-// tslint:disable: no-unsafe-any
+/* eslint-disable  */
 export async function doCollisions(scene: SpatialSceneNode[]): Promise&lt;Collision[]&gt; {
   console.log(&#x27;Starting Collisioning&#x27;);
   const sourceBoxes &#x3D; scene
@@ -297,7 +297,7 @@ export async function doCollisions(scene: SpatialSceneNode[]): Promise&lt;Collis
 
   return report;
 }
-// tslint:enable: no-unsafe-any
+/* eslint-enable */
 </code></pre>
     </div>
 </div>

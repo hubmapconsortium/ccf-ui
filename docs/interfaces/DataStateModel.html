@@ -144,7 +144,7 @@ import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x2
 import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { bind } from &#x27;bind-decorator&#x27;;
-import { AggregateResult, Filter, ListResult } from &#x27;ccf-database&#x27;;
+import { AggregateResult, Filter, ListResult, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from &#x27;rxjs&#x27;;
 import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 
@@ -162,6 +162,7 @@ export const DEFAULT_FILTER: Filter &#x3D; {
 };
 
 /** Current state of data queries. */
+// eslint-disable-next-line no-shadow
 export enum DataQueryState {
   /** One or more queries are running. */
   Running &#x3D; &#x27;running&#x27;,
@@ -231,10 +232,14 @@ export interface DataStateModel {
 export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implements NgxsOnInit {
   /** Implementation subject for listDataQueryStatus$. */
   private readonly _listDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  /** Implementation subject for tissueBlockDataQueryStatus$. */
+  private readonly _tissueBlockDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
   private readonly _aggregateDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for termOccurencesDataQueryStatus$. */
   private readonly _termOccurencesDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  /** Implementation subject for sceneDataQueryStatus$. */
+  private readonly _sceneDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Keeping track of all ontology terms there is data for. */
   readonly ontologyTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
 
@@ -244,6 +249,10 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   readonly listData$ &#x3D; this.filter$.pipe(queryData(
     this.listData, sendCompletedTo(this._listDataQueryStatus$)
   ));
+  /** Latest tissue block query data. */
+  readonly tissueBlockData$ &#x3D; this.filter$.pipe(queryData(
+    this.tissueBlockData, sendCompletedTo(this._tissueBlockDataQueryStatus$)
+  ));
   /** Latest aggregate query data. */
   readonly aggregateData$ &#x3D; this.filter$.pipe(queryData(
     this.aggregateData, sendCompletedTo(this._aggregateDataQueryStatus$)
@@ -252,19 +261,29 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   readonly termOccurencesData$ &#x3D; this.filter$.pipe(queryData(
     this.termOccurencesData, sendCompletedTo(this._termOccurencesDataQueryStatus$)
   ));
+  /** Latest scene query data. */
+  readonly sceneData$ &#x3D; this.filter$.pipe(queryData(
+    this.sceneData, sendCompletedTo(this._sceneDataQueryStatus$)
+  ));
 
   /** Current status of queries in the listData$ observable. */
   readonly listDataQueryStatus$ &#x3D; this._listDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the tissueBlockData$ observable. */
+  readonly tissueBlockDataQueryStatus$ &#x3D; this._tissueBlockDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the aggregateData$ observable. */
   readonly aggregateDataQueryStatus$ &#x3D; this._aggregateDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the aggregateData$ observable. */
   readonly termOccurencesDataQueryStatus$ &#x3D; this._termOccurencesDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the sceneData$ observable. */
+  readonly sceneDataQueryStatus$ &#x3D; this._sceneDataQueryStatus$.pipe(distinct());
 
   /** Current status of all queries. */
   readonly queryStatus$ &#x3D; combineLatest([
     this.listDataQueryStatus$,
+    this.tissueBlockDataQueryStatus$,
     this.aggregateDataQueryStatus$,
-    this.termOccurencesDataQueryStatus$
+    this.termOccurencesDataQueryStatus$,
+    this.sceneDataQueryStatus$
   ]).pipe(
     map(states &#x3D;&gt; allCompleted(states) ? DataQueryState.Completed : DataQueryState.Running),
     distinct()
@@ -279,8 +298,10 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
     super();
     // Start everything in the completed state
     this._listDataQueryStatus$.next(DataQueryState.Completed);
+    this._tissueBlockDataQueryStatus$.next(DataQueryState.Completed);
     this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
     this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
+    this._sceneDataQueryStatus$.next(DataQueryState.Completed);
   }
 
   ngxsOnInit(): void {
@@ -319,6 +340,18 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   }
 
   /**
+   * Queries for tissue block data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+   @bind
+   private tissueBlockData(filter: Filter): ObservableInput&lt;TissueBlockResult[]&gt; {
+     this._tissueBlockDataQueryStatus$.next(DataQueryState.Running);
+     return this.source.getTissueBlockResults(filter);
+   }
+
+  /**
    * Queries for aggregate data.
    *
    * @param filter The filter used during query.
@@ -341,6 +374,18 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
     this._termOccurencesDataQueryStatus$.next(DataQueryState.Running);
     return this.source.getOntologyTermOccurences(filter);
   }
+
+  /**
+   * Queries for term occurences data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+   @bind
+   private sceneData(filter: Filter): ObservableInput&lt;SpatialSceneNode[]&gt; {
+     this._sceneDataQueryStatus$.next(DataQueryState.Running);
+     return this.source.getScene(filter);
+   }
 }
 </code></pre>
     </div>

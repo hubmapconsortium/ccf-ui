@@ -94,6 +94,10 @@
                                         <a href="#hasSex">hasSex</a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#id">id</a>
+                                </li>
+                                <li>
                                         <a href="#name">name</a>
                                 </li>
                                 <li>
@@ -195,6 +199,40 @@
 </div>
                                 </td>
                             </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name"><b>id</b><a href="#id"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -344,24 +382,36 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef, ViewChild } from &#x27;@angular/core&#x27;;
 import { ResizeSensor } from &#x27;css-element-queries&#x27;;
 
-export const ALL_ORGANS: OrganInfo[] &#x3D; [
-  { src: &#x27;app:large_intestine&#x27;, organ: &#x27;Large Intestine&#x27;, name: &#x27;Large Intestine&#x27;, hasSex: true },
-  { src: &#x27;app:heart&#x27;, organ: &#x27;Heart&#x27;, name: &#x27;Heart&#x27;, hasSex: true },
-  { src: &#x27;app:kidney-left&#x27;, organ: &#x27;Kidney&#x27;, name: &#x27;Kidney, L&#x27;, side: &#x27;left&#x27;, hasSex: true },
-  { src: &#x27;app:kidney-right&#x27;, organ: &#x27;Kidney&#x27;, name: &#x27;Kidney, R&#x27;, side: &#x27;right&#x27;, hasSex: true },
-  { src: &#x27;app:spleen&#x27;, organ: &#x27;Spleen&#x27;, name: &#x27;Spleen&#x27;, hasSex: true },
+export const ALL_POSSIBLE_ORGANS: OrganInfo[] &#x3D; [
+  { src: &#x27;app:skin&#x27;, organ: &#x27;Skin&#x27;, name: &#x27;Skin&#x27;, disabled: true, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002097&#x27;},
+  { src: &#x27;app:large_intestine&#x27;, organ: &#x27;Large Intestine&#x27;, name: &#x27;Large Intestine&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0001155&#x27; },
+  { src: &#x27;app:heart&#x27;, organ: &#x27;Heart&#x27;, name: &#x27;Heart&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0000948&#x27;},
+  { src: &#x27;app:kidney-left&#x27;, organ: &#x27;Kidney&#x27;, name: &#x27;Kidney, L&#x27;, side: &#x27;left&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0004538&#x27;},
+  { src: &#x27;app:kidney-right&#x27;, organ: &#x27;Kidney&#x27;, name: &#x27;Kidney, R&#x27;, side: &#x27;right&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0004539&#x27;},
+  { src: &#x27;app:spleen&#x27;, organ: &#x27;Spleen&#x27;, name: &#x27;Spleen&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002106&#x27;},
   { src: &#x27;app:bladder&#x27;, organ: &#x27;Bladder&#x27;, name: &#x27;Bladder&#x27;, disabled: true, hasSex: true },
   { src: &#x27;app:brain&#x27;, organ: &#x27;Brain&#x27;, name: &#x27;Brain&#x27;, disabled: true, hasSex: true },
   { src: &#x27;app:liver&#x27;, organ: &#x27;Liver&#x27;, name: &#x27;Liver&#x27;, disabled: true, hasSex: true },
-  { src: &#x27;app:lung-left&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lung, L&#x27;, disabled: true, side: &#x27;left&#x27;, hasSex: true },
-  { src: &#x27;app:lung-right&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lung, R&#x27;, disabled: true, side: &#x27;right&#x27;, hasSex: true },
+  { src: &#x27;app:lung-left&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lung, L&#x27;, disabled: true, side: &#x27;left&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002168&#x27;},
+  { src: &#x27;app:lung-right&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lung, R&#x27;, disabled: true, side: &#x27;right&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002167&#x27;},
   { src: &#x27;app:lymph_nodes&#x27;, organ: &#x27;Lymph Nodes&#x27;, name: &#x27;Lymph Nodes&#x27;, disabled: true, hasSex: true },
   { src: &#x27;app:ovary-left&#x27;, organ: &#x27;Ovaries&#x27;, name: &#x27;Ovary, L&#x27;, disabled: true, side: &#x27;left&#x27;, hasSex: false },
   { src: &#x27;app:ovary-right&#x27;, organ: &#x27;Ovaries&#x27;, name: &#x27;Ovary, R&#x27;, disabled: true, side: &#x27;right&#x27;, hasSex: false },
-  { src: &#x27;app:small_intestine&#x27;, organ: &#x27;Small Intestine&#x27;, name: &#x27;Small Intestine&#x27;, disabled: true, hasSex: true },
+  { src: &#x27;app:small_intestine&#x27;, organ: &#x27;Small Intestine&#x27;, name: &#x27;Small Intestine&#x27;, disabled: true, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002108&#x27;},
   { src: &#x27;app:stomach&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Stomach&#x27;, disabled: true, hasSex: true },
   { src: &#x27;app:thymus&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Thymus&#x27;, disabled: true, hasSex: true }
 ];
+
+export const ALL_ORGANS &#x3D; ALL_POSSIBLE_ORGANS.filter(organ &#x3D;&gt; organ.disabled !&#x3D;&#x3D; true);
 
 /**
  * Contains the organ name and url of the icon svg
@@ -394,6 +444,8 @@ export interface OrganInfo {
    * True if applies to both sexes
    */
   hasSex?: boolean;
+
+  id?: string;
 }
 
 /**
@@ -433,8 +485,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    */
   @Output() organsChanged &#x3D; new EventEmitter&lt;OrganInfo[]&gt;();
 
-  @Input() hidden &#x3D; false;
-
   /**
    * Determines whether the carousel is at the beginning
    */
@@ -453,12 +503,31 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /**
    * Distance the carousel moves in each shift (px)
    */
-  step &#x3D; 56;
+  step &#x3D; 72;
 
   /**
    * Detects resizing of carousel
    */
   private sensor: ResizeSensor;
+
+  // eslint-disable-next-line
+  @Input()
+  set occurenceData(value: Record&lt;string, number&gt;) {
+    if (value) {
+      // eslint-disable-next-line
+      this._occurenceData &#x3D; value;
+    } else {
+      // eslint-disable-next-line
+      this._occurenceData &#x3D; {};
+    }
+  }
+
+  get occurenceData(): Record&lt;string, number&gt; {
+    // eslint-disable-next-line
+    return this._occurenceData;
+  }
+
+  private _occurenceData: Record&lt;string, number&gt;;
 
   /**
    * Set resize sensor on carousel
@@ -496,6 +565,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /**
    * Scrolls the carousel left or right by one step.
    * Prevents scrolling past the beginning or end of the carousel.
+   *
    * @param dir Direction to be scrolled
    */
   shift(dir: string): void {
@@ -511,6 +581,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Scrolls carousel continuously
+   *
    * @param dir Direction to be scrolled
    */
   scroll(dir: string): void {
@@ -532,6 +603,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Sets and emits currently selected organ(s)
+   *
    * @param organ The organ selected
    */
   selectOrgan(organ: OrganInfo): void {
@@ -539,9 +611,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
       this.selectedOrgans &#x3D; [organ];
     } else {
       if (this.selectedOrgans.includes(organ)) {
-        this.selectedOrgans &#x3D; this.selectedOrgans.filter((selectedOrgan) &#x3D;&gt; {
-          return organ !&#x3D;&#x3D; selectedOrgan;
-        });
+        this.selectedOrgans &#x3D; this.selectedOrgans.filter((selectedOrgan) &#x3D;&gt; organ !&#x3D;&#x3D; selectedOrgan);
       } else {
         this.selectedOrgans &#x3D; this.selectedOrgans.concat([organ]);
       }
@@ -551,6 +621,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Determines whether an icon represents a currently selected organ
+   *
    * @param icon The icon of interest
    * @returns true if selected
    */

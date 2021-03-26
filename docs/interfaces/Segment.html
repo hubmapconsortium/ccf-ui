@@ -150,7 +150,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>styles:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                        <code>styles:     <code>Record&lt;string | unknown&gt;</code>
 </code>
                                     </td>
                                 </tr>
@@ -158,7 +158,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                            <i>Type : </i>    <code>Record&lt;string | unknown&gt;</code>
 
                                         </td>
                                     </tr>
@@ -230,7 +230,7 @@ interface Segment {
   /** Classes to add to the text container */
   classes: string[];
   /** Styles to set on the text container */
-  styles: object;
+  styles: Record&lt;string, unknown&gt;;
 }
 
 /** Represents an operation to apply to the stack when building segments */
@@ -340,10 +340,7 @@ export class DecoratedTextComponent implements OnChanges {
    */
   private createStackOps(ranges: DecoratedRange[]): StackOp[] {
     const ops: Record&lt;number, StackOp&gt; &#x3D; {};
-    const getOp &#x3D; (index: number) &#x3D;&gt; {
-      return ops[index]
-        || (ops[index] &#x3D; { index, added: [], removed: [] });
-    };
+    const getOp &#x3D; (index: number) &#x3D;&gt; (ops[index] ??&#x3D; { index, added: [], removed: [] });
 
     for (const range of ranges) {
       getOp(range.start).added.push(range);
@@ -408,7 +405,7 @@ export class DecoratedTextComponent implements OnChanges {
     );
     const styles &#x3D; decorations.reduce(
       (result, range) &#x3D;&gt; ({ ...result, ...range.styles }),
-      {} as object
+      {}
     );
 
     return { text, classes, styles };

@@ -513,6 +513,7 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
   /**
    * Toggles registration blocks visibility and handles anatomical structures
    * opacity changes accordingly
+   *
    * @param visible the visible state to pass along to setShowPrevious()
    * @param previousItems visibilityItems to set anatomical structures
    */
@@ -522,9 +523,9 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
     if (!visible) {
       this.setAnatomicalStructures(previousItems);
     } else {
-      const newStructures &#x3D; previousItems.map(structure &#x3D;&gt; {
-        return { ...structure, opacity: Math.min(20, structure.opacity || 20) };
-      });
+      const newStructures &#x3D; previousItems.map(structure &#x3D;&gt; ({
+        ...structure, opacity: Math.min(20, structure.opacity || 20)
+      }));
       this.setAnatomicalStructures(newStructures);
     }
   }

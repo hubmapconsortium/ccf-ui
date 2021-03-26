@@ -262,6 +262,21 @@ export interface Filter {
   /** Include optional debugging information */
   debug?: boolean;
 }
+
+export interface OntologyTreeNode {
+  &#x27;@id&#x27;: string;
+  &#x27;@type&#x27;: &#x27;OntologyTreeNode&#x27;;
+  id: string;
+  label: string;
+  parent: string;
+  children: string[];
+  synonymLabels: string[];
+}
+
+export interface OntologyTreeModel {
+  root: string;
+  nodes: { [id: string]: OntologyTreeNode };
+}
 </code></pre>
     </div>
 </div>

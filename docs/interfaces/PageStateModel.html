@@ -253,16 +253,16 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, Injector } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
+import { Inject, Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
-import { Immutable } from &#x27;@ngxs-labs/data/typings&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { iif, patch } from &#x27;@ngxs/store/operators&#x27;;
 import { combineLatest, Observable } from &#x27;rxjs&#x27;;
 import { map, pluck } from &#x27;rxjs/operators&#x27;;
 
-import { GlobalConfig, GLOBAL_CONFIG } from &#x27;../../services/config/config&#x27;;
+import { GLOBAL_CONFIG, GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { ModelState } from &#x27;./../model/model.state&#x27;;
 
 
@@ -379,6 +379,7 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
 
   /**
    * Turns tutorialMode on or off
+   *
    * @param tutorialMode the state to set the mode to.
    */
   @DataAction()

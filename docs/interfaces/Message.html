@@ -230,6 +230,7 @@ export interface MessageServiceConfig {
 
 /**
  * A message sent on a channel.
+ *
  * @template T The payload type.
  */
 export interface Message&lt;T&gt; {
@@ -258,6 +259,7 @@ export const MESSAGE_SERVICE_CONFIG &#x3D; new InjectionToken&lt;MessageServiceC
 
 /**
  * Channel for sending and receiving messages.
+ *
  * @template T The payload type.
  */
 export class MessageChannel&lt;T&gt; {

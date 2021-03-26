@@ -61,16 +61,9 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ccf-rui/src/app/core/store/scene/scene.state.ts</code>
+            <code>projects/ccf-eui/src/app/core/store/scene/scene.state.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Scene state model</p>
-
-            </p>
 
 
         <section>
@@ -86,7 +79,16 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#showCollisions">showCollisions</a>
+                                        <a href="#anatomicalStructureSettings">anatomicalStructureSettings</a>
+                                </li>
+                                <li>
+                                        <a href="#referenceOrgans">referenceOrgans</a>
+                                </li>
+                                <li>
+                                        <a href="#selectedAnatomicalStructures">selectedAnatomicalStructures</a>
+                                </li>
+                                <li>
+                                        <a href="#selectedReferenceOrgans">selectedReferenceOrgans</a>
                                 </li>
                             </ul>
                         </td>
@@ -103,13 +105,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="showCollisions"></a>
-                                        <span class="name"><b>showCollisions</b><a href="#showCollisions"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="anatomicalStructureSettings"></a>
+                                        <span class="name"><b>anatomicalStructureSettings</b><a href="#anatomicalStructureSettings"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>showCollisions:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                        <code>anatomicalStructureSettings:     <code>literal type</code>
 </code>
                                     </td>
                                 </tr>
@@ -117,7 +119,94 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            <i>Type : </i>    <code>literal type</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="referenceOrgans"></a>
+                                        <span class="name"><b>referenceOrgans</b><a href="#referenceOrgans"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>referenceOrgans:         <code><a href="../interfaces/OrganInfo.html" target="_self" >OrganInfo[]</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/OrganInfo.html" target="_self" >OrganInfo[]</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="selectedAnatomicalStructures"></a>
+                                        <span class="name"><b>selectedAnatomicalStructures</b><a href="#selectedAnatomicalStructures"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>selectedAnatomicalStructures:     <code>unknown[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>unknown[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="selectedReferenceOrgans"></a>
+                                        <span class="name"><b>selectedReferenceOrgans</b><a href="#selectedReferenceOrgans"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>selectedReferenceOrgans:         <code><a href="../interfaces/OrganInfo.html" target="_self" >OrganInfo[]</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/OrganInfo.html" target="_self" >OrganInfo[]</a></code>
 
                                         </td>
                                     </tr>
@@ -134,38 +223,30 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { Matrix4, toRadians } from &#x27;@math.gl/core&#x27;;
-import { Computed, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
-import { AABB, Vec3 } from &#x27;cannon-es&#x27;;
-import { SpatialEntityJsonLd, SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
-import { combineLatest, Observable, of } from &#x27;rxjs&#x27;;
-import { debounceTime, filter, map } from &#x27;rxjs/operators&#x27;;
+import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
+import { ALL_POSSIBLE_ORGANS, OrganInfo } from &#x27;ccf-shared&#x27;;
+import { combineLatest, Observable } from &#x27;rxjs&#x27;;
+import { map, pluck, take } from &#x27;rxjs/operators&#x27;;
 
-import { environment } from &#x27;../../../../environments/environment&#x27;;
-import { ModelState } from &#x27;../model/model.state&#x27;;
-import { RegistrationState } from &#x27;../registration/registration.state&#x27;;
-import { VisibilityItem } from &#x27;./../../models/visibility-item&#x27;;
-import { ReferenceDataState } from &#x27;./../reference-data/reference-data.state&#x27;;
+import { DataState } from &#x27;../data/data.state&#x27;;
+import { DataSourceService } from &#x27;./../../services/data-source/data-source.service&#x27;;
 
 
-/**
- * Scene state model
- */
-// tslint:disable-next-line: no-empty-interface
 export interface SceneStateModel {
-  showCollisions: boolean;
-}
+  referenceOrgans: OrganInfo[];
+  selectedReferenceOrgans: OrganInfo[];
 
-function getNodeBbox(model: SpatialSceneNode): AABB {
-  const mat &#x3D; new Matrix4(model.transformMatrix);
-  const lowerBound &#x3D; mat.transformAsPoint([-1, -1, -1], []);
-  const upperBound &#x3D; mat.transformAsPoint([1, 1, 1], []);
-  return new AABB({
-    lowerBound: new Vec3(...lowerBound.map((n, i) &#x3D;&gt; Math.min(n, upperBound[i]))),
-    upperBound: new Vec3(...upperBound.map((n, i) &#x3D;&gt; Math.max(n, lowerBound[i])))
-  });
+  selectedAnatomicalStructures: unknown[];
+  anatomicalStructureSettings: {
+    [iri: string]: {
+      enabled: boolean;
+      visible: boolean;
+      opacity: boolean;
+    };
+  };
 }
 
 /**
@@ -174,193 +255,69 @@ function getNodeBbox(model: SpatialSceneNode): AABB {
 @StateRepository()
 @State&lt;SceneStateModel&gt;({
   name: &#x27;scene&#x27;,
-  defaults: {showCollisions: !environment.production}
+  defaults: {
+    referenceOrgans: [],
+    selectedReferenceOrgans: [],
+    selectedAnatomicalStructures: [],
+    anatomicalStructureSettings: {}
+  }
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&gt; implements NgxsOnInit {
+  /** Available Reference Organs */
+  readonly referenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;referenceOrgans&#x27;));
+  /** Selected Reference Organs */
+  readonly selectedReferenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;selectedReferenceOrgans&#x27;));
 
+  /** Scene to display in the 3d Scene */
   @Computed()
-  get nodes$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([
-      this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$, this.nodeCollisions$
-    ]).pipe(
-      map(([placement, nodes, prevNodes, collisions]) &#x3D;&gt; [
-        ...placement, ...prevNodes, ...nodes, ...(this.snapshot.showCollisions ? collisions : [])
-      ])
-    );
-  }
-
-  @Computed()
-  get rotatedNodes$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([this.rotation$, this.nodes$]).pipe(
-      map(([rotation, nodes]) &#x3D;&gt; {
-        if (rotation &#x3D;&#x3D;&#x3D; 0) {
-          return nodes;
-        } else {
-          return nodes.map(n &#x3D;&gt; ({
-            ...n,
-            transformMatrix: new Matrix4(Matrix4.IDENTITY).rotateY(toRadians(rotation)).multiplyRight(n.transformMatrix)
-          }));
-        }
+  get scene$(): Observable&lt;SpatialSceneNode[]&gt; {
+    return combineLatest([this.dataState.sceneData$, this.selectedReferenceOrgans$, this.dataService.getReferenceOrgans()]).pipe(
+      map(([scene, selectedOrgans, refOrganData]) &#x3D;&gt; {
+        const activeOrgans &#x3D; new Set(selectedOrgans.map(o &#x3D;&gt; o.id));
+        const refOrgans &#x3D; new Set(refOrganData.filter(o &#x3D;&gt; activeOrgans.has(o.representation_of)).map(o &#x3D;&gt; o[&#x27;@id&#x27;]));
+        return scene.filter(node &#x3D;&gt;
+          (node.ccf_annotations &amp;&amp; node.ccf_annotations.some(tag &#x3D;&gt; activeOrgans.has(tag)))
+          ||
+          (node.reference_organ &amp;&amp; refOrgans.has(node.reference_organ))
+        );
       })
     );
   }
 
-  /** Observable of spatial nodes */
-  @Computed()
-  get referenceOrganNodes$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
-      debounceTime(400),
-      map(([anatomicalStructures, extractionSites, organIri]) &#x3D;&gt;
-        this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
-      )
-    );
-  }
-
-  @Computed()
-  get referenceOrganSimpleNodes$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([this.model.anatomicalStructures$, this.model.organIri$, this.referenceData.state$]).pipe(
-      map(([anatomicalStructures, organIri, db]) &#x3D;&gt;
-        anatomicalStructures
-          // .filter(item &#x3D;&gt; item.visible &amp;&amp; item.opacity &amp;&amp; item.opacity &gt; 0)
-          .map(item &#x3D;&gt; {
-            if (db.sceneNodeLookup[item.id]) {
-              return [{
-                ...db.simpleSceneNodeLookup[item.id],
-                opacity: (item.opacity || 100) / 100,
-                color: [255, 255, 255, 255]
-              } as SpatialSceneNode];
-            } else {
-              return (db.anatomicalStructures[organIri as string] || [])
-                .filter((node) &#x3D;&gt; node.representation_of &#x3D;&#x3D;&#x3D; item.id)
-                .map((node) &#x3D;&gt; ({
-                  ...db.simpleSceneNodeLookup[node[&#x27;@id&#x27;]],
-                  opacity: (item.opacity || 100) / 100,
-                  color: [255, 255, 255, 255]
-                } as SpatialSceneNode));
-            }
-          })
-          .reduce((acc, nodes) &#x3D;&gt; acc.concat(nodes), [])
-      )
-    );
-  }
-
-  @Computed()
-  get nodeCollisions$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([this.referenceOrganSimpleNodes$, this.placementCube$]).pipe(
-      filter(([nodes, placement]) &#x3D;&gt; placement.length &gt; 0),
-      map(([nodes, placement]) &#x3D;&gt; {
-        const bbox &#x3D; getNodeBbox(placement[0]);
-        return nodes.filter((model) &#x3D;&gt; bbox.overlaps(getNodeBbox(model)));
-      })
-    );
-  }
-
-  @Computed()
-  get previousRegistrationNodes$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([this.model.organIri$, this.model.showPrevious$, this.registration.previousRegistrations$]).pipe(
-      map(([organIri, showPrevious, previousRegistrations]) &#x3D;&gt;
-        showPrevious ? previousRegistrations.map((entity: SpatialEntityJsonLd) &#x3D;&gt; {
-          const p &#x3D; Array.isArray(entity.placement) ? entity.placement[0] : entity.placement;
-          if (p.target &#x3D;&#x3D;&#x3D; organIri) {
-            const organDimensions &#x3D; this.model.snapshot.organDimensions;
-            const dims &#x3D; [organDimensions.x, organDimensions.y, organDimensions.z].map(n &#x3D;&gt; -n / 1000 / 2);
-            return {
-              &#x27;@id&#x27;: entity[&#x27;@id&#x27;],
-              &#x27;@type&#x27;: &#x27;SpatialSceneNode&#x27;,
-              transformMatrix: new Matrix4(Matrix4.IDENTITY)
-                .translate([p.x_translation, p.y_translation, p.z_translation].map((n, i) &#x3D;&gt; n / 1000 + dims[i]))
-                .rotateXYZ([p.x_rotation, p.y_rotation, p.z_rotation].map&lt;number&gt;(toRadians))
-                .scale([entity.x_dimension, entity.y_dimension, entity.z_dimension].map(n &#x3D;&gt; n / 1000 / 2)),
-              color: [25, 118, 210, 200],
-              tooltip: entity.label,
-              unpickable: true
-            } as SpatialSceneNode;
-          } else {
-            return undefined as unknown as SpatialSceneNode;
-          }
-        }).filter(e &#x3D;&gt; !!e) : []
-      )
-    );
-  }
-
-  @Computed()
-  get placementCube$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$]).pipe(
-      map(([viewType, blockSize, rotation, position]) &#x3D;&gt; [
-        this.placementCube
-      ])
-    );
-  }
-
-  @Computed()
-  get placementCube(): SpatialSceneNode {
-    const {viewType, blockSize, rotation, position, organDimensions} &#x3D; this.model.snapshot;
-    const dims &#x3D; [organDimensions.x, organDimensions.y, organDimensions.z].map(n &#x3D;&gt; -n / 1000 / 2);
-    return {
-      &#x27;@id&#x27;: &#x27;#DraftPlacement&#x27;,
-      &#x27;@type&#x27;: &#x27;SpatialSceneNode&#x27;,
-      transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([position.x, position.y, position.z].map((n, i) &#x3D;&gt; n / 1000 + dims[i]))
-        .rotateXYZ([rotation.x, rotation.y, rotation.z].map&lt;number&gt;(toRadians))
-        .scale([blockSize.x, blockSize.y, blockSize.z].map(n &#x3D;&gt; n / 1000 / 2)),
-      color: [255, 255, 0, 200],
-      tooltip: &#x27;Draft Placement&#x27;,
-      unpickable: viewType &#x3D;&#x3D;&#x3D; &#x27;3d&#x27;,
-    };
-  }
-
-
-  @Computed()
-  get rotation$(): Observable&lt;number&gt; {
-    return this.model.viewSide$.pipe(
-      map((side) &#x3D;&gt; {
-        let rotation &#x3D; 0;
-        switch(side) {
-          case &#x27;left&#x27;:
-            rotation &#x3D; -90;
-            break;
-          case &#x27;right&#x27;:
-            rotation &#x3D; 90;
-            break;
-          case &#x27;posterior&#x27;:
-            rotation &#x3D; 180;
-            break;
-        }
-        return rotation;
-      })
-    );
-  }
-
-  readonly gizmo$: Observable&lt;SpatialSceneNode[]&gt; &#x3D; of([
-    {
-      &#x27;@id&#x27;: &#x27;http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Spleen_Colic_Surface&#x27;,
-      &#x27;@type&#x27;: &#x27;SpatialSceneNode&#x27;,
-      scenegraph: &#x27;https://hubmapconsortium.github.io/ccf-3d-reference-object-library/Assets/body4Mesh_1338.glb&#x27;,
-      transformMatrix: new Matrix4(Matrix4.IDENTITY).scale([2, 2, 2]).rotateY(toRadians(0)),
-      tooltip: &#x27;Gizmo&#x27;,
-      unpickable: true,
-      _lighting: &#x27;pbr&#x27;,
-      zoomBasedOpacity: false,
-      color: [255, 255, 255, 255],
-      opacity: 1
-    }
-  ]);
-
-  /** Reference to the model state */
-  private model: ModelState;
-  private registration: RegistrationState;
-  private referenceData: ReferenceDataState;
+  /** The data state */
+  private dataState: DataState;
 
   /**
    * Creates an instance of scene state.
    *
-   * @param injector Injector service used to lazy load page and model state
+   * @param injector Injector service used to lazy load data state
    */
   constructor(
+    private readonly dataService: DataSourceService,
     private readonly injector: Injector
   ) {
     super();
+  }
+
+  /**
+   * Sets the selected reference organs
+   *
+   * @param referenceOrgans The selected reference organs selected
+   */
+  @DataAction()
+  setSelectedReferenceOrgans(selectedReferenceOrgans: OrganInfo[]): void {
+    this.ctx.patchState({ selectedReferenceOrgans });
+  }
+
+  /**
+   * Sets the reference organs
+   *
+   * @param referenceOrgans The reference organs available
+   */
+  @DataAction()
+  setReferenceOrgans(referenceOrgans: OrganInfo[]): void {
+    this.ctx.patchState({ referenceOrgans });
   }
 
   /**
@@ -371,33 +328,32 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
 
     // Injecting page and model states in the constructor breaks things!?
     // Lazy load here
-    this.model &#x3D; this.injector.get(ModelState);
-    this.registration &#x3D; this.injector.get(RegistrationState);
-    this.referenceData &#x3D; this.injector.get(ReferenceDataState);
-  }
+    this.dataState &#x3D; this.injector.get(DataState);
 
-  private createSceneNodes(organIri: string, items: VisibilityItem[]): SpatialSceneNode[] {
-    const db &#x3D; this.referenceData.snapshot;
-    return items
-      .filter(item &#x3D;&gt; item.visible &amp;&amp; item.opacity &amp;&amp; item.opacity &gt; 0)
-      .map(item &#x3D;&gt; {
-        if (db.sceneNodeLookup[item.id]) {
-          return [{
-            ...db.sceneNodeLookup[item.id],
-            opacity: (item.opacity || 100) / 100,
-            color: [255, 255, 255, 255]
-          } as SpatialSceneNode];
-        } else {
-          return (db.anatomicalStructures[organIri] || [])
-            .filter((node) &#x3D;&gt; node.representation_of &#x3D;&#x3D;&#x3D; item.id)
-            .map((node) &#x3D;&gt; ({
-              ...db.sceneNodeLookup[node[&#x27;@id&#x27;]],
-              opacity: (item.opacity || 100) / 100,
-              color: [255, 255, 255, 255]
-            } as SpatialSceneNode));
+    this.dataService.getReferenceOrgans().pipe(
+      map(refOrgans &#x3D;&gt; {
+        const organLookup &#x3D; ALL_POSSIBLE_ORGANS.reduce((acc, organ) &#x3D;&gt; {
+          acc[organ.id as string] &#x3D; organ;
+          return acc;
+        }, {} as Record&lt;string, OrganInfo&gt;);
+
+        const organIds: string[] &#x3D; [];
+        for (const organ of refOrgans) {
+          const id &#x3D; organ.representation_of;
+          if (id &amp;&amp; organLookup[id] &amp;&amp; !organIds.includes(id)) {
+            organIds.push(id);
+          }
         }
-      })
-      .reduce((acc, nodes) &#x3D;&gt; acc.concat(nodes), []);
+
+        return organIds.map(id &#x3D;&gt; ({
+          ...organLookup[id], disabled: false, numResults: 0
+        } as OrganInfo));
+      }),
+      take(1)
+    ).subscribe(organs &#x3D;&gt; {
+      this.setReferenceOrgans(organs);
+      this.setSelectedReferenceOrgans(organs.filter(organ &#x3D;&gt; organ.name !&#x3D;&#x3D; &#x27;Large Intestine&#x27;));
+    });
   }
 }
 </code></pre>

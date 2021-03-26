@@ -63,15 +63,11 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_HeaderModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="99,-70 99,-268 397,-268 397,-70 99,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="169,-70 169,-268 327,-268 327,-70 169,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_HeaderModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="251,-78 251,-130 389,-130 389,-78 251,-78"/>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_HeaderModule_imports</title>
-<polygon fill="none" stroke="#000000" points="107,-78 107,-130 243,-130 243,-78 107,-78"/>
+<polygon fill="none" stroke="#000000" points="179,-78 179,-130 317,-130 317,-78 179,-78"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_HeaderModule_exports</title>
@@ -80,8 +76,8 @@
 <!-- HeaderComponent -->
 <g id="node1" class="node">
 <title>HeaderComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="380.7437,-122 259.2563,-122 259.2563,-86 380.7437,-86 380.7437,-122"/>
-<text text-anchor="middle" x="320" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HeaderComponent</text>
+<polygon fill="#ffffb3" stroke="#000000" points="308.7437,-122 187.2563,-122 187.2563,-86 308.7437,-86 308.7437,-122"/>
+<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HeaderComponent</text>
 </g>
 <!-- HeaderModule -->
 <g id="node2" class="node">
@@ -92,32 +88,20 @@
 <!-- HeaderComponent&#45;&gt;HeaderModule -->
 <g id="edge1" class="edge">
 <title>HeaderComponent&#45;&gt;HeaderModule</title>
-<path fill="none" stroke="#000000" d="M278.5544,-122.1061C278.5544,-122.1061 278.5544,-140.991 278.5544,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="275.0544,-140.9909 278.5544,-150.991 282.0544,-140.991 275.0544,-140.9909"/>
+<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
 </g>
 <!-- HeaderComponent  -->
-<g id="node4" class="node">
+<g id="node3" class="node">
 <title>HeaderComponent </title>
 <polygon fill="#fb8072" stroke="#000000" points="310.7436,-252 185.2564,-252 185.2564,-216 310.7436,-216 310.7436,-252"/>
 <text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">HeaderComponent </text>
 </g>
 <!-- HeaderModule&#45;&gt;HeaderComponent  -->
-<g id="edge3" class="edge">
+<g id="edge2" class="edge">
 <title>HeaderModule&#45;&gt;HeaderComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248,-187.1061C248,-187.1061 248,-205.991 248,-205.991"/>
 <polygon fill="#000000" stroke="#000000" points="244.5001,-205.9909 248,-215.991 251.5001,-205.991 244.5001,-205.9909"/>
-</g>
-<!-- InfoButtonModule -->
-<g id="node3" class="node">
-<title>InfoButtonModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="235.4888,-122 232.4888,-126 211.4888,-126 208.4888,-122 114.5112,-122 114.5112,-86 235.4888,-86 235.4888,-122"/>
-<text text-anchor="middle" x="175" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">InfoButtonModule</text>
-</g>
-<!-- InfoButtonModule&#45;&gt;HeaderModule -->
-<g id="edge2" class="edge">
-<title>InfoButtonModule&#45;&gt;HeaderModule</title>
-<path fill="none" stroke="#000000" d="M216.757,-122.1061C216.757,-122.1061 216.757,-140.991 216.757,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="213.2571,-140.9909 216.757,-150.991 220.2571,-140.991 213.2571,-140.9909"/>
 </g>
 </g>
 </svg>
@@ -167,15 +151,6 @@
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" title="Official documentation about module imports"><span
-                                class="icon ion-ios-information-circle-outline"></a></h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../modules/InfoButtonModule.html">InfoButtonModule</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
                     <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" title="Official documentation about module exports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
@@ -199,12 +174,11 @@ import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 import { MatToolbarModule } from &#x27;@angular/material/toolbar&#x27;;
 import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
 
-import { InfoButtonModule } from &#x27;../../modules/info/info-button/info-button.module&#x27;;
 import { HeaderComponent } from &#x27;./header.component&#x27;;
 
 
 @NgModule({
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatToolbarModule, MatTooltipModule, InfoButtonModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatToolbarModule, MatTooltipModule],
   declarations: [HeaderComponent],
   exports: [HeaderComponent]
 })
