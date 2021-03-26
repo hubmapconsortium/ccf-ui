@@ -156,9 +156,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const { itemContainer } = this;
     this.sensor = new ResizeSensor(itemContainer.nativeElement, () => {
-      // console.log(itemContainer.nativeElement.offsetWidth);
-      // const originalWidth = parseInt(itemContainer.nativeElement.style.width.slice(0,-2));
-      // itemContainer.nativeElement.style.width = `${originalWidth - (originalWidth % this.step)}px`;
       this.set();
     });
   }
