@@ -2,6 +2,24 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
 
+## 1.5.0 - 2021-03-26
+
+### Added in RUI 1.5.0
+
+* Minor styling updates
+
+### Added in EUI 1.5.0
+
+NOTE: EUI will not be pushed to production during this cycle as there are some features not fully integrated. This should be resolved in the next release scheduled for April 9th. You can view the results of this sprint on [staging](https://hubmap-ccf-ui.netlify.app/).
+
+* Updated styling to better fit the [user interface spec](https://drive.google.com/file/d/15mx__aHeNDCBBYBXM64ED6YAOeyp9Fcy/view)
+* Added a new results pane which structures data into Donor->Tissue Blocks (+Datasets)->Tissue Samples (+Datasets)
+* Added a link viewer that allows us to display donors, samples, and datasets in a frame within the application
+* Added UFL thumbnails
+* Updated and optimized the ccf-database for the new results structure and future integrations
+* Tied organ carousel to the 3D scene. Turning off an organ removes the organ and related tissues from the 3D scene.
+* Turned off anatomical structure opacity adjustment until it can be fully integrated
+
 ## 1.4.0 - 2021-03-12
 
 ### Added in RUI 1.4.0
@@ -11,7 +29,7 @@ Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Explor
 
 ### Added in EUI 1.4.0
 
-NOTE: EUI will not be pushed to production during this cycle as there are some features partly integrated. This will be resolved in the next release scheduled for March 26th. You can view the results of this sprint on [staging](https://hubmap-ccf-ui.netlify.app/).
+NOTE: EUI will not be pushed to production during this cycle as there are some features partly integrated. This should be resolved in the next release scheduled for March 26th. You can view the results of this sprint on [staging](https://hubmap-ccf-ui.netlify.app/).
 
 * Updated library dependencies, including to Angular 11
 * Updated styling to better fit the [user interface spec](https://drive.google.com/file/d/15mx__aHeNDCBBYBXM64ED6YAOeyp9Fcy/view) and match RUI styling
