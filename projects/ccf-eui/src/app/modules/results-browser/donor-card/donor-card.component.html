@@ -44,7 +44,7 @@
     </div>
 
     <ng-container *ngIf="donor.datasets.length > 0">
-      <ccf-thumbnail-carousel class="mt-05" [data]="donor.datasets">
+      <ccf-thumbnail-carousel (linkClicked)="linkHandler($event.link)" class="mt-05" [data]="donor.datasets">
       </ccf-thumbnail-carousel>
     </ng-container>
 
@@ -68,7 +68,7 @@
     </div>
 
     <ng-container *ngIf="section.datasets.length > 0">
-      <ccf-thumbnail-carousel class="mt-05" [data]="section.datasets">
+      <ccf-thumbnail-carousel (linkClicked)="linkHandler($event.link)" class="mt-05" [data]="section.datasets">
       </ccf-thumbnail-carousel>
     </ng-container>
   </div>
