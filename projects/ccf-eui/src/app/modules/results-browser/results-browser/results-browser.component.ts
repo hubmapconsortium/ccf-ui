@@ -142,7 +142,6 @@ export class ResultsBrowserComponent implements OnInit {
       const newColor = this.donorColorPalette.find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)?.color || '';
       // Assign the color to the block and add block to tissueBlockRegistry
       this.tissueBlockRegistry.push({ tissueBlockId: tissueBlock['@id'], spatialEntityId: tissueBlock.spatialEntityId, color: newColor});
-      return;
     // Otherwise we need to assign the next available color.
     } else {
       // If there are no more colors left and selected tissue block does not share a spatialEntityId with another selected block
@@ -169,7 +168,7 @@ export class ResultsBrowserComponent implements OnInit {
       const allColors = this.allColors;
       if(allColors.indexOf(a) > allColors.indexOf(b)) {
          return 1;
-      };
+      }
       if(allColors.indexOf(a) < allColors.indexOf(b)){
          return -1;
       }
@@ -182,9 +181,14 @@ export class ResultsBrowserComponent implements OnInit {
       // Otherwise, remove tissue block from the registry
       const blockColor = this.donorColorPalette
         .find(colorSwatch => colorSwatch.spatialEntityId === tissueBlock.spatialEntityId)?.color || '';
-      const blockIndex = this.tissueBlockRegistry.indexOf(this.tissueBlockRegistry
-        .find(tBlock => tBlock.tissueBlockId === tissueBlock['@id'])!);
-      this.tissueBlockRegistry.splice(blockIndex, 1);
+      let blockIndex: number;
+      for (const block of this.tissueBlockRegistry) {
+        if (block.tissueBlockId === tissueBlock['@id']) {
+          blockIndex = this.tissueBlockRegistry.indexOf(block);
+          this.tissueBlockRegistry.splice(blockIndex, 1);
+          return;
+        }
+      };
       // If removed block's color is still being used, do nothing
       if (this.tissueBlockRegistry.find((tBlock) => tBlock.spatialEntityId === tissueBlock.spatialEntityId)) {
         return;
@@ -206,7 +210,14 @@ export class ResultsBrowserComponent implements OnInit {
    */
   updateColorWithId(color: string, newId: string): void {
     const paletteCopy = [...this.donorColorPalette];
-    paletteCopy.find(tempColor => tempColor.color === color)!.spatialEntityId = newId;
+    let colorIndex: number;
+    for (const tempColor of paletteCopy) {
+      if (tempColor.color === color) {
+        colorIndex = paletteCopy.indexOf(tempColor);
+        paletteCopy[colorIndex].spatialEntityId = newId;
+        return;
+      }
+    }
     this.donorColorPalette = paletteCopy;
   }
 
