@@ -187,7 +187,7 @@ export class ResultsBrowserComponent implements OnInit {
           blockIndex = this.tissueBlockRegistry.indexOf(block);
           this.tissueBlockRegistry.splice(blockIndex, 1);
         }
-      };
+      }
       // If removed block's color is still being used, do nothing
       if (this.tissueBlockRegistry.find((tBlock) => tBlock.spatialEntityId === tissueBlock.spatialEntityId)) {
         return;
