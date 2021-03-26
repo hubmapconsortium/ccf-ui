@@ -25,7 +25,7 @@ export class AppComponent {
   /**
    * List of organs to be displayed in the carousel
    */
-  organList = ALL_ORGANS.map(i => ({ ...i, numResults: 0})) as OrganInfo[];
+  organList = ALL_ORGANS.map(i => ({ ...i, numResults: 0 })) as OrganInfo[];
 
   /**
    * Organs to be selected in the organ selector carousel
@@ -46,7 +46,7 @@ export class AppComponent {
   /**
    * Emitted url object from the results browser item
    */
-  url: ListResult;
+  url = '';
 
   /**
    * Variable to keep track of whether the viewer is open
@@ -111,7 +111,7 @@ export class AppComponent {
    */
   ontologySelected(ontologySelection: OntologySelection[]): void {
     if (!!ontologySelection) {
-      this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id)});
+      this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
       return;
     }
@@ -124,12 +124,12 @@ export class AppComponent {
    * Creates selection label for the results-browser to display based on an
    * array of selected ontology nodes.
    */
-  createSelectionLabel(ontolgySelection: OntologySelection[]): string{
-    if (ontolgySelection.length === 0){
+  createSelectionLabel(ontolgySelection: OntologySelection[]): string {
+    if (ontolgySelection.length === 0) {
       return '';
     }
 
-    if (ontolgySelection.length === 1){
+    if (ontolgySelection.length === 1) {
       return ontolgySelection[0].label;
     }
 
@@ -138,20 +138,16 @@ export class AppComponent {
       selectionString += selection.label;
 
       // Don't add a comma if it's the last item in the array.
-      if (index < ontolgySelection.length - 1){
+      if (index < ontolgySelection.length - 1) {
         selectionString += ', ';
       }
     });
     return selectionString;
   }
 
-  /**
-   * Function to handle the display of the viewer
-   * to show the appropriate iframe data
-   */
-  resultsClicked(resultUrl: ListResult) {
-    this.url = resultUrl;
-    this.viewerOpen = true;
+  openUrl(url: string): void {
+    this.url = url;
+    this.viewerOpen = !!url;
   }
 
   get hubmapPortalUrl(): string {
@@ -167,16 +163,16 @@ export class AppComponent {
     this.selectedOrgans = organs;
   }
 
-  sceneNodeClicked({node, ctrlClick}: NodeClickEvent): void {
+  sceneNodeClicked({ node, ctrlClick }: NodeClickEvent): void {
     if (node.representation_of &&
-        node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin') {
-      this.data.updateFilter({ontologyTerms: [ node.representation_of ]});
+      node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin') {
+      this.data.updateFilter({ ontologyTerms: [node.representation_of] });
     } else if (node.entityId) {
       const highlightedEntities = ctrlClick ? this.data.snapshot.filter?.highlightedEntities ?? [] : [];
       if (highlightedEntities.length === 1 && highlightedEntities[0] === node.entityId) {
-        this.data.updateFilter({highlightedEntities: []});
+        this.data.updateFilter({ highlightedEntities: [] });
       } else {
-        this.data.updateFilter({highlightedEntities: highlightedEntities.concat([node.entityId])});
+        this.data.updateFilter({ highlightedEntities: highlightedEntities.concat([node.entityId]) });
       }
     }
   }
