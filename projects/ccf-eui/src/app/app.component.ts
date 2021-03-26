@@ -135,7 +135,12 @@ export class AppComponent {
     return selectionString;
   }
 
-  openUrl(url: string): void {
+  /**
+   * Opens the iframe viewer with an url
+   *
+   * @param url The url
+   */
+  openiFrameViewer(url: string): void {
     this.url = url;
     this.viewerOpen = !!url;
   }
