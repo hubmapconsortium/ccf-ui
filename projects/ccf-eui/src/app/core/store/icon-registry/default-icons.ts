@@ -47,6 +47,7 @@ export const DEFAULT_ICONS: DefaultIconDefinition[] = [
   { name: 'lymph_nodes', namespace: 'app', url: 'assets/icons/icons-organs_lymph-nodes.svg' },
   { name: 'ovary-left', namespace: 'app', url: 'assets/icons/icons-organs_ovaries.svg' },
   { name: 'ovary-right', namespace: 'app', url: 'assets/icons/icons-organs_ovaries.svg' },
+  { name: 'skin', namespace: 'app', url: 'assets/icons/icons-skin.svg' },
   { name: 'small_intestine', namespace: 'app', url: 'assets/icons/icons-organs_small-intestine.svg' },
   { name: 'spleen', namespace: 'app', url: 'assets/icons/icons-organs_spleen.svg' },
   { name: 'stomach', namespace: 'app', url: 'assets/icons/icons-organs_stomach.svg' },

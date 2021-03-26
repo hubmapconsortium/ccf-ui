@@ -14,6 +14,7 @@ export interface SpatialSceneNode {
   '@id': string;
   '@type': string;
   entityId?: string;
+  ccf_annotations?: string[];
   representation_of?: string;
   reference_organ?: string;
   unpickable?: boolean;
@@ -157,6 +158,7 @@ export class CCFSpatialScene {
       return {
         '@id': source['@id'], '@type': 'SpatialSceneNode',
         entityId: source.entityId || undefined,
+        ccf_annotations: source.ccf_annotations || undefined,
         representation_of: source.representation_of || undefined,
         reference_organ: source.reference_organ || undefined,
         scenegraph: has3dObject ? source.object?.file : undefined,

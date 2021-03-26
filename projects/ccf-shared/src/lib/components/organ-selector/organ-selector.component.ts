@@ -1,7 +1,9 @@
 import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef, ViewChild } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
 
-export const ALL_ORGANS: OrganInfo[] = [
+export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
+  { src: 'app:skin', organ: 'Skin', name: 'Skin', disabled: true, hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002097'},
   { src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0001155' },
   { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true,
@@ -26,7 +28,9 @@ export const ALL_ORGANS: OrganInfo[] = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0002108'},
   { src: 'app:stomach', organ: 'Stomach', name: 'Stomach', disabled: true, hasSex: true },
   { src: 'app:thymus', organ: 'Stomach', name: 'Thymus', disabled: true, hasSex: true }
-].filter(organ => organ.disabled !== true) as OrganInfo[];
+];
+
+export const ALL_ORGANS = ALL_POSSIBLE_ORGANS.filter(organ => organ.disabled !== true);
 
 /**
  * Contains the organ name and url of the icon svg

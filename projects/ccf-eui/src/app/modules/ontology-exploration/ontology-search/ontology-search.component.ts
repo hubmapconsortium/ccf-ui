@@ -53,7 +53,6 @@ export class OntologySearchComponent implements OnInit {
    * and gets the search results from the service
    */
   ngOnInit(): void {
-    this.ontologyService.loadOntology();
     const valueChanges = this.formControl.valueChanges as Observable<string>;
     this.filteredResults$ = valueChanges.pipe(
       filter(value => typeof value === 'string'),

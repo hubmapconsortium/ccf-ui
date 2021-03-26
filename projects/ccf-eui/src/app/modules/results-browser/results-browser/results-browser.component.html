@@ -8,19 +8,14 @@
   </div>
 
   <div class="results-browser-list" (scroll)="onScroll($event)">
-    <ng-container *ngIf="false">
-      <div *ngFor="let result of data" class="browser-item-container" [class.selected]="result === selectedResult">
-        <ccf-results-browser-item [data]="result"
-                                  (openImageViewer)="selectedResult = result; resultClicked.emit(result);"
-                                  class="result-browser-item">
-        </ccf-results-browser-item>
-      </div>
-    </ng-container>
     <div class="browser-item-container" *ngFor="let donor of tissueBlockData">
-      <ccf-donor-card [donor]="donor" [selected]="isTissueBlockSelected(donor)"
-                      [color]="getTissueBlockColor(donor.ruiLocationId)"
-                      (checked)="handleDonorCardSelection($event, donor)" (urlClicked)="urlClicked.emit($event)">
-      </ccf-donor-card>
+      <ccf-donor-card
+        [donor]="donor"
+        [selected]="isTissueBlockSelected(donor)"
+        [color]="getTissueBlockColor(donor.spatialEntityId)"
+        (checked)="handleDonorCardSelection($event, donor)"
+        (linkClick)="visitLink($event)"
+      ></ccf-donor-card>
     </div>
   </div>
   <div class="scroll-gradient" [class.hidden]="!!atScrollBottom"></div>

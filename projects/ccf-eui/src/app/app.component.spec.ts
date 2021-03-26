@@ -11,7 +11,7 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
 import { ThemingService } from './core/services/theming/theming.service';
-import { OrganInfo } from 'ccf-shared';
+import { SceneState } from './core/store/scene/scene.state';
 
 @NgModule({})
 class EmptyModule {}
@@ -28,6 +28,11 @@ describe('AppComponent', () => {
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
       .replaceModule(StoreModule, EmptyModule)
+      .mock(SceneState, {
+        referenceOrgans$: of([]),
+        selectedReferenceOrgans$: of([]),
+        scene$: of([])
+      })
       .mock(DataState, {
         filter$: of(testFilter),
         listData$: of(),
@@ -70,16 +75,6 @@ describe('AppComponent', () => {
     expect(filterbox.removeBox).toHaveBeenCalled();
   });
 
-  it('should change the selected organs', async () => {
-    const { instance } = await shallow.render();
-    const organ = {
-      src: '',
-      name: 'testOrgan',
-    } as OrganInfo;
-    instance.changeOrgans([organ]);
-    expect(instance.selectedOrgans).toEqual([organ]);
-  });
-
   it('should call reset when refresh button is clicked', async () => {
     const { find, instance } = await shallow.render();
     const spy = spyOn(instance, 'reset');
@@ -104,5 +99,26 @@ describe('AppComponent', () => {
     const { find } = await shallow.render();
     const label = find('.filter-text .bmi').nativeElement as HTMLElement;
     expect(label.textContent).toBe('BMI: 30-80');
+  });
+
+  it('should set this.url to the passed in url when openiFrameViewer is called', async () => {
+    const { instance } = await shallow.render();
+    instance.url = '';
+    instance.openiFrameViewer('test.com');
+    expect(instance.url).toEqual('test.com');
+  });
+
+  it('should set this.viewerOpen to true whenever openiFrameViewer is called', async () => {
+    const { instance } = await shallow.render();
+    instance.viewerOpen = false;
+    instance.openiFrameViewer('test.com');
+    expect(instance.viewerOpen).toBeTrue();
+  });
+
+  it('should set this.viewerOpen to false whenever closeiFrameViewer is called', async () => {
+    const { instance } = await shallow.render();
+    instance.viewerOpen = true;
+    instance.closeiFrameViewer();
+    expect(instance.viewerOpen).not.toBeTrue();
   });
 });

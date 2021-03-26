@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NodeClickEvent } from 'ccf-body-ui';
-import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -10,7 +9,7 @@ import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { ListResult } from 'ccf-database';
+import { SceneState } from './core/store/scene/scene.state';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -22,16 +21,6 @@ import { ListResult } from 'ccf-database';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  /**
-   * List of organs to be displayed in the carousel
-   */
-  organList = ALL_ORGANS.map(i => ({ ...i, numResults: 0 })) as OrganInfo[];
-
-  /**
-   * Organs to be selected in the organ selector carousel
-   */
-  selectedOrgans = this.organList.filter(organ => organ.name !== 'Large Intestine');
-
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -66,7 +55,8 @@ export class AppComponent {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService) {
+  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
+      readonly scene: SceneState) {
     data.listData$.subscribe();
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
@@ -150,6 +140,13 @@ export class AppComponent {
     this.viewerOpen = !!url;
   }
 
+  /**
+   * Function to easily close the iFrame viewer.
+   */
+  closeiFrameViewer(): void {
+    this.viewerOpen = false;
+  }
+
   get hubmapPortalUrl(): string {
     return this.dataSourceService.dbOptions.hubmapPortalUrl;
   }
@@ -159,11 +156,7 @@ export class AppComponent {
     return token.length > 0;
   }
 
-  changeOrgans(organs: OrganInfo[]): void {
-    this.selectedOrgans = organs;
-  }
-
-  sceneNodeClicked({ node, ctrlClick }: NodeClickEvent): void {
+  sceneNodeClicked({node, ctrlClick}: NodeClickEvent): void {
     if (node.representation_of &&
       node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin') {
       this.data.updateFilter({ ontologyTerms: [node.representation_of] });

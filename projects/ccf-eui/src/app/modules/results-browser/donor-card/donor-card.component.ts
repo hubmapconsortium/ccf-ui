@@ -28,8 +28,11 @@ export class DonorCardComponent {
   /** Emits the new checked state whenever it changes */
   @Output() checked = new EventEmitter<boolean>();
 
-  /** Emits when a url is clicked */
-  @Output() urlClicked = new EventEmitter<string>();
+  /** Emit the url of any link when clicked. */
+  @Output() linkClick = new EventEmitter<string>();
+
+  /** To keep track of which element, if any, are hovered over. */
+  hoverState = '';
 
   /**
    * Handles the logic that needs to run when the checkbox is clicked on.
@@ -46,6 +49,22 @@ export class DonorCardComponent {
   toggleExpansion(): void {
     if(this.selected) {
       this.expanded = !this.expanded;
+    }
+  }
+
+  /**
+   * Handles what happens when an info card is clicked.
+   * Passes up the link click event unless the card isn't selected
+   * In which case it selects it for ease of use.
+   *
+   * @param url the URL to emit up.
+   */
+  linkHandler(url: string): void {
+    if (this.selected) {
+      this.linkClick.emit(url);
+    } else {
+      this.selected = true;
+      this.checked.emit(this.selected);
     }
   }
 }

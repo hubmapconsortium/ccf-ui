@@ -23,7 +23,7 @@ describe('OntologySearchComponent', () => {
   let mockSearchService: jasmine.SpyObj<OntologySearchService>;
 
   beforeEach(() => {
-    mockSearchService = jasmine.createSpyObj<OntologySearchService>(['loadOntology', 'filter']);
+    mockSearchService = jasmine.createSpyObj<OntologySearchService>(['filter']);
     mockSearchService.filter.and.returnValue(of([]));
 
     shallow = new Shallow(OntologySearchComponent, OntologySearchModule)

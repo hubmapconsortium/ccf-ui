@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../../../environments/environment';
 import { DataState } from './data/data.state';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { OntologyState } from './ontology/ontology.state';
+import { SceneState } from './scene/scene.state';
 
 
 /**
@@ -14,7 +16,8 @@ import { OntologyState } from './ontology/ontology.state';
 export const ROOT_STATES = [
   IconRegistryState,
   DataState,
-  OntologyState
+  OntologyState,
+  SceneState
 ];
 
 @NgModule({
@@ -27,6 +30,11 @@ export const ROOT_STATES = [
       // Consider setting compatibility and executionStrategy
       // https://www.ngxs.io/advanced/options
     }),
+
+    // Logger plugin must be last!
+    NgxsLoggerPluginModule.forRoot({
+      disabled: environment.production
+    })
   ]
 })
 export class StoreModule { }
