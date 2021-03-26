@@ -1,13 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ViewerComponent } from './viewer.component';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { ViewerComponent } from './viewer.component';
 
 
 
 @NgModule({
-  imports: [CommonModule, MatIconModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule
+  ],
   declarations: [ViewerComponent],
   exports: [ViewerComponent]
 })

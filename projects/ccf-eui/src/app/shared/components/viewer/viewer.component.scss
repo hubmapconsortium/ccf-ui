@@ -1,58 +1,53 @@
 :host {
-  width: calc(100% - 456px);
-  height: 100% !important;
-  z-index: 99;
-  transition: visibility 0.6s, opacity 0.4s ease-in-out;
+  display: block;
 
-  .wrapper {
-    height: 100%;
+  .toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
-    .overlay {
-      position: absolute;
-      top: 1.5rem;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+    width: 100%;
+    height: 1.5rem;
 
-    .toolbar {
-      display: flex;
-      justify-content: flex-end;
-      height: 1.5rem;
-      width: 100%;
+    .launch {
+      margin-right: 3.5rem;
 
-      .loading {
-        margin-left: 1.5rem;
-      }
-
-      .right {
-        display: flex;
-      }
-
-      .launch {
-        margin-right: 3.5rem;
-        display: flex;
-        align-items: center;
+      &.mat-button-disabled {
+        cursor: not-allowed;
       }
 
       .icon {
-        &:hover {
-          cursor: pointer;
-        }
-
-        .text {
-          padding-left: 0.3rem;
-        }
-
-        .close {
-          margin-left: 0.25rem;
-        }
+        margin-right: 0.25rem;
       }
-
     }
+
+    .close {
+      min-width: 0;
+      padding: 0;
+      line-height: 1.5rem;
+      border-radius: 0;
+    }
+  }
+
+  .overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 1.5rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .spinner {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .frame {
+    width: 100%;
+    height: 100%;
   }
 }

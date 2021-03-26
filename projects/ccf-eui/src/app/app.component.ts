@@ -35,7 +35,7 @@ export class AppComponent {
   /**
    * Emitted url object from the results browser item
    */
-  url: string;
+  url = '';
 
   /**
    * Variable to keep track of whether the viewer is open
@@ -101,7 +101,7 @@ export class AppComponent {
    */
   ontologySelected(ontologySelection: OntologySelection[]): void {
     if (!!ontologySelection) {
-      this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id)});
+      this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
       return;
     }
@@ -114,12 +114,12 @@ export class AppComponent {
    * Creates selection label for the results-browser to display based on an
    * array of selected ontology nodes.
    */
-  createSelectionLabel(ontolgySelection: OntologySelection[]): string{
-    if (ontolgySelection.length === 0){
+  createSelectionLabel(ontolgySelection: OntologySelection[]): string {
+    if (ontolgySelection.length === 0) {
       return '';
     }
 
-    if (ontolgySelection.length === 1){
+    if (ontolgySelection.length === 1) {
       return ontolgySelection[0].label;
     }
 
@@ -128,7 +128,7 @@ export class AppComponent {
       selectionString += selection.label;
 
       // Don't add a comma if it's the last item in the array.
-      if (index < ontolgySelection.length - 1){
+      if (index < ontolgySelection.length - 1) {
         selectionString += ', ';
       }
     });
@@ -136,12 +136,13 @@ export class AppComponent {
   }
 
   /**
-   * Function to handle the display of the viewer
-   * to show the appropriate iframe data
+   * Opens the iframe viewer with an url
+   *
+   * @param url The url
    */
-  openiFrameViewer(resultUrl: string) {
-    this.url = resultUrl;
-    this.viewerOpen = true;
+  openiFrameViewer(url: string): void {
+    this.url = url;
+    this.viewerOpen = !!url;
   }
 
   /**
@@ -162,14 +163,14 @@ export class AppComponent {
 
   sceneNodeClicked({node, ctrlClick}: NodeClickEvent): void {
     if (node.representation_of &&
-        node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin') {
-      this.data.updateFilter({ontologyTerms: [ node.representation_of ]});
+      node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin') {
+      this.data.updateFilter({ ontologyTerms: [node.representation_of] });
     } else if (node.entityId) {
       const highlightedEntities = ctrlClick ? this.data.snapshot.filter?.highlightedEntities ?? [] : [];
       if (highlightedEntities.length === 1 && highlightedEntities[0] === node.entityId) {
-        this.data.updateFilter({highlightedEntities: []});
+        this.data.updateFilter({ highlightedEntities: [] });
       } else {
-        this.data.updateFilter({highlightedEntities: highlightedEntities.concat([node.entityId])});
+        this.data.updateFilter({ highlightedEntities: highlightedEntities.concat([node.entityId]) });
       }
     }
   }

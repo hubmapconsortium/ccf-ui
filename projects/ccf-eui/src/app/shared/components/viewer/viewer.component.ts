@@ -1,39 +1,44 @@
-import { Component, EventEmitter, Input, Output, OnChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { ListResult } from 'ccf-database';
+import {
+  ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnChanges, Output, SimpleChanges,
+} from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'ccf-viewer',
   templateUrl: './viewer.component.html',
   styleUrls: ['./viewer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ViewerComponent implements OnChanges, AfterViewInit {
+export class ViewerComponent implements OnChanges {
+  @HostBinding('class') className = 'ccf-viewer';
 
-  @Input() result: ListResult;
-  @ViewChild('iframe', {static: false}) iframe: ElementRef;
-  @Output() closeViewer = new EventEmitter();
+  @Input() url = '';
+
+  @Output() closed = new EventEmitter<void>();
 
   loading = true;
 
-  constructor() { }
+  /**
+   * Sanitized url
+   * NOTE: Never use a getter for this property! It will cause the iframe to reload constantly.
+   */
+  safeUrl: SafeResourceUrl | null = null;
 
-  ngOnChanges(): void {
-    if(this.result && this.iframe) {
-      this.loading = true;
-      this.iframe.nativeElement.src = this.result.resultUrl;
+  constructor(private readonly sanitizer: DomSanitizer) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('url' in changes) {
+      this.updateUrl();
     }
   }
 
-  ngAfterViewInit(): void {
-    this.iframe.nativeElement.addEventListener('load', this.onLoad.bind(this));
+  private updateUrl(): void {
+    const { sanitizer, url } = this;
+    this.safeUrl = null;
+    if (url) {
+      this.safeUrl = sanitizer.bypassSecurityTrustResourceUrl(url);
+      this.loading = true;
+    }
   }
-
-  onLoad(): void {
-    this.loading = false;
-  }
-
-
-  openLink(): void {
-    window.open(this.result.resultUrl, '_blank');
-  }
-
 }

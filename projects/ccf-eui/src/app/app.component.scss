@@ -16,17 +16,6 @@
     width: 100%;
     opacity: 1;
 
-    .portal-view {
-      transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
-      position: absolute;
-      left: 0;
-      z-index: 100;
-    }
-
-    .inactive {
-      left: calc(450px - 100%);
-    }
-
     ccf-drawer-content {
       overflow: hidden;
       margin-bottom: 1.5rem;
@@ -52,7 +41,7 @@
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          
+
           .button {
             padding: 0;
             background: none;
@@ -61,11 +50,8 @@
             outline: none;
             border-radius: 0.25rem;
             padding: 0.65rem;
-  
           }
         }
-
-        
       }
     }
 
@@ -137,7 +123,7 @@
         align-items: center;
 
         .filter-text {
-          display:flex;
+          display: flex;
           justify-content: space-between;
           width: 75%;
           margin-left: 1.5rem;
@@ -148,8 +134,37 @@
         }
       }
     }
+  }
 
-    
+  .right-drawer {
+    .portal-view {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 100%;
+      width: calc(100vw - 100%);
+      height: 100%;
+      transform: translateX(-100%);
+
+      transition: transform 0.5s cubic-bezier(0.82, 0.085, 0.395, 0.895);
+
+      &.opened {
+        transform: translateX(0);
+        transition: width 0s 0.5s;
+      }
+    }
+
+    &:not(.ccf-drawer-opened) .portal-view {
+      width: 100vw;
+
+      &.opened {
+        transition: width 0s;
+      }
+    }
+
+    .shaded-toggle {
+      box-shadow: -1px 0 4px #212121;
+    }
   }
 }
 

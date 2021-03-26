@@ -58,6 +58,7 @@
       align-items: center;
       justify-content: center;
 
+      position: relative;
       width: calc(100% - 2 * 0.125rem);
       height: calc(100% - 2 * 0.125rem);
 
@@ -70,6 +71,16 @@
 
       font-size: 0.875rem;
       font-weight: bold;
+
+      &:after {
+        content: "";
+
+        position: absolute;
+        bottom: -0.125rem;
+        left: -0.125rem;
+        width: 0.125rem;
+        height: 0.125rem;
+      }
     }
 
     .link {
