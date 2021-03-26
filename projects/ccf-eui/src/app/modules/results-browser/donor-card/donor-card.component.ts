@@ -64,6 +64,7 @@ export class DonorCardComponent {
       this.linkClick.emit(url);
     } else {
       this.selected = true;
+      this.checked.emit(this.selected);
     }
   }
 }
