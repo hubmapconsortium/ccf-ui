@@ -122,7 +122,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /**
    * Distance the carousel moves in each shift (px)
    */
-  step = 56;
+  step = 72;
 
   /**
    * Detects resizing of carousel
