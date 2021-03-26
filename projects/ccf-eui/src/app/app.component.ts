@@ -146,8 +146,8 @@ export class AppComponent {
   }
 
   /**
-  * Function to easily close the iFrame viewer.
-  */
+   * Function to easily close the iFrame viewer.
+   */
   closeiFrameViewer(): void {
     this.viewerOpen = false;
   }
