@@ -124,8 +124,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    */
   step = 72;
 
-  containerWidth: number;
-
   /**
    * Detects resizing of carousel
    */
