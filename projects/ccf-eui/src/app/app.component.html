@@ -39,7 +39,7 @@
         [tissueBlockData]="data.tissueBlockData$ | async"
         [aggregateData]="data.aggregateData$ | async"
         [resultLabel]="ontologySelectionLabel"
-        (resultClicked)="resultsClicked($event)"
+        (resultClicked)="openiFrameViewer($event)"
       ></ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>

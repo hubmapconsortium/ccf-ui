@@ -37,7 +37,7 @@ export class ResultsBrowserComponent {
    * Output emitting the result that was clicked on and its relevant information.
    * Used for opening and rendering the result viewer.
    */
-  @Output() resultClicked = new EventEmitter<ListResult>();
+  @Output() resultClicked = new EventEmitter<string>();
 
   /**
    * Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
@@ -80,11 +80,11 @@ export class ResultsBrowserComponent {
   }
 
   /**
-   * Placeholder method until this is connected ot the iFrame component
+   * Passes the url up the chain for the iFram viewer.
    *
    * @param link to pass to the iFrame.
    */
   visitLink(link: string): void {
-    console.log('visit link: ', link);
+    this.resultClicked.emit(link);
   }
 }

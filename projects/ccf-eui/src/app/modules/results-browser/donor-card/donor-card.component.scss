@@ -22,14 +22,6 @@
       height: 1.5rem;
       width: 1.5rem;
       font-size: 1.5rem;
-
-      &.selected {
-        color: white;
-      }
-
-      &.unselected {
-        color: darkgray;
-      }
     }
   }
 
@@ -65,7 +57,6 @@
 
     .hover-state {
       width: 19.5rem !important;
-      border-right: 1px solid darkgray;
     }
 
     .donor-info {
@@ -92,7 +83,6 @@
   .hover-state {
     transition: opacity 0.15s ease-in-out;
     opacity: 0;
-    background-color: lightgray;
     cursor: pointer;
     position: absolute;
     height: 100%;
@@ -106,13 +96,11 @@
     font-size: 0.75rem;
 
     .hover-title {
-      color: black;
       font-weight: lighter;
     }
 
     .hover-icon {
       margin-left: 1rem;
-      color: slategray;
     }
   }
 
@@ -130,10 +118,6 @@
 
   .d-flex {
     display: flex;
-  }
-
-  .icon-light {
-    color: gray;
   }
 
   .icon-size {

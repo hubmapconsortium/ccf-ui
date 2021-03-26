@@ -50,4 +50,10 @@ describe('ResultsBrowserComponent', () => {
     list.triggerEventHandler('scroll', makeScrollEventObject(100, 300, 100));
     expect(instance.atScrollBottom).toBeFalsy();
   });
+
+  it('should emit the url whenever visitLink is called', async () => {
+    const { instance, outputs } = await shallow.render();
+    instance.visitLink('test.com');
+    expect(outputs.resultClicked.emit).toHaveBeenCalledWith('test.com');
+  });
 });

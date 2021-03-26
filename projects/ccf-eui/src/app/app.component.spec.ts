@@ -100,4 +100,25 @@ describe('AppComponent', () => {
     const label = find('.filter-text .bmi').nativeElement as HTMLElement;
     expect(label.textContent).toBe('BMI: 30-80');
   });
+
+  it('should set this.url to the passed in url when openiFrameViewer is called', async () => {
+    const { instance } = await shallow.render();
+    instance.url = '';
+    instance.openiFrameViewer('test.com');
+    expect(instance.url).toEqual('test.com');
+  });
+
+  it('should set this.viewerOpen to true whenever openiFrameViewer is called', async () => {
+    const { instance } = await shallow.render();
+    instance.viewerOpen = false;
+    instance.openiFrameViewer('test.com');
+    expect(instance.viewerOpen).toBeTrue();
+  });
+
+  it('should set this.viewerOpen to false whenever closeiFrameViewer is called', async () => {
+    const { instance } = await shallow.render();
+    instance.viewerOpen = true;
+    instance.closeiFrameViewer();
+    expect(instance.viewerOpen).not.toBeTrue();
+  });
 });

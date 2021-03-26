@@ -36,7 +36,7 @@ export class AppComponent {
   /**
    * Emitted url object from the results browser item
    */
-  url: ListResult;
+  url: string;
 
   /**
    * Variable to keep track of whether the viewer is open
@@ -140,9 +140,16 @@ export class AppComponent {
    * Function to handle the display of the viewer
    * to show the appropriate iframe data
    */
-  resultsClicked(resultUrl: ListResult) {
+  openiFrameViewer(resultUrl: string) {
     this.url = resultUrl;
     this.viewerOpen = true;
+  }
+
+  /**
+  * Function to easily close the iFrame viewer.
+  */
+  closeiFrameViewer(): void {
+    this.viewerOpen = false;
   }
 
   get hubmapPortalUrl(): string {
