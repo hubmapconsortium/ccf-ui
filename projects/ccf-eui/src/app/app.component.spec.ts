@@ -11,7 +11,7 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
 import { ThemingService } from './core/services/theming/theming.service';
-import { OrganInfo } from 'ccf-shared';
+import { SceneState } from './core/store/scene/scene.state';
 
 @NgModule({})
 class EmptyModule {}
@@ -28,6 +28,11 @@ describe('AppComponent', () => {
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
       .replaceModule(StoreModule, EmptyModule)
+      .mock(SceneState, {
+        referenceOrgans$: of([]),
+        selectedReferenceOrgans$: of([]),
+        scene$: of([])
+      })
       .mock(DataState, {
         filter$: of(testFilter),
         listData$: of(),
@@ -68,16 +73,6 @@ describe('AppComponent', () => {
     instance.reset(left, right, filterbox);
 
     expect(filterbox.removeBox).toHaveBeenCalled();
-  });
-
-  it('should change the selected organs', async () => {
-    const { instance } = await shallow.render();
-    const organ = {
-      src: '',
-      name: 'testOrgan',
-    } as OrganInfo;
-    instance.changeOrgans([organ]);
-    expect(instance.selectedOrgans).toEqual([organ]);
   });
 
   it('should call reset when refresh button is clicked', async () => {

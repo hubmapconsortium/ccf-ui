@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Immutable } from '@angular-ru/common/typings';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
-import { at, find, forEach, partial } from 'lodash';
-import { forkJoin, Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-
-import { environment } from '../../../../environments/environment';
+import { bind } from 'bind-decorator';
+import { OntologyTreeNode } from 'ccf-database';
+import { at } from 'lodash';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { OntologyState } from '../../store/ontology/ontology.state';
-import { DataSourceService } from '../data-source/data-source.service';
 
 
 /**
@@ -26,78 +23,6 @@ export interface SearchResult {
   node: OntologyTreeNode;
 }
 
-/** Type of function for getting child nodes from a parent node. */
-export type GetChildrenFunc = (o: OntologyTreeNode) => OntologyTreeNode[];
-
-/**
- * Links all nodes to their parents.
- *
- * @param nodeMap The hash table of nodes.
- */
-export function linkChildren(nodeMap: { [id: string]: OntologyTreeNode }): void {
-  // Add temporary fake node to simplify logic as root won't need a special case
-  // This is also used later to find the root node
-  nodeMap[''] = { parent: '', children: [] } as unknown as OntologyTreeNode;
-  forEach(nodeMap, ({ id, parent }) => nodeMap[parent].children.push(id));
-}
-
-/**
- * Creates an ontology state.
- *
- * @param nodeMap The node hash table.
- * @returns The ontology state model.
- */
-export function createModel(nodeMap: { [id: string]: OntologyTreeNode }): OntologyTreeModel {
-  const root = find(nodeMap[''].children) as string;
-
-  // Remove fake node inserted in linkChildren
-  delete nodeMap[''];
-
-  return { root, nodes: nodeMap };
-}
-
-/**
- * Creates a new tree with only the specified organs and their subtrees.
- *
- * @param model The full ontology tree.
- * @param organIds The identifiers of the organs to keep.
- * @returns A new ontology tree.
- */
-function pruneModel(model: OntologyTreeModel, organIds: string[]): OntologyTreeModel {
-  const body: OntologyTreeNode = {
-    '@id': model.root,
-    '@type': 'OntologyTreeNode',
-    id: model.root,
-    label: 'body',
-    parent: '',
-    children: organIds,
-    synonymLabels: []
-  };
-  const organNodes = at(model.nodes, organIds);
-  const prunedNodes = { [body.id]: body };
-
-  forEach(organNodes, node => node.parent = body.id);
-  forEach(organNodes, node => addSubtree(model.nodes, prunedNodes, node));
-
-  return { root: body.id, nodes: prunedNodes };
-}
-
-/**
- * Adds all subtree nodes to an accumulator object.
- *
- * @param nodes The original tree of nodes.
- * @param acc The accumulated tree of nodes.
- * @param current The node whose subtree should be added.
- */
-export function addSubtree(
-  nodes: { [id: string]: OntologyTreeNode },
-  acc: { [id: string]: OntologyTreeNode },
-  current: OntologyTreeNode
-): void {
-  acc[current.id] = current;
-  forEach(current.children, id => addSubtree(nodes, acc, nodes[id]));
-}
-
 /**
  * Injectable OntologySearchService responsible for search result computations
  */
@@ -106,43 +31,16 @@ export function addSubtree(
 })
 export class OntologySearchService {
   /** Root node in ontology. */
-  rootNode: Observable<Immutable<OntologyTreeNode>>;
+  get rootNode(): Observable<Immutable<OntologyTreeNode>> {
+    return this.ontologyState.rootNode$;
+  }
 
   /**
    * Creates an instance of ontology search service.
    *
-   * @param http The http requests service.
-   * @param store The global data store.
    * @param ontologyState The global ontology state.
    */
-  constructor(private readonly dataService: DataSourceService, private readonly store: Store,
-      private readonly ontologyState: OntologyState) {
-    this.rootNode = this.ontologyState.rootNode$;
-    this.getChildren = this.getChildren.bind(this) as GetChildrenFunc;
-  }
-
-  /**
-   * Loads ontology.
-   */
-  loadOntology(): void {
-    forkJoin([
-      this.dataService.getOntologyTreeModel().pipe(take(1)),
-      this.dataService.getReferenceOrgans().pipe(take(1))
-    ]).subscribe(([fullOntology, refOrgans]) => {
-      const organNodes = environment.organNodes.concat();
-      for (const organ of refOrgans) {
-        const ref = organ.representation_of;
-        const ontoNode = fullOntology.nodes[ref as string];
-        if (ref && ontoNode && organNodes.indexOf(ref) === -1) {
-          if (!organ.side) { // Organs with sides have to be added via environment.organNodes
-            organNodes.push(ref);
-          }
-        }
-      }
-      const ontology = partial(pruneModel, partial.placeholder, organNodes)(fullOntology);
-      this.ontologyState.setOntology(ontology);
-    });
-  }
+  constructor(private readonly ontologyState: OntologyState) { }
 
   /**
    * Searches the ontology with the search-term
@@ -227,8 +125,9 @@ export class OntologySearchService {
    * @param node The node for which to get children.
    * @returns An array of children, empty if the node has no children.
    */
+  @bind
   getChildren(node: OntologyTreeNode): OntologyTreeNode[] {
-    const { nodes } = this.store.selectSnapshot<OntologyTreeModel>(OntologyState);
-    return at(nodes, node.children);
+    const nodes = this.ontologyState.snapshot.nodes;
+    return at(nodes, node.children) as OntologyTreeNode[];
   }
 }

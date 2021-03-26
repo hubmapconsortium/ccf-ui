@@ -1,7 +1,7 @@
 <div class="ccf-app mat-app-background">
   <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async"></ccf-spinner-overlay>
   <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false"></ccf-header>
-  
+
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
     <div>
@@ -48,8 +48,12 @@
       <ccf-viewer [result]="url" [class.inactive]="!viewerOpen" class="portal-view" (closeViewer)="viewerOpen = false"></ccf-viewer>
 
       <div [class.closed]="!organListVisible" class="selector-drawer">
-        <ccf-organ-selector [occurenceData]="data.termOccurencesData$ | async" [multiselect]="true" [organList]="organList" (organsChanged)="changeOrgans($event)"
-          [selectedOrgans]="selectedOrgans" class="organ-selector"></ccf-organ-selector>
+        <ccf-organ-selector class="organ-selector" [multiselect]="true"
+          [occurenceData]="data.termOccurencesData$ | async"
+          [organList]="scene.referenceOrgans$ | async"
+          (organsChanged)="scene.setSelectedReferenceOrgans($event)"
+          [selectedOrgans]="scene.selectedReferenceOrgans$ | async">
+        </ccf-organ-selector>
       </div>
       <div class="close-button-wrapper" [class.closed]="!organListVisible">
         <div class="close-button" (click)="organListVisible = !organListVisible">
@@ -58,7 +62,7 @@
           </mat-icon>
         </div>
       </div>
-      <ccf-body-ui [scene]="data.sceneData$ | async" (nodeClick)="sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}" [class.expanded-stage]="!organListVisible" class="stage-content"></ccf-body-ui>
+      <ccf-body-ui [scene]="scene.scene$ | async" (nodeClick)="sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}" [class.expanded-stage]="!organListVisible" class="stage-content"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
 </div>
