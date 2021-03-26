@@ -9,7 +9,6 @@ import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { ListResult } from 'ccf-database';
 import { SceneState } from './core/store/scene/scene.state';
 
 /**
@@ -36,7 +35,7 @@ export class AppComponent {
   /**
    * Emitted url object from the results browser item
    */
-  url: ListResult;
+  url: string;
 
   /**
    * Variable to keep track of whether the viewer is open
@@ -140,9 +139,16 @@ export class AppComponent {
    * Function to handle the display of the viewer
    * to show the appropriate iframe data
    */
-  resultsClicked(resultUrl: ListResult) {
+  openiFrameViewer(resultUrl: string) {
     this.url = resultUrl;
     this.viewerOpen = true;
+  }
+
+  /**
+   * Function to easily close the iFrame viewer.
+   */
+  closeiFrameViewer(): void {
+    this.viewerOpen = false;
   }
 
   get hubmapPortalUrl(): string {

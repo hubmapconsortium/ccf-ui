@@ -26,13 +26,6 @@ export type TissueBlockRegistry = TissueBlockRegistryEntry[];
   styleUrls: ['./results-browser.component.scss']
 })
 export class ResultsBrowserComponent implements OnInit {
-
-  /**
-   * Input array of items used to generate the list of results in the results browser.
-   * Keeping this separate so that we can switch back to the old data if need be more easily.
-   */
-  @Input() data: ListResult[];
-
   /**
    * Input array of Tissue Blocks to pass along to the donor card component.
    */
@@ -57,7 +50,7 @@ export class ResultsBrowserComponent implements OnInit {
    * Output emitting the result that was clicked on and its relevant information.
    * Used for opening and rendering the result viewer.
    */
-  @Output() resultClicked = new EventEmitter<ListResult>();
+  @Output() resultClicked = new EventEmitter<string>();
 
   paletteColors = [
     '#FF8800',
@@ -258,5 +251,14 @@ export class ResultsBrowserComponent implements OnInit {
     const { clientHeight, scrollHeight, scrollTop } = event.target as Element;
     const diff = scrollHeight - scrollTop - clientHeight;
     this.atScrollBottom = diff < 64;
+  }
+
+  /**
+   * Passes the url up the chain for the iFram viewer.
+   *
+   * @param link to pass to the iFrame.
+   */
+  visitLink(link: string): void {
+    this.resultClicked.emit(link);
   }
 }

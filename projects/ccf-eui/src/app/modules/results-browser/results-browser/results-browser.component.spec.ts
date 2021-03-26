@@ -89,6 +89,12 @@ describe('ResultsBrowserComponent', () => {
     expect(instance.atScrollBottom).toBeFalsy();
   });
 
+  it('should emit the url whenever visitLink is called', async () => {
+    const { instance, outputs } = await shallow.render();
+    instance.visitLink('test.com');
+    expect(outputs.resultClicked.emit).toHaveBeenCalledWith('test.com');
+  });
+
   it('should initialize donorColorPalette', async () => {
     const { instance } = await shallow.render();
     const sampleSwatch = {color: '#ffd740', spatialEntityId: ''} as ColorSwatch;
