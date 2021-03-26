@@ -155,7 +155,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>datasets:     <code>DatasetResult[]</code>
+                                        <code>datasets:         <code><a href="../interfaces/DatasetResult.html" target="_self" >DatasetResult[]</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -163,7 +163,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>DatasetResult[]</code>
+                                            <i>Type : </i>        <code><a href="../interfaces/DatasetResult.html" target="_self" >DatasetResult[]</a></code>
 
                                         </td>
                                     </tr>
@@ -271,7 +271,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>sections:     <code>TissueSectionResult[]</code>
+                                        <code>sections:         <code><a href="../interfaces/TissueSectionResult.html" target="_self" >TissueSectionResult[]</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -279,7 +279,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>TissueSectionResult[]</code>
+                                            <i>Type : </i>        <code><a href="../interfaces/TissueSectionResult.html" target="_self" >TissueSectionResult[]</a></code>
 
                                         </td>
                                     </tr>
@@ -485,21 +485,6 @@ export interface Filter {
   highlightedEntities?: string[];
   /** Include optional debugging information */
   debug?: boolean;
-}
-
-export interface OntologyTreeNode {
-  &#x27;@id&#x27;: string;
-  &#x27;@type&#x27;: &#x27;OntologyTreeNode&#x27;;
-  id: string;
-  label: string;
-  parent: string;
-  children: string[];
-  synonymLabels: string[];
-}
-
-export interface OntologyTreeModel {
-  root: string;
-  nodes: { [id: string]: OntologyTreeNode };
 }
 </code></pre>
     </div>

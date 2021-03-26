@@ -373,20 +373,18 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, deserializeN3Store, DataFactory, Quad, Store
-} from &#x27;triple-store-utils&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, Quad, Store } from &#x27;triple-store-utils&#x27;;
 
 import { CCFSpatialGraph } from &#x27;./ccf-spatial-graph&#x27;;
 import { CCFSpatialScene, SpatialSceneNode } from &#x27;./ccf-spatial-scene&#x27;;
-import { addHubmapDataToStore } from &#x27;./hubmap/hubmap-data-import&#x27;;
-import { AggregateResult, Filter, ListResult, OntologyTreeModel, TissueBlockResult } from &#x27;./interfaces&#x27;;
+import { addHubmapDataToStore } from &#x27;./hubmap/hubmap-data&#x27;;
+import { AggregateResult, DataSource, Filter, ImageViewerData, ListResult } from &#x27;./interfaces&#x27;;
 import { getAggregateResults } from &#x27;./queries/aggregate-results-n3&#x27;;
 import { findIds } from &#x27;./queries/find-ids-n3&#x27;;
+import { getImageViewerData } from &#x27;./queries/image-viewer-data-n3&#x27;;
+import { getListResult } from &#x27;./queries/list-result-n3&#x27;;
 import { getOntologyTermOccurences } from &#x27;./queries/ontology-term-occurences-n3&#x27;;
-import { getOntologyTreeModel } from &#x27;./queries/ontology-tree-n3&#x27;;
 import { getSpatialEntityForEntity } from &#x27;./queries/spatial-result-n3&#x27;;
-import { getListResult, getTissueBlockResult } from &#x27;./queries/tissue-block-result-n3&#x27;;
 import { SpatialEntity } from &#x27;./spatial-types&#x27;;
 
 
@@ -419,7 +417,7 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions &#x3D; {
 };
 
 /** Database provider. */
-export class CCFDatabase {
+export class CCFDatabase implements DataSource {
   /** The triple store. */
   store: Store;
   /** The spatial graph */
@@ -435,7 +433,7 @@ export class CCFDatabase {
    * @param [options] Initialization options.
    */
   constructor(public options: CCFDatabaseOptions &#x3D; DEFAULT_CCF_DB_OPTIONS) {
-    this.store &#x3D; new Store(undefined, {factory: DataFactory});
+    this.store &#x3D; new Store();
     this.graph &#x3D; new CCFSpatialGraph(this);
     this.scene &#x3D; new CCFSpatialScene(this);
   }
@@ -465,13 +463,7 @@ export class CCFDatabase {
   private async doConnect(): Promise&lt;void&gt; {
     const ops: Promise&lt;unknown&gt;[] &#x3D; [];
     const ccfOwlUrl &#x3D; this.options.ccfOwlUrl;
-    if (ccfOwlUrl.endsWith(&#x27;.n3store.json&#x27;)) {
-      const storeString &#x3D; await fetch(ccfOwlUrl).then(r &#x3D;&gt; r.text())
-        .catch(x &#x3D;&gt; console.log(&#x27;Couldn\&#x27;t locate serialized store.&#x27;));
-      if (storeString) {
-        this.store &#x3D; deserializeN3Store(storeString, DataFactory);
-      }
-    } else if (ccfOwlUrl.endsWith(&#x27;.n3&#x27;)) {
+    if (ccfOwlUrl.endsWith(&#x27;.n3&#x27;)) {
       ops.push(addN3ToStore(this.options.ccfOwlUrl, this.store));
     } else {
       ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
@@ -485,12 +477,8 @@ export class CCFDatabase {
           this.options.hubmapAssetsUrl, this.options.hubmapPortalUrl
         ));
       }
-
-      ops.push(
-        addJsonLdToStore(&#x27;assets/kpmp/data/rui_locations.jsonld&#x27;, this.store)
-        .catch(x &#x3D;&gt; console.log(&#x27;Couldn\&#x27;t locate KPMP data.&#x27;))
-      );
     }
+    ops.push(addJsonLdToStore(&#x27;assets/kpmp/data/rui_locations.jsonld&#x27;, this.store).catch(x &#x3D;&gt; console.log(&#x27;Couldn\&#x27;t locate KPMP data.&#x27;)));
     await Promise.all(ops);
     // Add a small delay to allow the triple store to settle
     await new Promise(r &#x3D;&gt; setTimeout(r, 500));
@@ -539,20 +527,6 @@ export class CCFDatabase {
   }
 
   /**
-   * Gets all tissue block results for a filter.
-   *
-   * @param [filter] The filter.
-   * @returns A list of results.
-   */
-   async getTissueBlockResults(filter?: Filter): Promise&lt;TissueBlockResult[]&gt; {
-    filter &#x3D; {...filter, hasSpatialEntity: true} as Filter;
-    const highlighted &#x3D; new Set&lt;string&gt;(filter.highlightedEntities);
-    return [...this.getIds(filter)].map((s) &#x3D;&gt; getTissueBlockResult(this.store, s))
-      .map((s) &#x3D;&gt; Object.assign(s, {highlighted: highlighted.has(s[&#x27;@id&#x27;])}))
-      .sort((a, b) &#x3D;&gt; (a.highlighted ? 0 : 1) - (b.highlighted ? 0 : 1));
-  }
-
-  /**
    * Gets all list results for a filter.
    *
    * @param [filter] The filter.
@@ -587,26 +561,17 @@ export class CCFDatabase {
   }
 
   /**
-   * Get ontology term tree nodes
+   * Gets image data for the associated id.
    *
-   * @returns Ontology term counts.
+   * @param id The identifier.
+   * @returns The image data.
    */
-   async getOntologyTreeModel(): Promise&lt;OntologyTreeModel&gt; {
-    return getOntologyTreeModel(this.store);
-  }
-
-  /**
-   * Get reference organs
-   *
-   * @returns Ontology term counts.
-   */
-   async getReferenceOrgans(): Promise&lt;SpatialEntity[]&gt; {
-    return this.scene.getReferenceOrgans();
+  async getImageViewerData(id: string): Promise&lt;ImageViewerData&gt; {
+    return getImageViewerData(id, this.store);
   }
 
   /**
    * Get all nodes to form the 3D scene of reference body, organs, and tissues
-   *
    * @param [filter] The filter.
    * @returns A list of Spatial Scene Nodes for the 3D Scene
    */

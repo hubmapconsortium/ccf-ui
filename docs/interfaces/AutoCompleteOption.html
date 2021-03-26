@@ -300,19 +300,19 @@ export class TextSearchComponent {
   @Input() autoCompleter?: (search: string, max: number) &#x3D;&gt; ObservableInput&lt;AutoCompleteOption[]&gt;;
 
   /**
+   * Form controller for search bar
+   */
+  readonly controller &#x3D; new FormControl();
+
+  /**
    * Emits when the search bar text changes
    */
-  @Output() readonly valueChange: Observable&lt;string&gt;;
+  @Output() readonly valueChange &#x3D; this.controller.valueChanges as Observable&lt;string&gt;;
 
   /**
    * Emits when an autocomplete option has been selected
    */
   @Output() readonly optionSelected &#x3D; new EventEmitter&lt;AutoCompleteOption&gt;();
-
-  /**
-   * Form controller for search bar
-   */
-  readonly controller &#x3D; new FormControl();
 
   /**
    * Emits the latest autocomplete suggestions
@@ -330,29 +330,7 @@ export class TextSearchComponent {
    */
   constructor(
     @Inject(DEFAULT_MAX_OPTIONS) private readonly defaultMaxOptions: number
-  ) {
-    this.valueChange &#x3D; this.controller.valueChanges;
-  }
-
-  /**
-   * Fetches the latest autocomplete suggestions for the provided search text.
-   *
-   * @param search The search text to find suggestions for
-   * @returns The found suggestions
-   */
-  @Bind
-  private async getOptions(search: string): Promise&lt;AutoCompleteOption[]&gt; {
-    const { autoCompleter, maxOptions &#x3D; this.defaultMaxOptions } &#x3D; this;
-    if (!autoCompleter || maxOptions &lt; 1) {
-      return [];
-    }
-
-    const options &#x3D; autoCompleter(search, maxOptions);
-    return from(options).pipe(
-      take(1),
-      map(array &#x3D;&gt; array.length &lt;&#x3D; maxOptions ? array : array.slice(0, maxOptions))
-    ).toPromise();
-  }
+  ) { }
 
   /**
    * Text to show in search bar when an autocomplete option is selected.
@@ -373,6 +351,26 @@ export class TextSearchComponent {
    */
   optionId(_index: number, option: AutoCompleteOption): unknown {
     return option.id;
+  }
+
+  /**
+   * Fetches the latest autocomplete suggestions for the provided search text.
+   *
+   * @param search The search text to find suggestions for
+   * @returns The found suggestions
+   */
+  @Bind
+  private async getOptions(search: string): Promise&lt;AutoCompleteOption[]&gt; {
+    const { autoCompleter, maxOptions &#x3D; this.defaultMaxOptions } &#x3D; this;
+    if (!autoCompleter || maxOptions &lt; 1) {
+      return [];
+    }
+
+    const options &#x3D; autoCompleter(search, maxOptions);
+    return from(options).pipe(
+      take(1),
+      map(array &#x3D;&gt; array.length &lt;&#x3D; maxOptions ? array : array.slice(0, maxOptions))
+    ).toPromise();
   }
 }
 </code></pre>

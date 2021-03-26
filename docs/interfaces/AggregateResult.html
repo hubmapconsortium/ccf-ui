@@ -184,44 +184,6 @@
   count: string | number;
 }
 
-export interface ListResultItem {
-  &#x27;@id&#x27;: string;
-  label: string;
-  description: string;
-  link: string;
-}
-
-export interface DonorResult extends ListResultItem {
-  &#x27;@type&#x27;: &#x27;Donor&#x27;;
-  providerName: string;
-}
-
-export interface DatasetResult extends ListResultItem {
-  &#x27;@type&#x27;: &#x27;Dataset&#x27;;
-  technology: string;
-  thumbnail: string;
-}
-
-export interface TissueSectionResult extends ListResultItem {
-  &#x27;@type&#x27;: &#x27;Sample&#x27;;
-  sampleType: &#x27;Tissue Section&#x27; | &#x27;Non-Standard&#x27;;
-  sectionNumber: number;
-  datasets: DatasetResult[];
-}
-
-export interface TissueBlockResult extends ListResultItem {
-  &#x27;@type&#x27;: &#x27;Sample&#x27;;
-  sampleType: &#x27;Tissue Block&#x27; | &#x27;Non-Standard&#x27;;
-  sectionCount: number;
-  sectionSize: number;
-  sectionUnits: string;
-
-  donor: DonorResult;
-  spatialEntityId: string;
-  sections: TissueSectionResult[];
-  datasets: DatasetResult[];
-}
-
 /** Result for list of tissues. */
 export interface ListResult {
   /** Identifier. */
@@ -246,6 +208,22 @@ export interface ListResult {
   resultType?: &#x27;external_link&#x27; | &#x27;local_link&#x27;;
   /** If the result should be highlighted */
   highlighted?: boolean;
+}
+
+/** Data for image viewer display. */
+export interface ImageViewerData {
+  /** Identifier. */
+  &#x27;@id&#x27;: string;
+  /** Type string. */
+  &#x27;@type&#x27;: &#x27;ImageViewerData&#x27;;
+  /** Identifier. */
+  id: string;
+  /** Image label. */
+  label: string;
+  /** Containing organ name. */
+  organName: string;
+  /** Other metadata. */
+  metadata: { label: string, value: string }[];
 }
 
 /** Item that can be searched for. */
@@ -278,23 +256,20 @@ export interface Filter {
   ontologyTerms: string[];
   /** Entities to be highlighted */
   highlightedEntities?: string[];
+  /** Whether it has a spatial entity. */
+  hasSpatialEntity?: boolean;
   /** Include optional debugging information */
   debug?: boolean;
 }
 
-export interface OntologyTreeNode {
-  &#x27;@id&#x27;: string;
-  &#x27;@type&#x27;: &#x27;OntologyTreeNode&#x27;;
-  id: string;
-  label: string;
-  parent: string;
-  children: string[];
-  synonymLabels: string[];
-}
-
-export interface OntologyTreeModel {
-  root: string;
-  nodes: { [id: string]: OntologyTreeNode };
+/** Backend query interface. */
+export interface DataSource {
+  /** Query list items. */
+  getListResults(filter?: Filter): Promise&lt;ListResult[]&gt;;
+  /** Query aggregate items. */
+  getAggregateResults(filter?: Filter): Promise&lt;AggregateResult[]&gt;;
+  /** Query a specific image. */
+  getImageViewerData(iri: string): Promise&lt;ImageViewerData&gt;;
 }
 </code></pre>
     </div>

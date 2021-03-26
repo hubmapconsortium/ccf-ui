@@ -90,10 +90,6 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#ccf_annotations">ccf_annotations</a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#color">color</a>
                                 </li>
                                 <li>
@@ -114,10 +110,6 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#reference_organ">reference_organ</a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#representation_of">representation_of</a>
                                 </li>
                                 <li>
@@ -129,7 +121,6 @@
                                         <a href="#scenegraphNode">scenegraphNode</a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#tooltip">tooltip</a>
                                 </li>
                                 <li>
@@ -235,53 +226,13 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>@type:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>@type:     <code></code>
 </code>
                                     </td>
                                 </tr>
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="ccf_annotations"></a>
-                                        <span class="name"><b>ccf_annotations</b><a href="#ccf_annotations"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>ccf_annotations:     <code>string[]</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>string[]</code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -462,40 +413,6 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="reference_organ"></a>
-                                        <span class="name"><b>reference_organ</b><a href="#reference_organ"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>reference_organ:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
                                         <a name="representation_of"></a>
                                         <span class="name"><b>representation_of</b><a href="#representation_of"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
@@ -617,11 +534,6 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -802,20 +714,16 @@
 
 import { CCFDatabase } from &#x27;./ccf-database&#x27;;
 import { Filter } from &#x27;./interfaces&#x27;;
-import {
-  getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity,
-} from &#x27;./queries/spatial-result-n3&#x27;;
+import { getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity } from &#x27;./queries/spatial-result-n3&#x27;;
 import { ExtractionSet, SpatialEntity } from &#x27;./spatial-types&#x27;;
-import { ccf } from &#x27;./util/prefixes&#x27;;
+import { ccf, rui } from &#x27;./util/prefixes&#x27;;
 
 
 export interface SpatialSceneNode {
   &#x27;@id&#x27;: string;
-  &#x27;@type&#x27;: string;
+  &#x27;@type&#x27;: &#x27;SpatialSceneNode&#x27;;
   entityId?: string;
-  ccf_annotations?: string[];
   representation_of?: string;
-  reference_organ?: string;
   unpickable?: boolean;
   wireframe?: boolean;
   _lighting?: string;
@@ -827,7 +735,7 @@ export interface SpatialSceneNode {
   opacity?: number;
   transformMatrix: Matrix4;
   name?: string;
-  tooltip?: string;
+  tooltip: string;
   priority?: number;
 }
 
@@ -869,50 +777,55 @@ export class CCFSpatialScene {
   }
 
   getReferenceOrganSets(filter?: Filter): SpatialEntity[] {
-    let organSet &#x3D; this.getReferenceOrgans();
+    let organsId: string;
     switch (filter?.sex) {
       case &#x27;Male&#x27;:
-        organSet &#x3D; organSet.filter(s &#x3D;&gt; s.sex &#x3D;&#x3D;&#x3D; &#x27;Male&#x27;);
+        organsId &#x3D; ccf.spatial.MaleOrgans.id;
         break;
       case &#x27;Female&#x27;:
-        organSet &#x3D; organSet.filter(s &#x3D;&gt; s.sex &#x3D;&#x3D;&#x3D; &#x27;Female&#x27;);
+        organsId &#x3D; ccf.spatial.FemaleOrgans.id;
         break;
       case &#x27;Both&#x27;:
       default:
+        organsId &#x3D; ccf.spatial.FemaleOrgans.id;
         break;
     }
-    organSet &#x3D; organSet.map(o &#x3D;&gt; [ [o], this.getAnatomicalStructures(o[&#x27;@id&#x27;])])
-      .reduce((acc, [organ, structures]) &#x3D;&gt; acc.concat(structures.length &gt; 0 ? structures : organ), [] as SpatialEntity[]);
-    return organSet;
+    return [this.getSpatialEntity(organsId)];
   }
 
   getReferenceSceneNodes(filter?: Filter): SpatialSceneNode[] {
+    const wholeBody &#x3D; this.getSpatialEntity(ccf.spatial.Body.id);
     const body &#x3D; this.getReferenceBody(filter);
+    const terms &#x3D; filter?.ontologyTerms || [];
+    const hasTerm &#x3D; {
+      body: terms.indexOf(rui.body.id) &#x3D;&#x3D;&#x3D; 0,
+      kidney: terms.indexOf(rui.kidney.id) &#x3D;&#x3D;&#x3D; 0,
+      right_kidney: terms.indexOf(rui.right_kidney.id) &#x3D;&#x3D;&#x3D; 0,
+      left_kidney: terms.indexOf(rui.left_kidney.id) &#x3D;&#x3D;&#x3D; 0,
+      spleen: terms.indexOf(rui.spleen.id) &#x3D;&#x3D;&#x3D; 0,
+    };
 
-    const terms &#x3D; new Set&lt;string&gt;(filter?.ontologyTerms ?? []);
     let nodes: (SpatialSceneNode | undefined)[] &#x3D; [
-      ...this.getReferenceOrganSets(filter).map((organ) &#x3D;&gt; {
-        const isTermSelected &#x3D; terms.has(organ.representation_of || &#x27;&#x27;);
-        const isSkin &#x3D; organ.representation_of &#x3D;&#x3D;&#x3D; &#x27;http://purl.obolibrary.org/obo/UBERON_0002097&#x27;;
-        return this.getSceneNode(organ, body, {
-          unpickable: isTermSelected || isSkin,
-          zoomToOnLoad: isTermSelected &amp;&amp; !isSkin &amp;&amp; !isTermSelected, // Turning off for now
-          _lighting: &#x27;pbr&#x27;,
-          color: [255, 255, 255, 255],
-          opacity: isSkin ? 0.5 : 0.2,
-          zoomBasedOpacity: false
-        });
-      })
+      this.getSceneNode(body, wholeBody, {unpickable: true, color: [255, 255, 255, 1*255]}),
+      ...this.getReferenceOrganSets(filter).map((organ) &#x3D;&gt;
+        this.getSceneNode(organ, body, {unpickable: true, _lighting: &#x27;pbr&#x27;, zoomBasedOpacity: true,  color: [255, 255, 255, 1*255]})
+      ),
+      this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHRightKidney&#x27;).id), body, {color: [255, 255, 255, 1],
+        unpickable: hasTerm.kidney || hasTerm.right_kidney, zoomToOnLoad: hasTerm.right_kidney}),
+      this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHLeftKidney&#x27;).id), body, {color: [255, 255, 255, 1],
+        unpickable: hasTerm.kidney || hasTerm.left_kidney, zoomToOnLoad: hasTerm.left_kidney}),
+      this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleen&#x27;).id), body, {color: [255, 255, 255, 1],
+        unpickable: hasTerm.spleen, zoomToOnLoad: hasTerm.spleen})
     ];
 
     if (filter?.debug) {
       // Debug bounding boxes
       nodes &#x3D; nodes.concat([
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHRightKidney&#x27;).id), body, {color: [0, 0, 255, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHLeftKidney&#x27;).id), body, {color: [255, 0, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC1&#x27;).id), body, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC2&#x27;).id), body, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC3&#x27;).id), body, {color: [0, 255, 0, 0.5*255], wireframe: true})
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHRightKidney&#x27;).id), wholeBody, {color: [0, 0, 255, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHLeftKidney&#x27;).id), wholeBody, {color: [255, 0, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC1&#x27;).id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC2&#x27;).id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true}),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC3&#x27;).id), wholeBody, {color: [0, 255, 0, 0.5*255], wireframe: true})
       ]);
     }
 
@@ -935,7 +848,7 @@ export class CCFSpatialScene {
     let transform &#x3D; this.db.graph.getTransformationMatrix(sourceID, target[&#x27;@id&#x27;]);
     if (transform) {
       if (has3dObject) {
-        transform &#x3D; new Matrix4(Matrix4.IDENTITY).rotateX(toRadians(90)).multiplyLeft(transform);
+        transform &#x3D; new Matrix4().rotateX(toRadians(90)).multiplyLeft(transform);
       } else {
         // Scale visible bounding boxes to the desired dimensions
         let factor: number;
@@ -957,9 +870,7 @@ export class CCFSpatialScene {
       return {
         &#x27;@id&#x27;: source[&#x27;@id&#x27;], &#x27;@type&#x27;: &#x27;SpatialSceneNode&#x27;,
         entityId: source.entityId || undefined,
-        ccf_annotations: source.ccf_annotations || undefined,
         representation_of: source.representation_of || undefined,
-        reference_organ: source.reference_organ || undefined,
         scenegraph: has3dObject ? source.object?.file : undefined,
         scenegraphNode: has3dObject ? source.object?.file_subpath : undefined,
         transformMatrix: transform,

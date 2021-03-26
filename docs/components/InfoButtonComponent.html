@@ -61,7 +61,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts</code>
+    <code>projects/ccf-eui/src/app/modules/info/info-button/info-button.component.ts</code>
 </p>
 
     <p class="comment">
@@ -73,12 +73,6 @@
     </p>
 
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
-    </p>
 
 
 <section>
@@ -140,30 +134,10 @@
                             <li>
                                 <a href="#launchInfoDialog">launchInfoDialog</a>
                             </li>
-                            <li>
-                                <a href="#ngOnDestroy">ngOnDestroy</a>
-                            </li>
-                            <li>
-                                <a href="#onDialogButtonClick">onDialogButtonClick</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Inputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#infoTitle">infoTitle</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -178,12 +152,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dialog: MatDialog, infoButtonService: <a href="../injectables/InfoButtonService.html">InfoButtonService</a>)</code>
+<code>constructor(dialog: MatDialog)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-eui/src/app/modules/info/info-button/info-button.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -219,22 +193,6 @@
 </code>
                                                         </td>
                                                 </tr>
-                                                <tr>
-                                                        <td>infoButtonService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/InfoButtonService.html" target="_self" >InfoButtonService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code><p>Reference to the info button service</p>
-</code>
-                                                        </td>
-                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -244,35 +202,7 @@
         </table>
 </section>
 
-    <section>
-    <h3 id="inputs">Inputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="infoTitle"></a>
-                        <b>infoTitle</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;&#x27;</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:19</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Title of the info dialog</p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
+
 
 
 
@@ -296,15 +226,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>launchInfoDialog(data: DocumentationContent[])</code>
+<code>launchInfoDialog()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/info/info-button/info-button.component.ts:26</a></div>
                 </td>
             </tr>
 
@@ -312,120 +242,6 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Opens the info dialogue with the project details</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>data</td>
-                                    <td>
-                                            <code>DocumentationContent[]</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnDestroy"></a>
-                    <span class="name">
-                        <b>
-                            ngOnDestroy
-                        </b>
-                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnDestroy()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:39</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Unsubscribe to the observable when the component
-is destroyed</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onDialogButtonClick"></a>
-                    <span class="name">
-                        <b>
-                            onDialogButtonClick
-                        </b>
-                        <a href="#onDialogButtonClick"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>onDialogButtonClick()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:60</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Detects button click and reads markdown function</p>
 </div>
 
                     <div class="io-description">
@@ -442,11 +258,11 @@ is destroyed</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, Input } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
-import { DocumentationContent } from &#x27;../info-button/info-button.service&#x27;;
+
 import { InfoDialogComponent } from &#x27;../info-dialog/info-dialog.component&#x27;;
-import { InfoButtonService } from &#x27;./info-button.service&#x27;;
+
 
 /**
  * Info button component: Information icon displays project details when clicked.
@@ -456,82 +272,43 @@ import { InfoButtonService } from &#x27;./info-button.service&#x27;;
   templateUrl: &#x27;./info-button.component.html&#x27;,
   styleUrls: [&#x27;./info-button.component.scss&#x27;]
 })
-export class InfoButtonComponent implements OnDestroy {
-  /**
-   * Title of the info dialog
-   */
-  @Input() infoTitle &#x3D; &#x27;&#x27;;
-
+export class InfoButtonComponent {
   /**
    * Creates an instance of info button component.
    *
    * @param dialog Reference to the dialog creation service.
-   * @param infoButtonService Reference to the info button service
    */
-  constructor(private readonly dialog: MatDialog, private readonly infoButtonService: InfoButtonService) {
-    infoButtonService.markdownContent.subscribe(data &#x3D;&gt; {
-      if(data.length) {
-        this.launchInfoDialog(data);
-      }
-    });
-   }
-
-   /**
-    * Unsubscribe to the observable when the component
-    * is destroyed
-    */
-   ngOnDestroy(): void {
-     this.infoButtonService.markdownContent.unsubscribe();
-   }
+  constructor(private readonly dialog: MatDialog) { }
 
   /**
    * Opens the info dialogue with the project details
    */
-  launchInfoDialog(data: DocumentationContent[]): void {
+  launchInfoDialog(): void {
     this.dialog.open(InfoDialogComponent, {
-      panelClass: &#x27;modal-animated&#x27;,
       width: &#x27;60rem&#x27;,
-      data: {
-        title: this.infoTitle,
-        content: data
-      }
+      data: {}
     });
-  }
-
-  /**
-   * Detects button click and reads markdown function
-   */
-  onDialogButtonClick(): void {
-    this.infoButtonService.readMarkdown();
   }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;info-button-wrapper&quot;&gt;
-  &lt;mat-icon class&#x3D;&quot;ccf-info-button&quot; aria-hidden&#x3D;&quot;false&quot; aria-label&#x3D;&quot;Page information&quot; (click)&#x3D;&quot;onDialogButtonClick()&quot;&gt;
-    info
-  &lt;/mat-icon&gt;
-&lt;/div&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;mat-icon class&#x3D;&quot;info&quot; aria-hidden&#x3D;&quot;false&quot; aria-label&#x3D;&quot;Page information&quot; (click)&#x3D;&quot;launchInfoDialog()&quot;&gt;
+  info_outline
+&lt;/mat-icon&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
                     <code>./info-button.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.info-button-wrapper {
-  border-radius: 0.25rem;
-  padding: 0.65rem;
-
-  .ccf-info-button {
-    cursor: pointer;
-    transition: color .6s;
-    font-size: 1.5rem;
-    vertical-align: sub;
-  }
-  
-}</code></pre>
+                <pre class="line-numbers"><code class="language-scss">.info {
+  cursor: pointer;
+  transition: color 1s;
+}
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -559,8 +336,8 @@ export class InfoButtonComponent implements OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="info-button-wrapper">  <mat-icon class="ccf-info-button" aria-hidden="false" aria-label="Page information" (click)="onDialogButtonClick()">    info  </mat-icon></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><mat-icon class="info" aria-hidden="false" aria-label="Page information" (click)="launchInfoDialog()">  info_outline</mat-icon></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ResultsBrowserItemComponent', 'selector': 'ccf-results-browser-item'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'InfoButtonComponent'};
 </script>

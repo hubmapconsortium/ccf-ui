@@ -107,26 +107,13 @@
                                 <a href="#getDB">getDB</a>
                             </li>
                             <li>
+                                <a href="#getImageViewerData">getImageViewerData</a>
+                            </li>
+                            <li>
                                 <a href="#getListResults">getListResults</a>
                             </li>
                             <li>
                                 <a href="#getOntologyTermOccurences">getOntologyTermOccurences</a>
-                            </li>
-                            <li>
-                                <a href="#getOntologyTreeModel">getOntologyTreeModel</a>
-                            </li>
-                            <li>
-                                <a href="#getReferenceOrgans">getReferenceOrgans</a>
-                            </li>
-                            <li>
-                                <a href="#getScene">getScene</a>
-                            </li>
-                            <li>
-                                <a href="#getTissueBlockResults">getTissueBlockResults</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#getWebWorkerDataSource">getWebWorkerDataSource</a>
                             </li>
                         </ul>
                     </td>
@@ -146,12 +133,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(locator: <a href="https://angular.io/api/common/LocationStrategy" target="_blank">LocationStrategy</a>)</code>
+<code>constructor()</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -159,32 +146,6 @@
                     <td class="col-md-4">
                             <div class="io-description"><p>Creates an instance of data source service.</p>
 </div>
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>locator</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/common/LocationStrategy" target="_blank" >LocationStrategy</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
                     </td>
                 </tr>
             </tbody>
@@ -218,8 +179,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:72</a></div>
                 </td>
             </tr>
 
@@ -298,8 +259,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:51</a></div>
                 </td>
             </tr>
 
@@ -317,6 +278,84 @@
                     </div>
                     <div class="io-description">
                         <p>A promise that resolves to the database when ready.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getImageViewerData"></a>
+                    <span class="name">
+                        <b>
+                            getImageViewerData
+                        </b>
+                        <a href="#getImageViewerData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getImageViewerData(iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries data for a specific image.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The image identifier (&#39;</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/ImageViewerData.html" target="_self" >Observable&lt;ImageViewerData&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An observable emitting the result.</p>
 
                     </div>
                 </td>
@@ -345,8 +384,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:62</a></div>
                 </td>
             </tr>
 
@@ -423,8 +462,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:82</a></div>
                 </td>
             </tr>
 
@@ -479,328 +518,6 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getOntologyTreeModel"></a>
-                    <span class="name">
-                        <b>
-                            getOntologyTreeModel
-                        </b>
-                        <a href="#getOntologyTreeModel"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getOntologyTreeModel()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="105"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:105</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Get the ontology tree model.</p>
-</div>
-
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/OntologyTreeModel.html" target="_self" >Observable&lt;OntologyTreeModel&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>An observable emitting the results.</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getReferenceOrgans"></a>
-                    <span class="name">
-                        <b>
-                            getReferenceOrgans
-                        </b>
-                        <a href="#getReferenceOrgans"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getReferenceOrgans()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:114</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Get the reference organs.</p>
-</div>
-
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/SpatialEntity.html" target="_self" >Observable&lt;SpatialEntity[]&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>An observable emitting the results.</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getScene"></a>
-                    <span class="name">
-                        <b>
-                            getScene
-                        </b>
-                        <a href="#getScene"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getScene(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="124"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:124</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Queries for scene nodes to display.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                    <td>
-                                        <p>Currently applied filter.</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>An observable emitting the results.</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getTissueBlockResults"></a>
-                    <span class="name">
-                        <b>
-                            getTissueBlockResults
-                        </b>
-                        <a href="#getTissueBlockResults"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getTissueBlockResults(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:76</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Queries for tissue block values.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                    <td>
-                                        <p>Currently applied filter.</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;TissueBlockResult[]&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>An observable emitting the results.</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getWebWorkerDataSource"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            getWebWorkerDataSource
-                        </b>
-                        <a href="#getWebWorkerDataSource"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getWebWorkerDataSource(directImport)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="128"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:128</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>directImport</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>false</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/CCFDatabase.html" target="_self" >Remote&lt;CCFDatabase&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
             <section>
     
@@ -827,7 +544,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -860,7 +577,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-eui/src/app/core/services/data-source/data-source.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -879,17 +596,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { LocationStrategy } from &#x27;@angular/common&#x27;;
-import { Injectable } from &#x27;@angular/core&#x27;;
-import {
-  AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult,
-  OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
-} from &#x27;ccf-database&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ImageViewerData, ListResult } from &#x27;ccf-database&#x27;;
 import { Remote, wrap } from &#x27;comlink&#x27;;
 import { from, Observable } from &#x27;rxjs&#x27;;
-import { take } from &#x27;rxjs/operators&#x27;;
 
-import { environment } from &#x27;../../../../environments/environment&#x27;;
+import { environment } from &#x27;./../../../../environments/environment&#x27;;
 
 
 /**
@@ -907,9 +619,10 @@ export class DataSourceService {
   /**
    * Creates an instance of data source service.
    */
-  constructor(private readonly locator: LocationStrategy) {
+  constructor() {
     if (typeof Worker !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; !environment.disableDbWorker) {
-      this.dataSource &#x3D; this.getWebWorkerDataSource(true);
+      const worker &#x3D; new Worker(&#x27;./data-source.worker&#x27;, { type: &#x27;module&#x27; });
+      this.dataSource &#x3D; wrap(worker);
     } else {
       this.dataSource &#x3D; new CCFDatabase();
     }
@@ -949,16 +662,6 @@ export class DataSourceService {
   }
 
   /**
-   * Queries for tissue block values.
-   *
-   * @param [filter] Currently applied filter.
-   * @returns An observable emitting the results.
-   */
-   getTissueBlockResults(filter?: Filter): Observable&lt;TissueBlockResult[]&gt; {
-    return from(this.getDB().then((db) &#x3D;&gt; db.getTissueBlockResults(filter)));
-  }
-
-  /**
    * Queries for aggregate values.
    *
    * @param [filter] Currently applied filter.
@@ -979,43 +682,13 @@ export class DataSourceService {
   }
 
   /**
-   * Get the ontology tree model.
+   * Queries data for a specific image.
    *
-   * @returns An observable emitting the results.
+   * @param iri The image identifier (&#x27;@id&#x27;).
+   * @returns An observable emitting the result.
    */
-  getOntologyTreeModel(): Observable&lt;OntologyTreeModel&gt; {
-    return from(this.getDB().then((db) &#x3D;&gt; db.getOntologyTreeModel())).pipe(take(1));
-  }
-
-  /**
-   * Get the reference organs.
-   *
-   * @returns An observable emitting the results.
-   */
-   getReferenceOrgans(): Observable&lt;SpatialEntity[]&gt; {
-    return from(this.getDB().then((db) &#x3D;&gt; db.getReferenceOrgans())).pipe(take(1));
-  }
-
-  /**
-   * Queries for scene nodes to display.
-   *
-   * @param [filter] Currently applied filter.
-   * @returns An observable emitting the results.
-   */
-   getScene(filter?: Filter): Observable&lt;SpatialSceneNode[]&gt; {
-    return from(this.getDB().then((db) &#x3D;&gt; db.getScene(filter)));
-  }
-
-  private getWebWorkerDataSource(directImport &#x3D; false): Remote&lt;CCFDatabase&gt; {
-    let worker: Worker;
-    if (directImport) {
-      worker &#x3D; new Worker(&#x27;./data-source.worker&#x27;, { type: &#x27;module&#x27; });
-    } else {
-      const workerUrl &#x3D; this.locator.prepareExternalUrl(&#x27;0.worker.js&#x27;);
-      const workerBlob &#x3D; new Blob([&#x60;importScripts(&#x27;${workerUrl}&#x27;)&#x60;,], {type: &#x27;application/javascript&#x27;});
-      worker &#x3D; new Worker(URL.createObjectURL(workerBlob), { type: &#x27;module&#x27; });
-    }
-    return wrap(worker);
+  getImageViewerData(iri: string): Observable&lt;ImageViewerData&gt; {
+    return from(this.getDB().then((db) &#x3D;&gt; db.getImageViewerData(iri)));
   }
 }
 </code></pre>

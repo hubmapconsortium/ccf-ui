@@ -72,14 +72,12 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { NgxsDataPluginModule } from &#x27;@ngxs-labs/data&#x27;;
-import { NgxsLoggerPluginModule } from &#x27;@ngxs/logger-plugin&#x27;;
 import { NgxsModule } from &#x27;@ngxs/store&#x27;;
 
 import { environment } from &#x27;../../../environments/environment&#x27;;
 import { DataState } from &#x27;./data/data.state&#x27;;
 import { IconRegistryState } from &#x27;./icon-registry/icon-registry.state&#x27;;
 import { OntologyState } from &#x27;./ontology/ontology.state&#x27;;
-import { SceneState } from &#x27;./scene/scene.state&#x27;;
 
 
 /**
@@ -88,8 +86,7 @@ import { SceneState } from &#x27;./scene/scene.state&#x27;;
 export const ROOT_STATES &#x3D; [
   IconRegistryState,
   DataState,
-  OntologyState,
-  SceneState
+  OntologyState
 ];
 
 @NgModule({
@@ -102,11 +99,6 @@ export const ROOT_STATES &#x3D; [
       // Consider setting compatibility and executionStrategy
       // https://www.ngxs.io/advanced/options
     }),
-
-    // Logger plugin must be last!
-    NgxsLoggerPluginModule.forRoot({
-      disabled: environment.production
-    })
   ]
 })
 export class StoreModule { }
