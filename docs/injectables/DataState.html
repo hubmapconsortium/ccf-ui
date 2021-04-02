@@ -1,0 +1,1779 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>DataState</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-eui/src/app/core/store/data/data.state.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Data state repository and service.</p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code>NgxsDataRepository</code>
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_aggregateDataQueryStatus$">_aggregateDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_listDataQueryStatus$">_listDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_sceneDataQueryStatus$">_sceneDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_termOccurencesDataQueryStatus$">_termOccurencesDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_tissueBlockDataQueryStatus$">_tissueBlockDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#aggregateData$">aggregateData$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#aggregateDataQueryStatus$">aggregateDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#filter$">filter$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#listData$">listData$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#listDataQueryStatus$">listDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#ontologyTermsFullData$">ontologyTermsFullData$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#queryStatus$">queryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#sceneData$">sceneData$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#sceneDataQueryStatus$">sceneDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#termOccurencesData$">termOccurencesData$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#termOccurencesDataQueryStatus$">termOccurencesDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tissueBlockData$">tissueBlockData$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tissueBlockDataQueryStatus$">tissueBlockDataQueryStatus$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#aggregateData">aggregateData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#listData">listData</a>
+                            </li>
+                            <li>
+                                <a href="#ngxsOnInit">ngxsOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#sceneData">sceneData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#termOccurencesData">termOccurencesData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#tissueBlockData">tissueBlockData</a>
+                            </li>
+                            <li>
+                                <a href="#updateFilter">updateFilter</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(source: <a href="../injectables/DataSourceService.html">DataSourceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:152</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of data state.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>source</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DataSourceService.html" target="_self" >DataSourceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Data query service.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="aggregateData"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            aggregateData
+                        </b>
+                        <a href="#aggregateData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>aggregateData(filter: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="223"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:223</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries for aggregate data.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter used during query.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/AggregateResult.html" target="_self" >ObservableInput&lt;AggregateResult[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The result of the query.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listData"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            listData
+                        </b>
+                        <a href="#listData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>listData(filter: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:199</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries for list data.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter used during query.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/ListResult.html" target="_self" >ObservableInput&lt;ListResult[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The result of the query.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxsOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngxsOnInit
+                        </b>
+                        <a href="#ngxsOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngxsOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:169</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sceneData"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            sceneData
+                        </b>
+                        <a href="#sceneData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sceneData(filter: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="247"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:247</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries for term occurences data.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter used during query.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>ObservableInput&lt;SpatialSceneNode[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The result of the query.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="termOccurencesData"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            termOccurencesData
+                        </b>
+                        <a href="#termOccurencesData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>termOccurencesData(filter: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="235"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:235</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries for term occurences data.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter used during query.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>ObservableInput&lt;Record&lt;string, number&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The result of the query.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tissueBlockData"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            tissueBlockData
+                        </b>
+                        <a href="#tissueBlockData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>tissueBlockData(filter: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Queries for tissue block data.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter used during query.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/TissueBlockResult.html" target="_self" >ObservableInput&lt;TissueBlockResult[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The result of the query.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateFilter"></a>
+                    <span class="name">
+                        <b>
+                            updateFilter
+                        </b>
+                        <a href="#updateFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateFilter(filter: <a href="../interfaces/Filter.html">Partial<Filter></a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:185</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the current filter.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Partial&lt;Filter&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Changes to be made to the current filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_aggregateDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            _aggregateDataQueryStatus$</b>
+                            <a href="#_aggregateDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject&lt;DataQueryState&gt;(1)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:100</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Implementation subject for aggregateDataQueryStatus$. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_listDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            _listDataQueryStatus$</b>
+                            <a href="#_listDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject&lt;DataQueryState&gt;(1)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:96</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Implementation subject for listDataQueryStatus$. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_sceneDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            _sceneDataQueryStatus$</b>
+                            <a href="#_sceneDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject&lt;DataQueryState&gt;(1)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:104</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Implementation subject for sceneDataQueryStatus$. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_termOccurencesDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            _termOccurencesDataQueryStatus$</b>
+                            <a href="#_termOccurencesDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject&lt;DataQueryState&gt;(1)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:102</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Implementation subject for termOccurencesDataQueryStatus$. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_tissueBlockDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            _tissueBlockDataQueryStatus$</b>
+                            <a href="#_tissueBlockDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject&lt;DataQueryState&gt;(1)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:98</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Implementation subject for tissueBlockDataQueryStatus$. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="aggregateData$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            aggregateData$</b>
+                            <a href="#aggregateData$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.filter$.pipe(queryData(
+    this.aggregateData, sendCompletedTo(this._aggregateDataQueryStatus$)
+  ))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:119</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Latest aggregate query data. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="aggregateDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            aggregateDataQueryStatus$</b>
+                            <a href="#aggregateDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this._aggregateDataQueryStatus$.pipe(distinct())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:136</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current status of queries in the aggregateData$ observable. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filter$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            filter$</b>
+                            <a href="#filter$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;filter&#x27;))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:109</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current filter. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="listData$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            listData$</b>
+                            <a href="#listData$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.filter$.pipe(queryData(
+    this.listData, sendCompletedTo(this._listDataQueryStatus$)
+  ))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:111</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Latest list query data. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="listDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            listDataQueryStatus$</b>
+                            <a href="#listDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this._listDataQueryStatus$.pipe(distinct())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:132</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current status of queries in the listData$ observable. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ontologyTermsFullData$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            ontologyTermsFullData$</b>
+                            <a href="#ontologyTermsFullData$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:106</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Keeping track of all ontology terms there is data for. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="queryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            queryStatus$</b>
+                            <a href="#queryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>combineLatest([
+    this.listDataQueryStatus$,
+    this.tissueBlockDataQueryStatus$,
+    this.aggregateDataQueryStatus$,
+    this.termOccurencesDataQueryStatus$,
+    this.sceneDataQueryStatus$
+  ]).pipe(
+    map(states &#x3D;&gt; allCompleted(states) ? DataQueryState.Completed : DataQueryState.Running),
+    distinct()
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:143</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current status of all queries. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sceneData$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            sceneData$</b>
+                            <a href="#sceneData$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.filter$.pipe(queryData(
+    this.sceneData, sendCompletedTo(this._sceneDataQueryStatus$)
+  ))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:127</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Latest scene query data. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sceneDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            sceneDataQueryStatus$</b>
+                            <a href="#sceneDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this._sceneDataQueryStatus$.pipe(distinct())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:140</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current status of queries in the sceneData$ observable. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="termOccurencesData$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            termOccurencesData$</b>
+                            <a href="#termOccurencesData$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.filter$.pipe(queryData(
+    this.termOccurencesData, sendCompletedTo(this._termOccurencesDataQueryStatus$)
+  ))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:123</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Latest term occurences query data. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="termOccurencesDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            termOccurencesDataQueryStatus$</b>
+                            <a href="#termOccurencesDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this._termOccurencesDataQueryStatus$.pipe(distinct())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:138</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current status of queries in the aggregateData$ observable. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tissueBlockData$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            tissueBlockData$</b>
+                            <a href="#tissueBlockData$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.filter$.pipe(queryData(
+    this.tissueBlockData, sendCompletedTo(this._tissueBlockDataQueryStatus$)
+  ))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:115</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Latest tissue block query data. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tissueBlockDataQueryStatus$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            tissueBlockDataQueryStatus$</b>
+                            <a href="#tissueBlockDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this._tissueBlockDataQueryStatus$.pipe(distinct())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:134</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current status of queries in the tissueBlockData$ observable. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
+import { bind } from &#x27;bind-decorator&#x27;;
+import { AggregateResult, Filter, ListResult, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
+import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from &#x27;rxjs&#x27;;
+import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
+
+import { DataSourceService } from &#x27;../../services/data-source/data-source.service&#x27;;
+
+
+/** Default values for filters. */
+export const DEFAULT_FILTER: Filter &#x3D; {
+  sex: &#x27;Both&#x27;,
+  ageRange: [1, 110],
+  bmiRange: [13, 83],
+  tmc: [],
+  technologies: [],
+  ontologyTerms: [&#x27;http://purl.obolibrary.org/obo/UBERON_0013702&#x27;]
+};
+
+/** Current state of data queries. */
+// eslint-disable-next-line no-shadow
+export enum DataQueryState {
+  /** One or more queries are running. */
+  Running &#x3D; &#x27;running&#x27;,
+  /** All queries have completed. */
+  Completed &#x3D; &#x27;completed&#x27;
+}
+
+/**
+ * Helper for testing that all states in an array are &#x60;DataQueryState.Completed&#x60;.
+ *
+ * @param states The array of states to test.
+ * @returns true if all values in the array is &#x60;Completed&#x60;.
+ */
+function allCompleted(states: DataQueryState[]): boolean {
+  return states.every(state &#x3D;&gt; state &#x3D;&#x3D;&#x3D; DataQueryState.Completed);
+}
+
+/**
+ * Helper creating a function that sends a &#x60;DataQueryState.Completed&#x60; to
+ * a subject whenever it is called.
+ *
+ * @param subject The subject to send completed messagess to.
+ * @returns The function.
+ */
+function sendCompletedTo(subject: Subject&lt;DataQueryState&gt;): () &#x3D;&gt; void {
+  return () &#x3D;&gt; subject.next(DataQueryState.Completed);
+}
+
+/**
+ * Helper operator that combines querying with sharing and replay functionality.
+ *
+ * @param query The data query function.
+ * @param [next] An optional listener on the values emitted by the latest query.
+ * @returns The combined pipe operator function.
+ */
+function queryData&lt;T, O extends ObservableInput&lt;unknown&gt;&gt;(
+  query: (value: T, index: number) &#x3D;&gt; O,
+  next?: (value: ObservedValueOf&lt;O&gt;) &#x3D;&gt; void
+): OperatorFunction&lt;T, ObservedValueOf&lt;O&gt;&gt; {
+  return source &#x3D;&gt; source.pipe(
+    switchMap(query),
+    tap(next),
+    publishReplay(1),
+    refCount()
+  );
+}
+
+
+/** Store data state. */
+export interface DataStateModel {
+  /** Current filter. */
+  filter: Filter;
+}
+
+
+/**
+ * Data state repository and service.
+ */
+@StateRepository()
+@State&lt;DataStateModel&gt;({
+  name: &#x27;data&#x27;,
+  defaults: {
+    filter: DEFAULT_FILTER
+  }
+})
+@Injectable()
+export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implements NgxsOnInit {
+  /** Implementation subject for listDataQueryStatus$. */
+  private readonly _listDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  /** Implementation subject for tissueBlockDataQueryStatus$. */
+  private readonly _tissueBlockDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  /** Implementation subject for aggregateDataQueryStatus$. */
+  private readonly _aggregateDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  /** Implementation subject for termOccurencesDataQueryStatus$. */
+  private readonly _termOccurencesDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  /** Implementation subject for sceneDataQueryStatus$. */
+  private readonly _sceneDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  /** Keeping track of all ontology terms there is data for. */
+  readonly ontologyTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
+
+  /** Current filter. */
+  readonly filter$ &#x3D; this.state$.pipe(pluck(&#x27;filter&#x27;));
+  /** Latest list query data. */
+  readonly listData$ &#x3D; this.filter$.pipe(queryData(
+    this.listData, sendCompletedTo(this._listDataQueryStatus$)
+  ));
+  /** Latest tissue block query data. */
+  readonly tissueBlockData$ &#x3D; this.filter$.pipe(queryData(
+    this.tissueBlockData, sendCompletedTo(this._tissueBlockDataQueryStatus$)
+  ));
+  /** Latest aggregate query data. */
+  readonly aggregateData$ &#x3D; this.filter$.pipe(queryData(
+    this.aggregateData, sendCompletedTo(this._aggregateDataQueryStatus$)
+  ));
+  /** Latest term occurences query data. */
+  readonly termOccurencesData$ &#x3D; this.filter$.pipe(queryData(
+    this.termOccurencesData, sendCompletedTo(this._termOccurencesDataQueryStatus$)
+  ));
+  /** Latest scene query data. */
+  readonly sceneData$ &#x3D; this.filter$.pipe(queryData(
+    this.sceneData, sendCompletedTo(this._sceneDataQueryStatus$)
+  ));
+
+  /** Current status of queries in the listData$ observable. */
+  readonly listDataQueryStatus$ &#x3D; this._listDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the tissueBlockData$ observable. */
+  readonly tissueBlockDataQueryStatus$ &#x3D; this._tissueBlockDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the aggregateData$ observable. */
+  readonly aggregateDataQueryStatus$ &#x3D; this._aggregateDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the aggregateData$ observable. */
+  readonly termOccurencesDataQueryStatus$ &#x3D; this._termOccurencesDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the sceneData$ observable. */
+  readonly sceneDataQueryStatus$ &#x3D; this._sceneDataQueryStatus$.pipe(distinct());
+
+  /** Current status of all queries. */
+  readonly queryStatus$ &#x3D; combineLatest([
+    this.listDataQueryStatus$,
+    this.tissueBlockDataQueryStatus$,
+    this.aggregateDataQueryStatus$,
+    this.termOccurencesDataQueryStatus$,
+    this.sceneDataQueryStatus$
+  ]).pipe(
+    map(states &#x3D;&gt; allCompleted(states) ? DataQueryState.Completed : DataQueryState.Running),
+    distinct()
+  );
+
+  /**
+   * Creates an instance of data state.
+   *
+   * @param source Data query service.
+   */
+  constructor(private readonly source: DataSourceService) {
+    super();
+    // Start everything in the completed state
+    this._listDataQueryStatus$.next(DataQueryState.Completed);
+    this._tissueBlockDataQueryStatus$.next(DataQueryState.Completed);
+    this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
+    this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
+    this._sceneDataQueryStatus$.next(DataQueryState.Completed);
+  }
+
+  ngxsOnInit(): void {
+    const { ontologyTermsFullData$, termOccurencesData$, source, snapshot: { filter } } &#x3D; this;
+    if (filter &#x3D;&#x3D;&#x3D; DEFAULT_FILTER) {
+      // Common case - Reuse the result of the regular query
+      termOccurencesData$.pipe(take(1)).subscribe(ontologyTermsFullData$);
+    } else {
+      source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
+    }
+  }
+
+  /**
+   * Updates the current filter.
+   *
+   * @param filter Changes to be made to the current filter.
+   */
+  @DataAction()
+  updateFilter(filter: Partial&lt;Filter&gt;): void {
+    this.patchState({
+      // Might need to do a deep compare of current and new filter
+      filter: Object.assign({}, this.getState().filter, filter)
+    });
+  }
+
+  /**
+   * Queries for list data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+  @bind
+  private listData(filter: Filter): ObservableInput&lt;ListResult[]&gt; {
+    this._listDataQueryStatus$.next(DataQueryState.Running);
+    return this.source.getListResults(filter);
+  }
+
+  /**
+   * Queries for tissue block data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+   @bind
+   private tissueBlockData(filter: Filter): ObservableInput&lt;TissueBlockResult[]&gt; {
+     this._tissueBlockDataQueryStatus$.next(DataQueryState.Running);
+     return this.source.getTissueBlockResults(filter);
+   }
+
+  /**
+   * Queries for aggregate data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+  @bind
+  private aggregateData(filter: Filter): ObservableInput&lt;AggregateResult[]&gt; {
+    this._aggregateDataQueryStatus$.next(DataQueryState.Running);
+    return this.source.getAggregateResults(filter);
+  }
+
+  /**
+   * Queries for term occurences data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+  @bind
+  private termOccurencesData(filter: Filter): ObservableInput&lt;Record&lt;string, number&gt;&gt; {
+    this._termOccurencesDataQueryStatus$.next(DataQueryState.Running);
+    return this.source.getOntologyTermOccurences(filter);
+  }
+
+  /**
+   * Queries for term occurences data.
+   *
+   * @param filter The filter used during query.
+   * @returns The result of the query.
+   */
+   @bind
+   private sceneData(filter: Filter): ObservableInput&lt;SpatialSceneNode[]&gt; {
+     this._sceneDataQueryStatus$.next(DataQueryState.Running);
+     return this.source.getScene(filter);
+   }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'DataState.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

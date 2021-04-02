@@ -1,0 +1,2272 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>BodyUI</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-body-ui/src/lib/body-ui.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A convenience wrapper class for the CCF Body UI</p>
+
+            </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#bodyUILayer">bodyUILayer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#cursor">cursor</a>
+                            </li>
+                            <li>
+                                <a href="#deck">deck</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#lastHovered">lastHovered</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeClick$">nodeClick$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeClickSubject">nodeClickSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeDrag$">nodeDrag$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeDragEnd$">nodeDragEnd$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeDragEndSubject">nodeDragEndSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeDragStart$">nodeDragStart$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeDragStartSubject">nodeDragStartSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeDragSubject">nodeDragSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeHoverStart$">nodeHoverStart$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeHoverStartSubject">nodeHoverStartSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeHoverStop$">nodeHoverStop$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodeHoverStopSubject">nodeHoverStopSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#sceneRotation$">sceneRotation$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#sceneRotationSubject">sceneRotationSubject</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_dragEvent">_dragEvent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onClick">_onClick</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onDrag">_onDrag</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onDragEnd">_onDragEnd</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onDragStart">_onDragStart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onHover">_onHover</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onViewStateChange">_onViewStateChange</a>
+                            </li>
+                            <li>
+                                <a href="#debugSceneNodeProcessing">debugSceneNodeProcessing</a>
+                            </li>
+                            <li>
+                                <a href="#finalize">finalize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#initialize">initialize</a>
+                            </li>
+                            <li>
+                                <a href="#setInteractive">setInteractive</a>
+                            </li>
+                            <li>
+                                <a href="#setRotation">setRotation</a>
+                            </li>
+                            <li>
+                                <a href="#setScene">setScene</a>
+                            </li>
+                            <li>
+                                <a href="#setZoom">setZoom</a>
+                            </li>
+                            <li>
+                                <a href="#zoomTo">zoomTo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(deckProps: <a href="../interfaces/BodyUIProps.html">Partial<BodyUIProps></a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:74</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>deckProps</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/BodyUIProps.html" target="_self" >Partial&lt;BodyUIProps&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="bodyUILayer"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            bodyUILayer</b>
+                            <a href="#bodyUILayer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BodyUILayer({})</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:55</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cursor"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Optional</span>
+                            cursor</b>
+                            <a href="#cursor"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:73</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="deck"></a>
+                        <span class="name">
+                            <b>
+                            deck</b>
+                            <a href="#deck"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Deck</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lastHovered"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Optional</span>
+                            lastHovered</b>
+                            <a href="#lastHovered"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >SpatialSceneNode</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:74</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeClick$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            nodeClick$</b>
+                            <a href="#nodeClick$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.nodeClickSubject.pipe(share())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:65</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeClickSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            nodeClickSubject</b>
+                            <a href="#nodeClickSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;NodeClickEvent&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:57</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeDrag$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            nodeDrag$</b>
+                            <a href="#nodeDrag$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.nodeDragSubject.pipe(share())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:70</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeDragEnd$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            nodeDragEnd$</b>
+                            <a href="#nodeDragEnd$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.nodeDragEndSubject.pipe(share())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:71</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeDragEndSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            nodeDragEndSubject</b>
+                            <a href="#nodeDragEndSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;NodeDragEvent&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:63</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeDragStart$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            nodeDragStart$</b>
+                            <a href="#nodeDragStart$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.nodeDragStartSubject.pipe(share())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:69</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeDragStartSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            nodeDragStartSubject</b>
+                            <a href="#nodeDragStartSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;NodeDragEvent&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:61</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeDragSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            nodeDragSubject</b>
+                            <a href="#nodeDragSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;NodeDragEvent&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:62</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeHoverStart$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            nodeHoverStart$</b>
+                            <a href="#nodeHoverStart$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.nodeHoverStartSubject.pipe(share())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:66</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeHoverStartSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            nodeHoverStartSubject</b>
+                            <a href="#nodeHoverStartSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;SpatialSceneNode&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:58</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeHoverStop$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            nodeHoverStop$</b>
+                            <a href="#nodeHoverStop$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.nodeHoverStopSubject.pipe(share())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:67</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeHoverStopSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            nodeHoverStopSubject</b>
+                            <a href="#nodeHoverStopSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;SpatialSceneNode&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:59</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sceneRotation$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            sceneRotation$</b>
+                            <a href="#sceneRotation$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.sceneRotationSubject.pipe(share())</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:68</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sceneRotationSubject"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            sceneRotationSubject</b>
+                            <a href="#sceneRotationSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject&lt;number&gt;(0)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:60</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_dragEvent"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _dragEvent
+                        </b>
+                        <a href="#_dragEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_dragEvent(info: PickInfo<SpatialSceneNode>, e: MouseEvent, subject: <a href="../undefineds/NodeDragEvent.html">Subject<NodeDragEvent></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="263"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:263</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>info</td>
+                                    <td>
+                                            <code>PickInfo&lt;SpatialSceneNode&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                            <code>MouseEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>subject</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#NodeDragEvent" target="_self" >Subject&lt;NodeDragEvent&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onClick"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _onClick
+                        </b>
+                        <a href="#_onClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onClick(info: PickInfo<SpatialSceneNode>, e: literal type)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="229"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:229</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>info</td>
+                                    <td>
+                                            <code>PickInfo&lt;SpatialSceneNode&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onDrag"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _onDrag
+                        </b>
+                        <a href="#_onDrag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onDrag(info: PickInfo<SpatialSceneNode>, e: MouseEvent)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="254"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:254</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>info</td>
+                                    <td>
+                                            <code>PickInfo&lt;SpatialSceneNode&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                            <code>MouseEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onDragEnd"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _onDragEnd
+                        </b>
+                        <a href="#_onDragEnd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onDragEnd(info: PickInfo<SpatialSceneNode>, e: MouseEvent)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="259"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:259</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>info</td>
+                                    <td>
+                                            <code>PickInfo&lt;SpatialSceneNode&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                            <code>MouseEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onDragStart"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _onDragStart
+                        </b>
+                        <a href="#_onDragStart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onDragStart(info: PickInfo<SpatialSceneNode>, e: MouseEvent)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="249"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:249</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>info</td>
+                                    <td>
+                                            <code>PickInfo&lt;SpatialSceneNode&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                            <code>MouseEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onHover"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _onHover
+                        </b>
+                        <a href="#_onHover"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onHover(e: literal type)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onViewStateChange"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _onViewStateChange
+                        </b>
+                        <a href="#_onViewStateChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onViewStateChange(event: literal type)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="236"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:236</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="debugSceneNodeProcessing"></a>
+                    <span class="name">
+                        <b>
+                            debugSceneNodeProcessing
+                        </b>
+                        <a href="#debugSceneNodeProcessing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>debugSceneNodeProcessing(data: SpatialSceneNode[], zoomOpacity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                            <code>SpatialSceneNode[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>zoomOpacity</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finalize"></a>
+                    <span class="name">
+                        <b>
+                            finalize
+                        </b>
+                        <a href="#finalize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>finalize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="126"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:126</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initialize"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            initialize
+                        </b>
+                        <a href="#initialize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initialize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:120</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setInteractive"></a>
+                    <span class="name">
+                        <b>
+                            setInteractive
+                        </b>
+                        <a href="#setInteractive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setInteractive(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="204"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:204</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setRotation"></a>
+                    <span class="name">
+                        <b>
+                            setRotation
+                        </b>
+                        <a href="#setRotation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setRotation(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="186"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:186</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setScene"></a>
+                    <span class="name">
+                        <b>
+                            setScene
+                        </b>
+                        <a href="#setScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setScene(data: SpatialSceneNode[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:130</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                            <code>SpatialSceneNode[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setZoom"></a>
+                    <span class="name">
+                        <b>
+                            setZoom
+                        </b>
+                        <a href="#setZoom"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setZoom(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:195</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="zoomTo"></a>
+                    <span class="name">
+                        <b>
+                            zoomTo
+                        </b>
+                        <a href="#zoomTo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>zoomTo(node: <a href="../interfaces/SpatialSceneNode.html">SpatialSceneNode</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="173"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui.ts:173</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >SpatialSceneNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AmbientLight, Deck, LightingEffect, OrbitView } from &#x27;@deck.gl/core&#x27;;
+import { ViewStateProps } from &#x27;@deck.gl/core/lib/deck&#x27;;
+import { Matrix4 } from &#x27;@math.gl/core&#x27;;
+import bind from &#x27;bind-decorator&#x27;;
+import { BehaviorSubject, Subject } from &#x27;rxjs&#x27;;
+import { share } from &#x27;rxjs/operators&#x27;;
+
+import { BodyUILayer } from &#x27;./body-ui-layer&#x27;;
+import { SpatialSceneNode } from &#x27;./shared/spatial-scene-node&#x27;;
+import { processSceneNodes } from &#x27;./util/process-scene-nodes&#x27;;
+
+
+interface BodyUIViewStateProps extends ViewStateProps {
+  orbitAxis?: string;
+  target?: Matrix4 | number[];
+  zoom: number;
+  rotationOrbit: number;
+}
+
+export interface BodyUIProps {
+  id: string;
+  canvas: string | HTMLCanvasElement;
+  parent: HTMLElement;
+  debugSceneNodeProcessing?: boolean;
+  target: Matrix4 | number[];
+  interactive: boolean;
+  rotation: number;
+  minRotationX: number;
+  maxRotationX: number;
+  zoom: number;
+  legacyLighting?: boolean;
+}
+
+export interface PickInfo&lt;D&gt; {
+  layer: unknown;
+  index: number;
+  object: D;
+  x: number;
+  y: number;
+  coordinate?: unknown;
+  picked?: boolean;
+}
+
+export type NodeDragEvent &#x3D; {node: SpatialSceneNode; info: PickInfo&lt;SpatialSceneNode&gt;; e: MouseEvent};
+
+export type NodeClickEvent &#x3D; {node: SpatialSceneNode; ctrlClick: boolean};
+
+/**
+ * A convenience wrapper class for the CCF Body UI
+ */
+export class BodyUI {
+  deck: Deck;
+  private readonly bodyUILayer &#x3D; new BodyUILayer({});
+
+  private readonly nodeClickSubject &#x3D; new Subject&lt;NodeClickEvent&gt;();
+  private readonly nodeHoverStartSubject &#x3D; new Subject&lt;SpatialSceneNode&gt;();
+  private readonly nodeHoverStopSubject &#x3D; new Subject&lt;SpatialSceneNode&gt;();
+  private readonly sceneRotationSubject &#x3D; new BehaviorSubject&lt;number&gt;(0);
+  private readonly nodeDragStartSubject &#x3D; new Subject&lt;NodeDragEvent&gt;();
+  private readonly nodeDragSubject &#x3D; new Subject&lt;NodeDragEvent&gt;();
+  private readonly nodeDragEndSubject &#x3D; new Subject&lt;NodeDragEvent&gt;();
+
+  readonly nodeClick$ &#x3D; this.nodeClickSubject.pipe(share());
+  readonly nodeHoverStart$ &#x3D; this.nodeHoverStartSubject.pipe(share());
+  readonly nodeHoverStop$ &#x3D; this.nodeHoverStopSubject.pipe(share());
+  readonly sceneRotation$ &#x3D; this.sceneRotationSubject.pipe(share());
+  readonly nodeDragStart$ &#x3D; this.nodeDragStartSubject.pipe(share());
+  readonly nodeDrag$ &#x3D; this.nodeDragSubject.pipe(share());
+  readonly nodeDragEnd$ &#x3D; this.nodeDragEndSubject.pipe(share());
+
+  private cursor?: string;
+  private lastHovered?: SpatialSceneNode;
+
+  constructor(private deckProps: Partial&lt;BodyUIProps&gt;) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const props: any &#x3D; {
+      ...deckProps,
+      views: [ new OrbitView({}) ],
+      controller: deckProps.interactive !&#x3D;&#x3D; undefined ? deckProps.interactive : true,
+      layers: [ this.bodyUILayer ],
+      onHover: this._onHover,
+      onClick: this._onClick,
+      onViewStateChange: this._onViewStateChange,
+      onDragStart: this._onDragStart,
+      onDrag: this._onDrag,
+      onDragEnd: this._onDragEnd,
+      getCursor: (e: {isDragging: boolean}) &#x3D;&gt; this.cursor || (e.isDragging ? &#x27;grabbing&#x27; : &#x27;grab&#x27;)
+    };
+    if (deckProps.legacyLighting) {
+      // eslint-disable-next-line
+      props.effects &#x3D; [
+        new LightingEffect({
+          ambientLight: new AmbientLight({
+            color: [255, 255, 255],
+            intensity: 10.0
+          })
+        })
+      ];
+    }
+    // eslint-disable-next-line
+    this.deck &#x3D; new Deck(props);
+    this.deck.setProps({
+      viewState: {
+        orbitAxis: &#x27;Y&#x27;,
+        minRotationX: deckProps.minRotationX || -15,
+        maxRotationX: deckProps.maxRotationX || 15,
+        target: deckProps.target || [0.5, 0.5, 0],
+        rotationX: 0,
+        rotationOrbit: deckProps.rotation || 0,
+        zoom: deckProps.zoom || 9.5
+      } as BodyUIViewStateProps
+    });
+    if (deckProps.rotation) {
+      this.sceneRotationSubject.next(deckProps.rotation);
+    }
+  }
+
+  async initialize(): Promise&lt;void&gt; {
+    while (!this.bodyUILayer.state) {
+      await new Promise(r &#x3D;&gt; setTimeout(r, 200));
+    }
+  }
+
+  finalize(): void {
+    this.deck.finalize();
+  }
+
+  setScene(data: SpatialSceneNode[]): void {
+    if (data?.length &gt; 0) {
+      let zoomOpacity &#x3D; (this.bodyUILayer.state as {zoomOpacity: number}).zoomOpacity;
+      let didZoom &#x3D; false;
+      for (const node of data) {
+        if (node.zoomToOnLoad) {
+          this.zoomTo(node);
+          didZoom &#x3D; true;
+        }
+      }
+      zoomOpacity &#x3D; didZoom ? 0.05 : zoomOpacity;
+      if (!this.deckProps.debugSceneNodeProcessing) {
+        this.bodyUILayer.setState({data, zoomOpacity});
+      } else {
+        this.debugSceneNodeProcessing(data, zoomOpacity);
+      }
+    }
+  }
+
+  debugSceneNodeProcessing(data: SpatialSceneNode[], zoomOpacity: number): void {
+    // const gltfUrl &#x3D; &#x27;https://hubmapconsortium.github.io/ccf-3d-reference-object-library/VH_Male/United/VHM_United_Color.glb&#x27;;
+    const gltfUrl &#x3D; &#x27;https://hubmapconsortium.github.io/ccf-3d-reference-object-library/VH_Female/United/VHF_United_Color.glb&#x27;;
+    // const gltfUrl &#x3D; &#x27;https://hubmapconsortium.github.io/hubmap-ontology/objects/VHF_United_v01_060420.glb&#x27;;
+    const gltfTransform &#x3D; new Matrix4([0.076,0,0,0,0,0.076,1.6875389974302382e-17,0,0,-1.6875389974302382e-17,0.076,0,0.49,0.034,0.11,1]);
+    processSceneNodes(gltfUrl, gltfTransform, &#x27;VHF_Kidney_L_Low1&#x27;).then((results) &#x3D;&gt; {
+        console.log(&#x27;results&#x27;, results);
+        console.log(&#x27;data&#x27;, data);
+        // data &#x3D; Object.values(results);
+        data &#x3D; data.concat(Object.values(results));
+        data.push({
+          &#x27;@id&#x27;: &#x27;TEST&#x27;,
+          &#x27;@type&#x27;: &#x27;TEST&#x27;,
+          scenegraph: gltfUrl,
+          scenegraphNode: &#x27;VHF_Kidney_R_Low&#x27;,
+          transformMatrix: gltfTransform,
+          color: [255, 255, 255, 200],
+          _lighting: &#x27;pbr&#x27;,
+          zoomBasedOpacity: false
+        });
+        this.bodyUILayer.setState({data, zoomOpacity});
+    });
+  }
+
+  zoomTo(node: SpatialSceneNode): void {
+    const matrix &#x3D; new Matrix4(node.transformMatrix);
+    this.deck.setProps({
+      viewState: {
+        ...this.deck.props.viewState,
+        target: matrix.getTranslation(),
+        rotationX: 0,
+        rotationOrbit: 0,
+        zoom: 11.5,
+      } as BodyUIViewStateProps
+    });
+  }
+
+  setRotation(value: number): void {
+    this.deck.setProps({
+      viewState: {
+        ...this.deck.props.viewState,
+        rotationOrbit: value
+      } as BodyUIViewStateProps
+    });
+  }
+
+  setZoom(value: number): void {
+    this.deck.setProps({
+      viewState: {
+        ...this.deck.props.viewState,
+        zoom: value
+      } as BodyUIViewStateProps
+    });
+  }
+
+  setInteractive(value: boolean): void {
+    this.deck.setProps({
+      controller: value
+    });
+  }
+
+  @bind
+  private _onHover(e: {picked: boolean; object: SpatialSceneNode}): void {
+    const { lastHovered } &#x3D; this;
+    this.cursor &#x3D; e.picked ? &#x27;pointer&#x27; : undefined;
+    if (e.picked &amp;&amp; e.object &amp;&amp; e.object[&#x27;@id&#x27;]) {
+      if (lastHovered !&#x3D;&#x3D; e.object) {
+        if (lastHovered) {
+          this.nodeHoverStopSubject.next(lastHovered);
+        }
+        this.lastHovered &#x3D; e.object;
+        this.nodeHoverStartSubject.next(e.object);
+      }
+    } else if (lastHovered) {
+      this.nodeHoverStopSubject.next(lastHovered);
+      this.lastHovered &#x3D; undefined;
+    }
+  }
+
+  @bind
+  private _onClick(info: PickInfo&lt;SpatialSceneNode&gt;, e: { srcEvent: { ctrlKey: boolean } }): void {
+    if (info.picked &amp;&amp; info.object &amp;&amp; info.object[&#x27;@id&#x27;]) {
+      this.nodeClickSubject.next({node: info.object, ctrlClick: e?.srcEvent?.ctrlKey ?? undefined});
+    }
+  }
+
+  @bind
+  private _onViewStateChange(event: { interactionState: { isZooming: boolean }; viewState: BodyUIViewStateProps }): void {
+    if (event.interactionState?.isZooming) {
+      const currentState &#x3D; this.bodyUILayer.state as {zoomOpacity: number; data: unknown};
+      const zoomOpacity &#x3D; Math.min(Math.max(1 - (event.viewState.zoom - 8.9) / 2, 0.05), 1.0);
+      if (currentState.zoomOpacity !&#x3D;&#x3D; zoomOpacity) {
+        this.bodyUILayer.setState({data: currentState.data, zoomOpacity});
+      }
+    }
+    this.deck.setProps({viewState: { ...event.viewState }});
+    this.sceneRotationSubject.next(event.viewState.rotationOrbit);
+  }
+
+  @bind
+  private _onDragStart(info: PickInfo&lt;SpatialSceneNode&gt;, e: MouseEvent): void {
+    this._dragEvent(info, e, this.nodeDragStartSubject);
+  }
+
+  @bind
+  private _onDrag(info: PickInfo&lt;SpatialSceneNode&gt;, e: MouseEvent): void {
+    this._dragEvent(info, e, this.nodeDragSubject);
+  }
+
+  @bind
+  private _onDragEnd(info: PickInfo&lt;SpatialSceneNode&gt;, e: MouseEvent): void {
+    this._dragEvent(info, e, this.nodeDragEndSubject);
+  }
+
+  private _dragEvent(info: PickInfo&lt;SpatialSceneNode&gt;, e: MouseEvent, subject: Subject&lt;NodeDragEvent&gt;): void {
+    if (info.object &amp;&amp; info.object[&#x27;@id&#x27;]) {
+      subject.next({node: info.object, info, e});
+    }
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'BodyUI.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

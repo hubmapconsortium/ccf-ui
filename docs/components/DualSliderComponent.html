@@ -1,0 +1,1871 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>DualSliderComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component containing a button that when clicked will show a slider popover.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-dual-slider</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./dual-slider.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dual-slider.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#contentsVisible">contentsVisible</a>
+                            </li>
+                            <li>
+                                <a href="#highValue">highValue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#isSliderInitialized">isSliderInitialized</a>
+                            </li>
+                            <li>
+                                <a href="#isSliderOpen">isSliderOpen</a>
+                            </li>
+                            <li>
+                                <a href="#lowValue">lowValue</a>
+                            </li>
+                            <li>
+                                <a href="#options">options</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#overlayRef">overlayRef</a>
+                            </li>
+                            <li>
+                                <a href="#popoverElement">popoverElement</a>
+                            </li>
+                            <li>
+                                <a href="#popoverPortal">popoverPortal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#initializeSliderPopover">initializeSliderPopover</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#onKeyHigh">onKeyHigh</a>
+                            </li>
+                            <li>
+                                <a href="#onKeyLow">onKeyLow</a>
+                            </li>
+                            <li>
+                                <a href="#optionsChanged">optionsChanged</a>
+                            </li>
+                            <li>
+                                <a href="#sliderValueChanged">sliderValueChanged</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSliderPopover">toggleSliderPopover</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#label">label</a>
+                            </li>
+                            <li>
+                                <a href="#selection">selection</a>
+                            </li>
+                            <li>
+                                <a href="#valueRange">valueRange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectionChange">selectionChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#document:click">document:click</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#rangeLabel">rangeLabel</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(overlay: Overlay, element: ElementRef<HTMLElement>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:103</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of dual slider component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>overlay</td>
+                                                  
+                                                        <td>
+                                                                    <code>Overlay</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The overlay service used to create the slider popover.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>element</td>
+                                                  
+                                                        <td>
+                                                                    <code>ElementRef&lt;HTMLElement&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>A reference to the component&#39;s element. Used during event handling.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="label"></a>
+                        <b>label</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:42</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Which criteria the slider is selecting for.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selection"></a>
+                        <b>selection</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:52</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current range selected.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="valueRange"></a>
+                        <b>valueRange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:47</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The lower and upper range of the slider.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectionChange"></a>
+                        <b>selectionChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:57</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits the new selection range when a change is made to it.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="document:click"></a>
+                    <span class="name">
+                        <b>
+                            document:click
+                        </b>
+                        <a href="#document:click"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event.target' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>document:click(target: HTMLElement)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Listens to document click, mouse movement, and touch event.
+Closes the slider popover when such an event occurs outside the button or popover.</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializeSliderPopover"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            initializeSliderPopover
+                        </b>
+                        <a href="#initializeSliderPopover"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initializeSliderPopover()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="217"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:217</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates and initializes the slider popover.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <b>
+                            ngOnChanges
+                        </b>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates slider options (with optionsChanged) and selection when changes detected.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Changes that have been made to the slider properties.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Angular&#39;s OnDestroy hook.
+Cleans up the overlay.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onKeyHigh"></a>
+                    <span class="name">
+                        <b>
+                            onKeyHigh
+                        </b>
+                        <a href="#onKeyHigh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onKeyHigh(event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="248"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:248</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the slider&#39;s high pointer value when Enter key is pressed.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>KeyboardEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Event passed into the component</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onKeyLow"></a>
+                    <span class="name">
+                        <b>
+                            onKeyLow
+                        </b>
+                        <a href="#onKeyLow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onKeyLow(event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="231"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:231</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the slider&#39;s low pointer value when Enter key is pressed.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>KeyboardEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Event passed into the component</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="optionsChanged"></a>
+                    <span class="name">
+                        <b>
+                            optionsChanged
+                        </b>
+                        <a href="#optionsChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>optionsChanged()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:142</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the slider options, and the slider values if necessary.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sliderValueChanged"></a>
+                    <span class="name">
+                        <b>
+                            sliderValueChanged
+                        </b>
+                        <a href="#sliderValueChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sliderValueChanged()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="207"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:207</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handler for updates to the slider values.
+Emits the updated selection value array.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSliderPopover"></a>
+                    <span class="name">
+                        <b>
+                            toggleSliderPopover
+                        </b>
+                        <a href="#toggleSliderPopover"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSliderPopover()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="190"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:190</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggles the visibility of the slider popover.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="contentsVisible"></a>
+                        <span class="name">
+                            <b>
+                            contentsVisible</b>
+                            <a href="#contentsVisible"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;invisible&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:82</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Determines if slider contents are visible (used for fade-in effect).</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="highValue"></a>
+                        <span class="name">
+                            <b>
+                            highValue</b>
+                            <a href="#highValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:77</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Value bound to the slider&#39;s high pointer value.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isSliderInitialized"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            isSliderInitialized</b>
+                            <a href="#isSliderInitialized"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:103</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Determines whether slider popover has been created and initialized.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isSliderOpen"></a>
+                        <span class="name">
+                            <b>
+                            isSliderOpen</b>
+                            <a href="#isSliderOpen"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:62</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Determines whether slider popover is shown.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lowValue"></a>
+                        <span class="name">
+                            <b>
+                            lowValue</b>
+                            <a href="#lowValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:72</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Value bound to the slider&#39;s low pointer value.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="options"></a>
+                        <span class="name">
+                            <b>
+                            options</b>
+                            <a href="#options"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Options</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:67</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Slider options.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="overlayRef"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            overlayRef</b>
+                            <a href="#overlayRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>OverlayRef</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:98</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Reference to the slider popover overlay.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="popoverElement"></a>
+                        <span class="name">
+                            <b>
+                            popoverElement</b>
+                            <a href="#popoverElement"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;popover&#x27;, {read: ElementRef, static: false})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Reference to the popover element.
+This is undefined until the slider popover is initialized.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="popoverPortal"></a>
+                        <span class="name">
+                            <b>
+                            popoverPortal</b>
+                            <a href="#popoverPortal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>CdkPortal</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(CdkPortal, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Reference to the template for the slider popover.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rangeLabel"></a>
+                        <span class="name"><b>rangeLabel</b><a href="#rangeLabel"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>rangeLabel()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts:87</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Computes the current age range for display in the button.</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConnectedPosition, Overlay, OverlayRef } from &#x27;@angular/cdk/overlay&#x27;;
+import { CdkPortal } from &#x27;@angular/cdk/portal&#x27;;
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { Options } from &#x27;ng5-slider&#x27;;
+
+
+/**
+ * Component containing a button that when clicked will show a slider popover.
+ */
+@Component({
+  selector: &#x27;ccf-dual-slider&#x27;,
+  templateUrl: &#x27;./dual-slider.component.html&#x27;,
+  styleUrls: [&#x27;./dual-slider.component.scss&#x27;]
+})
+export class DualSliderComponent implements OnDestroy, OnChanges {
+  /**
+   * Reference to the template for the slider popover.
+   */
+  @ViewChild(CdkPortal, { static: true }) popoverPortal: CdkPortal;
+
+  /**
+   * Reference to the popover element.
+   * This is undefined until the slider popover is initialized.
+   */
+  @ViewChild(&#x27;popover&#x27;, { read: ElementRef, static: false }) popoverElement: ElementRef&lt;HTMLElement&gt;;
+
+  /**
+   * Which criteria the slider is selecting for.
+   */
+  @Input() label: string;
+
+  /**
+   * The lower and upper range of the slider.
+   */
+  @Input() valueRange: number[];
+
+  /**
+   * The current range selected.
+   */
+  @Input() selection: number[];
+
+  /**
+   * Emits the new selection range when a change is made to it.
+   */
+  @Output() selectionChange &#x3D; new EventEmitter&lt;number[]&gt;();
+
+  /**
+   * Determines whether slider popover is shown.
+   */
+  isSliderOpen &#x3D; false;
+
+  /**
+   * Slider options.
+   */
+  options: Options;
+
+  /**
+   * Value bound to the slider&#x27;s low pointer value.
+   */
+  lowValue: number;
+
+  /**
+   * Value bound to the slider&#x27;s high pointer value.
+   */
+  highValue: number;
+
+  /**
+   * Determines if slider contents are visible (used for fade-in effect).
+   */
+  contentsVisible &#x3D; &#x27;invisible&#x27;;
+
+  /**
+   * Computes the current age range for display in the button.
+   */
+  get rangeLabel(): string {
+    const { lowValue, highValue } &#x3D; this;
+    if (lowValue &#x3D;&#x3D;&#x3D; highValue) {
+      return &#x60;${lowValue}&#x60;;
+    }
+    return &#x60;${lowValue}-${highValue}&#x60;;
+  }
+
+  /**
+   * Reference to the slider popover overlay.
+   */
+  private overlayRef: OverlayRef;
+
+  /**
+   * Determines whether slider popover has been created and initialized.
+   */
+  private isSliderInitialized &#x3D; false;
+
+  /**
+   * Creates an instance of dual slider component.
+   *
+   * @param overlay The overlay service used to create the slider popover.
+   * @param element A reference to the component&#x27;s element. Used during event handling.
+   */
+  constructor(
+    overlay: Overlay,
+    private element: ElementRef&lt;HTMLElement&gt;,
+  ) {
+    const position: ConnectedPosition &#x3D; { originX: &#x27;start&#x27;, originY: &#x27;bottom&#x27;, overlayX: &#x27;start&#x27;, overlayY: &#x27;top&#x27; };
+    const positionStrategy &#x3D; overlay.position().flexibleConnectedTo(element).withPositions([position]);
+    this.overlayRef &#x3D; overlay.create({
+      panelClass: &#x27;slider-pane&#x27;,
+      positionStrategy
+    });
+  }
+
+  /**
+   * Updates slider options (with optionsChanged) and selection when changes detected.
+   *
+   * @param changes Changes that have been made to the slider properties.
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.valueRange) {
+      this.optionsChanged();
+    }
+    if (changes.selection) {
+      // Detect when selection is changed and update low/high value.
+      this.lowValue &#x3D; Math.min(...this.selection);
+      this.highValue &#x3D; Math.max(...this.selection);
+    }
+  }
+
+  /**
+   * Updates the slider options, and the slider values if necessary.
+   */
+  optionsChanged(): void {
+    this.options &#x3D; {
+      floor: this.valueRange ? this.valueRange[0] : 0,
+      ceil: this.valueRange ? this.valueRange[1] : 0,
+      step: 1,
+      hideLimitLabels: true,
+      hidePointerLabels: true
+    };
+    this.lowValue &#x3D; this.options.floor ?? 0;
+    this.highValue &#x3D; this.options.ceil ?? 0;
+  }
+
+  /**
+   * Angular&#x27;s OnDestroy hook.
+   * Cleans up the overlay.
+   */
+  ngOnDestroy(): void {
+    this.overlayRef.dispose();
+  }
+
+  /**
+   * Listens to document click, mouse movement, and touch event.
+   * Closes the slider popover when such an event occurs outside the button or popover.
+   *
+   * @param target The element on which the event was fired.
+   */
+  @HostListener(&#x27;document:click&#x27;, [&#x27;$event.target&#x27;]) // eslint-disable-line
+  // eslint-disable-line
+  @HostListener(&#x27;document:touchstart&#x27;, [&#x27;$event.target&#x27;]) // eslint-disable-line
+  closeSliderPopover(target: HTMLElement): void {
+    const { element, isSliderOpen, popoverElement } &#x3D; this;
+    if (!isSliderOpen) {
+      return;
+    } else if (element.nativeElement.contains(target)) {
+      return;
+    } else if (popoverElement &amp;&amp; popoverElement.nativeElement.contains(target)) {
+      return;
+    }
+
+    this.overlayRef.detach();
+    this.isSliderInitialized &#x3D; false;
+    this.isSliderOpen &#x3D; false;
+    this.contentsVisible &#x3D; &#x27;invisible&#x27;;
+  }
+
+  /**
+   * Toggles the visibility of the slider popover.
+   */
+  toggleSliderPopover(): void {
+    const { isSliderOpen, isSliderInitialized } &#x3D; this;
+    if (isSliderInitialized) {
+      this.overlayRef.detach();
+      this.isSliderInitialized &#x3D; false;
+    } else if (!isSliderInitialized &amp;&amp; !isSliderOpen) {
+      this.initializeSliderPopover();
+    }
+
+    this.contentsVisible &#x3D; this.contentsVisible &#x3D;&#x3D;&#x3D; &#x27;visible&#x27; ? &#x27;invisible&#x27; : &#x27;visible&#x27;;
+    this.isSliderOpen &#x3D; !isSliderOpen;
+  }
+
+  /**
+   * Handler for updates to the slider values.
+   * Emits the updated selection value array.
+   */
+  sliderValueChanged(): void {
+    const { lowValue, highValue } &#x3D; this;
+
+    this.selection &#x3D; [lowValue, highValue];
+    this.selectionChange.emit(this.selection);
+  }
+
+  /**
+   * Creates and initializes the slider popover.
+   */
+  private initializeSliderPopover(): void {
+    const { overlayRef, popoverPortal } &#x3D; this;
+
+    overlayRef.attach(popoverPortal);
+    overlayRef.updatePosition();
+
+    this.isSliderInitialized &#x3D; true;
+  }
+
+  /**
+   * Updates the slider&#x27;s low pointer value when Enter key is pressed.
+   *
+   * @param event Event passed into the component
+   */
+  onKeyLow(event: KeyboardEvent): void {
+    const newValue &#x3D; Number((event.target as HTMLInputElement).value);
+    if (event.key &#x3D;&#x3D;&#x3D; &#x27;Enter&#x27;) {
+      if (newValue &gt;&#x3D; Number(this.options.floor) &amp;&amp; newValue &lt;&#x3D; Number(this.options.ceil)) {
+        this.lowValue &#x3D; newValue;
+      }
+      (event.target as HTMLInputElement).value &#x3D; String(this.lowValue);
+      (event.target as HTMLInputElement).blur();
+      this.sliderValueChanged();
+    }
+  }
+
+  /**
+   * Updates the slider&#x27;s high pointer value when Enter key is pressed.
+   *
+   * @param event Event passed into the component
+   */
+  onKeyHigh(event: KeyboardEvent): void {
+    const newValue &#x3D; Number((event.target as HTMLInputElement).value);
+    if (event.key &#x3D;&#x3D;&#x3D; &#x27;Enter&#x27;) {
+      if (newValue &gt;&#x3D; Number(this.options.floor) &amp;&amp; newValue &lt;&#x3D; Number(this.options.ceil)) {
+        this.highValue &#x3D; newValue;
+      }
+      (event.target as HTMLInputElement).value &#x3D; String(this.highValue);
+      (event.target as HTMLInputElement).blur();
+      this.sliderValueChanged();
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ccf-slider wrapper&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div *cdk-portal class&#x3D;&quot;ccf-slider detached&quot; #popover&gt;
+      &lt;div class&#x3D;&quot;label min fade-in {{contentsVisible}}&quot;&gt;
+        &lt;div class&#x3D;&quot;label floor&quot;&gt; {{ options.floor }}&gt; &lt;/div&gt;
+        &lt;input class&#x3D;&quot;input-low&quot; type&#x3D;&quot;text&quot; value&#x3D;&quot;{{lowValue}}&quot; (keyup)&#x3D;&quot;onKeyLow($event)&quot;&gt;
+      &lt;/div&gt;
+
+      &lt;ng5-slider class&#x3D;&quot;slider fade-in {{contentsVisible}}&quot; [options]&#x3D;&quot;options&quot; [(value)]&#x3D;&quot;lowValue&quot;
+                  [(highValue)]&#x3D;&quot;highValue&quot; (userChangeEnd)&#x3D;&quot;sliderValueChanged()&quot;&gt;
+      &lt;/ng5-slider&gt;
+
+      &lt;div class&#x3D;&quot;label max fade-in {{contentsVisible}}&quot;&gt;
+        &lt;div class&#x3D;&quot;label ceil&quot;&gt; {{ options.ceil }} &lt;/div&gt;
+        &lt;input class&#x3D;&quot;input-high&quot; type&#x3D;&quot;text&quot; value&#x3D;&quot;{{highValue}}&quot; (keyup)&#x3D;&quot;onKeyHigh($event)&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;mat-form-field class&#x3D;&quot;slider-form-field&quot; [class.highlight]&#x3D;&quot;isSliderOpen&quot; (click)&#x3D;&quot;toggleSliderPopover()&quot;&gt;
+      &lt;div class&#x3D;&quot;slider-labels&quot;&gt;
+        &lt;span class&#x3D;&quot;name-label&quot;&gt;{{ label }}&lt;/span&gt;
+        &lt;span class&#x3D;&quot;range-label&quot;&gt;{{ rangeLabel }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;mat-select&gt;&lt;/mat-select&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./dual-slider.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.slider-form-field {
+  width: 100%;
+  height: 3rem;
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    height: 3rem;
+
+    .mat-form-field-flex {
+      .mat-form-field-infix {
+        border: none;
+        font-size: 0.875rem;
+      }
+    }
+
+    .mat-form-field-underline {
+      left: 0rem;
+      bottom: 0rem;
+      transform: none;
+      height: 0.125rem;
+    }
+  }
+}
+
+
+.slider-labels {
+  display: flex;
+  flex-direction: column;
+  .name-label {
+    padding-bottom: 0.25rem;
+  }
+
+  .range-label {
+    font-weight: bold;
+  }
+}
+
+::ng-deep .ccf-slider.wrapper {
+  .mat-select-arrow-wrapper {
+    transform: translatey(-1.5em);
+  }
+}
+
+// Styles for the popover slider
+// NOTE: This must NOT be nested inside the wrapper/container!
+
+@keyframes slideInHorizontalSlider {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20em;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.visible {
+  animation: fadeIn 0.3s;
+  transition-delay: .275s;
+  animation-delay: .275s;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+::ng-deep .slider-pane {
+  position: absolute !important;
+  top: -1px;
+}
+
+.ccf-slider.detached {
+  animation: slideInHorizontalSlider 0.3s;
+  animation-fill-mode: forwards;
+  box-shadow: 0.2rem 0.2rem 1rem 0rem #0000003e;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0rem;
+  height: 4.375rem;
+  padding: .75rem; // NOTE: Use padding instead of margin!
+
+  .slider ::ng-deep {
+    visibility: hidden;
+    margin-top: 0.9375rem;
+    margin-bottom: 0.9375rem;
+    .ng5-slider-bar {
+      opacity: .2;
+      height: .15rem;
+    }
+
+    .ng5-slider-selection {
+      opacity: 1;
+    }
+
+    .ng5-slider-pointer {
+      $pointer-size: 1rem;
+
+      width: $pointer-size;
+      height: $pointer-size;
+      top: 0.095rem - ($pointer-size / 2);
+
+      &amp;:after {
+        display: none;
+      }
+    }
+  }
+
+  .label {
+    display: flex;
+    flex-direction: column;
+    width: 2rem;
+    
+    &amp;.min {
+      margin-right: 1rem;
+    }
+    
+    &amp;.max {
+      margin-left: 1rem;
+      align-items: flex-end;
+
+      .ceil, input {
+        text-align: right;
+      }
+    }
+
+    .floor, .ceil {
+      font-size: 0.875rem;
+    }
+
+    input {
+      border: none;
+      width: 1.75rem;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0;
+    }
+
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="ccf-slider wrapper">  <div class="container">    <div *cdk-portal class="ccf-slider detached" #popover>      <div class="label min fade-in {{contentsVisible}}">        <div class="label floor"> {{ options.floor }}> </div>        <input class="input-low" type="text" value="{{lowValue}}" (keyup)="onKeyLow($event)">      </div>      <ng5-slider class="slider fade-in {{contentsVisible}}" [options]="options" [(value)]="lowValue"                  [(highValue)]="highValue" (userChangeEnd)="sliderValueChanged()">      </ng5-slider>      <div class="label max fade-in {{contentsVisible}}">        <div class="label ceil"> {{ options.ceil }} </div>        <input class="input-high" type="text" value="{{highValue}}" (keyup)="onKeyHigh($event)">      </div>    </div>    <mat-form-field class="slider-form-field" [class.highlight]="isSliderOpen" (click)="toggleSliderPopover()">      <div class="slider-labels">        <span class="name-label">{{ label }}</span>        <span class="range-label">{{ rangeLabel }}</span>      </div>      <mat-select></mat-select>    </mat-form-field>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
+    var ACTUAL_COMPONENT = {'name': 'DualSliderComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DualSliderComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

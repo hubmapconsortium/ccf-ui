@@ -1,0 +1,633 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>OntologyState</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-eui/src/app/core/store/ontology/ontology.state.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Ontology tree state.</p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code>NgxsImmutableDataRepository</code>
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nodes$">nodes$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#rootNode$">rootNode$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadOntology">loadOntology</a>
+                            </li>
+                            <li>
+                                <a href="#ngxsOnInit">ngxsOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setOntology">setOntology</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dataService: <a href="../injectables/DataSourceService.html">DataSourceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/ccf-eui/src/app/core/store/ontology/ontology.state.ts:74</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ontology search service.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dataService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DataSourceService.html" target="_self" >DataSourceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The service used for pulling in ontology data</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadOntology"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            loadOntology
+                        </b>
+                        <a href="#loadOntology"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadOntology()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/ontology/ontology.state.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Loads ontology.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxsOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngxsOnInit
+                        </b>
+                        <a href="#ngxsOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngxsOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/ontology/ontology.state.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Initializes this state service.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setOntology"></a>
+                    <span class="name">
+                        <b>
+                            setOntology
+                        </b>
+                        <a href="#setOntology"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setOntology(ontology: <a href="../interfaces/OntologyTreeModel.html">OntologyTreeModel</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/ontology/ontology.state.ts:91</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets the ontology state.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ontology</td>
+                                    <td>
+                                                <code><a href="../interfaces/OntologyTreeModel.html" target="_self" >OntologyTreeModel</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The new state.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodes$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                                <span class="modifier">Readonly</span>
+                            nodes$</b>
+                            <a href="#nodes$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.state$.pipe(map(state &#x3D;&gt; Object.values(state.nodes)))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/ccf-eui/src/app/core/store/ontology/ontology.state.ts:71</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>All nodes in the ontology tree. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rootNode$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                                <span class="modifier">Readonly</span>
+                            rootNode$</b>
+                            <a href="#rootNode$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.state$.pipe(map(state &#x3D;&gt; state.nodes[state.root]))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/ccf-eui/src/app/core/store/ontology/ontology.state.ts:74</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Root node of the ontology tree. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { State } from &#x27;@ngxs/store&#x27;;
+import { OntologyTreeModel, OntologyTreeNode } from &#x27;ccf-database&#x27;;
+import { at, forEach, partial } from &#x27;lodash&#x27;;
+import { forkJoin } from &#x27;rxjs&#x27;;
+import { map, take } from &#x27;rxjs/operators&#x27;;
+
+import { environment } from &#x27;../../../../environments/environment&#x27;;
+import { DataSourceService } from &#x27;../../services/data-source/data-source.service&#x27;;
+
+
+/**
+ * Adds all subtree nodes to an accumulator object.
+ *
+ * @param nodes The original tree of nodes.
+ * @param acc The accumulated tree of nodes.
+ * @param current The node whose subtree should be added.
+ */
+export function addSubtree(
+  nodes: { [id: string]: OntologyTreeNode },
+  acc: { [id: string]: OntologyTreeNode },
+  current: OntologyTreeNode
+): void {
+  acc[current.id] &#x3D; current;
+  forEach(current.children, id &#x3D;&gt; addSubtree(nodes, acc, nodes[id]));
+}
+
+/**
+ * Creates a new tree with only the specified organs and their subtrees.
+ *
+ * @param model The full ontology tree.
+ * @param organIds The identifiers of the organs to keep.
+ * @returns A new ontology tree.
+ */
+function pruneModel(model: OntologyTreeModel, organIds: string[]): OntologyTreeModel {
+  const body: OntologyTreeNode &#x3D; {
+    &#x27;@id&#x27;: model.root,
+    &#x27;@type&#x27;: &#x27;OntologyTreeNode&#x27;,
+    id: model.root,
+    label: &#x27;body&#x27;,
+    parent: &#x27;&#x27;,
+    children: organIds,
+    synonymLabels: []
+  };
+  const organNodes &#x3D; at(model.nodes, organIds);
+  const prunedNodes &#x3D; { [body.id]: body };
+
+  forEach(organNodes, node &#x3D;&gt; node.parent &#x3D; body.id);
+  forEach(organNodes, node &#x3D;&gt; addSubtree(model.nodes, prunedNodes, node));
+
+  return { root: body.id, nodes: prunedNodes };
+}
+
+
+/**
+ * Ontology tree state.
+ */
+@StateRepository()
+@State&lt;OntologyTreeModel&gt;({
+  name: &#x27;ontology&#x27;,
+  defaults: {
+    root: &#x27;&#x27;,
+    nodes: {}
+  }
+})
+@Injectable()
+export class OntologyState extends NgxsImmutableDataRepository&lt;OntologyTreeModel&gt; {
+  /** All nodes in the ontology tree. */
+  public readonly nodes$ &#x3D; this.state$.pipe(map(state &#x3D;&gt; Object.values(state.nodes)));
+
+  /** Root node of the ontology tree. */
+  public readonly rootNode$ &#x3D; this.state$.pipe(map(state &#x3D;&gt; state.nodes[state.root]));
+
+  /**
+   * Creates an instance of ontology search service.
+   *
+   * @param dataService The service used for pulling in ontology data
+   */
+   constructor(private readonly dataService: DataSourceService) {
+     super();
+   }
+
+  /**
+   * Sets the ontology state.
+   *
+   * @param ontology The new state.
+   */
+  @DataAction()
+  setOntology(ontology: OntologyTreeModel): void {
+    this.ctx.setState(ontology);
+  }
+
+  /**
+   * Initializes this state service.
+   */
+  ngxsOnInit(): void {
+    super.ngxsOnInit();
+    this.loadOntology();
+  }
+
+  /**
+   * Loads ontology.
+   */
+  private loadOntology(): void {
+    forkJoin([
+      this.dataService.getOntologyTreeModel().pipe(take(1)),
+      this.dataService.getReferenceOrgans().pipe(take(1))
+    ]).subscribe(([fullOntology, refOrgans]) &#x3D;&gt; {
+      const organNodes &#x3D; environment.organNodes.concat();
+      for (const organ of refOrgans) {
+        const ref &#x3D; organ.representation_of;
+        const ontoNode &#x3D; fullOntology.nodes[ref as string];
+        if (ref &amp;&amp; ontoNode &amp;&amp; organNodes.indexOf(ref) &#x3D;&#x3D;&#x3D; -1) {
+          if (!organ.side) { // Organs with sides have to be added via environment.organNodes
+            organNodes.push(ref);
+          }
+        }
+      }
+      const ontology &#x3D; partial(pruneModel, partial.placeholder, organNodes)(fullOntology);
+      this.setOntology(ontology);
+    });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'OntologyState.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
