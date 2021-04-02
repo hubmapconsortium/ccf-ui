@@ -15,6 +15,7 @@ A first beta of the CCF RUI became available in October 2020. The CCF RUI specif
 The registration data is used in current versions of the Common Coordinate Framework (CCF, see [CCF Portal](https://hubmapconsortium.github.io/ccf/") for details) and the [CCF Exploration User Interface (EUI)](https://portal.hubmapconsortium.org/ccf-eui) developed within HuBMAP.
 
 # Standard Operating Procedure (SOP)
+
 The steps to register tissue blocks with the CCF RUI have been formally captured in an SOP, available [here](https://docs.google.com/document/d/11jKl__ltdDO3PBMHgHpZnIcZTNuxGUpX_94l6CtTP2I/edit?usp=sharing).
 
 # Acknowledgements
