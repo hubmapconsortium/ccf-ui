@@ -1,7 +1,6 @@
 @use '~@angular/material/theming' as *;
 @use '../../app/core/header/header.component.theme' as header;
 @use '../../app/modules/filters/filters.theme' as filters;
-@use '../../app/modules/results-browser/results-browser-item/results-browser-item.component.theme' as resultsBrowserItem;
 @use '../../app/modules/results-browser/results-browser/results-browser.component.theme' as resultsBrowser;
 @use '../../app/shared/components/checkbox/checkbox.component.theme' as checkbox;
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
@@ -33,7 +32,6 @@
   @include header.theme($theme);
   @include drawer.theme($theme);
   @include resultsBrowser.theme($theme);
-  @include resultsBrowserItem.theme($theme);
   @include checkbox.theme($theme);
   @include dropdown.theme($theme);
   @include dualSlider.theme($theme);

@@ -10,6 +10,8 @@ import { DataQueryState, DataState } from './core/store/data/data.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { SceneState } from './core/store/scene/scene.state';
+import { environment } from '../environments/environment';
+
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -36,6 +38,11 @@ export class AppComponent {
    * Emitted url object from the results browser item
    */
   url = '';
+
+  /**
+   * Acceptable viewer domains (others will open in new window)
+   */
+  acceptableViewerDomains: string[] = environment.acceptableViewerDomains || [];
 
   /**
    * Variable to keep track of whether the viewer is open
@@ -141,8 +148,15 @@ export class AppComponent {
    * @param url The url
    */
   openiFrameViewer(url: string): void {
-    this.url = url;
-    this.viewerOpen = !!url;
+    const isWhitelisted = this.acceptableViewerDomains.some(domain => url?.startsWith(domain));
+    if(isWhitelisted) {
+      this.url = url;
+      this.viewerOpen = !!url;
+    } else {
+      // Open link in new tab
+      window.open(url, '_blank');
+      this.closeiFrameViewer();
+    }
   }
 
   /**
