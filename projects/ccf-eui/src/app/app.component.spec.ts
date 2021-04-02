@@ -103,6 +103,7 @@ describe('AppComponent', () => {
 
   it('should set this.url to the passed in url when openiFrameViewer is called', async () => {
     const { instance } = await shallow.render();
+    instance.acceptableViewerDomains = ['test.com'];
     instance.url = '';
     instance.openiFrameViewer('test.com');
     expect(instance.url).toEqual('test.com');
@@ -110,6 +111,7 @@ describe('AppComponent', () => {
 
   it('should set this.viewerOpen to true whenever openiFrameViewer is called', async () => {
     const { instance } = await shallow.render();
+    instance.acceptableViewerDomains = ['test.com'];
     instance.viewerOpen = false;
     instance.openiFrameViewer('test.com');
     expect(instance.viewerOpen).toBeTrue();

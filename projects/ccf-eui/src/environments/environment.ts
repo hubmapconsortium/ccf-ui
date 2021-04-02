@@ -7,6 +7,10 @@
 export const environment = {
   production: false,
   disableDbWorker: false,
+  acceptableViewerDomains: [
+    'https://portal.hubmapconsortium.org',
+    'https://portal.test.hubmapconsortium.org'
+  ],
   organNodes: [
     'http://purl.obolibrary.org/obo/UBERON_0000948', // Heart
     'http://purl.obolibrary.org/obo/LMHA_00211', // Lung
