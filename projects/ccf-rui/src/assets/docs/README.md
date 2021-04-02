@@ -14,9 +14,6 @@ A first beta of the CCF RUI became available in October 2020. The CCF RUI specif
 
 The registration data is used in current versions of the Common Coordinate Framework (CCF, see [CCF Portal](https://hubmapconsortium.github.io/ccf/") for details) and the [CCF Exploration User Interface (EUI)](https://portal.hubmapconsortium.org/ccf-eui) developed within HuBMAP.
 
-# Standard Operating Procedure (SOP)
-Steps to register tissue blocks with the RUI have been formally captured in an SOP, available [here](https://docs.google.com/document/d/11jKl__ltdDO3PBMHgHpZnIcZTNuxGUpX_94l6CtTP2I/edit?usp=sharing).
-
 # Acknowledgements
 
 The CCF and associated user interfaces are developed by the MC-IU team within the HuBMAP HIVE. The MC-IU team includes Katy Börner, Lisel Record, Bruce Herr II, Leonard Cross, Ellen Quardokus, and Andreas Bueckle, Indiana University, Bloomington, IN and Griffin Weber, Harvard Medical School, Boston, MA. Former members of the team are Paul Macklin, Randy Heiland, and Jim Sluka at Indiana University, Bloomington, IN and Samuel Friedman, Opto-Knowledge Systems, Inc. We acknowledge expert input from Jeffrey Spraggins, Sanjay Jain, and Clive Wasserfall and their teams as well as the overall HuBMAP consortium.
