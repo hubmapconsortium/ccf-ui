@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
-import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
@@ -182,7 +182,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
    * @param filter Changes to be made to the current filter.
    */
   @DataAction()
-  updateFilter(filter: Partial<Filter>): void {
+  updateFilter(@Payload('filter') filter: Partial<Filter>): void {
     this.patchState({
       // Might need to do a deep compare of current and new filter
       filter: Object.assign({}, this.getState().filter, filter)

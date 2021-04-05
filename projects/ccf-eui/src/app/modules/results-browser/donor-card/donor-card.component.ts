@@ -2,8 +2,6 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { TissueBlockResult } from 'ccf-database';
 
 
-
-
 @Component({
   selector: 'ccf-donor-card',
   templateUrl: './donor-card.component.html',

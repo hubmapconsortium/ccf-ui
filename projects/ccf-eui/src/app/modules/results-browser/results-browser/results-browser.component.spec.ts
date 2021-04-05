@@ -92,7 +92,7 @@ describe('ResultsBrowserComponent', () => {
   it('should emit the url whenever visitLink is called', async () => {
     const { instance, outputs } = await shallow.render();
     instance.visitLink('test.com');
-    expect(outputs.resultClicked.emit).toHaveBeenCalledWith('test.com');
+    expect(outputs.linkClicked.emit).toHaveBeenCalledWith('test.com');
   });
 
   it('should initialize donorColorPalette', async () => {

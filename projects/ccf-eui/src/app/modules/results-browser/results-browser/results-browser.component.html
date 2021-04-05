@@ -8,13 +8,13 @@
   </div>
 
   <div class="results-browser-list" (scroll)="onScroll($event)">
-    <div class="browser-item-container" *ngFor="let donor of tissueBlockData">
+    <div class="browser-item-container" *ngFor="let result of listResults">
       <ccf-donor-card
-        [donor]="donor"
-        [selected]="isTissueBlockSelected(donor)"
-        [color]="getTissueBlockColor(donor.spatialEntityId)"
-        (checked)="handleDonorCardSelection($event, donor)"
-        (linkClick)="visitLink($event)"
+        [donor]="result.tissueBlock"
+        [selected]="result.selected"
+        [color]="result.color"
+        (checked)="handleSelection(result, $event)"
+        (linkClick)="handleLinkClick($event)"
       ></ccf-donor-card>
     </div>
   </div>
