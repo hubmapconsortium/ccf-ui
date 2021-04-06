@@ -1,92 +1,130 @@
-/** Aggregate query result. */
+/** Aggregate query result */
 export interface AggregateResult {
-  /** Queried field. */
+  /** Queried field */
   label: string;
-  /** Aggregate value. */
+  /** Aggregate value */
   count: string | number;
 }
 
+/** List result */
 export interface ListResultItem {
+  /** Identifier */
   '@id': string;
+  /** Label */
   label: string;
+  /** Description */
   description: string;
+  /** Associated URL */
   link: string;
 }
 
+/** Donor List Result */
 export interface DonorResult extends ListResultItem {
+  /** JSON-LD Type */
   '@type': 'Donor';
+  /** Provider Name */
   providerName: string;
 }
 
+/** Dataset List Result */
 export interface DatasetResult extends ListResultItem {
+  /** JSON-LD Type */
   '@type': 'Dataset';
+  /** Technology used in data */
   technology: string;
+  /** Representative thumbnail URL */
   thumbnail: string;
 }
 
+/** Tissue Section List Result */
 export interface TissueSectionResult extends ListResultItem {
+  /** JSON-LD Type */
   '@type': 'Sample';
+  /** Sample tissue section type */
   sampleType: 'Tissue Section' | 'Non-Standard';
+  /** Index into the sequence of sections from the parent block */
   sectionNumber: number;
+  /** Datasets derived from this tissue section */
   datasets: DatasetResult[];
 }
 
+/** Tissue Block List Result */
 export interface TissueBlockResult extends ListResultItem {
+  /** JSON-LD Type */
   '@type': 'Sample';
+  /** Sample tissue block type */
   sampleType: 'Tissue Block' | 'Non-Standard';
+  /** Number of sections extracted from this block */
   sectionCount: number;
+  /** Size of each tissue section */
   sectionSize: number;
+  /** Units of the section size (generally, millimeters) */
   sectionUnits: string;
 
+  /** The donor this tissue block was derived from */
   donor: DonorResult;
+  /** The associated spatial entity (rui_location) for this block */
   spatialEntityId: string;
+  /** The sections extracted from this tissue block */
   sections: TissueSectionResult[];
+  /** Datasets derived from this tissue block */
   datasets: DatasetResult[];
 }
 
-/** Item that can be searched for. */
+/** Item that can be searched for */
 export interface SearchableItem {
-  /** Identifier. */
+  /** Identifier */
   id: string;
-  /** Sex. */
+  /** Sex */
   sex?: 'Male' | 'Female';
-  /** Age. */
+  /** Age */
   age?: number;
-  /** BMI. */
+  /** BMI */
   bmi?: number;
-  /** Ontology terms. */
+  /** Ontology terms */
   ontologyTerms?: Set<string>;
 }
 
-/** Options applied during queries. */
+/** Options applied during queries */
 export interface Filter {
-  /** Sex. */
+  /** Sex */
   sex: 'Both' | 'Male' | 'Female';
-  /** Age range. */
+  /** Age range */
   ageRange: [number, number];
-  /** BMI range. */
+  /** BMI range */
   bmiRange: [number, number];
-  /** TMC. */
+  /** TMC */
   tmc: string[];
-  /** Technologies. */
+  /** Technologies */
   technologies: string[];
-  /** Ontology terms. */
+  /** Ontology terms */
   ontologyTerms: string[];
   /** Include optional debugging information */
   debug?: boolean;
 }
 
+/** A node in the ontology */
 export interface OntologyTreeNode {
+  /** Identifier / IRI */
   '@id': string;
+  /** JSON-LD Type */
   '@type': 'OntologyTreeNode';
+  /** Identifier / IRI */
   id: string;
+  /** RDFS label */
   label: string;
+  /** Parent ontology node */
   parent: string;
+  /** Child ontology nodes */
   children: string[];
+  /** Synonym labels */
   synonymLabels: string[];
 }
 
+/** Ontology tree model */
 export interface OntologyTreeModel {
+  /** id of the root node of the ontology */
   root: string;
+  /** Mapping from id/IRI to ontology node instance */
   nodes: { [id: string]: OntologyTreeNode };
 }
