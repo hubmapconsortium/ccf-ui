@@ -89,19 +89,11 @@ export class CCFSpatialScene {
 
   getReferenceSceneNodes(filter?: Filter): SpatialSceneNode[] {
     const body = this.getReferenceBody(filter);
-
-    const terms = new Set<string>(filter?.ontologyTerms ?? []);
     let nodes: (SpatialSceneNode | undefined)[] = [
       ...this.getReferenceOrganSets(filter).map((organ) => {
-        const isTermSelected = terms.has(organ.representation_of || '');
         const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
         return this.getSceneNode(organ, body, {
-          unpickable: isTermSelected || isSkin,
-          zoomToOnLoad: isTermSelected && !isSkin && !isTermSelected, // Turning off for now
-          _lighting: 'pbr',
-          color: [255, 255, 255, 255],
-          opacity: isSkin ? 0.5 : 0.2,
-          zoomBasedOpacity: false
+          color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr'
         });
       })
     ];
@@ -109,11 +101,11 @@ export class CCFSpatialScene {
     if (filter?.debug) {
       // Debug bounding boxes
       nodes = nodes.concat([
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), body, {color: [0, 0, 255, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHLeftKidney').id), body, {color: [255, 0, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC1').id), body, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC2').id), body, {color: [0, 255, 0, 0.5*255], wireframe: true}),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC3').id), body, {color: [0, 255, 0, 0.5*255], wireframe: true})
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), body, { color: [0, 0, 255, 0.5*255], wireframe: true }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHLeftKidney').id), body, { color: [255, 0, 0, 0.5*255], wireframe: true }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC1').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC2').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC3').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true })
       ]);
     }
 
@@ -122,11 +114,8 @@ export class CCFSpatialScene {
 
   getEntitySceneNodes(filter?: Filter): SpatialSceneNode[] {
     const body = this.getReferenceBody(filter);
-    const highlighted = new Set<string>(filter?.highlightedEntities);
     return this.db.getSpatialEntities(filter).map((entity) =>
-      this.getSceneNode(entity, body, {
-        color: highlighted.has(entity.entityId as string) ? [10, 10, 229, 0.9*255] : [255, 255, 255, 0.9*255]
-      })
+      this.getSceneNode(entity, body, { color: [255, 255, 255, 0.9*255] })
     ).filter(s => s !== undefined) as SpatialSceneNode[];
   }
 

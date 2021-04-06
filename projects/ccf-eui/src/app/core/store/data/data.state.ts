@@ -2,11 +2,11 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
-import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
-import { AggregateResult, Filter, ListResult, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
+import { AggregateResult, Filter, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
 import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from 'rxjs/operators';
 
@@ -92,8 +92,6 @@ export interface DataStateModel {
 })
 @Injectable()
 export class DataState extends NgxsDataRepository<DataStateModel> implements NgxsOnInit {
-  /** Implementation subject for listDataQueryStatus$. */
-  private readonly _listDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for tissueBlockDataQueryStatus$. */
   private readonly _tissueBlockDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
@@ -107,10 +105,6 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
 
   /** Current filter. */
   readonly filter$ = this.state$.pipe(pluck('filter'));
-  /** Latest list query data. */
-  readonly listData$ = this.filter$.pipe(queryData(
-    this.listData, sendCompletedTo(this._listDataQueryStatus$)
-  ));
   /** Latest tissue block query data. */
   readonly tissueBlockData$ = this.filter$.pipe(queryData(
     this.tissueBlockData, sendCompletedTo(this._tissueBlockDataQueryStatus$)
@@ -128,8 +122,6 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
     this.sceneData, sendCompletedTo(this._sceneDataQueryStatus$)
   ));
 
-  /** Current status of queries in the listData$ observable. */
-  readonly listDataQueryStatus$ = this._listDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the tissueBlockData$ observable. */
   readonly tissueBlockDataQueryStatus$ = this._tissueBlockDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the aggregateData$ observable. */
@@ -141,7 +133,6 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
 
   /** Current status of all queries. */
   readonly queryStatus$ = combineLatest([
-    this.listDataQueryStatus$,
     this.tissueBlockDataQueryStatus$,
     this.aggregateDataQueryStatus$,
     this.termOccurencesDataQueryStatus$,
@@ -159,7 +150,6 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   constructor(private readonly source: DataSourceService) {
     super();
     // Start everything in the completed state
-    this._listDataQueryStatus$.next(DataQueryState.Completed);
     this._tissueBlockDataQueryStatus$.next(DataQueryState.Completed);
     this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
     this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
@@ -182,23 +172,11 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
    * @param filter Changes to be made to the current filter.
    */
   @DataAction()
-  updateFilter(filter: Partial<Filter>): void {
+  updateFilter(@Payload('filter') filter: Partial<Filter>): void {
     this.patchState({
       // Might need to do a deep compare of current and new filter
       filter: Object.assign({}, this.getState().filter, filter)
     });
-  }
-
-  /**
-   * Queries for list data.
-   *
-   * @param filter The filter used during query.
-   * @returns The result of the query.
-   */
-  @bind
-  private listData(filter: Filter): ObservableInput<ListResult[]> {
-    this._listDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getListResults(filter);
   }
 
   /**

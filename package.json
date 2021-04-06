@@ -74,6 +74,7 @@
     "file-saver": "^2.0.5",
     "graphology": "^0.19.3",
     "graphology-shortest-path": "^1.4.1",
+    "hex-rgb": "^4.2.0",
     "jsonld": "^4.0.1",
     "lodash": "^4.17.21",
     "n3": "^1.8.1",

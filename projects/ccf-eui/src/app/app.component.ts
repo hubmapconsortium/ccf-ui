@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { NodeClickEvent } from 'ccf-body-ui';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
+import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { DataSourceService } from './core/services/data-source/data-source.service';
 import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
+import { ListResultsState } from './core/store/list-results/list-results.state';
+import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { SceneState } from './core/store/scene/scene.state';
-import { environment } from '../environments/environment';
 
 
 /**
@@ -63,8 +63,7 @@ export class AppComponent {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
-      readonly scene: SceneState) {
-    data.listData$.subscribe();
+      readonly scene: SceneState, readonly listResultsState: ListResultsState) {
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();
@@ -173,19 +172,5 @@ export class AppComponent {
   get loggedIn(): boolean {
     const token = this.dataSourceService.dbOptions.hubmapToken || '';
     return token.length > 0;
-  }
-
-  sceneNodeClicked({node, ctrlClick}: NodeClickEvent): void {
-    if (node.representation_of &&
-      node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin') {
-      this.data.updateFilter({ ontologyTerms: [node.representation_of] });
-    } else if (node.entityId) {
-      const highlightedEntities = ctrlClick ? this.data.snapshot.filter?.highlightedEntities ?? [] : [];
-      if (highlightedEntities.length === 1 && highlightedEntities[0] === node.entityId) {
-        this.data.updateFilter({ highlightedEntities: [] });
-      } else {
-        this.data.updateFilter({ highlightedEntities: highlightedEntities.concat([node.entityId]) });
-      }
-    }
   }
 }

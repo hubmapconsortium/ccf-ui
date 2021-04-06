@@ -1,7 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
 import {
-  AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter, ListResult,
+  AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter,
   OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
 } from 'ccf-database';
 import { Remote, wrap } from 'comlink';
@@ -58,23 +58,13 @@ export class DataSourceService {
   }
 
   /**
-   * Queries for list values.
-   *
-   * @param [filter] Currently applied filter.
-   * @returns An observable emitting the results.
-   */
-  getListResults(filter?: Filter): Observable<ListResult[]> {
-    return from(this.getDB().then((db) => db.getListResults(filter)));
-  }
-
-  /**
    * Queries for tissue block values.
    *
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
    getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
-    return from(this.getDB().then((db) => db.getTissueBlockResults(filter)));
+    return from(this.getDB().then((db) => db.getTissueBlockResults(filter))).pipe(take(1));
   }
 
   /**
@@ -84,7 +74,7 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
-    return from(this.getDB().then((db) => db.getAggregateResults(filter)));
+    return from(this.getDB().then((db) => db.getAggregateResults(filter))).pipe(take(1));
   }
 
   /**
@@ -94,7 +84,7 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
-    return from(this.getDB().then((db) => db.getOntologyTermOccurences(filter)));
+    return from(this.getDB().then((db) => db.getOntologyTermOccurences(filter))).pipe(take(1));
   }
 
   /**
@@ -122,7 +112,7 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
    getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
-    return from(this.getDB().then((db) => db.getScene(filter)));
+    return from(this.getDB().then((db) => db.getScene(filter))).pipe(take(1));
   }
 
   private getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {
@@ -130,7 +120,7 @@ export class DataSourceService {
     if (directImport) {
       worker = new Worker('./data-source.worker', { type: 'module' });
     } else {
-      const workerUrl = this.locator.prepareExternalUrl('0.worker.js');
+      const workerUrl = this.locator.prepareExternalUrl('0-es2015.worker.js');
       const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
       worker = new Worker(URL.createObjectURL(workerBlob), { type: 'module' });
     }

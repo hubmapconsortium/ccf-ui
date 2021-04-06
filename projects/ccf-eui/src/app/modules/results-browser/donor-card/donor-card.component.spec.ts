@@ -4,7 +4,7 @@ import { DonorCardComponent } from './donor-card.component';
 import { DonorCardModule } from './donor-card.module';
 
 
-const donor: TissueBlockResult = {
+const tissueBlock: TissueBlockResult = {
   '@id': 'http://dx.doi.org/10.1016/j.trsl.2017.07.006#TissueBlock',
   '@type': 'Sample',
   sections: [],
@@ -45,7 +45,7 @@ describe('DonorCardComponent', () => {
   });
 
   it('should not toggle the expanded variable if selected is false', async () => {
-    const { instance } = await shallow.render({ bind: { donor, selected: false }});
+    const { instance } = await shallow.render({ bind: { tissueBlock, selected: false }});
 
     instance.expanded = false;
     instance.toggleExpansion();
@@ -57,7 +57,7 @@ describe('DonorCardComponent', () => {
   });
 
   it('should toggle the expanded variable if selected is true', async () => {
-    const { instance } = await shallow.render({ bind: { donor, selected: true }});
+    const { instance } = await shallow.render({ bind: { tissueBlock, selected: true }});
 
     instance.expanded = false;
     instance.toggleExpansion();
@@ -69,7 +69,7 @@ describe('DonorCardComponent', () => {
   });
 
   it('should toggle selected whenever handleCheckbox is called', async () => {
-    const { instance } = await shallow.render({ bind: { donor, selected: false }});
+    const { instance } = await shallow.render({ bind: { tissueBlock, selected: false }});
 
     instance.handleCheckbox();
     expect(instance.selected).toBeTrue();
@@ -80,35 +80,35 @@ describe('DonorCardComponent', () => {
   });
 
   it('should emit the new selected value whenever handleCheckbox is called', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { donor, selected: false }});
+    const { instance, outputs } = await shallow.render({ bind: { tissueBlock, selected: false }});
 
     instance.handleCheckbox();
     expect(outputs.checked.emit).toHaveBeenCalledWith(true);
   });
 
   it('should set expanded to false whenever handleCheckbox is called', async () => {
-    const { instance } = await shallow.render({ bind: { donor, selected: false }});
+    const { instance } = await shallow.render({ bind: { tissueBlock, selected: false }});
     instance.expanded = true;
     instance.handleCheckbox();
     expect(instance.expanded).not.toBeTrue();
   });
 
   it('should emit linkClick when linkHandler is called if selected is true', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { donor, selected: true }});
+    const { instance, outputs } = await shallow.render({ bind: { tissueBlock, selected: true }});
 
     instance.linkHandler('test.com');
     expect(outputs.linkClick.emit).toHaveBeenCalled();
   });
 
   it('should not emit linkClick when linkHandler is called if selected is false', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { donor, selected: false }});
+    const { instance, outputs } = await shallow.render({ bind: { tissueBlock, selected: false }});
 
     instance.linkHandler('test.com');
     expect(outputs.linkClick.emit).not.toHaveBeenCalled();
   });
 
   it('should set selected to true if linkHandler is called when selected is false', async () => {
-    const { instance } = await shallow.render({ bind: { donor, selected: false }});
+    const { instance } = await shallow.render({ bind: { tissueBlock, selected: false }});
 
     instance.linkHandler('test.com');
     expect(instance.selected).toBeTrue();
