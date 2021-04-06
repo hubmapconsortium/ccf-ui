@@ -68,7 +68,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Options applied during queries. </p>
+                <p>Options applied during queries </p>
 
             </p>
 
@@ -94,10 +94,6 @@
                                 <li>
                                             <span class="modifier">Optional</span>
                                         <a href="#debug">debug</a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#highlightedEntities">highlightedEntities</a>
                                 </li>
                                 <li>
                                         <a href="#ontologyTerms">ontologyTerms</a>
@@ -151,7 +147,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Age range. </p>
+                                    <div class="io-description"><p>Age range </p>
 </div>
                                 </td>
                             </tr>
@@ -186,7 +182,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>BMI range. </p>
+                                    <div class="io-description"><p>BMI range </p>
 </div>
                                 </td>
                             </tr>
@@ -236,46 +232,6 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="highlightedEntities"></a>
-                                        <span class="name"><b>highlightedEntities</b><a href="#highlightedEntities"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>highlightedEntities:     <code>string[]</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>string[]</code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Entities to be highlighted </p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
                                         <a name="ontologyTerms"></a>
                                         <span class="name"><b>ontologyTerms</b><a href="#ontologyTerms"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
@@ -301,7 +257,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Ontology terms. </p>
+                                    <div class="io-description"><p>Ontology terms </p>
 </div>
                                 </td>
                             </tr>
@@ -336,7 +292,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Sex. </p>
+                                    <div class="io-description"><p>Sex </p>
 </div>
                                 </td>
                             </tr>
@@ -371,7 +327,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Technologies. </p>
+                                    <div class="io-description"><p>Technologies </p>
 </div>
                                 </td>
                             </tr>
@@ -406,7 +362,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>TMC. </p>
+                                    <div class="io-description"><p>TMC </p>
 </div>
                                 </td>
                             </tr>
@@ -418,122 +374,132 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface AggregateResult {
-  /** Queried field. */
+  /** Queried field */
   label: string;
-  /** Aggregate value. */
+  /** Aggregate value */
   count: string | number;
 }
 
+/** List result */
 export interface ListResultItem {
+  /** Identifier */
   &#x27;@id&#x27;: string;
+  /** Label */
   label: string;
+  /** Description */
   description: string;
+  /** Associated URL */
   link: string;
 }
 
+/** Donor List Result */
 export interface DonorResult extends ListResultItem {
+  /** JSON-LD Type */
   &#x27;@type&#x27;: &#x27;Donor&#x27;;
+  /** Provider Name */
   providerName: string;
 }
 
+/** Dataset List Result */
 export interface DatasetResult extends ListResultItem {
+  /** JSON-LD Type */
   &#x27;@type&#x27;: &#x27;Dataset&#x27;;
+  /** Technology used in data */
   technology: string;
+  /** Representative thumbnail URL */
   thumbnail: string;
 }
 
+/** Tissue Section List Result */
 export interface TissueSectionResult extends ListResultItem {
+  /** JSON-LD Type */
   &#x27;@type&#x27;: &#x27;Sample&#x27;;
+  /** Sample tissue section type */
   sampleType: &#x27;Tissue Section&#x27; | &#x27;Non-Standard&#x27;;
+  /** Index into the sequence of sections from the parent block */
   sectionNumber: number;
+  /** Datasets derived from this tissue section */
   datasets: DatasetResult[];
 }
 
+/** Tissue Block List Result */
 export interface TissueBlockResult extends ListResultItem {
+  /** JSON-LD Type */
   &#x27;@type&#x27;: &#x27;Sample&#x27;;
+  /** Sample tissue block type */
   sampleType: &#x27;Tissue Block&#x27; | &#x27;Non-Standard&#x27;;
+  /** Number of sections extracted from this block */
   sectionCount: number;
+  /** Size of each tissue section */
   sectionSize: number;
+  /** Units of the section size (generally, millimeters) */
   sectionUnits: string;
 
+  /** The donor this tissue block was derived from */
   donor: DonorResult;
+  /** The associated spatial entity (rui_location) for this block */
   spatialEntityId: string;
+  /** The sections extracted from this tissue block */
   sections: TissueSectionResult[];
+  /** Datasets derived from this tissue block */
   datasets: DatasetResult[];
 }
 
-/** Result for list of tissues. */
-export interface ListResult {
-  /** Identifier. */
-  &#x27;@id&#x27;: string;
-  /** Type string. */
-  &#x27;@type&#x27;: &#x27;ListResult&#x27;;
-  /** Identifier. */
-  id: string;
-  /** Tissue label. */
-  label: string;
-  /** Short description. */
-  shortInfo?: string[];
-  /** Small icon url. */
-  thumbnailUrl?: string;
-  /** Url for data download. */
-  downloadUrl?: string;
-  /** Description of data download. */
-  downloadTooltip?: string;
-  /** Result url. */
-  resultUrl?: string;
-  /** Type of result url. */
-  resultType?: &#x27;external_link&#x27; | &#x27;local_link&#x27;;
-  /** If the result should be highlighted */
-  highlighted?: boolean;
-}
-
-/** Item that can be searched for. */
+/** Item that can be searched for */
 export interface SearchableItem {
-  /** Identifier. */
+  /** Identifier */
   id: string;
-  /** Sex. */
+  /** Sex */
   sex?: &#x27;Male&#x27; | &#x27;Female&#x27;;
-  /** Age. */
+  /** Age */
   age?: number;
-  /** BMI. */
+  /** BMI */
   bmi?: number;
-  /** Ontology terms. */
+  /** Ontology terms */
   ontologyTerms?: Set&lt;string&gt;;
 }
 
-/** Options applied during queries. */
+/** Options applied during queries */
 export interface Filter {
-  /** Sex. */
+  /** Sex */
   sex: &#x27;Both&#x27; | &#x27;Male&#x27; | &#x27;Female&#x27;;
-  /** Age range. */
+  /** Age range */
   ageRange: [number, number];
-  /** BMI range. */
+  /** BMI range */
   bmiRange: [number, number];
-  /** TMC. */
+  /** TMC */
   tmc: string[];
-  /** Technologies. */
+  /** Technologies */
   technologies: string[];
-  /** Ontology terms. */
+  /** Ontology terms */
   ontologyTerms: string[];
-  /** Entities to be highlighted */
-  highlightedEntities?: string[];
   /** Include optional debugging information */
   debug?: boolean;
 }
 
+/** A node in the ontology */
 export interface OntologyTreeNode {
+  /** Identifier / IRI */
   &#x27;@id&#x27;: string;
+  /** JSON-LD Type */
   &#x27;@type&#x27;: &#x27;OntologyTreeNode&#x27;;
+  /** Identifier / IRI */
   id: string;
+  /** RDFS label */
   label: string;
+  /** Parent ontology node */
   parent: string;
+  /** Child ontology nodes */
   children: string[];
+  /** Synonym labels */
   synonymLabels: string[];
 }
 
+/** Ontology tree model */
 export interface OntologyTreeModel {
+  /** id of the root node of the ontology */
   root: string;
+  /** Mapping from id/IRI to ontology node instance */
   nodes: { [id: string]: OntologyTreeNode };
 }
 </code></pre>

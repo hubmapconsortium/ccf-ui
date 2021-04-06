@@ -85,6 +85,9 @@
                                         <a href="#referenceOrgans">referenceOrgans</a>
                                 </li>
                                 <li>
+                                        <a href="#scene">scene</a>
+                                </li>
+                                <li>
                                         <a href="#selectedAnatomicalStructures">selectedAnatomicalStructures</a>
                                 </li>
                                 <li>
@@ -163,6 +166,35 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="scene"></a>
+                                        <span class="name"><b>scene</b><a href="#scene"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>scene:     <code>SpatialSceneNode[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>SpatialSceneNode[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="selectedAnatomicalStructures"></a>
                                         <span class="name"><b>selectedAnatomicalStructures</b><a href="#selectedAnatomicalStructures"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
@@ -223,19 +255,21 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { DataAction, Payload, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
-import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
+import { SpatialSceneNode, NodeClickEvent } from &#x27;ccf-body-ui&#x27;;
 import { ALL_POSSIBLE_ORGANS, OrganInfo } from &#x27;ccf-shared&#x27;;
-import { combineLatest, Observable } from &#x27;rxjs&#x27;;
-import { map, pluck, take } from &#x27;rxjs/operators&#x27;;
+import { combineLatest } from &#x27;rxjs&#x27;;
+import { distinctUntilChanged, map, pluck, take, tap } from &#x27;rxjs/operators&#x27;;
 
+import { ColorAssignmentState } from &#x27;../color-assignment/color-assignment.state&#x27;;
 import { DataState } from &#x27;../data/data.state&#x27;;
-import { DataSourceService } from &#x27;./../../services/data-source/data-source.service&#x27;;
+import { DataSourceService } from &#x27;../../services/data-source/data-source.service&#x27;;
 
 
 export interface SceneStateModel {
+  scene: SpatialSceneNode[];
   referenceOrgans: OrganInfo[];
   selectedReferenceOrgans: OrganInfo[];
 
@@ -256,6 +290,7 @@ export interface SceneStateModel {
 @State&lt;SceneStateModel&gt;({
   name: &#x27;scene&#x27;,
   defaults: {
+    scene: [],
     referenceOrgans: [],
     selectedReferenceOrgans: [],
     selectedAnatomicalStructures: [],
@@ -265,28 +300,17 @@ export interface SceneStateModel {
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&gt; implements NgxsOnInit {
   /** Available Reference Organs */
-  readonly referenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;referenceOrgans&#x27;));
+  readonly referenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;referenceOrgans&#x27;), distinctUntilChanged());
   /** Selected Reference Organs */
-  readonly selectedReferenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;selectedReferenceOrgans&#x27;));
-
+  readonly selectedReferenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;selectedReferenceOrgans&#x27;), distinctUntilChanged());
   /** Scene to display in the 3d Scene */
-  @Computed()
-  get scene$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([this.dataState.sceneData$, this.selectedReferenceOrgans$, this.dataService.getReferenceOrgans()]).pipe(
-      map(([scene, selectedOrgans, refOrganData]) &#x3D;&gt; {
-        const activeOrgans &#x3D; new Set(selectedOrgans.map(o &#x3D;&gt; o.id));
-        const refOrgans &#x3D; new Set(refOrganData.filter(o &#x3D;&gt; activeOrgans.has(o.representation_of)).map(o &#x3D;&gt; o[&#x27;@id&#x27;]));
-        return scene.filter(node &#x3D;&gt;
-          (node.ccf_annotations &amp;&amp; node.ccf_annotations.some(tag &#x3D;&gt; activeOrgans.has(tag)))
-          ||
-          (node.reference_organ &amp;&amp; refOrgans.has(node.reference_organ))
-        );
-      })
-    );
-  }
+  readonly scene$ &#x3D; this.state$.pipe(pluck(&#x27;scene&#x27;), distinctUntilChanged());
 
   /** The data state */
   private dataState: DataState;
+
+  /** Color assignments state */
+  private colorAssignments: ColorAssignmentState;
 
   /**
    * Creates an instance of scene state.
@@ -306,7 +330,7 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
    * @param referenceOrgans The selected reference organs selected
    */
   @DataAction()
-  setSelectedReferenceOrgans(selectedReferenceOrgans: OrganInfo[]): void {
+  setSelectedReferenceOrgans(@Payload(&#x27;selectedReferenceOrgans&#x27;) selectedReferenceOrgans: OrganInfo[]): void {
     this.ctx.patchState({ selectedReferenceOrgans });
   }
 
@@ -316,8 +340,34 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
    * @param referenceOrgans The reference organs available
    */
   @DataAction()
-  setReferenceOrgans(referenceOrgans: OrganInfo[]): void {
+  setReferenceOrgans(@Payload(&#x27;referenceOrgans&#x27;) referenceOrgans: OrganInfo[]): void {
     this.ctx.patchState({ referenceOrgans });
+  }
+
+  /**
+   * Sets the scene
+   *
+   * @param scene The active scene to display
+   */
+  @DataAction()
+  setScene(@Payload(&#x27;scene&#x27;) scene: SpatialSceneNode[]): void {
+    this.ctx.patchState({ scene });
+  }
+
+  /**
+   * Handle scene node clicks
+   *
+   * @param param0 scene node click event
+   */
+  sceneNodeClicked({node, ctrlClick}: NodeClickEvent) {
+    if (node.representation_of &amp;&amp;
+      node[&#x27;@id&#x27;] !&#x3D;&#x3D; &#x27;http://purl.org/ccf/latest/ccf.owl#VHFSkin&#x27;
+      &amp;&amp; node.entityId // Disables this path. Need to update logic here.
+    ) {
+      this.dataState.updateFilter({ ontologyTerms: [node.representation_of] });
+    } else if (node.entityId) {
+      this.colorAssignments.assignColor(node[&#x27;@id&#x27;], !ctrlClick);
+    }
   }
 
   /**
@@ -329,7 +379,9 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
     // Injecting page and model states in the constructor breaks things!?
     // Lazy load here
     this.dataState &#x3D; this.injector.get(DataState);
+    this.colorAssignments &#x3D; this.injector.get(ColorAssignmentState);
 
+    // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(
       map(refOrgans &#x3D;&gt; {
         const organLookup &#x3D; ALL_POSSIBLE_ORGANS.reduce((acc, organ) &#x3D;&gt; {
@@ -349,11 +401,33 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
           ...organLookup[id], disabled: false, numResults: 0
         } as OrganInfo));
       }),
-      take(1)
-    ).subscribe(organs &#x3D;&gt; {
-      this.setReferenceOrgans(organs);
-      this.setSelectedReferenceOrgans(organs.filter(organ &#x3D;&gt; organ.name !&#x3D;&#x3D; &#x27;Large Intestine&#x27;));
-    });
+      take(1),
+      tap(organs &#x3D;&gt; {
+        this.setReferenceOrgans(organs);
+        this.setSelectedReferenceOrgans(organs.filter(organ &#x3D;&gt; organ.name !&#x3D;&#x3D; &#x27;Large Intestine&#x27;));
+      })
+    ).subscribe();
+
+    // Update scene as the overall state changes
+    combineLatest([
+      this.dataState.sceneData$,
+      this.selectedReferenceOrgans$,
+      this.colorAssignments.colorAssignments$,
+      this.dataService.getReferenceOrgans()
+    ]).pipe(
+      map(([scene, selectedOrgans, colors, refOrganData]) &#x3D;&gt; {
+        const activeOrgans &#x3D; new Set(selectedOrgans.map(o &#x3D;&gt; o.id));
+        const refOrgans &#x3D; new Set(refOrganData.filter(o &#x3D;&gt; activeOrgans.has(o.representation_of)).map(o &#x3D;&gt; o[&#x27;@id&#x27;]));
+        return scene.filter(node &#x3D;&gt;
+          (node.ccf_annotations &amp;&amp; node.ccf_annotations.some(tag &#x3D;&gt; activeOrgans.has(tag)))
+          ||
+          (node.reference_organ &amp;&amp; refOrgans.has(node.reference_organ))
+        ).map(node &#x3D;&gt; node.entityId &amp;&amp; colors.hasOwnProperty(node[&#x27;@id&#x27;]) ?
+          ({ ...node, color: colors[node[&#x27;@id&#x27;]].rgba } as SpatialSceneNode) : node
+        );
+      }),
+      tap(scene &#x3D;&gt; this.setScene(scene))
+    ).subscribe();
   }
 }
 </code></pre>

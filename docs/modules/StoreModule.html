@@ -76,8 +76,10 @@ import { NgxsLoggerPluginModule } from &#x27;@ngxs/logger-plugin&#x27;;
 import { NgxsModule } from &#x27;@ngxs/store&#x27;;
 
 import { environment } from &#x27;../../../environments/environment&#x27;;
+import { ColorAssignmentState } from &#x27;./color-assignment/color-assignment.state&#x27;;
 import { DataState } from &#x27;./data/data.state&#x27;;
 import { IconRegistryState } from &#x27;./icon-registry/icon-registry.state&#x27;;
+import { ListResultsState } from &#x27;./list-results/list-results.state&#x27;;
 import { OntologyState } from &#x27;./ontology/ontology.state&#x27;;
 import { SceneState } from &#x27;./scene/scene.state&#x27;;
 
@@ -86,7 +88,9 @@ import { SceneState } from &#x27;./scene/scene.state&#x27;;
  * States shared across the entire app.
  */
 export const ROOT_STATES &#x3D; [
+  ColorAssignmentState,
   IconRegistryState,
+  ListResultsState,
   DataState,
   OntologyState,
   SceneState

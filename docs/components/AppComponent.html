@@ -452,18 +452,18 @@ or not</p>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { NodeClickEvent } from &#x27;ccf-body-ui&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { map, pluck } from &#x27;rxjs/operators&#x27;;
 
+import { environment } from &#x27;../environments/environment&#x27;;
 import { OntologySelection } from &#x27;./core/models/ontology-selection&#x27;;
 import { DataSourceService } from &#x27;./core/services/data-source/data-source.service&#x27;;
 import { ThemingService } from &#x27;./core/services/theming/theming.service&#x27;;
 import { DataQueryState, DataState } from &#x27;./core/store/data/data.state&#x27;;
+import { ListResultsState } from &#x27;./core/store/list-results/list-results.state&#x27;;
+import { SceneState } from &#x27;./core/store/scene/scene.state&#x27;;
 import { FiltersPopoverComponent } from &#x27;./modules/filters/filters-popover/filters-popover.component&#x27;;
 import { DrawerComponent } from &#x27;./shared/components/drawer/drawer/drawer.component&#x27;;
-import { SceneState } from &#x27;./core/store/scene/scene.state&#x27;;
-import { environment } from &#x27;../environments/environment&#x27;;
 
 
 /**
@@ -516,8 +516,7 @@ export class AppComponent {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
-      readonly scene: SceneState) {
-    data.listData$.subscribe();
+      readonly scene: SceneState, readonly listResultsState: ListResultsState) {
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();
@@ -627,20 +626,6 @@ export class AppComponent {
     const token &#x3D; this.dataSourceService.dbOptions.hubmapToken || &#x27;&#x27;;
     return token.length &gt; 0;
   }
-
-  sceneNodeClicked({node, ctrlClick}: NodeClickEvent): void {
-    if (node.representation_of &amp;&amp;
-      node[&#x27;@id&#x27;] !&#x3D;&#x3D; &#x27;http://purl.org/ccf/latest/ccf.owl#VHFSkin&#x27;) {
-      this.data.updateFilter({ ontologyTerms: [node.representation_of] });
-    } else if (node.entityId) {
-      const highlightedEntities &#x3D; ctrlClick ? this.data.snapshot.filter?.highlightedEntities ?? [] : [];
-      if (highlightedEntities.length &#x3D;&#x3D;&#x3D; 1 &amp;&amp; highlightedEntities[0] &#x3D;&#x3D;&#x3D; node.entityId) {
-        this.data.updateFilter({ highlightedEntities: [] });
-      } else {
-        this.data.updateFilter({ highlightedEntities: highlightedEntities.concat([node.entityId]) });
-      }
-    }
-  }
 }
 </code></pre>
     </div>
@@ -697,9 +682,14 @@ export class AppComponent {
         &lt;ccf-info-button [infoTitle]&#x3D;&quot;&#x27;HuBMAP CCF Exploration User Interface 1.0&#x27;&quot; [matTooltip]&#x3D;&quot;&#x27;Open Info&#x27;&quot;&gt;
         &lt;/ccf-info-button&gt;
       &lt;/div&gt;
-      &lt;ccf-results-browser [dataLoading]&#x3D;&quot;spinnerActive$ | async&quot; [tissueBlockData]&#x3D;&quot;data.tissueBlockData$ | async&quot;
-                           [aggregateData]&#x3D;&quot;data.aggregateData$ | async&quot; [resultLabel]&#x3D;&quot;ontologySelectionLabel&quot;
-                           (resultClicked)&#x3D;&quot;openiFrameViewer($event)&quot;&gt;&lt;/ccf-results-browser&gt;
+      &lt;ccf-results-browser
+        [listResults]&#x3D;&quot;listResultsState.listResults$ | async&quot;
+        [aggregateData]&#x3D;&quot;data.aggregateData$ | async&quot;
+        [resultLabel]&#x3D;&quot;ontologySelectionLabel&quot;
+        (listResultSelected)&#x3D;&quot;listResultsState.selectListResult($event)&quot;
+        (listResultDeselected)&#x3D;&quot;listResultsState.deselectListResult($event)&quot;
+        (linkClicked)&#x3D;&quot;openiFrameViewer($event)&quot;&gt;
+      &lt;/ccf-results-browser&gt;
       &lt;ccf-drawer-toggle-button&gt;&lt;/ccf-drawer-toggle-button&gt;
     &lt;/ccf-drawer&gt;
 
@@ -720,7 +710,7 @@ export class AppComponent {
           &lt;/mat-icon&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;ccf-body-ui [scene]&#x3D;&quot;scene.scene$ | async&quot; (nodeClick)&#x3D;&quot;sceneNodeClicked($event)&quot; [bounds]&#x3D;&quot;{x:2.2,y:2,z:0.4}&quot;
+      &lt;ccf-body-ui [scene]&#x3D;&quot;scene.scene$ | async&quot; (nodeClick)&#x3D;&quot;scene.sceneNodeClicked($event)&quot; [bounds]&#x3D;&quot;{x:2.2,y:2,z:0.4}&quot;
                    [class.expanded-stage]&#x3D;&quot;!organListVisible&quot; class&#x3D;&quot;stage-content&quot;&gt;&lt;/ccf-body-ui&gt;
     &lt;/ccf-drawer-content&gt;
   &lt;/ccf-drawer-container&gt;
@@ -933,7 +923,7 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ccf-app mat-app-background">  <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async">  </ccf-spinner-overlay>  <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">  </ccf-header>  <ccf-drawer-container class="main-drawers">    <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">      <div>        <div class="filter-data">          <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"                               (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>          <div class="filter-text">            <div class="sex">Sex: <strong>{{(data.filter$ | async)?.sex}}</strong></div>            <div class="age">Age:              <strong>{{(data.filter$ | async)?.ageRange[0]}}-{{(data.filter$ | async)?.ageRange[1]}}</strong></div>            <div class="bmi">BMI:              <strong>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</strong></div>          </div>        </div>        <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"                                [occurenceData]="data.termOccurencesData$ | async"                                (ontologySelection)="ontologySelected($event)">        </ccf-ontology-selection>        <ccf-drawer-toggle-button></ccf-drawer-toggle-button>      </div>    </ccf-drawer>    <ccf-drawer class="right-drawer" position="end" opened #right (stateChange)="filterbox.removeBox()">      <ccf-viewer class="portal-view" [class.opened]="viewerOpen" [url]="url" (closed)="viewerOpen = false">      </ccf-viewer>      <div class="drawer-icons">        <div class="drawer-icons-left">          <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();"                  [matTooltip]="right.expanded ? \'Exit Fullscreen\' : \'Enter Fullscreen\'">            <mat-icon class="icon">{{ right.expanded ? \'fullscreen_exit\' : \'fullscreen\' }}</mat-icon>          </button>          <button class="scheme-toggle button" (click)="toggleScheme()"                  [matTooltip]="theming.getTheme() === \'light-theme\' ? \'Enter Dark Mode\' : \'Enter Light Mode\'">            <mat-icon class="icon">{{ theming.getTheme() === \'light-theme\' ? \'brightness_2\' : \'brightness_5\' }}            </mat-icon>          </button>          <button class="button">            <mat-icon class="refresh icon" (click)="reset(left, right, filterbox)" matTooltip="Refresh">refresh            </mat-icon>          </button>        </div>        <ccf-info-button [infoTitle]="\'HuBMAP CCF Exploration User Interface 1.0\'" [matTooltip]="\'Open Info\'">        </ccf-info-button>      </div>      <ccf-results-browser [dataLoading]="spinnerActive$ | async" [tissueBlockData]="data.tissueBlockData$ | async"                           [aggregateData]="data.aggregateData$ | async" [resultLabel]="ontologySelectionLabel"                           (resultClicked)="openiFrameViewer($event)"></ccf-results-browser>      <ccf-drawer-toggle-button></ccf-drawer-toggle-button>    </ccf-drawer>    <ccf-drawer-content>      <div [class.closed]="!organListVisible" class="selector-drawer">        <ccf-organ-selector class="organ-selector" [multiselect]="true"                            [occurenceData]="data.termOccurencesData$ | async"                            [organList]="scene.referenceOrgans$ | async"                            (organsChanged)="scene.setSelectedReferenceOrgans($event)"                            [selectedOrgans]="scene.selectedReferenceOrgans$ | async">        </ccf-organ-selector>      </div>      <div class="close-button-wrapper" [class.closed]="!organListVisible">        <div class="close-button" (click)="organListVisible = !organListVisible">          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">            {{ organListVisible ? \'arrow_drop_up\': \'arrow_drop_down\' }}          </mat-icon>        </div>      </div>      <ccf-body-ui [scene]="scene.scene$ | async" (nodeClick)="sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"                   [class.expanded-stage]="!organListVisible" class="stage-content"></ccf-body-ui>    </ccf-drawer-content>  </ccf-drawer-container></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ccf-app mat-app-background">  <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async">  </ccf-spinner-overlay>  <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">  </ccf-header>  <ccf-drawer-container class="main-drawers">    <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">      <div>        <div class="filter-data">          <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"                               (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>          <div class="filter-text">            <div class="sex">Sex: <strong>{{(data.filter$ | async)?.sex}}</strong></div>            <div class="age">Age:              <strong>{{(data.filter$ | async)?.ageRange[0]}}-{{(data.filter$ | async)?.ageRange[1]}}</strong></div>            <div class="bmi">BMI:              <strong>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</strong></div>          </div>        </div>        <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"                                [occurenceData]="data.termOccurencesData$ | async"                                (ontologySelection)="ontologySelected($event)">        </ccf-ontology-selection>        <ccf-drawer-toggle-button></ccf-drawer-toggle-button>      </div>    </ccf-drawer>    <ccf-drawer class="right-drawer" position="end" opened #right (stateChange)="filterbox.removeBox()">      <ccf-viewer class="portal-view" [class.opened]="viewerOpen" [url]="url" (closed)="viewerOpen = false">      </ccf-viewer>      <div class="drawer-icons">        <div class="drawer-icons-left">          <button class="button" (click)="filterbox.removeBox(); right.toggleExpanded();"                  [matTooltip]="right.expanded ? \'Exit Fullscreen\' : \'Enter Fullscreen\'">            <mat-icon class="icon">{{ right.expanded ? \'fullscreen_exit\' : \'fullscreen\' }}</mat-icon>          </button>          <button class="scheme-toggle button" (click)="toggleScheme()"                  [matTooltip]="theming.getTheme() === \'light-theme\' ? \'Enter Dark Mode\' : \'Enter Light Mode\'">            <mat-icon class="icon">{{ theming.getTheme() === \'light-theme\' ? \'brightness_2\' : \'brightness_5\' }}            </mat-icon>          </button>          <button class="button">            <mat-icon class="refresh icon" (click)="reset(left, right, filterbox)" matTooltip="Refresh">refresh            </mat-icon>          </button>        </div>        <ccf-info-button [infoTitle]="\'HuBMAP CCF Exploration User Interface 1.0\'" [matTooltip]="\'Open Info\'">        </ccf-info-button>      </div>      <ccf-results-browser        [listResults]="listResultsState.listResults$ | async"        [aggregateData]="data.aggregateData$ | async"        [resultLabel]="ontologySelectionLabel"        (listResultSelected)="listResultsState.selectListResult($event)"        (listResultDeselected)="listResultsState.deselectListResult($event)"        (linkClicked)="openiFrameViewer($event)">      </ccf-results-browser>      <ccf-drawer-toggle-button></ccf-drawer-toggle-button>    </ccf-drawer>    <ccf-drawer-content>      <div [class.closed]="!organListVisible" class="selector-drawer">        <ccf-organ-selector class="organ-selector" [multiselect]="true"                            [occurenceData]="data.termOccurencesData$ | async"                            [organList]="scene.referenceOrgans$ | async"                            (organsChanged)="scene.setSelectedReferenceOrgans($event)"                            [selectedOrgans]="scene.selectedReferenceOrgans$ | async">        </ccf-organ-selector>      </div>      <div class="close-button-wrapper" [class.closed]="!organListVisible">        <div class="close-button" (click)="organListVisible = !organListVisible">          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">            {{ organListVisible ? \'arrow_drop_up\': \'arrow_drop_down\' }}          </mat-icon>        </div>      </div>      <ccf-body-ui [scene]="scene.scene$ | async" (nodeClick)="scene.sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"                   [class.expanded-stage]="!organListVisible" class="stage-content"></ccf-body-ui>    </ccf-drawer-content>  </ccf-drawer-container></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};

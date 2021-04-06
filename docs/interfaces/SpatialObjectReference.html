@@ -68,7 +68,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A reference to a spatial object. </p>
+                <p>A reference to a spatial object </p>
 
             </p>
 
@@ -141,7 +141,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Identifier. </p>
+                                    <div class="io-description"><p>Identifier </p>
 </div>
                                 </td>
                             </tr>
@@ -170,7 +170,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Type name. </p>
+                                    <div class="io-description"><p>Type name </p>
 </div>
                                 </td>
                             </tr>
@@ -205,7 +205,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Data file name. </p>
+                                    <div class="io-description"><p>Data file name </p>
 </div>
                                 </td>
                             </tr>
@@ -240,7 +240,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Data format. </p>
+                                    <div class="io-description"><p>Data format </p>
 </div>
                                 </td>
                             </tr>
@@ -280,7 +280,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>File subpath. </p>
+                                    <div class="io-description"><p>File subpath </p>
 </div>
                                 </td>
                             </tr>
@@ -292,51 +292,51 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface SpatialObjectReference {
-  /** Identifier. */
+  /** Identifier */
   &#x27;@id&#x27;: string;
-  /** Type name. */
+  /** Type name */
   &#x27;@type&#x27;: &#x27;SpatialObjectReference&#x27;;
-  /** Data file name. */
+  /** Data file name */
   file: string;
-  /** Data format. */
+  /** Data format */
   file_format: string;
-  /** File subpath. */
+  /** File subpath */
   file_subpath?: string;
 }
 
 /** A set of extraction sites */
 export interface ExtractionSet {
-  /** Identifier. */
+  /** Identifier */
   &#x27;@id&#x27;: string;
-  /** Type name. */
+  /** Type name */
   &#x27;@type&#x27;: &#x27;ExtractionSet&#x27;;
-  /** Entity label. */
+  /** Entity label */
   label: string;
   /** The list of extraction sites in this set */
   extractionSites: SpatialEntity[];
 }
 
-/** A spatial entity. */
+/** A spatial entity */
 export interface SpatialEntity {
-  /** Identifier. */
+  /** Identifier */
   &#x27;@id&#x27;: string;
-  /** Type name. */
+  /** Type name */
   &#x27;@type&#x27;: &#x27;SpatialEntity&#x27;;
   /** IRI of the Entity this Spatial Entity represents */
   entityId?: string;
-  /** Entity label. */
+  /** Entity label */
   label?: string;
-  /** Entity comment. */
+  /** Entity comment */
   comment?: string;
-  /** Creator. */
+  /** Creator */
   creator?: string;
-  /** Creator first name. */
+  /** Creator first name */
   creator_first_name?: string;
-  /** Creator last name. */
+  /** Creator last name */
   creator_last_name?: string;
-  /** Creator identifier. */
+  /** Creator identifier */
   creator_orcid?: string;
-  /** Creation date. */
+  /** Creation date */
   creation_date?: string;
 
   /** Annotations (a set of IRIs) */
@@ -356,63 +356,63 @@ export interface SpatialEntity {
   /** The number of slices taken out of this spatial entity */
   slice_count?: number;
 
-  /** X-dimension. */
+  /** X-dimension */
   x_dimension: number;
-  /** Y-dimension. */
+  /** Y-dimension */
   y_dimension: number;
-  /** Z-dimension. */
+  /** Z-dimension */
   z_dimension: number;
-  /** Units dimensions are in. */
+  /** Units dimensions are in */
   dimension_units: string;
-  /** Data references. */
+  /** Data references */
   object?: SpatialObjectReference;
 
-  /** Coloring. */
+  /** Coloring */
   color?: [number, number, number, number];
 }
 
-/** Object describing the placement of an entity. */
+/** Object describing the placement of an entity */
 export interface SpatialPlacement {
-  /** Identifier. */
+  /** Identifier */
   &#x27;@id&#x27;: string;
-  /** Type name. */
+  /** Type name */
   &#x27;@type&#x27;: &#x27;SpatialPlacement&#x27;;
-  /** Source entity. */
+  /** Source entity */
   source: SpatialEntity | SpatialObjectReference;
-  /** Target entity. */
+  /** Target entity */
   target: SpatialEntity;
 
-  /** Date placement was made. */
+  /** Date placement was made */
   placement_date: string;
-  /** Scaling in x-dimension. */
+  /** Scaling in x-dimension */
   x_scaling: number;
-  /** Scaling in y-dimension. */
+  /** Scaling in y-dimension */
   y_scaling: number;
-  /** Scaling in z-dimension. */
+  /** Scaling in z-dimension */
   z_scaling: number;
-  /** Units scaling is expressed in. */
+  /** Units scaling is expressed in */
   scaling_units: string;
 
-  /** Rotation in x-dimension. */
+  /** Rotation in x-dimension */
   x_rotation: number;
-  /** Rotation in y-dimension. */
+  /** Rotation in y-dimension */
   y_rotation: number;
-  /** Rotation in z-dimension. */
+  /** Rotation in z-dimension */
   z_rotation: number;
-  /** Rotation in w-dimension. */
+  /** Rotation in w-dimension */
   w_rotation?: number;
-  /** Order rotations should be applied in. */
+  /** Order rotations should be applied in */
   rotation_order?: string;
-  /** Units rotation is expressed in. */
+  /** Units rotation is expressed in */
   rotation_units: string;
 
-  /** Translation in x-dimension. */
+  /** Translation in x-dimension */
   x_translation: number;
-  /** Translation in y-dimension. */
+  /** Translation in y-dimension */
   y_translation: number;
-  /** Translation in z-dimension. */
+  /** Translation in z-dimension */
   z_translation: number;
-  /** Units translation is expressed in. */
+  /** Units translation is expressed in */
   translation_units: string;
 }
 </code></pre>

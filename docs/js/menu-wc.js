@@ -1084,6 +1084,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/AnatomicalStructureTagState.html" data-type="entity-link">AnatomicalStructureTagState</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/ColorAssignmentState.html" data-type="entity-link">ColorAssignmentState</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/DataSourceService.html" data-type="entity-link">DataSourceService</a>
                                 </li>
                                 <li class="link">
@@ -1100,6 +1103,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/InfoButtonService.html" data-type="entity-link">InfoButtonService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/ListResultsState.html" data-type="entity-link">ListResultsState</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/MessageService.html" data-type="entity-link">MessageService</a>
@@ -1166,7 +1172,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Collision.html" data-type="entity-link">Collision</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/ColorSwatch.html" data-type="entity-link">ColorSwatch</a>
+                                <a href="interfaces/Color.html" data-type="entity-link">Color</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ColorAssignmentStateModel.html" data-type="entity-link">ColorAssignmentStateModel</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/ContentContainerChanged.html" data-type="entity-link">ContentContainerChanged</a>
@@ -1242,6 +1251,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/ListResultItem.html" data-type="entity-link">ListResultItem</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ListResultsStateModel.html" data-type="entity-link">ListResultsStateModel</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Message.html" data-type="entity-link">Message</a>
@@ -1353,9 +1365,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/TagSearchResult.html" data-type="entity-link">TagSearchResult</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/TissueBlockRegistryEntry.html" data-type="entity-link">TissueBlockRegistryEntry</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/TissueBlockResult.html" data-type="entity-link">TissueBlockResult</a>

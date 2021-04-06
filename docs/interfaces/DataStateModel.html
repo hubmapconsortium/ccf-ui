@@ -140,11 +140,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { DataAction, Payload, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { bind } from &#x27;bind-decorator&#x27;;
-import { AggregateResult, Filter, ListResult, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
+import { AggregateResult, Filter, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from &#x27;rxjs&#x27;;
 import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 
@@ -230,8 +230,6 @@ export interface DataStateModel {
 })
 @Injectable()
 export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implements NgxsOnInit {
-  /** Implementation subject for listDataQueryStatus$. */
-  private readonly _listDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for tissueBlockDataQueryStatus$. */
   private readonly _tissueBlockDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
@@ -245,10 +243,6 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
 
   /** Current filter. */
   readonly filter$ &#x3D; this.state$.pipe(pluck(&#x27;filter&#x27;));
-  /** Latest list query data. */
-  readonly listData$ &#x3D; this.filter$.pipe(queryData(
-    this.listData, sendCompletedTo(this._listDataQueryStatus$)
-  ));
   /** Latest tissue block query data. */
   readonly tissueBlockData$ &#x3D; this.filter$.pipe(queryData(
     this.tissueBlockData, sendCompletedTo(this._tissueBlockDataQueryStatus$)
@@ -266,8 +260,6 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
     this.sceneData, sendCompletedTo(this._sceneDataQueryStatus$)
   ));
 
-  /** Current status of queries in the listData$ observable. */
-  readonly listDataQueryStatus$ &#x3D; this._listDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the tissueBlockData$ observable. */
   readonly tissueBlockDataQueryStatus$ &#x3D; this._tissueBlockDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the aggregateData$ observable. */
@@ -279,7 +271,6 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
 
   /** Current status of all queries. */
   readonly queryStatus$ &#x3D; combineLatest([
-    this.listDataQueryStatus$,
     this.tissueBlockDataQueryStatus$,
     this.aggregateDataQueryStatus$,
     this.termOccurencesDataQueryStatus$,
@@ -297,7 +288,6 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   constructor(private readonly source: DataSourceService) {
     super();
     // Start everything in the completed state
-    this._listDataQueryStatus$.next(DataQueryState.Completed);
     this._tissueBlockDataQueryStatus$.next(DataQueryState.Completed);
     this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
     this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
@@ -320,23 +310,11 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
    * @param filter Changes to be made to the current filter.
    */
   @DataAction()
-  updateFilter(filter: Partial&lt;Filter&gt;): void {
+  updateFilter(@Payload(&#x27;filter&#x27;) filter: Partial&lt;Filter&gt;): void {
     this.patchState({
       // Might need to do a deep compare of current and new filter
       filter: Object.assign({}, this.getState().filter, filter)
     });
-  }
-
-  /**
-   * Queries for list data.
-   *
-   * @param filter The filter used during query.
-   * @returns The result of the query.
-   */
-  @bind
-  private listData(filter: Filter): ObservableInput&lt;ListResult[]&gt; {
-    this._listDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getListResults(filter);
   }
 
   /**
