@@ -5,17 +5,17 @@ import { Shallow } from 'shallow-render';
 
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
+import { ThemingService } from './core/services/theming/theming.service';
 import { DataState } from './core/store/data/data.state';
+import { ListResultsState } from './core/store/list-results/list-results.state';
+import { SceneState } from './core/store/scene/scene.state';
 import { StoreModule } from './core/store/store.module';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
-import { ThemingService } from './core/services/theming/theming.service';
-import { SceneState } from './core/store/scene/scene.state';
 
 @NgModule({})
 class EmptyModule {}
-
 
 describe('AppComponent', () => {
   let shallow: Shallow<AppComponent>;
@@ -28,6 +28,9 @@ describe('AppComponent', () => {
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
       .replaceModule(StoreModule, EmptyModule)
+      .mock(ListResultsState, {
+        listResults$: of([])
+      })
       .mock(SceneState, {
         referenceOrgans$: of([]),
         selectedReferenceOrgans$: of([]),
