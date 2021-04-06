@@ -10,7 +10,7 @@
   <div class="results-browser-list" (scroll)="onScroll($event)">
     <div class="browser-item-container" *ngFor="let result of listResults">
       <ccf-donor-card
-        [donor]="result.tissueBlock"
+        [tissueBlock]="result.tissueBlock"
         [selected]="result.selected"
         [color]="result.color"
         (checked)="handleSelection(result, $event)"
