@@ -15,11 +15,11 @@
       <mat-icon class="icon-size icon-dark mr-5">person</mat-icon>
 
       <div class="donor-info">
-        <div class="title description">{{ donor.donor.label }}</div>
-        <div class="description">{{ donor.donor.description }}</div>
+        <div class="title description">{{ tissueBlock.donor.label }}</div>
+        <div class="description">{{ tissueBlock.donor.description }}</div>
       </div>
     </div>
-    <div class="hover-state mat-elevation-z4" (click)="linkHandler(donor.donor.link)">
+    <div class="hover-state mat-elevation-z4" (click)="linkHandler(tissueBlock.donor.link)">
       <div class="hover-title">DONOR</div>
       <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
     </div>
@@ -33,18 +33,18 @@
     <div class="info-block hover-enabled default-padding">
       <mat-icon class="icon-size icon-dark mr-5">bubble_chart</mat-icon>
       <div class="text-content">
-        <div class="description">{{ donor.label }}</div>
-        <div class="description">{{ donor.description }}</div>
+        <div class="description">{{ tissueBlock.label }}</div>
+        <div class="description">{{ tissueBlock.description }}</div>
       </div>
 
-      <div class="hover-state mat-elevation-z4" (click)="linkHandler(donor.link)">
+      <div class="hover-state mat-elevation-z4" (click)="linkHandler(tissueBlock.link)">
         <div class="hover-title">TISSUE SECTION</div>
         <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
       </div>
     </div>
 
-    <ng-container *ngIf="donor.datasets.length > 0">
-      <ccf-thumbnail-carousel (linkClicked)="linkHandler($event.link)" class="mt-05" [data]="donor.datasets">
+    <ng-container *ngIf="tissueBlock.datasets.length > 0">
+      <ccf-thumbnail-carousel (linkClicked)="linkHandler($event.link)" class="mt-05" [data]="tissueBlock.datasets">
       </ccf-thumbnail-carousel>
     </ng-container>
 
@@ -53,7 +53,7 @@
      -->
   </div>
 
-  <div class="expanded-view w-80 mat-elevation-z2 align-end" *ngFor="let section of donor.sections">
+  <div class="expanded-view w-80 mat-elevation-z2 align-end" *ngFor="let section of tissueBlock.sections">
     <div class="default-padding info-block hover-enabled">
       <mat-icon class="icon-size mr-5 icon-light">bubble_chart</mat-icon>
       <div class="text-content">

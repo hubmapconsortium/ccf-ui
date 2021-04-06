@@ -53,7 +53,12 @@ export class ResultsBrowserComponent {
    */
   atScrollBottom = false;
 
-  // Will call results state method to update selections / colors.
+  /**
+   * Notifies listeners when a selection/deselection is made
+   *
+   * @param result the list result
+   * @param selected whether to select or deselect the result
+   */
   handleSelection(result: Immutable<ListResult>, selected: boolean): void {
     if (selected) {
       this.listResultSelected.next(result);
