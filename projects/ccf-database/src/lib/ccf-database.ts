@@ -6,13 +6,13 @@ import {
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
 import { addHubmapDataToStore } from './hubmap/hubmap-data-import';
-import { AggregateResult, Filter, ListResult, OntologyTreeModel, TissueBlockResult } from './interfaces';
+import { AggregateResult, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 import { getOntologyTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
-import { getListResult, getTissueBlockResult } from './queries/tissue-block-result-n3';
+import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { SpatialEntity } from './spatial-types';
 
 
@@ -172,24 +172,7 @@ export class CCFDatabase {
    */
    async getTissueBlockResults(filter?: Filter): Promise<TissueBlockResult[]> {
     filter = {...filter, hasSpatialEntity: true} as Filter;
-    const highlighted = new Set<string>(filter.highlightedEntities);
-    return [...this.getIds(filter)].map((s) => getTissueBlockResult(this.store, s))
-      .map((s) => Object.assign(s, {highlighted: highlighted.has(s['@id'])}))
-      .sort((a, b) => (a.highlighted ? 0 : 1) - (b.highlighted ? 0 : 1));
-  }
-
-  /**
-   * Gets all list results for a filter.
-   *
-   * @param [filter] The filter.
-   * @returns A list of results.
-   */
-  async getListResults(filter?: Filter): Promise<ListResult[]> {
-    filter = {...filter, hasSpatialEntity: true} as Filter;
-    const highlighted = new Set<string>(filter.highlightedEntities);
-    return [...this.getIds(filter)].map((s) => getListResult(this.store, s))
-      .map((s) => Object.assign(s, {highlighted: highlighted.has(s['@id'])}))
-      .sort((a, b) => (a.highlighted ? 0 : 1) - (b.highlighted ? 0 : 1));
+    return [...this.getIds(filter)].map((s) => getTissueBlockResult(this.store, s));
   }
 
   /**

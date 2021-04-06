@@ -2,7 +2,7 @@ import { set } from 'lodash';
 import { fromRdf } from 'rdf-literal';
 import { DataFactory, Store } from 'triple-store-utils';
 
-import { DatasetResult, DonorResult, ListResult, TissueBlockResult, TissueSectionResult } from '../interfaces';
+import { DatasetResult, DonorResult, TissueBlockResult, TissueSectionResult } from '../interfaces';
 import { entity } from '../util/prefixes';
 
 
@@ -132,30 +132,4 @@ export function getTissueBlockResult(store: Store, iri: string): TissueBlockResu
     return false;
   }, DataFactory.namedNode(iri), null, null, null);
   return result;
-}
-
-export function getListResult(store: Store, iri: string): ListResult {
-  const block = getTissueBlockResult(store, iri);
-  const datasets = [block.datasets]
-    .concat(block.sections.map(s => s.datasets))
-    .reduce((acc, d) => acc.concat(d), []);
-  const goodDataset = datasets.find(d => d.thumbnail.indexOf('thumbnails') !== -1) ||
-    datasets.filter(d => d.thumbnail !== 'assets/icons/ico-unknown.svg').find(d => d.thumbnail);
-
-  return {
-    '@id': block['@id'],
-    '@type': 'ListResult',
-    id: block['@id'],
-    label: block.donor.label,
-    shortInfo: [
-      block.label,
-      block.donor.providerName,
-      `${block.sections.length} sections, ${datasets.length} datasets`
-    ],
-    thumbnailUrl: goodDataset ? goodDataset.thumbnail : 'assets/icons/ico-unknown.svg',
-    downloadUrl: `${block.link}`,
-    downloadTooltip: 'View Tissue Block',
-    resultUrl: goodDataset ? goodDataset.link : block.link,
-    resultType: 'external_link'
-  };
 }

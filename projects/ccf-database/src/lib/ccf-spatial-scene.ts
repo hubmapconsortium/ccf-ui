@@ -89,17 +89,11 @@ export class CCFSpatialScene {
 
   getReferenceSceneNodes(filter?: Filter): SpatialSceneNode[] {
     const body = this.getReferenceBody(filter);
-
-    const terms = new Set<string>(filter?.ontologyTerms ?? []);
     let nodes: (SpatialSceneNode | undefined)[] = [
       ...this.getReferenceOrganSets(filter).map((organ) => {
         const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
         return this.getSceneNode(organ, body, {
-          unpickable: true,
-          _lighting: 'pbr',
-          color: [255, 255, 255, 255],
-          opacity: isSkin ? 0.5 : 0.2,
-          zoomBasedOpacity: false
+          color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr'
         });
       })
     ];

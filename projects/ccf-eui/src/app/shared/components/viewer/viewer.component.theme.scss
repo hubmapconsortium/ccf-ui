@@ -12,6 +12,10 @@
       color: mat-color($foreground, text-muted);
       box-shadow: -0.25rem 0rem 0.2rem 0.1rem map-get($foreground, header-shadow);
 
+      a:link, a:visited, a:active, a:hover {
+        color: mat-color($foreground, text-muted);
+      }
+
       .close {
         color: white;
         background-color: mat-color($foreground, text-muted);

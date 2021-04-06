@@ -44,32 +44,6 @@ export interface TissueBlockResult extends ListResultItem {
   datasets: DatasetResult[];
 }
 
-/** Result for list of tissues. */
-export interface ListResult {
-  /** Identifier. */
-  '@id': string;
-  /** Type string. */
-  '@type': 'ListResult';
-  /** Identifier. */
-  id: string;
-  /** Tissue label. */
-  label: string;
-  /** Short description. */
-  shortInfo?: string[];
-  /** Small icon url. */
-  thumbnailUrl?: string;
-  /** Url for data download. */
-  downloadUrl?: string;
-  /** Description of data download. */
-  downloadTooltip?: string;
-  /** Result url. */
-  resultUrl?: string;
-  /** Type of result url. */
-  resultType?: 'external_link' | 'local_link';
-  /** If the result should be highlighted */
-  highlighted?: boolean;
-}
-
 /** Item that can be searched for. */
 export interface SearchableItem {
   /** Identifier. */
@@ -98,8 +72,6 @@ export interface Filter {
   technologies: string[];
   /** Ontology terms. */
   ontologyTerms: string[];
-  /** Entities to be highlighted */
-  highlightedEntities?: string[];
   /** Include optional debugging information */
   debug?: boolean;
 }
