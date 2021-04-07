@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   disableDbWorker: true,
   dbOptions: {
-    ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
+    ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',

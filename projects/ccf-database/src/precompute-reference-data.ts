@@ -13,10 +13,8 @@ if (!(global as {fetch: unknown}).fetch) {
 
 async function main(outputFile?: string): Promise<void> {
   const db = new CCFDatabase({
-    ccfOwlUrl: 'http://localhost:8080/ccf.owl.n3',
+    ccfOwlUrl: 'http://localhost:8080/ccf.owl',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
-    // ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl.n3',
-    // ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: '', // Do not query the search-api for spatial entities by default
