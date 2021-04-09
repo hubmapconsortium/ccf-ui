@@ -2,6 +2,22 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
 
+## 1.6.0 - 2021-04-09
+
+### Added in RUI 1.6.0
+
+* Added SOP information to the About section
+
+### Added in EUI 1.6.0
+
+* Added color assignment/selection to both 3d scene and list results
+* Bug fixes, code cleanup, and optimization
+
+### Known issues in 1.6.0
+
+* The 3d scene is a little slow. To be able to interact, unselect reference organs to reduce scene complexity.
+* Tissue samples may be a little off in the 3D scene. This will be fixed in a future release. Data is still accurate.
+
 ## 1.5.0 - 2021-03-26
 
 ### Added in RUI 1.5.0
