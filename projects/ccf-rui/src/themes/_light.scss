@@ -27,7 +27,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   contrast-icon: map-get($primary-colors, 500), // #9E9E9E (icons on light background)
   contrast-text: map-get($primary-colors, 500), // #9E9E9E (text on dark background)
   disabled: map-get($primary-colors, light-disabled), // #E0E0E0
-  disabled-text: #BDBDBD,
+  disabled-text: #CCCCCC,
   divider: map-get($primary-colors, 600), // #757575
   header-border: map-get($primary-colors, 800), // #424242
   icon: map-get($primary-colors, 500), // #9E9E9E
