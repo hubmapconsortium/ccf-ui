@@ -28,12 +28,19 @@
   box-shadow: 0.1rem 0.1rem 0.2rem 0rem #0000001d;
 }
 
-.refresh {
-  margin-right: 1rem;
-  cursor: pointer;
-  transition: .6s;
-  transition-property: background;
+.refresh-icon {
+  padding: 0.25rem;
   border-radius: 0.25rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .refresh {
+    cursor: pointer;
+    transition: .6s;
+    transition-property: background;
+  }
 }
 
 .patient-filters {
