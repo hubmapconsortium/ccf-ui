@@ -116,6 +116,10 @@ export class CCFDatabase {
         addJsonLdToStore('assets/kpmp/data/rui_locations.jsonld', this.store)
         .catch(x => console.log('Couldn\'t locate KPMP data.'))
       );
+      ops.push(
+        addJsonLdToStore('assets/sparc/data/rui_locations.jsonld', this.store)
+        .catch(x => console.log('Couldn\'t locate SPARC data.'))
+      );
     }
     await Promise.all(ops);
     // Add a small delay to allow the triple store to settle
