@@ -1,13 +1,7 @@
 <div class="main-container">
   <div class="checkbox-background" [class.selected]="selected"
        [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
-    <ng-container *ngIf="selected; else unselected">
-      <mat-icon fontSet="material-icons-outlined" class="checkbox selected">check_box_outlined</mat-icon>
-    </ng-container>
-
-    <ng-template #unselected>
-      <mat-icon class="checkbox unselected">check_box_outline_blank</mat-icon>
-    </ng-template>
+    <mat-checkbox [checked]="selected" class="checkbox" [class.checkselected]="selected"></mat-checkbox>
   </div>
 
   <div class="hoverable default-padding donor mat-elevation-z2" [class.hover-enabled]="selected" [class.expanded]="expanded">

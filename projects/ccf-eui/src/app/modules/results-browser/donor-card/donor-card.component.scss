@@ -6,6 +6,7 @@
     min-height: 3rem;
     width: 100%;
     align-items: center;
+    padding-left: 0.5rem;
   }
 
   .checkbox-background {
@@ -14,14 +15,24 @@
     border-radius: 50%;
     margin-right: 0.5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
 
+    ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+      background-color: transparent;
+    }
+
+    .checkselected {
+      ::ng-deep .mat-checkbox-frame {
+        border-color: white !important;
+      }
+    }
+
     .checkbox {
-      height: 1.5rem;
-      width: 1.5rem;
-      font-size: 1.5rem;
+      margin-left: 1.12rem;
+      margin-bottom: 0.12rem; 
     }
   }
 
