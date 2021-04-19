@@ -12,10 +12,13 @@
     }
 
     ccf-drawer-content {
+      position: relative; 
+      z-index: 1;
+      
       ccf-organ-selector {
         height: 100%;
         padding-top: 0.5rem;
-        transition:  padding 0.5s;
+        transition: all 0.5s;
 
         &.closed {
           padding-top: 0;
@@ -31,59 +34,56 @@
         height: 5.688rem;
         transition: all 0.5s ease-in-out;
 
+        .expand-collapse-icon {
+          width: 3rem;
+          height: 1.2rem;
+          position: absolute; 
+          bottom: 0; 
+          right: 50%; 
+          margin-bottom: -1.2rem; 
+          z-index : 100;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          background-color: white;
+          border-bottom-left-radius: 0.2rem;
+          border-bottom-right-radius: 0.2rem;
+
+          &:hover {
+            background-color: #ececec;
+          }
+        }
+
         &.closed {
-          height: 1.5rem;
-          top: -4.25rem;
+          height: 3rem;
+          top: -2.9rem;
         }
       }
 
       .stage-content {
-        border-bottom-right-radius: 0.5rem;
-        border-bottom-left-radius: 0.5rem;
-        height: calc(100% - 5.688rem);        
+        border-radius: 0.5rem !important;
+        height: calc(100% - 2.688rem - 3rem - 1.5rem);        
       }
 
       .expanded-stage {
-        height: 100%;
+        height: calc(100% - 1.5rem); 
+        padding-bottom: 1rem;
       }
       
     }
 
-    .close-button-wrapper {
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      border-top-right-radius: 0.5rem;
-      border-top-left-radius: 0.5rem;
-
-      .close-button {
-        display: flex;
-        justify-content: center;
-        background-color: white;
-        color: black;
-        height: 1.0625rem;
-        width: 3rem;
-        align-self: center;
-        border-radius: 0rem 0rem 0.25rem 0.25rem;
-        cursor: pointer;
-        transition: 0.25s;
-
-        &:hover {
-          background-color: #e0e0e0;
-        }
-
-        .mat-icon {
-          position: relative;
-          bottom: 0.2rem;
-        }
-      }
-    }
+    
 
     ccf-content {
-      top: 0rem;
+      // top: 0rem;
+      position: absolute;
       transition-duration: 0.5s;
       transition-timing-function: ease-in-out;
       transition-property: all;
+      bottom: 1.5rem;
+      z-index: 1;
+      
     }
 
   }
