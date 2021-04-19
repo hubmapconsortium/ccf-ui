@@ -36,7 +36,7 @@
 
       .organ-sliders {
         .slider-label {
-          font-weight: bold;
+          font-weight: 600;
         }
 
         display: flex;
@@ -46,6 +46,12 @@
 
       mat-expansion-panel {
         box-shadow: none;
+        mat-expansion-panel-header {
+          .expansion-title {
+            font-size: 1rem;
+            font-weight: 600;
+          }
+        }
       }
 
       ::ng-deep .mat-expansion-panel-body {
@@ -76,7 +82,7 @@
           .expansion-placeholder {
             width: 100%;
             font-size: 0.9rem;
-            
+            font-weight: 400;
           }
         }
       }

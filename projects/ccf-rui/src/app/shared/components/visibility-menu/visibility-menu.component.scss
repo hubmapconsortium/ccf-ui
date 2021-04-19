@@ -29,9 +29,14 @@
     flex-shrink: 0;
     position: relative;
 
+    .opacity {
+      cursor: pointer;
+    }
+
     .opacity-icon {
       z-index: 1;
       transition: .6s;
+      
 
       &:hover {
         border-radius: 2px;
@@ -45,7 +50,7 @@
       text-overflow: ellipsis;
       margin-left: 0.5rem;
       opacity: 1;
-      transition-duration: 0.1s;
+      transition-duration: 0.4s;
       transition-timing-function: ease-in-out;
       transition-property: opacity;
 

@@ -7,10 +7,10 @@
 
   .ccf-block-size-input {
     .icon {
-      color: mat-color($foreground, icon);
+      color: mat-color($foreground, main);
 
       &:hover {
-        color: mat-color($foreground, active-icon);
+        background: mat-color($foreground, icons-hover);
       }
     }
 

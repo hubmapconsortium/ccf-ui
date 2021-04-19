@@ -6,13 +6,18 @@
     height: 1.5rem;
 
     .title {
-      font-weight: bold;
+      font-weight: 600;
     }
 
     .reset {
       transform: scaleX(-1);
       cursor: pointer;
       transition: .6s;
+      
+      &:hover {
+        border-radius: 2px;
+      }
+
     }
   }
 
