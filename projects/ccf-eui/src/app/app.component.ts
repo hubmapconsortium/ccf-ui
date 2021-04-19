@@ -27,7 +27,7 @@ export class AppComponent {
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
    */
-  ontologySelectionLabel = 'body';
+  ontologySelectionLabel = 'Body';
 
   /**
    * Whether or not organ carousel is open

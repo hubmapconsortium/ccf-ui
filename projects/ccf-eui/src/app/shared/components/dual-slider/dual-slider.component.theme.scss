@@ -63,6 +63,6 @@
 
   .input-high,
   .input-low {
-    background-color: mat-color($background, modal);
+    background-color: mat-color($foreground, input-bg);
   }
 }
