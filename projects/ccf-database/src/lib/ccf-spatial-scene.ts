@@ -93,7 +93,7 @@ export class CCFSpatialScene {
       ...this.getReferenceOrganSets(filter).map((organ) => {
         const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
         return this.getSceneNode(organ, body, {
-          color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr'
+          color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr', zoomBasedOpacity: true
         });
       })
     ];
