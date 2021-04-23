@@ -52,9 +52,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/36d378f4-d4b5-456f-a32c-12a4c60d8159",
@@ -64,6 +64,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
@@ -127,9 +129,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/521967fe-9c54-4b71-a9aa-398950ed47ae",
@@ -139,6 +141,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
@@ -201,9 +205,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/6d7cca9f-1fe3-442d-8ac9-43896f194326",
@@ -213,6 +217,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002080"
@@ -274,9 +280,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ee4110ca-9ea3-4580-a79c-30471359f11c",
@@ -286,6 +292,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -348,9 +356,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/35247281-a3a5-4e0e-b4d5-5dda314c25f2",
@@ -360,6 +368,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002079",
@@ -422,9 +432,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/273dd4c3-5442-4c31-8ffb-163cbc0f303d",
@@ -434,6 +444,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -496,9 +508,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/e1a870bc-d965-4324-b691-55ebac9f2f89",
@@ -508,6 +520,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002078"
@@ -569,9 +583,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/4b81bf86-4c5b-4422-9edb-c0f4ec525d8e",
@@ -581,6 +595,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
             ],
@@ -641,9 +657,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/891363dd-7c97-421c-b321-6a27b3b55dae",
@@ -653,6 +669,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002080"
@@ -714,9 +732,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/717feefc-95f4-42b4-8255-96ddf65921be",
@@ -726,6 +744,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002080"
@@ -787,9 +807,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/da9a6669-973c-4bee-97e1-7430d21796f8",
@@ -799,6 +819,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -868,9 +890,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/a99b891d-44ce-47ab-91d9-e7dc5743ea46",
@@ -880,6 +902,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -949,9 +973,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/4e5190dc-9290-4d8d-a521-18d8f64c098e",
@@ -961,6 +985,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
             ],
@@ -1021,9 +1047,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/455397a4-3d28-4e0b-9a88-c40cd796d3ec",
@@ -1033,6 +1059,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
@@ -1094,9 +1122,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/9c7fd6bb-6ea4-411d-8ad3-d2277ef18b05",
@@ -1106,6 +1134,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
             ],
@@ -1166,9 +1196,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/bd2df259-b64d-4f5a-b2e4-84be6031c5ef",
@@ -1178,6 +1208,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
             ],
@@ -1238,9 +1270,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/8ac5f392-021e-452a-845b-a2a5e9e807fb",
@@ -1250,6 +1282,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
             ],
@@ -1310,9 +1344,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/5b8ac863-a3ac-4f61-b856-0243634ca18b",
@@ -1322,6 +1356,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
             ],
@@ -1382,9 +1418,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/597935ff-e86d-4a23-a3d6-bd88ede49a3f",
@@ -1394,6 +1430,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
             ],
@@ -1454,9 +1492,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/a4137bf0-6e8f-4dfd-b341-e3ac3ee51772",
@@ -1466,6 +1504,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-16",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084"
             ],
@@ -1526,9 +1566,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/9815616b-4e3f-4c2a-bf64-14dc26f484a4",
@@ -1538,6 +1578,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -1601,9 +1643,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/3c25705a-5769-425a-a481-d1f6d5a95cab",
@@ -1613,6 +1655,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -1676,9 +1720,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/a3e6d018-4e28-41b8-9ea7-6a3f8dc33f6c",
@@ -1688,6 +1732,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -1751,9 +1797,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/5d1aa5f0-f399-4bc2-96fd-e999a2326626",
@@ -1763,6 +1809,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -1826,9 +1874,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/50ee1b49-9d08-46f3-87cb-a3faafb1f555",
@@ -1838,6 +1886,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
@@ -1901,9 +1951,9 @@
           "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
           "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
           "sample_type": "Tissue Block",
-          "section_count": "",
-          "section_size": "",
-          "section_units": "",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/61c613a2-0030-48bf-8b6e-be631f24ce8e",
@@ -1913,6 +1963,8 @@
             "creator_last_name": "Hanna",
             "creation_date": "2021-03-19",
             "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
               "http://purl.obolibrary.org/obo/UBERON_0004151",
               "http://purl.obolibrary.org/obo/UBERON_0002084",
               "http://purl.obolibrary.org/obo/UBERON_0002094",
