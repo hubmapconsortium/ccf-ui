@@ -600,13 +600,17 @@ export class SlicesInputComponent {
     height: 1.5rem;
 
     .title {
-      font-weight: bold;
+      font-weight: 600;
     }
 
     .refresh {
       transform: scaleX(-1);
       cursor: pointer;
       transition: .6s;
+
+      &amp;:hover {
+        border-radius: 2px;
+      }
     }
   }
 
