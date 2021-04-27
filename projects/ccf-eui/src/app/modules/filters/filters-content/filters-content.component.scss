@@ -1,6 +1,7 @@
 .filter {
   &.hidden {
-    display: none !important;
+    opacity: 0;
+    transition-duration: 0.2s;
   }
 
   &.assays {
@@ -15,7 +16,8 @@
 
 .button-container {
   &.hidden {
-    display: none !important;
+    opacity: 0;
+    transition-duration: 0.2s;
   }
 
   margin-top: 2rem;
@@ -49,7 +51,8 @@
   padding-top: 1rem;
 
   &.hidden {
-    display: none !important;
+    opacity: 0;
+    transition-duration: 0.2s;
   }
 
   ccf-dual-slider {
