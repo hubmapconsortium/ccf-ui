@@ -110,6 +110,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   private _termData: Record<string, number>;
 
+  atScrollBottom = false;
+
   /**
    * Creates an instance of ontology tree component.
    *
@@ -346,5 +348,14 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   getLeftIndent(level: number): string {
     return `${level*-1.5}rem`;
+  }
+
+  onScroll(event: UIEvent): void {
+    if (!event.target) {
+      return;
+    }
+    const { clientHeight, scrollHeight, scrollTop } = event.target as Element;
+    const diff = scrollHeight - scrollTop - clientHeight;
+    this.atScrollBottom = diff < 20;
   }
 }
