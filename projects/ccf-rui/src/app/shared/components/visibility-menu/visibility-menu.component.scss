@@ -16,6 +16,8 @@
     transform: scaleX(-1);
     cursor: pointer;
     transition: .6s;
+    position: absolute;
+    top: 3rem;
     
     &:hover {
       border-radius: 2px;

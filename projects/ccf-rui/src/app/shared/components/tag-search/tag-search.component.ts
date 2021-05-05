@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input,
-  OnDestroy, Output,
+  OnDestroy, Output, ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
@@ -46,6 +46,8 @@ export class TagSearchComponent implements OnDestroy {
 
   /** Emits when tags are added */
   @Output() readonly added = new EventEmitter<Tag[]>();
+
+  @ViewChild('closeSearch', { read: ElementRef, static: false }) closeSearch: ElementRef<HTMLElement>;
 
   /** Mapping for pluralizing the result total count */
   readonly countMapping = {
@@ -154,8 +156,9 @@ export class TagSearchComponent implements OnDestroy {
   @HostListener('window:click', ['$event']) // eslint-disable-line
   @HostListener('window:focusin', ['$event']) // eslint-disable-line
   closeResults(event: Event): void {
+    const { closeSearch } = this;
     if (this.resultsVisible && event.target instanceof Node) {
-      if (!this.el.nativeElement.contains(event.target)) {
+      if (!this.el.nativeElement.contains(event.target) || closeSearch.nativeElement.contains(event.target)) {
         this.resultsVisible = false;
       }
     }
