@@ -29,6 +29,7 @@
   
   &.visible {
     width: 35rem;
+    height: 25.5rem;
     transition: width 0.2s ease-in-out;
     border-width: 1px;
     
@@ -41,7 +42,8 @@
   
   &.hidden {
     width: 0;
-    transition: width 0.2s ease-out;
+    height: 0;
+    transition: all 0.2s ease-out;
     transition-delay: 0.3s;
     pointer-events: none;
 
@@ -61,6 +63,7 @@
   outline: none;
   padding: 0.5rem;
   border-radius: 0.25rem;
+  transition: 0.6s;
   
   .funnel {
     // margin-top: 0.25rem;
