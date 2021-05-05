@@ -14,7 +14,7 @@
     <div [class.closed]="!open" class="selector-drawer">
         <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])"
           [selectedOrgans]="[model.organ$ | async]" [class.closed]="!open"></ccf-organ-selector>
-          <div  class="expand-collapse-icon" >
+          <div class="expand-collapse-icon" >
             <mat-icon aria-hidden="false" aria-label="Close carousel drawer" (click)="open = !open">
               {{ open ? 'arrow_drop_up': 'arrow_drop_down' }}
             </mat-icon>
