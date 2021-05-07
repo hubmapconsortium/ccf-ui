@@ -330,7 +330,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   /**
    * Sets the current highlighted node to the moused over node (reveals opacity slider)
-   * @param node 
+   *
+   * @param node
    */
   mouseOver(node: FlatNode): void {
     this.highlightedNode = node;
@@ -345,6 +346,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   /**
    * Sets the opacity of a node
+   *
    * @param node The node to be updated
    * @param value Opacity value
    */
@@ -355,6 +357,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   /**
    * Resets node to default opacity and visibility
+   *
    * @param node The node to be reset
    */
   resetNode(node: FlatNode): void {
@@ -365,6 +368,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   /**
    * Toggles visibility of a node
+   *
    * @param node The node to be toggled
    */
   toggleVisibility(node: FlatNode): void {
@@ -374,6 +378,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   /**
    * Used to properly set the position of the slider popup on the ontology tree
+   *
    * @param level Current level of a node in the ontology tree
    * @returns left indent value
    */
