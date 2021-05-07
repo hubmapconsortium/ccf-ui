@@ -590,7 +590,8 @@ export class FiltersContentComponent {
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.filter {
   &amp;.hidden {
-    display: none !important;
+    opacity: 0;
+    transition-duration: 0.2s;
   }
 
   &amp;.assays {
@@ -605,7 +606,8 @@ export class FiltersContentComponent {
 
 .button-container {
   &amp;.hidden {
-    display: none !important;
+    opacity: 0;
+    transition-duration: 0.2s;
   }
 
   margin-top: 2rem;
@@ -625,6 +627,7 @@ export class FiltersContentComponent {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.6s;
 
   .refresh {
     cursor: pointer;
@@ -639,7 +642,8 @@ export class FiltersContentComponent {
   padding-top: 1rem;
 
   &amp;.hidden {
-    display: none !important;
+    opacity: 0;
+    transition-duration: 0.2s;
   }
 
   ccf-dual-slider {

@@ -233,6 +233,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>UBERON id for the organ</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -372,6 +378,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Used to fetch the url of the organ icon</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -382,6 +394,9 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef, ViewChild } from &#x27;@angular/core&#x27;;
 import { ResizeSensor } from &#x27;css-element-queries&#x27;;
 
+/**
+ * All organs that will eventually be displayed in the app
+ */
 export const ALL_POSSIBLE_ORGANS: OrganInfo[] &#x3D; [
   { src: &#x27;app:skin&#x27;, organ: &#x27;Skin&#x27;, name: &#x27;Skin&#x27;, disabled: true, hasSex: true,
     id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002097&#x27;},
@@ -411,6 +426,9 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] &#x3D; [
   { src: &#x27;app:thymus&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Thymus&#x27;, disabled: true, hasSex: true }
 ];
 
+/**
+ * All organs which have not been disabled
+ */
 export const ALL_ORGANS &#x3D; ALL_POSSIBLE_ORGANS.filter(organ &#x3D;&gt; organ.disabled !&#x3D;&#x3D; true);
 
 /**
@@ -418,6 +436,9 @@ export const ALL_ORGANS &#x3D; ALL_POSSIBLE_ORGANS.filter(organ &#x3D;&gt; organ
  */
 export interface OrganInfo {
 
+  /**
+   * Used to fetch the url of the organ icon
+   */
   src: string;
 
   /**
@@ -445,6 +466,9 @@ export interface OrganInfo {
    */
   hasSex?: boolean;
 
+  /**
+   * UBERON id for the organ
+   */
   id?: string;
 }
 
