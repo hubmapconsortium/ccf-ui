@@ -4,6 +4,9 @@ import {
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
+/**
+ * Viewer for tissue samples
+ */
 @Component({
   selector: 'ccf-viewer',
   templateUrl: './viewer.component.html',

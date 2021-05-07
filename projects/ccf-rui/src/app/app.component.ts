@@ -18,8 +18,10 @@ export class AppComponent implements OnDestroy {
     map(organ => organ === undefined ? false : true)
   );
 
+  /** Organs to be displayed in the organ selector */
   organList = RUI_ORGANS;
 
+  /** True if the organ selector drawer is open */
   open = true;
 
   /** All subscriptions managed by the container. */

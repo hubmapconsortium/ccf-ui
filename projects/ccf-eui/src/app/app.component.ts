@@ -165,10 +165,16 @@ export class AppComponent {
     this.viewerOpen = false;
   }
 
+  /**
+   * Gets hubmap portal url
+   */
   get hubmapPortalUrl(): string {
     return this.dataSourceService.dbOptions.hubmapPortalUrl;
   }
 
+  /**
+   * Gets login token
+   */
   get loggedIn(): boolean {
     const token = this.dataSourceService.dbOptions.hubmapToken || '';
     return token.length > 0;

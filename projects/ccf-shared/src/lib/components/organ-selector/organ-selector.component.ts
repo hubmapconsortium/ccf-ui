@@ -1,6 +1,9 @@
 import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef, ViewChild } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
 
+/**
+ * All organs that will eventually be displayed in the app
+ */
 export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
   { src: 'app:skin', organ: 'Skin', name: 'Skin', disabled: true, hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002097'},
@@ -30,6 +33,9 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
   { src: 'app:thymus', organ: 'Stomach', name: 'Thymus', disabled: true, hasSex: true }
 ];
 
+/**
+ * All organs which have not been disabled
+ */
 export const ALL_ORGANS = ALL_POSSIBLE_ORGANS.filter(organ => organ.disabled !== true);
 
 /**
@@ -37,6 +43,9 @@ export const ALL_ORGANS = ALL_POSSIBLE_ORGANS.filter(organ => organ.disabled !==
  */
 export interface OrganInfo {
 
+  /**
+   * Used to fetch the url of the organ icon
+   */
   src: string;
 
   /**
@@ -64,6 +73,9 @@ export interface OrganInfo {
    */
   hasSex?: boolean;
 
+  /**
+   * UBERON id for the organ
+   */
   id?: string;
 }
 
