@@ -52,6 +52,9 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * List of nodes in the ontology tree
+   */
   get nodes(): OntologyTreeNode[] | undefined { return this._nodes; }
 
   /**
@@ -124,6 +127,9 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   @Output() nodeSelected = new EventEmitter<OntologyTreeNode[]>();
 
+  /**
+   * Emits an event whenever the node's visibility or opacity has changed
+   */
   @Output() nodeChanged = new EventEmitter<FlatNode>();
 
   /**
@@ -322,34 +328,64 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * Sets the current highlighted node to the moused over node (reveals opacity slider)
+   * @param node 
+   */
   mouseOver(node: FlatNode): void {
     this.highlightedNode = node;
   }
 
+  /**
+   * Deselects the highlighted node on mouse out
+   */
   mouseOut(): void {
     this.highlightedNode = undefined;
   }
 
+  /**
+   * Sets the opacity of a node
+   * @param node The node to be updated
+   * @param value Opacity value
+   */
   updateOpacity(node: FlatNode, value: number | undefined): void {
     node.opacity = value;
     this.nodeChanged.emit(node);
   }
 
+  /**
+   * Resets node to default opacity and visibility
+   * @param node The node to be reset
+   */
   resetNode(node: FlatNode): void {
     node.opacity = 20;
     node.visible = true;
     this.nodeChanged.emit(node);
   }
 
+  /**
+   * Toggles visibility of a node
+   * @param node The node to be toggled
+   */
   toggleVisibility(node: FlatNode): void {
     node.visible = node.visible === true ? false : true;
     this.nodeChanged.emit(node);
   }
 
+  /**
+   * Used to properly set the position of the slider popup on the ontology tree
+   * @param level Current level of a node in the ontology tree
+   * @returns left indent value
+   */
   getLeftIndent(level: number): string {
     return `${level*-1.5}rem`;
   }
 
+  /**
+   * Handles the scroll event to detect when scroll is at the bottom.
+   *
+   * @param event The scroll event.
+   */
   onScroll(event: UIEvent): void {
     if (!event.target) {
       return;

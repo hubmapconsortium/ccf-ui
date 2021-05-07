@@ -3,7 +3,7 @@ import { DatasetResult } from 'ccf-database';
 import { SwiperOptions } from 'swiper';
 import { NavigationOptions } from 'swiper/types';
 
-
+// Returns a unique identifier
 const nextUid = (() => {
   let counter = -1;
   return () => {
@@ -13,6 +13,9 @@ const nextUid = (() => {
 })();
 
 
+/**
+ * Carousel containing sample thumbnails in expanded donor cards
+ */
 @Component({
   selector: 'ccf-thumbnail-carousel',
   templateUrl: './thumbnail-carousel.component.html',

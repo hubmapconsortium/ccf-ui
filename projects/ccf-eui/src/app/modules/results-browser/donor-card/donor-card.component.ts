@@ -2,6 +2,9 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { TissueBlockResult } from 'ccf-database';
 
 
+/**
+ * Donor card component which displays data from a patient
+ */
 @Component({
   selector: 'ccf-donor-card',
   templateUrl: './donor-card.component.html',
