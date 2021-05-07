@@ -29,6 +29,10 @@
 
     .add-button{
       background-color: transparent;
+
+      &.active {
+        background-color: mat-color($foreground, icons-hover);
+      }
       
       &:hover {
         background-color: mat-color($foreground, icons-hover);
