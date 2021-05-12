@@ -37,14 +37,12 @@
       </div>
     </div>
 
+    <ccf-tissue-section-vis [tissueBlock]="tissueBlock"></ccf-tissue-section-vis>
+
     <ng-container *ngIf="tissueBlock.datasets.length > 0">
       <ccf-thumbnail-carousel (linkClicked)="linkHandler($event.link)" class="mt-05" [data]="tissueBlock.datasets">
       </ccf-thumbnail-carousel>
     </ng-container>
-
-    <!--
-      Line graph goes here.
-     -->
   </div>
 
   <div class="expanded-view w-80 mat-elevation-z2 align-end" *ngFor="let section of tissueBlock.sections">

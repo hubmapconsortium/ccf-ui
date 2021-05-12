@@ -5,6 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ThumbnailCarouselModule } from '../../../shared/components/thumbnail-carousel/thumbnail-carousel.module';
 import { DonorCardComponent } from './donor-card.component';
+import { TissueSectionVisModule } from './../tissue-section-vis/tissue-section-vis.module';
+
 
 
 
@@ -15,7 +17,8 @@ import { DonorCardComponent } from './donor-card.component';
     MatCheckboxModule,
     MatIconModule,
 
-    ThumbnailCarouselModule
+    ThumbnailCarouselModule,
+    TissueSectionVisModule
   ],
   declarations: [DonorCardComponent],
   exports: [DonorCardComponent]
