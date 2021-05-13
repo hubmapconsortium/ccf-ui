@@ -4,8 +4,8 @@
             <ccf-details-label [details]="detailsLabels$ | async"></ccf-details-label>
         </ng-container>
         <ng-template #selectors>
-            <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
-            </ccf-name-input>
+            <!-- <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
+            </ccf-name-input> -->
 
             <div class="organ-sliders" matTooltip="Select sex to filter organs.">
                 <div class="slider-label">Donor Sex:</div>

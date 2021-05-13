@@ -1,6 +1,16 @@
 <div class="modal">
   <h1 mat-dialog-title>Dialog with elements</h1>
-  <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+  <div mat-dialog-content>
+    <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
+    </ccf-name-input>
+
+    <div class="organ-sliders" matTooltip="Select sex to filter organs.">
+      <div class="slider-label">Donor Sex:</div>
+      <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"
+          [value]="sexByLabel$ | async" (valueChange)="setSexFromLabel($event)">
+      </ccf-labeled-slide-toggle>
+  </div>
+  </div>
   <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Close</button>
   </div>
