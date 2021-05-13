@@ -1,3 +1,4 @@
+<ccf-registration-modal></ccf-registration-modal>
 <ccf-header></ccf-header>
 
 <ccf-drawer-container>
@@ -9,7 +10,7 @@
     <ccf-right-sidebar></ccf-right-sidebar>
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
-
+  
   <ccf-drawer-content>
     <div [class.closed]="!open" class="selector-drawer">
         <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])"
