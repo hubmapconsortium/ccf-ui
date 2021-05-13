@@ -28,7 +28,8 @@ export const environment = {
     hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
-  }
+  },
+  googleAnalyticsToken: ''
 };
 
 /*
