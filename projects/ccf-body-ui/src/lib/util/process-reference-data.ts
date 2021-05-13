@@ -16,7 +16,7 @@ export const referenceDataConfig = {
       object: 'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Skin.glb',
       entityOverrides: {
         '@id': '#VHMSkin',
-        label: 'Visual Human Male Skin',
+        label: 'Skin',
         sex: 'Male',
         rui_rank: 10
       }
@@ -151,7 +151,7 @@ export const referenceDataConfig = {
       object: 'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Skin.glb',
       entityOverrides: {
         '@id': '#VHFSkin',
-        label: 'Visual Human Female Skin',
+        label: 'Skin',
         sex: 'Female',
         rui_rank: 10
       }
