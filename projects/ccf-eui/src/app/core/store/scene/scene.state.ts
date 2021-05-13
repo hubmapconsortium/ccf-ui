@@ -11,6 +11,7 @@ import { ColorAssignmentState } from '../color-assignment/color-assignment.state
 import { DataState } from '../data/data.state';
 import { DataSourceService } from '../../services/data-source/data-source.service';
 
+export const DEFAULT_SELECTED_ORGANS = new Set(['Skin', 'Heart', 'Kidney', 'Spleen']);
 
 export interface SceneStateModel {
   scene: SpatialSceneNode[];
@@ -148,7 +149,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       take(1),
       tap(organs => {
         this.setReferenceOrgans(organs);
-        this.setSelectedReferenceOrgans(organs.filter(organ => organ.name !== 'Large Intestine'));
+        this.setSelectedReferenceOrgans(organs.filter(organ => DEFAULT_SELECTED_ORGANS.has(organ.organ)));
       })
     ).subscribe();
 
