@@ -129,22 +129,10 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(
       map(refOrgans => {
-        const organLookup = ALL_POSSIBLE_ORGANS.reduce((acc, organ) => {
-          acc[organ.id as string] = organ;
-          return acc;
-        }, {} as Record<string, OrganInfo>);
-
-        const organIds: string[] = [];
-        for (const organ of refOrgans) {
-          const id = organ.representation_of;
-          if (id && organLookup[id] && !organIds.includes(id)) {
-            organIds.push(id);
-          }
-        }
-
-        return organIds.map(id => ({
-          ...organLookup[id], disabled: false, numResults: 0
-        } as OrganInfo));
+        const organIds = new Set(refOrgans.map(o => o.representation_of));
+        return ALL_POSSIBLE_ORGANS
+          .filter(organ => organIds.has(organ.id))
+          .map(organ => ({ ...organ, disabled: false, numResults: 0 }));
       }),
       take(1),
       tap(organs => {
