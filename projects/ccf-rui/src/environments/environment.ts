@@ -13,7 +13,8 @@ export const environment = {
     hubmapDataUrl: '', // Do not query the search-api for spatial entities by default
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
-  }
+  },
+  googleAnalyticsToken: ''
 };
 
 /*
