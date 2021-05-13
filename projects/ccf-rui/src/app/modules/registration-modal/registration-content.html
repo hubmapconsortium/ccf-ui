@@ -1,5 +1,4 @@
 <div class="modal">
-  <h1 mat-dialog-title>Dialog with elements</h1>
   <div mat-dialog-content>
     <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
     </ccf-name-input>
@@ -9,9 +8,14 @@
       <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"
           [value]="sexByLabel$ | async" (valueChange)="setSexFromLabel($event)">
       </ccf-labeled-slide-toggle>
+    </div>
+
+    <div class="selector-label">Select an organ</div>
+
+    <div class="selector-container">
+      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0]); organSelect()"
+      [selectedOrgans]="[model.organ$ | async]"></ccf-organ-selector>
+    </div>
   </div>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
-  </div>
+  <button [class.disabled]="!organSelected" mat-button class="registration-button" (click)="registerButtonClick($event)" [matTooltip]="!organSelected ? 'Required: Select an organ' : ''">START REGISTRATION</button>
 </div>

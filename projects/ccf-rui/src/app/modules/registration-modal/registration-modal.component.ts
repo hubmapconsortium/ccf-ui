@@ -1,7 +1,7 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageState } from '../../core/store/page/page.state';
-import { ModelState } from '../../core/store/model/model.state';
+import { ModelState, RUI_ORGANS } from '../../core/store/model/model.state';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -13,9 +13,7 @@ export class RegistrationModalComponent implements OnInit {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-registration-modal';
 
-  constructor(
-    public dialog: MatDialog
-  ) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
     this.openDialog();
@@ -34,6 +32,12 @@ export class RegistrationModalComponent implements OnInit {
 })
 export class RegistrationContent {
 
+  organList = RUI_ORGANS;
+
+  sexSelected: boolean;
+
+  organSelected: boolean;
+
   constructor(
     readonly page: PageState,
     readonly model: ModelState,
@@ -45,5 +49,19 @@ export class RegistrationContent {
 
   setSexFromLabel(label: 'Female' | 'Male'): void {
     this.model.setSex(label === 'Female' ? 'female' : 'male');
+    this.sexSelected = true;
+  }
+
+  organSelect(): void {
+    this.organSelected = true;
+  }
+
+  registerButtonClick(event?: MouseEvent) {
+    if (event) {
+      event.preventDefault();
+    }
+    if (!this.organSelected) {
+      return;
+    }
   }
 }
