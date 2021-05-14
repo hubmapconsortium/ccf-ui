@@ -13,7 +13,7 @@
     <div class="selector-label">Select an organ</div>
 
     <div class="selector-container">
-      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0]); organSelect()"
+      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="organSelect($event[0])"
       [selectedOrgans]="[model.organ$ | async]"></ccf-organ-selector>
     </div>
   </div>

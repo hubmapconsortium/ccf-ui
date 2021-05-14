@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageState } from '../../core/store/page/page.state';
 import { ModelState, RUI_ORGANS } from '../../core/store/model/model.state';
 import { map } from 'rxjs/operators';
+import { OrganInfo } from 'ccf-shared';
 
 @Component({
   selector: 'ccf-registration-modal',
@@ -38,6 +39,10 @@ export class RegistrationContent {
 
   organSelected: boolean;
 
+  currentSex: string;
+
+  currentOrgan: OrganInfo;
+
   constructor(
     readonly page: PageState,
     readonly model: ModelState,
@@ -48,12 +53,13 @@ export class RegistrationContent {
   );
 
   setSexFromLabel(label: 'Female' | 'Male'): void {
-    this.model.setSex(label === 'Female' ? 'female' : 'male');
+    this.currentSex = label;
     this.sexSelected = true;
   }
 
-  organSelect(): void {
+  organSelect(organ: OrganInfo): void {
     this.organSelected = true;
+    this.currentOrgan = organ;
   }
 
   registerButtonClick(event?: MouseEvent) {
@@ -63,5 +69,7 @@ export class RegistrationContent {
     if (!this.organSelected) {
       return;
     }
+    this.model.setSex(this.currentSex === 'Female' ? 'female' : 'male');
+    this.model.setOrgan(this.currentOrgan); 
   }
 }
