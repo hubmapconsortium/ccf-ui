@@ -84,7 +84,7 @@ export const referenceDataConfig = {
       }
     },
     {
-      source: '#VHMaleOrgans_VHM_lungs',
+      source: '#VHMaleOrgans_VHM_respiratory_system',
       object: 'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Lung.glb',
       entityOverrides: {
         '@id': '#VHMLung',
@@ -219,7 +219,7 @@ export const referenceDataConfig = {
       }
     },
     {
-      source: '#VHFemaleOrgans_VHF_lungs',
+      source: '#VHFemaleOrgans_VHF_respiratory_system',
       object: 'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Lung.glb',
       entityOverrides: {
         '@id': '#VHFLung',
