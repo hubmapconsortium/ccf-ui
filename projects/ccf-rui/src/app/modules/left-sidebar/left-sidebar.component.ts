@@ -22,6 +22,8 @@ export class LeftSidebarComponent {
 
   @Input() disableSlider = false;
 
+  @Input() modalClosed = false;
+
   readonly sexByLabel$ = this.model.sex$.pipe(
     map(sex => sex === 'female' ? 'Female' : 'Male')
   );

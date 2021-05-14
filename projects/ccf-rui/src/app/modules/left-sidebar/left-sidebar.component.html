@@ -26,7 +26,6 @@
               <ccf-visibility-menu
                   [items]="model.anatomicalStructures$ | async" (itemsChange)="model.setAnatomicalStructures($event)">
               </ccf-visibility-menu>
-              <span *ngIf="disableSlider" class="expansion-placeholder">Select an organ to see available structures</span>
           </div>
         </mat-expansion-panel>
 
@@ -44,7 +43,6 @@
                 <ccf-visibility-menu [items]="model.extractionSites$ | async"
                     (itemsChange)="model.setExtractionSites($event)" (hover)="updateExtractionSiteTooltip($event)">
                 </ccf-visibility-menu>
-                <span *ngIf="disableSlider" class="expansion-placeholder">Select an organ to see available extraction sites</span>
             </div>
         </mat-expansion-panel>
 

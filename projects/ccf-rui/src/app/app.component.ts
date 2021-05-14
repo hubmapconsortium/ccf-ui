@@ -24,6 +24,8 @@ export class AppComponent implements OnDestroy {
   /** True if the organ selector drawer is open */
   open = true;
 
+  modalClosed = false;
+
   /** All subscriptions managed by the container. */
   private readonly subscriptions = new Subscription();
 
@@ -38,5 +40,9 @@ export class AppComponent implements OnDestroy {
    */
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  openPanels(): void {
+    this.modalClosed = true;
   }
 }

@@ -1,5 +1,5 @@
-import { Component, HostBinding, OnInit, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, HostBinding, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageState } from '../../core/store/page/page.state';
 import { ModelState, RUI_ORGANS } from '../../core/store/model/model.state';
 import { map } from 'rxjs/operators';
@@ -21,9 +21,10 @@ export class RegistrationModalComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(RegistrationContent);
+    this.dialog.open(RegistrationContent, {
+      autoFocus: false
+    });
   }
-
 }
 
 @Component({
@@ -43,10 +44,15 @@ export class RegistrationContent {
 
   currentOrgan: OrganInfo;
 
+  @Output() modalClose = new EventEmitter<void>();
+
   constructor(
     readonly page: PageState,
     readonly model: ModelState,
-  ) {}
+    public dialogRef: MatDialogRef<RegistrationContent>
+  ) {
+    dialogRef.disableClose = true;
+  }
 
   readonly sexByLabel$ = this.model.sex$.pipe(
     map(sex => sex === 'female' ? 'Female' : 'Male')
@@ -70,6 +76,8 @@ export class RegistrationContent {
       return;
     }
     this.model.setSex(this.currentSex === 'Female' ? 'female' : 'male');
-    this.model.setOrgan(this.currentOrgan); 
+    this.model.setOrgan(this.currentOrgan);
+    this.dialogRef.close(true);
+    this.modalClose.emit();
   }
 }
