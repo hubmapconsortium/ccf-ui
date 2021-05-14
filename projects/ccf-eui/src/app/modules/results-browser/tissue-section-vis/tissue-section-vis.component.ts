@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { TissueBlockResult } from 'ccf-database';
+import { TissueBlockResult, TissueSectionResult } from 'ccf-database';
 
 @Component({
   selector: 'ccf-tissue-section-vis',
@@ -10,9 +10,18 @@ export class TissueSectionVisComponent implements OnInit {
   /** HTML Class Name */
   @HostBinding('class') readonly clsName = 'ccf-tissue-section-vis';
 
-  @Input() tissueBlock!: TissueBlockResult;
+  @Input() totalTissueSections!: number;
+  @Input() tissueSections!: TissueSectionResult[];
 
   ngOnInit(): void {
-    console.log('tissueBlock: ', this.tissueBlock);
+    console.log('total sections:', this.totalTissueSections, '\ntissue sections: ', this.tissueSections);
+  }
+
+  tissueSectionExists(sectionNumber: number): boolean {
+    if (this.tissueSections.filter(section => section.sectionNumber === sectionNumber).length > 0) {
+      return true;
+    }
+
+    return false;
   }
 }

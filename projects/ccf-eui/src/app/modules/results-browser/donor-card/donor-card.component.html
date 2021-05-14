@@ -37,7 +37,10 @@
       </div>
     </div>
 
-    <ccf-tissue-section-vis [tissueBlock]="tissueBlock"></ccf-tissue-section-vis>
+    <ccf-tissue-section-vis
+      [totalTissueSections]="tissueBlock.sectionCount"
+      [tissueSections]="tissueBlock.sections"
+    ></ccf-tissue-section-vis>
 
     <ng-container *ngIf="tissueBlock.datasets.length > 0">
       <ccf-thumbnail-carousel (linkClicked)="linkHandler($event.link)" class="mt-05" [data]="tissueBlock.datasets">
