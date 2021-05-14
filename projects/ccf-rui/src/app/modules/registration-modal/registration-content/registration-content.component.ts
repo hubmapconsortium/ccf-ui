@@ -1,36 +1,15 @@
-import { Component, HostBinding, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { PageState } from '../../core/store/page/page.state';
-import { ModelState, RUI_ORGANS } from '../../core/store/model/model.state';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { PageState } from '../../../core/store/page/page.state';
+import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
 import { map } from 'rxjs/operators';
 import { OrganInfo } from 'ccf-shared';
 
-@Component({
-  selector: 'ccf-registration-modal',
-  templateUrl: './registration-modal.component.html',
-  styleUrls: ['./registration-modal.component.scss']
-})
-export class RegistrationModalComponent implements OnInit {
-  /** HTML class name */
-  @HostBinding('class') readonly clsName = 'ccf-registration-modal';
-
-  constructor(public dialog: MatDialog) {}
-
-  ngOnInit() {
-    this.openDialog();
-  }
-
-  openDialog() {
-    this.dialog.open(RegistrationContent, {
-      autoFocus: false
-    });
-  }
-}
 
 @Component({
-  selector: 'ccf-registration-content',
-  templateUrl: 'registration-content.html',
-  styleUrls: ['./registration-content.scss']
+  selector: 'ccf-registration-content.component',
+  templateUrl: 'registration-content.component.html',
+  styleUrls: ['./registration-content.component.scss']
 })
 export class RegistrationContent {
 

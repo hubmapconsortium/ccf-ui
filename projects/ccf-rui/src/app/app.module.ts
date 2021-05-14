@@ -13,7 +13,7 @@ import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { OrganSelectorModule } from 'ccf-shared';
-import { RegistrationModalModule } from './modules/registration-modal/registration-modal.module';
+import { RegistrationModalModule } from './modules/registration-modal/registration-modal/registration-modal.module';
 
 @NgModule({
   imports: [
