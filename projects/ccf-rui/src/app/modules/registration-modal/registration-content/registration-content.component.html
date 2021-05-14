@@ -17,5 +17,5 @@
       [selectedOrgans]="[model.organ$ | async]"></ccf-organ-selector>
     </div>
   </div>
-  <button [class.disabled]="!organSelected" mat-button class="registration-button" (click)="registerButtonClick($event)" [matTooltip]="!organSelected ? 'Required: Select an organ' : ''">START REGISTRATION</button>
+  <button [class.disabled]="!organSelected" mat-button class="registration-button" (click)="registerButtonClick($event); page.registrationStarted()" [matTooltip]="!organSelected ? 'Required: Select an organ' : ''">START REGISTRATION</button>
 </div>

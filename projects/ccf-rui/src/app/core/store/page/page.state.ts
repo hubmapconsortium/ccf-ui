@@ -28,6 +28,7 @@ export interface PageStateModel {
   user: Person;
   /** Whether or not to show the page tutorial */
   tutorialMode: boolean;
+  registrationStarted: boolean;
 }
 
 
@@ -44,7 +45,8 @@ export interface PageStateModel {
       firstName: '',
       lastName: ''
     },
-    tutorialMode: false
+    tutorialMode: false,
+    registrationStarted: false
   }
 })
 @Injectable()
@@ -55,6 +57,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
   /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
+
+  readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
 
   /** Tutorial mode observable */
   @Computed()
@@ -89,6 +93,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     this.model = this.injector.get(ModelState);
 
     const { globalConfig: { embedded, homeUrl, user, tutorialMode } } = this;
+    console.log(this.globalConfig)
     this.ctx.setState(patch<Immutable<PageStateModel>>({
       embedded: embedded ?? !!user,
       homeUrl: iif(!!homeUrl, homeUrl!),
@@ -131,5 +136,12 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   @DataAction()
   setTutorialMode(tutorialMode: boolean): void {
     this.ctx.setState(patch({ tutorialMode }));
+  }
+
+  @DataAction()
+  registrationStarted(): void {
+    this.ctx.setState(patch({ 
+      registrationStarted: true 
+    }));
   }
 }

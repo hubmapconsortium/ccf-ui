@@ -4,9 +4,6 @@
             <ccf-details-label [details]="detailsLabels$ | async"></ccf-details-label>
         </ng-container>
         <ng-template #selectors>
-            <!-- <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event)">
-            </ccf-name-input> -->
-
             <div class="organ-sliders" matTooltip="Select sex to filter organs.">
                 <div class="slider-label">Donor Sex:</div>
                 <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender" [labels]="['Male', 'Female']"
@@ -17,7 +14,7 @@
 
         <mat-divider></mat-divider>
 
-        <mat-expansion-panel class="anatomical-structures-menu" expanded>
+        <mat-expansion-panel class="anatomical-structures-menu" [expanded]="modalClosed">
           <mat-expansion-panel-header class="expansion-header">
               <mat-panel-title class="expansion-title" matTooltip="Use opacity icons to change visibility of anatomical structures">Anatomical Structures</mat-panel-title>
           </mat-expansion-panel-header>
@@ -31,7 +28,7 @@
 
         <mat-divider></mat-divider>
 
-        <mat-expansion-panel class="extraction-menu" expanded>
+        <mat-expansion-panel class="extraction-menu" [expanded]="modalClosed">
             <mat-expansion-panel-header class="expansion-header">
                 <mat-panel-title matTooltip="Some organs have predefined extraction sites--you can turn these on/off."
                     class="expansion-title">Common Extraction Sites</mat-panel-title>

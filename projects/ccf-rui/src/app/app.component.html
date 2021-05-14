@@ -1,13 +1,13 @@
-<ccf-registration-modal (modalClose)="openPanels()"></ccf-registration-modal>
+<ccf-registration-modal></ccf-registration-modal>
 <ccf-header></ccf-header>
 
 <ccf-drawer-container>
   <ccf-drawer opened>
-    <ccf-left-sidebar [modalClosed]="modalClosed" [disableSlider]="!organSelector.selectedOrgans[0]?.hasSex"></ccf-left-sidebar>
+    <ccf-left-sidebar [modalClosed]="registrationStarted" [disableSlider]="!organSelector.selectedOrgans[0]?.hasSex"></ccf-left-sidebar>
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
   <ccf-drawer position="end" opened>
-    <ccf-right-sidebar [modalClosed]="modalClosed"></ccf-right-sidebar>
+    <ccf-right-sidebar [modalClosed]="registrationStarted"></ccf-right-sidebar>
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
   

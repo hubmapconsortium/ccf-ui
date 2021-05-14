@@ -60,5 +60,6 @@ export class RegistrationContent {
     this.model.setOrgan(this.currentOrgan);
     this.dialogRef.close(true);
     this.modalClose.emit();
+    console.log(this.page.registrationStarted$)
   }
 }
