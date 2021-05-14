@@ -5,8 +5,7 @@ import { RegistrationContent } from '../registration-content/registration-conten
 
 @Component({
   selector: 'ccf-registration-modal',
-  templateUrl: './registration-modal.component.html',
-  styleUrls: ['./registration-modal.component.scss']
+  templateUrl: './registration-modal.component.html'
 })
 export class RegistrationModalComponent implements OnInit {
   /** HTML class name */

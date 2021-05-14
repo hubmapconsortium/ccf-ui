@@ -1,9 +1,8 @@
 .modal {
-  background-color: white;
   padding: 1rem;
   border-radius: 4px;
   width: 35rem;
-  height: 20rem;
+  height: 22rem;
 
   .organ-sliders {
     .slider-label {
@@ -17,6 +16,8 @@
 
   .selector-label {
     font-weight: 600;
+    height: 3rem;
+    line-height: 3rem;
   }
 
   .selector-container {
@@ -24,14 +25,8 @@
   }
 
   .registration-button {
-    color: white;
-    background-color: #444A65;
     display: block;
     margin: 0 auto;
     margin-top: 2rem;
-
-    &.disabled {
-      background-color: gray;
-    }
   }
 }

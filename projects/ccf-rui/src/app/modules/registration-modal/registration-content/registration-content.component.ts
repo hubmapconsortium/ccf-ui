@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, HostBinding } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { PageState } from '../../../core/store/page/page.state';
 import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
@@ -7,11 +7,13 @@ import { OrganInfo } from 'ccf-shared';
 
 
 @Component({
-  selector: 'ccf-registration-content.component',
+  selector: 'ccf-registration-content',
   templateUrl: 'registration-content.component.html',
   styleUrls: ['./registration-content.component.scss']
 })
 export class RegistrationContent {
+  /** HTML class name */
+  @HostBinding('class') readonly clsName = 'ccf-registration-content';
 
   organList = RUI_ORGANS;
 
