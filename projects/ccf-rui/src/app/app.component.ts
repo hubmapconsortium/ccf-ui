@@ -34,8 +34,8 @@ export class AppComponent implements OnDestroy {
       page.embedded$.subscribe((embedded) => { this.open = !embedded; })
     );
     this.subscriptions.add(
-      page.registrationStarted$.subscribe((registrationStarted) => { this.registrationStarted = registrationStarted})
-    )
+      page.registrationStarted$.subscribe((registrationStarted) => { this.registrationStarted = registrationStarted; })
+    );
   }
 
   /**

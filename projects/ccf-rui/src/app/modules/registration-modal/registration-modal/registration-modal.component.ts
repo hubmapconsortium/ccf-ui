@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RegistrationContent } from '../registration-content/registration-content.component';
+import { RegistrationContentComponent } from '../registration-content/registration-content.component';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class RegistrationModalComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(RegistrationContent, {
+    this.dialog.open(RegistrationContentComponent, {
       autoFocus: false
     });
   }

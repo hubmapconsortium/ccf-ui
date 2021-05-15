@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { PageState } from '../../../core/store/page/page.state';
 import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
@@ -11,9 +11,13 @@ import { OrganInfo } from 'ccf-shared';
   templateUrl: 'registration-content.component.html',
   styleUrls: ['./registration-content.component.scss']
 })
-export class RegistrationContent {
+export class RegistrationContentComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-registration-content';
+
+  readonly sexByLabel$ = this.model.sex$.pipe(
+    map(sex => sex === 'female' ? 'Female' : 'Male')
+  );
 
   organList = RUI_ORGANS;
 
@@ -25,19 +29,13 @@ export class RegistrationContent {
 
   currentOrgan: OrganInfo;
 
-  @Output() modalClose = new EventEmitter<void>();
-
   constructor(
     readonly page: PageState,
     readonly model: ModelState,
-    public dialogRef: MatDialogRef<RegistrationContent>
+    public dialogRef: MatDialogRef<RegistrationContentComponent>
   ) {
     dialogRef.disableClose = true;
   }
-
-  readonly sexByLabel$ = this.model.sex$.pipe(
-    map(sex => sex === 'female' ? 'Female' : 'Male')
-  );
 
   setSexFromLabel(label: 'Female' | 'Male'): void {
     this.currentSex = label;
@@ -59,7 +57,5 @@ export class RegistrationContent {
     this.model.setSex(this.currentSex === 'Female' ? 'female' : 'male');
     this.model.setOrgan(this.currentOrgan);
     this.dialogRef.close(true);
-    this.modalClose.emit();
-    console.log(this.page.registrationStarted$)
-  }
+  };
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { RegistrationContent } from './registration-content.component';
+import { RegistrationContentComponent } from './registration-content.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { NameInputModule } from '../../../shared/components/name-input/name-input.module';
@@ -10,8 +10,8 @@ import { OrganSelectorModule } from 'ccf-shared';
 
 
 @NgModule({
-  declarations: [RegistrationContent],
+  declarations: [RegistrationContentComponent],
   imports: [CommonModule, MatButtonModule, MatTooltipModule, NameInputModule, LabeledSlideToggleModule, OrganSelectorModule],
-  exports: [RegistrationContent]
+  exports: [RegistrationContentComponent]
 })
 export class RegistrationContentModule { }

@@ -12,7 +12,9 @@
       &:hover {
         background: mat-color($foreground, icons-hover);
       }
+    }
 
+    .opacity-icon {
       &.fade {
         color: mat-color($foreground, icons-disabled);
       }

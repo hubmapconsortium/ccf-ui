@@ -93,7 +93,6 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     this.model = this.injector.get(ModelState);
 
     const { globalConfig: { embedded, homeUrl, user, tutorialMode } } = this;
-    console.log(this.globalConfig)
     this.ctx.setState(patch<Immutable<PageStateModel>>({
       embedded: embedded ?? !!user,
       homeUrl: iif(!!homeUrl, homeUrl!),
@@ -140,8 +139,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
 
   @DataAction()
   registrationStarted(): void {
-    this.ctx.setState(patch({ 
-      registrationStarted: true 
+    this.ctx.setState(patch({
+      registrationStarted: true
     }));
   }
 }
