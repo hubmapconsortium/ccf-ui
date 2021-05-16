@@ -57,5 +57,6 @@ export class RegistrationContentComponent {
     this.model.setSex(this.currentSex === 'Female' ? 'female' : 'male');
     this.model.setOrgan(this.currentOrgan);
     this.dialogRef.close(true);
+    this.page.registrationStarted();
   }
 }

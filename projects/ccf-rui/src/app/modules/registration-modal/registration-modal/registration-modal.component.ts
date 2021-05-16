@@ -13,11 +13,11 @@ export class RegistrationModalComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.openDialog();
   }
 
-  openDialog() {
+  openDialog(): void {
     this.dialog.open(RegistrationContentComponent, {
       autoFocus: false
     });
