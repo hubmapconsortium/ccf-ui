@@ -8,7 +8,7 @@ import { MetaData } from '../../../core/models/meta-data';
 interface ReviewModalData {
   /** The object containing all of the review information for displaying inside the modal */
   metaData: MetaData;
-  
+
   /** Whether or not the application is in embedded mode or not */
   embeddedMode: boolean;
 }

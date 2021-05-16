@@ -42,6 +42,7 @@ export class RegistrationContentComponent {
 
   /**
    * Creates an instance of the registration dialog
+   * 
    * @param page Page state
    * @param model Model state
    * @param registration Registration state
@@ -57,6 +58,7 @@ export class RegistrationContentComponent {
 
   /**
    * Updates current sex selected
+   * 
    * @param label Sex selected
    */
   setSexFromLabel(label: 'Female' | 'Male'): void {
@@ -66,6 +68,7 @@ export class RegistrationContentComponent {
 
   /**
    * Checks to see if a first and last name has been entered
+   * 
    * @param event Name input event
    */
   checkNameValid(event: Pick<Person, 'firstName' | 'lastName'>): void {
@@ -74,6 +77,7 @@ export class RegistrationContentComponent {
 
   /**
    * Updates current organ selected
+   * 
    * @param organ Organ selected
    */
   organSelect(organ: OrganInfo): void {
@@ -83,6 +87,7 @@ export class RegistrationContentComponent {
 
   /**
    * Handles button click
+   * 
    * @param [event] The click event
    * @returns  Returns nothing is no organ is selected
    */

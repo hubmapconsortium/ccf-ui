@@ -16,6 +16,7 @@ export class RegistrationModalComponent implements OnInit {
 
   /**
    * Creates an instance of registration modal component.
+   * 
    * @param dialog Dialog for the modal
    */
   constructor(public dialog: MatDialog) {}
