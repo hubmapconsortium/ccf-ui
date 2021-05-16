@@ -43,8 +43,8 @@ export class RegistrationContentComponent {
   }
 
   organSelect(organ: OrganInfo): void {
-    this.organSelected = true;
     this.currentOrgan = organ;
+    this.organSelected = true;
   }
 
   registerButtonClick(event?: MouseEvent) {
@@ -54,6 +54,10 @@ export class RegistrationContentComponent {
     if (!this.organSelected) {
       return;
     }
+    this.closeDialog();
+  }
+
+  closeDialog(): void {
     this.model.setSex(this.currentSex === 'Female' ? 'female' : 'male');
     this.model.setOrgan(this.currentOrgan);
     this.dialogRef.close(true);
