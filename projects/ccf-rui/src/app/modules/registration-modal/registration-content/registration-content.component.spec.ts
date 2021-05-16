@@ -33,7 +33,7 @@ describe('RegistrationContentComponent', () => {
       .mock(MatDialogRef, {
         ...mockMatDialog,
         disableClose: true
-      })
+      });
   });
 
   it('should set the appropriate sex', async () => {
@@ -41,6 +41,14 @@ describe('RegistrationContentComponent', () => {
     instance.setSexFromLabel('Female');
     expect(instance.currentSex).toBe('Female');
     expect(instance.sexSelected).toBeTrue();
+  });
+
+  it('checks to see if a name has been entered', async () => {
+    const { instance } = await shallow.render();
+    instance.checkNameValid({firstName: '', lastName: ''});
+    expect(instance.nameValid).toBeFalse();
+    instance.checkNameValid({firstName: 'test', lastName: 'test'});
+    expect(instance.nameValid).toBeTrue();
   });
 
   it('should set the appropriate organ', async () => {
@@ -51,9 +59,10 @@ describe('RegistrationContentComponent', () => {
     expect(instance.organSelected).toBeTrue();
   });
 
-  it('closes the dialog if button is clicked and organ is selected', async () => {
+  it('closes the dialog if button is clicked and organ is selected and a name has been entered', async () => {
     const { find, instance } = await shallow.render();
     instance.organSelected = true;
+    instance.nameValid = true;
     const spy = spyOn(instance, 'closeDialog');
     find('.registration-button').triggerEventHandler('click', '');
     expect(spy).toHaveBeenCalled();
@@ -62,6 +71,14 @@ describe('RegistrationContentComponent', () => {
   it('does not close the dialog if an organ has not been selected', async () => {
     const { find, instance } = await shallow.render();
     instance.organSelected = false;
+    const spy = spyOn(instance, 'closeDialog');
+    find('.registration-button').triggerEventHandler('click', '');
+    expect(spy).toHaveBeenCalledTimes(0);
+  });
+
+  it('does not close the dialog if a name has not been entered', async () => {
+    const { find, instance } = await shallow.render();
+    instance.nameValid = true;
     const spy = spyOn(instance, 'closeDialog');
     find('.registration-button').triggerEventHandler('click', '');
     expect(spy).toHaveBeenCalledTimes(0);

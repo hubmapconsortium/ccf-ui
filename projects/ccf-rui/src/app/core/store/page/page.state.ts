@@ -28,6 +28,7 @@ export interface PageStateModel {
   user: Person;
   /** Whether or not to show the page tutorial */
   tutorialMode: boolean;
+  /** Whether or not the initial registration modal has been closed */
   registrationStarted: boolean;
 }
 
@@ -57,7 +58,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
   /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
-
+  /** RegistrationStated observable */
   readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
 
   /** Tutorial mode observable */
@@ -137,6 +138,9 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     this.ctx.setState(patch({ tutorialMode }));
   }
 
+  /**
+   * Sets registrationStarted to true (when initial registration modal is closed)
+   */
   @DataAction()
   registrationStarted(): void {
     this.ctx.setState(patch({

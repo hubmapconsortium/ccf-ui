@@ -10,6 +10,9 @@ import { RegistrationState } from '../../core/store/registration/registration.st
 import { RUI_ORGANS } from './../../core/store/model/model.state';
 
 
+/**
+ * The left sidebar
+ */
 @Component({
   selector: 'ccf-left-sidebar',
   templateUrl: './left-sidebar.component.html',
@@ -22,6 +25,7 @@ export class LeftSidebarComponent {
 
   @Input() disableSlider = false;
 
+  /** Whether or not the initial registration modal has been closed */
   @Input() modalClosed = false;
 
   readonly sexByLabel$ = this.model.sex$.pipe(

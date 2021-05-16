@@ -6,10 +6,16 @@ import { MetaData } from '../../../core/models/meta-data';
  * The expected format of the review modal's data input.
  */
 interface ReviewModalData {
+  /** The object containing all of the review information for displaying inside the modal */
   metaData: MetaData;
+  
+  /** Whether or not the application is in embedded mode or not */
   embeddedMode: boolean;
 }
 
+/**
+ * Modal for reviewing the registration
+ */
 @Component({
   selector: 'ccf-review-modal',
   templateUrl: './review-modal.component.html',

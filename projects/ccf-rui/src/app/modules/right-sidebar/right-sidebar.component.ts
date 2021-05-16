@@ -6,6 +6,9 @@ import { PageState } from '../../core/store/page/page.state';
 import { AnatomicalStructureTagState } from '../../core/store/anatomical-structure-tags/anatomical-structure-tags.state';
 
 
+/**
+ * The right sidebar
+ */
 @Component({
   selector: 'ccf-right-sidebar',
   templateUrl: './right-sidebar.component.html',
@@ -16,6 +19,7 @@ export class RightSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-right-sidebar';
 
+  /** Whether or not the initial registration modal has been closed */
   @Input() modalClosed = false;
 
   /**

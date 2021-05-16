@@ -6,6 +6,9 @@ import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
 import { PageState } from './core/store/page/page.state';
 
 
+/**
+ * App component
+ */
 @Component({
   selector: 'ccf-root',
   templateUrl: './app.component.html',
@@ -13,17 +16,13 @@ import { PageState } from './core/store/page/page.state';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnDestroy {
-
-  readonly organSelected$ = this.model.organ$.pipe(
-    map(organ => organ === undefined ? false : true)
-  );
-
   /** Organs to be displayed in the organ selector */
   organList = RUI_ORGANS;
 
   /** True if the organ selector drawer is open */
   open = true;
 
+  /** False until the initial registration modal is closed */
   registrationStarted = false;
 
   /** All subscriptions managed by the container. */
