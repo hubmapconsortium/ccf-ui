@@ -1,0 +1,25 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+
+  .ccf-tissue-section-vis {
+    color: mat-color($foreground, z-axis);
+
+    .container {
+      border-left: 1px solid mat-color($foreground, icons-disabled);
+      border-right: 1px solid mat-color($foreground, icons-disabled);
+
+      .line-tick-visible {
+        background-color: mat-color($foreground, y-axis);
+      }
+
+      .x-axis {
+        background-color: mat-color($foreground, z-axis);
+      }
+    }
+  }
+}
