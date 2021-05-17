@@ -23,6 +23,7 @@ export interface GlobalConfig {
   useDownload?: boolean;
 
   fetchPreviousRegistrations?: () => ObservableInput<Record<string, unknown>[]>;
+  registrationStarted?: boolean;
 }
 
 declare global {

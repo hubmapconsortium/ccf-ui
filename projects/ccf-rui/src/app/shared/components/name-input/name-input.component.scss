@@ -1,13 +1,7 @@
 :host {
   display: flex;
 
-  .label::after {
-    content: "*";
-    color: red;
-  }
-
   .field {
-    width: 50%;
 
     &:not(:last-child) {
       padding-right: 0.75rem;

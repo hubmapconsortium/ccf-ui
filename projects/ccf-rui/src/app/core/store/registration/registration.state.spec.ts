@@ -43,7 +43,8 @@ const testPage: Immutable<PageStateModel> = {
   },
   embedded: true,
   homeUrl: 'www.test.com',
-  tutorialMode: false
+  tutorialMode: false,
+  registrationStarted: false
 };
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
