@@ -1,0 +1,10 @@
+<div>0</div>
+<div class="container">
+  <div
+    *ngFor="let item of [].constructor(totalTissueSections); let i = index"
+    class="line-tick"
+    [class.line-tick-visible]="tissueSectionExists(i + 1)"
+  ></div>
+  <div class="x-axis"></div>
+</div>
+<div>{{ totalTissueSections }}</div>
