@@ -75,6 +75,9 @@ export interface ModelStateModel {
   extractionSets: ExtractionSet[];
 }
 
+/**
+ * All organs to be displayed
+ */
 export const RUI_ORGANS = ALL_ORGANS;
 
 /**

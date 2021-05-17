@@ -12,10 +12,10 @@
                                (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>
 
           <div class="filter-text">
-            <div class="sex">Sex: <strong>{{(data.filter$ | async)?.sex}}</strong></div>
-            <div class="age">Age:
+            <div class="sex filter-tag">Sex: <strong>{{(data.filter$ | async)?.sex}}</strong></div>
+            <div class="age filter-tag">Age:
               <strong>{{(data.filter$ | async)?.ageRange[0]}}-{{(data.filter$ | async)?.ageRange[1]}}</strong></div>
-            <div class="bmi">BMI:
+            <div class="bmi filter-tag">BMI:
               <strong>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</strong></div>
           </div>
         </div>
@@ -42,11 +42,11 @@
             </mat-icon>
           </button>
           <button class="button">
-            <mat-icon class="refresh icon" (click)="reset(left, right, filterbox)" matTooltip="Refresh">refresh
+            <mat-icon class="refresh icon" (click)="reset(left, right, filterbox)" matTooltip="Reset View">refresh
             </mat-icon>
           </button>
         </div>
-        <ccf-info-button [infoTitle]="'HuBMAP CCF Exploration User Interface 1.0'" [matTooltip]="'Open Info'">
+        <ccf-info-button [infoTitle]="'HuBMAP CCF Exploration User Interface'" [matTooltip]="'Open Info'">
         </ccf-info-button>
       </div>
       <ccf-results-browser

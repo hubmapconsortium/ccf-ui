@@ -9,13 +9,17 @@
     align-items: center;
 
     .title {
-      font-weight: bold;
+      font-weight: 600;
     }
 
     .refresh {
       transform: scaleX(-1);
       cursor: pointer;
       transition: .6s;
+
+      &:hover {
+        border-radius: 2px;
+      } 
     }
   }
 

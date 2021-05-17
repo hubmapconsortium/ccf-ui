@@ -122,4 +122,13 @@ describe('OntologyTreeComponent', () => {
     instance.toggleVisibility(flatNode1);
     expect(flatNode1.visible).toBeFalse();
   });
+
+  it('should re-run the gradient display logic on a scroll event', async () => {
+    const { instance, find } = await shallow.render();
+    const list = find('.ccf-ontology-tree');
+    const spy = spyOn(instance, 'onScroll');
+
+    list.triggerEventHandler('scroll', {});
+    expect(spy).toHaveBeenCalled();
+  });
 });

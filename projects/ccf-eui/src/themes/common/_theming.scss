@@ -16,6 +16,7 @@
 @use '../../../../ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss' as infoButton;
 @use '../../app/shared/components/viewer/viewer.component.theme.scss' as viewer;
 @use '../../app/modules/results-browser/donor-card/donor-card.component.theme.scss' as donorCard;
+@use '../../app/modules/results-browser/tissue-section-vis/tissue-section-vis.theme.scss' as tissueVis;
 @use '../../app/app.component.theme.scss' as app;
 
 @mixin ccf-theme($theme) {
@@ -46,6 +47,7 @@
   @include infoButton.theme($theme);
   @include viewer.theme($theme);
   @include donorCard.theme($theme);
+  @include tissueVis.theme($theme);
   @include app.theme($theme);
 
   // Overrides goes here!

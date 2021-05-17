@@ -55,7 +55,9 @@ $foreground: map-merge($mat-light-theme-foreground, (
   icons-background-hover: #e0e0e0,
   icon-active:  #f5f5f5,
   button-shadow: rgba(0, 0, 0, 0.749),
-  
+  input-bg: rgb(232, 232, 232),
+  y-axis: #00C853,
+  z-axis: #2979ff
 ));
 
 $background: map-merge($mat-light-theme-background, (

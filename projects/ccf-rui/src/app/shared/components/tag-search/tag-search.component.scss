@@ -17,6 +17,8 @@
     .search-box {
       display: flex;
       width: 100%;
+      align-items: center;
+      height: 3rem;
 
       .add-button {
         border-radius: 0.25rem;
@@ -24,9 +26,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
         cursor: pointer;
+        height: 100%;
       }
     }
 
@@ -44,6 +45,10 @@
       .mat-form-field-wrapper {
         padding-bottom: 0;
         border-radius: 0.5rem;
+
+        .mat-form-field-flex {
+          padding-right: 0 !important;
+        }
       }
 
       .mat-form-field-outline {
@@ -55,7 +60,9 @@
       }
 
       .mat-form-field-infix {
-        padding: 0 0 0.5rem 0;
+        padding: 0.063rem;
+        padding-top: 0.313rem;
+        border: 0;
       }
     }
 

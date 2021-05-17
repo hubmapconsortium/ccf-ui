@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 0.1875rem;
+  
 
   .slider-box {
     display: flex;
@@ -33,6 +34,7 @@
 
     .icons {
       display: flex;
+      cursor: pointer !important;
 
       .reset {
         margin-right: 1rem;

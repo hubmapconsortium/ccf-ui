@@ -84,6 +84,9 @@ export class VisibilityMenuComponent {
     this.itemsChange.emit(this.items);
   }
 
+  /**
+   * Resets item to opacity 20 and visible
+   */
   resetItem(): void {
     if (this.selection) {
       const updatedSelection = {...this.selection, opacity: 20, visible: true};

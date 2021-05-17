@@ -49,6 +49,7 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   results-numbers: #9e9e9e,
   icons-disabled: #CCCCCC,
   opacity-numbers: #CCCCCC,
+  input-bg: rgb(113, 113, 113),
 ));
 
 $background: map-merge($mat-dark-theme-background, (

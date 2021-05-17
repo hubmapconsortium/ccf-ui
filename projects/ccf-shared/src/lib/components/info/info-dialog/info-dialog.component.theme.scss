@@ -20,4 +20,10 @@
       }
     }
   }
+
+  .close-icon {
+    &:hover {
+      background-color: map-get($background, info-button-hover);
+    }
+  }
 }

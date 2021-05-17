@@ -8,6 +8,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: 0.6s;
 
   &.ccf-drawer-toggle-button-end {
     right: unset;

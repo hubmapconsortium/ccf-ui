@@ -1,0 +1,23 @@
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .ccf-registration-content {
+    .modal {
+      background-color: mat-color($background, background);
+
+      .registration-button {
+        color: mat-color($primary, 'white');
+        background-color: mat-color($foreground, main);
+    
+        &.disabled {
+          background-color: mat-color($foreground, icons-disabled);
+        }
+      }
+    }
+  }
+}

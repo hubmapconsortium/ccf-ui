@@ -16,6 +16,8 @@
     transform: scaleX(-1);
     cursor: pointer;
     transition: .6s;
+    position: absolute;
+    top: 3rem;
     
     &:hover {
       border-radius: 2px;
@@ -28,6 +30,10 @@
     align-items: center;
     flex-shrink: 0;
     position: relative;
+
+    .opacity {
+      cursor: pointer;
+    }
 
     .opacity-icon {
       z-index: 1;
@@ -45,7 +51,7 @@
       text-overflow: ellipsis;
       margin-left: 0.5rem;
       opacity: 1;
-      transition-duration: 0.1s;
+      transition-duration: 0.4s;
       transition-timing-function: ease-in-out;
       transition-property: opacity;
 

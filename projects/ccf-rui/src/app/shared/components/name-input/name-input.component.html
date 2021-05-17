@@ -1,11 +1,9 @@
-<mat-form-field class="field" matTooltip="Add your first name.">
+<mat-form-field class="field" >
   <mat-label class="text label">First Name </mat-label>
-  <input matInput class="input" [value]="firstNameValidator.value" (input)="updateName($event, 'firstName')" required>
-  <mat-error *ngIf="firstNameValidator.invalid">You must enter a value</mat-error>
+  <input matInput class="input" [value]="firstNameValidator.value" (input)="updateName($event, 'firstName')"  matTooltip="Add your first name.">
 </mat-form-field>
 
-<mat-form-field class="field" matTooltip="Add your last name.">
+<mat-form-field class="field">
   <mat-label class="text label">Last Name </mat-label>
-  <input matInput [formControl]="lastNameValidator" class="input" [value]="lastNameValidator.value" (input)="updateName($event, 'lastName')" required>
-  <mat-error *ngIf="lastNameValidator.invalid">You must enter a value</mat-error>
+  <input matInput class="input" [value]="lastNameValidator.value" (input)="updateName($event, 'lastName')"  matTooltip="Add your last name.">
 </mat-form-field>

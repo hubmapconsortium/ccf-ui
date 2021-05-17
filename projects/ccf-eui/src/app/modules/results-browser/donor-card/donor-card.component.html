@@ -1,13 +1,7 @@
 <div class="main-container">
   <div class="checkbox-background" [class.selected]="selected"
        [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
-    <ng-container *ngIf="selected; else unselected">
-      <mat-icon fontSet="material-icons-outlined" class="checkbox selected">check_box_outlined</mat-icon>
-    </ng-container>
-
-    <ng-template #unselected>
-      <mat-icon class="checkbox unselected">check_box_outline_blank</mat-icon>
-    </ng-template>
+    <mat-checkbox [checked]="selected" class="checkbox" [class.checkselected]="selected"></mat-checkbox>
   </div>
 
   <div class="hoverable default-padding donor mat-elevation-z2" [class.hover-enabled]="selected" [class.expanded]="expanded">
@@ -38,19 +32,21 @@
       </div>
 
       <div class="hover-state mat-elevation-z4" (click)="linkHandler(tissueBlock.link)">
-        <div class="hover-title">TISSUE SECTION</div>
+        <div class="hover-title">TISSUE BLOCK</div>
         <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
       </div>
     </div>
+
+    <ccf-tissue-section-vis
+      *ngIf="tissueBlock.sections.length > 1"
+      [totalTissueSections]="tissueBlock.sectionCount"
+      [tissueSections]="tissueBlock.sections"
+    ></ccf-tissue-section-vis>
 
     <ng-container *ngIf="tissueBlock.datasets.length > 0">
       <ccf-thumbnail-carousel (linkClicked)="linkHandler($event.link)" class="mt-05" [data]="tissueBlock.datasets">
       </ccf-thumbnail-carousel>
     </ng-container>
-
-    <!--
-      Line graph goes here.
-     -->
   </div>
 
   <div class="expanded-view w-80 mat-elevation-z2 align-end" *ngFor="let section of tissueBlock.sections">
@@ -62,7 +58,7 @@
       </div>
 
       <div class="hover-state mat-elevation-z4" (click)="linkHandler(section.link)">
-        <div class="hover-title">DONOR TISSUE SECTION</div>
+        <div class="hover-title">TISSUE SECTION</div>
         <mat-icon class="icon-size hover-icon">open_in_new</mat-icon>
       </div>
     </div>

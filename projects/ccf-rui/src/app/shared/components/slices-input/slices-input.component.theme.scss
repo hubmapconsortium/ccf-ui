@@ -7,15 +7,15 @@
 
   .ccf-slices-input {
     .icon {
-      color: mat-color($foreground, icon);
+      color: mat-color($foreground, main);
 
       &:hover {
-        color: mat-color($foreground, active-icon);
+        background: mat-color($foreground, icons-hover);
       }
     }
 
     .label {
-      color: mat-color($foreground, placeholder-text);
+      color: mat-color($foreground, icon-disabled);
     }
 
     .mat-form-field-ripple {

@@ -27,7 +27,7 @@ export class AppComponent {
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
    */
-  ontologySelectionLabel = 'body';
+  ontologySelectionLabel = 'Body';
 
   /**
    * Whether or not organ carousel is open
@@ -165,10 +165,16 @@ export class AppComponent {
     this.viewerOpen = false;
   }
 
+  /**
+   * Gets hubmap portal url
+   */
   get hubmapPortalUrl(): string {
     return this.dataSourceService.dbOptions.hubmapPortalUrl;
   }
 
+  /**
+   * Gets login token
+   */
   get loggedIn(): boolean {
     const token = this.dataSourceService.dbOptions.hubmapToken || '';
     return token.length > 0;

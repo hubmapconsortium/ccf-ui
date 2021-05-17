@@ -46,6 +46,7 @@
           padding-left: 0.5rem;
           padding-right: 0.5rem;
           height: 100%;
+          transition: .6s;
 
           .carousel-icon {
             text-align: center;
@@ -56,18 +57,17 @@
           .carousel-text-container {
             display: flex;
             flex-direction: column;
-            height: 2rem;
+            height: 4rem;
             justify-content: center;
             text-align: center;
 
             .carousel-text {
               display: flex;
               justify-content: center;
-              align-items: center;
               font-size: 0.625rem;
               max-width: 3.5rem;
               line-height: .8rem;
-              min-height: 1.5rem;
+              min-height: 1.6rem;
             }
   
             .num-results {
