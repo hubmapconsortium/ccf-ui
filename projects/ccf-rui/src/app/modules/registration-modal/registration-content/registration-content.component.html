@@ -1,0 +1,21 @@
+<div class="modal">
+  <div mat-dialog-content>
+    <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event); checkNameValid($event)">
+    </ccf-name-input>
+
+    <div class="organ-sliders" matTooltip="Select sex to filter organs.">
+      <div class="slider-label">Donor Sex:</div>
+      <ccf-labeled-slide-toggle class="toggle gender" [labels]="['Male', 'Female']"
+          [value]="sexByLabel$ | async" (valueChange)="setSexFromLabel($event)">
+      </ccf-labeled-slide-toggle>
+    </div>
+
+    <div class="selector-label">Select an organ</div>
+
+    <div class="selector-container">
+      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="organSelect($event[0])"
+      [selectedOrgans]="[model.organ$ | async]"></ccf-organ-selector>
+    </div>
+  </div>
+  <button [class.disabled]="!organSelected || !nameValid" mat-button class="registration-button" (click)="registerButtonClick($event)" [matTooltip]="!organSelected || !nameValid ? 'Required: Enter first and last name, and select an organ' : ''">START REGISTRATION</button>
+</div>

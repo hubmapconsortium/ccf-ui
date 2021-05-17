@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 import { ModelState } from '../../core/store/model/model.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
@@ -6,6 +6,9 @@ import { PageState } from '../../core/store/page/page.state';
 import { AnatomicalStructureTagState } from '../../core/store/anatomical-structure-tags/anatomical-structure-tags.state';
 
 
+/**
+ * The right sidebar
+ */
 @Component({
   selector: 'ccf-right-sidebar',
   templateUrl: './right-sidebar.component.html',
@@ -15,6 +18,9 @@ import { AnatomicalStructureTagState } from '../../core/store/anatomical-structu
 export class RightSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-right-sidebar';
+
+  /** Whether or not the initial registration modal has been closed */
+  @Input() modalClosed = false;
 
   /**
    * Creates an instance of right sidebar component.

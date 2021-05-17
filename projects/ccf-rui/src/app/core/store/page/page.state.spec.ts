@@ -88,4 +88,10 @@ describe('PageState', () => {
     const value = await nextValue(state.embedded$);
     expect(value).toEqual(true);
   });
+
+  it('updates registrationStarted', async () => {
+    state.registrationStarted();
+    const value = await nextValue(state.registrationStarted$);
+    expect(value).toBeTrue();
+  });
 });
