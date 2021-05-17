@@ -1,22 +1,22 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { TissueBlockResult, TissueSectionResult } from 'ccf-database';
+import { Component, HostBinding, Input } from '@angular/core';
+import { TissueSectionResult } from 'ccf-database';
 
 @Component({
   selector: 'ccf-tissue-section-vis',
   templateUrl: './tissue-section-vis.component.html',
   styleUrls: ['./tissue-section-vis.component.scss']
 })
-export class TissueSectionVisComponent implements OnInit {
+export class TissueSectionVisComponent {
   /** HTML Class Name */
   @HostBinding('class') readonly clsName = 'ccf-tissue-section-vis';
 
+  /** The total numebr of tissue sections, used for end label */
   @Input() totalTissueSections!: number;
+
+  /** Tissue section data, used to determine which tissues to color on the graph */
   @Input() tissueSections!: TissueSectionResult[];
 
-  ngOnInit(): void {
-    console.log('total sections:', this.totalTissueSections, '\ntissue sections: ', this.tissueSections);
-  }
-
+  /** Returns whether or not the given section number exists in the tissueSection array */
   tissueSectionExists(sectionNumber: number): boolean {
     if (this.tissueSections.filter(section => section.sectionNumber === sectionNumber).length > 0) {
       return true;
