@@ -38,6 +38,7 @@
     </div>
 
     <ccf-tissue-section-vis
+      *ngIf="tissueBlock.sections.length > 1"
       [totalTissueSections]="tissueBlock.sectionCount"
       [tissueSections]="tissueBlock.sections"
     ></ccf-tissue-section-vis>
