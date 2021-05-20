@@ -45,6 +45,7 @@ export class InfoButtonComponent implements OnDestroy {
    */
   launchInfoDialog(data: DocumentationContent[]): void {
     this.dialog.open(InfoDialogComponent, {
+      autoFocus: false,
       panelClass: 'modal-animated',
       width: '60rem',
       data: {
