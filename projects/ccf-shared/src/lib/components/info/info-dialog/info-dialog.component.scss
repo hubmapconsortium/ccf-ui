@@ -59,14 +59,9 @@
 
       .video-player {
         position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        width: 50%;
+        width: 69%;
 
         ::ng-deep iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
           width: 100%;
           height: 100%;
         }
