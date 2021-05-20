@@ -42,13 +42,12 @@
     .dialog-content {
       height: 50rem; 
       min-height: 10rem;
-
-      .video-player, .variable-binding {
-        width: 50%;
-      }
       
       .variable-binding {
-        padding-right: 4rem;
+        &.first {
+          padding-right: 4rem;
+          width: 50%;
+        }
       }
 
       .video-player {
