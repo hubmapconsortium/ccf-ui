@@ -14,6 +14,13 @@
       margin-bottom: 1rem;
     }
 
+    .close {
+      .close-icon {
+        float: right;
+        cursor: pointer;
+      }
+    }
+
     .title {
       font-size: 1.5rem;
       margin-bottom: 2.25rem;
@@ -35,35 +42,12 @@
 
       .top-padding {
         padding-top: 0.5rem;
-        display: flex;
       }
     }
 
     .dialog-content {
       height: 50rem; 
       min-height: 10rem;
-      
-      .variable-binding {
-        &.first {
-          padding-right: 4rem;
-          width: 50%;
-        }
-      }
-
-      .video-player {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        width: 50%;
-
-        ::ng-deep iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
-      }
     }
 
   }
