@@ -1,15 +1,18 @@
 <div class="rui-about wrapper">
   <div class="container">
+    <div class="close">
+      <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>
+    </div>
     <div class="content">
       <h2 class="title" mat-dialog-title>{{infoTitle}}</h2>
       <mat-dialog-content class="mat-typography dialog-content">
         <div *ngFor="let content of documentationContents; let i = index;" class="panel">
           <mat-expansion-panel *ngIf="content" [expanded]="i === 0">
             <mat-expansion-panel-header>
-              <h2 class="no-header-margin">{{content.title.split("\n")[0]}}</h2>
+              <!-- <h2 class="no-header-margin">{{content.title.split("\n")[0]}}</h2> -->
             </mat-expansion-panel-header>
             <div class="top-padding">
-              <markdown class="variable-binding" [class.first]="i === 0" [data]="content.title.split('\n').slice(1).join('\n')"></markdown>
+              <markdown class="variable-binding" [class.first]="i === 0" [data]="content.title"></markdown>
               <div class="video-player" *ngIf="i === 0">
                 <youtube-player videoId="142hGer4xvU"></youtube-player>
               </div>
