@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DocumentationContent } from '../info-button/info-button.service';
 
@@ -18,7 +18,7 @@ export interface InfoDialogData {
   templateUrl: './info-dialog.component.html',
   styleUrls: ['./info-dialog.component.scss']
 })
-export class InfoDialogComponent {
+export class InfoDialogComponent implements OnInit {
   /**
    * Documentation contents
    */
@@ -35,10 +35,19 @@ export class InfoDialogComponent {
    */
   constructor(
     public dialogRef: MatDialogRef<InfoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: InfoDialogData
+    @Inject(MAT_DIALOG_DATA) public data: InfoDialogData,
   ) {
       this.documentationContents = data.content || [];
       this.infoTitle = data.title || '';
+  }
+
+  /**
+   * load the youtube player api in on init
+   */
+   ngOnInit(): void {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.body.appendChild(tag);
   }
 
   /**

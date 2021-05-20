@@ -5,8 +5,6 @@ multiple coordinate systems, including spatial, physiologic, and organ-based bro
 proof-of-concept user interface for the CCF v1.0.0 became available in June 2020. The EUI continues to evolve
 as more data becomes available. The CCF EUI code is available
 on <a rel="noopener noreferrer" href="https://github.com/hubmapconsortium/ccf-ui" target="_blank">GitHub</a>.
-A demo video is on <a rel="noopener noreferrer" href="https://youtu.be/rWMqKQc_00w"
-            target="_blank">YouTube</a>.
 
 # The Human Biomolecular Atlas Program
 
