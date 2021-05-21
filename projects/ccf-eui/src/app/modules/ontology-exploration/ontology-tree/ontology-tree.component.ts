@@ -122,7 +122,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @param cdr The change detector.
    * @param ga Analytics service
    */
-  constructor(private cdr: ChangeDetectorRef, private readonly ga: GoogleAnalyticsService) { }
+  constructor(private readonly cdr: ChangeDetectorRef, private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Emits an event whenever a node has been selected.
