@@ -4,12 +4,13 @@ import { SpatialEntityJsonLd } from '../shared/ccf-spatial-jsonld';
 import { processSceneNodes } from './process-scene-nodes';
 
 
-export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promise<SpatialEntityJsonLd[]> {
+export async function processSpatialEntities(parent: SpatialEntityJsonLd, gltfOverride?: string): Promise<SpatialEntityJsonLd[]> {
   const parentPlacement = parent.object.placement;
+  const gltfFile = gltfOverride ? gltfOverride : parent.object.file;
   const R = {x: parentPlacement.x_rotation, y: parentPlacement.y_rotation, z: parentPlacement.z_rotation};
   const S = {x: parentPlacement.x_scaling, y: parentPlacement.y_scaling, z: parentPlacement.z_scaling};
   const scalar = new Matrix4(Matrix4.IDENTITY).scale([S.x * 1000, S.y * 1000, S.z * 1000]);
-  const nodes = await processSceneNodes(parent.object.file, scalar);
+  const nodes = await processSceneNodes(gltfFile, scalar);
 
   return Object.values(nodes).filter(n => n['@type'] !== 'GLTFNode').map((node) => {
     const id = `${parent['@id']}_${encodeURIComponent(node['@id'])}`;
@@ -33,7 +34,7 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd): Promi
       object: {
         '@id': `${id}Obj`,
         '@type': 'SpatialObjectReference',
-        file: parent.object.file,
+        file: gltfFile,
         file_format: parent.object.file_format,
         file_subpath: node['@id'],
 

@@ -1,0 +1,2015 @@
+{
+  "@context": {
+    "@base": "http://purl.org/ccf/latest/ccf-entity.owl#",
+    "@vocab": "http://purl.org/ccf/latest/ccf-entity.owl#",
+    "ccf": "http://purl.org/ccf/latest/ccf.owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "description": "rdfs:comment",
+    "link": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "samples": {
+      "@reverse": "has_donor"
+    },
+    "sections": {
+      "@id": "has_tissue_section",
+      "@type": "@id"
+    },
+    "datasets": {
+      "@id": "has_dataset",
+      "@type": "@id"
+    },
+    "rui_location": {
+      "@id": "has_spatial_entity",
+      "@type": "@id"
+    },
+    "ontologyTerms": {
+      "@id": "has_ontology_term",
+      "@type": "@id"
+    },
+    "thumbnail": {
+      "@id": "has_thumbnail"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor1",
+      "@type": "Donor",
+      "label": "Apical Septum Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock1",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/36d378f4-d4b5-456f-a32c-12a4c60d8159",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002080",
+              "http://purl.obolibrary.org/obo/UBERON_0002494"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/36d378f4-d4b5-456f-a32c-12a4c60d8159_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 34,
+              "y_rotation": 51,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 101.7,
+              "y_translation": 22.763,
+              "z_translation": 61.069,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset1",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor2",
+      "@type": "Donor",
+      "label": "Apical Septum Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock2",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/521967fe-9c54-4b71-a9aa-398950ed47ae",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/521967fe-9c54-4b71-a9aa-398950ed47ae_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 40,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 75.246,
+              "y_translation": 24.222,
+              "z_translation": 75.949,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset2",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor3",
+      "@type": "Donor",
+      "label": "Basal Anterior Left Ventrical Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock3",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/6d7cca9f-1fe3-442d-8ac9-43896f194326",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/6d7cca9f-1fe3-442d-8ac9-43896f194326_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -4,
+              "y_rotation": 55,
+              "z_rotation": 97,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 87.586,
+              "y_translation": 72.115,
+              "z_translation": 36.711,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset3",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor4",
+      "@type": "Donor",
+      "label": "Basal Anterior Left Ventrical Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock4",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/ee4110ca-9ea3-4580-a79c-30471359f11c",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/ee4110ca-9ea3-4580-a79c-30471359f11c_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 35,
+              "y_rotation": 130,
+              "z_rotation": 91,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 75.02,
+              "y_translation": 60.447,
+              "z_translation": 52.221,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset4",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor5",
+      "@type": "Donor",
+      "label": "Basal Lateral Left Ventricle Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock5",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/35247281-a3a5-4e0e-b4d5-5dda314c25f2",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002079",
+              "http://purl.obolibrary.org/obo/UBERON_0002078"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/35247281-a3a5-4e0e-b4d5-5dda314c25f2_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -148,
+              "y_rotation": -4,
+              "z_rotation": 86,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 73.442,
+              "y_translation": 55.86,
+              "z_translation": 6.523,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset5",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor6",
+      "@type": "Donor",
+      "label": "Basal Lateral Left Ventricle Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock6",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/273dd4c3-5442-4c31-8ffb-163cbc0f303d",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/273dd4c3-5442-4c31-8ffb-163cbc0f303d_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -140,
+              "y_rotation": 37,
+              "z_rotation": 86,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 83.072,
+              "y_translation": 52.395,
+              "z_translation": 29.291,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset6",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor7",
+      "@type": "Donor",
+      "label": "Basal Posterior Left Ventricle Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock7",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/e1a870bc-d965-4324-b691-55ebac9f2f89",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002078"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/e1a870bc-d965-4324-b691-55ebac9f2f89_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -83,
+              "y_rotation": -64,
+              "z_rotation": -28,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 66.897,
+              "y_translation": 14.061,
+              "z_translation": 22.567,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset7",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor8",
+      "@type": "Donor",
+      "label": "Basal Posterior Left Ventricle Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock8",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/4b81bf86-4c5b-4422-9edb-c0f4ec525d8e",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/4b81bf86-4c5b-4422-9edb-c0f4ec525d8e_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -153,
+              "y_rotation": -28,
+              "z_rotation": 86,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 68.719,
+              "y_translation": 22.465,
+              "z_translation": 17.739,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset8",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor9",
+      "@type": "Donor",
+      "label": "Basal Right Ventricle Free Wall Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock9",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/891363dd-7c97-421c-b321-6a27b3b55dae",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/891363dd-7c97-421c-b321-6a27b3b55dae_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -5,
+              "y_rotation": 69,
+              "z_rotation": -101,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 42.831,
+              "y_translation": 45.304,
+              "z_translation": 89.699,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset9",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor10",
+      "@type": "Donor",
+      "label": "Basal Right Ventricle Free Wall Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock10",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/717feefc-95f4-42b4-8255-96ddf65921be",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/717feefc-95f4-42b4-8255-96ddf65921be_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 4,
+              "y_rotation": 51,
+              "z_rotation": -101,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 24.961,
+              "y_translation": 38.218,
+              "z_translation": 73.575,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset10",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor11",
+      "@type": "Donor",
+      "label": "Basal Septum Left Ventricle Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock11",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/da9a6669-973c-4bee-97e1-7430d21796f8",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002079",
+              "http://purl.obolibrary.org/obo/UBERON_0002078",
+              "http://purl.obolibrary.org/obo/UBERON_0002080",
+              "http://purl.obolibrary.org/obo/UBERON_0002494",
+              "http://purl.obolibrary.org/obo/UBERON_0002137",
+              "http://purl.obolibrary.org/obo/UBERON_0002135",
+              "http://purl.obolibrary.org/obo/UBERON_0002146",
+              "http://purl.obolibrary.org/obo/UBERON_0002134"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/da9a6669-973c-4bee-97e1-7430d21796f8_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -151,
+              "y_rotation": -177,
+              "z_rotation": -112,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 58.453,
+              "y_translation": 46.571,
+              "z_translation": 52.966,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset11",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor12",
+      "@type": "Donor",
+      "label": "Basal Septum Left Ventricle Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock12",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/a99b891d-44ce-47ab-91d9-e7dc5743ea46",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002079",
+              "http://purl.obolibrary.org/obo/UBERON_0002078",
+              "http://purl.obolibrary.org/obo/UBERON_0002080",
+              "http://purl.obolibrary.org/obo/UBERON_0002494",
+              "http://purl.obolibrary.org/obo/UBERON_0002137",
+              "http://purl.obolibrary.org/obo/UBERON_0002135",
+              "http://purl.obolibrary.org/obo/UBERON_0002146",
+              "http://purl.obolibrary.org/obo/UBERON_0002134"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/a99b891d-44ce-47ab-91d9-e7dc5743ea46_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -173,
+              "y_rotation": -140,
+              "z_rotation": -112,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 50.166,
+              "y_translation": 38.918,
+              "z_translation": 42.069,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset12",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor13",
+      "@type": "Donor",
+      "label": "Left Ventricle Apex Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock13",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/4e5190dc-9290-4d8d-a521-18d8f64c098e",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/4e5190dc-9290-4d8d-a521-18d8f64c098e_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 24,
+              "y_rotation": -14,
+              "z_rotation": 7,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 132.122,
+              "y_translation": 28.904,
+              "z_translation": 61.227,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset13",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor14",
+      "@type": "Donor",
+      "label": "Left Ventricle Apex Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock14",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/455397a4-3d28-4e0b-9a88-c40cd796d3ec",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/455397a4-3d28-4e0b-9a88-c40cd796d3ec_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 34,
+              "y_rotation": 51,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 98.704,
+              "y_translation": 11.165,
+              "z_translation": 75.415,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset14",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor15",
+      "@type": "Donor",
+      "label": "Middle Anterior Left Ventricle Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock15",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/9c7fd6bb-6ea4-411d-8ad3-d2277ef18b05",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/9c7fd6bb-6ea4-411d-8ad3-d2277ef18b05_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 23,
+              "y_rotation": 74,
+              "z_rotation": 69,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 98.084,
+              "y_translation": 70.258,
+              "z_translation": 45.428,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset15",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor16",
+      "@type": "Donor",
+      "label": "Middle Anterior Left Ventricle Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock16",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/bd2df259-b64d-4f5a-b2e4-84be6031c5ef",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/bd2df259-b64d-4f5a-b2e4-84be6031c5ef_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 32,
+              "y_rotation": 38,
+              "z_rotation": 94,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 85.359,
+              "y_translation": 48.429,
+              "z_translation": 67.149,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset16",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor17",
+      "@type": "Donor",
+      "label": "Middle Lateral Left Ventricle Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock17",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/8ac5f392-021e-452a-845b-a2a5e9e807fb",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/8ac5f392-021e-452a-845b-a2a5e9e807fb_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 41,
+              "y_rotation": 150,
+              "z_rotation": 69,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 111.584,
+              "y_translation": 52.309,
+              "z_translation": 17.279,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset17",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor18",
+      "@type": "Donor",
+      "label": "Middle Lateral Left Ventricle Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock18",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/5b8ac863-a3ac-4f61-b856-0243634ca18b",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/5b8ac863-a3ac-4f61-b856-0243634ca18b_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 58,
+              "y_rotation": 127,
+              "z_rotation": 55,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 95.608,
+              "y_translation": 45.453,
+              "z_translation": 48.453,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset18",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor19",
+      "@type": "Donor",
+      "label": "Middle posterior Left Ventricle Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock19",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/597935ff-e86d-4a23-a3d6-bd88ede49a3f",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/597935ff-e86d-4a23-a3d6-bd88ede49a3f_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 37,
+              "y_rotation": 147,
+              "z_rotation": 91,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 96.499,
+              "y_translation": 12.301,
+              "z_translation": 20.892,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset19",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor20",
+      "@type": "Donor",
+      "label": "Middle posterior Left Ventricle Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock20",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/a4137bf0-6e8f-4dfd-b341-e3ac3ee51772",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-16",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/a4137bf0-6e8f-4dfd-b341-e3ac3ee51772_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-16",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 41,
+              "y_rotation": 122,
+              "z_rotation": 68,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 86.913,
+              "y_translation": 10.716,
+              "z_translation": 49.64,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset20",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor21",
+      "@type": "Donor",
+      "label": "Middle Septum Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock21",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/9815616b-4e3f-4c2a-bf64-14dc26f484a4",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002080",
+              "http://purl.obolibrary.org/obo/UBERON_0002494"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/9815616b-4e3f-4c2a-bf64-14dc26f484a4_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 29,
+              "y_rotation": 156,
+              "z_rotation": 91,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 80.83,
+              "y_translation": 34.116,
+              "z_translation": 62.677,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset21",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor22",
+      "@type": "Donor",
+      "label": "Middle Septum Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock22",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/3c25705a-5769-425a-a481-d1f6d5a95cab",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002080",
+              "http://purl.obolibrary.org/obo/UBERON_0002494"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/3c25705a-5769-425a-a481-d1f6d5a95cab_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 24,
+              "y_rotation": 134,
+              "z_rotation": 91,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 67.319,
+              "y_translation": 29.116,
+              "z_translation": 56.071,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset22",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor23",
+      "@type": "Donor",
+      "label": "Right Ventricle Apex Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock23",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/a3e6d018-4e28-41b8-9ea7-6a3f8dc33f6c",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002080",
+              "http://purl.obolibrary.org/obo/UBERON_0002494"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/a3e6d018-4e28-41b8-9ea7-6a3f8dc33f6c_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -78,
+              "y_rotation": -168,
+              "z_rotation": -167,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 90.119,
+              "y_translation": 22.505,
+              "z_translation": 90.754,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset23",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor24",
+      "@type": "Donor",
+      "label": "Right Ventricle Apex Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock24",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/5d1aa5f0-f399-4bc2-96fd-e999a2326626",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002080",
+              "http://purl.obolibrary.org/obo/UBERON_0002494"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/5d1aa5f0-f399-4bc2-96fd-e999a2326626_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -89,
+              "y_rotation": -136,
+              "z_rotation": -77,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 68.194,
+              "y_translation": 18.614,
+              "z_translation": 87.052,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset24",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor25",
+      "@type": "Donor",
+      "label": "Right Ventricle OT Female",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock25",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/50ee1b49-9d08-46f3-87cb-a3faafb1f555",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002078",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/50ee1b49-9d08-46f3-87cb-a3faafb1f555_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -39,
+              "y_rotation": -163,
+              "z_rotation": -123,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 63.52,
+              "y_translation": 69.159,
+              "z_translation": 86.743,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset25",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Donor26",
+      "@type": "Donor",
+      "label": "Right Ventricle OT Male",
+      "description": "Entered 3/16/2021, Peter Hanna, SPARC/UCLA",
+      "d": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+      "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+      "consortium_name": "SPARC",
+      "provider_name": "SPARC-UCLA",
+      "provider_uuid": "a961a21b-b536-450c-9cd1-b84868251694",
+      "samples": [
+        {
+          "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#TissueBlock26",
+          "@type": "Sample",
+          "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+          "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+          "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/61c613a2-0030-48bf-8b6e-be631f24ce8e",
+            "@type": "SpatialEntity",
+            "creator": "Peter Hanna",
+            "creator_first_name": "Peter",
+            "creator_last_name": "Hanna",
+            "creation_date": "2021-03-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000948",
+              "http://purl.obolibrary.org/obo/UBERON_0004151",
+              "http://purl.obolibrary.org/obo/UBERON_0002084",
+              "http://purl.obolibrary.org/obo/UBERON_0002094",
+              "http://purl.obolibrary.org/obo/UBERON_0002078",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/61c613a2-0030-48bf-8b6e-be631f24ce8e_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+              "placement_date": "2021-03-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -30,
+              "y_rotation": -180,
+              "z_rotation": -167,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 50.341,
+              "y_translation": 62.022,
+              "z_translation": 63.773,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://doi.org/10.1161/CIRCRESAHA.120.318458#Dataset26",
+              "@type": "Dataset",
+              "label": "Registered 3/16/2021, Peter Hanna, SPARC/UCLA",
+              "description": "Exemplary tissue registration for paper titled \"Innervation and Neuronal Control of the Mammalian Sinoatrial Node: A Comprehensive Atlas\"",
+              "link": "https://doi.org/10.1161/CIRCRESAHA.120.318458",
+              "technology": "OTHER",
+              "thumbnail": "assets/sparc/thumbnails/sparc_logo.jpg"
+            }
+          ]
+        }
+      ]
+    }
+
+  ]
+}
