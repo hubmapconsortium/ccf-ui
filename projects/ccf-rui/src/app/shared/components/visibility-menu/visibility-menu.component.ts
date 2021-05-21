@@ -1,5 +1,8 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+
 import { VisibilityItem } from '../../../core/models/visibility-item';
+
 
 /**
  * Menu for displaying visibility options
@@ -37,6 +40,13 @@ export class VisibilityMenuComponent {
   @Output() readonly itemsChange = new EventEmitter<VisibilityItem[]>();
 
   /**
+   * Creates an instance of visibility menu component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Toggles visibility of an item; opacity is reverted to the previous value if visibility toggled back on
    *
    * @param item Menu item
@@ -46,6 +56,8 @@ export class VisibilityMenuComponent {
     if (this.selection && item.id === this.selection.id) {
       this.selection = {...this.selection, visible: item.visible};
     }
+
+    this.ga.event('visibility_toggled', 'visibility_menu', '' + item.id, +item.visible);
     this.updateOpacity(item.opacity);
   }
 
@@ -81,6 +93,7 @@ export class VisibilityMenuComponent {
     const updatedSelection = {...this.selection, opacity: value};
     this.selection = updatedSelection;
     this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
+    this.ga.event('opacity_update', 'visibility_menu', '' + updatedSelection.id, updatedSelection.opacity);
     this.itemsChange.emit(this.items);
   }
 
@@ -89,6 +102,7 @@ export class VisibilityMenuComponent {
       const updatedSelection = {...this.selection, opacity: 20, visible: true};
       this.selection = updatedSelection;
       this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
+      this.ga.event('item_reset', 'visibility_menu', '' + updatedSelection.id);
       this.itemsChange.emit(this.items);
     }
   }
@@ -100,6 +114,7 @@ export class VisibilityMenuComponent {
    */
   setAllOpacity(value: number): void {
     this.items = this.items.map(i => ({ ...i, opacity: value, visible: true}));
+    this.ga.event('all_items_opacity_update', 'visibility_menu', undefined, value);
     this.itemsChange.emit(this.items);
   }
 

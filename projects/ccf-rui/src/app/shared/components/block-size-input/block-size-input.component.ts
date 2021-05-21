@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 /**
@@ -43,6 +44,13 @@ export class BlockSizeInputComponent {
   @Output() readonly blockSizeChange = new EventEmitter<BlockSize>();
 
   /**
+   * Creates an instance of block size input component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Updates values when an input changes
    *
    * @param input InputEvent from the input element which contains the new value
@@ -51,6 +59,7 @@ export class BlockSizeInputComponent {
   updateBlockSizes(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
     this.blockSize = { ...this.blockSize, [key]: +inputTarget.value };
+    this.ga.event('block_size_change', 'block_size_input', key, this.blockSize[key]);
     this.blockSizeChange.emit(this.blockSize);
   }
 
@@ -59,6 +68,7 @@ export class BlockSizeInputComponent {
    */
   refreshBlockSize(): void {
     this.blockSize = DEFAULT_BLOCK_SIZE;
+    this.ga.event('block_size_reset', 'block_size_input');
     this.blockSizeChange.emit(this.blockSize);
   }
 }

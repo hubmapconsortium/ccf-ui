@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 /** Type in which the values of the sliders are stored. */
@@ -42,6 +43,13 @@ export class RotationSliderComponent {
   @Output() readonly rotationChange = new EventEmitter<Rotation>();
 
   /**
+   * Creates an instance of rotation slider component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Function that handles updating the rotation and emitting the new value
    *
    * @param newRotation the new value for one of the axis to be set to
@@ -49,6 +57,7 @@ export class RotationSliderComponent {
    */
   changeRotation(newRotation: number | string, axis: string): void {
     this.rotation = { ... this.rotation, [axis]: +newRotation };
+    this.ga.event('rotation_update', 'rotation_slider', axis, +newRotation);
     this.rotationChange.emit(this.rotation);
   }
 
@@ -57,6 +66,7 @@ export class RotationSliderComponent {
    */
   resetRotation(): void {
     this.rotation = DEFAULT_ROTATION;
+    this.ga.event('rotation_reset', 'rotation_slider');
     this.rotationChange.emit(this.rotation);
   }
 }
