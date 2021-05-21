@@ -8,7 +8,7 @@ import { DocumentationContent } from '../info-button/info-button.service';
 export interface InfoDialogData {
   content: DocumentationContent[];
   title: string;
-  pageType: string;
+  videoID: string;
 }
 
 /**
@@ -29,7 +29,7 @@ export class InfoDialogComponent implements OnInit {
    */
   infoTitle: string;
 
-  pageType: string;
+  videoID: string;
   /**
    * Creates an instance of info dialog component.
    *
@@ -42,13 +42,14 @@ export class InfoDialogComponent implements OnInit {
   ) {
       this.documentationContents = data.content || [];
       this.infoTitle = data.title || '';
-      this.pageType = data.pageType;
+      this.videoID = data.videoID;
   }
 
   /**
    * load the youtube player api in on init
    */
    ngOnInit(): void {
+     console.log(this.videoID)
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);

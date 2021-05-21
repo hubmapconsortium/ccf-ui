@@ -14,11 +14,8 @@
             </mat-expansion-panel-header>
               <div class="top-padding">
                 <markdown class="variable-binding" [class.first]="i === 0" [data]="content.content"></markdown>
-                <div class="video-player" *ngIf="i === 0 && pageType === 'RUI'">
-                  <youtube-player videoId="142hGer4xvU"></youtube-player> 
-                </div>
-                <div class="video-player" *ngIf="i === 0 && pageType === 'EUI'">
-                  <youtube-player videoId="142hGer4xvU"></youtube-player>
+                <div class="video-player" *ngIf="i === 0">
+                  <youtube-player videoId="{{videoID}}"></youtube-player> 
                 </div>
               </div>
           </mat-expansion-panel>

@@ -21,7 +21,7 @@ export class InfoButtonComponent implements OnDestroy {
   /**
    * Whether the information is for the RUI or EUI
    */
-  @Input() pageType: 'RUI' | 'EUI';
+  @Input() videoID: string;
 
   /**
    * Creates an instance of info button component.
@@ -56,7 +56,7 @@ export class InfoButtonComponent implements OnDestroy {
       data: {
         title: this.infoTitle,
         content: data,
-        pageType: this.pageType
+        videoID: this.videoID
       }
     });
   }
