@@ -24,12 +24,12 @@
   .popup-body {
     padding: 1.5rem;
     position: relative;
-    height: 25.5rem;
+    height: 26.5rem;
   }
   
   &.visible {
     width: 35rem;
-    height: 25.5rem;
+    height: 26.5rem;
     transition: width 0.2s ease-in-out;
     border-width: 1px;
     
