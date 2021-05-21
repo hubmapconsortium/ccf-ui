@@ -43,6 +43,11 @@
 
       .top-padding {
         display: flex;
+
+        markdown ::ng-deep ul {
+          margin-top: 0;
+          padding-left: 1.5rem;
+        }
       }
     }
 
@@ -56,11 +61,6 @@
         &.first {
           padding-right: 3rem;
           width: 50%;
-        }
-
-        ::ng-deep ul {
-          margin-top: 0;
-          padding-left: 1.5rem;
         }
       }
 
