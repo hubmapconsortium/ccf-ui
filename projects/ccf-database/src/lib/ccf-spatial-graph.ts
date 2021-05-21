@@ -2,8 +2,6 @@ import { CCFDatabase } from './ccf-database';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { DirectedGraph } from 'graphology';
 import shortestPath from 'graphology-shortest-path/unweighted';
-import { fromEuler } from 'quaternion';
-import toEuler from 'quaternion-to-euler';
 
 import { SpatialEntity, SpatialObjectReference, SpatialPlacement } from './spatial-types';
 import { rdf, ccf } from './util/prefixes';
@@ -26,9 +24,7 @@ export function applySpatialPlacement(tx: Matrix4, placement: SpatialPlacement):
       break;
   }
   const T = [p.x_translation, p.y_translation, p.z_translation].map(t => t * factor);
-  const R_RAD = [p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians);
-  // eslint-disable-next-line
-  const R = toEuler(fromEuler(R_RAD[1], R_RAD[0], R_RAD[2], 'XYZ').toVector()) as [number, number, number];
+  const R = [p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians) as [number, number, number];
   const S = [p.x_scaling, p.y_scaling, p.z_scaling];
 
   return tx.translate(T).rotateXYZ(R).scale(S);

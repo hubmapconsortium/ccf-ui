@@ -82,7 +82,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
    */
   getReferenceOrganIri(organ: string, sex?: 'Male' | 'Female' | string, side?: 'Left' | 'Right' | string): string | undefined {
     const db = this.snapshot;
-    if (organ.toUpperCase() !== 'KIDNEY') {
+    if (organ.toUpperCase() !== 'KIDNEY' && organ.toUpperCase() !== 'LYMPH NODE') {
       side = '';
     }
     if (organ.toUpperCase() === 'LARGE INTESTINE') {

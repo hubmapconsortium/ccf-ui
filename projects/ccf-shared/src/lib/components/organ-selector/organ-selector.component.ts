@@ -5,10 +5,10 @@ import { ResizeSensor } from 'css-element-queries';
  * All organs that will eventually be displayed in the app
  */
 export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
-  { src: 'app:skin', organ: 'Skin', name: 'Skin', disabled: true, hasSex: true,
+  { src: 'app:skin', organ: 'Skin', name: 'Skin', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002097'},
   { src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001155' },
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000059' },
   { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0000948'},
   { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true,
@@ -17,20 +17,20 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0004539'},
   { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002106'},
-  { src: 'app:bladder', organ: 'Bladder', name: 'Bladder', disabled: true, hasSex: true },
-  { src: 'app:brain', organ: 'Brain', name: 'Brain', disabled: true, hasSex: true },
-  { src: 'app:liver', organ: 'Liver', name: 'Liver', disabled: true, hasSex: true },
-  { src: 'app:lung-left', organ: 'Lung', name: 'Lung, L', disabled: true, side: 'left', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002168'},
-  { src: 'app:lung-right', organ: 'Lung', name: 'Lung, R', disabled: true, side: 'right', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002167'},
-  { src: 'app:lymph_nodes', organ: 'Lymph Nodes', name: 'Lymph Nodes', disabled: true, hasSex: true },
-  { src: 'app:ovary-left', organ: 'Ovaries', name: 'Ovary, L', disabled: true, side: 'left', hasSex: false },
-  { src: 'app:ovary-right', organ: 'Ovaries', name: 'Ovary, R', disabled: true, side: 'right', hasSex: false },
-  { src: 'app:small_intestine', organ: 'Small Intestine', name: 'Small Intestine', disabled: true, hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002108'},
-  { src: 'app:stomach', organ: 'Stomach', name: 'Stomach', disabled: true, hasSex: true },
-  { src: 'app:thymus', organ: 'Stomach', name: 'Thymus', disabled: true, hasSex: true }
+  { src: 'app:brain', organ: 'Brain', name: 'Allen Brain', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000955'},
+  { src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002048'},
+  { src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, L', side: 'left', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'},
+  { src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, R', side: 'right', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'},
+  { src: 'app:bone_marrow', organ: 'Pelvis', name: 'Pelvis', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001270'},
+  { src: 'app:thymus', organ: 'Thymus', name: 'Thymus', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002370'},
+  { src: 'app:vasculature', organ: 'Vasculature', name: 'Vasculature', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002049'}
 ];
 
 /**

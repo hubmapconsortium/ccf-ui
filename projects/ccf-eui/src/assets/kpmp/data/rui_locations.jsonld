@@ -1,45 +1,10 @@
-{
-  "@context": {
-    "@base": "http://purl.org/ccf/latest/ccf-entity.owl#",
-    "@vocab": "http://purl.org/ccf/latest/ccf-entity.owl#",
-    "ccf": "http://purl.org/ccf/latest/ccf.owl#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "label": "rdfs:label",
-    "description": "rdfs:comment",
-    "link": {
-      "@id": "rdfs:seeAlso",
-      "@type": "@id"
-    },
-    "samples": {
-      "@reverse": "has_donor"
-    },
-    "sections": {
-      "@id": "has_tissue_section",
-      "@type": "@id"
-    },
-    "datasets": {
-      "@id": "has_dataset",
-      "@type": "@id"
-    },
-    "rui_location": {
-      "@id": "has_spatial_entity",
-      "@type": "@id"
-    },
-    "ontologyTerms": {
-      "@id": "has_ontology_term",
-      "@type": "@id"
-    },
-    "thumbnail": {
-      "@id": "has_thumbnail"
-    }
-  },
-  "@graph": [
+[
     {
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
       "@id": "http://dx.doi.org/10.1681/ASN.2016091027#DonorB",
       "@type": "Donor",
       "label": "Patient B Cortical biopsy",
       "description": "Entered 5/18/2020, Seth Winfree, KPMP-IU/OSU",
-      "d": "Biopsy from Nephrology biobank-salvaged from pathology in ~2017",
       "link": "http://dx.doi.org/10.1681/ASN.2016091027",
       "consortium_name": "KPMP",
       "provider_name": "KPMP-IU/OSU",
@@ -107,6 +72,7 @@
       ]
     },
     {
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
       "@id": "http://dx.doi.org/10.1681/ASN.2016091027#DonorA",
       "@type": "Donor",
       "label": "Patient A Cortical biopsy",
@@ -179,6 +145,7 @@
       ]
     },
     {
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
       "@id": "http://dx.doi.org/10.1016/j.trsl.2017.07.006#Donor",
       "@type": "Donor",
       "label": "CoverNephrectomy",
@@ -250,4 +217,3 @@
       ]
     }
   ]
-}
