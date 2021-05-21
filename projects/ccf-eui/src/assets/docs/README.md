@@ -1,3 +1,10 @@
+# How to use the EUI
+
+- Select Organ: One can navigate available organs by selecting them from the carousel above the stage or using the ontology on the left.
+- Filter: Above the Search is the Filter icon which opens a flyout with many options (e.g. Sex, Assay Types, etc) for refining what tissue data is presented.
+- Registered Blocks: It is possible to select a block of tissue samples either using the bodies on stage or the cards in the right column. Color coding helps to identify different selections.
+- Data: Using the cards in the right column, click on items to dig deeper into the data.
+
 # About
 
 The CCF Exploration User Interface (EUI) represents data across multiple scales, supporting navigation by
