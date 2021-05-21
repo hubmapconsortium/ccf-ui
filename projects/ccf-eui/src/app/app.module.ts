@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,6 +37,16 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
   ],
   declarations: [AppComponent],
   providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],
-  bootstrap: [AppComponent]
+  entryComponents: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  constructor(private injector: Injector) {
+    const appElement = createCustomElement(AppComponent, {
+      injector: this.injector
+    });
+
+    customElements.define('ccf-eui', appElement);
+  }
+
+  ngDoBootstrap() { }
+}

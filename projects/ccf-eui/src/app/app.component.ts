@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -21,6 +21,7 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   selector: 'ccf-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
+  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   /**
