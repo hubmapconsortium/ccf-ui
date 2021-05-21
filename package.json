@@ -86,7 +86,7 @@
     "rdf-literal": "^1.2.0",
     "rdfxml-streaming-parser": "^1.4.0",
     "rxjs": "~6.6.6",
-    "swiper": "^6.5.0",
+    "swiper": "^6.5.1",
     "tslib": "^2.1.0",
     "uuid": "^8.3.2",
     "zone.js": "~0.10.3"

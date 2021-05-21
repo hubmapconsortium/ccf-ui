@@ -48,6 +48,7 @@ export class TagSearchComponent implements OnDestroy {
   /** Emits when tags are added */
   @Output() readonly added = new EventEmitter<Tag[]>();
 
+  /** Element for close search button */
   @ViewChild('closeSearch', { read: ElementRef, static: false }) closeSearch: ElementRef<HTMLElement>;
 
   /** Mapping for pluralizing the result total count */
