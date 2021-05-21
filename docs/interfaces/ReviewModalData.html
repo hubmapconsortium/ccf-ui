@@ -129,6 +129,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Whether or not the application is in embedded mode or not </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -158,6 +164,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The object containing all of the review information for displaying inside the modal </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -173,10 +185,16 @@ import { MetaData } from &#x27;../../../core/models/meta-data&#x27;;
  * The expected format of the review modal&#x27;s data input.
  */
 interface ReviewModalData {
+  /** The object containing all of the review information for displaying inside the modal */
   metaData: MetaData;
+
+  /** Whether or not the application is in embedded mode or not */
   embeddedMode: boolean;
 }
 
+/**
+ * Modal for reviewing the registration
+ */
 @Component({
   selector: &#x27;ccf-review-modal&#x27;,
   templateUrl: &#x27;./review-modal.component.html&#x27;,

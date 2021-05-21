@@ -194,6 +194,8 @@ export interface PageStateModel {
   user: Person;
   /** Whether or not to show the page tutorial */
   tutorialMode: boolean;
+  /** Whether or not the initial registration modal has been closed */
+  registrationStarted: boolean;
 }
 
 
@@ -210,7 +212,8 @@ export interface PageStateModel {
       firstName: &#x27;&#x27;,
       lastName: &#x27;&#x27;
     },
-    tutorialMode: false
+    tutorialMode: false,
+    registrationStarted: false
   }
 })
 @Injectable()
@@ -221,6 +224,8 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
   readonly homeUrl$ &#x3D; this.state$.pipe(pluck(&#x27;homeUrl&#x27;));
   /** Active user observable */
   readonly user$ &#x3D; this.state$.pipe(pluck(&#x27;user&#x27;));
+  /** RegistrationStated observable */
+  readonly registrationStarted$ &#x3D; this.state$.pipe(pluck(&#x27;registrationStarted&#x27;));
 
   /** Tutorial mode observable */
   @Computed()
@@ -297,6 +302,16 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
   @DataAction()
   setTutorialMode(tutorialMode: boolean): void {
     this.ctx.setState(patch({ tutorialMode }));
+  }
+
+  /**
+   * Sets registrationStarted to true (when initial registration modal is closed)
+   */
+  @DataAction()
+  registrationStarted(): void {
+    this.ctx.setState(patch({
+      registrationStarted: true
+    }));
   }
 }
 </code></pre>

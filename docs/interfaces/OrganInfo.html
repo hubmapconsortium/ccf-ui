@@ -398,10 +398,10 @@ import { ResizeSensor } from &#x27;css-element-queries&#x27;;
  * All organs that will eventually be displayed in the app
  */
 export const ALL_POSSIBLE_ORGANS: OrganInfo[] &#x3D; [
-  { src: &#x27;app:skin&#x27;, organ: &#x27;Skin&#x27;, name: &#x27;Skin&#x27;, disabled: true, hasSex: true,
+  { src: &#x27;app:skin&#x27;, organ: &#x27;Skin&#x27;, name: &#x27;Skin&#x27;, hasSex: true,
     id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002097&#x27;},
   { src: &#x27;app:large_intestine&#x27;, organ: &#x27;Large Intestine&#x27;, name: &#x27;Large Intestine&#x27;, hasSex: true,
-    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0001155&#x27; },
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0000059&#x27; },
   { src: &#x27;app:heart&#x27;, organ: &#x27;Heart&#x27;, name: &#x27;Heart&#x27;, hasSex: true,
     id: &#x27;http://purl.obolibrary.org/obo/UBERON_0000948&#x27;},
   { src: &#x27;app:kidney-left&#x27;, organ: &#x27;Kidney&#x27;, name: &#x27;Kidney, L&#x27;, side: &#x27;left&#x27;, hasSex: true,
@@ -410,20 +410,20 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] &#x3D; [
     id: &#x27;http://purl.obolibrary.org/obo/UBERON_0004539&#x27;},
   { src: &#x27;app:spleen&#x27;, organ: &#x27;Spleen&#x27;, name: &#x27;Spleen&#x27;, hasSex: true,
     id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002106&#x27;},
-  { src: &#x27;app:bladder&#x27;, organ: &#x27;Bladder&#x27;, name: &#x27;Bladder&#x27;, disabled: true, hasSex: true },
-  { src: &#x27;app:brain&#x27;, organ: &#x27;Brain&#x27;, name: &#x27;Brain&#x27;, disabled: true, hasSex: true },
-  { src: &#x27;app:liver&#x27;, organ: &#x27;Liver&#x27;, name: &#x27;Liver&#x27;, disabled: true, hasSex: true },
-  { src: &#x27;app:lung-left&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lung, L&#x27;, disabled: true, side: &#x27;left&#x27;, hasSex: true,
-    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002168&#x27;},
-  { src: &#x27;app:lung-right&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lung, R&#x27;, disabled: true, side: &#x27;right&#x27;, hasSex: true,
-    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002167&#x27;},
-  { src: &#x27;app:lymph_nodes&#x27;, organ: &#x27;Lymph Nodes&#x27;, name: &#x27;Lymph Nodes&#x27;, disabled: true, hasSex: true },
-  { src: &#x27;app:ovary-left&#x27;, organ: &#x27;Ovaries&#x27;, name: &#x27;Ovary, L&#x27;, disabled: true, side: &#x27;left&#x27;, hasSex: false },
-  { src: &#x27;app:ovary-right&#x27;, organ: &#x27;Ovaries&#x27;, name: &#x27;Ovary, R&#x27;, disabled: true, side: &#x27;right&#x27;, hasSex: false },
-  { src: &#x27;app:small_intestine&#x27;, organ: &#x27;Small Intestine&#x27;, name: &#x27;Small Intestine&#x27;, disabled: true, hasSex: true,
-    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002108&#x27;},
-  { src: &#x27;app:stomach&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Stomach&#x27;, disabled: true, hasSex: true },
-  { src: &#x27;app:thymus&#x27;, organ: &#x27;Stomach&#x27;, name: &#x27;Thymus&#x27;, disabled: true, hasSex: true }
+  { src: &#x27;app:brain&#x27;, organ: &#x27;Brain&#x27;, name: &#x27;Allen Brain&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0000955&#x27;},
+  { src: &#x27;app:lung&#x27;, organ: &#x27;Lung&#x27;, name: &#x27;Lungs&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002048&#x27;},
+  { src: &#x27;app:lymph_nodes&#x27;, organ: &#x27;Lymph Node&#x27;, name: &#x27;Lymph Node, L&#x27;, side: &#x27;left&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0000029&#x27;},
+  { src: &#x27;app:lymph_nodes&#x27;, organ: &#x27;Lymph Node&#x27;, name: &#x27;Lymph Node, R&#x27;, side: &#x27;right&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0000029&#x27;},
+  { src: &#x27;app:bone_marrow&#x27;, organ: &#x27;Pelvis&#x27;, name: &#x27;Pelvis&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0001270&#x27;},
+  { src: &#x27;app:thymus&#x27;, organ: &#x27;Thymus&#x27;, name: &#x27;Thymus&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002370&#x27;},
+  { src: &#x27;app:vasculature&#x27;, organ: &#x27;Vasculature&#x27;, name: &#x27;Vasculature&#x27;, hasSex: true,
+    id: &#x27;http://purl.obolibrary.org/obo/UBERON_0002049&#x27;}
 ];
 
 /**

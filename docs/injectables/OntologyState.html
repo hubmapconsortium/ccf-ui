@@ -551,15 +551,6 @@ export class OntologyState extends NgxsImmutableDataRepository&lt;OntologyTreeMo
       this.dataService.getReferenceOrgans().pipe(take(1))
     ]).subscribe(([fullOntology, refOrgans]) &#x3D;&gt; {
       const organNodes &#x3D; environment.organNodes.concat();
-      for (const organ of refOrgans) {
-        const ref &#x3D; organ.representation_of;
-        const ontoNode &#x3D; fullOntology.nodes[ref as string];
-        if (ref &amp;&amp; ontoNode &amp;&amp; organNodes.indexOf(ref) &#x3D;&#x3D;&#x3D; -1) {
-          if (!organ.side) { // Organs with sides have to be added via environment.organNodes
-            organNodes.push(ref);
-          }
-        }
-      }
       const ontology &#x3D; partial(pruneModel, partial.placeholder, organNodes)(fullOntology);
       this.setOntology(ontology);
     });

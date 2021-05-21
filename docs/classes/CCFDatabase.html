@@ -565,8 +565,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="142"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:142</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:146</a></div>
                 </td>
             </tr>
 
@@ -645,8 +645,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="184"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:184</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:188</a></div>
                 </td>
             </tr>
 
@@ -723,8 +723,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="132"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:132</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:136</a></div>
                 </td>
             </tr>
 
@@ -807,8 +807,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="194"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:194</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="198"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:198</a></div>
                 </td>
             </tr>
 
@@ -887,8 +887,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="203"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:203</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="207"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:207</a></div>
                 </td>
             </tr>
 
@@ -936,8 +936,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="212"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:212</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="216"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:216</a></div>
                 </td>
             </tr>
 
@@ -985,8 +985,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="222"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:222</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:226</a></div>
                 </td>
             </tr>
 
@@ -1063,8 +1063,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="162"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:162</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="166"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:166</a></div>
                 </td>
             </tr>
 
@@ -1143,8 +1143,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="173"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:173</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="177"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:177</a></div>
                 </td>
             </tr>
 
@@ -1221,8 +1221,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="152"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:152</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="156"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:156</a></div>
                 </td>
             </tr>
 
@@ -1407,6 +1407,10 @@ export class CCFDatabase {
       ops.push(
         addJsonLdToStore(&#x27;assets/kpmp/data/rui_locations.jsonld&#x27;, this.store)
         .catch(x &#x3D;&gt; console.log(&#x27;Couldn\&#x27;t locate KPMP data.&#x27;))
+      );
+      ops.push(
+        addJsonLdToStore(&#x27;assets/sparc/data/rui_locations.jsonld&#x27;, this.store)
+        .catch(x &#x3D;&gt; console.log(&#x27;Couldn\&#x27;t locate SPARC data.&#x27;))
       );
     }
     await Promise.all(ops);

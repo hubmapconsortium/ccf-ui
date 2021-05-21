@@ -64,6 +64,13 @@
     <code>projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The right sidebar</p>
+
+    </p>
 
 
 
@@ -121,6 +128,20 @@
         <tbody>
 
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#modalClosed">modalClosed</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
                 <tr>
@@ -154,7 +175,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -247,7 +268,35 @@
         </table>
 </section>
 
-
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalClosed"></a>
+                        <b>modalClosed</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:23</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether or not the initial registration modal has been closed </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
     <section>
     <h3>HostBindings</h3>        <table class="table table-sm table-bordered">
@@ -269,7 +318,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -291,7 +340,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding, Input } from &#x27;@angular/core&#x27;;
 
 import { ModelState } from &#x27;../../core/store/model/model.state&#x27;;
 import { RegistrationState } from &#x27;../../core/store/registration/registration.state&#x27;;
@@ -299,6 +348,9 @@ import { PageState } from &#x27;../../core/store/page/page.state&#x27;;
 import { AnatomicalStructureTagState } from &#x27;../../core/store/anatomical-structure-tags/anatomical-structure-tags.state&#x27;;
 
 
+/**
+ * The right sidebar
+ */
 @Component({
   selector: &#x27;ccf-right-sidebar&#x27;,
   templateUrl: &#x27;./right-sidebar.component.html&#x27;,
@@ -308,6 +360,9 @@ import { AnatomicalStructureTagState } from &#x27;../../core/store/anatomical-st
 export class RightSidebarComponent {
   /** HTML class name */
   @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-right-sidebar&#x27;;
+
+  /** Whether or not the initial registration modal has been closed */
+  @Input() modalClosed &#x3D; false;
 
   /**
    * Creates an instance of right sidebar component.
@@ -345,7 +400,7 @@ export class RightSidebarComponent {
     &lt;/ccf-rotation-slider&gt;
 
     &lt;mat-divider&gt;&lt;/mat-divider&gt;
-    &lt;mat-expansion-panel class&#x3D;&quot;tags-container&quot; expanded&gt;
+    &lt;mat-expansion-panel class&#x3D;&quot;tags-container&quot; [expanded]&#x3D;&quot;modalClosed&quot;&gt;
       &lt;mat-expansion-panel-header class&#x3D;&quot;header&quot;&gt;
         &lt;mat-panel-title matTooltip&#x3D;&quot;Review tags generated via collision detection. Add or delete tags as needed.&quot;&gt;Anatomical Structure Tags&lt;/mat-panel-title&gt;
       &lt;/mat-expansion-panel-header&gt;
@@ -357,9 +412,6 @@ export class RightSidebarComponent {
                     (tagRemoved)&#x3D;&quot;astags.removeTag($event)&quot;&gt;
       &lt;/ccf-tag-list&gt;
       &lt;ng-template #tagListPlaceholder&gt;
-        &lt;div class&#x3D;&quot;tag-list-placeholder&quot;&gt;
-          Select an organ to see tags
-        &lt;/div&gt;
       &lt;/ng-template&gt;
 
       &lt;div class&#x3D;&quot;legend&quot;&gt;
@@ -537,8 +589,8 @@ export class RightSidebarComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="scroll-wrapper">    <div class="container">    <div class=\'info-button-container\'>      <ccf-info-button [infoTitle]="\'HuBMAP CCF Registration User Interface 1.0\'"></ccf-info-button>    </div>    <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">    </ccf-block-size-input>    <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">    </ccf-slices-input>    <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">    </ccf-rotation-slider>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container" expanded>      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"                    (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <ng-template #tagListPlaceholder>        <div class="tag-list-placeholder">          Select an organ to see tags        </div>      </ng-template>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button [embeddedMode]="page.embedded$ | async" [displayErrors]="registration.displayErrors$ | async"                       [registrationIsValid]="registration.valid$ | async" [metaData]="registration.metadata$ | async"                       (registerData)="registration.register()"                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><div class="scroll-wrapper">    <div class="container">    <div class=\'info-button-container\'>      <ccf-info-button [infoTitle]="\'HuBMAP CCF Registration User Interface 1.0\'"></ccf-info-button>    </div>    <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">    </ccf-block-size-input>    <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">    </ccf-slices-input>    <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">    </ccf-rotation-slider>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container" [expanded]="modalClosed">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"                    (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <ng-template #tagListPlaceholder>      </ng-template>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button [embeddedMode]="page.embedded$ | async" [displayErrors]="registration.displayErrors$ | async"                       [registrationIsValid]="registration.valid$ | async" [metaData]="registration.metadata$ | async"                       (registerData)="registration.register()"                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'RightSidebarComponent'};
 </script>

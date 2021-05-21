@@ -390,8 +390,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:116</a></div>
                 </td>
             </tr>
 
@@ -600,14 +600,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:90</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Resets item to opacity 20 and visible</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -639,8 +641,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="101"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:101</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:104</a></div>
                 </td>
             </tr>
 
@@ -940,6 +942,9 @@ export class VisibilityMenuComponent {
     this.itemsChange.emit(this.items);
   }
 
+  /**
+   * Resets item to opacity 20 and visible
+   */
   resetItem(): void {
     if (this.selection) {
       const updatedSelection &#x3D; {...this.selection, opacity: 20, visible: true};
@@ -977,7 +982,7 @@ export class VisibilityMenuComponent {
         <pre class="line-numbers"><code class="language-html">&lt;mat-icon class&#x3D;&quot;icon reset&quot; matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; (click)&#x3D;&quot;setAllOpacity(20)&quot; *ngIf&#x3D;&quot;items.length&quot;&gt;refresh&lt;/mat-icon&gt;
 
 &lt;div class&#x3D;&quot;item-entry&quot; [class.selected]&#x3D;&quot;selection ? getId(0, selection) &#x3D;&#x3D;&#x3D; getId(0, item) : false&quot; (mouseleave)&#x3D;&quot;mouseOut()&quot; *ngFor&#x3D;&quot;let item of items; trackBy: getId&quot;&gt;
-  &lt;mat-icon class&#x3D;&quot;opacity&quot; [class.fade]&#x3D;&quot;!item.visible&quot; (mouseenter)&#x3D;&quot;mouseOver(item)&quot; svgIcon&#x3D;&quot;app:opacity&quot;&gt;&lt;/mat-icon&gt;
+  &lt;mat-icon class&#x3D;&quot;opacity-icon&quot; [class.fade]&#x3D;&quot;!item.visible&quot; (mouseenter)&#x3D;&quot;mouseOver(item)&quot; svgIcon&#x3D;&quot;app:opacity&quot;&gt;&lt;/mat-icon&gt;
   &lt;div class&#x3D;&quot;item-name&quot; [class.hidden]&#x3D;&quot;item.id &#x3D;&#x3D; selection?.id&quot; title&#x3D;&quot;{{item.name}}&quot;&gt;{{ item.name }}&lt;/div&gt;
 
   &lt;div class&#x3D;&quot;slider&quot; [class.hidden]&#x3D;&quot;item.id !&#x3D; selection?.id&quot;&gt;
@@ -1033,7 +1038,6 @@ export class VisibilityMenuComponent {
     .opacity-icon {
       z-index: 1;
       transition: .6s;
-      
 
       &amp;:hover {
         border-radius: 2px;
@@ -1101,8 +1105,8 @@ export class VisibilityMenuComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-icon class="icon reset" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" (click)="setAllOpacity(20)" *ngIf="items.length">refresh</mat-icon><div class="item-entry" [class.selected]="selection ? getId(0, selection) === getId(0, item) : false" (mouseleave)="mouseOut()" *ngFor="let item of items; trackBy: getId">  <mat-icon class="opacity" [class.fade]="!item.visible" (mouseenter)="mouseOver(item)" svgIcon="app:opacity"></mat-icon>  <div class="item-name" [class.hidden]="item.id == selection?.id" title="{{item.name}}">{{ item.name }}</div>  <div class="slider" [class.hidden]="item.id != selection?.id">    <ccf-opacity-slider #slider [visible]="item.visible" [opacity]="selection ? selection?.opacity : 20"      (opacityChange)="updateOpacity($event)" (opacityReset)="resetItem()" (visibilityToggle)="toggleVisibility(item)">    </ccf-opacity-slider>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><mat-icon class="icon reset" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" (click)="setAllOpacity(20)" *ngIf="items.length">refresh</mat-icon><div class="item-entry" [class.selected]="selection ? getId(0, selection) === getId(0, item) : false" (mouseleave)="mouseOut()" *ngFor="let item of items; trackBy: getId">  <mat-icon class="opacity-icon" [class.fade]="!item.visible" (mouseenter)="mouseOver(item)" svgIcon="app:opacity"></mat-icon>  <div class="item-name" [class.hidden]="item.id == selection?.id" title="{{item.name}}">{{ item.name }}</div>  <div class="slider" [class.hidden]="item.id != selection?.id">    <ccf-opacity-slider #slider [visible]="item.visible" [opacity]="selection ? selection?.opacity : 20"      (opacityChange)="updateOpacity($event)" (opacityReset)="resetItem()" (visibilityToggle)="toggleVisibility(item)">    </ccf-opacity-slider>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'VisibilityMenuComponent'};
 </script>

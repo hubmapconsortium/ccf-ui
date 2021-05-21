@@ -990,7 +990,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getRuiLocation(data: <a href="../undefineds/JsonDict.html">JsonDict</a>, donor: <a href="../undefineds/JsonDict.html">JsonDict</a>)</code>
+<code>getRuiLocation(data: <a href="../undefineds/JsonDict.html">JsonDict</a>, donor: JsonLdObj)</code>
                 </td>
             </tr>
 
@@ -1032,7 +1032,7 @@
                                 <tr>
                                     <td>donor</td>
                                     <td>
-                                                <code><a href="../miscellaneous/typealiases.html#JsonDict" target="_self" >JsonDict</a></code>
+                                            <code>JsonLdObj</code>
                                     </td>
 
                                     <td>
@@ -1173,8 +1173,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="434"
-                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:434</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="451"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:451</a></div>
                 </td>
             </tr>
 
@@ -1212,8 +1212,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="438"
-                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:438</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="455"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:455</a></div>
                 </td>
             </tr>
 
@@ -1240,7 +1240,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { JsonLd, JsonLdObj } from &#x27;jsonld/jsonld-spec&#x27;;
-import { get, omit, toNumber } from &#x27;lodash&#x27;;
+import { get, omit, set, toNumber } from &#x27;lodash&#x27;;
 
 import { rui } from &#x27;../util/prefixes&#x27;;
 
@@ -1279,7 +1279,7 @@ const HBM_ORGANS: { [organName: string]: string[] } &#x3D; {
   RK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.right_kidney],
   LK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.left_kidney],
   HT: [RUI_ORGANS.body, RUI_ORGANS.heart],
-  LI: [RUI_ORGANS.body, RUI_ORGANS.large_intestine], // large_intestine
+  LI: [RUI_ORGANS.body, RUI_ORGANS.large_intestine, RUI_ORGANS.colon],
   SI: [RUI_ORGANS.body, RUI_ORGANS.small_instestine],
   LL: [RUI_ORGANS.body, RUI_ORGANS.lung, RUI_ORGANS.left_lung],
   RL: [RUI_ORGANS.body, RUI_ORGANS.lung, RUI_ORGANS.right_lung],
@@ -1435,7 +1435,7 @@ export class HuBMAPTissueBlock {
 
     const donor &#x3D; ancestors.find(e &#x3D;&gt; e.entity_type &#x3D;&#x3D;&#x3D; &#x27;Donor&#x27;) as JsonDict;
     this.donor &#x3D; this.getDonor(donor, portalUrl);
-    const ruiLocation &#x3D; this.getRuiLocation(data, donor);
+    const ruiLocation &#x3D; this.getRuiLocation(data, this.donor);
     if (!ruiLocation) {
       this.bad &#x3D; true;
     } else {
@@ -1646,7 +1646,7 @@ export class HuBMAPTissueBlock {
     };
   }
 
-  getRuiLocation(data: JsonDict, donor: JsonDict): JsonLdObj | undefined {
+  getRuiLocation(data: JsonDict, donor: JsonLdObj): JsonLdObj | undefined {
     const ancestors &#x3D; (data.ancestors || []) as JsonDict[];
     const organSample &#x3D; ancestors.find(e &#x3D;&gt; e.entity_type &#x3D;&#x3D;&#x3D; &#x27;Sample&#x27; &amp;&amp; e.specimen_type &#x3D;&#x3D;&#x3D; &#x27;organ&#x27;) as JsonDict;
     const ontologyTerms &#x3D; HBM_ORGANS[organSample?.organ as string] || [RUI_ORGANS.body];
@@ -1667,6 +1667,23 @@ export class HuBMAPTissueBlock {
     }
     if (spatialEntity) {
       spatialEntity.ccf_annotations &#x3D; ontologyTerms.concat(spatialEntity.ccf_annotations as string[] || []);
+
+      // Patch to fix RUI 0.5 Kidney and Spleen Placements
+      const target: string &#x3D; get(spatialEntity, [&#x27;placement&#x27;, &#x27;target&#x27;]) ?? &#x27;&#x27;;
+      if (target.startsWith(&#x27;http://purl.org/ccf/latest/ccf.owl#VHSpleenCC&#x27;)) {
+        if (donor.sex &#x3D;&#x3D;&#x3D; &#x27;Male&#x27;) {
+          set(spatialEntity, [&#x27;placement&#x27;, &#x27;target&#x27;], target.replace(&#x27;#VHSpleenCC&#x27;, &#x27;#VHMSpleenCC&#x27;));
+        } else {
+          set(spatialEntity, [&#x27;placement&#x27;, &#x27;target&#x27;], target.replace(&#x27;#VHSpleenCC&#x27;, &#x27;#VHFSpleenCC&#x27;));
+        }
+      }
+      if (target &#x3D;&#x3D;&#x3D; &#x27;http://purl.org/ccf/latest/ccf.owl#VHLeftKidney&#x27; || target &#x3D;&#x3D;&#x3D; &#x27;http://purl.org/ccf/latest/ccf.owl#VHRightKidney&#x27;) {
+        if (donor.sex &#x3D;&#x3D;&#x3D; &#x27;Male&#x27;) {
+          set(spatialEntity, [&#x27;placement&#x27;, &#x27;target&#x27;], target.replace(&#x27;#VH&#x27;, &#x27;#VHM&#x27;) + &#x27;_Patch&#x27;);
+        } else {
+          set(spatialEntity, [&#x27;placement&#x27;, &#x27;target&#x27;], target.replace(&#x27;#VH&#x27;, &#x27;#VHF&#x27;) + &#x27;_Patch&#x27;);
+        }
+      }
     }
     return spatialEntity;
   }

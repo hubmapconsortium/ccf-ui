@@ -267,6 +267,7 @@ import { ColorAssignmentState } from &#x27;../color-assignment/color-assignment.
 import { DataState } from &#x27;../data/data.state&#x27;;
 import { DataSourceService } from &#x27;../../services/data-source/data-source.service&#x27;;
 
+export const DEFAULT_SELECTED_ORGANS &#x3D; new Set([&#x27;Skin&#x27;, &#x27;Heart&#x27;, &#x27;Kidney&#x27;, &#x27;Spleen&#x27;]);
 
 export interface SceneStateModel {
   scene: SpatialSceneNode[];
@@ -384,27 +385,15 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
     // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(
       map(refOrgans &#x3D;&gt; {
-        const organLookup &#x3D; ALL_POSSIBLE_ORGANS.reduce((acc, organ) &#x3D;&gt; {
-          acc[organ.id as string] &#x3D; organ;
-          return acc;
-        }, {} as Record&lt;string, OrganInfo&gt;);
-
-        const organIds: string[] &#x3D; [];
-        for (const organ of refOrgans) {
-          const id &#x3D; organ.representation_of;
-          if (id &amp;&amp; organLookup[id] &amp;&amp; !organIds.includes(id)) {
-            organIds.push(id);
-          }
-        }
-
-        return organIds.map(id &#x3D;&gt; ({
-          ...organLookup[id], disabled: false, numResults: 0
-        } as OrganInfo));
+        const organIds &#x3D; new Set(refOrgans.map(o &#x3D;&gt; o.representation_of));
+        return ALL_POSSIBLE_ORGANS
+          .filter(organ &#x3D;&gt; organIds.has(organ.id))
+          .map(organ &#x3D;&gt; ({ ...organ, disabled: false, numResults: 0 }));
       }),
       take(1),
       tap(organs &#x3D;&gt; {
         this.setReferenceOrgans(organs);
-        this.setSelectedReferenceOrgans(organs.filter(organ &#x3D;&gt; organ.name !&#x3D;&#x3D; &#x27;Large Intestine&#x27;));
+        this.setSelectedReferenceOrgans(organs.filter(organ &#x3D;&gt; DEFAULT_SELECTED_ORGANS.has(organ.organ)));
       })
     ).subscribe();
 
