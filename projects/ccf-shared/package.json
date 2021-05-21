@@ -11,6 +11,7 @@
     "rxjs": "~6.6.6"
   },
   "dependencies": {
+    "@angular/youtube-player": "^12.0.1",
     "tslib": "^2.0.0"
   }
 }
