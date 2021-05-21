@@ -52,5 +52,5 @@ Thumbs.db
 .scannerwork/
 
 # Development data
-src/assets/dev-data
+projects/ccf-eui/src/assets/dev-data
 
