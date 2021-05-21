@@ -13,7 +13,9 @@ import { StoreModule } from './store/store.module';
   imports: [
     HttpClientModule,
 
-    NgxGoogleAnalyticsModule.forRoot(environment.googleAnalyticsToken),
+    NgxGoogleAnalyticsModule.forRoot(environment.googleAnalyticsToken, [
+      { command: 'set', values: [{ app: 'rui' }] }
+    ]),
     MousePositionTrackerModule,
 
     ConfigModule,
