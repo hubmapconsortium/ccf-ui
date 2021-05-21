@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { TissueBlockResult } from 'ccf-database';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 /**
@@ -36,10 +37,18 @@ export class DonorCardComponent {
   hoverState = '';
 
   /**
+   * Creates an instance of donor card component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Handles the logic that needs to run when the checkbox is clicked on.
    */
   handleCheckbox(): void {
     this.selected = !this.selected;
+    this.ga.event('selected_toggled', 'donor_card', this.tissueBlock.label, +this.selected);
     this.checked.emit(this.selected);
     this.expanded = false;
   }
@@ -50,6 +59,7 @@ export class DonorCardComponent {
   toggleExpansion(): void {
     if(this.selected) {
       this.expanded = !this.expanded;
+      this.ga.event('expanded_toggled', 'donor_card', this.tissueBlock.label, +this.expanded);
     }
   }
 
@@ -61,6 +71,7 @@ export class DonorCardComponent {
    * @param url the URL to emit up.
    */
   linkHandler(url: string): void {
+    this.ga.event('link_clicked', 'donor_card', this.tissueBlock.label);
     if (this.selected) {
       this.linkClick.emit(url);
     } else {

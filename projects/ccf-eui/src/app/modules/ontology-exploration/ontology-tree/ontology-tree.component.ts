@@ -2,11 +2,12 @@
 /* eslint-disable no-underscore-dangle */
 import { FlatTreeControl } from '@angular/cdk/tree';
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges,
 } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { OntologyTreeNode } from 'ccf-database';
 import { filter, invoke, property } from 'lodash';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { FlatNode } from '../../../core/models/flat-node';
 
@@ -119,8 +120,9 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * Creates an instance of ontology tree component.
    *
    * @param cdr The change detector.
+   * @param ga Analytics service
    */
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef, private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Emits an event whenever a node has been selected.
@@ -221,6 +223,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
     if (selectedNodes?.length > 0) {
       this.selectedNodes = selectedNodes;
+      this.ga.event('nodes_selected_by_ids', 'ontology_tree', selectedNodes.map(node => node.label).join(','));
       this.control.collapseAll();
       this.selectedNodes.forEach(selectedNode => {
         this.expandAndSelect(selectedNode.original, (node) =>
@@ -306,6 +309,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
     if (node === undefined) {
       this.selectedNodes = [];
+      this.ga.event('nodes_unselected', 'ontology_tree');
       return;
     }
 
@@ -322,6 +326,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
         this.selectedNodes.push(node);
       }
     }
+
+    this.ga.event('nodes_selected', 'ontology_tree', this.selectedNodes.map(n => n.label).join(','));
 
     if (emit) {
       this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
@@ -352,6 +358,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   updateOpacity(node: FlatNode, value: number | undefined): void {
     node.opacity = value;
+    this.ga.event('opacity_update', 'ontology_tree', node.label, value);
     this.nodeChanged.emit(node);
   }
 
@@ -363,6 +370,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   resetNode(node: FlatNode): void {
     node.opacity = 20;
     node.visible = true;
+    this.ga.event('node_reset', 'ontology_tree', node.label);
     this.nodeChanged.emit(node);
   }
 
@@ -373,6 +381,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   toggleVisibility(node: FlatNode): void {
     node.visible = node.visible === true ? false : true;
+    this.ga.event('visibility_update', 'ontology_tree', node.label, +node.visible);
     this.nodeChanged.emit(node);
   }
 

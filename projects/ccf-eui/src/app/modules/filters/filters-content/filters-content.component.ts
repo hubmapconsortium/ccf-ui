@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
  * Contains components of the filters popup and handles changes in filter settings
@@ -31,6 +32,13 @@ export class FiltersContentComponent {
   @Output() applyFilters = new EventEmitter<Record<string, unknown>>();
 
   /**
+   * Creates an instance of filters content component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Updates the filter object with a new key/value
    *
    * @param value The value to be saved for the filter
@@ -38,6 +46,7 @@ export class FiltersContentComponent {
    */
   updateFilter(value: unknown, key: string): void {
     this.filters = { ...this.filters, [key]: value };
+    this.ga.event('filter_update', 'filter_content', `${key}:${value}`);
     this.filtersChange.emit(this.filters);
   }
 
@@ -45,6 +54,7 @@ export class FiltersContentComponent {
    * Emits the current filters when the apply button is clicked
    */
   applyButtonClick(): void {
+    this.ga.event('filters_applied', 'filter_content');
     this.applyFilters.emit(this.filters);
   }
 
@@ -53,6 +63,7 @@ export class FiltersContentComponent {
    */
   refreshFilters(): void {
     this.filters = { ...this.filters, sex: 'Both', ageRange: [1, 110], bmiRange: [13, 83], technologies: [], tmc: []};
+    this.ga.event('filters_reset', 'filter_content');
     this.filtersChange.emit(this.filters);
   }
 }
