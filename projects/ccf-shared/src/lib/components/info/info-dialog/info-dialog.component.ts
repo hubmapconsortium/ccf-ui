@@ -8,6 +8,7 @@ import { DocumentationContent } from '../info-button/info-button.service';
 export interface InfoDialogData {
   content: DocumentationContent[];
   title: string;
+  pageType: string;
 }
 
 /**
@@ -27,6 +28,8 @@ export class InfoDialogComponent implements OnInit {
    * Title of the dialog
    */
   infoTitle: string;
+
+  pageType: string;
   /**
    * Creates an instance of info dialog component.
    *
@@ -39,6 +42,7 @@ export class InfoDialogComponent implements OnInit {
   ) {
       this.documentationContents = data.content || [];
       this.infoTitle = data.title || '';
+      this.pageType = data.pageType;
   }
 
   /**

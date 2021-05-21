@@ -37,6 +37,7 @@
       margin-bottom: 1.5rem;
 
       .no-header-margin {
+        font-weight: 300;
         margin-bottom: 0;
       }
 
@@ -50,6 +51,8 @@
       min-height: 10rem;
       
       .variable-binding {
+        font-weight: 300;
+
         &.first {
           padding-right: 3rem;
           width: 50%;

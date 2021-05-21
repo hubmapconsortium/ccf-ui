@@ -19,6 +19,11 @@ export class InfoButtonComponent implements OnDestroy {
   @Input() infoTitle = '';
 
   /**
+   * Whether the information is for the RUI or EUI
+   */
+  @Input() pageType: 'RUI' | 'EUI';
+
+  /**
    * Creates an instance of info button component.
    *
    * @param dialog Reference to the dialog creation service.
@@ -50,7 +55,8 @@ export class InfoButtonComponent implements OnDestroy {
       width: '60rem',
       data: {
         title: this.infoTitle,
-        content: data
+        content: data,
+        pageType: this.pageType
       }
     });
   }
