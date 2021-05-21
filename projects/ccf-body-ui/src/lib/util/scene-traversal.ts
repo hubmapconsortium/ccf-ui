@@ -3,9 +3,11 @@ import { Matrix4 } from '@math.gl/core';
 
 export type SceneTraversalVisitor = (child, modelMatrix: Matrix4, parentMatrix: Matrix4) => boolean;
 
-/* eslint-disable  */
-export function traverseScene(scene, worldMatrix = new Matrix4(), visitor: SceneTraversalVisitor): boolean {
-  const matrix = new Matrix4().identity();
+export function traverseScene(scene, worldMatrix: Matrix4, visitor: SceneTraversalVisitor): boolean {
+  if (!worldMatrix) {
+    worldMatrix = new Matrix4(Matrix4.IDENTITY);
+  }
+  const matrix = new Matrix4(Matrix4.IDENTITY);
   if (scene.matrix) {
     matrix.copy(scene.matrix);
   } else {
@@ -16,7 +18,7 @@ export function traverseScene(scene, worldMatrix = new Matrix4(), visitor: Scene
     }
 
     if (scene.rotation) {
-      const rotationMatrix = new Matrix4().fromQuaternion(scene.rotation);
+      const rotationMatrix = new Matrix4(Matrix4.IDENTITY).fromQuaternion(scene.rotation);
       matrix.multiplyRight(rotationMatrix);
     }
 
@@ -35,4 +37,3 @@ export function traverseScene(scene, worldMatrix = new Matrix4(), visitor: Scene
   }
   return true;
 }
-/* eslint-enable */
