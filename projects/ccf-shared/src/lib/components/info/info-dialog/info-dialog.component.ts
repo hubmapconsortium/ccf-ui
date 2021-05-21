@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DocumentationContent } from '../info-button/info-button.service';
 
@@ -8,6 +8,7 @@ import { DocumentationContent } from '../info-button/info-button.service';
 export interface InfoDialogData {
   content: DocumentationContent[];
   title: string;
+  videoID: string;
 }
 
 /**
@@ -18,7 +19,7 @@ export interface InfoDialogData {
   templateUrl: './info-dialog.component.html',
   styleUrls: ['./info-dialog.component.scss']
 })
-export class InfoDialogComponent {
+export class InfoDialogComponent implements OnInit {
   /**
    * Documentation contents
    */
@@ -27,6 +28,8 @@ export class InfoDialogComponent {
    * Title of the dialog
    */
   infoTitle: string;
+
+  videoID: string;
   /**
    * Creates an instance of info dialog component.
    *
@@ -35,10 +38,20 @@ export class InfoDialogComponent {
    */
   constructor(
     public dialogRef: MatDialogRef<InfoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: InfoDialogData
+    @Inject(MAT_DIALOG_DATA) public data: InfoDialogData,
   ) {
       this.documentationContents = data.content || [];
       this.infoTitle = data.title || '';
+      this.videoID = data.videoID;
+  }
+
+  /**
+   * load the youtube player api in on init
+   */
+   ngOnInit(): void {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.body.appendChild(tag);
   }
 
   /**
