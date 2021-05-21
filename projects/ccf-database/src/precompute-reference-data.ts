@@ -38,6 +38,9 @@ async function main(outputFile?: string): Promise<void> {
     const iri = organ['@id'];
     const organSpatialEntity = organSpatialEntities[iri] = db.scene.getSpatialEntity(iri);
     anatomicalStructures[iri] = db.scene.getAnatomicalStructures(iri);
+    if (anatomicalStructures[iri].length === 0) {
+      anatomicalStructures[iri] = [ db.scene.getSpatialEntity(iri) ];
+    }
     extractionSets[iri] = db.scene.getExtractionSets(iri);
     organIRILookup[[organ.label, organ.sex, organ.side].join('|')] = iri;
 

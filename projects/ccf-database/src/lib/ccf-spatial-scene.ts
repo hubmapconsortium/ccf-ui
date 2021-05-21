@@ -82,8 +82,10 @@ export class CCFSpatialScene {
       default:
         break;
     }
-    organSet = organSet.map(o => [ [o], this.getAnatomicalStructures(o['@id'])])
-      .reduce((acc, [organ, structures]) => acc.concat(structures.length > 0 ? structures : organ), [] as SpatialEntity[]);
+    if (filter?.debug) {
+      organSet = organSet.map(o => [ [o], this.getAnatomicalStructures(o['@id'])])
+        .reduce((acc, [organ, structures]) => acc.concat(structures.length > 0 ? structures : organ), [] as SpatialEntity[]);
+    }
     return organSet;
   }
 

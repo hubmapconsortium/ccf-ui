@@ -1,4 +1,4 @@
-import { set } from 'lodash';
+import { memoize, set } from 'lodash';
 import { fromRdf } from 'rdf-literal';
 import { DataFactory, Store } from 'triple-store-utils';
 
@@ -51,7 +51,7 @@ const tissueBlockResultSet: { [iri: string]: string | string[] } = {
  * @param iri The entity id.
  * @returns The list data.
  */
- export function getDonorResult(store: Store, iri: string): DonorResult {
+ export function getDonorResultSlowly(store: Store, iri: string): DonorResult {
   const result = { '@id': iri, '@type': 'Donor' } as DonorResult;
   store.some((quad) => {
     const prop = donorResultSet[quad.predicate.id];
@@ -63,6 +63,8 @@ const tissueBlockResultSet: { [iri: string]: string | string[] } = {
   }, DataFactory.namedNode(iri), null, null, null);
   return result;
 }
+
+export const getDonorResult = memoize(getDonorResultSlowly, (store, iri) => iri);
 
 export function getDatasetResult(store: Store, iri: string): DatasetResult {
   const result = { '@id': iri, '@type': 'Dataset' } as DatasetResult;
@@ -109,7 +111,7 @@ export function getDatasetResult(store: Store, iri: string): DatasetResult {
  * @param iri The entity id.
  * @returns The list data.
  */
-export function getTissueBlockResult(store: Store, iri: string): TissueBlockResult {
+export function getTissueBlockResultSlowly(store: Store, iri: string): TissueBlockResult {
   const result = { '@id': iri, '@type': 'Sample',
     sections: [] as TissueSectionResult[], datasets: [] as DatasetResult[]
   } as TissueBlockResult;
@@ -133,3 +135,5 @@ export function getTissueBlockResult(store: Store, iri: string): TissueBlockResu
   }, DataFactory.namedNode(iri), null, null, null);
   return result;
 }
+
+export const getTissueBlockResult = memoize(getTissueBlockResultSlowly, (store, iri) => iri);

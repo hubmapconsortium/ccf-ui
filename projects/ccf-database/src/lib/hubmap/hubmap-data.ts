@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
-import { get, omit, toNumber } from 'lodash';
+import { get, omit, set, toNumber } from 'lodash';
 
 import { rui } from '../util/prefixes';
 
@@ -39,7 +39,7 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
   RK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.right_kidney],
   LK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.left_kidney],
   HT: [RUI_ORGANS.body, RUI_ORGANS.heart],
-  LI: [RUI_ORGANS.body, RUI_ORGANS.large_intestine], // large_intestine
+  LI: [RUI_ORGANS.body, RUI_ORGANS.large_intestine, RUI_ORGANS.colon],
   SI: [RUI_ORGANS.body, RUI_ORGANS.small_instestine],
   LL: [RUI_ORGANS.body, RUI_ORGANS.lung, RUI_ORGANS.left_lung],
   RL: [RUI_ORGANS.body, RUI_ORGANS.lung, RUI_ORGANS.right_lung],
@@ -195,7 +195,7 @@ export class HuBMAPTissueBlock {
 
     const donor = ancestors.find(e => e.entity_type === 'Donor') as JsonDict;
     this.donor = this.getDonor(donor, portalUrl);
-    const ruiLocation = this.getRuiLocation(data, donor);
+    const ruiLocation = this.getRuiLocation(data, this.donor);
     if (!ruiLocation) {
       this.bad = true;
     } else {
@@ -406,7 +406,7 @@ export class HuBMAPTissueBlock {
     };
   }
 
-  getRuiLocation(data: JsonDict, donor: JsonDict): JsonLdObj | undefined {
+  getRuiLocation(data: JsonDict, donor: JsonLdObj): JsonLdObj | undefined {
     const ancestors = (data.ancestors || []) as JsonDict[];
     const organSample = ancestors.find(e => e.entity_type === 'Sample' && e.specimen_type === 'organ') as JsonDict;
     const ontologyTerms = HBM_ORGANS[organSample?.organ as string] || [RUI_ORGANS.body];
@@ -427,6 +427,23 @@ export class HuBMAPTissueBlock {
     }
     if (spatialEntity) {
       spatialEntity.ccf_annotations = ontologyTerms.concat(spatialEntity.ccf_annotations as string[] || []);
+
+      // Patch to fix RUI 0.5 Kidney and Spleen Placements
+      const target: string = get(spatialEntity, ['placement', 'target']) ?? '';
+      if (target.startsWith('http://purl.org/ccf/latest/ccf.owl#VHSpleenCC')) {
+        if (donor.sex === 'Male') {
+          set(spatialEntity, ['placement', 'target'], target.replace('#VHSpleenCC', '#VHMSpleenCC'));
+        } else {
+          set(spatialEntity, ['placement', 'target'], target.replace('#VHSpleenCC', '#VHFSpleenCC'));
+        }
+      }
+      if (target === 'http://purl.org/ccf/latest/ccf.owl#VHLeftKidney' || target === 'http://purl.org/ccf/latest/ccf.owl#VHRightKidney') {
+        if (donor.sex === 'Male') {
+          set(spatialEntity, ['placement', 'target'], target.replace('#VH', '#VHM') + '_Patch');
+        } else {
+          set(spatialEntity, ['placement', 'target'], target.replace('#VH', '#VHF') + '_Patch');
+        }
+      }
     }
     return spatialEntity;
   }
