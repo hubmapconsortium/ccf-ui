@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PageState } from '../../../core/store/page/page.state';
 import { RegistrationContentComponent } from '../registration-content/registration-content.component';
 
 
@@ -19,13 +20,17 @@ export class RegistrationModalComponent implements OnInit {
    *
    * @param dialog Dialog for the modal
    */
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private pageState: PageState) {}
 
   /**
-   * Opens the dialog on startup
+   * Opens the dialog on startup (but not in embedded mode. This logic needs moved..)
    */
   ngOnInit(): void {
-    this.openDialog();
+    setTimeout(() => {
+      if (!this.pageState.snapshot.embedded) {
+        this.openDialog();
+      }
+    }, 1000);
   }
 
   /**
