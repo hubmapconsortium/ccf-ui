@@ -23,7 +23,7 @@ export class RegistrationModalComponent implements OnInit {
   constructor(public dialog: MatDialog, private pageState: PageState) {}
 
   /**
-   * Opens the dialog on startup (but not in embedded mode. This logic needs moved..)
+   * Opens the dialog on startup (but not in embedded mode)
    */
   ngOnInit(): void {
     setTimeout(() => {
