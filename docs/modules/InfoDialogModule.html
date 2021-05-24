@@ -174,10 +174,12 @@ import { MatDialogModule } from &#x27;@angular/material/dialog&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 import { MatExpansionModule } from &#x27;@angular/material/expansion&#x27;;
 import { MarkdownModule } from &#x27;ngx-markdown&#x27;;
+import { YouTubePlayerModule } from &#x27;@angular/youtube-player&#x27;;
+
 
 @NgModule({
   declarations: [InfoDialogComponent],
-  imports: [CommonModule, MatDialogModule, MatIconModule, MatExpansionModule, MarkdownModule.forRoot({})],
+  imports: [CommonModule, MatDialogModule, MatIconModule, MatExpansionModule, YouTubePlayerModule, MarkdownModule.forRoot({})],
   exports: [InfoDialogComponent]
 })
 export class InfoDialogModule {}

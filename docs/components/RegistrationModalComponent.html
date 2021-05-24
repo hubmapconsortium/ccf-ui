@@ -183,12 +183,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dialog: MatDialog)</code>
+<code>constructor(dialog: MatDialog, pageState: <a href="../injectables/PageState.html">PageState</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -224,6 +224,20 @@
 </code>
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>pageState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PageState.html" target="_self" >PageState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -255,7 +269,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -298,15 +312,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:28</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Opens the dialog on startup</p>
+                    <div class="io-description"><p>Opens the dialog on startup (but not in embedded mode)</p>
 </div>
 
                     <div class="io-description">
@@ -339,8 +353,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:39</a></div>
                 </td>
             </tr>
 
@@ -385,7 +399,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -405,6 +419,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, HostBinding, OnInit } from &#x27;@angular/core&#x27;;
 import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { PageState } from &#x27;../../../core/store/page/page.state&#x27;;
 import { RegistrationContentComponent } from &#x27;../registration-content/registration-content.component&#x27;;
 
 
@@ -424,13 +439,17 @@ export class RegistrationModalComponent implements OnInit {
    *
    * @param dialog Dialog for the modal
    */
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private pageState: PageState) {}
 
   /**
-   * Opens the dialog on startup
+   * Opens the dialog on startup (but not in embedded mode)
    */
   ngOnInit(): void {
-    this.openDialog();
+    setTimeout(() &#x3D;&gt; {
+      if (!this.pageState.snapshot.embedded) {
+        this.openDialog();
+      }
+    }, 1000);
   }
 
   /**
