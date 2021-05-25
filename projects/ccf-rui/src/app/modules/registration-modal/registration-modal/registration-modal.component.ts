@@ -26,11 +26,9 @@ export class RegistrationModalComponent implements OnInit {
    * Opens the dialog on startup (but not in embedded mode)
    */
   ngOnInit(): void {
-    setTimeout(() => {
-      if (!this.pageState.snapshot.embedded) {
-        this.openDialog();
-      }
-    }, 1000);
+    if (!this.pageState.snapshot.embedded) {
+      this.openDialog();
+    }
   }
 
   /**
