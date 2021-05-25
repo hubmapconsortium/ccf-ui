@@ -16,7 +16,7 @@ describe('RegistrationModalComponent', () => {
   it('should open the dialog when the openDialog() method is called', async () => {
     const { instance, get } = await shallow
       .mock(MatDialog, { open() { return {}; } })
-      .mock(PageState, {})
+      .mock(PageState, { snapshot: { embedded: true } })
       .render();
     instance.openDialog();
     expect(get(MatDialog).open).toHaveBeenCalled();
