@@ -42,7 +42,7 @@
             </mat-icon>
           </button>
           <button class="button">
-            <mat-icon class="refresh icon" (click)="reset(left, right, filterbox)" matTooltip="Reset View">refresh
+            <mat-icon class="refresh icon" (click)="reset(left, right, filterbox); bodyUI.setupBodyUI()" matTooltip="Reset View">refresh
             </mat-icon>
           </button>
         </div>
@@ -77,7 +77,7 @@
           </mat-icon>
         </div>
       </div>
-      <ccf-body-ui [scene]="scene.scene$ | async" (nodeClick)="scene.sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"
+      <ccf-body-ui #bodyUI [scene]="scene.scene$ | async" (nodeClick)="scene.sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"
                    [class.expanded-stage]="!organListVisible" class="stage-content"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>

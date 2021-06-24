@@ -127,7 +127,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   /**
    * Set up required to render the body UI with the scene nodes.
    */
-  private async setupBodyUI(): Promise<void> {
+  async setupBodyUI(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
     const bodyUI = new BodyUI({
       id: 'body-ui',
