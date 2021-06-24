@@ -91,9 +91,9 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   /** HTML class */
   @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
+  @ViewChild('carouselContainer', { static: true }) carouselContainer: ElementRef<HTMLElement>;
   @ViewChild('itemlist', { static: true }) itemList: ElementRef<HTMLElement>;
   @ViewChild('itemcontainer', { static: true }) itemContainer: ElementRef<HTMLElement>;
-
   /**
    * If multiple selections should be allowed
    */
@@ -141,6 +141,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    */
   private sensor: ResizeSensor;
 
+  private sensor2: ResizeSensor
+
   // eslint-disable-next-line
   @Input()
   set occurenceData(value: Record<string, number>) {
@@ -164,9 +166,12 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Set resize sensor on carousel
    */
   ngAfterViewInit(): void {
-    const { itemContainer } = this;
+    const { itemContainer, carouselContainer } = this;
     this.sensor = new ResizeSensor(itemContainer.nativeElement, () => {
       this.set();
+    });
+    this.sensor2 = new ResizeSensor(carouselContainer.nativeElement, () => {
+      this.setWidth();
     });
   }
 
@@ -175,6 +180,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    */
   ngOnDestroy(): void {
     this.sensor.detach();
+    this.sensor2.detach();
   }
 
   /**
@@ -273,6 +279,12 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
     } else {
       this.setLeftRight(val);
     }
+  }
+
+  setWidth(): void {
+    const { itemContainer, carouselContainer } = this;
+    const listLength = this.step*Math.floor(carouselContainer.nativeElement.offsetWidth/this.step) - 64;
+    itemContainer.nativeElement.style.width = `${listLength}px`;
   }
 
   setLeftRight(val: number): void {
