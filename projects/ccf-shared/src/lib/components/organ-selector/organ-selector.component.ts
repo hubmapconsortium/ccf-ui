@@ -94,6 +94,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   @ViewChild('carouselContainer', { static: true }) carouselContainer: ElementRef<HTMLElement>;
   @ViewChild('itemlist', { static: true }) itemList: ElementRef<HTMLElement>;
   @ViewChild('itemcontainer', { static: true }) itemContainer: ElementRef<HTMLElement>;
+
   /**
    * If multiple selections should be allowed
    */
@@ -141,7 +142,10 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    */
   private sensor: ResizeSensor;
 
-  private sensor2: ResizeSensor
+  /**
+   * Detects resizing of carousel container
+   */
+  private sensor2: ResizeSensor;
 
   // eslint-disable-next-line
   @Input()
@@ -281,12 +285,18 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  /**
+   * Responsively sets width of the item container
+   */
   setWidth(): void {
     const { itemContainer, carouselContainer } = this;
     const listLength = this.step*Math.floor(carouselContainer.nativeElement.offsetWidth/this.step) - 64;
     itemContainer.nativeElement.style.width = `${listLength}px`;
   }
 
+  /**
+   * Sets onLeft and onRight according to where the item list is scrolled
+   */
   setLeftRight(val: number): void {
     const { itemContainer } = this;
     this.onLeft = val === 0 ? true : false;
