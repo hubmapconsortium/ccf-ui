@@ -66,11 +66,11 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   }
 
   @Input()
-  get target(): number[] {
+  get target(): [number, number, number] {
     return this._target;
   }
 
-  set target(value: number[]) {
+  set target(value: [number, number, number]) {
     this._target = value;
     this.bodyUI?.setTarget(value);
   }
@@ -110,7 +110,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   private _rotation = 0;
   private _rotationX = 0;
   private _zoom = 9.5;
-  private _target = [0, 0, 0];
+  private _target: [number, number, number] = [0, 0, 0];
   private _bounds: XYZTriplet;
   private _scene: SpatialSceneNode[] = [];
   private subscriptions: Subscription[] = [];
