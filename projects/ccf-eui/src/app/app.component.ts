@@ -93,7 +93,8 @@ export class AppComponent {
     right.open();
     right.closeExpanded();
     filterbox.removeBox();
-    this.bodyUI.setupBodyUI();
+    this.bodyUI.zoomToBounds({x:2.2, y:2, z:0.4});
+    this.bodyUI.rotation = 0;
   }
 
   /**
@@ -114,7 +115,8 @@ export class AppComponent {
       this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
       if (ontologySelection[0].label === 'body') {
-        this.bodyUI.setupBodyUI();
+        this.bodyUI.zoomToBounds({x:2.2, y:2, z:0.4});
+        this.bodyUI.rotation = 0;
       }
       return;
     }
