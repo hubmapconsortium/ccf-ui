@@ -46,6 +46,16 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   }
 
   @Input()
+  get rotationX(): number {
+    return this._rotationX;
+  }
+
+  set rotationX(value: number) {
+    this._rotationX = value;
+    this.bodyUI?.setRotationX(value);
+  }
+
+  @Input()
   get zoom(): number {
     return this._zoom;
   }
@@ -53,6 +63,16 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   set zoom(value: number) {
     this._zoom = value;
     this.bodyUI?.setZoom(value);
+  }
+
+  @Input()
+  get target(): number[] {
+    return this._target;
+  }
+
+  set target(value: number[]) {
+    this._target = value;
+    this.bodyUI?.setTarget(value);
   }
 
   @Input()
@@ -88,7 +108,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
 
   private _interactive = true;
   private _rotation = 0;
+  private _rotationX = 0;
   private _zoom = 9.5;
+  private _target = [0, 0, 0];
   private _bounds: XYZTriplet;
   private _scene: SpatialSceneNode[] = [];
   private subscriptions: Subscription[] = [];
@@ -127,7 +149,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   /**
    * Set up required to render the body UI with the scene nodes.
    */
-  async setupBodyUI(): Promise<void> {
+  private async setupBodyUI(): Promise<void> {
     const canvas = this.bodyCanvas.nativeElement;
     const bodyUI = new BodyUI({
       id: 'body-ui',
