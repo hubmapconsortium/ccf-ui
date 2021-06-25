@@ -125,4 +125,13 @@ describe('AppComponent', () => {
     instance.closeiFrameViewer();
     expect(instance.viewerOpen).not.toBeTrue();
   });
+
+  it('resets the view', async () => {
+    const { instance } = await shallow.render();
+    instance.resetView();
+    expect(instance.bodyUI.target).toEqual([0, 0, 0]);
+    expect(instance.bodyUI.rotation).toEqual(0);
+    expect(instance.bodyUI.rotationX).toEqual(0);
+    expect(instance.bodyUI.bounds).toEqual({x:2.2, y:2, z:0.4});
+  });
 });
