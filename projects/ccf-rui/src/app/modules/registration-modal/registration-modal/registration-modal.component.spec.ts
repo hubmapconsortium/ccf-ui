@@ -21,4 +21,14 @@ describe('RegistrationModalComponent', () => {
     instance.openDialog();
     expect(get(MatDialog).open).toHaveBeenCalled();
   });
+
+  it('should open the dialog on init', async () => {
+    const { instance } = await shallow
+      .mock(MatDialog, { open() { return {}; } })
+      .mock(PageState, { snapshot: { embedded: false } })
+      .render();
+    const spy = spyOn(instance, 'openDialog');
+    instance.ngOnInit();
+    expect(spy).toHaveBeenCalled();
+  });
 });

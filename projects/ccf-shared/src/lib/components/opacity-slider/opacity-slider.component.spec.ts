@@ -38,4 +38,10 @@ describe('OpacitySliderComponent', () => {
     expect(outputs.visibilityToggle.emit).toHaveBeenCalled();
   });
 
+  it('should reset the opacity to 20', async () => {
+    const { instance } = await shallow.render();
+    instance.reset();
+    expect(instance.prevOpacity).toEqual(20);
+  });
+
 });

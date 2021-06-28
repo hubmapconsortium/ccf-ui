@@ -67,4 +67,13 @@ describe('ResultsBrowserComponent', () => {
     instance.handleSelection(testResult, false);
     expect(spy2).toHaveBeenCalled();
   });
+
+  it('onScroll returns nothing if no target', async () => {
+    const mockEvent = {
+      target: null
+    } as UIEvent;
+    const { instance } = await shallow.render();
+    instance.onScroll(mockEvent);
+    expect().nothing();
+  });
 });

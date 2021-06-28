@@ -9,8 +9,9 @@ function wait(duration: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, duration));
 }
 
+const carouselContainerClass = '.container';
+const carouselItemContainerClass = '.carousel-item-container';
 const carouselItemListClass = '.carousel-item-list';
-const carouselContainerClass = '.carousel-item-container';
 
 describe('OrganSelectorComponent', () => {
   let shallow: Shallow<OrganSelectorComponent>;
@@ -114,6 +115,12 @@ describe('OrganSelectorComponent', () => {
     expect(value).toBeFalse();
   });
 
+  it('getError() should return false if there are no selected organs', async () => {
+    const { instance } = await shallow.render({ bind: { selectedOrgans: [] }});
+    const value = instance.error;
+    expect(value).toBeFalse();
+  });
+
   it('getError() should return true if displayErrors is set to true and there is an organ selected', async () => {
     const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
     const { instance } = await shallow.render({ bind: { displayErrors: true, selectedOrgans: [testOrgan] }});
@@ -163,11 +170,27 @@ describe('OrganSelectorComponent', () => {
     const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
     const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
     const list = find(carouselItemListClass).nativeElement as HTMLElement;
-    const container = find(carouselContainerClass).nativeElement as HTMLElement;
+    const container = find(carouselItemContainerClass).nativeElement as HTMLElement;
     list.style.left = '-124px';
     list.style.width = '150px';
     container.style.width = '164px';
     instance.set();
     expect(instance.onRight).toBeTrue();
+  });
+
+  it('should set set the container width to a multiple of the icon width', async () => {
+    const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
+    const { instance, find } = await shallow.render({bind: { organList: [testOrgan, testOrgan, testOrgan, testOrgan] }});
+    const carouselContainer = find(carouselContainerClass).nativeElement as HTMLElement;
+    const itemContainer = find(carouselItemContainerClass).nativeElement as HTMLElement;
+    carouselContainer.style.width = '300px';
+    instance.setWidth();
+    expect(itemContainer.style.width).toBe('224px');
+  });
+
+  it('should set occurenceData', async () => {
+    const { instance } = await shallow.render();
+    instance.occurenceData = {a: 1};
+    expect(instance.occurenceData).toEqual({a: 1});
   });
 });

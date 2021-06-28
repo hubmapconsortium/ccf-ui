@@ -24,6 +24,14 @@ describe('StageNavComponent', () => {
     expect(outputs.sideChange.emit).toHaveBeenCalled();
   });
 
+  it('should call updateView with true if 3D is selected.', async () => {
+    const { instance } = await shallow.render();
+    const spy = spyOn(instance, 'updateView');
+
+    instance.updateSide('3D');
+    expect(spy).toHaveBeenCalledWith(true);
+  });
+
   it('should properly update the view3D variable when updateView is called.', async () => {
     const { instance } = await shallow.render({ bind: { view3D: true }});
     instance.updateView(false);

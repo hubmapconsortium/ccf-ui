@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -11,6 +11,7 @@ import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 
 
 /**
@@ -23,6 +24,8 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
+
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -90,6 +93,14 @@ export class AppComponent {
     right.open();
     right.closeExpanded();
     filterbox.removeBox();
+    this.resetView();
+  }
+
+  resetView(): void {
+    this.bodyUI.target = [0, 0, 0];
+    this.bodyUI.rotation = 0;
+    this.bodyUI.rotationX = 0;
+    this.bodyUI.bounds = {x:2.2, y:2, z:0.4};
   }
 
   /**
@@ -105,10 +116,13 @@ export class AppComponent {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[]): void {
+  ontologySelected(ontologySelection: OntologySelection[] | undefined): void {
     if (!!ontologySelection) {
       this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
+      if (ontologySelection[0] && ontologySelection[0].label === 'body') {
+        this.resetView();
+      }
       return;
     }
 

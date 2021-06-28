@@ -1,4 +1,5 @@
-import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input,
+  OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
 
 /**
@@ -87,10 +88,11 @@ export interface OrganInfo {
   templateUrl: './organ-selector.component.html',
   styleUrls: ['./organ-selector.component.scss']
 })
-export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
+export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestroy {
   /** HTML class */
   @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
+  @ViewChild('carouselContainer', { static: true }) carouselContainer: ElementRef<HTMLElement>;
   @ViewChild('itemlist', { static: true }) itemList: ElementRef<HTMLElement>;
   @ViewChild('itemcontainer', { static: true }) itemContainer: ElementRef<HTMLElement>;
 
@@ -144,13 +146,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   // eslint-disable-next-line
   @Input()
   set occurenceData(value: Record<string, number>) {
-    if (value) {
-      // eslint-disable-next-line
-      this._occurenceData = value;
-    } else {
-      // eslint-disable-next-line
-      this._occurenceData = {};
-    }
+    // eslint-disable-next-line
+    this._occurenceData = value;
   }
 
   get occurenceData(): Record<string, number> {
@@ -164,10 +161,16 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Set resize sensor on carousel
    */
   ngAfterViewInit(): void {
-    const { itemContainer } = this;
-    this.sensor = new ResizeSensor(itemContainer.nativeElement, () => {
+    const { carouselContainer } = this;
+    this.sensor = new ResizeSensor(carouselContainer.nativeElement, () => {
       this.set();
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('organList' in changes) {
+      this.set();
+    }
   }
 
   /**
@@ -182,11 +185,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * used to display or hide error message.
    */
   get error(): boolean {
-    if (!this.displayErrors) {
-      return false;
-    }
-
-    if (!this.selectedOrgans) {
+    if (!this.displayErrors || this.selectedOrgans.length === 0) {
       return false;
     }
 
@@ -264,7 +263,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Disables scrolling if the list of organs is smaller than the container, otherwise sets onLeft and onRight as normal
    */
   set(): void {
-    const { itemList } = this;
+    const { itemList, itemContainer, carouselContainer } = this;
     const val = parseInt(itemList.nativeElement.style.left, 10) || 0;
     if (itemList.nativeElement.offsetWidth >= this.organList.length*this.step) {
       itemList.nativeElement.style.left = '0px';
@@ -272,9 +271,23 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
       this.onRight = true;
     } else {
       this.setLeftRight(val);
+      const listLength = this.step*Math.floor(carouselContainer.nativeElement.offsetWidth/this.step) - 64;
+      itemContainer.nativeElement.style.width = `${listLength}px`;
     }
   }
 
+  /**
+   * Responsively sets width of the item container
+   */
+  setWidth(): void {
+    const { itemContainer, carouselContainer } = this;
+    const listLength = this.step*Math.floor(carouselContainer.nativeElement.offsetWidth/this.step) - 64;
+    itemContainer.nativeElement.style.width = `${listLength}px`;
+  }
+
+  /**
+   * Sets onLeft and onRight according to where the item list is scrolled
+   */
   setLeftRight(val: number): void {
     const { itemContainer } = this;
     this.onLeft = val === 0 ? true : false;

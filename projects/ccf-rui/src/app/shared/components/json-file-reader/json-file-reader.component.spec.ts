@@ -51,4 +51,11 @@ describe('JsonFileReaderComponent', () => {
     fileReaderInstance.onload?.call(fileReaderInstance, undefined as unknown);
     expect(outputs.parsedJson.emit).toHaveBeenCalledWith('abc');
   });
+
+  it('should return if there are no files', async () => {
+    const { instance } = await shallow.render();
+    const event = { target: { files: undefined}} as unknown as InputEvent;
+    instance.handleFile(event);
+    expect(fileReaderInstance.readAsText).toHaveBeenCalledTimes(0);
+  });
 });
