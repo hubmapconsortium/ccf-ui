@@ -120,7 +120,7 @@ export class AppComponent {
     if (!!ontologySelection) {
       this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
-      if (ontologySelection[0].label === 'body') {
+      if (ontologySelection[0] && ontologySelection[0].label === 'body') {
         this.resetView();
       }
       return;

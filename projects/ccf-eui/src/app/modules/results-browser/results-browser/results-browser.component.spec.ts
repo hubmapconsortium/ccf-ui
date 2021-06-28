@@ -74,6 +74,6 @@ describe('ResultsBrowserComponent', () => {
     } as UIEvent;
     const { instance } = await shallow.render();
     instance.onScroll(mockEvent);
-    expect().nothing;
+    expect().nothing();
   });
 });
