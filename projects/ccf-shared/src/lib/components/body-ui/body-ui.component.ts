@@ -156,7 +156,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
       canvas,
       zoom: this.zoom,
       target: [0, 0, 0],
-      rotation: this.rotation,
+      rotation: 0,
       minRotationX: -75,
       maxRotationX: 75,
       interactive: this.interactive

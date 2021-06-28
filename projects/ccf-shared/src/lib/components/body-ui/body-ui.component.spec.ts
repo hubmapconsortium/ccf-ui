@@ -20,9 +20,4 @@ describe('BodyUiComponent', () => {
   it('exists', () => {
     expect(shallow).toBeTruthy();
   });
-
-  // it('makes the component', async () => {
-  //   const { instance } = await shallow.render();
-  //   expect(instance).toBeTruthy();
-  // });
 });
