@@ -1,12 +1,12 @@
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { OrganInfo } from 'ccf-shared';
 import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
-
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
 import { RegistrationContentComponent } from './registration-content.component';
 import { RegistrationContentModule } from './registration-content.module';
-import { OrganInfo } from 'ccf-shared';
+
 
 describe('RegistrationContentComponent', () => {
   let shallow: Shallow<RegistrationContentComponent>;
@@ -88,5 +88,15 @@ describe('RegistrationContentComponent', () => {
     const { instance, get } = await shallow.render();
     instance.closeDialog();
     expect(get(MatDialogRef).close).toHaveBeenCalled();
+  });
+
+  it('prevents default', async () => {
+    const mockEvent = {
+      preventDefault: () => {}
+    } as MouseEvent;
+    const { instance } = await shallow.render();
+    const spy = spyOn(mockEvent, 'preventDefault');
+    instance.registerButtonClick(mockEvent);
+    expect(spy).toHaveBeenCalled();
   });
 });

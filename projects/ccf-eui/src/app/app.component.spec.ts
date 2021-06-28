@@ -5,6 +5,7 @@ import { Shallow } from 'shallow-render';
 
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
+import { OntologySelection } from './core/models/ontology-selection';
 import { ThemingService } from './core/services/theming/theming.service';
 import { DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
@@ -133,5 +134,15 @@ describe('AppComponent', () => {
     expect(instance.bodyUI.rotation).toEqual(0);
     expect(instance.bodyUI.rotationX).toEqual(0);
     expect(instance.bodyUI.bounds).toEqual({x:2.2, y:2, z:0.4});
+  });
+
+  it('resets the view if body is selected in the ontology', async () => {
+    const mockOntologySelection = [{label: 'body'} as OntologySelection];
+    const { instance } = await shallow.render();
+    const spy = spyOn(instance, 'resetView');
+    instance.ontologySelected(undefined);
+    expect(spy).toHaveBeenCalledTimes(0);
+    instance.ontologySelected(mockOntologySelection);
+    expect(spy).toHaveBeenCalled();
   });
 });

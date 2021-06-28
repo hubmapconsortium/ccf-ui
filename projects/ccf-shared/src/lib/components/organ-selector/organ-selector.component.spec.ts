@@ -115,6 +115,12 @@ describe('OrganSelectorComponent', () => {
     expect(value).toBeFalse();
   });
 
+  it('getError() should return false if there are no selected organs', async () => {
+    const { instance } = await shallow.render({ bind: { selectedOrgans: [] }});
+    const value = instance.error;
+    expect(value).toBeFalse();
+  });
+
   it('getError() should return true if displayErrors is set to true and there is an organ selected', async () => {
     const testOrgan: OrganInfo = { src: 'test', name: 'test', organ: 'test' };
     const { instance } = await shallow.render({ bind: { displayErrors: true, selectedOrgans: [testOrgan] }});
@@ -180,5 +186,11 @@ describe('OrganSelectorComponent', () => {
     carouselContainer.style.width = '300px';
     instance.setWidth();
     expect(itemContainer.style.width).toBe('224px');
+  });
+
+  it('should set occurenceData', async () => {
+    const { instance } = await shallow.render();
+    instance.occurenceData = {a: 1};
+    expect(instance.occurenceData).toEqual({a: 1});
   });
 });

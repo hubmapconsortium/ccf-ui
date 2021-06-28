@@ -146,13 +146,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   // eslint-disable-next-line
   @Input()
   set occurenceData(value: Record<string, number>) {
-    if (value) {
-      // eslint-disable-next-line
-      this._occurenceData = value;
-    } else {
-      // eslint-disable-next-line
-      this._occurenceData = {};
-    }
+    // eslint-disable-next-line
+    this._occurenceData = value;
   }
 
   get occurenceData(): Record<string, number> {
@@ -190,11 +185,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
    * used to display or hide error message.
    */
   get error(): boolean {
-    if (!this.displayErrors) {
-      return false;
-    }
-
-    if (!this.selectedOrgans) {
+    if (!this.displayErrors || this.selectedOrgans.length === 0) {
       return false;
     }
 

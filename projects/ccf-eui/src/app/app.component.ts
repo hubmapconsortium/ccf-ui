@@ -116,7 +116,7 @@ export class AppComponent {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[]): void {
+  ontologySelected(ontologySelection: OntologySelection[] | undefined): void {
     if (!!ontologySelection) {
       this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
