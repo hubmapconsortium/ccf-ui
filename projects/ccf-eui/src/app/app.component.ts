@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -12,6 +12,10 @@ import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
+import { TrackingPopupComponent } from './shared/components/tracking-popup/tracking-popup.component';
+import { PageState } from './core/store/page.state'; 
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -22,7 +26,7 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -63,7 +67,8 @@ export class AppComponent {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
-      readonly scene: SceneState, readonly listResultsState: ListResultsState) {
+      readonly scene: SceneState, readonly listResultsState: ListResultsState, 
+      ga: GoogleAnalyticsService, readonly page: PageState, readonly snackbar: MatSnackBar) {
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();
@@ -71,6 +76,13 @@ export class AppComponent {
     data.filter$.subscribe();
     data.tissueBlockData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
+  }
+
+  ngOnInit(): void {
+    const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
+      data: {preClose: () => {snackBar.dismiss();} },
+      duration: this.page.snapshot.allowTelemetry === undefined ? Infinity : 3000
+    });
   }
 
   /**
