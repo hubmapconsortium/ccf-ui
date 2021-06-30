@@ -135,7 +135,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
               '@type': 'SpatialSceneNode',
               transformMatrix: new Matrix4(Matrix4.IDENTITY)
                 .translate([p.x_translation, p.y_translation, p.z_translation].map((n, i) => n / 1000 + dims[i]))
-                .rotateXYZ([p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians))
+                .rotateXYZ([p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians) as [number, number, number])
                 .scale([entity.x_dimension, entity.y_dimension, entity.z_dimension].map(n => n / 1000 / 2)),
               color: [25, 118, 210, 200],
               tooltip: entity.label,
@@ -165,7 +165,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       '@type': 'SpatialSceneNode',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([position.x, position.y, position.z].map((n, i) => n / 1000 + dims[i]))
-        .rotateXYZ([rotation.x, rotation.y, rotation.z].map<number>(toRadians))
+        .rotateXYZ([rotation.x, rotation.y, rotation.z].map<number>(toRadians) as [number, number, number])
         .scale([blockSize.x, blockSize.y, blockSize.z].map(n => n / 1000 / 2)),
       color: [255, 255, 0, 200],
       tooltip: 'Draft Placement',

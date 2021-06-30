@@ -15,6 +15,11 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { OrganSelectorModule } from 'ccf-shared';
 import { RegistrationModalModule } from './modules/registration-modal/registration-modal/registration-modal.module';
 
+import { TrackingPopupModule, INITIAL_TELEMETRY_SETTING } from 'ccf-shared';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { environment } from '../environments/environment.prod';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -27,7 +32,10 @@ import { RegistrationModalModule } from './modules/registration-modal/registrati
     LeftSidebarModule,
     RightSidebarModule,
     OrganSelectorModule,
-    RegistrationModalModule
+    RegistrationModalModule,
+    NgxGoogleAnalyticsModule.forRoot(INITIAL_TELEMETRY_SETTING === false ? '' : environment.googleAnalyticsToken),
+    TrackingPopupModule,
+    MatSnackBarModule
   ],
   declarations: [AppComponent],
   providers: [

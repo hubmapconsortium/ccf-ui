@@ -14,13 +14,13 @@ export const INITIAL_TELEMETRY_SETTING  = localStorage.getItem(LOCAL_STORAGE_ALL
 
 @StateRepository()
 @State<PageStateModel>({
-  name: 'page',
+  name: 'tracking',
   defaults: {
     allowTelemetry: INITIAL_TELEMETRY_SETTING
   }
 })
 @Injectable()
-export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
+export class TrackingState extends NgxsImmutableDataRepository<PageStateModel> {
 
   @DataAction()
   setAllowTelemetry(allowTelemetry: boolean): void {

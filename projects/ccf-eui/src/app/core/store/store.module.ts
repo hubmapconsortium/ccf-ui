@@ -9,7 +9,7 @@ import { DataState } from './data/data.state';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { ListResultsState } from './list-results/list-results.state';
 import { OntologyState } from './ontology/ontology.state';
-import { PageState } from 'ccf-shared';
+import { TrackingState } from 'ccf-shared';
 import { SceneState } from './scene/scene.state';
 
 
@@ -23,7 +23,7 @@ export const ROOT_STATES = [
   DataState,
   OntologyState,
   SceneState,
-  PageState
+  TrackingState
 ];
 
 @NgModule({

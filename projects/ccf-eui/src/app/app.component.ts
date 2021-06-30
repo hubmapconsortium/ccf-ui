@@ -12,8 +12,7 @@ import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
-import { TrackingPopupComponent } from './shared/components/tracking-popup/tracking-popup.component';
-import { PageState } from 'ccf-shared'; 
+import { TrackingPopupComponent, TrackingState } from 'ccf-shared'; 
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -68,7 +67,7 @@ export class AppComponent implements OnInit {
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
       readonly scene: SceneState, readonly listResultsState: ListResultsState, 
-      ga: GoogleAnalyticsService, readonly page: PageState, readonly snackbar: MatSnackBar) {
+      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();
@@ -81,7 +80,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
       data: {preClose: () => {snackBar.dismiss();} },
-      duration: this.page.snapshot.allowTelemetry === undefined ? Infinity : 3000
+      duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
   }
 

@@ -12,6 +12,7 @@ import { PageState } from './page/page.state';
 import { ReferenceDataState } from './reference-data/reference-data.state';
 import { RegistrationState } from './registration/registration.state';
 import { SceneState } from './scene/scene.state';
+import { TrackingState } from 'ccf-shared';
 
 
 /**
@@ -24,7 +25,8 @@ export const ROOT_STATES = [
   AnatomicalStructureTagState,
   ReferenceDataState,
   RegistrationState,
-  SceneState
+  SceneState,
+  TrackingState
 ];
 
 @NgModule({

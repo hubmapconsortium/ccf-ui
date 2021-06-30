@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-import { PageState } from 'ccf-shared'; 
+import { TrackingState } from '../../services/globals/tracking.state'; 
 
 @Component({
   selector: 'spoke-tracking-popup',
@@ -12,7 +12,7 @@ export class TrackingPopupComponent {
   container: HTMLElement;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(elementRef: ElementRef<HTMLElement>, readonly page: PageState, @Inject(MAT_SNACK_BAR_DATA) public data: any) {
+  constructor(elementRef: ElementRef<HTMLElement>, readonly tracking: TrackingState, @Inject(MAT_SNACK_BAR_DATA) public data: any) {
     this.container = elementRef.nativeElement;
   }
 
@@ -21,7 +21,7 @@ export class TrackingPopupComponent {
   }
 
   submit(entry: boolean): void {
-    this.page.setAllowTelemetry(entry);
+    this.tracking.setAllowTelemetry(entry);
     this.dismiss();
   }
 }
