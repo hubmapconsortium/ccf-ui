@@ -13,7 +13,7 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
 import { TrackingPopupComponent } from './shared/components/tracking-popup/tracking-popup.component';
-import { PageState } from './core/store/page.state'; 
+import { PageState } from 'ccf-shared'; 
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

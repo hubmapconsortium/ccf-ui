@@ -17,8 +17,8 @@ import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinne
 import { ViewerModule } from './shared/components/viewer/viewer.module';
 
 import { TrackingPopupModule } from './shared/components/tracking-popup/tracking-popup.module';
-import { INITIAL_TELEMETRY_SETTING } from './core/store/page.state'; 
-import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
+import { INITIAL_TELEMETRY_SETTING } from '../../../ccf-shared/src/lib/services/globals/page.state'; 
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { environment } from '../environments/environment.prod';
 

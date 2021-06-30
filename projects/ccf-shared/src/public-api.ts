@@ -30,5 +30,6 @@ export * from './lib/directives/numbers-only/numbers-only.module';
 export * from './lib/directives/numbers-only/numbers-only.directive';
 
 export * from './lib/services/globals/globals.service';
+export * from './lib/services/globals/page.state';
 
 export * from './lib/analytics/mouse-position-tracker.module';

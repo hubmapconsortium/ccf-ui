@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-import { PageState } from '../../../core/store/page.state'; 
+import { PageState } from 'ccf-shared'; 
 
 @Component({
   selector: 'spoke-tracking-popup',
