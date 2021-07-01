@@ -25,23 +25,11 @@ export class TrackingPopupComponent {
     this.dismiss();
   }
 
-  showOptIn(): boolean {
+  showButton(button: string): boolean {
     if (this.tracking.snapshot.allowTelemetry === undefined) {
       return true;
-    } if (this.tracking.snapshot.allowTelemetry) {
-      return false;
     } else {
-      return true
-    }
-  }
-
-  showOptOut(): boolean {
-    if (this.tracking.snapshot.allowTelemetry === undefined) {
-      return true;
-    } if (!this.tracking.snapshot.allowTelemetry) {
-      return false;
-    } else {
-      return true
+      return button === 'opt-in' ? !this.tracking.snapshot.allowTelemetry : this.tracking.snapshot.allowTelemetry;
     }
   }
 }
