@@ -3,7 +3,7 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { TrackingState } from '../../services/globals/tracking.state'; 
 
 @Component({
-  selector: 'spoke-tracking-popup',
+  selector: 'ccf-tracking-popup',
   templateUrl: './tracking-popup.component.html',
   styleUrls: ['./tracking-popup.component.scss']
 })
@@ -23,5 +23,25 @@ export class TrackingPopupComponent {
   submit(entry: boolean): void {
     this.tracking.setAllowTelemetry(entry);
     this.dismiss();
+  }
+
+  showOptIn(): boolean {
+    if (this.tracking.snapshot.allowTelemetry === undefined) {
+      return true;
+    } if (this.tracking.snapshot.allowTelemetry) {
+      return false;
+    } else {
+      return true
+    }
+  }
+
+  showOptOut(): boolean {
+    if (this.tracking.snapshot.allowTelemetry === undefined) {
+      return true;
+    } if (!this.tracking.snapshot.allowTelemetry) {
+      return false;
+    } else {
+      return true
+    }
   }
 }
