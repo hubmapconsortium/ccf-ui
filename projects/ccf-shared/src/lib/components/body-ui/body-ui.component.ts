@@ -46,6 +46,16 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   }
 
   @Input()
+  get rotationX(): number {
+    return this._rotationX;
+  }
+
+  set rotationX(value: number) {
+    this._rotationX = value;
+    this.bodyUI?.setRotationX(value);
+  }
+
+  @Input()
   get zoom(): number {
     return this._zoom;
   }
@@ -53,6 +63,16 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   set zoom(value: number) {
     this._zoom = value;
     this.bodyUI?.setZoom(value);
+  }
+
+  @Input()
+  get target(): [number, number, number] {
+    return this._target;
+  }
+
+  set target(value: [number, number, number]) {
+    this._target = value;
+    this.bodyUI?.setTarget(value);
   }
 
   @Input()
@@ -88,7 +108,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
 
   private _interactive = true;
   private _rotation = 0;
+  private _rotationX = 0;
   private _zoom = 9.5;
+  private _target: [number, number, number] = [0, 0, 0];
   private _bounds: XYZTriplet;
   private _scene: SpatialSceneNode[] = [];
   private subscriptions: Subscription[] = [];
@@ -134,7 +156,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
       canvas,
       zoom: this.zoom,
       target: [0, 0, 0],
-      rotation: this.rotation,
+      rotation: 0,
       minRotationX: -75,
       maxRotationX: 75,
       interactive: this.interactive

@@ -55,4 +55,14 @@ describe('ReviewButtonComponent', () => {
 
     expect(outputs.registerData.emit).not.toHaveBeenCalled();
   });
+
+  it('prevents default', async () => {
+    const mockEvent = {
+      preventDefault: () => {}
+    } as MouseEvent;
+    const { instance } = await shallow.render();
+    const spy = spyOn(mockEvent, 'preventDefault');
+    instance.registerButtonClick(mockEvent);
+    expect(spy).toHaveBeenCalled();
+  });
 });

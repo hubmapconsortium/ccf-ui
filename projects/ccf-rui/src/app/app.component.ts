@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
 import { PageState } from './core/store/page/page.state';

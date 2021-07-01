@@ -2,6 +2,15 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
 
+## 1.7.0 - 2021-05-21
+
+### Added in EUI / RUI 1.7.0
+
+* Added a startup modal to the RUI which simplifies the initial setup for a new registration
+* Added 8 new reference organs, bringing us to 13 Reference Organs!
+* Added SPARC Registrations to the EUI
+* Added a tissue section visualization to the results list in the EUI
+
 ## 1.6.0 - 2021-04-09
 
 ### Added in RUI 1.6.0
