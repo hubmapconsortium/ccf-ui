@@ -36,7 +36,7 @@ export const environment = {
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
   },
-  googleAnalyticsToken: ''
+  googleAnalyticsToken: 'G-B3DT7XPMRT'
 };
 
 /*

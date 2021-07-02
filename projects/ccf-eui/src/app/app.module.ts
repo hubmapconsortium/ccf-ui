@@ -19,7 +19,7 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
 import { TrackingPopupModule, INITIAL_TELEMETRY_SETTING } from 'ccf-shared';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { environment } from '../environments/environment.staging';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [

@@ -31,5 +31,5 @@ export const environment = {
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
   },
-  googleAnalyticsToken: 'UA-136932895-2'
+  googleAnalyticsToken: 'G-1WRJHN9FM6'
 };
