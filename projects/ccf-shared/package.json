@@ -10,10 +10,10 @@
     "ngx-google-analytics": "^11.2.1",
     "ngx-markdown": "^11.1.1",
     "shallow-render": "^10.0.1",
-    "rxjs": "~6.6.6"
+    "rxjs": "~6.6.6",
+    "@ngxs-labs/data": "^4.1.1"
   },
   "dependencies": {
-    "tslib": "^2.0.0",
-    "@ngxs-labs/data": "^4.1.1"
+    "tslib": "^2.0.0"
   }
 }
