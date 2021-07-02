@@ -13,6 +13,7 @@
     "rxjs": "~6.6.6"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "@ngxs-labs/data": "^4.1.1"
   }
 }
