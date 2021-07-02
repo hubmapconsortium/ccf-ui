@@ -14,7 +14,7 @@ import { StoreModule } from './core/store/store.module';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { TrackingState } from 'ccf-shared';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 
 
 @NgModule({})
@@ -55,9 +55,9 @@ describe('AppComponent', () => {
         snapshot: {allowTelemetry: true},
         setAllowTelemetry: () => undefined
       })
-      // tslint:disable-next-line: no-unsafe-any
       .mock(MatSnackBar, {
-        openFromComponent: (): any => undefined
+        // tslint:disable-next-line: no-unsafe-any
+        openFromComponent: (): MatSnackBarRef<unknown> => ({} as unknown as MatSnackBarRef<unknown>)
       })
       .mock(ThemingService, {
         getTheme: () => 'theme'
