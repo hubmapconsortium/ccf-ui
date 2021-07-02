@@ -55,8 +55,8 @@ describe('AppComponent', () => {
         snapshot: {allowTelemetry: true},
         setAllowTelemetry: () => undefined
       })
+      // tslint:disable-next-line: no-unsafe-any
       .mock(MatSnackBar, {
-        // tslint:disable-next-line: no-unsafe-any
         openFromComponent: (): any => undefined
       })
       .mock(ThemingService, {
