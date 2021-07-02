@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-import { TrackingState } from '../../services/globals/tracking.state'; 
+import { TrackingState } from '../../services/globals/tracking.state';
 
 @Component({
   selector: 'ccf-tracking-popup',
@@ -25,7 +25,7 @@ export class TrackingPopupComponent {
     this.dismiss();
   }
 
-  showButton(button: string): boolean {
+  showButton(button: 'opt-in' | 'opt-out'): boolean {
     if (this.tracking.snapshot.allowTelemetry === undefined) {
       return true;
     } else {

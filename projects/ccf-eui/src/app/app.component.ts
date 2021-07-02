@@ -13,7 +13,7 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 
-import { TrackingPopupComponent, TrackingState } from 'ccf-shared'; 
+import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -69,8 +69,8 @@ export class AppComponent implements OnInit {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
-      readonly scene: SceneState, readonly listResultsState: ListResultsState, 
-      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
+      readonly scene: SceneState, readonly listResultsState: ListResultsState, ga: GoogleAnalyticsService,
+      readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();

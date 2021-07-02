@@ -13,6 +13,8 @@ import { SceneState } from './core/store/scene/scene.state';
 import { StoreModule } from './core/store/store.module';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+import { TrackingState } from 'ccf-shared';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @NgModule({})
@@ -26,6 +28,9 @@ describe('AppComponent', () => {
   const testFilter = { sex: 'Both', ageRange: [5, 99], bmiRange: [30, 80] };
 
   beforeEach(() => {
+    left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
+    right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
+    filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
       .replaceModule(StoreModule, EmptyModule)
@@ -46,13 +51,16 @@ describe('AppComponent', () => {
         sceneData$: of(),
         updateFilter: () => undefined
       })
+      .mock(TrackingState, {
+        snapshot: {allowTelemetry: true},
+        setAllowTelemetry: () => undefined
+      })
+      .mock(MatSnackBar, {
+        openFromComponent: () : any => undefined
+      })
       .mock(ThemingService, {
         getTheme: () => 'theme'
       });
-
-    left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
-    right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
-    filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
   });
 
   it('should close the left drawer when reset() is called', async () => {

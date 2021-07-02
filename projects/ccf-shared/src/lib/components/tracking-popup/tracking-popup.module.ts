@@ -15,5 +15,4 @@ import { TrackingPopupComponent } from './tracking-popup.component';
 })
 export class TrackingPopupModule {
   @HostBinding('class') readonly clsName = 'ccf-tracking-popup';
-
 }
