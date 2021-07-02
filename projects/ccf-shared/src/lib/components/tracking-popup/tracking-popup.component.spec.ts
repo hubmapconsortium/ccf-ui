@@ -4,7 +4,7 @@ import { TrackingPopupComponent } from './tracking-popup.component';
 import { TrackingPopupModule } from './tracking-popup.module';
 import { TrackingState } from '../../services/globals/tracking.state';
 
-import { Component, ElementRef, Inject } from '@angular/core';
+import { ElementRef } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 
