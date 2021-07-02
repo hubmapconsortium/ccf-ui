@@ -1,4 +1,3 @@
-/* tslint:disable:no-unsafe-any no-any */
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
@@ -57,6 +56,7 @@ describe('AppComponent', () => {
         setAllowTelemetry: () => undefined
       })
       .mock(MatSnackBar, {
+        // tslint:disable-next-line: no-unsafe-any
         openFromComponent: (): any => undefined
       })
       .mock(ThemingService, {
