@@ -10,9 +10,9 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 describe('TrackingPopupComponent', () => {
   let shallow: Shallow<TrackingPopupComponent>;
-  
+
   beforeEach(() => {
-    let mockTrackingState = jasmine.createSpyObj<TrackingState>(['setAllowTelemetry']);
+    const mockTrackingState = jasmine.createSpyObj<TrackingState>(['setAllowTelemetry']);
     shallow = new Shallow(TrackingPopupComponent, TrackingPopupModule)
       .provide({ provide: ElementRef, useValue: {} })
       .provide({ provide: MAT_SNACK_BAR_DATA, useValue: {} })
