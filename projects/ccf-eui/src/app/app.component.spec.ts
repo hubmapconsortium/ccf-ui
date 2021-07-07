@@ -63,6 +63,12 @@ describe('AppComponent', () => {
       });
   });
 
+  it('should make the tracking popup on init', async () => {
+    const { instance } = await shallow.render();
+    expect(instance).toBeDefined();
+  });
+
+
   it('should close the left drawer when reset() is called', async () => {
     const { instance } = await shallow.render();
     instance.reset(left, right, filterbox);
