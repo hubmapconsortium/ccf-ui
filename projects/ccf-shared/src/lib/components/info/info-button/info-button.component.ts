@@ -19,6 +19,11 @@ export class InfoButtonComponent implements OnDestroy {
   @Input() infoTitle = '';
 
   /**
+   * Whether the information is for the RUI or EUI
+   */
+  @Input() videoID: string;
+
+  /**
    * Creates an instance of info button component.
    *
    * @param dialog Reference to the dialog creation service.
@@ -45,11 +50,13 @@ export class InfoButtonComponent implements OnDestroy {
    */
   launchInfoDialog(data: DocumentationContent[]): void {
     this.dialog.open(InfoDialogComponent, {
+      autoFocus: false,
       panelClass: 'modal-animated',
       width: '60rem',
       data: {
         title: this.infoTitle,
-        content: data
+        content: data,
+        videoID: this.videoID
       }
     });
   }

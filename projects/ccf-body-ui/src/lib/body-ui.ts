@@ -17,6 +17,7 @@ interface BodyUIViewStateProps extends ViewStateProps {
   target?: Matrix4 | number[];
   zoom: number;
   rotationOrbit: number;
+  rotationX: number;
 }
 
 export interface BodyUIProps {
@@ -192,11 +193,29 @@ export class BodyUI {
     });
   }
 
+  setRotationX(value: number): void {
+    this.deck.setProps({
+      viewState: {
+        ...this.deck.props.viewState,
+        rotationX: value
+      } as BodyUIViewStateProps
+    });
+  }
+
   setZoom(value: number): void {
     this.deck.setProps({
       viewState: {
         ...this.deck.props.viewState,
         zoom: value
+      } as BodyUIViewStateProps
+    });
+  }
+
+  setTarget(value: number[]): void {
+    this.deck.setProps({
+      viewState: {
+        ...this.deck.props.viewState,
+        target: value
       } as BodyUIViewStateProps
     });
   }

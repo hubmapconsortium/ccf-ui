@@ -46,7 +46,7 @@
             </mat-icon>
           </button>
         </div>
-        <ccf-info-button [infoTitle]="'HuBMAP CCF Exploration User Interface'" [matTooltip]="'Open Info'">
+        <ccf-info-button videoID="YAHJqvD3Q_8" infoTitle="HuBMAP CCF Exploration User Interface" matTooltip="Open Info">
         </ccf-info-button>
       </div>
       <ccf-results-browser
@@ -77,7 +77,7 @@
           </mat-icon>
         </div>
       </div>
-      <ccf-body-ui [scene]="scene.scene$ | async" (nodeClick)="scene.sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"
+      <ccf-body-ui #bodyUI [scene]="scene.scene$ | async" (nodeClick)="scene.sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"
                    [class.expanded-stage]="!organListVisible" class="stage-content"></ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>

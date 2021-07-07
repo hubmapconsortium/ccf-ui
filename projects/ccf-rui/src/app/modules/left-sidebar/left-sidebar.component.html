@@ -1,16 +1,14 @@
 <div class="scroll-wrapper">
     <div class="container">
-        <ng-container *ngIf="page.embedded$ | async; else selectors">
+        <ng-container *ngIf="page.embedded$ | async">
             <ccf-details-label [details]="detailsLabels$ | async"></ccf-details-label>
         </ng-container>
-        <ng-template #selectors>
-            <div class="organ-sliders" matTooltip="Select sex to filter organs.">
-                <div class="slider-label">Donor Sex:</div>
-                <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender" [labels]="['Male', 'Female']"
-                    [value]="sexByLabel$ | async" (valueChange)="setSexFromLabel($event)">
-                </ccf-labeled-slide-toggle>
-            </div>
-        </ng-template>
+        <div class="organ-sliders" matTooltip="Select sex to filter organs.">
+          <div class="slider-label">Donor Sex:</div>
+          <ccf-labeled-slide-toggle [disabled]="disableSlider" class="toggle gender" [labels]="['Male', 'Female']"
+              [value]="sexByLabel$ | async" (valueChange)="setSexFromLabel($event)">
+          </ccf-labeled-slide-toggle>
+        </div>
 
         <mat-divider></mat-divider>
 
@@ -18,7 +16,7 @@
           <mat-expansion-panel-header class="expansion-header">
               <mat-panel-title class="expansion-title" matTooltip="Use opacity icons to change visibility of anatomical structures">Anatomical Structures</mat-panel-title>
           </mat-expansion-panel-header>
-          
+
           <div class="expansion-content">
               <ccf-visibility-menu
                   [items]="model.anatomicalStructures$ | async" (itemsChange)="model.setAnatomicalStructures($event)">
@@ -46,7 +44,7 @@
         <mat-divider></mat-divider>
 
         <ccf-visibility-toggle toggleLabel="Previously Registered Blocks" [visible]="model.showPrevious$ | async"
-            [disabled]="disableSlider" 
+            [disabled]="disableSlider"
             (visibilityChanged)="togglePreviousRegistrationBlocks($event)" matTooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
         </ccf-visibility-toggle>
 
