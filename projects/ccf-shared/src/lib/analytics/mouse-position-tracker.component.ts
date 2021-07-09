@@ -24,6 +24,7 @@ export function trackMousePosition(el: HTMLElement, ga: GoogleAnalyticsService):
 
 @Component({
   selector: 'ccf-mouse-position-tracker',
+  templateUrl: './mouse-position-tracker.component.html',
 })
 export class MousePositionTrackerComponent {
 
