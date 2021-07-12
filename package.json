@@ -23,8 +23,6 @@
     "eui-data": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/serialize-ccf-database.ts projects/ccf-eui/src/assets/ccf.owl.n3store.json",
     "reference-data-workflow": "npm run generate-reference-data && cd ../hubmap-ontology/ && ./build.sh && cd ../ccf-ui/ && npm run rui-data",
     "fix-triple-store-utils": "rimraf dist/triple-store-fixed && mkdirp dist/triple-store-fixed && browserify -s tripleStoreUtils dist/triple-store-utils/bundles/triple-store-utils.umd.js -o dist/triple-store-fixed/index.js && cp dist/triple-store-utils/lib/triple-store-utils.d.ts dist/triple-store-fixed/index.d.ts",
-    "fix-types": "npm-run-all fix-types-final:deck-gl",
-    "fix-types-final:deck-gl": "npm install --save-dev @danmarshall/deckgl-typings@latest",
     "build:netlify": "npm-run-all fix-types build:libs build cp-netlify-redirects compodoc",
     "cp-netlify-redirects": "cp projects/ccf-eui/_redirects dist/ccf-eui/_redirects",
     "compodoc": "npm run build:doc",
@@ -51,6 +49,7 @@
     "@angular/platform-browser-dynamic": "^11.2.3",
     "@angular/router": "^11.2.3",
     "@angular/youtube-player": "^11.2.2",
+    "@danmarshall/deckgl-typings": "^4.7.0",
     "@deck.gl/core": "^8.4.9",
     "@deck.gl/geo-layers": "^8.4.9",
     "@deck.gl/layers": "^8.4.9",
@@ -99,7 +98,6 @@
     "@angular/compiler-cli": "^11.2.3",
     "@angular/language-service": "^11.2.3",
     "@compodoc/compodoc": "^1.1.11",
-    "@danmarshall/deckgl-typings": "^4.7.0",
     "@types/file-saver": "^2.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
@@ -141,7 +139,6 @@
     "shallow-render": "^11.0.2",
     "sonar-scanner": "^3.1.0",
     "ts-node": "^9.1.1",
-    "tslint": "^6.1.3",
     "typescript": "~4.1.5"
   }
 }
