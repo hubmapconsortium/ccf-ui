@@ -15,6 +15,7 @@
         [color]="result.color"
         (checked)="handleSelection(result, $event)"
         (linkClick)="handleLinkClick($event)"
+        [highlighted]="result.tissueBlock.spatialEntityId === highlighted"
       ></ccf-donor-card>
     </div>
   </div>

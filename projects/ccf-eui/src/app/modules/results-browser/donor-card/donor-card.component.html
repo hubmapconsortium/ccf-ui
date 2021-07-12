@@ -1,7 +1,7 @@
 <div class="main-container">
   <div class="checkbox-background" [class.selected]="selected"
        [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
-    <mat-checkbox [checked]="selected" class="checkbox" [class.checkselected]="selected"></mat-checkbox>
+    <mat-checkbox [checked]="selected" class="checkbox" [class.checkselected]="selected" [class.highlighted]="highlighted"></mat-checkbox>
   </div>
 
   <div class="hoverable default-padding donor mat-elevation-z2" [class.hover-enabled]="selected" [class.expanded]="expanded">

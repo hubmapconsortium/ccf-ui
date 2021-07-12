@@ -55,7 +55,8 @@
         [resultLabel]="ontologySelectionLabel"
         (listResultSelected)="listResultsState.selectListResult($event)"
         (listResultDeselected)="listResultsState.deselectListResult($event)"
-        (linkClicked)="openiFrameViewer($event)">
+        (linkClicked)="openiFrameViewer($event)"
+        [highlighted]="listResultsState.highlightedResult$ | async">
       </ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
@@ -77,8 +78,14 @@
           </mat-icon>
         </div>
       </div>
-      <ccf-body-ui #bodyUI [scene]="scene.scene$ | async" (nodeClick)="scene.sceneNodeClicked($event)" [bounds]="{x:2.2,y:2,z:0.4}"
-                   [class.expanded-stage]="!organListVisible" class="stage-content"></ccf-body-ui>
+      <ccf-body-ui #bodyUI class="stage-content"
+                    [scene]="scene.scene$ | async"
+                    (nodeClick)="scene.sceneNodeClicked($event)"
+                    (nodeHoverStart)="scene.sceneNodeHovered($event)"
+                    (nodeHoverStop)="scene.sceneNodeUnhover()"
+                    [bounds]="{x:2.2,y:2,z:0.4}"
+                    [class.expanded-stage]="!organListVisible">
+      </ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>
 </div>

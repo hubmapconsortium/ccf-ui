@@ -31,6 +31,8 @@ export class ResultsBrowserComponent {
    */
   @Input() resultLabel: string;
 
+  @Input() highlighted: string;
+
   /**
    * Output emitting the result that was clicked on and its relevant information.
    * Used for opening and rendering the result viewer.

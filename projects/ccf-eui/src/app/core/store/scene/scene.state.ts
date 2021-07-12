@@ -10,6 +10,7 @@ import { distinctUntilChanged, map, pluck, take, tap } from 'rxjs/operators';
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
 import { DataSourceService } from '../../services/data-source/data-source.service';
+import { ListResultsState } from '../list-results/list-results.state';
 
 export const DEFAULT_SELECTED_ORGANS = new Set(['Skin', 'Heart', 'Kidney', 'Spleen']);
 
@@ -56,6 +57,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   /** Color assignments state */
   private colorAssignments: ColorAssignmentState;
+
+  private listResults: ListResultsState;
 
   /**
    * Creates an instance of scene state.
@@ -115,6 +118,14 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     }
   }
 
+  sceneNodeHovered(node: SpatialSceneNode): void {
+    this.listResults.highlightListResult(node['@id']);
+  }
+
+  sceneNodeUnhover(): void {
+    this.listResults.unhighlightListResult();
+  }
+
   /**
    * Initializes this state service.
    */
@@ -125,6 +136,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     // Lazy load here
     this.dataState = this.injector.get(DataState);
     this.colorAssignments = this.injector.get(ColorAssignmentState);
+    this.listResults = this.injector.get(ListResultsState);
 
     // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(

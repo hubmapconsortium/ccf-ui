@@ -14,6 +14,7 @@ import { DataState } from '../data/data.state';
 
 export interface ListResultsStateModel {
   listResults: ListResult[];
+  highlightedResult?: string;
 }
 
 @StateRepository()
@@ -27,6 +28,7 @@ export interface ListResultsStateModel {
 export class ListResultsState extends NgxsImmutableDataRepository<ListResultsStateModel> implements NgxsOnInit {
   /** Scene to display in the 3d Scene */
   readonly listResults$ = this.state$.pipe(pluck('listResults'), distinctUntilChanged());
+  readonly highlightedResult$ = this.state$.pipe(pluck('highlightedResult'), distinctUntilChanged());
 
   /** The data state */
   private dataState: DataState;
@@ -62,6 +64,18 @@ export class ListResultsState extends NgxsImmutableDataRepository<ListResultsSta
 
   deselectListResult(result: ListResult) {
     this.colorAssignments.unassignColor(result.tissueBlock.spatialEntityId);
+  }
+
+  highlightListResult(@Payload('key') key: string) {
+    this.ctx.patchState({
+      highlightedResult: key
+    });
+  }
+
+  unhighlightListResult() {
+    this.ctx.patchState({
+      highlightedResult: undefined
+    });
   }
 
   /**

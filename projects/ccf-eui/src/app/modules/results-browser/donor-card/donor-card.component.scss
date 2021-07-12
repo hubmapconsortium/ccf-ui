@@ -30,6 +30,12 @@
       }
     }
 
+    .highlighted {
+      ::ng-deep .mat-checkbox-frame {
+        border-color: red !important;
+      }
+    }
+
     .checkbox {
       margin-left: 1.12rem;
       margin-bottom: 0.12rem; 
