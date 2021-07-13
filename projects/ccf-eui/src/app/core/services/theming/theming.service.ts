@@ -1,6 +1,7 @@
+import { Injector } from '@angular/core';
 /* eslint-disable @typescript-eslint/member-ordering */
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Renderer2 } from '@angular/core';
+import { ComponentRef, ElementRef, Inject, Injectable, InjectionToken, Optional, Renderer2 } from '@angular/core';
 
 /** Token for specifying the default theme class. */
 export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
@@ -10,8 +11,8 @@ export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
  */
 @Injectable()
 export class ThemingService {
-  /** Top level component on which themes are applied. */
-  private component?: ComponentRef<unknown>;
+  private element: ElementRef<unknown>;
+  private injector: Injector;
   /** Default theme class. */
   private defaultTheme: string;
   /** Currently active theme class. */
@@ -19,8 +20,9 @@ export class ThemingService {
 
   /** Initializer called during bootstrap to set up theming. */
   static initialize(component: ComponentRef<unknown>): void {
-    const service = component.injector.get(ThemingService);
-    service.initializeImpl(component);
+    const { injector, location } = component;
+    const service = injector.get(ThemingService);
+    service.initialize(location, injector);
   }
 
   /**
@@ -60,18 +62,15 @@ export class ThemingService {
 
 
   /**
-   * Implementation of initialize.
+   * Binds theming service to a component.
    *
    * @param component The top level component.
    * @throws {Error} If the theming service has already been initialized.
    */
-  private initializeImpl(component: ComponentRef<unknown>): void {
-    if (this.component) {
-      throw new Error('Theming service has already been initialized!');
-    }
-
-    this.component = component;
-    this.applyThemeClass(this.theme);
+  initialize(element: ElementRef<unknown>, injector: Injector): void {
+    this.element = element;
+    this.injector = injector;
+    this.applyThemeClass(this.getTheme());
   }
 
   /**
@@ -81,14 +80,14 @@ export class ThemingService {
    * @param method Whether to add or remove the theme.
    */
   private applyThemeClass(cls: string, method: 'add' | 'remove' = 'add'): void {
-    const component = this.component;
-    if (!cls || !component) { return; }
+    const { element, injector } = this;
+    if (!cls || !element || !injector) { return; }
 
-    const renderer = component.injector.get(Renderer2, null);
+    const renderer = injector.get(Renderer2, null);
     if (!renderer) { return; }
 
-    const root = component.location.nativeElement as HTMLElement;
-    const overlay = component.injector.get(OverlayContainer, null)?.getContainerElement();
+    const root = element.nativeElement as HTMLElement;
+    const overlay = injector.get(OverlayContainer, null)?.getContainerElement();
     const methodName = method === 'add' ? 'addClass' : 'removeClass';
 
     renderer[methodName](root, cls);
