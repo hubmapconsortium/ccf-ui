@@ -12,8 +12,12 @@ import { LeftSidebarModule } from './modules/left-sidebar/left-sidebar.module';
 import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { OrganSelectorModule } from 'ccf-shared';
+import { OrganSelectorModule, TrackingPopupModule, INITIAL_TELEMETRY_SETTING } from 'ccf-shared';
 import { RegistrationModalModule } from './modules/registration-modal/registration-modal/registration-modal.module';
+
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -27,7 +31,10 @@ import { RegistrationModalModule } from './modules/registration-modal/registrati
     LeftSidebarModule,
     RightSidebarModule,
     OrganSelectorModule,
-    RegistrationModalModule
+    RegistrationModalModule,
+    NgxGoogleAnalyticsModule.forRoot(INITIAL_TELEMETRY_SETTING === false ? '' : environment.googleAnalyticsToken),
+    TrackingPopupModule,
+    MatSnackBarModule
   ],
   declarations: [AppComponent],
   providers: [

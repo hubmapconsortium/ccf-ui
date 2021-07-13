@@ -1,4 +1,6 @@
-import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+
 import { ExtractionSet } from '../../../core/models/extraction-set';
 
 /**
@@ -30,12 +32,20 @@ export class ExtractionSetDropdownComponent {
   selected: ExtractionSet;
 
   /**
+   * Creates an instance of extraction set dropdown component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Sets the selected extraction set and emits the extraction set
    *
    * @param value The extraction set selected
    */
   extractionSetChanged(value: ExtractionSet): void {
     this.selected = value;
+    this.ga.event('selected_extraction_set_change', 'extraction_set_dropdown', value.name);
     this.setChange.emit(value);
   }
 

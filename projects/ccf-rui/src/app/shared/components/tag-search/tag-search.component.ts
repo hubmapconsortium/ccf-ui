@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { from, interval, ObservableInput, Subject } from 'rxjs';
 import { catchError, map, switchMap, takeUntil, throttle } from 'rxjs/operators';
 
@@ -74,11 +75,13 @@ export class TagSearchComponent implements OnDestroy {
   /**
    * Creates an instance of tag search component.
    *
-   * @param el: Element for this component
+   * @param el Element for this component
+   * @param ga Analytics service
    * @param cdr Reference to change detector
    */
   constructor(
     private readonly el: ElementRef<Node>,
+    private readonly ga: GoogleAnalyticsService,
     cdr: ChangeDetectorRef
   ) {
     this.searchControl.valueChanges.pipe(
@@ -134,6 +137,7 @@ export class TagSearchComponent implements OnDestroy {
       searchControl.reset();
       this.searchResults = EMPTY_RESULT;
       this.checkedResults = {};
+      this.ga.event('tags_added', 'tag_search', tags.map(tag => tag.label).join(','));
       this.added.emit(tags);
     }
   }

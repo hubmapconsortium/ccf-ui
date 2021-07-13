@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
  * Component for easily adding a visibility toggle with customizable label and
@@ -38,11 +39,19 @@ export class VisibilityToggleComponent {
   @Output() visibilityChanged = new EventEmitter<boolean>();
 
   /**
+   * Creates an instance of visibility toggle component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Toggles visibility and emits the new value.
    */
   toggleVisibility(): void {
     this.visible = !this.visible;
 
+    this.ga.event('visibility_toggled', 'visibility_toggle', '' + this.visible);
     this.visibilityChanged.emit(this.visible);
   }
 }
