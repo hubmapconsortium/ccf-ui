@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Inject } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { fromEvent, Subscription } from 'rxjs';
 import { map, throttleTime } from 'rxjs/operators';
