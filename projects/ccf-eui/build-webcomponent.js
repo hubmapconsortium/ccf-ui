@@ -8,8 +8,6 @@ const concat = require('concat');
     './dist/ccf-ui/scripts.js',
     './dist/ccf-ui/main-es2015.js'
   ];
-  await fs.ensureDir('ccf-ui-build');
-  await concat(files, 'ccf-ui-build/ccf-ui.js');
-  await fs.copy('./dist/ccf-ui/styles.css', 'ccf-ui-build/styles.css');
-  await fs.copy('./dist/ccf-ui/assets/', 'ccf-ui/assets/');
+  await concat(files, './dist/ccf-ui/wc.js');
+  await fs.copy('./projects/ccf-eui/src/webcomponent-example.html', 'dist/ccf-ui/webcomponent-example.html');
 })();

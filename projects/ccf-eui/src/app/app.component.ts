@@ -22,7 +22,6 @@ import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/
   selector: 'ccf-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
-  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;

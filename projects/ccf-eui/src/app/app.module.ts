@@ -40,13 +40,13 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
   entryComponents: [AppComponent]
 })
 export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector) { }
+
+  ngDoBootstrap() {
     const appElement = createCustomElement(AppComponent, {
       injector: this.injector
     });
 
     customElements.define('ccf-eui', appElement);
   }
-
-  ngDoBootstrap() { }
 }

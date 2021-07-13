@@ -33,7 +33,9 @@ jobs:
       - run: npm ci
       - run: npm run build:libs
       - name: Build EUI
-        run: npm run build -- --output-hashing=none --base-href=/
+        run: |
+          npm run build:ccf-eui -- --base-href=/
+          npm run build:ccf-eui:wc
       - name: Build RUI
         run: |
           npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
