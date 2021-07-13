@@ -1,9 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
 import { PageState } from './core/store/page/page.state';
 
+import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 /**
  * App component
@@ -14,7 +17,7 @@ import { PageState } from './core/store/page/page.state';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy, OnInit {
   /** Organs to be displayed in the organ selector */
   organList = RUI_ORGANS;
 
@@ -27,13 +30,21 @@ export class AppComponent implements OnDestroy {
   /** All subscriptions managed by the container. */
   private readonly subscriptions = new Subscription();
 
-  constructor(readonly model: ModelState, readonly page: PageState) {
+  constructor(readonly model: ModelState, readonly page: PageState, ga: GoogleAnalyticsService,
+    readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
     this.subscriptions.add(
       page.embedded$.subscribe((embedded) => { this.open = !embedded; })
     );
     this.subscriptions.add(
       page.registrationStarted$.subscribe((registrationStarted) => { this.registrationStarted = registrationStarted; })
     );
+  }
+
+  ngOnInit(): void {
+    const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
+      data: {preClose: () => {snackBar.dismiss();} },
+      duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
+    });
   }
 
   /**

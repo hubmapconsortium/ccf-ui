@@ -65,6 +65,34 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ccf-eui/src/environments/environment.ts",
+                  "with": "projects/ccf-eui/src/environments/environment.staging.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
+          
             }
           },
           "defaultConfiguration": ""
@@ -77,6 +105,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ccf-eui:build:production"
+            },
+            "staging": {
+              "browserTarget": "ccf-eui:build:staging"
             }
           }
         },
@@ -129,6 +160,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "ccf-eui:serve:production"
+            },
+            "staging": {
+              "devServerTarget": "ccf-eui:serve:staging"
             }
           }
         }
@@ -321,6 +355,34 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ccf-rui/src/environments/environment.ts",
+                  "with": "projects/ccf-rui/src/environments/environment.staging.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
+          
             }
           },
           "defaultConfiguration": ""
@@ -333,6 +395,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ccf-rui:build:production"
+            },
+            "staging": {
+              "browserTarget": "ccf-rui:build:staging"
             }
           }
         },
@@ -384,6 +449,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "ccf-rui:serve:production"
+            },
+            "staging": {
+              "devServerTarget": "ccf-rui:serve:staging"
             }
           }
         }

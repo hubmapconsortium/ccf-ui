@@ -1,5 +1,6 @@
-import { Component, EventEmitter, HostBinding, Input, Output, OnChanges } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnChanges, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { MetaData } from '../../../core/models/meta-data';
 import { ReviewModalComponent } from '../review-modal/review-modal.component';
@@ -56,8 +57,9 @@ export class ReviewButtonComponent implements OnChanges {
    * Creates an instance of review button component.
    *
    * @param dialog Reference to the dialog creation service.
+   * @param ga Analytics service
    */
-  constructor(private readonly dialog: MatDialog) { }
+  constructor(private readonly dialog: MatDialog, private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Updates the value of registrationIsValid based on the
@@ -84,6 +86,7 @@ export class ReviewButtonComponent implements OnChanges {
     }
     this.enterErrorMode.emit();
     if (this.registrationIsValid) {
+      this.ga.event('review_start', 'review_button');
       this.launchReviewModal();
     }
     return false;
@@ -105,6 +108,7 @@ export class ReviewButtonComponent implements OnChanges {
     dialogRef.afterClosed().subscribe(
       data => {
         if (data) {
+          this.ga.event('register', 'review_button');
           this.registerData.emit();
         }
       }

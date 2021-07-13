@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
  * Interface containing slices data of the tissue block
@@ -46,6 +47,13 @@ export class SlicesInputComponent {
   }
 
   /**
+   * Creates an instance of slices input component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Limits the length of the input if needed and updates values when an input changes
    *
    * @param input InputEvent from the input element which contains the new value
@@ -54,6 +62,7 @@ export class SlicesInputComponent {
   updateSlicesData(input: InputEvent, key: string): void {
     const { value: strValue } = input.target as HTMLInputElement;
     this.slicesConfig = { ...this.slicesConfig, [key]: strValue !== '' ? +strValue : NaN };
+    this.ga.event('slice_config_update', 'slice_input', key, this.slicesConfig[key]);
     this.slicesConfigChange.emit(this.slicesConfig);
   }
 
@@ -62,6 +71,7 @@ export class SlicesInputComponent {
    */
   refreshSlices(): void {
     this.slicesConfig = DEFAULT_SLICES_CONFIG;
+    this.ga.event('slice_config_reset', 'slice_input');
     this.slicesConfigChange.emit(this.slicesConfig);
   }
 }
