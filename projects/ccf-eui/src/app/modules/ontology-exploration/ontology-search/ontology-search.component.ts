@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { OntologyTreeNode } from 'ccf-database';
 import { get, sortBy } from 'lodash';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable } from 'rxjs';
 import { filter, map, startWith, switchMap } from 'rxjs/operators';
 
@@ -44,8 +45,9 @@ export class OntologySearchComponent implements OnInit {
    * Creates an instance of ontology search component.
    *
    * @param ontologyService instance of searchService which provides all the search functionality
+   * @param ga Analytics service
    */
-  constructor(public ontologyService: OntologySearchService) { }
+  constructor(public ontologyService: OntologySearchService, private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * on-init lifecycle hook for this component -
@@ -102,6 +104,7 @@ export class OntologySearchComponent implements OnInit {
   onSelect(event: MatAutocompleteSelectedEvent): void {
     const node = get(event, ['option', 'value', 'node']) as OntologyTreeNode;
     if (node) {
+      this.ga.event('search', 'ontology_search', node.id);
       this.selected.emit(node);
       this.formControl.reset();
     }

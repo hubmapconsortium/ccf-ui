@@ -2,18 +2,10 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
 import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnChanges,
-  OnDestroy,
-  Output,
-  SimpleChanges,
-  ViewChild,
+  Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild,
 } from '@angular/core';
 import { Options } from 'ng5-slider';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 /**
@@ -107,10 +99,12 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    *
    * @param overlay The overlay service used to create the slider popover.
    * @param element A reference to the component's element. Used during event handling.
+   * @param ga Analytics service
    */
   constructor(
     overlay: Overlay,
     private element: ElementRef<HTMLElement>,
+    private readonly ga: GoogleAnalyticsService
   ) {
     const position: ConnectedPosition = { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' };
     const positionStrategy = overlay.position().flexibleConnectedTo(element).withPositions([position]);
@@ -208,6 +202,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
     const { lowValue, highValue } = this;
 
     this.selection = [lowValue, highValue];
+    this.ga.event('slider_range_change', 'dual_slider', `${this.label}:${lowValue}:${highValue}`);
     this.selectionChange.emit(this.selection);
   }
 

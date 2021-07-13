@@ -1,6 +1,7 @@
 import { Immutable } from '@angular-ru/common/typings/immutability';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AggregateResult } from 'ccf-database';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { ListResult } from '../../../core/models/list-result';
 
@@ -56,12 +57,20 @@ export class ResultsBrowserComponent {
   atScrollBottom = false;
 
   /**
+   * Creates an instance of results browser component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Notifies listeners when a selection/deselection is made
    *
    * @param result the list result
    * @param selected whether to select or deselect the result
    */
   handleSelection(result: Immutable<ListResult>, selected: boolean): void {
+    this.ga.event('list_result_selected', 'results_browser', this.resultLabel, +selected);
     if (selected) {
       this.listResultSelected.next(result);
     } else {

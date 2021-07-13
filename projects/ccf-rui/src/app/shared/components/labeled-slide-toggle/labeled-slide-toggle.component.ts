@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 /**
@@ -37,6 +38,13 @@ export class LabeledSlideToggleComponent {
   @Output() valueChange = new EventEmitter<string>();
 
   /**
+   * Creates an instance of labeled slide toggle component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Determines if left toggle option is selected
    */
   get left(): boolean {
@@ -51,6 +59,7 @@ export class LabeledSlideToggleComponent {
    */
   updateToggle(selection: boolean): void {
     this.value = selection ? this.labels[0] : this.labels[1];
+    this.ga.event('slide_toggle_toggled', 'slide_toggle', this.value);
     this.valueChange.emit(this.value);
   }
 }

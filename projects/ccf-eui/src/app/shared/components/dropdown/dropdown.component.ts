@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
  * Component for a dropdown menu.
@@ -36,6 +37,13 @@ export class DropdownComponent {
   optionsVisible = 'invisible';
 
   /**
+   * Creates an instance of dropdown component.
+   *
+   * @param ga Analytics service
+   */
+   constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Controls fade-in effect after dropdown menu opens
    */
   toggleOptions(): void {
@@ -49,6 +57,7 @@ export class DropdownComponent {
    */
   selectionChanged(value: string): void {
     this.selection = value;
+    this.ga.event('selection_change', 'dropdown', `${this.label}:${value}`);
     this.selectionChange.emit(value);
   }
 }

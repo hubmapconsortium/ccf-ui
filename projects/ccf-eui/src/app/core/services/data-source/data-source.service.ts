@@ -53,6 +53,11 @@ export class DataSourceService {
    * @returns A promise that resolves to the database when ready.
    */
   async getDB(): Promise<Remote<CCFDatabase> | CCFDatabase> {
+    // When the db is running in the main thread, introduce some
+    // delay to allow other parts of the UI to have time to run.
+    if (environment.disableDbWorker) {
+      await new Promise(r => setTimeout(r, 100));
+    }
     await this.dataSource.connect(this.dbOptions);
     return this.dataSource;
   }

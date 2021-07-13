@@ -2,6 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
  * User name data
@@ -66,6 +67,13 @@ export class NameInputComponent {
   @Output() readonly nameChange = new EventEmitter<UserName>();
 
   /**
+   * Creates an instance of name input component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Updates username with a new entry and emits the UserName object
    *
    * @param input InputEvent from the input element which contains the new value
@@ -74,6 +82,7 @@ export class NameInputComponent {
   updateName(input: InputEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
     this.name = { ...this.name, [key]: inputTarget.value };
+    this.ga.event('name_updated', 'name_input', key);
     this.nameChange.emit(this.name);
   }
 }
