@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,37 +8,37 @@
 
   .checkbox {
     &.selected {
-      color: mat-color($primary, 'white');
+      color: mat.get-color-from-palette($primary, 'white');
     }
 
     &.unselected {
-      color: mat-color($background, checkbox-color);
+      color: mat.get-color-from-palette($background, checkbox-color);
     }
   }
 
   .donor {
     .hover-state {
-      border-right: 1px solid mat-color($foreground, icons-disabled);
+      border-right: 1px solid mat.get-color-from-palette($foreground, icons-disabled);
     }
   }
 
   .hover-state {
-    background-color: mat-color($background, hover-background);
+    background-color: mat.get-color-from-palette($background, hover-background);
 
     .hover-title {
-      color: mat-color($primary, 'black');
+      color: mat.get-color-from-palette($primary, 'black');
     }
 
     .hover-icon {
-      color: mat-color($background, checkbox-color);
+      color: mat.get-color-from-palette($background, checkbox-color);
     }
   }
 
   .icon-light {
-    color: mat-color($foreground, icons-light);
+    color: mat.get-color-from-palette($foreground, icons-light);
   }
 
   .icon-dark {
-    color: mat-color($foreground, main);
+    color: mat.get-color-from-palette($foreground, main);
   }
 }

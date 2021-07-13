@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -6,21 +7,21 @@
   $foreground: map-get($theme, foreground);
 
   #title {
-    color: mat-color($primary, text);
+    color: mat.get-color-from-palette($primary, text);
   }
 
   .scroll-gradient {
     background: linear-gradient(
       0deg,
-      mat-color($background, background) 0%,
-      mat-color($background, background) 55%,
-      mat-color($background, background, 0) 100%
+      mat.get-color-from-palette($background, background) 0%,
+      mat.get-color-from-palette($background, background) 55%,
+      mat.get-color-from-palette($background, background, 0) 100%
     );
   }
 
   .browser-item-container {
     &.selected {
-      background-color: mat-color($foreground, dividers);
+      background-color: mat.get-color-from-palette($foreground, dividers);
     }
   }
 }

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -6,27 +7,27 @@
   $background: map-get($theme, background);
 
   .ccf-header {
-    border-bottom-color: mat-color($foreground, header-border);
-    background-color: mat-color($background, app-bar);
-    color: mat-color($foreground, headers);
+    border-bottom-color: mat.get-color-from-palette($foreground, header-border);
+    background-color: mat.get-color-from-palette($background, app-bar);
+    color: mat.get-color-from-palette($foreground, headers);
     box-shadow: 0px 1px 5px 1px map-get($foreground, app-bar-shadow);
     ;
     z-index: 2;
 
     .icon {
-      color: mat-color($foreground, icon);
+      color: mat.get-color-from-palette($foreground, icon);
     }
 
     .text {
-      color: mat-color($foreground, logo);
+      color: mat.get-color-from-palette($foreground, logo);
     }
 
     .home:hover * {
-      color: mat-color($accent);
+      color: mat.get-color-from-palette($accent);
     }
 
     .info {
-      color: mat-color($foreground, info-icon);
+      color: mat.get-color-from-palette($foreground, info-icon);
     }
   }
 }

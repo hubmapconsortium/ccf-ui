@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -9,16 +10,16 @@
     box-shadow: -0.25rem 0rem 0.6rem 0.1rem map-get($foreground, header-shadow);
 
     .toolbar {
-      color: mat-color($foreground, text-muted);
+      color: mat.get-color-from-palette($foreground, text-muted);
       box-shadow: -0.25rem 0rem 0.2rem 0.1rem map-get($foreground, header-shadow);
 
       a:link, a:visited, a:active, a:hover {
-        color: mat-color($foreground, text-muted);
+        color: mat.get-color-from-palette($foreground, text-muted);
       }
 
       .close {
         color: white;
-        background-color: mat-color($foreground, text-muted);
+        background-color: mat.get-color-from-palette($foreground, text-muted);
       }
     }
 

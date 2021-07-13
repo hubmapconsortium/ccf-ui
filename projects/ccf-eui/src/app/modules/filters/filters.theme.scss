@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,21 +8,21 @@
   $accent: map-get($theme, accent);
 
   .outline-button {
-    color: mat-color($foreground, light-button-text);
-    background-color: mat-color($background, button-bg);
+    color: mat.get-color-from-palette($foreground, light-button-text);
+    background-color: mat.get-color-from-palette($background, button-bg);
 
     &:hover {
-      background-color: mat-color($background, button-background-hover)
+      background-color: mat.get-color-from-palette($background, button-background-hover)
     }
   }
 
   .popup-container {
-    background-color: mat-color($background, modal);
-    border-color: mat-color($foreground, modal-borders);
+    background-color: mat.get-color-from-palette($background, modal);
+    border-color: mat.get-color-from-palette($foreground, modal-borders);
   }
 
   .show-hide {
-    color: mat-color($foreground, contrast-icon);
+    color: mat.get-color-from-palette($foreground, contrast-icon);
 
     &:hover {
       background-color: map-get($background, info-button-hover) !important;

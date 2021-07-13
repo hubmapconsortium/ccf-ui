@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,19 +8,19 @@
 
   .ccf-block-size-input {
     .icon {
-      color: mat-color($foreground, main);
+      color: mat.get-color-from-palette($foreground, main);
 
       &:hover {
-        background: mat-color($foreground, icons-hover);
+        background: mat.get-color-from-palette($foreground, icons-hover);
       }
     }
 
     .label {
-      color: mat-color($foreground, placeholder-text);
+      color: mat.get-color-from-palette($foreground, placeholder-text);
     }
 
     .mat-form-field-ripple {
-      background-color: mat-color($accent) !important;
+      background-color: mat.get-color-from-palette($accent) !important;
     }
   }
 }

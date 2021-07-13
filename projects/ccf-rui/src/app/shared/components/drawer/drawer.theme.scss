@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -6,31 +7,31 @@
   $accent: map-get($theme, accent);
 
   .ccf-drawer {
-    background-color: mat-color($background, background);
-    border-right-color: mat-color($foreground, divider);
-    border-left-color: mat-color($foreground, divider);
+    background-color: mat.get-color-from-palette($background, background);
+    border-right-color: mat.get-color-from-palette($foreground, divider);
+    border-left-color: mat.get-color-from-palette($foreground, divider);
   }
 
   .ccf-drawer-toggle-button {
-    background-color: mat-color($background, modal);
+    background-color: mat.get-color-from-palette($background, modal);
 
     &:hover {
-      background-color: mat-color($background, drawer-hover);
+      background-color: mat.get-color-from-palette($background, drawer-hover);
     }
   }
 
   .drawer-icons {
     .button {
-      color: mat-color($foreground, contrast-icon);
+      color: mat.get-color-from-palette($foreground, contrast-icon);
 
       :hover {
-        color: mat-color($accent);
+        color: mat.get-color-from-palette($accent);
       }
     }
   }
 
   .ccf-drawer-content {
-    background-color: mat-color($background, drawer-background);
+    background-color: mat.get-color-from-palette($background, drawer-background);
     padding-bottom: 1.5rem;
   }
 }

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -20,26 +21,26 @@
     }
 
     .mat-form-field-outline {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
 
     .mat-pseudo-checkbox-checked {
-      background: mat-color($foreground, active-icon);
+      background: mat.get-color-from-palette($foreground, active-icon);
     }
 
     .add-button{
       background-color: transparent;
 
       &.active {
-        background-color: mat-color($foreground, icons-hover);
+        background-color: mat.get-color-from-palette($foreground, icons-hover);
       }
       
       &:hover {
-        background-color: mat-color($foreground, icons-hover);
+        background-color: mat.get-color-from-palette($foreground, icons-hover);
       }
 
       &:active {
-        background-color: mat-color($foreground, icons-disabled);
+        background-color: mat.get-color-from-palette($foreground, icons-disabled);
       }
       
     }

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -8,34 +9,34 @@
   
   .ccf-ontology-search {
     &.detached {
-      border-color: mat-color($foreground, divider) !important;
-      background-color: mat-color($background, modal);
+      border-color: mat.get-color-from-palette($foreground, divider) !important;
+      background-color: mat.get-color-from-palette($background, modal);
 
       mat-option {
-        color: mat-color($foreground, search-result-text);
+        color: mat.get-color-from-palette($foreground, search-result-text);
       }
     }
     .input::placeholder {
-      color: mat-color($foreground, search-result-text);
+      color: mat.get-color-from-palette($foreground, search-result-text);
     }
 
     .input {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
 
     .mat-form-field-appearance-outline {
       .mat-form-field-outline {
-        color: mat-color($foreground, divider);
+        color: mat.get-color-from-palette($foreground, divider);
 
         .mat-form-field-outline-start,
         .mat-form-field-outline-end,
         .mat-form-field-outline-gap {
-          background-color: mat-color($background, modal);
+          background-color: mat.get-color-from-palette($background, modal);
         }
       }
 
       .mat-form-field-outline-thick {
-        color: mat-color($foreground, divider);
+        color: mat.get-color-from-palette($foreground, divider);
       }
     }
   }

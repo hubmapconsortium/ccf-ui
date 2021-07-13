@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 @use '../../app/modules/header/header.component.theme' as header;
 @use '../../../../ccf-shared/src/lib/components//info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
@@ -30,22 +31,22 @@
 
 
 @mixin ccf-theme($theme) {
-  @include mat-core-theme($theme);
+  @include mat.core-theme($theme);
 
-  @include mat-autocomplete-theme($theme);
-  @include mat-button-theme($theme);
-  @include mat-checkbox-theme($theme);
-  @include mat-expansion-panel-theme($theme);
-  @include mat-form-field-theme($theme);
-  @include mat-icon-theme($theme);
-  @include mat-input-theme($theme);
-  @include mat-progress-spinner-theme($theme);
-  @include mat-radio-theme($theme);
-  @include mat-select-theme($theme);
-  @include mat-slide-toggle-theme($theme);
-  @include mat-slider-theme($theme);
-  @include mat-toolbar-theme($theme);
-  @include mat-tooltip-theme($theme);
+  @include mat.autocomplete-theme($theme);
+  @include mat.button-theme($theme);
+  @include mat.checkbox-theme($theme);
+  @include mat.expansion-theme($theme);
+  @include mat.form-field-theme($theme);
+  @include mat.icon-theme($theme);
+  @include mat.input-theme($theme);
+  @include mat.progress-spinner-theme($theme);
+  @include mat.radio-theme($theme);
+  @include mat.select-theme($theme);
+  @include mat.slide-toggle-theme($theme);
+  @include mat.slider-theme($theme);
+  @include mat.toolbar-theme($theme);
+  @include mat.tooltip-theme($theme);
 
   @include header.theme($theme);
   @include infoDialog.theme($theme);
