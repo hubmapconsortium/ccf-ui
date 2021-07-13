@@ -1,4 +1,4 @@
-import { Component, ViewChild, ComponentRef, ApplicationRef, AfterViewInit, Injector, ElementRef } from '@angular/core';
+import { Component, ViewChild, Injector, ElementRef, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -13,6 +13,9 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 
+import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -23,7 +26,7 @@ import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
 
   /**
@@ -66,7 +69,8 @@ export class AppComponent {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
-      readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<unknown>, injector: Injector) {
+      readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<unknown>, injector: Injector,
+      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
     theming.initialize(el, injector);
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
@@ -75,6 +79,13 @@ export class AppComponent {
     data.filter$.subscribe();
     data.tissueBlockData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
+  }
+
+  ngOnInit(): void {
+    const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
+      data: {preClose: () => {snackBar.dismiss();} },
+      duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
+    });
   }
 
   /**

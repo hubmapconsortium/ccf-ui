@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild,
 } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 /** Valid values for side. */
@@ -59,6 +60,13 @@ export class StageNavComponent {
   }
 
   /**
+   * Creates an instance of stage nav component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Listens to document click event
    * Closes the popup only if user clicks outside the popup
    *
@@ -81,6 +89,8 @@ export class StageNavComponent {
    * @param selection the new selected side
    */
   updateSide(selection: Side): void {
+    this.ga.event('side_update', 'stage_nav', selection);
+
     if (selection === '3D') {
       this.updateView(true);
     } else {
@@ -98,6 +108,7 @@ export class StageNavComponent {
    */
   updateView(selection: boolean): void {
     this.view3D = selection;
+    this.ga.event('view_update', 'stage_nav', selection ? '3D' : 'Register');
     this.view3DChange.emit(this.view3D);
   }
 }

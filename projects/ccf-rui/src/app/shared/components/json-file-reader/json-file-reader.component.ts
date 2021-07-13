@@ -1,4 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+
 
 @Component({
   selector: 'ccf-json-file-reader',
@@ -16,6 +18,13 @@ export class JsonFileReaderComponent {
 
   /** Emits the json object of any files uploaded. */
   @Output() parsedJson = new EventEmitter<unknown>();
+
+  /**
+   * Creates an instance of json file reader component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Method used to trigger the file input element's click handler
@@ -36,12 +45,17 @@ export class JsonFileReaderComponent {
     if (!inputTarget.files) {
       return;
     }
+
     const file = inputTarget.files[0];
     const fileReader = new FileReader();
+
     fileReader.onload = () => {
       const json = JSON.parse(fileReader.result as string) as unknown;
+      this.ga.event('json_file_load_end', 'json_file_reader');
       this.parsedJson.emit(json);
     };
+
+    this.ga.event('json_file_load_start', 'json_file_reader');
     fileReader.readAsText(file);
   }
 }

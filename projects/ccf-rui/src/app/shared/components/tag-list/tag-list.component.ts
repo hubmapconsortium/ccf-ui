@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { Tag } from '../../../core/models/anatomical-structure-tag';
 
@@ -32,6 +33,13 @@ export class TagListComponent {
   @Output() readonly tagsChange = new EventEmitter<Tag[]>();
 
   /**
+   * Creates an instance of tag list component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Gets the unique identifier for a tag
    *
    * @param _index Unused
@@ -53,6 +61,7 @@ export class TagListComponent {
    */
   removeTag(tag: Tag): void {
     this.tags = this.tags.filter(obj => obj !== tag);
+    this.ga.event('tag_removed', 'tag_list', tag.label);
     this.tagRemoved.emit(tag);
     this.tagsChange.emit(this.tags);
   }
