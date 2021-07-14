@@ -22,7 +22,6 @@
             "main": "projects/ccf-eui/src/main.ts",
             "polyfills": "projects/ccf-eui/src/polyfills.ts",
             "tsConfig": "projects/ccf-eui/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/ccf-eui/src/favicon.ico",
               "projects/ccf-eui/src/assets"
@@ -30,12 +29,14 @@
             "styles": [
               "projects/ccf-eui/src/styles.scss"
             ],
-            "scripts": [
-              {
-                "input": "node_modules/document-register-element/build/document-register-element.js"
-              }
-            ],
-            "webWorkerTsConfig": "projects/ccf-eui/tsconfig.worker.json"
+            "scripts": [],
+            "webWorkerTsConfig": "projects/ccf-eui/tsconfig.worker.json",
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -91,9 +92,9 @@
                   "maximumError": "4kb"
                 }
               ]
-          
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -311,7 +312,6 @@
             "main": "projects/ccf-rui/src/main.ts",
             "polyfills": "projects/ccf-rui/src/polyfills.ts",
             "tsConfig": "projects/ccf-rui/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/ccf-rui/src/favicon.ico",
               "projects/ccf-rui/src/assets"
@@ -319,7 +319,13 @@
             "styles": [
               "projects/ccf-rui/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -377,7 +383,8 @@
               ]
           
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

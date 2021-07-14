@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -12,7 +13,7 @@
 
       .swiper-button-disabled,
       .swiper-button-lock {
-        color: mat-color($foreground, disabled);
+        color: mat.get-color-from-palette($foreground, disabled);
       }
     }
 
@@ -39,7 +40,7 @@
       }
 
       .link {
-        background-color: mat-color($foreground, icons-background-hover);
+        background-color: mat.get-color-from-palette($foreground, icons-background-hover);
 
         &,
         &:link,

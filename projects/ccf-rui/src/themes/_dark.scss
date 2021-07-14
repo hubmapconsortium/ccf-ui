@@ -1,8 +1,9 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 @use 'common/utility';
 
 
-$primary-colors: utility.add-colors($mat-gray, (
+$primary-colors: utility.add-colors(mat.$gray-palette, (
   "white": white,
   "black": black,
   850: #323232,
@@ -14,11 +15,11 @@ $primary-colors: utility.add-colors($mat-gray, (
   )
 ));
 
-$primary: mat-palette($primary-colors, $text: 50);
-$accent: mat-palette($mat-blue, #3781d1);
-$warn: mat-palette($mat-red);
+$primary: mat.define-palette($primary-colors, $text: 50);
+$accent: mat.define-palette(mat.$blue-palette, #3781d1);
+$warn: mat.define-palette(mat.$red-palette);
 
-$foreground: map-merge($mat-dark-theme-foreground, (
+$foreground: map-merge(mat.$dark-theme-foreground-palette, (
   logo: map-get($primary-colors, 'white'),
   header-border: map-get($primary-colors, 800), //#424242
   modal-borders: map-get($primary-colors, 'black'),
@@ -32,13 +33,13 @@ $foreground: map-merge($mat-dark-theme-foreground, (
   search-result-text: map-get($primary-colors, 50), //#FAFAFA
   text: map-get($primary-colors, 50), //#FAFAFA
   contrast-text: map-get($primary-colors, 50), //#FAFAFA
-  download-icon: map-get($mat-amber, A400),
+  download-icon: map-get(mat.$amber-palette, A400),
   disabled: map-get($primary-colors, 800), //#424242
   highlight: map-get($primary-colors, 'white'),
-  header-download-icon: map-get($mat-amber, A400)
+  header-download-icon: map-get(mat.$amber-palette, A400)
 ));
 
-$background: map-merge($mat-dark-theme-background, (
+$background: map-merge(mat.$dark-theme-background-palette, (
   background: map-get($primary-colors, 900), //#212121
   stage-background: map-get($primary-colors, 'black'),
   dialog: map-get($primary-colors, 900), //#212121

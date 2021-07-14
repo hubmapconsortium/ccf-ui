@@ -1,6 +1,8 @@
-import { Component, ElementRef, Inject } from '@angular/core';
+import { Component, ElementRef, HostBinding, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
+
 import { TrackingState } from '../../services/globals/tracking.state';
+
 
 @Component({
   selector: 'ccf-tracking-popup',
@@ -8,6 +10,7 @@ import { TrackingState } from '../../services/globals/tracking.state';
   styleUrls: ['./tracking-popup.component.scss']
 })
 export class TrackingPopupComponent {
+  @HostBinding('class') readonly clsName = 'ccf-tracking-popup';
 
   container: HTMLElement;
 

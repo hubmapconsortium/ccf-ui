@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -8,30 +9,30 @@
   .ccf-visibility-toggle {
 
     .toggle-wrapper {
-      border-color: mat-color($foreground,  chip-border-primary);
+      border-color: mat.get-color-from-palette($foreground,  chip-border-primary);
 
       &:hover {
-        background-color: mat-color($foreground, toggle-bg);
+        background-color: mat.get-color-from-palette($foreground, toggle-bg);
       }
 
       &.disabled {
-        color: mat-color($foreground, icons-disabled);
-        border-color: mat-color($foreground, icons-disabled);
+        color: mat.get-color-from-palette($foreground, icons-disabled);
+        border-color: mat.get-color-from-palette($foreground, icons-disabled);
       }
 
       .icon {
-        color: mat-color($foreground, chip-icon-block-primary);
+        color: mat.get-color-from-palette($foreground, chip-icon-block-primary);
         &.visible {
-          color: mat-color($accent);
+          color: mat.get-color-from-palette($accent);
         }
       }
 
       .green {
-        color: mat-color($foreground,  chip-icon-done-green);
+        color: mat.get-color-from-palette($foreground,  chip-icon-done-green);
       }
 
       .icon-background {
-        background-color: mat-color($foreground, chip-icon-background);
+        background-color: mat.get-color-from-palette($foreground, chip-icon-background);
         &.disabled {
           opacity: 40%;
         }

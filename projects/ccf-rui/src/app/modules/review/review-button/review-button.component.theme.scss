@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,21 +8,21 @@
 
   .ccf-review-button {
     .review-button {
-      background-color: mat-color($foreground, button-background);
-      color: mat-color($foreground, sidebar-dividers);
+      background-color: mat.get-color-from-palette($foreground, button-background);
+      color: mat.get-color-from-palette($foreground, sidebar-dividers);
 
       &:hover {
-          background-color: mat-color($foreground, button-background-hover);
+          background-color: mat.get-color-from-palette($foreground, button-background-hover);
       }
 
       &.disabled {
-        background-color: mat-color($foreground, disabled);
-        color:  mat-color($foreground, disabled-text);
-        border: 1px solid mat-color($foreground, disabled);
+        background-color: mat.get-color-from-palette($foreground, disabled);
+        color:  mat.get-color-from-palette($foreground, disabled-text);
+        border: 1px solid mat.get-color-from-palette($foreground, disabled);
 
         &:hover {
-          background-color: mat-color($foreground, disabled);
-          color:  mat-color($foreground, disabled-text);
+          background-color: mat.get-color-from-palette($foreground, disabled);
+          color:  mat.get-color-from-palette($foreground, disabled-text);
         }
     }
     }

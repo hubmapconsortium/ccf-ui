@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -8,26 +9,26 @@
   .ccf-opacity-slider {
     mat-slider {
       .mat-slider-thumb {
-        background-color: mat-color($foreground, main);
+        background-color: mat.get-color-from-palette($foreground, main);
       }
 
       .mat-slider-track-background {
-        background-color: mat-color($foreground, icons-disabled);
+        background-color: mat.get-color-from-palette($foreground, icons-disabled);
       }
 
       .mat-slider-track-fill {
-        background-color: mat-color($foreground, main);
+        background-color: mat.get-color-from-palette($foreground, main);
       }
     }
 
     .opacity-value {
-      color: mat-color($foreground, opacity-numbers);
+      color: mat.get-color-from-palette($foreground, opacity-numbers);
     }
 
     .icon {
-      color: mat-color($foreground, main);
+      color: mat.get-color-from-palette($foreground, main);
       &:hover {
-        background: mat-color($foreground, icons-hover);
+        background: mat.get-color-from-palette($foreground, icons-hover);
       }
     }
 
@@ -37,7 +38,7 @@
         background-color: #f5f5f5;
       }
       &.invisible {
-        color: mat-color($foreground, icons-disabled);
+        color: mat.get-color-from-palette($foreground, icons-disabled);
       }
     }
 

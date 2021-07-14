@@ -123,7 +123,7 @@ export class DataSourceService {
   private getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {
     let worker: Worker;
     if (directImport) {
-      worker = new Worker('./data-source.worker', { type: 'module' });
+      worker = new Worker(new URL('./data-source.worker', import.meta.url), { type: 'module' });
     } else {
       const workerUrl = this.locator.prepareExternalUrl('0-es2015.worker.js');
       const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
