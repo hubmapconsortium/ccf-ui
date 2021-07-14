@@ -7,6 +7,8 @@
 @import '~swiper/swiper';
 @import '~swiper/components/navigation/navigation';
 
+// @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
 @include ng.mat-core(typography.$config);
 
 .light-theme {
