@@ -27,6 +27,8 @@ export class DonorCardComponent {
   /** Allows the expanded state of the card to be set from outside the component */
   @Input() expanded = false;
 
+  @Input() highlighted = false;
+
   /** Emits the new checked state whenever it changes */
   @Output() checked = new EventEmitter<boolean>();
 
