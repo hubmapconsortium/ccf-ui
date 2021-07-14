@@ -66,7 +66,7 @@ export async function addJsonLdToStore(
 
   if (jsonLdData) {
     const quads = (await toRDF(jsonLdData)) as unknown[];
-    store.import(arrayToStream(quads));
+    store.import(arrayToStream(quads) as unknown as EventEmitter);
   }
   return store;
 }
@@ -129,7 +129,7 @@ export async function addN3ToStore(
   }
   if (data) {
     const quads = new Parser({format: 'n3'}).parse(data);
-    store.import(arrayToStream(quads));
+    store.import(arrayToStream(quads) as unknown as EventEmitter);
   }
   return store;
 }

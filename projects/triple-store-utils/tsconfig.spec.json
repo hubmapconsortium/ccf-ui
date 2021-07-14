@@ -5,7 +5,10 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+      "stream": ["./node_modules/stream-browserify"]
+    }
   },
   "files": [
     "src/test.ts"

@@ -1,4 +1,3 @@
-import { DebugElement } from '@angular/core';
 import { Shallow } from 'shallow-render';
 
 import { NumberDirective } from './numbers-only.directive';

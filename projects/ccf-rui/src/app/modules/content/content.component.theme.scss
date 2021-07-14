@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -6,20 +7,20 @@
   $background: map-get($theme, background);
 
   .ccf-content {
-    background-color: mat-color($background, stage-background);
+    background-color: mat.get-color-from-palette($background, stage-background);
 
     .top-bar {
       .icon {
-        color: mat-color($foreground, icon);
+        color: mat.get-color-from-palette($foreground, icon);
 
         &:hover {
-          color: mat-color($foreground, active-icon);
+          color: mat.get-color-from-palette($foreground, active-icon);
         }
       }
     }
 
     .position-display {
-      color: mat-color($foreground, contrast-text);
+      color: mat.get-color-from-palette($foreground, contrast-text);
     }
   }
 }

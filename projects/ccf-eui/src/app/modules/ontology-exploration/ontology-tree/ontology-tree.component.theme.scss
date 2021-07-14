@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -9,14 +10,14 @@
   .ccf-ontology-tree {
     .node {
       .opacity {
-        color: mat-color($foreground, main);
+        color: mat.get-color-from-palette($foreground, main);
   
         &:hover {
-          background: mat-color($foreground, icons-hover);
+          background: mat.get-color-from-palette($foreground, icons-hover);
         }
   
         &.fade {
-          color: mat-color($foreground, icons-disabled);
+          color: mat.get-color-from-palette($foreground, icons-disabled);
         }
       }
 
@@ -25,61 +26,61 @@
         
         mat-slider {
           .mat-slider-thumb {
-            background-color: mat-color($foreground, main);
+            background-color: mat.get-color-from-palette($foreground, main);
           }
     
           .mat-slider-track-background {
-            background-color: mat-color($foreground, icons-disabled);
+            background-color: mat.get-color-from-palette($foreground, icons-disabled);
           }
     
           .mat-slider-track-fill {
-            background-color: mat-color($foreground, main);
+            background-color: mat.get-color-from-palette($foreground, main);
           }
         }
   
         .opacity-value {
-          color: mat-color($foreground, opacity-numbers);
+          color: mat.get-color-from-palette($foreground, opacity-numbers);
         }
     
         .icon {
-          color: mat-color($foreground, main);
+          color: mat.get-color-from-palette($foreground, main);
           &:hover {
-            background: mat-color($foreground, icons-hover);
+            background: mat.get-color-from-palette($foreground, icons-hover);
           }
         }
     
         .visibility {
           &.invisible {
-            color: mat-color($foreground, icons-disabled);
+            color: mat.get-color-from-palette($foreground, icons-disabled);
           }
         }
       }
 
       .num-results {
         &.suborgan {
-          color: mat-color($foreground, results-numbers);
+          color: mat.get-color-from-palette($foreground, results-numbers);
         }
       }
   
       .text {
-        color: mat-color($foreground, text);
+        color: mat.get-color-from-palette($foreground, text);
       }
   
       .text:hover {
-        color: mat-color($accent);
+        color: mat.get-color-from-palette($accent);
       }
   
       .selected {
-        color: mat-color($accent);
+        color: mat.get-color-from-palette($accent);
       }
     }
 
     .scroll-gradient {
       background: linear-gradient(
         0deg,
-        mat-color($background, dialog) 0%,
-        mat-color($background, dialog) 55%,
-        mat-color($background, dialog, 0) 100%
+        mat.get-color-from-palette($background, dialog) 0%,
+        mat.get-color-from-palette($background, dialog) 55%,
+        mat.get-color-from-palette($background, dialog, 0) 100%
       );
     }
   }

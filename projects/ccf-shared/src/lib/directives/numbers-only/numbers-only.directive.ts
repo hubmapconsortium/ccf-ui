@@ -19,7 +19,6 @@ export class NumberDirective {
    *
    * @param event The input event
    */
-  // tslint:disable-next-line: no-unsafe-any
   @HostListener('input', ['$event'])
   onInputChange(event: Event): void {
     const initalValue = this.el.nativeElement.value;

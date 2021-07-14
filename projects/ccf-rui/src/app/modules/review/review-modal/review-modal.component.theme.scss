@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -6,18 +7,18 @@
   $background: map-get($theme, background);
 
   .ccf-review-modal {
-    background-color: mat-color($background, background);
+    background-color: mat.get-color-from-palette($background, background);
 
     .footer {
       .download-button {
-        background-color: mat-color($foreground, active-icon);
-        color: mat-color($foreground, sidebar-dividers);
-        border: 1px solid mat-color($foreground, active-icon);
+        background-color: mat.get-color-from-palette($foreground, active-icon);
+        color: mat.get-color-from-palette($foreground, sidebar-dividers);
+        border: 1px solid mat.get-color-from-palette($foreground, active-icon);
 
         &:hover {
-          background-color: mat-color($foreground, sidebar-dividers);
-          color: mat-color($foreground, active-icon);
-          border: 1px solid mat-color($foreground, active-icon);
+          background-color: mat.get-color-from-palette($foreground, sidebar-dividers);
+          color: mat.get-color-from-palette($foreground, active-icon);
+          border: 1px solid mat.get-color-from-palette($foreground, active-icon);
         }
       }
     }

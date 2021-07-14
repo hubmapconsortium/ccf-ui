@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -9,13 +10,13 @@
     .video-modal.wrapper {
       .container {
         .content {
-          background-color: mat-color($background, background);
+          background-color: mat.get-color-from-palette($background, background);
         }
         .close-icon {
-          color: mat-color($foreground, contrast-icon);
+          color: mat.get-color-from-palette($foreground, contrast-icon);
 
           &:hover {
-            color: mat-color($accent);
+            color: mat.get-color-from-palette($accent);
           }
         }
       }

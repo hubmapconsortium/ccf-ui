@@ -17,7 +17,7 @@
 
     <div [style.display]="node.opacity !== -1 ? 'none' : 'block'">
       <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="node.visible !== true" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
-      <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label != highlightedNode?.label">
+      <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label !== highlightedNode?.label">
         <ccf-opacity-slider #slider1 [visible]="node.visible" [opacity]="node.opacity"
         (opacityChange)="updateOpacity(node, $event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">
         </ccf-opacity-slider>
@@ -37,7 +37,7 @@
 
     <div [style.display]="node.opacity !== -1 ? 'none' : 'block'">
       <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="node.visible !== true" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>
-      <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label != highlightedNode?.label">
+      <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label !== highlightedNode?.label">
         <ccf-opacity-slider #slider2 [visible]="node.visible" [opacity]="node.opacity"
           (opacityChange)="updateOpacity(node, $event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">
         </ccf-opacity-slider>

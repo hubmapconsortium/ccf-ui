@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -10,39 +11,39 @@
 
     .mat-form-field-wrapper {
       .mat-form-field-underline {
-        background-color: mat-color($foreground, contrast-icon);
+        background-color: mat.get-color-from-palette($foreground, contrast-icon);
       }
     }
   }
 
   .mat-select-arrow-wrapper {
-    color: mat-color($foreground, contrast-icon);
+    color: mat.get-color-from-palette($foreground, contrast-icon);
   }
 
   .name-label {
-    color: mat-color($foreground, text-muted);
+    color: mat.get-color-from-palette($foreground, text-muted);
   }
   
   .range-label {
-    color: mat-color($background, text);
+    color: mat.get-color-from-palette($background, text);
   }
 
   .slider-pane {
-    border-color: mat-color($foreground, modal-borders);
+    border-color: mat.get-color-from-palette($foreground, modal-borders);
   }
 
   .ccf-slider {
-    background-color: mat-color($background, modal);
+    background-color: mat.get-color-from-palette($background, modal);
 
     .slider {
       .ng5-slider-bar,
       .ng5-slider-selection,
       .ng5-slider-pointer {
-        background-color: mat-color($background, mat-slider-primary);
+        background-color: mat.get-color-from-palette($background, mat-slider-primary);
       }
 
       .ng5-slider-pointer {
-        border-color: mat-color($background, modal);
+        border-color: mat.get-color-from-palette($background, modal);
       }
     }
 
@@ -50,19 +51,19 @@
       &.min,
       &.max {
         input {
-          color: mat-color($primary, text);
+          color: mat.get-color-from-palette($primary, text);
         }
       }
 
       &.ceil,
       &.floor {
-        color: mat-color($foreground, text-muted);
+        color: mat.get-color-from-palette($foreground, text-muted);
       }
     }
   }
 
   .input-high,
   .input-low {
-    background-color: mat-color($foreground, input-bg);
+    background-color: mat.get-color-from-palette($foreground, input-bg);
   }
 }

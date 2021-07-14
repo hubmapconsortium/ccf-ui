@@ -1,8 +1,9 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 @use 'common/utility';
 
 
-$primary-colors: utility.add-colors($mat-gray, (
+$primary-colors: utility.add-colors(mat.$gray-palette, (
   "white": white,
   "black": black,
   light-header: #444A65,
@@ -16,12 +17,12 @@ $primary-colors: utility.add-colors($mat-gray, (
   )
 ));
 
-$primary: mat-palette($primary-colors, $text: 900);
-$accent: mat-palette($mat-blue, 700);
-$warn: mat-palette($mat-red);
+$primary: mat.define-palette($primary-colors, $text: 900);
+$accent: mat.define-palette(mat.$blue-palette, 700);
+$warn: mat.define-palette(mat.$red-palette);
 
-$foreground: map-merge($mat-light-theme-foreground, (
-  active-icon: map-get($mat-blue, 700),
+$foreground: map-merge(mat.$light-theme-foreground-palette, (
+  active-icon: map-get(mat.$blue-palette, 700),
   logo: map-get($primary-colors, 'white'),
   header-border: map-get($primary-colors, 800), //#424242
   modal-borders: map-get($primary-colors, 'black'),
@@ -60,7 +61,7 @@ $foreground: map-merge($mat-light-theme-foreground, (
   z-axis: #2979ff
 ));
 
-$background: map-merge($mat-light-theme-background, (
+$background: map-merge(mat.$light-theme-background-palette, (
   background: map-get($primary-colors, 'white'),
   hover-background: map-get($primary-colors, 300), // #E0E0E0
   stage-background: map-get($primary-colors, 'black'),
