@@ -122,11 +122,11 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   sceneNodeHovered(node: SpatialSceneNode): void {
-    this.listResults.highlightListResult(node['@id']);
+    this.listResults.highlightNode(node['@id']);
   }
 
   sceneNodeUnhover(): void {
-    this.listResults.unhighlightListResult();
+    this.listResults.unHighlightNode();
   }
 
   /**
@@ -162,7 +162,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       this.selectedReferenceOrgans$,
       this.colorAssignments.colorAssignments$,
       this.dataService.getReferenceOrgans(),
-      this.listResults.highlightedNode$
+      this.listResults.highlightedNodeId$
     ]).pipe(
       map(([scene, selectedOrgans, colors, refOrganData, highlightedNodeId]) => {
         const activeOrgans = new Set(selectedOrgans.map(o => o.id));
@@ -172,7 +172,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
           ||
           (node.reference_organ && refOrgans.has(node.reference_organ))
         ).map(node => node.entityId && (colors.hasOwnProperty(node['@id']) || highlightedNodeId === node['@id']) ?
-          ({ ...node, color: highlightedNodeId === node['@id'] ? [30, 136, 229, 255] : colors[node['@id']].rgba } as SpatialSceneNode) : node
+          ({ ...node,
+            color: highlightedNodeId === node['@id'] ? [30, 136, 229, 255] : colors[node['@id']].rgba } as SpatialSceneNode) : node
         );
       }),
       tap(scene => this.setScene(scene))

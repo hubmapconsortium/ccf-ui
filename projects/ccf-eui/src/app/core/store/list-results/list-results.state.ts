@@ -14,8 +14,7 @@ import { DataState } from '../data/data.state';
 
 export interface ListResultsStateModel {
   listResults: ListResult[];
-  highlightedResult?: string;
-  highlightedNode?: string;
+  highlightedNodeId?: string;
 }
 
 @StateRepository()
@@ -29,8 +28,7 @@ export interface ListResultsStateModel {
 export class ListResultsState extends NgxsImmutableDataRepository<ListResultsStateModel> implements NgxsOnInit {
   /** Scene to display in the 3d Scene */
   readonly listResults$ = this.state$.pipe(pluck('listResults'), distinctUntilChanged());
-  readonly highlightedResult$ = this.state$.pipe(pluck('highlightedResult'), distinctUntilChanged());
-  readonly highlightedNode$ = this.state$.pipe(pluck('highlightedNode'), distinctUntilChanged());
+  readonly highlightedNodeId$ = this.state$.pipe(pluck('highlightedNodeId'), distinctUntilChanged());
 
 
   /** The data state */
@@ -69,24 +67,12 @@ export class ListResultsState extends NgxsImmutableDataRepository<ListResultsSta
     this.colorAssignments.unassignColor(result.tissueBlock.spatialEntityId);
   }
 
-  highlightListResult(@Payload('key') key: string) {
-    this.ctx.patchState({
-      highlightedResult: key
-    });
-  }
-
-  unhighlightListResult() {
-    this.ctx.patchState({
-      highlightedResult: undefined
-    });
-  }
-
   highlightNode(id: string): void {
-    this.ctx.patchState({highlightedNode: id});
+    this.ctx.patchState({highlightedNodeId: id});
   }
 
   unHighlightNode(): void {
-    this.ctx.patchState({highlightedNode: undefined});
+    this.ctx.patchState({highlightedNodeId: undefined});
   }
 
   /**

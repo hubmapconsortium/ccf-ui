@@ -56,7 +56,7 @@
         (listResultSelected)="listResultsState.selectListResult($event)"
         (listResultDeselected)="listResultsState.deselectListResult($event)"
         (linkClicked)="openiFrameViewer($event)"
-        [highlighted]="listResultsState.highlightedResult$ | async"
+        [highlighted]="listResultsState.highlightedNodeId$ | async"
         (itemHovered)="listResultsState.highlightNode($event)"
         (itemUnhovered)="listResultsState.unHighlightNode()">
       </ccf-results-browser>
