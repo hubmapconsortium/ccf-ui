@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,16 +8,16 @@
 
   .ccf-visibility-menu {
     .icon {
-      color: mat-color($foreground, main);
+      color: mat.get-color-from-palette($foreground, main);
 
       &:hover {
-        background: mat-color($foreground, icons-hover);
+        background: mat.get-color-from-palette($foreground, icons-hover);
       }
     }
 
     .opacity-icon {
       &.fade {
-        color: mat-color($foreground, icons-disabled);
+        color: mat.get-color-from-palette($foreground, icons-disabled);
       }
     }
   }

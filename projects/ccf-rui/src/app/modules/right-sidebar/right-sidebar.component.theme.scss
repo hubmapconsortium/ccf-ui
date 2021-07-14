@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,33 +8,33 @@
   $background: map-get($theme, background);
 
   .ccf-right-sidebar {
-    background-color: mat-color($background, sidebar-background);
-    scrollbar-color: mat-color($foreground, scrollbar-thumb) mat-color($background, sidebar-background);
+    background-color: mat.get-color-from-palette($background, sidebar-background);
+    scrollbar-color: mat.get-color-from-palette($foreground, scrollbar-thumb) mat.get-color-from-palette($background, sidebar-background);
 
     &::-webkit-scrollbar-track {
-      background-color: mat-color($background, sidebar-background)
+      background-color: mat.get-color-from-palette($background, sidebar-background)
     }
 
     mat-divider {
-      border-color: mat-color($foreground, mat-divider);
+      border-color: mat.get-color-from-palette($foreground, mat-divider);
     }
 
     .tags-container {
       .search .icon.add {
-        color: mat-color($foreground, contrast-icon);
+        color: mat.get-color-from-palette($foreground, contrast-icon);
       }
 
       .tag-list-placeholder {
-        color: mat-color($foreground, icons-disabled);
+        color: mat.get-color-from-palette($foreground, icons-disabled);
       }
 
       .legend {
         .dot.assigned {
-          background-color: mat-color($primary, text);
+          background-color: mat.get-color-from-palette($primary, text);
         }
 
         .dot.added {
-          background-color: mat-color($foreground, legend-contrast);
+          background-color: mat.get-color-from-palette($foreground, legend-contrast);
         }
       }
     }

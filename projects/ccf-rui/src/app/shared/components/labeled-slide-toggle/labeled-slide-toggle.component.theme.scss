@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -6,18 +7,18 @@
 
   .ccf-labeled-slide-toggle {
     .mat-slide-toggle-bar {
-      background-color: mat-color($foreground, donor-sex-bg) !important;
+      background-color: mat.get-color-from-palette($foreground, donor-sex-bg) !important;
     }
     .mat-slide-toggle-thumb {
-      background-color: mat-color($foreground, donor-sex-toggle-nob) !important;
+      background-color: mat.get-color-from-palette($foreground, donor-sex-toggle-nob) !important;
     }
 
     .slide-label {
-      color: mat-color($foreground, inactive-sex);
+      color: mat.get-color-from-palette($foreground, inactive-sex);
     }
 
     .highlighted {
-      color: mat-color($foreground, active-sex);
+      color: mat.get-color-from-palette($foreground, active-sex);
     }
   }
 }

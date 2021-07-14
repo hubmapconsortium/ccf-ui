@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -8,34 +9,34 @@
   .ccf-stage-nav {
     .input-group {
       .nav-input:hover {
-        color: mat-color($accent);
+        color: mat.get-color-from-palette($accent);
       }
     }
 
     mat-radio-button {
-      color: mat-color($foreground, contrast-text);
+      color: mat.get-color-from-palette($foreground, contrast-text);
 
       &.mat-radio-checked {
-        color: mat-color($accent);
+        color: mat.get-color-from-palette($accent);
       }
     }
 
     .slide-label {
-      color: mat-color($foreground, contrast-text);
+      color: mat.get-color-from-palette($foreground, contrast-text);
 
       &.highlighted {
-        color: mat-color($accent);
+        color: mat.get-color-from-palette($accent);
       }
     }
 
     .dropdown-label {
       &.dropdown {
-        color: mat-color($foreground, contrast-text);
+        color: mat.get-color-from-palette($foreground, contrast-text);
       }
     }
 
     .dropdown-label:hover {
-      color: mat-color($accent);
+      color: mat.get-color-from-palette($accent);
     }
   
     .stage-options {
@@ -43,20 +44,20 @@
         background-color: white;
   
         mat-divider {
-          color: mat-color($foreground, icon);
+          color: mat.get-color-from-palette($foreground, icon);
         }
       }
     }
 
     .mat-slide-toggle-bar {
-      background-color: mat-color($accent, 900) !important;
+      background-color: mat.get-color-from-palette($accent, 900) !important;
     }
     .mat-slide-toggle-thumb {
-      background-color: mat-color($accent) !important;
+      background-color: mat.get-color-from-palette($accent) !important;
     }
     
     .highlighted {
-      color: mat-color($accent) !important;
+      color: mat.get-color-from-palette($accent) !important;
     }
   }
 }

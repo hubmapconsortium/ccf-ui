@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -9,28 +10,28 @@
   .ccf-ontology-tree {
     .node {
       .toggle {
-        background: mat-color($background, background);
-        color: mat-color($foreground, text);
+        background: mat.get-color-from-palette($background, background);
+        color: mat.get-color-from-palette($foreground, text);
       }
 
       .text {
-        color: mat-color($primary, text);
+        color: mat.get-color-from-palette($primary, text);
 
         &:hover {
-          color: mat-color($accent);
+          color: mat.get-color-from-palette($accent);
         }
       }
 
       .selected {
-        color: mat-color($accent);
+        color: mat.get-color-from-palette($accent);
       }
 
       .filtered-out {
-        color: mat-color($primary, text);
+        color: mat.get-color-from-palette($primary, text);
       }
 
       .unavailable {
-        color: mat-color($foreground, disabled-text);
+        color: mat.get-color-from-palette($foreground, disabled-text);
       }
     }
   }

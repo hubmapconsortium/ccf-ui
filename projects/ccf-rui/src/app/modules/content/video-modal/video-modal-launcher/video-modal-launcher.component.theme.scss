@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,14 +8,14 @@
 
   .ccf-video-modal-launcher {
     .description {
-      color: mat-color($foreground, contrast-text);
+      color: mat.get-color-from-palette($foreground, contrast-text);
     }
 
     .play-icon-button {
-        color: mat-color($foreground, contrast-text);
+        color: mat.get-color-from-palette($foreground, contrast-text);
 
         &:hover {
-            color: mat-color($background, drawer-hover);
+            color: mat.get-color-from-palette($background, drawer-hover);
         }
     }
   }

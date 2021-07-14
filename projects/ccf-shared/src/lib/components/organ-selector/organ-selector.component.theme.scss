@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,48 +8,48 @@
 
   .ccf-organ-selector {
     .container {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
 
       &.error {
-        border-color: mat-color($foreground, slider-red);;
+        border-color: mat.get-color-from-palette($foreground, slider-red);;
       }
 
       .carousel-left-icon,
       .carousel-right-icon {
-        color: mat-color($foreground, carousel-arrow);
+        color: mat.get-color-from-palette($foreground, carousel-arrow);
 
         &:hover {
-          color: mat-color($foreground, active-icon);
+          color: mat.get-color-from-palette($foreground, active-icon);
         }
 
         &.disabled {
-          color: mat-color($foreground, disabled);
+          color: mat.get-color-from-palette($foreground, disabled);
         }
       }
     }
   }
 
   .carousel-item {
-    color: mat-color($foreground, organ-off);
+    color: mat.get-color-from-palette($foreground, organ-off);
     
     &:hover {
-      background-color: mat-color($background, hover-background);
+      background-color: mat.get-color-from-palette($background, hover-background);
     }
 
     &.selected {
-      color: mat-color($foreground, main);
+      color: mat.get-color-from-palette($foreground, main);
     }
 
     &.disabled {
-      color: mat-color($foreground, disabled);
+      color: mat.get-color-from-palette($foreground, disabled);
     }
 
     .organ-number {
-      color: mat-color($foreground, organ-numbers);
+      color: mat.get-color-from-palette($foreground, organ-numbers);
     }
 
     .carousel-text {
-      color: mat-color($foreground, carousel-text);
+      color: mat.get-color-from-palette($foreground, carousel-text);
     }
   }
 }

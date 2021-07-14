@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -6,33 +7,33 @@
   $background: map-get($theme, background);
 
   .ccf-left-sidebar {
-    background-color: mat-color($background, sidebar-background);
-    scrollbar-color: mat-color($foreground, scrollbar-thumb) mat-color($background, sidebar-background);
+    background-color: mat.get-color-from-palette($background, sidebar-background);
+    scrollbar-color: mat.get-color-from-palette($foreground, scrollbar-thumb) mat.get-color-from-palette($background, sidebar-background);
 
     &::-webkit-scrollbar-track {
-      background-color: mat-color($background, sidebar-background);
+      background-color: mat.get-color-from-palette($background, sidebar-background);
     }
 
     mat-divider {
-      border-color: mat-color($foreground, sidebar-dividers);
+      border-color: mat.get-color-from-palette($foreground, sidebar-dividers);
     }
 
     .mat-expansion-indicator {
-      color: mat-color($foreground, icon);
+      color: mat.get-color-from-palette($foreground, icon);
     }
 
     .extraction-site-tooltip {
-      border-color: mat-color($foreground, contrast-icon);
-      background-color: mat-color($foreground, text);
-      color: mat-color($foreground, logo);
+      border-color: mat.get-color-from-palette($foreground, contrast-icon);
+      background-color: mat.get-color-from-palette($foreground, text);
+      color: mat.get-color-from-palette($foreground, logo);
     }
 
     .mat-divider {
-      border-top-color: mat-color($foreground, mat-divider);
+      border-top-color: mat.get-color-from-palette($foreground, mat-divider);
     }
 
     .expansion-placeholder {
-      color: mat-color($foreground, icons-disabled);
+      color: mat.get-color-from-palette($foreground, icons-disabled);
     }
   }
 }

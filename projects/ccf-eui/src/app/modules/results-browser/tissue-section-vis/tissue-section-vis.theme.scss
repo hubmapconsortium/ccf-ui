@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -7,18 +8,18 @@
 
 
   .ccf-tissue-section-vis {
-    color: mat-color($foreground, z-axis);
+    color: mat.get-color-from-palette($foreground, z-axis);
 
     .container {
-      border-left: 1px solid mat-color($foreground, icons-disabled);
-      border-right: 1px solid mat-color($foreground, icons-disabled);
+      border-left: 1px solid mat.get-color-from-palette($foreground, icons-disabled);
+      border-right: 1px solid mat.get-color-from-palette($foreground, icons-disabled);
 
       .line-tick-visible {
-        background-color: mat-color($foreground, y-axis);
+        background-color: mat.get-color-from-palette($foreground, y-axis);
       }
 
       .x-axis {
-        background-color: mat-color($foreground, z-axis);
+        background-color: mat.get-color-from-palette($foreground, z-axis);
       }
     }
   }

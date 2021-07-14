@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
@@ -12,7 +13,7 @@
   }
 
   .close-button {
-    color: mat-color($foreground, contrast-icon);
-    background-color: mat-color($background, modal);
+    color: mat.get-color-from-palette($foreground, contrast-icon);
+    background-color: mat.get-color-from-palette($background, modal);
   }
 }

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @use '~@angular/material/theming' as *;
 
 @mixin slider-theme($cls, $color, $lightColor) {
@@ -32,15 +33,15 @@
 
   .ccf-rotation-slider {
     .header .reset {
-      color: mat-color($foreground, main);
+      color: mat.get-color-from-palette($foreground, main);
 
       &:hover {
-        background: mat-color($foreground, icons-hover);
+        background: mat.get-color-from-palette($foreground, icons-hover);
       }
     }
 
-    @include slider-theme('.red', mat-color($foreground, slider-red), mat-color($foreground, slider-red-light));
-    @include slider-theme('.green', mat-color($foreground, slider-green), mat-color($foreground, slider-green-light));
-    @include slider-theme('.blue', mat-color($foreground, slider-blue), mat-color($foreground, slider-blue-light));
+    @include slider-theme('.red', mat.get-color-from-palette($foreground, slider-red), mat.get-color-from-palette($foreground, slider-red-light));
+    @include slider-theme('.green', mat.get-color-from-palette($foreground, slider-green), mat.get-color-from-palette($foreground, slider-green-light));
+    @include slider-theme('.blue', mat.get-color-from-palette($foreground, slider-blue), mat.get-color-from-palette($foreground, slider-blue-light));
   }
 }

@@ -29,6 +29,12 @@ function getGlobalThis(): typeof globalThis {
   }
 }
 
+// Create a minimally working process object
+// so readable-stream will work
+globalThis.process = {} as unknown as NodeJS.Process;
+globalThis.process.nextTick = (cb, ...args) => queueMicrotask(() => cb(...args));
+
+
 describe('triple-store-utils', () => {
   describe('streamToArray(stream)', () => {
     let stream: jasmine.SpyObj<EventEmitter>;
