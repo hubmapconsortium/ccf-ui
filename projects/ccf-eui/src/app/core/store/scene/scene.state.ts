@@ -27,6 +27,7 @@ export interface SceneStateModel {
       opacity: boolean;
     };
   };
+  highlightedId?: string;
 }
 
 /**
@@ -51,6 +52,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   readonly selectedReferenceOrgans$ = this.state$.pipe(pluck('selectedReferenceOrgans'), distinctUntilChanged());
   /** Scene to display in the 3d Scene */
   readonly scene$ = this.state$.pipe(pluck('scene'), distinctUntilChanged());
+
+  readonly highlightedId$ = this.state$.pipe(pluck('highlightedId'), distinctUntilChanged());
 
   /** The data state */
   private dataState: DataState;
@@ -159,7 +162,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       this.selectedReferenceOrgans$,
       this.colorAssignments.colorAssignments$,
       this.dataService.getReferenceOrgans(),
-      this.listResults.highlightedResult$
+      this.listResults.highlightedNode$
     ]).pipe(
       map(([scene, selectedOrgans, colors, refOrganData, highlightedNodeId]) => {
         const activeOrgans = new Set(selectedOrgans.map(o => o.id));

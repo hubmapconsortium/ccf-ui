@@ -50,6 +50,10 @@ export class ResultsBrowserComponent {
    */
   @Output() listResultDeselected = new EventEmitter<Immutable<ListResult>>();
 
+  @Output() itemHovered = new EventEmitter<string>();
+
+  @Output() itemUnhovered = new EventEmitter();
+
   /**
    * Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
    * Used to determine whether or not to render the gradient at the bottom.
@@ -99,5 +103,13 @@ export class ResultsBrowserComponent {
     const { clientHeight, scrollHeight, scrollTop } = event.target as Element;
     const diff = scrollHeight - scrollTop - clientHeight;
     this.atScrollBottom = diff < 64;
+  }
+
+  handleHover(id: string): void {
+    this.itemHovered.emit(id);
+  }
+
+  handleUnhover(): void {
+    this.itemUnhovered.emit();
   }
 }

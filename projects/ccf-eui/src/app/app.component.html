@@ -56,7 +56,9 @@
         (listResultSelected)="listResultsState.selectListResult($event)"
         (listResultDeselected)="listResultsState.deselectListResult($event)"
         (linkClicked)="openiFrameViewer($event)"
-        [highlighted]="listResultsState.highlightedResult$ | async">
+        [highlighted]="listResultsState.highlightedResult$ | async"
+        (itemHovered)="listResultsState.highlightNode($event)"
+        (itemUnhovered)="listResultsState.unHighlightNode()">
       </ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>

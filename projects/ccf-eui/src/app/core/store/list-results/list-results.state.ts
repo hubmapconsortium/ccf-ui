@@ -15,6 +15,7 @@ import { DataState } from '../data/data.state';
 export interface ListResultsStateModel {
   listResults: ListResult[];
   highlightedResult?: string;
+  highlightedNode?: string;
 }
 
 @StateRepository()
@@ -29,6 +30,8 @@ export class ListResultsState extends NgxsImmutableDataRepository<ListResultsSta
   /** Scene to display in the 3d Scene */
   readonly listResults$ = this.state$.pipe(pluck('listResults'), distinctUntilChanged());
   readonly highlightedResult$ = this.state$.pipe(pluck('highlightedResult'), distinctUntilChanged());
+  readonly highlightedNode$ = this.state$.pipe(pluck('highlightedNode'), distinctUntilChanged());
+
 
   /** The data state */
   private dataState: DataState;
@@ -76,6 +79,14 @@ export class ListResultsState extends NgxsImmutableDataRepository<ListResultsSta
     this.ctx.patchState({
       highlightedResult: undefined
     });
+  }
+
+  highlightNode(id: string): void {
+    this.ctx.patchState({highlightedNode: id});
+  }
+
+  unHighlightNode(): void {
+    this.ctx.patchState({highlightedNode: undefined});
   }
 
   /**
