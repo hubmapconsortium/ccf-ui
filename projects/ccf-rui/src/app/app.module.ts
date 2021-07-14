@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { NgModule, DoBootstrap, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -51,6 +52,16 @@ import { environment } from '../environments/environment';
       }
     }
   ],
-  bootstrap: [AppComponent]
+  entryComponents: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  constructor(private injector: Injector) { }
+
+  ngDoBootstrap() {
+    const appElement = createCustomElement(AppComponent, {
+      injector: this.injector
+    });
+
+    customElements.define('ccf-rui', appElement);
+  }
+}

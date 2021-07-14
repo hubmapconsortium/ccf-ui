@@ -32,8 +32,8 @@ jobs:
           npm run build:ccf-eui:wc
       - name: Build RUI
         run: |
-          npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
-          cp -r dist/ccf-rui dist/ccf-ui/rui
+          npm run build:ccf-rui -- --base-href=/rui/
+          npm run build:ccf-rui:wc
 
       - uses: jsmrcaga/action-netlify-deploy@master
         with:
