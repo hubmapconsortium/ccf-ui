@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable no-underscore-dangle */
-import { AmbientLight, Deck, LightingEffect, OrbitView } from '@deck.gl/core';
+import { AmbientLight, Deck, LightingEffect, OrbitView, OrthographicView } from '@deck.gl/core';
 import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
 import bind from 'bind-decorator';
@@ -18,6 +18,7 @@ interface BodyUIViewStateProps extends ViewStateProps {
   zoom: number;
   rotationOrbit: number;
   rotationX: number;
+  camera: string;
 }
 
 export interface BodyUIProps {
@@ -32,6 +33,7 @@ export interface BodyUIProps {
   maxRotationX: number;
   zoom: number;
   legacyLighting?: boolean;
+  camera: string;
 }
 
 export interface PickInfo<D> {
@@ -78,7 +80,7 @@ export class BodyUI {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const props: any = {
       ...deckProps,
-      views: [ new OrbitView({}) ],
+      views: [ deckProps.camera === 'orthographic' ? new OrthographicView({}) : new OrbitView({}) ],
       controller: deckProps.interactive !== undefined ? deckProps.interactive : true,
       layers: [ this.bodyUILayer ],
       onHover: this._onHover,
@@ -110,7 +112,8 @@ export class BodyUI {
         target: deckProps.target || [0.5, 0.5, 0],
         rotationX: 0,
         rotationOrbit: deckProps.rotation || 0,
-        zoom: deckProps.zoom || 9.5
+        zoom: deckProps.zoom || 9.5,
+        camera: deckProps.camera
       } as BodyUIViewStateProps
     });
     if (deckProps.rotation) {
@@ -223,6 +226,15 @@ export class BodyUI {
   setInteractive(value: boolean): void {
     this.deck.setProps({
       controller: value
+    });
+  }
+
+  setCamera(value: string): void {
+    this.deck.setProps({
+      viewState: {
+        ...this.deck.props.viewState,
+        camera: value
+      } as BodyUIViewStateProps
     });
   }
 
