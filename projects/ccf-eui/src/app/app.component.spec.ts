@@ -59,6 +59,7 @@ describe('AppComponent', () => {
         openFromComponent: (): MatSnackBarRef<unknown> => ({} as unknown as MatSnackBarRef<unknown>)
       })
       .mock(ThemingService, {
+        initialize: () => undefined,
         getTheme: () => 'theme'
       });
   });
