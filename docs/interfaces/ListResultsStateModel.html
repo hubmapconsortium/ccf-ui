@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>ListResultsStateModel</li>
+  <li
+  >
+  ListResultsStateModel</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -66,6 +69,7 @@
 
 
 
+
         <section>
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
@@ -79,7 +83,17 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#listResults">listResults</a>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#highlightedNodeId" 
+>
+                                            highlightedNodeId
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#listResults" 
+>
+                                            listResults
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -96,8 +110,50 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="highlightedNodeId"></a>
+                                        <span class="name "><b>highlightedNodeId</b>
+                                            <a href="#highlightedNodeId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>highlightedNodeId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="listResults"></a>
-                                        <span class="name"><b>listResults</b><a href="#listResults"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>listResults</b>
+                                            <a href="#listResults">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,6 +198,7 @@ import { DataState } from &#x27;../data/data.state&#x27;;
 
 export interface ListResultsStateModel {
   listResults: ListResult[];
+  highlightedNodeId?: string;
 }
 
 @StateRepository()
@@ -155,6 +212,8 @@ export interface ListResultsStateModel {
 export class ListResultsState extends NgxsImmutableDataRepository&lt;ListResultsStateModel&gt; implements NgxsOnInit {
   /** Scene to display in the 3d Scene */
   readonly listResults$ &#x3D; this.state$.pipe(pluck(&#x27;listResults&#x27;), distinctUntilChanged());
+  readonly highlightedNodeId$ &#x3D; this.state$.pipe(pluck(&#x27;highlightedNodeId&#x27;), distinctUntilChanged());
+
 
   /** The data state */
   private dataState: DataState;
@@ -190,6 +249,14 @@ export class ListResultsState extends NgxsImmutableDataRepository&lt;ListResults
 
   deselectListResult(result: ListResult) {
     this.colorAssignments.unassignColor(result.tissueBlock.spatialEntityId);
+  }
+
+  highlightNode(id: string): void {
+    this.ctx.patchState({highlightedNodeId: id});
+  }
+
+  unHighlightNode(): void {
+    this.ctx.patchState({highlightedNodeId: undefined});
   }
 
   /**
@@ -263,9 +330,9 @@ export class ListResultsState extends NgxsImmutableDataRepository&lt;ListResults
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

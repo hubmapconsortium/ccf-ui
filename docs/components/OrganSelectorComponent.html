@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -35,7 +36,9 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>OrganSelectorComponent</li>
+  <li
+  >
+  OrganSelectorComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,6 +67,7 @@
     <code>projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts</code>
 </p>
 
+
     <p class="comment">
         <h3>Description</h3>
     </p>
@@ -78,6 +82,7 @@
     </p>
     <p class="comment">
                     <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
                     <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
@@ -139,30 +144,37 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#_occurenceData">_occurenceData</a>
+                                <a href="#_occurenceData" >_occurenceData</a>
                             </li>
                             <li>
-                                <a href="#itemContainer">itemContainer</a>
+                                <a href="#carouselContainer" >carouselContainer</a>
                             </li>
                             <li>
-                                <a href="#itemList">itemList</a>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#clsName" >clsName</a>
                             </li>
                             <li>
-                                <a href="#onLeft">onLeft</a>
+                                <a href="#itemContainer" >itemContainer</a>
                             </li>
                             <li>
-                                <a href="#onRight">onRight</a>
+                                <a href="#itemList" >itemList</a>
+                            </li>
+                            <li>
+                                <a href="#onLeft" >onLeft</a>
+                            </li>
+                            <li>
+                                <a href="#onRight" >onRight</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#sensor">sensor</a>
+                                <a href="#sensor" >sensor</a>
                             </li>
                             <li>
-                                <a href="#step">step</a>
+                                <a href="#step" >step</a>
                             </li>
                             <li>
                                     <span class="modifier">Optional</span>
-                                <a href="#timeoutHandler">timeoutHandler</a>
+                                <a href="#timeoutHandler" >timeoutHandler</a>
                             </li>
                         </ul>
                     </td>
@@ -177,31 +189,37 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#isSelected">isSelected</a>
+                                <a href="#isSelected" >isSelected</a>
                             </li>
                             <li>
-                                <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
                             </li>
                             <li>
-                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
                             </li>
                             <li>
-                                <a href="#scroll">scroll</a>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
-                                <a href="#selectOrgan">selectOrgan</a>
+                                <a href="#scroll" >scroll</a>
                             </li>
                             <li>
-                                <a href="#set">set</a>
+                                <a href="#selectOrgan" >selectOrgan</a>
                             </li>
                             <li>
-                                <a href="#setLeftRight">setLeftRight</a>
+                                <a href="#set" >set</a>
                             </li>
                             <li>
-                                <a href="#shift">shift</a>
+                                <a href="#setLeftRight" >setLeftRight</a>
                             </li>
                             <li>
-                                <a href="#stopScroll">stopScroll</a>
+                                <a href="#setWidth" >setWidth</a>
+                            </li>
+                            <li>
+                                <a href="#shift" >shift</a>
+                            </li>
+                            <li>
+                                <a href="#stopScroll" >stopScroll</a>
                             </li>
                         </ul>
                     </td>
@@ -216,19 +234,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#displayErrors">displayErrors</a>
+                                <a href="#displayErrors" >displayErrors</a>
                             </li>
                             <li>
-                                <a href="#multiselect">multiselect</a>
+                                <a href="#multiselect" >multiselect</a>
                             </li>
                             <li>
-                                <a href="#occurenceData">occurenceData</a>
+                                <a href="#occurenceData" >occurenceData</a>
                             </li>
                             <li>
-                                <a href="#organList">organList</a>
+                                <a href="#organList" >organList</a>
                             </li>
                             <li>
-                                <a href="#selectedOrgans">selectedOrgans</a>
+                                <a href="#selectedOrgans" >selectedOrgans</a>
                             </li>
                         </ul>
                     </td>
@@ -243,7 +261,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#organsChanged">organsChanged</a>
+                                <a href="#organsChanged" >organsChanged</a>
                             </li>
                         </ul>
                     </td>
@@ -258,7 +276,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#class">class</a>
+                                <a href="#class" >class</a>
                             </li>
                         </ul>
                     </td>
@@ -274,10 +292,10 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                    <a href="#occurenceData">occurenceData</a>
+                                    <a href="#occurenceData" >occurenceData</a>
                                 </li>
                                 <li>
-                                    <a href="#error">error</a>
+                                    <a href="#error" >error</a>
                                 </li>
                             </ul>
                         </td>
@@ -299,12 +317,18 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:104</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -319,12 +343,18 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:102</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -345,7 +375,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:146</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:148</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -371,7 +401,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:107</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:109</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -403,7 +433,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:114</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -433,7 +463,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:117</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:119</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -446,38 +476,43 @@
         </table>
 </section>
     <section>
-    <h3>HostBindings</h3>        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="class"></a>
-                        <span class="name">
-                            <b>
-                            class</b>
-                            <a href="#class"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#ccf" target="_self" >&quot;ccf-organ-selector&quot;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-organ-selector&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;ccf-organ-selector&#x27;</code>
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:93</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:92</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>HTML class </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 </section>
 
 
@@ -492,24 +527,22 @@
                 <td class="col-md-4">
                     <a name="isSelected"></a>
                     <span class="name">
-                        <b>
-                            isSelected
-                        </b>
+                        <span ><b>isSelected</b></span>
                         <a href="#isSelected"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>isSelected(organ: <a href="../interfaces/OrganInfo.html">OrganInfo</a>)</code>
+<code>isSelected(organ: <a href="../interfaces/OrganInfo.html" target="_self">OrganInfo</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="259"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:259</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="258"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:258</a></div>
                 </td>
             </tr>
 
@@ -565,9 +598,7 @@
                 <td class="col-md-4">
                     <a name="ngAfterViewInit"></a>
                     <span class="name">
-                        <b>
-                            ngAfterViewInit
-                        </b>
+                        <span ><b>ngAfterViewInit</b></span>
                         <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -581,8 +612,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="166"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:166</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:163</a></div>
                 </td>
             </tr>
 
@@ -604,11 +635,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:170</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="ngOnDestroy"></a>
                     <span class="name">
-                        <b>
-                            ngOnDestroy
-                        </b>
+                        <span ><b>ngOnDestroy</b></span>
                         <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -622,8 +719,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="176"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:176</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="179"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:179</a></div>
                 </td>
             </tr>
 
@@ -647,9 +744,7 @@
                 <td class="col-md-4">
                     <a name="scroll"></a>
                     <span class="name">
-                        <b>
-                            scroll
-                        </b>
+                        <span ><b>scroll</b></span>
                         <a href="#scroll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -663,8 +758,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="218"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:218</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="217"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:217</a></div>
                 </td>
             </tr>
 
@@ -724,24 +819,22 @@
                 <td class="col-md-4">
                     <a name="selectOrgan"></a>
                     <span class="name">
-                        <b>
-                            selectOrgan
-                        </b>
+                        <span ><b>selectOrgan</b></span>
                         <a href="#selectOrgan"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>selectOrgan(organ: <a href="../interfaces/OrganInfo.html">OrganInfo</a>)</code>
+<code>selectOrgan(organ: <a href="../interfaces/OrganInfo.html" target="_self">OrganInfo</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="240"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:240</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="239"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:239</a></div>
                 </td>
             </tr>
 
@@ -801,9 +894,7 @@
                 <td class="col-md-4">
                     <a name="set"></a>
                     <span class="name">
-                        <b>
-                            set
-                        </b>
+                        <span ><b>set</b></span>
                         <a href="#set"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -817,8 +908,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="266"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:266</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="265"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:265</a></div>
                 </td>
             </tr>
 
@@ -842,9 +933,7 @@
                 <td class="col-md-4">
                     <a name="setLeftRight"></a>
                     <span class="name">
-                        <b>
-                            setLeftRight
-                        </b>
+                        <span ><b>setLeftRight</b></span>
                         <a href="#setLeftRight"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -858,14 +947,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="278"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:278</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="291"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:291</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Sets onLeft and onRight according to where the item list is scrolled</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -910,11 +1001,48 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="setWidth"></a>
+                    <span class="name">
+                        <span ><b>setWidth</b></span>
+                        <a href="#setWidth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setWidth()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="282"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:282</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Responsively sets width of the item container</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="shift"></a>
                     <span class="name">
-                        <b>
-                            shift
-                        </b>
+                        <span ><b>shift</b></span>
                         <a href="#shift"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -928,8 +1056,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="202"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:202</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="201"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:201</a></div>
                 </td>
             </tr>
 
@@ -990,9 +1118,7 @@ Prevents scrolling past the beginning or end of the carousel.</p>
                 <td class="col-md-4">
                     <a name="stopScroll"></a>
                     <span class="name">
-                        <b>
-                            stopScroll
-                        </b>
+                        <span ><b>stopScroll</b></span>
                         <a href="#stopScroll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -1006,8 +1132,8 @@ Prevents scrolling past the beginning or end of the carousel.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="227"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:227</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:226</a></div>
                 </td>
             </tr>
 
@@ -1028,279 +1154,347 @@ Prevents scrolling past the beginning or end of the carousel.</p>
 </section>
     <section>
     
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_occurenceData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_occurenceData</b></span>
+                        <a href="#_occurenceData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="_occurenceData"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            _occurenceData</b>
-                            <a href="#_occurenceData"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>    <code>Record&lt;string | number&gt;</code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>Record&lt;string | number&gt;</code>
-
+                                <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:158</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:161</a></div>
-                            </td>
-                        </tr>
 
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="carouselContainer"></a>
+                    <span class="name">
+                        <span ><b>carouselContainer</b></span>
+                        <a href="#carouselContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="itemContainer"></a>
-                        <span class="name">
-                            <b>
-                            itemContainer</b>
-                            <a href="#itemContainer"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;carouselContainer&#x27;, {static: true})<br />
+                        </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
-
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:95</a></div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ViewChild(&#x27;itemcontainer&#x27;, {static: true})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:95</a></div>
-                            </td>
-                        </tr>
 
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clsName"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>clsName</b></span>
+                        <a href="#clsName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="itemList"></a>
-                        <span class="name">
-                            <b>
-                            itemList</b>
-                            <a href="#itemList"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-organ-selector&#x27;</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @HostBinding(&#x27;class&#x27;)<br />
+                        </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
-
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:93</a></div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ViewChild(&#x27;itemlist&#x27;, {static: true})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:94</a></div>
-                            </td>
-                        </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="onLeft"></a>
-                        <span class="name">
-                            <b>
-                            onLeft</b>
-                            <a href="#onLeft"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>true</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:122</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Determines whether the carousel is at the beginning</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="itemContainer"></a>
+                    <span class="name">
+                        <span ><b>itemContainer</b></span>
+                        <a href="#itemContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="onRight"></a>
-                        <span class="name">
-                            <b>
-                            onRight</b>
-                            <a href="#onRight"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;itemcontainer&#x27;, {static: true})<br />
+                        </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>false</code>
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:97</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:127</a></div>
-                            </td>
-                        </tr>
 
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="itemList"></a>
+                    <span class="name">
+                        <span ><b>itemList</b></span>
+                        <a href="#itemList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Determines whether the carousel is at the end</p>
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;itemlist&#x27;, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onLeft"></a>
+                    <span class="name">
+                        <span ><b>onLeft</b></span>
+                        <a href="#onLeft"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines whether the carousel is at the beginning</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onRight"></a>
+                    <span class="name">
+                        <span ><b>onRight</b></span>
+                        <a href="#onRight"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="sensor"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            sensor</b>
-                            <a href="#sensor"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>ResizeSensor</code>
-
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:129</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:142</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Detects resizing of carousel</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines whether the carousel is at the end</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sensor"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>sensor</b></span>
+                        <a href="#sensor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="step"></a>
-                        <span class="name">
-                            <b>
-                            step</b>
-                            <a href="#step"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>    <code>ResizeSensor</code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:144</a></div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>72</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:137</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Distance the carousel moves in each shift (px)</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Detects resizing of carousel</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="step"></a>
+                    <span class="name">
+                        <span ><b>step</b></span>
+                        <a href="#step"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="timeoutHandler"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Optional</span>
-                            timeoutHandler</b>
-                            <a href="#timeoutHandler"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>72</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>unknown</code>
-
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:139</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:132</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Handles scrolling behavior</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Distance the carousel moves in each shift (px)</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timeoutHandler"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>timeoutHandler</b></span>
+                        <a href="#timeoutHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:134</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles scrolling behavior</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
     <section>
@@ -1323,18 +1517,18 @@ Prevents scrolling past the beginning or end of the carousel.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:156</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:153</a></div>
                                 </td>
                             </tr>
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>occurenceData(value)</code></span>
+                        <span class="accessor"><b>set</b><code>occurenceData(value: Record<string | number>)</code></span>
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:146</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:148</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1346,6 +1540,7 @@ Prevents scrolling past the beginning or end of the carousel.</p>
                                             <thead>
                                                 <tr>
                                                     <td>Name</td>
+                                                        <td>Type</td>
                                                     <td>Optional</td>
                                                 </tr>
                                             </thead>
@@ -1353,6 +1548,9 @@ Prevents scrolling past the beginning or end of the carousel.</p>
                                                     <tr>
                                                             <td>value</td>
                                                     
+                                                            <td>
+                                                                        <code>Record&lt;string | number&gt;</code>
+                                                            </td>
                                                     
                                                         <td>
                                                                 No
@@ -1388,7 +1586,7 @@ Prevents scrolling past the beginning or end of the carousel.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:184</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts:187</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1411,7 +1609,8 @@ used to display or hide error message.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, OnDestroy, Component, EventEmitter, HostBinding, Input, Output, ElementRef, ViewChild } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input,
+  OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from &#x27;@angular/core&#x27;;
 import { ResizeSensor } from &#x27;css-element-queries&#x27;;
 
 /**
@@ -1500,10 +1699,11 @@ export interface OrganInfo {
   templateUrl: &#x27;./organ-selector.component.html&#x27;,
   styleUrls: [&#x27;./organ-selector.component.scss&#x27;]
 })
-export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
+export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestroy {
   /** HTML class */
   @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-organ-selector&#x27;;
 
+  @ViewChild(&#x27;carouselContainer&#x27;, { static: true }) carouselContainer: ElementRef&lt;HTMLElement&gt;;
   @ViewChild(&#x27;itemlist&#x27;, { static: true }) itemList: ElementRef&lt;HTMLElement&gt;;
   @ViewChild(&#x27;itemcontainer&#x27;, { static: true }) itemContainer: ElementRef&lt;HTMLElement&gt;;
 
@@ -1557,13 +1757,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
   // eslint-disable-next-line
   @Input()
   set occurenceData(value: Record&lt;string, number&gt;) {
-    if (value) {
-      // eslint-disable-next-line
-      this._occurenceData &#x3D; value;
-    } else {
-      // eslint-disable-next-line
-      this._occurenceData &#x3D; {};
-    }
+    // eslint-disable-next-line
+    this._occurenceData &#x3D; value;
   }
 
   get occurenceData(): Record&lt;string, number&gt; {
@@ -1577,10 +1772,16 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Set resize sensor on carousel
    */
   ngAfterViewInit(): void {
-    const { itemContainer } &#x3D; this;
-    this.sensor &#x3D; new ResizeSensor(itemContainer.nativeElement, () &#x3D;&gt; {
+    const { carouselContainer } &#x3D; this;
+    this.sensor &#x3D; new ResizeSensor(carouselContainer.nativeElement, () &#x3D;&gt; {
       this.set();
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (&#x27;organList&#x27; in changes) {
+      this.set();
+    }
   }
 
   /**
@@ -1595,11 +1796,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * used to display or hide error message.
    */
   get error(): boolean {
-    if (!this.displayErrors) {
-      return false;
-    }
-
-    if (!this.selectedOrgans) {
+    if (!this.displayErrors || this.selectedOrgans.length &#x3D;&#x3D;&#x3D; 0) {
       return false;
     }
 
@@ -1677,7 +1874,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
    * Disables scrolling if the list of organs is smaller than the container, otherwise sets onLeft and onRight as normal
    */
   set(): void {
-    const { itemList } &#x3D; this;
+    const { itemList, itemContainer, carouselContainer } &#x3D; this;
     const val &#x3D; parseInt(itemList.nativeElement.style.left, 10) || 0;
     if (itemList.nativeElement.offsetWidth &gt;&#x3D; this.organList.length*this.step) {
       itemList.nativeElement.style.left &#x3D; &#x27;0px&#x27;;
@@ -1685,9 +1882,23 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
       this.onRight &#x3D; true;
     } else {
       this.setLeftRight(val);
+      const listLength &#x3D; this.step*Math.floor(carouselContainer.nativeElement.offsetWidth/this.step) - 64;
+      itemContainer.nativeElement.style.width &#x3D; &#x60;${listLength}px&#x60;;
     }
   }
 
+  /**
+   * Responsively sets width of the item container
+   */
+  setWidth(): void {
+    const { itemContainer, carouselContainer } &#x3D; this;
+    const listLength &#x3D; this.step*Math.floor(carouselContainer.nativeElement.offsetWidth/this.step) - 64;
+    itemContainer.nativeElement.style.width &#x3D; &#x60;${listLength}px&#x60;;
+  }
+
+  /**
+   * Sets onLeft and onRight according to where the item list is scrolled
+   */
   setLeftRight(val: number): void {
     const { itemContainer } &#x3D; this;
     this.onLeft &#x3D; val &#x3D;&#x3D;&#x3D; 0 ? true : false;
@@ -1698,7 +1909,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot; [class.error]&#x3D;&quot;error&quot; [matTooltipDisabled]&#x3D;&quot;multiselect&quot; matTooltip&#x3D;&quot;Select the organ your tissue block is from.&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot; [class.error]&#x3D;&quot;error&quot; [matTooltipDisabled]&#x3D;&quot;multiselect&quot; matTooltip&#x3D;&quot;Select the organ your tissue block is from.&quot; #carouselContainer&gt;
   &lt;mat-icon class&#x3D;&quot;carousel-left-icon&quot; (touchstart)&#x3D;&quot;scroll(&#x27;left&#x27;)&quot; (touchend)&#x3D;&quot;stopScroll()&quot; (click)&#x3D;&quot;shift(&#x27;left&#x27;)&quot; (mousedown)&#x3D;&quot;scroll(&#x27;left&#x27;)&quot; (mouseup)&#x3D;&quot;stopScroll()&quot; [class.disabled]&#x3D;&quot;onLeft&quot;&gt;chevron_left&lt;/mat-icon&gt;
   &lt;div class&#x3D;&quot;carousel-item-container&quot; #itemcontainer&gt;
     &lt;div class&#x3D;&quot;carousel-item-list&quot; #itemlist&gt;
@@ -1845,8 +2056,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container" [class.error]="error" [matTooltipDisabled]="multiselect" matTooltip="Select the organ your tissue block is from.">  <mat-icon class="carousel-left-icon" (touchstart)="scroll(\'left\')" (touchend)="stopScroll()" (click)="shift(\'left\')" (mousedown)="scroll(\'left\')" (mouseup)="stopScroll()" [class.disabled]="onLeft">chevron_left</mat-icon>  <div class="carousel-item-container" #itemcontainer>    <div class="carousel-item-list" #itemlist>      <div *ngFor="let organ of organList" class="carousel-item" [class.disabled]="organ.disabled" (click)="selectOrgan(organ)"          [class.selected]="isSelected(organ)">          <mat-icon class="carousel-icon" svgIcon="{{organ.src}}"></mat-icon>          <div class="carousel-text-container">            <div class="carousel-text">{{ organ.name }}</div>            <div class="num-results" *ngIf="organ.numResults !== undefined">{{ occurenceData[organ.id] || 0 }}</div>          </div>      </div>    </div>  </div>  <mat-icon class="carousel-right-icon" (touchstart)="scroll(\'right\')" (touchend)="stopScroll()" (click)="shift(\'right\')" (mousedown)="scroll(\'right\')" (mouseup)="stopScroll()" [class.disabled]="onRight">chevron_right</mat-icon></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><div class="container" [class.error]="error" [matTooltipDisabled]="multiselect" matTooltip="Select the organ your tissue block is from." #carouselContainer>  <mat-icon class="carousel-left-icon" (touchstart)="scroll(\'left\')" (touchend)="stopScroll()" (click)="shift(\'left\')" (mousedown)="scroll(\'left\')" (mouseup)="stopScroll()" [class.disabled]="onLeft">chevron_left</mat-icon>  <div class="carousel-item-container" #itemcontainer>    <div class="carousel-item-list" #itemlist>      <div *ngFor="let organ of organList" class="carousel-item" [class.disabled]="organ.disabled" (click)="selectOrgan(organ)"          [class.selected]="isSelected(organ)">          <mat-icon class="carousel-icon" svgIcon="{{organ.src}}"></mat-icon>          <div class="carousel-text-container">            <div class="carousel-text">{{ organ.name }}</div>            <div class="num-results" *ngIf="organ.numResults !== undefined">{{ occurenceData[organ.id] || 0 }}</div>          </div>      </div>    </div>  </div>  <mat-icon class="carousel-right-icon" (touchstart)="scroll(\'right\')" (touchend)="stopScroll()" (click)="shift(\'right\')" (mousedown)="scroll(\'right\')" (mouseup)="stopScroll()" [class.disabled]="onRight">chevron_right</mat-icon></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'OrganSelectorComponent'};
 </script>
@@ -1889,9 +2100,9 @@ export class OrganSelectorComponent implements AfterViewInit, OnDestroy {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

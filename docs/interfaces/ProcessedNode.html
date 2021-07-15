@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>ProcessedNode</li>
+  <li
+  >
+  ProcessedNode</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/ccf-body-ui/src/lib/util/process-scene-nodes.ts</code>
         </p>
+
 
 
             <p class="comment">
@@ -85,19 +89,34 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#bbox">bbox</a>
+                                        <a href="#bbox" 
+>
+                                            bbox
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#center">center</a>
+                                        <a href="#center" 
+>
+                                            center
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#jsonld">jsonld</a>
+                                        <a href="#jsonld" 
+>
+                                            jsonld
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#node">node</a>
+                                        <a href="#node" 
+>
+                                            node
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#size">size</a>
+                                        <a href="#size" 
+>
+                                            size
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -115,7 +134,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="bbox"></a>
-                                        <span class="name"><b>bbox</b><a href="#bbox"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>bbox</b>
+                                            <a href="#bbox">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -144,7 +167,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="center"></a>
-                                        <span class="name"><b>center</b><a href="#center"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>center</b>
+                                            <a href="#center">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -173,23 +200,21 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="jsonld"></a>
-                                        <span class="name"><b>jsonld</b><a href="#jsonld"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>jsonld</b>
+                                            <a href="#jsonld">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>jsonld:     <code>unknown</code>
+                                        <code>jsonld:     <code></code>
 </code>
                                     </td>
                                 </tr>
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>unknown</code>
-
-                                        </td>
-                                    </tr>
 
 
 
@@ -202,23 +227,21 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="node"></a>
-                                        <span class="name"><b>node</b><a href="#node"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>node</b>
+                                            <a href="#node">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>node:     <code>unknown</code>
+                                        <code>node:     <code></code>
 </code>
                                     </td>
                                 </tr>
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>unknown</code>
-
-                                        </td>
-                                    </tr>
 
 
 
@@ -231,7 +254,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="size"></a>
-                                        <span class="name"><b>size</b><a href="#size"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>size</b>
+                                            <a href="#size">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -392,9 +419,9 @@ export async function processSceneNodes(gltfUrl: string, worldMatrix?: Matrix4, 
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

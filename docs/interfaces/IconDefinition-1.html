@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>IconDefinition</li>
+  <li
+  >
+  IconDefinition</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -87,19 +91,31 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#html">html</a>
+                                        <a href="#html" 
+>
+                                            html
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#name">name</a>
+                                        <a href="#name" 
+>
+                                            name
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#namespace">namespace</a>
+                                        <a href="#namespace" 
+>
+                                            namespace
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#url">url</a>
+                                        <a href="#url" 
+>
+                                            url
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -117,7 +133,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="html"></a>
-                                        <span class="name"><b>html</b><a href="#html"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>html</b>
+                                            <a href="#html">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -157,7 +177,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="name"></a>
-                                        <span class="name"><b>name</b><a href="#name"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>name</b>
+                                            <a href="#name">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -197,7 +221,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="namespace"></a>
-                                        <span class="name"><b>namespace</b><a href="#namespace"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>namespace</b>
+                                            <a href="#namespace">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -237,7 +265,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="url"></a>
-                                        <span class="name"><b>url</b><a href="#url"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>url</b>
+                                            <a href="#url">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -437,9 +469,9 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>StackOp</li>
+  <li
+  >
+  StackOp</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,11 +67,12 @@
             <code>projects/ccf-shared/src/lib/components/decorated-text/decorated-text.component.ts</code>
         </p>
 
+
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Represents an operation to apply to the stack when building segments </p>
+                <p>Represents an operation to apply to the stack when building segments</p>
 
             </p>
 
@@ -86,13 +90,22 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#added">added</a>
+                                        <a href="#added" 
+>
+                                            added
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#index">index</a>
+                                        <a href="#index" 
+>
+                                            index
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#removed">removed</a>
+                                        <a href="#removed" 
+>
+                                            removed
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -110,7 +123,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="added"></a>
-                                        <span class="name"><b>added</b><a href="#added"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>added</b>
+                                            <a href="#added">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,7 +151,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Decorations to add </p>
+                                    <div class="io-description"><p>Decorations to add</p>
 </div>
                                 </td>
                             </tr>
@@ -145,7 +162,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="index"></a>
-                                        <span class="name"><b>index</b><a href="#index"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>index</b>
+                                            <a href="#index">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -169,7 +190,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Text index at which the changes takes effect </p>
+                                    <div class="io-description"><p>Text index at which the changes takes effect</p>
 </div>
                                 </td>
                             </tr>
@@ -180,7 +201,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="removed"></a>
-                                        <span class="name"><b>removed</b><a href="#removed"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>removed</b>
+                                            <a href="#removed">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -204,7 +229,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Decorations to remove </p>
+                                    <div class="io-description"><p>Decorations to remove</p>
 </div>
                                 </td>
                             </tr>
@@ -444,9 +469,9 @@ export class DecoratedTextComponent implements OnChanges {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

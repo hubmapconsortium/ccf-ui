@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -38,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>ColorAssignmentState</li>
+  <li >ColorAssignmentState</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,6 +59,7 @@
         <p class="comment">
             <code>projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -89,20 +91,20 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Readonly</span>
-                                <a href="#colorAssignments$">colorAssignments$</a>
+                                <a href="#colorAssignments$" >colorAssignments$</a>
                             </li>
                             <li>
                                     <span class="modifier">Readonly</span>
-                                <a href="#colorAssignmentsList$">colorAssignmentsList$</a>
+                                <a href="#colorAssignmentsList$" >colorAssignmentsList$</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Readonly</span>
-                                <a href="#forcedUnassignment">forcedUnassignment</a>
+                                <a href="#forcedUnassignment" >forcedUnassignment</a>
                             </li>
                             <li>
                                     <span class="modifier">Readonly</span>
-                                <a href="#forcedUnassignment$">forcedUnassignment$</a>
+                                <a href="#forcedUnassignment$" >forcedUnassignment$</a>
                             </li>
                         </ul>
                     </td>
@@ -117,13 +119,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#assignColor">assignColor</a>
+                                <a href="#assignColor" >assignColor</a>
                             </li>
                             <li>
-                                <a href="#getColor">getColor</a>
+                                <a href="#getColor" >getColor</a>
                             </li>
                             <li>
-                                <a href="#unassignColor">unassignColor</a>
+                                <a href="#unassignColor" >unassignColor</a>
                             </li>
                         </ul>
                     </td>
@@ -149,9 +151,7 @@
                 <td class="col-md-4">
                     <a name="assignColor"></a>
                     <span class="name">
-                        <b>
-                            assignColor
-                        </b>
+                        <span ><b>assignColor</b></span>
                         <a href="#assignColor"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -243,9 +243,7 @@
                 <td class="col-md-4">
                     <a name="getColor"></a>
                     <span class="name">
-                        <b>
-                            getColor
-                        </b>
+                        <span ><b>getColor</b></span>
                         <a href="#getColor"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -313,9 +311,7 @@
                 <td class="col-md-4">
                     <a name="unassignColor"></a>
                     <span class="name">
-                        <b>
-                            unassignColor
-                        </b>
+                        <span ><b>unassignColor</b></span>
                         <a href="#unassignColor"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -387,118 +383,114 @@
 </section>
             <section>
     
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorAssignments$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>colorAssignments$</b></span>
+                        <a href="#colorAssignments$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="colorAssignments$"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Readonly</span>
-                            colorAssignments$</b>
-                            <a href="#colorAssignments$"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;colorAssignments&#x27;), distinctUntilChanged())</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;colorAssignments&#x27;), distinctUntilChanged())</code>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:60</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:60</a></div>
-                            </td>
-                        </tr>
 
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorAssignmentsList$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>colorAssignmentsList$</b></span>
+                        <a href="#colorAssignmentsList$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="colorAssignmentsList$"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Readonly</span>
-                            colorAssignmentsList$</b>
-                            <a href="#colorAssignmentsList$"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;colorAssignmentsList&#x27;), distinctUntilChanged())</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;colorAssignmentsList&#x27;), distinctUntilChanged())</code>
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:61</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:61</a></div>
-                            </td>
-                        </tr>
 
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="forcedUnassignment"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>forcedUnassignment</b></span>
+                        <a href="#forcedUnassignment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="forcedUnassignment"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                                <span class="modifier">Readonly</span>
-                            forcedUnassignment</b>
-                            <a href="#forcedUnassignment"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:57</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:57</a></div>
-                            </td>
-                        </tr>
 
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="forcedUnassignment$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>forcedUnassignment$</b></span>
+                        <a href="#forcedUnassignment$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="forcedUnassignment$"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Readonly</span>
-                            forcedUnassignment$</b>
-                            <a href="#forcedUnassignment$"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>this.forcedUnassignment.asObservable()</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>this.forcedUnassignment.asObservable()</code>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:59</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:59</a></div>
-                            </td>
-                        </tr>
 
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 </section>
 
     </div>
@@ -663,9 +655,9 @@ export class ColorAssignmentState extends NgxsImmutableDataRepository&lt;ColorAs
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -38,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>ReferenceDataState</li>
+  <li >ReferenceDataState</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,6 +59,7 @@
         <p class="comment">
             <code>projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -89,17 +91,17 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getOrganData">getOrganData</a>
+                                <a href="#getOrganData" >getOrganData</a>
                             </li>
                             <li>
-                                <a href="#getReferenceOrganIri">getReferenceOrganIri</a>
+                                <a href="#getReferenceOrganIri" >getReferenceOrganIri</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#getSourceDB">getSourceDB</a>
+                                <a href="#getSourceDB" >getSourceDB</a>
                             </li>
                             <li>
-                                <a href="#ngxsOnInit">ngxsOnInit</a>
+                                <a href="#ngxsOnInit" >ngxsOnInit</a>
                             </li>
                         </ul>
                     </td>
@@ -119,7 +121,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(globals: <a href="../injectables/GlobalsService.html">GlobalsService</a>, globalConfig: <a href="../interfaces/GlobalConfig.html">GlobalConfig</a>)</code>
+<code>constructor(globals: <a href="../injectables/GlobalsService.html" target="_self">GlobalsService</a>, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfig</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -185,9 +187,7 @@
                 <td class="col-md-4">
                     <a name="getOrganData"></a>
                     <span class="name">
-                        <b>
-                            getOrganData
-                        </b>
+                        <span ><b>getOrganData</b></span>
                         <a href="#getOrganData"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -263,9 +263,7 @@
                 <td class="col-md-4">
                     <a name="getReferenceOrganIri"></a>
                     <span class="name">
-                        <b>
-                            getReferenceOrganIri
-                        </b>
+                        <span ><b>getReferenceOrganIri</b></span>
                         <a href="#getReferenceOrganIri"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -373,10 +371,8 @@
                 <td class="col-md-4">
                     <a name="getSourceDB"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            getSourceDB
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>getSourceDB</b></span>
                         <a href="#getSourceDB"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -414,9 +410,7 @@
                 <td class="col-md-4">
                     <a name="ngxsOnInit"></a>
                     <span class="name">
-                        <b>
-                            ngxsOnInit
-                        </b>
+                        <span ><b>ngxsOnInit</b></span>
                         <a href="#ngxsOnInit"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -614,9 +608,9 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

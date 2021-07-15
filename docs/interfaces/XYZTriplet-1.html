@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>XYZTriplet</li>
+  <li
+  >
+  XYZTriplet</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,11 +67,12 @@
             <code>projects/ccf-rui/src/app/core/store/model/model.state.ts</code>
         </p>
 
+
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A object with x, y, and z channels of the same type. </p>
+                <p>A object with x, y, and z channels of the same type.</p>
 
             </p>
 
@@ -86,13 +90,22 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#x">x</a>
+                                        <a href="#x" 
+>
+                                            x
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#y">y</a>
+                                        <a href="#y" 
+>
+                                            y
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#z">z</a>
+                                        <a href="#z" 
+>
+                                            z
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -110,7 +123,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="x"></a>
-                                        <span class="name"><b>x</b><a href="#x"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>x</b>
+                                            <a href="#x">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,7 +151,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>X channel </p>
+                                    <div class="io-description"><p>X channel</p>
 </div>
                                 </td>
                             </tr>
@@ -145,7 +162,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="y"></a>
-                                        <span class="name"><b>y</b><a href="#y"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>y</b>
+                                            <a href="#y">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -169,7 +190,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Y channel </p>
+                                    <div class="io-description"><p>Y channel</p>
 </div>
                                 </td>
                             </tr>
@@ -180,7 +201,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="z"></a>
-                                        <span class="name"><b>z</b><a href="#z"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>z</b>
+                                            <a href="#z">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -204,7 +229,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Z channel </p>
+                                    <div class="io-description"><p>Z channel</p>
 </div>
                                 </td>
                             </tr>
@@ -650,9 +675,9 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

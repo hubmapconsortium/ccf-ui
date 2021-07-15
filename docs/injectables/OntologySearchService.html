@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -38,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>OntologySearchService</li>
+  <li >OntologySearchService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,6 +59,7 @@
         <p class="comment">
             <code>projects/ccf-eui/src/app/core/services/ontology-search/ontology-search.service.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -83,20 +85,20 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#filter">filter</a>
+                                <a href="#filter" >filter</a>
                             </li>
                             <li>
-                                <a href="#formatLabel">formatLabel</a>
+                                <a href="#formatLabel" >formatLabel</a>
                             </li>
                             <li>
-                                <a href="#getChildren">getChildren</a>
+                                <a href="#getChildren" >getChildren</a>
                             </li>
                             <li>
-                                <a href="#getIndexOfMatch">getIndexOfMatch</a>
+                                <a href="#getIndexOfMatch" >getIndexOfMatch</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#lookup">lookup</a>
+                                <a href="#lookup" >lookup</a>
                             </li>
                         </ul>
                     </td>
@@ -115,7 +117,7 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                    <a href="#rootNode">rootNode</a>
+                                    <a href="#rootNode" >rootNode</a>
                                 </li>
                             </ul>
                         </td>
@@ -130,7 +132,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(ontologyState: <a href="../injectables/OntologyState.html">OntologyState</a>)</code>
+<code>constructor(ontologyState: <a href="../injectables/OntologyState.html" target="_self">OntologyState</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -191,9 +193,7 @@
                 <td class="col-md-4">
                     <a name="filter"></a>
                     <span class="name">
-                        <b>
-                            filter
-                        </b>
+                        <span ><b>filter</b></span>
                         <a href="#filter"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -269,9 +269,7 @@
                 <td class="col-md-4">
                     <a name="formatLabel"></a>
                     <span class="name">
-                        <b>
-                            formatLabel
-                        </b>
+                        <span ><b>formatLabel</b></span>
                         <a href="#formatLabel"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -363,16 +361,14 @@
                 <td class="col-md-4">
                     <a name="getChildren"></a>
                     <span class="name">
-                        <b>
-                            getChildren
-                        </b>
+                        <span ><b>getChildren</b></span>
                         <a href="#getChildren"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getChildren(node: <a href="../interfaces/OntologyTreeNode.html">OntologyTreeNode</a>)</code>
+<code>getChildren(node: <a href="../interfaces/OntologyTreeNode.html" target="_self">OntologyTreeNode</a>)</code>
                 </td>
             </tr>
 
@@ -449,9 +445,7 @@ Note: This can be called without a reference to <code>this</code>.</p>
                 <td class="col-md-4">
                     <a name="getIndexOfMatch"></a>
                     <span class="name">
-                        <b>
-                            getIndexOfMatch
-                        </b>
+                        <span ><b>getIndexOfMatch</b></span>
                         <a href="#getIndexOfMatch"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -543,10 +537,8 @@ Note: This can be called without a reference to <code>this</code>.</p>
                 <td class="col-md-4">
                     <a name="lookup"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            lookup
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>lookup</b></span>
                         <a href="#lookup"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -554,7 +546,7 @@ Note: This can be called without a reference to <code>this</code>.</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>lookup(nodes: <a href="../interfaces/OntologyTreeNode.html">Immutable<OntologyTreeNode>[]</a>, searchValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>lookup(nodes: <a href="../interfaces/OntologyTreeNode.html" target="_self">Immutable&lt;OntologyTreeNode&gt;[]</a>, searchValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -660,7 +652,7 @@ Note: This can be called without a reference to <code>this</code>.</p>
                             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Root node in ontology. </p>
+                                <div class="io-description"><p>Root node in ontology.</p>
 </div>
 
                                 <div class="io-description">
@@ -848,9 +840,9 @@ export class OntologySearchService {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

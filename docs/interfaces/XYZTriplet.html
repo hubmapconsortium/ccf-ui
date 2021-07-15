@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>XYZTriplet</li>
+  <li
+  >
+  XYZTriplet</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -66,6 +69,7 @@
 
 
 
+
         <section>
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
@@ -79,13 +83,22 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#x">x</a>
+                                        <a href="#x" 
+>
+                                            x
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#y">y</a>
+                                        <a href="#y" 
+>
+                                            y
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#z">z</a>
+                                        <a href="#z" 
+>
+                                            z
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -103,7 +116,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="x"></a>
-                                        <span class="name"><b>x</b><a href="#x"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>x</b>
+                                            <a href="#x">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -132,7 +149,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="y"></a>
-                                        <span class="name"><b>y</b><a href="#y"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>y</b>
+                                            <a href="#y">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -161,7 +182,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="z"></a>
-                                        <span class="name"><b>z</b><a href="#z"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>z</b>
+                                            <a href="#z">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -236,6 +261,16 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   }
 
   @Input()
+  get rotationX(): number {
+    return this._rotationX;
+  }
+
+  set rotationX(value: number) {
+    this._rotationX &#x3D; value;
+    this.bodyUI?.setRotationX(value);
+  }
+
+  @Input()
   get zoom(): number {
     return this._zoom;
   }
@@ -243,6 +278,16 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   set zoom(value: number) {
     this._zoom &#x3D; value;
     this.bodyUI?.setZoom(value);
+  }
+
+  @Input()
+  get target(): [number, number, number] {
+    return this._target;
+  }
+
+  set target(value: [number, number, number]) {
+    this._target &#x3D; value;
+    this.bodyUI?.setTarget(value);
   }
 
   @Input()
@@ -264,6 +309,12 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   @Output()
   readonly nodeClick &#x3D; new EventEmitter&lt;NodeClickEvent&gt;();
 
+  @Output()
+  readonly nodeHoverStart &#x3D; new EventEmitter&lt;SpatialSceneNode&gt;();
+
+  @Output()
+  readonly nodeHoverStop &#x3D; new EventEmitter&lt;SpatialSceneNode&gt;();
+
   @Input()
   get interactive(): boolean {
     return this._interactive;
@@ -278,7 +329,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
 
   private _interactive &#x3D; true;
   private _rotation &#x3D; 0;
+  private _rotationX &#x3D; 0;
   private _zoom &#x3D; 9.5;
+  private _target: [number, number, number] &#x3D; [0, 0, 0];
   private _bounds: XYZTriplet;
   private _scene: SpatialSceneNode[] &#x3D; [];
   private subscriptions: Subscription[] &#x3D; [];
@@ -324,7 +377,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
       canvas,
       zoom: this.zoom,
       target: [0, 0, 0],
-      rotation: this.rotation,
+      rotation: 0,
       minRotationX: -75,
       maxRotationX: 75,
       interactive: this.interactive
@@ -342,7 +395,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.subscriptions &#x3D; [
       this.bodyUI.sceneRotation$.subscribe((rotation) &#x3D;&gt; this.rotationChange.next(rotation)),
       this.bodyUI.nodeDrag$.subscribe((event) &#x3D;&gt; this.nodeDrag.emit(event)),
-      this.bodyUI.nodeClick$.subscribe((event) &#x3D;&gt; this.nodeClick.emit(event))
+      this.bodyUI.nodeClick$.subscribe((event) &#x3D;&gt; this.nodeClick.emit(event)),
+      this.bodyUI.nodeHoverStart$.subscribe((event) &#x3D;&gt; this.nodeHoverStart.emit(event)),
+      this.bodyUI.nodeHoverStop$.subscribe((event) &#x3D;&gt; this.nodeHoverStop.emit(event))
     ];
   }
 
@@ -394,9 +449,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

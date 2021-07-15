@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	      <link rel="stylesheet" href="./styles/style.css">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -50,27 +51,31 @@
         <li>
             <b>@angular-ru/common</b> : ^15.126.1</li>
         <li>
-            <b>@angular/animations</b> : ^11.2.3</li>
+            <b>@angular/animations</b> : ^12.1.1</li>
         <li>
-            <b>@angular/cdk</b> : ^11.2.2</li>
+            <b>@angular/cdk</b> : ^12.1.1</li>
         <li>
-            <b>@angular/common</b> : ^11.2.3</li>
+            <b>@angular/common</b> : ^12.1.1</li>
         <li>
-            <b>@angular/compiler</b> : ^11.2.3</li>
+            <b>@angular/compiler</b> : ^12.1.1</li>
         <li>
-            <b>@angular/core</b> : ^11.2.3</li>
+            <b>@angular/core</b> : ^12.1.1</li>
         <li>
-            <b>@angular/forms</b> : ^11.2.3</li>
+            <b>@angular/elements</b> : ^12.1.1</li>
         <li>
-            <b>@angular/material</b> : ^11.2.2</li>
+            <b>@angular/forms</b> : ^12.1.1</li>
         <li>
-            <b>@angular/platform-browser</b> : ^11.2.3</li>
+            <b>@angular/material</b> : ^12.1.1</li>
         <li>
-            <b>@angular/platform-browser-dynamic</b> : ^11.2.3</li>
+            <b>@angular/platform-browser</b> : ^12.1.1</li>
         <li>
-            <b>@angular/router</b> : ^11.2.3</li>
+            <b>@angular/platform-browser-dynamic</b> : ^12.1.1</li>
         <li>
-            <b>@angular/youtube-player</b> : ^11.2.2</li>
+            <b>@angular/router</b> : ^12.1.1</li>
+        <li>
+            <b>@angular/youtube-player</b> : ^12.1.1</li>
+        <li>
+            <b>@danmarshall/deckgl-typings</b> : ^4.7.0</li>
         <li>
             <b>@deck.gl/core</b> : ^8.4.9</li>
         <li>
@@ -90,7 +95,7 @@
         <li>
             <b>@math.gl/core</b> : ^3.4.2</li>
         <li>
-            <b>@ngxs-labs/data</b> : ^4.1.1</li>
+            <b>@ngxs-labs/data</b> : ^6.2.0</li>
         <li>
             <b>@ngxs/logger-plugin</b> : ^3.7.1</li>
         <li>
@@ -100,23 +105,31 @@
         <li>
             <b>@rdfjs/data-model</b> : ^1.2.0</li>
         <li>
+            <b>@webcomponents/webcomponentsjs</b> : ^2.5.0</li>
+        <li>
             <b>bind-decorator</b> : ^1.0.11</li>
         <li>
-            <b>cannon-es</b> : ^0.16.0</li>
+            <b>cannon-es</b> : ^0.18.0</li>
         <li>
             <b>comlink</b> : ^4.3.0</li>
         <li>
+            <b>concat</b> : ^1.0.3</li>
+        <li>
             <b>css-element-queries</b> : ^1.2.3</li>
+        <li>
+            <b>document-register-element</b> : ^1.7.2</li>
         <li>
             <b>file-saver</b> : ^2.0.5</li>
         <li>
-            <b>graphology</b> : ^0.19.3</li>
+            <b>fs-extra</b> : ^10.0.0</li>
+        <li>
+            <b>graphology</b> : ^0.20.0</li>
         <li>
             <b>graphology-shortest-path</b> : ^1.4.1</li>
         <li>
-            <b>hex-rgb</b> : ^4.2.0</li>
+            <b>hex-rgb</b> : ^5.0.0</li>
         <li>
-            <b>jsonld</b> : ^4.0.1</li>
+            <b>jsonld</b> : ^5.2.0</li>
         <li>
             <b>lodash</b> : ^4.17.21</li>
         <li>
@@ -124,13 +137,19 @@
         <li>
             <b>ng5-slider</b> : ^1.2.6</li>
         <li>
-            <b>ngx-markdown</b> : ^11.1.1</li>
+            <b>ngx-google-analytics</b> : ^11.2.1</li>
+        <li>
+            <b>ngx-markdown</b> : ^12.0.1</li>
         <li>
             <b>rdf-literal</b> : ^1.2.0</li>
         <li>
             <b>rdfxml-streaming-parser</b> : ^1.4.0</li>
         <li>
-            <b>rxjs</b> : ~6.6.6</li>
+            <b>readable-stream</b> : ^3.6.0</li>
+        <li>
+            <b>rxjs</b> : ^6.6.7</li>
+        <li>
+            <b>stream-browserify</b> : ^3.0.0</li>
         <li>
             <b>swiper</b> : ^6.5.1</li>
         <li>
@@ -138,7 +157,7 @@
         <li>
             <b>uuid</b> : ^8.3.2</li>
         <li>
-            <b>zone.js</b> : ~0.10.3</li>
+            <b>zone.js</b> : ~0.11.4</li>
     </ul>
 
                    
@@ -169,9 +188,9 @@
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="./js/menu-wc.js" defer></script>
+       
+       <script type="module" src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>SlicesConfig</li>
+  <li
+  >
+  SlicesConfig</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -86,10 +90,16 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#numSlices">numSlices</a>
+                                        <a href="#numSlices" 
+>
+                                            numSlices
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#thickness">thickness</a>
+                                        <a href="#thickness" 
+>
+                                            thickness
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -107,7 +117,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="numSlices"></a>
-                                        <span class="name"><b>numSlices</b><a href="#numSlices"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>numSlices</b>
+                                            <a href="#numSlices">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -131,7 +145,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Number of slices in the block </p>
+                                    <div class="io-description"><p>Number of slices in the block</p>
 </div>
                                 </td>
                             </tr>
@@ -142,7 +156,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="thickness"></a>
-                                        <span class="name"><b>thickness</b><a href="#thickness"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>thickness</b>
+                                            <a href="#thickness">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -166,7 +184,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Thickness of each tissue slice </p>
+                                    <div class="io-description"><p>Thickness of each tissue slice</p>
 </div>
                                 </td>
                             </tr>
@@ -178,6 +196,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 
 /**
  * Interface containing slices data of the tissue block
@@ -225,6 +244,13 @@ export class SlicesInputComponent {
   }
 
   /**
+   * Creates an instance of slices input component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Limits the length of the input if needed and updates values when an input changes
    *
    * @param input InputEvent from the input element which contains the new value
@@ -233,6 +259,7 @@ export class SlicesInputComponent {
   updateSlicesData(input: InputEvent, key: string): void {
     const { value: strValue } &#x3D; input.target as HTMLInputElement;
     this.slicesConfig &#x3D; { ...this.slicesConfig, [key]: strValue !&#x3D;&#x3D; &#x27;&#x27; ? +strValue : NaN };
+    this.ga.event(&#x27;slice_config_update&#x27;, &#x27;slice_input&#x27;, key, this.slicesConfig[key]);
     this.slicesConfigChange.emit(this.slicesConfig);
   }
 
@@ -241,6 +268,7 @@ export class SlicesInputComponent {
    */
   refreshSlices(): void {
     this.slicesConfig &#x3D; DEFAULT_SLICES_CONFIG;
+    this.ga.event(&#x27;slice_config_reset&#x27;, &#x27;slice_input&#x27;);
     this.slicesConfigChange.emit(this.slicesConfig);
   }
 }
@@ -277,9 +305,9 @@ export class SlicesInputComponent {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -42,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>CCFDatabase</li>
+  <li >CCFDatabase</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,11 +64,12 @@
             <code>projects/ccf-database/src/lib/ccf-database.ts</code>
         </p>
 
+
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Database provider. </p>
+                <p>Database provider.</p>
 
             </p>
 
@@ -87,22 +89,22 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#graph">graph</a>
+                                <a href="#graph" >graph</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Optional</span>
-                                <a href="#initializing">initializing</a>
+                                <a href="#initializing" >initializing</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#options">options</a>
+                                <a href="#options" >options</a>
                             </li>
                             <li>
-                                <a href="#scene">scene</a>
+                                <a href="#scene" >scene</a>
                             </li>
                             <li>
-                                <a href="#store">store</a>
+                                <a href="#store" >store</a>
                             </li>
                         </ul>
                     </td>
@@ -118,48 +120,48 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#connect">connect</a>
+                                <a href="#connect" >connect</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Async</span>
-                                <a href="#doConnect">doConnect</a>
+                                <a href="#doConnect" >doConnect</a>
                             </li>
                             <li>
-                                <a href="#get">get</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#getAggregateResults">getAggregateResults</a>
-                            </li>
-                            <li>
-                                <a href="#getIds">getIds</a>
+                                <a href="#get" >get</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getOntologyTermOccurences">getOntologyTermOccurences</a>
+                                <a href="#getAggregateResults" >getAggregateResults</a>
+                            </li>
+                            <li>
+                                <a href="#getIds" >getIds</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getOntologyTreeModel">getOntologyTreeModel</a>
+                                <a href="#getOntologyTermOccurences" >getOntologyTermOccurences</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getReferenceOrgans">getReferenceOrgans</a>
+                                <a href="#getOntologyTreeModel" >getOntologyTreeModel</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getScene">getScene</a>
-                            </li>
-                            <li>
-                                <a href="#getSpatialEntities">getSpatialEntities</a>
+                                <a href="#getReferenceOrgans" >getReferenceOrgans</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getTissueBlockResults">getTissueBlockResults</a>
+                                <a href="#getScene" >getScene</a>
                             </li>
                             <li>
-                                <a href="#search">search</a>
+                                <a href="#getSpatialEntities" >getSpatialEntities</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getTissueBlockResults" >getTissueBlockResults</a>
+                            </li>
+                            <li>
+                                <a href="#search" >search</a>
                             </li>
                         </ul>
                     </td>
@@ -179,7 +181,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(options: <a href="../interfaces/CCFDatabaseOptions.html">CCFDatabaseOptions</a>)</code>
+<code>constructor(options: <a href="../interfaces/CCFDatabaseOptions.html" target="_self">CCFDatabaseOptions</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -231,181 +233,176 @@
 
             <section>
     
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="graph"></a>
+                    <span class="name">
+                        <span ><b>graph</b></span>
+                        <a href="#graph"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="graph"></a>
-                        <span class="name">
-                            <b>
-                            graph</b>
-                            <a href="#graph"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="../classes/CCFSpatialGraph.html" target="_self" >CCFSpatialGraph</a></code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/CCFSpatialGraph.html" target="_self" >CCFSpatialGraph</a></code>
-
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:52</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:52</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The spatial graph </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The spatial graph</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializing"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>initializing</b></span>
+                        <a href="#initializing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="initializing"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                                <span class="modifier">Optional</span>
-                            initializing</b>
-                            <a href="#initializing"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>    <code>Promise&lt;void&gt;</code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>Promise&lt;void&gt;</code>
-
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:56</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:56</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>If the database is initialized </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>If the database is initialized</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="options"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>options</b></span>
+                        <a href="#options"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="options"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            options</b>
-                            <a href="#options"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="../interfaces/CCFDatabaseOptions.html" target="_self" >CCFDatabaseOptions</a></code>
+
                     </td>
                 </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/CCFDatabaseOptions.html" target="_self" >CCFDatabaseOptions</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>DEFAULT_CCF_DB_OPTIONS</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:63</a></div>
-                            </td>
-                        </tr>
-
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description">Initialization options.</div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="scene"></a>
-                        <span class="name">
-                            <b>
-                            scene</b>
-                            <a href="#scene"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>DEFAULT_CCF_DB_OPTIONS</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/CCFSpatialScene.html" target="_self" >CCFSpatialScene</a></code>
-
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:63</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:54</a></div>
-                            </td>
-                        </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Initialization options.</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scene"></a>
+                    <span class="name">
+                        <span ><b>scene</b></span>
+                        <a href="#scene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Creates SpatialEntity Scenes </p>
+                        <i>Type : </i>        <code><a href="../classes/CCFSpatialScene.html" target="_self" >CCFSpatialScene</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:54</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates SpatialEntity Scenes</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="store"></a>
+                    <span class="name">
+                        <span ><b>store</b></span>
+                        <a href="#store"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="store"></a>
-                        <span class="name">
-                            <b>
-                            store</b>
-                            <a href="#store"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>    <code>Store</code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>Store</code>
-
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:50</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:50</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The triple store. </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The triple store.</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 </section>
 
             <section>
@@ -419,10 +416,8 @@
                 <td class="col-md-4">
                     <a name="connect"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            connect
-                        </b>
+                        <span class="modifier">Async</span>
+                        <span ><b>connect</b></span>
                         <a href="#connect"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -430,7 +425,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>connect(options?: <a href="../interfaces/CCFDatabaseOptions.html">CCFDatabaseOptions</a>)</code>
+                    <code>connect(options?: <a href="../interfaces/CCFDatabaseOptions.html" target="_self">CCFDatabaseOptions</a>)</code>
                 </td>
             </tr>
 
@@ -499,11 +494,9 @@
                 <td class="col-md-4">
                     <a name="doConnect"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            <span class="modifier">Async</span>
-                            doConnect
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>doConnect</b></span>
                         <a href="#doConnect"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -549,9 +542,7 @@
                 <td class="col-md-4">
                     <a name="get"></a>
                     <span class="name">
-                        <b>
-                            get
-                        </b>
+                        <span ><b>get</b></span>
                         <a href="#get"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -627,10 +618,8 @@
                 <td class="col-md-4">
                     <a name="getAggregateResults"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getAggregateResults
-                        </b>
+                        <span class="modifier">Async</span>
+                        <span ><b>getAggregateResults</b></span>
                         <a href="#getAggregateResults"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -638,7 +627,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getAggregateResults(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                    <code>getAggregateResults(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
                 </td>
             </tr>
 
@@ -707,16 +696,14 @@
                 <td class="col-md-4">
                     <a name="getIds"></a>
                     <span class="name">
-                        <b>
-                            getIds
-                        </b>
+                        <span ><b>getIds</b></span>
                         <a href="#getIds"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getIds(filter: <a href="../interfaces/Filter.html">Filter</a>)</code>
+<code>getIds(filter: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
                 </td>
             </tr>
 
@@ -789,10 +776,8 @@
                 <td class="col-md-4">
                     <a name="getOntologyTermOccurences"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getOntologyTermOccurences
-                        </b>
+                        <span class="modifier">Async</span>
+                        <span ><b>getOntologyTermOccurences</b></span>
                         <a href="#getOntologyTermOccurences"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -800,7 +785,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getOntologyTermOccurences(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                    <code>getOntologyTermOccurences(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
                 </td>
             </tr>
 
@@ -869,10 +854,8 @@
                 <td class="col-md-4">
                     <a name="getOntologyTreeModel"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getOntologyTreeModel
-                        </b>
+                        <span class="modifier">Async</span>
+                        <span ><b>getOntologyTreeModel</b></span>
                         <a href="#getOntologyTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -918,10 +901,8 @@
                 <td class="col-md-4">
                     <a name="getReferenceOrgans"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getReferenceOrgans
-                        </b>
+                        <span class="modifier">Async</span>
+                        <span ><b>getReferenceOrgans</b></span>
                         <a href="#getReferenceOrgans"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -967,10 +948,8 @@
                 <td class="col-md-4">
                     <a name="getScene"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getScene
-                        </b>
+                        <span class="modifier">Async</span>
+                        <span ><b>getScene</b></span>
                         <a href="#getScene"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -978,7 +957,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getScene(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                    <code>getScene(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
                 </td>
             </tr>
 
@@ -1047,16 +1026,14 @@
                 <td class="col-md-4">
                     <a name="getSpatialEntities"></a>
                     <span class="name">
-                        <b>
-                            getSpatialEntities
-                        </b>
+                        <span ><b>getSpatialEntities</b></span>
                         <a href="#getSpatialEntities"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getSpatialEntities(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
+<code>getSpatialEntities(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
                 </td>
             </tr>
 
@@ -1125,10 +1102,8 @@
                 <td class="col-md-4">
                     <a name="getTissueBlockResults"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getTissueBlockResults
-                        </b>
+                        <span class="modifier">Async</span>
+                        <span ><b>getTissueBlockResults</b></span>
                         <a href="#getTissueBlockResults"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -1136,7 +1111,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getTissueBlockResults(filter?: <a href="../interfaces/Filter.html">Filter</a>)</code>
+                    <code>getTissueBlockResults(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
                 </td>
             </tr>
 
@@ -1205,16 +1180,14 @@
                 <td class="col-md-4">
                     <a name="search"></a>
                     <span class="name">
-                        <b>
-                            search
-                        </b>
+                        <span ><b>search</b></span>
                         <a href="#search"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>search(filter: <a href="../interfaces/Filter.html">Filter</a>)</code>
+<code>search(filter: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
                 </td>
             </tr>
 
@@ -1554,9 +1527,9 @@ export class CCFDatabase {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>Segment</li>
+  <li
+  >
+  Segment</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,11 +67,12 @@
             <code>projects/ccf-shared/src/lib/components/decorated-text/decorated-text.component.ts</code>
         </p>
 
+
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A segment of text with additional classes and styles </p>
+                <p>A segment of text with additional classes and styles</p>
 
             </p>
 
@@ -86,13 +90,22 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#classes">classes</a>
+                                        <a href="#classes" 
+>
+                                            classes
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#styles">styles</a>
+                                        <a href="#styles" 
+>
+                                            styles
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#text">text</a>
+                                        <a href="#text" 
+>
+                                            text
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -110,7 +123,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="classes"></a>
-                                        <span class="name"><b>classes</b><a href="#classes"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>classes</b>
+                                            <a href="#classes">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,7 +151,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Classes to add to the text container </p>
+                                    <div class="io-description"><p>Classes to add to the text container</p>
 </div>
                                 </td>
                             </tr>
@@ -145,12 +162,16 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="styles"></a>
-                                        <span class="name"><b>styles</b><a href="#styles"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>styles</b>
+                                            <a href="#styles">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>styles:     <code>Record&lt;string | unknown&gt;</code>
+                                        <code>styles:     <code>Record&lt;string | &gt;</code>
 </code>
                                     </td>
                                 </tr>
@@ -158,7 +179,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>Record&lt;string | unknown&gt;</code>
+                                            <i>Type : </i>    <code>Record&lt;string | &gt;</code>
 
                                         </td>
                                     </tr>
@@ -169,7 +190,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Styles to set on the text container </p>
+                                    <div class="io-description"><p>Styles to set on the text container</p>
 </div>
                                 </td>
                             </tr>
@@ -180,7 +201,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="text"></a>
-                                        <span class="name"><b>text</b><a href="#text"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>text</b>
+                                            <a href="#text">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -204,7 +229,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The piece of text to display </p>
+                                    <div class="io-description"><p>The piece of text to display</p>
 </div>
                                 </td>
                             </tr>
@@ -444,9 +469,9 @@ export class DecoratedTextComponent implements OnChanges {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

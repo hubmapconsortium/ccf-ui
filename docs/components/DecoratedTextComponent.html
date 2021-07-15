@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -35,7 +36,9 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>DecoratedTextComponent</li>
+  <li
+  >
+  DecoratedTextComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
 <p class="comment">
     <code>projects/ccf-shared/src/lib/components/decorated-text/decorated-text.component.ts</code>
 </p>
+
 
     <p class="comment">
         <h3>Description</h3>
@@ -141,7 +145,11 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#segments">segments</a>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#clsName" >clsName</a>
+                            </li>
+                            <li>
+                                <a href="#segments" >segments</a>
                             </li>
                         </ul>
                     </td>
@@ -157,30 +165,30 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#createSegments">createSegments</a>
+                                <a href="#createSegments" >createSegments</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#createStackOps">createStackOps</a>
+                                <a href="#createStackOps" >createStackOps</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#getNormalizedDecorations">getNormalizedDecorations</a>
+                                <a href="#getNormalizedDecorations" >getNormalizedDecorations</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#makeDecoratedSegment">makeDecoratedSegment</a>
+                                <a href="#makeDecoratedSegment" >makeDecoratedSegment</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#makeUndecoratedSegment">makeUndecoratedSegment</a>
+                                <a href="#makeUndecoratedSegment" >makeUndecoratedSegment</a>
                             </li>
                             <li>
-                                <a href="#ngOnChanges">ngOnChanges</a>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#updateStack">updateStack</a>
+                                <a href="#updateStack" >updateStack</a>
                             </li>
                         </ul>
                     </td>
@@ -195,10 +203,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#decorations">decorations</a>
+                                <a href="#decorations" >decorations</a>
                             </li>
                             <li>
-                                <a href="#text">text</a>
+                                <a href="#text" >text</a>
                             </li>
                         </ul>
                     </td>
@@ -214,7 +222,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#class">class</a>
+                                <a href="#class" >class</a>
                             </li>
                         </ul>
                     </td>
@@ -286,38 +294,43 @@ For overlapping ranges later values takes precedence.</p>
 </section>
 
     <section>
-    <h3>HostBindings</h3>        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="class"></a>
-                        <span class="name">
-                            <b>
-                            class</b>
-                            <a href="#class"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#ccf" target="_self" >&quot;ccf-decorated-text&quot;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-decorated-text&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;ccf-decorated-text&#x27;</code>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-shared/src/lib/components/decorated-text/decorated-text.component.ts:41</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-shared/src/lib/components/decorated-text/decorated-text.component.ts:41</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>HTML class name </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class name</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 </section>
 
 
@@ -332,10 +345,8 @@ For overlapping ranges later values takes precedence.</p>
                 <td class="col-md-4">
                     <a name="createSegments"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            createSegments
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>createSegments</b></span>
                         <a href="#createSegments"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -382,10 +393,8 @@ the latest text and decorations.</p>
                 <td class="col-md-4">
                     <a name="createStackOps"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            createStackOps
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>createStackOps</b></span>
                         <a href="#createStackOps"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -393,7 +402,7 @@ the latest text and decorations.</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createStackOps(ranges: <a href="../interfaces/DecoratedRange.html">DecoratedRange[]</a>)</code>
+                    <code>createStackOps(ranges: <a href="../interfaces/DecoratedRange.html" target="_self">DecoratedRange[]</a>)</code>
                 </td>
             </tr>
 
@@ -462,10 +471,8 @@ the latest text and decorations.</p>
                 <td class="col-md-4">
                     <a name="getNormalizedDecorations"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            getNormalizedDecorations
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>getNormalizedDecorations</b></span>
                         <a href="#getNormalizedDecorations"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -511,10 +518,8 @@ the latest text and decorations.</p>
                 <td class="col-md-4">
                     <a name="makeDecoratedSegment"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            makeDecoratedSegment
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>makeDecoratedSegment</b></span>
                         <a href="#makeDecoratedSegment"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -522,7 +527,7 @@ the latest text and decorations.</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>makeDecoratedSegment(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, decorations: <a href="../interfaces/DecoratedRange.html">DecoratedRange[]</a>)</code>
+                    <code>makeDecoratedSegment(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, decorations: <a href="../interfaces/DecoratedRange.html" target="_self">DecoratedRange[]</a>)</code>
                 </td>
             </tr>
 
@@ -607,10 +612,8 @@ the latest text and decorations.</p>
                 <td class="col-md-4">
                     <a name="makeUndecoratedSegment"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            makeUndecoratedSegment
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>makeUndecoratedSegment</b></span>
                         <a href="#makeUndecoratedSegment"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -687,9 +690,7 @@ the latest text and decorations.</p>
                 <td class="col-md-4">
                     <a name="ngOnChanges"></a>
                     <span class="name">
-                        <b>
-                            ngOnChanges
-                        </b>
+                        <span ><b>ngOnChanges</b></span>
                         <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -764,10 +765,8 @@ the latest text and decorations.</p>
                 <td class="col-md-4">
                     <a name="updateStack"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            updateStack
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>updateStack</b></span>
                         <a href="#updateStack"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -775,7 +774,7 @@ the latest text and decorations.</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateStack(stack: <a href="../interfaces/DecoratedRange.html">DecoratedRange[]</a>, op: <a href="../interfaces/StackOp.html">StackOp</a>)</code>
+                    <code>updateStack(stack: <a href="../interfaces/DecoratedRange.html" target="_self">DecoratedRange[]</a>, op: <a href="../interfaces/StackOp.html" target="_self">StackOp</a>)</code>
                 </td>
             </tr>
 
@@ -857,47 +856,93 @@ the latest text and decorations.</p>
 </section>
     <section>
     
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clsName"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>clsName</b></span>
+                        <a href="#clsName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="segments"></a>
-                        <span class="name">
-                            <b>
-                            segments</b>
-                            <a href="#segments"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-decorated-text&#x27;</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @HostBinding(&#x27;class&#x27;)<br />
+                        </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/Segment.html" target="_self" >Segment[]</a></code>
-
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-shared/src/lib/components/decorated-text/decorated-text.component.ts:41</a></div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>[]</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-shared/src/lib/components/decorated-text/decorated-text.component.ts:57</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Computed segments of text with decorations resolved.</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class name</p>
 </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="segments"></a>
+                    <span class="name">
+                        <span ><b>segments</b></span>
+                        <a href="#segments"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Segment.html" target="_self" >Segment[]</a></code>
+
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-shared/src/lib/components/decorated-text/decorated-text.component.ts:57</a></div>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Computed segments of text with decorations resolved.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
 </div>
@@ -1146,7 +1191,7 @@ export class DecoratedTextComponent implements OnChanges {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><span *ngFor="let segment of segments" [class]="segment.classes" [style]="segment.styles">  {{ segment.text }}</span></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'DecoratedTextComponent'};
 </script>
@@ -1189,9 +1234,9 @@ export class DecoratedTextComponent implements OnChanges {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

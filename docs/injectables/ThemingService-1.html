@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -38,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>ThemingService</li>
+  <li >ThemingService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,6 +59,7 @@
         <p class="comment">
             <code>projects/ccf-rui/src/app/core/services/theming/theming.service.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -83,16 +85,19 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
-                                    <span class="modifier">Optional</span>
-                                <a href="#component">component</a>
+                                <a href="#defaultTheme" >defaultTheme</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#defaultTheme">defaultTheme</a>
+                                <a href="#element" >element</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#theme">theme</a>
+                                <a href="#injector" >injector</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#theme" >theme</a>
                             </li>
                         </ul>
                     </td>
@@ -108,24 +113,23 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#applyThemeClass">applyThemeClass</a>
+                                <a href="#applyThemeClass" >applyThemeClass</a>
                             </li>
                             <li>
-                                <a href="#getTheme">getTheme</a>
+                                <a href="#getTheme" >getTheme</a>
                             </li>
                             <li>
                                     <span class="modifier">Static</span>
-                                <a href="#initialize">initialize</a>
+                                <a href="#initialize" >initialize</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#initializeImpl">initializeImpl</a>
+                                <a href="#initialize" >initialize</a>
                             </li>
                             <li>
-                                <a href="#resetTheme">resetTheme</a>
+                                <a href="#resetTheme" >resetTheme</a>
                             </li>
                             <li>
-                                <a href="#setTheme">setTheme</a>
+                                <a href="#setTheme" >setTheme</a>
                             </li>
                         </ul>
                     </td>
@@ -150,7 +154,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -206,10 +210,8 @@
                 <td class="col-md-4">
                     <a name="applyThemeClass"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            applyThemeClass
-                        </b>
+                        <span class="modifier">Private</span>
+                        <span ><b>applyThemeClass</b></span>
                         <a href="#applyThemeClass"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -224,8 +226,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:81</a></div>
                 </td>
             </tr>
 
@@ -307,9 +309,7 @@
                 <td class="col-md-4">
                     <a name="getTheme"></a>
                     <span class="name">
-                        <b>
-                            getTheme
-                        </b>
+                        <span ><b>getTheme</b></span>
                         <a href="#getTheme"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -323,8 +323,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:39</a></div>
                 </td>
             </tr>
 
@@ -348,10 +348,8 @@
                 <td class="col-md-4">
                     <a name="initialize"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Static</span>
-                            initialize
-                        </b>
+                        <span class="modifier">Static</span>
+                        <span ><b>initialize</b></span>
                         <a href="#initialize"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -359,7 +357,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>initialize(component: ComponentRef<unknown>)</code>
+                    <code>initialize(component: ComponentRef<>)</code>
                 </td>
             </tr>
 
@@ -374,7 +372,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Initializer called during bootstrap to set up theming. </p>
+                    <div class="io-description"><p>Initializer called during bootstrap to set up theming.</p>
 </div>
 
                     <div class="io-description">
@@ -391,7 +389,7 @@
                                 <tr>
                                     <td>component</td>
                                     <td>
-                                            <code>ComponentRef&lt;unknown&gt;</code>
+                                            <code>ComponentRef&lt;&gt;</code>
                                     </td>
 
                                     <td>
@@ -420,35 +418,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="initializeImpl"></a>
+                    <a name="initialize"></a>
                     <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            initializeImpl
-                        </b>
-                        <a href="#initializeImpl"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>initialize</b></span>
+                        <a href="#initialize"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>initializeImpl(component: ComponentRef<unknown>)</code>
+<code>initialize(element: ElementRef<>, injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:69</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Implementation of initialize.</p>
+                    <div class="io-description"><p>Binds theming service to a component.</p>
 </div>
 
                     <div class="io-description">
@@ -459,14 +453,13 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>component</td>
+                                    <td>element</td>
                                     <td>
-                                            <code>ComponentRef&lt;unknown&gt;</code>
+                                            <code>ElementRef&lt;&gt;</code>
                                     </td>
 
                                     <td>
@@ -474,10 +467,18 @@
                                     </td>
 
 
+                                </tr>
+                                <tr>
+                                    <td>injector</td>
                                     <td>
-                                        <p>The top level component.</p>
-
+                                                <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
                                     </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
                                 </tr>
                             </tbody>
                         </table>
@@ -501,9 +502,7 @@
                 <td class="col-md-4">
                     <a name="resetTheme"></a>
                     <span class="name">
-                        <b>
-                            resetTheme
-                        </b>
+                        <span ><b>resetTheme</b></span>
                         <a href="#resetTheme"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -517,8 +516,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:58</a></div>
                 </td>
             </tr>
 
@@ -542,9 +541,7 @@
                 <td class="col-md-4">
                     <a name="setTheme"></a>
                     <span class="name">
-                        <b>
-                            setTheme
-                        </b>
+                        <span ><b>setTheme</b></span>
                         <a href="#setTheme"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -558,8 +555,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:48</a></div>
                 </td>
             </tr>
 
@@ -616,112 +613,129 @@
 </section>
             <section>
     
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="defaultTheme"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>defaultTheme</b></span>
+                        <a href="#defaultTheme"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="component"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                                <span class="modifier">Optional</span>
-                            component</b>
-                            <a href="#component"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>ComponentRef&lt;unknown&gt;</code>
-
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:15</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:13</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Top level component on which themes are applied. </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Default theme class.</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="element"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>element</b></span>
+                        <a href="#element"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="defaultTheme"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            defaultTheme</b>
-                            <a href="#defaultTheme"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>    <code>ElementRef&lt;&gt;</code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:12</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:15</a></div>
-                            </td>
-                        </tr>
 
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="injector"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>injector</b></span>
+                        <a href="#injector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Default theme class. </p>
-</div>
-                    </td>
-                </tr>
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="theme"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            theme</b>
-                            <a href="#theme"><span class="icon ion-ios-link"></span></a>
-                        </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:13</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:17</a></div>
-                            </td>
-                        </tr>
 
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="theme"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>theme</b></span>
+                        <a href="#theme"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Currently active theme class. </p>
-</div>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ccf-rui/src/app/core/services/theming/theming.service.ts:17</a></div>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Currently active theme class.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
     </div>
@@ -729,7 +743,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { OverlayContainer } from &#x27;@angular/cdk/overlay&#x27;;
-import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Renderer2 } from &#x27;@angular/core&#x27;;
+import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Renderer2, Injector, ElementRef } from &#x27;@angular/core&#x27;;
 
 /** Token for specifying the default theme class. */
 export const DEFAULT_THEME &#x3D; new InjectionToken&lt;string&gt;(&#x27;Default theme class&#x27;);
@@ -739,8 +753,8 @@ export const DEFAULT_THEME &#x3D; new InjectionToken&lt;string&gt;(&#x27;Default
  */
 @Injectable()
 export class ThemingService {
-  /** Top level component on which themes are applied. */
-  private component?: ComponentRef&lt;unknown&gt;;
+  private element: ElementRef&lt;unknown&gt;;
+  private injector: Injector;
   /** Default theme class. */
   private defaultTheme: string;
   /** Currently active theme class. */
@@ -748,8 +762,9 @@ export class ThemingService {
 
   /** Initializer called during bootstrap to set up theming. */
   static initialize(component: ComponentRef&lt;unknown&gt;): void {
-    const service &#x3D; component.injector.get(ThemingService);
-    service.initializeImpl(component);
+    const { injector, location } &#x3D; component;
+    const service &#x3D; injector.get(ThemingService);
+    service.initialize(location, injector);
   }
 
   /**
@@ -790,18 +805,15 @@ export class ThemingService {
 
 
   /**
-   * Implementation of initialize.
+   * Binds theming service to a component.
    *
    * @param component The top level component.
    * @throws {Error} If the theming service has already been initialized.
    */
-  private initializeImpl(component: ComponentRef&lt;unknown&gt;): void {
-    if (this.component) {
-      throw new Error(&#x27;Theming service has already been initialized!&#x27;);
-    }
-
-    this.component &#x3D; component;
-    this.applyThemeClass(this.theme);
+  initialize(element: ElementRef&lt;unknown&gt;, injector: Injector): void {
+    this.element &#x3D; element;
+    this.injector &#x3D; injector;
+    this.applyThemeClass(this.getTheme());
   }
 
   /**
@@ -811,18 +823,24 @@ export class ThemingService {
    * @param method Whether to add or remove the theme.
    */
   private applyThemeClass(cls: string, method: &#x27;add&#x27; | &#x27;remove&#x27; &#x3D; &#x27;add&#x27;): void {
-    const component &#x3D; this.component;
-    if (!cls || !component) { return; }
+    const { element, injector } &#x3D; this;
+    if (!cls || !element || !injector) {
+      return;
+    }
 
-    const renderer &#x3D; component.injector.get(Renderer2, null);
-    if (!renderer) { return; }
+    const renderer &#x3D; injector.get(Renderer2, null);
+    if (!renderer) {
+      return;
+    }
 
-    const root &#x3D; component.location.nativeElement as HTMLElement;
-    const overlay &#x3D; component.injector.get(OverlayContainer, null)?.getContainerElement();
+    const root &#x3D; element.nativeElement as HTMLElement;
+    const overlay &#x3D; injector.get(OverlayContainer, null)?.getContainerElement();
     const methodName &#x3D; method &#x3D;&#x3D;&#x3D; &#x27;add&#x27; ? &#x27;addClass&#x27; : &#x27;removeClass&#x27;;
 
     renderer[methodName](root, cls);
-    if (overlay) { renderer[methodName](overlay, cls); }
+    if (overlay) {
+      renderer[methodName](overlay, cls);
+    }
   }
 }
 </code></pre>
@@ -864,9 +882,9 @@ export class ThemingService {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>UserName</li>
+  <li
+  >
+  UserName</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/ccf-rui/src/app/shared/components/name-input/name-input.component.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -86,10 +90,16 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#firstName">firstName</a>
+                                        <a href="#firstName" 
+>
+                                            firstName
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#lastName">lastName</a>
+                                        <a href="#lastName" 
+>
+                                            lastName
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -107,7 +117,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="firstName"></a>
-                                        <span class="name"><b>firstName</b><a href="#firstName"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>firstName</b>
+                                            <a href="#firstName">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,7 +156,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="lastName"></a>
-                                        <span class="name"><b>lastName</b><a href="#lastName"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>lastName</b>
+                                            <a href="#lastName">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -179,6 +197,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
 import { FormControl, Validators } from &#x27;@angular/forms&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 
 /**
  * User name data
@@ -243,6 +262,13 @@ export class NameInputComponent {
   @Output() readonly nameChange &#x3D; new EventEmitter&lt;UserName&gt;();
 
   /**
+   * Creates an instance of name input component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Updates username with a new entry and emits the UserName object
    *
    * @param input InputEvent from the input element which contains the new value
@@ -251,6 +277,7 @@ export class NameInputComponent {
   updateName(input: InputEvent, key: string): void {
     const inputTarget &#x3D; input.target as HTMLInputElement;
     this.name &#x3D; { ...this.name, [key]: inputTarget.value };
+    this.ga.event(&#x27;name_updated&#x27;, &#x27;name_input&#x27;, key);
     this.nameChange.emit(this.name);
   }
 }
@@ -287,9 +314,9 @@ export class NameInputComponent {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

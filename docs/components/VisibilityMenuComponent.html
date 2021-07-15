@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -35,7 +36,9 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>VisibilityMenuComponent</li>
+  <li
+  >
+  VisibilityMenuComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
 <p class="comment">
     <code>projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts</code>
 </p>
+
 
     <p class="comment">
         <h3>Description</h3>
@@ -122,6 +126,21 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#clsName" >clsName</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -132,25 +151,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getId">getId</a>
+                                <a href="#getId" >getId</a>
                             </li>
                             <li>
-                                <a href="#mouseOut">mouseOut</a>
+                                <a href="#mouseOut" >mouseOut</a>
                             </li>
                             <li>
-                                <a href="#mouseOver">mouseOver</a>
+                                <a href="#mouseOver" >mouseOver</a>
                             </li>
                             <li>
-                                <a href="#resetItem">resetItem</a>
+                                <a href="#resetItem" >resetItem</a>
                             </li>
                             <li>
-                                <a href="#setAllOpacity">setAllOpacity</a>
+                                <a href="#setAllOpacity" >setAllOpacity</a>
                             </li>
                             <li>
-                                <a href="#toggleVisibility">toggleVisibility</a>
+                                <a href="#toggleVisibility" >toggleVisibility</a>
                             </li>
                             <li>
-                                <a href="#updateOpacity">updateOpacity</a>
+                                <a href="#updateOpacity" >updateOpacity</a>
                             </li>
                         </ul>
                     </td>
@@ -165,10 +184,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#items">items</a>
+                                <a href="#items" >items</a>
                             </li>
                             <li>
-                                <a href="#selection">selection</a>
+                                <a href="#selection" >selection</a>
                             </li>
                         </ul>
                     </td>
@@ -183,10 +202,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#hover">hover</a>
+                                <a href="#hover" >hover</a>
                             </li>
                             <li>
-                                <a href="#itemsChange">itemsChange</a>
+                                <a href="#itemsChange" >itemsChange</a>
                             </li>
                         </ul>
                     </td>
@@ -201,7 +220,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#class">class</a>
+                                <a href="#class" >class</a>
                             </li>
                         </ul>
                     </td>
@@ -212,6 +231,61 @@
     </table>
 </section>
 
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ga: GoogleAnalyticsService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:40</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of visibility menu component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ga</td>
+                                                  
+                                                        <td>
+                                                                    <code>GoogleAnalyticsService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Analytics service</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
     <section>
     <h3 id="inputs">Inputs</h3>
@@ -231,7 +305,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:25</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -258,7 +332,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:30</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -288,7 +362,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:35</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -315,7 +389,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:40</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -328,38 +402,43 @@
         </table>
 </section>
     <section>
-    <h3>HostBindings</h3>        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="class"></a>
-                        <span class="name">
-                            <b>
-                            class</b>
-                            <a href="#class"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#ccf" target="_self" >&quot;ccf-visibility-menu&quot;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-visibility-menu&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;ccf-visibility-menu&#x27;</code>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:20</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:17</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>HTML class name</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class name</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 </section>
 
 
@@ -374,24 +453,22 @@
                 <td class="col-md-4">
                     <a name="getId"></a>
                     <span class="name">
-                        <b>
-                            getId
-                        </b>
+                        <span ><b>getId</b></span>
                         <a href="#getId"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getId(_index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: <a href="../interfaces/VisibilityItem.html">VisibilityItem</a>)</code>
+<code>getId(_index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: <a href="../interfaces/VisibilityItem.html" target="_self">VisibilityItem</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="116"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:116</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:131</a></div>
                 </td>
             </tr>
 
@@ -466,9 +543,7 @@
                 <td class="col-md-4">
                     <a name="mouseOut"></a>
                     <span class="name">
-                        <b>
-                            mouseOut
-                        </b>
+                        <span ><b>mouseOut</b></span>
                         <a href="#mouseOut"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -482,8 +557,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:79</a></div>
                 </td>
             </tr>
 
@@ -507,24 +582,22 @@
                 <td class="col-md-4">
                     <a name="mouseOver"></a>
                     <span class="name">
-                        <b>
-                            mouseOver
-                        </b>
+                        <span ><b>mouseOver</b></span>
                         <a href="#mouseOver"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>mouseOver(item: <a href="../interfaces/VisibilityItem.html">VisibilityItem</a>)</code>
+<code>mouseOver(item: <a href="../interfaces/VisibilityItem.html" target="_self">VisibilityItem</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:69</a></div>
                 </td>
             </tr>
 
@@ -584,9 +657,7 @@
                 <td class="col-md-4">
                     <a name="resetItem"></a>
                     <span class="name">
-                        <b>
-                            resetItem
-                        </b>
+                        <span ><b>resetItem</b></span>
                         <a href="#resetItem"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -600,8 +671,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:103</a></div>
                 </td>
             </tr>
 
@@ -625,9 +696,7 @@
                 <td class="col-md-4">
                     <a name="setAllOpacity"></a>
                     <span class="name">
-                        <b>
-                            setAllOpacity
-                        </b>
+                        <span ><b>setAllOpacity</b></span>
                         <a href="#setAllOpacity"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -641,8 +710,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:118</a></div>
                 </td>
             </tr>
 
@@ -702,24 +771,22 @@
                 <td class="col-md-4">
                     <a name="toggleVisibility"></a>
                     <span class="name">
-                        <b>
-                            toggleVisibility
-                        </b>
+                        <span ><b>toggleVisibility</b></span>
                         <a href="#toggleVisibility"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>toggleVisibility(item: <a href="../interfaces/VisibilityItem.html">VisibilityItem</a>)</code>
+<code>toggleVisibility(item: <a href="../interfaces/VisibilityItem.html" target="_self">VisibilityItem</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:54</a></div>
                 </td>
             </tr>
 
@@ -779,9 +846,7 @@
                 <td class="col-md-4">
                     <a name="updateOpacity"></a>
                     <span class="name">
-                        <b>
-                            updateOpacity
-                        </b>
+                        <span ><b>updateOpacity</b></span>
                         <a href="#updateOpacity"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -795,8 +860,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:89</a></div>
                 </td>
             </tr>
 
@@ -851,13 +916,69 @@
         </tbody>
     </table>
 </section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clsName"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>clsName</b></span>
+                        <a href="#clsName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-visibility-menu&#x27;</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @HostBinding(&#x27;class&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class name</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
+
 import { VisibilityItem } from &#x27;../../../core/models/visibility-item&#x27;;
+
 
 /**
  * Menu for displaying visibility options
@@ -895,6 +1016,13 @@ export class VisibilityMenuComponent {
   @Output() readonly itemsChange &#x3D; new EventEmitter&lt;VisibilityItem[]&gt;();
 
   /**
+   * Creates an instance of visibility menu component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
    * Toggles visibility of an item; opacity is reverted to the previous value if visibility toggled back on
    *
    * @param item Menu item
@@ -904,6 +1032,8 @@ export class VisibilityMenuComponent {
     if (this.selection &amp;&amp; item.id &#x3D;&#x3D;&#x3D; this.selection.id) {
       this.selection &#x3D; {...this.selection, visible: item.visible};
     }
+
+    this.ga.event(&#x27;visibility_toggled&#x27;, &#x27;visibility_menu&#x27;, &#x27;&#x27; + item.id, +item.visible);
     this.updateOpacity(item.opacity);
   }
 
@@ -939,6 +1069,7 @@ export class VisibilityMenuComponent {
     const updatedSelection &#x3D; {...this.selection, opacity: value};
     this.selection &#x3D; updatedSelection;
     this.items &#x3D; this.items.map(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; updatedSelection.id ? updatedSelection : item);
+    this.ga.event(&#x27;opacity_update&#x27;, &#x27;visibility_menu&#x27;, &#x27;&#x27; + updatedSelection.id, updatedSelection.opacity);
     this.itemsChange.emit(this.items);
   }
 
@@ -950,6 +1081,7 @@ export class VisibilityMenuComponent {
       const updatedSelection &#x3D; {...this.selection, opacity: 20, visible: true};
       this.selection &#x3D; updatedSelection;
       this.items &#x3D; this.items.map(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; updatedSelection.id ? updatedSelection : item);
+      this.ga.event(&#x27;item_reset&#x27;, &#x27;visibility_menu&#x27;, &#x27;&#x27; + updatedSelection.id);
       this.itemsChange.emit(this.items);
     }
   }
@@ -961,6 +1093,7 @@ export class VisibilityMenuComponent {
    */
   setAllOpacity(value: number): void {
     this.items &#x3D; this.items.map(i &#x3D;&gt; ({ ...i, opacity: value, visible: true}));
+    this.ga.event(&#x27;all_items_opacity_update&#x27;, &#x27;visibility_menu&#x27;, undefined, value);
     this.itemsChange.emit(this.items);
   }
 
@@ -983,9 +1116,9 @@ export class VisibilityMenuComponent {
 
 &lt;div class&#x3D;&quot;item-entry&quot; [class.selected]&#x3D;&quot;selection ? getId(0, selection) &#x3D;&#x3D;&#x3D; getId(0, item) : false&quot; (mouseleave)&#x3D;&quot;mouseOut()&quot; *ngFor&#x3D;&quot;let item of items; trackBy: getId&quot;&gt;
   &lt;mat-icon class&#x3D;&quot;opacity-icon&quot; [class.fade]&#x3D;&quot;!item.visible&quot; (mouseenter)&#x3D;&quot;mouseOver(item)&quot; svgIcon&#x3D;&quot;app:opacity&quot;&gt;&lt;/mat-icon&gt;
-  &lt;div class&#x3D;&quot;item-name&quot; [class.hidden]&#x3D;&quot;item.id &#x3D;&#x3D; selection?.id&quot; title&#x3D;&quot;{{item.name}}&quot;&gt;{{ item.name }}&lt;/div&gt;
+  &lt;div class&#x3D;&quot;item-name&quot; [class.hidden]&#x3D;&quot;item.id &#x3D;&#x3D;&#x3D; selection?.id&quot; title&#x3D;&quot;{{item.name}}&quot;&gt;{{ item.name }}&lt;/div&gt;
 
-  &lt;div class&#x3D;&quot;slider&quot; [class.hidden]&#x3D;&quot;item.id !&#x3D; selection?.id&quot;&gt;
+  &lt;div class&#x3D;&quot;slider&quot; [class.hidden]&#x3D;&quot;item.id !&#x3D;&#x3D; selection?.id&quot;&gt;
     &lt;ccf-opacity-slider #slider [visible]&#x3D;&quot;item.visible&quot; [opacity]&#x3D;&quot;selection ? selection?.opacity : 20&quot;
       (opacityChange)&#x3D;&quot;updateOpacity($event)&quot; (opacityReset)&#x3D;&quot;resetItem()&quot; (visibilityToggle)&#x3D;&quot;toggleVisibility(item)&quot;&gt;
     &lt;/ccf-opacity-slider&gt;
@@ -1106,8 +1239,8 @@ export class VisibilityMenuComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-icon class="icon reset" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" (click)="setAllOpacity(20)" *ngIf="items.length">refresh</mat-icon><div class="item-entry" [class.selected]="selection ? getId(0, selection) === getId(0, item) : false" (mouseleave)="mouseOut()" *ngFor="let item of items; trackBy: getId">  <mat-icon class="opacity-icon" [class.fade]="!item.visible" (mouseenter)="mouseOver(item)" svgIcon="app:opacity"></mat-icon>  <div class="item-name" [class.hidden]="item.id == selection?.id" title="{{item.name}}">{{ item.name }}</div>  <div class="slider" [class.hidden]="item.id != selection?.id">    <ccf-opacity-slider #slider [visible]="item.visible" [opacity]="selection ? selection?.opacity : 20"      (opacityChange)="updateOpacity($event)" (opacityReset)="resetItem()" (visibilityToggle)="toggleVisibility(item)">    </ccf-opacity-slider>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><mat-icon class="icon reset" matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" (click)="setAllOpacity(20)" *ngIf="items.length">refresh</mat-icon><div class="item-entry" [class.selected]="selection ? getId(0, selection) === getId(0, item) : false" (mouseleave)="mouseOut()" *ngFor="let item of items; trackBy: getId">  <mat-icon class="opacity-icon" [class.fade]="!item.visible" (mouseenter)="mouseOver(item)" svgIcon="app:opacity"></mat-icon>  <div class="item-name" [class.hidden]="item.id === selection?.id" title="{{item.name}}">{{ item.name }}</div>  <div class="slider" [class.hidden]="item.id !== selection?.id">    <ccf-opacity-slider #slider [visible]="item.visible" [opacity]="selection ? selection?.opacity : 20"      (opacityChange)="updateOpacity($event)" (opacityReset)="resetItem()" (visibilityToggle)="toggleVisibility(item)">    </ccf-opacity-slider>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'VisibilityMenuComponent'};
 </script>
@@ -1150,9 +1283,9 @@ export class VisibilityMenuComponent {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

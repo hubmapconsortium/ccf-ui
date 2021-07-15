@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -35,7 +36,9 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>OntologySearchComponent</li>
+  <li
+  >
+  OntologySearchComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
 <p class="comment">
     <code>projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts</code>
 </p>
+
 
     <p class="comment">
         <h3>Description</h3>
@@ -137,17 +141,17 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#autoCompleteOpen">autoCompleteOpen</a>
+                                <a href="#autoCompleteOpen" >autoCompleteOpen</a>
                             </li>
                             <li>
-                                <a href="#filteredResults$">filteredResults$</a>
+                                <a href="#filteredResults$" >filteredResults$</a>
                             </li>
                             <li>
-                                <a href="#formControl">formControl</a>
+                                <a href="#formControl" >formControl</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#ontologyService">ontologyService</a>
+                                <a href="#ontologyService" >ontologyService</a>
                             </li>
                         </ul>
                     </td>
@@ -162,19 +166,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#displayFormatter">displayFormatter</a>
+                                <a href="#displayFormatter" >displayFormatter</a>
                             </li>
                             <li>
-                                <a href="#ngOnInit">ngOnInit</a>
+                                <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                             <li>
-                                <a href="#onSelect">onSelect</a>
+                                <a href="#onSelect" >onSelect</a>
                             </li>
                             <li>
-                                <a href="#sortBySynonymResult">sortBySynonymResult</a>
+                                <a href="#sortBySynonymResult" >sortBySynonymResult</a>
                             </li>
                             <li>
-                                <a href="#sortLexically">sortLexically</a>
+                                <a href="#sortLexically" >sortLexically</a>
                             </li>
                         </ul>
                     </td>
@@ -190,7 +194,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#selected">selected</a>
+                                <a href="#selected" >selected</a>
                             </li>
                         </ul>
                     </td>
@@ -208,12 +212,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(ontologyService: <a href="../injectables/OntologySearchService.html">OntologySearchService</a>)</code>
+<code>constructor(ontologyService: <a href="../injectables/OntologySearchService.html" target="_self">OntologySearchService</a>, ga: GoogleAnalyticsService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -249,6 +253,22 @@
 </code>
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>ga</td>
+                                                  
+                                                        <td>
+                                                                    <code>GoogleAnalyticsService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Analytics service</p>
+</code>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -277,7 +297,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:26</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -303,24 +323,22 @@ selected by the user in the search-results</p>
                 <td class="col-md-4">
                     <a name="displayFormatter"></a>
                     <span class="name">
-                        <b>
-                            displayFormatter
-                        </b>
+                        <span ><b>displayFormatter</b></span>
                         <a href="#displayFormatter"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>displayFormatter(option?: <a href="../interfaces/SearchResult.html">SearchResult</a>)</code>
+<code>displayFormatter(option?: <a href="../interfaces/SearchResult.html" target="_self">SearchResult</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:75</a></div>
                 </td>
             </tr>
 
@@ -381,9 +399,7 @@ selected by the user in the search-results</p>
                 <td class="col-md-4">
                     <a name="ngOnInit"></a>
                     <span class="name">
-                        <b>
-                            ngOnInit
-                        </b>
+                        <span ><b>ngOnInit</b></span>
                         <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -397,8 +413,8 @@ selected by the user in the search-results</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:57</a></div>
                 </td>
             </tr>
 
@@ -424,9 +440,7 @@ and gets the search results from the service</p>
                 <td class="col-md-4">
                     <a name="onSelect"></a>
                     <span class="name">
-                        <b>
-                            onSelect
-                        </b>
+                        <span ><b>onSelect</b></span>
                         <a href="#onSelect"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -440,8 +454,8 @@ and gets the search results from the service</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:104</a></div>
                 </td>
             </tr>
 
@@ -501,24 +515,22 @@ and gets the search results from the service</p>
                 <td class="col-md-4">
                     <a name="sortBySynonymResult"></a>
                     <span class="name">
-                        <b>
-                            sortBySynonymResult
-                        </b>
+                        <span ><b>sortBySynonymResult</b></span>
                         <a href="#sortBySynonymResult"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>sortBySynonymResult(this: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">void</a>, entry: <a href="../interfaces/SearchResult.html">SearchResult</a>)</code>
+<code>sortBySynonymResult(this: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">void</a>, entry: <a href="../interfaces/SearchResult.html" target="_self">SearchResult</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:85</a></div>
                 </td>
             </tr>
 
@@ -593,24 +605,22 @@ and gets the search results from the service</p>
                 <td class="col-md-4">
                     <a name="sortLexically"></a>
                     <span class="name">
-                        <b>
-                            sortLexically
-                        </b>
+                        <span ><b>sortLexically</b></span>
                         <a href="#sortLexically"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>sortLexically(this: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">void</a>, entry: <a href="../interfaces/SearchResult.html">SearchResult</a>)</code>
+<code>sortLexically(this: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">void</a>, entry: <a href="../interfaces/SearchResult.html" target="_self">SearchResult</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:95</a></div>
                 </td>
             </tr>
 
@@ -682,139 +692,135 @@ and gets the search results from the service</p>
 </section>
     <section>
     
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="autoCompleteOpen"></a>
+                    <span class="name">
+                        <span ><b>autoCompleteOpen</b></span>
+                        <a href="#autoCompleteOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="autoCompleteOpen"></a>
-                        <span class="name">
-                            <b>
-                            autoCompleteOpen</b>
-                            <a href="#autoCompleteOpen"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>false</code>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:37</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:36</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Determines if autocomplete is open or close.</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines if autocomplete is open or close.</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredResults$"></a>
+                    <span class="name">
+                        <span ><b>filteredResults$</b></span>
+                        <a href="#filteredResults$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="filteredResults$"></a>
-                        <span class="name">
-                            <b>
-                            filteredResults$</b>
-                            <a href="#filteredResults$"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="../interfaces/SearchResult.html" target="_self" >Observable&lt;SearchResult[]&gt;</a></code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/SearchResult.html" target="_self" >Observable&lt;SearchResult[]&gt;</a></code>
-
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:42</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:41</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Observable which provides the filtered search results</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable which provides the filtered search results</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formControl"></a>
+                    <span class="name">
+                        <span ><b>formControl</b></span>
+                        <a href="#formControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="formControl"></a>
-                        <span class="name">
-                            <b>
-                            formControl</b>
-                            <a href="#formControl"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:31</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:30</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Instance of FormControl - tracks the value and validation status of an individual form control</p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Instance of FormControl - tracks the value and validation status of an individual form control</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ontologyService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ontologyService</b></span>
+                        <a href="#ontologyService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="ontologyService"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            ontologyService</b>
-                            <a href="#ontologyService"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Type : </i>        <code><a href="../injectables/OntologySearchService.html" target="_self" >OntologySearchService</a></code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../injectables/OntologySearchService.html" target="_self" >OntologySearchService</a></code>
-
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:50</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts:48</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description">instance of searchService which provides all the search functionality</div>
-                    </td>
-                </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">instance of searchService which provides all the search functionality</div>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 </section>
 
 </div>
@@ -826,6 +832,7 @@ import { FormControl } from &#x27;@angular/forms&#x27;;
 import { MatAutocompleteSelectedEvent } from &#x27;@angular/material/autocomplete&#x27;;
 import { OntologyTreeNode } from &#x27;ccf-database&#x27;;
 import { get, sortBy } from &#x27;lodash&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { filter, map, startWith, switchMap } from &#x27;rxjs/operators&#x27;;
 
@@ -867,8 +874,9 @@ export class OntologySearchComponent implements OnInit {
    * Creates an instance of ontology search component.
    *
    * @param ontologyService instance of searchService which provides all the search functionality
+   * @param ga Analytics service
    */
-  constructor(public ontologyService: OntologySearchService) { }
+  constructor(public ontologyService: OntologySearchService, private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * on-init lifecycle hook for this component -
@@ -925,6 +933,7 @@ export class OntologySearchComponent implements OnInit {
   onSelect(event: MatAutocompleteSelectedEvent): void {
     const node &#x3D; get(event, [&#x27;option&#x27;, &#x27;value&#x27;, &#x27;node&#x27;]) as OntologyTreeNode;
     if (node) {
+      this.ga.event(&#x27;search&#x27;, &#x27;ontology_search&#x27;, node.id);
       this.selected.emit(node);
       this.formControl.reset();
     }
@@ -1068,7 +1077,7 @@ export class OntologySearchComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form class="ccf-ontology-search" [class.autocomplete-open]="autoCompleteOpen">  <mat-form-field appearance="outline" class="field">    <mat-icon matPrefix color="primary" class="search">search</mat-icon>    <input class="input" type="text" placeholder="Search ontology terms ..." matInput [formControl]="formControl"           [matAutocomplete]="autocomplete">    <mat-autocomplete class="ccf-ontology-search detached autocomplete" [displayWith]="displayFormatter"                      (optionSelected)="onSelect($event)" (opened)="autoCompleteOpen = true"                      (closed)="autoCompleteOpen = false" #autocomplete>      <div class="results-container">        <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">          <span class="prefix">{{option.displayLabel[0]}}</span>          <span class="search-term">{{option.displayLabel[1]}}</span>          <span class="suffix">{{option.displayLabel[2]}}</span>        </mat-option>      </div>    </mat-autocomplete>  </mat-form-field></form></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'OntologySearchComponent'};
 </script>
@@ -1111,9 +1120,9 @@ export class OntologySearchComponent implements OnInit {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>ReferenceDataStateModel</li>
+  <li
+  >
+  ReferenceDataStateModel</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -66,6 +69,7 @@
 
 
 
+
         <section>
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
@@ -79,22 +83,40 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#anatomicalStructures">anatomicalStructures</a>
+                                        <a href="#anatomicalStructures" 
+>
+                                            anatomicalStructures
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#extractionSets">extractionSets</a>
+                                        <a href="#extractionSets" 
+>
+                                            extractionSets
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#organIRILookup">organIRILookup</a>
+                                        <a href="#organIRILookup" 
+>
+                                            organIRILookup
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#organSpatialEntities">organSpatialEntities</a>
+                                        <a href="#organSpatialEntities" 
+>
+                                            organSpatialEntities
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#sceneNodeLookup">sceneNodeLookup</a>
+                                        <a href="#sceneNodeLookup" 
+>
+                                            sceneNodeLookup
+                                        </a>
                                 </li>
                                 <li>
-                                        <a href="#simpleSceneNodeLookup">simpleSceneNodeLookup</a>
+                                        <a href="#simpleSceneNodeLookup" 
+>
+                                            simpleSceneNodeLookup
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -112,7 +134,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="anatomicalStructures"></a>
-                                        <span class="name"><b>anatomicalStructures</b><a href="#anatomicalStructures"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>anatomicalStructures</b>
+                                            <a href="#anatomicalStructures">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -141,7 +167,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="extractionSets"></a>
-                                        <span class="name"><b>extractionSets</b><a href="#extractionSets"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>extractionSets</b>
+                                            <a href="#extractionSets">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -170,7 +200,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="organIRILookup"></a>
-                                        <span class="name"><b>organIRILookup</b><a href="#organIRILookup"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>organIRILookup</b>
+                                            <a href="#organIRILookup">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -199,7 +233,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="organSpatialEntities"></a>
-                                        <span class="name"><b>organSpatialEntities</b><a href="#organSpatialEntities"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>organSpatialEntities</b>
+                                            <a href="#organSpatialEntities">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -228,7 +266,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="sceneNodeLookup"></a>
-                                        <span class="name"><b>sceneNodeLookup</b><a href="#sceneNodeLookup"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>sceneNodeLookup</b>
+                                            <a href="#sceneNodeLookup">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -257,7 +299,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="simpleSceneNodeLookup"></a>
-                                        <span class="name"><b>simpleSceneNodeLookup</b><a href="#simpleSceneNodeLookup"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>simpleSceneNodeLookup</b>
+                                            <a href="#simpleSceneNodeLookup">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -439,9 +485,9 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

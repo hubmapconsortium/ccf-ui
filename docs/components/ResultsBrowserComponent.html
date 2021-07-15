@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -35,7 +36,9 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>ResultsBrowserComponent</li>
+  <li
+  >
+  ResultsBrowserComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
 <p class="comment">
     <code>projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts</code>
 </p>
+
 
     <p class="comment">
         <h3>Description</h3>
@@ -133,7 +137,7 @@ ResultsBrowserItems.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#atScrollBottom">atScrollBottom</a>
+                                <a href="#atScrollBottom" >atScrollBottom</a>
                             </li>
                         </ul>
                     </td>
@@ -148,13 +152,19 @@ ResultsBrowserItems.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#handleLinkClick">handleLinkClick</a>
+                                <a href="#handleHover" >handleHover</a>
                             </li>
                             <li>
-                                <a href="#handleSelection">handleSelection</a>
+                                <a href="#handleLinkClick" >handleLinkClick</a>
                             </li>
                             <li>
-                                <a href="#onScroll">onScroll</a>
+                                <a href="#handleSelection" >handleSelection</a>
+                            </li>
+                            <li>
+                                <a href="#handleUnhover" >handleUnhover</a>
+                            </li>
+                            <li>
+                                <a href="#onScroll" >onScroll</a>
                             </li>
                         </ul>
                     </td>
@@ -169,13 +179,16 @@ ResultsBrowserItems.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#aggregateData">aggregateData</a>
+                                <a href="#aggregateData" >aggregateData</a>
                             </li>
                             <li>
-                                <a href="#listResults">listResults</a>
+                                <a href="#highlighted" >highlighted</a>
                             </li>
                             <li>
-                                <a href="#resultLabel">resultLabel</a>
+                                <a href="#listResults" >listResults</a>
+                            </li>
+                            <li>
+                                <a href="#resultLabel" >resultLabel</a>
                             </li>
                         </ul>
                     </td>
@@ -190,13 +203,19 @@ ResultsBrowserItems.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#linkClicked">linkClicked</a>
+                                <a href="#itemHovered" >itemHovered</a>
                             </li>
                             <li>
-                                <a href="#listResultDeselected">listResultDeselected</a>
+                                <a href="#itemUnhovered" >itemUnhovered</a>
                             </li>
                             <li>
-                                <a href="#listResultSelected">listResultSelected</a>
+                                <a href="#linkClicked" >linkClicked</a>
+                            </li>
+                            <li>
+                                <a href="#listResultDeselected" >listResultDeselected</a>
+                            </li>
+                            <li>
+                                <a href="#listResultSelected" >listResultSelected</a>
                             </li>
                         </ul>
                     </td>
@@ -208,6 +227,61 @@ ResultsBrowserItems.</p>
     </table>
 </section>
 
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ga: GoogleAnalyticsService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:61</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of results browser component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ga</td>
+                                                  
+                                                        <td>
+                                                                    <code>GoogleAnalyticsService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Analytics service</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
     <section>
     <h3 id="inputs">Inputs</h3>
@@ -227,7 +301,7 @@ ResultsBrowserItems.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:28</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -236,6 +310,27 @@ ResultsBrowserItems.</p>
 </div>
                     </td>
                 </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="highlighted"></a>
+                        <b>highlighted</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:35</a></div>
+                            </td>
+                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -254,7 +349,7 @@ ResultsBrowserItems.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:23</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -281,7 +376,7 @@ ResultsBrowserItems.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:33</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -299,6 +394,48 @@ ResultsBrowserItems.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="itemHovered"></a>
+                        <b>itemHovered</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:53</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="itemUnhovered"></a>
+                        <b>itemUnhovered</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:55</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="linkClicked"></a>
                         <b>linkClicked</b>
                     </td>
@@ -311,7 +448,7 @@ ResultsBrowserItems.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:41</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -339,7 +476,7 @@ Used for opening and rendering the result viewer.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:51</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -366,7 +503,7 @@ Used for opening and rendering the result viewer.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:46</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -389,11 +526,77 @@ Used for opening and rendering the result viewer.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="handleHover"></a>
+                    <span class="name">
+                        <span ><b>handleHover</b></span>
+                        <a href="#handleHover"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleHover(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="handleLinkClick"></a>
                     <span class="name">
-                        <b>
-                            handleLinkClick
-                        </b>
+                        <span ><b>handleLinkClick</b></span>
                         <a href="#handleLinkClick"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -407,8 +610,8 @@ Used for opening and rendering the result viewer.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:90</a></div>
                 </td>
             </tr>
 
@@ -468,24 +671,22 @@ Used for opening and rendering the result viewer.</p>
                 <td class="col-md-4">
                     <a name="handleSelection"></a>
                     <span class="name">
-                        <b>
-                            handleSelection
-                        </b>
+                        <span ><b>handleSelection</b></span>
                         <a href="#handleSelection"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleSelection(result: <a href="../interfaces/ListResult.html">Immutable<ListResult></a>, selected: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+<code>handleSelection(result: <a href="../interfaces/ListResult.html" target="_self">Immutable&lt;ListResult&gt;</a>, selected: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:76</a></div>
                 </td>
             </tr>
 
@@ -559,11 +760,46 @@ Used for opening and rendering the result viewer.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="handleUnhover"></a>
+                    <span class="name">
+                        <span ><b>handleUnhover</b></span>
+                        <a href="#handleUnhover"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleUnhover()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="onScroll"></a>
                     <span class="name">
-                        <b>
-                            onScroll
-                        </b>
+                        <span ><b>onScroll</b></span>
                         <a href="#onScroll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -577,8 +813,8 @@ Used for opening and rendering the result viewer.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:99</a></div>
                 </td>
             </tr>
 
@@ -635,42 +871,41 @@ Used for opening and rendering the result viewer.</p>
 </section>
     <section>
     
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="atScrollBottom"></a>
+                    <span class="name">
+                        <span ><b>atScrollBottom</b></span>
+                        <a href="#atScrollBottom"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <a name="atScrollBottom"></a>
-                        <span class="name">
-                            <b>
-                            atScrollBottom</b>
-                            <a href="#atScrollBottom"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>false</code>
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:61</a></div>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts:54</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
 Used to determine whether or not to render the gradient at the bottom.</p>
 </div>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 </section>
 
 </div>
@@ -680,6 +915,7 @@ Used to determine whether or not to render the gradient at the bottom.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings/immutability&#x27;;
 import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { AggregateResult } from &#x27;ccf-database&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 
 import { ListResult } from &#x27;../../../core/models/list-result&#x27;;
 
@@ -710,6 +946,8 @@ export class ResultsBrowserComponent {
    */
   @Input() resultLabel: string;
 
+  @Input() highlighted: string;
+
   /**
    * Output emitting the result that was clicked on and its relevant information.
    * Used for opening and rendering the result viewer.
@@ -726,11 +964,22 @@ export class ResultsBrowserComponent {
    */
   @Output() listResultDeselected &#x3D; new EventEmitter&lt;Immutable&lt;ListResult&gt;&gt;();
 
+  @Output() itemHovered &#x3D; new EventEmitter&lt;string&gt;();
+
+  @Output() itemUnhovered &#x3D; new EventEmitter();
+
   /**
    * Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
    * Used to determine whether or not to render the gradient at the bottom.
    */
   atScrollBottom &#x3D; false;
+
+  /**
+   * Creates an instance of results browser component.
+   *
+   * @param ga Analytics service
+   */
+  constructor(private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Notifies listeners when a selection/deselection is made
@@ -739,6 +988,7 @@ export class ResultsBrowserComponent {
    * @param selected whether to select or deselect the result
    */
   handleSelection(result: Immutable&lt;ListResult&gt;, selected: boolean): void {
+    this.ga.event(&#x27;list_result_selected&#x27;, &#x27;results_browser&#x27;, this.resultLabel, +selected);
     if (selected) {
       this.listResultSelected.next(result);
     } else {
@@ -768,6 +1018,14 @@ export class ResultsBrowserComponent {
     const diff &#x3D; scrollHeight - scrollTop - clientHeight;
     this.atScrollBottom &#x3D; diff &lt; 64;
   }
+
+  handleHover(id: string): void {
+    this.itemHovered.emit(id);
+  }
+
+  handleUnhover(): void {
+    this.itemUnhovered.emit();
+  }
 }
 </code></pre>
     </div>
@@ -783,13 +1041,14 @@ export class ResultsBrowserComponent {
   &lt;/div&gt;
 
   &lt;div class&#x3D;&quot;results-browser-list&quot; (scroll)&#x3D;&quot;onScroll($event)&quot;&gt;
-    &lt;div class&#x3D;&quot;browser-item-container&quot; *ngFor&#x3D;&quot;let result of listResults&quot;&gt;
+    &lt;div class&#x3D;&quot;browser-item-container&quot; (mouseenter)&#x3D;&quot;handleHover(result.tissueBlock.spatialEntityId)&quot; (mouseleave)&#x3D;&quot;handleUnhover()&quot; *ngFor&#x3D;&quot;let result of listResults&quot;&gt;
       &lt;ccf-donor-card
         [tissueBlock]&#x3D;&quot;result.tissueBlock&quot;
         [selected]&#x3D;&quot;result.selected&quot;
         [color]&#x3D;&quot;result.color&quot;
         (checked)&#x3D;&quot;handleSelection(result, $event)&quot;
         (linkClick)&#x3D;&quot;handleLinkClick($event)&quot;
+        [highlighted]&#x3D;&quot;result.tissueBlock.spatialEntityId &#x3D;&#x3D;&#x3D; highlighted&quot;
       &gt;&lt;/ccf-donor-card&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -889,8 +1148,8 @@ export class ResultsBrowserComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="results-browser-container">  <div class="stat-box">    <div id="title">{{ resultLabel }}</div>    <div class="stat-row" *ngFor="let stat of aggregateData">      <div class="stat-value">{{stat.count}}</div>      <div class="stat-label">{{stat.label}}</div>    </div>  </div>  <div class="results-browser-list" (scroll)="onScroll($event)">    <div class="browser-item-container" *ngFor="let result of listResults">      <ccf-donor-card        [tissueBlock]="result.tissueBlock"        [selected]="result.selected"        [color]="result.color"        (checked)="handleSelection(result, $event)"        (linkClick)="handleLinkClick($event)"      ></ccf-donor-card>    </div>  </div>  <div class="scroll-gradient" [class.hidden]="!!atScrollBottom"></div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><div class="results-browser-container">  <div class="stat-box">    <div id="title">{{ resultLabel }}</div>    <div class="stat-row" *ngFor="let stat of aggregateData">      <div class="stat-value">{{stat.count}}</div>      <div class="stat-label">{{stat.label}}</div>    </div>  </div>  <div class="results-browser-list" (scroll)="onScroll($event)">    <div class="browser-item-container" (mouseenter)="handleHover(result.tissueBlock.spatialEntityId)" (mouseleave)="handleUnhover()" *ngFor="let result of listResults">      <ccf-donor-card        [tissueBlock]="result.tissueBlock"        [selected]="result.selected"        [color]="result.color"        (checked)="handleSelection(result, $event)"        (linkClick)="handleLinkClick($event)"        [highlighted]="result.tissueBlock.spatialEntityId === highlighted"      ></ccf-donor-card>    </div>  </div>  <div class="scroll-gradient" [class.hidden]="!!atScrollBottom"></div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'ResultsBrowserComponent'};
 </script>
@@ -933,9 +1192,9 @@ export class ResultsBrowserComponent {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
