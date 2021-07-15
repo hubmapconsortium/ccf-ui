@@ -80,16 +80,22 @@ export class ThemingService {
    */
   private applyThemeClass(cls: string, method: 'add' | 'remove' = 'add'): void {
     const { element, injector } = this;
-    if (!cls || !element || !injector) { return; }
+    if (!cls || !element || !injector) {
+      return;
+    }
 
     const renderer = injector.get(Renderer2, null);
-    if (!renderer) { return; }
+    if (!renderer) {
+      return;
+    }
 
     const root = element.nativeElement as HTMLElement;
     const overlay = injector.get(OverlayContainer, null)?.getContainerElement();
     const methodName = method === 'add' ? 'addClass' : 'removeClass';
 
     renderer[methodName](root, cls);
-    if (overlay) { renderer[methodName](overlay, cls); }
+    if (overlay) {
+      renderer[methodName](overlay, cls);
+    }
   }
 }

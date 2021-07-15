@@ -51,7 +51,7 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
   entryComponents: [AppComponent]
 })
 export class AppModule implements DoBootstrap {
-  constructor(private injector: Injector) { }
+  constructor(private readonly injector: Injector) { }
 
   ngDoBootstrap() {
     const appElement = createCustomElement(AppComponent, {

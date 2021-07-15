@@ -1,7 +1,6 @@
-import { Injector } from '@angular/core';
 /* eslint-disable @typescript-eslint/member-ordering */
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { ComponentRef, ElementRef, Inject, Injectable, InjectionToken, Optional, Renderer2 } from '@angular/core';
+import { ComponentRef, ElementRef, Inject, Injector, Injectable, InjectionToken, Optional, Renderer2 } from '@angular/core';
 
 /** Token for specifying the default theme class. */
 export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
@@ -81,16 +80,22 @@ export class ThemingService {
    */
   private applyThemeClass(cls: string, method: 'add' | 'remove' = 'add'): void {
     const { element, injector } = this;
-    if (!cls || !element || !injector) { return; }
+    if (!cls || !element || !injector) {
+      return;
+    }
 
     const renderer = injector.get(Renderer2, null);
-    if (!renderer) { return; }
+    if (!renderer) {
+      return;
+    }
 
     const root = element.nativeElement as HTMLElement;
     const overlay = injector.get(OverlayContainer, null)?.getContainerElement();
     const methodName = method === 'add' ? 'addClass' : 'removeClass';
 
     renderer[methodName](root, cls);
-    if (overlay) { renderer[methodName](overlay, cls); }
+    if (overlay) {
+      renderer[methodName](overlay, cls);
+    }
   }
 }
