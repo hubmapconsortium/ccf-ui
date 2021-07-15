@@ -80,7 +80,10 @@ export class BodyUI {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const props: any = {
       ...deckProps,
-      views: [ deckProps.camera === 'orthographic' ? new OrthographicView({}) : new OrbitView({}) ],
+      views: [ deckProps.camera === 'orthographic' ? new OrthographicView({
+        flipY: false,
+        near: -1000
+      }) : new OrbitView({}) ],
       controller: deckProps.interactive !== undefined ? deckProps.interactive : true,
       layers: [ this.bodyUILayer ],
       onHover: this._onHover,
