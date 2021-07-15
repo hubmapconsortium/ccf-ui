@@ -92,7 +92,6 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
 
   set camera(value: string) {
     this._camera = value;
-    this.bodyUI?.setCamera(value);
   }
 
   @Output()

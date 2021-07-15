@@ -232,15 +232,6 @@ export class BodyUI {
     });
   }
 
-  setCamera(value: string): void {
-    this.deck.setProps({
-      viewState: {
-        ...this.deck.props.viewState,
-        camera: value
-      } as BodyUIViewStateProps
-    });
-  }
-
   @bind
   private _onHover(e: {picked: boolean; object: SpatialSceneNode}): void {
     const { lastHovered } = this;
