@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BodyUiModule, InfoButtonModule, OrganSelectorModule, TrackingPopupModule, INITIAL_TELEMETRY_SETTING } from 'ccf-shared';
+import { BodyUiModule, InfoButtonModule, OrganSelectorModule, TrackingPopupModule } from 'ccf-shared';
 
 import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
 import { AppComponent } from './app.component';
@@ -16,9 +17,6 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 import { ViewerModule } from './shared/components/viewer/viewer.module';
 
-import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -37,7 +35,6 @@ import { environment } from '../environments/environment';
     InfoButtonModule,
     MatTooltipModule,
     ViewerModule,
-    NgxGoogleAnalyticsModule.forRoot(INITIAL_TELEMETRY_SETTING === false ? '' : environment.googleAnalyticsToken),
     TrackingPopupModule,
     MatSnackBarModule
   ],
