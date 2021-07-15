@@ -34,12 +34,13 @@ jobs:
       - run: npm run build:libs
       - name: Build EUI
         run: |
-          npm run build:ccf-eui -- --base-href=/ccf-ui/
+          npm run build -- --output-hashing=none --base-href=/ccf-ui/
           npm run build:ccf-eui:wc
       - name: Build RUI
         run: |
-          npm run build:ccf-rui -- --base-href=/ccf-ui/rui
+          npm run build -- --project ccf-rui --output-hashing=none --base-href=/ccf-ui/rui/
           npm run build:ccf-rui:wc
+          cp -r dist/ccf-rui dist/ccf-ui/rui
       - run: npm run compodoc
       - name: Setup GitHub Pages files
         run: |
