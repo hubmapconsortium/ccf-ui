@@ -108,7 +108,7 @@
 
       width: $pointer-size;
       height: $pointer-size;
-      top: 0.095rem - ($pointer-size / 2);
+      top: 0.095rem - math.div($pointer-size, 2);
 
       &:after {
         display: none;
@@ -120,11 +120,11 @@
     display: flex;
     flex-direction: column;
     width: 2rem;
-    
+
     &.min {
       margin-right: 1rem;
     }
-    
+
     &.max {
       margin-left: 1rem;
       align-items: flex-end;
