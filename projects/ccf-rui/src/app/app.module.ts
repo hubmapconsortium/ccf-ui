@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { NgModule, DoBootstrap, Injector } from '@angular/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -47,6 +48,16 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
       }
     }
   ],
-  bootstrap: [AppComponent]
+  entryComponents: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  constructor(private readonly injector: Injector) { }
+
+  ngDoBootstrap() {
+    const appElement = createCustomElement(AppComponent, {
+      injector: this.injector
+    });
+
+    customElements.define('ccf-rui', appElement);
+  }
+}

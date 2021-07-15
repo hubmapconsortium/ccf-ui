@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, Injector, ElementRef, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -69,8 +69,9 @@ export class AppComponent implements OnInit {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
-      readonly scene: SceneState, readonly listResultsState: ListResultsState, ga: GoogleAnalyticsService,
-      readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
+      readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<unknown>, injector: Injector,
+      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
+    theming.initialize(el, injector);
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();

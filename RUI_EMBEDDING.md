@@ -8,18 +8,13 @@ To embed *CCF-RUI* the following code snippet should be used.
 <!doctype html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136932895-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-136932895-2');
-  </script>
   <meta charset="utf-8">
   <title>HuBMAP CCF Registration User Interface (CCF-RUI)</title>
-  <base href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/">
+  <!-- For Registration User Interface -->
+  <base href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/rui/">
+
+  <!-- For Exploration User Interface -->
+  <base href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/">
   <script>
     window.ruiConfig = {
       // Custom configuration
@@ -30,12 +25,14 @@ To embed *CCF-RUI* the following code snippet should be used.
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Sharp" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="wc.js" async></script>
 </head>
 <body class="mat-typography">
-  <ccf-root></ccf-root>
-  <script src="runtime.js" type="module"></script>
-  <script src="polyfills.js" type="module"></script>
-  <script src="main.js" type="module"></script>
+  <!-- For Registration User Interface -->
+  <ccf-rui></ccf-rui>
+
+  <!-- For Exploration User Interface  -->
+  <ccf-eui></ccf-eui>
 </body>
 </html>
 ```

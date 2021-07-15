@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, Injector, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
@@ -7,6 +7,7 @@ import { PageState } from './core/store/page/page.state';
 import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ThemingService } from './core/services/theming/theming.service';
 
 /**
  * App component
@@ -31,7 +32,9 @@ export class AppComponent implements OnDestroy, OnInit {
   private readonly subscriptions = new Subscription();
 
   constructor(readonly model: ModelState, readonly page: PageState, ga: GoogleAnalyticsService,
-    readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
+    readonly tracking: TrackingState, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
+    el: ElementRef<unknown>, injector: Injector) {
+    theming.initialize(el, injector);
     this.subscriptions.add(
       page.embedded$.subscribe((embedded) => { this.open = !embedded; })
     );
