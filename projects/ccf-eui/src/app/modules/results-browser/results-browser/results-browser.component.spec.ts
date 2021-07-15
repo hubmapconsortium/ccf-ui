@@ -76,4 +76,16 @@ describe('ResultsBrowserComponent', () => {
     instance.onScroll(mockEvent);
     expect().nothing();
   });
+
+  it('should emit the item id when hovered over', async () => {
+    const { instance, outputs } = await shallow.render();
+    instance.handleHover('test');
+    expect(outputs.itemHovered.emit).toHaveBeenCalledWith('test');
+  });
+
+  it('should emit the itemUnhovered when item is no longer being hovered over', async () => {
+    const { instance, outputs } = await shallow.render();
+    instance.handleUnhover();
+    expect(outputs.itemUnhovered.emit).toHaveBeenCalled();
+  });
 });

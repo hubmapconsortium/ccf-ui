@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostBinding, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
-import { TrackingState } from '../../services/globals/tracking.state';
+import { TrackingState } from '../../analytics/tracking.state';
 
 
 @Component({

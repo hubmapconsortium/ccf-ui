@@ -8,13 +8,14 @@
   </div>
 
   <div class="results-browser-list" (scroll)="onScroll($event)">
-    <div class="browser-item-container" *ngFor="let result of listResults">
+    <div class="browser-item-container" (mouseenter)="handleHover(result.tissueBlock.spatialEntityId)" (mouseleave)="handleUnhover()" *ngFor="let result of listResults">
       <ccf-donor-card
         [tissueBlock]="result.tissueBlock"
         [selected]="result.selected"
         [color]="result.color"
         (checked)="handleSelection(result, $event)"
         (linkClick)="handleLinkClick($event)"
+        [highlighted]="result.tissueBlock.spatialEntityId === highlighted"
       ></ccf-donor-card>
     </div>
   </div>

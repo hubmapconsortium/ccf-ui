@@ -10,6 +10,7 @@ import { distinctUntilChanged, map, pluck, take, tap } from 'rxjs/operators';
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
 import { DataSourceService } from '../../services/data-source/data-source.service';
+import { ListResultsState } from '../list-results/list-results.state';
 
 export const DEFAULT_SELECTED_ORGANS = new Set(['Skin', 'Heart', 'Kidney', 'Spleen']);
 
@@ -26,6 +27,7 @@ export interface SceneStateModel {
       opacity: boolean;
     };
   };
+  highlightedId?: string;
 }
 
 /**
@@ -51,11 +53,15 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   /** Scene to display in the 3d Scene */
   readonly scene$ = this.state$.pipe(pluck('scene'), distinctUntilChanged());
 
+  readonly highlightedId$ = this.state$.pipe(pluck('highlightedId'), distinctUntilChanged());
+
   /** The data state */
   private dataState: DataState;
 
   /** Color assignments state */
   private colorAssignments: ColorAssignmentState;
+
+  private listResults: ListResultsState;
 
   /**
    * Creates an instance of scene state.
@@ -115,6 +121,14 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     }
   }
 
+  sceneNodeHovered(node: SpatialSceneNode): void {
+    this.listResults.highlightNode(node['@id']);
+  }
+
+  sceneNodeUnhover(): void {
+    this.listResults.unHighlightNode();
+  }
+
   /**
    * Initializes this state service.
    */
@@ -125,6 +139,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     // Lazy load here
     this.dataState = this.injector.get(DataState);
     this.colorAssignments = this.injector.get(ColorAssignmentState);
+    this.listResults = this.injector.get(ListResultsState);
 
     // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(
@@ -146,17 +161,19 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       this.dataState.sceneData$,
       this.selectedReferenceOrgans$,
       this.colorAssignments.colorAssignments$,
-      this.dataService.getReferenceOrgans()
+      this.dataService.getReferenceOrgans(),
+      this.listResults.highlightedNodeId$
     ]).pipe(
-      map(([scene, selectedOrgans, colors, refOrganData]) => {
+      map(([scene, selectedOrgans, colors, refOrganData, highlightedNodeId]) => {
         const activeOrgans = new Set(selectedOrgans.map(o => o.id));
         const refOrgans = new Set(refOrganData.filter(o => activeOrgans.has(o.representation_of)).map(o => o['@id']));
         return scene.filter(node =>
           (node.ccf_annotations && node.ccf_annotations.some(tag => activeOrgans.has(tag)))
           ||
           (node.reference_organ && refOrgans.has(node.reference_organ))
-        ).map(node => node.entityId && colors.hasOwnProperty(node['@id']) ?
-          ({ ...node, color: colors[node['@id']].rgba } as SpatialSceneNode) : node
+        ).map(node => node.entityId && (colors.hasOwnProperty(node['@id']) || highlightedNodeId === node['@id']) ?
+          ({ ...node,
+            color: highlightedNodeId === node['@id'] ? [30, 136, 229, 255] : colors[node['@id']].rgba } as SpatialSceneNode) : node
         );
       }),
       tap(scene => this.setScene(scene))

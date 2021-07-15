@@ -1,8 +1,11 @@
 import { createCustomElement } from '@angular/elements';
 import { NgModule, DoBootstrap, Injector } from '@angular/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
+import { OrganSelectorModule, TrackingPopupModule } from 'ccf-shared';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -10,15 +13,9 @@ import { DEFAULT_THEME } from './core/services/theming/theming.service';
 import { ContentModule } from './modules/content/content.module';
 import { HeaderModule } from './modules/header/header.module';
 import { LeftSidebarModule } from './modules/left-sidebar/left-sidebar.module';
+import { RegistrationModalModule } from './modules/registration-modal/registration-modal/registration-modal.module';
 import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { OrganSelectorModule, TrackingPopupModule, INITIAL_TELEMETRY_SETTING } from 'ccf-shared';
-import { RegistrationModalModule } from './modules/registration-modal/registration-modal/registration-modal.module';
-
-import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -33,7 +30,6 @@ import { environment } from '../environments/environment';
     RightSidebarModule,
     OrganSelectorModule,
     RegistrationModalModule,
-    NgxGoogleAnalyticsModule.forRoot(INITIAL_TELEMETRY_SETTING === false ? '' : environment.googleAnalyticsToken),
     TrackingPopupModule,
     MatSnackBarModule
   ],

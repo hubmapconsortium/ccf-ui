@@ -32,6 +32,8 @@ export class ResultsBrowserComponent {
    */
   @Input() resultLabel: string;
 
+  @Input() highlighted: string;
+
   /**
    * Output emitting the result that was clicked on and its relevant information.
    * Used for opening and rendering the result viewer.
@@ -47,6 +49,10 @@ export class ResultsBrowserComponent {
    * Output emitting the link result deselected
    */
   @Output() listResultDeselected = new EventEmitter<Immutable<ListResult>>();
+
+  @Output() itemHovered = new EventEmitter<string>();
+
+  @Output() itemUnhovered = new EventEmitter();
 
   /**
    * Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.
@@ -97,5 +103,13 @@ export class ResultsBrowserComponent {
     const { clientHeight, scrollHeight, scrollTop } = event.target as Element;
     const diff = scrollHeight - scrollTop - clientHeight;
     this.atScrollBottom = diff < 64;
+  }
+
+  handleHover(id: string): void {
+    this.itemHovered.emit(id);
+  }
+
+  handleUnhover(): void {
+    this.itemUnhovered.emit();
   }
 }

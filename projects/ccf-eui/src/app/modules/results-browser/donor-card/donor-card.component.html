@@ -1,10 +1,10 @@
 <div class="main-container">
-  <div class="checkbox-background" [class.selected]="selected"
+  <div class="checkbox-background" [class.selected]="selected" [class.highlighted]="highlighted"
        [ngStyle]="{'background-color': selected ? color : 'transparent'}" (click)="handleCheckbox()">
     <mat-checkbox [checked]="selected" class="checkbox" [class.checkselected]="selected"></mat-checkbox>
   </div>
 
-  <div class="hoverable default-padding donor mat-elevation-z2" [class.hover-enabled]="selected" [class.expanded]="expanded">
+  <div class="hoverable default-padding donor mat-elevation-z2" [class.hover-enabled]="selected" [class.expanded]="expanded" [class.highlighted]="highlighted">
     <div class="d-flex">
       <mat-icon class="icon-size icon-dark mr-5">person</mat-icon>
 

@@ -94,6 +94,12 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   @Output()
   readonly nodeClick = new EventEmitter<NodeClickEvent>();
 
+  @Output()
+  readonly nodeHoverStart = new EventEmitter<SpatialSceneNode>();
+
+  @Output()
+  readonly nodeHoverStop = new EventEmitter<SpatialSceneNode>();
+
   @Input()
   get interactive(): boolean {
     return this._interactive;
@@ -174,7 +180,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.subscriptions = [
       this.bodyUI.sceneRotation$.subscribe((rotation) => this.rotationChange.next(rotation)),
       this.bodyUI.nodeDrag$.subscribe((event) => this.nodeDrag.emit(event)),
-      this.bodyUI.nodeClick$.subscribe((event) => this.nodeClick.emit(event))
+      this.bodyUI.nodeClick$.subscribe((event) => this.nodeClick.emit(event)),
+      this.bodyUI.nodeHoverStart$.subscribe((event) => this.nodeHoverStart.emit(event)),
+      this.bodyUI.nodeHoverStop$.subscribe((event) => this.nodeHoverStop.emit(event))
     ];
   }
 

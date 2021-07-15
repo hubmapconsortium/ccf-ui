@@ -15,7 +15,7 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
       ...{
         id,
         pickable: true,
-        autoHighlight: true,
+        autoHighlight: false,
         highlightColor: [30, 136, 229, 255],
         coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
         data,

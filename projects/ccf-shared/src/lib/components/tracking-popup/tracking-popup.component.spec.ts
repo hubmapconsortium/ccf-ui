@@ -2,7 +2,7 @@ import { Shallow } from 'shallow-render';
 
 import { TrackingPopupComponent } from './tracking-popup.component';
 import { TrackingPopupModule } from './tracking-popup.module';
-import { TrackingState } from '../../services/globals/tracking.state';
+import { TrackingState } from '../../analytics/tracking.state';
 
 import { ElementRef } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
