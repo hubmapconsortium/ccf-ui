@@ -28,11 +28,11 @@ jobs:
       - run: npm run build:libs
       - name: Build EUI
         run: |
-          npm run build -- --output-hashing=none --base-href=/
+          npm run build -- --output-hashing=none --base-href=/ --configuration=staging
           npm run build:ccf-eui:wc
       - name: Build RUI
         run: |
-          npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/
+          npm run build -- --project ccf-rui --output-hashing=none --base-href=/rui/ --configuration=staging
           npm run build:ccf-rui:wc
           cp -r dist/ccf-rui dist/ccf-ui/rui
 
