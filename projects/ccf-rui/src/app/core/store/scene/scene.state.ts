@@ -61,7 +61,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     return combineLatest([nodes$, organ$, rotation$]).pipe(
       map(([nodes, { defaultTransform }, rotation]) => {
         const preTransform = new Matrix4(Matrix4.IDENTITY)
-          .rotateY(rotation)
+          .rotateY(toRadians(rotation))
           .multiplyRight(defaultTransform ?? Matrix4.IDENTITY);
 
         if (preTransform.equals(Matrix4.IDENTITY)) {
