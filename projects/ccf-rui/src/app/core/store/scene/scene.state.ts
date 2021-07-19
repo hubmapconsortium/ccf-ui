@@ -57,16 +57,21 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   @Computed()
   get rotatedNodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.rotation$, this.nodes$]).pipe(
-      map(([rotation, nodes]) => {
-        if (rotation === 0) {
+    const { nodes$, rotation$, model: { organ$ } } = this;
+    return combineLatest([nodes$, organ$, rotation$]).pipe(
+      map(([nodes, { defaultTransform }, rotation]) => {
+        const preTransform = new Matrix4(Matrix4.IDENTITY)
+          .rotateY(rotation)
+          .multiplyRight(defaultTransform ?? Matrix4.IDENTITY);
+
+        if (preTransform.equals(Matrix4.IDENTITY)) {
           return nodes;
-        } else {
-          return nodes.map(n => ({
-            ...n,
-            transformMatrix: new Matrix4(Matrix4.IDENTITY).rotateY(toRadians(rotation)).multiplyRight(n.transformMatrix)
-          }));
         }
+
+        return nodes.map(node => {
+          const transformMatrix = preTransform.clone().multiplyRight(node.transformMatrix);
+          return { ...node, transformMatrix };
+        });
       })
     );
   }

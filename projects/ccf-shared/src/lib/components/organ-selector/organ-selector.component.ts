@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input,
   OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Matrix4 } from '@math.gl/core';
 import { ResizeSensor } from 'css-element-queries';
 
 /**
@@ -78,6 +79,11 @@ export interface OrganInfo {
    * UBERON id for the organ
    */
   id?: string;
+
+  /**
+   * Default transformation
+   */
+  defaultTransform?: Matrix4;
 }
 
 /**
