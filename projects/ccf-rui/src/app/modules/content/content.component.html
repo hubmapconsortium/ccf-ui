@@ -17,6 +17,7 @@
     [bounds]="bounds$ | async"
     [zoom]="11.5"
     [interactive]="true"
+    camera="perspective"
   ></ccf-body-ui>
 
   <ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === 'register'"
@@ -26,6 +27,7 @@
     [bounds]="bounds$ | async"
     [zoom]="11.5"
     (nodeDrag)="handleNodeDrag($event)"
+    camera="orthographic"
   ></ccf-body-ui>
 
   <div class="gizmo-area">

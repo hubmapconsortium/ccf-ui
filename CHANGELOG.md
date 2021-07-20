@@ -2,6 +2,23 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
 
+## 2.0.0 - 2021-07-16
+
+### Added in EUI / RUI 2.0.0
+
+* RUI and EUI are now basic web-components, see [RUI_EMBEDDING.md](RUI_EMBEDDING.md)
+* Added advanced google analytics tracking/telemetry
+* Linked donor card and tissue block hovering
+* Updated dependencies, including upgrading to Angular 12
+* Minor UI and Bug fixes
+* Updated demo video links
+* Organ carousel will respond to container width and show only full icons
+* EUI: clicking refresh and selecting body on partonomy resets the body view
+
+### Breaking changes in EUI / RUI 2.0.0
+
+* Embedding the EUI and RUI must now be done via web-components. The most significant change is the element is no longer called `ccf-root` but is instead called `ccf-eui` or `ccf-rui` depending on the UI being embedded.
+
 ## 1.7.0 - 2021-05-21
 
 ### Added in EUI / RUI 1.7.0
