@@ -18,7 +18,7 @@
     "build:ccf-shared": "npm run build ccf-shared",
     "build:ccf-eui": "ng build ccf-eui --prod --output-hashing none",
     "build:ccf-eui:wc": "node projects/ccf-eui/build-webcomponent.js",
-    "build:ccf-rui": "ng build ccf-rui --prod --output-hashing none",
+    "build:ccf-rui": "ng build ccf-rui --prod --output-hashing none --extract-css false",
     "build:ccf-rui:wc": "node projects/ccf-rui/build-webcomponent.js",
     "build:hubmap-jsonld": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/process-hubmap-data.ts ./src/assets/dev-data/entities.json ./src/assets/dev-data/entities.jsonld",
     "build:triple-store-utils": "npm run build triple-store-utils && npm run fix-triple-store-utils",
