@@ -13,7 +13,7 @@
     [class.hidden]="page.tutorialMode$ | async"
     [scene]="scene.nodes$ | async"
     [rotation]="scene.rotation$ | async"
-    (rotationChange)="gizmo.rotation = $event"
+    (rotationChange)="gizmo.rotation = $event[0]; gizmo.rotationX = $event[1]"
     [bounds]="bounds$ | async"
     [zoom]="11.5"
     [interactive]="true"
