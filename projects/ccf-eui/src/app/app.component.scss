@@ -5,6 +5,7 @@
   overflow: hidden;
   font-size: 1rem;
   color: black;
+  position: relative;
 
   ccf-header {
     z-index: 99;
@@ -12,11 +13,10 @@
 
   ccf-drawer-container {
     flex-grow: 1;
-    position: fixed;
-    top: 4rem;
     height: 100%;
     width: 100%;
     opacity: 1;
+    overflow: visible;
 
     ccf-drawer-content {
       overflow: hidden;
