@@ -95,7 +95,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   }
 
   @Output()
-  readonly rotationChange = new EventEmitter<number>();
+  readonly rotationChange = new EventEmitter<[number, number]>();
 
   @Output()
   readonly nodeDrag = new EventEmitter<NodeDragEvent>();

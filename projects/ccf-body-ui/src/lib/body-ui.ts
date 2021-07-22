@@ -60,7 +60,7 @@ export class BodyUI {
   private readonly nodeClickSubject = new Subject<NodeClickEvent>();
   private readonly nodeHoverStartSubject = new Subject<SpatialSceneNode>();
   private readonly nodeHoverStopSubject = new Subject<SpatialSceneNode>();
-  private readonly sceneRotationSubject = new BehaviorSubject<number>(0);
+  private readonly sceneRotationSubject = new BehaviorSubject<[number, number]>([0, 0]);
   private readonly nodeDragStartSubject = new Subject<NodeDragEvent>();
   private readonly nodeDragSubject = new Subject<NodeDragEvent>();
   private readonly nodeDragEndSubject = new Subject<NodeDragEvent>();
@@ -120,7 +120,7 @@ export class BodyUI {
       } as BodyUIViewStateProps
     });
     if (deckProps.rotation) {
-      this.sceneRotationSubject.next(deckProps.rotation);
+      this.sceneRotationSubject.next([deckProps.rotation, 0]);
     }
   }
 
@@ -267,7 +267,7 @@ export class BodyUI {
       }
     }
     this.deck.setProps({viewState: { ...event.viewState }});
-    this.sceneRotationSubject.next(event.viewState.rotationOrbit);
+    this.sceneRotationSubject.next([event.viewState.rotationOrbit, event.viewState.rotationX]);
   }
 
   @bind
