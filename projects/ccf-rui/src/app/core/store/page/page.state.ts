@@ -57,6 +57,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly user$ = this.state$.pipe(pluck('user'));
   /** RegistrationStated observable */
   readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
+  readonly useCancelRegistrationCallback$ = this.state$.pipe(pluck('useCancelRegistrationCallback'));
 
   /** Tutorial mode observable */
   @Computed()
