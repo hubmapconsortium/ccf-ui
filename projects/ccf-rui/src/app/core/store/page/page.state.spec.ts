@@ -32,7 +32,6 @@ describe('PageState', () => {
     TestBed.inject(Store).reset({
       page: {
         embedded: false,
-        homeUrl: '/home',
         user: {
           firstName: 'Bob',
           lastName: 'the Dragon'
@@ -49,11 +48,6 @@ describe('PageState', () => {
     expect(value).toEqual(false);
   });
 
-  it('has the latest home url', async () => {
-    const value = await nextValue(state.homeUrl$);
-    expect(value).toEqual('/home');
-  });
-
   it('has the latest user', async () => {
     const value = await nextValue(state.user$);
     expect(value).toEqual({ firstName: 'Bob', lastName: 'the Dragon' });
@@ -64,13 +58,6 @@ describe('PageState', () => {
 
     const value = await nextValue(state.embedded$);
     expect(value).toEqual(true);
-  });
-
-  it('updates home url', async () => {
-    state.setEmbedded(true, '/new');
-
-    const value = await nextValue(state.homeUrl$);
-    expect(value).toEqual('/new');
   });
 
   it('updates user name', async () => {
