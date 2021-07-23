@@ -12,12 +12,14 @@ export interface TrackingStateModel {
 export const LOCAL_STORAGE_ALLOW_TELEMETRY_KEY = 'ALLOW_TELEMETRY';
 export const LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY = 'ALLOW_TELEMETRY_SELECTED';
 
-// if there has not been a selection (localStorage ALLOW_TELEMETRY_SELECTED value is null), set the initial allow telemetry selected value to true. otherwise, set the initial value to the current localStorage allowTelemetry value 
-export const INITIAL_TELEMETRY_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === 'false' ? false
+// If there has not been a selection, set the initial allowTelemetry value to true.
+// Otherwise, set the initial allowTelemetry value to the current localStorage ALLOW_TELEMETRY value
+export const INITIAL_TELEMETRY_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === 'false' ? true
   : localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY)?.toLowerCase() === 'true';
 
-export const INITIAL_TELEMETRY_SELECTED_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === 'false' ? false
-  : localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY)?.toLowerCase() === 'true' ;
+// If there has not been a selection, set the initial allowTelemetrySelected value to false.
+// Otherwise, set the initial allowTelemetrySelected value to true
+export const INITIAL_TELEMETRY_SELECTED_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === 'false' ? false : true;
 
 @StateRepository()
 @State<TrackingStateModel>({
