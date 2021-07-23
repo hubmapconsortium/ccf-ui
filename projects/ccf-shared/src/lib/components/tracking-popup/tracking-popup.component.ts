@@ -20,7 +20,7 @@ export class TrackingPopupComponent {
   }
 
   get optInText(): string {
-    return localStorage.getItem('ALLOW_TELEMETRY_SELECTED') === 'true' ? 'Opt in' : 'I understand'
+    return localStorage.getItem('ALLOW_TELEMETRY_SELECTED') === 'true' ? 'Opt in' : 'I understand';
   }
 
   dismiss(): void {
