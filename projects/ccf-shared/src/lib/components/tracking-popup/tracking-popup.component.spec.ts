@@ -31,21 +31,29 @@ describe('TrackingPopupComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  it('shows both buttons if allowTelemetrySelected is null', async () => {
+    const { instance } = await shallow.render();
+    expect(instance.showButton('opt-in') && instance.showButton('opt-out')).toBeTrue();
+  });
+
+
+  it('shows both buttons if allowTelemetrySelected is false', async () => {
+    const { instance } = await shallow.mock(TrackingState, {...mockTrackingState, snapshot: {allowTelemetrySelected: false}}).render();
+    expect(instance.showButton('opt-in') && instance.showButton('opt-out')).toBeTrue();
+  });
+
   it('shows the opt-in button if allowTelemetry is undefined', async () => {
     const { instance } = await shallow.render();
-    instance.showButton('opt-in');
     expect(instance.showButton('opt-in')).toBeTrue();
   });
 
   it('hides the opt-in button if allowTelemetry is true', async () => {
     const { instance } = await shallow.mock(TrackingState, {...mockTrackingState, snapshot: {allowTelemetry: true}}).render();
-    instance.showButton('opt-in');
     expect(instance.showButton('opt-in')).toBeFalse();
   });
 
   it('shows the opt-out button if allowTelemetry is false', async () => {
     const { instance } = await shallow.mock(TrackingState, {...mockTrackingState, snapshot: {allowTelemetry: false}}).render();
-    instance.showButton('opt-out');
     expect(instance.showButton('opt-in')).toBeTrue();
   });
 
