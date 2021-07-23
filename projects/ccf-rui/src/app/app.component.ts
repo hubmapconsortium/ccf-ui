@@ -46,7 +46,7 @@ export class AppComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
       data: {preClose: () => {snackBar.dismiss();} },
-      duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
+      duration: !this.tracking.snapshot.allowTelemetrySelected ? Infinity : 3000
     });
   }
 

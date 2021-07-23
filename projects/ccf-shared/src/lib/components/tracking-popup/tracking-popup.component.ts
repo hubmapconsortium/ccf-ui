@@ -29,6 +29,9 @@ export class TrackingPopupComponent {
   }
 
   showButton(button: 'opt-in' | 'opt-out'): boolean {
+    if (this.tracking.snapshot.allowTelemetrySelected === false || null) {
+      return true;
+    }
     if (this.tracking.snapshot.allowTelemetry === undefined) {
       return true;
     } else {
