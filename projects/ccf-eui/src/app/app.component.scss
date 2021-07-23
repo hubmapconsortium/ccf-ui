@@ -17,6 +17,7 @@
     width: 100%;
     opacity: 1;
     overflow: visible;
+    transform: scale(1);
 
     ccf-drawer-content {
       overflow: hidden;
@@ -145,13 +146,14 @@
 
   .right-drawer {
     .portal-view {
-      position: absolute;
+      position: fixed;
+      left: 0;
       top: 0;
       bottom: 0;
-      right: 100%;
-      width: calc(100vw - 100%);
+      right: 425%;
       height: 100%;
-      transform: translateX(-100%);
+      transform: translateX(-425%);
+      width: calc(100% - 28.5rem);
 
       transition: transform 0.5s cubic-bezier(0.82, 0.085, 0.395, 0.895);
 
