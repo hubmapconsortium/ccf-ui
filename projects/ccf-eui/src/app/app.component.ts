@@ -1,3 +1,4 @@
+import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { Component, ViewChild, Injector, ElementRef, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
@@ -69,9 +70,10 @@ export class AppComponent implements OnInit {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
-      readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<unknown>, injector: Injector,
-      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
+      readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<HTMLElement>, injector: Injector,
+      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer) {
     theming.initialize(el, injector);
+    overlay.setRootElement(el);
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();
