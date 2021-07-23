@@ -31,12 +31,6 @@ describe('TrackingPopupComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('shows both buttons if allowTelemetrySelected is null', async () => {
-    const { instance } = await shallow.render();
-    expect(instance.showButton('opt-in') && instance.showButton('opt-out')).toBeTrue();
-  });
-
-
   it('shows both buttons if allowTelemetrySelected is false', async () => {
     const { instance } = await shallow.mock(TrackingState, {...mockTrackingState, snapshot: {allowTelemetrySelected: false}}).render();
     expect(instance.showButton('opt-in') && instance.showButton('opt-out')).toBeTrue();
