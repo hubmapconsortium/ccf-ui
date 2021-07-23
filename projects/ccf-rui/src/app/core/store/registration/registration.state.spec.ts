@@ -42,9 +42,9 @@ const testPage: Immutable<PageStateModel> = {
     lastName: 'Doe'
   },
   embedded: true,
-  homeUrl: 'www.test.com',
   tutorialMode: false,
-  registrationStarted: false
+  registrationStarted: false,
+  useCancelRegistrationCallback: false
 };
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
