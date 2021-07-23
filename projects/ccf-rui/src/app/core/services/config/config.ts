@@ -7,7 +7,6 @@ export interface GlobalConfig {
   baseHref?: string;
   embedded?: boolean;
   tutorialMode?: boolean;
-  homeUrl?: string;
   editRegistration?: Record<string, unknown>;
   organ?: {
     name: 'large intestine' | 'heart' | 'kidney' | 'spleen';
@@ -24,6 +23,8 @@ export interface GlobalConfig {
 
   fetchPreviousRegistrations?: () => ObservableInput<Record<string, unknown>[]>;
   registrationStarted?: boolean;
+
+  cancelRegistration?: () => void;
 }
 
 declare global {

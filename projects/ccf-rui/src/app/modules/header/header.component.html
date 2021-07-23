@@ -2,14 +2,14 @@
 </ng-container>
 
 <ng-template #backButton>
-  <a class="link home" [href]="page.homeUrl$ | async" rel="noreferrer noopener">
+  <div class="link home" (click)="page.cancelRegistration()" rel="noreferrer noopener">
     <mat-icon class="icon backbutton">chevron_left</mat-icon>
     <span class="text">BACK</span>
-  </a>
+  </div>
 </ng-template>
 
 <ng-template #logo>
-  <a class="link hubmap" [href]="page.homeUrl$ | async" rel="noreferrer noopener"
+  <a class="link hubmap" href="https://ingest.hubmapconsortium.org/" rel="noreferrer noopener"
      matTooltip="Human BioMolecular Atlas Project" matTooltipPosition="right">
     <mat-icon class="icon logo" svgIcon="app:logo"></mat-icon>
   </a>

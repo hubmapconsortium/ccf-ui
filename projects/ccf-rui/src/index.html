@@ -49,7 +49,6 @@
       window.ruiConfig = {
         baseHref: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/',
         embedded: true,
-        homeUrl: 'https://ingest.hubmapconsortium.org/',
         user: {firstName: 'Jane', lastName: 'Doe'},
         organ: {name: 'kidney', side: 'left', sex: 'female'},
         editRegistration: sampleRegistration,
@@ -59,7 +58,10 @@
         fetchPreviousRegistrations: () => {
           return Promise.resolve([sampleRegistration]);
         },
-        useDownload: true
+        useDownload: true,
+        cancelRegistration: () => {
+          window.location.href = 'https://ingest.hubmapconsortium.org/'
+        }
       }
     };
   </script>
