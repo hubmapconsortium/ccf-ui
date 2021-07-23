@@ -19,7 +19,8 @@ export const INITIAL_TELEMETRY_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLO
 
 // If there has not been a selection, set the initial allowTelemetrySelected value to false.
 // Otherwise, set the initial allowTelemetrySelected value to true
-export const INITIAL_TELEMETRY_SELECTED_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === 'false' ? false : true;
+export const INITIAL_TELEMETRY_SELECTED_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === 'false' ? false
+  : true;
 
 @StateRepository()
 @State<TrackingStateModel>({
