@@ -14,12 +14,12 @@ export const LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY = 'ALLOW_TELEMETRY_SELEC
 
 // If there has not been a selection, set the initial allowTelemetry value to true.
 // Otherwise, set the initial allowTelemetry value to the current localStorage ALLOW_TELEMETRY value
-export const INITIAL_TELEMETRY_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === 'null' ? true
+export const INITIAL_TELEMETRY_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === null ? true
   : localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY)?.toLowerCase() === 'true';
 
 // If there has not been a selection, set the initial allowTelemetrySelected value to false.
 // Otherwise, set the initial allowTelemetrySelected value to true
-export const INITIAL_TELEMETRY_SELECTED_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === 'null' ? false
+export const INITIAL_TELEMETRY_SELECTED_SETTING = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_SELECTED_KEY) === null ? false
   : true;
 
 @StateRepository()
