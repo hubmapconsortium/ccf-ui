@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Immutable } from '@angular-ru/common/typings';
+import { Inject, Injectable } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
+import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
+import { pluckUnique } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
-import { pluck } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import { OrganInfo, ALL_ORGANS } from 'ccf-shared';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
-import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
 
@@ -109,40 +111,85 @@ export const RUI_ORGANS = ALL_ORGANS;
 @Injectable()
 export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   /** Identifier observable */
-  readonly id$ = this.state$.pipe(pluck('id'));
+  @Computed()
+  get id$(): Observable<string> {
+    return this.state$.pipe(pluckUnique('id'));
+  }
   /** Block size observable */
-  readonly blockSize$ = this.state$.pipe(pluck('blockSize'));
+  @Computed()
+  get blockSize$(): Observable<XYZTriplet> {
+    return this.state$.pipe(pluckUnique('blockSize'));
+  }
   /** Rotation observable */
-  readonly rotation$ = this.state$.pipe(pluck('rotation'));
+  @Computed()
+  get rotation$(): Observable<XYZTriplet> {
+    return this.state$.pipe(pluckUnique('rotation'));
+  }
   /** Position observable */
-  readonly position$ = this.state$.pipe(pluck('position'));
+  @Computed()
+  get position$(): Observable<XYZTriplet> {
+    return this.state$.pipe(pluckUnique('position'));
+  }
   /** Slice configuration observable */
-  readonly slicesConfig$ = this.state$.pipe(pluck('slicesConfig'));
+  @Computed()
+  get slicesConfig$(): Observable<SlicesConfig> {
+    return this.state$.pipe(pluckUnique('slicesConfig'));
+  }
   /** View type observable */
-  readonly viewType$ = this.state$.pipe(pluck('viewType'));
+  @Computed()
+  get viewType$(): Observable<ViewType> {
+    return this.state$.pipe(pluckUnique('viewType'));
+  }
   /** View side observable */
-  readonly viewSide$ = this.state$.pipe(pluck('viewSide'));
+  @Computed()
+  get viewSide$(): Observable<ViewSide> {
+    return this.state$.pipe(pluckUnique('viewSide'));
+  }
   /** Organ observable */
-  readonly organ$ = this.state$.pipe(pluck('organ'));
+  @Computed()
+  get organ$(): Observable<Immutable<OrganInfo>> {
+    return this.state$.pipe(pluckUnique('organ'));
+  }
   /** Organ IRI observable */
-  readonly organIri$ = this.state$.pipe(pluck('organIri'));
+  @Computed()
+  get organIri$(): Observable<string | undefined> {
+    return this.state$.pipe(pluckUnique('organIri'));
+  }
   /** Organ IRI observable */
-  readonly organDimensions$ = this.state$.pipe(pluck('organDimensions'));
+  @Computed()
+  get organDimensions$(): Observable<XYZTriplet> {
+    return this.state$.pipe(pluckUnique('organDimensions'));
+  }
   /** Sex observable */
-  readonly sex$ = this.state$.pipe(pluck('sex'));
+  @Computed()
+  get sex$(): Observable<'male' | 'female' | undefined> {
+    return this.state$.pipe(pluckUnique('sex'));
+  }
   /** Side observable */
-  readonly side$ = this.state$.pipe(pluck('side'));
+  @Computed()
+  get side$(): Observable<'left' | 'right' | undefined> {
+    return this.state$.pipe(pluckUnique('side'));
+  }
   /** Show previous observable */
-  readonly showPrevious$ = this.state$.pipe(pluck('showPrevious'));
+  @Computed()
+  get showPrevious$(): Observable<boolean> {
+    return this.state$.pipe(pluckUnique('showPrevious'));
+  }
   /** Extraction sites observable */
-  readonly extractionSites$ = this.state$.pipe(pluck('extractionSites'));
+  @Computed()
+  get extractionSites$(): Observable<Immutable<VisibilityItem[]>> {
+    return this.state$.pipe(pluckUnique('extractionSites'));
+  }
   /** Anatomical structures observable */
-  readonly anatomicalStructures$ = this.state$.pipe(pluck('anatomicalStructures'));
+  @Computed()
+  get anatomicalStructures$(): Observable<Immutable<VisibilityItem[]>> {
+    return this.state$.pipe(pluckUnique('anatomicalStructures'));
+  }
   /** Extraction sets observable */
-  readonly extractionSets$ = this.state$.pipe(pluck('extractionSets'));
-
-  /** Reference to the reference data state */
-  private referenceData: ReferenceDataState;
+  @Computed()
+  get extractionSets$(): Observable<Immutable<ExtractionSet[]>> {
+    return this.state$.pipe(pluckUnique('extractionSets'));
+  }
 
   /**
    * Creates an instance of model state.
@@ -150,19 +197,10 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    * @param injector Injector service used to lazy load reference data state
    */
   constructor(
-    private readonly injector: Injector,
+    private readonly referenceData: ReferenceDataState,
     @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
   ) {
     super();
-  }
-
-  /**
-   * Initializes this state service.
-   */
-  ngxsOnInit(): void {
-    super.ngxsOnInit();
-
-    this.referenceData = this.injector.get(ReferenceDataState);
   }
 
   ngxsAfterBootstrap(): void {

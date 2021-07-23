@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { createEntityCollections, EntityCollections } from '@angular-ru/common/entity';
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataEntityCollectionsRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { bind as Bind } from 'bind-decorator';
 import { combineLatest, Observable, ObservableInput } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 import { Tag, TagId, TagSearchResult } from '../../models/anatomical-structure-tag';
 import { ModelState } from '../model/model.state';
@@ -60,7 +60,8 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
           }
         }
         return tags;
-      })
+      }),
+      shareReplay(1)
     );
   }
 
@@ -70,18 +71,14 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
     return this._latestTags;
   }
 
-  /** Reference to the model state */
-  private model: ModelState;
-  /** Reference to the scene state */
-  private scene: SceneState;
-
   /**
    * Creates an instance of scene state.
    *
    * @param injector Injector service used to lazy load page and model state
    */
   constructor(
-    private readonly injector: Injector
+    private readonly model: ModelState,
+    private readonly scene: SceneState,
   ) {
     super();
   }
@@ -91,11 +88,6 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
    */
   ngxsOnInit(): void {
     super.ngxsOnInit();
-
-    // Injecting page and model states in the constructor breaks things!?
-    // Lazy load here
-    this.model = this.injector.get(ModelState);
-    this.scene = this.injector.get(SceneState);
 
     this.tags$.subscribe((tags) => {
       this._latestTags = tags;

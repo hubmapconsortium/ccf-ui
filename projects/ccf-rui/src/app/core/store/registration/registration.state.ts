@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Immutable } from '@angular-ru/common/typings';
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from 'ccf-body-ui';
+import { pluckUnique } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { distinctUntilChanged, map, shareReplay } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
@@ -48,13 +49,17 @@ export interface RegistrationStateModel {
 })
 @Injectable()
 export class RegistrationState extends NgxsImmutableDataRepository<RegistrationStateModel> {
-  readonly displayErrors$ = this.state$.pipe(pluck('displayErrors'));
+  @Computed()
+  get displayErrors$(): Observable<boolean> {
+    return this.state$.pipe(pluckUnique('displayErrors'));
+  }
 
   /** Observable of registration metadata */
   @Computed()
   get metadata$(): Observable<MetaData> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(([page, model]) => this.buildMetadata(page, model, this.tags.latestTags))
+      map(([page, model]) => this.buildMetadata(page, model, this.tags.latestTags)),
+      shareReplay(1)
     );
   }
 
@@ -62,14 +67,17 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get jsonld$(): Observable<Record<string, unknown>> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(([page, model]) => this.buildJsonLd(page, model, this.tags.latestTags))
+      map(([page, model]) => this.buildJsonLd(page, model, this.tags.latestTags)),
+      shareReplay(1)
     );
   }
 
   @Computed()
   get valid$(): Observable<boolean> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(data => this.isValid)
+      map(() => this.isValid),
+      distinctUntilChanged(),
+      shareReplay(1)
     );
   }
 
@@ -80,10 +88,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   get previousRegistrations$(): Observable<Record<string, unknown>[]> {
     const { globalConfig: { fetchPreviousRegistrations }, state$ } = this;
     return combineLatest([
-      state$.pipe(pluck('registrations')),
+      state$.pipe(pluckUnique('registrations')),
       fetchPreviousRegistrations?.() as Observable<Record<string, unknown>[]> ?? [[]]
     ]).pipe(
-      map(([local, external]) => [...local, ...external])
+      map(([local, external]) => [...local, ...external]),
+      shareReplay(1)
     );
   }
 
@@ -99,26 +108,16 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     return new Date().toISOString().split('T')[0];
   }
 
-  /** Reference to the page state */
-  private page: PageState;
-
-  /** Reference to the model state */
-  private model: ModelState;
-
-  /** Reference to the AS Tag state */
-  private tags: AnatomicalStructureTagState;
-
-  /** Reference to the reference data state */
-  private refData: ReferenceDataState;
-
   /**
    * Creates an instance of registration state.
    *
-   * @param injector Injector service used to lazy load page and model state
    * @param globalConfig The global configuration
    */
   constructor(
-    private readonly injector: Injector,
+    private readonly page: PageState,
+    private readonly model: ModelState,
+    private readonly tags: AnatomicalStructureTagState,
+    private readonly refData: ReferenceDataState,
     @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
   ) {
     super();
@@ -129,13 +128,6 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   ngxsOnInit(): void {
     super.ngxsOnInit();
-
-    // Injecting page and model states in the constructor breaks things!?
-    // Lazy load here
-    this.page = this.injector.get(PageState);
-    this.model = this.injector.get(ModelState);
-    this.tags = this.injector.get(AnatomicalStructureTagState);
-    this.refData = this.injector.get(ReferenceDataState);
 
     const { globalConfig: { useDownload, register } } = this;
     this.ctx.patchState({

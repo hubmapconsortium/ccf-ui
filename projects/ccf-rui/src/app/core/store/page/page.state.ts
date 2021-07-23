@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Immutable } from '@angular-ru/common/typings';
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
+import { pluckUnique } from 'ccf-shared/rxjs-ext/operators';
 import { combineLatest, Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 import { ModelState } from './../model/model.state';
@@ -53,13 +54,25 @@ export interface PageStateModel {
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /** Embedded observable */
-  readonly embedded$ = this.state$.pipe(pluck('embedded'));
+  @Computed()
+  get embedded$(): Observable<boolean> {
+    return this.state$.pipe(pluckUnique('embedded'));
+  }
   /** Home url observable */
-  readonly homeUrl$ = this.state$.pipe(pluck('homeUrl'));
+  @Computed()
+  get homeUrl$(): Observable<string> {
+    return this.state$.pipe(pluckUnique('homeUrl'));
+  }
   /** Active user observable */
-  readonly user$ = this.state$.pipe(pluck('user'));
+  @Computed()
+  get user$(): Observable<Immutable<Person>> {
+    return this.state$.pipe(pluckUnique('user'));
+  }
   /** RegistrationStated observable */
-  readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
+  @Computed()
+  get registrationStarted$(): Observable<boolean> {
+    return this.state$.pipe(pluckUnique('registrationStarted'));
+  }
 
   /** Tutorial mode observable */
   @Computed()
@@ -69,15 +82,13 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     );
   }
 
-  private model: ModelState;
-
   /**
    * Creates an instance of page state.
    *
    * @param globalConfig The global configuration
    */
   constructor(
-    private readonly injector: Injector,
+    private readonly model: ModelState,
     @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
   ) {
     super();
@@ -88,10 +99,6 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    */
   ngxsOnInit(): void {
     super.ngxsOnInit();
-
-    // Injecting page and model states in the constructor breaks things!?
-    // Lazy load here
-    this.model = this.injector.get(ModelState);
 
     const { globalConfig: { embedded, homeUrl, user, tutorialMode } } = this;
     this.ctx.setState(patch<Immutable<PageStateModel>>({
