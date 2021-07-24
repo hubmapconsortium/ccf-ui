@@ -22,6 +22,8 @@ export interface CCFDatabaseOptions {
   ccfOwlUrl: string;
   /** Context. */
   ccfContextUrl: string;
+  /** A list of data sources (in .jsonld format) */
+  dataSources: string[];
   /** Data service type. */
   hubmapDataService: 'static' | 'search-api';
   /** Hubmap Portal url. */
@@ -38,6 +40,7 @@ export interface CCFDatabaseOptions {
 export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
   ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl',
   ccfContextUrl: 'https://purl.org/ccf/latest/ccf-context.jsonld',
+  dataSources: [],
   hubmapDataService: 'static',
   hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
   hubmapDataUrl: '',
@@ -101,6 +104,14 @@ export class CCFDatabase {
       ops.push(addN3ToStore(this.options.ccfOwlUrl, this.store));
     } else {
       ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
+    }
+    if (this.options.dataSources?.length > 0) {
+      for (const source of this.options.dataSources) {
+        ops.push(
+          addJsonLdToStore(source, this.store)
+          .catch(x => console.log(`Failed to load ${source}`))
+        );
+      }
     }
     if (this.options.hubmapDataUrl) {
       if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
