@@ -102,6 +102,12 @@
                                         </a>
                                 </li>
                                 <li>
+                                        <a href="#dataSources" 
+>
+                                            dataSources
+                                        </a>
+                                </li>
+                                <li>
                                         <a href="#hubmapAssetsUrl" 
 >
                                             hubmapAssetsUrl
@@ -216,6 +222,45 @@
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>An url to load data from.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="dataSources"></a>
+                                        <span class="name "><b>dataSources</b>
+                                            <a href="#dataSources">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>dataSources:     <code>string[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>A list of data sources (in .jsonld format)</p>
 </div>
                                 </td>
                             </tr>
@@ -449,6 +494,8 @@ export interface CCFDatabaseOptions {
   ccfOwlUrl: string;
   /** Context. */
   ccfContextUrl: string;
+  /** A list of data sources (in .jsonld format) */
+  dataSources: string[];
   /** Data service type. */
   hubmapDataService: &#x27;static&#x27; | &#x27;search-api&#x27;;
   /** Hubmap Portal url. */
@@ -465,6 +512,7 @@ export interface CCFDatabaseOptions {
 export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions &#x3D; {
   ccfOwlUrl: &#x27;https://purl.org/ccf/latest/ccf.owl&#x27;,
   ccfContextUrl: &#x27;https://purl.org/ccf/latest/ccf-context.jsonld&#x27;,
+  dataSources: [],
   hubmapDataService: &#x27;static&#x27;,
   hubmapPortalUrl: &#x27;https://portal.hubmapconsortium.org/&#x27;,
   hubmapDataUrl: &#x27;&#x27;,
@@ -528,6 +576,14 @@ export class CCFDatabase {
       ops.push(addN3ToStore(this.options.ccfOwlUrl, this.store));
     } else {
       ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
+    }
+    if (this.options.dataSources?.length &gt; 0) {
+      for (const source of this.options.dataSources) {
+        ops.push(
+          addJsonLdToStore(source, this.store)
+          .catch(x &#x3D;&gt; console.log(&#x60;Failed to load ${source}&#x60;))
+        );
+      }
     }
     if (this.options.hubmapDataUrl) {
       if (this.options.hubmapDataUrl.endsWith(&#x27;.jsonld&#x27;)) {

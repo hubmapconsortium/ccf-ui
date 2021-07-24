@@ -371,7 +371,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AmbientLight, Deck, LightingEffect, OrbitView } from &#x27;@deck.gl/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AmbientLight, Deck, LightingEffect, OrbitView, OrthographicView } from &#x27;@deck.gl/core&#x27;;
 import { ViewStateProps } from &#x27;@deck.gl/core/lib/deck&#x27;;
 import { Matrix4 } from &#x27;@math.gl/core&#x27;;
 import bind from &#x27;bind-decorator&#x27;;
@@ -389,6 +389,7 @@ interface BodyUIViewStateProps extends ViewStateProps {
   zoom: number;
   rotationOrbit: number;
   rotationX: number;
+  camera: string;
 }
 
 export interface BodyUIProps {
@@ -403,6 +404,7 @@ export interface BodyUIProps {
   maxRotationX: number;
   zoom: number;
   legacyLighting?: boolean;
+  camera: string;
 }
 
 export interface PickInfo&lt;D&gt; {
@@ -429,7 +431,7 @@ export class BodyUI {
   private readonly nodeClickSubject &#x3D; new Subject&lt;NodeClickEvent&gt;();
   private readonly nodeHoverStartSubject &#x3D; new Subject&lt;SpatialSceneNode&gt;();
   private readonly nodeHoverStopSubject &#x3D; new Subject&lt;SpatialSceneNode&gt;();
-  private readonly sceneRotationSubject &#x3D; new BehaviorSubject&lt;number&gt;(0);
+  private readonly sceneRotationSubject &#x3D; new BehaviorSubject&lt;[number, number]&gt;([0, 0]);
   private readonly nodeDragStartSubject &#x3D; new Subject&lt;NodeDragEvent&gt;();
   private readonly nodeDragSubject &#x3D; new Subject&lt;NodeDragEvent&gt;();
   private readonly nodeDragEndSubject &#x3D; new Subject&lt;NodeDragEvent&gt;();
@@ -449,7 +451,10 @@ export class BodyUI {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const props: any &#x3D; {
       ...deckProps,
-      views: [ new OrbitView({}) ],
+      views: [ deckProps.camera &#x3D;&#x3D;&#x3D; &#x27;orthographic&#x27; ? new OrthographicView({
+        flipY: false,
+        near: -1000
+      }) : new OrbitView({}) ],
       controller: deckProps.interactive !&#x3D;&#x3D; undefined ? deckProps.interactive : true,
       layers: [ this.bodyUILayer ],
       onHover: this._onHover,
@@ -481,11 +486,12 @@ export class BodyUI {
         target: deckProps.target || [0.5, 0.5, 0],
         rotationX: 0,
         rotationOrbit: deckProps.rotation || 0,
-        zoom: deckProps.zoom || 9.5
+        zoom: deckProps.zoom || 9.5,
+        camera: deckProps.camera
       } as BodyUIViewStateProps
     });
     if (deckProps.rotation) {
-      this.sceneRotationSubject.next(deckProps.rotation);
+      this.sceneRotationSubject.next([deckProps.rotation, 0]);
     }
   }
 
@@ -632,7 +638,7 @@ export class BodyUI {
       }
     }
     this.deck.setProps({viewState: { ...event.viewState }});
-    this.sceneRotationSubject.next(event.viewState.rotationOrbit);
+    this.sceneRotationSubject.next([event.viewState.rotationOrbit, event.viewState.rotationX]);
   }
 
   @bind

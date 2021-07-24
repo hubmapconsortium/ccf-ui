@@ -300,8 +300,17 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.zoomToBounds(value);
   }
 
+  @Input()
+  get camera(): string {
+    return this._camera;
+  }
+
+  set camera(value: string) {
+    this._camera &#x3D; value;
+  }
+
   @Output()
-  readonly rotationChange &#x3D; new EventEmitter&lt;number&gt;();
+  readonly rotationChange &#x3D; new EventEmitter&lt;[number, number]&gt;();
 
   @Output()
   readonly nodeDrag &#x3D; new EventEmitter&lt;NodeDragEvent&gt;();
@@ -335,6 +344,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   private _bounds: XYZTriplet;
   private _scene: SpatialSceneNode[] &#x3D; [];
   private subscriptions: Subscription[] &#x3D; [];
+  private _camera: string;
 
   /**
    * Instance of the body UI class for rendering the deckGL scene
@@ -380,7 +390,8 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
       rotation: 0,
       minRotationX: -75,
       maxRotationX: 75,
-      interactive: this.interactive
+      interactive: this.interactive,
+      camera: this.camera
     });
     canvas.addEventListener(&#x27;contextmenu&#x27;, evt &#x3D;&gt; evt.preventDefault());
     await bodyUI.initialize();

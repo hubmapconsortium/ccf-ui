@@ -206,14 +206,13 @@ export interface Person {
 export interface PageStateModel {
   /** Whether the page is embedded through hubmap */
   embedded: boolean;
-  /** Url to go to when the user clicks the hubmap logo or back button */
-  homeUrl: string;
   /** Active user */
   user: Person;
   /** Whether or not to show the page tutorial */
   tutorialMode: boolean;
   /** Whether or not the initial registration modal has been closed */
   registrationStarted: boolean;
+  useCancelRegistrationCallback: boolean;
 }
 
 
@@ -225,25 +224,24 @@ export interface PageStateModel {
   name: &#x27;page&#x27;,
   defaults: {
     embedded: false,
-    homeUrl: &#x27;https://hubmapconsortium.org/&#x27;,
     user: {
       firstName: &#x27;&#x27;,
       lastName: &#x27;&#x27;
     },
     tutorialMode: false,
-    registrationStarted: false
+    registrationStarted: false,
+    useCancelRegistrationCallback: false
   }
 })
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt; {
   /** Embedded observable */
   readonly embedded$ &#x3D; this.state$.pipe(pluck(&#x27;embedded&#x27;));
-  /** Home url observable */
-  readonly homeUrl$ &#x3D; this.state$.pipe(pluck(&#x27;homeUrl&#x27;));
   /** Active user observable */
   readonly user$ &#x3D; this.state$.pipe(pluck(&#x27;user&#x27;));
   /** RegistrationStated observable */
   readonly registrationStarted$ &#x3D; this.state$.pipe(pluck(&#x27;registrationStarted&#x27;));
+  readonly useCancelRegistrationCallback$ &#x3D; this.state$.pipe(pluck(&#x27;useCancelRegistrationCallback&#x27;));
 
   /** Tutorial mode observable */
   @Computed()
@@ -277,13 +275,26 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
     // Lazy load here
     this.model &#x3D; this.injector.get(ModelState);
 
-    const { globalConfig: { embedded, homeUrl, user, tutorialMode } } &#x3D; this;
+    const { globalConfig: { embedded, user, tutorialMode, cancelRegistration } } &#x3D; this;
     this.ctx.setState(patch&lt;Immutable&lt;PageStateModel&gt;&gt;({
       embedded: embedded ?? !!user,
-      homeUrl: iif(!!homeUrl, homeUrl!),
+      useCancelRegistrationCallback: !!(cancelRegistration),
       user: iif(!!user, user!),
       tutorialMode: !!tutorialMode
     }));
+  }
+
+  cancelRegistration(): void {
+    const { globalConfig: { cancelRegistration: cancelRegistrationCallback }, snapshot } &#x3D; this;
+
+    if (snapshot.useCancelRegistrationCallback) {
+      cancelRegistrationCallback?.();
+    }
+  }
+
+  @DataAction()
+  setUseCancelRegistrationCallback(use: boolean): void {
+    this.ctx.patchState({ useCancelRegistrationCallback: use });
   }
 
   /**
@@ -295,8 +306,7 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
   @DataAction()
   setEmbedded(embedded: boolean, url?: string): void {
     this.ctx.patchState({
-      embedded,
-      homeUrl: url ?? this.ctx.getState().homeUrl
+      embedded
     });
   }
 
