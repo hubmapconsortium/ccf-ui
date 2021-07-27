@@ -9,6 +9,7 @@ export interface GlobalConfig {
   tutorialMode?: boolean;
   editRegistration?: Record<string, unknown>;
   organ?: {
+    ontologyId: string;
     name: 'large intestine' | 'heart' | 'kidney' | 'spleen';
     sex?: 'male' | 'female';
     side?: 'left' | 'right';

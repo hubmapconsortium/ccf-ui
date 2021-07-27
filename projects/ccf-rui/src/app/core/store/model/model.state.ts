@@ -163,20 +163,16 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     super.ngxsOnInit();
 
     this.referenceData = this.injector.get(ReferenceDataState);
-  }
-
-  ngxsAfterBootstrap(): void {
-    super.ngxsAfterBootstrap();
-
+    
     if (this.globalConfig.organ) {
       const organConfig = this.globalConfig.organ;
-      const organName = organConfig.name.toLowerCase();
       const organSide = organConfig.side;
+      const ontologyId = organConfig.ontologyId;
       const organInfo = ALL_ORGANS.find((o) => {
         if (o.side) {
-          return o.organ.toLowerCase() === organName && o.side === organSide;
+          return o.id === ontologyId && o.side === organSide;
         } else {
-          return o.organ.toLowerCase() === organName;
+          return o.id === ontologyId;
         }
       });
       if (organInfo) {
