@@ -11,6 +11,7 @@
   font-size: 1rem;
   color: black;
   position: relative;
+  text-align: left;
 
   ccf-header {
     z-index: 99;
@@ -28,6 +29,8 @@
       overflow: hidden;
       margin-bottom: 1.5rem;
       border-radius: 0.5rem;
+      height: 100%;
+      padding-bottom: 4rem;
 
       .organ-selector {
         height: 100%;
@@ -84,11 +87,12 @@
         transition: all 0.5s ease-in-out;
         border-bottom-right-radius: 0.5rem;
         border-bottom-left-radius: 0.5rem;
-        height: 100%;
+        height: calc(100% - 6rem);
       }
 
       .expanded-stage {
         height: 100%;
+        padding-bottom: 3rem;
       }
     }
 

@@ -6,6 +6,7 @@
   .container {
     .content {
       padding: 3rem;
+      text-align: left;
     }
 
     .description {
@@ -52,9 +53,9 @@
     }
 
     .dialog-content {
-      height: 50rem; 
+      height: 50rem;
       min-height: 10rem;
-      
+
       .variable-binding {
         font-weight: 300;
 
