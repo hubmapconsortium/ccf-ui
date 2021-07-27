@@ -68,7 +68,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
   }
 
   private getSourceDB(): Promise<ReferenceDataStateModel> {
-    const baseHref = this.globalConfig.baseHref || '';
+    const baseHref = this.globalConfig.embedded ? '' : this.globalConfig.baseHref || '';
     return fetch(baseHref + 'assets/reference-organ-data.json').then(r => r.json());
   }
 
