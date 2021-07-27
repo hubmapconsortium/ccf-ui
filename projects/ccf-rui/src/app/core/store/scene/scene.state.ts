@@ -1,26 +1,43 @@
 import { Injectable, Injector } from '@angular/core';
-import { Matrix4, toRadians } from '@math.gl/core';
+import { Matrix4, toRadians, Vector3 } from '@math.gl/core';
 import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
+import { filterNulls, flatten, innerMap, pluckUnique } from 'ccf-shared/rxjs-ext/operators';
 import { combineLatest, Observable, of } from 'rxjs';
-import { debounceTime, filter, map } from 'rxjs/operators';
+import { distinctUntilChanged, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
-import { ModelState } from '../model/model.state';
+import { ModelState, ViewSide } from '../model/model.state';
 import { RegistrationState } from '../registration/registration.state';
 import { VisibilityItem } from './../../models/visibility-item';
-import { ReferenceDataState } from './../reference-data/reference-data.state';
+import { ReferenceDataState, ReferenceDataStateModel } from './../reference-data/reference-data.state';
 
 
 /**
  * Scene state model
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SceneStateModel {
   showCollisions: boolean;
+}
+
+/**
+ * Same as strict equality `===` except that empty arrays are considered equal.
+ *
+ * @param array1 First array
+ * @param array2 Second array
+ * @returns True when the arrays are the same one or both are empty, otherwise false
+ */
+function emptyArrayEquals<T>(array1: readonly T[], array2: readonly T[]): boolean {
+  return array1 === array2 || (array1.length === 0 && array2.length === 0);
+}
+
+function dbEquals(db1: ReferenceDataStateModel, db2: ReferenceDataStateModel): boolean {
+  return db1.sceneNodeLookup === db2.sceneNodeLookup &&
+    db1.simpleSceneNodeLookup === db2.simpleSceneNodeLookup &&
+    db1.anatomicalStructures === db2.anatomicalStructures;
 }
 
 function getNodeBbox(model: SpatialSceneNode): AABB {
@@ -33,194 +50,265 @@ function getNodeBbox(model: SpatialSceneNode): AABB {
   });
 }
 
+type Vector3Convertible = readonly number[] | { x: number; y: number; z: number };
+
+function getTransformMatrix(
+  dims: Vector3Convertible,
+  position: Vector3Convertible,
+  rotation: Vector3Convertible,
+  scale: Vector3Convertible,
+  ...additionalRotations: Vector3Convertible[]
+): Matrix4 {
+  const sizeScaling = 1 / 1000;
+  const dimsVec = new Vector3().from(dims).scale(-sizeScaling / 2);
+  const positionVec = new Vector3().from(position).scale(sizeScaling).add(dimsVec);
+  const rotationVec = toRadians(new Vector3().from(rotation));
+  const scaleVec = new Vector3().from(scale).scale(sizeScaling / 2);
+  let transformMatrix = new Matrix4()
+    .translate(positionVec)
+    .rotateXYZ(rotationVec);
+
+  for (const rot of additionalRotations) {
+    const vec = toRadians(new Vector3().from(rot));
+    transformMatrix = transformMatrix.rotateXYZ(vec);
+  }
+
+  return transformMatrix
+    .scale(scaleVec);
+}
+
 /**
  * 3d Scene state
  */
 @StateRepository()
 @State<SceneStateModel>({
   name: 'scene',
-  defaults: {showCollisions: !environment.production}
+  defaults: {
+    showCollisions: !environment.production
+  }
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> implements NgxsOnInit {
+  @Computed()
+  get showCollisions$(): Observable<boolean> {
+    return this.state$.pipe(pluckUnique('showCollisions'));
+  }
 
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([
-      this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$, this.nodeCollisions$
-    ]).pipe(
-      map(([placement, nodes, prevNodes, collisions]) => [
-        ...placement, ...prevNodes, ...nodes, ...(this.snapshot.showCollisions ? collisions : [])
-      ])
+    const {
+      placementCube$: cube$, referenceOrganNodes$: ref$,
+      previousRegistrationNodes$: prev$, nodeCollisions$,
+      showCollisions$
+    } = this;
+
+    const collision$ = showCollisions$.pipe(
+      switchMap(show => show ? nodeCollisions$ : of([])),
+      distinctUntilChanged(emptyArrayEquals)
+    );
+
+    return combineLatest([cube$, ref$, prev$, collision$]).pipe(
+      flatten(),
+      shareReplay(1)
     );
   }
 
   @Computed()
   get rotatedNodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.rotation$, this.nodes$]).pipe(
-      map(([rotation, nodes]) => {
-        if (rotation === 0) {
-          return nodes;
-        } else {
-          return nodes.map(n => ({
-            ...n,
-            transformMatrix: new Matrix4(Matrix4.IDENTITY).rotateY(toRadians(rotation)).multiplyRight(n.transformMatrix)
-          }));
+    const { nodes$, rotation$ } = this;
+
+    return rotation$.pipe(
+      switchMap(degrees => {
+        if (degrees === 0) {
+          return nodes$;
         }
-      })
+
+        const matrix = new Matrix4().rotateY(toRadians(degrees));
+        return nodes$.pipe(
+          innerMap(node => ({
+            ...node,
+            transformMatrix: matrix.clone().multiplyRight(node.transformMatrix)
+          }))
+        );
+      }),
+      shareReplay(1)
     );
   }
 
   /** Observable of spatial nodes */
   @Computed()
   get referenceOrganNodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
-      debounceTime(400),
-      map(([anatomicalStructures, extractionSites, organIri]) =>
-        this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
-      )
+    const {
+      model: { organIri$, anatomicalStructures$, extractionSites$ },
+      referenceData: { state$: refDataState$ }
+    } = this;
+    const iri$ = organIri$.pipe(filterNulls());
+    const item$ = combineLatest([anatomicalStructures$, extractionSites$]).pipe(flatten());
+    const db$ = refDataState$.pipe(distinctUntilChanged(dbEquals));
+
+    return combineLatest([iri$, item$, db$]).pipe(
+      map(([iri, items, db]) => items.map(item => this.createSceneNodes(item, iri, db))),
+      flatten(),
+      map(nodes => this.rotateNodes(nodes)),
+      shareReplay(1)
     );
   }
 
   @Computed()
   get referenceOrganSimpleNodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.model.anatomicalStructures$, this.model.organIri$, this.referenceData.state$]).pipe(
-      map(([anatomicalStructures, organIri, db]) =>
-        anatomicalStructures
-          // .filter(item => item.visible && item.opacity && item.opacity > 0)
-          .map(item => {
-            if (db.sceneNodeLookup[item.id]) {
-              return [{
-                ...db.simpleSceneNodeLookup[item.id],
-                opacity: (item.opacity || 100) / 100,
-                color: [255, 255, 255, 255]
-              } as SpatialSceneNode];
-            } else {
-              return (db.anatomicalStructures[organIri as string] || [])
-                .filter((node) => node.representation_of === item.id)
-                .map((node) => ({
-                  ...db.simpleSceneNodeLookup[node['@id']],
-                  opacity: (item.opacity || 100) / 100,
-                  color: [255, 255, 255, 255]
-                } as SpatialSceneNode));
-            }
-          })
-          .reduce((acc, nodes) => acc.concat(nodes), [])
-      )
+    const {
+      model: { organIri$, anatomicalStructures$ },
+      referenceData: { state$: refDataState$ }
+    } = this;
+    const iri$ = organIri$.pipe(filterNulls());
+    const db$ = refDataState$.pipe(distinctUntilChanged(dbEquals));
+
+    return combineLatest([iri$, anatomicalStructures$, db$]).pipe(
+      map(([iri, structs, db]) => structs.map(
+        struct => this.createSceneNodes(struct, iri, db, 'simple')
+      )),
+      flatten(),
+      map(nodes => this.rotateNodes(nodes)),
+      shareReplay(1)
     );
   }
 
   @Computed()
   get nodeCollisions$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.referenceOrganSimpleNodes$, this.placementCube$]).pipe(
-      filter(([nodes, placement]) => placement.length > 0),
-      map(([nodes, placement]) => {
-        const bbox = getNodeBbox(placement[0]);
-        return nodes.filter((model) => bbox.overlaps(getNodeBbox(model)));
-      })
+    const { placementCube$: cube$, referenceOrganSimpleNodes$: node$ } = this;
+    return combineLatest([cube$, node$]).pipe(
+      map(([cube, nodes]) => {
+        if (cube.length === 0) {
+          return [];
+        }
+
+        const bbox = getNodeBbox(cube[0]);
+        return nodes.filter(node => bbox.overlaps(getNodeBbox(node)));
+      }),
+      distinctUntilChanged(emptyArrayEquals),
+      shareReplay(1)
     );
   }
 
   @Computed()
   get previousRegistrationNodes$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.model.organIri$, this.model.showPrevious$, this.registration.previousRegistrations$]).pipe(
-      map(([organIri, showPrevious, previousRegistrations]) =>
-        showPrevious ? previousRegistrations.map((entity: SpatialEntityJsonLd) => {
-          const p = Array.isArray(entity.placement) ? entity.placement[0] : entity.placement;
-          if (p.target === organIri) {
-            const organDimensions = this.model.snapshot.organDimensions;
-            const dims = [organDimensions.x, organDimensions.y, organDimensions.z].map(n => -n / 1000 / 2);
-            return {
-              '@id': entity['@id'],
-              '@type': 'SpatialSceneNode',
-              transformMatrix: new Matrix4(Matrix4.IDENTITY)
-                .translate([p.x_translation, p.y_translation, p.z_translation].map((n, i) => n / 1000 + dims[i]))
-                .rotateXYZ([p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians) as [number, number, number])
-                .scale([entity.x_dimension, entity.y_dimension, entity.z_dimension].map(n => n / 1000 / 2)),
-              color: [25, 118, 210, 200],
-              tooltip: entity.label,
-              unpickable: true
-            } as SpatialSceneNode;
-          } else {
-            return undefined as unknown as SpatialSceneNode;
-          }
-        }).filter(e => !!e) : []
-      )
+    const {
+      model: { organIri$, showPrevious$, organDimensions$ },
+      registration: { previousRegistrations$ }
+    } = this;
+    const iri$ = organIri$.pipe(filterNulls());
+    const getTarget = ({ placement }: SpatialEntityJsonLd) =>
+      (Array.isArray(placement) ? placement[0] : placement).target;
+
+    return combineLatest([iri$, organDimensions$, showPrevious$, previousRegistrations$]).pipe(
+      map(([iri, dims, show, previous]) => {
+        if (!show) {
+          return [];
+        }
+
+        return (previous as SpatialEntityJsonLd[])
+          .filter(entity => getTarget(entity) === iri)
+          .map(entity => this.createSceneNodeFromSpatialEntity(entity, dims));
+      }),
+      distinctUntilChanged(emptyArrayEquals),
+      map(nodes => this.rotateNodes(nodes)),
+      shareReplay(1)
     );
   }
 
   @Computed()
-  get placementCube$(): Observable<SpatialSceneNode[]> | [] {
-    return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$, this.model.organ$]).pipe(
-      map(([viewType, blockSize, rotation, position, organ]) => organ.src === '' ? [] : [this.placementCube])
+  get placementCube$(): Observable<SpatialSceneNode[]> {
+    const { model: { organ$, blockSize$, position$, rotation$, viewType$ } } = this;
+    return combineLatest([organ$, blockSize$, position$, rotation$, viewType$]).pipe(
+      pluck(0, 'src'),
+      map(src => src === '' ? [] : [this.placementCube]),
+      distinctUntilChanged(emptyArrayEquals),
+      shareReplay(1)
     );
   }
 
   @Computed()
   get placementCube(): SpatialSceneNode {
-    const {viewType, blockSize, rotation, position, organDimensions} = this.model.snapshot;
-    const dims = [organDimensions.x, organDimensions.y, organDimensions.z].map(n => -n / 1000 / 2);
+    const { organ, blockSize, rotation, position, organDimensions, viewType } = this.model.snapshot;
+    const transformMatrix = getTransformMatrix(
+      organDimensions, position, rotation, blockSize, organ.rotation ?? Vector3.ZERO
+    );
+
     return {
       '@id': '#DraftPlacement',
       '@type': 'SpatialSceneNode',
-      transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([position.x, position.y, position.z].map((n, i) => n / 1000 + dims[i]))
-        .rotateXYZ([rotation.x, rotation.y, rotation.z].map<number>(toRadians) as [number, number, number])
-        .scale([blockSize.x, blockSize.y, blockSize.z].map(n => n / 1000 / 2)),
-      color: [255, 255, 0, 200],
       tooltip: 'Draft Placement',
+      color: [255, 255, 0, 200],
       unpickable: viewType === '3d',
+      transformMatrix,
     };
   }
 
 
   @Computed()
   get rotation$(): Observable<number> {
+    const viewSideToRotationDegreesMap: Record<ViewSide, number> = {
+      anterior: 0,
+      left: -90,
+      right: 90,
+      posterior: 180
+    };
+
     return this.model.viewSide$.pipe(
-      map((side) => {
-        let rotation = 0;
-        switch(side) {
-          case 'left':
-            rotation = -90;
-            break;
-          case 'right':
-            rotation = 90;
-            break;
-          case 'posterior':
-            rotation = 180;
-            break;
-        }
-        return rotation;
-      })
+      map(side => viewSideToRotationDegreesMap[side] ?? 0)
     );
   }
 
-  readonly gizmo$: Observable<SpatialSceneNode[]> = of([
-    {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Spleen_Colic_Surface',
-      '@type': 'SpatialSceneNode',
-      scenegraph: 'https://hubmapconsortium.github.io/ccf-3d-reference-object-library/Assets/body4Mesh_1338.glb',
-      transformMatrix: new Matrix4(Matrix4.IDENTITY).scale([2, 2, 2]).rotateY(toRadians(0)),
-      tooltip: 'Gizmo',
-      unpickable: true,
-      _lighting: 'pbr',
-      zoomBasedOpacity: false,
-      color: [255, 255, 255, 255],
-      opacity: 1
-    }
-  ]);
+  @Computed()
+  get gizmo$(): Observable<SpatialSceneNode[]> {
+    // const { model: { organ$ } } = this;
+    // return organ$.pipe(
+    //   pluckUnique('rotation'),
+    //   map(rotation => rotation as [number, number, number] ?? [0, 0, 0]),
+    //   map(rotation => toRadians(rotation)),
+    //   map(rotation => [{
+    //     '@id': 'http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Spleen_Colic_Surface',
+    //     '@type': 'SpatialSceneNode',
+    //     scenegraph: 'https://hubmapconsortium.github.io/ccf-3d-reference-object-library/Assets/body4Mesh_1338.glb',
+    //     transformMatrix: new Matrix4().scale([2, 2, 2]).rotateXYZ(rotation),
+    //     tooltip: 'Gizmo',
+    //     unpickable: true,
+    //     _lighting: 'pbr',
+    //     zoomBasedOpacity: false,
+    //     color: [255, 255, 255, 255],
+    //     opacity: 1
+    //   } as SpatialSceneNode]),
+    //   shareReplay(1)
+    // );
 
-  /** Reference to the model state */
-  private model: ModelState;
+    return of([
+      {
+        '@id': 'http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_Spleen_Colic_Surface',
+        '@type': 'SpatialSceneNode',
+        scenegraph: 'https://hubmapconsortium.github.io/ccf-3d-reference-object-library/Assets/body4Mesh_1338.glb',
+        transformMatrix: new Matrix4().scale([2, 2, 2]).rotateY(toRadians(0)),
+        tooltip: 'Gizmo',
+        unpickable: true,
+        _lighting: 'pbr',
+        zoomBasedOpacity: false,
+        color: [255, 255, 255, 255],
+        opacity: 1
+      }
+    ]);
+  }
+
+  /** Reference to the reference data state */
   private registration: RegistrationState;
-  private referenceData: ReferenceDataState;
+
 
   /**
    * Creates an instance of scene state.
    *
-   * @param injector Injector service used to lazy load page and model state
+   * @param injector Injector service used to lazy load states
    */
   constructor(
+    private readonly model: ModelState,
+    private readonly referenceData: ReferenceDataState,
     private readonly injector: Injector
   ) {
     super();
@@ -232,34 +320,73 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
-    // Injecting page and model states in the constructor breaks things!?
-    // Lazy load here
-    this.model = this.injector.get(ModelState);
+    // Lazy load to break circular dependency
     this.registration = this.injector.get(RegistrationState);
-    this.referenceData = this.injector.get(ReferenceDataState);
   }
 
-  private createSceneNodes(organIri: string, items: VisibilityItem[]): SpatialSceneNode[] {
-    const db = this.referenceData.snapshot;
-    return items
-      .filter(item => item.visible && item.opacity && item.opacity > 0)
-      .map(item => {
-        if (db.sceneNodeLookup[item.id]) {
-          return [{
-            ...db.sceneNodeLookup[item.id],
-            opacity: (item.opacity || 100) / 100,
-            color: [255, 255, 255, 255]
-          } as SpatialSceneNode];
-        } else {
-          return (db.anatomicalStructures[organIri] || [])
-            .filter((node) => node.representation_of === item.id)
-            .map((node) => ({
-              ...db.sceneNodeLookup[node['@id']],
-              opacity: (item.opacity || 100) / 100,
-              color: [255, 255, 255, 255]
-            } as SpatialSceneNode));
-        }
-      })
-      .reduce((acc, nodes) => acc.concat(nodes), []);
+  private createSceneNodes(
+    item: VisibilityItem, iri: string,
+    db: ReferenceDataStateModel, nodeType: 'regular' | 'simple' = 'regular'
+  ): SpatialSceneNode[] {
+    const { id, opacity = 100 } = item;
+    const opacityInPercentage = opacity / 100;
+    const nodeLookupMap = nodeType === 'regular' ? db.sceneNodeLookup : db.simpleSceneNodeLookup;
+    const createNode = (props: Partial<SpatialSceneNode>) => ({
+      ...props,
+      color: [255, 255, 255, 255],
+      opacity: opacityInPercentage
+    } as SpatialSceneNode);
+
+    if (db.sceneNodeLookup[id]) {
+      return [createNode(nodeLookupMap[id])];
+    }
+
+    const structs = db.anatomicalStructures[iri];
+    if (structs) {
+      return structs
+        .filter(struct => struct.representation_of === id)
+        .map(struct => createNode(nodeLookupMap[struct['@id']]));
+    }
+
+    return [];
+  }
+
+  private createSceneNodeFromSpatialEntity(
+    entity: SpatialEntityJsonLd, dims: Vector3Convertible
+  ): SpatialSceneNode {
+    const {
+      '@id': id, label, placement: placementOrArray,
+      x_dimension: xDim, y_dimension: yDim, z_dimension: zDim
+    } = entity;
+    const {
+      x_translation: xPos, y_translation: yPos, z_translation: zPos,
+      x_rotation: xRot, y_rotation: yRot, z_rotation: zRot
+    } = Array.isArray(placementOrArray) ? placementOrArray[0] : placementOrArray;
+    const transformMatrix = getTransformMatrix(
+      dims, [xPos, yPos, zPos], [xRot, yRot, zRot], [xDim, yDim, zDim]
+    );
+
+    return {
+      '@id': id,
+      '@type': 'SpatialSceneNode',
+      tooltip: label,
+      color: [25, 118, 210, 200],
+      transformMatrix,
+      unpickable: true
+    };
+  }
+
+  private rotateNodes(nodes: SpatialSceneNode[]): SpatialSceneNode[] {
+    const { model: { snapshot: { organ: { rotation } } } } = this;
+    if (rotation === undefined) {
+      return nodes;
+    }
+
+    const rotationInRadians = toRadians(rotation as [number, number, number]);
+    const rotationMatrix = new Matrix4().rotateXYZ(rotationInRadians);
+    return nodes.map(node => ({
+      ...node,
+      transformMatrix: new Matrix4(node.transformMatrix).multiplyLeft(rotationMatrix)
+    }));
   }
 }
