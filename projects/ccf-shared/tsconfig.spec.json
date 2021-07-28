@@ -8,9 +8,7 @@
     ]
   },
   "files": [
-    "src/test.ts",
-    "rxjs-ext/src/test.ts",
-    "rxjs-ext/operators/src/test.ts"
+    "./test.ts"
   ],
   "include": [
     "**/*.spec.ts",
