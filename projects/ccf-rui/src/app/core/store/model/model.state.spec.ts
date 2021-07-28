@@ -250,4 +250,12 @@ describe('ModelState', () => {
     const value = await nextValue(state.anatomicalStructures$);
     expect(value[0].opacity).toEqual(20);
   });
+
+  it('should find a matching organ by id', async () => {
+    expect(state.idMatches('http://purl.obolibrary.org/obo/UBERON_0004538', 'left')?.organ).toEqual('Kidney');
+  });
+
+  it('should find a matching organ by name', async () => {
+    expect(state.nameMatches('kidney', 'left')?.organ).toEqual('Kidney');
+  });
 });
