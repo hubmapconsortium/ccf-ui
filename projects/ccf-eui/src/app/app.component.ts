@@ -1,5 +1,5 @@
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
-import { Component, ViewChild, Injector, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, Injector, ElementRef, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -17,6 +17,7 @@ import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/
 import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Any } from '@angular-ru/common/typings';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -29,6 +30,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
+
+  @Input() dataService = '';
+  @Input() portalUrl = '';
+  @Input() dataUrl = '';
+  @Input() assetUrl = '';
+  @Input() token = '';
 
   /**
    * Used to keep track of the ontology label to be passed down to the
@@ -88,6 +95,9 @@ export class AppComponent implements OnInit {
       data: {preClose: () => {snackBar.dismiss();} },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
+
+    // @TODO:  remove log
+    console.log('this: ', this);
   }
 
   /**

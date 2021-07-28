@@ -7,6 +7,7 @@
   <ccf-drawer-container class="main-drawers">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
       <div>
+        {{testItem}}
         <div class="filter-data">
           <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
                                (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>

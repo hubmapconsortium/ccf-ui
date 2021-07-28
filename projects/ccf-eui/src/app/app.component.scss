@@ -3,6 +3,11 @@
   font-size: 1.2rem;
 }
 
+:host {
+  display: block;
+  position: relative;
+}
+
 .ccf-app {
   display: flex;
   flex-direction: column;
