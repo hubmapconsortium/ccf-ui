@@ -54,7 +54,7 @@ export class IconRegistryState extends NgxsDataRepository<void> {
     super();
 
     for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-      const baseHref = globalConfig.baseHref || '';
+      const baseHref = globalConfig.embedded ? '' : globalConfig.baseHref || '';
       const safeDef: IconDefinition = {
         name, namespace,
         url: url && sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
