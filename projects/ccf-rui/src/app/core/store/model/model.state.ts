@@ -163,7 +163,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     super.ngxsOnInit();
 
     this.referenceData = this.injector.get(ReferenceDataState);
-    
+  
     if (this.globalConfig.organ) {
       const organConfig = this.globalConfig.organ;
       const organSide = organConfig.side;
