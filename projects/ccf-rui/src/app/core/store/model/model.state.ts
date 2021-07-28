@@ -169,24 +169,35 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       const organName = organConfig.name.toLowerCase();
       const organSide = organConfig.side;
       const ontologyId = organConfig.ontologyId;
-      const organInfo = ALL_ORGANS.find((o) => {
-        if (ontologyId && o.id === ontologyId) {
-          return o.side ? o.id === ontologyId && o.side === organSide : o.id === ontologyId;
-        } else {
-          return o.side ? o.organ.toLowerCase() === organName && o.side === organSide : o.organ.toLowerCase() === organName;
-        }
-      });
+      // check for an id match
+      let organInfo = this.idMatches(ontologyId, organSide);
+      // if no id matches, check for a name match
+      if (!organInfo) {
+        organInfo = this.nameMatches(organName, organSide);
+      }
       if (organInfo) {
         setTimeout(() => {
           this.ctx.patchState({
             organ: organInfo,
             sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
-            side: organInfo.side?.toLowerCase() as 'left' | 'right'
+            side: organInfo?.side?.toLowerCase() as 'left' | 'right'
           });
           this.onOrganIriChange();
         }, 1000);
       }
     }
+  }
+
+  idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
+    return ALL_ORGANS.find((o) => {
+      return ontologyId && o.id === ontologyId ?  (o.side ? o.side === organSide : true) : false;
+    });
+  }
+
+  nameMatches(organName: string, organSide?: string): OrganInfo | undefined {
+    return ALL_ORGANS.find((o) => {
+      return o.side ? o.organ.toLowerCase() === organName && o.side === organSide : o.organ.toLowerCase() === organName;
+    });
   }
 
   /**
