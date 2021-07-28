@@ -189,15 +189,15 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   }
 
   idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
-    return ALL_ORGANS.find((o) => {
-      return ontologyId && o.id === ontologyId ?  (o.side ? o.side === organSide : true) : false;
-    });
+    return ALL_ORGANS.find((o) =>
+      ontologyId && o.id === ontologyId ?  (o.side ? o.side === organSide : true) : false
+    );
   }
 
   nameMatches(organName: string, organSide?: string): OrganInfo | undefined {
-    return ALL_ORGANS.find((o) => {
-      return o.side ? o.organ.toLowerCase() === organName && o.side === organSide : o.organ.toLowerCase() === organName;
-    });
+    return ALL_ORGANS.find((o) =>
+      o.side ? o.organ.toLowerCase() === organName && o.side === organSide : o.organ.toLowerCase() === organName
+    );
   }
 
   /**
