@@ -171,17 +171,9 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       const ontologyId = organConfig.ontologyId;
       const organInfo = ALL_ORGANS.find((o) => {
         if (ontologyId && o.id === ontologyId) {
-          if (o.side) {
-            return o.id === ontologyId && o.side === organSide;
-          } else {
-            return o.id === ontologyId;
-          }
+          return o.side ? o.id === ontologyId && o.side === organSide : o.id === ontologyId;
         } else {
-          if (o.side) {
-            return o.organ.toLowerCase() === organName && o.side === organSide;
-          } else {
-            return o.organ.toLowerCase() === organName;
-          }
+          return o.side ? o.organ.toLowerCase() === organName && o.side === organSide : o.organ.toLowerCase() === organName;
         }
       });
       if (organInfo) {
