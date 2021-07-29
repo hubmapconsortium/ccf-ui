@@ -150,9 +150,6 @@ export class AppComponent implements OnDestroy, OnInit {
       data: {preClose: () => {snackBar.dismiss();} },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
-
-    // @TODO:  Remove log
-    console.log('this: ', this);
   }
 
   /**

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { Component, ViewChild, Injector, ElementRef, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -36,6 +37,17 @@ export class AppComponent implements OnInit {
   @Input() dataUrl = '';
   @Input() assetUrl = '';
   @Input() token = '';
+  @Input()
+    get dataSources(): string[] { return this._dataSources; }
+    set dataSources(datasSources: string[] | string) {
+      if (typeof datasSources === 'string') {
+        this._dataSources = JSON.parse(datasSources);
+      } else {
+        this._dataSources = datasSources;
+      }
+    }
+
+  _dataSources: string[] = [];
 
   /**
    * Used to keep track of the ontology label to be passed down to the
@@ -95,6 +107,9 @@ export class AppComponent implements OnInit {
       data: {preClose: () => {snackBar.dismiss();} },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
+
+    // TODO: remove
+    console.log('this: ', this);
   }
 
   /**
