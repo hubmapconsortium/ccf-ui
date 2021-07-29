@@ -8,7 +8,7 @@ import { OrganInfo } from 'ccf-shared';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
-import { GLOBAL_CONFIG } from './../../services/config/config';
+import { GLOBAL_CONFIG, GlobalConfig } from './../../services/config/config';
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
 
 
@@ -24,10 +24,13 @@ describe('ModelState', () => {
   const initialViewSide: ViewSide = 'anterior';
   let mockDataSource: jasmine.SpyObj<ReferenceDataState>;
   let state: ModelState;
+  let mockGlobalConfig: jasmine.SpyObj<GlobalConfig>;
 
   beforeEach(() => {
     mockDataSource = jasmine.createSpyObj<ReferenceDataState>('ReferenceDataState', ['getReferenceOrganIri']);
     mockDataSource.getReferenceOrganIri.and.returnValue(undefined);
+    mockGlobalConfig = jasmine.createSpyObj<GlobalConfig>('GlobalConfig', ['organ']);
+    mockGlobalConfig.organ = {name: 'kidney', ontologyId: 'http://purl.obolibrary.org/obo/UBERON_0004538', side: 'left', sex: 'female'};
 
     // NOTE: No need for shallow-render since
     // the setup is so simple. It would also require
@@ -41,7 +44,7 @@ describe('ModelState', () => {
         { provide: ReferenceDataState, useValue: mockDataSource },
         {
           provide: GLOBAL_CONFIG,
-          useValue: {}
+          useValue: mockGlobalConfig
         }
       ]
     });
@@ -249,5 +252,17 @@ describe('ModelState', () => {
     state.toggleRegistrationBlocksVisibility(true, testVisibilityItems);
     const value = await nextValue(state.anatomicalStructures$);
     expect(value[0].opacity).toEqual(20);
+  });
+
+  it('should find a matching organ by id and side', async () => {
+    expect(state.idMatches('http://purl.obolibrary.org/obo/UBERON_0004538', 'left')?.organ).toEqual('Kidney');
+  });
+
+  it('should find a matching organ by id only', async () => {
+    expect(state.idMatches('http://purl.obolibrary.org/obo/UBERON_0000059')?.organ).toEqual('Large Intestine');
+  });
+
+  it('should find a matching organ by name', async () => {
+    expect(state.nameMatches('kidney', 'left')?.organ).toEqual('Kidney');
   });
 });
