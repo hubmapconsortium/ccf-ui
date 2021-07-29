@@ -34,7 +34,8 @@
     "test:wsl": "ng test --browsers=ChromeHeadlessWSL",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "sonar": "sonar-scanner"
+    "sonar": "sonar-scanner",
+    "postinstall": "rm -rf ./node_modules/@types/math.gl ./node_modules/@types/math.gl__core"
   },
   "private": true,
   "browser": {
