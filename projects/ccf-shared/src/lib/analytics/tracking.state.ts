@@ -30,7 +30,7 @@ export class TrackingState extends NgxsImmutableDataRepository<TrackingStateMode
     const oldValue = getTelemetryStorageSetting();
     localStorage.setItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY, allowTelemetry.toString());
     this.ctx.patchState({ allowTelemetry });
-  
+
     if (oldValue !== undefined || allowTelemetry === false) {
       // This ensures that if telemetry is disabled that it _WONT_ send anything to Google Analytics
       location.reload();
