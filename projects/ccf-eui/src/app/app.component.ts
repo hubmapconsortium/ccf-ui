@@ -31,6 +31,7 @@ import { Any } from '@angular-ru/common/typings';
 export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
 
+  // Configuration Options
   @Input() dataService = '';
   @Input() portalUrl = '';
   @Input() dataUrl = '';
