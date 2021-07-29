@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Immutable } from '@angular-ru/common/typings';
 import { Inject, Injectable, Injector } from '@angular/core';
-import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
-import { combineLatest, Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { pluck } from 'rxjs/operators';
 
 import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 import { ModelState } from './../model/model.state';
