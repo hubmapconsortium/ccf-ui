@@ -31,7 +31,6 @@ describe('PageState', () => {
 
     TestBed.inject(Store).reset({
       page: {
-        embedded: false,
         user: {
           firstName: 'Bob',
           lastName: 'the Dragon'
@@ -44,21 +43,9 @@ describe('PageState', () => {
     state.ngxsOnInit();
   });
 
-  it('has the latest embedded', async () => {
-    const value = await nextValue(state.embedded$);
-    expect(value).toEqual(false);
-  });
-
   it('has the latest user', async () => {
     const value = await nextValue(state.user$);
     expect(value).toEqual({ firstName: 'Bob', lastName: 'the Dragon' });
-  });
-
-  it('updates embedded', async () => {
-    state.setEmbedded(true);
-
-    const value = await nextValue(state.embedded$);
-    expect(value).toEqual(true);
   });
 
   it('updates user name', async () => {
@@ -67,14 +54,6 @@ describe('PageState', () => {
 
     const value = await nextValue(state.user$);
     expect(value).toEqual(jasmine.objectContaining(newName));
-  });
-
-  it('reads embedded from the global config', async () => {
-    TestBed.inject(GLOBAL_CONFIG).embedded = true;
-    state.ngxsOnInit(); // Retrigger initialization
-
-    const value = await nextValue(state.embedded$);
-    expect(value).toEqual(true);
   });
 
   it('updates registrationStarted', async () => {

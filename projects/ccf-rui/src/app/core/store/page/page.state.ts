@@ -20,8 +20,6 @@ export interface Person {
 
 /** Page state model */
 export interface PageStateModel {
-  /** Whether the page is embedded through hubmap */
-  embedded: boolean;
   /** Active user */
   user: Person;
   /** Whether or not to show the page tutorial */
@@ -39,7 +37,6 @@ export interface PageStateModel {
 @State<PageStateModel>({
   name: 'page',
   defaults: {
-    embedded: false,
     user: {
       firstName: '',
       lastName: ''
@@ -51,8 +48,6 @@ export interface PageStateModel {
 })
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
-  /** Embedded observable */
-  readonly embedded$ = this.state$.pipe(pluck('embedded'));
   /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
   /** RegistrationStated observable */
@@ -62,8 +57,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /** Tutorial mode observable */
   @Computed()
   get tutorialMode$(): Observable<boolean> {
-    return combineLatest([this.embedded$, this.model.organIri$]).pipe(
-      map(([embedded, organIri]) => !embedded && !organIri)
+    return combineLatest([this.useCancelRegistrationCallback$, this.model.organIri$]).pipe(
+      map(([useCancelRegistrationCallback, organIri]) => !useCancelRegistrationCallback && !organIri)
     );
   }
 
@@ -91,9 +86,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     // Lazy load here
     this.model = this.injector.get(ModelState);
 
-    const { globalConfig: { embedded, user, tutorialMode, cancelRegistration } } = this;
+    const { globalConfig: { user, tutorialMode, cancelRegistration } } = this;
     this.ctx.setState(patch<Immutable<PageStateModel>>({
-      embedded: embedded ?? !!user,
       useCancelRegistrationCallback: !!(cancelRegistration),
       user: iif(!!user, user!),
       tutorialMode: !!tutorialMode
@@ -111,19 +105,6 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   @DataAction()
   setUseCancelRegistrationCallback(use: boolean): void {
     this.ctx.patchState({ useCancelRegistrationCallback: use });
-  }
-
-  /**
-   * Sets whether this is an embedded page.
-   *
-   * @param embedded Whether the page is embedded
-   * @param [url] The new home url. If not provided the previous one is used
-   */
-  @DataAction()
-  setEmbedded(embedded: boolean, url?: string): void {
-    this.ctx.patchState({
-      embedded
-    });
   }
 
   /**

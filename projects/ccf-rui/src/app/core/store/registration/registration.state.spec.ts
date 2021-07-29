@@ -41,7 +41,6 @@ const testPage: Immutable<PageStateModel> = {
     firstName: 'John',
     lastName: 'Doe'
   },
-  embedded: true,
   tutorialMode: false,
   registrationStarted: false,
   useCancelRegistrationCallback: false
@@ -53,7 +52,6 @@ function nextValue<T>(obs: Observable<T>): Promise<T> {
 
 describe('RegistrationState', () => {
   const initialPageState: Partial<PageStateModel> = {
-    embedded: true,
     user: {
       firstName: 'foo',
       lastName: 'bar'
@@ -144,8 +142,8 @@ describe('RegistrationState', () => {
       expect(value).toContain({ label: 'Tissue Block Rotation', value: '0, 0, 0' });
     });
 
-    it('has extra fields if its embedded', async () => {
-      pageStateSubject.next({ ...initialPageState, embedded: false });
+    it('has extra fields if cancel registration callback is set', async () => {
+      pageStateSubject.next({ ...initialPageState, useCancelRegistrationCallback: false });
 
       const value = await nextValue(state.metadata$);
       expect(value).toContain({ label: 'First Name', value: 'foo' });

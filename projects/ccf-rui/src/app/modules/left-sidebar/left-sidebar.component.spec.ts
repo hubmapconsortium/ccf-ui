@@ -21,7 +21,7 @@ describe('LeftSidebarComponent', () => {
         );
 
         const mockPageState = jasmine.createSpyObj<PageState>(
-            'PageState', ['setEmbedded', 'setUserName', 'setTutorialMode']
+            'PageState', ['setUserName', 'setTutorialMode']
         );
 
         const mockRegistrationState = jasmine.createSpyObj<RegistrationState>(

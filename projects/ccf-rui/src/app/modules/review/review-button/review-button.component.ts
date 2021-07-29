@@ -21,7 +21,7 @@ export class ReviewButtonComponent implements OnChanges {
   /**
    * Input to set whether the component should be in register (true) or download (false) mode
    */
-  @Input() embeddedMode = true;
+  @Input() cancelRegistrationCallbackSet = true;
 
   /**
    * Input object of information to display in the modal
@@ -100,7 +100,7 @@ export class ReviewButtonComponent implements OnChanges {
       panelClass: 'modal-animated',
       width: '60rem',
       data: {
-        embeddedMode: this.embeddedMode,
+        cancelRegistrationCallbackSet: this.cancelRegistrationCallbackSet,
         metaData: this.metaData
       }
     });

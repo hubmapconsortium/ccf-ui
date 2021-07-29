@@ -36,7 +36,7 @@ export class AppComponent implements OnDestroy, OnInit {
     el: ElementRef<unknown>, injector: Injector) {
     theming.initialize(el, injector);
     this.subscriptions.add(
-      page.embedded$.subscribe((embedded) => { this.open = !embedded; })
+      page.useCancelRegistrationCallback$.subscribe((useCallback) => { this.open = !useCallback; })
     );
     this.subscriptions.add(
       page.registrationStarted$.subscribe((registrationStarted) => { this.registrationStarted = registrationStarted; })

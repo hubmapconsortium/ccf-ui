@@ -31,7 +31,7 @@ describe('ReviewModalComponent', () => {
       .provide({ provide: MatDialogRef, useValue: {} })
       .provide({
         provide: MAT_DIALOG_DATA, useValue: {
-          embeddedMode: true,
+          cancelRegistrationCallbackSet: true,
           metaData
         }
       });

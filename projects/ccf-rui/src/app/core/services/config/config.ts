@@ -5,7 +5,6 @@ import { ObservableInput } from 'rxjs';
 
 export interface GlobalConfig {
   baseHref?: string;
-  embedded?: boolean;
   tutorialMode?: boolean;
   editRegistration?: Record<string, unknown>;
   organ?: {
