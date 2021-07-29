@@ -31,7 +31,7 @@ import { hubmapResponseAsJsonLd } from './hubmap-data';
         _source: {
           excludes: [
             'donor', 'immediate_ancestors', 'immediate_descendants', 'origin_sample',
-            'portal_metadata_upload_files', 'portal_uploaded_image_files', 'ancestor_ids', 'descendant_ids'
+            'portal_metadata_upload_files', 'image_file_metadata', 'ancestor_ids', 'descendant_ids'
           ]
         },
         stored_fields: ['*'],

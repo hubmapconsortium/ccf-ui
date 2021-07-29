@@ -219,7 +219,7 @@ export class HuBMAPTissueBlock {
     for (const descendant of descendants.filter(d => d.entity_type === 'Sample')) {
       const section = this.getSection(descendant, data, portalUrl);
 
-      const sectionId = descendant.hubmap_display_id as string;
+      const sectionId = descendant.submission_id as string;
       sectionLookup[sectionId] = section;
       sections.push(section);
       section.section_number = section.section_number || sections.length;
@@ -228,7 +228,7 @@ export class HuBMAPTissueBlock {
       if (descendant.entity_type === 'Dataset') {
         const dataset = this.getDataset(descendant, assetsApi, portalUrl, serviceToken);
 
-        const sectionId = get(descendant, ['metadata', 'metadata', 'tissue_id']) as string;
+        const sectionId = get(descendant, ['ingest_metadata', 'metadata', 'tissue_id']) as string;
         if (sectionLookup[sectionId]) {
           (sectionLookup[sectionId].datasets as JsonLd[])?.push(dataset);
         } else {
@@ -284,7 +284,7 @@ export class HuBMAPTissueBlock {
 
     const types = [
       ...dataset.data_types as string[],
-      get(dataset, ['metadata', 'metadata', 'assay_type'], '')
+      get(dataset, ['ingest_metadata', 'metadata', 'assay_type'], '')
     ];
     const typesSearch = types.join('|').toLowerCase();
 
@@ -342,7 +342,7 @@ export class HuBMAPTissueBlock {
         }
       }
     } else if (dataset.group_uuid === '07a29e4c-ed43-11e8-b56a-0e8017bdda58') { // TMC-Florida
-      const thumb = UFL_THUMBS[dataset.display_doi as string];
+      const thumb = UFL_THUMBS[dataset.hubmap_id as string];
       if (thumb) {
         return `assets/thumbnails/TMC-Florida/${thumb}`;
       }
