@@ -41,7 +41,6 @@ const testPage: Immutable<PageStateModel> = {
     firstName: 'John',
     lastName: 'Doe'
   },
-  tutorialMode: false,
   registrationStarted: false,
   useCancelRegistrationCallback: false
 };

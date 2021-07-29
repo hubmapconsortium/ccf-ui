@@ -62,12 +62,6 @@ describe('PageState', () => {
     expect(value).toBeTrue();
   });
 
-  it('updates tutorialMode', async () => {
-    state.setTutorialMode(true);
-    const value = await nextValue(state.tutorialMode$);
-    expect(value).toBeTrue();
-  });
-
   it('updates useCancelRegistrationCallback', async () => {
     state.setUseCancelRegistrationCallback(true);
     const value = await nextValue(state.useCancelRegistrationCallback$);

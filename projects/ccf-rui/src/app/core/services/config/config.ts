@@ -5,7 +5,6 @@ import { ObservableInput } from 'rxjs';
 
 export interface GlobalConfig {
   baseHref?: string;
-  tutorialMode?: boolean;
   editRegistration?: Record<string, unknown>;
   organ?: {
     name: 'large intestine' | 'heart' | 'kidney' | 'spleen';

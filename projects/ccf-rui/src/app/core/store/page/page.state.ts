@@ -22,8 +22,6 @@ export interface Person {
 export interface PageStateModel {
   /** Active user */
   user: Person;
-  /** Whether or not to show the page tutorial */
-  tutorialMode: boolean;
   /** Whether or not the initial registration modal has been closed */
   registrationStarted: boolean;
   useCancelRegistrationCallback: boolean;
@@ -41,7 +39,6 @@ export interface PageStateModel {
       firstName: '',
       lastName: ''
     },
-    tutorialMode: false,
     registrationStarted: false,
     useCancelRegistrationCallback: false
   }
@@ -53,14 +50,6 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /** RegistrationStated observable */
   readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
   readonly useCancelRegistrationCallback$ = this.state$.pipe(pluck('useCancelRegistrationCallback'));
-
-  /** Tutorial mode observable */
-  @Computed()
-  get tutorialMode$(): Observable<boolean> {
-    return combineLatest([this.useCancelRegistrationCallback$, this.model.organIri$]).pipe(
-      map(([useCancelRegistrationCallback, organIri]) => !useCancelRegistrationCallback && !organIri)
-    );
-  }
 
   private model: ModelState;
 
@@ -86,11 +75,10 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     // Lazy load here
     this.model = this.injector.get(ModelState);
 
-    const { globalConfig: { user, tutorialMode, cancelRegistration } } = this;
+    const { globalConfig: { user, cancelRegistration } } = this;
     this.ctx.setState(patch<Immutable<PageStateModel>>({
       useCancelRegistrationCallback: !!(cancelRegistration),
-      user: iif(!!user, user!),
-      tutorialMode: !!tutorialMode
+      user: iif(!!user, user!)
     }));
   }
 
@@ -117,16 +105,6 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     this.ctx.setState(patch({
       user: patch(name)
     }));
-  }
-
-  /**
-   * Turns tutorialMode on or off
-   *
-   * @param tutorialMode the state to set the mode to.
-   */
-  @DataAction()
-  setTutorialMode(tutorialMode: boolean): void {
-    this.ctx.setState(patch({ tutorialMode }));
   }
 
   /**
