@@ -228,7 +228,7 @@ export class HuBMAPTissueBlock {
       if (descendant.entity_type === 'Dataset') {
         const dataset = this.getDataset(descendant, assetsApi, portalUrl, serviceToken);
 
-        const sectionId = get(descendant, ['ingest_metadata', 'ingest_metadata', 'tissue_id']) as string;
+        const sectionId = get(descendant, ['ingest_metadata', 'metadata', 'tissue_id']) as string;
         if (sectionLookup[sectionId]) {
           (sectionLookup[sectionId].datasets as JsonLd[])?.push(dataset);
         } else {
@@ -284,7 +284,7 @@ export class HuBMAPTissueBlock {
 
     const types = [
       ...dataset.data_types as string[],
-      get(dataset, ['ingest_metadata', 'ingest_metadata', 'assay_type'], '')
+      get(dataset, ['ingest_metadata', 'metadata', 'assay_type'], '')
     ];
     const typesSearch = types.join('|').toLowerCase();
 
@@ -327,7 +327,7 @@ export class HuBMAPTissueBlock {
 
   getDatasetThumbnail(dataset: JsonDict, assetsApi: string, serviceToken?: string): string | undefined {
     if (dataset.group_uuid === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a') { // TMC-Vanderbilt
-      const tiffs = (get(dataset, 'ingest_metadata.files', []) as { rel_path: string }[])
+      const tiffs = (get(dataset, 'metadata.files', []) as { rel_path: string }[])
         .filter(f => /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
         .filter(f => !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path))
         .filter(f => DR1_VU_THUMBS.has(
@@ -364,7 +364,7 @@ export class HuBMAPTissueBlock {
       age = toNumber(ageMatch[1]);
     }
     let bmi: number | undefined;
-    for (const md of get(donor, 'ingest_metadata.organ_donor_data', []) as JsonDict[]) {
+    for (const md of get(donor, 'metadata.organ_donor_data', []) as JsonDict[]) {
       if (md.preferred_term === 'Feminine gender' || md.preferred_term === 'Female') {
         sex = 'Female';
       } else if (md.preferred_term === 'Masculine gender' || md.preferred_term === 'Male') {
