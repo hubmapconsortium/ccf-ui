@@ -10,7 +10,7 @@ interface ReviewModalData {
   metaData: MetaData;
 
   /** Whether or not the cancel registration callback is set */
-  cancelRegistrationCallbackSet: boolean;
+  registrationCallbackSet: boolean;
 }
 
 /**
@@ -27,7 +27,7 @@ export class ReviewModalComponent {
   /**
    * Whether or not the cancel registration callback is set
    */
-   cancelRegistrationCallbackSet: boolean;
+   registrationCallbackSet: boolean;
 
   /**
    * The object containing all of the review information for displaying inside the modal
@@ -45,7 +45,7 @@ export class ReviewModalComponent {
     @Inject(MAT_DIALOG_DATA) public data: ReviewModalData
   ) {
     this.metaData = data.metaData;
-    this.cancelRegistrationCallbackSet = data.cancelRegistrationCallbackSet;
+    this.registrationCallbackSet = data.registrationCallbackSet;
   }
 
   /**

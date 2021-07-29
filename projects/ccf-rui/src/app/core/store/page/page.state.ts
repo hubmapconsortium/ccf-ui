@@ -24,6 +24,7 @@ export interface PageStateModel {
   /** Whether or not the initial registration modal has been closed */
   registrationStarted: boolean;
   useCancelRegistrationCallback: boolean;
+  registrationCallbackSet: boolean;
 }
 
 
@@ -39,7 +40,8 @@ export interface PageStateModel {
       lastName: ''
     },
     registrationStarted: false,
-    useCancelRegistrationCallback: false
+    useCancelRegistrationCallback: false,
+    registrationCallbackSet: false
   }
 })
 @Injectable()
@@ -49,6 +51,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /** RegistrationStated observable */
   readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
   readonly useCancelRegistrationCallback$ = this.state$.pipe(pluck('useCancelRegistrationCallback'));
+  readonly registrationCallbackSet$ = this.state$.pipe(pluck('registrationCallbackSet'));
 
   private model: ModelState;
 
@@ -74,8 +77,9 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     // Lazy load here
     this.model = this.injector.get(ModelState);
 
-    const { globalConfig: { user, cancelRegistration } } = this;
+    const { globalConfig: { user, register, cancelRegistration } } = this;
     this.ctx.setState(patch<Immutable<PageStateModel>>({
+      registrationCallbackSet: !!(register),
       useCancelRegistrationCallback: !!(cancelRegistration),
       user: iif(!!user, user!)
     }));

@@ -26,7 +26,7 @@ export class RegistrationModalComponent implements OnInit {
    * Opens the dialog on startup (but not if cancel registration callback is set)
    */
   ngOnInit(): void {
-    if (!this.pageState.snapshot.useCancelRegistrationCallback) {
+    if (!this.pageState.snapshot.registrationCallbackSet) {
       this.openDialog();
     }
   }

@@ -8,7 +8,6 @@
 
 <div class="main-content">
   <ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === '3d'"
-    [class.hidden]="false"
     [scene]="scene.nodes$ | async"
     [rotation]="scene.rotation$ | async"
     (rotationChange)="gizmo.rotation = $event[0]; gizmo.rotationX = $event[1]"
@@ -19,7 +18,6 @@
   ></ccf-body-ui>
 
   <ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === 'register'"
-    [class.hidden]="false"
     [scene]="scene.rotatedNodes$ | async"
     [interactive]="false"
     [bounds]="bounds$ | async"
@@ -47,7 +45,7 @@
   </div>
 </div>
 
-<ccf-store-debug *ngIf="showDebugButtons && debugMode" class="debug" [style.opacity]="100">
+<ccf-store-debug *ngIf="showDebugButtons && debugMode" class="debug">
 </ccf-store-debug>
 <div *ngIf="showDebugButtons"
      style="position: absolute; bottom: 1rem; display: flex; flex-direction: row; justify-content: space-between; width: 7rem;">

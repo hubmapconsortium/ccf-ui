@@ -42,7 +42,8 @@ const testPage: Immutable<PageStateModel> = {
     lastName: 'Doe'
   },
   registrationStarted: false,
-  useCancelRegistrationCallback: false
+  useCancelRegistrationCallback: false,
+  registrationCallbackSet: false
 };
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {

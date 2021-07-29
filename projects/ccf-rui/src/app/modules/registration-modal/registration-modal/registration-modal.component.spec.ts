@@ -16,7 +16,7 @@ describe('RegistrationModalComponent', () => {
   it('should open the dialog when the openDialog() method is called', async () => {
     const { instance, get } = await shallow
       .mock(MatDialog, { open() { return {}; } })
-      .mock(PageState, { snapshot: { useCancelRegistrationCallback: true } })
+      .mock(PageState, { snapshot: { registrationCallbackSet: true } })
       .render();
     instance.openDialog();
     expect(get(MatDialog).open).toHaveBeenCalled();
@@ -25,7 +25,7 @@ describe('RegistrationModalComponent', () => {
   it('should open the dialog on init', async () => {
     const { instance } = await shallow
       .mock(MatDialog, { open() { return {}; } })
-      .mock(PageState, { snapshot: { useCancelRegistrationCallback: false } })
+      .mock(PageState, { snapshot: { registrationCallbackSet: false } })
       .render();
     const spy = spyOn(instance, 'openDialog');
     instance.ngOnInit();
