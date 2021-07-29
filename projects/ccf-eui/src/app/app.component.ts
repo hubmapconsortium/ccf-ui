@@ -17,7 +17,6 @@ import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/
 import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Any } from '@angular-ru/common/typings';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -96,9 +95,6 @@ export class AppComponent implements OnInit {
       data: {preClose: () => {snackBar.dismiss();} },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
-
-    // @TODO:  remove log
-    console.log('this: ', this);
   }
 
   /**

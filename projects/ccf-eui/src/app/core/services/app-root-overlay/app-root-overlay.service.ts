@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 /* eslint-disable no-underscore-dangle */
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Injectable, ElementRef } from '@angular/core';
@@ -8,12 +7,12 @@ import { Injectable, ElementRef } from '@angular/core';
   providedIn: 'root'
 })
 export class AppRootOverlayContainer extends OverlayContainer {
-  private rootElement?: ElementRef<HTMLElement>;
+  private rootElement: ElementRef<HTMLElement>;
   private attached = false;
 
   setRootElement(el: ElementRef<HTMLElement>): void {
     if (this.attached) {
-      this.rootElement!.nativeElement.removeChild(this._containerElement);
+      this.rootElement.nativeElement.removeChild(this._containerElement);
       this.attached = false;
     }
 
