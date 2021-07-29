@@ -50,7 +50,7 @@
         baseHref: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/',
         embedded: true,
         user: {firstName: 'Jane', lastName: 'Doe'},
-        organ: {name: 'kidney', side: 'left', sex: 'female'},
+        organ: {name: 'kidney', ontologyId: 'http://purl.obolibrary.org/obo/UBERON_0004538', side: 'left', sex: 'female'},
         editRegistration: sampleRegistration,
         register: (data) => {
           prompt('Copy the JSON code to clipboard', data);
