@@ -1,15 +1,17 @@
-/* eslint-disable @typescript-eslint/member-ordering */
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { ExtractionSet, SpatialEntity } from 'ccf-database';
-import { ALL_ORGANS, GlobalsService, OrganInfo } from 'ccf-shared';
+import { ALL_ORGANS, GlobalConfigState, GlobalsService, OrganInfo } from 'ccf-shared';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
-import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
+import { GlobalConfig } from '../../services/config/config';
 
+/* eslint-disable @typescript-eslint/member-ordering */
 
 export interface ReferenceDataStateModel {
   organIRILookup: { [lookup: string]: string };
@@ -46,7 +48,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
 
   constructor(
     private readonly globals: GlobalsService,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+    private globalConfig: GlobalConfigState<GlobalConfig>
   ) {
     super();
   }
@@ -57,7 +59,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
-    this.getSourceDB().then((db) => {
+    this.getSourceDB().subscribe(db => {
       this.setState(db);
 
       // In development, make the db globally accessible
@@ -67,9 +69,12 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
     });
   }
 
-  private getSourceDB(): Promise<ReferenceDataStateModel> {
-    const baseHref = this.globalConfig.baseHref || '';
-    return fetch(baseHref + 'assets/reference-organ-data.json').then(r => r.json());
+  private getSourceDB(): Observable<ReferenceDataStateModel> {
+    return this.globalConfig.getProperty<string>(['baseHref']).pipe(
+      map(baseHref => (baseHref ?? '') + 'assets/reference-organ-data.json'),
+      switchMap(url => fetch(url)),
+      switchMap(data => data.json())
+    );
   }
 
   /**

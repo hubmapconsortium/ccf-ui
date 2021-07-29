@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/member-ordering */
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
+import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { sortBy } from 'lodash';
-import { pluck } from 'rxjs/operators';
+import { filter, pluck, take, tap } from 'rxjs/operators';
 
-import { OrganInfo, ALL_ORGANS } from 'ccf-shared';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
-import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { GlobalConfig } from '../../services/config/config';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
+/* eslint-disable @typescript-eslint/member-ordering */
 
 /** A object with x, y, and z channels of the same type. */
 export interface XYZTriplet<T = number> {
@@ -151,7 +151,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    */
   constructor(
     private readonly injector: Injector,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>
   ) {
     super();
   }
@@ -168,28 +168,31 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   ngxsAfterBootstrap(): void {
     super.ngxsAfterBootstrap();
 
-    if (this.globalConfig.organ) {
-      const organConfig = this.globalConfig.organ;
-      const organName = organConfig.name.toLowerCase();
-      const organSide = organConfig.side;
-      const organInfo = ALL_ORGANS.find((o) => {
-        if (o.side) {
-          return o.organ.toLowerCase() === organName && o.side === organSide;
-        } else {
-          return o.organ.toLowerCase() === organName;
+    this.globalConfig.getProperty<NonNullable<GlobalConfig['organ']>>(['organ']).pipe(
+      take(1),
+      filter(organ => !!organ),
+      tap(organConfig => {
+        const organName = organConfig.name.toLowerCase();
+        const organSide = organConfig.side;
+        const organInfo = ALL_ORGANS.find((o) => {
+          if (o.side) {
+            return o.organ.toLowerCase() === organName && o.side === organSide;
+          } else {
+            return o.organ.toLowerCase() === organName;
+          }
+        });
+        if (organInfo) {
+          setTimeout(() => {
+            this.ctx.patchState({
+              organ: organInfo,
+              sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
+              side: organInfo.side?.toLowerCase() as 'left' | 'right'
+            });
+            this.onOrganIriChange();
+          }, 1000);
         }
-      });
-      if (organInfo) {
-        setTimeout(() => {
-          this.ctx.patchState({
-            organ: organInfo,
-            sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
-            side: organInfo.side?.toLowerCase() as 'left' | 'right'
-          });
-          this.onOrganIriChange();
-        }, 1000);
-      }
-    }
+      })
+    ).subscribe();
   }
 
   /**

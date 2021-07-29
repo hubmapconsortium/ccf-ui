@@ -1,11 +1,15 @@
 /* eslint-disable no-underscore-dangle */
-import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
-import { Component, ViewChild, Injector, ElementRef, OnInit, Input } from '@angular/core';
+import { Component, ElementRef, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
+import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
+import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { DataSourceService } from './core/services/data-source/data-source.service';
 import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
@@ -13,11 +17,6 @@ import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
-
-import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
-import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -107,9 +106,6 @@ export class AppComponent implements OnInit {
       data: {preClose: () => {snackBar.dismiss();} },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
-
-    // TODO: remove
-    console.log('this: ', this);
   }
 
   /**
