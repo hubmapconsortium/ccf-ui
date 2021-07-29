@@ -20,7 +20,8 @@
     "skipLibCheck": true,
     "target": "es2015",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "node_modules/@danmarshall"
     ],
     "lib": [
       "es2018",
@@ -45,6 +46,14 @@
       "ccf-shared": [
         "dist/ccf-shared/ccf-shared",
         "dist/ccf-shared"
+      ],
+      "ccf-shared/rxjs-ext": [
+        "dist/ccf-shared/ccf-shared/rxjs-ext",
+        "dist/ccf-shared/rxjs-ext"
+      ],
+      "ccf-shared/rxjs-ext/operators": [
+        "dist/ccf-shared/ccf-shared/rxjs-ext/operators",
+        "dist/ccf-shared/rxjs-ext/operators"
       ]
     }
   },

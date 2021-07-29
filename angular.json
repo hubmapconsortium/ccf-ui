@@ -466,7 +466,7 @@
     "ccf-shared": {
       "projectType": "library",
       "root": "projects/ccf-shared",
-      "sourceRoot": "projects/ccf-shared/src",
+      "sourceRoot": "projects/ccf-shared",
       "prefix": "ccf",
       "architect": {
         "build": {
@@ -484,12 +484,12 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ccf-shared/src/test.ts",
+            "main": "projects/ccf-shared/test.ts",
             "tsConfig": "projects/ccf-shared/tsconfig.spec.json",
             "karmaConfig": "projects/ccf-shared/karma.conf.js",
             "codeCoverage": true,
             "codeCoverageExclude": [
-              "**/src/test.ts",
+              "**/test.ts",
               "**/*.module.ts"
             ]
           }
