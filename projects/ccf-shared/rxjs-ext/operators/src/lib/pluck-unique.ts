@@ -1,16 +1,33 @@
+/* eslint-disable max-len */
 import { OperatorFunction } from 'rxjs';
 import { distinctUntilChanged, pluck, shareReplay } from 'rxjs/operators';
 
 
+/**
+ * Options for `pluckUnique` operator
+ */
 export interface PluckUniqueOptions<T> {
+  /**
+   * Custom comparison for determining distinct values
+   */
   compare?: (lhs: T, rhs: T) => boolean;
 }
 
 
+/**
+ * Default options
+ */
 const DEFAULT_OPTIONS: PluckUniqueOptions<unknown> = {};
 
 
-/* eslint-disable max-len */
+/**
+ * Combines the functionaliy of `pluck` and `distinctUntilChanged`
+ * as well as adding a `shareReplay`.
+ *
+ * @param {...string} props Properties to pluck
+ * @param [opts] Additional options
+ * @returns An `Observable` operator
+ */
 export function pluckUnique<T, K1 extends keyof T>(k1: K1, opts?: PluckUniqueOptions<T[K1]>): OperatorFunction<T, T[K1]>;
 export function pluckUnique<T, K1 extends keyof T, K2 extends keyof T[K1]>(k1: K1, k2: K2, opts?: PluckUniqueOptions<T[K1][K2]>): OperatorFunction<T, T[K1][K2]>;
 export function pluckUnique<T, K1 extends keyof T, K2 extends keyof T[K1], K3 extends keyof T[K1][K2]>(k1: K1, k2: K2, k3: K3, opts?: PluckUniqueOptions<T[K1][K2][K3]>): OperatorFunction<T, T[K1][K2][K3]>;
