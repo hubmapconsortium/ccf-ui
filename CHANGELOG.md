@@ -2,11 +2,29 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
 
+## 2.1.0 - 2021-07-30
+
+### Added in EUI / RUI 2.1.0
+
+* Better support for embedding EUI/RUI in different containers, see [EMBEDDING.md](EMBEDDING.md) for updated instructions.
+* Configuration updates:
+  * Configuration of EUI/RUI via webcomponent properties (vs globalConfig)
+  * Optional use of ontology id to select reference organs in the RUI
+  * Removed embedded and tutorial mode configurations from the RUI config
+  * Ability to load data sources in the eui via external configuration
+  * Added cancelRegistration callback to rui external configuration
+* Set dark/light theme based on user/OS preferences
+* Update HuBMAP search processing to conform to new field names
+* Code cleanup, shared utilities, etc.
+* Telemetry dialog box fixes to avoid unnecessary reloads
+* RUI gizmo rotates in sync with the reference organ in 3D preview view
+* RUI now uses an orthographic view when in registration views
+
 ## 2.0.0 - 2021-07-16
 
 ### Added in EUI / RUI 2.0.0
 
-* RUI and EUI are now basic web-components, see [RUI_EMBEDDING.md](RUI_EMBEDDING.md)
+* RUI and EUI are now basic web-components, see [EMBEDDING.md](EMBEDDING.md)
 * Added advanced google analytics tracking/telemetry
 * Linked donor card and tissue block hovering
 * Updated dependencies, including upgrading to Angular 12
@@ -122,7 +140,7 @@ NOTE: EUI will not be pushed to production during this cycle as there are some f
 
 ### Known Issues in RUI 1.0 BETA
 
-* While support for embedding is implemented, more testing and collaboration with IEC is required before it is made fully available. Initial embedding documentation is available [here](RUI_EMBEDDING.md).
+* While support for embedding is implemented, more testing and collaboration with IEC is required before it is made fully available. Initial embedding documentation is available [here](EMBEDDING.md).
 * When adjusting transparency via the left-hand `Anatomical Structures` menu or `Show Previous Registrations` option, the transparency effect is not very good. This will be addressed before the RUI 1.0 production release.
 * Sometimes the 3d organ fails to load when clicking through reference organs quickly (and other side cases). If this happens, just refresh and try again.
 
