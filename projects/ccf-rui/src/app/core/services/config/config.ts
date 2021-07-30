@@ -12,7 +12,7 @@ export interface GlobalConfig {
     sex?: 'male' | 'female';
     side?: 'left' | 'right';
   };
-  user: {
+  user?: {
     firstName: string;
     lastName: string;
   };
