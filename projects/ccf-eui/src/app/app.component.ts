@@ -1,22 +1,25 @@
-import { Component, ViewChild, Injector, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, Injector, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Debounce } from '@ngxs-labs/data/decorators';
+import { CCFDatabaseOptions } from 'ccf-database';
+import { GlobalConfigState, TrackingPopupComponent, TrackingState } from 'ccf-shared';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
+import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
-import { DataSourceService } from './core/services/data-source/data-source.service';
+import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { ThemingService, LIGHT_THEME, DARK_THEME } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 
-import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
-import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable no-underscore-dangle */
 /**
  * This is the main angular component that all the other components branch off from.
  * It is in charge of the header and drawer components who have many sub-components.
@@ -26,8 +29,39 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
+
+  // Configuration Options
+  @Input() hubmapDataService = '';
+  @Input() hubmapDataUrl = '';
+  @Input() hubmapAssetUrl = '';
+  @Input() hubmapToken = '';
+  @Input()
+    get hubmapDataSources(): string[] { return this._hubmapDataSources; }
+    set hubmapDataSources(datasSources: string[] | string) {
+      if (datasSources === '') {
+        return;
+      } else if (typeof datasSources === 'string') {
+        this._hubmapDataSources = JSON.parse(datasSources);
+      } else {
+        this._hubmapDataSources = datasSources;
+      }
+    }
+
+  @Input()
+    get hubmapPortalUrl(): string {
+      if (this._hubmapPortalUrl) {
+        return this._hubmapPortalUrl;
+      }
+      return this.globalConfig.snapshot.hubmapPortalUrl;
+    }
+    set hubmapPortalUrl(url: string) {
+      this._hubmapPortalUrl = url;
+    }
+
+  private _hubmapDataSources: string[];
+  private _hubmapPortalUrl: string;
 
   /**
    * Used to keep track of the ontology label to be passed down to the
@@ -68,10 +102,13 @@ export class AppComponent implements OnInit {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState, readonly dataSourceService: DataSourceService, readonly theming: ThemingService,
-      readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<unknown>, injector: Injector,
-      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar) {
+  constructor(readonly data: DataState, readonly theming: ThemingService,
+      readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<HTMLElement>, injector: Injector,
+      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
+      private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
+    ) {
     theming.initialize(el, injector);
+    overlay.setRootElement(el);
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
     data.termOccurencesData$.subscribe();
@@ -87,6 +124,8 @@ export class AppComponent implements OnInit {
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
 
+    this.updateGlobalConfig();
+
     if (window.matchMedia) {
       // Sets initial theme according to user theme preference
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -98,6 +137,47 @@ export class AppComponent implements OnInit {
         this.theming.setTheme(e.matches ? DARK_THEME : LIGHT_THEME);
       });
     }
+  }
+
+  ngOnChanges(changes): void {
+    if (
+      'hubmapDataService' in changes ||
+      'hubmapPortalUrl' in changes ||
+      'hubmapDataUrl' in changes ||
+      'hubmapAssetUrl' in changes ||
+      'hubmapToken' in changes ||
+      'hubmapDataSources' in changes
+    ) {
+      this.updateGlobalConfig();
+    }
+  }
+
+  @Debounce(20)
+  updateGlobalConfig(): void {
+    const { hubmapDataService, hubmapPortalUrl, hubmapDataUrl, hubmapAssetUrl, hubmapToken, hubmapDataSources } = this;
+    const windowConfigKey = 'dbOptions';
+    let config = { ...environment.dbOptions } as CCFDatabaseOptions;
+
+    if (typeof globalThis[windowConfigKey] === 'object') {
+      config = { ...config, ...globalThis[windowConfigKey] };
+    }
+
+    const inputs = {
+      hubmapDataService,
+      hubmapPortalUrl,
+      hubmapDataUrl,
+      hubmapAssetUrl,
+      hubmapToken,
+      hubmapDataSources
+    };
+
+    for (const key in inputs) {
+      if (inputs[key] != null) {
+        config[key] = inputs[key];
+      }
+    }
+
+    this.globalConfig.patchConfig(config);
   }
 
   /**
@@ -204,17 +284,10 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Gets hubmap portal url
-   */
-  get hubmapPortalUrl(): string {
-    return this.dataSourceService.dbOptions.hubmapPortalUrl;
-  }
-
-  /**
    * Gets login token
    */
   get loggedIn(): boolean {
-    const token = this.dataSourceService.dbOptions.hubmapToken || '';
+    const token = this.globalConfig.snapshot.hubmapToken || '';
     return token.length > 0;
   }
 }

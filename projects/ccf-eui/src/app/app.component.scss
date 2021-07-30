@@ -1,8 +1,22 @@
+::ng-deep .cdk-overlay-container {
+  position: absolute;
+  font-size: 1.2rem;
+}
+
+:host {
+  display: block;
+  position: relative;
+}
+
 .ccf-app {
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+  font-size: 1rem;
+  color: black;
+  position: relative;
+  text-align: left;
 
   ccf-header {
     z-index: 99;
@@ -10,16 +24,18 @@
 
   ccf-drawer-container {
     flex-grow: 1;
-    position: fixed;
-    top: 4rem;
     height: 100%;
     width: 100%;
     opacity: 1;
+    overflow: visible;
+    transform: scale(1);
 
     ccf-drawer-content {
       overflow: hidden;
       margin-bottom: 1.5rem;
       border-radius: 0.5rem;
+      height: 100%;
+      padding-bottom: 4rem;
 
       .organ-selector {
         height: 100%;
@@ -76,11 +92,12 @@
         transition: all 0.5s ease-in-out;
         border-bottom-right-radius: 0.5rem;
         border-bottom-left-radius: 0.5rem;
-        height: 100%;
+        height: calc(100% - 6rem);
       }
 
       .expanded-stage {
         height: 100%;
+        padding-bottom: 3rem;
       }
     }
 
@@ -143,13 +160,14 @@
 
   .right-drawer {
     .portal-view {
-      position: absolute;
+      position: fixed;
+      left: 0;
       top: 0;
       bottom: 0;
-      right: 100%;
-      width: calc(100vw - 100%);
+      right: 425%;
       height: 100%;
-      transform: translateX(-100%);
+      transform: translateX(-425%);
+      width: calc(100% - 28.5rem);
 
       transition: transform 0.5s cubic-bezier(0.82, 0.085, 0.395, 0.895);
 

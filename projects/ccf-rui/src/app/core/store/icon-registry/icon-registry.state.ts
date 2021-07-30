@@ -1,11 +1,13 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
+import { GlobalConfigState } from 'ccf-shared';
+import { map, take, tap } from 'rxjs/operators';
 
-import { GlobalConfig, GLOBAL_CONFIG } from '../../services/config/config';
+import { GlobalConfig } from '../../services/config/config';
 import { DEFAULT_ICONS } from './default-icons';
 
 
@@ -50,19 +52,24 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    */
   constructor(@Optional() private registry: MatIconRegistry | null,
               sanitizer: DomSanitizer,
-              @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig) {
+              globalConfig: GlobalConfigState<GlobalConfig>) {
     super();
 
-    for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-      const baseHref = globalConfig.baseHref || '';
-      const safeDef: IconDefinition = {
-        name, namespace,
-        url: url && sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
-        html: html && sanitizer.bypassSecurityTrustHtml(html)
-      };
+    globalConfig.getProperty<string>(['baseHref']).pipe(
+      map(baseHref => baseHref ?? ''),
+      take(1),
+      tap(baseHref => {
+        for (const { name, namespace, url, html } of DEFAULT_ICONS) {
+          const safeDef: IconDefinition = {
+            name, namespace,
+            url: url && sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
+            html: html && sanitizer.bypassSecurityTrustHtml(html)
+          };
 
-      this.registerIconImpl(safeDef);
-    }
+          this.registerIconImpl(safeDef);
+        }
+      })
+    ).subscribe();
   }
 
   /**

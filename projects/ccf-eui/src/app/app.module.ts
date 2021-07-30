@@ -1,3 +1,5 @@
+import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { createCustomElement } from '@angular/elements';
 import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -40,7 +42,10 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
     MatSnackBarModule
   ],
   declarations: [AppComponent],
-  providers: [{provide: DEFAULT_THEME, useValue: 'light-theme'}],
+  providers: [
+    { provide: DEFAULT_THEME, useValue: 'light-theme' },
+    { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
+  ],
   entryComponents: [AppComponent]
 })
 export class AppModule implements DoBootstrap {
