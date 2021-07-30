@@ -181,6 +181,20 @@
                 </tr>
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#allowTelemetry" >allowTelemetry</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
@@ -196,7 +210,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -320,8 +334,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:26</a></div>
                 </td>
             </tr>
 
@@ -357,8 +371,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:35</a></div>
                 </td>
             </tr>
 
@@ -425,8 +439,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:30</a></div>
                 </td>
             </tr>
 
@@ -539,7 +553,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -575,7 +589,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -584,6 +598,33 @@
     </table>
 </section>
 
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="allowTelemetry"></a>
+                        <span class="name"><b>allowTelemetry</b><a href="#allowTelemetry"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>allowTelemetry()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ccf-shared/src/lib/components/tracking-popup/tracking-popup.component.ts:15</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
 </div>
 
 
@@ -602,6 +643,10 @@ import { TrackingState } from &#x27;../../analytics/tracking.state&#x27;;
 export class TrackingPopupComponent {
   @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-tracking-popup&#x27;;
 
+  get allowTelemetry(): boolean | undefined {
+    return this.tracking.snapshot.allowTelemetry;
+  }
+
   container: HTMLElement;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -619,10 +664,11 @@ export class TrackingPopupComponent {
   }
 
   showButton(button: &#x27;opt-in&#x27; | &#x27;opt-out&#x27;): boolean {
-    if (this.tracking.snapshot.allowTelemetry &#x3D;&#x3D;&#x3D; undefined) {
+    const { allowTelemetry } &#x3D; this;
+    if (allowTelemetry &#x3D;&#x3D;&#x3D; undefined) {
       return true;
     } else {
-      return button &#x3D;&#x3D;&#x3D; &#x27;opt-in&#x27; ? !this.tracking.snapshot.allowTelemetry : this.tracking.snapshot.allowTelemetry;
+      return button &#x3D;&#x3D;&#x3D; &#x27;opt-in&#x27; ? !allowTelemetry : allowTelemetry;
     }
   }
 }
@@ -631,7 +677,9 @@ export class TrackingPopupComponent {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;p&gt;We log usage to improve this service.&lt;/p&gt;
-&lt;button *ngIf&#x3D;&quot;showButton(&#x27;opt-in&#x27;)&quot; mat-button color&#x3D;&quot;basic&quot; (click)&#x3D;&quot;submit(true)&quot;&gt;I understand&lt;/button&gt;
+&lt;button *ngIf&#x3D;&quot;showButton(&#x27;opt-in&#x27;)&quot; mat-button color&#x3D;&quot;basic&quot; (click)&#x3D;&quot;submit(true)&quot;&gt;
+  {{allowTelemetry &#x3D;&#x3D;&#x3D; undefined ? &#x27;I understand&#x27; : &#x27;Opt in&#x27;}}
+&lt;/button&gt;
 &lt;button *ngIf&#x3D;&quot;showButton(&#x27;opt-out&#x27;)&quot; mat-button color&#x3D;&quot;basic&quot; (click)&#x3D;&quot;submit(false)&quot;&gt;Opt out&lt;/button&gt;</code></pre>
     </div>
 
@@ -688,7 +736,7 @@ export class TrackingPopupComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><p>We log usage to improve this service.</p><button *ngIf="showButton(\'opt-in\')" mat-button color="basic" (click)="submit(true)">I understand</button><button *ngIf="showButton(\'opt-out\')" mat-button color="basic" (click)="submit(false)">Opt out</button></div>'
+        var COMPONENT_TEMPLATE = '<div><p>We log usage to improve this service.</p><button *ngIf="showButton(\'opt-in\')" mat-button color="basic" (click)="submit(true)">  {{allowTelemetry === undefined ? \'I understand\' : \'Opt in\'}}</button><button *ngIf="showButton(\'opt-out\')" mat-button color="basic" (click)="submit(false)">Opt out</button></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'TrackingPopupComponent'};

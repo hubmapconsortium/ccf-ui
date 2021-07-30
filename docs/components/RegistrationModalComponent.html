@@ -331,7 +331,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Opens the dialog on startup (but not in embedded mode)</p>
+                    <div class="io-description"><p>Opens the dialog on startup (but not if cancel registration callback is set)</p>
 </div>
 
                     <div class="io-description">
@@ -497,10 +497,10 @@ export class RegistrationModalComponent implements OnInit {
   constructor(public dialog: MatDialog, private pageState: PageState) {}
 
   /**
-   * Opens the dialog on startup (but not in embedded mode)
+   * Opens the dialog on startup (but not if cancel registration callback is set)
    */
   ngOnInit(): void {
-    if (!this.pageState.snapshot.embedded) {
+    if (!this.pageState.snapshot.registrationCallbackSet) {
       this.openDialog();
     }
   }

@@ -33,10 +33,29 @@
 
 <h1 id="changelog">Changelog</h1>
 <p>Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)</p>
+<h2 id="210---2021-07-30">2.1.0 - 2021-07-30</h2>
+<h3 id="added-in-eui--rui-210">Added in EUI / RUI 2.1.0</h3>
+<ul>
+<li>Better support for embedding EUI/RUI in different containers, see <a href="EMBEDDING.md">EMBEDDING.md</a> for updated instructions.</li>
+<li>Configuration updates:<ul>
+<li>Configuration of EUI/RUI via webcomponent properties (vs globalConfig)</li>
+<li>Optional use of ontology id to select reference organs in the RUI</li>
+<li>Removed embedded and tutorial mode configurations from the RUI config</li>
+<li>Ability to load data sources in the eui via external configuration</li>
+<li>Added cancelRegistration callback to rui external configuration</li>
+</ul>
+</li>
+<li>Set dark/light theme based on user/OS preferences</li>
+<li>Update HuBMAP search processing to conform to new field names</li>
+<li>Code cleanup, shared utilities, etc.</li>
+<li>Telemetry dialog box fixes to avoid unnecessary reloads</li>
+<li>RUI gizmo rotates in sync with the reference organ in 3D preview view</li>
+<li>RUI now uses an orthographic view when in registration views</li>
+</ul>
 <h2 id="200---2021-07-16">2.0.0 - 2021-07-16</h2>
 <h3 id="added-in-eui--rui-200">Added in EUI / RUI 2.0.0</h3>
 <ul>
-<li>RUI and EUI are now basic web-components, see <a href="RUI_EMBEDDING.md">RUI_EMBEDDING.md</a></li>
+<li>RUI and EUI are now basic web-components, see <a href="EMBEDDING.md">EMBEDDING.md</a></li>
 <li>Added advanced google analytics tracking/telemetry</li>
 <li>Linked donor card and tissue block hovering</li>
 <li>Updated dependencies, including upgrading to Angular 12</li>
@@ -143,7 +162,7 @@
 </ul>
 <h3 id="known-issues-in-rui-10-beta">Known Issues in RUI 1.0 BETA</h3>
 <ul>
-<li>While support for embedding is implemented, more testing and collaboration with IEC is required before it is made fully available. Initial embedding documentation is available <a href="RUI_EMBEDDING.md">here</a>.</li>
+<li>While support for embedding is implemented, more testing and collaboration with IEC is required before it is made fully available. Initial embedding documentation is available <a href="EMBEDDING.md">here</a>.</li>
 <li>When adjusting transparency via the left-hand <code>Anatomical Structures</code> menu or <code>Show Previous Registrations</code> option, the transparency effect is not very good. This will be addressed before the RUI 1.0 production release.</li>
 <li>Sometimes the 3d organ fails to load when clicking through reference organs quickly (and other side cases). If this happens, just refresh and try again.</li>
 </ul>

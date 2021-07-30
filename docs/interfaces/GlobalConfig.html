@@ -105,13 +105,6 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#embedded" 
->
-                                            embedded
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#fetchPreviousRegistrations" 
 >
                                             fetchPreviousRegistrations
@@ -136,13 +129,6 @@
                                         <a href="#registrationStarted" 
 >
                                             registrationStarted
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#tutorialMode" 
->
-                                            tutorialMode
                                         </a>
                                 </li>
                                 <li>
@@ -269,44 +255,6 @@
                                     <tr>
                                         <td class="col-md-4">
                                             <i>Type : </i>    <code>Record&lt;string | &gt;</code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="embedded"></a>
-                                        <span class="name "><b>embedded</b>
-                                            <a href="#embedded">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>embedded:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                                         </td>
                                     </tr>
@@ -478,44 +426,6 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="tutorialMode"></a>
-                                        <span class="name "><b>tutorialMode</b>
-                                            <a href="#tutorialMode">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>tutorialMode:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
                                         <a name="useDownload"></a>
                                         <span class="name "><b>useDownload</b>
                                             <a href="#useDownload">
@@ -600,11 +510,10 @@ import { ObservableInput } from &#x27;rxjs&#x27;;
 
 export interface GlobalConfig {
   baseHref?: string;
-  embedded?: boolean;
-  tutorialMode?: boolean;
   editRegistration?: Record&lt;string, unknown&gt;;
   organ?: {
     name: &#x27;large intestine&#x27; | &#x27;heart&#x27; | &#x27;kidney&#x27; | &#x27;spleen&#x27;;
+    ontologyId?: string;
     sex?: &#x27;male&#x27; | &#x27;female&#x27;;
     side?: &#x27;left&#x27; | &#x27;right&#x27;;
   };
@@ -631,7 +540,7 @@ export const GLOBAL_CONFIG &#x3D; new InjectionToken&lt;GlobalConfig&gt;(
 );
 
 export function globalConfigFactory(globals: GlobalsService): GlobalConfig {
-  return globals.get(&#x27;ruiConfig&#x27;, {});
+  return globals.get(&#x27;ruiConfig&#x27;, {user: {firstName: &#x27;&#x27;, lastName: &#x27;&#x27;}});
 }
 </code></pre>
     </div>

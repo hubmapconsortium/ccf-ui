@@ -195,19 +195,20 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, Injector } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
+import { ALL_ORGANS, GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { sortBy } from &#x27;lodash&#x27;;
-import { pluck } from &#x27;rxjs/operators&#x27;;
+import { filter, pluck, take, tap } from &#x27;rxjs/operators&#x27;;
 
-import { OrganInfo, ALL_ORGANS } from &#x27;ccf-shared&#x27;;
 import { ExtractionSet } from &#x27;../../models/extraction-set&#x27;;
 import { VisibilityItem } from &#x27;../../models/visibility-item&#x27;;
-import { GlobalConfig, GLOBAL_CONFIG } from &#x27;../../services/config/config&#x27;;
+import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { ReferenceDataState } from &#x27;../reference-data/reference-data.state&#x27;;
 
+/* eslint-disable @typescript-eslint/member-ordering */
 
 /** A object with x, y, and z channels of the same type. */
 export interface XYZTriplet&lt;T &#x3D; number&gt; {
@@ -347,7 +348,7 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
    */
   constructor(
     private readonly injector: Injector,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+    private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
   ) {
     super();
   }
@@ -359,33 +360,44 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
     super.ngxsOnInit();
 
     this.referenceData &#x3D; this.injector.get(ReferenceDataState);
+
+    this.globalConfig.getProperty&lt;NonNullable&lt;GlobalConfig[&#x27;organ&#x27;]&gt;&gt;([&#x27;organ&#x27;]).pipe(
+      take(1),
+      filter(organ &#x3D;&gt; !!organ),
+      tap(organConfig &#x3D;&gt; {
+        const organName &#x3D; organConfig.name.toLowerCase();
+        const organSide &#x3D; organConfig.side;
+        const ontologyId &#x3D; organConfig.ontologyId;
+        // check for an id match
+        let organInfo &#x3D; this.idMatches(ontologyId, organSide);
+        // if no id matches, check for a name match
+        if (!organInfo) {
+          organInfo &#x3D; this.nameMatches(organName, organSide);
+        }
+        if (organInfo) {
+          setTimeout(() &#x3D;&gt; {
+            this.ctx.patchState({
+              organ: organInfo,
+              sex: organConfig.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;,
+              side: organInfo?.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
+            });
+            this.onOrganIriChange();
+          }, 1000);
+        }
+      })
+    ).subscribe();
   }
 
-  ngxsAfterBootstrap(): void {
-    super.ngxsAfterBootstrap();
+  idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
+    return ALL_ORGANS.find((o) &#x3D;&gt;
+      ontologyId &amp;&amp; o.id &#x3D;&#x3D;&#x3D; ontologyId ?  (o.side ? o.side &#x3D;&#x3D;&#x3D; organSide : true) : false
+    );
+  }
 
-    if (this.globalConfig.organ) {
-      const organConfig &#x3D; this.globalConfig.organ;
-      const organName &#x3D; organConfig.name.toLowerCase();
-      const organSide &#x3D; organConfig.side;
-      const organInfo &#x3D; ALL_ORGANS.find((o) &#x3D;&gt; {
-        if (o.side) {
-          return o.organ.toLowerCase() &#x3D;&#x3D;&#x3D; organName &amp;&amp; o.side &#x3D;&#x3D;&#x3D; organSide;
-        } else {
-          return o.organ.toLowerCase() &#x3D;&#x3D;&#x3D; organName;
-        }
-      });
-      if (organInfo) {
-        setTimeout(() &#x3D;&gt; {
-          this.ctx.patchState({
-            organ: organInfo,
-            sex: organConfig.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;,
-            side: organInfo.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
-          });
-          this.onOrganIriChange();
-        }, 1000);
-      }
-    }
+  nameMatches(organName: string, organSide?: string): OrganInfo | undefined {
+    return ALL_ORGANS.find((o) &#x3D;&gt;
+      o.side ? o.organ.toLowerCase() &#x3D;&#x3D;&#x3D; organName &amp;&amp; o.side &#x3D;&#x3D;&#x3D; organSide : o.organ.toLowerCase() &#x3D;&#x3D;&#x3D; organName
+    );
   }
 
   /**

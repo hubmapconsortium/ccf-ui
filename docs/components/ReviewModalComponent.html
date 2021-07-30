@@ -147,10 +147,10 @@
                                 <a href="#dialogRef" >dialogRef</a>
                             </li>
                             <li>
-                                <a href="#embeddedMode" >embeddedMode</a>
+                                <a href="#metaData" >metaData</a>
                             </li>
                             <li>
-                                <a href="#metaData" >metaData</a>
+                                <a href="#registrationCallbackSet" >registrationCallbackSet</a>
                             </li>
                         </ul>
                     </td>
@@ -482,38 +482,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="embeddedMode"></a>
-                    <span class="name">
-                        <span ><b>embeddedMode</b></span>
-                        <a href="#embeddedMode"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-modal/review-modal.component.ts:30</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Whether or not the application is in embedded mode or not</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="metaData"></a>
                     <span class="name">
                         <span ><b>metaData</b></span>
@@ -542,6 +510,38 @@
 
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registrationCallbackSet"></a>
+                    <span class="name">
+                        <span ><b>registrationCallbackSet</b></span>
+                        <a href="#registrationCallbackSet"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-modal/review-modal.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether or not the cancel registration callback is set</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
 </div>
@@ -559,8 +559,8 @@ interface ReviewModalData {
   /** The object containing all of the review information for displaying inside the modal */
   metaData: MetaData;
 
-  /** Whether or not the application is in embedded mode or not */
-  embeddedMode: boolean;
+  /** Whether or not the cancel registration callback is set */
+  registrationCallbackSet: boolean;
 }
 
 /**
@@ -575,9 +575,9 @@ export class ReviewModalComponent {
   /** HTML class name */
   @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-review-modal&#x27;;
   /**
-   * Whether or not the application is in embedded mode or not
+   * Whether or not the cancel registration callback is set
    */
-  embeddedMode: boolean;
+   registrationCallbackSet: boolean;
 
   /**
    * The object containing all of the review information for displaying inside the modal
@@ -595,7 +595,7 @@ export class ReviewModalComponent {
     @Inject(MAT_DIALOG_DATA) public data: ReviewModalData
   ) {
     this.metaData &#x3D; data.metaData;
-    this.embeddedMode &#x3D; data.embeddedMode;
+    this.registrationCallbackSet &#x3D; data.registrationCallbackSet;
   }
 
   /**
@@ -631,7 +631,7 @@ export class ReviewModalComponent {
       &lt;/mat-dialog-content&gt;
 
       &lt;div class&#x3D;&quot;footer&quot;&gt;
-        &lt;button mat-button class&#x3D;&quot;download-button&quot; (click)&#x3D;&quot;dialogRef.close(true)&quot;&gt;{{ embeddedMode ? &#x27;REGISTER&#x27; : &#x27;DOWNLOAD REGISTRATION DATA&#x27; }}&lt;/button&gt;
+        &lt;button mat-button class&#x3D;&quot;download-button&quot; (click)&#x3D;&quot;dialogRef.close(true)&quot;&gt;{{ registrationCallbackSet ? &#x27;REGISTER&#x27; : &#x27;DOWNLOAD REGISTRATION DATA&#x27; }}&lt;/button&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -736,7 +736,7 @@ export class ReviewModalComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ccf-about wrapper">  <div class="container">    <div class="close">      <mat-icon class="material-icons close-icon" (click)=close()>clear</mat-icon>    </div>    <div class="content">      <h2 class="title" mat-dialog-title>Registration Review</h2>      <mat-dialog-content class="mat-typography">        <div class="display-fields">          <div class="field" *ngFor="let data of metaData">            <div class="label">{{ data.label }}</div>            <div class="data">{{ data.value }}</div>          </div>        </div>      </mat-dialog-content>      <div class="footer">        <button mat-button class="download-button" (click)="dialogRef.close(true)">{{ embeddedMode ? \'REGISTER\' : \'DOWNLOAD REGISTRATION DATA\' }}</button>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ccf-about wrapper">  <div class="container">    <div class="close">      <mat-icon class="material-icons close-icon" (click)=close()>clear</mat-icon>    </div>    <div class="content">      <h2 class="title" mat-dialog-title>Registration Review</h2>      <mat-dialog-content class="mat-typography">        <div class="display-fields">          <div class="field" *ngFor="let data of metaData">            <div class="label">{{ data.label }}</div>            <div class="data">{{ data.value }}</div>          </div>        </div>      </mat-dialog-content>      <div class="footer">        <button mat-button class="download-button" (click)="dialogRef.close(true)">{{ registrationCallbackSet ? \'REGISTER\' : \'DOWNLOAD REGISTRATION DATA\' }}</button>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'ReviewModalComponent'};

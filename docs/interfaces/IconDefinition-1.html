@@ -309,14 +309,16 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, Optional } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Optional } from &#x27;@angular/core&#x27;;
 import { MatIconRegistry } from &#x27;@angular/material/icon&#x27;;
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from &#x27;@angular/platform-browser&#x27;;
 import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
+import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
+import { map, take, tap } from &#x27;rxjs/operators&#x27;;
 
-import { GlobalConfig, GLOBAL_CONFIG } from &#x27;../../services/config/config&#x27;;
+import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { DEFAULT_ICONS } from &#x27;./default-icons&#x27;;
 
 
@@ -361,19 +363,24 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
    */
   constructor(@Optional() private registry: MatIconRegistry | null,
               sanitizer: DomSanitizer,
-              @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig) {
+              globalConfig: GlobalConfigState&lt;GlobalConfig&gt;) {
     super();
 
-    for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-      const baseHref &#x3D; globalConfig.baseHref || &#x27;&#x27;;
-      const safeDef: IconDefinition &#x3D; {
-        name, namespace,
-        url: url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
-        html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
-      };
+    globalConfig.getProperty&lt;string&gt;([&#x27;baseHref&#x27;]).pipe(
+      map(baseHref &#x3D;&gt; baseHref ?? &#x27;&#x27;),
+      take(1),
+      tap(baseHref &#x3D;&gt; {
+        for (const { name, namespace, url, html } of DEFAULT_ICONS) {
+          const safeDef: IconDefinition &#x3D; {
+            name, namespace,
+            url: url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
+            html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
+          };
 
-      this.registerIconImpl(safeDef);
-    }
+          this.registerIconImpl(safeDef);
+        }
+      })
+    ).subscribe();
   }
 
   /**

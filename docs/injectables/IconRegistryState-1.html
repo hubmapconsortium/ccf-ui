@@ -123,12 +123,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(registry: MatIconRegistry | null, sanitizer: <a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank">DomSanitizer</a>, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfig</a>)</code>
+<code>constructor(registry: MatIconRegistry | null, sanitizer: <a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank">DomSanitizer</a>, globalConfig: <a href="../injectables/GlobalConfigState.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -184,7 +184,7 @@
                                                         <td>globalConfig</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../interfaces/GlobalConfig.html" target="_self" >GlobalConfig</a></code>
+                                                                        <code><a href="../injectables/GlobalConfigState.html" target="_self" >GlobalConfigState&lt;GlobalConfig&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -230,8 +230,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="123"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:123</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:130</a></div>
                 </td>
             </tr>
 
@@ -302,8 +302,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="109"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:109</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:116</a></div>
                 </td>
             </tr>
 
@@ -379,8 +379,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:82</a></div>
                 </td>
             </tr>
 
@@ -457,8 +457,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:92</a></div>
                 </td>
             </tr>
 
@@ -519,14 +519,16 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, Optional } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Optional } from &#x27;@angular/core&#x27;;
 import { MatIconRegistry } from &#x27;@angular/material/icon&#x27;;
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from &#x27;@angular/platform-browser&#x27;;
 import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
+import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
+import { map, take, tap } from &#x27;rxjs/operators&#x27;;
 
-import { GlobalConfig, GLOBAL_CONFIG } from &#x27;../../services/config/config&#x27;;
+import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { DEFAULT_ICONS } from &#x27;./default-icons&#x27;;
 
 
@@ -571,19 +573,24 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
    */
   constructor(@Optional() private registry: MatIconRegistry | null,
               sanitizer: DomSanitizer,
-              @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig) {
+              globalConfig: GlobalConfigState&lt;GlobalConfig&gt;) {
     super();
 
-    for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-      const baseHref &#x3D; globalConfig.baseHref || &#x27;&#x27;;
-      const safeDef: IconDefinition &#x3D; {
-        name, namespace,
-        url: url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
-        html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
-      };
+    globalConfig.getProperty&lt;string&gt;([&#x27;baseHref&#x27;]).pipe(
+      map(baseHref &#x3D;&gt; baseHref ?? &#x27;&#x27;),
+      take(1),
+      tap(baseHref &#x3D;&gt; {
+        for (const { name, namespace, url, html } of DEFAULT_ICONS) {
+          const safeDef: IconDefinition &#x3D; {
+            name, namespace,
+            url: url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
+            html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
+          };
 
-      this.registerIconImpl(safeDef);
-    }
+          this.registerIconImpl(safeDef);
+        }
+      })
+    ).subscribe();
   }
 
   /**

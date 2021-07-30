@@ -353,8 +353,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">projects/ccf-eui/src/app/app.module.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">projects/ccf-eui/src/app/app.module.ts:54</a></div>
                 </td>
             </tr>
 
@@ -375,7 +375,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { createCustomElement } from &#x27;@angular/elements&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AppRootOverlayContainer } from &#x27;./core/services/app-root-overlay/app-root-overlay.service&#x27;;
+import { OverlayContainer } from &#x27;@angular/cdk/overlay&#x27;;
+import { createCustomElement } from &#x27;@angular/elements&#x27;;
 import { DoBootstrap, Injector, NgModule } from &#x27;@angular/core&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 import { MatSnackBarModule } from &#x27;@angular/material/snack-bar&#x27;;
@@ -417,7 +419,10 @@ import { ViewerModule } from &#x27;./shared/components/viewer/viewer.module&#x27
     MatSnackBarModule
   ],
   declarations: [AppComponent],
-  providers: [{provide: DEFAULT_THEME, useValue: &#x27;light-theme&#x27;}],
+  providers: [
+    { provide: DEFAULT_THEME, useValue: &#x27;light-theme&#x27; },
+    { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
+  ],
   entryComponents: [AppComponent]
 })
 export class AppModule implements DoBootstrap {

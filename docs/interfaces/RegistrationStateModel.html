@@ -241,25 +241,28 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
-import { Inject, Injectable, Injector } from &#x27;@angular/core&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { insertItem, patch } from &#x27;@ngxs/store/operators&#x27;;
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from &#x27;ccf-body-ui&#x27;;
+import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
 import { saveAs } from &#x27;file-saver&#x27;;
 import { combineLatest, Observable } from &#x27;rxjs&#x27;;
-import { map, pluck } from &#x27;rxjs/operators&#x27;;
+import { filter, map, pluck, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 import { v4 as uuidV4 } from &#x27;uuid&#x27;;
 
 import { Tag } from &#x27;../../models/anatomical-structure-tag&#x27;;
 import { MetaData } from &#x27;../../models/meta-data&#x27;;
-import { GLOBAL_CONFIG, GlobalConfig } from &#x27;../../services/config/config&#x27;;
+import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { AnatomicalStructureTagState } from &#x27;../anatomical-structure-tags/anatomical-structure-tags.state&#x27;;
 import { ModelState, ModelStateModel, XYZTriplet } from &#x27;../model/model.state&#x27;;
 import { PageState, PageStateModel } from &#x27;../page/page.state&#x27;;
 import { ReferenceDataState } from &#x27;../reference-data/reference-data.state&#x27;;
 
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/naming-convention */
 
 /**
  * Registration state model
@@ -318,11 +321,15 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    */
   @Computed()
   get previousRegistrations$(): Observable&lt;Record&lt;string, unknown&gt;[]&gt; {
-    const { globalConfig: { fetchPreviousRegistrations }, state$ } &#x3D; this;
-    return combineLatest([
-      state$.pipe(pluck(&#x27;registrations&#x27;)),
-      fetchPreviousRegistrations?.() as Observable&lt;Record&lt;string, unknown&gt;[]&gt; ?? [[]]
-    ]).pipe(
+    const { globalConfig, state$ } &#x3D; this;
+    const regs &#x3D; state$.pipe(pluck(&#x27;registrations&#x27;));
+    const fetched &#x3D; globalConfig.getProperty&lt;() &#x3D;&gt; Observable&lt;Record&lt;string, unknown&gt;[]&gt;&gt;(
+      [&#x27;fetchPreviousRegistrations&#x27;]
+    ).pipe(
+      switchMap(fetch &#x3D;&gt; fetch?.() ?? [[]])
+    );
+
+    return combineLatest([regs, fetched]).pipe(
       map(([local, external]) &#x3D;&gt; [...local, ...external])
     );
   }
@@ -359,7 +366,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    */
   constructor(
     private readonly injector: Injector,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+    private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
   ) {
     super();
   }
@@ -377,19 +384,22 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.tags &#x3D; this.injector.get(AnatomicalStructureTagState);
     this.refData &#x3D; this.injector.get(ReferenceDataState);
 
-    const { globalConfig: { useDownload, register } } &#x3D; this;
-    this.ctx.patchState({
-      useRegistrationCallback: !!(!useDownload &amp;&amp; register)
-    });
+    this.globalConfig.config$.pipe(
+      take(1),
+      tap(({ useDownload, register }) &#x3D;&gt; this.ctx.patchState({
+        useRegistrationCallback: !!(!useDownload &amp;&amp; register)
+      }))
+    ).subscribe();
   }
 
   ngxsAfterBootstrap(): void {
     super.ngxsAfterBootstrap();
 
-    const { globalConfig: { editRegistration } } &#x3D; this;
-    if (editRegistration) {
-      this.editRegistration(editRegistration as SpatialEntityJsonLd);
-    }
+    this.globalConfig.getProperty([&#x27;editRegistration&#x27;]).pipe(
+      take(1),
+      filter(reg &#x3D;&gt; !!reg),
+      tap(reg &#x3D;&gt; this.editRegistration(reg as SpatialEntityJsonLd))
+    ).subscribe();
   }
 
   async editRegistration(reg: SpatialEntityJsonLd): Promise&lt;void&gt; {
@@ -483,7 +493,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     }
 
     const {
-      globalConfig: { register: registrationCallback },
+      globalConfig: { snapshot: { register: registrationCallback } },
       page, model, snapshot
     } &#x3D; this;
     const jsonObj &#x3D; this.buildJsonLd(page.snapshot, model.snapshot, this.tags.latestTags);
@@ -518,7 +528,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
   ): MetaData {
     const data: MetaData &#x3D; [];
 
-    if (!page.embedded) {
+    if (!page.registrationCallbackSet) {
       data.push(
         { label: &#x27;First Name&#x27;, value: page.user.firstName },
         { label: &#x27;Last Name&#x27;, value: page.user.lastName }

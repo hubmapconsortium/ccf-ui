@@ -131,8 +131,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">projects/ccf-shared/src/lib/analytics/tracking.state.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">projects/ccf-shared/src/lib/analytics/tracking.state.ts:29</a></div>
                 </td>
             </tr>
 
@@ -196,8 +196,12 @@ export interface TrackingStateModel {
 }
 
 export const LOCAL_STORAGE_ALLOW_TELEMETRY_KEY &#x3D; &#x27;ALLOW_TELEMETRY&#x27;;
-export const INITIAL_TELEMETRY_SETTING  &#x3D; localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY) &#x3D;&#x3D;&#x3D; null ? undefined
-  : localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY)?.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+export const INITIAL_TELEMETRY_SETTING  &#x3D; getTelemetryStorageSetting();
+
+function getTelemetryStorageSetting(): boolean | undefined {
+  const value &#x3D; localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY);
+  return value &#x3D;&#x3D;&#x3D; null ? undefined : value.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+}
 
 @StateRepository()
 @State&lt;TrackingStateModel&gt;({
@@ -208,13 +212,13 @@ export const INITIAL_TELEMETRY_SETTING  &#x3D; localStorage.getItem(LOCAL_STORAG
 })
 @Injectable()
 export class TrackingState extends NgxsImmutableDataRepository&lt;TrackingStateModel&gt; {
-
   @DataAction()
   setAllowTelemetry(allowTelemetry: boolean): void {
-    const oldValue &#x3D; localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY) ?? null;
+    const oldValue &#x3D; getTelemetryStorageSetting();
     localStorage.setItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY, allowTelemetry.toString());
     this.ctx.patchState({ allowTelemetry });
-    if ((oldValue &#x3D;&#x3D;&#x3D; null &amp;&amp; !allowTelemetry) || (oldValue !&#x3D;&#x3D; allowTelemetry.toString())) {
+
+    if (oldValue !&#x3D;&#x3D; undefined || allowTelemetry &#x3D;&#x3D;&#x3D; false) {
       // This ensures that if telemetry is disabled that it _WONT_ send anything to Google Analytics
       location.reload();
     }

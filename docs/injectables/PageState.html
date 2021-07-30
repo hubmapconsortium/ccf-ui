@@ -90,12 +90,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#embedded$" >embedded$</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#model" >model</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#registrationCallbackSet$" >registrationCallbackSet$</a>
                             </li>
                             <li>
                                     <span class="modifier">Readonly</span>
@@ -131,12 +131,6 @@
                                 <a href="#registrationStarted" >registrationStarted</a>
                             </li>
                             <li>
-                                <a href="#setEmbedded" >setEmbedded</a>
-                            </li>
-                            <li>
-                                <a href="#setTutorialMode" >setTutorialMode</a>
-                            </li>
-                            <li>
                                 <a href="#setUseCancelRegistrationCallback" >setUseCancelRegistrationCallback</a>
                             </li>
                             <li>
@@ -150,20 +144,6 @@
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#tutorialMode$" >tutorialMode$</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
@@ -174,12 +154,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfig</a>)</code>
+<code>constructor(injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>, globalConfig: <a href="../injectables/GlobalConfigState.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -217,7 +197,7 @@
                                                         <td>globalConfig</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../interfaces/GlobalConfig.html" target="_self" >GlobalConfig</a></code>
+                                                                        <code><a href="../injectables/GlobalConfigState.html" target="_self" >GlobalConfigState&lt;GlobalConfig&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -263,8 +243,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:103</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:89</a></div>
                 </td>
             </tr>
 
@@ -300,8 +280,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:74</a></div>
                 </td>
             </tr>
 
@@ -346,8 +326,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="155"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:155</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:118</a></div>
                 </td>
             </tr>
 
@@ -360,186 +340,6 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="setEmbedded"></a>
-                    <span class="name">
-                        <span ><b>setEmbedded</b></span>
-                        <a href="#setEmbedded"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>setEmbedded(embedded: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, url?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@DataAction()<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="123"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:123</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Sets whether this is an embedded page.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>embedded</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>Whether the page is embedded</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>url</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                    <td>
-                                        <p>The new home url. If not provided the previous one is used</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="setTutorialMode"></a>
-                    <span class="name">
-                        <span ><b>setTutorialMode</b></span>
-                        <a href="#setTutorialMode"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>setTutorialMode(tutorialMode: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@DataAction()<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="147"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:147</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Turns tutorialMode on or off</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>tutorialMode</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>the state to set the mode to.</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -572,8 +372,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="112"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:112</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:98</a></div>
                 </td>
             </tr>
 
@@ -647,8 +447,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="135"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:135</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:108</a></div>
                 </td>
             </tr>
 
@@ -712,38 +512,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="embedded$"></a>
-                    <span class="name">
-                            <span class="modifier">Readonly</span>
-                        <span ><b>embedded$</b></span>
-                        <a href="#embedded$"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;embedded&#x27;))</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:55</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Embedded observable</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="model"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -760,7 +528,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registrationCallbackSet$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>registrationCallbackSet$</b></span>
+                        <a href="#registrationCallbackSet$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;registrationCallbackSet&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -786,7 +580,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:53</a></div>
                         </td>
                     </tr>
 
@@ -818,7 +612,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -844,7 +638,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:57</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -859,60 +653,23 @@
     </table>
 </section>
 
-            <section>
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="tutorialMode$"></a>
-                        <span class="name"><b>tutorialMode$</b><a href="#tutorialMode$"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>tutorialMode$()</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/ccf-rui/src/app/core/store/page/page.state.ts:64</a></div>
-                                </td>
-                            </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Tutorial mode observable</p>
-</div>
-
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
-
-                                </div>
-                        </td>
-                    </tr>
-
-            </tbody>
-        </table>
-</section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
-import { Inject, Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
+import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { iif, patch } from &#x27;@ngxs/store/operators&#x27;;
-import { combineLatest, Observable } from &#x27;rxjs&#x27;;
-import { map, pluck } from &#x27;rxjs/operators&#x27;;
+import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
+import { pluck } from &#x27;rxjs/operators&#x27;;
 
-import { GLOBAL_CONFIG, GlobalConfig } from &#x27;../../services/config/config&#x27;;
+import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { ModelState } from &#x27;./../model/model.state&#x27;;
 
+/* eslint-disable @typescript-eslint/member-ordering */
 
 /** A record with information about a single person */
 export interface Person {
@@ -922,15 +679,12 @@ export interface Person {
 
 /** Page state model */
 export interface PageStateModel {
-  /** Whether the page is embedded through hubmap */
-  embedded: boolean;
   /** Active user */
   user: Person;
-  /** Whether or not to show the page tutorial */
-  tutorialMode: boolean;
   /** Whether or not the initial registration modal has been closed */
   registrationStarted: boolean;
   useCancelRegistrationCallback: boolean;
+  registrationCallbackSet: boolean;
 }
 
 
@@ -941,33 +695,23 @@ export interface PageStateModel {
 @State&lt;PageStateModel&gt;({
   name: &#x27;page&#x27;,
   defaults: {
-    embedded: false,
     user: {
       firstName: &#x27;&#x27;,
       lastName: &#x27;&#x27;
     },
-    tutorialMode: false,
     registrationStarted: false,
-    useCancelRegistrationCallback: false
+    useCancelRegistrationCallback: false,
+    registrationCallbackSet: false
   }
 })
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt; {
-  /** Embedded observable */
-  readonly embedded$ &#x3D; this.state$.pipe(pluck(&#x27;embedded&#x27;));
   /** Active user observable */
   readonly user$ &#x3D; this.state$.pipe(pluck(&#x27;user&#x27;));
   /** RegistrationStated observable */
   readonly registrationStarted$ &#x3D; this.state$.pipe(pluck(&#x27;registrationStarted&#x27;));
   readonly useCancelRegistrationCallback$ &#x3D; this.state$.pipe(pluck(&#x27;useCancelRegistrationCallback&#x27;));
-
-  /** Tutorial mode observable */
-  @Computed()
-  get tutorialMode$(): Observable&lt;boolean&gt; {
-    return combineLatest([this.embedded$, this.model.organIri$]).pipe(
-      map(([embedded, organIri]) &#x3D;&gt; !embedded &amp;&amp; !organIri)
-    );
-  }
+  readonly registrationCallbackSet$ &#x3D; this.state$.pipe(pluck(&#x27;registrationCallbackSet&#x27;));
 
   private model: ModelState;
 
@@ -978,7 +722,7 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
    */
   constructor(
     private readonly injector: Injector,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+    private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
   ) {
     super();
   }
@@ -993,17 +737,16 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
     // Lazy load here
     this.model &#x3D; this.injector.get(ModelState);
 
-    const { globalConfig: { embedded, user, tutorialMode, cancelRegistration } } &#x3D; this;
+    const { globalConfig: { snapshot: { user, register, cancelRegistration } } } &#x3D; this;
     this.ctx.setState(patch&lt;Immutable&lt;PageStateModel&gt;&gt;({
-      embedded: embedded ?? !!user,
+      registrationCallbackSet: !!(register),
       useCancelRegistrationCallback: !!(cancelRegistration),
-      user: iif(!!user, user!),
-      tutorialMode: !!tutorialMode
+      user: iif(!!user, user!)
     }));
   }
 
   cancelRegistration(): void {
-    const { globalConfig: { cancelRegistration: cancelRegistrationCallback }, snapshot } &#x3D; this;
+    const { globalConfig: { snapshot: { cancelRegistration: cancelRegistrationCallback } }, snapshot } &#x3D; this;
 
     if (snapshot.useCancelRegistrationCallback) {
       cancelRegistrationCallback?.();
@@ -1016,19 +759,6 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
   }
 
   /**
-   * Sets whether this is an embedded page.
-   *
-   * @param embedded Whether the page is embedded
-   * @param [url] The new home url. If not provided the previous one is used
-   */
-  @DataAction()
-  setEmbedded(embedded: boolean, url?: string): void {
-    this.ctx.patchState({
-      embedded
-    });
-  }
-
-  /**
    * Sets the name of the active user.
    *
    * @param name The first and last name
@@ -1038,16 +768,6 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
     this.ctx.setState(patch({
       user: patch(name)
     }));
-  }
-
-  /**
-   * Turns tutorialMode on or off
-   *
-   * @param tutorialMode the state to set the mode to.
-   */
-  @DataAction()
-  setTutorialMode(tutorialMode: boolean): void {
-    this.ctx.setState(patch({ tutorialMode }));
   }
 
   /**

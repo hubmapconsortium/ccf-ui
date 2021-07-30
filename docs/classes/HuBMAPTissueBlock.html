@@ -1432,7 +1432,7 @@ export class HuBMAPTissueBlock {
     for (const descendant of descendants.filter(d &#x3D;&gt; d.entity_type &#x3D;&#x3D;&#x3D; &#x27;Sample&#x27;)) {
       const section &#x3D; this.getSection(descendant, data, portalUrl);
 
-      const sectionId &#x3D; descendant.hubmap_display_id as string;
+      const sectionId &#x3D; descendant.submission_id as string;
       sectionLookup[sectionId] &#x3D; section;
       sections.push(section);
       section.section_number &#x3D; section.section_number || sections.length;
@@ -1441,7 +1441,7 @@ export class HuBMAPTissueBlock {
       if (descendant.entity_type &#x3D;&#x3D;&#x3D; &#x27;Dataset&#x27;) {
         const dataset &#x3D; this.getDataset(descendant, assetsApi, portalUrl, serviceToken);
 
-        const sectionId &#x3D; get(descendant, [&#x27;metadata&#x27;, &#x27;metadata&#x27;, &#x27;tissue_id&#x27;]) as string;
+        const sectionId &#x3D; get(descendant, [&#x27;ingest_metadata&#x27;, &#x27;metadata&#x27;, &#x27;tissue_id&#x27;]) as string;
         if (sectionLookup[sectionId]) {
           (sectionLookup[sectionId].datasets as JsonLd[])?.push(dataset);
         } else {
@@ -1497,7 +1497,7 @@ export class HuBMAPTissueBlock {
 
     const types &#x3D; [
       ...dataset.data_types as string[],
-      get(dataset, [&#x27;metadata&#x27;, &#x27;metadata&#x27;, &#x27;assay_type&#x27;], &#x27;&#x27;)
+      get(dataset, [&#x27;ingest_metadata&#x27;, &#x27;metadata&#x27;, &#x27;assay_type&#x27;], &#x27;&#x27;)
     ];
     const typesSearch &#x3D; types.join(&#x27;|&#x27;).toLowerCase();
 
@@ -1555,7 +1555,7 @@ export class HuBMAPTissueBlock {
         }
       }
     } else if (dataset.group_uuid &#x3D;&#x3D;&#x3D; &#x27;07a29e4c-ed43-11e8-b56a-0e8017bdda58&#x27;) { // TMC-Florida
-      const thumb &#x3D; UFL_THUMBS[dataset.display_doi as string];
+      const thumb &#x3D; UFL_THUMBS[dataset.hubmap_id as string];
       if (thumb) {
         return &#x60;assets/thumbnails/TMC-Florida/${thumb}&#x60;;
       }

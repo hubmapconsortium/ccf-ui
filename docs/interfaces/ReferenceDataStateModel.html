@@ -332,17 +332,20 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { ExtractionSet, SpatialEntity } from &#x27;ccf-database&#x27;;
-import { ALL_ORGANS, GlobalsService, OrganInfo } from &#x27;ccf-shared&#x27;;
+import { ALL_ORGANS, GlobalConfigState, GlobalsService, OrganInfo } from &#x27;ccf-shared&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { map, switchMap } from &#x27;rxjs/operators&#x27;;
 
 import { environment } from &#x27;../../../../environments/environment&#x27;;
-import { GLOBAL_CONFIG, GlobalConfig } from &#x27;../../services/config/config&#x27;;
+import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 
+/* eslint-disable @typescript-eslint/member-ordering */
 
 export interface ReferenceDataStateModel {
   organIRILookup: { [lookup: string]: string };
@@ -379,7 +382,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
 
   constructor(
     private readonly globals: GlobalsService,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+    private globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
   ) {
     super();
   }
@@ -390,7 +393,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
-    this.getSourceDB().then((db) &#x3D;&gt; {
+    this.getSourceDB().subscribe(db &#x3D;&gt; {
       this.setState(db);
 
       // In development, make the db globally accessible
@@ -400,9 +403,12 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
     });
   }
 
-  private getSourceDB(): Promise&lt;ReferenceDataStateModel&gt; {
-    const baseHref &#x3D; this.globalConfig.baseHref || &#x27;&#x27;;
-    return fetch(baseHref + &#x27;assets/reference-organ-data.json&#x27;).then(r &#x3D;&gt; r.json());
+  private getSourceDB(): Observable&lt;ReferenceDataStateModel&gt; {
+    return this.globalConfig.getProperty&lt;string&gt;([&#x27;baseHref&#x27;]).pipe(
+      map(baseHref &#x3D;&gt; (baseHref ?? &#x27;&#x27;) + &#x27;assets/reference-organ-data.json&#x27;),
+      switchMap(url &#x3D;&gt; fetch(url)),
+      switchMap(data &#x3D;&gt; data.json())
+    );
   }
 
   /**

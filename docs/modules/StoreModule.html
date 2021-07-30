@@ -83,7 +83,7 @@ import { DataState } from &#x27;./data/data.state&#x27;;
 import { IconRegistryState } from &#x27;./icon-registry/icon-registry.state&#x27;;
 import { ListResultsState } from &#x27;./list-results/list-results.state&#x27;;
 import { OntologyState } from &#x27;./ontology/ontology.state&#x27;;
-import { TrackingState } from &#x27;ccf-shared&#x27;;
+import { TrackingState, GlobalConfigState } from &#x27;ccf-shared&#x27;;
 import { SceneState } from &#x27;./scene/scene.state&#x27;;
 
 
@@ -91,6 +91,7 @@ import { SceneState } from &#x27;./scene/scene.state&#x27;;
  * States shared across the entire app.
  */
 export const ROOT_STATES &#x3D; [
+  GlobalConfigState,
   ColorAssignmentState,
   IconRegistryState,
   ListResultsState,

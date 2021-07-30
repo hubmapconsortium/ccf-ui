@@ -1,0 +1,427 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ccf-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ccf-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li
+  >
+  User</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-rui/src/app/app.component.ts</code>
+        </p>
+
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#firstName" 
+>
+                                            firstName
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#lastName" 
+>
+                                            lastName
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="firstName"></a>
+                                        <span class="name "><b>firstName</b>
+                                            <a href="#firstName">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>firstName:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="lastName"></a>
+                                        <span class="name "><b>lastName</b>
+                                            <a href="#lastName">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>lastName:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Any } from &#x27;@angular-ru/common/typings&#x27;;
+import { ChangeDetectionStrategy, Component, ElementRef, Injector, Input, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+import { Debounce } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { SpatialEntityJsonLd } from &#x27;ccf-body-ui&#x27;;
+import { GlobalConfigState, TrackingPopupComponent, TrackingState } from &#x27;ccf-shared&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
+import { ObservableInput, Subscription } from &#x27;rxjs&#x27;;
+
+import { GlobalConfig } from &#x27;./core/services/config/config&#x27;;
+import { ThemingService } from &#x27;./core/services/theming/theming.service&#x27;;
+import { ModelState, RUI_ORGANS } from &#x27;./core/store/model/model.state&#x27;;
+import { PageState } from &#x27;./core/store/page/page.state&#x27;;
+
+export interface User {
+  firstName: string;
+  lastName: string;
+}
+
+/**
+ * App component
+ */
+@Component({
+  selector: &#x27;ccf-root&#x27;,
+  templateUrl: &#x27;./app.component.html&#x27;,
+  styleUrls: [&#x27;./app.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class AppComponent implements OnDestroy, OnInit {
+
+  /** Configuration Options **/
+  @Input() baseHref: string;
+  @Input()
+    get useDownload(): boolean | undefined { return this._useDownload; }
+    set useDownload(useDownload: string | boolean | undefined) {
+      if (typeof useDownload &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        this._useDownload &#x3D; useDownload &#x3D;&#x3D;&#x3D; &#x27;&#x27; || useDownload.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+      } else if (typeof useDownload &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27;) {
+        this._useDownload &#x3D; useDownload;
+        this.updateGlobalConfig();
+      }
+    }
+
+  @Input()
+    get user(): User { return this._user; }
+    set user(user: User | string) {
+      if (typeof user &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        this._user &#x3D; JSON.parse(user);
+      } else {
+        this._user &#x3D; user;
+        this.updateGlobalConfig();
+      }
+    }
+
+  @Input()
+    get organ(): GlobalConfig[&#x27;organ&#x27;] { return this._organ; }
+    set organ(organ: GlobalConfig[&#x27;organ&#x27;] | string) {
+      if (typeof organ &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        this._organ &#x3D; JSON.parse(organ);
+      } else {
+        this._organ &#x3D; organ;
+        this.updateGlobalConfig();
+      }
+    }
+
+  @Input()
+    get editRegistration(): SpatialEntityJsonLd { return this._editRegistration; }
+    set editRegistration(editRegistration: SpatialEntityJsonLd | string) {
+      if (typeof editRegistration &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        this._editRegistration &#x3D; JSON.parse(editRegistration);
+      } else {
+        this._editRegistration &#x3D; editRegistration;
+        this.updateGlobalConfig();
+      }
+    }
+
+  @Input()
+    get register(): (data: unknown) &#x3D;&gt; void { return this._register; }
+    set register(register: Any) {
+      if (typeof register &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        console.error(&#x27;RUI.register is unable to be set to a string. Expecting \&#x27;() &#x3D;&gt; void\&#x27; format.&#x27;);
+      } else {
+        this._register &#x3D; register;
+        this.updateGlobalConfig();
+      }
+    }
+
+  @Input()
+    get fetchPreviousRegistrations(): () &#x3D;&gt; ObservableInput&lt;Record&lt;string, unknown&gt;[]&gt; { return this._fetchPreviousRegistrations; }
+    set fetchPreviousRegistrations(fetchPreviousRegistrations: Any) {
+      if (typeof fetchPreviousRegistrations &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        console.error(&#x27;RUI.fetchPreviousRegistrations is unable to be set to a string.  Expecting \&#x27;() &#x3D;&gt; SpatialEntityJsonLD[]\&#x27; format.&#x27;);
+      } else {
+        this._fetchPreviousRegistrations &#x3D; fetchPreviousRegistrations;
+        this.updateGlobalConfig();
+      }
+    }
+
+  @Input()
+    get cancelRegistration(): () &#x3D;&gt; void { return this._cancelRegistration; }
+    set cancelRegistration(cancelRegistration: Any) {
+      if (typeof cancelRegistration &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        console.error(&#x27;RUI.cancelRegistration is unable to be set to a string.  Expecting \&#x27;() &#x3D;&gt; void\&#x27; format.&#x27;);
+      } else {
+        this._cancelRegistration &#x3D; cancelRegistration;
+        this.updateGlobalConfig();
+      }
+    }
+
+  /** Organs to be displayed in the organ selector */
+  organList &#x3D; RUI_ORGANS;
+
+  /** True if the organ selector drawer is open */
+  open &#x3D; true;
+
+  /** False until the initial registration modal is closed */
+  registrationStarted &#x3D; false;
+
+  /** Clean internal variables, for use with configuration options. **/
+  private _useDownload: boolean | undefined;
+  private _user: User;
+  private _organ: GlobalConfig[&#x27;organ&#x27;];
+  private _editRegistration: SpatialEntityJsonLd;
+  private _register: (data: unknown) &#x3D;&gt; void;
+  private _fetchPreviousRegistrations: () &#x3D;&gt; ObservableInput&lt;Record&lt;string, unknown&gt;[]&gt;;
+  private _cancelRegistration: () &#x3D;&gt; void;
+
+  /** All subscriptions managed by the container. */
+  private readonly subscriptions &#x3D; new Subscription();
+
+  constructor(
+    readonly model: ModelState, readonly page: PageState, ga: GoogleAnalyticsService,
+    readonly tracking: TrackingState, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
+    el: ElementRef&lt;unknown&gt;, injector: Injector, private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
+  ) {
+    theming.initialize(el, injector);
+    this.subscriptions.add(
+      page.registrationCallbackSet$.subscribe((callbackSet) &#x3D;&gt; { this.open &#x3D; !callbackSet; })
+    );
+    this.subscriptions.add(
+      page.registrationStarted$.subscribe((registrationStarted) &#x3D;&gt; { this.registrationStarted &#x3D; registrationStarted; })
+    );
+  }
+
+  ngOnInit(): void {
+    const snackBar &#x3D; this.snackbar.openFromComponent(TrackingPopupComponent, {
+      data: {preClose: () &#x3D;&gt; {snackBar.dismiss();} },
+      duration: this.tracking.snapshot.allowTelemetry &#x3D;&#x3D;&#x3D; undefined ? Infinity : 3000
+    });
+
+    this.updateGlobalConfig(true);
+  }
+
+  @Debounce(20)
+  updateGlobalConfig(useWindowConfig &#x3D; false): void {
+    const { useDownload, user, organ, editRegistration, register, fetchPreviousRegistrations, cancelRegistration } &#x3D; this;
+    const windowConfigKey &#x3D; &#x27;ruiConfig&#x27;;
+    let config: GlobalConfig &#x3D; {} as GlobalConfig;
+
+    if (useWindowConfig &amp;&amp; windowConfigKey in globalThis) {
+      config &#x3D; (globalThis as Record&lt;string, unknown&gt;)[windowConfigKey] as GlobalConfig;
+    }
+
+    const inputs &#x3D; {
+      useDownload,
+      user,
+      organ,
+      editRegistration,
+      register,
+      fetchPreviousRegistrations,
+      cancelRegistration
+    };
+
+    for (const key in inputs) {
+      if (inputs[key] !&#x3D; null) {
+        config[key] &#x3D; inputs[key];
+      }
+    }
+
+    this.globalConfig.patchConfig(config);
+  }
+
+  /**
+   * Cleans up all subscriptions.
+   */
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'User.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
