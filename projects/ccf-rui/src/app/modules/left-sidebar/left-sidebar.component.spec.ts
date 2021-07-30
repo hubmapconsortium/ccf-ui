@@ -21,7 +21,7 @@ describe('LeftSidebarComponent', () => {
         );
 
         const mockPageState = jasmine.createSpyObj<PageState>(
-            'PageState', ['setEmbedded', 'setUserName', 'setTutorialMode']
+            'PageState', ['setUserName']
         );
 
         const mockRegistrationState = jasmine.createSpyObj<RegistrationState>(
@@ -39,10 +39,7 @@ describe('LeftSidebarComponent', () => {
                 anatomicalStructures$: of(testVisibilityItems),
                 snapshot: { anatomicalStructures: testVisibilityItems }
             })
-            .mock(PageState, {
-                ...mockPageState,
-                tutorialMode$: of(false)
-            })
+            .mock(PageState, mockPageState)
             .mock(RegistrationState, {
                 ...mockRegistrationState,
                 displayErrors$: of(false)

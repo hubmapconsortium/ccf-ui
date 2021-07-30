@@ -5,8 +5,6 @@ import { ObservableInput } from 'rxjs';
 
 export interface GlobalConfig {
   baseHref?: string;
-  embedded?: boolean;
-  tutorialMode?: boolean;
   editRegistration?: Record<string, unknown>;
   organ?: {
     name: 'large intestine' | 'heart' | 'kidney' | 'spleen';
@@ -14,7 +12,7 @@ export interface GlobalConfig {
     sex?: 'male' | 'female';
     side?: 'left' | 'right';
   };
-  user?: {
+  user: {
     firstName: string;
     lastName: string;
   };
@@ -37,5 +35,5 @@ export const GLOBAL_CONFIG = new InjectionToken<GlobalConfig>(
 );
 
 export function globalConfigFactory(globals: GlobalsService): GlobalConfig {
-  return globals.get('ruiConfig', {});
+  return globals.get('ruiConfig', {user: {firstName: '', lastName: ''}});
 }

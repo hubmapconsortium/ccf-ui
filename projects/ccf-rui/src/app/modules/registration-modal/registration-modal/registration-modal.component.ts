@@ -23,10 +23,10 @@ export class RegistrationModalComponent implements OnInit {
   constructor(public dialog: MatDialog, private pageState: PageState) {}
 
   /**
-   * Opens the dialog on startup (but not in embedded mode)
+   * Opens the dialog on startup (but not if cancel registration callback is set)
    */
   ngOnInit(): void {
-    if (!this.pageState.snapshot.embedded) {
+    if (!this.pageState.snapshot.registrationCallbackSet) {
       this.openDialog();
     }
   }
