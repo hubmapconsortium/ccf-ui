@@ -12,7 +12,7 @@ export interface GlobalConfig {
     sex?: 'male' | 'female';
     side?: 'left' | 'right';
   };
-  user?: {
+  user: {
     firstName: string;
     lastName: string;
   };
@@ -35,5 +35,5 @@ export const GLOBAL_CONFIG = new InjectionToken<GlobalConfig>(
 );
 
 export function globalConfigFactory(globals: GlobalsService): GlobalConfig {
-  return globals.get('ruiConfig', {});
+  return globals.get('ruiConfig', {user: {firstName: '', lastName: ''}});
 }
