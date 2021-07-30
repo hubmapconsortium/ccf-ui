@@ -5,7 +5,7 @@ import { map, pluck } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { DataSourceService } from './core/services/data-source/data-source.service';
-import { ThemingService } from './core/services/theming/theming.service';
+import { ThemingService, LIGHT_THEME, DARK_THEME } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
@@ -56,10 +56,6 @@ export class AppComponent implements OnInit {
    */
   viewerOpen = false;
 
-  lightTheme = 'light-theme';
-
-  darkTheme = 'dark-theme';
-
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
     map(state => state === DataQueryState.Running)
@@ -91,15 +87,17 @@ export class AppComponent implements OnInit {
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
 
-    // Sets initial theme according to user theme preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      this.theming.setTheme(this.darkTheme);
-    }
+    if (window.matchMedia) {
+      // Sets initial theme according to user theme preference
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        this.theming.setTheme(DARK_THEME);
+      }
 
-    // Listens for changes in user theme preference
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      this.theming.setTheme(e.matches ? this.darkTheme : this.lightTheme);
-    });
+      // Listens for changes in user theme preference
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        this.theming.setTheme(e.matches ? DARK_THEME : LIGHT_THEME);
+      });
+    }
   }
 
   /**
@@ -133,7 +131,7 @@ export class AppComponent implements OnInit {
    * Toggles scheme between light and dark mode
    */
   toggleScheme(): void {
-    this.theming.setTheme(this.theming.getTheme() === this.lightTheme ? this.darkTheme : this.lightTheme);
+    this.theming.setTheme(this.theming.getTheme() === LIGHT_THEME ? DARK_THEME : LIGHT_THEME);
   }
 
   /**
