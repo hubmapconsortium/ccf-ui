@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
+import { GlobalConfigState } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -21,10 +22,13 @@ describe('AnatomicalStructureTagsState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([AnatomicalStructureTagState, SceneState, ModelState])
+        NgxsModule.forRoot([AnatomicalStructureTagState, SceneState, ModelState, GlobalConfigState])
       ],
       providers: [
-        AnatomicalStructureTagState, SceneState, ModelState,
+        AnatomicalStructureTagState,
+        SceneState,
+        ModelState,
+        GlobalConfigState,
         {
           provide: GLOBAL_CONFIG,
           useValue: {}
@@ -42,7 +46,8 @@ describe('AnatomicalStructureTagsState', () => {
             type: 'assigned'
           }
         }
-      }
+      },
+      globalConfig: {}
     });
 
     state = TestBed.inject(AnatomicalStructureTagState);

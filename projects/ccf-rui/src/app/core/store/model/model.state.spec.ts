@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
+import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { OrganInfo } from 'ccf-shared';
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
@@ -38,9 +38,10 @@ describe('ModelState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([ModelState])
+        NgxsModule.forRoot([ModelState, GlobalConfigState])
       ],
       providers: [
+        GlobalConfigState,
         { provide: ReferenceDataState, useValue: mockDataSource },
         {
           provide: GLOBAL_CONFIG,
@@ -64,6 +65,9 @@ describe('ModelState', () => {
         showPrevious: false,
         extractionSites: [],
         anatomicalStructures: []
+      },
+      globalConfig: {
+        organ: mockGlobalConfig.organ
       }
     });
 

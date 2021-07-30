@@ -2,7 +2,7 @@ import { Immutable } from '@angular-ru/common/typings';
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
-import { OrganInfo } from 'ccf-shared';
+import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import * as FileSaver from 'file-saver';
 import { Observable, ReplaySubject } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -50,6 +50,15 @@ function nextValue<T>(obs: Observable<T>): Promise<T> {
   return obs.pipe(take(1)).toPromise();
 }
 
+function patchStore(key: string, data: unknown): void {
+  const store = TestBed.inject(Store);
+  const current = store.snapshot();
+  store.reset({
+    ...current,
+    [key]: data
+  });
+}
+
 describe('RegistrationState', () => {
   const initialPageState: Partial<PageStateModel> = {
     user: {
@@ -95,9 +104,10 @@ describe('RegistrationState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([RegistrationState, AnatomicalStructureTagState, ModelState, PageState])
+        NgxsModule.forRoot([RegistrationState, AnatomicalStructureTagState, ModelState, PageState, GlobalConfigState])
       ],
       providers: [
+        GlobalConfigState,
         AnatomicalStructureTagState,
         {
           provide: PageState, useValue: {
@@ -129,7 +139,8 @@ describe('RegistrationState', () => {
         useRegistrationCallback: false,
         displayErrors: false,
         registrations: []
-      }
+      },
+      globalConfig: {}
     });
 
     state = TestBed.inject(RegistrationState);
@@ -189,7 +200,8 @@ describe('RegistrationState', () => {
       TestBed.inject(Store).reset({
         registration: {
           registrations: [reg1]
-        }
+        },
+        globalConfig: {}
       });
     });
 
@@ -198,17 +210,17 @@ describe('RegistrationState', () => {
       expect(value).toEqual([reg1]);
     });
 
-    it('calls fetchPreviousRegistrations if available', () => {
+    it('calls fetchPreviousRegistrations if available', async () => {
       const spy = jasmine.createSpy().and.returnValue([[]]);
-      TestBed.inject(GLOBAL_CONFIG).fetchPreviousRegistrations = spy;
+      patchStore('globalConfig', { fetchPreviousRegistrations: spy });
 
-      const _unused = state.previousRegistrations$;
+      await nextValue(state.previousRegistrations$);
       expect(spy).toHaveBeenCalled();
     });
 
     it('combines the results from fetchPreviousRegistrations and local registrations', async () => {
       const spy = jasmine.createSpy().and.returnValue([[reg2]]);
-      TestBed.inject(GLOBAL_CONFIG).fetchPreviousRegistrations = spy;
+      patchStore('globalConfig', { fetchPreviousRegistrations: spy });
 
       const value = await nextValue(state.previousRegistrations$);
       expect(value).toEqual(jasmine.arrayWithExactContents([reg1, reg2]));
@@ -238,7 +250,7 @@ describe('RegistrationState', () => {
     beforeEach(() => {
       callback = jasmine.createSpy();
       download = spyOn(FileSaver, 'saveAs');
-      TestBed.inject(GLOBAL_CONFIG).register = callback;
+      patchStore('globalConfig', { register: callback });
       spyOn(state, 'isDataValid').and.returnValue(true);
     });
 
@@ -260,12 +272,7 @@ describe('RegistrationState', () => {
     });
 
     it('uses the callback if the state useRegistrationCallback is true and no argument is provided', () => {
-      TestBed.inject(Store).reset({
-        registration: {
-          useRegistrationCallback: true
-        }
-      });
-
+      patchStore('registration', { useRegistrationCallback: true });
       state.register();
       expect(callback).toHaveBeenCalled();
     });
@@ -276,7 +283,7 @@ describe('RegistrationState', () => {
     });
 
     it('does nothing if there is no callback and the registration method is selected', () => {
-      TestBed.inject(GLOBAL_CONFIG).register = undefined;
+      patchStore('globalConfig', { register: undefined });
       state.register(true);
       expect(callback).not.toHaveBeenCalled();
     });
