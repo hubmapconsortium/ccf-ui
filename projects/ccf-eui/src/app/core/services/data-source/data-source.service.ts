@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+import { GlobalConfigState } from 'ccf-shared';
 import { LocationStrategy } from '@angular/common';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import {
   AggregateResult,
   CCFDatabase,
@@ -10,11 +12,19 @@ import {
   SpatialSceneNode,
   TissueBlockResult,
 } from 'ccf-database';
-import { Remote, wrap } from 'comlink';
-import { from, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { releaseProxy, Remote, wrap } from 'comlink';
+import { Observable, Subscription, using, Unsubscribable } from 'rxjs';
+import { take, distinctUntilChanged, shareReplay, switchMap, filter } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+
+
+type DataSource = Remote<CCFDatabase> | CCFDatabase;
+
+
+function compareConfig(previous: CCFDatabaseOptions, current: CCFDatabaseOptions): boolean {
+  return previous === current;
+}
 
 
 /**
@@ -23,49 +33,50 @@ import { environment } from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class DataSourceService {
+export class DataSourceService implements OnDestroy {
   /** The underlying database. */
-  dataSource: Remote<CCFDatabase> | CCFDatabase;
+  dataSource: Observable<DataSource>;
   /** Database initialization options. */
   dbOptions: CCFDatabaseOptions;
+
+  private readonly subscriptions = new Subscription();
 
   /**
    * Creates an instance of data source service.
    */
-  constructor(private readonly locator: LocationStrategy) {
-    if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
-      this.dataSource = this.getWebWorkerDataSource(true);
-    } else {
-      this.dataSource = new CCFDatabase();
-    }
-    this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
+  constructor(
+    private readonly locator: LocationStrategy,
+    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
+  ) {
+    this.dataSource = globalConfig.config$.pipe(
+      filter(config => Object.keys(config).length > 0),
+      distinctUntilChanged(compareConfig),
+      switchMap(config => using(
+        () => this.createDataSource(),
+        (resource) => this.connectDataSource((resource as unknown as { source: DataSource}).source, config)
+      )),
+      shareReplay(1)
+    );
 
-    if (typeof globalThis === 'object') {
-      // If a global dbOptions object is set, use this for connecting to the db
-      if (globalThis.dbOptions) {
-        this.dbOptions = { ...this.dbOptions, ...globalThis.dbOptions } as CCFDatabaseOptions;
-      }
+    this.subscriptions.add(this.dataSource.subscribe());
 
-      // In development, make the db globally accessible
-      if (!environment.production) {
-        ((globalThis as unknown) as { db: Remote<CCFDatabase> | CCFDatabase }).db = this.dataSource;
-      }
-    }
+    // this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
+
+    // if (typeof globalThis === 'object') {
+    //   // If a global dbOptions object is set, use this for connecting to the db
+    //   if (globalThis.dbOptions) {
+    //     this.dbOptions = { ...this.dbOptions, ...globalThis.dbOptions } as CCFDatabaseOptions;
+    //   }
+
+    //   // In development, make the db globally accessible
+    //   if (!environment.production) {
+    //     ((globalThis as unknown) as { db: Remote<CCFDatabase> | CCFDatabase }).db = this.dataSource;
+    //   }
+    // }
   }
 
-  /**
-   * Gets a reference to the database.
-   *
-   * @returns A promise that resolves to the database when ready.
-   */
-  async getDB(): Promise<Remote<CCFDatabase> | CCFDatabase> {
-    // When the db is running in the main thread, introduce some
-    // delay to allow other parts of the UI to have time to run.
-    if (environment.disableDbWorker) {
-      await new Promise(r => setTimeout(r, 100));
-    }
-    await this.dataSource.connect(this.dbOptions);
-    return this.dataSource;
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   /**
@@ -75,7 +86,10 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
    getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
-    return from(this.getDB().then((db) => db.getTissueBlockResults(filter))).pipe(take(1));
+     return this.dataSource.pipe(
+       switchMap(db => db.getTissueBlockResults(filter)),
+       take(1)
+     );
   }
 
   /**
@@ -85,7 +99,10 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
-    return from(this.getDB().then((db) => db.getAggregateResults(filter))).pipe(take(1));
+    return this.dataSource.pipe(
+      switchMap(db => db.getAggregateResults(filter)),
+      take(1)
+    );
   }
 
   /**
@@ -95,7 +112,10 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
-    return from(this.getDB().then((db) => db.getOntologyTermOccurences(filter))).pipe(take(1));
+    return this.dataSource.pipe(
+      switchMap(db => db.getOntologyTermOccurences(filter)),
+      take(1)
+    );
   }
 
   /**
@@ -104,7 +124,10 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
   getOntologyTreeModel(): Observable<OntologyTreeModel> {
-    return from(this.getDB().then((db) => db.getOntologyTreeModel())).pipe(take(1));
+    return this.dataSource.pipe(
+      switchMap(db => db.getOntologyTreeModel()),
+      take(1)
+    );
   }
 
   /**
@@ -113,7 +136,10 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
    getReferenceOrgans(): Observable<SpatialEntity[]> {
-    return from(this.getDB().then((db) => db.getReferenceOrgans())).pipe(take(1));
+    return this.dataSource.pipe(
+      switchMap(db => db.getReferenceOrgans()),
+      take(1)
+    );
   }
 
   /**
@@ -123,10 +149,40 @@ export class DataSourceService {
    * @returns An observable emitting the results.
    */
    getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
-    return from(this.getDB().then((db) => db.getScene(filter))).pipe(take(1));
+    return this.dataSource.pipe(
+      switchMap(db => db.getScene(filter)),
+      take(1)
+    );
   }
 
-  private getWebWorkerDataSource(directImport = false): Remote<CCFDatabase> {
+  private createDataSource(): { source: DataSource } & Unsubscribable {
+    let source: DataSource;
+    let unsubscribe: () => void = () => undefined;
+
+    if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
+      let worker: Worker;
+      ({ source, worker } = this.getWebWorkerDataSource(true));
+      unsubscribe = async () => {
+        await source[releaseProxy]();
+        worker.terminate();
+      };
+    } else {
+      source = new CCFDatabase();
+    }
+
+    return { source, unsubscribe };
+  }
+
+  private async connectDataSource(source: DataSource, config: CCFDatabaseOptions): Promise<DataSource> {
+    if (environment.disableDbWorker) {
+      await new Promise(r => setTimeout(r, 100));
+    }
+
+    await source.connect(config);
+    return source;
+  }
+
+  private getWebWorkerDataSource(directImport = false): { source: Remote<CCFDatabase>; worker: Worker } {
     let worker: Worker;
     if (directImport) {
       worker = new Worker(new URL('./data-source.worker', import.meta.url), { type: 'module' });
@@ -135,6 +191,6 @@ export class DataSourceService {
       const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
       worker = new Worker(URL.createObjectURL(workerBlob), { type: 'module' });
     }
-    return wrap(worker);
+    return { source: wrap(worker), worker };
   }
 }

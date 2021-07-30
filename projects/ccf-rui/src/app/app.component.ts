@@ -36,9 +36,10 @@ export class AppComponent implements OnDestroy, OnInit {
     get embedded(): boolean | undefined { return this._embedded; }
     set embedded(embedded: string | boolean | undefined) {
       if (typeof embedded === 'string') {
-        this._embedded = embedded.toLowerCase() === 'true';
+        this._embedded = embedded === '' || embedded.toLowerCase() === 'true';
       } else if (typeof embedded === 'boolean') {
         this._embedded = embedded;
+        this.updateGlobalConfig();
       }
     }
 
@@ -46,9 +47,10 @@ export class AppComponent implements OnDestroy, OnInit {
     get useDownload(): boolean | undefined { return this._useDownload; }
     set useDownload(useDownload: string | boolean | undefined) {
       if (typeof useDownload === 'string') {
-        this._useDownload = useDownload.toLowerCase() === 'true';
+        this._useDownload = useDownload === '' || useDownload.toLowerCase() === 'true';
       } else if (typeof useDownload === 'boolean') {
         this._useDownload = useDownload;
+        this.updateGlobalConfig();
       }
     }
 
@@ -59,6 +61,7 @@ export class AppComponent implements OnDestroy, OnInit {
         this._user = JSON.parse(user);
       } else {
         this._user = user;
+        this.updateGlobalConfig();
       }
     }
 
@@ -69,6 +72,7 @@ export class AppComponent implements OnDestroy, OnInit {
         this._organ = JSON.parse(organ);
       } else {
         this._organ = organ;
+        this.updateGlobalConfig();
       }
     }
 
@@ -79,6 +83,7 @@ export class AppComponent implements OnDestroy, OnInit {
         this._editRegistration = JSON.parse(editRegistration);
       } else {
         this._editRegistration = editRegistration;
+        this.updateGlobalConfig();
       }
     }
 
@@ -89,6 +94,7 @@ export class AppComponent implements OnDestroy, OnInit {
         console.error('RUI.register is unable to be set to a string. Expecting \'() => void\' format.');
       } else {
         this._register = register;
+        this.updateGlobalConfig();
       }
     }
 
@@ -99,6 +105,7 @@ export class AppComponent implements OnDestroy, OnInit {
         console.error('RUI.fetchPreviousRegistrations is unable to be set to a string.  Expecting \'() => SpatialEntityJsonLD[]\' format.');
       } else {
         this._fetchPreviousRegistrations = fetchPreviousRegistrations;
+        this.updateGlobalConfig();
       }
     }
 
