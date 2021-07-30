@@ -82,7 +82,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     this.ctx.setState(patch<Immutable<PageStateModel>>({
       registrationCallbackSet: !!(register),
       useCancelRegistrationCallback: !!(cancelRegistration),
-      user: iif(!!user, user)
+      user: iif(!!user, user!)
     }));
   }
 
