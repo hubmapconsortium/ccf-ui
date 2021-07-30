@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsDataInjector } from '@ngxs-labs/data/internals';
+import { GlobalConfigState, TrackingState } from 'ccf-shared';
 import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
@@ -10,11 +13,8 @@ import { ThemingService } from './core/services/theming/theming.service';
 import { DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
-import { StoreModule } from './core/store/store.module';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { TrackingState } from 'ccf-shared';
-import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 
 
 @NgModule({})
@@ -33,7 +33,6 @@ describe('AppComponent', () => {
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
-      .replaceModule(StoreModule, EmptyModule)
       .mock(ListResultsState, {
         listResults$: of([])
       })
@@ -61,6 +60,21 @@ describe('AppComponent', () => {
       .mock(ThemingService, {
         initialize: () => undefined,
         getTheme: () => 'theme'
+      })
+      .mock(GlobalConfigState, {
+        snapshot: {},
+        patchConfig: () => undefined
+      })
+      .mock(AppComponent, {
+        updateGlobalConfig: () => undefined
+      })
+      // Hacky way to get @Debounce to work
+      // @Debounce should be replaced with another implementation
+      // that does not depend on the state modules
+      .mock(NgxsDataInjector, {
+        ngZone: {
+          runOutsideAngular: (fn: () => void) => fn()
+        }
       });
   });
 
