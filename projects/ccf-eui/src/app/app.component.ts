@@ -56,6 +56,10 @@ export class AppComponent implements OnInit {
    */
   viewerOpen = false;
 
+  LIGHT_THEME = 'light-theme';
+
+  DARK_THEME = 'dark-theme';
+
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
     map(state => state === DataQueryState.Running)
@@ -89,12 +93,12 @@ export class AppComponent implements OnInit {
 
     // Sets initial theme according to user theme preference
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      this.theming.setTheme('dark-theme');
+      this.theming.setTheme(this.DARK_THEME);
     }
 
     // Listens for changes in user theme preference
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      this.theming.setTheme(e.matches ? 'dark-theme' : 'light-theme');
+      this.theming.setTheme(e.matches ? this.DARK_THEME : this.LIGHT_THEME);
     });
   }
 
@@ -129,7 +133,7 @@ export class AppComponent implements OnInit {
    * Toggles scheme between light and dark mode
    */
   toggleScheme(): void {
-    this.theming.setTheme(this.theming.getTheme() === 'light-theme' ? 'dark-theme' : 'light-theme');
+    this.theming.setTheme(this.theming.getTheme() === this.LIGHT_THEME ? this.DARK_THEME : this.LIGHT_THEME);
   }
 
   /**
