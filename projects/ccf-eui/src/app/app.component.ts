@@ -1,10 +1,8 @@
-import { OnChanges } from '@angular/core';
-/* eslint-disable @typescript-eslint/member-ordering */
-import { GlobalConfigState } from 'ccf-shared';
-/* eslint-disable no-underscore-dangle */
-import { Component, ElementRef, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injector, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TrackingPopupComponent, TrackingState } from 'ccf-shared';
+import { Debounce } from '@ngxs-labs/data/decorators';
+import { CCFDatabaseOptions } from 'ccf-database';
+import { GlobalConfigState, TrackingPopupComponent, TrackingState } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
@@ -19,9 +17,9 @@ import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-import { CCFDatabaseOptions } from 'ccf-database';
-import { Debounce } from '@ngxs-labs/data/decorators';
 
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable no-underscore-dangle */
 /**
  * This is the main angular component that all the other components branch off from.
  * It is in charge of the header and drawer components who have many sub-components.
