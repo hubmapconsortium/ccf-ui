@@ -163,10 +163,6 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     super.ngxsOnInit();
 
     this.referenceData = this.injector.get(ReferenceDataState);
-  }
-
-  ngxsAfterBootstrap(): void {
-    super.ngxsAfterBootstrap();
 
     this.globalConfig.getProperty<NonNullable<GlobalConfig['organ']>>(['organ']).pipe(
       take(1),
@@ -174,25 +170,37 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       tap(organConfig => {
         const organName = organConfig.name.toLowerCase();
         const organSide = organConfig.side;
-        const organInfo = ALL_ORGANS.find((o) => {
-          if (o.side) {
-            return o.organ.toLowerCase() === organName && o.side === organSide;
-          } else {
-            return o.organ.toLowerCase() === organName;
-          }
-        });
+        const ontologyId = organConfig.ontologyId;
+        // check for an id match
+        let organInfo = this.idMatches(ontologyId, organSide);
+        // if no id matches, check for a name match
+        if (!organInfo) {
+          organInfo = this.nameMatches(organName, organSide);
+        }
         if (organInfo) {
           setTimeout(() => {
             this.ctx.patchState({
               organ: organInfo,
               sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
-              side: organInfo.side?.toLowerCase() as 'left' | 'right'
+              side: organInfo?.side?.toLowerCase() as 'left' | 'right'
             });
             this.onOrganIriChange();
           }, 1000);
         }
       })
     ).subscribe();
+  }
+
+  idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
+    return ALL_ORGANS.find((o) =>
+      ontologyId && o.id === ontologyId ?  (o.side ? o.side === organSide : true) : false
+    );
+  }
+
+  nameMatches(organName: string, organSide?: string): OrganInfo | undefined {
+    return ALL_ORGANS.find((o) =>
+      o.side ? o.organ.toLowerCase() === organName && o.side === organSide : o.organ.toLowerCase() === organName
+    );
   }
 
   /**

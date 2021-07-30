@@ -12,6 +12,10 @@ import { TrackingState } from '../../analytics/tracking.state';
 export class TrackingPopupComponent {
   @HostBinding('class') readonly clsName = 'ccf-tracking-popup';
 
+  get allowTelemetry(): boolean | undefined {
+    return this.tracking.snapshot.allowTelemetry;
+  }
+
   container: HTMLElement;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,10 +33,11 @@ export class TrackingPopupComponent {
   }
 
   showButton(button: 'opt-in' | 'opt-out'): boolean {
-    if (this.tracking.snapshot.allowTelemetry === undefined) {
+    const { allowTelemetry } = this;
+    if (allowTelemetry === undefined) {
       return true;
     } else {
-      return button === 'opt-in' ? !this.tracking.snapshot.allowTelemetry : this.tracking.snapshot.allowTelemetry;
+      return button === 'opt-in' ? !allowTelemetry : allowTelemetry;
     }
   }
 }

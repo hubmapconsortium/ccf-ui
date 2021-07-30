@@ -10,6 +10,7 @@ export interface GlobalConfig {
   editRegistration?: Record<string, unknown>;
   organ?: {
     name: 'large intestine' | 'heart' | 'kidney' | 'spleen';
+    ontologyId?: string;
     sex?: 'male' | 'female';
     side?: 'left' | 'right';
   };
