@@ -1,6 +1,6 @@
 <div class="scroll-wrapper">
     <div class="container">
-        <ng-container *ngIf="page.embedded$ | async">
+        <ng-container *ngIf="page.registrationCallbackSet$ | async">
             <ccf-details-label [details]="detailsLabels$ | async"></ccf-details-label>
         </ng-container>
         <div class="organ-sliders" matTooltip="Select sex to filter organs.">

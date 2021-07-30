@@ -9,8 +9,8 @@ interface ReviewModalData {
   /** The object containing all of the review information for displaying inside the modal */
   metaData: MetaData;
 
-  /** Whether or not the application is in embedded mode or not */
-  embeddedMode: boolean;
+  /** Whether or not the cancel registration callback is set */
+  registrationCallbackSet: boolean;
 }
 
 /**
@@ -25,9 +25,9 @@ export class ReviewModalComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-review-modal';
   /**
-   * Whether or not the application is in embedded mode or not
+   * Whether or not the cancel registration callback is set
    */
-  embeddedMode: boolean;
+   registrationCallbackSet: boolean;
 
   /**
    * The object containing all of the review information for displaying inside the modal
@@ -45,7 +45,7 @@ export class ReviewModalComponent {
     @Inject(MAT_DIALOG_DATA) public data: ReviewModalData
   ) {
     this.metaData = data.metaData;
-    this.embeddedMode = data.embeddedMode;
+    this.registrationCallbackSet = data.registrationCallbackSet;
   }
 
   /**

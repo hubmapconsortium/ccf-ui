@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Immutable } from '@angular-ru/common/typings';
 import { Inject, Injectable, Injector } from '@angular/core';
-import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
-import { combineLatest, Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { pluck } from 'rxjs/operators';
 
 import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
 import { ModelState } from './../model/model.state';
@@ -20,15 +19,12 @@ export interface Person {
 
 /** Page state model */
 export interface PageStateModel {
-  /** Whether the page is embedded through hubmap */
-  embedded: boolean;
   /** Active user */
   user: Person;
-  /** Whether or not to show the page tutorial */
-  tutorialMode: boolean;
   /** Whether or not the initial registration modal has been closed */
   registrationStarted: boolean;
   useCancelRegistrationCallback: boolean;
+  registrationCallbackSet: boolean;
 }
 
 
@@ -39,33 +35,23 @@ export interface PageStateModel {
 @State<PageStateModel>({
   name: 'page',
   defaults: {
-    embedded: false,
     user: {
       firstName: '',
       lastName: ''
     },
-    tutorialMode: false,
     registrationStarted: false,
-    useCancelRegistrationCallback: false
+    useCancelRegistrationCallback: false,
+    registrationCallbackSet: false
   }
 })
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
-  /** Embedded observable */
-  readonly embedded$ = this.state$.pipe(pluck('embedded'));
   /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
   /** RegistrationStated observable */
   readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
   readonly useCancelRegistrationCallback$ = this.state$.pipe(pluck('useCancelRegistrationCallback'));
-
-  /** Tutorial mode observable */
-  @Computed()
-  get tutorialMode$(): Observable<boolean> {
-    return combineLatest([this.embedded$, this.model.organIri$]).pipe(
-      map(([embedded, organIri]) => !embedded && !organIri)
-    );
-  }
+  readonly registrationCallbackSet$ = this.state$.pipe(pluck('registrationCallbackSet'));
 
   private model: ModelState;
 
@@ -91,12 +77,11 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     // Lazy load here
     this.model = this.injector.get(ModelState);
 
-    const { globalConfig: { embedded, user, tutorialMode, cancelRegistration } } = this;
+    const { globalConfig: { user, register, cancelRegistration } } = this;
     this.ctx.setState(patch<Immutable<PageStateModel>>({
-      embedded: embedded ?? !!user,
+      registrationCallbackSet: !!(register),
       useCancelRegistrationCallback: !!(cancelRegistration),
-      user: iif(!!user, user!),
-      tutorialMode: !!tutorialMode
+      user: iif(!!user, user)
     }));
   }
 
@@ -114,19 +99,6 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   }
 
   /**
-   * Sets whether this is an embedded page.
-   *
-   * @param embedded Whether the page is embedded
-   * @param [url] The new home url. If not provided the previous one is used
-   */
-  @DataAction()
-  setEmbedded(embedded: boolean, url?: string): void {
-    this.ctx.patchState({
-      embedded
-    });
-  }
-
-  /**
    * Sets the name of the active user.
    *
    * @param name The first and last name
@@ -136,16 +108,6 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     this.ctx.setState(patch({
       user: patch(name)
     }));
-  }
-
-  /**
-   * Turns tutorialMode on or off
-   *
-   * @param tutorialMode the state to set the mode to.
-   */
-  @DataAction()
-  setTutorialMode(tutorialMode: boolean): void {
-    this.ctx.setState(patch({ tutorialMode }));
   }
 
   /**
