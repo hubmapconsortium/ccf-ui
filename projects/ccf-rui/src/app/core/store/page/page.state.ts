@@ -1,15 +1,16 @@
-/* eslint-disable @typescript-eslint/member-ordering */
 import { Immutable } from '@angular-ru/common/typings';
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
+import { GlobalConfigState } from 'ccf-shared';
 import { pluck } from 'rxjs/operators';
 
-import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
+import { GlobalConfig } from '../../services/config/config';
 import { ModelState } from './../model/model.state';
 
+/* eslint-disable @typescript-eslint/member-ordering */
 
 /** A record with information about a single person */
 export interface Person {
@@ -62,7 +63,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    */
   constructor(
     private readonly injector: Injector,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>
   ) {
     super();
   }
@@ -77,7 +78,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     // Lazy load here
     this.model = this.injector.get(ModelState);
 
-    const { globalConfig: { user, register, cancelRegistration } } = this;
+    const { globalConfig: { snapshot: { user, register, cancelRegistration } } } = this;
     this.ctx.setState(patch<Immutable<PageStateModel>>({
       registrationCallbackSet: !!(register),
       useCancelRegistrationCallback: !!(cancelRegistration),
@@ -86,7 +87,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   }
 
   cancelRegistration(): void {
-    const { globalConfig: { cancelRegistration: cancelRegistrationCallback }, snapshot } = this;
+    const { globalConfig: { snapshot: { cancelRegistration: cancelRegistrationCallback } }, snapshot } = this;
 
     if (snapshot.useCancelRegistrationCallback) {
       cancelRegistrationCallback?.();

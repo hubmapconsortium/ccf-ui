@@ -46,23 +46,25 @@
           "translation_units": "millimeter"
         }
       };
-      window.ruiConfig = {
-        baseHref: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/',
-        user: {firstName: 'Jane', lastName: 'Doe'},
-        organ: {name: 'kidney', ontologyId: 'http://purl.obolibrary.org/obo/UBERON_0004538', side: 'left', sex: 'female'},
-        editRegistration: sampleRegistration,
-        register: (data) => {
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const rui = document.querySelector('ccf-rui');
+        rui.baseHref = 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/';
+        rui.user = {firstName: 'Jane', lastName: 'Doe'};
+        rui.useDownload = true;
+        rui.organ = { name: 'kidney', side: 'left', sex: 'female' };
+        rui.editRegistration = sampleRegistration;
+        rui.register = (data) => {
           prompt('Copy the JSON code to clipboard', data);
-        },
-        fetchPreviousRegistrations: () => {
+        };
+        rui.fetchPreviousRegistrations = () => {
           return Promise.resolve([sampleRegistration]);
-        },
-        useDownload: true,
-        cancelRegistration: () => {
+        };
+        rui.cancelRegistration = () => {
           window.location.href = 'https://ingest.hubmapconsortium.org/'
-        }
-      }
-    };
+        };
+      });
+    }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">

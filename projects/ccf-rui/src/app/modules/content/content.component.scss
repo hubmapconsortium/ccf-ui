@@ -18,6 +18,7 @@
 
   .main-content {
     display: flex;
+    height: calc(100% - 1rem);
 
     .body-ui {
       flex: auto;

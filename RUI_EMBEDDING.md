@@ -33,19 +33,45 @@ To embed *CCF-RUI* the following code snippet should be used.
 
   <!-- For Exploration User Interface  -->
   <ccf-eui></ccf-eui>
+  <ccf-eui
+    hubmap-data-service="..."
+    hubmap-portal-url="..."
+    hubmap-data-url="..."
+    hubmap-asset-url="..."
+    hubmap-token="..."
+    hubmap-data-sources="..."
+  ></ccf-eui>
 </body>
 </html>
 ```
 
 ## Configuration
 
-*CCF-RUI* can be customized by adding code to the global `ruiConfig` object. I.e.
+*CCF-RUI* and CCF-EUI can be customized by adding code to the their respective elements. I.e.
 
 ```js
-window.ruiConfig = {
-  configuration options...
+window.addEventListener('DOMContentLoaded', () => {
+  const rui = document.querySelector('ccf-rui');
+  rui.baseHref = 'https://...';
+
+  const eui = document.querySelector('ccf-eui');
+  eui.hubmapDataService = '...';
 }
 ```
+
+*Some configuration values (strings, booleans) can be passed directly in to the HTML tag element. I.e.
+
+```html
+<ccf-eui hubmap-data-service="search-api"></ccf-eui>
+
+<ccf-rui embedded="true"></ccf-rui>
+````
+
+*Short-hands are available for boolean values. I.e.
+
+```html
+<ccf-rui embedded></ccf-rui>
+````
 
 <details>
 <summary>Full example</summary>
@@ -86,21 +112,24 @@ const sampleRegistration = {
     "translation_units": "millimeter"
   }
 };
-window.ruiConfig = {
-  baseHref: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/',
-  embedded: true,
-  homeUrl: 'https://ingest.hubmapconsortium.org/',
-  user: {firstName: 'Jane', lastName: 'Doe'},
-  organ: {name: 'kidney', side: 'left', sex: 'female'},
-  editRegistration: sampleRegistration,
-  register: (data) => {
+window.addEventListener('DOMContentLoaded', () => {
+  const rui = document.querySelector('ccf-rui');
+  rui.baseHref = 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/';
+  rui.embedded = true;
+  rui.useDownload = true;
+  rui.user = {firstName: 'Jane', lastName: 'Doe'};
+  rui.organ = { name: 'kidney', side: 'left', sex: 'female' };
+  rui.editRegistration = sampleRegistration;
+  rui.register = (data) => {
     prompt('Copy the JSON code to clipboard', data);
-  },
-  fetchPreviousRegistrations: () => {
+  };
+  rui.fetchPreviousRegistrations = () => {
     return Promise.resolve([sampleRegistration]);
-  },
-  useDownload: true
-}
+  };
+  rui.cancelRegistration = () => {
+    window.location.href = 'https://ingest.hubmapconsortium.org/'
+  };
+});
 </pre>
 </details>
 

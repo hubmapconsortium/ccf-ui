@@ -1,25 +1,26 @@
-/* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable @typescript-eslint/naming-convention */
 import { Immutable } from '@angular-ru/common/typings';
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from 'ccf-body-ui';
+import { GlobalConfigState } from 'ccf-shared';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { filter, map, pluck, switchMap, take, tap } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
 import { MetaData } from '../../models/meta-data';
-import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
+import { GlobalConfig } from '../../services/config/config';
 import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
 import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/naming-convention */
 
 /**
  * Registration state model
@@ -78,11 +79,15 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   @Computed()
   get previousRegistrations$(): Observable<Record<string, unknown>[]> {
-    const { globalConfig: { fetchPreviousRegistrations }, state$ } = this;
-    return combineLatest([
-      state$.pipe(pluck('registrations')),
-      fetchPreviousRegistrations?.() as Observable<Record<string, unknown>[]> ?? [[]]
-    ]).pipe(
+    const { globalConfig, state$ } = this;
+    const regs = state$.pipe(pluck('registrations'));
+    const fetched = globalConfig.getProperty<() => Observable<Record<string, unknown>[]>>(
+      ['fetchPreviousRegistrations']
+    ).pipe(
+      switchMap(fetch => fetch?.() ?? [[]])
+    );
+
+    return combineLatest([regs, fetched]).pipe(
       map(([local, external]) => [...local, ...external])
     );
   }
@@ -119,7 +124,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   constructor(
     private readonly injector: Injector,
-    @Inject(GLOBAL_CONFIG) private readonly globalConfig: GlobalConfig
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>
   ) {
     super();
   }
@@ -137,19 +142,22 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.tags = this.injector.get(AnatomicalStructureTagState);
     this.refData = this.injector.get(ReferenceDataState);
 
-    const { globalConfig: { useDownload, register } } = this;
-    this.ctx.patchState({
-      useRegistrationCallback: !!(!useDownload && register)
-    });
+    this.globalConfig.config$.pipe(
+      take(1),
+      tap(({ useDownload, register }) => this.ctx.patchState({
+        useRegistrationCallback: !!(!useDownload && register)
+      }))
+    ).subscribe();
   }
 
   ngxsAfterBootstrap(): void {
     super.ngxsAfterBootstrap();
 
-    const { globalConfig: { editRegistration } } = this;
-    if (editRegistration) {
-      this.editRegistration(editRegistration as SpatialEntityJsonLd);
-    }
+    this.globalConfig.getProperty(['editRegistration']).pipe(
+      take(1),
+      filter(reg => !!reg),
+      tap(reg => this.editRegistration(reg as SpatialEntityJsonLd))
+    ).subscribe();
   }
 
   async editRegistration(reg: SpatialEntityJsonLd): Promise<void> {
@@ -243,7 +251,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     }
 
     const {
-      globalConfig: { register: registrationCallback },
+      globalConfig: { snapshot: { register: registrationCallback } },
       page, model, snapshot
     } = this;
     const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot, this.tags.latestTags);

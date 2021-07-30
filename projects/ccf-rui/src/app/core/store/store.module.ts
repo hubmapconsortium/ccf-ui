@@ -3,6 +3,7 @@ import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { GlobalConfigState, TrackingState } from 'ccf-shared';
 
 import { environment } from '../../../environments/environment';
 import { AnatomicalStructureTagState } from './anatomical-structure-tags/anatomical-structure-tags.state';
@@ -12,13 +13,13 @@ import { PageState } from './page/page.state';
 import { ReferenceDataState } from './reference-data/reference-data.state';
 import { RegistrationState } from './registration/registration.state';
 import { SceneState } from './scene/scene.state';
-import { TrackingState } from 'ccf-shared';
 
 
 /**
  * States shared across the entire app.
  */
 export const ROOT_STATES = [
+  GlobalConfigState,
   IconRegistryState,
   PageState,
   ModelState,
