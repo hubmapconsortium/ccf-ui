@@ -123,6 +123,8 @@ export class AppComponent implements OnInit, OnChanges {
       data: {preClose: () => {snackBar.dismiss();} },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
+
+    this.updateGlobalConfig();
   }
 
   ngOnChanges(changes): void {
