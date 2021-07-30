@@ -86,6 +86,16 @@ export class AppComponent implements OnInit {
       data: {preClose: () => {snackBar.dismiss();} },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
+
+    // Sets initial theme according to user theme preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      this.theming.setTheme('dark-theme');
+    }
+
+    // Listens for changes in user theme preference
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      this.theming.setTheme(e.matches ? 'dark-theme' : 'light-theme');
+    });
   }
 
   /**
