@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
+import { GlobalConfigState } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -21,10 +22,11 @@ describe('PageState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([PageState, ModelState])
+        NgxsModule.forRoot([PageState, ModelState, GlobalConfigState])
       ],
       providers: [
         ModelState,
+        GlobalConfigState,
         { provide: GLOBAL_CONFIG, useValue: {} }
       ]
     });
@@ -36,7 +38,8 @@ describe('PageState', () => {
           lastName: 'the Dragon'
         },
         useCancelRegistrationCallback: false
-      }
+      },
+      globalConfig: {}
     });
 
     state = TestBed.inject(PageState);
