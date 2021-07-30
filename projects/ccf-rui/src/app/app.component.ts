@@ -157,7 +157,7 @@ export class AppComponent implements OnDestroy, OnInit {
   updateGlobalConfig(useWindowConfig = false): void {
     const { useDownload, user, organ, editRegistration, register, fetchPreviousRegistrations, cancelRegistration } = this;
     const windowConfigKey = 'ruiConfig';
-    let config: GlobalConfig = {};
+    let config: GlobalConfig = {} as GlobalConfig;
 
     if (useWindowConfig && windowConfigKey in globalThis) {
       config = (globalThis as Record<string, unknown>)[windowConfigKey] as GlobalConfig;
