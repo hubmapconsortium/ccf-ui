@@ -33,17 +33,6 @@ export class AppComponent implements OnDestroy, OnInit {
   /** Configuration Options **/
   @Input() baseHref: string;
   @Input()
-    get embedded(): boolean | undefined { return this._embedded; }
-    set embedded(embedded: string | boolean | undefined) {
-      if (typeof embedded === 'string') {
-        this._embedded = embedded === '' || embedded.toLowerCase() === 'true';
-      } else if (typeof embedded === 'boolean') {
-        this._embedded = embedded;
-        this.updateGlobalConfig();
-      }
-    }
-
-  @Input()
     get useDownload(): boolean | undefined { return this._useDownload; }
     set useDownload(useDownload: string | boolean | undefined) {
       if (typeof useDownload === 'string') {
@@ -130,7 +119,6 @@ export class AppComponent implements OnDestroy, OnInit {
   registrationStarted = false;
 
   /** Clean internal variables, for use with configuration options. **/
-  private _embedded: boolean | undefined;
   private _useDownload: boolean | undefined;
   private _user: User;
   private _organ: GlobalConfig['organ'];
@@ -167,7 +155,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   @Debounce(20)
   updateGlobalConfig(useWindowConfig = false): void {
-    const { embedded, useDownload, user, organ, editRegistration, register, fetchPreviousRegistrations, cancelRegistration } = this;
+    const { useDownload, user, organ, editRegistration, register, fetchPreviousRegistrations, cancelRegistration } = this;
     const windowConfigKey = 'ruiConfig';
     let config: GlobalConfig = {};
 
@@ -176,7 +164,6 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
     const inputs = {
-      embedded,
       useDownload,
       user,
       organ,
