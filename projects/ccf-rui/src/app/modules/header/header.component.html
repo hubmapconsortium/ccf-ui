@@ -1,4 +1,4 @@
-<ng-container *ngIf="page.embedded$ | async; then backButton else logo">
+<ng-container *ngIf="page.useCancelRegistrationCallback$ | async; then backButton else logo">
 </ng-container>
 
 <ng-template #backButton>

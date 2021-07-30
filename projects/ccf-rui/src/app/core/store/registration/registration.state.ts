@@ -286,7 +286,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   ): MetaData {
     const data: MetaData = [];
 
-    if (!page.embedded) {
+    if (!page.registrationCallbackSet) {
       data.push(
         { label: 'First Name', value: page.user.firstName },
         { label: 'Last Name', value: page.user.lastName }

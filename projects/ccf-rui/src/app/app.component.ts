@@ -137,7 +137,7 @@ export class AppComponent implements OnDestroy, OnInit {
   ) {
     theming.initialize(el, injector);
     this.subscriptions.add(
-      page.embedded$.subscribe((embedded) => { this.open = !embedded; })
+      page.registrationCallbackSet$.subscribe((callbackSet) => { this.open = !callbackSet; })
     );
     this.subscriptions.add(
       page.registrationStarted$.subscribe((registrationStarted) => { this.registrationStarted = registrationStarted; })

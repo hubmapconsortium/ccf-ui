@@ -19,7 +19,7 @@ describe('ContentComponent', () => {
     );
 
     const mockPageState = jasmine.createSpyObj<PageState>(
-      'PageStage', ['setEmbedded', 'setUserName', 'setTutorialMode']
+      'PageStage', ['setUserName']
     );
 
     const mockRegistrationState = jasmine.createSpyObj<RegistrationState>(
@@ -39,10 +39,7 @@ describe('ContentComponent', () => {
         organDimensions$: of({x: 0, y: 0, z: 0}),
         defaultPosition: {x: 0, y: 0, z: 0}
       })
-      .mock(PageState, {
-        ...mockPageState,
-        tutorialMode$: of(false)
-      })
+      .mock(PageState, mockPageState)
       .mock(RegistrationState, {
         ...mockRegistrationState
       })

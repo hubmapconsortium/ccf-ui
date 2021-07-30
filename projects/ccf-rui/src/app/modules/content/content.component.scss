@@ -23,11 +23,6 @@
     .body-ui {
       flex: auto;
       transition: opacity 1s;
-
-      .hidden {
-        opacity: 0;
-        z-index: 0;
-      }
     }
 
     .gizmo-area {
