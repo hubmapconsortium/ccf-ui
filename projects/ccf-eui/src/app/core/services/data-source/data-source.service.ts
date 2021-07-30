@@ -1,8 +1,14 @@
 import { LocationStrategy } from '@angular/common';
 import { Injectable } from '@angular/core';
 import {
-  AggregateResult, CCFDatabase, CCFDatabaseOptions, Filter,
-  OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
+  AggregateResult,
+  CCFDatabase,
+  CCFDatabaseOptions,
+  Filter,
+  OntologyTreeModel,
+  SpatialEntity,
+  SpatialSceneNode,
+  TissueBlockResult,
 } from 'ccf-database';
 import { Remote, wrap } from 'comlink';
 import { from, Observable } from 'rxjs';

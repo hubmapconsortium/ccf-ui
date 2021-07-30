@@ -1,26 +1,26 @@
-import { GlobalConfigState } from 'ccf-shared';
-/* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable @typescript-eslint/naming-convention */
 import { Immutable } from '@angular-ru/common/typings';
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from 'ccf-body-ui';
+import { GlobalConfigState } from 'ccf-shared';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
-import { map, pluck, take, tap, filter, switchMap } from 'rxjs/operators';
+import { filter, map, pluck, switchMap, take, tap } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
 import { MetaData } from '../../models/meta-data';
-import { GLOBAL_CONFIG, GlobalConfig } from '../../services/config/config';
+import { GlobalConfig } from '../../services/config/config';
 import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
 import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/naming-convention */
 
 /**
  * Registration state model

@@ -4,7 +4,6 @@ import { Any } from '@angular-ru/common/typings';
 import { ChangeDetectionStrategy, Component, ElementRef, Injector, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Debounce } from '@ngxs-labs/data/decorators';
-import { Actions } from '@ngxs/store';
 import { SpatialEntityJsonLd } from 'ccf-body-ui';
 import { GlobalConfigState, TrackingPopupComponent, TrackingState } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
