@@ -33,10 +33,10 @@ export class AppComponent implements OnInit, OnChanges {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
 
   // Configuration Options
-  @Input() hubmapDataService = '';
-  @Input() hubmapDataUrl = '';
-  @Input() hubmapAssetUrl = '';
-  @Input() hubmapToken = '';
+  @Input() hubmapDataService: string;
+  @Input() hubmapDataUrl: string;
+  @Input() hubmapAssetUrl: string;
+  @Input() hubmapToken: string;
   @Input()
     get hubmapDataSources(): string[] { return this._hubmapDataSources; }
     set hubmapDataSources(datasSources: string[] | string) {
