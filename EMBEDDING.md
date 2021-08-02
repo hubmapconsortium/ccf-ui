@@ -1,4 +1,4 @@
-# Embedding the RUI
+# Embedding the CCF UIs
 
 ## Code
 
