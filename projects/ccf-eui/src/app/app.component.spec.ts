@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NgZone } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsDataInjector } from '@ngxs-labs/data/internals';
@@ -67,15 +67,14 @@ describe('AppComponent', () => {
       })
       .mock(AppComponent, {
         updateGlobalConfig: () => undefined
-      })
-      // Hacky way to get @Debounce to work
-      // @Debounce should be replaced with another implementation
-      // that does not depend on the state modules
-      .mock(NgxsDataInjector, {
-        ngZone: {
-          runOutsideAngular: (fn: () => void) => fn()
-        }
       });
+
+    // Hacky way to get @Debounce to work
+    // @Debounce should be replaced with another implementation
+    // that does not depend on the state modules
+    NgxsDataInjector.ngZone = {
+      runOutsideAngular: (fn: () => void) => fn()
+    } as NgZone;
   });
 
   it('should make the tracking popup on init', async () => {
