@@ -4,7 +4,7 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { sortBy } from 'lodash';
-import { filter, pluck, take, tap } from 'rxjs/operators';
+import { debounceTime, filter, pluck, take, tap } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -165,8 +165,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.referenceData = this.injector.get(ReferenceDataState);
 
     this.globalConfig.getProperty<NonNullable<GlobalConfig['organ']>>(['organ']).pipe(
-      take(1),
       filter(organ => !!organ),
+      take(1),
       tap(organConfig => {
         const organName = organConfig.name.toLowerCase();
         const organSide = organConfig.side;
@@ -178,14 +178,16 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
           organInfo = this.nameMatches(organName, organSide);
         }
         if (organInfo) {
-          setTimeout(() => {
-            this.ctx.patchState({
-              organ: organInfo,
-              sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
-              side: organInfo?.side?.toLowerCase() as 'left' | 'right'
-            });
-            this.onOrganIriChange();
-          }, 1000);
+          this.patchState({
+            organ: organInfo,
+            sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
+            side: organInfo?.side?.toLowerCase() as 'left' | 'right'
+          });
+          this.referenceData.state$.pipe(
+            debounceTime(500),
+            take(1),
+            tap(() => this.onOrganIriChange())
+          ).subscribe();
         }
       })
     ).subscribe();

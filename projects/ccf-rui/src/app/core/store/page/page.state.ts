@@ -1,14 +1,12 @@
-import { Immutable } from '@angular-ru/common/typings';
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
 import { GlobalConfigState } from 'ccf-shared';
-import { pluck } from 'rxjs/operators';
+import { pluck, take, tap } from 'rxjs/operators';
 
 import { GlobalConfig } from '../../services/config/config';
-import { ModelState } from './../model/model.state';
 
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -54,17 +52,13 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly useCancelRegistrationCallback$ = this.state$.pipe(pluck('useCancelRegistrationCallback'));
   readonly registrationCallbackSet$ = this.state$.pipe(pluck('registrationCallbackSet'));
 
-  private model: ModelState;
 
   /**
    * Creates an instance of page state.
    *
    * @param globalConfig The global configuration
    */
-  constructor(
-    private readonly injector: Injector,
-    private readonly globalConfig: GlobalConfigState<GlobalConfig>
-  ) {
+  constructor(private readonly globalConfig: GlobalConfigState<GlobalConfig>) {
     super();
   }
 
@@ -74,16 +68,14 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
-    // Injecting page and model states in the constructor breaks things!?
-    // Lazy load here
-    this.model = this.injector.get(ModelState);
-
-    const { globalConfig: { snapshot: { user, register, cancelRegistration } } } = this;
-    this.ctx.setState(patch<Immutable<PageStateModel>>({
-      registrationCallbackSet: !!(register),
-      useCancelRegistrationCallback: !!(cancelRegistration),
-      user: iif(!!user, user!)
-    }));
+    this.globalConfig.config$.pipe(
+      take(1),
+      tap(config => this.setState(patch({
+        registrationCallbackSet: !!config.register,
+        useCancelRegistrationCallback: !!config.cancelRegistration,
+        user: iif(!!config.user, config.user!)
+      })))
+    ).subscribe();
   }
 
   cancelRegistration(): void {
