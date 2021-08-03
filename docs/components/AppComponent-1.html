@@ -631,8 +631,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="188"
-                            class="link-to-prism">projects/ccf-rui/src/app/app.component.ts:188</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="191"
+                            class="link-to-prism">projects/ccf-rui/src/app/app.component.ts:191</a></div>
                 </td>
             </tr>
 
@@ -700,7 +700,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateGlobalConfig(useWindowConfig)</code>
+<code>updateGlobalConfig()</code>
                 </td>
             </tr>
 
@@ -724,39 +724,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>useWindowConfig</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>false</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -1610,81 +1579,81 @@ export class AppComponent implements OnDestroy, OnInit {
   /** Configuration Options **/
   @Input() baseHref: string;
   @Input()
-    get useDownload(): boolean | undefined { return this._useDownload; }
-    set useDownload(useDownload: string | boolean | undefined) {
-      if (typeof useDownload &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-        this._useDownload &#x3D; useDownload &#x3D;&#x3D;&#x3D; &#x27;&#x27; || useDownload.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
-      } else if (typeof useDownload &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27;) {
-        this._useDownload &#x3D; useDownload;
-        this.updateGlobalConfig();
-      }
+  get useDownload(): boolean | undefined { return this._useDownload; }
+  set useDownload(useDownload: string | boolean | undefined) {
+    if (typeof useDownload &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      this._useDownload &#x3D; useDownload &#x3D;&#x3D;&#x3D; &#x27;&#x27; || useDownload.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+    } else if (typeof useDownload &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27;) {
+      this._useDownload &#x3D; useDownload;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get user(): User { return this._user; }
-    set user(user: User | string) {
-      if (typeof user &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-        this._user &#x3D; JSON.parse(user);
-      } else {
-        this._user &#x3D; user;
-        this.updateGlobalConfig();
-      }
+  get user(): User { return this._user; }
+  set user(user: User | string) {
+    if (typeof user &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      this._user &#x3D; JSON.parse(user);
+    } else {
+      this._user &#x3D; user;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get organ(): GlobalConfig[&#x27;organ&#x27;] { return this._organ; }
-    set organ(organ: GlobalConfig[&#x27;organ&#x27;] | string) {
-      if (typeof organ &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-        this._organ &#x3D; JSON.parse(organ);
-      } else {
-        this._organ &#x3D; organ;
-        this.updateGlobalConfig();
-      }
+  get organ(): GlobalConfig[&#x27;organ&#x27;] { return this._organ; }
+  set organ(organ: GlobalConfig[&#x27;organ&#x27;] | string) {
+    if (typeof organ &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      this._organ &#x3D; JSON.parse(organ);
+    } else {
+      this._organ &#x3D; organ;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get editRegistration(): SpatialEntityJsonLd { return this._editRegistration; }
-    set editRegistration(editRegistration: SpatialEntityJsonLd | string) {
-      if (typeof editRegistration &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-        this._editRegistration &#x3D; JSON.parse(editRegistration);
-      } else {
-        this._editRegistration &#x3D; editRegistration;
-        this.updateGlobalConfig();
-      }
+  get editRegistration(): SpatialEntityJsonLd { return this._editRegistration; }
+  set editRegistration(editRegistration: SpatialEntityJsonLd | string) {
+    if (typeof editRegistration &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      this._editRegistration &#x3D; JSON.parse(editRegistration);
+    } else {
+      this._editRegistration &#x3D; editRegistration;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get register(): (data: unknown) &#x3D;&gt; void { return this._register; }
-    set register(register: Any) {
-      if (typeof register &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-        console.error(&#x27;RUI.register is unable to be set to a string. Expecting \&#x27;() &#x3D;&gt; void\&#x27; format.&#x27;);
-      } else {
-        this._register &#x3D; register;
-        this.updateGlobalConfig();
-      }
+  get register(): (data: unknown) &#x3D;&gt; void { return this._register; }
+  set register(register: Any) {
+    if (typeof register &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      console.error(&#x27;RUI.register is unable to be set to a string. Expecting \&#x27;() &#x3D;&gt; void\&#x27; format.&#x27;);
+    } else {
+      this._register &#x3D; register;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get fetchPreviousRegistrations(): () &#x3D;&gt; ObservableInput&lt;Record&lt;string, unknown&gt;[]&gt; { return this._fetchPreviousRegistrations; }
-    set fetchPreviousRegistrations(fetchPreviousRegistrations: Any) {
-      if (typeof fetchPreviousRegistrations &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-        console.error(&#x27;RUI.fetchPreviousRegistrations is unable to be set to a string.  Expecting \&#x27;() &#x3D;&gt; SpatialEntityJsonLD[]\&#x27; format.&#x27;);
-      } else {
-        this._fetchPreviousRegistrations &#x3D; fetchPreviousRegistrations;
-        this.updateGlobalConfig();
-      }
+  get fetchPreviousRegistrations(): () &#x3D;&gt; ObservableInput&lt;Record&lt;string, unknown&gt;[]&gt; { return this._fetchPreviousRegistrations; }
+  set fetchPreviousRegistrations(fetchPreviousRegistrations: Any) {
+    if (typeof fetchPreviousRegistrations &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      console.error(&#x27;RUI.fetchPreviousRegistrations is unable to be set to a string.  Expecting \&#x27;() &#x3D;&gt; SpatialEntityJsonLD[]\&#x27; format.&#x27;);
+    } else {
+      this._fetchPreviousRegistrations &#x3D; fetchPreviousRegistrations;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get cancelRegistration(): () &#x3D;&gt; void { return this._cancelRegistration; }
-    set cancelRegistration(cancelRegistration: Any) {
-      if (typeof cancelRegistration &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-        console.error(&#x27;RUI.cancelRegistration is unable to be set to a string.  Expecting \&#x27;() &#x3D;&gt; void\&#x27; format.&#x27;);
-      } else {
-        this._cancelRegistration &#x3D; cancelRegistration;
-        this.updateGlobalConfig();
-      }
+  get cancelRegistration(): () &#x3D;&gt; void { return this._cancelRegistration; }
+  set cancelRegistration(cancelRegistration: Any) {
+    if (typeof cancelRegistration &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      console.error(&#x27;RUI.cancelRegistration is unable to be set to a string.  Expecting \&#x27;() &#x3D;&gt; void\&#x27; format.&#x27;);
+    } else {
+      this._cancelRegistration &#x3D; cancelRegistration;
+      this.updateGlobalConfig();
     }
+  }
 
   /** Organs to be displayed in the organ selector */
   organList &#x3D; RUI_ORGANS;
@@ -1723,21 +1692,22 @@ export class AppComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     const snackBar &#x3D; this.snackbar.openFromComponent(TrackingPopupComponent, {
-      data: {preClose: () &#x3D;&gt; {snackBar.dismiss();} },
+      data: { preClose: () &#x3D;&gt; { snackBar.dismiss(); } },
       duration: this.tracking.snapshot.allowTelemetry &#x3D;&#x3D;&#x3D; undefined ? Infinity : 3000
     });
 
-    this.updateGlobalConfig(true);
+    this.updateGlobalConfig();
   }
 
   @Debounce(20)
-  updateGlobalConfig(useWindowConfig &#x3D; false): void {
+  updateGlobalConfig(): void {
     const { useDownload, user, organ, editRegistration, register, fetchPreviousRegistrations, cancelRegistration } &#x3D; this;
     const windowConfigKey &#x3D; &#x27;ruiConfig&#x27;;
+    const global &#x3D; globalThis as unknown as Record&lt;string, GlobalConfig&gt;;
     let config: GlobalConfig &#x3D; {} as GlobalConfig;
 
-    if (useWindowConfig &amp;&amp; windowConfigKey in globalThis) {
-      config &#x3D; (globalThis as Record&lt;string, unknown&gt;)[windowConfigKey] as GlobalConfig;
+    if (typeof global[windowConfigKey] &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
+      config &#x3D; { ...config, ...global[windowConfigKey] };
     }
 
     const inputs &#x3D; {
@@ -1756,7 +1726,9 @@ export class AppComponent implements OnDestroy, OnInit {
       }
     }
 
-    this.globalConfig.patchConfig(config);
+    if (Object.keys(config).length &gt; 0) {
+      this.globalConfig.patchConfig(config);
+    }
   }
 
   /**

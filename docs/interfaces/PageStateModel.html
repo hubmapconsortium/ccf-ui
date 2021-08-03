@@ -273,17 +273,15 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
-import { Injectable, Injector } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { iif, patch } from &#x27;@ngxs/store/operators&#x27;;
 import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
-import { pluck } from &#x27;rxjs/operators&#x27;;
+import { pluck, take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
-import { ModelState } from &#x27;./../model/model.state&#x27;;
 
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -329,17 +327,13 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
   readonly useCancelRegistrationCallback$ &#x3D; this.state$.pipe(pluck(&#x27;useCancelRegistrationCallback&#x27;));
   readonly registrationCallbackSet$ &#x3D; this.state$.pipe(pluck(&#x27;registrationCallbackSet&#x27;));
 
-  private model: ModelState;
 
   /**
    * Creates an instance of page state.
    *
    * @param globalConfig The global configuration
    */
-  constructor(
-    private readonly injector: Injector,
-    private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
-  ) {
+  constructor(private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;) {
     super();
   }
 
@@ -349,16 +343,14 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
-    // Injecting page and model states in the constructor breaks things!?
-    // Lazy load here
-    this.model &#x3D; this.injector.get(ModelState);
-
-    const { globalConfig: { snapshot: { user, register, cancelRegistration } } } &#x3D; this;
-    this.ctx.setState(patch&lt;Immutable&lt;PageStateModel&gt;&gt;({
-      registrationCallbackSet: !!(register),
-      useCancelRegistrationCallback: !!(cancelRegistration),
-      user: iif(!!user, user!)
-    }));
+    this.globalConfig.config$.pipe(
+      take(1),
+      tap(config &#x3D;&gt; this.setState(patch({
+        registrationCallbackSet: !!config.register,
+        useCancelRegistrationCallback: !!config.cancelRegistration,
+        user: iif(!!config.user, config.user!)
+      })))
+    ).subscribe();
   }
 
   cancelRegistration(): void {
