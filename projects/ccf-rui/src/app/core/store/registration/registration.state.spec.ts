@@ -5,7 +5,7 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import * as FileSaver from 'file-saver';
 import { Observable, ReplaySubject } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { skip, take } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -227,7 +227,7 @@ describe('RegistrationState', () => {
       const spy = jasmine.createSpy().and.returnValue([[reg2]]);
       TestBed.inject(GlobalConfigState).setConfig({ fetchPreviousRegistrations: spy });
 
-      const value = await nextValue(state.previousRegistrations$);
+      const value = await nextValue(state.previousRegistrations$.pipe(skip(1)));
       expect(value).toEqual(jasmine.arrayWithExactContents([reg1, reg2]));
     });
   });
