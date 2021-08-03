@@ -46,6 +46,10 @@ const testPage: Immutable<PageStateModel> = {
   registrationCallbackSet: false
 };
 
+function wait(duration = 0): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, duration));
+}
+
 function nextValue<T>(obs: Observable<T>): Promise<T> {
   return obs.pipe(take(1)).toPromise();
 }
@@ -206,13 +210,14 @@ describe('RegistrationState', () => {
     });
 
     it('emits arrays of previous registration objects', async () => {
+      TestBed.inject(GlobalConfigState).setConfig({});
       const value = await nextValue(state.previousRegistrations$);
       expect(value).toEqual([reg1]);
     });
 
     it('calls fetchPreviousRegistrations if available', async () => {
       const spy = jasmine.createSpy().and.returnValue([[]]);
-      patchStore('globalConfig', { fetchPreviousRegistrations: spy });
+      TestBed.inject(GlobalConfigState).setConfig({ fetchPreviousRegistrations: spy });
 
       await nextValue(state.previousRegistrations$);
       expect(spy).toHaveBeenCalled();
@@ -220,7 +225,7 @@ describe('RegistrationState', () => {
 
     it('combines the results from fetchPreviousRegistrations and local registrations', async () => {
       const spy = jasmine.createSpy().and.returnValue([[reg2]]);
-      patchStore('globalConfig', { fetchPreviousRegistrations: spy });
+      TestBed.inject(GlobalConfigState).setConfig({ fetchPreviousRegistrations: spy });
 
       const value = await nextValue(state.previousRegistrations$);
       expect(value).toEqual(jasmine.arrayWithExactContents([reg1, reg2]));
@@ -277,7 +282,8 @@ describe('RegistrationState', () => {
       expect(callback).toHaveBeenCalled();
     });
 
-    it('uses download when the state useRegistrationCallback is false and no argument is provided', () => {
+    it('uses download when the state useRegistrationCallback is false and no argument is provided', async () => {
+      patchStore('registration', { useRegistrationCallback: false });
       state.register();
       expect(download).toHaveBeenCalled();
     });

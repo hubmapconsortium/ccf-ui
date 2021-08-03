@@ -16,7 +16,7 @@ import { distinctUntilChanged, pluck, shareReplay, skip } from 'rxjs/operators';
 export class GlobalConfigState<T> extends NgxsImmutableDataRepository<T> {
   @Computed()
   get config$(): Observable<Immutable<T>> {
-    return this.state$.pipe(skip(1));
+    return this.state$.pipe(skip(1), shareReplay(1));
   }
 
   setConfig(config: T): void {
