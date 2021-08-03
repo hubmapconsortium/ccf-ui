@@ -33,81 +33,81 @@ export class AppComponent implements OnDestroy, OnInit {
   /** Configuration Options **/
   @Input() baseHref: string;
   @Input()
-    get useDownload(): boolean | undefined { return this._useDownload; }
-    set useDownload(useDownload: string | boolean | undefined) {
-      if (typeof useDownload === 'string') {
-        this._useDownload = useDownload === '' || useDownload.toLowerCase() === 'true';
-      } else if (typeof useDownload === 'boolean') {
-        this._useDownload = useDownload;
-        this.updateGlobalConfig();
-      }
+  get useDownload(): boolean | undefined { return this._useDownload; }
+  set useDownload(useDownload: string | boolean | undefined) {
+    if (typeof useDownload === 'string') {
+      this._useDownload = useDownload === '' || useDownload.toLowerCase() === 'true';
+    } else if (typeof useDownload === 'boolean') {
+      this._useDownload = useDownload;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get user(): User { return this._user; }
-    set user(user: User | string) {
-      if (typeof user === 'string') {
-        this._user = JSON.parse(user);
-      } else {
-        this._user = user;
-        this.updateGlobalConfig();
-      }
+  get user(): User { return this._user; }
+  set user(user: User | string) {
+    if (typeof user === 'string') {
+      this._user = JSON.parse(user);
+    } else {
+      this._user = user;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get organ(): GlobalConfig['organ'] { return this._organ; }
-    set organ(organ: GlobalConfig['organ'] | string) {
-      if (typeof organ === 'string') {
-        this._organ = JSON.parse(organ);
-      } else {
-        this._organ = organ;
-        this.updateGlobalConfig();
-      }
+  get organ(): GlobalConfig['organ'] { return this._organ; }
+  set organ(organ: GlobalConfig['organ'] | string) {
+    if (typeof organ === 'string') {
+      this._organ = JSON.parse(organ);
+    } else {
+      this._organ = organ;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get editRegistration(): SpatialEntityJsonLd { return this._editRegistration; }
-    set editRegistration(editRegistration: SpatialEntityJsonLd | string) {
-      if (typeof editRegistration === 'string') {
-        this._editRegistration = JSON.parse(editRegistration);
-      } else {
-        this._editRegistration = editRegistration;
-        this.updateGlobalConfig();
-      }
+  get editRegistration(): SpatialEntityJsonLd { return this._editRegistration; }
+  set editRegistration(editRegistration: SpatialEntityJsonLd | string) {
+    if (typeof editRegistration === 'string') {
+      this._editRegistration = JSON.parse(editRegistration);
+    } else {
+      this._editRegistration = editRegistration;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get register(): (data: unknown) => void { return this._register; }
-    set register(register: Any) {
-      if (typeof register === 'string') {
-        console.error('RUI.register is unable to be set to a string. Expecting \'() => void\' format.');
-      } else {
-        this._register = register;
-        this.updateGlobalConfig();
-      }
+  get register(): (data: unknown) => void { return this._register; }
+  set register(register: Any) {
+    if (typeof register === 'string') {
+      console.error('RUI.register is unable to be set to a string. Expecting \'() => void\' format.');
+    } else {
+      this._register = register;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get fetchPreviousRegistrations(): () => ObservableInput<Record<string, unknown>[]> { return this._fetchPreviousRegistrations; }
-    set fetchPreviousRegistrations(fetchPreviousRegistrations: Any) {
-      if (typeof fetchPreviousRegistrations === 'string') {
-        console.error('RUI.fetchPreviousRegistrations is unable to be set to a string.  Expecting \'() => SpatialEntityJsonLD[]\' format.');
-      } else {
-        this._fetchPreviousRegistrations = fetchPreviousRegistrations;
-        this.updateGlobalConfig();
-      }
+  get fetchPreviousRegistrations(): () => ObservableInput<Record<string, unknown>[]> { return this._fetchPreviousRegistrations; }
+  set fetchPreviousRegistrations(fetchPreviousRegistrations: Any) {
+    if (typeof fetchPreviousRegistrations === 'string') {
+      console.error('RUI.fetchPreviousRegistrations is unable to be set to a string.  Expecting \'() => SpatialEntityJsonLD[]\' format.');
+    } else {
+      this._fetchPreviousRegistrations = fetchPreviousRegistrations;
+      this.updateGlobalConfig();
     }
+  }
 
   @Input()
-    get cancelRegistration(): () => void { return this._cancelRegistration; }
-    set cancelRegistration(cancelRegistration: Any) {
-      if (typeof cancelRegistration === 'string') {
-        console.error('RUI.cancelRegistration is unable to be set to a string.  Expecting \'() => void\' format.');
-      } else {
-        this._cancelRegistration = cancelRegistration;
-        this.updateGlobalConfig();
-      }
+  get cancelRegistration(): () => void { return this._cancelRegistration; }
+  set cancelRegistration(cancelRegistration: Any) {
+    if (typeof cancelRegistration === 'string') {
+      console.error('RUI.cancelRegistration is unable to be set to a string.  Expecting \'() => void\' format.');
+    } else {
+      this._cancelRegistration = cancelRegistration;
+      this.updateGlobalConfig();
     }
+  }
 
   /** Organs to be displayed in the organ selector */
   organList = RUI_ORGANS;
@@ -146,21 +146,22 @@ export class AppComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
-      data: {preClose: () => {snackBar.dismiss();} },
+      data: { preClose: () => { snackBar.dismiss(); } },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
 
-    this.updateGlobalConfig(true);
+    this.updateGlobalConfig();
   }
 
   @Debounce(20)
-  updateGlobalConfig(useWindowConfig = false): void {
+  updateGlobalConfig(): void {
     const { useDownload, user, organ, editRegistration, register, fetchPreviousRegistrations, cancelRegistration } = this;
     const windowConfigKey = 'ruiConfig';
+    const global = globalThis as unknown as Record<string, GlobalConfig>;
     let config: GlobalConfig = {} as GlobalConfig;
 
-    if (useWindowConfig && windowConfigKey in globalThis) {
-      config = (globalThis as Record<string, unknown>)[windowConfigKey] as GlobalConfig;
+    if (typeof global[windowConfigKey] === 'object') {
+      config = { ...config, ...global[windowConfigKey] };
     }
 
     const inputs = {
@@ -179,7 +180,9 @@ export class AppComponent implements OnDestroy, OnInit {
       }
     }
 
-    this.globalConfig.patchConfig(config);
+    if (Object.keys(config).length > 0) {
+      this.globalConfig.patchConfig(config);
+    }
   }
 
   /**

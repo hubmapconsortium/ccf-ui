@@ -1,5 +1,9 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { combineLatest } from 'rxjs';
+import { debounceTime, take, tap } from 'rxjs/operators';
+
+import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
 import { RegistrationContentComponent } from '../registration-content/registration-content.component';
 
@@ -20,15 +24,27 @@ export class RegistrationModalComponent implements OnInit {
    *
    * @param dialog Dialog for the modal
    */
-  constructor(public dialog: MatDialog, private pageState: PageState) {}
+  constructor(
+    public dialog: MatDialog,
+    private readonly page: PageState,
+    private readonly model: ModelState
+  ) {}
 
   /**
    * Opens the dialog on startup (but not if cancel registration callback is set)
    */
   ngOnInit(): void {
-    if (!this.pageState.snapshot.registrationCallbackSet) {
-      this.openDialog();
-    }
+    combineLatest([this.page.user$, this.model.organ$]).pipe(
+      debounceTime(500),
+      take(1),
+      tap(([user, organ]) => {
+        if (user.firstName !== '' && user.lastName !== '' && organ.src !== '') {
+          return;
+        }
+
+        this.openDialog();
+      })
+    ).subscribe();
   }
 
   /**
@@ -40,4 +56,3 @@ export class RegistrationModalComponent implements OnInit {
     });
   }
 }
-

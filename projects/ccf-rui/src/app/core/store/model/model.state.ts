@@ -4,7 +4,8 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { sortBy } from 'lodash';
-import { filter, pluck, take, tap } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import { debounceTime, filter, pluck, switchMap, take, tap } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -165,9 +166,9 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.referenceData = this.injector.get(ReferenceDataState);
 
     this.globalConfig.getProperty<NonNullable<GlobalConfig['organ']>>(['organ']).pipe(
-      take(1),
       filter(organ => !!organ),
-      tap(organConfig => {
+      take(1),
+      switchMap(organConfig => {
         const organName = organConfig.name.toLowerCase();
         const organSide = organConfig.side;
         const ontologyId = organConfig.ontologyId;
@@ -178,15 +179,18 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
           organInfo = this.nameMatches(organName, organSide);
         }
         if (organInfo) {
-          setTimeout(() => {
-            this.ctx.patchState({
-              organ: organInfo,
-              sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
-              side: organInfo?.side?.toLowerCase() as 'left' | 'right'
-            });
-            this.onOrganIriChange();
-          }, 1000);
+          this.ctx.patchState({
+            organ: organInfo,
+            sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
+            side: organInfo?.side?.toLowerCase() as 'left' | 'right'
+          });
+          return this.referenceData.state$.pipe(
+            debounceTime(500),
+            take(1),
+            tap(() => this.onOrganIriChange())
+          );
         }
+        return EMPTY;
       })
     ).subscribe();
   }
