@@ -7,8 +7,8 @@ import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from 'ccf-body-ui';
 import { GlobalConfigState } from 'ccf-shared';
 import { saveAs } from 'file-saver';
-import { combineLatest, Observable } from 'rxjs';
-import { filter, map, pluck, switchMap, take, tap } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { filter, map, pluck, switchMap, take, tap, timeoutWith } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
@@ -81,9 +81,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   get previousRegistrations$(): Observable<Record<string, unknown>[]> {
     const { globalConfig, state$ } = this;
     const regs = state$.pipe(pluck('registrations'));
-    const fetched = globalConfig.getProperty<() => Observable<Record<string, unknown>[]>>(
-      ['fetchPreviousRegistrations']
-    ).pipe(
+    const fetched = globalConfig.config$.pipe(
+      pluck('fetchPreviousRegistrations'),
+      timeoutWith(1000, of(undefined)),
       switchMap(fetch => fetch?.() ?? [[]])
     );
 
