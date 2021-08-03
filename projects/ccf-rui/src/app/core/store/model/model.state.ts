@@ -4,7 +4,8 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { sortBy } from 'lodash';
-import { debounceTime, filter, pluck, take, tap } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import { debounceTime, filter, pluck, switchMap, take, tap } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -167,7 +168,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.globalConfig.getProperty<NonNullable<GlobalConfig['organ']>>(['organ']).pipe(
       filter(organ => !!organ),
       take(1),
-      tap(organConfig => {
+      switchMap(organConfig => {
         const organName = organConfig.name.toLowerCase();
         const organSide = organConfig.side;
         const ontologyId = organConfig.ontologyId;
@@ -178,17 +179,18 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
           organInfo = this.nameMatches(organName, organSide);
         }
         if (organInfo) {
-          this.patchState({
+          this.ctx.patchState({
             organ: organInfo,
             sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
             side: organInfo?.side?.toLowerCase() as 'left' | 'right'
           });
-          this.referenceData.state$.pipe(
+          return this.referenceData.state$.pipe(
             debounceTime(500),
             take(1),
             tap(() => this.onOrganIriChange())
-          ).subscribe();
+          );
         }
+        return EMPTY;
       })
     ).subscribe();
   }

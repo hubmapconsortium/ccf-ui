@@ -30,7 +30,10 @@ describe('ModelState', () => {
     mockDataSource = jasmine.createSpyObj<ReferenceDataState>('ReferenceDataState', ['getReferenceOrganIri']);
     mockDataSource.getReferenceOrganIri.and.returnValue(undefined);
     mockGlobalConfig = jasmine.createSpyObj<GlobalConfig>('GlobalConfig', ['organ']);
-    mockGlobalConfig.organ = {name: 'kidney', ontologyId: 'http://purl.obolibrary.org/obo/UBERON_0004538', side: 'left', sex: 'female'};
+    mockGlobalConfig.organ = {
+      name: 'kidney', ontologyId: 'http://purl.obolibrary.org/obo/UBERON_0004538',
+      side: 'left', sex: 'female'
+    };
 
     // NOTE: No need for shallow-render since
     // the setup is so simple. It would also require
@@ -101,12 +104,12 @@ describe('ModelState', () => {
 
   it('has the latest organ', async () => {
     const value = await nextValue(state.organ$);
-    expect(value?.src).toEqual('app:kidney');
+    expect(value?.src).toEqual('app:kidney-left');
   });
 
   it('has the latest sex', async () => {
     const value = await nextValue(state.sex$);
-    expect(value).toEqual(undefined);
+    expect(value).toEqual('female');
   });
 
   it('has the latest side', async () => {
@@ -130,7 +133,7 @@ describe('ModelState', () => {
   });
 
   it('updates the block size', async () => {
-    const newBlockSize = { x: 1, y: 2, z: 3};
+    const newBlockSize = { x: 1, y: 2, z: 3 };
     state.setBlockSize(newBlockSize);
 
     const value = await nextValue(state.blockSize$);
@@ -138,7 +141,7 @@ describe('ModelState', () => {
   });
 
   it('updates the rotation', async () => {
-    const newRotation = { x: 1, y: 2, z: 3};
+    const newRotation = { x: 1, y: 2, z: 3 };
     state.setRotation(newRotation);
 
     const value = await nextValue(state.rotation$);
@@ -201,7 +204,7 @@ describe('ModelState', () => {
   });
 
   it('updates extraction sites', async () => {
-    const newSites = [{id: 2}] as VisibilityItem[];
+    const newSites = [{ id: 2 }] as VisibilityItem[];
     state.setExtractionSites(newSites);
 
     const value = await nextValue(state.extractionSites$);
@@ -209,7 +212,7 @@ describe('ModelState', () => {
   });
 
   it('updates anatomical structures', async () => {
-    const newStructures = [{id: 3}] as VisibilityItem[];
+    const newStructures = [{ id: 3 }] as VisibilityItem[];
     state.setAnatomicalStructures(newStructures);
 
     const value = await nextValue(state.anatomicalStructures$);
@@ -217,7 +220,7 @@ describe('ModelState', () => {
   });
 
   it('updates extraction sets', async () => {
-    const newSets = [{ name: '', organ: '', sites: [{id: 1}] }] as ExtractionSet[];
+    const newSets = [{ name: '', organ: '', sites: [{ id: 1 }] }] as ExtractionSet[];
     state.setExtractionSets(newSets);
 
     const value = await nextValue(state.extractionSets$);
