@@ -5,7 +5,7 @@ import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { ImmutablePatchValue } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, pluck, shareReplay, skip } from 'rxjs/operators';
+import { distinctUntilChanged, filter, pluck, shareReplay } from 'rxjs/operators';
 
 
 @StateRepository()
@@ -16,7 +16,10 @@ import { distinctUntilChanged, pluck, shareReplay, skip } from 'rxjs/operators';
 export class GlobalConfigState<T> extends NgxsImmutableDataRepository<T> {
   @Computed()
   get config$(): Observable<Immutable<T>> {
-    return this.state$.pipe(skip(1), shareReplay(1));
+    return this.state$.pipe(
+      filter(config => config != null && Object.keys(config).length > 0),
+      shareReplay(1)
+    );
   }
 
   setConfig(config: T): void {
