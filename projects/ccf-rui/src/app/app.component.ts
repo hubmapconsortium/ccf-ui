@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable no-underscore-dangle */
 import { Any } from '@angular-ru/common/typings';
-import { ChangeDetectionStrategy, Component, ElementRef, Injector, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, Input, OnChanges, OnDestroy, OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Debounce } from '@ngxs-labs/data/decorators';
 import { SpatialEntityJsonLd } from 'ccf-body-ui';
@@ -11,6 +14,7 @@ import { ObservableInput, Subscription } from 'rxjs';
 
 import { GlobalConfig } from './core/services/config/config';
 import { ThemingService } from './core/services/theming/theming.service';
+import { IconRegistryState } from './core/store/icon-registry/icon-registry.state';
 import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
 import { PageState } from './core/store/page/page.state';
 
@@ -28,10 +32,11 @@ export interface User {
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnDestroy, OnInit {
+export class AppComponent implements OnDestroy, OnInit, OnChanges {
 
   /** Configuration Options **/
   @Input() baseHref: string;
+
   @Input()
   get useDownload(): boolean | undefined { return this._useDownload; }
   set useDownload(useDownload: string | boolean | undefined) {
@@ -118,6 +123,8 @@ export class AppComponent implements OnDestroy, OnInit {
   /** False until the initial registration modal is closed */
   registrationStarted = false;
 
+  initialized = false;
+
   /** Clean internal variables, for use with configuration options. **/
   private _useDownload: boolean | undefined;
   private _user: User;
@@ -133,7 +140,8 @@ export class AppComponent implements OnDestroy, OnInit {
   constructor(
     readonly model: ModelState, readonly page: PageState, ga: GoogleAnalyticsService,
     readonly tracking: TrackingState, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
-    el: ElementRef<unknown>, injector: Injector, private readonly globalConfig: GlobalConfigState<GlobalConfig>
+    el: ElementRef<unknown>, injector: Injector, private readonly globalConfig: GlobalConfigState<GlobalConfig>,
+    cdr: ChangeDetectorRef, ico: IconRegistryState
   ) {
     theming.initialize(el, injector);
     this.subscriptions.add(
@@ -142,6 +150,10 @@ export class AppComponent implements OnDestroy, OnInit {
     this.subscriptions.add(
       page.registrationStarted$.subscribe((registrationStarted) => { this.registrationStarted = registrationStarted; })
     );
+    ico.initialized.then(() => {
+      this.initialized = true;
+      cdr.markForCheck();
+    });
   }
 
   ngOnInit(): void {
@@ -153,9 +165,17 @@ export class AppComponent implements OnDestroy, OnInit {
     this.updateGlobalConfig();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.updateGlobalConfig();
+  }
+
   @Debounce(20)
   updateGlobalConfig(): void {
-    const { useDownload, user, organ, editRegistration, register, fetchPreviousRegistrations, cancelRegistration } = this;
+    const {
+      baseHref, useDownload, user, organ,
+      editRegistration, register, fetchPreviousRegistrations,
+      cancelRegistration
+    } = this;
     const windowConfigKey = 'ruiConfig';
     const global = globalThis as unknown as Record<string, GlobalConfig>;
     let config: GlobalConfig = {} as GlobalConfig;
@@ -165,6 +185,7 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
     const inputs = {
+      baseHref,
       useDownload,
       user,
       organ,

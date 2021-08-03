@@ -5,7 +5,8 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
-import { map, take, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map, pluck, take, tap, timeoutWith } from 'rxjs/operators';
 
 import { GlobalConfig } from '../../services/config/config';
 import { DEFAULT_ICONS } from './default-icons';
@@ -44,6 +45,8 @@ export interface IconDefinition {
 @State<void>({ name: 'iconRegistry' })
 @Injectable()
 export class IconRegistryState extends NgxsDataRepository<void> {
+  readonly initialized: Promise<void>;
+
   /**
    * Creates an instance of icon registry state.
    *
@@ -55,9 +58,14 @@ export class IconRegistryState extends NgxsDataRepository<void> {
               globalConfig: GlobalConfigState<GlobalConfig>) {
     super();
 
-    globalConfig.getProperty<string>(['baseHref']).pipe(
+    let initializationDone: (value: void) => void;
+    this.initialized = new Promise(r => initializationDone = r);
+
+    globalConfig.config$.pipe(
+      pluck('baseHref'),
       map(baseHref => baseHref ?? ''),
       take(1),
+      timeoutWith(200, of('')),
       tap(baseHref => {
         for (const { name, namespace, url, html } of DEFAULT_ICONS) {
           const safeDef: IconDefinition = {
@@ -68,7 +76,8 @@ export class IconRegistryState extends NgxsDataRepository<void> {
 
           this.registerIconImpl(safeDef);
         }
-      })
+      }),
+      tap(() => initializationDone())
     ).subscribe();
   }
 

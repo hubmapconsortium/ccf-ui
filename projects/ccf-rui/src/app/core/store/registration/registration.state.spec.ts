@@ -210,7 +210,7 @@ describe('RegistrationState', () => {
     });
 
     it('emits arrays of previous registration objects', async () => {
-      TestBed.inject(GlobalConfigState).setConfig({});
+      TestBed.inject(GlobalConfigState).setConfig({ fetchPreviousRegistrations: undefined });
       const value = await nextValue(state.previousRegistrations$);
       expect(value).toEqual([reg1]);
     });
