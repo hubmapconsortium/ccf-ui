@@ -326,7 +326,10 @@ export class HuBMAPTissueBlock {
   }
 
   getDatasetThumbnail(dataset: JsonDict, assetsApi: string, serviceToken?: string): string | undefined {
-    if (dataset.group_uuid === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a') { // TMC-Vanderbilt
+    if (dataset.thumbnail_file) {
+      const thumbnailFile = dataset.thumbnail_file as JsonDict;
+      return `${assetsApi}/${thumbnailFile.file_uuid}/${thumbnailFile.filename}` + (serviceToken ? `?token=${serviceToken}` : '');
+    } else if (dataset.group_uuid === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a') { // TMC-Vanderbilt
       const tiffs = (get(dataset, 'metadata.files', []) as { rel_path: string }[])
         .filter(f => /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
         .filter(f => !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path))
