@@ -10,16 +10,17 @@ To embed *CCF-RUI* the following code snippet should be used.
 <head>
   <meta charset="utf-8">
   <title>HuBMAP CCF Registration User Interface (CCF-RUI)</title>
-  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
-  <script src="wc.js" async></script>
+  <link href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@2/rui/styles.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@2/rui/wc.js" defer></script>
 </head>
 <body class="mat-typography">
-  <ccf-rui></ccf-rui>
+  <ccf-rui
+    base-href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@2/rui/"
+  ></ccf-rui>
 </body>
 </html>
 ```
@@ -63,7 +64,7 @@ Full RUI Example
 <head>
   <meta charset="utf-8">
   <title>HuBMAP CCF Registration User Interface (CCF-RUI)</title>
-  <base href="/">
+  <base href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@2/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
@@ -181,6 +182,7 @@ To embed *CCF-EUI* the following code snippet should be used.
 ```js
 window.addEventListener('DOMContentLoaded', () => {
   const eui = document.querySelector('ccf-eui');
+  eui.dataSources = ['https://.....jsonld', 'https://.....jsonld'];
   eui.hubmapDataService = 'search-api';
   eui.hubmapPortalUrl = 'https://.....';
   eui.hubmapDataUrl = 'https://.....';
@@ -230,7 +232,7 @@ Full RUI Example
 The following options are available for configuration
 
 - `ccfOwlUrl: string` - A url to load data from.
-- `ccfContextUrl: string` - Context
+- `ccfContextUrl: string` - Context.
 - `dataSources: string[]` - A list of data sources (in .jsonld format)
 - `hubmapDataService: 'static' | 'search-api'` - Data service type.
 - `hubmapPortalUrl: string` - Hubmap Portal url.
