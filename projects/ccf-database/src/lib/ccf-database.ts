@@ -18,7 +18,7 @@ import { SpatialEntity } from './spatial-types';
 
 /** Database initialization options. */
 export interface CCFDatabaseOptions {
-  /** An url to load data from. */
+  /** A url to load data from. */
   ccfOwlUrl: string;
   /** Context. */
   ccfContextUrl: string;
