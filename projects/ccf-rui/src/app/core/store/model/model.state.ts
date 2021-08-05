@@ -3,9 +3,10 @@ import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorator
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
+import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
 import { EMPTY } from 'rxjs';
-import { debounceTime, filter, pluck, switchMap, take, tap } from 'rxjs/operators';
+import { debounceTime, pluck, switchMap, take, tap } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -165,8 +166,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
     this.referenceData = this.injector.get(ReferenceDataState);
 
-    this.globalConfig.getProperty<NonNullable<GlobalConfig['organ']>>(['organ']).pipe(
-      filter(organ => !!organ),
+    this.globalConfig.getOption('organ').pipe(
+      filterNulls(),
       take(1),
       switchMap(organConfig => {
         const organName = organConfig.name.toLowerCase();
@@ -197,7 +198,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
   idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
     return ALL_ORGANS.find((o) =>
-      ontologyId && o.id === ontologyId ?  (o.side ? o.side === organSide : true) : false
+      ontologyId && o.id === ontologyId ? (o.side ? o.side === organSide : true) : false
     );
   }
 
