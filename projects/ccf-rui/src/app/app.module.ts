@@ -1,5 +1,5 @@
+import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { NgModule, DoBootstrap, Injector } from '@angular/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrganSelectorModule, TrackingPopupModule } from 'ccf-shared';
 
+import { AppWebComponentComponent } from './app-web-component.component';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DEFAULT_THEME } from './core/services/theming/theming.service';
@@ -16,6 +17,7 @@ import { LeftSidebarModule } from './modules/left-sidebar/left-sidebar.module';
 import { RegistrationModalModule } from './modules/registration-modal/registration-modal/registration-modal.module';
 import { RightSidebarModule } from './modules/right-sidebar/right-sidebar.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
+
 
 @NgModule({
   imports: [
@@ -33,7 +35,7 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
     TrackingPopupModule,
     MatSnackBarModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, AppWebComponentComponent],
   providers: [
     {
       provide: DEFAULT_THEME,
@@ -48,13 +50,13 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
       }
     }
   ],
-  entryComponents: [AppComponent]
+  entryComponents: [AppComponent, AppWebComponentComponent]
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }
 
   ngDoBootstrap() {
-    const appElement = createCustomElement(AppComponent, {
+    const appElement = createCustomElement(AppWebComponentComponent, {
       injector: this.injector
     });
 
