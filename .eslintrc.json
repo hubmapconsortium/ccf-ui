@@ -46,6 +46,7 @@
             "accessibility": "explicit"
           }
         ],
+        "@typescript-eslint/member-ordering": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-require-imports": "error",

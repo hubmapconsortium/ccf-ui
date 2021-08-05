@@ -2,27 +2,28 @@ import { Immutable } from '@angular-ru/common/typings';
 import { Injectable } from '@angular/core';
 import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
-import { ImmutablePatchValue } from '@ngxs-labs/data/typings';
+import { ImmutablePatchValue, ImmutableStateValue } from '@ngxs-labs/data/typings';
 import { State } from '@ngxs/store';
+import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, filter, pluck, shareReplay } from 'rxjs/operators';
+import { distinctUntilChanged, pluck, shareReplay } from 'rxjs/operators';
 
 
 @StateRepository()
 @State({
-  name: 'globalConfig'
+  name: 'globalConfig',
+  defaults: null
 })
 @Injectable()
 export class GlobalConfigState<T> extends NgxsImmutableDataRepository<T> {
+  private readonly optionCache = new Map<string, Observable<unknown>>();
+
   @Computed()
   get config$(): Observable<Immutable<T>> {
-    return this.state$.pipe(
-      filter(config => config != null && Object.keys(config).length > 0),
-      shareReplay(1)
-    );
+    return this.state$.pipe(filterNulls(), shareReplay(1));
   }
 
-  setConfig(config: T): void {
+  setConfig(config: ImmutableStateValue<T>): void {
     this.setState(config);
   }
 
@@ -36,5 +37,29 @@ export class GlobalConfigState<T> extends NgxsImmutableDataRepository<T> {
       distinctUntilChanged(),
       shareReplay(1)
     );
+  }
+
+  getOption<K1 extends keyof T>(k1: K1): Observable<T[K1]>;
+  getOption<K1 extends keyof T, K2 extends keyof T[K1]>(k1: K1, k2: K2): Observable<T[K1][K2]>;
+  getOption<K1 extends keyof T, K2 extends keyof T[K1], K3 extends keyof T[K1][K2]>(k1: K1, k2: K2, k3: K3): Observable<T[K1][K2][K3]>;
+  getOption<R>(...path: (string | number)[]): Observable<R>;
+  getOption(...path: (string | number)[]): Observable<unknown> {
+    const key = this.getPathKey(path);
+    if (this.optionCache.has(key)) {
+      return this.optionCache.get(key)!;
+    }
+
+    const obs = this.config$.pipe(
+      pluck(...(path as string[])),
+      distinctUntilChanged(),
+      shareReplay(1)
+    );
+
+    this.optionCache.set(key, obs);
+    return obs;
+  }
+
+  private getPathKey(path: (string | number)[]): string {
+    return `${path.length}:${path.join('.')}`;
   }
 }
