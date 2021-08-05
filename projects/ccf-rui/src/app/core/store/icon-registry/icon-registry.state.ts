@@ -5,8 +5,6 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
-import { of } from 'rxjs';
-import { map, pluck, take, tap, timeoutWith } from 'rxjs/operators';
 
 import { GlobalConfig } from '../../services/config/config';
 import { DEFAULT_ICONS } from './default-icons';
