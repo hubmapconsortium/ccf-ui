@@ -18,7 +18,6 @@ import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
-/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable no-underscore-dangle */
 /**
  * This is the main angular component that all the other components branch off from.
@@ -38,27 +37,27 @@ export class AppComponent implements OnInit, OnChanges {
   @Input() hubmapAssetUrl: string;
   @Input() hubmapToken: string;
   @Input()
-    get hubmapDataSources(): string[] { return this._hubmapDataSources; }
-    set hubmapDataSources(datasSources: string[] | string) {
-      if (datasSources === '') {
-        return;
-      } else if (typeof datasSources === 'string') {
-        this._hubmapDataSources = JSON.parse(datasSources);
-      } else {
-        this._hubmapDataSources = datasSources;
-      }
+  get hubmapDataSources(): string[] { return this._hubmapDataSources; }
+  set hubmapDataSources(datasSources: string[] | string) {
+    if (datasSources === '') {
+      return;
+    } else if (typeof datasSources === 'string') {
+      this._hubmapDataSources = JSON.parse(datasSources);
+    } else {
+      this._hubmapDataSources = datasSources;
     }
+  }
 
   @Input()
-    get hubmapPortalUrl(): string {
-      if (this._hubmapPortalUrl) {
-        return this._hubmapPortalUrl;
-      }
-      return this.globalConfig.snapshot.hubmapPortalUrl;
+  get hubmapPortalUrl(): string {
+    if (this._hubmapPortalUrl) {
+      return this._hubmapPortalUrl;
     }
-    set hubmapPortalUrl(url: string) {
-      this._hubmapPortalUrl = url;
-    }
+    return this.globalConfig.snapshot?.hubmapPortalUrl ?? '';
+  }
+  set hubmapPortalUrl(url: string) {
+    this._hubmapPortalUrl = url;
+  }
 
   private _hubmapDataSources: string[];
   private _hubmapPortalUrl: string;
@@ -103,10 +102,10 @@ export class AppComponent implements OnInit, OnChanges {
    * @param data The data state.
    */
   constructor(readonly data: DataState, readonly theming: ThemingService,
-      readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<HTMLElement>, injector: Injector,
-      ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
-      private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
-    ) {
+    readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<HTMLElement>, injector: Injector,
+    ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
+    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
+  ) {
     theming.initialize(el, injector);
     overlay.setRootElement(el);
     data.tissueBlockData$.subscribe();
@@ -120,7 +119,7 @@ export class AppComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
-      data: {preClose: () => {snackBar.dismiss();} },
+      data: { preClose: () => { snackBar.dismiss(); } },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
 
@@ -204,7 +203,7 @@ export class AppComponent implements OnInit, OnChanges {
     this.bodyUI.target = [0, 0, 0];
     this.bodyUI.rotation = 0;
     this.bodyUI.rotationX = 0;
-    this.bodyUI.bounds = {x:2.2, y:2, z:0.4};
+    this.bodyUI.bounds = { x: 2.2, y: 2, z: 0.4 };
   }
 
   /**
@@ -266,7 +265,7 @@ export class AppComponent implements OnInit, OnChanges {
    */
   openiFrameViewer(url: string): void {
     const isWhitelisted = this.acceptableViewerDomains.some(domain => url?.startsWith(domain));
-    if(isWhitelisted) {
+    if (isWhitelisted) {
       this.url = url;
       this.viewerOpen = !!url;
     } else {
