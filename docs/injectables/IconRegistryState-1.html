@@ -99,6 +99,9 @@
                                 <a href="#getMethodName" >getMethodName</a>
                             </li>
                             <li>
+                                <a href="#ngxsOnInit" >ngxsOnInit</a>
+                            </li>
+                            <li>
                                 <a href="#registerIcon" >registerIcon</a>
                             </li>
                             <li>
@@ -128,7 +131,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -230,8 +233,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="130"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:130</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:135</a></div>
                 </td>
             </tr>
 
@@ -302,8 +305,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="116"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:116</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:121</a></div>
                 </td>
             </tr>
 
@@ -356,6 +359,43 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="ngxsOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngxsOnInit</b></span>
+                        <a href="#ngxsOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngxsOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="registerIcon"></a>
                     <span class="name">
                         <span ><b>registerIcon</b></span>
@@ -379,8 +419,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:87</a></div>
                 </td>
             </tr>
 
@@ -457,8 +497,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/icon-registry/icon-registry.state.ts:97</a></div>
                 </td>
             </tr>
 
@@ -526,7 +566,6 @@ import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x2
 import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
-import { map, take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { DEFAULT_ICONS } from &#x27;./default-icons&#x27;;
@@ -572,25 +611,31 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
    * @param sanitizer Service used to sanitize default imported urls and html.
    */
   constructor(@Optional() private registry: MatIconRegistry | null,
-              sanitizer: DomSanitizer,
-              globalConfig: GlobalConfigState&lt;GlobalConfig&gt;) {
+              private readonly sanitizer: DomSanitizer,
+              private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;) {
     super();
+  }
 
-    globalConfig.getProperty&lt;string&gt;([&#x27;baseHref&#x27;]).pipe(
-      map(baseHref &#x3D;&gt; baseHref ?? &#x27;&#x27;),
-      take(1),
-      tap(baseHref &#x3D;&gt; {
-        for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-          const safeDef: IconDefinition &#x3D; {
-            name, namespace,
-            url: url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
-            html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
-          };
+  ngxsOnInit(): void {
+    // Register html icons as they don&#x27;t depend on baseHref
+    DEFAULT_ICONS
+      .filter(def &#x3D;&gt; def.html !&#x3D;&#x3D; undefined)
+      .map(def &#x3D;&gt; ({ ...def, html: this.sanitizer.bypassSecurityTrustHtml(def.html!) }))
+      .forEach(def &#x3D;&gt; this.registerIconImpl(def));
 
-          this.registerIconImpl(safeDef);
-        }
-      })
-    ).subscribe();
+    // Use resolver for url icons
+    this.registry?.addSvgIconResolver((name, namespace) &#x3D;&gt; {
+      const def &#x3D; DEFAULT_ICONS.find(
+        icon &#x3D;&gt; (icon.name ?? &#x27;&#x27;) &#x3D;&#x3D;&#x3D; name &amp;&amp; (icon.namespace ?? &#x27;&#x27;) &#x3D;&#x3D;&#x3D; namespace
+      );
+
+      if (def &#x3D;&#x3D;&#x3D; undefined || def.url &#x3D;&#x3D;&#x3D; undefined) {
+        return null;
+      }
+
+      const baseHref &#x3D; this.globalConfig.snapshot.baseHref ?? &#x27;&#x27;;
+      return this.sanitizer.bypassSecurityTrustResourceUrl(baseHref + def.url);
+    });
   }
 
   /**

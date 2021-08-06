@@ -245,9 +245,10 @@ import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/deco
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
+import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
 import { sortBy } from &#x27;lodash&#x27;;
 import { EMPTY } from &#x27;rxjs&#x27;;
-import { debounceTime, filter, pluck, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
+import { debounceTime, delay, pluck, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { ExtractionSet } from &#x27;../../models/extraction-set&#x27;;
 import { VisibilityItem } from &#x27;../../models/visibility-item&#x27;;
@@ -407,8 +408,8 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
 
     this.referenceData &#x3D; this.injector.get(ReferenceDataState);
 
-    this.globalConfig.getProperty&lt;NonNullable&lt;GlobalConfig[&#x27;organ&#x27;]&gt;&gt;([&#x27;organ&#x27;]).pipe(
-      filter(organ &#x3D;&gt; !!organ),
+    this.globalConfig.getOption(&#x27;organ&#x27;).pipe(
+      filterNulls(),
       take(1),
       switchMap(organConfig &#x3D;&gt; {
         const organName &#x3D; organConfig.name.toLowerCase();
@@ -427,8 +428,9 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
             side: organInfo?.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
           });
           return this.referenceData.state$.pipe(
-            debounceTime(500),
+            debounceTime(100),
             take(1),
+            delay(200),
             tap(() &#x3D;&gt; this.onOrganIriChange())
           );
         }
@@ -439,7 +441,7 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
 
   idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
     return ALL_ORGANS.find((o) &#x3D;&gt;
-      ontologyId &amp;&amp; o.id &#x3D;&#x3D;&#x3D; ontologyId ?  (o.side ? o.side &#x3D;&#x3D;&#x3D; organSide : true) : false
+      ontologyId &amp;&amp; o.id &#x3D;&#x3D;&#x3D; ontologyId ? (o.side ? o.side &#x3D;&#x3D;&#x3D; organSide : true) : false
     );
   }
 

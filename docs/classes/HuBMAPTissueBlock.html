@@ -896,8 +896,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="353"
-                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:353</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="356"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:356</a></div>
                 </td>
             </tr>
 
@@ -976,8 +976,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="409"
-                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:409</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="412"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:412</a></div>
                 </td>
             </tr>
 
@@ -1148,8 +1148,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="451"
-                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:451</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="454"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:454</a></div>
                 </td>
             </tr>
 
@@ -1185,8 +1185,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="455"
-                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:455</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="458"
+                            class="link-to-prism">projects/ccf-database/src/lib/hubmap/hubmap-data.ts:458</a></div>
                 </td>
             </tr>
 
@@ -1539,7 +1539,10 @@ export class HuBMAPTissueBlock {
   }
 
   getDatasetThumbnail(dataset: JsonDict, assetsApi: string, serviceToken?: string): string | undefined {
-    if (dataset.group_uuid &#x3D;&#x3D;&#x3D; &#x27;73bb26e4-ed43-11e8-8f19-0a7c1eab007a&#x27;) { // TMC-Vanderbilt
+    if (dataset.thumbnail_file) {
+      const thumbnailFile &#x3D; dataset.thumbnail_file as JsonDict;
+      return &#x60;${assetsApi}/${thumbnailFile.file_uuid}/${thumbnailFile.filename}&#x60; + (serviceToken ? &#x60;?token&#x3D;${serviceToken}&#x60; : &#x27;&#x27;);
+    } else if (dataset.group_uuid &#x3D;&#x3D;&#x3D; &#x27;73bb26e4-ed43-11e8-8f19-0a7c1eab007a&#x27;) { // TMC-Vanderbilt
       const tiffs &#x3D; (get(dataset, &#x27;metadata.files&#x27;, []) as { rel_path: string }[])
         .filter(f &#x3D;&gt; /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
         .filter(f &#x3D;&gt; !/(multilayer\.ome\.tif|\_ac\.ome\.tif)/.test(f.rel_path))

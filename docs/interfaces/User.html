@@ -176,14 +176,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Any } from &#x27;@angular-ru/common/typings&#x27;;
-import { ChangeDetectionStrategy, Component, ElementRef, Injector, Input, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
-import { Debounce } from &#x27;@ngxs-labs/data/decorators&#x27;;
-import { SpatialEntityJsonLd } from &#x27;ccf-body-ui&#x27;;
 import { GlobalConfigState, TrackingPopupComponent, TrackingState } from &#x27;ccf-shared&#x27;;
 import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
-import { ObservableInput, Subscription } from &#x27;rxjs&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
 
 import { GlobalConfig } from &#x27;./core/services/config/config&#x27;;
 import { ThemingService } from &#x27;./core/services/theming/theming.service&#x27;;
@@ -205,86 +202,6 @@ export interface User {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnDestroy, OnInit {
-
-  /** Configuration Options **/
-  @Input() baseHref: string;
-  @Input()
-  get useDownload(): boolean | undefined { return this._useDownload; }
-  set useDownload(useDownload: string | boolean | undefined) {
-    if (typeof useDownload &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-      this._useDownload &#x3D; useDownload &#x3D;&#x3D;&#x3D; &#x27;&#x27; || useDownload.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
-    } else if (typeof useDownload &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27;) {
-      this._useDownload &#x3D; useDownload;
-      this.updateGlobalConfig();
-    }
-  }
-
-  @Input()
-  get user(): User { return this._user; }
-  set user(user: User | string) {
-    if (typeof user &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-      this._user &#x3D; JSON.parse(user);
-    } else {
-      this._user &#x3D; user;
-      this.updateGlobalConfig();
-    }
-  }
-
-  @Input()
-  get organ(): GlobalConfig[&#x27;organ&#x27;] { return this._organ; }
-  set organ(organ: GlobalConfig[&#x27;organ&#x27;] | string) {
-    if (typeof organ &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-      this._organ &#x3D; JSON.parse(organ);
-    } else {
-      this._organ &#x3D; organ;
-      this.updateGlobalConfig();
-    }
-  }
-
-  @Input()
-  get editRegistration(): SpatialEntityJsonLd { return this._editRegistration; }
-  set editRegistration(editRegistration: SpatialEntityJsonLd | string) {
-    if (typeof editRegistration &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-      this._editRegistration &#x3D; JSON.parse(editRegistration);
-    } else {
-      this._editRegistration &#x3D; editRegistration;
-      this.updateGlobalConfig();
-    }
-  }
-
-  @Input()
-  get register(): (data: unknown) &#x3D;&gt; void { return this._register; }
-  set register(register: Any) {
-    if (typeof register &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-      console.error(&#x27;RUI.register is unable to be set to a string. Expecting \&#x27;() &#x3D;&gt; void\&#x27; format.&#x27;);
-    } else {
-      this._register &#x3D; register;
-      this.updateGlobalConfig();
-    }
-  }
-
-  @Input()
-  get fetchPreviousRegistrations(): () &#x3D;&gt; ObservableInput&lt;Record&lt;string, unknown&gt;[]&gt; { return this._fetchPreviousRegistrations; }
-  set fetchPreviousRegistrations(fetchPreviousRegistrations: Any) {
-    if (typeof fetchPreviousRegistrations &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-      console.error(&#x27;RUI.fetchPreviousRegistrations is unable to be set to a string.  Expecting \&#x27;() &#x3D;&gt; SpatialEntityJsonLD[]\&#x27; format.&#x27;);
-    } else {
-      this._fetchPreviousRegistrations &#x3D; fetchPreviousRegistrations;
-      this.updateGlobalConfig();
-    }
-  }
-
-  @Input()
-  get cancelRegistration(): () &#x3D;&gt; void { return this._cancelRegistration; }
-  set cancelRegistration(cancelRegistration: Any) {
-    if (typeof cancelRegistration &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-      console.error(&#x27;RUI.cancelRegistration is unable to be set to a string.  Expecting \&#x27;() &#x3D;&gt; void\&#x27; format.&#x27;);
-    } else {
-      this._cancelRegistration &#x3D; cancelRegistration;
-      this.updateGlobalConfig();
-    }
-  }
-
   /** Organs to be displayed in the organ selector */
   organList &#x3D; RUI_ORGANS;
 
@@ -293,15 +210,6 @@ export class AppComponent implements OnDestroy, OnInit {
 
   /** False until the initial registration modal is closed */
   registrationStarted &#x3D; false;
-
-  /** Clean internal variables, for use with configuration options. **/
-  private _useDownload: boolean | undefined;
-  private _user: User;
-  private _organ: GlobalConfig[&#x27;organ&#x27;];
-  private _editRegistration: SpatialEntityJsonLd;
-  private _register: (data: unknown) &#x3D;&gt; void;
-  private _fetchPreviousRegistrations: () &#x3D;&gt; ObservableInput&lt;Record&lt;string, unknown&gt;[]&gt;;
-  private _cancelRegistration: () &#x3D;&gt; void;
 
   /** All subscriptions managed by the container. */
   private readonly subscriptions &#x3D; new Subscription();
@@ -325,40 +233,6 @@ export class AppComponent implements OnDestroy, OnInit {
       data: { preClose: () &#x3D;&gt; { snackBar.dismiss(); } },
       duration: this.tracking.snapshot.allowTelemetry &#x3D;&#x3D;&#x3D; undefined ? Infinity : 3000
     });
-
-    this.updateGlobalConfig();
-  }
-
-  @Debounce(20)
-  updateGlobalConfig(): void {
-    const { useDownload, user, organ, editRegistration, register, fetchPreviousRegistrations, cancelRegistration } &#x3D; this;
-    const windowConfigKey &#x3D; &#x27;ruiConfig&#x27;;
-    const global &#x3D; globalThis as unknown as Record&lt;string, GlobalConfig&gt;;
-    let config: GlobalConfig &#x3D; {} as GlobalConfig;
-
-    if (typeof global[windowConfigKey] &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
-      config &#x3D; { ...config, ...global[windowConfigKey] };
-    }
-
-    const inputs &#x3D; {
-      useDownload,
-      user,
-      organ,
-      editRegistration,
-      register,
-      fetchPreviousRegistrations,
-      cancelRegistration
-    };
-
-    for (const key in inputs) {
-      if (inputs[key] !&#x3D; null) {
-        config[key] &#x3D; inputs[key];
-      }
-    }
-
-    if (Object.keys(config).length &gt; 0) {
-      this.globalConfig.patchConfig(config);
-    }
   }
 
   /**

@@ -14,10 +14,6 @@
 <title>cluster_ContentModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 772,-230.8 772,-32.8 8,-32.8"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_ContentModule_exports</title>
-<polygon fill="none" stroke="black" points="354,-170.8 354,-222.8 500,-222.8 500,-170.8 354,-170.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_ContentModule_declarations</title>
 <polygon fill="none" stroke="black" points="622,-40.8 622,-92.8 764,-92.8 764,-40.8 622,-40.8"/>
@@ -25,6 +21,10 @@
 <g id="clust4" class="cluster">
 <title>cluster_ContentModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 614,-92.8 614,-40.8 16,-40.8"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_ContentModule_exports</title>
+<polygon fill="none" stroke="black" points="354,-170.8 354,-222.8 500,-222.8 500,-170.8 354,-170.8"/>
 </g>
 <!-- ContentComponent -->
 <g id="node1" class="node">

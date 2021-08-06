@@ -248,9 +248,10 @@ import { State } from &#x27;@ngxs/store&#x27;;
 import { insertItem, patch } from &#x27;@ngxs/store/operators&#x27;;
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from &#x27;ccf-body-ui&#x27;;
 import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
+import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
 import { saveAs } from &#x27;file-saver&#x27;;
 import { combineLatest, Observable } from &#x27;rxjs&#x27;;
-import { filter, map, pluck, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
+import { map, pluck, startWith, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 import { v4 as uuidV4 } from &#x27;uuid&#x27;;
 
 import { Tag } from &#x27;../../models/anatomical-structure-tag&#x27;;
@@ -323,10 +324,9 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
   get previousRegistrations$(): Observable&lt;Record&lt;string, unknown&gt;[]&gt; {
     const { globalConfig, state$ } &#x3D; this;
     const regs &#x3D; state$.pipe(pluck(&#x27;registrations&#x27;));
-    const fetched &#x3D; globalConfig.getProperty&lt;() &#x3D;&gt; Observable&lt;Record&lt;string, unknown&gt;[]&gt;&gt;(
-      [&#x27;fetchPreviousRegistrations&#x27;]
-    ).pipe(
-      switchMap(fetch &#x3D;&gt; fetch?.() ?? [[]])
+    const fetched &#x3D; globalConfig.getOption(&#x27;fetchPreviousRegistrations&#x27;).pipe(
+      switchMap(fetch &#x3D;&gt; fetch?.() ?? [[]]),
+      startWith([])
     );
 
     return combineLatest([regs, fetched]).pipe(
@@ -395,9 +395,9 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
   ngxsAfterBootstrap(): void {
     super.ngxsAfterBootstrap();
 
-    this.globalConfig.getProperty([&#x27;editRegistration&#x27;]).pipe(
+    this.globalConfig.getOption(&#x27;editRegistration&#x27;).pipe(
       take(1),
-      filter(reg &#x3D;&gt; !!reg),
+      filterNulls(),
       tap(reg &#x3D;&gt; this.editRegistration(reg as SpatialEntityJsonLd))
     ).subscribe();
   }
