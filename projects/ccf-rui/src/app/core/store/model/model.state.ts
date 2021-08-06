@@ -6,7 +6,7 @@ import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
 import { EMPTY } from 'rxjs';
-import { debounceTime, pluck, switchMap, take, tap } from 'rxjs/operators';
+import { debounceTime, delay, pluck, switchMap, take, tap } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -186,8 +186,9 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
             side: organInfo?.side?.toLowerCase() as 'left' | 'right'
           });
           return this.referenceData.state$.pipe(
-            debounceTime(500),
+            debounceTime(100),
             take(1),
+            delay(200),
             tap(() => this.onOrganIriChange())
           );
         }
