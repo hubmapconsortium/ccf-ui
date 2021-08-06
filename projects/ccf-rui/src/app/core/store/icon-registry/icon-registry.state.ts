@@ -5,8 +5,6 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
-import { of } from 'rxjs';
-import { map, pluck, take, tap, timeoutWith } from 'rxjs/operators';
 
 import { GlobalConfig } from '../../services/config/config';
 import { DEFAULT_ICONS } from './default-icons';
@@ -45,8 +43,6 @@ export interface IconDefinition {
 @State<void>({ name: 'iconRegistry' })
 @Injectable()
 export class IconRegistryState extends NgxsDataRepository<void> {
-  readonly initialized: Promise<void>;
-
   /**
    * Creates an instance of icon registry state.
    *
@@ -54,31 +50,31 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @param sanitizer Service used to sanitize default imported urls and html.
    */
   constructor(@Optional() private registry: MatIconRegistry | null,
-              sanitizer: DomSanitizer,
-              globalConfig: GlobalConfigState<GlobalConfig>) {
+              private readonly sanitizer: DomSanitizer,
+              private readonly globalConfig: GlobalConfigState<GlobalConfig>) {
     super();
+  }
 
-    let initializationDone: (value: void) => void;
-    this.initialized = new Promise(r => initializationDone = r);
+  ngxsOnInit(): void {
+    // Register html icons as they don't depend on baseHref
+    DEFAULT_ICONS
+      .filter(def => def.html !== undefined)
+      .map(def => ({ ...def, html: this.sanitizer.bypassSecurityTrustHtml(def.html!) }))
+      .forEach(def => this.registerIconImpl(def));
 
-    globalConfig.config$.pipe(
-      pluck('baseHref'),
-      map(baseHref => baseHref ?? ''),
-      take(1),
-      timeoutWith(200, of('')),
-      tap(baseHref => {
-        for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-          const safeDef: IconDefinition = {
-            name, namespace,
-            url: url && sanitizer.bypassSecurityTrustResourceUrl(baseHref + url),
-            html: html && sanitizer.bypassSecurityTrustHtml(html)
-          };
+    // Use resolver for url icons
+    this.registry?.addSvgIconResolver((name, namespace) => {
+      const def = DEFAULT_ICONS.find(
+        icon => (icon.name ?? '') === name && (icon.namespace ?? '') === namespace
+      );
 
-          this.registerIconImpl(safeDef);
-        }
-      }),
-      tap(() => initializationDone())
-    ).subscribe();
+      if (def === undefined || def.url === undefined) {
+        return null;
+      }
+
+      const baseHref = this.globalConfig.snapshot.baseHref ?? '';
+      return this.sanitizer.bypassSecurityTrustResourceUrl(baseHref + def.url);
+    });
   }
 
   /**
