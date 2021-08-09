@@ -132,6 +132,22 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#subscriptions" >subscriptions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -190,7 +206,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -274,7 +290,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:22</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -301,7 +317,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:27</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -341,8 +357,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:56</a></div>
                 </td>
             </tr>
 
@@ -411,8 +427,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:49</a></div>
                 </td>
             </tr>
 
@@ -451,8 +467,8 @@ is destroyed</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:72</a></div>
                 </td>
             </tr>
 
@@ -471,16 +487,52 @@ is destroyed</p>
         </tbody>
     </table>
 </section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscriptions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>subscriptions</b></span>
+                        <a href="#subscriptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, Input } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnDestroy } from &#x27;@angular/core&#x27;;
 import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+
 import { DocumentationContent } from &#x27;../info-button/info-button.service&#x27;;
 import { InfoDialogComponent } from &#x27;../info-dialog/info-dialog.component&#x27;;
 import { InfoButtonService } from &#x27;./info-button.service&#x27;;
+
 
 /**
  * Info button component: Information icon displays project details when clicked.
@@ -501,6 +553,8 @@ export class InfoButtonComponent implements OnDestroy {
    */
   @Input() videoID: string;
 
+  private readonly subscriptions &#x3D; new Subscription();
+
   /**
    * Creates an instance of info button component.
    *
@@ -508,11 +562,11 @@ export class InfoButtonComponent implements OnDestroy {
    * @param infoButtonService Reference to the info button service
    */
   constructor(private readonly dialog: MatDialog, private readonly infoButtonService: InfoButtonService) {
-    infoButtonService.markdownContent.subscribe(data &#x3D;&gt; {
+    this.subscriptions.add(infoButtonService.markdownContent.subscribe(data &#x3D;&gt; {
       if(data.length) {
         this.launchInfoDialog(data);
       }
-    });
+    }));
    }
 
    /**
@@ -520,7 +574,7 @@ export class InfoButtonComponent implements OnDestroy {
     * is destroyed
     */
    ngOnDestroy(): void {
-     this.infoButtonService.markdownContent.unsubscribe();
+    this.subscriptions.unsubscribe();
    }
 
   /**
