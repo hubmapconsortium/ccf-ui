@@ -1,8 +1,11 @@
-import { Component, OnDestroy, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+
 import { DocumentationContent } from '../info-button/info-button.service';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { InfoButtonService } from './info-button.service';
+
 
 /**
  * Info button component: Information icon displays project details when clicked.
@@ -23,6 +26,8 @@ export class InfoButtonComponent implements OnDestroy {
    */
   @Input() videoID: string;
 
+  private readonly subscriptions = new Subscription();
+
   /**
    * Creates an instance of info button component.
    *
@@ -30,11 +35,11 @@ export class InfoButtonComponent implements OnDestroy {
    * @param infoButtonService Reference to the info button service
    */
   constructor(private readonly dialog: MatDialog, private readonly infoButtonService: InfoButtonService) {
-    infoButtonService.markdownContent.subscribe(data => {
+    this.subscriptions.add(infoButtonService.markdownContent.subscribe(data => {
       if(data.length) {
         this.launchInfoDialog(data);
       }
-    });
+    }));
    }
 
    /**
@@ -42,7 +47,7 @@ export class InfoButtonComponent implements OnDestroy {
     * is destroyed
     */
    ngOnDestroy(): void {
-     this.infoButtonService.markdownContent.unsubscribe();
+    this.subscriptions.unsubscribe();
    }
 
   /**
