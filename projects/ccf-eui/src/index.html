@@ -1,14 +1,7 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136932895-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'UA-136932895-2');
-  </script>
+<head>
   <meta charset="utf-8">
   <title>HuBMAP CCF Exploration User Interface (CCF-EUI)</title>
   <base href="/">
@@ -17,12 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 </head>
+
 <body class="mat-typography">
   <ccf-eui
     hubmap-data-service="search-api"
-    hubmap-portal-url="https://portal.test.hubmapconsortium.org/"
+    hubmap-portal-url="https://portal.hubmapconsortium.org/"
     hubmap-data-url="https://search.api.hubmapconsortium.org/entities/search"
-    hubmap-asset-url="https://assets.test.hubmapconsortium.org"
+    hubmap-asset-url="https://assets.hubmapconsortium.org"
   ></ccf-eui>
 </body>
+
 </html>
