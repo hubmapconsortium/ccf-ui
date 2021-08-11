@@ -262,6 +262,7 @@ import { ModelState, ModelStateModel, XYZTriplet } from &#x27;../model/model.sta
 import { PageState, PageStateModel } from &#x27;../page/page.state&#x27;;
 import { ReferenceDataState } from &#x27;../reference-data/reference-data.state&#x27;;
 
+
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -390,13 +391,8 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
         useRegistrationCallback: !!(!useDownload &amp;&amp; register)
       }))
     ).subscribe();
-  }
-
-  ngxsAfterBootstrap(): void {
-    super.ngxsAfterBootstrap();
 
     this.globalConfig.getOption(&#x27;editRegistration&#x27;).pipe(
-      take(1),
       filterNulls(),
       tap(reg &#x3D;&gt; this.editRegistration(reg as SpatialEntityJsonLd))
     ).subscribe();
