@@ -168,7 +168,6 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
     this.globalConfig.getOption('organ').pipe(
       filterNulls(),
-      take(1),
       switchMap(organConfig => {
         const organName = organConfig.name.toLowerCase();
         const organSide = organConfig.side;
