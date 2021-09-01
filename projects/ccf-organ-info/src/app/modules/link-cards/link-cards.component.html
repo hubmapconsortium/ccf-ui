@@ -1,0 +1,19 @@
+<div class="link-cards-container">
+  <div class="link-card" *ngFor="let card of linkCards">
+    <div class="link-card-content">
+      <div class="body">{{ card.body }}</div>
+      <div class="link-button btn" (click)="goToURL(card.buttonUrl)">{{ card.buttonTitle }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="deep-dive-section">
+  <div class="title">Common Coordinate Framework (CCF) Deep Dive</div>
+  <div class="button-container">
+    <div
+      class="btn-outline btn"
+      *ngFor="let button of deepDives"
+      (click)="goToURL(button.buttonUrl)"
+    >{{ button.buttonTitle }}</div>
+  </div>
+</div>
