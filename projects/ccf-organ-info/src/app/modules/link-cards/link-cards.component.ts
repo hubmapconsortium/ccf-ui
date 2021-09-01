@@ -21,7 +21,7 @@ export class LinkCardsComponent {
     {
       body: 'Explore tissue sections in tissue blocks with the CCF Exploration User Interface (EUI).',
       buttonTitle: 'Explore Tissue',
-      buttonUrl: 'https://hubmapconsortium.github.io/ccf-eui'
+      buttonUrl: 'https://portal.hubmapconsortium.org/ccf-eui'
     },
     {
       body: 'View linkages between anatomical structures, cell types, and common biomarkers (ASCT+B).',
