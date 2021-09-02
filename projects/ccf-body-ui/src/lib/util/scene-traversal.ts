@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Matrix4 } from '@math.gl/core';
 
 
 export type SceneTraversalVisitor = (child, modelMatrix: Matrix4, parentMatrix: Matrix4) => boolean;
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function traverseScene(scene, worldMatrix: Matrix4, visitor: SceneTraversalVisitor): boolean {
   if (!worldMatrix) {
     worldMatrix = new Matrix4(Matrix4.IDENTITY);
