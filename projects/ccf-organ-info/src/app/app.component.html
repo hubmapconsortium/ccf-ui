@@ -1,9 +1,5 @@
 <h1>ccf-organ-info works.</h1>
-
-<ccf-body-ui class="body-ui"
-[scene]="scene.rotatedNodes$ | async"
-[interactive]="false"
-[bounds]="bounds$ | async"
-[zoom]="11.5"
-camera="orthographic"
-></ccf-body-ui>
+<app-organ
+  sex="Female"
+  organIri="http://purl.obolibrary.org/obo/UBERON_0004539">
+</app-organ>

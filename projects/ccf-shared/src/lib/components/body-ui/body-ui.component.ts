@@ -158,6 +158,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
         Math.log2((width - margin.x) / pxRatio / bounds.x),
         Math.log2((height - margin.y) / pxRatio / bounds.y)
       );
+      console.log(this.zoom)
       this.zoom = zoom;
     }
   }
