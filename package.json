@@ -20,6 +20,8 @@
     "build:ccf-eui:wc": "node projects/ccf-eui/build-webcomponent.js",
     "build:ccf-rui": "ng build ccf-rui --configuration production --output-hashing none",
     "build:ccf-rui:wc": "node projects/ccf-rui/build-webcomponent.js",
+    "build:ccf-organ-info": "ng build ccf-organ-info --configuration production --output-hashing none",
+    "build:ccf-organ-info:wc": "node projects/ccf-organ-info/build-webcomponent.js",
     "build:hubmap-jsonld": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/process-hubmap-data.ts ./src/assets/dev-data/entities.json ./src/assets/dev-data/entities.jsonld",
     "build:triple-store-utils": "npm run build triple-store-utils && npm run fix-triple-store-utils",
     "generate-reference-data": "ts-node --project projects/ccf-body-ui/tsconfig.cli.json projects/ccf-body-ui/src/generate-reference-data.ts ../hubmap-ontology/source_data/reference-spatial-entities.jsonld ../hubmap-ontology/source_data/generated-reference-spatial-entities.jsonld",
