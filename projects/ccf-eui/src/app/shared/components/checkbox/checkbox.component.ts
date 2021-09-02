@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -8,7 +8,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 @Component({
   selector: 'ccf-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent {
   /**
@@ -34,7 +35,7 @@ export class CheckboxComponent {
   /**
    * Any time a checkbox changes we emit that value so the parent component has that information
    */
-  @Output() selectionChange = new EventEmitter<string[]>();
+  @Output() readonly selectionChange = new EventEmitter<string[]>();
 
   /**
    * Creates an instance of checkbox component.

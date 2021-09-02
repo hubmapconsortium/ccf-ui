@@ -32,7 +32,7 @@ describe('TissueSectionVisComponent', () => {
 
   it('should return false when tissueSectionExists is called with a section number that is not registerd', async () => {
     const tissueSections = getTissueSections(1);
-    const { instance } = await shallow.render({ bind: { tissueSections, totalTissueSections: 3 }});
+    const { instance } = await shallow.render({ bind: { tissueSections, totalTissueSections: 3 } });
     const sectionExists = instance.tissueSectionExists(3);
 
     expect(sectionExists).not.toBeTrue();
@@ -40,7 +40,7 @@ describe('TissueSectionVisComponent', () => {
 
   it('should return true when tissueSectionExists is called with a section number that is registerd', async () => {
     const tissueSections = getTissueSections(4);
-    const { instance } = await shallow.render({ bind: { tissueSections, totalTissueSections: 4 }});
+    const { instance } = await shallow.render({ bind: { tissueSections, totalTissueSections: 4 } });
     const sectionExists = instance.tissueSectionExists(2);
 
     expect(sectionExists).toBeTrue();

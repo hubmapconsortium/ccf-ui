@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
 
@@ -14,7 +14,8 @@ import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component'
 @Component({
   selector: 'ccf-ontology-selection',
   templateUrl: './ontology-selection.component.html',
-  styleUrls: ['./ontology-selection.component.scss']
+  styleUrls: ['./ontology-selection.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OntologySelectionComponent {
   /**
@@ -42,7 +43,7 @@ export class OntologySelectionComponent {
   /**
    * Captures and passes along the change in ontologySelections.
    */
-  @Output() ontologySelection = new EventEmitter<OntologySelection>();
+  @Output() readonly ontologySelection = new EventEmitter<OntologySelection>();
 
   /**
    * Creates an instance of ontology selection component.

@@ -59,20 +59,20 @@ export class ListResultsState extends NgxsImmutableDataRepository<ListResultsSta
     this.ctx.patchState({ listResults });
   }
 
-  selectListResult(result: ListResult) {
+  selectListResult(result: ListResult): void {
     this.colorAssignments.assignColor(result.tissueBlock.spatialEntityId);
   }
 
-  deselectListResult(result: ListResult) {
+  deselectListResult(result: ListResult): void {
     this.colorAssignments.unassignColor(result.tissueBlock.spatialEntityId);
   }
 
   highlightNode(id: string): void {
-    this.ctx.patchState({highlightedNodeId: id});
+    this.ctx.patchState({ highlightedNodeId: id });
   }
 
   unHighlightNode(): void {
-    this.ctx.patchState({highlightedNodeId: undefined});
+    this.ctx.patchState({ highlightedNodeId: undefined });
   }
 
   /**

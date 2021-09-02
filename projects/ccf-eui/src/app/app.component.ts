@@ -1,9 +1,9 @@
-import { Component, ElementRef, Injector, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+/* eslint-disable @typescript-eslint/member-ordering */
+import { Component, ElementRef, Injector, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Debounce } from '@ngxs-labs/data/decorators';
 import { CCFDatabaseOptions } from 'ccf-database';
 import { GlobalConfigState, TrackingPopupComponent, TrackingState } from 'ccf-shared';
-import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -11,14 +11,13 @@ import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
-import { ThemingService, LIGHT_THEME, DARK_THEME } from './core/services/theming/theming.service';
+import { DARK_THEME, LIGHT_THEME, ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
-/* eslint-disable no-underscore-dangle */
 /**
  * This is the main angular component that all the other components branch off from.
  * It is in charge of the header and drawer components who have many sub-components.
@@ -37,7 +36,9 @@ export class AppComponent implements OnInit, OnChanges {
   @Input() hubmapAssetUrl: string;
   @Input() hubmapToken: string;
   @Input()
-  get hubmapDataSources(): string[] { return this._hubmapDataSources; }
+  get hubmapDataSources(): string[] {
+    return this._hubmapDataSources;
+  }
   set hubmapDataSources(datasSources: string[] | string) {
     if (datasSources === '') {
       return;
@@ -101,9 +102,11 @@ export class AppComponent implements OnInit, OnChanges {
    *
    * @param data The data state.
    */
-  constructor(readonly data: DataState, readonly theming: ThemingService,
-    readonly scene: SceneState, readonly listResultsState: ListResultsState, el: ElementRef<HTMLElement>, injector: Injector,
-    ga: GoogleAnalyticsService, readonly tracking: TrackingState, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
+  constructor(
+    el: ElementRef<HTMLElement>, injector: Injector,
+    readonly data: DataState, readonly theming: ThemingService,
+    readonly scene: SceneState, readonly listResultsState: ListResultsState,
+    readonly tracking: TrackingState, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
     private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
   ) {
     theming.initialize(el, injector);
@@ -119,7 +122,11 @@ export class AppComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
-      data: { preClose: () => { snackBar.dismiss(); } },
+      data: {
+        preClose: () => {
+          snackBar.dismiss();
+        }
+      },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
 
@@ -138,7 +145,7 @@ export class AppComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (
       'hubmapDataService' in changes ||
       'hubmapPortalUrl' in changes ||
@@ -155,6 +162,7 @@ export class AppComponent implements OnInit, OnChanges {
   updateGlobalConfig(): void {
     const { hubmapDataService, hubmapPortalUrl, hubmapDataUrl, hubmapAssetUrl, hubmapToken, hubmapDataSources } = this;
     const windowConfigKey = 'dbOptions';
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     let config = { ...environment.dbOptions } as CCFDatabaseOptions;
 
     if (typeof globalThis[windowConfigKey] === 'object') {
@@ -220,7 +228,7 @@ export class AppComponent implements OnInit, OnChanges {
    * @param ontologySelection the list of currently selected organ nodes
    */
   ontologySelected(ontologySelection: OntologySelection[] | undefined): void {
-    if (!!ontologySelection) {
+    if (ontologySelection) {
       this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
       if (ontologySelection[0] && ontologySelection[0].label === 'body') {
@@ -286,7 +294,7 @@ export class AppComponent implements OnInit, OnChanges {
    * Gets login token
    */
   get loggedIn(): boolean {
-    const token = this.globalConfig.snapshot.hubmapToken || '';
+    const token = this.globalConfig.snapshot.hubmapToken ?? '';
     return token.length > 0;
   }
 }

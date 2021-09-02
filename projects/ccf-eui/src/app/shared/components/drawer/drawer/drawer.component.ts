@@ -34,7 +34,9 @@ class InitializationState {
   /** Whether this state is true or false. */
   private initialized = false;
   /** Promise used to await on. */
-  private deferred = new Promise<void>(resolve => this.resolve = resolve);
+  private deferred = new Promise<void>(resolve => {
+    this.resolve = resolve;
+  });
   /** Resolve function for the promise. */
   private resolve: () => void;
 
@@ -51,14 +53,18 @@ class InitializationState {
    *
    * @returns A promise.
    */
-  async wait(): Promise<void> { return this.deferred; }
+  async wait(): Promise<void> {
+    return this.deferred;
+  }
 
   /**
    * Gets the boolean state of this object.
    *
    * @returns true if set has been called.
    */
-  valueOf(): boolean { return this.initialized; }
+  valueOf(): boolean {
+    return this.initialized;
+  }
 }
 
 
@@ -73,10 +79,10 @@ class InitializationState {
   styleUrls: ['./drawer.component.scss'],
   animations: [
     trigger('openClose', [
-      state(`open, open-instant`, style({
+      state('open, open-instant', style({
         transform: 'none'
       })),
-      state('closed', style({ })),
+      state('closed', style({})),
 
       transition('closed => open-instant', animate(0)),
       transition('closed <=> open, open-instant => closed', animate('.5s ease-in-out'))
@@ -103,28 +109,42 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   @HostBinding('class') readonly className = 'ccf-drawer';
   /** Whether this is located at the end position. */
   @HostBinding('class.ccf-drawer-end') // eslint-disable-line
-  get classEnd(): boolean { return this.position === 'end'; }
+  get classEnd(): boolean {
+    return this.position === 'end';
+  }
 
   /** Position of the drawer - start (left) or end (right). */
   @Input()// eslint-disable-line
-  get position(): 'start' | 'end' { return this._position; }
-  set position(value: 'start' | 'end') { this._position = value || 'start'; }
+  get position(): 'start' | 'end' {
+    return this._position;
+  }
+  set position(value: 'start' | 'end') {
+    this._position = value || 'start';
+  }
   /** Property for position getter/setter. */
   private _position: 'start' | 'end' = 'start';
 
   /** Whether the drawer is opened. */
   @Input() // eslint-disable-line
   @HostBinding('class.ccf-drawer-opened') // eslint-disable-line
-  get opened(): boolean { return this._opened; }
-  set opened(value: boolean) { this.toggle(coerceBooleanProperty(value)); }
+  get opened(): boolean {
+    return this._opened;
+  }
+  set opened(value: boolean) {
+    this.toggle(coerceBooleanProperty(value));
+  }
   /** Property for opened getter/setter. */
   private _opened = false;
 
   /** Whether the drawer is expanded. */
   @Input() // eslint-disable-line
   @HostBinding('class.ccf-drawer-expanded') // eslint-disable-line
-  get expanded(): boolean { return this._expanded; }
-  set expanded(value: boolean) { this.toggleExpanded(coerceBooleanProperty(value)); }
+  get expanded(): boolean {
+    return this._expanded;
+  }
+  set expanded(value: boolean) {
+    this.toggleExpanded(coerceBooleanProperty(value));
+  }
   /** Property for expanded getter/setter */
   private _expanded = false;
 
@@ -142,10 +162,12 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   /** Expanded/collapsed state parameters. */
   @HostBinding('@expandCollapse')  // eslint-disable-line
   get expandedStateObj(): unknown {
-    return { value: this.expandedState2, params: {
-      width: this.width, margin: this.measuredMargin,
-      margin2: this.margin2
-    }};
+    return {
+      value: this.expandedState2, params: {
+        width: this.width, margin: this.measuredMargin,
+        margin2: this.margin2
+      }
+    };
   }
   /** Current expanded/collapsed animation state. */
   expandedState: ExpandedState = 'closed';
@@ -154,16 +176,23 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
 
   /** Gets the calculated width of the drawer. */
   private get measuredWidth(): number {
-    if (this._measuredWidth > 0) { return this._measuredWidth; }
+    if (this._measuredWidth > 0) {
+      return this._measuredWidth;
+    }
 
     const element = this.element.nativeElement;
-    if (!element) { return 0; }
+    if (!element) {
+      return 0;
+    }
 
     const bbox = element.getBoundingClientRect();
     const width = bbox.right - bbox.left;
-    if (width === 0) { return 0; }
+    if (width === 0) {
+      return 0;
+    }
 
-    return this._measuredWidth = width;
+    this._measuredWidth = width;
+    return width;
   }
   /** Cached measured width. */
   private _measuredWidth = 0;
@@ -172,17 +201,22 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
 
   /** Gets the calculated margin of the drawer. */
   private get measuredMargin(): number {
-    if (this._measuredMargin > 0) { return this._measuredMargin; }
+    if (this._measuredMargin > 0) {
+      return this._measuredMargin;
+    }
 
     const element = this.element.nativeElement;
-    if (!element) { return 0; }
+    if (!element) {
+      return 0;
+    }
 
     const styles = globalThis.getComputedStyle(element);
     const property = this.position === 'start' ? 'margin-right' : 'margin-left';
     const value = styles.getPropertyValue(property);
     const margin = Number(value.slice(0, -2));
 
-    return this._measuredMargin = margin;
+    this._measuredMargin = margin;
+    return margin;
   }
   /** Cached measured margin. */
   private _measuredMargin = 0;
@@ -203,12 +237,16 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
    * @param cdr The change detector reference.
    * @param element Reference to components HTML element.
    */
-  constructor(messageService: MessageService,
-              cdr: ChangeDetectorRef,
-              private element: ElementRef<HTMLElement>) {
+  constructor(
+    messageService: MessageService,
+    cdr: ChangeDetectorRef,
+    private element: ElementRef<HTMLElement>
+  ) {
     this.channel = messageService.connect(this);
     this.subscriptions.add(this.channel.getMessages().subscribe(msg => {
-      if (this.handleMessage(msg)) { cdr.markForCheck(); }
+      if (this.handleMessage(msg)) {
+        cdr.markForCheck();
+      }
     }));
   }
 
@@ -230,12 +268,16 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   /**
    * Opens the drawer.
    */
-  open(): void { this.toggle(true); }
+  open(): void {
+    this.toggle(true);
+  }
 
   /**
    * Closes the drawer.
    */
-  close(): void { this.toggle(false); }
+  close(): void {
+    this.toggle(false);
+  }
 
   /**
    * Toggles the drawer between opened and closed.
@@ -243,7 +285,9 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
    * @param [opened] Whether to open or close the drawer.
    */
   toggle(opened = !this.opened): void {
-    if (this.opened === opened) { return; }
+    if (this.opened === opened) {
+      return;
+    }
 
     if (!opened) {
       this.openedState = 'closed';
@@ -263,12 +307,16 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   /**
    * Expands the drawer.
    */
-  openExpanded(): void { this.toggleExpanded(true); }
+  openExpanded(): void {
+    this.toggleExpanded(true);
+  }
 
   /**
    * Collapses the drawer.
    */
-  closeExpanded(): void { this.toggleExpanded(false); }
+  closeExpanded(): void {
+    this.toggleExpanded(false);
+  }
 
   /**
    * Toggles the drawer between expanded and collapsed.
@@ -276,7 +324,9 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
    * @param [expanded] Whether to expand or collapse the drawer.
    */
   toggleExpanded(expanded = !this.expanded): void {
-    if (this.expanded === expanded) { return; }
+    if (this.expanded === expanded) {
+      return;
+    }
 
     if (!expanded) {
       this.expandedState = 'closed';
@@ -331,10 +381,11 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
    */
   private handleMessage(msg: Message): boolean {
     switch (msg.payload.type) {
-      case 'drawer-toggled':
+      case 'drawer-toggled': {
         const other = msg.source as DrawerComponent;
         this.syncExpanded(other);
         return true;
+      }
 
       default:
         return false;

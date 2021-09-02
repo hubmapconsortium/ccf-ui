@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { TissueBlockResult } from 'ccf-database';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -9,7 +9,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 @Component({
   selector: 'ccf-donor-card',
   templateUrl: './donor-card.component.html',
-  styleUrls: ['./donor-card.component.scss']
+  styleUrls: ['./donor-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DonorCardComponent {
   /** HTML Class Name */
@@ -30,10 +31,10 @@ export class DonorCardComponent {
   @Input() highlighted = false;
 
   /** Emits the new checked state whenever it changes */
-  @Output() checked = new EventEmitter<boolean>();
+  @Output() readonly checked = new EventEmitter<boolean>();
 
   /** Emit the url of any link when clicked. */
-  @Output() linkClick = new EventEmitter<string>();
+  @Output() readonly linkClick = new EventEmitter<string>();
 
   /** To keep track of which element, if any, are hovered over. */
   hoverState = '';
@@ -59,7 +60,7 @@ export class DonorCardComponent {
    * Ensures that the expanded variable is only changed if selected first.
    */
   toggleExpansion(): void {
-    if(this.selected) {
+    if (this.selected) {
       this.expanded = !this.expanded;
       this.ga.event('expanded_toggled', 'donor_card', this.tissueBlock.label, +this.expanded);
     }
