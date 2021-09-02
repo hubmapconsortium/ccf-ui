@@ -19,9 +19,15 @@ export function streamToArray<T = unknown>(readStream: EventEmitter): Promise<T[
   return new Promise((resolve, reject) => {
     const chunks: T[] = [];
     readStream
-      .on('data', (chunk: T) => { chunks.push(chunk); })
-      .once('end', () => { resolve(chunks); })
-      .once('error', (err) => { reject(err); });
+      .on('data', (chunk: T) => {
+        chunks.push(chunk);
+      })
+      .once('end', () => {
+        resolve(chunks);
+      })
+      .once('error', (err) => {
+        reject(err);
+      });
   });
 }
 
@@ -94,9 +100,9 @@ export async function addRdfXmlToStore(
 
   if (xmlData) {
     const xmlParser = new RdfXmlParser({ dataFactory: DataFactory, strict: true });
-    const result = new Promise<RDF.Sink<EventEmitter, EventEmitter>>(
-      resolve => xmlParser.once('end', () => resolve(store))
-    );
+    const result = new Promise<RDF.Sink<EventEmitter, EventEmitter>>(resolve => {
+      xmlParser.once('end', () => resolve(store));
+    });
 
     store.import(xmlParser);
     xmlParser.write(xmlData);
@@ -128,7 +134,7 @@ export async function addN3ToStore(
     data = uri;
   }
   if (data) {
-    const quads = new Parser({format: 'n3'}).parse(data);
+    const quads = new Parser({ format: 'n3' }).parse(data);
     store.import(arrayToStream(quads) as unknown as EventEmitter);
   }
   return store;
@@ -146,6 +152,7 @@ export function serializeN3Store(store: Store): string {
 export function deserializeN3Store(serializedStore: string, factory?: RDF.DataFactory): Store {
   const storeData = JSON.parse(serializedStore);
   const store = new Store();
-  Object.assign(store, storeData, {_factory: factory || DataFactory});
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  Object.assign(store, storeData, { _factory: factory ?? DataFactory });
   return store;
 }
