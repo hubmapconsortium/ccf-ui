@@ -28,7 +28,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "ccf",
             "style": "kebab-case"
           }
         ]
