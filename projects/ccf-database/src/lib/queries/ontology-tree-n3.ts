@@ -15,29 +15,31 @@ const ontologyTreeNodeResult = {
 
 export function getOntologyTreeNode(store: Store, iri: string): OntologyTreeNode {
   const node = DataFactory.namedNode(iri);
-  const result = {'@id': iri, '@type': 'OntologyTreeNode', id: iri, parent: '',
-    children: [] as string[], synonymLabels: [] as string[]} as OntologyTreeNode;
+  const result: OntologyTreeNode = {
+    '@id': iri, '@type': 'OntologyTreeNode', id: iri, parent: '',
+    children: [] as string[], synonymLabels: [] as string[], label: ''
+  };
 
-    store.some((quad) => {
-      const prop = ontologyTreeNodeResult[quad.predicate.id];
-      if (prop) {
-        const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
-        if (prop === 'synonymLabels') {
-          result.synonymLabels.push(value);
-        } else {
-          set(result, prop, value);
-        }
+  store.some((quad) => {
+    const prop = ontologyTreeNodeResult[quad.predicate.id];
+    if (prop) {
+      const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
+      if (prop === 'synonymLabels') {
+        result.synonymLabels.push(value);
+      } else {
+        set(result, prop, value);
       }
-      return false;
-    }, node, null, null, null);
+    }
+    return false;
+  }, node, null, null, null);
 
-    result.children = store.getSubjects(ccf.ontologyNode.children, node, null).map(s => s.id);
+  result.children = store.getSubjects(ccf.ontologyNode.children, node, null).map(s => s.id);
 
-    return result;
+  return result;
 }
 
 export function getOntologyTreeModel(store: Store): OntologyTreeModel {
-  const result = {root: rui.body.id, nodes: {}} as OntologyTreeModel;
+  const result: OntologyTreeModel = { root: rui.body.id, nodes: {} };
   const seen = new Set<string>();
   store.some((quad) => {
     seen.add(quad.subject.id);

@@ -11,12 +11,12 @@ import { hubmapResponseAsJsonLd } from './hubmap-data';
  * @param dataUrl The data url.
  * @param serviceType The service type.
  */
- export async function addHubmapDataToStore(
+export async function addHubmapDataToStore(
   store: Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string, assetsApi = '', portalUrl = ''
 ): Promise<void> {
   let hubmapData: Record<string, unknown> | undefined;
   if (serviceType === 'static') {
-    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => { }) as Record<string, unknown>;
+    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => undefined) as Record<string, unknown>;
   } else if (serviceType === 'search-api') {
     const headers: Record<string, string> = { 'Content-type': 'application/json' };
     if (serviceToken && serviceToken.length > 0) {
@@ -39,7 +39,7 @@ import { hubmapResponseAsJsonLd } from './hubmap-data';
         docvalue_fields: [],
         query: { exists: { field: 'rui_location' } }
       })
-    }).then(r => r.ok ? r.json() : undefined).catch(() => { }) as Record<string, unknown>;
+    }).then(r => r.ok ? r.json() : undefined).catch(() => undefined) as Record<string, unknown>;
   }
   if (hubmapData) {
     await addJsonLdToStore(hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken), store);

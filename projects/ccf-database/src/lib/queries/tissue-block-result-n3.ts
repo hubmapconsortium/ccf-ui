@@ -51,7 +51,8 @@ const tissueBlockResultSet: { [iri: string]: string | string[] } = {
  * @param iri The entity id.
  * @returns The list data.
  */
- export function getDonorResultSlowly(store: Store, iri: string): DonorResult {
+export function getDonorResultSlowly(store: Store, iri: string): DonorResult {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const result = { '@id': iri, '@type': 'Donor' } as DonorResult;
   store.some((quad) => {
     const prop = donorResultSet[quad.predicate.id];
@@ -64,9 +65,10 @@ const tissueBlockResultSet: { [iri: string]: string | string[] } = {
   return result;
 }
 
-export const getDonorResult = memoize(getDonorResultSlowly, (store, iri) => iri);
+export const getDonorResult = memoize(getDonorResultSlowly, (_store, iri) => iri);
 
 export function getDatasetResult(store: Store, iri: string): DatasetResult {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const result = { '@id': iri, '@type': 'Dataset' } as DatasetResult;
   store.some((quad) => {
     const prop = datasetResultSet[quad.predicate.id];
@@ -86,7 +88,8 @@ export function getDatasetResult(store: Store, iri: string): DatasetResult {
  * @param iri The entity id.
  * @returns The list data.
  */
- export function getTissueSectionResult(store: Store, iri: string): TissueSectionResult {
+export function getTissueSectionResult(store: Store, iri: string): TissueSectionResult {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const result = { '@id': iri, '@type': 'Sample', datasets: [] as DatasetResult[] } as TissueSectionResult;
   store.some((quad) => {
     const prop = tissueSectionResultSet[quad.predicate.id];
@@ -112,6 +115,7 @@ export function getDatasetResult(store: Store, iri: string): DatasetResult {
  * @returns The list data.
  */
 export function getTissueBlockResultSlowly(store: Store, iri: string): TissueBlockResult {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const result = { '@id': iri, '@type': 'Sample',
     sections: [] as TissueSectionResult[], datasets: [] as DatasetResult[]
   } as TissueBlockResult;
@@ -136,4 +140,4 @@ export function getTissueBlockResultSlowly(store: Store, iri: string): TissueBlo
   return result;
 }
 
-export const getTissueBlockResult = memoize(getTissueBlockResultSlowly, (store, iri) => iri);
+export const getTissueBlockResult = memoize(getTissueBlockResultSlowly, (_store, iri) => iri);
