@@ -9,7 +9,7 @@ describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
 
   const mockMatDialog = {
-    open(...args: unknown[]): MatDialogRef<unknown, unknown> {
+    open(..._args: unknown[]): MatDialogRef<unknown, unknown> {
       return undefined as unknown as MatDialogRef<unknown, unknown>;
     }
   };
@@ -17,7 +17,9 @@ describe('InfoButtonComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(InfoButtonComponent, InfoButtonModule)
-      .mock(MatDialog, { open() { return {}; } });
+      .mock(MatDialog, { open() {
+        return {};
+      } });
   });
 
   it('should display the info icon', async () => {
@@ -42,6 +44,7 @@ describe('InfoButtonComponent', () => {
   it('launches the dialog when data is emitted from the service', async () => {
     const { instance, get } = await shallow.render();
     const spy = spyOn(instance, 'launchInfoDialog');
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     get(InfoButtonService).markdownContent.next([{} as DocumentationContent]);
     expect(spy).toHaveBeenCalled();
   });

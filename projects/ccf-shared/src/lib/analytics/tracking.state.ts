@@ -9,7 +9,7 @@ export interface TrackingStateModel {
 }
 
 export const LOCAL_STORAGE_ALLOW_TELEMETRY_KEY = 'ALLOW_TELEMETRY';
-export const INITIAL_TELEMETRY_SETTING  = getTelemetryStorageSetting();
+export const INITIAL_TELEMETRY_SETTING = getTelemetryStorageSetting();
 
 function getTelemetryStorageSetting(): boolean | undefined {
   const value = localStorage.getItem(LOCAL_STORAGE_ALLOW_TELEMETRY_KEY);
