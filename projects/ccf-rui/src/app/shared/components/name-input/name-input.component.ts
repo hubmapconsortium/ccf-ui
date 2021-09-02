@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable no-underscore-dangle */
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -25,7 +25,8 @@ export interface UserName {
 @Component({
   selector: 'ccf-name-input',
   templateUrl: './name-input.component.html',
-  styleUrls: ['./name-input.component.scss']
+  styleUrls: ['./name-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NameInputComponent {
   /**
@@ -40,7 +41,7 @@ export class NameInputComponent {
   /**
    * Used to validate the last name input field.
    */
-  lastNameValidator  = new FormControl('', [Validators.required]);
+  lastNameValidator = new FormControl('', [Validators.required]);
 
   /**
    * Current user name

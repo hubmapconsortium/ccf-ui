@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GlobalConfigState, TrackingPopupComponent, TrackingState } from 'ccf-shared';
-import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Subscription } from 'rxjs';
 
 import { GlobalConfig } from './core/services/config/config';
@@ -37,22 +36,30 @@ export class AppComponent implements OnDestroy, OnInit {
   private readonly subscriptions = new Subscription();
 
   constructor(
-    readonly model: ModelState, readonly page: PageState, ga: GoogleAnalyticsService,
+    readonly model: ModelState, readonly page: PageState,
     readonly tracking: TrackingState, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
     el: ElementRef<unknown>, injector: Injector, private readonly globalConfig: GlobalConfigState<GlobalConfig>
   ) {
     theming.initialize(el, injector);
     this.subscriptions.add(
-      page.registrationCallbackSet$.subscribe((callbackSet) => { this.open = !callbackSet; })
+      page.registrationCallbackSet$.subscribe((callbackSet) => {
+        this.open = !callbackSet;
+      })
     );
     this.subscriptions.add(
-      page.registrationStarted$.subscribe((registrationStarted) => { this.registrationStarted = registrationStarted; })
+      page.registrationStarted$.subscribe((registrationStarted) => {
+        this.registrationStarted = registrationStarted;
+      })
     );
   }
 
   ngOnInit(): void {
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
-      data: { preClose: () => { snackBar.dismiss(); } },
+      data: {
+        preClose: () => {
+          snackBar.dismiss();
+        }
+      },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
   }

@@ -39,13 +39,13 @@ describe('VisibilityMenuComponent', () => {
 
 
   it('should emit the item when user hovers over an item', async () => {
-    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
+    const { instance, outputs } = await shallow.render({ bind: { items: testItems } });
     instance.mouseOver(testItem);
     expect(outputs.hover.emit).toHaveBeenCalledWith(testItem);
   });
 
   it('should emit undefined when the user moves cursor off the item', async () => {
-    const { instance, outputs} = await shallow.render({ bind: { items: testItems } });
+    const { instance, outputs } = await shallow.render({ bind: { items: testItems } });
     instance.mouseOut();
     expect(outputs.hover.emit).toHaveBeenCalledWith(undefined);
   });

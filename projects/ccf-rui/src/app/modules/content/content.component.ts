@@ -26,7 +26,7 @@ export class ContentComponent implements OnInit, OnDestroy {
   @HostBinding('class') readonly clsName = 'ccf-content';
 
   readonly position$ = this.model.position$.pipe(
-    map(p => ({x: Math.floor(p.x), y: Math.floor(p.y), z: Math.floor(p.z)}))
+    map(p => ({ x: Math.floor(p.x), y: Math.floor(p.y), z: Math.floor(p.z) }))
   );
 
   /** Whether the view type is 3d or register */
@@ -120,21 +120,21 @@ export class ContentComponent implements OnInit, OnDestroy {
     if (event.node['@id'] === '#DraftPlacement') {
       if (event.info.coordinate) {
         const [a, b] = (event.info.coordinate as number[]).map(n => n * 1000) as [number, number];
-        const {position, viewSide, organDimensions } = this.model.snapshot;
+        const { position, viewSide, organDimensions } = this.model.snapshot;
         const dims = [organDimensions.x, organDimensions.y, organDimensions.z].map(n => n / 2);
         let newPosition = position;
         switch (viewSide) {
           case 'anterior':
-            newPosition = {x: a + dims[0], y: b + dims[1], z: position.z};
+            newPosition = { x: a + dims[0], y: b + dims[1], z: position.z };
             break;
           case 'posterior':
-            newPosition = {x: -a + dims[0], y: b + dims[1], z: position.z};
+            newPosition = { x: -a + dims[0], y: b + dims[1], z: position.z };
             break;
           case 'left':
-            newPosition = {x: position.x, y: b + dims[1], z: -a + dims[2]};
+            newPosition = { x: position.x, y: b + dims[1], z: -a + dims[2] };
             break;
           case 'right':
-            newPosition = {x: position.x, y: b + dims[1], z: a + dims[2]};
+            newPosition = { x: position.x, y: b + dims[1], z: a + dims[2] };
             break;
         }
         this.model.setPosition(newPosition);

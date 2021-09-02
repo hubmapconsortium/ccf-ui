@@ -11,7 +11,7 @@ describe('VisibilityToggleComponent', () => {
   });
 
   it('should toggle the visibility variable whenever toggleVisibility is called.', async () => {
-    const { instance } = await shallow.render({ bind: { visible: true }});
+    const { instance } = await shallow.render({ bind: { visible: true } });
     instance.visible = true;
     instance.toggleVisibility();
 
@@ -19,7 +19,7 @@ describe('VisibilityToggleComponent', () => {
   });
 
   it('should emit the new value whenever toggleVisibility is called', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { toggleLabel: 'Visibility' }});
+    const { instance, outputs } = await shallow.render({ bind: { toggleLabel: 'Visibility' } });
     instance.visible = false;
     instance.toggleVisibility();
 

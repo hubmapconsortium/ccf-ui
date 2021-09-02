@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
@@ -8,7 +8,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 @Component({
   selector: 'ccf-visibility-toggle',
   templateUrl: './visibility-toggle.component.html',
-  styleUrls: ['./visibility-toggle.component.scss']
+  styleUrls: ['./visibility-toggle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VisibilityToggleComponent {
   /**
@@ -36,7 +37,7 @@ export class VisibilityToggleComponent {
    * Outputs the new visibility state whenever toggleVisibility()
    * changes it.
    */
-  @Output() visibilityChanged = new EventEmitter<boolean>();
+  @Output() readonly visibilityChanged = new EventEmitter<boolean>();
 
   /**
    * Creates an instance of visibility toggle component.

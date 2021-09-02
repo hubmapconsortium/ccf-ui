@@ -35,5 +35,5 @@ export const GLOBAL_CONFIG = new InjectionToken<GlobalConfig>(
 );
 
 export function globalConfigFactory(globals: GlobalsService): GlobalConfig {
-  return globals.get('ruiConfig', {user: {firstName: '', lastName: ''}});
+  return globals.get('ruiConfig', { user: { firstName: '', lastName: '' } });
 }

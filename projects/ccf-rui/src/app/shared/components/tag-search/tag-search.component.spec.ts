@@ -113,6 +113,7 @@ describe('TagSearchComponent', () => {
     });
 
     it('does not truncate results if within limits', async () => {
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const res = { totalCount: 1, results: [{} as Tag] };
       instance.searchLimit = undefined;
       results.next(res);

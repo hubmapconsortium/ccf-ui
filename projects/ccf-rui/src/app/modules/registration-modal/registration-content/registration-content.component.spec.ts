@@ -45,14 +45,15 @@ describe('RegistrationContentComponent', () => {
 
   it('checks to see if a name has been entered', async () => {
     const { instance } = await shallow.render();
-    instance.checkNameValid({firstName: '', lastName: ''});
+    instance.checkNameValid({ firstName: '', lastName: '' });
     expect(instance.nameValid).toBeFalse();
-    instance.checkNameValid({firstName: 'test', lastName: 'test'});
+    instance.checkNameValid({ firstName: 'test', lastName: 'test' });
     expect(instance.nameValid).toBeTrue();
   });
 
   it('should set the appropriate organ', async () => {
     const { instance } = await shallow.render();
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const testOrgan = { src: 'test', name: 'test', organ: 'test' } as OrganInfo;
     instance.organSelect(testOrgan);
     expect(instance.currentOrgan).toBe(testOrgan);
@@ -91,8 +92,9 @@ describe('RegistrationContentComponent', () => {
   });
 
   it('prevents default', async () => {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const mockEvent = {
-      preventDefault: () => {}
+      preventDefault: () => undefined
     } as MouseEvent;
     const { instance } = await shallow.render();
     const spy = spyOn(mockEvent, 'preventDefault');

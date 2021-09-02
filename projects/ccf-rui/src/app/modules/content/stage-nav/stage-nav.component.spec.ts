@@ -11,7 +11,7 @@ describe('StageNavComponent', () => {
   });
 
   it('should properly update the side variable when updateSide is called.', async () => {
-    const { instance } = await shallow.render({ bind: { side: 'left' }});
+    const { instance } = await shallow.render({ bind: { side: 'left' } });
     instance.updateSide('right');
 
     expect(instance.side).toEqual('right');
@@ -33,7 +33,7 @@ describe('StageNavComponent', () => {
   });
 
   it('should properly update the view3D variable when updateView is called.', async () => {
-    const { instance } = await shallow.render({ bind: { view3D: true }});
+    const { instance } = await shallow.render({ bind: { view3D: true } });
     instance.updateView(false);
 
     expect(instance.view3D).toBeFalse();

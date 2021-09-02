@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
@@ -27,7 +27,8 @@ const DEFAULT_BLOCK_SIZE: BlockSize = {
 @Component({
   selector: 'ccf-block-size-input',
   templateUrl: './block-size-input.component.html',
-  styleUrls: ['./block-size-input.component.scss']
+  styleUrls: ['./block-size-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BlockSizeInputComponent {
   /** HTML class name */

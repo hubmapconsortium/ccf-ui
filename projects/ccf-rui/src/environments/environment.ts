@@ -12,7 +12,7 @@ export const environment = {
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: '', // Do not query the search-api for spatial entities by default
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
-    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
+    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? ''
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };

@@ -62,7 +62,7 @@ describe('ModelState', () => {
         viewSide: initialViewSide,
         id: '',
         label: '',
-        organ: { src: 'app:kidney', name: 'Kidney' } as OrganInfo,
+        organ: { src: 'app:kidney', name: 'Kidney' },
         sex: undefined,
         side: 'left',
         showPrevious: false,
@@ -173,6 +173,7 @@ describe('ModelState', () => {
   });
 
   it('updates the organ', async () => {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const newOrgan = { src: 'app:heart', name: 'Heart' } as OrganInfo;
     state.setOrgan(newOrgan);
 

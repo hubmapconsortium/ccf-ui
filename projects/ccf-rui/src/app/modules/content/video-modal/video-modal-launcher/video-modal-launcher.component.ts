@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { VideoModalComponent } from '../video-modal/video-modal.component';
@@ -9,7 +9,8 @@ import { VideoModalComponent } from '../video-modal/video-modal.component';
 @Component({
   selector: 'ccf-video-modal-launcher',
   templateUrl: './video-modal-launcher.component.html',
-  styleUrls: ['./video-modal-launcher.component.scss']
+  styleUrls: ['./video-modal-launcher.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoModalLauncherComponent {
   /** HTML class name */

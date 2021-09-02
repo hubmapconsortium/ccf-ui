@@ -91,6 +91,7 @@ export const RUI_ORGANS = ALL_ORGANS;
   defaults: {
     id: '',
     label: '',
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     organ: { src: '', name: '' } as OrganInfo,
     organIri: '',
     organDimensions: { x: 90, y: 90, z: 90 },
@@ -365,7 +366,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       this.setAnatomicalStructures(previousItems);
     } else {
       const newStructures = previousItems.map(structure => ({
-        ...structure, opacity: Math.min(20, structure.opacity || 20)
+        ...structure, opacity: Math.min(20, structure.opacity ?? 20)
       }));
       this.setAnatomicalStructures(newStructures);
     }
@@ -381,29 +382,29 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       const db = this.referenceData.snapshot;
       const asLookup: { [id: string]: VisibilityItem } = {};
       for (const entity of (db.anatomicalStructures[organIri] || [])) {
-        const iri = entity.representation_of || entity['@id'];
+        const iri = entity.representation_of ?? entity['@id'];
         if (!asLookup[iri]) {
           asLookup[iri] = {
-            id: entity.representation_of || entity['@id'],
-            name: entity.label,
+            id: entity.representation_of ?? entity['@id'],
+            name: entity.label!,
             visible: true,
             opacity: 20,
             tooltip: entity.comment
-          } as VisibilityItem;
+          };
         }
       }
       this.ctx.patchState({ anatomicalStructures: Object.values(asLookup) });
 
-      const sets = (db.extractionSets[organIri] || []).map((set) => ({
+      const sets: ExtractionSet[] = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,
         sites: sortBy(set.extractionSites.map((entity) => ({
           id: entity['@id'],
-          name: entity.label,
+          name: entity.label!,
           visible: false,
           opacity: 0,
           tooltip: entity.comment
-        } as VisibilityItem)), 'name')
-      } as ExtractionSet));
+        })), 'name')
+      }));
       this.ctx.patchState({ extractionSets: sets });
       this.ctx.patchState({ extractionSites: sets.length > 0 ? sets[0].sites : [] });
 
