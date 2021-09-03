@@ -48,7 +48,7 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @param sanitizer Service used to sanitize default imported urls and html.
    */
   constructor(
-    @Optional() private registry: MatIconRegistry | null,
+    @Optional() private readonly registry: MatIconRegistry | null,
     sanitizer: DomSanitizer
   ) {
     super();

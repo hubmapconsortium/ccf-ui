@@ -240,7 +240,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   constructor(
     messageService: MessageService,
     cdr: ChangeDetectorRef,
-    private element: ElementRef<HTMLElement>
+    private readonly element: ElementRef<HTMLElement>
   ) {
     this.channel = messageService.connect(this);
     this.subscriptions.add(this.channel.getMessages().subscribe(msg => {

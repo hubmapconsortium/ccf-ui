@@ -5,7 +5,7 @@ import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorator
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
-import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from 'ccf-body-ui';
+import { SpatialEntityJsonLd } from 'ccf-body-ui';
 import { GlobalConfigState } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
