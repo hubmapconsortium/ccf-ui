@@ -47,8 +47,10 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @param registry Material icon registry.
    * @param sanitizer Service used to sanitize default imported urls and html.
    */
-  constructor(@Optional() private registry: MatIconRegistry | null,
-              sanitizer: DomSanitizer) {
+  constructor(
+    @Optional() private readonly registry: MatIconRegistry | null,
+    sanitizer: DomSanitizer
+  ) {
     super();
 
     for (const { name, namespace, url, html } of DEFAULT_ICONS) {
@@ -80,15 +82,21 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @returns true if registration was successful, otherwise false.
    */
   private registerIconImpl(definition: IconDefinition): boolean {
-    if (!this.registry) { return false; }
-    if (!definition.url && !definition.html) { return false; }
+    if (!this.registry) {
+      return false;
+    }
+    if (!definition.url && !definition.html) {
+      return false;
+    }
 
     const registry = this.registry as unknown as { [prop: string]: (...arg: unknown[]) => void };
     const methodName = this.getMethodName(definition);
     const method = registry[methodName];
     const args = this.getArguments(definition);
 
-    if (!method) { return false; }
+    if (!method) {
+      return false;
+    }
     try {
       method.apply(registry, args);
       return true;
@@ -105,9 +113,15 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    */
   private getMethodName({ name, namespace, url }: IconDefinition): string {
     const parts = ['addSvgIcon'];
-    if (!name) { parts.push('Set'); }
-    if (!url) { parts.push('Literal'); }
-    if (namespace) { parts.push('InNamespace'); }
+    if (!name) {
+      parts.push('Set');
+    }
+    if (!url) {
+      parts.push('Literal');
+    }
+    if (namespace) {
+      parts.push('InNamespace');
+    }
     return parts.join('');
   }
 
@@ -118,7 +132,7 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @returns An array of arguments.
    */
   private getArguments({ name, namespace, url, html }: IconDefinition): unknown[] {
-    const args: unknown[] = [namespace, name, url || html];
+    const args: unknown[] = [namespace, name, url ?? html];
     return args.filter(value => !!value);
   }
 }

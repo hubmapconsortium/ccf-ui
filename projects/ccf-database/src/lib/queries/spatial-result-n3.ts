@@ -60,7 +60,7 @@ export function getSpatialObjectReferenceSlowly(store: Store, iri: string): Spat
   return create<SpatialObjectReference>(store, iri, 'SpatialObjectReference', mappings.spatialObjectReference);
 }
 
-export const getSpatialObjectReference = memoize(getSpatialObjectReferenceSlowly, (store, iri) => iri);
+export const getSpatialObjectReference = memoize(getSpatialObjectReferenceSlowly, (_store, iri) => iri);
 
 /**
  * Creates an extraction set data object.
@@ -72,13 +72,13 @@ export const getSpatialObjectReference = memoize(getSpatialObjectReferenceSlowly
 export function getExtractionSetSlowly(store: Store, iri: string): ExtractionSet {
   const result = create<ExtractionSet>(store, iri, 'ExtractionSet', mappings.spatialEntity);
   result.extractionSites = sortBy(
-      store.getSubjects(ccf.spatialEntity.extraction_set, iri, null)
-        .map((value) => getSpatialEntity(store, value.id)),
+    store.getSubjects(ccf.spatialEntity.extraction_set, iri, null)
+      .map((value) => getSpatialEntity(store, value.id)),
     ['rui_rank']);
   return result;
 }
 
-export const getExtractionSet = memoize(getExtractionSetSlowly, (store, iri) => iri);
+export const getExtractionSet = memoize(getExtractionSetSlowly, (_store, iri) => iri);
 
 /**
  * Gets extraction sets associated with a reference organ
@@ -95,7 +95,7 @@ export function getExtractionSetsSlowly(store: Store, iri: string): ExtractionSe
   );
 }
 
-export const getExtractionSets = memoize(getExtractionSetsSlowly, (store, iri) => iri);
+export const getExtractionSets = memoize(getExtractionSetsSlowly, (_store, iri) => iri);
 
 /**
  * Gets the anatomical structures associated with a reference organ.
@@ -113,7 +113,7 @@ export function getAnatomicalStructuresSlowly(store: Store, iri: string): Spatia
   );
 }
 
-export const getAnatomicalStructures = memoize(getAnatomicalStructuresSlowly, (store, iri) => iri);
+export const getAnatomicalStructures = memoize(getAnatomicalStructuresSlowly, (_store, iri) => iri);
 
 /**
  * Gets all reference organs in the triple store
@@ -149,11 +149,11 @@ export function getSpatialEntitySlowly(store: Store, iri: string): SpatialEntity
   if (result.ccf_annotations) {
     result.ccf_annotations = store.getObjects(iri, ccf.spatialEntity.ccf_annotations, null).map(o => o.id);
   }
-  store.forSubjects((subject) => result.entityId = subject.id, entity.spatialEntity, iri, null);
+  store.forSubjects((subject) => (result.entityId = subject.id), entity.spatialEntity, iri, null);
   return result;
 }
 
-export const getSpatialEntity = memoize(getSpatialEntitySlowly, (store, iri) => iri);
+export const getSpatialEntity = memoize(getSpatialEntitySlowly, (_store, iri) => iri);
 
 /**
  * Creates a spatial placement object.
@@ -174,7 +174,7 @@ export function getSpatialPlacementSlowly(store: Store, iri: string): SpatialPla
   return result;
 }
 
-export const getSpatialPlacement = memoize(getSpatialPlacementSlowly, (store, iri) => iri);
+export const getSpatialPlacement = memoize(getSpatialPlacementSlowly, (_store, iri) => iri);
 
 /**
  * Creates a spatial entity based on another entity in the store.
@@ -192,4 +192,4 @@ export function getSpatialEntityForEntitySlowly(store: Store, entityIRI: string)
   }
 }
 
-export const getSpatialEntityForEntity = memoize(getSpatialEntityForEntitySlowly, (store, entityIRI) => entityIRI);
+export const getSpatialEntityForEntity = memoize(getSpatialEntityForEntitySlowly, (_store, entityIRI) => entityIRI);

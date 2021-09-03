@@ -1,37 +1,65 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input,
-  OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input,
+  OnChanges, OnDestroy, Output, SimpleChanges, ViewChild
+} from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
 
 /**
  * All organs that will eventually be displayed in the app
  */
 export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
-  { src: 'app:skin', organ: 'Skin', name: 'Skin', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002097'},
-  { src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000059' },
-  { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000948'},
-  { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004538'},
-  { src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004539'},
-  { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002106'},
-  { src: 'app:brain', organ: 'Brain', name: 'Allen Brain', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000955'},
-  { src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002048'},
-  { src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, L', side: 'left', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'},
-  { src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, R', side: 'right', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'},
-  { src: 'app:bone_marrow', organ: 'Pelvis', name: 'Pelvis', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001270'},
-  { src: 'app:thymus', organ: 'Thymus', name: 'Thymus', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002370'},
-  { src: 'app:vasculature', organ: 'Vasculature', name: 'Vasculature', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002049'}
+  {
+    src: 'app:skin', organ: 'Skin', name: 'Skin', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002097'
+  },
+  {
+    src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000059'
+  },
+  {
+    src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000948'
+  },
+  {
+    src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004538'
+  },
+  {
+    src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004539'
+  },
+  {
+    src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002106'
+  },
+  {
+    src: 'app:brain', organ: 'Brain', name: 'Allen Brain', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000955'
+  },
+  {
+    src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002048'
+  },
+  {
+    src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, L', side: 'left', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'
+  },
+  {
+    src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, R', side: 'right', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'
+  },
+  {
+    src: 'app:bone_marrow', organ: 'Pelvis', name: 'Pelvis', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001270'
+  },
+  {
+    src: 'app:thymus', organ: 'Thymus', name: 'Thymus', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002370'
+  },
+  {
+    src: 'app:vasculature', organ: 'Vasculature', name: 'Vasculature', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002049'
+  }
 ];
 
 /**
@@ -116,7 +144,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   /**
    * Emits the name of the organ when selected
    */
-  @Output() organsChanged = new EventEmitter<OrganInfo[]>();
+  @Output() readonly organsChanged = new EventEmitter<OrganInfo[]>();
 
   /**
    * Determines whether the carousel is at the beginning
@@ -205,7 +233,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
       return;
     }
     val = dir === 'right' ? val - this.step : val + this.step;
-    itemList.nativeElement.style.left = val+'px';
+    itemList.nativeElement.style.left = val + 'px';
     this.setLeftRight(val);
   }
 
@@ -265,13 +293,13 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   set(): void {
     const { itemList, itemContainer, carouselContainer } = this;
     const val = parseInt(itemList.nativeElement.style.left, 10) || 0;
-    if (itemList.nativeElement.offsetWidth >= this.organList.length*this.step) {
+    if (itemList.nativeElement.offsetWidth >= this.organList.length * this.step) {
       itemList.nativeElement.style.left = '0px';
       this.onLeft = true;
       this.onRight = true;
     } else {
       this.setLeftRight(val);
-      const listLength = this.step*Math.floor(carouselContainer.nativeElement.offsetWidth/this.step) - 64;
+      const listLength = this.step * Math.floor(carouselContainer.nativeElement.offsetWidth / this.step) - 64;
       itemContainer.nativeElement.style.width = `${listLength}px`;
     }
   }
@@ -281,7 +309,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
    */
   setWidth(): void {
     const { itemContainer, carouselContainer } = this;
-    const listLength = this.step*Math.floor(carouselContainer.nativeElement.offsetWidth/this.step) - 64;
+    const listLength = this.step * Math.floor(carouselContainer.nativeElement.offsetWidth / this.step) - 64;
     itemContainer.nativeElement.style.width = `${listLength}px`;
   }
 
@@ -291,6 +319,6 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   setLeftRight(val: number): void {
     const { itemContainer } = this;
     this.onLeft = val === 0 ? true : false;
-    this.onRight = val <= (itemContainer.nativeElement.offsetWidth - this.organList.length*this.step) ? true : false;
+    this.onRight = val <= (itemContainer.nativeElement.offsetWidth - this.organList.length * this.step) ? true : false;
   }
 }

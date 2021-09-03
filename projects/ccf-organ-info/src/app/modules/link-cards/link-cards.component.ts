@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 interface LinkCard {
   body: string;
@@ -9,7 +9,8 @@ interface LinkCard {
 @Component({
   selector: 'ccf-link-cards',
   templateUrl: './link-cards.component.html',
-  styleUrls: ['./link-cards.component.scss']
+  styleUrls: ['./link-cards.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LinkCardsComponent {
   linkCards: LinkCard[] = [
@@ -48,7 +49,7 @@ export class LinkCardsComponent {
     }
   ];
 
-  goToURL(url: string) {
+  goToURL(url: string): void {
     window.open(url, '_blank');
   }
 }

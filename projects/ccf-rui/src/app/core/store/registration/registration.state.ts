@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Immutable } from '@angular-ru/common/typings';
 import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
-import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from 'ccf-body-ui';
+import { SpatialEntityJsonLd } from 'ccf-body-ui';
 import { GlobalConfigState } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
@@ -21,8 +22,6 @@ import { PageState, PageStateModel } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
 
-/* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable @typescript-eslint/naming-convention */
 
 /**
  * Registration state model
@@ -72,7 +71,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get valid$(): Observable<boolean> {
     return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(data => this.isValid)
+      map(() => this.isValid)
     );
   }
 
@@ -157,10 +156,10 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   }
 
   async editRegistration(reg: SpatialEntityJsonLd): Promise<void> {
-    const place = Array.isArray(reg.placement) ? reg.placement[0] : reg.placement as SpatialPlacementJsonLd;
+    const place = Array.isArray(reg.placement) ? reg.placement[0] : reg.placement;
     const data = this.refData.getOrganData(place.target);
 
-    this.page.setUserName({firstName: reg.creator_first_name, lastName: reg.creator_last_name});
+    this.page.setUserName({ firstName: reg.creator_first_name, lastName: reg.creator_last_name });
 
     if (data) {
       this.model.setOrgan(data.organ);
@@ -172,18 +171,20 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       }
     }
 
-    this.model.setBlockSize({x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension});
-    this.model.setRotation({x: place.x_rotation, y: place.y_rotation, z: place.z_rotation});
-    this.model.setSlicesConfig({thickness: reg.slice_thickness || NaN, numSlices: reg.slice_count || NaN});
+    this.model.setBlockSize({ x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension });
+    this.model.setRotation({ x: place.x_rotation, y: place.y_rotation, z: place.z_rotation });
+    this.model.setSlicesConfig({ thickness: reg.slice_thickness || NaN, numSlices: reg.slice_count || NaN });
 
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => {
+      setTimeout(r, 1000);
+    });
 
-    this.model.setPosition({x: place.x_translation, y: place.y_translation, z: place.z_translation});
+    this.model.setPosition({ x: place.x_translation, y: place.y_translation, z: place.z_translation });
     const iris = new Set<string>(reg.ccf_annotations);
     this.tags.addTags(
       this.model.snapshot.anatomicalStructures
-      .filter(item => iris.has(item.id as string))
-      .map((item) => ({id: item.id, label: item.name, type: 'added'}))
+        .filter(item => iris.has(item.id as string))
+        .map((item) => ({ id: item.id, label: item.name, type: 'added' }))
     );
   }
 

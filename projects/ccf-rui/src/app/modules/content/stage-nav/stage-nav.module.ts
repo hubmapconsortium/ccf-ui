@@ -11,16 +11,16 @@ import { StageNavComponent } from './stage-nav.component';
 
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MatRadioModule,
-        MatSelectModule,
-        MatIconModule,
-        MatDividerModule,
-        LabeledSlideToggleModule,
-        MatTooltipModule
-    ],
-    declarations: [StageNavComponent],
-    exports: [StageNavComponent]
+  imports: [
+    CommonModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatIconModule,
+    MatDividerModule,
+    LabeledSlideToggleModule,
+    MatTooltipModule
+  ],
+  declarations: [StageNavComponent],
+  exports: [StageNavComponent]
 })
 export class StageNavModule { }

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { CCFDatabase } from './ccf-database';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { DirectedGraph } from 'graphology';
@@ -58,13 +60,13 @@ export class CCFSpatialGraph {
   }
 
   addSpatialEntity(entity: SpatialEntity): void {
-    this.graph.mergeNode(entity['@id'], {type: 'SpatialEntity', object: entity});
+    this.graph.mergeNode(entity['@id'], { type: 'SpatialEntity', object: entity });
   }
   addSpatialObjectReference(ref: SpatialObjectReference): void {
-    this.graph.mergeNode(ref['@id'], {type: 'SpatialObjectReference', object: ref});
+    this.graph.mergeNode(ref['@id'], { type: 'SpatialObjectReference', object: ref });
   }
   addSpatialPlacement(placement: SpatialPlacement): void {
-    this.graph.mergeDirectedEdge(placement.source['@id'], placement.target['@id'], {type: 'SpatialPlacement', placement});
+    this.graph.mergeDirectedEdge(placement.source['@id'], placement.target['@id'], { type: 'SpatialPlacement', placement });
   }
 
   getTransformationMatrix(sourceIRI: string, targetIRI: string): Matrix4 | undefined {

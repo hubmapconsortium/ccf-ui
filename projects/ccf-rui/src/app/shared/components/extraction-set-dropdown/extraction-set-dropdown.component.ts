@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { ExtractionSet } from '../../../core/models/extraction-set';
@@ -9,7 +9,8 @@ import { ExtractionSet } from '../../../core/models/extraction-set';
 @Component({
   selector: 'ccf-extraction-set-dropdown',
   templateUrl: './extraction-set-dropdown.component.html',
-  styleUrls: ['./extraction-set-dropdown.component.scss']
+  styleUrls: ['./extraction-set-dropdown.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExtractionSetDropdownComponent {
 
@@ -19,7 +20,7 @@ export class ExtractionSetDropdownComponent {
   /**
    * Emits the current extraction set when selected
    */
-  @Output() setChange = new EventEmitter<ExtractionSet>();
+  @Output() readonly setChange = new EventEmitter<ExtractionSet>();
 
   /**
    * Extraction sets to be displayed as options

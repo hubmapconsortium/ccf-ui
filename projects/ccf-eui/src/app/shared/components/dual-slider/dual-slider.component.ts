@@ -46,7 +46,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   /**
    * Emits the new selection range when a change is made to it.
    */
-  @Output() selectionChange = new EventEmitter<number[]>();
+  @Output() readonly selectionChange = new EventEmitter<number[]>();
 
   /**
    * Determines whether slider popover is shown.
@@ -168,7 +168,7 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
       return;
     } else if (element.nativeElement.contains(target)) {
       return;
-    } else if (popoverElement && popoverElement.nativeElement.contains(target)) {
+    } else if (popoverElement?.nativeElement?.contains?.(target)) {
       return;
     }
 

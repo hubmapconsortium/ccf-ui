@@ -25,7 +25,7 @@ function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen:
 
   const newSeen = new Set<string>();
   for (const d of newDonors) {
-    for (const s of donor2entity.get(d) || []) {
+    for (const s of donor2entity.get(d) ?? []) {
       newSeen.add(s);
     }
   }
@@ -51,7 +51,7 @@ function filterWithSpatialEntity(store: Store, seen: Set<string>, callback: (ent
 
   const newSeen = new Set<string>();
   for (const e of newSpatialEntities) {
-    for (const s of spatial2entity.get(e) || []) {
+    for (const s of spatial2entity.get(e) ?? []) {
       newSeen.add(s);
     }
   }
@@ -86,7 +86,7 @@ function filterWithDataset(store: Store, seen: Set<string>, callback: (datasetsS
 
   const newSeen = new Set<string>();
   for (const e of newDatasets) {
-    for (const s of dataset2entity.get(e) || []) {
+    for (const s of dataset2entity.get(e) ?? []) {
       newSeen.add(s);
     }
   }
@@ -215,7 +215,7 @@ function filterByGroupName(store: Store, seen: Set<string>, groupNames: string[]
  * @param technologies Technology names to filter on.
  * @returns The subset of ids with the specified technology names.
  */
- function filterByTechnology(store: Store, seen: Set<string>, technologies: string[]): Set<string> {
+function filterByTechnology(store: Store, seen: Set<string>, technologies: string[]): Set<string> {
   const newSeen = new Set<string>();
   for (const technology of technologies) {
     const literal = DataFactory.literal(technology);

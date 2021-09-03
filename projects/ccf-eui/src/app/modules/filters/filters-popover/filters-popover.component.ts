@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 /**
  * Popover box for filter settings
@@ -6,7 +6,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'ccf-filters-popover',
   templateUrl: './filters-popover.component.html',
-  styleUrls: ['./filters-popover.component.scss']
+  styleUrls: ['./filters-popover.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersPopoverComponent {
   /**
@@ -23,7 +24,7 @@ export class FiltersPopoverComponent {
   /**
    * Emits the current filters
    */
-  @Output() filtersChange = new EventEmitter<Record<string, unknown>>();
+  @Output() readonly filtersChange = new EventEmitter<Record<string, unknown>>();
 
   /**
    * Keeps track of whether or not the filters popover box is visible or not

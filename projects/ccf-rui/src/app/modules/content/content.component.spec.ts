@@ -35,9 +35,9 @@ describe('ContentComponent', () => {
         ...mockModelState,
         viewType$: of('register'),
         viewSide$: of('anterior'),
-        position$: of({x: 0, y: 0, z: 0}),
-        organDimensions$: of({x: 0, y: 0, z: 0}),
-        defaultPosition: {x: 0, y: 0, z: 0}
+        position$: of({ x: 0, y: 0, z: 0 }),
+        organDimensions$: of({ x: 0, y: 0, z: 0 }),
+        defaultPosition: { x: 0, y: 0, z: 0 }
       })
       .mock(PageState, mockPageState)
       .mock(RegistrationState, {
@@ -77,8 +77,7 @@ describe('ContentComponent', () => {
 
     beforeEach(() => {
       // Constructors can't be arrow functions
-      // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-      spyOn(ResizeSensorModule, 'ResizeSensor').and.callFake(function(_el, callback) {
+      spyOn(ResizeSensorModule, 'ResizeSensor').and.callFake(function (_el, callback) {
         sensorCallback = callback;
         return jasmine.createSpyObj<ResizeSensorModule.ResizeSensor>(
           'ResizeSensor', ['detach']

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { OntologyTreeNode } from 'ccf-database';
@@ -16,14 +16,15 @@ import { OntologySearchService, SearchResult } from '../../../core/services/onto
 @Component({
   selector: 'ccf-ontology-search',
   templateUrl: './ontology-search.component.html',
-  styleUrls: ['./ontology-search.component.scss']
+  styleUrls: ['./ontology-search.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OntologySearchComponent implements OnInit {
   /**
    * Output event-emitter which emits the id of the OntologyTreeNode whose label was
    * selected by the user in the search-results
    */
-  @Output() selected = new EventEmitter<OntologyTreeNode>();
+  @Output() readonly selected = new EventEmitter<OntologyTreeNode>();
 
   /**
    * Instance of FormControl - tracks the value and validation status of an individual form control

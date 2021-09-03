@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * Reusable component that takes an array of strings and renders
@@ -7,7 +7,8 @@ import { Component, Input, HostBinding } from '@angular/core';
 @Component({
   selector: 'ccf-details-label',
   templateUrl: './details-label.component.html',
-  styleUrls: ['./details-label.component.scss']
+  styleUrls: ['./details-label.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsLabelComponent {
   /** HTML Class Name */

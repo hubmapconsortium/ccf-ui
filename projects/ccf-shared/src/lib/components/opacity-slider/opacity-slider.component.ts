@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * Slider for setting opacity on an anatomical structure
@@ -6,7 +6,8 @@ import { Component, EventEmitter, HostBinding, Input, Output, OnInit } from '@an
 @Component({
   selector: 'ccf-opacity-slider',
   templateUrl: './opacity-slider.component.html',
-  styleUrls: ['./opacity-slider.component.scss']
+  styleUrls: ['./opacity-slider.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OpacitySliderComponent implements OnInit {
 

@@ -39,7 +39,9 @@ function getNodeBbox(model: SpatialSceneNode): AABB {
 @StateRepository()
 @State<SceneStateModel>({
   name: 'scene',
-  defaults: {showCollisions: !environment.production}
+  defaults: {
+    showCollisions: !environment.production
+  }
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> implements NgxsOnInit {
@@ -88,24 +90,24 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       map(([anatomicalStructures, organIri, db]) =>
         anatomicalStructures
           // .filter(item => item.visible && item.opacity && item.opacity > 0)
-          .map(item => {
+          .map((item): SpatialSceneNode[] => {
             if (db.sceneNodeLookup[item.id]) {
               return [{
-                ...db.simpleSceneNodeLookup[item.id],
-                opacity: (item.opacity || 100) / 100,
+                ...(db.simpleSceneNodeLookup[item.id] as SpatialSceneNode),
+                opacity: (item.opacity ?? 100) / 100,
                 color: [255, 255, 255, 255]
-              } as SpatialSceneNode];
+              }];
             } else {
               return (db.anatomicalStructures[organIri as string] || [])
                 .filter((node) => node.representation_of === item.id)
-                .map((node) => ({
-                  ...db.simpleSceneNodeLookup[node['@id']],
-                  opacity: (item.opacity || 100) / 100,
+                .map((node): SpatialSceneNode => ({
+                  ...(db.simpleSceneNodeLookup[node['@id']] as SpatialSceneNode),
+                  opacity: (item.opacity ?? 100) / 100,
                   color: [255, 255, 255, 255]
-                } as SpatialSceneNode));
+                }));
             }
           })
-          .reduce((acc, nodes) => acc.concat(nodes), [])
+          .reduce<SpatialSceneNode[]>((acc, nodes) => acc.concat(nodes), [])
       )
     );
   }
@@ -113,7 +115,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   @Computed()
   get nodeCollisions$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.referenceOrganSimpleNodes$, this.placementCube$]).pipe(
-      filter(([nodes, placement]) => placement.length > 0),
+      filter(([_nodes, placement]) => placement.length > 0),
       map(([nodes, placement]) => {
         const bbox = getNodeBbox(placement[0]);
         return nodes.filter((model) => bbox.overlaps(getNodeBbox(model)));
@@ -125,7 +127,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   get previousRegistrationNodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.organIri$, this.model.showPrevious$, this.registration.previousRegistrations$]).pipe(
       map(([organIri, showPrevious, previousRegistrations]) =>
-        showPrevious ? previousRegistrations.map((entity: SpatialEntityJsonLd) => {
+        showPrevious ? previousRegistrations.map((entity: SpatialEntityJsonLd): SpatialSceneNode => {
           const p = Array.isArray(entity.placement) ? entity.placement[0] : entity.placement;
           if (p.target === organIri) {
             const organDimensions = this.model.snapshot.organDimensions;
@@ -140,7 +142,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
               color: [25, 118, 210, 200],
               tooltip: entity.label,
               unpickable: true
-            } as SpatialSceneNode;
+            };
           } else {
             return undefined as unknown as SpatialSceneNode;
           }
@@ -152,13 +154,13 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   @Computed()
   get placementCube$(): Observable<SpatialSceneNode[]> | [] {
     return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$, this.model.organ$]).pipe(
-      map(([viewType, blockSize, rotation, position, organ]) => organ.src === '' ? [] : [this.placementCube])
+      map(([_viewType, _blockSize, _rotation, _position, organ]) => organ.src === '' ? [] : [this.placementCube])
     );
   }
 
   @Computed()
   get placementCube(): SpatialSceneNode {
-    const {viewType, blockSize, rotation, position, organDimensions} = this.model.snapshot;
+    const { viewType, blockSize, rotation, position, organDimensions } = this.model.snapshot;
     const dims = [organDimensions.x, organDimensions.y, organDimensions.z].map(n => -n / 1000 / 2);
     return {
       '@id': '#DraftPlacement',
@@ -179,7 +181,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     return this.model.viewSide$.pipe(
       map((side) => {
         let rotation = 0;
-        switch(side) {
+        switch (side) {
           case 'left':
             rotation = -90;
             break;
@@ -188,6 +190,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
             break;
           case 'posterior':
             rotation = 180;
+            break;
+          default:
             break;
         }
         return rotation;
@@ -203,6 +207,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       transformMatrix: new Matrix4(Matrix4.IDENTITY).scale([2, 2, 2]).rotateY(toRadians(0)),
       tooltip: 'Gizmo',
       unpickable: true,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       _lighting: 'pbr',
       zoomBasedOpacity: false,
       color: [255, 255, 255, 255],
@@ -243,21 +248,21 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     const db = this.referenceData.snapshot;
     return items
       .filter(item => item.visible && item.opacity && item.opacity > 0)
-      .map(item => {
+      .map((item): SpatialSceneNode[] => {
         if (db.sceneNodeLookup[item.id]) {
           return [{
-            ...db.sceneNodeLookup[item.id],
-            opacity: (item.opacity || 100) / 100,
+            ...(db.sceneNodeLookup[item.id] as SpatialSceneNode),
+            opacity: (item.opacity ?? 100) / 100,
             color: [255, 255, 255, 255]
-          } as SpatialSceneNode];
+          }];
         } else {
           return (db.anatomicalStructures[organIri] || [])
             .filter((node) => node.representation_of === item.id)
-            .map((node) => ({
-              ...db.sceneNodeLookup[node['@id']],
-              opacity: (item.opacity || 100) / 100,
+            .map(node => ({
+              ...(db.sceneNodeLookup[node['@id']] as SpatialSceneNode),
+              opacity: (item.opacity ?? 100) / 100,
               color: [255, 255, 255, 255]
-            } as SpatialSceneNode));
+            }));
         }
       })
       .reduce((acc, nodes) => acc.concat(nodes), []);

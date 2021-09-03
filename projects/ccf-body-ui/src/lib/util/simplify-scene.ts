@@ -11,7 +11,8 @@ export async function simplifyScene(nodes: SpatialSceneNode[]): Promise<SpatialS
   const gltfCache: { [url: string]: any } = {};
   const gltfUrls = new Set(nodes.map(n => n.scenegraph).filter(n => !!n));
   for (const gltfUrl of gltfUrls) {
-    gltfCache[gltfUrl as string] = await loadGLTF({scenegraph: gltfUrl} as SpatialSceneNode);
+    // eslint-disable-next-line no-await-in-loop
+    gltfCache[gltfUrl as string] = await loadGLTF({ scenegraph: gltfUrl } as SpatialSceneNode);
   }
   const newNodes: SpatialSceneNode[] = nodes.filter(n => !n.scenegraph);
 

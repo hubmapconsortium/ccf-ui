@@ -47,7 +47,7 @@ function pruneModel(model: OntologyTreeModel, organIds: string[]): OntologyTreeM
   const organNodes = at(model.nodes, organIds);
   const prunedNodes = { [body.id]: body };
 
-  forEach(organNodes, node => node.parent = body.id);
+  forEach(organNodes, node => (node.parent = body.id));
   forEach(organNodes, node => addSubtree(model.nodes, prunedNodes, node));
 
   return { root: body.id, nodes: prunedNodes };
@@ -78,9 +78,9 @@ export class OntologyState extends NgxsImmutableDataRepository<OntologyTreeModel
    *
    * @param dataService The service used for pulling in ontology data
    */
-   constructor(private readonly dataService: DataSourceService) {
-     super();
-   }
+  constructor(private readonly dataService: DataSourceService) {
+    super();
+  }
 
   /**
    * Sets the ontology state.
@@ -107,7 +107,7 @@ export class OntologyState extends NgxsImmutableDataRepository<OntologyTreeModel
     forkJoin([
       this.dataService.getOntologyTreeModel().pipe(take(1)),
       this.dataService.getReferenceOrgans().pipe(take(1))
-    ]).subscribe(([fullOntology, refOrgans]) => {
+    ]).subscribe(([fullOntology, _refOrgans]) => {
       const organNodes = environment.organNodes.concat();
       const ontology = partial(pruneModel, partial.placeholder, organNodes)(fullOntology);
       this.setOntology(ontology);

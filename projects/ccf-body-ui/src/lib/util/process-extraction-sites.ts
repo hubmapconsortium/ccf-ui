@@ -6,12 +6,15 @@ import { parseCSV } from './parse-csv';
 
 
 export async function processExtractionSites(sourceUrl: string, entities: SpatialEntityJsonLd[]): Promise<JsonLdObj[]> {
-  const lookup = entities.reduce((acc, entity) => { acc[entity['@id']] = entity; return acc; }, {});
+  const lookup = entities.reduce<Record<string, SpatialEntityJsonLd>>((acc, entity) => {
+    acc[entity['@id']] = entity;
+    return acc;
+  }, {});
   const rows = await parseCSV(sourceUrl, 'extraction_set_for');
   const extractionSets: { [id: string]: JsonLdObj } = {};
-  rows.forEach( (row, rank) => {
+  rows.forEach((row, rank) => {
     const entityId = `${row.source_spatial_entity}_${encodeURIComponent(row.node_name)}`;
-    const entity = lookup[entityId] as SpatialEntityJsonLd;
+    const entity = lookup[entityId];
     if (entity && row.extraction_set_for.trim().length > 0) {
       entity.extraction_set = row.extraction_set_id;
       entity.label = row.label || entity.label;
