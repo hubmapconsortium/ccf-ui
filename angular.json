@@ -600,6 +600,14 @@
               "projects/ccf-organ-info/src/favicon.ico",
               "projects/ccf-organ-info/src/assets"
             ],
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/e2e/**/*",
+              "**/test.ts",
+              "**/polyfills.ts",
+              "**/environments/**/*.ts",
+              "**/*.module.ts"
+            ],
             "styles": [
               "projects/ccf-organ-info/src/styles.scss"
             ],
