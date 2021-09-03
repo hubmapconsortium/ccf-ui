@@ -1,0 +1,23 @@
+.stats-container {
+  margin-bottom: 2rem;
+
+  .header {
+    margin-bottom: 1rem;
+  }
+
+  .stats-row {
+    display: flex;
+    flex-direction: row;
+
+    .stat {
+      width: 2rem;
+      margin-right: 1rem;
+      text-align: right;
+    }
+
+    .label {
+      flex-grow: 1;
+      text-align: left;
+    }
+  }
+}
