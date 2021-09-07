@@ -34,7 +34,7 @@ export class OrganComponent implements OnChanges {
       tmc: [],
       technologies: [],
       ontologyTerms: [this.organIri]
-    }
+    };
   }
 
   get defaultPosition(): XYZTriplet {
@@ -56,19 +56,19 @@ export class OrganComponent implements OnChanges {
       this.referenceOrgans = value;
       this.organDimensions = this.getDimensions(this.organIri);
       this.bounds = this.getBounds(this.organDimensions);
-    })
+    });
   }
-  
+
   ngOnChanges(): void {
     this.scene = this.source.getScene(this.filter);
   }
 
   getDimensions(iri: string): XYZTriplet {
-    const organ = this.referenceOrgans.find(organ => organ.representation_of === iri);
+    const organ = this.referenceOrgans.find(item => item.representation_of === iri);
     if (organ) {
-      return {x: organ.x_dimension, y: organ.y_dimension, z: organ.z_dimension}
+      return {x: organ.x_dimension, y: organ.y_dimension, z: organ.z_dimension};
     } else {
-      return {x: 0, y: 0, z: 0}
+      return {x: 0, y: 0, z: 0};
     }
   }
 
@@ -77,7 +77,7 @@ export class OrganComponent implements OnChanges {
       x: Math.max(dims.x, this.defaultPosition.x + 40) / 1000,
       y: Math.max(dims.y, this.defaultPosition.y + 40) / 1000,
       z: Math.max(dims.z, this.defaultPosition.z + 40) / 1000
-    }
+    };
   }
 
   updateSex(selection: 'Male' | 'Female'): void {

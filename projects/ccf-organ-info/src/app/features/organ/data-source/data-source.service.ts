@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { GlobalConfigState } from 'ccf-shared';
-import { LocationStrategy } from '@angular/common';
 import { Injectable, OnDestroy } from '@angular/core';
 import {
   AggregateResult,
@@ -12,15 +10,12 @@ import {
   SpatialSceneNode,
   TissueBlockResult,
 } from 'ccf-database';
-import { releaseProxy, Remote, wrap } from 'comlink';
+import { Remote } from 'comlink';
 import { Observable, Subscription, using, Unsubscribable } from 'rxjs';
-import { take, distinctUntilChanged, shareReplay, switchMap, filter } from 'rxjs/operators';
-
+import { take, shareReplay, switchMap } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
-
 type DataSource = Remote<CCFDatabase> | CCFDatabase;
-
 
 function compareConfig(previous: CCFDatabaseOptions, current: CCFDatabaseOptions): boolean {
   return previous === current;
@@ -44,40 +39,16 @@ export class DataSourceService implements OnDestroy {
   /**
    * Creates an instance of data source service.
    */
-  constructor(
-    private readonly locator: LocationStrategy,
-    // private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
-  ) {
-    // this.dataSource = globalConfig.config$.pipe(
-    //   filter(config => Object.keys(config).length > 0),
-    //   distinctUntilChanged(compareConfig),
-    //   switchMap(config => using(
-    //     () => this.createDataSource(),
-    //     (resource) => this.connectDataSource((resource as unknown as { source: DataSource}).source, config)
-    //   )),
-    //   shareReplay(1)
-    // );
-
+  constructor() {
     this.dataSource = using(
       () => this.createDataSource(),
-      (resource) => this.connectDataSource((resource as unknown as { source: DataSource}).source, undefined as unknown as CCFDatabaseOptions)
+      (resource) => this.connectDataSource(
+        (resource as unknown as { source: DataSource}).source,
+        undefined as unknown as CCFDatabaseOptions
+      )
     ).pipe(shareReplay(1));
 
     this.subscriptions.add(this.dataSource.subscribe());
-
-    // this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
-
-    // if (typeof globalThis === 'object') {
-    //   // If a global dbOptions object is set, use this for connecting to the db
-    //   if (globalThis.dbOptions) {
-    //     this.dbOptions = { ...this.dbOptions, ...globalThis.dbOptions } as CCFDatabaseOptions;
-    //   }
-
-    //   // In development, make the db globally accessible
-    //   if (!environment.production) {
-    //     ((globalThis as unknown) as { db: Remote<CCFDatabase> | CCFDatabase }).db = this.dataSource;
-    //   }
-    // }
   }
 
   ngOnDestroy(): void {
@@ -163,20 +134,8 @@ export class DataSourceService implements OnDestroy {
   }
 
   private createDataSource(): { source: DataSource } & Unsubscribable {
-    let source: DataSource;
-    let unsubscribe: () => void = () => undefined;
-
-    // if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
-    //   let worker: Worker;
-    //   ({ source, worker } = this.getWebWorkerDataSource(true));
-    //   unsubscribe = async () => {
-    //     await source[releaseProxy]();
-    //     worker.terminate();
-    //   };
-    // } else {
-      source = new CCFDatabase();
-    // }
-
+    const unsubscribe: () => void = () => undefined;
+    const source = new CCFDatabase();
     return { source, unsubscribe };
   }
 
@@ -188,16 +147,4 @@ export class DataSourceService implements OnDestroy {
     await source.connect(config);
     return source;
   }
-
-  // private getWebWorkerDataSource(directImport = false): { source: Remote<CCFDatabase>; worker: Worker } {
-  //   let worker: Worker;
-  //   if (directImport) {
-  //     worker = new Worker(new URL('./data-source.worker', import.meta.url), { type: 'module' });
-  //   } else {
-  //     const workerUrl = this.locator.prepareExternalUrl('0-es2015.worker.js');
-  //     const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
-  //     worker = new Worker(URL.createObjectURL(workerBlob), { type: 'module' });
-  //   }
-  //   return { source: wrap(worker), worker };
-  // }
 }
