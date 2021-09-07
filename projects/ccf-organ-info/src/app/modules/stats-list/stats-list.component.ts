@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AggregateResult } from 'ccf-database';
 
 @Component({
   selector: 'ccf-stats-list',
@@ -6,19 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./stats-list.component.scss']
 })
 export class StatsListComponent {
-  organInfo = 'male, kidney, left';
-  stats = [
-    {
-      stat: 5,
-      label: 'Tissue Data Providers'
-    },
-    {
-      stat: 60,
-      label: 'Donors'
-    },
-    {
-      stat: 182,
-      label: 'Tissue Blocks'
-    }
-  ];
+  @Input() statsLabel: string;
+  @Input() stats: AggregateResult[];
 }
