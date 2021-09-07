@@ -12,9 +12,9 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0000059' },
   { src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0000948'},
-  { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true,
+  { src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'Left', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0004538'},
-  { src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true,
+  { src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'Right', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0004539'},
   { src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002106'},
@@ -22,9 +22,9 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0000955'},
   { src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002048'},
-  { src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, L', side: 'left', hasSex: true,
+  { src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, L', side: 'Left', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0000029'},
-  { src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, R', side: 'right', hasSex: true,
+  { src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, R', side: 'Right', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0000029'},
   { src: 'app:bone_marrow', organ: 'Pelvis', name: 'Pelvis', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0001270'},
@@ -67,7 +67,7 @@ export interface OrganInfo {
   /**
    * Used for paired organs
    */
-  side?: 'left' | 'right';
+  side?: 'Left' | 'Right';
 
   /**
    * True if applies to both sexes

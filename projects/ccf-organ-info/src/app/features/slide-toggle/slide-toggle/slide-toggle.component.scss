@@ -3,10 +3,24 @@
     margin: 0 1rem;
     transition: color .6s;
     cursor: pointer;
+    opacity: 50%;
+    
+    &.highlighted {
+      opacity: 100%;
+    }
   }
   
   .disabled {
     opacity: 30%;
     cursor: not-allowed;
+  }
+
+  ::ng-deep .slider {
+    .mat-slide-toggle-bar {
+      background-color: rgba(67, 71, 101, 0.5);
+    }
+    .mat-slide-toggle-thumb {
+      background-color: rgba(67, 71, 101);
+    }
   }
 }

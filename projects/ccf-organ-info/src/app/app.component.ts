@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'ccf-organ-info';
   @Input() organ = 'Kidney';
   @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
-  @Input() side?: 'left' | 'right' | undefined = undefined;
+  @Input() side?: 'Left' | 'Right' | undefined = 'Right';
 
   organIri: string | undefined;
 
@@ -21,8 +21,8 @@ export class AppComponent {
   }
 
   sideChange(selection: 'Left' | 'Right'): void {
-    this.side = selection === 'Left' ? 'left' : 'right';
-    this.organIri = this.getCurrentOrgan()?.id
+    this.side = selection === 'Left' ? 'Left' : 'Right';
+    this.organIri = this.getCurrentOrgan()?.id;
   }
 
   getCurrentOrgan(): OrganInfo | undefined {
