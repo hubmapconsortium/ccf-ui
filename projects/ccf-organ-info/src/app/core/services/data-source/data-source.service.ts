@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { GlobalConfigState } from 'ccf-shared';
 import { LocationStrategy } from '@angular/common';
 import { Injectable, OnDestroy } from '@angular/core';
 import {
@@ -10,13 +9,13 @@ import {
   OntologyTreeModel,
   SpatialEntity,
   SpatialSceneNode,
-  TissueBlockResult,
+  TissueBlockResult
 } from 'ccf-database';
-import { releaseProxy, Remote, wrap } from 'comlink';
-import { Observable, Subscription, using, Unsubscribable } from 'rxjs';
-import { take, distinctUntilChanged, shareReplay, switchMap, filter } from 'rxjs/operators';
-
+import { Remote } from 'comlink';
+import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
+import { shareReplay, switchMap, take } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
+
 
 
 type DataSource = Remote<CCFDatabase> | CCFDatabase;
@@ -46,17 +45,23 @@ export class DataSourceService implements OnDestroy {
    */
   constructor(
     private readonly locator: LocationStrategy,
-    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
+    // private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
   ) {
-    this.dataSource = globalConfig.config$.pipe(
-      filter(config => Object.keys(config).length > 0),
-      distinctUntilChanged(compareConfig),
-      switchMap(config => using(
-        () => this.createDataSource(),
-        (resource) => this.connectDataSource((resource as unknown as { source: DataSource}).source, config)
-      )),
-      shareReplay(1)
-    );
+    // this.dataSource = globalConfig.config$.pipe(
+    //   filter(config => Object.keys(config).length > 0),
+    //   distinctUntilChanged(compareConfig),
+    //   switchMap(config => using(
+    //     () => this.createDataSource(),
+    //     (resource) => this.connectDataSource((resource as unknown as { source: DataSource}).source, config)
+    //   )),
+    //   shareReplay(1)
+    // );
+
+    this.dataSource = using(
+      () => this.createDataSource(),
+      (resource) => this.connectDataSource((resource as unknown as { source: DataSource}).source,
+        undefined as unknown as CCFDatabaseOptions)
+    ).pipe(shareReplay(1));
 
     this.subscriptions.add(this.dataSource.subscribe());
 
@@ -99,8 +104,6 @@ export class DataSourceService implements OnDestroy {
    * @returns An observable emitting the results.
    */
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
-    console.log(' ================================================================================= \nfilter: ', filter);
-
     return this.dataSource.pipe(
       switchMap(db => db.getAggregateResults(filter)),
       take(1)
@@ -137,7 +140,7 @@ export class DataSourceService implements OnDestroy {
    *
    * @returns An observable emitting the results.
    */
-   getReferenceOrgans(): Observable<SpatialEntity[]> {
+  getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.dataSource.pipe(
       switchMap(db => db.getReferenceOrgans()),
       take(1)
@@ -150,27 +153,29 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
+  getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.dataSource.pipe(
-      switchMap(db => db.getScene(filter)),
+      switchMap(db => db.getScene(filter)
+        .then(value => value.filter(node => filter!.ontologyTerms.includes(node.representation_of!)))
+      ),
       take(1)
     );
   }
 
   private createDataSource(): { source: DataSource } & Unsubscribable {
-    let source: DataSource;
-    let unsubscribe: () => void = () => undefined;
+    const source: DataSource = new CCFDatabase();
+    const unsubscribe: () => void = () => undefined;
 
-    if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
-      let worker: Worker;
-      ({ source, worker } = this.getWebWorkerDataSource(true));
-      unsubscribe = async () => {
-        await source[releaseProxy]();
-        worker.terminate();
-      };
-    } else {
-      source = new CCFDatabase();
-    }
+    // if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
+    //   let worker: Worker;
+    //   ({ source, worker } = this.getWebWorkerDataSource(true));
+    //   unsubscribe = async () => {
+    //     await source[releaseProxy]();
+    //     worker.terminate();
+    //   };
+    // } else {
+    // source = new CCFDatabase();
+    // }
 
     return { source, unsubscribe };
   }
@@ -184,15 +189,15 @@ export class DataSourceService implements OnDestroy {
     return source;
   }
 
-  private getWebWorkerDataSource(directImport = false): { source: Remote<CCFDatabase>; worker: Worker } {
-    let worker: Worker;
-    if (directImport) {
-      worker = new Worker(new URL('./data-source.worker', import.meta.url), { type: 'module' });
-    } else {
-      const workerUrl = this.locator.prepareExternalUrl('0-es2015.worker.js');
-      const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
-      worker = new Worker(URL.createObjectURL(workerBlob), { type: 'module' });
-    }
-    return { source: wrap(worker), worker };
-  }
+  // private getWebWorkerDataSource(directImport = false): { source: Remote<CCFDatabase>; worker: Worker } {
+  //   let worker: Worker;
+  //   if (directImport) {
+  //     worker = new Worker(new URL('./data-source.worker', import.meta.url), { type: 'module' });
+  //   } else {
+  //     const workerUrl = this.locator.prepareExternalUrl('0-es2015.worker.js');
+  //     const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
+  //     worker = new Worker(URL.createObjectURL(workerBlob), { type: 'module' });
+  //   }
+  //   return { source: wrap(worker), worker };
+  // }
 }
