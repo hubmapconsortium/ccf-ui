@@ -8,7 +8,6 @@
 
 <div class='stage-options'>
   <app-slide-toggle
-    matTooltip="Change sex."
     class="view-slider"
     [labels]="['Male', 'Female']"
     [value]="sex"
@@ -16,10 +15,10 @@
   ></app-slide-toggle>
 
   <app-slide-toggle
-    matTooltip="Change side."
     class="view-slider"
     [labels]="['Left', 'Right']"
     [value]="side"
+    [disabled]="!side"
     (valueChange)="updateSide($event)"
   ></app-slide-toggle>
 </div>
