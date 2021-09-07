@@ -1,5 +1,7 @@
 <h1>ccf-organ-info works.</h1>
 <app-organ
-  sex="Female"
-  organIri="http://purl.obolibrary.org/obo/UBERON_0004539">
+  [(sex)]="sex"
+  [(side)]="side"
+  [(organIri)]="organIri"
+  (sideChange)="sideChange($event)">
 </app-organ>

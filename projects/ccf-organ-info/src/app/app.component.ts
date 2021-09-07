@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ALL_ORGANS } from 'ccf-shared';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ccf-organ-info';
+  @Input() organ = 'Heart';
+  @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
+  @Input() side?: 'left' | 'right' | undefined = undefined;
 
-  constructor() { }
+  organIri: string | undefined;
+
+  constructor() {
+    this.organIri = ALL_ORGANS.find(organ => organ.organ === this.organ && (this.side ? organ.side === this.side : true))?.id
+    console.log(this.organIri)
+  }
+
+  sideChange(selection: 'Left' | 'Right'): void {
+    this.side = selection === 'Left' ? 'left' : 'right';
+    console.log(this.side)
+    
+    console.log(ALL_ORGANS.find(organ => organ.organ === this.organ && (this.side ? organ.side === this.side : true)))
+    this.organIri = ALL_ORGANS.find(organ => organ.organ === this.organ && (this.side ? organ.side === this.side : true))?.id
+    console.log(this.organIri)
+  }
 }

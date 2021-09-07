@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Filter, SpatialEntity } from 'ccf-database';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { Observable } from 'rxjs';
@@ -22,6 +22,9 @@ export class OrganComponent implements OnChanges {
   @Input() organIri: string;
   @Input() sex: 'Both' | 'Male' | 'Female';
   @Input() side?: 'Left' | 'Right';
+
+  @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
+  @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
 
   get filter(): Filter {
     return {
@@ -79,12 +82,12 @@ export class OrganComponent implements OnChanges {
 
   updateSex(selection: 'Male' | 'Female'): void {
     this.sex = selection;
-    console.log(this.sex)
+    this.sexChange.emit(this.sex);
   }
 
   updateSide(selection: 'Left' | 'Right'): void {
     this.side = selection;
-    console.log(this.side)
+    this.sideChange.emit(this.side);
   }
 
 }
