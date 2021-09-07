@@ -21,7 +21,7 @@ export class OrganComponent implements OnChanges {
 
   @Input() organIri: string;
   @Input() sex: 'Both' | 'Male' | 'Female';
-  @Input() side?: string;
+  @Input() side?: 'Left' | 'Right';
 
   get filter(): Filter {
     return {
@@ -70,13 +70,21 @@ export class OrganComponent implements OnChanges {
   }
 
   getBounds(dims: XYZTriplet): XYZTriplet {
-    console.log(dims)
-    console.log(this.defaultPosition)
     return {
       x: Math.max(dims.x, this.defaultPosition.x + 40) / 1000,
       y: Math.max(dims.y, this.defaultPosition.y + 40) / 1000,
       z: Math.max(dims.z, this.defaultPosition.z + 40) / 1000
     }
+  }
+
+  updateSex(selection: 'Male' | 'Female'): void {
+    this.sex = selection;
+    console.log(this.sex)
+  }
+
+  updateSide(selection: 'Left' | 'Right'): void {
+    this.side = selection;
+    console.log(this.side)
   }
 
 }

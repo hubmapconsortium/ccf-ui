@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OrganComponent } from './organ.component';
 
 import { BodyUiModule } from 'ccf-shared';
+import { SlideToggleModule } from '../slide-toggle/slide-toggle/slide-toggle.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { BodyUiModule } from 'ccf-shared';
   ],
   imports: [
     CommonModule,
-    BodyUiModule
+    BodyUiModule,
+    SlideToggleModule
   ],
   exports: [
     OrganComponent

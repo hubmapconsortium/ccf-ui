@@ -1,0 +1,12 @@
+:host{
+  .slide-label {
+    margin: 0 1rem;
+    transition: color .6s;
+    cursor: pointer;
+  }
+  
+  .disabled {
+    opacity: 30%;
+    cursor: not-allowed;
+  }
+}

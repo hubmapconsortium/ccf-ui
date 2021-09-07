@@ -5,3 +5,21 @@
   [zoom]="11.5"
   camera="orthographic"
 ></ccf-body-ui>
+
+<div class='stage-options'>
+  <app-slide-toggle
+    matTooltip="Change sex."
+    class="view-slider"
+    [labels]="['Male', 'Female']"
+    [value]="sex"
+    (valueChange)="updateSex($event)"
+  ></app-slide-toggle>
+
+  <app-slide-toggle
+    matTooltip="Change side."
+    class="view-slider"
+    [labels]="['Left', 'Right']"
+    [value]="side"
+    (valueChange)="updateSide($event)"
+  ></app-slide-toggle>
+</div>
