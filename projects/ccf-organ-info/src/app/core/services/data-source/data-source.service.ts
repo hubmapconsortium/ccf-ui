@@ -136,10 +136,6 @@ export class DataSourceService implements OnDestroy {
   }
 
   private async connectDataSource(source: DataSource, config: CCFDatabaseOptions): Promise<DataSource> {
-    if (environment.disableDbWorker) {
-      await new Promise(r => setTimeout(r, 100));
-    }
-
     await source.connect(config);
     return source;
   }
