@@ -1,5 +1,8 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
+import { Observable } from 'rxjs';
+import { DataSourceService } from './core/services/data-source/data-source.service';
+import { AggregateResult, Filter } from 'ccf-database';
 
 
 @Component({
@@ -14,7 +17,29 @@ export class AppComponent {
   @Input() side?: 'left' | 'right' = 'right';
   @Input() organIri?: string = 'http://purl.obolibrary.org/obo/UBERON_0004539';
 
-  constructor() {
+  title = 'ccf-organ-info';
+  statsLabel = 'Male, kidney, left';
+  stats: Observable<AggregateResult[]>;
+
+  testFilter: Filter = {
+    sex: 'Both',
+    ageRange: [
+      1,
+      110
+    ],
+    bmiRange: [
+      13,
+      83
+    ],
+    tmc: [],
+    technologies: [],
+    ontologyTerms: [
+      'http://purl.obolibrary.org/obo/UBERON_0000948'
+    ]
+  };
+
+  constructor(readonly data: DataSourceService) {
+    this.stats = data.getAggregateResults(this.testFilter);
     this.organIri = this.organIri ? this.organIri : this.getCurrentOrgan()?.id;
     this.side = this.getCurrentOrgan()?.side;
     this.organ = this.getCurrentOrgan()?.organ;

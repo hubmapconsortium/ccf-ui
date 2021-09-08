@@ -6,12 +6,15 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { OrganModule } from './features/organ/organ.module';
 import { LinkCardsModule } from './modules/link-cards/link-cards.module';
+import { StatsListModule } from './modules/stats-list/stats-list.module';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     OrganModule,
+    LinkCardsModule,
+    StatsListModule,
 
     AnalyticsModule.forRoot({
       gaToken: environment.googleAnalyticsToken,
@@ -20,9 +23,7 @@ import { LinkCardsModule } from './modules/link-cards/link-cards.module';
       projectName: 'ccf',
 
       developmentMode: !environment.production
-    }),
-
-    LinkCardsModule
+    })
   ],
   declarations: [AppComponent],
   providers: [],

@@ -1,0 +1,10 @@
+<div class="stats-container">
+  <div class="header">
+    {{ statsLabel }}
+  </div>
+
+  <div class="stats-row" *ngFor="let stat of stats">
+    <div class="stat">{{ stat.count }}</div>
+    <div class="label">{{ stat.label }}</div>
+  </div>
+</div>
