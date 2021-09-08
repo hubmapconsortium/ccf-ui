@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-promise-executor-return */
 import { Injectable, OnDestroy } from '@angular/core';
 import {
   AggregateResult,
