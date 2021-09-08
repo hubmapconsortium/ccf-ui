@@ -25,6 +25,6 @@ export class AppComponent {
   }
 
   getCurrentOrgan(): OrganInfo | undefined {
-    return ALL_ORGANS.find(organ => organ.organ === this.organ && (this.side ? organ.side === this.side : true));
+    return ALL_ORGANS.find(organ => organ.organ === this.organ && (organ.side ? organ.side === this.side : true));
   }
 }
