@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 /** Production environment configuration. */
 export const environment = {
   production: true,
@@ -33,5 +34,6 @@ export const environment = {
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
   },
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   googleAnalyticsToken: window.location.hostname === 'portal.hubmapconsortium.org' ? 'G-1WRJHN9FM6' : 'G-J9HWV9QPJ4'
 };
