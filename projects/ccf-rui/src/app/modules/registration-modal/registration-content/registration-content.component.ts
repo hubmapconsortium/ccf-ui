@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { PageState, Person } from '../../../core/store/page/page.state';
 import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
@@ -11,8 +11,9 @@ import { OrganInfo } from 'ccf-shared';
  */
 @Component({
   selector: 'ccf-registration-content',
-  templateUrl: 'registration-content.component.html',
-  styleUrls: ['./registration-content.component.scss']
+  templateUrl: './registration-content.component.html',
+  styleUrls: ['./registration-content.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationContentComponent {
   /** HTML class name */
@@ -91,7 +92,7 @@ export class RegistrationContentComponent {
    * @param [event] The click event
    * @returns  Returns nothing is no organ is selected
    */
-  registerButtonClick(event?: MouseEvent) {
+  registerButtonClick(event?: MouseEvent): void {
     if (event) {
       event.preventDefault();
     }

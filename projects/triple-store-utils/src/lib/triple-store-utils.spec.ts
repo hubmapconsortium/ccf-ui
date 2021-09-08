@@ -25,6 +25,7 @@ function getGlobalThis(): typeof globalThis {
   } else if (typeof global === 'object') {
     return global as unknown as typeof globalThis;
   } else {
+    // eslint-disable-next-line no-new-func, @typescript-eslint/no-implied-eval
     return Function('return this;')() as typeof globalThis;
   }
 }
@@ -53,7 +54,9 @@ describe('triple-store-utils', () => {
 
     function callListener(method: 'on' | 'once', event: string, ...args: unknown[]): void {
       const listener = findListener(method, event);
-      if (listener) { listener(...args); }
+      if (listener) {
+        listener(...args);
+      }
     }
 
     function next(value: unknown): void {
@@ -126,7 +129,10 @@ describe('triple-store-utils', () => {
     });
 
     it('completes after all values have been read', () => {
-      for (const _unused of values) { stream.read(); }
+      // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-unused-vars
+      for (const _unused of values) {
+        stream.read();
+      }
       expect(stream.read()).toBeNull();
     });
   });
@@ -248,7 +254,7 @@ describe('triple-store-utils', () => {
     let store: N3Store;
 
     beforeEach(() => {
-      store = new N3Store(undefined, {factory: DataFactory});
+      store = new N3Store(undefined, { factory: DataFactory });
       store.addQuads([
         quad('sub1', 'thing', 'sub2')
       ]);
@@ -265,7 +271,7 @@ describe('triple-store-utils', () => {
     let storeQuads: Quad[];
 
     beforeEach(() => {
-      store = new N3Store(undefined, {factory: DataFactory});
+      store = new N3Store(undefined, { factory: DataFactory });
       store.addQuads([
         quad('sub1', 'thing', 'sub2')
       ]);

@@ -5,31 +5,31 @@ import { VideoModalComponent } from './video-modal.component';
 import { VideoModalModule } from './video-modal.module';
 
 describe('VideoModalComponent', () => {
-    let shallow: Shallow<VideoModalComponent>;
+  let shallow: Shallow<VideoModalComponent>;
 
-    beforeEach(() => {
-        shallow = new Shallow(VideoModalComponent, VideoModalModule)
-            .provide({ provide: MatDialogRef, useValue: {} })
-            .provide({ provide: MAT_DIALOG_DATA, useValue: {} });
-    });
+  beforeEach(() => {
+    shallow = new Shallow(VideoModalComponent, VideoModalModule)
+      .provide({ provide: MatDialogRef, useValue: {} })
+      .provide({ provide: MAT_DIALOG_DATA, useValue: {} });
+  });
 
-    it('should call the close() method when the close button is pressed', async () => {
-        const { find, instance } = await shallow.render();
-        const spy = spyOn(instance, 'close');
-        const closeButton = find('.close-icon');
+  it('should call the close() method when the close button is pressed', async () => {
+    const { find, instance } = await shallow.render();
+    const spy = spyOn(instance, 'close');
+    const closeButton = find('.close-icon');
 
-        closeButton.triggerEventHandler('click', {});
-        expect(spy).toHaveBeenCalled();
-    });
+    closeButton.triggerEventHandler('click', {});
+    expect(spy).toHaveBeenCalled();
+  });
 
-    it('should close the dialog when the close() method is called', async () => {
-        const { instance, get } = await shallow
-            .mock(MatDialogRef, { close(): void { } })
-            .render();
-        const ref = get(MatDialogRef);
+  it('should close the dialog when the close() method is called', async () => {
+    const { instance, get } = await shallow
+      .mock(MatDialogRef, { close(): void { /* Empty */ } })
+      .render();
+    const ref = get(MatDialogRef);
 
-        instance.close();
+    instance.close();
 
-        expect(ref.close).toHaveBeenCalled();
-    });
+    expect(ref.close).toHaveBeenCalled();
+  });
 });

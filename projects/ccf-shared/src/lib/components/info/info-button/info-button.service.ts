@@ -32,7 +32,7 @@ export class InfoButtonService {
    * Read the markdown file to split it by h1 tags.
    */
   readMarkdown(): void {
-    this.http.get(documentationURL, {responseType: 'text'}).subscribe((data: string) => {
+    this.http.get(documentationURL, { responseType: 'text' }).subscribe((data: string) => {
       const markdownContent: DocumentationContent[] = this.parseMarkdown(data);
       this.markdownContent.next(markdownContent);
     });

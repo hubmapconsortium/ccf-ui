@@ -95,15 +95,21 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @returns true if registration was successful, otherwise false.
    */
   private registerIconImpl(definition: IconDefinition): boolean {
-    if (!this.registry) { return false; }
-    if (!definition.url && !definition.html) { return false; }
+    if (!this.registry) {
+      return false;
+    }
+    if (!definition.url && !definition.html) {
+      return false;
+    }
 
     const registry = this.registry;
     const methodName = this.getMethodName(definition);
     const method = registry[methodName] as (...arg: unknown[]) => void;
     const args = this.getArguments(definition);
 
-    if (!method) { return false; }
+    if (!method) {
+      return false;
+    }
     try {
       method.apply(registry, args);
       return true;
@@ -120,9 +126,15 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    */
   private getMethodName({ name, namespace, url }: IconDefinition): string {
     const parts = ['addSvgIcon'];
-    if (!name) { parts.push('Set'); }
-    if (!url) { parts.push('Literal'); }
-    if (namespace) { parts.push('InNamespace'); }
+    if (!name) {
+      parts.push('Set');
+    }
+    if (!url) {
+      parts.push('Literal');
+    }
+    if (namespace) {
+      parts.push('InNamespace');
+    }
     return parts.join('');
   }
 
@@ -133,7 +145,7 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    * @returns An array of arguments.
    */
   private getArguments({ name, namespace, url, html }: IconDefinition): unknown[] {
-    const args: unknown[] = [namespace, name, url || html];
+    const args: unknown[] = [namespace, name, url ?? html];
     return args.filter(value => !!value);
   }
 }

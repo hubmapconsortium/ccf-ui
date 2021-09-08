@@ -7,15 +7,15 @@ import { processSceneNodes } from './process-scene-nodes';
 export async function processSpatialEntities(parent: SpatialEntityJsonLd, gltfOverride?: string): Promise<SpatialEntityJsonLd[]> {
   const parentPlacement = parent.object.placement;
   const gltfFile = gltfOverride ? gltfOverride : parent.object.file;
-  const R = {x: parentPlacement.x_rotation, y: parentPlacement.y_rotation, z: parentPlacement.z_rotation};
-  const S = {x: parentPlacement.x_scaling, y: parentPlacement.y_scaling, z: parentPlacement.z_scaling};
+  const R = { x: parentPlacement.x_rotation, y: parentPlacement.y_rotation, z: parentPlacement.z_rotation };
+  const S = { x: parentPlacement.x_scaling, y: parentPlacement.y_scaling, z: parentPlacement.z_scaling };
   const scalar = new Matrix4(Matrix4.IDENTITY).scale([S.x * 1000, S.y * 1000, S.z * 1000]);
   const nodes = await processSceneNodes(gltfFile, scalar);
 
-  return Object.values(nodes).filter(n => n['@type'] !== 'GLTFNode').map((node) => {
+  return Object.values(nodes).filter(n => n['@type'] !== 'GLTFNode').map((node): Partial<SpatialEntityJsonLd> => {
     const id = `${parent['@id']}_${encodeURIComponent(node['@id'])}`;
     const creationDate = new Date().toISOString().split('T')[0];
-    const T = {x: node.bbox.lowerBound.x, y: node.bbox.lowerBound.y, z: node.bbox.lowerBound.z};
+    const T = { x: node.bbox.lowerBound.x, y: node.bbox.lowerBound.y, z: node.bbox.lowerBound.z };
 
     return {
       '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
@@ -71,6 +71,6 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd, gltfOv
         z_translation: T.z,
         translation_units: placement.translation_units // Assumed 'millimeters'
       }))
-    } as Partial<SpatialEntityJsonLd>;
+    };
   }) as SpatialEntityJsonLd[];
 }

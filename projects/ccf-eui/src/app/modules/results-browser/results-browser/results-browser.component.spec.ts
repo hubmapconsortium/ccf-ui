@@ -13,8 +13,8 @@ function makeScrollEventObject(
       clientHeight,
       scrollHeight,
       scrollTop
-    } as Element as EventTarget
-  } as UIEvent;
+    }
+  } as unknown as UIEvent;
 }
 
 describe('ResultsBrowserComponent', () => {
@@ -59,6 +59,7 @@ describe('ResultsBrowserComponent', () => {
 
   it('should handle donor card selection', async () => {
     const { instance } = await shallow.render();
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const testResult = {} as ListResult;
     const spy1 = spyOn(instance.listResultSelected, 'next');
     const spy2 = spyOn(instance.listResultDeselected, 'next');
@@ -69,6 +70,7 @@ describe('ResultsBrowserComponent', () => {
   });
 
   it('onScroll returns nothing if no target', async () => {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const mockEvent = {
       target: null
     } as UIEvent;

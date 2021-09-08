@@ -7,7 +7,7 @@ import { loadGLTF, loadGLTF2, registerGLTFLoaders } from './util/load-gltf';
 import { doCollisions } from './util/spatial-scene-collider';
 
 
-function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]: unknown}): SimpleMeshLayer<unknown> | undefined {
+function meshLayer(id: string, data: SpatialSceneNode[], options: { [key: string]: unknown }): SimpleMeshLayer<unknown> | undefined {
   if (!data || data.length === 0) {
     return undefined;
   } else {
@@ -22,8 +22,8 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mesh: new CubeGeometry() as any,
         wireframe: false,
-        getTransformMatrix: (d) => (d as {transformMatrix: number[][]}).transformMatrix,
-        getColor: (d) => (d as {color: [number, number, number, number]}).color || [255, 255, 255, 0.9*255]
+        getTransformMatrix: (d) => (d as { transformMatrix: number[][] }).transformMatrix,
+        getColor: (d) => (d as { color: [number, number, number, number] }).color || [255, 255, 255, 0.9*255]
       },
       ...options
     });
@@ -32,11 +32,11 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: {[key: string]
 
 export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
   static readonly layerName = 'BodyUILayer';
-  static readonly gltfCache: {[url: string]: Promise<Blob>} = {};
+  static readonly gltfCache: { [url: string]: Promise<Blob> } = {};
 
   initializeState(): void {
     const { data } = this.props;
-    this.setState({data: data || [], zoomOpacity: 0.8, doCollisions: false});
+    this.setState({ data: data ?? [], zoomOpacity: 0.8, doCollisions: false });
     registerGLTFLoaders();
   }
 
@@ -52,17 +52,17 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const url2gltf: {[url: string]: Promise<any>} = {};
+    const url2gltf: { [url: string]: Promise<any> } = {};
     for (const m of models) {
-      if (m.scenegraph && m.scenegraphNode && !url2gltf.hasOwnProperty(m.scenegraph)) {
-        url2gltf[m.scenegraph] = loadGLTF({scenegraph: m.scenegraph} as SpatialSceneNode, BodyUILayer.gltfCache);
+      if (m.scenegraph && m.scenegraphNode && !Object.prototype.hasOwnProperty.call(url2gltf, m.scenegraph)) {
+        url2gltf[m.scenegraph] = loadGLTF({ scenegraph: m.scenegraph } as SpatialSceneNode, BodyUILayer.gltfCache);
       }
     }
 
     return [
-      meshLayer('cubes', cubes, {wireframe: false, pickable: false}),
-      meshLayer('pickableCubes', pickableCubes, {wireframe: false, pickable: true}),
-      meshLayer('wireframes', wireframes, {wireframe: true, pickable: false}),
+      meshLayer('cubes', cubes, { wireframe: false, pickable: false }),
+      meshLayer('pickableCubes', pickableCubes, { wireframe: false, pickable: true }),
+      meshLayer('wireframes', wireframes, { wireframe: true, pickable: false }),
       ...models.map((model) =>
         new ScenegraphLayer({
           id: 'models-' + model['@id'],
@@ -73,12 +73,11 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
           scenegraph: model.scenegraphNode ?
             loadGLTF2(model.scenegraphNode, url2gltf[model.scenegraph as string]) :
             model.scenegraph as unknown as URL,
-          // eslint-disable-next-line no-underscore-dangle
-          _lighting: model._lighting,  // 'pbr' | undefined
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          _lighting: model._lighting, // 'pbr' | undefined
           getTransformMatrix: model.transformMatrix as unknown as number[][],
-          getColor: model.color || [0, 255, 0, 0.5*255],
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          parameters: {depthMask: !model.zoomBasedOpacity && (model.opacity === undefined || model.opacity === 1)} as any
+          getColor: model.color ?? [0, 255, 0, 0.5*255],
+          parameters: { depthMask: !model.zoomBasedOpacity && (model.opacity === undefined || model.opacity === 1) }
         })
       )
     ].filter(l => !!l);

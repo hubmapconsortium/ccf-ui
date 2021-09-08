@@ -64,7 +64,7 @@ export class CCFDatabase {
    * @param [options] Initialization options.
    */
   constructor(public options: CCFDatabaseOptions = DEFAULT_CCF_DB_OPTIONS) {
-    this.store = new Store(undefined, {factory: DataFactory});
+    this.store = new Store(undefined, { factory: DataFactory });
     this.graph = new CCFSpatialGraph(this);
     this.scene = new CCFSpatialScene(this);
   }
@@ -96,7 +96,7 @@ export class CCFDatabase {
     const ccfOwlUrl = this.options.ccfOwlUrl;
     if (ccfOwlUrl.endsWith('.n3store.json')) {
       const storeString = await fetch(ccfOwlUrl).then(r => r.text())
-        .catch(x => console.log('Couldn\'t locate serialized store.'));
+        .catch(() => console.log('Couldn\'t locate serialized store.'));
       if (storeString) {
         this.store = deserializeN3Store(storeString, DataFactory);
       }
@@ -109,7 +109,7 @@ export class CCFDatabase {
       for (const source of this.options.dataSources) {
         ops.push(
           addJsonLdToStore(source, this.store)
-          .catch(x => console.log(`Failed to load ${source}`))
+            .catch(() => console.log(`Failed to load ${source}`))
         );
       }
     }
@@ -125,16 +125,18 @@ export class CCFDatabase {
 
       ops.push(
         addJsonLdToStore('assets/kpmp/data/rui_locations.jsonld', this.store)
-        .catch(x => console.log('Couldn\'t locate KPMP data.'))
+          .catch(() => console.log('Couldn\'t locate KPMP data.'))
       );
       ops.push(
         addJsonLdToStore('assets/sparc/data/rui_locations.jsonld', this.store)
-        .catch(x => console.log('Couldn\'t locate SPARC data.'))
+          .catch(() => console.log('Couldn\'t locate SPARC data.'))
       );
     }
     await Promise.all(ops);
     // Add a small delay to allow the triple store to settle
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => {
+      setTimeout(r, 500);
+    });
     this.graph.createGraph();
   }
 
@@ -175,7 +177,8 @@ export class CCFDatabase {
    * @returns A list of spatial entities.
    */
   getSpatialEntities(filter?: Filter): SpatialEntity[] {
-    filter = {...filter, hasSpatialEntity: true} as Filter;
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    filter = { ...filter, hasSpatialEntity: true } as Filter;
     return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
   }
 
@@ -185,8 +188,9 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns A list of results.
    */
-   async getTissueBlockResults(filter?: Filter): Promise<TissueBlockResult[]> {
-    filter = {...filter, hasSpatialEntity: true} as Filter;
+  async getTissueBlockResults(filter?: Filter): Promise<TissueBlockResult[]> {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    filter = { ...filter, hasSpatialEntity: true } as Filter;
     return [...this.getIds(filter)].map((s) => getTissueBlockResult(this.store, s));
   }
 
@@ -215,7 +219,7 @@ export class CCFDatabase {
    *
    * @returns Ontology term counts.
    */
-   async getOntologyTreeModel(): Promise<OntologyTreeModel> {
+  async getOntologyTreeModel(): Promise<OntologyTreeModel> {
     return getOntologyTreeModel(this.store);
   }
 
@@ -224,7 +228,7 @@ export class CCFDatabase {
    *
    * @returns Ontology term counts.
    */
-   async getReferenceOrgans(): Promise<SpatialEntity[]> {
+  async getReferenceOrgans(): Promise<SpatialEntity[]> {
     return this.scene.getReferenceOrgans();
   }
 

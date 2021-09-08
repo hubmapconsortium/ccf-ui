@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
@@ -8,7 +8,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 @Component({
   selector: 'ccf-labeled-slide-toggle',
   templateUrl: './labeled-slide-toggle.component.html',
-  styleUrls: ['./labeled-slide-toggle.component.scss']
+  styleUrls: ['./labeled-slide-toggle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class LabeledSlideToggleComponent {
@@ -35,7 +36,7 @@ export class LabeledSlideToggleComponent {
   /**
    * Emits the datatype with the currently selected option
    */
-  @Output() valueChange = new EventEmitter<string>();
+  @Output() readonly valueChange = new EventEmitter<string>();
 
   /**
    * Creates an instance of labeled slide toggle component.

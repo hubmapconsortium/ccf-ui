@@ -40,15 +40,15 @@ export class InfoDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<InfoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: InfoDialogData,
   ) {
-      this.documentationContents = data.content || [];
-      this.infoTitle = data.title || '';
-      this.videoID = data.videoID;
+    this.documentationContents = data.content || [];
+    this.infoTitle = data.title || '';
+    this.videoID = data.videoID;
   }
 
   /**
    * load the youtube player api in on init
    */
-   ngOnInit(): void {
+  ngOnInit(): void {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
@@ -60,7 +60,7 @@ export class InfoDialogComponent implements OnInit {
   close(): void {
     document.getElementsByClassName('modal-animated')[0]?.classList.add('modal-animate-fade-out');
 
-    setTimeout(()=>{
+    setTimeout(() => {
       this.dialogRef.close();
     }, 250);
   }

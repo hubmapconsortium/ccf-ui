@@ -141,8 +141,6 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
    */
   @ViewChild('bodyCanvas', { read: ElementRef }) bodyCanvas: ElementRef<HTMLCanvasElement>;
 
-  constructor() { }
-
   /**
    * Performs setup required after initialization
    */
@@ -150,9 +148,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     this.setupBodyUI();
   }
 
-  zoomToBounds(bounds: XYZTriplet, margin = {x: 48, y: 48}): void {
+  zoomToBounds(bounds: XYZTriplet, margin = { x: 48, y: 48 }): void {
     if (this.bodyCanvas) {
-      const {width, height} = this.bodyCanvas.nativeElement;
+      const { width, height } = this.bodyCanvas.nativeElement;
       const pxRatio = window.devicePixelRatio;
       const zoom = Math.min(
         Math.log2((width - margin.x) / pxRatio / bounds.x),
@@ -181,7 +179,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     canvas.addEventListener('contextmenu', evt => evt.preventDefault());
     await bodyUI.initialize();
     this.bodyUI = bodyUI;
-    (window as unknown as {bodyUI: unknown}).bodyUI = bodyUI;
+    (window as unknown as { bodyUI: unknown }).bodyUI = bodyUI;
     if (this.scene?.length > 0) {
       this.bodyUI.setScene(this.scene);
     }

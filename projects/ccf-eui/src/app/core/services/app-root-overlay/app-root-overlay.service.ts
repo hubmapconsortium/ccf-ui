@@ -23,6 +23,7 @@ export class AppRootOverlayContainer extends OverlayContainer {
     this.appendToRoot();
   }
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   protected _createContainer(): void {
     super._createContainer();
     this.appendToRoot();

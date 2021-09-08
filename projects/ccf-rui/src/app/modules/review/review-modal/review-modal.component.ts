@@ -27,7 +27,7 @@ export class ReviewModalComponent {
   /**
    * Whether or not the cancel registration callback is set
    */
-   registrationCallbackSet: boolean;
+  registrationCallbackSet: boolean;
 
   /**
    * The object containing all of the review information for displaying inside the modal

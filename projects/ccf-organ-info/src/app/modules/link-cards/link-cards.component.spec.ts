@@ -9,8 +9,7 @@ describe('LinkCardsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LinkCardsComponent ]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

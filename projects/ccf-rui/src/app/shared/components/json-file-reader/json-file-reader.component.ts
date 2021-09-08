@@ -17,7 +17,7 @@ export class JsonFileReaderComponent {
   @Input() label = 'Upload';
 
   /** Emits the json object of any files uploaded. */
-  @Output() parsedJson = new EventEmitter<unknown>();
+  @Output() readonly parsedJson = new EventEmitter<unknown>();
 
   /**
    * Creates an instance of json file reader component.

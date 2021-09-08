@@ -2,7 +2,9 @@ import { GlobalsService, GlobalThis } from './globals.service';
 
 
 class TestGlobalsService extends GlobalsService {
-  constructor(readonly globals?: Record<string, unknown>) { super(); }
+  constructor(readonly globals?: Record<string, unknown>) {
+    super();
+  }
 
   findGlobalObject(): GlobalThis | undefined {
     return this.globals as GlobalThis | undefined;
