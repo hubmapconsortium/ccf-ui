@@ -14,7 +14,7 @@ describe('NumbersOnlyDirective', () => {
     const { element } = await shallow.render('<input ccfNumbersOnly>');
     const input = element.nativeElement as HTMLInputElement;
     input.value = 'test';
-    element.triggerEventHandler('input', { target: input, stopPropagation(): void {} });
+    element.triggerEventHandler('input', { target: input, stopPropagation(): void { /* empty */ } });
 
     expect(input.value).toEqual('');
   });
@@ -23,7 +23,7 @@ describe('NumbersOnlyDirective', () => {
     const { element } = await shallow.render('<input ccfNumbersOnly>');
     const input = element.nativeElement as HTMLInputElement;
     input.value = '!@#$%$^&*(';
-    element.triggerEventHandler('input', { target: input, stopPropagation(): void {} });
+    element.triggerEventHandler('input', { target: input, stopPropagation(): void { /* empty */ } });
 
     expect(input.value).toEqual('');
   });
@@ -32,7 +32,7 @@ describe('NumbersOnlyDirective', () => {
     const { element } = await shallow.render('<input ccfNumbersOnly>');
     const input = element.nativeElement as HTMLInputElement;
     input.value = '1234567890';
-    element.triggerEventHandler('input', { target: input, stopPropagation(): void {} });
+    element.triggerEventHandler('input', { target: input, stopPropagation(): void { /* empty */ } });
 
     expect(input.value).toEqual('1234567890');
   });

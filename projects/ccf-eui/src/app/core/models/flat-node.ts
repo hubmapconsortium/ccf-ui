@@ -15,7 +15,9 @@ export class FlatNode {
   /**
    * Gets this node's label.
    */
-  get label(): string { return this.original.label; }
+  get label(): string {
+    return this.original.label;
+  }
 
   /**
    * Indicates whether this node has children.
@@ -41,5 +43,5 @@ export class FlatNode {
    * @param original The original ontology node object.
    * @param level The level of the new flat node in the tree.
    */
-  constructor(readonly original: OntologyTreeNode, readonly level: number) {}
+  constructor(readonly original: OntologyTreeNode, readonly level: number) { }
 }

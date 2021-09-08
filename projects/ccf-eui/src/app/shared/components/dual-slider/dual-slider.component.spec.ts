@@ -106,13 +106,13 @@ describe('DualSliderComponent', () => {
     const mockEvent = {
       target: {
         value: '5',
-        blur: () => {}
-       } as unknown as HTMLElement,
+        blur: () => undefined
+      } as unknown as HTMLElement,
       key:'Enter'
     } as unknown as KeyboardEvent;
 
-    const { instance } = await shallow.render({ bind: {selection: [2, 9]}});
-    instance.options = {floor: 1, ceil: 10};
+    const { instance } = await shallow.render({ bind: { selection: [2, 9] } });
+    instance.options = { floor: 1, ceil: 10 };
     instance.onKeyLow(mockEvent);
     expect(instance.lowValue).toBe(5);
   });
@@ -121,13 +121,13 @@ describe('DualSliderComponent', () => {
     const mockEvent = {
       target: {
         value: '8',
-        blur: () => {}
-       } as unknown as HTMLElement,
+        blur: () => undefined
+      } as unknown as HTMLElement,
       key:'Enter'
     } as unknown as KeyboardEvent;
 
-    const { instance } = await shallow.render({ bind: {selection: [2, 9]}});
-    instance.options = {floor: 1, ceil: 10};
+    const { instance } = await shallow.render({ bind: { selection: [2, 9] } });
+    instance.options = { floor: 1, ceil: 10 };
     instance.onKeyHigh(mockEvent);
     expect(instance.highValue).toBe(8);
   });

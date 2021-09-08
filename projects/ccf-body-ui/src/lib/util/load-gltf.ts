@@ -1,4 +1,5 @@
-/* tslint:disable:no-unsafe-any no-any */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { parse, registerLoaders } from '@loaders.gl/core';
 import { DracoLoader, DracoWorkerLoader } from '@loaders.gl/draco';
 import { GLTFLoader } from '@loaders.gl/gltf';
@@ -9,12 +10,10 @@ import { traverseScene } from './scene-traversal';
 
 
 export function registerGLTFLoaders(): void {
-  // eslint-disable-next-line
   registerLoaders([DracoWorkerLoader, GLTFLoader]);
 }
 
-/* eslint-disable  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function deriveScenegraph(scenegraphNodeName: string, gltf: any): any {
   const scenegraphNode = gltf.nodes.find((n) => n.name === scenegraphNodeName);
   if (scenegraphNode) {
@@ -41,7 +40,7 @@ export function deriveScenegraph(scenegraphNodeName: string, gltf: any): any {
     };
     gltf.scenes = [gltf.scene];
 
-    return {scene: gltf.scene, scenes: gltf.scenes};
+    return { scene: gltf.scene, scenes: gltf.scenes };
   } else {
     return gltf;
   }
@@ -50,13 +49,14 @@ export function deriveScenegraph(scenegraphNodeName: string, gltf: any): any {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function loadGLTF(model: SpatialSceneNode, cache?: { [url: string]: Promise<Blob> }): Promise<any> {
   const gltfUrl = model.scenegraph as string;
-  let gltfPromise: Promise<Blob|Response>;
+  let gltfPromise: Promise<Blob | Response>;
   if (cache) {
     gltfPromise = cache[gltfUrl] || (cache[gltfUrl] = fetch(gltfUrl).then(r => r.blob()));
   } else {
     gltfPromise = fetch(gltfUrl);
   }
-  const gltf = await parse(gltfPromise, GLTFLoader, {DracoLoader, gltf: {decompressMeshes: true, postProcess: true}});
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const gltf = await parse(gltfPromise, GLTFLoader, { DracoLoader, gltf: { decompressMeshes: true, postProcess: true } });
 
   return deriveScenegraph(model.scenegraphNode as string, gltf);
 }

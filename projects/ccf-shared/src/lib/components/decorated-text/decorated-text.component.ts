@@ -182,9 +182,9 @@ export class DecoratedTextComponent implements OnChanges {
    * @returns A decorated segment
    */
   private makeDecoratedSegment(text: string, decorations: DecoratedRange[]): Segment {
-    const classes = decorations.reduce(
+    const classes = decorations.reduce<string[]>(
       (result, range) => result.concat(range.classes),
-      [] as string[]
+      []
     );
     const styles = decorations.reduce(
       (result, range) => ({ ...result, ...range.styles }),

@@ -27,16 +27,16 @@ export const DEFAULT_COLOR_PALETTE: Color[] = [
   '#E040FB',
   '#00E5FF'
 ].map((color, rank) => {
-  const rgba = hexRgb(color, {format: 'array'});
+  const rgba = hexRgb(color, { format: 'array' });
   rgba[3] = 255; // for Deck.gl
-  return {color, rgba, rank};
+  return { color, rgba, rank };
 });
 
 export interface ColorAssignmentStateModel {
   colorPalette: Color[];
   colorsAvailable: Color[];
   colorAssignments: Record<string, Color>;
-  colorAssignmentsList: {color: Color; key: string}[];
+  colorAssignmentsList: { color: Color; key: string }[];
 }
 
 /**
@@ -50,7 +50,7 @@ export interface ColorAssignmentStateModel {
     colorsAvailable: DEFAULT_COLOR_PALETTE.concat(),
     colorAssignments: {},
     colorAssignmentsList: []
-  } as ColorAssignmentStateModel
+  }
 })
 @Injectable()
 export class ColorAssignmentState extends NgxsImmutableDataRepository<ColorAssignmentStateModel> {
@@ -83,11 +83,11 @@ export class ColorAssignmentState extends NgxsImmutableDataRepository<ColorAssig
         this.forcedUnassignment.next();
       }
       colorsAvailable = colorsAvailable.filter(c => c.color !== color.color);
-      colorAssignmentsList = [{color, key}].concat(colorAssignmentsList);
-      colorAssignments = colorAssignmentsList.reduce((acc, item, rank) => {
+      colorAssignmentsList = [{ color, key }].concat(colorAssignmentsList);
+      colorAssignments = colorAssignmentsList.reduce<Record<string, Immutable<Color>>>((acc, item, rank) => {
         acc[item.key] = { ...item.color, rank };
         return acc;
-      }, {} as Record<string, Immutable<Color>>);
+      }, {});
 
       this.ctx.patchState({
         colorsAvailable,
@@ -105,10 +105,10 @@ export class ColorAssignmentState extends NgxsImmutableDataRepository<ColorAssig
     if (color) {
       colorsAvailable = [color].concat(colorsAvailable);
       colorAssignmentsList = colorAssignmentsList.filter(a => a.color.color !== color.color);
-      colorAssignments = colorAssignmentsList.reduce((acc, item, rank) => {
+      colorAssignments = colorAssignmentsList.reduce<Record<string, Immutable<Color>>>((acc, item, rank) => {
         acc[item.key] = { ...item.color, rank };
         return acc;
-      }, {} as Record<string, Immutable<Color>>);
+      }, {});
 
       this.ctx.patchState({
         colorsAvailable,

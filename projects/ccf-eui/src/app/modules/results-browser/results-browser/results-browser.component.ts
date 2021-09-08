@@ -1,5 +1,5 @@
 import { Immutable } from '@angular-ru/common/typings/immutability';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { AggregateResult } from 'ccf-database';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -14,7 +14,8 @@ import { ListResult } from '../../../core/models/list-result';
 @Component({
   selector: 'ccf-results-browser',
   templateUrl: './results-browser.component.html',
-  styleUrls: ['./results-browser.component.scss']
+  styleUrls: ['./results-browser.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ResultsBrowserComponent {
   /**
@@ -38,21 +39,21 @@ export class ResultsBrowserComponent {
    * Output emitting the result that was clicked on and its relevant information.
    * Used for opening and rendering the result viewer.
    */
-  @Output() linkClicked = new EventEmitter<string>();
+  @Output() readonly linkClicked = new EventEmitter<string>();
 
   /**
    * Output emitting the link result selected
    */
-  @Output() listResultSelected = new EventEmitter<Immutable<ListResult>>();
+  @Output() readonly listResultSelected = new EventEmitter<Immutable<ListResult>>();
 
   /**
    * Output emitting the link result deselected
    */
-  @Output() listResultDeselected = new EventEmitter<Immutable<ListResult>>();
+  @Output() readonly listResultDeselected = new EventEmitter<Immutable<ListResult>>();
 
-  @Output() itemHovered = new EventEmitter<string>();
+  @Output() readonly itemHovered = new EventEmitter<string>();
 
-  @Output() itemUnhovered = new EventEmitter();
+  @Output() readonly itemUnhovered = new EventEmitter();
 
   /**
    * Keeps track of whether or not the virtual scroll viewport is scrolled all the way to the bottom.

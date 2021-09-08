@@ -1,10 +1,11 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { TissueSectionResult } from 'ccf-database';
 
 @Component({
   selector: 'ccf-tissue-section-vis',
   templateUrl: './tissue-section-vis.component.html',
-  styleUrls: ['./tissue-section-vis.component.scss']
+  styleUrls: ['./tissue-section-vis.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TissueSectionVisComponent {
   /** HTML Class Name */

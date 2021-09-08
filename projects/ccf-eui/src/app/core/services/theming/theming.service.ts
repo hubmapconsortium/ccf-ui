@@ -32,7 +32,7 @@ export class ThemingService {
    * @param defaultTheme An optional default theme.
    */
   constructor(@Optional() @Inject(DEFAULT_THEME) defaultTheme: string | null) {
-    this.defaultTheme = this.theme = defaultTheme || '';
+    this.defaultTheme = this.theme = defaultTheme ?? '';
   }
 
   /**
@@ -48,7 +48,9 @@ export class ThemingService {
    * @param theme The new theme class.
    */
   setTheme(theme: string): void {
-    if (theme === this.theme) { return; }
+    if (theme === this.theme) {
+      return;
+    }
     this.applyThemeClass(this.theme, 'remove');
     this.applyThemeClass(theme);
     this.theme = theme;

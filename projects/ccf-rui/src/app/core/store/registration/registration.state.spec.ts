@@ -46,10 +46,6 @@ const testPage: Immutable<PageStateModel> = {
   registrationCallbackSet: false
 };
 
-function wait(duration = 0): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, duration));
-}
-
 function nextValue<T>(obs: Observable<T>): Promise<T> {
   return obs.pipe(take(1)).toPromise();
 }
@@ -177,12 +173,14 @@ describe('RegistrationState', () => {
     });
 
     it('should consider isDataValid false if the organ is not set', async () => {
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const invalidModel = { ...testModel, organ: {} as OrganInfo };
       const result = state.isDataValid(testPage, invalidModel);
       expect(result).toBeFalse();
     });
 
     it('should consider isDataValid false if the user is not set', async () => {
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const invalidPage = { ...testPage, user: {} as Person };
       const result = state.isDataValid(invalidPage, testModel);
       expect(result).toBeFalse();

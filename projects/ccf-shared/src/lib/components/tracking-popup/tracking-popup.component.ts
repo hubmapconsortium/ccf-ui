@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 import { TrackingState } from '../../analytics/tracking.state';
@@ -7,7 +7,8 @@ import { TrackingState } from '../../analytics/tracking.state';
 @Component({
   selector: 'ccf-tracking-popup',
   templateUrl: './tracking-popup.component.html',
-  styleUrls: ['./tracking-popup.component.scss']
+  styleUrls: ['./tracking-popup.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrackingPopupComponent {
   @HostBinding('class') readonly clsName = 'ccf-tracking-popup';
@@ -18,12 +19,13 @@ export class TrackingPopupComponent {
 
   container: HTMLElement;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   constructor(elementRef: ElementRef<HTMLElement>, readonly tracking: TrackingState, @Inject(MAT_SNACK_BAR_DATA) public data: any) {
     this.container = elementRef.nativeElement;
   }
 
   dismiss(): void {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     this.data.preClose();
   }
 

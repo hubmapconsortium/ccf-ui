@@ -19,13 +19,17 @@ export class ToggleButtonComponent implements AfterViewInit, OnDestroy {
   @HostBinding('class') readonly className = 'ccf-drawer-toggle-button';
   /** Whether this button is attach to a drawer in position 'end'. */
   @HostBinding('class.ccf-drawer-toggle-button-end')
-  get classEnd(): boolean { return this.position === 'end'; }
+  get classEnd(): boolean {
+    return this.position === 'end';
+  }
 
   /** Gets the name of the icon to display. */
   get icon(): string {
     let expand = 'arrow_right';
     let collapse = 'arrow_left';
-    if (this.position === 'end') { ([expand, collapse] = [collapse, expand]); }
+    if (this.position === 'end') {
+      ([expand, collapse] = [collapse, expand]);
+    }
 
     return this.opened ? collapse : expand;
   }
@@ -49,7 +53,9 @@ export class ToggleButtonComponent implements AfterViewInit, OnDestroy {
               private cdr: ChangeDetectorRef) {
     const channel = messageService.connect(this);
     this.subscriptions.add(channel.getMessagesFromSource(drawer).subscribe(msg => {
-      if (this.handleMessage(msg)) { cdr.markForCheck(); }
+      if (this.handleMessage(msg)) {
+        cdr.markForCheck();
+      }
     }));
   }
 

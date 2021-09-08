@@ -12,10 +12,10 @@ import { NameInputComponent } from './name-input.component';
   imports: [
     CommonModule,
     MatSlideToggleModule,
-     MatInputModule,
-     FormsModule,
-     ReactiveFormsModule,
-     MatTooltipModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTooltipModule
   ],
   declarations: [NameInputComponent],
   exports: [NameInputComponent]

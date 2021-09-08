@@ -11,6 +11,7 @@ import { RegistrationContentComponent } from '../registration-content/registrati
 /**
  * Registration modal that appears on startup
  */
+// eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
 @Component({
   selector: 'ccf-registration-modal',
   templateUrl: './registration-modal.component.html'

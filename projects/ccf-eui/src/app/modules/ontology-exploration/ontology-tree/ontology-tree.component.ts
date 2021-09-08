@@ -56,7 +56,9 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * List of nodes in the ontology tree
    */
-  get nodes(): OntologyTreeNode[] | undefined { return this._nodes; }
+  get nodes(): OntologyTreeNode[] | undefined {
+    return this._nodes;
+  }
 
   /**
    * Method for fetching the children of a node.
@@ -127,12 +129,12 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Emits an event whenever a node has been selected.
    */
-  @Output() nodeSelected = new EventEmitter<OntologyTreeNode[]>();
+  @Output() readonly nodeSelected = new EventEmitter<OntologyTreeNode[]>();
 
   /**
    * Emits an event whenever the node's visibility or opacity has changed
    */
-  @Output() nodeChanged = new EventEmitter<FlatNode>();
+  @Output() readonly nodeChanged = new EventEmitter<FlatNode>();
 
   /**
    * Indentation of each level in the tree.
@@ -260,7 +262,9 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
       control.collapseAll();
     }
 
-    for (const flat of parentFlatNodes) { control.expand(flat); }
+    for (const flat of parentFlatNodes) {
+      control.expand(flat);
+    }
     if (node.label === 'body' && control.dataNodes?.length > 0) {
       control.expand(control.dataNodes[0]);
     }

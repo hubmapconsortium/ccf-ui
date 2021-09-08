@@ -1,7 +1,12 @@
-<h1>ccf-organ-info works.</h1>
 <app-organ
   [(sex)]="sex"
   [(side)]="side"
   [(organIri)]="organIri"
   (sideChange)="sideChange($event)">
 </app-organ>
+<div class="container">
+  <div class="left"></div>
+  <div class="right">
+    <ccf-link-cards></ccf-link-cards>
+  </div>
+</div>

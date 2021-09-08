@@ -18,7 +18,7 @@ export class ViewerComponent implements OnChanges {
 
   @Input() url = '';
 
-  @Output() closed = new EventEmitter<void>();
+  @Output() readonly closed = new EventEmitter<void>();
 
   loading = true;
 

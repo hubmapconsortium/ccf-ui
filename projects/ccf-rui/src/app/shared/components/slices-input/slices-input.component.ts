@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
@@ -23,7 +23,8 @@ const DEFAULT_SLICES_CONFIG: SlicesConfig = {
 @Component({
   selector: 'ccf-slices-input',
   templateUrl: './slices-input.component.html',
-  styleUrls: ['./slices-input.component.scss']
+  styleUrls: ['./slices-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SlicesInputComponent {
   /** HTML class name */

@@ -175,7 +175,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   updateFilter(@Payload('filter') filter: Partial<Filter>): void {
     this.patchState({
       // Might need to do a deep compare of current and new filter
-      filter: Object.assign({}, this.getState().filter, filter)
+      filter: { ...this.getState().filter, ...filter }
     });
   }
 
@@ -185,11 +185,11 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
    * @param filter The filter used during query.
    * @returns The result of the query.
    */
-   @bind
-   private tissueBlockData(filter: Filter): ObservableInput<TissueBlockResult[]> {
-     this._tissueBlockDataQueryStatus$.next(DataQueryState.Running);
-     return this.source.getTissueBlockResults(filter);
-   }
+  @bind
+  private tissueBlockData(filter: Filter): ObservableInput<TissueBlockResult[]> {
+    this._tissueBlockDataQueryStatus$.next(DataQueryState.Running);
+    return this.source.getTissueBlockResults(filter);
+  }
 
   /**
    * Queries for aggregate data.
@@ -221,9 +221,9 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
    * @param filter The filter used during query.
    * @returns The result of the query.
    */
-   @bind
-   private sceneData(filter: Filter): ObservableInput<SpatialSceneNode[]> {
-     this._sceneDataQueryStatus$.next(DataQueryState.Running);
-     return this.source.getScene(filter);
-   }
+  @bind
+  private sceneData(filter: Filter): ObservableInput<SpatialSceneNode[]> {
+    this._sceneDataQueryStatus$.next(DataQueryState.Running);
+    return this.source.getScene(filter);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
@@ -7,7 +7,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 @Component({
   selector: 'ccf-filters-content',
   templateUrl: './filters-content.component.html',
-  styleUrls: ['./filters-content.component.scss']
+  styleUrls: ['./filters-content.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersContentComponent {
 
@@ -24,12 +25,12 @@ export class FiltersContentComponent {
   /**
    * Emits the filter change when they happen
    */
-  @Output() filtersChange = new EventEmitter<Record<string, unknown>>();
+  @Output() readonly filtersChange = new EventEmitter<Record<string, unknown>>();
 
   /**
    * Emits the filters to be applied
    */
-  @Output() applyFilters = new EventEmitter<Record<string, unknown>>();
+  @Output() readonly applyFilters = new EventEmitter<Record<string, unknown>>();
 
   /**
    * Creates an instance of filters content component.
@@ -62,7 +63,7 @@ export class FiltersContentComponent {
    * Refreshes all filter settings
    */
   refreshFilters(): void {
-    this.filters = { ...this.filters, sex: 'Both', ageRange: [1, 110], bmiRange: [13, 83], technologies: [], tmc: []};
+    this.filters = { ...this.filters, sex: 'Both', ageRange: [1, 110], bmiRange: [13, 83], technologies: [], tmc: [] };
     this.ga.event('filters_reset', 'filter_content');
     this.filtersChange.emit(this.filters);
   }

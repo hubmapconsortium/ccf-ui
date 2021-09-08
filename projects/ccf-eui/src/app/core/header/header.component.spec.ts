@@ -1,6 +1,3 @@
 describe('HeaderComponent', () => {
-
-  beforeEach(() => {
-  });
-
+  // Add tests
 });

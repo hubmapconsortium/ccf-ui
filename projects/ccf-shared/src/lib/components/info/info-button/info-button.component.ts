@@ -36,19 +36,19 @@ export class InfoButtonComponent implements OnDestroy {
    */
   constructor(private readonly dialog: MatDialog, private readonly infoButtonService: InfoButtonService) {
     this.subscriptions.add(infoButtonService.markdownContent.subscribe(data => {
-      if(data.length) {
+      if (data.length) {
         this.launchInfoDialog(data);
       }
     }));
-   }
+  }
 
-   /**
+  /**
     * Unsubscribe to the observable when the component
     * is destroyed
     */
-   ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-   }
+  }
 
   /**
    * Opens the info dialogue with the project details

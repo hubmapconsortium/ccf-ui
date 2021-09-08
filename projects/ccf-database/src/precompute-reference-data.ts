@@ -7,8 +7,8 @@ import { CCFDatabase, ExtractionSet, SpatialEntity, SpatialSceneNode } from './p
 import { simplifyScene } from '../../ccf-body-ui/src/lib/util/simplify-scene';
 
 
-if (!(global as {fetch: unknown}).fetch) {
-  (global as {fetch: unknown}).fetch = fetch;
+if (!(global as { fetch: unknown }).fetch) {
+  (global as { fetch: unknown }).fetch = fetch;
 }
 
 async function main(outputFile?: string): Promise<void> {
@@ -18,17 +18,19 @@ async function main(outputFile?: string): Promise<void> {
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: '', // Do not query the search-api for spatial entities by default
-    hubmapAssetsUrl: 'https://assets.hubmapconsortium.org'
+    hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
+    dataSources: []
   });
   await db.connect();
   const organs = db.scene.getReferenceOrgans();
-  const organIRILookup: {[options: string]: string} = {};
-  const organSpatialEntities: {[iri: string]: SpatialEntity} = {};
-  const anatomicalStructures: {[iri: string]: SpatialEntity[]} = {};
-  const extractionSets: {[iri: string]: ExtractionSet[]} = {};
-  const sceneNodeLookup: {[iri: string]: SpatialSceneNode} = {};
+  const organIRILookup: { [options: string]: string } = {};
+  const organSpatialEntities: { [iri: string]: SpatialEntity } = {};
+  const anatomicalStructures: { [iri: string]: SpatialEntity[] } = {};
+  const extractionSets: { [iri: string]: ExtractionSet[] } = {};
+  const sceneNodeLookup: { [iri: string]: SpatialSceneNode } = {};
   const sceneNodeAttrs: Partial<SpatialSceneNode> = {
     unpickable: true,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     _lighting: 'pbr',
     zoomBasedOpacity: false,
     color: [255, 255, 255, 255]
@@ -61,7 +63,7 @@ async function main(outputFile?: string): Promise<void> {
 
           sceneNode.transformMatrix = new Matrix4(Matrix4.IDENTITY)
             .translate(dimensions).multiplyRight(sceneNode.transformMatrix);
-          sceneNode.representation_of = sceneNode.representation_of || sceneNode['@id'];
+          sceneNode.representation_of = sceneNode.representation_of ?? sceneNode['@id'];
           sceneNodeLookup[node['@id']] = sceneNode;
         } else {
           console.log(node.label);
@@ -71,7 +73,9 @@ async function main(outputFile?: string): Promise<void> {
   }
 
   const simpleSceneNodes = await simplifyScene(Object.values(sceneNodeLookup));
-  const simpleSceneNodeLookup = simpleSceneNodes.reduce((acc, node) => { acc[node['@id']] = node; return acc; }, {});
+  const simpleSceneNodeLookup = simpleSceneNodes.reduce((acc, node) => {
+    acc[node['@id']] = node; return acc;
+  }, {});
 
   const data = {
     organIRILookup,

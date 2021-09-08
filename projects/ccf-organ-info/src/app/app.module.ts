@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { OrganModule } from './features/organ/organ.module';
+import { LinkCardsModule } from './modules/link-cards/link-cards.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { OrganModule } from './features/organ/organ.module';
   ],
   imports: [
     BrowserModule,
-    OrganModule
+    OrganModule,
+    LinkCardsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

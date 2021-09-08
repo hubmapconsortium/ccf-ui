@@ -6,7 +6,9 @@ import { InfoDialogModule } from './info-dialog.module';
 
 
 function wait(duration: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, duration));
+  return new Promise(resolve => {
+    setTimeout(resolve, duration);
+  });
 }
 
 describe('InfoDialogComponent', () => {
@@ -31,7 +33,7 @@ describe('InfoDialogComponent', () => {
 
   it('should close the dialog when the close() method is called', async () => {
     const { instance, get } = await shallow
-      .mock(MatDialogRef, { close(): void { } })
+      .mock(MatDialogRef, { close(): void { /* empty */ } })
       .mock(MAT_DIALOG_DATA, [])
       .render();
     const ref = get(MatDialogRef);

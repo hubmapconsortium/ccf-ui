@@ -284,7 +284,10 @@ export const referenceDataConfig = {
 };
 
 export async function processReferenceData(refEntities: SpatialEntityJsonLd[], config = referenceDataConfig): Promise<JsonLdObj[]> {
-  const entities: {[id: string]: SpatialEntityJsonLd} = refEntities.reduce((acc, e) => {acc[e['@id']] = e; return acc;}, {});
+  const entities = refEntities.reduce<Record<string, SpatialEntityJsonLd>>((acc, e) => {
+    acc[e['@id']] = e;
+    return acc;
+  }, {});
   const refOrganSources = new Set(config.referenceOrgans.map(s => s.source));
 
   const goodRefOrgans = new Set(config.referenceOrgans.map(s => s.entityOverrides['@id']));
@@ -295,29 +298,30 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
         processSpatialEntities(entities[s.source.split('_')[0]], s.object)
       )
     )).reduce((acc, e) => acc.concat(e), [])
-    .concat((await Promise.all([
-      'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Heart_Extraction_Sites.glb',
-      'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Intestine_Large_Extraction_Sites.glb',
-      'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Kidney_Extraction_Sites.glb',
-      'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Spleen_Extraction_Sites.glb'
-    ].map(url =>
-      processSpatialEntities(entities['#VHFemaleOrgans'], url)
-    ))).reduce((acc, e) => acc.concat(e), []))
-    .concat((await Promise.all([
-      'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Heart_Extraction_Sites.glb',
-      'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Intestine_Large_Extraction_Sites.glb',
-      'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Kidney_Extraction_Sites.glb',
-      'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Spleen_Extraction_Sites.glb'
-    ].map(url =>
-      processSpatialEntities(entities['#VHMaleOrgans'], url)
-    ))).reduce((acc, e) => acc.concat(e), []));
+      .concat((await Promise.all([
+        'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Heart_Extraction_Sites.glb',
+        'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Intestine_Large_Extraction_Sites.glb',
+        'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Kidney_Extraction_Sites.glb',
+        'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_F_Spleen_Extraction_Sites.glb'
+      ].map(url =>
+        processSpatialEntities(entities['#VHFemaleOrgans'], url)
+      ))).reduce((acc, e) => acc.concat(e), []))
+      .concat((await Promise.all([
+        'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Heart_Extraction_Sites.glb',
+        'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Intestine_Large_Extraction_Sites.glb',
+        'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Kidney_Extraction_Sites.glb',
+        'https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Spleen_Extraction_Sites.glb'
+      ].map(url =>
+        processSpatialEntities(entities['#VHMaleOrgans'], url)
+      ))).reduce((acc, e) => acc.concat(e), []));
 
   // const spatialEntities = (await Promise.all([
   //   processSpatialEntities(entities['#VHFemaleOrgans']),
   //   processSpatialEntities(entities['#VHMaleOrgans'])
   // ])).reduce((acc, e) => acc.concat(e), []);
 
-  const jsonld = (await processExtractionSites(config.extractionSitesUrl,
+  const jsonld = (await processExtractionSites(
+    config.extractionSitesUrl,
     await processAnatomicalStructures(config.anatomicalStructuresUrl, spatialEntities)))
     .filter((entity: SpatialEntityJsonLd) =>
       (
@@ -327,13 +331,13 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
       entity.extraction_set ||
       entity['@type'] === 'ExtractionSet' ||
       refOrganSources.has(entity['@id']
-    ));
-  const lookup = jsonld.reduce((acc, e) => {
+      ));
+  const lookup = jsonld.reduce<Record<string, unknown>>((acc, e) => {
     if (e['@id']) {
       acc[e['@id']] = e;
     }
     return acc;
-  }, {} as Record<string, unknown>);
+  }, {});
 
   for (const refOrgan of config.referenceOrgans) {
     const entity = (lookup[refOrgan.source] || {}) as SpatialEntityJsonLd;
@@ -346,13 +350,13 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
 
     if (Array.isArray(entity.placement)) {
       const bodyPlacement = entity.placement.find(p => p.target === '#VHFemale' || p.target === '#VHMale');
-      const ruiPlacement = {
-        ...bodyPlacement,
+      const ruiPlacement: SpatialPlacementJsonLd = {
+        ...bodyPlacement!,
         '@id': `${entity['@id']}_RUIPlacement`,
         x_rotation: 0,
         source: bodyPlacement?.target,
         target: entity['@id']
-      } as SpatialPlacementJsonLd;
+      };
       ruiPlacement.x_translation = -ruiPlacement.x_translation;
       ruiPlacement.y_translation = -ruiPlacement.y_translation;
       ruiPlacement.z_translation = -ruiPlacement.z_translation;

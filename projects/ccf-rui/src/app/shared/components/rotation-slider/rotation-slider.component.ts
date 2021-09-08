@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
@@ -26,7 +26,8 @@ const DEFAULT_ROTATION: Rotation = {
 @Component({
   selector: 'ccf-rotation-slider',
   templateUrl: './rotation-slider.component.html',
-  styleUrls: ['./rotation-slider.component.scss']
+  styleUrls: ['./rotation-slider.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RotationSliderComponent {
   /** HTML class name */
