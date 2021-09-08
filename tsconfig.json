@@ -47,6 +47,10 @@
         "dist/ccf-shared/ccf-shared",
         "dist/ccf-shared"
       ],
+      "ccf-shared/analytics": [
+        "dist/ccf-shared/ccf-shared/analytics",
+        "dist/ccf-shared/analytics"
+      ],
       "ccf-shared/rxjs-ext": [
         "dist/ccf-shared/ccf-shared/rxjs-ext",
         "dist/ccf-shared/rxjs-ext"
