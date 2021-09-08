@@ -9,22 +9,27 @@ import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  @Input() organ = 'Kidney';
+  @Input() organ? = 'Kidney';
   @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
-  @Input() side?: 'left' | 'right' | undefined = 'right';
-  @Input() organIri: string | undefined;
+  @Input() side?: 'left' | 'right' = 'right';
+  @Input() organIri?: string = 'http://purl.obolibrary.org/obo/UBERON_0004539';
 
   constructor() {
-    this.organIri = this.getCurrentOrgan()?.id;
+    this.organIri = this.organIri ? this.organIri : this.getCurrentOrgan()?.id;
     this.side = this.getCurrentOrgan()?.side;
+    this.organ = this.getCurrentOrgan()?.organ;
   }
 
   sideChange(selection: 'left' | 'right'): void {
     this.side = selection === 'left' ? 'left' : 'right';
-    this.organIri = this.getCurrentOrgan()?.id;
+    this.organIri = ALL_ORGANS.find(organ => organ.organ === this.organ && organ.side === this.side)?.id;
   }
 
   getCurrentOrgan(): OrganInfo | undefined {
-    return ALL_ORGANS.find(organ => organ.organ === this.organ && (organ.side ? organ.side === this.side : true));
+    if (this.organIri) {
+      return ALL_ORGANS.find(organ => organ.id === this.organIri)
+    } else {
+      return ALL_ORGANS.find(organ => organ.organ === this.organ && (organ.side ? organ.side === this.side : true));
+    }
   }
 }
