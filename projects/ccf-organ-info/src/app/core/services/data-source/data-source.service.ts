@@ -40,8 +40,7 @@ export class DataSourceService implements OnDestroy {
 
     this.dataSource = using(
       () => this.createDataSource(),
-      (resource) => this.connectDataSource((resource as unknown as { source: DataSource}).source,
-        this.dbOptions)
+      (resource) => this.connectDataSource((resource as unknown as { source: DataSource }).source, this.dbOptions)
     ).pipe(shareReplay(1));
 
     this.subscriptions.add(this.dataSource.subscribe());
@@ -57,11 +56,11 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
-     return this.dataSource.pipe(
-       switchMap(db => db.getTissueBlockResults(filter)),
-       take(1)
-     );
+  getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getTissueBlockResults(filter)),
+      take(1)
+    );
   }
 
   /**
