@@ -52,7 +52,7 @@ export class AppComponent {
 
   getCurrentOrgan(): OrganInfo | undefined {
     if (this.organIri) {
-      return ALL_ORGANS.find(organ => organ.id === this.organIri)
+      return ALL_ORGANS.find(organ => organ.id === this.organIri);
     } else {
       return ALL_ORGANS.find(organ => organ.organ === this.organ && (organ.side ? organ.side === this.side : true));
     }
