@@ -1,15 +1,16 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-slide-toggle',
+  selector: 'ccf-slide-toggle',
   templateUrl: './slide-toggle.component.html',
-  styleUrls: ['./slide-toggle.component.scss']
+  styleUrls: ['./slide-toggle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SlideToggleComponent {
   /**
    * HTML class name
    */
-  @HostBinding('class') readonly clsName = 'app-slide-toggle';
+  @HostBinding('class') readonly clsName = 'ccf-slide-toggle';
 
   /**
    * The two selection options to be toggled
@@ -29,7 +30,7 @@ export class SlideToggleComponent {
   /**
    * Emits the datatype with the currently selected option
    */
-  @Output() valueChange = new EventEmitter<string>();
+  @Output() readonly valueChange = new EventEmitter<string>();
 
   /**
    * Determines if left toggle option is selected

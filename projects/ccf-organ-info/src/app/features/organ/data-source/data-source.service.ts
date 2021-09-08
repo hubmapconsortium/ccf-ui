@@ -17,10 +17,6 @@ import { environment } from '../../../../environments/environment';
 
 type DataSource = Remote<CCFDatabase> | CCFDatabase;
 
-function compareConfig(previous: CCFDatabaseOptions, current: CCFDatabaseOptions): boolean {
-  return previous === current;
-}
-
 
 /**
  * Backend data queries.
@@ -43,7 +39,7 @@ export class DataSourceService implements OnDestroy {
     this.dataSource = using(
       () => this.createDataSource(),
       (resource) => this.connectDataSource(
-        (resource as unknown as { source: DataSource}).source,
+        (resource as unknown as { source: DataSource }).source,
         undefined as unknown as CCFDatabaseOptions
       )
     ).pipe(shareReplay(1));
@@ -61,11 +57,11 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
-     return this.dataSource.pipe(
-       switchMap(db => db.getTissueBlockResults(filter)),
-       take(1)
-     );
+  getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getTissueBlockResults(filter)),
+      take(1)
+    );
   }
 
   /**

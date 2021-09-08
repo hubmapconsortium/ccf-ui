@@ -7,18 +7,18 @@
 ></ccf-body-ui>
 
 <div class='stage-options'>
-  <app-slide-toggle
+  <ccf-slide-toggle
     class="view-slider"
     [labels]="['Male', 'Female']"
     [value]="sex"
     (valueChange)="updateSex($event)"
-  ></app-slide-toggle>
+  ></ccf-slide-toggle>
 
-  <app-slide-toggle
+  <ccf-slide-toggle
     class="view-slider"
     [labels]="['left', 'right']"
     [value]="side"
     [disabled]="!side"
     (valueChange)="updateSide($event)"
-  ></app-slide-toggle>
+  ></ccf-slide-toggle>
 </div>

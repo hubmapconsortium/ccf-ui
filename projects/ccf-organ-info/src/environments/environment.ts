@@ -16,13 +16,13 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0000059', // Large Intestine
     'http://purl.obolibrary.org/obo/UBERON_0000948', // Heart
     'http://purl.obolibrary.org/obo/UBERON_0002113', // Kidney
-     // 'http://purl.obolibrary.org/obo/UBERON_0004538', // Kidney, L
-     // 'http://purl.obolibrary.org/obo/UBERON_0004539', // Kidney, R
+    // 'http://purl.obolibrary.org/obo/UBERON_0004538', // Kidney, L
+    // 'http://purl.obolibrary.org/obo/UBERON_0004539', // Kidney, R
     'http://purl.obolibrary.org/obo/UBERON_0002106', // Spleen
     'http://purl.obolibrary.org/obo/UBERON_0000955', // Allen Brain
     'http://purl.obolibrary.org/obo/UBERON_0002048', // Lungs
     'http://purl.obolibrary.org/obo/UBERON_0000029', // Lymph Node, L
-     // 'http://purl.obolibrary.org/obo/UBERON_0000029', // Lymph Node, R
+    // 'http://purl.obolibrary.org/obo/UBERON_0000029', // Lymph Node, R
     'http://purl.obolibrary.org/obo/UBERON_0001270', // Pelvis
     'http://purl.obolibrary.org/obo/UBERON_0002370', // Thymus
     'http://purl.obolibrary.org/obo/UBERON_0002049' // Vasculature
@@ -34,7 +34,7 @@ export const environment = {
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
-    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') || ''
+    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? ''
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };
@@ -46,4 +46,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+import 'zone.js/plugins/zone-error'; // Included with Angular CLI.

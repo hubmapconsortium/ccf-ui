@@ -9,7 +9,6 @@ import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  title = 'ccf-organ-info';
   @Input() organ = 'Kidney';
   @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'left' | 'right' | undefined = 'right';

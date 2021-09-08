@@ -12,7 +12,7 @@ interface XYZTriplet<T = number> {
 
 
 @Component({
-  selector: 'app-organ',
+  selector: 'ccf-organ',
   templateUrl: './organ.component.html',
   styleUrls: ['./organ.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -39,7 +39,7 @@ export class OrganComponent implements OnChanges {
 
   get defaultPosition(): XYZTriplet {
     const dims = this.organDimensions;
-    return { x: dims.x + 2 * 10, y: dims.y / 2, z: dims.z / 2};
+    return { x: dims.x + 2 * 10, y: dims.y / 2, z: dims.z / 2 };
   }
 
   scene: Observable<SpatialSceneNode[]>;
@@ -66,9 +66,9 @@ export class OrganComponent implements OnChanges {
   getDimensions(iri: string): XYZTriplet {
     const organ = this.referenceOrgans.find(item => item.representation_of === iri);
     if (organ) {
-      return {x: organ.x_dimension, y: organ.y_dimension, z: organ.z_dimension};
+      return { x: organ.x_dimension, y: organ.y_dimension, z: organ.z_dimension };
     } else {
-      return {x: 0, y: 0, z: 0};
+      return { x: 0, y: 0, z: 0 };
     }
   }
 
