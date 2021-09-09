@@ -44,7 +44,7 @@ jobs:
       - name: Build Organ Info
         run: |
           npm run build -- --project ccf-organ-info --output-hashing=none --base-href=/ccf-ui/organ-info/ --configuration=staging
-          #npm run build:ccf-organ-info:wc
+          npm run build:ccf-organ-info:wc
           cp -r dist/ccf-organ-info dist/ccf-ui/organ-info
       - run: npm run compodoc
       - name: Setup GitHub Pages files
