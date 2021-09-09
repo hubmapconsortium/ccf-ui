@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { GlobalConfigState } from 'ccf-shared';
 import { LocationStrategy } from '@angular/common';
 import { Injectable, OnDestroy } from '@angular/core';
 import {
@@ -10,11 +9,12 @@ import {
   OntologyTreeModel,
   SpatialEntity,
   SpatialSceneNode,
-  TissueBlockResult,
+  TissueBlockResult
 } from 'ccf-database';
+import { GlobalConfigState } from 'ccf-shared';
 import { releaseProxy, Remote, wrap } from 'comlink';
-import { Observable, Subscription, using, Unsubscribable } from 'rxjs';
-import { take, distinctUntilChanged, shareReplay, switchMap, filter } from 'rxjs/operators';
+import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap, take } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 
@@ -50,10 +50,11 @@ export class DataSourceService implements OnDestroy {
   ) {
     this.dataSource = globalConfig.config$.pipe(
       filter(config => Object.keys(config).length > 0),
+      map((config) => config as unknown as CCFDatabaseOptions),
       distinctUntilChanged(compareConfig),
       switchMap(config => using(
         () => this.createDataSource(),
-        (resource) => this.connectDataSource((resource as unknown as { source: DataSource}).source, config)
+        (resource) => this.connectDataSource((resource as unknown as { source: DataSource }).source, config)
       )),
       shareReplay(1)
     );
@@ -85,11 +86,11 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
-     return this.dataSource.pipe(
-       switchMap(db => db.getTissueBlockResults(filter)),
-       take(1)
-     );
+  getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getTissueBlockResults(filter)),
+      take(1)
+    );
   }
 
   /**
@@ -135,7 +136,7 @@ export class DataSourceService implements OnDestroy {
    *
    * @returns An observable emitting the results.
    */
-   getReferenceOrgans(): Observable<SpatialEntity[]> {
+  getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.dataSource.pipe(
       switchMap(db => db.getReferenceOrgans()),
       take(1)
@@ -148,7 +149,7 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
+  getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.dataSource.pipe(
       switchMap(db => db.getScene(filter)),
       take(1)
@@ -163,6 +164,7 @@ export class DataSourceService implements OnDestroy {
       let worker: Worker;
       ({ source, worker } = this.getWebWorkerDataSource(true));
       unsubscribe = async () => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         await source[releaseProxy]();
         worker.terminate();
       };
@@ -175,7 +177,9 @@ export class DataSourceService implements OnDestroy {
 
   private async connectDataSource(source: DataSource, config: CCFDatabaseOptions): Promise<DataSource> {
     if (environment.disableDbWorker) {
-      await new Promise(r => setTimeout(r, 100));
+      await new Promise(r => {
+        setTimeout(r, 100);
+      });
     }
 
     await source.connect(config);
@@ -188,7 +192,7 @@ export class DataSourceService implements OnDestroy {
       worker = new Worker(new URL('./data-source.worker', import.meta.url), { type: 'module' });
     } else {
       const workerUrl = this.locator.prepareExternalUrl('0-es2015.worker.js');
-      const workerBlob = new Blob([`importScripts('${workerUrl}')`,], {type: 'application/javascript'});
+      const workerBlob = new Blob([`importScripts('${workerUrl}')`,], { type: 'application/javascript' });
       worker = new Worker(URL.createObjectURL(workerBlob), { type: 'module' });
     }
     return { source: wrap(worker), worker };

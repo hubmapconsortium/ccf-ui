@@ -50,7 +50,9 @@ export class ContentComponent implements OnDestroy {
               cdr: ChangeDetectorRef) {
     const messages = messageService.connect(this).getMessages();
     this.subscriptions.add(messages.subscribe(msg => {
-      if(this.handleMessage(msg)) { cdr.markForCheck(); }
+      if (this.handleMessage(msg)) {
+        cdr.markForCheck();
+      }
     }));
   }
 
@@ -76,13 +78,14 @@ export class ContentComponent implements OnDestroy {
         this.animationsEnabled = true;
         return true;
 
-      case 'drawer-toggled':
+      case 'drawer-toggled': {
         const position = (msg.source as DrawerComponent).position;
         const { opened, width, margin } = msg.payload;
 
         this.updateMargin(position, opened, width, margin);
         this.updateFaded();
         return true;
+      }
 
       default:
         return false;

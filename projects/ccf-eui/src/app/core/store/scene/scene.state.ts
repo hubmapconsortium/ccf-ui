@@ -2,14 +2,14 @@ import { Injectable, Injector } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
-import { SpatialSceneNode, NodeClickEvent } from 'ccf-body-ui';
+import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { ALL_POSSIBLE_ORGANS, OrganInfo } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, pluck, take, tap } from 'rxjs/operators';
 
+import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
-import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ListResultsState } from '../list-results/list-results.state';
 
 export const DEFAULT_SELECTED_ORGANS = new Set(['Skin', 'Heart', 'Kidney', 'Spleen']);
@@ -110,7 +110,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
    *
    * @param param0 scene node click event
    */
-  sceneNodeClicked({node, ctrlClick}: NodeClickEvent) {
+  sceneNodeClicked({ node, ctrlClick }: NodeClickEvent): void {
     if (node.representation_of &&
       node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin'
       && node.entityId // Disables this path. Need to update logic here.
@@ -168,12 +168,16 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
         const activeOrgans = new Set(selectedOrgans.map(o => o.id));
         const refOrgans = new Set(refOrganData.filter(o => activeOrgans.has(o.representation_of)).map(o => o['@id']));
         return scene.filter(node =>
-          (node.ccf_annotations && node.ccf_annotations.some(tag => activeOrgans.has(tag)))
-          ||
+          (node.ccf_annotations?.some?.(tag => activeOrgans.has(tag))) ||
           (node.reference_organ && refOrgans.has(node.reference_organ))
-        ).map(node => node.entityId && (colors.hasOwnProperty(node['@id']) || highlightedNodeId === node['@id']) ?
-          ({ ...node,
-            color: highlightedNodeId === node['@id'] ? [30, 136, 229, 255] : colors[node['@id']].rgba } as SpatialSceneNode) : node
+        ).map((node): SpatialSceneNode =>
+          node.entityId && (Object.prototype.hasOwnProperty.call(colors, node['@id']) || highlightedNodeId === node['@id']) ?
+            ({
+              ...node,
+              color: highlightedNodeId === node['@id'] ?
+                [30, 136, 229, 255] :
+                colors[node['@id']].rgba as [number, number, number, number]
+            }) : node
         );
       }),
       tap(scene => this.setScene(scene))

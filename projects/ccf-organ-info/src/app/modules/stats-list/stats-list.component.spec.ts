@@ -1,0 +1,3 @@
+describe('StatsListComponent', () => {
+  // Add tests
+});

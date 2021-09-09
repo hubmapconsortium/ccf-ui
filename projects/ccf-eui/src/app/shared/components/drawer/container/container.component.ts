@@ -52,7 +52,9 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
   }
 
   /** Whether the content was wrapped. */
-  get hasWrappedContent(): boolean { return this.content1.length !== 0; }
+  get hasWrappedContent(): boolean {
+    return this.content1.length !== 0;
+  }
 
   /** The connected message channel. */
   private channel: MessageChannel;
@@ -69,7 +71,9 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
               private cdr: ChangeDetectorRef) {
     this.channel = messageService.connect(this);
     this.subscriptions.add(this.channel.getMessages().subscribe(msg => {
-      if (this.handleMessage(msg)) { cdr.markForCheck(); }
+      if (this.handleMessage(msg)) {
+        cdr.markForCheck();
+      }
     }));
   }
 
@@ -122,8 +126,12 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
     const startDrawers = drawers.filter(drawer => drawer.position === 'start');
     const endDrawers = drawers.filter(drawer => drawer.position === 'end');
 
-    if (startDrawers.length > 1) { throwDuplicateDrawersError('start'); }
-    if (endDrawers.length > 1) { throwDuplicateDrawersError('end'); }
+    if (startDrawers.length > 1) {
+      throwDuplicateDrawersError('start');
+    }
+    if (endDrawers.length > 1) {
+      throwDuplicateDrawersError('end');
+    }
 
     return [startDrawers[0], endDrawers[0]];
   }

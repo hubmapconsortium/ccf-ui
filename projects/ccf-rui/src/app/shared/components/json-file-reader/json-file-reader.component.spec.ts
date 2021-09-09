@@ -10,11 +10,10 @@ describe('JsonFileReaderComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(JsonFileReaderComponent, JsonFileReaderModule);
-    fileReaderInstance = jasmine.createSpyObj<FileReader>('FileReader', ['readAsText'], {result: '"abc"'});
+    fileReaderInstance = jasmine.createSpyObj<FileReader>('FileReader', ['readAsText'], { result: '"abc"' });
 
     // Doesn't work with arrow functions.
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-    spyOn(globalThis, 'FileReader').and.callFake(function(): jasmine.SpyObj<FileReader> {
+    spyOn(globalThis, 'FileReader').and.callFake(function (): jasmine.SpyObj<FileReader> {
       return fileReaderInstance;
     });
   });
@@ -37,7 +36,7 @@ describe('JsonFileReaderComponent', () => {
   it('should parse out the json from an input file event', async () => {
     const { instance } = await shallow.render();
     const blob: Blob = new Blob(['abc']);
-    const event = { target: { files: [blob]}} as unknown as InputEvent;
+    const event = { target: { files: [blob] } } as unknown as InputEvent;
     instance.handleFile(event);
 
     expect(fileReaderInstance.readAsText).toHaveBeenCalledWith(blob);
@@ -46,7 +45,7 @@ describe('JsonFileReaderComponent', () => {
   it('should emit the json extracted from the file input', async () => {
     const { instance, outputs } = await shallow.render();
     const blob: Blob = new Blob(['abc']);
-    const event = { target: { files: [blob]}} as unknown as InputEvent;
+    const event = { target: { files: [blob] } } as unknown as InputEvent;
     instance.handleFile(event);
     fileReaderInstance.onload?.call(fileReaderInstance, undefined as unknown);
     expect(outputs.parsedJson.emit).toHaveBeenCalledWith('abc');
@@ -54,7 +53,7 @@ describe('JsonFileReaderComponent', () => {
 
   it('should return if there are no files', async () => {
     const { instance } = await shallow.render();
-    const event = { target: { files: undefined}} as unknown as InputEvent;
+    const event = { target: { files: undefined } } as unknown as InputEvent;
     instance.handleFile(event);
     expect(fileReaderInstance.readAsText).toHaveBeenCalledTimes(0);
   });

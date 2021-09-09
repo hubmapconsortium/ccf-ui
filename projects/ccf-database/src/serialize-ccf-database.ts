@@ -6,8 +6,8 @@ import { serializeN3Store } from 'triple-store-utils';
 import { CCFDatabase } from './public-api';
 
 
-if (!(global as {fetch: unknown}).fetch) {
-  (global as {fetch: unknown}).fetch = fetch;
+if (!(global as { fetch: unknown }).fetch) {
+  (global as { fetch: unknown }).fetch = fetch;
 }
 
 async function main(outputFile?: string): Promise<void> {
@@ -17,7 +17,8 @@ async function main(outputFile?: string): Promise<void> {
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: '', // Do not query the search-api for spatial entities by default
-    hubmapAssetsUrl: 'https://assets.hubmapconsortium.org'
+    hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
+    dataSources: []
   });
   await db.connect();
   const storeString = serializeN3Store(db.store);

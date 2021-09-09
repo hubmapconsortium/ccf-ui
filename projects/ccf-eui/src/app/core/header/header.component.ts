@@ -30,10 +30,10 @@ export class HeaderComponent {
   /**
    * Emitted when refresh button is clicked
    */
-  @Output() refreshClicked = new EventEmitter<void>();
+  @Output() readonly refreshClicked = new EventEmitter<void>();
 
   /**
    * Emitted when download button is clicked
    */
-  @Output() downloadClicked = new EventEmitter<void>();
+  @Output() readonly downloadClicked = new EventEmitter<void>();
 }

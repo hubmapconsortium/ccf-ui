@@ -6,13 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-    declarations: [ReviewButtonComponent],
-    imports: [
-        CommonModule,
-        ReviewModalModule,
-        MatButtonModule,
-        MatTooltipModule
-    ],
-    exports: [ReviewButtonComponent]
+  declarations: [ReviewButtonComponent],
+  imports: [
+    CommonModule,
+    ReviewModalModule,
+    MatButtonModule,
+    MatTooltipModule
+  ],
+  exports: [ReviewButtonComponent]
 })
 export class ReviewButtonModule { }

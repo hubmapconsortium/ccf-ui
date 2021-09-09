@@ -51,7 +51,7 @@ describe('AppComponent', () => {
         updateFilter: () => undefined
       })
       .mock(TrackingState, {
-        snapshot: {allowTelemetry: true},
+        snapshot: { allowTelemetry: true },
         setAllowTelemetry: () => undefined
       })
       .mock(MatSnackBar, {
@@ -72,6 +72,7 @@ describe('AppComponent', () => {
     // Hacky way to get @Debounce to work
     // @Debounce should be replaced with another implementation
     // that does not depend on the state modules
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     NgxsDataInjector.ngZone = {
       runOutsideAngular: (fn: () => void) => fn()
     } as NgZone;
@@ -161,11 +162,12 @@ describe('AppComponent', () => {
     expect(instance.bodyUI.target).toEqual([0, 0, 0]);
     expect(instance.bodyUI.rotation).toEqual(0);
     expect(instance.bodyUI.rotationX).toEqual(0);
-    expect(instance.bodyUI.bounds).toEqual({x:2.2, y:2, z:0.4});
+    expect(instance.bodyUI.bounds).toEqual({ x:2.2, y:2, z:0.4 });
   });
 
   it('resets the view if body is selected in the ontology', async () => {
-    const mockOntologySelection = [{label: 'body'} as OntologySelection];
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    const mockOntologySelection = [{ label: 'body' } as OntologySelection];
     const { instance } = await shallow.render();
     const spy = spyOn(instance, 'resetView');
     instance.ontologySelected(undefined);

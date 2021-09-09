@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
@@ -7,7 +7,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 @Component({
   selector: 'ccf-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent {
 
@@ -41,7 +42,7 @@ export class DropdownComponent {
    *
    * @param ga Analytics service
    */
-   constructor(private readonly ga: GoogleAnalyticsService) { }
+  constructor(private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Controls fade-in effect after dropdown menu opens

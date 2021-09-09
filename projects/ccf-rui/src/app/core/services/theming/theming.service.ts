@@ -9,19 +9,19 @@ export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
  */
 @Injectable()
 export class ThemingService {
-  private element: ElementRef<unknown>;
-  private injector: Injector;
-  /** Default theme class. */
-  private defaultTheme: string;
-  /** Currently active theme class. */
-  private theme: string;
-
   /** Initializer called during bootstrap to set up theming. */
   static initialize(component: ComponentRef<unknown>): void {
     const { injector, location } = component;
     const service = injector.get(ThemingService);
     service.initialize(location, injector);
   }
+
+  private element: ElementRef<unknown>;
+  private injector: Injector;
+  /** Default theme class. */
+  private defaultTheme: string;
+  /** Currently active theme class. */
+  private theme: string;
 
   /**
    * Creates the theming service.
@@ -30,7 +30,7 @@ export class ThemingService {
    */
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(@Optional() @Inject(DEFAULT_THEME) defaultTheme: string | null) {
-    this.defaultTheme = this.theme = defaultTheme || '';
+    this.defaultTheme = this.theme = defaultTheme ?? '';
   }
 
   /**
@@ -46,7 +46,9 @@ export class ThemingService {
    * @param theme The new theme class.
    */
   setTheme(theme: string): void {
-    if (theme === this.theme) { return; }
+    if (theme === this.theme) {
+      return;
+    }
     this.applyThemeClass(this.theme, 'remove');
     this.applyThemeClass(theme);
     this.theme = theme;

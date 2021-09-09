@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  font-family: Inter;
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+
+  .left {
+    width: 45%;
+  }
+
+  .right {
+    margin-left: 2rem;
+  }
+}

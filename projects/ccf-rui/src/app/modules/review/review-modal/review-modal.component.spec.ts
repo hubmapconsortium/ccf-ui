@@ -7,7 +7,9 @@ import { ReviewModalModule } from './review-modal.module';
 
 
 function wait(duration: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, duration));
+  return new Promise(resolve => {
+    setTimeout(resolve, duration);
+  });
 }
 
 const metaData: MetaData = [
@@ -49,7 +51,7 @@ describe('ReviewModalComponent', () => {
 
   it('should close the dialog when the close() method is called', async () => {
     const { instance, get } = await shallow
-      .mock(MatDialogRef, { close(): void { } })
+      .mock(MatDialogRef, { close(): void { /* Empty */ } })
       .render();
     const ref = get(MatDialogRef);
     instance.close();

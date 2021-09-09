@@ -14,9 +14,9 @@ import { StoreModule } from './store/store.module';
     HttpClientModule,
 
     NgxGoogleAnalyticsModule.forRoot(
-      INITIAL_TELEMETRY_SETTING === false ? '' : environment.googleAnalyticsToken, [
-      { command: 'set', values: [{ app: 'rui' }] }
-    ]),
+      INITIAL_TELEMETRY_SETTING === false ? '' : environment.googleAnalyticsToken,
+      [{ command: 'set', values: [{ app: 'rui' }] }]
+    ),
     MousePositionTrackerModule,
 
     ConfigModule,

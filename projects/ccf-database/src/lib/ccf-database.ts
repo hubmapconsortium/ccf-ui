@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/member-ordering */
+import { JsonLd } from 'jsonld/jsonld-spec';
 import {
-  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, deserializeN3Store, DataFactory, Quad, Store
+  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, deserializeN3Store, Quad, Store
 } from 'triple-store-utils';
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
-import { addHubmapDataToStore } from './hubmap/hubmap-data-import';
+import { searchHubmap } from './hubmap/hubmap-data-import';
 import { AggregateResult, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
@@ -22,10 +23,12 @@ export interface CCFDatabaseOptions {
   ccfOwlUrl: string;
   /** Context. */
   ccfContextUrl: string;
-  /** A list of data sources (in .jsonld format) */
-  dataSources: string[];
+  /** A list of data sources (in n3, rdf, xml, owl, or jsonld format) */
+  dataSources: (string|JsonLd)[];
   /** Data service type. */
   hubmapDataService: 'static' | 'search-api';
+  /** HuBMAP Elastic Search Query */
+  hubmapQuery?: unknown;
   /** Hubmap Portal url. */
   hubmapPortalUrl: string;
   /** Hubmap data url. */
@@ -64,7 +67,7 @@ export class CCFDatabase {
    * @param [options] Initialization options.
    */
   constructor(public options: CCFDatabaseOptions = DEFAULT_CCF_DB_OPTIONS) {
-    this.store = new Store(undefined, {factory: DataFactory});
+    this.store = new Store(undefined, { factory: DataFactory });
     this.graph = new CCFSpatialGraph(this);
     this.scene = new CCFSpatialScene(this);
   }
@@ -93,49 +96,70 @@ export class CCFDatabase {
    */
   private async doConnect(): Promise<void> {
     const ops: Promise<unknown>[] = [];
+    const sources: (string|JsonLd)[] = this.options.dataSources?.concat() ?? [];
+
     const ccfOwlUrl = this.options.ccfOwlUrl;
     if (ccfOwlUrl.endsWith('.n3store.json')) {
       const storeString = await fetch(ccfOwlUrl).then(r => r.text())
-        .catch(x => console.log('Couldn\'t locate serialized store.'));
+        .catch(() => console.log('Couldn\'t locate serialized store.'));
       if (storeString) {
         this.store = deserializeN3Store(storeString, DataFactory);
       }
-    } else if (ccfOwlUrl.endsWith('.n3')) {
-      ops.push(addN3ToStore(this.options.ccfOwlUrl, this.store));
-    } else {
-      ops.push(addRdfXmlToStore(this.options.ccfOwlUrl, this.store));
-    }
-    if (this.options.dataSources?.length > 0) {
-      for (const source of this.options.dataSources) {
-        ops.push(
-          addJsonLdToStore(source, this.store)
-          .catch(x => console.log(`Failed to load ${source}`))
-        );
-      }
+    } else if (ccfOwlUrl?.length > 0) {
+      sources.push(ccfOwlUrl);
     }
     if (this.options.hubmapDataUrl) {
-      if (this.options.hubmapDataUrl.endsWith('.jsonld')) {
-        ops.push(addJsonLdToStore(this.options.hubmapDataUrl, this.store));
+      if (this.options.hubmapDataUrl.endsWith('jsonld')) {
+        sources.push(this.options.hubmapDataUrl);
       } else {
-        ops.push(addHubmapDataToStore(
-          this.store, this.options.hubmapDataUrl, this.options.hubmapDataService, this.options.hubmapToken,
-          this.options.hubmapAssetsUrl, this.options.hubmapPortalUrl
-        ));
+        ops.push(searchHubmap(
+          this.options.hubmapDataUrl,
+          this.options.hubmapDataService,
+          this.options.hubmapQuery,
+          this.options.hubmapToken,
+          this.options.hubmapAssetsUrl,
+          this.options.hubmapPortalUrl
+        ).then((jsonld) => {
+          if (jsonld) {
+            return this.addDataSources([jsonld]);
+          } else {
+            return undefined;
+          }
+        }));
       }
-
-      ops.push(
-        addJsonLdToStore('assets/kpmp/data/rui_locations.jsonld', this.store)
-        .catch(x => console.log('Couldn\'t locate KPMP data.'))
-      );
-      ops.push(
-        addJsonLdToStore('assets/sparc/data/rui_locations.jsonld', this.store)
-        .catch(x => console.log('Couldn\'t locate SPARC data.'))
-      );
     }
+    ops.push(this.addDataSources(sources));
     await Promise.all(ops);
+    await this.synchronize();
+  }
+
+  async addDataSources(sources: (string|JsonLd)[], inputStore?: Store): Promise<this> {
+    const store: Store = inputStore ?? this.store;
+    await Promise.all(
+      sources.map(async (source) => {
+        if (typeof source === 'string') {
+          if (source.endsWith('jsonld')) {
+            await addJsonLdToStore(source, store);
+          } else if (source.endsWith('n3')) {
+            await addN3ToStore(source, store);
+          } else if (source.endsWith('rdf') || source.endsWith('owl') || source.endsWith('xml')) {
+            await addRdfXmlToStore(source, store);
+          }
+        } else {
+          await addJsonLdToStore(source, store);
+        }
+      })
+    );
+    return this;
+  }
+
+  async synchronize(): Promise<this> {
     // Add a small delay to allow the triple store to settle
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => {
+      setTimeout(r, 500);
+    });
     this.graph.createGraph();
+    return this;
   }
 
   /**
@@ -175,7 +199,8 @@ export class CCFDatabase {
    * @returns A list of spatial entities.
    */
   getSpatialEntities(filter?: Filter): SpatialEntity[] {
-    filter = {...filter, hasSpatialEntity: true} as Filter;
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    filter = { ...filter, hasSpatialEntity: true } as Filter;
     return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
   }
 
@@ -185,8 +210,9 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns A list of results.
    */
-   async getTissueBlockResults(filter?: Filter): Promise<TissueBlockResult[]> {
-    filter = {...filter, hasSpatialEntity: true} as Filter;
+  async getTissueBlockResults(filter?: Filter): Promise<TissueBlockResult[]> {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    filter = { ...filter, hasSpatialEntity: true } as Filter;
     return [...this.getIds(filter)].map((s) => getTissueBlockResult(this.store, s));
   }
 
@@ -215,7 +241,7 @@ export class CCFDatabase {
    *
    * @returns Ontology term counts.
    */
-   async getOntologyTreeModel(): Promise<OntologyTreeModel> {
+  async getOntologyTreeModel(): Promise<OntologyTreeModel> {
     return getOntologyTreeModel(this.store);
   }
 
@@ -224,7 +250,7 @@ export class CCFDatabase {
    *
    * @returns Ontology term counts.
    */
-   async getReferenceOrgans(): Promise<SpatialEntity[]> {
+  async getReferenceOrgans(): Promise<SpatialEntity[]> {
     return this.scene.getReferenceOrgans();
   }
 
@@ -237,5 +263,17 @@ export class CCFDatabase {
   async getScene(filter?: Filter): Promise<SpatialSceneNode[]> {
     this.graph.createGraph();
     return this.scene.getScene(filter);
+  }
+
+  /**
+   * Get all nodes to form the 3D scene of reference organ and tissues
+   *
+   * @param [organIri] The Reference Organ IRI
+   * @param [filter] The filter.
+   * @returns A list of Spatial Scene Nodes for the 3D Scene
+   */
+  async getReferenceOrganScene(organIri: string, filter?: Filter): Promise<SpatialSceneNode[]> {
+    this.graph.createGraph();
+    return this.scene.getReferenceOrganScene(organIri, filter);
   }
 }

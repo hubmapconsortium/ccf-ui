@@ -84,7 +84,7 @@ export class CCFSpatialScene {
     }
     if (filter?.debug) {
       organSet = organSet.map(o => [ [o], this.getAnatomicalStructures(o['@id'])])
-        .reduce((acc, [organ, structures]) => acc.concat(structures.length > 0 ? structures : organ), [] as SpatialEntity[]);
+        .reduce<SpatialEntity[]>((acc, [organ, structures]) => acc.concat(structures.length > 0 ? structures : organ), []);
     }
     return organSet;
   }
@@ -114,6 +114,24 @@ export class CCFSpatialScene {
     return nodes.filter(s => s !== undefined) as SpatialSceneNode[];
   }
 
+  getReferenceOrganScene(organIri: string, filter?: Filter): SpatialSceneNode[] {
+    const organs = this.getReferenceOrgans().filter((o) => o.representation_of === organIri && o.sex === filter?.sex);
+    if (organs.length > 0) {
+      const organ = organs[0];
+      const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
+      const organNode = this.getSceneNode(organ, organ, {
+        color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr'
+      }) as SpatialSceneNode;
+
+      const scene = (this.db.getSpatialEntities(filter) ?? []).map((entity) =>
+        this.getSceneNode(entity, organ, { color: [255, 255, 255, 0.9*255] })
+      ) as SpatialSceneNode[];
+      return [organNode].concat(scene).filter(n => n !== undefined);
+    } else {
+      return [];
+    }
+  }
+
   getEntitySceneNodes(filter?: Filter): SpatialSceneNode[] {
     const body = this.getReferenceBody(filter);
     return this.db.getSpatialEntities(filter).map((entity) =>
@@ -122,7 +140,7 @@ export class CCFSpatialScene {
   }
 
   getSceneNode(source: SpatialEntity, target: SpatialEntity, nodeAttrs: Partial<SpatialSceneNode> = {}): SpatialSceneNode | undefined {
-    const has3dObject = source.object && source.object.file_format?.startsWith('model/gltf');
+    const has3dObject = source?.object?.file_format?.startsWith('model/gltf');
     const sourceID = has3dObject && source.object ? source.object['@id'] : source['@id'];
     let transform = this.db.graph.getTransformationMatrix(sourceID, target['@id']);
     if (transform) {
@@ -148,16 +166,16 @@ export class CCFSpatialScene {
       }
       return {
         '@id': source['@id'], '@type': 'SpatialSceneNode',
-        entityId: source.entityId || undefined,
-        ccf_annotations: source.ccf_annotations || undefined,
-        representation_of: source.representation_of || undefined,
-        reference_organ: source.reference_organ || undefined,
+        entityId: source.entityId,
+        ccf_annotations: source.ccf_annotations,
+        representation_of: source.representation_of,
+        reference_organ: source.reference_organ,
         scenegraph: has3dObject ? source.object?.file : undefined,
         scenegraphNode: has3dObject ? source.object?.file_subpath : undefined,
         transformMatrix: transform,
         tooltip: source.label,
         ...nodeAttrs
-      } as SpatialSceneNode;
+      };
     } else {
       return undefined;
     }

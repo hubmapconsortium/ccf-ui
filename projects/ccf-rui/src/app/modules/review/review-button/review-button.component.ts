@@ -44,14 +44,14 @@ export class ReviewButtonComponent implements OnChanges {
   /**
    * Output that emits when the modal's register button was clicked
    */
-  @Output() registerData = new EventEmitter<void>();
+  @Output() readonly registerData = new EventEmitter<void>();
 
   /**
    * Turns on the 'error mode' for the application.
    * Used to begin showing the user what they need to
    * do to be able to register / download.
    */
-  @Output() enterErrorMode = new EventEmitter<void>();
+  @Output() readonly enterErrorMode = new EventEmitter<void>();
 
   /**
    * Creates an instance of review button component.
@@ -65,7 +65,7 @@ export class ReviewButtonComponent implements OnChanges {
    * Updates the value of registrationIsValid based on the
    * meta data.
    */
-  ngOnChanges() {
+  ngOnChanges(): void {
     this.registrationIsValid = Boolean(this.metaData[0].value && this.metaData[1].value && this.metaData[2].value);
   }
 

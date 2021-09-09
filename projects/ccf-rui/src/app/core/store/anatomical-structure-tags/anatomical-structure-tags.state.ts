@@ -117,9 +117,9 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
   @DataAction()
   removeTag(tag: Tag): void {
     if (this.snapshot.entities[tag.id]) {
-      this.updateEntitiesMany([{id: tag.id, changes: {type: 'removed'}}]);
+      this.updateEntitiesMany([{ id: tag.id, changes: { type: 'removed' } }]);
     } else {
-      this.addEntityOne({...tag, type: 'removed'});
+      this.addEntityOne({ ...tag, type: 'removed' });
     }
   }
 
@@ -136,11 +136,11 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
       .filter(as => as.name.toLowerCase().indexOf(text.toLowerCase()) !== -1);
     return [{
       totalCount: matches.length,
-      results: matches.map((as) => ({
+      results: matches.map((as): Tag => ({
         id: as.id,
         label: as.name,
         type: 'added'
-      } as Tag)).slice(0, limit)
+      })).slice(0, limit)
     }];
   }
 
@@ -151,9 +151,9 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
    */
   private addTagRaw(tag: Tag): void {
     if (this.snapshot.entities[tag.id]) {
-      this.updateEntitiesMany([{id: tag.id, changes: {type: 'added'}}]);
+      this.updateEntitiesMany([{ id: tag.id, changes: { type: 'added' } }]);
     } else {
-      this.addEntityOne({ ...tag, type: 'added'});
+      this.addEntityOne({ ...tag, type: 'added' });
     }
   }
 }

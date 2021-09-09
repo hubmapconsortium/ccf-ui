@@ -19,7 +19,7 @@ describe('InfoButtonService', () => {
 
   it('should test parse markdown function', () => {
     const testData = '# About';
-    expect(service.parseMarkdown(testData)).toEqual([{title: 'About', content: ''}]);
+    expect(service.parseMarkdown(testData)).toEqual([{ title: 'About', content: '' }]);
   });
 
   it('readMarkdown function should call parseMarkdown function', async () => {

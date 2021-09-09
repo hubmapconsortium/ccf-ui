@@ -10,14 +10,14 @@ import { BlockSizeInputComponent } from './block-size-input.component';
 
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MatInputModule,
-        MatIconModule,
-        MatRippleModule,
-        MatTooltipModule
-    ],
-    declarations: [BlockSizeInputComponent],
-    exports: [BlockSizeInputComponent]
+  imports: [
+    CommonModule,
+    MatInputModule,
+    MatIconModule,
+    MatRippleModule,
+    MatTooltipModule
+  ],
+  declarations: [BlockSizeInputComponent],
+  exports: [BlockSizeInputComponent]
 })
 export class BlockSizeInputModule { }
