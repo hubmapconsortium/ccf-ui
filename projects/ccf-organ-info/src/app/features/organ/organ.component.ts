@@ -2,8 +2,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Out
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { Filter } from 'ccf-database';
 import { BodyUiComponent } from 'ccf-shared';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable } from 'rxjs';
 import { shareReplay, take } from 'rxjs/operators';
+
 import { DataSourceService } from '../../core/services/data-source/data-source.service';
 
 
@@ -27,7 +29,7 @@ export class OrganComponent implements OnChanges {
 
   private readonly referenceOrgans$ = this.source.getReferenceOrgans().pipe(shareReplay(1));
 
-  constructor(readonly source: DataSourceService) {}
+  constructor(readonly source: DataSourceService, readonly ga: GoogleAnalyticsService) { }
 
   ngOnChanges(): void {
     this.referenceOrgans$.pipe(take(1)).subscribe(referenceOrgans => {
@@ -49,7 +51,7 @@ export class OrganComponent implements OnChanges {
     bodyUI.rotation = 0;
     bodyUI.rotationX = 0;
     bodyUI.bounds = { x: bounds.x * 1.25, y: bounds.y * 1.25, z: bounds.z * 1.25 };
-    bodyUI.target = [ bounds.x / 2, bounds.y / 2, bounds.z / 2 ];
+    bodyUI.target = [bounds.x / 2, bounds.y / 2, bounds.z / 2];
   }
 
   updateSex(selection: 'Male' | 'Female'): void {
