@@ -11,12 +11,10 @@ import {
   SpatialSceneNode,
   TissueBlockResult
 } from 'ccf-database';
-import { Remote } from 'comlink';
 import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
 import { shareReplay, switchMap, take } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
-type DataSource = Remote<CCFDatabase> | CCFDatabase;
 
 /**
  * Backend data queries.
@@ -26,7 +24,7 @@ type DataSource = Remote<CCFDatabase> | CCFDatabase;
 })
 export class DataSourceService implements OnDestroy {
   /** The underlying database. */
-  dataSource: Observable<DataSource>;
+  dataSource: Observable<CCFDatabase>;
   /** Database initialization options. */
   dbOptions: CCFDatabaseOptions;
 
@@ -40,7 +38,7 @@ export class DataSourceService implements OnDestroy {
 
     this.dataSource = using(
       () => this.createDataSource(),
-      (resource) => this.connectDataSource((resource as unknown as { source: DataSource }).source, this.dbOptions)
+      (resource) => this.connectDataSource((resource as unknown as { source: CCFDatabase }).source, this.dbOptions)
     ).pipe(shareReplay(1));
 
     this.subscriptions.add(this.dataSource.subscribe());
@@ -128,15 +126,35 @@ export class DataSourceService implements OnDestroy {
     );
   }
 
-  private createDataSource(): { source: DataSource } & Unsubscribable {
-    const source: DataSource = new CCFDatabase(this.dbOptions);
+  /**
+   * Queries for scene nodes to display.
+   *
+   * @param [filter] Currently applied filter.
+   * @returns An observable emitting the results.
+   */
+   getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getReferenceOrganScene(organIri, filter)),
+      take(1)
+    );
+  }
+
+  private createDataSource(): { source: CCFDatabase } & Unsubscribable {
+    const source: CCFDatabase = new CCFDatabase(this.dbOptions);
     const unsubscribe: () => void = () => undefined;
 
     return { source, unsubscribe };
   }
 
-  private async connectDataSource(source: DataSource, config: CCFDatabaseOptions): Promise<DataSource> {
+  private async connectDataSource(source: CCFDatabase, config: CCFDatabaseOptions): Promise<CCFDatabase> {
+    // In development, make the db globally accessible
+    if (!environment.production) {
+      ((globalThis as unknown) as { db: CCFDatabase }).db = source;
+    }
+
+    const start = new Date().getTime();
     await source.connect(config);
+    console.log(((new Date()).getTime() - start) / 1000);
     return source;
   }
 }

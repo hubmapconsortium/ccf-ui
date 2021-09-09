@@ -1,9 +1,12 @@
 :host {
   display: block;
 
+  .body-ui {
+    height: 525px;
+  }
+
   background-color: black;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  border-radius: 0.5rem;
   color: white;
   padding: 1rem;
 }
