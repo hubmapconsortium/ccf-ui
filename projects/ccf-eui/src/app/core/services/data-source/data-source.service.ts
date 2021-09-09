@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { GlobalConfigState } from 'ccf-shared';
 import { LocationStrategy } from '@angular/common';
 import { Injectable, OnDestroy } from '@angular/core';
 import {
@@ -10,11 +9,12 @@ import {
   OntologyTreeModel,
   SpatialEntity,
   SpatialSceneNode,
-  TissueBlockResult,
+  TissueBlockResult
 } from 'ccf-database';
+import { GlobalConfigState } from 'ccf-shared';
 import { releaseProxy, Remote, wrap } from 'comlink';
-import { Observable, Subscription, using, Unsubscribable } from 'rxjs';
-import { take, distinctUntilChanged, shareReplay, switchMap, filter } from 'rxjs/operators';
+import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap, take } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 
@@ -50,6 +50,7 @@ export class DataSourceService implements OnDestroy {
   ) {
     this.dataSource = globalConfig.config$.pipe(
       filter(config => Object.keys(config).length > 0),
+      map((config) => config as unknown as CCFDatabaseOptions),
       distinctUntilChanged(compareConfig),
       switchMap(config => using(
         () => this.createDataSource(),
