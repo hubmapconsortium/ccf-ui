@@ -118,8 +118,9 @@ export class CCFSpatialScene {
     const organs = this.getReferenceOrgans().filter((o) => o.representation_of === organIri && o.sex === filter?.sex);
     if (organs.length > 0) {
       const organ = organs[0];
+      const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
       const organNode = this.getSceneNode(organ, organ, {
-        color: [255, 255, 255, 255], opacity: 0.2, unpickable: true, _lighting: 'pbr'
+        color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr'
       }) as SpatialSceneNode;
 
       const scene = (this.db.getSpatialEntities(filter) ?? []).map((entity) =>
