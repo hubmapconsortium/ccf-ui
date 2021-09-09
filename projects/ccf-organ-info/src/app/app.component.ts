@@ -14,7 +14,7 @@ import { DataSourceService } from './core/services/data-source/data-source.servi
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  @Input() organIri = 'http://purl.obolibrary.org/obo/UBERON_0002097';
+  @Input() organIri = 'http://purl.obolibrary.org/obo/UBERON_0004539';
   @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
 
