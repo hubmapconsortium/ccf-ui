@@ -132,7 +132,7 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-   getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]> {
+  getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.dataSource.pipe(
       switchMap(db => db.getReferenceOrganScene(organIri, filter)),
       take(1)
