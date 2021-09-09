@@ -21,25 +21,15 @@ export class AppComponent {
   statsLabel = 'Male, kidney, left';
   stats: Observable<AggregateResult[]>;
 
-  testFilter: Filter = {
-    sex: 'Both',
-    ageRange: [
-      1,
-      110
-    ],
-    bmiRange: [
-      13,
-      83
-    ],
-    tmc: [],
-    technologies: [],
-    ontologyTerms: [
-      'http://purl.obolibrary.org/obo/UBERON_0000948'
-    ]
+  testFilter: Partial<Filter> = {
+    sex: this.sex,
+    ontologyTerms: this.organIri ? [
+      this.organIri
+    ] : []
   };
 
   constructor(readonly data: DataSourceService) {
-    this.stats = data.getAggregateResults(this.testFilter);
+    this.stats = data.getAggregateResults(this.testFilter as Filter);
     this.organIri = this.organIri ? this.organIri : this.getCurrentOrgan()?.id;
     this.side = this.getCurrentOrgan()?.side;
     this.organ = this.getCurrentOrgan()?.organ;

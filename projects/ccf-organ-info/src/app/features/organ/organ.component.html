@@ -1,9 +1,7 @@
-<ccf-body-ui class="body-ui"
-  [scene]="scene | async"
+<ccf-body-ui #bodyUI class="body-ui"
+  [scene]="scene$ | async"
   [interactive]="true"
-  [bounds]="bounds"
-  [zoom]="11.5"
-  camera="orthographic"
+  camera="perspective"
 ></ccf-body-ui>
 
 <div class='stage-options'>
