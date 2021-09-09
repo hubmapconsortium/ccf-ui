@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AggregateResult, Filter } from 'ccf-database';
-import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
-import { Observable } from 'rxjs';
+import { ALL_ORGANS } from 'ccf-shared';
+import { Observable, of } from 'rxjs';
+
 import { DataSourceService } from './core/services/data-source/data-source.service';
 
 
@@ -12,39 +13,44 @@ import { DataSourceService } from './core/services/data-source/data-source.servi
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  @Input() organ? = 'Kidney';
+  @Input() organIri = 'http://purl.obolibrary.org/obo/UBERON_0004539';
   @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
-  @Input() side?: 'left' | 'right' = 'right';
-  @Input() organIri?: string = 'http://purl.obolibrary.org/obo/UBERON_0004539';
+  @Input() side?: 'Left' | 'Right' = 'Left';
 
-  title = 'ccf-organ-info';
-  statsLabel = 'Male, kidney, left';
-  stats: Observable<AggregateResult[]>;
+  statsLabel = 'Loading...';
+  stats$: Observable<AggregateResult[]>;
 
-  testFilter: Partial<Filter> = {
-    sex: this.sex,
-    ontologyTerms: this.organIri ? [
-      this.organIri
-    ] : []
-  };
-
-  constructor(readonly data: DataSourceService) {
-    this.stats = data.getAggregateResults(this.testFilter as Filter);
-    this.organIri = this.organIri ? this.organIri : this.getCurrentOrgan()?.id;
-    this.side = this.getCurrentOrgan()?.side;
-    this.organ = this.getCurrentOrgan()?.organ;
+  constructor(readonly source: DataSourceService) {
+    this.updateData();
   }
 
-  sideChange(selection: 'left' | 'right'): void {
-    this.side = selection === 'left' ? 'left' : 'right';
-    this.organIri = ALL_ORGANS.find(organ => organ.organ === this.organ && organ.side === this.side)?.id;
-  }
-
-  getCurrentOrgan(): OrganInfo | undefined {
-    if (this.organIri) {
-      return ALL_ORGANS.find(organ => organ.id === this.organIri);
+  updateData(): void {
+    let organ = ALL_ORGANS.find(o => o.id === this.organIri);
+    if (organ) {
+      if (organ.side && organ.side !== this.side?.toLowerCase()) {
+        const otherSideOrgan = ALL_ORGANS.find(o => o.organ === organ?.organ && o.side === this.side?.toLowerCase());
+        if (otherSideOrgan) {
+          organ = otherSideOrgan;
+          this.organIri = otherSideOrgan.id as string;
+        }
+      }
+      this.statsLabel = [this.sex, organ.organ, this.side].filter(n => !!n).join(', ');
+      this.stats$ = this.source.getAggregateResults(
+        { sex: this.sex, ontologyTerms: [ organ.id ] } as Filter
+      );
     } else {
-      return ALL_ORGANS.find(organ => organ.organ === this.organ && (organ.side ? organ.side === this.side : true));
+      this.statsLabel = `Unknown IRI: ${this.organIri}`;
+      this.stats$ = of([]);
     }
+  }
+
+  updateSex(sex: 'Both' | 'Male' | 'Female'): void {
+    this.sex = sex;
+    this.updateData();
+  }
+
+  updateSide(side: 'Left' | 'Right'): void {
+    this.side = side;
+    this.updateData();
   }
 }

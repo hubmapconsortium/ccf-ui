@@ -3,7 +3,7 @@ import { SpatialSceneNode } from 'ccf-body-ui';
 import { Filter } from 'ccf-database';
 import { BodyUiComponent } from 'ccf-shared';
 import { Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { shareReplay, take } from 'rxjs/operators';
 import { DataSourceService } from '../../core/services/data-source/data-source.service';
 
 
@@ -30,10 +30,13 @@ export class OrganComponent implements OnChanges {
   constructor(readonly source: DataSourceService) {}
 
   ngOnChanges(): void {
-    this.referenceOrgans$.subscribe(referenceOrgans => {
+    this.referenceOrgans$.pipe(take(1)).subscribe(referenceOrgans => {
       const organ = referenceOrgans.find(item => item.representation_of === this.organIri && item.sex === this.sex);
       if (organ) {
         this.resetView({ x: organ.x_dimension / 1000, y: organ.y_dimension / 1000, z: organ.z_dimension / 1000 });
+        if (!organ.side) {
+          this.side = undefined;
+        }
       }
     });
     this.scene$ = this.source.getReferenceOrganScene(
