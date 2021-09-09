@@ -1,8 +1,8 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AggregateResult, Filter } from 'ccf-database';
 import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { DataSourceService } from './core/services/data-source/data-source.service';
-import { AggregateResult, Filter } from 'ccf-database';
 
 
 @Component({

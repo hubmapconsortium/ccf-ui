@@ -535,7 +535,11 @@
             "styles": [
               "projects/ccf-organ-info/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -557,7 +561,7 @@
                   "with": "projects/ccf-organ-info/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": false,
@@ -611,7 +615,11 @@
             "styles": [
               "projects/ccf-organ-info/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
           }
         },
         "lint": {
