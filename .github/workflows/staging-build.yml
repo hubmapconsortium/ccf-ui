@@ -47,11 +47,10 @@ jobs:
           npm run build:ccf-organ-info:wc
           cp -r dist/ccf-organ-info dist/ccf-ui/organ-info
       - run: npm run compodoc
-      - uses: jsmrcaga/action-netlify-deploy@master
+
+      - uses: peaceiris/actions-gh-pages@v3
         with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_MESSAGE: "Staging deploy to Netlify"
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_command: false
-          build_directory: dist/ccf-ui
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/ccf-ui
+          publish_branch: staging
+          commit_message: "Staging deploy -- ${{ github.event.head_commit.message }}"
