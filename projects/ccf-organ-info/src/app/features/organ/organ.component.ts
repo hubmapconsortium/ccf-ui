@@ -1,8 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { Filter, SpatialEntity } from 'ccf-database';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
+import { Filter, SpatialEntity } from 'ccf-database';
 import { Observable } from 'rxjs';
-import { DataSourceService } from './data-source/data-source.service';
+
+import { DataSourceService } from '../../core/services/data-source/data-source.service';
+
 
 interface XYZTriplet<T = number> {
   x: T;
