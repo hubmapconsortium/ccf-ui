@@ -99,8 +99,6 @@ export class DataSourceService implements OnDestroy {
    * @returns An observable emitting the results.
    */
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
-    console.log(' ================================================================================= \nfilter: ', filter);
-
     return this.dataSource.pipe(
       switchMap(db => db.getAggregateResults(filter)),
       take(1)
