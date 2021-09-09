@@ -151,10 +151,13 @@ export class DataSourceService implements OnDestroy {
     if (!environment.production) {
       ((globalThis as unknown) as { db: CCFDatabase }).db = source;
     }
-
     const start = new Date().getTime();
+
     await source.connect(config);
-    console.log(((new Date()).getTime() - start) / 1000);
+
+    if (!environment.production) {
+      console.info(`Loaded CCF database in ${ ((new Date()).getTime() - start) / 1000 }s`);
+    }
     return source;
   }
 }
