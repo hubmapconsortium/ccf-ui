@@ -30,6 +30,10 @@ export const environment = {
   dbOptions: {
     ccfOwlUrl: 'assets/ccf.owl.n3store.json',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+    dataSources: [
+      'assets/kpmp/data/rui_locations.jsonld',
+      'assets/sparc/data/rui_locations.jsonld'
+    ],
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',

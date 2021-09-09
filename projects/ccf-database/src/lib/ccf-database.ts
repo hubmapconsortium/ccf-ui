@@ -127,8 +127,6 @@ export class CCFDatabase {
           }
         }));
       }
-      sources.push('assets/kpmp/data/rui_locations.jsonld');
-      sources.push('assets/sparc/data/rui_locations.jsonld');
     }
     ops.push(this.addDataSources(sources));
     await Promise.all(ops);

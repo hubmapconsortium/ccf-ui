@@ -2,7 +2,6 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-
 /** Testing environment configuration. */
 export const environment = {
   production: false,
@@ -28,8 +27,12 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0002049' // Vasculature
   ],
   dbOptions: {
-    ccfOwlUrl: 'assets/ccf.owl.n3store.json',
+    ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/assets/ccf.owl.n3store.json',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+    dataSources: [
+      'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/assets/kpmp/data/rui_locations.jsonld',
+      'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/assets/sparc/data/rui_locations.jsonld'
+    ],
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
