@@ -13,6 +13,7 @@ import {
 } from 'ccf-database';
 import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
 import { shareReplay, switchMap, take } from 'rxjs/operators';
+
 import { environment } from '../../../../environments/environment';
 
 
@@ -153,7 +154,7 @@ export class DataSourceService implements OnDestroy {
     }
     const start = new Date().getTime();
 
-    await source.connect(config);
+    await source.connect(config, true);
 
     if (!environment.production) {
       console.info(`Loaded CCF database in ${ ((new Date()).getTime() - start) / 1000 }s`);

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/member-ordering */
+import { delMany, get, setMany } from 'idb-keyval';
 import { JsonLd } from 'jsonld/jsonld-spec';
 import {
-  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, deserializeN3Store, Quad, Store
+  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, deserializeN3Store, Quad, serializeN3Store, Store
 } from 'triple-store-utils';
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
@@ -78,15 +79,45 @@ export class CCFDatabase {
    * @param [options] Options used to initialize.
    * @returns A promise resolving to true if data has been loaded into the database.
    */
-  async connect(options?: CCFDatabaseOptions): Promise<boolean> {
+  async connect(options?: CCFDatabaseOptions, cached = false): Promise<boolean> {
     if (options) {
       this.options = options;
     }
     if (!this.initializing) {
-      this.initializing = this.doConnect();
+      if (cached) {
+        this.initializing = this.cachedConnect();
+      } else {
+        this.initializing = this.doConnect();
+      }
     }
     await this.initializing;
     return this.store.size > 0;
+  }
+
+  private async cachedConnect(): Promise<void> {
+    const start = new Date().getTime();
+    const lastModifiedKey = 'ccf-database.last_modified';
+    const ccfDatabaseKey = 'ccf-database';
+
+    const lastModified = await get(lastModifiedKey).catch(() => undefined);
+    let serializedDb: string | undefined;
+
+    if (lastModified && start - new Date(+lastModified).getTime() > 60*60*1000) {
+      await delMany([ccfDatabaseKey, lastModifiedKey]).catch(() => undefined);
+    } else {
+      serializedDb = await get(ccfDatabaseKey).catch(() => undefined);
+    }
+
+    if (serializedDb) {
+      await this.deserialize(serializedDb);
+    } else {
+      await this.doConnect();
+
+      setMany([
+        [ccfDatabaseKey, this.serialize()],
+        [lastModifiedKey, '' + start]
+      ]).catch(() => undefined);
+    }
   }
 
   /**
@@ -160,6 +191,19 @@ export class CCFDatabase {
     });
     this.graph.createGraph();
     return this;
+  }
+
+  serialize(): string {
+    return serializeN3Store(this.store);
+  }
+
+  async deserialize(value: string): Promise<void> {
+    this.store = deserializeN3Store(value, DataFactory);
+    this.graph = new CCFSpatialGraph(this);
+    this.scene = new CCFSpatialScene(this);
+    await new Promise(r => {
+      setTimeout(r, 10);
+    });
   }
 
   /**
