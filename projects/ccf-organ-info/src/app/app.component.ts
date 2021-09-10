@@ -3,7 +3,7 @@ import { AggregateResult } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import { map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
+import { map, shareReplay, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 import { OrganLookupService } from './core/services/organ-lookup/organ-lookup.service';
 
@@ -47,8 +47,9 @@ export class AppComponent implements OnChanges {
       ) : of([]))
     );
 
-    this.statsLabel$ = this.organInfo$.pipe(
-      map(info => this.makeStatsLabel(info)),
+    this.statsLabel$ = this.stats$.pipe(
+      withLatestFrom(this.organInfo$),
+      map(([_stats, info]) => this.makeStatsLabel(info)),
       startWith('Loading...')
     );
   }
