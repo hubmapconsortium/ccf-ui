@@ -61,10 +61,12 @@ export class OrganComponent implements OnChanges {
   updateSex(selection: 'Male' | 'Female'): void {
     this.sex = selection;
     this.sexChange.emit(this.sex);
+    this.cdr.markForCheck();
   }
 
   updateSide(selection: 'Left' | 'Right'): void {
     this.side = selection;
     this.sideChange.emit(this.side);
+    this.cdr.markForCheck();
   }
 }
