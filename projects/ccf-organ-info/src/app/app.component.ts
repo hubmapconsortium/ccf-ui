@@ -4,8 +4,8 @@ import { ALL_ORGANS } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of } from 'rxjs';
 import { shareReplay, take } from 'rxjs/operators';
-import { DataSourceService } from './core/services/data-source/data-source.service';
 
+import { DataSourceService } from './core/services/data-source/data-source.service';
 
 
 @Component({
