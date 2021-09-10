@@ -7,13 +7,18 @@
   font-family: Inter;
   font-size: 0.95rem;
   line-height: 1.5;
+  text-align: left;
+  position: relative;
+  background-color: white;
+  color: black;
 
 
   .left {
-    width: 45%;
+    width: auto;
   }
 
   .right {
     margin-left: 2rem;
+    width: 29rem;
   }
 }
