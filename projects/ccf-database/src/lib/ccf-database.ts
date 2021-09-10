@@ -111,7 +111,7 @@ export class CCFDatabase {
     if (serializedDb) {
       await this.deserialize(serializedDb);
     } else {
-      await this.connect(this.options);
+      await this.doConnect();
 
       setMany([
         [ccfDatabaseKey, this.serialize()],
