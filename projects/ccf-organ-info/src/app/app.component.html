@@ -1,15 +1,12 @@
 <div class="container">
   <div class="left">
-    <ccf-organ
-      [sex]="sex"
-      [side]="side"
-      [organIri]="organIri"
-      (sexChange)="updateSex($event)"
-      (sideChange)="updateSide($event)">
+    <ccf-organ [sex]="sex" [side]="side" [organIri]="(organInfo$ | async)?.id ?? ''" (sexChange)="updateInput('sex', $event)"
+               (sideChange)="updateInput('side', $event)">
     </ccf-organ>
   </div>
   <div class="right">
-    <ccf-stats-list [statsLabel]="statsLabel" [stats]="stats$ | async"></ccf-stats-list>
+    <ccf-stats-list [statsLabel]="statsLabel$ | async" [stats]="stats$ | async">
+    </ccf-stats-list>
     <ccf-link-cards></ccf-link-cards>
   </div>
 </div>
