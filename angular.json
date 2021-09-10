@@ -563,6 +563,27 @@
               ],
               "outputHashing": "none"
             },
+            "staging": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/ccf-organ-info/src/environments/environment.ts",
+                  "with": "projects/ccf-organ-info/src/environments/environment.staging.ts"
+                }
+              ],
+              "outputHashing": "none"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -579,6 +600,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ccf-organ-info:build:production"
+            },
+            "staging": {
+              "browserTarget": "ccf-organ-info:build:staging"
             },
             "development": {
               "browserTarget": "ccf-organ-info:build:development"

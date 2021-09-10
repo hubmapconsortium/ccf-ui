@@ -1,24 +1,12 @@
-<ccf-body-ui class="body-ui"
-  [scene]="scene | async"
-  [interactive]="true"
-  [bounds]="bounds"
-  [zoom]="11.5"
-  camera="orthographic"
-></ccf-body-ui>
+<ccf-body-ui #bodyUI class="body-ui" [scene]="scene$ | async" [interactive]="true" camera="perspective"
+             (nodeClick)="ga.event('node_click', 'organ', $event.node['@id'])">
+</ccf-body-ui>
 
 <div class='stage-options'>
-  <ccf-slide-toggle
-    class="view-slider"
-    [labels]="['Male', 'Female']"
-    [value]="sex"
-    (valueChange)="updateSex($event)"
-  ></ccf-slide-toggle>
+  <ccf-slide-toggle class="view-slider" [labels]="['Male', 'Female']" [value]="sex" (valueChange)="updateSex($event)">
+  </ccf-slide-toggle>
 
-  <ccf-slide-toggle
-    class="view-slider"
-    [labels]="['left', 'right']"
-    [value]="side"
-    [disabled]="!side"
-    (valueChange)="updateSide($event)"
-  ></ccf-slide-toggle>
+  <ccf-slide-toggle class="view-slider" [labels]="['Left', 'Right']" [value]="side" [disabled]="!side"
+                    (valueChange)="updateSide($event)">
+  </ccf-slide-toggle>
 </div>
