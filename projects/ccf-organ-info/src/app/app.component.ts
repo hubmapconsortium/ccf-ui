@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AggregateResult, Filter } from 'ccf-database';
 import { ALL_ORGANS } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
@@ -14,7 +14,7 @@ import { DataSourceService } from './core/services/data-source/data-source.servi
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnChanges {
+export class AppComponent implements OnChanges, AfterViewInit {
   @Input()
   get organIri(): string {
     return this._organIri;
@@ -28,6 +28,9 @@ export class AppComponent implements OnChanges {
   @Input() sex: 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
 
+  @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
+  @ViewChild('right', { read: ElementRef, static: true }) right: ElementRef<HTMLElement>;
+
   statsLabel = 'Loading...';
   stats$: Observable<AggregateResult[]>;
 
@@ -35,6 +38,12 @@ export class AppComponent implements OnChanges {
   private readonly referenceOrgans$ = this.source.getReferenceOrgans().pipe(shareReplay(1));
 
   constructor(readonly source: DataSourceService, private readonly ga: GoogleAnalyticsService, private readonly cdr: ChangeDetectorRef) { }
+
+  ngAfterViewInit(): void {
+    const { left, right } = this;
+    const rightHeight = right.nativeElement.offsetHeight;
+    left.nativeElement.style.height = `${rightHeight}px`;
+  }
 
   ngOnChanges(): void {
     this.referenceOrgans$.pipe(take(1)).subscribe((_referenceOrgans) => {
