@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
 import { AggregateResult, Filter } from 'ccf-database';
 import { ALL_ORGANS } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
@@ -14,21 +14,29 @@ import { DataSourceService } from './core/services/data-source/data-source.servi
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  @Input() organIri = 'http://purl.obolibrary.org/obo/UBERON_0004539';
+export class AppComponent implements OnChanges {
+  @Input()
+  get organIri(): string {
+    return this._organIri;
+  }
+  set organIri(value: string) {
+    this._organIri = value;
+    this.ga?.event('update_iri', 'organ', value);
+    this.cdr.markForCheck();
+  }
+
   @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
 
   statsLabel = 'Loading...';
   stats$: Observable<AggregateResult[]>;
 
+  private _organIri: string;
   private readonly referenceOrgans$ = this.source.getReferenceOrgans().pipe(shareReplay(1));
 
-  constructor(readonly source: DataSourceService, private readonly ga: GoogleAnalyticsService) {
-    this.updateData();
-  }
+  constructor(readonly source: DataSourceService, private readonly ga: GoogleAnalyticsService, private readonly cdr: ChangeDetectorRef) { }
 
-  updateData(): void {
+  ngOnChanges(): void {
     this.referenceOrgans$.pipe(take(1)).subscribe((_referenceOrgans) => {
       let organ = ALL_ORGANS.find(o => o.id === this.organIri);
       if (organ) {
@@ -36,7 +44,7 @@ export class AppComponent {
           const otherSideOrgan = ALL_ORGANS.find(o => o.organ === organ?.organ && o.side === this.side?.toLowerCase());
           if (otherSideOrgan) {
             organ = otherSideOrgan;
-            this.organIri = otherSideOrgan.id as string;
+            this._organIri = otherSideOrgan.id as string;
             this.ga.event('update_iri', 'organ', this.organIri);
           }
         }
@@ -49,18 +57,19 @@ export class AppComponent {
         this.stats$ = of([]);
         this.ga.exception(this.statsLabel, false);
       }
+      this.cdr.markForCheck();
     });
   }
 
   updateSex(sex: 'Both' | 'Male' | 'Female'): void {
     this.sex = sex;
     this.ga.event('update_sex', 'organ', sex.toLowerCase());
-    this.updateData();
+    this.cdr.markForCheck();
   }
 
   updateSide(side: 'Left' | 'Right'): void {
     this.side = side;
     this.ga.event('update_side', 'organ', side.toLowerCase());
-    this.updateData();
+    this.cdr.markForCheck();
   }
 }

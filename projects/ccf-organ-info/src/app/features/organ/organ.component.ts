@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { Filter } from 'ccf-database';
 import { BodyUiComponent } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { shareReplay, take } from 'rxjs/operators';
 
 import { DataSourceService } from '../../core/services/data-source/data-source.service';
@@ -29,7 +29,7 @@ export class OrganComponent implements OnChanges {
 
   private readonly referenceOrgans$ = this.source.getReferenceOrgans().pipe(shareReplay(1));
 
-  constructor(readonly source: DataSourceService, readonly ga: GoogleAnalyticsService) { }
+  constructor(private readonly source: DataSourceService, readonly ga: GoogleAnalyticsService, private cdr: ChangeDetectorRef) { }
 
   ngOnChanges(): void {
     this.referenceOrgans$.pipe(take(1)).subscribe(referenceOrgans => {
@@ -39,11 +39,15 @@ export class OrganComponent implements OnChanges {
         if (!organ.side) {
           this.side = undefined;
         }
+        this.scene$ = this.source.getReferenceOrganScene(
+          this.organIri, { sex: this.sex, ontologyTerms: [this.organIri] } as Filter
+        );
+      } else {
+        // Draw a single black box to the scene
+        this.scene$ = of([{ color: [0, 0, 0, 0], opacity: 0.001 }] as SpatialSceneNode[]);
       }
+      this.cdr.markForCheck();
     });
-    this.scene$ = this.source.getReferenceOrganScene(
-      this.organIri, { sex: this.sex, ontologyTerms: [this.organIri] } as Filter
-    );
   }
 
   resetView(bounds: { x: number; y: number; z: number }): void {
