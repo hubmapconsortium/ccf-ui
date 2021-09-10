@@ -241,3 +241,86 @@ The following options are available for configuration
 - `hubmapToken: string` - Hubmap service token.
 
 The TypeScript definition for this configuration object is [here](projects/ccf-database/src/lib/ccf-database.ts).
+
+
+# Embedding the CCF-ORGAN-INFO
+
+## Code
+
+To embed *CCF-ORGAN-INFO* the following code snippet should be used.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HuBMAP CCF Organ Info</title>
+  <base href="./">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <script src="wc.js" async></script>
+</head>
+<body class="mat-typography">
+  <ccf-organ-info></ccf-organ-info>
+</body>
+</html>
+```
+
+## Configuration
+
+*CCF-ORGAN-INFO* can be customized in the following ways:
+
+```js
+window.addEventListener('DOMContentLoaded', () => {
+  const organInfo = document.querySelector('ccf-organ-info');
+  organInfo.organIri = "http://purl.obolibrary.org/obo/UBERON_0004538";
+  organInfo.sex = 'Female';
+  organInfo.side = 'Right';
+});
+```
+
+This format of configuration only works with certain data types, namely strings and booleans.
+(Note that variables are kebab-case, not camel-case)
+
+````html
+<ccf-organ-info
+  hubmap-organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
+  hubmap-sex="Female"
+  hubmap-side="Right"
+></ccf-organ-info>
+````
+
+Full ORGAN-INFO Example
+
+````html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HuBMAP CCF Organ Info</title>
+  <base href="./">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <script src="wc.js" async></script>
+</head>
+<body class="mat-typography">
+  <ccf-eui
+    hubmap-organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
+    hubmap-sex="Female"
+    hubmap-side="Right"
+  ></ccf-eui>
+</body>
+</html>
+````
+
+The following options are available for configuration
+
+- `organIri: string` - A url to load data from.
+- `sex: 'Female' | 'Male'` - The sex of the selected organ.
+- `side: 'Left' | 'Right'` - The selected organ side.

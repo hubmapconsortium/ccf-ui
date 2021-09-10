@@ -25,7 +25,7 @@ export class AppComponent implements OnChanges {
     this.cdr.markForCheck();
   }
 
-  @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
+  @Input() sex: 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
 
   @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
@@ -67,15 +67,15 @@ export class AppComponent implements OnChanges {
     });
   }
 
-  updateSex(sex: 'Both' | 'Male' | 'Female'): void {
+  updateSex(sex: 'Male' | 'Female'): void {
     this.sex = sex;
     this.ga.event('update_sex', 'organ', sex.toLowerCase());
-    this.cdr.markForCheck();
+    this.ngOnChanges();
   }
 
   updateSide(side: 'Left' | 'Right'): void {
     this.side = side;
     this.ga.event('update_side', 'organ', side.toLowerCase());
-    this.cdr.markForCheck();
+    this.ngOnChanges();
   }
 }

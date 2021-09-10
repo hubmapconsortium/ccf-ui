@@ -1,6 +1,13 @@
 # Changelog
 
-Changelog for the Common Coordinate Framework (CCF) User Interfaces - CCF Exploration User Interface (EUI) and CCF Registration User Interface (RUI)
+Changelog for the Common Coordinate Framework (CCF) User Interfaces
+
+## 2.2.0 - 2021-09-10
+
+### Added in 2.2.0
+
+* Added an organ-info web component for displaying reference organs and associated data in a simple panel display. The hubmap portal will be using this soon for organ pages.
+* [EMBEDDING.md](EMBEDDING.md) instructions have been updated for organ-info embedding.
 
 ## 2.1.0 - 2021-07-30
 

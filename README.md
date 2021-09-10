@@ -8,7 +8,7 @@
 [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=hubmapconsortium_ccf-ui&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=hubmapconsortium_ccf-ui)
 [![Documentation Status](https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/docs/images/coverage-badge-documentation.svg)](https://hubmap-ccf-ui.netlify.com/docs/index.html)
 
-This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multiple projects in one repository) containing the software to build the CCF-EUI and the CCF-RUI.
+This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multiple projects in one repository) containing the software to build the CCF-EUI, CCF-RUI, and CCF-Organ-Info.
 
 ## Website Links
 
@@ -20,6 +20,9 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multipl
 * CCF Registration User Interface (CCF-RUI)
   * Production: <https://hubmapconsortium.github.io/ccf-ui/rui/>
   * Staging: <https://hubmap-ccf-ui.netlify.app/rui/>
+* CCF Organ Info Component (CCF-Organ-Info)
+  * Production: <https://hubmapconsortium.github.io/ccf-ui/organ-info/>
+  * Staging: <https://hubmap-ccf-ui.netlify.app/organ-info/>
 
 ## Background and More Information
 
