@@ -3,11 +3,14 @@
   background-color: black;
   border-radius: 0.5rem;
   color: white;
-  padding: 1rem;
-  height: -webkit-fill-available;
+  height: 100%;
+
+  .body-ui {
+    height: 90%;
+  }
 
   .stage-options {
-    position: relative;
-    bottom: 1.5rem;
+    padding: 1rem;
+    min-width: 352px;
   }
 }
