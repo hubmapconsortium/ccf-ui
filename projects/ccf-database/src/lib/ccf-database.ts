@@ -96,13 +96,16 @@ export class CCFDatabase {
 
   private async cachedConnect(): Promise<void> {
     const start = new Date().getTime();
-    const lastModified = await get('ccf-database.last_modified').catch(() => undefined);
+    const lastModifiedKey = 'ccf-database.last_modified';
+    const ccfDatabaseKey = 'ccf-database';
+
+    const lastModified = await get(lastModifiedKey).catch(() => undefined);
     let serializedDb: string | undefined;
 
     if (lastModified && start - new Date(+lastModified).getTime() > 60*60*1000) {
-      await delMany(['ccf-database', 'ccf-database.last_modified']).catch(() => undefined);
+      await delMany([ccfDatabaseKey, lastModifiedKey]).catch(() => undefined);
     } else {
-      serializedDb = await get('ccf-database').catch(() => undefined);
+      serializedDb = await get(ccfDatabaseKey).catch(() => undefined);
     }
 
     if (serializedDb) {
@@ -111,8 +114,8 @@ export class CCFDatabase {
       await this.connect(this.options);
 
       setMany([
-        ['ccf-database', this.serialize()],
-        ['ccf-database.last_modified', '' + start]
+        [ccfDatabaseKey, this.serialize()],
+        [lastModifiedKey, '' + start]
       ]).catch(() => undefined);
     }
   }
@@ -195,7 +198,7 @@ export class CCFDatabase {
   }
 
   async deserialize(value: string): Promise<void> {
-    this.store = await deserializeN3Store(value, DataFactory);
+    this.store = deserializeN3Store(value, DataFactory);
     this.graph = new CCFSpatialGraph(this);
     this.scene = new CCFSpatialScene(this);
     await new Promise(r => {
