@@ -2,6 +2,13 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces
 
+## 2.3.0 - 2021-09-10
+
+### Added in 2.3.0
+
+* *Greatly* improved CCF Database performance. This improves the performance in both organ-info and EUI.
+* Improved styling of organ-info
+
 ## 2.2.0 - 2021-09-10
 
 ### Added in 2.2.0
