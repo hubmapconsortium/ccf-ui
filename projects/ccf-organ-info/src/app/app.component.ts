@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, ViewChild, ElementRef } from '@angular/core';
 import { AggregateResult, Filter } from 'ccf-database';
 import { ALL_ORGANS } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
@@ -28,6 +28,9 @@ export class AppComponent implements OnChanges {
   @Input() sex: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
 
+  @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
+  @ViewChild('right', { read: ElementRef, static: true }) right: ElementRef<HTMLElement>;
+
   statsLabel = 'Loading...';
   stats$: Observable<AggregateResult[]>;
 
@@ -37,7 +40,10 @@ export class AppComponent implements OnChanges {
   constructor(readonly source: DataSourceService, private readonly ga: GoogleAnalyticsService, private readonly cdr: ChangeDetectorRef) { }
 
   ngOnChanges(): void {
+    const { left, right } = this;
     this.referenceOrgans$.pipe(take(1)).subscribe((_referenceOrgans) => {
+      const rightHeight = right.nativeElement.offsetHeight;
+      left.nativeElement.style.height = `${rightHeight}px`;
       let organ = ALL_ORGANS.find(o => o.id === this.organIri);
       if (organ) {
         if (organ.side && organ.side !== this.side?.toLowerCase()) {
