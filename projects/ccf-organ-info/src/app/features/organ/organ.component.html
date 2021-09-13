@@ -1,4 +1,4 @@
-<ccf-body-ui #bodyUI class="body-ui" [scene]="scene$ | async" [interactive]="true" camera="perspective"
+<ccf-body-ui #bodyUI class="body-ui" [scene]="scene" [interactive]="true" camera="perspective"
              (nodeClick)="ga.event('node_click', 'organ', $event.node['@id'])">
 </ccf-body-ui>
 

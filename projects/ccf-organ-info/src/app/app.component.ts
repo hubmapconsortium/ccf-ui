@@ -1,11 +1,19 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { AggregateResult, Filter } from 'ccf-database';
-import { ALL_ORGANS, ALL_POSSIBLE_ORGANS } from 'ccf-shared';
+import {
+  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild,
+} from '@angular/core';
+import { SpatialSceneNode } from 'ccf-body-ui';
+import { AggregateResult, SpatialEntity } from 'ccf-database';
+import { OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { Observable, of } from 'rxjs';
-import { shareReplay, take } from 'rxjs/operators';
+import { Observable, of, ReplaySubject } from 'rxjs';
+import { map, shareReplay, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
-import { DataSourceService } from './core/services/data-source/data-source.service';
+import { OrganLookupService } from './core/services/organ-lookup/organ-lookup.service';
+
+
+const EMPTY_SCENE = [
+  { color: [0, 0, 0, 0], opacity: 0.001 }
+];
 
 
 @Component({
@@ -15,29 +23,64 @@ import { DataSourceService } from './core/services/data-source/data-source.servi
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnChanges, AfterViewInit {
-  @Input()
-  get organIri(): string {
-    return this._organIri;
-  }
-  set organIri(value: string) {
-    this._organIri = value;
-    this.ga?.event('update_iri', 'organ', value);
-    this.cdr.markForCheck();
-  }
-
-  @Input() sex: 'Male' | 'Female' = 'Female';
+  @Input() organIri?: string;
+  @Input() sex?: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
 
   @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
   @ViewChild('right', { read: ElementRef, static: true }) right: ElementRef<HTMLElement>;
 
-  statsLabel = 'Loading...';
-  stats$: Observable<AggregateResult[]>;
+  readonly organInfo$: Observable<OrganInfo | undefined>;
+  readonly organ$: Observable<SpatialEntity | undefined>;
+  readonly scene$: Observable<SpatialSceneNode[]>;
+  readonly stats$: Observable<AggregateResult[]>;
+  readonly statsLabel$: Observable<string>;
 
-  private _organIri: string;
-  private readonly referenceOrgans$ = this.source.getReferenceOrgans().pipe(shareReplay(1));
+  private readonly inputChangedTick$ = new ReplaySubject<void>(1);
 
-  constructor(readonly source: DataSourceService, private readonly ga: GoogleAnalyticsService, private readonly cdr: ChangeDetectorRef) { }
+  constructor(
+    lookup: OrganLookupService,
+    private readonly ga: GoogleAnalyticsService
+  ) {
+    this.organInfo$ = this.inputChangedTick$.pipe(
+      switchMap(() => lookup.getOrganInfo(
+        this.organIri ?? '',
+        this.side?.toLowerCase?.() as OrganInfo['side'],
+        this.sex
+      )),
+      tap(info => this.logOrganLookup(info)),
+      shareReplay(1)
+    );
+
+    this.organ$ = this.organInfo$.pipe(
+      switchMap(info => info ? lookup.getOrgan(
+        info,
+        this.sex
+      ) : of(undefined)),
+      shareReplay(1)
+    );
+
+    this.scene$ = this.organ$.pipe(
+      withLatestFrom(this.organInfo$),
+      switchMap(([organ, info]) => organ && info ? lookup.getOrganScene(
+        info,
+        this.sex
+      ) : of(EMPTY_SCENE as SpatialSceneNode[]))
+    );
+
+    this.stats$ = this.organInfo$.pipe(
+      switchMap(info => info ? lookup.getOrganStats(
+        info,
+        this.sex
+      ) : of([]))
+    );
+
+    this.statsLabel$ = this.stats$.pipe(
+      withLatestFrom(this.organInfo$),
+      map(([_stats, info]) => this.makeStatsLabel(info)),
+      startWith('Loading...')
+    );
+  }
 
   ngAfterViewInit(): void {
     const { left, right } = this;
@@ -45,40 +88,51 @@ export class AppComponent implements OnChanges, AfterViewInit {
     left.nativeElement.style.height = `${rightHeight}px`;
   }
 
-  ngOnChanges(): void {
-    this.referenceOrgans$.pipe(take(1)).subscribe((_referenceOrgans) => {
-      let organ = ALL_POSSIBLE_ORGANS.find(o => o.id === this.organIri);
-      if (organ) {
-        if (organ.disabled || (organ.side && organ.side !== this.side?.toLowerCase())) {
-          const otherSideOrgan = ALL_ORGANS.find(o => o.organ === organ?.organ && o.side === this.side?.toLowerCase());
-          if (otherSideOrgan) {
-            organ = otherSideOrgan;
-            this._organIri = otherSideOrgan.id as string;
-            this.ga.event('update_iri', 'organ', this.organIri);
-          }
-        }
-        this.statsLabel = [this.sex, organ.organ, this.side].filter(n => !!n).join(', ');
-        this.stats$ = this.source.getAggregateResults(
-          { sex: this.sex, ontologyTerms: [ organ.id ] } as Filter
-        );
-      } else {
-        this.statsLabel = `Unknown IRI: ${this.organIri}`;
-        this.stats$ = of([]);
-        this.ga.exception(this.statsLabel, false);
+  ngOnChanges(changes: SimpleChanges): void {
+    this.handleInputChanges(changes);
+  }
+
+  updateInput<K extends keyof this>(prop: K, value: this[K]): void {
+    const changes: SimpleChanges = { [prop]: new SimpleChange(this[prop], value, false) };
+
+    this[prop] = value;
+    this.handleInputChanges(changes);
+  }
+
+  private handleInputChanges(changes: SimpleChanges): void {
+    const props = ['organIri', 'sex', 'side'];
+    let hasChanges = false;
+
+    for (const prop of props) {
+      if (prop in changes) {
+        this.logInputChange(prop, changes[prop].currentValue);
+        hasChanges = true;
       }
-      this.cdr.markForCheck();
-    });
+    }
+
+    if (hasChanges) {
+      this.inputChangedTick$.next();
+    }
   }
 
-  updateSex(sex: 'Male' | 'Female'): void {
-    this.sex = sex;
-    this.ga.event('update_sex', 'organ', sex.toLowerCase());
-    this.ngOnChanges();
+  private makeStatsLabel(info: OrganInfo | undefined): string {
+    let parts: (string | undefined)[] = [`Unknown IRI: ${this.organIri}`];
+    if (info) {
+      parts = [this.sex, info.organ, this.side?.toLowerCase?.()];
+    }
+
+    return parts.filter(seg => !!seg).join(', ');
   }
 
-  updateSide(side: 'Left' | 'Right'): void {
-    this.side = side;
-    this.ga.event('update_side', 'organ', side.toLowerCase());
-    this.ngOnChanges();
+  private logInputChange(prop: string, value: unknown): void {
+    const snakeCasedProp = prop.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+    const event = `update_${snakeCasedProp}`;
+    this.ga.event(event, 'organ', `${value}`);
+  }
+
+  private logOrganLookup(info: OrganInfo | undefined): void {
+    const event = info ? 'organ_lookup_success' : 'organ_lookup_failure';
+    const inputs = `Iri: ${this.organIri} - Sex: ${this.sex} - Side: ${this.side}`;
+    this.ga.event(event, 'organ', inputs);
   }
 }
