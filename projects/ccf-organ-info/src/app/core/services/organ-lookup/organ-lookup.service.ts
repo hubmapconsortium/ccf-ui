@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AggregateResult, Filter, SpatialEntity, SpatialSceneNode } from 'ccf-database';
-import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
+import { ALL_POSSIBLE_ORGANS, OrganInfo } from 'ccf-shared';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -11,7 +11,7 @@ import { DataSourceService } from '../data-source/data-source.service';
   providedIn: 'root'
 })
 export class OrganLookupService {
-  private readonly organs = ALL_ORGANS;
+  private readonly organs = ALL_POSSIBLE_ORGANS;
 
   constructor(private readonly source: DataSourceService) { }
 
