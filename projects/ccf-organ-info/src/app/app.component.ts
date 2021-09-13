@@ -1,11 +1,17 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { AggregateResult } from 'ccf-database';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { SpatialSceneNode } from 'ccf-body-ui';
+import { AggregateResult, SpatialEntity } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { map, shareReplay, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 import { OrganLookupService } from './core/services/organ-lookup/organ-lookup.service';
+
+
+const EMPTY_SCENE = [
+  { color: [0, 0, 0, 0], opacity: 0.001 }
+];
 
 
 @Component({
@@ -20,6 +26,8 @@ export class AppComponent implements OnChanges {
   @Input() side?: 'Left' | 'Right' = 'Left';
 
   readonly organInfo$: Observable<OrganInfo | undefined>;
+  readonly organ$: Observable<SpatialEntity | undefined>;
+  readonly scene$: Observable<SpatialSceneNode[]>;
   readonly stats$: Observable<AggregateResult[]>;
   readonly statsLabel$: Observable<string>;
 
@@ -27,8 +35,7 @@ export class AppComponent implements OnChanges {
 
   constructor(
     lookup: OrganLookupService,
-    private readonly ga: GoogleAnalyticsService,
-    private readonly cdr: ChangeDetectorRef,
+    private readonly ga: GoogleAnalyticsService
   ) {
     this.organInfo$ = this.inputChangedTick$.pipe(
       switchMap(() => lookup.getOrganInfo(
@@ -38,6 +45,22 @@ export class AppComponent implements OnChanges {
       )),
       tap(info => this.logOrganLookup(info)),
       shareReplay(1)
+    );
+
+    this.organ$ = this.organInfo$.pipe(
+      switchMap(info => info ? lookup.getOrgan(
+        info,
+        this.sex
+      ) : of(undefined)),
+      shareReplay(1)
+    );
+
+    this.scene$ = this.organ$.pipe(
+      withLatestFrom(this.organInfo$),
+      switchMap(([organ, info]) => organ && info ? lookup.getOrganScene(
+        info,
+        this.sex
+      ) : of(EMPTY_SCENE as SpatialSceneNode[]))
     );
 
     this.stats$ = this.organInfo$.pipe(
@@ -59,8 +82,10 @@ export class AppComponent implements OnChanges {
   }
 
   updateInput<K extends keyof this>(prop: K, value: this[K]): void {
+    const changes: SimpleChanges = { [prop]: new SimpleChange(this[prop], value, false) };
+
     this[prop] = value;
-    this.cdr.markForCheck();
+    this.handleInputChanges(changes);
   }
 
   private handleInputChanges(changes: SimpleChanges): void {

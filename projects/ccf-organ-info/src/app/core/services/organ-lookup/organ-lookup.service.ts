@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AggregateResult, Filter } from 'ccf-database';
+import { AggregateResult, Filter, SpatialEntity, SpatialSceneNode } from 'ccf-database';
 import { ALL_ORGANS, OrganInfo } from 'ccf-shared';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { DataSourceService } from '../data-source/data-source.service';
 
@@ -26,6 +27,19 @@ export class OrganLookupService {
     }
 
     return of(info);
+  }
+
+  getOrgan(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<SpatialEntity | undefined> {
+    return this.source.getReferenceOrgans().pipe(
+      map(entities => entities.find(entity =>
+        entity.representation_of === info.id && (sex === 'Both' || entity.sex === sex)
+      ))
+    );
+  }
+
+  getOrganScene(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<SpatialSceneNode[]> {
+    const filter: Partial<Filter> = { ontologyTerms: [info.id!], sex };
+    return this.source.getReferenceOrganScene(info.id!, filter as Filter);
   }
 
   getOrganStats(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<AggregateResult[]> {

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="left">
-    <ccf-organ [sex]="sex" [side]="side" [organIri]="(organInfo$ | async)?.id ?? ''" (sexChange)="updateInput('sex', $event)"
-               (sideChange)="updateInput('side', $event)">
+    <ccf-organ [sex]="sex" [side]="side" [organ]="organ$ | async" [scene]="(scene$ | async) ?? []"
+               (sexChange)="updateInput('sex', $event)" (sideChange)="updateInput('side', $event)">
     </ccf-organ>
   </div>
   <div class="right">
