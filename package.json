@@ -1,6 +1,6 @@
 {
   "name": "ccf-ui",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -85,6 +85,7 @@
     "graphology": "^0.20.0",
     "graphology-shortest-path": "^1.4.1",
     "hex-rgb": "^5.0.0",
+    "idb-keyval": "^6.0.1",
     "jsonld": "^5.2.0",
     "lodash": "^4.17.21",
     "n3": "^1.8.1",

@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import {
+  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild,
+} from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { AggregateResult, SpatialEntity } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
@@ -20,10 +22,13 @@ const EMPTY_SCENE = [
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnChanges {
+export class AppComponent implements OnChanges, AfterViewInit {
   @Input() organIri?: string;
   @Input() sex?: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
+
+  @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
+  @ViewChild('right', { read: ElementRef, static: true }) right: ElementRef<HTMLElement>;
 
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
@@ -75,6 +80,12 @@ export class AppComponent implements OnChanges {
       map(([_stats, info]) => this.makeStatsLabel(info)),
       startWith('Loading...')
     );
+  }
+
+  ngAfterViewInit(): void {
+    const { left, right } = this;
+    const rightHeight = right.nativeElement.offsetHeight;
+    left.nativeElement.style.height = `${rightHeight}px`;
   }
 
   ngOnChanges(changes: SimpleChanges): void {

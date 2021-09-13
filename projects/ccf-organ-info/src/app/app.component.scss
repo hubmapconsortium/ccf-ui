@@ -15,10 +15,12 @@
 
   .left {
     width: auto;
+    flex-grow: 1;
   }
 
   .right {
     margin-left: 2rem;
+    height: fit-content;
     width: 29rem;
   }
 }

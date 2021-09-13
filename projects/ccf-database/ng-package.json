@@ -3,6 +3,7 @@
   "dest": "../../dist/ccf-database",
   "lib": {
     "umdModuleIds": {
+      "idb-keyval": "idb-keyval",
       "lodash": "lodash",
       "rdf-literal": "rdfLiteral",
       "triple-store-utils": "tripleStoreUtils"

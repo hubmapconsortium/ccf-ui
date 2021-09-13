@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { CCFDatabase } from './ccf-database';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { DirectedGraph } from 'graphology';
 import shortestPath from 'graphology-shortest-path/unweighted';
 
-import { SpatialEntity, SpatialObjectReference, SpatialPlacement } from './spatial-types';
-import { rdf, ccf } from './util/prefixes';
-import { getSpatialEntity, getSpatialObjectReference, getSpatialPlacement } from './queries/spatial-result-n3';
+import { CCFDatabase } from './ccf-database';
+import { getSpatialPlacement } from './queries/spatial-result-n3';
+import { SpatialPlacement } from './spatial-types';
+import { ccf, rdf } from './util/prefixes';
 
 
 export function applySpatialPlacement(tx: Matrix4, placement: SpatialPlacement): Matrix4 {
@@ -43,30 +43,38 @@ export class CCFSpatialGraph {
   createGraph(): void {
     this.graph = new DirectedGraph();
     const store = this.db.store;
+
     // Add all Spatial Object References
     store.forSubjects((subject) => {
-      this.addSpatialObjectReference(getSpatialObjectReference(store, subject.id));
+      this.addNode(subject.id, 'SpatialObjectReference');
     }, rdf.type, ccf.SpatialObjectReference, null);
 
     // Add all Spatial Entities
     store.forSubjects((subject) => {
-      this.addSpatialEntity(getSpatialEntity(store, subject.id));
+      this.addNode(subject.id, 'SpatialEntity');
     }, rdf.type, ccf.SpatialEntity, null);
 
     // Add all Spatial Placements
-    store.forSubjects((subject) => {
-      this.addSpatialPlacement(getSpatialPlacement(store, subject.id));
-    }, rdf.type, ccf.SpatialPlacement, null);
+    const edgeSource: Record<string, string> = {};
+    store.some((quad) => {
+      edgeSource[quad.subject.id] = quad.object.id;
+      return false;
+    }, null, ccf.spatialPlacement.source, null, null);
+    store.some((quad) => {
+      const source = edgeSource[quad.subject.id];
+      if (source) {
+        this.addEdge(quad.subject.id, source, quad.object.id, 'SpatialPlacement');
+      }
+      return false;
+    }, null, ccf.spatialPlacement.target, null, null);
   }
 
-  addSpatialEntity(entity: SpatialEntity): void {
-    this.graph.mergeNode(entity['@id'], { type: 'SpatialEntity', object: entity });
+  addNode(id: string, type: string): void {
+    this.graph.mergeNode(id, { type });
   }
-  addSpatialObjectReference(ref: SpatialObjectReference): void {
-    this.graph.mergeNode(ref['@id'], { type: 'SpatialObjectReference', object: ref });
-  }
-  addSpatialPlacement(placement: SpatialPlacement): void {
-    this.graph.mergeDirectedEdge(placement.source['@id'], placement.target['@id'], { type: 'SpatialPlacement', placement });
+
+  addEdge(id: string, source: string, target: string, type: string): void {
+    this.graph.mergeDirectedEdge(source, target, { type, id });
   }
 
   getTransformationMatrix(sourceIRI: string, targetIRI: string): Matrix4 | undefined {
@@ -77,6 +85,7 @@ export class CCFSpatialGraph {
       return undefined;
     }
 
+    const store = this.db.store;
     const tx = new Matrix4(Matrix4.IDENTITY);
     const path = shortestPath(this.graph, sourceIRI, targetIRI);
     if (path && path.length > 0) {
@@ -84,8 +93,9 @@ export class CCFSpatialGraph {
       let target: string | number = '';
       for (const source of path) {
         if (target) {
-          const p = this.graph.getEdgeAttribute(source, target, 'placement') as SpatialPlacement;
-          applySpatialPlacement(tx, p);
+          const placementId = this.graph.getEdgeAttribute(source, target, 'id');
+          const placement = getSpatialPlacement(store, placementId);
+          applySpatialPlacement(tx, placement);
         }
         target = source;
       }
