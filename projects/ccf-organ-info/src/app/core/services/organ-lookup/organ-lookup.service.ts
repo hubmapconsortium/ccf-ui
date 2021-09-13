@@ -21,7 +21,7 @@ export class OrganLookupService {
       return of(undefined);
     }
 
-    if (info.side && side && info.side !== side) {
+    if (info.disabled || (info.side && side && info.side !== side)) {
       const organ = info.organ;
       info = this.organs.find(item => item.organ === organ && item.side === side);
     }
