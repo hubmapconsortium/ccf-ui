@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AggregateResult, Filter } from 'ccf-database';
-import { ALL_ORGANS } from 'ccf-shared';
+import { ALL_ORGANS, ALL_POSSIBLE_ORGANS } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of } from 'rxjs';
 import { shareReplay, take } from 'rxjs/operators';
@@ -47,9 +47,9 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   ngOnChanges(): void {
     this.referenceOrgans$.pipe(take(1)).subscribe((_referenceOrgans) => {
-      let organ = ALL_ORGANS.find(o => o.id === this.organIri);
+      let organ = ALL_POSSIBLE_ORGANS.find(o => o.id === this.organIri);
       if (organ) {
-        if (organ.side && organ.side !== this.side?.toLowerCase()) {
+        if (organ.disabled || (organ.side && organ.side !== this.side?.toLowerCase())) {
           const otherSideOrgan = ALL_ORGANS.find(o => o.organ === organ?.organ && o.side === this.side?.toLowerCase());
           if (otherSideOrgan) {
             organ = otherSideOrgan;

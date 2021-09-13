@@ -21,6 +21,11 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0000948'
   },
   {
+    disabled: true,
+    src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002113'
+  },
+  {
     src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0004538'
   },
