@@ -69,7 +69,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   /**
    * Shifts block position when certain keys are pressed
-   * 
+   *
    * @param target The keyboard event
    */
   @HostListener('document:keydown', ['$event'])
@@ -79,24 +79,24 @@ export class AppComponent implements OnDestroy, OnInit {
       return;
     }
     let newPosition = oldPosition;
-    switch(target.key) {
+    switch (target.key) {
       case 'q':
-        newPosition = {...oldPosition, z: oldPosition.z + 0.5};
+        newPosition = { ...oldPosition, z: oldPosition.z + 0.5 };
         break;
       case 'e':
-        newPosition = {...oldPosition, z: oldPosition.z - 0.5};
+        newPosition = { ...oldPosition, z: oldPosition.z - 0.5 };
         break;
       case 'w':
-        newPosition = {...oldPosition, y: oldPosition.y + 0.5};
+        newPosition = { ...oldPosition, y: oldPosition.y + 0.5 };
         break;
       case 's':
-        newPosition = {...oldPosition, y: oldPosition.y - 0.5};
+        newPosition = { ...oldPosition, y: oldPosition.y - 0.5 };
         break;
       case 'a':
-        newPosition = {...oldPosition, x: oldPosition.x - 0.5};
+        newPosition = { ...oldPosition, x: oldPosition.x - 0.5 };
         break;
       case 'd':
-        newPosition = {...oldPosition, x: oldPosition.x + 0.5};
+        newPosition = { ...oldPosition, x: oldPosition.x + 0.5 };
         break;
       default:
         break;
@@ -106,7 +106,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   /**
    * Disables block position change if an input element is clicked
-   * 
+   *
    * @param target The element clicked
    */
   @HostListener('document:click', ['$event.target'])
