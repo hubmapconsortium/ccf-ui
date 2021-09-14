@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GlobalConfigState, TrackingPopupComponent, TrackingState } from 'ccf-shared';
 import { Subscription } from 'rxjs';
@@ -32,6 +32,9 @@ export class AppComponent implements OnDestroy, OnInit {
   /** False until the initial registration modal is closed */
   registrationStarted = false;
 
+  /** Disables changes in block position */
+  disablePositionChange = false;
+
   /** All subscriptions managed by the container. */
   private readonly subscriptions = new Subscription();
 
@@ -62,6 +65,57 @@ export class AppComponent implements OnDestroy, OnInit {
       },
       duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
     });
+  }
+
+  /**
+   * Shifts block position when certain keys are pressed
+   *
+   * @param target The keyboard event
+   */
+  @HostListener('document:keydown', ['$event'])
+  handleKey(target: KeyboardEvent): void {
+    const oldPosition = this.model.snapshot.position;
+    if (this.disablePositionChange || !this.registrationStarted) {
+      return;
+    }
+    let newPosition = oldPosition;
+    switch (target.key) {
+      case 'q':
+        newPosition = { ...oldPosition, z: oldPosition.z + 0.5 };
+        break;
+      case 'e':
+        newPosition = { ...oldPosition, z: oldPosition.z - 0.5 };
+        break;
+      case 'w':
+        newPosition = { ...oldPosition, y: oldPosition.y + 0.5 };
+        break;
+      case 's':
+        newPosition = { ...oldPosition, y: oldPosition.y - 0.5 };
+        break;
+      case 'a':
+        newPosition = { ...oldPosition, x: oldPosition.x - 0.5 };
+        break;
+      case 'd':
+        newPosition = { ...oldPosition, x: oldPosition.x + 0.5 };
+        break;
+      default:
+        break;
+    }
+    this.model.setPosition(newPosition);
+  }
+
+  /**
+   * Disables block position change if an input element is clicked
+   *
+   * @param target The element clicked
+   */
+  @HostListener('document:click', ['$event.target'])
+  handleClick(target: HTMLElement): void {
+    if (target.nodeName === 'INPUT') {
+      this.disablePositionChange = true;
+    } else {
+      this.disablePositionChange = false;
+    }
   }
 
   /**
