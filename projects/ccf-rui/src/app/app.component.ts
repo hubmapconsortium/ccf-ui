@@ -78,25 +78,27 @@ export class AppComponent implements OnDestroy, OnInit {
     if (this.disablePositionChange || !this.registrationStarted) {
       return;
     }
+    target.preventDefault();
+    const delta = target.repeat ? 1.0 : 0.5;
     let newPosition = oldPosition;
     switch (target.key) {
       case 'q':
-        newPosition = { ...oldPosition, z: oldPosition.z + 0.5 };
+        newPosition = { ...oldPosition, z: oldPosition.z + delta };
         break;
       case 'e':
-        newPosition = { ...oldPosition, z: oldPosition.z - 0.5 };
+        newPosition = { ...oldPosition, z: oldPosition.z - delta };
         break;
       case 'w':
-        newPosition = { ...oldPosition, y: oldPosition.y + 0.5 };
+        newPosition = { ...oldPosition, y: oldPosition.y + delta };
         break;
       case 's':
-        newPosition = { ...oldPosition, y: oldPosition.y - 0.5 };
+        newPosition = { ...oldPosition, y: oldPosition.y - delta };
         break;
       case 'a':
-        newPosition = { ...oldPosition, x: oldPosition.x - 0.5 };
+        newPosition = { ...oldPosition, x: oldPosition.x - delta };
         break;
       case 'd':
-        newPosition = { ...oldPosition, x: oldPosition.x + 0.5 };
+        newPosition = { ...oldPosition, x: oldPosition.x + delta };
         break;
       default:
         break;

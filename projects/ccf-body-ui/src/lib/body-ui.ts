@@ -83,7 +83,7 @@ export class BodyUI {
       views: [ deckProps.camera === 'orthographic' ? new OrthographicView({
         flipY: false,
         near: -1000
-      }) : new OrbitView({}) ],
+      }) : new OrbitView({ orbitAxis: 'Y' }) ],
       controller: deckProps.interactive !== undefined ? deckProps.interactive : true,
       layers: [ this.bodyUILayer ],
       onHover: this._onHover,
