@@ -42,8 +42,13 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0000955'
   },
   {
+    disabled: true,
     src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002048'
+  },
+  {
+    src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001004'
   },
   {
     src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, L', side: 'left', hasSex: true,
