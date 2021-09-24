@@ -118,7 +118,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
   private makeStatsLabel(info: OrganInfo | undefined): string {
     let parts: (string | undefined)[] = [`Unknown IRI: ${this.organIri}`];
     if (info) {
-      parts = [this.sex, info.organ, this.side?.toLowerCase?.()];
+      parts = [this.sex, info.organ, info.side];
     }
 
     return parts.filter(seg => !!seg).join(', ');

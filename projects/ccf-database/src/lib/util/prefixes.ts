@@ -176,6 +176,7 @@ export const rui = {
   left_ureter: uberon.x('0001223'),
   liver: uberon.x('0002107'),
   lung: uberon.x('0002048'),
+  respiratory_system: uberon.x('0001004'),
   lymph_node: uberon.x('0000029'),
   pelvis: uberon.x('0001270'),
   rectum: uberon.x('0001052'),
