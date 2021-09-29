@@ -32,7 +32,8 @@ export const environment = {
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     dataSources: [
       'assets/kpmp/data/rui_locations.jsonld',
-      'assets/sparc/data/rui_locations.jsonld'
+      'assets/sparc/data/rui_locations.jsonld',
+      'assets/gtex/data/rui_locations.jsonld'
     ],
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
