@@ -38,16 +38,16 @@
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#Donors",
       "@type": "Donor",
       "label": "Females (n=128), Mean age 63 (24-69)",
-      "description": "Entered 5/18/2021, Kristin Ardlie, GTEx",
+      "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
       "consortium_name": "GTEx",
-      "provider_name": "GTEx",
+      "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
           "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#TissueBlocks",
           "@type": "Sample",
-          "label": "Registered 5/18/2021, Kristin Ardlie, GTEx",
+          "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
           "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
           "sample_type": "Tissue Block",
@@ -99,7 +99,7 @@
           "datasets": [{
             "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#Datasets",
             "@type": "Dataset",
-            "label": "Registered 5/18/2021, Kristin Ardlie, GTEx",
+            "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
             "description": "Data/Assay Types: XXX",
             "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
             "technology": "OTHER",
