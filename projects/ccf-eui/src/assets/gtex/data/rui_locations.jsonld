@@ -37,7 +37,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#Donors",
       "@type": "Donor",
-      "label": "Females (n=128), Mean age 63 (24-69)",
+      "label": "Females (n=18), Mean Age 56.8 (range 30-69)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
       "consortium_name": "GTEx",
@@ -96,15 +96,89 @@
               "translation_units": "millimeter"
             }
           },
-          "datasets": [{
-            "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#Datasets",
-            "@type": "Dataset",
-            "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
-            "description": "Data/Assay Types: XXX",
-            "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
-            "technology": "OTHER",
-            "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
-          }]
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#Datasets",
+              "@type": "Dataset",
+              "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#Donors",
+      "@type": "Donor",
+      "label": "Females (n=119), Mean Age 54.7 (range 21-70)",
+      "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#TissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/cc1251a4-d367-4bb1-b2d9-05ae33209f0d",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2021-09-17",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0002084"
+            ],
+            "slice_thickness": 4000,
+            "slice_count": 2,
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 8,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/cc1251a4-d367-4bb1-b2d9-05ae33209f0d_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
+              "placement_date": "2021-09-17",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -32,
+              "y_rotation": 55,
+              "z_rotation": 38,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 149.806,
+              "y_translation": 40.112,
+              "z_translation": 80.223,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#Datasets",
+              "@type": "Dataset",
+              "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
         }
       ]
     }
