@@ -205,14 +205,15 @@
           "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
-            "@id": "http://purl.org/ccf/1.5/cc1251a4-d367-4bb1-b2d9-05ae33209f0d",
+            "@id": "http://purl.org/ccf/1.5/a04e60c6-693a-4c25-a069-62521783fd15",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
             "creator_first_name": "Kristin",
             "creator_last_name": "Ardlie",
             "creation_date": "2021-09-17",
             "ccf_annotations": [
-              "http://purl.obolibrary.org/obo/UBERON_0002084"
+              "http://purl.obolibrary.org/obo/UBERON_0002078",
+              "http://purl.obolibrary.org/obo/UBERON_0002080"
             ],
             "slice_thickness": 4000,
             "slice_count": 2,
@@ -222,7 +223,7 @@
             "dimension_units": "millimeter",
             "placement": {
               "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
-              "@id": "http://purl.org/ccf/1.5/cc1251a4-d367-4bb1-b2d9-05ae33209f0d_placement",
+              "@id": "http://purl.org/ccf/1.5/a04e60c6-693a-4c25-a069-62521783fd15_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
               "placement_date": "2021-09-17",
@@ -231,13 +232,13 @@
               "z_scaling": 1,
               "scaling_units": "ratio",
               "x_rotation": -32,
-              "y_rotation": 55,
-              "z_rotation": 38,
+              "y_rotation": 0,
+              "z_rotation": 0,
               "rotation_order": "XYZ",
               "rotation_units": "degree",
-              "x_translation": 149.806,
-              "y_translation": 40.112,
-              "z_translation": 80.223,
+              "x_translation": 27.221,
+              "y_translation": 81.047,
+              "z_translation": 83.766,
               "translation_units": "millimeter"
             }
           },
