@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-
-import { TrackingState } from '../../analytics/tracking.state';
+import { ConsentService, Consent } from 'ccf-shared/analytics';
 
 
 @Component({
@@ -13,14 +12,14 @@ import { TrackingState } from '../../analytics/tracking.state';
 export class TrackingPopupComponent {
   @HostBinding('class') readonly clsName = 'ccf-tracking-popup';
 
-  get allowTelemetry(): boolean | undefined {
-    return this.tracking.snapshot.allowTelemetry;
+  get allowTelemetry(): Consent {
+    return this.consentService.consent;
   }
 
   container: HTMLElement;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  constructor(elementRef: ElementRef<HTMLElement>, readonly tracking: TrackingState, @Inject(MAT_SNACK_BAR_DATA) public data: any) {
+  constructor(elementRef: ElementRef<HTMLElement>, readonly consentService: ConsentService, @Inject(MAT_SNACK_BAR_DATA) public data: any) {
     this.container = elementRef.nativeElement;
   }
 
@@ -30,16 +29,16 @@ export class TrackingPopupComponent {
   }
 
   submit(entry: boolean): void {
-    this.tracking.setAllowTelemetry(entry);
+    this.consentService.setConsent(entry ? 'given' : 'rescinded');
     this.dismiss();
   }
 
   showButton(button: 'opt-in' | 'opt-out'): boolean {
     const { allowTelemetry } = this;
-    if (allowTelemetry === undefined) {
+    if (allowTelemetry === 'not-set') {
       return true;
     } else {
-      return button === 'opt-in' ? !allowTelemetry : allowTelemetry;
+      return button === 'opt-in' ? allowTelemetry === 'rescinded' : allowTelemetry === 'given';
     }
   }
 }

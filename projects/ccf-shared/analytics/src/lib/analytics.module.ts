@@ -1,8 +1,12 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Injector, ModuleWithProviders, NgModule } from '@angular/core';
 import { IGoogleAnalyticsCommand, NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
+import { ConsentService } from './consent.service';
+import { GoogleAnalyticsSyncService } from './google-analytics-sync.service';
+import { LocalStorageSyncService } from './local-storage-sync.service';
 
-interface AnalyticsOptions {
+
+export interface AnalyticsOptions {
   gaToken: string;
 
   appName?: string;
@@ -10,6 +14,13 @@ interface AnalyticsOptions {
 
   developmentMode?: boolean;
 }
+
+
+const EAGERLY_LOADED_SERVICES = [
+  ConsentService,
+  GoogleAnalyticsSyncService,
+  LocalStorageSyncService,
+];
 
 
 function toAttributes(obj: Record<string, unknown>): Record<string, string> {
@@ -41,6 +52,16 @@ function initCommands(options: AnalyticsOptions): IGoogleAnalyticsCommand[] {
 @NgModule({
   imports: [
     NgxGoogleAnalyticsModule
+  ],
+  providers: [
+    ...EAGERLY_LOADED_SERVICES,
+
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      useFactory: () => () => undefined,
+      deps: EAGERLY_LOADED_SERVICES
+    }
   ]
 })
 export class AnalyticsModule {
