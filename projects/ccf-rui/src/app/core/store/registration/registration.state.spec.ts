@@ -4,7 +4,7 @@ import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import * as FileSaver from 'file-saver';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { skip, take } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
@@ -108,7 +108,13 @@ describe('RegistrationState', () => {
       ],
       providers: [
         GlobalConfigState,
-        AnatomicalStructureTagState,
+        {
+          provide: AnatomicalStructureTagState, useValue: {
+            tags$: of([]),
+            latestTags: [],
+            addTags: () => undefined
+          }
+        },
         {
           provide: PageState, useValue: {
             state$: pageStateSubject,
