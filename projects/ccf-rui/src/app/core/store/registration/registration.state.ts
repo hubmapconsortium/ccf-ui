@@ -55,16 +55,16 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   /** Observable of registration metadata */
   @Computed()
   get metadata$(): Observable<MetaData> {
-    return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(([page, model]) => this.buildMetadata(page, model, this.tags.latestTags))
+    return combineLatest([this.page.state$, this.model.state$, this.tags.tags$]).pipe(
+      map(([page, model, tags]) => this.buildMetadata(page, model, tags))
     );
   }
 
   /** Observable of registration data in jsonld format */
   @Computed()
   get jsonld$(): Observable<Record<string, unknown>> {
-    return combineLatest([this.page.state$, this.model.state$]).pipe(
-      map(([page, model]) => this.buildJsonLd(page, model, this.tags.latestTags))
+    return combineLatest([this.page.state$, this.model.state$, this.tags.tags$]).pipe(
+      map(([page, model, tags]) => this.buildJsonLd(page, model, tags))
     );
   }
 
