@@ -2,7 +2,7 @@ import { Shallow } from 'shallow-render';
 
 import { TrackingPopupComponent } from './tracking-popup.component';
 import { TrackingPopupModule } from './tracking-popup.module';
-import { TrackingState } from '../../analytics/tracking.state';
+import { ConsentService } from 'ccf-shared/analytics';
 
 import { ElementRef } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
@@ -10,16 +10,16 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 describe('TrackingPopupComponent', () => {
   let shallow: Shallow<TrackingPopupComponent>;
-  const mockTrackingState = jasmine.createSpyObj<TrackingState>(['setAllowTelemetry']);
+  const mockConsentService = jasmine.createSpyObj<ConsentService>(['setConsent']);
 
   beforeEach(() => {
     shallow = new Shallow(TrackingPopupComponent, TrackingPopupModule)
       .provide({ provide: ElementRef, useValue: {} })
       .provide({ provide: MAT_SNACK_BAR_DATA, useValue: { preClose: () => undefined } })
-      .provide({ provide: TrackingState, useValue: {} })
-      .mock(TrackingState, {
-        ...mockTrackingState,
-        snapshot: { allowTelemetry: undefined }
+      .provide({ provide: ConsentService, useValue: {} })
+      .mock(ConsentService, {
+        ...mockConsentService,
+        consent: 'not-set'
       })
       .mock(MAT_SNACK_BAR_DATA, { preClose: () => undefined });
   });
@@ -38,19 +38,19 @@ describe('TrackingPopupComponent', () => {
   });
 
   it('hides the opt-in button if allowTelemetry is true', async () => {
-    const { instance } = await shallow.mock(TrackingState, { ...mockTrackingState, snapshot: { allowTelemetry: true } }).render();
+    const { instance } = await shallow.mock(ConsentService, { ...mockConsentService, consent: 'given' }).render();
     instance.showButton('opt-in');
     expect(instance.showButton('opt-in')).toBeFalse();
   });
 
   it('shows the opt-out button if allowTelemetry is false', async () => {
-    const { instance } = await shallow.mock(TrackingState, { ...mockTrackingState, snapshot: { allowTelemetry: false } }).render();
+    const { instance } = await shallow.mock(ConsentService, { ...mockConsentService, consent: 'rescinded' }).render();
     instance.showButton('opt-out');
     expect(instance.showButton('opt-in')).toBeTrue();
   });
 
   it('submits the selection', async () => {
-    const { instance } = await shallow.mock(TrackingState, { ...mockTrackingState, snapshot: { allowTelemetry: false } }).render();
+    const { instance } = await shallow.mock(ConsentService, { ...mockConsentService, consent: 'rescinded' }).render();
     const spy = spyOn(instance, 'dismiss');
     instance.submit(true);
     expect(spy).toHaveBeenCalled();
