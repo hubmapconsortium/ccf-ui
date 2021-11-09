@@ -66,7 +66,9 @@ export class ReviewButtonComponent implements OnChanges {
    * meta data.
    */
   ngOnChanges(): void {
-    this.registrationIsValid = Boolean(this.metaData[0].value && this.metaData[1].value && this.metaData[2].value);
+    this.registrationIsValid =
+      this.metaData.length >= 3 &&
+      this.metaData.slice(0, 3).every(entry => entry.value);
   }
 
   /**
