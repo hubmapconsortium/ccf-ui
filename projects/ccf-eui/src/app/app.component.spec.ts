@@ -2,7 +2,9 @@ import { NgModule, NgZone } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsDataInjector } from '@ngxs-labs/data/internals';
-import { GlobalConfigState, TrackingState } from 'ccf-shared';
+import { GlobalConfigState } from 'ccf-shared';
+import { ConsentService } from 'ccf-shared/analytics';
+
 import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
@@ -28,6 +30,7 @@ describe('AppComponent', () => {
   const testFilter = { sex: 'Both', ageRange: [5, 99], bmiRange: [30, 80] };
 
   beforeEach(() => {
+    const mockConsentService = jasmine.createSpyObj<ConsentService>(['setConsent']);
     left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
@@ -50,9 +53,9 @@ describe('AppComponent', () => {
         sceneData$: of(),
         updateFilter: () => undefined
       })
-      .mock(TrackingState, {
-        snapshot: { allowTelemetry: true },
-        setAllowTelemetry: () => undefined
+      .mock(ConsentService, {
+        ...mockConsentService,
+        consent: 'not-set'
       })
       .mock(MatSnackBar, {
         openFromComponent: (): MatSnackBarRef<unknown> => ({} as unknown as MatSnackBarRef<unknown>)

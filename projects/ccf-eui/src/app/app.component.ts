@@ -3,7 +3,8 @@ import { Component, ElementRef, Injector, Input, OnChanges, OnInit, SimpleChange
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Debounce } from '@ngxs-labs/data/decorators';
 import { CCFDatabaseOptions } from 'ccf-database';
-import { GlobalConfigState, TrackingPopupComponent, TrackingState } from 'ccf-shared';
+import { GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
+import { ConsentService } from 'ccf-shared/analytics';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -106,7 +107,7 @@ export class AppComponent implements OnInit, OnChanges {
     el: ElementRef<HTMLElement>, injector: Injector,
     readonly data: DataState, readonly theming: ThemingService,
     readonly scene: SceneState, readonly listResultsState: ListResultsState,
-    readonly tracking: TrackingState, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
+    readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
     private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
   ) {
     theming.initialize(el, injector);
@@ -127,7 +128,7 @@ export class AppComponent implements OnInit, OnChanges {
           snackBar.dismiss();
         }
       },
-      duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
+      duration: this.consentService.consent === 'not-set' ? Infinity : 3000
     });
 
     this.updateGlobalConfig();

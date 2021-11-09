@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GlobalConfigState, TrackingPopupComponent, TrackingState } from 'ccf-shared';
+import { GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
+import { ConsentService } from 'ccf-shared/analytics';
 import { Subscription } from 'rxjs';
 
 import { GlobalConfig } from './core/services/config/config';
@@ -40,7 +41,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   constructor(
     readonly model: ModelState, readonly page: PageState,
-    readonly tracking: TrackingState, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
+    readonly consentService: ConsentService, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
     el: ElementRef<unknown>, injector: Injector, private readonly globalConfig: GlobalConfigState<GlobalConfig>
   ) {
     theming.initialize(el, injector);
@@ -63,7 +64,7 @@ export class AppComponent implements OnDestroy, OnInit {
           snackBar.dismiss();
         }
       },
-      duration: this.tracking.snapshot.allowTelemetry === undefined ? Infinity : 3000
+      duration: this.consentService.consent === 'not-set' ? Infinity : 3000
     });
   }
 
