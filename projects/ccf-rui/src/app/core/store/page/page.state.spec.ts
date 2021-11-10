@@ -27,7 +27,7 @@ describe('PageState', () => {
       providers: [
         ModelState,
         GlobalConfigState,
-        { provide: GLOBAL_CONFIG, useValue: {} }
+        { provide: GLOBAL_CONFIG, useValue: {} },
       ]
     });
 
@@ -44,6 +44,8 @@ describe('PageState', () => {
 
     state = TestBed.inject(PageState);
     state.ngxsOnInit();
+
+    (window as unknown as Record<string, unknown>).skipUnsavedChangesConfirmation = true;
   });
 
   it('has the latest user', async () => {

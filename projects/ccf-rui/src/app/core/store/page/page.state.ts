@@ -3,9 +3,10 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
-import { GlobalConfigState } from 'ccf-shared';
+import { GlobalConfigState, GlobalsService } from 'ccf-shared';
 import { pluck, take, tap } from 'rxjs/operators';
 
+import { environment } from '../../../../environments/environment';
 import { GlobalConfig } from '../../services/config/config';
 
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -53,12 +54,22 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly registrationCallbackSet$ = this.state$.pipe(pluck('registrationCallbackSet'));
 
 
+  private get skipConfirmation(): boolean {
+    return this.globals.get(
+      'skipUnsavedChangesConfirmation',
+      environment.skipUnsavedChangesConfirmation
+    );
+  }
+
   /**
    * Creates an instance of page state.
    *
    * @param globalConfig The global configuration
    */
-  constructor(private readonly globalConfig: GlobalConfigState<GlobalConfig>) {
+  constructor(
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>,
+    private readonly globals: GlobalsService
+  ) {
     super();
   }
 
@@ -82,7 +93,10 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     const { globalConfig: { snapshot: { cancelRegistration: cancelRegistrationCallback } }, snapshot } = this;
 
     if (snapshot.useCancelRegistrationCallback) {
-      cancelRegistrationCallback?.();
+      // eslint-disable-next-line no-alert
+      if (this.skipConfirmation || confirm('Changes you made may not be saved.')) {
+        cancelRegistrationCallback?.();
+      }
     }
   }
 
@@ -108,6 +122,21 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    */
   @DataAction()
   registrationStarted(): void {
+    if (this.snapshot.registrationCallbackSet === false) {
+      // Would rather have this dynamically detect unsaved changes
+      // and add/remove listener but the state is too spread out at
+      // the moment to do so easily.
+      addEventListener('beforeunload', (event: BeforeUnloadEvent) => {
+        if (this.skipConfirmation) {
+          return undefined;
+        }
+
+        event.preventDefault();
+        event.returnValue = 'Changes you made may not be saved.';
+        return event.returnValue;
+      }, { capture: true });
+    }
+
     this.ctx.setState(patch({
       registrationStarted: true
     }));
