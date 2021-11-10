@@ -16,12 +16,12 @@ The registration data is used in current versions of the Common Coordinate Frame
 
 # Standard Operating Procedure (SOP)
 
-The steps to register tissue blocks with the CCF RUI have been formally captured in an SOP, available [here](https://docs.google.com/document/d/1PhVDMZDiH-SKAF7LrDhZfv3xjjlAhISmRWSQcfUF-9U/edit?usp=sharing).
+The steps to register tissue blocks with the CCF RUI have been formally captured in an SOP, available <a href="https://docs.google.com/document/d/1PhVDMZDiH-SKAF7LrDhZfv3xjjlAhISmRWSQcfUF-9U/edit?usp=sharing" target="_blank">here</a>.
 
 # Acknowledgements
 
 The CCF and associated user interfaces are developed by the MC-IU team within the HuBMAP HIVE. The MC-IU team includes Katy Börner, Lisel Record, Bruce Herr II, Leonard Cross, Ellen Quardokus, and Andreas Bueckle, Indiana University, Bloomington, IN and Griffin Weber, Harvard Medical School, Boston, MA. Former members of the team are Paul Macklin, Randy Heiland, and Jim Sluka at Indiana University, Bloomington, IN and Samuel Friedman, Opto-Knowledge Systems, Inc. We acknowledge expert input from Jeffrey Spraggins, Sanjay Jain, and Clive Wasserfall and their teams as well as the overall HuBMAP consortium.
 
-The 3D reference organs were designed by Kristen Browne, U.S. National Library of Medicine using data from the [Visible Human Project](https://www.nlm.nih.gov/research/visible/visible_human.html)
+The 3D reference organs were designed by Kristen Browne, U.S. National Library of Medicine using data from the <a href="https://www.nlm.nih.gov/research/visible/visible_human.html" target="_blank">Visible Human Project</a>.
 
-The work is funded by NIH Award [OT2OD026671](https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220)
+The work is funded by NIH Award <a href="https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220" target="_blank">OT2OD026671</a>.
