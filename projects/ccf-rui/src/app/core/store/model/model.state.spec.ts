@@ -7,6 +7,7 @@ import { take } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
+import { PageState } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 import { GLOBAL_CONFIG, GlobalConfig } from './../../services/config/config';
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
@@ -49,6 +50,12 @@ describe('ModelState', () => {
         {
           provide: GLOBAL_CONFIG,
           useValue: mockGlobalConfig
+        },
+        {
+          provide: PageState,
+          useValue: {
+            setHasChanges: () => undefined
+          }
         }
       ]
     });

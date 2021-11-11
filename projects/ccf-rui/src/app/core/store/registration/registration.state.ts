@@ -267,7 +267,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
     this.addRegistration(jsonObj);
     this.setDisplayErrors(false);
-    this.page.setSkipConfirmation(true);
+    this.page.clearHasChanges();
   }
 
   /**
