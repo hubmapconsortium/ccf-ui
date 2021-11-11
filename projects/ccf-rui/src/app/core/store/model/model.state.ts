@@ -5,8 +5,8 @@ import { State } from '@ngxs/store';
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
-import { EMPTY } from 'rxjs';
-import { debounceTime, delay, pluck, switchMap, take, tap } from 'rxjs/operators';
+import { EMPTY, Observable } from 'rxjs';
+import { debounceTime, delay, distinctUntilChanged, mapTo, pluck, switchMap, take, tap } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -143,6 +143,26 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   readonly anatomicalStructures$ = this.state$.pipe(pluck('anatomicalStructures'));
   /** Extraction sets observable */
   readonly extractionSets$ = this.state$.pipe(pluck('extractionSets'));
+
+  @Computed()
+  get modelChanged$(): Observable<void> {
+    const ignoredKeys = ['viewType', 'viewSide', 'showPrevious'];
+    const keys = Object.keys(this.initialState)
+      .filter(key => !ignoredKeys.includes(key));
+
+    return this.state$.pipe(
+      distinctUntilChanged((v1, v2) => {
+        for (const key of keys) {
+          if (v1[key] !== v2[key]) {
+            return false;
+          }
+        }
+
+        return true;
+      }),
+      mapTo(undefined)
+    );
+  }
 
   /** Reference to the reference data state */
   private referenceData: ReferenceDataState;

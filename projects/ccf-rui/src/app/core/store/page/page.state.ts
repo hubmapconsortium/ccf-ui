@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
-import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { Injectable, Injector } from '@angular/core';
+import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
-import { GlobalConfigState, GlobalsService } from 'ccf-shared';
-import { pluck, take, tap } from 'rxjs/operators';
+import { GlobalConfigState } from 'ccf-shared';
+import { pluckUnique } from 'ccf-shared/rxjs-ext/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { map, mapTo, pluck, skipUntil, startWith, take, tap, withLatestFrom } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { GlobalConfig } from '../../services/config/config';
+import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
+import { ModelState } from '../model/model.state';
 
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -25,6 +29,7 @@ export interface PageStateModel {
   registrationStarted: boolean;
   useCancelRegistrationCallback: boolean;
   registrationCallbackSet: boolean;
+  skipConfirmation: boolean;
 }
 
 
@@ -41,7 +46,8 @@ export interface PageStateModel {
     },
     registrationStarted: false,
     useCancelRegistrationCallback: false,
-    registrationCallbackSet: false
+    registrationCallbackSet: false,
+    skipConfirmation: true
   }
 })
 @Injectable()
@@ -49,17 +55,45 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
   /** RegistrationStated observable */
-  readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
+  readonly registrationStarted$ = this.state$.pipe(pluckUnique('registrationStarted'));
   readonly useCancelRegistrationCallback$ = this.state$.pipe(pluck('useCancelRegistrationCallback'));
   readonly registrationCallbackSet$ = this.state$.pipe(pluck('registrationCallbackSet'));
 
+  @Computed()
+  get skipConfirmation$(): Observable<boolean> {
+    return this.state$.pipe(pluckUnique('skipConfirmation'));
+  }
 
-  private get skipConfirmation(): boolean {
-    return this.globals.get(
-      'skipUnsavedChangesConfirmation',
-      environment.skipUnsavedChangesConfirmation
+  @Computed()
+  private get ignoreChanges$(): Observable<boolean> {
+    return combineLatest([
+      this.globalConfig.getOption('skipUnsavedChangesConfirmation'),
+      this.registrationStarted$
+    ]).pipe(map(([globalSkip, started]) =>
+      !started || (globalSkip ?? environment.skipUnsavedChangesConfirmation)
+    ));
+  }
+
+  @Computed()
+  private get monitoredStateChanged$(): Observable<void> {
+    return combineLatest([
+      this.astags.entities$,
+      this.model.modelChanged$
+    ]).pipe(mapTo(undefined));
+  }
+
+  @Computed()
+  private get skipConfirmationSource$(): Observable<boolean> {
+    return this.monitoredStateChanged$.pipe(
+      skipUntil(this.registrationStarted$),
+      withLatestFrom(this.ignoreChanges$),
+      pluckUnique(1),
+      startWith(true)
     );
   }
+
+  private astags: AnatomicalStructureTagState;
+  private model: ModelState;
 
   /**
    * Creates an instance of page state.
@@ -67,8 +101,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    * @param globalConfig The global configuration
    */
   constructor(
-    private readonly globalConfig: GlobalConfigState<GlobalConfig>,
-    private readonly globals: GlobalsService
+    private readonly injector: Injector,
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>
   ) {
     super();
   }
@@ -79,6 +113,9 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
+    this.astags = this.injector.get(AnatomicalStructureTagState);
+    this.model = this.injector.get(ModelState);
+
     this.globalConfig.config$.pipe(
       take(1),
       tap(config => this.setState(patch({
@@ -87,14 +124,35 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
         user: iif(!!config.user, config.user!)
       })))
     ).subscribe();
+
+    this.skipConfirmationSource$.subscribe(skipConfirmation => this.patchState({
+      skipConfirmation
+    }));
+
+    const beforeUnloadListener = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = 'Changes you made may not be saved.';
+      return event.returnValue;
+    };
+
+    this.skipConfirmation$.subscribe(skipConfirmation => {
+      if (skipConfirmation) {
+        removeEventListener('beforeunload', beforeUnloadListener);
+      } else {
+        addEventListener('beforeunload', beforeUnloadListener);
+      }
+    });
   }
 
   cancelRegistration(): void {
-    const { globalConfig: { snapshot: { cancelRegistration: cancelRegistrationCallback } }, snapshot } = this;
+    const {
+      globalConfig: { snapshot: { cancelRegistration: cancelRegistrationCallback } },
+      snapshot: { useCancelRegistrationCallback, skipConfirmation }
+    } = this;
 
-    if (snapshot.useCancelRegistrationCallback) {
+    if (useCancelRegistrationCallback) {
       // eslint-disable-next-line no-alert
-      if (this.skipConfirmation || confirm('Changes you made may not be saved.')) {
+      if (skipConfirmation || confirm('Changes you made may not be saved.')) {
         cancelRegistrationCallback?.();
       }
     }
@@ -122,23 +180,15 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    */
   @DataAction()
   registrationStarted(): void {
-    if (this.snapshot.registrationCallbackSet === false) {
-      // Would rather have this dynamically detect unsaved changes
-      // and add/remove listener but the state is too spread out at
-      // the moment to do so easily.
-      addEventListener('beforeunload', (event: BeforeUnloadEvent) => {
-        if (this.skipConfirmation) {
-          return undefined;
-        }
-
-        event.preventDefault();
-        event.returnValue = 'Changes you made may not be saved.';
-        return event.returnValue;
-      }, { capture: true });
-    }
-
     this.ctx.setState(patch({
       registrationStarted: true
     }));
+  }
+
+  @DataAction()
+  setSkipConfirmation(skipConfirmation: boolean): void {
+    this.ctx.patchState({
+      skipConfirmation
+    });
   }
 }

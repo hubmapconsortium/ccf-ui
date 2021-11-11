@@ -43,7 +43,8 @@ const testPage: Immutable<PageStateModel> = {
   },
   registrationStarted: false,
   useCancelRegistrationCallback: false,
-  registrationCallbackSet: false
+  registrationCallbackSet: false,
+  skipConfirmation: true
 };
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
@@ -118,7 +119,8 @@ describe('RegistrationState', () => {
         {
           provide: PageState, useValue: {
             state$: pageStateSubject,
-            snapshot: initialPageState
+            snapshot: initialPageState,
+            setSkipConfirmation: () => undefined
           }
         },
         {
