@@ -56,7 +56,8 @@ const CONFIG_INPUT_PARSERS: Record<string, InputParser> = {
   editRegistration: parseJson,
   register: parseFunction,
   cancelRegistration: parseFunction,
-  fetchPreviousRegistrations: parseFunction
+  fetchPreviousRegistrations: parseFunction,
+  skipUnsavedChangesConfirmation: parseBoolean
 };
 
 
@@ -74,6 +75,7 @@ export class AppWebComponentComponent implements OnInit, OnChanges {
   @Input() register: string | RegistrationCallback;
   @Input() cancelRegistration: string | CancelRegistrationCallback;
   @Input() fetchPreviousRegistrations: string | FetchPreviousRegistrationsCallback;
+  @Input() skipUnsavedChangesConfirmation: string | boolean;
 
   initialized = false;
   changes: SimpleChanges = {};
