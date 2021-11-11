@@ -12,9 +12,19 @@ import {
   TissueBlockResult
 } from 'ccf-database';
 import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
-import { shareReplay, switchMap, take } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap, take } from 'rxjs/operators';
+import { GlobalConfigState } from 'ccf-shared';
 
 import { environment } from '../../../../environments/environment';
+import { releaseProxy, Remote, wrap } from 'comlink';
+
+
+type DataSource = Remote<CCFDatabase> | CCFDatabase;
+
+
+function compareConfig(previous: CCFDatabaseOptions, current: CCFDatabaseOptions): boolean {
+  return previous === current;
+}
 
 
 /**
@@ -25,7 +35,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class DataSourceService implements OnDestroy {
   /** The underlying database. */
-  dataSource: Observable<CCFDatabase>;
+  dataSource: Observable<DataSource>;
   /** Database initialization options. */
   dbOptions: CCFDatabaseOptions;
 
@@ -34,13 +44,17 @@ export class DataSourceService implements OnDestroy {
   /**
    * Creates an instance of data source service.
    */
-  constructor(private readonly locator: LocationStrategy) {
-    this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
-
-    this.dataSource = using(
-      () => this.createDataSource(),
-      (resource) => this.connectDataSource((resource as unknown as { source: CCFDatabase }).source, this.dbOptions)
-    ).pipe(shareReplay(1));
+  constructor(private readonly locator: LocationStrategy, private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>) {
+    this.dataSource = globalConfig.config$.pipe(
+      filter(config => Object.keys(config).length > 0),
+      map((config) => config as unknown as CCFDatabaseOptions),
+      distinctUntilChanged(compareConfig),
+      switchMap(config => using(
+        () => this.createDataSource(),
+        (resource) => this.connectDataSource((resource as unknown as { source: DataSource }).source, config)
+      )),
+      shareReplay(1)
+    );
 
     this.subscriptions.add(this.dataSource.subscribe());
   }
@@ -140,17 +154,18 @@ export class DataSourceService implements OnDestroy {
     );
   }
 
-  private createDataSource(): { source: CCFDatabase } & Unsubscribable {
-    const source: CCFDatabase = new CCFDatabase(this.dbOptions);
+  private createDataSource(): { source: DataSource } & Unsubscribable {
+    const source: DataSource = new CCFDatabase();
     const unsubscribe: () => void = () => undefined;
 
     return { source, unsubscribe };
   }
 
-  private async connectDataSource(source: CCFDatabase, config: CCFDatabaseOptions): Promise<CCFDatabase> {
-    // In development, make the db globally accessible
-    if (!environment.production) {
-      ((globalThis as unknown) as { db: CCFDatabase }).db = source;
+  private async connectDataSource(source: DataSource, config: CCFDatabaseOptions): Promise<DataSource> {
+    if (environment.disableDbWorker) {
+      await new Promise(r => {
+        setTimeout(r, 100);
+      });
     }
     const start = new Date().getTime();
 

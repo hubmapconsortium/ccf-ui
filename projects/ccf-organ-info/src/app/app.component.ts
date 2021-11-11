@@ -1,12 +1,14 @@
 import {
   AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild,
 } from '@angular/core';
+import { Debounce } from '@ngxs-labs/data/decorators';
 import { SpatialSceneNode } from 'ccf-body-ui';
-import { AggregateResult, SpatialEntity } from 'ccf-database';
-import { OrganInfo } from 'ccf-shared';
+import { AggregateResult, CCFDatabaseOptions, SpatialEntity } from 'ccf-database';
+import { OrganInfo, GlobalConfigState } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { map, shareReplay, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 import { OrganLookupService } from './core/services/organ-lookup/organ-lookup.service';
 
@@ -30,17 +32,52 @@ export class AppComponent implements OnChanges, AfterViewInit {
   @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
   @ViewChild('right', { read: ElementRef, static: true }) right: ElementRef<HTMLElement>;
 
+  // Configuration Options
+  @Input() hubmapDataService: string;
+  @Input() hubmapDataUrl: string;
+  @Input() hubmapAssetUrl: string;
+  @Input() hubmapToken: string;
+  @Input()
+  get hubmapDataSources(): string[] {
+    return this._hubmapDataSources;
+  }
+  set hubmapDataSources(datasSources: string[] | string) {
+    if (datasSources === '') {
+      return;
+    } else if (typeof datasSources === 'string') {
+      this._hubmapDataSources = JSON.parse(datasSources);
+    } else {
+      this._hubmapDataSources = datasSources;
+    }
+  }
+
+  @Input()
+  get hubmapPortalUrl(): string {
+    if (this._hubmapPortalUrl) {
+      return this._hubmapPortalUrl;
+    }
+    return this.globalConfig.snapshot?.hubmapPortalUrl ?? '';
+  }
+  set hubmapPortalUrl(url: string) {
+    this._hubmapPortalUrl = url;
+  }
+
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
   readonly scene$: Observable<SpatialSceneNode[]>;
   readonly stats$: Observable<AggregateResult[]>;
   readonly statsLabel$: Observable<string>;
 
+  private _hubmapDataSources: string[];
+  private _hubmapPortalUrl: string;
+
+
   private readonly inputChangedTick$ = new ReplaySubject<void>(1);
 
   constructor(
     lookup: OrganLookupService,
-    private readonly ga: GoogleAnalyticsService
+    private readonly ga: GoogleAnalyticsService,
+    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
   ) {
     this.organInfo$ = this.inputChangedTick$.pipe(
       switchMap(() => lookup.getOrganInfo(
@@ -92,6 +129,35 @@ export class AppComponent implements OnChanges, AfterViewInit {
     this.handleInputChanges(changes);
   }
 
+  @Debounce(20)
+  updateGlobalConfig(): void {
+    const { hubmapDataService, hubmapPortalUrl, hubmapDataUrl, hubmapAssetUrl, hubmapToken, hubmapDataSources } = this;
+    const windowConfigKey = 'dbOptions';
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    let config = { ...environment.dbOptions } as CCFDatabaseOptions;
+
+    if (typeof globalThis[windowConfigKey] === 'object') {
+      config = { ...config, ...globalThis[windowConfigKey] };
+    }
+
+    const inputs = {
+      hubmapDataService,
+      hubmapPortalUrl,
+      hubmapDataUrl,
+      hubmapAssetUrl,
+      hubmapToken,
+      hubmapDataSources
+    };
+
+    for (const key in inputs) {
+      if (inputs[key] != null) {
+        config[key] = inputs[key];
+      }
+    }
+
+    this.globalConfig.patchConfig(config);
+  }
+
   updateInput<K extends keyof this>(prop: K, value: this[K]): void {
     const changes: SimpleChanges = { [prop]: new SimpleChange(this[prop], value, false) };
 
@@ -108,6 +174,18 @@ export class AppComponent implements OnChanges, AfterViewInit {
         this.logInputChange(prop, changes[prop].currentValue);
         hasChanges = true;
       }
+    }
+
+    if (
+      'hubmapDataService' in changes ||
+      'hubmapPortalUrl' in changes ||
+      'hubmapDataUrl' in changes ||
+      'hubmapAssetUrl' in changes ||
+      'hubmapToken' in changes ||
+      'hubmapDataSources' in changes
+    ) {
+      hasChanges = true;
+      this.updateGlobalConfig();
     }
 
     if (hasChanges) {
