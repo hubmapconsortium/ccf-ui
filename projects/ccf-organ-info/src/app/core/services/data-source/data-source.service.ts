@@ -11,12 +11,12 @@ import {
   SpatialSceneNode,
   TissueBlockResult
 } from 'ccf-database';
+import { GlobalConfigState } from 'ccf-shared';
+import { Remote } from 'comlink';
 import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, switchMap, take } from 'rxjs/operators';
-import { GlobalConfigState } from 'ccf-shared';
-
 import { environment } from '../../../../environments/environment';
-import { releaseProxy, Remote, wrap } from 'comlink';
+
 
 
 type DataSource = Remote<CCFDatabase> | CCFDatabase;
@@ -30,7 +30,7 @@ function compareConfig(previous: CCFDatabaseOptions, current: CCFDatabaseOptions
 /**
  * Backend data queries.
  */
-@Injectable({
+@Injectable({ß
   providedIn: 'root'
 })
 export class DataSourceService implements OnDestroy {
