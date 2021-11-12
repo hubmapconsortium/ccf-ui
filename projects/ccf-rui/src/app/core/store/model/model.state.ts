@@ -5,12 +5,15 @@ import { State } from '@ngxs/store';
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
-import { EMPTY } from 'rxjs';
-import { debounceTime, delay, pluck, switchMap, take, tap } from 'rxjs/operators';
+import { EMPTY, Observable } from 'rxjs';
+import {
+  debounceTime, delay, distinctUntilChanged, filter, mapTo, pluck, skipUntil, switchMap, take, tap, throttleTime,
+} from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
 import { GlobalConfig } from '../../services/config/config';
+import { PageState } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -144,8 +147,31 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   /** Extraction sets observable */
   readonly extractionSets$ = this.state$.pipe(pluck('extractionSets'));
 
+  @Computed()
+  get modelChanged$(): Observable<void> {
+    const ignoredKeys = ['viewType', 'viewSide', 'showPrevious'];
+    const keys = Object.keys(this.initialState)
+      .filter(key => !ignoredKeys.includes(key));
+
+    return this.state$.pipe(
+      throttleTime(0, undefined, { leading: false, trailing: true }),
+      distinctUntilChanged((v1, v2) => {
+        for (const key of keys) {
+          if (v1[key] !== v2[key]) {
+            return false;
+          }
+        }
+
+        return true;
+      }),
+      mapTo(undefined)
+    );
+  }
+
   /** Reference to the reference data state */
   private referenceData: ReferenceDataState;
+
+  private page: PageState;
 
   /**
    * Creates an instance of model state.
@@ -166,6 +192,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     super.ngxsOnInit();
 
     this.referenceData = this.injector.get(ReferenceDataState);
+    this.page = this.injector.get(PageState);
 
     this.globalConfig.getOption('organ').pipe(
       filterNulls(),
@@ -195,6 +222,13 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
         return EMPTY;
       })
     ).subscribe();
+
+    this.modelChanged$.pipe(
+      skipUntil(this.page.registrationStarted$.pipe(
+        filter(started => started),
+        delay(5)
+      ))
+    ).subscribe(() => this.page.setHasChanges());
   }
 
   idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
