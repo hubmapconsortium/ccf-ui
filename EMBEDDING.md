@@ -279,6 +279,10 @@ window.addEventListener('DOMContentLoaded', () => {
   organInfo.organIri = "http://purl.obolibrary.org/obo/UBERON_0004538";
   organInfo.sex = 'Female';
   organInfo.side = 'Right';
+  organInfo.hubmapDataService = 'search-api';
+  organInfo.hubmapPortalUrl = 'https://.....';
+  organInfo.hubmapDataUrl = 'https://.....';
+  organInfo.hubmapAssetUrl = 'https://.....';
 });
 ```
 
@@ -290,6 +294,10 @@ This format of configuration only works with certain data types, namely strings 
   hubmap-organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
   hubmap-sex="Female"
   hubmap-side="Right"
+  hubmap-data-service="search-api"
+  hubmap-portal-url="https://...."
+  hubmap-data-url="https://...."
+  hubmap-asset-url="https://...."
 ></ccf-organ-info>
 ````
 
@@ -314,6 +322,10 @@ Full ORGAN-INFO Example
     hubmap-organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
     hubmap-sex="Female"
     hubmap-side="Right"
+    hubmap-data-service="search-api"
+    hubmap-portal-url="https://portal.test.hubmapconsortium.org/"
+    hubmap-data-url="https://search.api.hubmapconsortium.org/entities/search"
+    hubmap-asset-url="https://assets.test.hubmapconsortium.org"
   ></ccf-eui>
 </body>
 </html>
@@ -324,3 +336,7 @@ The following options are available for configuration
 - `organIri: string` - A url to load data from.
 - `sex: 'Female' | 'Male'` - The sex of the selected organ.
 - `side: 'Left' | 'Right'` - The selected organ side.
+- `hubmapPortalUrl: string` - Hubmap Portal url.
+- `hubmapDataUrl: string` - Hubmap data url.
+- `hubmapAssetsUrl: string` - Hubmap assets api url.
+- `hubmapToken: string` - Hubmap service token.
