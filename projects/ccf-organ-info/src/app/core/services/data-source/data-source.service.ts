@@ -30,7 +30,7 @@ function compareConfig(previous: CCFDatabaseOptions, current: CCFDatabaseOptions
 /**
  * Backend data queries.
  */
-@Injectable({ß
+@Injectable({
   providedIn: 'root'
 })
 export class DataSourceService implements OnDestroy {
