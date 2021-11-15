@@ -279,6 +279,7 @@ window.addEventListener('DOMContentLoaded', () => {
   organInfo.organIri = "http://purl.obolibrary.org/obo/UBERON_0004538";
   organInfo.sex = 'Female';
   organInfo.side = 'Right';
+  organInfo.dataSources = ['https://.....jsonld', 'https://.....jsonld'];
   organInfo.hubmapDataService = 'search-api';
   organInfo.hubmapPortalUrl = 'https://.....';
   organInfo.hubmapDataUrl = 'https://.....';
@@ -336,6 +337,8 @@ The following options are available for configuration
 - `organIri: string` - A url to load data from.
 - `sex: 'Female' | 'Male'` - The sex of the selected organ.
 - `side: 'Left' | 'Right'` - The selected organ side.
+- `dataSources: string[]` - A list of data sources (in .jsonld format)
+- `hubmapDataService: 'static' | 'search-api'` - Data service type.
 - `hubmapPortalUrl: string` - Hubmap Portal url.
 - `hubmapDataUrl: string` - Hubmap data url.
 - `hubmapAssetsUrl: string` - Hubmap assets api url.
