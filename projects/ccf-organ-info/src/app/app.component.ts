@@ -38,16 +38,16 @@ export class AppComponent implements OnChanges, AfterViewInit {
   @Input() hubmapAssetUrl: string;
   @Input() hubmapToken: string;
   @Input()
-  get hubmapDataSources(): string[] {
-    return this._hubmapDataSources;
+  get dataSources(): string[] {
+    return this._dataSources;
   }
-  set hubmapDataSources(datasSources: string[] | string) {
+  set dataSources(datasSources: string[] | string) {
     if (datasSources === '') {
       return;
     } else if (typeof datasSources === 'string') {
-      this._hubmapDataSources = JSON.parse(datasSources);
+      this._dataSources = JSON.parse(datasSources);
     } else {
-      this._hubmapDataSources = datasSources;
+      this._dataSources = datasSources;
     }
   }
 
@@ -68,7 +68,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
   readonly stats$: Observable<AggregateResult[]>;
   readonly statsLabel$: Observable<string>;
 
-  private _hubmapDataSources: string[];
+  private _dataSources: string[];
   private _hubmapPortalUrl: string;
 
 
@@ -131,7 +131,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
 
   @Debounce(20)
   updateGlobalConfig(): void {
-    const { hubmapDataService, hubmapPortalUrl, hubmapDataUrl, hubmapAssetUrl, hubmapToken, hubmapDataSources } = this;
+    const { hubmapDataService, hubmapPortalUrl, hubmapDataUrl, hubmapAssetUrl, hubmapToken, dataSources } = this;
     const windowConfigKey = 'dbOptions';
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     let config = { ...environment.dbOptions } as CCFDatabaseOptions;
@@ -146,7 +146,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
       hubmapDataUrl,
       hubmapAssetUrl,
       hubmapToken,
-      hubmapDataSources
+      dataSources
     };
 
     for (const key in inputs) {
@@ -182,7 +182,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
       'hubmapDataUrl' in changes ||
       'hubmapAssetUrl' in changes ||
       'hubmapToken' in changes ||
-      'hubmapDataSources' in changes
+      'dataSources' in changes
     ) {
       hasChanges = true;
       this.updateGlobalConfig();
