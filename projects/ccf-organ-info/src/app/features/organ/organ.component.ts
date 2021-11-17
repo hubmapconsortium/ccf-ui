@@ -64,6 +64,7 @@ export class OrganComponent implements OnInit, OnChanges {
   }
 
   nodeClicked(event: NodeClickEvent): void {
+    this.ga.event('node_click', 'organ', event.node['@id']); 
     this.highlightedNodeId = this.highlightedNodeId && this.highlightedNodeId === event.node['@id'] ? '' : event.node['@id'];
     this.bodyUI.scene = this.bodyUI.scene.map((node): SpatialSceneNode =>
       ({

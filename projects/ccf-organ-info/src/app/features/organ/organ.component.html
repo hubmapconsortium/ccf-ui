@@ -1,5 +1,5 @@
 <ccf-body-ui #bodyUI class="body-ui" [scene]="scene" [interactive]="true" camera="perspective"
-             (nodeClick)="ga.event('node_click', 'organ', $event.node['@id']); nodeClicked($event)">
+             (nodeClick)="nodeClicked($event)">
 </ccf-body-ui>
 
 <div class='stage-options'>
