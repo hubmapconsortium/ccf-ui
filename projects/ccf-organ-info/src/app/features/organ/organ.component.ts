@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild,
 } from '@angular/core';
-import { SpatialSceneNode } from 'ccf-body-ui';
+import { SpatialSceneNode, NodeClickEvent } from 'ccf-body-ui';
 import { SpatialEntity } from 'ccf-database';
 import { BodyUiComponent } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
@@ -24,6 +24,8 @@ export class OrganComponent implements OnInit, OnChanges {
   @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
 
   @ViewChild('bodyUI', { static: true }) readonly bodyUI!: BodyUiComponent;
+
+  highlightedNodeId: string;
 
   constructor(readonly ga: GoogleAnalyticsService) { }
 
@@ -59,5 +61,17 @@ export class OrganComponent implements OnInit, OnChanges {
       bodyUI.bounds = { x: 1.25 * x / 1000, y: 1.25 * y / 1000, z: 1.25 * z / 1000 };
       bodyUI.target = [x / 1000 / 2, y / 1000 / 2, z / 1000 / 2];
     }
+  }
+
+  nodeClicked(event: NodeClickEvent): void {
+    this.highlightedNodeId = this.highlightedNodeId && this.highlightedNodeId === event.node['@id'] ? '' : event.node['@id'];
+    this.bodyUI.scene = this.bodyUI.scene.map((node): SpatialSceneNode =>
+      ({
+        ...node,
+        color: node.entityId && this.highlightedNodeId === node['@id'] ?
+          [30, 136, 229, 255] :
+          [255, 255, 255, 229.5]
+      })
+    );
   }
 }
