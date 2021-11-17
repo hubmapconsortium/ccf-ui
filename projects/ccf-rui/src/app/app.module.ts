@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrganSelectorModule, TrackingPopupModule } from 'ccf-shared';
 
-import { AppWebComponentComponent } from './app-web-component.component';
+import { AppWebComponent } from './app-web-component.component';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DEFAULT_THEME } from './core/services/theming/theming.service';
@@ -35,7 +35,7 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
     TrackingPopupModule,
     MatSnackBarModule
   ],
-  declarations: [AppComponent, AppWebComponentComponent],
+  declarations: [AppComponent, AppWebComponent],
   providers: [
     {
       provide: DEFAULT_THEME,
@@ -50,13 +50,13 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
       }
     }
   ],
-  entryComponents: [AppComponent, AppWebComponentComponent]
+  entryComponents: [AppComponent, AppWebComponent]
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }
 
-  ngDoBootstrap() {
-    const appElement = createCustomElement(AppWebComponentComponent, {
+  ngDoBootstrap(): void {
+    const appElement = createCustomElement(AppWebComponent, {
       injector: this.injector
     });
 
