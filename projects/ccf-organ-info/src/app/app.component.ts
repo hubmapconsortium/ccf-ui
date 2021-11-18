@@ -123,6 +123,8 @@ export class AppComponent implements OnChanges, AfterViewInit {
     const { left, right } = this;
     const rightHeight = right.nativeElement.offsetHeight;
     left.nativeElement.style.height = `${rightHeight}px`;
+
+    this.updateGlobalConfig();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
