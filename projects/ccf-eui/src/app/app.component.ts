@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, OnChanges {
   @Input() hubmapDataUrl: string;
   @Input() hubmapAssetUrl: string;
   @Input() hubmapToken: string;
-  @Input()
+
   get hubmapDataSources(): string[] {
     return this._hubmapDataSources;
   }

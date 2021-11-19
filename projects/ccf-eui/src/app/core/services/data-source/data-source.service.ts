@@ -97,7 +97,12 @@ export class DataSourceService implements OnDestroy {
     );
   }
 
-  getTechnologyFilters(filter?: Filter): Observable<string[]> {
+  /**
+   * Queries for technology filters.
+   *
+   * @returns An observable emitting the results.
+   */
+  getTechnologyFilters(): Observable<string[]> {
     return this.dataSource.pipe(
       switchMap(db => {
         return db.getTechnologyFilterLabels()
@@ -106,7 +111,12 @@ export class DataSourceService implements OnDestroy {
     );
   }
 
-  getProviderFilters(filter?: Filter): Observable<string[]> {
+  /**
+   * Queries for provider filters.
+   *
+   * @returns An observable emitting the results.
+   */
+  getProviderFilters(): Observable<string[]> {
     return this.dataSource.pipe(
       switchMap(db => {
         return db.getProviderFilterLabels()

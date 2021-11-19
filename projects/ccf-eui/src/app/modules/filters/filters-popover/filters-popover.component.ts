@@ -21,7 +21,14 @@ export class FiltersPopoverComponent {
    */
   @Input() drawerExpanded: boolean;
 
+  /**
+   * List of technologies in the data
+   */
   @Input() technologyFilters: string[];
+
+  /**
+   * List of providers in the data
+   */
   @Input() providerFilters: string[];
 
   /**

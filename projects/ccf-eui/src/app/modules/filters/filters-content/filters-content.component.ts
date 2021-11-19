@@ -22,8 +22,15 @@ export class FiltersContentComponent {
    */
   @Input() filters: Record<string, unknown | unknown[]>;
 
-  @Input() technologyFilters: string[];
-  @Input() providerFilters: string[];
+  /**
+   * List of technologies in the data
+   */
+  @Input() technologyFilters: string[] = [];
+
+  /**
+   * List of providers in the data
+   */
+  @Input() providerFilters: string[] = [];
 
   /**
    * Emits the filter change when they happen

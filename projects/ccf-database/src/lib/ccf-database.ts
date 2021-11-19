@@ -60,9 +60,11 @@ export class CCFDatabase {
   /** Creates SpatialEntity Scenes */
   scene: CCFSpatialScene;
   /** If the database is initialized */
-  technologyLabels: string[];
-  providerLabels: string[];
   private initializing?: Promise<void>;
+  /** Assay technologies (for filtering) */
+  technologyLabels: string[];
+  /** List of tissue providers (for filtering) */
+  providerLabels: string[];
 
   /**
    * Creates an instance of ccfdatabase.
@@ -250,6 +252,11 @@ export class CCFDatabase {
     return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
   }
 
+  /**
+   * Get technology filter labels
+   *
+   * @returns list of unique technology  names in the data
+   */
   async getTechnologyFilterLabels(): Promise<string[]> {
     const result: string[] = [];
     new Set([...this.getIds()].map((s) => {
@@ -257,15 +264,20 @@ export class CCFDatabase {
         result.push(dataset.technology);
       }
     }));
-    return Array.from(new Set(result));
+    return Array.from(new Set(result.sort()));
   }
 
+  /**
+   * Get provider filter labels
+   *
+   * @returns list of unique provider names in the data
+   */
   async getProviderFilterLabels(): Promise<string[]> {
     const result: string[] = [];
     new Set([...this.getIds()].map((s) => {
       result.push(getTissueBlockResult(this.store, s).donor.providerName);
     }));
-    return Array.from(new Set(result));
+    return Array.from(new Set(result.sort()));
   }
 
   /**

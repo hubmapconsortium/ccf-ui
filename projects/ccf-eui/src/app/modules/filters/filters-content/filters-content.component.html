@@ -11,7 +11,7 @@
 <div class="filter assays" [class.hidden]="hidden">
   <ccf-checkbox label="Assay Types"
                 [columns]="4"
-                [options]="[technologyFilters]"
+                [options]="technologyFilters"
                 [selection]="filters?.technologies" (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
 </div>
 
