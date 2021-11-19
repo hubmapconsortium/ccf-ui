@@ -21,6 +21,9 @@ export class FiltersPopoverComponent {
    */
   @Input() drawerExpanded: boolean;
 
+  @Input() technologyFilters: string[];
+  @Input() providerFilters: string[];
+
   /**
    * Emits the current filters
    */

@@ -22,6 +22,9 @@ export class FiltersContentComponent {
    */
   @Input() filters: Record<string, unknown | unknown[]>;
 
+  @Input() technologyFilters: string[];
+  @Input() providerFilters: string[];
+
   /**
    * Emits the filter change when they happen
    */

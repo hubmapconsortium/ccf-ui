@@ -60,6 +60,8 @@ export class CCFDatabase {
   /** Creates SpatialEntity Scenes */
   scene: CCFSpatialScene;
   /** If the database is initialized */
+  technologyLabels: string[];
+  providerLabels: string[];
   private initializing?: Promise<void>;
 
   /**
@@ -246,6 +248,24 @@ export class CCFDatabase {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     filter = { ...filter, hasSpatialEntity: true } as Filter;
     return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+  }
+
+  async getTechnologyFilterLabels(): Promise<string[]> {
+    const result: string[] = [];
+    new Set([...this.getIds()].map((s) => {
+      for (const dataset of getTissueBlockResult(this.store, s).datasets) {
+        result.push(dataset.technology);
+      }
+    }));
+    return Array.from(new Set(result));
+  }
+
+  async getProviderFilterLabels(): Promise<string[]> {
+    const result: string[] = [];
+    new Set([...this.getIds()].map((s) => {
+      result.push(getTissueBlockResult(this.store, s).donor.providerName);
+    }));
+    return Array.from(new Set(result));
   }
 
   /**

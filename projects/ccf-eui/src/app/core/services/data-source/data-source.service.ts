@@ -38,6 +38,8 @@ export class DataSourceService implements OnDestroy {
   dataSource: Observable<DataSource>;
   /** Database initialization options. */
   dbOptions: CCFDatabaseOptions;
+  technologyLabels: string[];
+  providerLabels: string[];
 
   private readonly subscriptions = new Subscription();
 
@@ -88,7 +90,27 @@ export class DataSourceService implements OnDestroy {
    */
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
     return this.dataSource.pipe(
-      switchMap(db => db.getTissueBlockResults(filter)),
+      switchMap(db => {
+        return db.getTissueBlockResults(filter)
+      }),
+      take(1)
+    );
+  }
+
+  getTechnologyFilters(filter?: Filter): Observable<string[]> {
+    return this.dataSource.pipe(
+      switchMap(db => {
+        return db.getTechnologyFilterLabels()
+      }),
+      take(1)
+    );
+  }
+
+  getProviderFilters(filter?: Filter): Observable<string[]> {
+    return this.dataSource.pipe(
+      switchMap(db => {
+        return db.getProviderFilterLabels()
+      }),
       take(1)
     );
   }
