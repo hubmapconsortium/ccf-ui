@@ -90,9 +90,7 @@ export class DataSourceService implements OnDestroy {
    */
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
     return this.dataSource.pipe(
-      switchMap(db => {
-        return db.getTissueBlockResults(filter)
-      }),
+      switchMap(db => db.getTissueBlockResults(filter)),
       take(1)
     );
   }
@@ -104,9 +102,7 @@ export class DataSourceService implements OnDestroy {
    */
   getTechnologyFilters(): Observable<string[]> {
     return this.dataSource.pipe(
-      switchMap(db => {
-        return db.getTechnologyFilterLabels()
-      }),
+      switchMap(db => db.getTechnologyFilterLabels()),
       take(1)
     );
   }
@@ -118,9 +114,7 @@ export class DataSourceService implements OnDestroy {
    */
   getProviderFilters(): Observable<string[]> {
     return this.dataSource.pipe(
-      switchMap(db => {
-        return db.getProviderFilterLabels()
-      }),
+      switchMap(db => db.getProviderFilterLabels()),
       take(1)
     );
   }
