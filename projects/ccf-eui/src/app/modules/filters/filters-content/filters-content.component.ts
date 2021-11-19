@@ -25,12 +25,12 @@ export class FiltersContentComponent {
   /**
    * List of technologies in the data
    */
-  @Input() technologyFilters: string[] = [];
+  @Input() technologyFilters: string[];
 
   /**
    * List of providers in the data
    */
-  @Input() providerFilters: string[] = [];
+  @Input() providerFilters: string[];
 
   /**
    * Emits the filter change when they happen
