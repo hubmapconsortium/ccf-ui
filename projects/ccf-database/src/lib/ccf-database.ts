@@ -264,7 +264,7 @@ export class CCFDatabase {
         result.push(dataset.technology);
       }
     }));
-    return Array.from(new Set(result.sort()));
+    return Array.from(new Set(result)).sort();
   }
 
   /**
@@ -277,7 +277,7 @@ export class CCFDatabase {
     new Set([...this.getIds()].map((s) => {
       result.push(getTissueBlockResult(this.store, s).donor.providerName);
     }));
-    return Array.from(new Set(result.sort()));
+    return Array.from(new Set(result)).sort();
   }
 
   /**
