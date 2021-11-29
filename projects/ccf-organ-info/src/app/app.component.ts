@@ -1,16 +1,19 @@
-import {
-  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild,
-} from '@angular/core';
-import { Debounce } from '@ngxs-labs/data/decorators';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
-import { AggregateResult, CCFDatabaseOptions, SpatialEntity } from 'ccf-database';
-import { OrganInfo, GlobalConfigState } from 'ccf-shared';
+import { AggregateResult, SpatialEntity } from 'ccf-database';
+import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, shareReplay, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
-import { environment } from '../environments/environment';
 
 import { OrganLookupService } from './core/services/organ-lookup/organ-lookup.service';
+
+
+interface GlobalConfig {
+  organIri?: string;
+  side?: string;
+  sex?: 'Both' | 'Male' | 'Female';
+}
 
 
 const EMPTY_SCENE = [
@@ -24,66 +27,31 @@ const EMPTY_SCENE = [
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnChanges, AfterViewInit {
-  @Input() organIri?: string;
-  @Input() sex?: 'Both' | 'Male' | 'Female' = 'Female';
-  @Input() side?: 'Left' | 'Right' = 'Left';
-
+export class AppComponent implements AfterViewInit {
   @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
   @ViewChild('right', { read: ElementRef, static: true }) right: ElementRef<HTMLElement>;
 
-  // Configuration Options
-  @Input() hubmapDataService: string;
-  @Input() hubmapDataUrl: string;
-  @Input() hubmapAssetUrl: string;
-  @Input() hubmapToken: string;
-  @Input()
-  get dataSources(): string[] {
-    return this._dataSources;
-  }
-  set dataSources(datasSources: string[] | string) {
-    if (datasSources === '') {
-      return;
-    } else if (typeof datasSources === 'string') {
-      this._dataSources = JSON.parse(datasSources);
-    } else {
-      this._dataSources = datasSources;
-    }
-  }
-
-  @Input()
-  get hubmapPortalUrl(): string {
-    if (this._hubmapPortalUrl) {
-      return this._hubmapPortalUrl;
-    }
-    return this.globalConfig.snapshot?.hubmapPortalUrl ?? '';
-  }
-  set hubmapPortalUrl(url: string) {
-    this._hubmapPortalUrl = url;
-  }
-
+  readonly sex$ = this.configState.getOption('sex');
+  readonly side$ = this.configState.getOption('side');
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
   readonly scene$: Observable<SpatialSceneNode[]>;
   readonly stats$: Observable<AggregateResult[]>;
   readonly statsLabel$: Observable<string>;
 
-  private _dataSources: string[];
-  private _hubmapPortalUrl: string;
-
-
-  private readonly inputChangedTick$ = new ReplaySubject<void>(1);
+  private latestConfig: GlobalConfig = {};
 
   constructor(
     lookup: OrganLookupService,
     private readonly ga: GoogleAnalyticsService,
-    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
+    private readonly configState: GlobalConfigState<GlobalConfig>
   ) {
-    this.organInfo$ = this.inputChangedTick$.pipe(
-      switchMap(() => lookup.getOrganInfo(
-        this.organIri ?? '',
-        this.side?.toLowerCase?.() as OrganInfo['side'],
-        this.sex
+    this.organInfo$ = configState.config$.pipe(
+      tap(config => (this.latestConfig = config)),
+      switchMap(config => lookup.getOrganInfo(
+        config.organIri ?? '',
+        config.side?.toLowerCase?.() as OrganInfo['side'],
+        config.sex
       )),
       tap(info => this.logOrganLookup(info)),
       shareReplay(1)
@@ -92,7 +60,7 @@ export class AppComponent implements OnChanges, AfterViewInit {
     this.organ$ = this.organInfo$.pipe(
       switchMap(info => info ? lookup.getOrgan(
         info,
-        this.sex
+        this.latestConfig.sex
       ) : of(undefined)),
       shareReplay(1)
     );
@@ -101,14 +69,14 @@ export class AppComponent implements OnChanges, AfterViewInit {
       withLatestFrom(this.organInfo$),
       switchMap(([organ, info]) => organ && info ? lookup.getOrganScene(
         info,
-        this.sex
+        this.latestConfig.sex
       ) : of(EMPTY_SCENE as SpatialSceneNode[]))
     );
 
     this.stats$ = this.organInfo$.pipe(
       switchMap(info => info ? lookup.getOrganStats(
         info,
-        this.sex
+        this.latestConfig.sex
       ) : of([]))
     );
 
@@ -123,96 +91,24 @@ export class AppComponent implements OnChanges, AfterViewInit {
     const { left, right } = this;
     const rightHeight = right.nativeElement.offsetHeight;
     left.nativeElement.style.height = `${rightHeight}px`;
-
-    this.updateGlobalConfig();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.handleInputChanges(changes);
-  }
-
-  @Debounce(20)
-  updateGlobalConfig(): void {
-    const { hubmapDataService, hubmapPortalUrl, hubmapDataUrl, hubmapAssetUrl, hubmapToken, dataSources } = this;
-    const windowConfigKey = 'dbOptions';
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    let config = { ...environment.dbOptions } as CCFDatabaseOptions;
-
-    if (typeof globalThis[windowConfigKey] === 'object') {
-      config = { ...config, ...globalThis[windowConfigKey] };
-    }
-
-    const inputs = {
-      hubmapDataService,
-      hubmapPortalUrl,
-      hubmapDataUrl,
-      hubmapAssetUrl,
-      hubmapToken,
-      dataSources
-    };
-
-    for (const key in inputs) {
-      if (inputs[key] != null) {
-        config[key] = inputs[key];
-      }
-    }
-
-    this.globalConfig.patchConfig(config);
-  }
-
-  updateInput<K extends keyof this>(prop: K, value: this[K]): void {
-    const changes: SimpleChanges = { [prop]: new SimpleChange(this[prop], value, false) };
-
-    this[prop] = value;
-    this.handleInputChanges(changes);
-  }
-
-  private handleInputChanges(changes: SimpleChanges): void {
-    const props = ['organIri', 'sex', 'side'];
-    let hasChanges = false;
-
-    for (const prop of props) {
-      if (prop in changes) {
-        this.logInputChange(prop, changes[prop].currentValue);
-        hasChanges = true;
-      }
-    }
-
-    if (
-      'hubmapDataService' in changes ||
-      'hubmapPortalUrl' in changes ||
-      'hubmapDataUrl' in changes ||
-      'hubmapAssetUrl' in changes ||
-      'hubmapToken' in changes ||
-      'dataSources' in changes
-    ) {
-      hasChanges = true;
-      this.updateGlobalConfig();
-    }
-
-    if (hasChanges) {
-      this.inputChangedTick$.next();
-    }
+  updateInput(key: string, value: unknown): void {
+    this.configState.patchConfig({ [key]: value });
   }
 
   private makeStatsLabel(info: OrganInfo | undefined): string {
-    let parts: (string | undefined)[] = [`Unknown IRI: ${this.organIri}`];
+    let parts: (string | undefined)[] = [`Unknown IRI: ${this.latestConfig.organIri}`];
     if (info) {
-      parts = [this.sex, info.organ, info.side];
+      parts = [this.latestConfig.sex, info.organ, info.side];
     }
 
     return parts.filter(seg => !!seg).join(', ');
   }
 
-  private logInputChange(prop: string, value: unknown): void {
-    const snakeCasedProp = prop.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
-    const event = `update_${snakeCasedProp}`;
-    this.ga.event(event, 'organ', `${value}`);
-  }
-
   private logOrganLookup(info: OrganInfo | undefined): void {
     const event = info ? 'organ_lookup_success' : 'organ_lookup_failure';
-    const inputs = `Iri: ${this.organIri} - Sex: ${this.sex} - Side: ${this.side}`;
+    const inputs = `Iri: ${this.latestConfig.organIri} - Sex: ${this.latestConfig.sex} - Side: ${this.latestConfig.side}`;
     this.ga.event(event, 'organ', inputs);
   }
 }

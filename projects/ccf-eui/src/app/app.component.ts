@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/member-ordering */
-import { ChangeDetectionStrategy, Component, ElementRef, Injector, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Debounce } from '@ngxs-labs/data/decorators';
 import { CCFDatabaseOptions } from 'ccf-database';
 import { GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
+
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
@@ -29,41 +28,8 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
-
-  // Configuration Options
-  @Input() hubmapDataService: string;
-  @Input() hubmapDataUrl: string;
-  @Input() hubmapAssetUrl: string;
-  @Input() hubmapToken: string;
-  @Input()
-  get hubmapDataSources(): string[] {
-    return this._hubmapDataSources;
-  }
-  set hubmapDataSources(datasSources: string[] | string) {
-    if (datasSources === '') {
-      return;
-    } else if (typeof datasSources === 'string') {
-      this._hubmapDataSources = JSON.parse(datasSources);
-    } else {
-      this._hubmapDataSources = datasSources;
-    }
-  }
-
-  @Input()
-  get hubmapPortalUrl(): string {
-    if (this._hubmapPortalUrl) {
-      return this._hubmapPortalUrl;
-    }
-    return this.globalConfig.snapshot?.hubmapPortalUrl ?? '';
-  }
-  set hubmapPortalUrl(url: string) {
-    this._hubmapPortalUrl = url;
-  }
-
-  private _hubmapDataSources: string[];
-  private _hubmapPortalUrl: string;
 
   /**
    * Used to keep track of the ontology label to be passed down to the
@@ -99,6 +65,8 @@ export class AppComponent implements OnInit, OnChanges {
 
   readonly ontologyTerms$: Observable<readonly string[]>;
 
+  readonly portalUrl$ = this.globalConfig.getOption('hubmapPortalUrl');
+
   /**
    * Creates an instance of app component.
    *
@@ -132,8 +100,6 @@ export class AppComponent implements OnInit, OnChanges {
       duration: this.consentService.consent === 'not-set' ? Infinity : 3000
     });
 
-    this.updateGlobalConfig();
-
     if (window.matchMedia) {
       // Sets initial theme according to user theme preference
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -145,48 +111,6 @@ export class AppComponent implements OnInit, OnChanges {
         this.theming.setTheme(e.matches ? DARK_THEME : LIGHT_THEME);
       });
     }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (
-      'hubmapDataService' in changes ||
-      'hubmapPortalUrl' in changes ||
-      'hubmapDataUrl' in changes ||
-      'hubmapAssetUrl' in changes ||
-      'hubmapToken' in changes ||
-      'hubmapDataSources' in changes
-    ) {
-      this.updateGlobalConfig();
-    }
-  }
-
-  @Debounce(20)
-  updateGlobalConfig(): void {
-    const { hubmapDataService, hubmapPortalUrl, hubmapDataUrl, hubmapAssetUrl, hubmapToken, hubmapDataSources } = this;
-    const windowConfigKey = 'dbOptions';
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    let config = { ...environment.dbOptions } as CCFDatabaseOptions;
-
-    if (typeof globalThis[windowConfigKey] === 'object') {
-      config = { ...config, ...globalThis[windowConfigKey] };
-    }
-
-    const inputs = {
-      hubmapDataService,
-      hubmapPortalUrl,
-      hubmapDataUrl,
-      hubmapAssetUrl,
-      hubmapToken,
-      hubmapDataSources
-    };
-
-    for (const key in inputs) {
-      if (inputs[key] != null) {
-        config[key] = inputs[key];
-      }
-    }
-
-    this.globalConfig.patchConfig(config);
   }
 
   /**

@@ -58,6 +58,10 @@
       "ccf-shared/rxjs-ext/operators": [
         "dist/ccf-shared/ccf-shared/rxjs-ext/operators",
         "dist/ccf-shared/rxjs-ext/operators"
+      ],
+      "ccf-shared/web-components": [
+        "dist/ccf-shared/ccf-shared/web-components",
+        "dist/ccf-shared/web-components"
       ]
     }
   },

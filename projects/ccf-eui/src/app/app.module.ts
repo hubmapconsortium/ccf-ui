@@ -19,6 +19,7 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 import { ViewerModule } from './shared/components/viewer/viewer.module';
+import { AppWebComponent } from './app-web-component.component';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
     TrackingPopupModule,
     MatSnackBarModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, AppWebComponent],
   providers: [
     { provide: DEFAULT_THEME, useValue: 'light-theme' },
     { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
@@ -51,8 +52,8 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }
 
-  ngDoBootstrap() {
-    const appElement = createCustomElement(AppComponent, {
+  ngDoBootstrap(): void {
+    const appElement = createCustomElement(AppWebComponent, {
       injector: this.injector
     });
 
