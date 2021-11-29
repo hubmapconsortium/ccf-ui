@@ -18,7 +18,7 @@
 <div class="filter providers" [class.hidden]="hidden">
   <ccf-checkbox label="Tissue Providers"
                 [columns]="3"
-                [options]="[ 'TMC-CalTech', 'TMC-Florida', 'TMC-Stanford', 'TMC-UCSD', 'TMC-Vanderbilt', 'KPMP-IU/OSU', 'SPARC-UCLA', 'GTEx Project' ]"
+                [options]="[ 'TMC-CalTech', 'TMC-Florida', 'TMC-Stanford', 'TMC-UCSD', 'TMC-Vanderbilt', 'KPMP-IU/OSU', 'SPARC-UCLA' ]"
                 [selection]="filters?.tmc" (selectionChange)="updateFilter($event, 'tmc')"></ccf-checkbox>
 </div>
 
