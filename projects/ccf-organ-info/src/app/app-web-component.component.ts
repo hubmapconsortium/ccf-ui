@@ -31,13 +31,13 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() organIri?: string;
   @Input() sex?: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
+  @Input() dataSources: string | string[];
 
   @Input() hubmapDataService: string;
   @Input() hubmapDataUrl: string;
   @Input() hubmapAssetUrl: string;
   @Input() hubmapToken: string;
   @Input() hubmapPortalUrl: string;
-  @Input() hubmapDataSources: string | string[];
 
   initialized: boolean;
 
@@ -53,10 +53,7 @@ export class AppWebComponent extends BaseWebComponent {
         ...globalThis['dbOptions']
       },
       parse: {
-        hubmapDataSources: parseDataSources
-      },
-      rename: {
-        hubmapDataSources: 'dataSources'
+        dataSources: parseDataSources
       }
     });
   }

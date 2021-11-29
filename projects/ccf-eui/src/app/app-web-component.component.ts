@@ -28,12 +28,13 @@ function parseDataSources(value: unknown): string[] {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppWebComponent extends BaseWebComponent {
+  @Input() dataSources: string | string[];
+
   @Input() hubmapDataService: string;
   @Input() hubmapDataUrl: string;
   @Input() hubmapAssetUrl: string;
   @Input() hubmapToken: string;
   @Input() hubmapPortalUrl: string;
-  @Input() hubmapDataSources: string | string[];
 
   initialized: boolean;
 
@@ -49,7 +50,7 @@ export class AppWebComponent extends BaseWebComponent {
         ...globalThis['dbOptions']
       },
       parse: {
-        hubmapDataSources: parseDataSources
+        dataSources: parseDataSources
       }
     });
   }
