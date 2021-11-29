@@ -292,9 +292,9 @@ This format of configuration only works with certain data types, namely strings 
 
 ````html
 <ccf-organ-info
-  hubmap-organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
-  hubmap-sex="Female"
-  hubmap-side="Right"
+  organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
+  sex="Female"
+  side="Right"
   hubmap-data-service="search-api"
   hubmap-portal-url="https://...."
   hubmap-data-url="https://...."
@@ -320,9 +320,9 @@ Full ORGAN-INFO Example
 </head>
 <body class="mat-typography">
   <ccf-eui
-    hubmap-organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
-    hubmap-sex="Female"
-    hubmap-side="Right"
+    organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
+    sex="Female"
+    side="Right"
     hubmap-data-service="search-api"
     hubmap-portal-url="https://portal.test.hubmapconsortium.org/"
     hubmap-data-url="https://search.api.hubmapconsortium.org/entities/search"
