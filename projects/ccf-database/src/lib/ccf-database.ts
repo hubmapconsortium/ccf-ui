@@ -9,7 +9,7 @@ import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
 import { searchHubmap } from './hubmap/hubmap-data-import';
 import { AggregateResult, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
-import { getAggregateResults } from './queries/aggregate-results-n3';
+import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 import { getOntologyTreeModel } from './queries/ontology-tree-n3';
@@ -246,6 +246,24 @@ export class CCFDatabase {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     filter = { ...filter, hasSpatialEntity: true } as Filter;
     return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+  }
+
+  /**
+   * Get a list of technology names used by datasets
+   *
+   * @returns list of unique technology names in the data
+   */
+  async getDatasetTechnologyNames(): Promise<string[]> {
+    return getDatasetTechnologyNames(this.store);
+  }
+
+  /**
+   * Get a list of provider names from the database
+   *
+   * @returns list of unique provider names in the data
+   */
+  async getProviderNames(): Promise<string[]> {
+    return getProviderNames(this.store);
   }
 
   /**

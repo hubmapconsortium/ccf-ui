@@ -86,7 +86,8 @@ export class AppComponent implements OnInit {
     data.termOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
-    data.tissueBlockData$.subscribe();
+    data.technologyFilterData$.subscribe();
+    data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
   }
 
