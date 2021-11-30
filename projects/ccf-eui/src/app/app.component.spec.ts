@@ -1,10 +1,7 @@
-import { NgModule, NgZone } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxsDataInjector } from '@ngxs-labs/data/internals';
 import { GlobalConfigState } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
-
 import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
@@ -18,9 +15,6 @@ import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
-
-@NgModule({})
-class EmptyModule {}
 
 describe('AppComponent', () => {
   let shallow: Shallow<AppComponent>;
@@ -68,19 +62,9 @@ describe('AppComponent', () => {
       })
       .mock(GlobalConfigState, {
         snapshot: {},
-        patchConfig: () => undefined
-      })
-      .mock(AppComponent, {
-        updateGlobalConfig: () => undefined
+        patchConfig: () => undefined,
+        getOption: () => of(undefined)
       });
-
-    // Hacky way to get @Debounce to work
-    // @Debounce should be replaced with another implementation
-    // that does not depend on the state modules
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    NgxsDataInjector.ngZone = {
-      runOutsideAngular: (fn: () => void) => fn()
-    } as NgZone;
   });
 
   it('should make the tracking popup on init', async () => {

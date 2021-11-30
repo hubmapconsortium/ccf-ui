@@ -1,15 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { AnalyticsModule } from 'ccf-shared/analytics';
-import { environment } from '../environments/environment';
 
+import { environment } from '../environments/environment';
+import { AppWebComponent } from './app-web-component.component';
 import { AppComponent } from './app.component';
+import { StoreModule } from './core/store/store.module';
 import { OrganModule } from './features/organ/organ.module';
 import { LinkCardsModule } from './modules/link-cards/link-cards.module';
 import { StatsListModule } from './modules/stats-list/stats-list.module';
+
 
 
 @NgModule({
@@ -18,6 +19,9 @@ import { StatsListModule } from './modules/stats-list/stats-list.module';
     LinkCardsModule,
     StatsListModule,
     OrganModule,
+    StoreModule,
+
+    StoreModule,
 
     AnalyticsModule.forRoot({
       gaToken: environment.googleAnalyticsToken,
@@ -28,7 +32,7 @@ import { StatsListModule } from './modules/stats-list/stats-list.module';
       developmentMode: !environment.production
     })
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, AppWebComponent],
   providers: [],
   entryComponents: [AppComponent]
 })
@@ -36,7 +40,7 @@ export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }
 
   ngDoBootstrap(): void {
-    const appElement = createCustomElement(AppComponent, {
+    const appElement = createCustomElement(AppWebComponent, {
       injector: this.injector
     });
 
