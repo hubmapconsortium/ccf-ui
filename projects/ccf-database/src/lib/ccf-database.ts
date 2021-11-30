@@ -9,7 +9,7 @@ import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
 import { searchHubmap } from './hubmap/hubmap-data-import';
 import { AggregateResult, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
-import { getAggregateResults } from './queries/aggregate-results-n3';
+import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 import { getOntologyTreeModel } from './queries/ontology-tree-n3';
@@ -61,10 +61,6 @@ export class CCFDatabase {
   scene: CCFSpatialScene;
   /** If the database is initialized */
   private initializing?: Promise<void>;
-  /** Assay technologies (for filtering) */
-  technologyLabels: string[];
-  /** List of tissue providers (for filtering) */
-  providerLabels: string[];
 
   /**
    * Creates an instance of ccfdatabase.
@@ -253,31 +249,21 @@ export class CCFDatabase {
   }
 
   /**
-   * Get technology filter labels
+   * Get a list of technology names used by datasets
    *
-   * @returns list of unique technology  names in the data
+   * @returns list of unique technology names in the data
    */
-  async getTechnologyFilterLabels(): Promise<string[]> {
-    const result: string[] = [];
-    new Set([...this.getIds()].map((s) => {
-      for (const dataset of getTissueBlockResult(this.store, s).datasets) {
-        result.push(dataset.technology);
-      }
-    }));
-    return Array.from(new Set(result)).sort();
+  async getDatasetTechnologyNames(): Promise<string[]> {
+    return getDatasetTechnologyNames(this.store);
   }
 
   /**
-   * Get provider filter labels
+   * Get a list of provider names from the database
    *
    * @returns list of unique provider names in the data
    */
-  async getProviderFilterLabels(): Promise<string[]> {
-    const result: string[] = [];
-    new Set([...this.getIds()].map((s) => {
-      result.push(getTissueBlockResult(this.store, s).donor.providerName);
-    }));
-    return Array.from(new Set(result)).sort();
+  async getProviderNames(): Promise<string[]> {
+    return getProviderNames(this.store);
   }
 
   /**

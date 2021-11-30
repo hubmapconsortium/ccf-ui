@@ -255,7 +255,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private technologyFilterData(): ObservableInput<string[]> {
     this._technologyFilterQueryStatus$.next(DataQueryState.Running);
-    return this.source.getTechnologyFilters();
+    return this.source.getDatasetTechnologyNames();
   }
 
   /**
@@ -266,6 +266,6 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private providerFilterData(): ObservableInput<string[]> {
     this._providerFilterQueryStatus$.next(DataQueryState.Running);
-    return this.source.getProviderFilters();
+    return this.source.getProviderNames();
   }
 }
