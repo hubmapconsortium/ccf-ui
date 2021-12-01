@@ -13,6 +13,13 @@
       "es2018"
     ]
   },
+  "angularCompilerOptions": {
+    "enableResourceInlining": true,
+    "fullTemplateTypeCheck": true,
+    "strictMetadataEmit": true,
+    "strictInjectionParameters": true,
+    "strictTemplates": true
+  },
   "exclude": [
     "src/test.ts",
     "**/*.spec.ts"
