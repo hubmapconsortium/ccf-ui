@@ -1,3 +1,13 @@
 <div>
-  Body UI WC
+  <h3>Body UI WC.</h3>
+
+  <div>HighlightID: {{ highlightID$ | async }}</div>
+  <div>Data: {{ data$ | async }}</div>
+  <div>ZoomToID: {{ zoomToID$ | async }}</div>
+
+  <div
+    style="margin-top: 3rem; border: 1px solid black; padding: 2rem; width: 3rem;"
+    (click)="onClick.emit('test click')"
+    (mouseenter)="onHover.emit('test hover')"
+  >Output Tests</div>
 </div>

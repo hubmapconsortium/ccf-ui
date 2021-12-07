@@ -25,7 +25,7 @@ function parseDataSources(value: unknown): string[] {
 
 @Component({
   selector: 'ccf-root-wc',
-  template: '<ccf-root *ngIf="initialized"></ccf-root>',
+  template: '<ccf-root *ngIf="initialized" (onHover)="onHover.emit($event)" (onClick)="onClick.emit($event)"></ccf-root>',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppWebComponent extends BaseWebComponent {
