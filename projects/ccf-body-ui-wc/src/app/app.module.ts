@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppWebComponent } from './app-web-component.component';
+import { StoreModule } from './core/store/store.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { AppWebComponent } from './app-web-component.component';
     AppWebComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StoreModule
   ],
   providers: [],
   entryComponents: [AppComponent]

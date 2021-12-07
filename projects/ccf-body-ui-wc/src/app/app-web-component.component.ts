@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { GlobalConfigState } from 'ccf-shared';
 import { BaseWebComponent, BUILTIN_PARSERS, GenericGlobalConfig } from 'ccf-shared/web-components';
+import { JsonLdObj } from 'jsonld/jsonld-spec';
 
 import { environment } from '../environments/environment';
 
@@ -28,16 +29,12 @@ function parseDataSources(value: unknown): string[] {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppWebComponent extends BaseWebComponent {
-  @Input() organIri?: string;
-  @Input() sex?: 'Both' | 'Male' | 'Female' = 'Female';
-  @Input() side?: 'Left' | 'Right' = 'Left';
+  @Input() data: { id: string, rui_location: JsonLdObj }[];
+  @Input() highlightID: string;
+  @Input() zoomToID: string;
 
-  @Input() hubmapDataService: string;
-  @Input() hubmapDataUrl: string;
-  @Input() hubmapAssetUrl: string;
-  @Input() hubmapToken: string;
-  @Input() hubmapPortalUrl: string;
-  @Input() hubmapDataSources: string | string[];
+  @Output() readonly onHover = new EventEmitter<string>();
+  @Output() readonly onClick = new EventEmitter<string>();
 
   initialized: boolean;
 
@@ -59,5 +56,7 @@ export class AppWebComponent extends BaseWebComponent {
         hubmapDataSources: 'dataSources'
       }
     });
+
+    console.log('AppWebComponent.\nthis: ', this);
   }
 }

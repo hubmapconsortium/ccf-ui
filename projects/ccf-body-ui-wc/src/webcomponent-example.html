@@ -6,6 +6,68 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script>
+    const sampleData = [{
+      "id": "8b0a4cc904cadaccddd37633411fdbdd",
+      "rui_location": {
+        "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+        "@id": "http://purl.org/ccf/1.5/886e391d-0151-46d3-8a51-084bf6a06910",
+        "@type": "SpatialEntity",
+        "ccf_annotations": [
+          "http://purl.obolibrary.org/obo/UBERON_0002084",
+          "http://purl.obolibrary.org/obo/UBERON_0002494",
+          "http://purl.org/sig/ont/fma/fma72655",
+          "http://purl.obolibrary.org/obo/UBERON_0002080",
+          "http://purl.obolibrary.org/obo/UBERON_0002094"
+        ],
+        "creation_date": "2021-10-25",
+        "creator": "Andreas Bueckle",
+        "creator_first_name": "Andreas",
+        "creator_last_name": "Bueckle",
+        "dimension_units": "millimeter",
+        "placement": {
+          "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+          "@id": "http://purl.org/ccf/1.5/886e391d-0151-46d3-8a51-084bf6a06910_placement",
+          "@type": "SpatialPlacement",
+          "placement_date": "2021-10-25",
+          "rotation_order": "XYZ",
+          "rotation_units": "degree",
+          "scaling_units": "ratio",
+          "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
+          "translation_units": "millimeter",
+          "x_rotation": 41,
+          "x_scaling": 1,
+          "x_translation": 102.382,
+          "y_rotation": 12,
+          "y_scaling": 1,
+          "y_translation": 54.602,
+          "z_rotation": -25,
+          "z_scaling": 1,
+          "z_translation": 69.821
+        },
+        "x_dimension": 10,
+        "y_dimension": 16,
+        "z_dimension": 10
+      }
+    }];
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const bodyUI = document.querySelector('ccf-body-ui-wc');
+      bodyUI.data = sampleData;
+      bodyUI.highlightID = '8b0a4cc904cadaccddd37633411fdbdd';
+      bodyUI.zoomToID = '8b0a4cc904cadaccddd37633411fdbdd';
+
+      bodyUI.onHover = (id) => {
+        console.log('onHover: ', id)
+      };
+      bodyUI.onClick = (id) => {
+        console.log('onClick: ', id)
+      };
+
+      console.log(`Body UI WC loaded: ${bodyUI}`);
+    });
+  </script>
 </head>
 
 <body class="mat-typography">
