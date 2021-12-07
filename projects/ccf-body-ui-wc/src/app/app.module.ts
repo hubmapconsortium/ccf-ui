@@ -7,14 +7,11 @@ import { AppWebComponent } from './app-web-component.component';
 import { StoreModule } from './core/store/store.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AppWebComponent
-  ],
   imports: [
     BrowserModule,
     StoreModule
   ],
+  declarations: [AppComponent, AppWebComponent],
   providers: [],
   entryComponents: [AppComponent]
 })

@@ -6,7 +6,7 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-
+  <script src="wc.js" async></script>
   <script>
     const sampleData = [{
       "id": "8b0a4cc904cadaccddd37633411fdbdd",
@@ -58,14 +58,15 @@
       bodyUI.highlightID = '8b0a4cc904cadaccddd37633411fdbdd';
       bodyUI.zoomToID = '8b0a4cc904cadaccddd37633411fdbdd';
 
-      bodyUI.onHover = (id) => {
-        console.log('onHover: ', id)
-      };
-      bodyUI.onClick = (id) => {
-        console.log('onClick: ', id)
-      };
+      bodyUI.addEventListener('onHover', (id) => {
+        console.log('onHover', id);
+      });
 
-      console.log(`Body UI WC loaded: ${bodyUI}`);
+      bodyUI.addEventListener('onClick', (id) => {
+        console.log('onClick', id);
+      });
+
+      console.log('Body UI WC loaded:', bodyUI);
     });
   </script>
 </head>

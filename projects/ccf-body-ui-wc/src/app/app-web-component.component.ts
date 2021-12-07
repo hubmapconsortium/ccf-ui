@@ -56,7 +56,5 @@ export class AppWebComponent extends BaseWebComponent {
         hubmapDataSources: 'dataSources'
       }
     });
-
-    console.log('AppWebComponent.\nthis: ', this);
   }
 }
