@@ -1,3 +1,6 @@
+// Must be imported first!
+import './global-fixes';
+
 import { CCFDatabaseOptions } from 'ccf-database';
 import { config } from 'dotenv';
 import { env } from 'process';
