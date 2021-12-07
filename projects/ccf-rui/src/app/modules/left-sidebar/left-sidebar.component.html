@@ -28,8 +28,8 @@
 
         <mat-expansion-panel class="extraction-menu" [expanded]="modalClosed">
             <mat-expansion-panel-header class="expansion-header">
-                <mat-panel-title matTooltip="Some organs have predefined extraction sites--you can turn these on/off."
-                    class="expansion-title">Common Extraction Sites</mat-panel-title>
+                <mat-panel-title matTooltip="Some organs have predefined landmarks--you can turn these on/off."
+                    class="expansion-title">Landmarks</mat-panel-title>
             </mat-expansion-panel-header>
             <div *ngIf="organSelected$ | async" class="expansion-content">
                 <ccf-extraction-set-dropdown [sets]="model.extractionSets$ | async"
