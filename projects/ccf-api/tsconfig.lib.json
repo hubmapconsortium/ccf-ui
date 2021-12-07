@@ -11,10 +11,6 @@
     "lib": [
       "dom",
       "es2018"
-    ],
-    "typeRoots": [
-      "@types",
-      "../../node_modules/@types"
     ]
   },
   "angularCompilerOptions": {

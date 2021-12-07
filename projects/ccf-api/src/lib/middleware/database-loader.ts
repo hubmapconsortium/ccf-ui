@@ -50,7 +50,7 @@ export function databaseLoader(options: DatabaseLoaderOptions): RequestHandler {
       cache.set(token, database);
     }
 
-    req.database = database;
+    req['database'] = database;
     await database.connect();
     next();
   };
