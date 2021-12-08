@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:api-server": "ts-node --project projects/ccf-api/tsconfig.server.json projects/ccf-api/src/start-server.ts",
+    "heroku-postbuild": "npm run build:server-libs",
     "build": "ng build --configuration production",
     "build:demo": "ng build --configuration production --output-hashing=none --base-href=./",
     "build:docs": "npm-run-all build:docs:*",
@@ -49,7 +50,6 @@
   "browser": {
     "fs": false
   },
-  "heroku-postbuild": "npm run build:server-libs",
   "engines": {
     "node": "14.x"
   },
