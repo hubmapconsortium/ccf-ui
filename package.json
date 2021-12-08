@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:api-server": "./node_modules/.bin/ts-node --project projects/ccf-api/tsconfig.server.json projects/ccf-api/src/start-server.ts",
+    "start:api-server": "ts-node --project projects/ccf-api/tsconfig.server.json projects/ccf-api/src/start-server.ts",
     "heroku-postbuild": "npm run build:server-libs",
     "build": "ng build --configuration production",
     "build:demo": "ng build --configuration production --output-hashing=none --base-href=./",
@@ -115,6 +115,9 @@
     "stream-browserify": "^3.0.0",
     "swiper": "^6.5.1",
     "tslib": "^2.1.0",
+    "ts-node": "^10.1.0",
+    "tsconfig-paths": "^3.12.0",
+    "typescript": "~4.3.5",
     "uuid": "^8.3.2",
     "zone.js": "~0.11.4"
   },
@@ -173,9 +176,6 @@
     "protractor": "~7.0.0",
     "rimraf": "^3.0.2",
     "shallow-render": "^12.0.0",
-    "sonar-scanner": "^3.1.0",
-    "ts-node": "^10.1.0",
-    "tsconfig-paths": "^3.12.0",
-    "typescript": "~4.3.5"
+    "sonar-scanner": "^3.1.0"
   }
 }
