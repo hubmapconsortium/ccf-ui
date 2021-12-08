@@ -3,10 +3,17 @@ import './global-fixes';
 
 import { CCFDatabaseOptions } from 'ccf-database';
 import { config } from 'dotenv';
+import { readFileSync } from 'fs';
+import { JsonLd } from 'jsonld/jsonld-spec';
+import { resolve } from 'path';
 import { env } from 'process';
 
 import { createApp } from './lib/app';
 import { DatabaseCacheOptions } from './lib/middleware/database-loader';
+
+
+type DataSourceItem = CCFDatabaseOptions['dataSources'][number];
+type DataSources = CCFDatabaseOptions['dataSources'];
 
 
 const THROW_IF_NOT_FOUND = Symbol('Indicator to throw for `get`');
@@ -22,8 +29,24 @@ function maybeCastNumber(value: string | undefined): number | undefined {
   return isNaN(num) ? undefined : num;
 }
 
-function parseDataSources(value: string): CCFDatabaseOptions['dataSources'] {
-  return value.startsWith('[') ? JSON.parse(value) : value.split(' ');
+function tryRelativeDataSourceLoad(source: string): JsonLd | undefined {
+  try {
+    const path = resolve(__dirname, '../../../', source);
+    const data = readFileSync(path, { encoding: 'utf-8' });
+
+    return JSON.parse(data);
+  } catch (_error) {
+    return undefined;
+  }
+}
+
+function parseDataSources(value: string): DataSources {
+  const tryLoad = (item: DataSourceItem) =>
+    typeof item === 'string' && tryRelativeDataSourceLoad(item) || item;
+  const items: DataSources = value.startsWith('[') ?
+    JSON.parse(value) : value.split(' ');
+
+  return items.map(tryLoad);
 }
 
 // -------------------------------
