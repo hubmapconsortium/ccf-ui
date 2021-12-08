@@ -24,7 +24,7 @@ export function createApp(options: AppOptions): Express {
 
   app.use(databaseLoader(options));
 
-  app.get('/v1', v1Routes);
+  app.use('/v1', v1Routes);
 
   return app;
 }
