@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppWebComponent } from './app-web-component.component';
 import { StoreModule } from './core/store/store.module';
+import { BodyUiModule } from 'ccf-shared';
 
 @NgModule({
   imports: [
     BrowserModule,
-    StoreModule
+    StoreModule,
+    BodyUiModule
   ],
   declarations: [AppComponent, AppWebComponent],
   providers: [],

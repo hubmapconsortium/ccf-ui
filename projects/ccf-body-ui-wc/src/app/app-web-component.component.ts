@@ -1,25 +1,17 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { GlobalConfigState } from 'ccf-shared';
 import { BaseWebComponent, BUILTIN_PARSERS, GenericGlobalConfig } from 'ccf-shared/web-components';
-import { JsonLdObj } from 'jsonld/jsonld-spec';
+import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
 
 import { environment } from '../environments/environment';
 
 
-function parseDataSources(value: unknown): string[] {
-  const isString = (val: unknown): val is string => typeof val === 'string';
-  const isStringArray = (val: unknown): val is string[] => Array.isArray(val) && val.every(isString);
-
-  if (typeof value === 'string') {
-    const json = BUILTIN_PARSERS.json(value);
-    if (isStringArray(json)) {
-      return json;
-    }
-  } else if (isStringArray(value)) {
-    return value;
-  }
-
-  throw new Error('Invalid data sources');
+function toJsonLd(data: {id: string, rui_location: JsonLdObj}[]): JsonLd {
+  return data.map(d => ({
+    '@id': `http://purl.org/ccf/1.5/entity/${d.id}`,
+    '@type': 'http://purl.org/ccf/latest/ccf-entity.owl#Sample',
+    'http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity': d.rui_location
+  })) as unknown as JsonLd;
 }
 
 
@@ -50,10 +42,7 @@ export class AppWebComponent extends BaseWebComponent {
         ...globalThis['dbOptions']
       },
       parse: {
-        hubmapDataSources: parseDataSources
-      },
-      rename: {
-        hubmapDataSources: 'dataSources'
+        data: toJsonLd
       }
     });
   }
