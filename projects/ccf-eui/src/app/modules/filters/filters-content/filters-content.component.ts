@@ -23,6 +23,16 @@ export class FiltersContentComponent {
   @Input() filters: Record<string, unknown | unknown[]>;
 
   /**
+   * List of technologies in the data
+   */
+  @Input() technologyFilters: string[];
+
+  /**
+   * List of providers in the data
+   */
+  @Input() providerFilters: string[];
+
+  /**
    * Emits the filter change when they happen
    */
   @Output() readonly filtersChange = new EventEmitter<Record<string, unknown>>();

@@ -1,7 +1,7 @@
 <div class="ccf-app mat-app-background">
   <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async">
   </ccf-spinner-overlay>
-  <ccf-header [hubmapPortalUrl]="hubmapPortalUrl" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
+  <ccf-header [hubmapPortalUrl]="portalUrl$ | async" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
   </ccf-header>
 
   <ccf-drawer-container class="main-drawers">
@@ -9,7 +9,9 @@
       <div>
         <div class="filter-data">
           <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
-                               (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>
+                               (filtersChange)="data.updateFilter($event)" [technologyFilters]="data.technologyFilterData$ | async"
+                               [providerFilters]="data.providerFilterData$ | async" #filterbox>
+          </ccf-filters-popover>
 
           <div class="filter-text">
             <div class="sex filter-tag">Sex: <strong>{{(data.filter$ | async)?.sex}}</strong></div>

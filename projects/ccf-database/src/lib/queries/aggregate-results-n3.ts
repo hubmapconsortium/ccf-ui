@@ -63,3 +63,33 @@ export function getAggregateResults(ids: Set<string>, store: Store): AggregateRe
 
   return Object.entries(results).map(([label, count]) => ({ label, count }));
 }
+
+/**
+ * Get a list of technology names used by datasets
+ *
+ * @param store The triple store.
+ * @returns list of unique technology names in the data
+ */
+export function getDatasetTechnologyNames(store: Store): string[] {
+  const names = new Set<string>();
+  store.some((quad) => {
+    names.add(quad.object.value);
+    return false;
+  }, null, entity.technology, null, null);
+  return Array.from(names).sort();
+}
+
+/**
+ * Get a list of provider names from the database
+ *
+ * @param store The triple store.
+ * @returns list of unique provider names in the data
+ */
+export function getProviderNames(store: Store): string[] {
+  const names = new Set<string>();
+  store.some((quad) => {
+    names.add(quad.object.value);
+    return false;
+  }, null, entity.providerName, null, null);
+  return Array.from(names).sort();
+}

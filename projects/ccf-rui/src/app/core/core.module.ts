@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { INITIAL_TELEMETRY_SETTING, MousePositionTrackerModule } from 'ccf-shared';
-import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { MousePositionTrackerModule } from 'ccf-shared';
+import { AnalyticsModule } from 'ccf-shared/analytics';
 
 import { environment } from '../../environments/environment';
 import { ConfigModule } from './services/config/config.module';
@@ -12,11 +12,10 @@ import { StoreModule } from './store/store.module';
 @NgModule({
   imports: [
     HttpClientModule,
-
-    NgxGoogleAnalyticsModule.forRoot(
-      INITIAL_TELEMETRY_SETTING === false ? '' : environment.googleAnalyticsToken,
-      [{ command: 'set', values: [{ app: 'rui' }] }]
-    ),
+    AnalyticsModule.forRoot({
+      gaToken: environment.googleAnalyticsToken,
+      appName: 'rui'
+    }),
     MousePositionTrackerModule,
 
     ConfigModule,

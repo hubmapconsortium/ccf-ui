@@ -115,7 +115,8 @@ export class CCFSpatialScene {
   }
 
   getReferenceOrganScene(organIri: string, filter?: Filter): SpatialSceneNode[] {
-    const organs = this.getReferenceOrgans().filter((o) => o.representation_of === organIri && o.sex === filter?.sex);
+    const hasSexFilter = filter?.sex !== undefined ?? false;
+    const organs = this.getReferenceOrgans().filter((o) => o.representation_of === organIri && (!hasSexFilter || o.sex === filter?.sex));
     if (organs.length > 0) {
       const organ = organs[0];
       const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';

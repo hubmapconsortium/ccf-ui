@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { GLOBAL_CONFIG } from '../../services/config/config';
+import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
 import { ModelState } from './../model/model.state';
 import { PageState } from './page.state';
 
@@ -22,10 +23,11 @@ describe('PageState', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([PageState, ModelState, GlobalConfigState])
+        NgxsModule.forRoot([PageState, ModelState, AnatomicalStructureTagState, GlobalConfigState])
       ],
       providers: [
         ModelState,
+        AnatomicalStructureTagState,
         GlobalConfigState,
         { provide: GLOBAL_CONFIG, useValue: {} }
       ]
@@ -39,7 +41,9 @@ describe('PageState', () => {
         },
         useCancelRegistrationCallback: false
       },
-      globalConfig: {}
+      globalConfig: {
+        skipUnsavedChangesConfirmation: true
+      }
     });
 
     state = TestBed.inject(PageState);

@@ -5,6 +5,7 @@ import { GlobalConfigState } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { PageState } from '../page/page.state';
 import { GLOBAL_CONFIG } from './../../services/config/config';
 import { ModelState } from './../model/model.state';
 import { SceneState } from './../scene/scene.state';
@@ -32,6 +33,12 @@ describe('AnatomicalStructureTagsState', () => {
         {
           provide: GLOBAL_CONFIG,
           useValue: {}
+        },
+        {
+          provide: PageState,
+          useValue: {
+            setHasChanges: () => undefined
+          }
         }
       ]
     });

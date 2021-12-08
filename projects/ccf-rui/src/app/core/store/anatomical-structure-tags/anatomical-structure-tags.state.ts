@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 
 import { Tag, TagId, TagSearchResult } from '../../models/anatomical-structure-tag';
 import { ModelState } from '../model/model.state';
+import { PageState } from '../page/page.state';
 import { SceneState } from '../scene/scene.state';
 
 
@@ -75,6 +76,8 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
   /** Reference to the scene state */
   private scene: SceneState;
 
+  private page: PageState;
+
   /**
    * Creates an instance of scene state.
    *
@@ -96,10 +99,13 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
     // Lazy load here
     this.model = this.injector.get(ModelState);
     this.scene = this.injector.get(SceneState);
+    this.page = this.injector.get(PageState);
 
     this.tags$.subscribe((tags) => {
       this._latestTags = tags;
     });
+
+    this.entities$.subscribe(() => this.page.setHasChanges());
   }
 
   @DataAction()
