@@ -228,7 +228,116 @@ components:
       properties:
         '@id':
           type: string
-          example: iri
+          format: uri
+        '@type':
+          type: string
+          enum:
+            - Sample
+        label:
+          type: string
+        description:
+          type: string
+        link:
+          type: string
+          format: uri
+        sampleType:
+          type: string
+          enum:
+            - Tissue Block
+            - Non-Standard
+        sectionCount:
+          type: integer
+        sectionSize:
+          type: number
+        sectionUnits:
+          type: string
+          default: micrometers
+        donor:
+          $ref: '#/components/schemas/DonorResult'
+        spatialEntityId:
+          type: string
+          format: uri
+        sections:
+          type: array
+          items:
+            $ref:  "#/components/schemas/TissueSectionResult"
+        datasets:
+          type: array
+          items:
+            $ref:  "#/components/schemas/DatasetResult"
+
+    DonorResult:
+      type: object
+      properties:
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+          enum:
+            - Donor
+        label:
+          type: string
+        description:
+          type: string
+        link:
+          type: string
+          format: uri
+        providerName:
+          type: string
+
+    DatasetResult:
+      type: object
+      properties:
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+          enum:
+            - Dataset
+        label:
+          type: string
+        description:
+          type: string
+        link:
+          type: string
+          format: uri
+        technology:
+          type: string
+        thumbnail:
+          type: string
+          format: uri
+
+    TissueSectionResult:
+      type: object
+      properties:
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+          enum:
+            - Sample
+        label:
+          type: string
+        description:
+          type: string
+        link:
+          type: string
+          format: uri
+        sampleType:
+          type: string
+          enum:
+            - Tissue Section
+            - Non-Standard
+        sectionNumber:
+          type: integer
+        datasets:
+          type: array
+          items:
+            $ref:  "#/components/schemas/DatasetResult"
+
     AggregateResult:
       type: object
       properties:
@@ -239,10 +348,12 @@ components:
           oneOf:
             - type: string
             - type: integer
+
     TermOccurences:
       type: object
       additionalProperties:
         type: integer
+
     OntologyTreeModel:
       type: object
       properties:
@@ -253,21 +364,185 @@ components:
         nodes:
           type: object
           additionalProperties:
-            type: object
-            properties:
-              '@id':
-                type: string
-                example: iri
+            $ref:  "#/components/schemas/OntologyTreeNode"
+
+    OntologyTreeNode:
+      type: object
+      properties:
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+          enum:
+            - OntologyTreeNode
+        id:
+          type: string
+          format: uri
+        label:
+          type: string
+        parent:
+          type: string
+          format: uri
+        children:
+          type: array
+          items:
+            type: string
+            format: uri
+        synonymLabels:
+          type: array
+          items:
+            type: string
 
     SpatialEntity:
       type: object
       properties:
         '@id':
           type: string
-          example: iri
+          format: uri
+        '@type':
+          type: string
+          enum:
+            - SpatialEntity
+        entityId:
+          type: string
+          format: uri
+        label:
+          type: string
+        comment:
+          type: string
+        creator:
+          type: string
+        creator_first_name:
+          type: string
+        creator_last_name:
+          type: string
+        creator_orcid:
+          type: string
+        creation_date:
+          type: string
+          format: date
+        ccf_annotations:
+          type: array
+          items:
+            type: string
+            format: uri
+        representation_of:
+          type: string
+          format: uri
+        reference_organ:
+          type: string
+          format: uri
+        sex:
+          type: string
+          enum:
+            - Female
+            - Male
+        side:
+          type: string
+          enum:
+            - Left
+            - Right
+        rui_rank:
+          type: integer
+        slice_thickness:
+          type: number
+        slice_count:
+          type: integer
+
+        x_dimension:
+          type: number
+        y_dimension:
+          type: number
+        z_dimension:
+          type: number
+        dimension_units:
+          type: string
+          default: millimeters
+        object:
+          $ref: '#/components/schemas/SpatialObjectReference'
+        color:
+          type: array
+          minItems: 4
+          maxItems: 4
+          items:
+            type: number
+
+    SpatialObjectReference:
+      type: object
+      properties:
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+          enum:
+            - SpatialObjectReference
+        file:
+          type: string
+          format: uri
+        file_format:
+          type: string
+          example: model/gltf-binary
+        file_subpath:
+          type: string
+
     SpatialSceneNode:
       type: object
       properties:
         '@id':
           type: string
-          example: iri
+          format: uri
+        '@type':
+          type: string
+          enum:
+            - SpatialSceneNode
+        entityId:
+          type: string
+          format: uri
+        ccf_annotations:
+          type: array
+          items:
+            type: string
+            format: uri
+        representation_of:
+          type: string
+          format: uri
+        reference_organ:
+          type: string
+          format: uri
+        unpickable:
+          type: boolean
+        wireframe:
+          type: boolean
+        _lighting:
+          type: boolean
+        scenegraph:
+          type: string
+          format: uri
+        scenegraphNode:
+          type: string
+        zoomBasedOpacity:
+          type: boolean
+        zoomToOnLoad:
+          type: boolean
+        color:
+          type: array
+          minItems: 4
+          maxItems: 4
+          items:
+            type: number
+        opacity:
+          type: number
+        transformMatrix:
+          type: array
+          minItems: 16
+          maxItems: 16
+          items:
+            type: number
+        name:
+          type: string
+        tooltip:
+          type: string
+        priority:
+          type: number
