@@ -1,0 +1,273 @@
+openapi: '3.0.3'
+info:
+  title: CCF-API
+  description: |
+    This API provides programmatic access to data registered to the CCF.
+    See the [HuBMAP CCF Portal](https://hubmapconsortium.github.io/ccf/) for details.
+  version: 1.0.0
+servers:
+  - description: Staging Server
+    url: https://ccf-api--staging.herokuapp.com/v1
+  - description: Dev Server
+    url: http://localhost:5000/v1
+  - description: Production Server
+    url: https://ccf-api.herokuapp.com/v1
+
+paths:
+  /tissue-blocks:
+    get:
+      summary: Get Tissue Block Results
+      operationId: tissue-blocks
+      parameters:
+        - $ref: '#/components/parameters/age-range'
+        - $ref: '#/components/parameters/sex'
+        - $ref: '#/components/parameters/bmi-range'
+        - $ref: '#/components/parameters/providers'
+        - $ref: '#/components/parameters/technologies'
+        - $ref: '#/components/parameters/ontology-terms'
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TissueBlockResult'
+  /technology-names:
+    get:
+      summary: Get technology names (for filtering)
+      operationId: technology-names
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /provider-names:
+    get:
+      summary: Get tissue provider names (for filtering)
+      operationId: provider-names
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /aggregate-results:
+    get:
+      summary: Get aggregate results / statistics
+      operationId: aggregate-results
+      parameters:
+        - $ref: '#/components/parameters/age-range'
+        - $ref: '#/components/parameters/sex'
+        - $ref: '#/components/parameters/bmi-range'
+        - $ref: '#/components/parameters/providers'
+        - $ref: '#/components/parameters/technologies'
+        - $ref: '#/components/parameters/ontology-terms'
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AggregateResult'
+  /ontology-term-occurences:
+    get:
+      summary: Get number of ontology term occurrences for a search
+      operationId: ontology-term-occurences
+      parameters:
+        - $ref: '#/components/parameters/age-range'
+        - $ref: '#/components/parameters/sex'
+        - $ref: '#/components/parameters/bmi-range'
+        - $ref: '#/components/parameters/providers'
+        - $ref: '#/components/parameters/technologies'
+        - $ref: '#/components/parameters/ontology-terms'
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermOccurences'
+  /ontology-tree-model:
+    get:
+      summary: Get ontology term tree nodes
+      operationId: ontology-tree-model
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OntologyTreeModel'
+  /reference-organs:
+    get:
+      summary: Get all reference organs
+      operationId: reference-organs
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpatialEntity'
+  /scene:
+    get:
+      summary: Get all nodes to form the 3D scene of reference body, organs, and tissues
+      operationId: scene
+      parameters:
+        - $ref: '#/components/parameters/age-range'
+        - $ref: '#/components/parameters/sex'
+        - $ref: '#/components/parameters/bmi-range'
+        - $ref: '#/components/parameters/providers'
+        - $ref: '#/components/parameters/technologies'
+        - $ref: '#/components/parameters/ontology-terms'
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpatialSceneNode'
+
+components:
+  parameters:
+    age-range:
+      name: age-range
+      description: Age range to filter by
+      in: query
+      required: false
+      schema:
+        type: string
+    sex:
+      name: sex
+      description: sex to filter by
+      in: query
+      required: false
+      schema:
+        type: string
+    bmi-range:
+      name: bmi-range
+      description: BMI range to filter by
+      in: query
+      required: false
+      schema:
+        type: string
+    providers:
+      name: providers
+      description: Tissue data provider names to filter by
+      in: query
+      required: false
+      schema:
+        type: string
+    technologies:
+      name: technologies
+      description: Dataset technologies to filter by
+      in: query
+      required: false
+      schema:
+        type: string
+    ontology-terms:
+      name: ontology-terms
+      description: Ontology terms to filter by
+      in: query
+      required: false
+      schema:
+        type: string
+    token:
+      name: token
+      description: Authentication token to use for authenticated searches
+      in: query
+      required: false
+      schema:
+        type: string
+    cache:
+      name: cache
+      description: Hint to cache (or not) the response of this request
+      in: query
+      required: false
+      schema:
+        type: string
+
+  schemas:
+    TissueBlockResult:
+      type: object
+      properties:
+        '@id':
+          type: string
+          example: iri
+    AggregateResult:
+      type: object
+      properties:
+        label:
+          type: string
+          example: Tissue Data Providers
+        count:
+          oneOf:
+            - type: string
+            - type: integer
+    TermOccurences:
+      type: object
+      additionalProperties:
+        type: integer
+    OntologyTreeModel:
+      type: object
+      properties:
+        root:
+          type: string
+          description: The root term of the tree
+          example: 'http://purl.obolibrary.org/obo/UBERON_0013702'
+        nodes:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              '@id':
+                type: string
+                example: iri
+
+    SpatialEntity:
+      type: object
+      properties:
+        '@id':
+          type: string
+          example: iri
+    SpatialSceneNode:
+      type: object
+      properties:
+        '@id':
+          type: string
+          example: iri

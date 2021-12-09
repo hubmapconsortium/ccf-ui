@@ -98,7 +98,7 @@ function processParameter(result: Filter, key: string, value: unknown): void {
       setIfDefined(result, 'bmiRange', parseRange(value, 0, 100));
       break;
 
-    case 'tmc':
+    case 'providers':
       setIfDefined(result, 'tmc', parseArray(value));
       break;
 
