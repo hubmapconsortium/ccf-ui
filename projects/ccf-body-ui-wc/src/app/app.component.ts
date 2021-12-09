@@ -1,10 +1,12 @@
+import { FilteredSceneService } from './core/services/filtered-scene/filtered-scene.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { GlobalConfigState } from 'ccf-shared';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { DataSourceService } from './core/services/data-source/data-source.service';
-import { SpatialSceneNode } from 'ccf-database';
-import { take } from 'rxjs/operators';
+import { Filter, SpatialSceneNode } from 'ccf-database';
+import { map, take } from 'rxjs/operators';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
+import { Any } from '@angular-ru/common/typings';
 
 interface BodyUIData {
   id: string;
@@ -27,17 +29,15 @@ export class AppComponent {
   readonly highlightID$ = this.configState.getOption('highlightID');
   readonly zoomToID$ = this.configState.getOption('zoomToID');
 
-  scene$: Observable<SpatialSceneNode[]>;
+  scene$ = this.sceneSource.filteredScene$;
 
   @Output() readonly onHover = new EventEmitter<string>();
   @Output() readonly onClick = new EventEmitter<string>();
 
   constructor(
     private readonly configState: GlobalConfigState<GlobalConfig>,
-    private readonly source: DataSourceService
-  ) {
-    this.scene$ = source.getScene();
-  }
+    private readonly sceneSource: FilteredSceneService
+  ) { }
 
   async testScene(): Promise<void> {
     console.log('Scene: ', this.scene$.pipe(take(1)).toPromise());
@@ -46,14 +46,18 @@ export class AppComponent {
       return;
     }
     console.log('Data: ', data);
-    console.log('Needed Organs: ', this.neededOrgans(data));
+    console.log('getNeededOrgans: ', this.getNeededOrgans(data));
   }
 
-  neededOrgans(bodyData: any[]): string[] {
-    console.log('bodyData: ', bodyData);
-    return [];
-    return bodyData!.map((data) => {
-      return data!.rui_locations!.placement!.target;
+  getNeededOrgans(bodyData: Any[]): string[] {
+    if (!bodyData) {
+      return [];
+    }
+
+    const allOrgans: string[] = bodyData.map((data) => {
+      return data['http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity'].placement.target;
     });
+    const uniqueOrgans = [...new Set(allOrgans)] as string[];
+    return uniqueOrgans;
   }
 }

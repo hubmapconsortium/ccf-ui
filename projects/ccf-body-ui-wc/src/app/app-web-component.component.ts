@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { GlobalConfigState } from 'ccf-shared';
-import { BaseWebComponent, BUILTIN_PARSERS, GenericGlobalConfig } from 'ccf-shared/web-components';
+import { BaseWebComponent, GenericGlobalConfig } from 'ccf-shared/web-components';
 import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
 
 import { environment } from '../environments/environment';
@@ -13,7 +13,6 @@ function toJsonLd(data: {id: string, rui_location: JsonLdObj}[]): JsonLd {
     'http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity': d.rui_location
   })) as unknown as JsonLd;
 }
-
 
 @Component({
   selector: 'ccf-root-wc',
