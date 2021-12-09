@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/member-ordering */
-import { Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CCFDatabaseOptions } from 'ccf-database';
 import { GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
@@ -18,6 +17,7 @@ import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
+
 /**
  * This is the main angular component that all the other components branch off from.
  * It is in charge of the header and drawer components who have many sub-components.
@@ -25,7 +25,8 @@ import { DrawerComponent } from './shared/components/drawer/drawer/drawer.compon
 @Component({
   selector: 'ccf-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
@@ -85,7 +86,8 @@ export class AppComponent implements OnInit {
     data.termOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
-    data.tissueBlockData$.subscribe();
+    data.technologyFilterData$.subscribe();
+    data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
   }
 

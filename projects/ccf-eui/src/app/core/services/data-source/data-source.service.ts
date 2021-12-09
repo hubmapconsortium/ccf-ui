@@ -94,6 +94,30 @@ export class DataSourceService implements OnDestroy {
   }
 
   /**
+   * Queries for technology filters.
+   *
+   * @returns An observable emitting the results.
+   */
+  getDatasetTechnologyNames(): Observable<string[]> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getDatasetTechnologyNames()),
+      take(1)
+    );
+  }
+
+  /**
+   * Queries for provider filters.
+   *
+   * @returns An observable emitting the results.
+   */
+  getProviderNames(): Observable<string[]> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getProviderNames()),
+      take(1)
+    );
+  }
+
+  /**
    * Queries for aggregate values.
    *
    * @param [filter] Currently applied filter.

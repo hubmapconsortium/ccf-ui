@@ -12,12 +12,15 @@ import { LinkCardsModule } from './modules/link-cards/link-cards.module';
 import { StatsListModule } from './modules/stats-list/stats-list.module';
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
     LinkCardsModule,
     StatsListModule,
     OrganModule,
+    StoreModule,
+
     StoreModule,
 
     AnalyticsModule.forRoot({

@@ -45,6 +45,8 @@ describe('AppComponent', () => {
         queryStatus$: of(),
         termOccurencesData$: of(),
         sceneData$: of(),
+        technologyFilterData$: of(),
+        providerFilterData$: of(),
         updateFilter: () => undefined
       })
       .mock(ConsentService, {

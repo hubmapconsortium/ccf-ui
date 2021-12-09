@@ -9,7 +9,9 @@
       <div>
         <div class="filter-data">
           <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
-                               (filtersChange)="data.updateFilter($event)" #filterbox></ccf-filters-popover>
+                               (filtersChange)="data.updateFilter($event)" [technologyFilters]="data.technologyFilterData$ | async"
+                               [providerFilters]="data.providerFilterData$ | async" #filterbox>
+          </ccf-filters-popover>
 
           <div class="filter-text">
             <div class="sex filter-tag">Sex: <strong>{{(data.filter$ | async)?.sex}}</strong></div>

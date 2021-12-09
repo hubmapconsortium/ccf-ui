@@ -33,10 +33,10 @@ export const environment = {
       'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/assets/kpmp/data/rui_locations.jsonld',
       'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/assets/sparc/data/rui_locations.jsonld'
     ],
-    hubmapDataService: 'search-api',
-    hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
-    hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
-    hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
+    hubmapDataService: '',
+    hubmapPortalUrl: '',
+    hubmapDataUrl: '',
+    hubmapAssetsUrl: '',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? ''
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
