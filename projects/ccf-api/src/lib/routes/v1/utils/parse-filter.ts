@@ -2,10 +2,10 @@ import { Filter } from 'ccf-database';
 import { ParsedQs } from 'qs';
 
 
-const FILTER_DEFAULTS: Filter = {
+const FILTER_DEFAULTS: Partial<Filter> = {
   sex: 'Both',
-  ageRange: [0, 100],
-  bmiRange: [0, 100],
+  ageRange: undefined,
+  bmiRange: undefined,
   tmc: [],
   technologies: [],
   ontologyTerms: []
@@ -118,7 +118,7 @@ function processParameter(result: Filter, key: string, value: unknown): void {
 // ----------------------
 
 export function queryParametersToFilter(query: ParsedQs): Filter {
-  const result = { ...FILTER_DEFAULTS };
+  const result = { ...FILTER_DEFAULTS as Filter };
 
   Object.entries(query).forEach(([key, value]) => processParameter(result, key, value));
   return result;
