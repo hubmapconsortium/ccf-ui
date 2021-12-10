@@ -1,8 +1,7 @@
-import { NgModule, NgZone } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxsDataInjector } from '@ngxs-labs/data/internals';
-import { GlobalConfigState, TrackingState } from 'ccf-shared';
+import { GlobalConfigState } from 'ccf-shared';
+import { ConsentService } from 'ccf-shared/analytics';
 import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
@@ -17,9 +16,6 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
 
-@NgModule({})
-class EmptyModule {}
-
 describe('AppComponent', () => {
   let shallow: Shallow<AppComponent>;
   let left: jasmine.SpyObj<DrawerComponent>;
@@ -28,6 +24,7 @@ describe('AppComponent', () => {
   const testFilter = { sex: 'Both', ageRange: [5, 99], bmiRange: [30, 80] };
 
   beforeEach(() => {
+    const mockConsentService = jasmine.createSpyObj<ConsentService>(['setConsent']);
     left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
@@ -48,11 +45,13 @@ describe('AppComponent', () => {
         queryStatus$: of(),
         termOccurencesData$: of(),
         sceneData$: of(),
+        technologyFilterData$: of(),
+        providerFilterData$: of(),
         updateFilter: () => undefined
       })
-      .mock(TrackingState, {
-        snapshot: { allowTelemetry: true },
-        setAllowTelemetry: () => undefined
+      .mock(ConsentService, {
+        ...mockConsentService,
+        consent: 'not-set'
       })
       .mock(MatSnackBar, {
         openFromComponent: (): MatSnackBarRef<unknown> => ({} as unknown as MatSnackBarRef<unknown>)
@@ -63,19 +62,9 @@ describe('AppComponent', () => {
       })
       .mock(GlobalConfigState, {
         snapshot: {},
-        patchConfig: () => undefined
-      })
-      .mock(AppComponent, {
-        updateGlobalConfig: () => undefined
+        patchConfig: () => undefined,
+        getOption: () => of(undefined)
       });
-
-    // Hacky way to get @Debounce to work
-    // @Debounce should be replaced with another implementation
-    // that does not depend on the state modules
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    NgxsDataInjector.ngZone = {
-      runOutsideAngular: (fn: () => void) => fn()
-    } as NgZone;
   });
 
   it('should make the tracking popup on init', async () => {

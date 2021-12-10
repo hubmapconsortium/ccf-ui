@@ -24,6 +24,8 @@ export interface GlobalConfig {
   registrationStarted?: boolean;
 
   cancelRegistration?: () => void;
+
+  skipUnsavedChangesConfirmation?: boolean;
 }
 
 declare global {

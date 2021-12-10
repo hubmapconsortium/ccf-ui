@@ -41,7 +41,7 @@
     <div class="filler"></div>
 
     <ccf-review-button [registrationCallbackSet]="page.registrationCallbackSet$ | async" [displayErrors]="registration.displayErrors$ | async"
-                       [registrationIsValid]="registration.valid$ | async" [metaData]="registration.metadata$ | async"
+                       [registrationIsValid]="registration.valid$ | async" [metaData]="(registration.metadata$ | async) ?? []"
                        (registerData)="registration.register()"
                        (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">
     </ccf-review-button>

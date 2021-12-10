@@ -4,7 +4,7 @@ import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import * as FileSaver from 'file-saver';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { skip, take } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
@@ -43,7 +43,9 @@ const testPage: Immutable<PageStateModel> = {
   },
   registrationStarted: false,
   useCancelRegistrationCallback: false,
-  registrationCallbackSet: false
+  registrationCallbackSet: false,
+  skipConfirmation: true,
+  hasChanges: false
 };
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
@@ -108,11 +110,18 @@ describe('RegistrationState', () => {
       ],
       providers: [
         GlobalConfigState,
-        AnatomicalStructureTagState,
+        {
+          provide: AnatomicalStructureTagState, useValue: {
+            tags$: of([]),
+            latestTags: [],
+            addTags: () => undefined
+          }
+        },
         {
           provide: PageState, useValue: {
             state$: pageStateSubject,
-            snapshot: initialPageState
+            snapshot: initialPageState,
+            clearHasChanges: () => undefined
           }
         },
         {

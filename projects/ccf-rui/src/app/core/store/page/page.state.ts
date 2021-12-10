@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
+import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
 import { GlobalConfigState } from 'ccf-shared';
-import { pluck, take, tap } from 'rxjs/operators';
+import { pluckUnique } from 'ccf-shared/rxjs-ext/operators';
+import { Observable } from 'rxjs';
+import { distinctUntilChanged, filter, map, pluck, take, tap, withLatestFrom } from 'rxjs/operators';
 
+import { environment } from '../../../../environments/environment';
 import { GlobalConfig } from '../../services/config/config';
 
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -24,6 +27,8 @@ export interface PageStateModel {
   registrationStarted: boolean;
   useCancelRegistrationCallback: boolean;
   registrationCallbackSet: boolean;
+  skipConfirmation: boolean;
+  hasChanges: boolean;
 }
 
 
@@ -40,7 +45,9 @@ export interface PageStateModel {
     },
     registrationStarted: false,
     useCancelRegistrationCallback: false,
-    registrationCallbackSet: false
+    registrationCallbackSet: false,
+    skipConfirmation: true,
+    hasChanges: false
   }
 })
 @Injectable()
@@ -48,17 +55,36 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /** Active user observable */
   readonly user$ = this.state$.pipe(pluck('user'));
   /** RegistrationStated observable */
-  readonly registrationStarted$ = this.state$.pipe(pluck('registrationStarted'));
+  readonly registrationStarted$ = this.state$.pipe(pluckUnique('registrationStarted'));
   readonly useCancelRegistrationCallback$ = this.state$.pipe(pluck('useCancelRegistrationCallback'));
   readonly registrationCallbackSet$ = this.state$.pipe(pluck('registrationCallbackSet'));
 
+  @Computed()
+  get skipConfirmation$(): Observable<boolean> {
+    return this.state$.pipe(pluckUnique('skipConfirmation'));
+  }
+
+  @Computed()
+  get globalSkipConfirmation$(): Observable<boolean> {
+    return this.globalConfig.getOption('skipUnsavedChangesConfirmation').pipe(
+      map(value => value ?? environment.skipUnsavedChangesConfirmation),
+      distinctUntilChanged()
+    );
+  }
+
+  @Computed()
+  get hasChanges$(): Observable<boolean> {
+    return this.state$.pipe(pluckUnique('hasChanges'));
+  }
 
   /**
    * Creates an instance of page state.
    *
    * @param globalConfig The global configuration
    */
-  constructor(private readonly globalConfig: GlobalConfigState<GlobalConfig>) {
+  constructor(
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>
+  ) {
     super();
   }
 
@@ -76,13 +102,21 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
         user: iif(!!config.user, config.user!)
       })))
     ).subscribe();
+
+    this.initSkipConfirmationListeners();
   }
 
   cancelRegistration(): void {
-    const { globalConfig: { snapshot: { cancelRegistration: cancelRegistrationCallback } }, snapshot } = this;
+    const {
+      globalConfig: { snapshot: { cancelRegistration: cancelRegistrationCallback } },
+      snapshot: { useCancelRegistrationCallback, skipConfirmation }
+    } = this;
 
-    if (snapshot.useCancelRegistrationCallback) {
-      cancelRegistrationCallback?.();
+    if (useCancelRegistrationCallback) {
+      // eslint-disable-next-line no-alert
+      if (skipConfirmation || confirm('Changes you made may not be saved.')) {
+        cancelRegistrationCallback?.();
+      }
     }
   }
 
@@ -111,5 +145,50 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     this.ctx.setState(patch({
       registrationStarted: true
     }));
+  }
+
+  @DataAction()
+  setHasChanges(): void {
+    const { snapshot: { registrationStarted, hasChanges } } = this;
+    if (registrationStarted && !hasChanges) {
+      this.ctx.patchState({
+        hasChanges: true
+      });
+    }
+  }
+
+  @DataAction()
+  clearHasChanges(): void {
+    this.ctx.patchState({
+      hasChanges: false
+    });
+  }
+
+  private initSkipConfirmationListeners(): void {
+    const updateSkipConfirmation = (skipConfirmation: boolean) => this.patchState({ skipConfirmation });
+
+    this.globalSkipConfirmation$
+      .pipe(filter(s => s))
+      .subscribe(updateSkipConfirmation);
+
+    this.hasChanges$.pipe(
+      withLatestFrom(this.globalSkipConfirmation$),
+      map(([hasChanges, skipConfirmation]) => skipConfirmation || !hasChanges),
+      distinctUntilChanged()
+    ).subscribe(updateSkipConfirmation);
+
+    const beforeUnloadListener = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = 'Changes you made may not be saved.';
+      return event.returnValue;
+    };
+
+    this.skipConfirmation$.subscribe(skipConfirmation => {
+      if (skipConfirmation) {
+        removeEventListener('beforeunload', beforeUnloadListener);
+      } else {
+        addEventListener('beforeunload', beforeUnloadListener);
+      }
+    });
   }
 }

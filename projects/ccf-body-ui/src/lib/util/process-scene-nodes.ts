@@ -87,7 +87,7 @@ export async function processSceneNodes(gltfUrl: string, worldMatrix?: Matrix4, 
     const halfSize = size.clone().vmul(new Vec3(0.5, 0.5, 0.5));
     const center = node.center = lb.clone().vadd(halfSize);
 
-    node.transformMatrix = new Matrix4()
+    node.transformMatrix = new Matrix4(Matrix4.IDENTITY)
       .translate(center.toArray())
       .scale(halfSize.toArray());
   }

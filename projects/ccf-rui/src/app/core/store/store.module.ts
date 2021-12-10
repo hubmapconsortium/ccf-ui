@@ -3,7 +3,7 @@ import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
-import { GlobalConfigState, TrackingState } from 'ccf-shared';
+import { GlobalConfigState } from 'ccf-shared';
 
 import { environment } from '../../../environments/environment';
 import { AnatomicalStructureTagState } from './anatomical-structure-tags/anatomical-structure-tags.state';
@@ -26,8 +26,7 @@ export const ROOT_STATES = [
   AnatomicalStructureTagState,
   ReferenceDataState,
   RegistrationState,
-  SceneState,
-  TrackingState
+  SceneState
 ];
 
 @NgModule({

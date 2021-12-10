@@ -100,6 +100,10 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   private readonly _termOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for sceneDataQueryStatus$. */
   private readonly _sceneDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  /** Implementation subject for technologyFilterQueryStatus$. */
+  private readonly _technologyFilterQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  /** Implementation subject for providerFilterQueryStatus$. */
+  private readonly _providerFilterQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Keeping track of all ontology terms there is data for. */
   readonly ontologyTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
 
@@ -121,6 +125,14 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   readonly sceneData$ = this.filter$.pipe(queryData(
     this.sceneData, sendCompletedTo(this._sceneDataQueryStatus$)
   ));
+  /** Latest technology filter label query data. */
+  readonly technologyFilterData$ = this.filter$.pipe(queryData(
+    this.technologyFilterData, sendCompletedTo(this._technologyFilterQueryStatus$)
+  ));
+  /** Latest provider filter label query data. */
+  readonly providerFilterData$ = this.filter$.pipe(queryData(
+    this.providerFilterData, sendCompletedTo(this._providerFilterQueryStatus$)
+  ));
 
   /** Current status of queries in the tissueBlockData$ observable. */
   readonly tissueBlockDataQueryStatus$ = this._tissueBlockDataQueryStatus$.pipe(distinct());
@@ -130,13 +142,19 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   readonly termOccurencesDataQueryStatus$ = this._termOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the sceneData$ observable. */
   readonly sceneDataQueryStatus$ = this._sceneDataQueryStatus$.pipe(distinct());
+  /** Current status of queries in the technologyFilter$ observable. */
+  readonly technologyFilterQueryStatus$ = this._technologyFilterQueryStatus$.pipe(distinct());
+  /** Current status of queries in the providerFilter$ observable. */
+  readonly providerFilterQueryStatus$ = this._providerFilterQueryStatus$.pipe(distinct());
 
   /** Current status of all queries. */
   readonly queryStatus$ = combineLatest([
     this.tissueBlockDataQueryStatus$,
     this.aggregateDataQueryStatus$,
     this.termOccurencesDataQueryStatus$,
-    this.sceneDataQueryStatus$
+    this.sceneDataQueryStatus$,
+    this.technologyFilterQueryStatus$,
+    this.providerFilterQueryStatus$
   ]).pipe(
     map(states => allCompleted(states) ? DataQueryState.Completed : DataQueryState.Running),
     distinct()
@@ -154,6 +172,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
     this._aggregateDataQueryStatus$.next(DataQueryState.Completed);
     this._termOccurencesDataQueryStatus$.next(DataQueryState.Completed);
     this._sceneDataQueryStatus$.next(DataQueryState.Completed);
+    this._technologyFilterQueryStatus$.next(DataQueryState.Completed);
+    this._providerFilterQueryStatus$.next(DataQueryState.Completed);
   }
 
   ngxsOnInit(): void {
@@ -216,7 +236,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   }
 
   /**
-   * Queries for term occurences data.
+   * Queries for scene data.
    *
    * @param filter The filter used during query.
    * @returns The result of the query.
@@ -225,5 +245,27 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   private sceneData(filter: Filter): ObservableInput<SpatialSceneNode[]> {
     this._sceneDataQueryStatus$.next(DataQueryState.Running);
     return this.source.getScene(filter);
+  }
+
+  /**
+   * Queries for technology filter data.
+   *
+   * @returns The result of the query.
+   */
+  @bind
+  private technologyFilterData(): ObservableInput<string[]> {
+    this._technologyFilterQueryStatus$.next(DataQueryState.Running);
+    return this.source.getDatasetTechnologyNames();
+  }
+
+  /**
+   * Queries for provider filter data.
+   *
+   * @returns The result of the query.
+   */
+  @bind
+  private providerFilterData(): ObservableInput<string[]> {
+    this._providerFilterQueryStatus$.next(DataQueryState.Running);
+    return this.source.getProviderNames();
   }
 }
