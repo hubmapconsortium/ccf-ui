@@ -15380,28 +15380,6 @@
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMColon",
         "extractionSites": [
           {
-            "@id": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_colon_HuBMAP_extraction_sites",
-            "@type": "SpatialEntity",
-            "creator_last_name": "Browne",
-            "object": {
-              "@id": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_colon_HuBMAP_extraction_sitesObj",
-              "@type": "SpatialObjectReference",
-              "file": "https://ccf-ontology.hubmapconsortium.org/objects/v1.0/VH_M_Intestine_Large_Extraction_Sites.glb",
-              "file_subpath": "VHM_colon_HuBMAP_extraction_sites",
-              "file_format": "model/gltf-binary"
-            },
-            "creation_date": "2021-05-21T00:00:00.000Z",
-            "y_dimension": 292.1159767,
-            "extraction_set": "http://purl.org/ccf/latest/ccf.owl#VHMColonHBMSet1",
-            "dimension_units": "millimeter",
-            "creator": "Kristin Browne",
-            "label": "HuBMAP colon extraction sites",
-            "rui_rank": 1700,
-            "x_dimension": 250.523575,
-            "creator_first_name": "Kristin",
-            "z_dimension": 148.69741
-          },
-          {
             "@id": "http://purl.org/ccf/latest/ccf.owl#VHMaleOrgans_VHM_colon_HuBMAP_ascending_colon",
             "@type": "SpatialEntity",
             "creator_last_name": "Browne",
