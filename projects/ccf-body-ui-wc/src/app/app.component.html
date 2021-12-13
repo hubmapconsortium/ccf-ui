@@ -13,7 +13,8 @@
   <div
     style="margin-left: 3rem; border: 1px solid black; padding: 2rem; width: 3rem; cursor: pointer;"
     (click)="onClick.emit('test click')"
-    (mouseenter)="onHover.emit('test hover')"
+    (mouseenter)="onMouseEnter.emit('test hover')"
+    (mouseleave)="onMouseLeave.emit('test hover')"
   >Output Tests</div>
 </div>
 

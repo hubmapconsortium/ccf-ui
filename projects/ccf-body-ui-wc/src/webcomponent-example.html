@@ -92,49 +92,49 @@
         }
       },
       {
-        "uuid": "8cdf44a106338aada6da04c71eeb767e",
-        "rui_location": {
+      "uuid": "8cdf44a106338aada6da04c71eeb767e",
+      "rui_location": {
+        "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+        "@id": "http://purl.org/ccf/1.5/93286ce3-669a-4f3f-a85a-7eaaedc15c59",
+        "@type": "SpatialEntity",
+        "ccf_annotations": [
+          "http://purl.obolibrary.org/obo/UBERON_0001156",
+          "http://purl.obolibrary.org/obo/UBERON_0001157",
+          "http://purl.obolibrary.org/obo/UBERON_0001159",
+          "http://purl.obolibrary.org/obo/UBERON_0001154",
+          "http://purl.obolibrary.org/obo/UBERON_0001158",
+          "http://purl.obolibrary.org/obo/UBERON_0001052"
+        ],
+        "creation_date": "2021-10-19",
+        "creator": "Yiing Lin",
+        "creator_first_name": "Yiing",
+        "creator_last_name": "Lin",
+        "dimension_units": "millimeter",
+        "placement": {
           "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
-          "@id": "http://purl.org/ccf/1.5/93286ce3-669a-4f3f-a85a-7eaaedc15c59",
-          "@type": "SpatialEntity",
-          "ccf_annotations": [
-            "http://purl.obolibrary.org/obo/UBERON_0001156",
-            "http://purl.obolibrary.org/obo/UBERON_0001157",
-            "http://purl.obolibrary.org/obo/UBERON_0001159",
-            "http://purl.obolibrary.org/obo/UBERON_0001154",
-            "http://purl.obolibrary.org/obo/UBERON_0001158",
-            "http://purl.obolibrary.org/obo/UBERON_0001052"
-          ],
-          "creation_date": "2021-10-19",
-          "creator": "Yiing Lin",
-          "creator_first_name": "Yiing",
-          "creator_last_name": "Lin",
-          "dimension_units": "millimeter",
-          "placement": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
-            "@id": "http://purl.org/ccf/1.5/93286ce3-669a-4f3f-a85a-7eaaedc15c59_placement",
-            "@type": "SpatialPlacement",
-            "placement_date": "2021-10-19",
-            "rotation_order": "XYZ",
-            "rotation_units": "degree",
-            "scaling_units": "ratio",
-            "target": "http://purl.org/ccf/latest/ccf.owl#VHFColon",
-            "translation_units": "millimeter",
-            "x_rotation": 90,
-            "x_scaling": 1,
-            "x_translation": 122.658,
-            "y_rotation": 0,
-            "y_scaling": 1,
-            "y_translation": 94.075,
-            "z_rotation": 78,
-            "z_scaling": 1,
-            "z_translation": 101.565
-          },
-          "x_dimension": 20,
-          "y_dimension": 50,
-          "z_dimension": 5
-        }
+          "@id": "http://purl.org/ccf/1.5/93286ce3-669a-4f3f-a85a-7eaaedc15c59_placement",
+          "@type": "SpatialPlacement",
+          "placement_date": "2021-10-19",
+          "rotation_order": "XYZ",
+          "rotation_units": "degree",
+          "scaling_units": "ratio",
+          "target": "http://purl.org/ccf/latest/ccf.owl#VHFColon",
+          "translation_units": "millimeter",
+          "x_rotation": 90,
+          "x_scaling": 1,
+          "x_translation": 122.658,
+          "y_rotation": 0,
+          "y_scaling": 1,
+          "y_translation": 94.075,
+          "z_rotation": 78,
+          "z_scaling": 1,
+          "z_translation": 101.565
+        },
+        "x_dimension": 20,
+        "y_dimension": 50,
+        "z_dimension": 5
       }
+    }
     ];
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -143,8 +143,12 @@
       bodyUI.highlightID = '8b0a4cc904cadaccddd37633411fdbdd';
       bodyUI.zoomToID = '8b0a4cc904cadaccddd37633411fdbdd';
 
-      bodyUI.addEventListener('onHover', (id) => {
-        console.log('onHover', id);
+      bodyUI.addEventListener('onMouseEnter', (id) => {
+        console.log('onMouseEnter', id);
+      });
+
+      bodyUI.addEventListener('onMouseLeave', (id) => {
+        console.log('onMouseLeave', id);
       });
 
       bodyUI.addEventListener('onClick', (id) => {

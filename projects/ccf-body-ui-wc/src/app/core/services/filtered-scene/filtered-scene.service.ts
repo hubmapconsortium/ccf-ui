@@ -1,4 +1,4 @@
-import { SpatialSceneNode } from 'ccf-database';
+import { SpatialSceneNode, SpatialEntity } from 'ccf-database';
 import { combineLatest } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { GlobalConfigState } from 'ccf-shared';
@@ -18,6 +18,10 @@ interface GlobalConfig {
   data?: BodyUIData[];
 }
 
+const SPATIAL_ENTITY_URL = 'http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity';
+const FEMALE_SKIN = 'http://purl.org/ccf/latest/ccf.owl#VHFSkin';
+const MALE_SKIN = 'http://purl.org/ccf/latest/ccf.owl#VHMSkin';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,9 +31,10 @@ export class FilteredSceneService {
     map(data => this.selectOrgans(data)),
     shareReplay(1)
   );
+  readonly referenceOrgans$ = this.source.getReferenceOrgans();
 
-  readonly filteredScene$ = combineLatest([this.scene$, this.organs$]).pipe(
-    map(([nodes, organs]) => this.filterSceneNodes(nodes, organs)),
+  readonly filteredScene$ = combineLatest([this.scene$, this.organs$, this.referenceOrgans$]).pipe(
+    map(([nodes, organs, referenceOrgans]) => this.filterSceneNodes(nodes, organs, referenceOrgans)),
     shareReplay(1)
   );
 
@@ -40,13 +45,35 @@ export class FilteredSceneService {
 
   private selectOrgans(data: Any[] | undefined): Set<string> {
     const selectOrgan = (item: Any) =>
-      item['http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity'].placement.target;
+      item[SPATIAL_ENTITY_URL].placement.target;
 
     const organs = (data ?? []).map(selectOrgan);
     return new Set(organs);
   }
 
-  private filterSceneNodes(nodes: SpatialSceneNode[], organs: Set<string>): SpatialSceneNode[] {
-    return nodes.filter(node => organs.has(node.reference_organ!));
+  private filterSceneNodes(nodes: SpatialSceneNode[], organs: Set<string>, referenceOrgans: SpatialEntity[]): SpatialSceneNode[] {
+    const neededReferenceOrgans = referenceOrgans.filter(organ => organs.has(organ.reference_organ ?? ''));
+    const neededSkins = this.getNeededSkins(neededReferenceOrgans);
+    const neededOrgans = new Set([...organs, ...neededSkins]);
+    const filteredNodes = nodes.filter(node => neededOrgans.has(node.reference_organ!));
+
+    return filteredNodes;
+  }
+
+  private getNeededSkins(organs: SpatialEntity[]): string[] {
+    if (organs.length === 1) {
+      return [];
+    }
+
+    const skins: string[] = [];
+    organs.forEach(organ => {
+      if (organ.sex === 'Female') {
+        skins.push(FEMALE_SKIN);
+      } else if (organ.sex === 'Male') {
+        skins.push(MALE_SKIN);
+      }
+    });
+
+    return skins;
   }
 }

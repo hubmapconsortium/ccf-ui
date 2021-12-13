@@ -1,10 +1,7 @@
 import { FilteredSceneService } from './core/services/filtered-scene/filtered-scene.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { GlobalConfigState } from 'ccf-shared';
-import { Observable, combineLatest } from 'rxjs';
-import { DataSourceService } from './core/services/data-source/data-source.service';
-import { Filter, SpatialSceneNode } from 'ccf-database';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
 import { Any } from '@angular-ru/common/typings';
 
@@ -31,7 +28,8 @@ export class AppComponent {
 
   scene$ = this.sceneSource.filteredScene$;
 
-  @Output() readonly onHover = new EventEmitter<string>();
+  @Output() readonly onMouseEnter = new EventEmitter<string>();
+  @Output() readonly onMouseLeave = new EventEmitter<string>();
   @Output() readonly onClick = new EventEmitter<string>();
 
   constructor(

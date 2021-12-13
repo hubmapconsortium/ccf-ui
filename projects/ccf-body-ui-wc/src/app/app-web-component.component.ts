@@ -16,7 +16,7 @@ function toJsonLd(data: {id: string, rui_location: JsonLdObj}[]): JsonLd {
 
 @Component({
   selector: 'ccf-root-wc',
-  template: '<ccf-root *ngIf="initialized" (onHover)="onHover.emit($event)" (onClick)="onClick.emit($event)"></ccf-root>',
+  template: '<ccf-root *ngIf="initialized" (onMouseEnter)="onMouseEnter.emit($event)" (onMouseLeave)="onMouseLeave.emit($event)" (onClick)="onClick.emit($event)"></ccf-root>',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppWebComponent extends BaseWebComponent {
@@ -24,7 +24,8 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() highlightID: string;
   @Input() zoomToID: string;
 
-  @Output() readonly onHover = new EventEmitter<string>();
+  @Output() readonly onMouseEnter = new EventEmitter<string>();
+  @Output() readonly onMouseLeave = new EventEmitter<void>();
   @Output() readonly onClick = new EventEmitter<string>();
 
   initialized: boolean;
