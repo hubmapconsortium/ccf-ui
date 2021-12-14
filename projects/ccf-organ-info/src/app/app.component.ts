@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
-import { AggregateResult, SpatialEntity } from 'ccf-database';
+import { AggregateResult, SpatialEntity, TissueBlockResult } from 'ccf-database';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of } from 'rxjs';
@@ -13,6 +13,7 @@ interface GlobalConfig {
   organIri?: string;
   side?: string;
   sex?: 'Both' | 'Male' | 'Female';
+  provider?: string;
 }
 
 
@@ -33,11 +34,13 @@ export class AppComponent implements AfterViewInit {
 
   readonly sex$ = this.configState.getOption('sex');
   readonly side$ = this.configState.getOption('side');
+  readonly provider$ = this.configState.getOption('provider');
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
   readonly scene$: Observable<SpatialSceneNode[]>;
   readonly stats$: Observable<AggregateResult[]>;
   readonly statsLabel$: Observable<string>;
+  readonly blocks$: Observable<TissueBlockResult[]>;
 
   private latestConfig: GlobalConfig = {};
 
@@ -84,6 +87,13 @@ export class AppComponent implements AfterViewInit {
       withLatestFrom(this.organInfo$),
       map(([_stats, info]) => this.makeStatsLabel(info)),
       startWith('Loading...')
+    );
+
+    this.blocks$ = this.organInfo$.pipe(
+      switchMap(info => info ? lookup.getBlocks(
+        info,
+        this.latestConfig.sex
+        ) : of([])),
     );
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AggregateResult, Filter, SpatialEntity, SpatialSceneNode } from 'ccf-database';
+import { AggregateResult, Filter, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { ALL_POSSIBLE_ORGANS, OrganInfo } from 'ccf-shared';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -49,5 +49,10 @@ export class OrganLookupService {
   getOrganStats(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<AggregateResult[]> {
     const filter: Partial<Filter> = { ontologyTerms: [info.id!], sex };
     return this.source.getAggregateResults(filter as Filter);
+  }
+
+  getBlocks(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<TissueBlockResult[]> {
+    const filter: Partial<Filter> = { ontologyTerms: [info.id!], sex };
+    return this.source.getTissueBlockResults(filter as Filter);
   }
 }
