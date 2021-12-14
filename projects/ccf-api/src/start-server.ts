@@ -73,13 +73,13 @@ function getPort(): number {
 
 function getDatabaseOptions(): CCFDatabaseOptions {
   return {
-    ccfOwlUrl: get('DB_OWL_URL'),
-    ccfContextUrl: get('DB_CONTEXT_URL'),
-    dataSources: parseDataSources(get('DB_DATA_SOURCES', THROW_IF_NOT_FOUND)),
+    ccfOwlUrl: get('DB_OWL_URL', THROW_IF_NOT_FOUND),
+    ccfContextUrl: get('DB_CONTEXT_URL', 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld'),
+    dataSources: parseDataSources(get('DB_DATA_SOURCES')),
     hubmapDataService: get('DB_DATA_SERVICE', 'search-api') as CCFDatabaseOptions['hubmapDataService'],
-    hubmapPortalUrl: get('DB_PORTAL_URL'),
-    hubmapDataUrl: get('DB_DATA_URL'),
-    hubmapAssetsUrl: get('DB_ASSETS_URL'),
+    hubmapPortalUrl: get('DB_PORTAL_URL', 'https://portal.hubmapconsortium.org/'),
+    hubmapDataUrl: get('DB_DATA_URL', 'https://search.api.hubmapconsortium.org/entities/search'),
+    hubmapAssetsUrl: get('DB_ASSETS_URL', 'https://assets.hubmapconsortium.org'),
     hubmapQuery: get('DB_QUERY'),
     hubmapToken: get('DB_TOKEN')
   };
