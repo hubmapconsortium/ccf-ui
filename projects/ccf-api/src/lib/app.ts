@@ -5,6 +5,7 @@ import helmet from 'helmet';
 
 import { databaseLoader, DatabaseLoaderOptions } from './middleware/database-loader';
 import { routes as browserRoutes } from './routes/browser';
+import { routes as hubmapRoutes } from './routes/hubmap';
 import { routes as v1Routes } from './routes/v1';
 
 
@@ -15,6 +16,8 @@ export interface AppOptions extends DatabaseLoaderOptions {
 
 export function createApp(options: AppOptions): Express {
   const app = express();
+
+  app.set('database-options', options.database);
 
   // http://expressjs.com/en/advanced/best-practice-security.html
   app.use(helmet({
@@ -34,6 +37,7 @@ export function createApp(options: AppOptions): Express {
   app.use(databaseLoader(options));
 
   app.use('/', browserRoutes);
+  app.use('/hubmap', hubmapRoutes);
   app.use('/v1', v1Routes);
 
   return app;
