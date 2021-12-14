@@ -14,8 +14,9 @@ export type DatabaseQueryMethods = keyof PickByType<CCFDatabase, (filter: Filter
 export function forwardDatabaseQuery(method: DatabaseQueryMethods): RequestHandler {
   return async (req, res, _next) => {
     const { query } = req;
-    const database: CCFDatabase = req['database'];
+    const getDatabase: (token?: string) => Promise<CCFDatabase> = req['getDatabase'];
     const filter = queryParametersToFilter(query);
+    const database = await getDatabase();
     const result = await database[method](filter);
 
     res.json(result);

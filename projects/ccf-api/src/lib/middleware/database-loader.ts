@@ -1,12 +1,14 @@
 import { CCFDatabase, CCFDatabaseOptions } from 'ccf-database';
 import { Request, RequestHandler } from 'express';
-import LRUCache from 'lru-cache';
+
+import { AutoPruneLRUCache } from '../utils/auto-prune-lru-cache';
+import { RequestCache } from '../utils/request-cache';
 
 
-type LRUKeyT = string | typeof PUBLIC_DATABASE_TOKEN;
-type LRUValT = CCFDatabase;
-
-export type DatabaseCacheOptions = Pick<LRUCache.Options<LRUKeyT, LRUValT>, 'max' | 'maxAge'>;
+export interface DatabaseCacheOptions {
+  max?: number;
+  maxAge?: number;
+}
 
 export interface DatabaseLoaderOptions {
   database: CCFDatabaseOptions;
@@ -14,44 +16,39 @@ export interface DatabaseLoaderOptions {
 }
 
 
-const DEFAULT_CACHE_MAX = 10;
-const DEFAULT_CACHE_MAX_AGE = 60 * 60 * 1000; // One hour in ms
-const PUBLIC_DATABASE_TOKEN = Symbol('Database Token');
+function selectToken(token: string | undefined, req: Request): string {
+  const qtoken = req.query.token;
 
+  if (token) {
+    return token;
+  } else if (typeof qtoken === 'string' && qtoken) {
+    return qtoken;
+  }
 
-function getDatabaseToken({ query: { token } }: Request): LRUKeyT {
-  return typeof token === 'string' ? token : PUBLIC_DATABASE_TOKEN;
+  return '';
 }
 
-function createDatabase(token: LRUKeyT, options: CCFDatabaseOptions): LRUValT {
-  return new CCFDatabase({
-    ...options,
-    hubmapToken: token !== PUBLIC_DATABASE_TOKEN ? token : options.hubmapToken
-  });
+async function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCFDatabase> {
+  const hubmapToken = token || options.hubmapToken;
+  const database = new CCFDatabase({ ...options, hubmapToken });
+
+  await database.connect();
+  return database;
 }
 
 
 export function databaseLoader(options: DatabaseLoaderOptions): RequestHandler {
-  const cache = new LRUCache<LRUKeyT, LRUValT>({
-    max: DEFAULT_CACHE_MAX,
-    maxAge: DEFAULT_CACHE_MAX_AGE,
-    ...options.cache
-  });
+  const cache = new RequestCache<string, CCFDatabase>(
+    new AutoPruneLRUCache({
+      max: 10,
+      maxAge: 60 * 60 * 1000,
+      ...options.cache
+    }),
+    token => createDatabase(token, options.database)
+  );
 
-  if (cache.maxAge > 0) {
-    setInterval(() => cache.prune(), cache.maxAge);
-  }
-
-  return async (req, _res, next) => {
-    const token = getDatabaseToken(req);
-    let database = cache.get(token);
-    if (!database) {
-      database = createDatabase(token, options.database);
-      cache.set(token, database);
-    }
-
-    req['database'] = database;
-    await database.connect();
+  return (req, _res, next) => {
+    req['getDatabase'] = (token?: string) => cache.get(selectToken(token, req));
     next();
   };
 }
