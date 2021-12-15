@@ -5,7 +5,6 @@ import helmet from 'helmet';
 
 import { databaseLoader, DatabaseLoaderOptions } from './middleware/database-loader';
 import { routes as browserRoutes } from './routes/browser';
-import { routes as hubmapRoutes } from './routes/hubmap';
 import { routes as v1Routes } from './routes/v1';
 
 
@@ -37,7 +36,6 @@ export function createApp(options: AppOptions): Express {
   app.use(databaseLoader(options));
 
   app.use('/', browserRoutes);
-  app.use('/hubmap', hubmapRoutes);
   app.use('/v1', v1Routes);
 
   return app;

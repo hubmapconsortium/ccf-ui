@@ -1,8 +1,11 @@
 import { Router } from 'express';
+
+import { routes as hubmapRoutes } from './hubmap';
 import { forwardDatabaseQuery } from './utils/forward-database-query';
 
 
 export const routes = Router()
+  .use('/hubmap', hubmapRoutes)
   .get('/tissue-blocks', forwardDatabaseQuery('getTissueBlockResults'))
   .get('/technology-names', forwardDatabaseQuery('getDatasetTechnologyNames'))
   .get('/provider-names', forwardDatabaseQuery('getProviderNames'))

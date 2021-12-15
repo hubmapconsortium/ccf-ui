@@ -29,7 +29,8 @@ function selectToken(token: string | undefined, req: Request): string {
 }
 
 async function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCFDatabase> {
-  const hubmapToken = token || options.hubmapToken;
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  const hubmapToken = token || options.hubmapToken || undefined;
   const database = new CCFDatabase({ ...options, hubmapToken });
 
   await database.connect();
