@@ -93,7 +93,7 @@ export class AppComponent implements AfterViewInit {
       switchMap(info => info ? lookup.getBlocks(
         info,
         this.latestConfig.sex
-        ) : of([])),
+      ) : of([]))
     );
   }
 

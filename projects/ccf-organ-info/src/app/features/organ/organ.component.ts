@@ -35,10 +35,10 @@ export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
   ngOnInit(): void {
     this.reset();
   }
-  
+
   ngAfterViewChecked(): void {
-    this.provider = this.provider ? this.provider : 'TMC-Vanderbilt'
-    this.filteredBlocks = this.blocks?.filter(block => block.donor.providerName === this.provider).map(block => block['@id']) || [];
+    this.provider = this.provider ? this.provider : 'GTEx Project';
+    this.filteredBlocks = this.blocks?.filter(block => block.donor.providerName === this.provider).map(block => block['@id']) ?? [];
     this.bodyUI.scene = this.bodyUI.scene.map((node): SpatialSceneNode =>
       ({
         ...node,
