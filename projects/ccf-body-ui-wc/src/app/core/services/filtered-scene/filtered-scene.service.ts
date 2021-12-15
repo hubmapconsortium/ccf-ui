@@ -6,6 +6,7 @@ import { DataSourceService } from '../data-source/data-source.service';
 import { map, shareReplay } from 'rxjs/operators';
 import { Any } from '@angular-ru/common/typings';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
+import { FEMALE_SKIN_URL, MALE_SKIN_URL, SPATIAL_ENTITY_URL } from '../../constants';
 
 interface BodyUIData {
   id: string;
@@ -18,10 +19,6 @@ interface GlobalConfig {
   data?: BodyUIData[];
 }
 
-const SPATIAL_ENTITY_URL = 'http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity';
-const FEMALE_SKIN = 'http://purl.org/ccf/latest/ccf.owl#VHFSkin';
-const MALE_SKIN = 'http://purl.org/ccf/latest/ccf.owl#VHMSkin';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +29,11 @@ export class FilteredSceneService {
     shareReplay(1)
   );
   readonly referenceOrgans$ = this.source.getReferenceOrgans();
+
+  readonly filteredOrgans$ = combineLatest([this.organs$, this.referenceOrgans$]).pipe(
+    map(([organs, referenceOrgans]) => this.getNeededReferenceOrgans(referenceOrgans, organs)),
+    shareReplay(1)
+  );
 
   readonly filteredScene$ = combineLatest([this.scene$, this.organs$, this.referenceOrgans$]).pipe(
     map(([nodes, organs, referenceOrgans]) => this.filterSceneNodes(nodes, organs, referenceOrgans)),
@@ -52,12 +54,16 @@ export class FilteredSceneService {
   }
 
   private filterSceneNodes(nodes: SpatialSceneNode[], organs: Set<string>, referenceOrgans: SpatialEntity[]): SpatialSceneNode[] {
-    const neededReferenceOrgans = referenceOrgans.filter(organ => organs.has(organ.reference_organ ?? ''));
+    const neededReferenceOrgans = this.getNeededReferenceOrgans(referenceOrgans, organs);
     const neededSkins = this.getNeededSkins(neededReferenceOrgans);
     const neededOrgans = new Set([...organs, ...neededSkins]);
     const filteredNodes = nodes.filter(node => neededOrgans.has(node.reference_organ!));
 
     return filteredNodes;
+  }
+
+  private getNeededReferenceOrgans(referenceOrgans: SpatialEntity[], organs: Set<string>): SpatialEntity[] {
+    return referenceOrgans.filter(organ => organs.has(organ.reference_organ ?? ''));
   }
 
   private getNeededSkins(organs: SpatialEntity[]): string[] {
@@ -68,9 +74,9 @@ export class FilteredSceneService {
     const skins: string[] = [];
     organs.forEach(organ => {
       if (organ.sex === 'Female') {
-        skins.push(FEMALE_SKIN);
+        skins.push(FEMALE_SKIN_URL);
       } else if (organ.sex === 'Male') {
-        skins.push(MALE_SKIN);
+        skins.push(MALE_SKIN_URL);
       }
     });
 

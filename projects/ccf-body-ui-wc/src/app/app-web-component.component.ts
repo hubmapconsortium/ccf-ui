@@ -6,11 +6,18 @@ import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
 import { environment } from '../environments/environment';
 
 
-function toJsonLd(data: {id: string, rui_location: JsonLdObj}[]): JsonLd {
+export interface InputDataFormat {
+  id: string;
+  rui_location: JsonLdObj;
+}
+
+
+function toJsonLd(data: InputDataFormat[]): JsonLd {
   return data.map(d => ({
     '@id': `http://purl.org/ccf/1.5/entity/${d.id}`,
     '@type': 'http://purl.org/ccf/latest/ccf-entity.owl#Sample',
-    'http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity': d.rui_location
+    'http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity': d.rui_location,
+    'uuid': d.id
   })) as unknown as JsonLd;
 }
 
@@ -20,7 +27,7 @@ function toJsonLd(data: {id: string, rui_location: JsonLdObj}[]): JsonLd {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppWebComponent extends BaseWebComponent {
-  @Input() data: { id: string, rui_location: JsonLdObj }[];
+  @Input() data: InputDataFormat[];
   @Input() highlightID: string;
   @Input() zoomToID: string;
 
