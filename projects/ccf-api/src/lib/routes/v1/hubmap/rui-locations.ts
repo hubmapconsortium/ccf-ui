@@ -9,7 +9,7 @@ async function getLocations(token: string, options: CCFDatabaseOptions): Promise
   const result = await searchHubmap(
     options.hubmapDataUrl,
     options.hubmapDataService,
-    options.hubmapQuery,
+    options.hubmapQuery || undefined,
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     token || options.hubmapToken || undefined,
     options.hubmapAssetsUrl,
@@ -27,7 +27,7 @@ async function getLocations(token: string, options: CCFDatabaseOptions): Promise
 export function ruiLocations(): RequestHandler {
   const cache = new RequestCache<string, unknown>(
     new AutoPruneLRUCache({
-      max: 1,
+      max: 10,
       maxAge: 60 * 60 * 1000
     }),
     getLocations

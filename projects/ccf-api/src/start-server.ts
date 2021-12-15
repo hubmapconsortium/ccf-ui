@@ -80,8 +80,8 @@ function getDatabaseOptions(): CCFDatabaseOptions {
     hubmapPortalUrl: get('DB_PORTAL_URL', 'https://portal.hubmapconsortium.org/'),
     hubmapDataUrl: get('DB_DATA_URL', 'https://search.api.hubmapconsortium.org/entities/search'),
     hubmapAssetsUrl: get('DB_ASSETS_URL', 'https://assets.hubmapconsortium.org'),
-    hubmapQuery: get('DB_QUERY'),
-    hubmapToken: get('DB_TOKEN')
+    hubmapQuery: get('DB_QUERY') || undefined,
+    hubmapToken: get('DB_TOKEN') || undefined
   };
 }
 
