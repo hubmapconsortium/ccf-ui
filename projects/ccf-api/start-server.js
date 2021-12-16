@@ -1,0 +1,1 @@
+require('ccf-api').startServer();
