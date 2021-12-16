@@ -207,7 +207,7 @@ export class DataSourceService implements OnDestroy {
     }
     const start = new Date().getTime();
 
-    await source.connect(config, true);
+    await source.connect(config, environment.production);
 
     if (!environment.production) {
       console.info(`Loaded CCF database in ${ ((new Date()).getTime() - start) / 1000 }s`);

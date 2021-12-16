@@ -408,7 +408,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
   private onOrganIriChange(): void {
     const organIri = this.referenceData.getReferenceOrganIri(
-      this.snapshot.organ?.organ || '', this.snapshot.sex, this.snapshot.side
+      this.snapshot.organ?.organ || '', this.snapshot.sex, this.snapshot.side, this.snapshot.organ
     );
     const organDimensions: XYZTriplet = { x: 100, y: 100, z: 100 };
 

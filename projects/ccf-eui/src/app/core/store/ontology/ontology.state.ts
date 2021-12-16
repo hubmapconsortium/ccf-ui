@@ -35,6 +35,7 @@ export function addSubtree(
  * @returns A new ontology tree.
  */
 function pruneModel(model: OntologyTreeModel, organIds: string[]): OntologyTreeModel {
+  organIds = organIds.filter(o => !!model.nodes[o]);
   const body: OntologyTreeNode = {
     '@id': model.root,
     '@type': 'OntologyTreeNode',

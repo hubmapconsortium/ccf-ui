@@ -1,14 +1,12 @@
+// Must be imported first!
+import './global-fixes';
+
 import { readFileSync, writeFileSync } from 'fs';
-import fetch from 'node-fetch';
 import { argv } from 'process';
 
 import { SpatialEntityJsonLd } from './lib/shared/ccf-spatial-jsonld';
 import { processReferenceData } from './lib/util/process-reference-data';
 
-
-if (!(global as { fetch: unknown }).fetch) {
-  (global as { fetch: unknown }).fetch = fetch;
-}
 
 async function main(refEntitiesPath: string, ouputPath?: string): Promise<void> {
   const refEntities = JSON.parse(readFileSync(refEntitiesPath, { encoding: 'utf-8' })) as SpatialEntityJsonLd[];

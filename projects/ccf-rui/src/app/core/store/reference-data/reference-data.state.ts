@@ -87,15 +87,13 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
    * @param side the side: left, right, or undefined
    * @returns An IRI if there is a reference organ for this state, otherwise undefined
    */
-  getReferenceOrganIri(organ: string, sex?: 'Male' | 'Female' | string, side?: 'Left' | 'Right' | string): string | undefined {
+  getReferenceOrganIri(organ: string, sex?: 'Male' | 'Female' | string, side?: 'Left' | 'Right' | string, organInfo?: OrganInfo): string | undefined {
     const db = this.snapshot;
-    if (organ.toUpperCase() !== 'KIDNEY' && organ.toUpperCase() !== 'LYMPH NODE') {
+    if (organ.toUpperCase() !== 'KIDNEY') {
       side = '';
     }
-    if (organ.toUpperCase() === 'LARGE INTESTINE') {
-      organ = 'Colon';
-    }
-    const lookup = [organ, sex, side].join('|').toUpperCase();
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    const lookup = [organ, sex, side || organInfo?.side].join('|').toUpperCase();
     const key = Object.keys(db.organIRILookup).find((code) => code.toUpperCase().endsWith(lookup));
     return key ? db.organIRILookup[key] : undefined;
   }
