@@ -20,10 +20,4 @@
     color: mat.get-color-from-palette($foreground, contrast-icon);
     background-color: mat.get-color-from-palette($background, modal);
   }
-
-  .organ-selector {
-    .cls-2-pelvis {
-      fill: map-get($background, background);
-    }
-  }
 }
