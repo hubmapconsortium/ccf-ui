@@ -51,6 +51,8 @@ function pruneModel(model: OntologyTreeModel, organIds: string[]): OntologyTreeM
   forEach(organNodes, node => (node.parent = body.id));
   forEach(organNodes, node => addSubtree(model.nodes, prunedNodes, node));
 
+  body.children.sort((a, b) => prunedNodes[a].label.localeCompare(prunedNodes[b].label));
+
   return { root: body.id, nodes: prunedNodes };
 }
 
