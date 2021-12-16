@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, AfterViewChecked
 } from '@angular/core';
 import { SpatialSceneNode, NodeClickEvent } from 'ccf-body-ui';
-import { SpatialEntity, TissueBlockResult } from 'ccf-database';
+import { SpatialEntity, TissueBlockResult, BlockHighlightOptions } from 'ccf-database';
 import { BodyUiComponent } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -20,7 +20,7 @@ export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
   @Input() sex: 'Male' | 'Female' | 'Both';
   @Input() side?: 'Left' | 'Right';
   @Input() blocks?: TissueBlockResult[];
-  @Input() provider?: string;
+  @Input() filter?: BlockHighlightOptions;
 
   @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
   @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
@@ -33,12 +33,12 @@ export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
   constructor(readonly ga: GoogleAnalyticsService) { }
 
   ngOnInit(): void {
+    this.filter = this.filter ? this.filter : { provider: 'TMC-Vanderbilt' }; // replace with 'GTEx Project'
     this.reset();
   }
 
   ngAfterViewChecked(): void {
-    this.provider = this.provider ? this.provider : 'GTEx Project';
-    this.filteredBlocks = this.blocks?.filter(block => block.donor.providerName === this.provider).map(block => block['@id']) ?? [];
+    this.filteredBlocks = this.blocks?.filter(block => block.donor.providerName === this.filter?.provider).map(block => block['@id']) ?? [];
     this.bodyUI.scene = this.bodyUI.scene.map((node): SpatialSceneNode =>
       ({
         ...node,

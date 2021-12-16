@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
-import { AggregateResult, SpatialEntity, TissueBlockResult } from 'ccf-database';
+import { AggregateResult, SpatialEntity, TissueBlockResult, BlockHighlightOptions } from 'ccf-database';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of } from 'rxjs';
@@ -13,7 +13,7 @@ interface GlobalConfig {
   organIri?: string;
   side?: string;
   sex?: 'Both' | 'Male' | 'Female';
-  provider?: string;
+  filter?: BlockHighlightOptions;
 }
 
 
@@ -34,7 +34,7 @@ export class AppComponent implements AfterViewInit {
 
   readonly sex$ = this.configState.getOption('sex');
   readonly side$ = this.configState.getOption('side');
-  readonly provider$ = this.configState.getOption('provider');
+  readonly filter$ = this.configState.getOption('filter');
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
   readonly scene$: Observable<SpatialSceneNode[]>;
