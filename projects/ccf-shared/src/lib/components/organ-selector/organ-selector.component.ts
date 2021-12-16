@@ -72,7 +72,7 @@ export const ALL_POSSIBLE_ORGANS2: OrganInfo[] = [
   }
 ];
 
-export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
+export const ALL_POSSIBLE_ORGANS = [
   {
     src: 'app:skin',
     organ: 'Skin',
@@ -289,8 +289,7 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
     hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002049'
   }
-];
-
+].sort((a, b) => a.name.localeCompare(b.name)) as OrganInfo[];
 
 /**
  * All organs which have not been disabled
