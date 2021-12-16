@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:api-server": "ts-node --project projects/ccf-api/tsconfig.server.json projects/ccf-api/src/start-server.ts",
+    "start:api-server": "NODE_PATH=./dist:$NODE_PATH node ./projects/ccf-api/start-server.js",
     "heroku-postbuild": "npm run build:server-libs",
     "build": "ng build --configuration production",
     "build:demo": "ng build --configuration production --output-hashing=none --base-href=./",
