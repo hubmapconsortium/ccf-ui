@@ -150,14 +150,14 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0000955'
   },
   {
-    src: 'app:lymph_nodes',
+    src: 'app:lymph-nodes',
     organ: 'Lymph Node',
     name: 'Lymph Node',
     hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002509'
   },
   {
-    src: 'app:eye-left',
+    src: 'app:eye',
     organ: 'Eye',
     name: 'Eye, L',
     side: 'left',
@@ -165,7 +165,7 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0004548'
   },
   {
-    src: 'app:eye-right',
+    src: 'app:eye',
     organ: 'Eye',
     name: 'Eye, R',
     side: 'right',
@@ -212,7 +212,7 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0004539'
   },
   {
-    src: 'app:knee-left',
+    src: 'app:knee',
     organ: 'Knee',
     name: 'Knee, L',
     side: 'left',
@@ -220,7 +220,7 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/FMA_24978'
   },
   {
-    src: 'app:knee-right',
+    src: 'app:knee',
     organ: 'Knee',
     name: 'Knee, R',
     side: 'right',
@@ -273,7 +273,7 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0001264'
   },
   {
-    src: 'app:pelvis',
+    src: 'app:pelvis-f',
     organ: 'Pelvis',
     name: 'Pelvis',
     hasSex: true,
@@ -287,14 +287,14 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0002367'
   },
   {
-    src: 'app:small_intestine',
+    src: 'app:small-intestine',
     organ: 'Small Intestine',
     name: 'Small Intestine',
     hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002108'
   },
   {
-    src: 'app:large_intestine',
+    src: 'app:large-intestine',
     organ: 'Large Intestine',
     name: 'Large Intestine',
     hasSex: true,
@@ -345,7 +345,7 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0000995'
   },
   {
-    src: 'app:vasculature',
+    src: 'app:vasculature-thick',
     organ: 'Blood Vasculature',
     name: 'Blood Vasculature',
     hasSex: true,
