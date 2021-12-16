@@ -412,6 +412,10 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     );
     const organDimensions: XYZTriplet = { x: 100, y: 100, z: 100 };
 
+    if (this.snapshot.organ?.sex) {
+      this.ctx.patchState({ sex: this.snapshot.organ?.sex });
+    }
+
     if (organIri) {
       const db = this.referenceData.snapshot;
       const asLookup: { [id: string]: VisibilityItem } = {};

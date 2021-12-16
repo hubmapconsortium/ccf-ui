@@ -92,6 +92,9 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
     if (organ.toUpperCase() !== 'KIDNEY') {
       side = '';
     }
+    if (organInfo?.sex) {
+      sex = organInfo.sex;
+    }
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     const lookup = [organ, sex, side || organInfo?.side].join('|').toUpperCase();
     const key = Object.keys(db.organIRILookup).find((code) => code.toUpperCase().endsWith(lookup));

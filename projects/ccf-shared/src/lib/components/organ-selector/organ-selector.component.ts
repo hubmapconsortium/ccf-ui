@@ -65,73 +65,7 @@ export const ALL_POSSIBLE_ORGANS2: OrganInfo[] = [
   {
     src: 'app:vasculature-thick', organ: 'Vasculature, Thick', name: 'Vasculature, Thick', hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002049'
-  },
-  {
-    src: 'app:bladder', organ: 'Bladder', name: 'Bladder', hasSex: true
-  },
-  {
-    src: 'app:blood', organ: 'Blood', name: 'Blood', hasSex: false
-  },
-  {
-    src: 'app:bone-marrow', organ: 'Bone Marrow', name: 'Bone Marrow', hasSex: false
-  },
-  {
-    src: 'app:eye', organ: 'Eye', name: 'Eye', hasSex: false
-  },
-  {
-    src: 'app:fallopian-tube-left', organ: 'Fallopian Tube', name: 'Fallopian Tube, L', side: 'left', hasSex: false
-  },
-  {
-    src: 'app:fallopian-tube-right', organ: 'Fallopian Tube', name: 'Fallopian Tube, R', side: 'right', hasSex: false
-  },
-  {
-    src: 'app:knee', organ: 'Knee', name: 'Knee', hasSex: true
-  },
-  {
-    src: 'app:liver', organ: 'Liver', name: 'Liver', hasSex: true
-  },
-  {
-    src: 'app:lung-left', organ: 'Lung', name: 'Lung, L', side: 'left', hasSex: true
-  },
-  {
-    src: 'app:lung-right', organ: 'Lung', name: 'Lung, R', side: 'right', hasSex: true
-  },
-  {
-    src: 'app:neuron', organ: 'neuron', name: 'Neuron', hasSex: false
-  },
-  {
-    src: 'app:ovaries', organ: 'Ovary', name: 'Ovaries', hasSex: false
-  },
-  {
-    src: 'app:ovary-left', organ: 'Ovary', name: 'Ovary, L', side: 'left', hasSex: false
-  },
-  {
-    src: 'app:ovary-right', organ: 'Ovary', name: 'Ovary, R', side: 'right', hasSex: false
-  },
-  {
-    src: 'app:pancreas', organ: 'Pancreas', name: 'Pancreas', hasSex: true
-  },
-  {
-    src: 'app:prostate', organ: 'Prostate', name: 'Prostate', hasSex: false
-  },
-  {
-    src: 'app:small-intestine', organ: 'Small Intestine', name: 'Small Intestine', hasSex: true
-  },
-  {
-    src: 'app:stomach', organ: 'Stomach', name: 'Stomach', hasSex: true
-  },
-  {
-    src: 'app:ureter-left', organ: 'Ureter', name: 'Ureter, L', hasSex: false
-  },
-  {
-    src: 'app:ureter-right', organ: 'Ureter', name: 'Ureter, R', hasSex: false
-  },
-  {
-    src: 'app:uterus', organ: 'Uterus', name: 'Uterus', hasSex: false
-  },
-  {
-    src: 'app:vasculature-thin', organ: 'Vasculature, Thin', name: 'Vasculature, Thin', hasSex: true
-  },
+  }
 ];
 
 export const ALL_POSSIBLE_ORGANS = [
@@ -177,7 +111,8 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Fallopian Tube',
     name: 'Fallopian Tube, L',
     side: 'left',
-    hasSex: true,
+    hasSex: false,
+    sex: 'female',
     id: 'http://purl.obolibrary.org/obo/UBERON_0001303'
   },
   {
@@ -185,7 +120,8 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Fallopian Tube',
     name: 'Fallopian Tube, R',
     side: 'right',
-    hasSex: true,
+    hasSex: false,
+    sex: 'female',
     id: 'http://purl.obolibrary.org/obo/UBERON_0001302'
   },
   {
@@ -254,7 +190,8 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Ovary',
     name: 'Ovary, L',
     side: 'left',
-    hasSex: true,
+    hasSex: false,
+    sex: 'female',
     id: 'http://purl.obolibrary.org/obo/FMA_7214'
   },
   {
@@ -262,7 +199,8 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Ovary',
     name: 'Ovary, R',
     side: 'right',
-    hasSex: true,
+    hasSex: false,
+    sex: 'female',
     id: 'http://purl.obolibrary.org/obo/FMA_7213'
   },
   {
@@ -283,7 +221,8 @@ export const ALL_POSSIBLE_ORGANS = [
     src: 'app:prostate',
     organ: 'Prostate',
     name: 'Prostate',
-    hasSex: true,
+    hasSex: false,
+    sex: 'male',
     id: 'http://purl.obolibrary.org/obo/UBERON_0002367'
   },
   {
@@ -341,7 +280,8 @@ export const ALL_POSSIBLE_ORGANS = [
     src: 'app:uterus',
     organ: 'Uterus',
     name: 'Uterus',
-    hasSex: true,
+    hasSex: false,
+    sex: 'female',
     id: 'http://purl.obolibrary.org/obo/UBERON_0000995'
   },
   {
@@ -392,6 +332,11 @@ export interface OrganInfo {
    * True if applies to both sexes
    */
   hasSex?: boolean;
+
+  /**
+   * Used for single sex only organs
+   */
+  sex?: 'male' | 'female';
 
   /**
    * UBERON id for the organ
