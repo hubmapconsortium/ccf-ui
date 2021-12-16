@@ -1,6 +1,7 @@
+import { Immutable } from '@angular-ru/common/typings';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
-import { AggregateResult, SpatialEntity, TissueBlockResult, BlockHighlightOptions } from 'ccf-database';
+import { AggregateResult, SpatialEntity, TissueBlockResult, Filter } from 'ccf-database';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of } from 'rxjs';
@@ -13,9 +14,8 @@ interface GlobalConfig {
   organIri?: string;
   side?: string;
   sex?: 'Both' | 'Male' | 'Female';
-  filter?: BlockHighlightOptions;
+  hightlightProviders?: string[];
 }
-
 
 const EMPTY_SCENE = [
   { color: [0, 0, 0, 0], opacity: 0.001 }
@@ -34,7 +34,8 @@ export class AppComponent implements AfterViewInit {
 
   readonly sex$ = this.configState.getOption('sex');
   readonly side$ = this.configState.getOption('side');
-  readonly filter$ = this.configState.getOption('filter');
+  readonly filter$ = this.configState.getOption('highlightProviders')
+    .pipe(map((providers: string[]) => ({tmc: providers} as Filter)));
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
   readonly scene$: Observable<SpatialSceneNode[]>;
@@ -42,7 +43,7 @@ export class AppComponent implements AfterViewInit {
   readonly statsLabel$: Observable<string>;
   readonly blocks$: Observable<TissueBlockResult[]>;
 
-  private latestConfig: GlobalConfig = {};
+  private latestConfig: Immutable<GlobalConfig> = {};
 
   constructor(
     lookup: OrganLookupService,

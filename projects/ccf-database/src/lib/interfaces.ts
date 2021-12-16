@@ -128,9 +128,3 @@ export interface OntologyTreeModel {
   /** Mapping from id/IRI to ontology node instance */
   nodes: { [id: string]: OntologyTreeNode };
 }
-
-/** Options for highlighting tissue blocks in the organ-info component */
-export interface BlockHighlightOptions {
-  /** Name of tissue provider */
-  provider?: string;
-}

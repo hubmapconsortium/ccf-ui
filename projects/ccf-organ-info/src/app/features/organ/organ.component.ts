@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, AfterViewChecked
 } from '@angular/core';
 import { SpatialSceneNode, NodeClickEvent } from 'ccf-body-ui';
-import { SpatialEntity, TissueBlockResult, BlockHighlightOptions } from 'ccf-database';
+import { SpatialEntity, TissueBlockResult, Filter } from 'ccf-database';
 import { BodyUiComponent } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -14,13 +14,13 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
-  @Input() organ: SpatialEntity | undefined;
+  @Input() organ?: SpatialEntity;
   @Input() scene: SpatialSceneNode[];
   @Input() organIri: string;
   @Input() sex: 'Male' | 'Female' | 'Both';
   @Input() side?: 'Left' | 'Right';
   @Input() blocks?: TissueBlockResult[];
-  @Input() filter?: BlockHighlightOptions;
+  @Input() filter?: Filter;
 
   @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
   @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
@@ -33,12 +33,16 @@ export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
   constructor(readonly ga: GoogleAnalyticsService) { }
 
   ngOnInit(): void {
-    this.filter = this.filter ? this.filter : { provider: 'TMC-Vanderbilt' }; // replace with 'GTEx Project'
     this.reset();
   }
 
   ngAfterViewChecked(): void {
-    this.filteredBlocks = this.blocks?.filter(block => block.donor.providerName === this.filter?.provider).map(block => block['@id']) ?? [];
+    this.updateHighlighting();
+  }
+
+  updateHighlighting(): void {
+    const providerName = new Set<string>(this.filter?.tmc ?? []);
+    this.filteredBlocks = this.blocks?.filter(block => providerName.has(block.donor.providerName)).map(block => block['@id']) ?? [];
     this.bodyUI.scene = this.bodyUI.scene.map((node): SpatialSceneNode =>
       ({
         ...node,
