@@ -74,6 +74,13 @@ export const ALL_POSSIBLE_ORGANS2: OrganInfo[] = [
 
 export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
   {
+    src: 'app:skin',
+    organ: 'Skin',
+    name: 'Skin',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002097'
+  },
+  {
     src: 'app:brain',
     organ: 'Brain',
     name: 'Brain',
@@ -181,6 +188,22 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0001004'
   },
   {
+    src: 'app:ovary-left',
+    organ: 'Ovary',
+    name: 'Ovary, L',
+    side: 'left',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/FMA_7214'
+  },
+  {
+    src: 'app:ovary-right',
+    organ: 'Ovary',
+    name: 'Ovary, R',
+    side: 'right',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/FMA_7213'
+  },
+  {
     src: 'app:pancreas',
     organ: 'Pancreas',
     name: 'Pancreas',
@@ -195,34 +218,11 @@ export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0001270'
   },
   {
-    src: 'app:ovary-left',
-    organ: 'Ovary',
-    name: 'Ovary, L',
-    side: 'left',
-    hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/FMA_7214'
-  },
-  {
     src: 'app:prostate',
     organ: 'Prostate',
     name: 'Prostate',
     hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002367'
-  },
-  {
-    src: 'app:ovary-right',
-    organ: 'Ovary',
-    name: 'Ovary, R',
-    side: 'right',
-    hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/FMA_7213'
-  },
-  {
-    src: 'app:skin',
-    organ: 'Skin',
-    name: 'Skin',
-    hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002097'
   },
   {
     src: 'app:small_intestine',
