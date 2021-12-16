@@ -142,6 +142,13 @@ export class DataSourceService implements OnDestroy {
     );
   }
 
+  getOrganScene(organ: string, filter?: Filter): Observable<SpatialSceneNode[]> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getReferenceOrganScene(organ, filter)),
+      take(1)
+    );
+  }
+
   private createDataSource(): { source: DataSource } & Unsubscribable {
     let source: DataSource;
     let unsubscribe: () => void = () => undefined;

@@ -4,7 +4,7 @@ import { BodyUiComponent, GlobalConfigState } from 'ccf-shared';
 import { map, take } from 'rxjs/operators';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
 import { findHighlightId, hightlight } from './core/highlight.operator';
-import { SPATIAL_ENTITY_URL } from './core/constants';
+import { HIGHLIGHT_YELLOW, SPATIAL_ENTITY_URL } from './core/constants';
 
 interface BodyUIData {
   id: string;
@@ -16,6 +16,14 @@ interface GlobalConfig {
   zoomToID?: string;
   data?: BodyUIData[];
 }
+
+interface Coords3D {
+  x: number;
+  y: number;
+  z: number;
+}
+
+//  TODO: Remove console logs.
 
 @Component({
   selector: 'ccf-root',
@@ -33,7 +41,7 @@ export class AppComponent implements OnInit {
   readonly zoomToID$ = this.configState.getOption('zoomToID');
 
   scene$ = this.sceneSource.filteredScene$.pipe(
-    hightlight(this.highlightID$, [173, 255, 47, 229.5])
+    hightlight(this.highlightID$, HIGHLIGHT_YELLOW)
   );
   organs$ = this.sceneSource.filteredOrgans$;
 
@@ -64,9 +72,6 @@ export class AppComponent implements OnInit {
 
     bodyUI.rotation = bodyUI.rotationX = 0;
 
-    console.log('organs, reset: ', organs);
-    console.log('zoomToID: ', zoomToID);
-
     if (organs.length < 2) {
       this.focusSingleOrgan(organs[0]);
     } else if (zoomToID) {
@@ -81,14 +86,15 @@ export class AppComponent implements OnInit {
     if (!organ) {
       return;
     }
-    console.log('focusSingleOrgan: ', organ);
 
     const { bodyUI } = this;
-    const { x_dimension: x, y_dimension: y, z_dimension: z } = organ[SPATIAL_ENTITY_URL];
-    bodyUI.bounds = { x: 1.25 * x / 1000, y: 1.25 * y / 1000, z: 1.25 * z / 1000 };
-    bodyUI.target = [x / 1000 / 2, y / 1000 / 2, z / 1000 / 2];
-    console.log('bodyUI.bounds: ', bodyUI.bounds);
-    console.log('bodyUI.target: ', bodyUI.target);
+    bodyUI.bounds = this.findOrgansBounds([organ]);
+    const organCoords: [number, number, number] = [
+      organ[SPATIAL_ENTITY_URL].placement.x_translation,
+      organ[SPATIAL_ENTITY_URL].placement.y_translation,
+      organ[SPATIAL_ENTITY_URL].placement.z_translation
+    ];
+    bodyUI.target = organCoords;
 
     this.cdr.detectChanges();
   }
@@ -97,39 +103,72 @@ export class AppComponent implements OnInit {
     if (!organs) {
       return;
     }
-    console.log('focusMultipleOrgans: ', organs);
-
-    let { x_dimension: x, y_dimension: y, z_dimension: z } = organs[0][SPATIAL_ENTITY_URL];
-    organs.forEach(entity => {
-      const organ = entity[SPATIAL_ENTITY_URL];
-      if (organ.x_dimension > x) {
-        x = organ.x_dimension;
-      }
-
-      if (organ.y_dimension > y) {
-        y = organ.y_dimension;
-      }
-
-      if (organ.z_dimension > z) {
-        z = organ.z_dimension;
-      }
-    });
 
     const { bodyUI } = this;
-    bodyUI.bounds = { x: 1.25 * x / 1000, y: 1.25 * y / 1000, z: 1.25 * z / 1000 };
-    bodyUI.target = [x / 1000 / 2, y / 1000 / 2, z / 1000 / 2];
-    console.log('bodyUI.bounds: ', bodyUI.bounds);
-    console.log('bodyUI.target: ', bodyUI.target);
-    console.log('bodyUI', bodyUI);
+    const bounds = this.findOrgansBounds(organs);
+    bodyUI.bounds = bounds;
+
+    const organCoords: Coords3D[] = organs.map(organ => {
+      return {
+        x: organ[SPATIAL_ENTITY_URL].placement.x_translation,
+        y: organ[SPATIAL_ENTITY_URL].placement.y_translation,
+        z: organ[SPATIAL_ENTITY_URL].placement.z_translation
+      }
+    });
+    const organMidPoint: [number, number, number] = this.findMidPoint(organCoords);
+    bodyUI.target = organMidPoint;
 
     this.cdr.detectChanges();
   }
 
-  async testScene(): Promise<void> {
+  findOrgansBounds(organs: BodyUIData[]): { x: number, y: number, z: number } {
+    let x = 0;
+    let y = 0;
+    let z = 0;
+
+    organs.forEach(entity => {
+      const organ = entity[SPATIAL_ENTITY_URL];
+
+      const tempX = organ.placement.x_translation + (organ.x_dimension / 2);
+      const tempY = organ.placement.y_translation + (organ.y_dimension / 2);
+      const tempZ = organ.placement.z_translation + (organ.z_dimension / 2);
+
+      if (tempX > x) {
+        x = tempX;
+      }
+
+      if (tempY > y) {
+        y = tempY;
+      }
+
+      if (tempZ > z) {
+        z = tempZ;
+      }
+    });
+
+    return { x: x * 1.25 / 125, y: y * 1.25 / 125, z : z * 1.25 / 125}
+  }
+
+  findMidPoint(coords: Coords3D[]): [number, number, number] {
+    let x = 0;
+    let y = 0;
+    let z = 0;
+
+    coords.forEach(coord => {
+      x += coord.x;
+      y += coord.y;
+      z += coord.z;
+    });
+
+    return [x / coords.length, y / coords.length, z / coords.length];
+  }
+
+  // TODO: Remove test function
+  async test(): Promise<void> {
     const { bodyUI } = this;
     console.log('this: ', this);
-    console.log('organs: ', this.organs$.pipe(take(1)).toPromise());
-    console.log('Scene: ', this.scene$.pipe(take(1)).toPromise());
+    console.log('organs: ', await this.organs$.pipe(take(1)).toPromise());
+    console.log('Scene: ', await this.scene$.pipe(take(1)).toPromise());
     const data = await this.data$.pipe(take(1)).toPromise();
     console.log('bodyUI: ', bodyUI);
     if (!data) {

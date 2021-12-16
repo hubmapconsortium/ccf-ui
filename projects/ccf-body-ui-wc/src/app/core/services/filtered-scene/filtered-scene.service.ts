@@ -24,6 +24,7 @@ interface GlobalConfig {
 })
 export class FilteredSceneService {
   readonly scene$ = this.source.getScene();
+
   readonly organs$ = this.configState.getOption('data').pipe(
     map(data => this.selectOrgans(data)),
     shareReplay(1)

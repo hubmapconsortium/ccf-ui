@@ -4,7 +4,7 @@ import { combineLatest, MonoTypeOperatorFunction, Observable } from "rxjs";
 import { SPATIAL_ENTITY_URL } from './constants';
 
 
-type Color = [number, number, number, number];
+export type Color = [number, number, number, number];
 
 function highlightIfMatching(entity: SpatialSceneNode, id: string | undefined, color: Color): SpatialSceneNode {
   return entity['@id'] !== id ? entity : {...entity, color};
