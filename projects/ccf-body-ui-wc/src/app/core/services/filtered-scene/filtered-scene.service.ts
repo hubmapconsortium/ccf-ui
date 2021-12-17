@@ -95,15 +95,15 @@ export class FilteredSceneService {
       return [];
     }
 
-    const skins: string[] = [];
+    const skins = new Set<string>();
     organs.forEach(organ => {
       if (organ.sex === 'Female') {
-        skins.push(FEMALE_SKIN_URL);
+        skins.add(FEMALE_SKIN_URL);
       } else if (organ.sex === 'Male') {
-        skins.push(MALE_SKIN_URL);
+        skins.add(MALE_SKIN_URL);
       }
     });
 
-    return skins;
+    return [...skins];
   }
 }
