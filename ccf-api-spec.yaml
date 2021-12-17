@@ -162,6 +162,21 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SpatialSceneNode'
+  /hubmap/rui_locations.jsonld:
+    get:
+      summary: Get all hubmap rui locations (if enabled)
+      description: This option is only enabled if HUBMAP_ROUTES=true in the environment
+      operationId: hubmap-rui-locations
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
 
 components:
   parameters:
