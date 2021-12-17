@@ -1,11 +1,8 @@
 name: 'Beta Build'
 
 on:
-  workflow_run:
-    workflows: ['Tests']
+  push:
     branches: ['pbi-ccf-v1.7']
-    types:
-      - completed
 
 jobs:
   deploy:
@@ -19,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: develop
+          ref: pbi-ccf-v1.7
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
