@@ -539,10 +539,9 @@ Full BODY-UI-WC Example
 
 The following options are available for configuration
 
-- `organIri: string` - A url to load data from.
-- `highlightID: string` - The id of the object to highlight.
-- `zoomToID: string` - The id of the object to zoom to.
-- `data: { id: string, rui_location: JsonLdObj }[]` - An array of JsonLd organ objects to display.
+- `highlightID: string` - The id of the object (rui_location) to highlight.
+- `zoomToID: string` - The id of the object (rui_location) to zoom to.
+- `data: { id: string, rui_location: JsonLdObj }[]` - An array of JsonLd objects (rui_location) to display.
 
 The following events are available
 - `onMouseEnter: () => string` - Emits the id of the object that was moused over.

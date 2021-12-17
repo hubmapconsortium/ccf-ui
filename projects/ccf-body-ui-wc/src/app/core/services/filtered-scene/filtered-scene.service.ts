@@ -1,35 +1,38 @@
-import { SpatialSceneNode, SpatialEntity } from 'ccf-database';
-import { combineLatest } from 'rxjs';
+import { SpatialSceneNode, SpatialEntity, Filter } from 'ccf-database';
+import { combineLatest, Observable, of } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { GlobalConfigState } from 'ccf-shared';
 import { DataSourceService } from '../data-source/data-source.service';
-import { map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { Any } from '@angular-ru/common/typings';
+import { FEMALE_SKIN_URL, HIGHLIGHT_YELLOW, MALE_SKIN_URL, SPATIAL_ENTITY_URL } from '../../constants';
+import { hightlight } from '../../highlight.operator';
+import { GlobalConfig } from '../../../app.component';
+import { zoomTo } from '../../zoom-to.operator';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
-import { FEMALE_SKIN_URL, MALE_SKIN_URL, SPATIAL_ENTITY_URL } from '../../constants';
-
-interface BodyUIData {
-  id: string;
-  rui_locations: JsonLdObj;
-};
-
-interface GlobalConfig {
-  highlightID?: string;
-  zoomToID?: string;
-  data?: BodyUIData[];
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilteredSceneService {
-  readonly scene$ = this.source.getScene();
+  readonly data$ = this.configState.getOption('data');
+  readonly zoomToID$ = this.configState.getOption('zoomToID').pipe(
+    map(id => `http://purl.org/ccf/1.5/entity/${id}`)
+  );
+  readonly highlightID$ = this.configState.getOption('highlightID').pipe(
+    map(id => `http://purl.org/ccf/1.5/entity/${id}`)
+  );
+
+  readonly referenceOrgans$ = this.source.getReferenceOrgans();
+
+  readonly scene$ = combineLatest([this.data$, this.referenceOrgans$, this.source.dataSource]).pipe(
+    switchMap(([data, referenceOrgans, _]) => this.chooseScene(data, referenceOrgans))
+  );
 
   readonly organs$ = this.configState.getOption('data').pipe(
     map(data => this.selectOrgans(data)),
     shareReplay(1)
   );
-  readonly referenceOrgans$ = this.source.getReferenceOrgans();
 
   readonly filteredOrgans$ = combineLatest([this.organs$, this.referenceOrgans$]).pipe(
     map(([organs, referenceOrgans]) => this.getNeededReferenceOrgans(referenceOrgans, organs)),
@@ -38,6 +41,8 @@ export class FilteredSceneService {
 
   readonly filteredScene$ = combineLatest([this.scene$, this.organs$, this.referenceOrgans$]).pipe(
     map(([nodes, organs, referenceOrgans]) => this.filterSceneNodes(nodes, organs, referenceOrgans)),
+    hightlight(this.highlightID$, HIGHLIGHT_YELLOW),
+    zoomTo(this.zoomToID$),
     shareReplay(1)
   );
 
@@ -45,6 +50,24 @@ export class FilteredSceneService {
     private readonly configState: GlobalConfigState<GlobalConfig>,
     private readonly source: DataSourceService
   ) { }
+
+  private chooseScene(data?: JsonLdObj[], organs?: SpatialEntity[]): Observable<SpatialSceneNode[]> {
+    const organUrls = data?.map(obj => {
+      const block: Any = obj[SPATIAL_ENTITY_URL];
+      return block?.placement.target;
+    }) ?? [];
+    const uniqueOrganUrls = new Set(organUrls);
+
+    if (uniqueOrganUrls.size > 1) {
+      return this.source.getScene();
+    } else if (organs) {
+      const organ = organs.find(organ => organ['@id'] === organUrls[0]);
+      if (organ) {
+        return this.source.getOrganScene(organ.representation_of as string, {ontologyTerms: [organ.reference_organ as string], sex: organ.sex} as Filter);
+      }
+    }
+    return of([]);
+  }
 
   private selectOrgans(data: Any[] | undefined): Set<string> {
     const selectOrgan = (item: Any) =>
@@ -58,7 +81,7 @@ export class FilteredSceneService {
     const neededReferenceOrgans = this.getNeededReferenceOrgans(referenceOrgans, organs);
     const neededSkins = this.getNeededSkins(neededReferenceOrgans);
     const neededOrgans = new Set([...organs, ...neededSkins]);
-    const filteredNodes = nodes.filter(node => neededOrgans.has(node.reference_organ!));
+    const filteredNodes = nodes.filter(node => !node.reference_organ || neededOrgans.has(node.reference_organ!));
 
     return filteredNodes;
   }

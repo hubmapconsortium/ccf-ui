@@ -1,3 +1,4 @@
+import { DEFAULT_CCF_DB_OPTIONS } from './../../../../../../ccf-database/src/lib/ccf-database';
 /* eslint-disable @typescript-eslint/no-shadow */
 import { LocationStrategy } from '@angular/common';
 import { Injectable, OnDestroy } from '@angular/core';
@@ -48,7 +49,8 @@ export class DataSourceService implements OnDestroy {
     private readonly locator: LocationStrategy,
     private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
   ) {
-    this.dataSource = globalConfig.config$.pipe(
+    this.dataSource = globalConfig.getOption('data').pipe(
+      map(data => ({ ...DEFAULT_CCF_DB_OPTIONS, dataSources: data})),
       filter(config => Object.keys(config).length > 0),
       map((config) => config as unknown as CCFDatabaseOptions),
       distinctUntilChanged(compareConfig),
@@ -160,10 +162,11 @@ export class DataSourceService implements OnDestroy {
   private async connectDataSource(source: DataSource, config: CCFDatabaseOptions): Promise<DataSource> {
     const start = new Date().getTime();
 
-    await source.connect(config, true);
+    await source.connect(config, false);
 
     if (!environment.production) {
       console.info(`Loaded CCF database in ${ ((new Date()).getTime() - start) / 1000 }s`);
+      console.log(source);
     }
     return source;
   }

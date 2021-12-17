@@ -3,6 +3,8 @@
   [scene]="scene$ | async"
   [interactive]="true"
   camera="perspective"
-  class="body-ui">
+  class="body-ui"
+  (nodeClick)="onClick.emit($event)"
+  (nodeHoverStart)="onMouseEnter.emit($event)"
+  (nodeHoverStop)="onMouseLeave.emit($event)">
 </ccf-body-ui>
-<div style="width: 3rem; height: 2rem; padding: 1rem;" (click)="test()">test</div>

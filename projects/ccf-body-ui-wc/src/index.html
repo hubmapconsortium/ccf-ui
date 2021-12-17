@@ -889,13 +889,12 @@
     "z_dimension": 2
   }
 }
-    ];
-
+];
     window.addEventListener('DOMContentLoaded', () => {
       const bodyUI = document.querySelector('ccf-body-ui-wc');
       bodyUI.data = sampleData;
-      bodyUI.highlightID = '8cdf44a106338aada6da04c71eeb767e';
-      // bodyUI.zoomToID = 'http://purl.org/ccf/latest/ccf.owl#VHFColon';
+      // bodyUI.highlightID = '8b0a4cc904cadaccddd37633411fdbdd';
+      // bodyUI.zoomToID = '8b0a4cc904cadaccddd37633411fdbdd';
 
       bodyUI.addEventListener('onMouseEnter', (id) => {
         console.log('onMouseEnter', id);
@@ -910,12 +909,37 @@
       });
 
       console.log('Body UI WC loaded:', bodyUI);
+
+      document.getElementById('btn1').addEventListener('click', () => {
+        const randomData = bodyUI.data[getRandomInt()];
+        bodyUI.highlightID = randomData.id;
+        bodyUI.zoomToID = randomData.id;
+      });
+
+      document.getElementById('btn2').addEventListener('click', () => {
+        const randomData = sampleData.slice(getRandomInt(), getRandomInt() + 10);
+        bodyUI.data = randomData;
+      });
+
+      document.getElementById('btn3').addEventListener('click', () => {
+        bodyUI.highlightID = '';
+        bodyUI.zoomToID = '';
+      });
+
+      function getRandomInt() {
+        return Math.floor(Math.random() * Math.floor(bodyUI.data.length - 1));
+      }
     });
   </script>
 </head>
 
 <body class="mat-typography">
   <ccf-body-ui-wc></ccf-body-ui-wc>
+  <div style="display: flex; width: 100vw;">
+    <div id="btn1" style="margin-right: 2rem;">Randomize Highlight</div>
+    <div id="btn2" style="margin-right: 2rem;">Randomize Data</div>
+    <div id="btn3">Turn Off Highlight</div>
+  </div>
 </body>
 
 </html>
