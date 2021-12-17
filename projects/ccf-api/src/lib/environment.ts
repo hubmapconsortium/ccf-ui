@@ -45,6 +45,7 @@ export function get<D>(key: string, defaultValue?: D | ThrowIndicator): string |
     throw new Error(`Environment variable '${key}' has not been set`);
   }
 
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   return env[key] || (defaultValue as D);
 }
 
