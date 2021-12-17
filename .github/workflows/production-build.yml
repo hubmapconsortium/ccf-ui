@@ -46,6 +46,12 @@ jobs:
           npm run build -- --project ccf-organ-info --output-hashing=none --base-href=/ccf-ui/organ-info/ --configuration=staging
           npm run build:ccf-organ-info:wc
           cp -r dist/ccf-organ-info dist/ccf-ui/organ-info
+      - name: Build Body UI WC
+        run: |
+          npm run build -- --project ccf-body-ui-wc --output-hashing=none --base-href=/body-ui/ #--configuration=staging
+          npm run build:ccf-body-ui-wc:wc
+          mkdir -p dist/ccf-ui
+          cp -r dist/ccf-body-ui-wc dist/ccf-ui/body-ui
       - run: npm run compodoc
       - name: Setup GitHub Pages files
         run: |
