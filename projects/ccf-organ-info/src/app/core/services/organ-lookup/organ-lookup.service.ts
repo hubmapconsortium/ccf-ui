@@ -42,17 +42,29 @@ export class OrganLookupService {
   }
 
   getOrganScene(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<SpatialSceneNode[]> {
-    const filter: Partial<Filter> = { ontologyTerms: [info.id!], sex };
-    return this.source.getReferenceOrganScene(info.id!, filter as Filter);
+    if (info.id) {
+      const filter: Partial<Filter> = { ontologyTerms: [info.id], sex };
+      return this.source.getReferenceOrganScene(info.id, filter as Filter);
+    } else {
+      return of([]);
+    }
   }
 
   getOrganStats(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<AggregateResult[]> {
-    const filter: Partial<Filter> = { ontologyTerms: [info.id!], sex };
-    return this.source.getAggregateResults(filter as Filter);
+    if (info.id) {
+      const filter: Partial<Filter> = { ontologyTerms: [info.id], sex };
+      return this.source.getAggregateResults(filter as Filter);
+    } else {
+      return of([]);
+    }
   }
 
   getBlocks(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<TissueBlockResult[]> {
-    const filter: Partial<Filter> = { ontologyTerms: [info.id!], sex };
-    return this.source.getTissueBlockResults(filter as Filter);
+    if (info.id) {
+      const filter: Partial<Filter> = { ontologyTerms: [info.id], sex };
+      return this.source.getTissueBlockResults(filter as Filter);
+    } else {
+      return of([]);
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { Immutable } from '@angular-ru/common/typings';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
-import { AggregateResult, SpatialEntity, TissueBlockResult, Filter } from 'ccf-database';
+import { AggregateResult, SpatialEntity, TissueBlockResult } from 'ccf-database';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of } from 'rxjs';
