@@ -756,10 +756,31 @@
               "projects/ccf-body-ui-wc/src/favicon.ico",
               "projects/ccf-body-ui-wc/src/assets"
             ],
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/e2e/**/*",
+              "**/test.ts",
+              "**/polyfills.ts",
+              "**/environments/**/*.ts",
+              "**/*.module.ts"
+            ],
             "styles": [
               "projects/ccf-body-ui-wc/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ccf-body-ui-wc/**/*.ts",
+              "projects/ccf-body-ui-wc/**/*.html"
+            ]
           }
         }
       }
