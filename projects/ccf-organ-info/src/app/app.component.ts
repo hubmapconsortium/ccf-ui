@@ -14,7 +14,7 @@ interface GlobalConfig {
   organIri?: string;
   side?: string;
   sex?: 'Both' | 'Male' | 'Female';
-  hightlightProviders?: string[];
+  highlightProviders?: string[];
 }
 
 const EMPTY_SCENE = [
@@ -35,7 +35,7 @@ export class AppComponent implements AfterViewInit {
   readonly sex$ = this.configState.getOption('sex');
   readonly side$ = this.configState.getOption('side');
   readonly filter$ = this.configState.getOption('highlightProviders')
-    .pipe(map((providers: string[]) => ({tmc: providers} as Filter)));
+    .pipe(map((providers: string[]) => ({ tmc: providers })));
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
   readonly scene$: Observable<SpatialSceneNode[]>;
