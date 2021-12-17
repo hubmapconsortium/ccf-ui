@@ -51,6 +51,8 @@ $foreground: map-merge(mat.$dark-theme-foreground-palette, (
   icons-disabled: #CCCCCC,
   opacity-numbers: #CCCCCC,
   input-bg: rgb(113, 113, 113),
+  y-axis: #00C853,
+  z-axis: #2979ff
 ));
 
 $background: map-merge(mat.$dark-theme-background-palette, (
