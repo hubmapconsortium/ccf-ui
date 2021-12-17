@@ -5,12 +5,8 @@ import { config } from 'dotenv';
 // ---------------------
 
 const env = (() => {
-  const result = config();
-  if (result.error) {
-    throw result.error;
-  }
-
-  return result.parsed!;
+  config();
+  return process.env;
 })();
 
 
