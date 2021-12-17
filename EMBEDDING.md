@@ -345,7 +345,6 @@ The following options are available for configuration
 - `hubmapToken: string` - Hubmap service token.
 
 
-
 # Embedding the CCF-BODY-UI-WC
 
 ## Code

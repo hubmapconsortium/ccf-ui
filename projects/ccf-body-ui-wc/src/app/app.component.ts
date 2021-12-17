@@ -11,10 +11,6 @@ export interface GlobalConfig {
   data?: JsonLdObj[];
 }
 
-//  TODO: Remove console logs.
-
-
-
 @Component({
   selector: 'ccf-root',
   templateUrl: './app.component.html',
@@ -24,12 +20,10 @@ export class AppComponent {
   @ViewChild('bodyUI', { static: true }) readonly bodyUI!: BodyUiComponent;
 
   readonly data$ = this.configState.getOption('data');
-
-  // TODO: Better place to reset()?
+  organs$ = this.sceneSource.filteredOrgans$;
   scene$ = this.sceneSource.filteredScene$.pipe(
     tap((_) => this.reset())
   );
-  organs$ = this.sceneSource.filteredOrgans$;
 
   @Output() readonly onMouseEnter = new EventEmitter<string>();
   @Output() readonly onMouseLeave = new EventEmitter<string>();
