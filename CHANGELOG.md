@@ -2,7 +2,40 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces
 
+## 3.0.0 BETA - 2021-12-17
+
+### Added in 3.0.0 BETA
+
+* Added reference organs and ASCT+B tables from the v1.1 CCF Release
+  * Links: [CCF Ontology v1.7 BETA](https://github.com/hubmapconsortium/hubmap-ontology/tree/gh-pages/beta), [CCF Release v1.1](https://hubmapconsortium.github.io/ccf-releases/v1.1/docs/index.html)
+
+### Known issues in 3.0.0 BETA
+
+* Previously registered tissues may appear slightly off. We are working to rectify this before making it a production release.
+
+## 2.5.0 - 2021-12-17
+
+### Added in 2.5.0
+
+* CCF-API OpenAPI Spec and implementation. Next version will connect the EUI to this as it's backend.
+* Added the CCF Body UI Web Component for integrating the 3D scene deeply in webpages (including the HuBMAP data portal).
+* The organ-info Web Component can now take an option to highlight specific blocks in the scene. Currently only highlights by providers, but age, sex, and BMI will be added in the next version.
+* Bug fixes and Quality of Life improvements
+
+## 2.4.0 - 2021-12-10
+
+### Added in 2.4.0
+
+* RUI shows a confirmation dialog when a user attempts to leave without finishing registration
+* Added GTEx data to EUI
+* RUI Common Extraction Sites are now known as Landmarks
+* Organ info now highlights the block selected on click
+* Updated RUI YouTube Demo link
+* Bug fixes and Quality of Life improvements
+
 ## 2.3.1 - 2021-09-13
+
+### Added in 2.3.1
 
 * Added support for paired organs to be refernced by their parent (ala Kidney + Left/Right Kidney)
 
