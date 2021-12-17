@@ -18,7 +18,7 @@
     "build:docs:ccf-shared": "npx compodoc -c projects/ccf-shared/.compodocrc.json",
     "build:docs:triple-store-utils": "npx compodoc -c projects/triple-store-utils/.compodocrc.json",
     "build:libs": "npm-run-all build:triple-store-utils build:ccf-database build:ccf-body-ui build:ccf-shared build:ccf-api",
-    "build:server-libs": "npm-run-all build:triple-store-utils build:ccf-database",
+    "build:server-libs": "npm-run-all build:triple-store-utils build:ccf-database build:ccf-api",
     "build:ccf-api": "npm run build ccf-api",
     "build:ccf-body-ui": "npm run build ccf-body-ui",
     "build:ccf-database": "npm run build ccf-database",
