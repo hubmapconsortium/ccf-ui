@@ -6,12 +6,12 @@ info:
     See the [HuBMAP CCF Portal](https://hubmapconsortium.github.io/ccf/) for details.
   version: 1.0.0
 servers:
-  - description: Staging Server
-    url: https://ccf-api--staging.herokuapp.com/v1
-  - description: Dev Server
-    url: http://localhost:5000/v1
   - description: Production Server
     url: https://ccf-api.herokuapp.com/v1
+  - description: Staging Server
+    url: https://ccf-api--staging.herokuapp.com/v1
+  - description: Development Server
+    url: http://localhost:5000/v1
 
 paths:
   /tissue-blocks:

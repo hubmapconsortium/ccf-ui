@@ -21,6 +21,25 @@ function parseDataSources(value: unknown): string[] {
   throw new Error('Invalid data sources');
 }
 
+function parseStringArray(value: unknown): string[] {
+  const isString = (val: unknown): val is string => typeof val === 'string';
+  const isStringArray = (val: unknown): val is string[] => Array.isArray(val) && val.every(isString);
+
+  if (typeof value === 'string') {
+    if (value?.startsWith('[')) {
+      const json = BUILTIN_PARSERS.json(value);
+      if (isStringArray(json)) {
+        return json;
+      }
+    } else {
+      return [value];
+    }
+  } else if (isStringArray(value)) {
+    return value;
+  }
+
+  throw new Error('Invalid data sources');
+}
 
 @Component({
   selector: 'ccf-root-wc',
@@ -32,6 +51,7 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() sex?: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
   @Input() dataSources: string | string[];
+  @Input() highlightProviders: string | string[];
 
   @Input() hubmapDataService: string;
   @Input() hubmapDataUrl: string;
@@ -53,7 +73,8 @@ export class AppWebComponent extends BaseWebComponent {
         ...globalThis['dbOptions']
       },
       parse: {
-        dataSources: parseDataSources
+        dataSources: parseDataSources,
+        highlightProviders: parseStringArray
       }
     });
   }
