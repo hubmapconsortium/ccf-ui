@@ -48,7 +48,7 @@ export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
         ...node,
         color: node.entityId && this.highlightedNodeId === node['@id'] ?
           [30, 136, 229, 255] :
-          this.filteredBlocks.includes(node.entityId!) ? [173, 255, 47, 229.5] : [255, 255, 255, 229.5]
+          this.filteredBlocks.includes(node.entityId ?? '') ? [173, 255, 47, 229.5] : [255, 255, 255, 229.5]
       })
     );
   }
