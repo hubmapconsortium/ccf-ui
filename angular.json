@@ -657,6 +657,51 @@
         }
       }
     },
+    "ccf-api": {
+      "projectType": "library",
+      "root": "projects/ccf-api",
+      "sourceRoot": "projects/ccf-api/src",
+      "prefix": "ccf",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ccf-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ccf-api/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ccf-api/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ccf-api/src/test.ts",
+            "tsConfig": "projects/ccf-api/tsconfig.spec.json",
+            "karmaConfig": "projects/ccf-api/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/test.ts",
+              "**/*.module.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ccf-api/**/*.ts",
+              "projects/ccf-api/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "ccf-body-ui-wc": {
       "projectType": "application",
       "schematics": {
@@ -788,6 +833,7 @@
   },
   "defaultProject": "ccf-eui",
   "cli": {
-    "analytics": "40bb8025-0693-4352-b08d-efd2a1f935cd"
+    "analytics": "40bb8025-0693-4352-b08d-efd2a1f935cd",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }

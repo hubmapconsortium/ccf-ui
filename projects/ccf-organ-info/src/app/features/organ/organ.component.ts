@@ -1,8 +1,8 @@
 import {
-  ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild,
+  ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, AfterViewChecked
 } from '@angular/core';
 import { SpatialSceneNode, NodeClickEvent } from 'ccf-body-ui';
-import { SpatialEntity } from 'ccf-database';
+import { SpatialEntity, TissueBlockResult, Filter } from 'ccf-database';
 import { BodyUiComponent } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -13,12 +13,14 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
   styleUrls: ['./organ.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrganComponent implements OnInit, OnChanges {
-  @Input() organ: SpatialEntity | undefined;
+export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
+  @Input() organ?: SpatialEntity;
   @Input() scene: SpatialSceneNode[];
   @Input() organIri: string;
   @Input() sex: 'Male' | 'Female' | 'Both';
   @Input() side?: 'Left' | 'Right';
+  @Input() blocks?: TissueBlockResult[];
+  @Input() filter?: Filter;
 
   @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
   @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
@@ -26,11 +28,29 @@ export class OrganComponent implements OnInit, OnChanges {
   @ViewChild('bodyUI', { static: true }) readonly bodyUI!: BodyUiComponent;
 
   highlightedNodeId: string;
+  filteredBlocks: string[];
 
   constructor(readonly ga: GoogleAnalyticsService) { }
 
   ngOnInit(): void {
     this.reset();
+  }
+
+  ngAfterViewChecked(): void {
+    this.updateHighlighting();
+  }
+
+  updateHighlighting(): void {
+    const providerName = new Set<string>(this.filter?.tmc ?? []);
+    this.filteredBlocks = this.blocks?.filter(block => providerName.has(block.donor.providerName)).map(block => block['@id']) ?? [];
+    this.bodyUI.scene = this.bodyUI.scene.map((node): SpatialSceneNode =>
+      ({
+        ...node,
+        color: node.entityId && this.highlightedNodeId === node['@id'] ?
+          [30, 136, 229, 255] :
+          this.filteredBlocks.includes(node.entityId ?? '') ? [173, 255, 47, 229.5] : [255, 255, 255, 229.5]
+      })
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -66,13 +86,5 @@ export class OrganComponent implements OnInit, OnChanges {
   nodeClicked(event: NodeClickEvent): void {
     this.ga.event('node_click', 'organ', event.node['@id']);
     this.highlightedNodeId = this.highlightedNodeId && this.highlightedNodeId === event.node['@id'] ? '' : event.node['@id'];
-    this.bodyUI.scene = this.bodyUI.scene.map((node): SpatialSceneNode =>
-      ({
-        ...node,
-        color: node.entityId && this.highlightedNodeId === node['@id'] ?
-          [30, 136, 229, 255] :
-          [255, 255, 255, 229.5]
-      })
-    );
   }
 }

@@ -28,6 +28,10 @@
       "dom"
     ],
     "paths": {
+      "ccf-api": [
+        "dist/ccf-api/ccf-api",
+        "dist/ccf-api"
+      ],
       "ccf-database": [
         "dist/ccf-database/ccf-database",
         "dist/ccf-database"
