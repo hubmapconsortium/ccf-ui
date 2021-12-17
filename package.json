@@ -41,7 +41,7 @@
     "compodoc": "npm run build:docs",
     "test": "ng test",
     "test:wsl": "ng test --browsers=ChromeHeadlessWSL",
-    "lint": "ng lint",
+    "lint": "node --max_old_space_size=3000 ./node_modules/@angular/cli/bin/ng lint",
     "e2e": "ng e2e",
     "sonar": "sonar-scanner",
     "postinstall": "rm -rf ./node_modules/@types/math.gl ./node_modules/@types/math.gl__core"
