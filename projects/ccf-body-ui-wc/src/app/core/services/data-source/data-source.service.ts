@@ -50,7 +50,7 @@ export class DataSourceService implements OnDestroy {
     private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
   ) {
     this.dataSource = globalConfig.getOption('data').pipe(
-      map(data => ({ ...DEFAULT_CCF_DB_OPTIONS, dataSources: data})),
+      map(data => ({ ...DEFAULT_CCF_DB_OPTIONS, dataSources: data })),
       filter(config => Object.keys(config).length > 0),
       map((config) => config as unknown as CCFDatabaseOptions),
       distinctUntilChanged(compareConfig),
@@ -152,9 +152,8 @@ export class DataSourceService implements OnDestroy {
   }
 
   private createDataSource(): { source: DataSource } & Unsubscribable {
-    let source: DataSource;
-    let unsubscribe: () => void = () => undefined;
-    source = new CCFDatabase();
+    const unsubscribe: () => void = () => undefined;
+    const source = new CCFDatabase();
 
     return { source, unsubscribe };
   }
@@ -165,7 +164,9 @@ export class DataSourceService implements OnDestroy {
     await source.connect(config, false);
 
     if (!environment.production) {
+      // eslint-disable-next-line no-console
       console.info(`Loaded CCF database in ${ ((new Date()).getTime() - start) / 1000 }s`);
+      // eslint-disable-next-line no-console
       console.log(source);
     }
     return source;

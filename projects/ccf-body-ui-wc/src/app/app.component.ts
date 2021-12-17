@@ -1,5 +1,6 @@
+/* eslint-disable @angular-eslint/no-output-on-prefix */
 import { FilteredSceneService } from './core/services/filtered-scene/filtered-scene.service';
-import { Component, EventEmitter, Output, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { BodyUiComponent, GlobalConfigState } from 'ccf-shared';
 import { take, tap } from 'rxjs/operators';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
@@ -12,22 +13,22 @@ export interface GlobalConfig {
 }
 
 @Component({
-  selector: 'ccf-root',
+  changeDetection: ChangeDetectionStrategy.OnPush,selector: 'ccf-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   @ViewChild('bodyUI', { static: true }) readonly bodyUI!: BodyUiComponent;
 
+  @Output() readonly onMouseEnter = new EventEmitter<string>();
+  @Output() readonly onMouseLeave = new EventEmitter<string>();
+  @Output() readonly onClick = new EventEmitter<string>();
+
   readonly data$ = this.configState.getOption('data');
   organs$ = this.sceneSource.filteredOrgans$;
   scene$ = this.sceneSource.filteredScene$.pipe(
     tap((_) => this.reset())
   );
-
-  @Output() readonly onMouseEnter = new EventEmitter<string>();
-  @Output() readonly onMouseLeave = new EventEmitter<string>();
-  @Output() readonly onClick = new EventEmitter<string>();
 
   constructor(
     private readonly configState: GlobalConfigState<GlobalConfig>,
@@ -38,6 +39,7 @@ export class AppComponent {
   private async reset(): Promise<void> {
     const { bodyUI } = this;
 
+    // eslint-disable-next-line no-promise-executor-return
     await new Promise((resolve) => setTimeout(resolve, 200));
     const organs = await this.organs$.pipe(take(1)).toPromise();
     const hasZoomingNode = !!bodyUI.scene?.find((node) => node.zoomToOnLoad) ?? false;
