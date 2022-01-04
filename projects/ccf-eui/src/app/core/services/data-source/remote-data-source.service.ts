@@ -14,6 +14,7 @@ import { DataSourceService } from './data-source.service';
 
 export interface RemoteDataSourceOptions {
   remoteApiEndpoint: string;
+  hubmapToken?: string;
 }
 
 
@@ -77,7 +78,10 @@ export class RemoteDataSourceService implements DataSourceService {
 
     return globalConfig.getOption('remoteApiEndpoint').pipe(
       map(endpoint => `${endpoint}/${dataset}`),
-      switchMap(url => http.get<T>(url, { params, responseType: 'json' })),
+      switchMap(url => http.get<T>(url, {
+        params: this.withToken(params),
+        responseType: 'json'
+      })),
       shareReplay(1)
     );
   }
@@ -93,5 +97,10 @@ export class RemoteDataSourceService implements DataSourceService {
       const value = filter[key];
       return !isEmpty(value) ? params.set(key, stringify(value)) : params;
     }, new HttpParams());
+  }
+
+  private withToken(params: HttpParams): HttpParams {
+    const { globalConfig: { snapshot: { hubmapToken } } } = this;
+    return hubmapToken ? params.set('token', hubmapToken) : params;
   }
 }
