@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import { LocationStrategy } from '@angular/common';
 import { Injectable, OnDestroy } from '@angular/core';
 import {
@@ -8,7 +7,7 @@ import {
 import { GlobalConfigState } from 'ccf-shared';
 import { releaseProxy, Remote, wrap } from 'comlink';
 import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
-import { distinctUntilChanged, filter, map, shareReplay, switchMap, take } from 'rxjs/operators';
+import { distinctUntilChanged, filter as obsfilter, map, shareReplay, switchMap, take } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { DataSourceService } from './data-source.service';
@@ -44,7 +43,7 @@ export class LocalDataSourceService implements DataSourceService, OnDestroy {
     private readonly locator: LocationStrategy
   ) {
     this.dataSource = globalConfig.config$.pipe(
-      filter(config => Object.keys(config).length > 0),
+      obsfilter(config => Object.keys(config).length > 0),
       map((config) => config as unknown as CCFDatabaseOptions),
       distinctUntilChanged(compareConfig),
       switchMap(config => using(
@@ -53,22 +52,6 @@ export class LocalDataSourceService implements DataSourceService, OnDestroy {
       )),
       shareReplay(1)
     );
-
-    // this.subscriptions.add(this.dataSource.subscribe());
-
-    // this.dbOptions = environment.dbOptions as CCFDatabaseOptions;
-
-    // if (typeof globalThis === 'object') {
-    //   // If a global dbOptions object is set, use this for connecting to the db
-    //   if (globalThis.dbOptions) {
-    //     this.dbOptions = { ...this.dbOptions, ...globalThis.dbOptions } as CCFDatabaseOptions;
-    //   }
-
-    //   // In development, make the db globally accessible
-    //   if (!environment.production) {
-    //     ((globalThis as unknown) as { db: Remote<CCFDatabase> | CCFDatabase }).db = this.dataSource;
-    //   }
-    // }
   }
 
   ngOnDestroy(): void {
