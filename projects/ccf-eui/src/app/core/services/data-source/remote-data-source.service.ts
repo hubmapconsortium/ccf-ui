@@ -6,7 +6,8 @@ import {
 } from 'ccf-database';
 import { GlobalConfigState } from 'ccf-shared';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, shareReplay, switchMap } from 'rxjs/operators';
+import { Cacheable } from 'ts-cacheable';
 
 import { DataSourceService } from './data-source.service';
 
@@ -25,34 +26,42 @@ export class RemoteDataSourceService implements DataSourceService {
     private readonly http: HttpClient
   ) { }
 
+  @Cacheable()
   getProviderNames(): Observable<string[]> {
     return this.doFetch('provider-names');
   }
 
+  @Cacheable()
   getDatasetTechnologyNames(): Observable<string[]> {
     return this.doFetch('technology-names');
   }
 
+  @Cacheable()
   getOntologyTreeModel(): Observable<OntologyTreeModel> {
     return this.doFetch('ontology-tree-model');
   }
 
+  @Cacheable()
   getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.doFetch('reference-organs');
   }
 
+  @Cacheable()
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
     return this.doFetch('tissue-blocks', filter);
   }
 
+  @Cacheable()
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
     return this.doFetch('aggregate-results', filter);
   }
 
+  @Cacheable()
   getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.doFetch('ontology-term-occurences', filter);
   }
 
+  @Cacheable()
   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.doFetch<SpatialSceneNode[]>('scene', filter).pipe(
       map(nodes => nodes.map(node => ({
@@ -68,7 +77,8 @@ export class RemoteDataSourceService implements DataSourceService {
 
     return globalConfig.getOption('remoteApiEndpoint').pipe(
       map(endpoint => `${endpoint}/${dataset}`),
-      switchMap(url => http.get<T>(url, { params, responseType: 'json' }))
+      switchMap(url => http.get<T>(url, { params, responseType: 'json' })),
+      shareReplay(1)
     );
   }
 
