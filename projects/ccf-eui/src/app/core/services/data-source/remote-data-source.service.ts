@@ -8,6 +8,8 @@ import { GlobalConfigState } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
+import { DataSourceService } from './data-source.service';
+
 
 export interface RemoteDataSourceOptions {
   remoteApiEndpoint: string;
@@ -17,7 +19,7 @@ export interface RemoteDataSourceOptions {
 @Injectable({
   providedIn: 'root'
 })
-export class RemoteDataSourceService {
+export class RemoteDataSourceService implements DataSourceService {
   constructor(
     private readonly globalConfig: GlobalConfigState<RemoteDataSourceOptions>,
     private readonly http: HttpClient

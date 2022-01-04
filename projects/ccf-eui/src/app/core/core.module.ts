@@ -1,24 +1,14 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule, Optional, Provider, SkipSelf } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { MousePositionTrackerModule } from 'ccf-shared';
 import { AnalyticsModule } from 'ccf-shared/analytics';
 
 import { environment } from '../../environments/environment';
 import { HeaderModule } from './header/header.module';
+import { DataSourceDelegateService } from './services/data-source/data-source-delagate.service';
 import { DataSourceService } from './services/data-source/data-source.service';
-import { RemoteDataSourceService } from './services/data-source/remote-data-source.service';
 import { ThemingModule } from './services/theming/theming.module';
 import { StoreModule } from './store/store.module';
-
-
-const providers: Provider[] = [];
-
-if (environment.useRemoteApi && environment.dbOptions.remoteApiEndpoint) {
-  providers.push({
-    provide: DataSourceService,
-    useExisting: RemoteDataSourceService
-  });
-}
 
 
 @NgModule({
@@ -34,7 +24,9 @@ if (environment.useRemoteApi && environment.dbOptions.remoteApiEndpoint) {
     StoreModule,
     ThemingModule
   ],
-  providers,
+  providers: [
+    { provide: DataSourceService, useExisting: DataSourceDelegateService }
+  ],
   exports: [HeaderModule]
 })
 export class CoreModule {
