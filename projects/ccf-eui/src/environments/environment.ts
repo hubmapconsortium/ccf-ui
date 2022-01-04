@@ -7,6 +7,7 @@
 export const environment = {
   production: false,
   disableDbWorker: true,
+  useRemoteApi: true,
   acceptableViewerDomains: [
     'https://portal.hubmapconsortium.org',
     'https://portal.test.hubmapconsortium.org'
@@ -39,7 +40,9 @@ export const environment = {
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
-    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? ''
+    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
+
+    remoteApiEndpoint: 'https://ccf-api.herokuapp.com/v1'
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };

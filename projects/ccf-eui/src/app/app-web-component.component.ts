@@ -36,6 +36,8 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() hubmapToken: string;
   @Input() hubmapPortalUrl: string;
 
+  @Input() remoteApiEndpoint: string;
+
   initialized: boolean;
 
   constructor(
