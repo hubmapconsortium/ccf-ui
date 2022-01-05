@@ -69,7 +69,7 @@
     <ccf-drawer-content>
       <div [class.closed]="!organListVisible" class="selector-drawer">
         <ccf-organ-selector class="organ-selector" [multiselect]="true"
-                            [occurenceData]="data.termOccurencesData$ | async"
+                            [occurenceData]="(data.termOccurencesData$ | async) ?? {}"
                             [organList]="scene.referenceOrgans$ | async"
                             (organsChanged)="scene.setSelectedReferenceOrgans($event)"
                             [selectedOrgans]="scene.selectedReferenceOrgans$ | async">

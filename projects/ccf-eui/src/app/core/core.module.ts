@@ -5,6 +5,8 @@ import { AnalyticsModule } from 'ccf-shared/analytics';
 
 import { environment } from '../../environments/environment';
 import { HeaderModule } from './header/header.module';
+import { DataSourceDelegateService } from './services/data-source/data-source-delagate.service';
+import { DataSourceService } from './services/data-source/data-source.service';
 import { ThemingModule } from './services/theming/theming.module';
 import { StoreModule } from './store/store.module';
 
@@ -21,6 +23,9 @@ import { StoreModule } from './store/store.module';
     HeaderModule,
     StoreModule,
     ThemingModule
+  ],
+  providers: [
+    { provide: DataSourceService, useExisting: DataSourceDelegateService }
   ],
   exports: [HeaderModule]
 })

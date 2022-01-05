@@ -3,6 +3,8 @@ import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 
+import { DataSourceService } from '../../services/data-source/data-source.service';
+import { LocalDataSourceService } from '../../services/data-source/local-data-source.service';
 import { DataState, DEFAULT_FILTER } from './data.state';
 
 describe('DataState', () => {
@@ -13,6 +15,9 @@ describe('DataState', () => {
       imports: [
         NgxsDataPluginModule.forRoot(),
         NgxsModule.forRoot([DataState, GlobalConfigState])
+      ],
+      providers: [
+        { provide: DataSourceService, useExisting: LocalDataSourceService }
       ]
     });
 
