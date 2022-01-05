@@ -39,7 +39,10 @@ export const environment = {
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
-    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? ''
+    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
+
+    useRemoteApi: true,
+    remoteApiEndpoint: 'https://ccf-api.herokuapp.com/v1'
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };
