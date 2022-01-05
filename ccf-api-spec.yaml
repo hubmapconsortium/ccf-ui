@@ -186,42 +186,45 @@ components:
       in: query
       required: false
       schema:
-        type: string
+        $ref: '#/components/schemas/NumberRange'
     sex:
       name: sex
       description: sex to filter by
       in: query
       required: false
       schema:
-        type: string
+        enum:
+          - both
+          - female
+          - male
     bmi-range:
       name: bmi-range
       description: BMI range to filter by
       in: query
       required: false
       schema:
-        type: string
+        $ref: '#/components/schemas/NumberRange'
     providers:
       name: providers
       description: Tissue data provider names to filter by
       in: query
       required: false
       schema:
-        type: string
+        $ref: '#/components/schemas/CommaSeparatedStrings'
     technologies:
       name: technologies
       description: Dataset technologies to filter by
       in: query
       required: false
       schema:
-        type: string
+        $ref: '#/components/schemas/CommaSeparatedStrings'
     ontology-terms:
       name: ontology-terms
       description: Ontology terms to filter by
       in: query
       required: false
       schema:
-        type: string
+        $ref: '#/components/schemas/CommaSeparatedStrings'
     token:
       name: token
       description: Authentication token to use for authenticated searches
@@ -238,6 +241,25 @@ components:
         type: string
 
   schemas:
+    NumberRange:
+      type: string
+      description: >-
+        A range of numbers can be expressed as a single number
+        or two comma separated numbers where either end can be omitted to use
+        the default minimum/maximum.
+      examples:
+        - 10
+        - 10,20
+        - 10,
+        - ',20'
+        - ','
+    CommaSeparatedStrings:
+      type: string
+      description: >-
+        Any number of strings separated by commas.
+      examples:
+        - SingleItem
+        - Item1,Item2,Item3
     TissueBlockResult:
       type: object
       properties:
