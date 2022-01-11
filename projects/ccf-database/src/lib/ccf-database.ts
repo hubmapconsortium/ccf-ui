@@ -175,6 +175,9 @@ export class CCFDatabase {
             await addN3ToStore(source, store);
           } else if (source.endsWith('rdf') || source.endsWith('owl') || source.endsWith('xml')) {
             await addRdfXmlToStore(source, store);
+          } else {
+            // Passthrough assumes a JSON-LD response
+            await addJsonLdToStore(source, store);
           }
         } else {
           await addJsonLdToStore(source, store);
