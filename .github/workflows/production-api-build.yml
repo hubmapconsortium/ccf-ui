@@ -1,20 +1,22 @@
 name: 'Production API Build'
 
 on:
-  push:
-    branches: ['pbi-aws-deploy']
-  workflow_dispatch:
-    branches: ['pbi-aws-deploy']
+  workflow_run:
+    workflows: ['Tests']
+    branches: ['main']
+    types:
+      - completed
 
 jobs:
   deploy:
     name: 'Deploy'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: pbi-aws-deploy
+          ref: main
 
       - name: Setup environment
         run: cp .env.example .env
