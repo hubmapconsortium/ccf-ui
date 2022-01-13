@@ -2,13 +2,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
 import {
-  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
 } from 'ccf-database';
 import { GlobalConfigState } from 'ccf-shared';
 import { Observable } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
-
+import { DEFAULT_FILTER } from '../../store/data/data.state';
 import { DataSourceService } from './data-source.service';
 
 
@@ -95,7 +95,8 @@ export class RemoteDataSourceService implements DataSourceService {
 
     return keys.reduce<HttpParams>((params, key) => {
       const value = filter[key];
-      return !isEmpty(value) ? params.set(key, stringify(value)) : params;
+      const defaultValue = stringify(DEFAULT_FILTER[key]);
+      return !isEmpty(value) && stringify(value) !== defaultValue ? params.set(key, stringify(value)) : params;
     }, new HttpParams());
   }
 

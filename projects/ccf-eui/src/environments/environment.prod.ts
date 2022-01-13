@@ -58,7 +58,7 @@ export const environment = {
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
     useRemoteApi: true,
-    remoteApiEndpoint: 'https://ccf-api.herokuapp.com/v1'
+    remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
   },
   googleAnalyticsToken: window.location.hostname === 'portal.hubmapconsortium.org' ? 'G-1WRJHN9FM6' : 'G-J9HWV9QPJ4'
 };
