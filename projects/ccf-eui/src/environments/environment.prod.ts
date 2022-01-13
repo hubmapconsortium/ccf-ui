@@ -41,7 +41,7 @@ export const environment = {
     // 'http://purl.obolibrary.org/obo/UBERON_0001222', // Ureter, R
     'http://purl.obolibrary.org/obo/UBERON_0001255', // Bladder
     'http://purl.obolibrary.org/obo/UBERON_0000995', // Uterus
-    'http://purl.obolibrary.org/obo/UBERON_0002049' // Blood Vasculature
+    'http://purl.obolibrary.org/obo/UBERON_0004537' // Blood Vasculature
   ],
   dbOptions: {
     ccfOwlUrl: 'assets/ccf.owl.n3store.json',
