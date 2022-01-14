@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { JsonLdObj } from 'jsonld/jsonld-spec';
+import { uniqBy } from 'lodash';
 
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from '../shared/ccf-spatial-jsonld';
 import { parseCSV } from './parse-csv';
@@ -10,9 +11,7 @@ import { processSpatialEntities } from './process-spatial-entities';
 
 export const referenceDataConfig = {
   extractionSitesUrl: 'https://docs.google.com/spreadsheets/d/14V1HfF9egFbht8rp_oicMZEesbHzXGvJ/export?format=csv&gid=301817069',
-  // anatomicalStructuresUrl: 'https://docs.google.com/spreadsheets/d/14V1HfF9egFbht8rp_oicMZEesbHzXGvJ/export?format=csv&gid=1553361105',
-  // anatomicalStructuresUrl: 'https://raw.githubusercontent.com/hubmapconsortium/ccf-releases/v1.1/v1.1/models/ASCT-B_3D_Models_Mapping.csv',
-  anatomicalStructuresUrl: 'http://localhost:8081/v1.1/models/ASCT-B_3D_Models_Mapping.csv',
+  anatomicalStructuresUrl: 'http://localhost:8080/source_data/ASCT-B_3D_Models_Mapping.csv',
   referenceOrganConfigUrl: 'http://localhost:8080/source_data/reference-organ-config.csv'
 };
 
@@ -25,7 +24,7 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
   const refOrganSources = new Set(referenceOrgans.map(s => s.source));
   const goodRefOrgans = new Set(referenceOrgans.map(s => s['@id']));
 
-  const spatialEntities =
+  let spatialEntities =
     (await Promise.all(
       referenceOrgans.map(s =>
         processSpatialEntities(entities[s.source.split('_')[0]], s.object)
@@ -52,6 +51,8 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
   //   processSpatialEntities(entities['#VHFemaleOrgans']),
   //   processSpatialEntities(entities['#VHMaleOrgans'])
   // ])).reduce((acc, e) => acc.concat(e), []);
+
+  spatialEntities = uniqBy(spatialEntities, e => e['@id']);
 
   const jsonld = (await processExtractionSites(
     config.extractionSitesUrl,

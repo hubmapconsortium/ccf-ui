@@ -30,7 +30,7 @@ export const environment = {
     // 'http://purl.obolibrary.org/obo/FMA_7213', // Ovary, R
     'http://purl.obolibrary.org/obo/UBERON_0001264', // Pancreas
     'http://purl.obolibrary.org/obo/UBERON_0001270', // Pelvis
-    'http://purl.obolibrary.org/obo/UBERON_0002367', // Prostate
+    'http://purl.obolibrary.org/obo/UBERON_0002367', // Prostate Gland
     'http://purl.obolibrary.org/obo/UBERON_0002097', // Skin
     'http://purl.obolibrary.org/obo/UBERON_0002108', // Small Intestine
     'http://purl.obolibrary.org/obo/UBERON_0000059', // Large Intestine
@@ -39,9 +39,9 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0000056', // Ureter
     // 'http://purl.obolibrary.org/obo/UBERON_0001223', // Ureter, L
     // 'http://purl.obolibrary.org/obo/UBERON_0001222', // Ureter, R
-    'http://purl.obolibrary.org/obo/UBERON_0001255', // Bladder
+    'http://purl.obolibrary.org/obo/UBERON_0001255', // Urinary Bladder
     'http://purl.obolibrary.org/obo/UBERON_0000995', // Uterus
-    'http://purl.obolibrary.org/obo/UBERON_0002049' // Blood Vasculature
+    'http://purl.obolibrary.org/obo/UBERON_0004537' // Blood Vasculature
   ],
   dbOptions: {
     ccfOwlUrl: 'assets/ccf.owl.n3store.json',
@@ -57,7 +57,7 @@ export const environment = {
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
-    useRemoteApi: true,
+    useRemoteApi: false, // Temporary while in BETA
     remoteApiEndpoint: 'https://ccf-api--staging.herokuapp.com/v1'
   },
   googleAnalyticsToken: 'G-ERNVZ1Q4KE'

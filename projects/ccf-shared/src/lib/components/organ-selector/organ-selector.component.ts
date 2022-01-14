@@ -7,67 +7,6 @@ import { ResizeSensor } from 'css-element-queries';
 /**
  * All organs that will eventually be displayed in the app
  */
-export const ALL_POSSIBLE_ORGANS2: OrganInfo[] = [
-  {
-    src: 'app:skin', organ: 'Skin', name: 'Skin', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002097'
-  },
-  {
-    src: 'app:large-intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000059'
-  },
-  {
-    src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000948'
-  },
-  {
-    disabled: true,
-    src: 'app:kidney', organ: 'Kidney', name: 'Kidney', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002113'
-  },
-  {
-    src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004538'
-  },
-  {
-    src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004539'
-  },
-  {
-    src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002106'
-  },
-  {
-    src: 'app:brain', organ: 'Brain', name: 'Allen Brain', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000955'
-  },
-  {
-    disabled: true,
-    src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002048'
-  },
-  {
-    src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001004'
-  },
-  {
-    src: 'app:lymph-nodes', organ: 'Lymph Nodes', name: 'Lymph Nodes', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'
-  },
-  {
-    src: 'app:pelvis-f', organ: 'Pelvis', name: 'Pelvis, F', hasSex: false,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001270'
-  },
-  {
-    src: 'app:thymus', organ: 'Thymus', name: 'Thymus', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002370'
-  },
-  {
-    src: 'app:vasculature-thick', organ: 'Vasculature, Thick', name: 'Vasculature, Thick', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002049'
-  }
-];
-
 export const ALL_POSSIBLE_ORGANS = [
   {
     src: 'app:skin',
@@ -219,8 +158,8 @@ export const ALL_POSSIBLE_ORGANS = [
   },
   {
     src: 'app:prostate',
-    organ: 'Prostate',
-    name: 'Prostate',
+    organ: 'Prostate Gland',
+    name: 'Prostate Gland',
     hasSex: false,
     sex: 'male',
     id: 'http://purl.obolibrary.org/obo/UBERON_0002367'
@@ -271,8 +210,8 @@ export const ALL_POSSIBLE_ORGANS = [
   },
   {
     src: 'app:bladder',
-    organ: 'Bladder',
-    name: 'Bladder',
+    organ: 'Urinary Bladder',
+    name: 'Urinary Bladder',
     hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0001255'
   },
@@ -289,7 +228,7 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Blood Vasculature',
     name: 'Blood Vasculature',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002049'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004537'
   }
 ].sort((a, b) => a.name.localeCompare(b.name)) as OrganInfo[];
 

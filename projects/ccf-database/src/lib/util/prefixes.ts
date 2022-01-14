@@ -188,5 +188,5 @@ export const rui = {
   spleen: uberon.x('0002106'),
   thymus: uberon.x('0002370'),
   ureter: uberon.x('0000056'),
-  vasculature: uberon.x('0002049')
+  vasculature: uberon.x('0004537')
 };

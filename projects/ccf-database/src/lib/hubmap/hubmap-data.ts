@@ -51,24 +51,6 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
   OT: [RUI_ORGANS.body], // other_organ
 };
 
-/** HBM organ names to display name. */
-const HBM_ORGAN_LABELS: { [organName: string]: string } = {
-  BL: 'Bladder',
-  RK: 'Right Kidney',
-  LK: 'Left Kidney',
-  HT: 'Heart',
-  LI: 'Large Intestine',
-  SI: 'Small Intestine',
-  LL: 'Left Lung',
-  RL: 'Right Lung',
-  LY: 'Lymph Node',
-  SP: 'Spleen',
-  TH: 'Thymus',
-  UR: 'Ureter',
-  LV: 'Liver',
-  OT: 'Other Organ',
-};
-
 const ENTITY_CONTEXT = {
   '@base': 'http://purl.org/ccf/latest/ccf-entity.owl#',
   '@vocab': 'http://purl.org/ccf/latest/ccf-entity.owl#',
