@@ -91,14 +91,24 @@ export class CCFSpatialScene {
 
   getReferenceSceneNodes(filter?: Filter): SpatialSceneNode[] {
     const body = this.getReferenceBody(filter);
+    const skinNodes: SpatialSceneNode[] = [];
     let nodes: (SpatialSceneNode | undefined)[] = [
       ...this.getReferenceOrganSets(filter).map((organ) => {
         const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
-        return this.getSceneNode(organ, body, {
+        const sceneNode = this.getSceneNode(organ, body, {
           color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr', zoomBasedOpacity: !isSkin
         });
+        if (isSkin && sceneNode) {
+          skinNodes.push(sceneNode);
+          return undefined;
+        } else {
+          return sceneNode;
+        }
       })
     ];
+    if (skinNodes.length > 0) {
+      nodes = [...skinNodes, ...nodes];
+    }
 
     if (filter?.debug) {
       // Debug bounding boxes
