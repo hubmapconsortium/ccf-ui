@@ -4,6 +4,113 @@ import { addJsonLdToStore, Store } from 'triple-store-utils';
 
 import { hubmapResponseAsJsonLd } from './hubmap-data';
 
+
+interface SearchResultJson {
+  hits: {
+    hits: unknown[];
+    total: {
+      value: number;
+    };
+  };
+}
+
+
+// Reduce this value if including more data fields
+const PER_API_SEARCH_REQUEST_COUNT = 50;
+
+const INCLUDED_DATA_FIELDS = [
+  'uuid', 'entity_type',
+  'group_uuid', 'group_name',
+  'last_modified_timestamp', 'created_by_user_displayname',
+  'ancestors', 'descendants',
+  'rui_location', 'specimen_type'
+];
+
+const DEFAULT_API_SEARCH_QUERY: unknown = {
+  exists: {
+    field: 'rui_location'
+  }
+};
+
+function getApiSearchHeaders(token?: string): Headers {
+  const headers = new Headers();
+
+  headers.append('Content-type', 'application/json');
+  if (token) {
+    headers.append('Authorization', `Bearer ${token}`);
+  }
+
+  return headers;
+}
+
+function getApiSearchBody(from: number, size: number, query?: unknown): string {
+  const bodyObj = {
+    version: true,
+    from,
+    size,
+    stored_fields: ['*'],
+    script_fields: {},
+    docvalue_fields: [],
+    query: query ?? DEFAULT_API_SEARCH_QUERY,
+    _source: {
+      includes: INCLUDED_DATA_FIELDS
+    }
+  };
+
+  return JSON.stringify(bodyObj);
+}
+
+async function doSearchRequest(
+  url: string, init?: RequestInit
+): Promise<SearchResultJson | undefined> {
+  try {
+    const res = await fetch(url, init);
+    return res.ok ? (await res.json()) : undefined;
+  } catch (_error) {
+    return undefined;
+  }
+}
+
+async function doApiSearch(
+  url: string, token?: string, query?: unknown
+): Promise<SearchResultJson | undefined> {
+  const perReqCount = PER_API_SEARCH_REQUEST_COUNT;
+  const headers = getApiSearchHeaders(token);
+  const body = getApiSearchBody(0, perReqCount, query);
+  const firstResult = await doSearchRequest(url, { method: 'POST', headers, body });
+  if (!firstResult) {
+    return undefined;
+  }
+
+  const totalCount = firstResult.hits.total.value;
+  if (totalCount <= perReqCount) {
+    return firstResult;
+  }
+
+  const requests: Promise<SearchResultJson | undefined>[] = [];
+  for (let from = perReqCount; from < totalCount; from += perReqCount) {
+    requests.push(doSearchRequest(url, {
+      method: 'POST',
+      headers,
+      body: getApiSearchBody(from, perReqCount, query)
+    }));
+  }
+
+  const results = await Promise.all(requests);
+  if (results.some(res => !res)) {
+    return undefined;
+  }
+
+  const items = results.map(res => res!.hits.hits);
+  return {
+    ...firstResult,
+    hits: {
+      ...firstResult.hits,
+      hits: firstResult.hits.hits.concat(...items),
+    }
+  };
+}
+
 /**
  * Search the HuBMAP Search API and return CCF-compatible JSON-LD data
  *
@@ -15,35 +122,17 @@ import { hubmapResponseAsJsonLd } from './hubmap-data';
  * @param portalUrl the portal url to point to
  * @returns CCF-compatible JSON-LD data or undefined on error
  */
-export async function searchHubmap(dataUrl: string, serviceType: 'static' | 'search-api',
-                                   query?: unknown, serviceToken?: string, assetsApi = '', portalUrl = ''): Promise<JsonLd | undefined> {
-  let hubmapData: Record<string, unknown> | undefined;
+export async function searchHubmap(
+  dataUrl: string, serviceType: 'static' | 'search-api',
+  query?: unknown, serviceToken?: string, assetsApi = '', portalUrl = ''
+): Promise<JsonLd | undefined> {
+  let hubmapData: SearchResultJson | undefined;
   if (serviceType === 'static') {
-    hubmapData = await fetch(dataUrl).then(r => r.ok ? r.json() : undefined).catch(() => undefined) as Record<string, unknown>;
+    hubmapData = await doSearchRequest(dataUrl);
   } else if (serviceType === 'search-api') {
-    const headers: Record<string, string> = { 'Content-type': 'application/json' };
-    if (serviceToken && serviceToken.length > 0) {
-      headers.Authorization = `Bearer ${serviceToken}`;
-    }
-    hubmapData = await fetch(dataUrl, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        version: true,
-        size: 10000,
-        _source: {
-          excludes: [
-            'donor', 'immediate_ancestors', 'immediate_descendants', 'origin_sample',
-            'portal_metadata_upload_files', 'image_file_metadata', 'ancestor_ids', 'descendant_ids'
-          ]
-        },
-        stored_fields: ['*'],
-        script_fields: {},
-        docvalue_fields: [],
-        query: query ?? { exists: { field: 'rui_location' } }
-      })
-    }).then(r => r.ok ? r.json() : undefined).catch(() => undefined) as Record<string, unknown>;
+    hubmapData = await doApiSearch(dataUrl, serviceToken, query);
   }
+
   if (hubmapData) {
     return hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken);
   } else {
