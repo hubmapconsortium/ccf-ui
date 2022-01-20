@@ -86,6 +86,8 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
       console.log(refOrgan.source);
       continue;
     }
+    entity.object['@id'] = entity['@id'] + 'Obj';
+    entity.object.placement['@id'] = entity['@id'] + 'ObjPlacement';
     entity.object.placement.target = entity['@id'];
 
     if (Array.isArray(entity.placement)) {
