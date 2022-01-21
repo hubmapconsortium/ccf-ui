@@ -158,11 +158,20 @@ export const ALL_POSSIBLE_ORGANS = [
   },
   {
     src: 'app:prostate',
-    organ: 'Prostate Gland',
-    name: 'Prostate Gland',
+    organ: 'Prostate',
+    name: 'Prostate',
     hasSex: false,
     sex: 'male',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002367'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002367',
+    disabled: true
+  },
+  {
+    src: 'app:prostate',
+    organ: 'Prostate',
+    name: 'Prostate',
+    hasSex: false,
+    sex: 'male',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000079'
   },
   {
     src: 'app:small-intestine',

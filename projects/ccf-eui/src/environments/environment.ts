@@ -35,7 +35,7 @@ export const environment = {
     // 'http://purl.obolibrary.org/obo/FMA_7213', // Ovary, R
     'http://purl.obolibrary.org/obo/UBERON_0001264', // Pancreas
     'http://purl.obolibrary.org/obo/UBERON_0001270', // Pelvis
-    'http://purl.obolibrary.org/obo/UBERON_0002367', // Prostate Gland
+    'http://purl.obolibrary.org/obo/UBERON_0002367', // Prostate
     'http://purl.obolibrary.org/obo/UBERON_0002097', // Skin
     'http://purl.obolibrary.org/obo/UBERON_0002108', // Small Intestine
     'http://purl.obolibrary.org/obo/UBERON_0000059', // Large Intestine
