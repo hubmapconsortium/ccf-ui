@@ -37,13 +37,13 @@ const RUI_ORGANS: { [organName: string]: string } = createRuiOrganLookup();
 const HBM_ORGANS: { [organName: string]: string[] } = {
   AO: [RUI_ORGANS.body, RUI_ORGANS.heart, RUI_ORGANS.aorta], //'Aorta',
   BL: [RUI_ORGANS.body, RUI_ORGANS.urinary_bladder], //'Bladder',
-  BD: [RUI_ORGANS.body, RUI_ORGANS.blood], //'Blood', *
-  BM: [RUI_ORGANS.body, RUI_ORGANS.bone_marrow], //'Bone Marrow', *
+  BD: [RUI_ORGANS.body, RUI_ORGANS.pelvis, RUI_ORGANS.blood], //'Blood', *
+  BM: [RUI_ORGANS.body, RUI_ORGANS.pelvis, RUI_ORGANS.bone_marrow], //'Bone Marrow', *
   BR: [RUI_ORGANS.body, RUI_ORGANS.brain], //'Brain',
   LB: [RUI_ORGANS.body, RUI_ORGANS.respiratory_system, RUI_ORGANS.lungs, RUI_ORGANS.left_bronchus], //'Bronchus (Left)',
   RB: [RUI_ORGANS.body, RUI_ORGANS.respiratory_system, RUI_ORGANS.lungs, RUI_ORGANS.right_bronchus], //'Bronchus (Right)',
-  LE: [RUI_ORGANS.body, RUI_ORGANS.eye, RUI_ORGANS.eye_l], //'Eye (Left)',
-  RE: [RUI_ORGANS.body, RUI_ORGANS.eye, RUI_ORGANS.eye_r], //'Eye (Right)',
+  LE: [RUI_ORGANS.body, RUI_ORGANS.eye, RUI_ORGANS.eye_left], //'Eye (Left)',
+  RE: [RUI_ORGANS.body, RUI_ORGANS.eye, RUI_ORGANS.eye_right], //'Eye (Right)',
   LF: [RUI_ORGANS.body, RUI_ORGANS.fallopian_tube, RUI_ORGANS.fallopian_tube_left], //'Fallopian Tube (Left)',
   RF: [RUI_ORGANS.body, RUI_ORGANS.fallopian_tube, RUI_ORGANS.fallopian_tube_right], //'Fallopian Tube (Right)',
   HT: [RUI_ORGANS.body, RUI_ORGANS.heart], //'Heart',
@@ -60,7 +60,7 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
   RO: [RUI_ORGANS.body, RUI_ORGANS.ovary, RUI_ORGANS.ovary_right], //'Ovary (Right)',
   PA: [RUI_ORGANS.body, RUI_ORGANS.pancreas], //'Pancreas',
   PL: [RUI_ORGANS.body], //'Placenta', *
-  SI: [RUI_ORGANS.body, RUI_ORGANS.small_instestine], //'Small Intestine',
+  SI: [RUI_ORGANS.body, RUI_ORGANS.small_intestine], //'Small Intestine',
   SK: [RUI_ORGANS.body, RUI_ORGANS.skin], //'Skin',
   SP: [RUI_ORGANS.body, RUI_ORGANS.spleen], //'Spleen',
   ST: [RUI_ORGANS.body], //'Sternum', *

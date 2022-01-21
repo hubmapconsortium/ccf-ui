@@ -160,7 +160,7 @@ export const uberon = {
 
 /** FMA specific ids. */
 export const fma = {
-  x: prefixer('uberon')
+  x: prefixer('fma')
 };
 
 /** LMHA specific ids. */
