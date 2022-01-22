@@ -110,7 +110,7 @@
     "ng5-slider": "^1.2.6",
     "ngx-google-analytics": "^11.2.1",
     "ngx-markdown": "^12.0.1",
-    "node-fetch": "^2.6.6",
+    "node-fetch": "^3.1.1",
     "qs": "^6.10.2",
     "rdf-literal": "^1.2.0",
     "rdfxml-streaming-parser": "^1.4.0",
