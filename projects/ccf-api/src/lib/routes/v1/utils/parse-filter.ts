@@ -108,7 +108,7 @@ function processParameter(result: Filter, key: string, value: unknown): void {
       setIfDefined(result, 'technologies', parseArray(value));
       break;
 
-    case 'ontologyTerms':      
+    case 'ontologyTerms':
     case 'ontology-terms':
       setIfDefined(result, 'ontologyTerms', parseArray(value));
       break;
