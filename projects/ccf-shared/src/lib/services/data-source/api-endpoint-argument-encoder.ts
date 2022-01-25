@@ -8,6 +8,7 @@ const ARGUMENT_TO_PARAM_NAME: Record<string, string> = {
   tmc: 'tmc',
   technologies: 'technologies',
   ontologyTerms: 'ontology-terms',
+  debug: 'debug',
   organIri: 'organ-iri'
 };
 
