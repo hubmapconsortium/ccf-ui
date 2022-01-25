@@ -7,10 +7,10 @@ import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
 import { AggregateResult, Filter, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
+import { DataSourceService } from 'ccf-shared';
 import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
 import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from 'rxjs/operators';
 
-import { DataSourceService } from '../../services/data-source/data-source.service';
 
 
 /** Default values for filters. */

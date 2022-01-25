@@ -3,12 +3,12 @@ import { DataAction, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
 import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
+import { DataSourceService } from 'ccf-shared';
 import { at, forEach, partial } from 'lodash';
 import { forkJoin } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
-import { DataSourceService } from '../../services/data-source/data-source.service';
 
 
 /**

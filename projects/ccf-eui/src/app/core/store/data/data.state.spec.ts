@@ -1,10 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule } from '@ngxs/store';
-import { GlobalConfigState } from 'ccf-shared';
+import { CCFDatabaseDataSourceService, DataSourceService, GlobalConfigState } from 'ccf-shared';
 
-import { DataSourceService } from '../../services/data-source/data-source.service';
-import { LocalDataSourceService } from '../../services/data-source/local-data-source.service';
 import { DataState, DEFAULT_FILTER } from './data.state';
 
 describe('DataState', () => {
@@ -17,7 +15,7 @@ describe('DataState', () => {
         NgxsModule.forRoot([DataState, GlobalConfigState])
       ],
       providers: [
-        { provide: DataSourceService, useExisting: LocalDataSourceService }
+        { provide: DataSourceService, useExisting: CCFDatabaseDataSourceService }
       ]
     });
 
