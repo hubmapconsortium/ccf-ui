@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AggregateResult, Filter, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
-import { ALL_POSSIBLE_ORGANS, OrganInfo } from 'ccf-shared';
+import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from 'ccf-shared';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { DataSourceService } from '../data-source/data-source.service';
 
 
 @Injectable({
