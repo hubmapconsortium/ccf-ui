@@ -14,7 +14,8 @@ interface CCFDatabaseManager extends Unsubscribable {
 }
 
 
-abstract class CCFDatabaseDataSource extends DelegateDataSource {
+@Injectable()
+abstract class CCFDatabaseDataSourceBaseService extends DelegateDataSource {
   readonly impl$: Observable<DataSourceLike>;
   readonly database$: Observable<CCFDatabase | Remote<CCFDatabase>>;
 
@@ -47,7 +48,7 @@ abstract class CCFDatabaseDataSource extends DelegateDataSource {
 @Injectable({
   providedIn: 'root'
 })
-export class CCFDatabaseDataSourceService extends CCFDatabaseDataSource {
+export class CCFDatabaseDataSourceService extends CCFDatabaseDataSourceBaseService {
   protected createDatabase(config: CCFDatabaseOptions): CCFDatabaseManager {
     return {
       database: new CCFDatabase(config),
@@ -57,7 +58,7 @@ export class CCFDatabaseDataSourceService extends CCFDatabaseDataSource {
 }
 
 @Injectable()
-export abstract class WorkerCCFDatabaseDataSourceService extends CCFDatabaseDataSource {
+export abstract class WorkerCCFDatabaseDataSourceService extends CCFDatabaseDataSourceBaseService {
   protected abstract createWorker(config: CCFDatabaseOptions): Worker;
 
   protected createDatabase(config: CCFDatabaseOptions): CCFDatabaseManager {

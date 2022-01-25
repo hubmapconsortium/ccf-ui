@@ -2,8 +2,7 @@ import {
   AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from 'ccf-database';
 import { Observable, ObservableInput, ObservedValueOf } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
-import { Cacheable } from 'ts-cacheable';
+import { switchMap } from 'rxjs/operators';
 
 
 
@@ -32,54 +31,45 @@ export type DataSourceDataType<K extends keyof DataSource> =
 
 
 export abstract class ForwardingDataSource implements DataSource {
-  @Cacheable()
   getProviderNames(): Observable<string[]> {
     return this.forwardCall('getProviderNames');
   }
 
-  @Cacheable()
   getDatasetTechnologyNames(): Observable<string[]> {
     return this.forwardCall('getDatasetTechnologyNames');
   }
 
-  @Cacheable()
   getOntologyTreeModel(): Observable<OntologyTreeModel> {
     return this.forwardCall('getOntologyTreeModel');
   }
 
-  @Cacheable()
   getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.forwardCall('getReferenceOrgans');
   }
 
-  @Cacheable()
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
     return this.forwardCall('getTissueBlockResults', filter);
   }
 
-  @Cacheable()
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
     return this.forwardCall('getAggregateResults', filter);
   }
 
-  @Cacheable()
   getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.forwardCall('getOntologyTermOccurences', filter);
   }
 
-  @Cacheable()
   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.forwardCall('getScene', filter);
   }
 
-  @Cacheable()
   getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.forwardCall('getReferenceOrganScene', organIri, filter);
   }
 
   protected abstract forwardCall<K extends keyof DataSource>(
     method: K, ...args: Parameters<DataSourceMethod<K>>
-  ): ReturnType<DataSourceMethod<K>>;
+  ): Observable<DataSourceDataType<K>>;
 }
 
 
@@ -88,12 +78,11 @@ export abstract class DelegateDataSource extends ForwardingDataSource {
 
   protected forwardCall<K extends keyof DataSource>(
     method: K, ...args: Parameters<DataSourceMethod<K>>
-  ): ReturnType<DataSourceMethod<K>> {
+  ): Observable<DataSourceDataType<K>> {
     type AnyFunction = (...rest: unknown[]) => ObservableInput<unknown>;
 
     return this.impl$.pipe(
-      switchMap(impl => (impl[method] as AnyFunction)(...args)),
-      take(1)
-    ) as ReturnType<DataSourceMethod<K>>;
+      switchMap(impl => (impl[method] as AnyFunction)(...args))
+    ) as Observable<DataSourceDataType<K>>;
   }
 }

@@ -2,7 +2,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
 import { Filter, SpatialSceneNode } from 'ccf-database';
+import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { Cacheable } from 'ts-cacheable';
 
 import { GlobalConfigState } from '../../config/global-config.state';
 import { encodeArguments as defaultEncodeArguments } from './api-endpoint-argument-encoder';
@@ -76,9 +78,10 @@ export class ApiEndpointDataSourceService extends ForwardingDataSource {
     return new HttpParams();
   }
 
+  @Cacheable({ maxCacheCount: 16 })
   protected forwardCall<K extends keyof DataSource>(
     method: K, ...args: Parameters<DataSourceMethod<K>>
-  ): ReturnType<DataSourceMethod<K>> {
+  ): Observable<DataSourceDataType<K>> {
     const { globalConfig, http } = this;
     const dataset = this.getDataset(method);
     const reviver = this.getReviver(method);
@@ -91,7 +94,7 @@ export class ApiEndpointDataSourceService extends ForwardingDataSource {
         responseType: 'json'
       })),
       map(data => reviver?.(data) ?? data)
-    ) as ReturnType<DataSourceMethod<K>>;
+    );
   }
 
   private withToken(params: HttpParams): HttpParams {
