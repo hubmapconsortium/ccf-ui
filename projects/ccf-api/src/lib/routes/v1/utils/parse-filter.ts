@@ -90,12 +90,12 @@ function processParameter(result: Filter, key: string, value: unknown): void {
       setIfDefined(result, 'sex', parseSex(value));
       break;
 
-    case 'ageRange':
+    case 'agerange':
     case 'age-range':
       setIfDefined(result, 'ageRange', parseRange(value, 0, 100));
       break;
 
-    case 'bmiRange':
+    case 'bmirange':
     case 'bmi-range':
       setIfDefined(result, 'bmiRange', parseRange(value, 0, 100));
       break;
@@ -109,7 +109,7 @@ function processParameter(result: Filter, key: string, value: unknown): void {
       setIfDefined(result, 'technologies', parseArray(value));
       break;
 
-    case 'ontologyTerms':
+    case 'ontologyterms':
     case 'ontology-terms':
       setIfDefined(result, 'ontologyTerms', parseArray(value));
       break;
