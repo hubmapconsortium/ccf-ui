@@ -42,3 +42,4 @@ export * from './lib/services/data-source/data-source';
 export * from './lib/services/data-source/data-source.service';
 export * from './lib/services/data-source/api-endpoint.service';
 export * from './lib/services/data-source/ccf-database.service';
+export * from './lib/services/data-source/injector-delegate.service';

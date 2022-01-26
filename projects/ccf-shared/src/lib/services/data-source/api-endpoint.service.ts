@@ -67,7 +67,7 @@ export class ApiEndpointDataSourceService extends ForwardingDataSource {
   }
 
   protected encodeArguments<K extends keyof DataSource>(
-    args: Parameters<DataSourceMethod<K>>
+    _method: K, args: Parameters<DataSourceMethod<K>>
   ): HttpParams {
     if (args.length === 1) {
       return defaultEncodeArguments(args[0] as Filter ?? {});
@@ -85,7 +85,7 @@ export class ApiEndpointDataSourceService extends ForwardingDataSource {
     const { globalConfig, http } = this;
     const dataset = this.getDataset(method);
     const reviver = this.getReviver(method);
-    const params = this.encodeArguments(args);
+    const params = this.encodeArguments(method, args);
 
     return globalConfig.getOption('remoteApiEndpoint').pipe(
       map(endpoint => `${endpoint}/${dataset}`),
