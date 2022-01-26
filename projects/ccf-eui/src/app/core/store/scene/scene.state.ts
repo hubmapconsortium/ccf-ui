@@ -5,11 +5,10 @@ import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
-import { ALL_POSSIBLE_ORGANS, OrganInfo } from 'ccf-shared';
+import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, pluck, take, tap } from 'rxjs/operators';
 
-import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
 import { ListResultsState } from '../list-results/list-results.state';

@@ -2,12 +2,12 @@ import { Injectable, Injector } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
+import { DataSourceService } from 'ccf-shared';
 import { sortBy } from 'lodash';
 import { combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, pluck, tap } from 'rxjs/operators';
 
 import { ListResult } from '../../models/list-result';
-import { DataSourceService } from '../../services/data-source/data-source.service';
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
 

@@ -1,12 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { DataSourceService, MousePositionTrackerModule } from 'ccf-shared';
+import { DataSourceService } from 'ccf-shared';
 import { AnalyticsModule } from 'ccf-shared/analytics';
 
 import { environment } from '../../environments/environment';
-import { HeaderModule } from './header/header.module';
 import { DelegateDataSourceService } from './services/data-source/data-source.service';
-import { ThemingModule } from './services/theming/theming.module';
 import { StoreModule } from './store/store.module';
 
 
@@ -15,18 +13,19 @@ import { StoreModule } from './store/store.module';
     HttpClientModule,
     AnalyticsModule.forRoot({
       gaToken: environment.googleAnalyticsToken,
-      appName: 'eui'
-    }),
-    MousePositionTrackerModule,
 
-    HeaderModule,
-    StoreModule,
-    ThemingModule
+      appName: 'organ-info',
+      projectName: 'ccf',
+
+      developmentMode: !environment.production
+    }),
+
+    StoreModule
   ],
   providers: [
     { provide: DataSourceService, useExisting: DelegateDataSourceService }
   ],
-  exports: [HeaderModule]
+  exports: []
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() core: CoreModule) {

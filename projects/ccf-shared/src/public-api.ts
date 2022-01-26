@@ -37,3 +37,9 @@ export * from './lib/analytics/mouse-position-tracker.module';
 
 export * from './lib/components/tracking-popup/tracking-popup.module';
 export * from './lib/components/tracking-popup/tracking-popup.component';
+
+export * from './lib/services/data-source/data-source';
+export * from './lib/services/data-source/data-source.service';
+export * from './lib/services/data-source/api-endpoint.service';
+export * from './lib/services/data-source/ccf-database.service';
+export * from './lib/services/data-source/injector-delegate.service';

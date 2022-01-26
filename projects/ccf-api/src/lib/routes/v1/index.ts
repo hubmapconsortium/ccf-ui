@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import { cacheResponses } from '../../middleware/response-cache';
 
+import { cacheResponses } from '../../middleware/response-cache';
 import { routes as hubmapRoutes } from './hubmap';
+import { getReferenceOrganSceneHandler } from './reference-organ-scene';
 import { forwardDatabaseQuery } from './utils/forward-database-query';
 
 
@@ -15,4 +16,5 @@ export const routes = Router()
   .get('/ontology-term-occurences', forwardDatabaseQuery('getOntologyTermOccurences'))
   .get('/ontology-tree-model', forwardDatabaseQuery('getOntologyTreeModel'))
   .get('/reference-organs', forwardDatabaseQuery('getReferenceOrgans'))
-  .get('/scene', forwardDatabaseQuery('getScene'));
+  .get('/scene', forwardDatabaseQuery('getScene'))
+  .get('/reference-organ-scene', getReferenceOrganSceneHandler());

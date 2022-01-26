@@ -1,19 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ProviderToken } from '@angular/core';
 import {
-  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
-} from 'ccf-database';
-import { Observable } from 'rxjs';
+  ApiEndpointDataSourceService, CCFDatabaseDataSourceService, DataSourceLike, InjectorDelegateDataSourceService,
+} from 'ccf-shared';
+
+import { environment } from '../../../../environments/environment';
+import { WorkerDataSourceService } from './worker-data-source.service';
 
 
-@Injectable()
-export abstract class DataSourceService {
-  abstract getProviderNames(): Observable<string[]>;
-  abstract getDatasetTechnologyNames(): Observable<string[]>;
-  abstract getOntologyTreeModel(): Observable<OntologyTreeModel>;
-  abstract getReferenceOrgans(): Observable<SpatialEntity[]>;
+export interface DelegateDataSourceOptions {
+  useRemoteApi?: boolean;
+  remoteApiEndpoint?: string;
+}
 
-  abstract getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]>;
-  abstract getAggregateResults(filter?: Filter): Observable<AggregateResult[]>;
-  abstract getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>>;
-  abstract getScene(filter?: Filter): Observable<SpatialSceneNode[]>;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DelegateDataSourceService extends InjectorDelegateDataSourceService<DelegateDataSourceOptions> {
+  protected selectToken(config: DelegateDataSourceOptions): ProviderToken<DataSourceLike> {
+    const { useRemoteApi, remoteApiEndpoint } = config;
+
+    if (useRemoteApi && !!remoteApiEndpoint) {
+      return ApiEndpointDataSourceService;
+    } else if (typeof Worker !== 'undefined' && !environment.disableDbWorker) {
+      return WorkerDataSourceService;
+    } else {
+      return CCFDatabaseDataSourceService;
+    }
+  }
 }
