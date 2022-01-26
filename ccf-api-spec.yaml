@@ -162,6 +162,37 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SpatialSceneNode'
+  /reference-organ-scene:
+    get:
+      summary: Get all nodes to form the 3D scene for an organ
+      operationId: reference-organ-scene
+      parameters:
+        - $ref: '#/components/parameters/age-range'
+        - $ref: '#/components/parameters/sex'
+        - $ref: '#/components/parameters/bmi-range'
+        - $ref: '#/components/parameters/providers'
+        - $ref: '#/components/parameters/technologies'
+        - $ref: '#/components/parameters/ontology-terms'
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+        - $ref: '#/components/parameters/organ-iri'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpatialSceneNode'
+        '404':
+          description: failed operation
+          content:
+            text/plain:
+              schema:
+                type: string
+                examples:
+                  - Must provide an organ-iri query parameter
   /hubmap/rui_locations.jsonld:
     get:
       summary: Get all hubmap rui locations (if enabled)
@@ -237,6 +268,13 @@ components:
       description: Hint to cache (or not) the response of this request
       in: query
       required: false
+      schema:
+        type: string
+    organ-iri:
+      name: organ-iri
+      description: Organ iri used to filter node data
+      in: query
+      required: true
       schema:
         type: string
 

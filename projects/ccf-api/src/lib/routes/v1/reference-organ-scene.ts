@@ -22,7 +22,7 @@ export function getReferenceOrganSceneHandler(): RequestHandler {
     const getDatabase: DatabaseGetter = req['getDatabase'];
 
     if (!organIri) {
-      res.status(404).send('Missing organ iri');
+      res.status(404).send('Must provide an organ-iri query parameter');
       return;
     }
 
