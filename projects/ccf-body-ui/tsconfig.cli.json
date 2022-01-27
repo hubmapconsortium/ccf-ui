@@ -1,56 +1,6 @@
 {
-  "compileOnSave": false,
+  "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true,
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "node"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "ccf-database": [
-        "dist/ccf-database/ccf-database",
-        "dist/ccf-database"
-      ],
-      "triple-store-utils-not-fixed": [
-        "dist/triple-store-utils/triple-store-utils",
-        "dist/triple-store-utils"
-      ],
-      "triple-store-utils": [
-        "dist/triple-store-fixed/index"
-      ],
-      "ccf-body-ui": [
-        "dist/ccf-body-ui/ccf-body-ui",
-        "dist/ccf-body-ui"
-      ],
-      "ccf-shared": [
-        "dist/ccf-shared/ccf-shared",
-        "dist/ccf-shared"
-      ]
-    }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "module": "CommonJS"
   }
 }

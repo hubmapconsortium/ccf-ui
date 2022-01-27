@@ -35,6 +35,7 @@ export function addSubtree(
  * @returns A new ontology tree.
  */
 function pruneModel(model: OntologyTreeModel, organIds: string[]): OntologyTreeModel {
+  organIds = organIds.filter(o => !!model.nodes[o]);
   const body: OntologyTreeNode = {
     '@id': model.root,
     '@type': 'OntologyTreeNode',
@@ -49,6 +50,8 @@ function pruneModel(model: OntologyTreeModel, organIds: string[]): OntologyTreeM
 
   forEach(organNodes, node => (node.parent = body.id));
   forEach(organNodes, node => addSubtree(model.nodes, prunedNodes, node));
+
+  body.children.sort((a, b) => prunedNodes[a].label.localeCompare(prunedNodes[b].label));
 
   return { root: body.id, nodes: prunedNodes };
 }

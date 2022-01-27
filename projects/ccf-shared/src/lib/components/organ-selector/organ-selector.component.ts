@@ -7,70 +7,239 @@ import { ResizeSensor } from 'css-element-queries';
 /**
  * All organs that will eventually be displayed in the app
  */
-export const ALL_POSSIBLE_ORGANS: OrganInfo[] = [
+export const ALL_POSSIBLE_ORGANS = [
   {
-    src: 'app:skin', organ: 'Skin', name: 'Skin', hasSex: true,
+    src: 'app:skin',
+    organ: 'Skin',
+    name: 'Skin',
+    hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002097'
   },
   {
-    src: 'app:large_intestine', organ: 'Large Intestine', name: 'Large Intestine', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000059'
-  },
-  {
-    src: 'app:heart', organ: 'Heart', name: 'Heart', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000948'
-  },
-  {
-    disabled: true,
-    src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002113'
-  },
-  {
-    src: 'app:kidney-left', organ: 'Kidney', name: 'Kidney, L', side: 'left', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004538'
-  },
-  {
-    src: 'app:kidney-right', organ: 'Kidney', name: 'Kidney, R', side: 'right', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004539'
-  },
-  {
-    src: 'app:spleen', organ: 'Spleen', name: 'Spleen', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002106'
-  },
-  {
-    src: 'app:brain', organ: 'Brain', name: 'Allen Brain', hasSex: true,
+    src: 'app:brain',
+    organ: 'Brain',
+    name: 'Brain',
+    hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0000955'
   },
   {
+    src: 'app:lymph-nodes',
+    organ: 'Lymph Node',
+    name: 'Lymph Node',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002509'
+  },
+  {
+    src: 'app:eye',
+    organ: 'Eye',
+    name: 'Eye, L',
+    side: 'left',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004548'
+  },
+  {
+    src: 'app:eye',
+    organ: 'Eye',
+    name: 'Eye, R',
+    side: 'right',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/FMA_54449'
+  },
+  {
+    src: 'app:fallopian-tube-left',
+    organ: 'Fallopian Tube',
+    name: 'Fallopian Tube, L',
+    side: 'left',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001303'
+  },
+  {
+    src: 'app:fallopian-tube-right',
+    organ: 'Fallopian Tube',
+    name: 'Fallopian Tube, R',
+    side: 'right',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001302'
+  },
+  {
+    src: 'app:heart',
+    organ: 'Heart',
+    name: 'Heart',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000948'
+  },
+  {
+    src: 'app:kidney-left',
+    organ: 'Kidney',
+    name: 'Kidney, L',
+    side: 'left',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004538'
+  },
+  {
+    src: 'app:kidney-right',
+    organ: 'Kidney',
+    name: 'Kidney, R',
+    side: 'right',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004539'
+  },
+  {
+    src: 'app:knee',
+    organ: 'Knee',
+    name: 'Knee, L',
+    side: 'left',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/FMA_24978'
+  },
+  {
+    src: 'app:knee',
+    organ: 'Knee',
+    name: 'Knee, R',
+    side: 'right',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/FMA_24977'
+  },
+  {
+    src: 'app:liver',
+    organ: 'Liver',
+    name: 'Liver',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002107'
+  },
+  {
     disabled: true,
-    src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
+    src: 'app:lung',
+    organ: 'Lung',
+    name: 'Lungs',
+    hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002048'
   },
   {
-    src: 'app:lung', organ: 'Lung', name: 'Lungs', hasSex: true,
+    src: 'app:lung',
+    organ: 'Lung',
+    name: 'Lungs',
+    hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0001004'
   },
   {
-    src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, L', side: 'left', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'
+    src: 'app:ovary-left',
+    organ: 'Ovary',
+    name: 'Ovary, L',
+    side: 'left',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/FMA_7214'
   },
   {
-    src: 'app:lymph_nodes', organ: 'Lymph Node', name: 'Lymph Node, R', side: 'right', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'
+    src: 'app:ovary-right',
+    organ: 'Ovary',
+    name: 'Ovary, R',
+    side: 'right',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/FMA_7213'
   },
   {
-    src: 'app:bone_marrow', organ: 'Pelvis', name: 'Pelvis', hasSex: true,
+    src: 'app:pancreas',
+    organ: 'Pancreas',
+    name: 'Pancreas',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001264'
+  },
+  {
+    src: 'app:pelvis-f',
+    organ: 'Pelvis',
+    name: 'Pelvis',
+    hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0001270'
   },
   {
-    src: 'app:thymus', organ: 'Thymus', name: 'Thymus', hasSex: true,
+    src: 'app:prostate',
+    organ: 'Prostate',
+    name: 'Prostate',
+    hasSex: false,
+    sex: 'male',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002367',
+    disabled: true
+  },
+  {
+    src: 'app:prostate',
+    organ: 'Prostate',
+    name: 'Prostate',
+    hasSex: false,
+    sex: 'male',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000079'
+  },
+  {
+    src: 'app:small-intestine',
+    organ: 'Small Intestine',
+    name: 'Small Intestine',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002108'
+  },
+  {
+    src: 'app:large-intestine',
+    organ: 'Large Intestine',
+    name: 'Large Intestine',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000059'
+  },
+  {
+    src: 'app:spleen',
+    organ: 'Spleen',
+    name: 'Spleen',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002106'
+  },
+  {
+    src: 'app:thymus',
+    organ: 'Thymus',
+    name: 'Thymus',
+    hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002370'
   },
   {
-    src: 'app:vasculature', organ: 'Vasculature', name: 'Vasculature', hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002049'
+    src: 'app:ureter-left',
+    organ: 'Ureter',
+    name: 'Ureter, L',
+    side: 'left',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001223'
+  },
+  {
+    src: 'app:ureter-right',
+    organ: 'Ureter',
+    name: 'Ureter, R',
+    side: 'right',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001222'
+  },
+  {
+    src: 'app:bladder',
+    organ: 'Urinary Bladder',
+    name: 'Urinary Bladder',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001255'
+  },
+  {
+    src: 'app:uterus',
+    organ: 'Uterus',
+    name: 'Uterus',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000995'
+  },
+  {
+    src: 'app:vasculature-thick',
+    organ: 'Blood Vasculature',
+    name: 'Blood Vasculature',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004537'
   }
-];
+].sort((a, b) => a.name.localeCompare(b.name)) as OrganInfo[];
 
 /**
  * All organs which have not been disabled
@@ -111,6 +280,11 @@ export interface OrganInfo {
    * True if applies to both sexes
    */
   hasSex?: boolean;
+
+  /**
+   * Used for single sex only organs
+   */
+  sex?: 'male' | 'female';
 
   /**
    * UBERON id for the organ

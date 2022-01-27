@@ -17,7 +17,7 @@ export async function processExtractionSites(sourceUrl: string, entities: Spatia
     const entity = lookup[entityId];
     if (entity && row.extraction_set_for.trim().length > 0) {
       entity.extraction_set = row.extraction_set_id;
-      entity.label = row.label || entity.label;
+      entity.label = row.label.toLowerCase() || entity.label;
       entity.comment = row.tooltip || entity.comment;
       entity.rui_rank = rank * 10;
 

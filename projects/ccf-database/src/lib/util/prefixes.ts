@@ -5,6 +5,7 @@ import { DataFactory, Util } from 'triple-store-utils';
 export const PREFIXES = {
   ccf: 'http://purl.org/ccf/latest/ccf.owl#',
   entity: 'http://purl.org/ccf/latest/ccf-entity.owl#',
+  fma: 'http://purl.obolibrary.org/obo/FMA_',
   obo: 'http://purl.obolibrary.org/obo/',
   uberon: 'http://purl.obolibrary.org/obo/UBERON_',
   lmha: 'http://purl.obolibrary.org/obo/LMHA_',
@@ -157,6 +158,11 @@ export const uberon = {
   x: prefixer('uberon')
 };
 
+/** FMA specific ids. */
+export const fma = {
+  x: prefixer('fma')
+};
+
 /** LMHA specific ids. */
 export const lmha = {
   x: prefixer('lmha')
@@ -164,29 +170,52 @@ export const lmha = {
 
 /** RUI accessors. */
 export const rui = {
-  bladder: uberon.x('0001255'),
   body: uberon.x('0013702'),
-  brain: uberon.x('0000955'),
-  colon: uberon.x('0001155'),
-  heart: uberon.x('0000948'),
-  kidney: uberon.x('0002113'),
-  large_intestine: uberon.x('0000059'),
-  left_kidney: uberon.x('0004538'),
-  left_lung: uberon.x('0002168'),
-  left_ureter: uberon.x('0001223'),
-  liver: uberon.x('0002107'),
-  lung: uberon.x('0002048'),
   respiratory_system: uberon.x('0001004'),
-  lymph_node: uberon.x('0000029'),
-  pelvis: uberon.x('0001270'),
-  rectum: uberon.x('0001052'),
-  right_kidney: uberon.x('0004539'),
+  colon: uberon.x('0001155'),
+  left_lung: uberon.x('0002168'),
   right_lung: uberon.x('0002167'),
-  right_ureter: uberon.x('0001222'),
+  left_bronchus: uberon.x('0002178'),
+  right_bronchus: uberon.x('0002177'),
+  kidney: uberon.x('0002113'),
+  ureter: uberon.x('0000056'),
+  eye: uberon.x('0000970'),
+  fallopian_tube: uberon.x('0003889'),
+  knee: uberon.x('0001465'),
+  ovary: uberon.x('0000992'),
+  trachea: uberon.x('0003126'),
+  aorta: uberon.x('0000947'),
+  blood: uberon.x('0000178'),
+  bone_marrow: uberon.x('0002371'),
+  male_reproductive_system: uberon.x('0000079'),
+
+  // Derived using console.log(ALL_POSSIBLE_ORGANS.map(o => `  ${o.name.toLowerCase().replace(',', '').replace(/ /g, '_')}: ${o.id.split('/').slice(-1)[0].split('_')[0].toLowerCase()}.x('${o.id.split('_').slice(-1)[0]}'),`).join('\n'));
+  blood_vasculature: uberon.x('0004537'),
+  brain: uberon.x('0000955'),
+  eye_left: uberon.x('0004548'),
+  eye_right: fma.x('54449'),
+  fallopian_tube_left: uberon.x('0001303'),
+  fallopian_tube_right: uberon.x('0001302'),
+  heart: uberon.x('0000948'),
+  kidney_left: uberon.x('0004538'),
+  kidney_right: uberon.x('0004539'),
+  knee_left: fma.x('24978'),
+  knee_right: fma.x('24977'),
+  large_intestine: uberon.x('0000059'),
+  liver: uberon.x('0002107'),
+  lungs: uberon.x('0002048'),
+  lymph_node: uberon.x('0002509'),
+  ovary_left: fma.x('7214'),
+  ovary_right: fma.x('7213'),
+  pancreas: uberon.x('0001264'),
+  pelvis: uberon.x('0001270'),
+  prostate_gland: uberon.x('0002367'),
   skin: uberon.x('0002097'),
   small_intestine: uberon.x('0002108'),
   spleen: uberon.x('0002106'),
   thymus: uberon.x('0002370'),
-  ureter: uberon.x('0000056'),
-  vasculature: uberon.x('0002049')
+  ureter_left: uberon.x('0001223'),
+  ureter_right: uberon.x('0001222'),
+  urinary_bladder: uberon.x('0001255'),
+  uterus: uberon.x('0000995')
 };

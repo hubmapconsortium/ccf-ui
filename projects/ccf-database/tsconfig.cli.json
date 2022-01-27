@@ -1,6 +1,16 @@
 {
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "module": "CommonJS"
+    "baseUrl": "../..",
+    "module": "CommonJS",
+    "paths": {
+      "triple-store-utils": [
+        "dist/triple-store-utils/triple-store-utils",
+        "dist/triple-store-utils"
+      ]
+    }
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }

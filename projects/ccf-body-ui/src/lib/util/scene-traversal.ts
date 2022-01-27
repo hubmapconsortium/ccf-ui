@@ -10,7 +10,9 @@ export function traverseScene(scene, worldMatrix: Matrix4, visitor: SceneTravers
     worldMatrix = new Matrix4(Matrix4.IDENTITY);
   }
   const matrix = new Matrix4(Matrix4.IDENTITY);
-  if (scene.matrix) {
+  if (!scene) {
+    return true;
+  } else if (scene.matrix) {
     matrix.copy(scene.matrix);
   } else {
     matrix.identity();
