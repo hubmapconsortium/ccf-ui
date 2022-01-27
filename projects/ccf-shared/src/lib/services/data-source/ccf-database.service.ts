@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { CCFDatabase, CCFDatabaseOptions } from 'ccf-database';
 import { releaseProxy, Remote, wrap } from 'comlink';
 import { Observable, Unsubscribable, using } from 'rxjs';
@@ -39,7 +39,8 @@ abstract class CCFDatabaseDataSourceBaseService extends DelegateDataSource {
   private async connectDatabase(
     manager: CCFDatabaseManager, config: CCFDatabaseOptions
   ): Promise<CCFDatabaseManager> {
-    await manager.database.connect(config, true);
+    const cacheResults = !isDevMode(); // Do not cache while in dev mode
+    await manager.database.connect(config, cacheResults);
     return manager;
   }
 }
