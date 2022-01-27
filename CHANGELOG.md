@@ -2,6 +2,13 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces
 
+## 3.0.0 - 2022-01-27
+
+### Added in 3.0.0
+
+* Added support for the latest CCF Ontology v1.7.0
+* Bug fixes and code cleanup
+
 ## 3.0.0 BETA - 2021-12-17
 
 ### Added in 3.0.0 BETA
