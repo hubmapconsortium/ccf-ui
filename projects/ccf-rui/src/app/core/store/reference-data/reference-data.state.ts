@@ -1,8 +1,10 @@
+import { Immutable } from '@angular-ru/common/typings';
 import { Injectable } from '@angular/core';
+import { Matrix4, toRadians } from '@math.gl/core';
 import { StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { State } from '@ngxs/store';
-import { SpatialSceneNode } from 'ccf-body-ui';
+import { SpatialPlacementJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { ExtractionSet, SpatialEntity } from 'ccf-database';
 import { ALL_ORGANS, GlobalConfigState, GlobalsService, OrganInfo } from 'ccf-shared';
 import { EMPTY, from, Observable } from 'rxjs';
@@ -10,8 +12,32 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { GlobalConfig } from '../../services/config/config';
+import { XYZTriplet } from '../model/model.state';
+
 
 /* eslint-disable @typescript-eslint/member-ordering */
+
+export function applySpatialPlacement(tx: Matrix4, placement: Immutable<SpatialPlacementJsonLd>): Matrix4 {
+  const p = placement;
+  let factor: number;
+  switch (p.translation_units) {
+    case 'centimeter':
+      factor = 1 / 100;
+      break;
+    case 'millimeter':
+      factor = 1 / 1000;
+      break;
+    case 'meter':
+    default:
+      factor = 1;
+      break;
+  }
+  const T = [p.x_translation, p.y_translation, p.z_translation].map(t => t * factor);
+  const R = [p.x_rotation, p.y_rotation, p.z_rotation].map<number>(toRadians) as [number, number, number];
+  const S = [p.x_scaling, p.y_scaling, p.z_scaling];
+
+  return tx.translate(T).rotateXYZ(R).scale(S);
+}
 
 export interface ReferenceDataStateModel {
   organIRILookup: { [lookup: string]: string };
@@ -20,6 +46,7 @@ export interface ReferenceDataStateModel {
   extractionSets: { [iri: string]: ExtractionSet[] };
   sceneNodeLookup: { [iri: string]: SpatialSceneNode };
   simpleSceneNodeLookup: { [iri: string]: SpatialSceneNode };
+  placementPatches: { [iri: string]: SpatialPlacementJsonLd };
 }
 
 export interface OrganData {
@@ -40,7 +67,8 @@ export interface OrganData {
     anatomicalStructures: {},
     extractionSets: {},
     sceneNodeLookup: {},
-    simpleSceneNodeLookup: {}
+    simpleSceneNodeLookup: {},
+    placementPatches: {}
   }
 })
 @Injectable()
@@ -77,6 +105,23 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
         catchError(() => EMPTY)
       ))
     );
+  }
+
+  normalizePlacement(place: SpatialPlacementJsonLd): SpatialPlacementJsonLd {
+    const db = this.snapshot;
+    const patchPlacement = db.placementPatches[place?.target];
+    if (patchPlacement) {
+      const matrix = applySpatialPlacement(new Matrix4(Matrix4.IDENTITY), patchPlacement);
+      const position: XYZTriplet = { x: place.x_translation, y: place.y_translation, z: place.z_translation };
+      const [x, y, z] = matrix.transformAsPoint([ position.x, position.y, position.z ], []);
+      const newPlacement = { ...place, target: patchPlacement.target };
+      newPlacement.x_translation = x;
+      newPlacement.y_translation = y;
+      newPlacement.z_translation = z;
+      return newPlacement;
+    } else {
+      return place;
+    }
   }
 
   /**

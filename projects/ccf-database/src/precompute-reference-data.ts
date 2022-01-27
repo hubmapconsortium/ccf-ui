@@ -3,8 +3,10 @@ import { writeFileSync } from 'fs';
 import fetch from 'node-fetch';
 import { argv } from 'process';
 
-import { CCFDatabase, ExtractionSet, SpatialEntity, SpatialSceneNode } from './public-api';
 import { simplifyScene } from '../../ccf-body-ui/src/lib/util/simplify-scene';
+import { getSpatialPlacement } from './lib/queries/spatial-result-n3';
+import { ccf } from './lib/util/prefixes';
+import { CCFDatabase, ExtractionSet, SpatialEntity, SpatialSceneNode } from './public-api';
 
 
 if (!(global as { fetch: unknown }).fetch) {
@@ -35,6 +37,7 @@ async function main(outputFile?: string): Promise<void> {
     zoomBasedOpacity: false,
     color: [255, 255, 255, 255]
   };
+  const placementPatches: { [iri: string]: Record<string, unknown> } = {};
 
   for (const organ of organs) {
     const iri = organ['@id'];
@@ -45,6 +48,17 @@ async function main(outputFile?: string): Promise<void> {
     }
     extractionSets[iri] = db.scene.getExtractionSets(iri);
     organIRILookup[[organ.label, organ.sex, organ.side].join('|')] = iri;
+
+    const organPatches = db.store.getSubjects(ccf.spatialPlacement.target, iri, null);
+    for (const subject of organPatches) {
+      const placement = getSpatialPlacement(db.store, subject.id);
+      const source = placement.source['@id'];
+
+      // Ignore placements from spatial object references and the VH Male/Female entities
+      if (!source.endsWith('Obj') && !source.endsWith('#VHFemale') && !source.endsWith('#VHMale')) {
+        placementPatches[placement.source['@id']] = { ...placement, source, target: iri };
+      }
+    }
 
     const nodes = [
       anatomicalStructures[iri],
@@ -83,7 +97,8 @@ async function main(outputFile?: string): Promise<void> {
     anatomicalStructures,
     extractionSets,
     sceneNodeLookup,
-    simpleSceneNodeLookup
+    simpleSceneNodeLookup,
+    placementPatches
   };
 
   if (outputFile) {

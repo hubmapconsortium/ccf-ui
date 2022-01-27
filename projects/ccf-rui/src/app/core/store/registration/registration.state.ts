@@ -22,7 +22,6 @@ import { PageState, PageStateModel } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
 
-
 /**
  * Registration state model
  */
@@ -156,7 +155,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   }
 
   async editRegistration(reg: SpatialEntityJsonLd): Promise<void> {
-    const place = Array.isArray(reg.placement) ? reg.placement[0] : reg.placement;
+    const place = this.refData.normalizePlacement(
+      Array.isArray(reg.placement) ? reg.placement[0] : reg.placement
+    );
     const data = this.refData.getOrganData(place.target);
 
     this.page.setUserName({ firstName: reg.creator_first_name, lastName: reg.creator_last_name });
