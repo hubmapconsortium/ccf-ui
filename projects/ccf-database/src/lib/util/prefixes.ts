@@ -188,6 +188,7 @@ export const rui = {
   blood: uberon.x('0000178'),
   bone_marrow: uberon.x('0002371'),
   male_reproductive_system: uberon.x('0000079'),
+  lymph_node: uberon.x('0000029'),
 
   // Derived using console.log(ALL_POSSIBLE_ORGANS.map(o => `  ${o.name.toLowerCase().replace(',', '').replace(/ /g, '_')}: ${o.id.split('/').slice(-1)[0].split('_')[0].toLowerCase()}.x('${o.id.split('_').slice(-1)[0]}'),`).join('\n'));
   blood_vasculature: uberon.x('0004537'),
@@ -204,7 +205,7 @@ export const rui = {
   large_intestine: uberon.x('0000059'),
   liver: uberon.x('0002107'),
   lungs: uberon.x('0002048'),
-  lymph_node: uberon.x('0002509'),
+  mesenteric_lymph_node: uberon.x('0002509'),
   ovary_left: fma.x('7214'),
   ovary_right: fma.x('7213'),
   pancreas: uberon.x('0001264'),

@@ -55,7 +55,7 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
   LN: [RUI_ORGANS.body, RUI_ORGANS.knee, RUI_ORGANS.knee_left], //'Knee (Left)',
   RL: [RUI_ORGANS.body, RUI_ORGANS.respiratory_system, RUI_ORGANS.lungs, RUI_ORGANS.right_lung], //'Lung (Right)',
   RN: [RUI_ORGANS.body, RUI_ORGANS.knee, RUI_ORGANS.knee_right], //'Knee (Right)',
-  LY: [RUI_ORGANS.body, RUI_ORGANS.lymph_node], //'Lymph Node',
+  LY: [RUI_ORGANS.body, RUI_ORGANS.lymph_node, RUI_ORGANS.mesenteric_lymph_node], //'Lymph Node',
   LO: [RUI_ORGANS.body, RUI_ORGANS.ovary, RUI_ORGANS.ovary_left], //'Ovary (Left)',
   RO: [RUI_ORGANS.body, RUI_ORGANS.ovary, RUI_ORGANS.ovary_right], //'Ovary (Right)',
   PA: [RUI_ORGANS.body, RUI_ORGANS.pancreas], //'Pancreas',
