@@ -4,7 +4,7 @@
 - Select a reference organ via the organ carousal (kidney, heart, spleen, colon).
 - Select a set of common tissue extraction sites.
 - Size the tissue block in three dimensions.
-- Enter information on tissue slice thickness.
+- Enter information on tissue section thickness.
 - Position and rotate the 3D tissue block so that its placement correctly mirrors the tissue block extraction site.
 - Identify anatomical structure tags via collision detection and manual annotation.
 - Save all registration information into a file for easy uploading to custom templates in REDCap (or other systems) used to keep track of tissue and tissue registration data. If using the RUI integrated into the HuBMAP Ingestion Portal, registration information is automatically saved with the associated tissue block.
