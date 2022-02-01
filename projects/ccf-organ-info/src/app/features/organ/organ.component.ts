@@ -1,8 +1,6 @@
-import {
-  ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, AfterViewChecked
-} from '@angular/core';
-import { SpatialSceneNode, NodeClickEvent } from 'ccf-body-ui';
-import { SpatialEntity, TissueBlockResult, Filter } from 'ccf-database';
+import { AfterViewChecked, ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
+import { Filter, SpatialEntity, TissueBlockResult } from 'ccf-database';
 import { BodyUiComponent } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -13,11 +11,11 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
   styleUrls: ['./organ.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
+export class OrganComponent implements AfterViewChecked, OnChanges {
   @Input() organ?: SpatialEntity;
   @Input() scene: SpatialSceneNode[];
   @Input() organIri: string;
-  @Input() sex: 'Male' | 'Female' | 'Both';
+  @Input() sex?: 'Male' | 'Female' | 'Both';
   @Input() side?: 'Left' | 'Right';
   @Input() blocks?: TissueBlockResult[];
   @Input() filter?: Filter;
@@ -31,10 +29,6 @@ export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
   filteredBlocks: string[];
 
   constructor(readonly ga: GoogleAnalyticsService) { }
-
-  ngOnInit(): void {
-    this.reset();
-  }
 
   ngAfterViewChecked(): void {
     this.updateHighlighting();
@@ -55,27 +49,23 @@ export class OrganComponent implements OnInit, OnChanges, AfterViewChecked {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.bodyUI && 'organ' in changes) {
-      this.reset();
+      this.zoomToFitOrgan();
     }
   }
 
-  updateSex(selection: 'Male' | 'Female'): void {
+  updateSex(selection?: 'Male' | 'Female'): void {
     this.sex = selection;
     this.sexChange.emit(this.sex);
   }
 
-  updateSide(selection: 'Left' | 'Right'): void {
+  updateSide(selection?: 'Left' | 'Right'): void {
     this.side = selection;
     this.sideChange.emit(this.side);
   }
 
-  private reset(): void {
+  zoomToFitOrgan(): void {
     const { bodyUI, organ } = this;
     if (organ) {
-      if (!organ.side) {
-        this.side = undefined;
-      }
-
       const { x_dimension: x, y_dimension: y, z_dimension: z } = organ;
       bodyUI.rotation = bodyUI.rotationX = 0;
       bodyUI.bounds = { x: 1.25 * x / 1000, y: 1.25 * y / 1000, z: 1.25 * z / 1000 };

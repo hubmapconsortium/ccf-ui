@@ -44,6 +44,7 @@ export class AppComponent implements AfterViewInit {
   readonly blocks$: Observable<TissueBlockResult[]>;
 
   private latestConfig: Immutable<GlobalConfig> = {};
+  private latestOrganInfo?: OrganInfo;
 
   constructor(
     lookup: OrganLookupService,
@@ -58,42 +59,52 @@ export class AppComponent implements AfterViewInit {
         config.sex
       )),
       tap(info => this.logOrganLookup(info)),
+      tap(info => (this.latestOrganInfo = info)),
       shareReplay(1)
     );
 
     this.organ$ = this.organInfo$.pipe(
       switchMap(info => info ? lookup.getOrgan(
         info,
-        this.latestConfig.sex
+        info.hasSex ? this.latestConfig.sex : undefined
       ) : of(undefined)),
+      tap(organ => {
+        if (organ && this.latestOrganInfo) {
+          const newSex = this.latestOrganInfo?.hasSex ? organ.sex : undefined;
+          if (newSex !== this.latestConfig.sex) {
+            this.updateInput('sex', newSex);
+          }
+          if (organ.side !== this.latestConfig.side) {
+            this.updateInput('side', organ.side);
+          }
+        }
+      }),
       shareReplay(1)
     );
 
     this.scene$ = this.organ$.pipe(
-      withLatestFrom(this.organInfo$),
-      switchMap(([organ, info]) => organ && info ? lookup.getOrganScene(
-        info,
-        this.latestConfig.sex
+      switchMap((organ) => organ && this.latestOrganInfo ? lookup.getOrganScene(
+        this.latestOrganInfo,
+        organ.sex
       ) : of(EMPTY_SCENE as SpatialSceneNode[]))
     );
 
-    this.stats$ = this.organInfo$.pipe(
-      switchMap(info => info ? lookup.getOrganStats(
-        info,
-        this.latestConfig.sex
+    this.stats$ = this.organ$.pipe(
+      switchMap(organ => organ && this.latestOrganInfo ? lookup.getOrganStats(
+        this.latestOrganInfo,
+        organ.sex
       ) : of([]))
     );
 
-    this.statsLabel$ = this.stats$.pipe(
-      withLatestFrom(this.organInfo$),
-      map(([_stats, info]) => this.makeStatsLabel(info)),
+    this.statsLabel$ = this.organ$.pipe(
+      map((organ) => this.makeStatsLabel(this.latestOrganInfo, organ?.sex)),
       startWith('Loading...')
     );
 
-    this.blocks$ = this.organInfo$.pipe(
-      switchMap(info => info ? lookup.getBlocks(
-        info,
-        this.latestConfig.sex
+    this.blocks$ = this.organ$.pipe(
+      switchMap(organ => organ && this.latestOrganInfo ? lookup.getBlocks(
+        this.latestOrganInfo,
+        organ.sex
       ) : of([]))
     );
   }
@@ -108,12 +119,13 @@ export class AppComponent implements AfterViewInit {
     this.configState.patchConfig({ [key]: value });
   }
 
-  private makeStatsLabel(info: OrganInfo | undefined): string {
+  private makeStatsLabel(info: OrganInfo | undefined, sex?: string): string {
     let parts: (string | undefined)[] = [`Unknown IRI: ${this.latestConfig.organIri}`];
     if (info) {
-      parts = [this.latestConfig.sex, info.organ, info.side];
+      // Use title cased side for a cleaner display
+      const side = info.side ? info.side.charAt(0).toUpperCase() + info.side.slice(1) : undefined;
+      parts = [sex, info.organ, side];
     }
-
     return parts.filter(seg => !!seg).join(', ');
   }
 

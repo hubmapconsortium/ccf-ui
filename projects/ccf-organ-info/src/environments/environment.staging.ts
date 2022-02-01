@@ -25,11 +25,11 @@ export const environment = {
     'http://purl.obolibrary.org/obo/UBERON_0002049' // Vasculature
   ],
   dbOptions: {
-    ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/assets/ccf.owl.n3store.json',
+    ccfOwlUrl: 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/assets/ccf.owl.n3store.json',
     ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
     dataSources: [
-      'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/assets/kpmp/data/rui_locations.jsonld',
-      'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@1/assets/sparc/data/rui_locations.jsonld'
+      'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/assets/kpmp/data/rui_locations.jsonld',
+      'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/assets/sparc/data/rui_locations.jsonld'
     ],
     hubmapDataService: '',
     hubmapPortalUrl: '',
