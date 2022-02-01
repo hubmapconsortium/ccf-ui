@@ -109,6 +109,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   @Output()
   readonly nodeHoverStop = new EventEmitter<SpatialSceneNode>();
 
+  @Output()
+  readonly initialized = new EventEmitter<void>();
+
   @Input()
   get interactive(): boolean {
     return this._interactive;
@@ -193,6 +196,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
       this.bodyUI.nodeHoverStart$.subscribe((event) => this.nodeHoverStart.emit(event)),
       this.bodyUI.nodeHoverStop$.subscribe((event) => this.nodeHoverStop.emit(event))
     ];
+    this.initialized.emit();
   }
 
   private recreateBodyUI(): void {

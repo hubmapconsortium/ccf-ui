@@ -31,7 +31,7 @@ export class OrganLookupService {
     return of(info);
   }
 
-  getOrgan(info: OrganInfo, sex: Filter['sex'] = 'Female'): Observable<SpatialEntity | undefined> {
+  getOrgan(info: OrganInfo, sex: Filter['sex'] = 'Both'): Observable<SpatialEntity | undefined> {
     return this.source.getReferenceOrgans().pipe(
       map(entities => entities.find(entity =>
         entity.representation_of === info.id && (sex === 'Both' || entity.sex === sex)
