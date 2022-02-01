@@ -96,9 +96,8 @@ export class AppComponent implements AfterViewInit {
       ) : of([]))
     );
 
-    this.statsLabel$ = this.stats$.pipe(
-      withLatestFrom(this.organInfo$),
-      map(([_stats, info]) => this.makeStatsLabel(info)),
+    this.statsLabel$ = this.organ$.pipe(
+      map((organ) => this.makeStatsLabel(this.latestOrganInfo, organ?.sex)),
       startWith('Loading...')
     );
 
@@ -120,12 +119,13 @@ export class AppComponent implements AfterViewInit {
     this.configState.patchConfig({ [key]: value });
   }
 
-  private makeStatsLabel(info: OrganInfo | undefined): string {
+  private makeStatsLabel(info: OrganInfo | undefined, sex?: string): string {
     let parts: (string | undefined)[] = [`Unknown IRI: ${this.latestConfig.organIri}`];
     if (info) {
-      parts = [this.latestConfig.sex, info.organ, info.side];
+      // Use title cased side for a cleaner display
+      const side = info.side ? info.side.charAt(0).toUpperCase() + info.side.slice(1) : undefined;
+      parts = [sex, info.organ, side];
     }
-
     return parts.filter(seg => !!seg).join(', ');
   }
 
