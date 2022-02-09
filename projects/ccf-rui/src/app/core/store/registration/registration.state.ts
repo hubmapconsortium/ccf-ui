@@ -187,6 +187,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
         .filter(item => iris.has(item.id as string))
         .map((item) => ({ id: item.id, label: item.name, type: 'added' }))
     );
+
+    this.page.registrationStarted();
   }
 
   /**

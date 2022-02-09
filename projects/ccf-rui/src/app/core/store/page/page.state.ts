@@ -99,7 +99,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
       tap(config => this.setState(patch({
         registrationCallbackSet: !!config.register,
         useCancelRegistrationCallback: !!config.cancelRegistration,
-        user: iif(!!config.user, config.user!)
+        user: iif(!!config.user, config.user!),
+        registrationStarted: config.user ? true : undefined
       })))
     ).subscribe();
 
