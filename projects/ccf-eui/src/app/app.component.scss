@@ -81,6 +81,10 @@
         height: 5rem;
         transition: all 0.5s ease-in-out;
 
+        &.expanded {
+          height: fit-content;
+        }
+
         &.closed {
           height: 1.5rem;
           top: -4.25rem;
