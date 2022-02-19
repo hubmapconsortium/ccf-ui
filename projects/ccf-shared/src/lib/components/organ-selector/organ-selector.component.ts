@@ -397,6 +397,9 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
    */
   @Input() selectedOrgans: OrganInfo[] = [];
 
+  /**
+   * If the organ selector is expanded
+   */
   @Input() expanded = false;
 
   /**
