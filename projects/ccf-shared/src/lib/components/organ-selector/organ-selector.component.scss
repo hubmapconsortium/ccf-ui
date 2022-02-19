@@ -101,6 +101,7 @@
       .carousel-item-list {
         flex-wrap: wrap;
         overflow: auto;
+        left: 0rem !important;
   
         .carousel-item {
           height: 5rem;
