@@ -3,6 +3,7 @@ import {
   OnChanges, OnDestroy, Output, SimpleChanges, ViewChild
 } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
  * All organs that will eventually be displayed in the app
@@ -441,6 +442,8 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
 
   private _occurenceData: Record<string, number>;
 
+  constructor(private readonly ga: GoogleAnalyticsService) { }
+
   /**
    * Set resize sensor on carousel
    */
@@ -521,6 +524,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
    * @param organ The organ selected
    */
   selectOrgan(organ: OrganInfo): void {
+    this.ga.event('organ_select', 'organ_select', organ.name);
     if (!this.multiselect) {
       this.selectedOrgans = [organ];
     } else {

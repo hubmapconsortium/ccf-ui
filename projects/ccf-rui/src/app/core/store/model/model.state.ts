@@ -15,6 +15,8 @@ import { VisibilityItem } from '../../models/visibility-item';
 import { GlobalConfig } from '../../services/config/config';
 import { PageState } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+
 
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -179,6 +181,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    * @param injector Injector service used to lazy load reference data state
    */
   constructor(
+    private readonly ga: GoogleAnalyticsService,
     private readonly injector: Injector,
     private readonly globalConfig: GlobalConfigState<GlobalConfig>
   ) {
@@ -270,6 +273,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    */
   @DataAction()
   setPosition(position: XYZTriplet): void {
+    this.ga.event('position', 'position_set', `${position.x} ${position.y} ${position.z}`);
     this.ctx.patchState({ position });
   }
 
