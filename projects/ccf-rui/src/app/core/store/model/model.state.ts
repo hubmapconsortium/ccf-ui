@@ -273,7 +273,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    */
   @DataAction()
   setPosition(position: XYZTriplet): void {
-    this.ga.event('position', 'position_set', `${position.x} ${position.y} ${position.z}`);
+    this.ga.event('placement', `${this.snapshot.organ?.name}_placement`, `${position.x.toFixed(1)}_${position.y.toFixed(1)}_${position.z.toFixed(1)}`);
     this.ctx.patchState({ position });
   }
 
@@ -321,6 +321,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    */
   @DataAction()
   setOrgan(organ: OrganInfo): void {
+    this.ga.event('organ_select', 'organ', organ.name);
     this.ctx.patchState({ organ });
     if (organ.side) {
       this.ctx.patchState({ side: organ.side });
