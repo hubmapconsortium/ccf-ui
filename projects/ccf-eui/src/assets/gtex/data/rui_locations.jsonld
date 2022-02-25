@@ -1114,7 +1114,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver#FDonors",
       "@type": "Donor",
-      "label": "Females (n=65), Mean Age TBD (range TBD)",
+      "label": "Females (n=65), Mean Age 54.5 (21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver",
       "sex": "Female",
@@ -1188,7 +1188,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Ovary#FDonors",
       "@type": "Donor",
-      "label": "Females (n=180), Mean Age TBD (range TBD)",
+      "label": "Females (n=180), Mean Age 50.2 (21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Ovary",
       "sex": "Female",
@@ -1261,7 +1261,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas#FDonors",
       "@type": "Donor",
-      "label": "Females (n=121), Mean Age TBD (range TBD)",
+      "label": "Females (n=121), Mean Age 52.1 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas",
       "sex": "Female",
@@ -1336,7 +1336,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg#FDonors",
       "@type": "Donor",
-      "label": "Females (n=234), Mean Age TBD (range TBD)",
+      "label": "Females (n=234), Mean Age 52.9 (21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg",
       "sex": "Female",
@@ -1408,7 +1408,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic#FDonors",
       "@type": "Donor",
-      "label": "Females (n=193), Mean Age TBD (range TBD)",
+      "label": "Females (n=193), Mean Age 53.3 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic",
       "sex": "Female",
@@ -1480,7 +1480,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum#FDonors",
       "@type": "Donor",
-      "label": "Females (n=67), Mean Age TBD (range TBD)",
+      "label": "Females (n=67), Mean Age 48.6 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum",
       "sex": "Female",
@@ -1552,7 +1552,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Uterus#FDonors",
       "@type": "Donor",
-      "label": "Females (n=142), Mean Age TBD (range TBD)",
+      "label": "Females (n=142), Mean Age 47.8 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Uterus",
       "sex": "Female",
@@ -1627,7 +1627,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary#FDonors",
       "@type": "Donor",
-      "label": "Females (n=94), Mean Age TBD (range TBD)",
+      "label": "Females (n=94), Mean Age 53.5 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary",
       "sex": "Female",
@@ -1701,7 +1701,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver#MDonors",
       "@type": "Donor",
-      "label": "Males (n=161), Mean Age TBD (range TBD)",
+      "label": "Males (n=161), Mean Age 54.5 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver",
       "sex": "Female",
@@ -1775,7 +1775,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas#MDonors",
       "@type": "Donor",
-      "label": "Males (n=207), Mean Age TBD (range TBD)",
+      "label": "Males (n=207), Mean Age 50.3 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas",
       "sex": "Female",
@@ -1850,7 +1850,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Prostate#MDonors",
       "@type": "Donor",
-      "label": "Males (n=245), Mean Age TBD (range TBD)",
+      "label": "Males (n=245), Mean Age 50.6 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Prostate",
       "sex": "Female",
@@ -1928,7 +1928,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg#MDonors",
       "@type": "Donor",
-      "label": "Males (n=467), Mean Age TBD (range TBD)",
+      "label": "Males (n=467), Mean Age 52.9 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg",
       "sex": "Female",
@@ -2000,7 +2000,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic#MDonors",
       "@type": "Donor",
-      "label": "Males (n=411), Mean Age TBD (range TBD)",
+      "label": "Males (n=411), Mean Age 53.3 (range 20-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic",
       "sex": "Female",
@@ -2072,7 +2072,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum#MDonors",
       "@type": "Donor",
-      "label": "Males (n=120), Mean Age TBD (range TBD)",
+      "label": "Males (n=120), Mean Age 48.4 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum",
       "sex": "Female",
@@ -2146,7 +2146,7 @@
     {
       "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary#MDonors",
       "@type": "Donor",
-      "label": "Males (n=146), Mean Age TBD (range TBD)",
+      "label": "Males (n=146), Mean Age 54.3 (range 20-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
       "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary",
       "sex": "Female",
