@@ -35,22 +35,22 @@
   },
   "@graph": [
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#FDonors",
       "@type": "Donor",
       "label": "Females (n=18), Mean Age 56.8 (range 30-69)",
       "description": "Entered 9/17/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+      "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 9/17/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+          "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -103,11 +103,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#FDatasets",
               "@type": "Dataset",
               "label": "Registered 9/17/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+              "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -116,22 +116,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#FDonors",
       "@type": "Donor",
       "label": "Females (n=119), Mean Age 54.7 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+      "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+          "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -178,11 +178,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+              "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -191,22 +191,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#FDonors",
       "@type": "Donor",
       "label": "Females (n=122), Mean Age 52.9 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+      "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+          "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -254,11 +254,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+              "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -267,22 +267,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Spleen#FDonors",
       "@type": "Donor",
       "label": "Females (n=86), Mean Age 49.5 (range 23-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+      "link": "https://gtexportal.org/home/tissue/Spleen",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Spleen#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+          "link": "https://gtexportal.org/home/tissue/Spleen",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -331,11 +331,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Spleen#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+              "link": "https://gtexportal.org/home/tissue/Spleen",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -344,22 +344,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#FDonors",
       "@type": "Donor",
       "label": "Females (n=113), Mean Age 51.1 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+      "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+          "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -407,11 +407,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+              "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -420,22 +420,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#FDonors",
       "@type": "Donor",
       "label": "Females (n=136), Mean Age 48.9 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+      "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+          "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -483,11 +483,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+              "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -496,22 +496,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Lung#FDonors",
       "@type": "Donor",
       "label": "Females (n=166), Mean Age 53.4 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+      "link": "https://gtexportal.org/home/tissue/Lung",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Lung#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+          "link": "https://gtexportal.org/home/tissue/Lung",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -559,11 +559,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Lung#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+              "link": "https://gtexportal.org/home/tissue/Lung",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -572,22 +572,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#MDonors",
       "@type": "Donor",
       "label": "Males (n=253), Mean Age 55.6 (range 20-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+      "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+          "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -634,11 +634,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+              "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -647,22 +647,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#MDonors",
       "@type": "Donor",
       "label": "Males (n=253), Mean Age 55.6 (range 20-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+      "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+          "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -710,11 +710,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+              "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -723,22 +723,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Spleen#MDonors",
       "@type": "Donor",
       "label": "Males (n=141), Mean Age 49.8 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+      "link": "https://gtexportal.org/home/tissue/Spleen",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Spleen#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+          "link": "https://gtexportal.org/home/tissue/Spleen",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -787,11 +787,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Spleen#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+              "link": "https://gtexportal.org/home/tissue/Spleen",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -800,22 +800,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#MDonors",
       "@type": "Donor",
       "label": "Males (n=55), Mean Age 55.8 (range 27-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+      "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+          "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -868,11 +868,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+              "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -881,22 +881,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#MDonors",
       "@type": "Donor",
       "label": "Males (n=55), Mean Age 55.8 (range 27-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+      "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+          "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -944,11 +944,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+              "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -957,22 +957,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#MDonors",
       "@type": "Donor",
       "label": "Males (n=232), Mean Age 50.1 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+      "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+          "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1020,11 +1020,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+              "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1033,22 +1033,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Lung#MDonors",
       "@type": "Donor",
       "label": "Males (n=349), Mean Age 53.5 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+      "link": "https://gtexportal.org/home/tissue/Lung",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Lung#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+          "link": "https://gtexportal.org/home/tissue/Lung",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1099,11 +1099,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Lung#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+              "link": "https://gtexportal.org/home/tissue/Lung",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1112,22 +1112,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Liver#FDonors",
       "@type": "Donor",
       "label": "Females (n=65), Mean Age 54.5 (21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver",
+      "link": "https://gtexportal.org/home/tissue/Liver",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Liver#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver",
+          "link": "https://gtexportal.org/home/tissue/Liver",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1173,11 +1173,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Liver#FDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver",
+              "link": "https://gtexportal.org/home/tissue/Liver",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1186,22 +1186,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Ovary#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Ovary#FDonors",
       "@type": "Donor",
       "label": "Females (n=180), Mean Age 50.2 (21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Ovary",
+      "link": "https://gtexportal.org/home/tissue/Ovary",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Ovary#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Ovary#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Ovary",
+          "link": "https://gtexportal.org/home/tissue/Ovary",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1246,11 +1246,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Ovary#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Ovary#FDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Ovary",
+              "link": "https://gtexportal.org/home/tissue/Ovary",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1259,22 +1259,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Pancreas#FDonors",
       "@type": "Donor",
       "label": "Females (n=121), Mean Age 52.1 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas",
+      "link": "https://gtexportal.org/home/tissue/Pancreas",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Pancreas#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas",
+          "link": "https://gtexportal.org/home/tissue/Pancreas",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1321,11 +1321,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Pancreas#FDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas",
+              "link": "https://gtexportal.org/home/tissue/Pancreas",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1334,22 +1334,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#FDonors",
       "@type": "Donor",
       "label": "Females (n=234), Mean Age 52.9 (21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg",
+      "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg",
+          "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1393,11 +1393,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#FDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg",
+              "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1406,22 +1406,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#FDonors",
       "@type": "Donor",
       "label": "Females (n=193), Mean Age 53.3 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic",
+      "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic",
+          "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1465,11 +1465,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#FDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic",
+              "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1478,22 +1478,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#FDonors",
       "@type": "Donor",
       "label": "Females (n=67), Mean Age 48.6 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum",
+      "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum",
+          "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1537,11 +1537,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#FDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum",
+              "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1550,22 +1550,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Uterus#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Uterus#FDonors",
       "@type": "Donor",
       "label": "Females (n=142), Mean Age 47.8 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Uterus",
+      "link": "https://gtexportal.org/home/tissue/Uterus",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Uterus#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Uterus#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Uterus",
+          "link": "https://gtexportal.org/home/tissue/Uterus",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1612,11 +1612,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Uterus#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Uterus#FDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Uterus",
+              "link": "https://gtexportal.org/home/tissue/Uterus",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1625,22 +1625,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#FDonors",
       "@type": "Donor",
       "label": "Females (n=94), Mean Age 53.5 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary",
+      "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary",
+          "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1686,11 +1686,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#FDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary",
+              "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1699,22 +1699,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Liver#MDonors",
       "@type": "Donor",
       "label": "Males (n=161), Mean Age 54.5 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver",
+      "link": "https://gtexportal.org/home/tissue/Liver",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Liver#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver",
+          "link": "https://gtexportal.org/home/tissue/Liver",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1760,11 +1760,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Liver#MDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Liver",
+              "link": "https://gtexportal.org/home/tissue/Liver",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1773,22 +1773,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Pancreas#MDonors",
       "@type": "Donor",
       "label": "Males (n=207), Mean Age 50.3 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas",
+      "link": "https://gtexportal.org/home/tissue/Pancreas",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Pancreas#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas",
+          "link": "https://gtexportal.org/home/tissue/Pancreas",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1835,11 +1835,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Pancreas#MDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Pancreas",
+              "link": "https://gtexportal.org/home/tissue/Pancreas",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1848,22 +1848,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Prostate#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Prostate#MDonors",
       "@type": "Donor",
       "label": "Males (n=245), Mean Age 50.6 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Prostate",
+      "link": "https://gtexportal.org/home/tissue/Prostate",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Prostate#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Prostate#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Prostate",
+          "link": "https://gtexportal.org/home/tissue/Prostate",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1913,11 +1913,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Prostate#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Prostate#MDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Prostate",
+              "link": "https://gtexportal.org/home/tissue/Prostate",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1926,22 +1926,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#MDonors",
       "@type": "Donor",
       "label": "Males (n=467), Mean Age 52.9 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg",
+      "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg",
+          "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -1985,11 +1985,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#MDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Sun_Exposed_Lower_leg",
+              "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1998,22 +1998,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#MDonors",
       "@type": "Donor",
       "label": "Males (n=411), Mean Age 53.3 (range 20-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic",
+      "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic",
+          "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -2057,11 +2057,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#MDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Skin_Not_Sun_Exposed_Suprapubic",
+              "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -2070,22 +2070,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#MDonors",
       "@type": "Donor",
       "label": "Males (n=120), Mean Age 48.4 (range 21-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum",
+      "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum",
+          "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -2131,11 +2131,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#MDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Small_Intestine_Terminal_Ileum",
+              "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -2144,22 +2144,22 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#MDonors",
       "@type": "Donor",
       "label": "Males (n=146), Mean Age 54.3 (range 20-70)",
       "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary",
+      "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary",
+          "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -2205,11 +2205,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#MDatasets",
               "@type": "Dataset",
               "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Artery_Coronary",
+              "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
