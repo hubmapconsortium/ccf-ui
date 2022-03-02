@@ -13,15 +13,27 @@
   </ccf-drawer>
 
   <ccf-drawer-content>
-    <div [class.closed]="!open" class="selector-drawer">
+    <div [class.closed]="!open" class="selector-drawer" [class.expanded]="organSelector.expanded">
       <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])"
                           [selectedOrgans]="[model.organ$ | async]" [class.closed]="!open"></ccf-organ-selector>
-      <div class="expand-collapse-icon">
+      <!-- <div class="expand-collapse-icon">
         <mat-icon aria-hidden="false" aria-label="Close carousel drawer" (click)="open = !open">
           {{ open ? 'arrow_drop_up': 'arrow_drop_down' }}
         </mat-icon>
+      </div> -->
+      <div class="close-button-wrapper" [class.closed]="!open" [class.selector-expanded]="organSelector.expanded">
+        <div *ngIf="open" class="close-button" (click)="organSelector.expanded = !organSelector.expanded">
+          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Expand carousel drawer">
+            {{ organSelector.expanded ? 'arrow_drop_up': 'arrow_drop_down' }}
+          </mat-icon>
+        </div>
+        <div *ngIf="!organSelector.expanded" class="close-button" (click)="open = !open">
+          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">
+            {{ open ? 'arrow_drop_up': 'arrow_drop_down' }}
+          </mat-icon>
+        </div>
       </div>
     </div>
-    <ccf-content class="stage-content" [class.expanded-stage]="!open"></ccf-content>
+    <ccf-content class="stage-content" [class.expanded-stage]="!open" [class.retracted-stage]="organSelector.expanded"></ccf-content>
   </ccf-drawer-content>
 </ccf-drawer-container>
