@@ -47,38 +47,16 @@
           border-top-left-radius: 0.5rem;
           height: 0;
           z-index: 2;
-
-          &.selector-expanded {
-
-          }
     
           .close-button {
-            display: flex;
-            justify-content: center;
-            height: 1.0625rem;
-            width: 3rem;
-            align-self: center;
-            border-radius: 0rem 0rem 0.25rem 0.25rem;
             cursor: pointer;
             transition: 0.6s;
-            position: relative;
-            top: 0.5rem;
-            z-index: 1;
-    
-            .mat-icon {
-              position: relative;
-            }
           }
         }
 
         .expand-collapse-icon {
           width: 3rem;
           height: 1.2rem;
-          position: absolute;
-          bottom: 0;
-          right: calc(50% - 1.5rem);
-          margin-bottom: -1.2rem;
-          z-index : 99;
           display: flex;
           justify-content: center;
           align-items: center;
