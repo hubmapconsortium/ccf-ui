@@ -17,22 +17,11 @@
       position: relative;
       z-index: 1;
 
-      ccf-organ-selector {
-        height: 100%;
-        padding-top: 0.5rem;
-        transition: all 0.5s;
-
-        &.closed {
-          padding-top: 0;
-        }
-      }
-
       .selector-drawer {
         top: 0rem;
         display: flex;
         flex-direction: column;
         position: relative;
-        justify-content: center;
         height: 5.688rem;
         transition: all 0.5s ease-in-out;
 
@@ -40,36 +29,45 @@
           height: 15rem;
         }
 
+        ccf-organ-selector {
+          height: 100%;
+          padding-top: 0.5rem;
+          transition: all 0.5s;
+  
+          &.closed {
+            padding-top: 0;
+          }
+        }
+
         .close-button-wrapper {
           display: flex;
           justify-content: center;
-          border-top-right-radius: 0.5rem;
-          border-top-left-radius: 0.5rem;
           height: 0;
           z-index: 2;
     
           .close-button {
             cursor: pointer;
             transition: 0.6s;
+
+            .expand-collapse-icon {
+              width: 3rem;
+              height: 1.2rem;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              background-color: white;
+              border-bottom-left-radius: 0.2rem;
+              border-bottom-right-radius: 0.2rem;
+              transition: 0.6s;
+    
+              &:hover {
+                background-color: #ececec;
+              }
+            }
           }
         }
 
-        .expand-collapse-icon {
-          width: 3rem;
-          height: 1.2rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          background-color: white;
-          border-bottom-left-radius: 0.2rem;
-          border-bottom-right-radius: 0.2rem;
-          transition: 0.6s;
-
-          &:hover {
-            background-color: #ececec;
-          }
-        }
 
         &.closed {
           height: 3rem;
