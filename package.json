@@ -111,7 +111,7 @@
     "ng5-slider": "^1.2.6",
     "ngx-google-analytics": "^11.2.1",
     "ngx-markdown": "^12.0.1",
-    "node-fetch": "^2.6.6",
+    "node-fetch": "^2.6.7",
     "qs": "^6.10.2",
     "rdf-literal": "^1.2.0",
     "rdfxml-streaming-parser": "^1.4.0",
@@ -166,7 +166,7 @@
     "graphology-types": "^0.19.2",
     "jasmine-core": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
-    "karma": "^6.1.1",
+    "karma": "^6.3.17",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "^2.0.3",
     "karma-coverage-istanbul-reporter": "~3.0.2",
@@ -182,6 +182,7 @@
     "sonar-scanner": "^3.1.0",
     "ts-node": "^10.1.0",
     "tsconfig-paths": "^3.12.0",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "yaml": "^1.10.2"
   }
 }
