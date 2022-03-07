@@ -6,6 +6,7 @@ import fetch from 'node-fetch';
 import { AutoPruneLRUCache } from '../../../utils/auto-prune-lru-cache';
 import { RequestCache } from '../../../utils/request-cache';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
+import { get } from '../../../environment';
 
 export interface GtexTissue {
   colorHex: string;
@@ -35,16 +36,17 @@ export interface GtexTissue {
   uberonId: string;
 }
 
+const DEFAULT_GTEX_RUI_LOCATIONS = 'projects/ccf-eui/src/assets/gtex/data/rui_locations.jsonld';
+const GTEX_API_URL = 'https://gtexportal.org/rest/v1/dataset/tissueInfo?datasetId=gtex_v8&format=json';
+
 async function getLocations(): Promise<unknown> {
   try {
-    // TODO get path fom environment
-    const source = 'projects/ccf-eui/src/assets/gtex/data/rui_locations.jsonld';
+    const source = get('GTEX_RUI_LOCATIONS', DEFAULT_GTEX_RUI_LOCATIONS);
     // Attempt to load the source url as a local file
     const data = readFileSync(source, { encoding: 'utf-8' });
     const results = (JSON.parse(data) as JsonLdObj)['@graph'] as JsonLdObj[];
-
-    // TODO call the cool api to get new numbers
-    const response: { tissueInfo: GtexTissue[] } = await (await fetch('https://gtexportal.org/rest/v1/dataset/tissueInfo?datasetId=gtex_v8&format=json')).json();
+    
+    const response: { tissueInfo: GtexTissue[] } = await fetch(GTEX_API_URL).then(r => r.json());
     const mappedEntries = response.tissueInfo.filter(entry => entry.mappedInHubmap);
     for (const tissue of mappedEntries) {
       updateEntry(results, tissue, 'Female');
@@ -57,11 +59,14 @@ async function getLocations(): Promise<unknown> {
   }
 }
 
-export function updateEntry(resultsList: JsonLdObj[], tissueInfo: GtexTissue, sex: string): void {
+export function updateEntry(resultsList: JsonLdObj[], tissueInfo: GtexTissue, sex: 'Male' | 'Female'): void {
   const matchingEntry = resultsList.find(entry => entry['@id']?.includes(tissueInfo.tissueSiteDetailId) && (entry.label as string).includes(sex));
+  let newLabel = '';
   if (matchingEntry) {
     const index = resultsList.indexOf(matchingEntry);
-    const newLabel = `${sex}s (n=${tissueInfo[`rnaSeqSampleCount${sex}`]}), Mean Age ${tissueInfo[`rnaSeqAgeMean${sex}`]} (range ${tissueInfo[`rnaSeqAgeMin${sex}`]}-${tissueInfo[`rnaSeqAgeMax${sex}`]})`;
+    newLabel = sex === 'Male' ?
+      `Males (n=${tissueInfo.rnaSeqSampleCountMale}), Mean Age ${tissueInfo.rnaSeqAgeMeanMale} (range ${tissueInfo.rnaSeqAgeMinMale}-${tissueInfo.rnaSeqAgeMaxMale})` :
+      `Females (n=${tissueInfo.rnaSeqSampleCountFemale}), Mean Age ${tissueInfo.rnaSeqAgeMeanFemale} (range ${tissueInfo.rnaSeqAgeMinFemale}-${tissueInfo.rnaSeqAgeMaxFemale})`
     resultsList[index].label = newLabel;
     resultsList[index].sex = sex;
   }
