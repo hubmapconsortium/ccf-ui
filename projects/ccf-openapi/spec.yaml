@@ -375,6 +375,7 @@ components:
           description: Contains the name of object class/interface
           type: string
           example: Sample
+      x-preprocessor-delete: [properties/@id, properties/@type]
 
     MinMax:
       title: Number Range
@@ -432,6 +433,7 @@ components:
           title: Associated Datasets
           type: array
           items: { $ref: "#/components/schemas/TissueDataset" }
+      x-preprocessor-delete: [properties/@type]
 
     TissueDataset:
       title: Tissue Dataset
@@ -452,6 +454,7 @@ components:
           title: Representative Thumbnail URL
           type: string
           format: uri
+      x-preprocessor-delete: [properties/@type]
 
     TissueDonor:
       title: Tissue Donor
@@ -468,6 +471,7 @@ components:
         providerName:
           title: Provider of Donor
           type: string
+      x-preprocessor-delete: [properties/@type]
 
     TissueSection:
       title: Tissue Section
@@ -567,6 +571,7 @@ components:
           items:
             type: string
             format: uri
+      x-preprocessor-delete: [properties/@type]
 
     OntologyTree:
       title: Ontology Tree
@@ -607,6 +612,7 @@ components:
         file_subpath:
           title: File Subpath
           type: string
+      x-preprocessor-delete: [properties/@type]
 
     SpatialEntityCommon:
       title: Spatial Entity Common
@@ -720,6 +726,7 @@ components:
           type: number
         object: { $ref: "#/components/schemas/SpatialObjectReference" }
         color: { $ref: "#/components/schemas/Rgba" }
+      x-preprocessor-delete: [properties/@type]
 
     SpatialSceneNode:
       title: Spatial Scene Node
