@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import { cacheResponses } from '../../middleware/response-cache';
 import { routes as hubmapRoutes } from './hubmap';
+import { routes as gtexRoutes } from './gtex';
 import { getReferenceOrganSceneHandler } from './reference-organ-scene';
 import { forwardDatabaseQuery } from './utils/forward-database-query';
 
@@ -9,6 +10,7 @@ import { forwardDatabaseQuery } from './utils/forward-database-query';
 export const routes = Router()
   .use(cacheResponses())
   .use('/hubmap', hubmapRoutes)
+  .use('/gtex', gtexRoutes)
   .get('/tissue-blocks', forwardDatabaseQuery('getTissueBlockResults'))
   .get('/technology-names', forwardDatabaseQuery('getDatasetTechnologyNames'))
   .get('/provider-names', forwardDatabaseQuery('getProviderNames'))

@@ -208,6 +208,20 @@ paths:
             application/json:
               schema:
                 type: object
+  /gtex/rui_locations.jsonld:
+    get:
+      summary: Get all GTEx rui locations (if enabled)
+      description: This option is only enabled if GTEX_ROUTES=true in the environment
+      operationId: gtex-rui-locations
+      parameters:
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
 
 components:
   parameters:
