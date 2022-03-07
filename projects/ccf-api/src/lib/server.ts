@@ -46,6 +46,20 @@ function parseDatabaseSources(text: string): DatabaseSources {
   return nonEmptyItems.map(loadDatabaseSource);
 }
 
+function parseDbOwlUrl(source: string): string {
+  if (!source.startsWith('http')) {
+    try {
+      // Attempt to load the source url as a local file
+      const data = readFileSync(source, { encoding: 'utf-8' }).toString();
+      return data;
+    } catch (_error) {
+      return source;
+    }
+  } else {
+    return source;
+  }
+}
+
 
 // ---------------------
 // Options Api
@@ -59,7 +73,7 @@ export function getDatabaseOptions(): CCFDatabaseOptions {
   type ServiceT = CCFDatabaseOptions['hubmapDataService'];
 
   return {
-    ccfOwlUrl: get('DB_OWL_URL', THROW_IF_NOT_FOUND),
+    ccfOwlUrl: parseDbOwlUrl(get('DB_OWL_URL', THROW_IF_NOT_FOUND)),
     ccfContextUrl: get('DB_CONTEXT_URL', 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld'),
     dataSources: parseDatabaseSources(get('DB_DATA_SOURCES', '')),
     hubmapDataService: get('DB_DATA_SERVICE', 'search-api') as ServiceT,
