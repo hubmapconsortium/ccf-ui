@@ -55,7 +55,12 @@ const processDeletions = yaml => {
 
   const additionalPropertiesNode = yaml.createPair('additionalProperties', true)
   const hasAdditionalProperties = map => map.get('additionalProperties') !== undefined;
-  const ensureAdditionalProperties = map => !hasAdditionalProperties(map) && map.add(additionalPropertiesNode);
+  const ensureAdditionalProperties = map => {
+    if (!hasAdditionalProperties(map)) {
+      map.add(additionalPropertiesNode);
+      addDeleteComment(map);
+    }
+  };
 
   const schemas = new Set();
   const isDerived = map => {
@@ -75,7 +80,6 @@ const processDeletions = yaml => {
 
       if (isPropertiesPath(path)) {
         schemas.add(map);
-        addDeleteComment(map);
         ensureAdditionalProperties(map);
         filterRequiredProperties(map, path[path.length - 1]);
       }
