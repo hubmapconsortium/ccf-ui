@@ -44,7 +44,8 @@ async function getLocations(): Promise<unknown> {
     const source = get('GTEX_RUI_LOCATIONS', DEFAULT_GTEX_RUI_LOCATIONS);
     // Attempt to load the source url as a local file
     const data = readFileSync(source, { encoding: 'utf-8' });
-    const results = (JSON.parse(data) as JsonLdObj)['@graph'] as JsonLdObj[];
+    const jsonld = JSON.parse(data) as JsonLdObj
+    const results = jsonld['@graph'] as JsonLdObj[];
 
     const response: { tissueInfo: GtexTissue[] } = await fetch(GTEX_API_URL).then(r => r.json());
     const mappedEntries = response.tissueInfo.filter(entry => entry.mappedInHubmap);
@@ -53,7 +54,7 @@ async function getLocations(): Promise<unknown> {
       updateEntry(results, tissue, 'Male');
     }
 
-    return results;
+    return jsonld;
   } catch (_error) {
     throw new Error('No data available');
   }
