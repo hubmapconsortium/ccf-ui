@@ -45,7 +45,7 @@ async function getLocations(): Promise<unknown> {
     // Attempt to load the source url as a local file
     const data = readFileSync(source, { encoding: 'utf-8' });
     const results = (JSON.parse(data) as JsonLdObj)['@graph'] as JsonLdObj[];
-    
+
     const response: { tissueInfo: GtexTissue[] } = await fetch(GTEX_API_URL).then(r => r.json());
     const mappedEntries = response.tissueInfo.filter(entry => entry.mappedInHubmap);
     for (const tissue of mappedEntries) {
@@ -66,7 +66,7 @@ export function updateEntry(resultsList: JsonLdObj[], tissueInfo: GtexTissue, se
     const index = resultsList.indexOf(matchingEntry);
     newLabel = sex === 'Male' ?
       `Males (n=${tissueInfo.rnaSeqSampleCountMale}), Mean Age ${tissueInfo.rnaSeqAgeMeanMale} (range ${tissueInfo.rnaSeqAgeMinMale}-${tissueInfo.rnaSeqAgeMaxMale})` :
-      `Females (n=${tissueInfo.rnaSeqSampleCountFemale}), Mean Age ${tissueInfo.rnaSeqAgeMeanFemale} (range ${tissueInfo.rnaSeqAgeMinFemale}-${tissueInfo.rnaSeqAgeMaxFemale})`
+      `Females (n=${tissueInfo.rnaSeqSampleCountFemale}), Mean Age ${tissueInfo.rnaSeqAgeMeanFemale} (range ${tissueInfo.rnaSeqAgeMinFemale}-${tissueInfo.rnaSeqAgeMaxFemale})`;
     resultsList[index].label = newLabel;
     resultsList[index].sex = sex;
   }
