@@ -24,7 +24,6 @@ x-preprocessor:
     delete: |
       Delete one or more properties at the specified paths.
       Will also delete the property from the `required` list if applicable.
-  # TODO config global delete
 
 paths:
   /aggregate-results:
