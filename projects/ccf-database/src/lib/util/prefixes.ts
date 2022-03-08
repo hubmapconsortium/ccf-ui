@@ -3,7 +3,7 @@ import { DataFactory, Util } from 'triple-store-utils';
 
 /** Constants used to create entity accessors. */
 export const PREFIXES = {
-  ccf: 'http://purl.org/ccf/latest/ccf.owl#',
+  ccf: 'http://purl.org/ccf/',
   entity: 'http://purl.org/ccf/latest/ccf-entity.owl#',
   fma: 'http://purl.obolibrary.org/obo/FMA_',
   obo: 'http://purl.obolibrary.org/obo/',
