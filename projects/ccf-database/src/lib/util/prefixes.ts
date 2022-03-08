@@ -79,10 +79,10 @@ const ccfx = prefixer('ccf');
 export const ccf = {
   x: ccfx,
   ontologyNode: {
-    label: ccfx('ccf_preferred_label'),
+    label: ccfx('ccf_pref_label'),
     parent: ccfx('ccf_part_of'),
     children: ccfx('ccf_part_of'),
-    rui_rank: ccfx('ccf_rui_rank'),
+    rui_rank: ccfx('rui_rank'),
     synonymLabels: DataFactory.namedNode('http://www.geneontology.org/formats/oboInOwl#hasExactSynonym')
   },
   spatial: {
