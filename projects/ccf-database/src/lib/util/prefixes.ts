@@ -3,6 +3,7 @@ import { DataFactory, Util } from 'triple-store-utils';
 
 /** Constants used to create entity accessors. */
 export const PREFIXES = {
+  base: 'http://purl.org/ccf/latest/ccf.owl#',
   ccf: 'http://purl.org/ccf/',
   entity: 'http://purl.org/ccf/latest/ccf-entity.owl#',
   fma: 'http://purl.obolibrary.org/obo/FMA_',
@@ -86,11 +87,11 @@ export const ccf = {
     synonymLabels: DataFactory.namedNode('http://www.geneontology.org/formats/oboInOwl#hasExactSynonym')
   },
   spatial: {
-    Female: ccfx('VHFemale'),
-    Male: ccfx('VHMale'),
-    BothSexes: ccfx('VHBothSexes'),
-    FemaleOrgans: ccfx('VHFemaleOrgans'),
-    MaleOrgans: ccfx('VHMaleOrgans')
+    Female: prefixer('base')('VHFemale'),
+    Male: prefixer('base')('VHMale'),
+    BothSexes: prefixer('base')('VHBothSexes'),
+    FemaleOrgans: prefixer('base')('VHFemaleOrgans'),
+    MaleOrgans: prefixer('base')('VHMaleOrgans')
   },
   SpatialObjectReference: ccfx('SpatialObjectReference'),
   SpatialEntity: ccfx('SpatialEntity'),
