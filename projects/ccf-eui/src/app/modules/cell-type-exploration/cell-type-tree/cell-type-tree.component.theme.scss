@@ -1,0 +1,87 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .ccf-cell-type-tree {
+    .node {
+      .opacity {
+        color: mat.get-color-from-palette($foreground, main);
+  
+        &:hover {
+          background: mat.get-color-from-palette($foreground, icons-hover);
+        }
+  
+        &.fade {
+          color: mat.get-color-from-palette($foreground, icons-disabled);
+        }
+      }
+
+      .slider {
+        background-color: white;
+        
+        mat-slider {
+          .mat-slider-thumb {
+            background-color: mat.get-color-from-palette($foreground, main);
+          }
+    
+          .mat-slider-track-background {
+            background-color: mat.get-color-from-palette($foreground, icons-disabled);
+          }
+    
+          .mat-slider-track-fill {
+            background-color: mat.get-color-from-palette($foreground, main);
+          }
+        }
+  
+        .opacity-value {
+          color: mat.get-color-from-palette($foreground, opacity-numbers);
+        }
+    
+        .icon {
+          color: mat.get-color-from-palette($foreground, main);
+          &:hover {
+            background: mat.get-color-from-palette($foreground, icons-hover);
+          }
+        }
+    
+        .visibility {
+          &.invisible {
+            color: mat.get-color-from-palette($foreground, icons-disabled);
+          }
+        }
+      }
+
+      .num-results {
+        &.suborgan {
+          color: mat.get-color-from-palette($foreground, results-numbers);
+        }
+      }
+  
+      .text {
+        color: mat.get-color-from-palette($foreground, text);
+      }
+  
+      .text:hover {
+        color: mat.get-color-from-palette($accent);
+      }
+  
+      .selected {
+        color: mat.get-color-from-palette($accent);
+      }
+    }
+
+    .scroll-gradient {
+      background: linear-gradient(
+        0deg,
+        mat.get-color-from-palette($background, dialog) 0%,
+        mat.get-color-from-palette($background, dialog) 55%,
+        mat.get-color-from-palette($background, dialog, 0) 100%
+      );
+    }
+  }
+}

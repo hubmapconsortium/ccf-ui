@@ -1,0 +1,19 @@
+<form class="ccf-cell-type-search" [class.autocomplete-open]="autoCompleteOpen">
+  <mat-form-field appearance="outline" class="field">
+    <mat-icon matPrefix color="primary" class="search">search</mat-icon>
+    <input class="input" type="text" placeholder="Search cell type terms ..." matInput [formControl]="formControl"
+           [matAutocomplete]="autocomplete">
+
+    <mat-autocomplete class="ccf-cell-type-search detached autocomplete" [displayWith]="displayFormatter"
+                      (optionSelected)="onSelect($event)" (opened)="autoCompleteOpen = true"
+                      (closed)="autoCompleteOpen = false" #autocomplete>
+      <div class="results-container">
+        <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">
+          <span class="prefix">{{option.displayLabel[0]}}</span>
+          <span class="search-term">{{option.displayLabel[1]}}</span>
+          <span class="suffix">{{option.displayLabel[2]}}</span>
+        </mat-option>
+      </div>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

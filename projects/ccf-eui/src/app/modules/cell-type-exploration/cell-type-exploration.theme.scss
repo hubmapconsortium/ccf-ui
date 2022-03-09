@@ -1,0 +1,38 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
+
+  .ccf-cell-type-tree {
+    .node {
+      .toggle {
+        background: mat.get-color-from-palette($background, background);
+        color: mat.get-color-from-palette($foreground, text);
+      }
+
+      .text {
+        color: mat.get-color-from-palette($primary, text);
+
+        &:hover {
+          color: mat.get-color-from-palette($accent);
+        }
+      }
+
+      .selected {
+        color: mat.get-color-from-palette($accent);
+      }
+
+      .filtered-out {
+        color: mat.get-color-from-palette($primary, text);
+      }
+
+      .unavailable {
+        color: mat.get-color-from-palette($foreground, disabled-text);
+      }
+    }
+  }
+}
