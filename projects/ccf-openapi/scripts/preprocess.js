@@ -1,5 +1,5 @@
 const { Command } = require('commander');
-const { readFileSync, writeFileSync } = require('fs');
+const { readFileSync, writeFileSync, mkdirSync } = require('fs');
 const { parse, format } = require('path');
 const { isMap, isPair, isScalar, isSeq, parseDocument, stringify, visit } = require('yaml');
 
@@ -123,9 +123,11 @@ const output = options.output || (() => {
   const { base, name, ext } = parse(input);
   return format({ base, name: name + '.out', ext });
 })();
+const outputDir = parse(output).dir;
 
 const content = readFileSync(input, 'utf-8');
 const yaml = parseDocument(content);
 
 process(yaml);
+mkdirSync(outputDir, { recursive: true });
 writeFileSync(output, stringify(yaml), 'utf-8');

@@ -32,7 +32,8 @@
     "build:ccf-organ-info:wc": "node projects/ccf-organ-info/build-webcomponent.js",
     "build:ccf-body-ui-wc": "ng build ccf-body-ui-wc --configuration production --output-hashing none",
     "build:ccf-body-ui-wc:wc": "node projects/ccf-body-ui-wc/build-webcomponent.js",
-    "build:ccf-openapi:angular-client": "cd projects/ccf-openapi && npx openapi-generator-cli generate -c ./configs/angular-client.yaml -i spec.yaml -o generated/angular-client",
+    "build:ccf-openapi": "npm run clean:ccf-openapi && npm run preprocess:ccf-openapi && npm run build:ccf-openapi:impl",
+    "build:ccf-openapi:impl": "foreach -g \"projects/ccf-openapi/configs/*.yaml\" -x \"npx openapi-generator-cli generate -c #{path} -i projects/ccf-openapi/generated/spec.yaml -o projects/ccf-openapi/generated/#{name}\"",
     "build:hubmap-jsonld": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/process-hubmap-data.ts ./src/assets/dev-data/entities.json ./src/assets/dev-data/entities.jsonld",
     "build:triple-store-utils": "npm run build triple-store-utils && npm run fix-triple-store-utils",
     "generate-reference-data": "ts-node --project projects/ccf-body-ui/tsconfig.cli.json projects/ccf-body-ui/src/generate-reference-data.ts ../hubmap-ontology/source_data/reference-spatial-entities.jsonld ../hubmap-ontology/source_data/generated-reference-spatial-entities.jsonld",
@@ -48,7 +49,9 @@
     "lint": "node --max_old_space_size=3000 ./node_modules/@angular/cli/bin/ng lint",
     "e2e": "ng e2e",
     "sonar": "sonar-scanner",
-    "postinstall": "rm -rf ./node_modules/@types/math.gl ./node_modules/@types/math.gl__core"
+    "clean:ccf-openapi": "rimraf projects/ccf-openapi/generated",
+    "preprocess:ccf-openapi": "node projects/ccf-openapi/scripts/preprocess.js -i ccf-api-spec.yaml -o projects/ccf-openapi/generated/spec.yaml",
+    "postinstall": "rimraf ./node_modules/@types/math.gl ./node_modules/@types/math.gl__core"
   },
   "private": true,
   "browser": {
@@ -164,6 +167,7 @@
     "eslint-plugin-jsdoc": "^35.4.3",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-unicorn": "^34.0.1",
+    "foreach-cli": "^1.8.1",
     "graphology-types": "^0.19.2",
     "jasmine-core": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",

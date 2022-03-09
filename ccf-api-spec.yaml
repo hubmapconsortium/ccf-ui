@@ -441,20 +441,19 @@ components:
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
-        - type: object
-          required: ["@type", technology, thumbnail]
-          properties:
-            "@type":
-              type: string
-              enum: [Dataset]
-            technology:
-              title: Technology Used
-              type: string
-            thumbnail:
-              title: Representative Thumbnail URL
-              type: string
-              format: uri
-          x-preprocessor-delete: [properties/@type]
+      required: ["@type", technology, thumbnail]
+      properties:
+        "@type":
+          type: string
+          enum: [Dataset]
+        technology:
+          title: Technology Used
+          type: string
+        thumbnail:
+          title: Representative Thumbnail URL
+          type: string
+          format: uri
+      x-preprocessor-delete: [properties/@type]
 
     TissueDonor:
       title: Tissue Donor
@@ -463,16 +462,15 @@ components:
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
-        - type: object
-          required: ["@type", providerName]
-          properties:
-            "@type":
-              type: string
-              enum: [Donor]
-            providerName:
-              title: Provider of Donor
-              type: string
-          x-preprocessor-delete: [properties/@type]
+      required: ["@type", providerName]
+      properties:
+        "@type":
+          type: string
+          enum: [Donor]
+        providerName:
+          title: Provider of Donor
+          type: string
+      x-preprocessor-delete: [properties/@type]
 
     TissueSection:
       title: Tissue Section
@@ -482,17 +480,17 @@ components:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
         - $ref: "#/components/schemas/TissueSampleCommon"
-        - type: object
-          required: [sampleType, sectionNumber]
-          properties:
-            sampleType:
-              type: string
-              enum: ["Tissue Section", "Non-Standard"]
-            sectionNumber:
-              title: Section Index
-              description: Index of the section in the parent block.
-              type: integer
-              minimum: 0
+      required: [sampleType, sectionNumber]
+      properties:
+        sampleType:
+          type: string
+          enum: ["Tissue Section", "Non-Standard"]
+          x-preprocessor-delete: enum
+        sectionNumber:
+          title: Section Index
+          description: Index of the section in the parent block.
+          type: integer
+          minimum: 0
 
     TissueBlock:
       title: Tissue Block
@@ -502,38 +500,38 @@ components:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
         - $ref: "#/components/schemas/TissueSampleCommon"
-        - type: object
-          required: [sampleType, spatialEntityId, donor, sectionCount, sectionSize, sectionUnits, sections]
-          properties:
-            sampleType:
-              type: string
-              enum: ["Tissue Block", "Non-Standard"]
-            spatialEntityId:
-              title: Associated Spatial Entity
-              description: The associated spatial entity (rui_location) for the block.
-              type: string
-              format: uri
-            donor: { $ref: "#/components/schemas/TissueDonor" }
-            sectionCount:
-              title: Number of Sections
-              description: Number of sections contained in the block.
-              type: integer
-              minimum: 0
-            sectionSize:
-              title: Section Size
-              description: Size of each section in the block.
-              type: number
-              minimum: 0
-            sectionUnits:
-              title: Section Size Unit
-              description: Length unit `sectionSize` is in (generally, millimeters)
-              type: string
-              default: millimeters
-            sections:
-              title: Contained Sections
-              description: All sections in the block.
-              type: array
-              items: { $ref: "#/components/schemas/TissueSection" }
+      required: [sampleType, spatialEntityId, donor, sectionCount, sectionSize, sectionUnits, sections]
+      properties:
+        sampleType:
+          type: string
+          enum: ["Tissue Block", "Non-Standard"]
+          x-preprocessor-delete: enum
+        spatialEntityId:
+          title: Associated Spatial Entity
+          description: The associated spatial entity (rui_location) for the block.
+          type: string
+          format: uri
+        donor: { $ref: "#/components/schemas/TissueDonor" }
+        sectionCount:
+          title: Number of Sections
+          description: Number of sections contained in the block.
+          type: integer
+          minimum: 0
+        sectionSize:
+          title: Section Size
+          description: Size of each section in the block.
+          type: number
+          minimum: 0
+        sectionUnits:
+          title: Section Size Unit
+          description: Length unit `sectionSize` is in (generally, millimeters)
+          type: string
+          default: millimeters
+        sections:
+          title: Contained Sections
+          description: All sections in the block.
+          type: array
+          items: { $ref: "#/components/schemas/TissueSection" }
 
     # Ontology data format
     OntologyTreeNode:
@@ -542,40 +540,39 @@ components:
       type: object
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
-        - type: object
-          required: ["@type", id, label, synonymLabels, parent, children]
-          properties:
-            "@type":
-              type: string
-              enum: [OntologyTreeNode]
-            id:
-              title: Identifier
-              description: Unique identifier for the node.
-              type: string
-              format: uri
-            label:
-              title: Label
-              description: Main descriptive label for the node.
-              type: string
-            synonymLabels:
-              title: Synonym Labels
-              description: Additional label for the node.
-              type: array
-              items:
-                type: string
-            parent:
-              title: Parent Node Identifier
-              description: Reference to the parent node.
-              type: string
-              format: uri
-            children:
-              title: Child Node Identifiers
-              description: References to all child nodes.
-              type: array
-              items:
-                type: string
-                format: uri
-          x-preprocessor-delete: [properties/@type]
+      required: ["@type", id, label, synonymLabels, parent, children]
+      properties:
+        "@type":
+          type: string
+          enum: [OntologyTreeNode]
+        id:
+          title: Identifier
+          description: Unique identifier for the node.
+          type: string
+          format: uri
+        label:
+          title: Label
+          description: Main descriptive label for the node.
+          type: string
+        synonymLabels:
+          title: Synonym Labels
+          description: Additional label for the node.
+          type: array
+          items:
+            type: string
+        parent:
+          title: Parent Node Identifier
+          description: Reference to the parent node.
+          type: string
+          format: uri
+        children:
+          title: Child Node Identifiers
+          description: References to all child nodes.
+          type: array
+          items:
+            type: string
+            format: uri
+      x-preprocessor-delete: [properties/@type]
 
     OntologyTree:
       title: Ontology Tree
@@ -600,24 +597,23 @@ components:
       type: object
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
-        - type: object
-          required: ["@type", file, file_format]
-          properties:
-            "@type":
-              type: string
-              enum: [SpatialObjectReference]
-            file:
-              title: File
-              type: string
-              format: uri
-            file_format:
-              title: File Format
-              type: string
-              example: model/gltf-binary
-            file_subpath:
-              title: File Subpath
-              type: string
-          x-preprocessor-delete: [properties/@type]
+      required: ["@type", file, file_format]
+      properties:
+        "@type":
+          type: string
+          enum: [SpatialObjectReference]
+        file:
+          title: File
+          type: string
+          format: uri
+        file_format:
+          title: File Format
+          type: string
+          example: model/gltf-binary
+        file_subpath:
+          title: File Subpath
+          type: string
+      x-preprocessor-delete: [properties/@type]
 
     SpatialEntityCommon:
       title: Spatial Entity Common
@@ -699,40 +695,41 @@ components:
         - $ref: "#/components/schemas/SpatialEntityCommon"
         - $ref: "#/components/schemas/SpatialEntityCreator"
         - $ref: "#/components/schemas/SpatialEntityDimensions"
-        - type: object
-          required: ["@type"]
-          properties:
-            "@type":
-              type: string
-              enum: [SpatialEntity]
-            label:
-              title: Label
-              type: string
-            comment:
-              title: Comment
-              type: string
-            rui_rank:
-              title: RUI Rank
-              description: Ranking used to order lists in the RUI.
-              type: integer
-            sex:
-              title: Sex
-              type: string
-              enum: [Female, Male]
-            side:
-              title: Side
-              description: Used for organs that come in pairs to distinguish between them, i.e. kidneys, etc.
-              type: string
-              enum: [Left, Right]
-            slice_count:
-              title: Slice Count
-              type: integer
-            slice_thickness:
-              title: Slice Thickness
-              type: number
-            object: { $ref: "#/components/schemas/SpatialObjectReference" }
-            color: { $ref: "#/components/schemas/Rgba" }
-          x-preprocessor-delete: [properties/@type]
+      required: ["@type"]
+      properties:
+        "@type":
+          type: string
+          enum: [SpatialEntity]
+        label:
+          title: Label
+          type: string
+        comment:
+          title: Comment
+          type: string
+        rui_rank:
+          title: RUI Rank
+          description: Ranking used to order lists in the RUI.
+          type: integer
+        sex:
+          title: Sex
+          type: string
+          enum: [Female, Male]
+          x-preprocessor-delete: enum
+        side:
+          title: Side
+          description: Used for organs that come in pairs to distinguish between them, i.e. kidneys, etc.
+          type: string
+          enum: [Left, Right]
+          x-preprocessor-delete: enum
+        slice_count:
+          title: Slice Count
+          type: integer
+        slice_thickness:
+          title: Slice Thickness
+          type: number
+        object: { $ref: "#/components/schemas/SpatialObjectReference" }
+        color: { $ref: "#/components/schemas/Rgba" }
+      x-preprocessor-delete: [properties/@type]
 
     SpatialSceneNode:
       title: Spatial Scene Node
@@ -741,52 +738,51 @@ components:
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/SpatialEntityCommon"
-        - type: object
-          properties:
-            name:
-              title: Label
-              type: string
-            tooltip:
-              title: Tooltip Label
-              type: string
-            unpickable:
-              title: Unpickable
-              description: Whether the node should selectable by the user in interfaces.
-              type: boolean
-            wireframe:
-              title: Wireframe
-              description: Whether to show a wireframe for the node.
-              type: boolean
-            _lighting:
-              title: Lighting
-              type: boolean
-            zoomBasedOpacity:
-              title: Zoom Based Opacity
-              description: Whether the opacity of the node changes based on the zoom level.
-              type: boolean
-            zoomToOnLoad:
-              title: Focus
-              description: Focus this node when loaded in an interface.
-              type: boolean
-            scenegraph:
-              title: Scenegraph
-              type: string
-              format: uri
-            scenegraphNode:
-              title: Scenegraph Node
-              type: string
-            color: { $ref: "#/components/schemas/Rgba" }
-            opacity:
-              title: Opacity
-              type: number
-            transformMatrix:
-              title: Transformation
-              description: Additional transformations to be applied.
-              type: array
-              minItems: 16
-              maxItems: 16
-              items:
-                type: number
-            priority:
-              title: Priority
-              type: number
+      properties:
+        name:
+          title: Label
+          type: string
+        tooltip:
+          title: Tooltip Label
+          type: string
+        unpickable:
+          title: Unpickable
+          description: Whether the node should selectable by the user in interfaces.
+          type: boolean
+        wireframe:
+          title: Wireframe
+          description: Whether to show a wireframe for the node.
+          type: boolean
+        _lighting:
+          title: Lighting
+          type: boolean
+        zoomBasedOpacity:
+          title: Zoom Based Opacity
+          description: Whether the opacity of the node changes based on the zoom level.
+          type: boolean
+        zoomToOnLoad:
+          title: Focus
+          description: Focus this node when loaded in an interface.
+          type: boolean
+        scenegraph:
+          title: Scenegraph
+          type: string
+          format: uri
+        scenegraphNode:
+          title: Scenegraph Node
+          type: string
+        color: { $ref: "#/components/schemas/Rgba" }
+        opacity:
+          title: Opacity
+          type: number
+        transformMatrix:
+          title: Transformation
+          description: Additional transformations to be applied.
+          type: array
+          minItems: 16
+          maxItems: 16
+          items:
+            type: number
+        priority:
+          title: Priority
+          type: number
