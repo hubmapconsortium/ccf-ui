@@ -305,16 +305,6 @@ export class CCFDatabase {
   }
 
   /**
-   * Get number of occurrences of cell type terms for a set of ids.
-   *
-   * @param [filter] The filter.
-   * @returns Cell type term counts.
-   */
-   async getCellTypeTermOccurences(filter?: Filter): Promise<Record<string, number>> {
-    return getOntologyTermOccurences(this.getIds(filter), this.store); //TODO: replace with cell type term occurrences
-  }
-
-  /**
    * Get ontology term tree nodes
    *
    * @returns Ontology term counts.

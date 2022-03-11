@@ -30,7 +30,6 @@ const METHOD_TO_DATASET: Record<keyof DataSource, string> = {
   getTissueBlockResults: 'tissue-blocks',
   getAggregateResults: 'aggregate-results',
   getOntologyTermOccurences: 'ontology-term-occurences',
-  getCellTypeTermOccurences: 'ontology-term-occurences',
   getScene: 'scene',
   getReferenceOrganScene: 'reference-organ-scene'
 };

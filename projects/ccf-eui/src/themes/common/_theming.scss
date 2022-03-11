@@ -10,11 +10,8 @@
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme' as spinner;
 @use '../../app/shared/components/thumbnail-carousel/thumbnail-carousel.theme' as thumbnailCarousel;
 @use '../../app/modules/ontology-exploration/ontology-exploration.theme' as ontologyExploration;
-@use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as ontologySearch;
-@use '../../app/modules/ontology-exploration/ontology-tree/ontology-tree.component.theme' as ontologyTree;
-@use '../../app/modules/cell-type-exploration/cell-type-exploration.theme' as cellTypeExploration;
-@use '../../app/modules/cell-type-exploration/cell-type-search/cell-type-search.component.theme' as cellTypeSearch;
-@use '../../app/modules/cell-type-exploration/cell-type-tree/cell-type-tree.component.theme' as cellTypeTree;
+@use '../../app/modules/ontology-exploration/ontology-search/ontology-search.component.theme' as search;
+@use '../../app/modules/ontology-exploration/ontology-tree/ontology-tree.component.theme' as tree;
 @use '../../../../ccf-shared/src/lib/components/organ-selector/organ-selector.component.theme' as organSelector;
 @use '../../../../ccf-shared/src/lib/components//info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
 @use '../../../../ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss' as infoButton;
@@ -43,12 +40,9 @@
   @include spinner.theme($theme);
   @include thumbnailCarousel.theme($theme);
   @include filters.theme($theme);
-  @include ontologySearch.theme($theme);
-  @include ontologyTree.theme($theme);
+  @include search.theme($theme);
+  @include tree.theme($theme);
   @include ontologyExploration.theme($theme);
-  @include cellTypeSearch.theme($theme);
-  @include cellTypeTree.theme($theme);
-  @include cellTypeExploration.theme($theme);
   @include organSelector.theme($theme);
   @include infoDialog.theme($theme);
   @include infoButton.theme($theme);

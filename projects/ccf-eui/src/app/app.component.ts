@@ -9,7 +9,6 @@ import { map, pluck } from 'rxjs/operators';
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
-import { CellTypeSelection } from './core/models/cell-type-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { DARK_THEME, LIGHT_THEME, ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
@@ -161,9 +160,13 @@ export class AppComponent implements OnInit {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[] | undefined): void {
+  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'ontology' | 'cell-type'): void {
     if (ontologySelection) {
-      this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
+      if (type === 'ontology') {
+        this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
+      } else {
+        this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection => selection.id) });
+      }
       this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
       if (ontologySelection[0] && ontologySelection[0].label === 'body') {
         this.resetView();
@@ -171,27 +174,8 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    this.data.updateFilter({ ontologyTerms: [] });
+    this.data.updateFilter({ ontologyTerms: [], cellTypeTerms: [] });
     this.ontologySelectionLabel = '';
-  }
-
-  /**
-   * Captures changes in the cellTypeSelection and uses them to update the results-browser label
-   * and the filter object in the data store.
-   *
-   * @param cellTypeSelection the list of currently selected organ nodes
-   */
-   cellTypeSelected(cellTypeSelection: CellTypeSelection[] | undefined): void {
-    if (cellTypeSelection) {
-      this.data.updateFilter({ cellTypeTerms: cellTypeSelection.map(selection => selection.id) });
-      this.cellTypeSelectionLabel = this.createSelectionLabel(cellTypeSelection);
-      if (cellTypeSelection[0] && cellTypeSelection[0].label === 'body') {
-        this.resetView();
-      }
-      return;
-    }
-
-    this.data.updateFilter({ cellTypeTerms: [] });
     this.cellTypeSelectionLabel = '';
   }
 

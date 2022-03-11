@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FiltersPopoverModule } from './modules/filters/filters-popover/filters-popover.module';
 import { OntologyExplorationModule } from './modules/ontology-exploration/ontology-exploration.module';
-import { CellTypeExplorationModule } from './modules/cell-type-exploration/cell-type-exploration.module';
 import { ResultsBrowserModule } from './modules/results-browser/results-browser/results-browser.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
@@ -31,7 +30,6 @@ import { AppWebComponent } from './app-web-component.component';
     DrawerModule,
     FiltersPopoverModule,
     OntologyExplorationModule,
-    CellTypeExplorationModule,
     MatIconModule,
     DualSliderModule,
     ResultsBrowserModule,

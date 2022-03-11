@@ -24,13 +24,13 @@
         <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"
                                 [occurenceData]="data.ontologyTermOccurencesData$ | async"
                                 placeholderText="Search ontology terms"
-                                (ontologySelection)="ontologySelected($event)">
+                                (ontologySelection)="ontologySelected($event, 'ontology')">
         </ccf-ontology-selection>
-        <ccf-cell-type-selection  [termData]="data.cellTypeTermsFullData$ | async"
-                                  [occurenceData]="data.cellTypeTermOccurencesData$ | async"
-                                  placeholderText="Search cell type terms"
-                                  (cellTypeSelection)="cellTypeSelected($event)">
-        </ccf-cell-type-selection>
+        <ccf-ontology-selection [termData]="data.cellTypeTermsFullData$ | async"
+                                [occurenceData]="data.cellTypeTermOccurencesData$ | async"
+                                placeholderText="Search cell type terms"
+                                (ontologySelection)="ontologySelected($event, 'cell-type')">
+        </ccf-ontology-selection>
         <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
       </div>
     </ccf-drawer>
