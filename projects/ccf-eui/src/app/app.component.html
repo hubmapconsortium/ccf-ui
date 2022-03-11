@@ -22,14 +22,14 @@
           </div>
         </div>
         <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"
-                                [occurenceData]="data.termOccurencesData$ | async"
+                                [occurenceData]="data.ontologyTermOccurencesData$ | async"
                                 placeholderText="Search ontology terms"
                                 (ontologySelection)="ontologySelected($event)">
         </ccf-ontology-selection>
-        <ccf-cell-type-selection  [termData]="data.ontologyTermsFullData$ | async"
-                                  [occurenceData]="data.termOccurencesData$ | async"
+        <ccf-cell-type-selection  [termData]="data.cellTypeTermsFullData$ | async"
+                                  [occurenceData]="data.cellTypeTermOccurencesData$ | async"
                                   placeholderText="Search cell type terms"
-                                  (ontologySelection)="ontologySelected($event)">
+                                  (cellTypeSelection)="cellTypeSelected($event)">
         </ccf-cell-type-selection>
         <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
       </div>
@@ -75,7 +75,7 @@
     <ccf-drawer-content>
       <div [class.closed]="!organListVisible" class="selector-drawer" [class.expanded]="selector.expanded">
         <ccf-organ-selector #selector class="organ-selector" [multiselect]="true"
-                            [occurenceData]="(data.termOccurencesData$ | async) ?? {}"
+                            [occurenceData]="(data.ontologyTermOccurencesData$ | async) ?? {}"
                             [organList]="scene.referenceOrgans$ | async"
                             (organsChanged)="scene.setSelectedReferenceOrgans($event)"
                             [selectedOrgans]="scene.selectedReferenceOrgans$ | async">

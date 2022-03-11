@@ -9,6 +9,7 @@ import { map, pluck } from 'rxjs/operators';
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
+import { CellTypeSelection } from './core/models/cell-type-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { DARK_THEME, LIGHT_THEME, ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
@@ -36,6 +37,8 @@ export class AppComponent implements OnInit {
    * results-browser component.
    */
   ontologySelectionLabel = 'Body';
+
+  cellTypeSelectionLabel = 'Body';
 
   /**
    * Whether or not organ carousel is open
@@ -65,6 +68,8 @@ export class AppComponent implements OnInit {
 
   readonly ontologyTerms$: Observable<readonly string[]>;
 
+  readonly cellTypeTerms$: Observable<readonly string[]>;
+
   readonly portalUrl$ = this.globalConfig.getOption('hubmapPortalUrl');
 
   /**
@@ -83,12 +88,14 @@ export class AppComponent implements OnInit {
     overlay.setRootElement(el);
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
-    data.termOccurencesData$.subscribe();
+    data.ontologyTermOccurencesData$.subscribe();
+    data.cellTypeTermOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
+    this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
   }
 
   ngOnInit(): void {
@@ -166,6 +173,26 @@ export class AppComponent implements OnInit {
 
     this.data.updateFilter({ ontologyTerms: [] });
     this.ontologySelectionLabel = '';
+  }
+
+  /**
+   * Captures changes in the cellTypeSelection and uses them to update the results-browser label
+   * and the filter object in the data store.
+   *
+   * @param cellTypeSelection the list of currently selected organ nodes
+   */
+   cellTypeSelected(cellTypeSelection: CellTypeSelection[] | undefined): void {
+    if (cellTypeSelection) {
+      this.data.updateFilter({ cellTypeTerms: cellTypeSelection.map(selection => selection.id) });
+      this.cellTypeSelectionLabel = this.createSelectionLabel(cellTypeSelection);
+      if (cellTypeSelection[0] && cellTypeSelection[0].label === 'body') {
+        this.resetView();
+      }
+      return;
+    }
+
+    this.data.updateFilter({ cellTypeTerms: [] });
+    this.cellTypeSelectionLabel = '';
   }
 
   /**

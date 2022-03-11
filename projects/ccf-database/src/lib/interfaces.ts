@@ -99,6 +99,8 @@ export interface Filter {
   technologies: string[];
   /** Ontology terms */
   ontologyTerms: string[];
+  /** CellType terms */
+  cellTypeTerms: string[];
   /** Include optional debugging information */
   debug?: boolean;
 }
