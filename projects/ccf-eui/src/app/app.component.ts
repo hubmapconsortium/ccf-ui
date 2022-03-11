@@ -160,9 +160,9 @@ export class AppComponent implements OnInit {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'ontology' | 'cell-type'): void {
+  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'anatomical-structures' | 'cell-type'): void {
     if (ontologySelection) {
-      if (type === 'ontology') {
+      if (type === 'anatomical-structures') {
         this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
       } else {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection => selection.id) });

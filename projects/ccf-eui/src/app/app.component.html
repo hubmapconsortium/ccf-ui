@@ -24,7 +24,7 @@
         <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"
                                 [occurenceData]="data.ontologyTermOccurencesData$ | async"
                                 placeholderText="Search ontology terms"
-                                (ontologySelection)="ontologySelected($event, 'ontology')">
+                                (ontologySelection)="ontologySelected($event, 'anatomical-structures')">
         </ccf-ontology-selection>
         <ccf-ontology-selection [termData]="data.cellTypeTermsFullData$ | async"
                                 [occurenceData]="data.cellTypeTermOccurencesData$ | async"
