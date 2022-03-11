@@ -64,7 +64,7 @@ export class FilteredSceneService {
     } else if (organs) {
       const organ = organs.find(tempOrgan => tempOrgan['@id'] === organUrls[0]);
       if (organ) {
-        return this.source.getOrganScene(organ.representation_of as string, { ontologyTerms: [organ.reference_organ as string], sex: organ.sex } as Filter);
+        return this.source.getOrganScene(organ.representation_of as string, { anatomicalTerms: [organ.reference_organ as string], sex: organ.sex } as Filter);
       }
     }
     return of([]);

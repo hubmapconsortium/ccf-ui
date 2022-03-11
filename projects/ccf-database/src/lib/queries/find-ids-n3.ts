@@ -121,9 +121,14 @@ export function findIds(store: Store, filter: Filter): Set<string> {
       filterByTechnology(store, datasets, filter.technologies)
     );
   }
-  if (seen.size > 0 && filter.ontologyTerms?.length > 0) {
+  if (seen.size > 0 && filter.anatomicalTerms?.length > 0) {
     seen = filterWithSpatialEntity(store, seen, (entities) =>
-      filterByOntologyTerms(store, entities, filter.ontologyTerms)
+      filterByAnatomicalTerms(store, entities, filter.anatomicalTerms)
+    );
+  }
+  if (seen.size > 0 && filter.cellTypeTerms?.length > 0) {
+    seen = filterWithSpatialEntity(store, seen, (entities) =>
+      filterByCellTypeTerms(store, entities, filter.anatomicalTerms)
     );
   }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
@@ -225,14 +230,31 @@ function filterByTechnology(store: Store, seen: Set<string>, technologies: strin
 }
 
 /**
- * Filters ids by ontology terms.
+ * Filters ids by anatomical terms.
  *
  * @param store The triple store.
  * @param seen All ids to choose from.
- * @param terms Ontology terms to filter on.
- * @returns The subset of ids with the specified ontology terms.
+ * @param terms Anatomical terms to filter on.
+ * @returns The subset of ids with the specified anatomical terms.
  */
-function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+function filterByAnatomicalTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+  const newSeen = new Set<string>();
+  for (const term of terms) {
+    const namedNode = DataFactory.namedNode(term);
+    store.forSubjects(differenceCallback(seen, newSeen), ccf.spatialEntity.ccf_annotations, namedNode, null);
+  }
+  return newSeen;
+}
+
+/**
+ * Filters ids by cell type terms.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param terms Cell type terms to filter on.
+ * @returns The subset of ids with the specified cell type terms.
+ */
+ function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
   const newSeen = new Set<string>();
   for (const term of terms) {
     const namedNode = DataFactory.namedNode(term);

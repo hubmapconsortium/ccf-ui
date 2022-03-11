@@ -25,8 +25,12 @@
       "@id": "has_spatial_entity",
       "@type": "@id"
     },
-    "ontologyTerms": {
-      "@id": "has_ontology_term",
+    "anatomicalTerms": {
+      "@id": "has_anatomical_term",
+      "@type": "@id"
+    },
+    "cellTypeTerms": {
+      "@id": "has_cell_type_term",
       "@type": "@id"
     },
     "thumbnail": {

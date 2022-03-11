@@ -116,7 +116,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       node['@id'] !== 'http://purl.org/ccf/latest/ccf.owl#VHFSkin'
       && node.entityId // Disables this path. Need to update logic here.
     ) {
-      this.dataState.updateFilter({ ontologyTerms: [node.representation_of] });
+      this.dataState.updateFilter({ anatomicalTerms: [node.representation_of] });
     } else if (node.entityId) {
       this.colorAssignments.assignColor(node['@id'], !ctrlClick);
     }

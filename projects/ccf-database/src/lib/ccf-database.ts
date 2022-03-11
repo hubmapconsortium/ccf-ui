@@ -295,13 +295,23 @@ export class CCFDatabase {
   }
 
   /**
-   * Get number of occurrences of ontology terms for a set of ids.
+   * Get number of occurrences of anatomical terms for a set of ids.
    *
    * @param [filter] The filter.
-   * @returns Ontology term counts.
+   * @returns Anatomical term counts.
    */
-  async getOntologyTermOccurences(filter?: Filter): Promise<Record<string, number>> {
-    return getOntologyTermOccurences(this.getIds(filter), this.store);
+  async getAnatomicalTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+    return getOntologyTermOccurences(this.getIds(filter), this.store); //TODO: replace with anatomical term occurrences
+  }
+
+  /**
+   * Get number of occurrences of cell type terms for a set of ids.
+   *
+   * @param [filter] The filter.
+   * @returns Cell type term counts.
+   */
+   async getCellTypeTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+    return getOntologyTermOccurences(this.getIds(filter), this.store); //TODO: replace with cell type term occurrences
   }
 
   /**

@@ -21,9 +21,9 @@
               <strong>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</strong></div>
           </div>
         </div>
-        <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"
-                                [occurenceData]="data.ontologyTermOccurencesData$ | async"
-                                placeholderText="Search ontology terms"
+        <ccf-ontology-selection [termData]="data.anatomicalTermsFullData$ | async"
+                                [occurenceData]="data.anatomicalTermOccurencesData$ | async"
+                                placeholderText="Search anatomical terms"
                                 (ontologySelection)="ontologySelected($event, 'anatomical-structures')">
         </ccf-ontology-selection>
         <ccf-ontology-selection [termData]="data.cellTypeTermsFullData$ | async"
@@ -60,7 +60,7 @@
       <ccf-results-browser
         [listResults]="listResultsState.listResults$ | async"
         [aggregateData]="data.aggregateData$ | async"
-        [resultLabel]="ontologySelectionLabel"
+        [resultLabel]="anatomicalSelectionLabel"
         (listResultSelected)="listResultsState.selectListResult($event)"
         (listResultDeselected)="listResultsState.deselectListResult($event)"
         (linkClicked)="openiFrameViewer($event)"
@@ -75,7 +75,7 @@
     <ccf-drawer-content>
       <div [class.closed]="!organListVisible" class="selector-drawer" [class.expanded]="selector.expanded">
         <ccf-organ-selector #selector class="organ-selector" [multiselect]="true"
-                            [occurenceData]="(data.ontologyTermOccurencesData$ | async) ?? {}"
+                            [occurenceData]="(data.anatomicalTermOccurencesData$ | async) ?? {}"
                             [organList]="scene.referenceOrgans$ | async"
                             (organsChanged)="scene.setSelectedReferenceOrgans($event)"
                             [selectedOrgans]="scene.selectedReferenceOrgans$ | async">
