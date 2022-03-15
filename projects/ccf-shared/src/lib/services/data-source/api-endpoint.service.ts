@@ -1,104 +1,198 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
-import { Filter, SpatialSceneNode } from 'ccf-database';
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import {
+  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+} from 'ccf-database';
+import { DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
+import { Observable, Subject } from 'rxjs';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
 
 import { GlobalConfigState } from '../../config/global-config.state';
-import { encodeArguments as defaultEncodeArguments } from './api-endpoint-argument-encoder';
-import { DataSource, DataSourceDataType, DataSourceMethod, ForwardingDataSource } from './data-source';
+import { DataSource } from './data-source';
 
-
-type UnaryFunction<T> = (arg: T) => T;
 
 export interface ApiEndpointDataSourceOptions {
   remoteApiEndpoint: string;
   hubmapToken?: string;
 }
 
-export type ApiEndpointDataReviver<K extends keyof DataSource> =
-  UnaryFunction<DataSourceDataType<K>>;
+// Not exported from ts-cacheable!?
+type IObservableCacheConfig = NonNullable<Parameters<typeof Cacheable>[0]>;
+
+type RequestMethod<P, T> = (params: P) => Observable<T>;
+type DataReviver<T, U> = (data: T) => U;
+
+interface DefaultParams {
+  token?: string;
+}
+
+interface FilterParams {
+  age?: MinMax;
+  ageRange?: string;
+  bmi?: MinMax;
+  bmiRange?: string;
+  ontologyTerms?: string[];
+  providers?: string[];
+  sex?: 'both' | 'female' | 'male';
+  technologies?: string[];
+}
 
 
-const METHOD_TO_DATASET: Record<keyof DataSource, string> = {
-  getProviderNames: 'provider-names',
-  getDatasetTechnologyNames: 'technology-names',
-  getOntologyTreeModel: 'ontology-tree-model',
-  getReferenceOrgans: 'reference-organs',
-  getTissueBlockResults: 'tissue-blocks',
-  getAggregateResults: 'aggregate-results',
-  getOntologyTermOccurences: 'ontology-term-occurences',
-  getScene: 'scene',
-  getReferenceOrganScene: 'reference-organ-scene'
+// Cache config
+const buster$ = new Subject<unknown>();
+
+const CACHE_CONFIG_NO_PARAMS: IObservableCacheConfig = {
+  cacheBusterObserver: buster$
 };
 
-const SPATIAL_SCENE_NODE_REVIVER = (nodes: SpatialSceneNode[]) => nodes.map(node => ({
-  ...node,
-  transformMatrix: new Matrix4(node.transformMatrix)
-}));
-
-const DATA_REVIVERS: { [K in keyof DataSource]?: ApiEndpointDataReviver<K> } = {
-  getScene: SPATIAL_SCENE_NODE_REVIVER,
-  getReferenceOrganScene: SPATIAL_SCENE_NODE_REVIVER
+const CACHE_CONFIG_PARAMS: IObservableCacheConfig = {
+  cacheBusterObserver: buster$,
+  maxCacheCount: 4
 };
+
+
+// Utility
+function cast<T>(): (data: unknown) => T {
+  return data => data as T;
+}
+
+function rangeToMinMax(
+  range: [number, number] | undefined,
+  low: number, high: number
+): MinMax | undefined {
+  return range ? {
+    min: range[0] >= low ? range[0] : undefined,
+    max: range[1] <= high ? range[1] : undefined
+  } : undefined;
+}
+
+function filterToParams(filter?: Filter): FilterParams {
+  return {
+    age: rangeToMinMax(filter?.ageRange, 1, 110),
+    bmi: rangeToMinMax(filter?.bmiRange, 13, 83),
+    sex: filter?.sex?.toLowerCase?.() as FilterParams['sex'],
+    ontologyTerms: filter?.ontologyTerms,
+    providers: filter?.tmc,
+    technologies: filter?.technologies
+  };
+}
+
+function spatialSceneNodeReviver(nodes: RawSpatialSceneNode[]): SpatialSceneNode[] {
+  return nodes.map(node => ({
+    ...(node as SpatialSceneNode),
+    transformMatrix: new Matrix4(node.transformMatrix ?? [])
+  }));
+}
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiEndpointDataSourceService extends ForwardingDataSource {
+export class ApiEndpointDataSourceService implements DataSource {
   constructor(
-    private readonly globalConfig: GlobalConfigState<ApiEndpointDataSourceOptions>,
-    private readonly http: HttpClient
+    private readonly api: DefaultService,
+    private readonly globalConfig: GlobalConfigState<ApiEndpointDataSourceOptions>
   ) {
-    super();
+    globalConfig.getOption('hubmapToken').subscribe(buster$);
   }
 
-  protected getDataset<K extends keyof DataSource>(method: K): string {
-    return METHOD_TO_DATASET[method];
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getProviderNames(): Observable<string[]> {
+    return this.doRequest(params => this.api.providerNames(params));
   }
 
-  protected getReviver<K extends keyof DataSource>(
-    method: K
-  ): ApiEndpointDataReviver<K> | undefined {
-    return DATA_REVIVERS[method] as ApiEndpointDataReviver<K>;
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getDatasetTechnologyNames(): Observable<string[]> {
+    return this.doRequest(params => this.api.technologyNames(params));
   }
 
-  protected encodeArguments<K extends keyof DataSource>(
-    _method: K, args: Parameters<DataSourceMethod<K>>
-  ): HttpParams {
-    if (args.length === 1) {
-      return defaultEncodeArguments(args[0] as Filter ?? {});
-    } else if (args.length === 2) {
-      return defaultEncodeArguments({ ...args[1], organIri: args[0] });
-    }
-
-    return new HttpParams();
-  }
-
-  @Cacheable({ maxCacheCount: 16 })
-  protected forwardCall<K extends keyof DataSource>(
-    method: K, ...args: Parameters<DataSourceMethod<K>>
-  ): Observable<DataSourceDataType<K>> {
-    const { globalConfig, http } = this;
-    const dataset = this.getDataset(method);
-    const reviver = this.getReviver(method);
-    const params = this.encodeArguments(method, args);
-
-    return globalConfig.getOption('remoteApiEndpoint').pipe(
-      map(endpoint => `${endpoint}/${dataset}`),
-      switchMap(url => http.get<DataSourceDataType<K>>(url, {
-        params: this.withToken(params),
-        responseType: 'json'
-      })),
-      map(data => reviver?.(data) ?? data)
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getOntologyTreeModel(): Observable<OntologyTreeModel> {
+    return this.doRequest(
+      params => this.api.ontologyTreeModel(params),
+      undefined, undefined,
+      cast<OntologyTreeModel>()
     );
   }
 
-  private withToken(params: HttpParams): HttpParams {
-    const { globalConfig: { snapshot: { hubmapToken } } } = this;
-    return hubmapToken ? params.set('token', hubmapToken) : params;
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getReferenceOrgans(): Observable<SpatialEntity[]> {
+    return this.doRequest(
+      params => this.api.referenceOrgans(params),
+      undefined, undefined,
+      cast<SpatialEntity[]>()
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
+    return this.doRequest(
+      params => this.api.tissueBlocks(params),
+      filter, undefined,
+      cast<TissueBlockResult[]>()
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
+    return this.doRequest(
+      params => this.api.aggregateResults(params),
+      filter
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.doRequest(
+      params => this.api.ontologyTermOccurences(params),
+      filter
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
+    return this.doRequest(
+      params => this.api.scene(params),
+      filter, undefined,
+      spatialSceneNodeReviver
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]> {
+    return this.doRequest(
+      params => this.api.referenceOrganScene(params),
+      filter, { organIri },
+      spatialSceneNodeReviver
+    );
+  }
+
+  private doRequest<T, P>(
+    method: RequestMethod<DefaultParams & FilterParams & P, T>,
+    filter?: Filter | undefined,
+    params?: P
+  ): Observable<T>;
+  private doRequest<T, P, U>(
+    method: RequestMethod<DefaultParams & FilterParams & P, T>,
+    filter: Filter | undefined,
+    params: P | undefined,
+    reviver: DataReviver<T, U>
+  ): Observable<U>;
+  private doRequest<P>(
+    method: RequestMethod<unknown, unknown>,
+    filter: Filter | undefined,
+    params?: P,
+    reviver?: DataReviver<unknown, unknown>
+  ): Observable<unknown> {
+    const { api, globalConfig } = this;
+    const requestParams = { ...filterToParams(filter), ...params };
+
+    return globalConfig.getOption('remoteApiEndpoint').pipe(
+      take(1),
+      tap(endpoint => (api.configuration.basePath = endpoint)),
+      switchMap(() => method(requestParams)),
+      map(data => reviver ? reviver(data) : data)
+    );
   }
 }
