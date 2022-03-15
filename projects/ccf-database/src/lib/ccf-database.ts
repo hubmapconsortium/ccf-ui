@@ -310,7 +310,7 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns Cell type term counts.
    */
-   async getCellTypeTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+  async getCellTypeTermOccurences(filter?: Filter): Promise<Record<string, number>> {
     return getOntologyTermOccurences(this.getIds(filter), this.store); //TODO: replace with cell type term occurrences
   }
 

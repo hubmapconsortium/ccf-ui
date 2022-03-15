@@ -168,7 +168,6 @@ export class AppComponent implements OnInit {
       } else {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection => selection.id) });
         this.cellTypeSelectionLabel = this.createSelectionLabel(ontologySelection);
-        console.log(this.data.snapshot)
       }
       if (ontologySelection[0] && ontologySelection[0].label === 'body') {
         this.resetView();

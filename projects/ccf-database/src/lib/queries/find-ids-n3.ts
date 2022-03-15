@@ -254,7 +254,7 @@ function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[])
  * @param terms Cell type terms to filter on.
  * @returns The subset of ids with the specified cell type terms.
  */
- function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
   const newSeen = new Set<string>();
   for (const term of terms) {
     const namedNode = DataFactory.namedNode(term);
