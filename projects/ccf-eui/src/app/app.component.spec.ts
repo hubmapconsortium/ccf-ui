@@ -44,6 +44,7 @@ describe('AppComponent', () => {
         aggregateData$: of(),
         queryStatus$: of(),
         ontologyTermOccurencesData$: of(),
+        cellTypeTermOccurencesData$: of(),
         sceneData$: of(),
         technologyFilterData$: of(),
         providerFilterData$: of(),
