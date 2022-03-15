@@ -7,7 +7,7 @@ const ARGUMENT_TO_PARAM_NAME: Record<string, string> = {
   bmiRange: 'bmi-range',
   tmc: 'tmc',
   technologies: 'technologies',
-  anatomicalTerms: 'anatomical-terms',
+  ontologyTerms: 'ontology-terms',
   cellTypeTerms: 'cell-type-terms',
   debug: 'debug',
   organIri: 'organ-iri'
@@ -17,7 +17,7 @@ const ARGUMENT_DEFAULTS: Record<string, string> = {
   sex: 'Both',
   ageRange: stringifyValue([1, 110]),
   bmiRange: stringifyValue([13, 83]),
-  anatomicalTerms: stringifyValue(['http://purl.obolibrary.org/obo/UBERON_0013702']),
+  ontologyTerms: stringifyValue(['http://purl.obolibrary.org/obo/UBERON_0013702']),
   cellTypeTerms: stringifyValue(['http://purl.obolibrary.org/obo/UBERON_0013702']) //TODO: change to cell type url
 };
 

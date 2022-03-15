@@ -1,7 +1,7 @@
 {
   "@context": {
     "@vocab": "http://purl.org/ccf/latest/ccf-entity.owl#",
-    "anatomicalTerms": {
+    "ontologyTerms": {
       "@type": "@id"
     },
     "ancestors": {
@@ -34,7 +34,7 @@
       "groupUUID": "182adaf1-f29b-494a-8868-ac619dd56704",
       "groupName": "KPMP-IU/OSU",
       "organName": "Right Kidney",
-      "anatomicalTerms": [
+      "ontologyTerms": [
         "http://purl.obolibrary.org/obo/UBERON_0013702",
         "http://purl.obolibrary.org/obo/UBERON_0002113",
         "http://purl.obolibrary.org/obo/UBERON_0004539"
@@ -98,7 +98,7 @@
       "groupUUID": "182adaf1-f29b-494a-8868-ac619dd56704",
       "groupName": "KPMP-IU/OSU",
       "organName": "Right Kidney",
-      "anatomicalTerms": [
+      "ontologyTerms": [
         "http://purl.obolibrary.org/obo/UBERON_0013702",
         "http://purl.obolibrary.org/obo/UBERON_0002113",
         "http://purl.obolibrary.org/obo/UBERON_0004539"
@@ -162,7 +162,7 @@
       "groupUUID": "182adaf1-f29b-494a-8868-ac619dd56704",
       "groupName": "KPMP-IU/OSU",
       "organName": "Right Kidney",
-      "anatomicalTerms": [
+      "ontologyTerms": [
         "http://purl.obolibrary.org/obo/UBERON_0013702",
         "http://purl.obolibrary.org/obo/UBERON_0002113",
         "http://purl.obolibrary.org/obo/UBERON_0004539"

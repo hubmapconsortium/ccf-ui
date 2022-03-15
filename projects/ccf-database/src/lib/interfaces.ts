@@ -81,8 +81,8 @@ export interface SearchableItem {
   age?: number;
   /** BMI */
   bmi?: number;
-  /** Anatomical terms */
-  anatomicalTerms?: Set<string>;
+  /** Ontology terms */
+  ontologyTerms?: Set<string>;
   /** CellType terms */
   cellTypeTerms?: Set<string>;
 }
@@ -100,7 +100,7 @@ export interface Filter {
   /** Technologies */
   technologies: string[];
   /** Ontology terms */
-  anatomicalTerms: string[];
+  ontologyTerms: string[];
   /** CellType terms */
   cellTypeTerms: string[];
   /** Include optional debugging information */

@@ -95,14 +95,14 @@ export class DataSourceService implements OnDestroy {
   }
 
   /**
-   * Queries for anatomical term counts.
+   * Queries for ontology term counts.
    *
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-  getAnatomicalTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+  getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.dataSource.pipe(
-      switchMap(db => db.getAnatomicalTermOccurences(filter)),
+      switchMap(db => db.getOntologyTermOccurences(filter)),
       take(1)
     );
   }

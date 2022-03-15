@@ -66,7 +66,7 @@ export const entity = {
   sectionNumber: prefixer('entity')('section_number'),
 
   spatialEntity: prefixer('entity')('has_spatial_entity'),
-  anatomicalTerms: prefixer('entity')('has_anatomical_term'),
+  ontologyTerms: prefixer('entity')('has_ontology_term'),
   cellTypeTerms: prefixer('entity')('has_cell_type_term'),
 
   technology: prefixer('entity')('technology'),

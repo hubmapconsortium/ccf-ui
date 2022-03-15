@@ -32,10 +32,10 @@ export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
 
   /**
-   * Used to keep track of the anatomical label to be passed down to the
+   * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
    */
-  anatomicalSelectionLabel = 'Body';
+  ontologySelectionLabel = 'Body';
 
   cellTypeSelectionLabel = 'Body';
 
@@ -65,7 +65,7 @@ export class AppComponent implements OnInit {
     map(state => state === DataQueryState.Running)
   );
 
-  readonly anatomicalTerms$: Observable<readonly string[]>;
+  readonly ontologyTerms$: Observable<readonly string[]>;
 
   readonly cellTypeTerms$: Observable<readonly string[]>;
 
@@ -87,13 +87,13 @@ export class AppComponent implements OnInit {
     overlay.setRootElement(el);
     data.tissueBlockData$.subscribe();
     data.aggregateData$.subscribe();
-    data.anatomicalTermOccurencesData$.subscribe();
+    data.ontologyTermOccurencesData$.subscribe();
     data.cellTypeTermOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
-    this.anatomicalTerms$ = data.filter$.pipe(pluck('anatomicalTerms'));
+    this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
     this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
   }
 
@@ -163,8 +163,8 @@ export class AppComponent implements OnInit {
   ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'anatomical-structures' | 'cell-type'): void {
     if (ontologySelection) {
       if (type === 'anatomical-structures') {
-        this.data.updateFilter({ anatomicalTerms: ontologySelection.map(selection => selection.id) });
-        this.anatomicalSelectionLabel = this.createSelectionLabel(ontologySelection);
+        this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
+        this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
       } else {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection => selection.id) });
         this.cellTypeSelectionLabel = this.createSelectionLabel(ontologySelection);
@@ -176,8 +176,8 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    this.data.updateFilter({ anatomicalTerms: [], cellTypeTerms: [] });
-    this.anatomicalSelectionLabel = '';
+    this.data.updateFilter({ ontologyTerms: [], cellTypeTerms: [] });
+    this.ontologySelectionLabel = '';
     this.cellTypeSelectionLabel = '';
   }
 

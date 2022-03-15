@@ -99,8 +99,8 @@ const ENTITY_CONTEXT = {
     '@id': 'has_spatial_entity',
     '@type': '@id'
   },
-  anatomicalTerms: {
-    '@id': 'has_anatomical_term',
+  ontologyTerms: {
+    '@id': 'has_ontology_term',
     '@type': '@id'
   },
   cellTypeTerms: {
@@ -418,7 +418,7 @@ export class HuBMAPTissueBlock {
   getRuiLocation(data: JsonDict, donor: JsonLdObj): JsonLdObj | undefined {
     const ancestors = (data.ancestors || []) as JsonDict[];
     const organSample = ancestors.find(e => e.entity_type === 'Sample' && e.specimen_type === 'organ') as JsonDict;
-    const anatomicalTerms = HBM_ORGANS[organSample?.organ as string] || [RUI_ORGANS.body];
+    const ontologyTerms = HBM_ORGANS[organSample?.organ as string] || [RUI_ORGANS.body];
 
     let spatialEntity: JsonLdObj | undefined;
     let ruiLocation = data.rui_location as JsonDict;
@@ -435,7 +435,7 @@ export class HuBMAPTissueBlock {
       }
     }
     if (spatialEntity) {
-      spatialEntity.ccf_annotations = anatomicalTerms.concat(spatialEntity.ccf_annotations as string[] || []);
+      spatialEntity.ccf_annotations = ontologyTerms.concat(spatialEntity.ccf_annotations as string[] || []);
 
       // Patch to fix RUI 0.5 Kidney and Spleen Placements
       const target: string = get(spatialEntity, ['placement', 'target']) ?? '';

@@ -8,7 +8,7 @@ const FILTER_DEFAULTS: Partial<Filter> = {
   bmiRange: undefined,
   tmc: [],
   technologies: [],
-  anatomicalTerms: [],
+  ontologyTerms: [],
   cellTypeTerms: []
 };
 
@@ -110,9 +110,9 @@ function processParameter(result: Filter, key: string, value: unknown): void {
       setIfDefined(result, 'technologies', parseArray(value));
       break;
 
-    case 'anatomicalterms':
-    case 'anatomical-terms':
-      setIfDefined(result, 'anatomicalTerms', parseArray(value));
+    case 'ontologyterms':
+    case 'ontology-terms':
+      setIfDefined(result, 'ontologyTerms', parseArray(value));
       break;
 
     case 'celltypeterms':

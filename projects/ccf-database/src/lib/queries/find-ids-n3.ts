@@ -121,14 +121,14 @@ export function findIds(store: Store, filter: Filter): Set<string> {
       filterByTechnology(store, datasets, filter.technologies)
     );
   }
-  if (seen.size > 0 && filter.anatomicalTerms?.length > 0) {
+  if (seen.size > 0 && filter.ontologyTerms?.length > 0) {
     seen = filterWithSpatialEntity(store, seen, (entities) =>
-      filterByAnatomicalTerms(store, entities, filter.anatomicalTerms)
+      filterByOntologyTerms(store, entities, filter.ontologyTerms)
     );
   }
   if (seen.size > 0 && filter.cellTypeTerms?.length > 0) {
     seen = filterWithSpatialEntity(store, seen, (entities) =>
-      filterByCellTypeTerms(store, entities, filter.anatomicalTerms)
+      filterByCellTypeTerms(store, entities, filter.ontologyTerms)
     );
   }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
@@ -230,14 +230,14 @@ function filterByTechnology(store: Store, seen: Set<string>, technologies: strin
 }
 
 /**
- * Filters ids by anatomical terms.
+ * Filters ids by ontology terms.
  *
  * @param store The triple store.
  * @param seen All ids to choose from.
- * @param terms Anatomical terms to filter on.
- * @returns The subset of ids with the specified anatomical terms.
+ * @param terms Ontology terms to filter on.
+ * @returns The subset of ids with the specified ontology terms.
  */
-function filterByAnatomicalTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
   const newSeen = new Set<string>();
   for (const term of terms) {
     const namedNode = DataFactory.namedNode(term);
