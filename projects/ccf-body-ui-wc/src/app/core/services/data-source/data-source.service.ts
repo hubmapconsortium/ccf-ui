@@ -113,7 +113,7 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-   getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+  getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.dataSource.pipe(
       switchMap(db => db.getCellTypeTermOccurences(filter)),
       take(1)
