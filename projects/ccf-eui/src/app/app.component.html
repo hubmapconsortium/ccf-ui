@@ -21,14 +21,16 @@
               <strong>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</strong></div>
           </div>
         </div>
-        <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"
+        <ccf-ontology-selection class="ontology-selection"
+                                [termData]="data.ontologyTermsFullData$ | async"
                                 [occurenceData]="data.ontologyTermOccurencesData$ | async"
-                                placeholderText="Search ontology terms"
+                                placeholderText="Search ontology terms..."
                                 (ontologySelection)="ontologySelected($event, 'anatomical-structures')">
         </ccf-ontology-selection>
-        <ccf-ontology-selection [termData]="data.cellTypeTermsFullData$ | async"
+        <ccf-ontology-selection class="cell-type-selection"
+                                [termData]="data.cellTypeTermsFullData$ | async"
                                 [occurenceData]="data.cellTypeTermOccurencesData$ | async"
-                                placeholderText="Search cell type terms"
+                                placeholderText="Search cell type terms..."
                                 (ontologySelection)="ontologySelected($event, 'cell-type')">
         </ccf-ontology-selection>
         <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
