@@ -13,6 +13,14 @@ export interface GtexTissue {
   colorRgb: string;
   datasetId: string;
   eGeneCount: number;
+  eqtlAgeMaxFemale: number;
+  eqtlAgeMaxMale: number;
+  eqtlAgeMeanFemale: number;
+  eqtlAgeMeanMale: number;
+  eqtlAgeMinFemale: number;
+  eqtlAgeMinMale: number;
+  eqtlSampleCountFemale: number;
+  eqtlSampleCountMale: number;
   expressedGeneCount: number;
   hasEGenes: true;
   hasSGenes: true;
@@ -65,9 +73,10 @@ export function updateEntry(resultsList: JsonLdObj[], tissueInfo: GtexTissue, se
   let newLabel = '';
   if (matchingEntry) {
     const index = resultsList.indexOf(matchingEntry);
-    newLabel = sex === 'Male' ?
-      `Males (n=${tissueInfo.rnaSeqSampleCountMale}), Mean Age ${tissueInfo.rnaSeqAgeMeanMale} (range ${tissueInfo.rnaSeqAgeMinMale}-${tissueInfo.rnaSeqAgeMaxMale})` :
-      `Females (n=${tissueInfo.rnaSeqSampleCountFemale}), Mean Age ${tissueInfo.rnaSeqAgeMeanFemale} (range ${tissueInfo.rnaSeqAgeMinFemale}-${tissueInfo.rnaSeqAgeMaxFemale})`;
+    newLabel =
+      sex === "Male"
+        ? `Males (n=${tissueInfo.eqtlSampleCountMale}), Mean Age ${tissueInfo.eqtlAgeMeanMale} (range ${tissueInfo.eqtlAgeMinMale}-${tissueInfo.eqtlAgeMaxMale})`
+        : `Females (n=${tissueInfo.eqtlSampleCountFemale}), Mean Age ${tissueInfo.eqtlAgeMeanFemale} (range ${tissueInfo.eqtlAgeMinFemale}-${tissueInfo.eqtlAgeMaxFemale})`;
     resultsList[index].label = newLabel;
     resultsList[index].sex = sex;
   }
