@@ -43,7 +43,7 @@ describe('AppComponent', () => {
         tissueBlockData$: of(),
         aggregateData$: of(),
         queryStatus$: of(),
-        termOccurencesData$: of(),
+        ontologyTermOccurencesData$: of(),
         sceneData$: of(),
         technologyFilterData$: of(),
         providerFilterData$: of(),
@@ -159,9 +159,9 @@ describe('AppComponent', () => {
     const mockOntologySelection = [{ label: 'body' } as OntologySelection];
     const { instance } = await shallow.render();
     const spy = spyOn(instance, 'resetView');
-    instance.ontologySelected(undefined);
+    instance.ontologySelected(undefined, 'anatomical-structures');
     expect(spy).toHaveBeenCalledTimes(0);
-    instance.ontologySelected(mockOntologySelection);
+    instance.ontologySelected(mockOntologySelection, 'anatomical-structures');
     expect(spy).toHaveBeenCalled();
   });
 });
