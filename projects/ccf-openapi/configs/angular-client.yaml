@@ -5,7 +5,7 @@ additionalProperties:
   configurationPrefix: CcfApi
   fileNaming: kebab-case
   ngVersion: "12.1.1"
-  # TODO add npmName
+  npmName: "@ccf-openapi/ng-client"
   stringEnums: true
   supportsES6: true
   useSingleRequestParameter: true
