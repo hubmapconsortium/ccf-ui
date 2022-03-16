@@ -3,6 +3,7 @@
 @use 'themes/common/theming';
 @use 'themes/light';
 @use 'themes/dark';
+@use 'themes/sennet';
 
 @import '~swiper/swiper';
 @import '~swiper/components/navigation/navigation';
@@ -19,6 +20,13 @@
   @include theming.ccf-theme(dark.$theme);
   ::-webkit-scrollbar {
     background: #757575;
+  }
+}
+
+.sennet-theme {
+  @include theming.ccf-theme(sennet.$theme);
+  .st1 {
+    fill: white;
   }
 }
 

@@ -10,7 +10,7 @@ import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
-import { DARK_THEME, LIGHT_THEME, ThemingService } from './core/services/theming/theming.service';
+import { DARK_THEME, LIGHT_THEME, SENNET_THEME, ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
@@ -109,7 +109,7 @@ export class AppComponent implements OnInit {
 
       // Listens for changes in user theme preference
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        this.theming.setTheme(e.matches ? DARK_THEME : LIGHT_THEME);
+        this.theming.setTheme(e.matches ? DARK_THEME : SENNET_THEME);
       });
     }
   }
@@ -145,7 +145,7 @@ export class AppComponent implements OnInit {
    * Toggles scheme between light and dark mode
    */
   toggleScheme(): void {
-    this.theming.setTheme(this.theming.getTheme() === LIGHT_THEME ? DARK_THEME : LIGHT_THEME);
+    this.theming.setTheme(this.theming.getTheme() === SENNET_THEME ? DARK_THEME : SENNET_THEME);
   }
 
   /**

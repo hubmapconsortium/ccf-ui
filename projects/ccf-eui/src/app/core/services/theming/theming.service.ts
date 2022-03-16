@@ -6,6 +6,7 @@ import { ComponentRef, ElementRef, Inject, Injector, Injectable, InjectionToken,
 export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
 export const LIGHT_THEME = 'light-theme';
 export const DARK_THEME = 'dark-theme';
+export const SENNET_THEME = 'sennet-theme';
 
 /**
  * Manages the currently active theme.
