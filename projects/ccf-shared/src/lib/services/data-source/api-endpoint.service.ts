@@ -111,8 +111,7 @@ export class ApiEndpointDataSourceService implements DataSource {
   getOntologyTreeModel(): Observable<OntologyTreeModel> {
     return this.doRequest(
       params => this.api.ontologyTreeModel(params),
-      undefined, undefined,
-      cast<OntologyTreeModel>()
+      undefined, {}, cast<OntologyTreeModel>()
     );
   }
 
@@ -120,8 +119,7 @@ export class ApiEndpointDataSourceService implements DataSource {
   getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.doRequest(
       params => this.api.referenceOrgans(params),
-      undefined, undefined,
-      cast<SpatialEntity[]>()
+      undefined, {}, cast<SpatialEntity[]>()
     );
   }
 
@@ -129,8 +127,7 @@ export class ApiEndpointDataSourceService implements DataSource {
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
     return this.doRequest(
       params => this.api.tissueBlocks(params),
-      filter, undefined,
-      cast<TissueBlockResult[]>()
+      filter, {}, cast<TissueBlockResult[]>()
     );
   }
 
@@ -154,8 +151,7 @@ export class ApiEndpointDataSourceService implements DataSource {
   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.doRequest(
       params => this.api.scene(params),
-      filter, undefined,
-      spatialSceneNodeReviver
+      filter, {}, spatialSceneNodeReviver
     );
   }
 
@@ -163,8 +159,7 @@ export class ApiEndpointDataSourceService implements DataSource {
   getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.doRequest(
       params => this.api.referenceOrganScene(params),
-      filter, { organIri },
-      spatialSceneNodeReviver
+      filter, { organIri }, spatialSceneNodeReviver
     );
   }
 
