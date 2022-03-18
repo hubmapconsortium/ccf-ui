@@ -113,11 +113,11 @@ export class CCFSpatialScene {
     if (filter?.debug) {
       // Debug bounding boxes
       nodes = nodes.concat([
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), body, { color: [0, 0, 255, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHLeftKidney').id), body, { color: [255, 0, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC1').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC2').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC3').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true })
+        this.getSceneNode(this.getSpatialEntity(ccf.base('VHRightKidney').id), body, { color: [0, 0, 255, 0.5*255], wireframe: true }),
+        this.getSceneNode(this.getSpatialEntity(ccf.base('VHLeftKidney').id), body, { color: [255, 0, 0, 0.5*255], wireframe: true }),
+        this.getSceneNode(this.getSpatialEntity(ccf.base('VHSpleenCC1').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
+        this.getSceneNode(this.getSpatialEntity(ccf.base('VHSpleenCC2').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
+        this.getSceneNode(this.getSpatialEntity(ccf.base('VHSpleenCC3').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true })
       ]);
     }
 
