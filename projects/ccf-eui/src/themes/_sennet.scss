@@ -8,7 +8,11 @@ $sennet-palette: (
   'white': #FFFFFF,
   'black': #000000,
   'disabled-text': #00000061,
+  'disabled-icon': #CCCCCC,
   'lines': #CCCCCC,
+  'contrast-icon': #0000008A,
+  'white-hover': #EFE7F2,
+  'color-hover': #9762A5,
   50: #EFE7F2,
   100: #D9C4DF,
   200: #C19ECB,
@@ -34,9 +38,29 @@ $sennet-palette: (
   )
 );
 
+$sennet-accent: utility.add-colors(mat.$blue-palette, (
+  'light': #6A6EFF,
+  'main': #0742EF,
+  'dark': #001ABB,
+  contrast: (
+    "white": black,
+    "black": white,
+  )
+));
+
+$sennet-warn: utility.add-colors(mat.$red-palette, (
+  'light': #F2884B,
+  'main': #BA5A1E,
+  'dark': #842D00,
+  contrast: (
+    "white": black,
+    "black": white,
+  )
+));
+
 $primary: mat.define-palette($sennet-palette, $text: 'text');
-$accent: mat.define-palette(mat.$blue-palette, 700);
-$warn: mat.define-palette(mat.$red-palette);
+$accent: mat.define-palette($sennet-accent);
+$warn: mat.define-palette($sennet-warn);
 
 $foreground: map-merge(mat.$light-theme-foreground-palette, (
   text: map-get($sennet-palette, 'text'),
@@ -48,24 +72,24 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   modal-borders: map-get($sennet-palette, 'lines'),
   divider: map-get($sennet-palette, 'lines'),
   borders: map-get($sennet-palette, 'lines'),
-
-  active-icon: map-get(mat.$blue-palette, 700),
+  active-icon: map-get($sennet-accent, 'main'),
   carousel-arrow: map-get($sennet-palette, 500),
-  contrast-icon: map-get($sennet-palette, light-header),
-  button-text: map-get($primary, light-header),
+  headers: map-get($sennet-palette, 'white'),
+  contrast-icon: map-get($sennet-palette, 'contrast-icon'),
+  color-hover: map-get($sennet-palette, 'color-hover'),
+  button-text: map-get($sennet-palette, 400),
   button-border: map-get($sennet-palette, 'black'),
-  headers: map-get($sennet-palette, 300),
-  search-result-text: map-get($sennet-palette, 600),
+  search-result-text: map-get($sennet-palette, 'text'),
   contrast-text: map-get($sennet-palette, 50),
-  download-icon: map-get($sennet-palette, 600),
+  download-icon: map-get($sennet-palette, 'contrast-icon'),
   header-download-icon: map-get($sennet-palette, 300),
-  header-shadow: map-get($sennet-palette, light-header),
-
+  
+  header-shadow: rgba(0, 0, 0, 0.749),
   main: #444A65,
   organ-off: #cccccc,
   organ-numbers: #757575,
   opacity-numbers: #CCCCCC,
-  icons-disabled: #CCCCCC,
+  icons-disabled: map-get($sennet-palette, 'disabled-icon'),
   icons-hover: #e0e0e0,
   icons-light: #9BA8E6,
   results-numbers: #9e9e9e,
@@ -81,22 +105,20 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
 
 $background: map-merge(mat.$light-theme-background-palette, (
   background: map-get($sennet-palette, 'light-background'),
-  hover-background: map-get($sennet-palette, 400),
+  hover-background: map-get($sennet-palette, 'light-background'),
   stage-background: map-get($sennet-palette, 'black'),
-
-  dialog: map-get($sennet-palette, 50), //#FAFAFA
-  authentication: map-get($sennet-palette, 'white'), //#FAFAFA
+  dialog: map-get($sennet-palette, 'light-background'),
+  authentication: map-get($sennet-palette, 'white'),
   app-bar: map-get($sennet-palette, 300),
   modal: map-get($sennet-palette, 'white'),
-  dropdown-menu: map-get($sennet-palette, 300), //#E0E0E0
-  dropdown-hover: map-get($sennet-palette, 300), //#E0E0E0
-  image-placeholder: map-get($sennet-palette, light-disabled), //#BDBDBD
-  button-bg: map-get($sennet-palette, light-header),
-  mat-selected-option: map-get($sennet-palette, light-header),
-  mat-slider-primary: map-get($sennet-palette, light-header),
-  info-button-hover: map-get($sennet-palette, 300),
-  checkbox-color: #636363,
-  button-background-hover: #2f3346,
+  dropdown-hover: map-get($sennet-palette, 400),
+  mat-selected-option: map-get($sennet-palette, 400),
+  image-placeholder: map-get($sennet-palette, 'disabled-text'),
+  button-bg: map-get($sennet-palette, 400),
+  button-background-hover: map-get($sennet-palette, 'white-hover'),
+  mat-slider-primary: map-get($sennet-palette, 400),
+  info-button-hover: map-get($sennet-palette, 'white-hover'),
+  checkbox-color: map-get($sennet-palette, 400),
 ));
 
 $theme: (
