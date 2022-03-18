@@ -68,7 +68,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   disabled: map-get($sennet-palette, 'disabled-text'),
   highlight: map-get($sennet-palette, 400),
   logo: map-get($sennet-palette, 'white'),
-  header-border: map-get($sennet-palette, 'lines'),
+  header-border: map-get($sennet-palette, 400),
   modal-borders: map-get($sennet-palette, 'lines'),
   divider: map-get($sennet-palette, 'lines'),
   borders: map-get($sennet-palette, 'lines'),

@@ -13,9 +13,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 export class HeaderComponent {
 
   /**
-   * URL to Hubmap Portal site
+   * URL to Portal site
    */
-  @Input() hubmapPortalUrl: string;
+  @Input() url: string;
 
   /**
    * Is the user logged in?
@@ -26,6 +26,8 @@ export class HeaderComponent {
    * Current filter settings
    */
   @Input() filters: Record<string, unknown[] | unknown>;
+
+  @Input() theme: string;
 
   /**
    * Emitted when refresh button is clicked

@@ -38,6 +38,7 @@ export class AppWebComponent extends BaseWebComponent {
 
   @Input() useRemoteApi: string | boolean;
   @Input() remoteApiEndpoint: string;
+  @Input() theme: string;
 
   initialized: boolean;
 

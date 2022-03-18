@@ -10,7 +10,7 @@ import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
-import { DARK_THEME, LIGHT_THEME, SENNET_THEME, ThemingService } from './core/services/theming/theming.service';
+import { DARK_THEME, ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
   viewerOpen = false;
 
   /** The default theme for light mode */
-  defaultTheme = LIGHT_THEME;
+  defaultTheme: string;
 
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
@@ -69,6 +69,8 @@ export class AppComponent implements OnInit {
   readonly ontologyTerms$: Observable<readonly string[]>;
 
   readonly portalUrl$ = this.globalConfig.getOption('hubmapPortalUrl');
+
+  readonly theme$ = this.globalConfig.getOption('theme');
 
   /**
    * Creates an instance of app component.
@@ -82,6 +84,7 @@ export class AppComponent implements OnInit {
     readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
     private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
   ) {
+    console.log(this.globalConfig.snapshot)
     theming.initialize(el, injector);
     overlay.setRootElement(el);
     data.tissueBlockData$.subscribe();
@@ -92,9 +95,11 @@ export class AppComponent implements OnInit {
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
+    this.theme$.subscribe((theme: string) => { this.defaultTheme = theme })
   }
-
+  
   ngOnInit(): void {
+    this.theming.setTheme(this.defaultTheme);
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
       data: {
         preClose: () => {
