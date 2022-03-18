@@ -85,7 +85,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   header-download-icon: map-get($sennet-palette, 300),
   
   header-shadow: rgba(0, 0, 0, 0.749),
-  main: #444A65,
+  main: map-get($sennet-palette, 'contrast-icon'),
   organ-off: #cccccc,
   organ-numbers: #757575,
   opacity-numbers: #CCCCCC,

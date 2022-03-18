@@ -39,8 +39,8 @@
             <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
           </button>
           <button class="scheme-toggle button" (click)="toggleScheme()"
-                  [matTooltip]="theming.getTheme() === 'light-theme' ? 'Enter Dark Mode' : 'Enter Light Mode'">
-            <mat-icon class="icon">{{ theming.getTheme() === 'sennet-theme' ? 'brightness_2' : 'brightness_5' }}
+                  [matTooltip]="theming.getTheme() === defaultTheme ? 'Enter Dark Mode' : 'Enter Light Mode'">
+            <mat-icon class="icon">{{ theming.getTheme() === defaultTheme  ? 'brightness_2' : 'brightness_5' }}
             </mat-icon>
           </button>
           <button class="button">
