@@ -196,7 +196,7 @@ export class CCFDatabase {
                 "section_units": "ccf:section_size_unit",
                 "section_number": "ccf:section_number",
                 "rui_location": { "@id": "ccf:has_registration_location", "@type": "@id" },
-                "ccf_annotations": "ccf:collides_with",
+                "ccf_annotations": { "@id": "ccf:collides_with", "@type": "@id", "@container": "@set" },
                 "representation_of": { "@id": "ccf:representation_of", "@type": "@id" },
                 "reference_organ": { "@id": "ccf:has_reference_organ", "@type": "@id" },
                 "extraction_set_for": { "@id": "ccf:extraction_set_for", "@type": "@id" },
@@ -240,6 +240,18 @@ export class CCFDatabase {
                 "file_format": "ccf:file_format",
                 "file_subpath": "ccf:file_subpath"
             };
+            for (let data of source["@graph"]) {
+              if (data.hasOwnProperty("samples")) {
+                for (let sample of data["samples"]) {
+                  if (sample.hasOwnProperty("rui_location")) {
+                    sample["rui_location"]["@context"] = "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld";
+                    if (sample["rui_location"].hasOwnProperty("placement")) {
+                      sample["rui_location"]["placement"]["@context"] = "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld";
+                    }
+                  }
+                }
+              }
+            }
             await addJsonLdToStore(source, store);
           } else if (source.endsWith('n3')) {
             await addN3ToStore(source, store);
