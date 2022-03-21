@@ -130,7 +130,10 @@ export class CCFDatabase {
     const sources: (string|JsonLd)[] = this.options.dataSources?.concat() ?? [];
 
     const ccfOwlUrl = this.options.ccfOwlUrl;
-    if (ccfOwlUrl.endsWith('.n3store.json')) {
+    if (ccfOwlUrl.startsWith('{')) {
+      // serialized n3 store was provided as the ccfOwlUrl
+      this.store = deserializeN3Store(ccfOwlUrl, DataFactory);
+    } else if (ccfOwlUrl.endsWith('.n3store.json')) {
       const storeString = await fetch(ccfOwlUrl).then(r => r.text())
         .catch(() => console.log('Couldn\'t locate serialized store.'));
       if (storeString) {

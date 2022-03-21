@@ -67,8 +67,8 @@
 
 
     <ccf-drawer-content>
-      <div [class.closed]="!organListVisible" class="selector-drawer">
-        <ccf-organ-selector class="organ-selector" [multiselect]="true"
+      <div [class.closed]="!organListVisible" class="selector-drawer" [class.expanded]="selector.expanded">
+        <ccf-organ-selector #selector class="organ-selector" [multiselect]="true"
                             [occurenceData]="(data.termOccurencesData$ | async) ?? {}"
                             [organList]="scene.referenceOrgans$ | async"
                             (organsChanged)="scene.setSelectedReferenceOrgans($event)"
@@ -76,7 +76,12 @@
         </ccf-organ-selector>
       </div>
       <div class="close-button-wrapper" [class.closed]="!organListVisible">
-        <div class="close-button" (click)="organListVisible = !organListVisible">
+        <div *ngIf="organListVisible" class="close-button" (click)="selector.expanded = !selector.expanded">
+          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Expand carousel drawer">
+            {{ selector.expanded ? 'arrow_drop_up': 'arrow_drop_down' }}
+          </mat-icon>
+        </div>
+        <div *ngIf="!selector.expanded" class="close-button" (click)="organListVisible = !organListVisible">
           <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">
             {{ organListVisible ? 'arrow_drop_up': 'arrow_drop_down' }}
           </mat-icon>
