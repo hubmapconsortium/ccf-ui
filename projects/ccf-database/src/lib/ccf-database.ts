@@ -266,7 +266,6 @@ export class CCFDatabase {
         }
       })
     );
-    console.log(store);
     return this;
   }
 
