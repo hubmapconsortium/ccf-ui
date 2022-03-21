@@ -76,7 +76,7 @@ function parseMinMaxRange(value: unknown, min: number, max: number): [number, nu
     return undefined;
   }
 
-  return parseRange([value['min'], value['max']], min, max);
+  return parseRange([value?.['min'], value?.['max']], min, max);
 }
 
 function parseArray(value: unknown): string[] | undefined {
