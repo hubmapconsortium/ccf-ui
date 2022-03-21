@@ -64,7 +64,7 @@ export const environment = {
 
     useRemoteApi: false,
     remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1',
-    theme: 'hubmap-theme'
+    theme: 'light-theme'
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };

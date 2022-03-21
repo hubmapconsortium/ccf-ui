@@ -84,7 +84,6 @@ export class AppComponent implements OnInit {
     readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
     private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
   ) {
-    console.log(this.globalConfig.snapshot)
     theming.initialize(el, injector);
     overlay.setRootElement(el);
     data.tissueBlockData$.subscribe();
@@ -95,9 +94,11 @@ export class AppComponent implements OnInit {
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
-    this.theme$.subscribe((theme: string) => { this.defaultTheme = theme })
+    this.theme$.subscribe((theme: string) => {
+      this.defaultTheme = theme;
+    });
   }
-  
+
   ngOnInit(): void {
     this.theming.setTheme(this.defaultTheme);
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {

@@ -58,7 +58,8 @@ describe('AppComponent', () => {
       })
       .mock(ThemingService, {
         initialize: () => undefined,
-        getTheme: () => 'theme'
+        getTheme: () => 'theme',
+        setTheme: () => undefined
       })
       .mock(GlobalConfigState, {
         snapshot: {},
