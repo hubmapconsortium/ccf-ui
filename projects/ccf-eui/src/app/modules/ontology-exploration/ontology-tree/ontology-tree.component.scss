@@ -123,11 +123,10 @@
 
 .scroll-gradient {
   position: absolute;
-  height: 9rem;
+  height: 3rem;
   width: 90%;
   bottom: 0;
   pointer-events: none;
-
 
   &.hidden {
     display: none;

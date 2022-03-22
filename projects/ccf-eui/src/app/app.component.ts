@@ -10,7 +10,7 @@ import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
-import { DARK_THEME, ThemingService } from './core/services/theming/theming.service';
+import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
@@ -58,9 +58,6 @@ export class AppComponent implements OnInit {
    */
   viewerOpen = false;
 
-  /** The default theme for light mode */
-  defaultTheme: string;
-
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
     map(state => state === DataQueryState.Running)
@@ -71,6 +68,8 @@ export class AppComponent implements OnInit {
   readonly portalUrl$ = this.globalConfig.getOption('hubmapPortalUrl');
 
   readonly theme$ = this.globalConfig.getOption('theme');
+
+  readonly hideHeader$ = this.globalConfig.getOption('hideHeader');
 
   theme: string;
 
@@ -98,12 +97,10 @@ export class AppComponent implements OnInit {
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
     this.theme$.subscribe((theme: string) => {
       this.theme = theme;
-      this.defaultTheme = `${theme}-theme-light`;
     });
   }
 
   ngOnInit(): void {
-    this.theming.setTheme(this.defaultTheme);
     const snackBar = this.snackbar.openFromComponent(TrackingPopupComponent, {
       data: {
         preClose: () => {
@@ -121,9 +118,10 @@ export class AppComponent implements OnInit {
 
       // Listens for changes in user theme preference
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        this.theming.setTheme(e.matches ? `${this.theme}-theme-dark` : this.defaultTheme);
+        this.theming.setTheme(e.matches ? `${this.theme}-theme-dark` : `${this.theme}-theme-light`);
       });
     }
+    this.theming.setTheme(`${this.theme}-theme-light`);
   }
 
   /**
@@ -157,7 +155,7 @@ export class AppComponent implements OnInit {
    * Toggles scheme between light and dark mode
    */
   toggleScheme(): void {
-    this.theming.setTheme((this.theming.getTheme() === this.defaultTheme) ? `${this.theme}-theme-dark` : this.defaultTheme);
+    this.theming.setTheme((this.theming.getTheme() === `${this.theme}-theme-light`) ? `${this.theme}-theme-dark` : `${this.theme}-theme-light`);
   }
 
   /**

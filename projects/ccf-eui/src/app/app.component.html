@@ -1,7 +1,7 @@
 <div class="ccf-app mat-app-background">
   <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async">
   </ccf-spinner-overlay>
-  <ccf-header [theme]="defaultTheme" [url]="portalUrl$ | async" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
+  <ccf-header [class.hide]="hideHeader$ | async" [theme]="theme" [url]="portalUrl$ | async" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
   </ccf-header>
 
   <ccf-drawer-container class="main-drawers">
@@ -39,8 +39,8 @@
             <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
           </button>
           <button class="scheme-toggle button" (click)="toggleScheme()"
-                  [matTooltip]="theming.getTheme() === defaultTheme ? 'Enter Dark Mode' : 'Enter Light Mode'">
-            <mat-icon class="icon">{{ theming.getTheme() === defaultTheme  ? 'brightness_2' : 'brightness_5' }}
+                  [matTooltip]="theming.getTheme() === (theme+'-theme-light') ? 'Enter Dark Mode' : 'Enter Light Mode'">
+            <mat-icon class="icon">{{ theming.getTheme() === (theme+'-theme-light')  ? 'brightness_2' : 'brightness_5' }}
             </mat-icon>
           </button>
           <button class="button">
@@ -66,7 +66,7 @@
     </ccf-drawer>
 
 
-    <ccf-drawer-content>
+    <ccf-drawer-content [class.header-hidden]="hideHeader$ | async">
       <div [class.closed]="!organListVisible" class="selector-drawer" [class.expanded]="selector.expanded">
         <ccf-organ-selector #selector class="organ-selector" [multiselect]="true"
                             [occurenceData]="(data.termOccurencesData$ | async) ?? {}"
@@ -93,7 +93,8 @@
                     (nodeHoverStart)="scene.sceneNodeHovered($event)"
                     (nodeHoverStop)="scene.sceneNodeUnhover()"
                     [bounds]="{x:2.2,y:2,z:0.4}"
-                    [class.expanded-stage]="!organListVisible">
+                    [class.expanded-stage]="!organListVisible"
+                    [class.selector-expanded]="selector.expanded">
       </ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>

@@ -19,6 +19,10 @@
 
   ccf-header {
     z-index: 99;
+
+    &.hide {
+      display: none;
+    }
   }
 
   ccf-drawer-container {
@@ -28,14 +32,6 @@
     opacity: 1;
     overflow: visible;
     transform: scale(1);
-
-    ccf-drawer-content {
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      border-radius: 0.5rem;
-      height: 100%;
-      padding-bottom: 4rem;
-    }
 
     ccf-drawer {
       width: 28.5rem;
@@ -68,6 +64,10 @@
     }
 
     ccf-drawer-content {
+      overflow: hidden;
+      border-radius: 0.5rem;
+      height: calc(100vh - 4rem);
+
       .selector-drawer {
         top: 0rem;
         display: flex;
@@ -92,12 +92,19 @@
         transition: all 0.5s ease-in-out;
         border-bottom-right-radius: 0.5rem;
         border-bottom-left-radius: 0.5rem;
-        height: calc(100% - 6rem);
+        height: calc(100% - 6.5rem);
       }
 
       .expanded-stage {
-        height: 100%;
-        padding-bottom: 3rem;
+        height: calc(100% - 3rem);
+      }
+
+      .selector-expanded {
+        height: calc(100% - 16.5rem);
+      }
+
+      &.header-hidden {
+        height: 100vh;
       }
     }
 
@@ -187,6 +194,10 @@
 
     .shaded-toggle {
       box-shadow: -1px 0 4px #212121;
+    }
+
+    ::ng-deep .cff-drawer-inner-container {
+      overflow: hidden;
     }
   }
 }
