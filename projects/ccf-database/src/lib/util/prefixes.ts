@@ -119,7 +119,7 @@ export const ccf = {
     ccf_annotations: ccfx('collides_with'),
     representation_of: ccfx('representation_of'),
     reference_organ: ccfx('has_reference_organ'),
-    extraction_set_for: ccfx('extraction_site_for'),
+    extraction_set_for: ccfx('extraction_set_for'),
     extraction_set: ccfx('has_extraction_set'),
     sex: ccfx('organ_owner_sex'),
     side: ccfx('organ_side'),
