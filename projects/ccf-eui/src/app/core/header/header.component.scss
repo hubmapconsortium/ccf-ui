@@ -6,12 +6,15 @@
   display: flex;
 
   .logo {
-    height: 100%;
     width: 100%;
   }
 
   .sennet-home {
     height: 100%;
+
+    .logo {
+      height: 100%;
+    }
   }
 
   .download {

@@ -72,6 +72,8 @@ export class AppComponent implements OnInit {
 
   readonly theme$ = this.globalConfig.getOption('theme');
 
+  theme: string;
+
   /**
    * Creates an instance of app component.
    *
@@ -95,7 +97,8 @@ export class AppComponent implements OnInit {
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
     this.theme$.subscribe((theme: string) => {
-      this.defaultTheme = theme;
+      this.theme = theme;
+      this.defaultTheme = `${theme}-theme-light`;
     });
   }
 
@@ -113,12 +116,12 @@ export class AppComponent implements OnInit {
     if (window.matchMedia) {
       // Sets initial theme according to user theme preference
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        this.theming.setTheme(DARK_THEME);
+        this.theming.setTheme(`${this.theme}-theme-dark`);
       }
 
       // Listens for changes in user theme preference
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        this.theming.setTheme(e.matches ? DARK_THEME : this.defaultTheme);
+        this.theming.setTheme(e.matches ? `${this.theme}-theme-dark` : this.defaultTheme);
       });
     }
   }
@@ -154,7 +157,7 @@ export class AppComponent implements OnInit {
    * Toggles scheme between light and dark mode
    */
   toggleScheme(): void {
-    this.theming.setTheme((this.theming.getTheme() === this.defaultTheme) ? DARK_THEME : this.defaultTheme);
+    this.theming.setTheme((this.theming.getTheme() === this.defaultTheme) ? `${this.theme}-theme-dark` : this.defaultTheme);
   }
 
   /**

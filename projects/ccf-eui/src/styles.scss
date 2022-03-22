@@ -1,32 +1,35 @@
 @use '~@angular/material/theming' as ng;
 @use 'themes/common/typography';
 @use 'themes/common/theming';
-@use 'themes/light';
-@use 'themes/dark';
-@use 'themes/sennet';
+@use 'themes/hubmap_light';
+@use 'themes/hubmap_dark';
+@use 'themes/sennet_light';
+@use 'themes/sennet_dark';
 
 @import '~swiper/swiper';
 @import '~swiper/components/navigation/navigation';
 
-// @import '@angular/material/prebuilt-themes/indigo-pink.css';
-
 @include ng.mat-core(typography.$config);
 
-.light-theme {
-  @include theming.ccf-theme(light.$theme);
+.hubmap-theme-light {
+  @include theming.ccf-theme(hubmap_light.$theme);
 }
 
-.dark-theme {
-  @include theming.ccf-theme(dark.$theme);
+.hubmap-theme-dark {
+  @include theming.ccf-theme(hubmap_dark.$theme);
+}
+
+.sennet-theme-light {
+  @include theming.ccf-theme(sennet_light.$theme);
+}
+
+.sennet-theme-dark {
+  @include theming.ccf-theme(sennet_dark.$theme);
+}
+
+.sennet-theme-dark, .hubmap-theme-dark {
   ::-webkit-scrollbar {
     background: #757575;
-  }
-}
-
-.sennet-theme {
-  @include theming.ccf-theme(sennet.$theme);
-  .st1 {
-    fill: white;
   }
 }
 
