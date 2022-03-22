@@ -133,8 +133,8 @@ export const ccf = {
     object: ccfx('has_object_reference')
   },
   spatialPlacement: {
-    source: ccfx('placement_relative_to'),
-    target: ccfx('placement_for'),
+    source: ccfx('placement_for'),
+    target: ccfx('placement_relative_to'),
 
     placement_date: prefixer('dcterms')('created'),
     x_scaling: ccfx('x_scaling'),
