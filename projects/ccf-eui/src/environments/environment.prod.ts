@@ -59,7 +59,9 @@ export const environment = {
 
     useRemoteApi: false,
     remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1',
-    theme: 'light-theme'
+    theme: 'hubmap',
+    hideHeader: false,
+    sennetPortalUrl: 'https://sennetconsortium.org'
   },
   googleAnalyticsToken: window.location.hostname === 'portal.hubmapconsortium.org' ? 'G-1WRJHN9FM6' : 'G-J9HWV9QPJ4'
 };

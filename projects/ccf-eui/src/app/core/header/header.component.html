@@ -1,11 +1,7 @@
 <mat-toolbar class="ccf-header">
-  <a *ngIf="theme === 'hubmap'" class="portal-home" [href]="url">
+  <a class="home" [href]="url">
     <mat-icon class="logo"  aria-hidden="false" aria-label="Reset tool" matTooltip="Human BioMolecular Atlas Project"
-    matTooltipPosition="right" svgIcon="app:logo"></mat-icon>
-  </a>
-
-  <a *ngIf="theme === 'sennet'" class="sennet-home" href="https://sennetconsortium.org">
-    <img class="logo" src="../../../assets/images/sennet_logo.png">
+    matTooltipPosition="right" [svgIcon]="'app:'+theme+'_logo'"></mat-icon>
   </a>
 
   <div class="filler"></div>

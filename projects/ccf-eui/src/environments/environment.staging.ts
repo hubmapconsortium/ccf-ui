@@ -59,7 +59,9 @@ export const environment = {
 
     useRemoteApi: false,
     remoteApiEndpoint: 'https://ccf-api--staging.herokuapp.com/v1',
-    theme: 'light-theme'
+    theme: 'hubmap',
+    hideHeader: false,
+    sennetPortalUrl: 'https://sennetconsortium.org'
   },
   googleAnalyticsToken: 'G-ERNVZ1Q4KE'
 };

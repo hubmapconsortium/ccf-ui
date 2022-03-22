@@ -65,13 +65,13 @@ export class AppComponent implements OnInit {
 
   readonly ontologyTerms$: Observable<readonly string[]>;
 
-  readonly portalUrl$ = this.globalConfig.getOption('hubmapPortalUrl');
-
   readonly theme$ = this.globalConfig.getOption('theme');
 
   readonly hideHeader$ = this.globalConfig.getOption('hideHeader');
 
   theme: string;
+
+  logoUrl: string;
 
   /**
    * Creates an instance of app component.
@@ -98,6 +98,9 @@ export class AppComponent implements OnInit {
     this.theme$.subscribe((theme: string) => {
       this.theme = theme;
     });
+    this.globalConfig.getOption(`${this.theme}PortalUrl`).subscribe((url: string) => {
+      this.logoUrl = url;
+    })
   }
 
   ngOnInit(): void {
