@@ -21,7 +21,7 @@ export const browserRoute: RequestHandler = (_req, res, _next) => {
 };
 
 export const openApiRoute: RequestHandler = (_req, res, _next) => {
-  const apiFile = resolve('projects/ccf-openapi/spec.yaml');
+  const apiFile = resolve('ccf-api-spec.yaml');
   res.sendFile(apiFile);
 };
 
