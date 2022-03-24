@@ -1,3 +1,4 @@
+import { Immutable } from '@angular-ru/common/typings';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { GlobalConfigState } from 'ccf-shared';
@@ -63,6 +64,7 @@ describe('AppComponent', () => {
       })
       .mock(GlobalConfigState, {
         snapshot: {},
+        config$: of<Immutable<unknown>>(),
         patchConfig: () => undefined,
         getOption: () => of(undefined)
       });

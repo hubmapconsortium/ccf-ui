@@ -11,8 +11,8 @@ import { searchHubmap } from './hubmap/hubmap-data-import';
 import { AggregateResult, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
-import { getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
-import { getOntologyTreeModel } from './queries/ontology-tree-n3';
+import { getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
+import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { SpatialEntity } from './spatial-types';
@@ -311,7 +311,7 @@ export class CCFDatabase {
    * @returns Cell type term counts.
    */
   async getCellTypeTermOccurences(filter?: Filter): Promise<Record<string, number>> {
-    return getOntologyTermOccurences(this.getIds(filter), this.store); //TODO: replace with cell type term occurrences
+    return getCellTypeTermOccurences(this.getIds(filter), this.store); //TODO: replace with cell type term occurrences
   }
 
   /**
@@ -320,7 +320,16 @@ export class CCFDatabase {
    * @returns Ontology term counts.
    */
   async getOntologyTreeModel(): Promise<OntologyTreeModel> {
-    return getOntologyTreeModel(this.store);
+    return getAnatomicalStructureTreeModel(this.store);
+  }
+
+  /**
+   * Get cell type term tree nodes
+   *
+   * @returns Ontology term counts.
+   */
+  async getCellTypeTreeModel(): Promise<OntologyTreeModel> {
+    return getCellTypeTreeModel(this.store);
   }
 
   /**

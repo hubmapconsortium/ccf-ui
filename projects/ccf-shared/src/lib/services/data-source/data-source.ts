@@ -10,6 +10,7 @@ export interface DataSource {
   getProviderNames(): Observable<string[]>;
   getDatasetTechnologyNames(): Observable<string[]>;
   getOntologyTreeModel(): Observable<OntologyTreeModel>;
+  getCellTypeTreeModel(): Observable<OntologyTreeModel>;
   getReferenceOrgans(): Observable<SpatialEntity[]>;
 
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]>;
@@ -42,6 +43,10 @@ export abstract class ForwardingDataSource implements DataSource {
 
   getOntologyTreeModel(): Observable<OntologyTreeModel> {
     return this.forwardCall('getOntologyTreeModel');
+  }
+
+  getCellTypeTreeModel(): Observable<OntologyTreeModel> {
+    return this.forwardCall('getCellTypeTreeModel');
   }
 
   getReferenceOrgans(): Observable<SpatialEntity[]> {

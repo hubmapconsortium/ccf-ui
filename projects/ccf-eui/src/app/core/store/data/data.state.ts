@@ -21,7 +21,7 @@ export const DEFAULT_FILTER: Filter = {
   tmc: [],
   technologies: [],
   ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],
-  cellTypeTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702']
+  cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000']
 };
 
 /** Current state of data queries. */
@@ -150,7 +150,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   /** Current status of queries in the ontologyTermOccurrences$ observable. */
   readonly ontologyTermOccurencesDataQueryStatus$ = this._ontologyTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the cellTypeTermOccurrences$ observable. */
-  readonly cellTypeTermOccurencesDataQueryStatus$ = this._ontologyTermOccurencesDataQueryStatus$.pipe(distinct());
+  readonly cellTypeTermOccurencesDataQueryStatus$ = this._cellTypeTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the sceneData$ observable. */
   readonly sceneDataQueryStatus$ = this._sceneDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the technologyFilter$ observable. */

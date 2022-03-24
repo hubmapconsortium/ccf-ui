@@ -18,6 +18,7 @@ export const routes = Router()
   .get('/ontology-term-occurences', forwardDatabaseQuery('getOntologyTermOccurences'))
   .get('/cell-type-term-occurences', forwardDatabaseQuery('getCellTypeTermOccurences'))
   .get('/ontology-tree-model', forwardDatabaseQuery('getOntologyTreeModel'))
+  .get('/cell-type-tree-model', forwardDatabaseQuery('getCellTypeTreeModel'))
   .get('/reference-organs', forwardDatabaseQuery('getReferenceOrgans'))
   .get('/scene', forwardDatabaseQuery('getScene'))
   .get('/reference-organ-scene', getReferenceOrganSceneHandler());

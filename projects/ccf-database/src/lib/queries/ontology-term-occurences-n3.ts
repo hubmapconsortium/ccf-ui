@@ -1,6 +1,6 @@
 import { Store } from 'triple-store-utils';
 
-import { ccf, entity } from '../util/prefixes';
+import { ccf, entity, rui } from '../util/prefixes';
 
 
 /**
@@ -31,6 +31,28 @@ export function getOntologyTermOccurences(ids: Set<string>, store: Store): Recor
     }
     return false;
   }, null, ccf.spatialEntity.ccf_annotations, null, null);
+
+  return counts;
+}
+
+export function getCellTypeTermOccurences(ids: Set<string>, store: Store): Record<string, number> {
+  const asCounts = getOntologyTermOccurences(ids, store);
+
+  const counts: Record<string, number> = {};
+  store.some((quad) => {
+    const anatomicalStructure = quad.object.id;
+    if (anatomicalStructure in asCounts) {
+      const cellType = quad.subject.id;
+      if (cellType in counts) {
+        counts[cellType] += asCounts[anatomicalStructure];
+      } else {
+        counts[cellType] = asCounts[anatomicalStructure];
+      }
+    }
+    return false;
+  }, null, ccf.asctb.located_in, null, null);
+
+  counts[rui.cell.id] = asCounts[rui.body.id];
 
   return counts;
 }

@@ -128,7 +128,7 @@ export function findIds(store: Store, filter: Filter): Set<string> {
   }
   if (seen.size > 0 && filter.cellTypeTerms?.length > 0) {
     seen = filterWithSpatialEntity(store, seen, (entities) =>
-      filterByCellTypeTerms(store, entities, filter.ontologyTerms)
+      filterByCellTypeTerms(store, entities, filter.cellTypeTerms)
     );
   }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
@@ -255,12 +255,13 @@ function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[])
  * @returns The subset of ids with the specified cell type terms.
  */
 function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
-  const newSeen = new Set<string>();
+  const asTerms = new Set<string>();
   for (const term of terms) {
-    const namedNode = DataFactory.namedNode(term);
-    store.forSubjects(differenceCallback(seen, newSeen), ccf.spatialEntity.ccf_annotations, namedNode, null);
+    store.forObjects((asTerm) => {
+      asTerms.add(asTerm.id);
+    }, term, ccf.asctb.located_in, null);
   }
-  return newSeen;
+  return filterByOntologyTerms(store, seen, [...asTerms]);
 }
 
 /**

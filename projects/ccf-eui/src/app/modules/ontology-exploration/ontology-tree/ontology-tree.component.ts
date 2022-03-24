@@ -42,6 +42,11 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   @Input() ontologyFilter: string[];
 
   /**
+   * The root node IRI of the tree
+   */
+  @Input() rootNode: string;
+
+  /**
    * The node like objects to display in the tree.
    */
   // eslint-disable-next-line
@@ -171,22 +176,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   private _getChildren?: GetChildrenFunc;
 
   /**
-   * A copy of the body node in order to manually select it when the component loads.
-   */
-  bodyNode = new FlatNode(
-    {
-      '@id': 'http://purl.obolibrary.org/obo/UBERON_0013702',
-      '@type': 'OntologyTreeNode',
-      id: 'http://purl.obolibrary.org/obo/UBERON_0013702',
-      label: 'body',
-      parent: '',
-      children: [],
-      synonymLabels: []
-    },
-    0
-  );
-
-  /**
    * Keeping track of the first selection made allows us to ensure the 'body' node
    * is unselected as expected.
    */
@@ -213,9 +202,11 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
       const ontologyFilter: string[] = changes.ontologyFilter.currentValue as string[];
       if (ontologyFilter?.length >= 0) {
         this.selectByIDs(ontologyFilter);
-      } else {
-        this.selectByIDs([this.bodyNode.original.id]);
       }
+    }
+    if (changes.rootNode) {
+      const rootNode = changes.rootNode.currentValue;
+      this.selectByIDs([rootNode]);
     }
   }
 
@@ -294,7 +285,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @returns True if the node is the currently selected node.
    */
   isSelected(node: FlatNode | undefined): boolean {
-    return this.selectedNodes.filter(selectedNode => node?.original.label === selectedNode?.original.label).length > 0;
+    return node?.original.id === this.rootNode ||
+      this.selectedNodes.filter(selectedNode => node?.original.label === selectedNode?.original.label).length > 0;
   }
 
   /**

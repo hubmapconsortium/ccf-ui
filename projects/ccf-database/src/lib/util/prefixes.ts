@@ -8,6 +8,7 @@ export const PREFIXES = {
   fma: 'http://purl.obolibrary.org/obo/FMA_',
   obo: 'http://purl.obolibrary.org/obo/',
   uberon: 'http://purl.obolibrary.org/obo/UBERON_',
+  cl: 'http://purl.obolibrary.org/obo/CL_',
   lmha: 'http://purl.obolibrary.org/obo/LMHA_',
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
@@ -86,6 +87,12 @@ export const ccf = {
     rui_rank: ccfx('ccf_rui_rank'),
     synonymLabels: DataFactory.namedNode('http://www.geneontology.org/formats/oboInOwl#hasExactSynonym')
   },
+  asctb: {
+    part_of: ccfx('ccf_part_of'),
+    ct_is_a: ccfx('ct_is_a'),
+    located_in: ccfx('located_in'),
+    characterizes: ccfx('characterizes')
+  },
   spatial: {
     Female: ccfx('VHFemale'),
     Male: ccfx('VHMale'),
@@ -156,7 +163,14 @@ export const ccf = {
 
 /** Uberon specific ids. */
 export const uberon = {
-  x: prefixer('uberon')
+  x: prefixer('uberon'),
+  body: prefixer('uberon')('0013702')
+};
+
+/** CL specific ids. */
+export const cl = {
+  x: prefixer('cl'),
+  cell: prefixer('cl')('0000000')
 };
 
 /** FMA specific ids. */
@@ -171,7 +185,8 @@ export const lmha = {
 
 /** RUI accessors. */
 export const rui = {
-  body: uberon.x('0013702'),
+  body: uberon.body,
+  cell: cl.cell,
   respiratory_system: uberon.x('0001004'),
   colon: uberon.x('0001155'),
   left_lung: uberon.x('0002168'),

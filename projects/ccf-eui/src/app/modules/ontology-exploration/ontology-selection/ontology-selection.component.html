@@ -1,8 +1,9 @@
 <ccf-ontology-search (selected)="selected($event)" [placeholderText]="placeholderText"></ccf-ontology-search>
 <ccf-ontology-tree
-    *ngIf="ontologySearchService.rootNode | async as rootNode"
+    *ngIf="ontologySearchService.rootNode$ | async as rootNode"
     class="tree"
     [nodes]="[rootNode]"
+    [rootNode]="rootNode.id"
     [getChildren]="ontologySearchService.getChildren"
     (nodeSelected)="ontologySelection.emit($event)"
     [occurenceData]="occurenceData"

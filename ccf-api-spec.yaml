@@ -110,10 +110,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TermOccurences'
+  /cell-type-term-occurences:
+    get:
+      summary: Get number of cell type term occurrences for a search
+      operationId: cell-type-term-occurences
+      parameters:
+        - $ref: '#/components/parameters/age-range'
+        - $ref: '#/components/parameters/sex'
+        - $ref: '#/components/parameters/bmi-range'
+        - $ref: '#/components/parameters/providers'
+        - $ref: '#/components/parameters/technologies'
+        - $ref: '#/components/parameters/ontology-terms'
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermOccurences'
   /ontology-tree-model:
     get:
       summary: Get ontology term tree nodes
       operationId: ontology-tree-model
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/cache'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OntologyTreeModel'
+  /cell-type-tree-model:
+    get:
+      summary: Get cell type tree nodes
+      operationId: cell-type-tree-model
       parameters:
         - $ref: '#/components/parameters/token'
         - $ref: '#/components/parameters/cache'

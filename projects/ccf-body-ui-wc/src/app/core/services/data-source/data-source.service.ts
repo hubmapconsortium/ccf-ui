@@ -133,6 +133,19 @@ export class DataSourceService implements OnDestroy {
   }
 
   /**
+   * Get the cell type tree model.
+   *
+   * @returns An observable emitting the results.
+   */
+  getCellTypeTreeModel(): Observable<OntologyTreeModel> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getCellTypeTreeModel()),
+      take(1)
+    );
+  }
+
+
+  /**
    * Get the reference organs.
    *
    * @returns An observable emitting the results.

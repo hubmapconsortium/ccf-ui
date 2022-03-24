@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CCFDatabaseOptions } from 'ccf-database';
-import { GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
+import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
+import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { map, pluck, shareReplay } from 'rxjs/operators';
 
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
@@ -35,9 +35,11 @@ export class AppComponent implements OnInit {
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
    */
-  ontologySelectionLabel = 'Body';
+  ontologySelectionLabel = 'body';
 
-  cellTypeSelectionLabel = 'Body';
+  cellTypeSelectionLabel = 'cell';
+
+  selectionLabel = 'body | cell';
 
   /**
    * Whether or not organ carousel is open
@@ -66,8 +68,10 @@ export class AppComponent implements OnInit {
   );
 
   readonly ontologyTerms$: Observable<readonly string[]>;
+  readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
 
   readonly cellTypeTerms$: Observable<readonly string[]>;
+  readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
 
   readonly portalUrl$ = this.globalConfig.getOption('hubmapPortalUrl');
 
@@ -81,7 +85,8 @@ export class AppComponent implements OnInit {
     readonly data: DataState, readonly theming: ThemingService,
     readonly scene: SceneState, readonly listResultsState: ListResultsState,
     readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
-    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
+    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>,
+    readonly dataSource: DataSourceService
   ) {
     theming.initialize(el, injector);
     overlay.setRootElement(el);
@@ -94,7 +99,9 @@ export class AppComponent implements OnInit {
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
+    this.ontologyTreeModel$ = this.dataSource.getOntologyTreeModel().pipe(shareReplay(1));
     this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
+    this.cellTypeTreeModel$ = this.dataSource.getCellTypeTreeModel().pipe(shareReplay(1));
   }
 
   ngOnInit(): void {
@@ -168,6 +175,15 @@ export class AppComponent implements OnInit {
       } else {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection => selection.id) });
         this.cellTypeSelectionLabel = this.createSelectionLabel(ontologySelection);
+      }
+      if (this.ontologySelectionLabel && this.cellTypeSelectionLabel) {
+        this.selectionLabel = `${this.ontologySelectionLabel} | ${this.cellTypeSelectionLabel}`;
+      } else if (this.ontologySelectionLabel) {
+        this.selectionLabel = `${this.ontologySelectionLabel}`;
+      } else if (this.cellTypeSelectionLabel) {
+        this.selectionLabel = `${this.cellTypeSelectionLabel}`;
+      } else {
+        this.selectionLabel = '';
       }
       if (ontologySelection[0] && ontologySelection[0].label === 'body') {
         this.resetView();

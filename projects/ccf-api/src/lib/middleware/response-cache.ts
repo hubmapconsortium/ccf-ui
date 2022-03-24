@@ -33,10 +33,10 @@ export function cacheResponses(options?: CacheOptions): RequestHandler {
     if (!useCache) {
       next();
     } else if (cachedResponse !== undefined) {
-      res.send(cachedResponse);
+      res.json(cachedResponse);
     } else {
-      const originalSend = res.send;
-      res.send = body => {
+      const originalSend = res.json;
+      res.json = body => {
         cache.set(key, body);
         return originalSend.call(res, body);
       };

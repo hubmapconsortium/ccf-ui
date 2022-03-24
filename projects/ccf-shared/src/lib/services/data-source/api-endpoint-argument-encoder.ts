@@ -18,9 +18,8 @@ const ARGUMENT_DEFAULTS: Record<string, string> = {
   ageRange: stringifyValue([1, 110]),
   bmiRange: stringifyValue([13, 83]),
   ontologyTerms: stringifyValue(['http://purl.obolibrary.org/obo/UBERON_0013702']),
-  cellTypeTerms: stringifyValue(['http://purl.obolibrary.org/obo/UBERON_0013702']) //TODO: change to cell type url
+  cellTypeTerms: stringifyValue(['http://purl.obolibrary.org/obo/CL_0000000'])
 };
-
 
 function isEmptyArray(value: unknown): boolean {
   return Array.isArray(value) && value.length === 0;
