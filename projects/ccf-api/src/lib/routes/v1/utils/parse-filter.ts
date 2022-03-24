@@ -72,6 +72,14 @@ function parseRange(value: unknown, min: number, max: number): [number, number] 
   return undefined;
 }
 
+function parseMinMaxRange(value: unknown, min: number, max: number): [number, number] | undefined {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    return undefined;
+  }
+
+  return parseRange([value?.['min'], value?.['max']], min, max);
+}
+
 function parseArray(value: unknown): string[] | undefined {
   if (typeof value === 'string') {
     return value.includes(',') ? value.split(',') : [value];
@@ -93,12 +101,20 @@ function processParameter(result: Filter, key: string, value: unknown): void {
 
     case 'agerange':
     case 'age-range':
-      setIfDefined(result, 'ageRange', parseRange(value, 0, 100));
+      setIfDefined(result, 'ageRange', parseRange(value, 1, 110));
+      break;
+
+    case 'age':
+      setIfDefined(result, 'ageRange', parseMinMaxRange(value, 1, 110));
       break;
 
     case 'bmirange':
     case 'bmi-range':
-      setIfDefined(result, 'bmiRange', parseRange(value, 0, 100));
+      setIfDefined(result, 'bmiRange', parseRange(value, 13, 83));
+      break;
+
+    case 'bmi':
+      setIfDefined(result, 'bmiRange', parseMinMaxRange(value, 13, 83));
       break;
 
     case 'tmc':
