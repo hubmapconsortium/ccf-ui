@@ -33,6 +33,7 @@ interface FilterParams {
   bmi?: MinMax;
   bmiRange?: string;
   ontologyTerms?: string[];
+  cellTypeTerms?: string[];
   providers?: string[];
   sex?: 'both' | 'female' | 'male';
   technologies?: string[];
@@ -73,6 +74,7 @@ function filterToParams(filter?: Filter): FilterParams {
     bmi: rangeToMinMax(filter?.bmiRange, 13, 83),
     sex: filter?.sex?.toLowerCase?.() as FilterParams['sex'],
     ontologyTerms: filter?.ontologyTerms,
+    cellTypeTerms: filter?.cellTypeTerms,
     providers: filter?.tmc,
     technologies: filter?.technologies
   };
@@ -116,6 +118,14 @@ export class ApiEndpointDataSourceService implements DataSource {
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getCellTypeTreeModel(): Observable<OntologyTreeModel> {
+    return this.doRequest(
+      params => this.api.cellTypeTreeModel(params),
+      undefined, {}, cast<OntologyTreeModel>()
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.doRequest(
       params => this.api.referenceOrgans(params),
@@ -143,6 +153,14 @@ export class ApiEndpointDataSourceService implements DataSource {
   getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.doRequest(
       params => this.api.ontologyTermOccurences(params),
+      filter
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.doRequest(
+      params => this.api.cellTypeTermOccurences(params),
       filter
     );
   }

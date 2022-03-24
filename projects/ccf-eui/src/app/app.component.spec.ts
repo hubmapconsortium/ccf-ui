@@ -1,3 +1,4 @@
+import { Immutable } from '@angular-ru/common/typings';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { GlobalConfigState } from 'ccf-shared';
@@ -43,7 +44,8 @@ describe('AppComponent', () => {
         tissueBlockData$: of(),
         aggregateData$: of(),
         queryStatus$: of(),
-        termOccurencesData$: of(),
+        ontologyTermOccurencesData$: of(),
+        cellTypeTermOccurencesData$: of(),
         sceneData$: of(),
         technologyFilterData$: of(),
         providerFilterData$: of(),
@@ -62,6 +64,7 @@ describe('AppComponent', () => {
       })
       .mock(GlobalConfigState, {
         snapshot: {},
+        config$: of<Immutable<unknown>>(),
         patchConfig: () => undefined,
         getOption: () => of(undefined)
       });
@@ -159,9 +162,9 @@ describe('AppComponent', () => {
     const mockOntologySelection = [{ label: 'body' } as OntologySelection];
     const { instance } = await shallow.render();
     const spy = spyOn(instance, 'resetView');
-    instance.ontologySelected(undefined);
+    instance.ontologySelected(undefined, 'anatomical-structures');
     expect(spy).toHaveBeenCalledTimes(0);
-    instance.ontologySelected(mockOntologySelection);
+    instance.ontologySelected(mockOntologySelection, 'anatomical-structures');
     expect(spy).toHaveBeenCalled();
   });
 });

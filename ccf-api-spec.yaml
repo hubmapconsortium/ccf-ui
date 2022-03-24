@@ -37,6 +37,7 @@ paths:
         - $ref: "#/components/parameters/BmiRange"
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/Technologies"
@@ -74,6 +75,26 @@ paths:
         - $ref: "#/components/parameters/BmiRange"
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Providers"
+        - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/Technologies"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/TermOccurences" }
+
+  /cell-type-term-occurences:
+    get:
+      summary: Get number of cell type term occurrences for a search
+      operationId: cell-type-term-occurences
+      parameters:
+        - $ref: "#/components/parameters/Age"
+        - $ref: "#/components/parameters/AgeRange"
+        - $ref: "#/components/parameters/Bmi"
+        - $ref: "#/components/parameters/BmiRange"
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/Technologies"
@@ -85,6 +106,16 @@ paths:
     get:
       summary: Get ontology term tree nodes
       operationId: ontology-tree-model
+      parameters:
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/OntologyTree" }
+
+  /cell-type-tree-model:
+    get:
+      summary: Get cell type tree nodes
+      operationId: cell-type-tree-model
       parameters:
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/Token"
@@ -122,6 +153,7 @@ paths:
         - $ref: "#/components/parameters/BmiRange"
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/OrganIri"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
@@ -141,6 +173,7 @@ paths:
         - $ref: "#/components/parameters/BmiRange"
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/Technologies"
@@ -169,6 +202,7 @@ paths:
         - $ref: "#/components/parameters/BmiRange"
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/Technologies"
@@ -237,6 +271,17 @@ components:
 
     OntologyTerms:
       name: ontology-terms
+      description: Filter result by ontology terms.
+      in: query
+      required: false
+      schema:
+        title: Terms
+        type: array
+        items:
+          type: string
+
+    CellTypeTerms:
+      name: cell-type-terms
       description: Filter result by ontology terms.
       in: query
       required: false

@@ -28,7 +28,7 @@ describe('OntologySelectionComponent', () => {
     shallow = new Shallow(OntologySelectionComponent, OntologySelectionModule)
       .provide(OntologySearchService)
       .mock(Store, mockStore)
-      .mock(OntologySearchService, { rootNode: of(fromPartial<OntologyTreeNode>({})) })
+      .mock(OntologySearchService, { rootNode$: of(fromPartial<OntologyTreeNode>({})) })
       .mock(OntologyTreeComponent, { expandAndSelect: () => undefined });
   });
 

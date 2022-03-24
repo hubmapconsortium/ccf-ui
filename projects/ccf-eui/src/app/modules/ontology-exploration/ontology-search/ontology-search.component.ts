@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { OntologyTreeNode } from 'ccf-database';
@@ -20,6 +20,8 @@ import { OntologySearchService, SearchResult } from '../../../core/services/onto
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OntologySearchComponent implements OnInit {
+  @Input() placeholderText: string;
+
   /**
    * Output event-emitter which emits the id of the OntologyTreeNode whose label was
    * selected by the user in the search-results

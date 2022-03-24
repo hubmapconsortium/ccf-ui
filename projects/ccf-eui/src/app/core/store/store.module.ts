@@ -8,7 +8,6 @@ import { ColorAssignmentState } from './color-assignment/color-assignment.state'
 import { DataState } from './data/data.state';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { ListResultsState } from './list-results/list-results.state';
-import { OntologyState } from './ontology/ontology.state';
 import { GlobalConfigState } from 'ccf-shared';
 import { SceneState } from './scene/scene.state';
 
@@ -22,7 +21,6 @@ export const ROOT_STATES = [
   IconRegistryState,
   ListResultsState,
   DataState,
-  OntologyState,
   SceneState
 ];
 
