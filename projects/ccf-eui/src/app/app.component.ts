@@ -106,6 +106,7 @@ export class AppComponent implements OnInit {
     this.globalConfig.getOption('logoTooltip').subscribe((tooltip: string) => {
       this.logoTooltip = tooltip;
     });
+    console.log(this.globalConfig)
   }
 
   ngOnInit(): void {

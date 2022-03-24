@@ -31,8 +31,6 @@ export interface DefaultIconDefinition {
  * Icons registered at startup.
  */
 export const DEFAULT_ICONS: DefaultIconDefinition[] = [
-  { name: 'logo', namespace: 'app', url: 'assets/icons/logo-rui.svg' },
-
   // Reference Organs
   { name: 'bladder', namespace: 'app', url: 'assets/icons/organs/ico-organs-bladder.svg' },
   { name: 'blood', namespace: 'app', url: 'assets/icons/organs/ico-organs-blood.svg' },

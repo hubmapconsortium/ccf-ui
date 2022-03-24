@@ -39,6 +39,16 @@ export class AppComponent implements OnDestroy, OnInit {
   /** All subscriptions managed by the container. */
   private readonly subscriptions = new Subscription();
 
+  readonly header$ = this.globalConfig.getOption('header');
+
+  readonly theme$ = this.globalConfig.getOption('theme');
+
+  theme: string;
+
+  homeUrl: string;
+
+  logoTooltip: string;
+
   constructor(
     readonly model: ModelState, readonly page: PageState,
     readonly consentService: ConsentService, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
@@ -55,6 +65,17 @@ export class AppComponent implements OnDestroy, OnInit {
         this.registrationStarted = registrationStarted;
       })
     );
+    this.theme$.subscribe((theme: string) => {
+      this.theme = theme;
+    });
+    this.globalConfig.getOption('homeUrl').subscribe((url: string) => {
+      this.homeUrl = url;
+    });
+    this.globalConfig.getOption('logoTooltip').subscribe((tooltip: string) => {
+      this.logoTooltip = tooltip;
+    });
+    console.log(this.globalConfig)
+    console.log(this.theme)
   }
 
   ngOnInit(): void {
@@ -66,6 +87,29 @@ export class AppComponent implements OnDestroy, OnInit {
       },
       duration: this.consentService.consent === 'not-set' ? Infinity : 3000
     });
+
+    this.theming.setTheme(`${this.theme}-theme-light`);
+
+    // if (window.matchMedia) {
+    //   // Sets initial theme according to user theme preference
+    //   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    //     this.theming.setTheme(`${this.theme}-theme-dark`);
+    //   }
+
+    //   // Listens for changes in user theme preference
+    //   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    //     this.theming.setTheme(e.matches ? `${this.theme}-theme-dark` : `${this.theme}-theme-light`);
+    //   });
+    // } else {
+    //   this.theming.setTheme(`${this.theme}-theme-light`);
+    // }
+  }
+
+  /**
+   * Toggles scheme between light and dark mode
+   */
+   toggleScheme(): void {
+    this.theming.setTheme((this.theming.getTheme() === `${this.theme}-theme-light`) ? `${this.theme}-theme-dark` : `${this.theme}-theme-light`);
   }
 
   /**
