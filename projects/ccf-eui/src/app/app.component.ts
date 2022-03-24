@@ -102,10 +102,10 @@ export class AppComponent implements OnInit {
     });
     this.globalConfig.getOption('homeUrl').subscribe((url: string) => {
       this.homeUrl = url;
-    })
+    });
     this.globalConfig.getOption('logoTooltip').subscribe((tooltip: string) => {
       this.logoTooltip = tooltip;
-    })
+    });
   }
 
   ngOnInit(): void {

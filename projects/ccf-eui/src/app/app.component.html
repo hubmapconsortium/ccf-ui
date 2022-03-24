@@ -1,10 +1,10 @@
 <div class="ccf-app mat-app-background">
   <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async">
   </ccf-spinner-overlay>
-  <ccf-header [class.hide]="!(header$ | async)" [logoTooltip]="logoTooltip" [homeUrl]="homeUrl" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
+  <ccf-header [class.hide]="(header$ | async) === false" [logoTooltip]="logoTooltip" [homeUrl]="homeUrl" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
   </ccf-header>
 
-  <ccf-drawer-container class="main-drawers" [class.header-hidden]="!(header$ | async)">
+  <ccf-drawer-container class="main-drawers" [class.header-hidden]="(header$ | async) === false">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
       <div>
         <div class="filter-data">
@@ -49,7 +49,7 @@
             </mat-icon>
           </button>
         </div>
-        <ccf-info-button videoID="YAHJqvD3Q_8" infoTitle="HuBMAP CCF Exploration User Interface" matTooltip="Open Info">
+        <ccf-info-button videoID="YAHJqvD3Q_8" matTooltip="Open Info">
         </ccf-info-button>
       </div>
       <ccf-results-browser
@@ -68,7 +68,7 @@
     </ccf-drawer>
 
 
-    <ccf-drawer-content [class.header-hidden]="!(header$ | async)">
+    <ccf-drawer-content [class.header-hidden]="(header$ | async) === false">
       <div [class.closed]="!organListVisible" class="selector-drawer" [class.expanded]="selector.expanded">
         <ccf-organ-selector #selector class="organ-selector" [multiselect]="true"
                             [occurenceData]="(data.termOccurencesData$ | async) ?? {}"

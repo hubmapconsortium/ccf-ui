@@ -87,8 +87,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     }
   }
 
-  @Input() header: boolean;
-
   get occurenceData(): Record<string, number> {
     return this._occurenceData;
   }
@@ -113,6 +111,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   get termData(): Record<string, number> {
     return this._termData;
   }
+
+  @Input() header: boolean;
 
   /**
    * Storage for the getter / setter
@@ -174,7 +174,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * Storage for getter/setter 'getChildren'.
    */
   private _getChildren?: GetChildrenFunc;
-  
+
 
   /**
    * A copy of the body node in order to manually select it when the component loads.
