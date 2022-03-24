@@ -311,7 +311,7 @@ export class CCFDatabase {
    * @returns Cell type term counts.
    */
   async getCellTypeTermOccurences(filter?: Filter): Promise<Record<string, number>> {
-    return getCellTypeTermOccurences(this.getIds(filter), this.store); //TODO: replace with cell type term occurrences
+    return getCellTypeTermOccurences(this.getIds(filter), this.store);
   }
 
   /**
