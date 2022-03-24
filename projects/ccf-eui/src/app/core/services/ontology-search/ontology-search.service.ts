@@ -27,7 +27,7 @@ export interface SearchResult {
  */
 @Injectable()
 export class OntologySearchService {
-  private treeModel$ = new ReplaySubject<OntologyTreeModel>(1);
+  private readonly treeModel$ = new ReplaySubject<OntologyTreeModel>(1);
   private treeModel: OntologyTreeModel;
 
   /** All nodes in the ontology tree. */
@@ -111,9 +111,9 @@ export class OntologySearchService {
   formatLabel(label: string, searchValue: string): string[] {
     const index = this.getIndexOfMatch(label, searchValue);
     return [
-      label.substr(0, index),
-      label.substr(index, searchValue.length),
-      label.substr(index + searchValue.length, label.length)
+      label.slice(0, index),
+      label.slice(index, index + searchValue.length),
+      label.slice(index + searchValue.length)
     ];
   }
 
