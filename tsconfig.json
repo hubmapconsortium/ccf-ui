@@ -68,7 +68,7 @@
         "dist/ccf-shared/web-components"
       ],
       "ccf-openapi/angular-client": [
-        "projects/ccf-openapi/generated/angular-client/dist"
+        "dist/ccf-openapi/angular-client"
       ]
     }
   },
