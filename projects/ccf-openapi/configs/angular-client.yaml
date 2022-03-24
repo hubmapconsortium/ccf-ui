@@ -1,4 +1,5 @@
 generatorName: typescript-angular
+templateDir: projects/ccf-openapi/templates/angular-client
 # https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/typescript-angular.md
 additionalProperties:
   apiModulePrefix: Ccf
