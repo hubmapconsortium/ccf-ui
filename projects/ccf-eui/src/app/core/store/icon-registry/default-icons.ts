@@ -31,10 +31,6 @@ export interface DefaultIconDefinition {
  * Icons registered at startup.
  */
 export const DEFAULT_ICONS: DefaultIconDefinition[] = [
-  { name: 'hubmap_logo', namespace: 'app', url: 'assets/icons/app/hubmap-logo.svg' },
-  { name: 'sennet_logo', namespace: 'app', url: 'assets/icons/app/sennet-logo.svg' },
-
-
   // Reference Organs
   { name: 'bladder', namespace: 'app', url: 'assets/icons/organs/ico-organs-bladder.svg' },
   { name: 'blood', namespace: 'app', url: 'assets/icons/organs/ico-organs-blood.svg' },

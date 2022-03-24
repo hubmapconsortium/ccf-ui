@@ -1,1 +1,17 @@
-@import 'dark'
+@use '~@angular/material' as mat;
+@use 'common/utility';
+@import 'sennet_light';
+@import 'dark';
+
+$sennet_dark_foreground: map-merge($foreground, (
+  selected-ontology-text: map-get($sennet-palette, 400)
+));
+
+$theme: (
+  is-dark: true,
+  primary: $primary,
+  accent: $accent,
+  warn: $warn,
+  foreground: $sennet_dark_foreground,
+  background: $background
+);

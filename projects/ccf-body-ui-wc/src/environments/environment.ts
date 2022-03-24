@@ -37,10 +37,7 @@ export const environment = {
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
-    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
-    theme: 'hubmap',
-    hideHeader: false,
-    sennetPortalUrl: 'https://sennetconsortium.org'
+    hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? ''
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };

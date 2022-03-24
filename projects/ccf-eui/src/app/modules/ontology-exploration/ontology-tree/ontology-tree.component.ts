@@ -87,6 +87,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     }
   }
 
+  @Input() header: boolean;
+
   get occurenceData(): Record<string, number> {
     return this._occurenceData;
   }

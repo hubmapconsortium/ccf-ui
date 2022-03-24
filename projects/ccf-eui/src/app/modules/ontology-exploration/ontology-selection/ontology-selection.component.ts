@@ -40,6 +40,8 @@ export class OntologySelectionComponent {
    */
   @Input() ontologyFilter: string[];
 
+  @Input() header: boolean;
+
   /**
    * Captures and passes along the change in ontologySelections.
    */

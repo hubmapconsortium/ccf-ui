@@ -32,12 +32,15 @@
 
   .results-browser-list {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: scroll;
+    flex-direction: column;
+    overflow-y: auto;
     scrollbar-width: thin;
     padding-right: .5rem;
-    margin-bottom: 2rem;
+    height: calc(100vh - 20rem);
+
+    &.header-hidden {
+      height: calc(100vh - 16rem);
+    }
 
     .browser-item-container {
       width: 100%;

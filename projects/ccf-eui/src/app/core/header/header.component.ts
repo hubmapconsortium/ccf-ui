@@ -15,7 +15,9 @@ export class HeaderComponent {
   /**
    * URL to Portal site
    */
-  @Input() url: string;
+  @Input() homeUrl: string;
+
+  @Input() logoTooltip: string;
 
   /**
    * Is the user logged in?
@@ -26,8 +28,6 @@ export class HeaderComponent {
    * Current filter settings
    */
   @Input() filters: Record<string, unknown[] | unknown>;
-
-  @Input() theme: string;
 
   /**
    * Emitted when refresh button is clicked

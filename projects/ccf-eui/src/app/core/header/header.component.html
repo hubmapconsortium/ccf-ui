@@ -1,11 +1,11 @@
 <mat-toolbar class="ccf-header">
-  <a class="home" [href]="url">
-    <mat-icon class="logo"  aria-hidden="false" aria-label="Reset tool" matTooltip="Human BioMolecular Atlas Project"
-    matTooltipPosition="right" [svgIcon]="'app:'+theme+'_logo'"></mat-icon>
+  <a class="home" [href]="homeUrl">
+    <div class="logo" aria-hidden="false" aria-label="Reset tool" [matTooltip]="logoTooltip" matTooltipPosition="right">
+    </div>
   </a>
 
   <div class="filler"></div>
   
-  <a mat-button class="authentication" *ngIf="!loggedIn" [href]="url + 'login'" rel="noreferrer noopener" target="_blank">LOGIN</a>
-  <a mat-button class="authentication" *ngIf="loggedIn" [href]="url + 'logout'" rel="noreferrer noopener" target="_blank">LOGOUT</a>
+  <a mat-button class="authentication" *ngIf="!loggedIn" [href]="homeUrl + 'login'" rel="noreferrer noopener" target="_blank">LOGIN</a>
+  <a mat-button class="authentication" *ngIf="loggedIn" [href]="homeUrl + 'logout'" rel="noreferrer noopener" target="_blank">LOGOUT</a>
 </mat-toolbar>

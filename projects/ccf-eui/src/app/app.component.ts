@@ -65,13 +65,15 @@ export class AppComponent implements OnInit {
 
   readonly ontologyTerms$: Observable<readonly string[]>;
 
-  readonly theme$ = this.globalConfig.getOption('theme');
+  readonly header$ = this.globalConfig.getOption('header');
 
-  readonly hideHeader$ = this.globalConfig.getOption('hideHeader');
+  readonly theme$ = this.globalConfig.getOption('theme');
 
   theme: string;
 
-  logoUrl: string;
+  homeUrl: string;
+
+  logoTooltip: string;
 
   /**
    * Creates an instance of app component.
@@ -98,8 +100,11 @@ export class AppComponent implements OnInit {
     this.theme$.subscribe((theme: string) => {
       this.theme = theme;
     });
-    this.globalConfig.getOption(`${this.theme}PortalUrl`).subscribe((url: string) => {
-      this.logoUrl = url;
+    this.globalConfig.getOption('homeUrl').subscribe((url: string) => {
+      this.homeUrl = url;
+    })
+    this.globalConfig.getOption('logoTooltip').subscribe((tooltip: string) => {
+      this.logoTooltip = tooltip;
     })
   }
 
@@ -123,8 +128,9 @@ export class AppComponent implements OnInit {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         this.theming.setTheme(e.matches ? `${this.theme}-theme-dark` : `${this.theme}-theme-light`);
       });
+    } else {
+      this.theming.setTheme(`${this.theme}-theme-light`);
     }
-    this.theming.setTheme(`${this.theme}-theme-light`);
   }
 
   /**

@@ -58,10 +58,7 @@ export const environment = {
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
     useRemoteApi: false,
-    remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1',
-    theme: 'hubmap',
-    hideHeader: false,
-    sennetPortalUrl: 'https://sennetconsortium.org'
+    remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
   },
   googleAnalyticsToken: window.location.hostname === 'portal.hubmapconsortium.org' ? 'G-1WRJHN9FM6' : 'G-J9HWV9QPJ4'
 };

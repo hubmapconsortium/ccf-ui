@@ -19,12 +19,24 @@
   @include theming.ccf-theme(hubmap_dark.$theme);
 }
 
+.hubmap-theme-light, .hubmap-theme-dark {
+  .logo {
+    background-image: url('./assets/icons/app/hubmap-logo.svg')
+  }
+}
+
 .sennet-theme-light {
   @include theming.ccf-theme(sennet_light.$theme);
 }
 
 .sennet-theme-dark {
   @include theming.ccf-theme(sennet_dark.$theme);
+}
+
+.sennet-theme-light, .sennet-theme-dark {
+  .logo {
+    background-image: url('./assets/icons/app/sennet-logo.png')
+  }
 }
 
 .sennet-theme-dark, .hubmap-theme-dark {

@@ -23,7 +23,7 @@
       }
 
       .selected {
-        color: mat.get-color-from-palette($accent);
+        color: mat.get-color-from-palette($foreground, selected-ontology-text);
       }
 
       .filtered-out {

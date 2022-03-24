@@ -26,12 +26,15 @@
   }
 
   ccf-drawer-container {
-    flex-grow: 1;
-    height: 100%;
+    height: calc(100% - 5rem);
     width: 100%;
     opacity: 1;
-    overflow: visible;
+    overflow: hidden;
     transform: scale(1);
+
+    &.header-hidden {
+      height: 100%;
+    }
 
     ccf-drawer {
       width: 28.5rem;
@@ -92,7 +95,6 @@
         transition: all 0.5s ease-in-out;
         border-bottom-right-radius: 0.5rem;
         border-bottom-left-radius: 0.5rem;
-        height: calc(100% - 6.5rem);
       }
 
       .expanded-stage {
@@ -104,7 +106,7 @@
       }
 
       &.header-hidden {
-        height: 100vh;
+        height: calc(100vh - 1rem);
       }
     }
 
@@ -139,8 +141,9 @@
       padding-left: 1.5rem;
       padding-right: 1.5rem;
       height: 100%;
+
       ::ng-deep .cff-drawer-inner-container {
-        height: 100%;
+        overflow: hidden;
       }
 
       .filter-data {

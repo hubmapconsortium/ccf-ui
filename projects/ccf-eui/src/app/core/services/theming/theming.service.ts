@@ -46,7 +46,6 @@ export class ThemingService {
    * @param theme The new theme class.
    */
   setTheme(theme: string): void {
-    console.log(theme)
     if (theme === this.theme) {
       return;
     }

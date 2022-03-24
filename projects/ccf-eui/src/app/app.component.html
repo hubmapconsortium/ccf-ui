@@ -1,10 +1,10 @@
 <div class="ccf-app mat-app-background">
   <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async">
   </ccf-spinner-overlay>
-  <ccf-header [class.hide]="hideHeader$ | async" [theme]="theme" [url]="logoUrl" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
+  <ccf-header [class.hide]="!(header$ | async)" [logoTooltip]="logoTooltip" [homeUrl]="homeUrl" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
   </ccf-header>
 
-  <ccf-drawer-container class="main-drawers">
+  <ccf-drawer-container class="main-drawers" [class.header-hidden]="!(header$ | async)">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
       <div>
         <div class="filter-data">
@@ -23,7 +23,8 @@
         </div>
         <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"
                                 [occurenceData]="data.termOccurencesData$ | async"
-                                (ontologySelection)="ontologySelected($event)">
+                                (ontologySelection)="ontologySelected($event)"
+                                [header]="header$ | async">
         </ccf-ontology-selection>
         <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
       </div>
@@ -60,13 +61,14 @@
         (linkClicked)="openiFrameViewer($event)"
         [highlighted]="listResultsState.highlightedNodeId$ | async"
         (itemHovered)="listResultsState.highlightNode($event)"
-        (itemUnhovered)="listResultsState.unHighlightNode()">
+        (itemUnhovered)="listResultsState.unHighlightNode()"
+        [header]="header$ | async">
       </ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
 
 
-    <ccf-drawer-content [class.header-hidden]="hideHeader$ | async">
+    <ccf-drawer-content [class.header-hidden]="!(header$ | async)">
       <div [class.closed]="!organListVisible" class="selector-drawer" [class.expanded]="selector.expanded">
         <ccf-organ-selector #selector class="organ-selector" [multiselect]="true"
                             [occurenceData]="(data.termOccurencesData$ | async) ?? {}"

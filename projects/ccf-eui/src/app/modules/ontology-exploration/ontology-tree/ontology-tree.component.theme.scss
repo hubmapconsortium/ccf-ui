@@ -69,10 +69,6 @@
       .text:hover {
         color: mat.get-color-from-palette($accent);
       }
-  
-      .selected {
-        color: mat.get-color-from-palette($accent);
-      }
     }
 
     .scroll-gradient {
