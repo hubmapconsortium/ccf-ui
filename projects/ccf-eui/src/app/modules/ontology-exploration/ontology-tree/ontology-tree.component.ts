@@ -5,12 +5,10 @@ import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { CCFDatabaseOptions, OntologyTreeNode } from 'ccf-database';
-import { GlobalConfigState } from 'ccf-shared';
+import { OntologyTreeNode } from 'ccf-database';
 import { filter, invoke, property } from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { FlatNode } from '../../../core/models/flat-node';
-
 
 
 /** Type of function for getting child nodes from a parent node. */
@@ -127,7 +125,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @param cdr The change detector.
    * @param ga Analytics service
    */
-  constructor(private readonly cdr: ChangeDetectorRef, private readonly ga: GoogleAnalyticsService, private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>) { }
+  constructor(private readonly cdr: ChangeDetectorRef, private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Emits an event whenever a node has been selected.
@@ -162,8 +160,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * Data source of flat nodes.
    */
   readonly dataSource = new MatTreeFlatDataSource(this.control, this.flattener);
-
-  readonly hideHeader$ = this.globalConfig.getOption('hideHeader');
 
   /**
    * Storage for getter/setter 'nodes'.
