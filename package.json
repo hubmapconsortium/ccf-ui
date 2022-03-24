@@ -54,6 +54,7 @@
     "sonar": "sonar-scanner",
     "clean:ccf-openapi": "rimraf projects/ccf-openapi/generated dist/ccf-openapi",
     "preprocess:ccf-openapi": "node projects/ccf-openapi/scripts/preprocess.js -i ccf-api-spec.yaml -o projects/ccf-openapi/generated/spec.yaml",
+    "pregenerate:ccf-openapi": "npx openapi-generator-cli version-manager set 5.4.0",
     "generate:ccf-openapi": "foreach -g \"projects/ccf-openapi/configs/*.yaml\" -x \"npx openapi-generator-cli generate -c #{path} -i projects/ccf-openapi/generated/spec.yaml -o projects/ccf-openapi/generated/#{name}\"",
     "postinstall": "rimraf ./node_modules/@types/math.gl ./node_modules/@types/math.gl__core"
   },
