@@ -3,7 +3,7 @@ import { fromRdf } from 'rdf-literal';
 import { DataFactory, Literal, Store, Term } from 'triple-store-utils';
 
 import { Filter } from '../interfaces';
-import { ccf, entity } from '../util/prefixes';
+import { ccf, entity, rui } from '../util/prefixes';
 
 
 function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen: Set<string>) => Set<string>): Set<string> {
@@ -260,6 +260,9 @@ function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[])
     store.forObjects((asTerm) => {
       asTerms.add(asTerm.id);
     }, term, ccf.asctb.located_in, null);
+    if (term === rui.cell.id) {
+      asTerms.add(rui.body.id);
+    }
   }
   return filterByOntologyTerms(store, seen, [...asTerms]);
 }
