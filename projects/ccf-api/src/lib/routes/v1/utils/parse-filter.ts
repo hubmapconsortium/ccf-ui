@@ -100,20 +100,20 @@ function processParameter(result: Filter, key: string, value: unknown): void {
 
     case 'agerange':
     case 'age-range':
-      setIfDefined(result, 'ageRange', parseRange(value, 0, 100));
+      setIfDefined(result, 'ageRange', parseRange(value, 1, 110));
       break;
 
     case 'age':
-      setIfDefined(result, 'ageRange', parseMinMaxRange(value, 0, 100));
+      setIfDefined(result, 'ageRange', parseMinMaxRange(value, 1, 110));
       break;
 
     case 'bmirange':
     case 'bmi-range':
-      setIfDefined(result, 'bmiRange', parseRange(value, 0, 100));
+      setIfDefined(result, 'bmiRange', parseRange(value, 13, 83));
       break;
 
     case 'bmi':
-      setIfDefined(result, 'bmiRange', parseMinMaxRange(value, 0, 100));
+      setIfDefined(result, 'bmiRange', parseMinMaxRange(value, 13, 83));
       break;
 
     case 'tmc':
