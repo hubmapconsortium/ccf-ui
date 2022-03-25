@@ -93,8 +93,8 @@ export const ccf = {
   asctb: {
     part_of: ccfx('ccf_part_of'),
     ct_is_a: ccfx('ct_is_a'),
-    located_in: ccfx('located_in'),
-    characterizes: ccfx('characterizes')
+    located_in: ccfx('ccf_located_in'),
+    characterizes: ccfx('ccf_characterizes')
   },
   spatial: {
     Female: prefixer('base')('VHFemale'),
