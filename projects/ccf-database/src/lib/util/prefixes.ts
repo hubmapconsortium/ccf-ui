@@ -92,7 +92,7 @@ export const ccf = {
   },
   asctb: {
     part_of: ccfx('ccf_part_of'),
-    ct_is_a: ccfx('ct_is_a'),
+    ct_is_a: ccfx('ccf_ct_isa'),
     located_in: ccfx('ccf_located_in'),
     characterizes: ccfx('ccf_characterizes')
   },
