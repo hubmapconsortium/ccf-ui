@@ -1,5 +1,5 @@
 <ccf-registration-modal></ccf-registration-modal>
-<ccf-header></ccf-header>
+<ccf-header [class.header-hidden]="(header$ | async) === false"></ccf-header>
 
 <ccf-drawer-container>
   <ccf-drawer opened>

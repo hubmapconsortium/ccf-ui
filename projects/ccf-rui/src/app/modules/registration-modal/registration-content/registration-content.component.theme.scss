@@ -12,8 +12,14 @@
       background-color: mat.get-color-from-palette($background, background);
 
       .registration-button {
-        color: mat.get-color-from-palette($primary, 'white');
-        background-color: mat.get-color-from-palette($foreground, main);
+        background-color: mat.get-color-from-palette($foreground, button-background);
+        color: mat.get-color-from-palette($foreground, sidebar-dividers);
+        border: 1px solid mat.get-color-from-palette($foreground, active-icon);
+  
+        &:hover {
+          background-color: mat.get-color-from-palette($foreground, button-background-hover);
+          color: mat.get-color-from-palette($foreground, 'main');
+        }
     
         &.disabled {
           background-color: mat.get-color-from-palette($foreground, icons-disabled);

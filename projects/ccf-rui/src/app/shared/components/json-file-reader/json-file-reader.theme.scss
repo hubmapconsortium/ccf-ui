@@ -10,9 +10,11 @@
     .upload-button {
       background-color: mat.get-color-from-palette($foreground, button-background);
       color: mat.get-color-from-palette($foreground, sidebar-dividers);
+      border: 1px solid mat.get-color-from-palette($foreground, active-icon);
 
       &:hover {
         background-color: mat.get-color-from-palette($foreground, button-background-hover);
+        color: mat.get-color-from-palette($foreground, 'main');
       }
     }
   }
