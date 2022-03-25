@@ -14,6 +14,13 @@ export interface User {
   lastName: string;
 }
 
+interface AppOptions extends GlobalConfig {
+  theme?: string;
+  header?: boolean;
+  homeUrl?: string;
+  logoTooltip?: string;
+}
+
 /**
  * App component
  */
@@ -52,7 +59,7 @@ export class AppComponent implements OnDestroy, OnInit {
   constructor(
     readonly model: ModelState, readonly page: PageState,
     readonly consentService: ConsentService, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
-    el: ElementRef<unknown>, injector: Injector, private readonly globalConfig: GlobalConfigState<GlobalConfig>
+    el: ElementRef<unknown>, injector: Injector, private readonly globalConfig: GlobalConfigState<AppOptions>
   ) {
     theming.initialize(el, injector);
     this.subscriptions.add(
