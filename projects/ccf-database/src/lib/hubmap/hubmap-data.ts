@@ -103,6 +103,10 @@ const ENTITY_CONTEXT = {
     '@id': 'has_ontology_term',
     '@type': '@id'
   },
+  cellTypeTerms: {
+    '@id': 'has_cell_type_term',
+    '@type': '@id'
+  },
   thumbnail: {
     '@id': 'has_thumbnail'
   }

@@ -1,10 +1,8 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
 
 import { OntologySelection } from '../../../core/models/ontology-selection';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
-import { OntologyState } from '../../../core/store/ontology/ontology.state';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
 
 
@@ -15,9 +13,10 @@ import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component'
   selector: 'ccf-ontology-selection',
   templateUrl: './ontology-selection.component.html',
   styleUrls: ['./ontology-selection.component.scss'],
+  providers: [OntologySearchService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OntologySelectionComponent {
+export class OntologySelectionComponent implements OnChanges {
   /**
    * View child of search component
    */
@@ -34,6 +33,11 @@ export class OntologySelectionComponent {
   @Input() termData: Record<string, number>;
 
   /**
+   * The ontology tree model to display
+   */
+  @Input() treeModel: OntologyTreeModel;
+
+  /**
    * Input list of selected ontology terms passed down to ontology-tree.
    * Used to change display of ontology tree when selection is made from
    * outside the component.
@@ -41,6 +45,7 @@ export class OntologySelectionComponent {
   @Input() ontologyFilter: string[];
 
   @Input() header: boolean;
+  @Input() placeholderText: string;
 
   /**
    * Captures and passes along the change in ontologySelections.
@@ -51,12 +56,16 @@ export class OntologySelectionComponent {
    * Creates an instance of ontology selection component.
    *
    * @param ontologySearchService Service for searching the ontology.
-   * @param store The global state store.
    */
   constructor(
     public ontologySearchService: OntologySearchService,
-    private readonly store: Store
   ) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('treeModel' in changes && this.treeModel) {
+      this.ontologySearchService.setTreeModel(this.treeModel);
+    }
+  }
 
   /**
    * Ontology selection event when node is selected from the search results.
@@ -64,7 +73,7 @@ export class OntologySelectionComponent {
    * @param ontologyNode selected ontology node.
    */
   selected(ontologyNode: OntologyTreeNode): void {
-    const { nodes } = this.store.selectSnapshot<OntologyTreeModel>(OntologyState);
+    const nodes = this.treeModel?.nodes ?? {};
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
   }
 }

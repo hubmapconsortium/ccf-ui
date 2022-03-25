@@ -83,6 +83,8 @@ export interface SearchableItem {
   bmi?: number;
   /** Ontology terms */
   ontologyTerms?: Set<string>;
+  /** CellType terms */
+  cellTypeTerms?: Set<string>;
 }
 
 /** Options applied during queries */
@@ -99,6 +101,8 @@ export interface Filter {
   technologies: string[];
   /** Ontology terms */
   ontologyTerms: string[];
+  /** CellType terms */
+  cellTypeTerms: string[];
   /** Include optional debugging information */
   debug?: boolean;
 }

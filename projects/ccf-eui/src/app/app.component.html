@@ -21,9 +21,20 @@
               <strong>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</strong></div>
           </div>
         </div>
-        <ccf-ontology-selection [termData]="data.ontologyTermsFullData$ | async"
-                                [occurenceData]="data.termOccurencesData$ | async"
-                                (ontologySelection)="ontologySelected($event)"
+        <ccf-ontology-selection class="ontology-selection"
+                                [treeModel]="ontologyTreeModel$ | async"
+                                [termData]="data.ontologyTermsFullData$ | async"
+                                [occurenceData]="data.ontologyTermOccurencesData$ | async"
+                                placeholderText="Search ontology terms..."
+                                (ontologySelection)="ontologySelected($event, 'anatomical-structures')"
+                                [header]="header$ | async">
+        </ccf-ontology-selection>
+        <ccf-ontology-selection class="cell-type-selection"
+                                [treeModel]="cellTypeTreeModel$ | async"
+                                [termData]="data.cellTypeTermsFullData$ | async"
+                                [occurenceData]="data.cellTypeTermOccurencesData$ | async"
+                                placeholderText="Search cell type terms..."
+                                (ontologySelection)="ontologySelected($event, 'cell-type')"
                                 [header]="header$ | async">
         </ccf-ontology-selection>
         <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
@@ -55,7 +66,7 @@
       <ccf-results-browser
         [listResults]="listResultsState.listResults$ | async"
         [aggregateData]="data.aggregateData$ | async"
-        [resultLabel]="ontologySelectionLabel"
+        [resultLabel]="selectionLabel"
         (listResultSelected)="listResultsState.selectListResult($event)"
         (listResultDeselected)="listResultsState.deselectListResult($event)"
         (linkClicked)="openiFrameViewer($event)"
@@ -71,7 +82,7 @@
     <ccf-drawer-content [class.header-hidden]="(header$ | async) === false">
       <div [class.closed]="!organListVisible" class="selector-drawer" [class.expanded]="selector.expanded">
         <ccf-organ-selector #selector class="organ-selector" [multiselect]="true"
-                            [occurenceData]="(data.termOccurencesData$ | async) ?? {}"
+                            [occurenceData]="(data.ontologyTermOccurencesData$ | async) ?? {}"
                             [organList]="scene.referenceOrgans$ | async"
                             (organsChanged)="scene.setSelectedReferenceOrgans($event)"
                             [selectedOrgans]="scene.selectedReferenceOrgans$ | async">

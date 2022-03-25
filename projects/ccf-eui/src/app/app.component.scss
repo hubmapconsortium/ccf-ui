@@ -144,6 +144,13 @@
 
       ::ng-deep .cff-drawer-inner-container {
         overflow: hidden;
+        height: calc(100% - 5rem);
+      }
+
+      .cell-type-selection {
+        ::ng-deep .ccf-ontology-search {
+          margin-top: 2rem;
+        }
       }
 
       .filter-data {
