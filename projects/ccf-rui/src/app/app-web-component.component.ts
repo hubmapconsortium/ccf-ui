@@ -47,7 +47,11 @@ export class AppWebComponent extends BaseWebComponent {
     super(configStore, cdr, {
       initialDelay: 500,
 
-      initialConfig: {...environment.dbOptions, ...globalThis['ruiConfig' as string]} ?? {},
+      initialConfig: {
+        ...environment.dbOptions,
+        ...globalThis['ruiConfig' as string],
+        ...environment.customization
+      },
       parse: {
         useDownload: BP.boolean,
         user: BP.json,
@@ -57,10 +61,7 @@ export class AppWebComponent extends BaseWebComponent {
         cancelRegistration: BP.function,
         fetchPreviousRegistrations: BP.function,
         skipUnsavedChangesConfirmation: BP.boolean,
-        theme: BP.json,
-        header: BP.json,
-        homeUrl: BP.json,
-        logoTooltip: BP.json
+        header: BP.boolean,
       }
     });
   }

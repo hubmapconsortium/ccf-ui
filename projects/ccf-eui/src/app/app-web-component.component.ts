@@ -21,13 +21,6 @@ function parseDataSources(value: unknown): string[] {
   throw new Error('Invalid data sources');
 }
 
-const settings = {
-  theme: 'hubmap',
-  header: true,
-  homeUrl: 'https://portal.hubmapconsortium.org/',
-  logoTooltip: 'Human BioMolecular Atlas Project'
-}
-
 
 @Component({
   selector: 'ccf-root-wc',
@@ -45,8 +38,8 @@ export class AppWebComponent extends BaseWebComponent {
 
   @Input() useRemoteApi: string | boolean;
   @Input() remoteApiEndpoint: string;
-  @Input() theme: string = 'hubmap';
-  @Input() header: string | boolean = true;
+  @Input() theme: string;
+  @Input() header: string | boolean;
   @Input() homeUrl: string;
   @Input() logoTooltip: string;
 
@@ -62,15 +55,12 @@ export class AppWebComponent extends BaseWebComponent {
       initialConfig: {
         ...environment.dbOptions,
         ...globalThis['dbOptions'],
-        ...settings
+        ...environment.customization
       },
       parse: {
         dataSources: parseDataSources,
         useRemoteApi: BUILTIN_PARSERS.boolean,
-        theme: BUILTIN_PARSERS.json,
-        header: BUILTIN_PARSERS.json,
-        homeUrl: BUILTIN_PARSERS.json,
-        logoTooltip: BUILTIN_PARSERS.json
+        header: BUILTIN_PARSERS.boolean
       }
     });
   }

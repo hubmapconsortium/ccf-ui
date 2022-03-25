@@ -13,8 +13,9 @@ export const environment = {
     hubmapDataUrl: '', // Do not query the search-api for spatial entities by default
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
-
-    theme: 'sennet',
+  },
+  customization: {
+    theme: 'hubmap',
     header: true,
     homeUrl: 'https://portal.hubmapconsortium.org/',
     logoTooltip: 'Human BioMolecular Atlas Project'

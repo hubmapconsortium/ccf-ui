@@ -60,5 +60,11 @@ export const environment = {
     useRemoteApi: false,
     remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
   },
+  customization: {
+    theme: 'hubmap',
+    header: true,
+    homeUrl: 'https://portal.hubmapconsortium.org/',
+    logoTooltip: 'Human BioMolecular Atlas Project'
+  },
   googleAnalyticsToken: window.location.hostname === 'portal.hubmapconsortium.org' ? 'G-1WRJHN9FM6' : 'G-J9HWV9QPJ4'
 };
