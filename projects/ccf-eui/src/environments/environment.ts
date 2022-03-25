@@ -50,7 +50,7 @@ export const environment = {
   ],
   dbOptions: {
     ccfOwlUrl: 'assets/ccf.owl.n3store.json',
-    ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+    ccfContextUrl: 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
     dataSources: [
       'assets/kpmp/data/rui_locations.jsonld',
       'assets/sparc/data/rui_locations.jsonld',

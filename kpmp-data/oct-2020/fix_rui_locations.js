@@ -23,7 +23,7 @@ function convertOldRuiToJsonLd(data, label) {
   const T = data.tissue_position_mass_point;
 
   return {
-    '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+    '@context': 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
     '@id': 'http://purl.org/ccf/0.5/' + data.alignment_id,
     '@type': 'SpatialEntity',
     label: label || undefined,
@@ -36,7 +36,7 @@ function convertOldRuiToJsonLd(data, label) {
     x_dimension: D.x, y_dimension: D.y, z_dimension: D.z, dimension_units: 'millimeter',
 
     placement: {
-      '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+      '@context': 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
       '@id': 'http://purl.org/ccf/0.5/' + data.alignment_id + '_placement',
       '@type': 'SpatialPlacement',
       target: placementTarget,

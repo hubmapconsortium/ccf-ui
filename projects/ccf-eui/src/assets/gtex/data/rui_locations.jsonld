@@ -56,7 +56,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/c80e8f79-2b12-470d-be3c-f195a3686943",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -81,7 +81,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/c80e8f79-2b12-470d-be3c-f195a3686943_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidney",
@@ -137,7 +137,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/cc1251a4-d367-4bb1-b2d9-05ae33209f0d",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -156,7 +156,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/cc1251a4-d367-4bb1-b2d9-05ae33209f0d_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
@@ -212,7 +212,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/a04e60c6-693a-4c25-a069-62521783fd15",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -232,7 +232,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/a04e60c6-693a-4c25-a069-62521783fd15_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
@@ -288,7 +288,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ed9bc73e-ab9c-4bb1-8b96-4ecd1f12c7a7",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -309,7 +309,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ed9bc73e-ab9c-4bb1-8b96-4ecd1f12c7a7_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFSpleen",
@@ -365,7 +365,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/8e476601-a5e6-4d15-86a4-e6d3da9abb7e",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -385,7 +385,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/8e476601-a5e6-4d15-86a4-e6d3da9abb7e_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFColon",
@@ -441,7 +441,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/64a0ddbc-8138-4ce0-ad0b-2f8e546cea29",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -461,7 +461,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/64a0ddbc-8138-4ce0-ad0b-2f8e546cea29_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFColon",
@@ -517,7 +517,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ab9cafec-3eff-49ac-b2a9-ba96c22d80f9",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -537,7 +537,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ab9cafec-3eff-49ac-b2a9-ba96c22d80f9_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFLung",
@@ -593,7 +593,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/676e549a-6234-48ee-b7cb-82258c17054b",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -612,7 +612,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/676e549a-6234-48ee-b7cb-82258c17054b_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
@@ -668,7 +668,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/f6512db4-2809-4ffe-864d-ace61789dff6",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -688,7 +688,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/f6512db4-2809-4ffe-864d-ace61789dff6_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
@@ -744,7 +744,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ec2488fb-6ff5-4f43-82b5-9704a650d00a",
             "@type": "SpatialEntity",
             "creator": "Kristin  Ardlie",
@@ -765,7 +765,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ec2488fb-6ff5-4f43-82b5-9704a650d00a_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMSpleen",
@@ -821,7 +821,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/1404eed3-01cb-4187-ad91-5fdc52a07ad8",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -846,7 +846,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/1404eed3-01cb-4187-ad91-5fdc52a07ad8_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMLeftKidney",
@@ -902,7 +902,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/383d2c1a-4c8c-4aa3-b154-1ceacd3fa871",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -922,7 +922,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/383d2c1a-4c8c-4aa3-b154-1ceacd3fa871_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMColon",
@@ -978,7 +978,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/fd7270d4-105a-4058-aece-2d2bb0668da2",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -998,7 +998,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/fd7270d4-105a-4058-aece-2d2bb0668da2_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMColon",
@@ -1054,7 +1054,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ab2e49b2-1959-44af-8e83-ac16878f6c12",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1077,7 +1077,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ab2e49b2-1959-44af-8e83-ac16878f6c12_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMLung",
@@ -1133,7 +1133,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/f6203770-64ee-40cc-b7b2-339f1ae491cc",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1151,7 +1151,7 @@
             "z_dimension": 7,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/f6203770-64ee-40cc-b7b2-339f1ae491cc_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFLiver",
@@ -1207,7 +1207,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/e137f366-a936-4357-945a-929d1d682890",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1224,7 +1224,7 @@
             "z_dimension": 3,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/e137f366-a936-4357-945a-929d1d682890_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftOvary",
@@ -1280,7 +1280,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/232b6561-19ed-4da3-a61e-286245f42f25",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1299,7 +1299,7 @@
             "z_dimension": 7,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/232b6561-19ed-4da3-a61e-286245f42f25_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFPancreas",
@@ -1355,7 +1355,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/6f04ffad-3b9d-4c1c-afc0-fd203b02e5a3",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1371,7 +1371,7 @@
             "z_dimension": 5,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/6f04ffad-3b9d-4c1c-afc0-fd203b02e5a3_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFSkinV1.1",
@@ -1427,7 +1427,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/2185217b-77ed-4043-b79b-1c2d33b6d524",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1443,7 +1443,7 @@
             "z_dimension": 5,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/2185217b-77ed-4043-b79b-1c2d33b6d524_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFSkinV1.1",
@@ -1499,7 +1499,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/2185217b-77ed-4043-b79b-1c2d33b6d524",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1515,7 +1515,7 @@
             "z_dimension": 5,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/2185217b-77ed-4043-b79b-1c2d33b6d524_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFSkinV1.1",
@@ -1571,7 +1571,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/220036fa-2932-4f00-aad6-3f70c516c1c4",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1590,7 +1590,7 @@
             "z_dimension": 3,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/220036fa-2932-4f00-aad6-3f70c516c1c4_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFUterus",
@@ -1646,7 +1646,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/3626fb05-6e59-4aa9-8d03-2b5e995b2522",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1664,7 +1664,7 @@
             "z_dimension": 2,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/3626fb05-6e59-4aa9-8d03-2b5e995b2522_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFBloodVasculature",
@@ -1720,7 +1720,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/74370757-0cd2-44e5-83d8-47eb550c441a",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1738,7 +1738,7 @@
             "z_dimension": 7,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/74370757-0cd2-44e5-83d8-47eb550c441a_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMLiver",
@@ -1794,7 +1794,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/d386cdea-8d3c-46a2-9900-fbd5237cba80",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1813,7 +1813,7 @@
             "z_dimension": 7,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/d386cdea-8d3c-46a2-9900-fbd5237cba80_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMPancreas",
@@ -1869,7 +1869,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/5475ae38-db50-4868-92ba-8718bf136c7b",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1891,7 +1891,7 @@
             "z_dimension": 7,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/5475ae38-db50-4868-92ba-8718bf136c7b_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMProstate",
@@ -1947,7 +1947,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/cce37703-e4e8-454c-a0c4-4ff58652ab8f",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1963,7 +1963,7 @@
             "z_dimension": 5,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/cce37703-e4e8-454c-a0c4-4ff58652ab8f_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMSkinV1.1",
@@ -2019,7 +2019,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ece78b3e-635e-45d1-8217-35fd50392cce",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -2035,7 +2035,7 @@
             "z_dimension": 5,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ece78b3e-635e-45d1-8217-35fd50392cce_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMSkinV1.1",
@@ -2091,7 +2091,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/d237fd29-749e-4734-a925-d36e5d1db31d",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -2109,7 +2109,7 @@
             "z_dimension": 2,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/d237fd29-749e-4734-a925-d36e5d1db31d_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMSmallIntestine",
@@ -2165,7 +2165,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/7e05a1f1-fc08-4add-bd72-ffc11267c048",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -2183,7 +2183,7 @@
             "z_dimension": 2,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/7e05a1f1-fc08-4add-bd72-ffc11267c048_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMBloodVasculature",

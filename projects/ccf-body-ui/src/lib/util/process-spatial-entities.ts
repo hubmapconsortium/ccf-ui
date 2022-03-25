@@ -18,7 +18,7 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd, gltfOv
     const T = { x: node.bbox.lowerBound.x, y: node.bbox.lowerBound.y, z: node.bbox.lowerBound.z };
 
     return {
-      '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+      '@context': 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
       '@id': id,
       '@type': 'SpatialEntity',
       label: `${parent.label} (${node['@id']})`,

@@ -3,7 +3,7 @@ export const environment = {
   disableDbWorker: true,
   dbOptions: {
     ccfOwlUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf.owl',
-    ccfContextUrl: 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+    ccfContextUrl: 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
     hubmapDataUrl: '', // Do not query the search-api for spatial entities by default

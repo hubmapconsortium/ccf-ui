@@ -23,7 +23,7 @@ export async function processExtractionSites(sourceUrl: string, entities: Spatia
 
       if (!extractionSets[row.extraction_set_id]) {
         extractionSets[row.extraction_set_id] = {
-          '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+          '@context': 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
           '@id': row.extraction_set_id,
           '@type': 'ExtractionSet',
           label: row.extraction_set_label,

@@ -60,7 +60,7 @@ export function getDatabaseOptions(): CCFDatabaseOptions {
 
   return {
     ccfOwlUrl: get('DB_OWL_URL', THROW_IF_NOT_FOUND),
-    ccfContextUrl: get('DB_CONTEXT_URL', 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld'),
+    ccfContextUrl: get('DB_CONTEXT_URL', 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld'),
     dataSources: parseDatabaseSources(get('DB_DATA_SOURCES', '')),
     hubmapDataService: get('DB_DATA_SERVICE', 'search-api') as ServiceT,
     hubmapPortalUrl: get('DB_PORTAL_URL', 'https://portal.hubmapconsortium.org/'),
