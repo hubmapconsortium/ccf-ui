@@ -133,7 +133,13 @@
       padding-right: 1.5rem;
       height: 100%;
       ::ng-deep .cff-drawer-inner-container {
-        height: 100%;
+        height: calc(100% - 5rem);
+      }
+
+      .cell-type-selection {
+        ::ng-deep .ccf-ontology-search {
+          margin-top: 2rem;
+        }
       }
 
       .filter-data {

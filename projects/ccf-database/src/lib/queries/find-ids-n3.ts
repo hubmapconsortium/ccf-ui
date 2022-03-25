@@ -3,7 +3,7 @@ import { fromRdf } from 'rdf-literal';
 import { DataFactory, Literal, Store, Term } from 'triple-store-utils';
 
 import { Filter } from '../interfaces';
-import { ccf, entity } from '../util/prefixes';
+import { ccf, entity, rui } from '../util/prefixes';
 
 
 function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen: Set<string>) => Set<string>): Set<string> {
@@ -126,6 +126,11 @@ export function findIds(store: Store, filter: Filter): Set<string> {
       filterByOntologyTerms(store, entities, filter.ontologyTerms)
     );
   }
+  if (seen.size > 0 && filter.cellTypeTerms?.length > 0) {
+    seen = filterWithSpatialEntity(store, seen, (entities) =>
+      filterByCellTypeTerms(store, entities, filter.cellTypeTerms)
+    );
+  }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
     isFinite(filter.ageRange[0]) && isFinite(filter.ageRange[1])) {
     const maxAge = Math.max(...filter.ageRange);
@@ -239,6 +244,27 @@ function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[])
     store.forSubjects(differenceCallback(seen, newSeen), ccf.spatialEntity.ccf_annotations, namedNode, null);
   }
   return newSeen;
+}
+
+/**
+ * Filters ids by cell type terms.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param terms Cell type terms to filter on.
+ * @returns The subset of ids with the specified cell type terms.
+ */
+function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+  const asTerms = new Set<string>();
+  for (const term of terms) {
+    store.forObjects((asTerm) => {
+      asTerms.add(asTerm.id);
+    }, term, ccf.asctb.located_in, null);
+    if (term === rui.cell.id) {
+      asTerms.add(rui.body.id);
+    }
+  }
+  return filterByOntologyTerms(store, seen, [...asTerms]);
 }
 
 /**

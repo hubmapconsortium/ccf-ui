@@ -108,6 +108,19 @@ export class DataSourceService implements OnDestroy {
   }
 
   /**
+   * Queries for cell type term counts.
+   *
+   * @param [filter] Currently applied filter.
+   * @returns An observable emitting the results.
+   */
+  getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getCellTypeTermOccurences(filter)),
+      take(1)
+    );
+  }
+
+  /**
    * Get the ontology tree model.
    *
    * @returns An observable emitting the results.
@@ -118,6 +131,19 @@ export class DataSourceService implements OnDestroy {
       take(1)
     );
   }
+
+  /**
+   * Get the cell type tree model.
+   *
+   * @returns An observable emitting the results.
+   */
+  getCellTypeTreeModel(): Observable<OntologyTreeModel> {
+    return this.dataSource.pipe(
+      switchMap(db => db.getCellTypeTreeModel()),
+      take(1)
+    );
+  }
+
 
   /**
    * Get the reference organs.

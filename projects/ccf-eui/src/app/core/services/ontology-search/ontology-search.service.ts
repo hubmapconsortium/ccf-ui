@@ -2,11 +2,10 @@
 import { Immutable } from '@angular-ru/common/typings';
 import { Injectable } from '@angular/core';
 import { bind } from 'bind-decorator';
-import { OntologyTreeNode } from 'ccf-database';
+import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
 import { at } from 'lodash';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { OntologyState } from '../../store/ontology/ontology.state';
 
 
 /**
@@ -26,21 +25,21 @@ export interface SearchResult {
 /**
  * Injectable OntologySearchService responsible for search result computations
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class OntologySearchService {
-  /** Root node in ontology. */
-  get rootNode(): Observable<Immutable<OntologyTreeNode>> {
-    return this.ontologyState.rootNode$;
-  }
+  private readonly treeModel$ = new ReplaySubject<OntologyTreeModel>(1);
+  private treeModel: OntologyTreeModel;
 
-  /**
-   * Creates an instance of ontology search service.
-   *
-   * @param ontologyState The global ontology state.
-   */
-  constructor(private readonly ontologyState: OntologyState) { }
+  /** All nodes in the ontology tree. */
+  public readonly nodes$ = this.treeModel$.pipe(map(state => Object.values(state.nodes)));
+
+  /** Root node of the ontology tree. */
+  public readonly rootNode$ = this.treeModel$.pipe(map(state => state.nodes[state.root]));
+
+  setTreeModel(treeModel: OntologyTreeModel): void {
+    this.treeModel$.next(treeModel);
+    this.treeModel = treeModel;
+  }
 
   /**
    * Searches the ontology with the search-term
@@ -49,7 +48,7 @@ export class OntologySearchService {
    * @returns an array of search-results
    */
   filter(value: string): Observable<SearchResult[]> {
-    return this.ontologyState.nodes$.pipe(
+    return this.nodes$.pipe(
       map(nodes => this.lookup(nodes, value.toLowerCase()))
     );
   }
@@ -112,9 +111,9 @@ export class OntologySearchService {
   formatLabel(label: string, searchValue: string): string[] {
     const index = this.getIndexOfMatch(label, searchValue);
     return [
-      label.substr(0, index),
-      label.substr(index, searchValue.length),
-      label.substr(index + searchValue.length, label.length)
+      label.slice(0, index),
+      label.slice(index, index + searchValue.length),
+      label.slice(index + searchValue.length)
     ];
   }
 
@@ -127,7 +126,7 @@ export class OntologySearchService {
    */
   @bind
   getChildren(node: OntologyTreeNode): OntologyTreeNode[] {
-    const nodes = this.ontologyState.snapshot.nodes;
-    return at(nodes, node.children) as OntologyTreeNode[];
+    const nodes = this.treeModel?.nodes ?? {};
+    return at(nodes, node.children);
   }
 }

@@ -1,4 +1,4 @@
-openapi: '3.0.3'
+openapi: "3.0.3"
 info:
   title: CCF-API
   description: |
@@ -13,197 +13,212 @@ servers:
   - description: Staging Server
     url: https://ccf-api--staging.herokuapp.com/v1
 
+x-preprocessor:
+  description: |
+    For some openapi-generator-cli generators our custom preprocessor
+    has to be employed to "fix" this specification to circumvent
+    inconsistencies/bugs in the generated code.
+    The preprocessor uses `x-preprocessor-` properties to determine
+    which operation to apply and where to apply it.
+  operations:
+    delete: |
+      Delete one or more properties at the specified paths.
+      Will also delete the property from the `required` list if applicable.
+
 paths:
-  /tissue-blocks:
-    get:
-      summary: Get Tissue Block Results
-      operationId: tissue-blocks
-      parameters:
-        - $ref: '#/components/parameters/age-range'
-        - $ref: '#/components/parameters/sex'
-        - $ref: '#/components/parameters/bmi-range'
-        - $ref: '#/components/parameters/providers'
-        - $ref: '#/components/parameters/technologies'
-        - $ref: '#/components/parameters/ontology-terms'
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TissueBlockResult'
-  /technology-names:
-    get:
-      summary: Get technology names (for filtering)
-      operationId: technology-names
-      parameters:
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
-  /provider-names:
-    get:
-      summary: Get tissue provider names (for filtering)
-      operationId: provider-names
-      parameters:
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
   /aggregate-results:
     get:
       summary: Get aggregate results / statistics
       operationId: aggregate-results
       parameters:
-        - $ref: '#/components/parameters/age-range'
-        - $ref: '#/components/parameters/sex'
-        - $ref: '#/components/parameters/bmi-range'
-        - $ref: '#/components/parameters/providers'
-        - $ref: '#/components/parameters/technologies'
-        - $ref: '#/components/parameters/ontology-terms'
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
+        - $ref: "#/components/parameters/Age"
+        - $ref: "#/components/parameters/AgeRange"
+        - $ref: "#/components/parameters/Bmi"
+        - $ref: "#/components/parameters/BmiRange"
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Providers"
+        - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/Technologies"
+        - $ref: "#/components/parameters/Token"
       responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AggregateResult'
-  /ontology-term-occurences:
-    get:
-      summary: Get number of ontology term occurrences for a search
-      operationId: ontology-term-occurences
-      parameters:
-        - $ref: '#/components/parameters/age-range'
-        - $ref: '#/components/parameters/sex'
-        - $ref: '#/components/parameters/bmi-range'
-        - $ref: '#/components/parameters/providers'
-        - $ref: '#/components/parameters/technologies'
-        - $ref: '#/components/parameters/ontology-terms'
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TermOccurences'
-  /ontology-tree-model:
-    get:
-      summary: Get ontology term tree nodes
-      operationId: ontology-tree-model
-      parameters:
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OntologyTreeModel'
-  /reference-organs:
-    get:
-      summary: Get all reference organs
-      operationId: reference-organs
-      parameters:
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/SpatialEntity'
-  /scene:
-    get:
-      summary: Get all nodes to form the 3D scene of reference body, organs, and tissues
-      operationId: scene
-      parameters:
-        - $ref: '#/components/parameters/age-range'
-        - $ref: '#/components/parameters/sex'
-        - $ref: '#/components/parameters/bmi-range'
-        - $ref: '#/components/parameters/providers'
-        - $ref: '#/components/parameters/technologies'
-        - $ref: '#/components/parameters/ontology-terms'
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/SpatialSceneNode'
-  /reference-organ-scene:
-    get:
-      summary: Get all nodes to form the 3D scene for an organ
-      operationId: reference-organ-scene
-      parameters:
-        - $ref: '#/components/parameters/age-range'
-        - $ref: '#/components/parameters/sex'
-        - $ref: '#/components/parameters/bmi-range'
-        - $ref: '#/components/parameters/providers'
-        - $ref: '#/components/parameters/technologies'
-        - $ref: '#/components/parameters/ontology-terms'
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
-        - $ref: '#/components/parameters/organ-iri'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/SpatialSceneNode'
-        '404':
-          description: failed operation
-          content:
-            text/plain:
-              schema:
-                type: string
-                examples:
-                  - Must provide an organ-iri query parameter
+        "200": { $ref: "#/components/responses/AggregateResults" }
+
   /hubmap/rui_locations.jsonld:
     get:
       summary: Get all hubmap rui locations (if enabled)
       description: This option is only enabled if HUBMAP_ROUTES=true in the environment
       operationId: hubmap-rui-locations
       parameters:
-        - $ref: '#/components/parameters/token'
-        - $ref: '#/components/parameters/cache'
+        - $ref: '#/components/parameters/Cache'
+        - $ref: '#/components/parameters/Token'
       responses:
-        '200':
-          description: successful operation
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Not found due to option being disabled
+
+
+  /ontology-term-occurences:
+    get:
+      summary: Get number of ontology term occurrences for a search
+      operationId: ontology-term-occurences
+      parameters:
+        - $ref: "#/components/parameters/Age"
+        - $ref: "#/components/parameters/AgeRange"
+        - $ref: "#/components/parameters/Bmi"
+        - $ref: "#/components/parameters/BmiRange"
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Providers"
+        - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/Technologies"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/TermOccurences" }
+
+  /cell-type-term-occurences:
+    get:
+      summary: Get number of cell type term occurrences for a search
+      operationId: cell-type-term-occurences
+      parameters:
+        - $ref: "#/components/parameters/Age"
+        - $ref: "#/components/parameters/AgeRange"
+        - $ref: "#/components/parameters/Bmi"
+        - $ref: "#/components/parameters/BmiRange"
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Providers"
+        - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/Technologies"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/TermOccurences" }
+
+  /ontology-tree-model:
+    get:
+      summary: Get ontology term tree nodes
+      operationId: ontology-tree-model
+      parameters:
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/OntologyTree" }
+
+  /cell-type-tree-model:
+    get:
+      summary: Get cell type tree nodes
+      operationId: cell-type-tree-model
+      parameters:
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/OntologyTree" }
+
+  /provider-names:
+    get:
+      summary: Get tissue provider names (for filtering)
+      operationId: provider-names
+      parameters:
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/Strings" }
+
+  /reference-organs:
+    get:
+      summary: Get all reference organs
+      operationId: reference-organs
+      parameters:
+        - $ref: '#/components/parameters/Cache'
+        - $ref: '#/components/parameters/Token'
+      responses:
+        "200": { $ref: "#/components/responses/SpatialEntities" }
+
+  /reference-organ-scene:
+    get:
+      summary: Get all nodes to form the 3D scene for an organ
+      operationId: reference-organ-scene
+      parameters:
+        - $ref: "#/components/parameters/Age"
+        - $ref: "#/components/parameters/AgeRange"
+        - $ref: "#/components/parameters/Bmi"
+        - $ref: "#/components/parameters/BmiRange"
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/OrganIri"
+        - $ref: "#/components/parameters/Providers"
+        - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/Technologies"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/SpatialSceneNodes" }
+
+  /scene:
+    get:
+      summary: Get all nodes to form the 3D scene of reference body, organs, and tissues
+      operationId: scene
+      parameters:
+        - $ref: "#/components/parameters/Age"
+        - $ref: "#/components/parameters/AgeRange"
+        - $ref: "#/components/parameters/Bmi"
+        - $ref: "#/components/parameters/BmiRange"
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Providers"
+        - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/Technologies"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/SpatialSceneNodes" }
+
+  /technology-names:
+    get:
+      summary: Get technology names (for filtering)
+      operationId: technology-names
+      parameters:
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/Strings" }
+
+  /tissue-blocks:
+    get:
+      summary: Get Tissue Block Results
+      operationId: tissue-blocks
+      parameters:
+        - $ref: "#/components/parameters/Age"
+        - $ref: "#/components/parameters/AgeRange"
+        - $ref: "#/components/parameters/Bmi"
+        - $ref: "#/components/parameters/BmiRange"
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Providers"
+        - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/Technologies"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/TissueBlocks" }
+  /gtex/rui_locations.jsonld:
+    get:
+      summary: Get all GTEx rui locations (if enabled)
+      description: This option is only enabled if GTEX_ROUTES=true in the environment
+      operationId: gtex-rui-locations
+      parameters:
+        - $ref: "#/components/parameters/Cache"
+      responses:
+        "200":
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -211,413 +226,622 @@ paths:
 
 components:
   parameters:
-    age-range:
+    Age:
+      name: age
+      description: Filter result by age.
+      in: query
+      required: false
+      schema: { $ref: "#/components/schemas/MinMax" }
+
+    AgeRange:
       name: age-range
-      description: Age range to filter by
+      description: Filter result by age.
+      in: query
+      deprecated: true
+      required: false
+      schema:
+        type: string
+        example: 10,100
+
+    Bmi:
+      name: bmi
+      description: Filter result by bmi.
+      in: query
+      required: false
+      schema: { $ref: "#/components/schemas/MinMax" }
+
+    BmiRange:
+      name: bmi-range
+      description: Filter result by bmi.
+      in: query
+      deprecated: true
+      required: false
+      schema:
+        type: string
+        example: 0,40
+
+    Cache:
+      name: cache
+      description: Hint to cache (or not) the response of this request
       in: query
       required: false
       schema:
-        $ref: '#/components/schemas/NumberRange'
-    sex:
+        type: boolean
+        default: true
+
+    OntologyTerms:
+      name: ontology-terms
+      description: Filter result by ontology terms.
+      in: query
+      required: false
+      schema:
+        title: Terms
+        type: array
+        items:
+          type: string
+
+    CellTypeTerms:
+      name: cell-type-terms
+      description: Filter result by ontology terms.
+      in: query
+      required: false
+      schema:
+        title: Terms
+        type: array
+        items:
+          type: string
+
+    OrganIri:
+      name: organ-iri
+      description: Filter result by organ.
+      in: query
+      required: true
+      schema:
+        type: string
+
+    Providers:
+      name: providers
+      description: Filter result by providers.
+      in: query
+      required: false
+      schema:
+        title: Providers
+        type: array
+        items:
+          type: string
+
+    Sex:
       name: sex
-      description: sex to filter by
+      description: Filter result by sex.
       in: query
       required: false
       schema:
+        type: string
         enum:
           - both
           - female
           - male
-    bmi-range:
-      name: bmi-range
-      description: BMI range to filter by
-      in: query
-      required: false
-      schema:
-        $ref: '#/components/schemas/NumberRange'
-    providers:
-      name: providers
-      description: Tissue data provider names to filter by
-      in: query
-      required: false
-      schema:
-        $ref: '#/components/schemas/CommaSeparatedStrings'
-    technologies:
+
+    Technologies:
       name: technologies
-      description: Dataset technologies to filter by
+      description: Filter result by technologies.
       in: query
       required: false
       schema:
-        $ref: '#/components/schemas/CommaSeparatedStrings'
-    ontology-terms:
-      name: ontology-terms
-      description: Ontology terms to filter by
-      in: query
-      required: false
-      schema:
-        $ref: '#/components/schemas/CommaSeparatedStrings'
-    token:
+        title: Technologies
+        type: array
+        items:
+          type: string
+
+    Token:
       name: token
       description: Authentication token to use for authenticated searches
       in: query
       required: false
       schema:
         type: string
-    cache:
-      name: cache
-      description: Hint to cache (or not) the response of this request
-      in: query
-      required: false
-      schema:
-        type: string
-    organ-iri:
-      name: organ-iri
-      description: Organ iri used to filter node data
-      in: query
-      required: true
-      schema:
-        type: string
 
-  schemas:
-    NumberRange:
-      type: string
-      description: >-
-        A range of numbers can be expressed as a single number
-        or two comma separated numbers where either end can be omitted to use
-        the default minimum/maximum.
-      examples:
-        - 10
-        - 10,20
-        - 10,
-        - ',20'
-        - ','
-    CommaSeparatedStrings:
-      type: string
-      description: >-
-        Any number of strings separated by commas.
-      examples:
-        - SingleItem
-        - Item1,Item2,Item3
-    TissueBlockResult:
-      type: object
-      properties:
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          type: string
-          enum:
-            - Sample
-        label:
-          type: string
-        description:
-          type: string
-        link:
-          type: string
-          format: uri
-        sampleType:
-          type: string
-          enum:
-            - Tissue Block
-            - Non-Standard
-        sectionCount:
-          type: integer
-        sectionSize:
-          type: number
-        sectionUnits:
-          type: string
-          default: micrometers
-        donor:
-          $ref: '#/components/schemas/DonorResult'
-        spatialEntityId:
-          type: string
-          format: uri
-        sections:
-          type: array
-          items:
-            $ref:  "#/components/schemas/TissueSectionResult"
-        datasets:
-          type: array
-          items:
-            $ref:  "#/components/schemas/DatasetResult"
+  responses:
+    AggregateResults:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items: { $ref: "#/components/schemas/AggregateCount" }
 
-    DonorResult:
-      type: object
-      properties:
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          type: string
-          enum:
-            - Donor
-        label:
-          type: string
-        description:
-          type: string
-        link:
-          type: string
-          format: uri
-        providerName:
-          type: string
+    OntologyTree:
+      description: Successful operation
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/OntologyTree" }
 
-    DatasetResult:
-      type: object
-      properties:
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          type: string
-          enum:
-            - Dataset
-        label:
-          type: string
-        description:
-          type: string
-        link:
-          type: string
-          format: uri
-        technology:
-          type: string
-        thumbnail:
-          type: string
-          format: uri
+    SpatialEntities:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items: { $ref: "#/components/schemas/SpatialEntity" }
 
-    TissueSectionResult:
-      type: object
-      properties:
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          type: string
-          enum:
-            - Sample
-        label:
-          type: string
-        description:
-          type: string
-        link:
-          type: string
-          format: uri
-        sampleType:
-          type: string
-          enum:
-            - Tissue Section
-            - Non-Standard
-        sectionNumber:
-          type: integer
-        datasets:
-          type: array
-          items:
-            $ref:  "#/components/schemas/DatasetResult"
+    SpatialSceneNodes:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items: { $ref: "#/components/schemas/SpatialSceneNode" }
 
-    AggregateResult:
-      type: object
-      properties:
-        label:
-          type: string
-          example: Tissue Data Providers
-        count:
-          oneOf:
-            - type: string
-            - type: integer
+    Strings:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
 
     TermOccurences:
-      type: object
-      additionalProperties:
-        type: integer
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: integer
 
-    OntologyTreeModel:
+    TissueBlocks:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items: { $ref: "#/components/schemas/TissueBlock" }
+
+  schemas:
+    # Generic types
+    AggregateCount:
+      title: Aggregated Count \w Label
       type: object
+      required: [label, count]
       properties:
-        root:
+        label:
+          title: Aggregate Name/Field
           type: string
-          description: The root term of the tree
-          example: 'http://purl.obolibrary.org/obo/UBERON_0013702'
-        nodes:
-          type: object
-          additionalProperties:
-            $ref:  "#/components/schemas/OntologyTreeNode"
+        count:
+          title: Aggregated Count
+          nullable: false
+          oneOf:
+            - type: number
+            - type: string
+          x-preprocessor-delete: oneOf
 
-    OntologyTreeNode:
+    JsonLdObject:
+      title: JSON-LD Object
+      description: Base object for all json-ld objects.
       type: object
+      required: ["@id", "@type"]
+      additionalProperties: true
       properties:
-        '@id':
+        "@id":
+          title: Unique Identifier
           type: string
           format: uri
-        '@type':
+          example: http://purl.obolibrary.org/obo/UBERON_0013702
+        "@type":
+          title: Object Type
+          description: Contains the name of object class/interface
           type: string
-          enum:
-            - OntologyTreeNode
+          example: Sample
+      x-preprocessor-delete: [properties/@id, properties/@type]
+
+    MinMax:
+      title: Number Range
+      description: |
+        Represents a range of numbers using a minimum and maximum.
+        Either end may be omitted to indicate an unlimited/infinite range in that direction.
+        `min` should be less than or equal to `max` but this is not strictly enforced.
+      type: object
+      properties:
+        min:
+          type: number
+        max:
+          type: number
+
+    Rgba:
+      title: RGBA Color Tuple
+      type: array
+      minItems: 4
+      maxItems: 4
+      items:
+        title: 8-Bit Value
+        type: number
+        minimum: 0
+        maximum: 255
+
+    # Tissue data formats
+    TissueCommon:
+      title: Common Tissue Data Properties
+      description: Properties available in all tissue data objects.
+      type: object
+      required: [label, description, link]
+      properties:
+        label:
+          type: string
+        description:
+          type: string
+        link:
+          title: Associated URL
+          type: string
+          format: uri
+
+    TissueSampleCommon:
+      title: Common Tissue Sample Properties
+      description: Properties available in all tissue sample objects.
+      type: object
+      required: ["@type", sampleType, datasets]
+      properties:
+        "@type":
+          type: string
+          enum: [Sample]
+        sampleType:
+          title: Object Type
+          type: string
+        datasets:
+          title: Associated Datasets
+          type: array
+          items: { $ref: "#/components/schemas/TissueDataset" }
+      x-preprocessor-delete: [properties/@type]
+
+    TissueDataset:
+      title: Tissue Dataset
+      description: Describes a single tissue dataset.
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+        - $ref: "#/components/schemas/TissueCommon"
+      required: ["@type", technology, thumbnail]
+      properties:
+        "@type":
+          type: string
+          enum: [Dataset]
+        technology:
+          title: Technology Used
+          type: string
+        thumbnail:
+          title: Representative Thumbnail URL
+          type: string
+          format: uri
+      x-preprocessor-delete: [properties/@type]
+
+    TissueDonor:
+      title: Tissue Donor
+      description: Contains generic information about a tissue donor.
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+        - $ref: "#/components/schemas/TissueCommon"
+      required: ["@type", providerName]
+      properties:
+        "@type":
+          type: string
+          enum: [Donor]
+        providerName:
+          title: Provider of Donor
+          type: string
+      x-preprocessor-delete: [properties/@type]
+
+    TissueSection:
+      title: Tissue Section
+      description: A single section sample.
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+        - $ref: "#/components/schemas/TissueCommon"
+        - $ref: "#/components/schemas/TissueSampleCommon"
+      required: [sampleType, sectionNumber]
+      properties:
+        sampleType:
+          type: string
+          enum: ["Tissue Section", "Non-Standard"]
+          x-preprocessor-delete: enum
+        sectionNumber:
+          title: Section Index
+          description: Index of the section in the parent block.
+          type: integer
+          minimum: 0
+
+    TissueBlock:
+      title: Tissue Block
+      description: Information about a collection of tissue sections.
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+        - $ref: "#/components/schemas/TissueCommon"
+        - $ref: "#/components/schemas/TissueSampleCommon"
+      required: [sampleType, spatialEntityId, donor, sectionCount, sectionSize, sectionUnits, sections]
+      properties:
+        sampleType:
+          type: string
+          enum: ["Tissue Block", "Non-Standard"]
+          x-preprocessor-delete: enum
+        spatialEntityId:
+          title: Associated Spatial Entity
+          description: The associated spatial entity (rui_location) for the block.
+          type: string
+          format: uri
+        donor: { $ref: "#/components/schemas/TissueDonor" }
+        sectionCount:
+          title: Number of Sections
+          description: Number of sections contained in the block.
+          type: integer
+          minimum: 0
+        sectionSize:
+          title: Section Size
+          description: Size of each section in the block.
+          type: number
+          minimum: 0
+        sectionUnits:
+          title: Section Size Unit
+          description: Length unit `sectionSize` is in (generally, millimeters)
+          type: string
+          default: millimeters
+        sections:
+          title: Contained Sections
+          description: All sections in the block.
+          type: array
+          items: { $ref: "#/components/schemas/TissueSection" }
+
+    # Ontology data format
+    OntologyTreeNode:
+      title: Ontology Node
+      description: A node in the ontology tree.
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+      required: ["@type", id, label, synonymLabels, parent, children]
+      properties:
+        "@type":
+          type: string
+          enum: [OntologyTreeNode]
         id:
+          title: Identifier
+          description: Unique identifier for the node.
           type: string
           format: uri
         label:
+          title: Label
+          description: Main descriptive label for the node.
           type: string
+        synonymLabels:
+          title: Synonym Labels
+          description: Additional label for the node.
+          type: array
+          items:
+            type: string
         parent:
+          title: Parent Node Identifier
+          description: Reference to the parent node.
           type: string
           format: uri
         children:
+          title: Child Node Identifiers
+          description: References to all child nodes.
           type: array
           items:
             type: string
             format: uri
-        synonymLabels:
-          type: array
-          items:
-            type: string
+      x-preprocessor-delete: [properties/@type]
 
-    SpatialEntity:
+    OntologyTree:
+      title: Ontology Tree
+      description: An ontology tree.
       type: object
+      required: [root, nodes]
       properties:
-        '@id':
+        root:
+          title: Root Node
+          description: Reference to the root node.
           type: string
-          format: uri
-        '@type':
-          type: string
-          enum:
-            - SpatialEntity
-        entityId:
-          type: string
-          format: uri
-        label:
-          type: string
-        comment:
-          type: string
-        creator:
-          type: string
-        creator_first_name:
-          type: string
-        creator_last_name:
-          type: string
-        creator_orcid:
-          type: string
-        creation_date:
-          type: string
-          format: date
-        ccf_annotations:
-          type: array
-          items:
-            type: string
-            format: uri
-        representation_of:
-          type: string
-          format: uri
-        reference_organ:
-          type: string
-          format: uri
-        sex:
-          type: string
-          enum:
-            - Female
-            - Male
-        side:
-          type: string
-          enum:
-            - Left
-            - Right
-        rui_rank:
-          type: integer
-        slice_thickness:
-          type: number
-        slice_count:
-          type: integer
+          format: url
+        nodes:
+          title: All Nodes
+          description: A mapping of identifiers to each node object.
+          additionalProperties: { $ref: "#/components/schemas/OntologyTreeNode" }
 
-        x_dimension:
-          type: number
-        y_dimension:
-          type: number
-        z_dimension:
-          type: number
-        dimension_units:
-          type: string
-          default: millimeters
-        object:
-          $ref: '#/components/schemas/SpatialObjectReference'
-        color:
-          type: array
-          minItems: 4
-          maxItems: 4
-          items:
-            type: number
-
+    # Spatial data format
     SpatialObjectReference:
+      title: Spatial Object Reference
+      description: A reference to the definition of a spatial object.
       type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+      required: ["@type", file, file_format]
       properties:
-        '@id':
+        "@type":
           type: string
-          format: uri
-        '@type':
-          type: string
-          enum:
-            - SpatialObjectReference
+          enum: [SpatialObjectReference]
         file:
+          title: File
           type: string
           format: uri
         file_format:
+          title: File Format
           type: string
           example: model/gltf-binary
         file_subpath:
+          title: File Subpath
           type: string
+      x-preprocessor-delete: [properties/@type]
 
-    SpatialSceneNode:
+    SpatialEntityCommon:
+      title: Spatial Entity Common
+      description: Properties available in all spatial entity objects.
       type: object
       properties:
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          type: string
-          enum:
-            - SpatialSceneNode
         entityId:
+          title: Entity Identifier
+          description: Identifier of the entity the spatial object represents.
           type: string
           format: uri
         ccf_annotations:
+          title: Annotations
+          description: Annotations attached to the entity.
           type: array
           items:
             type: string
             format: uri
         representation_of:
+          title: Representation
+          description: Identifier for the item the spatial object represents.
           type: string
           format: uri
         reference_organ:
+          title: Organ
+          description: Identifier for the organ the spatial object represents.
           type: string
           format: uri
+
+    SpatialEntityCreator:
+      title: Spatial Entity Creator
+      description: Describes by whom and when an entity object was created.
+      type: object
+      properties:
+        creator:
+          title: Full Name
+          type: string
+        creator_first_name:
+          title: First Name
+          type: string
+        creator_last_name:
+          title: Last Name
+          type: string
+        creator_orcid:
+          title: Creator's Identifier
+          type: string
+        creation_date:
+          title: Creation Date
+          type: string
+          format: date
+
+    SpatialEntityDimensions:
+      title: Spatial Entity Dimensions
+      description: The dimensions of a spatial entity.
+      type: object
+      required: [x_dimension, y_dimension, z_dimension, dimension_units]
+      properties:
+        x_dimension:
+          title: X-Dimension
+          type: number
+        y_dimension:
+          title: Y-Dimension
+          type: number
+        z_dimension:
+          title: Z-Dimension
+          type: number
+        dimension_units:
+          title: Dimension Units
+          description: Length units of dimensional values.
+          type: string
+          default: millimeters
+
+    SpatialEntity:
+      title: Spatial Entity
+      description: ""
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+        - $ref: "#/components/schemas/SpatialEntityCommon"
+        - $ref: "#/components/schemas/SpatialEntityCreator"
+        - $ref: "#/components/schemas/SpatialEntityDimensions"
+      required: ["@type"]
+      properties:
+        "@type":
+          type: string
+          enum: [SpatialEntity]
+        label:
+          title: Label
+          type: string
+        comment:
+          title: Comment
+          type: string
+        rui_rank:
+          title: RUI Rank
+          description: Ranking used to order lists in the RUI.
+          type: integer
+        sex:
+          title: Sex
+          type: string
+          enum: [Female, Male]
+          x-preprocessor-delete: enum
+        side:
+          title: Side
+          description: Used for organs that come in pairs to distinguish between them, i.e. kidneys, etc.
+          type: string
+          enum: [Left, Right]
+          x-preprocessor-delete: enum
+        slice_count:
+          title: Slice Count
+          type: integer
+        slice_thickness:
+          title: Slice Thickness
+          type: number
+        object: { $ref: "#/components/schemas/SpatialObjectReference" }
+        color: { $ref: "#/components/schemas/Rgba" }
+      x-preprocessor-delete: [properties/@type]
+
+    SpatialSceneNode:
+      title: Spatial Scene Node
+      description: ""
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+        - $ref: "#/components/schemas/SpatialEntityCommon"
+      properties:
+        name:
+          title: Label
+          type: string
+        tooltip:
+          title: Tooltip Label
+          type: string
         unpickable:
+          title: Unpickable
+          description: Whether the node should selectable by the user in interfaces.
           type: boolean
         wireframe:
+          title: Wireframe
+          description: Whether to show a wireframe for the node.
           type: boolean
         _lighting:
+          title: Lighting
+          type: boolean
+        zoomBasedOpacity:
+          title: Zoom Based Opacity
+          description: Whether the opacity of the node changes based on the zoom level.
+          type: boolean
+        zoomToOnLoad:
+          title: Focus
+          description: Focus this node when loaded in an interface.
           type: boolean
         scenegraph:
+          title: Scenegraph
           type: string
           format: uri
         scenegraphNode:
+          title: Scenegraph Node
           type: string
-        zoomBasedOpacity:
-          type: boolean
-        zoomToOnLoad:
-          type: boolean
-        color:
-          type: array
-          minItems: 4
-          maxItems: 4
-          items:
-            type: number
+        color: { $ref: "#/components/schemas/Rgba" }
         opacity:
+          title: Opacity
           type: number
         transformMatrix:
+          title: Transformation
+          description: Additional transformations to be applied.
           type: array
           minItems: 16
           maxItems: 16
           items:
             type: number
-        name:
-          type: string
-        tooltip:
-          type: string
         priority:
+          title: Priority
           type: number

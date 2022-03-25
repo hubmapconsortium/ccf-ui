@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
 
 /**
  * Contains components of the filters popup and handles changes in filter settings
@@ -73,7 +74,7 @@ export class FiltersContentComponent {
    * Refreshes all filter settings
    */
   refreshFilters(): void {
-    this.filters = { ...this.filters, sex: 'Both', ageRange: [1, 110], bmiRange: [13, 83], technologies: [], tmc: [] };
+    this.filters = JSON.parse(JSON.stringify(DEFAULT_FILTER));
     this.ga.event('filters_reset', 'filter_content');
     this.filtersChange.emit(this.filters);
   }

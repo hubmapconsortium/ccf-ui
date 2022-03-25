@@ -12,7 +12,7 @@ if (!(global as { fetch: unknown }).fetch) {
 
 async function main(outputFile?: string): Promise<void> {
   const db = new CCFDatabase({
-    ccfOwlUrl: 'http://localhost:8080/dist/ccf.owl',
+    ccfOwlUrl: 'https://hubmapconsortium.github.io/ccf-ontology/ccf-slim.owl',
     ccfContextUrl: 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',

@@ -29,10 +29,10 @@ describe('OntologyTreeComponent', () => {
     expect(instance.isSelected(flatNode1)).toBeTrue();
   });
 
-  it('should check if the node is selected node or not', async () => {
+  it('should check if the root node is selected too or not', async () => {
     const { instance } = await shallow.render();
     instance.selectedNodes = [flatNode2];
-    expect(instance.isSelected(flatNode1)).toBeFalse();
+    expect(instance.isSelected(flatNode1)).toBeTrue();
   });
 
   it('should set the current selection when a different node is selected', async () => {

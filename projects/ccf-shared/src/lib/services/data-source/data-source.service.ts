@@ -12,11 +12,13 @@ export abstract class DataSourceService implements DataSource {
   abstract getProviderNames(): Observable<string[]>;
   abstract getDatasetTechnologyNames(): Observable<string[]>;
   abstract getOntologyTreeModel(): Observable<OntologyTreeModel>;
+  abstract getCellTypeTreeModel(): Observable<OntologyTreeModel>;
   abstract getReferenceOrgans(): Observable<SpatialEntity[]>;
 
   abstract getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]>;
   abstract getAggregateResults(filter?: Filter): Observable<AggregateResult[]>;
   abstract getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>>;
+  abstract getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>>;
   abstract getScene(filter?: Filter): Observable<SpatialSceneNode[]>;
   abstract getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]>;
 }

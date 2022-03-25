@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { CcfApiConfiguration, CcfApiModule } from 'ccf-openapi/angular-client';
 import { DataSourceService } from 'ccf-shared';
 import { AnalyticsModule } from 'ccf-shared/analytics';
 
@@ -19,6 +20,10 @@ import { StoreModule } from './store/store.module';
 
       developmentMode: !environment.production
     }),
+
+    CcfApiModule.forRoot(() => new CcfApiConfiguration({
+      basePath: environment.dbOptions.remoteApiEndpoint
+    })),
 
     StoreModule
   ],
