@@ -26,8 +26,8 @@ export const environment = {
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
     useRemoteApi: false,
-    // remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
-    remoteApiEndpoint: 'http://localhost:8080/v1'
+    remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
+    // remoteApiEndpoint: 'http://localhost:8080/v1'
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };
