@@ -74,7 +74,7 @@ const HBM_ORGANS: { [organName: string]: string[] } = {
 const ENTITY_CONTEXT = {
   '@base': 'http://purl.org/ccf/latest/ccf-entity.owl#',
   '@vocab': 'http://purl.org/ccf/latest/ccf-entity.owl#',
-  ccf: 'http://purl.org/ccf/latest/ccf.owl#',
+  ccf: 'http://purl.org/ccf/',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
 
   label: 'rdfs:label',
