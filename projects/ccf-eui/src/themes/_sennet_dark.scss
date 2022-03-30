@@ -4,7 +4,7 @@
 @import 'dark';
 
 $sennet_dark_foreground: map-merge($foreground, (
-  selected-ontology-text: map-get($sennet-palette, 400)
+  selected-ontology-text: map-get($sennet-light-palette, 400)
 ));
 
 $theme: (

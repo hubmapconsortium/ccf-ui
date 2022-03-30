@@ -23,10 +23,10 @@
   }
 
   .hover-state {
-    background-color: mat.get-color-from-palette($background, hover-background);
+    background-color: mat.get-color-from-palette($background, donor-card-background);
 
     .hover-title {
-      color: mat.get-color-from-palette($primary, 'black');
+      color: mat.get-color-from-palette($primary, text);
     }
 
     .hover-icon {

@@ -2,50 +2,20 @@
 @use '~@angular/material/theming' as *;
 @use 'common/utility';
 
-
 $primary-colors: utility.add-colors(mat.$gray-palette, (
-  "white": white,
-  "black": black,
-  light-header: #444A65,
-  light-disabled: #E0E0E0,
-
+  'white': white,
+  'black': black,
   contrast: (
-    "white": black,
-    "black": white,
-    light-header: $dark-primary-text,
-    light-disabled: $dark-primary-text,
+    'white': black,
+    'black': white,
   )
 ));
 
-$primary: mat.define-palette($primary-colors, $text: 900);
-$accent: mat.define-palette(mat.$blue-palette, 700);
-$warn: mat.define-palette(mat.$red-palette);
-
 $foreground: map-merge(mat.$light-theme-foreground-palette, (
-  active-icon: map-get(mat.$blue-palette, 700),
   logo: map-get($primary-colors, 'white'),
-  header-border: map-get($primary-colors, 800), //#424242
-  modal-borders: map-get($primary-colors, 'black'),
-  divider: #212121, //#E0E0E0
-  borders: map-get($primary-colors, 300), //#E0E0E0
-  carousel-arrow: map-get($primary-colors, 500), // #9E9E9E;
-  icon: map-get($primary-colors, 300), //#E0E0E0
-  contrast-icon: map-get($primary-colors, light-header), //#757575 (icons on light background)
-  button-text: map-get($primary, light-header),
   button-border: map-get($primary-colors, 'black'),
-  headers: map-get($primary-colors, 300), //#E0E0E0
-  search-result-text: map-get($primary-colors, 600), //#757575
-  text: map-get($primary-colors, 900), //#212121
-  contrast-text: map-get($primary-colors, 50), //#FAFAFA (text on dark background)
-  download-icon: map-get($primary-colors, 600), //#757575
-  disabled: map-get($primary-colors, light-disabled), //#BDBDBD
-  highlight: map-get($primary-colors, 'black'),
-  header-download-icon: map-get($primary-colors, 300), //#E0E0E0
-  header-shadow: map-get($primary-colors, light-header),
-  selected-ontology-text: map-get($accent, 700),
 
-  main: #444A65,
-  organ-off: #cccccc,
+  organ-off: #CCCCCC,
   organ-numbers: #757575,
   opacity-numbers: #CCCCCC,
   icons-disabled: #CCCCCC,
@@ -54,7 +24,6 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   results-numbers: #9e9e9e,
   light-button-text: map-get($primary-colors, 'white'),
   text-muted: #757575,
-  icons-background-hover: #e0e0e0,
   icon-active:  #f5f5f5,
   button-shadow: rgba(0, 0, 0, 0.749),
   input-bg: rgb(232, 232, 232),
@@ -63,29 +32,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
 ));
 
 $background: map-merge(mat.$light-theme-background-palette, (
-  background: map-get($primary-colors, 'white'),
-  hover-background: map-get($primary-colors, 300), // #E0E0E0
   stage-background: map-get($primary-colors, 'black'),
-  dialog: map-get($primary-colors, 50), //#FAFAFA
-  authentication: map-get($primary-colors, 'white'), //#FAFAFA
-  app-bar: map-get($primary-colors, light-header), //#444A65
-  modal: map-get($primary-colors, 'white'),
-  dropdown-menu: map-get($primary-colors, 300), //#E0E0E0
-  dropdown-hover: map-get($primary-colors, 300), //#E0E0E0
-  image-placeholder: map-get($primary-colors, light-disabled), //#BDBDBD
-  button-bg: map-get($primary-colors, light-header),
-  mat-selected-option: map-get($primary-colors, light-header),
-  mat-slider-primary: map-get($primary-colors, light-header),
-  info-button-hover: map-get($primary-colors, 300),
-  checkbox-color: #636363,
-  button-background-hover: #2f3346,
+  authentication: map-get($primary-colors, 'white'),
+  modal: map-get($primary-colors, 'white')
 ));
-
-$theme: (
-  is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $foreground,
-  background: $background
-);
