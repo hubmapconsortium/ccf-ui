@@ -43,9 +43,6 @@ export class AppComponent implements OnDestroy, OnInit {
   /** Disables changes in block position */
   disablePositionChange = false;
 
-  /** All subscriptions managed by the container. */
-  private readonly subscriptions = new Subscription();
-
   readonly header$ = this.globalConfig.getOption('header');
 
   readonly theme$ = this.globalConfig.getOption('theme');
@@ -55,6 +52,9 @@ export class AppComponent implements OnDestroy, OnInit {
   homeUrl: string;
 
   logoTooltip: string;
+
+  /** All subscriptions managed by the container. */
+  private readonly subscriptions = new Subscription();
 
   constructor(
     readonly model: ModelState, readonly page: PageState,
@@ -81,8 +81,6 @@ export class AppComponent implements OnDestroy, OnInit {
     this.globalConfig.getOption('logoTooltip').subscribe((tooltip: string) => {
       this.logoTooltip = tooltip;
     });
-    console.log(this.globalConfig)
-    console.log(this.theme)
   }
 
   ngOnInit(): void {
@@ -115,7 +113,7 @@ export class AppComponent implements OnDestroy, OnInit {
   /**
    * Toggles scheme between light and dark mode
    */
-   toggleScheme(): void {
+  toggleScheme(): void {
     this.theming.setTheme((this.theming.getTheme() === `${this.theme}-theme-light`) ? `${this.theme}-theme-dark` : `${this.theme}-theme-light`);
   }
 

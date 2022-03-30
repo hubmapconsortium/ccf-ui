@@ -44,7 +44,8 @@
 
 .sennet-theme-light, .sennet-theme-dark {
   .logo {
-    background-image: url('./assets/icons/sennet-logo.svg')
+    background-image: url('./assets/icons/sennet-logo.svg');
+    height: 100% !important;
   }
 }
 

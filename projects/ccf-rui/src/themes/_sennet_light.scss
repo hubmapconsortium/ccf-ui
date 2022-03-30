@@ -3,7 +3,7 @@
 @use 'common/utility';
 
 $sennet-palette: (
-  'light-background': #FEFEFE,
+  'light-background': rgba(0, 0, 0, 0.04),
   'text': #000000DE,
   'white': #FFFFFF,
   'black': #000000,
@@ -59,7 +59,7 @@ $sennet-warn: utility.add-colors(mat.$red-palette, (
 ));
 
 $primary: mat.define-palette($sennet-palette, $text: 'text');
-$accent: mat.define-palette($sennet-accent);
+$accent: mat.define-palette($sennet-palette);
 $warn: mat.define-palette($sennet-warn);
 
 $foreground: map-merge(mat.$light-theme-foreground-palette, (
@@ -83,12 +83,11 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   download-icon: map-get($sennet-palette, 'contrast-icon'),
   app-bar-shadow: map-get($sennet-palette, 900),
   info-icon: map-get($sennet-palette, 'white'),
-  
   disabled-text: #CCCCCC,
   legend-contrast: #992661, // Not in any builtin palettes
   placeholder-text: map-get($sennet-palette, disabled-text),
   scrollbar-thumb: #cdcdcd,
-  secondary-text: map-get($primary, 500),
+  secondary-text: map-get($sennet-palette, text),
   sidebar-dividers: map-get($sennet-palette, 'white'),
   slider-blue: map-get(mat.$blue-palette, A400),
   slider-green: map-get(mat.$green-palette, A700),
@@ -96,7 +95,6 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   slider-blue-light: map-get(mat.$blue-palette, A100),
   slider-green-light: map-get(mat.$green-palette, A200),
   slider-red-light: map-get(mat.$red-palette, A100),
-
   main: map-get($sennet-palette, 400),
   button-background: map-get($sennet-palette, 400),
   button-background-hover: map-get($sennet-palette, 'white-hover'),
@@ -120,7 +118,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
 ));
 
 $background: map-merge(mat.$light-theme-background-palette, (
-  background: map-get($sennet-palette, 'light-background'),
+  background: map-get($sennet-palette, 'white'),
   hover-background: map-get($sennet-palette, 'light-background'),
   stage-background: map-get($sennet-palette, 'black'),
   dialog: map-get($sennet-palette, 'light-background'),
@@ -130,12 +128,10 @@ $background: map-merge(mat.$light-theme-background-palette, (
   dropdown-hover: map-get($sennet-palette, 400),
   image-placeholder: map-get($sennet-palette, 'disabled-text'),
   info-button-hover: map-get($sennet-palette, 'white-hover'),
-
   card: map-get($sennet-palette, 'white'), 
   content-background: map-get($sennet-palette, 'black'),
   legend-background: map-get($sennet-palette, 'white'),
   sidebar-background: map-get($sennet-palette,  'white'),
-
   dropdown-menu: map-get($sennet-palette, 300),
   drawer-background: map-get($sennet-palette, 'white'),
   drawer-hover: map-get($sennet-palette, 300),

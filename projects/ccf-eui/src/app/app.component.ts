@@ -122,7 +122,7 @@ export class AppComponent implements OnInit {
         cdr.markForCheck();
       }
     );
-    
+
     this.ontologyTreeModel$ = this.dataSource.getOntologyTreeModel().pipe(shareReplay(1));
     this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
     this.cellTypeTreeModel$ = this.dataSource.getCellTypeTreeModel().pipe(shareReplay(1));

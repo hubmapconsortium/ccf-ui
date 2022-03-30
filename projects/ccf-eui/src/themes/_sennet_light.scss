@@ -106,7 +106,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
 
 $background: map-merge(mat.$light-theme-background-palette, (
   background: map-get($sennet-palette, 'light-background'),
-  hover-background: map-get($sennet-palette, 'light-background'),
+  hover-background: map-get($sennet-palette, 'white-hover'),
   stage-background: map-get($sennet-palette, 'black'),
   dialog: map-get($sennet-palette, 'light-background'),
   authentication: map-get($sennet-palette, 'white'),

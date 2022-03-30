@@ -10,23 +10,19 @@
     .review-button {
       background-color: mat.get-color-from-palette($foreground, button-background);
       color: mat.get-color-from-palette($foreground, sidebar-dividers);
-      border: 1px solid mat.get-color-from-palette($foreground, active-icon);
+      border: 1px solid mat.get-color-from-palette($background, background);
 
       &:hover {
-          background-color: mat.get-color-from-palette($foreground, button-background-hover);
-          color: mat.get-color-from-palette($foreground, 'main');
+        background: rgba(0, 0, 0, 0.04);
+        color: mat.get-color-from-palette($foreground, 'main');
+        border: 1px solid mat.get-color-from-palette($foreground, active-icon);
       }
 
       &.disabled {
         background-color: mat.get-color-from-palette($foreground, disabled);
         color:  mat.get-color-from-palette($foreground, disabled-text);
         border: 1px solid mat.get-color-from-palette($foreground, disabled);
-
-        &:hover {
-          background-color: mat.get-color-from-palette($foreground, disabled);
-          color:  mat.get-color-from-palette($foreground, disabled-text);
-        }
-    }
+      }
     }
   }
 }
