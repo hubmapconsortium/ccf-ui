@@ -142,6 +142,8 @@ export class AppComponent implements OnInit {
       // Sets initial theme according to user theme preference
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         this.themeMode$.next('dark');
+      } else {
+        this.themeMode$.next('light');
       }
 
       // Listens for changes in user theme preference
