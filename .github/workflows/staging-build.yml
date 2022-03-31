@@ -57,7 +57,10 @@ jobs:
           npm run build:ccf-body-ui-wc:wc
           mkdir -p dist/ccf-ui
           cp -r dist/ccf-body-ui-wc dist/ccf-ui/body-ui
-      - run: npm run compodoc
+      - run: |
+          npm run compodoc
+          mkdir -p dist/ccf-ui
+          cp -r docs dist/ccf-ui
 
       - uses: peaceiris/actions-gh-pages@v3
         with:

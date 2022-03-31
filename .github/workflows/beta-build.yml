@@ -47,7 +47,10 @@ jobs:
           npm run build -- --project ccf-organ-info --output-hashing=none --base-href=/organ-info/ --configuration=staging
           npm run build:ccf-organ-info:wc
           cp -r dist/ccf-organ-info dist/ccf-ui/organ-info
-      - run: npm run compodoc
+      - run: |
+          npm run compodoc
+          mkdir -p dist/ccf-ui
+          cp -r docs dist/ccf-ui
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
