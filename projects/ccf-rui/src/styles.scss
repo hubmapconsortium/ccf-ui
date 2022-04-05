@@ -1,24 +1,32 @@
 @use '~@angular/material/theming' as ng;
 @use 'themes/common/typography';
 @use 'themes/common/theming';
+@use 'themes/_default_light';
+@use 'themes/_default_dark';
 @use 'themes/hubmap_light';
 @use 'themes/hubmap_dark';
 @use 'themes/sennet_light';
 @use 'themes/sennet_dark';
+@use 'themes/gtex_light';
+@use 'themes/gtex_dark';
 
 @include ng.mat-core(typography.$config);
 
-// .light-theme {
-//   @include theming.ccf-theme(light.$theme);
-// }
+.default-theme-light {
+  @include theming.ccf-theme(default_light.$theme);
+}
 
-// .dark-theme {
-//   @include theming.ccf-theme(dark.$theme);
+.default-theme-dark {
+  @include theming.ccf-theme(default_dark.$theme);
+}
 
-//   ::-webkit-scrollbar {
-//     background: #757575;
-//   }
-// }
+.default-theme-light, .default-theme-dark {
+  .logo {
+    background-image: url('./assets/icons/default-logo.svg');
+    position: relative;
+    left: -110px;
+  }
+}
 
 .hubmap-theme-light {
   @include theming.ccf-theme(hubmap_light.$theme);
@@ -49,7 +57,21 @@
   }
 }
 
-.sennet-theme-dark, .hubmap-theme-dark {
+.gtex-theme-light {
+  @include theming.ccf-theme(gtex_light.$theme);
+}
+
+.gtex-theme-dark {
+  @include theming.ccf-theme(gtex_dark.$theme);
+}
+
+.gtex-theme-light, .gtex-theme-dark {
+  .logo {
+    background-image: url('./assets/icons/gtex-logo.png')
+  }
+}
+
+.default-theme-dark, .sennet-theme-dark, .hubmap-theme-dark, .gtex-theme-dark  {
   ::-webkit-scrollbar {
     background: #757575;
   }

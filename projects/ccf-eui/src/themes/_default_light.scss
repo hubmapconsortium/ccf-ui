@@ -1,0 +1,66 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+@use 'common/utility';
+@import 'light';
+
+$default-light-palette: utility.add-colors($primary-colors, (
+  main: #444A65,
+  light-disabled: #E0E0E0,
+  contrast: (
+    main: $dark-primary-text,
+    light-disabled: $dark-primary-text,
+  )
+));
+
+$primary: mat.define-palette($default-light-palette, $text: 900);
+$accent: mat.define-palette(mat.$blue-palette, 700);
+$warn: mat.define-palette(mat.$red-palette);
+
+$default-light-foreground: map-merge($foreground, (
+  main: map-get($default-light-palette, main),
+  active-icon: map-get(mat.$blue-palette, 700),
+  header-border: map-get($default-light-palette, 800), //#424242
+  modal-borders: map-get($primary-colors, 'black'),
+  divider: #212121,
+  borders: map-get($default-light-palette, 300), //#E0E0E0
+  carousel-arrow: map-get($default-light-palette, 500), // #9E9E9E;
+  icon: map-get($default-light-palette, 300), //#E0E0E0
+  contrast-icon: map-get($default-light-palette, 600),
+  button-text: map-get($primary, main),
+  headers: map-get($default-light-palette, 300), //#E0E0E0
+  search-result-text: map-get($default-light-palette, 600), //#757575
+  text: map-get($default-light-palette, 900), //#212121
+  contrast-text: map-get($default-light-palette, 50), //#FAFAFA (text on dark background)
+  download-icon: map-get($default-light-palette, 600), //#757575
+  disabled: map-get($default-light-palette, light-disabled),
+  highlight: map-get($primary-colors, 'black'),
+  header-download-icon: map-get($default-light-palette, 300), //#E0E0E0
+  header-shadow: map-get($default-light-palette, main),
+  selected-ontology-text: map-get($accent, 700),
+  icons-background-hover: #e0e0e0,
+));
+
+$default-light-background: map-merge($background, (
+  background: map-get($primary-colors, 'white'),
+  hover-background: map-get($default-light-palette, 300), // #E0E0E0
+  donor-card-background: map-get($default-light-palette, 300),
+  dialog: map-get($default-light-palette, 50), //#FAFAFA
+  app-bar: map-get($default-light-palette, main), //#444A65
+  dropdown-hover: map-get($default-light-palette, 300), //#E0E0E0
+  mat-selected-option: map-get($default-light-palette, main),
+  image-placeholder: map-get($default-light-palette, light-disabled),
+  button-bg: map-get($default-light-palette, main),
+  button-background-hover: #2f3346,
+  mat-slider-primary: map-get($default-light-palette, main),
+  info-button-hover: map-get($default-light-palette, 300),
+  checkbox-color: #636363,
+));
+
+$theme: (
+  is-dark: false,
+  primary: $primary,
+  accent: $accent,
+  warn: $warn,
+  foreground: $default-light-foreground,
+  background: $default-light-background
+);

@@ -31,7 +31,7 @@ export const environment = {
     // remoteApiEndpoint: 'http://localhost:8080/v1'
   },
   customization: {
-    theme: 'gtex',
+    theme: 'default',
     header: true,
     homeUrl: 'https://portal.hubmapconsortium.org/',
     logoTooltip: 'Human BioMolecular Atlas Project'

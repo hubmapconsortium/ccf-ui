@@ -1,6 +1,8 @@
 @use '~@angular/material/theming' as ng;
 @use 'themes/common/typography';
 @use 'themes/common/theming';
+@use 'themes/_default_light';
+@use 'themes/_default_dark';
 @use 'themes/hubmap_light';
 @use 'themes/hubmap_dark';
 @use 'themes/sennet_light';
@@ -13,8 +15,24 @@
 
 @include ng.mat-core(typography.$config);
 
+.default-theme-light {
+  @include theming.ccf-theme(default_light.$theme);
+}
+
+.default-theme-dark {
+  @include theming.ccf-theme(default_dark.$theme);
+}
+
 .hubmap-theme-light {
   @include theming.ccf-theme(hubmap_light.$theme);
+}
+
+.default-theme-light, .default-theme-dark {
+  .logo {
+    background-image: url('./assets/icons/app/default-logo.svg');
+    position: relative;
+    left: -110px;
+  }
 }
 
 .hubmap-theme-dark {
@@ -55,7 +73,7 @@
   }
 }
 
-.sennet-theme-dark, .hubmap-theme-dark, .gtex-theme-dark {
+.default-theme-dark, .sennet-theme-dark, .hubmap-theme-dark, .gtex-theme-dark {
   ::-webkit-scrollbar {
     background: #757575;
   }
