@@ -2,6 +2,7 @@ import { CCFDatabase, CCFDatabaseOptions } from 'ccf-database';
 import { Request, RequestHandler } from 'express';
 
 import { AutoPruneLRUCache } from '../utils/auto-prune-lru-cache';
+import { createCCFDatabaseWorker } from '../utils/ccf-database-worker';
 import { RequestCache } from '../utils/request-cache';
 
 
@@ -31,14 +32,13 @@ function selectToken(token: string | undefined, req: Request): string {
 async function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCFDatabase> {
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const hubmapToken = token || options.hubmapToken || undefined;
-  const database = new CCFDatabase({
+  const database = createCCFDatabaseWorker({
     ...options,
     hubmapDataUrl: '', // Do not use deprecated internal hubmap data loading
     dataSources: options.dataSources.map(s =>
       hubmapToken && typeof s === 'string' && s.endsWith('hubmap/rui_locations.jsonld') ? `${s}?token=${hubmapToken}` : s
     )
   });
-
   await database.connect();
   return database;
 }
