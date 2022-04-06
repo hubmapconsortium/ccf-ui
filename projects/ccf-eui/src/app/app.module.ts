@@ -44,7 +44,7 @@ import { AppWebComponent } from './app-web-component.component';
   ],
   declarations: [AppComponent, AppWebComponent],
   providers: [
-    { provide: DEFAULT_THEME, useValue: 'light-theme' },
+    { provide: DEFAULT_THEME, useValue: 'hubmap-theme-light' },
     { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
   ],
   entryComponents: [AppComponent]

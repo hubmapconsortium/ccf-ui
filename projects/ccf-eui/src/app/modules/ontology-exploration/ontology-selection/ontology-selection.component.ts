@@ -44,6 +44,7 @@ export class OntologySelectionComponent implements OnChanges {
    */
   @Input() ontologyFilter: string[];
 
+  @Input() header: boolean;
   @Input() placeholderText: string;
 
   /**

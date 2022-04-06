@@ -1,0 +1,102 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+@use 'common/utility';
+@import 'light';
+
+$gtex-light-palette: utility.add-colors($primary-colors, (
+  main: #46a4ad,
+  light-disabled: #E0E0E0,
+  contrast: (
+    main: $dark-primary-text,
+    light-disabled: $dark-primary-text,
+  )
+));
+
+$primary: mat.define-palette($gtex-light-palette, $text: 900);
+$accent: mat.define-palette($gtex-light-palette, main);
+$warn: mat.define-palette(mat.$red-palette);
+
+$foreground: map-merge(mat.$light-theme-foreground-palette, (
+  main: map-get($gtex-light-palette, main),
+  active-icon: map-get($gtex-light-palette, main),
+  header-border: #4a5265,
+  modal-borders: rgba(0,0,0,.15),
+  divider: #ccc,
+  borders: map-get($gtex-light-palette, 300),
+  carousel-arrow: map-get($gtex-light-palette, 500),
+  icon: map-get($gtex-light-palette, 300),
+  contrast-icon: map-get($gtex-light-palette, main),
+  
+  disabled: map-get($gtex-light-palette, light-disabled),
+  text: map-get($gtex-light-palette, 'black'),
+  highlight: map-get($gtex-light-palette, 400),
+  logo: map-get($gtex-light-palette, 'white'),
+  headers: map-get($gtex-light-palette, 'white'),
+  button-text: map-get($gtex-light-palette, 400),
+  button-border: map-get($gtex-light-palette, 'black'),
+  search-result-text: map-get($gtex-light-palette, 'text'),
+  contrast-text: map-get($gtex-light-palette, 50),
+  download-icon: map-get($gtex-light-palette, 'contrast-icon'),
+  app-bar-shadow: map-get($gtex-light-palette, 'black'),
+  info-icon: map-get($gtex-light-palette, 'white'),
+  disabled-text: #CCCCCC,
+  legend-contrast: #992661, // Not in any builtin palettes
+  placeholder-text: map-get($gtex-light-palette, light-disabled),
+  scrollbar-thumb: #cdcdcd,
+  secondary-text: map-get($gtex-light-palette, text),
+  sidebar-dividers: map-get($gtex-light-palette, 'white'),
+  slider-blue: map-get(mat.$blue-palette, A400),
+  slider-green: map-get(mat.$green-palette, A700),
+  slider-red: map-get(mat.$red-palette, A700),
+  slider-blue-light: map-get(mat.$blue-palette, A100),
+  slider-green-light: map-get(mat.$green-palette, A200),
+  slider-red-light: map-get(mat.$red-palette, A100),
+  button-background: #549cc7,
+  chip-icon-block-primary:  map-get($gtex-light-palette, 400),
+  chip-icon-done-green: map-get(mat.$green-palette, A700),
+  chip-icon-background:  #E9E9E9,
+  chip-border-primary:  map-get($gtex-light-palette, 400),
+  toggle-thumb: map-get($gtex-light-palette, 400),
+  toggle-bg: #ECECEC,
+  mat-divider: rgba(0, 0, 0, 0.03),
+  opacity-numbers: #CCCCCC,
+  icons-disabled: #CCCCCC,
+  icons-hover: #eeeeee,
+  organ-off: #cccccc,
+  carousel-text: map-get($gtex-light-palette, 'black'),
+  icon-active: #f5f5f5,
+  donor-sex-toggle-nob: map-get($gtex-light-palette, main),
+  donor-sex-bg: #CCCCCC,
+  inactive-sex: #636363,
+  active-sex: #212121
+));
+  
+$background: map-merge(mat.$light-theme-background-palette, (
+  background: map-get($gtex-light-palette, 'white'),
+  hover-background: #eee,
+  stage-background: map-get($gtex-light-palette, 'black'),
+  button-background-hover: #8f8f8f,
+  dialog: map-get($gtex-light-palette, 'light-background'),
+  authentication: map-get($gtex-light-palette, 'white'),
+  app-bar: map-get($gtex-light-palette, 'white'),
+  modal: map-get($gtex-light-palette, 'white'),
+  dropdown-hover: map-get($gtex-light-palette, 400),
+  image-placeholder: map-get($gtex-light-palette, 'disabled-text'),
+  info-button-hover: map-get($gtex-light-palette, 'white-hover'),
+  card: map-get($gtex-light-palette, 'white'), 
+  content-background: map-get($gtex-light-palette, 'black'),
+  legend-background: map-get($gtex-light-palette, 'white'),
+  sidebar-background: map-get($gtex-light-palette,  'white'),
+  dropdown-menu: map-get($gtex-light-palette, 300),
+  drawer-background: map-get($gtex-light-palette, 'white'),
+  drawer-hover: map-get($gtex-light-palette, 300),
+));
+
+$theme: (
+  is-dark: false,
+  primary: $primary,
+  accent: $accent,
+  warn: $warn,
+  foreground: $foreground,
+  background: $background
+);

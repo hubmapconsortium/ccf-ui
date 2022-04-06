@@ -38,9 +38,18 @@
     }
   }
 
-  .hubmap .logo {
+  .portal {
+    height: 100%;
+    width: 25rem;
+    align-items: center;
+    display: flex;
+  }
+
+  .logo {
     width: 100%;
-    margin-right: 1rem;
+    height: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 
   .filler {

@@ -1,10 +1,13 @@
 .ccf-ontology-tree {
   background: none;
   scrollbar-width: thin;
-  height: 35vh; // TODO: CSS Help please
-  width: 25.25rem;
+  max-height: calc(50vh - 10rem);
   overflow: auto;
   overflow-x: hidden;
+
+  &.header-hidden {
+    max-height: 40vh;
+  }
 
   .node:first-of-type {
     .toggle {
@@ -123,11 +126,10 @@
 
 .scroll-gradient {
   position: absolute;
-  height: 9rem;
+  height: 3rem;
   width: 90%;
   bottom: 0;
   pointer-events: none;
-
 
   &.hidden {
     display: none;

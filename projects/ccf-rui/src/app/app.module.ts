@@ -39,7 +39,7 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
   providers: [
     {
       provide: DEFAULT_THEME,
-      useValue: 'light-theme'
+      useValue: 'hubmap-theme-light'
     },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

@@ -26,6 +26,11 @@ export interface GlobalConfig {
   cancelRegistration?: () => void;
 
   skipUnsavedChangesConfirmation?: boolean;
+
+  theme?: string;
+  header?: boolean;
+  homeUrl?: string;
+  logoTooltip?: string;
 }
 
 declare global {

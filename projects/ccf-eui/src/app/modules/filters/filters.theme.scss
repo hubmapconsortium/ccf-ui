@@ -12,6 +12,7 @@
     background-color: mat.get-color-from-palette($background, button-bg);
 
     &:hover {
+      color: mat.get-color-from-palette($foreground, color-hover);
       background-color: mat.get-color-from-palette($background, button-background-hover)
     }
   }
