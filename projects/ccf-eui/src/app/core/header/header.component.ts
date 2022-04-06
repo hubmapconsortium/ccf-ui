@@ -17,6 +17,8 @@ export class HeaderComponent {
    */
   @Input() homeUrl: string;
 
+  @Input() loginDisabled: boolean;
+
   @Input() logoTooltip: string;
 
   /**

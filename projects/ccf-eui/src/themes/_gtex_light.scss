@@ -19,7 +19,7 @@ $warn: mat.define-palette(mat.$red-palette);
 $gtex-light-foreground: map-merge($foreground, (
   main: map-get($gtex-light-palette, main),
   active-icon: #8f8f8f,
-  header-border: #101010,
+  header-border: #4a5265,
   modal-borders: rgba(0,0,0,.15),
   divider: #ccc,
   borders: map-get($gtex-light-palette, 300),

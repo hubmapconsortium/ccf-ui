@@ -6,6 +6,6 @@
 
   <div class="filler"></div>
   
-  <a mat-button class="authentication" *ngIf="!loggedIn" [href]="homeUrl + 'login'" rel="noreferrer noopener" target="_blank">LOGIN</a>
-  <a mat-button class="authentication" *ngIf="loggedIn" [href]="homeUrl + 'logout'" rel="noreferrer noopener" target="_blank">LOGOUT</a>
+  <a mat-button class="authentication" [class.disabled]="loginDisabled || !homeUrl" *ngIf="!loggedIn" [href]="homeUrl + 'login'" rel="noreferrer noopener" target="_blank">LOGIN</a>
+  <a mat-button class="authentication" [class.disabled]="loginDisabled || !homeUrl" *ngIf="loggedIn" [href]="homeUrl + 'logout'" rel="noreferrer noopener" target="_blank">LOGOUT</a>
 </mat-toolbar>

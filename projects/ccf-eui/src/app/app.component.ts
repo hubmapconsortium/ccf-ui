@@ -23,6 +23,7 @@ interface AppOptions extends CCFDatabaseOptions {
   header?: boolean;
   homeUrl?: string;
   logoTooltip?: string;
+  loginEnabled?: boolean;
 }
 
 
@@ -91,6 +92,7 @@ export class AppComponent implements OnInit {
   readonly header$ = this.globalConfig.getOption('header');
   readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
   readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
+  readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
 
   /**
    * Creates an instance of app component.

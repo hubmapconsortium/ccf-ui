@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
-import { Subscription } from 'rxjs';
+import { combineLatest, Subscription, ReplaySubject } from 'rxjs';
 
 import { GlobalConfig } from './core/services/config/config';
 import { ThemingService } from './core/services/theming/theming.service';
@@ -43,9 +43,16 @@ export class AppComponent implements OnDestroy, OnInit {
   /** Disables changes in block position */
   disablePositionChange = false;
 
-  readonly header$ = this.globalConfig.getOption('header');
+  get isLightTheme(): boolean {
+    return this.theming.getTheme().endsWith('light');
+  }
 
   readonly theme$ = this.globalConfig.getOption('theme');
+  readonly themeMode$ = new ReplaySubject<'light' | 'dark'>(1);
+
+  readonly header$ = this.globalConfig.getOption('header');
+  readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
+  readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
 
   theme: string;
 
@@ -59,7 +66,7 @@ export class AppComponent implements OnDestroy, OnInit {
   constructor(
     readonly model: ModelState, readonly page: PageState,
     readonly consentService: ConsentService, readonly snackbar: MatSnackBar, readonly theming: ThemingService,
-    el: ElementRef<unknown>, injector: Injector, private readonly globalConfig: GlobalConfigState<AppOptions>
+    el: ElementRef<unknown>, injector: Injector, private readonly globalConfig: GlobalConfigState<AppOptions>, cdr: ChangeDetectorRef
   ) {
     theming.initialize(el, injector);
     this.subscriptions.add(
@@ -81,6 +88,13 @@ export class AppComponent implements OnDestroy, OnInit {
     this.globalConfig.getOption('logoTooltip').subscribe((tooltip: string) => {
       this.logoTooltip = tooltip;
     });
+
+    combineLatest([this.theme$, this.themeMode$]).subscribe(
+      ([theme, mode]) => {
+        this.theming.setTheme(`${theme}-theme-${mode}`);
+        cdr.markForCheck();
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -93,28 +107,16 @@ export class AppComponent implements OnDestroy, OnInit {
       duration: this.consentService.consent === 'not-set' ? Infinity : 3000
     });
 
+    this.themeMode$.next('light');
+
     this.theming.setTheme(`${this.theme}-theme-light`);
-
-    // if (window.matchMedia) {
-    //   // Sets initial theme according to user theme preference
-    //   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    //     this.theming.setTheme(`${this.theme}-theme-dark`);
-    //   }
-
-    //   // Listens for changes in user theme preference
-    //   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    //     this.theming.setTheme(e.matches ? `${this.theme}-theme-dark` : `${this.theme}-theme-light`);
-    //   });
-    // } else {
-    //   this.theming.setTheme(`${this.theme}-theme-light`);
-    // }
   }
 
   /**
    * Toggles scheme between light and dark mode
    */
   toggleScheme(): void {
-    this.theming.setTheme((this.theming.getTheme() === `${this.theme}-theme-light`) ? `${this.theme}-theme-dark` : `${this.theme}-theme-light`);
+    this.themeMode$.next(this.isLightTheme ? 'dark' : 'light');
   }
 
   /**

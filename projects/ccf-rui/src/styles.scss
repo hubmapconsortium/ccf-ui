@@ -67,7 +67,13 @@
 
 .gtex-theme-light, .gtex-theme-dark {
   .logo {
+    height: 100%;
     background-image: url('./assets/icons/gtex-logo.png')
+  }
+
+  .ccf-header {
+    border-bottom-width: 20px;
+    box-shadow: none;
   }
 }
 
