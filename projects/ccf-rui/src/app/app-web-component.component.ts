@@ -35,7 +35,6 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() header: string | boolean;
   @Input() homeUrl: string;
   @Input() logoTooltip: string;
-  @Input() loginDisabled: boolean;
 
   initialized: boolean;
 
