@@ -1,0 +1,2332 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Library ccf-database documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Library ccf-database documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li >CCFDatabase</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-database/src/lib/ccf-database.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Database provider.</p>
+
+            </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#graph" >graph</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#initializing" >initializing</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#options" >options</a>
+                            </li>
+                            <li>
+                                <a href="#scene" >scene</a>
+                            </li>
+                            <li>
+                                <a href="#store" >store</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#addDataSources" >addDataSources</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#cachedConnect" >cachedConnect</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#connect" >connect</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deserialize" >deserialize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#doConnect" >doConnect</a>
+                            </li>
+                            <li>
+                                <a href="#get" >get</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getAggregateResults" >getAggregateResults</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getCellTypeTermOccurences" >getCellTypeTermOccurences</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getCellTypeTreeModel" >getCellTypeTreeModel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getDatasetTechnologyNames" >getDatasetTechnologyNames</a>
+                            </li>
+                            <li>
+                                <a href="#getIds" >getIds</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getOntologyTermOccurences" >getOntologyTermOccurences</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getOntologyTreeModel" >getOntologyTreeModel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getProviderNames" >getProviderNames</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getReferenceOrgans" >getReferenceOrgans</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getReferenceOrganScene" >getReferenceOrganScene</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getScene" >getScene</a>
+                            </li>
+                            <li>
+                                <a href="#getSpatialEntities" >getSpatialEntities</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getTissueBlockResults" >getTissueBlockResults</a>
+                            </li>
+                            <li>
+                                <a href="#search" >search</a>
+                            </li>
+                            <li>
+                                <a href="#serialize" >serialize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#synchronize" >synchronize</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(options: <a href="../interfaces/CCFDatabaseOptions.html" target="_self">CCFDatabaseOptions</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:63</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ccfdatabase.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>options</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/CCFDatabaseOptions.html" target="_self" >CCFDatabaseOptions</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Initialization options.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="graph"></a>
+                    <span class="name">
+                        <span ><b>graph</b></span>
+                        <a href="#graph"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/CCFSpatialGraph.html" target="_self" >CCFSpatialGraph</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The spatial graph</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializing"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>initializing</b></span>
+                        <a href="#initializing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Promise&lt;void&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:63</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>If the database is initialized</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="options"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>options</b></span>
+                        <a href="#options"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CCFDatabaseOptions.html" target="_self" >CCFDatabaseOptions</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>DEFAULT_CCF_DB_OPTIONS</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:70</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Initialization options.</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scene"></a>
+                    <span class="name">
+                        <span ><b>scene</b></span>
+                        <a href="#scene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/CCFSpatialScene.html" target="_self" >CCFSpatialScene</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates SpatialEntity Scenes</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="store"></a>
+                    <span class="name">
+                        <span ><b>store</b></span>
+                        <a href="#store"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Store</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The triple store.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addDataSources"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>addDataSources</b></span>
+                        <a href="#addDataSources"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addDataSources(sources: (string | JsonLd)[], inputStore?: Store)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:170</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sources</td>
+                                    <td>
+                                            <code>(string | JsonLd)[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>inputStore</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cachedConnect"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>cachedConnect</b></span>
+                        <a href="#cachedConnect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cachedConnect()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="connect"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>connect</b></span>
+                        <a href="#connect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>connect(options?: <a href="../interfaces/CCFDatabaseOptions.html" target="_self">CCFDatabaseOptions</a>, cached)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Connects the database.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>options</td>
+                                    <td>
+                                                <code><a href="../interfaces/CCFDatabaseOptions.html" target="_self" >CCFDatabaseOptions</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <p>Options used to initialize.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>cached</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A promise resolving to true if data has been loaded into the database.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deserialize"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>deserialize</b></span>
+                        <a href="#deserialize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deserialize(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:206</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doConnect"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>doConnect</b></span>
+                        <a href="#doConnect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>doConnect()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Actually connects to the database.</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A promise resolving to void when connected.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="get"></a>
+                    <span class="name">
+                        <span ><b>get</b></span>
+                        <a href="#get"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>get(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="231"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:231</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the data for an object.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The id of the requested object.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Quad[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The object data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAggregateResults"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getAggregateResults</b></span>
+                        <a href="#getAggregateResults"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAggregateResults(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="293"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:293</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets all aggregate results for a filter.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/AggregateResult.html" target="_self" >Promise&lt;AggregateResult[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A list of aggregate data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCellTypeTermOccurences"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getCellTypeTermOccurences</b></span>
+                        <a href="#getCellTypeTermOccurences"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCellTypeTermOccurences(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="313"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:313</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get number of occurrences of cell type terms for a set of ids.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;Record&lt;string, number&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Cell type term counts.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCellTypeTreeModel"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getCellTypeTreeModel</b></span>
+                        <a href="#getCellTypeTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCellTypeTreeModel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="331"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:331</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get cell type term tree nodes</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/OntologyTreeModel.html" target="_self" >Promise&lt;OntologyTreeModel&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Ontology term counts.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatasetTechnologyNames"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getDatasetTechnologyNames</b></span>
+                        <a href="#getDatasetTechnologyNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getDatasetTechnologyNames()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="262"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:262</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get a list of technology names used by datasets</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;string[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>list of unique technology names in the data</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getIds"></a>
+                    <span class="name">
+                        <span ><b>getIds</b></span>
+                        <a href="#getIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getIds(filter: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:221</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets all ids matching the filter.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>{} as Filter</code>
+                                    </td>
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A set of all matching ids.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOntologyTermOccurences"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getOntologyTermOccurences</b></span>
+                        <a href="#getOntologyTermOccurences"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getOntologyTermOccurences(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="303"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:303</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get number of occurrences of ontology terms for a set of ids.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;Record&lt;string, number&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Ontology term counts.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOntologyTreeModel"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getOntologyTreeModel</b></span>
+                        <a href="#getOntologyTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getOntologyTreeModel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="322"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:322</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get ontology term tree nodes</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/OntologyTreeModel.html" target="_self" >Promise&lt;OntologyTreeModel&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Ontology term counts.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProviderNames"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getProviderNames</b></span>
+                        <a href="#getProviderNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getProviderNames()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="271"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:271</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get a list of provider names from the database</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;string[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>list of unique provider names in the data</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReferenceOrgans"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getReferenceOrgans</b></span>
+                        <a href="#getReferenceOrgans"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getReferenceOrgans()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="340"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:340</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get reference organs</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialEntity.html" target="_self" >Promise&lt;SpatialEntity[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Ontology term counts.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReferenceOrganScene"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getReferenceOrganScene</b></span>
+                        <a href="#getReferenceOrganScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getReferenceOrganScene(organIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="362"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:362</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get all nodes to form the 3D scene of reference organ and tissues</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organIri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The Reference Organ IRI</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >Promise&lt;SpatialSceneNode[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A list of Spatial Scene Nodes for the 3D Scene</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getScene"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getScene</b></span>
+                        <a href="#getScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getScene(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="350"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:350</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get all nodes to form the 3D scene of reference body, organs, and tissues</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >Promise&lt;SpatialSceneNode[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A list of Spatial Scene Nodes for the 3D Scene</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSpatialEntities"></a>
+                    <span class="name">
+                        <span ><b>getSpatialEntities</b></span>
+                        <a href="#getSpatialEntities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSpatialEntities(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="251"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:251</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets all spatial entities for a filter.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialEntity.html" target="_self" >SpatialEntity[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A list of spatial entities.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTissueBlockResults"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getTissueBlockResults</b></span>
+                        <a href="#getTissueBlockResults"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getTissueBlockResults(filter?: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="281"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:281</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets all tissue block results for a filter.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/TissueBlockResult.html" target="_self" >Promise&lt;TissueBlockResult[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A list of results.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="search"></a>
+                    <span class="name">
+                        <span ><b>search</b></span>
+                        <a href="#search"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>search(filter: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:241</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the data for objects matching a filter.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>{} as Filter</code>
+                                    </td>
+
+                                    <td>
+                                        <p>The filter.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>[][]</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An array of data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="serialize"></a>
+                    <span class="name">
+                        <span ><b>serialize</b></span>
+                        <a href="#serialize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>serialize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:202</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="synchronize"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>synchronize</b></span>
+                        <a href="#synchronize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>synchronize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:193</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { delMany, get, setMany } from &#x27;idb-keyval&#x27;;
+import { JsonLd } from &#x27;jsonld/jsonld-spec&#x27;;
+import {
+  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, deserializeN3Store, Quad, serializeN3Store, Store
+} from &#x27;triple-store-utils&#x27;;
+
+import { CCFSpatialGraph } from &#x27;./ccf-spatial-graph&#x27;;
+import { CCFSpatialScene, SpatialSceneNode } from &#x27;./ccf-spatial-scene&#x27;;
+import { searchHubmap } from &#x27;./hubmap/hubmap-data-import&#x27;;
+import { AggregateResult, Filter, OntologyTreeModel, TissueBlockResult } from &#x27;./interfaces&#x27;;
+import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from &#x27;./queries/aggregate-results-n3&#x27;;
+import { findIds } from &#x27;./queries/find-ids-n3&#x27;;
+import { getCellTypeTermOccurences, getOntologyTermOccurences } from &#x27;./queries/ontology-term-occurences-n3&#x27;;
+import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from &#x27;./queries/ontology-tree-n3&#x27;;
+import { getSpatialEntityForEntity } from &#x27;./queries/spatial-result-n3&#x27;;
+import { getTissueBlockResult } from &#x27;./queries/tissue-block-result-n3&#x27;;
+import { SpatialEntity } from &#x27;./spatial-types&#x27;;
+
+
+/** Database initialization options. */
+export interface CCFDatabaseOptions {
+  /** A url to load data from. */
+  ccfOwlUrl: string;
+  /** Context. */
+  ccfContextUrl: string;
+  /** A list of data sources (in n3, rdf, xml, owl, or jsonld format) */
+  dataSources: (string|JsonLd)[];
+  /** Data service type. */
+  hubmapDataService: &#x27;static&#x27; | &#x27;search-api&#x27;;
+  /** HuBMAP Elastic Search Query */
+  hubmapQuery?: unknown;
+  /** Hubmap Portal url. */
+  hubmapPortalUrl: string;
+  /** Hubmap data url. */
+  hubmapDataUrl: string;
+  /** Hubmap assets api url. */
+  hubmapAssetsUrl: string;
+  /** HuBMAP Service Token. */
+  hubmapToken?: string;
+}
+
+/** Default initialization options. */
+export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions &#x3D; {
+  ccfOwlUrl: &#x27;https://purl.org/ccf/latest/ccf.owl&#x27;,
+  ccfContextUrl: &#x27;https://purl.org/ccf/latest/ccf-context.jsonld&#x27;,
+  dataSources: [],
+  hubmapDataService: &#x27;static&#x27;,
+  hubmapPortalUrl: &#x27;https://portal.hubmapconsortium.org/&#x27;,
+  hubmapDataUrl: &#x27;&#x27;,
+  hubmapAssetsUrl: &#x27;https://assets.hubmapconsortium.org&#x27;
+};
+
+/** Database provider. */
+export class CCFDatabase {
+  /** The triple store. */
+  store: Store;
+  /** The spatial graph */
+  graph: CCFSpatialGraph;
+  /** Creates SpatialEntity Scenes */
+  scene: CCFSpatialScene;
+  /** If the database is initialized */
+  private initializing?: Promise&lt;void&gt;;
+
+  /**
+   * Creates an instance of ccfdatabase.
+   *
+   * @param [options] Initialization options.
+   */
+  constructor(public options: CCFDatabaseOptions &#x3D; DEFAULT_CCF_DB_OPTIONS) {
+    this.store &#x3D; new Store(undefined, { factory: DataFactory });
+    this.graph &#x3D; new CCFSpatialGraph(this);
+    this.scene &#x3D; new CCFSpatialScene(this);
+  }
+
+  /**
+   * Connects the database.
+   *
+   * @param [options] Options used to initialize.
+   * @returns A promise resolving to true if data has been loaded into the database.
+   */
+  async connect(options?: CCFDatabaseOptions, cached &#x3D; false): Promise&lt;boolean&gt; {
+    if (options) {
+      this.options &#x3D; options;
+    }
+    if (!this.initializing) {
+      if (cached) {
+        this.initializing &#x3D; this.cachedConnect();
+      } else {
+        this.initializing &#x3D; this.doConnect();
+      }
+    }
+    await this.initializing;
+    return this.store.size &gt; 0;
+  }
+
+  private async cachedConnect(): Promise&lt;void&gt; {
+    const start &#x3D; new Date().getTime();
+    const lastModifiedKey &#x3D; &#x27;ccf-database.last_modified&#x27;;
+    const ccfDatabaseKey &#x3D; &#x27;ccf-database&#x27;;
+
+    const lastModified &#x3D; await get(lastModifiedKey).catch(() &#x3D;&gt; undefined);
+    let serializedDb: string | undefined;
+
+    if (lastModified &amp;&amp; start - new Date(+lastModified).getTime() &gt; 60*60*1000) {
+      await delMany([ccfDatabaseKey, lastModifiedKey]).catch(() &#x3D;&gt; undefined);
+    } else {
+      serializedDb &#x3D; await get(ccfDatabaseKey).catch(() &#x3D;&gt; undefined);
+    }
+
+    if (serializedDb) {
+      await this.deserialize(serializedDb);
+    } else {
+      await this.doConnect();
+
+      setMany([
+        [ccfDatabaseKey, this.serialize()],
+        [lastModifiedKey, &#x27;&#x27; + start]
+      ]).catch(() &#x3D;&gt; undefined);
+    }
+  }
+
+  /**
+   * Actually connects to the database.
+   *
+   * @returns A promise resolving to void when connected.
+   */
+  private async doConnect(): Promise&lt;void&gt; {
+    const ops: Promise&lt;unknown&gt;[] &#x3D; [];
+    const sources: (string|JsonLd)[] &#x3D; this.options.dataSources?.concat() ?? [];
+
+    const ccfOwlUrl &#x3D; this.options.ccfOwlUrl;
+    if (ccfOwlUrl.startsWith(&#x27;{&#x27;)) {
+      // serialized n3 store was provided as the ccfOwlUrl
+      this.store &#x3D; deserializeN3Store(ccfOwlUrl, DataFactory);
+    } else if (ccfOwlUrl.endsWith(&#x27;.n3store.json&#x27;)) {
+      const storeString &#x3D; await fetch(ccfOwlUrl).then(r &#x3D;&gt; r.text())
+        .catch(() &#x3D;&gt; console.log(&#x27;Couldn\&#x27;t locate serialized store.&#x27;));
+      if (storeString) {
+        this.store &#x3D; deserializeN3Store(storeString, DataFactory);
+      }
+    } else if (ccfOwlUrl?.length &gt; 0) {
+      sources.push(ccfOwlUrl);
+    }
+    if (this.options.hubmapDataUrl) {
+      if (this.options.hubmapDataUrl.endsWith(&#x27;jsonld&#x27;)) {
+        sources.push(this.options.hubmapDataUrl);
+      } else {
+        ops.push(searchHubmap(
+          this.options.hubmapDataUrl,
+          this.options.hubmapDataService,
+          this.options.hubmapQuery,
+          this.options.hubmapToken,
+          this.options.hubmapAssetsUrl,
+          this.options.hubmapPortalUrl
+        ).then((jsonld) &#x3D;&gt; {
+          if (jsonld) {
+            return this.addDataSources([jsonld]);
+          } else {
+            return undefined;
+          }
+        }));
+      }
+    }
+    ops.push(this.addDataSources(sources));
+    await Promise.all(ops);
+    await this.synchronize();
+  }
+
+  async addDataSources(sources: (string|JsonLd)[], inputStore?: Store): Promise&lt;this&gt; {
+    const store: Store &#x3D; inputStore ?? this.store;
+    await Promise.all(
+      sources.map(async (source) &#x3D;&gt; {
+        if (typeof source &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+          if (source.endsWith(&#x27;jsonld&#x27;)) {
+            await addJsonLdToStore(source, store);
+          } else if (source.endsWith(&#x27;n3&#x27;)) {
+            await addN3ToStore(source, store);
+          } else if (source.endsWith(&#x27;rdf&#x27;) || source.endsWith(&#x27;owl&#x27;) || source.endsWith(&#x27;xml&#x27;)) {
+            await addRdfXmlToStore(source, store);
+          } else {
+            // Passthrough assumes a JSON-LD response
+            await addJsonLdToStore(source, store);
+          }
+        } else {
+          await addJsonLdToStore(source, store);
+        }
+      })
+    );
+    return this;
+  }
+
+  async synchronize(): Promise&lt;this&gt; {
+    // Add a small delay to allow the triple store to settle
+    await new Promise(r &#x3D;&gt; {
+      setTimeout(r, 500);
+    });
+    this.graph.createGraph();
+    return this;
+  }
+
+  serialize(): string {
+    return serializeN3Store(this.store);
+  }
+
+  async deserialize(value: string): Promise&lt;void&gt; {
+    this.store &#x3D; deserializeN3Store(value, DataFactory);
+    this.graph &#x3D; new CCFSpatialGraph(this);
+    this.scene &#x3D; new CCFSpatialScene(this);
+    await new Promise(r &#x3D;&gt; {
+      setTimeout(r, 10);
+    });
+  }
+
+  /**
+   * Gets all ids matching the filter.
+   *
+   * @param [filter] The filter.
+   * @returns A set of all matching ids.
+   */
+  getIds(filter: Filter &#x3D; {} as Filter): Set&lt;string&gt; {
+    return findIds(this.store, filter);
+  }
+
+  /**
+   * Gets the data for an object.
+   *
+   * @param id The id of the requested object.
+   * @returns The object data.
+   */
+  get(id: string): Quad[] {
+    return this.store.getQuads(DataFactory.namedNode(id), null, null, null);
+  }
+
+  /**
+   * Gets the data for objects matching a filter.
+   *
+   * @param [filter] The filter.
+   * @returns An array of data.
+   */
+  search(filter: Filter &#x3D; {} as Filter): Quad[][] {
+    return [...this.getIds(filter)].map((s) &#x3D;&gt; this.get(s));
+  }
+
+  /**
+   * Gets all spatial entities for a filter.
+   *
+   * @param [filter] The filter.
+   * @returns A list of spatial entities.
+   */
+  getSpatialEntities(filter?: Filter): SpatialEntity[] {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    filter &#x3D; { ...filter, hasSpatialEntity: true } as Filter;
+    return [...this.getIds(filter)].map((s) &#x3D;&gt; getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+  }
+
+  /**
+   * Get a list of technology names used by datasets
+   *
+   * @returns list of unique technology names in the data
+   */
+  async getDatasetTechnologyNames(): Promise&lt;string[]&gt; {
+    return getDatasetTechnologyNames(this.store);
+  }
+
+  /**
+   * Get a list of provider names from the database
+   *
+   * @returns list of unique provider names in the data
+   */
+  async getProviderNames(): Promise&lt;string[]&gt; {
+    return getProviderNames(this.store);
+  }
+
+  /**
+   * Gets all tissue block results for a filter.
+   *
+   * @param [filter] The filter.
+   * @returns A list of results.
+   */
+  async getTissueBlockResults(filter?: Filter): Promise&lt;TissueBlockResult[]&gt; {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    filter &#x3D; { ...filter, hasSpatialEntity: true } as Filter;
+    return [...this.getIds(filter)].map((s) &#x3D;&gt; getTissueBlockResult(this.store, s));
+  }
+
+  /**
+   * Gets all aggregate results for a filter.
+   *
+   * @param [filter] The filter.
+   * @returns A list of aggregate data.
+   */
+  async getAggregateResults(filter?: Filter): Promise&lt;AggregateResult[]&gt; {
+    return getAggregateResults(this.getIds(filter), this.store);
+  }
+
+  /**
+   * Get number of occurrences of ontology terms for a set of ids.
+   *
+   * @param [filter] The filter.
+   * @returns Ontology term counts.
+   */
+  async getOntologyTermOccurences(filter?: Filter): Promise&lt;Record&lt;string, number&gt;&gt; {
+    return getOntologyTermOccurences(this.getIds(filter), this.store);
+  }
+
+  /**
+   * Get number of occurrences of cell type terms for a set of ids.
+   *
+   * @param [filter] The filter.
+   * @returns Cell type term counts.
+   */
+  async getCellTypeTermOccurences(filter?: Filter): Promise&lt;Record&lt;string, number&gt;&gt; {
+    return getCellTypeTermOccurences(this.getIds(filter), this.store);
+  }
+
+  /**
+   * Get ontology term tree nodes
+   *
+   * @returns Ontology term counts.
+   */
+  async getOntologyTreeModel(): Promise&lt;OntologyTreeModel&gt; {
+    return getAnatomicalStructureTreeModel(this.store);
+  }
+
+  /**
+   * Get cell type term tree nodes
+   *
+   * @returns Ontology term counts.
+   */
+  async getCellTypeTreeModel(): Promise&lt;OntologyTreeModel&gt; {
+    return getCellTypeTreeModel(this.store);
+  }
+
+  /**
+   * Get reference organs
+   *
+   * @returns Ontology term counts.
+   */
+  async getReferenceOrgans(): Promise&lt;SpatialEntity[]&gt; {
+    return this.scene.getReferenceOrgans();
+  }
+
+  /**
+   * Get all nodes to form the 3D scene of reference body, organs, and tissues
+   *
+   * @param [filter] The filter.
+   * @returns A list of Spatial Scene Nodes for the 3D Scene
+   */
+  async getScene(filter?: Filter): Promise&lt;SpatialSceneNode[]&gt; {
+    this.graph.createGraph();
+    return this.scene.getScene(filter);
+  }
+
+  /**
+   * Get all nodes to form the 3D scene of reference organ and tissues
+   *
+   * @param [organIri] The Reference Organ IRI
+   * @param [filter] The filter.
+   * @returns A list of Spatial Scene Nodes for the 3D Scene
+   */
+  async getReferenceOrganScene(organIri: string, filter?: Filter): Promise&lt;SpatialSceneNode[]&gt; {
+    this.graph.createGraph();
+    return this.scene.getReferenceOrganScene(organIri, filter);
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'CCFDatabase.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1500 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Library ccf-shared documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Library ccf-shared documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >ApiEndpointDataSourceService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#doRequest" >doRequest</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#doRequest" >doRequest</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#doRequest" >doRequest</a>
+                            </li>
+                            <li>
+                                <a href="#getAggregateResults" >getAggregateResults</a>
+                            </li>
+                            <li>
+                                <a href="#getCellTypeTermOccurences" >getCellTypeTermOccurences</a>
+                            </li>
+                            <li>
+                                <a href="#getCellTypeTreeModel" >getCellTypeTreeModel</a>
+                            </li>
+                            <li>
+                                <a href="#getDatasetTechnologyNames" >getDatasetTechnologyNames</a>
+                            </li>
+                            <li>
+                                <a href="#getOntologyTermOccurences" >getOntologyTermOccurences</a>
+                            </li>
+                            <li>
+                                <a href="#getOntologyTreeModel" >getOntologyTreeModel</a>
+                            </li>
+                            <li>
+                                <a href="#getProviderNames" >getProviderNames</a>
+                            </li>
+                            <li>
+                                <a href="#getReferenceOrgans" >getReferenceOrgans</a>
+                            </li>
+                            <li>
+                                <a href="#getReferenceOrganScene" >getReferenceOrganScene</a>
+                            </li>
+                            <li>
+                                <a href="#getScene" >getScene</a>
+                            </li>
+                            <li>
+                                <a href="#getTissueBlockResults" >getTissueBlockResults</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(api: DefaultService, globalConfig: <a href="../injectables/GlobalConfigState.html" target="_self">GlobalConfigState&lt;ApiEndpointDataSourceOptions&gt;</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:94</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>api</td>
+                                                  
+                                                        <td>
+                                                                    <code>DefaultService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>globalConfig</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GlobalConfigState.html" target="_self" >GlobalConfigState&lt;ApiEndpointDataSourceOptions&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doRequest"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>doRequest</b></span>
+                        <a href="#doRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>doRequest(method: <a href="../undefineds/RequestMethod.html" target="_self">RequestMethod&lt; | T&gt;</a>, filter?: Filter | undefined, params?: P)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="184"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:184</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                        <li>P</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>method</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#RequestMethod" target="_self" >RequestMethod&lt; | T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter | undefined</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>params</td>
+                                    <td>
+                                            <code>P</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;T&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doRequest"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>doRequest</b></span>
+                        <a href="#doRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>doRequest(method: <a href="../undefineds/RequestMethod.html" target="_self">RequestMethod&lt; | T&gt;</a>, filter: Filter | undefined, params: P | undefined, reviver: <a href="../undefineds/DataReviver.html" target="_self">DataReviver&lt;T | U&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="189"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:189</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                        <li>P</li>
+                        <li>U</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>method</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#RequestMethod" target="_self" >RequestMethod&lt; | T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter | undefined</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>params</td>
+                                    <td>
+                                            <code>P | undefined</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>reviver</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#DataReviver" target="_self" >DataReviver&lt;T | U&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;U&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doRequest"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>doRequest</b></span>
+                        <a href="#doRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>doRequest(method: <a href="../undefineds/RequestMethod.html" target="_self">RequestMethod&lt; | &gt;</a>, filter: Filter | undefined, params?: P, reviver?: <a href="../undefineds/DataReviver.html" target="_self">DataReviver&lt; | &gt;</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:195</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>P</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>method</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#RequestMethod" target="_self" >RequestMethod&lt; | &gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter | undefined</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>params</td>
+                                    <td>
+                                            <code>P</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>reviver</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#DataReviver" target="_self" >DataReviver&lt; | &gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAggregateResults"></a>
+                    <span class="name">
+                        <span ><b>getAggregateResults</b></span>
+                        <a href="#getAggregateResults"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAggregateResults(filter?: Filter)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="145"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:145</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;AggregateResult[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCellTypeTermOccurences"></a>
+                    <span class="name">
+                        <span ><b>getCellTypeTermOccurences</b></span>
+                        <a href="#getCellTypeTermOccurences"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCellTypeTermOccurences(filter?: Filter)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="161"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:161</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;Record&lt;string, number&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCellTypeTreeModel"></a>
+                    <span class="name">
+                        <span ><b>getCellTypeTreeModel</b></span>
+                        <a href="#getCellTypeTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCellTypeTreeModel()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_NO_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatasetTechnologyNames"></a>
+                    <span class="name">
+                        <span ><b>getDatasetTechnologyNames</b></span>
+                        <a href="#getDatasetTechnologyNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatasetTechnologyNames()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_NO_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;string[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOntologyTermOccurences"></a>
+                    <span class="name">
+                        <span ><b>getOntologyTermOccurences</b></span>
+                        <a href="#getOntologyTermOccurences"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOntologyTermOccurences(filter?: Filter)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:153</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;Record&lt;string, number&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOntologyTreeModel"></a>
+                    <span class="name">
+                        <span ><b>getOntologyTreeModel</b></span>
+                        <a href="#getOntologyTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOntologyTreeModel()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_NO_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:113</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProviderNames"></a>
+                    <span class="name">
+                        <span ><b>getProviderNames</b></span>
+                        <a href="#getProviderNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProviderNames()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_NO_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;string[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReferenceOrgans"></a>
+                    <span class="name">
+                        <span ><b>getReferenceOrgans</b></span>
+                        <a href="#getReferenceOrgans"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getReferenceOrgans()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_NO_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:129</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;SpatialEntity[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReferenceOrganScene"></a>
+                    <span class="name">
+                        <span ><b>getReferenceOrganScene</b></span>
+                        <a href="#getReferenceOrganScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getReferenceOrganScene(organIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, filter?: Filter)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="177"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:177</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organIri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getScene"></a>
+                    <span class="name">
+                        <span ><b>getScene</b></span>
+                        <a href="#getScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getScene(filter?: Filter)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:169</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTissueBlockResults"></a>
+                    <span class="name">
+                        <span ><b>getTissueBlockResults</b></span>
+                        <a href="#getTissueBlockResults"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTissueBlockResults(filter?: Filter)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:137</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>
+                                            <code>Filter</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;TissueBlockResult[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Matrix4 } from &#x27;@math.gl/core&#x27;;
+import {
+  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+} from &#x27;ccf-database&#x27;;
+import { DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode } from &#x27;ccf-openapi/angular-client&#x27;;
+import { Observable, Subject } from &#x27;rxjs&#x27;;
+import { map, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
+import { Cacheable } from &#x27;ts-cacheable&#x27;;
+
+import { GlobalConfigState } from &#x27;../../config/global-config.state&#x27;;
+import { DataSource } from &#x27;./data-source&#x27;;
+
+
+export interface ApiEndpointDataSourceOptions {
+  remoteApiEndpoint: string;
+  hubmapToken?: string;
+}
+
+// Not exported from ts-cacheable!?
+type IObservableCacheConfig &#x3D; NonNullable&lt;Parameters&lt;typeof Cacheable&gt;[0]&gt;;
+
+type RequestMethod&lt;P, T&gt; &#x3D; (params: P) &#x3D;&gt; Observable&lt;T&gt;;
+type DataReviver&lt;T, U&gt; &#x3D; (data: T) &#x3D;&gt; U;
+
+interface DefaultParams {
+  token?: string;
+}
+
+interface FilterParams {
+  age?: MinMax;
+  ageRange?: string;
+  bmi?: MinMax;
+  bmiRange?: string;
+  ontologyTerms?: string[];
+  cellTypeTerms?: string[];
+  providers?: string[];
+  sex?: &#x27;both&#x27; | &#x27;female&#x27; | &#x27;male&#x27;;
+  technologies?: string[];
+}
+
+
+// Cache config
+const buster$ &#x3D; new Subject&lt;unknown&gt;();
+
+const CACHE_CONFIG_NO_PARAMS: IObservableCacheConfig &#x3D; {
+  cacheBusterObserver: buster$
+};
+
+const CACHE_CONFIG_PARAMS: IObservableCacheConfig &#x3D; {
+  cacheBusterObserver: buster$,
+  maxCacheCount: 4
+};
+
+
+// Utility
+function cast&lt;T&gt;(): (data: unknown) &#x3D;&gt; T {
+  return data &#x3D;&gt; data as T;
+}
+
+function rangeToMinMax(
+  range: [number, number] | undefined,
+  low: number, high: number
+): MinMax | undefined {
+  return range ? {
+    min: range[0] &gt; low ? range[0] : undefined,
+    max: range[1] &lt; high ? range[1] : undefined
+  } : undefined;
+}
+
+function filterToParams(filter?: Filter): FilterParams {
+  return {
+    age: rangeToMinMax(filter?.ageRange, 1, 110),
+    bmi: rangeToMinMax(filter?.bmiRange, 13, 83),
+    sex: filter?.sex?.toLowerCase?.() as FilterParams[&#x27;sex&#x27;],
+    ontologyTerms: filter?.ontologyTerms,
+    cellTypeTerms: filter?.cellTypeTerms,
+    providers: filter?.tmc,
+    technologies: filter?.technologies
+  };
+}
+
+function spatialSceneNodeReviver(nodes: RawSpatialSceneNode[]): SpatialSceneNode[] {
+  return nodes.map(node &#x3D;&gt; ({
+    ...(node as SpatialSceneNode),
+    transformMatrix: new Matrix4(node.transformMatrix ?? [])
+  }));
+}
+
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class ApiEndpointDataSourceService implements DataSource {
+  constructor(
+    private readonly api: DefaultService,
+    private readonly globalConfig: GlobalConfigState&lt;ApiEndpointDataSourceOptions&gt;
+  ) {
+    globalConfig.getOption(&#x27;hubmapToken&#x27;).subscribe(buster$);
+  }
+
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getProviderNames(): Observable&lt;string[]&gt; {
+    return this.doRequest(params &#x3D;&gt; this.api.providerNames(params));
+  }
+
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getDatasetTechnologyNames(): Observable&lt;string[]&gt; {
+    return this.doRequest(params &#x3D;&gt; this.api.technologyNames(params));
+  }
+
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getOntologyTreeModel(): Observable&lt;OntologyTreeModel&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.ontologyTreeModel(params),
+      undefined, {}, cast&lt;OntologyTreeModel&gt;()
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getCellTypeTreeModel(): Observable&lt;OntologyTreeModel&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.cellTypeTreeModel(params),
+      undefined, {}, cast&lt;OntologyTreeModel&gt;()
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getReferenceOrgans(): Observable&lt;SpatialEntity[]&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.referenceOrgans(params),
+      undefined, {}, cast&lt;SpatialEntity[]&gt;()
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getTissueBlockResults(filter?: Filter): Observable&lt;TissueBlockResult[]&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.tissueBlocks(params),
+      filter, {}, cast&lt;TissueBlockResult[]&gt;()
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getAggregateResults(filter?: Filter): Observable&lt;AggregateResult[]&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.aggregateResults(params),
+      filter
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getOntologyTermOccurences(filter?: Filter): Observable&lt;Record&lt;string, number&gt;&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.ontologyTermOccurences(params),
+      filter
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getCellTypeTermOccurences(filter?: Filter): Observable&lt;Record&lt;string, number&gt;&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.cellTypeTermOccurences(params),
+      filter
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getScene(filter?: Filter): Observable&lt;SpatialSceneNode[]&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.scene(params),
+      filter, {}, spatialSceneNodeReviver
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getReferenceOrganScene(organIri: string, filter?: Filter): Observable&lt;SpatialSceneNode[]&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.referenceOrganScene(params),
+      filter, { organIri }, spatialSceneNodeReviver
+    );
+  }
+
+  private doRequest&lt;T, P&gt;(
+    method: RequestMethod&lt;DefaultParams &amp; FilterParams &amp; P, T&gt;,
+    filter?: Filter | undefined,
+    params?: P
+  ): Observable&lt;T&gt;;
+  private doRequest&lt;T, P, U&gt;(
+    method: RequestMethod&lt;DefaultParams &amp; FilterParams &amp; P, T&gt;,
+    filter: Filter | undefined,
+    params: P | undefined,
+    reviver: DataReviver&lt;T, U&gt;
+  ): Observable&lt;U&gt;;
+  private doRequest&lt;P&gt;(
+    method: RequestMethod&lt;unknown, unknown&gt;,
+    filter: Filter | undefined,
+    params?: P,
+    reviver?: DataReviver&lt;unknown, unknown&gt;
+  ): Observable&lt;unknown&gt; {
+    const { api, globalConfig } &#x3D; this;
+    const requestParams &#x3D; { ...filterToParams(filter), ...params };
+
+    return globalConfig.getOption(&#x27;remoteApiEndpoint&#x27;).pipe(
+      take(1),
+      tap(endpoint &#x3D;&gt; (api.configuration.basePath &#x3D; endpoint)),
+      switchMap(() &#x3D;&gt; method(requestParams)),
+      map(data &#x3D;&gt; reviver ? reviver(data) : data)
+    );
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ApiEndpointDataSourceService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

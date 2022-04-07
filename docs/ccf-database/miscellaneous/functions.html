@@ -1,0 +1,4279 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Library ccf-database documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Library ccf-database documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-functions">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Functions</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#addHubmapDataToStore" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>addHubmapDataToStore</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#applySpatialPlacement" title="projects/ccf-database/src/lib/ccf-spatial-graph.ts" ><b>applySpatialPlacement</b>&nbsp;&nbsp;&nbsp;(projects/.../ccf-spatial-graph.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#create" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>create</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#createRuiOrganLookup" title="projects/ccf-database/src/lib/hubmap/hubmap-data.ts" ><b>createRuiOrganLookup</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#debugDonors" title="projects/ccf-database/src/lib/hubmap/hubmap-data.ts" ><b>debugDonors</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#differenceCallback" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>differenceCallback</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#doApiSearch" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>doApiSearch</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#doSearchRequest" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>doSearchRequest</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterByAge" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByAge</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterByBMI" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByBMI</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterByCellTypeTerms" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByCellTypeTerms</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterByGroupName" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByGroupName</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterByHasSpatialEntity" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByHasSpatialEntity</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterByOntologyTerms" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByOntologyTerms</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterBySex" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterBySex</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterByTechnology" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByTechnology</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterWithDataset" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterWithDataset</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterWithDonor" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterWithDonor</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterWithSpatialEntity" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterWithSpatialEntity</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#findIds" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>findIds</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getAggregateResults" title="projects/ccf-database/src/lib/queries/aggregate-results-n3.ts" ><b>getAggregateResults</b>&nbsp;&nbsp;&nbsp;(projects/.../aggregate-results-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getAllEntities" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>getAllEntities</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getAnatomicalStructureMapping" title="projects/ccf-database/src/lib/queries/ontology-term-occurences-n3.ts" ><b>getAnatomicalStructureMapping</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-term-occurences-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getAnatomicalStructuresSlowly" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getAnatomicalStructuresSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getAnatomicalStructureTreeModel" title="projects/ccf-database/src/lib/queries/ontology-tree-n3.ts" ><b>getAnatomicalStructureTreeModel</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getApiSearchBody" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>getApiSearchBody</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getApiSearchHeaders" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>getApiSearchHeaders</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getCellTypeTermOccurences" title="projects/ccf-database/src/lib/queries/ontology-term-occurences-n3.ts" ><b>getCellTypeTermOccurences</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-term-occurences-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getCellTypeTreeModel" title="projects/ccf-database/src/lib/queries/ontology-tree-n3.ts" ><b>getCellTypeTreeModel</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getDatasetResult" title="projects/ccf-database/src/lib/queries/tissue-block-result-n3.ts" ><b>getDatasetResult</b>&nbsp;&nbsp;&nbsp;(projects/.../tissue-block-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getDatasetTechnologyNames" title="projects/ccf-database/src/lib/queries/aggregate-results-n3.ts" ><b>getDatasetTechnologyNames</b>&nbsp;&nbsp;&nbsp;(projects/.../aggregate-results-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getDonorResultSlowly" title="projects/ccf-database/src/lib/queries/tissue-block-result-n3.ts" ><b>getDonorResultSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../tissue-block-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getExtractionSetSlowly" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getExtractionSetSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getExtractionSetsSlowly" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getExtractionSetsSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getOntologyTermOccurences" title="projects/ccf-database/src/lib/queries/ontology-term-occurences-n3.ts" ><b>getOntologyTermOccurences</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-term-occurences-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getOntologyTreeModelSlowly" title="projects/ccf-database/src/lib/queries/ontology-tree-n3.ts" ><b>getOntologyTreeModelSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getOntologyTreeNode" title="projects/ccf-database/src/lib/queries/ontology-tree-n3.ts" ><b>getOntologyTreeNode</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getProviderNames" title="projects/ccf-database/src/lib/queries/aggregate-results-n3.ts" ><b>getProviderNames</b>&nbsp;&nbsp;&nbsp;(projects/.../aggregate-results-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getReferenceOrgansSlowly" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getReferenceOrgansSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSpatialEntityForEntitySlowly" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getSpatialEntityForEntitySlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSpatialEntityMapping" title="projects/ccf-database/src/lib/queries/ontology-term-occurences-n3.ts" ><b>getSpatialEntityMapping</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-term-occurences-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSpatialEntitySlowly" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getSpatialEntitySlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSpatialObjectReferenceSlowly" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getSpatialObjectReferenceSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSpatialPlacementSlowly" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getSpatialPlacementSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getTissueBlockResultSlowly" title="projects/ccf-database/src/lib/queries/tissue-block-result-n3.ts" ><b>getTissueBlockResultSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../tissue-block-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getTissueSectionResult" title="projects/ccf-database/src/lib/queries/tissue-block-result-n3.ts" ><b>getTissueSectionResult</b>&nbsp;&nbsp;&nbsp;(projects/.../tissue-block-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#hubmapResponseAsJsonLd" title="projects/ccf-database/src/lib/hubmap/hubmap-data.ts" ><b>hubmapResponseAsJsonLd</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#main" title="projects/ccf-database/src/cache-ccf-api-data.ts" ><b>main</b>&nbsp;&nbsp;&nbsp;(projects/.../cache-ccf-api-data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#reverseMapping" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>reverseMapping</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#searchHubmap" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>searchHubmap</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addHubmapDataToStore"></a>
+                    <span class="name">
+                        <span ><b>addHubmapDataToStore</b></span>
+                        <a href="#addHubmapDataToStore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addHubmapDataToStore(store, dataUrl, serviceType, serviceToken?, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Adds hubmap data from a url to the triple store.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>dataUrl</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The data url.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>serviceType</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The service type.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>serviceToken</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>assetsApi</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>portalUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doApiSearch"></a>
+                    <span class="name">
+                        <span ><b>doApiSearch</b></span>
+                        <a href="#doApiSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>doApiSearch(url, token?, query?)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>url</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>token</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>query</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SearchResultJson.html" target="_self" >Promise&lt;SearchResultJson | undefined&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doSearchRequest"></a>
+                    <span class="name">
+                        <span ><b>doSearchRequest</b></span>
+                        <a href="#doSearchRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>doSearchRequest(url, init?)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>url</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>init</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SearchResultJson.html" target="_self" >Promise&lt;SearchResultJson | undefined&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getApiSearchBody"></a>
+                    <span class="name">
+                        <span ><b>getApiSearchBody</b></span>
+                        <a href="#getApiSearchBody"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getApiSearchBody(from, size, query?)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>from</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>size</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>query</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getApiSearchHeaders"></a>
+                    <span class="name">
+                        <span ><b>getApiSearchHeaders</b></span>
+                        <a href="#getApiSearchHeaders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getApiSearchHeaders(token?)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>token</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Headers</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchHubmap"></a>
+                    <span class="name">
+                        <span ><b>searchHubmap</b></span>
+                        <a href="#searchHubmap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchHubmap(dataUrl, serviceType, query?, serviceToken?, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Search the HuBMAP Search API and return CCF-compatible JSON-LD data</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dataUrl</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the search API url</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>serviceType</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>&#39;static&#39; if a statically saved response or &#39;search-api&#39; if querying the search-api live</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>query</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>the elastic search query to use</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>serviceToken</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>the api key to the search-api</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>assetsApi</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the assets api endpoint</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>portalUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the portal url to point to</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;JsonLd | undefined&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>CCF-compatible JSON-LD data or undefined on error</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/ccf-spatial-graph.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applySpatialPlacement"></a>
+                    <span class="name">
+                        <span ><b>applySpatialPlacement</b></span>
+                        <a href="#applySpatialPlacement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applySpatialPlacement(tx, placement)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>tx</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>placement</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Matrix4</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/queries/spatial-result-n3.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>create(store, iri, type, mapping)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates an object of the specified type using quads from the store.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The data identifier.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Type name.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>mapping</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Property mappings.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>T</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A new data object.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAnatomicalStructuresSlowly"></a>
+                    <span class="name">
+                        <span ><b>getAnatomicalStructuresSlowly</b></span>
+                        <a href="#getAnatomicalStructuresSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAnatomicalStructuresSlowly(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the anatomical structures associated with a reference organ.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The data identifier (reference organ).</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialEntity.html" target="_self" >SpatialEntity[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The new entity.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getExtractionSetSlowly"></a>
+                    <span class="name">
+                        <span ><b>getExtractionSetSlowly</b></span>
+                        <a href="#getExtractionSetSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getExtractionSetSlowly(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates an extraction set data object.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The data identifier.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/ExtractionSet.html" target="_self" >ExtractionSet</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The new entity.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getExtractionSetsSlowly"></a>
+                    <span class="name">
+                        <span ><b>getExtractionSetsSlowly</b></span>
+                        <a href="#getExtractionSetsSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getExtractionSetsSlowly(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets extraction sets associated with a reference organ</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The data identifier (the reference organ).</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/ExtractionSet.html" target="_self" >ExtractionSet[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A set of extraction sets associated with the reference organ</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReferenceOrgansSlowly"></a>
+                    <span class="name">
+                        <span ><b>getReferenceOrgansSlowly</b></span>
+                        <a href="#getReferenceOrgansSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getReferenceOrgansSlowly(store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets all reference organs in the triple store</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialEntity.html" target="_self" >SpatialEntity[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>All the reference organs.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSpatialEntityForEntitySlowly"></a>
+                    <span class="name">
+                        <span ><b>getSpatialEntityForEntitySlowly</b></span>
+                        <a href="#getSpatialEntityForEntitySlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSpatialEntityForEntitySlowly(store, entityIRI)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a spatial entity based on another entity in the store.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>entityIRI</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The indentifier of the store entity.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialEntity.html" target="_self" >SpatialEntity | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A new entity.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSpatialEntitySlowly"></a>
+                    <span class="name">
+                        <span ><b>getSpatialEntitySlowly</b></span>
+                        <a href="#getSpatialEntitySlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSpatialEntitySlowly(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a spatial entity data object.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The data identifier.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialEntity.html" target="_self" >SpatialEntity</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The new entity.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSpatialObjectReferenceSlowly"></a>
+                    <span class="name">
+                        <span ><b>getSpatialObjectReferenceSlowly</b></span>
+                        <a href="#getSpatialObjectReferenceSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSpatialObjectReferenceSlowly(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a spatial object reference.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The data identifier.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialObjectReference.html" target="_self" >SpatialObjectReference</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The new reference.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSpatialPlacementSlowly"></a>
+                    <span class="name">
+                        <span ><b>getSpatialPlacementSlowly</b></span>
+                        <a href="#getSpatialPlacementSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSpatialPlacementSlowly(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a spatial placement object.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The data identifier.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialPlacement.html" target="_self" >SpatialPlacement</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>THe new placement object.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reverseMapping"></a>
+                    <span class="name">
+                        <span ><b>reverseMapping</b></span>
+                        <a href="#reverseMapping"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reverseMapping(mapping)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reverses the keys and values in a mapping.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>mapping</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The mapping to reverse.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>literal type</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The reversed mapping.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/hubmap/hubmap-data.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createRuiOrganLookup"></a>
+                    <span class="name">
+                        <span ><b>createRuiOrganLookup</b></span>
+                        <a href="#createRuiOrganLookup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createRuiOrganLookup()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>literal type</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="debugDonors"></a>
+                    <span class="name">
+                        <span ><b>debugDonors</b></span>
+                        <a href="#debugDonors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>debugDonors(donors)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>donors</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hubmapResponseAsJsonLd"></a>
+                    <span class="name">
+                        <span ><b>hubmapResponseAsJsonLd</b></span>
+                        <a href="#hubmapResponseAsJsonLd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hubmapResponseAsJsonLd(data, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serviceToken?, debug)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Converts a hubmap response object into JsonLd.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The hubmap data.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>assetsApi</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>portalUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>serviceToken</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>debug</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>JsonLd</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The converted data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/queries/find-ids-n3.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="differenceCallback"></a>
+                    <span class="name">
+                        <span ><b>differenceCallback</b></span>
+                        <a href="#differenceCallback"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>differenceCallback(seen, newSeen)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a callback function that adds ids to a second set iff it exists in the first set.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The first set of ids.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>newSeen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The second set to add ids to.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The callback function.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByAge"></a>
+                    <span class="name">
+                        <span ><b>filterByAge</b></span>
+                        <a href="#filterByAge"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByAge(store, seen, minAge, maxAge)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by age.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>minAge</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Minimum age.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>maxAge</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Maximum age.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with the specified age.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByBMI"></a>
+                    <span class="name">
+                        <span ><b>filterByBMI</b></span>
+                        <a href="#filterByBMI"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByBMI(store, seen, minBMI, maxBMI)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by BMI.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>minBMI</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Minimum BMI.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>maxBMI</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Maximum BMI.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with the specified BMI.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByCellTypeTerms"></a>
+                    <span class="name">
+                        <span ><b>filterByCellTypeTerms</b></span>
+                        <a href="#filterByCellTypeTerms"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByCellTypeTerms(store, seen, terms)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by cell type terms.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>terms</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Cell type terms to filter on.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with the specified cell type terms.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByGroupName"></a>
+                    <span class="name">
+                        <span ><b>filterByGroupName</b></span>
+                        <a href="#filterByGroupName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByGroupName(store, seen, groupNames)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by group names.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>groupNames</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Group names to filter on.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with the specified group names.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByHasSpatialEntity"></a>
+                    <span class="name">
+                        <span ><b>filterByHasSpatialEntity</b></span>
+                        <a href="#filterByHasSpatialEntity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByHasSpatialEntity(store, seen, hasSpatialEntity)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by spatial entities.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>hasSpatialEntity</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Whether the filtered objects should have a spatial entity.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with/without spatial entities.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByOntologyTerms"></a>
+                    <span class="name">
+                        <span ><b>filterByOntologyTerms</b></span>
+                        <a href="#filterByOntologyTerms"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByOntologyTerms(store, seen, terms)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by ontology terms.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>terms</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Ontology terms to filter on.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with the specified ontology terms.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterBySex"></a>
+                    <span class="name">
+                        <span ><b>filterBySex</b></span>
+                        <a href="#filterBySex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterBySex(store, seen, sex)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by sex.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>sex</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Sex to filter on.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with the specified sex.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByTechnology"></a>
+                    <span class="name">
+                        <span ><b>filterByTechnology</b></span>
+                        <a href="#filterByTechnology"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByTechnology(store, seen, technologies)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by technology names.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>technologies</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Technology names to filter on.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with the specified technology names.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterWithDataset"></a>
+                    <span class="name">
+                        <span ><b>filterWithDataset</b></span>
+                        <a href="#filterWithDataset"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterWithDataset(store, seen, callback)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>callback</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterWithDonor"></a>
+                    <span class="name">
+                        <span ><b>filterWithDonor</b></span>
+                        <a href="#filterWithDonor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterWithDonor(store, seen, callback)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>callback</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterWithSpatialEntity"></a>
+                    <span class="name">
+                        <span ><b>filterWithSpatialEntity</b></span>
+                        <a href="#filterWithSpatialEntity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterWithSpatialEntity(store, seen, callback)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>callback</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findIds"></a>
+                    <span class="name">
+                        <span ><b>findIds</b></span>
+                        <a href="#findIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>findIds(store, filter)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Finds all ids of object matching a filter.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>filter</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The filter to limit objects.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A set of all ids matching the filter.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllEntities"></a>
+                    <span class="name">
+                        <span ><b>getAllEntities</b></span>
+                        <a href="#getAllEntities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllEntities(store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets all object ids in a store.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A set of all ids.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/queries/aggregate-results-n3.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAggregateResults"></a>
+                    <span class="name">
+                        <span ><b>getAggregateResults</b></span>
+                        <a href="#getAggregateResults"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAggregateResults(ids, store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Computes aggregate results.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ids</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Ids of objects to calculate aggregate over.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/AggregateResult.html" target="_self" >AggregateResult[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The list of aggregate results.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatasetTechnologyNames"></a>
+                    <span class="name">
+                        <span ><b>getDatasetTechnologyNames</b></span>
+                        <a href="#getDatasetTechnologyNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatasetTechnologyNames(store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get a list of technology names used by datasets</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>string[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>list of unique technology names in the data</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProviderNames"></a>
+                    <span class="name">
+                        <span ><b>getProviderNames</b></span>
+                        <a href="#getProviderNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProviderNames(store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get a list of provider names from the database</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>string[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>list of unique provider names in the data</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/queries/ontology-term-occurences-n3.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAnatomicalStructureMapping"></a>
+                    <span class="name">
+                        <span ><b>getAnatomicalStructureMapping</b></span>
+                        <a href="#getAnatomicalStructureMapping"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAnatomicalStructureMapping(ids, store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ids</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Map&lt;string, Set&lt;string&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCellTypeTermOccurences"></a>
+                    <span class="name">
+                        <span ><b>getCellTypeTermOccurences</b></span>
+                        <a href="#getCellTypeTermOccurences"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCellTypeTermOccurences(ids, store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get number of occurrences of cell type terms for a set of ids.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ids</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Ids of objects to calculate aggregate over.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Record&lt;string, number&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Ontology term counts.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOntologyTermOccurences"></a>
+                    <span class="name">
+                        <span ><b>getOntologyTermOccurences</b></span>
+                        <a href="#getOntologyTermOccurences"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOntologyTermOccurences(ids, store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get number of occurrences of ontology terms for a set of ids.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ids</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Ids of objects to calculate aggregate over.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Record&lt;string, number&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Ontology term counts.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSpatialEntityMapping"></a>
+                    <span class="name">
+                        <span ><b>getSpatialEntityMapping</b></span>
+                        <a href="#getSpatialEntityMapping"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSpatialEntityMapping(ids, store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ids</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Map&lt;string, Set&lt;string&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/queries/ontology-tree-n3.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAnatomicalStructureTreeModel"></a>
+                    <span class="name">
+                        <span ><b>getAnatomicalStructureTreeModel</b></span>
+                        <a href="#getAnatomicalStructureTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAnatomicalStructureTreeModel(store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/OntologyTreeModel.html" target="_self" >OntologyTreeModel</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCellTypeTreeModel"></a>
+                    <span class="name">
+                        <span ><b>getCellTypeTreeModel</b></span>
+                        <a href="#getCellTypeTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCellTypeTreeModel(store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/OntologyTreeModel.html" target="_self" >OntologyTreeModel</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOntologyTreeModelSlowly"></a>
+                    <span class="name">
+                        <span ><b>getOntologyTreeModelSlowly</b></span>
+                        <a href="#getOntologyTreeModelSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOntologyTreeModelSlowly(store, rootIri, rootLabel, relationshipIri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rootIri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>rootLabel</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>relationshipIri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/OntologyTreeModel.html" target="_self" >OntologyTreeModel</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOntologyTreeNode"></a>
+                    <span class="name">
+                        <span ><b>getOntologyTreeNode</b></span>
+                        <a href="#getOntologyTreeNode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOntologyTreeNode(store, iri, relationshipIri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>relationshipIri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/OntologyTreeNode.html" target="_self" >OntologyTreeNode</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/queries/tissue-block-result-n3.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatasetResult"></a>
+                    <span class="name">
+                        <span ><b>getDatasetResult</b></span>
+                        <a href="#getDatasetResult"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatasetResult(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/DatasetResult.html" target="_self" >DatasetResult</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDonorResultSlowly"></a>
+                    <span class="name">
+                        <span ><b>getDonorResultSlowly</b></span>
+                        <a href="#getDonorResultSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDonorResultSlowly(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Extracts a single donor result from the triple store.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The entity id.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/DonorResult.html" target="_self" >DonorResult</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The list data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTissueBlockResultSlowly"></a>
+                    <span class="name">
+                        <span ><b>getTissueBlockResultSlowly</b></span>
+                        <a href="#getTissueBlockResultSlowly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTissueBlockResultSlowly(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Extracts a single tissue block result from the triple store.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The entity id.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/TissueBlockResult.html" target="_self" >TissueBlockResult</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The list data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTissueSectionResult"></a>
+                    <span class="name">
+                        <span ><b>getTissueSectionResult</b></span>
+                        <a href="#getTissueSectionResult"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTissueSectionResult(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Extracts a single tissue section result from the triple store.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The entity id.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/TissueSectionResult.html" target="_self" >TissueSectionResult</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The list data.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/cache-ccf-api-data.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="main"></a>
+                    <span class="name">
+                        <span ><b>main</b></span>
+                        <a href="#main"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>main(inputCCF, outputDir)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>inputCCF</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>outputDir</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-functions';
+            var COMPODOC_CURRENT_PAGE_URL = 'functions.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

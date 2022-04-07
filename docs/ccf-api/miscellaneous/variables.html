@@ -1,0 +1,666 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Library ccf-api documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Library ccf-api documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Variables</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#browserRoute" title="projects/ccf-api/src/lib/routes/browser.ts" ><b>browserRoute</b>&nbsp;&nbsp;&nbsp;(projects/.../browser.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CACHE_DIR" title="projects/ccf-api/src/lib/routes/v1/utils/use-cached-result.ts" ><b>CACHE_DIR</b>&nbsp;&nbsp;&nbsp;(projects/.../use-cached-result.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#checkRoutesEnabled" title="projects/ccf-api/src/lib/routes/v1/gtex/index.ts" ><b>checkRoutesEnabled</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#checkRoutesEnabled" title="projects/ccf-api/src/lib/routes/v1/hubmap/index.ts" ><b>checkRoutesEnabled</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DEFAULT_GTEX_RUI_LOCATIONS" title="projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts" ><b>DEFAULT_GTEX_RUI_LOCATIONS</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#env" title="projects/ccf-api/src/lib/environment.ts" ><b>env</b>&nbsp;&nbsp;&nbsp;(projects/.../environment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FILTER_DEFAULTS" title="projects/ccf-api/src/lib/routes/v1/utils/parse-filter.ts" ><b>FILTER_DEFAULTS</b>&nbsp;&nbsp;&nbsp;(projects/.../parse-filter.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GTEX_API_URL" title="projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts" ><b>GTEX_API_URL</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#methods" title="projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts" ><b>methods</b>&nbsp;&nbsp;&nbsp;(projects/.../auto-prune-lru-cache.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#mutableProperties" title="projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts" ><b>mutableProperties</b>&nbsp;&nbsp;&nbsp;(projects/.../auto-prune-lru-cache.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#openApiRoute" title="projects/ccf-api/src/lib/routes/browser.ts" ><b>openApiRoute</b>&nbsp;&nbsp;&nbsp;(projects/.../browser.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#readonlyProperties" title="projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts" ><b>readonlyProperties</b>&nbsp;&nbsp;&nbsp;(projects/.../auto-prune-lru-cache.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#routes" title="projects/ccf-api/src/lib/routes/browser.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../browser.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/gtex/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/hubmap/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#THROW_IF_NOT_FOUND" title="projects/ccf-api/src/lib/environment.ts" ><b>THROW_IF_NOT_FOUND</b>&nbsp;&nbsp;&nbsp;(projects/.../environment.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>projects/ccf-api/src/lib/routes/browser.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="browserRoute"></a>
+                    <span class="name">
+                        <span ><b>browserRoute</b></span>
+                        <a href="#browserRoute"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>RequestHandler</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(_req, res, _next) &#x3D;&gt; {
+
+  res.send(&#x60;&lt;!doctype html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1, shrink-to-fit&#x3D;no&quot;&gt;
+    &lt;title&gt;CCF-API Browser&lt;/title&gt;
+
+    &lt;script src&#x3D;&quot;https://cdn.jsdelivr.net/npm/@stoplight/elements/web-components.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https://cdn.jsdelivr.net/npm/@stoplight/elements/styles.min.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;elements-api apiDescriptionUrl&#x3D;&quot;ccf-api-spec.yaml&quot; router&#x3D;&quot;hash&quot; /&gt;
+  &lt;/body&gt;
+&lt;/html&gt;&#x60;);
+
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openApiRoute"></a>
+                    <span class="name">
+                        <span ><b>openApiRoute</b></span>
+                        <a href="#openApiRoute"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>RequestHandler</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(_req, res, _next) &#x3D;&gt; {
+  const apiFile &#x3D; resolve(&#x27;ccf-api-spec.yaml&#x27;);
+  res.sendFile(apiFile);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routes"></a>
+                    <span class="name">
+                        <span ><b>routes</b></span>
+                        <a href="#routes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Router()
+  .get(&#x27;/&#x27;, browserRoute)
+  .get(&#x27;/ccf-api-spec.yaml&#x27;, openApiRoute)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ccf-api/src/lib/routes/v1/utils/use-cached-result.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CACHE_DIR"></a>
+                    <span class="name">
+                        <span ><b>CACHE_DIR</b></span>
+                        <a href="#CACHE_DIR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>get(&#x27;CCF_API_CACHE&#x27;, &#x27;projects/ccf-api/ccf-cache&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ccf-api/src/lib/routes/v1/gtex/index.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkRoutesEnabled"></a>
+                    <span class="name">
+                        <span ><b>checkRoutesEnabled</b></span>
+                        <a href="#checkRoutesEnabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>RequestHandler</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(_req, _res, next) &#x3D;&gt; {
+  const enabled &#x3D; env.GTEX_ROUTES &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+  enabled ? next() : next(&#x27;router&#x27;);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routes"></a>
+                    <span class="name">
+                        <span ><b>routes</b></span>
+                        <a href="#routes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Router()
+  .use(checkRoutesEnabled)
+  .get(&#x27;/rui_locations.jsonld&#x27;, ruiLocations())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ccf-api/src/lib/routes/v1/hubmap/index.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkRoutesEnabled"></a>
+                    <span class="name">
+                        <span ><b>checkRoutesEnabled</b></span>
+                        <a href="#checkRoutesEnabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>RequestHandler</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(_req, _res, next) &#x3D;&gt; {
+  const enabled &#x3D; env.HUBMAP_ROUTES &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+  enabled ? next() : next(&#x27;router&#x27;);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routes"></a>
+                    <span class="name">
+                        <span ><b>routes</b></span>
+                        <a href="#routes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Router()
+  .use(checkRoutesEnabled)
+  .get(&#x27;/rui_locations.jsonld&#x27;, ruiLocations())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEFAULT_GTEX_RUI_LOCATIONS"></a>
+                    <span class="name">
+                        <span ><b>DEFAULT_GTEX_RUI_LOCATIONS</b></span>
+                        <a href="#DEFAULT_GTEX_RUI_LOCATIONS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;projects/ccf-eui/src/assets/gtex/data/rui_locations.jsonld&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GTEX_API_URL"></a>
+                    <span class="name">
+                        <span ><b>GTEX_API_URL</b></span>
+                        <a href="#GTEX_API_URL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;https://gtexportal.org/rest/v1/dataset/tissueInfo?datasetId&#x3D;gtex_v8&amp;format&#x3D;json&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ccf-api/src/lib/environment.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="env"></a>
+                    <span class="name">
+                        <span ><b>env</b></span>
+                        <a href="#env"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(() &#x3D;&gt; {
+  config();
+  return process.env;
+})()</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="THROW_IF_NOT_FOUND"></a>
+                    <span class="name">
+                        <span ><b>THROW_IF_NOT_FOUND</b></span>
+                        <a href="#THROW_IF_NOT_FOUND"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Symbol(&#x27;Indicator that an error should be thrown&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ccf-api/src/lib/routes/v1/utils/parse-filter.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FILTER_DEFAULTS"></a>
+                    <span class="name">
+                        <span ><b>FILTER_DEFAULTS</b></span>
+                        <a href="#FILTER_DEFAULTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Partial&lt;Filter&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  sex: &#x27;Both&#x27;,
+  ageRange: undefined,
+  bmiRange: undefined,
+  tmc: [],
+  technologies: [],
+  ontologyTerms: [],
+  cellTypeTerms: []
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="methods"></a>
+                    <span class="name">
+                        <span ><b>methods</b></span>
+                        <a href="#methods"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  // NOTE: No set method as it is overwritten by AutoPruneLRUCache
+  &#x27;has&#x27;, &#x27;get&#x27;, &#x27;del&#x27;, &#x27;peek&#x27;,
+  &#x27;keys&#x27;, &#x27;values&#x27;,
+  &#x27;forEach&#x27;, &#x27;rforEach&#x27;,
+  &#x27;prune&#x27;, &#x27;reset&#x27;,
+  &#x27;dump&#x27;, &#x27;load&#x27;
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mutableProperties"></a>
+                    <span class="name">
+                        <span ><b>mutableProperties</b></span>
+                        <a href="#mutableProperties"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  &#x27;lengthCalculator&#x27;, &#x27;allowStale&#x27;, &#x27;max&#x27;, &#x27;maxAge&#x27;
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="readonlyProperties"></a>
+                    <span class="name">
+                        <span ><b>readonlyProperties</b></span>
+                        <a href="#readonlyProperties"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  &#x27;length&#x27;, &#x27;itemCount&#x27;
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ccf-api/src/lib/routes/v1/index.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routes"></a>
+                    <span class="name">
+                        <span ><b>routes</b></span>
+                        <a href="#routes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Router()
+  .use(cacheResponses())
+  .use(&#x27;/hubmap&#x27;, hubmapRoutes)
+  .use(&#x27;/gtex&#x27;, gtexRoutes)
+  .get(&#x27;/tissue-blocks&#x27;, forwardDatabaseQuery(&#x27;getTissueBlockResults&#x27;))
+  .get(&#x27;/technology-names&#x27;, forwardDatabaseQuery(&#x27;getDatasetTechnologyNames&#x27;))
+  .get(&#x27;/provider-names&#x27;, forwardDatabaseQuery(&#x27;getProviderNames&#x27;))
+  .get(&#x27;/aggregate-results&#x27;, forwardDatabaseQuery(&#x27;getAggregateResults&#x27;))
+  .get(&#x27;/ontology-term-occurences&#x27;, forwardDatabaseQuery(&#x27;getOntologyTermOccurences&#x27;))
+  .get(&#x27;/cell-type-term-occurences&#x27;, forwardDatabaseQuery(&#x27;getCellTypeTermOccurences&#x27;))
+  .get(&#x27;/ontology-tree-model&#x27;, useCachedResult(&#x27;ontology-tree-model.json&#x27;), forwardDatabaseQuery(&#x27;getOntologyTreeModel&#x27;))
+  .get(&#x27;/cell-type-tree-model&#x27;, useCachedResult(&#x27;cell-type-tree-model.json&#x27;), forwardDatabaseQuery(&#x27;getCellTypeTreeModel&#x27;))
+  .get(&#x27;/reference-organs&#x27;, useCachedResult(&#x27;reference-organs.json&#x27;), forwardDatabaseQuery(&#x27;getReferenceOrgans&#x27;))
+  .get(&#x27;/scene&#x27;, forwardDatabaseQuery(&#x27;getScene&#x27;))
+  .get(&#x27;/reference-organ-scene&#x27;, getReferenceOrganSceneHandler())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
