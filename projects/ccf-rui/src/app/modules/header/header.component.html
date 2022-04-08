@@ -9,8 +9,8 @@
 </ng-template>
 
 <ng-template #logo>
-  <a class="link portal" href="https://ingest.hubmapconsortium.org/" rel="noreferrer noopener"
-     matTooltip="Human BioMolecular Atlas Project" matTooltipPosition="right">
+  <a class="link portal" [href]="homeUrl" rel="noreferrer noopener"
+    [matTooltip]="logoTooltip" matTooltipPosition="right">
     <div class="logo" aria-hidden="false" aria-label="Reset tool">
     </div>
   </a>
