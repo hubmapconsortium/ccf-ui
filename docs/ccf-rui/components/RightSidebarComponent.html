@@ -1,0 +1,745 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application ccf-rui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Application ccf-rui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  RightSidebarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The right sidebar</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-right-sidebar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./right-sidebar.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./right-sidebar.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#clsName" >clsName</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#modalClosed" >modalClosed</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class" >class</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(model: <a href="../injectables/ModelState.html" target="_self">ModelState</a>, registration: <a href="../injectables/RegistrationState.html" target="_self">RegistrationState</a>, page: <a href="../injectables/PageState.html" target="_self">PageState</a>, astags: <a href="../injectables/AnatomicalStructureTagState.html" target="_self">AnatomicalStructureTagState</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of right sidebar component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>model</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ModelState.html" target="_self" >ModelState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Model state service</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>registration</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RegistrationState.html" target="_self" >RegistrationState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Registration state service</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>page</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PageState.html" target="_self" >PageState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The page state</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>astags</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AnatomicalStructureTagState.html" target="_self" >AnatomicalStructureTagState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The anatomical structure tags state</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalClosed"></a>
+                        <b>modalClosed</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:23</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether or not the initial registration modal has been closed</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;ccf-right-sidebar&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-right-sidebar&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class name</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clsName"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>clsName</b></span>
+                        <a href="#clsName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-right-sidebar&#x27;</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @HostBinding(&#x27;class&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class name</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding, Input } from &#x27;@angular/core&#x27;;
+
+import { ModelState } from &#x27;../../core/store/model/model.state&#x27;;
+import { RegistrationState } from &#x27;../../core/store/registration/registration.state&#x27;;
+import { PageState } from &#x27;../../core/store/page/page.state&#x27;;
+import { AnatomicalStructureTagState } from &#x27;../../core/store/anatomical-structure-tags/anatomical-structure-tags.state&#x27;;
+
+
+/**
+ * The right sidebar
+ */
+@Component({
+  selector: &#x27;ccf-right-sidebar&#x27;,
+  templateUrl: &#x27;./right-sidebar.component.html&#x27;,
+  styleUrls: [&#x27;./right-sidebar.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class RightSidebarComponent {
+  /** HTML class name */
+  @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-right-sidebar&#x27;;
+
+  /** Whether or not the initial registration modal has been closed */
+  @Input() modalClosed &#x3D; false;
+
+  /**
+   * Creates an instance of right sidebar component.
+   *
+   * @param model Model state service
+   * @param registration Registration state service
+   * @param page The page state
+   * @param astags The anatomical structure tags state
+   */
+  constructor(
+    readonly model: ModelState,
+    readonly registration: RegistrationState,
+    readonly page: PageState,
+    readonly astags: AnatomicalStructureTagState
+  ) { }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;scroll-wrapper&quot;&gt;
+
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&#x27;info-button-container&#x27;&gt;
+      &lt;ccf-info-button videoID&#x3D;&quot;gY3_-LIoKaU&quot;&gt;&lt;/ccf-info-button&gt;
+    &lt;/div&gt;
+    &lt;ccf-block-size-input [blockSize]&#x3D;&quot;model.blockSize$ | async&quot; (blockSizeChange)&#x3D;&quot;model.setBlockSize($event)&quot;&gt;
+    &lt;/ccf-block-size-input&gt;
+
+
+    &lt;ccf-slices-input [slicesConfig]&#x3D;&quot;model.slicesConfig$ | async&quot; (slicesConfigChange)&#x3D;&quot;model.setSlicesConfig($event)&quot;&gt;
+    &lt;/ccf-slices-input&gt;
+
+    &lt;ccf-rotation-slider [rotation]&#x3D;&quot;model.rotation$ | async&quot; (rotationChange)&#x3D;&quot;model.setRotation($event)&quot;&gt;
+    &lt;/ccf-rotation-slider&gt;
+
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+    &lt;mat-expansion-panel class&#x3D;&quot;tags-container&quot; [expanded]&#x3D;&quot;modalClosed&quot;&gt;
+      &lt;mat-expansion-panel-header class&#x3D;&quot;header&quot;&gt;
+        &lt;mat-panel-title matTooltip&#x3D;&quot;Review tags generated via collision detection. Add or delete tags as needed.&quot;&gt;Anatomical Structure Tags&lt;/mat-panel-title&gt;
+      &lt;/mat-expansion-panel-header&gt;
+
+      &lt;ccf-tag-search [search]&#x3D;&quot;astags.searchExternal&quot; (added)&#x3D;&quot;astags.addTags($event)&quot;&gt;
+      &lt;/ccf-tag-search&gt;
+
+      &lt;ccf-tag-list *ngIf&#x3D;&quot;(model.organ$ | async)?.name; else: tagListPlaceholder&quot; class&#x3D;&quot;tag-list&quot; [tags]&#x3D;&quot;astags.tags$ | async&quot;
+                    (tagRemoved)&#x3D;&quot;astags.removeTag($event)&quot;&gt;
+      &lt;/ccf-tag-list&gt;
+      &lt;ng-template #tagListPlaceholder&gt;
+      &lt;/ng-template&gt;
+
+      &lt;div class&#x3D;&quot;legend&quot;&gt;
+        &lt;span class&#x3D;&quot;dot assigned&quot;&gt;&lt;/span&gt;
+        &lt;span class&#x3D;&quot;text assigned&quot;&gt;Assigned&lt;/span&gt;
+        &lt;span class&#x3D;&quot;dot added&quot;&gt;&lt;/span&gt;
+        &lt;span class&#x3D;&quot;text added&quot;&gt;Added&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/mat-expansion-panel&gt;
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+    &lt;div class&#x3D;&quot;filler&quot;&gt;&lt;/div&gt;
+
+    &lt;ccf-review-button [registrationCallbackSet]&#x3D;&quot;page.registrationCallbackSet$ | async&quot; [displayErrors]&#x3D;&quot;registration.displayErrors$ | async&quot;
+                       [registrationIsValid]&#x3D;&quot;registration.valid$ | async&quot; [metaData]&#x3D;&quot;(registration.metadata$ | async) ?? []&quot;
+                       (registerData)&#x3D;&quot;registration.register()&quot;
+                       (enterErrorMode)&#x3D;&quot;registration.setDisplayErrors(!registration.isValid)&quot;&gt;
+    &lt;/ccf-review-button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./right-sidebar.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  display: block;
+  height: calc(100% - 3rem);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  .scroll-wrapper {
+    // overflow-y: scroll;
+    height: 100%;
+    margin-right: 0.375rem;
+
+    scrollbar-width: thin;
+    &amp;::-webkit-scrollbar {
+      width: 0.75rem;
+    }
+
+    
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      margin-left: 1.5rem;
+      margin-right: 0.375rem;
+
+      .info-button-container {
+        height: 3.75rem;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      mat-divider {
+        border-top-width: 3px;
+      }
+
+      mat-expansion-panel {
+        box-shadow: none;
+
+        mat-expansion-panel-header {
+          padding: 0 0.5rem 0 0;
+          font-weight: bold;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          font-size: 1rem;
+        }
+      }
+
+      .tags-container {
+        // Allow tag search to overflow when displaying results
+        overflow: visible;
+
+        ::ng-deep .mat-expansion-panel-body {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .header {
+          height: 3rem;
+        }
+
+        .search {
+          margin-top: 1rem;
+
+          .icon.add {
+            position: absolute;
+            // Sizes and offsets found by experimentation
+            width: 3.625rem;
+            height: 3.625rem;
+            font-size: 3.625rem;
+            top: -1.9375rem;
+            right: -1.1875rem;
+          }
+        }
+
+        .tag-list {
+          max-height: 32rem;
+          margin-left: -1rem;
+        }
+
+        .tag-list-placeholder {
+          display: flex;
+          height: 4rem;
+          align-items: center;
+          justify-content: center;
+          font-weight: 400;
+        }
+
+        .legend {
+          display: flex;
+          width: 100%;
+          margin-top: 1.5rem;
+          align-items: center;
+          font-size: 0.9rem;
+
+          .dot {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+
+            &amp;.assigned {
+              margin-left: 0.5rem;
+            }
+
+            &amp;.added {
+              
+              margin-left: 1rem;
+            }
+          }
+
+          .text {
+            margin-left: 0.5rem;
+          }
+        }
+      }
+
+      .filler {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="scroll-wrapper">  <div class="container">    <div class=\'info-button-container\'>      <ccf-info-button videoID="gY3_-LIoKaU"></ccf-info-button>    </div>    <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">    </ccf-block-size-input>    <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">    </ccf-slices-input>    <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">    </ccf-rotation-slider>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container" [expanded]="modalClosed">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"                    (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <ng-template #tagListPlaceholder>      </ng-template>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button [registrationCallbackSet]="page.registrationCallbackSet$ | async" [displayErrors]="registration.displayErrors$ | async"                       [registrationIsValid]="registration.valid$ | async" [metaData]="(registration.metadata$ | async) ?? []"                       (registerData)="registration.register()"                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RightSidebarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RightSidebarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

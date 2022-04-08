@@ -1,0 +1,399 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application ccf-eui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">Application ccf-eui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="changelog">Changelog</h1>
+<p>Changelog for the Common Coordinate Framework (CCF) User Interfaces</p>
+<h2 id="310---2022-04-07">3.1.0 - 2022-04-07</h2>
+<h3 id="added-in-310">Added in 3.1.0</h3>
+<ul>
+<li>Added support for the latest CCF Ontology v1.8.0 which adds cell types</li>
+<li>Added feature to search for tissue blocks by cell type</li>
+<li>Added API feature to dynamically generate GTEx rui_locations.jsonld</li>
+<li>Added logging of organ and block position changes to the RUI</li>
+<li>Added an expanded organ selector that makes selecting organs much easier with the larger number of reference organs we have now</li>
+<li>Now generating programming libraries for the CCF-API in Python, TypeScript, TypeScript (Angular), and JavaScript. We will be publishing them to appropriate package managers soon.</li>
+<li>Improved performance of the CCF-API</li>
+<li>New theming options and toggle for the CCF EUI/RUI</li>
+<li>Added new themes for SenNet, GTEx, and a default theme</li>
+<li>Added compodoc generated code documentation to production and staging builds</li>
+<li>Bug fixes and minor improvements</li>
+</ul>
+<h2 id="300---2022-01-27">3.0.0 - 2022-01-27</h2>
+<h3 id="added-in-300">Added in 3.0.0</h3>
+<ul>
+<li>Added support for the latest CCF Ontology v1.7.0</li>
+<li>Bug fixes and code cleanup</li>
+</ul>
+<h2 id="300-beta---2021-12-17">3.0.0 BETA - 2021-12-17</h2>
+<h3 id="added-in-300-beta">Added in 3.0.0 BETA</h3>
+<ul>
+<li>Added reference organs and ASCT+B tables from the v1.1 CCF Release<ul>
+<li>Links: <a href="https://github.com/hubmapconsortium/hubmap-ontology/tree/gh-pages/beta">CCF Ontology v1.7 BETA</a>, <a href="https://hubmapconsortium.github.io/ccf-releases/v1.1/docs/index.html">CCF Release v1.1</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="known-issues-in-300-beta">Known issues in 3.0.0 BETA</h3>
+<ul>
+<li>Previously registered tissues may appear slightly off. We are working to rectify this before making it a production release.</li>
+</ul>
+<h2 id="250---2021-12-17">2.5.0 - 2021-12-17</h2>
+<h3 id="added-in-250">Added in 2.5.0</h3>
+<ul>
+<li>CCF-API OpenAPI Spec and implementation. Next version will connect the EUI to this as it&#39;s backend.</li>
+<li>Added the CCF Body UI Web Component for integrating the 3D scene deeply in webpages (including the HuBMAP data portal).</li>
+<li>The organ-info Web Component can now take an option to highlight specific blocks in the scene. Currently only highlights by providers, but age, sex, and BMI will be added in the next version.</li>
+<li>Bug fixes and Quality of Life improvements</li>
+</ul>
+<h2 id="240---2021-12-10">2.4.0 - 2021-12-10</h2>
+<h3 id="added-in-240">Added in 2.4.0</h3>
+<ul>
+<li>RUI shows a confirmation dialog when a user attempts to leave without finishing registration</li>
+<li>Added GTEx data to EUI</li>
+<li>RUI Common Extraction Sites are now known as Landmarks</li>
+<li>Organ info now highlights the block selected on click</li>
+<li>Updated RUI YouTube Demo link</li>
+<li>Bug fixes and Quality of Life improvements</li>
+</ul>
+<h2 id="231---2021-09-13">2.3.1 - 2021-09-13</h2>
+<h3 id="added-in-231">Added in 2.3.1</h3>
+<ul>
+<li>Added support for paired organs to be refernced by their parent (ala Kidney + Left/Right Kidney)</li>
+</ul>
+<h2 id="230---2021-09-10">2.3.0 - 2021-09-10</h2>
+<h3 id="added-in-230">Added in 2.3.0</h3>
+<ul>
+<li><em>Greatly</em> improved CCF Database performance. This improves the performance in both organ-info and EUI.</li>
+<li>Improved styling of organ-info</li>
+</ul>
+<h2 id="220---2021-09-10">2.2.0 - 2021-09-10</h2>
+<h3 id="added-in-220">Added in 2.2.0</h3>
+<ul>
+<li>Added an organ-info web component for displaying reference organs and associated data in a simple panel display. The hubmap portal will be using this soon for organ pages.</li>
+<li><a href="EMBEDDING.md">EMBEDDING.md</a> instructions have been updated for organ-info embedding.</li>
+</ul>
+<h2 id="210---2021-07-30">2.1.0 - 2021-07-30</h2>
+<h3 id="added-in-eui--rui-210">Added in EUI / RUI 2.1.0</h3>
+<ul>
+<li>Better support for embedding EUI/RUI in different containers, see <a href="EMBEDDING.md">EMBEDDING.md</a> for updated instructions.</li>
+<li>Configuration updates:<ul>
+<li>Configuration of EUI/RUI via webcomponent properties (vs globalConfig)</li>
+<li>Optional use of ontology id to select reference organs in the RUI</li>
+<li>Removed embedded and tutorial mode configurations from the RUI config</li>
+<li>Ability to load data sources in the eui via external configuration</li>
+<li>Added cancelRegistration callback to rui external configuration</li>
+</ul>
+</li>
+<li>Set dark/light theme based on user/OS preferences</li>
+<li>Update HuBMAP search processing to conform to new field names</li>
+<li>Code cleanup, shared utilities, etc.</li>
+<li>Telemetry dialog box fixes to avoid unnecessary reloads</li>
+<li>RUI gizmo rotates in sync with the reference organ in 3D preview view</li>
+<li>RUI now uses an orthographic view when in registration views</li>
+</ul>
+<h2 id="200---2021-07-16">2.0.0 - 2021-07-16</h2>
+<h3 id="added-in-eui--rui-200">Added in EUI / RUI 2.0.0</h3>
+<ul>
+<li>RUI and EUI are now basic web-components, see <a href="EMBEDDING.md">EMBEDDING.md</a></li>
+<li>Added advanced google analytics tracking/telemetry</li>
+<li>Linked donor card and tissue block hovering</li>
+<li>Updated dependencies, including upgrading to Angular 12</li>
+<li>Minor UI and Bug fixes</li>
+<li>Updated demo video links</li>
+<li>Organ carousel will respond to container width and show only full icons</li>
+<li>EUI: clicking refresh and selecting body on partonomy resets the body view</li>
+</ul>
+<h3 id="breaking-changes-in-eui--rui-200">Breaking changes in EUI / RUI 2.0.0</h3>
+<ul>
+<li>Embedding the EUI and RUI must now be done via web-components. The most significant change is the element is no longer called <code>ccf-root</code> but is instead called <code>ccf-eui</code> or <code>ccf-rui</code> depending on the UI being embedded.</li>
+</ul>
+<h2 id="170---2021-05-21">1.7.0 - 2021-05-21</h2>
+<h3 id="added-in-eui--rui-170">Added in EUI / RUI 1.7.0</h3>
+<ul>
+<li>Added a startup modal to the RUI which simplifies the initial setup for a new registration</li>
+<li>Added 8 new reference organs, bringing us to 13 Reference Organs!</li>
+<li>Added SPARC Registrations to the EUI</li>
+<li>Added a tissue section visualization to the results list in the EUI</li>
+</ul>
+<h2 id="160---2021-04-09">1.6.0 - 2021-04-09</h2>
+<h3 id="added-in-rui-160">Added in RUI 1.6.0</h3>
+<ul>
+<li>Added SOP information to the About section</li>
+</ul>
+<h3 id="added-in-eui-160">Added in EUI 1.6.0</h3>
+<ul>
+<li>Added color assignment/selection to both 3d scene and list results</li>
+<li>Bug fixes, code cleanup, and optimization</li>
+</ul>
+<h3 id="known-issues-in-160">Known issues in 1.6.0</h3>
+<ul>
+<li>The 3d scene is a little slow. To be able to interact, unselect reference organs to reduce scene complexity.</li>
+<li>Tissue samples may be a little off in the 3D scene. This will be fixed in a future release. Data is still accurate.</li>
+</ul>
+<h2 id="150---2021-03-26">1.5.0 - 2021-03-26</h2>
+<h3 id="added-in-rui-150">Added in RUI 1.5.0</h3>
+<ul>
+<li>Minor styling updates</li>
+</ul>
+<h3 id="added-in-eui-150">Added in EUI 1.5.0</h3>
+<p>NOTE: EUI will not be pushed to production during this cycle as there are some features not fully integrated. This should be resolved in the next release scheduled for April 9th. You can view the results of this sprint on <a href="https://hubmap-ccf-ui.netlify.app/">staging</a>.</p>
+<ul>
+<li>Updated styling to better fit the <a href="https://drive.google.com/file/d/15mx__aHeNDCBBYBXM64ED6YAOeyp9Fcy/view">user interface spec</a></li>
+<li>Added a new results pane which structures data into Donor-&gt;Tissue Blocks (+Datasets)-&gt;Tissue Samples (+Datasets)</li>
+<li>Added a link viewer that allows us to display donors, samples, and datasets in a frame within the application</li>
+<li>Added UFL thumbnails</li>
+<li>Updated and optimized the ccf-database for the new results structure and future integrations</li>
+<li>Tied organ carousel to the 3D scene. Turning off an organ removes the organ and related tissues from the 3D scene.</li>
+<li>Turned off anatomical structure opacity adjustment until it can be fully integrated</li>
+</ul>
+<h2 id="140---2021-03-12">1.4.0 - 2021-03-12</h2>
+<h3 id="added-in-rui-140">Added in RUI 1.4.0</h3>
+<ul>
+<li>Updated library dependencies, including to Angular 11</li>
+<li>Updated styling to better fit the <a href="https://drive.google.com/file/d/1M0Pfu41Kv-RBOvIF9hB-mcNK9U4qsDIp/view">user interface spec</a></li>
+</ul>
+<h3 id="added-in-eui-140">Added in EUI 1.4.0</h3>
+<p>NOTE: EUI will not be pushed to production during this cycle as there are some features partly integrated. This should be resolved in the next release scheduled for March 26th. You can view the results of this sprint on <a href="https://hubmap-ccf-ui.netlify.app/">staging</a>.</p>
+<ul>
+<li>Updated library dependencies, including to Angular 11</li>
+<li>Updated styling to better fit the <a href="https://drive.google.com/file/d/15mx__aHeNDCBBYBXM64ED6YAOeyp9Fcy/view">user interface spec</a> and match RUI styling</li>
+<li>Updated the Info Dialog to match the RUI look and feel</li>
+<li>Updated the data processing to improve efficiency and generate data in the form needed for the v1.5.0 spec</li>
+<li>Added a reference organ selector, also used in the RUI, to turn off/on reference organs on the stage. UI is implemented, but still needs hooked up to the 3d Stage.</li>
+<li>Added a technology filter</li>
+<li>Added a control to set Opacities of individual organs/anatomical structures on the stage. UI is implemented, but still needs hooked up to the 3d Stage.</li>
+</ul>
+<h2 id="135---2021-02-26">1.3.5 - 2021-02-26</h2>
+<h3 id="added-in-rui-135">Added in RUI 1.3.5</h3>
+<ul>
+<li>Updated with a new round of <a href="https://drive.google.com/file/d/1M0Pfu41Kv-RBOvIF9hB-mcNK9U4qsDIp/view">User Interface improvements</a></li>
+<li>Added the ability to upload previous registrations created using the <a href="https://hubmapconsortium.github.io/ccf-ui/rui/">standalone version</a> of the RUI tool</li>
+<li>Organs now have transparency applied automatically</li>
+<li>Solved a major memory leak and performance issue with the 3D reference organ interface. You should notice a sizable speed and reliability increase.</li>
+<li>RUI location numeric data is now rounded to 3 digits</li>
+<li>Switched to using GitHub Actions over TravisCI for our CI/CD workflows</li>
+</ul>
+<h3 id="added-in-eui-135">Added in EUI 1.3.5</h3>
+<ul>
+<li>Removed CCF&#39;s internal image-viewer in favor of the image-viewer on the HuBMAP Data Portal</li>
+</ul>
+<h2 id="eui-120--rui-10-final---2020-10-30">EUI 1.2.0 / RUI 1.0 FINAL - 2020-10-30</h2>
+<h3 id="added-in-eui-120--rui-10-final">Added in EUI 1.2.0 / RUI 1.0 FINAL</h3>
+<ul>
+<li>Bug fixes and improvements</li>
+<li>Updated embedding API in collaboration with the IEC</li>
+<li>Updated EUI codebase to be in sync with code changes made for the RUI</li>
+<li>Added KPMP data to the EUI</li>
+</ul>
+<h3 id="known-issues-in-eui-120--rui-10-final">Known Issues in EUI 1.2.0 / RUI 1.0 FINAL</h3>
+<ul>
+<li>It is still possible that a 3d organ may fail to load. If this happens, just refresh and try again.</li>
+<li>EUI has not been updated with the latest organ set. This will be added in December with its scheduled refresh.</li>
+</ul>
+<h2 id="rui-10-beta---2020-10-16">RUI 1.0 BETA - 2020-10-16</h2>
+<h3 id="added-in-rui-10-beta">Added in RUI 1.0 BETA</h3>
+<ul>
+<li>Created the first version of the RUI 1.0. This version is a BETA and works in standalone mode only. The next version will include full support and integration into the HuBMAP Ingestion Portal.</li>
+<li>10 Reference Organs are available to choose from (a combination of 4 organs, 2 sexes, and one organ with 2 sides [kidney])</li>
+<li>Implemented automatic tagging of data via collisions with anatomical structures</li>
+<li>RUI Location data is in standard JSON-LD format linked via the CCF Ontology and related ontologies</li>
+<li>Implemented extraction sites display to help guide placement of tissues</li>
+</ul>
+<h3 id="known-issues-in-rui-10-beta">Known Issues in RUI 1.0 BETA</h3>
+<ul>
+<li>While support for embedding is implemented, more testing and collaboration with IEC is required before it is made fully available. Initial embedding documentation is available <a href="EMBEDDING.md">here</a>.</li>
+<li>When adjusting transparency via the left-hand <code>Anatomical Structures</code> menu or <code>Show Previous Registrations</code> option, the transparency effect is not very good. This will be addressed before the RUI 1.0 production release.</li>
+<li>Sometimes the 3d organ fails to load when clicking through reference organs quickly (and other side cases). If this happens, just refresh and try again.</li>
+</ul>
+<h2 id="110---2020-07-31">1.1.0 - 2020-07-31</h2>
+<h3 id="added-in-110">Added in 1.1.0</h3>
+<ul>
+<li>Upgraded to latest Vitessce Image Viewer and started showing processed TIFF images coming directly from the HuBMAP infrastructure</li>
+<li>Processed CODEX and 10x datasets are shown in the HuBMAP Portal&#39;s visualization tool</li>
+<li>Added a limited set of TIFF image thumbnails, with more to come</li>
+<li>Added two qualitative color schemes for colorizing images in the image viewer</li>
+<li>Bug fixes/performance optimizations</li>
+</ul>
+<h2 id="100-rc1---2020-06-22">1.0.0-rc.1 - 2020-06-22</h2>
+<blockquote>
+<p>:warning: <strong>WARNING:</strong> This version is a release candidate. Some minor updates will likely happen between now and the official HuBMAP Data Release 1 in July.</p>
+</blockquote>
+<h3 id="added-in-100-rc1">Added in 1.0.0-rc.1</h3>
+<ul>
+<li>Body UI interactions</li>
+<li>Image Viewer Integration</li>
+<li>Partonomy linkage to search / Body UI</li>
+<li>Now fully integrated into the HuBMAP Portal</li>
+</ul>
+<h3 id="known-issues-in-100-rc1">Known Issues in 1.0.0-rc.1</h3>
+<ul>
+<li>Image Viewer is using a placeholder .tiff until more .tiff images can be loaded from the IEC</li>
+</ul>
+<h2 id="100-alpha3---2019-05-08">1.0.0-alpha.3 - 2019-05-08</h2>
+<h3 id="added-in-100-alpha3">Added in 1.0.0-alpha.3</h3>
+<ul>
+<li>Hooked up the interface to real data (not shown online as the data is not public yet)</li>
+<li>Added the Tissue Browser on the right</li>
+<li>Added the initial (Tissue) Image Viewer popup. Currently shows metadata, but no images yet.</li>
+<li>Added an initial 3D Body. Tissues cuboids currently not displayed, but a test cuboid is shown.</li>
+<li>Documentation (&gt;90%) and testing coverage improved further</li>
+</ul>
+<h2 id="100-alpha2---2019-03-27">1.0.0-alpha.2 - 2019-03-27</h2>
+<h3 id="added-in-100-alpha2">Added in 1.0.0-alpha.2</h3>
+<ul>
+<li>Increased documentation and testing coverage across the board</li>
+<li>Added fullscreen button</li>
+<li>Bug fixes and optimizations</li>
+</ul>
+<h2 id="100-alpha1---2019-03-06">1.0.0-alpha.1 - 2019-03-06</h2>
+<h3 id="added-in-100-alpha1">Added in 1.0.0-alpha.1</h3>
+<ul>
+<li>Started the process of implementing the 1.0.0 UI spec<ul>
+<li><a href="https://iu.box.com/s/ip91f6x6t3ni1m6xntg7r72dfzc8c08c">Spec Doc</a></li>
+<li><a href="https://iu.box.com/s/i0n9rales8c5556xs05vxa43u633b3n3">User Stories</a></li>
+</ul>
+</li>
+<li>Setup the base project scaffolding for the new version</li>
+<li>Added CCF Partonomy (CCF-P) search and tree display</li>
+<li>Added a filter for filter tissues</li>
+</ul>
+<h2 id="060---2019-11-08">0.6.0 - 2019-11-08</h2>
+<h3 id="added-in-060">Added in 0.6.0</h3>
+<ul>
+<li>The <a href="https://github.com/hubmapconsortium/ccf-api">CCF API</a> project was started with an initial OpenAPI Schema, <a href="http://smart-api.info/ui/d1f33c1a75e9dcda984194e4d8cea7d8">documentation</a>, and code for spinning up a mock data server. This codifies the <a href="https://docs.google.com/document/d/1Qgx4mNutE1V3CfQ7y8Lg3rxQy5nhiOSKCSv5MJkPRMc/edit">CCF data and metadata standards</a> defined by MC-IU and will be used by the CCF EUI and RUI.</li>
+<li>In preparation for future developments, we added a hidden, alpha-level 3d organ viewer. You can toggle this on and off in the organ view, by typing 3d with your keyboard.</li>
+<li>Updated navigation to directly jump to the tissue browser when a user selects an item from the search box</li>
+<li>Upgraded dependencies, including upgrades to Angular 8</li>
+<li>Testing and bug fixes</li>
+<li>Minor UI updates<ul>
+<li>Changed download icon color</li>
+<li>Changed the background color for the search</li>
+<li>Moved the Technologies filter above ontology</li>
+<li>Additional styles for details button</li>
+</ul>
+</li>
+</ul>
+<h2 id="050---2019-05-24">0.5.0 - 2019-05-24</h2>
+<h3 id="added-in-050">Added in 0.5.0</h3>
+<ul>
+<li>Display of the CCF ontology, integrated with search</li>
+<li>Semantic search by ontology, results are presented at all levels</li>
+<li>Tissue overlays showing regions of interest</li>
+<li>Data download links to direct users to <a href="https://sampledata.hubmapconsortium.org">https://sampledata.hubmapconsortium.org</a></li>
+<li>Data documentation (95% coverage) and testing (85% coverage)</li>
+</ul>
+<h2 id="020---2019-05-03">0.2.0 - 2019-05-03</h2>
+<h3 id="added-in-020">Added in 0.2.0</h3>
+<ul>
+<li>Sprint 2 release of the CCF-UI!</li>
+<li>A search interface was added to query data by age, sex, technology and TMC. Ontological search will be implemented in the next sprint.</li>
+<li>Body, Organ, and Tissue views now respond to updates to the search on the fly</li>
+<li>Appropriate metadata is now displayed in the Body, Organ, Tissue, and Cell views</li>
+</ul>
+<h2 id="010---2019-04-12">0.1.0 - 2019-04-12</h2>
+<h3 id="added-in-010">Added in 0.1.0</h3>
+<ul>
+<li>Sprint 1 release of the CCF-UI!</li>
+<li>Setup the base project scaffolding</li>
+<li>Added a sample database that includes initial data provided by VU</li>
+<li>Added Visual browsing of tissue samples and metadata at the whole body, organ, tissue, and cell level</li>
+<li>Stay tuned! More features coming in Sprint 2 (starts next week!) and Sprint 3</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'changelog.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       
+       <script type="module" src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

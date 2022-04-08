@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Library ccf-body-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">Library ccf-body-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="common-coordinate-framework-ccf---user-interfaces">Common Coordinate Framework (CCF) - User Interfaces</h1>
+<p><a href="https://www.jsdelivr.com/package/gh/hubmapconsortium/ccf-ui"><img src="https://data.jsdelivr.com/v1/package/gh/hubmapconsortium/ccf-ui/badge" alt="Production CDN by JSDelivr" class="img-responsive"></a>
+<a href="https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml"><img src="https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml/badge.svg?branch=develop" alt="Tests" class="img-responsive"></a>
+<a href="https://github.com/hubmapconsortium/ccf-ui/commits/develop"><img src="https://img.shields.io/github/last-commit/hubmapconsortium/ccf-ui.svg" alt="GitHub last commit" class="img-responsive"></a>
+<a href="LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license" class="img-responsive"></a>
+<a href="https://sonarcloud.io/dashboard?id=hubmapconsortium_ccf-ui"><img src="https://sonarcloud.io/api/project_badges/measure?project=hubmapconsortium_ccf-ui&metric=alert_status" alt="Quality Gate Status" class="img-responsive"></a>
+<a href="https://sonarcloud.io/component_measures/metric/coverage/list?id=hubmapconsortium_ccf-ui"><img src="https://sonarcloud.io/api/project_badges/measure?project=hubmapconsortium_ccf-ui&metric=coverage" alt="SonarCloud Coverage" class="img-responsive"></a>
+<a href="https://hubmap-ccf-ui.netlify.com/docs/index.html"><img src="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/docs/images/coverage-badge-documentation.svg" alt="Documentation Status" class="img-responsive"></a></p>
+<p>This repository is a <a href="https://en.wikipedia.org/wiki/Monorepo">monorepo</a> (multiple projects in one repository) containing the software to build the CCF-EUI, CCF-RUI, and CCF-Organ-Info.</p>
+<h2 id="website-links">Website Links</h2>
+<ul>
+<li>CCF Exploration User Interface (CCF-EUI)<ul>
+<li>:star2: 3.0 BETA: <a href="https://beta--hubmap-ccf-ui.netlify.app">https://beta--hubmap-ccf-ui.netlify.app</a></li>
+<li>Production: <a href="https://portal.hubmapconsortium.org/ccf-eui">https://portal.hubmapconsortium.org/ccf-eui</a></li>
+<li>Production (alt): <a href="https://hubmapconsortium.github.io/ccf-ui/">https://hubmapconsortium.github.io/ccf-ui/</a></li>
+<li>Staging: <a href="https://hubmap-ccf-ui.netlify.app/">https://hubmap-ccf-ui.netlify.app/</a></li>
+<li>Old Version 0.6.0: <a href="https://old--hubmap-ccf-ui.netlify.app">https://old--hubmap-ccf-ui.netlify.app</a></li>
+</ul>
+</li>
+<li>CCF Registration User Interface (CCF-RUI)<ul>
+<li>:star2: 3.0 BETA: <a href="https://beta--hubmap-ccf-ui.netlify.app/rui/">https://beta--hubmap-ccf-ui.netlify.app/rui/</a></li>
+<li>Production: <a href="https://hubmapconsortium.github.io/ccf-ui/rui/">https://hubmapconsortium.github.io/ccf-ui/rui/</a></li>
+<li>Staging: <a href="https://hubmap-ccf-ui.netlify.app/rui/">https://hubmap-ccf-ui.netlify.app/rui/</a></li>
+</ul>
+</li>
+<li>CCF Organ Info Component (CCF-Organ-Info)<ul>
+<li>Production: <a href="https://hubmapconsortium.github.io/ccf-ui/organ-info/">https://hubmapconsortium.github.io/ccf-ui/organ-info/</a></li>
+<li>Staging: <a href="https://hubmap-ccf-ui.netlify.app/organ-info/">https://hubmap-ccf-ui.netlify.app/organ-info/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="background-and-more-information">Background and More Information</h2>
+<p>For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at <a href="https://hubmapconsortium.github.io/ccf/">https://hubmapconsortium.github.io/ccf/</a>.</p>
+<h2 id="change-log">Change Log</h2>
+<p>See the <a href="CHANGELOG.md">ChangeLog</a> for the latest developments.</p>
+<h2 id="credits">Credits</h2>
+<p>This software is developed by the <a href="http://cns.iu.edu/">Cyberinfrastructure for Network Science Center at Indiana University</a>. It is funded by NIH Award <a href="https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220%22">OT2OD026671</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       
+       <script type="module" src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

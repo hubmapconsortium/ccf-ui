@@ -1,0 +1,684 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application ccf-eui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >ColorAssignmentState</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Color Assignment State</p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code>NgxsImmutableDataRepository</code>
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#colorAssignments$" >colorAssignments$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#colorAssignmentsList$" >colorAssignmentsList$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#forcedUnassignment" >forcedUnassignment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#forcedUnassignment$" >forcedUnassignment$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#assignColor" >assignColor</a>
+                            </li>
+                            <li>
+                                <a href="#getColor" >getColor</a>
+                            </li>
+                            <li>
+                                <a href="#unassignColor" >unassignColor</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="assignColor"></a>
+                    <span class="name">
+                        <span ><b>assignColor</b></span>
+                        <a href="#assignColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>assignColor(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, doReset)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>doReset</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Color.html" target="_self" >Immutable&lt;Color&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getColor"></a>
+                    <span class="name">
+                        <span ><b>getColor</b></span>
+                        <a href="#getColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getColor(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Immutable | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unassignColor"></a>
+                    <span class="name">
+                        <span ><b>unassignColor</b></span>
+                        <a href="#unassignColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>unassignColor(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorAssignments$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>colorAssignments$</b></span>
+                        <a href="#colorAssignments$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;colorAssignments&#x27;), distinctUntilChanged())</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorAssignmentsList$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>colorAssignmentsList$</b></span>
+                        <a href="#colorAssignmentsList$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;colorAssignmentsList&#x27;), distinctUntilChanged())</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="forcedUnassignment"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>forcedUnassignment</b></span>
+                        <a href="#forcedUnassignment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="forcedUnassignment$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>forcedUnassignment$</b></span>
+                        <a href="#forcedUnassignment$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.forcedUnassignment.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-eui/src/app/core/store/color-assignment/color-assignment.state.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings/immutability&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { DataAction, Payload, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { State } from &#x27;@ngxs/store&#x27;;
+import hexRgb from &#x27;hex-rgb&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
+import { distinctUntilChanged, pluck } from &#x27;rxjs/operators&#x27;;
+
+
+export interface Color {
+  color: string;
+  rgba: [number, number, number, number];
+  rank: number;
+}
+
+export const DEFAULT_COLOR_PALETTE: Color[] &#x3D; [
+  &#x27;#FF8800&#x27;,
+  &#x27;#2979ff&#x27;,
+  &#x27;#ffd740&#x27;,
+  &#x27;#b92dff&#x27;,
+  &#x27;#da326f&#x27;,
+  &#x27;#7323e2&#x27;,
+  &#x27;#acf32b&#x27;,
+  &#x27;#82B1FF&#x27;,
+  &#x27;#E040FB&#x27;,
+  &#x27;#00E5FF&#x27;
+].map((color, rank) &#x3D;&gt; {
+  const rgba &#x3D; hexRgb(color, { format: &#x27;array&#x27; });
+  rgba[3] &#x3D; 255; // for Deck.gl
+  return { color, rgba, rank };
+});
+
+export interface ColorAssignmentStateModel {
+  colorPalette: Color[];
+  colorsAvailable: Color[];
+  colorAssignments: Record&lt;string, Color&gt;;
+  colorAssignmentsList: { color: Color; key: string }[];
+}
+
+/**
+ * Color Assignment State
+ */
+@StateRepository()
+@State&lt;ColorAssignmentStateModel&gt;({
+  name: &#x27;colors&#x27;,
+  defaults: {
+    colorPalette: DEFAULT_COLOR_PALETTE.concat(),
+    colorsAvailable: DEFAULT_COLOR_PALETTE.concat(),
+    colorAssignments: {},
+    colorAssignmentsList: []
+  }
+})
+@Injectable()
+export class ColorAssignmentState extends NgxsImmutableDataRepository&lt;ColorAssignmentStateModel&gt; {
+  private readonly forcedUnassignment &#x3D; new Subject&lt;void&gt;();
+
+  readonly forcedUnassignment$ &#x3D; this.forcedUnassignment.asObservable();
+  readonly colorAssignments$ &#x3D; this.state$.pipe(pluck(&#x27;colorAssignments&#x27;), distinctUntilChanged());
+  readonly colorAssignmentsList$ &#x3D; this.state$.pipe(pluck(&#x27;colorAssignmentsList&#x27;), distinctUntilChanged());
+
+  getColor(key: string): Immutable&lt;Color&gt; | undefined {
+    const { colorAssignments } &#x3D; this.snapshot;
+    return colorAssignments[key];
+  }
+
+  @DataAction()
+  assignColor(@Payload(&#x27;key&#x27;) key: string, @Payload(&#x27;doReset&#x27;) doReset &#x3D; false): Immutable&lt;Color&gt; {
+    let { colorAssignments, colorAssignmentsList, colorsAvailable } &#x3D; this.snapshot;
+    if (doReset) {
+      colorsAvailable &#x3D; this.snapshot.colorPalette.concat();
+      colorAssignmentsList &#x3D; [];
+      colorAssignments &#x3D; {};
+    }
+    let color &#x3D; colorAssignments[key];
+    if (!color) {
+      if (colorsAvailable.length &gt; 0) {
+        color &#x3D; colorsAvailable[0];
+      } else {
+        color &#x3D; colorAssignmentsList[colorAssignmentsList.length - 1].color;
+        colorAssignmentsList &#x3D; colorAssignmentsList.slice(0, -1);
+        this.forcedUnassignment.next();
+      }
+      colorsAvailable &#x3D; colorsAvailable.filter(c &#x3D;&gt; c.color !&#x3D;&#x3D; color.color);
+      colorAssignmentsList &#x3D; [{ color, key }].concat(colorAssignmentsList);
+      colorAssignments &#x3D; colorAssignmentsList.reduce&lt;Record&lt;string, Immutable&lt;Color&gt;&gt;&gt;((acc, item, rank) &#x3D;&gt; {
+        acc[item.key] &#x3D; { ...item.color, rank };
+        return acc;
+      }, {});
+
+      this.ctx.patchState({
+        colorsAvailable,
+        colorAssignments,
+        colorAssignmentsList
+      });
+    }
+    return color;
+  }
+
+  @DataAction()
+  unassignColor(@Payload(&#x27;key&#x27;) key: string): void {
+    let { colorAssignments, colorAssignmentsList, colorsAvailable } &#x3D; this.snapshot;
+    const color &#x3D; colorAssignments[key];
+    if (color) {
+      colorsAvailable &#x3D; [color].concat(colorsAvailable);
+      colorAssignmentsList &#x3D; colorAssignmentsList.filter(a &#x3D;&gt; a.color.color !&#x3D;&#x3D; color.color);
+      colorAssignments &#x3D; colorAssignmentsList.reduce&lt;Record&lt;string, Immutable&lt;Color&gt;&gt;&gt;((acc, item, rank) &#x3D;&gt; {
+        acc[item.key] &#x3D; { ...item.color, rank };
+        return acc;
+      }, {});
+
+      this.ctx.patchState({
+        colorsAvailable,
+        colorAssignments,
+        colorAssignmentsList
+      });
+    }
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ColorAssignmentState.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
