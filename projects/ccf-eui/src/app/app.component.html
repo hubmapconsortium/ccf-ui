@@ -25,7 +25,7 @@
                                 [treeModel]="ontologyTreeModel$ | async"
                                 [termData]="data.ontologyTermsFullData$ | async"
                                 [occurenceData]="data.ontologyTermOccurencesData$ | async"
-                                placeholderText="Search ontology terms..."
+                                placeholderText="Search anatomical structures..."
                                 (ontologySelection)="ontologySelected($event, 'anatomical-structures')"
                                 [header]="header$ | async">
         </ccf-ontology-selection>
@@ -33,7 +33,7 @@
                                 [treeModel]="cellTypeTreeModel$ | async"
                                 [termData]="data.cellTypeTermsFullData$ | async"
                                 [occurenceData]="data.cellTypeTermOccurencesData$ | async"
-                                placeholderText="Search cell type terms..."
+                                placeholderText="Search cell types..."
                                 (ontologySelection)="ontologySelected($event, 'cell-type')"
                                 [header]="header$ | async">
         </ccf-ontology-selection>

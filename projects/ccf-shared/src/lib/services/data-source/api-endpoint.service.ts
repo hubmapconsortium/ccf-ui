@@ -63,8 +63,8 @@ function rangeToMinMax(
   low: number, high: number
 ): MinMax | undefined {
   return range ? {
-    min: range[0] >= low ? range[0] : undefined,
-    max: range[1] <= high ? range[1] : undefined
+    min: range[0] > low ? range[0] : undefined,
+    max: range[1] < high ? range[1] : undefined
   } : undefined;
 }
 

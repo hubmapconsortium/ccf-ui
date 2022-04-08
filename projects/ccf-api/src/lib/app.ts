@@ -2,6 +2,7 @@ import { json, urlencoded } from 'body-parser';
 import cors from 'cors';
 import express, { Express } from 'express';
 import helmet from 'helmet';
+import qs, { ParsedQs } from 'qs';
 
 import { databaseLoader, DatabaseLoaderOptions } from './middleware/database-loader';
 import { routes as browserRoutes } from './routes/browser';
@@ -17,6 +18,10 @@ export function createApp(options: AppOptions): Express {
   const app = express();
 
   app.set('database-options', options.database);
+
+  app.set('query parser', function (str: string): ParsedQs {
+    return qs.parse(str, { allowDots: true });
+  });
 
   // http://expressjs.com/en/advanced/best-practice-security.html
   app.use(helmet({
