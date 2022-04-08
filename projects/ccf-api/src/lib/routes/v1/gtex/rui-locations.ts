@@ -9,35 +9,28 @@ import { JsonLdObj } from 'jsonld/jsonld-spec';
 import { get } from '../../../environment';
 
 export interface GtexTissue {
-  colorHex: string;
-  colorRgb: string;
-  datasetId: string;
-  eGeneCount: number;
-  expressedGeneCount: number;
-  hasEGenes: true;
-  hasSGenes: true;
-  mappedInHubmap: true;
-  rnaSeqAgeMaxFemale: number;
-  rnaSeqAgeMaxMale: number;
-  rnaSeqAgeMeanFemale: number;
-  rnaSeqAgeMeanMale: number;
-  rnaSeqAgeMinFemale: number;
-  rnaSeqAgeMinMale: number;
-  rnaSeqAndGenotypeSampleCount: number;
-  rnaSeqSampleCount: number;
-  rnaSeqSampleCountFemale: number;
-  rnaSeqSampleCountMale: number;
-  sGeneCount: number;
-  samplingSite: string;
-  tissueSite: string;
-  tissueSiteDetail: string;
-  tissueSiteDetailAbbr: string;
+  // NOTE: The API response includes more fields, but we only map the ones we actually use here
   tissueSiteDetailId: string;
-  uberonId: string;
+  mappedInHubmap: boolean;
+  rnaSeqSampleSummary: {
+    totalCount: number;
+    female: {
+      ageMax: number;
+      ageMin: number;
+      ageMean: number;
+      count: number;
+    };
+    male: {
+      ageMax: number;
+      ageMin: number;
+      ageMean: number;
+      count: number;
+    };
+  };
 }
 
 const DEFAULT_GTEX_RUI_LOCATIONS = 'projects/ccf-eui/src/assets/gtex/data/rui_locations.jsonld';
-const GTEX_API_URL = 'https://gtexportal.org/rest/v1/dataset/tissueInfo?datasetId=gtex_v8&format=json';
+const GTEX_API_URL = 'https://gtexportal.org/api/v2/tissueSiteDetail';
 
 async function getLocations(): Promise<unknown> {
   try {
@@ -47,8 +40,8 @@ async function getLocations(): Promise<unknown> {
     const jsonld: JsonLdObj = JSON.parse(data);
     const results = jsonld['@graph'] as JsonLdObj[];
 
-    const response: { tissueInfo: GtexTissue[] } = await fetch(GTEX_API_URL).then(r => r.json());
-    const mappedEntries = response.tissueInfo.filter(entry => entry.mappedInHubmap);
+    const response: GtexTissue[] = await fetch(GTEX_API_URL).then(r => r.json());
+    const mappedEntries = response.filter(entry => entry.mappedInHubmap);
     for (const tissue of mappedEntries) {
       updateEntry(results, tissue, 'Female');
       updateEntry(results, tissue, 'Male');
@@ -62,13 +55,10 @@ async function getLocations(): Promise<unknown> {
 
 export function updateEntry(resultsList: JsonLdObj[], tissueInfo: GtexTissue, sex: 'Male' | 'Female'): void {
   const matchingEntry = resultsList.find(entry => entry['@id']?.includes(tissueInfo.tissueSiteDetailId) && (entry.label as string).includes(sex));
-  let newLabel = '';
   if (matchingEntry) {
     const index = resultsList.indexOf(matchingEntry);
-    newLabel = sex === 'Male' ?
-      `Males (n=${tissueInfo.rnaSeqSampleCountMale}), Mean Age ${tissueInfo.rnaSeqAgeMeanMale} (range ${tissueInfo.rnaSeqAgeMinMale}-${tissueInfo.rnaSeqAgeMaxMale})` :
-      `Females (n=${tissueInfo.rnaSeqSampleCountFemale}), Mean Age ${tissueInfo.rnaSeqAgeMeanFemale} (range ${tissueInfo.rnaSeqAgeMinFemale}-${tissueInfo.rnaSeqAgeMaxFemale})`;
-    resultsList[index].label = newLabel;
+    const sexStats = sex === 'Male' ? tissueInfo.rnaSeqSampleSummary.male : tissueInfo.rnaSeqSampleSummary.female;
+    resultsList[index].label = `${sex}s (n=${sexStats.count}) Mean Age ${sexStats.ageMean} (range ${sexStats.ageMin} - ${sexStats.ageMax})`;
     resultsList[index].sex = sex;
   }
 }
