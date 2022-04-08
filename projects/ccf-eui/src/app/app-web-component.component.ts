@@ -61,7 +61,8 @@ export class AppWebComponent extends BaseWebComponent {
       parse: {
         dataSources: parseDataSources,
         useRemoteApi: BUILTIN_PARSERS.boolean,
-        header: BUILTIN_PARSERS.boolean
+        header: BUILTIN_PARSERS.boolean,
+        loginDisabled: BUILTIN_PARSERS.boolean
       }
     });
   }
