@@ -1,3 +1,4 @@
+/* eslint-env es6 */
 const parentPort = require('worker_threads').parentPort;
 const workerData = require('worker_threads').workerData;
 const CCFDatabase = require('ccf-database').CCFDatabase;

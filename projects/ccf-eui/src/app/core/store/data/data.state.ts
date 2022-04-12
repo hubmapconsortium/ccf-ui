@@ -6,11 +6,10 @@ import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
-import { AggregateResult, Filter, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
+import { AggregateResult, DatabaseStatus, Filter, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
-import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
-import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from 'rxjs/operators';
-
+import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
+import { delay, distinct, filter as rxjsFilter, map, pluck, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from 'rxjs/operators';
 
 
 /** Default values for filters. */
@@ -73,13 +72,13 @@ function queryData<T, O extends ObservableInput<unknown>>(
   );
 }
 
-
 /** Store data state. */
 export interface DataStateModel {
   /** Current filter. */
   filter: Filter;
+  status: 'Loading' | 'Ready' | 'Error';
+  statusMessage: string;
 }
-
 
 /**
  * Data state repository and service.
@@ -88,11 +87,16 @@ export interface DataStateModel {
 @State<DataStateModel>({
   name: 'data',
   defaults: {
-    filter: DEFAULT_FILTER
+    filter: DEFAULT_FILTER,
+    status: 'Loading',
+    statusMessage: 'Loading database'
   }
 })
 @Injectable()
 export class DataState extends NgxsDataRepository<DataStateModel> implements NgxsOnInit {
+  /** Emits when the database is ready. */
+  readonly databaseReady$ = this.state$.pipe(pluck('status'), distinct(), rxjsFilter((status) => status === 'Ready'));
+
   /** Implementation subject for tissueBlockDataQueryStatus$. */
   private readonly _tissueBlockDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
@@ -199,6 +203,33 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
       source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
       source.getCellTypeTermOccurences().pipe(take(1)).subscribe(cellTypeTermsFullData$);
     }
+    this.warmUpDatabase();
+  }
+
+  private warmUpDatabase(): void {
+    defer(() => this.source.getDatabaseStatus()).pipe(
+      tap((status) => this.updateStatus(status)),
+      delay(2000),
+      take(1)
+    ).pipe(
+      repeat(1000),
+      takeWhile((status) => status.status === 'Loading')
+    ).subscribe();
+
+    this.databaseReady$.pipe(take(1), tap(() => {
+      this.updateStatus({
+        status: 'Ready',
+        message: 'Loading CCF Exploration User Interface (EUI)'
+      });
+    })).subscribe();
+  }
+
+  @DataAction()
+  updateStatus(@Payload('status') status: DatabaseStatus): void {
+    this.patchState({
+      status: status.status,
+      statusMessage: status.message
+    });
   }
 
   /**
@@ -223,7 +254,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private tissueBlockData(filter: Filter): ObservableInput<TissueBlockResult[]> {
     this._tissueBlockDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getTissueBlockResults(filter);
+    return this.databaseReady$.pipe(switchMap(() => this.source.getTissueBlockResults(filter)));
   }
 
   /**
@@ -235,7 +266,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private aggregateData(filter: Filter): ObservableInput<AggregateResult[]> {
     this._aggregateDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getAggregateResults(filter);
+    return this.databaseReady$.pipe(switchMap(() => this.source.getAggregateResults(filter)));
   }
 
   /**
@@ -247,7 +278,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private ontologyTermOccurencesData(filter: Filter): ObservableInput<Record<string, number>> {
     this._ontologyTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getOntologyTermOccurences(filter);
+    return this.databaseReady$.pipe(switchMap(() => this.source.getOntologyTermOccurences(filter)));
   }
 
   /**
@@ -259,7 +290,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private cellTypeTermOccurencesData(filter: Filter): ObservableInput<Record<string, number>> {
     this._cellTypeTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getCellTypeTermOccurences(filter);
+    return this.databaseReady$.pipe(switchMap(() => this.source.getCellTypeTermOccurences(filter)));
   }
 
   /**
@@ -271,7 +302,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private sceneData(filter: Filter): ObservableInput<SpatialSceneNode[]> {
     this._sceneDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getScene(filter);
+    return this.databaseReady$.pipe(switchMap(() => this.source.getScene(filter)));
   }
 
   /**
@@ -282,7 +313,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private technologyFilterData(): ObservableInput<string[]> {
     this._technologyFilterQueryStatus$.next(DataQueryState.Running);
-    return this.source.getDatasetTechnologyNames();
+    return this.databaseReady$.pipe(switchMap(() => this.source.getDatasetTechnologyNames()));
   }
 
   /**
@@ -293,6 +324,6 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   @bind
   private providerFilterData(): ObservableInput<string[]> {
     this._providerFilterQueryStatus$.next(DataQueryState.Running);
-    return this.source.getProviderNames();
+    return this.databaseReady$.pipe(switchMap(() => this.source.getProviderNames()));
   }
 }

@@ -1,5 +1,5 @@
 <div class="ccf-app mat-app-background">
-  <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async">
+  <ccf-spinner-overlay [text]="loadingMessage$ | async" [active]="spinnerActive$ | async">
   </ccf-spinner-overlay>
   <ccf-header [class.hide]="(header$ | async) === false" [logoTooltip]="logoTooltip$ | async" [homeUrl]="homeUrl$ | async" [loggedIn]="loggedIn" [loginDisabled]="(loginDisabled$ | async)" *ngIf="(spinnerActive$ | async) === false">
   </ccf-header>
