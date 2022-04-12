@@ -4,7 +4,7 @@ import {
   AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from 'ccf-database';
 import { DatabaseStatus, DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
-import { Observable, Subject } from 'rxjs';
+import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
 
@@ -205,9 +205,17 @@ export class ApiEndpointDataSourceService implements DataSource {
     const { api, globalConfig } = this;
     const requestParams = { ...filterToParams(filter), ...params };
 
-    return globalConfig.getOption('remoteApiEndpoint').pipe(
+    return combineLatest([
+      globalConfig.getOption('remoteApiEndpoint'),
+      globalConfig.getOption('hubmapToken')
+    ]).pipe(
       take(1),
-      tap(endpoint => (api.configuration.basePath = endpoint)),
+      tap(([endpoint, token]) => {
+        api.configuration.basePath = endpoint;
+        if (token) {
+          requestParams['token'] = token;
+        }
+      }),
       switchMap(() => method(requestParams)),
       map(data => reviver ? reviver(data) : data)
     );
