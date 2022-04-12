@@ -40,7 +40,7 @@ const ccfx = prefixer('ccf');
 export const entity = {
   x: prefixer('entity'),
   id: prefixer('entity')('id'),
-  label: prefixer('rdfs')('label'), 
+  label: prefixer('rdfs')('label'),
   description: prefixer('rdfs')('comment'),
   link: ccfx('url'),
 

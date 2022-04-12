@@ -2,6 +2,13 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces
 
+## 3.1.1 - 2022-04-12
+
+### Added in 3.1.1
+
+* Expanded RUI web component options
+* Added support for warming up the CCF database via the CCF-API so that the EUI can prevent timeouts
+
 ## 3.1.0 - 2022-04-07
 
 ### Added in 3.1.0
