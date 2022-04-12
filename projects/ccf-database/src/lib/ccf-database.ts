@@ -8,7 +8,7 @@ import {
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
 import { searchHubmap } from './hubmap/hubmap-data-import';
-import { AggregateResult, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
+import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
@@ -16,6 +16,7 @@ import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from './queries
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { SpatialEntity } from './spatial-types';
+import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
 
 
 /** Database initialization options. */
@@ -61,6 +62,8 @@ export class CCFDatabase {
   scene: CCFSpatialScene;
   /** If the database is initialized */
   private initializing?: Promise<void>;
+
+  private status: CCFDatabaseStatusTracker;
 
   /**
    * Creates an instance of ccfdatabase.
@@ -252,6 +255,13 @@ export class CCFDatabase {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     filter = { ...filter, hasSpatialEntity: true } as Filter;
     return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+  }
+
+  async getDatabaseStatus(): Promise<DatabaseStatus> {
+    if (!this.status) {
+      this.status = new CCFDatabaseStatusTracker(this);
+    }
+    return this.status.toJson();
   }
 
   /**

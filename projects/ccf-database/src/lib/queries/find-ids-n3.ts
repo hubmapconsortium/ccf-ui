@@ -122,14 +122,20 @@ export function findIds(store: Store, filter: Filter): Set<string> {
     );
   }
   if (seen.size > 0 && filter.ontologyTerms?.length > 0) {
-    seen = filterWithSpatialEntity(store, seen, (entities) =>
-      filterByOntologyTerms(store, entities, filter.ontologyTerms)
-    );
+    const terms = filter.ontologyTerms;
+    if (terms.indexOf(rui.body.id) === -1) {
+      seen = filterWithSpatialEntity(store, seen, (entities) =>
+        filterByOntologyTerms(store, entities, terms)
+      );
+    }
   }
   if (seen.size > 0 && filter.cellTypeTerms?.length > 0) {
-    seen = filterWithSpatialEntity(store, seen, (entities) =>
-      filterByCellTypeTerms(store, entities, filter.cellTypeTerms)
-    );
+    const terms = filter.cellTypeTerms;
+    if (terms.indexOf(rui.cell.id) === -1) {
+      seen = filterWithSpatialEntity(store, seen, (entities) =>
+        filterByCellTypeTerms(store, entities, terms)
+      );
+    }
   }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
     isFinite(filter.ageRange[0]) && isFinite(filter.ageRange[1])) {

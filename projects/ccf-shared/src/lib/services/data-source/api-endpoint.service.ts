@@ -3,7 +3,7 @@ import { Matrix4 } from '@math.gl/core';
 import {
   AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from 'ccf-database';
-import { DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
+import { DatabaseStatus, DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
 import { Observable, Subject } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
@@ -97,6 +97,10 @@ export class ApiEndpointDataSourceService implements DataSource {
     private readonly globalConfig: GlobalConfigState<ApiEndpointDataSourceOptions>
   ) {
     globalConfig.getOption('hubmapToken').subscribe(buster$);
+  }
+
+  getDatabaseStatus(): Observable<DatabaseStatus> {
+    return this.doRequest(params => this.api.dbStatus(params));
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)

@@ -16,10 +16,6 @@ async function getLocations(token: string, options: CCFDatabaseOptions): Promise
     options.hubmapPortalUrl
   );
 
-  if (result === undefined) {
-    throw new Error('No data available');
-  }
-
   return result;
 }
 
@@ -39,6 +35,10 @@ export function ruiLocations(): RequestHandler {
     const token = typeof rawToken === 'string' ? rawToken : '';
     const result = await cache.get(token, options);
 
-    res.json(result);
+    if (result) {
+      res.json(result);
+    } else {
+      res.status(500).json([]);
+    }
   };
 }

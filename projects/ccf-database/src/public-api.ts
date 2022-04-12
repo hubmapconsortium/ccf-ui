@@ -6,3 +6,4 @@ export * from './lib/ccf-spatial-scene';
 export * from './lib/interfaces';
 export * from './lib/spatial-types';
 export * from './lib/hubmap/hubmap-data-import';
+export * from './lib/util/ccf-database-status-tracker';

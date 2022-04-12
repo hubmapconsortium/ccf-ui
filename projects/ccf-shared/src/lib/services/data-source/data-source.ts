@@ -1,12 +1,12 @@
 import {
-  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
 } from 'ccf-database';
 import { Observable, ObservableInput, ObservedValueOf } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 
-
 export interface DataSource {
+  getDatabaseStatus(): Observable<DatabaseStatus>;
   getProviderNames(): Observable<string[]>;
   getDatasetTechnologyNames(): Observable<string[]>;
   getOntologyTreeModel(): Observable<OntologyTreeModel>;
@@ -33,6 +33,10 @@ export type DataSourceDataType<K extends keyof DataSource> =
 
 
 export abstract class ForwardingDataSource implements DataSource {
+  getDatabaseStatus(): Observable<DatabaseStatus> {
+    return this.forwardCall('getDatabaseStatus');
+  }
+
   getProviderNames(): Observable<string[]> {
     return this.forwardCall('getProviderNames');
   }

@@ -1,3 +1,15 @@
+/** Status of the database */
+export interface DatabaseStatus {
+  /** Status of the database */
+  status: 'Ready' | 'Loading' | 'Error';
+  /** How long to wait (in milliseconds) before checking status again */
+  checkback?: number;
+  /** The amount of time (in milliseconds) taken to load the database */
+  loadTime?: number;
+  /** Human readable description of the current status */
+  message?: string;
+}
+
 /** Aggregate query result */
 export interface AggregateResult {
   /** Queried field */

@@ -1,10 +1,10 @@
-import { CCFDatabase } from 'ccf-database';
 import { RequestHandler } from 'express';
 
+import { CCFDatabaseInstance } from '../../utils/ccf-database-worker';
 import { queryParametersToFilter } from './utils/parse-filter';
 
 
-type DatabaseGetter = (token?: string) => Promise<CCFDatabase>;
+type DatabaseGetter = (token?: string) => Promise<CCFDatabaseInstance>;
 
 
 function parseString(value: unknown): string | undefined {
@@ -26,9 +26,14 @@ export function getReferenceOrganSceneHandler(): RequestHandler {
       return;
     }
 
-    const database = await getDatabase(token);
-    const result = await database.getReferenceOrganScene(organIri, filter);
-
-    res.json(result);
+    const dbInstance = await getDatabase(token);
+    const status = await dbInstance.database.getDatabaseStatus();
+    if (status.status !== 'Error') {
+      const database = await dbInstance.database.connect().then(() => dbInstance.database);
+      const result = await database.getReferenceOrganScene(organIri, filter);
+      res.json(result);
+    } else {
+      res.status(500).json({ 'error': status.message });
+    }
   };
 }

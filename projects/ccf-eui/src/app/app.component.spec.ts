@@ -40,6 +40,8 @@ describe('AppComponent', () => {
         scene$: of([])
       })
       .mock(DataState, {
+        state$: of({ status: 'Ready' }),
+        databaseReady$: of('Ready'),
         filter$: of(testFilter),
         tissueBlockData$: of(),
         aggregateData$: of(),

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import { cacheResponses } from '../../middleware/response-cache';
+import { getDatabaseStatus } from './database-status';
 import { routes as gtexRoutes } from './gtex';
 import { routes as hubmapRoutes } from './hubmap';
 import { getReferenceOrganSceneHandler } from './reference-organ-scene';
@@ -9,6 +10,7 @@ import { useCachedResult } from './utils/use-cached-result';
 
 
 export const routes = Router()
+  .use('/db-status', getDatabaseStatus())
   .use(cacheResponses())
   .use('/hubmap', hubmapRoutes)
   .use('/gtex', gtexRoutes)

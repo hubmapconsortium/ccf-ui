@@ -54,7 +54,7 @@ export function databaseLoader(options: DatabaseLoaderOptions): RequestHandler {
   );
 
   return (req, _res, next) => {
-    req['getDatabase'] = (token?: string) => cache.get(selectToken(token, req))?.then((instance) => instance.database);
+    req['getDatabase'] = (token?: string) => cache.get(selectToken(token, req));
     next();
   };
 }
