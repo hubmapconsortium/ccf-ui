@@ -411,6 +411,8 @@ export class AppComponent implements OnInit {
     map(state &#x3D;&gt; state &#x3D;&#x3D;&#x3D; DataQueryState.Running)
   );
 
+  readonly loadingMessage$ &#x3D; this.data.state$.pipe(pluck(&#x27;statusMessage&#x27;));
+
   readonly ontologyTerms$: Observable&lt;readonly string[]&gt;;
   readonly ontologyTreeModel$: Observable&lt;OntologyTreeModel&gt;;
 

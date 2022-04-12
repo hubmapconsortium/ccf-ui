@@ -95,6 +95,18 @@
                                             filter
                                         </a>
                                 </li>
+                                <li>
+                                        <a href="#status" 
+>
+                                            status
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#statusMessage" 
+>
+                                            statusMessage
+                                        </a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -145,6 +157,72 @@
                             </tr>
                         </tbody>
                     </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="status"></a>
+                                        <span class="name "><b>status</b>
+                                            <a href="#status">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>status:     <code>&quot;Loading&quot; | &quot;Ready&quot; | &quot;Error&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;Loading&quot; | &quot;Ready&quot; | &quot;Error&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="statusMessage"></a>
+                                        <span class="name "><b>statusMessage</b>
+                                            <a href="#statusMessage">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>statusMessage:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
             </section>
     </div>
 
@@ -155,11 +233,10 @@ import { DataAction, Payload, StateRepository } from &#x27;@ngxs-labs/data/decor
 import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { bind } from &#x27;bind-decorator&#x27;;
-import { AggregateResult, Filter, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
+import { AggregateResult, DatabaseStatus, Filter, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { DataSourceService } from &#x27;ccf-shared&#x27;;
-import { combineLatest, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from &#x27;rxjs&#x27;;
-import { distinct, map, pluck, publishReplay, refCount, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
-
+import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from &#x27;rxjs&#x27;;
+import { delay, distinct, filter as rxjsFilter, map, pluck, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from &#x27;rxjs/operators&#x27;;
 
 
 /** Default values for filters. */
@@ -222,13 +299,13 @@ function queryData&lt;T, O extends ObservableInput&lt;unknown&gt;&gt;(
   );
 }
 
-
 /** Store data state. */
 export interface DataStateModel {
   /** Current filter. */
   filter: Filter;
+  status: &#x27;Loading&#x27; | &#x27;Ready&#x27; | &#x27;Error&#x27;;
+  statusMessage: string;
 }
-
 
 /**
  * Data state repository and service.
@@ -237,11 +314,16 @@ export interface DataStateModel {
 @State&lt;DataStateModel&gt;({
   name: &#x27;data&#x27;,
   defaults: {
-    filter: DEFAULT_FILTER
+    filter: DEFAULT_FILTER,
+    status: &#x27;Loading&#x27;,
+    statusMessage: &#x27;Loading database&#x27;
   }
 })
 @Injectable()
 export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implements NgxsOnInit {
+  /** Emits when the database is ready. */
+  readonly databaseReady$ &#x3D; this.state$.pipe(pluck(&#x27;status&#x27;), distinct(), rxjsFilter((status) &#x3D;&gt; status &#x3D;&#x3D;&#x3D; &#x27;Ready&#x27;));
+
   /** Implementation subject for tissueBlockDataQueryStatus$. */
   private readonly _tissueBlockDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for aggregateDataQueryStatus$. */
@@ -348,6 +430,33 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
       source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
       source.getCellTypeTermOccurences().pipe(take(1)).subscribe(cellTypeTermsFullData$);
     }
+    this.warmUpDatabase();
+  }
+
+  private warmUpDatabase(): void {
+    defer(() &#x3D;&gt; this.source.getDatabaseStatus()).pipe(
+      tap((status) &#x3D;&gt; this.updateStatus(status)),
+      delay(2000),
+      take(1)
+    ).pipe(
+      repeat(1000),
+      takeWhile((status) &#x3D;&gt; status.status &#x3D;&#x3D;&#x3D; &#x27;Loading&#x27;)
+    ).subscribe();
+
+    this.databaseReady$.pipe(take(1), tap(() &#x3D;&gt; {
+      this.updateStatus({
+        status: &#x27;Ready&#x27;,
+        message: &#x27;Loading CCF Exploration User Interface (EUI)&#x27;
+      });
+    })).subscribe();
+  }
+
+  @DataAction()
+  updateStatus(@Payload(&#x27;status&#x27;) status: DatabaseStatus): void {
+    this.patchState({
+      status: status.status,
+      statusMessage: status.message
+    });
   }
 
   /**
@@ -372,7 +481,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   @bind
   private tissueBlockData(filter: Filter): ObservableInput&lt;TissueBlockResult[]&gt; {
     this._tissueBlockDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getTissueBlockResults(filter);
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getTissueBlockResults(filter)));
   }
 
   /**
@@ -384,7 +493,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   @bind
   private aggregateData(filter: Filter): ObservableInput&lt;AggregateResult[]&gt; {
     this._aggregateDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getAggregateResults(filter);
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getAggregateResults(filter)));
   }
 
   /**
@@ -396,7 +505,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   @bind
   private ontologyTermOccurencesData(filter: Filter): ObservableInput&lt;Record&lt;string, number&gt;&gt; {
     this._ontologyTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getOntologyTermOccurences(filter);
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getOntologyTermOccurences(filter)));
   }
 
   /**
@@ -408,7 +517,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   @bind
   private cellTypeTermOccurencesData(filter: Filter): ObservableInput&lt;Record&lt;string, number&gt;&gt; {
     this._cellTypeTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getCellTypeTermOccurences(filter);
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getCellTypeTermOccurences(filter)));
   }
 
   /**
@@ -420,7 +529,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   @bind
   private sceneData(filter: Filter): ObservableInput&lt;SpatialSceneNode[]&gt; {
     this._sceneDataQueryStatus$.next(DataQueryState.Running);
-    return this.source.getScene(filter);
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getScene(filter)));
   }
 
   /**
@@ -431,7 +540,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   @bind
   private technologyFilterData(): ObservableInput&lt;string[]&gt; {
     this._technologyFilterQueryStatus$.next(DataQueryState.Running);
-    return this.source.getDatasetTechnologyNames();
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getDatasetTechnologyNames()));
   }
 
   /**
@@ -442,7 +551,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   @bind
   private providerFilterData(): ObservableInput&lt;string[]&gt; {
     this._providerFilterQueryStatus$.next(DataQueryState.Running);
-    return this.source.getProviderNames();
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getProviderNames()));
   }
 }
 </code></pre>

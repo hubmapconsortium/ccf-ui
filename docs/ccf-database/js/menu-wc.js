@@ -63,6 +63,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/CCFDatabase.html" data-type="entity-link" >CCFDatabase</a>
                             </li>
                             <li class="link">
+                                <a href="classes/CCFDatabaseStatusTracker.html" data-type="entity-link" >CCFDatabaseStatusTracker</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/CCFSpatialGraph.html" data-type="entity-link" >CCFSpatialGraph</a>
                             </li>
                             <li class="link">
@@ -86,6 +89,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/CCFDatabaseOptions.html" data-type="entity-link" >CCFDatabaseOptions</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/DatabaseStatus.html" data-type="entity-link" >DatabaseStatus</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/DatasetResult.html" data-type="entity-link" >DatasetResult</a>

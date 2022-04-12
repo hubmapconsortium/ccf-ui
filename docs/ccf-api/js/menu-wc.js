@@ -60,6 +60,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
                             <li class="link">
+                                <a href="classes/CCFDatabaseInstance.html" data-type="entity-link" >CCFDatabaseInstance</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/RequestCache.html" data-type="entity-link" >RequestCache</a>
                             </li>
                         </ul>
@@ -77,9 +80,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/CacheOptions.html" data-type="entity-link" >CacheOptions</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/CCFDatabaseInstance.html" data-type="entity-link" >CCFDatabaseInstance</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/DatabaseCacheOptions.html" data-type="entity-link" >DatabaseCacheOptions</a>
