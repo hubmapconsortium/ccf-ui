@@ -188,7 +188,7 @@ import {
   AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from &#x27;ccf-database&#x27;;
 import { DatabaseStatus, DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode } from &#x27;ccf-openapi/angular-client&#x27;;
-import { Observable, Subject } from &#x27;rxjs&#x27;;
+import { combineLatest, Observable, Subject } from &#x27;rxjs&#x27;;
 import { map, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 import { Cacheable } from &#x27;ts-cacheable&#x27;;
 
@@ -389,9 +389,17 @@ export class ApiEndpointDataSourceService implements DataSource {
     const { api, globalConfig } &#x3D; this;
     const requestParams &#x3D; { ...filterToParams(filter), ...params };
 
-    return globalConfig.getOption(&#x27;remoteApiEndpoint&#x27;).pipe(
+    return combineLatest([
+      globalConfig.getOption(&#x27;remoteApiEndpoint&#x27;),
+      globalConfig.getOption(&#x27;hubmapToken&#x27;)
+    ]).pipe(
       take(1),
-      tap(endpoint &#x3D;&gt; (api.configuration.basePath &#x3D; endpoint)),
+      tap(([endpoint, token]) &#x3D;&gt; {
+        api.configuration.basePath &#x3D; endpoint;
+        if (token) {
+          requestParams[&#x27;token&#x27;] &#x3D; token;
+        }
+      }),
       switchMap(() &#x3D;&gt; method(requestParams)),
       map(data &#x3D;&gt; reviver ? reviver(data) : data)
     );

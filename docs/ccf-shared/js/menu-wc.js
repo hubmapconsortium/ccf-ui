@@ -65,13 +65,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AnalyticsModule.html" data-type="entity-link" >AnalyticsModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-AnalyticsModule-5520f14fa1a623153da10ccc21c03472"' : 'data-target="#xs-injectables-links-module-AnalyticsModule-5520f14fa1a623153da10ccc21c03472"' }>
+                                        'data-target="#injectables-links-module-AnalyticsModule-6428b344f4dcc8617e21c0db96452956"' : 'data-target="#xs-injectables-links-module-AnalyticsModule-6428b344f4dcc8617e21c0db96452956"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AnalyticsModule-5520f14fa1a623153da10ccc21c03472"' :
-                                        'id="xs-injectables-links-module-AnalyticsModule-5520f14fa1a623153da10ccc21c03472"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AnalyticsModule-6428b344f4dcc8617e21c0db96452956"' :
+                                        'id="xs-injectables-links-module-AnalyticsModule-6428b344f4dcc8617e21c0db96452956"' }>
                                         <li class="link">
                                             <a href="injectables/ConsentService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ConsentService</a>
                                         </li>
