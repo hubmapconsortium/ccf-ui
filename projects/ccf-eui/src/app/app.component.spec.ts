@@ -40,6 +40,8 @@ describe('AppComponent', () => {
         scene$: of([])
       })
       .mock(DataState, {
+        state$: of({ status: 'Ready' }),
+        databaseReady$: of('Ready'),
         filter$: of(testFilter),
         tissueBlockData$: of(),
         aggregateData$: of(),
@@ -60,7 +62,8 @@ describe('AppComponent', () => {
       })
       .mock(ThemingService, {
         initialize: () => undefined,
-        getTheme: () => 'theme'
+        getTheme: () => 'theme',
+        setTheme: () => undefined
       })
       .mock(GlobalConfigState, {
         snapshot: {},

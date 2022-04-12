@@ -6,6 +6,8 @@ import { ObservableInput } from 'rxjs';
 
 import { GlobalConfig } from './core/services/config/config';
 
+import { environment } from '../environments/environment';
+
 
 export type User = NonNullable<GlobalConfig['user']>;
 export type Organ = NonNullable<GlobalConfig['organ']>;
@@ -29,6 +31,10 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() cancelRegistration: string | CancelRegistrationCallback;
   @Input() fetchPreviousRegistrations: string | FetchPreviousRegistrationsCallback;
   @Input() skipUnsavedChangesConfirmation: string | boolean;
+  @Input() theme: string;
+  @Input() header: string | boolean;
+  @Input() homeUrl: string;
+  @Input() logoTooltip: string;
 
   initialized: boolean;
 
@@ -41,7 +47,11 @@ export class AppWebComponent extends BaseWebComponent {
     super(configStore, cdr, {
       initialDelay: 500,
 
-      initialConfig: globalThis['ruiConfig' as string] ?? {},
+      initialConfig: {
+        ...environment.dbOptions,
+        ...globalThis['ruiConfig' as string],
+        ...environment.customization
+      },
       parse: {
         useDownload: BP.boolean,
         user: BP.json,
@@ -50,7 +60,8 @@ export class AppWebComponent extends BaseWebComponent {
         register: BP.function,
         cancelRegistration: BP.function,
         fetchPreviousRegistrations: BP.function,
-        skipUnsavedChangesConfirmation: BP.boolean
+        skipUnsavedChangesConfirmation: BP.boolean,
+        header: BP.boolean,
       }
     });
   }

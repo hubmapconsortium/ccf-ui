@@ -2,6 +2,22 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces
 
+## 3.1.0 - 2022-04-07
+
+### Added in 3.1.0
+
+* Added support for the latest CCF Ontology v1.8.0 which adds cell types
+* Added feature to search for tissue blocks by cell type
+* Added API feature to dynamically generate GTEx rui_locations.jsonld
+* Added logging of organ and block position changes to the RUI
+* Added an expanded organ selector that makes selecting organs much easier with the larger number of reference organs we have now
+* Now generating programming libraries for the CCF-API in Python, TypeScript, TypeScript (Angular), and JavaScript. We will be publishing them to appropriate package managers soon.
+* Improved performance of the CCF-API
+* New theming options and toggle for the CCF EUI/RUI
+* Added new themes for SenNet, GTEx, and a default theme
+* Added compodoc generated code documentation to production and staging builds
+* Bug fixes and minor improvements
+
 ## 3.0.0 - 2022-01-27
 
 ### Added in 3.0.0

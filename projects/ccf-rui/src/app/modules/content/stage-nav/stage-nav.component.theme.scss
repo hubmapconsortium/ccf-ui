@@ -16,7 +16,12 @@
     mat-radio-button {
       color: mat.get-color-from-palette($foreground, contrast-text);
 
+      .mat-radio-outer-circle {
+        border-color: white;
+      }
+
       &.mat-radio-checked {
+        border-color: mat.get-color-from-palette($accent);
         color: mat.get-color-from-palette($accent);
       }
     }
@@ -38,11 +43,27 @@
     .dropdown-label:hover {
       color: mat.get-color-from-palette($accent);
     }
-  
+
     .stage-options {
       &.dropdowncontainer {
         background-color: white;
-  
+
+        mat-radio-button, .slide-label {
+          color: mat.get-color-from-palette($foreground, text);
+        }
+
+        .mat-radio-outer-circle {
+          border-color: mat.get-color-from-palette($foreground, text);
+        }
+
+        .mat-radio-checked {
+          color: mat.get-color-from-palette($accent);
+
+          .mat-radio-outer-circle {
+            border-color: mat.get-color-from-palette($accent);
+          }
+        }
+
         mat-divider {
           color: mat.get-color-from-palette($foreground, icon);
         }

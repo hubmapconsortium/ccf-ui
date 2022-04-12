@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <div class="results-browser-list" (scroll)="onScroll($event)">
+  <div class="results-browser-list" [class.header-hidden]="!header" (scroll)="onScroll($event)">
     <div class="browser-item-container" (mouseenter)="handleHover(result.tissueBlock.spatialEntityId)" (mouseleave)="handleUnhover()" *ngFor="let result of listResults">
       <ccf-donor-card
         [tissueBlock]="result.tissueBlock"

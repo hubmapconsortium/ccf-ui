@@ -1,21 +1,30 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, pluck, shareReplay } from 'rxjs/operators';
 
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
-import { DARK_THEME, LIGHT_THEME, ThemingService } from './core/services/theming/theming.service';
+import { ThemingService } from './core/services/theming/theming.service';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+
+
+interface AppOptions extends CCFDatabaseOptions {
+  theme?: string;
+  header?: boolean;
+  homeUrl?: string;
+  logoTooltip?: string;
+  loginEnabled?: boolean;
+}
 
 
 /**
@@ -62,10 +71,16 @@ export class AppComponent implements OnInit {
    */
   viewerOpen = false;
 
+  get isLightTheme(): boolean {
+    return this.theming.getTheme().endsWith('light');
+  }
+
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ = this.data.queryStatus$.pipe(
     map(state => state === DataQueryState.Running)
   );
+
+  readonly loadingMessage$ = this.data.state$.pipe(pluck('statusMessage'));
 
   readonly ontologyTerms$: Observable<readonly string[]>;
   readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
@@ -73,7 +88,13 @@ export class AppComponent implements OnInit {
   readonly cellTypeTerms$: Observable<readonly string[]>;
   readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
 
-  readonly portalUrl$ = this.globalConfig.getOption('hubmapPortalUrl');
+  readonly theme$ = this.globalConfig.getOption('theme');
+  readonly themeMode$ = new ReplaySubject<'light' | 'dark'>(1);
+
+  readonly header$ = this.globalConfig.getOption('header');
+  readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
+  readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
+  readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
 
   /**
    * Creates an instance of app component.
@@ -85,8 +106,7 @@ export class AppComponent implements OnInit {
     readonly data: DataState, readonly theming: ThemingService,
     readonly scene: SceneState, readonly listResultsState: ListResultsState,
     readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
-    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>,
-    readonly dataSource: DataSourceService
+    readonly dataSource: DataSourceService, private readonly globalConfig: GlobalConfigState<AppOptions>, cdr: ChangeDetectorRef
   ) {
     theming.initialize(el, injector);
     overlay.setRootElement(el);
@@ -99,6 +119,14 @@ export class AppComponent implements OnInit {
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
+
+    combineLatest([this.theme$, this.themeMode$]).subscribe(
+      ([theme, mode]) => {
+        this.theming.setTheme(`${theme}-theme-${mode}`);
+        cdr.markForCheck();
+      }
+    );
+
     this.ontologyTreeModel$ = this.dataSource.getOntologyTreeModel().pipe(shareReplay(1));
     this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
     this.cellTypeTreeModel$ = this.dataSource.getCellTypeTreeModel().pipe(shareReplay(1));
@@ -117,13 +145,17 @@ export class AppComponent implements OnInit {
     if (window.matchMedia) {
       // Sets initial theme according to user theme preference
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        this.theming.setTheme(DARK_THEME);
+        this.themeMode$.next('dark');
+      } else {
+        this.themeMode$.next('light');
       }
 
       // Listens for changes in user theme preference
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        this.theming.setTheme(e.matches ? DARK_THEME : LIGHT_THEME);
+        this.themeMode$.next(e.matches ? 'dark' : 'light');
       });
+    } else {
+      this.themeMode$.next('light');
     }
   }
 
@@ -158,7 +190,7 @@ export class AppComponent implements OnInit {
    * Toggles scheme between light and dark mode
    */
   toggleScheme(): void {
-    this.theming.setTheme(this.theming.getTheme() === LIGHT_THEME ? DARK_THEME : LIGHT_THEME);
+    this.themeMode$.next(this.isLightTheme ? 'dark' : 'light');
   }
 
   /**

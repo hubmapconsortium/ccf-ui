@@ -13,9 +13,13 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 export class HeaderComponent {
 
   /**
-   * URL to Hubmap Portal site
+   * URL to Portal site
    */
-  @Input() hubmapPortalUrl: string;
+  @Input() homeUrl: string;
+
+  @Input() loginDisabled: boolean;
+
+  @Input() logoTooltip: string;
 
   /**
    * Is the user logged in?

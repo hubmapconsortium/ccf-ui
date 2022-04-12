@@ -4,9 +4,12 @@
 /dist
 /tmp
 /out-tsc
-/docs
 # Only exists if Bazel was run
 /bazel-out
+
+# Documentation
+/docs/*
+!/docs/index.html
 
 # dependencies
 /node_modules

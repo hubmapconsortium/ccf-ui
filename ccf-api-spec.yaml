@@ -26,6 +26,14 @@ x-preprocessor:
       Will also delete the property from the `required` list if applicable.
 
 paths:
+  /db-status:
+    get:
+      summary: Get current status of database
+      operationId: db-status
+      parameters:
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/DatabaseStatus" }
   /aggregate-results:
     get:
       summary: Get aggregate results / statistics
@@ -350,6 +358,12 @@ components:
             type: array
             items: { $ref: "#/components/schemas/AggregateCount" }
 
+    DatabaseStatus:
+      description: Successful operation
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/DatabaseStatus" }
+
     OntologyTree:
       description: Successful operation
       content:
@@ -399,6 +413,27 @@ components:
             items: { $ref: "#/components/schemas/TissueBlock" }
 
   schemas:
+    DatabaseStatus:
+      title: Database Status
+      type: object
+      required: [status]
+      properties:
+        status:
+          title: Current status of the database
+          enum: [ "Loading", "Ready", "Error" ]
+          x-preprocessor-delete: enum
+        checkback:
+          title: How long to wait (in milliseconds) before checking status again
+          type: integer
+          minimum: 0
+        loadTime:
+          title: The amount of time (in milliseconds) taken to load the database
+          type: integer
+          minimum: 0
+        message:
+          title: Human readable description of the current status
+          type: string
+
     # Generic types
     AggregateCount:
       title: Aggregated Count \w Label

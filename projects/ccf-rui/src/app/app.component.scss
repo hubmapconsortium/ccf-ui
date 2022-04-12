@@ -6,6 +6,10 @@
   font-size: 1rem;
   color: black;
 
+  .header-hidden {
+    display: none;
+  }
+
   ccf-drawer-container {
     height: 100%;
 

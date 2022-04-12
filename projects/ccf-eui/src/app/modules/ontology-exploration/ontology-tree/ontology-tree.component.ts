@@ -2,13 +2,12 @@
 /* eslint-disable no-underscore-dangle */
 import { FlatTreeControl } from '@angular/cdk/tree';
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { OntologyTreeNode } from 'ccf-database';
 import { filter, invoke, property } from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-
 import { FlatNode } from '../../../core/models/flat-node';
 
 
@@ -116,6 +115,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     return this._termData;
   }
 
+  @Input() header: boolean;
+
   /**
    * Storage for the getter / setter
    */
@@ -174,6 +175,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * Storage for getter/setter 'getChildren'.
    */
   private _getChildren?: GetChildrenFunc;
+
 
   /**
    * Keeping track of the first selection made allows us to ensure the 'body' node

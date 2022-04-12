@@ -1522,7 +1522,7 @@
               "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/2185217b-77ed-4043-b79b-1c2d33b6d524_placement",
               "@type": "SpatialPlacement",
-              "target": "http://purl.org/ccf/latest/ccf.owl#VHFSkinV1.1",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFSmallIntestine",
               "placement_date": "2022-01-26",
               "x_scaling": 1,
               "y_scaling": 1,

@@ -1,7 +1,7 @@
 .results-browser-container {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 7rem);
+  height: calc(100% - 3rem);
   padding: 0 1.5rem 1.5rem 1.5rem;
 
   .stat-box {
@@ -32,12 +32,15 @@
 
   .results-browser-list {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: scroll;
+    flex-direction: column;
+    overflow-y: auto;
     scrollbar-width: thin;
     padding-right: .5rem;
-    margin-bottom: 2rem;
+    height: calc(100vh - 20rem);
+
+    &.header-hidden {
+      height: calc(100vh - 16rem);
+    }
 
     .browser-item-container {
       width: 100%;
@@ -46,7 +49,7 @@
 
   .scroll-gradient {
     position: absolute;
-    height: 9rem;
+    height: 3rem;
     width: 95%;
     bottom: 0;
     pointer-events: none;

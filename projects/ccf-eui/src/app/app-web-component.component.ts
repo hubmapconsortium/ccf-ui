@@ -38,6 +38,11 @@ export class AppWebComponent extends BaseWebComponent {
 
   @Input() useRemoteApi: string | boolean;
   @Input() remoteApiEndpoint: string;
+  @Input() theme: string;
+  @Input() header: string | boolean;
+  @Input() homeUrl: string;
+  @Input() logoTooltip: string;
+  @Input() loginDisabled: boolean;
 
   initialized: boolean;
 
@@ -50,11 +55,14 @@ export class AppWebComponent extends BaseWebComponent {
 
       initialConfig: {
         ...environment.dbOptions,
-        ...globalThis['dbOptions']
+        ...globalThis['dbOptions'],
+        ...environment.customization
       },
       parse: {
         dataSources: parseDataSources,
-        useRemoteApi: BUILTIN_PARSERS.boolean
+        useRemoteApi: BUILTIN_PARSERS.boolean,
+        header: BUILTIN_PARSERS.boolean,
+        loginDisabled: BUILTIN_PARSERS.boolean
       }
     });
   }

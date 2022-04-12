@@ -1,6 +1,6 @@
 {
   "name": "ccf-ui",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -42,6 +42,7 @@
     "generate-reference-data": "ts-node --project projects/ccf-body-ui/tsconfig.cli.json projects/ccf-body-ui/src/generate-reference-data.ts ../hubmap-ontology/source_data/reference-spatial-entities.jsonld ../hubmap-ontology/source_data/generated-reference-spatial-entities.jsonld",
     "rui-data": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/precompute-reference-data.ts projects/ccf-rui/src/assets/reference-organ-data.json",
     "eui-data": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/serialize-ccf-database.ts projects/ccf-eui/src/assets/ccf.owl.n3store.json",
+    "ccf-api-data": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/cache-ccf-api-data.ts projects/ccf-eui/src/assets/ccf.owl.n3store.json projects/ccf-api/ccf-cache",
     "reference-data-workflow": "npm run generate-reference-data && cd ../hubmap-ontology/ && ./build.sh && cd ../ccf-ui/ && npm run rui-data",
     "fix-triple-store-utils": "rimraf dist/triple-store-fixed && mkdirp dist/triple-store-fixed && browserify -s tripleStoreUtils dist/triple-store-utils/bundles/triple-store-utils.umd.js -o dist/triple-store-fixed/index.js && cp dist/triple-store-utils/lib/triple-store-utils.d.ts dist/triple-store-fixed/index.d.ts",
     "build:netlify": "npm-run-all fix-types build:libs build cp-netlify-redirects compodoc",
@@ -56,7 +57,8 @@
     "preprocess:ccf-openapi": "node projects/ccf-openapi/scripts/preprocess.js -i ccf-api-spec.yaml -o projects/ccf-openapi/generated/spec.yaml",
     "pregenerate:ccf-openapi": "npx openapi-generator-cli version-manager set 5.4.0",
     "generate:ccf-openapi": "foreach -g \"projects/ccf-openapi/configs/*.yaml\" -x \"npx openapi-generator-cli generate -c #{path} -i projects/ccf-openapi/generated/spec.yaml -o projects/ccf-openapi/generated/#{name}\"",
-    "postinstall": "rimraf ./node_modules/@types/math.gl ./node_modules/@types/math.gl__core"
+    "postinstall": "rimraf ./node_modules/@types/math.gl ./node_modules/@types/math.gl__core",
+    "serve:docs": "npx http-server ./docs -c-1 --cors"
   },
   "private": true,
   "browser": {

@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { ComponentRef, Inject, Injectable, InjectionToken, Optional, Renderer2, Injector, ElementRef } from '@angular/core';
+import { ComponentRef, ElementRef, Inject, Injector, Injectable, InjectionToken, Optional, Renderer2 } from '@angular/core';
 
 /** Token for specifying the default theme class. */
 export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
@@ -9,13 +10,6 @@ export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
  */
 @Injectable()
 export class ThemingService {
-  /** Initializer called during bootstrap to set up theming. */
-  static initialize(component: ComponentRef<unknown>): void {
-    const { injector, location } = component;
-    const service = injector.get(ThemingService);
-    service.initialize(location, injector);
-  }
-
   private element: ElementRef<unknown>;
   private injector: Injector;
   /** Default theme class. */
@@ -23,12 +17,18 @@ export class ThemingService {
   /** Currently active theme class. */
   private theme: string;
 
+  /** Initializer called during bootstrap to set up theming. */
+  static initialize(component: ComponentRef<unknown>): void {
+    const { injector, location } = component;
+    const service = injector.get(ThemingService);
+    service.initialize(location, injector);
+  }
+
   /**
    * Creates the theming service.
    *
    * @param defaultTheme An optional default theme.
    */
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(@Optional() @Inject(DEFAULT_THEME) defaultTheme: string | null) {
     this.defaultTheme = this.theme = defaultTheme ?? '';
   }

@@ -1,10 +1,10 @@
 <div class="ccf-app mat-app-background">
-  <ccf-spinner-overlay text="Loading CCF Exploration User Interface (EUI)" [active]="spinnerActive$ | async">
+  <ccf-spinner-overlay [text]="loadingMessage$ | async" [active]="spinnerActive$ | async">
   </ccf-spinner-overlay>
-  <ccf-header [hubmapPortalUrl]="portalUrl$ | async" [loggedIn]="loggedIn" *ngIf="(spinnerActive$ | async) === false">
+  <ccf-header [class.hide]="(header$ | async) === false" [logoTooltip]="logoTooltip$ | async" [homeUrl]="homeUrl$ | async" [loggedIn]="loggedIn" [loginDisabled]="(loginDisabled$ | async)" *ngIf="(spinnerActive$ | async) === false">
   </ccf-header>
 
-  <ccf-drawer-container class="main-drawers">
+  <ccf-drawer-container class="main-drawers" [class.header-hidden]="(header$ | async) === false">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
       <div>
         <div class="filter-data">
@@ -25,15 +25,17 @@
                                 [treeModel]="ontologyTreeModel$ | async"
                                 [termData]="data.ontologyTermsFullData$ | async"
                                 [occurenceData]="data.ontologyTermOccurencesData$ | async"
-                                placeholderText="Search ontology terms..."
-                                (ontologySelection)="ontologySelected($event, 'anatomical-structures')">
+                                placeholderText="Search anatomical structures..."
+                                (ontologySelection)="ontologySelected($event, 'anatomical-structures')"
+                                [header]="header$ | async">
         </ccf-ontology-selection>
         <ccf-ontology-selection class="cell-type-selection"
                                 [treeModel]="cellTypeTreeModel$ | async"
                                 [termData]="data.cellTypeTermsFullData$ | async"
                                 [occurenceData]="data.cellTypeTermOccurencesData$ | async"
-                                placeholderText="Search cell type terms..."
-                                (ontologySelection)="ontologySelected($event, 'cell-type')">
+                                placeholderText="Search cell types..."
+                                (ontologySelection)="ontologySelected($event, 'cell-type')"
+                                [header]="header$ | async">
         </ccf-ontology-selection>
         <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
       </div>
@@ -49,8 +51,8 @@
             <mat-icon class="icon">{{ right.expanded ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
           </button>
           <button class="scheme-toggle button" (click)="toggleScheme()"
-                  [matTooltip]="theming.getTheme() === 'light-theme' ? 'Enter Dark Mode' : 'Enter Light Mode'">
-            <mat-icon class="icon">{{ theming.getTheme() === 'light-theme' ? 'brightness_2' : 'brightness_5' }}
+                  [matTooltip]="isLightTheme ? 'Enter Dark Mode' : 'Enter Light Mode'">
+            <mat-icon class="icon">{{ isLightTheme  ? 'brightness_2' : 'brightness_5' }}
             </mat-icon>
           </button>
           <button class="button">
@@ -58,7 +60,7 @@
             </mat-icon>
           </button>
         </div>
-        <ccf-info-button videoID="YAHJqvD3Q_8" infoTitle="HuBMAP CCF Exploration User Interface" matTooltip="Open Info">
+        <ccf-info-button videoID="YAHJqvD3Q_8" infoTitle="CCF Exploration User Interface" matTooltip="Open Info">
         </ccf-info-button>
       </div>
       <ccf-results-browser
@@ -70,13 +72,14 @@
         (linkClicked)="openiFrameViewer($event)"
         [highlighted]="listResultsState.highlightedNodeId$ | async"
         (itemHovered)="listResultsState.highlightNode($event)"
-        (itemUnhovered)="listResultsState.unHighlightNode()">
+        (itemUnhovered)="listResultsState.unHighlightNode()"
+        [header]="header$ | async">
       </ccf-results-browser>
       <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
     </ccf-drawer>
 
 
-    <ccf-drawer-content>
+    <ccf-drawer-content [class.header-hidden]="(header$ | async) === false">
       <div [class.closed]="!organListVisible" class="selector-drawer" [class.expanded]="selector.expanded">
         <ccf-organ-selector #selector class="organ-selector" [multiselect]="true"
                             [occurenceData]="(data.ontologyTermOccurencesData$ | async) ?? {}"
@@ -103,7 +106,8 @@
                     (nodeHoverStart)="scene.sceneNodeHovered($event)"
                     (nodeHoverStop)="scene.sceneNodeUnhover()"
                     [bounds]="{x:2.2,y:2,z:0.4}"
-                    [class.expanded-stage]="!organListVisible">
+                    [class.expanded-stage]="!organListVisible"
+                    [class.selector-expanded]="selector.expanded">
       </ccf-body-ui>
     </ccf-drawer-content>
   </ccf-drawer-container>

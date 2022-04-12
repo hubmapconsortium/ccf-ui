@@ -5,8 +5,18 @@
   border-bottom-style: solid;
   display: flex;
 
+  .home {
+    height: 100%;
+    width: 25rem;
+    align-items: center;
+    display: flex;
+  }
+
   .logo {
     width: 100%;
+    height: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 
   .download {
@@ -42,5 +52,9 @@
     align-items: center;
     height: 100%;
     font: 400 1rem/1.25rem Inter, sans-serif;
+  }
+
+  .disabled {
+    display: none;
   }
 }

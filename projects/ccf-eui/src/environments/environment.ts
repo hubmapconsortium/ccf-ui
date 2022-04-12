@@ -26,8 +26,16 @@ export const environment = {
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
     useRemoteApi: false,
-    remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
-    // remoteApiEndpoint: 'http://localhost:8080/v1'
+    // remoteApiEndpoint: 'https://ccf-api--staging.herokuapp.com/v1'
+    // remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1',
+    remoteApiEndpoint: 'http://localhost:8080/v1'
+  },
+  customization: {
+    theme: 'default',
+    header: true,
+    homeUrl: 'https://portal.hubmapconsortium.org/',
+    logoTooltip: 'Human BioMolecular Atlas Project',
+    loginDisabled: false
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };

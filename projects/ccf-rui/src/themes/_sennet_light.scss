@@ -1,0 +1,147 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+@use 'common/utility';
+
+$sennet-palette: (
+  'light-background': rgba(0, 0, 0, 0.04),
+  'text': #000000DE,
+  'white': #FFFFFF,
+  'black': #000000,
+  'disabled-text': #00000061,
+  'disabled-icon': #CCCCCC,
+  'lines': #CCCCCC,
+  'contrast-icon': #0000008A,
+  'white-hover': #EFE7F2,
+  'color-hover': #9762A5,
+  50: #EFE7F2,
+  100: #D9C4DF,
+  200: #C19ECB,
+  300: #A87BB5,
+  400: #9762A5,
+  500: #864E95,
+  600: #7A498E,
+  700: #6B4183,
+  800: #5D3C78,
+  900: #452F68,
+  contrast: (
+    'text': #0000008A,
+    50: #FCF9FF,
+    100: #F7F5FC,
+    200: #F1EFF6,
+    300: #E4E2E9,
+    400: #C1BFC6,
+    500: #A3A0A7,
+    600: #79777D,
+    700: #656369,
+    800: #46444A,
+    900: #242328
+  )
+);
+
+$sennet-accent: utility.add-colors(mat.$blue-palette, (
+  'light': #6A6EFF,
+  'main': #0742EF,
+  'dark': #001ABB,
+  contrast: (
+    "white": black,
+    "black": white,
+  )
+));
+
+$sennet-warn: utility.add-colors(mat.$red-palette, (
+  'light': #F2884B,
+  'main': #BA5A1E,
+  'dark': #842D00,
+  contrast: (
+    "white": black,
+    "black": white,
+    )
+));
+
+$primary: mat.define-palette($sennet-palette, $text: 'text');
+$accent: mat.define-palette($sennet-palette);
+$warn: mat.define-palette($sennet-warn);
+
+$foreground: map-merge(mat.$light-theme-foreground-palette, (
+  text: map-get($sennet-palette, 'text'),
+  icon: map-get($sennet-palette, 'gray'),
+  disabled: map-get($sennet-palette, 'disabled-text'),
+  highlight: map-get($sennet-palette, 400),
+  logo: map-get($sennet-palette, 'white'),
+  header-border: map-get($sennet-palette, 400),
+  modal-borders: map-get($sennet-palette, 'lines'),
+  divider: map-get($sennet-palette, 'lines'),
+  borders: map-get($sennet-palette, 'lines'),
+  active-icon: map-get($sennet-palette, 400),
+  carousel-arrow: map-get($sennet-palette, 500),
+  headers: map-get($sennet-palette, 'white'),
+  contrast-icon: map-get($sennet-palette, 'contrast-icon'),
+  button-text: map-get($sennet-palette, 400),
+  button-border: map-get($sennet-palette, 'black'),
+  search-result-text: map-get($sennet-palette, 'text'),
+  contrast-text: map-get($sennet-palette, 50),
+  download-icon: map-get($sennet-palette, 'contrast-icon'),
+  app-bar-shadow: map-get($sennet-palette, 900),
+  info-icon: map-get($sennet-palette, 'white'),
+  disabled-text: #CCCCCC,
+  legend-contrast: #992661, // Not in any builtin palettes
+  placeholder-text: map-get($sennet-palette, disabled-text),
+  scrollbar-thumb: #cdcdcd,
+  secondary-text: map-get($sennet-palette, text),
+  sidebar-dividers: map-get($sennet-palette, 'white'),
+  slider-blue: map-get(mat.$blue-palette, A400),
+  slider-green: map-get(mat.$green-palette, A700),
+  slider-red: map-get(mat.$red-palette, A700),
+  slider-blue-light: map-get(mat.$blue-palette, A100),
+  slider-green-light: map-get(mat.$green-palette, A200),
+  slider-red-light: map-get(mat.$red-palette, A100),
+  main: map-get($sennet-palette, 400),
+  button-background: map-get($sennet-palette, 400),
+  button-background-hover: map-get($sennet-palette, 'white-hover'),
+  chip-icon-block-primary:  map-get($sennet-palette, 400),
+  chip-icon-done-green: map-get(mat.$green-palette, A700),
+  chip-icon-background:  #E9E9E9,
+  chip-border-primary:  map-get($sennet-palette, 400),
+  toggle-thumb: map-get($sennet-palette, 400),
+  toggle-bg: #ECECEC,
+  mat-divider: rgba(0, 0, 0, 0.03),
+  opacity-numbers: #CCCCCC,
+  icons-disabled: #CCCCCC,
+  icons-hover: #eeeeee,
+  organ-off: #cccccc,
+  carousel-text: map-get($sennet-palette, 'black'),
+  icon-active: #f5f5f5,
+  donor-sex-toggle-nob: map-get($sennet-palette, 400),
+  donor-sex-bg: #CCCCCC,
+  inactive-sex: #636363,
+  active-sex: #212121
+));
+
+$background: map-merge(mat.$light-theme-background-palette, (
+  background: map-get($sennet-palette, 'white'),
+  hover-background: map-get($sennet-palette, 'light-background'),
+  stage-background: map-get($sennet-palette, 'black'),
+  dialog: map-get($sennet-palette, 'light-background'),
+  authentication: map-get($sennet-palette, 'white'),
+  app-bar: map-get($sennet-palette, 300),
+  modal: map-get($sennet-palette, 'white'),
+  dropdown-hover: map-get($sennet-palette, 400),
+  image-placeholder: map-get($sennet-palette, 'disabled-text'),
+  info-button-hover: map-get($sennet-palette, 'white-hover'),
+  card: map-get($sennet-palette, 'white'), 
+  content-background: map-get($sennet-palette, 'black'),
+  legend-background: map-get($sennet-palette, 'white'),
+  sidebar-background: map-get($sennet-palette,  'white'),
+  dropdown-menu: map-get($sennet-palette, 300),
+  drawer-background: map-get($sennet-palette, 'white'),
+  drawer-hover: map-get($sennet-palette, 300),
+));
+
+$theme: (
+  is-dark: false,
+  primary: $primary,
+  accent: $accent,
+  warn: $warn,
+  foreground: $foreground,
+  background: $background
+);

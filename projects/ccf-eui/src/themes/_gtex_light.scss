@@ -1,0 +1,65 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+@use 'common/utility';
+@import 'light';
+
+$gtex-light-palette: utility.add-colors($primary-colors, (
+  main: #46a4ad,
+  light-disabled: #E0E0E0,
+  contrast: (
+    main: $dark-primary-text,
+    light-disabled: $dark-primary-text,
+  )
+));
+
+$primary: mat.define-palette($gtex-light-palette, $text: 900);
+$accent: mat.define-palette(mat.$blue-palette, 700);
+$warn: mat.define-palette(mat.$red-palette);
+
+$gtex-light-foreground: map-merge($foreground, (
+  main: map-get($gtex-light-palette, main),
+  active-icon: #8f8f8f,
+  header-border: #4a5265,
+  modal-borders: rgba(0,0,0,.15),
+  divider: #ccc,
+  borders: map-get($gtex-light-palette, 300),
+  carousel-arrow: map-get($gtex-light-palette, 500),
+  icon: map-get($gtex-light-palette, 300),
+  contrast-icon: map-get($gtex-light-palette, main),
+  button-text: map-get($primary-colors, 'white'),
+  headers: map-get($primary-colors, 'white'),
+  search-result-text: map-get($primary-colors, 'black'),
+  text: map-get($primary-colors, 'black'),
+  contrast-text: map-get($primary-colors, 'black'),
+  disabled: map-get($gtex-light-palette, light-disabled),
+  header-download-icon: map-get($gtex-light-palette, 300),
+  header-shadow: map-get($primary-colors, 'black'),
+  selected-ontology-text: map-get($gtex-light-palette, main),
+  icons-hover: #8f8f8f
+));
+
+$gtex-light-background: map-merge($background, (
+  background: map-get($primary-colors, 'white'),
+  hover-background: #eee,
+  donor-card-background: map-get($gtex-light-palette, 300),
+  button-text: map-get($primary-colors, 'white'),
+  app-bar: map-get($primary-colors, 'white'),
+  dropdown-hover: #eee,
+  mat-selected-option: #eee,
+  image-placeholder: map-get($gtex-light-palette, light-disabled),
+  button-bg: #549cc7,
+  button-background-hover: #8f8f8f,
+  mat-slider-primary: map-get($gtex-light-palette, main),
+  info-button-hover: #eee,
+  checkbox-color: map-get($gtex-light-palette, main),
+  authentication: #549cc7
+));
+
+$theme: (
+  is-dark: false,
+  primary: $primary,
+  accent: $accent,
+  warn: $warn,
+  foreground: $gtex-light-foreground,
+  background: $gtex-light-background
+);

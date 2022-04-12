@@ -9,9 +9,10 @@
 </ng-template>
 
 <ng-template #logo>
-  <a class="link hubmap" href="https://ingest.hubmapconsortium.org/" rel="noreferrer noopener"
-     matTooltip="Human BioMolecular Atlas Project" matTooltipPosition="right">
-    <mat-icon class="icon logo" svgIcon="app:logo"></mat-icon>
+  <a class="link portal" [href]="homeUrl" rel="noreferrer noopener"
+    [matTooltip]="logoTooltip" matTooltipPosition="right">
+    <div class="logo" aria-hidden="false" aria-label="Reset tool">
+    </div>
   </a>
 </ng-template>
 

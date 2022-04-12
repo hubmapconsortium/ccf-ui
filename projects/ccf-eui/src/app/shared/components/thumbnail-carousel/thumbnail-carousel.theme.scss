@@ -3,6 +3,7 @@
 
 @mixin theme($theme) {
   $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
 
   .ccf-thumbnail-carousel {
     .prev,
@@ -40,7 +41,7 @@
       }
 
       .link {
-        background-color: mat.get-color-from-palette($foreground, icons-background-hover);
+        background-color: mat.get-color-from-palette($background, hover-background);
 
         &,
         &:link,
