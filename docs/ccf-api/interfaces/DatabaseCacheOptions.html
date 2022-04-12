@@ -244,7 +244,7 @@ export function databaseLoader(options: DatabaseLoaderOptions): RequestHandler {
   );
 
   return (req, _res, next) &#x3D;&gt; {
-    req[&#x27;getDatabase&#x27;] &#x3D; (token?: string) &#x3D;&gt; cache.get(selectToken(token, req))?.then((instance) &#x3D;&gt; instance.database);
+    req[&#x27;getDatabase&#x27;] &#x3D; (token?: string) &#x3D;&gt; cache.get(selectToken(token, req));
     next();
   };
 }

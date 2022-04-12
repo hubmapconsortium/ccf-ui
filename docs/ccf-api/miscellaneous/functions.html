@@ -101,6 +101,9 @@
                             <a href="#getDatabaseOptions" title="projects/ccf-api/src/lib/server.ts" ><b>getDatabaseOptions</b>&nbsp;&nbsp;&nbsp;(projects/.../server.ts)</a>
                         </li>
                         <li>
+                            <a href="#getDatabaseStatus" title="projects/ccf-api/src/lib/routes/v1/database-status.ts" ><b>getDatabaseStatus</b>&nbsp;&nbsp;&nbsp;(projects/.../database-status.ts)</a>
+                        </li>
+                        <li>
                             <a href="#getLocations" title="projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts" ><b>getLocations</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
                         </li>
                         <li>
@@ -153,6 +156,9 @@
                         </li>
                         <li>
                             <a href="#parseSex" title="projects/ccf-api/src/lib/routes/v1/utils/parse-filter.ts" ><b>parseSex</b>&nbsp;&nbsp;&nbsp;(projects/.../parse-filter.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#parseString" title="projects/ccf-api/src/lib/routes/v1/database-status.ts" ><b>parseString</b>&nbsp;&nbsp;&nbsp;(projects/.../database-status.ts)</a>
                         </li>
                         <li>
                             <a href="#parseString" title="projects/ccf-api/src/lib/routes/v1/reference-organ-scene.ts" ><b>parseString</b>&nbsp;&nbsp;&nbsp;(projects/.../reference-organ-scene.ts)</a>
@@ -990,7 +996,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/CCFDatabaseInstance.html" target="_self" >Promise&lt;CCFDatabaseInstance&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/CCFDatabaseInstance.html" target="_self" >Promise&lt;CCFDatabaseInstance&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -1059,7 +1065,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/CCFDatabaseInstance.html" target="_self" >Promise&lt;CCFDatabaseInstance&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/CCFDatabaseInstance.html" target="_self" >Promise&lt;CCFDatabaseInstance&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -2270,6 +2276,97 @@
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code> | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-api/src/lib/routes/v1/database-status.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatabaseStatus"></a>
+                    <span class="name">
+                        <span ><b>getDatabaseStatus</b></span>
+                        <a href="#getDatabaseStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatabaseStatus()</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>RequestHandler</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parseString"></a>
+                    <span class="name">
+                        <span ><b>parseString</b></span>
+                        <a href="#parseString"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>parseString(value)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>string | undefined</code>
 
                     </div>
                     <div class="io-description">

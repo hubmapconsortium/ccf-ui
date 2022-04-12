@@ -101,6 +101,12 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="#getDatabaseStatus" 
+>
+                                        getDatabaseStatus
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="#getDatasetTechnologyNames" 
 >
                                         getDatasetTechnologyNames
@@ -327,6 +333,43 @@
 
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatabaseStatus"></a>
+                    <span class="name">
+                        <span ><b>getDatabaseStatus</b></span>
+                        <a href="#getDatabaseStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatabaseStatus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="9"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.ts:9</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DatabaseStatus&gt;</code>
 
                     </div>
                 </td>
@@ -772,14 +815,14 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult
 } from &#x27;ccf-database&#x27;;
 import { Observable, ObservableInput, ObservedValueOf } from &#x27;rxjs&#x27;;
 import { switchMap } from &#x27;rxjs/operators&#x27;;
 
 
-
 export interface DataSource {
+  getDatabaseStatus(): Observable&lt;DatabaseStatus&gt;;
   getProviderNames(): Observable&lt;string[]&gt;;
   getDatasetTechnologyNames(): Observable&lt;string[]&gt;;
   getOntologyTreeModel(): Observable&lt;OntologyTreeModel&gt;;
@@ -806,6 +849,10 @@ export type DataSourceDataType&lt;K extends keyof DataSource&gt; &#x3D;
 
 
 export abstract class ForwardingDataSource implements DataSource {
+  getDatabaseStatus(): Observable&lt;DatabaseStatus&gt; {
+    return this.forwardCall(&#x27;getDatabaseStatus&#x27;);
+  }
+
   getProviderNames(): Observable&lt;string[]&gt; {
     return this.forwardCall(&#x27;getProviderNames&#x27;);
   }

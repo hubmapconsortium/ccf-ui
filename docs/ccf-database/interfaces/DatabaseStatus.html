@@ -46,7 +46,7 @@
   <li>Interfaces</li>
   <li
   >
-  AggregateResult</li>
+  DatabaseStatus</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -72,7 +72,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Aggregate query result</p>
+                <p>Status of the database</p>
 
             </p>
 
@@ -90,15 +90,30 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#count" 
+                                            <span class="modifier">Optional</span>
+                                        <a href="#checkback" 
 >
-                                            count
+                                            checkback
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#label" 
+                                            <span class="modifier">Optional</span>
+                                        <a href="#loadTime" 
 >
-                                            label
+                                            loadTime
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#message" 
+>
+                                            message
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#status" 
+>
+                                            status
                                         </a>
                                 </li>
                             </ul>
@@ -116,9 +131,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="count"></a>
-                                        <span class="name "><b>count</b>
-                                            <a href="#count">
+                                        <a name="checkback"></a>
+                                        <span class="name "><b>checkback</b>
+                                            <a href="#checkback">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -126,7 +141,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>count:     <code>string | number</code>
+                                        <code>checkback:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -134,18 +149,23 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>string | number</code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
                                         </td>
                                     </tr>
 
 
 
 
-
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Aggregate value</p>
+                                    <div class="io-description"><p>How long to wait (in milliseconds) before checking status again</p>
 </div>
                                 </td>
                             </tr>
@@ -155,9 +175,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="label"></a>
-                                        <span class="name "><b>label</b>
-                                            <a href="#label">
+                                        <a name="loadTime"></a>
+                                        <span class="name "><b>loadTime</b>
+                                            <a href="#loadTime">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -165,7 +185,51 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>label:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>loadTime:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The amount of time (in milliseconds) taken to load the database</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="message"></a>
+                                        <span class="name "><b>message</b>
+                                            <a href="#message">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>message:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -178,13 +242,57 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Queried field</p>
+                                    <div class="io-description"><p>Human readable description of the current status</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="status"></a>
+                                        <span class="name "><b>status</b>
+                                            <a href="#status">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>status:     <code>&quot;Ready&quot; | &quot;Loading&quot; | &quot;Error&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;Ready&quot; | &quot;Loading&quot; | &quot;Error&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Status of the database</p>
 </div>
                                 </td>
                             </tr>
@@ -367,7 +475,7 @@ export interface OntologyTreeModel {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'AggregateResult.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'DatabaseStatus.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

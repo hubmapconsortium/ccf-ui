@@ -266,7 +266,7 @@ async function getLocations(): Promise&lt;unknown&gt; {
 
     return jsonld;
   } catch (_error) {
-    throw new Error(&#x27;No data available&#x27;);
+    return undefined;
   }
 }
 
@@ -295,7 +295,11 @@ export function ruiLocations(): RequestHandler {
     const token &#x3D; typeof rawToken &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? rawToken : &#x27;&#x27;;
     const result &#x3D; await cache.get(token, options);
 
-    res.json(result);
+    if (result) {
+      res.json(result);
+    } else {
+      res.status(500).json([]);
+    }
   };
 }
 </code></pre>
