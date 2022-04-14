@@ -21,7 +21,8 @@ const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
   '5bd084c8-edc2-11e8-802f-0e368f3075e8': 'HBM-TestingGroup',
   '73bb26e4-ed43-11e8-8f19-0a7c1eab007a': 'TMC-Vanderbilt',
   'def5fd76-ed43-11e8-b56a-0e8017bdda58': 'TMC-Stanford',
-  '5c106f29-ea2d-11e9-85e8-0efb3ba9a670': 'RTI-General Electric'
+  '5c106f29-ea2d-11e9-85e8-0efb3ba9a670': 'RTI-General Electric',
+  '301615f9-c870-11eb-a8dc-35ce3d8786fe': 'TMC-UConn'
 };
 
 function createRuiOrganLookup(): { [organName: string]: string } {
