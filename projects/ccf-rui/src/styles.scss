@@ -22,12 +22,12 @@
 
 .default-theme-light, .default-theme-dark {
   .portal {
-    width: 25% !important;
+    width: 19rem !important;
+  }
 
-    .logo {
-      background-image: url('./assets/icons/default-logo.svg');
-      background-size: cover !important;
-    }
+  .logo {
+    background-image: url('./assets/icons/default-logo.svg');
+    background-size: cover !important;
   }
 }
 
@@ -54,6 +54,10 @@
 }
 
 .sennet-theme-light, .sennet-theme-dark {
+  .portal {
+    width: 15rem !important;
+  }
+
   .logo {
     background-image: url('./assets/icons/sennet-logo.svg');
     height: 100% !important;
@@ -69,6 +73,10 @@
 }
 
 .gtex-theme-light, .gtex-theme-dark {
+  .portal {
+    width: 11rem !important;
+  }
+
   .logo {
     height: 100%;
     background-image: url('./assets/icons/gtex-logo.png')
