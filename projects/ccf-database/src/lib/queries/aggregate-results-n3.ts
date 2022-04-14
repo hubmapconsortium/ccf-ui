@@ -1,9 +1,19 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Store } from 'triple-store-utils';
+import { readQuads, Store } from 'triple-store-utils';
 
 import { AggregateResult } from '../interfaces';
 import { entity } from '../util/prefixes';
 
+
+function getObjects(store: Store, ids: Set<string>, predicate: string): Set<string> {
+  const objects = new Set<string>();
+  for (const id of ids) {
+    for (const quad of readQuads(store, id, predicate, null, null)) {
+      objects.add(quad.object.id);
+    }
+  }
+  return objects;
+}
 
 /**
  * Computes aggregate results.
@@ -13,45 +23,21 @@ import { entity } from '../util/prefixes';
  * @returns The list of aggregate results.
  */
 export function getAggregateResults(ids: Set<string>, store: Store): AggregateResult[] {
-  const donors = new Set<string>();
-  store.some((quad) => {
-    if (ids.has(quad.subject.id)) {
-      donors.add(quad.object.id);
-    }
-    return false;
-  }, null, entity.donor, null, null);
-
-  const centers = new Set<string>();
-  store.some((quad) => {
-    if (donors.has(quad.subject.id)) {
-      centers.add(quad.object.id);
-    }
-    return false;
-  }, null, entity.providerUUID, null, null);
+  const donors = getObjects(store, ids, entity.donor.id);
+  const centers = getObjects(store, donors, entity.providerUUID.id);
 
   const tissueBlocks = new Set<string>();
-  store.forSubjects((subject) => {
-    if (ids.has(subject.id)) {
-      tissueBlocks.add(subject.id);
+  for (const id of ids) {
+    for (const quad of readQuads(store, id, entity.spatialEntity, null, null)) {
+      tissueBlocks.add(quad.subject.id);
     }
-  }, entity.spatialEntity, null, null);
+  }
 
-  const tissueSections = new Set<string>();
-  store.some((quad) => {
-    if (tissueBlocks.has(quad.subject.id)) {
-      tissueSections.add(quad.object.id);
-    }
-    return false;
-  }, null, entity.sections, null, null);
-
-  const tissueDatasets = new Set<string>();
-  store.some((quad) => {
-    const subject = quad.subject;
-    if (tissueBlocks.has(subject.id) || tissueSections.has(subject.id)) {
-      tissueDatasets.add(quad.object.id);
-    }
-    return false;
-  }, null, entity.datasets, null, null);
+  const tissueSections = getObjects(store, tissueBlocks, entity.sections.id);
+  const tissueDatasets = new Set<string>([
+    ...getObjects(store, tissueBlocks, entity.datasets.id),
+    ...getObjects(store, tissueSections, entity.datasets.id)
+  ]);
 
   const results: { [key: string]: number } = {
     'Tissue Data Providers': centers.size,
@@ -72,10 +58,9 @@ export function getAggregateResults(ids: Set<string>, store: Store): AggregateRe
  */
 export function getDatasetTechnologyNames(store: Store): string[] {
   const names = new Set<string>();
-  store.some((quad) => {
+  for (const quad of readQuads(store, null, entity.technology, null, null)) {
     names.add(quad.object.value);
-    return false;
-  }, null, entity.technology, null, null);
+  }
   return Array.from(names).sort();
 }
 
@@ -87,9 +72,8 @@ export function getDatasetTechnologyNames(store: Store): string[] {
  */
 export function getProviderNames(store: Store): string[] {
   const names = new Set<string>();
-  store.some((quad) => {
+  for (const quad of readQuads(store, null, entity.providerName, null, null)) {
     names.add(quad.object.value);
-    return false;
-  }, null, entity.providerName, null, null);
+  }
   return Array.from(names).sort();
 }
