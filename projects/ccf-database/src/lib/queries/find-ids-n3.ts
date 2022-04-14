@@ -1,6 +1,6 @@
 import { isFinite } from 'lodash';
 import { fromRdf } from 'rdf-literal';
-import { DataFactory, Literal, Store, Term } from 'triple-store-utils';
+import { DataFactory, Literal, readQuads, Store, Term } from 'triple-store-utils';
 
 import { Filter } from '../interfaces';
 import { ccf, entity, rui } from '../util/prefixes';
@@ -9,20 +9,18 @@ import { ccf, entity, rui } from '../util/prefixes';
 function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen: Set<string>) => Set<string>): Set<string> {
   const donor2entity = new Map<string, string[]>();
   const donors = new Set<string>();
-  store.some((quad) => {
-    if (seen.has(quad.subject.id)) {
+  for (const subject of seen) {
+    for (const quad of readQuads(store, subject, entity.donor, null, null)) {
       donors.add(quad.object.id);
       if (!donor2entity.has(quad.object.id)) {
-        donor2entity.set(quad.object.id, [quad.subject.id]);
+        donor2entity.set(quad.object.id, [subject]);
       } else {
-        donor2entity.get(quad.object.id)?.push(quad.subject.id);
+        donor2entity.get(quad.object.id)?.push(subject);
       }
     }
-    return false;
-  }, null, entity.donor, null, null);
+  }
 
   const newDonors = callback(donors);
-
   const newSeen = new Set<string>();
   for (const d of newDonors) {
     for (const s of donor2entity.get(d) ?? []) {
@@ -35,20 +33,18 @@ function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen:
 function filterWithSpatialEntity(store: Store, seen: Set<string>, callback: (entitiesSeen: Set<string>) => Set<string>): Set<string> {
   const spatial2entity = new Map<string, string[]>();
   const entities = new Set<string>();
-  store.some((quad) => {
-    if (seen.has(quad.subject.id)) {
+  for (const subject of seen) {
+    for (const quad of readQuads(store, subject, entity.spatialEntity, null, null)) {
       entities.add(quad.object.id);
       if (!spatial2entity.has(quad.object.id)) {
-        spatial2entity.set(quad.object.id, [quad.subject.id]);
+        spatial2entity.set(quad.object.id, [subject]);
       } else {
-        spatial2entity.get(quad.object.id)?.push(quad.subject.id);
+        spatial2entity.get(quad.object.id)?.push(subject);
       }
     }
-    return false;
-  }, null, entity.spatialEntity, null, null);
+  }
 
   const newSpatialEntities = callback(entities);
-
   const newSeen = new Set<string>();
   for (const e of newSpatialEntities) {
     for (const s of spatial2entity.get(e) ?? []) {
@@ -62,28 +58,25 @@ function filterWithDataset(store: Store, seen: Set<string>, callback: (datasetsS
   const dataset2entity = new Map<string, string[]>();
   const datasets = new Set<string>();
 
-  const sectionSeen = new Set<string>();
-  store.some((quad) => {
-    if (seen.has(quad.subject.id)) {
-      sectionSeen.add(quad.object.id);
+  const sectionAndBlockSeen = new Set<string>(seen);
+  for (const subject of seen) {
+    for (const quad of readQuads(store, subject, entity.sections, null, null)) {
+      sectionAndBlockSeen.add(quad.object.id);
     }
-    return false;
-  }, null, entity.sections, null, null);
+  }
 
-  store.some((quad) => {
-    if (seen.has(quad.subject.id) || sectionSeen.has(quad.subject.id)) {
+  for (const subject of sectionAndBlockSeen) {
+    for (const quad of readQuads(store, subject, entity.datasets, null, null)) {
       datasets.add(quad.object.id);
       if (!dataset2entity.has(quad.object.id)) {
-        dataset2entity.set(quad.object.id, [quad.subject.id]);
+        dataset2entity.set(quad.object.id, [subject]);
       } else {
-        dataset2entity.get(quad.object.id)?.push(quad.subject.id);
+        dataset2entity.get(quad.object.id)?.push(subject);
       }
     }
-    return false;
-  }, null, entity.datasets, null, null);
+  }
 
   const newDatasets = callback(datasets);
-
   const newSeen = new Set<string>();
   for (const e of newDatasets) {
     for (const s of dataset2entity.get(e) ?? []) {
@@ -183,8 +176,12 @@ function getAllEntities(store: Store): Set<string> {
  * @param newSeen The second set to add ids to.
  * @returns The callback function.
  */
-function differenceCallback(seen: Set<string>, newSeen: Set<string>): (s: Term) => void {
-  return (s: Term) => seen.has(s.id) ? newSeen.add(s.id) : undefined;
+function differenceCallback(seen: Set<string>, newSeen: Set<string>): (term: Term) => void {
+  return function (term: Term) {
+    if (seen.has(term.id)) {
+      newSeen.add(term.id);
+    }
+  };
 }
 
 /**
@@ -284,15 +281,14 @@ function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[])
  */
 function filterByAge(store: Store, seen: Set<string>, minAge: number, maxAge: number): Set<string> {
   const newSeen = new Set<string>();
-  store.some((quad) => {
-    if (seen.has(quad.subject.id)) {
+  for (const subject of seen) {
+    for (const quad of readQuads(store, subject, entity.age, null, null)) {
       const value = fromRdf(quad.object as Literal) as number;
       if (value >= minAge && value <= maxAge) {
-        newSeen.add(quad.subject.id);
+        newSeen.add(subject);
       }
     }
-    return false;
-  }, null, entity.age, null, null);
+  }
   return newSeen;
 }
 
@@ -307,15 +303,14 @@ function filterByAge(store: Store, seen: Set<string>, minAge: number, maxAge: nu
  */
 function filterByBMI(store: Store, seen: Set<string>, minBMI: number, maxBMI: number): Set<string> {
   const newSeen = new Set<string>();
-  store.some((quad) => {
-    if (seen.has(quad.subject.id)) {
+  for (const subject of seen) {
+    for (const quad of readQuads(store, subject, entity.bmi, null, null)) {
       const value = fromRdf(quad.object as Literal) as number;
       if (value >= minBMI && value <= maxBMI) {
-        newSeen.add(quad.subject.id);
+        newSeen.add(subject);
       }
     }
-    return false;
-  }, null, entity.bmi, null, null);
+  }
   return newSeen;
 }
 

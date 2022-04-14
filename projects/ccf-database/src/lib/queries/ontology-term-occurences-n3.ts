@@ -1,22 +1,20 @@
-import { Store } from 'triple-store-utils';
+import { Store, readQuads } from 'triple-store-utils';
 
 import { ccf, entity, rui } from '../util/prefixes';
 
 
-function getSpatialEntityMapping(ids: Set<string>, store: Store): Map<string, Set<string>> {
+function getSpatialEntityMapping(subjects: Set<string>, store: Store): Map<string, Set<string>> {
   const spatial2entity = new Map<string, Set<string>>();
 
-  store.some((quad) => {
-    if (ids.has(quad.subject.id)) {
+  for (const subject of subjects) {
+    for (const quad of readQuads(store, subject, entity.spatialEntity, null, null)) {
       if (!spatial2entity.has(quad.object.id)) {
-        spatial2entity.set(quad.object.id, new Set<string>([quad.subject.id]));
+        spatial2entity.set(quad.object.id, new Set<string>([subject]));
       } else {
-        spatial2entity.get(quad.object.id)!.add(quad.subject.id);
+        spatial2entity.get(quad.object.id)!.add(subject);
       }
     }
-    return false;
-  }, null, entity.spatialEntity, null, null);
-
+  }
   return spatial2entity;
 }
 
@@ -24,9 +22,9 @@ function getAnatomicalStructureMapping(ids: Set<string>, store: Store): Map<stri
   const spatial2entity = getSpatialEntityMapping(ids, store);
   const term2entity = new Map<string, Set<string>>();
 
-  store.some((quad) => {
-    if (spatial2entity.has(quad.subject.id)) {
-      const entities = spatial2entity.get(quad.subject.id)!;
+  for (const subject of spatial2entity.keys()) {
+    const entities = spatial2entity.get(subject)!;
+    for (const quad of readQuads(store, subject, ccf.spatialEntity.ccf_annotations, null, null)) {
       if (!term2entity.has(quad.object.id)) {
         term2entity.set(quad.object.id, new Set<string>(entities));
       } else {
@@ -34,9 +32,7 @@ function getAnatomicalStructureMapping(ids: Set<string>, store: Store): Map<stri
         entities.forEach((value) => termEntities.add(value));
       }
     }
-    return false;
-  }, null, ccf.spatialEntity.ccf_annotations, null, null);
-
+  }
   return term2entity;
 }
 
@@ -69,11 +65,10 @@ export function getCellTypeTermOccurences(ids: Set<string>, store: Store): Recor
   const asTerm2entities = getAnatomicalStructureMapping(ids, store);
   const ctTerm2entities = new Map<string, Set<string>>();
 
-  store.some((quad) => {
-    const anatomicalStructure = quad.object.id;
-    if (asTerm2entities.has(anatomicalStructure)) {
+  for (const asTerm of asTerm2entities.keys()) {
+    const entities = asTerm2entities.get(asTerm)!;
+    for (const quad of readQuads(store, null, ccf.asctb.located_in, asTerm, null)) {
       const cellType = quad.subject.id;
-      const entities = asTerm2entities.get(anatomicalStructure)!;
       if (!ctTerm2entities.has(cellType)) {
         ctTerm2entities.set(cellType, new Set<string>(entities));
       } else {
@@ -81,8 +76,7 @@ export function getCellTypeTermOccurences(ids: Set<string>, store: Store): Recor
         entities.forEach((value) => termEntities.add(value));
       }
     }
-    return false;
-  }, null, ccf.asctb.located_in, null, null);
+  }
 
   const counts: Record<string, number> = {};
 

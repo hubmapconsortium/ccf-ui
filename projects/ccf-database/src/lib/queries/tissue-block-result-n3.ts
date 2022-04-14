@@ -1,37 +1,35 @@
-import { memoize, set } from 'lodash';
-import { fromRdf } from 'rdf-literal';
-import { DataFactory, Store } from 'triple-store-utils';
-
+import { Store } from 'triple-store-utils';
 import { DatasetResult, DonorResult, TissueBlockResult, TissueSectionResult } from '../interfaces';
+import { getEntries, getMappedResult } from '../util/n3-functions';
 import { entity } from '../util/prefixes';
 
 
 /** Entity iri to property path. */
-const listResultSet: { [iri: string]: string | string[] } = {
+const listResultSet: { [iri: string]: string } = {
   [entity.label.id]: 'label',
   [entity.description.id]: 'description',
   [entity.link.id]: 'link'
 };
 
-const donorResultSet: { [iri: string]: string | string[] } = {
+const donorResultSet: { [iri: string]: string } = {
   ...listResultSet,
   [entity.providerName.id]: 'providerName'
 };
 
-const datasetResultSet: { [iri: string]: string | string[] } = {
+const datasetResultSet: { [iri: string]: string } = {
   ...listResultSet,
   [entity.technology.id]: 'technology',
   [entity.thumbnail.id]: 'thumbnail',
 };
 
-const tissueSectionResultSet: { [iri: string]: string | string[] } = {
+const tissueSectionResultSet: { [iri: string]: string } = {
   ...listResultSet,
   [entity.sampleType.id]: 'sampleType',
   [entity.sectionNumber.id]: 'sectionNumber',
   [entity.datasets.id]: 'datasets',
 };
 
-const tissueBlockResultSet: { [iri: string]: string | string[] } = {
+const tissueBlockResultSet: { [iri: string]: string } = {
   ...listResultSet,
   [entity.sampleType.id]: 'sampleType',
   [entity.sectionCount.id]: 'sectionCount',
@@ -51,34 +49,19 @@ const tissueBlockResultSet: { [iri: string]: string | string[] } = {
  * @param iri The entity id.
  * @returns The list data.
  */
-export function getDonorResultSlowly(store: Store, iri: string): DonorResult {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const result = { '@id': iri, '@type': 'Donor' } as DonorResult;
-  store.some((quad) => {
-    const prop = donorResultSet[quad.predicate.id];
-    if (prop) {
-      const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
-      set(result, prop, value);
-    }
-    return false;
-  }, DataFactory.namedNode(iri), null, null, null);
-  return result;
+export function getDonorResult(store: Store, iri: string): DonorResult {
+  return getMappedResult(store, iri, 'Donor', donorResultSet);
 }
 
-export const getDonorResult = memoize(getDonorResultSlowly, (_store, iri) => iri);
-
+/**
+ * Extracts a single dataset result from the triple store.
+ *
+ * @param store The triple store.
+ * @param iri The entity id.
+ * @returns The list data.
+ */
 export function getDatasetResult(store: Store, iri: string): DatasetResult {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const result = { '@id': iri, '@type': 'Dataset' } as DatasetResult;
-  store.some((quad) => {
-    const prop = datasetResultSet[quad.predicate.id];
-    if (prop) {
-      const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
-      set(result, prop, value);
-    }
-    return false;
-  }, DataFactory.namedNode(iri), null, null, null);
-  return result;
+  return getMappedResult(store, iri, 'Dataset', datasetResultSet);
 }
 
 /**
@@ -91,19 +74,14 @@ export function getDatasetResult(store: Store, iri: string): DatasetResult {
 export function getTissueSectionResult(store: Store, iri: string): TissueSectionResult {
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const result = { '@id': iri, '@type': 'Sample', datasets: [] as DatasetResult[] } as TissueSectionResult;
-  store.some((quad) => {
-    const prop = tissueSectionResultSet[quad.predicate.id];
-    if (prop) {
-      const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
-      if (prop === 'datasets') {
-        const dataset = getDatasetResult(store, value as string);
-        result[prop].push(dataset);
-      } else {
-        set(result, prop, value);
-      }
+  for (const [key, value] of getEntries(store, iri, tissueSectionResultSet)) {
+    if (key === 'datasets') {
+      const dataset = getDatasetResult(store, value as string);
+      result[key].push(dataset);
+    } else {
+      result[key] = value;
     }
-    return false;
-  }, DataFactory.namedNode(iri), null, null, null);
+  }
   return result;
 }
 
@@ -114,30 +92,23 @@ export function getTissueSectionResult(store: Store, iri: string): TissueSection
  * @param iri The entity id.
  * @returns The list data.
  */
-export function getTissueBlockResultSlowly(store: Store, iri: string): TissueBlockResult {
+export function getTissueBlockResult(store: Store, iri: string): TissueBlockResult {
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const result = { '@id': iri, '@type': 'Sample',
     sections: [] as TissueSectionResult[], datasets: [] as DatasetResult[]
   } as TissueBlockResult;
-  store.some((quad) => {
-    const prop = tissueBlockResultSet[quad.predicate.id];
-    if (prop) {
-      const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
-      if (prop === 'sections') {
-        const section = getTissueSectionResult(store, value as string);
-        result[prop].push(section);
-      } else if (prop === 'datasets') {
-        const dataset = getDatasetResult(store, value as string);
-        result[prop].push(dataset);
-      } else if (prop === 'donor') {
-        result[prop] = getDonorResult(store, value as string);
-      } else {
-        set(result, prop, value);
-      }
+  for (const [key, value] of getEntries(store, iri, tissueBlockResultSet)) {
+    if (key === 'sections') {
+      const section = getTissueSectionResult(store, value as string);
+      result[key].push(section);
+    } else if (key === 'datasets') {
+      const dataset = getDatasetResult(store, value as string);
+      result[key].push(dataset);
+    } else if (key === 'donor') {
+      result[key] = getDonorResult(store, value as string);
+    } else {
+      result[key] = value;
     }
-    return false;
-  }, DataFactory.namedNode(iri), null, null, null);
+  }
   return result;
 }
-
-export const getTissueBlockResult = memoize(getTissueBlockResultSlowly, (_store, iri) => iri);

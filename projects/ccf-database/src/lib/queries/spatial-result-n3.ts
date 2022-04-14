@@ -1,8 +1,8 @@
-import { memoize, set, sortBy } from 'lodash';
-import { fromRdf } from 'rdf-literal';
+import { sortBy } from 'lodash';
 import { DataFactory, NamedNode, Store } from 'triple-store-utils';
 
 import { SpatialEntity, SpatialObjectReference, SpatialPlacement, ExtractionSet } from '../spatial-types';
+import { getMappedResult } from '../util/n3-functions';
 import { ccf, entity } from '../util/prefixes';
 
 
@@ -28,39 +28,15 @@ const mappings = {
 };
 
 /**
- * Creates an object of the specified type using quads from the store.
- *
- * @param store The triple store.
- * @param iri The data identifier.
- * @param type Type name.
- * @param mapping Property mappings.
- * @returns A new data object.
- */
-function create<T = unknown>(store: Store, iri: string, type: string, mapping: { [iri: string]: string }): T {
-  const result = { '@id': iri, '@type': type };
-  store.some((quad) => {
-    const prop = mapping[quad.predicate.id];
-    if (prop) {
-      const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
-      set(result, prop, value);
-    }
-    return false;
-  }, DataFactory.namedNode(iri), null, null, null);
-  return (result as unknown) as T;
-}
-
-/**
  * Creates a spatial object reference.
  *
  * @param store The triple store.
  * @param iri The data identifier.
  * @returns The new reference.
  */
-export function getSpatialObjectReferenceSlowly(store: Store, iri: string): SpatialObjectReference {
-  return create<SpatialObjectReference>(store, iri, 'SpatialObjectReference', mappings.spatialObjectReference);
+export function getSpatialObjectReference(store: Store, iri: string): SpatialObjectReference {
+  return getMappedResult<SpatialObjectReference>(store, iri, 'SpatialObjectReference', mappings.spatialObjectReference);
 }
-
-export const getSpatialObjectReference = memoize(getSpatialObjectReferenceSlowly, (_store, iri) => iri);
 
 /**
  * Creates an extraction set data object.
@@ -69,16 +45,14 @@ export const getSpatialObjectReference = memoize(getSpatialObjectReferenceSlowly
  * @param iri The data identifier.
  * @returns The new entity.
  */
-export function getExtractionSetSlowly(store: Store, iri: string): ExtractionSet {
-  const result = create<ExtractionSet>(store, iri, 'ExtractionSet', mappings.spatialEntity);
+export function getExtractionSet(store: Store, iri: string): ExtractionSet {
+  const result = getMappedResult<ExtractionSet>(store, iri, 'ExtractionSet', mappings.spatialEntity);
   result.extractionSites = sortBy(
     store.getSubjects(ccf.spatialEntity.extraction_set, iri, null)
       .map((value) => getSpatialEntity(store, value.id)),
     ['rui_rank']);
   return result;
 }
-
-export const getExtractionSet = memoize(getExtractionSetSlowly, (_store, iri) => iri);
 
 /**
  * Gets extraction sets associated with a reference organ
@@ -87,7 +61,7 @@ export const getExtractionSet = memoize(getExtractionSetSlowly, (_store, iri) =>
  * @param iri The data identifier (the reference organ).
  * @returns A set of extraction sets associated with the reference organ
  */
-export function getExtractionSetsSlowly(store: Store, iri: string): ExtractionSet[] {
+export function getExtractionSets(store: Store, iri: string): ExtractionSet[] {
   return sortBy(
     store.getSubjects(ccf.spatialEntity.extraction_set_for, iri, null)
       .map((value) => getExtractionSet(store, value.id)),
@@ -95,7 +69,6 @@ export function getExtractionSetsSlowly(store: Store, iri: string): ExtractionSe
   );
 }
 
-export const getExtractionSets = memoize(getExtractionSetsSlowly, (_store, iri) => iri);
 
 /**
  * Gets the anatomical structures associated with a reference organ.
@@ -104,7 +77,7 @@ export const getExtractionSets = memoize(getExtractionSetsSlowly, (_store, iri) 
  * @param iri The data identifier (reference organ).
  * @returns The new entity.
  */
-export function getAnatomicalStructuresSlowly(store: Store, iri: string): SpatialEntity[] {
+export function getAnatomicalStructures(store: Store, iri: string): SpatialEntity[] {
   return sortBy(
     store.getSubjects(ccf.spatialEntity.reference_organ, iri, null)
       .map((value) => getSpatialEntity(store, value.id))
@@ -113,15 +86,13 @@ export function getAnatomicalStructuresSlowly(store: Store, iri: string): Spatia
   );
 }
 
-export const getAnatomicalStructures = memoize(getAnatomicalStructuresSlowly, (_store, iri) => iri);
-
 /**
  * Gets all reference organs in the triple store
  *
  * @param store The triple store.
  * @returns All the reference organs.
  */
-export function getReferenceOrgansSlowly(store: Store): SpatialEntity[] {
+export function getReferenceOrgans(store: Store): SpatialEntity[] {
   const results: SpatialEntity[] = [];
   store.forEach((quad) => {
     if (quad.subject.id === quad.object.id) {
@@ -131,8 +102,6 @@ export function getReferenceOrgansSlowly(store: Store): SpatialEntity[] {
   return sortBy(results, ['rui_rank']);
 }
 
-export const getReferenceOrgans = memoize(getReferenceOrgansSlowly);
-
 /**
  * Creates a spatial entity data object.
  *
@@ -140,8 +109,8 @@ export const getReferenceOrgans = memoize(getReferenceOrgansSlowly);
  * @param iri The data identifier.
  * @returns The new entity.
  */
-export function getSpatialEntitySlowly(store: Store, iri: string): SpatialEntity {
-  const result = create<SpatialEntity>(store, iri, 'SpatialEntity', mappings.spatialEntity);
+export function getSpatialEntity(store: Store, iri: string): SpatialEntity {
+  const result = getMappedResult<SpatialEntity>(store, iri, 'SpatialEntity', mappings.spatialEntity);
   // Default mapping will come back as an IRI which we can look up for the full object
   if (result.object) {
     result.object = getSpatialObjectReference(store, (result.object as unknown) as string);
@@ -153,8 +122,6 @@ export function getSpatialEntitySlowly(store: Store, iri: string): SpatialEntity
   return result;
 }
 
-export const getSpatialEntity = memoize(getSpatialEntitySlowly, (_store, iri) => iri);
-
 /**
  * Creates a spatial placement object.
  *
@@ -162,8 +129,8 @@ export const getSpatialEntity = memoize(getSpatialEntitySlowly, (_store, iri) =>
  * @param iri The data identifier.
  * @returns THe new placement object.
  */
-export function getSpatialPlacementSlowly(store: Store, iri: string): SpatialPlacement {
-  const result = create<SpatialPlacement>(store, iri, 'SpatialPlacement', mappings.spatialPlacement);
+export function getSpatialPlacement(store: Store, iri: string): SpatialPlacement {
+  const result = getMappedResult<SpatialPlacement>(store, iri, 'SpatialPlacement', mappings.spatialPlacement);
   // Default mapping will come back as an IRI for source/target which we can look up for the full object
   if (result.source) {
     result.source = getSpatialEntity(store, (result.source as unknown) as string);
@@ -174,8 +141,6 @@ export function getSpatialPlacementSlowly(store: Store, iri: string): SpatialPla
   return result;
 }
 
-export const getSpatialPlacement = memoize(getSpatialPlacementSlowly, (_store, iri) => iri);
-
 /**
  * Creates a spatial entity based on another entity in the store.
  *
@@ -183,7 +148,7 @@ export const getSpatialPlacement = memoize(getSpatialPlacementSlowly, (_store, i
  * @param entityIRI The indentifier of the store entity.
  * @returns A new entity.
  */
-export function getSpatialEntityForEntitySlowly(store: Store, entityIRI: string): SpatialEntity | undefined {
+export function getSpatialEntityForEntity(store: Store, entityIRI: string): SpatialEntity | undefined {
   const spatialEntityNodes = store.getObjects(DataFactory.namedNode(entityIRI), entity.spatialEntity, null);
   if (spatialEntityNodes.length > 0) {
     return getSpatialEntity(store, spatialEntityNodes[0].id);
@@ -191,5 +156,3 @@ export function getSpatialEntityForEntitySlowly(store: Store, entityIRI: string)
     return undefined;
   }
 }
-
-export const getSpatialEntityForEntity = memoize(getSpatialEntityForEntitySlowly, (_store, entityIRI) => entityIRI);
