@@ -131,7 +131,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -193,7 +193,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -227,8 +227,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:76</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:75</a></div>
                 </td>
             </tr>
 
@@ -331,8 +331,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:71</a></div>
                 </td>
             </tr>
 
@@ -411,8 +411,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:44</a></div>
                 </td>
             </tr>
 
@@ -448,8 +448,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-spatial-graph.ts:79</a></div>
                 </td>
             </tr>
 
@@ -521,6 +521,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Matrix4, toRadians } from &#x27;@math.gl/core&#x27;;
 import { DirectedGraph } from &#x27;graphology&#x27;;
 import shortestPath from &#x27;graphology-shortest-path/unweighted&#x27;;
+import { readQuads } from &#x27;triple-store-utils&#x27;;
 
 import { CCFDatabase } from &#x27;./ccf-database&#x27;;
 import { getSpatialPlacement } from &#x27;./queries/spatial-result-n3&#x27;;
@@ -574,17 +575,15 @@ export class CCFSpatialGraph {
 
     // Add all Spatial Placements
     const edgeSource: Record&lt;string, string&gt; &#x3D; {};
-    store.some((quad) &#x3D;&gt; {
+    for (const quad of readQuads(store, null, ccf.spatialPlacement.source, null, null)) {
       edgeSource[quad.subject.id] &#x3D; quad.object.id;
-      return false;
-    }, null, ccf.spatialPlacement.source, null, null);
-    store.some((quad) &#x3D;&gt; {
+    }
+    for (const quad of readQuads(store, null, ccf.spatialPlacement.target, null, null)) {
       const source &#x3D; edgeSource[quad.subject.id];
       if (source) {
         this.addEdge(quad.subject.id, source, quad.object.id, &#x27;SpatialPlacement&#x27;);
       }
-      return false;
-    }, null, ccf.spatialPlacement.target, null, null);
+    }
   }
 
   addNode(id: string, type: string): void {
