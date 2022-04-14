@@ -2,6 +2,13 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces
 
+## 3.2.0 - 2022-04-14
+
+### Added in 3.2.0
+
+* Major CCF Database speed improvements! 95% reduction in load times!
+* Minor graphical fixes
+
 ## 3.1.1 - 2022-04-12
 
 ### Added in 3.1.1
