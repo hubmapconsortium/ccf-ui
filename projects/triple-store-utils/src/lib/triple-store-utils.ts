@@ -1,13 +1,22 @@
 import { EventEmitter } from 'events';
 import { toRDF } from 'jsonld';
 import { JsonLd, Url } from 'jsonld/jsonld-spec';
-import { DataFactory, Parser, Store } from 'n3';
+import { DataFactory, Parser, Store, Quad } from 'n3';
 import * as RDF from 'rdf-js';
 import { RdfXmlParser } from 'rdfxml-streaming-parser';
 import { Readable } from 'readable-stream';
 
 export * from 'n3';
 
+// Temporary solution for using the new readQuads function on Store until the @types are updated
+type OTerm = RDF.Term | string | null;
+interface QuadReader {
+  readQuads(subject: OTerm, predicate: OTerm, object: OTerm, graph: OTerm): Generator<Quad>;
+}
+
+export function readQuads(store: Store, subject: OTerm, predicate: OTerm, object: OTerm, graph: OTerm): Generator<Quad> {
+  return (store as unknown as QuadReader).readQuads(subject, predicate, object, graph);
+}
 
 /**
  * Turns a stream of values into an array.

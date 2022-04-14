@@ -3,6 +3,7 @@
 import { Matrix4, toRadians } from '@math.gl/core';
 import { DirectedGraph } from 'graphology';
 import shortestPath from 'graphology-shortest-path/unweighted';
+import { readQuads } from 'triple-store-utils';
 
 import { CCFDatabase } from './ccf-database';
 import { getSpatialPlacement } from './queries/spatial-result-n3';
@@ -56,17 +57,15 @@ export class CCFSpatialGraph {
 
     // Add all Spatial Placements
     const edgeSource: Record<string, string> = {};
-    store.some((quad) => {
+    for (const quad of readQuads(store, null, ccf.spatialPlacement.source, null, null)) {
       edgeSource[quad.subject.id] = quad.object.id;
-      return false;
-    }, null, ccf.spatialPlacement.source, null, null);
-    store.some((quad) => {
+    }
+    for (const quad of readQuads(store, null, ccf.spatialPlacement.target, null, null)) {
       const source = edgeSource[quad.subject.id];
       if (source) {
         this.addEdge(quad.subject.id, source, quad.object.id, 'SpatialPlacement');
       }
-      return false;
-    }, null, ccf.spatialPlacement.target, null, null);
+    }
   }
 
   addNode(id: string, type: string): void {

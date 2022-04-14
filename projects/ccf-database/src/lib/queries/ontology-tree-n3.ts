@@ -1,13 +1,10 @@
-import { memoize, set } from 'lodash';
-import { fromRdf } from 'rdf-literal';
-import { DataFactory, Store } from 'triple-store-utils';
-
+import { readQuads, Store } from 'triple-store-utils';
 import { OntologyTreeModel, OntologyTreeNode } from '../interfaces';
+import { getEntries } from '../util/n3-functions';
 import { ccf, rui } from '../util/prefixes';
 
 
 export function getOntologyTreeNode(store: Store, iri: string, relationshipIri: string): OntologyTreeNode {
-  const node = DataFactory.namedNode(iri);
   const result: OntologyTreeNode = {
     '@id': iri, '@type': 'OntologyTreeNode', id: iri, parent: '',
     children: [] as string[], synonymLabels: [] as string[], label: ''
@@ -19,56 +16,48 @@ export function getOntologyTreeNode(store: Store, iri: string, relationshipIri: 
     [ccf.ontologyNode.synonymLabels.id]: 'synonymLabels',
   };
 
-  store.some((quad) => {
-    const prop = ontologyTreeNodeResult[quad.predicate.id];
-    if (prop) {
-      const value = quad.object.termType === 'Literal' ? fromRdf(quad.object) : quad.object.id;
-      if (prop === 'synonymLabels') {
-        result.synonymLabels.push(value);
-      } else {
-        set(result, prop, value);
-      }
+  for (const [key, value] of getEntries(store, iri, ontologyTreeNodeResult)) {
+    if (key === 'synonymLabels') {
+      result.synonymLabels.push(value as string);
+    } else {
+      result[key] = value;
     }
-    return false;
-  }, node, null, null, null);
-
-  result.children = store.getSubjects(relationshipIri, node, null).map(s => s.id);
+  }
+  result.children = store.getSubjects(relationshipIri, iri, null).map(s => s.id);
 
   return result;
 }
 
-export function getOntologyTreeModelSlowly(store: Store, rootIri: string, rootLabel: string, relationshipIri: string): OntologyTreeModel {
+export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: string, relationshipIri: string): OntologyTreeModel {
   const result: OntologyTreeModel = { root: rootIri, nodes: {} };
   const seen = new Set<string>();
-  store.some((quad) => {
+  for (const quad of readQuads(store, null, relationshipIri, null, null)) {
     seen.add(quad.subject.id);
-    seen.add(quad.predicate.id);
-    return false;
-  }, null, relationshipIri, null, null);
+    seen.add(quad.object.id);
+  }
 
   for (const iri of seen) {
     result.nodes[iri] = getOntologyTreeNode(store, iri, relationshipIri);
   }
 
   if (!result.nodes[rootIri]) {
-    const rootChildren = store
-      .getSubjects(relationshipIri, rootIri, null).map(o => o.id)
-      .sort((a, b) => result.nodes[a].label.localeCompare(result.nodes[b].label));
-
     result.nodes[rootIri] = {
       '@id': rootIri,
       '@type': 'OntologyTreeNode',
       id: rootIri,
       label: rootLabel,
-      children: rootChildren,
+      children: [],
       synonymLabels: []
     } as unknown as OntologyTreeNode;
   }
 
+  const rootChildren = store
+    .getSubjects(relationshipIri, rootIri, null).map(o => o.id)
+    .sort((a, b) => result.nodes[a].label.localeCompare(result.nodes[b].label));
+  result.nodes[rootIri].children = rootChildren;
+
   return result;
 }
-
-export const getOntologyTreeModel = memoize(getOntologyTreeModelSlowly, (_store, rootIri, relationshipIri) => rootIri + relationshipIri);
 
 export function getAnatomicalStructureTreeModel(store: Store): OntologyTreeModel {
   const model = getOntologyTreeModel(store, rui.body.id, 'body', ccf.asctb.part_of.id);
