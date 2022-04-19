@@ -25,6 +25,15 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multipl
 * CCF Organ Info Component (CCF-Organ-Info)
   * Production: <https://hubmapconsortium.github.io/ccf-ui/organ-info/>
   * Staging: <https://hubmap-ccf-ui.netlify.app/organ-info/>
+* CCF API
+  * Production: <https://ccf-api.hubmapconsortium.org>
+  * Staging: <https://ccf-api--staging.herokuapp.com>
+  * OpenAPI Specification: [ccf-api-spec.yaml](ccf-api-spec.yaml)
+* CCF API Client Libraries:
+  * JavaScript: ![npm (scoped)](https://img.shields.io/npm/v/@ccf-openapi/js-client)  [@ccf-openapi/js-client](https://www.npmjs.com/package/@ccf-openapi/js-client)
+  * TypeScript: ![npm (scoped)](https://img.shields.io/npm/v/@ccf-openapi/ts-client)  [@ccf-openapi/ts-client](https://www.npmjs.com/package/@ccf-openapi/ts-client)
+  * Angular 12+: ![npm (scoped)](https://img.shields.io/npm/v/@ccf-openapi/ng-client) [@ccf-openapi/ng-client](https://www.npmjs.com/package/@ccf-openapi/ng-client)
+  * Python 3.6+: ![PyPI](https://img.shields.io/pypi/v/ccf-openapi) [ccf-openapi](https://pypi.org/project/ccf-openapi/)
 
 ## Background and More Information
 
