@@ -56,7 +56,25 @@ export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: s
     .sort((a, b) => result.nodes[a].label.localeCompare(result.nodes[b].label));
   result.nodes[rootIri].children = rootChildren;
 
+  treeify(result);
+
   return result;
+}
+
+/**
+ * Recursive function to ensure that the given ontology tree model is actually a tree by essentially using a BFS search.
+ *
+ * @param model the ontology tree model to mutate
+ * @param nodeIri the tree node iri to modify. Starts at root in the base case
+ * @param seen a set of IRIs that have been 'seen' so far to remove loops in the graph
+ */
+function treeify(model: OntologyTreeModel, nodeIri: string | undefined = undefined, seen: Set<string> = new Set()) {
+  const node = model.nodes[nodeIri ?? model.root];
+  if (node) {
+    node.children = node.children.filter(n => !seen.has(n));
+    node.children.forEach(n => seen.add(n));
+    node.children.forEach(n => treeify(model, n, seen));
+  }
 }
 
 export function getAnatomicalStructureTreeModel(store: Store): OntologyTreeModel {
