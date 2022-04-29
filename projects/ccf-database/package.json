@@ -4,10 +4,12 @@
   "peerDependencies": {
     "@angular/common": "^9.1.1",
     "@angular/core": "^9.1.1",
+    "@math.gl/core": "^3.5.5",
     "idb-keyval": "^6.0.1",
     "jsonld": "^4.0.1",
     "lodash": "^4.17.21",
-    "rdf-literal": "^1.2.0"
+    "rdf-literal": "^1.2.0",
+    "uuid": "^8.3.2"
   },
   "dependencies": {
     "tslib": "^2.0.0"

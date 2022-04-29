@@ -15,7 +15,7 @@ import { getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/
 import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
-import { SpatialEntity } from './spatial-types';
+import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
 
 
@@ -372,5 +372,9 @@ export class CCFDatabase {
   async getReferenceOrganScene(organIri: string, filter?: Filter): Promise<SpatialSceneNode[]> {
     this.graph.createGraph();
     return this.scene.getReferenceOrganScene(organIri, filter);
+  }
+
+  async getSpatialPlacement(source: SpatialEntity, targetIri: string): Promise<FlatSpatialPlacement | undefined> {
+    return this.graph.getSpatialPlacement(source, targetIri);
   }
 }
