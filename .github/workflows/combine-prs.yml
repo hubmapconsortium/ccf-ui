@@ -11,7 +11,7 @@ on:
       mustBeGreen:
         description: 'Only combine PRs that are green (status is success)'
         required: true
-        default: true
+        default: 'false'
       combineBranchName:
         description: 'Name of the branch to combine PRs into'
         required: true
@@ -91,7 +91,7 @@ jobs:
 
             core.setOutput('base-branch', base_branch);
             core.setOutput('prs-string', prs.join('\n'));
-            
+
             combined = branches.join(' ')
             console.log('Combined: ' + combined);
             return combined
@@ -109,14 +109,14 @@ jobs:
           echo "$BRANCHES_TO_COMBINE"
           sourcebranches="${BRANCHES_TO_COMBINE%\"}"
           sourcebranches="${sourcebranches#\"}"
-          
+
           basebranch="${BASE_BRANCH%\"}"
           basebranch="${basebranch#\"}"
-          
+
           git config pull.rebase false
           git config user.name github-actions
           git config user.email github-actions@github.com
-          
+
           git branch $COMBINE_BRANCH_NAME $basebranch
           git checkout $COMBINE_BRANCH_NAME
           git pull origin $sourcebranches --no-edit
