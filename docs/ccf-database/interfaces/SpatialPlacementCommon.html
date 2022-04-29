@@ -46,7 +46,7 @@
   <li>Interfaces</li>
   <li
   >
-  SpatialEntity</li>
+  SpatialPlacementCommon</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -72,7 +72,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A spatial entity</p>
+                <p>Object describing the placement of an entity</p>
 
             </p>
 
@@ -90,6 +90,13 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#@context" 
+>
+                                            @context
+                                        </a>
+                                </li>
+                                <li>
                                         <a href="#@id" 
 >
                                             @id
@@ -102,151 +109,95 @@
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#ccf_annotations" 
+                                        <a href="#placement_date" 
 >
-                                            ccf_annotations
+                                            placement_date
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#color" 
+                                        <a href="#rotation_order" 
 >
-                                            color
+                                            rotation_order
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#rotation_units" 
+>
+                                            rotation_units
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#scaling_units" 
+>
+                                            scaling_units
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#translation_units" 
+>
+                                            translation_units
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#comment" 
+                                        <a href="#w_rotation" 
 >
-                                            comment
+                                            w_rotation
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#creation_date" 
+                                        <a href="#x_rotation" 
 >
-                                            creation_date
+                                            x_rotation
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#creator" 
+                                        <a href="#x_scaling" 
 >
-                                            creator
+                                            x_scaling
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#creator_first_name" 
+                                        <a href="#x_translation" 
 >
-                                            creator_first_name
+                                            x_translation
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#creator_last_name" 
+                                        <a href="#y_rotation" 
 >
-                                            creator_last_name
+                                            y_rotation
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#creator_orcid" 
+                                        <a href="#y_scaling" 
 >
-                                            creator_orcid
+                                            y_scaling
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#dimension_units" 
+                                        <a href="#y_translation" 
 >
-                                            dimension_units
+                                            y_translation
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#entityId" 
+                                        <a href="#z_rotation" 
 >
-                                            entityId
+                                            z_rotation
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#label" 
+                                        <a href="#z_scaling" 
 >
-                                            label
+                                            z_scaling
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#object" 
+                                        <a href="#z_translation" 
 >
-                                            object
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#reference_organ" 
->
-                                            reference_organ
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#representation_of" 
->
-                                            representation_of
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#rui_rank" 
->
-                                            rui_rank
-                                        </a>
-                                </li>
-                                <li>
-                                        <a href="#sex" 
->
-                                            sex
-                                        </a>
-                                </li>
-                                <li>
-                                        <a href="#side" 
->
-                                            side
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#slice_count" 
->
-                                            slice_count
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#slice_thickness" 
->
-                                            slice_thickness
-                                        </a>
-                                </li>
-                                <li>
-                                        <a href="#x_dimension" 
->
-                                            x_dimension
-                                        </a>
-                                </li>
-                                <li>
-                                        <a href="#y_dimension" 
->
-                                            y_dimension
-                                        </a>
-                                </li>
-                                <li>
-                                        <a href="#z_dimension" 
->
-                                            z_dimension
+                                            z_translation
                                         </a>
                                 </li>
                             </ul>
@@ -260,6 +211,50 @@
 
             <section>
                 <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="@context"></a>
+                                        <span class="name "><b>@context</b>
+                                            <a href="#@context">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>@context:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>JSON-LD context</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -336,9 +331,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="ccf_annotations"></a>
-                                        <span class="name "><b>ccf_annotations</b>
-                                            <a href="#ccf_annotations">
+                                        <a name="placement_date"></a>
+                                        <span class="name "><b>placement_date</b>
+                                            <a href="#placement_date">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -346,7 +341,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>ccf_annotations:     <code>string[]</code>
+                                        <code>placement_date:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -354,23 +349,18 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>string[]</code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Annotations (a set of IRIs)</p>
+                                    <div class="io-description"><p>Date placement was made</p>
 </div>
                                 </td>
                             </tr>
@@ -380,9 +370,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="color"></a>
-                                        <span class="name "><b>color</b>
-                                            <a href="#color">
+                                        <a name="rotation_order"></a>
+                                        <span class="name "><b>rotation_order</b>
+                                            <a href="#rotation_order">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -390,51 +380,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>color:     <code>[number, number, number, number]</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>[number, number, number, number]</code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Coloring</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="comment"></a>
-                                        <span class="name "><b>comment</b>
-                                            <a href="#comment">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>comment:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>rotation_order:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -458,7 +404,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Entity comment</p>
+                                    <div class="io-description"><p>Order rotations should be applied in</p>
 </div>
                                 </td>
                             </tr>
@@ -468,9 +414,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="creation_date"></a>
-                                        <span class="name "><b>creation_date</b>
-                                            <a href="#creation_date">
+                                        <a name="rotation_units"></a>
+                                        <span class="name "><b>rotation_units</b>
+                                            <a href="#rotation_units">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -478,227 +424,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>creation_date:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Creation date</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="creator"></a>
-                                        <span class="name "><b>creator</b>
-                                            <a href="#creator">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>creator:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Creator</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="creator_first_name"></a>
-                                        <span class="name "><b>creator_first_name</b>
-                                            <a href="#creator_first_name">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>creator_first_name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Creator first name</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="creator_last_name"></a>
-                                        <span class="name "><b>creator_last_name</b>
-                                            <a href="#creator_last_name">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>creator_last_name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Creator last name</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="creator_orcid"></a>
-                                        <span class="name "><b>creator_orcid</b>
-                                            <a href="#creator_orcid">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>creator_orcid:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Creator identifier</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="dimension_units"></a>
-                                        <span class="name "><b>dimension_units</b>
-                                            <a href="#dimension_units">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>dimension_units:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>rotation_units:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -717,7 +443,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Units dimensions are in</p>
+                                    <div class="io-description"><p>Units rotation is expressed in</p>
 </div>
                                 </td>
                             </tr>
@@ -727,9 +453,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="entityId"></a>
-                                        <span class="name "><b>entityId</b>
-                                            <a href="#entityId">
+                                        <a name="scaling_units"></a>
+                                        <span class="name "><b>scaling_units</b>
+                                            <a href="#scaling_units">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -737,7 +463,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>entityId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>scaling_units:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -750,18 +476,13 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>IRI of the Entity this Spatial Entity represents</p>
+                                    <div class="io-description"><p>Units scaling is expressed in</p>
 </div>
                                 </td>
                             </tr>
@@ -771,9 +492,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="label"></a>
-                                        <span class="name "><b>label</b>
-                                            <a href="#label">
+                                        <a name="translation_units"></a>
+                                        <span class="name "><b>translation_units</b>
+                                            <a href="#translation_units">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -781,7 +502,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>label:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>translation_units:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -794,18 +515,13 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Entity label</p>
+                                    <div class="io-description"><p>Units translation is expressed in</p>
 </div>
                                 </td>
                             </tr>
@@ -815,9 +531,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="object"></a>
-                                        <span class="name "><b>object</b>
-                                            <a href="#object">
+                                        <a name="w_rotation"></a>
+                                        <span class="name "><b>w_rotation</b>
+                                            <a href="#w_rotation">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -825,139 +541,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>object:         <code><a href="../interfaces/SpatialObjectReference.html" target="_self" >SpatialObjectReference</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SpatialObjectReference.html" target="_self" >SpatialObjectReference</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Data references</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="reference_organ"></a>
-                                        <span class="name "><b>reference_organ</b>
-                                            <a href="#reference_organ">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>reference_organ:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Specifies if this is an anatomical structure of this organ (IRI)</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="representation_of"></a>
-                                        <span class="name "><b>representation_of</b>
-                                            <a href="#representation_of">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>representation_of:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Annotation (IRI) that says what this entity represents</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="rui_rank"></a>
-                                        <span class="name "><b>rui_rank</b>
-                                            <a href="#rui_rank">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>rui_rank:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>w_rotation:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -981,7 +565,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Ranking used in the RUI for ordering lists</p>
+                                    <div class="io-description"><p>Rotation in w-dimension</p>
 </div>
                                 </td>
                             </tr>
@@ -991,9 +575,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="sex"></a>
-                                        <span class="name "><b>sex</b>
-                                            <a href="#sex">
+                                        <a name="x_rotation"></a>
+                                        <span class="name "><b>x_rotation</b>
+                                            <a href="#x_rotation">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -1001,173 +585,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>sex:     <code>&quot;Male&quot; | &quot;Female&quot; | undefined</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>&quot;Male&quot; | &quot;Female&quot; | undefined</code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Specifies (where applicable) if this entity came from a Male or Female</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="side"></a>
-                                        <span class="name "><b>side</b>
-                                            <a href="#side">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>side:     <code>&quot;Left&quot; | &quot;Right&quot; | undefined</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>&quot;Left&quot; | &quot;Right&quot; | undefined</code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Specifies (where applicable) if this entity came from the left or right side organ</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="slice_count"></a>
-                                        <span class="name "><b>slice_count</b>
-                                            <a href="#slice_count">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>slice_count:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The number of slices taken out of this spatial entity</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="slice_thickness"></a>
-                                        <span class="name "><b>slice_thickness</b>
-                                            <a href="#slice_thickness">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>slice_thickness:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The thickness (in nanometers) of slices taken out of this spatial entity</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="x_dimension"></a>
-                                        <span class="name "><b>x_dimension</b>
-                                            <a href="#x_dimension">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>x_dimension:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>x_rotation:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -1186,7 +604,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>X-dimension</p>
+                                    <div class="io-description"><p>Rotation in x-dimension</p>
 </div>
                                 </td>
                             </tr>
@@ -1196,9 +614,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="y_dimension"></a>
-                                        <span class="name "><b>y_dimension</b>
-                                            <a href="#y_dimension">
+                                        <a name="x_scaling"></a>
+                                        <span class="name "><b>x_scaling</b>
+                                            <a href="#x_scaling">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -1206,7 +624,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>y_dimension:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>x_scaling:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -1225,7 +643,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Y-dimension</p>
+                                    <div class="io-description"><p>Scaling in x-dimension</p>
 </div>
                                 </td>
                             </tr>
@@ -1235,9 +653,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="z_dimension"></a>
-                                        <span class="name "><b>z_dimension</b>
-                                            <a href="#z_dimension">
+                                        <a name="x_translation"></a>
+                                        <span class="name "><b>x_translation</b>
+                                            <a href="#x_translation">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -1245,7 +663,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>z_dimension:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>x_translation:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -1264,7 +682,241 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Z-dimension</p>
+                                    <div class="io-description"><p>Translation in x-dimension</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="y_rotation"></a>
+                                        <span class="name "><b>y_rotation</b>
+                                            <a href="#y_rotation">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>y_rotation:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Rotation in y-dimension</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="y_scaling"></a>
+                                        <span class="name "><b>y_scaling</b>
+                                            <a href="#y_scaling">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>y_scaling:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Scaling in y-dimension</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="y_translation"></a>
+                                        <span class="name "><b>y_translation</b>
+                                            <a href="#y_translation">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>y_translation:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Translation in y-dimension</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="z_rotation"></a>
+                                        <span class="name "><b>z_rotation</b>
+                                            <a href="#z_rotation">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>z_rotation:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Rotation in z-dimension</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="z_scaling"></a>
+                                        <span class="name "><b>z_scaling</b>
+                                            <a href="#z_scaling">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>z_scaling:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Scaling in z-dimension</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="z_translation"></a>
+                                        <span class="name "><b>z_translation</b>
+                                            <a href="#z_translation">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>z_translation:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Translation in z-dimension</p>
 </div>
                                 </td>
                             </tr>
@@ -1438,7 +1090,7 @@ export interface FlatSpatialPlacement extends SpatialPlacementCommon {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'SpatialEntity.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SpatialPlacementCommon.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

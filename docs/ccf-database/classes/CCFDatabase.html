@@ -199,6 +199,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#getSpatialPlacement" >getSpatialPlacement</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#getTissueBlockResults" >getTissueBlockResults</a>
                             </li>
                             <li>
@@ -1738,6 +1742,88 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getSpatialPlacement"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getSpatialPlacement</b></span>
+                        <a href="#getSpatialPlacement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getSpatialPlacement(source: <a href="../interfaces/SpatialEntity.html" target="_self">SpatialEntity</a>, targetIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="377"
+                            class="link-to-prism">projects/ccf-database/src/lib/ccf-database.ts:377</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>source</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialEntity.html" target="_self" >SpatialEntity</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>targetIri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;FlatSpatialPlacement | undefined&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getTissueBlockResults"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -1994,7 +2080,7 @@ import { getCellTypeTermOccurences, getOntologyTermOccurences } from &#x27;./que
 import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from &#x27;./queries/ontology-tree-n3&#x27;;
 import { getSpatialEntityForEntity } from &#x27;./queries/spatial-result-n3&#x27;;
 import { getTissueBlockResult } from &#x27;./queries/tissue-block-result-n3&#x27;;
-import { SpatialEntity } from &#x27;./spatial-types&#x27;;
+import { FlatSpatialPlacement, SpatialEntity } from &#x27;./spatial-types&#x27;;
 import { CCFDatabaseStatusTracker } from &#x27;./util/ccf-database-status-tracker&#x27;;
 
 
@@ -2351,6 +2437,10 @@ export class CCFDatabase {
   async getReferenceOrganScene(organIri: string, filter?: Filter): Promise&lt;SpatialSceneNode[]&gt; {
     this.graph.createGraph();
     return this.scene.getReferenceOrganScene(organIri, filter);
+  }
+
+  async getSpatialPlacement(source: SpatialEntity, targetIri: string): Promise&lt;FlatSpatialPlacement | undefined&gt; {
+    return this.graph.getSpatialPlacement(source, targetIri);
   }
 }
 </code></pre>

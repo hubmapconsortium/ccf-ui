@@ -591,6 +591,7 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>Router()
   .use(&#x27;/db-status&#x27;, getDatabaseStatus())
+  .post(&#x27;/get-spatial-placement&#x27;, getSpatialPlacement())
   .use(cacheResponses())
   .use(&#x27;/hubmap&#x27;, hubmapRoutes)
   .use(&#x27;/gtex&#x27;, gtexRoutes)
