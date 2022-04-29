@@ -532,7 +532,7 @@ import { getCellTypeTermOccurences, getOntologyTermOccurences } from &#x27;./que
 import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from &#x27;./queries/ontology-tree-n3&#x27;;
 import { getSpatialEntityForEntity } from &#x27;./queries/spatial-result-n3&#x27;;
 import { getTissueBlockResult } from &#x27;./queries/tissue-block-result-n3&#x27;;
-import { SpatialEntity } from &#x27;./spatial-types&#x27;;
+import { FlatSpatialPlacement, SpatialEntity } from &#x27;./spatial-types&#x27;;
 import { CCFDatabaseStatusTracker } from &#x27;./util/ccf-database-status-tracker&#x27;;
 
 
@@ -889,6 +889,10 @@ export class CCFDatabase {
   async getReferenceOrganScene(organIri: string, filter?: Filter): Promise&lt;SpatialSceneNode[]&gt; {
     this.graph.createGraph();
     return this.scene.getReferenceOrganScene(organIri, filter);
+  }
+
+  async getSpatialPlacement(source: SpatialEntity, targetIri: string): Promise&lt;FlatSpatialPlacement | undefined&gt; {
+    return this.graph.getSpatialPlacement(source, targetIri);
   }
 }
 </code></pre>

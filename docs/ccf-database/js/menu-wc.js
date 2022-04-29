@@ -106,6 +106,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Filter.html" data-type="entity-link" >Filter</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/FlatSpatialPlacement.html" data-type="entity-link" >FlatSpatialPlacement</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/ListResultItem.html" data-type="entity-link" >ListResultItem</a>
                             </li>
                             <li class="link">
@@ -128,6 +131,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SpatialPlacement.html" data-type="entity-link" >SpatialPlacement</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SpatialPlacementCommon.html" data-type="entity-link" >SpatialPlacementCommon</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/SpatialSceneNode.html" data-type="entity-link" >SpatialSceneNode</a>
