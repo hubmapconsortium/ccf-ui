@@ -55,7 +55,7 @@ paths:
 
   /get-spatial-placement:
     post:
-      summary: Given a SpatialEntity already placed relative to a reference SpatialEntity, retreieve a new direct SpatialPlacement to the given SpatialEntity IRI
+      summary: Given a SpatialEntity already placed relative to a reference SpatialEntity, retrieve a new direct SpatialPlacement to the given SpatialEntity IRI
       operationId: get-spatial-placement
       requestBody: { $ref: "#/components/requestBodies/GetSpatialPlacement" }
       responses:
