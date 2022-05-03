@@ -90,6 +90,10 @@
                                 <a href="#dispose" >dispose</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sparqlQuery" >sparqlQuery</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Readonly</span>
                                 <a href="#status" >status</a>
                             </li>
@@ -112,12 +116,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(database: CCFDatabase, dispose: () => void)</code>
+<code>constructor(database: CCFDatabase, sparqlQuery: <a href="../undefineds/SparqlQueryFunction.html" target="_self">SparqlQueryFunction</a>, dispose: () => void)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -139,6 +143,18 @@
                                                   
                                                         <td>
                                                                     <code>CCFDatabase</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sparqlQuery</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../miscellaneous/typealiases.html#SparqlQueryFunction" target="_self" >SparqlQueryFunction</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -192,7 +208,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -219,7 +235,34 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:12</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sparqlQuery"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sparqlQuery</b></span>
+                        <a href="#sparqlQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#SparqlQueryFunction" target="_self" >SparqlQueryFunction</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -245,7 +288,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ccf-api/src/lib/utils/ccf-database-worker.ts:10</a></div>
                         </td>
                     </tr>
 
@@ -270,19 +313,24 @@ import nodeEndpoint from &#x27;comlink/dist/umd/node-adapter&#x27;;
 import { Worker } from &#x27;worker_threads&#x27;;
 
 
+export type SparqlQueryFunction &#x3D; (query: string, mimetype: string) &#x3D;&gt; Promise&lt;string&gt;;
+
 export class CCFDatabaseInstance {
   readonly status &#x3D; new CCFDatabaseStatusTracker(this.database);
 
-  constructor(public database: CCFDatabase, public dispose: () &#x3D;&gt; Promise&lt;void&gt;) { }
+  constructor(public database: CCFDatabase, public sparqlQuery: SparqlQueryFunction, public dispose: () &#x3D;&gt; Promise&lt;void&gt;) { }
 }
 
 export async function createCCFDatabaseWorker(options: CCFDatabaseOptions): Promise&lt;CCFDatabaseInstance&gt; {
   const worker &#x3D; new Worker(&#x27;./projects/ccf-api/ccf-database.worker.js&#x27;, { workerData: { options } });
-  const database &#x3D; wrap&lt;CCFDatabase&gt;(nodeEndpoint(worker));
-  return new CCFDatabaseInstance(database as unknown as CCFDatabase, async () &#x3D;&gt; {
-    database[releaseProxy]();
-    await worker.terminate();
-  });
+  const dbWorker &#x3D; wrap&lt;{ database: CCFDatabase; sparqlQuery: SparqlQueryFunction }&gt;(nodeEndpoint(worker));
+  return new CCFDatabaseInstance(
+    dbWorker.database as unknown as CCFDatabase,
+    dbWorker.sparqlQuery,
+    async () &#x3D;&gt; {
+      dbWorker[releaseProxy]();
+      await worker.terminate();
+    });
 }
 </code></pre>
     </div>
