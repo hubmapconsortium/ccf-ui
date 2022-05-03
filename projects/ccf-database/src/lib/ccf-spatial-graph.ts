@@ -141,6 +141,7 @@ export class CCFSpatialGraph {
         x_rotation: R[0],
         y_rotation: R[1],
         z_rotation: R[2],
+        rotation_order: 'XYZ',
         rotation_units: 'degree',
         x_translation: T[0],
         y_translation: T[1],
