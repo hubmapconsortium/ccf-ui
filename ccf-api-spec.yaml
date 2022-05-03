@@ -34,6 +34,28 @@ paths:
         - $ref: "#/components/parameters/Token"
       responses:
         "200": { $ref: "#/components/responses/DatabaseStatus" }
+
+  /sparql:
+    get:
+      summary: Run a SPARQL query
+      operationId: sparql
+      parameters:
+        - $ref: "#/components/parameters/Query"
+        - $ref: "#/components/parameters/Token"
+        - $ref: "#/components/parameters/Format"
+      responses:
+        "200": { $ref: "#/components/responses/SparqlResponse"}
+
+    post:
+      summary: Run a SPARQL query (POST)
+      operationId: sparql-post
+      requestBody: { $ref: "#/components/requestBodies/SparqlQuery" }
+      parameters:
+        - $ref: "#/components/parameters/Token"
+        - $ref: "#/components/parameters/Format"
+      responses:
+        "200": { $ref: "#/components/responses/SparqlResponse"}
+
   /aggregate-results:
     get:
       summary: Get aggregate results / statistics
@@ -351,6 +373,15 @@ components:
         items:
           type: string
 
+    Query:
+      name: query
+      description: SPARQL query to use
+      in: query
+      required: true
+      schema:
+        type: string
+      example: "SELECT * WHERE { ?sub ?pred ?obj . } LIMIT 10"
+
     Token:
       name: token
       description: Authentication token to use for authenticated searches
@@ -358,6 +389,31 @@ components:
       required: false
       schema:
         type: string
+
+    Format:
+      name: format
+      description: Override SPARQL response format (Note that not all formats are supported for all SPARQL query types)
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [
+          'application/json',
+          'application/ld+json',
+          'application/n-quads',
+          'application/n-triples',
+          'application/sparql-results+json',
+          'application/sparql-results+xml',
+          'application/trig',
+          'simple',
+          'stats',
+          'table',
+          'text/csv',
+          'text/n3',
+          'text/tab-separated-values',
+          'text/turtle',
+          'tree'
+        ]
 
   requestBodies:
     GetSpatialPlacement:
@@ -410,6 +466,17 @@ components:
               }
             }
 
+    SparqlQuery:
+      description: Request format for a SPARQL query
+      required: true
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/SparqlQueryRequest" }
+          example:
+            query: "SELECT * WHERE { ?sub ?pred ?obj . } LIMIT 10"
+        application/x-www-form-urlencoded:
+          schema: { $ref: "#/components/schemas/SparqlQueryRequest" }
+
   responses:
     AggregateResults:
       description: Successful operation
@@ -436,6 +503,13 @@ components:
       content:
         application/json:
           schema: { $ref: "#/components/schemas/OntologyTree" }
+
+    SparqlResponse:
+      description: Successful operation. SPARQL responses vary by format/content negotiation.
+      content:
+        application/json:
+          schema:
+            type: object
 
     SpatialEntities:
       description: Successful operation
@@ -525,6 +599,14 @@ components:
           type: string
           format: uri
         rui_location: { $ref: "#/components/schemas/SpatialEntity" }
+
+    SparqlQueryRequest:
+      title: SPARQL query request body
+      type: object
+      required: [query]
+      properties:
+        query:
+          type: string
 
     # Generic types
     AggregateCount:
