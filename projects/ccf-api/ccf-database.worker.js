@@ -1,4 +1,5 @@
 /* eslint-env es6 */
+const QueryEngine = require('@comunica/query-sparql-rdfjs').QueryEngine;
 const parentPort = require('worker_threads').parentPort;
 const workerData = require('worker_threads').workerData;
 const CCFDatabase = require('ccf-database').CCFDatabase;
@@ -29,4 +30,17 @@ if (options) {
 /** Worker thread database. */
 const database = new CCFDatabase(options);
 
-expose(database, nodeEndpoint(parentPort));
+/** SPARQL Query Functionality */
+const sparqlEngine = new QueryEngine();
+
+async function sparqlQuery(query, mimetype) {
+  const result = await sparqlEngine.query(query, { sources: [database.store] });
+  const { data } = await sparqlEngine.resultToString(result, mimetype);
+  let output = '';
+  for await (const datum of data) {
+    output += datum.toString();
+  }
+  return output;
+}
+
+expose({ database, sparqlQuery }, nodeEndpoint(parentPort));
