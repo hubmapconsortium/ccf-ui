@@ -94,7 +94,7 @@
     "@ngxs-labs/data": "^6.2.0",
     "@ngxs/logger-plugin": "^3.7.1",
     "@ngxs/storage-plugin": "^3.7.1",
-    "@ngxs/store": "^3.7.1",
+    "@ngxs/store": "^3.7.3",
     "@rdfjs/data-model": "^1.2.0",
     "@types/lru-cache": "^5.1.1",
     "@webcomponents/webcomponentsjs": "^2.5.0",
