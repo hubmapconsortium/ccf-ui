@@ -297,6 +297,14 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0000995'
   },
   {
+    src: 'app:uterus',
+    organ: 'Placenta',
+    name: 'Placenta',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001987'
+  },
+  {
     src: 'app:vasculature-thick',
     organ: 'Blood Vasculature',
     name: 'Blood Vasculature',
@@ -316,7 +324,8 @@ export const ALL_POSSIBLE_ORGANS = [
 /**
  * All organs which have not been disabled
  */
-export const ALL_ORGANS = ALL_POSSIBLE_ORGANS.filter(organ => organ.disabled !== true);
+export const ALL_ORGANS = ALL_POSSIBLE_ORGANS.filter(organ => organ.disabled !== true)
+  .filter(organ => organ.name === 'Placenta');
 
 /**
  * Contains the organ name and url of the icon svg
