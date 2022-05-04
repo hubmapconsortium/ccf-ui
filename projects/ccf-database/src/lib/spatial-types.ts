@@ -81,15 +81,13 @@ export interface SpatialEntity {
 }
 
 /** Object describing the placement of an entity */
-export interface SpatialPlacement {
+export interface SpatialPlacementCommon {
+  /** JSON-LD context */
+  '@context'?: string;
   /** Identifier */
   '@id': string;
   /** Type name */
   '@type': 'SpatialPlacement';
-  /** Source entity */
-  source: SpatialEntity | SpatialObjectReference;
-  /** Target entity */
-  target: SpatialEntity;
 
   /** Date placement was made */
   placement_date: string;
@@ -123,4 +121,18 @@ export interface SpatialPlacement {
   z_translation: number;
   /** Units translation is expressed in */
   translation_units: string;
+}
+
+export interface SpatialPlacement extends SpatialPlacementCommon {
+  /** Source entity */
+  source: SpatialEntity | SpatialObjectReference;
+  /** Target entity */
+  target: SpatialEntity;
+}
+
+export interface FlatSpatialPlacement extends SpatialPlacementCommon {
+  /** Source entity iri */
+  source: string;
+  /** Target entity iri */
+  target: string;
 }

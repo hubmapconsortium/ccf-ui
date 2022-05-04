@@ -34,6 +34,28 @@ paths:
         - $ref: "#/components/parameters/Token"
       responses:
         "200": { $ref: "#/components/responses/DatabaseStatus" }
+
+  /sparql:
+    get:
+      summary: Run a SPARQL query
+      operationId: sparql
+      parameters:
+        - $ref: "#/components/parameters/Query"
+        - $ref: "#/components/parameters/Token"
+        - $ref: "#/components/parameters/Format"
+      responses:
+        "200": { $ref: "#/components/responses/SparqlResponse"}
+
+    post:
+      summary: Run a SPARQL query (POST)
+      operationId: sparql-post
+      requestBody: { $ref: "#/components/requestBodies/SparqlQuery" }
+      parameters:
+        - $ref: "#/components/parameters/Token"
+        - $ref: "#/components/parameters/Format"
+      responses:
+        "200": { $ref: "#/components/responses/SparqlResponse"}
+
   /aggregate-results:
     get:
       summary: Get aggregate results / statistics
@@ -52,6 +74,16 @@ paths:
         - $ref: "#/components/parameters/Token"
       responses:
         "200": { $ref: "#/components/responses/AggregateResults" }
+
+  /get-spatial-placement:
+    post:
+      summary: Given a SpatialEntity already placed relative to a reference SpatialEntity, retrieve a new direct SpatialPlacement to the given SpatialEntity IRI
+      operationId: get-spatial-placement
+      requestBody: { $ref: "#/components/requestBodies/GetSpatialPlacement" }
+      responses:
+        "200": { $ref: "#/components/responses/SpatialPlacement" }
+        "404": { $ref: "#/components/responses/ErrorMessage" }
+        "500": { $ref: "#/components/responses/ErrorMessage" }
 
   /hubmap/rui_locations.jsonld:
     get:
@@ -341,6 +373,15 @@ components:
         items:
           type: string
 
+    Query:
+      name: query
+      description: SPARQL query to use
+      in: query
+      required: true
+      schema:
+        type: string
+      example: "SELECT * WHERE { ?sub ?pred ?obj . } LIMIT 10"
+
     Token:
       name: token
       description: Authentication token to use for authenticated searches
@@ -348,6 +389,93 @@ components:
       required: false
       schema:
         type: string
+
+    Format:
+      name: format
+      description: Override SPARQL response format (Note that not all formats are supported for all SPARQL query types)
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [
+          'application/json',
+          'application/ld+json',
+          'application/n-quads',
+          'application/n-triples',
+          'application/sparql-results+json',
+          'application/sparql-results+xml',
+          'application/trig',
+          'simple',
+          'stats',
+          'table',
+          'text/csv',
+          'text/n3',
+          'text/tab-separated-values',
+          'text/turtle',
+          'tree'
+        ]
+
+  requestBodies:
+    GetSpatialPlacement:
+      description: Request format for requesting a spatial placement for a given spatial entity IRI and RUI location
+      required: true
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/GetSpatialPlacementRequest" }
+          example:
+            target_iri: "http://purl.org/ccf/latest/ccf.owl#VHFemale"
+            rui_location: {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/f7130161-ad0a-4801-b5a4-f6297e0f1869",
+              "@type": "SpatialEntity",
+              "creator": "Bruce Herr",
+              "creator_first_name": "Bruce",
+              "creator_last_name": "Herr",
+              "creation_date": "2022-04-27",
+              "ccf_annotations": [
+                "http://purl.obolibrary.org/obo/UBERON_0002015",
+                "http://purl.obolibrary.org/obo/UBERON_0000362",
+                "http://purl.obolibrary.org/obo/UBERON_0004200",
+                "http://purl.obolibrary.org/obo/UBERON_0001225",
+                "http://purl.obolibrary.org/obo/UBERON_0001284",
+                "http://purl.obolibrary.org/obo/UBERON_0002189"
+              ],
+              "x_dimension": 11,
+              "y_dimension": 12,
+              "z_dimension": 13,
+              "dimension_units": "millimeter",
+              "placement": {
+                "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+                "@id": "http://purl.org/ccf/1.5/f7130161-ad0a-4801-b5a4-f6297e0f1869_placement",
+                "@type": "SpatialPlacement",
+                "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidneyV1.1",
+                "placement_date": "2022-04-27",
+                "x_scaling": 1,
+                "y_scaling": 1,
+                "z_scaling": 1,
+                "scaling_units": "ratio",
+                "x_rotation": -61,
+                "y_rotation": 50,
+                "z_rotation": -84,
+                "rotation_order": "XYZ",
+                "rotation_units": "degree",
+                "x_translation": 20.149,
+                "y_translation": 109.963,
+                "z_translation": 38.79,
+                "translation_units": "millimeter"
+              }
+            }
+
+    SparqlQuery:
+      description: Request format for a SPARQL query
+      required: true
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/SparqlQueryRequest" }
+          example:
+            query: "SELECT * WHERE { ?sub ?pred ?obj . } LIMIT 10"
+        application/x-www-form-urlencoded:
+          schema: { $ref: "#/components/schemas/SparqlQueryRequest" }
 
   responses:
     AggregateResults:
@@ -364,11 +492,24 @@ components:
         application/json:
           schema: { $ref: "#/components/schemas/DatabaseStatus" }
 
+    ErrorMessage:
+      description: Successful operation
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorMessage" }
+
     OntologyTree:
       description: Successful operation
       content:
         application/json:
           schema: { $ref: "#/components/schemas/OntologyTree" }
+
+    SparqlResponse:
+      description: Successful operation. SPARQL responses vary by format/content negotiation.
+      content:
+        application/json:
+          schema:
+            type: object
 
     SpatialEntities:
       description: Successful operation
@@ -385,6 +526,12 @@ components:
           schema:
             type: array
             items: { $ref: "#/components/schemas/SpatialSceneNode" }
+
+    SpatialPlacement:
+      description: Successful operation
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/FlatSpatialPlacement" }
 
     Strings:
       description: Successful operation
@@ -432,6 +579,33 @@ components:
           minimum: 0
         message:
           title: Human readable description of the current status
+          type: string
+
+    ErrorMessage:
+      title: Error Message
+      type: object
+      required: [error]
+      properties:
+        message:
+          title: Human readable description of the error
+          type: string
+
+    GetSpatialPlacementRequest:
+      title: get-spatial-placement request body
+      type: object
+      required: [target_iri, rui_location]
+      properties:
+        target_iri:
+          type: string
+          format: uri
+        rui_location: { $ref: "#/components/schemas/SpatialEntity" }
+
+    SparqlQueryRequest:
+      title: SPARQL query request body
+      type: object
+      required: [query]
+      properties:
+        query:
           type: string
 
     # Generic types
@@ -687,7 +861,7 @@ components:
     # Spatial data format
     SpatialObjectReference:
       title: Spatial Object Reference
-      description: A reference to the definition of a spatial object.
+      description: "A Spatial Object Reference provides a reference to an external representation of a Spatial Entity."
       type: object
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
@@ -782,7 +956,7 @@ components:
 
     SpatialEntity:
       title: Spatial Entity
-      description: ""
+      description: "A Spatial Entity defines a bounded cartesian space and the units it is measured in. It typically represents a real world thing, e.g., a human body, a human kidney, a tissue section, or an individual cell."
       type: object
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
@@ -821,9 +995,134 @@ components:
         slice_thickness:
           title: Slice Thickness
           type: number
+        placement:
+          oneOf:
+            - type: array
+              items: { $ref: "#/components/schemas/SpatialPlacement" }
+            - $ref: "#/components/schemas/SpatialPlacement"
+          x-preprocessor-delete: oneOf
         object: { $ref: "#/components/schemas/SpatialObjectReference" }
         color: { $ref: "#/components/schemas/Rgba" }
       x-preprocessor-delete: [properties/@type]
+
+    SpatialPlacementTranslation:
+      title: Spatial Placement Translation
+      description: The properties to define the Translation aspect of Spatial Placements.
+      type: object
+      required: [x_translation, y_translation, z_translation, translation_units]
+      properties:
+        x_translation:
+          title: X-Translation
+          type: number
+        y_translation:
+          title: Y-Translation
+          type: number
+        z_translation:
+          title: Z-Translation
+          type: number
+        translation_units:
+          title: Translation Units
+          description: Length units of translation values.
+          type: string
+          default: millimeters
+          enum: [millimeters]
+          x-preprocessor-delete: enum
+
+    SpatialPlacementRotation:
+      title: Spatial Placement Rotation
+      description: The properties to define the Rotation aspect of Spatial Placements.
+      type: object
+      required: [x_rotation, y_rotation, z_rotation, rotation_units]
+      properties:
+        x_rotation:
+          title: X-Rotation
+          type: number
+        y_rotation:
+          title: Y-Rotation
+          type: number
+        z_rotation:
+          title: Z-Rotation
+          type: number
+        rotation_units:
+          title: Rotation Units
+          description: Units of rotation values.
+          type: string
+          default: degree
+          enum: [degree]
+          x-preprocessor-delete: enum
+
+    SpatialPlacementScaling:
+      title: Spatial Placement Scaling
+      description: The properties to define the Scaling aspect of Spatial Placements.
+      type: object
+      required: [x_scaling, y_scaling, z_rotation, scaling_units]
+      properties:
+        x_scaling:
+          title: X-Scaling
+          type: number
+        y_scaling:
+          title: Y-Scaling
+          type: number
+        z_scaling:
+          title: Z-Scaling
+          type: number
+        scaling_units:
+          title: Scaling Units
+          description: Units of scaling values.
+          type: string
+          default: ratio
+          enum: [ratio]
+          x-preprocessor-delete: enum
+
+    SpatialPlacementCommon:
+      title: Spatial Placement common fields
+      description: "A Spatial Placement defines how to place a Spatial Entity or Spatial Object Reference relative to another Spatial Entity. It says how to scale, rotate, and translate (in that order) a Spatial Entity or Spatial Object Reference so that it is placed relative to another Spatial Entity."
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/JsonLdObject"
+        - $ref: "#/components/schemas/SpatialPlacementTranslation"
+        - $ref: "#/components/schemas/SpatialPlacementRotation"
+        - $ref: "#/components/schemas/SpatialPlacementScaling"
+      required: ["@type", target]
+      properties:
+        "@type":
+          type: string
+          enum: [SpatialPlacement]
+        placement_date:
+          title: Date placement was made
+          type: string
+          format: date
+      x-preprocessor-delete: [properties/@type]
+
+    SpatialPlacement:
+      title: Spatial Placement
+      description: "A Spatial Placement defines how to place a Spatial Entity or Spatial Object Reference relative to another Spatial Entity. It says how to scale, rotate, and translate (in that order) a Spatial Entity or Spatial Object Reference so that it is placed relative to another Spatial Entity."
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/SpatialPlacementCommon"
+      properties:
+        source:
+          oneOf:
+            - $ref: "#/components/schemas/SpatialEntity"
+            - $ref: "#/components/schemas/SpatialObjectReference"
+          x-preprocessor-delete: oneOf
+        target: { $ref: "#/components/schemas/SpatialEntity" }
+
+    FlatSpatialPlacement:
+      title: Spatial Placement
+      description: "A Spatial Placement defines how to place a Spatial Entity or Spatial Object Reference relative to another Spatial Entity. It says how to scale, rotate, and translate (in that order) a Spatial Entity or Spatial Object Reference so that it is placed relative to another Spatial Entity."
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/SpatialPlacementCommon"
+      properties:
+        source:
+          title: "Source Spatial Entity or Spatial Object Reference IRI"
+          type: string
+          format: uri
+        target:
+          title: "Target Spatial Entity IRI"
+          type: string
+          format: uri
 
     SpatialSceneNode:
       title: Spatial Scene Node

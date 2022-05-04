@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Matrix4, toRadians } from '@math.gl/core';
+import { Euler, Matrix4, toDegrees, toRadians } from '@math.gl/core';
 import { DirectedGraph } from 'graphology';
 import shortestPath from 'graphology-shortest-path/unweighted';
+import { get } from 'lodash';
 import { readQuads } from 'triple-store-utils';
+import { v4 as uuidV4 } from 'uuid';
 
 import { CCFDatabase } from './ccf-database';
 import { getSpatialPlacement } from './queries/spatial-result-n3';
-import { SpatialPlacement } from './spatial-types';
+import { FlatSpatialPlacement, SpatialEntity, SpatialPlacement } from './spatial-types';
 import { ccf, rdf } from './util/prefixes';
 
 
@@ -99,6 +102,52 @@ export class CCFSpatialGraph {
         target = source;
       }
       return tx;
+    } else {
+      return undefined;
+    }
+  }
+
+  getSpatialPlacement(source: SpatialEntity, targetIri: string): FlatSpatialPlacement | undefined {
+    const sourceIri = this.graph.hasNode(source['@id']) ? source['@id'] : undefined;
+    const placement: SpatialPlacement = get(source, 'placement[0]', get(source, 'placement', undefined));
+
+    let matrix: Matrix4 | undefined;
+    if (placement && this.graph.hasNode(placement.target)) {
+      matrix = this.getTransformationMatrix(placement.target as unknown as string, targetIri);
+      if (matrix) {
+        matrix = applySpatialPlacement(matrix, placement);
+      }
+    } else if (sourceIri) {
+      matrix = this.getTransformationMatrix(sourceIri, targetIri);
+    }
+
+    if (matrix) {
+      const euler = new Euler().fromRotationMatrix(matrix, Euler.XYZ);
+      const T = matrix.getTranslation().map(n => n * 1000) as [number, number, number];
+      const R = euler.toVector3().map<number>(toDegrees) as [number, number, number];
+      const S = matrix.getScale().map(n => n < 1 && n > 0.999999 ? 1 : n) as [number, number, number];
+
+      return {
+        '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+        '@id': `http://purl.org/ccf/1.5/${uuidV4()}_placement`,
+        '@type': 'SpatialPlacement',
+        source: source['@id'],
+        target: targetIri,
+        placement_date: new Date().toISOString().split('T')[0],
+        x_scaling: S[0],
+        y_scaling: S[1],
+        z_scaling: S[2],
+        scaling_units: 'ratio',
+        x_rotation: R[0],
+        y_rotation: R[1],
+        z_rotation: R[2],
+        rotation_order: 'XYZ',
+        rotation_units: 'degree',
+        x_translation: T[0],
+        y_translation: T[1],
+        z_translation: T[2],
+        translation_units: 'millimeter'
+      };
     } else {
       return undefined;
     }
