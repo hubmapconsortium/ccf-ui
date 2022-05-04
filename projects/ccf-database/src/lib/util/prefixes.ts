@@ -6,7 +6,7 @@ export const PREFIXES = {
   base: 'http://purl.org/ccf/latest/ccf.owl#',
   ccf: 'http://purl.org/ccf/',
   entity: 'http://purl.org/ccf/latest/ccf-entity.owl#',
-  fma: 'http://purl.obolibrary.org/obo/FMA_',
+  fma: 'http://purl.org/sig/ont/fma/fma',
   obo: 'http://purl.obolibrary.org/obo/',
   uberon: 'http://purl.obolibrary.org/obo/UBERON_',
   cl: 'http://purl.obolibrary.org/obo/CL_',
