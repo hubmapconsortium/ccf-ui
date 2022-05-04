@@ -1,9 +1,7 @@
 import { RequestHandler } from 'express';
 
-import { CCFDatabaseInstance } from '../../utils/ccf-database-worker';
+import { getDatabaseInstance } from '../../middleware/database-loader';
 
-
-type DatabaseGetter = (token?: string) => Promise<CCFDatabaseInstance>;
 
 function parseString(value: unknown): string | undefined {
   return typeof value === 'string' ? value : undefined;
@@ -66,19 +64,15 @@ export function sparql(): RequestHandler {
       res.format(mediaTypes);
     }
 
-    const getDatabase: DatabaseGetter = req['getDatabase'];
-    const dbInstance = await getDatabase(token);
-    const status = await dbInstance.database.getDatabaseStatus();
-    if (status.status !== 'Error' && queryBody) {
-      await dbInstance.database.connect();
-
+    const dbInstance = await getDatabaseInstance(req, token, true);
+    if (dbInstance.status.status !== 'Error' && queryBody) {
       dbInstance.sparqlQuery(queryBody, mediaType).then(result => {
         res.send(result);
       }).catch((err: { message: string }) => {
         res.status(500).json({ 'error': err?.message ?? err });
       });
     } else {
-      res.status(500).json({ 'error': status.message });
+      res.status(500).json({ 'error': dbInstance.status.message });
     }
   };
 }

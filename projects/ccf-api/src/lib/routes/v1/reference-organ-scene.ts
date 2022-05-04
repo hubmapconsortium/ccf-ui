@@ -1,10 +1,7 @@
 import { RequestHandler } from 'express';
 
-import { CCFDatabaseInstance } from '../../utils/ccf-database-worker';
+import { getDatabaseInstance } from '../../middleware/database-loader';
 import { queryParametersToFilter } from './utils/parse-filter';
-
-
-type DatabaseGetter = (token?: string) => Promise<CCFDatabaseInstance>;
 
 
 function parseString(value: unknown): string | undefined {
@@ -19,21 +16,19 @@ export function getReferenceOrganSceneHandler(): RequestHandler {
     const token = parseString(rawToken) ?? '';
     const organIri = parseString(rawOrganIri);
     const filter = queryParametersToFilter(query);
-    const getDatabase: DatabaseGetter = req['getDatabase'];
 
     if (!organIri) {
       res.status(404).send('Must provide an organ-iri query parameter');
       return;
     }
 
-    const dbInstance = await getDatabase(token);
-    const status = await dbInstance.database.getDatabaseStatus();
-    if (status.status !== 'Error') {
-      const database = await dbInstance.database.connect().then(() => dbInstance.database);
-      const result = await database.getReferenceOrganScene(organIri, filter);
+    const dbInstance = await getDatabaseInstance(req, token, true);
+    if (dbInstance.status.status !== 'Error') {
+      const result = await dbInstance.database.getReferenceOrganScene(organIri, filter);
+
       res.json(result);
     } else {
-      res.status(500).json({ 'error': status.message });
+      res.status(500).json({ 'error': dbInstance.status.message });
     }
   };
 }
