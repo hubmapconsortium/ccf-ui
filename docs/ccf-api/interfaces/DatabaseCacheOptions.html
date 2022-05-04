@@ -206,6 +206,16 @@ export interface DatabaseLoaderOptions {
   cache?: DatabaseCacheOptions;
 }
 
+type DatabaseGetter &#x3D; (token?: string) &#x3D;&gt; Promise&lt;CCFDatabaseInstance&gt;;
+
+export async function getDatabaseInstance(req: Request, token: string | undefined, doConnect &#x3D; false): Promise&lt;CCFDatabaseInstance&gt; {
+  const getDBInstance &#x3D; req[&#x27;getDatabase&#x27;] as DatabaseGetter;
+  const dbInstance &#x3D; await getDBInstance(token);
+  if (doConnect) {
+    await dbInstance.database.connect().catch((err) &#x3D;&gt; console.log(err));
+  }
+  return dbInstance;
+}
 
 function selectToken(token: string | undefined, req: Request): string {
   const qtoken &#x3D; req.query.token;
