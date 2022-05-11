@@ -60,7 +60,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Eye, R',
     side: 'right',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/FMA_54449'
+    id: 'http://purl.org/sig/ont/fma/fma54449'
   },
   {
     disabled: true,
@@ -137,7 +137,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Knee, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/FMA_24978'
+    id: 'http://purl.org/sig/ont/fma/fma24978'
   },
   {
     src: 'app:knee',
@@ -145,7 +145,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Knee, R',
     side: 'right',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/FMA_24977'
+    id: 'http://purl.org/sig/ont/fma/fma24977'
   },
   {
     src: 'app:liver',
@@ -186,7 +186,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'left',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/FMA_7214'
+    id: 'http://purl.org/sig/ont/fma/fma7214'
   },
   {
     src: 'app:ovary-right',
@@ -195,7 +195,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'right',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/FMA_7213'
+    id: 'http://purl.org/sig/ont/fma/fma7213'
   },
   {
     src: 'app:pancreas',
