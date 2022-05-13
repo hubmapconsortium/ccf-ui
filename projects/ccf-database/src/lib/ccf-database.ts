@@ -18,6 +18,7 @@ import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
 import { contextCustomizer } from './util/context-customizer';
+import { valueModifier } from './util/value-modifier';
 
 
 /** Database initialization options. */
@@ -179,6 +180,7 @@ export class CCFDatabase {
           if (source.endsWith('jsonld')) {
             source = await fetch(source).then(r => r.text());
             source = contextCustomizer(source as string);
+            source = valueModifier(source);
             await addJsonLdToStore(source, store);
           } else if (source.endsWith('n3')) {
             await addN3ToStore(source, store);
@@ -187,10 +189,12 @@ export class CCFDatabase {
           } else {
             // Passthrough assumes a JSON-LD response
             source = contextCustomizer(source);
+            source = valueModifier(source);
             await addJsonLdToStore(source, store);
           }
         } else {
           source = contextCustomizer(JSON.stringify(source));
+          source = valueModifier(source);
           await addJsonLdToStore(source, store);
         }
       })
