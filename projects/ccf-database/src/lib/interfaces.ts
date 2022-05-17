@@ -99,7 +99,7 @@ export interface SearchableItem {
   cellTypeTerms?: Set<string>;
 }
 
-/** Specification for a SpatialSearch via Probing Sphere */
+/** Specification for a Spatial Search via Probing Sphere */
 export interface SpatialSearch {
   /** X coordinate relative to target in millimeters */
   x: number;

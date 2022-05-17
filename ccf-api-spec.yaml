@@ -679,18 +679,23 @@ components:
     SpatialSearch:
       title: Probing Sphere
       description: |
-        Represents a probing sphere for use in spatial searches
+        Specification for a Spatial Search via Probing Sphere
       type: object
       properties:
         x:
+          title: X coordinate relative to target in millimeters
           type: number
         y:
+          title: Y coordinate relative to target in millimeters
           type: number
         z:
+          title: Z coordinate relative to target in millimeters
           type: number
         radius:
+          title: Size of the probing sphere in millimeters
           type: number
         target:
+          title: The target spatial entity IRI
           type: string
 
     Rgba:
