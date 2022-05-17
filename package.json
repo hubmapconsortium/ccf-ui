@@ -146,7 +146,7 @@
     "@angular-eslint/template-parser": "^12.0.0",
     "@angular/cli": "^12.1.1",
     "@angular/compiler-cli": "^12.1.1",
-    "@angular/language-service": "^12.1.1",
+    "@angular/language-service": "^13.3.8",
     "@compodoc/compodoc": "^1.1.14",
     "@danmarshall/deckgl-typings": "^4.9.5",
     "@openapitools/openapi-generator-cli": "^2.4.26",
