@@ -70,6 +70,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -118,6 +119,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -137,6 +139,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -197,6 +200,7 @@ paths:
         - $ref: "#/components/parameters/OrganIri"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -216,6 +220,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -245,6 +250,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -299,6 +305,19 @@ components:
       schema:
         type: string
         example: 0,40
+
+    SpatialSearches:
+      name: spatial
+      description: Filter result by spatial searches.
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+         { $ref: "#/components/schemas/SpatialSearch" }
+        example:
+          - { x: 10, y: 10, z: 10, radius: 100, target: 'http://purl.org/ccf/latest/ccf.owl#VHMale' }
+          - { x: 11, y: 11, z: 11, radius: 101, target: 'http://purl.org/ccf/latest/ccf.owl#VHFemale' }
 
     Cache:
       name: cache
@@ -656,6 +675,23 @@ components:
           type: number
         max:
           type: number
+
+    SpatialSearch:
+      title: Probing Sphere
+      description: |
+        Represents a probing sphere for use in spatial searches
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+        z:
+          type: number
+        radius:
+          type: number
+        target:
+          type: string
 
     Rgba:
       title: RGBA Color Tuple
