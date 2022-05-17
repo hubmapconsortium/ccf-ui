@@ -112,12 +112,12 @@ export const ccf = {
     file_subpath: ccfx('file_subpath')
   },
   extractionSet: {
-    label: rdfs.label,
+    label: prefixer('rdfs')('label'),
     rui_rank: ccfx('rui_rank')
   },
   spatialEntity: {
-    label: rdfs.label,
-    description: rdfs.comment,
+    label: prefixer('dcterms')('title'),
+    description: prefixer('rdfs')('comment'),
     creator: prefixer('dcterms')('creator'),
     creator_first_name: ccfx('creator_first_name'),
     creator_last_name: ccfx('creator_last_name'),
