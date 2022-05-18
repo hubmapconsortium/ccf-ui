@@ -20,7 +20,8 @@ export const DEFAULT_FILTER: Filter = {
   tmc: [],
   technologies: [],
   ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],
-  cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000']
+  cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000'],
+  spatialSearches: []
 };
 
 /** Current state of data queries. */

@@ -1,4 +1,4 @@
-import { Filter } from 'ccf-database';
+import { Filter, SpatialSearch } from 'ccf-database';
 import { ParsedQs } from 'qs';
 
 
@@ -9,7 +9,8 @@ const FILTER_DEFAULTS: Partial<Filter> = {
   tmc: [],
   technologies: [],
   ontologyTerms: [],
-  cellTypeTerms: []
+  cellTypeTerms: [],
+  spatialSearches: []
 };
 
 
@@ -88,6 +89,38 @@ function parseArray(value: unknown): string[] | undefined {
   return Array.isArray(value) ? value : undefined;
 }
 
+function parseSpatial(value: unknown): SpatialSearch[] | undefined {
+  // Spatial may be specified as a JSON string
+  if (typeof value === 'string') {
+    try {
+      return JSON.parse(value);
+    } catch {
+      return undefined;
+    }
+  }
+  if (typeof value === 'object') {
+    const numericSpatialAttributes = new Set(['x', 'y', 'z', 'radius']);
+    let searches: SpatialSearch[] | undefined = undefined;
+    for (const [key, valueOrValues] of Object.entries<unknown>(value as { [key: string]: unknown })) {
+      const values = Array.isArray(valueOrValues) ? valueOrValues : [ valueOrValues ];
+      if (Array.isArray(values)) {
+        if (!searches) {
+          searches = values.map(_ => ({})) as SpatialSearch[];
+        }
+        values.forEach((val, index) => {
+          if (searches && searches.length > index) {
+            if (numericSpatialAttributes.has(key)) {
+              val = +val;
+            }
+            searches[index][key] = val;
+          }
+        });
+      }
+    }
+    return searches;
+  }
+  return undefined;
+}
 
 // ----------------------
 // Implementation
@@ -115,6 +148,10 @@ function processParameter(result: Filter, key: string, value: unknown): void {
 
     case 'bmi':
       setIfDefined(result, 'bmiRange', parseMinMaxRange(value, 13, 83));
+      break;
+
+    case 'spatial':
+      setIfDefined(result, 'spatialSearches', parseSpatial(value));
       break;
 
     case 'tmc':

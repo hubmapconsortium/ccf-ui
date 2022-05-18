@@ -2,8 +2,10 @@ import { isFinite } from 'lodash';
 import { fromRdf } from 'rdf-literal';
 import { DataFactory, Literal, readQuads, Store, Term } from 'triple-store-utils';
 
-import { Filter } from '../interfaces';
+import { CCFSpatialGraph } from '../ccf-spatial-graph';
+import { Filter, SpatialSearch } from '../interfaces';
 import { ccf, entity, rui } from '../util/prefixes';
+import { filterByProbingSphere } from './spatial-search-n3';
 
 
 function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen: Set<string>) => Set<string>): Set<string> {
@@ -93,7 +95,7 @@ function filterWithDataset(store: Store, seen: Set<string>, callback: (datasetsS
  * @param filter The filter to limit objects.
  * @returns A set of all ids matching the filter.
  */
-export function findIds(store: Store, filter: Filter): Set<string> {
+export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): Set<string> {
   let seen = getAllEntities(store);
   if (seen.size > 0) {
     seen = filterByHasSpatialEntity(store, seen);
@@ -112,6 +114,11 @@ export function findIds(store: Store, filter: Filter): Set<string> {
   if (seen.size > 0 && filter.technologies?.length > 0) {
     seen = filterWithDataset(store, seen, (datasets) =>
       filterByTechnology(store, datasets, filter.technologies)
+    );
+  }
+  if (seen.size > 0 && filter.spatialSearches?.length > 0) {
+    seen = filterWithSpatialEntity(store, seen, (entities) =>
+      filterBySpatialSearches(store, graph, entities, filter.spatialSearches)
     );
   }
   if (seen.size > 0 && filter.ontologyTerms?.length > 0) {
@@ -329,6 +336,15 @@ function filterByHasSpatialEntity(store: Store, seen: Set<string>, hasSpatialEnt
     const notNewSeen = new Set<string>();
     seen.forEach((s) => !newSeen.has(s) ? notNewSeen.add(s) : undefined);
     return notNewSeen;
+  }
+  return newSeen;
+}
+
+function filterBySpatialSearches(store: Store, graph: CCFSpatialGraph, seen: Set<string>, spatialSearches: SpatialSearch[]): Set<string> {
+  const newSeen = new Set<string>();
+  for (const search of spatialSearches) {
+    const thisSeen = filterByProbingSphere(store, graph, seen, search);
+    thisSeen.forEach((s) => newSeen.add(s));
   }
   return newSeen;
 }
