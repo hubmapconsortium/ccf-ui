@@ -610,6 +610,20 @@ export interface SearchableItem {
   cellTypeTerms?: Set&lt;string&gt;;
 }
 
+/** Specification for a Spatial Search via Probing Sphere */
+export interface SpatialSearch {
+  /** X coordinate relative to target in millimeters */
+  x: number;
+  /** y coordinate relative to target in millimeters */
+  y: number;
+  /** z coordinate relative to target in millimeters */
+  z: number;
+  /** Size of the probing sphere in millimeters */
+  radius: number;
+  /** The target spatial entity IRI */
+  target: string;
+}
+
 /** Options applied during queries */
 export interface Filter {
   /** Sex */
@@ -626,6 +640,8 @@ export interface Filter {
   ontologyTerms: string[];
   /** CellType terms */
   cellTypeTerms: string[];
+  /** spatial search */
+  spatialSearches: SpatialSearch[];
   /** Include optional debugging information */
   debug?: boolean;
 }

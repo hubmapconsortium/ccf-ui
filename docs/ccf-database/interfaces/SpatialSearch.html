@@ -46,7 +46,7 @@
   <li>Interfaces</li>
   <li
   >
-  SearchableItem</li>
+  SpatialSearch</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -72,7 +72,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Item that can be searched for</p>
+                <p>Specification for a Spatial Search via Probing Sphere</p>
 
             </p>
 
@@ -90,44 +90,33 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#age" 
+                                        <a href="#radius" 
 >
-                                            age
+                                            radius
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#bmi" 
+                                        <a href="#target" 
 >
-                                            bmi
+                                            target
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#cellTypeTerms" 
+                                        <a href="#x" 
 >
-                                            cellTypeTerms
+                                            x
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#id" 
+                                        <a href="#y" 
 >
-                                            id
+                                            y
                                         </a>
                                 </li>
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#ontologyTerms" 
+                                        <a href="#z" 
 >
-                                            ontologyTerms
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#sex" 
->
-                                            sex
+                                            z
                                         </a>
                                 </li>
                             </ul>
@@ -145,9 +134,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="age"></a>
-                                        <span class="name "><b>age</b>
-                                            <a href="#age">
+                                        <a name="radius"></a>
+                                        <span class="name "><b>radius</b>
+                                            <a href="#radius">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -155,7 +144,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>age:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>radius:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -168,18 +157,13 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Age</p>
+                                    <div class="io-description"><p>Size of the probing sphere in millimeters</p>
 </div>
                                 </td>
                             </tr>
@@ -189,9 +173,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="bmi"></a>
-                                        <span class="name "><b>bmi</b>
-                                            <a href="#bmi">
+                                        <a name="target"></a>
+                                        <span class="name "><b>target</b>
+                                            <a href="#target">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -199,95 +183,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>bmi:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>BMI</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="cellTypeTerms"></a>
-                                        <span class="name "><b>cellTypeTerms</b>
-                                            <a href="#cellTypeTerms">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>cellTypeTerms:     <code>Set&lt;string&gt;</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>Set&lt;string&gt;</code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>CellType terms</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="id"></a>
-                                        <span class="name "><b>id</b>
-                                            <a href="#id">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>target:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -306,7 +202,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Identifier</p>
+                                    <div class="io-description"><p>The target spatial entity IRI</p>
 </div>
                                 </td>
                             </tr>
@@ -316,9 +212,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="ontologyTerms"></a>
-                                        <span class="name "><b>ontologyTerms</b>
-                                            <a href="#ontologyTerms">
+                                        <a name="x"></a>
+                                        <span class="name "><b>x</b>
+                                            <a href="#x">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -326,7 +222,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>ontologyTerms:     <code>Set&lt;string&gt;</code>
+                                        <code>x:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -334,23 +230,18 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>Set&lt;string&gt;</code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Ontology terms</p>
+                                    <div class="io-description"><p>X coordinate relative to target in millimeters</p>
 </div>
                                 </td>
                             </tr>
@@ -360,9 +251,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="sex"></a>
-                                        <span class="name "><b>sex</b>
-                                            <a href="#sex">
+                                        <a name="y"></a>
+                                        <span class="name "><b>y</b>
+                                            <a href="#y">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -370,7 +261,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>sex:     <code>&quot;Male&quot; | &quot;Female&quot;</code>
+                                        <code>y:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -378,23 +269,57 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>&quot;Male&quot; | &quot;Female&quot;</code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Sex</p>
+                                    <div class="io-description"><p>y coordinate relative to target in millimeters</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="z"></a>
+                                        <span class="name "><b>z</b>
+                                            <a href="#z">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>z:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>z coordinate relative to target in millimeters</p>
 </div>
                                 </td>
                             </tr>
@@ -593,7 +518,7 @@ export interface OntologyTreeModel {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'SearchableItem.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SpatialSearch.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

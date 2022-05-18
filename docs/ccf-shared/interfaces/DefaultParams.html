@@ -148,7 +148,7 @@ import { Matrix4 } from &#x27;@math.gl/core&#x27;;
 import {
   AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from &#x27;ccf-database&#x27;;
-import { DatabaseStatus, DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode } from &#x27;ccf-openapi/angular-client&#x27;;
+import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from &#x27;ccf-openapi/angular-client&#x27;;
 import { combineLatest, Observable, Subject } from &#x27;rxjs&#x27;;
 import { map, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 import { Cacheable } from &#x27;ts-cacheable&#x27;;
@@ -182,6 +182,7 @@ interface FilterParams {
   providers?: string[];
   sex?: &#x27;both&#x27; | &#x27;female&#x27; | &#x27;male&#x27;;
   technologies?: string[];
+  spatial?: SpatialSearch[];
 }
 
 
@@ -221,7 +222,8 @@ function filterToParams(filter?: Filter): FilterParams {
     ontologyTerms: filter?.ontologyTerms,
     cellTypeTerms: filter?.cellTypeTerms,
     providers: filter?.tmc,
-    technologies: filter?.technologies
+    technologies: filter?.technologies,
+    spatial: filter?.spatialSearches
   };
 }
 
