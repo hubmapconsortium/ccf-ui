@@ -343,7 +343,7 @@ function filterByHasSpatialEntity(store: Store, seen: Set<string>, hasSpatialEnt
 function filterBySpatialSearches(store: Store, graph: CCFSpatialGraph, seen: Set<string>, spatialSearches: SpatialSearch[]): Set<string> {
   const newSeen = new Set<string>();
   for (const search of spatialSearches) {
-    const thisSeen = filterByProbingSphere(store, graph, seen, search.x, search.y, search.z, search.radius, search.target);
+    const thisSeen = filterByProbingSphere(store, graph, seen, search);
     thisSeen.forEach((s) => newSeen.add(s));
   }
   return newSeen;
