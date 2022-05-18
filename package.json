@@ -89,7 +89,7 @@
     "@loaders.gl/core": "^3.0.12",
     "@loaders.gl/draco": "^3.0.12",
     "@loaders.gl/gltf": "^3.0.12",
-    "@luma.gl/core": "^8.5.7",
+    "@luma.gl/core": "^8.5.12",
     "@math.gl/core": "^3.5.5",
     "@math.gl/culling": "^3.5.7",
     "@ngxs-labs/data": "^6.2.0",
