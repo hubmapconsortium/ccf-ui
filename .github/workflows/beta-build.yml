@@ -2,7 +2,7 @@ name: 'Beta Build'
 
 on:
   push:
-    branches: ['pbi-ccf-v1.7']
+    branches: ['ccfv2-migration']
 
 jobs:
   deploy:
