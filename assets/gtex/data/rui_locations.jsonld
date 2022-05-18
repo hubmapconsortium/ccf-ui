@@ -29,34 +29,38 @@
       "@id": "has_ontology_term",
       "@type": "@id"
     },
+    "cellTypeTerms": {
+      "@id": "has_cell_type_term",
+      "@type": "@id"
+    },
     "thumbnail": {
       "@id": "has_thumbnail"
     }
   },
   "@graph": [
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#FDonors",
       "@type": "Donor",
       "label": "Females (n=18), Mean Age 56.8 (range 30-69)",
       "description": "Entered 9/17/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+      "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 9/17/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+          "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/c80e8f79-2b12-470d-be3c-f195a3686943",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -81,7 +85,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/c80e8f79-2b12-470d-be3c-f195a3686943_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidney",
@@ -103,11 +107,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#FDatasets",
               "@type": "Dataset",
               "label": "Registered 9/17/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+              "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -116,28 +120,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#FDonors",
       "@type": "Donor",
       "label": "Females (n=119), Mean Age 54.7 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+      "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+          "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/cc1251a4-d367-4bb1-b2d9-05ae33209f0d",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -156,7 +160,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/cc1251a4-d367-4bb1-b2d9-05ae33209f0d_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
@@ -178,11 +182,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+              "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -191,28 +195,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#FDonors",
       "@type": "Donor",
       "label": "Females (n=122), Mean Age 52.9 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+      "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+          "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/a04e60c6-693a-4c25-a069-62521783fd15",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -232,7 +236,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/a04e60c6-693a-4c25-a069-62521783fd15_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFHeart",
@@ -254,11 +258,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+              "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -267,28 +271,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Spleen#FDonors",
       "@type": "Donor",
       "label": "Females (n=86), Mean Age 49.5 (range 23-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+      "link": "https://gtexportal.org/home/tissue/Spleen",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Spleen#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+          "link": "https://gtexportal.org/home/tissue/Spleen",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ed9bc73e-ab9c-4bb1-8b96-4ecd1f12c7a7",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -309,7 +313,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ed9bc73e-ab9c-4bb1-8b96-4ecd1f12c7a7_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFSpleen",
@@ -331,11 +335,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Spleen#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+              "link": "https://gtexportal.org/home/tissue/Spleen",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -344,28 +348,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#FDonors",
       "@type": "Donor",
       "label": "Females (n=113), Mean Age 51.1 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+      "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+          "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/8e476601-a5e6-4d15-86a4-e6d3da9abb7e",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -385,7 +389,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/8e476601-a5e6-4d15-86a4-e6d3da9abb7e_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFColon",
@@ -407,11 +411,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+              "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -420,28 +424,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#FDonors",
       "@type": "Donor",
       "label": "Females (n=136), Mean Age 48.9 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+      "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+          "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/64a0ddbc-8138-4ce0-ad0b-2f8e546cea29",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -461,7 +465,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/64a0ddbc-8138-4ce0-ad0b-2f8e546cea29_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFColon",
@@ -483,11 +487,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+              "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -496,28 +500,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#FDonors",
+      "@id": "https://gtexportal.org/home/tissue/Lung#FDonors",
       "@type": "Donor",
       "label": "Females (n=166), Mean Age 53.4 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+      "link": "https://gtexportal.org/home/tissue/Lung",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#FTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Lung#FTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+          "link": "https://gtexportal.org/home/tissue/Lung",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ab9cafec-3eff-49ac-b2a9-ba96c22d80f9",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -537,7 +541,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ab9cafec-3eff-49ac-b2a9-ba96c22d80f9_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFLung",
@@ -559,11 +563,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#FDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Lung#FDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+              "link": "https://gtexportal.org/home/tissue/Lung",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -572,28 +576,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#MDonors",
       "@type": "Donor",
       "label": "Males (n=253), Mean Age 55.6 (range 20-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+      "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+          "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/676e549a-6234-48ee-b7cb-82258c17054b",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -612,7 +616,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/676e549a-6234-48ee-b7cb-82258c17054b_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
@@ -634,11 +638,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Atrial_Appendage",
+              "link": "https://gtexportal.org/home/tissue/Heart_Atrial_Appendage",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -647,28 +651,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#MDonors",
       "@type": "Donor",
       "label": "Males (n=253), Mean Age 55.6 (range 20-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+      "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+          "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/f6512db4-2809-4ffe-864d-ace61789dff6",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -688,7 +692,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/f6512db4-2809-4ffe-864d-ace61789dff6_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
@@ -710,11 +714,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Heart_Left_Ventricle",
+              "link": "https://gtexportal.org/home/tissue/Heart_Left_Ventricle",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -723,28 +727,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Spleen#MDonors",
       "@type": "Donor",
       "label": "Males (n=141), Mean Age 49.8 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+      "link": "https://gtexportal.org/home/tissue/Spleen",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Spleen#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+          "link": "https://gtexportal.org/home/tissue/Spleen",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ec2488fb-6ff5-4f43-82b5-9704a650d00a",
             "@type": "SpatialEntity",
             "creator": "Kristin  Ardlie",
@@ -765,7 +769,7 @@
             "z_dimension": 8,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ec2488fb-6ff5-4f43-82b5-9704a650d00a_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMSpleen",
@@ -787,11 +791,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Spleen#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Spleen",
+              "link": "https://gtexportal.org/home/tissue/Spleen",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -800,28 +804,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#MDonors",
       "@type": "Donor",
       "label": "Males (n=55), Mean Age 55.8 (range 27-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+      "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+          "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/1404eed3-01cb-4187-ad91-5fdc52a07ad8",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -846,7 +850,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/1404eed3-01cb-4187-ad91-5fdc52a07ad8_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMLeftKidney",
@@ -868,11 +872,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Kidney_Cortex",
+              "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -881,28 +885,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#MDonors",
       "@type": "Donor",
       "label": "Males (n=55), Mean Age 55.8 (range 27-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+      "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+          "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/383d2c1a-4c8c-4aa3-b154-1ceacd3fa871",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -922,7 +926,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/383d2c1a-4c8c-4aa3-b154-1ceacd3fa871_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMColon",
@@ -944,11 +948,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Colon_Sigmoid#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Sigmoid",
+              "link": "https://gtexportal.org/home/tissue/Colon_Sigmoid",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -957,28 +961,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#MDonors",
       "@type": "Donor",
       "label": "Males (n=232), Mean Age 50.1 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+      "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+          "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/fd7270d4-105a-4058-aece-2d2bb0668da2",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -998,7 +1002,7 @@
             "z_dimension": 4,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/fd7270d4-105a-4058-aece-2d2bb0668da2_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMColon",
@@ -1020,11 +1024,11 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Colon_Transverse#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Colon_Transverse",
+              "link": "https://gtexportal.org/home/tissue/Colon_Transverse",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
@@ -1033,28 +1037,28 @@
       ]
     },
     {
-      "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#MDonors",
+      "@id": "https://gtexportal.org/home/tissue/Lung#MDonors",
       "@type": "Donor",
       "label": "Males (n=349), Mean Age 53.5 (range 21-70)",
       "description": "Entered 5/18/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+      "link": "https://gtexportal.org/home/tissue/Lung",
       "sex": "Male",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
       "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
       "samples": [
         {
-          "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#MTissueBlocks",
+          "@id": "https://gtexportal.org/home/tissue/Lung#MTissueBlocks",
           "@type": "Sample",
           "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
           "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
-          "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+          "link": "https://gtexportal.org/home/tissue/Lung",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ab2e49b2-1959-44af-8e83-ac16878f6c12",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1077,7 +1081,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ab2e49b2-1959-44af-8e83-ac16878f6c12_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMLung",
@@ -1099,11 +1103,1119 @@
           },
           "datasets": [
             {
-              "@id": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung#MDatasets",
+              "@id": "https://gtexportal.org/home/tissue/Lung#MDatasets",
               "@type": "Dataset",
               "label": "Registered 5/18/2021, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/eqtls/tissue?tissueName=Lung",
+              "link": "https://gtexportal.org/home/tissue/Lung",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Liver#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=65), Mean Age 54.5 (21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Liver",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Liver#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Liver",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/f6203770-64ee-40cc-b7b2-339f1ae491cc",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "http://purl.obolibrary.org/obo/FMA_15729",
+              "http://purl.obolibrary.org/obo/UBERON_0001114"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 7,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/f6203770-64ee-40cc-b7b2-339f1ae491cc_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFLiver",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 59.038,
+              "y_translation": 134.762,
+              "z_translation": 101.244,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Liver#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Liver",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Ovary#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=180), Mean Age 50.2 (21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Ovary",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Ovary#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Ovary",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/e137f366-a936-4357-945a-929d1d682890",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000992",
+              "http://purl.obolibrary.org/obo/FMA_7214"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 3,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/e137f366-a936-4357-945a-929d1d682890_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftOvary",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -14,
+              "y_rotation": 0,
+              "z_rotation": -14,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 7.827,
+              "y_translation": 12.79,
+              "z_translation": 5.267,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Ovary#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Ovary",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Pancreas#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=121), Mean Age 52.1 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Pancreas",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Pancreas#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Pancreas",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/232b6561-19ed-4da3-a61e-286245f42f25",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0001264",
+              "http://purl.obolibrary.org/obo/UBERON_0001150",
+              "http://purl.obolibrary.org/obo/UBERON_0001069",
+              "http://purl.obolibrary.org/obo/FMA_14517"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 7,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/232b6561-19ed-4da3-a61e-286245f42f25_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFPancreas",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": -13,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 68.55,
+              "y_translation": 40.634,
+              "z_translation": 62.717,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Pancreas#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Pancreas",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=234), Mean Age 52.9 (21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/6f04ffad-3b9d-4c1c-afc0-fd203b02e5a3",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002097"
+            ],
+            "x_dimension": 20,
+            "y_dimension": 10,
+            "z_dimension": 5,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/6f04ffad-3b9d-4c1c-afc0-fd203b02e5a3_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFSkinV1.1",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 15,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 620.063,
+              "y_translation": 381.198,
+              "z_translation": 86.714,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=193), Mean Age 53.3 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/2185217b-77ed-4043-b79b-1c2d33b6d524",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002097"
+            ],
+            "x_dimension": 20,
+            "y_dimension": 10,
+            "z_dimension": 5,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/2185217b-77ed-4043-b79b-1c2d33b6d524_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFSkinV1.1",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": -44,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 530.092,
+              "y_translation": 721.462,
+              "z_translation": 221.009,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=67), Mean Age 48.6 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/ec1cc18d-9a48-4c09-a720-2b54c3f83bd9",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002108",
+              "http://purl.obolibrary.org/obo/UBERON_0002116",
+              "http://purl.obolibrary.org/obo/FMA_14966"
+            ],
+            "x_dimension": 6,
+            "y_dimension": 6,
+            "z_dimension": 2,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/ec1cc18d-9a48-4c09-a720-2b54c3f83bd9_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFSmallIntestine",
+              "placement_date": "2022-01-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 16.348,
+              "y_translation": 67.85,
+              "z_translation": 42.23,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Uterus#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=142), Mean Age 47.8 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Uterus",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Uterus#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Uterus",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/220036fa-2932-4f00-aad6-3f70c516c1c4",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000995",
+              "http://purl.obolibrary.org/obo/FMA_17561",
+              "http://purl.obolibrary.org/obo/FMA_224878",
+              "http://purl.obolibrary.org/obo/FMA_224876"
+            ],
+            "x_dimension": 20,
+            "y_dimension": 10,
+            "z_dimension": 3,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/220036fa-2932-4f00-aad6-3f70c516c1c4_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFUterus",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": -38,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 26.774,
+              "y_translation": 39.166,
+              "z_translation": 50.848,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Uterus#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Uterus",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=94), Mean Age 53.5 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/3626fb05-6e59-4aa9-8d03-2b5e995b2522",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002049",
+              "http://purl.obolibrary.org/obo/UBERON_0004537",
+              "http://purl.obolibrary.org/obo/UBERON_0001626"
+            ],
+            "x_dimension": 2,
+            "y_dimension": 2,
+            "z_dimension": 2,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/3626fb05-6e59-4aa9-8d03-2b5e995b2522_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFBloodVasculature",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 4,
+              "z_rotation": 34,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 113.174,
+              "y_translation": 494.659,
+              "z_translation": 91.963,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Liver#MDonors",
+      "@type": "Donor",
+      "label": "Males (n=161), Mean Age 54.5 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Liver",
+      "sex": "Male",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Liver#MTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Liver",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/74370757-0cd2-44e5-83d8-47eb550c441a",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002107",
+              "http://purl.obolibrary.org/obo/FMA_15729",
+              "http://purl.obolibrary.org/obo/UBERON_0001114"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 7,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/74370757-0cd2-44e5-83d8-47eb550c441a_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMLiver",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 56.201,
+              "y_translation": 145.242,
+              "z_translation": 135.274,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Liver#MDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Liver",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Pancreas#MDonors",
+      "@type": "Donor",
+      "label": "Males (n=207), Mean Age 50.3 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Pancreas",
+      "sex": "Male",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Pancreas#MTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Pancreas",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/d386cdea-8d3c-46a2-9900-fbd5237cba80",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0001264",
+              "http://purl.obolibrary.org/obo/UBERON_0001150",
+              "http://purl.obolibrary.org/obo/UBERON_0001069",
+              "http://purl.obolibrary.org/obo/FMA_14517"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 7,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/d386cdea-8d3c-46a2-9900-fbd5237cba80_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMPancreas",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 24,
+              "z_rotation": 29,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 46.818,
+              "y_translation": 48.012,
+              "z_translation": 66.82,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Pancreas#MDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Pancreas",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Prostate#MDonors",
+      "@type": "Donor",
+      "label": "Males (n=245), Mean Age 50.6 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Prostate",
+      "sex": "Male",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Prostate#MTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Prostate",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/5475ae38-db50-4868-92ba-8718bf136c7b",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000079",
+              "http://purl.obolibrary.org/obo/UBERON_0002367",
+              "http://purl.obolibrary.org/obo/UBERON_0006947",
+              "http://purl.obolibrary.org/obo/UBERON_0000999",
+              "http://purl.obolibrary.org/obo/UBERON_0002367",
+              "http://purl.obolibrary.org/obo/UBERON_8410026",
+              "http://purl.obolibrary.org/obo/UBERON_8410027"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 7,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/5475ae38-db50-4868-92ba-8718bf136c7b_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMProstate",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 37.882,
+              "y_translation": 16.321,
+              "z_translation": 17.244,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Prostate#MDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Prostate",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#MDonors",
+      "@type": "Donor",
+      "label": "Males (n=467), Mean Age 52.9 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
+      "sex": "Male",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#MTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/cce37703-e4e8-454c-a0c4-4ff58652ab8f",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002097"
+            ],
+            "x_dimension": 20,
+            "y_dimension": 10,
+            "z_dimension": 5,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/cce37703-e4e8-454c-a0c4-4ff58652ab8f_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMSkinV1.1",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 20,
+              "y_rotation": 13,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 678.414,
+              "y_translation": 479.517,
+              "z_translation": 65.16,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg#MDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Skin_Sun_Exposed_Lower_leg",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#MDonors",
+      "@type": "Donor",
+      "label": "Males (n=411), Mean Age 53.3 (range 20-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
+      "sex": "Male",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#MTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/ece78b3e-635e-45d1-8217-35fd50392cce",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002097"
+            ],
+            "x_dimension": 20,
+            "y_dimension": 10,
+            "z_dimension": 5,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/ece78b3e-635e-45d1-8217-35fd50392cce_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMSkinV1.1",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": -30,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 591.656,
+              "y_translation": 851.01,
+              "z_translation": 244.41,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic#MDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Skin_Not_Sun_Exposed_Suprapubic",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#MDonors",
+      "@type": "Donor",
+      "label": "Males (n=120), Mean Age 48.4 (range 21-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
+      "sex": "Male",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#MTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/d237fd29-749e-4734-a925-d36e5d1db31d",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-19",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002108",
+              "http://purl.obolibrary.org/obo/UBERON_0002116",
+              "http://purl.obolibrary.org/obo/FMA_14966"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 2,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/d237fd29-749e-4734-a925-d36e5d1db31d_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMSmallIntestine",
+              "placement_date": "2022-01-19",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 28.138,
+              "y_translation": 87.211,
+              "z_translation": 58.237,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum#MDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Small_Intestine_Terminal_Ileum",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#MDonors",
+      "@type": "Donor",
+      "label": "Males (n=146), Mean Age 54.3 (range 20-70)",
+      "description": "Entered 1/26/2022, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
+      "sex": "Male",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#MTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+          "description": "1.08 x 4.06 x 0.11 millimeter, 0.11 millimeter, biopsy, 0 Sections",
+          "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/7e05a1f1-fc08-4add-bd72-ffc11267c048",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2022-01-26",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0002049",
+              "http://purl.obolibrary.org/obo/UBERON_0004537",
+              "http://purl.obolibrary.org/obo/UBERON_0001626"
+            ],
+            "x_dimension": 2,
+            "y_dimension": 2,
+            "z_dimension": 2,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/7e05a1f1-fc08-4add-bd72-ffc11267c048_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMBloodVasculature",
+              "placement_date": "2022-01-26",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": -26,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 134.46,
+              "y_translation": 547.743,
+              "z_translation": 113.213,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Artery_Coronary#MDatasets",
+              "@type": "Dataset",
+              "label": "Registered 1/26/2022, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Artery_Coronary",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }

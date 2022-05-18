@@ -21,7 +21,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/0.5/59411967-28d2-4955-833e-7f8a8ab75d85",
             "@type": "SpatialEntity",
             "label": "Patient B Cortical biopsy",
@@ -39,7 +39,7 @@
             "z_dimension": 0.11280000149011613,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/0.5/59411967-28d2-4955-833e-7f8a8ab75d85_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHRightKidney",
@@ -94,7 +94,7 @@
           "section_size": 0.08,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/0.5/c7362760-04fd-4679-a694-b25592ef0291",
             "@type": "SpatialEntity",
             "label": "Patient A Cortical biopsy",
@@ -112,7 +112,7 @@
             "z_dimension": 0.07696000149011611,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/0.5/c7362760-04fd-4679-a694-b25592ef0291_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHRightKidney",
@@ -166,7 +166,7 @@
           "section_size": 0.07,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/0.5/bd7a9bea-a726-427a-8360-8a017ef8178d",
             "@type": "SpatialEntity",
             "label": "CoverNephrectomy",
@@ -184,7 +184,7 @@
             "z_dimension": 0.07384000149011612,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/0.5/bd7a9bea-a726-427a-8360-8a017ef8178d_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHRightKidney",

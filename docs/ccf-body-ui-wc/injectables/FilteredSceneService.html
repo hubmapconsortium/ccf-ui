@@ -1,0 +1,1032 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application ccf-body-ui-wc documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Application ccf-body-ui-wc documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >FilteredSceneService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#data$" >data$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#filteredOrgans$" >filteredOrgans$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#filteredScene$" >filteredScene$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#highlightID$" >highlightID$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#organs$" >organs$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#referenceOrgans$" >referenceOrgans$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#scene$" >scene$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#zoomToID$" >zoomToID$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chooseScene" >chooseScene</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#filterSceneNodes" >filterSceneNodes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getNeededReferenceOrgans" >getNeededReferenceOrgans</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getNeededSkins" >getNeededSkins</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#selectOrgans" >selectOrgans</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(configState: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>, source: <a href="../injectables/DataSourceService.html" target="_self">DataSourceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>configState</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/GlobalConfig.html" target="_self" >GlobalConfigState&lt;GlobalConfig&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>source</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DataSourceService.html" target="_self" >DataSourceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chooseScene"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>chooseScene</b></span>
+                        <a href="#chooseScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>chooseScene(data?: JsonLdObj[], organs?: SpatialEntity[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                            <code>JsonLdObj[]</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>organs</td>
+                                    <td>
+                                            <code>SpatialEntity[]</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterSceneNodes"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>filterSceneNodes</b></span>
+                        <a href="#filterSceneNodes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>filterSceneNodes(nodes: SpatialSceneNode[], organs: Set<string>, referenceOrgans: SpatialEntity[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>nodes</td>
+                                    <td>
+                                            <code>SpatialSceneNode[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>organs</td>
+                                    <td>
+                                            <code>Set&lt;string&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>referenceOrgans</td>
+                                    <td>
+                                            <code>SpatialEntity[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>SpatialSceneNode[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNeededReferenceOrgans"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getNeededReferenceOrgans</b></span>
+                        <a href="#getNeededReferenceOrgans"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNeededReferenceOrgans(referenceOrgans: SpatialEntity[], organs: Set<string>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:91</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>referenceOrgans</td>
+                                    <td>
+                                            <code>SpatialEntity[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>organs</td>
+                                    <td>
+                                            <code>Set&lt;string&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>SpatialEntity[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNeededSkins"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getNeededSkins</b></span>
+                        <a href="#getNeededSkins"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNeededSkins(organs: SpatialEntity[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:95</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organs</td>
+                                    <td>
+                                            <code>SpatialEntity[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>string[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectOrgans"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>selectOrgans</b></span>
+                        <a href="#selectOrgans"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>selectOrgans(data: Any[] | undefined)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                            <code>Any[] | undefined</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>data$</b></span>
+                        <a href="#data$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.configState.getOption(&#x27;data&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredOrgans$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>filteredOrgans$</b></span>
+                        <a href="#filteredOrgans$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>combineLatest([this.organs$, this.referenceOrgans$]).pipe(
+    map(([organs, referenceOrgans]) &#x3D;&gt; this.getNeededReferenceOrgans(referenceOrgans, organs)),
+    shareReplay(1)
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredScene$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>filteredScene$</b></span>
+                        <a href="#filteredScene$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>combineLatest([this.scene$, this.organs$, this.referenceOrgans$]).pipe(
+    map(([nodes, organs, referenceOrgans]) &#x3D;&gt; this.filterSceneNodes(nodes, organs, referenceOrgans)),
+    hightlight(this.highlightID$, HIGHLIGHT_YELLOW),
+    zoomTo(this.zoomToID$),
+    shareReplay(1)
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="highlightID$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>highlightID$</b></span>
+                        <a href="#highlightID$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.configState.getOption(&#x27;highlightID&#x27;).pipe(
+    map(id &#x3D;&gt; &#x60;http://purl.org/ccf/1.5/entity/${id}&#x60;)
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="organs$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>organs$</b></span>
+                        <a href="#organs$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.configState.getOption(&#x27;data&#x27;).pipe(
+    map(data &#x3D;&gt; this.selectOrgans(data)),
+    shareReplay(1)
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="referenceOrgans$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>referenceOrgans$</b></span>
+                        <a href="#referenceOrgans$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.source.getReferenceOrgans()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scene$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>scene$</b></span>
+                        <a href="#scene$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>combineLatest([this.data$, this.referenceOrgans$, this.source.dataSource]).pipe(
+    switchMap(([data, referenceOrgans, _]) &#x3D;&gt; this.chooseScene(data, referenceOrgans))
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="zoomToID$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>zoomToID$</b></span>
+                        <a href="#zoomToID$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.configState.getOption(&#x27;zoomToID&#x27;).pipe(
+    map(id &#x3D;&gt; &#x60;http://purl.org/ccf/1.5/entity/${id}&#x60;)
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-body-ui-wc/src/app/core/services/filtered-scene/filtered-scene.service.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SpatialSceneNode, SpatialEntity, Filter } from &#x27;ccf-database&#x27;;
+import { combineLatest, Observable, of } from &#x27;rxjs&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
+import { DataSourceService } from &#x27;../data-source/data-source.service&#x27;;
+import { map, shareReplay, switchMap } from &#x27;rxjs/operators&#x27;;
+import { Any } from &#x27;@angular-ru/common/typings&#x27;;
+import { FEMALE_SKIN_URL, HIGHLIGHT_YELLOW, MALE_SKIN_URL, SPATIAL_ENTITY_URL } from &#x27;../../constants&#x27;;
+import { hightlight } from &#x27;../../highlight.operator&#x27;;
+import { GlobalConfig } from &#x27;../../../app.component&#x27;;
+import { zoomTo } from &#x27;../../zoom-to.operator&#x27;;
+import { JsonLdObj } from &#x27;jsonld/jsonld-spec&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class FilteredSceneService {
+  readonly data$ &#x3D; this.configState.getOption(&#x27;data&#x27;);
+  readonly zoomToID$ &#x3D; this.configState.getOption(&#x27;zoomToID&#x27;).pipe(
+    map(id &#x3D;&gt; &#x60;http://purl.org/ccf/1.5/entity/${id}&#x60;)
+  );
+  readonly highlightID$ &#x3D; this.configState.getOption(&#x27;highlightID&#x27;).pipe(
+    map(id &#x3D;&gt; &#x60;http://purl.org/ccf/1.5/entity/${id}&#x60;)
+  );
+
+  readonly referenceOrgans$ &#x3D; this.source.getReferenceOrgans();
+
+  readonly scene$ &#x3D; combineLatest([this.data$, this.referenceOrgans$, this.source.dataSource]).pipe(
+    switchMap(([data, referenceOrgans, _]) &#x3D;&gt; this.chooseScene(data, referenceOrgans))
+  );
+
+  readonly organs$ &#x3D; this.configState.getOption(&#x27;data&#x27;).pipe(
+    map(data &#x3D;&gt; this.selectOrgans(data)),
+    shareReplay(1)
+  );
+
+  readonly filteredOrgans$ &#x3D; combineLatest([this.organs$, this.referenceOrgans$]).pipe(
+    map(([organs, referenceOrgans]) &#x3D;&gt; this.getNeededReferenceOrgans(referenceOrgans, organs)),
+    shareReplay(1)
+  );
+
+  readonly filteredScene$ &#x3D; combineLatest([this.scene$, this.organs$, this.referenceOrgans$]).pipe(
+    map(([nodes, organs, referenceOrgans]) &#x3D;&gt; this.filterSceneNodes(nodes, organs, referenceOrgans)),
+    hightlight(this.highlightID$, HIGHLIGHT_YELLOW),
+    zoomTo(this.zoomToID$),
+    shareReplay(1)
+  );
+
+  constructor(
+    private readonly configState: GlobalConfigState&lt;GlobalConfig&gt;,
+    private readonly source: DataSourceService
+  ) { }
+
+  private chooseScene(data?: JsonLdObj[], organs?: SpatialEntity[]): Observable&lt;SpatialSceneNode[]&gt; {
+    const organUrls &#x3D; data?.map(obj &#x3D;&gt; {
+      const block: Any &#x3D; obj[SPATIAL_ENTITY_URL];
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      return block?.placement.target;
+    }) ?? [];
+    const uniqueOrganUrls &#x3D; new Set(organUrls);
+
+    if (uniqueOrganUrls.size &gt; 1) {
+      return this.source.getScene();
+    } else if (organs) {
+      const organ &#x3D; organs.find(tempOrgan &#x3D;&gt; tempOrgan[&#x27;@id&#x27;] &#x3D;&#x3D;&#x3D; organUrls[0]);
+      if (organ) {
+        return this.source.getOrganScene(organ.representation_of as string, { ontologyTerms: [organ.reference_organ as string], sex: organ.sex } as Filter);
+      }
+    }
+    return of([]);
+  }
+
+  private selectOrgans(data: Any[] | undefined): Set&lt;string&gt; {
+    const selectOrgan &#x3D; (item: Any) &#x3D;&gt;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      item[SPATIAL_ENTITY_URL].placement.target;
+
+    const organs &#x3D; (data ?? []).map(selectOrgan);
+    return new Set(organs);
+  }
+
+  private filterSceneNodes(nodes: SpatialSceneNode[], organs: Set&lt;string&gt;, referenceOrgans: SpatialEntity[]): SpatialSceneNode[] {
+    const neededReferenceOrgans &#x3D; this.getNeededReferenceOrgans(referenceOrgans, organs);
+    const neededSkins &#x3D; this.getNeededSkins(neededReferenceOrgans);
+    const neededOrgans &#x3D; new Set([...organs, ...neededSkins]);
+    const filteredNodes &#x3D; nodes.filter(node &#x3D;&gt; !node.reference_organ || neededOrgans.has(node.reference_organ));
+
+    return filteredNodes;
+  }
+
+  private getNeededReferenceOrgans(referenceOrgans: SpatialEntity[], organs: Set&lt;string&gt;): SpatialEntity[] {
+    return referenceOrgans.filter(organ &#x3D;&gt; organs.has(organ.reference_organ ?? &#x27;&#x27;));
+  }
+
+  private getNeededSkins(organs: SpatialEntity[]): string[] {
+    if (organs.length &#x3D;&#x3D;&#x3D; 1) {
+      return [];
+    }
+
+    const skins &#x3D; new Set&lt;string&gt;();
+    organs.forEach(organ &#x3D;&gt; {
+      if (organ.sex &#x3D;&#x3D;&#x3D; &#x27;Female&#x27;) {
+        skins.add(FEMALE_SKIN_URL);
+      } else if (organ.sex &#x3D;&#x3D;&#x3D; &#x27;Male&#x27;) {
+        skins.add(MALE_SKIN_URL);
+      }
+    });
+
+    return [...skins];
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'FilteredSceneService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

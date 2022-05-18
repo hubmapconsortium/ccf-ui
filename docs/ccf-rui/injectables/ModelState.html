@@ -1,0 +1,2906 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application ccf-rui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Application ccf-rui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >ModelState</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-rui/src/app/core/store/model/model.state.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Data for the main 3d model display</p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code>NgxsImmutableDataRepository</code>
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#anatomicalStructures$" >anatomicalStructures$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#blockSize$" >blockSize$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#extractionSets$" >extractionSets$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#extractionSites$" >extractionSites$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#id$" >id$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#organ$" >organ$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#organDimensions$" >organDimensions$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#organIri$" >organIri$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#page" >page</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#position$" >position$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#referenceData" >referenceData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#rotation$" >rotation$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#sex$" >sex$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#showPrevious$" >showPrevious$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#side$" >side$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#slicesConfig$" >slicesConfig$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#viewSide$" >viewSide$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#viewType$" >viewType$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#idMatches" >idMatches</a>
+                            </li>
+                            <li>
+                                <a href="#nameMatches" >nameMatches</a>
+                            </li>
+                            <li>
+                                <a href="#ngxsOnInit" >ngxsOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#onOrganIriChange" >onOrganIriChange</a>
+                            </li>
+                            <li>
+                                <a href="#setAnatomicalStructures" >setAnatomicalStructures</a>
+                            </li>
+                            <li>
+                                <a href="#setBlockSize" >setBlockSize</a>
+                            </li>
+                            <li>
+                                <a href="#setExtractionSets" >setExtractionSets</a>
+                            </li>
+                            <li>
+                                <a href="#setExtractionSites" >setExtractionSites</a>
+                            </li>
+                            <li>
+                                <a href="#setOrgan" >setOrgan</a>
+                            </li>
+                            <li>
+                                <a href="#setPosition" >setPosition</a>
+                            </li>
+                            <li>
+                                <a href="#setRotation" >setRotation</a>
+                            </li>
+                            <li>
+                                <a href="#setSex" >setSex</a>
+                            </li>
+                            <li>
+                                <a href="#setShowPrevious" >setShowPrevious</a>
+                            </li>
+                            <li>
+                                <a href="#setSide" >setSide</a>
+                            </li>
+                            <li>
+                                <a href="#setSlicesConfig" >setSlicesConfig</a>
+                            </li>
+                            <li>
+                                <a href="#setViewSide" >setViewSide</a>
+                            </li>
+                            <li>
+                                <a href="#setViewType" >setViewType</a>
+                            </li>
+                            <li>
+                                <a href="#toggleRegistrationBlocksVisibility" >toggleRegistrationBlocksVisibility</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#modelChanged$" >modelChanged$</a>
+                                </li>
+                                <li>
+                                    <a href="#defaultPosition" >defaultPosition</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ga: GoogleAnalyticsService, injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:176</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of model state.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ga</td>
+                                                  
+                                                        <td>
+                                                                    <code>GoogleAnalyticsService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>injector</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Injector service used to lazy load reference data state</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>globalConfig</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/GlobalConfig.html" target="_self" >GlobalConfigState&lt;GlobalConfig&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idMatches"></a>
+                    <span class="name">
+                        <span ><b>idMatches</b></span>
+                        <a href="#idMatches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>idMatches(ontologyId?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, organSide?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="237"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:237</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ontologyId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>organSide</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#Organ" target="_self" >OrganInfo | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nameMatches"></a>
+                    <span class="name">
+                        <span ><b>nameMatches</b></span>
+                        <a href="#nameMatches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>nameMatches(organName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, organSide?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="243"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:243</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organName</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>organSide</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#Organ" target="_self" >OrganInfo | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxsOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngxsOnInit</b></span>
+                        <a href="#ngxsOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngxsOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Initializes this state service.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onOrganIriChange"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>onOrganIriChange</b></span>
+                        <a href="#onOrganIriChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onOrganIriChange()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="414"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:414</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setAnatomicalStructures"></a>
+                    <span class="name">
+                        <span ><b>setAnatomicalStructures</b></span>
+                        <a href="#setAnatomicalStructures"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setAnatomicalStructures(anatomicalStructures: <a href="../interfaces/VisibilityItem.html" target="_self">VisibilityItem[]</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="380"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:380</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates anatomical structures</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>anatomicalStructures</td>
+                                    <td>
+                                                <code><a href="../interfaces/VisibilityItem.html" target="_self" >VisibilityItem[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>New array of items</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setBlockSize"></a>
+                    <span class="name">
+                        <span ><b>setBlockSize</b></span>
+                        <a href="#setBlockSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setBlockSize(blockSize: <a href="../interfaces/XYZTriplet.html" target="_self">XYZTriplet</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="255"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:255</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the block size</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>blockSize</td>
+                                    <td>
+                                                <code><a href="../interfaces/XYZTriplet.html" target="_self" >XYZTriplet</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The new block size values</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setExtractionSets"></a>
+                    <span class="name">
+                        <span ><b>setExtractionSets</b></span>
+                        <a href="#setExtractionSets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setExtractionSets(extractionSets: <a href="../interfaces/ExtractionSet.html" target="_self">ExtractionSet[]</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="390"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:390</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates extraction sets</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>extractionSets</td>
+                                    <td>
+                                                <code><a href="../interfaces/ExtractionSet.html" target="_self" >ExtractionSet[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>New array of extraction sets</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setExtractionSites"></a>
+                    <span class="name">
+                        <span ><b>setExtractionSites</b></span>
+                        <a href="#setExtractionSites"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setExtractionSites(extractionSites: <a href="../interfaces/VisibilityItem.html" target="_self">VisibilityItem[]</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="370"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:370</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates extraction sites</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>extractionSites</td>
+                                    <td>
+                                                <code><a href="../interfaces/VisibilityItem.html" target="_self" >VisibilityItem[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>New array of items</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setOrgan"></a>
+                    <span class="name">
+                        <span ><b>setOrgan</b></span>
+                        <a href="#setOrgan"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setOrgan(organ: <a href="../undefineds/Organ.html" target="_self">OrganInfo</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="323"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:323</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the organ</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organ</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Organ" target="_self" >OrganInfo</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Name of the organ</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPosition"></a>
+                    <span class="name">
+                        <span ><b>setPosition</b></span>
+                        <a href="#setPosition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPosition(position: <a href="../interfaces/XYZTriplet.html" target="_self">XYZTriplet</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="275"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:275</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the position</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>position</td>
+                                    <td>
+                                                <code><a href="../interfaces/XYZTriplet.html" target="_self" >XYZTriplet</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The new position values</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setRotation"></a>
+                    <span class="name">
+                        <span ><b>setRotation</b></span>
+                        <a href="#setRotation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setRotation(rotation: <a href="../interfaces/XYZTriplet.html" target="_self">XYZTriplet</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="265"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:265</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the rotation</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>rotation</td>
+                                    <td>
+                                                <code><a href="../interfaces/XYZTriplet.html" target="_self" >XYZTriplet</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The new rotation values</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSex"></a>
+                    <span class="name">
+                        <span ><b>setSex</b></span>
+                        <a href="#setSex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setSex(sex?: "male" | "female")</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="338"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:338</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the sex</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sex</td>
+                                    <td>
+                                            <code>&quot;male&quot; | &quot;female&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The new sex</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setShowPrevious"></a>
+                    <span class="name">
+                        <span ><b>setShowPrevious</b></span>
+                        <a href="#setShowPrevious"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setShowPrevious(showPrevious: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="360"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:360</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates show previous</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>showPrevious</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Whether to show</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSide"></a>
+                    <span class="name">
+                        <span ><b>setSide</b></span>
+                        <a href="#setSide"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setSide(side?: "left" | "right")</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="349"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:349</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the side</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>side</td>
+                                    <td>
+                                            <code>&quot;left&quot; | &quot;right&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>The new side</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSlicesConfig"></a>
+                    <span class="name">
+                        <span ><b>setSlicesConfig</b></span>
+                        <a href="#setSlicesConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setSlicesConfig(slicesConfig: <a href="../interfaces/SlicesConfig.html" target="_self">SlicesConfig</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="286"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:286</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the slice configuration</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>slicesConfig</td>
+                                    <td>
+                                                <code><a href="../interfaces/SlicesConfig.html" target="_self" >SlicesConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The new slice configuration</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setViewSide"></a>
+                    <span class="name">
+                        <span ><b>setViewSide</b></span>
+                        <a href="#setViewSide"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setViewSide(viewSide: <a href="../undefineds/ViewSide.html" target="_self">ViewSide</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="306"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:306</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the view side</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>viewSide</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#ViewSide" target="_self" >ViewSide</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The side to view</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setViewType"></a>
+                    <span class="name">
+                        <span ><b>setViewType</b></span>
+                        <a href="#setViewType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setViewType(viewType: <a href="../undefineds/ViewType.html" target="_self">ViewType</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="296"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:296</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the view type</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>viewType</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#ViewType" target="_self" >ViewType</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the new view type</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleRegistrationBlocksVisibility"></a>
+                    <span class="name">
+                        <span ><b>toggleRegistrationBlocksVisibility</b></span>
+                        <a href="#toggleRegistrationBlocksVisibility"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleRegistrationBlocksVisibility(visible: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, previousItems: <a href="../interfaces/VisibilityItem.html" target="_self">VisibilityItem[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="401"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:401</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggles registration blocks visibility and handles anatomical structures
+opacity changes accordingly</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>visible</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the visible state to pass along to setShowPrevious()</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>previousItems</td>
+                                    <td>
+                                                <code><a href="../interfaces/VisibilityItem.html" target="_self" >VisibilityItem[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>visibilityItems to set anatomical structures</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="anatomicalStructures$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>anatomicalStructures$</b></span>
+                        <a href="#anatomicalStructures$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;anatomicalStructures&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:148</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Anatomical structures observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="blockSize$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>blockSize$</b></span>
+                        <a href="#blockSize$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;blockSize&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:122</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Block size observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extractionSets$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>extractionSets$</b></span>
+                        <a href="#extractionSets$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;extractionSets&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:150</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Extraction sets observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extractionSites$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>extractionSites$</b></span>
+                        <a href="#extractionSites$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;extractionSites&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:146</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Extraction sites observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>id$</b></span>
+                        <a href="#id$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;id&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:120</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Identifier observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="organ$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>organ$</b></span>
+                        <a href="#organ$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;organ&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:134</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Organ observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="organDimensions$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>organDimensions$</b></span>
+                        <a href="#organDimensions$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;organDimensions&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:138</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Organ IRI observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="organIri$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>organIri$</b></span>
+                        <a href="#organIri$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;organIri&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:136</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Organ IRI observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="page"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>page</b></span>
+                        <a href="#page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/PageState.html" target="_self" >PageState</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="position$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>position$</b></span>
+                        <a href="#position$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;position&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:126</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Position observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="referenceData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>referenceData</b></span>
+                        <a href="#referenceData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ReferenceDataState.html" target="_self" >ReferenceDataState</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:174</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reference to the reference data state</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rotation$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>rotation$</b></span>
+                        <a href="#rotation$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;rotation&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:124</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Rotation observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sex$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>sex$</b></span>
+                        <a href="#sex$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;sex&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:140</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sex observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showPrevious$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>showPrevious$</b></span>
+                        <a href="#showPrevious$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;showPrevious&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:144</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Show previous observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="side$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>side$</b></span>
+                        <a href="#side$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;side&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:142</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Side observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="slicesConfig$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>slicesConfig$</b></span>
+                        <a href="#slicesConfig$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;slicesConfig&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:128</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Slice configuration observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewSide$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>viewSide$</b></span>
+                        <a href="#viewSide$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;viewSide&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:132</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>View side observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewType$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>viewType$</b></span>
+                        <a href="#viewType$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;viewType&#x27;))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:130</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>View type observable</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modelChanged$"></a>
+                        <span class="name"><b>modelChanged$</b><a href="#modelChanged$"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>modelChanged$()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:153</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultPosition"></a>
+                        <span class="name"><b>defaultPosition</b><a href="#defaultPosition"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>defaultPosition()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="311" class="link-to-prism">projects/ccf-rui/src/app/core/store/model/model.state.ts:311</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
+import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
+import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { State } from &#x27;@ngxs/store&#x27;;
+import { ALL_ORGANS, GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
+import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
+import { sortBy } from &#x27;lodash&#x27;;
+import { EMPTY, Observable } from &#x27;rxjs&#x27;;
+import {
+  debounceTime, delay, distinctUntilChanged, filter, mapTo, pluck, skipUntil, switchMap, take, tap, throttleTime,
+} from &#x27;rxjs/operators&#x27;;
+
+import { ExtractionSet } from &#x27;../../models/extraction-set&#x27;;
+import { VisibilityItem } from &#x27;../../models/visibility-item&#x27;;
+import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
+import { PageState } from &#x27;../page/page.state&#x27;;
+import { ReferenceDataState } from &#x27;../reference-data/reference-data.state&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
+
+
+/* eslint-disable @typescript-eslint/member-ordering */
+
+/** A object with x, y, and z channels of the same type. */
+export interface XYZTriplet&lt;T &#x3D; number&gt; {
+  /** X channel */
+  x: T;
+  /** Y channel */
+  y: T;
+  /** Z channel */
+  z: T;
+}
+
+/** Slices configuration */
+export interface SlicesConfig {
+  /** Thickness of slice */
+  thickness: number;
+  /** Number of slices per block */
+  numSlices: number;
+}
+
+/** Model view type */
+export type ViewType &#x3D; &#x27;register&#x27; | &#x27;3d&#x27;;
+
+/** Side which the model is viewed from */
+export type ViewSide &#x3D; &#x27;left&#x27; | &#x27;right&#x27; | &#x27;anterior&#x27; | &#x27;posterior&#x27;;
+
+/** Data contained in the stage state. */
+export interface ModelStateModel {
+  /** Model identifier */
+  id: string;
+  /** Model label */
+  label: string;
+  /** Organ name */
+  organ: OrganInfo;
+  /** Reference Organ IRI */
+  organIri?: string;
+  /** Reference Organ Dimensions */
+  organDimensions: XYZTriplet;
+  /** Sex if applicable */
+  sex?: &#x27;male&#x27; | &#x27;female&#x27;;
+  /** Side if applicable */
+  side?: &#x27;left&#x27; | &#x27;right&#x27;;
+  /** Block size */
+  blockSize: XYZTriplet;
+  /** Model rotation */
+  rotation: XYZTriplet;
+  /** Model position */
+  position: XYZTriplet;
+  /** Slice configuration */
+  slicesConfig: SlicesConfig;
+  /** View type */
+  viewType: ViewType;
+  /** View side */
+  viewSide: ViewSide;
+  /** Whether previous registration blocks are visible */
+  showPrevious: boolean;
+  /** Possible extraction sites */
+  extractionSites: VisibilityItem[];
+  /** Anatomical structures for the organ */
+  anatomicalStructures: VisibilityItem[];
+  /** Extraction sets */
+  extractionSets: ExtractionSet[];
+}
+
+/**
+ * All organs to be displayed
+ */
+export const RUI_ORGANS &#x3D; ALL_ORGANS;
+
+/**
+ * Data for the main 3d model display
+ */
+@StateRepository()
+@State&lt;ModelStateModel&gt;({
+  name: &#x27;model&#x27;,
+  defaults: {
+    id: &#x27;&#x27;,
+    label: &#x27;&#x27;,
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    organ: { src: &#x27;&#x27;, name: &#x27;&#x27; } as OrganInfo,
+    organIri: &#x27;&#x27;,
+    organDimensions: { x: 90, y: 90, z: 90 },
+    sex: &#x27;male&#x27;,
+    side: &#x27;left&#x27;,
+    blockSize: { x: 10, y: 10, z: 10 },
+    rotation: { x: 0, y: 0, z: 0 },
+    position: { x: 0, y: 0, z: 0 },
+    slicesConfig: { thickness: NaN, numSlices: NaN },
+    viewType: &#x27;register&#x27;,
+    viewSide: &#x27;anterior&#x27;,
+    showPrevious: false,
+    extractionSites: [],
+    anatomicalStructures: [],
+    extractionSets: []
+  }
+})
+@Injectable()
+export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&gt; {
+  /** Identifier observable */
+  readonly id$ &#x3D; this.state$.pipe(pluck(&#x27;id&#x27;));
+  /** Block size observable */
+  readonly blockSize$ &#x3D; this.state$.pipe(pluck(&#x27;blockSize&#x27;));
+  /** Rotation observable */
+  readonly rotation$ &#x3D; this.state$.pipe(pluck(&#x27;rotation&#x27;));
+  /** Position observable */
+  readonly position$ &#x3D; this.state$.pipe(pluck(&#x27;position&#x27;));
+  /** Slice configuration observable */
+  readonly slicesConfig$ &#x3D; this.state$.pipe(pluck(&#x27;slicesConfig&#x27;));
+  /** View type observable */
+  readonly viewType$ &#x3D; this.state$.pipe(pluck(&#x27;viewType&#x27;));
+  /** View side observable */
+  readonly viewSide$ &#x3D; this.state$.pipe(pluck(&#x27;viewSide&#x27;));
+  /** Organ observable */
+  readonly organ$ &#x3D; this.state$.pipe(pluck(&#x27;organ&#x27;));
+  /** Organ IRI observable */
+  readonly organIri$ &#x3D; this.state$.pipe(pluck(&#x27;organIri&#x27;));
+  /** Organ IRI observable */
+  readonly organDimensions$ &#x3D; this.state$.pipe(pluck(&#x27;organDimensions&#x27;));
+  /** Sex observable */
+  readonly sex$ &#x3D; this.state$.pipe(pluck(&#x27;sex&#x27;));
+  /** Side observable */
+  readonly side$ &#x3D; this.state$.pipe(pluck(&#x27;side&#x27;));
+  /** Show previous observable */
+  readonly showPrevious$ &#x3D; this.state$.pipe(pluck(&#x27;showPrevious&#x27;));
+  /** Extraction sites observable */
+  readonly extractionSites$ &#x3D; this.state$.pipe(pluck(&#x27;extractionSites&#x27;));
+  /** Anatomical structures observable */
+  readonly anatomicalStructures$ &#x3D; this.state$.pipe(pluck(&#x27;anatomicalStructures&#x27;));
+  /** Extraction sets observable */
+  readonly extractionSets$ &#x3D; this.state$.pipe(pluck(&#x27;extractionSets&#x27;));
+
+  @Computed()
+  get modelChanged$(): Observable&lt;void&gt; {
+    const ignoredKeys &#x3D; [&#x27;viewType&#x27;, &#x27;viewSide&#x27;, &#x27;showPrevious&#x27;];
+    const keys &#x3D; Object.keys(this.initialState)
+      .filter(key &#x3D;&gt; !ignoredKeys.includes(key));
+
+    return this.state$.pipe(
+      throttleTime(0, undefined, { leading: false, trailing: true }),
+      distinctUntilChanged((v1, v2) &#x3D;&gt; {
+        for (const key of keys) {
+          if (v1[key] !&#x3D;&#x3D; v2[key]) {
+            return false;
+          }
+        }
+
+        return true;
+      }),
+      mapTo(undefined)
+    );
+  }
+
+  /** Reference to the reference data state */
+  private referenceData: ReferenceDataState;
+
+  private page: PageState;
+
+  /**
+   * Creates an instance of model state.
+   *
+   * @param injector Injector service used to lazy load reference data state
+   */
+  constructor(
+    private readonly ga: GoogleAnalyticsService,
+    private readonly injector: Injector,
+    private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
+  ) {
+    super();
+  }
+
+  /**
+   * Initializes this state service.
+   */
+  ngxsOnInit(): void {
+    super.ngxsOnInit();
+
+    this.referenceData &#x3D; this.injector.get(ReferenceDataState);
+    this.page &#x3D; this.injector.get(PageState);
+
+    this.globalConfig.getOption(&#x27;organ&#x27;).pipe(
+      filterNulls(),
+      switchMap(organConfig &#x3D;&gt; {
+        const organName &#x3D; organConfig.name.toLowerCase();
+        const organSide &#x3D; organConfig.side;
+        const ontologyId &#x3D; organConfig.ontologyId;
+        // check for an id match
+        let organInfo &#x3D; this.idMatches(ontologyId, organSide);
+        // if no id matches, check for a name match
+        if (!organInfo) {
+          organInfo &#x3D; this.nameMatches(organName, organSide);
+        }
+        if (organInfo) {
+          this.ctx.patchState({
+            organ: organInfo,
+            sex: organConfig.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;,
+            side: organInfo?.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
+          });
+          return this.referenceData.state$.pipe(
+            debounceTime(100),
+            take(1),
+            delay(200),
+            tap(() &#x3D;&gt; this.onOrganIriChange())
+          );
+        }
+        return EMPTY;
+      })
+    ).subscribe();
+
+    this.modelChanged$.pipe(
+      skipUntil(this.page.registrationStarted$.pipe(
+        filter(started &#x3D;&gt; started),
+        delay(5)
+      ))
+    ).subscribe(() &#x3D;&gt; this.page.setHasChanges());
+  }
+
+  idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
+    return ALL_ORGANS.find((o) &#x3D;&gt;
+      ontologyId &amp;&amp; o.id &#x3D;&#x3D;&#x3D; ontologyId ? (o.side ? o.side &#x3D;&#x3D;&#x3D; organSide : true) : false
+    );
+  }
+
+  nameMatches(organName: string, organSide?: string): OrganInfo | undefined {
+    return ALL_ORGANS.find((o) &#x3D;&gt;
+      o.side ? o.organ.toLowerCase() &#x3D;&#x3D;&#x3D; organName &amp;&amp; o.side &#x3D;&#x3D;&#x3D; organSide : o.organ.toLowerCase() &#x3D;&#x3D;&#x3D; organName
+    );
+  }
+
+  /**
+   * Updates the block size
+   *
+   * @param blockSize The new block size values
+   */
+  @DataAction()
+  setBlockSize(blockSize: XYZTriplet): void {
+    this.ctx.patchState({ blockSize });
+  }
+
+  /**
+   * Updates the rotation
+   *
+   * @param rotation The new rotation values
+   */
+  @DataAction()
+  setRotation(rotation: XYZTriplet): void {
+    this.ctx.patchState({ rotation });
+  }
+
+  /**
+   * Updates the position
+   *
+   * @param position The new position values
+   */
+  @DataAction()
+  setPosition(position: XYZTriplet): void {
+    this.ga.event(&#x27;placement&#x27;, &#x60;${this.snapshot.organ?.name}_placement&#x60;, &#x60;${position.x.toFixed(1)}_${position.y.toFixed(1)}_${position.z.toFixed(1)}&#x60;);
+    this.ctx.patchState({ position });
+  }
+
+  /**
+   * Updates the slice configuration
+   *
+   * @param slicesConfig The new slice configuration
+   */
+  @DataAction()
+  setSlicesConfig(slicesConfig: SlicesConfig): void {
+    this.ctx.patchState({ slicesConfig });
+  }
+
+  /**
+   * Updates the view type
+   *
+   * @param viewType the new view type
+   */
+  @DataAction()
+  setViewType(viewType: ViewType): void {
+    this.ctx.patchState({ viewType });
+  }
+
+  /**
+   * Updates the view side
+   *
+   * @param viewSide The side to view
+   */
+  @DataAction()
+  setViewSide(viewSide: ViewSide): void {
+    this.ctx.patchState({ viewSide });
+  }
+
+  @Computed()
+  get defaultPosition(): XYZTriplet {
+    const dims &#x3D; this.snapshot.organDimensions;
+    const block &#x3D; this.snapshot.blockSize;
+    return { x: dims.x + 2 * block.x, y: dims.y / 2, z: dims.z / 2 };
+  }
+
+  /**
+   * Updates the organ
+   *
+   * @param organ Name of the organ
+   */
+  @DataAction()
+  setOrgan(organ: OrganInfo): void {
+    this.ga.event(&#x27;organ_select&#x27;, &#x27;organ&#x27;, organ.name);
+    this.ctx.patchState({ organ });
+    if (organ.side) {
+      this.ctx.patchState({ side: organ.side });
+    }
+    this.onOrganIriChange();
+  }
+
+  /**
+   * Updates the sex
+   *
+   * @param [sex] The new sex
+   */
+  @DataAction()
+  setSex(sex?: &#x27;male&#x27; | &#x27;female&#x27;): void {
+    this.ctx.patchState({ sex });
+    this.onOrganIriChange();
+  }
+
+  /**
+   * Updates the side
+   *
+   * @param [side] The new side
+   */
+  @DataAction()
+  setSide(side?: &#x27;left&#x27; | &#x27;right&#x27;): void {
+    this.ctx.patchState({ side });
+    this.onOrganIriChange();
+  }
+
+  /**
+   * Updates show previous
+   *
+   * @param showPrevious Whether to show
+   */
+  @DataAction()
+  setShowPrevious(showPrevious: boolean): void {
+    this.ctx.patchState({ showPrevious });
+  }
+
+  /**
+   * Updates extraction sites
+   *
+   * @param extractionSites New array of items
+   */
+  @DataAction()
+  setExtractionSites(extractionSites: VisibilityItem[]): void {
+    this.ctx.patchState({ extractionSites });
+  }
+
+  /**
+   * Updates anatomical structures
+   *
+   * @param anatomicalStructures New array of items
+   */
+  @DataAction()
+  setAnatomicalStructures(anatomicalStructures: VisibilityItem[]): void {
+    this.ctx.patchState({ anatomicalStructures });
+  }
+
+  /**
+   * Updates extraction sets
+   *
+   * @param extractionSets New array of extraction sets
+   */
+  @DataAction()
+  setExtractionSets(extractionSets: ExtractionSet[]): void {
+    this.ctx.patchState({ extractionSets });
+  }
+
+  /**
+   * Toggles registration blocks visibility and handles anatomical structures
+   * opacity changes accordingly
+   *
+   * @param visible the visible state to pass along to setShowPrevious()
+   * @param previousItems visibilityItems to set anatomical structures
+   */
+  toggleRegistrationBlocksVisibility(visible: boolean, previousItems: VisibilityItem[]): void {
+    this.setShowPrevious(visible);
+
+    if (!visible) {
+      this.setAnatomicalStructures(previousItems);
+    } else {
+      const newStructures &#x3D; previousItems.map(structure &#x3D;&gt; ({
+        ...structure, opacity: Math.min(20, structure.opacity ?? 20)
+      }));
+      this.setAnatomicalStructures(newStructures);
+    }
+  }
+
+  private onOrganIriChange(): void {
+    const organIri &#x3D; this.referenceData.getReferenceOrganIri(
+      this.snapshot.organ?.organ || &#x27;&#x27;, this.snapshot.sex, this.snapshot.side, this.snapshot.organ
+    );
+    const organDimensions: XYZTriplet &#x3D; { x: 100, y: 100, z: 100 };
+
+    if (this.snapshot.organ?.sex) {
+      this.ctx.patchState({ sex: this.snapshot.organ?.sex });
+    }
+
+    if (organIri) {
+      const db &#x3D; this.referenceData.snapshot;
+      const asLookup: { [id: string]: VisibilityItem } &#x3D; {};
+      for (const entity of (db.anatomicalStructures[organIri] || [])) {
+        const iri &#x3D; entity.representation_of ?? entity[&#x27;@id&#x27;];
+        if (!asLookup[iri]) {
+          asLookup[iri] &#x3D; {
+            id: entity.representation_of ?? entity[&#x27;@id&#x27;],
+            name: entity.label!,
+            visible: true,
+            opacity: 20,
+            tooltip: entity.comment
+          };
+        }
+      }
+      this.ctx.patchState({ anatomicalStructures: Object.values(asLookup) });
+
+      const sets: ExtractionSet[] &#x3D; (db.extractionSets[organIri] || []).map((set) &#x3D;&gt; ({
+        name: set.label,
+        sites: sortBy(set.extractionSites.map((entity) &#x3D;&gt; ({
+          id: entity[&#x27;@id&#x27;],
+          name: entity.label!,
+          visible: false,
+          opacity: 0,
+          tooltip: entity.comment
+        })), &#x27;name&#x27;)
+      }));
+      this.ctx.patchState({ extractionSets: sets });
+      this.ctx.patchState({ extractionSites: sets.length &gt; 0 ? sets[0].sites : [] });
+
+      const spatialEntity &#x3D; db.organSpatialEntities[organIri];
+      organDimensions.x &#x3D; spatialEntity.x_dimension;
+      organDimensions.y &#x3D; spatialEntity.y_dimension;
+      organDimensions.z &#x3D; spatialEntity.z_dimension;
+    }
+
+    this.ctx.patchState({ organIri, organDimensions });
+    this.ctx.patchState({ position: this.defaultPosition });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ModelState.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
