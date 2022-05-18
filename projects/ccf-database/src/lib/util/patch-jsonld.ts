@@ -2,14 +2,26 @@
 import { Context, JsonLd } from 'jsonld/jsonld-spec';
 
 /**
- * Function which takes JSON-LD data and updates the contexts from CCF v1.x to v2.0 automatically
+ * Function which takes JSON-LD data and makes patches to update from CCF v1.x to v2.0 automatically
  *
  * @param jsonLdString the input JSON-LD as a string
- * @returns A JSON-LD object derived from the given string with updated context entries to be compatible with CCF v2.0
+ * @returns A JSON-LD object derived from the given string with updated data to be compatible with CCF v2.0
  */
-export function contextCustomizer(jsonLdString: string): JsonLd {
+export function patchJsonLd(jsonLdString: string): JsonLd {
   return JSON.parse(jsonLdString, (key, value) => {
-    if (key === '@context' && value) {
+    if (key === 'ccf_annotations' && Array.isArray(value)) {
+      return value.map((iri: string) => {
+        if (iri?.startsWith('http://purl.obolibrary.org/obo/FMA_')) {
+          return iri.replace(
+            'http://purl.obolibrary.org/obo/FMA_',
+            'http://purl.org/sig/ont/fma/fma'
+          );
+          console.log('pink')
+        } else {
+          return iri;
+        }
+      });
+    } else if (key === '@context' && value) {
       if (value === 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld'
           || (value as Context)['@base'] === 'http://purl.org/ccf/latest/ccf-entity.owl#'
       ) {

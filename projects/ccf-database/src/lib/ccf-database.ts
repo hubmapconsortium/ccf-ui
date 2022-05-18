@@ -17,8 +17,7 @@ import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
-import { contextCustomizer } from './util/context-customizer';
-import { valueModifier } from './util/value-modifier';
+import { patchJsonLd } from './util/patch-jsonld';
 
 
 /** Database initialization options. */
@@ -179,8 +178,7 @@ export class CCFDatabase {
         if (typeof source === 'string') {
           if (source.endsWith('jsonld')) {
             source = await fetch(source).then(r => r.text());
-            source = contextCustomizer(source as string);
-            source = valueModifier(source);
+            source = patchJsonLd(source as string);
             await addJsonLdToStore(source, store);
           } else if (source.endsWith('n3')) {
             await addN3ToStore(source, store);
@@ -188,13 +186,11 @@ export class CCFDatabase {
             await addRdfXmlToStore(source, store);
           } else {
             // Passthrough assumes a JSON-LD response
-            source = contextCustomizer(source);
-            source = valueModifier(source);
+            source = patchJsonLd(source);
             await addJsonLdToStore(source, store);
           }
         } else {
-          source = contextCustomizer(JSON.stringify(source));
-          source = valueModifier(source);
+          source = patchJsonLd(JSON.stringify(source));
           await addJsonLdToStore(source, store);
         }
       })
