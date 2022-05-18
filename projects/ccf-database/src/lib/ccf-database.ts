@@ -227,7 +227,7 @@ export class CCFDatabase {
    * @returns A set of all matching ids.
    */
   getIds(filter: Filter = {} as Filter): Set<string> {
-    return findIds(this.store, filter);
+    return findIds(this.store, this.graph, filter);
   }
 
   /**

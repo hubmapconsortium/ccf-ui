@@ -3,7 +3,7 @@ import { Matrix4 } from '@math.gl/core';
 import {
   AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from 'ccf-database';
-import { DatabaseStatus, DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
+import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
@@ -37,6 +37,7 @@ interface FilterParams {
   providers?: string[];
   sex?: 'both' | 'female' | 'male';
   technologies?: string[];
+  spatial?: SpatialSearch[];
 }
 
 
@@ -76,7 +77,8 @@ function filterToParams(filter?: Filter): FilterParams {
     ontologyTerms: filter?.ontologyTerms,
     cellTypeTerms: filter?.cellTypeTerms,
     providers: filter?.tmc,
-    technologies: filter?.technologies
+    technologies: filter?.technologies,
+    spatial: filter?.spatialSearches
   };
 }
 
