@@ -16,7 +16,6 @@ export function patchJsonLd(jsonLdString: string): JsonLd {
             'http://purl.obolibrary.org/obo/FMA_',
             'http://purl.org/sig/ont/fma/fma'
           );
-          console.log('pink')
         } else {
           return iri;
         }
