@@ -3,6 +3,7 @@ import { OrientedBoundingBox } from '@math.gl/culling';
 import { Store } from 'triple-store-utils';
 
 import { CCFSpatialGraph } from '../ccf-spatial-graph';
+import { SpatialSearch } from '../interfaces';
 import { getMappedResult } from '../util/n3-functions';
 import { ccf } from '../util/prefixes';
 
@@ -29,15 +30,14 @@ export function getOrientedBoundingBox(store: Store, graph: CCFSpatialGraph, sou
       .scale(dimensions.map(n => n / 1000 / 1000));
     return new OrientedBoundingBox(translation, halfAxes);
   }
-  return;
 }
 
-export function filterByProbingSphere(store: Store, graph: CCFSpatialGraph, seen: Set<string>, x: number, y: number, z: number, radius: number, targetIri: string): Set<string> {
+export function filterByProbingSphere(store: Store, graph: CCFSpatialGraph, seen: Set<string>, search: SpatialSearch): Set<string> {
+  const { x, y, z, radius, target } = search;
   const newSeen = new Set<string>();
-  radius /= 1000;
-  const radiusSquared = radius * radius;
+  const radiusSquared = (radius/1000) * (radius/1000);
   for (const sourceIri of seen) {
-    const boundingBox = getOrientedBoundingBox(store, graph, sourceIri, targetIri);
+    const boundingBox = getOrientedBoundingBox(store, graph, sourceIri, target);
     if (boundingBox) {
       const distanceSquared = boundingBox.distanceSquaredTo([x, y, z].map(n => n / 1000));
       if (distanceSquared < radiusSquared) {
