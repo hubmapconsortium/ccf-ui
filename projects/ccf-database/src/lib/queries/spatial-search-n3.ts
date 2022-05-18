@@ -21,6 +21,7 @@ function getSpatialEntityDimensions(store: Store, iri: string): [number, number,
 
 export function getOrientedBoundingBox(store: Store, graph: CCFSpatialGraph, sourceIri: string, targetIri: string): OrientedBoundingBox | undefined {
   const matrix = graph.getTransformationMatrix(sourceIri, targetIri);
+  let result: OrientedBoundingBox | undefined = undefined;
   if (matrix) {
     const dimensions = getSpatialEntityDimensions(store, sourceIri);
     const translation = matrix.getTranslation();
@@ -28,8 +29,9 @@ export function getOrientedBoundingBox(store: Store, graph: CCFSpatialGraph, sou
     const halfAxes = new Matrix3(Matrix3.IDENTITY)
       .fromQuaternion(euler.toQuaternion())
       .scale(dimensions.map(n => n / 1000 / 1000));
-    return new OrientedBoundingBox(translation, halfAxes);
+    result = new OrientedBoundingBox(translation, halfAxes);
   }
+  return result;
 }
 
 export function filterByProbingSphere(store: Store, graph: CCFSpatialGraph, seen: Set<string>, search: SpatialSearch): Set<string> {
