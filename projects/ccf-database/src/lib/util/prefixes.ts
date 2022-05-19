@@ -116,7 +116,7 @@ export const ccf = {
     rui_rank: ccfx('rui_rank')
   },
   spatialEntity: {
-    label: prefixer('dcterms')('title'),
+    label: prefixer('rdfs')('label'),
     description: prefixer('rdfs')('comment'),
     creator: prefixer('dcterms')('creator'),
     creator_first_name: ccfx('creator_first_name'),
