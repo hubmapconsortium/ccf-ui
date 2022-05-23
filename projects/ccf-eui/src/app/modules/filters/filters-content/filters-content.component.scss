@@ -15,12 +15,17 @@
 }
 
 .button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.button-container-end {
   &.hidden {
     opacity: 0;
     transition-duration: 0.2s;
   }
 
-  margin-top: 2rem;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;

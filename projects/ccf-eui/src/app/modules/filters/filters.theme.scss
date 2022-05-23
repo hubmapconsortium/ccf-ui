@@ -7,7 +7,7 @@
   $background: map-get($theme, background);
   $accent: map-get($theme, accent);
 
-  .outline-button {
+  .outline-button, .spatial-search-button {
     color: mat.get-color-from-palette($foreground, light-button-text);
     background-color: mat.get-color-from-palette($background, button-bg);
 

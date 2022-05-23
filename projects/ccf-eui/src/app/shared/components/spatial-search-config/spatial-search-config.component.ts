@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'ccf-spatial-search-config',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./spatial-search-config.component.scss']
 })
 export class SpatialSearchConfigComponent implements OnInit {
+  @HostBinding('class') readonly className = 'ccf-spatial-search-config';
 
   constructor() { }
 
