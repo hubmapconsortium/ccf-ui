@@ -52,12 +52,8 @@ export class FiltersContentComponent {
    */
   constructor(private readonly ga: GoogleAnalyticsService, public dialog: MatDialog) { }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(SpatialSearchConfigComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  openSpatialSearch() {
+    this.dialog.open(SpatialSearchConfigComponent);
   }
 
   /**

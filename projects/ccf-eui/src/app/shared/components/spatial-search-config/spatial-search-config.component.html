@@ -1,3 +1,14 @@
-<div class="spatial-search-config-popup">
-  <p>spatial-search-config works!</p>
+<div class="row1">
+  <div class="col1">
+    <p class="title">Configure Spatial Search</p>
+    <mat-icon class="info button">info</mat-icon>
+  </div>
+  <mat-icon class="close button">close</mat-icon>
+</div>
+
+<div class="row2">
+  <mat-radio-group aria-label="Select an option" class="input-group" [(ngModel)]="sex" (change)="updateSex($event.value)">
+    <mat-radio-button value="male" class="nav-input">Male</mat-radio-button>
+    <mat-radio-button value="female" class="nav-input">Female</mat-radio-button>
+  </mat-radio-group>
 </div>
