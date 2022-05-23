@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
+import { SpatialSearchConfigComponent } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 
 /**
  * Contains components of the filters popup and handles changes in filter settings
@@ -48,7 +50,15 @@ export class FiltersContentComponent {
    *
    * @param ga Analytics service
    */
-  constructor(private readonly ga: GoogleAnalyticsService) { }
+  constructor(private readonly ga: GoogleAnalyticsService, public dialog: MatDialog) { }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(SpatialSearchConfigComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   /**
    * Updates the filter object with a new key/value

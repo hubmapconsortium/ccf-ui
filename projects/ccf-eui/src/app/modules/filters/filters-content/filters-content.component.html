@@ -23,6 +23,7 @@
 </div>
 
 <div class="button-container" [class.hidden]="hidden">
+  <button mat-button (click)="openDialog()">Open dialog</button>
   <button class="outline-button" mat-button (click)="applyButtonClick()">APPLY FILTERS</button>
   <div class="refresh-icon">
     <mat-icon class="icon refresh" (click)="refreshFilters()">refresh</mat-icon>
