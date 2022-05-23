@@ -1,14 +1,31 @@
-<div class="row1">
-  <div class="col1">
-    <p class="title">Configure Spatial Search</p>
-    <mat-icon class="info button">info</mat-icon>
+<div class="spatial-search-container">
+  <div class="row1">
+    <div class="col1">
+      <div class="title">Configure Spatial Search</div>
+      <mat-icon class="info button">info</mat-icon>
+    </div>
+    <mat-icon class="close button">close</mat-icon>
   </div>
-  <mat-icon class="close button">close</mat-icon>
-</div>
-
-<div class="row2">
-  <mat-radio-group aria-label="Select an option" class="input-group" [(ngModel)]="sex" (change)="updateSex($event.value)">
-    <mat-radio-button value="male" class="nav-input">Male</mat-radio-button>
-    <mat-radio-button value="female" class="nav-input">Female</mat-radio-button>
-  </mat-radio-group>
+  
+  <div class="row2">
+    <div class="label">Donor Sex: </div>
+    <mat-radio-group class="radio-group" [(ngModel)]="sex" (change)="updateSex($event.value)">
+      <mat-radio-button class="radio" value="male">Male</mat-radio-button>
+      <mat-radio-button class="radio" value="female">Female</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  
+  <div class="row3">
+    <div class="label">Select an organ</div>
+    <mat-form-field class="spatial-search-form-field" appearance="fill">
+      <mat-label>Organs</mat-label>
+      <mat-select [formControl]="panelColor" panelClass="organ-select">
+        <mat-option *ngFor="let organ of organs" [value]="organ">
+          {{organ}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <button class="continue-button" mat-button>Continue</button>
 </div>

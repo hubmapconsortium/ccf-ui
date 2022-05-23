@@ -1,0 +1,53 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .organ-select {
+    background-color: mat.get-color-from-palette($foreground, modal-borders);
+
+    .mat-option {
+      background-color: mat.get-color-from-palette($background, modal);
+      border-color: mat.get-color-from-palette($foreground, borders);
+
+      &:hover {
+        background-color: mat.get-color-from-palette($background, dropdown-hover);
+      }
+
+      &.mat-selected.mat-active {
+        background-color: mat.get-color-from-palette($background, mat-selected-option);
+        color: mat.get-color-from-palette($foreground, contrast-text);
+      }
+    }
+  }
+
+  .spatial-search-container {
+    background: #FFFFFF;
+  
+  
+    .spatial-search-form-field {
+      .label {
+        color: mat.get-color-from-palette($foreground, text-muted)
+      }
+  
+      .mat-form-field-wrapper {
+        .mat-form-field-underline {
+          background-color: mat.get-color-from-palette($foreground, contrast-icon);
+        }
+      }
+    }
+  
+    .mat-select-value {
+      color: mat.get-color-from-palette($foreground, text);
+    }
+  
+    .mat-select-arrow {
+      color: mat.get-color-from-palette($foreground, contrast-icon);
+    }
+  }
+
+}

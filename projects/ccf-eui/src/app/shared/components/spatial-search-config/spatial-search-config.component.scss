@@ -1,4 +1,4 @@
-:host {
+.spatial-search-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -6,11 +6,11 @@
   gap: 32px;
   width: 487px;
   height: 345px;
-  background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
   border-radius: 4px;
+  font-size: 16px;
 
-  ::ng-deep .mat-radio-checked {
+  .mat-radio-checked {
     .mat-radio-inner-circle {
       background: black;
     }
@@ -24,6 +24,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    font-size: 20px;
  
     .col1 {
       display: flex;
@@ -32,5 +33,44 @@
         margin-right: 1rem;
       }
     }
+  }
+
+  .row2 {
+    display: flex;
+
+    .label, .radio {
+      margin-right: 2rem;
+    }
+  }
+
+  .row3 {
+    .label {
+      padding-bottom: 1.5rem;
+    }
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+
+      .mat-form-field-underline {
+        left: 0rem;
+        bottom: 0rem;
+        transform: none;
+        height: 0.125rem;
+        background-color: black;
+      }
+    }
+  }
+
+  .continue-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    width: 224px;
+    height: 32px;
+    border-radius: 2px;
+    background: #CCCCCC;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
   }
 }
