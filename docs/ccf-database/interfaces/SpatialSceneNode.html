@@ -1061,7 +1061,7 @@ export class CCFSpatialScene {
   }
 
   getReferenceOrganScene(organIri: string, filter?: Filter): SpatialSceneNode[] {
-    const hasSexFilter &#x3D; filter?.sex !&#x3D;&#x3D; undefined ?? false;
+    const hasSexFilter &#x3D; filter?.sex !&#x3D;&#x3D; undefined &amp;&amp; filter?.sex?.toLowerCase() !&#x3D;&#x3D; &#x27;both&#x27;;
     const organs &#x3D; this.getReferenceOrgans().filter((o) &#x3D;&gt; o.representation_of &#x3D;&#x3D;&#x3D; organIri &amp;&amp; (!hasSexFilter || o.sex &#x3D;&#x3D;&#x3D; filter?.sex));
     if (organs.length &gt; 0) {
       const organ &#x3D; organs[0];
