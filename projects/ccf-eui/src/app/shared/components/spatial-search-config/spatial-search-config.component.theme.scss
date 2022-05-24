@@ -10,6 +10,7 @@
   .organ-select {
     background-color: mat.get-color-from-palette($background, modal);
     border-color: mat.get-color-from-palette($foreground, modal-borders);
+    box-shadow: 0.2rem 0.2rem 1rem 0rem #0000003e;
 
     .mat-option {
       background-color: mat.get-color-from-palette($background, modal);
@@ -48,7 +49,7 @@
   
       .mat-form-field-wrapper {
         .mat-form-field-underline {
-          background-color: mat.get-color-from-palette($foreground, contrast-icon);
+          background-color: mat.get-color-from-palette($foreground, text);
         }
       }
     }
@@ -62,15 +63,9 @@
     }
   }
 
-  .info {
+  .info, .close {
     &:hover {
-      background-color: mat.get-color-from-palette($background, icon-background-hover2);
-    }
-  }
-
-  .close {
-    &:hover {
-      background-color: mat.get-color-from-palette($background, icon-background-hover2);
+      background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
     }
   }
 
@@ -84,5 +79,4 @@
       background-color: mat.get-color-from-palette($background, button-background-hover);
     }
   }
-
 }

@@ -1,84 +1,85 @@
-.spatial-search-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 32px;
-  padding-top: 8px;
-  gap: 32px;
-  width: 487px;
-  height: 345px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
-  border-radius: 4px;
-  font-size: 16px;
-
-  .button {
-    cursor: pointer;
-  }
-
-  .row1 {
+:host {
+  .spatial-search-container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 20px;
- 
-    .col1 {
-      display: flex;
-      align-items: center;
-
-      .title {
-        margin-right: 1rem;
-      }
-    }
-
-    button {
-      padding: 0;
-      background: none;
-      border: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px;
+    padding-top: 8px;
+    gap: 32px;
+    width: 487px;
+    height: 345px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
+    font-size: 16px;
+  
+    .button {
       cursor: pointer;
-      outline: none;
-      border-radius: 0.25rem;
-      padding: 0.65rem;
-      transition: 0.6s;
     }
-  }
-
-  .row2 {
-    display: flex;
-
-    .label, .radio {
-      margin-right: 2rem;
-    }
-  }
-
-  .row3 {
-    .label {
-      padding-bottom: 1.5rem;
-    }
-
-    .mat-form-field-wrapper {
-      padding-bottom: 0;
-
-      .mat-form-field-underline {
-        left: 0rem;
-        bottom: 0rem;
-        transform: none;
-        height: 0.125rem;
-        background-color: black;
+  
+    .row1 {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 20px;
+   
+      .col1 {
+        display: flex;
+        align-items: center;
+  
+        .title {
+          margin-right: 1rem;
+        }
+      }
+  
+      button {
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        border-radius: 0.25rem;
+        padding: 0.65rem;
+        transition: 0.6s;
       }
     }
-  }
-
-  .continue-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 16px;
-    width: 222px;
-    height: 30px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 2px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+  
+    .row2 {
+      display: flex;
+  
+      .label, .radio {
+        margin-right: 2rem;
+      }
+    }
+  
+    .row3 {
+      .label {
+        padding-bottom: 1.5rem;
+      }
+  
+      ::ng-deep .mat-form-field-wrapper {
+        padding-bottom: 0;
+  
+        .mat-form-field-underline {
+          left: 0rem;
+          bottom: 0rem;
+          transform: none;
+          height: 0.125rem;
+        }
+      }
+    }
+  
+    .continue-button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 4px 16px;
+      width: 222px;
+      height: 30px;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 2px;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+    }
   }
 }
