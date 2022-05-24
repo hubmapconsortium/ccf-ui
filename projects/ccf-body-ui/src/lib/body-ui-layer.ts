@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { CompositeLayer, COORDINATE_SYSTEM } from '@deck.gl/core';
 import { ScenegraphLayer, SimpleMeshLayer } from '@deck.gl/mesh-layers';
-import { CubeGeometry } from '@luma.gl/core';
+import { CubeGeometry, SphereGeometry } from '@luma.gl/core';
 
 import { SpatialSceneNode } from './shared/spatial-scene-node';
 import { loadGLTF, loadGLTF2, registerGLTFLoaders } from './util/load-gltf';
@@ -43,9 +43,11 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
 
   renderLayers(): unknown[] {
     const state = this.state as { data: SpatialSceneNode[]; zoomOpacity: number; doCollisions: boolean };
-    const cubes = state.data.filter(d => !d.scenegraph && !d.wireframe && d.unpickable);
-    const pickableCubes = state.data.filter(d => !d.scenegraph && !d.wireframe && !d.unpickable);
-    const wireframes = state.data.filter(d => !d.scenegraph && d.wireframe);
+    const spheres = state.data.filter(d => d.sphere && !d.scenegraph && !d.wireframe && d.unpickable);
+    const pickableSpheres = state.data.filter(d => d.sphere && !d.scenegraph && !d.wireframe && !d.unpickable);
+    const cubes = state.data.filter(d => !d.sphere && !d.scenegraph && !d.wireframe && d.unpickable);
+    const pickableCubes = state.data.filter(d => !d.sphere && !d.scenegraph && !d.wireframe && !d.unpickable);
+    const wireframes = state.data.filter(d => !d.sphere && !d.scenegraph && d.wireframe);
     const models = state.data.filter(d => !!d.scenegraph);
 
     if (state.doCollisions) {
@@ -61,6 +63,8 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
     }
 
     return [
+      meshLayer('spheres', spheres, { wireframe: false, pickable: false, mesh: new SphereGeometry() }),
+      meshLayer('pickableSpheres', pickableSpheres, { wireframe: false, pickable: true, mesh: new SphereGeometry() }),
       meshLayer('cubes', cubes, { wireframe: false, pickable: false }),
       meshLayer('pickableCubes', pickableCubes, { wireframe: false, pickable: true }),
       meshLayer('wireframes', wireframes, { wireframe: true, pickable: false }),

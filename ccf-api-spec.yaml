@@ -1183,6 +1183,10 @@ components:
           title: Unpickable
           description: Whether the node should selectable by the user in interfaces.
           type: boolean
+        sphere:
+          title: Sphere
+          description: Whether to show a sphere for the node.
+          type: boolean
         wireframe:
           title: Wireframe
           description: Whether to show a wireframe for the node.
