@@ -18,6 +18,7 @@ export interface SpatialSceneNode {
   representation_of?: string;
   reference_organ?: string;
   unpickable?: boolean;
+  sphere?: boolean;
   wireframe?: boolean;
   _lighting?: string;
   scenegraph?: string;
@@ -125,7 +126,7 @@ export class CCFSpatialScene {
   }
 
   getReferenceOrganScene(organIri: string, filter?: Filter): SpatialSceneNode[] {
-    const hasSexFilter = filter?.sex !== undefined ?? false;
+    const hasSexFilter = filter?.sex !== undefined && filter?.sex?.toLowerCase() !== 'both';
     const organs = this.getReferenceOrgans().filter((o) => o.representation_of === organIri && (!hasSexFilter || o.sex === filter?.sex));
     if (organs.length > 0) {
       const organ = organs[0];
