@@ -229,8 +229,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui-layer.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">projects/ccf-body-ui/src/lib/body-ui-layer.ts:91</a></div>
                 </td>
             </tr>
 
@@ -359,7 +359,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CompositeLayer, COORDINATE_SYSTEM } from &#x27;@deck.gl/core&#x27;;
 import { ScenegraphLayer, SimpleMeshLayer } from &#x27;@deck.gl/mesh-layers&#x27;;
-import { CubeGeometry } from &#x27;@luma.gl/core&#x27;;
+import { CubeGeometry, SphereGeometry } from &#x27;@luma.gl/core&#x27;;
 
 import { SpatialSceneNode } from &#x27;./shared/spatial-scene-node&#x27;;
 import { loadGLTF, loadGLTF2, registerGLTFLoaders } from &#x27;./util/load-gltf&#x27;;
@@ -401,9 +401,11 @@ export class BodyUILayer extends CompositeLayer&lt;SpatialSceneNode&gt; {
 
   renderLayers(): unknown[] {
     const state &#x3D; this.state as { data: SpatialSceneNode[]; zoomOpacity: number; doCollisions: boolean };
-    const cubes &#x3D; state.data.filter(d &#x3D;&gt; !d.scenegraph &amp;&amp; !d.wireframe &amp;&amp; d.unpickable);
-    const pickableCubes &#x3D; state.data.filter(d &#x3D;&gt; !d.scenegraph &amp;&amp; !d.wireframe &amp;&amp; !d.unpickable);
-    const wireframes &#x3D; state.data.filter(d &#x3D;&gt; !d.scenegraph &amp;&amp; d.wireframe);
+    const spheres &#x3D; state.data.filter(d &#x3D;&gt; d.sphere &amp;&amp; !d.scenegraph &amp;&amp; !d.wireframe &amp;&amp; d.unpickable);
+    const pickableSpheres &#x3D; state.data.filter(d &#x3D;&gt; d.sphere &amp;&amp; !d.scenegraph &amp;&amp; !d.wireframe &amp;&amp; !d.unpickable);
+    const cubes &#x3D; state.data.filter(d &#x3D;&gt; !d.sphere &amp;&amp; !d.scenegraph &amp;&amp; !d.wireframe &amp;&amp; d.unpickable);
+    const pickableCubes &#x3D; state.data.filter(d &#x3D;&gt; !d.sphere &amp;&amp; !d.scenegraph &amp;&amp; !d.wireframe &amp;&amp; !d.unpickable);
+    const wireframes &#x3D; state.data.filter(d &#x3D;&gt; !d.sphere &amp;&amp; !d.scenegraph &amp;&amp; d.wireframe);
     const models &#x3D; state.data.filter(d &#x3D;&gt; !!d.scenegraph);
 
     if (state.doCollisions) {
@@ -419,6 +421,8 @@ export class BodyUILayer extends CompositeLayer&lt;SpatialSceneNode&gt; {
     }
 
     return [
+      meshLayer(&#x27;spheres&#x27;, spheres, { wireframe: false, pickable: false, mesh: new SphereGeometry() }),
+      meshLayer(&#x27;pickableSpheres&#x27;, pickableSpheres, { wireframe: false, pickable: true, mesh: new SphereGeometry() }),
       meshLayer(&#x27;cubes&#x27;, cubes, { wireframe: false, pickable: false }),
       meshLayer(&#x27;pickableCubes&#x27;, pickableCubes, { wireframe: false, pickable: true }),
       meshLayer(&#x27;wireframes&#x27;, wireframes, { wireframe: true, pickable: false }),

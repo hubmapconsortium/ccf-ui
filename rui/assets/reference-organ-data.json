@@ -28997,6 +28997,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMColonHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMColon",
         "rui_rank": 1711,
         "extractionSites": [
@@ -29095,6 +29096,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFColonSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHFLargeIntestine",
         "rui_rank": 601,
         "extractionSites": [
@@ -29200,6 +29202,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMHeartHCASet1",
         "@type": "ExtractionSet",
+        "label": "HCA",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
         "rui_rank": 1171,
         "extractionSites": [
@@ -29340,6 +29343,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMHeartHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
         "rui_rank": 1241,
         "extractionSites": [
@@ -29568,6 +29572,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMHeartSPARCSet1",
         "@type": "ExtractionSet",
+        "label": "SPARC",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
         "rui_rank": 1351,
         "extractionSites": [
@@ -30126,6 +30131,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMHeartPeiSet1",
         "@type": "ExtractionSet",
+        "label": "Pei",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMHeart",
         "rui_rank": 1611,
         "extractionSites": [
@@ -30313,6 +30319,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMLeftKidneyHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMLeftKidney",
         "rui_rank": 1771,
         "extractionSites": [
@@ -30345,6 +30352,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFHeartSPARCSet1",
         "@type": "ExtractionSet",
+        "label": "SPARC",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHFHeartV1.1",
         "rui_rank": 21,
         "extractionSites": [
@@ -30903,6 +30911,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFHeartHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHFHeartV1.1",
         "rui_rank": 281,
         "extractionSites": [
@@ -31131,6 +31140,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFHeartPeiSet1",
         "@type": "ExtractionSet",
+        "label": "Pei",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHFHeartV1.1",
         "rui_rank": 391,
         "extractionSites": [
@@ -31315,6 +31325,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFHeartHCASet1",
         "@type": "ExtractionSet",
+        "label": "HCA",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHFHeartV1.1",
         "rui_rank": 481,
         "extractionSites": [
@@ -31457,6 +31468,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMRightKidneyHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMRightKidney",
         "rui_rank": 1781,
         "extractionSites": [
@@ -31489,6 +31501,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidneyHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidneyV1.1",
         "rui_rank": 561,
         "extractionSites": [
@@ -31522,6 +31535,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFRightKidneyHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHFRightKidneyV1.1",
         "rui_rank": 571,
         "extractionSites": [
@@ -31572,6 +31586,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHMSpleenHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHMSpleen",
         "rui_rank": 1821,
         "extractionSites": [
@@ -31650,6 +31665,7 @@
       {
         "@id": "http://purl.org/ccf/latest/ccf.owl#VHFSpleenHBMSet1",
         "@type": "ExtractionSet",
+        "label": "HuBMAP",
         "extraction_set_for": "http://purl.org/ccf/latest/ccf.owl#VHFSpleenV1.1",
         "rui_rank": 671,
         "extractionSites": [
