@@ -124,7 +124,7 @@
     "ngx-google-analytics": "^11.2.1",
     "ngx-markdown": "^12.0.1",
     "node-fetch": "^2.6.7",
-    "qs": "^6.10.2",
+    "qs": "^6.10.3",
     "rdf-literal": "^1.2.0",
     "rdfxml-streaming-parser": "^1.4.0",
     "readable-stream": "^3.6.0",
