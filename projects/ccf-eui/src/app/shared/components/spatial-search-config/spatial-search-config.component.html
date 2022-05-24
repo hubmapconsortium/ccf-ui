@@ -2,9 +2,13 @@
   <div class="row1">
     <div class="col1">
       <div class="title">Configure Spatial Search</div>
-      <mat-icon class="info button">info</mat-icon>
+      <button class="info button">
+        <mat-icon>info</mat-icon>
+      </button>
     </div>
-    <mat-icon class="close button">close</mat-icon>
+    <button class="close button" >
+      <mat-icon (click)="close()">close</mat-icon>
+    </button>
   </div>
   
   <div class="row2">
@@ -19,13 +23,13 @@
     <div class="label">Select an organ</div>
     <mat-form-field class="spatial-search-form-field" appearance="fill">
       <mat-label>Organs</mat-label>
-      <mat-select [formControl]="panelColor" panelClass="organ-select">
-        <mat-option *ngFor="let organ of organs" [value]="organ">
-          {{organ}}
+      <mat-select panelClass="organ-select" (selectionChange)="updateOrgan($event.value)">
+        <mat-option *ngFor="let organ of filteredOrgans" [value]="organ">
+          {{organ.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
   
-  <button class="continue-button" mat-button>Continue</button>
+  <button class="continue-button" mat-button (click)="buttonClicked()">Continue</button>
 </div>

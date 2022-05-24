@@ -8,7 +8,8 @@
   $accent: map-get($theme, accent);
 
   .organ-select {
-    background-color: mat.get-color-from-palette($foreground, modal-borders);
+    background-color: mat.get-color-from-palette($background, modal);
+    border-color: mat.get-color-from-palette($foreground, modal-borders);
 
     .mat-option {
       background-color: mat.get-color-from-palette($background, modal);
@@ -26,8 +27,19 @@
   }
 
   .spatial-search-container {
-    background: #FFFFFF;
-  
+    background-color: mat.get-color-from-palette($background, modal);
+    border-color: mat.get-color-from-palette($foreground, modal-borders);
+    color: map-get($foreground, text);
+
+    .button {
+      color: map-get($foreground, text);
+    }
+
+    .mat-radio-checked {
+      .mat-radio-inner-circle {
+        background: map-get($foreground, text);
+      }
+    }
   
     .spatial-search-form-field {
       .label {
@@ -47,6 +59,29 @@
   
     .mat-select-arrow {
       color: mat.get-color-from-palette($foreground, contrast-icon);
+    }
+  }
+
+  .info {
+    &:hover {
+      background-color: mat.get-color-from-palette($background, icon-background-hover2);
+    }
+  }
+
+  .close {
+    &:hover {
+      background-color: mat.get-color-from-palette($background, icon-background-hover2);
+    }
+  }
+
+  .continue-button {
+    color: mat.get-color-from-palette($foreground, light-button-text);
+    background-color: mat.get-color-from-palette($background, button-bg);
+    border-color: mat.get-color-from-palette($foreground, button-border);
+
+    &:hover {
+      color: mat.get-color-from-palette($foreground, color-hover);
+      background-color: mat.get-color-from-palette($background, button-background-hover);
     }
   }
 
