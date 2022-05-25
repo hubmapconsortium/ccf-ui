@@ -1,4 +1,6 @@
 import { Shallow } from 'shallow-render';
+import { MatDialogRef } from '@angular/material/dialog';
+
 
 import { FiltersContentComponent } from './filters-content.component';
 import { FiltersContentModule } from './filters-content.module';
@@ -7,7 +9,8 @@ describe('FiltersContentComponent', () => {
   let shallow: Shallow<FiltersContentComponent>;
 
   beforeEach(() => {
-    shallow = new Shallow(FiltersContentComponent, FiltersContentModule);
+    shallow = new Shallow(FiltersContentComponent, FiltersContentModule)
+    .provide({ provide: MatDialogRef, useValue: {} });
   });
 
   it('should update the filter object with the passed in filter and value', async () => {
