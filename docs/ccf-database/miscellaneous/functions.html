@@ -185,6 +185,12 @@
                             <a href="#getOrientedBoundingBox" title="projects/ccf-database/src/lib/queries/spatial-search-n3.ts" ><b>getOrientedBoundingBox</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-search-n3.ts)</a>
                         </li>
                         <li>
+                            <a href="#getOriginScene" title="projects/ccf-database/src/lib/util/origin-scene.ts" ><b>getOriginScene</b>&nbsp;&nbsp;&nbsp;(projects/.../origin-scene.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getProbingSphereScene" title="projects/ccf-database/src/lib/util/probing-sphere-scene.ts" ><b>getProbingSphereScene</b>&nbsp;&nbsp;&nbsp;(projects/.../probing-sphere-scene.ts)</a>
+                        </li>
+                        <li>
                             <a href="#getProviderNames" title="projects/ccf-database/src/lib/queries/aggregate-results-n3.ts" ><b>getProviderNames</b>&nbsp;&nbsp;&nbsp;(projects/.../aggregate-results-n3.ts)</a>
                         </li>
                         <li>
@@ -4677,6 +4683,169 @@
                     </div>
                     <div class="io-description">
                         <p>A new data object.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/util/origin-scene.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOriginScene"></a>
+                    <span class="name">
+                        <span ><b>getOriginScene</b></span>
+                        <a href="#getOriginScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOriginScene(node, includeLetters)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create a set of scene nodes for the body-ui to show the origin and lines extending to it&#39;s dimensions.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the Spatial Entity (usually a reference organ) that the origin is defined by</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>includeLetters</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>whether to show the keyboard letters associated with the origin points</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >SpatialSceneNode[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>a set of scene nodes for the body-ui</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/util/probing-sphere-scene.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProbingSphereScene"></a>
+                    <span class="name">
+                        <span ><b>getProbingSphereScene</b></span>
+                        <a href="#getProbingSphereScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProbingSphereScene(node, sphere?)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create a set of scene nodes for the body-ui to show the probing sphere and lines around it
+for a given spatial search.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the Spatial Entity (usually a reference organ) that the sphere is probing into</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>sphere</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>the Spatial Search that defines where and how big the probing sphere is</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >SpatialSceneNode[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>a set of scene nodes for the body-ui</p>
 
                     </div>
                 </td>
