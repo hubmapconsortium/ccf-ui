@@ -27,7 +27,7 @@
     }
   }
 
-  .spatial-search-container {
+  .ccf-spatial-search-config {
     background-color: mat.get-color-from-palette($background, modal);
     border-color: mat.get-color-from-palette($foreground, modal-borders);
     color: map-get($foreground, text);
@@ -42,7 +42,7 @@
       }
     }
   
-    .spatial-search-form-field {
+    .form-field {
       .label {
         color: mat.get-color-from-palette($foreground, text-muted)
       }

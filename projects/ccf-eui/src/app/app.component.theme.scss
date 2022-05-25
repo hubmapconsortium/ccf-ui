@@ -10,16 +10,14 @@
     color: map-get($foreground, text);
   }
 
-  .drawer-icons {
-    .button, .close-button {
-      &:hover {
-        background-color: map-get($background, info-button-hover) !important;
-      }
+  .button, .close-button {
+    &:hover {
+      background-color: map-get($background, info-button-hover) !important;
     }
+  }
 
-    .close-button {
-      color: mat.get-color-from-palette($foreground, contrast-icon);
-      background-color: mat.get-color-from-palette($background, modal);
-    }
+  .close-button {
+    color: mat.get-color-from-palette($foreground, contrast-icon);
+    background-color: mat.get-color-from-palette($background, modal);
   }
 }
