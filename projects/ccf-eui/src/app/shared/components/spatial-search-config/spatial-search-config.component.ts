@@ -48,10 +48,8 @@ export class SpatialSearchConfigComponent implements OnChanges, OnInit {
     if ('organs' in changes) {
       this.filterOrgans();
     }
-    if ('selectedOrgan' in changes) {
-      if (this.selectedOrgan && this.selectedOrgan.sex) {
-        this.updateSex(this.selectedOrgan.sex);
-      }
+    if ('selectedOrgan' in changes && this.selectedOrgan && this.selectedOrgan.sex) {
+      this.updateSex(this.selectedOrgan.sex);
     }
   }
 
@@ -80,6 +78,6 @@ export class SpatialSearchConfigComponent implements OnChanges, OnInit {
   }
 
   filterOrgans(): void {
-    this.filteredOrgans = this.organs.filter(organ => organ.hasSex || organ.sex === this.sex);
+    this.filteredOrgans = this.organs.filter(organ => organ.hasSex ?? organ.sex === this.sex);
   }
 }
