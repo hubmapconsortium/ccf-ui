@@ -9,8 +9,8 @@ export interface SpatialSceneNode {
   representation_of?: string;
   reference_organ?: string;
   unpickable?: boolean;
-  sphere?: boolean;
-  wireframe?: boolean;
+  geometry?: 'sphere' | 'cube' | 'wireframe' | 'text' | 'cone' | 'cylinder';
+  text?: string;
   _lighting?: string;
   scenegraph?: string;
   scenegraphNode?: string;
