@@ -25,11 +25,11 @@ export class SpatialSearchConfigComponent {
 
   @Input() selectedOrgan?: OrganInfo;
 
-  @Output() sexChange = new EventEmitter<Sex>();
+  @Output() readonly sexChange = new EventEmitter<Sex>();
 
-  @Output() organChange = new EventEmitter<OrganInfo>();
+  @Output() readonly organChange = new EventEmitter<OrganInfo>();
 
-  @Output() itemSelected = new EventEmitter<{ sex: Sex; organ: OrganInfo | undefined }>();
+  @Output() readonly itemSelected = new EventEmitter<{ sex: Sex; organ: OrganInfo | undefined }>();
 
   filteredOrgans: OrganInfo[];
 
@@ -39,13 +39,13 @@ export class SpatialSearchConfigComponent {
     this.filterOrgans();
   }
 
-  updateSex(sex: Sex) {
+  updateSex(sex: Sex): void {
     this.sex = sex;
     this.filterOrgans();
     this.sexChange.emit(this.sex);
   }
 
-  updateOrgan(organ: OrganInfo) {
+  updateOrgan(organ: OrganInfo): void {
     this.selectedOrgan = organ;
     this.organChange.emit(this.selectedOrgan);
   }
@@ -54,7 +54,7 @@ export class SpatialSearchConfigComponent {
     this.itemSelected.emit({ sex: this.sex, organ: this.selectedOrgan });
   }
 
-  close() {
+  close(): void {
     document.getElementsByClassName('modal-animated')[0]?.classList.add('modal-animate-fade-out');
     setTimeout(() => {
       this.dialogRef.close();

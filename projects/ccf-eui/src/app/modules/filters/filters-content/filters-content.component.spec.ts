@@ -10,7 +10,7 @@ describe('FiltersContentComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(FiltersContentComponent, FiltersContentModule)
-    .provide({ provide: MatDialogRef, useValue: {} });
+      .provide({ provide: MatDialogRef, useValue: {} });
   });
 
   it('should update the filter object with the passed in filter and value', async () => {
