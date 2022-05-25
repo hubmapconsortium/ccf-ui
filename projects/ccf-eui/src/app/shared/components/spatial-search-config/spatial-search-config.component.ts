@@ -78,6 +78,7 @@ export class SpatialSearchConfigComponent implements OnChanges, OnInit {
   }
 
   filterOrgans(): void {
-    this.filteredOrgans = this.organs.filter(organ => organ.hasSex ?? organ.sex === this.sex);
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    this.filteredOrgans = this.organs.filter(organ => organ.hasSex || organ.sex === this.sex);
   }
 }
