@@ -10,6 +10,8 @@ import { ExtractionSet, SpatialEntity } from './spatial-types';
 import { ccf } from './util/prefixes';
 
 
+export type SpatialSceneGeometry = 'sphere' | 'cube' | 'wireframe' | 'text' | 'cone' | 'cylinder';
+
 export interface SpatialSceneNode {
   '@id': string;
   '@type': string;
@@ -18,8 +20,8 @@ export interface SpatialSceneNode {
   representation_of?: string;
   reference_organ?: string;
   unpickable?: boolean;
-  sphere?: boolean;
-  wireframe?: boolean;
+  geometry?: SpatialSceneGeometry;
+  text?: string;
   _lighting?: string;
   scenegraph?: string;
   scenegraphNode?: string;
@@ -114,11 +116,11 @@ export class CCFSpatialScene {
     if (filter?.debug) {
       // Debug bounding boxes
       nodes = nodes.concat([
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), body, { color: [0, 0, 255, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHLeftKidney').id), body, { color: [255, 0, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC1').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC2').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC3').id), body, { color: [0, 255, 0, 0.5*255], wireframe: true })
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHRightKidney').id), body, { color: [0, 0, 255, 0.5*255], geometry: 'wireframe' }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHLeftKidney').id), body, { color: [255, 0, 0, 0.5*255], geometry: 'wireframe' }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC1').id), body, { color: [0, 255, 0, 0.5*255], geometry: 'wireframe' }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC2').id), body, { color: [0, 255, 0, 0.5*255], geometry: 'wireframe' }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x('VHSpleenCC3').id), body, { color: [0, 255, 0, 0.5*255], geometry: 'wireframe' })
       ]);
     }
 
