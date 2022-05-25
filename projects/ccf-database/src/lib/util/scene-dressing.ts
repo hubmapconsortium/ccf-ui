@@ -10,6 +10,13 @@ const red: Color = [213, 0, 0, 255];
 const green: Color = [29, 204, 101, 255];
 const blue: Color = [41, 121, 255, 255];
 
+/**
+ * Create a set of scene nodes for the body-ui to show the probing sphere and lines around it
+ * for a given spatial search.
+ * @param node the Spatial Entity (usually a reference organ) that the sphere is probing into
+ * @param sphere the Spatial Search that defines where and how big the probing sphere is
+ * @returns a set of scene nodes for the body-ui
+ */
 export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearch): SpatialSceneNode[] {
   const sceneWidth = node.x_dimension / 1000;
   const sceneHeight = node.y_dimension / 1000;
@@ -243,6 +250,12 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
   ];
 }
 
+/**
+ * Create a set of scene nodes for the body-ui to show the origin and lines extending to it's dimensions.
+ * @param node the Spatial Entity (usually a reference organ) that the origin is defined by
+ * @param includeLetters whether to show the keyboard letters associated with the origin points
+ * @returns a set of scene nodes for the body-ui
+ */
 export function getOriginScene(node: SpatialEntity, includeLetters = false): SpatialSceneNode[] {
   const sceneWidth = node.x_dimension / 1000;
   const sceneHeight = node.y_dimension / 1000;

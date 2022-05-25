@@ -10,6 +10,8 @@ import { ExtractionSet, SpatialEntity } from './spatial-types';
 import { ccf } from './util/prefixes';
 
 
+export type SpatialSceneGeometry = 'sphere' | 'cube' | 'wireframe' | 'text' | 'cone' | 'cylinder';
+
 export interface SpatialSceneNode {
   '@id': string;
   '@type': string;
@@ -18,7 +20,7 @@ export interface SpatialSceneNode {
   representation_of?: string;
   reference_organ?: string;
   unpickable?: boolean;
-  geometry?: 'sphere' | 'cube' | 'wireframe' | 'text' | 'cone' | 'cylinder';
+  geometry?: SpatialSceneGeometry;
   text?: string;
   _lighting?: string;
   scenegraph?: string;
