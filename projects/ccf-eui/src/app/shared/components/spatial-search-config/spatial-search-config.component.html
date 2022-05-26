@@ -6,13 +6,13 @@
     </button>
   </div>
   <button class="close button" mat-icon-button>
-    <mat-icon (click)="close()">close</mat-icon>
+    <mat-icon (click)="closeDialog.emit()">close</mat-icon>
   </button>
 </div>
 
 <div class="sex-toggle">
   <div class="label">Donor Sex: </div>
-  <mat-radio-group class="radio-group" [(ngModel)]="sex" (change)="updateSex($event.value)">
+  <mat-radio-group class="radio-group" [(ngModel)]="sex" (change)="updateSex.emit($event.value)">
     <mat-radio-button class="radio" value="male">Male</mat-radio-button>
     <mat-radio-button class="radio" value="female">Female</mat-radio-button>
   </mat-radio-group>
@@ -22,12 +22,12 @@
   <div class="label">Select an organ</div>
   <mat-form-field class="form-field" appearance="fill">
     <mat-label>Organs</mat-label>
-    <mat-select panelClass="organ-select" (selectionChange)="updateOrgan($event.value)">
-      <mat-option *ngFor="let organ of filteredOrgans" [value]="organ">
+    <mat-select panelClass="organ-select" (selectionChange)="updateOrgan.emit($event.value)">
+      <mat-option *ngFor="let organ of organs" [value]="organ">
         {{organ.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
 
-<button class="continue-button" [class.disabled]="!selectedOrgan" mat-button (click)="buttonClicked()">Continue</button>
+<button class="continue-button" [class.disabled]="!selectedOrgan" mat-button (click)="buttonClicked.emit()">Continue</button>

@@ -15,24 +15,23 @@
 }
 
 .button-container {
-//   display: flex;
-//   justify-content: space-between;
-//   margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
 
-//   button {
-//     border-width: 1px;
-//     border-style: solid;
-//   }
+  button {
+    border-width: 1px;
+    border-style: solid;
+  }
 
-// }
+}
 
-// .button-container-end {
+.button-container-end {
   &.hidden {
     opacity: 0;
     transition-duration: 0.2s;
   }
 
-  margin-top: 2rem;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
