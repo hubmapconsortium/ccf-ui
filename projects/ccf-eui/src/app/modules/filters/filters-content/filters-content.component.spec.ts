@@ -16,6 +16,7 @@ describe('FiltersContentComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(FiltersContentComponent, FiltersContentModule)
+      .provide({ provide: MatDialog, useValue: {} })
       .mock(MatDialog, mockMatDialog);
   });
 

@@ -50,10 +50,7 @@ export class FiltersContentComponent {
    *
    * @param ga Analytics service
    */
-  constructor(
-    private readonly ga: GoogleAnalyticsService,
-    public dialog: MatDialog
-  ) { }
+  constructor(private readonly ga: GoogleAnalyticsService, public dialog: MatDialog) { }
 
   openSpatialSearch(): void {
     this.dialog.open(SpatialSearchConfigBehaviorComponent);

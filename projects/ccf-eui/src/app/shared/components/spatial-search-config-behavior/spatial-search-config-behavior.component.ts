@@ -1,7 +1,7 @@
-import {   ChangeDetectionStrategy, Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SpatialSearchConfigComponent } from '../spatial-search-config/spatial-search-config.component';
-import { OrganInfo, ALL_POSSIBLE_ORGANS } from 'ccf-shared';
+import { OrganInfo, ALL_ORGANS } from 'ccf-shared';
 
 export type Sex = 'male' | 'female';
 
@@ -13,7 +13,7 @@ export type Sex = 'male' | 'female';
 })
 export class SpatialSearchConfigBehaviorComponent implements OnInit, OnChanges {
 
-  @Input() organs: OrganInfo[] = ALL_POSSIBLE_ORGANS;
+  @Input() organs: OrganInfo[] = ALL_ORGANS;
 
   @Input() selectedOrgan?: OrganInfo;
 
