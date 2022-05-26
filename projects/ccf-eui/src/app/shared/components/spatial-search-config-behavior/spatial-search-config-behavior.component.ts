@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {   ChangeDetectionStrategy, Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { SpatialSearchConfigComponent } from '../spatial-search-config/spatial-search-config.component';
 import { OrganInfo, ALL_POSSIBLE_ORGANS } from 'ccf-shared';
 
@@ -8,7 +8,8 @@ export type Sex = 'male' | 'female';
 @Component({
   selector: 'ccf-spatial-search-config-behavior',
   templateUrl: './spatial-search-config-behavior.component.html',
-  styleUrls: ['./spatial-search-config-behavior.component.scss']
+  styleUrls: ['./spatial-search-config-behavior.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpatialSearchConfigBehaviorComponent implements OnInit, OnChanges {
 
@@ -23,10 +24,10 @@ export class SpatialSearchConfigBehaviorComponent implements OnInit, OnChanges {
   @Output() readonly itemSelected = new EventEmitter<{ sex: Sex; organ: OrganInfo }>();
 
   filteredOrgans: OrganInfo[];
-  
+
   sex: Sex = 'male';
-  
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<SpatialSearchConfigComponent>) { }
+
+  constructor(public dialogRef: MatDialogRef<SpatialSearchConfigComponent>) { }
 
   ngOnInit(): void {
     this.filterOrgans();

@@ -4,12 +4,8 @@ import {
   EventEmitter,
   HostBinding,
   Input,
-  Output,
-  OnChanges,
-  SimpleChanges,
-  OnInit
+  Output
 } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
 import { OrganInfo } from 'ccf-shared';
 
 
@@ -24,7 +20,7 @@ export type Sex = 'male' | 'female';
 export class SpatialSearchConfigComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-config';
 
-  @Input() organs: OrganInfo[] = [];
+  @Input() organs: OrganInfo[];
 
   @Input() selectedOrgan?: OrganInfo;
 
@@ -37,6 +33,4 @@ export class SpatialSearchConfigComponent {
   @Output() readonly closeDialog = new EventEmitter();
 
   sex: Sex = 'male';
-
-  constructor() { }
 }
