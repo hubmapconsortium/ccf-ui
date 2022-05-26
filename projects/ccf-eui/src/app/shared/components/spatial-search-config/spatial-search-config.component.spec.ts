@@ -44,12 +44,6 @@ describe('SpatialSearchConfigComponent', () => {
       .mock(MatDialogRef, { close(): void { /* Empty */ } });
   });
 
-  it('should update sex and emit sexChange when the organ is updated', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { selectedOrgan: testOrganM } });
-    instance.updateOrgan(testOrganF);
-    expect(outputs.sexChange.emit).toHaveBeenCalledWith('female');
-  });
-
   it('should update selectedOrgan and emit organChange when the organ is updated', async () => {
     const { instance, outputs } = await shallow.render({ bind: { selectedOrgan: testOrgan } });
     instance.updateOrgan(testOrganF);
