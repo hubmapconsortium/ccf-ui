@@ -1,0 +1,82 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .organ-select {
+    background-color: mat.get-color-from-palette($background, modal);
+    border-color: mat.get-color-from-palette($foreground, modal-borders);
+    box-shadow: 0.2rem 0.2rem 1rem 0rem #0000003e;
+
+    .mat-option {
+      background-color: mat.get-color-from-palette($background, modal);
+      border-color: mat.get-color-from-palette($foreground, borders);
+
+      &:hover {
+        background-color: mat.get-color-from-palette($background, dropdown-hover);
+      }
+
+      &.mat-selected.mat-active {
+        background-color: mat.get-color-from-palette($background, mat-selected-option);
+        color: mat.get-color-from-palette($foreground, contrast-text);
+      }
+    }
+  }
+
+  .ccf-spatial-search-config {
+    background-color: mat.get-color-from-palette($background, modal);
+    border-color: mat.get-color-from-palette($foreground, modal-borders);
+    color: map-get($foreground, text);
+
+    .button {
+      color: map-get($foreground, text);
+    }
+
+    .mat-radio-checked {
+      .mat-radio-inner-circle {
+        background: map-get($foreground, text);
+      }
+    }
+  
+    .form-field {
+      .label {
+        color: mat.get-color-from-palette($foreground, text-muted)
+      }
+  
+      .mat-form-field-wrapper {
+        .mat-form-field-underline {
+          background-color: mat.get-color-from-palette($foreground, text);
+        }
+      }
+    }
+  
+    .mat-select-value {
+      color: mat.get-color-from-palette($foreground, text);
+    }
+  
+    .mat-select-arrow {
+      color: mat.get-color-from-palette($foreground, contrast-icon);
+    }
+  }
+
+  .info, .close {
+    &:hover {
+      background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
+    }
+  }
+
+  .continue-button {
+    color: mat.get-color-from-palette($foreground, light-button-text);
+    background-color: mat.get-color-from-palette($background, button-bg);
+    border-color: mat.get-color-from-palette($foreground, button-border);
+
+    &:hover {
+      color: mat.get-color-from-palette($foreground, color-hover);
+      background-color: mat.get-color-from-palette($background, button-background-hover);
+    }
+  }
+}

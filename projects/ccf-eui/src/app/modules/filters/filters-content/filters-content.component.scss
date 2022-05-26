@@ -15,6 +15,18 @@
 }
 
 .button-container {
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 2rem;
+
+//   button {
+//     border-width: 1px;
+//     border-style: solid;
+//   }
+
+// }
+
+// .button-container-end {
   &.hidden {
     opacity: 0;
     transition-duration: 0.2s;
