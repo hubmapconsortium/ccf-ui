@@ -45,13 +45,13 @@ describe('SpatialSearchConfigComponent', () => {
   });
 
   it('should update selectedOrgan and emit organChange when the organ is updated', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { selectedOrgan: testOrgan } });
+    const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
     instance.updateOrgan(testOrganF);
     expect(outputs.organChange.emit).toHaveBeenCalledWith(testOrganF);
   });
 
   it('should emit itemSelected when the continue button is clicked', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { selectedOrgan: testOrgan } });
+    const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
     instance.buttonClicked();
     expect(outputs.itemSelected.emit).toHaveBeenCalled();
   });
@@ -65,9 +65,9 @@ describe('SpatialSearchConfigComponent', () => {
   });
 
   it('should filter organs by sex', async () => {
-    const { instance } = await shallow.render({ bind: { organs: [testOrganF, testOrganM] } });
+    const { instance } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF] } });
     instance.sex = 'female';
     instance.filterOrgans();
-    expect(instance.filteredOrgans).toEqual([testOrganF]);
+    expect(instance.filteredOrgans).toEqual([testOrgan, testOrganF]);
   });
 });

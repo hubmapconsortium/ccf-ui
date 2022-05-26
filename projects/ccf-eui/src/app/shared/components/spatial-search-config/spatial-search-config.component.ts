@@ -10,7 +10,7 @@ import {
   OnInit
 } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ALL_POSSIBLE_ORGANS, OrganInfo } from 'ccf-shared';
+import { OrganInfo } from 'ccf-shared';
 
 
 export type Sex = 'male' | 'female';
@@ -24,7 +24,7 @@ export type Sex = 'male' | 'female';
 export class SpatialSearchConfigComponent implements OnChanges, OnInit {
   @HostBinding('class') readonly className = 'ccf-spatial-search-config';
 
-  @Input() organs: OrganInfo[] = ALL_POSSIBLE_ORGANS;
+  @Input() organs: OrganInfo[] = [];
 
   @Input() selectedOrgan?: OrganInfo;
 
