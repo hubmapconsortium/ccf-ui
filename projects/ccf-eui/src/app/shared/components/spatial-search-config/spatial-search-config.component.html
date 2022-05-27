@@ -1,7 +1,7 @@
 <div class="header">
   <div class="col1">
     <div class="title">Configure Spatial Search</div>
-    <button class="info button" mat-icon-button >
+    <button class="info button" mat-icon-button>
       <mat-icon>info</mat-icon>
     </button>
   </div>
@@ -30,4 +30,5 @@
   </mat-form-field>
 </div>
 
-<button class="continue-button" [class.disabled]="!selectedOrgan" mat-button (click)="buttonClicked.emit()">Continue</button>
+<button class="continue-button" [class.disabled]="!selectedOrgan" mat-button
+  (click)="buttonClicked.emit()">Continue</button>

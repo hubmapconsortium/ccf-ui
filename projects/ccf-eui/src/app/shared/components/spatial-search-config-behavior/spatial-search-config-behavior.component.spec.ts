@@ -1,6 +1,7 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { OrganInfo } from 'ccf-shared';
 import { Shallow } from 'shallow-render';
+
 import { SpatialSearchConfigBehaviorComponent } from './spatial-search-config-behavior.component';
 import { SpatialSearchConfigBehaviorModule } from './spatial-search-config-behavior.module';
 

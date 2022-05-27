@@ -1,9 +1,9 @@
-import { Shallow } from 'shallow-render';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
+import { Shallow } from 'shallow-render';
 
 import { FiltersContentComponent } from './filters-content.component';
 import { FiltersContentModule } from './filters-content.module';
+
 
 describe('FiltersContentComponent', () => {
   let shallow: Shallow<FiltersContentComponent>;

@@ -1,25 +1,21 @@
 <div class="patient-filters" [class.hidden]="hidden">
   <ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="filters?.sex"
-                (selectionChange)="updateFilter($event, 'sex')"></ccf-dropdown>
+    (selectionChange)="updateFilter($event, 'sex')"></ccf-dropdown>
 
   <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="filters?.ageRange"
-                   (selectionChange)="updateFilter($event, 'ageRange')"></ccf-dual-slider>
+    (selectionChange)="updateFilter($event, 'ageRange')"></ccf-dual-slider>
   <ccf-dual-slider label="BMI" [valueRange]="[13, 83]" [selection]="filters?.bmiRange"
-                   (selectionChange)="updateFilter($event, 'bmiRange')"></ccf-dual-slider>
+    (selectionChange)="updateFilter($event, 'bmiRange')"></ccf-dual-slider>
 </div>
 
 <div class="filter assays" [class.hidden]="hidden">
-  <ccf-checkbox label="Assay Types"
-                [columns]="4"
-                [options]="technologyFilters"
-                [selection]="filters?.technologies" (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
+  <ccf-checkbox label="Assay Types" [columns]="4" [options]="technologyFilters" [selection]="filters?.technologies"
+    (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
 </div>
 
 <div class="filter providers" [class.hidden]="hidden">
-  <ccf-checkbox label="Tissue Providers"
-                [columns]="3"
-                [options]="providerFilters"
-                [selection]="filters?.tmc" (selectionChange)="updateFilter($event, 'tmc')"></ccf-checkbox>
+  <ccf-checkbox label="Tissue Providers" [columns]="3" [options]="providerFilters" [selection]="filters?.tmc"
+    (selectionChange)="updateFilter($event, 'tmc')"></ccf-checkbox>
 </div>
 
 <div class="button-container">
