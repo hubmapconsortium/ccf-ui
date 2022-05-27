@@ -48,11 +48,23 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
       .mock(SceneState, { referenceOrgans$: of([]) });
   });
 
+  it('should update the sex and emit sexChange when updateSex is called', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
+    instance.updateSex('female');
+    expect(outputs.sexChange.emit).toHaveBeenCalledWith('female');
+  });
+
   it('should update selectedOrgan and emit organChange when the organ is updated', async () => {
     const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
     instance.updateOrgan(testOrganF);
     expect(outputs.organChange.emit).toHaveBeenCalledWith(testOrganF);
   });
+
+  it('buttonClicked does nothing if no organ is selected', async () => {
+    const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: undefined } });
+    instance.buttonClicked();
+    expect(outputs.itemSelected.emit).toHaveBeenCalledTimes(0);
+  }); 
 
   it('should emit itemSelected when the continue button is clicked', async () => {
     const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
