@@ -5,7 +5,6 @@ import { DataFactory, Util } from 'triple-store-utils';
 export const PREFIXES = {
   base: 'http://purl.org/ccf/latest/ccf.owl#',
   ccf: 'http://purl.org/ccf/',
-  entity: 'http://purl.org/ccf/latest/ccf-entity.owl#',
   fma: 'http://purl.org/sig/ont/fma/fma',
   obo: 'http://purl.obolibrary.org/obo/',
   uberon: 'http://purl.obolibrary.org/obo/UBERON_',
@@ -38,8 +37,7 @@ const ccfx = prefixer('ccf');
 
 /** Common entity ids. */
 export const entity = {
-  x: prefixer('entity'),
-  id: prefixer('entity')('id'),
+  id: prefixer('ccf')('has_registration_location'),
   label: prefixer('rdfs')('label'),
   description: prefixer('rdfs')('comment'),
   link: ccfx('url'),
