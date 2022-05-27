@@ -7,7 +7,7 @@ describe('SpatialSearchConfigComponent', () => {
   let shallow: Shallow<SpatialSearchConfigComponent>;
 
   beforeEach(() => {
-    shallow = new Shallow(SpatialSearchConfigComponent, SpatialSearchConfigModule)
+    shallow = new Shallow(SpatialSearchConfigComponent, SpatialSearchConfigModule);
   });
 
   it('creates', async () => {

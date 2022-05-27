@@ -64,7 +64,7 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
     const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: undefined } });
     instance.buttonClicked();
     expect(outputs.itemSelected.emit).toHaveBeenCalledTimes(0);
-  }); 
+  });
 
   it('should emit itemSelected when the continue button is clicked', async () => {
     const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
