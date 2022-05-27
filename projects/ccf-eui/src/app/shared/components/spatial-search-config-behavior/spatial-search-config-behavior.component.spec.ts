@@ -1,6 +1,8 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { OrganInfo } from 'ccf-shared';
+import { of } from 'rxjs/internal/observable/of';
 import { Shallow } from 'shallow-render';
+import { SceneState } from '../../../core/store/scene/scene.state';
 
 import { SpatialSearchConfigBehaviorComponent } from './spatial-search-config-behavior.component';
 import { SpatialSearchConfigBehaviorModule } from './spatial-search-config-behavior.module';
@@ -42,7 +44,8 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(SpatialSearchConfigBehaviorComponent, SpatialSearchConfigBehaviorModule)
-      .mock(MatDialogRef, { close(): void { /* Empty */ } });
+      .mock(MatDialogRef, { close(): void { /* Empty */ } })
+      .mock(SceneState, { referenceOrgans$: of([]) })
   });
 
   it('should update selectedOrgan and emit organChange when the organ is updated', async () => {
