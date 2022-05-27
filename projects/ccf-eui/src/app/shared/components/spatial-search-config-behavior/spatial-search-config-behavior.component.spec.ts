@@ -45,7 +45,7 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
   beforeEach(() => {
     shallow = new Shallow(SpatialSearchConfigBehaviorComponent, SpatialSearchConfigBehaviorModule)
       .mock(MatDialogRef, { close(): void { /* Empty */ } })
-      .mock(SceneState, { referenceOrgans$: of([]) })
+      .mock(SceneState, { referenceOrgans$: of([]) });
   });
 
   it('should update selectedOrgan and emit organChange when the organ is updated', async () => {

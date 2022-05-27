@@ -40,7 +40,9 @@ export class SpatialSearchConfigBehaviorComponent implements OnInit, OnChanges {
   sex: Sex = 'male';
 
   constructor(readonly scene: SceneState, public dialogRef: MatDialogRef<SpatialSearchConfigComponent>) {
-    this.scene.referenceOrgans$.subscribe((organs: OrganInfo[]) => { this.organs = organs });
+    this.scene.referenceOrgans$.subscribe((organs: OrganInfo[]) => {
+      this.organs = organs;
+    });
   }
 
   ngOnInit(): void {
