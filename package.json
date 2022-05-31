@@ -152,7 +152,7 @@
     "@danmarshall/deckgl-typings": "^4.9.5",
     "@openapitools/openapi-generator-cli": "^2.4.26",
     "@types/express": "^4.17.13",
-    "@types/file-saver": "^2.0.1",
+    "@types/file-saver": "^2.0.5",
     "@types/jasmine": "^3.8.1",
     "@types/jasminewd2": "~2.0.3",
     "@types/js-yaml": "^4.0.0",
