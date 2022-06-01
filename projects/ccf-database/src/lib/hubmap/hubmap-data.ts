@@ -122,7 +122,8 @@ const ENTITY_CONTEXT = {
  */
 export function hubmapResponseAsJsonLd(data: unknown, assetsApi = '', portalUrl = '', serviceToken?: string, debug = false): JsonLd {
   const entries = (get(data, 'hits.hits', []) as JsonDict[])
-    .map(e => get(e, '_source', {}) as JsonDict);
+    .map(e => get(e, '_source', {}) as JsonDict)
+    .sort((a, b) => (a['uuid'] as string).localeCompare(b['uuid'] as string));
 
   const donorLookup: Record<string, JsonLdObj> = {};
   const unflattened: JsonLdObj[] = entries.map(e =>
