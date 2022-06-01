@@ -137,16 +137,13 @@ export function patchJsonLd(jsonLdString: string): JsonLd {
           return iri;
         }
       });
-    } else if (key === '@context' && value) {
-      if (value === 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld'
-          || (value as Context)['@base'] === 'http://purl.org/ccf/latest/ccf-entity.owl#'
-      ) {
-        return CCF_CONTEXT;
-      } else if (value === 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld') {
-        return CCF_CONTEXT;
-      } else if (value === 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld') {
-        return CCF_CONTEXT;
-      }
+    } else if (key === '@context' && value && (
+      value === 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld'
+        || value === 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld'
+        || value === 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld'
+        || (value as Context)['@base'] === 'http://purl.org/ccf/latest/ccf-entity.owl#'
+    )) {
+      return CCF_CONTEXT;
     }
     return value;
   });
