@@ -1,0 +1,52 @@
+.content{
+  display: block;
+  align-content: center;
+}
+
+.info-button-wrapper {
+  border-radius: 0.25rem;
+  padding: 0.60rem;
+  transition: 0.6s;
+
+  .ccf-info-button {
+    cursor: pointer;
+    transition: color .6s;
+    font-size: 1.2rem;
+    vertical-align: sub;
+  }
+}
+
+.mat-dialog-title {
+  font-size: 11px;
+}
+
+.firstRow {
+  display: flex;
+  padding: .7rem;
+  p {
+    padding-right: 2.4rem;
+  }
+
+  
+}
+
+img {
+  align-self: center;
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: 15rem; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 15rem;
+  padding: 1.2rem;
+}
+
+.mat-button {
+  background-color: blue;
+  position: relative;
+  width: 85%;
+  height: 1.5rem;
+  text-decoration-color: white;
+}
+
+.mat-dialog-content{
+  text-align: center;
+  font-size: 12px;
+}
