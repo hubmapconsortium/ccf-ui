@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-const documentationURL = 'assets/docs/README.md';
-
 /**
  * The structure to define how each documentation panel
  * should look like in the info dialog
@@ -31,8 +29,8 @@ export class InfoButtonService {
   /**
    * Read the markdown file to split it by h1 tags.
    */
-  readMarkdown(): void {
-    this.http.get(documentationURL, { responseType: 'text' }).subscribe((data: string) => {
+  readMarkdown(url: string): void {
+    this.http.get(url, { responseType: 'text' }).subscribe((data: string) => {
       const markdownContent: DocumentationContent[] = this.parseMarkdown(data);
       this.markdownContent.next(markdownContent);
     });
@@ -50,10 +48,11 @@ export class InfoButtonService {
     const splitByHeaderTag: string[] = data.split('# ');
     for (const split of splitByHeaderTag) {
       if (split.length) {
-        const headerAndContent: string[] = split.split('\n\n');
+        const newLine = split.includes('\n\n') ? '\n\n' : '\r\n\r\n';
+        const headerAndContent: string[] = split.split(newLine);
         markdownContent.push({
           title: headerAndContent[0],
-          content: headerAndContent.splice(1).join('\n\n')
+          content: headerAndContent.splice(1).join(newLine)
         });
       }
     }

@@ -19,6 +19,11 @@
       .close-icon {
         float: right;
         cursor: pointer;
+        height: 3rem;
+        width: 3rem;
+        line-height: 3rem;
+        text-align: center;
+        transition: .6s;
       }
     }
 
@@ -58,10 +63,16 @@
 
       .variable-binding {
         font-weight: 300;
+        display: flex;
 
         &.first {
           padding-right: 3rem;
           width: 50%;
+        }
+
+        ::ng-deep img {
+          margin-left: 1rem;
+          float: right;
         }
       }
 

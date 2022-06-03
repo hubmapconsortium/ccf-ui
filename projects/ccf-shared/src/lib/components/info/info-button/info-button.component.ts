@@ -26,6 +26,8 @@ export class InfoButtonComponent implements OnDestroy {
    */
   @Input() videoID: string;
 
+  @Input() documentationUrl: string;
+
   private readonly subscriptions = new Subscription();
 
   /**
@@ -57,7 +59,7 @@ export class InfoButtonComponent implements OnDestroy {
     this.dialog.open(InfoDialogComponent, {
       autoFocus: false,
       panelClass: 'modal-animated',
-      width: '60rem',
+      width: '72rem',
       data: {
         title: this.infoTitle,
         content: data,
@@ -70,6 +72,6 @@ export class InfoButtonComponent implements OnDestroy {
    * Detects button click and reads markdown function
    */
   onDialogButtonClick(): void {
-    this.infoButtonService.readMarkdown();
+    this.infoButtonService.readMarkdown(this.documentationUrl);
   }
 }
