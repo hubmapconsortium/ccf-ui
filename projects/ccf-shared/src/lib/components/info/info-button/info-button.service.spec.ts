@@ -24,13 +24,13 @@ describe('InfoButtonService', () => {
 
   it('readMarkdown function should call parseMarkdown function', async () => {
     const spy = spyOn(service, 'parseMarkdown');
-    service.readMarkdown();
+    service.readMarkdown('url');
     expect(spy).toHaveBeenCalled();
   });
 
   it('readMarkdown function should emit data to the markdownContent behavior subject', async () => {
     const spy = spyOn(service.markdownContent, 'next');
-    service.readMarkdown();
+    service.readMarkdown('url');
     expect(spy).toHaveBeenCalled();
   });
 });
