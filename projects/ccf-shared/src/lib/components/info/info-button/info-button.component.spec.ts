@@ -35,15 +35,16 @@ describe('InfoButtonComponent', () => {
 
   it('launchInfoDialog opens dialog box', async () => {
     const { instance, get } = await shallow.mock(MatDialog, mockMatDialog).render();
-    instance.launchInfoDialog({ content: [{} as DocumentationContent], infoTitle: '', videoID: '' });
+    const empty: DocumentationContent[] = [{ title: '', content: '' }];
+    instance.launchInfoDialog({ content: empty, infoTitle: '', videoID: '' });
     expect(get(MatDialog).open).toHaveBeenCalled();
   });
 
   it('launches the dialog when data is emitted from the service', async () => {
     const { instance, get } = await shallow.render();
+    const empty: DocumentationContent[] = [{ title: '', content: '' }];
     const spy = spyOn(instance, 'launchInfoDialog');
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    get(InfoButtonService).panelContent.next({ content: [{} as DocumentationContent], infoTitle: '', videoID: '' });
+    get(InfoButtonService).panelContent.next({ content: empty, infoTitle: '', videoID: '' });
     expect(spy).toHaveBeenCalled();
   });
 
