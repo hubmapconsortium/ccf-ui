@@ -15,6 +15,12 @@ export interface DocumentationContent {
   content: string;
 }
 
+export interface PanelData {
+  content: DocumentationContent[];
+  infoTitle: string;
+  videoID: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,17 +28,17 @@ export interface DocumentationContent {
 export class InfoButtonService {
 
   /** Subject to send the documentation data to the component when its done processing */
-  markdownContent: BehaviorSubject<DocumentationContent[]> = new BehaviorSubject<DocumentationContent[]>([]);
+  panelContent: BehaviorSubject<PanelData> = new BehaviorSubject<PanelData>({ content: [], infoTitle: '', videoID: '' });
 
   constructor(private readonly http: HttpClient) { }
 
   /**
-   * Read the markdown file to split it by h1 tags.
+   * Read the markdown file to split it by h1 tags and update the panel title and videoID.
    */
-  readMarkdown(url: string): void {
+  updateData(url: string, videoID: string, infoTitle: string): void {
     this.http.get(url, { responseType: 'text' }).subscribe((data: string) => {
-      const markdownContent: DocumentationContent[] = this.parseMarkdown(data);
-      this.markdownContent.next(markdownContent);
+      const panelContent: PanelData = { content: this.parseMarkdown(data), infoTitle: infoTitle, videoID: videoID };
+      this.panelContent.next(panelContent);
     });
   }
 
