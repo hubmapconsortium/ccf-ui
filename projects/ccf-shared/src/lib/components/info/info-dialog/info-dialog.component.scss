@@ -7,6 +7,14 @@
     .content {
       padding: 3rem;
       text-align: left;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        height: 3rem;
+        margin-bottom: 2.25rem;
+        position: relative;
+      }
     }
 
     .description {
@@ -17,7 +25,6 @@
 
     .close {
       .close-icon {
-        float: right;
         cursor: pointer;
         height: 3rem;
         width: 3rem;
@@ -29,8 +36,11 @@
 
     .title {
       font-size: 1.5rem;
-      margin-bottom: 2.25rem;
-      text-align: center;
+      margin: 0 auto;
+      line-height: 3rem;
+      height: 3rem;
+      justify-self: center;
+      display: flex;
     }
 
     .subtitle {
