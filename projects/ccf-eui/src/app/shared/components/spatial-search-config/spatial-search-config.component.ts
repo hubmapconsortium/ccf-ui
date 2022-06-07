@@ -17,6 +17,8 @@ export class SpatialSearchConfigComponent {
 
   @Input() selectedOrgan?: OrganInfo;
 
+  @Input() sex: Sex;
+
   @Output() readonly updateSex = new EventEmitter<Sex>();
 
   @Output() readonly updateOrgan = new EventEmitter<OrganInfo>();
@@ -24,6 +26,4 @@ export class SpatialSearchConfigComponent {
   @Output() readonly buttonClicked = new EventEmitter();
 
   @Output() readonly closeDialog = new EventEmitter();
-
-  sex: Sex = 'male';
 }
