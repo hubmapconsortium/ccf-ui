@@ -18,7 +18,7 @@ interface Collision {
 export async function doCollisions(scene: SpatialSceneNode[]): Promise<Collision[]> {
   console.log('Starting Collisioning');
   const sourceBoxes = scene
-    .filter(d => !d.scenegraph && !d.wireframe)
+    .filter(d => !d.scenegraph && d.geometry !== 'wireframe')
     .map(model => {
       const mat = new Matrix4(model.transformMatrix);
       const lowerBound = mat.transformAsPoint([-1, -1, -1], []);

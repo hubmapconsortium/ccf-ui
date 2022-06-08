@@ -1183,14 +1183,18 @@ components:
           title: Unpickable
           description: Whether the node should selectable by the user in interfaces.
           type: boolean
-        sphere:
-          title: Sphere
-          description: Whether to show a sphere for the node.
-          type: boolean
-        wireframe:
-          title: Wireframe
-          description: Whether to show a wireframe for the node.
-          type: boolean
+        geometry:
+          title: Geometry
+          description: Geometry to draw, if it is not using a GLTF file.
+          type: string
+          enum:
+            - sphere
+            - cube
+            - wireframe
+            - text
+            - cone
+            - cylinder
+          x-preprocessor-delete: enum
         _lighting:
           title: Lighting
           type: boolean

@@ -36,7 +36,7 @@ export async function processSceneNodes(gltfUrl: string, worldMatrix?: Matrix4, 
         '@id': (node.name || node.id) as string,
         '@type': 'ProcessedNode',
         transformMatrix: new Matrix4(modelMatrix),
-        wireframe: true,
+        geometry: 'wireframe',
         node
       } as ProcessedNode;
       gltfNodes.push({
