@@ -49,27 +49,39 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
   });
 
   it('should update the sex and emit sexChange when updateSex is called', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
+    const { instance } = await shallow.render();
+    instance.organs = [testOrgan, testOrganM, testOrganF];
+    instance.selectedOrgan = testOrgan;
+    const spy = spyOn(instance.sexChange, 'emit');
     instance.updateSex('female');
-    expect(outputs.sexChange.emit).toHaveBeenCalledWith('female');
+    expect(spy).toHaveBeenCalledWith('female');
   });
 
   it('should update selectedOrgan and emit organChange when the organ is updated', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
+    const { instance } = await shallow.render();
+    instance.organs = [testOrgan, testOrganM, testOrganF];
+    instance.selectedOrgan = testOrgan;
+    const spy = spyOn(instance.organChange, 'emit');
     instance.updateOrgan(testOrganF);
-    expect(outputs.organChange.emit).toHaveBeenCalledWith(testOrganF);
+    expect(spy).toHaveBeenCalledWith(testOrganF);
   });
 
   it('buttonClicked does nothing if no organ is selected', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: undefined } });
+    const { instance } = await shallow.render();
+    instance.organs = [testOrgan, testOrganM, testOrganF];
+    instance.selectedOrgan = undefined;
+    const spy = spyOn(instance.itemSelected, 'emit');
     instance.buttonClicked();
-    expect(outputs.itemSelected.emit).toHaveBeenCalledTimes(0);
+    expect(spy).toHaveBeenCalledTimes(0);
   });
 
   it('should emit itemSelected when the continue button is clicked', async () => {
-    const { instance, outputs } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF], selectedOrgan: testOrgan } });
+    const { instance } = await shallow.render();
+    instance.organs = [testOrgan, testOrganM, testOrganF];
+    instance.selectedOrgan = testOrgan;
+    const spy = spyOn(instance.itemSelected, 'emit');
     instance.buttonClicked();
-    expect(outputs.itemSelected.emit).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
   it('should close the dialog when the close() method is called', async () => {
@@ -81,7 +93,8 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
   });
 
   it('should filter organs by sex', async () => {
-    const { instance } = await shallow.render({ bind: { organs: [testOrgan, testOrganM, testOrganF] } });
+    const { instance } = await shallow.render();
+    instance.organs = [testOrgan, testOrganM, testOrganF];
     instance.sex = 'female';
     instance.filterOrgans();
     expect(instance.filteredOrgans).toEqual([testOrgan, testOrganF]);
