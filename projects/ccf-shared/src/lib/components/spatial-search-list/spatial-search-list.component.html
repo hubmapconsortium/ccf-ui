@@ -1,0 +1,17 @@
+<div>
+  {{ label }}
+</div>
+
+<mat-list>
+  <mat-list-item *ngFor="let item of items; index as idx; trackBy: itemId">
+    <mat-checkbox labelPosition="after" [checked]="item.selected" (change)="updateItemSelection(idx, $event.checked)">
+      {{ item.description }}
+    </mat-checkbox>
+
+    <div class="filler"></div>
+
+    <button mat-icon-button (click)="removeItem(idx)">
+      <mat-icon></mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
