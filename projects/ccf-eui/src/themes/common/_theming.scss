@@ -7,6 +7,7 @@
 @use '../../app/shared/components/drawer/drawer.theme' as drawer;
 @use '../../app/shared/components/dropdown/dropdown.component.theme' as dropdown;
 @use '../../app/shared/components/dual-slider/dual-slider.component.theme' as dualSlider;
+@use '../../app/shared/components/spatial-search-config/spatial-search-config.component.theme' as spatialSearchConfig;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme' as spinner;
 @use '../../app/shared/components/thumbnail-carousel/thumbnail-carousel.theme' as thumbnailCarousel;
 @use '../../app/modules/ontology-exploration/ontology-exploration.theme' as ontologyExploration;
@@ -37,6 +38,7 @@
   @include checkbox.theme($theme);
   @include dropdown.theme($theme);
   @include dualSlider.theme($theme);
+  @include spatialSearchConfig.theme($theme);
   @include spinner.theme($theme);
   @include thumbnailCarousel.theme($theme);
   @include filters.theme($theme);
