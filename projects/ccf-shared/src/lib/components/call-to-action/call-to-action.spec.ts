@@ -20,26 +20,16 @@ describe('InfoDialogComponent', () => {
       .provide({ provide: MAT_DIALOG_DATA, useValue: [ ] });
   });
 
-  it('should call the close() method when the close button is pressed', async () => {
-    const { find, instance } = await shallow
-      .mock(MAT_DIALOG_DATA, [])
-      .render();
-    const spy = spyOn(instance, 'close');
-    const closeButton = find('.close-icon');
-
-    closeButton.triggerEventHandler('click', {});
-    expect(spy).toHaveBeenCalled();
+  it('should emit on call to action click', async () => {
+    const { instance } = await shallow.render();
+    instance.onDialogButtonClick();
+    expect(instance.callToActionClicked.emit).toHaveBeenCalledWith();
   });
 
-  it('should close the dialog when the close() method is called', async () => {
-    const { instance, get } = await shallow
-      .mock(MatDialogRef, { close(): void { /* empty */ } })
-      .mock(MAT_DIALOG_DATA, [])
-      .render();
-    const ref = get(MatDialogRef);
+  
+  it('should emit on close click', async () => {
+    const { instance } = await shallow.render();
     instance.close();
-    await wait(250);
-
-    expect(ref.close).toHaveBeenCalled();
+    expect(instance.closeClicked.emit).toHaveBeenCalledWith();
   });
 });

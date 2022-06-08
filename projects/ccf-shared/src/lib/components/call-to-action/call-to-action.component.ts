@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 /**
  * Info button component: Information icon displays project details when clicked.
@@ -42,22 +43,12 @@ export class CallToActionComponent {
   * */
   @Output() readonly closeClicked = new EventEmitter<void>();
 
-  
-  /**
-   * Creates an instance of info button component.
-   *
-   * @param dialog Reference to the dialog creation service.
-   */
-  constructor(private readonly dialog: MatDialog ) {
-  }
-
 
   /**
    * Function to handle the close button click action
    */
   close(): void {
     this.closeClicked.emit();
-    console.log('WELL DONE');
   }
 
 
@@ -66,6 +57,9 @@ export class CallToActionComponent {
    */
   onDialogButtonClick(): void {
     this.callToActionClicked.emit();
-    console.log("LEARN MORE!!!!!!!!!!!!!!!");
+    console.log('GO TO DIALOG')
+    //this.infoButtonService.readMarkdown();
+    
   }
+  
 }
