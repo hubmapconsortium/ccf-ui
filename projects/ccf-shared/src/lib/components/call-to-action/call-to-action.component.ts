@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs/internal/Subscription';
 
 /**
  * Info button component: Information icon displays project details when clicked.
@@ -14,32 +12,32 @@ export class CallToActionComponent {
   /**
    * Title of the info dialog
    */
-  @Input() infoTitle: string = 'New To The Exploration User Interface';
+  @Input() infoTitle: string;
 
   /**
    * Whether the information is for the RUI or EUI
    */
-   @Input() imageUrl: string = "https://i.stack.imgur.com/ORKiT.jpg";  
+  @Input() imageUrl: string;
 
   /**
    * Message to be displayed under image
    */
-  @Input() message: string = 'Spatial Search has Arrived!'
+  @Input() message: string;
 
   /**
-   * Label for the button 
+   * Label for the button
    */
-  @Input() callToAction: string = 'Learn More'
+  @Input() callToAction: string;
 
 
   /**
-  *  Emmitter for component to pass info to parent 
+  *  Emmitter for component to pass info to parent
   * */
   @Output() readonly callToActionClicked = new EventEmitter<void>();
 
 
   /**
-  *  Emmitter for component to pass info to parent 
+  *  Emmitter for component to pass info to parent
   * */
   @Output() readonly closeClicked = new EventEmitter<void>();
 
@@ -57,9 +55,5 @@ export class CallToActionComponent {
    */
   onDialogButtonClick(): void {
     this.callToActionClicked.emit();
-    console.log('GO TO DIALOG')
-    //this.infoButtonService.readMarkdown();
-    
   }
-  
 }

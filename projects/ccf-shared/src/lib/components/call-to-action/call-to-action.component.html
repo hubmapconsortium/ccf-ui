@@ -2,14 +2,14 @@
   <div class="container">
     <div class="content">
       <div class="firstRow">
-        <p class="title" mat-dialog-title>New to the Exlporation User Interface</p>
+        <p class="title" mat-dialog-title>{{infoTitle}}</p>
         <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>
       </div>
-      <img mat-card-sm-image src="/assets/images/tempImg.jpg" layout-fill>
+      <img mat-card-sm-image src="imgURL" layout-fill>
       
       <mat-dialog-content class="mat-typography dialog-content">
         {{message}}
-        <a mat-button class="mat-button" [text]="callToAction" (click)="onDialogButtonClick()"> </a>
+        <a mat-button class="mat-button" [text]="this.callToAction" (click)="onDialogButtonClick()"> </a>
       </mat-dialog-content>
     </div>
   </div>
