@@ -50,6 +50,8 @@ $default-light-background: map-merge($background, (
   mat-selected-option: map-get($default-light-palette, main),
   image-placeholder: map-get($default-light-palette, light-disabled),
   button-bg: map-get($default-light-palette, main),
+  icon-background-hover: map-get($default-light-palette, 300),
+  icon-background-hover2: map-get($default-light-palette, 300),
   button-background-hover: #2f3346,
   mat-slider-primary: map-get($default-light-palette, main),
   info-button-hover: map-get($default-light-palette, 300),

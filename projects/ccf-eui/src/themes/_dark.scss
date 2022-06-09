@@ -43,6 +43,7 @@ $foreground: map-merge(mat.$dark-theme-foreground-palette, (
   organ-off: map-get($primary-colors, 800),
   organ-numbers: #757575,
   selected-ontology-text: map-get($accent, 600),
+  color-hover: map-get($primary-colors, 'white'),
 
   icons-background-hover: #e0e0e0,
   icon-active: map-get($primary-colors, 500), //#9E9E9E
@@ -70,7 +71,9 @@ $background: map-merge(mat.$dark-theme-background-palette, (
   mat-slider-primary: #ececec,
   info-button-hover: map-get($primary-colors, 850),
   checkbox-color: #636363,
-  button-background-hover: #2f3346
+  button-background-hover: #2f3346,
+  icon-background-hover: #2f3346,
+  icon-background-hover2: map-get($primary-colors, 800)
 ));
 
 $theme: (

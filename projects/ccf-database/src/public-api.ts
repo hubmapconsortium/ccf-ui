@@ -7,3 +7,5 @@ export * from './lib/interfaces';
 export * from './lib/spatial-types';
 export * from './lib/hubmap/hubmap-data-import';
 export * from './lib/util/ccf-database-status-tracker';
+export * from './lib/util/probing-sphere-scene';
+export * from './lib/util/origin-scene';
