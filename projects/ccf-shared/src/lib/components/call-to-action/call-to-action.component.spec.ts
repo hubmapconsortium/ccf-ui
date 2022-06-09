@@ -5,7 +5,6 @@ import { CallToActionComponent } from './call-to-action.component';
 describe('CallToActionComponent', () => {
   let shallow: Shallow<CallToActionComponent>;
 
-
   it('should emit on call to action click', async () => {
     const { instance } = await shallow.render();
     instance.onDialogButtonClick();

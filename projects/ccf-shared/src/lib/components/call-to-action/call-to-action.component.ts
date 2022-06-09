@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /**
  * Info button component: Information icon displays project details when clicked.
@@ -6,7 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'ccf-call-to-action',
   templateUrl: './call-to-action.component.html',
-  styleUrls: ['./call-to-action.component.scss']
+  styleUrls: ['./call-to-action.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CallToActionComponent {
   /**
@@ -41,6 +43,16 @@ export class CallToActionComponent {
   * */
   @Output() readonly closeClicked = new EventEmitter<void>();
 
+
+  /**
+   * Constructor function
+   */
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { infoTitle: string; message: string; callToAction: string; imageUrl: string }) {
+    this.infoTitle = data.infoTitle;
+    this.message = data.message;
+    this.callToAction = data.callToAction;
+    this.imageUrl = data.imageUrl;
+  }
 
   /**
    * Function to handle the close button click action
