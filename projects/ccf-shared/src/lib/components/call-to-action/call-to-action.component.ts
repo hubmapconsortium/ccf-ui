@@ -44,15 +44,6 @@ export class CallToActionComponent {
   @Output() readonly closeClicked = new EventEmitter<void>();
 
 
-  /**
-   * Constructor function
-   */
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { infoTitle: string; message: string; callToAction: string; imageUrl: string }) {
-    this.infoTitle = data.infoTitle;
-    this.message = data.message;
-    this.callToAction = data.callToAction;
-    this.imageUrl = data.imageUrl;
-  }
 
   /**
    * Function to handle the close button click action
