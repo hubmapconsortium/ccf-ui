@@ -16,8 +16,6 @@ describe('CallToActionComponent', () => {
     expect(instance.callToActionClicked.emit).toHaveBeenCalledWith();
   });
 
-
-
   it('should emit on close click', async () => {
     const { instance } = await shallow.render();
     instance.close();
