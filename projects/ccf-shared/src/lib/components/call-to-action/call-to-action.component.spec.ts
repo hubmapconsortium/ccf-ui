@@ -1,4 +1,4 @@
-import { CallToActionModule } from 'ccf-shared';
+import { CallToActionModule } from './call-to-action.module';
 import { Shallow } from 'shallow-render';
 import { CallToActionComponent } from './call-to-action.component';
 
