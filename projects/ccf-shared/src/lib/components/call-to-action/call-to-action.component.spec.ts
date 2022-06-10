@@ -16,9 +16,21 @@ describe('CallToActionComponent', () => {
     expect(instance.callToActionClicked.emit).toHaveBeenCalledWith();
   });
 
-  it('should emit on close click', async () => {
+  it('should emit when close button clicked', async () => {
     const { instance } = await shallow.render();
     instance.close();
+    expect(instance.closeClicked.emit).toHaveBeenCalledWith();
+  });
+
+  it('should emit on call to action emission', async () => {
+    const { instance } = await shallow.render();
+    instance.callToActionClicked.emit();
+    expect(instance.callToActionClicked.emit).toHaveBeenCalledWith();
+  });
+
+  it('should emit on close emissions', async () => {
+    const { instance } = await shallow.render();
+    instance.closeClicked.emit();
     expect(instance.closeClicked.emit).toHaveBeenCalledWith();
   });
 });
