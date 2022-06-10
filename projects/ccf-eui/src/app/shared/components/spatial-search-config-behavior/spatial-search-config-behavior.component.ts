@@ -1,10 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { Select } from '@ngxs/store';
 import { OrganInfo } from 'ccf-shared';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { Observable } from 'rxjs';
 
-import { SceneState } from '../../../core/store/scene/scene.state';
+import { actionAsFn } from '../../../core/store/action-as-fn';
+import { SetOrgan, SetSex } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
+import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 import { Sex, SpatialSearchConfigComponent } from '../spatial-search-config/spatial-search-config.component';
+
 
 
 @Component({
@@ -13,68 +18,29 @@ import { Sex, SpatialSearchConfigComponent } from '../spatial-search-config/spat
   styleUrls: ['./spatial-search-config-behavior.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
+export class SpatialSearchConfigBehaviorComponent {
+  @Select(SpatialSearchUiSelectors.sex)
+  readonly sex$: Observable<Sex>;
 
-  organs: OrganInfo[];
+  @Select(SpatialSearchUiSelectors.organs)
+  readonly organs$: Observable<OrganInfo[]>;
 
-  selectedOrgan?: OrganInfo;
+  @Select(SpatialSearchUiSelectors.organ)
+  readonly selectedOrgan$: Observable<OrganInfo | undefined>;
 
-  sex: Sex = 'male';
+  @Dispatch()
+  readonly updateSex = actionAsFn(SetSex);
 
-  readonly sexChange = new EventEmitter<Sex>();
+  @Dispatch()
+  readonly updateOrgan = actionAsFn(SetOrgan);
 
-  readonly organChange = new EventEmitter<OrganInfo>();
-
-  readonly itemSelected = new EventEmitter<{ sex: Sex; organ: OrganInfo }>();
-
-  filteredOrgans: OrganInfo[];
-
-  private readonly subscriptions = new Subscription();
-
-  constructor(
-    cdr: ChangeDetectorRef,
-    scene: SceneState,
-    private readonly dialogRef: MatDialogRef<SpatialSearchConfigComponent>
-  ) {
-    const sub = scene.referenceOrgans$.subscribe((organs: OrganInfo[]) => {
-      this.organs = organs;
-      this.filterOrgans();
-      cdr.markForCheck();
-    });
-
-    this.subscriptions.add(sub);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
-  }
-
-  updateSex(sex: Sex): void {
-    this.sex = sex;
-    this.filterOrgans();
-    this.sexChange.emit(this.sex);
-  }
-
-  updateOrgan(organ?: OrganInfo): void {
-    this.selectedOrgan = organ;
-    this.organChange.emit(this.selectedOrgan);
-  }
+  constructor(private readonly dialogRef: MatDialogRef<SpatialSearchConfigComponent>) { }
 
   buttonClicked(): void {
-    if (this.selectedOrgan) {
-      this.itemSelected.emit({ sex: this.sex, organ: this.selectedOrgan });
-    }
+    // Emit open main spatial search action or open dialog directly?
   }
 
   close(): void {
     this.dialogRef.close();
-  }
-
-  filterOrgans(): void {
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-    this.filteredOrgans = this.organs.filter(organ => organ.hasSex || organ.sex === this.sex);
-    if (this.selectedOrgan && !this.filteredOrgans.includes(this.selectedOrgan)) {
-      this.updateOrgan(undefined);
-    }
   }
 }
