@@ -3,17 +3,16 @@ import { OrganInfo } from 'ccf-shared';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 import { SceneState } from '../scene/scene.state';
-
-import type { SpatialSearchUiModel } from './spatial-search-ui.state';
+import { SpatialSearchUiModel, SpatialSearchUiState } from './spatial-search-ui.state';
 
 
 export class SpatialSearchUiSelectors {
-  @Selector()
+  @Selector([SpatialSearchUiState])
   static sex(state: SpatialSearchUiModel): Sex {
     return state.sex;
   }
 
-  @Selector()
+  @Selector([SpatialSearchUiState])
   static organId(state: SpatialSearchUiModel): string | undefined {
     return state.organId;
   }
