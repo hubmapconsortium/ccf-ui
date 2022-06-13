@@ -1,5 +1,34 @@
 :host {
   display: block;
 
-  // TODO
+  .label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .item {
+    height: 2rem;
+
+    .item-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 2rem;
+
+      .delete {
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+      }
+
+      .filler {
+        flex-grow: 1;
+      }
+    }
+
+    // Remove default padding from material list item
+    & > ::ng-deep * {
+      padding: 0 !important;
+    }
+  }
 }
