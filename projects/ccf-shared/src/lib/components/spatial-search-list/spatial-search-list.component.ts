@@ -27,10 +27,10 @@ export class SpatialSearchListComponent<T extends SpatialSearchListItem> {
   @HostBinding('class') readonly clsName = 'ccf-spatial-search-list';
 
   /** Label for the list */
-  @Input() label: string;
+  @Input() label = '';
 
   /** Items to display */
-  @Input() items: T[];
+  @Input() items: T[] = [];
 
   /** Emits the new items when a selection changes */
   @Output() readonly selectionChanged = new EventEmitter<T[]>();
