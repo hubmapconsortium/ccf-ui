@@ -212,6 +212,14 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.obolibrary.org/obo/UBERON_0001270'
   },
   {
+    src: 'app:placenta',
+    organ: 'Placenta',
+    name: 'Placenta',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001987'
+  },
+  {
     src: 'app:prostate',
     organ: 'Prostate',
     name: 'Prostate',
@@ -241,6 +249,13 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Large Intestine',
     hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0000059'
+  },
+  {
+    src: 'app:spinal-cord',
+    organ: 'Spinal Cord',
+    name: 'Spinal Cord',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002240'
   },
   {
     src: 'app:spleen',
