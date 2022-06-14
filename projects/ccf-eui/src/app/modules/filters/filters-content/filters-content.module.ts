@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { SpatialSearchListModule } from 'ccf-shared';
 
 import { CheckboxModule } from '../../../shared/components/checkbox/checkbox.module';
 import { DropdownModule } from '../../../shared/components/dropdown/dropdown.module';
@@ -10,7 +11,18 @@ import { RunSpatialSearchModule } from '../../../shared/components/run-spatial-s
 import { FiltersContentComponent } from './filters-content.component';
 
 @NgModule({
-  imports: [CommonModule, CheckboxModule, DropdownModule, DualSliderModule, RunSpatialSearchModule, MatButtonModule, MatIconModule],
+  imports: [
+    CommonModule,
+
+    MatButtonModule,
+    MatIconModule,
+
+    CheckboxModule,
+    DropdownModule,
+    DualSliderModule,
+    SpatialSearchListModule,
+    RunSpatialSearchModule
+  ],
   declarations: [FiltersContentComponent],
   exports: [FiltersContentComponent]
 })
