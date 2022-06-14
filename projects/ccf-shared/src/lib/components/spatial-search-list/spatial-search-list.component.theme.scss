@@ -2,15 +2,28 @@
 @use "~@angular/material/theming" as *;
 
 @mixin theme($theme) {
-  $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
-  $primary: map-get($theme, primary);
   $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
 
-  .filter-content {
-    .mat-checkbox-label,
-    .filter-label {
+  .ccf-spatial-search-list {
+    .label {
       color: mat.get-color-from-palette($primary, text);
+    }
+
+    .item .item-content {
+      .description {
+        color: mat.get-color-from-palette($primary, text);
+      }
+
+      .delete {
+        color: mat.get-color-from-palette($foreground, contrast-icon);
+        background-color: transparent;
+
+        &:hover {
+          background-color: map-get($background, icon-background-hover2);
+        }
+      }
     }
 
     .mat-checkbox-frame {

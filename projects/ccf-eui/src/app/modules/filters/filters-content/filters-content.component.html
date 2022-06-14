@@ -18,6 +18,12 @@
     (selectionChange)="updateFilter($event, 'tmc')"></ccf-checkbox>
 </div>
 
+<div *ngIf="spatialSearchFilters.length > 0" class="filter spatial-locations" [class.hidden]="hidden">
+  <ccf-spatial-search-list label="Spatial Locations" [items]="spatialSearchFilters"
+    (selectionChanged)="updateFilter($event, 'spatialSearches')" (itemRemoved)="spatialSearchRemoved.emit($event)">
+  </ccf-spatial-search-list>
+</div>
+
 <div class="button-container">
   <button class="spatial-search-button" mat-button (click)="openSpatialSearch()">Spatial Search</button>
   <div class="button-container-end" [class.hidden]="hidden">
