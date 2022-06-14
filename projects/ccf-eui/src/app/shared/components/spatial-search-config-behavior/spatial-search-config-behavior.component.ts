@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
 import { OrganInfo } from 'ccf-shared';
@@ -9,6 +9,7 @@ import { actionAsFn } from '../../../core/store/action-as-fn';
 import { SetOrgan, SetSex } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
 import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 import { Sex, SpatialSearchConfigComponent } from '../spatial-search-config/spatial-search-config.component';
+import { SpatialSearchUiBehaviorComponent } from '../spatial-search-ui-behavior/spatial-search-ui-behavior.component';
 
 
 
@@ -34,10 +35,14 @@ export class SpatialSearchConfigBehaviorComponent {
   @Dispatch()
   readonly updateOrgan = actionAsFn(SetOrgan);
 
-  constructor(private readonly dialogRef: MatDialogRef<SpatialSearchConfigComponent>) { }
+  constructor(
+    private readonly dialogRef: MatDialogRef<SpatialSearchConfigComponent>,
+    private readonly spatialSearchDialog: MatDialog
+  ) { }
 
   buttonClicked(): void {
-    // Emit open main spatial search action or open dialog directly?
+    this.spatialSearchDialog.open(SpatialSearchUiBehaviorComponent);
+    this.close();
   }
 
   close(): void {
