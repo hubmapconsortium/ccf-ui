@@ -126,7 +126,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
         layers.push(textLayer('text', nodes.filter(n => n.unpickable), { pickable: false }));
         layers.push(textLayer('textPickable', nodes.filter(n => !n.unpickable), { pickable: true }));
       } else if (geometry === 'wireframe') {
-        layers.push(meshLayer(geometry, nodes, { wireframe: false, pickable: false, geometry }));
+        layers.push(meshLayer(geometry, nodes, { wireframe: true, pickable: false, geometry }));
       } else {
         layers.push(meshLayer(geometry, nodes.filter(n => n.unpickable), { wireframe: false, pickable: false, geometry }));
         layers.push(meshLayer(`${geometry}Pickable`, nodes.filter(n => !n.unpickable), { wireframe: false, pickable: true, geometry }));
