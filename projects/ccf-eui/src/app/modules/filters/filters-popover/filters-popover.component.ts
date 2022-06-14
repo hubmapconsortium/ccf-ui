@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { SpatialSearchListItem } from 'ccf-shared';
 
 /**
  * Popover box for filter settings
@@ -10,7 +9,7 @@ import { SpatialSearchListItem } from 'ccf-shared';
   styleUrls: ['./filters-popover.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FiltersPopoverComponent<S extends SpatialSearchListItem = SpatialSearchListItem> {
+export class FiltersPopoverComponent {
   /**
    * Allows the filters to be set from outside the component, and still render / function normally
    */
@@ -33,19 +32,9 @@ export class FiltersPopoverComponent<S extends SpatialSearchListItem = SpatialSe
   @Input() providerFilters: string[];
 
   /**
-   * List of spatial searches
-   */
-  @Input() spatialSearchFilters: [] = [];
-
-  /**
    * Emits the current filters
    */
   @Output() readonly filtersChange = new EventEmitter<Record<string, unknown>>();
-
-  /**
-   * Emits when a spatial search is removed/deleted
-   */
-  @Output() readonly spatialSearchRemoved = new EventEmitter<S>();
 
   /**
    * Keeps track of whether or not the filters popover box is visible or not

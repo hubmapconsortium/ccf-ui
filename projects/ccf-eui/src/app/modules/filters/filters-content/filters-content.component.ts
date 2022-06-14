@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SpatialSearchListItem } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
@@ -17,7 +16,7 @@ import {
   styleUrls: ['./filters-content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FiltersContentComponent<S extends SpatialSearchListItem> {
+export class FiltersContentComponent {
 
   /**
    * Determines if the filters are visible
@@ -40,19 +39,9 @@ export class FiltersContentComponent<S extends SpatialSearchListItem> {
   @Input() providerFilters: string[];
 
   /**
-   * List of spatial searches
-   */
-  @Input() spatialSearchFilters: S[] = [];
-
-  /**
    * Emits the filter change when they happen
    */
   @Output() readonly filtersChange = new EventEmitter<Record<string, unknown>>();
-
-  /**
-   * Emits when a spatial search is removed/deleted
-   */
-  @Output() readonly spatialSearchRemoved = new EventEmitter<S>();
 
   /**
    * Emits the filters to be applied

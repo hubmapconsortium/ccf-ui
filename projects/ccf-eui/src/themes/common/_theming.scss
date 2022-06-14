@@ -17,7 +17,6 @@
 @use '../../../../ccf-shared/src/lib/components/organ-selector/organ-selector.component.theme' as organSelector;
 @use '../../../../ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
 @use '../../../../ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss' as infoButton;
-@use '../../../../ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.theme.scss' as spatialSearchList;
 @use '../../app/shared/components/viewer/viewer.component.theme.scss' as viewer;
 @use '../../app/modules/results-browser/donor-card/donor-card.component.theme.scss' as donorCard;
 @use '../../app/modules/results-browser/tissue-section-vis/tissue-section-vis.theme.scss' as tissueVis;
@@ -51,7 +50,6 @@
   @include organSelector.theme($theme);
   @include infoDialog.theme($theme);
   @include infoButton.theme($theme);
-  @include spatialSearchList.theme($theme);
   @include viewer.theme($theme);
   @include donorCard.theme($theme);
   @include tissueVis.theme($theme);

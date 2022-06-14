@@ -43,6 +43,3 @@ export * from './lib/services/data-source/data-source.service';
 export * from './lib/services/data-source/api-endpoint.service';
 export * from './lib/services/data-source/ccf-database.service';
 export * from './lib/services/data-source/injector-delegate.service';
-
-export * from './lib/components/spatial-search-list/spatial-search-list.component';
-export * from './lib/components/spatial-search-list/spatial-search-list.module';
