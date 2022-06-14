@@ -218,6 +218,7 @@
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { SpatialSearchListModule } from &#x27;ccf-shared&#x27;;
 
 import { CheckboxModule } from &#x27;../../../shared/components/checkbox/checkbox.module&#x27;;
 import { DropdownModule } from &#x27;../../../shared/components/dropdown/dropdown.module&#x27;;
@@ -225,7 +226,17 @@ import { DualSliderModule } from &#x27;../../../shared/components/dual-slider/du
 import { FiltersContentComponent } from &#x27;./filters-content.component&#x27;;
 
 @NgModule({
-  imports: [CommonModule, CheckboxModule, DropdownModule, DualSliderModule, MatButtonModule, MatIconModule],
+  imports: [
+    CommonModule,
+
+    MatButtonModule,
+    MatIconModule,
+
+    CheckboxModule,
+    DropdownModule,
+    DualSliderModule,
+    SpatialSearchListModule
+  ],
   declarations: [FiltersContentComponent],
   exports: [FiltersContentComponent]
 })

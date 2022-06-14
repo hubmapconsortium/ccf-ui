@@ -182,13 +182,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/FiltersContentModule.html" data-type="entity-link" >FiltersContentModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-FiltersContentModule-901f2a6cd6fc67edaa88228e29949e3c"' : 'data-target="#xs-components-links-module-FiltersContentModule-901f2a6cd6fc67edaa88228e29949e3c"' }>
+                                            'data-target="#components-links-module-FiltersContentModule-25378b0874dd4d6985aa4cedf1cb449b"' : 'data-target="#xs-components-links-module-FiltersContentModule-25378b0874dd4d6985aa4cedf1cb449b"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FiltersContentModule-901f2a6cd6fc67edaa88228e29949e3c"' :
-                                            'id="xs-components-links-module-FiltersContentModule-901f2a6cd6fc67edaa88228e29949e3c"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FiltersContentModule-25378b0874dd4d6985aa4cedf1cb449b"' :
+                                            'id="xs-components-links-module-FiltersContentModule-25378b0874dd4d6985aa4cedf1cb449b"' }>
                                             <li class="link">
                                                 <a href="components/FiltersContentComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FiltersContentComponent</a>
                                             </li>
