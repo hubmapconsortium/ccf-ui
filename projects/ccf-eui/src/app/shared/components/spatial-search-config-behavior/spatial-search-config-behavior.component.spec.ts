@@ -2,6 +2,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { of } from 'rxjs/internal/observable/of';
 import { Shallow } from 'shallow-render';
 import { SceneState } from '../../../core/store/scene/scene.state';
+import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 
 import { SpatialSearchConfigBehaviorComponent } from './spatial-search-config-behavior.component';
 import { SpatialSearchConfigBehaviorModule } from './spatial-search-config-behavior.module';
@@ -14,10 +15,12 @@ function wait(duration: number): Promise<void> {
 
 describe('SpatialSearchConfigBehaviorComponent', () => {
   let shallow: Shallow<SpatialSearchConfigBehaviorComponent>;
+  let mockSpatialSearchUiSelectors: jasmine.SpyObj<SpatialSearchUiSelectors>;
 
   beforeEach(() => {
     shallow = new Shallow(SpatialSearchConfigBehaviorComponent, SpatialSearchConfigBehaviorModule)
       .mock(MatDialogRef, { close(): void { /* Empty */ } })
+      .mock(SpatialSearchUiSelectors, mockSpatialSearchUiSelectors)
       .mock(SceneState, { referenceOrgans$: of([]) });
   });
 

@@ -1,5 +1,5 @@
-@use "~@angular/material" as mat;
-@use "~@angular/material/theming" as *;
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
 
 @mixin theme($theme) {
   $accent: map-get($theme, accent);
@@ -7,19 +7,16 @@
   $primary: map-get($theme, primary);
   $background: map-get($theme, background);
 
-  .filter-content {
-    .mat-checkbox-label,
-    .filter-label {
-      color: mat.get-color-from-palette($primary, text);
-    }
+  .mat-checkbox-label, .filter-label {
+    color: mat.get-color-from-palette($primary, text)
+  }
 
-    .mat-checkbox-frame {
-      border-color: mat.get-color-from-palette($foreground, checkbox-color);
-    }
+  .mat-checkbox-frame {
+    border-color: mat.get-color-from-palette($foreground, checkbox-color);
+  }
 
-    .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-      background-color: mat.get-color-from-palette($background, checkbox-color);
-    }
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: mat.get-color-from-palette($background, checkbox-color);
   }
 }
