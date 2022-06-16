@@ -22,15 +22,15 @@ describe('InfoButtonService', () => {
     expect(service.parseMarkdown(testData)).toEqual([{ title: 'About', content: '' }]);
   });
 
-  it('readMarkdown function should call parseMarkdown function', async () => {
+  it('updateData function should call parseMarkdown function', async () => {
     const spy = spyOn(service, 'parseMarkdown');
-    service.readMarkdown();
+    service.updateData('url', 'id', 'title');
     expect(spy).toHaveBeenCalled();
   });
 
-  it('readMarkdown function should emit data to the markdownContent behavior subject', async () => {
-    const spy = spyOn(service.markdownContent, 'next');
-    service.readMarkdown();
+  it('updateData function should emit data to the panelContent behavior subject', async () => {
+    const spy = spyOn(service.panelContent, 'next');
+    service.updateData('url', 'id', 'title');
     expect(spy).toHaveBeenCalled();
   });
 });
