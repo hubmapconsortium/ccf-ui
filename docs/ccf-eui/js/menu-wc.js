@@ -182,13 +182,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/FiltersContentModule.html" data-type="entity-link" >FiltersContentModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-FiltersContentModule-25378b0874dd4d6985aa4cedf1cb449b"' : 'data-target="#xs-components-links-module-FiltersContentModule-25378b0874dd4d6985aa4cedf1cb449b"' }>
+                                            'data-target="#components-links-module-FiltersContentModule-a65760134a60e5f16b1ed0dfd065688a"' : 'data-target="#xs-components-links-module-FiltersContentModule-a65760134a60e5f16b1ed0dfd065688a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FiltersContentModule-25378b0874dd4d6985aa4cedf1cb449b"' :
-                                            'id="xs-components-links-module-FiltersContentModule-25378b0874dd4d6985aa4cedf1cb449b"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FiltersContentModule-a65760134a60e5f16b1ed0dfd065688a"' :
+                                            'id="xs-components-links-module-FiltersContentModule-a65760134a60e5f16b1ed0dfd065688a"' }>
                                             <li class="link">
                                                 <a href="components/FiltersContentComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FiltersContentComponent</a>
                                             </li>
@@ -296,6 +296,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'id="xs-components-links-module-ResultsBrowserModule-423c9c6cad542bd03e2f94ee47f0a850"' }>
                                             <li class="link">
                                                 <a href="components/ResultsBrowserComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ResultsBrowserComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/RunSpatialSearchModule.html" data-type="entity-link" >RunSpatialSearchModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-RunSpatialSearchModule-9dec97e597c08e5e2d835c53cf3bfb44"' : 'data-target="#xs-components-links-module-RunSpatialSearchModule-9dec97e597c08e5e2d835c53cf3bfb44"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-RunSpatialSearchModule-9dec97e597c08e5e2d835c53cf3bfb44"' :
+                                            'id="xs-components-links-module-RunSpatialSearchModule-9dec97e597c08e5e2d835c53cf3bfb44"' }>
+                                            <li class="link">
+                                                <a href="components/RunSpatialSearchComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >RunSpatialSearchComponent</a>
                                             </li>
                                         </ul>
                                     </li>

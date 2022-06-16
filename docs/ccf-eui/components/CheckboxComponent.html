@@ -622,10 +622,6 @@ export class CheckboxComponent {
     }
   }
 }
-
-.option {
-  color: #fafafa;
-}
 </code></pre>
     </div>
 
@@ -655,7 +651,7 @@ export class CheckboxComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="filter-container">  <div class="filter-label">{{ label }}</div>  <div class="options-container" [class.three]="columns === 3" [class.four]="columns === 4">    <div *ngFor="let option of options" class="option">      <mat-checkbox [checked]="selection?.includes(option)" (change)="filterOnChange($event, option)">        {{ option }}      </mat-checkbox>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CheckboxComponent'};
 </script>

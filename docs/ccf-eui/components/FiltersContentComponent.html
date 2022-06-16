@@ -903,9 +903,9 @@ export class FiltersContentComponent&lt;S extends SpatialSearchListItem&gt; {
   &lt;/ccf-spatial-search-list&gt;
 &lt;/div&gt;
 
-&lt;div class&#x3D;&quot;button-container&quot;&gt;
-  &lt;button class&#x3D;&quot;spatial-search-button&quot; mat-button (click)&#x3D;&quot;openSpatialSearch()&quot;&gt;Spatial Search&lt;/button&gt;
-  &lt;div class&#x3D;&quot;button-container-end&quot; [class.hidden]&#x3D;&quot;hidden&quot;&gt;
+&lt;div class&#x3D;&quot;button-container&quot; [class.hidden]&#x3D;&quot;hidden&quot;&gt;
+  &lt;ccf-run-spatial-search (buttonClick)&#x3D;&quot;openSpatialSearch()&quot;&gt;&lt;/ccf-run-spatial-search&gt;
+  &lt;div class&#x3D;&quot;right-group&quot;&gt;
     &lt;button class&#x3D;&quot;outline-button&quot; mat-button (click)&#x3D;&quot;applyButtonClick()&quot;&gt;APPLY FILTERS&lt;/button&gt;
     &lt;div class&#x3D;&quot;refresh-icon&quot;&gt;
       &lt;mat-icon class&#x3D;&quot;icon refresh&quot; (click)&#x3D;&quot;refreshFilters()&quot;&gt;refresh&lt;/mat-icon&gt;
@@ -939,41 +939,51 @@ export class FiltersContentComponent&lt;S extends SpatialSearchListItem&gt; {
   justify-content: space-between;
   margin-top: 2rem;
 
+  ::ng-deep button {
+    border-width: 1px;
+    border-style: solid;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+
   button {
     border-width: 1px;
     border-style: solid;
   }
 
-}
-
-.button-container-end {
   &amp;.hidden {
     opacity: 0;
     transition-duration: 0.2s;
   }
 
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-.outline-button {
-  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #0000001d;
-}
-
-.refresh-icon {
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  margin-right: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.6s;
-
-  .refresh {
-    cursor: pointer;
-    transition: .6s;
-    transition-property: background;
+  .right-group {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  
+    .outline-button {
+      box-shadow: 0.1rem 0.1rem 0.2rem 0rem #0000001d;
+    }
+    
+    .refresh-icon {
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      margin-right: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.6s;
+    
+      .refresh {
+        cursor: pointer;
+        transition: .6s;
+        transition-property: background;
+      }
+    }
   }
 }
 
@@ -1024,8 +1034,8 @@ export class FiltersContentComponent&lt;S extends SpatialSearchListItem&gt; {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="patient-filters" [class.hidden]="hidden">  <ccf-dropdown label="Sex" [options]="[\'Both\', \'Male\', \'Female\']" [selection]="filters?.sex"    (selectionChange)="updateFilter($event, \'sex\')"></ccf-dropdown>  <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="filters?.ageRange"    (selectionChange)="updateFilter($event, \'ageRange\')"></ccf-dual-slider>  <ccf-dual-slider label="BMI" [valueRange]="[13, 83]" [selection]="filters?.bmiRange"    (selectionChange)="updateFilter($event, \'bmiRange\')"></ccf-dual-slider></div><div class="filter assays" [class.hidden]="hidden">  <ccf-checkbox label="Assay Types" [columns]="4" [options]="technologyFilters" [selection]="filters?.technologies"    (selectionChange)="updateFilter($event, \'technologies\')"></ccf-checkbox></div><div class="filter providers" [class.hidden]="hidden">  <ccf-checkbox label="Tissue Providers" [columns]="3" [options]="providerFilters" [selection]="filters?.tmc"    (selectionChange)="updateFilter($event, \'tmc\')"></ccf-checkbox></div><div *ngIf="spatialSearchFilters.length > 0" class="filter spatial-locations" [class.hidden]="hidden">  <ccf-spatial-search-list label="Spatial Locations" [items]="spatialSearchFilters"    (selectionChanged)="updateFilter($event, \'spatialSearches\')" (itemRemoved)="spatialSearchRemoved.emit($event)">  </ccf-spatial-search-list></div><div class="button-container">  <button class="spatial-search-button" mat-button (click)="openSpatialSearch()">Spatial Search</button>  <div class="button-container-end" [class.hidden]="hidden">    <button class="outline-button" mat-button (click)="applyButtonClick()">APPLY FILTERS</button>    <div class="refresh-icon">      <mat-icon class="icon refresh" (click)="refreshFilters()">refresh</mat-icon>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
+        var COMPONENT_TEMPLATE = '<div><div class="patient-filters" [class.hidden]="hidden">  <ccf-dropdown label="Sex" [options]="[\'Both\', \'Male\', \'Female\']" [selection]="filters?.sex"    (selectionChange)="updateFilter($event, \'sex\')"></ccf-dropdown>  <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="filters?.ageRange"    (selectionChange)="updateFilter($event, \'ageRange\')"></ccf-dual-slider>  <ccf-dual-slider label="BMI" [valueRange]="[13, 83]" [selection]="filters?.bmiRange"    (selectionChange)="updateFilter($event, \'bmiRange\')"></ccf-dual-slider></div><div class="filter assays" [class.hidden]="hidden">  <ccf-checkbox label="Assay Types" [columns]="4" [options]="technologyFilters" [selection]="filters?.technologies"    (selectionChange)="updateFilter($event, \'technologies\')"></ccf-checkbox></div><div class="filter providers" [class.hidden]="hidden">  <ccf-checkbox label="Tissue Providers" [columns]="3" [options]="providerFilters" [selection]="filters?.tmc"    (selectionChange)="updateFilter($event, \'tmc\')"></ccf-checkbox></div><div *ngIf="spatialSearchFilters.length > 0" class="filter spatial-locations" [class.hidden]="hidden">  <ccf-spatial-search-list label="Spatial Locations" [items]="spatialSearchFilters"    (selectionChanged)="updateFilter($event, \'spatialSearches\')" (itemRemoved)="spatialSearchRemoved.emit($event)">  </ccf-spatial-search-list></div><div class="button-container" [class.hidden]="hidden">  <ccf-run-spatial-search (buttonClick)="openSpatialSearch()"></ccf-run-spatial-search>  <div class="right-group">    <button class="outline-button" mat-button (click)="applyButtonClick()">APPLY FILTERS</button>    <div class="refresh-icon">      <mat-icon class="icon refresh" (click)="refreshFilters()">refresh</mat-icon>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FiltersContentComponent'};
 </script>
