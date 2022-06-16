@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
@@ -39,6 +40,8 @@ export const ROOT_STATES = [
       // Consider setting compatibility and executionStrategy
       // https://www.ngxs.io/advanced/options
     }),
+
+    NgxsDispatchPluginModule.forRoot(),
 
     // Logger plugin must be last!
     NgxsLoggerPluginModule.forRoot({

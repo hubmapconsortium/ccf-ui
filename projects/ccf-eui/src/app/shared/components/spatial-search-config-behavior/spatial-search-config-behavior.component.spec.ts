@@ -1,4 +1,6 @@
+import { TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NgxsModule } from '@ngxs/store';
 import { of } from 'rxjs/internal/observable/of';
 import { Shallow } from 'shallow-render';
 import { SceneState } from '../../../core/store/scene/scene.state';
@@ -16,6 +18,10 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
   let shallow: Shallow<SpatialSearchConfigBehaviorComponent>;
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [NgxsModule.forRoot()]
+    });
+
     shallow = new Shallow(SpatialSearchConfigBehaviorComponent, SpatialSearchConfigBehaviorModule)
       .mock(MatDialogRef, { close(): void { /* Empty */ } })
       .mock(SceneState, { referenceOrgans$: of([]) });
