@@ -1,0 +1,12 @@
+:host {
+  .run-spatial-search-button {
+    ::ng-deep .mat-button-wrapper {
+      display: flex;
+      align-items: center;
+  
+      .mat-icon {
+        margin-left: 9.75px;
+      }
+    }
+  }
+}

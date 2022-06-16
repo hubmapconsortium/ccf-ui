@@ -24,9 +24,9 @@
   </ccf-spatial-search-list>
 </div>
 
-<div class="button-container">
-  <button class="spatial-search-button" mat-button (click)="openSpatialSearch()">Spatial Search</button>
-  <div class="button-container-end" [class.hidden]="hidden">
+<div class="button-container" [class.hidden]="hidden">
+  <ccf-run-spatial-search (buttonClick)="openSpatialSearch()"></ccf-run-spatial-search>
+  <div class="right-group">
     <button class="outline-button" mat-button (click)="applyButtonClick()">APPLY FILTERS</button>
     <div class="refresh-icon">
       <mat-icon class="icon refresh" (click)="refreshFilters()">refresh</mat-icon>
