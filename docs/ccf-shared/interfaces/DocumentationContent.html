@@ -200,8 +200,6 @@ should look like in the info dialog</p>
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
 
-const documentationURL &#x3D; &#x27;assets/docs/README.md&#x27;;
-
 /**
  * The structure to define how each documentation panel
  * should look like in the info dialog
@@ -215,6 +213,12 @@ export interface DocumentationContent {
   content: string;
 }
 
+export interface PanelData {
+  content: DocumentationContent[];
+  infoTitle: string;
+  videoID: string;
+}
+
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -222,17 +226,17 @@ export interface DocumentationContent {
 export class InfoButtonService {
 
   /** Subject to send the documentation data to the component when its done processing */
-  markdownContent: BehaviorSubject&lt;DocumentationContent[]&gt; &#x3D; new BehaviorSubject&lt;DocumentationContent[]&gt;([]);
+  panelContent: BehaviorSubject&lt;PanelData&gt; &#x3D; new BehaviorSubject&lt;PanelData&gt;({ content: [], infoTitle: &#x27;&#x27;, videoID: &#x27;&#x27; });
 
   constructor(private readonly http: HttpClient) { }
 
   /**
-   * Read the markdown file to split it by h1 tags.
+   * Read the markdown file to split it by h1 tags and update the panel title and videoID.
    */
-  readMarkdown(): void {
-    this.http.get(documentationURL, { responseType: &#x27;text&#x27; }).subscribe((data: string) &#x3D;&gt; {
-      const markdownContent: DocumentationContent[] &#x3D; this.parseMarkdown(data);
-      this.markdownContent.next(markdownContent);
+  updateData(url: string, videoID: string, infoTitle: string): void {
+    this.http.get(url, { responseType: &#x27;text&#x27; }).subscribe((data: string) &#x3D;&gt; {
+      const panelContent: PanelData &#x3D; { content: this.parseMarkdown(data), infoTitle: infoTitle, videoID: videoID };
+      this.panelContent.next(panelContent);
     });
   }
 
@@ -248,10 +252,11 @@ export class InfoButtonService {
     const splitByHeaderTag: string[] &#x3D; data.split(&#x27;# &#x27;);
     for (const split of splitByHeaderTag) {
       if (split.length) {
-        const headerAndContent: string[] &#x3D; split.split(&#x27;\n\n&#x27;);
+        const newLine &#x3D; split.includes(&#x27;\n\n&#x27;) ? &#x27;\n\n&#x27; : &#x27;\r\n\r\n&#x27;;
+        const headerAndContent: string[] &#x3D; split.split(newLine);
         markdownContent.push({
           title: headerAndContent[0],
-          content: headerAndContent.splice(1).join(&#x27;\n\n&#x27;)
+          content: headerAndContent.splice(1).join(newLine)
         });
       }
     }

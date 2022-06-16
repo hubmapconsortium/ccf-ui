@@ -352,6 +352,40 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/SpatialSearchUiBehaviorModule.html" data-type="entity-link" >SpatialSearchUiBehaviorModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchUiBehaviorModule-0b87ee8eeb131e9e9a269c68b677ab53"' : 'data-target="#xs-components-links-module-SpatialSearchUiBehaviorModule-0b87ee8eeb131e9e9a269c68b677ab53"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiBehaviorModule-0b87ee8eeb131e9e9a269c68b677ab53"' :
+                                            'id="xs-components-links-module-SpatialSearchUiBehaviorModule-0b87ee8eeb131e9e9a269c68b677ab53"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchUiBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiBehaviorComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/SpinnerOverlayModule.html" data-type="entity-link" >SpinnerOverlayModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -458,6 +492,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <li class="link">
                                 <a href="classes/MessageChannel.html" data-type="entity-link" >MessageChannel</a>
                             </li>
+                            <li class="link">
+                                <a href="classes/SetOrgan.html" data-type="entity-link" >SetOrgan</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SetSex.html" data-type="entity-link" >SetSex</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SpatialSearchUiSelectors.html" data-type="entity-link" >SpatialSearchUiSelectors</a>
+                            </li>
                         </ul>
                     </li>
                         <li class="chapter">
@@ -494,6 +537,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/SceneState.html" data-type="entity-link" >SceneState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/SpatialSearchUiState.html" data-type="entity-link" >SpatialSearchUiState</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/WorkerDataSourceService.html" data-type="entity-link" >WorkerDataSourceService</a>
@@ -561,6 +607,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SearchResult.html" data-type="entity-link" >SearchResult</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SpatialSearchUiModel.html" data-type="entity-link" >SpatialSearchUiModel</a>
                             </li>
                         </ul>
                     </li>

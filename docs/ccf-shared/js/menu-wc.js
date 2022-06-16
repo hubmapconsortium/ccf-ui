@@ -383,6 +383,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/OrganInfo.html" data-type="entity-link" >OrganInfo</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/PanelData.html" data-type="entity-link" >PanelData</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/PluckUniqueOptions.html" data-type="entity-link" >PluckUniqueOptions</a>
                             </li>
                             <li class="link">

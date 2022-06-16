@@ -14,13 +14,13 @@
 <title>cluster_OntologyTreeModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 204,-230.8 204,-32.8 8,-32.8"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_OntologyTreeModule_exports</title>
-<polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 196,-222.8 196,-170.8 16,-170.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_OntologyTreeModule_declarations</title>
 <polygon fill="none" stroke="black" points="18,-40.8 18,-92.8 194,-92.8 194,-40.8 18,-40.8"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_OntologyTreeModule_exports</title>
+<polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 196,-222.8 196,-170.8 16,-170.8"/>
 </g>
 <!-- OntologyTreeComponent -->
 <g id="node1" class="node">

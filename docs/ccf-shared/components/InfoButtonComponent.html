@@ -179,6 +179,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#documentationUrl" >documentationUrl</a>
+                            </li>
+                            <li>
                                 <a href="#infoTitle" >infoTitle</a>
                             </li>
                             <li>
@@ -206,7 +209,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -269,6 +272,27 @@
 
     <section>
     <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="documentationUrl"></a>
+                        <b>documentationUrl</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:29</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -350,15 +374,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>launchInfoDialog(data: <a href="../interfaces/DocumentationContent.html" target="_self">DocumentationContent[]</a>)</code>
+<code>launchInfoDialog(data: <a href="../interfaces/PanelData.html" target="_self">PanelData</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:58</a></div>
                 </td>
             </tr>
 
@@ -382,7 +406,7 @@
                                 <tr>
                                     <td>data</td>
                                     <td>
-                                                <code><a href="../interfaces/DocumentationContent.html" target="_self" >DocumentationContent[]</a></code>
+                                                <code><a href="../interfaces/PanelData.html" target="_self" >PanelData</a></code>
                                     </td>
 
                                     <td>
@@ -427,8 +451,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:51</a></div>
                 </td>
             </tr>
 
@@ -467,15 +491,15 @@ is destroyed</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:76</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Detects button click and reads markdown function</p>
+                    <div class="io-description"><p>Detects button click and updates panel data</p>
 </div>
 
                     <div class="io-description">
@@ -512,7 +536,7 @@ is destroyed</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -529,7 +553,7 @@ is destroyed</p>
 import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
 import { Subscription } from &#x27;rxjs&#x27;;
 
-import { DocumentationContent } from &#x27;../info-button/info-button.service&#x27;;
+import { PanelData } from &#x27;../info-button/info-button.service&#x27;;
 import { InfoDialogComponent } from &#x27;../info-dialog/info-dialog.component&#x27;;
 import { InfoButtonService } from &#x27;./info-button.service&#x27;;
 
@@ -553,6 +577,8 @@ export class InfoButtonComponent implements OnDestroy {
    */
   @Input() videoID: string;
 
+  @Input() documentationUrl: string;
+
   private readonly subscriptions &#x3D; new Subscription();
 
   /**
@@ -562,8 +588,8 @@ export class InfoButtonComponent implements OnDestroy {
    * @param infoButtonService Reference to the info button service
    */
   constructor(private readonly dialog: MatDialog, private readonly infoButtonService: InfoButtonService) {
-    this.subscriptions.add(infoButtonService.markdownContent.subscribe(data &#x3D;&gt; {
-      if (data.length) {
+    this.subscriptions.add(infoButtonService.panelContent.subscribe(data &#x3D;&gt; {
+      if (data.content.length) {
         this.launchInfoDialog(data);
       }
     }));
@@ -580,24 +606,26 @@ export class InfoButtonComponent implements OnDestroy {
   /**
    * Opens the info dialogue with the project details
    */
-  launchInfoDialog(data: DocumentationContent[]): void {
-    this.dialog.open(InfoDialogComponent, {
-      autoFocus: false,
-      panelClass: &#x27;modal-animated&#x27;,
-      width: &#x27;60rem&#x27;,
-      data: {
-        title: this.infoTitle,
-        content: data,
-        videoID: this.videoID
-      }
-    });
+  launchInfoDialog(data: PanelData): void {
+    if (this.dialog.openDialogs.length &#x3D;&#x3D; 0) { //Prevent multiple dialogs from opening
+      this.dialog.open(InfoDialogComponent, {
+        autoFocus: false,
+        panelClass: &#x27;modal-animated&#x27;,
+        width: &#x27;72rem&#x27;,
+        data: {
+          title: data.infoTitle,
+          content: data.content,
+          videoID: data.videoID
+        }
+      });
+    }
   }
 
   /**
-   * Detects button click and reads markdown function
+   * Detects button click and updates panel data
    */
   onDialogButtonClick(): void {
-    this.infoButtonService.readMarkdown();
+    this.infoButtonService.updateData(this.documentationUrl, this.videoID, this.infoTitle);
   }
 }
 </code></pre>

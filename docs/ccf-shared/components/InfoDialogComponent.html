@@ -594,11 +594,13 @@ export class InfoDialogComponent implements OnInit {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;rui-about wrapper&quot;&gt;
   &lt;div class&#x3D;&quot;container&quot;&gt;
-    &lt;div class&#x3D;&quot;close&quot;&gt;
-      &lt;mat-icon class&#x3D;&quot;material-icons close-icon&quot; (click)&#x3D;&quot;close()&quot;&gt;clear&lt;/mat-icon&gt;
-    &lt;/div&gt;
     &lt;div class&#x3D;&quot;content&quot;&gt;
-      &lt;h2 class&#x3D;&quot;title&quot; mat-dialog-title&gt;{{infoTitle}}&lt;/h2&gt;
+      &lt;div class&#x3D;&quot;header&quot;&gt;
+        &lt;h2 class&#x3D;&quot;title&quot; mat-dialog-title&gt;{{infoTitle}}&lt;/h2&gt;
+        &lt;div class&#x3D;&quot;close&quot;&gt;
+          &lt;mat-icon class&#x3D;&quot;material-icons close-icon&quot; (click)&#x3D;&quot;close()&quot;&gt;clear&lt;/mat-icon&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
       
       &lt;mat-dialog-content class&#x3D;&quot;mat-typography dialog-content&quot;&gt;
         &lt;div *ngFor&#x3D;&quot;let content of documentationContents; let i &#x3D; index;&quot; class&#x3D;&quot;panel&quot;&gt;
@@ -633,6 +635,14 @@ export class InfoDialogComponent implements OnInit {
     .content {
       padding: 3rem;
       text-align: left;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        height: 3rem;
+        margin-bottom: 2.25rem;
+        position: relative;
+      }
     }
 
     .description {
@@ -643,15 +653,22 @@ export class InfoDialogComponent implements OnInit {
 
     .close {
       .close-icon {
-        float: right;
         cursor: pointer;
+        height: 3rem;
+        width: 3rem;
+        line-height: 3rem;
+        text-align: center;
+        transition: .6s;
       }
     }
 
     .title {
       font-size: 1.5rem;
-      margin-bottom: 2.25rem;
-      text-align: center;
+      margin: 0 auto;
+      line-height: 3rem;
+      height: 3rem;
+      justify-self: center;
+      display: flex;
     }
 
     .subtitle {
@@ -684,10 +701,20 @@ export class InfoDialogComponent implements OnInit {
 
       .variable-binding {
         font-weight: 300;
+        display: flex;
 
         &amp;.first {
-          padding-right: 3rem;
-          width: 50%;
+          padding-right: 1rem;
+          width: 73%;
+        }
+
+        ::ng-deep ul {
+          margin: 0;
+        }
+
+        ::ng-deep img {
+          margin-left: 1rem;
+          float: right;
         }
       }
 
@@ -698,7 +725,6 @@ export class InfoDialogComponent implements OnInit {
         ::ng-deep iframe {
           width: 100%;
           height: 100%;
-          max-height: 17.5rem;
         }
       }
     }
@@ -733,7 +759,7 @@ export class InfoDialogComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="rui-about wrapper">  <div class="container">    <div class="close">      <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>    </div>    <div class="content">      <h2 class="title" mat-dialog-title>{{infoTitle}}</h2>            <mat-dialog-content class="mat-typography dialog-content">        <div *ngFor="let content of documentationContents; let i = index;" class="panel">          <mat-expansion-panel *ngIf="content" [expanded]="i === 0">            <mat-expansion-panel-header>              <h2 class="no-header-margin">{{content.title}}</h2>            </mat-expansion-panel-header>              <div class="top-padding">                <markdown class="variable-binding" [class.first]="i === 0" [data]="content.content"></markdown>                <div class="video-player" *ngIf="i === 0">                  <youtube-player videoId="{{videoID}}"></youtube-player>                 </div>              </div>          </mat-expansion-panel>        </div>      </mat-dialog-content>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="rui-about wrapper">  <div class="container">    <div class="content">      <div class="header">        <h2 class="title" mat-dialog-title>{{infoTitle}}</h2>        <div class="close">          <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>        </div>      </div>            <mat-dialog-content class="mat-typography dialog-content">        <div *ngFor="let content of documentationContents; let i = index;" class="panel">          <mat-expansion-panel *ngIf="content" [expanded]="i === 0">            <mat-expansion-panel-header>              <h2 class="no-header-margin">{{content.title}}</h2>            </mat-expansion-panel-header>              <div class="top-padding">                <markdown class="variable-binding" [class.first]="i === 0" [data]="content.content"></markdown>                <div class="video-player" *ngIf="i === 0">                  <youtube-player videoId="{{videoID}}"></youtube-player>                 </div>              </div>          </mat-expansion-panel>        </div>      </mat-dialog-content>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'SpatialSearchListComponent', 'selector': 'ccf-spatial-search-list'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'InfoDialogComponent'};
