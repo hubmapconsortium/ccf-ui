@@ -60,7 +60,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Eye, R',
     side: 'right',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/FMA_54449'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004549'
   },
   {
     disabled: true,
