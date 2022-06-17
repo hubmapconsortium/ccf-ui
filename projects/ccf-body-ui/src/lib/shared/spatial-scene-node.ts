@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Matrix4 } from '@math.gl/core';
 
+export type SpatialSceneGeometry = 'sphere' | 'cube' | 'wireframe' | 'text' | 'cone' | 'cylinder';
 
 export interface SpatialSceneNode {
   '@id': string;
@@ -9,7 +10,8 @@ export interface SpatialSceneNode {
   representation_of?: string;
   reference_organ?: string;
   unpickable?: boolean;
-  wireframe?: boolean;
+  geometry?: SpatialSceneGeometry;
+  text?: string;
   _lighting?: string;
   scenegraph?: string;
   scenegraphNode?: string;

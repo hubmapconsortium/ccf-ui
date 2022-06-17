@@ -70,6 +70,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -118,6 +119,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -137,6 +139,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -197,6 +200,7 @@ paths:
         - $ref: "#/components/parameters/OrganIri"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -216,6 +220,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -245,6 +250,7 @@ paths:
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
         - $ref: "#/components/parameters/Technologies"
         - $ref: "#/components/parameters/Token"
       responses:
@@ -299,6 +305,19 @@ components:
       schema:
         type: string
         example: 0,40
+
+    SpatialSearches:
+      name: spatial
+      description: Filter result by spatial searches.
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+         { $ref: "#/components/schemas/SpatialSearch" }
+        example:
+          - { x: 10, y: 10, z: 10, radius: 100, target: 'http://purl.org/ccf/latest/ccf.owl#VHMale' }
+          - { x: 11, y: 11, z: 11, radius: 101, target: 'http://purl.org/ccf/latest/ccf.owl#VHFemale' }
 
     Cache:
       name: cache
@@ -656,6 +675,28 @@ components:
           type: number
         max:
           type: number
+
+    SpatialSearch:
+      title: Probing Sphere
+      description: |
+        Specification for a Spatial Search via Probing Sphere
+      type: object
+      properties:
+        x:
+          title: X coordinate relative to target in millimeters
+          type: number
+        y:
+          title: Y coordinate relative to target in millimeters
+          type: number
+        z:
+          title: Z coordinate relative to target in millimeters
+          type: number
+        radius:
+          title: Size of the probing sphere in millimeters
+          type: number
+        target:
+          title: The target spatial entity IRI
+          type: string
 
     Rgba:
       title: RGBA Color Tuple
@@ -1142,10 +1183,18 @@ components:
           title: Unpickable
           description: Whether the node should selectable by the user in interfaces.
           type: boolean
-        wireframe:
-          title: Wireframe
-          description: Whether to show a wireframe for the node.
-          type: boolean
+        geometry:
+          title: Geometry
+          description: Geometry to draw, if it is not using a GLTF file.
+          type: string
+          enum:
+            - sphere
+            - cube
+            - wireframe
+            - text
+            - cone
+            - cylinder
+          x-preprocessor-delete: enum
         _lighting:
           title: Lighting
           type: boolean
