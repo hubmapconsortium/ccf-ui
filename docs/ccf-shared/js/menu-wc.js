@@ -207,6 +207,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/SpatialSearchListModule.html" data-type="entity-link" >SpatialSearchListModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchListModule-f3cc6d20d49f15f521077ac08bc81616"' : 'data-target="#xs-components-links-module-SpatialSearchListModule-f3cc6d20d49f15f521077ac08bc81616"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchListModule-f3cc6d20d49f15f521077ac08bc81616"' :
+                                            'id="xs-components-links-module-SpatialSearchListModule-f3cc6d20d49f15f521077ac08bc81616"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchListComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchListComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/StoreDebugModule.html" data-type="entity-link" >StoreDebugModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -366,10 +383,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/OrganInfo.html" data-type="entity-link" >OrganInfo</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/PanelData.html" data-type="entity-link" >PanelData</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/PluckUniqueOptions.html" data-type="entity-link" >PluckUniqueOptions</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Segment.html" data-type="entity-link" >Segment</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SpatialSearchListItem.html" data-type="entity-link" >SpatialSearchListItem</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/StackOp.html" data-type="entity-link" >StackOp</a>

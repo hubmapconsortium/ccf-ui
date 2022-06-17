@@ -341,7 +341,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { DataAction, Payload, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
-import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
+import { NgxsOnInit, Selector, State } from &#x27;@ngxs/store&#x27;;
 import { NodeClickEvent, SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { combineLatest } from &#x27;rxjs&#x27;;
@@ -385,6 +385,11 @@ export interface SceneStateModel {
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&gt; implements NgxsOnInit {
+  @Selector()
+  static referenceOrgans(state: SceneStateModel): OrganInfo[] {
+    return state.referenceOrgans;
+  }
+
   /** Available Reference Organs */
   readonly referenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;referenceOrgans&#x27;), distinctUntilChanged());
   /** Selected Reference Organs */

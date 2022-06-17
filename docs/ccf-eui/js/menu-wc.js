@@ -182,13 +182,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/FiltersContentModule.html" data-type="entity-link" >FiltersContentModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-FiltersContentModule-9fa08119e9f307ea2869ad3b97753c4f"' : 'data-target="#xs-components-links-module-FiltersContentModule-9fa08119e9f307ea2869ad3b97753c4f"' }>
+                                            'data-target="#components-links-module-FiltersContentModule-a65760134a60e5f16b1ed0dfd065688a"' : 'data-target="#xs-components-links-module-FiltersContentModule-a65760134a60e5f16b1ed0dfd065688a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FiltersContentModule-9fa08119e9f307ea2869ad3b97753c4f"' :
-                                            'id="xs-components-links-module-FiltersContentModule-9fa08119e9f307ea2869ad3b97753c4f"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FiltersContentModule-a65760134a60e5f16b1ed0dfd065688a"' :
+                                            'id="xs-components-links-module-FiltersContentModule-a65760134a60e5f16b1ed0dfd065688a"' }>
                                             <li class="link">
                                                 <a href="components/FiltersContentComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FiltersContentComponent</a>
                                             </li>
@@ -301,6 +301,91 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/RunSpatialSearchModule.html" data-type="entity-link" >RunSpatialSearchModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-RunSpatialSearchModule-9dec97e597c08e5e2d835c53cf3bfb44"' : 'data-target="#xs-components-links-module-RunSpatialSearchModule-9dec97e597c08e5e2d835c53cf3bfb44"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-RunSpatialSearchModule-9dec97e597c08e5e2d835c53cf3bfb44"' :
+                                            'id="xs-components-links-module-RunSpatialSearchModule-9dec97e597c08e5e2d835c53cf3bfb44"' }>
+                                            <li class="link">
+                                                <a href="components/RunSpatialSearchComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >RunSpatialSearchComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchConfigBehaviorModule.html" data-type="entity-link" >SpatialSearchConfigBehaviorModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchConfigBehaviorModule-331e61cf81672c8a6748ece5deb309eb"' : 'data-target="#xs-components-links-module-SpatialSearchConfigBehaviorModule-331e61cf81672c8a6748ece5deb309eb"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchConfigBehaviorModule-331e61cf81672c8a6748ece5deb309eb"' :
+                                            'id="xs-components-links-module-SpatialSearchConfigBehaviorModule-331e61cf81672c8a6748ece5deb309eb"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchConfigBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchConfigBehaviorComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchConfigModule.html" data-type="entity-link" >SpatialSearchConfigModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchConfigModule-9dffdb51d2201f141f2c1fc1025f5a71"' : 'data-target="#xs-components-links-module-SpatialSearchConfigModule-9dffdb51d2201f141f2c1fc1025f5a71"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchConfigModule-9dffdb51d2201f141f2c1fc1025f5a71"' :
+                                            'id="xs-components-links-module-SpatialSearchConfigModule-9dffdb51d2201f141f2c1fc1025f5a71"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchConfigComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchConfigComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchUiBehaviorModule.html" data-type="entity-link" >SpatialSearchUiBehaviorModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchUiBehaviorModule-0b87ee8eeb131e9e9a269c68b677ab53"' : 'data-target="#xs-components-links-module-SpatialSearchUiBehaviorModule-0b87ee8eeb131e9e9a269c68b677ab53"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiBehaviorModule-0b87ee8eeb131e9e9a269c68b677ab53"' :
+                                            'id="xs-components-links-module-SpatialSearchUiBehaviorModule-0b87ee8eeb131e9e9a269c68b677ab53"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchUiBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiBehaviorComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/SpinnerOverlayModule.html" data-type="entity-link" >SpinnerOverlayModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -407,6 +492,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <li class="link">
                                 <a href="classes/MessageChannel.html" data-type="entity-link" >MessageChannel</a>
                             </li>
+                            <li class="link">
+                                <a href="classes/SetOrgan.html" data-type="entity-link" >SetOrgan</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SetSex.html" data-type="entity-link" >SetSex</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SpatialSearchUiSelectors.html" data-type="entity-link" >SpatialSearchUiSelectors</a>
+                            </li>
                         </ul>
                     </li>
                         <li class="chapter">
@@ -443,6 +537,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/SceneState.html" data-type="entity-link" >SceneState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/SpatialSearchUiState.html" data-type="entity-link" >SpatialSearchUiState</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/WorkerDataSourceService.html" data-type="entity-link" >WorkerDataSourceService</a>
@@ -510,6 +607,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SearchResult.html" data-type="entity-link" >SearchResult</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SpatialSearchUiModel.html" data-type="entity-link" >SpatialSearchUiModel</a>
                             </li>
                         </ul>
                     </li>
