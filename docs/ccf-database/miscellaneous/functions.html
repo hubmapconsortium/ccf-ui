@@ -98,7 +98,13 @@
                             <a href="#filterByOntologyTerms" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByOntologyTerms</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
                         </li>
                         <li>
+                            <a href="#filterByProbingSphere" title="projects/ccf-database/src/lib/queries/spatial-search-n3.ts" ><b>filterByProbingSphere</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-search-n3.ts)</a>
+                        </li>
+                        <li>
                             <a href="#filterBySex" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterBySex</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#filterBySpatialSearches" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterBySpatialSearches</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
                         </li>
                         <li>
                             <a href="#filterByTechnology" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByTechnology</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
@@ -176,6 +182,15 @@
                             <a href="#getOntologyTreeNode" title="projects/ccf-database/src/lib/queries/ontology-tree-n3.ts" ><b>getOntologyTreeNode</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree-n3.ts)</a>
                         </li>
                         <li>
+                            <a href="#getOrientedBoundingBox" title="projects/ccf-database/src/lib/queries/spatial-search-n3.ts" ><b>getOrientedBoundingBox</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-search-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getOriginScene" title="projects/ccf-database/src/lib/util/origin-scene.ts" ><b>getOriginScene</b>&nbsp;&nbsp;&nbsp;(projects/.../origin-scene.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getProbingSphereScene" title="projects/ccf-database/src/lib/util/probing-sphere-scene.ts" ><b>getProbingSphereScene</b>&nbsp;&nbsp;&nbsp;(projects/.../probing-sphere-scene.ts)</a>
+                        </li>
+                        <li>
                             <a href="#getProviderNames" title="projects/ccf-database/src/lib/queries/aggregate-results-n3.ts" ><b>getProviderNames</b>&nbsp;&nbsp;&nbsp;(projects/.../aggregate-results-n3.ts)</a>
                         </li>
                         <li>
@@ -183,6 +198,9 @@
                         </li>
                         <li>
                             <a href="#getSpatialEntity" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getSpatialEntity</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSpatialEntityDimensions" title="projects/ccf-database/src/lib/queries/spatial-search-n3.ts" ><b>getSpatialEntityDimensions</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-search-n3.ts)</a>
                         </li>
                         <li>
                             <a href="#getSpatialEntityForEntity" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getSpatialEntityForEntity</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
@@ -1816,6 +1834,91 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="filterBySpatialSearches"></a>
+                    <span class="name">
+                        <span ><b>filterBySpatialSearches</b></span>
+                        <a href="#filterBySpatialSearches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterBySpatialSearches(store, graph, seen, spatialSearches)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>graph</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>spatialSearches</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="filterByTechnology"></a>
                     <span class="name">
                         <span ><b>filterByTechnology</b></span>
@@ -2145,7 +2248,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findIds(store, filter)</code>
+<code>findIds(store, graph, filter)</code>
                 </td>
             </tr>
 
@@ -2179,6 +2282,17 @@
                                     <td>
                                         <p>The triple store.</p>
 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>graph</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
                                     </td>
                                 </tr>
                                 <tr>
@@ -2272,6 +2386,238 @@
                     <div class="io-description">
                         <p>A set of all ids.</p>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/queries/spatial-search-n3.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByProbingSphere"></a>
+                    <span class="name">
+                        <span ><b>filterByProbingSphere</b></span>
+                        <a href="#filterByProbingSphere"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByProbingSphere(store, graph, seen, search)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>graph</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>search</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOrientedBoundingBox"></a>
+                    <span class="name">
+                        <span ><b>getOrientedBoundingBox</b></span>
+                        <a href="#getOrientedBoundingBox"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOrientedBoundingBox(store, graph, sourceIri, targetIri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>graph</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>sourceIri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>targetIri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>OrientedBoundingBox | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSpatialEntityDimensions"></a>
+                    <span class="name">
+                        <span ><b>getSpatialEntityDimensions</b></span>
+                        <a href="#getSpatialEntityDimensions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSpatialEntityDimensions(store, iri)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>iri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
                     </div>
                 </td>
             </tr>
@@ -4337,6 +4683,169 @@
                     </div>
                     <div class="io-description">
                         <p>A new data object.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/util/origin-scene.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOriginScene"></a>
+                    <span class="name">
+                        <span ><b>getOriginScene</b></span>
+                        <a href="#getOriginScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOriginScene(node, includeLetters)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create a set of scene nodes for the body-ui to show the origin and lines extending to it&#39;s dimensions.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the Spatial Entity (usually a reference organ) that the origin is defined by</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>includeLetters</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>whether to show the keyboard letters associated with the origin points</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >SpatialSceneNode[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>a set of scene nodes for the body-ui</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/util/probing-sphere-scene.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProbingSphereScene"></a>
+                    <span class="name">
+                        <span ><b>getProbingSphereScene</b></span>
+                        <a href="#getProbingSphereScene"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProbingSphereScene(node, sphere?)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create a set of scene nodes for the body-ui to show the probing sphere and lines around it
+for a given spatial search.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the Spatial Entity (usually a reference organ) that the sphere is probing into</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>sphere</td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>the Spatial Search that defines where and how big the probing sphere is</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >SpatialSceneNode[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>a set of scene nodes for the body-ui</p>
 
                     </div>
                 </td>

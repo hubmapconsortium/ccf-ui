@@ -139,6 +139,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/SpatialSceneNode.html" data-type="entity-link" >SpatialSceneNode</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/SpatialSearch.html" data-type="entity-link" >SpatialSearch</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/TissueBlockResult.html" data-type="entity-link" >TissueBlockResult</a>
                             </li>
                             <li class="link">

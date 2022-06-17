@@ -182,13 +182,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/FiltersContentModule.html" data-type="entity-link" >FiltersContentModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-FiltersContentModule-9fa08119e9f307ea2869ad3b97753c4f"' : 'data-target="#xs-components-links-module-FiltersContentModule-9fa08119e9f307ea2869ad3b97753c4f"' }>
+                                            'data-target="#components-links-module-FiltersContentModule-901f2a6cd6fc67edaa88228e29949e3c"' : 'data-target="#xs-components-links-module-FiltersContentModule-901f2a6cd6fc67edaa88228e29949e3c"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FiltersContentModule-9fa08119e9f307ea2869ad3b97753c4f"' :
-                                            'id="xs-components-links-module-FiltersContentModule-9fa08119e9f307ea2869ad3b97753c4f"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FiltersContentModule-901f2a6cd6fc67edaa88228e29949e3c"' :
+                                            'id="xs-components-links-module-FiltersContentModule-901f2a6cd6fc67edaa88228e29949e3c"' }>
                                             <li class="link">
                                                 <a href="components/FiltersContentComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FiltersContentComponent</a>
                                             </li>
@@ -296,6 +296,40 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'id="xs-components-links-module-ResultsBrowserModule-423c9c6cad542bd03e2f94ee47f0a850"' }>
                                             <li class="link">
                                                 <a href="components/ResultsBrowserComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ResultsBrowserComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchConfigBehaviorModule.html" data-type="entity-link" >SpatialSearchConfigBehaviorModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchConfigBehaviorModule-331e61cf81672c8a6748ece5deb309eb"' : 'data-target="#xs-components-links-module-SpatialSearchConfigBehaviorModule-331e61cf81672c8a6748ece5deb309eb"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchConfigBehaviorModule-331e61cf81672c8a6748ece5deb309eb"' :
+                                            'id="xs-components-links-module-SpatialSearchConfigBehaviorModule-331e61cf81672c8a6748ece5deb309eb"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchConfigBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchConfigBehaviorComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchConfigModule.html" data-type="entity-link" >SpatialSearchConfigModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchConfigModule-9dffdb51d2201f141f2c1fc1025f5a71"' : 'data-target="#xs-components-links-module-SpatialSearchConfigModule-9dffdb51d2201f141f2c1fc1025f5a71"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchConfigModule-9dffdb51d2201f141f2c1fc1025f5a71"' :
+                                            'id="xs-components-links-module-SpatialSearchConfigModule-9dffdb51d2201f141f2c1fc1025f5a71"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchConfigComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchConfigComponent</a>
                                             </li>
                                         </ul>
                                     </li>

@@ -124,6 +124,13 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#geometry" 
+>
+                                            geometry
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#name" 
 >
                                             name
@@ -173,6 +180,13 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#text" 
+>
+                                            text
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#tooltip" 
 >
                                             tooltip
@@ -189,13 +203,6 @@
                                         <a href="#unpickable" 
 >
                                             unpickable
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#wireframe" 
->
-                                            wireframe
                                         </a>
                                 </li>
                                 <li>
@@ -426,6 +433,44 @@
                                     <tr>
                                         <td class="col-md-4">
                                             <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="geometry"></a>
+                                        <span class="name "><b>geometry</b>
+                                            <a href="#geometry">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>geometry:         <code><a href="../miscellaneous/typealiases.html#SpatialSceneGeometry" target="_self" >SpatialSceneGeometry</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#SpatialSceneGeometry" target="_self" >SpatialSceneGeometry</a></code>
 
                                         </td>
                                     </tr>
@@ -711,6 +756,44 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="text"></a>
+                                        <span class="name "><b>text</b>
+                                            <a href="#text">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>text:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="tooltip"></a>
                                         <span class="name "><b>tooltip</b>
                                             <a href="#tooltip">
@@ -793,44 +876,6 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <code>unpickable:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="wireframe"></a>
-                                        <span class="name "><b>wireframe</b>
-                                            <a href="#wireframe">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>wireframe:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -946,6 +991,8 @@ import { ExtractionSet, SpatialEntity } from &#x27;./spatial-types&#x27;;
 import { ccf } from &#x27;./util/prefixes&#x27;;
 
 
+export type SpatialSceneGeometry &#x3D; &#x27;sphere&#x27; | &#x27;cube&#x27; | &#x27;wireframe&#x27; | &#x27;text&#x27; | &#x27;cone&#x27; | &#x27;cylinder&#x27;;
+
 export interface SpatialSceneNode {
   &#x27;@id&#x27;: string;
   &#x27;@type&#x27;: string;
@@ -954,7 +1001,8 @@ export interface SpatialSceneNode {
   representation_of?: string;
   reference_organ?: string;
   unpickable?: boolean;
-  wireframe?: boolean;
+  geometry?: SpatialSceneGeometry;
+  text?: string;
   _lighting?: string;
   scenegraph?: string;
   scenegraphNode?: string;
@@ -1049,11 +1097,11 @@ export class CCFSpatialScene {
     if (filter?.debug) {
       // Debug bounding boxes
       nodes &#x3D; nodes.concat([
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHRightKidney&#x27;).id), body, { color: [0, 0, 255, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHLeftKidney&#x27;).id), body, { color: [255, 0, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC1&#x27;).id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC2&#x27;).id), body, { color: [0, 255, 0, 0.5*255], wireframe: true }),
-        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC3&#x27;).id), body, { color: [0, 255, 0, 0.5*255], wireframe: true })
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHRightKidney&#x27;).id), body, { color: [0, 0, 255, 0.5*255], geometry: &#x27;wireframe&#x27; }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHLeftKidney&#x27;).id), body, { color: [255, 0, 0, 0.5*255], geometry: &#x27;wireframe&#x27; }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC1&#x27;).id), body, { color: [0, 255, 0, 0.5*255], geometry: &#x27;wireframe&#x27; }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC2&#x27;).id), body, { color: [0, 255, 0, 0.5*255], geometry: &#x27;wireframe&#x27; }),
+        this.getSceneNode(this.getSpatialEntity(ccf.x(&#x27;VHSpleenCC3&#x27;).id), body, { color: [0, 255, 0, 0.5*255], geometry: &#x27;wireframe&#x27; })
       ]);
     }
 
@@ -1061,7 +1109,7 @@ export class CCFSpatialScene {
   }
 
   getReferenceOrganScene(organIri: string, filter?: Filter): SpatialSceneNode[] {
-    const hasSexFilter &#x3D; filter?.sex !&#x3D;&#x3D; undefined ?? false;
+    const hasSexFilter &#x3D; filter?.sex !&#x3D;&#x3D; undefined &amp;&amp; filter?.sex?.toLowerCase() !&#x3D;&#x3D; &#x27;both&#x27;;
     const organs &#x3D; this.getReferenceOrgans().filter((o) &#x3D;&gt; o.representation_of &#x3D;&#x3D;&#x3D; organIri &amp;&amp; (!hasSexFilter || o.sex &#x3D;&#x3D;&#x3D; filter?.sex));
     if (organs.length &gt; 0) {
       const organ &#x3D; organs[0];
