@@ -1,10 +1,12 @@
 <div class="rui-about wrapper">
   <div class="container">
-    <div class="close">
-      <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>
-    </div>
     <div class="content">
-      <h2 class="title" mat-dialog-title>{{infoTitle}}</h2>
+      <div class="header">
+        <h2 class="title" mat-dialog-title>{{infoTitle}}</h2>
+        <div class="close">
+          <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>
+        </div>
+      </div>
       
       <mat-dialog-content class="mat-typography dialog-content">
         <div *ngFor="let content of documentationContents; let i = index;" class="panel">
