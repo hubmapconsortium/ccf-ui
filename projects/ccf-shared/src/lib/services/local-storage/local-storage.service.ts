@@ -36,14 +36,31 @@ export class LocalStorageService {
     return LocalStorageService.storage?.length ?? 0;
   }
 
+  /**
+   * Gets value based on key index
+   * @param index
+   * @returns
+   */
   key(index: number): string | null {
     return LocalStorageService.storage?.key(index) ?? null;
   }
 
+  /**
+   * Gets value based on key, also returns default if it fails
+   * @param key
+   * @param defaultValue
+   * @returns the value
+   */
   getItem<D extends string | null = null>(key: string, defaultValue?: D): string | D {
     return LocalStorageService.storage?.getItem(key) ?? defaultValue ?? null as D;
   }
 
+  /**
+   * sets a key-value pairin local storage
+   * @param key
+   * @param value
+   * @returns true or false based on success/failure
+   */
   setItem(key: string, value: string): boolean {
     try {
       LocalStorageService.storage?.setItem(key, value);
@@ -53,10 +70,17 @@ export class LocalStorageService {
     }
   }
 
+  /**
+   * removes value based on key
+   * @param key
+   */
   removeItem(key: string): void {
     LocalStorageService.storage?.removeItem(key);
   }
 
+  /**
+   * Clears all storage
+   */
   clear(): void {
     LocalStorageService.storage?.clear();
   }
