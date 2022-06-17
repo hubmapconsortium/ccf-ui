@@ -1,0 +1,28 @@
+import { MatDialogRef } from '@angular/material/dialog';
+import { Shallow } from 'shallow-render';
+
+import { SpatialSearchUiBehaviorComponent } from './spatial-search-ui-behavior.component';
+import { SpatialSearchUiBehaviorModule } from './spatial-search-ui-behavior.module';
+
+function wait(duration: number): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(resolve, duration);
+  });
+}
+
+describe('SpatialSearchUiBehaviorComponent', () => {
+  let shallow: Shallow<SpatialSearchUiBehaviorComponent>;
+
+  beforeEach(() => {
+    shallow = new Shallow(SpatialSearchUiBehaviorComponent, SpatialSearchUiBehaviorModule)
+      .mock(MatDialogRef, { close(): void { /* Empty */ } });
+  });
+
+  it('should close the dialog when the close() method is called', async () => {
+    const { instance, get } = await shallow.render();
+    const ref = get(MatDialogRef);
+    instance.close();
+    await wait(250);
+    expect(ref.close).toHaveBeenCalled();
+  });
+});

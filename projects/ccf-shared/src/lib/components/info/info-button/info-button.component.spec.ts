@@ -2,8 +2,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Shallow } from 'shallow-render';
 import { InfoButtonComponent } from './info-button.component';
 import { InfoButtonModule } from './info-button.module';
-import { InfoButtonService } from './info-button.service';
-import { DocumentationContent } from '../info-button/info-button.service';
+import { DocumentationContent, InfoButtonService } from './info-button.service';
+import { PanelData } from '../info-button/info-button.service';
 
 describe('InfoButtonComponent', () => {
   let shallow: Shallow<InfoButtonComponent>;
@@ -11,15 +11,13 @@ describe('InfoButtonComponent', () => {
   const mockMatDialog = {
     open(..._args: unknown[]): MatDialogRef<unknown, unknown> {
       return undefined as unknown as MatDialogRef<unknown, unknown>;
-    }
+    },
+    openDialogs: []
   };
 
 
   beforeEach(() => {
-    shallow = new Shallow(InfoButtonComponent, InfoButtonModule)
-      .mock(MatDialog, { open() {
-        return {};
-      } });
+    shallow = new Shallow(InfoButtonComponent, InfoButtonModule);
   });
 
   it('should display the info icon', async () => {
@@ -36,29 +34,30 @@ describe('InfoButtonComponent', () => {
   });
 
   it('launchInfoDialog opens dialog box', async () => {
-    const { instance, get } = await shallow.render();
-    instance.launchInfoDialog([]);
+    const { instance, get } = await shallow.mock(MatDialog, mockMatDialog).render();
+    const empty: DocumentationContent[] = [{ title: '', content: '' }];
+    instance.launchInfoDialog({ content: empty, infoTitle: '', videoID: '' });
     expect(get(MatDialog).open).toHaveBeenCalled();
   });
 
   it('launches the dialog when data is emitted from the service', async () => {
     const { instance, get } = await shallow.render();
+    const empty: DocumentationContent[] = [{ title: '', content: '' }];
     const spy = spyOn(instance, 'launchInfoDialog');
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    get(InfoButtonService).markdownContent.next([{} as DocumentationContent]);
+    get(InfoButtonService).panelContent.next({ content: empty, infoTitle: '', videoID: '' });
     expect(spy).toHaveBeenCalled();
   });
 
   it('does not launch the dialog when data is empty', async () => {
     const { instance, get } = await shallow.render();
     const spy = spyOn(instance, 'launchInfoDialog');
-    get(InfoButtonService).markdownContent.next([]);
+    get(InfoButtonService).panelContent.next({} as PanelData);
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call onDialogButtonClick', async () => {
     const { instance, get } = await shallow.render();
-    const spy = spyOn(get(InfoButtonService), 'readMarkdown');
+    const spy = spyOn(get(InfoButtonService), 'updateData');
     instance.onDialogButtonClick();
     expect(spy).toHaveBeenCalled();
   });

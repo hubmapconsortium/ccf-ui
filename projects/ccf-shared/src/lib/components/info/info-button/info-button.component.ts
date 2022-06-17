@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 
-import { DocumentationContent } from '../info-button/info-button.service';
+import { PanelData } from '../info-button/info-button.service';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { InfoButtonService } from './info-button.service';
 
@@ -26,6 +26,8 @@ export class InfoButtonComponent implements OnDestroy {
    */
   @Input() videoID: string;
 
+  @Input() documentationUrl: string;
+
   private readonly subscriptions = new Subscription();
 
   /**
@@ -35,8 +37,8 @@ export class InfoButtonComponent implements OnDestroy {
    * @param infoButtonService Reference to the info button service
    */
   constructor(private readonly dialog: MatDialog, private readonly infoButtonService: InfoButtonService) {
-    this.subscriptions.add(infoButtonService.markdownContent.subscribe(data => {
-      if (data.length) {
+    this.subscriptions.add(infoButtonService.panelContent.subscribe(data => {
+      if (data.content.length) {
         this.launchInfoDialog(data);
       }
     }));
@@ -53,23 +55,25 @@ export class InfoButtonComponent implements OnDestroy {
   /**
    * Opens the info dialogue with the project details
    */
-  launchInfoDialog(data: DocumentationContent[]): void {
-    this.dialog.open(InfoDialogComponent, {
-      autoFocus: false,
-      panelClass: 'modal-animated',
-      width: '60rem',
-      data: {
-        title: this.infoTitle,
-        content: data,
-        videoID: this.videoID
-      }
-    });
+  launchInfoDialog(data: PanelData): void {
+    if (this.dialog.openDialogs.length == 0) { //Prevent multiple dialogs from opening
+      this.dialog.open(InfoDialogComponent, {
+        autoFocus: false,
+        panelClass: 'modal-animated',
+        width: '72rem',
+        data: {
+          title: data.infoTitle,
+          content: data.content,
+          videoID: data.videoID
+        }
+      });
+    }
   }
 
   /**
-   * Detects button click and reads markdown function
+   * Detects button click and updates panel data
    */
   onDialogButtonClick(): void {
-    this.infoButtonService.readMarkdown();
+    this.infoButtonService.updateData(this.documentationUrl, this.videoID, this.infoTitle);
   }
 }

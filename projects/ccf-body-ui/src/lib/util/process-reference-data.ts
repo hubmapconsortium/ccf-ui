@@ -11,6 +11,7 @@ import { processSpatialEntities } from './process-spatial-entities';
 
 export const referenceDataConfig = {
   extractionSitesUrl: 'http://localhost:8080/source_data/ASCT-B_3D_Models_Extraction_Sites.csv',
+  extractionSitesConfigUrl: 'http://localhost:8080/source_data/extraction-site-config.csv',
   anatomicalStructuresUrl: 'http://localhost:8080/source_data/ASCT-B_3D_Models_Mapping.csv',
   referenceOrganConfigUrl: 'http://localhost:8080/source_data/reference-organ-config.csv'
 };
@@ -23,6 +24,7 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
   const referenceOrgans = await parseCSV(config.referenceOrganConfigUrl, 'source');
   const refOrganSources = new Set(referenceOrgans.map(s => s.source));
   const goodRefOrgans = new Set(referenceOrgans.map(s => s['@id']));
+  const extractionSiteObjects = await parseCSV(config.extractionSitesConfigUrl, 'source_spatial_entity');
 
   let spatialEntities =
     (await Promise.all(
@@ -30,28 +32,11 @@ export async function processReferenceData(refEntities: SpatialEntityJsonLd[], c
         processSpatialEntities(entities[s.source.split('_')[0]], s.object)
       )
     )).reduce((acc, e) => acc.concat(e), [])
-      .concat((await Promise.all([
-        'https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_F_Heart_Extraction_Sites_v1.1.glb',
-        'https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_F_Intestine_Large_Extraction_Sites_v1.1.glb',
-        'https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_F_Kidney_Extraction_Sites_v1.1.glb',
-        'https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_F_Spleen_Extraction_sites_v1.1.glb'
-      ].map(url =>
-        processSpatialEntities(entities['#VHFemaleOrgans'], url)
-      ))).reduce((acc, e) => acc.concat(e), []))
-      .concat((await Promise.all([
-        'https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_M_Heart_Extraction_Sites_v1.1.glb',
-        'https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_M_Intestine_Large_Extraction_Sites_v1.1.glb',
-        'https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_M_Kidney_Extraction_Sites_v1.1.glb',
-        'https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_M_Spleen_Extraction_Sites_v1.1.glb'
-      ].map(url =>
-        processSpatialEntities(entities['#VHMaleOrgans'], url)
-      ))).reduce((acc, e) => acc.concat(e), []));
-
-  // const spatialEntities = (await Promise.all([
-  //   processSpatialEntities(entities['#VHFemaleOrgans']),
-  //   processSpatialEntities(entities['#VHMaleOrgans'])
-  // ])).reduce((acc, e) => acc.concat(e), []);
-
+      .concat((await Promise.all(
+        extractionSiteObjects.map(s =>
+          processSpatialEntities(entities[s.source_spatial_entity], s.object)
+        )
+      )).reduce((acc, e) => acc.concat(e), []));
   spatialEntities = uniqBy(spatialEntities, e => e['@id']);
 
   const jsonld = (await processExtractionSites(

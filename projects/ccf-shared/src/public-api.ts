@@ -58,3 +58,6 @@ export * from './lib/states/call-to-action/call-to-action.state';
 export * as CallToActionAction from './lib/states/call-to-action/call-to-action.actions';
 
 export * from './lib/services/local-storage/local-storage.service';
+
+export * from './lib/components/spatial-search-list/spatial-search-list.component';
+export * from './lib/components/spatial-search-list/spatial-search-list.module';

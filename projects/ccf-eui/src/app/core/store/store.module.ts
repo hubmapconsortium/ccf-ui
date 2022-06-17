@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { NgxsDataPluginModule } from '@ngxs-labs/data';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { GlobalConfigState } from 'ccf-shared';
+import { CallToActionState } from 'projects/ccf-shared/src/public-api';
 
 import { environment } from '../../../environments/environment';
 import { ColorAssignmentState } from './color-assignment/color-assignment.state';
 import { DataState } from './data/data.state';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { ListResultsState } from './list-results/list-results.state';
-import { GlobalConfigState } from 'ccf-shared';
 import { SceneState } from './scene/scene.state';
+import { SpatialSearchUiState } from './spatial-search-ui/spatial-search-ui.state';
 
 
 /**
@@ -22,7 +25,8 @@ export const ROOT_STATES = [
   ListResultsState,
   DataState,
   SceneState,
-  // Add call to action state class
+  CallToActionState,
+  SpatialSearchUiState
 ];
 
 @NgModule({
@@ -31,10 +35,15 @@ export const ROOT_STATES = [
     NgxsDataPluginModule.forRoot(),
 
     NgxsModule.forRoot(ROOT_STATES, {
-      developmentMode: !environment.production
+      developmentMode: !environment.production,
+      selectorOptions: {
+        injectContainerState: false
+      }
       // Consider setting compatibility and executionStrategy
       // https://www.ngxs.io/advanced/options
     }),
+
+    NgxsDispatchPluginModule.forRoot(),
 
     // Logger plugin must be last!
     NgxsLoggerPluginModule.forRoot({

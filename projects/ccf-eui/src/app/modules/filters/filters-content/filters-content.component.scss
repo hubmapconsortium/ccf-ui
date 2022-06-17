@@ -19,41 +19,51 @@
   justify-content: space-between;
   margin-top: 2rem;
 
+  ::ng-deep button {
+    border-width: 1px;
+    border-style: solid;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+
   button {
     border-width: 1px;
     border-style: solid;
   }
 
-}
-
-.button-container-end {
   &.hidden {
     opacity: 0;
     transition-duration: 0.2s;
   }
 
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-.outline-button {
-  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #0000001d;
-}
-
-.refresh-icon {
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  margin-right: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.6s;
-
-  .refresh {
-    cursor: pointer;
-    transition: .6s;
-    transition-property: background;
+  .right-group {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  
+    .outline-button {
+      box-shadow: 0.1rem 0.1rem 0.2rem 0rem #0000001d;
+    }
+    
+    .refresh-icon {
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      margin-right: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.6s;
+    
+      .refresh {
+        cursor: pointer;
+        transition: .6s;
+        transition-property: background;
+      }
+    }
   }
 }
 
