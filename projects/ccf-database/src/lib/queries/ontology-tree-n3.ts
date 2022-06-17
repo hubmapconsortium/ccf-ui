@@ -103,9 +103,11 @@ export function getAnatomicalStructureTreeModel(store: Store): OntologyTreeModel
     // 'http://purl.obolibrary.org/obo/FMA_7213', // Ovary, R
     'http://purl.obolibrary.org/obo/UBERON_0001264', // Pancreas
     'http://purl.obolibrary.org/obo/UBERON_0001270', // Pelvis
+    'http://purl.obolibrary.org/obo/UBERON_0001987', // Placenta
     'http://purl.obolibrary.org/obo/UBERON_0002367', // Prostate
     'http://purl.obolibrary.org/obo/UBERON_0002097', // Skin
     'http://purl.obolibrary.org/obo/UBERON_0002108', // Small Intestine
+    'http://purl.obolibrary.org/obo/UBERON_0002240', // Spinal Cord
     'http://purl.obolibrary.org/obo/UBERON_0000059', // Large Intestine
     'http://purl.obolibrary.org/obo/UBERON_0002106', // Spleen
     'http://purl.obolibrary.org/obo/UBERON_0002370', // Thymus

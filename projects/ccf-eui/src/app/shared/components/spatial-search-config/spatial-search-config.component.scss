@@ -1,0 +1,80 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  gap: 2rem;
+  width: 30.5rem;
+  height: 21.5rem;
+  box-shadow: 0px 25rem 25rem rgba(0, 0, 0, 0.16);
+  border-radius: .25rem;
+  font-size: 1rem;
+
+  .button {
+    cursor: pointer;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.25rem;
+  
+    .header-left {
+      display: flex;
+      align-items: center;
+
+      .title {
+        margin-right: 1rem;
+      }
+    }
+
+    button {
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      border-radius: 0.25rem;
+      transition: 0.6s;
+    }
+  }
+
+  .sex-toggle {
+    display: flex;
+
+    .label, .radio {
+      margin-right: 2rem;
+    }
+  }
+
+  .organ-selector {
+    ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 0;
+
+      .mat-form-field-underline {
+        bottom: 0rem;
+        height: 0.125rem;
+      }
+    }
+  }
+
+  .continue-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .25rem 1rem;
+    width: 14rem;
+    height: 2rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: .125rem;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+
+    &.disabled {
+      pointer-events: none;
+      opacity: .5;
+    }
+  }
+}

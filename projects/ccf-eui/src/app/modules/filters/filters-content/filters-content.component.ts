@@ -1,6 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SpatialSearchListItem } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+
 import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
+import {
+  SpatialSearchConfigBehaviorComponent,
+} from '../../../shared/components/spatial-search-config-behavior/spatial-search-config-behavior.component';
 
 /**
  * Contains components of the filters popup and handles changes in filter settings
@@ -11,7 +17,7 @@ import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
   styleUrls: ['./filters-content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FiltersContentComponent {
+export class FiltersContentComponent<S extends SpatialSearchListItem> {
 
   /**
    * Determines if the filters are visible
@@ -34,9 +40,19 @@ export class FiltersContentComponent {
   @Input() providerFilters: string[];
 
   /**
+   * List of spatial searches
+   */
+  @Input() spatialSearchFilters: S[] = [];
+
+  /**
    * Emits the filter change when they happen
    */
   @Output() readonly filtersChange = new EventEmitter<Record<string, unknown>>();
+
+  /**
+   * Emits when a spatial search is removed/deleted
+   */
+  @Output() readonly spatialSearchRemoved = new EventEmitter<S>();
 
   /**
    * Emits the filters to be applied
@@ -48,7 +64,11 @@ export class FiltersContentComponent {
    *
    * @param ga Analytics service
    */
-  constructor(private readonly ga: GoogleAnalyticsService) { }
+  constructor(private readonly ga: GoogleAnalyticsService, public dialog: MatDialog) { }
+
+  openSpatialSearch(): void {
+    this.dialog.open(SpatialSearchConfigBehaviorComponent);
+  }
 
   /**
    * Updates the filter object with a new key/value

@@ -3,7 +3,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
-import { NgxsOnInit, State } from '@ngxs/store';
+import { NgxsOnInit, Selector, State } from '@ngxs/store';
 import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
@@ -47,6 +47,11 @@ export interface SceneStateModel {
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> implements NgxsOnInit {
+  @Selector()
+  static referenceOrgans(state: SceneStateModel): OrganInfo[] {
+    return state.referenceOrgans;
+  }
+
   /** Available Reference Organs */
   readonly referenceOrgans$ = this.state$.pipe(pluck('referenceOrgans'), distinctUntilChanged());
   /** Selected Reference Organs */
