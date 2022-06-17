@@ -62,8 +62,20 @@ export class CallToActionState implements NgxsOnInit {
 
   @Action(LearnMore)
   learnMore(_ctx: StateContext<CallToActionModel>): void {
+    this.dialog.closeAll();
     this.dialog.open(InfoDialogComponent, {
-      //fill with relevant fields
+      autoFocus: false,
+      panelClass: 'modal-animated',
+      width: '72rem',
+      data: {
+        title: 'Spatial Search',
+        content: [{
+          title: 'InfoDialogComponent Needs Updated',
+          content: 'So that you can open it without first parsing the markdown in <assets/docs/SPATIAL_SEARCH_README.md>.'
+            + 'You should be able to pass the md url and it work with that.'
+        }],
+        videoID: 'N2JUogY-DQw'
+      }
     });
 
     this.ga.event('open_learn_more', 'call_to_action');
