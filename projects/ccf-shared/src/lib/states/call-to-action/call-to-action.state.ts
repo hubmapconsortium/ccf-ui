@@ -29,7 +29,7 @@ const POPUP_SHOWN_STORAGE_KEY = 'callToActionPopupShown';
     title: 'New to the Exploration User Interface',
     message: 'Spatial Search has arrived!',
     callToAction: 'Learn More',
-    imageUrl: '/assets/images/tempImg.jpg',
+    imageUrl: 'assets/images/spatial_search.png',
     expirationDate: 'Dec 1, 2022',
     popupShown: false
   }
