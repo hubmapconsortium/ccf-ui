@@ -34,6 +34,9 @@ const testBlock: TissueBlockResult = {
   sectionUnits: 'millimeter'
 };
 
+/**
+ * Tissue block list in spatial search UI
+ */
 @Component({
   selector: 'ccf-tissue-block-list.',
   templateUrl: './tissue-block-list.component.html',
@@ -43,6 +46,9 @@ const testBlock: TissueBlockResult = {
 export class TissueBlockListComponent {
   @HostBinding('class') readonly className = 'ccf-tissue-block-list';
 
-  @Input() tissueBlocks: TissueBlockResult[] = [testBlock, testBlock, testBlock];
+  /**
+   * Tissue blocks to be displayed
+   */
+  @Input() tissueBlocks: TissueBlockResult[] = [testBlock, testBlock, testBlock, testBlock, testBlock, testBlock, testBlock];
 
 }

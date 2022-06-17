@@ -9,7 +9,10 @@
 
   .ccf-tissue-block-list {
     background-color: mat.get-color-from-palette($background, modal);
-    border-color: mat.get-color-from-palette($foreground, modal-borders);
     color: map-get($foreground, text);
+
+    .title {
+      color: mat.get-color-from-palette($accent);
+    }
   }
 }

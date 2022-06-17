@@ -1,15 +1,15 @@
-<div>Tissue Blocks</div>
+<div class="header">
+  <div class="title">Tissue Blocks</div>
+  <div class="counter">{{tissueBlocks.length}}</div>
+</div>
 
-<div>{{tissueBlocks.length}}</div>
+<div class="tissue-list">
+  <div class="donor" *ngFor="let tissueBlock of tissueBlocks">
+    <mat-icon class="icon">person</mat-icon>
 
-<div *ngFor="let tissueBlock of tissueBlocks">
-  <div class="main-container">
-    <div class="d-flex">
-      <mat-icon class="icon-size icon-dark mr-5">person</mat-icon>
-
-      <div class="donor-info">
-        <div class="title description">{{ tissueBlock.donor.label }}</div>
-        <div class="description">{{ tissueBlock.donor.description }}</div>
-      </div>
+    <div class="donor-info">
+      <div class="description">{{ tissueBlock.donor.label }}</div>
+      <div class="description">{{ tissueBlock.donor.description }}</div>
     </div>
+  </div>
 </div>
