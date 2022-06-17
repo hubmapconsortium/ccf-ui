@@ -21,7 +21,8 @@ export const ROOT_STATES = [
   IconRegistryState,
   ListResultsState,
   DataState,
-  SceneState
+  SceneState,
+  // Add call to action state class
 ];
 
 @NgModule({

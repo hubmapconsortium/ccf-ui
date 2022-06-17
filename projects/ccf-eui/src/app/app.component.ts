@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Select } from '@ngxs/store';
 import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
-import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
+import { CallToActionComponent, DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, pluck, shareReplay } from 'rxjs/operators';
@@ -96,6 +98,7 @@ export class AppComponent implements OnInit {
   readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
   readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
 
+
   /**
    * Creates an instance of app component.
    *
@@ -106,7 +109,8 @@ export class AppComponent implements OnInit {
     readonly data: DataState, readonly theming: ThemingService,
     readonly scene: SceneState, readonly listResultsState: ListResultsState,
     readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
-    readonly dataSource: DataSourceService, private readonly globalConfig: GlobalConfigState<AppOptions>, cdr: ChangeDetectorRef
+    readonly dataSource: DataSourceService, private readonly globalConfig: GlobalConfigState<AppOptions>, cdr: ChangeDetectorRef,
+    private readonly dialog: MatDialog
   ) {
     theming.initialize(el, injector);
     overlay.setRootElement(el);
@@ -276,6 +280,9 @@ export class AppComponent implements OnInit {
   closeiFrameViewer(): void {
     this.viewerOpen = false;
   }
+
+
+
 
   /**
    * Gets login token

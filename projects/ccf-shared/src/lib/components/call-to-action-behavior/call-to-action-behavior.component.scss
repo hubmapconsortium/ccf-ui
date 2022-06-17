@@ -1,0 +1,62 @@
+.content{
+  display: block;
+  align-content: center;
+}
+
+.info-button-wrapper {
+  border-radius: 0.25rem;
+  padding: 0.60rem;
+  transition: 0.6s;
+
+  .ccf-info-button {
+    cursor: pointer;
+    transition: color .6s;
+    font-size: 1.2rem;
+    vertical-align: sub;
+  }
+}
+
+.mat-dialog-title {
+  font-size: 12px;
+}
+
+.firstRow {
+  display: flex;
+  width: 100%;
+  padding: .7rem;
+  p {
+    padding-right: 2.4rem;
+  }
+  mat-icon {
+    height: 30%;
+  }
+
+}
+
+img {
+  align-self: center;
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.mat-button {
+  background-color: #293551;
+  font-size: 10px;
+  position: relative;
+  padding-bottom: 2rem;
+  margin-bottom: .90rem;
+  width: 90%;
+  height: 0.5rem;
+  color: white;
+}
+
+.content {
+  border-radius: 10px;
+}
+
+.mat-dialog-content{
+  text-align: center;
+  font-size: 12px;
+}

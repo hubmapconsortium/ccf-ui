@@ -11,26 +11,14 @@ describe('CallToActionComponent', () => {
   });
 
   it('should emit on call to action click', async () => {
-    const { instance } = await shallow.render();
+    const { instance, outputs } = await shallow.render();
     instance.onDialogButtonClick();
-    expect(instance.callToActionClicked.emit).toHaveBeenCalledWith();
+    expect(outputs.callToActionClicked.emit).toHaveBeenCalled();
   });
 
   it('should emit when close button clicked', async () => {
-    const { instance } = await shallow.render();
+    const { instance, outputs } = await shallow.render();
     instance.close();
-    expect(instance.closeClicked.emit).toHaveBeenCalledWith();
-  });
-
-  it('should emit on call to action emission', async () => {
-    const { instance } = await shallow.render();
-    instance.callToActionClicked.emit();
-    expect(instance.callToActionClicked.emit).toHaveBeenCalledWith();
-  });
-
-  it('should emit on close emissions', async () => {
-    const { instance } = await shallow.render();
-    instance.closeClicked.emit();
-    expect(instance.closeClicked.emit).toHaveBeenCalledWith();
+    expect(outputs.closeClicked.emit).toHaveBeenCalled();
   });
 });
