@@ -15,7 +15,7 @@ export function registerGLTFLoaders(): void {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function deriveScenegraph(scenegraphNodeName: string, gltf: any): any {
-  const scenegraphNode = gltf.nodes.find((n) => n.name === scenegraphNodeName);
+  const scenegraphNode = gltf.nodes?.find((n) => n.name === scenegraphNodeName);
   if (scenegraphNode) {
     let foundNodeInScene = false;
     for (const scene of gltf.scenes) {
@@ -57,6 +57,10 @@ export async function loadGLTF(model: SpatialSceneNode, cache?: { [url: string]:
   }
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const gltf = await parse(gltfPromise, GLTFLoader, { DracoLoader, gltf: { decompressMeshes: true, postProcess: true } });
+
+  if (!gltf.nodes) {
+    console.log('WARNING: Empty Scene', gltfUrl, gltf);
+  }
 
   return deriveScenegraph(model.scenegraphNode as string, gltf);
 }
