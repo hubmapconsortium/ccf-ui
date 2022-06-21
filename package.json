@@ -167,7 +167,7 @@
     "@types/readable-stream": "^2.3.9",
     "@types/sax": "^1.2.1",
     "@types/uuid": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "4.28.3",
+    "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "^4.28.4",
     "browserify": "^17.0.0",
     "commander": "^9.0.0",
