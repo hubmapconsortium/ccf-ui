@@ -65,9 +65,6 @@
                             <a href="#applySpatialPlacement" title="projects/ccf-database/src/lib/ccf-spatial-graph.ts" ><b>applySpatialPlacement</b>&nbsp;&nbsp;&nbsp;(projects/.../ccf-spatial-graph.ts)</a>
                         </li>
                         <li>
-                            <a href="#createRuiOrganLookup" title="projects/ccf-database/src/lib/hubmap/hubmap-data.ts" ><b>createRuiOrganLookup</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data.ts)</a>
-                        </li>
-                        <li>
                             <a href="#debugDonors" title="projects/ccf-database/src/lib/hubmap/hubmap-data.ts" ><b>debugDonors</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data.ts)</a>
                         </li>
                         <li>
@@ -78,6 +75,9 @@
                         </li>
                         <li>
                             <a href="#doSearchRequest" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>doSearchRequest</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#enrichRuiLocations" title="projects/ccf-database/src/lib/util/enrich-rui-locations.ts" ><b>enrichRuiLocations</b>&nbsp;&nbsp;&nbsp;(projects/.../enrich-rui-locations.ts)</a>
                         </li>
                         <li>
                             <a href="#filterByAge" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByAge</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
@@ -134,7 +134,7 @@
                             <a href="#getAnatomicalStructures" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>getAnatomicalStructures</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
                         </li>
                         <li>
-                            <a href="#getAnatomicalStructureTreeModel" title="projects/ccf-database/src/lib/queries/ontology-tree-n3.ts" ><b>getAnatomicalStructureTreeModel</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree-n3.ts)</a>
+                            <a href="#getAnatomicalStructureTreeModelSlowly" title="projects/ccf-database/src/lib/queries/ontology-tree-n3.ts" ><b>getAnatomicalStructureTreeModelSlowly</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree-n3.ts)</a>
                         </li>
                         <li>
                             <a href="#getApiSearchBody" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>getApiSearchBody</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
@@ -881,37 +881,6 @@
 </section>    <h3>projects/ccf-database/src/lib/hubmap/hubmap-data.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="createRuiOrganLookup"></a>
-                    <span class="name">
-                        <span ><b>createRuiOrganLookup</b></span>
-                        <a href="#createRuiOrganLookup"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>createRuiOrganLookup()</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>literal type</code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
@@ -2392,6 +2361,74 @@
                     <div class="io-description">
                         <p>A set of all ids.</p>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/util/enrich-rui-locations.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="enrichRuiLocations"></a>
+                    <span class="name">
+                        <span ><b>enrichRuiLocations</b></span>
+                        <a href="#enrichRuiLocations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>enrichRuiLocations(store)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function to add additional ccf_annotations to rui locations based on the
+reference organ it was placed relative to.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the triple store holding the CCF.OWL data</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -3905,16 +3942,16 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getAnatomicalStructureTreeModel"></a>
+                    <a name="getAnatomicalStructureTreeModelSlowly"></a>
                     <span class="name">
-                        <span ><b>getAnatomicalStructureTreeModel</b></span>
-                        <a href="#getAnatomicalStructureTreeModel"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getAnatomicalStructureTreeModelSlowly</b></span>
+                        <a href="#getAnatomicalStructureTreeModelSlowly"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAnatomicalStructureTreeModel(store)</code>
+<code>getAnatomicalStructureTreeModelSlowly(store)</code>
                 </td>
             </tr>
 
