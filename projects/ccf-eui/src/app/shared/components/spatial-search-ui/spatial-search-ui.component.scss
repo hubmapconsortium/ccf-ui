@@ -7,4 +7,111 @@
   height: 95vh;
   width: 78vw;
   border-radius: .25px;
+
+  .header {
+    display: flex;
+    width: 100%;
+
+    .info, .close {
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      border-radius: 0.25rem;
+      transition: 0.6s;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+    }
+
+    .close {
+      margin-left: auto;
+    }
+  }
+
+  .content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    
+    .button {
+      border-width: 1px;
+      border-style: solid;
+      border-radius: .125rem;
+      font-size: 14px;
+    }
+
+    .info-panel {
+      display: flex;
+      flex-direction: column;
+      margin-right: 2rem;
+      grid-gap: 1rem;
+      gap: 1rem;
+      width: 25rem;
+
+      .organ-sex-selection {
+        display: flex;
+        font-size: 16px;
+        justify-content: space-between;
+
+        .sex, .organ {
+          display: flex;
+
+          .label {
+            font-weight: 300;
+            margin-right: .5rem;
+          }
+
+          .current-sex, .current-organ {
+            font-weight: 600;
+          }
+        }
+
+        .edit {
+          cursor: pointer;
+        }
+      }
+
+      .radius-slider {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          font-weight: 600;
+          font-size: 16px;
+        }
+
+        .slider-container {
+          display: flex;
+          justify-content: space-between;
+
+          .slider {
+            width: 304px;
+          }
+
+          .value {
+            display: flex;
+            align-items: center;
+          }
+        }
+
+        .reset-buttons {
+          display: flex;
+          justify-content: space-between;
+
+          button {
+            width: 184px;
+          }
+        }
+      }
+    }
+
+    .spatial-search-scene {
+      
+    }
+  }
+
 }

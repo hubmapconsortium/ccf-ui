@@ -3,14 +3,13 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
 import { OrganInfo } from 'ccf-shared';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { actionAsFn } from '../../../core/store/action-as-fn';
 import { SetOrgan, SetSex } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
 import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 import { Sex, SpatialSearchConfigComponent } from '../spatial-search-config/spatial-search-config.component';
 import { SpatialSearchUiBehaviorComponent } from '../spatial-search-ui-behavior/spatial-search-ui-behavior.component';
-
 
 
 @Component({
@@ -35,13 +34,32 @@ export class SpatialSearchConfigBehaviorComponent {
   @Dispatch()
   readonly updateOrgan = actionAsFn(SetOrgan);
 
+  sex: Sex;
+
+  organ?: OrganInfo;
+
+  private readonly subscriptions = new Subscription();
+
   constructor(
     private readonly dialogRef: MatDialogRef<SpatialSearchConfigComponent>,
     private readonly spatialSearchDialog: MatDialog
-  ) { }
+  ) {
+    this.subscriptions.add(this.sex$.subscribe((sex) => {
+      this.sex = sex;
+    }));
+    this.subscriptions.add(this.selectedOrgan$.subscribe((organ) => {
+      this.organ = organ;
+    }));
+  }
 
   buttonClicked(): void {
-    this.spatialSearchDialog.open(SpatialSearchUiBehaviorComponent);
+    this.spatialSearchDialog.open(SpatialSearchUiBehaviorComponent, {
+      data: {
+        sex: this.sex,
+        organ: this.organ,
+        radius: 5
+      }
+    });
     this.close();
   }
 

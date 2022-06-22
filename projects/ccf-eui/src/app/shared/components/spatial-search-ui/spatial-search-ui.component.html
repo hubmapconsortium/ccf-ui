@@ -1,1 +1,50 @@
-<div>Spatial Search UI</div>
+<div class="header">
+  <div class="title">Configure Spatial Search</div>
+  <button class="info button" mat-icon-button>
+    <mat-icon>info</mat-icon>
+  </button>
+  <button class="close button" mat-icon-button>
+    <mat-icon (click)="closeSpatialSearch.emit()">close</mat-icon>
+  </button>
+</div>
+
+<div class="content">
+  <div class="info-panel">
+    <div class="organ-sex-selection">
+      <div class="sex">
+        <div class="label">Donor Sex: </div>
+        <div class="current-sex">{{sex}}</div>
+      </div>
+      <div class="organ">
+        <div class="label">Organ: </div>
+        <div class="current-organ">{{organ}}</div>
+      </div>
+      <div class="edit" (click)="editReferenceOrganClicked.emit">Edit</div>
+    </div>
+    <div class="radius-slider">
+      <div class="title">Probing Sphere Radius</div>
+      <div class="slider-container">
+        <mat-slider
+          class="slider"
+          [max]="50"
+          [min]="5"
+          [step]="1"
+          (input)="radiusChange.emit($event.value)"
+          [value]="radius"
+        ></mat-slider>
+        <span class="text value">{{ radius }} cm</span>
+      </div>
+      <div class="reset-buttons">
+        <button class="reset-sphere button" mat-button (click)="resetSphere.emit">Reset Probing Sphere</button>
+        <button class="reset-camera button" mat-button (click)="resetCamera.emit">Reset Camera View</button>
+      </div>
+    </div>
+    <div class="results">
+      <div class="tissue-block-info">Tissue Block Info goes here</div>
+      <div class="anatomical-structures-info"> Anatomical Structures goes here</div>
+      <div class="cell-type-info">Predicted Cell Types goes here</div>
+    </div>
+    <button class="run-spatial-search button" mat-button (click)="runSearchClicked.emit(spatialSearch)">Run Spatial Search</button>
+  </div>
+  <div class="spatial-search-scene">Spatial Search Scene goes here</div>
+</div>
