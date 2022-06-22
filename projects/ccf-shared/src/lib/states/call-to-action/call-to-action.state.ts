@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Action, NgxsOnInit, State, StateContext } from '@ngxs/store';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { CallToActionBehaviorComponent } from '../../components/call-to-action-behavior/call-to-action-behavior.component';
+import { DocumentationContent, InfoButtonService } from '../../components/info/info-button/info-button.service';
 import { InfoDialogComponent } from '../../components/info/info-dialog/info-dialog.component';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { CloseDialog, LearnMore, OpenDialog } from './call-to-action.actions';
@@ -21,7 +23,7 @@ export interface CallToActionModel {
 
 
 const POPUP_SHOWN_STORAGE_KEY = 'callToActionPopupShown';
-
+const SPATIAL_SEARCH_README = 'assets/docs/SPATIAL_SEARCH_README.md';
 
 @State<CallToActionModel>({
   name: 'callToAction',
@@ -36,6 +38,7 @@ const POPUP_SHOWN_STORAGE_KEY = 'callToActionPopupShown';
 })
 @Injectable()
 export class CallToActionState implements NgxsOnInit {
+
   static ctaDatePassed(expirationDate: string, now = Date.now): boolean {
     const today = now();
     const expire = new Date(expirationDate);
@@ -43,6 +46,7 @@ export class CallToActionState implements NgxsOnInit {
     return +today > +expire;
   }
 
+  documentationContents: DocumentationContent[];
   constructor(
     private readonly dialog: MatDialog,
     private readonly ga: GoogleAnalyticsService,
@@ -53,7 +57,8 @@ export class CallToActionState implements NgxsOnInit {
     const { expirationDate, popupShown } = ctx.getState();
     const popupShownStr = this.storage.getItem(POPUP_SHOWN_STORAGE_KEY, `${popupShown}`);
     const pastExpiration = CallToActionState.ctaDatePassed(expirationDate);
-    const showPopup = popupShownStr !== 'true' && !pastExpiration;
+    //const showPopup = popupShownStr !== 'true' && !pastExpiration;
+    const showPopup = !pastExpiration;
 
     if (showPopup) {
       ctx.dispatch(new OpenDialog());
@@ -67,6 +72,9 @@ export class CallToActionState implements NgxsOnInit {
       autoFocus: false,
       panelClass: 'modal-animated',
       width: '72rem',
+      // data: {
+      //   content: SPATIAL_SEARCH_README
+      // }
       data: {
         title: 'Spatial Search',
         content: [{
@@ -81,12 +89,20 @@ export class CallToActionState implements NgxsOnInit {
     this.ga.event('open_learn_more', 'call_to_action');
   }
 
+  /**
+   * Opens dialog box
+   * @param ctx
+   */
   @Action(OpenDialog)
   open(ctx: StateContext<CallToActionModel>): void {
     this.dialog.open(CallToActionBehaviorComponent, {
       autoFocus: false,
       panelClass: 'modal-animated',
-      width: '22rem'
+      width: '492px',
+      height: '587px' //check proportions TODO in scss: line height, padding for button color -> 444A65
+      //padding-right adjust for title bloc
+      //https://www.figma.com/file/AxRgTJl5PUE7tNqk0VsMc3/EUI-Spatial-Search?node-id=398%3A12339
+
     });
 
     this.ga.event('open', 'call_to_action');
@@ -94,6 +110,11 @@ export class CallToActionState implements NgxsOnInit {
     ctx.patchState({ popupShown: true });
   }
 
+
+  /**
+   * closes all dialog boxes
+   * @param _ctxs;
+   */
   @Action(CloseDialog)
   close(_ctx: StateContext<CallToActionModel>): void {
     this.dialog.closeAll();

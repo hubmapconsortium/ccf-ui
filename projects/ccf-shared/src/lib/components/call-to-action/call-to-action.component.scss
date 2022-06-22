@@ -1,6 +1,8 @@
 .content{
   display: block;
   align-content: center;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
 }
 
 .info-button-wrapper {
@@ -17,46 +19,53 @@
 }
 
 .mat-dialog-title {
-  font-size: 12px;
+  font-size: 14px;
+  padding-right: 1rem;
+  padding-top: .75rem;
 }
 
 .firstRow {
   display: flex;
   width: 100%;
-  padding: .7rem;
+  line-height: .9rem;
   p {
-    padding-right: 2.4rem;
+    padding-right: 6.9rem;
+    padding-left: .2rem;
+    
   }
   mat-icon {
     height: 30%;
+    line-height: 2.7rem;
   }
 
+}
+
+.message{
+  padding: .5rem;
 }
 
 img {
   align-self: center;
   object-fit: cover; /*this makes the image in src fit to the size specified below*/
   width: 100%;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  border-radius: 4px;
 }
 
 .mat-button {
-  background-color: #293551;
-  font-size: 10px;
+  background-color: #444A65;
+  font-size: 12px;
   position: relative;
-  padding-bottom: 2rem;
-  margin-bottom: .90rem;
-  width: 90%;
-  height: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 32px;
+ 
   color: white;
 }
 
 .content {
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .mat-dialog-content{
   text-align: center;
-  font-size: 12px;
 }
