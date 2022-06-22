@@ -15,13 +15,17 @@ export function enrichRuiLocations(store: Store): void {
 
   // Build a map from reference organ to ccf annotations via representation_of and the AS partonomy
   for (const { subject: organ, object: term } of readQuads(store, null, ccf.spatialEntity.representation_of, null, null)) {
-    const annotations = [term.id];
+    const annotations = new Set([term.id]);
     let parent = tree.nodes[term.id]?.parent;
     while (parent) {
-      annotations.push(parent);
-      parent = tree.nodes[parent]?.parent;
+      if (annotations.has(parent)) {
+        break;
+      } else {
+        annotations.add(parent);
+        parent = tree.nodes[parent]?.parent;
+      }
     }
-    refOrganMap.set(organ.id, annotations.map(s => DataFactory.namedNode(s)));
+    refOrganMap.set(organ.id, [ ...annotations].map(s => DataFactory.namedNode(s)));
   }
 
   // Add AS terms for rui locations based on the reference organs they are placed relative to
