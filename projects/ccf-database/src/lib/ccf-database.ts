@@ -18,6 +18,7 @@ import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
 import { patchJsonLd } from './util/patch-jsonld';
+import { enrichRuiLocations } from './util/enrich-rui-locations';
 
 
 /** Database initialization options. */
@@ -204,6 +205,7 @@ export class CCFDatabase {
       setTimeout(r, 500);
     });
     this.graph.createGraph();
+    enrichRuiLocations(this.store);
     return this;
   }
 
