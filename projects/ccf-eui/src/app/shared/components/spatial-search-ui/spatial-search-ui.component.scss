@@ -25,6 +25,7 @@
     .title {
       display: flex;
       align-items: center;
+      margin-right: 1rem;
     }
 
     .close {
@@ -42,6 +43,8 @@
       border-style: solid;
       border-radius: .125rem;
       font-size: 14px;
+      height: 2rem;
+      line-height: 2rem;
     }
 
     .info-panel {
@@ -107,10 +110,16 @@
           }
         }
       }
+
+      .results {
+        background-color: green;
+        height: 100%;
+      }
     }
 
     .spatial-search-scene {
-      
+      width: calc(100% - 25rem);
+      background-color: green;
     }
   }
 
