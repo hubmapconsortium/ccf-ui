@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SpatialSearch } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
@@ -19,20 +19,20 @@ export interface SearchConfigData {
 })
 export class SpatialSearchUiBehaviorComponent {
 
-  @Input() sex: Sex;
+  sex: string;
 
-  @Input() organ: string;
+  organ: string;
 
-  @Input() spatialSearch: SpatialSearch;
+  spatialSearch: SpatialSearch;
 
-  @Input() radius: number;
+  radius: number;
 
   constructor(
     private readonly dialogRef: MatDialogRef<SpatialSearchUiComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SearchConfigData
   ) {
-    this.sex = data.sex;
-    this.organ = data.organ.organ;
+    this.sex = data.sex === 'male' ? 'Male' : 'Female';
+    this.organ = data.organ.name;
     this.radius = data.radius;
   }
 

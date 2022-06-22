@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 import { SpatialSearch } from 'ccf-database';
-import { Sex } from '../spatial-search-config/spatial-search-config.component';
 
 
 @Component({
@@ -12,7 +11,7 @@ import { Sex } from '../spatial-search-config/spatial-search-config.component';
 export class SpatialSearchUiComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-ui';
 
-  @Input() readonly sex: Sex;
+  @Input() readonly sex: string;
 
   @Input() readonly organ: string;
 
