@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
-import { SpatialSearch } from 'ccf-database';
+import { CameraSetting } from '../spatial-search-ui-behavior/spatial-search-ui-behavior.component';
 
 
 @Component({
@@ -13,21 +13,25 @@ export class SpatialSearchUiComponent {
 
   @Input() readonly sex: string;
 
-  @Input() readonly organ: string;
-
-  @Input() readonly spatialSearch: SpatialSearch;
+  @Input() readonly referenceOrgan: string;
 
   @Input() readonly radius: number;
 
-  @Output() readonly runSearchClicked = new EventEmitter<SpatialSearch>();
+  @Input() readonly defaultCamera: CameraSetting;
+
+  @Input() readonly currentCamera: CameraSetting;
+
+  @Output() readonly addSpatialSearch = new EventEmitter();
 
   @Output() readonly resetCamera = new EventEmitter();
 
   @Output() readonly resetSphere = new EventEmitter();
 
-  @Output() readonly editReferenceOrganClicked = new EventEmitter();
-
   @Output() readonly closeSpatialSearch = new EventEmitter();
 
   @Output() readonly radiusChange = new EventEmitter<number>();
+
+  @Output() readonly cameraChange = new EventEmitter<CameraSetting>();
+
+  @Output() readonly editReferenceOrganClicked = new EventEmitter();
 }

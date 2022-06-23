@@ -17,9 +17,9 @@
       </div>
       <div class="organ">
         <div class="label">Organ: </div>
-        <div class="current-organ">{{organ}}</div>
+        <div class="current-organ">{{referenceOrgan}}</div>
       </div>
-      <div class="edit" (click)="editReferenceOrganClicked.emit">Edit</div>
+      <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>
     </div>
     <div class="radius-slider">
       <div class="title">Probing Sphere Radius</div>
@@ -35,8 +35,8 @@
         <span class="text value">{{ radius }} cm</span>
       </div>
       <div class="reset-buttons">
-        <button class="reset-sphere button" mat-button (click)="resetSphere.emit">Reset Probing Sphere</button>
-        <button class="reset-camera button" mat-button (click)="resetCamera.emit">Reset Camera View</button>
+        <button class="reset-sphere button" [class.disabled]="radius === 5" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
+        <button class="reset-camera button" [class.disabled]="defaultCamera === currentCamera" mat-button (click)="resetCamera.emit()">Reset Camera View</button>
       </div>
     </div>
     <div class="results">
@@ -44,7 +44,7 @@
       <div class="anatomical-structures-info"> Anatomical Structures goes here</div>
       <div class="cell-type-info">Predicted Cell Types goes here</div>
     </div>
-    <button class="run-spatial-search button" mat-button (click)="runSearchClicked.emit(spatialSearch)">Run Spatial Search</button>
+    <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
   <div class="spatial-search-scene">Spatial Search Scene goes here</div>
 </div>

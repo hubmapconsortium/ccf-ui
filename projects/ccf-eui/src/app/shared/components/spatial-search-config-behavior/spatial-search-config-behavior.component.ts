@@ -57,7 +57,13 @@ export class SpatialSearchConfigBehaviorComponent {
       data: {
         sex: this.sex,
         organ: this.organ,
-        radius: 5
+        spatialSearch: {
+          x: 0, //need the right starting coordinates
+          y: 0,
+          z: 0,
+          radius: 5,
+          target: this.organ?.id
+        }
       }
     });
     this.close();

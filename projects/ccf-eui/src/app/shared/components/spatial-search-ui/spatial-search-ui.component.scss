@@ -6,7 +6,7 @@
   gap: 1rem;
   height: 95vh;
   width: 78vw;
-  border-radius: .25px;
+  border-radius: 0.25px;
 
   .header {
     display: flex;
@@ -41,10 +41,15 @@
     .button {
       border-width: 1px;
       border-style: solid;
-      border-radius: .125rem;
-      font-size: 14px;
+      border-radius: 0.125rem;
+      font-size: 0.875rem;
       height: 2rem;
       line-height: 2rem;
+
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
     }
 
     .info-panel {
@@ -57,7 +62,7 @@
 
       .organ-sex-selection {
         display: flex;
-        font-size: 16px;
+        font-size: 1rem;
         justify-content: space-between;
 
         .sex, .organ {
@@ -65,7 +70,7 @@
 
           .label {
             font-weight: 300;
-            margin-right: .5rem;
+            margin-right: 0.5rem;
           }
 
           .current-sex, .current-organ {
@@ -84,7 +89,7 @@
 
         .title {
           font-weight: 600;
-          font-size: 16px;
+          font-size: 1rem;
         }
 
         .slider-container {
@@ -92,12 +97,13 @@
           justify-content: space-between;
 
           .slider {
-            width: 304px;
+            width: 19rem;
           }
 
           .value {
             display: flex;
             align-items: center;
+            font-size: 1rem;
           }
         }
 
@@ -106,7 +112,7 @@
           justify-content: space-between;
 
           button {
-            width: 184px;
+            width: 11.5rem;
           }
         }
       }
