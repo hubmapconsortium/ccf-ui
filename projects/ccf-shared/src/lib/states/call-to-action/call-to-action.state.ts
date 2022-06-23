@@ -5,7 +5,7 @@ import { Action, NgxsOnInit, State, StateContext } from '@ngxs/store';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { CallToActionBehaviorComponent } from '../../components/call-to-action-behavior/call-to-action-behavior.component';
-import { DocumentationContent, InfoButtonService } from '../../components/info/info-button/info-button.service';
+import { DocumentationContent, InfoButtonService, PanelData } from '../../components/info/info-button/info-button.service';
 import { InfoDialogComponent } from '../../components/info/info-dialog/info-dialog.component';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { CloseDialog, LearnMore, OpenDialog } from './call-to-action.actions';
@@ -46,11 +46,22 @@ export class CallToActionState implements NgxsOnInit {
     return +today > +expire;
   }
 
+  /**
+   * bloc of data to be passed into the Panel
+   */
+  learnMoreContent: PanelData;
+  /**
+  * Data to be passed into dialog, often pulled from panel data
+  */
+  dialogData;
+
   documentationContents: DocumentationContent[];
   constructor(
     private readonly dialog: MatDialog,
     private readonly ga: GoogleAnalyticsService,
-    private readonly storage: LocalStorageService
+    private readonly storage: LocalStorageService,
+    private readonly infoService: InfoButtonService,
+    private readonly http: HttpClient
   ) { }
 
   ngxsOnInit(ctx: StateContext<CallToActionModel>): void {
@@ -63,28 +74,37 @@ export class CallToActionState implements NgxsOnInit {
     if (showPopup) {
       ctx.dispatch(new OpenDialog());
     }
+
+    this.http.get(SPATIAL_SEARCH_README, { responseType: 'text' }).subscribe((data: string) => {
+      this.learnMoreContent = {
+        content: this.infoService.parseMarkdown(data),
+        infoTitle: 'Spacial Search',
+        videoID: 'EjsGs7yR_LE'
+      };
+
+      this.dialogData =
+      {
+        autoFocus: false,
+        panelClass: 'modal-animated',
+        width: '72rem',
+        data: {
+          title: this.learnMoreContent.infoTitle,
+          content: this.learnMoreContent.content,
+          videoId: this.learnMoreContent.videoID
+        }
+      };
+    });
+
   }
 
+  /**
+   * Opens learn more dialog box
+   * @param _ctx
+   */
   @Action(LearnMore)
   learnMore(_ctx: StateContext<CallToActionModel>): void {
     this.dialog.closeAll();
-    this.dialog.open(InfoDialogComponent, {
-      autoFocus: false,
-      panelClass: 'modal-animated',
-      width: '72rem',
-      // data: {
-      //   content: SPATIAL_SEARCH_README
-      // }
-      data: {
-        title: 'Spatial Search',
-        content: [{
-          title: 'InfoDialogComponent Needs Updated',
-          content: 'So that you can open it without first parsing the markdown in <assets/docs/SPATIAL_SEARCH_README.md>.'
-            + 'You should be able to pass the md url and it work with that.'
-        }],
-        videoID: 'N2JUogY-DQw'
-      }
-    });
+    this.dialog.open(InfoDialogComponent, this.dialogData);
 
     this.ga.event('open_learn_more', 'call_to_action');
   }
@@ -99,10 +119,7 @@ export class CallToActionState implements NgxsOnInit {
       autoFocus: false,
       panelClass: 'modal-animated',
       width: '492px',
-      height: '587px' //check proportions TODO in scss: line height, padding for button color -> 444A65
-      //padding-right adjust for title bloc
-      //https://www.figma.com/file/AxRgTJl5PUE7tNqk0VsMc3/EUI-Spatial-Search?node-id=398%3A12339
-
+      height: '587px'
     });
 
     this.ga.event('open', 'call_to_action');

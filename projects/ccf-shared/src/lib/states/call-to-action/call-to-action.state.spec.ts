@@ -4,6 +4,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { CallToActionModel, CallToActionState } from './call-to-action.state';
 
 import { StateContext } from '@ngxs/store';
+import { HttpClient } from '@angular/common/http';
+import { InfoButtonService } from '../../components/info/info-button/info-button.service';
 
 
 describe('CallToActionState', () => {
@@ -12,6 +14,8 @@ describe('CallToActionState', () => {
   let storage: jasmine.SpyObj<LocalStorageService>;
   let ctx: jasmine.SpyObj<StateContext<CallToActionModel>>;
   let state: CallToActionState;
+  let infoService: InfoButtonService;
+  let http: HttpClient;
 
 
   beforeEach(() => {
@@ -21,7 +25,9 @@ describe('CallToActionState', () => {
     ctx = jasmine.createSpyObj<StateContext<CallToActionModel>>([
       'getState', 'setState', 'patchState', 'dispatch'
     ]);
-    state = new CallToActionState(dialog, ga, storage);
+    infoService = jasmine.createSpyObj<InfoButtonService>(['parseMarkdown']);
+    http = jasmine.createSpyObj<HttpClient>(['get']);
+    state = new CallToActionState(dialog, ga, storage, infoService, http);
   });
 
   describe('ngxsOnInit(ctx)', () => {
@@ -67,5 +73,4 @@ describe('CallToActionState', () => {
     });
 
   });
-
 });
