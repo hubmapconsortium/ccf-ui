@@ -14,12 +14,10 @@ describe('LocalStorageService', () => {
       );
       ls = new LocalStorageService();
       LocalStorageService.storage = storageSpy;
-      // storageSpy.setItem('TestKey', 'TestVal');
-      // storageSpy.setItem('TestKey2', 'TestVal2');
     });
 
     it('should return length', async () => {
-      const lengthSpy = Object.getOwnPropertyDescriptor(storageSpy, 'length')!.get!;
+      const lengthSpy = Object.getOwnPropertyDescriptor(storageSpy, 'length')!.get;
       ls.length;
       expect(lengthSpy).toHaveBeenCalled();
     });
@@ -29,7 +27,6 @@ describe('LocalStorageService', () => {
       expect(storageSpy.key).toHaveBeenCalled();
     });
 
-    // TODO update the test below this line
     it('should retrieve value with key from stroage', async () => {
       ls.getItem('TestKey');
       expect(storageSpy.getItem).toHaveBeenCalled();
@@ -41,7 +38,6 @@ describe('LocalStorageService', () => {
     });
 
     it('should clear all storage', async () => {
-      //add item to storage, then remove it
       ls.clear();
       expect(storageSpy.clear).toHaveBeenCalled();
     });
@@ -61,10 +57,6 @@ describe('LocalStorageService', () => {
       ls = new LocalStorageService();
       LocalStorageService.storage = undefined;
     });
-
-    // TODO test with no storage
-    // Test for defaults i.e. getItem returns default.
-
 
     it('should return default for get item', async () => {
       expect(ls.getItem('key', 'Crabs')).toEqual('Crabs');

@@ -3,10 +3,11 @@ import { LocalStorageService } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { CallToActionModel, CallToActionState } from './call-to-action.state';
 
-import { StateContext } from '@ngxs/store';
 import { HttpClient } from '@angular/common/http';
-import { InfoButtonService } from '../../components/info/info-button/info-button.service';
-
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { StateContext } from '@ngxs/store';
+import { DocumentationContent, InfoButtonService } from '../../components/info/info-button/info-button.service';
 
 describe('CallToActionState', () => {
   let dialog: jasmine.SpyObj<MatDialog>;
@@ -16,7 +17,8 @@ describe('CallToActionState', () => {
   let state: CallToActionState;
   let infoService: InfoButtonService;
   let http: HttpClient;
-
+  let httpClient: HttpClient;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     dialog = jasmine.createSpyObj<MatDialog>(['open', 'closeAll']);
@@ -25,11 +27,26 @@ describe('CallToActionState', () => {
     ctx = jasmine.createSpyObj<StateContext<CallToActionModel>>([
       'getState', 'setState', 'patchState', 'dispatch'
     ]);
-    infoService = jasmine.createSpyObj<InfoButtonService>(['parseMarkdown']);
     http = jasmine.createSpyObj<HttpClient>(['get']);
+
+
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        CallToActionState
+      ]
+    });
+
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
+    infoService = jasmine.createSpyObj<InfoButtonService>(['parseMarkdown']);
+
     state = new CallToActionState(dialog, ga, storage, infoService, http);
   });
 
+  afterEach(() => {
+    httpTestingController.verify();
+  });
   describe('ngxsOnInit(ctx)', () => {
     const defaultState: CallToActionModel = {
       title: '',
@@ -41,12 +58,15 @@ describe('CallToActionState', () => {
     };
 
 
-    it('opens learn more dialog box', () => {
+    it('opens info dialog box', () => {
+     
       state.learnMore(ctx);
+      const req = httpTestingController.expectOne('assets/docs/SPATIAL_SEARCH_README.md');
+      req.flush('data');
       expect(ga.event).toHaveBeenCalledWith('open_learn_more', 'call_to_action');
     });
 
-    it('opens dialog box', () => {
+    it('opens CTA dialog box', () => {
       state.open(ctx);
       expect(ga.event).toHaveBeenCalledWith('open', 'call_to_action');
     });
@@ -61,6 +81,11 @@ describe('CallToActionState', () => {
       expect(datePassed).toBeTrue();
     });
 
+    it('opoens dialog box', () => {
+      const markdownContent: DocumentationContent[] = [];
+      state.launchLearnMore(markdownContent);
+      expect(dialog.open).toHaveBeenCalled();
+    });
 
     beforeEach(() => {
       storage.getItem.and.returnValue('');

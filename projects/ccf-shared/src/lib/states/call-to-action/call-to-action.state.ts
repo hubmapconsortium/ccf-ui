@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Action, NgxsOnInit, State, StateContext } from '@ngxs/store';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { Observable } from 'rxjs/internal/Observable';
+import { map, shareReplay } from 'rxjs/operators';
 
 import { CallToActionBehaviorComponent } from '../../components/call-to-action-behavior/call-to-action-behavior.component';
 import { DocumentationContent, InfoButtonService, PanelData } from '../../components/info/info-button/info-button.service';
@@ -69,43 +71,48 @@ export class CallToActionState implements NgxsOnInit {
     const popupShownStr = this.storage.getItem(POPUP_SHOWN_STORAGE_KEY, `${popupShown}`);
     const pastExpiration = CallToActionState.ctaDatePassed(expirationDate);
     //const showPopup = popupShownStr !== 'true' && !pastExpiration;
-    const showPopup = !pastExpiration;
+    const showPopup = true;
 
     if (showPopup) {
       ctx.dispatch(new OpenDialog());
     }
-
-    this.http.get(SPATIAL_SEARCH_README, { responseType: 'text' }).subscribe((data: string) => {
-      this.learnMoreContent = {
-        content: this.infoService.parseMarkdown(data),
-        infoTitle: 'Spacial Search',
-        videoID: 'EjsGs7yR_LE'
-      };
-
-      this.dialogData =
-      {
-        autoFocus: false,
-        panelClass: 'modal-animated',
-        width: '72rem',
-        data: {
-          title: this.learnMoreContent.infoTitle,
-          content: this.learnMoreContent.content,
-          videoId: this.learnMoreContent.videoID
-        }
-      };
-    });
-
   }
 
   /**
-   * Opens learn more dialog box
+   * Returns observable containting info from the markup
+   */
+  private getDialogData(): Observable<DocumentationContent[]>{
+    return this.http.get(SPATIAL_SEARCH_README, { responseType: 'text' }).pipe(map(data =>
+      this.infoService.parseMarkdown(data)
+    ));
+  }
+
+  /**
+   * Opens Learn more dialog
+   */
+  launchLearnMore(content: DocumentationContent[]): void{
+    this.dialog.open(InfoDialogComponent, {
+      autoFocus: false,
+      panelClass: 'modal-animated',
+      width: '72rem',
+      data: {
+        title: 'Spatial Search',
+        content: content,
+        videoID: 'N2JUogY-DQw'
+      }
+    });
+  }
+
+  /**
+   * Handles click event box
    * @param _ctx
    */
   @Action(LearnMore)
   learnMore(_ctx: StateContext<CallToActionModel>): void {
     this.dialog.closeAll();
-    this.dialog.open(InfoDialogComponent, this.dialogData);
-
+    this.getDialogData().subscribe(data =>
+      this.launchLearnMore(data)
+    );
     this.ga.event('open_learn_more', 'call_to_action');
   }
 
@@ -118,8 +125,8 @@ export class CallToActionState implements NgxsOnInit {
     this.dialog.open(CallToActionBehaviorComponent, {
       autoFocus: false,
       panelClass: 'modal-animated',
-      width: '492px',
-      height: '587px'
+      width: '30.75rem',
+      height: '36.688rem'
     });
 
     this.ga.event('open', 'call_to_action');
