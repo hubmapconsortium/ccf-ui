@@ -1,4 +1,4 @@
 <ccf-spatial-search-ui [sex]="sex" [referenceOrgan]="organ" [radius]="spatialSearch.radius" [sliderSettings]="sliderSettings" [defaultCamera]="defaultCamera" [currentCamera]="currentCamera" (addSpatialSearch)="addSpatialSearch()"
   (radiusChange)="spatialSearchChanged($event, 'radius')" (resetCamera)="changeCamera(defaultCamera)" (resetSphere)="spatialSearchChanged(sliderSettings[0], 'radius')" (cameraChange)="changeCamera($event)"
-  (closeSpatialSearch)="close()" (editReferenceOrganClicked)="openSpatialSearchConfig()">
+  (closeSpatialSearch)="close()" (editReferenceOrganClicked)="openSpatialSearchConfig()" (infoClicked)="onDialogButtonClick()">
 </ccf-spatial-search-ui>

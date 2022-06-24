@@ -41,4 +41,6 @@ export class SpatialSearchUiComponent {
   @Output() readonly cameraChange = new EventEmitter<CameraSetting>();
 
   @Output() readonly editReferenceOrganClicked = new EventEmitter();
+
+  @Output() readonly infoClicked = new EventEmitter();
 }
