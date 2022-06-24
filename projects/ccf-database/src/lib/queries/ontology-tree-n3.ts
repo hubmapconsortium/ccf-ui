@@ -74,7 +74,12 @@ function treeify(model: OntologyTreeModel, nodeIri: string | undefined = undefin
   if (node) {
     node.children = node.children.filter(n => !seen.has(n));
     node.children.forEach(n => seen.add(n));
-    node.children.forEach(n => treeify(model, n, seen));
+    for (const childId of node.children) {
+      treeify(model, childId, seen);
+      if (model.nodes[childId]) {
+        model.nodes[childId].parent = node['@id'];
+      }
+    }
   }
 }
 
