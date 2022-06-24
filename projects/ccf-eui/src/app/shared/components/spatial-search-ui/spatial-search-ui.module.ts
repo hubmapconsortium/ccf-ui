@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { InfoButtonModule } from 'ccf-shared';
+import { TissueBlockListModule } from '../tissue-block-list/tissue-block-list.module';
 
 import { SpatialSearchUiComponent } from './spatial-search-ui.component';
 
@@ -13,7 +14,8 @@ import { SpatialSearchUiComponent } from './spatial-search-ui.component';
     MatIconModule,
     MatSliderModule,
     MatButtonModule,
-    InfoButtonModule
+    InfoButtonModule,
+    TissueBlockListModule
   ],
   declarations: [SpatialSearchUiComponent],
   exports: [SpatialSearchUiComponent]
