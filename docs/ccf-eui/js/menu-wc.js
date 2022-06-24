@@ -372,13 +372,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' }>
+                                            'data-target="#components-links-module-SpatialSearchUiModule-4c642c4342297eae158c818a5738215c"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-4c642c4342297eae158c818a5738215c"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-4c642c4342297eae158c818a5738215c"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-4c642c4342297eae158c818a5738215c"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>
@@ -435,6 +435,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'id="xs-components-links-module-ThumbnailCarouselModule-72cea5b89d26bc3311058ecad8ae374c"' }>
                                             <li class="link">
                                                 <a href="components/ThumbnailCarouselComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ThumbnailCarouselComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/TissueBlockListModule.html" data-type="entity-link" >TissueBlockListModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-TissueBlockListModule-d4d3380920c54abb90204d4da1022b44"' : 'data-target="#xs-components-links-module-TissueBlockListModule-d4d3380920c54abb90204d4da1022b44"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-TissueBlockListModule-d4d3380920c54abb90204d4da1022b44"' :
+                                            'id="xs-components-links-module-TissueBlockListModule-d4d3380920c54abb90204d4da1022b44"' }>
+                                            <li class="link">
+                                                <a href="components/TissueBlockListComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TissueBlockListComponent</a>
                                             </li>
                                         </ul>
                                     </li>
