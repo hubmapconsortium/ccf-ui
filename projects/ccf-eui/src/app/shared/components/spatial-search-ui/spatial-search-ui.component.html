@@ -26,8 +26,8 @@
       <div class="slider-container">
         <mat-slider
           class="slider"
-          [max]="50"
-          [min]="5"
+          [max]="sliderSettings[1]"
+          [min]="sliderSettings[0]"
           [step]="1"
           (input)="radiusChange.emit($event.value)"
           [value]="radius"
@@ -35,7 +35,7 @@
         <span class="text value">{{ radius }} cm</span>
       </div>
       <div class="reset-buttons">
-        <button class="reset-sphere button" [class.disabled]="radius === 5" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
+        <button class="reset-sphere button" [class.disabled]="radius === sliderSettings[0]" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
         <button class="reset-camera button" [class.disabled]="defaultCamera === currentCamera" mat-button (click)="resetCamera.emit()">Reset Camera View</button>
       </div>
     </div>

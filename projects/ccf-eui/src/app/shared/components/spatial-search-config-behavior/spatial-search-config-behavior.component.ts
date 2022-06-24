@@ -63,7 +63,8 @@ export class SpatialSearchConfigBehaviorComponent {
           z: 0,
           radius: 5,
           target: this.organ?.id
-        }
+        },
+        sliderSettings: [5, 50]
       }
     });
     this.close();

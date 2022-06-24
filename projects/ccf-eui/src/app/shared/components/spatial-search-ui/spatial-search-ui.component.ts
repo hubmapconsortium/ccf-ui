@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
-import { CameraSetting } from '../spatial-search-ui-behavior/spatial-search-ui-behavior.component';
+
+export interface CameraSetting {
+  x: number;
+  y: number;
+  z: number;
+}
 
 
 @Component({
@@ -16,6 +21,8 @@ export class SpatialSearchUiComponent {
   @Input() readonly referenceOrgan: string;
 
   @Input() readonly radius: number;
+
+  @Input() readonly sliderSettings: number[] = [0, 0];
 
   @Input() readonly defaultCamera: CameraSetting;
 

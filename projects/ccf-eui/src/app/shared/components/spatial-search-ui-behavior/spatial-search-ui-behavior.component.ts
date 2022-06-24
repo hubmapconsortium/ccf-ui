@@ -1,21 +1,17 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SpatialSearch } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
+import { SpatialSearchConfigBehaviorComponent } from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
 import { Sex } from '../spatial-search-config/spatial-search-config.component';
-import { SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
+import { CameraSetting, SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
 
 
 export interface SearchConfigData {
   sex: Sex;
   organ: OrganInfo;
   spatialSearch: SpatialSearch;
-}
-
-export interface CameraSetting {
-  x: number;
-  y: number;
-  z: number;
+  sliderSettings: number[];
 }
 
 @Component({
@@ -31,20 +27,27 @@ export class SpatialSearchUiBehaviorComponent {
 
   spatialSearch: SpatialSearch;
 
+  sliderSettings: number[];
+
   defaultCamera: CameraSetting;
+
+  currentCamera: CameraSetting;
 
   constructor(
     private readonly dialogRef: MatDialogRef<SpatialSearchUiComponent>,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: SearchConfigData
   ) {
     this.sex = data.sex === 'male' ? 'Male' : 'Female';
     this.organ = data.organ.name;
     this.spatialSearch = data.spatialSearch;
+    this.sliderSettings = data.sliderSettings;
     this.defaultCamera = {
       x: this.spatialSearch.x,
       y: this.spatialSearch.y,
       z: this.spatialSearch.z
     };
+    this.currentCamera = this.defaultCamera;
   }
 
   close(): void {
@@ -53,7 +56,7 @@ export class SpatialSearchUiBehaviorComponent {
 
   addSpatialSearch(): void {
     //add to spatial search list
-    console.log(this.spatialSearch);
+    this.close();
   }
 
   spatialSearchChanged(value: number, key: string): void {
@@ -61,11 +64,13 @@ export class SpatialSearchUiBehaviorComponent {
   }
 
   openSpatialSearchConfig(): void {
-    console.log('open config');
+    this.close();
+    this.dialog.open(SpatialSearchConfigBehaviorComponent);
   }
 
   changeCamera(setting: CameraSetting): void {
     this.spatialSearch = { ...this.spatialSearch, x: setting.x, y: setting.y, z: setting.z };
+    this.currentCamera = setting;
   }
 
   resetCamera(): void {
