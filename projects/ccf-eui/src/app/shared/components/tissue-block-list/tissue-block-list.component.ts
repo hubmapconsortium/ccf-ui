@@ -38,7 +38,7 @@ const testBlock: TissueBlockResult = {
  * Tissue block list in spatial search UI
  */
 @Component({
-  selector: 'ccf-tissue-block-list.',
+  selector: 'ccf-tissue-block-list',
   templateUrl: './tissue-block-list.component.html',
   styleUrls: ['./tissue-block-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
