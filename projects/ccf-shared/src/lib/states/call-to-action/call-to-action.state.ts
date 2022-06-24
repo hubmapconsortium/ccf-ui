@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Action, NgxsOnInit, State, StateContext } from '@ngxs/store';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { Observable } from 'rxjs/internal/Observable';
-import { map, shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 import { CallToActionBehaviorComponent } from '../../components/call-to-action-behavior/call-to-action-behavior.component';
 import { DocumentationContent, InfoButtonService, PanelData } from '../../components/info/info-button/info-button.service';
@@ -48,16 +48,6 @@ export class CallToActionState implements NgxsOnInit {
     return +today > +expire;
   }
 
-  /**
-   * bloc of data to be passed into the Panel
-   */
-  learnMoreContent: PanelData;
-  /**
-  * Data to be passed into dialog, often pulled from panel data
-  */
-  dialogData;
-
-  documentationContents: DocumentationContent[];
   constructor(
     private readonly dialog: MatDialog,
     private readonly ga: GoogleAnalyticsService,
@@ -70,9 +60,7 @@ export class CallToActionState implements NgxsOnInit {
     const { expirationDate, popupShown } = ctx.getState();
     const popupShownStr = this.storage.getItem(POPUP_SHOWN_STORAGE_KEY, `${popupShown}`);
     const pastExpiration = CallToActionState.ctaDatePassed(expirationDate);
-    //const showPopup = popupShownStr !== 'true' && !pastExpiration;
-    const showPopup = true;
-
+    const showPopup = popupShownStr !== 'true' && !pastExpiration;
     if (showPopup) {
       ctx.dispatch(new OpenDialog());
     }
@@ -108,12 +96,13 @@ export class CallToActionState implements NgxsOnInit {
    * @param _ctx
    */
   @Action(LearnMore)
-  learnMore(_ctx: StateContext<CallToActionModel>): void {
+  learnMore(_ctx: StateContext<CallToActionModel>): Observable<DocumentationContent[]> {
     this.dialog.closeAll();
-    this.getDialogData().subscribe(data =>
-      this.launchLearnMore(data)
-    );
     this.ga.event('open_learn_more', 'call_to_action');
+
+    return this.getDialogData().pipe(
+      tap(data => this.launchLearnMore(data))
+    );
   }
 
   /**
@@ -133,7 +122,6 @@ export class CallToActionState implements NgxsOnInit {
     this.storage.setItem(POPUP_SHOWN_STORAGE_KEY, 'true');
     ctx.patchState({ popupShown: true });
   }
-
 
   /**
    * closes all dialog boxes
