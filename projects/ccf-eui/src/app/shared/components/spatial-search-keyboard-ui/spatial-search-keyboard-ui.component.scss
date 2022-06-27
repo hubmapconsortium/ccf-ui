@@ -1,0 +1,54 @@
+:host {
+  .direction-arrow {
+    display: grid;
+    grid-template-columns: repeat(5, .5fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin-bottom: 1rem;
+
+    .arrow {
+      grid-area: 1 / 3 / 2 / 4;
+      opacity: 0;
+      transition: 0.5s;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .keys {
+    display: flex;
+    flex-direction: column;
+
+    .keyrow {
+      display: flex;
+
+      .key {
+        width: 24px;
+        height: 24px;
+        border: 1px solid;
+        border-radius: 4px;
+        margin: 0.25rem;
+        text-align: center;
+        line-height: 24px;
+
+        &.highlighted {
+          color: white;
+        }
+      }
+
+      .green {
+        color: #1DCC65;
+      }
+      .blue {
+        color: #2979FF;
+
+      }
+      .red {
+        color: #D50000;
+      }
+    }
+  }
+}
