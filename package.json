@@ -97,7 +97,7 @@
     "@ngxs/logger-plugin": "^3.7.1",
     "@ngxs/storage-plugin": "^3.7.1",
     "@ngxs/store": "^3.7.3",
-    "@rdfjs/data-model": "^1.2.0",
+    "@rdfjs/data-model": "^2.0.1",
     "@types/lru-cache": "<7.0.0",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "bind-decorator": "^1.0.11",
