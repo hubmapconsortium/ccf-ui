@@ -128,7 +128,7 @@
     "qs": "^6.10.2",
     "rdf-literal": "^1.2.0",
     "rdfxml-streaming-parser": "^1.4.0",
-    "readable-stream": "^3.6.0",
+    "readable-stream": "^4.0.0",
     "rxjs": "^6.6.7",
     "stream-browserify": "^3.0.0",
     "swiper": "^6.5.1",
