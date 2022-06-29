@@ -46,6 +46,7 @@ export class CallToActionComponent {
 
 
 
+
   /**
    * Function to handle the close button click action
    */
