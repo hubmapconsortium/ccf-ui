@@ -12,7 +12,11 @@ export class SpatialSearchKeyboardUIComponent {
 
   @Input() currentKey?: string;
 
+  @Input() shiftPressed: boolean;
+
   @Output() readonly keyClicked = new EventEmitter<string>();
+
+  @Output() readonly keyHovered = new EventEmitter<string | undefined>();
 
   keyMap = [
     {

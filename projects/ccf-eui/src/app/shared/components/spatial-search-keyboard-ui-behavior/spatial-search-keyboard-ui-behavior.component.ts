@@ -83,8 +83,7 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
     this.updatePosition(key);
   }
 
-  @HostListener('document:mouseup', ['$event'])
-  mouseUp(): void {
-    this.currentKey = undefined;
+  keyHover(key?: string): void {
+    this.currentKey = key;
   }
 }
