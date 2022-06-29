@@ -8,8 +8,9 @@ import { mergeMap, take, tap } from 'rxjs/operators';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 import { DataStateSelectors } from '../data/data.selectors';
+import { DataState } from '../data/data.state';
 import { SceneState } from '../scene/scene.state';
-import { SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
+import { ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
 
 
 export interface Position {
@@ -100,7 +101,7 @@ export class SpatialSearchUiState {
       const filter = {
         ...globalFilter,
         sex: organ.sex,
-        ontologyTerms: [ ...globalFilter.ontologyTerms, organId ],
+        ontologyTerms: [ organId ],
         spatialSearches: []
       };
 
@@ -133,6 +134,15 @@ export class SpatialSearchUiState {
     this.ga.event('set_position', 'spatial_search_ui', `${x}_${y}_${z}`);
   }
 
+  @Action(ResetPosition)
+  resetPosition(ctx: StateContext<SpatialSearchUiModel>): void {
+    const { defaultPosition } = ctx.getState();
+    ctx.patchState({ position: defaultPosition });
+
+    const { x, y, z } = defaultPosition ?? { x: 0, y: 0, z: 0 };
+    this.ga.event('reset_position', 'spatial_search_ui', `${x}_${y}_${z}`);
+  }
+
   /**
    * Updates radius in the SpatialSearchUI
    */
@@ -141,6 +151,15 @@ export class SpatialSearchUiState {
     ctx.patchState({ radius });
 
     this.ga.event('set_radius', 'spatial_search_ui', radius.toFixed(1));
+  }
+
+  @Action(ResetRadius)
+  resetRadius(ctx: StateContext<SpatialSearchUiModel>): void {
+    const { radiusSettings } = ctx.getState();
+    const radius = radiusSettings?.defaultValue ?? 0;
+    ctx.patchState({ radius });
+
+    this.ga.event('reset_radius', 'spatial_search_ui', radius.toFixed(1));
   }
 
   /**
@@ -157,7 +176,7 @@ export class SpatialSearchUiState {
       const filter: Filter = {
         ...globalFilter,
         sex: organ.sex as 'Male' | 'Female',
-        ontologyTerms: [ ...globalFilter.ontologyTerms, organId ],
+        ontologyTerms: [ organId ],
         spatialSearches: [{
           ...position,
           radius: radius,

@@ -1,4 +1,6 @@
-<ccf-spatial-search-ui [sex]="sex" [referenceOrgan]="organ" [radius]="spatialSearch.radius" [sliderSettings]="sliderSettings" [defaultCoordinates]="defaultCoordinates" [currentCoordinates]="currentCoordinates" (addSpatialSearch)="addSpatialSearch()"
-  (radiusChange)="spatialSearchChanged($event, 'radius')" (resetCoordinates)="changeCoordinates(defaultCoordinates)" (resetSphere)="spatialSearchChanged(sliderSettings[0], 'radius')" (coordinatesChange)="changeCoordinates($event)"
-  (closeSpatialSearch)="close()" (editReferenceOrganClicked)="openSpatialSearchConfig()" (infoClicked)="onDialogButtonClick()">
+<ccf-spatial-search-ui [sex]="sex$ | async" [referenceOrgan]="organ$ | async" [radius]="radius$ | async"
+  [radiusSettings]="radiusSettings$ | async" [defaultPosition]="defaultPosition$ | async" [position]="position$ | async"
+  (addSpatialSearch)="addSpatialSearch()" (radiusChange)="updateRadius($event)" (resetPosition)="resetPosition()"
+  (resetSphere)="resetRadius()" (positionChange)="updatePosition($event)" (closeSpatialSearch)="close()"
+  (editReferenceOrganClicked)="openSpatialSearchConfig()" (infoClicked)="onDialogButtonClick()">
 </ccf-spatial-search-ui>

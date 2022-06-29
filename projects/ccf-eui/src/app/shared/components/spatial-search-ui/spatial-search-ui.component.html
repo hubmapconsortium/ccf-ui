@@ -13,11 +13,11 @@
     <div class="organ-sex-selection">
       <div class="sex">
         <div class="label">Donor Sex: </div>
-        <div class="current-sex">{{sex}}</div>
+        <div class="current-sex">{{sex.charAt(0).toUpperCase() + sex.slice(1)}}</div>
       </div>
       <div class="organ">
         <div class="label">Organ: </div>
-        <div class="current-organ">{{referenceOrgan}}</div>
+        <div class="current-organ">{{referenceOrgan.name}}</div>
       </div>
       <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>
     </div>
@@ -26,8 +26,8 @@
       <div class="slider-container">
         <mat-slider
           class="slider"
-          [max]="sliderSettings[1]"
-          [min]="sliderSettings[0]"
+          [max]="radiusSettings.max"
+          [min]="radiusSettings.min"
           [step]="1"
           (input)="radiusChange.emit($event.value)"
           [value]="radius"
@@ -35,8 +35,8 @@
         <span class="text value">{{ radius }} cm</span>
       </div>
       <div class="reset-buttons">
-        <button class="reset-sphere button" [class.disabled]="radius === sliderSettings[0]" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
-        <button class="reset-camera button" [class.disabled]="defaultCoordinates === currentCoordinates" mat-button (click)="resetCoordinates.emit()">Reset Camera View</button>
+        <button class="reset-sphere button" [class.disabled]="radius === radiusSettings.defaultValue" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
+        <button class="reset-camera button" [class.disabled]="defaultPosition === position" mat-button (click)="resetPosition.emit()">Reset Camera View</button>
       </div>
     </div>
     <div class="results">

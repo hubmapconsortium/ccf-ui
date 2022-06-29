@@ -6,7 +6,7 @@ import { InfoDialogComponent, OrganInfo, InfoButtonService, PanelData } from 'cc
 import { Observable, Subscription } from 'rxjs';
 
 import { actionAsFn } from '../../../core/store/action-as-fn';
-import { SetOrgan, SetSex } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
+import { SetSex, SetOrgan } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
 import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 import { Sex, SpatialSearchConfigComponent } from '../spatial-search-config/spatial-search-config.component';
 import { SpatialSearchUiBehaviorComponent } from '../spatial-search-ui-behavior/spatial-search-ui-behavior.component';
@@ -22,21 +22,17 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
   @Select(SpatialSearchUiSelectors.sex)
   readonly sex$: Observable<Sex>;
 
-  @Select(SpatialSearchUiSelectors.organs)
-  readonly organs$: Observable<OrganInfo[]>;
-
   @Select(SpatialSearchUiSelectors.organ)
   readonly selectedOrgan$: Observable<OrganInfo | undefined>;
+
+  @Select(SpatialSearchUiSelectors.organs)
+  readonly organs$: Observable<OrganInfo[]>;
 
   @Dispatch()
   readonly updateSex = actionAsFn(SetSex);
 
   @Dispatch()
   readonly updateOrgan = actionAsFn(SetOrgan);
-
-  sex: Sex;
-
-  organ?: OrganInfo;
 
   panelData: PanelData;
 
@@ -45,35 +41,14 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
   private readonly dialogSubs = new Subscription();
 
   constructor(
+    public dialog: MatDialog,
     private readonly dialogRef: MatDialogRef<SpatialSearchConfigComponent>,
     private readonly spatialSearchDialog: MatDialog,
-    public dialog: MatDialog,
-    private readonly infoService: InfoButtonService,
-
-  ) {
-    this.subscriptions.add(this.sex$.subscribe((sex) => {
-      this.sex = sex;
-    }));
-    this.subscriptions.add(this.selectedOrgan$.subscribe((organ) => {
-      this.organ = organ;
-    }));
-  }
+    private readonly infoService: InfoButtonService
+  ) { }
 
   buttonClicked(): void {
-    this.spatialSearchDialog.open(SpatialSearchUiBehaviorComponent, {
-      data: {
-        sex: this.sex,
-        organ: this.organ,
-        spatialSearch: {
-          x: 0, //need the right starting coordinates
-          y: 0,
-          z: 0,
-          radius: 5,
-          target: this.organ?.id
-        },
-        sliderSettings: [5, 50]
-      }
-    });
+    this.spatialSearchDialog.open(SpatialSearchUiBehaviorComponent);
     this.close();
   }
 

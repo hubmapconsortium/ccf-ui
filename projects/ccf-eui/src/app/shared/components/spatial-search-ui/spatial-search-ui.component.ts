@@ -1,11 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
-
-export interface SpatialSearchCoordinates {
-  x: number;
-  y: number;
-  z: number;
-}
-
+import { OrganInfo } from 'ccf-shared';
+import { Position, RadiusSettings } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
 @Component({
   selector: 'ccf-spatial-search-ui',
@@ -18,19 +13,19 @@ export class SpatialSearchUiComponent {
 
   @Input() readonly sex: string;
 
-  @Input() readonly referenceOrgan: string;
+  @Input() readonly referenceOrgan: OrganInfo;
 
   @Input() readonly radius: number;
 
-  @Input() readonly sliderSettings: number[] = [0, 0];
+  @Input() readonly radiusSettings: RadiusSettings;
 
-  @Input() readonly defaultCoordinates: SpatialSearchCoordinates;
+  @Input() readonly defaultPosition: Position;
 
-  @Input() readonly currentCoordinates: SpatialSearchCoordinates;
+  @Input() readonly position: Position;
 
   @Output() readonly addSpatialSearch = new EventEmitter();
 
-  @Output() readonly resetCoordinates = new EventEmitter();
+  @Output() readonly resetPosition = new EventEmitter();
 
   @Output() readonly resetSphere = new EventEmitter();
 
@@ -38,7 +33,7 @@ export class SpatialSearchUiComponent {
 
   @Output() readonly radiusChange = new EventEmitter<number>();
 
-  @Output() readonly coordinatesChange = new EventEmitter<SpatialSearchCoordinates>();
+  @Output() readonly positionChange = new EventEmitter<Position>();
 
   @Output() readonly editReferenceOrganClicked = new EventEmitter();
 

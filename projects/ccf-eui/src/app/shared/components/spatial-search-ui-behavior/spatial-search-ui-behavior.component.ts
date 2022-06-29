@@ -1,64 +1,65 @@
-import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, Inject, OnDestroy } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SpatialSearch } from 'ccf-database';
-import { InfoDialogComponent, OrganInfo, InfoButtonService, PanelData } from 'ccf-shared';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { Select } from '@ngxs/store';
+import { InfoButtonService, InfoDialogComponent, OrganInfo, PanelData } from 'ccf-shared';
+import { Observable, Subscription } from 'rxjs';
+
+import { actionAsFn } from '../../../core/store/action-as-fn';
+import { SetPosition, SetRadius, ResetRadius, ResetPosition } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
+import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
+import { Position, RadiusSettings } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 import { SpatialSearchConfigBehaviorComponent } from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
 import { Sex } from '../spatial-search-config/spatial-search-config.component';
-import { SpatialSearchCoordinates, SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
+import { SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
 
-
-export interface SearchConfigData {
-  sex: Sex;
-  organ: OrganInfo;
-  spatialSearch: SpatialSearch;
-  sliderSettings: number[];
-}
 
 @Component({
   selector: 'ccf-spatial-search-ui-behavior',
   templateUrl: './spatial-search-ui-behavior.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SpatialSearchUiBehaviorComponent implements OnDestroy {
+export class SpatialSearchUiBehaviorComponent {
 
-  sex: string;
+  @Select(SpatialSearchUiSelectors.sex)
+  readonly sex$: Observable<Sex>;
 
-  organ: string;
+  @Select(SpatialSearchUiSelectors.organ)
+  readonly organ$: Observable<OrganInfo | undefined>;
 
-  spatialSearch: SpatialSearch;
+  @Select(SpatialSearchUiSelectors.position)
+  readonly position$: Observable<Position>;
 
-  sliderSettings: number[];
+  @Select(SpatialSearchUiSelectors.defaultPosition)
+  readonly defaultPosition$: Observable<Position>;
 
-  defaultCoordinates: SpatialSearchCoordinates;
+  @Select(SpatialSearchUiSelectors.radius)
+  readonly radius$: Observable<number>;
 
-  currentCoordinates: SpatialSearchCoordinates;
+  @Select(SpatialSearchUiSelectors.radiusSettings)
+  readonly radiusSettings$: Observable<RadiusSettings>;
+
+  @Dispatch()
+  readonly updatePosition = actionAsFn(SetPosition);
+
+  @Dispatch()
+  readonly resetPosition = actionAsFn(ResetPosition);
+
+  @Dispatch()
+  readonly updateRadius = actionAsFn(SetRadius);
+
+  @Dispatch()
+  readonly resetRadius = actionAsFn(ResetRadius);
 
   panelData: PanelData;
-
-  private readonly subscriptions = new Subscription();
 
   private readonly dialogSubs = new Subscription();
 
   constructor(
     private readonly dialogRef: MatDialogRef<SpatialSearchUiComponent>,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: SearchConfigData,
-    private readonly infoService: InfoButtonService,
-    private readonly http: HttpClient
-  ) {
-    this.sex = data.sex === 'male' ? 'Male' : 'Female';
-    this.organ = data.organ.name;
-    this.spatialSearch = data.spatialSearch;
-    this.sliderSettings = data.sliderSettings;
-    this.defaultCoordinates = {
-      x: this.spatialSearch.x,
-      y: this.spatialSearch.y,
-      z: this.spatialSearch.z
-    };
-    this.currentCoordinates = this.defaultCoordinates;
-  }
+    private readonly infoService: InfoButtonService
+  ) { }
 
   launchInfoDialog(data: PanelData): void {
     this.dialogSubs.unsubscribe();
@@ -94,25 +95,8 @@ export class SpatialSearchUiBehaviorComponent implements OnDestroy {
     this.close();
   }
 
-  spatialSearchChanged(value: number, key: string): void {
-    this.spatialSearch = { ...this.spatialSearch, [key]: value };
-  }
-
   openSpatialSearchConfig(): void {
     this.close();
     this.dialog.open(SpatialSearchConfigBehaviorComponent);
-  }
-
-  changeCoordinates(setting: SpatialSearchCoordinates): void {
-    this.spatialSearch = { ...this.spatialSearch, x: setting.x, y: setting.y, z: setting.z };
-    this.currentCoordinates = setting;
-  }
-
-  resetCoordinates(): void {
-    this.changeCoordinates(this.defaultCoordinates);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
   }
 }
