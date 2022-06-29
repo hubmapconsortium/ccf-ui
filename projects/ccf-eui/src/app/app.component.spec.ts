@@ -1,7 +1,7 @@
 import { Immutable } from '@angular-ru/common/typings';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { of } from 'rxjs';
@@ -31,8 +31,9 @@ describe('AppComponent', () => {
     right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
     shallow = new Shallow(AppComponent, AppModule)
-      .import(NgxsModule.forRoot())
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
+      .import(NgxsModule.forRoot())
+      .provideMock(Store)
       .mock(ListResultsState, {
         listResults$: of([])
       })

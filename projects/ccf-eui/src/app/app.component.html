@@ -10,7 +10,9 @@
         <div class="filter-data">
           <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
                                (filtersChange)="data.updateFilter($event)" [technologyFilters]="data.technologyFilterData$ | async"
-                               [providerFilters]="data.providerFilterData$ | async" #filterbox>
+                               [providerFilters]="data.providerFilterData$ | async" [spatialSearchFilters]="selectableSearches$ | async"
+                               (spatialSearchSelected)="setSelectedSearches($event)"
+                               (spatialSearchRemoved)="removeSpatialSearch($event.id)" #filterbox>
           </ccf-filters-popover>
 
           <div class="filter-text">

@@ -11,7 +11,8 @@
     <div class="popup-body">
       <ccf-filters-content [technologyFilters]="technologyFilters" [providerFilters]="providerFilters"
         [spatialSearchFilters]="spatialSearchFilters" [hidden]="!filtersVisible" [filters]="filters"
-        (applyFilters)="applyFilters($event)" (spatialSearchRemoved)="spatialSearchRemoved.emit($event)">
+        (applyFilters)="applyFilters($event)" (spatialSearchSelected)="spatialSearchSelected.emit($event)"
+        (spatialSearchRemoved)="spatialSearchRemoved.emit($event)">
       </ccf-filters-content>
     </div>
   </div>

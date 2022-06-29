@@ -1,5 +1,4 @@
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { SpatialSearchListItem } from 'ccf-shared';
 import { Shallow } from 'shallow-render';
 
 import { FiltersContentComponent } from './filters-content.component';
@@ -7,7 +6,7 @@ import { FiltersContentModule } from './filters-content.module';
 
 
 describe('FiltersContentComponent', () => {
-  let shallow: Shallow<FiltersContentComponent<SpatialSearchListItem>>;
+  let shallow: Shallow<FiltersContentComponent>;
 
   const mockMatDialog = {
     open(..._args: unknown[]): MatDialogRef<unknown, unknown> {
