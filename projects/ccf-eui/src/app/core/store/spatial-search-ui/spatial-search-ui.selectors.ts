@@ -4,7 +4,7 @@ import { getProbingSphereScene, OntologyTreeModel, SpatialEntity, TissueBlockRes
 import { OrganInfo } from 'ccf-shared';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
-import { DataState } from '../data/data.state';
+import { DataStateSelectors } from '../data/data.selectors';
 import { SceneState } from '../scene/scene.state';
 import { Position, SpatialSearchUiModel, SpatialSearchUiState, TermResult } from './spatial-search-ui.state';
 
@@ -75,12 +75,12 @@ export class SpatialSearchUiSelectors {
     return state.tissueBlocks ?? [];
   }
 
-  @Selector([SpatialSearchUiState, DataState.anatomicalStructuresTreeModel])
+  @Selector([SpatialSearchUiState, DataStateSelectors.anatomicalStructuresTreeModel])
   static anatomicalStructures(state: SpatialSearchUiModel, tree: OntologyTreeModel): TermResult[] {
     return this.getTermCounts(state.anatomicalStructures, tree);
   }
 
-  @Selector([SpatialSearchUiState, DataState.cellTypesTreeModel])
+  @Selector([SpatialSearchUiState, DataStateSelectors.cellTypesTreeModel])
   static cellTypes(state: SpatialSearchUiModel, tree: OntologyTreeModel): TermResult[] {
     return this.getTermCounts(state.cellTypes, tree);
   }

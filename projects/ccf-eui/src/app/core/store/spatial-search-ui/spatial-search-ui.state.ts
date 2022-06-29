@@ -3,11 +3,11 @@ import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { forkJoin, Observable, of } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { mergeMap, take, tap } from 'rxjs/operators';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
-import { DataState } from '../data/data.state';
+import { DataStateSelectors } from '../data/data.selectors';
 import { SceneState } from '../scene/scene.state';
 import { SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
 
@@ -96,7 +96,7 @@ export class SpatialSearchUiState {
       const { x_dimension: width, y_dimension: height, z_dimension: depth } = organ;
       const position = { x: Math.round(width / 2), y: Math.round(height / 2), z: Math.round(depth / 2) };
       const defaultRadius = Math.round(Math.max(width, height, depth) * 0.07);
-      const globalFilter = this.store.selectSnapshot(DataState.filter);
+      const globalFilter = this.store.selectSnapshot(DataStateSelectors.filter);
       const filter = {
         ...globalFilter,
         sex: organ.sex,
@@ -153,7 +153,7 @@ export class SpatialSearchUiState {
     if (organ && position && radius && organ.representation_of) {
       const db = this.dataSource;
       const organId = organ.representation_of;
-      const globalFilter = this.store.selectSnapshot(DataState.filter);
+      const globalFilter = this.store.selectSnapshot(DataStateSelectors.filter);
       const filter: Filter = {
         ...globalFilter,
         sex: organ.sex as 'Male' | 'Female',
