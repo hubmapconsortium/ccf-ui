@@ -110,7 +110,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.actions.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.actions.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -179,7 +179,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.actions.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.actions.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -216,10 +216,18 @@ export class SetPosition {
   constructor(readonly position: { x: number; y: number; z: number }) {}
 }
 
+export class ResetPosition {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Reset position&#x27;;
+}
+
 export class SetRadius {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Set radius&#x27;;
 
   constructor(readonly radius: number) {}
+}
+
+export class ResetRadius {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Reset radius&#x27;;
 }
 
 export class UpdateSpatialSearch {

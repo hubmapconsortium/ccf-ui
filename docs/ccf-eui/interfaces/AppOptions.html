@@ -331,6 +331,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+import { Dispatch } from &#x27;@ngxs-labs/dispatch-decorator&#x27;;
 import { Select } from &#x27;@ngxs/store&#x27;;
 import { CCFDatabaseOptions, OntologyTreeModel } from &#x27;ccf-database&#x27;;
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
@@ -343,10 +344,14 @@ import { environment } from &#x27;../environments/environment&#x27;;
 import { OntologySelection } from &#x27;./core/models/ontology-selection&#x27;;
 import { AppRootOverlayContainer } from &#x27;./core/services/app-root-overlay/app-root-overlay.service&#x27;;
 import { ThemingService } from &#x27;./core/services/theming/theming.service&#x27;;
+import { actionAsFn } from &#x27;./core/store/action-as-fn&#x27;;
 import { DataStateSelectors } from &#x27;./core/store/data/data.selectors&#x27;;
 import { DataQueryState, DataState } from &#x27;./core/store/data/data.state&#x27;;
 import { ListResultsState } from &#x27;./core/store/list-results/list-results.state&#x27;;
 import { SceneState } from &#x27;./core/store/scene/scene.state&#x27;;
+import { RemoveSearch, SetSelectedSearches } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.actions&#x27;;
+import { SpatialSearchFilterSelectors } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.selectors&#x27;;
+import { SpatialSearchFilterItem } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.state&#x27;;
 import { FiltersPopoverComponent } from &#x27;./modules/filters/filters-popover/filters-popover.component&#x27;;
 import { DrawerComponent } from &#x27;./shared/components/drawer/drawer/drawer.component&#x27;;
 
@@ -373,11 +378,21 @@ interface AppOptions extends CCFDatabaseOptions {
 export class AppComponent implements OnInit {
   @ViewChild(&#x27;bodyUI&#x27;, { static: false }) bodyUI: BodyUiComponent;
 
+
   @Select(DataStateSelectors.cellTypesTreeModel)
   readonly cellTypeTreeModel$: Observable&lt;OntologyTreeModel&gt;;
 
   @Select(DataStateSelectors.anatomicalStructuresTreeModel)
   readonly ontologyTreeModel$: Observable&lt;OntologyTreeModel&gt;;
+
+  @Select(SpatialSearchFilterSelectors.items)
+  readonly selectableSearches$: Observable&lt;SpatialSearchFilterItem&gt;;
+
+  @Dispatch()
+  readonly setSelectedSearches &#x3D; actionAsFn(SetSelectedSearches);
+
+  @Dispatch()
+  readonly removeSpatialSearch &#x3D; actionAsFn(RemoveSearch);
 
   /**
    * Used to keep track of the ontology label to be passed down to the

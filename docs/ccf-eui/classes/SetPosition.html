@@ -216,10 +216,18 @@ export class SetPosition {
   constructor(readonly position: { x: number; y: number; z: number }) {}
 }
 
+export class ResetPosition {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Reset position&#x27;;
+}
+
 export class SetRadius {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Set radius&#x27;;
 
   constructor(readonly radius: number) {}
+}
+
+export class ResetRadius {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Reset radius&#x27;;
 }
 
 export class UpdateSpatialSearch {

@@ -597,8 +597,9 @@ import { mergeMap, take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { Sex } from &#x27;../../../shared/components/spatial-search-config/spatial-search-config.component&#x27;;
 import { DataStateSelectors } from &#x27;../data/data.selectors&#x27;;
+import { DataState } from &#x27;../data/data.state&#x27;;
 import { SceneState } from &#x27;../scene/scene.state&#x27;;
-import { SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from &#x27;./spatial-search-ui.actions&#x27;;
+import { ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from &#x27;./spatial-search-ui.actions&#x27;;
 
 
 export interface Position {
@@ -689,7 +690,7 @@ export class SpatialSearchUiState {
       const filter &#x3D; {
         ...globalFilter,
         sex: organ.sex,
-        ontologyTerms: [ ...globalFilter.ontologyTerms, organId ],
+        ontologyTerms: [ organId ],
         spatialSearches: []
       };
 
@@ -722,6 +723,15 @@ export class SpatialSearchUiState {
     this.ga.event(&#x27;set_position&#x27;, &#x27;spatial_search_ui&#x27;, &#x60;${x}_${y}_${z}&#x60;);
   }
 
+  @Action(ResetPosition)
+  resetPosition(ctx: StateContext&lt;SpatialSearchUiModel&gt;): void {
+    const { defaultPosition } &#x3D; ctx.getState();
+    ctx.patchState({ position: defaultPosition });
+
+    const { x, y, z } &#x3D; defaultPosition ?? { x: 0, y: 0, z: 0 };
+    this.ga.event(&#x27;reset_position&#x27;, &#x27;spatial_search_ui&#x27;, &#x60;${x}_${y}_${z}&#x60;);
+  }
+
   /**
    * Updates radius in the SpatialSearchUI
    */
@@ -730,6 +740,15 @@ export class SpatialSearchUiState {
     ctx.patchState({ radius });
 
     this.ga.event(&#x27;set_radius&#x27;, &#x27;spatial_search_ui&#x27;, radius.toFixed(1));
+  }
+
+  @Action(ResetRadius)
+  resetRadius(ctx: StateContext&lt;SpatialSearchUiModel&gt;): void {
+    const { radiusSettings } &#x3D; ctx.getState();
+    const radius &#x3D; radiusSettings?.defaultValue ?? 0;
+    ctx.patchState({ radius });
+
+    this.ga.event(&#x27;reset_radius&#x27;, &#x27;spatial_search_ui&#x27;, radius.toFixed(1));
   }
 
   /**
@@ -746,7 +765,7 @@ export class SpatialSearchUiState {
       const filter: Filter &#x3D; {
         ...globalFilter,
         sex: organ.sex as &#x27;Male&#x27; | &#x27;Female&#x27;,
-        ontologyTerms: [ ...globalFilter.ontologyTerms, organId ],
+        ontologyTerms: [ organId ],
         spatialSearches: [{
           ...position,
           radius: radius,
