@@ -1,3 +1,4 @@
+import { memoize } from 'lodash';
 import { readQuads, Store } from 'triple-store-utils';
 import { OntologyTreeModel, OntologyTreeNode } from '../interfaces';
 import { getEntries } from '../util/n3-functions';
@@ -59,7 +60,7 @@ export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: s
   return result;
 }
 
-export function getAnatomicalStructureTreeModel(store: Store): OntologyTreeModel {
+export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTreeModel {
   const model = getOntologyTreeModel(store, rui.body.id, 'body', ccf.asctb.part_of.id);
   model.nodes[rui.body.id].children = [
     'http://purl.obolibrary.org/obo/UBERON_0000955', // Brain
@@ -85,9 +86,11 @@ export function getAnatomicalStructureTreeModel(store: Store): OntologyTreeModel
     // 'http://purl.obolibrary.org/obo/FMA_7213', // Ovary, R
     'http://purl.obolibrary.org/obo/UBERON_0001264', // Pancreas
     'http://purl.obolibrary.org/obo/UBERON_0001270', // Pelvis
+    'http://purl.obolibrary.org/obo/UBERON_0001987', // Placenta
     'http://purl.obolibrary.org/obo/UBERON_0002367', // Prostate
     'http://purl.obolibrary.org/obo/UBERON_0002097', // Skin
     'http://purl.obolibrary.org/obo/UBERON_0002108', // Small Intestine
+    'http://purl.obolibrary.org/obo/UBERON_0002240', // Spinal Cord
     'http://purl.obolibrary.org/obo/UBERON_0000059', // Large Intestine
     'http://purl.obolibrary.org/obo/UBERON_0002106', // Spleen
     'http://purl.obolibrary.org/obo/UBERON_0002370', // Thymus
@@ -100,6 +103,8 @@ export function getAnatomicalStructureTreeModel(store: Store): OntologyTreeModel
   ].filter(iri => iri in model.nodes);
   return model;
 }
+
+export const getAnatomicalStructureTreeModel = memoize(getAnatomicalStructureTreeModelSlowly, () => '');
 
 export function getCellTypeTreeModel(store: Store): OntologyTreeModel {
   return getOntologyTreeModel(store, rui.cell.id, 'cell', ccf.asctb.ct_is_a.id);

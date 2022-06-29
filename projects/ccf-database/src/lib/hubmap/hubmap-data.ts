@@ -2,8 +2,6 @@
 import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
 import { get, omit, set, toNumber } from 'lodash';
 
-import { rui } from '../util/prefixes';
-
 
 type JsonDict = Record<string, unknown>;
 const HBM_PREFIX = 'https://entity.api.hubmapconsortium.org/entities/';
@@ -23,54 +21,6 @@ const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
   'def5fd76-ed43-11e8-b56a-0e8017bdda58': 'TMC-Stanford',
   '5c106f29-ea2d-11e9-85e8-0efb3ba9a670': 'RTI-General Electric',
   '301615f9-c870-11eb-a8dc-35ce3d8786fe': 'TMC-UConn'
-};
-
-function createRuiOrganLookup(): { [organName: string]: string } {
-  const lookup: { [organName: string]: string } = {};
-  Object.entries(rui).forEach(([k, v]) => (lookup[k] = v.id));
-  return lookup;
-}
-
-/** RUI organ name to entity identifier. */
-const RUI_ORGANS: { [organName: string]: string } = createRuiOrganLookup();
-
-// Taken from: https://github.com/hubmapconsortium/commons/blob/master/hubmap_commons/hubmap_const.py#L101
-/** HBM organ names to set of RUI organs. */
-const HBM_ORGANS: { [organName: string]: string[] } = {
-  AO: [RUI_ORGANS.body, RUI_ORGANS.heart, RUI_ORGANS.aorta], //'Aorta',
-  BL: [RUI_ORGANS.body, RUI_ORGANS.urinary_bladder], //'Bladder',
-  BD: [RUI_ORGANS.body, RUI_ORGANS.pelvis, RUI_ORGANS.blood], //'Blood', *
-  BM: [RUI_ORGANS.body, RUI_ORGANS.pelvis, RUI_ORGANS.bone_marrow], //'Bone Marrow', *
-  BR: [RUI_ORGANS.body, RUI_ORGANS.brain], //'Brain',
-  LB: [RUI_ORGANS.body, RUI_ORGANS.respiratory_system, RUI_ORGANS.lungs, RUI_ORGANS.left_bronchus], //'Bronchus (Left)',
-  RB: [RUI_ORGANS.body, RUI_ORGANS.respiratory_system, RUI_ORGANS.lungs, RUI_ORGANS.right_bronchus], //'Bronchus (Right)',
-  LE: [RUI_ORGANS.body, RUI_ORGANS.eye, RUI_ORGANS.eye_left], //'Eye (Left)',
-  RE: [RUI_ORGANS.body, RUI_ORGANS.eye, RUI_ORGANS.eye_right], //'Eye (Right)',
-  LF: [RUI_ORGANS.body, RUI_ORGANS.fallopian_tube, RUI_ORGANS.fallopian_tube_left], //'Fallopian Tube (Left)',
-  RF: [RUI_ORGANS.body, RUI_ORGANS.fallopian_tube, RUI_ORGANS.fallopian_tube_right], //'Fallopian Tube (Right)',
-  HT: [RUI_ORGANS.body, RUI_ORGANS.heart], //'Heart',
-  LK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.kidney_left], //'Kidney (Left)',
-  RK: [RUI_ORGANS.body, RUI_ORGANS.kidney, RUI_ORGANS.kidney_right], //'Kidney (Right)',
-  LI: [RUI_ORGANS.body, RUI_ORGANS.large_intestine, RUI_ORGANS.colon], //'Large Intestine',
-  LV: [RUI_ORGANS.body, RUI_ORGANS.liver], //'Liver',
-  LL: [RUI_ORGANS.body, RUI_ORGANS.respiratory_system, RUI_ORGANS.lungs, RUI_ORGANS.left_lung], //'Lung (Left)',
-  LN: [RUI_ORGANS.body, RUI_ORGANS.knee, RUI_ORGANS.knee_left], //'Knee (Left)',
-  RL: [RUI_ORGANS.body, RUI_ORGANS.respiratory_system, RUI_ORGANS.lungs, RUI_ORGANS.right_lung], //'Lung (Right)',
-  RN: [RUI_ORGANS.body, RUI_ORGANS.knee, RUI_ORGANS.knee_right], //'Knee (Right)',
-  LY: [RUI_ORGANS.body, RUI_ORGANS.lymph_node, RUI_ORGANS.mesenteric_lymph_node], //'Lymph Node',
-  LO: [RUI_ORGANS.body, RUI_ORGANS.ovary, RUI_ORGANS.ovary_left], //'Ovary (Left)',
-  RO: [RUI_ORGANS.body, RUI_ORGANS.ovary, RUI_ORGANS.ovary_right], //'Ovary (Right)',
-  PA: [RUI_ORGANS.body, RUI_ORGANS.pancreas], //'Pancreas',
-  PL: [RUI_ORGANS.body], //'Placenta', *
-  SI: [RUI_ORGANS.body, RUI_ORGANS.small_intestine], //'Small Intestine',
-  SK: [RUI_ORGANS.body, RUI_ORGANS.skin], //'Skin',
-  SP: [RUI_ORGANS.body, RUI_ORGANS.spleen], //'Spleen',
-  ST: [RUI_ORGANS.body], //'Sternum', *
-  TH: [RUI_ORGANS.body, RUI_ORGANS.thymus], //'Thymus',
-  TR: [RUI_ORGANS.body, RUI_ORGANS.respiratory_system, RUI_ORGANS.lungs, RUI_ORGANS.trachea], //'Trachea',
-  UR: [RUI_ORGANS.body, RUI_ORGANS.ureter], //'Ureter',
-  UT: [RUI_ORGANS.body, RUI_ORGANS.uterus], //'Uterus',
-  OT: [RUI_ORGANS.body], //'Other'
 };
 
 const ENTITY_CONTEXT = {
@@ -422,10 +372,6 @@ export class HuBMAPTissueBlock {
   }
 
   getRuiLocation(data: JsonDict, donor: JsonLdObj): JsonLdObj | undefined {
-    const ancestors = (data.ancestors || []) as JsonDict[];
-    const organSample = ancestors.find(e => e.entity_type === 'Sample' && e.specimen_type === 'organ') as JsonDict;
-    const ontologyTerms = HBM_ORGANS[organSample?.organ as string] || [RUI_ORGANS.body];
-
     let spatialEntity: JsonLdObj | undefined;
     let ruiLocation = data.rui_location as JsonDict;
     if (ruiLocation) {
@@ -441,8 +387,6 @@ export class HuBMAPTissueBlock {
       }
     }
     if (spatialEntity) {
-      spatialEntity.ccf_annotations = ontologyTerms.concat(spatialEntity.ccf_annotations as string[] || []);
-
       // Patch to fix RUI 0.5 Kidney and Spleen Placements
       const target: string = get(spatialEntity, ['placement', 'target']) ?? '';
       if (target.startsWith('http://purl.org/ccf/latest/ccf.owl#VHSpleenCC')) {
@@ -451,8 +395,7 @@ export class HuBMAPTissueBlock {
         } else {
           set(spatialEntity, ['placement', 'target'], target.replace('#VHSpleenCC', '#VHFSpleenCC'));
         }
-      }
-      if (target === 'http://purl.org/ccf/latest/ccf.owl#VHLeftKidney' || target === 'http://purl.org/ccf/latest/ccf.owl#VHRightKidney') {
+      } else if (target === 'http://purl.org/ccf/latest/ccf.owl#VHLeftKidney' || target === 'http://purl.org/ccf/latest/ccf.owl#VHRightKidney') {
         if (donor.sex === 'Male') {
           set(spatialEntity, ['placement', 'target'], target.replace('#VH', '#VHM') + '_Patch');
         } else {

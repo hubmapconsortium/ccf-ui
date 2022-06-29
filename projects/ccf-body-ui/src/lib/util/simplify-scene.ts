@@ -71,7 +71,7 @@ export async function simplifyScene(nodes: SpatialSceneNode[]): Promise<SpatialS
     const newNode: SpatialSceneNode = {
       ...model,
       transformMatrix,
-      wireframe: true
+      geometry: 'wireframe'
     };
     delete newNode.scenegraph;
     delete newNode.scenegraphNode;
