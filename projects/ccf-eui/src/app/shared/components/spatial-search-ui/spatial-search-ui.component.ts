@@ -14,6 +14,6 @@ export class SpatialSearchUiComponent {
 
   move(newPos: SpatialSearchPosition): void {
     this.position = newPos;
-    console.log(this.position)
+    console.log(this.position);
   }
 }

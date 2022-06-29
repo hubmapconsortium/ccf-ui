@@ -10,6 +10,7 @@
 @use '../../app/shared/components/spatial-search-config/spatial-search-config.component.theme' as spatialSearchConfig;
 @use '../../app/shared/components/spatial-search-ui/spatial-search-ui.component.theme' as spatialSearchUi;
 @use '../../app/shared/components/tissue-block-list/tissue-block-list.component.theme' as tissueBlockList;
+@use '../../app/shared/components/spatial-search-keyboard-ui/spatial-search-keyboard-ui.component.theme' as spatialSearchKeyboardUi;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme' as spinner;
 @use '../../app/shared/components/thumbnail-carousel/thumbnail-carousel.theme' as thumbnailCarousel;
 @use '../../app/modules/ontology-exploration/ontology-exploration.theme' as ontologyExploration;
@@ -44,6 +45,7 @@
   @include spatialSearchConfig.theme($theme);
   @include spatialSearchUi.theme($theme);
   @include tissueBlockList.theme($theme);
+  @include spatialSearchKeyboardUi.theme($theme);
   @include spinner.theme($theme);
   @include thumbnailCarousel.theme($theme);
   @include filters.theme($theme);

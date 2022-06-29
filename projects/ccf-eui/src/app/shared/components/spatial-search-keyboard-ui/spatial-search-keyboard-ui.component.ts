@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -11,4 +11,33 @@ export class SpatialSearchKeyboardUIComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-keyboard-ui';
 
   @Input() currentKey?: string;
+
+  @Output() readonly keyClicked = new EventEmitter<string>();
+
+  keyMap = [
+    {
+      key: 'w',
+      direction: 'north'
+    },
+    {
+      key: 's',
+      direction: 'south'
+    },
+    {
+      key: 'a',
+      direction: 'west'
+    },
+    {
+      key: 'd',
+      direction: 'east'
+    },
+    {
+      key: 'e',
+      direction: 'north_east'
+    },
+    {
+      key: 'q',
+      direction: 'south_west'
+    }
+  ];
 }

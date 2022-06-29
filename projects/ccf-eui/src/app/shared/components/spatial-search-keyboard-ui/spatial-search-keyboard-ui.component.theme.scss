@@ -8,5 +8,22 @@
   $accent: map-get($theme, accent);
 
   .ccf-spatial-search-keyboard-ui {
+    .green {
+      color: #1DCC65;
+    }
+
+    .blue {
+      color: #2979FF;
+    }
+
+    .red {
+      color: #D50000;
+    }
+
+    .key {
+      &:hover, &.highlighted {
+        color: white;
+      }
+    }
   }
 }

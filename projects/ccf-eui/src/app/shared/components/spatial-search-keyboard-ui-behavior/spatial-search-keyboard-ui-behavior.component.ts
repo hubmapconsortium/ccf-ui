@@ -33,12 +33,10 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
 
   shiftPressed = false;
 
-  @HostListener('document:keydown', ['$event'])
-  handleKey(target: KeyboardEvent): void {
-    target.preventDefault();
-    this.currentKey = target.key;
+  updatePosition(key: string): void {
+    this.currentKey = key.toLowerCase();
     this.currentDelta = this.shiftPressed ? this.shiftDelta : this.delta;
-    switch (this.currentKey?.toLowerCase()) {
+    switch (this.currentKey) {
       case 'shift':
         this.shiftPressed = true;
         break;
@@ -66,6 +64,12 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
     this.changePosition.emit(this.position);
   }
 
+  @HostListener('document:keydown', ['$event'])
+  handleKey(target: KeyboardEvent): void {
+    target.preventDefault();
+    this.updatePosition(target.key);
+  }
+
   @HostListener('document:keyup', ['$event'])
   keyUp(target: KeyboardEvent): void {
     if (target.key === 'Shift') {
@@ -73,5 +77,14 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
     } else {
       this.currentKey = undefined;
     }
+  }
+
+  keyClick(key: string): void {
+    this.updatePosition(key);
+  }
+
+  @HostListener('document:mouseup', ['$event'])
+  mouseUp(): void {
+    this.currentKey = undefined;
   }
 }
