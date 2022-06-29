@@ -1,0 +1,33 @@
+@use '~@angular/material' as mat;
+@use '~@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+
+  .ccf-spatial-search-keyboard-ui {
+    .green {
+      color: #1DCC65;
+    }
+
+    .blue {
+      color: #2979FF;
+    }
+
+    .red {
+      color: #D50000;
+    }
+
+    .key {
+      &:hover, &.highlighted {
+        color: white;
+      }
+    }
+
+    .shift {
+      color: white;
+    }
+  }
+}
