@@ -1,8 +1,10 @@
 <div class="direction-arrow">
-  <mat-icon class="arrow" [class.active]="currentDirection === 'north'">north</mat-icon>
-  <mat-icon class="arrow" [class.active]="currentDirection === 'south'">south</mat-icon>
-  <mat-icon class="arrow" [class.active]="currentDirection === 'east'">east</mat-icon>
-  <mat-icon class="arrow" [class.active]="currentDirection === 'west'">west</mat-icon>
+  <mat-icon class="arrow" [class.active]="currentKey === 'w'">north</mat-icon>
+  <mat-icon class="arrow" [class.active]="currentKey === 's'">south</mat-icon>
+  <mat-icon class="arrow" [class.active]="currentKey === 'a'">east</mat-icon>
+  <mat-icon class="arrow" [class.active]="currentKey === 'd'">west</mat-icon>
+  <mat-icon class="arrow" [class.active]="currentKey === 'e'">north_east</mat-icon>
+  <mat-icon class="arrow" [class.active]="currentKey === 'q'">south_west</mat-icon>
 </div>
 <div class="keys">
   <div class="keyrow">

@@ -10,7 +10,5 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
 export class SpatialSearchKeyboardUIComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-keyboard-ui';
 
-  @Input() currentDirection?: string;
-
   @Input() currentKey?: string;
 }

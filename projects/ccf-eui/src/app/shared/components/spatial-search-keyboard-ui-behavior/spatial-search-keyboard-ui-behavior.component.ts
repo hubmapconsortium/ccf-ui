@@ -17,7 +17,7 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
 
   @Input() delta = 1;
 
-  @Input() shiftDelta: number;
+  @Input() shiftDelta = 2;
 
   @Input() position: SpatialSearchPosition = {
     x: 0,
@@ -27,51 +27,51 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
 
   @Output() readonly changePosition = new EventEmitter<SpatialSearchPosition>();
 
-  currentDirection?: string;
-
   currentKey?: string;
+
+  currentDelta: number;
+
+  shiftPressed = false;
 
   @HostListener('document:keydown', ['$event'])
   handleKey(target: KeyboardEvent): void {
     target.preventDefault();
     this.currentKey = target.key;
-    switch (target.key) {
+    this.currentDelta = this.shiftPressed ? this.shiftDelta : this.delta;
+    switch (this.currentKey?.toLowerCase()) {
+      case 'shift':
+        this.shiftPressed = true;
+        break;
       case 'q':
-        this.currentDirection = 'west';
-        this.position = { ...this.position, z: this.position.z + this.delta };
+        this.position = { ...this.position, z: this.position.z + this.currentDelta };
         break;
       case 'e':
-        this.currentDirection = 'east';
-        this.position = { ...this.position, z: this.position.z - this.delta };
+        this.position = { ...this.position, z: this.position.z - this.currentDelta };
         break;
       case 'w':
-        this.currentDirection = 'north';
-        this.position = { ...this.position, y: this.position.y + this.delta };
+        this.position = { ...this.position, y: this.position.y + this.currentDelta };
         break;
       case 's':
-        this.currentDirection = 'south';
-        this.position = { ...this.position, y: this.position.y - this.delta };
+        this.position = { ...this.position, y: this.position.y - this.currentDelta };
         break;
       case 'a':
-        this.currentDirection = 'west';
-        this.position = { ...this.position, x: this.position.x - this.delta };
+        this.position = { ...this.position, x: this.position.x - this.currentDelta };
         break;
       case 'd':
-        this.currentDirection = 'east';
-        this.position = { ...this.position, x: this.position.x + this.delta };
+        this.position = { ...this.position, x: this.position.x + this.currentDelta };
         break;
       default:
         break;
     }
     this.changePosition.emit(this.position);
-    console.log(this.position);
   }
 
   @HostListener('document:keyup', ['$event'])
-  keyUp(): void {
-    this.currentDirection = undefined;
-    this.currentKey = undefined;
+  keyUp(target: KeyboardEvent): void {
+    if (target.key === 'Shift') {
+      this.shiftPressed = false;
+    } else {
+      this.currentKey = undefined;
+    }
   }
-
-
 }
