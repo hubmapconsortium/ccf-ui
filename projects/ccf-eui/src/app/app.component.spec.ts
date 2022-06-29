@@ -1,6 +1,8 @@
 import { Immutable } from '@angular-ru/common/typings';
+import { TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { of } from 'rxjs';
@@ -25,6 +27,9 @@ describe('AppComponent', () => {
   const testFilter = { sex: 'Both', ageRange: [5, 99], bmiRange: [30, 80] };
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [NgxsModule.forRoot([])]
+    });
     const mockConsentService = jasmine.createSpyObj<ConsentService>(['setConsent']);
     left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
