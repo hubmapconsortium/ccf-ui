@@ -331,17 +331,19 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+import { Select } from &#x27;@ngxs/store&#x27;;
 import { CCFDatabaseOptions, OntologyTreeModel } from &#x27;ccf-database&#x27;;
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
 import { ConsentService } from &#x27;ccf-shared/analytics&#x27;;
 import { combineLatest, Observable, ReplaySubject } from &#x27;rxjs&#x27;;
-import { map, pluck, shareReplay } from &#x27;rxjs/operators&#x27;;
+import { map, pluck } from &#x27;rxjs/operators&#x27;;
 
 import { BodyUiComponent } from &#x27;../../../ccf-shared/src/lib/components/body-ui/body-ui.component&#x27;;
 import { environment } from &#x27;../environments/environment&#x27;;
 import { OntologySelection } from &#x27;./core/models/ontology-selection&#x27;;
 import { AppRootOverlayContainer } from &#x27;./core/services/app-root-overlay/app-root-overlay.service&#x27;;
 import { ThemingService } from &#x27;./core/services/theming/theming.service&#x27;;
+import { DataStateSelectors } from &#x27;./core/store/data/data.selectors&#x27;;
 import { DataQueryState, DataState } from &#x27;./core/store/data/data.state&#x27;;
 import { ListResultsState } from &#x27;./core/store/list-results/list-results.state&#x27;;
 import { SceneState } from &#x27;./core/store/scene/scene.state&#x27;;
@@ -370,6 +372,12 @@ interface AppOptions extends CCFDatabaseOptions {
 })
 export class AppComponent implements OnInit {
   @ViewChild(&#x27;bodyUI&#x27;, { static: false }) bodyUI: BodyUiComponent;
+
+  @Select(DataStateSelectors.cellTypesTreeModel)
+  readonly cellTypeTreeModel$: Observable&lt;OntologyTreeModel&gt;;
+
+  @Select(DataStateSelectors.anatomicalStructuresTreeModel)
+  readonly ontologyTreeModel$: Observable&lt;OntologyTreeModel&gt;;
 
   /**
    * Used to keep track of the ontology label to be passed down to the
@@ -414,10 +422,7 @@ export class AppComponent implements OnInit {
   readonly loadingMessage$ &#x3D; this.data.state$.pipe(pluck(&#x27;statusMessage&#x27;));
 
   readonly ontologyTerms$: Observable&lt;readonly string[]&gt;;
-  readonly ontologyTreeModel$: Observable&lt;OntologyTreeModel&gt;;
-
   readonly cellTypeTerms$: Observable&lt;readonly string[]&gt;;
-  readonly cellTypeTreeModel$: Observable&lt;OntologyTreeModel&gt;;
 
   readonly theme$ &#x3D; this.globalConfig.getOption(&#x27;theme&#x27;);
   readonly themeMode$ &#x3D; new ReplaySubject&lt;&#x27;light&#x27; | &#x27;dark&#x27;&gt;(1);
@@ -450,6 +455,7 @@ export class AppComponent implements OnInit {
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ &#x3D; data.filter$.pipe(pluck(&#x27;ontologyTerms&#x27;));
+    this.cellTypeTerms$ &#x3D; data.filter$.pipe(pluck(&#x27;cellTypeTerms&#x27;));
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) &#x3D;&gt; {
@@ -457,10 +463,6 @@ export class AppComponent implements OnInit {
         cdr.markForCheck();
       }
     );
-
-    this.ontologyTreeModel$ &#x3D; this.dataSource.getOntologyTreeModel().pipe(shareReplay(1));
-    this.cellTypeTerms$ &#x3D; data.filter$.pipe(pluck(&#x27;cellTypeTerms&#x27;));
-    this.cellTypeTreeModel$ &#x3D; this.dataSource.getCellTypeTreeModel().pipe(shareReplay(1));
   }
 
   ngOnInit(): void {

@@ -209,6 +209,22 @@ export class SetOrgan {
 
   constructor(readonly organId: string | undefined) {}
 }
+
+export class SetPosition {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Set position&#x27;;
+
+  constructor(readonly position: { x: number; y: number; z: number }) {}
+}
+
+export class SetRadius {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Set radius&#x27;;
+
+  constructor(readonly radius: number) {}
+}
+
+export class UpdateSpatialSearch {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Update spatial search data&#x27;;
+}
 </code></pre>
     </div>
 </div>

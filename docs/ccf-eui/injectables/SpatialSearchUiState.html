@@ -78,6 +78,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#organEntity" >organEntity</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#organValidForSex" >organValidForSex</a>
                             </li>
@@ -85,7 +89,16 @@
                                 <a href="#setOrgan" >setOrgan</a>
                             </li>
                             <li>
+                                <a href="#setPosition" >setPosition</a>
+                            </li>
+                            <li>
+                                <a href="#setRadius" >setRadius</a>
+                            </li>
+                            <li>
                                 <a href="#setSex" >setSex</a>
+                            </li>
+                            <li>
+                                <a href="#updateSpatialSearch" >updateSpatialSearch</a>
                             </li>
                         </ul>
                     </td>
@@ -105,12 +118,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(store: Store, ga: GoogleAnalyticsService)</code>
+<code>constructor(dataSource: DataSourceService, store: Store, ga: GoogleAnalyticsService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:62</a></div>
                             </td>
                         </tr>
 
@@ -127,6 +140,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                                <tr>
+                                                        <td>dataSource</td>
+                                                  
+                                                        <td>
+                                                                    <code>DataSourceService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                                 <tr>
                                                         <td>store</td>
                                                   
@@ -169,6 +194,95 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="organEntity"></a>
+                    <span class="name">
+                        <span class="modifier">Static</span>
+                        <span ><b>organEntity</b></span>
+                        <a href="#organEntity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>organEntity(state: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">SpatialSearchUiModel</a>, organs: SpatialEntity[])</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Selector([&#x27;SpatialSearchUiState&#x27;, &#x27;undefined&#x27;])<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>state</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >SpatialSearchUiModel</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>organs</td>
+                                    <td>
+                                            <code>SpatialEntity[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>SpatialEntity | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="organValidForSex"></a>
                     <span class="name">
                         <span class="modifier">Private</span>
@@ -187,8 +301,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="182"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:182</a></div>
                 </td>
             </tr>
 
@@ -276,8 +390,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:88</a></div>
                 </td>
             </tr>
 
@@ -313,6 +427,182 @@
                                 <tr>
                                     <td>
                                                 <code><a href="../classes/SetOrgan.html" target="_self" >SetOrgan</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | void</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPosition"></a>
+                    <span class="name">
+                        <span ><b>setPosition</b></span>
+                        <a href="#setPosition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPosition(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../interfaces/Position.html" target="_self">SetPosition</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(SetPosition)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:129</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates position in the SpatialSearchUI</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                                <code><a href="../interfaces/Position.html" target="_self" >SetPosition</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setRadius"></a>
+                    <span class="name">
+                        <span ><b>setRadius</b></span>
+                        <a href="#setRadius"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setRadius(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetRadius.html" target="_self">SetRadius</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(SetRadius)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates radius in the SpatialSearchUI</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                                <code><a href="../classes/SetRadius.html" target="_self" >SetRadius</a></code>
                                     </td>
 
                                     <td>
@@ -364,8 +654,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:74</a></div>
                 </td>
             </tr>
 
@@ -415,7 +705,84 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>    <code>Observable | void</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSpatialSearch"></a>
+                    <span class="name">
+                        <span ><b>updateSpatialSearch</b></span>
+                        <a href="#updateSpatialSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSpatialSearch(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(UpdateSpatialSearch)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:150</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the spatial search data as the organ, position, and radius changes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | void</code>
 
                     </div>
                     <div class="io-description">
@@ -432,32 +799,70 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Action, State, StateContext, Store } from &#x27;@ngxs/store&#x27;;
+import { Action, Selector, State, StateContext, Store } from &#x27;@ngxs/store&#x27;;
+import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
+import { DataSourceService } from &#x27;ccf-shared&#x27;;
 import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
+import { forkJoin, Observable } from &#x27;rxjs&#x27;;
+import { mergeMap, take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { Sex } from &#x27;../../../shared/components/spatial-search-config/spatial-search-config.component&#x27;;
+import { DataStateSelectors } from &#x27;../data/data.selectors&#x27;;
 import { SceneState } from &#x27;../scene/scene.state&#x27;;
-import { SetOrgan, SetSex } from &#x27;./spatial-search-ui.actions&#x27;;
+import { SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from &#x27;./spatial-search-ui.actions&#x27;;
 
-/**
- * Contains sex and organId for the Spatial Search
- */
+
+export interface Position {
+  x: number;
+  y: number;
+  z: number;
+}
+
+export interface RadiusSettings {
+  min: number;
+  max: number;
+  defaultValue: number;
+}
+
+export interface TermResult {
+  &#x27;@id&#x27;: string;
+  label: string;
+  count: number;
+}
+
 export interface SpatialSearchUiModel {
   sex: Sex;
   organId?: string;
+  position?: Position;
+  radius?: number;
+
+  defaultPosition?: Position;
+  radiusSettings?: RadiusSettings;
+
+  organScene?: SpatialSceneNode[];
+  spatialSearchScene?: SpatialSceneNode[];
+  tissueBlocks?: TissueBlockResult[];
+  anatomicalStructures?: Record&lt;string, number&gt;;
+  cellTypes?: Record&lt;string, number&gt;;
 }
 
 
 @State&lt;SpatialSearchUiModel&gt;({
   name: &#x27;spatialSearchUi&#x27;,
   defaults: {
-    sex: &#x27;male&#x27;,
-    organId: undefined
+    sex: &#x27;female&#x27;
   }
 })
 @Injectable()
 export class SpatialSearchUiState {
+  @Selector([SpatialSearchUiState, SceneState.referenceOrganEntities])
+  static organEntity(state: SpatialSearchUiModel, organs: SpatialEntity[]): SpatialEntity | undefined {
+    const { organId, sex } &#x3D; state;
+    return organs.find(o &#x3D;&gt; o.representation_of &#x3D;&#x3D;&#x3D; organId &amp;&amp; o.sex?.toLowerCase() &#x3D;&#x3D;&#x3D; sex);
+  }
+
   constructor(
+    private readonly dataSource: DataSourceService,
     private readonly store: Store,
     private readonly ga: GoogleAnalyticsService
   ) { }
@@ -466,24 +871,109 @@ export class SpatialSearchUiState {
    * Updates sex in the SpatialSearchUI and sets selected organ to undefined if not valid for the sex
    */
   @Action(SetSex)
-  setSex(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { sex }: SetSex): void {
+  setSex(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { sex }: SetSex): Observable&lt;unknown&gt; | void {
     const { organId } &#x3D; ctx.getState();
-
     ctx.patchState({ sex });
-    if (organId !&#x3D;&#x3D; undefined &amp;&amp; !this.organValidForSex(organId, sex)) {
-      ctx.dispatch(new SetOrgan(undefined));
-    }
-
     this.ga.event(&#x27;set_sex&#x27;, &#x27;spatial_search_ui&#x27;, sex);
+
+    if (organId !&#x3D;&#x3D; undefined &amp;&amp; !this.organValidForSex(organId, sex)) {
+      return ctx.dispatch(new SetOrgan(undefined));
+    }
   }
 
   /**
    * Updates organId in the SpatialSearchUI
    */
   @Action(SetOrgan)
-  setOrgan(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { organId }: SetOrgan): void {
-    ctx.patchState({ organId });
-    this.ga.event(&#x27;set_organ&#x27;, &#x27;spatial_search_ui&#x27;, organId);
+  setOrgan(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { organId }: SetOrgan): Observable&lt;unknown&gt; | void {
+    const { sex } &#x3D; ctx.getState();
+    ctx.setState({ sex, organId });
+    const shortOrgan &#x3D; organId?.split(&#x27;/&#x27;).slice(-1)[0];
+    this.ga.event(&#x27;set_organ&#x27;, &#x27;spatial_search_ui&#x27;, shortOrgan);
+
+    const organ &#x3D; this.store.selectSnapshot(SpatialSearchUiState.organEntity);
+    if (organ &amp;&amp; organId &amp;&amp; organ.sex) {
+      const { x_dimension: width, y_dimension: height, z_dimension: depth } &#x3D; organ;
+      const position &#x3D; { x: Math.round(width / 2), y: Math.round(height / 2), z: Math.round(depth / 2) };
+      const defaultRadius &#x3D; Math.round(Math.max(width, height, depth) * 0.07);
+      const globalFilter &#x3D; this.store.selectSnapshot(DataStateSelectors.filter);
+      const filter &#x3D; {
+        ...globalFilter,
+        sex: organ.sex,
+        ontologyTerms: [ ...globalFilter.ontologyTerms, organId ],
+        spatialSearches: []
+      };
+
+      return this.dataSource
+        .getReferenceOrganScene(organId, filter)
+        .pipe(
+          take(1),
+          tap((organScene: SpatialSceneNode[]) &#x3D;&gt; {
+            ctx.patchState({
+              position,
+              radius: defaultRadius,
+              defaultPosition: position,
+              radiusSettings: { min: 5, max: Math.floor(width), defaultValue: defaultRadius },
+              organScene: getOriginScene(organ).concat(organScene)
+            });
+          }),
+          mergeMap(() &#x3D;&gt; ctx.dispatch(new UpdateSpatialSearch()))
+        );
+    }
+  }
+
+  /**
+   * Updates position in the SpatialSearchUI
+   */
+  @Action(SetPosition)
+  setPosition(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { position }: SetPosition): void {
+    ctx.patchState({ position });
+
+    const { x, y, z } &#x3D; position;
+    this.ga.event(&#x27;set_position&#x27;, &#x27;spatial_search_ui&#x27;, &#x60;${x}_${y}_${z}&#x60;);
+  }
+
+  /**
+   * Updates radius in the SpatialSearchUI
+   */
+  @Action(SetRadius)
+  setRadius(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { radius }: SetRadius): void {
+    ctx.patchState({ radius });
+
+    this.ga.event(&#x27;set_radius&#x27;, &#x27;spatial_search_ui&#x27;, radius.toFixed(1));
+  }
+
+  /**
+   * Updates the spatial search data as the organ, position, and radius changes
+   */
+  @Action(UpdateSpatialSearch)
+  updateSpatialSearch(ctx: StateContext&lt;SpatialSearchUiModel&gt;): Observable&lt;unknown&gt; | void {
+    const { position, radius } &#x3D; ctx.getState();
+    const organ &#x3D; this.store.selectSnapshot(SpatialSearchUiState.organEntity);
+    if (organ &amp;&amp; position &amp;&amp; radius &amp;&amp; organ.representation_of) {
+      const db &#x3D; this.dataSource;
+      const organId &#x3D; organ.representation_of;
+      const globalFilter &#x3D; this.store.selectSnapshot(DataStateSelectors.filter);
+      const filter: Filter &#x3D; {
+        ...globalFilter,
+        sex: organ.sex as &#x27;Male&#x27; | &#x27;Female&#x27;,
+        ontologyTerms: [ ...globalFilter.ontologyTerms, organId ],
+        spatialSearches: [{
+          ...position,
+          radius: radius,
+          target: organ[&#x27;@id&#x27;]
+        }]
+      };
+
+      return forkJoin({
+        spatialSearchScene: db.getReferenceOrganScene(organId, filter).pipe(take(1)),
+        tissueBlocks: db.getTissueBlockResults(filter).pipe(take(1)),
+        anatomicalStructures: db.getOntologyTermOccurences(filter).pipe(take(1)),
+        cellTypes: db.getCellTypeTermOccurences(filter).pipe(take(1))
+      }).pipe(
+        tap((data: Partial&lt;SpatialSearchUiModel&gt;) &#x3D;&gt; ctx.patchState(data))
+      );
+    }
   }
 
   /**

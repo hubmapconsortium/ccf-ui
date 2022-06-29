@@ -501,6 +501,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
                             <li class="link">
+                                <a href="classes/DataStateSelectors.html" data-type="entity-link" >DataStateSelectors</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/FlatNode.html" data-type="entity-link" >FlatNode</a>
                             </li>
                             <li class="link">
@@ -513,10 +516,19 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/SetOrgan.html" data-type="entity-link" >SetOrgan</a>
                             </li>
                             <li class="link">
+                                <a href="classes/SetPosition.html" data-type="entity-link" >SetPosition</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SetRadius.html" data-type="entity-link" >SetRadius</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/SetSex.html" data-type="entity-link" >SetSex</a>
                             </li>
                             <li class="link">
                                 <a href="classes/SpatialSearchUiSelectors.html" data-type="entity-link" >SpatialSearchUiSelectors</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateSpatialSearch.html" data-type="entity-link" >UpdateSpatialSearch</a>
                             </li>
                         </ul>
                     </li>
@@ -620,6 +632,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/OntologySelection.html" data-type="entity-link" >OntologySelection</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Position.html" data-type="entity-link" >Position</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/RadiusSettings.html" data-type="entity-link" >RadiusSettings</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/SceneStateModel.html" data-type="entity-link" >SceneStateModel</a>
                             </li>
                             <li class="link">
@@ -627,6 +645,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SpatialSearchUiModel.html" data-type="entity-link" >SpatialSearchUiModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/TermResult.html" data-type="entity-link" >TermResult</a>
                             </li>
                         </ul>
                     </li>
