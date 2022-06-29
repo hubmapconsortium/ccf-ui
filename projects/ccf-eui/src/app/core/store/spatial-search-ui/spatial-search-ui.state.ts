@@ -3,13 +3,14 @@ import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { forkJoin, Observable, of } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { mergeMap, take, tap } from 'rxjs/operators';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
+import { DataStateSelectors } from '../data/data.selectors';
 import { DataState } from '../data/data.state';
 import { SceneState } from '../scene/scene.state';
-import { SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
+import { ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
 
 
 export interface Position {
@@ -96,11 +97,11 @@ export class SpatialSearchUiState {
       const { x_dimension: width, y_dimension: height, z_dimension: depth } = organ;
       const position = { x: Math.round(width / 2), y: Math.round(height / 2), z: Math.round(depth / 2) };
       const defaultRadius = Math.round(Math.max(width, height, depth) * 0.07);
-      const globalFilter = this.store.selectSnapshot(DataState.filter);
+      const globalFilter = this.store.selectSnapshot(DataStateSelectors.filter);
       const filter = {
         ...globalFilter,
         sex: organ.sex,
-        ontologyTerms: [ ...globalFilter.ontologyTerms, organId ],
+        ontologyTerms: [ organId ],
         spatialSearches: []
       };
 
@@ -133,6 +134,15 @@ export class SpatialSearchUiState {
     this.ga.event('set_position', 'spatial_search_ui', `${x}_${y}_${z}`);
   }
 
+  @Action(ResetPosition)
+  resetPosition(ctx: StateContext<SpatialSearchUiModel>): void {
+    const { defaultPosition } = ctx.getState();
+    ctx.patchState({ position: defaultPosition });
+
+    const { x, y, z } = defaultPosition ?? { x: 0, y: 0, z: 0 };
+    this.ga.event('reset_position', 'spatial_search_ui', `${x}_${y}_${z}`);
+  }
+
   /**
    * Updates radius in the SpatialSearchUI
    */
@@ -141,6 +151,15 @@ export class SpatialSearchUiState {
     ctx.patchState({ radius });
 
     this.ga.event('set_radius', 'spatial_search_ui', radius.toFixed(1));
+  }
+
+  @Action(ResetRadius)
+  resetRadius(ctx: StateContext<SpatialSearchUiModel>): void {
+    const { radiusSettings } = ctx.getState();
+    const radius = radiusSettings?.defaultValue ?? 0;
+    ctx.patchState({ radius });
+
+    this.ga.event('reset_radius', 'spatial_search_ui', radius.toFixed(1));
   }
 
   /**
@@ -153,11 +172,11 @@ export class SpatialSearchUiState {
     if (organ && position && radius && organ.representation_of) {
       const db = this.dataSource;
       const organId = organ.representation_of;
-      const globalFilter = this.store.selectSnapshot(DataState.filter);
+      const globalFilter = this.store.selectSnapshot(DataStateSelectors.filter);
       const filter: Filter = {
         ...globalFilter,
         sex: organ.sex as 'Male' | 'Female',
-        ontologyTerms: [ ...globalFilter.ontologyTerms, organId ],
+        ontologyTerms: [ organId ],
         spatialSearches: [{
           ...position,
           radius: radius,

@@ -54,7 +54,9 @@ $foreground: map-merge(mat.$dark-theme-foreground-palette, (
   opacity-numbers: #CCCCCC,
   input-bg: rgb(113, 113, 113),
   y-axis: #00C853,
-  z-axis: #2979ff
+  z-axis: #2979ff,
+  slider: #0D47A1,
+  slider-thumb: #1976D2
 ));
 
 $background: map-merge(mat.$dark-theme-background-palette, (
@@ -73,7 +75,8 @@ $background: map-merge(mat.$dark-theme-background-palette, (
   checkbox-color: #636363,
   button-background-hover: #2f3346,
   icon-background-hover: #2f3346,
-  icon-background-hover2: map-get($primary-colors, 800)
+  icon-background-hover2: map-get($primary-colors, 800),
+  button-bg: map-get($primary-colors, 'white'),
 ));
 
 $theme: (

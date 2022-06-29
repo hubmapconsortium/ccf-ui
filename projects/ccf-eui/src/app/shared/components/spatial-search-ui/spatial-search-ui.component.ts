@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 import { SpatialSearchPosition } from '../spatial-search-keyboard-ui-behavior/spatial-search-keyboard-ui-behavior.component';
+import { OrganInfo } from 'ccf-shared';
+import { Position, RadiusSettings } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
 @Component({
   selector: 'ccf-spatial-search-ui',
@@ -10,10 +12,31 @@ import { SpatialSearchPosition } from '../spatial-search-keyboard-ui-behavior/sp
 export class SpatialSearchUiComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-ui';
 
-  position: SpatialSearchPosition;
+  @Input() readonly sex: string;
 
-  move(newPos: SpatialSearchPosition): void {
-    this.position = newPos;
-    console.log(this.position);
-  }
+  @Input() readonly referenceOrgan: OrganInfo;
+
+  @Input() readonly radius: number;
+
+  @Input() readonly radiusSettings: RadiusSettings;
+
+  @Input() readonly defaultPosition: Position;
+
+  @Input() readonly position: Position;
+
+  @Output() readonly addSpatialSearch = new EventEmitter();
+
+  @Output() readonly resetPosition = new EventEmitter();
+
+  @Output() readonly resetSphere = new EventEmitter();
+
+  @Output() readonly closeSpatialSearch = new EventEmitter();
+
+  @Output() readonly radiusChange = new EventEmitter<number>();
+
+  @Output() readonly positionChange = new EventEmitter<Position>();
+
+  @Output() readonly editReferenceOrganClicked = new EventEmitter();
+
+  @Output() readonly infoClicked = new EventEmitter();
 }

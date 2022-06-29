@@ -26,4 +26,6 @@ export class SpatialSearchConfigComponent {
   @Output() readonly buttonClicked = new EventEmitter();
 
   @Output() readonly closeDialog = new EventEmitter();
+
+  @Output() readonly infoClicked = new EventEmitter();
 }
