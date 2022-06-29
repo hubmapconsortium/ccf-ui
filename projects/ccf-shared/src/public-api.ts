@@ -25,6 +25,7 @@ export * from './lib/components/info/info-dialog/info-dialog.component';
 
 export * from './lib/components/info/info-button/info-button.module';
 export * from './lib/components/info/info-button/info-button.component';
+export * from './lib/components/info/info-button/info-button.service';
 
 export * from './lib/components/call-to-action/call-to-action.module';
 

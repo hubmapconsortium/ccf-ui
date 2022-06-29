@@ -6,7 +6,7 @@ import { OrganInfo } from 'ccf-shared';
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 import { DataStateSelectors } from '../data/data.selectors';
 import { SceneState } from '../scene/scene.state';
-import { Position, SpatialSearchUiModel, SpatialSearchUiState, TermResult } from './spatial-search-ui.state';
+import { Position, RadiusSettings, SpatialSearchUiModel, SpatialSearchUiState, TermResult } from './spatial-search-ui.state';
 
 
 export class SpatialSearchUiSelectors {
@@ -47,8 +47,18 @@ export class SpatialSearchUiSelectors {
   }
 
   @Selector([SpatialSearchUiState])
+  static defaultPosition(state: SpatialSearchUiModel): Position {
+    return state.defaultPosition ?? { x: 0, y: 0, z: 0 };
+  }
+
+  @Selector([SpatialSearchUiState])
   static radius(state: SpatialSearchUiModel): number {
     return state.radius ?? 0;
+  }
+
+  @Selector([SpatialSearchUiState])
+  static radiusSettings(state: SpatialSearchUiModel): RadiusSettings {
+    return state.radiusSettings ?? { min: 0, max: 0, defaultValue: 0 };
   }
 
   @Selector([SpatialSearchUiState, SpatialSearchUiState.organEntity])
