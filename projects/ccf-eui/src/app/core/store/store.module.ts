@@ -11,6 +11,7 @@ import { DataState } from './data/data.state';
 import { IconRegistryState } from './icon-registry/icon-registry.state';
 import { ListResultsState } from './list-results/list-results.state';
 import { SceneState } from './scene/scene.state';
+import { SpatialSearchFilterState } from './spatial-search-filter/spatial-search-filter.state';
 import { SpatialSearchUiState } from './spatial-search-ui/spatial-search-ui.state';
 
 
@@ -24,7 +25,8 @@ export const ROOT_STATES = [
   ListResultsState,
   DataState,
   SceneState,
-  SpatialSearchUiState
+  SpatialSearchUiState,
+  SpatialSearchFilterState
 ];
 
 @NgModule({

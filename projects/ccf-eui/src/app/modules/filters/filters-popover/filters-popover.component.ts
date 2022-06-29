@@ -35,7 +35,7 @@ export class FiltersPopoverComponent<S extends SpatialSearchListItem = SpatialSe
   /**
    * List of spatial searches
    */
-  @Input() spatialSearchFilters: [] = [];
+  @Input() spatialSearchFilters: S[] = [];
 
   /**
    * Emits the current filters

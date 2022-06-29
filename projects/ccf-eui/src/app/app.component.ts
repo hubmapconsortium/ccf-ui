@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { Select } from '@ngxs/store';
 import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
@@ -11,9 +13,13 @@ import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { ThemingService } from './core/services/theming/theming.service';
+import { actionAsFn } from './core/store/action-as-fn';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
+import { RemoveSearch } from './core/store/spatial-search-filter/spatial-search-filter.actions';
+import { SelectableSpatialSearch } from './core/store/spatial-search-filter/spatial-search-filter.models';
+import { SpatialSearchFilterSelectors } from './core/store/spatial-search-filter/spatial-search-filter.selectors';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
@@ -39,6 +45,12 @@ interface AppOptions extends CCFDatabaseOptions {
 })
 export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
+
+  @Select(SpatialSearchFilterSelectors.selectableSearches)
+  readonly selectableSearches$: Observable<SelectableSpatialSearch>;
+
+  @Dispatch()
+  readonly removeSpatialSearch = actionAsFn(RemoveSearch);
 
   /**
    * Used to keep track of the ontology label to be passed down to the
@@ -283,5 +295,27 @@ export class AppComponent implements OnInit {
   get loggedIn(): boolean {
     const token = this.globalConfig.snapshot.hubmapToken ?? '';
     return token.length > 0;
+  }
+
+  /**
+   * Updates filter
+   * Fixes spatialSearches before sending to state
+   *
+   * @param filter The filter
+   */
+  updateFilter(filter: Record<string, unknown>): void {
+    const spatialSearches = filter['spatialSearches'] as SelectableSpatialSearch[];
+    if (spatialSearches?.length > 0) {
+      filter = {
+        ...filter,
+        spatialSearches: spatialSearches.map(item => ({
+          ...item.search.position,
+          radius: item.search.radius,
+          target: item.search.organ.id
+        }))
+      };
+    }
+
+    this.data.updateFilter(filter);
   }
 }
