@@ -2,12 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SpatialSearch } from 'ccf-database';
-import { InfoDialogComponent, OrganInfo } from 'ccf-shared';
-import { InfoButtonService, PanelData } from 'projects/ccf-shared/src/lib/components/info/info-button/info-button.service';
+import { InfoDialogComponent, OrganInfo, InfoButtonService, PanelData } from 'ccf-shared';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { SpatialSearchConfigBehaviorComponent } from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
 import { Sex } from '../spatial-search-config/spatial-search-config.component';
-import { CameraSetting, SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
+import { SpatialSearchCoordinates, SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
 
 
 export interface SearchConfigData {
@@ -32,9 +31,9 @@ export class SpatialSearchUiBehaviorComponent implements OnDestroy {
 
   sliderSettings: number[];
 
-  defaultCamera: CameraSetting;
+  defaultCoordinates: SpatialSearchCoordinates;
 
-  currentCamera: CameraSetting;
+  currentCoordinates: SpatialSearchCoordinates;
 
   panelData: PanelData;
 
@@ -53,12 +52,12 @@ export class SpatialSearchUiBehaviorComponent implements OnDestroy {
     this.organ = data.organ.name;
     this.spatialSearch = data.spatialSearch;
     this.sliderSettings = data.sliderSettings;
-    this.defaultCamera = {
+    this.defaultCoordinates = {
       x: this.spatialSearch.x,
       y: this.spatialSearch.y,
       z: this.spatialSearch.z
     };
-    this.currentCamera = this.defaultCamera;
+    this.currentCoordinates = this.defaultCoordinates;
   }
 
   launchInfoDialog(data: PanelData): void {
@@ -77,7 +76,8 @@ export class SpatialSearchUiBehaviorComponent implements OnDestroy {
 
   onDialogButtonClick(): void {
     this.infoService.updateData('assets/docs/SPATIAL_SEARCH_README.md', 'N2JUogY-DQw', 'Spatial Search');
-    this.dialogSubs.add(this.infoService.panelContent.subscribe(data => {
+    const panelContent$ = this.infoService.panelContent.asObservable();
+    this.dialogSubs.add(panelContent$.subscribe(data => {
       if (data.content.length) {
         this.panelData = data;
         this.launchInfoDialog(this.panelData);
@@ -103,13 +103,13 @@ export class SpatialSearchUiBehaviorComponent implements OnDestroy {
     this.dialog.open(SpatialSearchConfigBehaviorComponent);
   }
 
-  changeCamera(setting: CameraSetting): void {
+  changeCoordinates(setting: SpatialSearchCoordinates): void {
     this.spatialSearch = { ...this.spatialSearch, x: setting.x, y: setting.y, z: setting.z };
-    this.currentCamera = setting;
+    this.currentCoordinates = setting;
   }
 
-  resetCamera(): void {
-    this.changeCamera(this.defaultCamera);
+  resetCoordinates(): void {
+    this.changeCoordinates(this.defaultCoordinates);
   }
 
   ngOnDestroy(): void {

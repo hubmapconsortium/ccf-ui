@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 
-export interface CameraSetting {
+export interface SpatialSearchCoordinates {
   x: number;
   y: number;
   z: number;
@@ -24,13 +24,13 @@ export class SpatialSearchUiComponent {
 
   @Input() readonly sliderSettings: number[] = [0, 0];
 
-  @Input() readonly defaultCamera: CameraSetting;
+  @Input() readonly defaultCoordinates: SpatialSearchCoordinates;
 
-  @Input() readonly currentCamera: CameraSetting;
+  @Input() readonly currentCoordinates: SpatialSearchCoordinates;
 
   @Output() readonly addSpatialSearch = new EventEmitter();
 
-  @Output() readonly resetCamera = new EventEmitter();
+  @Output() readonly resetCoordinates = new EventEmitter();
 
   @Output() readonly resetSphere = new EventEmitter();
 
@@ -38,7 +38,7 @@ export class SpatialSearchUiComponent {
 
   @Output() readonly radiusChange = new EventEmitter<number>();
 
-  @Output() readonly cameraChange = new EventEmitter<CameraSetting>();
+  @Output() readonly coordinatesChange = new EventEmitter<SpatialSearchCoordinates>();
 
   @Output() readonly editReferenceOrganClicked = new EventEmitter();
 

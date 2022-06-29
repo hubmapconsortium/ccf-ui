@@ -36,7 +36,7 @@
       </div>
       <div class="reset-buttons">
         <button class="reset-sphere button" [class.disabled]="radius === sliderSettings[0]" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
-        <button class="reset-camera button" [class.disabled]="defaultCamera === currentCamera" mat-button (click)="resetCamera.emit()">Reset Camera View</button>
+        <button class="reset-camera button" [class.disabled]="defaultCoordinates === currentCoordinates" mat-button (click)="resetCoordinates.emit()">Reset Camera View</button>
       </div>
     </div>
     <div class="results">

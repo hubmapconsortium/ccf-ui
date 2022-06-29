@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
-import { InfoDialogComponent, OrganInfo } from 'ccf-shared';
-import { InfoButtonService, PanelData } from 'projects/ccf-shared/src/lib/components/info/info-button/info-button.service';
+import { InfoDialogComponent, OrganInfo, InfoButtonService, PanelData } from 'ccf-shared';
 import { Observable, Subscription } from 'rxjs';
 
 import { actionAsFn } from '../../../core/store/action-as-fn';
@@ -98,7 +97,8 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
 
   onDialogButtonClick(): void {
     this.infoService.updateData('assets/docs/SPATIAL_SEARCH_README.md', 'N2JUogY-DQw', 'Spatial Search');
-    this.dialogSubs.add(this.infoService.panelContent.subscribe(data => {
+    const panelContent$ = this.infoService.panelContent.asObservable();
+    this.dialogSubs.add(panelContent$.subscribe(data => {
       if (data.content.length) {
         this.panelData = data;
         this.launchInfoDialog(this.panelData);
