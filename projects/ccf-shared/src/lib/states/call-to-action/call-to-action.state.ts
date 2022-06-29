@@ -7,12 +7,14 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { CallToActionBehaviorComponent } from '../../components/call-to-action-behavior/call-to-action-behavior.component';
-import { DocumentationContent, InfoButtonService, PanelData } from '../../components/info/info-button/info-button.service';
+import { DocumentationContent, InfoButtonService } from '../../components/info/info-button/info-button.service';
 import { InfoDialogComponent } from '../../components/info/info-dialog/info-dialog.component';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { CloseDialog, LearnMore, OpenDialog } from './call-to-action.actions';
 
-
+/**
+ * Interface to hold the necessary parts of the CTA dialog
+ */
 export interface CallToActionModel {
   title: string;
   message: string;
@@ -23,10 +25,19 @@ export interface CallToActionModel {
 
 }
 
-
+/**
+ * Key for boolean determining if poup has been shown
+ */
 const POPUP_SHOWN_STORAGE_KEY = 'callToActionPopupShown';
+
+/**
+ * Path to readme markup doc
+ */
 const SPATIAL_SEARCH_README = 'assets/docs/SPATIAL_SEARCH_README.md';
 
+/**
+ * Sets the necessary defaults for the dialog box
+ */
 @State<CallToActionModel>({
   name: 'callToAction',
   defaults: {
@@ -38,9 +49,19 @@ const SPATIAL_SEARCH_README = 'assets/docs/SPATIAL_SEARCH_README.md';
     popupShown: false
   }
 })
+
+
+/**
+ * State that controls the data and behavior for the CallToAction Component
+ */
 @Injectable()
 export class CallToActionState implements NgxsOnInit {
-
+  /**
+   * Function that determines if expiration date has passed
+   * @param expirationDate
+   * @param now
+   * @returns boolean defining whether or not info popup has expiered
+   */
   static ctaDatePassed(expirationDate: string, now = Date.now): boolean {
     const today = now();
     const expire = new Date(expirationDate);
@@ -56,11 +77,12 @@ export class CallToActionState implements NgxsOnInit {
     private readonly http: HttpClient
   ) { }
 
+
   ngxsOnInit(ctx: StateContext<CallToActionModel>): void {
     const { expirationDate, popupShown } = ctx.getState();
     const popupShownStr = this.storage.getItem(POPUP_SHOWN_STORAGE_KEY, `${popupShown}`);
     const pastExpiration = CallToActionState.ctaDatePassed(expirationDate);
-    const showPopup = popupShownStr !== 'true' && !pastExpiration;
+    const showPopup = true;// popupShownStr !== 'true' && !pastExpiration;
     if (showPopup) {
       ctx.dispatch(new OpenDialog());
     }

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
@@ -96,7 +95,6 @@ export class AppComponent implements OnInit {
   readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
   readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
   readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
-
 
   /**
    * Creates an instance of app component.

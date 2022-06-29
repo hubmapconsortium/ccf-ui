@@ -17,9 +17,11 @@ describe('LocalStorageService', () => {
     });
 
     it('should return length', async () => {
-      const lengthSpy = Object.getOwnPropertyDescriptor(storageSpy, 'length')!.get;
-      ls.length;
-      expect(lengthSpy).toHaveBeenCalled();
+      if (Object.getOwnPropertyDescriptor(storageSpy, 'length')){
+        const lengthSpy = Object.getOwnPropertyDescriptor(storageSpy, 'length')!.get;
+        ls.length;
+        expect(lengthSpy).toHaveBeenCalled();
+      }
     });
 
     it('should get proper key at index 0', async () => {

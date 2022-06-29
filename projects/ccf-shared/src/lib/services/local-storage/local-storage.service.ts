@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 
 
+/**
+ * Service to handle local storage
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +35,9 @@ export class LocalStorageService {
     }
   })();
 
+  /**
+   * gets length of storage list
+   */
   get length(): number {
     return LocalStorageService.storage?.length ?? 0;
   }

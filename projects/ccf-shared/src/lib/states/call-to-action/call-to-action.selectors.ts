@@ -2,7 +2,6 @@ import { Selector } from '@ngxs/store';
 
 import { CallToActionModel, CallToActionState } from './call-to-action.state';
 
-//TODO: TEst coverage simple ensure proper string returned;
 export class CallToActionSelectors {
   @Selector([CallToActionState])
   static title(state: CallToActionModel): string {
