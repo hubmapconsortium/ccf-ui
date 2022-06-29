@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
-import { SpatialSearchPosition } from '../spatial-search-keyboard-ui-behavior/spatial-search-keyboard-ui-behavior.component';
 import { OrganInfo } from 'ccf-shared';
 import { Position, RadiusSettings } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 

@@ -1,15 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { Position } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
-export interface SpatialSearchPosition {
-  x: number;
-  y: number;
-  z: number;
-}
 
 @Component({
   selector: 'ccf-spatial-search-keyboard-ui-behavior',
   templateUrl: './spatial-search-keyboard-ui-behavior.component.html',
-  styleUrls: ['./spatial-search-keyboard-ui-behavior.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpatialSearchKeyboardUIBehaviorComponent {
@@ -19,13 +14,9 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
 
   @Input() shiftDelta = 2;
 
-  @Input() position: SpatialSearchPosition = {
-    x: 0,
-    y: 0,
-    z: 0
-  };
+  @Input() position: Position;
 
-  @Output() readonly changePosition = new EventEmitter<SpatialSearchPosition>();
+  @Output() readonly changePosition = new EventEmitter<Position>();
 
   currentKey?: string;
 

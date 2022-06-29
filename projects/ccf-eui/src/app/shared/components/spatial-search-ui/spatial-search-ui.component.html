@@ -47,6 +47,6 @@
     <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
   <div class="spatial-search-scene">
-    <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
+    <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
   </div>
 </div>
