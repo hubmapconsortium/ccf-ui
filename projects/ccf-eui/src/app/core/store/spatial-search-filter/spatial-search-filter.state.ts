@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { append, removeItem } from '@ngxs/store/operators';
 
@@ -12,6 +13,7 @@ export type SpatialSearchFilterModel = SpatialSearch[];
   name: 'spatialSearchFilter',
   defaults: []
 })
+@Injectable()
 export class SpatialSearchFilterState {
   @Action(AddSearch)
   addSearch(ctx: StateContext<SpatialSearchFilterModel>, { search }: AddSearch): void {
