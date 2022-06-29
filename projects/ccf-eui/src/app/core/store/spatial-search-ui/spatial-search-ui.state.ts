@@ -58,8 +58,7 @@ export class SpatialSearchUiState {
   @Selector([SpatialSearchUiState, SceneState.referenceOrganEntities])
   static organEntity(state: SpatialSearchUiModel, organs: SpatialEntity[]): SpatialEntity | undefined {
     const { organId, sex } = state;
-    const organ = organs.find(o => o.representation_of === organId && o.sex?.toLowerCase() === sex);
-    return organ;
+    return organs.find(o => o.representation_of === organId && o.sex?.toLowerCase() === sex);
   }
 
   constructor(
@@ -72,22 +71,21 @@ export class SpatialSearchUiState {
    * Updates sex in the SpatialSearchUI and sets selected organ to undefined if not valid for the sex
    */
   @Action(SetSex)
-  setSex(ctx: StateContext<SpatialSearchUiModel>, { sex }: SetSex): void {
+  setSex(ctx: StateContext<SpatialSearchUiModel>, { sex }: SetSex): Observable<unknown> | void {
     const { organId } = ctx.getState();
-
     ctx.patchState({ sex });
-    if (organId !== undefined && !this.organValidForSex(organId, sex)) {
-      ctx.dispatch(new SetOrgan(undefined));
-    }
-
     this.ga.event('set_sex', 'spatial_search_ui', sex);
+
+    if (organId !== undefined && !this.organValidForSex(organId, sex)) {
+      return ctx.dispatch(new SetOrgan(undefined));
+    }
   }
 
   /**
    * Updates organId in the SpatialSearchUI
    */
   @Action(SetOrgan)
-  setOrgan(ctx: StateContext<SpatialSearchUiModel>, { organId }: SetOrgan): Observable<unknown> {
+  setOrgan(ctx: StateContext<SpatialSearchUiModel>, { organId }: SetOrgan): Observable<unknown> | void {
     const { sex } = ctx.getState();
     ctx.setState({ sex, organId });
     const shortOrgan = organId?.split('/').slice(-1)[0];
@@ -121,8 +119,6 @@ export class SpatialSearchUiState {
           }),
           mergeMap(() => ctx.dispatch(new UpdateSpatialSearch()))
         );
-    } else {
-      return of();
     }
   }
 
@@ -147,8 +143,11 @@ export class SpatialSearchUiState {
     this.ga.event('set_radius', 'spatial_search_ui', radius.toFixed(1));
   }
 
+  /**
+   * Updates the spatial search data as the organ, position, and radius changes
+   */
   @Action(UpdateSpatialSearch)
-  updateSpatialSearch(ctx: StateContext<SpatialSearchUiModel>): Observable<unknown> {
+  updateSpatialSearch(ctx: StateContext<SpatialSearchUiModel>): Observable<unknown> | void {
     const { position, radius } = ctx.getState();
     const organ = this.store.selectSnapshot(SpatialSearchUiState.organEntity);
     if (organ && position && radius && organ.representation_of) {
@@ -174,8 +173,6 @@ export class SpatialSearchUiState {
       }).pipe(
         tap((data: Partial<SpatialSearchUiModel>) => ctx.patchState(data))
       );
-    } else {
-      return of();
     }
   }
 

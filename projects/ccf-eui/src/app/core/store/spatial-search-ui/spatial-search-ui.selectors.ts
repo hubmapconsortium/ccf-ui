@@ -77,16 +77,16 @@ export class SpatialSearchUiSelectors {
 
   @Selector([SpatialSearchUiState, DataState.anatomicalStructuresTreeModel])
   static anatomicalStructures(state: SpatialSearchUiModel, tree: OntologyTreeModel): TermResult[] {
-    return Object.entries(state.anatomicalStructures ?? {}).map(([term, count]) => ({
-      '@id': term,
-      label: tree.nodes[term]?.label ?? term.split('/').slice(-1)[0],
-      count
-    }));
+    return this.getTermCounts(state.anatomicalStructures, tree);
   }
 
   @Selector([SpatialSearchUiState, DataState.cellTypesTreeModel])
   static cellTypes(state: SpatialSearchUiModel, tree: OntologyTreeModel): TermResult[] {
-    return Object.entries(state.cellTypes ?? {}).map(([term, count]) => ({
+    return this.getTermCounts(state.cellTypes, tree);
+  }
+
+  private static getTermCounts(counts: Record<string, number> | undefined, tree: OntologyTreeModel): TermResult[] {
+    return Object.entries(counts ?? {}).map(([term, count]) => ({
       '@id': term,
       label: tree.nodes[term]?.label ?? term.split('/').slice(-1)[0],
       count
