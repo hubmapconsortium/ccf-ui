@@ -28,7 +28,9 @@ export class InfoDialogComponent implements OnInit {
    * Title of the dialog
    */
   infoTitle: string;
-
+  /**
+   * URL for video
+   */
   videoID: string;
   /**
    * Creates an instance of info dialog component.
