@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Select } from '@ngxs/store';
 import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
-import { map, pluck, shareReplay } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
@@ -39,6 +40,12 @@ interface AppOptions extends CCFDatabaseOptions {
 })
 export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
+
+  @Select(DataState.cellTypesTreeModel)
+  readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
+
+  @Select(DataState.anatomicalStructuresTreeModel)
+  readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
 
   /**
    * Used to keep track of the ontology label to be passed down to the
@@ -83,10 +90,7 @@ export class AppComponent implements OnInit {
   readonly loadingMessage$ = this.data.state$.pipe(pluck('statusMessage'));
 
   readonly ontologyTerms$: Observable<readonly string[]>;
-  readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
-
   readonly cellTypeTerms$: Observable<readonly string[]>;
-  readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
 
   readonly theme$ = this.globalConfig.getOption('theme');
   readonly themeMode$ = new ReplaySubject<'light' | 'dark'>(1);
@@ -119,6 +123,7 @@ export class AppComponent implements OnInit {
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
+    this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) => {
@@ -126,10 +131,6 @@ export class AppComponent implements OnInit {
         cdr.markForCheck();
       }
     );
-
-    this.ontologyTreeModel$ = this.dataSource.getOntologyTreeModel().pipe(shareReplay(1));
-    this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
-    this.cellTypeTreeModel$ = this.dataSource.getCellTypeTreeModel().pipe(shareReplay(1));
   }
 
   ngOnInit(): void {
