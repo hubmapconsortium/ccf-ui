@@ -5,6 +5,7 @@ import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators
 import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
 import { NgxsOnInit, Selector, State } from '@ngxs/store';
 import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
+import { SpatialEntity } from 'ccf-database';
 import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, pluck, take, tap } from 'rxjs/operators';
@@ -18,6 +19,7 @@ export const DEFAULT_SELECTED_ORGANS = new Set(['Skin', 'Heart', 'Kidney', 'Sple
 export interface SceneStateModel {
   scene: SpatialSceneNode[];
   referenceOrgans: OrganInfo[];
+  referenceOrganEntities: SpatialEntity[];
   selectedReferenceOrgans: OrganInfo[];
 
   selectedAnatomicalStructures: unknown[];
@@ -40,6 +42,7 @@ export interface SceneStateModel {
   defaults: {
     scene: [],
     referenceOrgans: [],
+    referenceOrganEntities: [],
     selectedReferenceOrgans: [],
     selectedAnatomicalStructures: [],
     anatomicalStructureSettings: {}
@@ -50,6 +53,11 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   @Selector()
   static referenceOrgans(state: SceneStateModel): OrganInfo[] {
     return state.referenceOrgans;
+  }
+
+  @Selector()
+  static referenceOrganEntities(state: SceneStateModel): SpatialEntity[] {
+    return state.referenceOrganEntities;
   }
 
   /** Available Reference Organs */
@@ -102,6 +110,16 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   /**
+   * Sets the reference organ entities
+   *
+   * @param referenceOrganEntities The reference organ entities available
+   */
+  @DataAction()
+  setReferenceOrganEntities(@Payload('referenceOrganEntities') referenceOrganEntities: SpatialEntity[]): void {
+    this.ctx.patchState({ referenceOrganEntities });
+  }
+
+  /**
    * Sets the scene
    *
    * @param scene The active scene to display
@@ -149,6 +167,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
     // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(
+      tap(refOrgans => this.setReferenceOrganEntities(refOrgans)),
       map(refOrgans => {
         const organIds = new Set(refOrgans.map(o => o.representation_of));
         return ALL_POSSIBLE_ORGANS
