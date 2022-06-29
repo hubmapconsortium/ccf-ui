@@ -34,34 +34,35 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
   shiftPressed = false;
 
   updatePosition(key: string): void {
-    this.currentKey = key.toLowerCase();
     this.currentDelta = this.shiftPressed ? this.shiftDelta : this.delta;
-    switch (this.currentKey) {
-      case 'shift':
-        this.shiftPressed = true;
-        break;
-      case 'q':
-        this.position = { ...this.position, z: this.position.z + this.currentDelta };
-        break;
-      case 'e':
-        this.position = { ...this.position, z: this.position.z - this.currentDelta };
-        break;
-      case 'w':
-        this.position = { ...this.position, y: this.position.y + this.currentDelta };
-        break;
-      case 's':
-        this.position = { ...this.position, y: this.position.y - this.currentDelta };
-        break;
-      case 'a':
-        this.position = { ...this.position, x: this.position.x - this.currentDelta };
-        break;
-      case 'd':
-        this.position = { ...this.position, x: this.position.x + this.currentDelta };
-        break;
-      default:
-        break;
+    if (key === 'Shift') {
+      this.shiftPressed = true;
+    } else {
+      this.currentKey = key.toLowerCase();
+      switch (this.currentKey) {
+        case 'q':
+          this.position = { ...this.position, z: this.position.z + this.currentDelta };
+          break;
+        case 'e':
+          this.position = { ...this.position, z: this.position.z - this.currentDelta };
+          break;
+        case 'w':
+          this.position = { ...this.position, y: this.position.y + this.currentDelta };
+          break;
+        case 's':
+          this.position = { ...this.position, y: this.position.y - this.currentDelta };
+          break;
+        case 'a':
+          this.position = { ...this.position, x: this.position.x - this.currentDelta };
+          break;
+        case 'd':
+          this.position = { ...this.position, x: this.position.x + this.currentDelta };
+          break;
+        default:
+          break;
+      }
+      this.changePosition.emit(this.position);
     }
-    this.changePosition.emit(this.position);
   }
 
   @HostListener('document:keydown', ['$event'])
