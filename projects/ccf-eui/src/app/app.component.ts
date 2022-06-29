@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { ThemingService } from './core/services/theming/theming.service';
+import { DataStateSelectors } from './core/store/data/data.selectors';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
@@ -41,10 +42,10 @@ interface AppOptions extends CCFDatabaseOptions {
 export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
 
-  @Select(DataState.cellTypesTreeModel)
+  @Select(DataStateSelectors.cellTypesTreeModel)
   readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
 
-  @Select(DataState.anatomicalStructuresTreeModel)
+  @Select(DataStateSelectors.anatomicalStructuresTreeModel)
   readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
 
   /**

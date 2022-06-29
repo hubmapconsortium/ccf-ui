@@ -97,21 +97,6 @@ export interface DataStateModel {
 })
 @Injectable()
 export class DataState extends NgxsDataRepository<DataStateModel> implements NgxsOnInit {
-  @Selector()
-  static filter(state: DataStateModel): Filter {
-    return state.filter;
-  }
-
-  @Selector()
-  static anatomicalStructuresTreeModel(state: DataStateModel): OntologyTreeModel {
-    return state.anatomicalStructuresTreeModel ?? { root: '', nodes: {} };
-  }
-
-  @Selector()
-  static cellTypesTreeModel(state: DataStateModel): OntologyTreeModel {
-    return state.cellTypesTreeModel ?? { root: '', nodes: {} };
-  }
-
   /** Emits when the database is ready. */
   readonly databaseReady$ = this.state$.pipe(pluck('status'), distinct(), rxjsFilter((status) => status === 'Ready'));
 
