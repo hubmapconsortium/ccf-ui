@@ -1,3 +1,50 @@
-<div>Configure Spatial Search</div>
+<div class="header">
+  <div class="title">Configure Spatial Search</div>
+  <button class="info button" mat-icon-button>
+    <mat-icon (click)="infoClicked.emit()">info</mat-icon>
+  </button>
+  <button class="close button" mat-icon-button>
+    <mat-icon (click)="closeSpatialSearch.emit()">close</mat-icon>
+  </button>
+</div>
 
-<ccf-tissue-block-list></ccf-tissue-block-list>
+<div class="content">
+  <div class="info-panel">
+    <div class="organ-sex-selection">
+      <div class="sex">
+        <div class="label">Donor Sex: </div>
+        <div class="current-sex">{{sex.charAt(0).toUpperCase() + sex.slice(1)}}</div>
+      </div>
+      <div class="organ">
+        <div class="label">Organ: </div>
+        <div class="current-organ">{{referenceOrgan.name}}</div>
+      </div>
+      <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>
+    </div>
+    <div class="radius-slider">
+      <div class="title">Probing Sphere Radius</div>
+      <div class="slider-container">
+        <mat-slider
+          class="slider"
+          [max]="radiusSettings.max"
+          [min]="radiusSettings.min"
+          [step]="1"
+          (input)="radiusChange.emit($event.value)"
+          [value]="radius"
+        ></mat-slider>
+        <span class="text value">{{ radius }} cm</span>
+      </div>
+      <div class="reset-buttons">
+        <button class="reset-sphere button" [class.disabled]="radius === radiusSettings.defaultValue" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
+        <button class="reset-camera button" [class.disabled]="defaultPosition === position" mat-button (click)="resetPosition.emit()">Reset Camera View</button>
+      </div>
+    </div>
+    <div class="results">
+      <ccf-tissue-block-list class="tissue-block-info"></ccf-tissue-block-list>
+      <div class="anatomical-structures-info"> Anatomical Structures goes here</div>
+      <div class="cell-type-info">Predicted Cell Types goes here</div>
+    </div>
+    <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
+  </div>
+  <div class="spatial-search-scene">Spatial Search Scene goes here</div>
+</div>

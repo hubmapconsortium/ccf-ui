@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NgxsModule } from '@ngxs/store';
@@ -16,6 +17,7 @@ function wait(duration: number): Promise<void> {
 
 describe('SpatialSearchConfigBehaviorComponent', () => {
   let shallow: Shallow<SpatialSearchConfigBehaviorComponent>;
+  const http = jasmine.createSpyObj<HttpClient>(['get']);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -24,7 +26,8 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
 
     shallow = new Shallow(SpatialSearchConfigBehaviorComponent, SpatialSearchConfigBehaviorModule)
       .mock(MatDialogRef, { close(): void { /* Empty */ } })
-      .mock(SceneState, { referenceOrgans$: of([]) });
+      .mock(SceneState, { referenceOrgans$: of([]) })
+      .mock(HttpClient, http);
   });
 
   it('should close the dialog when the close() method is called', async () => {
