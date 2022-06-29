@@ -4,9 +4,9 @@
 import { Injectable } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
-import { NgxsOnInit, State } from '@ngxs/store';
+import { NgxsOnInit, Selector, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
-import { AggregateResult, DatabaseStatus, Filter, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
+import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
 import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
 import { delay, distinct, filter as rxjsFilter, map, pluck, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from 'rxjs/operators';
@@ -79,6 +79,8 @@ export interface DataStateModel {
   filter: Filter;
   status: 'Loading' | 'Ready' | 'Error';
   statusMessage: string;
+  anatomicalStructuresTreeModel?: OntologyTreeModel;
+  cellTypesTreeModel?: OntologyTreeModel;
 }
 
 /**
@@ -204,6 +206,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
       source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
       source.getCellTypeTermOccurences().pipe(take(1)).subscribe(cellTypeTermsFullData$);
     }
+    this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) => this.updateAnatomicalStructuresTreeModel(model));
+    this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) => this.updateCellTypesTreeModel(model));
     this.warmUpDatabase();
   }
 
@@ -223,6 +227,20 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
         message: 'Loading CCF Exploration User Interface (EUI)'
       });
     })).subscribe();
+  }
+
+  @DataAction()
+  updateAnatomicalStructuresTreeModel(@Payload('treeModel') model: OntologyTreeModel): void {
+    this.patchState({
+      anatomicalStructuresTreeModel: model
+    });
+  }
+
+  @DataAction()
+  updateCellTypesTreeModel(@Payload('treeModel') model: OntologyTreeModel): void {
+    this.patchState({
+      cellTypesTreeModel: model
+    });
   }
 
   @DataAction()

@@ -6,7 +6,7 @@ import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
-import { map, pluck, shareReplay } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
@@ -14,6 +14,7 @@ import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { ThemingService } from './core/services/theming/theming.service';
 import { actionAsFn } from './core/store/action-as-fn';
+import { DataStateSelectors } from './core/store/data/data.selectors';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
@@ -48,6 +49,12 @@ export class AppComponent implements OnInit {
 
   @Select(SpatialSearchFilterSelectors.selectableSearches)
   readonly selectableSearches$: Observable<SelectableSpatialSearch>;
+
+  @Select(DataStateSelectors.cellTypesTreeModel)
+  readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
+
+  @Select(DataStateSelectors.anatomicalStructuresTreeModel)
+  readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
 
   @Dispatch()
   readonly removeSpatialSearch = actionAsFn(RemoveSearch);
@@ -95,10 +102,7 @@ export class AppComponent implements OnInit {
   readonly loadingMessage$ = this.data.state$.pipe(pluck('statusMessage'));
 
   readonly ontologyTerms$: Observable<readonly string[]>;
-  readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
-
   readonly cellTypeTerms$: Observable<readonly string[]>;
-  readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
 
   readonly theme$ = this.globalConfig.getOption('theme');
   readonly themeMode$ = new ReplaySubject<'light' | 'dark'>(1);
@@ -131,6 +135,7 @@ export class AppComponent implements OnInit {
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
+    this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) => {
@@ -138,10 +143,6 @@ export class AppComponent implements OnInit {
         cdr.markForCheck();
       }
     );
-
-    this.ontologyTreeModel$ = this.dataSource.getOntologyTreeModel().pipe(shareReplay(1));
-    this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
-    this.cellTypeTreeModel$ = this.dataSource.getCellTypeTreeModel().pipe(shareReplay(1));
   }
 
   ngOnInit(): void {
