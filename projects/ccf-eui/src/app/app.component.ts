@@ -18,9 +18,9 @@ import { DataStateSelectors } from './core/store/data/data.selectors';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
-import { RemoveSearch } from './core/store/spatial-search-filter/spatial-search-filter.actions';
-import { SelectableSpatialSearch } from './core/store/spatial-search-filter/spatial-search-filter.models';
+import { RemoveSearch, SetSelectedSearches } from './core/store/spatial-search-filter/spatial-search-filter.actions';
 import { SpatialSearchFilterSelectors } from './core/store/spatial-search-filter/spatial-search-filter.selectors';
+import { SpatialSearchFilterItem } from './core/store/spatial-search-filter/spatial-search-filter.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
@@ -47,14 +47,18 @@ interface AppOptions extends CCFDatabaseOptions {
 export class AppComponent implements OnInit {
   @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
 
-  @Select(SpatialSearchFilterSelectors.selectableSearches)
-  readonly selectableSearches$: Observable<SelectableSpatialSearch>;
 
   @Select(DataStateSelectors.cellTypesTreeModel)
   readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
 
   @Select(DataStateSelectors.anatomicalStructuresTreeModel)
   readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
+
+  @Select(SpatialSearchFilterSelectors.items)
+  readonly selectableSearches$: Observable<SpatialSearchFilterItem>;
+
+  @Dispatch()
+  readonly setSelectedSearches = actionAsFn(SetSelectedSearches);
 
   @Dispatch()
   readonly removeSpatialSearch = actionAsFn(RemoveSearch);
@@ -296,27 +300,5 @@ export class AppComponent implements OnInit {
   get loggedIn(): boolean {
     const token = this.globalConfig.snapshot.hubmapToken ?? '';
     return token.length > 0;
-  }
-
-  /**
-   * Updates filter
-   * Fixes spatialSearches before sending to state
-   *
-   * @param filter The filter
-   */
-  updateFilter(filter: Record<string, unknown>): void {
-    const spatialSearches = filter['spatialSearches'] as SelectableSpatialSearch[];
-    if (spatialSearches?.length > 0) {
-      filter = {
-        ...filter,
-        spatialSearches: spatialSearches.map(item => ({
-          ...item.search.position,
-          radius: item.search.radius,
-          target: item.search.organ.id
-        }))
-      };
-    }
-
-    this.data.updateFilter(filter);
   }
 }
