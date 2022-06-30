@@ -73,7 +73,7 @@ export class SpatialSearchUiState {
   ) {
     actions$.pipe(
       ofActionDispatched(UpdateSpatialSearch),
-      debounceTime(2000),
+      debounceTime(500),
       tap(() => store.dispatch(ReallyUpdateSpatialSearch))
     ).subscribe();
   }
@@ -83,13 +83,14 @@ export class SpatialSearchUiState {
    */
   @Action(SetSex)
   setSex(ctx: StateContext<SpatialSearchUiModel>, { sex }: SetSex): Observable<unknown> | void {
-    const { organId } = ctx.getState();
+    let { organId } = ctx.getState();
     ctx.patchState({ sex });
     this.ga.event('set_sex', 'spatial_search_ui', sex);
 
     if (organId !== undefined && !this.organValidForSex(organId, sex)) {
-      return ctx.dispatch(new SetOrgan(undefined));
+      organId = undefined;
     }
+    return ctx.dispatch(new SetOrgan(organId));
   }
 
   /**

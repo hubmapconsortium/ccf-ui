@@ -64,16 +64,12 @@ export class SpatialSearchUiSelectors {
   @Selector([SpatialSearchUiState, SpatialSearchUiState.organEntity, SpatialSearchUiSelectors.position, SpatialSearchUiSelectors.radius])
   static scene(state: SpatialSearchUiModel, organEntity: SpatialEntity, position: Position, radius: number): SpatialSceneNode[] {
     const sphere = getProbingSphereScene(organEntity, {
-      x: position.x / 1000,
-      y: position.y / 1000,
-      z: position.z / 1000,
-      radius: radius / 1000,
-      target: organEntity['@id']
+      ...position, radius, target: organEntity['@id']
     });
     const collisions = new Set((state.tissueBlocks ?? []).map(block => block.spatialEntityId));
     const organScene = (state.organScene ?? []).map(s => {
       if (collisions.has(s['@id'])) {
-        s = { ...s, color: [0, 0, 255, 0.9*255] };
+        s = { ...s, color: [41, 121, 255, 0.9*255] };
       }
       return s;
     });
