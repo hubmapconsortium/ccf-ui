@@ -114,7 +114,7 @@ export class SpatialSearchUiState {
               position,
               radius: defaultRadius,
               defaultPosition: position,
-              radiusSettings: { min: 5, max: Math.floor(width), defaultValue: defaultRadius },
+              radiusSettings: { min: Math.min(defaultRadius, 5), max: Math.floor(Math.max(width, height, depth) / 1.5), defaultValue: defaultRadius },
               organScene: getOriginScene(organ).concat(organScene)
             });
           }),
@@ -129,6 +129,7 @@ export class SpatialSearchUiState {
   @Action(SetPosition)
   setPosition(ctx: StateContext<SpatialSearchUiModel>, { position }: SetPosition): void {
     ctx.patchState({ position });
+    ctx.dispatch(new UpdateSpatialSearch());
 
     const { x, y, z } = position;
     this.ga.event('set_position', 'spatial_search_ui', `${x}_${y}_${z}`);
@@ -138,6 +139,7 @@ export class SpatialSearchUiState {
   resetPosition(ctx: StateContext<SpatialSearchUiModel>): void {
     const { defaultPosition } = ctx.getState();
     ctx.patchState({ position: defaultPosition });
+    ctx.dispatch(new UpdateSpatialSearch());
 
     const { x, y, z } = defaultPosition ?? { x: 0, y: 0, z: 0 };
     this.ga.event('reset_position', 'spatial_search_ui', `${x}_${y}_${z}`);
@@ -149,6 +151,7 @@ export class SpatialSearchUiState {
   @Action(SetRadius)
   setRadius(ctx: StateContext<SpatialSearchUiModel>, { radius }: SetRadius): void {
     ctx.patchState({ radius });
+    ctx.dispatch(new UpdateSpatialSearch());
 
     this.ga.event('set_radius', 'spatial_search_ui', radius.toFixed(1));
   }
@@ -158,6 +161,7 @@ export class SpatialSearchUiState {
     const { radiusSettings } = ctx.getState();
     const radius = radiusSettings?.defaultValue ?? 0;
     ctx.patchState({ radius });
+    ctx.dispatch(new UpdateSpatialSearch());
 
     this.ga.event('reset_radius', 'spatial_search_ui', radius.toFixed(1));
   }

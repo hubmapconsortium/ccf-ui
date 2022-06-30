@@ -32,7 +32,7 @@
           (input)="radiusChange.emit($event.value)"
           [value]="radius"
         ></mat-slider>
-        <span class="text value">{{ radius }} cm</span>
+        <span class="text value">{{ radius }} mm</span>
       </div>
       <div class="reset-buttons">
         <button class="reset-sphere button" [class.disabled]="radius === radiusSettings.defaultValue" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
