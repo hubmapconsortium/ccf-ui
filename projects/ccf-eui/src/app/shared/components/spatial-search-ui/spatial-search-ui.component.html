@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <button class="run-spatial-search button" [class.disabled]="tissueBlocks.length === 0" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
+    <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
   <div class="spatial-search-scene">
     <div class="primary-scene-wrapper">
