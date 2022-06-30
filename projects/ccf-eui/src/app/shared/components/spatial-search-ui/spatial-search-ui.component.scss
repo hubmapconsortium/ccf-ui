@@ -150,9 +150,8 @@
       }
 
       .sidebar {
-        margin: 1.5rem;
-
         .minimap-scene {
+          margin: 1.5rem;
           width: 12.75rem;
           height: 11rem;
           ::ng-deep .body-ui {
@@ -161,8 +160,14 @@
         }
 
         ccf-spatial-search-keyboard-ui-behavior {
+          margin: 1.5rem;
           display: flex;
           justify-content: center;
+        }
+
+        ccf-xyz-position {
+          margin: 1.5rem;
+          padding-left: 5rem;
         }
       }
     }

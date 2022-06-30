@@ -40,9 +40,19 @@
       </div>
     </div>
     <div class="results">
-      <ccf-tissue-block-list class="tissue-block-info"></ccf-tissue-block-list>
-      <div class="anatomical-structures-info"> Anatomical Structures goes here</div>
-      <div class="cell-type-info">Predicted Cell Types goes here</div>
+      <ccf-tissue-block-list class="tissue-block-info" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>
+      <div class="anatomical-structures-info">
+        <div>{{ anatomicalStructures.length }} Anatomical Structures</div>
+        <div *ngFor="let term of anatomicalStructures">
+          {{ term.label }}
+        </div>
+      </div>
+      <div class="cell-type-info">
+        <div>{{ cellTypes.length }} Predicted Cell Types from ASCT+B Tables</div>
+        <div *ngFor="let term of cellTypes">
+          {{ term.label }}
+        </div>
+      </div>
     </div>
     <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
@@ -56,7 +66,7 @@
     <div class="sidebar">
       <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"></ccf-body-ui>
       <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
-      <ccf-xyz-position [x]="10" [y]="120" [z]="20"></ccf-xyz-position>
+      <ccf-xyz-position [x]="position.x" [y]="position.y" [z]="position.z"></ccf-xyz-position>
     </div>
   </div>
 </div>
