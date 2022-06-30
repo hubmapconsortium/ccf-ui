@@ -32,22 +32,41 @@
           (input)="radiusChange.emit($event.value)"
           [value]="radius"
         ></mat-slider>
-        <span class="text value">{{ radius }} cm</span>
+        <span class="text value">{{ radius }} mm</span>
       </div>
       <div class="reset-buttons">
-        <button class="reset-sphere button" [class.disabled]="radius === radiusSettings.defaultValue" mat-button (click)="resetSphere.emit()">Reset Probing Sphere</button>
-        <button class="reset-camera button" [class.disabled]="defaultPosition === position" mat-button (click)="resetPosition.emit()">Reset Camera View</button>
+        <button class="reset-sphere button" [class.disabled]="radius === radiusSettings.defaultValue && position === defaultPosition" mat-button (click)="resetSphere.emit(); resetPosition.emit();">Reset Probing Sphere</button>
+        <button class="reset-camera button" mat-button (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset Camera View</button>
       </div>
     </div>
     <div class="results">
-      <ccf-tissue-block-list class="tissue-block-info"></ccf-tissue-block-list>
-      <div class="anatomical-structures-info"> Anatomical Structures goes here</div>
-      <div class="cell-type-info">Predicted Cell Types goes here</div>
+      <ccf-tissue-block-list class="tissue-block-info" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>
+      <div class="anatomical-structures-info">
+        <div>{{ anatomicalStructures?.length ?? 0 }} Anatomical Structures</div>
+        <div *ngFor="let term of anatomicalStructures?.slice(0, 3) ?? []">
+          {{ term.label }}
+        </div>
+      </div>
+      <div class="cell-type-info">
+        <div>{{ cellTypes?.length ?? 0 }} Predicted Cell Types from ASCT+B Tables</div>
+        <div *ngFor="let term of cellTypes?.slice(0, 3) ?? []">
+          {{ term.label }}
+        </div>
+      </div>
     </div>
     <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
   <div class="spatial-search-scene">
-    <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
-    <ccf-xyz-position [x]="10" [y]="120" [z]="20"></ccf-xyz-position>
+    <div class="primary-scene-wrapper">
+      <div class="body-ui-hint">Use the keyboard or click a Tissue Block to move the Probing Sphere</div>
+      <ccf-body-ui #primary class="primary-scene" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"
+        (nodeClick)="nodeClicked.emit($event?.node)"
+        (rotationChange)="minimap.rotation = $event[0]; minimap.rotationX = $event[1]"></ccf-body-ui>
+    </div>
+    <div class="sidebar">
+      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"></ccf-body-ui>
+      <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
+      <ccf-xyz-position [x]="position.x" [y]="position.y" [z]="position.z"></ccf-xyz-position>
+    </div>
   </div>
 </div>

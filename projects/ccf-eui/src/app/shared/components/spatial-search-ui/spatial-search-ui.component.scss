@@ -37,7 +37,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    
+
     .button {
       border-width: 1px;
       border-style: solid;
@@ -56,6 +56,7 @@
       display: flex;
       flex-direction: column;
       margin-right: 2rem;
+      margin-bottom: 0.5rem;
       grid-gap: 1rem;
       gap: 1rem;
       width: 25rem;
@@ -123,13 +124,52 @@
     }
 
     .spatial-search-scene {
+      display: flex;
       width: calc(100% - 25rem);
+      height: calc(100% - 0.5rem);
+      background-color: black;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+      border-top-right-radius: .5rem;
+      border-top-left-radius: .5rem;
 
-      ccf-spatial-search-keyboard-ui-behavior {
-        display: flex;
-        justify-content: flex-end;
+      .primary-scene-wrapper {
+        display: block;
+        width: 100%;
+        height: calc(100% - 4rem);
+
+        .primary-scene {
+          flex: auto;
+        }
+
+        .body-ui-hint {
+          color: white;
+          font-size: 1rem;
+          margin: 1rem;
+        }
+      }
+
+      .sidebar {
+        .minimap-scene {
+          margin: 1.5rem;
+          width: 12.75rem;
+          height: 11rem;
+          ::ng-deep .body-ui {
+            background-color: #232f3a;
+          }
+        }
+
+        ccf-spatial-search-keyboard-ui-behavior {
+          margin: 1.5rem;
+          display: flex;
+          justify-content: center;
+        }
+
+        ccf-xyz-position {
+          margin: 1.5rem;
+          padding-left: 5rem;
+        }
       }
     }
   }
-
 }
