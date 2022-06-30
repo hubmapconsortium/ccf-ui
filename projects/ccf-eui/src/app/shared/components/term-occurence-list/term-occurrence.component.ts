@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { TermResult } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
 /**
  * Component for a dropdown menu.
@@ -12,6 +13,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 })
 export class TermOccurrenceListComponent {
 
+
+  @Input() termList: TermResult[];
   /**
    * Updates the selected value.
    *
@@ -19,5 +22,23 @@ export class TermOccurrenceListComponent {
    */
   selectionChanged(): void {
     console.log('test');
+  }
+
+  ngOnInit(): void {
+
+    this.populateList();
+  }
+
+  populateList(): void {
+    let i = 0;
+    while (i < 29) {
+      const theTerm: TermResult = {
+        '@id': 'id' + i,
+        label: 'Eggs' + i,
+        count: 8 + i
+      };
+      i++;
+      this.termList.push(theTerm);
+    }
   }
 }

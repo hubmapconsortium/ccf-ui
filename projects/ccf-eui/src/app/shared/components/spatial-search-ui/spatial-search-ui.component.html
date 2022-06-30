@@ -41,8 +41,9 @@
     </div>
     <div class="results">
       <ccf-tissue-block-list class="tissue-block-info"></ccf-tissue-block-list>
-      <div class="anatomical-structures-info"> Anatomical Structures goes here</div>
-      <div class="cell-type-info">Predicted Cell Types goes here</div>
+      <div class="anatomical-structures-info"> Anatomical Structures goes here {{ anatomicalStructures?.length }}</div>
+      <ccf-term-occurrence-list [termList]="anatomicalStructures"> </ccf-term-occurrence-list>
+      <div class="cell-type-info">Predicted Cell Types goes here {{ cellTypes?.length }}</div>
     </div>
     <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>

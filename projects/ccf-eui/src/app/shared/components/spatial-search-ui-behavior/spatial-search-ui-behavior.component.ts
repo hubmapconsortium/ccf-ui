@@ -8,7 +8,7 @@ import { Observable, Subscription } from 'rxjs';
 import { actionAsFn } from '../../../core/store/action-as-fn';
 import { SetPosition, SetRadius, ResetRadius, ResetPosition } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
 import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
-import { Position, RadiusSettings } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
+import { Position, RadiusSettings, TermResult } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 import { SpatialSearchConfigBehaviorComponent } from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
 import { Sex } from '../spatial-search-config/spatial-search-config.component';
 import { SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
@@ -38,6 +38,12 @@ export class SpatialSearchUiBehaviorComponent {
 
   @Select(SpatialSearchUiSelectors.radiusSettings)
   readonly radiusSettings$: Observable<RadiusSettings>;
+
+  @Select(SpatialSearchUiSelectors.anatomicalStructures)
+  readonly anatomicalStructures$: Observable<TermResult[]>;
+
+  @Select(SpatialSearchUiSelectors.cellTypes)
+  readonly cellTypes$: Observable<TermResult[]>;
 
   @Dispatch()
   readonly updatePosition = actionAsFn(SetPosition);

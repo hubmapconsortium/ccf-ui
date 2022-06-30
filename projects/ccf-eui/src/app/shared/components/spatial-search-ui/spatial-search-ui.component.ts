@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 import { OrganInfo } from 'ccf-shared';
-import { Position, RadiusSettings } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
+import { Position, RadiusSettings, TermResult } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
 @Component({
   selector: 'ccf-spatial-search-ui',
@@ -8,6 +8,7 @@ import { Position, RadiusSettings } from '../../../core/store/spatial-search-ui/
   styleUrls: ['./spatial-search-ui.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class SpatialSearchUiComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-ui';
 
@@ -22,6 +23,10 @@ export class SpatialSearchUiComponent {
   @Input() readonly defaultPosition: Position;
 
   @Input() readonly position: Position;
+
+  @Input() readonly anatomicalStructures: TermResult[];
+
+  @Input() readonly cellTypes: TermResult[];
 
   @Output() readonly addSpatialSearch = new EventEmitter();
 

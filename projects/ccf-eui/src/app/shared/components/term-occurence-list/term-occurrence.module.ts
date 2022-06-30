@@ -12,4 +12,4 @@ import { TermOccurrenceListComponent } from './term-occurrence.component';
   exports: [TermOccurrenceListComponent]
 })
 
-export class DropdownModule { }
+export class TermOccurrenceListModule { }
