@@ -1,3 +1,6 @@
+import { TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
+import { NgxsModule } from '@ngxs/store';
 import { Shallow } from 'shallow-render';
 
 import { RunSpatialSearchComponent } from './run-spatial-search.component';
@@ -7,7 +10,15 @@ describe('RunSpatialSearchComponent', () => {
   let shallow: Shallow<RunSpatialSearchComponent>;
 
   beforeEach(() => {
-    shallow = new Shallow(RunSpatialSearchComponent, RunSpatialSearchModule);
+    TestBed.configureTestingModule({
+      imports: [NgxsModule.forRoot([], {})]
+    });
+
+    shallow = new Shallow(RunSpatialSearchComponent, RunSpatialSearchModule)
+      .provide({
+        provide: MatDialog,
+        useValue: jasmine.createSpyObj<MatDialog>(['open'])
+      });
   });
 
   it('creates', async () => {
