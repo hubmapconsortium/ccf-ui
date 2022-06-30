@@ -90,6 +90,15 @@
         }
       }
 
+      ccf-run-spatial-search {
+        position: relative;
+        float: right;
+        height: 0px;
+        z-index: 1;
+        top: 0.5rem;
+        right: 0.5rem;
+      }
+
       .stage-content {
         transition: all 0.5s ease-in-out;
         border-bottom-right-radius: 0.5rem;
