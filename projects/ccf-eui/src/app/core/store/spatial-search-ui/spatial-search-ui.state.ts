@@ -4,13 +4,13 @@ import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Sto
 import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { forkJoin, Observable, Subscription } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { debounceTime, mergeMap, take, tap } from 'rxjs/operators';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 import { DataStateSelectors } from '../data/data.selectors';
 import { SceneState } from '../scene/scene.state';
-import { MoveToNode, ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
+import { MoveToNode, ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, StartSpatialSearchFlow, UpdateSpatialSearch } from './spatial-search-ui.actions';
 
 
 export interface Position {
@@ -77,6 +77,15 @@ export class SpatialSearchUiState {
       debounceTime(500),
       tap(() => store.dispatch(ReallyUpdateSpatialSearch))
     ).subscribe();
+  }
+
+  @Action(StartSpatialSearchFlow)
+  startSpatialSearchFlow(ctx: StateContext<SpatialSearchUiModel>): Observable<unknown> {
+    const { sex, organId } = ctx.getState();
+    const shortOrgan = organId?.split('/').slice(-1)[0];
+    this.ga.event('set_organ', 'spatial_search_ui', `${sex}_${shortOrgan}`);
+
+    return ctx.dispatch(new SetOrgan(organId));
   }
 
   /**

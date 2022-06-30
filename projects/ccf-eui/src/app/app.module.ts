@@ -1,15 +1,16 @@
-import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { createCustomElement } from '@angular/elements';
 import { DoBootstrap, Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BodyUiModule, InfoButtonModule, OrganSelectorModule, TrackingPopupModule } from 'ccf-shared';
+import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
 
 import { DEFAULT_THEME } from '../app/core/services/theming/theming.service';
+import { AppWebComponent } from './app-web-component.component';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FiltersPopoverModule } from './modules/filters/filters-popover/filters-popover.module';
@@ -17,9 +18,9 @@ import { OntologyExplorationModule } from './modules/ontology-exploration/ontolo
 import { ResultsBrowserModule } from './modules/results-browser/results-browser/results-browser.module';
 import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { DualSliderModule } from './shared/components/dual-slider/dual-slider.module';
+import { RunSpatialSearchModule } from './shared/components/run-spatial-search/run-spatial-search.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 import { ViewerModule } from './shared/components/viewer/viewer.module';
-import { AppWebComponent } from './app-web-component.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AppWebComponent } from './app-web-component.component';
     MatTooltipModule,
     ViewerModule,
     TrackingPopupModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    RunSpatialSearchModule
   ],
   declarations: [AppComponent, AppWebComponent],
   providers: [
