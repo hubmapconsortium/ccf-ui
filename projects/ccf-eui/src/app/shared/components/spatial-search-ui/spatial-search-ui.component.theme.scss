@@ -43,6 +43,8 @@
       }
 
       .info, .close {
+        color: mat.get-color-from-palette($foreground, main);
+
         &:hover {
           background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
         }
@@ -50,6 +52,10 @@
     }
 
     .content {
+      mat-divider {
+        color: mat.get-color-from-palette($foreground, borders);
+      }
+
       .button {
         color: mat.get-color-from-palette($foreground, light-button-text);
         background-color: mat.get-color-from-palette($background, button-bg);

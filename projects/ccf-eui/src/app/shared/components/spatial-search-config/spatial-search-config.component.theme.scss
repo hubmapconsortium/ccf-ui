@@ -34,9 +34,6 @@
 
     .button {
       color: map-get($foreground, text);
-      &:hover {
-        background: map-get($background, icon-background-hover2) !important;
-      }
     }
 
     .mat-radio-checked {
@@ -67,8 +64,10 @@
   }
 
   .info, .close {
+    color: mat.get-color-from-palette($foreground, main);
+
     &:hover {
-      background-color: mat.get-color-from-palette($background, icon-background-hover2);
+      background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
     }
   }
 
