@@ -5,7 +5,6 @@ import { OrganInfo } from 'ccf-shared';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 import { DataStateSelectors } from '../data/data.selectors';
-import { SceneState } from '../scene/scene.state';
 import { Position, RadiusSettings, SpatialSearchUiModel, SpatialSearchUiState, TermResult } from './spatial-search-ui.state';
 
 
@@ -18,11 +17,16 @@ export class SpatialSearchUiSelectors {
   }
 
   @Selector([SpatialSearchUiState])
+  static referenceOrgans(state: SpatialSearchUiModel): OrganInfo[] {
+    return state.referenceOrgans ?? [];
+  }
+
+  @Selector([SpatialSearchUiState])
   static organId(state: SpatialSearchUiModel): string | undefined {
     return state.organId;
   }
 
-  @Selector([SpatialSearchUiSelectors.organId, SceneState.referenceOrgans])
+  @Selector([SpatialSearchUiSelectors.organId, SpatialSearchUiSelectors.referenceOrgans])
   static organ(id: string | undefined, organs: OrganInfo[]): OrganInfo | undefined {
     if (id === undefined) {
       return undefined;
@@ -31,7 +35,7 @@ export class SpatialSearchUiSelectors {
     return organs.find(organ => organ.id === id);
   }
 
-  @Selector([SpatialSearchUiSelectors.sex, SceneState.referenceOrgans])
+  @Selector([SpatialSearchUiSelectors.sex, SpatialSearchUiSelectors.referenceOrgans])
   static organs(sex: Sex, organs: OrganInfo[]): OrganInfo[] {
     return organs.filter(organ => this.organMatchesSex(organ, sex));
   }
@@ -79,10 +83,11 @@ export class SpatialSearchUiSelectors {
   @Selector([SpatialSearchUiState.organEntity])
   static sceneBounds(organEntity: SpatialEntity): Position {
     const { x_dimension: x, y_dimension: y, z_dimension: z } = organEntity;
+    const margin = Math.max(x, y, z) * 0.42;
     return {
-      x: x / 1000 * 1.25,
-      y: y / 1000 * 1.25,
-      z: z / 1000 * 1.25
+      x: (margin + x) / 1000,
+      y: (margin + y) / 1000,
+      z: (margin + z) / 1000
     };
   }
 

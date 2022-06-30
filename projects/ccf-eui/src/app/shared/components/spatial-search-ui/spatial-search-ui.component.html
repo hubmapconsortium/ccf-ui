@@ -64,7 +64,8 @@
         (rotationChange)="minimap.rotation = $event[0]; minimap.rotationX = $event[1]"></ccf-body-ui>
     </div>
     <div class="sidebar">
-      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"></ccf-body-ui>
+      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"
+        (nodeClick)="nodeClicked.emit($event?.node)"></ccf-body-ui>
       <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
       <ccf-xyz-position [x]="position.x" [y]="position.y" [z]="position.z"></ccf-xyz-position>
     </div>
