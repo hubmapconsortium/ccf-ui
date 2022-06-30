@@ -58,3 +58,6 @@ export * from './lib/services/local-storage/local-storage.service';
 
 export * from './lib/components/spatial-search-list/spatial-search-list.component';
 export * from './lib/components/spatial-search-list/spatial-search-list.module';
+
+export * from './lib/components/xyz-position/xyz-position.component';
+export * from './lib/components/xyz-position/xyz-position.module';
