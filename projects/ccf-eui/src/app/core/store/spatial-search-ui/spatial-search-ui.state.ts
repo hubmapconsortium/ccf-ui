@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
 import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
-import { DataSourceService } from 'ccf-shared';
+import { DataSourceService, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { forkJoin, Observable } from 'rxjs';
 import { debounceTime, mergeMap, take, tap } from 'rxjs/operators';
@@ -40,7 +40,9 @@ export interface SpatialSearchUiModel {
   defaultPosition?: Position;
   radiusSettings?: RadiusSettings;
 
+  referenceOrgans?: OrganInfo[];
   organScene?: SpatialSceneNode[];
+
   spatialSearchScene?: SpatialSceneNode[];
   tissueBlocks?: TissueBlockResult[];
   anatomicalStructures?: Record<string, number>;
@@ -85,7 +87,7 @@ export class SpatialSearchUiState {
     const shortOrgan = organId?.split('/').slice(-1)[0];
     this.ga.event('set_organ', 'spatial_search_ui', `${sex}_${shortOrgan}`);
 
-    return ctx.dispatch(new SetOrgan(organId));
+    return ctx.dispatch(new SetSex(sex));
   }
 
   /**
@@ -100,7 +102,19 @@ export class SpatialSearchUiState {
     if (organId !== undefined && !this.organValidForSex(organId, sex)) {
       organId = undefined;
     }
-    return ctx.dispatch(new SetOrgan(organId));
+
+    const filter = this.store.selectSnapshot(DataStateSelectors.filter);
+    const referenceOrgans = this.store.selectSnapshot(SceneState.referenceOrgans);
+
+    return this.dataSource.getOntologyTermOccurences(filter).pipe(
+      take(1),
+      tap((counts: Record<string, number>) => {
+        ctx.patchState({
+          referenceOrgans: referenceOrgans.filter((o) => o.id && !o.disabled && counts[o.id] > 0)
+        });
+        ctx.dispatch(new SetOrgan(organId));
+      })
+    );
   }
 
   /**
@@ -109,7 +123,7 @@ export class SpatialSearchUiState {
   @Action(SetOrgan)
   setOrgan(ctx: StateContext<SpatialSearchUiModel>, { organId }: SetOrgan): Observable<unknown> | void {
     const { sex } = ctx.getState();
-    ctx.setState({ sex, organId });
+    ctx.patchState({ sex, organId });
     const shortOrgan = organId?.split('/').slice(-1)[0];
     this.ga.event('set_organ', 'spatial_search_ui', shortOrgan);
 
