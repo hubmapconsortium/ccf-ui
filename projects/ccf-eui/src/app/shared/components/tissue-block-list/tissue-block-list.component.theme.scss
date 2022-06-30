@@ -11,8 +11,14 @@
     background-color: mat.get-color-from-palette($background, modal);
     color: map-get($foreground, text);
 
-    .title {
-      color: mat.get-color-from-palette($accent);
+    .tissue-block-header {
+      .title {
+        color: mat.get-color-from-palette($accent);
+      }
+
+      .info {
+        color: map-get($foreground, text);
+      }
     }
   }
 }
