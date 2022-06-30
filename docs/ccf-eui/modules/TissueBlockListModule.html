@@ -162,13 +162,15 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
 
 import { TissueBlockListComponent } from &#x27;./tissue-block-list.component&#x27;;
 
 @NgModule({
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ],
   declarations: [TissueBlockListComponent],
   exports: [TissueBlockListComponent]

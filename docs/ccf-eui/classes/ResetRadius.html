@@ -131,7 +131,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.actions.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.actions.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -150,7 +150,13 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class SetSex {
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
+
+export class StartSpatialSearchFlow {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Start the Spatial Search flow&#x27;;
+}
+
+export class SetSex {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Set sex&#x27;;
 
   constructor(readonly sex: &#x27;male&#x27; | &#x27;female&#x27;) {}
@@ -166,6 +172,12 @@ export class SetPosition {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Set position&#x27;;
 
   constructor(readonly position: { x: number; y: number; z: number }) {}
+}
+
+export class MoveToNode {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Start moving the position to a scene node&#x27;;
+
+  constructor(readonly node: SpatialSceneNode) {}
 }
 
 export class ResetPosition {

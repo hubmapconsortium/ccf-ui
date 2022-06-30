@@ -18,13 +18,13 @@
 <title>cluster_SpatialSearchUiModule_declarations</title>
 <polygon fill="none" stroke="black" points="468,-40.8 468,-92.8 656,-92.8 656,-40.8 468,-40.8"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_SpatialSearchUiModule_exports</title>
-<polygon fill="none" stroke="black" points="227,-170.8 227,-222.8 419,-222.8 419,-170.8 227,-170.8"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_SpatialSearchUiModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 460,-92.8 460,-40.8 16,-40.8"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_SpatialSearchUiModule_exports</title>
+<polygon fill="none" stroke="black" points="227,-170.8 227,-222.8 419,-222.8 419,-170.8 227,-170.8"/>
 </g>
 <!-- SpatialSearchUiComponent -->
 <g id="node1" class="node">
