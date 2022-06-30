@@ -1,6 +1,9 @@
 import { Immutable } from '@angular-ru/common/typings';
+import { NgModule } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsLoggerPlugin, NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
@@ -9,6 +12,7 @@ import { Shallow } from 'shallow-render';
 
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
+import { StoreModule } from './core/store/store.module';
 import { OntologySelection } from './core/models/ontology-selection';
 import { ThemingService } from './core/services/theming/theming.service';
 import { DataState } from './core/store/data/data.state';
@@ -18,6 +22,9 @@ import { FiltersPopoverComponent } from './modules/filters/filters-popover/filte
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
 
+@NgModule()
+class EmptyModule { }
+
 describe('AppComponent', () => {
   let shallow: Shallow<AppComponent>;
   let left: jasmine.SpyObj<DrawerComponent>;
@@ -26,13 +33,17 @@ describe('AppComponent', () => {
   const testFilter = { sex: 'Both', ageRange: [5, 99], bmiRange: [30, 80] };
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [NgxsModule.forRoot([], {})]
+    });
+
     const mockConsentService = jasmine.createSpyObj<ConsentService>(['setConsent']);
     left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
     filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
-      .import(NgxsModule.forRoot([], {}))
+      .replaceModule(StoreModule, EmptyModule)
       .mock(ListResultsState, {
         listResults$: of([])
       })
