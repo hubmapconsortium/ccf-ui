@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .line {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
