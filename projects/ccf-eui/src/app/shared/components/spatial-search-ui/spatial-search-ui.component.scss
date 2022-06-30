@@ -36,7 +36,7 @@
   .content {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 3.5rem);
 
     .button {
       border-width: 1px;
@@ -56,7 +56,6 @@
       display: flex;
       flex-direction: column;
       margin-right: 2rem;
-      margin-bottom: 0.5rem;
       grid-gap: 1rem;
       gap: 1rem;
       width: 25rem;
@@ -126,7 +125,6 @@
     .spatial-search-scene {
       display: flex;
       width: calc(100% - 25rem);
-      height: calc(100% - 0.5rem);
       background-color: black;
       border-bottom-left-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
@@ -134,12 +132,14 @@
       border-top-left-radius: .5rem;
 
       .primary-scene-wrapper {
-        display: block;
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        height: calc(100% - 4rem);
+        height: 100%;
 
         .primary-scene {
           flex: auto;
+          overflow: hidden;
         }
 
         .body-ui-hint {
