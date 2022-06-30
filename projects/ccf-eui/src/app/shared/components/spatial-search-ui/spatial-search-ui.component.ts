@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { SpatialSceneNode } from 'ccf-body-ui';
+import { TissueBlockResult } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
 import { Position, RadiusSettings, TermResult } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
@@ -12,6 +14,12 @@ import { Position, RadiusSettings, TermResult } from '../../../core/store/spatia
 export class SpatialSearchUiComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-ui';
 
+  @Input() readonly scene: SpatialSceneNode[];
+
+  @Input() readonly sceneBounds: Position;
+
+  @Input() readonly sceneTarget: [ number, number, number ];
+
   @Input() readonly sex: string;
 
   @Input() readonly referenceOrgan: OrganInfo;
@@ -23,6 +31,8 @@ export class SpatialSearchUiComponent {
   @Input() readonly defaultPosition: Position;
 
   @Input() readonly position: Position;
+
+  @Input() readonly tissueBlocks: TissueBlockResult[];
 
   @Input() readonly anatomicalStructures: TermResult[];
 
@@ -43,4 +53,6 @@ export class SpatialSearchUiComponent {
   @Output() readonly editReferenceOrganClicked = new EventEmitter();
 
   @Output() readonly infoClicked = new EventEmitter();
+
+  @Output() readonly nodeClicked = new EventEmitter<SpatialSceneNode>();
 }

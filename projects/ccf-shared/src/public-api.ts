@@ -28,10 +28,6 @@ export * from './lib/components/info/info-button/info-button.component';
 export * from './lib/components/info/info-button/info-button.service';
 
 export * from './lib/components/call-to-action/call-to-action.module';
-
-
-
-
 export * from './lib/components/call-to-action/call-to-action.component';
 
 export * from './lib/directives/numbers-only/numbers-only.module';
@@ -62,3 +58,6 @@ export * from './lib/services/local-storage/local-storage.service';
 
 export * from './lib/components/spatial-search-list/spatial-search-list.component';
 export * from './lib/components/spatial-search-list/spatial-search-list.module';
+
+export * from './lib/components/xyz-position/xyz-position.component';
+export * from './lib/components/xyz-position/xyz-position.module';

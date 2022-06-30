@@ -1,3 +1,5 @@
+import { SpatialSceneNode } from 'ccf-body-ui';
+
 export class SetSex {
   static readonly type = '[SpatialSearchUi] Set sex';
 
@@ -14,6 +16,12 @@ export class SetPosition {
   static readonly type = '[SpatialSearchUi] Set position';
 
   constructor(readonly position: { x: number; y: number; z: number }) {}
+}
+
+export class MoveToNode {
+  static readonly type = '[SpatialSearchUi] Start moving the position to a scene node';
+
+  constructor(readonly node: SpatialSceneNode) {}
 }
 
 export class ResetPosition {

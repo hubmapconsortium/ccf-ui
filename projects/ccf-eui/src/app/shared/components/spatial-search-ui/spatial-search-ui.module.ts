@@ -1,23 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatButtonModule } from '@angular/material/button';
-import { InfoButtonModule } from 'ccf-shared';
-import { TissueBlockListModule } from '../tissue-block-list/tissue-block-list.module';
+import { BodyUiModule, InfoButtonModule, XYZPositionModule } from 'ccf-shared';
+import { SpatialSearchKeyboardUIBehaviorModule } from '../spatial-search-keyboard-ui-behavior/spatial-search-keyboard-ui-behavior.module';
 
+import { TissueBlockListModule } from '../tissue-block-list/tissue-block-list.module';
 import { SpatialSearchUiComponent } from './spatial-search-ui.component';
 import { TermOccurrenceListModule } from '../term-occurence-list/term-occurrence.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    BodyUiModule,
+    XYZPositionModule,
+    TissueBlockListModule,
+    SpatialSearchKeyboardUIBehaviorModule,
     MatIconModule,
     MatSliderModule,
     TermOccurrenceListModule,
     MatButtonModule,
-    InfoButtonModule,
-    TissueBlockListModule
+    InfoButtonModule
   ],
   declarations: [SpatialSearchUiComponent],
   exports: [SpatialSearchUiComponent]

@@ -61,23 +61,35 @@ export class SpatialSearchUiSelectors {
     return state.radiusSettings ?? { min: 0, max: 0, defaultValue: 0 };
   }
 
-  @Selector([SpatialSearchUiState, SpatialSearchUiState.organEntity])
-  static scene(state: SpatialSearchUiModel, organEntity: SpatialEntity): SpatialSceneNode[] {
+  @Selector([SpatialSearchUiState, SpatialSearchUiState.organEntity, SpatialSearchUiSelectors.position, SpatialSearchUiSelectors.radius])
+  static scene(state: SpatialSearchUiModel, organEntity: SpatialEntity, position: Position, radius: number): SpatialSceneNode[] {
     const sphere = getProbingSphereScene(organEntity, {
-      x: state.position?.x ?? 0,
-      y: state.position?.y ?? 0,
-      z: state.position?.z ?? 0,
-      radius: state.radius ?? 0,
-      target: organEntity['@id']
+      ...position, radius, target: organEntity['@id']
     });
     const collisions = new Set((state.tissueBlocks ?? []).map(block => block.spatialEntityId));
     const organScene = (state.organScene ?? []).map(s => {
       if (collisions.has(s['@id'])) {
-        s = { ...s, color: [0, 255, 0, 0.9*255] };
+        s = { ...s, color: [41, 121, 255, 0.9*255] };
       }
       return s;
     });
     return organScene.concat(sphere);
+  }
+
+  @Selector([SpatialSearchUiState.organEntity])
+  static sceneBounds(organEntity: SpatialEntity): Position {
+    const { x_dimension: x, y_dimension: y, z_dimension: z } = organEntity;
+    return {
+      x: x / 1000 * 1.25,
+      y: y / 1000 * 1.25,
+      z: z / 1000 * 1.25
+    };
+  }
+
+  @Selector([SpatialSearchUiState.organEntity])
+  static sceneTarget(organEntity: SpatialEntity): [ number, number, number] {
+    const { x_dimension: x, y_dimension: y, z_dimension: z } = organEntity;
+    return [ x / 1000 / 2, y / 1000 / 2, z / 1000 / 2 ];
   }
 
   @Selector([SpatialSearchUiState])
@@ -96,7 +108,7 @@ export class SpatialSearchUiSelectors {
   }
 
   private static getTermCounts(counts: Record<string, number> | undefined, tree: OntologyTreeModel): TermResult[] {
-    return Object.entries(counts ?? {}).map(([term, count]) => ({
+    return Object.entries(counts ?? {}).filter(([_, count]) => count > 0).map(([term, count]) => ({
       '@id': term,
       label: tree.nodes[term]?.label ?? term.split('/').slice(-1)[0],
       count

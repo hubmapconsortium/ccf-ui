@@ -189,6 +189,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     if (this.bounds) {
       this.zoomToBounds(this.bounds);
     }
+    if (this.target) {
+      this.bodyUI.setTarget(this.target);
+    }
     this.subscriptions = [
       this.bodyUI.sceneRotation$.subscribe((rotation) => this.rotationChange.next(rotation)),
       this.bodyUI.nodeDrag$.subscribe((event) => this.nodeDrag.emit(event)),

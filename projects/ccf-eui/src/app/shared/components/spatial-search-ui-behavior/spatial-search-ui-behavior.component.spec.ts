@@ -1,7 +1,8 @@
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { NgxsModule, Store } from '@ngxs/store';
 import { Shallow } from 'shallow-render';
 
-import { SpatialSearchUiBehaviorComponent, SearchConfigData } from './spatial-search-ui-behavior.component';
+import { SpatialSearchUiBehaviorComponent } from './spatial-search-ui-behavior.component';
 import { SpatialSearchUiBehaviorModule } from './spatial-search-ui-behavior.module';
 
 function wait(duration: number): Promise<void> {
@@ -10,24 +11,18 @@ function wait(duration: number): Promise<void> {
   });
 }
 
-const configData: SearchConfigData = {
-  sex: 'male',
-  organ: { name: 'Organ', src: '', organ: 'organ' },
-  spatialSearch: { x: 0, y: 0, z: 0, radius: 100, target: '' },
-  sliderSettings: [5, 50]
-};
-
 describe('SpatialSearchUiBehaviorComponent', () => {
   let shallow: Shallow<SpatialSearchUiBehaviorComponent>;
 
   beforeEach(() => {
     shallow = new Shallow(SpatialSearchUiBehaviorComponent, SpatialSearchUiBehaviorModule)
-      .mock(MatDialogRef, { close(): void { /* Empty */ } })
-      .provide({ provide: MAT_DIALOG_DATA, useValue: configData });
+      .import(NgxsModule.forRoot())
+      .provideMock(Store)
+      .mock(MatDialogRef, { close(): void { /* Empty */ } });
   });
 
   it('should close the dialog when the close() method is called', async () => {
-    const { instance, get } = await shallow.mock(MAT_DIALOG_DATA, configData).render();
+    const { instance, get } = await shallow.render();
     const ref = get(MatDialogRef);
     instance.close();
     await wait(250);
