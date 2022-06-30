@@ -45,3 +45,13 @@ export class ResetRadius {
 export class UpdateSpatialSearch {
   static readonly type = '[SpatialSearchUi] Update spatial search data';
 }
+
+export class GenerateSpatialSearch {
+  static readonly type = '[SpatialSearchUi] Generate and add a spatial search';
+}
+
+export class SetExecuteSearchOnGenerate {
+  static readonly type = '[SpatialSearchUi] Set execute search on generate';
+
+  constructor(readonly execute = true) { }
+}

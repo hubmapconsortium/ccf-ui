@@ -1,16 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
 import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Store } from '@ngxs/store';
-import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
+import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, SpatialSearch, TissueBlockResult } from 'ccf-database';
 import { DataSourceService, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { forkJoin, Observable } from 'rxjs';
 import { debounceTime, mergeMap, take, tap } from 'rxjs/operators';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
+import { UpdateFilter } from '../data/data.actions';
 import { DataStateSelectors } from '../data/data.selectors';
 import { SceneState } from '../scene/scene.state';
-import { MoveToNode, ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, StartSpatialSearchFlow, UpdateSpatialSearch } from './spatial-search-ui.actions';
+import { AddSearch } from '../spatial-search-filter/spatial-search-filter.actions';
+import { SpatialSearchFilterSelectors } from '../spatial-search-filter/spatial-search-filter.selectors';
+import {
+  GenerateSpatialSearch,
+  MoveToNode,
+  ResetPosition,
+  ResetRadius,
+  SetExecuteSearchOnGenerate,
+  SetOrgan,
+  SetPosition,
+  SetRadius,
+  SetSex,
+  StartSpatialSearchFlow,
+  UpdateSpatialSearch,
+} from './spatial-search-ui.actions';
 
 
 export interface Position {
@@ -47,6 +62,8 @@ export interface SpatialSearchUiModel {
   tissueBlocks?: TissueBlockResult[];
   anatomicalStructures?: Record<string, number>;
   cellTypes?: Record<string, number>;
+
+  executeSearchOnGeneration: boolean;
 }
 
 class ReallyUpdateSpatialSearch {
@@ -57,7 +74,8 @@ class ReallyUpdateSpatialSearch {
 @State<SpatialSearchUiModel>({
   name: 'spatialSearchUi',
   defaults: {
-    sex: 'female'
+    sex: 'female',
+    executeSearchOnGeneration: true
   }
 })
 @Injectable()
@@ -241,6 +259,48 @@ export class SpatialSearchUiState {
         tap((data: Partial<SpatialSearchUiModel>) => ctx.patchState(data))
       );
     }
+  }
+
+  /**
+   * Generates and adds a new spatial search then resets the ui state
+   */
+  @Action(GenerateSpatialSearch)
+  generateSpatialSearch(ctx: StateContext<SpatialSearchUiModel>): Observable<unknown> | void {
+    const { position, radius, sex, organId, referenceOrgans = [], executeSearchOnGeneration } = ctx.getState();
+    const organ = this.store.selectSnapshot(SpatialSearchUiState.organEntity);
+    const info = referenceOrgans.find(item => item.id === organId);
+    // const { spatialSearches = [] } = this.store.selectSnapshot(DataStateSelectors.filter);
+
+    if (position && radius && organ?.representation_of && info) {
+      const search: SpatialSearch = {
+        ...position,
+        radius,
+        target: organ['@id']
+      };
+      const actions: unknown[] = [new AddSearch(sex, info.name, search)];
+
+      if (executeSearchOnGeneration) {
+        const searches = this.store.selectSnapshot(SpatialSearchFilterSelectors.selectedSearches);
+        actions.push(new UpdateFilter({
+          spatialSearches: searches.concat(search)
+        }));
+      }
+
+      this.ga.event('generate_search', 'spatial_search_ui');
+      return ctx.dispatch(actions).pipe(
+        tap(() => ctx.patchState({
+          sex: 'female',
+          organId: undefined
+        }))
+      );
+    }
+  }
+
+  @Action(SetExecuteSearchOnGenerate)
+  setExecuteSearchOnGenerate(ctx: StateContext<SpatialSearchUiModel>, { execute }: SetExecuteSearchOnGenerate): void {
+    ctx.patchState({
+      executeSearchOnGeneration: execute
+    });
   }
 
   /**
