@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Matrix4 } from '@math.gl/core';
 import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, Subscription } from 'rxjs';
 import { debounceTime, mergeMap, take, tap } from 'rxjs/operators';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 import { DataStateSelectors } from '../data/data.selectors';
 import { SceneState } from '../scene/scene.state';
-import { ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
+import { MoveToNode, ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
 
 
 export interface Position {
@@ -154,6 +155,15 @@ export class SpatialSearchUiState {
 
     const { x, y, z } = defaultPosition ?? { x: 0, y: 0, z: 0 };
     this.ga.event('reset_position', 'spatial_search_ui', `${x}_${y}_${z}`);
+  }
+
+  @Action(MoveToNode)
+  moveToNode(ctx: StateContext<SpatialSearchUiModel>, { node }: MoveToNode): Observable<unknown> | void {
+    const matrix = new Matrix4(node.transformMatrix);
+    const [x, y, z] = matrix.getTranslation().map(n => n * 1000);
+    const position: Position = { x, y, z };
+
+    return ctx.dispatch(new SetPosition(position));
   }
 
   /**

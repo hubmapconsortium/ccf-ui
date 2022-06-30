@@ -7,7 +7,7 @@ import { InfoButtonService, InfoDialogComponent, OrganInfo, PanelData } from 'cc
 import { Observable, Subscription } from 'rxjs';
 
 import { actionAsFn } from '../../../core/store/action-as-fn';
-import { SetPosition, SetRadius, ResetRadius, ResetPosition } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
+import { SetPosition, SetRadius, ResetRadius, ResetPosition, MoveToNode } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
 import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 import { Position, RadiusSettings, TermResult } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 import { SpatialSearchConfigBehaviorComponent } from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
@@ -63,6 +63,9 @@ export class SpatialSearchUiBehaviorComponent {
 
   @Dispatch()
   readonly resetPosition = actionAsFn(ResetPosition);
+
+  @Dispatch()
+  readonly moveToNode = actionAsFn(MoveToNode);
 
   @Dispatch()
   readonly updateRadius = actionAsFn(SetRadius);
