@@ -12,7 +12,7 @@
                                (filtersChange)="data.updateFilter($event)" [technologyFilters]="data.technologyFilterData$ | async"
                                [providerFilters]="data.providerFilterData$ | async" [spatialSearchFilters]="selectableSearches$ | async"
                                (spatialSearchSelected)="setSelectedSearches($event)"
-                               (spatialSearchRemoved)="removeSpatialSearch($event.id)" #filterbox>
+                               (spatialSearchRemoved)="removeSpatialSearch($event)" #filterbox>
           </ccf-filters-popover>
 
           <div class="filter-text">
