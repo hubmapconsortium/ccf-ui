@@ -1,5 +1,8 @@
 <div class="header">
-  <div class="title">{{termList.length}} Anatomical Structures</div>
+  <div class="title">{{termList.length}} {{title}} </div>
+  <button class="info" mat-icon-button>
+    <mat-icon matTooltip={{toolTipText}} matTooltipPosition="right">info</mat-icon>
+  </button>
 </div>
 
 <div class="term-list">

@@ -11,7 +11,18 @@ import { TermResult } from '../../../core/store/spatial-search-ui/spatial-search
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TermOccurrenceListComponent {
-
+  /**
+   * array that contains the terms and their counts
+   */
   @Input() termList: TermResult[];
 
+  /**
+   * Holds title for section
+   */
+  @Input() title: string;
+
+  /**
+   * Text to be included in the tool tip
+   */
+  @Input() toolTipText: string;
 }
