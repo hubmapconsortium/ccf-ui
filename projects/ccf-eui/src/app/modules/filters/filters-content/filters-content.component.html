@@ -20,7 +20,8 @@
 
 <div *ngIf="spatialSearchFilters.length > 0" class="filter spatial-locations" [class.hidden]="hidden">
   <ccf-spatial-search-list label="Spatial Locations" [items]="spatialSearchFilters"
-    (selectionChanged)="updateFilter($event, 'spatialSearches')" (itemRemoved)="spatialSearchRemoved.emit($event)">
+    (selectionChanged)="updateSearchSelection($event)"
+    (itemRemoved)="spatialSearchRemoved.emit($event.id)">
   </ccf-spatial-search-list>
 </div>
 
