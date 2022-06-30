@@ -80,6 +80,22 @@ export class SpatialSearchUiSelectors {
     return organScene.concat(sphere);
   }
 
+  @Selector([SpatialSearchUiState.organEntity])
+  static sceneBounds(organEntity: SpatialEntity): Position {
+    const { x_dimension: x, y_dimension: y, z_dimension: z } = organEntity;
+    return {
+      x: x / 1000 * 1.25,
+      y: y / 1000 * 1.25,
+      z: z / 1000 * 1.25
+    };
+  }
+
+  @Selector([SpatialSearchUiState.organEntity])
+  static sceneTarget(organEntity: SpatialEntity): [ number, number, number] {
+    const { x_dimension: x, y_dimension: y, z_dimension: z } = organEntity;
+    return [ x / 1000 / 2, y / 1000 / 2, z / 1000 / 2 ];
+  }
+
   @Selector([SpatialSearchUiState])
   static tissueBlocks(state: SpatialSearchUiModel): TissueBlockResult[] {
     return state.tissueBlocks ?? [];

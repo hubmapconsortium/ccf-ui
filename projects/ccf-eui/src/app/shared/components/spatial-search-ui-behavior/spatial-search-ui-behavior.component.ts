@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
+import { SpatialSceneNode } from 'ccf-database';
 import { InfoButtonService, InfoDialogComponent, OrganInfo, PanelData } from 'ccf-shared';
 import { Observable, Subscription } from 'rxjs';
 
@@ -20,6 +21,15 @@ import { SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpatialSearchUiBehaviorComponent {
+
+  @Select(SpatialSearchUiSelectors.scene)
+  readonly scene$: Observable<SpatialSceneNode[]>;
+
+  @Select(SpatialSearchUiSelectors.sceneBounds)
+  readonly sceneBounds$: Observable<Position>;
+
+  @Select(SpatialSearchUiSelectors.sceneTarget)
+  readonly sceneTarget$: Observable<Position>;
 
   @Select(SpatialSearchUiSelectors.sex)
   readonly sex$: Observable<Sex>;

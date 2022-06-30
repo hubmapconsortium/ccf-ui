@@ -47,6 +47,15 @@
     <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
   <div class="spatial-search-scene">
-    <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
+    <div class="primary-scene-wrapper">
+      <div class="body-ui-hint">Use the keyboard or click a Tissue Block to move the Probing Sphere</div>
+      <ccf-body-ui class="primary-scene" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"
+        (nodeClick)="nodeClicked.emit($event?.node)"
+        (rotationChange)="minimap.rotation = $event[0]; minimap.rotationX = $event[1]"></ccf-body-ui>
+    </div>
+    <div class="sidebar">
+      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"></ccf-body-ui>
+      <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
+    </div>
   </div>
 </div>
