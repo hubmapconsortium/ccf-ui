@@ -703,7 +703,7 @@ export class SpatialSearchFilterState {
     const capitalize &#x3D; (value: string) &#x3D;&gt; value.slice(0, 1).toUpperCase() + value.slice(1);
     const { x, y, z, radius } &#x3D; search;
 
-    return &#x60;${capitalize(sex)}, ${capitalize(name)}, ${radius} mm, X: ${x}, Y: ${y}, Z: ${z}&#x60;;
+    return &#x60;${capitalize(sex)}, ${capitalize(name)}, ${radius.toFixed(1)} mm, X: ${x.toFixed(1)}, Y: ${y.toFixed(1)}, Z: ${z.toFixed(1)}&#x60;;
   }
 }
 </code></pre>

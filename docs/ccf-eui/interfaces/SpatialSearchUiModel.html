@@ -697,7 +697,7 @@ import {
   SetRadius,
   SetSex,
   StartSpatialSearchFlow,
-  UpdateSpatialSearch,
+  UpdateSpatialSearch
 } from &#x27;./spatial-search-ui.actions&#x27;;
 
 
@@ -794,7 +794,10 @@ export class SpatialSearchUiState {
       organId &#x3D; undefined;
     }
 
-    const filter &#x3D; this.store.selectSnapshot(DataStateSelectors.filter);
+    const filter &#x3D; {
+      ...this.store.selectSnapshot(DataStateSelectors.filter),
+      spatialSearches: []
+    };
     const referenceOrgans &#x3D; this.store.selectSnapshot(SceneState.referenceOrgans);
 
     return this.dataSource.getOntologyTermOccurences(filter).pipe(
@@ -874,7 +877,7 @@ export class SpatialSearchUiState {
   @Action(MoveToNode)
   moveToNode(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { node }: MoveToNode): Observable&lt;unknown&gt; | void {
     const matrix &#x3D; new Matrix4(node.transformMatrix);
-    const [x, y, z] &#x3D; matrix.getTranslation().map(n &#x3D;&gt; n * 1000);
+    const [x, y, z] &#x3D; matrix.getTranslation().map(n &#x3D;&gt; Math.round(n * 1000));
     const position: Position &#x3D; { x, y, z };
 
     return ctx.dispatch(new SetPosition(position));
