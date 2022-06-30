@@ -84,6 +84,7 @@ export class FiltersContentComponent {
    * Emits the current filters when the apply button is clicked
    */
   applyButtonClick(): void {
+    this.updateSearchSelection(this.spatialSearchFilters.filter(item => item.selected));
     this.ga.event('filters_applied', 'filter_content');
     this.applyFilters.emit(this.filters);
   }
