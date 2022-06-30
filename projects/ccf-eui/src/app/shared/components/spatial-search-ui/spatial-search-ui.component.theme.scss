@@ -43,6 +43,8 @@
       }
 
       .info, .close {
+        color: mat.get-color-from-palette($foreground, main);
+
         &:hover {
           background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
         }
