@@ -83,10 +83,11 @@ export class SpatialSearchUiSelectors {
   @Selector([SpatialSearchUiState.organEntity])
   static sceneBounds(organEntity: SpatialEntity): Position {
     const { x_dimension: x, y_dimension: y, z_dimension: z } = organEntity;
+    const margin = Math.max(x, y, z) * 0.42;
     return {
-      x: x / 1000 * 1.25,
-      y: y / 1000 * 1.25,
-      z: z / 1000 * 1.25
+      x: (margin + x) / 1000,
+      y: (margin + y) / 1000,
+      z: (margin + z) / 1000
     };
   }
 
