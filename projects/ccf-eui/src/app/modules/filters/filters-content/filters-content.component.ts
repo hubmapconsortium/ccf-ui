@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
@@ -14,7 +14,7 @@ import { SpatialSearchFilterItem } from '../../../core/store/spatial-search-filt
   styleUrls: ['./filters-content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FiltersContentComponent {
+export class FiltersContentComponent implements OnChanges {
 
   /**
    * Determines if the filters are visible
@@ -67,6 +67,21 @@ export class FiltersContentComponent {
    * @param ga Analytics service
    */
   constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
+   * Updates sex filter to Both if there is a male and female spatial search, or Male if there are only female spatial searches and vice versa
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('spatialSearchFilters' in changes) {
+      if (this.spatialSearchFilters.find(search => search.sex === 'female') && this.spatialSearchFilters.find(search => search.sex === 'male')) {
+        this.updateFilter('Both', 'sex');
+      } else if (this.spatialSearchFilters.find(search => search.sex === 'female') === undefined) {
+        this.updateFilter('Male', 'sex');
+      } else if (this.spatialSearchFilters.find(search => search.sex === 'male') === undefined) {
+        this.updateFilter('Female', 'sex');
+      }
+    }
+  }
 
   /**
    * Updates the filter object with a new key/value
