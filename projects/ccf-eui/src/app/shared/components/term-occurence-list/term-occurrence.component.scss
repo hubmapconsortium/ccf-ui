@@ -1,4 +1,5 @@
-:host {    
+:host {
+  padding-top: 1rem;    
   .header {
     display: flex;
     justify-content: space-between;
@@ -9,6 +10,23 @@
     }
     .counter {
       font-size: 1rem;
+    }
+
+    .mat-icon {
+      line-height: 1.4rem;
+    }
+  }
+  .term-list {
+    height: 40%;
+    height: 14rem;
+    overflow: auto;
+    padding-left: 3rem;
+    font-size: 1rem;
+    .term-bloc {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      overflow: auto;
     }
   }
 

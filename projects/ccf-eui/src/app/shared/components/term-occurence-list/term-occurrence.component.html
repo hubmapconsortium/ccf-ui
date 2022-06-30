@@ -1,6 +1,5 @@
 <div class="header">
-  <div class="title">Anatomical Structures</div>
-  <div class="counter">{{termList.length}}</div>
+  <div class="title">{{termList.length}} Anatomical Structures</div>
 </div>
 
 <div class="term-list">
@@ -10,11 +9,5 @@
       <div class="term-line">{{ term.label }}</div>
       <div class="term-line">{{ term.count }}</div>
     </div>
-  </div>
-</div>
-
-<div>
-  <div *ngFor="let term in termList">
-    {{term.term}}  {{term.count}} 
   </div>
 </div>

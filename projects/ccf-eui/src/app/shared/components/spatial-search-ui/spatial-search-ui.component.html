@@ -41,15 +41,11 @@
     </div>
     <div class="results">
       <ccf-tissue-block-list class="tissue-block-info"></ccf-tissue-block-list>
-      <div class="anatomical-structures-info"> Anatomical Structures goes here {{ anatomicalStructures?.length }}</div>
       <ccf-term-occurrence-list [termList]="anatomicalStructures"> </ccf-term-occurrence-list>
-      <div class="cell-type-info">Predicted Cell Types goes here {{ cellTypes?.length }}</div>
       
-      <ccf-tissue-block-list class="tissue-block-info" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>
-     
-     
-     
-      <div class="anatomical-structures-info">
+      <ccf-term-occurrence-list class="cell-type-info tissue-block-info" [termList]="cellTypes"></ccf-term-occurrence-list>
+      
+      <!-- <div class="anatomical-structures-info">
         <div><b>{{ anatomicalStructures?.length ?? 0 }} Anatomical Structures</b></div>
         <div *ngFor="let term of anatomicalStructures?.slice(0, 3) ?? []">
           {{ term.label }} ({{ term.count }})
@@ -60,7 +56,7 @@
         <div *ngFor="let term of cellTypes?.slice(0, 3) ?? []">
           {{ term.label }} ({{ term.count }})
         </div>
-      </div>
+      </div> -->
     </div>
     <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
