@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
+import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { forkJoin, Observable } from 'rxjs';
-import { mergeMap, take, tap } from 'rxjs/operators';
+import { debounceTime, mergeMap, take, tap } from 'rxjs/operators';
 
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 import { DataStateSelectors } from '../data/data.selectors';
-import { DataState } from '../data/data.state';
 import { SceneState } from '../scene/scene.state';
 import { ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from './spatial-search-ui.actions';
 
@@ -47,6 +46,10 @@ export interface SpatialSearchUiModel {
   cellTypes?: Record<string, number>;
 }
 
+class ReallyUpdateSpatialSearch {
+  static readonly type = '[SpatialSearchUi] Really update spatial search data';
+}
+
 
 @State<SpatialSearchUiModel>({
   name: 'spatialSearchUi',
@@ -65,8 +68,15 @@ export class SpatialSearchUiState {
   constructor(
     private readonly dataSource: DataSourceService,
     private readonly store: Store,
+    actions$: Actions,
     private readonly ga: GoogleAnalyticsService
-  ) { }
+  ) {
+    actions$.pipe(
+      ofActionDispatched(UpdateSpatialSearch),
+      debounceTime(2000),
+      tap(() => store.dispatch(ReallyUpdateSpatialSearch))
+    ).subscribe();
+  }
 
   /**
    * Updates sex in the SpatialSearchUI and sets selected organ to undefined if not valid for the sex
@@ -169,7 +179,7 @@ export class SpatialSearchUiState {
   /**
    * Updates the spatial search data as the organ, position, and radius changes
    */
-  @Action(UpdateSpatialSearch)
+  @Action(ReallyUpdateSpatialSearch)
   updateSpatialSearch(ctx: StateContext<SpatialSearchUiModel>): Observable<unknown> | void {
     const { position, radius } = ctx.getState();
     const organ = this.store.selectSnapshot(SpatialSearchUiState.organEntity);
