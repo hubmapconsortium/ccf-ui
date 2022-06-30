@@ -1,4 +1,4 @@
-import { Euler, Matrix3, toRadians } from '@math.gl/core';
+import { Euler } from '@math.gl/core';
 import { OrientedBoundingBox } from '@math.gl/culling';
 import { Store } from 'triple-store-utils';
 
@@ -25,7 +25,7 @@ export function getOrientedBoundingBox(store: Store, graph: CCFSpatialGraph, sou
   if (matrix) {
     const center = matrix.getTranslation();
     const halfSize = getSpatialEntityDimensions(store, sourceIri).map(n => n / 1000 / 2);
-    const quaternion = new Euler().fromRotationMatrix(matrix, Euler.XYZ).toQuaternion();
+    const quaternion = new Euler().fromRotationMatrix(matrix, Euler.XYZ).toQuaternion().normalize().calculateW();
     result = new OrientedBoundingBox().fromCenterHalfSizeQuaternion(center, halfSize, quaternion);
   }
   return result;
