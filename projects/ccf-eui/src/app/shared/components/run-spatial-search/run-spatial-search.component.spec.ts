@@ -10,10 +10,8 @@ describe('RunSpatialSearchComponent', () => {
     shallow = new Shallow(RunSpatialSearchComponent, RunSpatialSearchModule);
   });
 
-  it('should emit buttonClick when button is clicked', async () => {
-    const { find, outputs } = await shallow.render({ bind: {} });
-    const button = find('.run-spatial-search-button');
-    button.triggerEventHandler('click', {});
-    expect(outputs.buttonClick.emit).toHaveBeenCalled();
+  it('creates', async () => {
+    const { instance } = await shallow.render();
+    expect(instance).toBeDefined();
   });
 });

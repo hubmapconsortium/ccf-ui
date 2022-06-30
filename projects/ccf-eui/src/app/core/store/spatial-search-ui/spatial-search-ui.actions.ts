@@ -1,5 +1,9 @@
 import { SpatialSceneNode } from 'ccf-body-ui';
 
+export class StartSpatialSearchFlow {
+  static readonly type = '[SpatialSearchUi] Start the Spatial Search flow';
+}
+
 export class SetSex {
   static readonly type = '[SpatialSearchUi] Set sex';
 
