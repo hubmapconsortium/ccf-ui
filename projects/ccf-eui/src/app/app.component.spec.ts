@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxsLoggerPlugin, NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
@@ -12,12 +11,12 @@ import { Shallow } from 'shallow-render';
 
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
-import { StoreModule } from './core/store/store.module';
 import { OntologySelection } from './core/models/ontology-selection';
 import { ThemingService } from './core/services/theming/theming.service';
 import { DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
+import { StoreModule } from './core/store/store.module';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
