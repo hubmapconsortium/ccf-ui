@@ -308,6 +308,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         </ul>
                                     </li>
                             </li>
+                            <li class="link">
+                                <a href="modules/XYZPositionModule.html" data-type="entity-link" >XYZPositionModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-XYZPositionModule-c03b0993607ccc198009c5a45b4bcb8e"' : 'data-target="#xs-components-links-module-XYZPositionModule-c03b0993607ccc198009c5a45b4bcb8e"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-XYZPositionModule-c03b0993607ccc198009c5a45b4bcb8e"' :
+                                            'id="xs-components-links-module-XYZPositionModule-c03b0993607ccc198009c5a45b4bcb8e"' }>
+                                            <li class="link">
+                                                <a href="components/XYZPositionComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >XYZPositionComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
                 </ul>
                 </li>
                     <li class="chapter">

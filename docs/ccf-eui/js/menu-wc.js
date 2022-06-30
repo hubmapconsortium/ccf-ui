@@ -406,13 +406,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SpatialSearchUiModule-94c19acfc906baa1931b78c879d7a951"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-94c19acfc906baa1931b78c879d7a951"' }>
+                                            'data-target="#components-links-module-SpatialSearchUiModule-edc4009df5cdbea60cc6f54ed815b6c2"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-edc4009df5cdbea60cc6f54ed815b6c2"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-94c19acfc906baa1931b78c879d7a951"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-94c19acfc906baa1931b78c879d7a951"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-edc4009df5cdbea60cc6f54ed815b6c2"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-edc4009df5cdbea60cc6f54ed815b6c2"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>

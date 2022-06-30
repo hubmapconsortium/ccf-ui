@@ -14,13 +14,13 @@
 <title>cluster_OntologyExplorationModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 540,-230.8 540,-32.8 8,-32.8"/>
 </g>
-<g id="clust3" class="cluster">
-<title>cluster_OntologyExplorationModule_imports</title>
-<polygon fill="none" stroke="black" points="22,-40.8 22,-92.8 527,-92.8 527,-40.8 22,-40.8"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_OntologyExplorationModule_exports</title>
 <polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 532,-222.8 532,-170.8 16,-170.8"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_OntologyExplorationModule_imports</title>
+<polygon fill="none" stroke="black" points="22,-40.8 22,-92.8 527,-92.8 527,-40.8 22,-40.8"/>
 </g>
 <!-- OntologySearchModule -->
 <g id="node1" class="node">
