@@ -21,6 +21,7 @@
       </div>
       <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>
     </div>
+    <mat-divider></mat-divider>
     <div class="radius-slider">
       <div class="title">Probing Sphere Radius</div>
       <div class="slider-container">
@@ -39,6 +40,7 @@
         <button class="reset-camera button" mat-button (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset Camera View</button>
       </div>
     </div>
+    <mat-divider></mat-divider>
     <div class="results">
       <ccf-tissue-block-list class="tissue-block-info" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>
       <div class="anatomical-structures-info">
@@ -54,7 +56,7 @@
         </div>
       </div>
     </div>
-    <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
+    <button class="run-spatial-search button" [class.disabled]="tissueBlocks.length === 0" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
   <div class="spatial-search-scene">
     <div class="primary-scene-wrapper">

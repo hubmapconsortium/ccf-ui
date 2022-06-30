@@ -88,7 +88,7 @@
     height: 2rem;
     border-width: 1px;
     border-style: solid;
-    border-radius: .125rem;
+    border-radius: .25rem;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
 
     &.disabled {
@@ -102,12 +102,12 @@
   position: absolute;
   top: 2.5rem;
   left: -0.25rem;
-  border-radius: 8px;
-  max-height: 392px;
+  border-radius: 0.5rem;
+  max-height: 24.5rem;
   width: 14rem;
 
   .organ-select-option {
-    height: 56px;
+    height: 3.5rem;
     border-bottom: 1px solid;
   }
 }
