@@ -321,12 +321,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { DataAction, Payload, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
 import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
-import { NgxsOnInit, Selector, State } from &#x27;@ngxs/store&#x27;;
+import { Action, NgxsOnInit, Selector, State } from &#x27;@ngxs/store&#x27;;
 import { bind } from &#x27;bind-decorator&#x27;;
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { DataSourceService } from &#x27;ccf-shared&#x27;;
 import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from &#x27;rxjs&#x27;;
 import { delay, distinct, filter as rxjsFilter, map, pluck, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from &#x27;rxjs/operators&#x27;;
+import { UpdateFilter } from &#x27;./data.actions&#x27;;
 
 
 /** Default values for filters. */
@@ -548,21 +549,21 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
 
   @DataAction()
   updateAnatomicalStructuresTreeModel(@Payload(&#x27;treeModel&#x27;) model: OntologyTreeModel): void {
-    this.patchState({
+    this.ctx.patchState({
       anatomicalStructuresTreeModel: model
     });
   }
 
   @DataAction()
   updateCellTypesTreeModel(@Payload(&#x27;treeModel&#x27;) model: OntologyTreeModel): void {
-    this.patchState({
+    this.ctx.patchState({
       cellTypesTreeModel: model
     });
   }
 
   @DataAction()
   updateStatus(@Payload(&#x27;status&#x27;) status: DatabaseStatus): void {
-    this.patchState({
+    this.ctx.patchState({
       status: status.status,
       statusMessage: status.message
     });
@@ -575,10 +576,15 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
    */
   @DataAction()
   updateFilter(@Payload(&#x27;filter&#x27;) filter: Partial&lt;Filter&gt;): void {
-    this.patchState({
+    this.ctx.patchState({
       // Might need to do a deep compare of current and new filter
       filter: { ...this.getState().filter, ...filter }
     });
+  }
+
+  @Action(UpdateFilter)
+  updateFilterHandler(_ctx: unknown, { filter }: UpdateFilter): void {
+    this.updateFilter(filter);
   }
 
   /**

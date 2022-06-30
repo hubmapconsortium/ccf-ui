@@ -104,6 +104,12 @@
                                         </a>
                                 </li>
                                 <li>
+                                        <a href="#executeSearchOnGeneration" 
+>
+                                            executeSearchOnGeneration
+                                        </a>
+                                </li>
+                                <li>
                                             <span class="modifier">Optional</span>
                                         <a href="#organId" 
 >
@@ -284,6 +290,39 @@
                                             <i>Optional</i>
                                         </td>
                                     </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="executeSearchOnGeneration"></a>
+                                        <span class="name "><b>executeSearchOnGeneration</b>
+                                            <a href="#executeSearchOnGeneration">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>executeSearchOnGeneration:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
 
 
 
@@ -635,16 +674,31 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Matrix4 } from &#x27;@math.gl/core&#x27;;
 import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Store } from &#x27;@ngxs/store&#x27;;
-import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
+import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, SpatialSearch, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { DataSourceService, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 import { forkJoin, Observable } from &#x27;rxjs&#x27;;
 import { debounceTime, mergeMap, take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { Sex } from &#x27;../../../shared/components/spatial-search-config/spatial-search-config.component&#x27;;
+import { UpdateFilter } from &#x27;../data/data.actions&#x27;;
 import { DataStateSelectors } from &#x27;../data/data.selectors&#x27;;
 import { SceneState } from &#x27;../scene/scene.state&#x27;;
-import { MoveToNode, ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, StartSpatialSearchFlow, UpdateSpatialSearch } from &#x27;./spatial-search-ui.actions&#x27;;
+import { AddSearch } from &#x27;../spatial-search-filter/spatial-search-filter.actions&#x27;;
+import { SpatialSearchFilterSelectors } from &#x27;../spatial-search-filter/spatial-search-filter.selectors&#x27;;
+import {
+  GenerateSpatialSearch,
+  MoveToNode,
+  ResetPosition,
+  ResetRadius,
+  SetExecuteSearchOnGenerate,
+  SetOrgan,
+  SetPosition,
+  SetRadius,
+  SetSex,
+  StartSpatialSearchFlow,
+  UpdateSpatialSearch,
+} from &#x27;./spatial-search-ui.actions&#x27;;
 
 
 export interface Position {
@@ -681,6 +735,8 @@ export interface SpatialSearchUiModel {
   tissueBlocks?: TissueBlockResult[];
   anatomicalStructures?: Record&lt;string, number&gt;;
   cellTypes?: Record&lt;string, number&gt;;
+
+  executeSearchOnGeneration: boolean;
 }
 
 class ReallyUpdateSpatialSearch {
@@ -691,7 +747,8 @@ class ReallyUpdateSpatialSearch {
 @State&lt;SpatialSearchUiModel&gt;({
   name: &#x27;spatialSearchUi&#x27;,
   defaults: {
-    sex: &#x27;female&#x27;
+    sex: &#x27;female&#x27;,
+    executeSearchOnGeneration: true
   }
 })
 @Injectable()
@@ -875,6 +932,48 @@ export class SpatialSearchUiState {
         tap((data: Partial&lt;SpatialSearchUiModel&gt;) &#x3D;&gt; ctx.patchState(data))
       );
     }
+  }
+
+  /**
+   * Generates and adds a new spatial search then resets the ui state
+   */
+  @Action(GenerateSpatialSearch)
+  generateSpatialSearch(ctx: StateContext&lt;SpatialSearchUiModel&gt;): Observable&lt;unknown&gt; | void {
+    const { position, radius, sex, organId, referenceOrgans &#x3D; [], executeSearchOnGeneration } &#x3D; ctx.getState();
+    const organ &#x3D; this.store.selectSnapshot(SpatialSearchUiState.organEntity);
+    const info &#x3D; referenceOrgans.find(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; organId);
+    // const { spatialSearches &#x3D; [] } &#x3D; this.store.selectSnapshot(DataStateSelectors.filter);
+
+    if (position &amp;&amp; radius &amp;&amp; organ?.representation_of &amp;&amp; info) {
+      const search: SpatialSearch &#x3D; {
+        ...position,
+        radius,
+        target: organ[&#x27;@id&#x27;]
+      };
+      const actions: unknown[] &#x3D; [new AddSearch(sex, info.name, search)];
+
+      if (executeSearchOnGeneration) {
+        const searches &#x3D; this.store.selectSnapshot(SpatialSearchFilterSelectors.selectedSearches);
+        actions.push(new UpdateFilter({
+          spatialSearches: searches.concat(search)
+        }));
+      }
+
+      this.ga.event(&#x27;generate_search&#x27;, &#x27;spatial_search_ui&#x27;);
+      return ctx.dispatch(actions).pipe(
+        tap(() &#x3D;&gt; ctx.patchState({
+          sex: &#x27;female&#x27;,
+          organId: undefined
+        }))
+      );
+    }
+  }
+
+  @Action(SetExecuteSearchOnGenerate)
+  setExecuteSearchOnGenerate(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { execute }: SetExecuteSearchOnGenerate): void {
+    ctx.patchState({
+      executeSearchOnGeneration: execute
+    });
   }
 
   /**

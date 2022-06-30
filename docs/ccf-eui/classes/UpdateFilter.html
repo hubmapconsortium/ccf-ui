@@ -43,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li >UpdateSpatialSearch</li>
+  <li >UpdateFilter</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,7 +61,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.actions.ts</code>
+            <code>projects/ccf-eui/src/app/core/store/data/data.actions.ts</code>
         </p>
 
 
@@ -99,6 +99,54 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(filter: Partial<Filter>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.actions.ts:4</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>filter</td>
+                                                  
+                                                        <td>
+                                                                    <code>Partial&lt;Filter&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -126,12 +174,12 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;[SpatialSearchUi] Update spatial search data&#x27;</code>
+                        <i>Default value : </i><code>&#x27;[DataState] Update filter&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.actions.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.actions.ts:4</a></div>
                         </td>
                     </tr>
 
@@ -150,62 +198,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Filter } from &#x27;ccf-database&#x27;;
 
-export class StartSpatialSearchFlow {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Start the Spatial Search flow&#x27;;
-}
+export class UpdateFilter {
+  static readonly type &#x3D; &#x27;[DataState] Update filter&#x27;;
 
-export class SetSex {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Set sex&#x27;;
-
-  constructor(readonly sex: &#x27;male&#x27; | &#x27;female&#x27;) {}
-}
-
-export class SetOrgan {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Set organ&#x27;;
-
-  constructor(readonly organId: string | undefined) {}
-}
-
-export class SetPosition {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Set position&#x27;;
-
-  constructor(readonly position: { x: number; y: number; z: number }) {}
-}
-
-export class MoveToNode {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Start moving the position to a scene node&#x27;;
-
-  constructor(readonly node: SpatialSceneNode) {}
-}
-
-export class ResetPosition {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Reset position&#x27;;
-}
-
-export class SetRadius {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Set radius&#x27;;
-
-  constructor(readonly radius: number) {}
-}
-
-export class ResetRadius {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Reset radius&#x27;;
-}
-
-export class UpdateSpatialSearch {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Update spatial search data&#x27;;
-}
-
-export class GenerateSpatialSearch {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Generate and add a spatial search&#x27;;
-}
-
-export class SetExecuteSearchOnGenerate {
-  static readonly type &#x3D; &#x27;[SpatialSearchUi] Set execute search on generate&#x27;;
-
-  constructor(readonly execute &#x3D; true) { }
+  constructor(readonly filter: Partial&lt;Filter&gt;) { }
 }
 </code></pre>
     </div>
@@ -235,7 +233,7 @@ export class SetExecuteSearchOnGenerate {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'UpdateSpatialSearch.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'UpdateFilter.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

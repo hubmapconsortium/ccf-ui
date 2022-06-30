@@ -406,13 +406,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SpatialSearchUiModule-b01493e94001112b33d6cf97c757e9c7"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-b01493e94001112b33d6cf97c757e9c7"' }>
+                                            'data-target="#components-links-module-SpatialSearchUiModule-4f316a144b0801326023778bff6ef738"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-4f316a144b0801326023778bff6ef738"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-b01493e94001112b33d6cf97c757e9c7"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-b01493e94001112b33d6cf97c757e9c7"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-4f316a144b0801326023778bff6ef738"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-4f316a144b0801326023778bff6ef738"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>
@@ -544,6 +544,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/FlatNode.html" data-type="entity-link" >FlatNode</a>
                             </li>
                             <li class="link">
+                                <a href="classes/GenerateSpatialSearch.html" data-type="entity-link" >GenerateSpatialSearch</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/InitializationState.html" data-type="entity-link" >InitializationState</a>
                             </li>
                             <li class="link">
@@ -563,6 +566,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/ResetRadius.html" data-type="entity-link" >ResetRadius</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SetExecuteSearchOnGenerate.html" data-type="entity-link" >SetExecuteSearchOnGenerate</a>
                             </li>
                             <li class="link">
                                 <a href="classes/SetOrgan.html" data-type="entity-link" >SetOrgan</a>
@@ -587,6 +593,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/StartSpatialSearchFlow.html" data-type="entity-link" >StartSpatialSearchFlow</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateFilter.html" data-type="entity-link" >UpdateFilter</a>
                             </li>
                             <li class="link">
                                 <a href="classes/UpdateSpatialSearch.html" data-type="entity-link" >UpdateSpatialSearch</a>

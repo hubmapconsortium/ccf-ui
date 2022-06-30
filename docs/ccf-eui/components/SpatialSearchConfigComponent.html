@@ -509,11 +509,11 @@ export class SpatialSearchConfigComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;header&quot;&gt;
   &lt;div class&#x3D;&quot;header-left&quot;&gt;
     &lt;div class&#x3D;&quot;title&quot;&gt;Configure Spatial Search&lt;/div&gt;
-    &lt;button class&#x3D;&quot;info button&quot; mat-icon-button&gt;
+    &lt;button class&#x3D;&quot;info&quot; mat-icon-button&gt;
       &lt;mat-icon (click)&#x3D;&quot;infoClicked.emit()&quot;&gt;info&lt;/mat-icon&gt;
     &lt;/button&gt;
   &lt;/div&gt;
-  &lt;button class&#x3D;&quot;close button&quot; mat-icon-button&gt;
+  &lt;button class&#x3D;&quot;close&quot; mat-icon-button&gt;
     &lt;mat-icon (click)&#x3D;&quot;closeDialog.emit()&quot;&gt;close&lt;/mat-icon&gt;
   &lt;/button&gt;
 &lt;/div&gt;
@@ -529,9 +529,9 @@ export class SpatialSearchConfigComponent {
 &lt;div class&#x3D;&quot;organ-selector&quot;&gt;
   &lt;div class&#x3D;&quot;label&quot;&gt;Select an organ&lt;/div&gt;
   &lt;mat-form-field class&#x3D;&quot;form-field&quot; appearance&#x3D;&quot;fill&quot;&gt;
-    &lt;mat-label&gt;Organs&lt;/mat-label&gt;
-    &lt;mat-select panelClass&#x3D;&quot;organ-select&quot; [(value)]&#x3D;&quot;selectedOrgan&quot; (selectionChange)&#x3D;&quot;updateOrgan.emit($event.value)&quot;&gt;
-      &lt;mat-option *ngFor&#x3D;&quot;let organ of organs&quot; [value]&#x3D;&quot;organ&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;!selectedOrgan&quot; class&#x3D;&quot;label&quot;&gt;Organs&lt;/div&gt;
+    &lt;mat-select disableOptionCentering&#x3D;&quot;true&quot; panelClass&#x3D;&quot;organ-select&quot; [(value)]&#x3D;&quot;selectedOrgan&quot; (selectionChange)&#x3D;&quot;updateOrgan.emit($event.value)&quot;&gt;
+      &lt;mat-option class&#x3D;&quot;organ-select-option&quot; *ngFor&#x3D;&quot;let organ of organs&quot; [value]&#x3D;&quot;organ&quot;&gt;
         {{organ.name}}
       &lt;/mat-option&gt;
     &lt;/mat-select&gt;
@@ -554,7 +554,6 @@ export class SpatialSearchConfigComponent {
   padding: 2rem;
   gap: 2rem;
   width: 30.5rem;
-  height: 21.5rem;
   box-shadow: 0px 25rem 25rem rgba(0, 0, 0, 0.16);
   border-radius: .25rem;
   font-size: 1rem;
@@ -592,18 +591,38 @@ export class SpatialSearchConfigComponent {
   .sex-toggle {
     display: flex;
 
-    .label, .radio {
+    .label {
       margin-right: 2rem;
+    }
+
+    .radio {
+      margin-right: 4rem;
     }
   }
 
   .organ-selector {
+    .label {
+      height: 0rem;
+    }
+
     ::ng-deep .mat-form-field-wrapper {
-      padding-bottom: 0;
+      padding-bottom: 1rem;
+      padding-top: 3rem;
+      margin-left: 0.5rem;
+      width: 14rem;
+
+      .mat-form-field-infix {
+        padding: 0;
+        border-top: none;
+      }
 
       .mat-form-field-underline {
         bottom: 0rem;
         height: 0.125rem;
+      }
+
+      .mat-select-arrow-wrapper {
+        transform: translatey(0rem);
       }
     }
   }
@@ -618,13 +637,27 @@ export class SpatialSearchConfigComponent {
     height: 2rem;
     border-width: 1px;
     border-style: solid;
-    border-radius: .125rem;
+    border-radius: .25rem;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
 
     &amp;.disabled {
       pointer-events: none;
       opacity: .5;
     }
+  }
+}
+
+::ng-deep .organ-select {
+  position: absolute;
+  top: 2.5rem;
+  left: -0.25rem;
+  border-radius: 0.5rem;
+  max-height: 24.5rem;
+  width: 14rem;
+
+  .organ-select-option {
+    height: 3.5rem;
+    border-bottom: 1px solid;
   }
 }</code></pre>
     </div>
@@ -654,7 +687,7 @@ export class SpatialSearchConfigComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="header">  <div class="header-left">    <div class="title">Configure Spatial Search</div>    <button class="info button" mat-icon-button>      <mat-icon (click)="infoClicked.emit()">info</mat-icon>    </button>  </div>  <button class="close button" mat-icon-button>    <mat-icon (click)="closeDialog.emit()">close</mat-icon>  </button></div><div class="sex-toggle">  <div class="label">Donor Sex: </div>  <mat-radio-group class="radio-group" [(ngModel)]="sex" (change)="updateSex.emit($event.value)">    <mat-radio-button class="radio" value="male">Male</mat-radio-button>    <mat-radio-button class="radio" value="female">Female</mat-radio-button>  </mat-radio-group></div><div class="organ-selector">  <div class="label">Select an organ</div>  <mat-form-field class="form-field" appearance="fill">    <mat-label>Organs</mat-label>    <mat-select panelClass="organ-select" [(value)]="selectedOrgan" (selectionChange)="updateOrgan.emit($event.value)">      <mat-option *ngFor="let organ of organs" [value]="organ">        {{organ.name}}      </mat-option>    </mat-select>  </mat-form-field></div><button class="continue-button" [class.disabled]="!selectedOrgan" mat-button  (click)="buttonClicked.emit()">Continue</button></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="header">  <div class="header-left">    <div class="title">Configure Spatial Search</div>    <button class="info" mat-icon-button>      <mat-icon (click)="infoClicked.emit()">info</mat-icon>    </button>  </div>  <button class="close" mat-icon-button>    <mat-icon (click)="closeDialog.emit()">close</mat-icon>  </button></div><div class="sex-toggle">  <div class="label">Donor Sex: </div>  <mat-radio-group class="radio-group" [(ngModel)]="sex" (change)="updateSex.emit($event.value)">    <mat-radio-button class="radio" value="male">Male</mat-radio-button>    <mat-radio-button class="radio" value="female">Female</mat-radio-button>  </mat-radio-group></div><div class="organ-selector">  <div class="label">Select an organ</div>  <mat-form-field class="form-field" appearance="fill">    <div *ngIf="!selectedOrgan" class="label">Organs</div>    <mat-select disableOptionCentering="true" panelClass="organ-select" [(value)]="selectedOrgan" (selectionChange)="updateOrgan.emit($event.value)">      <mat-option class="organ-select-option" *ngFor="let organ of organs" [value]="organ">        {{organ.name}}      </mat-option>    </mat-select>  </mat-form-field></div><button class="continue-button" [class.disabled]="!selectedOrgan" mat-button  (click)="buttonClicked.emit()">Continue</button></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchKeyboardUIBehaviorComponent', 'selector': 'ccf-spatial-search-keyboard-ui-behavior'},{'name': 'SpatialSearchKeyboardUIComponent', 'selector': 'ccf-spatial-search-keyboard-ui'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SpatialSearchConfigComponent'};

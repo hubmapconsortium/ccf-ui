@@ -231,7 +231,7 @@ export class SpatialSearchFilterState {
   private createItem(sex: Sex, name: string, search: SpatialSearch): SpatialSearchFilterItem {
     return {
       id: this.createItemId(search),
-      selected: false,
+      selected: true,
       description: this.createItemDescription(sex, name, search),
 
       search
