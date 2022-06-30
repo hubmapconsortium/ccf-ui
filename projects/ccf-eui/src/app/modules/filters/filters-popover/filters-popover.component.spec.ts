@@ -1,3 +1,5 @@
+import { TestBed } from '@angular/core/testing';
+import { NgxsModule } from '@ngxs/store';
 import { Shallow } from 'shallow-render';
 
 import { FiltersPopoverComponent } from './filters-popover.component';
@@ -7,6 +9,10 @@ describe('FiltersPopoverComponent', () => {
   let shallow: Shallow<FiltersPopoverComponent>;
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [NgxsModule.forRoot([], {})]
+    });
+
     shallow = new Shallow(FiltersPopoverComponent, FiltersPopoverModule);
   });
 
