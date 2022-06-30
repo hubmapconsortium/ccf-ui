@@ -32,10 +32,10 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
       this.currentKey = key.toLowerCase();
       switch (this.currentKey) {
         case 'q':
-          this.position = { ...this.position, z: this.position.z + this.currentDelta };
+          this.position = { ...this.position, z: this.position.z - this.currentDelta };
           break;
         case 'e':
-          this.position = { ...this.position, z: this.position.z - this.currentDelta };
+          this.position = { ...this.position, z: this.position.z + this.currentDelta };
           break;
         case 'w':
           this.position = { ...this.position, y: this.position.y + this.currentDelta };
