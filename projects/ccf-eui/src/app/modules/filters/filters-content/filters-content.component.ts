@@ -95,6 +95,7 @@ export class FiltersContentComponent {
   refreshFilters(): void {
     this.filters = JSON.parse(JSON.stringify(DEFAULT_FILTER));
     this.ga.event('filters_reset', 'filter_content');
+    this.spatialSearchSelected.emit([]);
     this.filtersChange.emit(this.filters);
   }
 
