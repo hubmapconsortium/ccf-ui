@@ -22,7 +22,7 @@
   <div class="label">Select an organ</div>
   <mat-form-field class="form-field" appearance="fill">
     <div *ngIf="!selectedOrgan" class="label">Organs</div>
-    <mat-select disableOptionCentering="true" panelClass="organ-select" (selectionChange)="updateOrgan.emit($event.value)">
+    <mat-select disableOptionCentering="true" panelClass="organ-select" [(value)]="selectedOrgan" (selectionChange)="updateOrgan.emit($event.value)">
       <mat-option class="organ-select-option" *ngFor="let organ of organs" [value]="organ">
         {{organ.name}}
       </mat-option>
