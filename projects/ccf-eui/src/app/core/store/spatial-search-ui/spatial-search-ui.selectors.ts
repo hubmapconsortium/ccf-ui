@@ -61,19 +61,19 @@ export class SpatialSearchUiSelectors {
     return state.radiusSettings ?? { min: 0, max: 0, defaultValue: 0 };
   }
 
-  @Selector([SpatialSearchUiState, SpatialSearchUiState.organEntity])
-  static scene(state: SpatialSearchUiModel, organEntity: SpatialEntity): SpatialSceneNode[] {
+  @Selector([SpatialSearchUiState, SpatialSearchUiState.organEntity, SpatialSearchUiSelectors.position, SpatialSearchUiSelectors.radius])
+  static scene(state: SpatialSearchUiModel, organEntity: SpatialEntity, position: Position, radius: number): SpatialSceneNode[] {
     const sphere = getProbingSphereScene(organEntity, {
-      x: state.position?.x ?? 0,
-      y: state.position?.y ?? 0,
-      z: state.position?.z ?? 0,
-      radius: state.radius ?? 0,
+      x: position.x / 1000,
+      y: position.y / 1000,
+      z: position.z / 1000,
+      radius: radius / 1000,
       target: organEntity['@id']
     });
     const collisions = new Set((state.tissueBlocks ?? []).map(block => block.spatialEntityId));
     const organScene = (state.organScene ?? []).map(s => {
       if (collisions.has(s['@id'])) {
-        s = { ...s, color: [0, 255, 0, 0.9*255] };
+        s = { ...s, color: [0, 0, 255, 0.9*255] };
       }
       return s;
     });
