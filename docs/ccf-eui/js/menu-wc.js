@@ -406,13 +406,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SpatialSearchUiModule-edc4009df5cdbea60cc6f54ed815b6c2"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-edc4009df5cdbea60cc6f54ed815b6c2"' }>
+                                            'data-target="#components-links-module-SpatialSearchUiModule-b01493e94001112b33d6cf97c757e9c7"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-b01493e94001112b33d6cf97c757e9c7"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-edc4009df5cdbea60cc6f54ed815b6c2"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-edc4009df5cdbea60cc6f54ed815b6c2"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-b01493e94001112b33d6cf97c757e9c7"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-b01493e94001112b33d6cf97c757e9c7"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>
@@ -548,6 +548,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/MessageChannel.html" data-type="entity-link" >MessageChannel</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ReallyUpdateSpatialSearch.html" data-type="entity-link" >ReallyUpdateSpatialSearch</a>
                             </li>
                             <li class="link">
                                 <a href="classes/RemoveSearch.html" data-type="entity-link" >RemoveSearch</a>

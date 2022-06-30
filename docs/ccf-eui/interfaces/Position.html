@@ -216,16 +216,15 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Action, Selector, State, StateContext, Store } from &#x27;@ngxs/store&#x27;;
+import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Store } from &#x27;@ngxs/store&#x27;;
 import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { DataSourceService } from &#x27;ccf-shared&#x27;;
 import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 import { forkJoin, Observable } from &#x27;rxjs&#x27;;
-import { mergeMap, take, tap } from &#x27;rxjs/operators&#x27;;
+import { debounceTime, mergeMap, take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { Sex } from &#x27;../../../shared/components/spatial-search-config/spatial-search-config.component&#x27;;
 import { DataStateSelectors } from &#x27;../data/data.selectors&#x27;;
-import { DataState } from &#x27;../data/data.state&#x27;;
 import { SceneState } from &#x27;../scene/scene.state&#x27;;
 import { ResetPosition, ResetRadius, SetOrgan, SetPosition, SetRadius, SetSex, UpdateSpatialSearch } from &#x27;./spatial-search-ui.actions&#x27;;
 
@@ -264,6 +263,10 @@ export interface SpatialSearchUiModel {
   cellTypes?: Record&lt;string, number&gt;;
 }
 
+class ReallyUpdateSpatialSearch {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Really update spatial search data&#x27;;
+}
+
 
 @State&lt;SpatialSearchUiModel&gt;({
   name: &#x27;spatialSearchUi&#x27;,
@@ -282,21 +285,29 @@ export class SpatialSearchUiState {
   constructor(
     private readonly dataSource: DataSourceService,
     private readonly store: Store,
+    actions$: Actions,
     private readonly ga: GoogleAnalyticsService
-  ) { }
+  ) {
+    actions$.pipe(
+      ofActionDispatched(UpdateSpatialSearch),
+      debounceTime(500),
+      tap(() &#x3D;&gt; store.dispatch(ReallyUpdateSpatialSearch))
+    ).subscribe();
+  }
 
   /**
    * Updates sex in the SpatialSearchUI and sets selected organ to undefined if not valid for the sex
    */
   @Action(SetSex)
   setSex(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { sex }: SetSex): Observable&lt;unknown&gt; | void {
-    const { organId } &#x3D; ctx.getState();
+    let { organId } &#x3D; ctx.getState();
     ctx.patchState({ sex });
     this.ga.event(&#x27;set_sex&#x27;, &#x27;spatial_search_ui&#x27;, sex);
 
     if (organId !&#x3D;&#x3D; undefined &amp;&amp; !this.organValidForSex(organId, sex)) {
-      return ctx.dispatch(new SetOrgan(undefined));
+      organId &#x3D; undefined;
     }
+    return ctx.dispatch(new SetOrgan(organId));
   }
 
   /**
@@ -331,7 +342,7 @@ export class SpatialSearchUiState {
               position,
               radius: defaultRadius,
               defaultPosition: position,
-              radiusSettings: { min: 5, max: Math.floor(width), defaultValue: defaultRadius },
+              radiusSettings: { min: Math.min(defaultRadius, 5), max: Math.floor(Math.max(width, height, depth) / 1.5), defaultValue: defaultRadius },
               organScene: getOriginScene(organ).concat(organScene)
             });
           }),
@@ -346,6 +357,7 @@ export class SpatialSearchUiState {
   @Action(SetPosition)
   setPosition(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { position }: SetPosition): void {
     ctx.patchState({ position });
+    ctx.dispatch(new UpdateSpatialSearch());
 
     const { x, y, z } &#x3D; position;
     this.ga.event(&#x27;set_position&#x27;, &#x27;spatial_search_ui&#x27;, &#x60;${x}_${y}_${z}&#x60;);
@@ -355,6 +367,7 @@ export class SpatialSearchUiState {
   resetPosition(ctx: StateContext&lt;SpatialSearchUiModel&gt;): void {
     const { defaultPosition } &#x3D; ctx.getState();
     ctx.patchState({ position: defaultPosition });
+    ctx.dispatch(new UpdateSpatialSearch());
 
     const { x, y, z } &#x3D; defaultPosition ?? { x: 0, y: 0, z: 0 };
     this.ga.event(&#x27;reset_position&#x27;, &#x27;spatial_search_ui&#x27;, &#x60;${x}_${y}_${z}&#x60;);
@@ -366,6 +379,7 @@ export class SpatialSearchUiState {
   @Action(SetRadius)
   setRadius(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { radius }: SetRadius): void {
     ctx.patchState({ radius });
+    ctx.dispatch(new UpdateSpatialSearch());
 
     this.ga.event(&#x27;set_radius&#x27;, &#x27;spatial_search_ui&#x27;, radius.toFixed(1));
   }
@@ -375,6 +389,7 @@ export class SpatialSearchUiState {
     const { radiusSettings } &#x3D; ctx.getState();
     const radius &#x3D; radiusSettings?.defaultValue ?? 0;
     ctx.patchState({ radius });
+    ctx.dispatch(new UpdateSpatialSearch());
 
     this.ga.event(&#x27;reset_radius&#x27;, &#x27;spatial_search_ui&#x27;, radius.toFixed(1));
   }
@@ -382,7 +397,7 @@ export class SpatialSearchUiState {
   /**
    * Updates the spatial search data as the organ, position, and radius changes
    */
-  @Action(UpdateSpatialSearch)
+  @Action(ReallyUpdateSpatialSearch)
   updateSpatialSearch(ctx: StateContext&lt;SpatialSearchUiModel&gt;): Observable&lt;unknown&gt; | void {
     const { position, radius } &#x3D; ctx.getState();
     const organ &#x3D; this.store.selectSnapshot(SpatialSearchUiState.organEntity);

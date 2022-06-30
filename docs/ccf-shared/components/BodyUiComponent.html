@@ -715,8 +715,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:208</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:211</a></div>
                 </td>
             </tr>
 
@@ -791,8 +791,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="213"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:213</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="216"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:216</a></div>
                 </td>
             </tr>
 
@@ -830,8 +830,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="202"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:202</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="205"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:205</a></div>
                 </td>
             </tr>
 
@@ -2124,6 +2124,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     }
     if (this.bounds) {
       this.zoomToBounds(this.bounds);
+    }
+    if (this.target) {
+      this.bodyUI.setTarget(this.target);
     }
     this.subscriptions &#x3D; [
       this.bodyUI.sceneRotation$.subscribe((rotation) &#x3D;&gt; this.rotationChange.next(rotation)),

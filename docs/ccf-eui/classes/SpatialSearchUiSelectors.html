@@ -149,6 +149,14 @@
                             </li>
                             <li>
                                     <span class="modifier">Static</span>
+                                <a href="#sceneBounds" >sceneBounds</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#sceneTarget" >sceneTarget</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
                                 <a href="#sex" >sex</a>
                             </li>
                             <li>
@@ -236,8 +244,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:101</a></div>
                 </td>
             </tr>
 
@@ -325,8 +333,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:106</a></div>
                 </td>
             </tr>
 
@@ -485,8 +493,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:110</a></div>
                 </td>
             </tr>
 
@@ -1128,7 +1136,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>scene(state: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">SpatialSearchUiModel</a>, organEntity: SpatialEntity)</code>
+                    <code>scene(state: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">SpatialSearchUiModel</a>, organEntity: SpatialEntity, position: <a href="../interfaces/Position.html" target="_self">Position</a>, radius: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -1136,7 +1144,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Selector([&#x27;SpatialSearchUiState&#x27;, &#x27;undefined&#x27;])<br /></code>
+                    <code>@Selector([&#x27;SpatialSearchUiState&#x27;, &#x27;undefined&#x27;, &#x27;undefined&#x27;, &#x27;undefined&#x27;])<br /></code>
                 </td>
             </tr>
 
@@ -1186,6 +1194,30 @@
 
 
                                 </tr>
+                                <tr>
+                                    <td>position</td>
+                                    <td>
+                                                <code><a href="../interfaces/Position.html" target="_self" >Position</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>radius</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -1197,6 +1229,153 @@
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sceneBounds"></a>
+                    <span class="name">
+                        <span class="modifier">Static</span>
+                        <span ><b>sceneBounds</b></span>
+                        <a href="#sceneBounds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sceneBounds(organEntity: SpatialEntity)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Selector([&#x27;undefined&#x27;])<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organEntity</td>
+                                    <td>
+                                            <code>SpatialEntity</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Position.html" target="_self" >Position</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sceneTarget"></a>
+                    <span class="name">
+                        <span class="modifier">Static</span>
+                        <span ><b>sceneTarget</b></span>
+                        <a href="#sceneTarget"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sceneTarget(organEntity: SpatialEntity)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Selector([&#x27;undefined&#x27;])<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organEntity</td>
+                                    <td>
+                                            <code>SpatialEntity</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
                     </div>
                 </td>
             </tr>
@@ -1308,8 +1487,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.selectors.ts:96</a></div>
                 </td>
             </tr>
 
@@ -1429,23 +1608,35 @@ export class SpatialSearchUiSelectors {
     return state.radiusSettings ?? { min: 0, max: 0, defaultValue: 0 };
   }
 
-  @Selector([SpatialSearchUiState, SpatialSearchUiState.organEntity])
-  static scene(state: SpatialSearchUiModel, organEntity: SpatialEntity): SpatialSceneNode[] {
+  @Selector([SpatialSearchUiState, SpatialSearchUiState.organEntity, SpatialSearchUiSelectors.position, SpatialSearchUiSelectors.radius])
+  static scene(state: SpatialSearchUiModel, organEntity: SpatialEntity, position: Position, radius: number): SpatialSceneNode[] {
     const sphere &#x3D; getProbingSphereScene(organEntity, {
-      x: state.position?.x ?? 0,
-      y: state.position?.y ?? 0,
-      z: state.position?.z ?? 0,
-      radius: state.radius ?? 0,
-      target: organEntity[&#x27;@id&#x27;]
+      ...position, radius, target: organEntity[&#x27;@id&#x27;]
     });
     const collisions &#x3D; new Set((state.tissueBlocks ?? []).map(block &#x3D;&gt; block.spatialEntityId));
     const organScene &#x3D; (state.organScene ?? []).map(s &#x3D;&gt; {
       if (collisions.has(s[&#x27;@id&#x27;])) {
-        s &#x3D; { ...s, color: [0, 255, 0, 0.9*255] };
+        s &#x3D; { ...s, color: [41, 121, 255, 0.9*255] };
       }
       return s;
     });
     return organScene.concat(sphere);
+  }
+
+  @Selector([SpatialSearchUiState.organEntity])
+  static sceneBounds(organEntity: SpatialEntity): Position {
+    const { x_dimension: x, y_dimension: y, z_dimension: z } &#x3D; organEntity;
+    return {
+      x: x / 1000 * 1.25,
+      y: y / 1000 * 1.25,
+      z: z / 1000 * 1.25
+    };
+  }
+
+  @Selector([SpatialSearchUiState.organEntity])
+  static sceneTarget(organEntity: SpatialEntity): [ number, number, number] {
+    const { x_dimension: x, y_dimension: y, z_dimension: z } &#x3D; organEntity;
+    return [ x / 1000 / 2, y / 1000 / 2, z / 1000 / 2 ];
   }
 
   @Selector([SpatialSearchUiState])
