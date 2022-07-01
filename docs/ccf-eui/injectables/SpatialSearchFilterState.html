@@ -143,8 +143,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:27</a></div>
                 </td>
             </tr>
 
@@ -224,8 +224,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:48</a></div>
                 </td>
             </tr>
 
@@ -318,8 +318,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:63</a></div>
                 </td>
             </tr>
 
@@ -412,8 +412,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:58</a></div>
                 </td>
             </tr>
 
@@ -487,8 +487,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:32</a></div>
                 </td>
             </tr>
 
@@ -573,8 +573,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-filter/spatial-search-filter.state.ts:37</a></div>
                 </td>
             </tr>
 
@@ -651,6 +651,7 @@ import { AddSearch, RemoveSearch, SetSelectedSearches } from &#x27;./spatial-sea
 export interface SpatialSearchFilterItem extends SpatialSearchListItem {
   id: string;
   search: SpatialSearch;
+  sex: Sex;
 }
 
 export type SpatialSearchFilterModel &#x3D; SpatialSearchFilterItem[];
@@ -689,7 +690,7 @@ export class SpatialSearchFilterState {
       id: this.createItemId(search),
       selected: true,
       description: this.createItemDescription(sex, name, search),
-
+      sex: sex,
       search
     };
   }

@@ -77,6 +77,12 @@
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
 
 
 <section>
@@ -141,6 +147,9 @@
                         <ul class="index-list">
                             <li>
                                 <a href="#applyButtonClick" >applyButtonClick</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
                             </li>
                             <li>
                                 <a href="#refreshFilters" >refreshFilters</a>
@@ -549,8 +558,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:103</a></div>
                 </td>
             </tr>
 
@@ -563,6 +572,76 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates sex filter to Both if there is a male and female spatial search, or Male if there are only female spatial searches and vice versa</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -588,8 +667,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:112</a></div>
                 </td>
             </tr>
 
@@ -627,8 +706,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:94</a></div>
                 </td>
             </tr>
 
@@ -717,8 +796,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="106"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:106</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/filters/filters-content/filters-content.component.ts:123</a></div>
                 </td>
             </tr>
 
@@ -778,7 +857,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from &#x27;@angular/core&#x27;;
 import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 
 import { DEFAULT_FILTER } from &#x27;../../../core/store/data/data.state&#x27;;
@@ -794,7 +873,7 @@ import { SpatialSearchFilterItem } from &#x27;../../../core/store/spatial-search
   styleUrls: [&#x27;./filters-content.component.scss&#x27;],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FiltersContentComponent {
+export class FiltersContentComponent implements OnChanges {
 
   /**
    * Determines if the filters are visible
@@ -847,6 +926,23 @@ export class FiltersContentComponent {
    * @param ga Analytics service
    */
   constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  /**
+   * Updates sex filter to Both if there is a male and female spatial search, or Male if there are only female spatial searches and vice versa
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    if (&#x27;spatialSearchFilters&#x27; in changes) {
+      if (this.spatialSearchFilters.length &#x3D;&#x3D;&#x3D; 0) {
+        return;
+      } else if (this.spatialSearchFilters.find(search &#x3D;&gt; search.sex &#x3D;&#x3D;&#x3D; &#x27;female&#x27;) &amp;&amp; this.spatialSearchFilters.find(search &#x3D;&gt; search.sex &#x3D;&#x3D;&#x3D; &#x27;male&#x27;)) {
+        this.updateFilter(&#x27;Both&#x27;, &#x27;sex&#x27;);
+      } else if (this.spatialSearchFilters.find(search &#x3D;&gt; search.sex &#x3D;&#x3D;&#x3D; &#x27;female&#x27;) &#x3D;&#x3D;&#x3D; undefined) {
+        this.updateFilter(&#x27;Male&#x27;, &#x27;sex&#x27;);
+      } else if (this.spatialSearchFilters.find(search &#x3D;&gt; search.sex &#x3D;&#x3D;&#x3D; &#x27;male&#x27;) &#x3D;&#x3D;&#x3D; undefined) {
+        this.updateFilter(&#x27;Female&#x27;, &#x27;sex&#x27;);
+      }
+    }
+  }
 
   /**
    * Updates the filter object with a new key/value
