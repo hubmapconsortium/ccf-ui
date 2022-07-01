@@ -50,7 +50,7 @@ export class SpatialSearchFilterState {
       id: this.createItemId(search),
       selected: true,
       description: this.createItemDescription(sex, name, search),
-      sex: sex,
+      sex,
       search
     };
   }

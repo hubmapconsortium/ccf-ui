@@ -3,6 +3,7 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
 import { SpatialSearchFilterItem } from '../../../core/store/spatial-search-filter/spatial-search-filter.state';
+import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 
 
 /**
@@ -69,19 +70,11 @@ export class FiltersContentComponent implements OnChanges {
   constructor(private readonly ga: GoogleAnalyticsService) { }
 
   /**
-   * Updates sex filter to Both if there is a male and female spatial search, or Male if there are only female spatial searches and vice versa
+   * Handle input changes
    */
   ngOnChanges(changes: SimpleChanges): void {
     if ('spatialSearchFilters' in changes) {
-      if (this.spatialSearchFilters.length === 0) {
-        return;
-      } else if (this.spatialSearchFilters.find(search => search.sex === 'female') && this.spatialSearchFilters.find(search => search.sex === 'male')) {
-        this.updateFilter('Both', 'sex');
-      } else if (this.spatialSearchFilters.find(search => search.sex === 'female') === undefined) {
-        this.updateFilter('Male', 'sex');
-      } else if (this.spatialSearchFilters.find(search => search.sex === 'male') === undefined) {
-        this.updateFilter('Female', 'sex');
-      }
+      this.updateSexFromSelection(this.spatialSearchFilters.filter(item => item.selected));
     }
   }
 
@@ -126,5 +119,18 @@ export class FiltersContentComponent implements OnChanges {
 
     this.spatialSearchSelected.emit(items);
     this.updateFilter(searches, 'spatialSearches');
+    this.updateSexFromSelection(items);
+  }
+
+  /**
+   * Updates sex to `Both` if there is a mismatch between the current selection and the sex
+   */
+  updateSexFromSelection(items: SpatialSearchFilterItem[]): void {
+    const currentSex = (this.filters['sex'] as string).toLowerCase() as Sex;
+    const selectedSexes = new Set(items.map(item => item.sex));
+
+    if (items.length > 0 && (selectedSexes.size > 1 || !selectedSexes.has(currentSex))) {
+      this.updateFilter('Both', 'sex');
+    }
   }
 }
