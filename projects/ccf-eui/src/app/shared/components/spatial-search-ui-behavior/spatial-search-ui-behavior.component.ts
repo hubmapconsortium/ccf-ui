@@ -119,7 +119,7 @@ export class SpatialSearchUiBehaviorComponent {
    * Updates dialog with spatial search information
    */
   onDialogButtonClick(): void {
-    this.infoService.updateData('assets/docs/SPATIAL_SEARCH_README.md', 'N2JUogY-DQw', 'Spatial Search');
+    this.infoService.updateData('assets/docs/SPATIAL_SEARCH_README.md', 'UfxMpzatowE', 'Spatial Search');
     const panelContent$ = this.infoService.panelContent.asObservable();
     this.subscriptions.add(panelContent$.subscribe(data => {
       if (data.content.length) {

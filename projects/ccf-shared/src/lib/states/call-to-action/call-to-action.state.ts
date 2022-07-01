@@ -108,7 +108,7 @@ export class CallToActionState implements NgxsOnInit {
       data: {
         title: 'Spatial Search',
         content: content,
-        videoID: 'N2JUogY-DQw'
+        videoID: 'UfxMpzatowE'
       }
     });
   }
