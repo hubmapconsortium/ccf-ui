@@ -11,6 +11,7 @@ import { AddSearch, RemoveSearch, SetSelectedSearches } from './spatial-search-f
 export interface SpatialSearchFilterItem extends SpatialSearchListItem {
   id: string;
   search: SpatialSearch;
+  sex: Sex;
 }
 
 export type SpatialSearchFilterModel = SpatialSearchFilterItem[];
@@ -49,7 +50,7 @@ export class SpatialSearchFilterState {
       id: this.createItemId(search),
       selected: true,
       description: this.createItemDescription(sex, name, search),
-
+      sex: sex,
       search
     };
   }
