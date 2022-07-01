@@ -17,7 +17,11 @@
       }
 
       .info {
-        color: map-get($foreground, text);
+        color: map-get($foreground, main);
+
+        &:hover {
+          background: none !important;
+        }
       }
     }
   }

@@ -37,17 +37,11 @@
     border-color: mat.get-color-from-palette($foreground, modal-borders);
     color: map-get($foreground, text);
 
-    .header {
-      .button {
-        color: map-get($foreground, text);
-      }
+    .info, .close {
+      color: mat.get-color-from-palette($foreground, main);
 
-      .info, .close {
-        color: mat.get-color-from-palette($foreground, main);
-
-        &:hover {
-          background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
-        }
+      &:hover {
+        background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
       }
     }
 
