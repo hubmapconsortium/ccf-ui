@@ -10,7 +10,8 @@ describe('DropdownComponent', () => {
     shallow = new Shallow(TermOccurrenceListComponent, TermOccurrenceListModule);
   });
 
-  it('should provide the current value to mat-select', async () => {
-    console.log('test');
+  it('creates', async () => {
+    const { instance } = await shallow.render();
+    expect(instance).toBeDefined();
   });
 });
