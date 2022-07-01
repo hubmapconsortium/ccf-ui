@@ -406,13 +406,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SpatialSearchUiModule-4f316a144b0801326023778bff6ef738"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-4f316a144b0801326023778bff6ef738"' }>
+                                            'data-target="#components-links-module-SpatialSearchUiModule-2e9755f40061ab8367feee956b8dd3da"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-2e9755f40061ab8367feee956b8dd3da"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-4f316a144b0801326023778bff6ef738"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-4f316a144b0801326023778bff6ef738"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-2e9755f40061ab8367feee956b8dd3da"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-2e9755f40061ab8367feee956b8dd3da"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>
@@ -438,6 +438,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/StoreModule.html" data-type="entity-link" >StoreModule</a>
+                            </li>
+                            <li class="link">
+                                <a href="modules/TermOccurrenceListModule.html" data-type="entity-link" >TermOccurrenceListModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-TermOccurrenceListModule-b2ada8d7956229b7334cfa0e9de00903"' : 'data-target="#xs-components-links-module-TermOccurrenceListModule-b2ada8d7956229b7334cfa0e9de00903"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-TermOccurrenceListModule-b2ada8d7956229b7334cfa0e9de00903"' :
+                                            'id="xs-components-links-module-TermOccurrenceListModule-b2ada8d7956229b7334cfa0e9de00903"' }>
+                                            <li class="link">
+                                                <a href="components/TermOccurrenceListComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TermOccurrenceListComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                             <li class="link">
                                 <a href="modules/ThemingModule.html" data-type="entity-link" >ThemingModule</a>

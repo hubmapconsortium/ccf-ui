@@ -18,13 +18,13 @@
 <title>cluster_SpatialSearchKeyboardUIBehaviorModule_imports</title>
 <polygon fill="none" stroke="black" points="320,-40.8 320,-92.8 542,-92.8 542,-40.8 320,-40.8"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_SpatialSearchKeyboardUIBehaviorModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 312,-92.8 312,-40.8 16,-40.8"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_SpatialSearchKeyboardUIBehaviorModule_exports</title>
 <polygon fill="none" stroke="black" points="129,-170.8 129,-222.8 429,-222.8 429,-170.8 129,-170.8"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_SpatialSearchKeyboardUIBehaviorModule_declarations</title>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 312,-92.8 312,-40.8 16,-40.8"/>
 </g>
 <!-- SpatialSearchKeyboardUIBehaviorComponent -->
 <g id="node1" class="node">
