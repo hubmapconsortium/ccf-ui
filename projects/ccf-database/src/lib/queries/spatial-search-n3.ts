@@ -1,4 +1,4 @@
-import { Euler, Matrix3 } from '@math.gl/core';
+import { Euler } from '@math.gl/core';
 import { OrientedBoundingBox } from '@math.gl/culling';
 import { Store } from 'triple-store-utils';
 
@@ -23,13 +23,10 @@ export function getOrientedBoundingBox(store: Store, graph: CCFSpatialGraph, sou
   const matrix = graph.getTransformationMatrix(sourceIri, targetIri);
   let result: OrientedBoundingBox | undefined = undefined;
   if (matrix) {
-    const dimensions = getSpatialEntityDimensions(store, sourceIri);
-    const translation = matrix.getTranslation();
-    const euler = new Euler().fromRotationMatrix(matrix, Euler.XYZ);
-    const halfAxes = new Matrix3(Matrix3.IDENTITY)
-      .fromQuaternion(euler.toQuaternion())
-      .scale(dimensions.map(n => n / 1000 / 1000));
-    result = new OrientedBoundingBox(translation, halfAxes);
+    const center = matrix.getTranslation();
+    const halfSize = getSpatialEntityDimensions(store, sourceIri).map(n => n / 1000 / 2);
+    const quaternion = new Euler().fromRotationMatrix(matrix, Euler.XYZ).toQuaternion().normalize().calculateW();
+    result = new OrientedBoundingBox().fromCenterHalfSizeQuaternion(center, halfSize, quaternion);
   }
   return result;
 }
@@ -37,12 +34,12 @@ export function getOrientedBoundingBox(store: Store, graph: CCFSpatialGraph, sou
 export function filterByProbingSphere(store: Store, graph: CCFSpatialGraph, seen: Set<string>, search: SpatialSearch): Set<string> {
   const { x, y, z, radius, target } = search;
   const newSeen = new Set<string>();
-  const radiusSquared = (radius/1000) * (radius/1000);
+  const radiusSquared = (radius / 1000) * (radius / 1000);
   for (const sourceIri of seen) {
     const boundingBox = getOrientedBoundingBox(store, graph, sourceIri, target);
     if (boundingBox) {
       const distanceSquared = boundingBox.distanceSquaredTo([x, y, z].map(n => n / 1000));
-      if (distanceSquared < radiusSquared) {
+      if (distanceSquared <= radiusSquared) {
         newSeen.add(sourceIri);
       }
     }

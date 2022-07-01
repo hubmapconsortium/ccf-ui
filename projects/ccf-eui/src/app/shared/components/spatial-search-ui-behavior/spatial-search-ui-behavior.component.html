@@ -1,4 +1,4 @@
-<ccf-spatial-search-ui [sex]="sex$ | async" [referenceOrgan]="organ$ | async" [radius]="radius$ | async"
+<ccf-spatial-search-ui *ngIf="organ$ | async as organ" [sex]="sex$ | async" [referenceOrgan]="organ" [radius]="radius$ | async"
   [radiusSettings]="radiusSettings$ | async" [defaultPosition]="defaultPosition$ | async" [position]="position$ | async"
   [scene]="scene$ | async" [sceneBounds]="sceneBounds$ | async" [sceneTarget]="sceneTarget$ | async"
  [anatomicalStructures]="anatomicalStructures$ | async" [cellTypes]="cellTypes$ | async"
