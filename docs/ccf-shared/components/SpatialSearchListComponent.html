@@ -1,0 +1,952 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Library ccf-shared documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Library ccf-shared documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  SpatialSearchListComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Displays a list of spatial searches</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-spatial-search-list</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./spatial-search-list.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./spatial-search-list.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#clsName" >clsName</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#itemId" >itemId</a>
+                            </li>
+                            <li>
+                                <a href="#removeItem" >removeItem</a>
+                            </li>
+                            <li>
+                                <a href="#updateItemSelection" >updateItemSelection</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#items" >items</a>
+                            </li>
+                            <li>
+                                <a href="#label" >label</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#itemRemoved" >itemRemoved</a>
+                            </li>
+                            <li>
+                                <a href="#selectionChanged" >selectionChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class" >class</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="items"></a>
+                        <b>items</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>T[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:33</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Items to display</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="label"></a>
+                        <b>label</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:30</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Label for the list</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="itemRemoved"></a>
+                        <b>itemRemoved</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:39</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits the item that has been removed from the list</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectionChanged"></a>
+                        <b>selectionChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:36</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits the new items when a selection changes</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class"></a>
+                    <span class="name">
+                        <span ><b>class</b></span>
+                        <a href="#class"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;ccf-spatial-search-list&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-spatial-search-list&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="itemId"></a>
+                    <span class="name">
+                        <span ><b>itemId</b></span>
+                        <a href="#itemId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>itemId(_index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: T)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Computes a unique id for an item</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>_index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Unused</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                            <code>T</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>An item</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A unique id</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeItem"></a>
+                    <span class="name">
+                        <span ><b>removeItem</b></span>
+                        <a href="#removeItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeItem(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Removes an item from the list</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Index of the item to remove</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateItemSelection"></a>
+                    <span class="name">
+                        <span ><b>updateItemSelection</b></span>
+                        <a href="#updateItemSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateItemSelection(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, selected: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the selected state for an item</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Index of item to update</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>selected</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>What to set the selected state to</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clsName"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>clsName</b></span>
+                        <a href="#clsName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;ccf-spatial-search-list&#x27;</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @HostBinding(&#x27;class&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
+
+
+/**
+ * Base interface of items in the spatial search list
+ */
+export interface SpatialSearchListItem {
+  /** Whether the item is selected */
+  selected: boolean;
+
+  /** Description displayed for the item */
+  description: string;
+}
+
+
+/**
+ * Displays a list of spatial searches
+ */
+@Component({
+  selector: &#x27;ccf-spatial-search-list&#x27;,
+  templateUrl: &#x27;./spatial-search-list.component.html&#x27;,
+  styleUrls: [&#x27;./spatial-search-list.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class SpatialSearchListComponent&lt;T extends SpatialSearchListItem&gt; {
+  /** HTML class */
+  @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-spatial-search-list&#x27;;
+
+  /** Label for the list */
+  @Input() label &#x3D; &#x27;&#x27;;
+
+  /** Items to display */
+  @Input() items: T[] &#x3D; [];
+
+  /** Emits the new items when a selection changes */
+  @Output() readonly selectionChanged &#x3D; new EventEmitter&lt;T[]&gt;();
+
+  /** Emits the item that has been removed from the list */
+  @Output() readonly itemRemoved &#x3D; new EventEmitter&lt;T&gt;();
+
+  /**
+   * Computes a unique id for an item
+   *
+   * @param _index Unused
+   * @param item An item
+   * @returns A unique id
+   */
+  itemId(_index: number, item: T): string {
+    return item.description;
+  }
+
+  /**
+   * Updates the selected state for an item
+   *
+   * @param index Index of item to update
+   * @param selected What to set the selected state to
+   */
+  updateItemSelection(index: number, selected: boolean): void {
+    const newItems &#x3D; this.items &#x3D; [...this.items];
+    newItems[index] &#x3D; { ...newItems[index], selected };
+
+    const selectedItems &#x3D; newItems.filter(item &#x3D;&gt; item.selected);
+    this.selectionChanged.emit(selectedItems);
+  }
+
+  /**
+   * Removes an item from the list
+   *
+   * @param index Index of the item to remove
+   */
+  removeItem(index: number): void {
+    const newItems &#x3D; this.items &#x3D; [...this.items];
+    const [item] &#x3D; newItems.splice(index, 1);
+    this.itemRemoved.emit(item);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;label&quot; class&#x3D;&quot;label&quot;&gt;
+  {{ label }}
+&lt;/div&gt;
+
+&lt;mat-list class&#x3D;&quot;list&quot;&gt;
+  &lt;mat-list-item *ngFor&#x3D;&quot;let item of items; index as idx; trackBy: itemId&quot; class&#x3D;&quot;item&quot;&gt;
+    &lt;div class&#x3D;&quot;item-content&quot;&gt;
+      &lt;mat-checkbox class&#x3D;&quot;description&quot; labelPosition&#x3D;&quot;after&quot; [checked]&#x3D;&quot;item.selected&quot;
+        (change)&#x3D;&quot;updateItemSelection(idx, $event.checked)&quot;&gt;
+        {{ item.description }}
+      &lt;/mat-checkbox&gt;
+
+      &lt;div class&#x3D;&quot;filler&quot;&gt;&lt;/div&gt;
+
+      &lt;button mat-icon-button class&#x3D;&quot;delete&quot; (click)&#x3D;&quot;removeItem(idx)&quot;&gt;
+        &lt;mat-icon&gt;delete_outlined&lt;/mat-icon&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/mat-list-item&gt;
+&lt;/mat-list&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./spatial-search-list.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  display: block;
+
+  .label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .item {
+    height: 2rem;
+
+    .item-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 2rem;
+
+      .delete {
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+      }
+
+      .filler {
+        flex-grow: 1;
+      }
+    }
+
+    // Remove default padding from material list item
+    &amp; &gt; ::ng-deep * {
+      padding: 0 !important;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="label" class="label">  {{ label }}</div><mat-list class="list">  <mat-list-item *ngFor="let item of items; index as idx; trackBy: itemId" class="item">    <div class="item-content">      <mat-checkbox class="description" labelPosition="after" [checked]="item.selected"        (change)="updateItemSelection(idx, $event.checked)">        {{ item.description }}      </mat-checkbox>      <div class="filler"></div>      <button mat-icon-button class="delete" (click)="removeItem(idx)">        <mat-icon>delete_outlined</mat-icon>      </button>    </div>  </mat-list-item></mat-list></div>'
+    var COMPONENTS = [{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CallToActionBehaviorComponent', 'selector': 'ccf-call-to-action-behavior'},{'name': 'CallToActionComponent', 'selector': 'ccf-call-to-action'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'SpatialSearchListComponent', 'selector': 'ccf-spatial-search-list'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'XYZPositionComponent', 'selector': 'ccf-xyz-position'}];
+    var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
+    var ACTUAL_COMPONENT = {'name': 'SpatialSearchListComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SpatialSearchListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

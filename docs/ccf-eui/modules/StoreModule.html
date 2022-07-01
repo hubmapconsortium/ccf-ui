@@ -74,16 +74,20 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { NgxsDataPluginModule } from &#x27;@ngxs-labs/data&#x27;;
+import { NgxsDispatchPluginModule } from &#x27;@ngxs-labs/dispatch-decorator&#x27;;
 import { NgxsLoggerPluginModule } from &#x27;@ngxs/logger-plugin&#x27;;
 import { NgxsModule } from &#x27;@ngxs/store&#x27;;
+import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
+import { CallToActionState } from &#x27;projects/ccf-shared/src/public-api&#x27;;
 
 import { environment } from &#x27;../../../environments/environment&#x27;;
 import { ColorAssignmentState } from &#x27;./color-assignment/color-assignment.state&#x27;;
 import { DataState } from &#x27;./data/data.state&#x27;;
 import { IconRegistryState } from &#x27;./icon-registry/icon-registry.state&#x27;;
 import { ListResultsState } from &#x27;./list-results/list-results.state&#x27;;
-import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
 import { SceneState } from &#x27;./scene/scene.state&#x27;;
+import { SpatialSearchFilterState } from &#x27;./spatial-search-filter/spatial-search-filter.state&#x27;;
+import { SpatialSearchUiState } from &#x27;./spatial-search-ui/spatial-search-ui.state&#x27;;
 
 
 /**
@@ -95,7 +99,10 @@ export const ROOT_STATES &#x3D; [
   IconRegistryState,
   ListResultsState,
   DataState,
-  SceneState
+  SceneState,
+  CallToActionState,
+  SpatialSearchUiState,
+  SpatialSearchFilterState
 ];
 
 @NgModule({
@@ -104,10 +111,15 @@ export const ROOT_STATES &#x3D; [
     NgxsDataPluginModule.forRoot(),
 
     NgxsModule.forRoot(ROOT_STATES, {
-      developmentMode: !environment.production
+      developmentMode: !environment.production,
+      selectorOptions: {
+        injectContainerState: false
+      }
       // Consider setting compatibility and executionStrategy
       // https://www.ngxs.io/advanced/options
     }),
+
+    NgxsDispatchPluginModule.forRoot(),
 
     // Logger plugin must be last!
     NgxsLoggerPluginModule.forRoot({

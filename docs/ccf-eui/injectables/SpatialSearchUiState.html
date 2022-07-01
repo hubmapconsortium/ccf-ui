@@ -1,0 +1,1688 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application ccf-eui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >SpatialSearchUiState</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#generateSpatialSearch" >generateSpatialSearch</a>
+                            </li>
+                            <li>
+                                <a href="#moveToNode" >moveToNode</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#organEntity" >organEntity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#organValidForSex" >organValidForSex</a>
+                            </li>
+                            <li>
+                                <a href="#resetPosition" >resetPosition</a>
+                            </li>
+                            <li>
+                                <a href="#resetRadius" >resetRadius</a>
+                            </li>
+                            <li>
+                                <a href="#setExecuteSearchOnGenerate" >setExecuteSearchOnGenerate</a>
+                            </li>
+                            <li>
+                                <a href="#setOrgan" >setOrgan</a>
+                            </li>
+                            <li>
+                                <a href="#setPosition" >setPosition</a>
+                            </li>
+                            <li>
+                                <a href="#setRadius" >setRadius</a>
+                            </li>
+                            <li>
+                                <a href="#setSex" >setSex</a>
+                            </li>
+                            <li>
+                                <a href="#startSpatialSearchFlow" >startSpatialSearchFlow</a>
+                            </li>
+                            <li>
+                                <a href="#updateSpatialSearch" >updateSpatialSearch</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dataSource: DataSourceService, store: Store, actions$: Actions, ga: GoogleAnalyticsService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:87</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dataSource</td>
+                                                  
+                                                        <td>
+                                                                    <code>DataSourceService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>actions$</td>
+                                                  
+                                                        <td>
+                                                                    <code>Actions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ga</td>
+                                                  
+                                                        <td>
+                                                                    <code>GoogleAnalyticsService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateSpatialSearch"></a>
+                    <span class="name">
+                        <span ><b>generateSpatialSearch</b></span>
+                        <a href="#generateSpatialSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateSpatialSearch(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(GenerateSpatialSearch)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="271"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:271</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Generates and adds a new spatial search then resets the ui state</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | void</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moveToNode"></a>
+                    <span class="name">
+                        <span ><b>moveToNode</b></span>
+                        <a href="#moveToNode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>moveToNode(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/MoveToNode.html" target="_self">MoveToNode</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(MoveToNode)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="205"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:205</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                                <code><a href="../classes/MoveToNode.html" target="_self" >MoveToNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | void</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="organEntity"></a>
+                    <span class="name">
+                        <span class="modifier">Static</span>
+                        <span ><b>organEntity</b></span>
+                        <a href="#organEntity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>organEntity(state: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">SpatialSearchUiModel</a>, organs: SpatialEntity[])</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Selector([&#x27;SpatialSearchUiState&#x27;, &#x27;undefined&#x27;])<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>state</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >SpatialSearchUiModel</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>organs</td>
+                                    <td>
+                                            <code>SpatialEntity[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>SpatialEntity | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="organValidForSex"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>organValidForSex</b></span>
+                        <a href="#organValidForSex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>organValidForSex(organId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, sex: <a href="../undefineds/Sex.html" target="_self">Sex</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="312"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:312</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Used to determine if an organ should be listed if a certain sex is selected</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>sex</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Sex" target="_self" >Sex</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetPosition"></a>
+                    <span class="name">
+                        <span ><b>resetPosition</b></span>
+                        <a href="#resetPosition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resetPosition(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(ResetPosition)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:195</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetRadius"></a>
+                    <span class="name">
+                        <span ><b>resetRadius</b></span>
+                        <a href="#resetRadius"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resetRadius(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(ResetRadius)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="225"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:225</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setExecuteSearchOnGenerate"></a>
+                    <span class="name">
+                        <span ><b>setExecuteSearchOnGenerate</b></span>
+                        <a href="#setExecuteSearchOnGenerate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setExecuteSearchOnGenerate(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetExecuteSearchOnGenerate.html" target="_self">SetExecuteSearchOnGenerate</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(SetExecuteSearchOnGenerate)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="303"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:303</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                                <code><a href="../classes/SetExecuteSearchOnGenerate.html" target="_self" >SetExecuteSearchOnGenerate</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setOrgan"></a>
+                    <span class="name">
+                        <span ><b>setOrgan</b></span>
+                        <a href="#setOrgan"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setOrgan(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetOrgan.html" target="_self">SetOrgan</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(SetOrgan)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="145"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:145</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates organId in the SpatialSearchUI</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                                <code><a href="../classes/SetOrgan.html" target="_self" >SetOrgan</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | void</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPosition"></a>
+                    <span class="name">
+                        <span ><b>setPosition</b></span>
+                        <a href="#setPosition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPosition(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../interfaces/Position.html" target="_self">SetPosition</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(SetPosition)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="186"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:186</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates position in the SpatialSearchUI</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                                <code><a href="../interfaces/Position.html" target="_self" >SetPosition</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setRadius"></a>
+                    <span class="name">
+                        <span ><b>setRadius</b></span>
+                        <a href="#setRadius"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setRadius(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetRadius.html" target="_self">SetRadius</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(SetRadius)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="217"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:217</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates radius in the SpatialSearchUI</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                                <code><a href="../classes/SetRadius.html" target="_self" >SetRadius</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSex"></a>
+                    <span class="name">
+                        <span ><b>setSex</b></span>
+                        <a href="#setSex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setSex(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetSex.html" target="_self">SetSex</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(SetSex)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:115</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates sex in the SpatialSearchUI and sets selected organ to undefined if not valid for the sex</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                                <code><a href="../classes/SetSex.html" target="_self" >SetSex</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | void</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startSpatialSearchFlow"></a>
+                    <span class="name">
+                        <span ><b>startSpatialSearchFlow</b></span>
+                        <a href="#startSpatialSearchFlow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startSpatialSearchFlow(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(StartSpatialSearchFlow)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSpatialSearch"></a>
+                    <span class="name">
+                        <span ><b>updateSpatialSearch</b></span>
+                        <a href="#updateSpatialSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSpatialSearch(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(ReallyUpdateSpatialSearch)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="238"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:238</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the spatial search data as the organ, position, and radius changes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearchUiModel.html" target="_self" >StateContext&lt;SpatialSearchUiModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | void</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Matrix4 } from &#x27;@math.gl/core&#x27;;
+import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Store } from &#x27;@ngxs/store&#x27;;
+import { Filter, getOriginScene, SpatialEntity, SpatialSceneNode, SpatialSearch, TissueBlockResult } from &#x27;ccf-database&#x27;;
+import { DataSourceService, OrganInfo } from &#x27;ccf-shared&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
+import { forkJoin, Observable } from &#x27;rxjs&#x27;;
+import { debounceTime, mergeMap, take, tap } from &#x27;rxjs/operators&#x27;;
+
+import { Sex } from &#x27;../../../shared/components/spatial-search-config/spatial-search-config.component&#x27;;
+import { UpdateFilter } from &#x27;../data/data.actions&#x27;;
+import { DataStateSelectors } from &#x27;../data/data.selectors&#x27;;
+import { SceneState } from &#x27;../scene/scene.state&#x27;;
+import { AddSearch } from &#x27;../spatial-search-filter/spatial-search-filter.actions&#x27;;
+import { SpatialSearchFilterSelectors } from &#x27;../spatial-search-filter/spatial-search-filter.selectors&#x27;;
+import {
+  GenerateSpatialSearch,
+  MoveToNode,
+  ResetPosition,
+  ResetRadius,
+  SetExecuteSearchOnGenerate,
+  SetOrgan,
+  SetPosition,
+  SetRadius,
+  SetSex,
+  StartSpatialSearchFlow,
+  UpdateSpatialSearch
+} from &#x27;./spatial-search-ui.actions&#x27;;
+
+
+export interface Position {
+  x: number;
+  y: number;
+  z: number;
+}
+
+export interface RadiusSettings {
+  min: number;
+  max: number;
+  defaultValue: number;
+}
+
+export interface TermResult {
+  &#x27;@id&#x27;: string;
+  label: string;
+  count: number;
+}
+
+export interface SpatialSearchUiModel {
+  sex: Sex;
+  organId?: string;
+  position?: Position;
+  radius?: number;
+
+  defaultPosition?: Position;
+  radiusSettings?: RadiusSettings;
+
+  referenceOrgans?: OrganInfo[];
+  organScene?: SpatialSceneNode[];
+
+  spatialSearchScene?: SpatialSceneNode[];
+  tissueBlocks?: TissueBlockResult[];
+  anatomicalStructures?: Record&lt;string, number&gt;;
+  cellTypes?: Record&lt;string, number&gt;;
+
+  executeSearchOnGeneration: boolean;
+}
+
+class ReallyUpdateSpatialSearch {
+  static readonly type &#x3D; &#x27;[SpatialSearchUi] Really update spatial search data&#x27;;
+}
+
+
+@State&lt;SpatialSearchUiModel&gt;({
+  name: &#x27;spatialSearchUi&#x27;,
+  defaults: {
+    sex: &#x27;female&#x27;,
+    executeSearchOnGeneration: true
+  }
+})
+@Injectable()
+export class SpatialSearchUiState {
+  @Selector([SpatialSearchUiState, SceneState.referenceOrganEntities])
+  static organEntity(state: SpatialSearchUiModel, organs: SpatialEntity[]): SpatialEntity | undefined {
+    const { organId, sex } &#x3D; state;
+    return organs.find(o &#x3D;&gt; o.representation_of &#x3D;&#x3D;&#x3D; organId &amp;&amp; o.sex?.toLowerCase() &#x3D;&#x3D;&#x3D; sex);
+  }
+
+  constructor(
+    private readonly dataSource: DataSourceService,
+    private readonly store: Store,
+    actions$: Actions,
+    private readonly ga: GoogleAnalyticsService
+  ) {
+    actions$.pipe(
+      ofActionDispatched(UpdateSpatialSearch),
+      debounceTime(500),
+      tap(() &#x3D;&gt; store.dispatch(ReallyUpdateSpatialSearch))
+    ).subscribe();
+  }
+
+  @Action(StartSpatialSearchFlow)
+  startSpatialSearchFlow(ctx: StateContext&lt;SpatialSearchUiModel&gt;): Observable&lt;unknown&gt; {
+    const { sex, organId } &#x3D; ctx.getState();
+    const shortOrgan &#x3D; organId?.split(&#x27;/&#x27;).slice(-1)[0];
+    this.ga.event(&#x27;set_organ&#x27;, &#x27;spatial_search_ui&#x27;, &#x60;${sex}_${shortOrgan}&#x60;);
+
+    return ctx.dispatch(new SetSex(sex));
+  }
+
+  /**
+   * Updates sex in the SpatialSearchUI and sets selected organ to undefined if not valid for the sex
+   */
+  @Action(SetSex)
+  setSex(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { sex }: SetSex): Observable&lt;unknown&gt; | void {
+    let { organId } &#x3D; ctx.getState();
+    ctx.patchState({ sex });
+    this.ga.event(&#x27;set_sex&#x27;, &#x27;spatial_search_ui&#x27;, sex);
+
+    if (organId !&#x3D;&#x3D; undefined &amp;&amp; !this.organValidForSex(organId, sex)) {
+      organId &#x3D; undefined;
+    }
+
+    const filter &#x3D; {
+      ...this.store.selectSnapshot(DataStateSelectors.filter),
+      spatialSearches: []
+    };
+    const referenceOrgans &#x3D; this.store.selectSnapshot(SceneState.referenceOrgans);
+
+    return this.dataSource.getOntologyTermOccurences(filter).pipe(
+      take(1),
+      tap((counts: Record&lt;string, number&gt;) &#x3D;&gt; {
+        ctx.patchState({
+          referenceOrgans: referenceOrgans.filter((o) &#x3D;&gt; o.id &amp;&amp; !o.disabled &amp;&amp; counts[o.id] &gt; 0)
+        });
+        ctx.dispatch(new SetOrgan(organId));
+      })
+    );
+  }
+
+  /**
+   * Updates organId in the SpatialSearchUI
+   */
+  @Action(SetOrgan)
+  setOrgan(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { organId }: SetOrgan): Observable&lt;unknown&gt; | void {
+    const { sex } &#x3D; ctx.getState();
+    ctx.patchState({ sex, organId });
+    const shortOrgan &#x3D; organId?.split(&#x27;/&#x27;).slice(-1)[0];
+    this.ga.event(&#x27;set_organ&#x27;, &#x27;spatial_search_ui&#x27;, shortOrgan);
+
+    const organ &#x3D; this.store.selectSnapshot(SpatialSearchUiState.organEntity);
+    if (organ &amp;&amp; organId &amp;&amp; organ.sex) {
+      const { x_dimension: width, y_dimension: height, z_dimension: depth } &#x3D; organ;
+      const position &#x3D; { x: Math.round(width / 2), y: Math.round(height / 2), z: Math.round(depth / 2) };
+      const defaultRadius &#x3D; Math.round(Math.max(width, height, depth) * 0.07);
+      const globalFilter &#x3D; this.store.selectSnapshot(DataStateSelectors.filter);
+      const filter &#x3D; {
+        ...globalFilter,
+        sex: organ.sex,
+        ontologyTerms: [ organId ],
+        spatialSearches: []
+      };
+
+      return this.dataSource
+        .getReferenceOrganScene(organId, filter)
+        .pipe(
+          take(1),
+          tap((organScene: SpatialSceneNode[]) &#x3D;&gt; {
+            ctx.patchState({
+              position,
+              radius: defaultRadius,
+              defaultPosition: position,
+              radiusSettings: { min: Math.min(defaultRadius, 5), max: Math.floor(Math.max(width, height, depth) / 1.5), defaultValue: defaultRadius },
+              organScene: getOriginScene(organ).concat(organScene)
+            });
+          }),
+          mergeMap(() &#x3D;&gt; ctx.dispatch(new UpdateSpatialSearch()))
+        );
+    }
+  }
+
+  /**
+   * Updates position in the SpatialSearchUI
+   */
+  @Action(SetPosition)
+  setPosition(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { position }: SetPosition): void {
+    ctx.patchState({ position });
+    ctx.dispatch(new UpdateSpatialSearch());
+
+    const { x, y, z } &#x3D; position;
+    this.ga.event(&#x27;set_position&#x27;, &#x27;spatial_search_ui&#x27;, &#x60;${x}_${y}_${z}&#x60;);
+  }
+
+  @Action(ResetPosition)
+  resetPosition(ctx: StateContext&lt;SpatialSearchUiModel&gt;): void {
+    const { defaultPosition } &#x3D; ctx.getState();
+    ctx.patchState({ position: defaultPosition });
+    ctx.dispatch(new UpdateSpatialSearch());
+
+    const { x, y, z } &#x3D; defaultPosition ?? { x: 0, y: 0, z: 0 };
+    this.ga.event(&#x27;reset_position&#x27;, &#x27;spatial_search_ui&#x27;, &#x60;${x}_${y}_${z}&#x60;);
+  }
+
+  @Action(MoveToNode)
+  moveToNode(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { node }: MoveToNode): Observable&lt;unknown&gt; | void {
+    const matrix &#x3D; new Matrix4(node.transformMatrix);
+    const [x, y, z] &#x3D; matrix.getTranslation().map(n &#x3D;&gt; Math.round(n * 1000));
+    const position: Position &#x3D; { x, y, z };
+
+    return ctx.dispatch(new SetPosition(position));
+  }
+
+  /**
+   * Updates radius in the SpatialSearchUI
+   */
+  @Action(SetRadius)
+  setRadius(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { radius }: SetRadius): void {
+    ctx.patchState({ radius });
+    ctx.dispatch(new UpdateSpatialSearch());
+
+    this.ga.event(&#x27;set_radius&#x27;, &#x27;spatial_search_ui&#x27;, radius.toFixed(1));
+  }
+
+  @Action(ResetRadius)
+  resetRadius(ctx: StateContext&lt;SpatialSearchUiModel&gt;): void {
+    const { radiusSettings } &#x3D; ctx.getState();
+    const radius &#x3D; radiusSettings?.defaultValue ?? 0;
+    ctx.patchState({ radius });
+    ctx.dispatch(new UpdateSpatialSearch());
+
+    this.ga.event(&#x27;reset_radius&#x27;, &#x27;spatial_search_ui&#x27;, radius.toFixed(1));
+  }
+
+  /**
+   * Updates the spatial search data as the organ, position, and radius changes
+   */
+  @Action(ReallyUpdateSpatialSearch)
+  updateSpatialSearch(ctx: StateContext&lt;SpatialSearchUiModel&gt;): Observable&lt;unknown&gt; | void {
+    const { position, radius } &#x3D; ctx.getState();
+    const organ &#x3D; this.store.selectSnapshot(SpatialSearchUiState.organEntity);
+    if (organ &amp;&amp; position &amp;&amp; radius &amp;&amp; organ.representation_of) {
+      const db &#x3D; this.dataSource;
+      const organId &#x3D; organ.representation_of;
+      const globalFilter &#x3D; this.store.selectSnapshot(DataStateSelectors.filter);
+      const filter: Filter &#x3D; {
+        ...globalFilter,
+        sex: organ.sex as &#x27;Male&#x27; | &#x27;Female&#x27;,
+        ontologyTerms: [ organId ],
+        spatialSearches: [{
+          ...position,
+          radius: radius,
+          target: organ[&#x27;@id&#x27;]
+        }]
+      };
+
+      return forkJoin({
+        spatialSearchScene: db.getReferenceOrganScene(organId, filter).pipe(take(1)),
+        tissueBlocks: db.getTissueBlockResults(filter).pipe(take(1)),
+        anatomicalStructures: db.getOntologyTermOccurences(filter).pipe(take(1)),
+        cellTypes: db.getCellTypeTermOccurences(filter).pipe(take(1))
+      }).pipe(
+        tap((data: Partial&lt;SpatialSearchUiModel&gt;) &#x3D;&gt; ctx.patchState(data))
+      );
+    }
+  }
+
+  /**
+   * Generates and adds a new spatial search then resets the ui state
+   */
+  @Action(GenerateSpatialSearch)
+  generateSpatialSearch(ctx: StateContext&lt;SpatialSearchUiModel&gt;): Observable&lt;unknown&gt; | void {
+    const { position, radius, sex, organId, referenceOrgans &#x3D; [], executeSearchOnGeneration } &#x3D; ctx.getState();
+    const organ &#x3D; this.store.selectSnapshot(SpatialSearchUiState.organEntity);
+    const info &#x3D; referenceOrgans.find(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; organId);
+    // const { spatialSearches &#x3D; [] } &#x3D; this.store.selectSnapshot(DataStateSelectors.filter);
+
+    if (position &amp;&amp; radius &amp;&amp; organ?.representation_of &amp;&amp; info) {
+      const search: SpatialSearch &#x3D; {
+        ...position,
+        radius,
+        target: organ[&#x27;@id&#x27;]
+      };
+      const actions: unknown[] &#x3D; [new AddSearch(sex, info.name, search)];
+
+      if (executeSearchOnGeneration) {
+        const searches &#x3D; this.store.selectSnapshot(SpatialSearchFilterSelectors.selectedSearches);
+        actions.push(new UpdateFilter({
+          spatialSearches: searches.concat(search)
+        }));
+      }
+
+      this.ga.event(&#x27;generate_search&#x27;, &#x27;spatial_search_ui&#x27;);
+      return ctx.dispatch(actions).pipe(
+        tap(() &#x3D;&gt; ctx.patchState({
+          sex: &#x27;female&#x27;,
+          organId: undefined
+        }))
+      );
+    }
+  }
+
+  @Action(SetExecuteSearchOnGenerate)
+  setExecuteSearchOnGenerate(ctx: StateContext&lt;SpatialSearchUiModel&gt;, { execute }: SetExecuteSearchOnGenerate): void {
+    ctx.patchState({
+      executeSearchOnGeneration: execute
+    });
+  }
+
+  /**
+   * Used to determine if an organ should be listed if a certain sex is selected
+   */
+  private organValidForSex(organId: string, sex: Sex): boolean {
+    const organs &#x3D; this.store.selectSnapshot(SceneState.referenceOrgans);
+    const organ &#x3D; organs.find(o &#x3D;&gt; o.id &#x3D;&#x3D;&#x3D; organId)!;
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    return organ.hasSex || organ.sex &#x3D;&#x3D;&#x3D; sex;
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'SpatialSearchUiState.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
