@@ -25,30 +25,32 @@
     <div class="radius-slider">
       <div class="title">Probing Sphere Radius</div>
       <div class="slider-container">
-        <mat-slider
-          class="slider"
-          [max]="radiusSettings.max"
-          [min]="radiusSettings.min"
-          [step]="1"
-          (input)="radiusChange.emit($event.value)"
-          [value]="radius"
-        ></mat-slider>
+        <mat-slider class="slider" [max]="radiusSettings.max" [min]="radiusSettings.min" [step]="1"
+          (input)="radiusChange.emit($event.value)" [value]="radius"></mat-slider>
         <span class="text value">{{ radius }} mm</span>
       </div>
       <div class="reset-buttons">
-        <button class="reset-sphere button" [class.disabled]="radius === radiusSettings.defaultValue && position === defaultPosition" mat-button (click)="resetSphere.emit(); resetPosition.emit();">Reset Probing Sphere</button>
-        <button class="reset-camera button" mat-button (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset Camera View</button>
+        <button class="reset-sphere button"
+          [class.disabled]="radius === radiusSettings.defaultValue && position === defaultPosition" mat-button
+          (click)="resetSphere.emit(); resetPosition.emit();">Reset Probing Sphere</button>
+        <button class="reset-camera button" mat-button
+          (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset
+          Camera View</button>
       </div>
     </div>
     <mat-divider></mat-divider>
     <div class="results">
       <ccf-tissue-block-list class="tissue-block list" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>
-      <ccf-term-occurrence-list class="anatomical-structures list" [termList]="anatomicalStructures" title="Anatomical Structures"
-        toolTipText="Total quantity of predicted anatomical structures detected by the Probing Sphere"></ccf-term-occurrence-list>
-      <ccf-term-occurrence-list class="cell-type list"  [termList]="cellTypes"
-        title="Predicted Cell Types from ASCT+B Tables" toolTipText="Total quantity of predicted cell types detected by the Probing Sphere"></ccf-term-occurrence-list>
+      <ccf-term-occurrence-list class="anatomical-structures list" [termList]="anatomicalStructures"
+        title="Anatomical Structures"
+        toolTipText="Total quantity of predicted anatomical structures detected by the Probing Sphere">
+      </ccf-term-occurrence-list>
+      <ccf-term-occurrence-list class="cell-type list" [termList]="cellTypes"
+        title="Predicted Cell Types from ASCT+B Tables"
+        toolTipText="Total quantity of predicted cell types detected by the Probing Sphere"></ccf-term-occurrence-list>
     </div>
-    <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
+    <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button
+      (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
   <div class="spatial-search-scene">
     <div class="primary-scene-wrapper">
@@ -58,9 +60,10 @@
         (rotationChange)="minimap.rotation = $event[0]; minimap.rotationX = $event[1]"></ccf-body-ui>
     </div>
     <div class="sidebar">
-      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"
-        (nodeClick)="nodeClicked.emit($event?.node)"></ccf-body-ui>
-      <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position" (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
+      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds"
+        [target]="sceneTarget" (nodeClick)="nodeClicked.emit($event?.node)"></ccf-body-ui>
+      <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position"
+        (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
       <ccf-xyz-position [x]="position.x" [y]="position.y" [z]="position.z"></ccf-xyz-position>
     </div>
   </div>

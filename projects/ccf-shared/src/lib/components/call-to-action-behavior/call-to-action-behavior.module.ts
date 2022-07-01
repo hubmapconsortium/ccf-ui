@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
+import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { CallToActionBehaviorComponent } from './call-to-action-behavior.component';
-import { CallToActionModule } from '../call-to-action/call-to-action.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { NgxsModule } from '@ngxs/store';
+
+import { CallToActionModule } from '../call-to-action/call-to-action.module';
+import { CallToActionBehaviorComponent } from './call-to-action-behavior.component';
 
 @NgModule({
   declarations: [CallToActionBehaviorComponent],
   imports: [CommonModule, NgxsModule, MatIconModule, MatDialogModule, MatCardModule, CallToActionModule],
   exports: [CallToActionBehaviorComponent]
 })
-export class CallToActionBehaviorModule {}
+export class CallToActionBehaviorModule { }
 

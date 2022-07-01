@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+
 import { TermResult } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
 /**
- * Component for a dropdown menu.
+ * Component for a dropdown menu
  */
 @Component({
   selector: 'ccf-term-occurrence-list',

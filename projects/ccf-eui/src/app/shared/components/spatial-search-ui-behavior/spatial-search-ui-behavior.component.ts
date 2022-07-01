@@ -24,6 +24,9 @@ import { Sex } from '../spatial-search-config/spatial-search-config.component';
 import { SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
 
 
+/**
+ * Behavioral component for Spatial Search UI
+ */
 @Component({
   selector: 'ccf-spatial-search-ui-behavior',
   templateUrl: './spatial-search-ui-behavior.component.html',
@@ -82,9 +85,11 @@ export class SpatialSearchUiBehaviorComponent {
   @Dispatch()
   readonly resetRadius = actionAsFn(ResetRadius);
 
+  /** Data to be displayed in the info panel */
   panelData: PanelData;
 
-  private readonly dialogSubs = new Subscription();
+  /** Subscriptions for the info panel data */
+  private readonly subscriptions = new Subscription();
 
   constructor(
     private readonly dialogRef: MatDialogRef<SpatialSearchUiComponent>,
@@ -92,8 +97,12 @@ export class SpatialSearchUiBehaviorComponent {
     private readonly infoService: InfoButtonService
   ) { }
 
+  /**
+   * Launchs info dialog with the input data
+   * @param data Data for the info dialog
+   */
   launchInfoDialog(data: PanelData): void {
-    this.dialogSubs.unsubscribe();
+    this.subscriptions.unsubscribe();
     this.dialog.open(InfoDialogComponent, {
       autoFocus: false,
       panelClass: 'modal-animated',
@@ -106,10 +115,13 @@ export class SpatialSearchUiBehaviorComponent {
     });
   }
 
+  /**
+   * Updates dialog with spatial search information
+   */
   onDialogButtonClick(): void {
     this.infoService.updateData('assets/docs/SPATIAL_SEARCH_README.md', 'N2JUogY-DQw', 'Spatial Search');
     const panelContent$ = this.infoService.panelContent.asObservable();
-    this.dialogSubs.add(panelContent$.subscribe(data => {
+    this.subscriptions.add(panelContent$.subscribe(data => {
       if (data.content.length) {
         this.panelData = data;
         this.launchInfoDialog(this.panelData);
@@ -117,16 +129,26 @@ export class SpatialSearchUiBehaviorComponent {
     }));
   }
 
+  /**
+   * Closes spatial search UI
+   */
   close(): void {
     this.dialogRef.close();
   }
 
+  /**
+   * Adds a new spatial search and closes the spatial search UI
+   * @returns spatial search 
+   */
   @Dispatch()
   addSpatialSearch(): GenerateSpatialSearch {
     this.close();
     return new GenerateSpatialSearch();
   }
 
+  /**
+   * Closes the spatial search UI and opens spatial search config
+   */
   openSpatialSearchConfig(): void {
     this.close();
     this.dialog.open(SpatialSearchConfigBehaviorComponent);

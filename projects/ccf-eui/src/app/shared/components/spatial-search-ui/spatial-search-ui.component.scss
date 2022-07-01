@@ -121,7 +121,7 @@
       }
 
       .results {
-        height: calc(100% - 15rem);
+        height: calc(100% - 15rem - 2px);
         .list {
           height: 33%;
           display: flex;

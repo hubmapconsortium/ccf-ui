@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs/internal/Observable';
+
 import { CloseDialog, LearnMore } from '../../states/call-to-action/call-to-action.actions';
 import { CallToActionSelectors } from '../../states/call-to-action/call-to-action.selectors';
 
@@ -30,7 +31,7 @@ export class CallToActionBehaviorComponent {
 
 
   /**
-   * Closees dialog
+   * Closes dialog
    */
   @Dispatch()
   readonly close = (): CloseDialog => new CloseDialog();
