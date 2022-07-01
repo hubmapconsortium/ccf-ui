@@ -14,5 +14,13 @@
     .title {
       color: mat.get-color-from-palette($accent);
     }
+
+    .info {
+      color: map-get($foreground, main);
+
+      &:hover {
+        background: none !important;
+      }
+    }
   }
 }

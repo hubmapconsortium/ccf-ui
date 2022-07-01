@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { TermResult } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
 /**
@@ -11,6 +11,8 @@ import { TermResult } from '../../../core/store/spatial-search-ui/spatial-search
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TermOccurrenceListComponent {
+  @HostBinding('class') readonly className = 'ccf-term-occurrence-list';
+
   /**
    * array that contains the terms and their counts
    */
