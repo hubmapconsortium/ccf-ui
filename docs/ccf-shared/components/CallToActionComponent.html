@@ -578,7 +578,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, HostBinding } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
 
 /**
  * Info button component: Information icon displays project details when clicked.
@@ -654,14 +654,15 @@ export class CallToActionComponent {
         &lt;mat-icon class&#x3D;&quot;cta-mat-icon material-icons close-icon&quot; (click)&#x3D;&quot;close()&quot;&gt;clear&lt;/mat-icon&gt;
       &lt;/div&gt;
       &lt;img class&#x3D;&quot;cta-image&quot; mat-card-sm-image [src]&#x3D;&quot;imageUrl&quot; alt&#x3D;&quot;preview&quot; layout-fill&gt;
-      
+
       &lt;mat-dialog-content class&#x3D;&quot;mat-typography dialog-content&quot;&gt;
         &lt;div class&#x3D;&quot;message&quot;&gt; {{message}}&lt;/div&gt;
         &lt;a mat-button class&#x3D;&quot;mat-button&quot; [text]&#x3D;&quot;callToAction&quot; (click)&#x3D;&quot;onDialogButtonClick()&quot;&gt; &lt;/a&gt;
       &lt;/mat-dialog-content&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -758,7 +759,7 @@ export class CallToActionComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="rui-about wrapper">  <div class="container">    <div class="content">      <div class="first-row">        <p class="title" mat-dialog-title>{{infoTitle}}</p>        <mat-icon class="cta-mat-icon material-icons close-icon" (click)="close()">clear</mat-icon>      </div>      <img class="cta-image" mat-card-sm-image [src]="imageUrl" alt="preview" layout-fill>            <mat-dialog-content class="mat-typography dialog-content">        <div class="message"> {{message}}</div>        <a mat-button class="mat-button" [text]="callToAction" (click)="onDialogButtonClick()"> </a>      </mat-dialog-content>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="rui-about wrapper">  <div class="container">    <div class="content">      <div class="first-row">        <p class="title" mat-dialog-title>{{infoTitle}}</p>        <mat-icon class="cta-mat-icon material-icons close-icon" (click)="close()">clear</mat-icon>      </div>      <img class="cta-image" mat-card-sm-image [src]="imageUrl" alt="preview" layout-fill>      <mat-dialog-content class="mat-typography dialog-content">        <div class="message"> {{message}}</div>        <a mat-button class="mat-button" [text]="callToAction" (click)="onDialogButtonClick()"> </a>      </mat-dialog-content>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CallToActionBehaviorComponent', 'selector': 'ccf-call-to-action-behavior'},{'name': 'CallToActionComponent', 'selector': 'ccf-call-to-action'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'SpatialSearchListComponent', 'selector': 'ccf-spatial-search-list'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'XYZPositionComponent', 'selector': 'ccf-xyz-position'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'CallToActionComponent'};

@@ -203,25 +203,25 @@ export class StartSpatialSearchFlow {
 export class SetSex {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Set sex&#x27;;
 
-  constructor(readonly sex: &#x27;male&#x27; | &#x27;female&#x27;) {}
+  constructor(readonly sex: &#x27;male&#x27; | &#x27;female&#x27;) { }
 }
 
 export class SetOrgan {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Set organ&#x27;;
 
-  constructor(readonly organId: string | undefined) {}
+  constructor(readonly organId: string | undefined) { }
 }
 
 export class SetPosition {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Set position&#x27;;
 
-  constructor(readonly position: { x: number; y: number; z: number }) {}
+  constructor(readonly position: { x: number; y: number; z: number }) { }
 }
 
 export class MoveToNode {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Start moving the position to a scene node&#x27;;
 
-  constructor(readonly node: SpatialSceneNode) {}
+  constructor(readonly node: SpatialSceneNode) { }
 }
 
 export class ResetPosition {
@@ -231,7 +231,7 @@ export class ResetPosition {
 export class SetRadius {
   static readonly type &#x3D; &#x27;[SpatialSearchUi] Set radius&#x27;;
 
-  constructor(readonly radius: number) {}
+  constructor(readonly radius: number) { }
 }
 
 export class ResetRadius {

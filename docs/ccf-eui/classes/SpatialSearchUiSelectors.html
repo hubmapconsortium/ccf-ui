@@ -1701,7 +1701,7 @@ export class SpatialSearchUiSelectors {
     const collisions &#x3D; new Set((state.tissueBlocks ?? []).map(block &#x3D;&gt; block.spatialEntityId));
     const organScene &#x3D; (state.organScene ?? []).map(s &#x3D;&gt; {
       if (collisions.has(s[&#x27;@id&#x27;])) {
-        s &#x3D; { ...s, color: [41, 121, 255, 0.9*255] };
+        s &#x3D; { ...s, color: [41, 121, 255, 0.9 * 255] };
       }
       return s;
     });
@@ -1720,9 +1720,9 @@ export class SpatialSearchUiSelectors {
   }
 
   @Selector([SpatialSearchUiState.organEntity])
-  static sceneTarget(organEntity: SpatialEntity): [ number, number, number] {
+  static sceneTarget(organEntity: SpatialEntity): [number, number, number] {
     const { x_dimension: x, y_dimension: y, z_dimension: z } &#x3D; organEntity;
-    return [ x / 1000 / 2, y / 1000 / 2, z / 1000 / 2 ];
+    return [x / 1000 / 2, y / 1000 / 2, z / 1000 / 2];
   }
 
   @Selector([SpatialSearchUiState])

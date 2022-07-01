@@ -105,13 +105,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CallToActionBehaviorModule.html" data-type="entity-link" >CallToActionBehaviorModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CallToActionBehaviorModule-f4c7939bba9a976cc1c87d1ba1df4db6"' : 'data-target="#xs-components-links-module-CallToActionBehaviorModule-f4c7939bba9a976cc1c87d1ba1df4db6"' }>
+                                            'data-target="#components-links-module-CallToActionBehaviorModule-125ba63d4adcdeff2b1aed1abb94d45e"' : 'data-target="#xs-components-links-module-CallToActionBehaviorModule-125ba63d4adcdeff2b1aed1abb94d45e"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CallToActionBehaviorModule-f4c7939bba9a976cc1c87d1ba1df4db6"' :
-                                            'id="xs-components-links-module-CallToActionBehaviorModule-f4c7939bba9a976cc1c87d1ba1df4db6"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CallToActionBehaviorModule-125ba63d4adcdeff2b1aed1abb94d45e"' :
+                                            'id="xs-components-links-module-CallToActionBehaviorModule-125ba63d4adcdeff2b1aed1abb94d45e"' }>
                                             <li class="link">
                                                 <a href="components/CallToActionBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CallToActionBehaviorComponent</a>
                                             </li>
@@ -122,13 +122,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CallToActionModule.html" data-type="entity-link" >CallToActionModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CallToActionModule-4073e0fb7541d2a2bbb430f484998487"' : 'data-target="#xs-components-links-module-CallToActionModule-4073e0fb7541d2a2bbb430f484998487"' }>
+                                            'data-target="#components-links-module-CallToActionModule-5a2eb931f91f6ac9d9390ee60b57d014"' : 'data-target="#xs-components-links-module-CallToActionModule-5a2eb931f91f6ac9d9390ee60b57d014"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CallToActionModule-4073e0fb7541d2a2bbb430f484998487"' :
-                                            'id="xs-components-links-module-CallToActionModule-4073e0fb7541d2a2bbb430f484998487"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CallToActionModule-5a2eb931f91f6ac9d9390ee60b57d014"' :
+                                            'id="xs-components-links-module-CallToActionModule-5a2eb931f91f6ac9d9390ee60b57d014"' }>
                                             <li class="link">
                                                 <a href="components/CallToActionComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CallToActionComponent</a>
                                             </li>

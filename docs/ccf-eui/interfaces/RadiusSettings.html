@@ -241,7 +241,7 @@ import {
   SetRadius,
   SetSex,
   StartSpatialSearchFlow,
-  UpdateSpatialSearch
+  UpdateSpatialSearch,
 } from &#x27;./spatial-search-ui.actions&#x27;;
 
 
@@ -374,7 +374,7 @@ export class SpatialSearchUiState {
       const filter &#x3D; {
         ...globalFilter,
         sex: organ.sex,
-        ontologyTerms: [ organId ],
+        ontologyTerms: [organId],
         spatialSearches: []
       };
 
@@ -462,7 +462,7 @@ export class SpatialSearchUiState {
       const filter: Filter &#x3D; {
         ...globalFilter,
         sex: organ.sex as &#x27;Male&#x27; | &#x27;Female&#x27;,
-        ontologyTerms: [ organId ],
+        ontologyTerms: [organId],
         spatialSearches: [{
           ...position,
           radius: radius,

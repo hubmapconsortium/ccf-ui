@@ -215,7 +215,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -250,13 +250,13 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:37</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Closees dialog</p>
+                    <div class="io-description"><p>Closes dialog</p>
 </div>
                 </td>
             </tr>
@@ -292,7 +292,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -327,7 +327,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -369,7 +369,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -405,7 +405,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-shared/src/lib/components/call-to-action-behavior/call-to-action-behavior.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -422,6 +422,7 @@
 import { Dispatch } from &#x27;@ngxs-labs/dispatch-decorator&#x27;;
 import { Select } from &#x27;@ngxs/store&#x27;;
 import { Observable } from &#x27;rxjs/internal/Observable&#x27;;
+
 import { CloseDialog, LearnMore } from &#x27;../../states/call-to-action/call-to-action.actions&#x27;;
 import { CallToActionSelectors } from &#x27;../../states/call-to-action/call-to-action.selectors&#x27;;
 
@@ -450,7 +451,7 @@ export class CallToActionBehaviorComponent {
 
 
   /**
-   * Closees dialog
+   * Closes dialog
    */
   @Dispatch()
   readonly close &#x3D; (): CloseDialog &#x3D;&gt; new CloseDialog();
@@ -468,7 +469,8 @@ export class CallToActionBehaviorComponent {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ccf-call-to-action [infoTitle]&#x3D;&quot;title$ | async&quot; [message]&#x3D;&quot;message$ | async&quot; [callToAction]&#x3D;&quot;callToAction$ | async&quot;
   [imageUrl]&#x3D;&quot;imageUrl$ | async&quot; (callToActionClicked)&#x3D;&quot;learnMore()&quot; (closeClicked)&#x3D;&quot;close()&quot;&gt;
-&lt;/ccf-call-to-action&gt;</code></pre>
+&lt;/ccf-call-to-action&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
