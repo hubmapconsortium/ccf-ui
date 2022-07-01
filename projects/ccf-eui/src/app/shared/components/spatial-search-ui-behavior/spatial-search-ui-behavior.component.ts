@@ -58,6 +58,9 @@ export class SpatialSearchUiBehaviorComponent {
   @Select(SpatialSearchUiSelectors.radiusSettings)
   readonly radiusSettings$: Observable<RadiusSettings>;
 
+  @Select(SpatialSearchUiSelectors.tissueBlocks)
+  readonly tissueBlocks$: Observable<TissueBlockResult[]>;
+
   @Select(SpatialSearchUiSelectors.anatomicalStructures)
   readonly anatomicalStructures$: Observable<TermResult[]>;
 
