@@ -18,5 +18,4 @@
 - Rotate: Modify the camera view by using the mouse or trackpad to click and drag in the desired direction.
 - Reset: Click the Reset Camera View button or the Reset Probing Sphere button to start fresh.
 
-![Image](assets/images/spatial_search.png)
-
+![Image](assets/images/spatial_search.gif)
