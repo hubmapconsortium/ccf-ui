@@ -73,16 +73,14 @@ export class FiltersContentComponent implements OnChanges {
    */
   ngOnChanges(changes: SimpleChanges): void {
     if ('spatialSearchFilters' in changes) {
-      if (this.spatialSearchFilters.length > 0 && this.filters?.sex !== 'Both') {
-        const hasMale = !!this.spatialSearchFilters.find(search => search.sex === 'male');
-        const hasFemale = !!this.spatialSearchFilters.find(search => search.sex === 'female');
-        if (hasMale && hasFemale) {
-          this.updateFilter('Both', 'sex');
-        } else if (hasMale) {
-          this.updateFilter('Male', 'sex');
-        } else if (hasFemale) {
-          this.updateFilter('Female', 'sex');
-        }
+      if (this.spatialSearchFilters.length === 0) {
+        return;
+      } else if (this.spatialSearchFilters.find(search => search.sex === 'female') && this.spatialSearchFilters.find(search => search.sex === 'male')) {
+        this.updateFilter('Both', 'sex');
+      } else if (this.spatialSearchFilters.find(search => search.sex === 'female') === undefined) {
+        this.updateFilter('Male', 'sex');
+      } else if (this.spatialSearchFilters.find(search => search.sex === 'male') === undefined) {
+        this.updateFilter('Female', 'sex');
       }
     }
   }
