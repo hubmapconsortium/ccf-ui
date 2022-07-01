@@ -37,19 +37,19 @@
     border-color: mat.get-color-from-palette($foreground, modal-borders);
     color: map-get($foreground, text);
 
-    .header {
-      .button {
-        color: map-get($foreground, text);
-      }
+    .info, .close {
+      color: mat.get-color-from-palette($foreground, main);
 
-      .info, .close {
-        &:hover {
-          background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
-        }
+      &:hover {
+        background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
       }
     }
 
     .content {
+      mat-divider {
+        color: mat.get-color-from-palette($foreground, borders);
+      }
+
       .button {
         color: mat.get-color-from-palette($foreground, light-button-text);
         background-color: mat.get-color-from-palette($background, button-bg);

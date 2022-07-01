@@ -32,13 +32,6 @@
     border-color: mat.get-color-from-palette($foreground, modal-borders);
     color: map-get($foreground, text);
 
-    .button {
-      color: map-get($foreground, text);
-      &:hover {
-        background: map-get($background, icon-background-hover2) !important;
-      }
-    }
-
     .mat-radio-checked {
       .mat-radio-inner-circle {
         background: map-get($foreground, text);
@@ -64,22 +57,24 @@
     .mat-select-arrow {
       color: mat.get-color-from-palette($foreground, contrast-icon);
     }
-  }
 
-  .info, .close {
-    &:hover {
-      background-color: mat.get-color-from-palette($background, icon-background-hover2);
+    .info, .close {
+      color: mat.get-color-from-palette($foreground, main);
+  
+      &:hover {
+        background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
+      }
     }
-  }
-
-  .continue-button {
-    color: mat.get-color-from-palette($foreground, light-button-text);
-    background-color: mat.get-color-from-palette($background, button-bg);
-    border-color: mat.get-color-from-palette($foreground, button-border);
-
-    &:hover {
-      color: mat.get-color-from-palette($foreground, color-hover);
-      background-color: mat.get-color-from-palette($background, button-background-hover);
+  
+    .continue-button {
+      color: mat.get-color-from-palette($foreground, light-button-text);
+      background-color: mat.get-color-from-palette($background, button-bg);
+      border-color: mat.get-color-from-palette($foreground, button-border);
+  
+      &:hover {
+        color: mat.get-color-from-palette($foreground, color-hover);
+        background-color: mat.get-color-from-palette($background, button-background-hover);
+      }
     }
   }
 }

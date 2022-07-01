@@ -1,9 +1,9 @@
 <div class="header">
   <div class="title">Configure Spatial Search</div>
-  <button class="info button" mat-icon-button>
+  <button class="info" mat-icon-button>
     <mat-icon (click)="infoClicked.emit()">info</mat-icon>
   </button>
-  <button class="close button" mat-icon-button>
+  <button class="close" mat-icon-button>
     <mat-icon (click)="closeSpatialSearch.emit()">close</mat-icon>
   </button>
 </div>
@@ -21,6 +21,7 @@
       </div>
       <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>
     </div>
+    <mat-divider></mat-divider>
     <div class="radius-slider">
       <div class="title">Probing Sphere Radius</div>
       <div class="slider-container">
@@ -39,13 +40,14 @@
         <button class="reset-camera button" mat-button (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset Camera View</button>
       </div>
     </div>
+    <mat-divider></mat-divider>
     <div class="results">
       <ccf-tissue-block-list class="tissue-block-info"></ccf-tissue-block-list>
       <ccf-term-occurrence-list [termList]="anatomicalStructures" [title]="'Anatomical Structures'" [toolTipText]="'Total quantity of predicted anatomical structures detected by the Probing Sphere'"> </ccf-term-occurrence-list>
       
       <ccf-term-occurrence-list class="cell-type-info tissue-block-info"  [termList]="cellTypes" [title]="'Predicted Cell Types'" [toolTipText]="'Total quantity of predicted cell types detected by the Probing Sphere'"></ccf-term-occurrence-list>
     </div>
-    <button class="run-spatial-search button" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
+    <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>
   <div class="spatial-search-scene">
     <div class="primary-scene-wrapper">

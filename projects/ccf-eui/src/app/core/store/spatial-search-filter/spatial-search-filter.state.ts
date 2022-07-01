@@ -11,6 +11,7 @@ import { AddSearch, RemoveSearch, SetSelectedSearches } from './spatial-search-f
 export interface SpatialSearchFilterItem extends SpatialSearchListItem {
   id: string;
   search: SpatialSearch;
+  sex: Sex;
 }
 
 export type SpatialSearchFilterModel = SpatialSearchFilterItem[];
@@ -47,9 +48,9 @@ export class SpatialSearchFilterState {
   private createItem(sex: Sex, name: string, search: SpatialSearch): SpatialSearchFilterItem {
     return {
       id: this.createItemId(search),
-      selected: false,
+      selected: true,
       description: this.createItemDescription(sex, name, search),
-
+      sex: sex,
       search
     };
   }
@@ -63,6 +64,6 @@ export class SpatialSearchFilterState {
     const capitalize = (value: string) => value.slice(0, 1).toUpperCase() + value.slice(1);
     const { x, y, z, radius } = search;
 
-    return `${capitalize(sex)}, ${capitalize(name)}, ${radius} mm, X: ${x}, Y: ${y}, Z: ${z}`;
+    return `${capitalize(sex)}, ${capitalize(name)}, ${radius.toFixed(1)} mm, X: ${x.toFixed(1)}, Y: ${y.toFixed(1)}, Z: ${z.toFixed(1)}`;
   }
 }

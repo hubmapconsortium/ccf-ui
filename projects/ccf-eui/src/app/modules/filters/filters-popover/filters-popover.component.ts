@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 
 import { SpatialSearchFilterItem } from '../../../core/store/spatial-search-filter/spatial-search-filter.state';
+import { SetExecuteSearchOnGenerate } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
 
 
 /**
@@ -62,15 +64,19 @@ export class FiltersPopoverComponent {
   /**
    * Toggles filter visible
    */
-  toggleFilterVisible(): void {
+  @Dispatch()
+  toggleFilterVisible(): SetExecuteSearchOnGenerate {
     this.filtersVisible = !this.filtersVisible;
+    return new SetExecuteSearchOnGenerate(false);
   }
 
   /**
    * Hides the filters popover box
    */
-  removeBox(): void {
+  @Dispatch()
+  removeBox(): SetExecuteSearchOnGenerate {
     this.filtersVisible = false;
+    return new SetExecuteSearchOnGenerate(true);
   }
 
   /**

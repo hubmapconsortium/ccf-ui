@@ -5,7 +5,6 @@
   padding: 2rem;
   gap: 2rem;
   width: 30.5rem;
-  height: 21.5rem;
   box-shadow: 0px 25rem 25rem rgba(0, 0, 0, 0.16);
   border-radius: .25rem;
   font-size: 1rem;
@@ -43,18 +42,38 @@
   .sex-toggle {
     display: flex;
 
-    .label, .radio {
+    .label {
       margin-right: 2rem;
+    }
+
+    .radio {
+      margin-right: 4rem;
     }
   }
 
   .organ-selector {
+    .label {
+      height: 0rem;
+    }
+
     ::ng-deep .mat-form-field-wrapper {
-      padding-bottom: 0;
+      padding-bottom: 1rem;
+      padding-top: 3rem;
+      margin-left: 0.5rem;
+      width: 14rem;
+
+      .mat-form-field-infix {
+        padding: 0;
+        border-top: none;
+      }
 
       .mat-form-field-underline {
         bottom: 0rem;
         height: 0.125rem;
+      }
+
+      .mat-select-arrow-wrapper {
+        transform: translatey(0rem);
       }
     }
   }
@@ -69,12 +88,26 @@
     height: 2rem;
     border-width: 1px;
     border-style: solid;
-    border-radius: .125rem;
+    border-radius: .25rem;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
 
     &.disabled {
       pointer-events: none;
       opacity: .5;
     }
+  }
+}
+
+::ng-deep .organ-select {
+  position: absolute;
+  top: 2.5rem;
+  left: -0.25rem;
+  border-radius: 0.5rem;
+  max-height: 24.5rem;
+  width: 14rem;
+
+  .organ-select-option {
+    height: 3.5rem;
+    border-bottom: 1px solid;
   }
 }
