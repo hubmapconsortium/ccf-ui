@@ -202,12 +202,12 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>[testBlock, testBlock, testBlock, testBlock, testBlock, testBlock, testBlock]</code>
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.ts:19</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -245,10 +245,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.ts:16</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -295,10 +301,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.ts:16</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML class</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -311,38 +323,6 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding, Input } from &#x27;@angular/core&#x27;;
 import { TissueBlockResult } from &#x27;ccf-database&#x27;;
 
-const testBlock: TissueBlockResult &#x3D; {
-  &#x27;@id&#x27;: &#x27;http://dx.doi.org/10.1016/j.trsl.2017.07.006#TissueBlock&#x27;,
-  &#x27;@type&#x27;: &#x27;Sample&#x27;,
-  sections: [],
-  datasets: [
-    {
-      &#x27;@id&#x27;: &#x27;http://dx.doi.org/10.1016/j.trsl.2017.07.006#Dataset&#x27;,
-      &#x27;@type&#x27;: &#x27;Dataset&#x27;,
-      label: &#x27;Registered 5/18/2020, Seth Winfree, KPMP-IU/OSU&#x27;,
-      thumbnail: &#x27;assets/kpmp/thumbnails/kpmp-sample.jpg&#x27;,
-      technology: &#x27;OTHER&#x27;,
-      description: &#x27;Data/Assay Types: Cytometry&#x27;,
-      link: &#x27;http://dx.doi.org/10.154016/j.trsl.2017.07.006&#x27;
-    }
-  ],
-  label: &#x27;Registered 5/18/2020, Seth Winfree, KPMP-IU/OSU&#x27;,
-  description: &#x27;3.44 x 7.78 x 0.07 millimeter, 0.07 millimeter, nephrectomy, 0 Sections&#x27;,
-  link: &#x27;http://dx.doi.org/10.103216/j.trsl.2017.07.006&#x27;,
-  donor: {
-    &#x27;@id&#x27;: &#x27;http://dx.doi.org/10.1016/j.trsl.2017.07.006#Donor&#x27;,
-    &#x27;@type&#x27;: &#x27;Donor&#x27;,
-    label: &#x27;CoverNephrectomy&#x27;,
-    description: &#x27;Entered 5/18/2020, Seth Winfree, KPMP-IU/OSU&#x27;,
-    link: &#x27;http://dx.doi.orgs/10.1016/j.trsl.2017.07.006&#x27;,
-    providerName: &#x27;KPMP-IU/OSU&#x27;
-  },
-  spatialEntityId: &#x27;http://purl.org/ccf/0.5/bd7a9bea-aaaa726-427a-8360-8a017ef8178d&#x27;,
-  sampleType: &#x27;Tissue Block&#x27;,
-  sectionCount: 1,
-  sectionSize: 0.07,
-  sectionUnits: &#x27;millimeter&#x27;
-};
 
 /**
  * Tissue block list in spatial search UI
@@ -354,12 +334,11 @@ const testBlock: TissueBlockResult &#x3D; {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TissueBlockListComponent {
+  /** HTML class */
   @HostBinding(&#x27;class&#x27;) readonly className &#x3D; &#x27;ccf-tissue-block-list&#x27;;
 
-  /**
-   * Tissue blocks to be displayed
-   */
-  @Input() tissueBlocks: TissueBlockResult[] &#x3D; [testBlock, testBlock, testBlock, testBlock, testBlock, testBlock, testBlock];
+  /** Tissue blocks to be displayed */
+  @Input() tissueBlocks: TissueBlockResult[] &#x3D; [];
 
 }
 </code></pre>
@@ -369,7 +348,8 @@ export class TissueBlockListComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;tissue-block-header&quot;&gt;
   &lt;div class&#x3D;&quot;title&quot;&gt;{{tissueBlocks.length}} Tissue Blocks&lt;/div&gt;
   &lt;button class&#x3D;&quot;info&quot; mat-icon-button&gt;
-    &lt;mat-icon matTooltip&#x3D;&quot;Total quantity of registered Tissue Blocks detected by the Probing Sphere&quot; matTooltipPosition&#x3D;&quot;right&quot;&gt;info&lt;/mat-icon&gt;
+    &lt;mat-icon matTooltip&#x3D;&quot;Total quantity of registered Tissue Blocks detected by the Probing Sphere&quot;
+      matTooltipPosition&#x3D;&quot;right&quot;&gt;info&lt;/mat-icon&gt;
   &lt;/button&gt;
 &lt;/div&gt;
 
@@ -475,7 +455,7 @@ export class TissueBlockListComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="tissue-block-header">  <div class="title">{{tissueBlocks.length}} Tissue Blocks</div>  <button class="info" mat-icon-button>    <mat-icon matTooltip="Total quantity of registered Tissue Blocks detected by the Probing Sphere" matTooltipPosition="right">info</mat-icon>  </button></div><div class="tissue-list">  <div class="donor" *ngFor="let tissueBlock of tissueBlocks">    <mat-icon class="icon">person</mat-icon>    <div class="donor-info">      <div class="description">{{ tissueBlock.donor.label }}</div>      <div class="description">{{ tissueBlock.donor.description }}</div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="tissue-block-header">  <div class="title">{{tissueBlocks.length}} Tissue Blocks</div>  <button class="info" mat-icon-button>    <mat-icon matTooltip="Total quantity of registered Tissue Blocks detected by the Probing Sphere"      matTooltipPosition="right">info</mat-icon>  </button></div><div class="tissue-list">  <div class="donor" *ngFor="let tissueBlock of tissueBlocks">    <mat-icon class="icon">person</mat-icon>    <div class="donor-info">      <div class="description">{{ tissueBlock.donor.label }}</div>      <div class="description">{{ tissueBlock.donor.description }}</div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchKeyboardUIBehaviorComponent', 'selector': 'ccf-spatial-search-keyboard-ui-behavior'},{'name': 'SpatialSearchKeyboardUIComponent', 'selector': 'ccf-spatial-search-keyboard-ui'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'TissueBlockListComponent'};

@@ -184,21 +184,22 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { CommonModule } from &#x27;@angular/common&#x27;;
-import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
-import { MatDialogModule } from &#x27;@angular/material/dialog&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { NgModule } from &#x27;@angular/core&#x27;;
 import { MatCardModule } from &#x27;@angular/material/card&#x27;;
-import { CallToActionBehaviorComponent } from &#x27;./call-to-action-behavior.component&#x27;;
-import { CallToActionModule } from &#x27;../call-to-action/call-to-action.module&#x27;;
+import { MatDialogModule } from &#x27;@angular/material/dialog&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 import { NgxsModule } from &#x27;@ngxs/store&#x27;;
+
+import { CallToActionModule } from &#x27;../call-to-action/call-to-action.module&#x27;;
+import { CallToActionBehaviorComponent } from &#x27;./call-to-action-behavior.component&#x27;;
 
 @NgModule({
   declarations: [CallToActionBehaviorComponent],
   imports: [CommonModule, NgxsModule, MatIconModule, MatDialogModule, MatCardModule, CallToActionModule],
   exports: [CallToActionBehaviorComponent]
 })
-export class CallToActionBehaviorModule {}
+export class CallToActionBehaviorModule { }
 
 </code></pre>
     </div>

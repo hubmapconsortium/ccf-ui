@@ -194,7 +194,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ccf-eui/src/app/shared/components/run-spatial-search/run-spatial-search.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/shared/components/run-spatial-search/run-spatial-search.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -271,7 +271,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ccf-eui/src/app/shared/components/run-spatial-search/run-spatial-search.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/shared/components/run-spatial-search/run-spatial-search.component.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -312,14 +312,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/run-spatial-search/run-spatial-search.component.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/run-spatial-search/run-spatial-search.component.ts:30</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Starts spatial search flow</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -369,7 +371,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ccf-eui/src/app/shared/components/run-spatial-search/run-spatial-search.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/shared/components/run-spatial-search/run-spatial-search.component.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -394,7 +396,9 @@ import { Store } from &#x27;@ngxs/store&#x27;;
 import { take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { StartSpatialSearchFlow } from &#x27;../../../core/store/spatial-search-ui/spatial-search-ui.actions&#x27;;
-import { SpatialSearchConfigBehaviorComponent } from &#x27;../spatial-search-config-behavior/spatial-search-config-behavior.component&#x27;;
+import {
+  SpatialSearchConfigBehaviorComponent,
+} from &#x27;../spatial-search-config-behavior/spatial-search-config-behavior.component&#x27;;
 
 
 /**
@@ -412,6 +416,9 @@ export class RunSpatialSearchComponent {
 
   constructor(private readonly store: Store, private readonly dialog: MatDialog) { }
 
+  /**
+   * Starts spatial search flow
+   */
   startSpatialSearchFlow(): void {
     this.store.dispatch(new StartSpatialSearchFlow()).pipe(
       take(1),
