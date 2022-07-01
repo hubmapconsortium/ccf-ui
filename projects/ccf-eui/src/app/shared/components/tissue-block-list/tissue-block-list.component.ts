@@ -12,14 +12,10 @@ import { TissueBlockResult } from 'ccf-database';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TissueBlockListComponent {
-  /**
-   * HTML Class
-   */
+  /** HTML class */
   @HostBinding('class') readonly className = 'ccf-tissue-block-list';
 
-  /**
-   * Tissue blocks to be displayed
-   */
+  /** Tissue blocks to be displayed */
   @Input() tissueBlocks: TissueBlockResult[] = [];
 
 }

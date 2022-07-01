@@ -138,7 +138,7 @@ export class SpatialSearchUiBehaviorComponent {
 
   /**
    * Adds a new spatial search and closes the spatial search UI
-   * @returns spatial search 
+   * @returns spatial search
    */
   @Dispatch()
   addSpatialSearch(): GenerateSpatialSearch {
