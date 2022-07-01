@@ -10,6 +10,7 @@ import { Position, RadiusSettings, TermResult } from '../../../core/store/spatia
   styleUrls: ['./spatial-search-ui.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class SpatialSearchUiComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-ui';
 

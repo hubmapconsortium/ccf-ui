@@ -1,0 +1,38 @@
+:host {
+  padding-top: 1rem;
+  .term-list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .title {
+      font-size: .875rem;
+    }
+    .counter {
+      font-size: 1rem;
+    }
+
+    .info {
+      padding-right: 0;
+      background: none;
+      border: none;
+      outline: none;
+      border-radius: 0.25rem;
+      transition: 0.6s;
+    }
+  }
+  .term-list {
+    overflow: auto;
+    padding-left: 2rem;
+    font-size: 1rem;
+    .term-bloc {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      overflow: auto;
+    }
+    .term-line{
+      padding-right: 2rem;
+    }
+  }
+}

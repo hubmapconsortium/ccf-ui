@@ -42,19 +42,10 @@
     </div>
     <mat-divider></mat-divider>
     <div class="results">
-      <ccf-tissue-block-list class="tissue-block-info" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>
-      <div class="anatomical-structures-info">
-        <div><b>{{ anatomicalStructures?.length ?? 0 }} Anatomical Structures</b></div>
-        <div *ngFor="let term of anatomicalStructures?.slice(0, 3) ?? []">
-          {{ term.label }} ({{ term.count }})
-        </div>
-      </div>
-      <div class="cell-type-info">
-        <div><b>{{ cellTypes?.length ?? 0 }} Predicted Cell Types from ASCT+B Tables</b></div>
-        <div *ngFor="let term of cellTypes?.slice(0, 3) ?? []">
-          {{ term.label }} ({{ term.count }})
-        </div>
-      </div>
+      <ccf-tissue-block-list class="tissue-block list" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>
+      <ccf-term-occurrence-list class="anatomical-structures list" [termList]="anatomicalStructures" [title]="'Anatomical Structures'" [toolTipText]="'Total quantity of predicted anatomical structures detected by the Probing Sphere'"> </ccf-term-occurrence-list>
+
+      <ccf-term-occurrence-list class="cell-type list"  [termList]="cellTypes" [title]="'Predicted Cell Types'" [toolTipText]="'Total quantity of predicted cell types detected by the Probing Sphere'"></ccf-term-occurrence-list>
     </div>
     <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button (click)="addSpatialSearch.emit()">Run Spatial Search</button>
   </div>

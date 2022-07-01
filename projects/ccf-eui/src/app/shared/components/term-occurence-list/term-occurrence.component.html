@@ -1,0 +1,16 @@
+<div class="term-list-header">
+  <div class="title">{{termList.length}} {{title}}</div>
+  <button class="info" mat-icon-button>
+    <mat-icon matTooltip={{toolTipText}} matTooltipPosition="right">info</mat-icon>
+  </button>
+</div>
+
+<div class="term-list">
+  <div class="donor" *ngFor="let term of termList">
+
+    <div class="term-bloc">
+      <div class="term-line">{{ term.label }}</div>
+      <div class="term-line">{{ term.count }}</div>
+    </div>
+  </div>
+</div>
