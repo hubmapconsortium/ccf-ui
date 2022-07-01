@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Store, NgxsModule } from '@ngxs/store';
+import { NgxsModule, Store } from '@ngxs/store';
 import { Shallow } from 'shallow-render';
 
 import { CloseDialog, LearnMore } from '../../states/call-to-action/call-to-action.actions';

@@ -1,29 +1,45 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+
 import { Position } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
 
 
+/**
+ * Behavioral component for spatial search keyboard UI
+ */
 @Component({
   selector: 'ccf-spatial-search-keyboard-ui-behavior',
   templateUrl: './spatial-search-keyboard-ui-behavior.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpatialSearchKeyboardUIBehaviorComponent {
+  /** HTML class */
   @HostBinding('class') readonly className = 'ccf-spatial-search-keyboard-ui-behavior';
 
+  /** Amount the position shifts for each key press */
   @Input() delta = 1;
 
+  /** Input of spatial search keyboard uibehavior component */
   @Input() shiftDelta = 2;
 
+  /** Current position of spatial search */
   @Input() position: Position;
 
+  /** Emits when position changes */
   @Output() readonly changePosition = new EventEmitter<Position>();
 
+  /** Current key being pressed/clicked */
   currentKey?: string;
 
+  /** Current delta */
   currentDelta: number;
 
+  /** True while shift key is pressed */
   shiftPressed = false;
 
+  /**
+   * Shifts position based on key
+   * @param key Key value
+   */
   updatePosition(key: string): void {
     this.currentDelta = this.shiftPressed ? this.shiftDelta : this.delta;
     if (key === 'Shift') {
@@ -56,12 +72,20 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
     }
   }
 
+  /**
+   * Listens for keydown keyboard event and updates the position
+   * @param target Keyboard event
+   */
   @HostListener('document:keydown', ['$event'])
   handleKey(target: KeyboardEvent): void {
     target.preventDefault();
     this.updatePosition(target.key);
   }
 
+  /**
+   * Listens for keyup keyboard event and updates currentKey / shiftPressed
+   * @param target Keyboard event
+   */
   @HostListener('document:keyup', ['$event'])
   keyUp(target: KeyboardEvent): void {
     if (target.key === 'Shift') {
@@ -71,10 +95,18 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
     }
   }
 
+  /**
+   * Updates the position when a key is clicked
+   * @param key Key value
+   */
   keyClick(key: string): void {
     this.updatePosition(key);
   }
 
+  /**
+   * Updates current key when a key is hovered over
+   * @param key Key value
+   */
   keyHover(key?: string): void {
     this.currentKey = key;
   }

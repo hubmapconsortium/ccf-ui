@@ -11,5 +11,5 @@ import { CallToActionComponent } from './call-to-action.component';
   imports: [CommonModule, MatIconModule, MatDialogModule, MatCardModule],
   exports: [CallToActionComponent]
 })
-export class CallToActionModule {}
+export class CallToActionModule { }
 
