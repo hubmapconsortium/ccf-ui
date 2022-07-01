@@ -16,7 +16,7 @@ export class TermOccurrenceListComponent {
   /**
    * array that contains the terms and their counts
    */
-  @Input() termList: TermResult[];
+  @Input() termList: TermResult[] = [];
 
   /**
    * Holds title for section

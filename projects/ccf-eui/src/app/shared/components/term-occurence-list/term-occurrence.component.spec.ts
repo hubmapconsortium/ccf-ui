@@ -3,7 +3,7 @@ import { TermOccurrenceListComponent } from './term-occurrence.component';
 import { TermOccurrenceListModule } from './term-occurrence.module';
 
 
-describe('DropdownComponent', () => {
+describe('TermOccurrenceListComponent', () => {
   let shallow: Shallow<TermOccurrenceListComponent>;
 
   beforeEach(() => {
