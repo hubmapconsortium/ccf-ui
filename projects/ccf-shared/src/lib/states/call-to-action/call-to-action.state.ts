@@ -44,7 +44,7 @@ const SPATIAL_SEARCH_README = 'assets/docs/SPATIAL_SEARCH_README.md';
     title: 'New to the Exploration User Interface',
     message: 'Spatial Search has arrived!',
     callToAction: 'Learn More',
-    imageUrl: 'assets/images/spatial_search.png',
+    imageUrl: 'assets/images/spatial_search.gif',
     expirationDate: 'Dec 1, 2022',
     popupShown: false
   }
