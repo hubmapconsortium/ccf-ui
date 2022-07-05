@@ -95,7 +95,7 @@
     "@ngxs-labs/data": "^6.2.0",
     "@ngxs-labs/dispatch-decorator": "^4.0.2",
     "@ngxs/logger-plugin": "^3.7.1",
-    "@ngxs/storage-plugin": "^3.7.1",
+    "@ngxs/storage-plugin": "^3.7.4",
     "@ngxs/store": "^3.7.3",
     "@rdfjs/data-model": "^1.2.0",
     "@types/lru-cache": "<7.0.0",
