@@ -51,7 +51,7 @@ describe('InfoButtonComponent', () => {
   it('does not launch the dialog when data is empty', async () => {
     const { instance, get } = await shallow.render();
     const spy = spyOn(instance, 'launchInfoDialog');
-    get(InfoButtonService).panelContent.next({} as PanelData);
+    get(InfoButtonService).panelContent.next({ content: [] as DocumentationContent[] } as PanelData);
     expect(spy).not.toHaveBeenCalled();
   });
 

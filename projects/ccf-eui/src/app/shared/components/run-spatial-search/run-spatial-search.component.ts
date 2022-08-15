@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngxs/store';
+import { take, tap } from 'rxjs/operators';
+
+import { StartSpatialSearchFlow } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
+import {
+  SpatialSearchConfigBehaviorComponent,
+} from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
+
 
 /**
  * Button that opens up the Spatial Search config
@@ -13,8 +22,15 @@ export class RunSpatialSearchComponent {
   /** HTML class */
   @HostBinding('class') readonly className = 'ccf-run-spatial-search';
 
+  constructor(private readonly store: Store, private readonly dialog: MatDialog) { }
+
   /**
-   * Emits when the button is clicked
+   * Starts spatial search flow
    */
-  @Output() readonly buttonClick = new EventEmitter();
+  startSpatialSearchFlow(): void {
+    this.store.dispatch(new StartSpatialSearchFlow()).pipe(
+      take(1),
+      tap(() => this.dialog.open(SpatialSearchConfigBehaviorComponent))
+    ).subscribe();
+  }
 }

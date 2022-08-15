@@ -1,0 +1,18 @@
+<div class="tissue-block-header">
+  <div class="title">{{tissueBlocks.length}} Tissue Blocks</div>
+  <button class="info" mat-icon-button>
+    <mat-icon matTooltip="Total quantity of registered Tissue Blocks detected by the Probing Sphere"
+      matTooltipPosition="right">info</mat-icon>
+  </button>
+</div>
+
+<div class="tissue-list">
+  <div class="donor" *ngFor="let tissueBlock of tissueBlocks">
+    <mat-icon class="icon">person</mat-icon>
+
+    <div class="donor-info">
+      <div class="description">{{ tissueBlock.donor.label }}</div>
+      <div class="description">{{ tissueBlock.donor.description }}</div>
+    </div>
+  </div>
+</div>

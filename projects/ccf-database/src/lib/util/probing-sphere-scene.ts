@@ -33,6 +33,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       y: sceneHeight / 2,
       z: sceneDepth / 2
     };
+  } else {
+    sphere = {
+      ...sphere,
+      radius: sphere.radius / 1000,
+      x: sphere.x / 1000,
+      y: sphere.y / 1000,
+      z: sphere.z / 1000
+    };
   }
 
   return [

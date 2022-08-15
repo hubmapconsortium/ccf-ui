@@ -28,7 +28,9 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   button-shadow: rgba(0, 0, 0, 0.749),
   input-bg: rgb(232, 232, 232),
   y-axis: #00C853,
-  z-axis: #2979ff
+  z-axis: #2979ff,
+  slider: #0D47A1,
+  slider-thumb: #1976D2
 ));
 
 $background: map-merge(mat.$light-theme-background-palette, (

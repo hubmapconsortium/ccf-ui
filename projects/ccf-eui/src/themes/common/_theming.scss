@@ -9,6 +9,9 @@
 @use '../../app/shared/components/dual-slider/dual-slider.component.theme' as dualSlider;
 @use '../../app/shared/components/spatial-search-config/spatial-search-config.component.theme' as spatialSearchConfig;
 @use '../../app/shared/components/spatial-search-ui/spatial-search-ui.component.theme' as spatialSearchUi;
+@use '../../app/shared/components/tissue-block-list/tissue-block-list.component.theme' as tissueBlockList;
+@use '../../app/shared/components/term-occurence-list/term-occurrence.component.theme.scss' as termOccurrenceList;
+@use '../../app/shared/components/spatial-search-keyboard-ui/spatial-search-keyboard-ui.component.theme' as spatialSearchKeyboardUi;
 @use '../../app/shared/components/spinner-overlay/spinner-overlay.theme' as spinner;
 @use '../../app/shared/components/thumbnail-carousel/thumbnail-carousel.theme' as thumbnailCarousel;
 @use '../../app/modules/ontology-exploration/ontology-exploration.theme' as ontologyExploration;
@@ -18,6 +21,7 @@
 @use '../../../../ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
 @use '../../../../ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss' as infoButton;
 @use '../../../../ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.theme.scss' as spatialSearchList;
+@use '../../../../ccf-shared/src/lib/components/xyz-position/xyz-position.component.theme.scss' as xyzPosition;
 @use '../../app/shared/components/viewer/viewer.component.theme.scss' as viewer;
 @use '../../app/modules/results-browser/donor-card/donor-card.component.theme.scss' as donorCard;
 @use '../../app/modules/results-browser/tissue-section-vis/tissue-section-vis.theme.scss' as tissueVis;
@@ -42,6 +46,9 @@
   @include dualSlider.theme($theme);
   @include spatialSearchConfig.theme($theme);
   @include spatialSearchUi.theme($theme);
+  @include tissueBlockList.theme($theme);
+  @include termOccurrenceList.theme($theme);
+  @include spatialSearchKeyboardUi.theme($theme);
   @include spinner.theme($theme);
   @include thumbnailCarousel.theme($theme);
   @include filters.theme($theme);
@@ -52,6 +59,7 @@
   @include infoDialog.theme($theme);
   @include infoButton.theme($theme);
   @include spatialSearchList.theme($theme);
+  @include xyzPosition.theme($theme);
   @include viewer.theme($theme);
   @include donorCard.theme($theme);
   @include tissueVis.theme($theme);

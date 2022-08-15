@@ -1,4 +1,6 @@
+import { TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NgxsModule } from '@ngxs/store';
 import { Shallow } from 'shallow-render';
 
 import { SpatialSearchUiBehaviorComponent } from './spatial-search-ui-behavior.component';
@@ -14,6 +16,10 @@ describe('SpatialSearchUiBehaviorComponent', () => {
   let shallow: Shallow<SpatialSearchUiBehaviorComponent>;
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [NgxsModule.forRoot([], {})]
+    });
+
     shallow = new Shallow(SpatialSearchUiBehaviorComponent, SpatialSearchUiBehaviorModule)
       .mock(MatDialogRef, { close(): void { /* Empty */ } });
   });

@@ -4,12 +4,13 @@
 import { Injectable } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
 import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
-import { NgxsOnInit, State } from '@ngxs/store';
+import { Action, NgxsOnInit, Selector, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
-import { AggregateResult, DatabaseStatus, Filter, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
+import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
 import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
 import { delay, distinct, filter as rxjsFilter, map, pluck, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from 'rxjs/operators';
+import { UpdateFilter } from './data.actions';
 
 
 /** Default values for filters. */
@@ -79,6 +80,8 @@ export interface DataStateModel {
   filter: Filter;
   status: 'Loading' | 'Ready' | 'Error';
   statusMessage: string;
+  anatomicalStructuresTreeModel?: OntologyTreeModel;
+  cellTypesTreeModel?: OntologyTreeModel;
 }
 
 /**
@@ -204,6 +207,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
       source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
       source.getCellTypeTermOccurences().pipe(take(1)).subscribe(cellTypeTermsFullData$);
     }
+    this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) => this.updateAnatomicalStructuresTreeModel(model));
+    this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) => this.updateCellTypesTreeModel(model));
     this.warmUpDatabase();
   }
 
@@ -226,8 +231,22 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   }
 
   @DataAction()
+  updateAnatomicalStructuresTreeModel(@Payload('treeModel') model: OntologyTreeModel): void {
+    this.ctx.patchState({
+      anatomicalStructuresTreeModel: model
+    });
+  }
+
+  @DataAction()
+  updateCellTypesTreeModel(@Payload('treeModel') model: OntologyTreeModel): void {
+    this.ctx.patchState({
+      cellTypesTreeModel: model
+    });
+  }
+
+  @DataAction()
   updateStatus(@Payload('status') status: DatabaseStatus): void {
-    this.patchState({
+    this.ctx.patchState({
       status: status.status,
       statusMessage: status.message
     });
@@ -240,10 +259,15 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
    */
   @DataAction()
   updateFilter(@Payload('filter') filter: Partial<Filter>): void {
-    this.patchState({
+    this.ctx.patchState({
       // Might need to do a deep compare of current and new filter
       filter: { ...this.getState().filter, ...filter }
     });
+  }
+
+  @Action(UpdateFilter)
+  updateFilterHandler(_ctx: unknown, { filter }: UpdateFilter): void {
+    this.updateFilter(filter);
   }
 
   /**

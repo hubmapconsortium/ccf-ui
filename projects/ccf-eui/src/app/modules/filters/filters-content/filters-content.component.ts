@@ -1,12 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { SpatialSearchListItem } from 'ccf-shared';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
-import {
-  SpatialSearchConfigBehaviorComponent,
-} from '../../../shared/components/spatial-search-config-behavior/spatial-search-config-behavior.component';
+import { SpatialSearchFilterItem } from '../../../core/store/spatial-search-filter/spatial-search-filter.state';
+import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
+
 
 /**
  * Contains components of the filters popup and handles changes in filter settings
@@ -17,7 +15,7 @@ import {
   styleUrls: ['./filters-content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FiltersContentComponent<S extends SpatialSearchListItem> {
+export class FiltersContentComponent implements OnChanges {
 
   /**
    * Determines if the filters are visible
@@ -42,7 +40,7 @@ export class FiltersContentComponent<S extends SpatialSearchListItem> {
   /**
    * List of spatial searches
    */
-  @Input() spatialSearchFilters: S[] = [];
+  @Input() spatialSearchFilters: SpatialSearchFilterItem[] = [];
 
   /**
    * Emits the filter change when they happen
@@ -50,9 +48,14 @@ export class FiltersContentComponent<S extends SpatialSearchListItem> {
   @Output() readonly filtersChange = new EventEmitter<Record<string, unknown>>();
 
   /**
+   * Emits when a spatial search is selected/deselected
+   */
+  @Output() readonly spatialSearchSelected = new EventEmitter<SpatialSearchFilterItem[]>();
+
+  /**
    * Emits when a spatial search is removed/deleted
    */
-  @Output() readonly spatialSearchRemoved = new EventEmitter<S>();
+  @Output() readonly spatialSearchRemoved = new EventEmitter<string>();
 
   /**
    * Emits the filters to be applied
@@ -64,10 +67,15 @@ export class FiltersContentComponent<S extends SpatialSearchListItem> {
    *
    * @param ga Analytics service
    */
-  constructor(private readonly ga: GoogleAnalyticsService, public dialog: MatDialog) { }
+  constructor(private readonly ga: GoogleAnalyticsService) { }
 
-  openSpatialSearch(): void {
-    this.dialog.open(SpatialSearchConfigBehaviorComponent);
+  /**
+   * Handle input changes
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('spatialSearchFilters' in changes) {
+      this.updateSexFromSelection(this.spatialSearchFilters.filter(item => item.selected));
+    }
   }
 
   /**
@@ -86,6 +94,7 @@ export class FiltersContentComponent<S extends SpatialSearchListItem> {
    * Emits the current filters when the apply button is clicked
    */
   applyButtonClick(): void {
+    this.updateSearchSelection(this.spatialSearchFilters.filter(item => item.selected));
     this.ga.event('filters_applied', 'filter_content');
     this.applyFilters.emit(this.filters);
   }
@@ -96,6 +105,32 @@ export class FiltersContentComponent<S extends SpatialSearchListItem> {
   refreshFilters(): void {
     this.filters = JSON.parse(JSON.stringify(DEFAULT_FILTER));
     this.ga.event('filters_reset', 'filter_content');
+    this.spatialSearchSelected.emit([]);
     this.filtersChange.emit(this.filters);
+  }
+
+  /**
+   * Emits events for updated searches
+   *
+   * @param items New set of selected items
+   */
+  updateSearchSelection(items: SpatialSearchFilterItem[]): void {
+    const searches = items.map(item => item.search);
+
+    this.spatialSearchSelected.emit(items);
+    this.updateFilter(searches, 'spatialSearches');
+    this.updateSexFromSelection(items);
+  }
+
+  /**
+   * Updates sex to `Both` if there is a mismatch between the current selection and the sex
+   */
+  updateSexFromSelection(items: SpatialSearchFilterItem[]): void {
+    const currentSex = (this.filters['sex'] as string)?.toLowerCase() as Sex;
+    const selectedSexes = new Set(items.map(item => item.sex));
+
+    if (items.length > 0 && (selectedSexes.size > 1 || !selectedSexes.has(currentSex))) {
+      this.updateFilter('Both', 'sex');
+    }
   }
 }

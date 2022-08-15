@@ -1,1 +1,70 @@
-<div>Spatial Search UI</div>
+<div class="header">
+  <div class="title">Configure Spatial Search</div>
+  <button class="info" mat-icon-button>
+    <mat-icon (click)="infoClicked.emit()">info</mat-icon>
+  </button>
+  <button class="close" mat-icon-button>
+    <mat-icon (click)="closeSpatialSearch.emit()">close</mat-icon>
+  </button>
+</div>
+
+<div class="content">
+  <div class="info-panel">
+    <div class="organ-sex-selection">
+      <div class="sex">
+        <div class="label">Donor Sex: </div>
+        <div class="current-sex">{{sex.charAt(0).toUpperCase() + sex.slice(1)}}</div>
+      </div>
+      <div class="organ">
+        <div class="label">Organ: </div>
+        <div class="current-organ">{{referenceOrgan.name}}</div>
+      </div>
+      <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="radius-slider">
+      <div class="title">Probing Sphere Radius</div>
+      <div class="slider-container">
+        <mat-slider class="slider" [max]="radiusSettings.max" [min]="radiusSettings.min" [step]="1"
+          (input)="radiusChange.emit($event.value)" [value]="radius"></mat-slider>
+        <span class="text value">{{ radius }} mm</span>
+      </div>
+      <div class="reset-buttons">
+        <button class="reset-sphere button"
+          [class.disabled]="radius === radiusSettings.defaultValue && position === defaultPosition" mat-button
+          (click)="resetSphere.emit(); resetPosition.emit();">Reset Probing Sphere</button>
+        <button class="reset-camera button" mat-button
+          (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset
+          Camera View</button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="results">
+      <ccf-tissue-block-list class="tissue-block list" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>
+      <ccf-term-occurrence-list class="anatomical-structures list" [termList]="anatomicalStructures"
+        title="Anatomical Structures"
+        toolTipText="Total quantity of predicted anatomical structures detected by the Probing Sphere">
+      </ccf-term-occurrence-list>
+      <ccf-term-occurrence-list class="cell-type list" [termList]="cellTypes"
+        title="Predicted Cell Types from ASCT+B Tables"
+        toolTipText="Total quantity of predicted cell types detected by the Probing Sphere"></ccf-term-occurrence-list>
+    </div>
+    <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button
+      (click)="addSpatialSearch.emit()">Run Spatial Search</button>
+  </div>
+  <div class="spatial-search-scene">
+    <div class="primary-scene-wrapper">
+      <div class="body-ui-hint">Use the keyboard or click a Tissue Block to move the Probing Sphere</div>
+      <ccf-body-ui #primary class="primary-scene" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"
+        (nodeClick)="nodeClicked.emit($event?.node)"
+        (rotationChange)="minimap.rotation = $event[0]; minimap.rotationX = $event[1]"></ccf-body-ui>
+    </div>
+    <div class="sidebar">
+      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds"
+        [target]="sceneTarget" (nodeClick)="nodeClicked.emit($event?.node)"></ccf-body-ui>
+      <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position"
+        (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>
+      <ccf-xyz-position [x]="position.x" [y]="position.y" [z]="position.z"></ccf-xyz-position>
+    </div>
+  </div>
+</div>
