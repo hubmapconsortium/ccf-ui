@@ -970,6 +970,9 @@ Cesium-derived code can be found in the submodule: modules/3d-tiles
 @ngxs-labs/data
 MIT
 
+@ngxs-labs/dispatch-decorator
+MIT
+
 @ngxs/logger-plugin
 MIT
 

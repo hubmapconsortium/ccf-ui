@@ -1,0 +1,952 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Library ccf-shared documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Library ccf-shared documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >CallToActionState</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Sets the necessary defaults for the dialog box</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#ctaDatePassed" >ctaDatePassed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getDialogData" >getDialogData</a>
+                            </li>
+                            <li>
+                                <a href="#launchLearnMore" >launchLearnMore</a>
+                            </li>
+                            <li>
+                                <a href="#learnMore" >learnMore</a>
+                            </li>
+                            <li>
+                                <a href="#ngxsOnInit" >ngxsOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#open" >open</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialog: MatDialog, ga: GoogleAnalyticsService, storage: <a href="../injectables/LocalStorageService.html" target="_self">LocalStorageService</a>, infoService: <a href="../injectables/InfoButtonService.html" target="_self">InfoButtonService</a>, http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts:70</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ga</td>
+                                                  
+                                                        <td>
+                                                                    <code>GoogleAnalyticsService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>storage</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LocalStorageService.html" target="_self" >LocalStorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>infoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InfoButtonService.html" target="_self" >InfoButtonService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="close"></a>
+                    <span class="name">
+                        <span ><b>close</b></span>
+                        <a href="#close"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>close(_ctx: <a href="../interfaces/CallToActionModel.html" target="_self">StateContext&lt;CallToActionModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(CloseDialog)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts:153</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>closes all dialog boxes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>_ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/CallToActionModel.html" target="_self" >StateContext&lt;CallToActionModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ctaDatePassed"></a>
+                    <span class="name">
+                        <span class="modifier">Static</span>
+                        <span ><b>ctaDatePassed</b></span>
+                        <a href="#ctaDatePassed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ctaDatePassed(expirationDate: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, now)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts:65</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function that determines if expiration date has passed</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>expirationDate</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>now</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>Date.now</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>boolean defining whether or not info popup has expiered</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDialogData"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getDialogData</b></span>
+                        <a href="#getDialogData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getDialogData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns observable containting info from the markup</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/DocumentationContent.html" target="_self" >Observable&lt;DocumentationContent[]&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="launchLearnMore"></a>
+                    <span class="name">
+                        <span ><b>launchLearnMore</b></span>
+                        <a href="#launchLearnMore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>launchLearnMore(content: <a href="../interfaces/DocumentationContent.html" target="_self">DocumentationContent[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens Learn more dialog</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>content</td>
+                                    <td>
+                                                <code><a href="../interfaces/DocumentationContent.html" target="_self" >DocumentationContent[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="learnMore"></a>
+                    <span class="name">
+                        <span ><b>learnMore</b></span>
+                        <a href="#learnMore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>learnMore(_ctx: <a href="../interfaces/CallToActionModel.html" target="_self">StateContext&lt;CallToActionModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(LearnMore)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles click event box</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>_ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/CallToActionModel.html" target="_self" >StateContext&lt;CallToActionModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/DocumentationContent.html" target="_self" >Observable&lt;DocumentationContent[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngxsOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngxsOnInit</b></span>
+                        <a href="#ngxsOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngxsOnInit(ctx: <a href="../interfaces/CallToActionModel.html" target="_self">StateContext&lt;CallToActionModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/CallToActionModel.html" target="_self" >StateContext&lt;CallToActionModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>open(ctx: <a href="../interfaces/CallToActionModel.html" target="_self">StateContext&lt;CallToActionModel&gt;</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Action(OpenDialog)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">projects/ccf-shared/src/lib/states/call-to-action/call-to-action.state.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens dialog box</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ctx</td>
+                                    <td>
+                                                <code><a href="../interfaces/CallToActionModel.html" target="_self" >StateContext&lt;CallToActionModel&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { Action, NgxsOnInit, State, StateContext } from &#x27;@ngxs/store&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { map, tap } from &#x27;rxjs/operators&#x27;;
+
+import { CallToActionBehaviorComponent } from &#x27;../../components/call-to-action-behavior/call-to-action-behavior.component&#x27;;
+import { DocumentationContent, InfoButtonService } from &#x27;../../components/info/info-button/info-button.service&#x27;;
+import { InfoDialogComponent } from &#x27;../../components/info/info-dialog/info-dialog.component&#x27;;
+import { LocalStorageService } from &#x27;../../services/local-storage/local-storage.service&#x27;;
+import { CloseDialog, LearnMore, OpenDialog } from &#x27;./call-to-action.actions&#x27;;
+
+/**
+ * Interface to hold the necessary parts of the CTA dialog
+ */
+export interface CallToActionModel {
+  title: string;
+  message: string;
+  callToAction: string;
+  imageUrl: string;
+  expirationDate: string;
+  popupShown: boolean;
+
+}
+
+/**
+ * Key for boolean determining if poup has been shown
+ */
+const POPUP_SHOWN_STORAGE_KEY &#x3D; &#x27;callToActionPopupShown&#x27;;
+
+/**
+ * Path to readme markup doc
+ */
+const SPATIAL_SEARCH_README &#x3D; &#x27;assets/docs/SPATIAL_SEARCH_README.md&#x27;;
+
+/**
+ * Sets the necessary defaults for the dialog box
+ */
+@State&lt;CallToActionModel&gt;({
+  name: &#x27;callToAction&#x27;,
+  defaults: {
+    title: &#x27;New to the Exploration User Interface&#x27;,
+    message: &#x27;Spatial Search has arrived!&#x27;,
+    callToAction: &#x27;Learn More&#x27;,
+    imageUrl: &#x27;assets/images/spatial_search.gif&#x27;,
+    expirationDate: &#x27;Dec 1, 2022&#x27;,
+    popupShown: false
+  }
+})
+
+
+/**
+ * State that controls the data and behavior for the CallToAction Component
+ */
+@Injectable()
+export class CallToActionState implements NgxsOnInit {
+  /**
+   * Function that determines if expiration date has passed
+   * @param expirationDate
+   * @param now
+   * @returns boolean defining whether or not info popup has expiered
+   */
+  static ctaDatePassed(expirationDate: string, now &#x3D; Date.now): boolean {
+    const today &#x3D; now();
+    const expire &#x3D; new Date(expirationDate);
+
+    return +today &gt; +expire;
+  }
+
+  constructor(
+    private readonly dialog: MatDialog,
+    private readonly ga: GoogleAnalyticsService,
+    private readonly storage: LocalStorageService,
+    private readonly infoService: InfoButtonService,
+    private readonly http: HttpClient
+  ) { }
+
+
+  ngxsOnInit(ctx: StateContext&lt;CallToActionModel&gt;): void {
+    const { expirationDate, popupShown } &#x3D; ctx.getState();
+    const popupShownStr &#x3D; this.storage.getItem(POPUP_SHOWN_STORAGE_KEY, &#x60;${popupShown}&#x60;);
+    const pastExpiration &#x3D; CallToActionState.ctaDatePassed(expirationDate);
+    const showPopup &#x3D; popupShownStr !&#x3D;&#x3D; &#x27;true&#x27; &amp;&amp; !pastExpiration;
+    if (showPopup) {
+      ctx.dispatch(new OpenDialog());
+    }
+  }
+
+  /**
+   * Returns observable containting info from the markup
+   */
+  private getDialogData(): Observable&lt;DocumentationContent[]&gt;{
+    return this.http.get(SPATIAL_SEARCH_README, { responseType: &#x27;text&#x27; }).pipe(map(data &#x3D;&gt;
+      this.infoService.parseMarkdown(data)
+    ));
+  }
+
+  /**
+   * Opens Learn more dialog
+   */
+  launchLearnMore(content: DocumentationContent[]): void{
+    this.dialog.open(InfoDialogComponent, {
+      autoFocus: false,
+      panelClass: &#x27;modal-animated&#x27;,
+      width: &#x27;72rem&#x27;,
+      data: {
+        title: &#x27;Spatial Search&#x27;,
+        content: content,
+        videoID: &#x27;UfxMpzatowE&#x27;
+      }
+    });
+  }
+
+  /**
+   * Handles click event box
+   * @param _ctx
+   */
+  @Action(LearnMore)
+  learnMore(_ctx: StateContext&lt;CallToActionModel&gt;): Observable&lt;DocumentationContent[]&gt; {
+    this.dialog.closeAll();
+    this.ga.event(&#x27;open_learn_more&#x27;, &#x27;call_to_action&#x27;);
+
+    return this.getDialogData().pipe(
+      tap(data &#x3D;&gt; this.launchLearnMore(data))
+    );
+  }
+
+  /**
+   * Opens dialog box
+   * @param ctx
+   */
+  @Action(OpenDialog)
+  open(ctx: StateContext&lt;CallToActionModel&gt;): void {
+    this.dialog.open(CallToActionBehaviorComponent, {
+      autoFocus: false,
+      panelClass: &#x27;modal-animated&#x27;,
+      width: &#x27;30.75rem&#x27;,
+      height: &#x27;36.688rem&#x27;
+    });
+
+    this.ga.event(&#x27;open&#x27;, &#x27;call_to_action&#x27;);
+    this.storage.setItem(POPUP_SHOWN_STORAGE_KEY, &#x27;true&#x27;);
+    ctx.patchState({ popupShown: true });
+  }
+
+  /**
+   * closes all dialog boxes
+   * @param _ctxs;
+   */
+  @Action(CloseDialog)
+  close(_ctx: StateContext&lt;CallToActionModel&gt;): void {
+    this.dialog.closeAll();
+    this.ga.event(&#x27;close&#x27;, &#x27;call_to_action&#x27;);
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'CallToActionState.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

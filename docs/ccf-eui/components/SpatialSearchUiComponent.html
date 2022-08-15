@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Main Spatial Search UI component</p>
+
+    </p>
 
 
 
@@ -140,7 +147,92 @@
                 </tr>
 
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#anatomicalStructures" >anatomicalStructures</a>
+                            </li>
+                            <li>
+                                <a href="#cellTypes" >cellTypes</a>
+                            </li>
+                            <li>
+                                <a href="#defaultPosition" >defaultPosition</a>
+                            </li>
+                            <li>
+                                <a href="#position" >position</a>
+                            </li>
+                            <li>
+                                <a href="#radius" >radius</a>
+                            </li>
+                            <li>
+                                <a href="#radiusSettings" >radiusSettings</a>
+                            </li>
+                            <li>
+                                <a href="#referenceOrgan" >referenceOrgan</a>
+                            </li>
+                            <li>
+                                <a href="#scene" >scene</a>
+                            </li>
+                            <li>
+                                <a href="#sceneBounds" >sceneBounds</a>
+                            </li>
+                            <li>
+                                <a href="#sceneTarget" >sceneTarget</a>
+                            </li>
+                            <li>
+                                <a href="#sex" >sex</a>
+                            </li>
+                            <li>
+                                <a href="#tissueBlocks" >tissueBlocks</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addSpatialSearch" >addSpatialSearch</a>
+                            </li>
+                            <li>
+                                <a href="#closeSpatialSearch" >closeSpatialSearch</a>
+                            </li>
+                            <li>
+                                <a href="#editReferenceOrganClicked" >editReferenceOrganClicked</a>
+                            </li>
+                            <li>
+                                <a href="#infoClicked" >infoClicked</a>
+                            </li>
+                            <li>
+                                <a href="#nodeClicked" >nodeClicked</a>
+                            </li>
+                            <li>
+                                <a href="#positionChange" >positionChange</a>
+                            </li>
+                            <li>
+                                <a href="#radiusChange" >radiusChange</a>
+                            </li>
+                            <li>
+                                <a href="#resetPosition" >resetPosition</a>
+                            </li>
+                            <li>
+                                <a href="#resetSphere" >resetSphere</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -163,8 +255,579 @@
 </section>
 
 
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="anatomicalStructures"></a>
+                        <b>anatomicalStructures</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TermResult.html" target="_self" >TermResult[]</a></code>
 
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:53</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Anatomical structures within the sphere radius</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cellTypes"></a>
+                        <b>cellTypes</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TermResult.html" target="_self" >TermResult[]</a></code>
 
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:56</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Cell types within the sphere radius</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultPosition"></a>
+                        <b>defaultPosition</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Position.html" target="_self" >Position</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:44</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Starting position of sphere</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="position"></a>
+                        <b>position</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Position.html" target="_self" >Position</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:47</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current position of sphere</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="radius"></a>
+                        <b>radius</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:38</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current sphere radius setting</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="radiusSettings"></a>
+                        <b>radiusSettings</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RadiusSettings.html" target="_self" >RadiusSettings</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:41</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Maximum, minimum, and default sphere radius values</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="referenceOrgan"></a>
+                        <b>referenceOrgan</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>OrganInfo</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:35</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current selected organ</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="scene"></a>
+                        <b>scene</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SpatialSceneNode[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:23</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Nodes in the scene</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sceneBounds"></a>
+                        <b>sceneBounds</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Position.html" target="_self" >Position</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:26</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Bounds of the scene</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sceneTarget"></a>
+                        <b>sceneTarget</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[number, number, number]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:29</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Scene target</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sex"></a>
+                        <b>sex</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:32</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current selected sex</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tissueBlocks"></a>
+                        <b>tissueBlocks</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TissueBlockResult[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:50</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Tissue blocks within the sphere radius</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addSpatialSearch"></a>
+                        <b>addSpatialSearch</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:59</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when run spatial search button clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="closeSpatialSearch"></a>
+                        <b>closeSpatialSearch</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:68</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when close button clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editReferenceOrganClicked"></a>
+                        <b>editReferenceOrganClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:77</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when the edit organ link is clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="infoClicked"></a>
+                        <b>infoClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:80</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when info button in header is clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodeClicked"></a>
+                        <b>nodeClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:83</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when a node in the scene is clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="positionChange"></a>
+                        <b>positionChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:74</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when the sphere position changes</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="radiusChange"></a>
+                        <b>radiusChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:71</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when the radius changes</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resetPosition"></a>
+                        <b>resetPosition</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:62</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when reset probing sphere button clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resetSphere"></a>
+                        <b>resetSphere</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:65</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when reset camera button clicked</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
     <section>
     <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -190,10 +853,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:20</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML Class</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -240,10 +909,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:20</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>HTML Class</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -253,22 +928,165 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
+import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
+import { TissueBlockResult } from &#x27;ccf-database&#x27;;
+import { OrganInfo } from &#x27;ccf-shared&#x27;;
 
+import { Position, RadiusSettings, TermResult } from &#x27;../../../core/store/spatial-search-ui/spatial-search-ui.state&#x27;;
+
+/**
+ * Main Spatial Search UI component
+ */
 @Component({
   selector: &#x27;ccf-spatial-search-ui&#x27;,
   templateUrl: &#x27;./spatial-search-ui.component.html&#x27;,
   styleUrls: [&#x27;./spatial-search-ui.component.scss&#x27;],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class SpatialSearchUiComponent {
+  /** HTML Class */
   @HostBinding(&#x27;class&#x27;) readonly className &#x3D; &#x27;ccf-spatial-search-ui&#x27;;
+
+  /** Nodes in the scene */
+  @Input() readonly scene: SpatialSceneNode[];
+
+  /** Bounds of the scene */
+  @Input() readonly sceneBounds: Position;
+
+  /** Scene target */
+  @Input() readonly sceneTarget: [number, number, number];
+
+  /** Current selected sex */
+  @Input() readonly sex: string;
+
+  /** Current selected organ */
+  @Input() readonly referenceOrgan: OrganInfo;
+
+  /** Current sphere radius setting */
+  @Input() readonly radius: number;
+
+  /** Maximum, minimum, and default sphere radius values */
+  @Input() readonly radiusSettings: RadiusSettings;
+
+  /** Starting position of sphere */
+  @Input() readonly defaultPosition: Position;
+
+  /** Current position of sphere */
+  @Input() readonly position: Position;
+
+  /** Tissue blocks within the sphere radius */
+  @Input() readonly tissueBlocks: TissueBlockResult[];
+
+  /** Anatomical structures within the sphere radius */
+  @Input() readonly anatomicalStructures: TermResult[];
+
+  /** Cell types within the sphere radius */
+  @Input() readonly cellTypes: TermResult[];
+
+  /** Emits when run spatial search button clicked */
+  @Output() readonly addSpatialSearch &#x3D; new EventEmitter();
+
+  /** Emits when reset probing sphere button clicked */
+  @Output() readonly resetPosition &#x3D; new EventEmitter();
+
+  /** Emits when reset camera button clicked */
+  @Output() readonly resetSphere &#x3D; new EventEmitter();
+
+  /** Emits when close button clicked */
+  @Output() readonly closeSpatialSearch &#x3D; new EventEmitter();
+
+  /** Emits when the radius changes */
+  @Output() readonly radiusChange &#x3D; new EventEmitter&lt;number&gt;();
+
+  /** Emits when the sphere position changes */
+  @Output() readonly positionChange &#x3D; new EventEmitter&lt;Position&gt;();
+
+  /** Emits when the edit organ link is clicked */
+  @Output() readonly editReferenceOrganClicked &#x3D; new EventEmitter();
+
+  /** Emits when info button in header is clicked */
+  @Output() readonly infoClicked &#x3D; new EventEmitter();
+
+  /** Emits when a node in the scene is clicked */
+  @Output() readonly nodeClicked &#x3D; new EventEmitter&lt;SpatialSceneNode&gt;();
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div&gt;Spatial Search UI&lt;/div&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;header&quot;&gt;
+  &lt;div class&#x3D;&quot;title&quot;&gt;Configure Spatial Search&lt;/div&gt;
+  &lt;button class&#x3D;&quot;info&quot; mat-icon-button&gt;
+    &lt;mat-icon (click)&#x3D;&quot;infoClicked.emit()&quot;&gt;info&lt;/mat-icon&gt;
+  &lt;/button&gt;
+  &lt;button class&#x3D;&quot;close&quot; mat-icon-button&gt;
+    &lt;mat-icon (click)&#x3D;&quot;closeSpatialSearch.emit()&quot;&gt;close&lt;/mat-icon&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;content&quot;&gt;
+  &lt;div class&#x3D;&quot;info-panel&quot;&gt;
+    &lt;div class&#x3D;&quot;organ-sex-selection&quot;&gt;
+      &lt;div class&#x3D;&quot;sex&quot;&gt;
+        &lt;div class&#x3D;&quot;label&quot;&gt;Donor Sex: &lt;/div&gt;
+        &lt;div class&#x3D;&quot;current-sex&quot;&gt;{{sex.charAt(0).toUpperCase() + sex.slice(1)}}&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;organ&quot;&gt;
+        &lt;div class&#x3D;&quot;label&quot;&gt;Organ: &lt;/div&gt;
+        &lt;div class&#x3D;&quot;current-organ&quot;&gt;{{referenceOrgan.name}}&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;edit&quot; (click)&#x3D;&quot;editReferenceOrganClicked.emit()&quot;&gt;Edit&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+    &lt;div class&#x3D;&quot;radius-slider&quot;&gt;
+      &lt;div class&#x3D;&quot;title&quot;&gt;Probing Sphere Radius&lt;/div&gt;
+      &lt;div class&#x3D;&quot;slider-container&quot;&gt;
+        &lt;mat-slider class&#x3D;&quot;slider&quot; [max]&#x3D;&quot;radiusSettings.max&quot; [min]&#x3D;&quot;radiusSettings.min&quot; [step]&#x3D;&quot;1&quot;
+          (input)&#x3D;&quot;radiusChange.emit($event.value)&quot; [value]&#x3D;&quot;radius&quot;&gt;&lt;/mat-slider&gt;
+        &lt;span class&#x3D;&quot;text value&quot;&gt;{{ radius }} mm&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;reset-buttons&quot;&gt;
+        &lt;button class&#x3D;&quot;reset-sphere button&quot;
+          [class.disabled]&#x3D;&quot;radius &#x3D;&#x3D;&#x3D; radiusSettings.defaultValue &amp;&amp; position &#x3D;&#x3D;&#x3D; defaultPosition&quot; mat-button
+          (click)&#x3D;&quot;resetSphere.emit(); resetPosition.emit();&quot;&gt;Reset Probing Sphere&lt;/button&gt;
+        &lt;button class&#x3D;&quot;reset-camera button&quot; mat-button
+          (click)&#x3D;&quot;primary.rotation &#x3D; primary.rotationX &#x3D; minimap.rotation &#x3D; minimap.rotationX &#x3D; 0; primary.target &#x3D; minimap.target &#x3D; sceneTarget; primary.bounds &#x3D; minimap.bounds &#x3D; sceneBounds;&quot;&gt;Reset
+          Camera View&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+    &lt;div class&#x3D;&quot;results&quot;&gt;
+      &lt;ccf-tissue-block-list class&#x3D;&quot;tissue-block list&quot; [tissueBlocks]&#x3D;&quot;tissueBlocks&quot;&gt;&lt;/ccf-tissue-block-list&gt;
+      &lt;ccf-term-occurrence-list class&#x3D;&quot;anatomical-structures list&quot; [termList]&#x3D;&quot;anatomicalStructures&quot;
+        title&#x3D;&quot;Anatomical Structures&quot;
+        toolTipText&#x3D;&quot;Total quantity of predicted anatomical structures detected by the Probing Sphere&quot;&gt;
+      &lt;/ccf-term-occurrence-list&gt;
+      &lt;ccf-term-occurrence-list class&#x3D;&quot;cell-type list&quot; [termList]&#x3D;&quot;cellTypes&quot;
+        title&#x3D;&quot;Predicted Cell Types from ASCT+B Tables&quot;
+        toolTipText&#x3D;&quot;Total quantity of predicted cell types detected by the Probing Sphere&quot;&gt;&lt;/ccf-term-occurrence-list&gt;
+    &lt;/div&gt;
+    &lt;button class&#x3D;&quot;run-spatial-search button&quot; [class.disabled]&#x3D;&quot;tissueBlocks?.length &#x3D;&#x3D;&#x3D; 0&quot; mat-button
+      (click)&#x3D;&quot;addSpatialSearch.emit()&quot;&gt;Run Spatial Search&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;spatial-search-scene&quot;&gt;
+    &lt;div class&#x3D;&quot;primary-scene-wrapper&quot;&gt;
+      &lt;div class&#x3D;&quot;body-ui-hint&quot;&gt;Use the keyboard or click a Tissue Block to move the Probing Sphere&lt;/div&gt;
+      &lt;ccf-body-ui #primary class&#x3D;&quot;primary-scene&quot; [scene]&#x3D;&quot;scene&quot; [bounds]&#x3D;&quot;sceneBounds&quot; [target]&#x3D;&quot;sceneTarget&quot;
+        (nodeClick)&#x3D;&quot;nodeClicked.emit($event?.node)&quot;
+        (rotationChange)&#x3D;&quot;minimap.rotation &#x3D; $event[0]; minimap.rotationX &#x3D; $event[1]&quot;&gt;&lt;/ccf-body-ui&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;sidebar&quot;&gt;
+      &lt;ccf-body-ui #minimap class&#x3D;&quot;minimap-scene&quot; [interactive]&#x3D;&quot;false&quot; [scene]&#x3D;&quot;scene&quot; [bounds]&#x3D;&quot;sceneBounds&quot;
+        [target]&#x3D;&quot;sceneTarget&quot; (nodeClick)&#x3D;&quot;nodeClicked.emit($event?.node)&quot;&gt;&lt;/ccf-body-ui&gt;
+      &lt;ccf-spatial-search-keyboard-ui-behavior [delta]&#x3D;&quot;1&quot; [shiftDelta]&#x3D;&quot;2&quot; [position]&#x3D;&quot;position&quot;
+        (changePosition)&#x3D;&quot;positionChange.emit($event)&quot;&gt;&lt;/ccf-spatial-search-keyboard-ui-behavior&gt;
+      &lt;ccf-xyz-position [x]&#x3D;&quot;position.x&quot; [y]&#x3D;&quot;position.y&quot; [z]&#x3D;&quot;position.z&quot;&gt;&lt;/ccf-xyz-position&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -283,8 +1101,183 @@ export class SpatialSearchUiComponent {
   gap: 1rem;
   height: 95vh;
   width: 78vw;
-  border-radius: .25px;
-}</code></pre>
+  border-radius: 0.25rem;
+  min-height: 45rem;
+  min-width: 60rem;
+
+  .header {
+    display: flex;
+    width: 100%;
+
+    .info, .close {
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      border-radius: 0.25rem;
+      transition: 0.6s;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+    }
+
+    .close {
+      margin-left: auto;
+    }
+  }
+
+  .content {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 3.5rem);
+
+    .button {
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      height: 2rem;
+      line-height: 2rem;
+      transition: 0.5s;
+
+      &amp;.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+
+    .info-panel {
+      display: flex;
+      flex-direction: column;
+      margin-right: 2rem;
+      grid-gap: 1rem;
+      gap: 1rem;
+      width: 25rem;
+
+      .organ-sex-selection {
+        display: flex;
+        font-size: 1rem;
+        justify-content: space-between;
+
+        .sex, .organ {
+          display: flex;
+
+          .label {
+            font-weight: 300;
+            margin-right: 0.5rem;
+          }
+
+          .current-sex, .current-organ {
+            font-weight: 600;
+          }
+        }
+
+        .edit {
+          cursor: pointer;
+        }
+      }
+
+      .radius-slider {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          font-weight: 600;
+          font-size: 1rem;
+        }
+
+        .slider-container {
+          display: flex;
+          justify-content: space-between;
+
+          .slider {
+            width: 19rem;
+          }
+
+          .value {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+          }
+        }
+
+        .reset-buttons {
+          display: flex;
+          justify-content: space-between;
+
+          button {
+            width: 11.5rem;
+          }
+        }
+      }
+
+      .results {
+        height: calc(100% - 15rem - 2px);
+        .list {
+          height: 33%;
+          display: flex;
+          flex-direction: column;
+          
+        }
+      }
+    }
+
+    .spatial-search-scene {
+      display: flex;
+      width: calc(100% - 25rem);
+      background-color: black;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+      border-top-right-radius: .5rem;
+      border-top-left-radius: .5rem;
+
+      .primary-scene-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        .primary-scene {
+          flex: auto;
+          overflow: hidden;
+        }
+
+        .body-ui-hint {
+          color: white;
+          font-size: 1rem;
+          margin: 1rem;
+        }
+      }
+
+      .sidebar {
+        .minimap-scene {
+          margin: 1.5rem;
+          width: 12.75rem;
+          height: 11rem;
+          ::ng-deep .body-ui {
+            background-color: #232f3a;
+          }
+        }
+
+        ccf-spatial-search-keyboard-ui-behavior {
+          margin: 1.5rem;
+          display: flex;
+          justify-content: center;
+        }
+
+        ccf-xyz-position {
+          margin: 1.5rem;
+          padding-left: 5rem;
+        }
+      }
+    }
+  }
+}
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -312,8 +1305,8 @@ export class SpatialSearchUiComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>Spatial Search UI</div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
+        var COMPONENT_TEMPLATE = '<div><div class="header">  <div class="title">Configure Spatial Search</div>  <button class="info" mat-icon-button>    <mat-icon (click)="infoClicked.emit()">info</mat-icon>  </button>  <button class="close" mat-icon-button>    <mat-icon (click)="closeSpatialSearch.emit()">close</mat-icon>  </button></div><div class="content">  <div class="info-panel">    <div class="organ-sex-selection">      <div class="sex">        <div class="label">Donor Sex: </div>        <div class="current-sex">{{sex.charAt(0).toUpperCase() + sex.slice(1)}}</div>      </div>      <div class="organ">        <div class="label">Organ: </div>        <div class="current-organ">{{referenceOrgan.name}}</div>      </div>      <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>    </div>    <mat-divider></mat-divider>    <div class="radius-slider">      <div class="title">Probing Sphere Radius</div>      <div class="slider-container">        <mat-slider class="slider" [max]="radiusSettings.max" [min]="radiusSettings.min" [step]="1"          (input)="radiusChange.emit($event.value)" [value]="radius"></mat-slider>        <span class="text value">{{ radius }} mm</span>      </div>      <div class="reset-buttons">        <button class="reset-sphere button"          [class.disabled]="radius === radiusSettings.defaultValue && position === defaultPosition" mat-button          (click)="resetSphere.emit(); resetPosition.emit();">Reset Probing Sphere</button>        <button class="reset-camera button" mat-button          (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset          Camera View</button>      </div>    </div>    <mat-divider></mat-divider>    <div class="results">      <ccf-tissue-block-list class="tissue-block list" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>      <ccf-term-occurrence-list class="anatomical-structures list" [termList]="anatomicalStructures"        title="Anatomical Structures"        toolTipText="Total quantity of predicted anatomical structures detected by the Probing Sphere">      </ccf-term-occurrence-list>      <ccf-term-occurrence-list class="cell-type list" [termList]="cellTypes"        title="Predicted Cell Types from ASCT+B Tables"        toolTipText="Total quantity of predicted cell types detected by the Probing Sphere"></ccf-term-occurrence-list>    </div>    <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button      (click)="addSpatialSearch.emit()">Run Spatial Search</button>  </div>  <div class="spatial-search-scene">    <div class="primary-scene-wrapper">      <div class="body-ui-hint">Use the keyboard or click a Tissue Block to move the Probing Sphere</div>      <ccf-body-ui #primary class="primary-scene" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"        (nodeClick)="nodeClicked.emit($event?.node)"        (rotationChange)="minimap.rotation = $event[0]; minimap.rotationX = $event[1]"></ccf-body-ui>    </div>    <div class="sidebar">      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds"        [target]="sceneTarget" (nodeClick)="nodeClicked.emit($event?.node)"></ccf-body-ui>      <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position"        (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>      <ccf-xyz-position [x]="position.x" [y]="position.y" [z]="position.z"></ccf-xyz-position>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchKeyboardUIBehaviorComponent', 'selector': 'ccf-spatial-search-keyboard-ui-behavior'},{'name': 'SpatialSearchKeyboardUIComponent', 'selector': 'ccf-spatial-search-keyboard-ui'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SpatialSearchUiComponent'};
 </script>

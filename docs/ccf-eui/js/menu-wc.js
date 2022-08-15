@@ -65,13 +65,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AppModule.html" data-type="entity-link" >AppModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AppModule-19aa8f4c07864c60b0c2c43361d5485a"' : 'data-target="#xs-components-links-module-AppModule-19aa8f4c07864c60b0c2c43361d5485a"' }>
+                                            'data-target="#components-links-module-AppModule-9b0f9bba3ec790d9b9b5224a2f3232a9"' : 'data-target="#xs-components-links-module-AppModule-9b0f9bba3ec790d9b9b5224a2f3232a9"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-19aa8f4c07864c60b0c2c43361d5485a"' :
-                                            'id="xs-components-links-module-AppModule-19aa8f4c07864c60b0c2c43361d5485a"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-9b0f9bba3ec790d9b9b5224a2f3232a9"' :
+                                            'id="xs-components-links-module-AppModule-9b0f9bba3ec790d9b9b5224a2f3232a9"' }>
                                             <li class="link">
                                                 <a href="components/AppComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppComponent</a>
                                             </li>
@@ -352,6 +352,40 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/SpatialSearchKeyboardUIBehaviorModule.html" data-type="entity-link" >SpatialSearchKeyboardUIBehaviorModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchKeyboardUIBehaviorModule-a90310ed3be22747b34c1f34a5808778"' : 'data-target="#xs-components-links-module-SpatialSearchKeyboardUIBehaviorModule-a90310ed3be22747b34c1f34a5808778"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchKeyboardUIBehaviorModule-a90310ed3be22747b34c1f34a5808778"' :
+                                            'id="xs-components-links-module-SpatialSearchKeyboardUIBehaviorModule-a90310ed3be22747b34c1f34a5808778"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchKeyboardUIBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchKeyboardUIBehaviorComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchKeyboardUIModule.html" data-type="entity-link" >SpatialSearchKeyboardUIModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SpatialSearchKeyboardUIModule-81a2d5cf698fefc316d91cdb1eff6ffc"' : 'data-target="#xs-components-links-module-SpatialSearchKeyboardUIModule-81a2d5cf698fefc316d91cdb1eff6ffc"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchKeyboardUIModule-81a2d5cf698fefc316d91cdb1eff6ffc"' :
+                                            'id="xs-components-links-module-SpatialSearchKeyboardUIModule-81a2d5cf698fefc316d91cdb1eff6ffc"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchKeyboardUIComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchKeyboardUIComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/SpatialSearchUiBehaviorModule.html" data-type="entity-link" >SpatialSearchUiBehaviorModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -372,13 +406,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' }>
+                                            'data-target="#components-links-module-SpatialSearchUiModule-2e9755f40061ab8367feee956b8dd3da"' : 'data-target="#xs-components-links-module-SpatialSearchUiModule-2e9755f40061ab8367feee956b8dd3da"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-dbbc7d08493cc0e9efad9df2cbb0747a"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-2e9755f40061ab8367feee956b8dd3da"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-2e9755f40061ab8367feee956b8dd3da"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>
@@ -404,6 +438,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/StoreModule.html" data-type="entity-link" >StoreModule</a>
+                            </li>
+                            <li class="link">
+                                <a href="modules/TermOccurrenceListModule.html" data-type="entity-link" >TermOccurrenceListModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-TermOccurrenceListModule-b2ada8d7956229b7334cfa0e9de00903"' : 'data-target="#xs-components-links-module-TermOccurrenceListModule-b2ada8d7956229b7334cfa0e9de00903"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-TermOccurrenceListModule-b2ada8d7956229b7334cfa0e9de00903"' :
+                                            'id="xs-components-links-module-TermOccurrenceListModule-b2ada8d7956229b7334cfa0e9de00903"' }>
+                                            <li class="link">
+                                                <a href="components/TermOccurrenceListComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TermOccurrenceListComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                             <li class="link">
                                 <a href="modules/ThemingModule.html" data-type="entity-link" >ThemingModule</a>
@@ -435,6 +486,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'id="xs-components-links-module-ThumbnailCarouselModule-72cea5b89d26bc3311058ecad8ae374c"' }>
                                             <li class="link">
                                                 <a href="components/ThumbnailCarouselComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ThumbnailCarouselComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/TissueBlockListModule.html" data-type="entity-link" >TissueBlockListModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-TissueBlockListModule-4a518b9283d083b20b302ef73e9a57a7"' : 'data-target="#xs-components-links-module-TissueBlockListModule-4a518b9283d083b20b302ef73e9a57a7"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-TissueBlockListModule-4a518b9283d083b20b302ef73e9a57a7"' :
+                                            'id="xs-components-links-module-TissueBlockListModule-4a518b9283d083b20b302ef73e9a57a7"' }>
+                                            <li class="link">
+                                                <a href="components/TissueBlockListComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TissueBlockListComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -484,7 +552,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
                             <li class="link">
+                                <a href="classes/AddSearch.html" data-type="entity-link" >AddSearch</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/DataStateSelectors.html" data-type="entity-link" >DataStateSelectors</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/FlatNode.html" data-type="entity-link" >FlatNode</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/GenerateSpatialSearch.html" data-type="entity-link" >GenerateSpatialSearch</a>
                             </li>
                             <li class="link">
                                 <a href="classes/InitializationState.html" data-type="entity-link" >InitializationState</a>
@@ -493,13 +570,52 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/MessageChannel.html" data-type="entity-link" >MessageChannel</a>
                             </li>
                             <li class="link">
+                                <a href="classes/MoveToNode.html" data-type="entity-link" >MoveToNode</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ReallyUpdateSpatialSearch.html" data-type="entity-link" >ReallyUpdateSpatialSearch</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/RemoveSearch.html" data-type="entity-link" >RemoveSearch</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ResetPosition.html" data-type="entity-link" >ResetPosition</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ResetRadius.html" data-type="entity-link" >ResetRadius</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SetExecuteSearchOnGenerate.html" data-type="entity-link" >SetExecuteSearchOnGenerate</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/SetOrgan.html" data-type="entity-link" >SetOrgan</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SetPosition.html" data-type="entity-link" >SetPosition</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SetRadius.html" data-type="entity-link" >SetRadius</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/SetSelectedSearches.html" data-type="entity-link" >SetSelectedSearches</a>
                             </li>
                             <li class="link">
                                 <a href="classes/SetSex.html" data-type="entity-link" >SetSex</a>
                             </li>
                             <li class="link">
+                                <a href="classes/SpatialSearchFilterSelectors.html" data-type="entity-link" >SpatialSearchFilterSelectors</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/SpatialSearchUiSelectors.html" data-type="entity-link" >SpatialSearchUiSelectors</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/StartSpatialSearchFlow.html" data-type="entity-link" >StartSpatialSearchFlow</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateFilter.html" data-type="entity-link" >UpdateFilter</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateSpatialSearch.html" data-type="entity-link" >UpdateSpatialSearch</a>
                             </li>
                         </ul>
                     </li>
@@ -537,6 +653,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/SceneState.html" data-type="entity-link" >SceneState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/SpatialSearchFilterState.html" data-type="entity-link" >SpatialSearchFilterState</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/SpatialSearchUiState.html" data-type="entity-link" >SpatialSearchUiState</a>
@@ -603,13 +722,25 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/OntologySelection.html" data-type="entity-link" >OntologySelection</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Position.html" data-type="entity-link" >Position</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/RadiusSettings.html" data-type="entity-link" >RadiusSettings</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/SceneStateModel.html" data-type="entity-link" >SceneStateModel</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/SearchResult.html" data-type="entity-link" >SearchResult</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/SpatialSearchFilterItem.html" data-type="entity-link" >SpatialSearchFilterItem</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/SpatialSearchUiModel.html" data-type="entity-link" >SpatialSearchUiModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/TermResult.html" data-type="entity-link" >TermResult</a>
                             </li>
                         </ul>
                     </li>

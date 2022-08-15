@@ -715,8 +715,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:208</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:211</a></div>
                 </td>
             </tr>
 
@@ -791,8 +791,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="213"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:213</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="216"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:216</a></div>
                 </td>
             </tr>
 
@@ -830,8 +830,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="202"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:202</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="205"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/body-ui/body-ui.component.ts:205</a></div>
                 </td>
             </tr>
 
@@ -2125,6 +2125,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
     if (this.bounds) {
       this.zoomToBounds(this.bounds);
     }
+    if (this.target) {
+      this.bodyUI.setTarget(this.target);
+    }
     this.subscriptions &#x3D; [
       this.bodyUI.sceneRotation$.subscribe((rotation) &#x3D;&gt; this.rotationChange.next(rotation)),
       this.bodyUI.nodeDrag$.subscribe((event) &#x3D;&gt; this.nodeDrag.emit(event)),
@@ -2204,7 +2207,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><canvas #bodyCanvas class="body-ui"></canvas></div>'
-    var COMPONENTS = [{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'SpatialSearchListComponent', 'selector': 'ccf-spatial-search-list'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'}];
+    var COMPONENTS = [{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CallToActionBehaviorComponent', 'selector': 'ccf-call-to-action-behavior'},{'name': 'CallToActionComponent', 'selector': 'ccf-call-to-action'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'SpatialSearchListComponent', 'selector': 'ccf-spatial-search-list'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'XYZPositionComponent', 'selector': 'ccf-xyz-position'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'BodyUiComponent'};
 </script>
