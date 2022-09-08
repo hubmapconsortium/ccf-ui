@@ -222,7 +222,7 @@ Full RUI Example
   <ccf-eui
     hubmap-data-service="search-api"
     hubmap-portal-url="https://portal.test.hubmapconsortium.org/"
-    hubmap-data-url="https://search.api.hubmapconsortium.org/entities/search"
+    hubmap-data-url="https://search.api.hubmapconsortium.org/v3/entities/search"
     hubmap-asset-url="https://assets.test.hubmapconsortium.org"
   ></ccf-eui>
 </body>
@@ -325,7 +325,7 @@ Full ORGAN-INFO Example
     side="Right"
     hubmap-data-service="search-api"
     hubmap-portal-url="https://portal.test.hubmapconsortium.org/"
-    hubmap-data-url="https://search.api.hubmapconsortium.org/entities/search"
+    hubmap-data-url="https://search.api.hubmapconsortium.org/v3/entities/search"
     hubmap-asset-url="https://assets.test.hubmapconsortium.org"
   ></ccf-eui>
 </body>

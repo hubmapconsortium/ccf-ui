@@ -63,7 +63,7 @@ export function getDatabaseOptions(): CCFDatabaseOptions {
     dataSources: parseDatabaseSources(get('DB_DATA_SOURCES', '')),
     hubmapDataService: get('DB_DATA_SERVICE', 'search-api') as ServiceT,
     hubmapPortalUrl: get('DB_PORTAL_URL', 'https://portal.hubmapconsortium.org/'),
-    hubmapDataUrl: get('DB_DATA_URL', 'https://search.api.hubmapconsortium.org/entities/search'),
+    hubmapDataUrl: get('DB_DATA_URL', 'https://search.api.hubmapconsortium.org/v3/entities/search'),
     hubmapAssetsUrl: get('DB_ASSETS_URL', 'https://assets.hubmapconsortium.org'),
     hubmapQuery: get('DB_QUERY'),
     hubmapToken: get('DB_TOKEN')
