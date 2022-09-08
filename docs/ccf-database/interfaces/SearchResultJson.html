@@ -154,13 +154,32 @@ interface SearchResultJson {
 
 
 // Reduce this value if including more data fields
-const PER_API_SEARCH_REQUEST_COUNT &#x3D; 50;
+const PER_API_SEARCH_REQUEST_COUNT &#x3D; 250;
 
 const INCLUDED_DATA_FIELDS &#x3D; [
   &#x27;uuid&#x27;, &#x27;entity_type&#x27;,
   &#x27;group_uuid&#x27;, &#x27;group_name&#x27;,
   &#x27;last_modified_timestamp&#x27;, &#x27;created_by_user_displayname&#x27;,
-  &#x27;ancestors&#x27;, &#x27;descendants&#x27;,
+  &#x27;ancestors.entity_type&#x27;,
+  &#x27;ancestors.description&#x27;,
+  &#x27;ancestors.metadata.organ_donor_data.preferred_term&#x27;,
+  &#x27;ancestors.metadata.organ_donor_data.data_value&#x27;,
+  &#x27;ancestors.last_modified_timestamp&#x27;,
+  &#x27;ancestors.group_uuid&#x27;,
+  &#x27;ancestors.group_name&#x27;,
+  &#x27;ancestors.created_by_user_displayname&#x27;,
+  &#x27;ancestors.uuid&#x27;,
+  &#x27;descendants.entity_type&#x27;,
+  &#x27;descendants.ingest_metadata.metadata.tissue_id&#x27;,
+  &#x27;descendants.last_modified_timestamp&#x27;,
+  &#x27;descendants.group_uuid&#x27;,
+  &#x27;descendants.group_name&#x27;,
+  &#x27;descendants.created_by_user_displayname&#x27;,
+  &#x27;descendants.uuid&#x27;,
+  &#x27;descendants.data_types&#x27;,
+  &#x27;descendants.ingest_metadata.metadata.assay_type&#x27;,
+  &#x27;descendants.thumbnail_file&#x27;,
+  &#x27;descendants.metadata.files.rel_path&#x27;,
   &#x27;rui_location&#x27;, &#x27;specimen_type&#x27;
 ];
 
