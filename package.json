@@ -85,7 +85,7 @@
     "@deck.gl/core": "^8.5.7",
     "@deck.gl/geo-layers": "^8.7.8",
     "@deck.gl/layers": "^8.5.7",
-    "@deck.gl/mesh-layers": "^8.5.7",
+    "@deck.gl/mesh-layers": "^8.8.10",
     "@loaders.gl/core": "^3.0.12",
     "@loaders.gl/draco": "^3.0.12",
     "@loaders.gl/gltf": "^3.0.12",
