@@ -26,6 +26,8 @@ const INCLUDED_DATA_FIELDS = [
   'ancestors.description',
   'ancestors.metadata.organ_donor_data.preferred_term',
   'ancestors.metadata.organ_donor_data.data_value',
+  'ancestors.metadata.living_donor_data.preferred_term',
+  'ancestors.metadata.living_donor_data.data_value',
   'ancestors.last_modified_timestamp',
   'ancestors.group_uuid',
   'ancestors.group_name',
