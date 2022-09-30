@@ -1542,7 +1542,7 @@ export class HuBMAPTissueBlock {
       age &#x3D; toNumber(ageMatch[1]);
     }
     let bmi: number | undefined;
-    for (const md of get(donor, &#x27;metadata.organ_donor_data&#x27;, []) as JsonDict[]) {
+    for (const md of get(donor, &#x27;metadata.organ_donor_data&#x27;, get(donor, &#x27;metadata.living_donor_data&#x27;, [])) as JsonDict[]) {
       if (md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Feminine gender&#x27; || md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Female&#x27;) {
         sex &#x3D; &#x27;Female&#x27;;
       } else if (md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Masculine gender&#x27; || md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Male&#x27;) {
