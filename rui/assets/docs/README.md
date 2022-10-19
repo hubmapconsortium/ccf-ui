@@ -16,7 +16,7 @@ The registration data is used in current versions of the Common Coordinate Frame
 
 # Standard Operating Procedure (SOP)
 
-The steps to register tissue blocks with the CCF RUI have been formally captured in an SOP, available <a href="https://docs.google.com/document/d/1PhVDMZDiH-SKAF7LrDhZfv3xjjlAhISmRWSQcfUF-9U/edit?usp=sharing" target="_blank">here</a>.
+The steps to register tissue blocks with the CCF RUI have been formally captured in an SOP, available <a href="https://zenodo.org/record/6628366" target="_blank">here</a>.
 
 # Acknowledgements
 
