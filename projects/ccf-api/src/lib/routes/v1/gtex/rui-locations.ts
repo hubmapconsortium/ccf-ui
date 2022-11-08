@@ -30,7 +30,7 @@ export interface GtexTissue {
 }
 
 const DEFAULT_GTEX_RUI_LOCATIONS = 'projects/ccf-eui/src/assets/gtex/data/rui_locations.jsonld';
-const GTEX_API_URL = 'https://gtexportal.org/api/v2/tissueSiteDetail';
+const GTEX_API_URL = 'https://gtexportal.org/api/v2/dataset/tissueSiteDetail';
 
 async function getLocations(): Promise<unknown> {
   try {
