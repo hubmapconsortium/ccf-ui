@@ -257,8 +257,8 @@ async function getLocations(): Promise&lt;unknown&gt; {
     const jsonld: JsonLdObj &#x3D; JSON.parse(data);
     const results &#x3D; jsonld[&#x27;@graph&#x27;] as JsonLdObj[];
 
-    const response: GtexTissue[] &#x3D; await fetch(GTEX_API_URL).then(r &#x3D;&gt; r.json());
-    const mappedEntries &#x3D; response.filter(entry &#x3D;&gt; entry.mappedInHubmap);
+    const response: { data: GtexTissue[] } &#x3D; await fetch(GTEX_API_URL).then(r &#x3D;&gt; r.json());
+    const mappedEntries &#x3D; response?.data?.filter(entry &#x3D;&gt; entry.mappedInHubmap) ?? [];
     for (const tissue of mappedEntries) {
       updateEntry(results, tissue, &#x27;Female&#x27;);
       updateEntry(results, tissue, &#x27;Male&#x27;);
