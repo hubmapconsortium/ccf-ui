@@ -40,8 +40,8 @@ async function getLocations(): Promise<unknown> {
     const jsonld: JsonLdObj = JSON.parse(data);
     const results = jsonld['@graph'] as JsonLdObj[];
 
-    const response: GtexTissue[] = await fetch(GTEX_API_URL).then(r => r.json());
-    const mappedEntries = response.filter(entry => entry.mappedInHubmap);
+    const response: { data: GtexTissue[] } = await fetch(GTEX_API_URL).then(r => r.json());
+    const mappedEntries = response?.data?.filter(entry => entry.mappedInHubmap) ?? [];
     for (const tissue of mappedEntries) {
       updateEntry(results, tissue, 'Female');
       updateEntry(results, tissue, 'Male');
