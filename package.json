@@ -94,7 +94,7 @@
     "@math.gl/culling": "^3.5.7",
     "@ngxs-labs/data": "^6.2.0",
     "@ngxs-labs/dispatch-decorator": "^4.0.2",
-    "@ngxs/logger-plugin": "^3.7.1",
+    "@ngxs/logger-plugin": "^3.7.6",
     "@ngxs/storage-plugin": "^3.7.1",
     "@ngxs/store": "^3.7.3",
     "@rdfjs/data-model": "^1.2.0",
