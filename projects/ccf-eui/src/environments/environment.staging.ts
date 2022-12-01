@@ -21,7 +21,7 @@ export const environment = {
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
     useRemoteApi: false,
-    remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
+    remoteApiEndpoint: 'https://r5i95k35v5.us-east-2.awsapprunner.com/v1'
   },
   customization: {
     theme: 'hubmap',
