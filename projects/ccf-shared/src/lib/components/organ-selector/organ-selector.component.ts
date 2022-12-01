@@ -171,6 +171,34 @@ export const ALL_POSSIBLE_ORGANS = [
   },
   {
     disabled: true,
+    src: 'app:mammary-gland',
+    organ: 'Mammary Gland',
+    name: 'Mammary Gland, L',
+    side: 'left',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001911'
+  },
+  {
+    src: 'app:mammary-gland',
+    organ: 'Mammary Gland',
+    name: 'Mammary Gland, L',
+    side: 'left',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/FMA_57991'
+  },
+  {
+    src: 'app:mammary-gland',
+    organ: 'Mammary Gland',
+    name: 'Mammary Gland, R',
+    side: 'right',
+    hasSex: false,
+    sex: 'female',
+    id: 'http://purl.obolibrary.org/obo/FMA_57987'
+  },
+  {
+    disabled: true,
     src: 'app:ovary-left',
     organ: 'Ovary',
     name: 'Ovary, L',

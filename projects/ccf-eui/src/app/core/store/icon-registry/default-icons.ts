@@ -50,6 +50,7 @@ export const DEFAULT_ICONS: DefaultIconDefinition[] = [
   { name: 'lung-right', namespace: 'app', url: 'assets/icons/organs/ico-organs-lung-right.svg' },
   { name: 'lung', namespace: 'app', url: 'assets/icons/organs/ico-organs-lung.svg' },
   { name: 'lymph-nodes', namespace: 'app', url: 'assets/icons/organs/ico-organs-lymph-nodes.svg' },
+  { name: 'mammary-gland', namespace: 'app', url: 'assets/icons/organs/ico-organs-breast.svg' },
   { name: 'neuron', namespace: 'app', url: 'assets/icons/organs/ico-organs-neuron.svg' },
   { name: 'ovaries', namespace: 'app', url: 'assets/icons/organs/ico-organs-ovaries.svg' },
   { name: 'ovary-left', namespace: 'app', url: 'assets/icons/organs/ico-organs-ovary-left.svg' },
