@@ -2,7 +2,7 @@ name: 'Beta Build'
 
 on:
   push:
-    branches: ['pbi-ccf-v1.7']
+    branches: ['ccf-v1.x']
 
 jobs:
   deploy:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: pbi-ccf-v1.7
+          ref: ccf-v1.x
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
