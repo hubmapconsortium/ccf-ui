@@ -81,6 +81,9 @@ export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTre
     // 'http://purl.obolibrary.org/obo/FMA_24977', // Knee, R
     'http://purl.obolibrary.org/obo/UBERON_0002107', // Liver
     'http://purl.obolibrary.org/obo/UBERON_0002048', // Lungs
+    'http://purl.obolibrary.org/obo/UBERON_0001911', // Mammary Gland
+    // 'http://purl.obolibrary.org/obo/FMA_57991', // Mammary Gland, L
+    // 'http://purl.obolibrary.org/obo/FMA_57987', // Mammary Gland, R
     'http://purl.obolibrary.org/obo/UBERON_0000992', // Ovary
     // 'http://purl.obolibrary.org/obo/FMA_7214', // Ovary, L
     // 'http://purl.obolibrary.org/obo/FMA_7213', // Ovary, R
