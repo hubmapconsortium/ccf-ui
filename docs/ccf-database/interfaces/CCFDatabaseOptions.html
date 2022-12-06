@@ -534,7 +534,6 @@ import { getSpatialEntityForEntity } from &#x27;./queries/spatial-result-n3&#x27
 import { getTissueBlockResult } from &#x27;./queries/tissue-block-result-n3&#x27;;
 import { FlatSpatialPlacement, SpatialEntity } from &#x27;./spatial-types&#x27;;
 import { CCFDatabaseStatusTracker } from &#x27;./util/ccf-database-status-tracker&#x27;;
-import { patchJsonLd } from &#x27;./util/patch-jsonld&#x27;;
 import { enrichRuiLocations } from &#x27;./util/enrich-rui-locations&#x27;;
 
 
@@ -695,8 +694,6 @@ export class CCFDatabase {
       sources.map(async (source) &#x3D;&gt; {
         if (typeof source &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
           if (source.endsWith(&#x27;jsonld&#x27;)) {
-            source &#x3D; await fetch(source).then(r &#x3D;&gt; r.text());
-            source &#x3D; patchJsonLd(source as string);
             await addJsonLdToStore(source, store);
           } else if (source.endsWith(&#x27;n3&#x27;)) {
             await addN3ToStore(source, store);
@@ -704,11 +701,9 @@ export class CCFDatabase {
             await addRdfXmlToStore(source, store);
           } else {
             // Passthrough assumes a JSON-LD response
-            source &#x3D; patchJsonLd(source);
             await addJsonLdToStore(source, store);
           }
         } else {
-          source &#x3D; patchJsonLd(JSON.stringify(source));
           await addJsonLdToStore(source, store);
         }
       })
