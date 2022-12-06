@@ -109,7 +109,7 @@
     "css-element-queries": "^1.2.3",
     "document-register-element": "^1.7.2",
     "dotenv": "^16.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "file-saver": "^2.0.5",
     "fs-extra": "^10.0.0",
     "graphology": "^0.20.0",
