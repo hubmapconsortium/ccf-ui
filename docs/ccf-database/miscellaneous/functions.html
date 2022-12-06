@@ -227,10 +227,16 @@
                             <a href="#main" title="projects/ccf-database/src/cache-ccf-api-data.ts" ><b>main</b>&nbsp;&nbsp;&nbsp;(projects/.../cache-ccf-api-data.ts)</a>
                         </li>
                         <li>
+                            <a href="#patchJsonLd" title="projects/ccf-database/src/lib/util/patch-jsonld.ts" ><b>patchJsonLd</b>&nbsp;&nbsp;&nbsp;(projects/.../patch-jsonld.ts)</a>
+                        </li>
+                        <li>
                             <a href="#reverseMapping" title="projects/ccf-database/src/lib/queries/spatial-result-n3.ts" ><b>reverseMapping</b>&nbsp;&nbsp;&nbsp;(projects/.../spatial-result-n3.ts)</a>
                         </li>
                         <li>
                             <a href="#searchHubmap" title="projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts" ><b>searchHubmap</b>&nbsp;&nbsp;&nbsp;(projects/.../hubmap-data-import.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#treeify" title="projects/ccf-database/src/lib/queries/ontology-tree-n3.ts" ><b>treeify</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree-n3.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -4209,6 +4215,90 @@ reference organ it was placed relative to.</p>
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="treeify"></a>
+                    <span class="name">
+                        <span ><b>treeify</b></span>
+                        <a href="#treeify"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>treeify(model, nodeIri, seen)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Recursive function to ensure that the given ontology tree model is actually a tree by essentially using a BFS search.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>model</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the ontology tree model to mutate</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>nodeIri</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the tree node iri to modify. Starts at root in the base case</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>a set of IRIs that have been &#39;seen&#39; so far to remove loops in the graph</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>    <h3>projects/ccf-database/src/lib/queries/tissue-block-result-n3.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -4953,6 +5043,74 @@ for a given spatial search.</p>
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/ccf-database/src/lib/util/patch-jsonld.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patchJsonLd"></a>
+                    <span class="name">
+                        <span ><b>patchJsonLd</b></span>
+                        <a href="#patchJsonLd"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>patchJsonLd(jsonLdString)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function which takes JSON-LD data and makes patches to update from CCF v1.x to v2.0 automatically</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>jsonLdString</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the input JSON-LD as a string</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>JsonLd</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A JSON-LD object derived from the given string with updated data to be compatible with CCF v2.0</p>
+
                     </div>
                 </td>
             </tr>
