@@ -1147,7 +1147,7 @@
             "ccf_annotations": [
               "http://purl.obolibrary.org/obo/UBERON_0013702",
               "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "http://purl.obolibrary.org/obo/FMA_15729",
+              "http://purl.org/sig/ont/fma/fma15729",
               "http://purl.obolibrary.org/obo/UBERON_0001114"
             ],
             "x_dimension": 10,
@@ -1221,7 +1221,7 @@
             "ccf_annotations": [
               "http://purl.obolibrary.org/obo/UBERON_0013702",
               "http://purl.obolibrary.org/obo/UBERON_0000992",
-              "http://purl.obolibrary.org/obo/FMA_7214"
+              "http://purl.org/sig/ont/fma/fma7214"
             ],
             "x_dimension": 10,
             "y_dimension": 10,
@@ -1296,7 +1296,7 @@
               "http://purl.obolibrary.org/obo/UBERON_0001264",
               "http://purl.obolibrary.org/obo/UBERON_0001150",
               "http://purl.obolibrary.org/obo/UBERON_0001069",
-              "http://purl.obolibrary.org/obo/FMA_14517"
+              "http://purl.org/sig/ont/fma/fma14517"
             ],
             "x_dimension": 10,
             "y_dimension": 10,
@@ -1514,7 +1514,7 @@
               "http://purl.obolibrary.org/obo/UBERON_0013702",
               "http://purl.obolibrary.org/obo/UBERON_0002108",
               "http://purl.obolibrary.org/obo/UBERON_0002116",
-              "http://purl.obolibrary.org/obo/FMA_14966"
+              "http://purl.org/sig/ont/fma/fma14966"
             ],
             "x_dimension": 6,
             "y_dimension": 6,
@@ -1587,9 +1587,9 @@
             "ccf_annotations": [
               "http://purl.obolibrary.org/obo/UBERON_0013702",
               "http://purl.obolibrary.org/obo/UBERON_0000995",
-              "http://purl.obolibrary.org/obo/FMA_17561",
-              "http://purl.obolibrary.org/obo/FMA_224878",
-              "http://purl.obolibrary.org/obo/FMA_224876"
+              "http://purl.org/sig/ont/fma/fma17561",
+              "http://purl.org/sig/ont/fma/fma224878",
+              "http://purl.org/sig/ont/fma/fma224876"
             ],
             "x_dimension": 20,
             "y_dimension": 10,
@@ -1736,7 +1736,7 @@
             "ccf_annotations": [
               "http://purl.obolibrary.org/obo/UBERON_0013702",
               "http://purl.obolibrary.org/obo/UBERON_0002107",
-              "http://purl.obolibrary.org/obo/FMA_15729",
+              "http://purl.org/sig/ont/fma/fma15729",
               "http://purl.obolibrary.org/obo/UBERON_0001114"
             ],
             "x_dimension": 10,
@@ -1812,7 +1812,7 @@
               "http://purl.obolibrary.org/obo/UBERON_0001264",
               "http://purl.obolibrary.org/obo/UBERON_0001150",
               "http://purl.obolibrary.org/obo/UBERON_0001069",
-              "http://purl.obolibrary.org/obo/FMA_14517"
+              "http://purl.org/sig/ont/fma/fma14517"
             ],
             "x_dimension": 10,
             "y_dimension": 10,
@@ -2108,7 +2108,7 @@
               "http://purl.obolibrary.org/obo/UBERON_0013702",
               "http://purl.obolibrary.org/obo/UBERON_0002108",
               "http://purl.obolibrary.org/obo/UBERON_0002116",
-              "http://purl.obolibrary.org/obo/FMA_14966"
+              "http://purl.org/sig/ont/fma/fma14966"
             ],
             "x_dimension": 10,
             "y_dimension": 10,

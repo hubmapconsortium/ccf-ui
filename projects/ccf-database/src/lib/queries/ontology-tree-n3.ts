@@ -91,7 +91,7 @@ export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTre
     // 'http://purl.obolibrary.org/obo/UBERON_0002509', // Mesenteric Lymph Node
     'http://purl.obolibrary.org/obo/UBERON_0000970', // Eye
     // 'http://purl.obolibrary.org/obo/UBERON_0004548', // Eye, L
-    // 'http://purl.obolibrary.org/obo/FMA_54449', // Eye, R
+    // 'http://purl.org/sig/ont/fma/fma54449', // Eye, R
     'http://purl.obolibrary.org/obo/UBERON_0003889', // Fallopian Tube
     // 'http://purl.obolibrary.org/obo/UBERON_0001303', // Fallopian Tube, L
     // 'http://purl.obolibrary.org/obo/UBERON_0001302', // Fallopian Tube, R
@@ -100,16 +100,16 @@ export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTre
     // 'http://purl.obolibrary.org/obo/UBERON_0004538', // Kidney, L
     // 'http://purl.obolibrary.org/obo/UBERON_0004539', // Kidney, R
     'http://purl.obolibrary.org/obo/UBERON_0001465', // Knee
-    // 'http://purl.obolibrary.org/obo/FMA_24978', // Knee, L
-    // 'http://purl.obolibrary.org/obo/FMA_24977', // Knee, R
+    // 'http://purl.org/sig/ont/fma/fma24978', // Knee, L
+    // 'http://purl.org/sig/ont/fma/fma24977', // Knee, R
     'http://purl.obolibrary.org/obo/UBERON_0002107', // Liver
     'http://purl.obolibrary.org/obo/UBERON_0002048', // Lungs
     'http://purl.obolibrary.org/obo/UBERON_0001911', // Mammary Gland
-    // 'http://purl.obolibrary.org/obo/FMA_57991', // Mammary Gland, L
-    // 'http://purl.obolibrary.org/obo/FMA_57987', // Mammary Gland, R
+    // 'http://purl.org/sig/ont/fma/fma57991', // Mammary Gland, L
+    // 'http://purl.org/sig/ont/fma/fma57987', // Mammary Gland, R
     'http://purl.obolibrary.org/obo/UBERON_0000992', // Ovary
-    // 'http://purl.obolibrary.org/obo/FMA_7214', // Ovary, L
-    // 'http://purl.obolibrary.org/obo/FMA_7213', // Ovary, R
+    // 'http://purl.org/sig/ont/fma/fma7214', // Ovary, L
+    // 'http://purl.org/sig/ont/fma/fma7213', // Ovary, R
     'http://purl.obolibrary.org/obo/UBERON_0001264', // Pancreas
     'http://purl.obolibrary.org/obo/UBERON_0001270', // Pelvis
     'http://purl.obolibrary.org/obo/UBERON_0001987', // Placenta
