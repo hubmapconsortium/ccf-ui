@@ -1,6 +1,7 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+
 import { Context, JsonLd } from 'jsonld/jsonld-spec';
 
+/* eslint-disable @typescript-eslint/naming-convention */
 /** CCF v2.0 JSON-LD Context */
 const CCF_CONTEXT = {
   '@context': {
@@ -117,6 +118,7 @@ const CCF_CONTEXT = {
     'file_subpath': 'ccf:file_subpath'
   }
 };
+/* eslint-enable @typescript-eslint/naming-convention */
 
 /**
  * Function which takes JSON-LD data and makes patches to update from CCF v1.x to v2.0 automatically
