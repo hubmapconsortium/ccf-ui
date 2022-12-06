@@ -73,7 +73,7 @@ Full RUI Example
   <script src="wc.js" async></script>
   <script>
     const sampleRegistration = {
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://purl.org/ccf/0.5/06b79119-0e5c-4a46-b7cb-57674ae4f1d8",
       "@type": "SpatialEntity",
       "creator": "Jane Doe",
@@ -90,7 +90,7 @@ Full RUI Example
       "z_dimension": 14,
       "dimension_units": "millimeter",
       "placement": {
-        "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+        "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
         "@id": "http://purl.org/ccf/1.5/06b79119-0e5c-4a46-b7cb-57674ae4f1d8_placement",
         "@type": "SpatialPlacement",
         "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidney",
@@ -422,7 +422,7 @@ Full BODY-UI-WC Example
       {
         "id": "8b0a4cc904cadaccddd37633411fdbdd",
         "rui_location": {
-          "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+          "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
           "@id": "http://purl.org/ccf/1.5/886e391d-0151-46d3-8a51-084bf6a06910",
           "@type": "SpatialEntity",
           "ccf_annotations": [
@@ -438,7 +438,7 @@ Full BODY-UI-WC Example
           "creator_last_name": "Bueckle",
           "dimension_units": "millimeter",
           "placement": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/886e391d-0151-46d3-8a51-084bf6a06910_placement",
             "@type": "SpatialPlacement",
             "placement_date": "2021-10-25",
@@ -465,7 +465,7 @@ Full BODY-UI-WC Example
       {
       "id": "8cdf44a106338aada6da04c71eeb767e",
       "rui_location": {
-        "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+        "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
         "@id": "http://purl.org/ccf/1.5/93286ce3-669a-4f3f-a85a-7eaaedc15c59",
         "@type": "SpatialEntity",
         "ccf_annotations": [
@@ -482,7 +482,7 @@ Full BODY-UI-WC Example
         "creator_last_name": "Lin",
         "dimension_units": "millimeter",
         "placement": {
-          "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+          "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
           "@id": "http://purl.org/ccf/1.5/93286ce3-669a-4f3f-a85a-7eaaedc15c59_placement",
           "@type": "SpatialPlacement",
           "placement_date": "2021-10-19",

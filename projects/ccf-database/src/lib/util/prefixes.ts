@@ -3,16 +3,17 @@ import { DataFactory, Util } from 'triple-store-utils';
 
 /** Constants used to create entity accessors. */
 export const PREFIXES = {
-  ccf: 'http://purl.org/ccf/latest/ccf.owl#',
-  entity: 'http://purl.org/ccf/latest/ccf-entity.owl#',
-  fma: 'http://purl.obolibrary.org/obo/FMA_',
+  base: 'http://purl.org/ccf/latest/ccf.owl#',
+  ccf: 'http://purl.org/ccf/',
+  fma: 'http://purl.org/sig/ont/fma/fma',
   obo: 'http://purl.obolibrary.org/obo/',
   uberon: 'http://purl.obolibrary.org/obo/UBERON_',
   cl: 'http://purl.obolibrary.org/obo/CL_',
   lmha: 'http://purl.obolibrary.org/obo/LMHA_',
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
-  dc: 'http://purl.org/dc/elements/1.1/'
+  dc: 'http://purl.org/dc/elements/1.1/',
+  dcterms: 'http://purl.org/dc/terms/'
 };
 
 /** Prefix factory. */
@@ -31,133 +32,133 @@ export const rdfs = {
   seeAlso: prefixer('rdfs')('seeAlso')
 };
 
+/** CCF id helper. */
+const ccfx = prefixer('ccf');
+
 /** Common entity ids. */
 export const entity = {
-  x: prefixer('entity'),
-  id: prefixer('entity')('id'),
-  label: rdfs.label,
-  description: rdfs.comment,
-  link: rdfs.seeAlso,
+  id: prefixer('ccf')('has_registration_location'),
+  label: prefixer('rdfs')('label'),
+  description: prefixer('rdfs')('comment'),
+  link: ccfx('url'),
 
-  sex: prefixer('entity')('sex'),
-  age: prefixer('entity')('age'),
-  bmi: prefixer('entity')('bmi'),
+  sex: ccfx('sex'),
+  age: ccfx('age'),
+  bmi: ccfx('bmi'),
 
   Male: DataFactory.literal('Male'),
   Female: DataFactory.literal('Female'),
 
-  consortiumName: prefixer('entity')('consortium_name'),
-  providerName: prefixer('entity')('provider_name'),
-  providerUUID: prefixer('entity')('provider_uuid'),
+  consortiumName: ccfx('consortium_name'),
+  providerName: ccfx('tissue_provider_name'),
+  providerUUID: ccfx('tissue_provider_uuid'),
 
-  donor: prefixer('entity')('has_donor'),
+  donor: ccfx('comes_from'),
 
-  sections: prefixer('entity')('has_tissue_section'),
-  datasets: prefixer('entity')('has_dataset'),
+  sections: ccfx('subdivided_into_sections'),
+  datasets: ccfx('generates_dataset'),
 
-  sampleType: prefixer('entity')('sample_type'),
+  sampleType: ccfx('sample_type'),
 
   TissueBlock: DataFactory.literal('Tissue Block'),
   TissueSection: DataFactory.literal('Tissue Section'),
   NonStandard: DataFactory.literal('Non-standard'),
 
-  sectionCount: prefixer('entity')('section_count'),
-  sectionSize: prefixer('entity')('section_size'),
-  sectionUnits: prefixer('entity')('section_units'),
-  sectionNumber: prefixer('entity')('section_number'),
+  sectionCount: ccfx('section_count'),
+  sectionSize: ccfx('section_size'),
+  sectionUnits: ccfx('section_size_unit'),
+  sectionNumber: ccfx('section_number'),
 
-  spatialEntity: prefixer('entity')('has_spatial_entity'),
-  ontologyTerms: prefixer('entity')('has_ontology_term'),
-  cellTypeTerms: prefixer('entity')('has_cell_type_term'),
+  spatialEntity: ccfx('has_registration_location'),
+  ontologyTerms: ccfx('has_ontology_term'),
+  cellTypeTerms: ccfx('has_cell_type_term'),
 
-  technology: prefixer('entity')('technology'),
-  thumbnail: prefixer('entity')('has_thumbnail')
+  technology: ccfx('technology'),
+  thumbnail: ccfx('thumbnail')
 };
-
-/** CCF id helper. */
-const ccfx = prefixer('ccf');
 
 /** CCF specific ids. */
 export const ccf = {
   x: ccfx,
+  base: prefixer('base'),
   ontologyNode: {
-    label: ccfx('ccf_preferred_label'),
+    label: ccfx('ccf_pref_label'),
     parent: ccfx('ccf_part_of'),
     children: ccfx('ccf_part_of'),
-    rui_rank: ccfx('ccf_rui_rank'),
+    rui_rank: ccfx('rui_rank'),
     synonymLabels: DataFactory.namedNode('http://www.geneontology.org/formats/oboInOwl#hasExactSynonym')
   },
   asctb: {
     part_of: ccfx('ccf_part_of'),
-    ct_is_a: ccfx('ct_is_a'),
-    located_in: ccfx('located_in'),
-    characterizes: ccfx('characterizes')
+    ct_is_a: ccfx('ccf_ct_isa'),
+    located_in: ccfx('ccf_located_in'),
+    characterizes: ccfx('ccf_characterizes')
   },
   spatial: {
-    Female: ccfx('VHFemale'),
-    Male: ccfx('VHMale'),
-    BothSexes: ccfx('VHBothSexes'),
-    FemaleOrgans: ccfx('VHFemaleOrgans'),
-    MaleOrgans: ccfx('VHMaleOrgans')
+    Female: prefixer('base')('VHFemale'),
+    Male: prefixer('base')('VHMale'),
+    BothSexes: prefixer('base')('VHBothSexes'),
+    FemaleOrgans: prefixer('base')('VHFemaleOrgans'),
+    MaleOrgans: prefixer('base')('VHMaleOrgans')
   },
-  SpatialObjectReference: ccfx('SpatialObjectReference'),
-  SpatialEntity: ccfx('SpatialEntity'),
-  SpatialPlacement: ccfx('SpatialPlacement'),
+  SpatialObjectReference: ccfx('spatial_object_reference'),
+  SpatialEntity: ccfx('spatial_entity'),
+  SpatialPlacement: ccfx('spatial_placement'),
   spatialObjectReference: {
-    file: ccfx('has_object_file'),
-    file_format: ccfx('has_object_file_format'),
-    file_subpath: ccfx('has_object_file_subpath')
+    file: ccfx('file_url'),
+    file_format: ccfx('file_format'),
+    file_subpath: ccfx('file_subpath')
   },
   extractionSet: {
-    label: rdfs.label,
-    rui_rank: ccfx('ccf_rui_rank')
+    label: prefixer('rdfs')('label'),
+    rui_rank: ccfx('rui_rank')
   },
   spatialEntity: {
-    label: rdfs.label,
-    comment: rdfs.comment,
-    creator: prefixer('dc')('creator'),
+    label: prefixer('rdfs')('label'),
+    description: prefixer('rdfs')('comment'),
+    creator: prefixer('dcterms')('creator'),
     creator_first_name: ccfx('creator_first_name'),
     creator_last_name: ccfx('creator_last_name'),
     creator_orcid: ccfx('creator_orcid'),
-    creation_date: ccfx('creation_date'),
+    creation_date: prefixer('dcterms')('created'),
     updated_date: ccfx('updated_date'),
-    ccf_annotations: ccfx('ccf_annotation'),
-    representation_of: ccfx('ccf_representation_of'),
-    reference_organ: ccfx('anatomical_structure_of'),
+    ccf_annotations: ccfx('collides_with'),
+    representation_of: ccfx('representation_of'),
+    reference_organ: ccfx('has_reference_organ'),
     extraction_set_for: ccfx('extraction_set_for'),
-    extraction_set: ccfx('extraction_site_for'),
-    sex: ccfx('has_sex'),
-    side: ccfx('has_side'),
-    rui_rank: ccfx('ccf_rui_rank'),
-    slice_thickness: ccfx('ccf_slice_thickness'),
-    slice_count: ccfx('ccf_slice_count'),
-    x_dimension: ccfx('has_x_dimension'),
-    y_dimension: ccfx('has_y_dimension'),
-    z_dimension: ccfx('has_z_dimension'),
-    dimension_units: ccfx('has_dimension_units'),
+    extraction_set: ccfx('has_extraction_set'),
+    sex: ccfx('organ_owner_sex'),
+    side: ccfx('organ_side'),
+    rui_rank: ccfx('rui_rank'),
+    slice_thickness: ccfx('slice_thickness'),
+    slice_count: ccfx('slice_count'),
+    x_dimension: ccfx('x_dimension'),
+    y_dimension: ccfx('y_dimension'),
+    z_dimension: ccfx('z_dimension'),
+    dimension_units: ccfx('dimension_unit'),
     object: ccfx('has_object_reference')
   },
   spatialPlacement: {
-    source: ccfx('has_placement_source'),
-    target: ccfx('has_placement_target'),
+    source: ccfx('placement_for'),
+    target: ccfx('placement_relative_to'),
 
-    placement_date: ccfx('has_placement_date'),
-    x_scaling: ccfx('has_x_scaling'),
-    y_scaling: ccfx('has_y_scaling'),
-    z_scaling: ccfx('has_z_scaling'),
-    scaling_units: ccfx('has_scaling_units'),
+    placement_date: prefixer('dcterms')('created'),
+    x_scaling: ccfx('x_scaling'),
+    y_scaling: ccfx('y_scaling'),
+    z_scaling: ccfx('z_scaling'),
+    scaling_units: ccfx('scaling_unit'),
 
-    x_rotation: ccfx('has_x_rotation'),
-    y_rotation: ccfx('has_y_rotation'),
-    z_rotation: ccfx('has_z_rotation'),
-    w_rotation: ccfx('has_theta_rotation'),
-    rotation_order: ccfx('has_rotation_order'),
-    rotation_units: ccfx('has_rotation_units'),
+    x_rotation: ccfx('x_rotation'),
+    y_rotation: ccfx('y_rotation'),
+    z_rotation: ccfx('z_rotation'),
+    w_rotation: ccfx('theta_rotation'),
+    rotation_order: ccfx('rotation_order'),
+    rotation_units: ccfx('rotation_unit'),
 
-    x_translation: ccfx('has_x_translation'),
-    y_translation: ccfx('has_y_translation'),
-    z_translation: ccfx('has_z_translation'),
-    translation_units: ccfx('has_translation_units')
+    x_translation: ccfx('x_translation'),
+    y_translation: ccfx('y_translation'),
+    z_translation: ccfx('z_translation'),
+    translation_units: ccfx('translation_unit')
   }
 };
 

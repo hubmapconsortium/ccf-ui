@@ -26,7 +26,7 @@ const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
 const ENTITY_CONTEXT = {
   '@base': 'http://purl.org/ccf/latest/ccf-entity.owl#',
   '@vocab': 'http://purl.org/ccf/latest/ccf-entity.owl#',
-  ccf: 'http://purl.org/ccf/latest/ccf.owl#',
+  ccf: 'http://purl.org/ccf/',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
 
   label: 'rdfs:label',
@@ -72,7 +72,8 @@ const ENTITY_CONTEXT = {
  */
 export function hubmapResponseAsJsonLd(data: unknown, assetsApi = '', portalUrl = '', serviceToken?: string, debug = false): JsonLd {
   const entries = (get(data, 'hits.hits', []) as JsonDict[])
-    .map(e => get(e, '_source', {}) as JsonDict);
+    .map(e => get(e, '_source', {}) as JsonDict)
+    .sort((a, b) => (a['uuid'] as string).localeCompare(b['uuid'] as string));
 
   const donorLookup: Record<string, JsonLdObj> = {};
   const unflattened: JsonLdObj[] = entries.map(e =>

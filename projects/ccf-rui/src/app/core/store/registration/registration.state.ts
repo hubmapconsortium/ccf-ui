@@ -320,7 +320,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     tags: Tag[]
   ): Record<string, unknown> {
     return {
-      '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+      '@context': 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
       '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}`,
       '@type': 'SpatialEntity',
       label: model.label || undefined,
@@ -339,7 +339,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       dimension_units: 'millimeter',
 
       placement: {
-        '@context': 'https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld',
+        '@context': 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
         '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}_placement`,
         '@type': 'SpatialPlacement',
         target: model.organIri as string,

@@ -17,6 +17,7 @@ import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
+import { patchJsonLd } from './util/patch-jsonld';
 import { enrichRuiLocations } from './util/enrich-rui-locations';
 
 
@@ -177,6 +178,8 @@ export class CCFDatabase {
       sources.map(async (source) => {
         if (typeof source === 'string') {
           if (source.endsWith('jsonld')) {
+            source = await fetch(source).then(r => r.text());
+            source = patchJsonLd(source as string);
             await addJsonLdToStore(source, store);
           } else if (source.endsWith('n3')) {
             await addN3ToStore(source, store);
@@ -184,9 +187,11 @@ export class CCFDatabase {
             await addRdfXmlToStore(source, store);
           } else {
             // Passthrough assumes a JSON-LD response
+            source = patchJsonLd(source);
             await addJsonLdToStore(source, store);
           }
         } else {
+          source = patchJsonLd(JSON.stringify(source));
           await addJsonLdToStore(source, store);
         }
       })
