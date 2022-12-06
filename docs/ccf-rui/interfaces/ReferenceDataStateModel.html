@@ -533,7 +533,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
     }
 
     const name &#x3D; entity.label ?? &#x27;&#x27;;
-    const organ &#x3D; ALL_ORGANS.find(info &#x3D;&gt; name.endsWith(info.organ));
+    const organ &#x3D; ALL_ORGANS.find(info &#x3D;&gt; name.endsWith(info.organ) &amp;&amp; (!entity.side || entity.side.toLowerCase() &#x3D;&#x3D;&#x3D; info.side));
     if (!organ) {
       return undefined;
     }
