@@ -186,7 +186,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'left',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/FMA_57991'
+    id: 'http://purl.org/sig/ont/fma/fma57991'
   },
   {
     src: 'app:mammary-gland',
@@ -195,7 +195,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'right',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/FMA_57987'
+    id: 'http://purl.org/sig/ont/fma/fma57987'
   },
   {
     disabled: true,
