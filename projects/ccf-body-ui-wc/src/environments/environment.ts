@@ -19,7 +19,7 @@ export const environment = {
     ],
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
-    hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
+    hubmapDataUrl: 'https://search.api.hubmapconsortium.org/v3/entities/search',
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? ''
   },

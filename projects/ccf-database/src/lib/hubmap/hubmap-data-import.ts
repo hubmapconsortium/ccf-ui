@@ -16,13 +16,34 @@ interface SearchResultJson {
 
 
 // Reduce this value if including more data fields
-const PER_API_SEARCH_REQUEST_COUNT = 50;
+const PER_API_SEARCH_REQUEST_COUNT = 250;
 
 const INCLUDED_DATA_FIELDS = [
   'uuid', 'entity_type',
   'group_uuid', 'group_name',
   'last_modified_timestamp', 'created_by_user_displayname',
-  'ancestors', 'descendants',
+  'ancestors.entity_type',
+  'ancestors.description',
+  'ancestors.metadata.organ_donor_data.preferred_term',
+  'ancestors.metadata.organ_donor_data.data_value',
+  'ancestors.metadata.living_donor_data.preferred_term',
+  'ancestors.metadata.living_donor_data.data_value',
+  'ancestors.last_modified_timestamp',
+  'ancestors.group_uuid',
+  'ancestors.group_name',
+  'ancestors.created_by_user_displayname',
+  'ancestors.uuid',
+  'descendants.entity_type',
+  'descendants.ingest_metadata.metadata.tissue_id',
+  'descendants.last_modified_timestamp',
+  'descendants.group_uuid',
+  'descendants.group_name',
+  'descendants.created_by_user_displayname',
+  'descendants.uuid',
+  'descendants.data_types',
+  'descendants.ingest_metadata.metadata.assay_type',
+  'descendants.thumbnail_file',
+  'descendants.metadata.files.rel_path',
   'rui_location', 'specimen_type'
 ];
 

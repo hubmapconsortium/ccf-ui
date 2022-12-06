@@ -10,9 +10,9 @@ import { processSpatialEntities } from './process-spatial-entities';
 
 
 export const referenceDataConfig = {
-  extractionSitesUrl: 'http://localhost:8080/source_data/ASCT-B_3D_Models_Extraction_Sites.csv',
+  extractionSitesUrl: 'http://localhost:8080/source_data/asct-b-3d-models-extraction-sites.csv',
   extractionSitesConfigUrl: 'http://localhost:8080/source_data/extraction-site-config.csv',
-  anatomicalStructuresUrl: 'http://localhost:8080/source_data/ASCT-B_3D_Models_Mapping.csv',
+  anatomicalStructuresUrl: 'http://localhost:8080/source_data/asct-b-3d-models-mapping.csv',
   referenceOrganConfigUrl: 'http://localhost:8080/source_data/reference-organ-config.csv'
 };
 

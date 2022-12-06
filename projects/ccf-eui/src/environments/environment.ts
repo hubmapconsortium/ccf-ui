@@ -21,13 +21,13 @@ export const environment = {
     ],
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
-    hubmapDataUrl: 'https://search.api.hubmapconsortium.org/entities/search',
+    hubmapDataUrl: 'https://search.api.hubmapconsortium.org/v3/entities/search',
     hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
     useRemoteApi: false,
-    remoteApiEndpoint: 'https://ccf-api--staging.herokuapp.com/v1'
-    // remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1',
+    remoteApiEndpoint: 'https://r5i95k35v5.us-east-2.awsapprunner.com/v1'
+    // remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
     // remoteApiEndpoint: 'http://localhost:8080/v1'
   },
   customization: {
