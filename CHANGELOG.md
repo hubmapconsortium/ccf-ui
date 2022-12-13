@@ -2,6 +2,21 @@
 
 Changelog for the Common Coordinate Framework (CCF) User Interfaces
 
+## 3.6.0 - 2022-10-15
+
+### Added in 3.6.0.
+
+* Updated to CCF.OWL v2.1.0 which indexes the [Human Reference Atlas (HRA) 4th Release (v1.3)](https://hubmapconsortium.github.io/ccf-releases/v1.3/docs/index.html) for use in the CCF UIs and CCF-API. *Note* that some terms have changed in the ontology. As such, some SPARQL queries may need to be updated. All CCF-API calls have been updated to support the new terms.
+
+## 3.5.0 - 2022-09-27
+
+### Added in 3.5.0
+
+* Update to CCF.OWL v1.9.4
+* Update placement for KPMP rui locations
+* Switch to HuBMAP v3 search-api
+* Pick right organ when loading rui locations from a file in the RUI
+
 ## 3.4.0 - 2022-07-01
 
 ### Added in 3.4.0
