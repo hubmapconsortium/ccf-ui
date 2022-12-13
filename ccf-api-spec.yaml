@@ -9,9 +9,9 @@ servers:
   - description: CCF-API
     url: /v1
   - description: Production Server (backup)
-    url: https://ccf-api.herokuapp.com/v1
+    url: https://ccf-api.hubmapconsortium.org/v1
   - description: Staging Server
-    url: https://ccf-api--staging.herokuapp.com/v1
+    url: https://r5i95k35v5.us-east-2.awsapprunner.com/v1
 
 x-preprocessor:
   description: |
