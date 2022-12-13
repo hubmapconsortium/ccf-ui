@@ -27,7 +27,7 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multipl
   * Staging: <https://hubmap-ccf-ui.netlify.app/organ-info/>
 * CCF API
   * Production: <https://ccf-api.hubmapconsortium.org>
-  * Staging: <https://ccf-api--staging.herokuapp.com>
+  * Staging: <https://r5i95k35v5.us-east-2.awsapprunner.com>
   * OpenAPI Specification: [ccf-api-spec.yaml](ccf-api-spec.yaml)
 * CCF API Client Libraries:
   * JavaScript: ![npm (scoped)](https://img.shields.io/npm/v/@ccf-openapi/js-client)  [@ccf-openapi/js-client](https://www.npmjs.com/package/@ccf-openapi/js-client)
