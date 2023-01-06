@@ -177,7 +177,7 @@ export class CCFDatabase {
     await Promise.all(
       sources.map(async (source) => {
         if (typeof source === 'string') {
-          if (source.endsWith('jsonld')) {
+          if (source.startsWith('http') && source.includes('jsonld')) {
             source = await fetch(source).then(r => r.text());
             source = patchJsonLd(source as string);
             await addJsonLdToStore(source, store);
