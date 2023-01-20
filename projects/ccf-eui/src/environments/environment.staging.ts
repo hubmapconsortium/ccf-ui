@@ -7,7 +7,7 @@ export const environment = {
     'https://portal.test.hubmapconsortium.org'
   ],
   dbOptions: {
-    ccfOwlUrl: 'assets/ccf.owl.n3store.json',
+    ccfOwlUrl: 'https://r5i95k35v5.us-east-2.awsapprunner.com/v1/ccf.owl.n3store.json',
     ccfContextUrl: 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
     dataSources: [
       'assets/kpmp/data/rui_locations.jsonld',
