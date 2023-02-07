@@ -39,6 +39,81 @@
   },
   "@graph": [
     {
+      "@id": "https://gtexportal.org/home/tissue/Breast#FDonors",
+      "@type": "Donor",
+      "label": "Females (n=297), Mean Age ? (range 20-79)",
+      "description": "Entered 2/3/2023, Kristin Ardlie, GTEx Project",
+      "link": "https://gtexportal.org/home/tissue/Breast_Mammary_Tissue",
+      "sex": "Female",
+      "consortium_name": "GTEx",
+      "provider_name": "GTEx Project",
+      "provider_uuid": "083882bb-6cc6-4c12-a205-eac37c1a2640",
+      "samples": [
+        {
+          "@id": "https://gtexportal.org/home/tissue/Breast#FTissueBlocks",
+          "@type": "Sample",
+          "label": "Registered 2/3/2023, Kristin Ardlie, GTEx Project",
+          "description": "Central breast subareolar region of the right breast, 1-2 cm under the skin surface of nipple region",
+          "link": "https://gtexportal.org/home/tissue/Breast_Mammary_Tissue",
+          "sample_type": "Tissue Block",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/3b5d2036-3c56-4cf8-808f-462c9e3681e5",
+            "@type": "SpatialEntity",
+            "creator": "Kristin Ardlie",
+            "creator_first_name": "Kristin",
+            "creator_last_name": "Ardlie",
+            "creation_date": "2023-02-03",
+            "ccf_annotations": [
+              "http://purl.org/sig/ont/fma/fma73165",
+              "http://purl.org/sig/ont/fma/fma58088",
+              "http://purl.org/sig/ont/fma/fma62102",
+              "http://purl.obolibrary.org/obo/UBERON_0018140",
+              "http://purl.org/sig/ont/fma/fma73118"
+            ],
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 4,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/3b5d2036-3c56-4cf8-808f-462c9e3681e5_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFRightMammaryGland",
+              "placement_date": "2023-02-03",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 39.809,
+              "y_translation": 46.002,
+              "z_translation": 93.095,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://gtexportal.org/home/tissue/Breast#FDatasets",
+              "@type": "Dataset",
+              "label": "Registered 2/3/2023, Kristin Ardlie, GTEx Project",
+              "description": "Data/Assay Types: XXX",
+              "link": "https://gtexportal.org/home/tissue/Breast_Mammary_Tissue",
+              "technology": "OTHER",
+              "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "@id": "https://gtexportal.org/home/tissue/Kidney_Cortex#FDonors",
       "@type": "Donor",
       "label": "Females (n=18), Mean Age 56.8 (range 30-69)",
