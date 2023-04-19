@@ -40,7 +40,7 @@
   "@graph": [
     {
       "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
-      "@id": "http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3_SEA-AD_Male_SEA-AD_MALE_middle_temporal_gyrus_#Donor",
+      "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Male_Donor",
       "@type": "Donor",
       "sex": "Male",
       "label": "Middle Temporal Gyrus Male",
@@ -51,7 +51,7 @@
       "provider_uuid": "d97e6b70-5aca-4694-806b-5dc57e4f42c4",
       "samples": [
         {
-          "@id": "http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3_SEA-AD_Male_SEA-AD_MALE_middle_temporal_gyrus_#TissueBlock",
+          "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Male_TissueBlock",
           "@type": "Sample",
           "sample_type": "Tissue Block",
           "label": "Registered 2/20/2023, Rebecca Hodge, SEA-AD",
@@ -62,7 +62,7 @@
           "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
-            "@id": "http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3_SEA-AD_Male_SEA-AD_MALE_middle_temporal_gyrus_#RUI",
+            "@id": "http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3",
             "@type": "SpatialEntity",
             "creator": "Rebecca Hodge",
             "creator_first_name": "Rebecca",
@@ -100,7 +100,7 @@
           },
           "datasets": [
             {
-              "@id": "http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3_SEA-AD_Male_SEA-AD_MALE_middle_temporal_gyrus_#Dataset",
+              "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Male_Dataset",
               "@type": "Dataset",
               "label": "SEA-AD_MALE_middle_temporal_gyrus",
               "descripition": "10x 3' v3 & 10x multiome",
@@ -114,7 +114,7 @@
     },
     {
       "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
-      "@id": "http://purl.org/ccf/1.5/bf67cdbe-2af0-478e-af80-14e593bdbde1_SEA-AD_Female_SEA-AD_FEMALE_middle_temporal_gyrus_#Donor",
+      "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Female_Donor",
       "@type": "Donor",
       "sex": "Female",
       "label": "Middle Temporal Gyrus Female",
@@ -125,7 +125,7 @@
       "provider_uuid": "d97e6b70-5aca-4694-806b-5dc57e4f42c4",
       "samples": [
         {
-          "@id": "http://purl.org/ccf/1.5/bf67cdbe-2af0-478e-af80-14e593bdbde1_SEA-AD_Female_SEA-AD_FEMALE_middle_temporal_gyrus_#TissueBlock",
+          "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Female_TissueBlock",
           "@type": "Sample",
           "sample_type": "Tissue Block",
           "label": "Registered 2/20/2023, Rebecca Hodge, SEA-AD",
@@ -136,7 +136,7 @@
           "section_units": "millimeter",
           "rui_location": {
             "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
-            "@id": "http://purl.org/ccf/1.5/bf67cdbe-2af0-478e-af80-14e593bdbde1http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3_SEA-AD_Male_SEA-AD_MALE_middle_temporal_gyrus_#RUI",
+            "@id": "http://purl.org/ccf/1.5/bf67cdbe-2af0-478e-af80-14e593bdbde1",
             "@type": "SpatialEntity",
             "creator": "Devin Wright",
             "creator_first_name": "Devin",
@@ -174,7 +174,7 @@
           },
           "datasets": [
             {
-              "@id": "http://purl.org/ccf/1.5/bf67cdbe-2af0-478e-af80-14e593bdbde1_SEA-AD_Female_SEA-AD_FEMALE_middle_temporal_gyrus_#Dataset",
+              "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Female_Dataset",
               "@type": "Dataset",
               "label": "SEA-AD_FEMALE_middle_temporal_gyrus",
               "descripition": "10x 3' v3 & 10x multiome",
