@@ -118,7 +118,7 @@
       "@type": "Donor",
       "label": "Females (n=18), Mean Age 56.8 (range 30-69)",
       "description": "Entered 9/17/2021, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/singleCellOverviewPage",
+      "link": "https://gtexportal.org/home/tissue/Kidney_Cortex",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
