@@ -43,7 +43,7 @@
       "@type": "Donor",
       "label": "Females (n=297), Mean Age ? (range 20-79)",
       "description": "Entered 2/3/2023, Kristin Ardlie, GTEx Project",
-      "link": "https://gtexportal.org/home/singleCellOverviewPage",
+      "link": "https://gtexportal.org/home/tissue/Breast_Mammary_Tissue",
       "sex": "Female",
       "consortium_name": "GTEx",
       "provider_name": "GTEx Project",
@@ -54,7 +54,7 @@
           "@type": "Sample",
           "label": "Registered 2/3/2023, Kristin Ardlie, GTEx Project",
           "description": "Central breast subareolar region of the right breast, 1-2 cm under the skin surface of nipple region",
-          "link": "https://gtexportal.org/home/singleCellOverviewPage",
+          "link": "https://gtexportal.org/home/tissue/Breast_Mammary_Tissue",
           "sample_type": "Tissue Block",
           "section_count": 1,
           "section_size": 0.11,
@@ -105,7 +105,7 @@
               "@type": "Dataset",
               "label": "Registered 2/3/2023, Kristin Ardlie, GTEx Project",
               "description": "Data/Assay Types: XXX",
-              "link": "https://gtexportal.org/home/singleCellOverviewPage",
+              "link": "https://gtexportal.org/home/tissue/Breast_Mammary_Tissue",
               "technology": "OTHER",
               "thumbnail": "assets/gtex/thumbnails/gtex.jpg"
             }
