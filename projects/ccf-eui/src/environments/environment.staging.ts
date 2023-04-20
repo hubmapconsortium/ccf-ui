@@ -13,7 +13,8 @@ export const environment = {
       'assets/kpmp/data/rui_locations.jsonld',
       'assets/sparc/data/rui_locations.jsonld',
       'assets/gtex/data/rui_locations.jsonld',
-      'assets/sea-ad/data/rui_locations.jsonld'
+      'assets/sea-ad/data/rui_locations.jsonld',
+      'assets/allen-institute/data/rui_locations.jsonld'
     ],
     hubmapDataService: 'search-api',
     hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
