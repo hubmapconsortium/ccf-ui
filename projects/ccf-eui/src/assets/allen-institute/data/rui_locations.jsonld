@@ -199,7 +199,7 @@
             "creator": "Raymond Sanchez",
             "creator_first_name": "Raymond",
             "creator_last_name": "Sanchez",
-            "creation_date": "2022-08-29",
+            "creation_date": "8/29/2022",
             "ccf_annotations": [
               "http://purl.obolibrary.org/obo/UBERON_0002703",
               "http://purl.obolibrary.org/obo/UBERON_0002661",
@@ -218,7 +218,7 @@
               "@id": "http://purl.org/ccf/1.5/7739f00f-62bc-4852-8d2b-518ae26a9b4a_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
-              "placement_date": "2022-08-29",
+              "placement_date": "8/29/2022",
               "x_scaling": 1,
               "y_scaling": 1,
               "z_scaling": 1,
