@@ -2,8 +2,8 @@ openapi: "3.0.3"
 info:
   title: CCF-API
   description: |
-    This API provides programmatic access to data registered to the CCF.
-    See the [HuBMAP CCF Portal](https://hubmapconsortium.github.io/ccf/) for details.
+    This API provides programmatic access to data registered to the Human Reference Atlas (HRA).
+    See the [HuBMAP HRA Portal](https://humanatlas.io/) for details.
   version: 1.0.0
 servers:
   - description: CCF-API
