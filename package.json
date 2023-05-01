@@ -131,7 +131,7 @@
     "rxjs": "^6.6.7",
     "stream-browserify": "^3.0.0",
     "swiper": "^6.5.1",
-    "ts-cacheable": "^1.0.6",
+    "ts-cacheable": "^1.0.9",
     "tslib": "^2.1.0",
     "uuid": "^8.3.2",
     "zone.js": "~0.11.4"
