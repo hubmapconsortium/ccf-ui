@@ -113,7 +113,7 @@
     "fs-extra": "^10.0.0",
     "graphology": "^0.20.0",
     "graphology-shortest-path": "^1.4.1",
-    "helmet": "^4.6.0",
+    "helmet": "^6.1.5",
     "hex-rgb": "^5.0.0",
     "idb-keyval": "^6.0.1",
     "jsonld": "^5.2.0",
