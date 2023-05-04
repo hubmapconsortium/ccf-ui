@@ -61,6 +61,10 @@ jobs:
           npm run compodoc
           mkdir -p dist/ccf-ui
           cp -r docs dist/ccf-ui
+      - name: Copy Libs
+        run: |
+          mkdir -p dist/ccf-ui
+          cp -r dist/{ccf-database,triple-store-fixed,ccf-body-ui} dist/ccf-ui
       - name: Setup GitHub Pages files
         run: |
           cp dist/ccf-ui/index.html dist/ccf-ui/404.html
