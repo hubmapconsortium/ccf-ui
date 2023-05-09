@@ -57,10 +57,6 @@ jobs:
           npm run build:ccf-body-ui-wc:wc
           mkdir -p dist/ccf-ui
           cp -r dist/ccf-body-ui-wc dist/ccf-ui/body-ui
-      - name: Copy Libs
-        run: |
-          mkdir -p dist/ccf-ui
-          cp -r dist/{ccf-database,triple-store-fixed,ccf-body-ui} dist/ccf-ui
       - run: |
           npm run compodoc
           mkdir -p dist/ccf-ui

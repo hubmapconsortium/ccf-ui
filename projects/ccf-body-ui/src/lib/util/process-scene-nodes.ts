@@ -23,10 +23,10 @@ function childNames(scene, names: string[] = []): string[] {
   return names;
 }
 
-export async function processSceneNodes(gltfUrl: string, worldMatrix?: Matrix4, scenegraphNode?: string
-    ): Promise<{ [node: string]: ProcessedNode}> {
+export async function processSceneNodes(gltfUrl: string, worldMatrix?: Matrix4, scenegraphNode?: string, 
+    gltfCache?: { [url: string]: Promise<Blob> }): Promise<{ [node: string]: ProcessedNode}> {
   registerGLTFLoaders();
-  const gltf = await loadGLTF({scenegraph: gltfUrl, scenegraphNode} as SpatialSceneNode);
+  const gltf = await loadGLTF({scenegraph: gltfUrl, scenegraphNode} as SpatialSceneNode, gltfCache);
   const nodes: {[node: string]: ProcessedNode} = {};
   const gltfNodes: ProcessedNode[] = [];
   for (const scene of gltf.scenes) {
