@@ -154,7 +154,7 @@ interface SearchResultJson {
 
 
 // Reduce this value if including more data fields
-const PER_API_SEARCH_REQUEST_COUNT &#x3D; 250;
+const PER_API_SEARCH_REQUEST_COUNT &#x3D; 10000;
 
 const INCLUDED_DATA_FIELDS &#x3D; [
   &#x27;uuid&#x27;, &#x27;entity_type&#x27;,
@@ -224,7 +224,16 @@ async function doSearchRequest(
 ): Promise&lt;SearchResultJson | undefined&gt; {
   try {
     const res &#x3D; await fetch(url, init);
-    return res.ok ? (await res.json()) : undefined;
+    const text &#x3D; await res.text();
+    const validResponse &#x3D; res.ok || text.startsWith(&#x27;https&#x27;);
+    if (validResponse) {
+      if (text.startsWith(&#x27;https&#x27;)) {
+        return await fetch(text).then((r) &#x3D;&gt; r.json());
+      } else {
+        return JSON.parse(text);
+      }
+    }
+    return undefined;
   } catch (_error) {
     return undefined;
   }
