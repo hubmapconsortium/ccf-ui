@@ -20,9 +20,9 @@ technologies, computational tools, and generate foundational tissue maps in orde
 construction of an atlas of the human body at single-cell resolution for understanding the relationship
 between tissue organization and function.
 
-# Common Coordinate Framework (CCF)
+# Human Reference Atlas (HRA) and Common Coordinate Framework (CCF)
 
-The HuBMAP common coordinate framework (CCF) is under active development. It aims to semantically annotate and
+The Human Reference Atlas (HRA) is under active development. It aims to semantically annotate and
 spatially index HuBMAP data for efficient spatial and semantic search, browsing, and filtering. The CCF v1.0.0
 became available in June 2020. The CCF Ontology is available as an <a rel="noopener noreferrer"
             href="http://purl.org/ccf/latest/ccf.owl" target="_blank">OWL file</a>,
@@ -30,8 +30,8 @@ on <a rel="noopener noreferrer" href="https://github.com/hubmapconsortium/hubmap
             target="_blank">GitHub</a>, and
 on <a rel="noopener noreferrer" href="https://bioportal.bioontology.org/ontologies/CCF"
             target="_blank">BioPortal</a>. For
-documentation, see <a rel="noopener noreferrer" href="https://hubmapconsortium.github.io/ccf/"
-            target="_blank">CCF Portal</a> and preprint of CCF
+documentation, see <a rel="noopener noreferrer" href="https://humanatlas.io"
+            target="_blank">HRA Portal</a> and preprint of CCF
 Ontology publication on <a rel="noopener noreferrer" href="https://arxiv.org/abs/2007.14474 "
             target="_blank">arxiv</a>.
 

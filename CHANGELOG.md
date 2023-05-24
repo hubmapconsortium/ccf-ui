@@ -1,6 +1,6 @@
 # Changelog
 
-Changelog for the Common Coordinate Framework (CCF) User Interfaces
+Changelog for the Human Reference Atlas (HRA) User Interfaces
 
 ## 3.6.0 - 2022-10-15
 

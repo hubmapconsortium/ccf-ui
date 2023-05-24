@@ -15,12 +15,12 @@ interface LinkCard {
 export class LinkCardsComponent {
   linkCards: LinkCard[] = [
     {
-      body: 'Add tissue blocks using the CCF Registration User Interface (RUI).',
+      body: 'Add tissue blocks using the HRA Registration User Interface (RUI).',
       buttonTitle: 'Register Tissue',
       buttonUrl: 'https://hubmapconsortium.github.io/ccf-ui/rui/'
     },
     {
-      body: 'Explore tissue sections in tissue blocks with the CCF Exploration User Interface (EUI).',
+      body: 'Explore tissue sections in tissue blocks with the HRA Exploration User Interface (EUI).',
       buttonTitle: 'Explore Tissue',
       buttonUrl: 'https://portal.hubmapconsortium.org/ccf-eui'
     },
@@ -34,8 +34,8 @@ export class LinkCardsComponent {
   deepDives: LinkCard[] = [
     {
       body: '',
-      buttonTitle: 'CCF Portal',
-      buttonUrl: 'https://hubmapconsortium.github.io/ccf/'
+      buttonTitle: 'HRA Portal',
+      buttonUrl: 'https://humanatlas.io'
     },
     {
       body: '',
@@ -45,7 +45,7 @@ export class LinkCardsComponent {
     {
       body: '',
       buttonTitle: 'Paper',
-      buttonUrl: 'https://www.biorxiv.org/content/10.1101/2021.05.31.446440v2'
+      buttonUrl: 'https://www.nature.com/articles/s41556-021-00788-6'
     }
   ];
 

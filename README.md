@@ -1,4 +1,4 @@
-# Common Coordinate Framework (CCF) - User Interfaces
+# Human Reference Atlas (HRA) and Common Coordinate Framework (CCF) - User Interfaces
 
 [![Production CDN by JSDelivr](https://data.jsdelivr.com/v1/package/gh/hubmapconsortium/ccf-ui/badge)](https://www.jsdelivr.com/package/gh/hubmapconsortium/ccf-ui)
 [![Tests](https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml)
@@ -37,7 +37,7 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multipl
 
 ## Background and More Information
 
-For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at <https://hubmapconsortium.github.io/ccf/>.
+For more information about the Human Reference Atlas (HRA) and the Common Coordinate Framework (CCF), see the HuBMAP HRA Portal at <https://humanatlas.io>.
 
 ## Change Log
 
