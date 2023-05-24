@@ -11,8 +11,8 @@
 
 # About
 
-This Registration User Interface (RUI) supports the registration of three-dimensional (3D) tissue blocks within 3D reference organs. A first beta of the CCF RUI became available in October 2020. The CCF RUI specification is available here, 3D reference organs are freely available on the CCF Portal, the ontology can be found on BioPortal, and the code is availble on GitHub.
-The registration data is used in current versions of the Common Coordinate Framework (CCF, see CCF Portal for details) and the CCF Exploration User Interface (EUI) developed within HuBMAP.
+This Registration User Interface (RUI) supports the registration of three-dimensional (3D) tissue blocks within 3D reference organs. A first beta of the CCF RUI became available in October 2020. The CCF RUI specification is available here, 3D reference organs are freely available on the HRA Portal, the ontology can be found on BioPortal, and the code is availble on GitHub.
+The registration data is used in current versions of the Human Reference Atlas (HRA, see HRA Portal for details) and the HRA Exploration User Interface (EUI) developed within HuBMAP.
 
 # Standard Operating Procedure (SOP)
 

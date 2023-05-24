@@ -1,0 +1,190 @@
+{
+  "@context": {
+    "@base": "http://purl.org/ccf/latest/ccf-entity.owl#",
+    "@vocab": "http://purl.org/ccf/latest/ccf-entity.owl#",
+    "ccf": "http://purl.org/ccf/latest/ccf.owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "description": "rdfs:comment",
+    "link": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "samples": {
+      "@reverse": "has_donor"
+    },
+    "sections": {
+      "@id": "has_tissue_section",
+      "@type": "@id"
+    },
+    "datasets": {
+      "@id": "has_dataset",
+      "@type": "@id"
+    },
+    "rui_location": {
+      "@id": "has_spatial_entity",
+      "@type": "@id"
+    },
+    "ontologyTerms": {
+      "@id": "has_ontology_term",
+      "@type": "@id"
+    },
+    "cellTypeTerms": {
+      "@id": "has_cell_type_term",
+      "@type": "@id"
+    },
+    "thumbnail": {
+      "@id": "has_thumbnail"
+    }
+  },
+  "@graph": [
+    {
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Male_Donor",
+      "@type": "Donor",
+      "sex": "Male",
+      "label": "Middle Temporal Gyrus Male",
+      "description": "Entered 2/20/2023, Rebecca Hodge, SEA-AD",
+      "link": "https://portal.brain-map.org/explore/seattle-alzheimers-disease",
+      "consortium_name": "SEA-AD",
+      "provider_name": "SEA-AD",
+      "provider_uuid": "d97e6b70-5aca-4694-806b-5dc57e4f42c4",
+      "samples": [
+        {
+          "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Male_TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 2/20/2023, Rebecca Hodge, SEA-AD",
+          "description": "4 x 4 x 5 millimeter, 0.11 millimeter",
+          "link": "https://portal.brain-map.org/explore/seattle-alzheimers-disease",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3",
+            "@type": "SpatialEntity",
+            "creator": "Rebecca Hodge",
+            "creator_first_name": "Rebecca",
+            "creator_last_name": "Hodge",
+            "creation_date": "2023-02-20",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002771"
+            ],
+            "x_dimension": 4,
+            "y_dimension": 5,
+            "z_dimension": 5,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/8d0cbb8e-8afd-4d2b-a1af-8b70b6f2f9b3_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
+              "placement_date": "2023-02-20",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 6,
+              "z_rotation": -10,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 133.347,
+              "y_translation": 57.93,
+              "z_translation": 64.154,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Male_Dataset",
+              "@type": "Dataset",
+              "label": "SEA-AD_MALE_middle_temporal_gyrus",
+              "descripition": "10x 3' v3 & 10x multiome",
+              "link": "https://portal.brain-map.org/explore/seattle-alzheimers-disease",
+              "technology": "OTHER",
+              "thumbnail": "assets/sea-ad/thumbnails/SEA-AD_logo_800x800.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Female_Donor",
+      "@type": "Donor",
+      "sex": "Female",
+      "label": "Middle Temporal Gyrus Female",
+      "description": "Entered 2/20/2023, Rebecca Hodge, SEA-AD",
+      "link": "https://portal.brain-map.org/explore/seattle-alzheimers-disease",
+      "consortium_name": "SEA-AD",
+      "provider_name": "SEA-AD",
+      "provider_uuid": "d97e6b70-5aca-4694-806b-5dc57e4f42c4",
+      "samples": [
+        {
+          "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Female_TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 2/20/2023, Rebecca Hodge, SEA-AD",
+          "description": "4 x 4 x 5 millimeter, 0.11 millimeter",
+          "link": "https://portal.brain-map.org/explore/seattle-alzheimers-disease",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/bf67cdbe-2af0-478e-af80-14e593bdbde1",
+            "@type": "SpatialEntity",
+            "creator": "Devin Wright",
+            "creator_first_name": "Devin",
+            "creator_last_name": "Wright",
+            "creation_date": "2023-02-20",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002771"
+            ],
+            "x_dimension": 4,
+            "y_dimension": 5,
+            "z_dimension": 5,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/bf67cdbe-2af0-478e-af80-14e593bdbde1_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
+              "placement_date": "2023-02-20",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 6,
+              "z_rotation": -10,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 133.377,
+              "y_translation": 58.048,
+              "z_translation": 65.52,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "https://portal.brain-map.org/explore/seattle-alzheimers-disease#Human-MTG-10x_SEA-AD_Female_Dataset",
+              "@type": "Dataset",
+              "label": "SEA-AD_FEMALE_middle_temporal_gyrus",
+              "descripition": "10x 3' v3 & 10x multiome",
+              "link": "https://portal.brain-map.org/explore/seattle-alzheimers-disease",
+              "technology": "OTHER",
+              "thumbnail": "assets/sea-ad/thumbnails/SEA-AD_logo_800x800.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

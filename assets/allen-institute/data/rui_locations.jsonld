@@ -1,0 +1,836 @@
+{
+  "@context": {
+    "@base": "http://purl.org/ccf/latest/ccf-entity.owl#",
+    "@vocab": "http://purl.org/ccf/latest/ccf-entity.owl#",
+    "ccf": "http://purl.org/ccf/latest/ccf.owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "description": "rdfs:comment",
+    "link": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "samples": {
+      "@reverse": "has_donor"
+    },
+    "sections": {
+      "@id": "has_tissue_section",
+      "@type": "@id"
+    },
+    "datasets": {
+      "@id": "has_dataset",
+      "@type": "@id"
+    },
+    "rui_location": {
+      "@id": "has_spatial_entity",
+      "@type": "@id"
+    },
+    "ontologyTerms": {
+      "@id": "has_ontology_term",
+      "@type": "@id"
+    },
+    "cellTypeTerms": {
+      "@id": "has_cell_type_term",
+      "@type": "@id"
+    },
+    "thumbnail": {
+      "@id": "has_thumbnail"
+    }
+  },
+  "@graph": [
+    {
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.001",
+      "@type": "Donor",
+      "sex": "Female",
+      "age": 60,
+      "label": "Female, Age 60",
+      "description": "Entered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+      "link": "https://www.nature.com/articles/s41586-021-03465-8",
+      "consortium_name": "Allen Institute for Brain Science",
+      "provider_name": "Allen Institute",
+      "provider_uuid": "8dca7930-e16b-4301-9ad3-de202225d27f",
+      "samples": [
+        {
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.001.CX48.M1C.001/Block1_10X#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "5 x 5 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/a388eebd-02f8-4a5c-ab8e-62405ce34e99",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0035932",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 5,
+            "y_dimension": 5,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/a388eebd-02f8-4a5c-ab8e-62405ce34e99_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 79.877,
+              "y_translation": 139.048,
+              "z_translation": 56.52,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.001.CX48.M1C.001/Block1_10X#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: 10x",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "10x",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        },
+        {
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.001.CX48.M1C.002/Block2_10X#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "5 x 5 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/5c78be2e-d36c-4994-ae42-a94ccf935988",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0002661",
+              "http://purl.obolibrary.org/obo/UBERON_0035932",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 5,
+            "y_dimension": 5,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/5c78be2e-d36c-4994-ae42-a94ccf935988_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 87.377,
+              "y_translation": 136.548,
+              "z_translation": 59.02,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.001.CX48.M1C.002/Block2_10X#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: 10x",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "10x",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        },
+        {
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.001.CX48.M1C.002/Block1_SSv4#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "5 x 5 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/7739f00f-62bc-4852-8d2b-518ae26a9b4a",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0002661",
+              "http://purl.obolibrary.org/obo/UBERON_0035932",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 5,
+            "y_dimension": 5,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/7739f00f-62bc-4852-8d2b-518ae26a9b4a_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 74.546,
+              "y_translation": 138.909,
+              "z_translation": 57.754,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.001.CX48.M1C.002/Block1_SSv4#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: SSv4",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "OTHER",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.002",
+      "@type": "Donor",
+      "sex": "Male",
+      "age": 50,
+      "label": "Male, Age 50",
+      "description": "Entered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+      "link": "https://www.nature.com/articles/s41586-021-03465-8",
+      "consortium_name": "Allen Institute for Brain Science",
+      "provider_name": "Allen Institute",
+      "provider_uuid": "8dca7930-e16b-4301-9ad3-de202225d27f",
+      "samples": [
+        {
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.002.CX49.M1C.001/Block3_10X#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "5 x 5 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/b66043e8-9a0c-4883-93e2-017026659575",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0035932",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 5,
+            "y_dimension": 5,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/b66043e8-9a0c-4883-93e2-017026659575_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 80.264,
+              "y_translation": 137.87,
+              "z_translation": 55.596,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.002.CX49.M1C.001/Block3_10X#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: 10x",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "10x",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        },
+        { 
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.002.CX49.M1C.001/Block2_SSv4#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "5 x 5 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/6e0b9e06-b5a5-4f05-ab2c-6146c5d930b3",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0035932",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 5,
+            "y_dimension": 5,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/6e0b9e06-b5a5-4f05-ab2c-6146c5d930b3_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 85.29,
+              "y_translation": 137.459,
+              "z_translation": 56.426,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.002.CX49.M1C.001/Block2_SSv4#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: SSv4",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "OTHER",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    { 
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1023",
+      "@type": "Donor",
+      "sex": "Female",
+      "age": 43,
+      "label": "Female, Age 43",
+      "description": "Entered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+      "link": "https://www.nature.com/articles/s41586-021-03465-8",
+      "consortium_name": "Allen Institute for Brain Science",
+      "provider_name": "Allen Institute",
+      "provider_uuid": "8dca7930-e16b-4301-9ad3-de202225d27f",
+      "samples": [
+        {
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1023.CX46.M1TL/Block3_SSv4#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "10 x 10 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/f7500931-e3b6-4aab-bed8-735619fe645e",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0002661",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/f7500931-e3b6-4aab-bed8-735619fe645e_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 106.085,
+              "y_translation": 128.672,
+              "z_translation": 66.047,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1023.CX46.M1TL/Block3_SSv4#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: SSv4",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "OTHER",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        },
+        { 
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1023.CX46.M1TL/Block4_SSv4#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "10 x 10 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/4e24cfc4-bfea-4233-8fa0-d9967e3bdf7d",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0002661",
+              "http://purl.obolibrary.org/obo/UBERON_0035932",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0006093",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 20,
+            "y_dimension": 20,
+            "z_dimension": 20,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/4e24cfc4-bfea-4233-8fa0-d9967e3bdf7d_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 82.585,
+              "y_translation": 130.672,
+              "z_translation": 62.047,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1023.CX46.M1TL/Block4_SSv4#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: SSv4",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "OTHER",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    { 
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1025",
+      "@type": "Donor",
+      "sex": "Male",
+      "age": 50,
+      "label": "Male, Age 50",
+      "description": "Entered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+      "link": "https://www.nature.com/articles/s41586-021-03465-8",
+      "consortium_name": "Allen Institute for Brain Science",
+      "provider_name": "Allen Institute",
+      "provider_uuid": "8dca7930-e16b-4301-9ad3-de202225d27f",
+      "samples": [
+        { 
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1025.CX47.M1H/Block5_SSv4#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "10 x 10 x 10 millimeter, 10 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/117273d2-9291-4665-9a8b-e7420eb1452e",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0002661",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/117273d2-9291-4665-9a8b-e7420eb1452e_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 108.181,
+              "y_translation": 125.927,
+              "z_translation": 65.59,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1025.CX47.M1H/Block5_SSv4#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: SSv4",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "OTHER",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        },
+        {
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1025.CX48.M1TL/Block6_SSv4#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "10 x 10 x 10 millimeter, 10 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 10,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/4d483843-3032-4e1d-8edb-b75d2e2377dd",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0002661",
+              "http://purl.obolibrary.org/obo/UBERON_0035932",
+              "http://purl.obolibrary.org/obo/UBERON_0002581",
+              "http://purl.obolibrary.org/obo/UBERON_0006093",
+              "http://purl.obolibrary.org/obo/UBERON_0002813"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 10,
+            "y_dimension": 10,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/4d483843-3032-4e1d-8edb-b75d2e2377dd_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 78.181,
+              "y_translation": 137.427,
+              "z_translation": 60.09,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1025.CX48.M1TL/Block6_SSv4#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: SSv4",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "OTHER",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1030",
+      "@type": "Donor",
+      "sex": "Male",
+      "age": 54,
+      "label": "Male, Age 54",
+      "description": "Entered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+      "link": "https://www.nature.com/articles/s41586-021-03465-8",
+      "consortium_name": "Allen Institute for Brain Science",
+      "provider_name": "Allen Institute",
+      "provider_uuid": "8dca7930-e16b-4301-9ad3-de202225d27f",
+      "samples": [
+        {
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1030.CX09.M1H/Block7_SSv4#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "20 x 20 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/0ced68fa-8bff-45d9-949f-3004c3b08d19",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002812",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0006093",
+              "http://purl.obolibrary.org/obo/UBERON_0002740"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 20,
+            "y_dimension": 20,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/0ced68fa-8bff-45d9-949f-3004c3b08d19_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 35.917,
+              "y_translation": 122.713,
+              "z_translation": 67.59,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1030.CX09.M1H/Block7_SSv4#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: SSv4",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "OTHER",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        },
+        {
+          "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1030.CX10.M1TL/Block8_SSv4#TissueBlock",
+          "@type": "Sample",
+          "sample_type": "Tissue Block",
+          "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+          "description": "20 x 20 x 10 millimeter, .11 millimeter, 1 Sections",
+          "link": "https://www.nature.com/articles/s41586-021-03465-8",
+          "section_count": 1,
+          "section_size": 0.11,
+          "section_units": "millimeter",
+          "rui_location": {
+            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@id": "http://purl.org/ccf/1.5/1a3fb7c9-f6ca-45fc-aa1a-d1b9e1a53da0",
+            "@type": "SpatialEntity",
+            "creator": "Raymond Sanchez",
+            "creator_first_name": "Raymond",
+            "creator_last_name": "Sanchez",
+            "creation_date": "8/29/2022",
+            "ccf_annotations": [
+              "http://purl.obolibrary.org/obo/UBERON_0013702",
+              "http://purl.obolibrary.org/obo/UBERON_0000955",
+              "http://purl.obolibrary.org/obo/UBERON_0002812",
+              "http://purl.obolibrary.org/obo/UBERON_0002703",
+              "http://purl.obolibrary.org/obo/UBERON_0035932",
+              "http://purl.obolibrary.org/obo/UBERON_0006093"
+            ],
+            "slice_thickness": 10000,
+            "slice_count": 1,
+            "x_dimension": 20,
+            "y_dimension": 20,
+            "z_dimension": 10,
+            "dimension_units": "millimeter",
+            "placement": {
+              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@id": "http://purl.org/ccf/1.5/1a3fb7c9-f6ca-45fc-aa1a-d1b9e1a53da0_placement",
+              "@type": "SpatialPlacement",
+              "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
+              "placement_date": "8/29/2022",
+              "x_scaling": 1,
+              "y_scaling": 1,
+              "z_scaling": 1,
+              "scaling_units": "ratio",
+              "x_rotation": 0,
+              "y_rotation": 0,
+              "z_rotation": 0,
+              "rotation_order": "XYZ",
+              "rotation_units": "degree",
+              "x_translation": 58.417,
+              "y_translation": 130.713,
+              "z_translation": 62.09,
+              "translation_units": "millimeter"
+            }
+          },
+          "datasets": [
+            {
+              "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1030.CX10.M1TL/Block8_SSv4#Dataset",
+              "@type": "Dataset",
+              "label": "Registered 8/29/2022, Raymond Sanchez, Allen Institute for Brain Science",
+              "descripition": "Data/Assay Types: SSv4",
+              "link": "https://www.nature.com/articles/s41586-021-03465-8",
+              "technology": "OTHER",
+              "thumbnail": "assets/allen-institute/thumbnails/allen_institute_logo_800x800.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
