@@ -719,7 +719,6 @@ components:
       title: Common Tissue Data Properties
       description: Properties available in all tissue data objects.
       type: object
-      # required: [label, description, link] -- for tesing python notebook
       required: [label, link]
       properties:
         label:
