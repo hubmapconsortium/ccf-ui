@@ -169,7 +169,7 @@
     "@typescript-eslint/eslint-plugin": "4.28.3",
     "@typescript-eslint/parser": "^4.28.4",
     "browserify": "^17.0.0",
-    "commander": "^9.0.0",
+    "commander": "^10.0.1",
     "dts-gen": "^0.6.0",
     "eslint": "^7.26.0",
     "eslint-plugin-import": "2.23.4",
