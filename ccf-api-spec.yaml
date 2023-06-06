@@ -528,7 +528,12 @@ components:
       content:
         application/json:
           schema:
-            type: object
+            type: array
+            items:
+              type: object
+        text/csv:
+          schema:
+            type: string
 
     SpatialEntities:
       description: Successful operation
@@ -714,7 +719,7 @@ components:
       title: Common Tissue Data Properties
       description: Properties available in all tissue data objects.
       type: object
-      required: [label, description, link]
+      required: [label, link]
       properties:
         label:
           type: string
@@ -809,7 +814,7 @@ components:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
         - $ref: "#/components/schemas/TissueSampleCommon"
-      required: [sampleType, spatialEntityId, donor, sectionCount, sectionSize, sectionUnits, sections]
+      required: [sampleType, donor, sectionCount, sectionSize, sectionUnits, sections]
       properties:
         sampleType:
           type: string
@@ -849,7 +854,7 @@ components:
       type: object
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
-      required: ["@type", id, label, synonymLabels, parent, children]
+      required: ["@type", label, synonymLabels, parent, children]
       properties:
         "@type":
           type: string
@@ -906,7 +911,7 @@ components:
       type: object
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
-      required: ["@type", file, file_format]
+      required: ["@type", file_format]
       properties:
         "@type":
           type: string
@@ -1197,7 +1202,7 @@ components:
           x-preprocessor-delete: enum
         _lighting:
           title: Lighting
-          type: boolean
+          type: string
         zoomBasedOpacity:
           title: Zoom Based Opacity
           description: Whether the opacity of the node changes based on the zoom level.

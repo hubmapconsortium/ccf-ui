@@ -44,7 +44,7 @@ const INCLUDED_DATA_FIELDS = [
   'descendants.ingest_metadata.metadata.assay_type',
   'descendants.thumbnail_file',
   'descendants.metadata.files.rel_path',
-  'rui_location', 'specimen_type'
+  'rui_location', 'sample_category'
 ];
 
 const DEFAULT_API_SEARCH_QUERY: unknown = {
