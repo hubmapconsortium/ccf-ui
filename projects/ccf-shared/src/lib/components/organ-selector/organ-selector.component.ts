@@ -226,6 +226,36 @@ export const ALL_POSSIBLE_ORGANS = [
     id: 'http://purl.org/sig/ont/fma/fma7213'
   },
   {
+    src: 'app:larynx',
+    organ: 'Larynx',
+    name: 'Larynx',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001737'
+  },
+  {
+    src: 'app:main-bronchus',
+    organ: 'Main Bronchus',
+    name: 'Main Bronchus',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002182'
+  },
+  {
+    src: 'app:palatine-tonsil',
+    organ: 'Palatine Tonsil',
+    name: 'Palatine Tonsil, L',
+    side: 'left',
+    hasSex: true,
+    id: 'http://purl.org/sig/ont/fma/fma54974'
+  },
+  {
+    src: 'app:palatine-tonsil',
+    organ: 'Palatine Tonsil',
+    name: 'Palatine Tonsil, R',
+    side: 'right',
+    hasSex: true,
+    id: 'http://purl.org/sig/ont/fma/fma54973'
+  },
+  {
     src: 'app:pancreas',
     organ: 'Pancreas',
     name: 'Pancreas',
@@ -298,6 +328,13 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Thymus',
     hasSex: true,
     id: 'http://purl.obolibrary.org/obo/UBERON_0002370'
+  },
+  {
+    src: 'app:trachea',
+    organ: 'Trachea',
+    name: 'Trachea',
+    hasSex: true,
+    id: 'http://purl.obolibrary.org/obo/UBERON_0003126'
   },
   {
     disabled: true,

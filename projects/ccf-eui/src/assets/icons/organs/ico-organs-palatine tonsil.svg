@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="palatine_tonsil" data-name="palatine tonsil" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1-palatine-tonsil, .cls-2-palatine-tonsil, .cls-3-palatine-tonsil, .cls-4-palatine-tonsil {
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-1-palatine-tonsil, .cls-3-palatine-tonsil, .cls-4-palatine-tonsil {
+        stroke-width: 1px;
+      }
+
+      .cls-2-palatine-tonsil {
+        stroke-width: 1.5px;
+      }
+
+      .cls-2-palatine-tonsil, .cls-3-palatine-tonsil {
+        fill: none;
+      }
+
+      .cls-4-palatine-tonsil {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_58" data-name="Layer 58">
+    <path class="cls-1-palatine-tonsil" d="m22.34,15.89c-.7,1.02-1.78-.66-1.78-.68-1.61.3-1.74-.53-1.71-.75-.51-.25.4-.46-.04-.6-.85-.26-.74-1.11-.18-1.26-.46-.26-.71-1.02.17-1.41.09-.04-.1-.02,0,0-.44-.62-.17-1.57.72-1.31.24.07.69-.58,1.52.11.82,1.79,1.17,5.71,1.17,5.71"/>
+    <path class="cls-4-palatine-tonsil" d="m21.09,16.34c-.27-.65-2.25-1.66-4.06-1.66-1.1,0-2.08.36-2.23.31-.82-.24-1.27-.12-2.6-.19-3.13-.18-3.91,1.54-3.91,1.54,0-.76-.76,9.46,6.13,9.46s6.52-9.83,6.68-9.46Z"/>
+    <path class="cls-3-palatine-tonsil" d="m14.8,15s-.54.88-.03,4.56"/>
+    <path class="cls-3-palatine-tonsil" d="m7.02,17.42s.33,10.24,7.26,10.24,7.59-7.18,7.93-10.3"/>
+    <path class="cls-2-palatine-tonsil" d="m7.13,15.79c.81-5.16,1.97-8.94,3.86-8.94,4,0,1.55,3.41,3.66,3.41,2.37,0-.37-3.41,3.41-3.41,2.13,0,3.35,3.46,4.15,9.15"/>
+  </g>
+</svg>
