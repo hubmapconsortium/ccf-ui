@@ -246,7 +246,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Palatine Tonsil, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002372'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002373'
   },
   {
     src: 'app:palatine-tonsil',

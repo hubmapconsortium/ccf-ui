@@ -112,7 +112,7 @@ export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTre
     'http://purl.obolibrary.org/obo/UBERON_0000992', // Ovary
     // 'http://purl.org/sig/ont/fma/fma7214', // Ovary, L
     // 'http://purl.org/sig/ont/fma/fma7213', // Ovary, R
-    'http://purl.obolibrary.org/obo/UBERON_0002372', // Palatine Tonsil
+    'http://purl.obolibrary.org/obo/UBERON_0002373', // Palatine Tonsil
     // 'http://purl.org/sig/ont/fma/fma54974', // Palatine Tonsil, L
     // 'http://purl.org/sig/ont/fma/fma54973', // Palatine Tonsil, R
     'http://purl.obolibrary.org/obo/UBERON_0001264', // Pancreas
