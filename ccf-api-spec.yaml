@@ -750,7 +750,7 @@ components:
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
-      required: ["@type", technology, thumbnail]
+      required: ["@type"]
       properties:
         "@type":
           type: string
@@ -771,7 +771,7 @@ components:
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
-      required: ["@type", providerName]
+      required: ["@type"]
       properties:
         "@type":
           type: string
@@ -789,7 +789,7 @@ components:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
         - $ref: "#/components/schemas/TissueSampleCommon"
-      required: [sampleType, sectionNumber]
+      required: [sampleType]
       properties:
         sampleType:
           type: string
@@ -809,7 +809,7 @@ components:
         - $ref: "#/components/schemas/JsonLdObject"
         - $ref: "#/components/schemas/TissueCommon"
         - $ref: "#/components/schemas/TissueSampleCommon"
-      required: [sampleType, spatialEntityId, donor, sectionCount, sectionSize, sectionUnits, sections]
+      required: [sampleType]
       properties:
         sampleType:
           type: string
@@ -849,7 +849,7 @@ components:
       type: object
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
-      required: ["@type", id, label, synonymLabels, parent, children]
+      required: ["@type",]
       properties:
         "@type":
           type: string
@@ -906,7 +906,7 @@ components:
       type: object
       allOf:
         - $ref: "#/components/schemas/JsonLdObject"
-      required: ["@type", file, file_format]
+      required: ["@type"]
       properties:
         "@type":
           type: string
