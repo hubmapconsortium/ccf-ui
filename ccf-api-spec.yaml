@@ -528,7 +528,12 @@ components:
       content:
         application/json:
           schema:
-            type: object
+            type: array
+            items:
+              type: object
+        text/csv:
+          schema:
+            type: string
 
     SpatialEntities:
       description: Successful operation
@@ -714,7 +719,7 @@ components:
       title: Common Tissue Data Properties
       description: Properties available in all tissue data objects.
       type: object
-      required: [label, description, link]
+      required: [label, link]
       properties:
         label:
           type: string
@@ -1197,7 +1202,7 @@ components:
           x-preprocessor-delete: enum
         _lighting:
           title: Lighting
-          type: boolean
+          type: string
         zoomBasedOpacity:
           title: Zoom Based Opacity
           description: Whether the opacity of the node changes based on the zoom level.
