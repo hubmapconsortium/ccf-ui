@@ -1425,7 +1425,7 @@ export class HuBMAPTissueBlock {
     const sUnits &#x3D; loc.dimension_units as string || &#x27;millimeter&#x27;;
     this.section_units &#x3D; sUnits;
 
-    this.description &#x3D; &#x60;${dims}, ${sSize} ${sUnits}, ${data.specimen_type}, ${this.section_count} Sections&#x60;;
+    this.description &#x3D; &#x60;${dims}, ${sSize} ${sUnits}, ${this.section_count} Sections&#x60;;
 
     sections.forEach((section, index) &#x3D;&gt; {
       section.description &#x3D; &#x60;${loc.x_dimension} x ${loc.y_dimension} x ${sSize} ${sUnits}, ${sSize} ${sUnits}, ${section.description}&#x60;;
@@ -1442,7 +1442,7 @@ export class HuBMAPTissueBlock {
       &#x27;@id&#x27;: HBM_PREFIX + section.uuid,
       &#x27;@type&#x27;: &#x27;Sample&#x27;,
       label: &#x60;Registered ${dateEntered}, ${creator}, ${groupName}&#x60;,
-      description: &#x60;${data.specimen_type}&#x60;,
+      description: &#x60;${data.sample_category}&#x60;,
       link: &#x60;${portalUrl}browse/sample/${section.uuid}&#x60;,
 
       sample_type: &#x27;Tissue Section&#x27;,
