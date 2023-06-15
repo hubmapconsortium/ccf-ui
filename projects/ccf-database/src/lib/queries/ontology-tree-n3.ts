@@ -102,14 +102,19 @@ export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTre
     'http://purl.obolibrary.org/obo/UBERON_0001465', // Knee
     // 'http://purl.org/sig/ont/fma/fma24978', // Knee, L
     // 'http://purl.org/sig/ont/fma/fma24977', // Knee, R
+    'http://purl.obolibrary.org/obo/UBERON_0001737', // Larynx
     'http://purl.obolibrary.org/obo/UBERON_0002107', // Liver
     'http://purl.obolibrary.org/obo/UBERON_0002048', // Lungs
+    'http://purl.obolibrary.org/obo/UBERON_0002182', // Main Bronchus
     'http://purl.obolibrary.org/obo/UBERON_0001911', // Mammary Gland
     // 'http://purl.org/sig/ont/fma/fma57991', // Mammary Gland, L
     // 'http://purl.org/sig/ont/fma/fma57987', // Mammary Gland, R
     'http://purl.obolibrary.org/obo/UBERON_0000992', // Ovary
     // 'http://purl.org/sig/ont/fma/fma7214', // Ovary, L
     // 'http://purl.org/sig/ont/fma/fma7213', // Ovary, R
+    'http://purl.obolibrary.org/obo/UBERON_0002373', // Palatine Tonsil
+    // 'http://purl.org/sig/ont/fma/fma54974', // Palatine Tonsil, L
+    // 'http://purl.org/sig/ont/fma/fma54973', // Palatine Tonsil, R
     'http://purl.obolibrary.org/obo/UBERON_0001264', // Pancreas
     'http://purl.obolibrary.org/obo/UBERON_0001270', // Pelvis
     'http://purl.obolibrary.org/obo/UBERON_0001987', // Placenta
@@ -120,6 +125,7 @@ export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTre
     'http://purl.obolibrary.org/obo/UBERON_0000059', // Large Intestine
     'http://purl.obolibrary.org/obo/UBERON_0002106', // Spleen
     'http://purl.obolibrary.org/obo/UBERON_0002370', // Thymus
+    'http://purl.obolibrary.org/obo/UBERON_0003126', // Trachea
     'http://purl.obolibrary.org/obo/UBERON_0000056', // Ureter
     // 'http://purl.obolibrary.org/obo/UBERON_0001223', // Ureter, L
     // 'http://purl.obolibrary.org/obo/UBERON_0001222', // Ureter, R
