@@ -7,6 +7,7 @@ Changelog for the Human Reference Atlas (HRA) User Interfaces
 ### Added in 3.7.0
 
 * Updated to CCF.OWL v2.2.0 which indexes the [Human Reference Atlas (HRA) 5th Release (v1.4)](https://hubmapconsortium.github.io/ccf-releases/v1.4/docs/index.html) for use in the CCF UIs and CCF-API.
+* Added CCF-API usage notebooks for [python](ccf-api-usage.ipynb) and [javascript](https://observablehq.com/@cns-iu/ccf-api-documentation-javascript)
 
 ## 3.6.0 - 2022-10-15
 
