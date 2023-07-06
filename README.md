@@ -34,6 +34,13 @@ This repository is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) (multipl
   * TypeScript: ![npm (scoped)](https://img.shields.io/npm/v/@ccf-openapi/ts-client)  [@ccf-openapi/ts-client](https://www.npmjs.com/package/@ccf-openapi/ts-client)
   * Angular 12+: ![npm (scoped)](https://img.shields.io/npm/v/@ccf-openapi/ng-client) [@ccf-openapi/ng-client](https://www.npmjs.com/package/@ccf-openapi/ng-client)
   * Python 3.6+: ![PyPI](https://img.shields.io/pypi/v/ccf-openapi) [ccf-openapi](https://pypi.org/project/ccf-openapi/)
+* CCF API Sample Notebooks/Vignettes:
+  * Python 3.6+:
+    * Basic Usage: [ccf-api-usage.ipynb](ccf-api-usage.ipynb)
+    * Use case walkthrough: [ccf-api-usecase.ipynb](ccf-api-usecase.ipynb)
+  * JavaScript:
+    * Basic Usage: <https://observablehq.com/@cns-iu/ccf-api-documentation-javascript>
+    * Use case walkthrough: <https://observablehq.com/@cns-iu/ccf-api-usecase-javascript>
 
 ## Background and More Information
 
