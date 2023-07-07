@@ -1,6 +1,6 @@
 [
     {
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://dx.doi.org/10.1681/ASN.2016091027#DonorB",
       "@type": "Donor",
       "label": "Patient B Cortical biopsy",
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://dx.doi.org/10.1681/ASN.2016091027#DonorA",
       "@type": "Donor",
       "label": "Patient A Cortical biopsy",
@@ -145,7 +145,7 @@
       ]
     },
     {
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://dx.doi.org/10.1016/j.trsl.2017.07.006#Donor",
       "@type": "Donor",
       "label": "CoverNephrectomy",
