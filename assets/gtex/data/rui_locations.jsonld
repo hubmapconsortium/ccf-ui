@@ -1,42 +1,5 @@
 {
-  "@context": {
-    "@base": "http://purl.org/ccf/latest/ccf-entity.owl#",
-    "@vocab": "http://purl.org/ccf/latest/ccf-entity.owl#",
-    "ccf": "http://purl.org/ccf/latest/ccf.owl#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "label": "rdfs:label",
-    "description": "rdfs:comment",
-    "link": {
-      "@id": "rdfs:seeAlso",
-      "@type": "@id"
-    },
-    "samples": {
-      "@reverse": "has_donor"
-    },
-    "sections": {
-      "@id": "has_tissue_section",
-      "@type": "@id"
-    },
-    "datasets": {
-      "@id": "has_dataset",
-      "@type": "@id"
-    },
-    "rui_location": {
-      "@id": "has_spatial_entity",
-      "@type": "@id"
-    },
-    "ontologyTerms": {
-      "@id": "has_ontology_term",
-      "@type": "@id"
-    },
-    "cellTypeTerms": {
-      "@id": "has_cell_type_term",
-      "@type": "@id"
-    },
-    "thumbnail": {
-      "@id": "has_thumbnail"
-    }
-  },
+  "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
   "@graph": [
     {
       "@id": "https://gtexportal.org/home/tissue/Breast#FDonors",
@@ -1577,7 +1540,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/ec1cc18d-9a48-4c09-a720-2b54c3f83bd9",
             "@type": "SpatialEntity",
             "creator": "Kristin Ardlie",
@@ -1595,7 +1558,7 @@
             "z_dimension": 2,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/ec1cc18d-9a48-4c09-a720-2b54c3f83bd9_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFSmallIntestine",

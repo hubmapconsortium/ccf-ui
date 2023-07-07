@@ -1,45 +1,8 @@
 {
-  "@context": {
-    "@base": "http://purl.org/ccf/latest/ccf-entity.owl#",
-    "@vocab": "http://purl.org/ccf/latest/ccf-entity.owl#",
-    "ccf": "http://purl.org/ccf/latest/ccf.owl#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "label": "rdfs:label",
-    "description": "rdfs:comment",
-    "link": {
-      "@id": "rdfs:seeAlso",
-      "@type": "@id"
-    },
-    "samples": {
-      "@reverse": "has_donor"
-    },
-    "sections": {
-      "@id": "has_tissue_section",
-      "@type": "@id"
-    },
-    "datasets": {
-      "@id": "has_dataset",
-      "@type": "@id"
-    },
-    "rui_location": {
-      "@id": "has_spatial_entity",
-      "@type": "@id"
-    },
-    "ontologyTerms": {
-      "@id": "has_ontology_term",
-      "@type": "@id"
-    },
-    "cellTypeTerms": {
-      "@id": "has_cell_type_term",
-      "@type": "@id"
-    },
-    "thumbnail": {
-      "@id": "has_thumbnail"
-    }
-  },
+  "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
   "@graph": [
     {
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.001",
       "@type": "Donor",
       "sex": "Female",
@@ -62,7 +25,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/a388eebd-02f8-4a5c-ab8e-62405ce34e99",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -84,7 +47,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/a388eebd-02f8-4a5c-ab8e-62405ce34e99_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
@@ -127,7 +90,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/5c78be2e-d36c-4994-ae42-a94ccf935988",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -150,7 +113,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/5c78be2e-d36c-4994-ae42-a94ccf935988_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
@@ -193,7 +156,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/7739f00f-62bc-4852-8d2b-518ae26a9b4a",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -214,7 +177,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/7739f00f-62bc-4852-8d2b-518ae26a9b4a_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
@@ -249,7 +212,7 @@
       ]
     },
     {
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://purl.org/ccf/1.5/allen-brain/H18.30.002",
       "@type": "Donor",
       "sex": "Male",
@@ -272,7 +235,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/b66043e8-9a0c-4883-93e2-017026659575",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -294,7 +257,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/b66043e8-9a0c-4883-93e2-017026659575_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
@@ -337,7 +300,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/6e0b9e06-b5a5-4f05-ab2c-6146c5d930b3",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -359,7 +322,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/6e0b9e06-b5a5-4f05-ab2c-6146c5d930b3_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
@@ -394,7 +357,7 @@
       ]
     },
     { 
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1023",
       "@type": "Donor",
       "sex": "Female",
@@ -417,7 +380,7 @@
           "section_size": 10,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/f7500931-e3b6-4aab-bed8-735619fe645e",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -439,7 +402,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/f7500931-e3b6-4aab-bed8-735619fe645e_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
@@ -482,7 +445,7 @@
           "section_size": 10,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/4e24cfc4-bfea-4233-8fa0-d9967e3bdf7d",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -506,7 +469,7 @@
             "z_dimension": 20,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/4e24cfc4-bfea-4233-8fa0-d9967e3bdf7d_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHFAllenBrain",
@@ -541,7 +504,7 @@
       ]
     },
     { 
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1025",
       "@type": "Donor",
       "sex": "Male",
@@ -564,7 +527,7 @@
           "section_size": 10,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/117273d2-9291-4665-9a8b-e7420eb1452e",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -586,7 +549,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/117273d2-9291-4665-9a8b-e7420eb1452e_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
@@ -629,7 +592,7 @@
           "section_size": 10,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/4d483843-3032-4e1d-8edb-b75d2e2377dd",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -653,7 +616,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/4d483843-3032-4e1d-8edb-b75d2e2377dd_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
@@ -688,7 +651,7 @@
       ]
     },
     {
-      "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-entity-context.jsonld",
+      "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
       "@id": "http://purl.org/ccf/1.5/allen-brain/H200.1030",
       "@type": "Donor",
       "sex": "Male",
@@ -711,7 +674,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/0ced68fa-8bff-45d9-949f-3004c3b08d19",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -733,7 +696,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/0ced68fa-8bff-45d9-949f-3004c3b08d19_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
@@ -776,7 +739,7 @@
           "section_size": 0.11,
           "section_units": "millimeter",
           "rui_location": {
-            "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+            "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
             "@id": "http://purl.org/ccf/1.5/1a3fb7c9-f6ca-45fc-aa1a-d1b9e1a53da0",
             "@type": "SpatialEntity",
             "creator": "Raymond Sanchez",
@@ -798,7 +761,7 @@
             "z_dimension": 10,
             "dimension_units": "millimeter",
             "placement": {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/1a3fb7c9-f6ca-45fc-aa1a-d1b9e1a53da0_placement",
               "@type": "SpatialPlacement",
               "target": "http://purl.org/ccf/latest/ccf.owl#VHMAllenBrain",
