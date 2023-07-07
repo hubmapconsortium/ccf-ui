@@ -444,7 +444,7 @@ components:
           example:
             target_iri: "http://purl.org/ccf/latest/ccf.owl#VHFemale"
             rui_location: {
-              "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+              "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
               "@id": "http://purl.org/ccf/1.5/f7130161-ad0a-4801-b5a4-f6297e0f1869",
               "@type": "SpatialEntity",
               "creator": "Bruce Herr",
@@ -464,7 +464,7 @@ components:
               "z_dimension": 13,
               "dimension_units": "millimeter",
               "placement": {
-                "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+                "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
                 "@id": "http://purl.org/ccf/1.5/f7130161-ad0a-4801-b5a4-f6297e0f1869_placement",
                 "@type": "SpatialPlacement",
                 "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidneyV1.1",

@@ -7,7 +7,7 @@ The CCF Registration User Interface (RUI) exports RUI registration data in the '
 ```javascript
 {
   // The JSON-LD context which defines the semantic meaning of each property in this file
-  "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+  "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
   // A unique IRI for the RUI registration (the RUI generates random UUIDs for this purpose)
   "@id": "http://purl.org/ccf/1.5/a3488448-9745-48e3-a3b2-ed39a722910e",
   // A RUI registration is a SpatialEntity in the CCF Ontology
@@ -49,7 +49,7 @@ The CCF Registration User Interface (RUI) exports RUI registration data in the '
   // A RUI registration placement defines where the RUI registration is placed relative to a reference organ
   "placement": {
     // The JSON-LD context which defines the semantic meaning of each property in this object
-    "@context": "https://hubmapconsortium.github.io/hubmap-ontology/ccf-context.jsonld",
+    "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
     // A unique IRI for the RUI registration placement (the RUI generates random UUIDs for this purpose)
     "@id": "http://purl.org/ccf/1.5/a3488448-9745-48e3-a3b2-ed39a722910e_placement",
     // The RUI registration placement is a SpatialPlacement in the CCF Ontology

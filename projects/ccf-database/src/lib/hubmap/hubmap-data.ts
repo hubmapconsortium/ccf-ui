@@ -23,46 +23,7 @@ const GROUP_UUID_MAPPING: { [uuid: string]: string } = {
   '301615f9-c870-11eb-a8dc-35ce3d8786fe': 'TMC-UConn'
 };
 
-const ENTITY_CONTEXT = {
-  '@base': 'http://purl.org/ccf/latest/ccf-entity.owl#',
-  '@vocab': 'http://purl.org/ccf/latest/ccf-entity.owl#',
-  ccf: 'http://purl.org/ccf/',
-  rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
-
-  label: 'rdfs:label',
-  description: 'rdfs:comment',
-  link: {
-    '@id': 'rdfs:seeAlso',
-    '@type': '@id'
-  },
-  samples: {
-    '@reverse': 'has_donor'
-  },
-  sections: {
-    '@id': 'has_tissue_section',
-    '@type': '@id'
-  },
-  datasets: {
-    '@id': 'has_dataset',
-    '@type': '@id'
-  },
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  rui_location: {
-    '@id': 'has_spatial_entity',
-    '@type': '@id'
-  },
-  ontologyTerms: {
-    '@id': 'has_ontology_term',
-    '@type': '@id'
-  },
-  cellTypeTerms: {
-    '@id': 'has_cell_type_term',
-    '@type': '@id'
-  },
-  thumbnail: {
-    '@id': 'has_thumbnail'
-  }
-};
+const ENTITY_CONTEXT = 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld';
 
 /**
  * Converts a hubmap response object into JsonLd.
@@ -386,6 +347,7 @@ export class HuBMAPTissueBlock {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         spatialEntity = ruiLocation as unknown as JsonLdObj;
       }
+      ruiLocation['@context'] = 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld';
     }
     if (spatialEntity) {
       // Patch to fix RUI 0.5 Kidney and Spleen Placements

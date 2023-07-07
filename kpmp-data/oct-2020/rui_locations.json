@@ -1,27 +1,5 @@
 {
-  "@context": {
-    "@vocab": "http://purl.org/ccf/latest/ccf-entity.owl#",
-    "ontologyTerms": {
-      "@type": "@id"
-    },
-    "ancestors": {
-      "@type": "@id"
-    },
-    "descendants": {
-      "@type": "@id"
-    },
-    "organ": {
-      "@type": "@id"
-    },
-    "images": {
-      "@id": "hasImage",
-      "@type": "@id"
-    },
-    "imageProviders": {
-      "@id": "hasImageProvider",
-      "@type": "@id"
-    }
-  },
+  "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
   "@graph": [
     {
       "@id": "https://entity-api.hubmapconsortium.org/entities/5941196728d24955833e7f8a8ab75d85",
