@@ -518,6 +518,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { delMany, get, setMany } from &#x27;idb-keyval&#x27;;
 import { JsonLd } from &#x27;jsonld/jsonld-spec&#x27;;
+import hash from &#x27;object-hash&#x27;;
 import {
   addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, deserializeN3Store, Quad, serializeN3Store, Store
 } from &#x27;triple-store-utils&#x27;;
@@ -618,8 +619,16 @@ export class CCFDatabase {
 
   private async cachedConnect(): Promise&lt;void&gt; {
     const start &#x3D; new Date().getTime();
-    const lastModifiedKey &#x3D; &#x27;ccf-database.last_modified&#x27;;
-    const ccfDatabaseKey &#x3D; &#x27;ccf-database&#x27;;
+    const optionsHash &#x3D; hash(this.options, {
+      encoding: &#x27;base64&#x27;,
+      ignoreUnknown: true,
+      respectType: false,
+      unorderedArrays: true,
+      unorderedObjects: true,
+      unorderedSets: true
+    });
+    const lastModifiedKey &#x3D; &#x60;ccf-database.last_modified.${optionsHash}&#x60;;
+    const ccfDatabaseKey &#x3D; &#x60;ccf-database.${optionsHash}&#x60;;
 
     const lastModified &#x3D; await get(lastModifiedKey).catch(() &#x3D;&gt; undefined);
     let serializedDb: string | undefined;
