@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { delMany, get, setMany } from 'idb-keyval';
 import { JsonLd } from 'jsonld/jsonld-spec';
+import hash from 'object-hash';
 import {
   addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, deserializeN3Store, Quad, serializeN3Store, Store
 } from 'triple-store-utils';
@@ -101,8 +102,16 @@ export class CCFDatabase {
 
   private async cachedConnect(): Promise<void> {
     const start = new Date().getTime();
-    const lastModifiedKey = 'ccf-database.last_modified';
-    const ccfDatabaseKey = 'ccf-database';
+    const optionsHash = hash(this.options, {
+      encoding: 'base64',
+      ignoreUnknown: true,
+      respectType: false,
+      unorderedArrays: true,
+      unorderedObjects: true,
+      unorderedSets: true
+    });
+    const lastModifiedKey = `ccf-database.last_modified.${optionsHash}`;
+    const ccfDatabaseKey = `ccf-database.${optionsHash}`;
 
     const lastModified = await get(lastModifiedKey).catch(() => undefined);
     let serializedDb: string | undefined;
