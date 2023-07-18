@@ -18,7 +18,7 @@
     "esModuleInterop": true,
     "importHelpers": true,
     "skipLibCheck": true,
-    "target": "es2020",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types",
       "node_modules/@danmarshall"
@@ -70,7 +70,8 @@
       "ccf-openapi/angular-client": [
         "dist/ccf-openapi/angular-client"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
