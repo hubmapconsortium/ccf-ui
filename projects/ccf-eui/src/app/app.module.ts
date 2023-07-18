@@ -24,32 +24,31 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
 
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    CoreModule,
-    DrawerModule,
-    FiltersPopoverModule,
-    OntologyExplorationModule,
-    MatIconModule,
-    DualSliderModule,
-    ResultsBrowserModule,
-    SpinnerOverlayModule,
-    BodyUiModule,
-    OrganSelectorModule,
-    InfoButtonModule,
-    MatTooltipModule,
-    ViewerModule,
-    TrackingPopupModule,
-    MatSnackBarModule,
-    RunSpatialSearchModule
-  ],
-  declarations: [AppComponent, AppWebComponent],
-  providers: [
-    { provide: DEFAULT_THEME, useValue: 'hubmap-theme-light' },
-    { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
-  ],
-  entryComponents: [AppComponent]
+    imports: [
+        BrowserAnimationsModule,
+        BrowserModule,
+        CoreModule,
+        DrawerModule,
+        FiltersPopoverModule,
+        OntologyExplorationModule,
+        MatIconModule,
+        DualSliderModule,
+        ResultsBrowserModule,
+        SpinnerOverlayModule,
+        BodyUiModule,
+        OrganSelectorModule,
+        InfoButtonModule,
+        MatTooltipModule,
+        ViewerModule,
+        TrackingPopupModule,
+        MatSnackBarModule,
+        RunSpatialSearchModule
+    ],
+    declarations: [AppComponent, AppWebComponent],
+    providers: [
+        { provide: DEFAULT_THEME, useValue: 'hubmap-theme-light' },
+        { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
+    ]
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }
