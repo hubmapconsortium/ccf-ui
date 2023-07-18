@@ -135,7 +135,7 @@
     "ts-cacheable": "^1.0.6",
     "tslib": "^2.1.0",
     "uuid": "^8.3.2",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.13.1"
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1502.9",
