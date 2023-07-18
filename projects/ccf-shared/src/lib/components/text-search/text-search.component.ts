@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Inject, InjectionToken, Input, Output,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
 import { from, Observable, ObservableInput } from 'rxjs';
 import { distinctUntilChanged, map, startWith, switchMap, take } from 'rxjs/operators';
@@ -88,7 +88,7 @@ export class TextSearchComponent {
   /**
    * Form controller for search bar
    */
-  readonly controller = new FormControl();
+  readonly controller = new UntypedFormControl();
 
   /**
    * Emits the latest autocomplete suggestions
