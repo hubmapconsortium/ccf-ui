@@ -1,5 +1,5 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 @use '../../app/modules/header/header.component.theme' as header;
 @use '../../../../ccf-shared/src/lib/components//info/info-dialog/info-dialog.component.theme.scss' as infoDialog;
 @use '../../../../ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss' as infoButton;
