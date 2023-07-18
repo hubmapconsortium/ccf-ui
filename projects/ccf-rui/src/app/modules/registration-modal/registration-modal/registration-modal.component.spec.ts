@@ -1,4 +1,4 @@
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { OrganInfo } from 'ccf-shared';
 import { Subject } from 'rxjs';
 import { Shallow } from 'shallow-render';

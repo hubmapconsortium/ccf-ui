@@ -28,15 +28,15 @@
 @use '../../app/app.component.theme.scss' as app;
 
 @mixin ccf-theme($theme) {
-  @include mat.core-theme($theme);
+  @include mat.legacy-core-theme($theme);
   @include mat.toolbar-theme($theme);
   @include mat.icon-theme($theme);
   @include mat-form-field-outline-theme($theme);
-  @include mat.input-theme($theme);
-  @include mat.checkbox-theme($theme);
-  @include mat.progress-spinner-theme($theme);
+  @include mat.legacy-input-theme($theme);
+  @include mat.legacy-checkbox-theme($theme);
+  @include mat.legacy-progress-spinner-theme($theme);
   @include mat.expansion-theme($theme);
-  @include mat.tooltip-theme($theme);
+  @include mat.legacy-tooltip-theme($theme);
 
   @include header.theme($theme);
   @include drawer.theme($theme);

@@ -1,4 +1,4 @@
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { Shallow } from 'shallow-render';
 import { InfoButtonComponent } from './info-button.component';
 import { InfoButtonModule } from './info-button.module';

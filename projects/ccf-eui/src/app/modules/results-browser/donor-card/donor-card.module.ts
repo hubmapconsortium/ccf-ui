@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
 import { MatIconModule } from '@angular/material/icon';
 
 import { ThumbnailCarouselModule } from '../../../shared/components/thumbnail-carousel/thumbnail-carousel.module';

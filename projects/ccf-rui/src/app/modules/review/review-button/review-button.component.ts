@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, OnChanges, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { MetaData } from '../../../core/models/meta-data';

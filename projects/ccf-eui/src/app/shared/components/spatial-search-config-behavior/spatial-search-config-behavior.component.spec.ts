@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { NgxsModule } from '@ngxs/store';
 import { of } from 'rxjs/internal/observable/of';
 import { Shallow } from 'shallow-render';

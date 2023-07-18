@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding, Inject, Renderer2 } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { DOCUMENT } from '@angular/common';
 
 /**

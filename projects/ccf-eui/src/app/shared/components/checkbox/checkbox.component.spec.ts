@@ -1,4 +1,4 @@
-import { MatCheckbox, MatCheckboxChange } from '@angular/material/checkbox';
+import { MatLegacyCheckbox as MatCheckbox, MatLegacyCheckboxChange as MatCheckboxChange } from '@angular/material/legacy-checkbox';
 import { Shallow } from 'shallow-render';
 
 import { CheckboxComponent } from './checkbox.component';
