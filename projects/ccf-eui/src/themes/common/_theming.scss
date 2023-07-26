@@ -31,7 +31,7 @@
   @include mat.legacy-core-theme($theme);
   @include mat.toolbar-theme($theme);
   @include mat.icon-theme($theme);
-  @include mat-form-field-outline-theme($theme);
+  @include mat.form-field-theme($theme);
   @include mat.legacy-input-theme($theme);
   @include mat.legacy-checkbox-theme($theme);
   @include mat.legacy-progress-spinner-theme($theme);

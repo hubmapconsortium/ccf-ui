@@ -127,7 +127,7 @@ export class TextSearchComponent {
     return from(options).pipe(
       take(1),
       map(array => array.length <= maxOptions ? array : array.slice(0, maxOptions))
-    ).toPromise();
+    ).toPromise() as Promise<AutoCompleteOption[]>;
   }
 
   /**

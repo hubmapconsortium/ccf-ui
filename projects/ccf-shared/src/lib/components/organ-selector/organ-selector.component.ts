@@ -604,7 +604,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   stopScroll(): void {
     if (this.timeoutHandler) {
       // Minor hack to make typescript happy when there are mixed NodeJS and regular typings
-      clearInterval(this.timeoutHandler as undefined);
+      clearInterval(this.timeoutHandler as never);
       this.timeoutHandler = undefined;
     }
   }

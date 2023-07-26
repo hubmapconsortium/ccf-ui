@@ -37,7 +37,7 @@
     "build:ccf-openapi:lib:typescript-client": "cd projects/ccf-openapi/generated/typescript-client && npm i && npm run build",
     "build:ccf-openapi:lib:javascript-client": "cd projects/ccf-openapi/generated/javascript-client && npm i && npm run build",
     "build:hubmap-jsonld": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/process-hubmap-data.ts ./src/assets/dev-data/entities.json ./src/assets/dev-data/entities.jsonld",
-    "build:triple-store-utils": "npm run build triple-store-utils && npm run fix-triple-store-utils",
+    "build:triple-store-utils": "npm run build triple-store-utils",
     "generate-reference-data": "ts-node --project projects/ccf-body-ui/tsconfig.cli.json projects/ccf-body-ui/src/generate-reference-data.ts ../hubmap-ontology/source_data/reference-spatial-entities.jsonld ../hubmap-ontology/source_data/generated-reference-spatial-entities.jsonld",
     "rui-data": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/precompute-reference-data.ts projects/ccf-rui/src/assets/reference-organ-data.json",
     "eui-data": "ts-node --project projects/ccf-database/tsconfig.cli.json projects/ccf-database/src/serialize-ccf-database.ts projects/ccf-eui/src/assets/ccf.owl.n3store.json",
@@ -64,10 +64,11 @@
     "fs": false
   },
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "dependencies": {
     "@angular-ru/common": "^15.313.0",
+    "@angular-slider/ngx-slider": "^2.0.4",
     "@angular/animations": "^16.1.5",
     "@angular/cdk": "^16.1.5",
     "@angular/common": "^16.1.5",
@@ -80,7 +81,6 @@
     "@angular/platform-browser-dynamic": "^16.1.5",
     "@angular/router": "^16.1.5",
     "@angular/youtube-player": "^16.1.5",
-    "@angular-slider/ngx-slider": "^2.0.4",
     "@comunica/query-sparql-rdfjs": "^2.8.1",
     "@deck.gl/core": "^8.9.22",
     "@deck.gl/geo-layers": "^8.9.22",
@@ -128,7 +128,7 @@
     "object-hash": "^3.0.0",
     "qs": "^6.11.2",
     "rdf-literal": "^1.3.1",
-    "rdfxml-streaming-parser": "^2.2.3",
+    "rdfxml-streaming-parser": "^1.4.0",
     "readable-stream": "^4.4.2",
     "rxjs": "^7.8.1",
     "stream-browserify": "^3.0.0",

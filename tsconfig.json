@@ -41,7 +41,7 @@
         "dist/triple-store-utils"
       ],
       "triple-store-utils": [
-        "dist/triple-store-fixed/index"
+        "dist/triple-store-utils"
       ],
       "ccf-body-ui": [
         "dist/ccf-body-ui/ccf-body-ui",
@@ -69,7 +69,8 @@
       ],
       "ccf-openapi/angular-client": [
         "dist/ccf-openapi/angular-client"
-      ]
+      ],
+      "stream": ["./node_modules/stream-browserify"]
     },
     "useDefineForClassFields": false
   },

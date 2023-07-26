@@ -33,10 +33,10 @@ export class GlobalConfigState<T> extends NgxsImmutableDataRepository<T> {
 
   getProperty<R>(path: PropertyKey[]): Observable<R> {
     return this.config$.pipe(
-      pluck<unknown, R>(...path as string[]),
+      pluck(...path as [string]),
       distinctUntilChanged(),
       shareReplay(1)
-    );
+    ) as Observable<R>;
   }
 
   getOption<K1 extends keyof T>(k1: K1): Observable<T[K1]>;
