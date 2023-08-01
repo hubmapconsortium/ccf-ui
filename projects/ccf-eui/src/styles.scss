@@ -10,7 +10,7 @@
 @use 'themes/gtex_light';
 @use 'themes/gtex_dark';
 
-@import '~swiper/swiper';
+@import 'swiper/swiper.min.css';
 // @import 'swiper/components/navigation/navigation';
 
 @include mat.core();
