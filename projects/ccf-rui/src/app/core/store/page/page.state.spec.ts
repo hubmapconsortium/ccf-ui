@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { NgxsDataPluginModule } from '@ngxs-labs/data';
+import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 import { Observable } from 'rxjs';

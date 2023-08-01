@@ -2,9 +2,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
-import { Ng5SliderModule } from 'ng5-slider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { NgxSliderModule } from 'ngx-slider-v2';
 
 import { DualSliderComponent } from './dual-slider.component';
 
@@ -13,9 +13,9 @@ import { DualSliderComponent } from './dual-slider.component';
     CommonModule,
     OverlayModule,
     PortalModule,
+    NgxSliderModule,
     MatFormFieldModule,
-    MatSelectModule,
-    Ng5SliderModule
+    MatSelectModule
   ],
   declarations: [DualSliderComponent],
   exports: [DualSliderComponent]

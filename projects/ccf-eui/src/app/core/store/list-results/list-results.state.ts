@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
-import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
+import { DataAction, Payload, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { DataSourceService } from 'ccf-shared';
 import { sortBy } from 'lodash';

@@ -4,7 +4,7 @@ import { CdkPortal } from '@angular/cdk/portal';
 import {
   Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild,
 } from '@angular/core';
-import { Options } from 'ng5-slider';
+import { Options } from '@angular-slider/ngx-slider';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 

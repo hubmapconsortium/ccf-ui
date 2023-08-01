@@ -109,7 +109,7 @@ export class CCFSpatialGraph {
 
   getSpatialPlacement(source: SpatialEntity, targetIri: string): FlatSpatialPlacement | undefined {
     const sourceIri = this.graph.hasNode(source['@id']) ? source['@id'] : undefined;
-    const placement: SpatialPlacement = get(source, 'placement[0]', get(source, 'placement', undefined));
+    const placement: SpatialPlacement = get(source, 'placement[0]', get(source, 'placement', undefined))!;
 
     let matrix: Matrix4 | undefined;
     if (placement && this.graph.hasNode(placement.target)) {

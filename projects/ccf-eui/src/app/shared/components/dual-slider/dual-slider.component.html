@@ -6,9 +6,9 @@
         <input class="input-low" type="text" value="{{lowValue}}" (keyup)="onKeyLow($event)">
       </div>
 
-      <ng5-slider class="slider fade-in {{contentsVisible}}" [options]="options" [(value)]="lowValue"
+      <ngx-slider class="slider fade-in {{contentsVisible}}" [options]="options" [(value)]="lowValue"
                   [(highValue)]="highValue" (userChangeEnd)="sliderValueChanged()">
-      </ng5-slider>
+      </ngx-slider>
 
       <div class="label max fade-in {{contentsVisible}}">
         <div class="label ceil"> {{ options.ceil }} </div>

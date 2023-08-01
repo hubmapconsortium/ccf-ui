@@ -10,8 +10,8 @@
 @use 'themes/gtex_light';
 @use 'themes/gtex_dark';
 
-@import 'swiper/swiper';
-@import 'swiper/components/navigation/navigation';
+@import '~swiper/swiper';
+// @import 'swiper/components/navigation/navigation';
 
 @include mat.core();
 @include mat.all-component-typographies(typography.$config);

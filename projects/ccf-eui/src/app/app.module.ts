@@ -2,8 +2,8 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BodyUiModule, InfoButtonModule, OrganSelectorModule, TrackingPopupModule } from 'ccf-shared';
@@ -24,31 +24,31 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
 
 
 @NgModule({
-    imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
-        CoreModule,
-        DrawerModule,
-        FiltersPopoverModule,
-        OntologyExplorationModule,
-        MatIconModule,
-        DualSliderModule,
-        ResultsBrowserModule,
-        SpinnerOverlayModule,
-        BodyUiModule,
-        OrganSelectorModule,
-        InfoButtonModule,
-        MatTooltipModule,
-        ViewerModule,
-        TrackingPopupModule,
-        MatSnackBarModule,
-        RunSpatialSearchModule
-    ],
-    declarations: [AppComponent, AppWebComponent],
-    providers: [
-        { provide: DEFAULT_THEME, useValue: 'hubmap-theme-light' },
-        { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
-    ]
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    CoreModule,
+    DrawerModule,
+    FiltersPopoverModule,
+    OntologyExplorationModule,
+    MatIconModule,
+    DualSliderModule,
+    ResultsBrowserModule,
+    SpinnerOverlayModule,
+    BodyUiModule,
+    OrganSelectorModule,
+    InfoButtonModule,
+    MatTooltipModule,
+    ViewerModule,
+    TrackingPopupModule,
+    MatSnackBarModule,
+    RunSpatialSearchModule,
+  ],
+  declarations: [AppComponent, AppWebComponent],
+  providers: [
+    { provide: DEFAULT_THEME, useValue: 'hubmap-theme-light' },
+    { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
+  ]
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }

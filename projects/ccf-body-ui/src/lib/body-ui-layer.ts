@@ -41,8 +41,8 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: { [key: string
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mesh: mesh as any,
         wireframe: false,
-        getTransformMatrix: (d) => (d as { transformMatrix: number[][] }).transformMatrix,
-        getColor: (d) => (d as { color: [number, number, number, number] }).color || [255, 255, 255, 0.9*255]
+        getColor: (d) => (d as { color: [number, number, number, number] }).color || [255, 255, 255, 0.9*255],
+        getTransformMatrix: (d) => (d as { transformMatrix: number[] }).transformMatrix,
       },
       ...options
     });

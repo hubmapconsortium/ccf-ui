@@ -1,43 +1,49 @@
-import LRUCache from 'lru-cache';
+import { BackgroundFetch, LRUCache } from 'lru-cache';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
+type AnyObject = {};
 
-export interface AutoPruneLRUCache<K, V> extends LRUCache<K, V> {
-  startAutoPrune(force?: boolean): void;
-  clearAutoPrune(force?: boolean): void;
+export interface AutoPruneLRUCacheOptions<K, V> {
+  max?: number;
+  maxAge?: number;
+  dispose?: (key: K, value: V) => void;
 }
 
-export class AutoPruneLRUCache<K, V> {
-  readonly cache: LRUCache<K, V>;
-
+export class AutoPruneLRUCache<K extends AnyObject, V extends AnyObject> extends LRUCache<K, V> {
   private pruner?: ReturnType<typeof setInterval>;
 
-  constructor(options?: LRUCache.Options<K, V>) {
-    this.cache = new LRUCache({
-      ...options,
+  constructor(options?: AutoPruneLRUCacheOptions<K, V>) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    super({
+      max: options?.max ?? 100000,
+      ttl: options?.maxAge,
       noDisposeOnSet: true,
-      dispose: (key, value) => {
+      dispose: (value, key) => {
         options?.dispose?.(key, value);
-        if (this.length === 0) {
+        if (this.size === 0) {
           this.clearAutoPrune();
         }
       }
     });
   }
 
-  set(key: K, value: V, maxAge?: number): boolean {
-    const result = this.cache.set(key, value, maxAge);
+  set(key: K, value: V | BackgroundFetch<V> | undefined, options?: number | LRUCache.SetOptions<K, V, unknown>): this {
+    const setOptions = typeof options === 'number' ? { ttl: options } : options;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    super.set(key, value, setOptions);
     this.startAutoPrune();
-    return result;
+    return this;
   }
 
   startAutoPrune(force = false): void {
-    if (this.pruner || !this.maxAge || this.maxAge === Infinity) {
+    if (this.pruner || !this.ttl || this.ttl === Infinity) {
       return;
     }
 
-    if (this.length !== 0 || force) {
-      const duration = Math.max(this.maxAge, 1);
-      this.pruner = setInterval(() => this.prune(), duration);
+    if (this.size !== 0 || force) {
+      const duration = Math.max(this.ttl, 1);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      this.pruner = setInterval(() => this.purgeStale(), duration);
     }
   }
 
@@ -46,54 +52,9 @@ export class AutoPruneLRUCache<K, V> {
       return;
     }
 
-    if (this.length === 0 || force) {
+    if (this.ttl === 0 || force) {
       clearInterval(this.pruner);
       this.pruner = undefined;
     }
   }
 }
-
-
-// -----------------------------------
-// Forward property and method calls
-// -----------------------------------
-
-type AnyAutoPruneLRUCache = AutoPruneLRUCache<unknown, unknown>;
-
-const readonlyProperties = [
-  'length', 'itemCount'
-];
-const mutableProperties = [
-  'lengthCalculator', 'allowStale', 'max', 'maxAge'
-];
-const methods = [
-  // NOTE: No set method as it is overwritten by AutoPruneLRUCache
-  'has', 'get', 'del', 'peek',
-  'keys', 'values',
-  'forEach', 'rforEach',
-  'prune', 'reset',
-  'dump', 'load'
-];
-
-
-readonlyProperties.forEach(prop => Object.defineProperty(AutoPruneLRUCache.prototype, prop, {
-  get(this: AnyAutoPruneLRUCache): unknown {
-    return this.cache[prop];
-  }
-}));
-
-mutableProperties.forEach(prop => Object.defineProperty(AutoPruneLRUCache.prototype, prop, {
-  get(this: AnyAutoPruneLRUCache): unknown {
-    return this.cache[prop];
-  },
-  set(this: AnyAutoPruneLRUCache, value: unknown): void {
-    this.cache[prop] = value;
-  }
-}));
-
-methods.forEach(prop => Object.defineProperty(AutoPruneLRUCache.prototype, prop, {
-  value(this: AnyAutoPruneLRUCache, ...args: unknown[]): unknown {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    return this.cache[prop](...args);
-  }
-}));
