@@ -35,8 +35,13 @@ const GTEX_API_URL = 'https://gtexportal.org/api/v2/dataset/tissueSiteDetail';
 async function getLocations(): Promise<unknown> {
   try {
     const source = get('GTEX_RUI_LOCATIONS', DEFAULT_GTEX_RUI_LOCATIONS);
-    // Attempt to load the source url as a local file
-    const data = readFileSync(source, { encoding: 'utf-8' });
+    let data;
+    if (source.startsWith('http')) {
+      data = await fetch(source).then(r => r.text());
+    } else {
+      // Attempt to load the source url as a local file
+      data = readFileSync(source, { encoding: 'utf-8' });
+    }
     const jsonld: JsonLdObj = JSON.parse(data);
     const results = jsonld['@graph'] as JsonLdObj[];
 
