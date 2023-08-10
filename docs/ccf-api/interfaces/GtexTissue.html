@@ -246,14 +246,19 @@ export interface GtexTissue {
   };
 }
 
-const DEFAULT_GTEX_RUI_LOCATIONS &#x3D; &#x27;projects/ccf-eui/src/assets/gtex/data/rui_locations.jsonld&#x27;;
+const DEFAULT_GTEX_RUI_LOCATIONS &#x3D; &#x27;https://hubmapconsortium.github.io/hra-registrations/gtex/rui_locations.jsonld&#x27;;
 const GTEX_API_URL &#x3D; &#x27;https://gtexportal.org/api/v2/dataset/tissueSiteDetail&#x27;;
 
 async function getLocations(): Promise&lt;unknown&gt; {
   try {
     const source &#x3D; get(&#x27;GTEX_RUI_LOCATIONS&#x27;, DEFAULT_GTEX_RUI_LOCATIONS);
-    // Attempt to load the source url as a local file
-    const data &#x3D; readFileSync(source, { encoding: &#x27;utf-8&#x27; });
+    let data;
+    if (source.startsWith(&#x27;http&#x27;)) {
+      data &#x3D; await fetch(source).then(r &#x3D;&gt; r.text());
+    } else {
+      // Attempt to load the source url as a local file
+      data &#x3D; readFileSync(source, { encoding: &#x27;utf-8&#x27; });
+    }
     const jsonld: JsonLdObj &#x3D; JSON.parse(data);
     const results &#x3D; jsonld[&#x27;@graph&#x27;] as JsonLdObj[];
 
