@@ -2,9 +2,11 @@
 @use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $primary: map-get($theme, primary);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
 
   .ccf-tissue-section-vis {

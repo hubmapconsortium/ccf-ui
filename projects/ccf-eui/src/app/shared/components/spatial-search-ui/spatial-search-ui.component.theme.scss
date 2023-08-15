@@ -27,10 +27,11 @@
 }
 
 @mixin theme($theme) {
-  $primary: map-get($theme, primary);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .ccf-spatial-search-ui {
     background-color: mat.get-color-from-palette($background, modal);
@@ -54,7 +55,7 @@
         color: mat.get-color-from-palette($foreground, light-button-text);
         background-color: mat.get-color-from-palette($background, button-bg);
         border-color: mat.get-color-from-palette($foreground, button-border);
-    
+
         &:hover {
           color: mat.get-color-from-palette($foreground, color-hover);
           background-color: mat.get-color-from-palette($background, button-background-hover);

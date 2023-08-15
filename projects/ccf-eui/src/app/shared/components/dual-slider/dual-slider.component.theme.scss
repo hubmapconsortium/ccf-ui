@@ -2,10 +2,11 @@
 @use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $primary: map-get($theme, primary);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .slider-form-field {
 
@@ -23,7 +24,7 @@
   .name-label {
     color: mat.get-color-from-palette($foreground, text-muted);
   }
-  
+
   .range-label {
     color: mat.get-color-from-palette($background, text);
   }

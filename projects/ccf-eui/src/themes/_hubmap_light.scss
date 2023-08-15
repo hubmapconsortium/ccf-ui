@@ -58,9 +58,11 @@ $hubmap-light-background: map-merge($background, (
 
 $theme: (
   is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $hubmap-light-foreground,
-  background: $hubmap-light-background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $hubmap-light-foreground,
+    background: $hubmap-light-background
+  ),
 );

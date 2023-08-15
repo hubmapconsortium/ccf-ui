@@ -60,9 +60,11 @@ $default-light-background: map-merge($background, (
 
 $theme: (
   is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $default-light-foreground,
-  background: $default-light-background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $default-light-foreground,
+    background: $default-light-background
+  ),
 );

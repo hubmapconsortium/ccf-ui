@@ -111,9 +111,11 @@ $sennet-light-background: map-merge($background, (
 
 $theme: (
   is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $sennet-light-foreground,
-  background: $sennet-light-background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $sennet-light-foreground,
+    background: $sennet-light-background
+  ),
 );
