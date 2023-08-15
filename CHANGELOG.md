@@ -2,9 +2,9 @@
 
 Changelog for the Human Reference Atlas (HRA) User Interfaces
 
-## 3.7.1 - 2023-07-12
+## 3.7.2 - 2023-07-12
 
-## Added in 3.7.1
+## Added in 3.7.2
 
 * Client side cache has been updated to be more sensitive to configuration changes. Fixes [hra-registrations#1](https://github.com/hubmapconsortium/hra-registrations/issues/1)
 
