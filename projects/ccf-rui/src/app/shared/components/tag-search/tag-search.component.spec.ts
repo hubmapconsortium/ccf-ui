@@ -1,5 +1,5 @@
 import { NgZone } from '@angular/core';
-import { Observable, ReplaySubject, Subscription } from 'rxjs';
+import { Observable, ReplaySubject, Subscription, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Shallow } from 'shallow-render';
 
@@ -9,7 +9,7 @@ import { TagSearchModule } from './tag-search.module';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
-  return obs.pipe(take(1)).toPromise();
+  return lastValueFrom(obs.pipe(take(1)));
 }
 
 function delay(duration: number): Promise<void> {

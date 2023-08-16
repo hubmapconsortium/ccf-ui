@@ -4,7 +4,7 @@ import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import * as FileSaver from 'file-saver';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { lastValueFrom, Observable, of, ReplaySubject } from 'rxjs';
 import { skip, take } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
@@ -49,7 +49,7 @@ const testPage: Immutable<PageStateModel> = {
 };
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
-  return obs.pipe(take(1)).toPromise();
+  return lastValueFrom(obs.pipe(take(1)));
 }
 
 function patchStore(key: string, data: unknown): void {

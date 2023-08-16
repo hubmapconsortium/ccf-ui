@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { PageState } from '../page/page.state';
@@ -13,7 +13,7 @@ import { AnatomicalStructureTagState } from './anatomical-structure-tags.state';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
-  return obs.pipe(take(1)).toPromise();
+  return lastValueFrom(obs.pipe(take(1)));
 }
 
 describe('AnatomicalStructureTagsState', () => {
