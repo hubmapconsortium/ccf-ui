@@ -21,6 +21,7 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
 import { RunSpatialSearchModule } from './shared/components/run-spatial-search/run-spatial-search.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 import { ViewerModule } from './shared/components/viewer/viewer.module';
+import { MatLegacySnackBarModule } from '@angular/material/legacy-snack-bar';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
     TrackingPopupModule,
     MatSnackBarModule,
     RunSpatialSearchModule,
+    MatLegacySnackBarModule
   ],
   declarations: [AppComponent, AppWebComponent],
   providers: [
