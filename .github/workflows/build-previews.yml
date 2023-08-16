@@ -33,7 +33,7 @@ jobs:
       - run: npm run build:libs
       - name: Build EUI
         run: |
-          npm run build:ccf-eui-- --output-hashing=none --base-href=/ --configuration=staging
+          npm run build:ccf-eui -- --output-hashing=none --base-href=/ --configuration=staging
       - name: Build RUI
         run: |
           npm run build:ccf-rui -- --project ccf-rui --output-hashing=none --base-href=/rui/ --configuration=staging
