@@ -26,7 +26,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   carousel-arrow: map-get($gtex-light-palette, 500),
   icon: map-get($gtex-light-palette, 300),
   contrast-icon: map-get($gtex-light-palette, main),
-  
+
   disabled: map-get($gtex-light-palette, light-disabled),
   text: map-get($gtex-light-palette, 'black'),
   highlight: map-get($gtex-light-palette, 400),
@@ -70,7 +70,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
   inactive-sex: #636363,
   active-sex: #212121
 ));
-  
+
 $background: map-merge(mat.$light-theme-background-palette, (
   background: map-get($gtex-light-palette, 'white'),
   hover-background: #eee,
@@ -83,7 +83,7 @@ $background: map-merge(mat.$light-theme-background-palette, (
   dropdown-hover: map-get($gtex-light-palette, 400),
   image-placeholder: map-get($gtex-light-palette, 'disabled-text'),
   info-button-hover: map-get($gtex-light-palette, 'white-hover'),
-  card: map-get($gtex-light-palette, 'white'), 
+  card: map-get($gtex-light-palette, 'white'),
   content-background: map-get($gtex-light-palette, 'black'),
   legend-background: map-get($gtex-light-palette, 'white'),
   sidebar-background: map-get($gtex-light-palette,  'white'),
@@ -94,9 +94,11 @@ $background: map-merge(mat.$light-theme-background-palette, (
 
 $theme: (
   is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $foreground,
-  background: $background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $foreground,
+    background: $background
+  )
 );

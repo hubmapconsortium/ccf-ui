@@ -16,7 +16,7 @@ $primary-colors: utility.add-colors(mat.$gray-palette, (
 ));
 
 $primary: mat.define-palette($primary-colors, $text: 50);
-$accent: mat.define-palette(mat.$blue-palette, #3781d1);
+$accent: mat.define-palette(mat.$blue-palette, 600);
 $warn: mat.define-palette(mat.$red-palette);
 
 $foreground: map-merge(mat.$dark-theme-foreground-palette, (
@@ -53,9 +53,11 @@ $background: map-merge(mat.$dark-theme-background-palette, (
 
 $theme: (
   is-dark: true,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $foreground,
-  background: $background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $foreground,
+    background: $background
+  )
 );

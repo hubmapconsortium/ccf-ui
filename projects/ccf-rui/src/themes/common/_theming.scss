@@ -31,23 +31,6 @@
 
 
 @mixin ccf-theme($theme) {
-  @include mat.legacy-core-theme($theme);
-
-  @include mat.legacy-autocomplete-theme($theme);
-  @include mat.legacy-button-theme($theme);
-  @include mat.legacy-checkbox-theme($theme);
-  @include mat.expansion-theme($theme);
-  @include mat.legacy-form-field-theme($theme);
-  @include mat.icon-theme($theme);
-  @include mat.legacy-input-theme($theme);
-  @include mat.legacy-progress-spinner-theme($theme);
-  @include mat.legacy-radio-theme($theme);
-  @include mat.legacy-select-theme($theme);
-  @include mat.legacy-slide-toggle-theme($theme);
-  @include mat.legacy-slider-theme($theme);
-  @include mat.toolbar-theme($theme);
-  @include mat.legacy-tooltip-theme($theme);
-
   @include header.theme($theme);
   @include infoDialog.theme($theme);
   @include infoButton.theme($theme);

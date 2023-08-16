@@ -2,7 +2,11 @@
 @use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $foreground: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .ccf-details-label {
     color: mat.get-color-from-palette($foreground, icon);

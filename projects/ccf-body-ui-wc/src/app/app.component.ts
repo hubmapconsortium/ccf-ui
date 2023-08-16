@@ -48,7 +48,7 @@ export class AppComponent {
     bodyUI.rotationX = 0;
 
     if (!hasZoomingNode) {
-      if (organs.length === 1) {
+      if (organs && organs.length === 1) {
         const { x_dimension: x, y_dimension: y, z_dimension: z } = organs[0];
         bodyUI.bounds = { x: 1.25 * x / 1000, y: 1.25 * y / 1000, z: 1.25 * z / 1000 };
         bodyUI.target = [x / 1000 / 2, y / 1000 / 2, z / 1000 / 2];

@@ -218,7 +218,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   @DataAction()
   addRegistration(registration: Record<string, unknown>): void {
-    this.ctx.setState(patch<Immutable<RegistrationStateModel>>({
+    this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable<Record<string, unknown>>)
     }));
   }

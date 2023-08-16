@@ -1,4 +1,4 @@
-@use '@angular/material/theming' as ng;
+@use '@angular/material' as mat;
 @use 'themes/common/typography';
 @use 'themes/common/theming';
 @use 'themes/_default_light';
@@ -10,7 +10,8 @@
 @use 'themes/gtex_light';
 @use 'themes/gtex_dark';
 
-@include ng.mat-core(typography.$config);
+@include mat.core();
+@include mat.all-component-typographies(typography.$config);
 
 .default-theme-light {
   @include theming.ccf-theme(default_light.$theme);

@@ -3,7 +3,7 @@
 import { AmbientLight, Deck, LightingEffect, OrbitView, OrthographicView } from '@deck.gl/core';
 import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
-import bind from 'bind-decorator';
+import { bind } from 'bind-decorator';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
 

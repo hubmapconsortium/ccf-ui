@@ -64,7 +64,7 @@
     "fs": false
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "dependencies": {
     "@angular-ru/cdk": "^14.10.1",
@@ -170,14 +170,14 @@
     "@types/readable-stream": "^2.3.9",
     "@types/sax": "^1.2.1",
     "@types/uuid": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "4.28.3",
-    "@typescript-eslint/parser": "^4.28.4",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "browserify": "^17.0.0",
     "commander": "^9.0.0",
     "dts-gen": "^0.6.0",
-    "eslint": "^7.26.0",
-    "eslint-plugin-import": "2.23.4",
-    "eslint-plugin-jsdoc": "^39.2.9",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsdoc": "^39.9.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-unicorn": "^40.1.0",
     "foreach-cli": "^1.8.1",

@@ -2,9 +2,11 @@
 @use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $accent: map-get($theme, accent);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .ccf-content {
     background-color: mat.get-color-from-palette($background, stage-background);

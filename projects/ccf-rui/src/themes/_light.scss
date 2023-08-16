@@ -81,7 +81,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
 $background: map-merge(mat.$light-theme-background-palette, (
   app-bar: map-get($primary-colors, light-header), // #444A65
   background: map-get($primary-colors, 'white'),
-  card: map-get($primary-colors,  'white'), 
+  card: map-get($primary-colors,  'white'),
   content-background: map-get($primary-colors, 'black'),
   legend-background: map-get($primary-colors, 'white'),
   modal: map-get($primary-colors,  'white'),
@@ -101,9 +101,11 @@ $background: map-merge(mat.$light-theme-background-palette, (
 
 $theme: (
   is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $foreground,
-  background: $background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $foreground,
+    background: $background
+  )
 );
