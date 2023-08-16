@@ -1,5 +1,5 @@
 import {
-  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input,
+  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input,
   OnChanges, OnDestroy, Output, SimpleChanges, ViewChild
 } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
@@ -459,7 +459,8 @@ export interface OrganInfo {
 @Component({
   selector: 'ccf-organ-selector',
   templateUrl: './organ-selector.component.html',
-  styleUrls: ['./organ-selector.component.scss']
+  styleUrls: ['./organ-selector.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestroy {
   /** HTML class */

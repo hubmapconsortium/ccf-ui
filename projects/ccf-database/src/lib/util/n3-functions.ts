@@ -29,6 +29,7 @@ export function* getEntries(store: Store, iri: string, mapping: { [iri: string]:
  * @returns A new data object.
  */
 export function getMappedResult<T = unknown>(store: Store, iri: string, type: string, mapping: { [iri: string]: string }): T {
+  /* eslint-disable-next-line @typescript-eslint/naming-convention */
   const result = { '@id': iri, '@type': type };
   for (const [predicate, key] of Object.entries(mapping)) {
     for (const quad of readQuads(store, result['@id'], predicate, null, null)) {

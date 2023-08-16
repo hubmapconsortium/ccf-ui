@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { load } from '@loaders.gl/core';
 import { DracoLoader } from '@loaders.gl/draco';
 import { GLTFLoader } from '@loaders.gl/gltf';

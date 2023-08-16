@@ -1,4 +1,4 @@
-import { Component, Inject, HostBinding, Input } from '@angular/core';
+import { Component, Inject, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { MetaData } from '../../../core/models/meta-data';
 
@@ -19,7 +19,8 @@ interface ReviewModalData {
 @Component({
   selector: 'ccf-review-modal',
   templateUrl: './review-modal.component.html',
-  styleUrls: ['./review-modal.component.scss']
+  styleUrls: ['./review-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReviewModalComponent {
   /** HTML class name */

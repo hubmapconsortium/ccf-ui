@@ -70,7 +70,6 @@
         "indent": "off",
         "keyword-spacing": "off",
         "no-dupe-class-members": "off",
-        "no-duplicate-imports": "off",
         "no-implied-eval": "off",
         "no-return-await": "off",
         "no-shadow": "off",
@@ -181,7 +180,6 @@
             "format": ["camelCase", "UPPER_CASE"]
           }
         ],
-        "@typescript-eslint/no-duplicate-imports": "error",
         "@typescript-eslint/no-explicit-any": [
           "error",
           {

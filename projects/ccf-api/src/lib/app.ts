@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { json, urlencoded } from 'body-parser';
 import cors from 'cors';
 import express, { Express } from 'express';

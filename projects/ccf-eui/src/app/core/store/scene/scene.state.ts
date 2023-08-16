@@ -193,7 +193,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
         const activeOrgans = new Set(selectedOrgans.map(o => o.id));
         const refOrgans = new Set(refOrganData.filter(o => activeOrgans.has(o.representation_of)).map(o => o['@id']));
         return scene.filter(node =>
-          (node.ccf_annotations?.some?.(tag => activeOrgans.has(tag))) ||
+          (node.ccf_annotations?.some?.(tag => activeOrgans.has(tag))) ??
           (node.reference_organ && refOrgans.has(node.reference_organ))
         ).map((node): SpatialSceneNode =>
           node.entityId && (Object.prototype.hasOwnProperty.call(colors, node['@id']) || highlightedNodeId === node['@id']) ?

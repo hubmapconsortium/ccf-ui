@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable no-underscore-dangle */
 import {
-  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild,
+  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild,
 } from '@angular/core';
 import { BodyUI, NodeClickEvent, NodeDragEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,8 @@ interface XYZTriplet<T = number> {
 @Component({
   selector: 'ccf-body-ui',
   templateUrl: './body-ui.component.html',
-  styleUrls: ['./body-ui.component.scss']
+  styleUrls: ['./body-ui.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BodyUiComponent implements AfterViewInit, OnDestroy {
   /** HTML class name */

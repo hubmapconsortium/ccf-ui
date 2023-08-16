@@ -68,7 +68,7 @@ export class IconRegistryState extends NgxsDataRepository<void> {
         icon => (icon.name ?? '') === name && (icon.namespace ?? '') === namespace
       );
 
-      if (def === undefined || def.url === undefined) {
+      if (def?.url === undefined) {
         return null;
       }
 

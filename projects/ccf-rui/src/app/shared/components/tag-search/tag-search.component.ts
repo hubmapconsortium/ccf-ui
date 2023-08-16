@@ -53,6 +53,7 @@ export class TagSearchComponent implements OnDestroy {
 
   /** Mapping for pluralizing the result total count */
   readonly countMapping = {
+    /* eslint-disable-next-line @typescript-eslint/naming-convention */
     '=1': '1 result',
     other: '# results'
   };

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable, Injector } from '@angular/core';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { Computed, StateRepository } from '@angular-ru/ngxs/decorators';
@@ -209,7 +210,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       transformMatrix: new Matrix4(Matrix4.IDENTITY).scale([2, 2, 2]).rotateY(toRadians(0)),
       tooltip: 'Gizmo',
       unpickable: true,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       _lighting: 'pbr',
       zoomBasedOpacity: false,
       color: [255, 255, 255, 255],

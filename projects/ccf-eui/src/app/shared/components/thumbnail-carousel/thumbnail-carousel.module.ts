@@ -10,16 +10,16 @@ import { ThumbnailCarouselComponent } from './thumbnail-carousel.component';
 
 @NgModule({
   imports: [
-  CommonModule,
+    CommonModule,
 
-  MatButtonModule,
-  MatIconModule,
+    MatButtonModule,
+    MatIconModule,
 
-  SwiperModule
+    SwiperModule
   ],
   declarations: [ThumbnailCarouselComponent],
   exports: [ThumbnailCarouselComponent]
-  })
+})
 export class ThumbnailCarouselModule {
   constructor() {
     // Install swiper modules

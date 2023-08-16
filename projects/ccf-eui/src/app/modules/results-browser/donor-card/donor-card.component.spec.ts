@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { TissueBlockResult } from 'ccf-database';
 import { Shallow } from 'shallow-render';
 import { DonorCardComponent } from './donor-card.component';

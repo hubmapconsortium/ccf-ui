@@ -20,36 +20,36 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
 
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        CoreModule,
-        MatIconModule,
-        DrawerModule,
-        HeaderModule,
-        ContentModule,
-        LeftSidebarModule,
-        RightSidebarModule,
-        OrganSelectorModule,
-        RegistrationModalModule,
-        TrackingPopupModule,
-        MatSnackBarModule
-    ],
-    declarations: [AppComponent, AppWebComponent],
-    providers: [
-        {
-            provide: DEFAULT_THEME,
-            useValue: 'hubmap-theme-light'
-        },
-        {
-            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-            useValue: {
-                appearance: 'standard',
-                floatLabel: false,
-                hideRequiredMarker: true
-            }
-        }
-    ]
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CoreModule,
+    MatIconModule,
+    DrawerModule,
+    HeaderModule,
+    ContentModule,
+    LeftSidebarModule,
+    RightSidebarModule,
+    OrganSelectorModule,
+    RegistrationModalModule,
+    TrackingPopupModule,
+    MatSnackBarModule
+  ],
+  declarations: [AppComponent, AppWebComponent],
+  providers: [
+    {
+      provide: DEFAULT_THEME,
+      useValue: 'hubmap-theme-light'
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        appearance: 'standard',
+        floatLabel: false,
+        hideRequiredMarker: true
+      }
+    }
+  ]
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }

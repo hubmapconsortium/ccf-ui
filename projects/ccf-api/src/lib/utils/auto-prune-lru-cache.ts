@@ -36,7 +36,7 @@ export class AutoPruneLRUCache<K extends AnyObject, V extends AnyObject> extends
   }
 
   startAutoPrune(force = false): void {
-    if (this.pruner || !this.ttl || this.ttl === Infinity) {
+    if (this.pruner ?? !this.ttl ?? this.ttl === Infinity) {
       return;
     }
 

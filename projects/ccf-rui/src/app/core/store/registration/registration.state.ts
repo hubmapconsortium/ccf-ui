@@ -257,7 +257,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot, this.tags.latestTags);
     const json = JSON.stringify(jsonObj, undefined, 2);
 
-    if (useCallback || (useCallback === undefined && snapshot.useRegistrationCallback)) {
+    if (useCallback ?? (useCallback === undefined && snapshot.useRegistrationCallback)) {
       registrationCallback?.(json);
     } else {
       const data = new Blob([json], {

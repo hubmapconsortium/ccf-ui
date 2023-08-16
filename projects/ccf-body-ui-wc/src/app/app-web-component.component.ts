@@ -1,4 +1,5 @@
 /* eslint-disable @angular-eslint/no-output-on-prefix */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { GlobalConfigState } from 'ccf-shared';
 import { BaseWebComponent, GenericGlobalConfig } from 'ccf-shared/web-components';
@@ -9,7 +10,6 @@ import { environment } from '../environments/environment';
 
 export interface InputDataFormat {
   id: string;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   rui_location: JsonLdObj;
 }
 
@@ -18,7 +18,6 @@ function toJsonLd(data: InputDataFormat[]): JsonLdObj[] {
   return data.map(d => ({
     '@id': `http://purl.org/ccf/1.5/entity/${d.id}`,
     '@type': 'http://purl.org/ccf/latest/ccf-entity.owl#Sample',
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     'http://purl.org/ccf/latest/ccf-entity.owl#has_spatial_entity': d.rui_location
   })) as unknown as JsonLdObj[];
 }

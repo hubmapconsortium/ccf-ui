@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, OnChanges, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnChanges, Output } from '@angular/core';
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
@@ -12,7 +12,8 @@ import { ReviewModalComponent } from '../review-modal/review-modal.component';
 @Component({
   selector: 'ccf-review-button',
   templateUrl: './review-button.component.html',
-  styleUrls: ['./review-button.component.scss']
+  styleUrls: ['./review-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReviewButtonComponent implements OnChanges {
   /** HTML class name */

@@ -8,13 +8,13 @@ import { StoreModule } from './core/store/store.module';
 import { BodyUiModule } from 'ccf-shared';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        StoreModule,
-        BodyUiModule
-    ],
-    declarations: [AppComponent, AppWebComponent],
-    providers: []
+  imports: [
+    BrowserModule,
+    StoreModule,
+    BodyUiModule
+  ],
+  declarations: [AppComponent, AppWebComponent],
+  providers: []
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }
