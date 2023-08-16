@@ -5,7 +5,7 @@ additionalProperties:
   apiModulePrefix: Ccf
   configurationPrefix: CcfApi
   fileNaming: kebab-case
-  ngVersion: "16.1.5"
+  ngVersion: "15.2.9"
   npmName: "@ccf-openapi/ng-client"
   stringEnums: true
   supportsES6: true
