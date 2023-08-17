@@ -37,13 +37,13 @@
     background-color: mat.get-color-from-palette($background, modal);
 
     .slider {
-      .ng5-slider-bar,
-      .ng5-slider-selection,
-      .ng5-slider-pointer {
+      .ngx-slider-bar,
+      .ngx-slider-selection,
+      .ngx-slider-pointer {
         background-color: mat.get-color-from-palette($background, mat-slider-primary);
       }
 
-      .ng5-slider-pointer {
+      .ngx-slider-pointer {
         border-color: mat.get-color-from-palette($background, modal);
       }
     }

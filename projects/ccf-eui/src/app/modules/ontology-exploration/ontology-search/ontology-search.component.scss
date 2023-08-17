@@ -1,44 +1,43 @@
 .ccf-ontology-search {
   width: 100%;
 
-  .field {
+  ::ng-deep .field {
     width: 100%;
-    
-  }
-
-  ::ng-deep .mat-form-field-appearance-outline {
-    .mat-form-field-outline-end {
-      border-radius: 0 0.25rem 0.25rem 0;
-      margin: 0;
-    }
 
     .mat-form-field-wrapper {
       margin: 0;
-      
+      padding-bottom: 1.34375em;
 
       .mat-form-field-flex {
+        .mat-form-field-outline-start {
+          border-radius: 0.25rem 0 0 0.25rem;
+          min-width: 2.5rem;
+        }
+
+        .mat-form-field-outline-end {
+          border-radius: 0 0.25rem 0.25rem 0;
+          margin: 0;
+        }
+
+        .mat-form-field-prefix {
+          top: .5rem;
+          border: none;
+        }
+
         .mat-form-field-infix {
           border: none;
           height: 3rem;
-          
+          padding: 1rem 0;
 
           input {
             margin-left: .4rem;
           }
         }
-        .mat-form-field-prefix {
-          top: .5rem;
-          border: none;
-        }
       }
     }
-
-    .mat-form-field-outline-start {
-      border-radius: 0.25rem 0 0 0.25rem;
-      min-width: 2.5rem;
-	  }
   }
 }
+
 
 ::ng-deep .ccf-ontology-search.detached {
   border: 0.125rem solid;
@@ -56,13 +55,13 @@
     mat-option {
       height: 1.5rem;
       width: 23.75rem;
-      
+      font-size: 1rem;
+
       .search-term {
         text-decoration: underline;
       }
     }
   }
-
 }
 
 .autocomplete-open {

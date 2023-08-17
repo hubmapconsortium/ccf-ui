@@ -13,6 +13,7 @@
       .mat-form-field-infix {
         border: none;
         font-size: 0.875rem;
+        padding: 0.4375em 0;
       }
     }
 
@@ -96,16 +97,16 @@
     visibility: hidden;
     margin-top: 0.9375rem;
     margin-bottom: 0.9375rem;
-    .ng5-slider-bar {
+    .ngx-slider-bar {
       opacity: .2;
       height: .15rem;
     }
 
-    .ng5-slider-selection {
+    .ngx-slider-selection {
       opacity: 1;
     }
 
-    .ng5-slider-pointer {
+    .ngx-slider-pointer {
       $pointer-size: 1rem;
 
       width: $pointer-size;
