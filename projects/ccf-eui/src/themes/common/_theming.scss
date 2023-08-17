@@ -27,8 +27,9 @@
 @use '../../app/modules/results-browser/tissue-section-vis/tissue-section-vis.theme.scss' as tissueVis;
 @use '../../app/app.component.theme.scss' as app;
 
+
 @mixin ccf-theme($theme) {
-  @include mat.core-theme($theme);
+  @include mat.legacy-core-theme($theme);
   @include mat.toolbar-theme($theme);
   @include mat.icon-theme($theme);
   @include mat.form-field-theme($theme);

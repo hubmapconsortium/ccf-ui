@@ -11,6 +11,7 @@
 @use 'themes/gtex_dark';
 
 @include mat.core();
+@include mat.legacy-core();
 @include mat.all-component-typographies(typography.$config);
 
 .default-theme-light {

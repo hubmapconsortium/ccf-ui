@@ -44,7 +44,7 @@ import { MatLegacySnackBarModule } from '@angular/material/legacy-snack-bar';
     TrackingPopupModule,
     MatSnackBarModule,
     RunSpatialSearchModule,
-    MatLegacySnackBarModule
+    MatSnackBarModule
   ],
   declarations: [AppComponent, AppWebComponent],
   providers: [
