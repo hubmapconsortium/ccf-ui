@@ -7,7 +7,7 @@ import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
 import { EMPTY, Observable } from 'rxjs';
 import {
-  debounceTime, delay, distinctUntilChanged, filter, map, mapTo, skipUntil, switchMap, take, tap, throttleTime,
+  debounceTime, delay, distinctUntilChanged, filter, map, skipUntil, switchMap, take, tap, throttleTime,
 } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
@@ -166,7 +166,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
         return true;
       }),
-      mapTo(undefined)
+      map(() => undefined)
     );
   }
 

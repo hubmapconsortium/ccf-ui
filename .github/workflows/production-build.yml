@@ -39,21 +39,21 @@ jobs:
       - run: npm run build:libs
       - name: Build EUI
         run: |
-          npm run build -- --output-hashing=none --base-href=/ccf-ui/
+          npm run build:ccf-eui -- --output-hashing=none --base-href=/ccf-ui/
           npm run build:ccf-eui:wc
       - name: Build RUI
         run: |
-          npm run build -- --project ccf-rui --output-hashing=none --base-href=/ccf-ui/rui/
+          npm run build:ccf-rui -- --project ccf-rui --output-hashing=none --base-href=/ccf-ui/rui/
           npm run build:ccf-rui:wc
           cp -r dist/ccf-rui dist/ccf-ui/rui
       - name: Build Organ Info
         run: |
-          npm run build -- --project ccf-organ-info --output-hashing=none --base-href=/ccf-ui/organ-info/ --configuration=staging
+          npm run build:ccf-organ-info -- --project ccf-organ-info --output-hashing=none --base-href=/ccf-ui/organ-info/ --configuration=staging
           npm run build:ccf-organ-info:wc
           cp -r dist/ccf-organ-info dist/ccf-ui/organ-info
       - name: Build Body UI WC
         run: |
-          npm run build -- --project ccf-body-ui-wc --output-hashing=none --base-href=/body-ui/ #--configuration=staging
+          npm run build:ccf-body-ui-wc -- --project ccf-body-ui-wc --output-hashing=none --base-href=/body-ui/ #--configuration=staging
           npm run build:ccf-body-ui-wc:wc
           mkdir -p dist/ccf-ui
           cp -r dist/ccf-body-ui-wc dist/ccf-ui/body-ui

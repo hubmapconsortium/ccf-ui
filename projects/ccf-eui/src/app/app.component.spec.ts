@@ -6,7 +6,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { NgxsModule } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
 import { AppComponent } from './app.component';
@@ -79,7 +79,7 @@ describe('AppComponent', () => {
       })
       .mock(GlobalConfigState, {
         snapshot: {},
-        config$: of<Immutable<unknown>>(),
+        config$: new Observable<Immutable<unknown>>,
         patchConfig: () => undefined,
         getOption: () => of(undefined)
       });

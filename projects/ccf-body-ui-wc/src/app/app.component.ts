@@ -4,6 +4,7 @@ import { Component, EventEmitter, Output, ViewChild, ChangeDetectorRef, ChangeDe
 import { BodyUiComponent, GlobalConfigState } from 'ccf-shared';
 import { take, tap } from 'rxjs/operators';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
+import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 
 
 export interface GlobalConfig {
@@ -41,7 +42,7 @@ export class AppComponent {
 
     // eslint-disable-next-line no-promise-executor-return
     await new Promise((resolve) => setTimeout(resolve, 200));
-    const organs = await this.organs$.pipe(take(1)).toPromise();
+    const organs = await firstValueFrom(this.organs$.pipe(take(1)));
     const hasZoomingNode = !!bodyUI.scene?.find((node) => node.zoomToOnLoad) ?? false;
 
     bodyUI.rotation = 0;
