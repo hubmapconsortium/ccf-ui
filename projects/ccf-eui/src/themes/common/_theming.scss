@@ -29,7 +29,7 @@
 
 
 @mixin ccf-theme($theme) {
-  @include mat.legacy-core-theme($theme);
+  @include mat.core-theme($theme);
   @include mat.toolbar-theme($theme);
   @include mat.icon-theme($theme);
   @include mat.legacy-form-field-theme($theme);

@@ -1,4 +1,4 @@
-import { MatLegacySelect as MatSelect, MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
+import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { Shallow } from 'shallow-render';
 import { DropdownComponent } from './dropdown.component';
 import { DropdownModule } from './dropdown.module';

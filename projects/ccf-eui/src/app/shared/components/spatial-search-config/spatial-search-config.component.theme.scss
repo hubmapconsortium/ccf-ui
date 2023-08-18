@@ -13,17 +13,21 @@
     border-color: mat.get-color-from-palette($foreground, modal-borders);
     box-shadow: 0.2rem 0.2rem 1rem 0rem #0000003e;
 
-    .mat-option {
+    .organ-select-option {
       background-color: mat.get-color-from-palette($background, modal);
       border-color: mat.get-color-from-palette($foreground, borders);
+      color: mat.get-color-from-palette($foreground, text);
 
-      &:hover {
-        background-color: mat.get-color-from-palette($background, dropdown-hover);
+      &.mat-mdc-option-active {
+        background-color: mat.get-color-from-palette($background, mat-selected-option) !important;
+
+        .mdc-list-item__primary-text {
+          color: mat.get-color-from-palette($foreground, contrast-text) !important;
+        }
       }
 
-      &.mat-selected.mat-active {
-        background-color: mat.get-color-from-palette($background, mat-selected-option);
-        color: mat.get-color-from-palette($foreground, contrast-text);
+      &:hover {
+        background-color: mat.get-color-from-palette($background, dropdown-hover) !important;
       }
     }
   }
@@ -41,21 +45,21 @@
 
     .form-field {
       .label {
-        color: mat.get-color-from-palette($foreground, text-muted)
+        color: mat.get-color-from-palette($foreground, text);
       }
 
-      .mat-form-field-wrapper {
-        .mat-form-field-underline {
+      .mat-mdc-text-field-wrapper {
+        .mdc-line-ripple {
           background-color: mat.get-color-from-palette($foreground, text);
         }
       }
     }
 
-    .mat-select-value {
+    .mat-mdc-select-value {
       color: mat.get-color-from-palette($foreground, text);
     }
 
-    .mat-select-arrow {
+    .mat-mdc-select-arrow {
       color: mat.get-color-from-palette($foreground, contrast-icon);
     }
 

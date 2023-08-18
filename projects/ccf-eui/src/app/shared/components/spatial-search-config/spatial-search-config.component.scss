@@ -18,7 +18,7 @@
     justify-content: space-between;
     width: 100%;
     font-size: 1.25rem;
-  
+
     .header-left {
       display: flex;
       align-items: center;
@@ -56,23 +56,24 @@
       height: 0rem;
     }
 
-    ::ng-deep .mat-form-field-wrapper {
-      padding-bottom: 1rem;
+    ::ng-deep .mat-mdc-text-field-wrapper {
+      font-size: 1rem;
+      padding-bottom: .75rem;
       padding-top: 3rem;
       margin-left: 0.5rem;
       width: 14rem;
 
-      .mat-form-field-infix {
+      .mat-mdc-form-field-infix {
         padding: 0;
         border-top: none;
       }
 
-      .mat-form-field-underline {
+      .mdc-line-ripple {
         bottom: 0rem;
         height: 0.125rem;
       }
 
-      .mat-select-arrow-wrapper {
+      .mat-mdc-select-arrow-wrapper {
         transform: translatey(0rem);
       }
     }

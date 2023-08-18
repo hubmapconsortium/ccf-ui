@@ -183,3 +183,12 @@ mat-icon {
   padding-top: 6px;
   padding-bottom: 6px
 }
+
+.mdc-snackbar__surface {
+  box-shadow: none !important;
+}
+
+.mat-form-field-subscript-wrapper {
+  margin-top: 0.5416666667em;
+  top: calc(100% - 1.6666666667em);
+}

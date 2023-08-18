@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
-import { firstValueFrom, from, Observable, ObservableInput } from 'rxjs';
+import { lastValueFrom, from, Observable, ObservableInput } from 'rxjs';
 import { distinctUntilChanged, map, startWith, switchMap, take } from 'rxjs/operators';
 
 import { DecoratedRange } from '../decorated-text/decorated-range';
@@ -124,7 +124,7 @@ export class TextSearchComponent {
     }
 
     const options = autoCompleter(search, maxOptions);
-    return firstValueFrom(from(options).pipe(
+    return lastValueFrom(from(options).pipe(
       take(1),
       map(array => array.length <= maxOptions ? array : array.slice(0, maxOptions))
     ));
