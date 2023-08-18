@@ -1,8 +1,9 @@
-import { MatLegacyCheckbox as MatCheckbox, MatLegacyCheckboxChange as MatCheckboxChange } from '@angular/material/legacy-checkbox';
+import { MatLegacyCheckbox as MatCheckbox } from '@angular/material/legacy-checkbox';
 import { Shallow } from 'shallow-render';
 
 import { CheckboxComponent } from './checkbox.component';
 import { CheckboxModule } from './checkbox.module';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 
 describe('FiltersCheckboxComponent', () => {
