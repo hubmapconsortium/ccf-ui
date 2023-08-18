@@ -6,7 +6,7 @@ import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 import hexRgb from 'hex-rgb';
 import { Subject } from 'rxjs';
-import { distinctUntilChanged, pluck } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 
 export interface Color {
@@ -57,8 +57,8 @@ export class ColorAssignmentState extends NgxsImmutableDataRepository<ColorAssig
   private readonly forcedUnassignment = new Subject<void>();
 
   readonly forcedUnassignment$ = this.forcedUnassignment.asObservable();
-  readonly colorAssignments$ = this.state$.pipe(pluck('colorAssignments'), distinctUntilChanged());
-  readonly colorAssignmentsList$ = this.state$.pipe(pluck('colorAssignmentsList'), distinctUntilChanged());
+  readonly colorAssignments$ = this.state$.pipe(map(x => x?.colorAssignments), distinctUntilChanged());
+  readonly colorAssignmentsList$ = this.state$.pipe(map(x => x?.colorAssignmentsList), distinctUntilChanged());
 
   getColor(key: string): Immutable<Color> | undefined {
     const { colorAssignments } = this.snapshot;

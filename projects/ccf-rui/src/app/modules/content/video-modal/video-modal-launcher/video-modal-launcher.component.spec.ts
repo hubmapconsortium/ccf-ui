@@ -24,8 +24,8 @@ describe('VideoModalLauncherComponent', () => {
   });
 
   it('launchVideoModal opens the modal', async () => {
-    const { instance, get } = await shallow.render();
+    const { instance, inject } = await shallow.render();
     instance.launchVideoModal();
-    expect(get(MatDialog).open).toHaveBeenCalled();
+    expect(inject(MatDialog).open).toHaveBeenCalled();
   });
 });

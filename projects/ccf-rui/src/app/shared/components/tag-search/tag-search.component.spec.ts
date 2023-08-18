@@ -41,7 +41,7 @@ describe('TagSearchComponent', () => {
     let errorCount: number;
     let rendering: PromiseResult<ReturnType<Shallow<TagSearchComponent>['render']>>;
     let instance: TagSearchComponent;
-    let get: (typeof rendering)['get'];
+    let inject: (typeof rendering)['inject'];
     let zone: NgZone;
     let subs: Subscription;
 
@@ -69,8 +69,8 @@ describe('TagSearchComponent', () => {
       });
 
       instance = rendering.instance;
-      get = rendering.get;
-      zone = get(NgZone);
+      inject = rendering.inject;
+      zone = inject(NgZone);
 
       subs.add(zone.onError.subscribe(() => {
         errorCount++;

@@ -37,9 +37,9 @@ describe('RegistrationModalComponent', () => {
   });
 
   it('should open the dialog when the openDialog() method is called', async () => {
-    const { instance, get } = await shallow.render();
+    const { instance, inject } = await shallow.render();
     instance.openDialog();
-    expect(get(MatDialog).open).toHaveBeenCalled();
+    expect(inject(MatDialog).open).toHaveBeenCalled();
   });
 
   it('should open the dialog on init if there is no user or organ', async () => {

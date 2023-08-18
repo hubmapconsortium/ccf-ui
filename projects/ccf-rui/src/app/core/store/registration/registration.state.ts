@@ -10,7 +10,7 @@ import { GlobalConfigState } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
-import { map, pluck, startWith, switchMap, take, tap } from 'rxjs/operators';
+import { map, startWith, switchMap, take, tap } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
@@ -49,7 +49,7 @@ export interface RegistrationStateModel {
 })
 @Injectable()
 export class RegistrationState extends NgxsImmutableDataRepository<RegistrationStateModel> {
-  readonly displayErrors$ = this.state$.pipe(pluck('displayErrors'));
+  readonly displayErrors$ = this.state$.pipe(map(x => x?.displayErrors));
 
   /** Observable of registration metadata */
   @Computed()
@@ -80,7 +80,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get previousRegistrations$(): Observable<Record<string, unknown>[]> {
     const { globalConfig, state$ } = this;
-    const regs = state$.pipe(pluck('registrations'));
+    const regs = state$.pipe(map(x => x?.registrations));
     const fetched = globalConfig.getOption('fetchPreviousRegistrations').pipe(
       switchMap(fetch => fetch?.() ?? [[]]),
       startWith([])

@@ -6,7 +6,7 @@ import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
 import { environment } from '../environments/environment';
@@ -103,7 +103,8 @@ export class AppComponent implements OnInit {
     map(state => state === DataQueryState.Running)
   );
 
-  readonly loadingMessage$ = this.data.state$.pipe(pluck('statusMessage'));
+  readonly loadingMessage$ = this.data.state$.pipe(map(x => x?.statusMessage));
+
 
   readonly ontologyTerms$: Observable<readonly string[]>;
   readonly cellTypeTerms$: Observable<readonly string[]>;
@@ -138,8 +139,8 @@ export class AppComponent implements OnInit {
     data.filter$.subscribe();
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
-    this.ontologyTerms$ = data.filter$.pipe(pluck('ontologyTerms'));
-    this.cellTypeTerms$ = data.filter$.pipe(pluck('cellTypeTerms'));
+    this.ontologyTerms$ = data.filter$.pipe(map(x => x?.ontologyTerms));
+    this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) => {

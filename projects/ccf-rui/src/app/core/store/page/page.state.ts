@@ -6,7 +6,7 @@ import { iif, patch } from '@ngxs/store/operators';
 import { GlobalConfigState } from 'ccf-shared';
 import { pluckUnique } from 'ccf-shared/rxjs-ext/operators';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, pluck, take, tap, withLatestFrom } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, take, tap, withLatestFrom } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { GlobalConfig } from '../../services/config/config';
@@ -53,11 +53,11 @@ export interface PageStateModel {
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /** Active user observable */
-  readonly user$ = this.state$.pipe(pluck('user'));
+  readonly user$ = this.state$.pipe(map(x => x?.user));
   /** RegistrationStated observable */
   readonly registrationStarted$ = this.state$.pipe(pluckUnique('registrationStarted'));
-  readonly useCancelRegistrationCallback$ = this.state$.pipe(pluck('useCancelRegistrationCallback'));
-  readonly registrationCallbackSet$ = this.state$.pipe(pluck('registrationCallbackSet'));
+  readonly useCancelRegistrationCallback$ = this.state$.pipe(map(x => x?.useCancelRegistrationCallback));
+  readonly registrationCallbackSet$ = this.state$.pipe(map(x => x?.registrationCallbackSet));
 
   @Computed()
   get skipConfirmation$(): Observable<boolean> {

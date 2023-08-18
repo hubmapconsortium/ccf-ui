@@ -34,30 +34,30 @@ describe('InfoButtonComponent', () => {
   });
 
   it('launchInfoDialog opens dialog box', async () => {
-    const { instance, get } = await shallow.mock(MatDialog, mockMatDialog).render();
+    const { instance, inject } = await shallow.mock(MatDialog, mockMatDialog).render();
     const empty: DocumentationContent[] = [{ title: '', content: '' }];
     instance.launchInfoDialog({ content: empty, infoTitle: '', videoID: '' });
-    expect(get(MatDialog).open).toHaveBeenCalled();
+    expect(inject(MatDialog).open).toHaveBeenCalled();
   });
 
   it('launches the dialog when data is emitted from the service', async () => {
-    const { instance, get } = await shallow.render();
+    const { instance, inject } = await shallow.render();
     const empty: DocumentationContent[] = [{ title: '', content: '' }];
     const spy = spyOn(instance, 'launchInfoDialog');
-    get(InfoButtonService).panelContent.next({ content: empty, infoTitle: '', videoID: '' });
+    inject(InfoButtonService).panelContent.next({ content: empty, infoTitle: '', videoID: '' });
     expect(spy).toHaveBeenCalled();
   });
 
   it('does not launch the dialog when data is empty', async () => {
-    const { instance, get } = await shallow.render();
+    const { instance, inject } = await shallow.render();
     const spy = spyOn(instance, 'launchInfoDialog');
-    get(InfoButtonService).panelContent.next({ content: [] as DocumentationContent[] } as PanelData);
+    inject(InfoButtonService).panelContent.next({ content: [] as DocumentationContent[] } as PanelData);
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call onDialogButtonClick', async () => {
-    const { instance, get } = await shallow.render();
-    const spy = spyOn(get(InfoButtonService), 'updateData');
+    const { instance, inject } = await shallow.render();
+    const spy = spyOn(inject(InfoButtonService), 'updateData');
     instance.onDialogButtonClick();
     expect(spy).toHaveBeenCalled();
   });
