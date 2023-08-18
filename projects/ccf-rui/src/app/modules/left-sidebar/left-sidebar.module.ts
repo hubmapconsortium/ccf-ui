@@ -12,7 +12,7 @@ import { VisibilityMenuModule } from '../../shared/components/visibility-menu/vi
 import { VisibilityToggleModule } from '../../shared/components/visibility-toggle/visibility-toggle.module';
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
 import { JsonFileReaderModule } from '../../shared/components/json-file-reader/json-file-reader.module';
 
 

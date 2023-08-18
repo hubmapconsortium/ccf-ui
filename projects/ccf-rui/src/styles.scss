@@ -10,7 +10,6 @@
 @use 'themes/gtex_light';
 @use 'themes/gtex_dark';
 
-@include mat.core();
 @include mat.legacy-core();
 @include mat.all-component-typographies(typography.$config);
 
@@ -183,4 +182,85 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .cdk-global-overlay-wrapper {
   z-index: 1001;
+}
+
+.mat-form-field {
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.125;
+  font-family: Inter,sans-serif;
+  letter-spacing: normal
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 1.25em;
+}
+
+.mat-form-field-infix {
+  padding: 0.5em 0;
+  border-top: 0.84375em solid transparent;
+}
+
+.mat-button,.mat-fab,.mat-flat-button,.mat-icon-button,.mat-mini-fab,.mat-raised-button,.mat-stroked-button {
+  font-family: Inter,sans-serif;
+  font-size: 14px;
+  font-weight: 500
+}
+
+.mat-tooltip {
+  font-family: Inter,sans-serif;
+  font-size: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 1.34375em;
+}
+
+input.mat-input-element {
+  margin-top: -.0625em
+}
+
+.mat-form-field-label-wrapper {
+  top: -.84375em;
+  padding-top: .84375em;
+}
+
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+  transform: translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.001px);
+  -ms-transform: translateY(-1.28125em) scale(.75);
+  width: 133.3333333333%
+}
+
+.mat-form-field-label {
+  top: 1.34375em;
+}
+
+.mat-form-field-underline {
+  bottom: 1.25em
+}
+
+.mat-form-field-subscript-wrapper {
+  margin-top: .5416666667em;
+  top: calc(100% - 1.6666666667em)
+}
+
+.mat-form-field-flex {
+  padding-top: 0.75em;
+}
+
+.mat-chip {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mat-slider-thumb-label-text {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.mat-dialog-title {
+  font: 500 20px/32px Inter,sans-serif;
+  letter-spacing: normal;
 }

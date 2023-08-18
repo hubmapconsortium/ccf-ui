@@ -1,6 +1,6 @@
 import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MAT_LEGACY_FORM_FIELD_DEFAULT_OPTIONS as MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/legacy-form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -41,14 +41,14 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
       provide: DEFAULT_THEME,
       useValue: 'hubmap-theme-light'
     },
-    // {
-    //   provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-    //   useValue: {
-    //     appearance: 'legacy',
-    //     floatLabel: true,
-    //     hideRequiredMarker: true
-    //   }
-    // }
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        appearance: 'legacy',
+        floatLabel: true,
+        hideRequiredMarker: true
+      }
+    }
   ]
 })
 export class AppModule implements DoBootstrap {
