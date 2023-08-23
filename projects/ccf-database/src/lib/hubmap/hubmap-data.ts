@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
 import { get, omit, set, toNumber } from 'lodash';
+import { patchJsonLd } from '../util/patch-jsonld';
 
 
 type JsonDict = Record<string, unknown>;
@@ -56,7 +57,7 @@ export function hubmapResponseAsJsonLd(data: unknown, assetsApi = '', portalUrl 
     console.log(donors.map(d => ({ '@context': ENTITY_CONTEXT, ...d })));
   }
 
-  return { '@context': ENTITY_CONTEXT, '@graph': donors };
+  return patchJsonLd(JSON.stringify({ '@context': ENTITY_CONTEXT, '@graph': donors }), ENTITY_CONTEXT);
 }
 
 function debugDonors(donors: JsonLdObj[]) {
