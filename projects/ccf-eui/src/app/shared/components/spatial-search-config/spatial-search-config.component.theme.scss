@@ -72,7 +72,7 @@
     }
 
     .continue-button {
-      color: mat.get-color-from-palette($foreground, light-button-text);
+      color: mat.get-color-from-palette($foreground, contrast-button-text);
       background-color: mat.get-color-from-palette($background, button-bg);
       border-color: mat.get-color-from-palette($foreground, button-border);
 

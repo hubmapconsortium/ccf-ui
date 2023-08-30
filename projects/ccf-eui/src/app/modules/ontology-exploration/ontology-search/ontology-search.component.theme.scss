@@ -18,25 +18,19 @@
       }
     }
     .input::placeholder {
-      color: mat.get-color-from-palette($foreground, search-result-text);
+      color: mat.get-color-from-palette($foreground, search-result-text) !important;
     }
 
     .input {
       color: mat.get-color-from-palette($foreground, text);
     }
 
+    .mat-mdc-text-field-wrapper {
+      background-color: mat.get-color-from-palette($background, modal);
+    }
+
     .mat-form-field-appearance-outline {
-      .mat-form-field-outline {
-        color: mat.get-color-from-palette($foreground, divider);
-
-        .mat-form-field-outline-start,
-        .mat-form-field-outline-end,
-        .mat-form-field-outline-gap {
-          background-color: mat.get-color-from-palette($background, modal);
-        }
-      }
-
-      .mat-form-field-outline-thick {
+      .mdc-notched-outline {
         color: mat.get-color-from-palette($foreground, divider);
       }
     }

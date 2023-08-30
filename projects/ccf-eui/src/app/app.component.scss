@@ -149,6 +149,7 @@
       padding-left: 1.5rem;
       padding-right: 1.5rem;
       height: 100%;
+      z-index: 3;
 
       ::ng-deep .cff-drawer-inner-container {
         overflow: hidden;
@@ -221,4 +222,8 @@
 
 ::-webkit-scrollbar {
   width: 0.5rem;
+}
+
+::ng-deep .mdc-snackbar__surface {
+  box-shadow: none !important;
 }

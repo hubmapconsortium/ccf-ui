@@ -40,7 +40,7 @@
 
     .authentication {
       background-color: mat.get-color-from-palette($background, authentication);
-      color: mat.get-color-from-palette($foreground, button-text);
+      color: mat.get-color-from-palette($foreground, header-button);
       box-shadow: 0rem 0.313rem 0.313rem -0.25rem map-get($foreground, button-shadow);
 
       &:hover {

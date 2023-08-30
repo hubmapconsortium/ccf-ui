@@ -32,11 +32,10 @@
   @include mat.core-theme($theme);
   @include mat.toolbar-theme($theme);
   @include mat.icon-theme($theme);
-  @include mat.legacy-form-field-theme($theme);
+  @include mat.expansion-theme($theme);
+  @include mat.progress-spinner-theme($theme);
   @include mat.legacy-input-theme($theme);
   @include mat.legacy-checkbox-theme($theme);
-  @include mat.legacy-progress-spinner-theme($theme);
-  @include mat.expansion-theme($theme);
   @include mat.legacy-tooltip-theme($theme);
 
   @include header.theme($theme);

@@ -131,6 +131,12 @@ mat-icon {
   user-select: none;
 }
 
+button {
+  font-family: Inter,sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 // Reference: https://css-tricks.com/custom-scrollbars-in-webkit/
 ::-webkit-scrollbar {
   width: .25rem;
@@ -155,40 +161,9 @@ mat-icon {
   background: rgba(97, 97, 97);
 }
 
-.mat-form-field {
-  font-size: inherit;
-  font-weight: 400;
-  line-height: 1.125;
-  font-family: Inter,sans-serif;
-  letter-spacing: normal
-}
-
-.mat-form-field-wrapper {
-  padding-bottom: 1.25em;
-}
-
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-  padding: 0.4375em 0;
-}
-
-.mat-button,.mat-fab,.mat-flat-button,.mat-icon-button,.mat-mini-fab,.mat-raised-button,.mat-stroked-button {
-  font-family: Inter,sans-serif;
-  font-size: 14px;
-  font-weight: 500
-}
-
 .mat-tooltip {
   font-family: Inter,sans-serif;
   font-size: 10px;
   padding-top: 6px;
   padding-bottom: 6px
-}
-
-.mdc-snackbar__surface {
-  box-shadow: none !important;
-}
-
-.mat-form-field-subscript-wrapper {
-  margin-top: 0.5416666667em;
-  top: calc(100% - 1.6666666667em);
 }

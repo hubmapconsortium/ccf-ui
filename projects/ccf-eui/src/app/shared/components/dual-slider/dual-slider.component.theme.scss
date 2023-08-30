@@ -10,14 +10,14 @@
 
   .slider-form-field {
 
-    .mat-form-field-wrapper {
-      .mat-form-field-underline {
-        background-color: mat.get-color-from-palette($foreground, contrast-icon);
+    .mat-mdc-text-field-wrapper {
+      .mdc-line-ripple {
+        color: mat.get-color-from-palette($foreground, contrast-icon);
       }
     }
   }
 
-  .mat-select-arrow-wrapper {
+  .mat-mdc-select-arrow {
     color: mat.get-color-from-palette($foreground, contrast-icon);
   }
 

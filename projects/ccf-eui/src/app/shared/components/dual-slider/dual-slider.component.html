@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <mat-form-field class="slider-form-field" [class.highlight]="isSliderOpen" (click)="toggleSliderPopover()">
+    <mat-form-field class="slider-form-field" [class.highlight]="isSliderOpen" (click)="toggleSliderPopover()" subscriptSizing="dynamic">
       <div class="slider-labels">
         <span class="name-label">{{ label }}</span>
         <span class="range-label">{{ rangeLabel }}</span>

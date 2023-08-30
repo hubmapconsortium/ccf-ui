@@ -28,7 +28,8 @@ $foreground: map-merge(mat.$dark-theme-foreground-palette, (
   borders: map-get($primary-colors, 800), //#424242
   icon: map-get($primary-colors, 500), //#9E9E9E
   contrast-icon: map-get($primary-colors, 500), //#9E9E9E
-  button-text: map-get($primary-colors, 850),
+  button-text: map-get($primary-colors, 'white'),
+  contrast-button-text: map-get($primary-colors, 850),
   button-border: map-get($primary-colors, 'white'),
   headers: map-get($primary-colors, 50), //#FAFAFA
   search-result-text: map-get($primary-colors, 50), //#FAFAFA
@@ -44,6 +45,7 @@ $foreground: map-merge(mat.$dark-theme-foreground-palette, (
   organ-numbers: #757575,
   selected-ontology-text: map-get($accent, 600),
   color-hover: map-get($primary-colors, 'white'),
+  header-button: map-get($primary-colors, 850),
 
   icons-background-hover: #e0e0e0,
   icon-active: map-get($primary-colors, 500), //#9E9E9E
@@ -77,7 +79,7 @@ $background: map-merge(mat.$dark-theme-background-palette, (
   icon-background-hover: #2f3346,
   icon-background-hover2: map-get($primary-colors, 800),
   button-bg: map-get($primary-colors, 'white'),
-  mat-selected-option: map-get($primary-colors, 'black'),
+  mat-selected-option: #636363,
 ));
 
 $theme: (
