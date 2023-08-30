@@ -18,6 +18,7 @@
     justify-content: space-between;
     width: 100%;
     font-size: 1.25rem;
+    align-items: center;
 
     .header-left {
       display: flex;
@@ -36,6 +37,9 @@
       outline: none;
       border-radius: 0.25rem;
       transition: 0.6s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -100,12 +104,9 @@
 }
 
 ::ng-deep .organ-select {
-  position: absolute;
   top: 2.5rem;
   left: -0.25rem;
-  border-radius: 0.5rem;
-  max-height: 24.5rem;
-  width: 14rem;
+  padding: 0 !important;
 
   .organ-select-option {
     height: 3.5rem;

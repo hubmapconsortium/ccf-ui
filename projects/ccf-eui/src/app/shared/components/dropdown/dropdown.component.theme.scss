@@ -18,13 +18,14 @@
 
       &.mat-mdc-option-active {
         background-color: mat.get-color-from-palette($background, mat-selected-option) !important;
+
         .visible {
           color: mat.get-color-from-palette($foreground, contrast-text) !important;
         }
       }
 
       &:hover {
-        background-color: mat.get-color-from-palette($background, dropdown-hover) !important;
+        background-color: mat.get-color-from-palette($background, dropdown-hover);
       }
     }
   }
