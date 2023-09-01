@@ -17,12 +17,20 @@
       }
     }
 
+    .mdc-text-field {
+      background: white !important;
+    }
+
+    .mat-mdc-form-field-focus-overlay {
+      background: transparent;
+    }
+
     .label {
       color: mat.get-color-from-palette($foreground, icon-disabled);
     }
 
-    .mat-form-field-ripple {
-      background-color: mat.get-color-from-palette($accent) !important;
+    .mdc-line-ripple::before, .mdc-line-ripple::after {
+      border-bottom-color: mat.get-color-from-palette($accent) !important;
     }
   }
 }

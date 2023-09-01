@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReviewModalComponent } from './review-modal.component';
 import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [ReviewModalComponent],

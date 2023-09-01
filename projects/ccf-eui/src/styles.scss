@@ -164,10 +164,9 @@ button {
 }
 
 /* Tooltip styles */
-.mdc-tooltip__surface {
-  font-family: Inter,sans-serif !important;
-  font-size: 10px !important;
-  padding-top: 6px !important;
-  padding-bottom: 6px !important;
+.mdc-tooltip {
   border-radius: 4px;
+  .mdc-tooltip__surface {
+    font-size: 10px !important;
+  }
 }

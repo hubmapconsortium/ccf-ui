@@ -10,21 +10,24 @@
 
   .ccf-stage-nav {
     .input-group {
-      .nav-input:hover {
+      .mdc-form-field:hover {
         color: mat.get-color-from-palette($accent);
       }
     }
 
-    mat-radio-button {
+    .mdc-form-field {
       color: mat.get-color-from-palette($foreground, contrast-text);
 
-      .mat-radio-outer-circle {
-        border-color: white;
+      .mdc-radio__outer-circle {
+        border-color: white !important;
       }
+    }
 
-      &.mat-radio-checked {
-        border-color: mat.get-color-from-palette($accent);
-        color: mat.get-color-from-palette($accent);
+    .mat-mdc-radio-checked {
+      color: mat.get-color-from-palette($accent);
+
+      .mdc-radio__outer-circle {
+        border-color: mat.get-color-from-palette($accent) !important;
       }
     }
 
@@ -50,19 +53,20 @@
       &.dropdowncontainer {
         background-color: white;
 
-        mat-radio-button, .slide-label {
+        .mdc-form-field, .slide-label {
           color: mat.get-color-from-palette($foreground, text);
+
+          .mdc-radio__outer-circle {
+            border-color: mat.get-color-from-palette($foreground, text) !important;
+          }
         }
 
-        .mat-radio-outer-circle {
-          border-color: mat.get-color-from-palette($foreground, text);
-        }
 
-        .mat-radio-checked {
+        .mat-mdc-radio-checked {
           color: mat.get-color-from-palette($accent);
 
-          .mat-radio-outer-circle {
-            border-color: mat.get-color-from-palette($accent);
+          .mdc-radio__outer-circle {
+            border-color: mat.get-color-from-palette($accent) !important;
           }
         }
 

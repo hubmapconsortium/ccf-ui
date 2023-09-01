@@ -17,19 +17,15 @@
       color: #cccccc;
     }
 
-    .mat-form-field-wrapper {
+    .mat-mdc-text-field-wrapper {
       background-color: white;
     }
 
-    .mat-form-field-outline {
-      color: mat.get-color-from-palette($foreground, text);
+    .mdc-notched-outline__leading, .mdc-notched-outline__trailing {
+      border-color: mat.get-color-from-palette($foreground, text) !important;
     }
 
-    .mat-pseudo-checkbox-checked {
-      background: mat.get-color-from-palette($foreground, active-icon);
-    }
-
-    .add-button{
+    .add-button {
       background-color: transparent;
 
       &.active {
