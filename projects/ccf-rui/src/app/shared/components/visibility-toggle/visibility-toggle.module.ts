@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VisibilityToggleComponent } from './visibility-toggle.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyChipsModule as MatChipsModule } from '@angular/material/legacy-chips';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [VisibilityToggleComponent],

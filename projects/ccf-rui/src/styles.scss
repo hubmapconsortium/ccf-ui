@@ -190,26 +190,8 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: 1001;
 }
 
-.mat-tooltip {
-  font-family: Inter,sans-serif;
-  font-size: 10px;
-  padding-top: 6px;
-  padding-bottom: 6px
-}
-
-.mat-chip {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.mat-slider-thumb-label-text {
-  font-size: 12px;
-  font-weight: 500;
-}
-
 .mat-dialog-title {
   font: 500 20px/32px Inter,sans-serif;
-  letter-spacing: normal;
 }
 
 .mat-mdc-button-touch-target {
@@ -219,7 +201,6 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Tooltip styles */
 .mdc-tooltip {
   border-radius: 4px;
-
   .mdc-tooltip__surface {
     font-size: 10px !important;
   }

@@ -63,6 +63,10 @@
           margin: 0;
           margin-right: 0.875rem;
           height: 2.5rem;
+
+          ::ng-deep .mdc-label {
+            padding-left: 0;
+          }
         }
       }
 

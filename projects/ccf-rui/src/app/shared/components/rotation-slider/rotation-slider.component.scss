@@ -56,22 +56,14 @@
         }
       }
 
-      ::ng-deep .mat-slider-horizontal {
-        .mat-slider-wrapper {
-          right: 0.625rem;
-          &:after {
-            margin-top: -0.25rem;
-            height: 0.625rem !important;
-          }
+      ::ng-deep .mat-mdc-slider {
+        .mdc-slider__value-indicator {
+          opacity: 1;
         }
 
-        .mat-slider-ticks-container {
-          margin-top: -0.25rem;
-          height: 0.625rem;
-
-          .mat-slider-ticks {
-            height: 0.625rem;
-          }
+        .mdc-slider__track,
+        .mdc-slider__track--inactive {
+          height: 1px;
         }
       }
     }

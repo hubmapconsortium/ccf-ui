@@ -39,15 +39,13 @@
   @include mat.icon-theme($theme);
   @include mat.input-theme($theme);
   @include mat.radio-theme($theme);
+  @include mat.select-theme($theme);
+  @include mat.slider-theme($theme);
   @include mat.toolbar-theme($theme);
   @include mat.tooltip-theme($theme);
 
-  @include mat.legacy-autocomplete-theme($theme);
   @include mat.legacy-checkbox-theme($theme);
-  @include mat.legacy-progress-spinner-theme($theme);
-  @include mat.legacy-select-theme($theme);
   @include mat.legacy-slide-toggle-theme($theme);
-  @include mat.legacy-slider-theme($theme);
 
   @include header.theme($theme);
   @include infoDialog.theme($theme);
