@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent } from '@angular/material/legacy-autocomplete';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { OntologyTreeNode } from 'ccf-database';
 import { get, sortBy } from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';

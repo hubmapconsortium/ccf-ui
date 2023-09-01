@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatLegacyAutocompleteModule as MatAutocompleteModule } from '@angular/material/legacy-autocomplete';
-import { MatLegacyFormFieldModule as MatFormFieldModule, MatLegacyPrefix as MatPrefix, MatLegacySuffix as MatSuffix } from '@angular/material/legacy-form-field';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule, MatPrefix, MatSuffix } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { DecoratedTextModule } from '../decorated-text/decorated-text.module';
 import { TextSearchComponent } from './text-search.component';

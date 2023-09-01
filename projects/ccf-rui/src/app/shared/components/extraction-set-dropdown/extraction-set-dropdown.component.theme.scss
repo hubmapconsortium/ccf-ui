@@ -13,7 +13,7 @@
     color: mat.get-color-from-palette($foreground, placeholder-text);
   }
 
-  .mdc-line-ripple::before, .mdc-line-ripple::after {
+  .mdc-line-ripple::after {
     border-bottom-color: mat.get-color-from-palette($accent) !important;
   }
 

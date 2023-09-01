@@ -8,7 +8,7 @@
   $foreground: map-get($color-config, foreground);
   $accent: map-get($color-config, accent);
 
-  ccf-filters-content {
+  ccf-filters-content .button-container {
     button {
       color: mat.get-color-from-palette($foreground, contrast-button-text) !important;
       background-color: mat.get-color-from-palette($background, button-bg);
