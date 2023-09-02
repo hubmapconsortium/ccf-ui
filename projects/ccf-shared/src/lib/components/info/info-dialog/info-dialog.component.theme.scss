@@ -8,12 +8,16 @@
   $foreground: map-get($color-config, foreground);
   $accent: map-get($color-config, accent);
 
-  .rui-about.wrapper {
+  .about.wrapper {
     .container {
       color: mat.get-color-from-palette($foreground, text);
 
       .content {
         background-color: mat.get-color-from-palette($background, background);
+
+        h2 {
+          color: mat.get-color-from-palette($foreground, text);
+        }
 
         .mat-typography {
             .description {

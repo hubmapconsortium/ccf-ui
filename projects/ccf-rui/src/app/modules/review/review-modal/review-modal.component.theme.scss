@@ -10,6 +10,9 @@
 
   .ccf-review-modal {
     background-color: mat.get-color-from-palette($background, background);
+    mat-dialog-content {
+      color: mat.get-color-from-palette($foreground, text);
+    }
 
     .footer {
       .download-button {

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { StateContext } from '@ngxs/store';
 import { LocalStorageService } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';

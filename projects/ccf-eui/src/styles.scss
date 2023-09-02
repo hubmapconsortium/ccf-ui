@@ -102,9 +102,8 @@
   .cls-2-spinal-cord, .cls-1-placenta {
     fill: #212121;
   }
-  .mat-dialog-container {
-    padding: 0;
-    border: 1px solid #e0e0e0;
+  .mat-mdc-dialog-container {
+    border-color: #e0e0e0;
   }
   ::-webkit-scrollbar {
     background: #757575;
@@ -169,4 +168,11 @@ button {
   .mdc-tooltip__surface {
     font-size: 10px !important;
   }
+}
+
+.mat-mdc-dialog-container {
+  padding: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.25rem;
 }

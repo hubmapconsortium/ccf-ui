@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
-import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { PageState, Person } from '../../../core/store/page/page.state';
 import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
 import { map } from 'rxjs/operators';

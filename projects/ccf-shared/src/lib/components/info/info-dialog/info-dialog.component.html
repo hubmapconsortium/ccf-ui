@@ -1,4 +1,4 @@
-<div class="rui-about wrapper">
+<div class="about wrapper">
   <div class="container">
     <div class="content">
       <div class="header">
@@ -7,7 +7,7 @@
           <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>
         </div>
       </div>
-      
+
       <mat-dialog-content class="mat-typography dialog-content">
         <div *ngFor="let content of documentationContents; let i = index;" class="panel">
           <mat-expansion-panel *ngIf="content" [expanded]="i === 0">
@@ -17,7 +17,7 @@
               <div class="top-padding">
                 <markdown class="variable-binding" [class.first]="i === 0" [data]="content.content"></markdown>
                 <div class="video-player" *ngIf="i === 0">
-                  <youtube-player videoId="{{videoID}}"></youtube-player> 
+                  <youtube-player videoId="{{videoID}}"></youtube-player>
                 </div>
               </div>
           </mat-expansion-panel>
