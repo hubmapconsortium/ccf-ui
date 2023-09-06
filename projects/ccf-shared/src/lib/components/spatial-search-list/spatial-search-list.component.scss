@@ -8,6 +8,14 @@
 
   .item {
     height: 2rem;
+    padding: 0;
+    overflow: visible;
+
+    ::ng-deep {
+      .mdc-list-item__content {
+        overflow: visible;
+      }
+    }
 
     .item-content {
       display: flex;
@@ -16,9 +24,12 @@
       height: 2rem;
 
       .delete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
         width: 2rem;
         height: 2rem;
-        line-height: 2rem;
       }
 
       .filler {

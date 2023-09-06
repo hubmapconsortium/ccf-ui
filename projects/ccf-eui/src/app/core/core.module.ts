@@ -2,8 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { DataSourceService, MousePositionTrackerModule } from 'ccf-shared';
 import { AnalyticsModule } from 'ccf-shared/analytics';
-import { CcfApiConfiguration, CcfApiModule } from 'ccf-openapi/angular-client';
-
 import { environment } from '../../environments/environment';
 import { HeaderModule } from './header/header.module';
 import { DelegateDataSourceService } from './services/data-source/data-source.service';
@@ -20,11 +18,6 @@ import { StoreModule } from './store/store.module';
       appName: 'eui'
     }),
     MousePositionTrackerModule,
-
-    CcfApiModule.forRoot(() => new CcfApiConfiguration({
-      basePath: environment.dbOptions.remoteApiEndpoint
-    })),
-
     HeaderModule,
     StoreModule,
     ThemingModule

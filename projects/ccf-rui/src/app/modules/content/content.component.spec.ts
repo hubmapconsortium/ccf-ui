@@ -60,15 +60,15 @@ describe('ContentComponent', () => {
 
   describe('.setViewType(is3DView)', () => {
     it('set view type to 3d when is3DView is true', async () => {
-      const { instance, get } = await shallow.render();
+      const { instance, inject } = await shallow.render();
       instance.setViewType(true);
-      expect(get(ModelState).setViewType).toHaveBeenCalledWith('3d');
+      expect(inject(ModelState).setViewType).toHaveBeenCalledWith('3d');
     });
 
     it('set view type to register when is3DView is false', async () => {
-      const { instance, get } = await shallow.render();
+      const { instance, inject } = await shallow.render();
       instance.setViewType(false);
-      expect(get(ModelState).setViewType).toHaveBeenCalledWith('register');
+      expect(inject(ModelState).setViewType).toHaveBeenCalledWith('register');
     });
   });
 

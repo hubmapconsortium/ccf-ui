@@ -25,14 +25,12 @@
 
     .input-group {
       .nav-input {
-        margin-right: 1.5rem;
+        margin-right: 1rem;
         margin-bottom: 1.5rem;
       }
     }
 
     .view-slider {
-      margin-left: -1rem;
-      margin-bottom: 1.5rem;
       white-space: nowrap;
     }
 
@@ -55,7 +53,7 @@
       }
 
       .input-group {
-        margin-left: 1.5rem;
+        margin-left: .875rem;
         margin-right: 0;
         display: flex;
         flex-wrap: wrap;
@@ -63,8 +61,12 @@
         .nav-input {
           display: flex;
           margin: 0;
-          margin-right: 1.5rem;
+          margin-right: 0.875rem;
           height: 2.5rem;
+
+          ::ng-deep .mdc-label {
+            padding-left: 0;
+          }
         }
       }
 

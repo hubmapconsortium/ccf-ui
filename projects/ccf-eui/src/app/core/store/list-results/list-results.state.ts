@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
-import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
+import { DataAction, Payload, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { DataSourceService } from 'ccf-shared';
 import { sortBy } from 'lodash';
 import { combineLatest } from 'rxjs';
-import { distinctUntilChanged, map, pluck, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, tap } from 'rxjs/operators';
 
 import { ListResult } from '../../models/list-result';
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
@@ -27,8 +27,8 @@ export interface ListResultsStateModel {
 @Injectable()
 export class ListResultsState extends NgxsImmutableDataRepository<ListResultsStateModel> implements NgxsOnInit {
   /** Scene to display in the 3d Scene */
-  readonly listResults$ = this.state$.pipe(pluck('listResults'), distinctUntilChanged());
-  readonly highlightedNodeId$ = this.state$.pipe(pluck('highlightedNodeId'), distinctUntilChanged());
+  readonly listResults$ = this.state$.pipe(map(x => x?.listResults), distinctUntilChanged());
+  readonly highlightedNodeId$ = this.state$.pipe(map(x => x?.highlightedNodeId), distinctUntilChanged());
 
 
   /** The data state */

@@ -6,9 +6,9 @@
         <input class="input-low" type="text" value="{{lowValue}}" (keyup)="onKeyLow($event)">
       </div>
 
-      <ng5-slider class="slider fade-in {{contentsVisible}}" [options]="options" [(value)]="lowValue"
+      <ngx-slider class="slider fade-in {{contentsVisible}}" [options]="options" [(value)]="lowValue"
                   [(highValue)]="highValue" (userChangeEnd)="sliderValueChanged()">
-      </ng5-slider>
+      </ngx-slider>
 
       <div class="label max fade-in {{contentsVisible}}">
         <div class="label ceil"> {{ options.ceil }} </div>
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <mat-form-field class="slider-form-field" [class.highlight]="isSliderOpen" (click)="toggleSliderPopover()">
+    <mat-form-field class="slider-form-field" [class.highlight]="isSliderOpen" (click)="toggleSliderPopover()" subscriptSizing="dynamic">
       <div class="slider-labels">
         <span class="name-label">{{ label }}</span>
         <span class="range-label">{{ rangeLabel }}</span>

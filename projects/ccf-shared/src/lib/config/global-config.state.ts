@@ -1,8 +1,8 @@
 import { Immutable } from '@angular-ru/common/typings';
 import { Injectable } from '@angular/core';
-import { Computed, StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
-import { ImmutablePatchValue, ImmutableStateValue } from '@ngxs-labs/data/typings';
+import { Computed, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { ImmutablePatchValue, ImmutableStateValue } from '@angular-ru/ngxs/typings';
 import { State } from '@ngxs/store';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { Observable } from 'rxjs';
@@ -33,10 +33,10 @@ export class GlobalConfigState<T> extends NgxsImmutableDataRepository<T> {
 
   getProperty<R>(path: PropertyKey[]): Observable<R> {
     return this.config$.pipe(
-      pluck<unknown, R>(...path as string[]),
+      pluck(...path as [string]),
       distinctUntilChanged(),
       shareReplay(1)
-    );
+    ) as Observable<R>;
   }
 
   getOption<K1 extends keyof T>(k1: K1): Observable<T[K1]>;

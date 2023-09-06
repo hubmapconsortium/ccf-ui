@@ -1,9 +1,8 @@
+import * as ResizeModule from 'css-element-queries';
 import { Shallow } from 'shallow-render';
 
-import { OrganInfo, OrganSelectorComponent } from './organ-selector.component';
+import { ALL_ORGANS, OrganInfo, OrganSelectorComponent } from './organ-selector.component';
 import { OrganSelectorModule } from './organ-selector.module';
-
-import * as ResizeModule from 'css-element-queries';
 
 function wait(duration: number): Promise<void> {
   return new Promise(resolve => {
@@ -193,5 +192,10 @@ describe('OrganSelectorComponent', () => {
     const { instance } = await shallow.render();
     instance.occurenceData = { a: 1 };
     expect(instance.occurenceData).toEqual({ a: 1 });
+  });
+
+  it('should set organlist to default organs if not provided', async () => {
+    const { instance } = await shallow.render();
+    expect(instance.organList).toEqual(ALL_ORGANS);
   });
 });

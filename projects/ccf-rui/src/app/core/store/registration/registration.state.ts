@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Immutable } from '@angular-ru/common/typings';
 import { Injectable, Injector } from '@angular/core';
-import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
+import { Computed, DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd } from 'ccf-body-ui';
@@ -10,7 +10,7 @@ import { GlobalConfigState } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
-import { map, pluck, startWith, switchMap, take, tap } from 'rxjs/operators';
+import { map, startWith, switchMap, take, tap } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
@@ -49,7 +49,7 @@ export interface RegistrationStateModel {
 })
 @Injectable()
 export class RegistrationState extends NgxsImmutableDataRepository<RegistrationStateModel> {
-  readonly displayErrors$ = this.state$.pipe(pluck('displayErrors'));
+  readonly displayErrors$ = this.state$.pipe(map(x => x?.displayErrors));
 
   /** Observable of registration metadata */
   @Computed()
@@ -80,7 +80,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get previousRegistrations$(): Observable<Record<string, unknown>[]> {
     const { globalConfig, state$ } = this;
-    const regs = state$.pipe(pluck('registrations'));
+    const regs = state$.pipe(map(x => x?.registrations));
     const fetched = globalConfig.getOption('fetchPreviousRegistrations').pipe(
       switchMap(fetch => fetch?.() ?? [[]]),
       startWith([])
@@ -218,7 +218,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   @DataAction()
   addRegistration(registration: Record<string, unknown>): void {
-    this.ctx.setState(patch<Immutable<RegistrationStateModel>>({
+    this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable<Record<string, unknown>>)
     }));
   }
@@ -257,7 +257,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     const jsonObj = this.buildJsonLd(page.snapshot, model.snapshot, this.tags.latestTags);
     const json = JSON.stringify(jsonObj, undefined, 2);
 
-    if (useCallback || (useCallback === undefined && snapshot.useRegistrationCallback)) {
+    if (useCallback ?? (useCallback === undefined && snapshot.useRegistrationCallback)) {
       registrationCallback?.(json);
     } else {
       const data = new Blob([json], {

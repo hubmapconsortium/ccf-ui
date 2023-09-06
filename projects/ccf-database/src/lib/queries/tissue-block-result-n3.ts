@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Store } from 'triple-store-utils';
 import { DatasetResult, DonorResult, TissueBlockResult, TissueSectionResult } from '../interfaces';
 import { getEntries, getMappedResult } from '../util/n3-functions';

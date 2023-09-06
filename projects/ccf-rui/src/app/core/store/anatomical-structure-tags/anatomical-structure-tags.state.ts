@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { createEntityCollections, EntityCollections } from '@angular-ru/common/entity';
 import { Injectable, Injector } from '@angular/core';
-import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsDataEntityCollectionsRepository } from '@ngxs-labs/data/repositories';
+import { Computed, DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsDataEntityCollectionsRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 import { bind as Bind } from 'bind-decorator';
 import { combineLatest, Observable, ObservableInput } from 'rxjs';

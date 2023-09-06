@@ -3,48 +3,47 @@
 
   .field {
     width: 100%;
-    
-  }
+    padding-bottom: 1.34375em;
+    font-size: inherit;
+    line-height: 1.125;
+    letter-spacing: normal;
 
-  ::ng-deep .mat-form-field-appearance-outline {
-    .mat-form-field-outline-end {
-      border-radius: 0 0.25rem 0.25rem 0;
+    ::ng-deep .mat-mdc-text-field-wrapper {
       margin: 0;
-    }
+      height: 2.75rem;
 
-    .mat-form-field-wrapper {
-      margin: 0;
-      
+      .mat-mdc-form-field-flex {
+        align-items: center;
+        height: 2.75rem;
 
-      .mat-form-field-flex {
-        .mat-form-field-infix {
-          border: none;
-          height: 3rem;
-          
+        .mat-mdc-form-field-infix {
+          padding: 1rem 0;
 
           input {
             margin-left: .4rem;
           }
         }
-        .mat-form-field-prefix {
-          top: .5rem;
-          border: none;
+
+        .mat-mdc-form-field-icon-prefix {
+          padding: 0;
+        }
+
+        mat-icon {
+          padding-right: 0;
         }
       }
     }
-
-    .mat-form-field-outline-start {
-      border-radius: 0.25rem 0 0 0.25rem;
-      min-width: 2.5rem;
-	  }
   }
 }
+
 
 ::ng-deep .ccf-ontology-search.detached {
   border: 0.125rem solid;
   border-top: none;
   border-radius: 0 0 0.25rem 0.25rem;
   max-height: 18rem;
+  padding: 0;
+  box-shadow: none;
 
   .results-container {
     width: 23.75rem;
@@ -54,25 +53,25 @@
     scrollbar-width: thin;
 
     mat-option {
-      height: 1.5rem;
-      width: 23.75rem;
-      
+      min-height: 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+
       .search-term {
         text-decoration: underline;
       }
     }
   }
-
 }
 
 .autocomplete-open {
-  ::ng-deep .mat-form-field-appearance-outline {
-    .mat-form-field-outline-start {
+  ::ng-deep .mdc-notched-outline {
+    .mdc-notched-outline__leading {
       border-radius: 0.25rem 0 0 0;
       border-bottom: none;
     }
 
-    .mat-form-field-outline-end {
+    .mdc-notched-outline__trailing {
       border-radius: 0 0.25rem 0 0;
       border-bottom: none;
     }

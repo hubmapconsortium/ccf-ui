@@ -1,13 +1,13 @@
 import { Injectable, Injector } from '@angular/core';
-import { Computed, DataAction, StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
+import { Computed, DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
 import { EMPTY, Observable } from 'rxjs';
 import {
-  debounceTime, delay, distinctUntilChanged, filter, mapTo, pluck, skipUntil, switchMap, take, tap, throttleTime,
+  debounceTime, delay, distinctUntilChanged, filter, map, skipUntil, switchMap, take, tap, throttleTime,
 } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
@@ -117,37 +117,37 @@ export const RUI_ORGANS = ALL_ORGANS;
 @Injectable()
 export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   /** Identifier observable */
-  readonly id$ = this.state$.pipe(pluck('id'));
+  readonly id$ = this.state$.pipe(map(x => x?.id));
   /** Block size observable */
-  readonly blockSize$ = this.state$.pipe(pluck('blockSize'));
+  readonly blockSize$ = this.state$.pipe(map(x => x?.blockSize));
   /** Rotation observable */
-  readonly rotation$ = this.state$.pipe(pluck('rotation'));
+  readonly rotation$ = this.state$.pipe(map(x => x?.rotation));
   /** Position observable */
-  readonly position$ = this.state$.pipe(pluck('position'));
+  readonly position$ = this.state$.pipe(map(x => x?.position));
   /** Slice configuration observable */
-  readonly slicesConfig$ = this.state$.pipe(pluck('slicesConfig'));
+  readonly slicesConfig$ = this.state$.pipe(map(x => x?.slicesConfig));
   /** View type observable */
-  readonly viewType$ = this.state$.pipe(pluck('viewType'));
+  readonly viewType$ = this.state$.pipe(map(x => x?.viewType));
   /** View side observable */
-  readonly viewSide$ = this.state$.pipe(pluck('viewSide'));
+  readonly viewSide$ = this.state$.pipe(map(x => x?.viewSide));
   /** Organ observable */
-  readonly organ$ = this.state$.pipe(pluck('organ'));
+  readonly organ$ = this.state$.pipe(map(x => x?.organ));
   /** Organ IRI observable */
-  readonly organIri$ = this.state$.pipe(pluck('organIri'));
+  readonly organIri$ = this.state$.pipe(map(x => x?.organIri));
   /** Organ IRI observable */
-  readonly organDimensions$ = this.state$.pipe(pluck('organDimensions'));
+  readonly organDimensions$ = this.state$.pipe(map(x => x?.organDimensions));
   /** Sex observable */
-  readonly sex$ = this.state$.pipe(pluck('sex'));
+  readonly sex$ = this.state$.pipe(map(x => x?.sex));
   /** Side observable */
-  readonly side$ = this.state$.pipe(pluck('side'));
+  readonly side$ = this.state$.pipe(map(x => x?.side));
   /** Show previous observable */
-  readonly showPrevious$ = this.state$.pipe(pluck('showPrevious'));
+  readonly showPrevious$ = this.state$.pipe(map(x => x?.showPrevious));
   /** Extraction sites observable */
-  readonly extractionSites$ = this.state$.pipe(pluck('extractionSites'));
+  readonly extractionSites$ = this.state$.pipe(map(x => x?.extractionSites));
   /** Anatomical structures observable */
-  readonly anatomicalStructures$ = this.state$.pipe(pluck('anatomicalStructures'));
+  readonly anatomicalStructures$ = this.state$.pipe(map(x => x?.anatomicalStructures));
   /** Extraction sets observable */
-  readonly extractionSets$ = this.state$.pipe(pluck('extractionSets'));
+  readonly extractionSets$ = this.state$.pipe(map(x => x?.extractionSets));
 
   @Computed()
   get modelChanged$(): Observable<void> {
@@ -166,7 +166,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
         return true;
       }),
-      mapTo(undefined)
+      map(() => undefined)
     );
   }
 

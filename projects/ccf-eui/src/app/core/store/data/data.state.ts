@@ -2,14 +2,14 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
-import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsDataRepository } from '@ngxs-labs/data/repositories';
-import { Action, NgxsOnInit, Selector, State } from '@ngxs/store';
+import { DataAction, Payload, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
+import { Action, NgxsOnInit, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
 import { DataSourceService } from 'ccf-shared';
 import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
-import { delay, distinct, filter as rxjsFilter, map, pluck, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from 'rxjs/operators';
+import { delay, distinct, filter as rxjsFilter, map, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from 'rxjs/operators';
 import { UpdateFilter } from './data.actions';
 
 
@@ -99,7 +99,7 @@ export interface DataStateModel {
 @Injectable()
 export class DataState extends NgxsDataRepository<DataStateModel> implements NgxsOnInit {
   /** Emits when the database is ready. */
-  readonly databaseReady$ = this.state$.pipe(pluck('status'), distinct(), rxjsFilter((status) => status === 'Ready'));
+  readonly databaseReady$ = this.state$.pipe(map(x => x?.status), distinct(), rxjsFilter((status) => status === 'Ready'));
 
   /** Implementation subject for tissueBlockDataQueryStatus$. */
   private readonly _tissueBlockDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
@@ -121,7 +121,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   readonly cellTypeTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
 
   /** Current filter. */
-  readonly filter$ = this.state$.pipe(pluck('filter'));
+  readonly filter$ = this.state$.pipe(map(x => x?.filter));
   /** Latest tissue block query data. */
   readonly tissueBlockData$ = this.filter$.pipe(queryData(
     this.tissueBlockData, sendCompletedTo(this._tissueBlockDataQueryStatus$)

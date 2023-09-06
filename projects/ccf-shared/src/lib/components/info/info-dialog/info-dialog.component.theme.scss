@@ -1,17 +1,23 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $accent: map-get($theme, accent);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
-  .rui-about.wrapper {
+  .about.wrapper {
     .container {
       color: mat.get-color-from-palette($foreground, text);
-      
+
       .content {
         background-color: mat.get-color-from-palette($background, background);
+
+        h2 {
+          color: mat.get-color-from-palette($foreground, text);
+        }
 
         .mat-typography {
             .description {

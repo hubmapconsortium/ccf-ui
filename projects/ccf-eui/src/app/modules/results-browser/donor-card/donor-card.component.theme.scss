@@ -1,18 +1,21 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $primary: map-get($theme, primary);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
-  .checkbox {
-    &.selected {
-      color: mat.get-color-from-palette($primary, 'white');
+  .checkbox-background {
+    .mdc-checkbox__background {
+      border-color: mat.get-color-from-palette($foreground, contrast-icon) !important;
     }
 
-    &.unselected {
-      color: mat.get-color-from-palette($background, checkbox-color);
+    .mat-mdc-checkbox-checked.mat-accent .mdc-checkbox__background {
+      border-color: mat.get-color-from-palette($primary, 'white') !important;
+      background-color: transparent !important;
     }
   }
 

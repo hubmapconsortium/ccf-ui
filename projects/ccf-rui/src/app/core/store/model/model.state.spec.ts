@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { NgxsDataPluginModule } from '@ngxs-labs/data';
+import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
@@ -14,7 +14,7 @@ import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './mode
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
-  return obs.pipe(take(1)).toPromise();
+  return lastValueFrom(obs.pipe(take(1)));
 }
 
 

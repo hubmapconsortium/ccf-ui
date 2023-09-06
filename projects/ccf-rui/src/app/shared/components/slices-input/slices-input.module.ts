@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NumbersOnlyModule } from 'ccf-shared';
 import { SlicesInputComponent } from './slices-input.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatRippleModule,
     MatTooltipModule,
-    NumbersOnlyModule
+    NumbersOnlyModule,
+    MatFormFieldModule
   ],
   declarations: [SlicesInputComponent],
   exports: [SlicesInputComponent]

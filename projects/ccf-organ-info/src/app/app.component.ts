@@ -5,7 +5,7 @@ import { AggregateResult, SpatialEntity, TissueBlockResult } from 'ccf-database'
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { Observable, of } from 'rxjs';
-import { map, shareReplay, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 
 import { OrganLookupService } from './core/services/organ-lookup/organ-lookup.service';
 

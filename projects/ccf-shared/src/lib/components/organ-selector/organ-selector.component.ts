@@ -1,5 +1,5 @@
 import {
-  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input,
+  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input,
   OnChanges, OnDestroy, Output, SimpleChanges, ViewChild
 } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
@@ -459,7 +459,8 @@ export interface OrganInfo {
 @Component({
   selector: 'ccf-organ-selector',
   templateUrl: './organ-selector.component.html',
-  styleUrls: ['./organ-selector.component.scss']
+  styleUrls: ['./organ-selector.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestroy {
   /** HTML class */
@@ -604,7 +605,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   stopScroll(): void {
     if (this.timeoutHandler) {
       // Minor hack to make typescript happy when there are mixed NodeJS and regular typings
-      clearInterval(this.timeoutHandler as undefined);
+      clearInterval(this.timeoutHandler as never);
       this.timeoutHandler = undefined;
     }
   }

@@ -2,9 +2,10 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
 import {
+  ChangeDetectionStrategy,
   Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild,
 } from '@angular/core';
-import { Options } from 'ng5-slider';
+import { Options } from '@angular-slider/ngx-slider';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
@@ -14,7 +15,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 @Component({
   selector: 'ccf-dual-slider',
   templateUrl: './dual-slider.component.html',
-  styleUrls: ['./dual-slider.component.scss']
+  styleUrls: ['./dual-slider.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DualSliderComponent implements OnDestroy, OnChanges {
   /**

@@ -1,11 +1,12 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .ccf-tag-search {
     .search-box input::placeholder {
@@ -16,25 +17,21 @@
       color: #cccccc;
     }
 
-    .mat-form-field-wrapper {
+    .mat-mdc-text-field-wrapper {
       background-color: white;
     }
 
-    .mat-form-field-outline {
-      color: mat.get-color-from-palette($foreground, text);
+    .mdc-notched-outline__leading, .mdc-notched-outline__trailing {
+      border-color: mat.get-color-from-palette($foreground, text) !important;
     }
 
-    .mat-pseudo-checkbox-checked {
-      background: mat.get-color-from-palette($foreground, active-icon);
-    }
-
-    .add-button{
+    .add-button {
       background-color: transparent;
 
       &.active {
         background-color: mat.get-color-from-palette($foreground, icons-hover);
       }
-      
+
       &:hover {
         background-color: mat.get-color-from-palette($foreground, icons-hover);
       }
@@ -42,7 +39,7 @@
       &:active {
         background-color: mat.get-color-from-palette($foreground, icons-disabled);
       }
-      
+
     }
   }
 }

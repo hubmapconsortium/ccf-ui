@@ -14,8 +14,7 @@ import { BodyUiModule } from 'ccf-shared';
     BodyUiModule
   ],
   declarations: [AppComponent, AppWebComponent],
-  providers: [],
-  entryComponents: [AppComponent]
+  providers: []
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }

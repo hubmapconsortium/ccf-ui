@@ -1,15 +1,17 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $accent: map-get($theme, accent);
-  $foreground: map-get($theme, foreground);
-  $primary: map-get($theme, primary);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .ccf-opacity-slider {
     mat-slider {
       .mat-slider-thumb {
-        background-color: mat.get-color-from-palette($foreground, main);
+        background-color: mat.get-color-from-palette($foreground, main) !important;
       }
 
       .mat-slider-track-background {

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable no-underscore-dangle */
 import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 /**
@@ -37,11 +37,11 @@ export class NameInputComponent {
   /**
    * Used to validate the first name input field.
    */
-  firstNameValidator = new FormControl('', [Validators.required]);
+  firstNameValidator = new UntypedFormControl('', [Validators.required]);
   /**
    * Used to validate the last name input field.
    */
-  lastNameValidator = new FormControl('', [Validators.required]);
+  lastNameValidator = new UntypedFormControl('', [Validators.required]);
 
   /**
    * Current user name

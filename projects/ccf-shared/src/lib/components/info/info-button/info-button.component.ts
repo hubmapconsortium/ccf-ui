@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 
@@ -13,7 +13,8 @@ import { InfoButtonService } from './info-button.service';
 @Component({
   selector: 'ccf-info-button',
   templateUrl: './info-button.component.html',
-  styleUrls: ['./info-button.component.scss']
+  styleUrls: ['./info-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InfoButtonComponent implements OnDestroy {
   /**

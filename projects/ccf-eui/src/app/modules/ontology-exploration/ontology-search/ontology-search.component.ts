@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { OntologyTreeNode } from 'ccf-database';
 import { get, sortBy } from 'lodash';
@@ -31,7 +31,7 @@ export class OntologySearchComponent implements OnInit {
   /**
    * Instance of FormControl - tracks the value and validation status of an individual form control
    */
-  formControl = new FormControl('');
+  formControl = new UntypedFormControl('');
 
 
   /**

@@ -1,4 +1,4 @@
-@use '~@angular/material/theming' as ng;
+@use '@angular/material' as mat;
 @use 'themes/common/typography';
 @use 'themes/common/theming';
 @use 'themes/_default_light';
@@ -10,7 +10,8 @@
 @use 'themes/gtex_light';
 @use 'themes/gtex_dark';
 
-@include ng.mat-core(typography.$config);
+@include mat.core();
+@include mat.all-component-typographies(typography.$config);
 
 .default-theme-light {
   @include theming.ccf-theme(default_light.$theme);
@@ -85,6 +86,12 @@
   .ccf-header {
     border-bottom-width: 20px;
     box-shadow: none;
+  }
+}
+
+.default-theme-light, .sennet-theme-light, .hubmap-theme-light, .gtex-theme-light {
+  .mdc-tooltip {
+    background: rgba(97, 97, 97);
   }
 }
 
@@ -181,4 +188,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .cdk-global-overlay-wrapper {
   z-index: 1001;
+}
+
+/* Tooltip styles */
+.mdc-tooltip {
+  border-radius: 4px;
+  .mdc-tooltip__surface {
+    font-size: 10px !important;
+  }
 }

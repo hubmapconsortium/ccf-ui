@@ -4,22 +4,22 @@
     transition: color .6s;
     cursor: pointer;
     opacity: 50%;
-    
+
     &.highlighted {
       opacity: 100%;
     }
   }
-  
+
   .disabled {
     opacity: 30% !important;
     cursor: not-allowed;
   }
 
   ::ng-deep .slider {
-    .mat-slide-toggle-bar {
-      background-color: rgba(67, 71, 101, 0.5);
+    .mdc-switch__track::before, .mdc-switch__track::after {
+      background-color: rgba(67, 71, 101, 0.5) !important;
     }
-    .mat-slide-toggle-thumb {
+    .mdc-switch__shadow {
       background-color: rgba(67, 71, 101);
     }
   }

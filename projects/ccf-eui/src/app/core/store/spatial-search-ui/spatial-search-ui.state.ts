@@ -41,6 +41,7 @@ export interface RadiusSettings {
 }
 
 export interface TermResult {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   '@id': string;
   label: string;
   count: number;

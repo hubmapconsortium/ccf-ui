@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, Inject, Renderer2 } from '@angular/core';
+import { Component, OnInit, HostBinding, Inject, Renderer2, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DOCUMENT } from '@angular/common';
 
@@ -8,7 +8,8 @@ import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'ccf-video-modal',
   templateUrl: './video-modal.component.html',
-  styleUrls: ['./video-modal.component.scss']
+  styleUrls: ['./video-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoModalComponent implements OnInit {
   /** HTML class name */

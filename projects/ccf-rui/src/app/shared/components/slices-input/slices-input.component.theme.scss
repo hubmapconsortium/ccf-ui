@@ -1,10 +1,12 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .ccf-slices-input {
     .icon {
@@ -15,12 +17,20 @@
       }
     }
 
+    .mdc-text-field {
+      background: white !important;
+    }
+
+    .mat-mdc-form-field-focus-overlay {
+      background: transparent;
+    }
+
     .label {
       color: mat.get-color-from-palette($foreground, icon-disabled);
     }
 
-    .mat-form-field-ripple {
-      background-color: mat.get-color-from-palette($accent) !important;
+    .mdc-line-ripple::after {
+      border-bottom-color: mat.get-color-from-palette($accent) !important;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DocumentationContent } from '../info-button/info-button.service';
 
@@ -17,7 +17,8 @@ export interface InfoDialogData {
 @Component({
   selector: 'ccf-info-dialog',
   templateUrl: './info-dialog.component.html',
-  styleUrls: ['./info-dialog.component.scss']
+  styleUrls: ['./info-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InfoDialogComponent implements OnInit {
   /**

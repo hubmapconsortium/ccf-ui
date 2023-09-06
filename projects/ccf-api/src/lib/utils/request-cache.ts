@@ -1,7 +1,9 @@
-import LRUCache from 'lru-cache';
+import { LRUCache } from 'lru-cache';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
+type AnyObject = {};
 
-export class RequestCache<K, V> {
+export class RequestCache<K extends AnyObject, V> {
   constructor(
     readonly cache: LRUCache<K, Promise<V>>,
     readonly doRequest: (key: K, ...args: unknown[]) => V | Promise<V>
@@ -9,10 +11,12 @@ export class RequestCache<K, V> {
 
   get(key: K, ...args: unknown[]): Promise<V> {
     const { cache } = this;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     let result = cache.get(key);
 
     if (!result) {
       result = this.promisifiedDoRequest(key, ...args);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
       cache.set(key, result);
       this.handleErrors(key, result);
     }
@@ -30,8 +34,9 @@ export class RequestCache<K, V> {
     try {
       await request;
     } catch (_error) {
-      if (cache.get(key) === request) {
-        cache.del(key);
+      if (this.get(key) === request) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        cache.delete(key);
       }
     }
   }

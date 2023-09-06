@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 /* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { AmbientLight, Deck, LightingEffect, OrbitView, OrthographicView } from '@deck.gl/core';
 import { ViewStateProps } from '@deck.gl/core/lib/deck';
 import { Matrix4 } from '@math.gl/core';
-import bind from 'bind-decorator';
+import { bind } from 'bind-decorator';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
 
@@ -84,7 +85,7 @@ export class BodyUI {
         flipY: false,
         near: -1000
       }) : new OrbitView({ orbitAxis: 'Y' }) ],
-      controller: deckProps.interactive !== undefined ? deckProps.interactive : true,
+      controller: deckProps.interactive ?? true,
       layers: [ this.bodyUILayer ],
       onHover: this._onHover,
       onClick: this._onClick,
@@ -240,7 +241,7 @@ export class BodyUI {
   private _onHover(e: { picked: boolean; object: SpatialSceneNode }): void {
     const { lastHovered } = this;
     this.cursor = e.picked ? 'pointer' : undefined;
-    if (e.picked && e.object && e.object['@id']) {
+    if (e.picked && e.object?.['@id']) {
       if (lastHovered !== e.object) {
         if (lastHovered) {
           this.nodeHoverStopSubject.next(lastHovered);
@@ -256,7 +257,7 @@ export class BodyUI {
 
   @bind
   private _onClick(info: PickInfo<SpatialSceneNode>, e: { srcEvent: { ctrlKey: boolean } }): void {
-    if (info.picked && info.object && info.object['@id']) {
+    if (info.picked && info.object?.['@id']) {
       this.nodeClickSubject.next({ node: info.object, ctrlClick: e?.srcEvent?.ctrlKey ?? undefined });
     }
   }

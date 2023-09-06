@@ -3,7 +3,11 @@
   overflow-x: hidden;
   overflow-y: auto;
 
-  ::ng-deep .mat-chip-list-wrapper {
-    margin: 0;
+  ::ng-deep .mdc-evolution-chip-set__chips {
+    margin: 0 !important;
+
+    .mdc-evolution-chip__text-label {
+      font-size: 14px;
+    }
   }
 }

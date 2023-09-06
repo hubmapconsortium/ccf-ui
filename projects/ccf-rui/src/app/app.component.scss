@@ -37,7 +37,7 @@
           height: 100%;
           padding-top: 0.5rem;
           transition: all 0.5s;
-  
+
           &.closed {
             padding-top: 0;
           }
@@ -48,7 +48,7 @@
           justify-content: center;
           height: 0;
           z-index: 2;
-    
+
           .close-button {
             cursor: pointer;
             transition: 0.6s;
@@ -64,7 +64,7 @@
               border-bottom-left-radius: 0.2rem;
               border-bottom-right-radius: 0.2rem;
               transition: 0.6s;
-    
+
               &:hover {
                 background-color: #ececec;
               }
@@ -109,4 +109,9 @@
     }
 
   }
+
+}
+
+::ng-deep .mdc-snackbar__surface {
+  box-shadow: none !important;
 }
