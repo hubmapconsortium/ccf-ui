@@ -48,10 +48,16 @@
 
     .label {
       margin-right: 2rem;
+      line-height: 1.75rem;
     }
 
     .radio {
       margin-right: 4rem;
+
+      ::ng-deep .mdc-radio {
+        padding: 0;
+        padding-right: 0.5rem;
+      }
     }
   }
 

@@ -19,26 +19,10 @@
     align-items: center;
     cursor: pointer;
 
-    ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-      background-color: transparent;
-    }
-
     &.highlighted {
-      ::ng-deep .mat-ripple-element {
+      ::ng-deep .mdc-checkbox__ripple {
         opacity: .04;
       }
-    }
-
-    .checkselected {
-      ::ng-deep .mat-checkbox-frame {
-        border-color: white !important;
-      }
-    }
-
-    .checkbox {
-      margin-left: 1.12rem;
-      margin-bottom: 0.12rem; 
     }
   }
 
