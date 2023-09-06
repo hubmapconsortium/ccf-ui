@@ -90,7 +90,7 @@
     "@deck.gl/mesh-layers": "^8.9.22",
     "@loaders.gl/core": "^3.4.8",
     "@loaders.gl/draco": "^3.4.8",
-    "@loaders.gl/gltf": "^3.4.8",
+    "@loaders.gl/gltf": "^3.4.14",
     "@luma.gl/core": "^8.5.20",
     "@math.gl/core": "^3.6.3",
     "@math.gl/culling": "^3.5.7",
