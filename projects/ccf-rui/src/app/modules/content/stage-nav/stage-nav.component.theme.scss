@@ -76,10 +76,11 @@
       }
     }
 
-    .mat-slide-toggle-bar {
+    .mdc-switch__track::before, .mdc-switch__track::after {
       background-color: mat.get-color-from-palette($accent, 900) !important;
     }
-    .mat-slide-toggle-thumb {
+
+    .mdc-switch__shadow {
       background-color: mat.get-color-from-palette($accent) !important;
     }
 

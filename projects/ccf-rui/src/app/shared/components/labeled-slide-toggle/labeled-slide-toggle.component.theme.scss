@@ -9,11 +9,12 @@
   $accent: map-get($color-config, accent);
 
   .ccf-labeled-slide-toggle {
-    .mat-slide-toggle-bar {
-      background-color: mat.get-color-from-palette($foreground, donor-sex-bg) !important;
+    .mdc-switch__track::before, .mdc-switch__track::after {
+      background: mat.get-color-from-palette($foreground, donor-sex-bg) !important;
     }
-    .mat-slide-toggle-thumb {
-      background-color: mat.get-color-from-palette($foreground, donor-sex-toggle-nob) !important;
+
+    .mdc-switch__shadow {
+      background: mat.get-color-from-palette($foreground, donor-sex-toggle-nob) !important;
     }
 
     .slide-label {
