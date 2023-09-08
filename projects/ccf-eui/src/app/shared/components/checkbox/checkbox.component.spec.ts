@@ -1,9 +1,8 @@
-import { MatCheckbox } from '@angular/material/checkbox';
+import { MatCheckbox, MatCheckboxChange } from '@angular/material/checkbox';
 import { Shallow } from 'shallow-render';
 
 import { CheckboxComponent } from './checkbox.component';
 import { CheckboxModule } from './checkbox.module';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 
 
 describe('FiltersCheckboxComponent', () => {
