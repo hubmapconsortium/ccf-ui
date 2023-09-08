@@ -15,6 +15,7 @@ import { PageState, PageStateModel, Person } from '../page/page.state';
 import { ReferenceDataState, ReferenceDataStateModel } from '../reference-data/reference-data.state';
 import { AnatomicalStructureTagState } from './../anatomical-structure-tags/anatomical-structure-tags.state';
 import { RegistrationState } from './registration.state';
+import { subscribe } from 'diagnostics_channel';
 
 
 const testVisibilityItems: VisibilityItem[] = [{ id: 0, name: 'test', visible: true }];
@@ -133,7 +134,12 @@ describe('RegistrationState', () => {
         {
           provide: ReferenceDataState, useValue: {
             state$: referenceDataStateSubject,
-            snapshot: initialReferenceDataState
+            snapshot: initialReferenceDataState,
+            getSourceDB: () => (
+              {
+                subscribe: () => undefined
+              }
+            )
           }
         },
         {
