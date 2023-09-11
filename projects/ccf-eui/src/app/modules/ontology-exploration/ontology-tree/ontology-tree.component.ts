@@ -285,12 +285,22 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     return node.expandable;
   }
 
+  /**
+   * Gets number of results for node
+   * @param label The label of ndoe
+   * @param count Counf of children
+   * @returns Number of childs
+   */
   getNumResults(label: string, count=0): string | number {
     return ['body','cell'].includes(label) ? `Total: ${count}`: count;
   }
 
+  /**
+   * Gets Node label
+   * @param label node label
+   * @returns label for node
+   */
   getNodeLabel(label: string): string {
-
     return this.labelMap.get(label) || label;
   }
   /**
