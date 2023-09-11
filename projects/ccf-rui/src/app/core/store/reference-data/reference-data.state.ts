@@ -97,7 +97,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
     });
   }
 
-  getSourceDB(): Observable<ReferenceDataStateModel> {
+  private getSourceDB(): Observable<ReferenceDataStateModel> {
     return this.globalConfig.getOption('baseHref').pipe(
       map(baseHref => (baseHref ?? '') + 'assets/reference-organ-data.json'),
       switchMap(url => from(fetch(url)).pipe(

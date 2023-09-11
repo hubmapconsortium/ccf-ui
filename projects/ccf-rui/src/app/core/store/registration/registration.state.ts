@@ -141,9 +141,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.tags = this.injector.get(AnatomicalStructureTagState);
     this.refData = this.injector.get(ReferenceDataState);
 
-    this.refData.getSourceDB().subscribe(db => {
-      this.refData.setState(db);
-
+    this.refData.state$.subscribe(() => {
       this.globalConfig.config$.pipe(
         take(1),
         tap(({ useDownload, register }) => this.ctx.patchState({
