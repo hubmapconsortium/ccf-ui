@@ -8,7 +8,7 @@
       [class.unavailable]="!termData[node.original.id]"
       [class.selected]="isSelected(node)"
       (click)="select($event.ctrlKey, node, true, !isSelected(node))"
-    >{{ node.label === 'colon' ? 'large intestine' : node.label }}</div>
+    >{{ getNodeLabel(node.label) }}</div>
   </ng-template>
 
   <!-- Leaf node template -->
@@ -51,7 +51,7 @@
     </button>
 
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results" [class.suborgan]="node.level > 1">{{ occurenceData[node.original.id] || 0 }}</div>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{ getNumResults(node.label, occurenceData[node.original.id]) }}</div>
 
   </mat-tree-node>
 

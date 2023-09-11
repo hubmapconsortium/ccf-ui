@@ -190,10 +190,16 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   highlightedNode: FlatNode | undefined;
 
+  labelMap = new Map();
+
   /**
    * Expand the body node when the component is initialized.
    */
   ngOnInit(): void {
+
+    this.labelMap.set('colon','large intestine');
+    this.labelMap.set('body', 'Anatomical Structures (AS)');
+    this.labelMap.set('cell', 'Cell Types (CT)');
     if (this.control.dataNodes) {
       this.control.expand(this.control.dataNodes[0]);
     }
@@ -279,6 +285,14 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     return node.expandable;
   }
 
+  getNumResults(label: string, count=0): string | number {
+    return ['body','cell'].includes(label) ? `Total: ${count}`: count;
+  }
+
+  getNodeLabel(label: string): string {
+
+    return this.labelMap.get(label) || label;
+  }
   /**
    * Determines whether a node is currently selected.
    * Only a single node can be selected at any time.
