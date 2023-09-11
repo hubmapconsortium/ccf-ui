@@ -1,3 +1,0 @@
-describe('RightSidebarComponent', () => {
-  // Add tests
-});
