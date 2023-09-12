@@ -21,6 +21,9 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
 import { RunSpatialSearchModule } from './shared/components/run-spatial-search/run-spatial-search.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 import { ViewerModule } from './shared/components/viewer/viewer.module';
+import { ButtonToggleComponent } from './shared/components/button-toggle/button-toggle.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 
 
 @NgModule({
@@ -43,9 +46,10 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
     TrackingPopupModule,
     MatSnackBarModule,
     RunSpatialSearchModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonToggleModule
   ],
-  declarations: [AppComponent, AppWebComponent],
+  declarations: [AppComponent, AppWebComponent, ButtonToggleComponent],
   providers: [
     { provide: DEFAULT_THEME, useValue: 'hubmap-theme-light' },
     { provide: OverlayContainer, useExisting: AppRootOverlayContainer }

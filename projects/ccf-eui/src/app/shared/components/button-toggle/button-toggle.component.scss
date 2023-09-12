@@ -1,0 +1,17 @@
+:host {
+  .hidden {
+    visibility: hidden;
+  }
+
+  .selected {
+    background-color: #C2CAE5;
+  }
+  .toggleGroup {
+    border-radius: 35px;
+  }
+  mat-button-toggle {
+    min-width: 8.75rem;
+    height: 3rem;
+    text-align: center;
+  }
+}

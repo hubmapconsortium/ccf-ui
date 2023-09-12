@@ -23,6 +23,8 @@
               <strong>{{(data.filter$ | async)?.bmiRange[0]}}-{{(data.filter$ | async)?.bmiRange[1]}}</strong></div>
           </div>
         </div>
+        <ccf-button-toggle [menuOptions]="groupToggleOptions" [selectedItems]="[groupToggleOptions[0]]"
+        ></ccf-button-toggle>
         <ccf-ontology-selection class="ontology-selection"
                                 [treeModel]="ontologyTreeModel$ | async"
                                 [termData]="data.ontologyTermsFullData$ | async"

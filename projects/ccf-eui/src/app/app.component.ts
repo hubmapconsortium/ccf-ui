@@ -73,6 +73,8 @@ export class AppComponent implements OnInit {
 
   selectionLabel = 'body | cell';
 
+  groupToggleOptions=['AS','CT','B'];
+
   /**
    * Whether or not organ carousel is open
    */
