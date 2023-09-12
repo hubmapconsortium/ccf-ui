@@ -13,7 +13,7 @@ function fromPartial<T>(partial: RecursivePartial<T>): T {
 
 
 describe('OntologyTreeComponent', () => {
-  const node1 = fromPartial<OntologyTreeNode>({ id:'1', parent:'2', label: 'label', children: ['child1', 'child2'] });
+  const node1 = fromPartial<OntologyTreeNode>({ id: '1', parent: '2', label: 'label', children: ['child1', 'child2'] });
   const node2 = fromPartial<OntologyTreeNode>({ id: '2', label: 'label2', children: [] });
   const flatNode1 = new FlatNode(node1, 1);
   const flatNode2 = new FlatNode(node2, 1);
@@ -45,10 +45,24 @@ describe('OntologyTreeComponent', () => {
     expect(instance.getLeftIndent(1)).toEqual('-1.5rem');
   });
 
+  it('should set children', async () => {
+    const { instance } = await shallow.render();
+    instance.getChildren = ()=>[];
+  });
   it('should set and get occurenceData', async () => {
     const { instance } = await shallow.render({});
+    instance.occurenceData = null as never;
+    expect(instance.occurenceData).toEqual({});
     instance.occurenceData = { 'node': 1 };
     expect(instance.occurenceData).toEqual({ 'node': 1 });
+  });
+
+  it('should set and get termdata', async () => {
+    const { instance } = await shallow.render();
+    instance.termData = null as never;
+    expect(instance.termData).toEqual({});
+    instance.termData = { 'node': 1 };
+    expect(instance.termData['node']).toEqual(1);
   });
 
   it('should call selectByIDs when rootNode changes', async () => {
@@ -60,7 +74,7 @@ describe('OntologyTreeComponent', () => {
   });
 
   it('should call selectByIDs when ontologyFilter changes', async () => {
-    const { instance } = await shallow.render({ bind: { ontologyFilter:['1'] ,rootNode: '1', nodes: [node1, node2] } });
+    const { instance } = await shallow.render({ bind: { ontologyFilter: ['1'], rootNode: '1', nodes: [node1, node2] } });
     spyOn(instance, 'selectByIDs').and.callThrough();
     const changes: SimpleChanges = { 'ontologyFilter': { currentValue: ['2'], previousValue: '1', isFirstChange: () => true, firstChange: true } };
     instance.ngOnChanges(changes);
@@ -165,12 +179,14 @@ describe('OntologyTreeComponent', () => {
     const { instance } = await shallow.render();
     const total = instance.getNumResults('body', 1);
     expect(total).toEqual('Total: 1');
+    expect(instance.getNumResults('test')).toEqual(0);
   });
 
   it('should return label for node', async () => {
     const { instance } = await shallow.render();
     const label = instance.getNodeLabel('body');
     expect(label).toEqual('Anatomical Structures (AS)');
+    expect(instance.getNodeLabel('test')).toEqual('test');
   });
 
   it('should update the opacity', async () => {
